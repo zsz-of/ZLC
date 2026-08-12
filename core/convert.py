@@ -1,13 +1,50 @@
 # -*- coding: utf-8 -*-
 """转换管线：detect → read → write。同格式转换 = 原样复制（零损耗直通）。"""
+import ctypes
 import os
 import shutil
+import sys
 
 from . import formats
 
 
 class ConvertError(Exception):
     pass
+
+
+def _copy_timestamps(src: str, dst: str):
+    """把源文件的创建时间、修改时间、访问时间复制到目标文件。
+
+    Windows 上 ctime 为创建时间，需通过 SetFileTime API 设置；
+    mtime/atime 用 os.utime（跨平台）。
+    """
+    st = os.stat(src)
+    # atime + mtime（跨平台）
+    os.utime(dst, (st.st_atime, st.st_mtime))
+    # Windows 创建时间（ctime）
+    if sys.platform == 'win32':
+        try:
+            # FILETIME 是 100ns 为单位的时间戳，epoch 从 1601-01-01 起
+            EPOCH_DIFF = 116444736000000000
+            ctime_ft = int((st.st_ctime + EPOCH_DIFF / 1e7) * 1e7)
+
+            kernel32 = ctypes.windll.kernel32
+            CreateFileW = kernel32.CreateFileW
+            SetFileTime = kernel32.SetFileTime
+            CloseHandle = kernel32.CloseHandle
+
+            GENERIC_WRITE = 0x40000000
+            OPEN_EXISTING = 3
+            FILE_FLAG_BACKUP_SEMANTICS = 0x02000000
+
+            handle = CreateFileW(dst, GENERIC_WRITE, 0, None,
+                                 OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, None)
+            if handle != -1 and handle != 0:
+                ft = ctypes.c_ulonglong(ctime_ft)
+                SetFileTime(handle, ctypes.byref(ft), None, None)
+                CloseHandle(handle)
+        except Exception:
+            pass
 
 
 def convert_file(path: str, target: str, out_dir: str, log, options: dict) -> list:
@@ -46,4 +83,13 @@ def convert_file(path: str, target: str, out_dir: str, log, options: dict) -> li
     asset = plugin.read(path, log)
     if asset.presentation_ts_us < 0:
         log('warning', '源缺少封面帧时间戳，按规范回退为视频中点', '转换')
-    return target_plugin.write(asset, out_dir, stem, log, options or {})
+    outputs = target_plugin.write(asset, out_dir, stem, log, options or {})
+
+    # 保留源文件的时间戳（创建时间、修改时间、访问时间）
+    for out_path in outputs:
+        try:
+            _copy_timestamps(path, out_path)
+        except Exception:
+            pass
+
+    return outputs

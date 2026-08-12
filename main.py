@@ -162,7 +162,10 @@ class LeveledLogger:
 
 
 class LogPanel(ttk.Frame):
-    """日志面板（Text + 滚动条 + 级别颜色 tag）。"""
+    """日志面板（Text + 滚动条 + 级别颜色 tag）。
+
+    独立绑定鼠标滚轮并阻止冒泡，避免日志区滚动带动外层 Canvas 滚动。
+    """
 
     def __init__(self, master, logger):
         super().__init__(master)
@@ -175,6 +178,13 @@ class LogPanel(ttk.Frame):
         vsb.pack(side=tk.RIGHT, fill=tk.Y)
         for level, color in LeveledLogger.LEVEL_COLORS.items():
             self.text.tag_config(level, foreground=color)
+        # 独占鼠标滚轮，阻止冒泡到外层 Canvas
+        self.text.bind('<MouseWheel>', self._on_wheel)
+        self.text.bind('<Shift-MouseWheel>', lambda e: self._on_wheel(e, factor=5))
+
+    def _on_wheel(self, event, factor=1):
+        self.text.yview_scroll(int(-1 * (event.delta / 120) * factor), 'units')
+        return 'break'  # 阻止冒泡
 
     def append_entry(self, entry):
         if not self.logger.is_visible(entry['level']):
@@ -225,7 +235,7 @@ class FileSelector(ttk.LabelFrame):
 
     def _make_tree(self, parent, columns):
         tree = ttk.Treeview(parent, columns=[c[0] for c in columns],
-                            show='headings', selectmode='extended')
+                            show='headings', selectmode='extended', height=8)
         for col, text, width in columns:
             tree.heading(col, text=text)
             tree.column(col, width=width, anchor='e' if col == 'size' else 'w')
@@ -233,6 +243,9 @@ class FileSelector(ttk.LabelFrame):
         tree.configure(yscrollcommand=vsb.set)
         tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         vsb.pack(side=tk.RIGHT, fill=tk.Y)
+        # Treeview 独占鼠标滚轮，阻止冒泡到外层 Canvas
+        tree.bind('<MouseWheel>', lambda e: (
+            tree.yview_scroll(int(-1 * (e.delta / 120)), 'units'), 'break')[1])
         return tree
 
     def _build_folder(self):
@@ -341,11 +354,26 @@ class App(tk.Tk):
         self.title(APP_TITLE)
         self.cfg = _load_config()
         self.geometry(self.cfg.get('geometry', '900x700'))
-        self.minsize(760, 600)
+        self.minsize(400, 300)
 
-        # 日志（先建面板占位，再建 logger 回填，顺序见 leveled-logger skill）
-        main = ttk.Frame(self, padding=8)
-        main.pack(fill=tk.BOTH, expand=True)
+        # ── Canvas + Scrollbar 滚动包裹（规则：组件过多时提供滚动支持） ──
+        self.canvas = tk.Canvas(self, highlightthickness=0)
+        self.vsb = ttk.Scrollbar(self, orient='vertical', command=self.canvas.yview)
+        self.canvas.configure(yscrollcommand=self.vsb.set)
+        self.vsb.pack(side=tk.RIGHT, fill=tk.Y)
+        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        # inner frame 承载所有内容
+        main = ttk.Frame(self.canvas, padding=8)
+        self._inner_window = self.canvas.create_window(0, 0, window=main, anchor='nw')
+
+        # Canvas 宽度变化时 → inner frame 宽度跟随（防空白边缘）
+        self.canvas.bind('<Configure>', self._on_canvas_configure)
+        # inner 内容变化时 → 更新 scrollregion
+        main.bind('<Configure>', self._on_content_configure)
+        # 鼠标滚轮滚动 Canvas（日志区自行拦截，不冒泡到这里）
+        self.canvas.bind('<MouseWheel>', self._on_canvas_wheel)
+        self.canvas.bind('<Shift-MouseWheel>', lambda e: self._on_canvas_wheel(e, 5))
 
         # ── 转换设置 ──
         settings = ttk.LabelFrame(main, text='转换设置', padding=6)
@@ -381,7 +409,7 @@ class App(tk.Tk):
 
         # ── 文件选择 ──
         self.selector = FileSelector(main, None)  # logger 稍后回填不影响功能
-        self.selector.pack(fill=tk.BOTH, expand=True, pady=(0, 6))
+        self.selector.pack(fill=tk.X, pady=(0, 6))
 
         # ── 队列控制 ──
         ctrl = ttk.Frame(main)
@@ -397,7 +425,7 @@ class App(tk.Tk):
 
         # ── 日志面板 ──
         log_frame = ttk.LabelFrame(main, text='日志', padding=4)
-        log_frame.pack(fill=tk.BOTH, expand=True)
+        log_frame.pack(fill=tk.X)
         filter_bar = ttk.Frame(log_frame)
         filter_bar.pack(fill=tk.X)
         self.log_panel = LogPanel(log_frame, None)
@@ -414,7 +442,7 @@ class App(tk.Tk):
                             ).pack(side=tk.LEFT, padx=4)
         ttk.Button(filter_bar, text='清空日志', command=self.logger.clear).pack(side=tk.RIGHT)
         ttk.Button(filter_bar, text='清除记忆', command=self._clear_memory).pack(side=tk.RIGHT, padx=6)
-        self.log_panel.pack(fill=tk.BOTH, expand=True)
+        self.log_panel.pack(fill=tk.X)
 
         # ── 状态栏 ──
         self.status_var = tk.StringVar(value='就绪')
@@ -426,6 +454,18 @@ class App(tk.Tk):
         self.logger.info('程序启动完成，支持 Google / OPPO / vivo 动态照片互转')
 
     # ---- 事件 ----
+
+    def _on_canvas_configure(self, event):
+        """Canvas 大小变化时，inner frame 宽度跟随（防空白边缘）。"""
+        self.canvas.itemconfig(self._inner_window, width=event.width)
+
+    def _on_content_configure(self, event):
+        """inner frame 内容变化时，更新 scrollregion 以启用滚动。"""
+        self.canvas.configure(scrollregion=self.canvas.bbox('all'))
+
+    def _on_canvas_wheel(self, event, factor=1):
+        """鼠标滚轮滚动 Canvas 内容区。"""
+        self.canvas.yview_scroll(int(-1 * (event.delta / 120) * factor), 'units')
 
     def _browse_out(self):
         d = filedialog.askdirectory(title='选择输出目录')

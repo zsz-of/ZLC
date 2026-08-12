@@ -97,6 +97,97 @@ def _delete_config():
         return False
 
 
+# ---------------------------------------------------------------- 可滚动容器（参考 Z-ToolKit ScrollableContainer）
+
+class ScrollableContainer(ttk.Frame):
+    """Canvas + Scrollbar 滚动容器。
+
+    核心策略：inner_frame 高度 = max(内容请求高度, Canvas 可用高度)。
+    - 窗口够大时：inner_frame 撑满 Canvas，子组件的 expand 生效（日志区自动变高）。
+    - 窗口太小时：inner_frame 保持请求高度（>可用），滚动条出现，整体可滚动。
+
+    滚轮管理：鼠标进入时 bind_all 接管全局滚轮；子组件（日志 Text、Treeview）
+    可自行 bind <MouseWheel> 并 return 'break' 阻止冒泡，实现独立滚动。
+    """
+
+    def __init__(self, parent, **kwargs):
+        super().__init__(parent, **kwargs)
+        self.canvas = tk.Canvas(self, highlightthickness=0)
+        self.vsb = ttk.Scrollbar(self, orient='vertical', command=self.canvas.yview)
+        self.canvas.configure(yscrollcommand=self.vsb.set)
+        self.inner_frame = ttk.Frame(self.canvas)
+        self._inner_window = self.canvas.create_window(
+            0, 0, window=self.inner_frame, anchor='nw')
+
+        self.canvas.grid(row=0, column=0, sticky='nsew')
+        self.vsb.grid(row=0, column=1, sticky='ns')
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+        self.vsb.grid_remove()  # 初始隐藏，按需显示
+
+        self.inner_frame.bind('<Configure>', lambda e: self._update_layout())
+        self.canvas.bind('<Configure>', lambda e: self._update_layout())
+        self.canvas.bind('<Enter>', self._on_enter)
+        self.canvas.bind('<Leave>', self._on_leave)
+
+        self._scrollbar_visible = False
+        self._mouse_inside = False
+        self._updating = False
+
+    def get_inner_frame(self):
+        return self.inner_frame
+
+    def _on_enter(self, event):
+        self._mouse_inside = True
+        self.canvas.bind_all('<MouseWheel>', self._on_mousewheel)
+        self.canvas.bind_all('<Shift-MouseWheel>',
+                             lambda e: self._on_mousewheel(e, 5))
+
+    def _on_leave(self, event):
+        self._mouse_inside = False
+        self.canvas.unbind_all('<MouseWheel>')
+        self.canvas.unbind_all('<Shift-MouseWheel>')
+
+    def _on_mousewheel(self, event, factor=1):
+        if not self._mouse_inside or not self._scrollbar_visible:
+            return
+        try:
+            self.canvas.yview_scroll(
+                int(-1 * (event.delta / 120) * factor), 'units')
+        except Exception:
+            pass
+
+    def _update_layout(self):
+        if self._updating:
+            return
+        self._updating = True
+        try:
+            self.update_idletasks()
+            cw = self.canvas.winfo_width()
+            ch = self.canvas.winfo_height()
+            if cw <= 1 or ch <= 1:
+                self.after(50, self._update_layout)
+                return
+            req_h = self.inner_frame.winfo_reqheight()
+            # max(req, avail)：内容不够时撑满（expand 生效），超出时保持请求高度（启用滚动）
+            target_h = max(req_h, ch)
+            self.canvas.itemconfig(self._inner_window, width=cw, height=target_h)
+            self.canvas.configure(scrollregion=self.canvas.bbox('all'))
+            needs_scroll = req_h > ch
+            if needs_scroll != self._scrollbar_visible:
+                if needs_scroll:
+                    self.vsb.grid()
+                else:
+                    self.vsb.grid_remove()
+                    self.canvas.yview_moveto(0)
+                self._scrollbar_visible = needs_scroll
+                self.after(10, self._update_layout)  # 滚动条显隐后重新布局
+        except Exception:
+            pass
+        finally:
+            self._updating = False
+
+
 # ---------------------------------------------------------------- 日志（leveled-logger skill）
 
 class LeveledLogger:
@@ -164,14 +255,15 @@ class LeveledLogger:
 class LogPanel(ttk.Frame):
     """日志面板（Text + 滚动条 + 级别颜色 tag）。
 
-    独立绑定鼠标滚轮并阻止冒泡，避免日志区滚动带动外层 Canvas 滚动。
+    Text height=2 保证至少显示两行；窗口够大时由 pack(expand) 自动扩展。
+    独立绑定鼠标滚轮并 return 'break' 阻止冒泡，避免日志区滚动带动外层 Canvas。
     """
 
     def __init__(self, master, logger):
         super().__init__(master)
         self.logger = logger
         self.text = tk.Text(self, wrap='char', font=('Consolas', 9),
-                            state='disabled', relief='flat', height=12)
+                            state='disabled', relief='flat', height=2)
         vsb = ttk.Scrollbar(self, orient='vertical', command=self.text.yview)
         self.text.configure(yscrollcommand=vsb.set)
         self.text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -235,7 +327,7 @@ class FileSelector(ttk.LabelFrame):
 
     def _make_tree(self, parent, columns):
         tree = ttk.Treeview(parent, columns=[c[0] for c in columns],
-                            show='headings', selectmode='extended', height=8)
+                            show='headings', selectmode='extended', height=5)
         for col, text, width in columns:
             tree.heading(col, text=text)
             tree.column(col, width=width, anchor='e' if col == 'size' else 'w')
@@ -356,24 +448,10 @@ class App(tk.Tk):
         self.geometry(self.cfg.get('geometry', '900x700'))
         self.minsize(400, 300)
 
-        # ── Canvas + Scrollbar 滚动包裹（规则：组件过多时提供滚动支持） ──
-        self.canvas = tk.Canvas(self, highlightthickness=0)
-        self.vsb = ttk.Scrollbar(self, orient='vertical', command=self.canvas.yview)
-        self.canvas.configure(yscrollcommand=self.vsb.set)
-        self.vsb.pack(side=tk.RIGHT, fill=tk.Y)
-        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-
-        # inner frame 承载所有内容
-        main = ttk.Frame(self.canvas, padding=8)
-        self._inner_window = self.canvas.create_window(0, 0, window=main, anchor='nw')
-
-        # Canvas 宽度变化时 → inner frame 宽度跟随（防空白边缘）
-        self.canvas.bind('<Configure>', self._on_canvas_configure)
-        # inner 内容变化时 → 更新 scrollregion
-        main.bind('<Configure>', self._on_content_configure)
-        # 鼠标滚轮滚动 Canvas（日志区自行拦截，不冒泡到这里）
-        self.canvas.bind('<MouseWheel>', self._on_canvas_wheel)
-        self.canvas.bind('<Shift-MouseWheel>', lambda e: self._on_canvas_wheel(e, 5))
+        # ── ScrollableContainer 滚动包裹 ──
+        scroll = ScrollableContainer(self)
+        scroll.pack(fill=tk.BOTH, expand=True)
+        main = scroll.get_inner_frame()
 
         # ── 转换设置 ──
         settings = ttk.LabelFrame(main, text='转换设置', padding=6)
@@ -390,12 +468,12 @@ class App(tk.Tk):
         self.target_combo.bind('<<ComboboxSelected>>', self._on_target_change)
         self.mp_suffix_var = tk.BooleanVar(value=self.cfg.get('google_mp_suffix', True))
         self._mp_suffix_saved = self.mp_suffix_var.get()
-        self._mp_suffix_forced = False  # 是否处于"非 Google 强制取消"状态
+        self._mp_suffix_forced = False
         self.mp_suffix_cb = ttk.Checkbutton(
             settings, text='Google 输出遵循 *MP.jpg 命名约定',
             variable=self.mp_suffix_var)
         self.mp_suffix_cb.pack(side=tk.LEFT, padx=10)
-        self._on_target_change()  # 初始化勾选状态
+        self._on_target_change()
 
         out_bar = ttk.Frame(settings)
         out_bar.pack(fill=tk.X, pady=(6, 0))
@@ -407,9 +485,9 @@ class App(tk.Tk):
         ttk.Label(settings, text='（留空则输出到源文件所在目录的 converted 子目录）',
                   foreground='gray').pack(anchor=tk.W, pady=(2, 0))
 
-        # ── 文件选择 ──
-        self.selector = FileSelector(main, None)  # logger 稍后回填不影响功能
-        self.selector.pack(fill=tk.X, pady=(0, 6))
+        # ── 文件选择（expand：窗口够大时自动变高） ──
+        self.selector = FileSelector(main, None)
+        self.selector.pack(fill=tk.BOTH, expand=True, pady=(0, 6))
 
         # ── 队列控制 ──
         ctrl = ttk.Frame(main)
@@ -423,9 +501,9 @@ class App(tk.Tk):
         self.progress_label = ttk.Label(ctrl, text='0/0')
         self.progress_label.pack(side=tk.LEFT)
 
-        # ── 日志面板 ──
+        # ── 日志面板（expand：窗口够大时自动扩展，至少 2 行） ──
         log_frame = ttk.LabelFrame(main, text='日志', padding=4)
-        log_frame.pack(fill=tk.X)
+        log_frame.pack(fill=tk.BOTH, expand=True)
         filter_bar = ttk.Frame(log_frame)
         filter_bar.pack(fill=tk.X)
         self.log_panel = LogPanel(log_frame, None)
@@ -442,30 +520,13 @@ class App(tk.Tk):
                             ).pack(side=tk.LEFT, padx=4)
         ttk.Button(filter_bar, text='清空日志', command=self.logger.clear).pack(side=tk.RIGHT)
         ttk.Button(filter_bar, text='清除记忆', command=self._clear_memory).pack(side=tk.RIGHT, padx=6)
-        self.log_panel.pack(fill=tk.X)
-
-        # ── 状态栏 ──
-        self.status_var = tk.StringVar(value='就绪')
-        ttk.Label(main, textvariable=self.status_var, relief=tk.SUNKEN,
-                  anchor=tk.W).pack(fill=tk.X, pady=(4, 0))
+        self.log_panel.pack(fill=tk.BOTH, expand=True)
 
         self.runner = None
         self.protocol('WM_DELETE_WINDOW', self._on_close)
         self.logger.info('程序启动完成，支持 Google / OPPO / vivo 动态照片互转')
 
     # ---- 事件 ----
-
-    def _on_canvas_configure(self, event):
-        """Canvas 大小变化时，inner frame 宽度跟随（防空白边缘）。"""
-        self.canvas.itemconfig(self._inner_window, width=event.width)
-
-    def _on_content_configure(self, event):
-        """inner frame 内容变化时，更新 scrollregion 以启用滚动。"""
-        self.canvas.configure(scrollregion=self.canvas.bbox('all'))
-
-    def _on_canvas_wheel(self, event, factor=1):
-        """鼠标滚轮滚动 Canvas 内容区。"""
-        self.canvas.yview_scroll(int(-1 * (event.delta / 120) * factor), 'units')
 
     def _browse_out(self):
         d = filedialog.askdirectory(title='选择输出目录')
@@ -516,13 +577,11 @@ class App(tk.Tk):
         self.runner.start()
         self.start_btn.config(state=tk.DISABLED)
         self.stop_btn.config(state=tk.NORMAL)
-        self.status_var.set(f'正在转换 → {self.target_combo.get()} ...')
         self.logger.info(f'队列启动：{len(files)} 个文件 → {self.target_combo.get()}，输出到 {out_dir}', '队列')
 
     def _stop(self):
         if self.runner:
             self.runner.stop()
-            self.status_var.set('正在停止...')
             self.logger.warning('用户请求停止队列', '队列')
 
     def _on_progress(self, done, total):
@@ -533,7 +592,6 @@ class App(tk.Tk):
         self.start_btn.config(state=tk.NORMAL)
         self.stop_btn.config(state=tk.DISABLED)
         text = f'{"已取消。" if cancelled else "完成。"} 成功 {ok} 个，失败 {fail} 个'
-        self.status_var.set(text)
         self.logger.info(text, '队列')
         if fail == 0 and not cancelled:
             messagebox.showinfo('完成', f'全部 {ok} 个文件转换成功！')

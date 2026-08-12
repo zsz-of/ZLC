@@ -100,37 +100,43 @@ def _delete_config():
 # ---------------------------------------------------------------- 可滚动容器（参考 Z-ToolKit ScrollableContainer）
 
 class ScrollableContainer(ttk.Frame):
-    """Canvas + Scrollbar 滚动容器。
+    """Canvas + 双向 Scrollbar 滚动容器。
 
-    核心策略：inner_frame 高度 = max(内容请求高度, Canvas 可用高度)。
+    核心策略：inner_frame 尺寸 = max(内容请求尺寸, Canvas 可用尺寸)。
     - 窗口够大时：inner_frame 撑满 Canvas，子组件的 expand 生效（日志区自动变高）。
-    - 窗口太小时：inner_frame 保持请求高度（>可用），滚动条出现，整体可滚动。
+    - 窗口太小时：inner_frame 保持请求尺寸（>可用），对应方向滚动条出现，整体可滚动。
 
     滚轮管理：鼠标进入时 bind_all 接管全局滚轮；子组件（日志 Text、Treeview）
     可自行 bind <MouseWheel> 并 return 'break' 阻止冒泡，实现独立滚动。
+    Shift+滚轮 = 水平滚动。
     """
 
     def __init__(self, parent, **kwargs):
         super().__init__(parent, **kwargs)
         self.canvas = tk.Canvas(self, highlightthickness=0)
         self.vsb = ttk.Scrollbar(self, orient='vertical', command=self.canvas.yview)
-        self.canvas.configure(yscrollcommand=self.vsb.set)
+        self.hsb = ttk.Scrollbar(self, orient='horizontal', command=self.canvas.xview)
+        self.canvas.configure(yscrollcommand=self.vsb.set,
+                              xscrollcommand=self.hsb.set)
         self.inner_frame = ttk.Frame(self.canvas)
         self._inner_window = self.canvas.create_window(
             0, 0, window=self.inner_frame, anchor='nw')
 
         self.canvas.grid(row=0, column=0, sticky='nsew')
         self.vsb.grid(row=0, column=1, sticky='ns')
+        self.hsb.grid(row=1, column=0, sticky='ew')
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
         self.vsb.grid_remove()  # 初始隐藏，按需显示
+        self.hsb.grid_remove()
 
         self.inner_frame.bind('<Configure>', lambda e: self._update_layout())
         self.canvas.bind('<Configure>', lambda e: self._update_layout())
         self.canvas.bind('<Enter>', self._on_enter)
         self.canvas.bind('<Leave>', self._on_leave)
 
-        self._scrollbar_visible = False
+        self._vscroll_visible = False
+        self._hscroll_visible = False
         self._mouse_inside = False
         self._updating = False
 
@@ -139,21 +145,29 @@ class ScrollableContainer(ttk.Frame):
 
     def _on_enter(self, event):
         self._mouse_inside = True
-        self.canvas.bind_all('<MouseWheel>', self._on_mousewheel)
-        self.canvas.bind_all('<Shift-MouseWheel>',
-                             lambda e: self._on_mousewheel(e, 5))
+        self.canvas.bind_all('<MouseWheel>', self._on_mousewheel_v)
+        self.canvas.bind_all('<Shift-MouseWheel>', self._on_mousewheel_h)
 
     def _on_leave(self, event):
         self._mouse_inside = False
         self.canvas.unbind_all('<MouseWheel>')
         self.canvas.unbind_all('<Shift-MouseWheel>')
 
-    def _on_mousewheel(self, event, factor=1):
-        if not self._mouse_inside or not self._scrollbar_visible:
+    def _on_mousewheel_v(self, event):
+        if not self._mouse_inside or not self._vscroll_visible:
             return
         try:
             self.canvas.yview_scroll(
-                int(-1 * (event.delta / 120) * factor), 'units')
+                int(-1 * (event.delta / 120)), 'units')
+        except Exception:
+            pass
+
+    def _on_mousewheel_h(self, event):
+        if not self._mouse_inside or not self._hscroll_visible:
+            return
+        try:
+            self.canvas.xview_scroll(
+                int(-1 * (event.delta / 120)), 'units')
         except Exception:
             pass
 
@@ -168,20 +182,53 @@ class ScrollableContainer(ttk.Frame):
             if cw <= 1 or ch <= 1:
                 self.after(50, self._update_layout)
                 return
+            req_w = self.inner_frame.winfo_reqwidth()
             req_h = self.inner_frame.winfo_reqheight()
-            # max(req, avail)：内容不够时撑满（expand 生效），超出时保持请求高度（启用滚动）
-            target_h = max(req_h, ch)
-            self.canvas.itemconfig(self._inner_window, width=cw, height=target_h)
+
+            # 滚动条预留尺寸
+            sb_w = self.vsb.winfo_reqwidth() or 17
+            sb_h = self.hsb.winfo_reqheight() or 17
+
+            # 第一轮：基于 Canvas 大小判断
+            needs_v = req_h > ch
+            needs_h = req_w > cw
+            # 第二轮：一个滚动条出现后挤压另一方向
+            if needs_v and not needs_h:
+                if req_w > (cw - sb_w):
+                    needs_h = True
+            if needs_h and not needs_v:
+                if req_h > (ch - sb_h):
+                    needs_v = True
+
+            avail_w = cw - (sb_w if needs_v else 0)
+            avail_h = ch - (sb_h if needs_h else 0)
+
+            # max(req, avail)：内容不够时撑满（expand 生效），超出时保持请求尺寸（启用滚动）
+            target_w = max(req_w, avail_w)
+            target_h = max(req_h, avail_h)
+            self.canvas.itemconfig(self._inner_window,
+                                   width=target_w, height=target_h)
             self.canvas.configure(scrollregion=self.canvas.bbox('all'))
-            needs_scroll = req_h > ch
-            if needs_scroll != self._scrollbar_visible:
-                if needs_scroll:
+
+            changed = False
+            if needs_v != self._vscroll_visible:
+                if needs_v:
                     self.vsb.grid()
                 else:
                     self.vsb.grid_remove()
                     self.canvas.yview_moveto(0)
-                self._scrollbar_visible = needs_scroll
-                self.after(10, self._update_layout)  # 滚动条显隐后重新布局
+                self._vscroll_visible = needs_v
+                changed = True
+            if needs_h != self._hscroll_visible:
+                if needs_h:
+                    self.hsb.grid()
+                else:
+                    self.hsb.grid_remove()
+                    self.canvas.xview_moveto(0)
+                self._hscroll_visible = needs_h
+                changed = True
+            if changed:
+                self.after(10, self._update_layout)
         except Exception:
             pass
         finally:
@@ -263,7 +310,7 @@ class LogPanel(ttk.Frame):
         super().__init__(master)
         self.logger = logger
         self.text = tk.Text(self, wrap='char', font=('Consolas', 9),
-                            state='disabled', relief='flat', height=2)
+                            state='disabled', relief='flat', height=2, width=40)
         vsb = ttk.Scrollbar(self, orient='vertical', command=self.text.yview)
         self.text.configure(yscrollcommand=vsb.set)
         self.text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -358,8 +405,6 @@ class FileSelector(ttk.LabelFrame):
                                                    ('size', '大小', 90)))
 
     def _build_filelist(self):
-        self.tree = self._make_tree(self.content, (('name', '文件名', 380),
-                                                   ('size', '大小', 90)))
         bar = ttk.Frame(self.content)
         bar.pack(fill=tk.X, pady=4)
         ttk.Button(bar, text='添加文件', command=self._add).pack(side=tk.LEFT, padx=4)
@@ -367,6 +412,8 @@ class FileSelector(ttk.LabelFrame):
         ttk.Button(bar, text='清空', command=self._clear).pack(side=tk.LEFT, padx=4)
         self.count_label = ttk.Label(bar, text='已添加: 0 个文件')
         self.count_label.pack(side=tk.LEFT, padx=10)
+        self.tree = self._make_tree(self.content, (('name', '文件名', 380),
+                                                   ('size', '大小', 90)))
 
     @staticmethod
     def _size_str(n):
@@ -456,25 +503,22 @@ class App(tk.Tk):
         # ── 转换设置 ──
         settings = ttk.LabelFrame(main, text='转换设置', padding=6)
         settings.pack(fill=tk.X, pady=(0, 6))
-        ttk.Label(settings, text='目标格式:').pack(side=tk.LEFT)
+
+        # 第一行：目标格式
+        fmt_row = ttk.Frame(settings)
+        fmt_row.pack(fill=tk.X)
+        ttk.Label(fmt_row, text='目标格式:').pack(side=tk.LEFT)
         self.target_var = tk.StringVar(value=self.cfg.get('target', TARGETS[0][0]))
         display_map = {name: disp for name, disp in TARGETS}
         self._disp_to_name = {disp: name for name, disp in TARGETS}
         self.target_combo = ttk.Combobox(
-            settings, state='readonly', width=34,
+            fmt_row, state='readonly', width=24,
             values=[d for _, d in TARGETS])
         self.target_combo.set(display_map.get(self.target_var.get(), TARGETS[0][1]))
         self.target_combo.pack(side=tk.LEFT, padx=6)
         self.target_combo.bind('<<ComboboxSelected>>', self._on_target_change)
-        self.mp_suffix_var = tk.BooleanVar(value=self.cfg.get('google_mp_suffix', True))
-        self._mp_suffix_saved = self.mp_suffix_var.get()
-        self._mp_suffix_forced = False
-        self.mp_suffix_cb = ttk.Checkbutton(
-            settings, text='Google 输出遵循 *MP.jpg 命名约定',
-            variable=self.mp_suffix_var)
-        self.mp_suffix_cb.pack(side=tk.LEFT, padx=10)
-        self._on_target_change()
 
+        # 第二行：输出目录
         out_bar = ttk.Frame(settings)
         out_bar.pack(fill=tk.X, pady=(6, 0))
         ttk.Label(out_bar, text='输出目录:').pack(side=tk.LEFT)
@@ -482,6 +526,18 @@ class App(tk.Tk):
         ttk.Entry(out_bar, textvariable=self.out_var).pack(
             side=tk.LEFT, fill=tk.X, expand=True, padx=6)
         ttk.Button(out_bar, text='浏览...', command=self._browse_out).pack(side=tk.RIGHT)
+
+        # 第三行：Google 命名选项
+        opt_row = ttk.Frame(settings)
+        opt_row.pack(fill=tk.X, pady=(4, 0))
+        self.mp_suffix_var = tk.BooleanVar(value=self.cfg.get('google_mp_suffix', True))
+        self._mp_suffix_saved = self.mp_suffix_var.get()
+        self._mp_suffix_forced = False
+        self.mp_suffix_cb = ttk.Checkbutton(
+            opt_row, text='Google 输出遵循 *MP.jpg 命名约定',
+            variable=self.mp_suffix_var)
+        self.mp_suffix_cb.pack(side=tk.LEFT)
+        self._on_target_change()
         ttk.Label(settings, text='（留空则输出到源文件所在目录的 converted 子目录）',
                   foreground='gray').pack(anchor=tk.W, pady=(2, 0))
 

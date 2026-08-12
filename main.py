@@ -45,6 +45,7 @@ import json
 import os
 import threading
 import tkinter as tk
+import tkinter.font as tkfont
 from tkinter import filedialog, messagebox, ttk
 from collections import deque
 from pathlib import Path
@@ -375,6 +376,14 @@ class FileSelector(ttk.LabelFrame):
     def _make_tree(self, parent, columns):
         tree = ttk.Treeview(parent, columns=[c[0] for c in columns],
                             show='headings', selectmode='extended', height=5)
+        # 修复高 DPI 下行高不缩放导致文字只显示一半
+        style = ttk.Style()
+        tv_font = tkfont.Font(font=style.lookup('Treeview', 'font'))
+        style.configure('Treeview', rowheight=tv_font.metrics('linespace'))
+        # 非动态照片行的样式：红色 + 删除线
+        strike_font = tkfont.Font(font=tv_font)
+        strike_font.configure(overstrike=True)
+        tree.tag_configure('invalid', foreground='#CC0000', font=strike_font)
         for col, text, width in columns:
             tree.heading(col, text=text)
             tree.column(col, width=width, anchor='e' if col == 'size' else 'w')
@@ -385,6 +394,8 @@ class FileSelector(ttk.LabelFrame):
         # Treeview 独占鼠标滚轮，阻止冒泡到外层 Canvas
         tree.bind('<MouseWheel>', lambda e: (
             tree.yview_scroll(int(-1 * (e.delta / 120)), 'units'), 'break')[1])
+        # 按 Delete 键删除选中行
+        tree.bind('<Delete>', lambda e: self._remove())
         return tree
 
     def _build_folder(self):
@@ -397,12 +408,13 @@ class FileSelector(ttk.LabelFrame):
         opts = ttk.Frame(self.content)
         opts.pack(fill=tk.X, pady=3)
         self.recursive_var = tk.BooleanVar(value=True)
-        ttk.Checkbutton(opts, text='递归扫描子目录', variable=self.recursive_var).pack(side=tk.LEFT)
-        ttk.Button(opts, text='开始扫描', command=self._scan).pack(side=tk.LEFT, padx=10)
+        ttk.Checkbutton(opts, text='递归扫描子目录', variable=self.recursive_var,
+                        command=self._scan).pack(side=tk.LEFT)
         self.scan_label = ttk.Label(opts, text='')
         self.scan_label.pack(side=tk.LEFT, padx=8)
-        self.tree = self._make_tree(self.content, (('name', '文件名', 380),
-                                                   ('size', '大小', 90)))
+        self.tree = self._make_tree(self.content, (('name', '文件名', 300),
+                                                   ('type', '类型', 100),
+                                                   ('size', '大小', 80)))
 
     def _build_filelist(self):
         bar = ttk.Frame(self.content)
@@ -412,17 +424,39 @@ class FileSelector(ttk.LabelFrame):
         ttk.Button(bar, text='清空', command=self._clear).pack(side=tk.LEFT, padx=4)
         self.count_label = ttk.Label(bar, text='已添加: 0 个文件')
         self.count_label.pack(side=tk.LEFT, padx=10)
-        self.tree = self._make_tree(self.content, (('name', '文件名', 380),
-                                                   ('size', '大小', 90)))
+        self.tree = self._make_tree(self.content, (('name', '文件名', 300),
+                                                   ('type', '类型', 100),
+                                                   ('size', '大小', 80)))
 
     @staticmethod
     def _size_str(n):
         return f'{n / 1048576:.1f} MB' if n >= 1048576 else f'{n / 1024:.1f} KB'
 
+    @staticmethod
+    def _detect_type(path):
+        """检测文件格式，返回 (类型显示名, 是否有效动态照片)。"""
+        try:
+            plugin, score = formats.detect_best(path)
+            if plugin and score >= 50:
+                return plugin.display.split('（')[0], True
+        except Exception:
+            pass
+        return '非动态照片', False
+
+    def _insert_file(self, path, name, size_bytes):
+        """插入一行并检测类型，非动态照片标红+删除线。"""
+        type_label, valid = self._detect_type(path)
+        item_id = self.tree.insert('', tk.END, values=(
+            name, type_label, self._size_str(size_bytes)),
+            tags=() if valid else ('invalid',))
+        self._item_paths[item_id] = path
+        return valid
+
     def _browse(self):
         folder = filedialog.askdirectory(title='选择要扫描的文件夹')
         if folder:
             self.folder_var.set(folder)
+            self._scan()  # 选定文件夹后自动扫描
 
     def _scan(self):
         folder = self.folder_var.get()
@@ -433,30 +467,36 @@ class FileSelector(ttk.LabelFrame):
         self.file_list.clear()
         self._item_paths.clear()
         scanner = Path(folder).rglob('*') if self.recursive_var.get() else Path(folder).iterdir()
-        count = 0
+        total = valid = 0
         for fp in scanner:
             if fp.is_file() and fp.suffix.lower() in IMAGE_EXTS:
                 abs_path = str(fp.resolve())
                 self.file_list.append(abs_path)
-                item_id = self.tree.insert('', tk.END, values=(
-                    fp.name, self._size_str(fp.stat().st_size)))
-                self._item_paths[item_id] = abs_path
-                count += 1
-        self.scan_label.config(text=f'发现 {count} 个 JPG 文件')
+                if self._insert_file(abs_path, fp.name, fp.stat().st_size):
+                    valid += 1
+                total += 1
+        invalid = total - valid
+        self.scan_label.config(
+            text=f'共 {total} 个 JPG，有效 {valid}，无效 {invalid}')
         self.on_files_changed()
 
     def _add(self):
         files = filedialog.askopenfilenames(
             title='选择动态照片 JPG 文件',
             filetypes=[('JPEG 图像', '*.jpg *.jpeg'), ('所有文件', '*.*')])
+        total = valid = 0
         for f in files:
             normalized = str(Path(f).resolve())
             if normalized not in self.file_list:
                 self.file_list.append(normalized)
-                item_id = self.tree.insert('', tk.END, values=(
-                    Path(f).name, self._size_str(os.path.getsize(normalized))))
-                self._item_paths[item_id] = normalized
-        self.count_label.config(text=f'已添加: {len(self.file_list)} 个文件')
+                if self._insert_file(normalized, Path(f).name,
+                                     os.path.getsize(normalized)):
+                    valid += 1
+                total += 1
+        if total:
+            invalid = total - valid
+            self.count_label.config(
+                text=f'已添加: {total} 个文件（有效 {valid}，无效 {invalid}）')
         self.on_files_changed()
 
     def _remove(self):
@@ -471,6 +511,7 @@ class FileSelector(ttk.LabelFrame):
             self.tree.delete(item_id)
         if to_remove:
             self.file_list = [f for f in self.file_list if f not in to_remove]
+        self._update_count()
         self.on_files_changed()
 
     def _clear(self):
@@ -478,10 +519,34 @@ class FileSelector(ttk.LabelFrame):
         self._item_paths.clear()
         for item in self.tree.get_children():
             self.tree.delete(item)
+        self._update_count()
         self.on_files_changed()
 
+    def _update_count(self):
+        """统计当前列表中的有效/无效数量并更新标签。"""
+        total = valid = 0
+        for item_id in self.tree.get_children():
+            total += 1
+            tags = self.tree.item(item_id, 'tags')
+            if 'invalid' not in tags:
+                valid += 1
+        invalid = total - valid
+        text = f'共 {total} 个 JPG，有效 {valid}，无效 {invalid}'
+        if hasattr(self, 'count_label') and self.count_label.winfo_exists():
+            self.count_label.config(
+                text=f'已添加: {total} 个文件（有效 {valid}，无效 {invalid}）')
+        elif hasattr(self, 'scan_label') and self.scan_label.winfo_exists():
+            self.scan_label.config(text=text)
+
     def get_files(self):
-        return self.file_list.copy()
+        """只返回有效动态照片的文件路径。"""
+        valid_files = []
+        for item_id in self.tree.get_children():
+            if 'invalid' not in self.tree.item(item_id, 'tags'):
+                path = self._item_paths.get(item_id)
+                if path:
+                    valid_files.append(path)
+        return valid_files
 
 
 # ---------------------------------------------------------------- 主窗口
@@ -553,9 +618,9 @@ class App(tk.Tk):
         self.stop_btn = ttk.Button(ctrl, text='停止', command=self._stop, state=tk.DISABLED)
         self.stop_btn.pack(side=tk.LEFT, padx=4)
         self.progress = ttk.Progressbar(ctrl, orient=tk.HORIZONTAL, mode='determinate')
-        self.progress.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=10)
+        self.progress.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(10, 0))
         self.progress_label = ttk.Label(ctrl, text='0/0')
-        self.progress_label.pack(side=tk.LEFT)
+        self.progress_label.pack(side=tk.LEFT, padx=(8, 8))
 
         # ── 日志面板（expand：窗口够大时自动扩展，至少 2 行） ──
         log_frame = ttk.LabelFrame(main, text='日志', padding=4)
@@ -568,9 +633,10 @@ class App(tk.Tk):
             refresh_callback=self.log_panel.refresh,
             schedule_mainthread=lambda fn: self.after(0, fn))
         self.log_panel.logger = self.logger
-        for level in ('info', 'warning', 'error', 'critical'):
+        for level, label in (('info', '信息'), ('warning', '警告'),
+                             ('error', '错误'), ('critical', '严重')):
             var = tk.BooleanVar(value=True)
-            ttk.Checkbutton(filter_bar, text=level, variable=var,
+            ttk.Checkbutton(filter_bar, text=label, variable=var,
                             command=lambda l=level, v=var:
                             self.logger.set_level_visible(l, v.get())
                             ).pack(side=tk.LEFT, padx=4)

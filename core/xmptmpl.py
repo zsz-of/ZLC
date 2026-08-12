@@ -7,8 +7,14 @@
 import re
 
 # ---------------------------------------------------------------- 模板
+#
+# HDR (Ultra HDR) 与非 HDR 的区别：
+# - HDR 照片有 GainMap JPEG，Primary XMP 声明 xmlns:hdrgm + hdrgm:Version="1.0"，
+#   Container:Directory 含 GainMap 项。
+# - 非 HDR 照片无 GainMap JPEG，Primary XMP 不应出现 hdrgm 命名空间。
+# 以下每个格式的 HEAD 拆为 _HDR / _NONHDR 两个版本，由 build_* 函数按 gainmap 选择。
 
-_GOOGLE_HEAD = '''<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
+_GOOGLE_HEAD_HDR = '''<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <rdf:Description rdf:about=""
         xmlns:hdrgm="http://ns.adobe.com/hdr-gain-map/1.0/"
@@ -21,7 +27,18 @@ _GOOGLE_HEAD = '''<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.
       GCamera:MotionPhotoPresentationTimestampUs="{pts}">
 '''
 
-_OPPO_HEAD = '''<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
+_GOOGLE_HEAD_NONHDR = '''<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description rdf:about=""
+        xmlns:GCamera="http://ns.google.com/photos/1.0/camera/"
+        xmlns:Container="http://ns.google.com/photos/1.0/container/"
+        xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
+      GCamera:MotionPhoto="1"
+      GCamera:MotionPhotoVersion="1"
+      GCamera:MotionPhotoPresentationTimestampUs="{pts}">
+'''
+
+_OPPO_HEAD_HDR = '''<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <rdf:Description rdf:about=""
         xmlns:hdrgm="http://ns.adobe.com/hdr-gain-map/1.0/"
@@ -43,13 +60,40 @@ _OPPO_HEAD = '''<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.
       VCamera:VMediaKitVersion="1.0.0.8">
 '''
 
-_VIVO_HEAD = '''<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.2">
+_OPPO_HEAD_NONHDR = '''<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description rdf:about=""
+        xmlns:GCamera="http://ns.google.com/photos/1.0/camera/"
+        xmlns:OpCamera="http://ns.oplus.com/photos/1.0/camera/"
+        xmlns:Container="http://ns.google.com/photos/1.0/container/"
+        xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
+        xmlns:VCamera="http://ns.vivo.com/photos/1.0/camera/"
+      GCamera:MotionPhoto="1"
+      GCamera:MotionPhotoVersion="1"
+      GCamera:MotionPhotoPresentationTimestampUs="{pts}"
+      OpCamera:MotionPhotoPrimaryPresentationTimestampUs="{pts}"
+      OpCamera:MotionPhotoOwner="oplus"
+      OpCamera:OLivePhotoVersion="2"
+      OpCamera:VideoLength="{mp4_len}"
+      OpCamera:MotionPhotoEnable="True"
+      VCamera:VMotionPhotoVersion="1"
+      VCamera:VMediaKitVersion="1.0.0.8">
+'''
+
+_VIVO_HEAD_HDR = '''<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.2">
   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <rdf:Description
         xmlns:Container="http://ns.google.com/photos/1.0/container/"
         xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
         xmlns:hdrgm="http://ns.adobe.com/hdr-gain-map/1.0/"
         hdrgm:Version="1.0">
+'''
+
+_VIVO_HEAD_NONHDR = '''<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.2">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description
+        xmlns:Container="http://ns.google.com/photos/1.0/container/"
+        xmlns:Item="http://ns.google.com/photos/1.0/container/item/">
 '''
 
 _TAIL = '''      </Container:Directory>
@@ -110,7 +154,8 @@ _VIVO_TAIL_CLOSE = '''        </rdf:Seq>
 
 
 def build_google_xmp(pts_us: int, gainmap_len: int | None, video_len: int) -> str:
-    parts = [_GOOGLE_HEAD.format(pts=pts_us), _ITEM_PRIMARY]
+    head = _GOOGLE_HEAD_HDR if gainmap_len is not None else _GOOGLE_HEAD_NONHDR
+    parts = [head.format(pts=pts_us), _ITEM_PRIMARY]
     if gainmap_len is not None:
         parts.append(_ITEM_GAINMAP.format(gainmap_len=gainmap_len))
     parts.append(_ITEM_VIDEO.format(video_len=video_len))
@@ -120,7 +165,8 @@ def build_google_xmp(pts_us: int, gainmap_len: int | None, video_len: int) -> st
 
 def build_oppo_xmp(pts_us: int, gainmap_len: int | None, video_len: int, mp4_len: int) -> str:
     """video_len 为 Container 声明的视频项长度（含 footer），mp4_len 为纯 MP4 流长度。"""
-    parts = [_OPPO_HEAD.format(pts=pts_us, mp4_len=mp4_len), _ITEM_PRIMARY]
+    head = _OPPO_HEAD_HDR if gainmap_len is not None else _OPPO_HEAD_NONHDR
+    parts = [head.format(pts=pts_us, mp4_len=mp4_len), _ITEM_PRIMARY]
     if gainmap_len is not None:
         parts.append(_ITEM_GAINMAP.format(gainmap_len=gainmap_len))
     parts.append(_ITEM_VIDEO.format(video_len=video_len))
@@ -129,7 +175,8 @@ def build_oppo_xmp(pts_us: int, gainmap_len: int | None, video_len: int, mp4_len
 
 
 def build_vivo_xmp(gainmap_len: int | None) -> str:
-    parts = [_VIVO_HEAD, _VIVO_ITEM_PRIMARY]
+    head = _VIVO_HEAD_HDR if gainmap_len is not None else _VIVO_HEAD_NONHDR
+    parts = [head, _VIVO_ITEM_PRIMARY]
     if gainmap_len is not None:
         parts.append(_VIVO_ITEM_GAINMAP.format(gainmap_len=gainmap_len))
     parts.append(_VIVO_TAIL_CLOSE)

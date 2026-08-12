@@ -37,7 +37,8 @@ def init_windows_gui(enable_dpi_awareness=True, hide_console=True,
             pass
 
 
-init_windows_gui()
+# CLI 模式需要控制台输出，不隐藏；GUI 模式（含 --console 调试）由 init_windows_gui 处理
+init_windows_gui(hide_console=('--cli' not in sys.argv))
 
 import argparse
 import datetime

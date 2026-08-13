@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Z-LivePhoto-Converter：动态照片格式互转工具（GUI + CLI）。
 
-支持 Google Motion Photo / OPPO 单文件 / vivo 双文件格式的任意互转。
+支持 Google Motion Photo / OPPO 单文件 / vivo 双文件 / 小米 / Apple Live Photo 格式的任意互转。
 GUI 模式：python main.py [--console]
-CLI 模式：python main.py --cli --to {google|oppo|vivo} [--out DIR] [--no-mp-suffix] 文件...
+CLI 模式：python main.py --cli --to {google|apple|oppo|vivo|xiaomi} [--out DIR] 文件...
 """
 import sys
 import ctypes
@@ -58,7 +58,11 @@ APP_TITLE = 'Z-LivePhoto-Converter 动态照片格式转换器'
 CONFIG_FILE = 'zlivephoto_config.json'
 IMAGE_EXTS = {'.jpg', '.jpeg'}
 
-TARGETS = [(p.name, p.display) for p in formats.PLUGINS]  # 注册表顺序即下拉顺序
+TARGETS = [(p.name, p.display) for p in formats.PLUGINS]  # 注册表顺序即界面顺序
+
+#: 单选框短标签（display 名称较长，用于日志与识别结果；单选框一行排列用短名）
+SHORT_NAMES = {'google': 'Google', 'oppo': 'OPPO', 'vivo': 'vivo',
+               'xiaomi': '小米', 'apple': 'Apple'}
 
 
 # ---------------------------------------------------------------- zAPP 配置
@@ -558,7 +562,7 @@ class App(tk.Tk):
         super().__init__()
         self.title(APP_TITLE)
         self.cfg = _load_config()
-        self.geometry(self.cfg.get('geometry', '900x700'))
+        self._restore_geometry()
         self.minsize(400, 300)
 
         # ── ScrollableContainer 滚动包裹 ──
@@ -570,19 +574,16 @@ class App(tk.Tk):
         settings = ttk.LabelFrame(main, text='转换设置', padding=6)
         settings.pack(fill=tk.X, pady=(0, 6))
 
-        # 第一行：目标格式
+        # 第一行：目标格式（单选框）
         fmt_row = ttk.Frame(settings)
         fmt_row.pack(fill=tk.X)
         ttk.Label(fmt_row, text='目标格式:').pack(side=tk.LEFT)
         self.target_var = tk.StringVar(value=self.cfg.get('target', TARGETS[0][0]))
-        display_map = {name: disp for name, disp in TARGETS}
-        self._disp_to_name = {disp: name for name, disp in TARGETS}
-        self.target_combo = ttk.Combobox(
-            fmt_row, state='readonly', width=24,
-            values=[d for _, d in TARGETS])
-        self.target_combo.set(display_map.get(self.target_var.get(), TARGETS[0][1]))
-        self.target_combo.pack(side=tk.LEFT, padx=6)
-        self.target_combo.bind('<<ComboboxSelected>>', self._on_target_change)
+        for name, disp in TARGETS:
+            ttk.Radiobutton(
+                fmt_row, text=SHORT_NAMES.get(name, disp), value=name,
+                variable=self.target_var
+            ).pack(side=tk.LEFT, padx=6)
 
         # 第二行：输出目录
         out_bar = ttk.Frame(settings)
@@ -593,17 +594,7 @@ class App(tk.Tk):
             side=tk.LEFT, fill=tk.X, expand=True, padx=6)
         ttk.Button(out_bar, text='浏览...', command=self._browse_out).pack(side=tk.RIGHT)
 
-        # 第三行：Google 命名选项
-        opt_row = ttk.Frame(settings)
-        opt_row.pack(fill=tk.X, pady=(4, 0))
-        self.mp_suffix_var = tk.BooleanVar(value=self.cfg.get('google_mp_suffix', True))
-        self._mp_suffix_saved = self.mp_suffix_var.get()
-        self._mp_suffix_forced = False
-        self.mp_suffix_cb = ttk.Checkbutton(
-            opt_row, text='Google 输出遵循 *MP.jpg 命名约定',
-            variable=self.mp_suffix_var)
-        self.mp_suffix_cb.pack(side=tk.LEFT)
-        self._on_target_change()
+        # Google 输出始终遵循 *MP.jpg 命名约定（部分相册依文件名识别，强制打开）
         ttk.Label(settings, text='（留空则输出到源文件所在目录的 converted 子目录）',
                   foreground='gray').pack(anchor=tk.W, pady=(2, 0))
 
@@ -647,9 +638,38 @@ class App(tk.Tk):
 
         self.runner = None
         self.protocol('WM_DELETE_WINDOW', self._on_close)
-        self.logger.info('程序启动完成，支持 Google / OPPO / vivo 动态照片互转')
+        self.logger.info('程序启动完成，支持 Google / OPPO / vivo / 小米 / Apple 动态照片互转')
 
     # ---- 事件 ----
+
+    def _restore_geometry(self):
+        """恢复窗口位置和大小，跳过超出屏幕或最小化状态的无效坐标。"""
+        geo = self.cfg.get('geometry', '900x700')
+        # 解析 geometry：宽x高+x+y
+        try:
+            size_part = geo.split('+', 1)[0]
+            pos_parts = geo.split('+')
+            w = int(size_part.split('x')[0])
+            h = int(size_part.split('x')[1])
+            x = int(pos_parts[1]) if len(pos_parts) > 1 else 100
+            y = int(pos_parts[2]) if len(pos_parts) > 2 else 100
+        except (ValueError, IndexError):
+            w, h, x, y = 900, 700, 100, 100
+
+        # 检测无效坐标（最小化状态保存的值）
+        if x < -1000 or y < -1000:
+            x, y = 100, 100
+
+        # 检测坐标超出屏幕（使用虚拟屏幕尺寸）
+        try:
+            sw = self.winfo_screenwidth()
+            sh = self.winfo_screenheight()
+            if x + w < 0 or y + h < 0 or x > sw or y > sh:
+                x, y = 100, 100
+        except Exception:
+            pass
+
+        self.geometry(f'{w}x{h}+{x}+{y}')
 
     def _browse_out(self):
         d = filedialog.askdirectory(title='选择输出目录')
@@ -657,22 +677,7 @@ class App(tk.Tk):
             self.out_var.set(d)
 
     def _target_name(self):
-        return self._disp_to_name.get(self.target_combo.get(), TARGETS[0][0])
-
-    def _on_target_change(self, event=None):
-        """*MP.jpg 命名选项仅 Google 格式可用：其他格式强制取消勾选并禁用，
-        切回 Google 时恢复用户之前的勾选状态。"""
-        if self._target_name() == 'google':
-            if self._mp_suffix_forced:
-                self.mp_suffix_var.set(self._mp_suffix_saved)
-                self._mp_suffix_forced = False
-            self.mp_suffix_cb.config(state=tk.NORMAL)
-        else:
-            if not self._mp_suffix_forced:
-                self._mp_suffix_saved = self.mp_suffix_var.get()
-                self.mp_suffix_var.set(False)
-                self._mp_suffix_forced = True
-            self.mp_suffix_cb.config(state=tk.DISABLED)
+        return self.target_var.get()
 
     def _resolve_out_dir(self, files):
         out = self.out_var.get().strip()
@@ -687,7 +692,7 @@ class App(tk.Tk):
             return
         out_dir = self._resolve_out_dir(files)
         target = self._target_name()
-        options = {'google_mp_suffix': self.mp_suffix_var.get()}
+        options = {'google_mp_suffix': True}  # 始终遵循 *MP.jpg 命名约定
         self.progress.config(maximum=len(files), value=0)
         self.progress_label.config(text=f'0/{len(files)}')
         self.runner = QueueRunner(
@@ -700,7 +705,8 @@ class App(tk.Tk):
         self.runner.start()
         self.start_btn.config(state=tk.DISABLED)
         self.stop_btn.config(state=tk.NORMAL)
-        self.logger.info(f'队列启动：{len(files)} 个文件 → {self.target_combo.get()}，输出到 {out_dir}', '队列')
+        target_disp = dict(TARGETS).get(target, target)
+        self.logger.info(f'队列启动：{len(files)} 个文件 → {target_disp}，输出到 {out_dir}', '队列')
 
     def _stop(self):
         if self.runner:
@@ -725,13 +731,11 @@ class App(tk.Tk):
             self.logger.info('配置记忆已清除')
 
     def _on_close(self):
-        self.cfg['geometry'] = self.geometry()
+        # 最小化/最大化状态下 geometry() 返回无效坐标，只在正常状态保存
+        if self.state() == 'normal':
+            self.cfg['geometry'] = self.geometry()
         self.cfg['target'] = self._target_name()
         self.cfg['out_dir'] = self.out_var.get()
-        # 非 Google 目标时变量被强制为 False，需保存用户真实意图值
-        self.cfg['google_mp_suffix'] = (self.mp_suffix_var.get()
-                                        if self._target_name() == 'google'
-                                        else self._mp_suffix_saved)
         _save_config(self.cfg)
         if self.runner:
             self.runner.stop()
@@ -746,8 +750,6 @@ def run_cli(argv):
     parser.add_argument('--to', required=True, choices=[n for n, _ in TARGETS],
                         help='目标格式')
     parser.add_argument('--out', default='', help='输出目录')
-    parser.add_argument('--no-mp-suffix', action='store_true',
-                        help='Google 输出不追加 _MP 命名')
     parser.add_argument('files', nargs='+', help='输入文件（JPG）')
     args = parser.parse_args(argv)
 
@@ -757,10 +759,14 @@ def run_cli(argv):
     from core.convert import convert_file, ConvertError
     ok = fail = 0
     for path in args.files:
+        if not os.path.isfile(path):
+            fail += 1
+            log('error', f'{path}: 文件不存在', 'CLI')
+            continue
         out_dir = args.out or str(Path(path).parent / 'converted')
         try:
             outputs = convert_file(path, args.to, out_dir, log,
-                                   {'google_mp_suffix': not args.no_mp_suffix})
+                                   {'google_mp_suffix': True})
             ok += 1
             for o in outputs:
                 print(f'  -> {o}')

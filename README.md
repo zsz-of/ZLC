@@ -3,7 +3,7 @@
 > 动态照片格式互转工具：Google Motion Photo / OPPO 单文件 / vivo 双文件 / 小米 / Apple Live Photo 格式任意互转，字节级无损。
 
 **开发者**: zsz & Kimi-K3
-**版本**: v1.0.0
+**版本**: v1.1.0
 
 ## 系统要求
 

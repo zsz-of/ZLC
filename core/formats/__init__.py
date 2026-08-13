@@ -4,15 +4,19 @@
 新增格式（apple / honor / huawei ...）：新建插件文件后在此 import 并加入 PLUGINS。
 """
 from .base import FormatPlugin
+from .apple import ApplePlugin
 from .google import GooglePlugin
 from .oppo import OppoPlugin
 from .vivo import VivoPlugin
+from .xiaomi import XiaomiPlugin
 
-#: 已注册插件（GUI 下拉顺序即此顺序；检测按置信度取最高）
+#: 已注册插件（GUI 单选框顺序即此顺序；检测按置信度取最高）
 PLUGINS: list[FormatPlugin] = [
     GooglePlugin(),
+    ApplePlugin(),
     OppoPlugin(),
     VivoPlugin(),
+    XiaomiPlugin(),
 ]
 
 #: name -> plugin 索引

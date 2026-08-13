@@ -174,6 +174,29 @@ def build_oppo_xmp(pts_us: int, gainmap_len: int | None, video_len: int, mp4_len
     return ''.join(parts)
 
 
+def build_xiaomi_xmp(pts_us: int, gainmap_len: int | None, video_len: int) -> str:
+    """小米格式 = Google XMP + MicroVideo 旧版标签（双标签并存）。"""
+    head = _GOOGLE_HEAD_HDR if gainmap_len is not None else _GOOGLE_HEAD_NONHDR
+    # 在 MotionPhoto 标签后追加 MicroVideo 标签
+    micro_tags = (
+        f'      GCamera:MicroVideo="1"\n'
+        f'      GCamera:MicroVideoVersion="1"\n'
+        f'      GCamera:MicroVideoOffset="{video_len}"\n'
+        f'      GCamera:MicroVideoPresentationTimestampUs="{pts_us}">\n'
+    )
+    # head 以 '      GCamera:MotionPhotoPresentationTimestampUs="{pts}">\n' 结尾
+    # 替换最后的 '">' 为 MicroVideo 标签 + '>'
+    head = head.rstrip()
+    if head.endswith('">'):
+        head = head[:-2] + '\n' + micro_tags
+    parts = [head.format(pts=pts_us), _ITEM_PRIMARY]
+    if gainmap_len is not None:
+        parts.append(_ITEM_GAINMAP.format(gainmap_len=gainmap_len))
+    parts.append(_ITEM_VIDEO.format(video_len=video_len))
+    parts.append(_TAIL)
+    return ''.join(parts)
+
+
 def build_vivo_xmp(gainmap_len: int | None) -> str:
     head = _VIVO_HEAD_HDR if gainmap_len is not None else _VIVO_HEAD_NONHDR
     parts = [head, _VIVO_ITEM_PRIMARY]
@@ -201,18 +224,21 @@ def parse_motion_xmp(xmp_text: str) -> dict:
     info = {
         'is_motion': False, 'is_legacy_micro': False, 'pts_us': -1,
         'microvideo_offset': None, 'has_oplus': False, 'oppo_video_len': None,
-        'items': [],
+        'has_both': False, 'items': [],
     }
     if not xmp_text:
         return info
-    if _m(r'GCamera:MotionPhoto="(\d+)"', xmp_text, int, 0) == 1:
+    has_motion = _m(r'GCamera:MotionPhoto="(\d+)"', xmp_text, int, 0) == 1
+    has_micro = _m(r'GCamera:MicroVideo="(\d+)"', xmp_text, int, 0) == 1
+    if has_motion:
         info['is_motion'] = True
         info['pts_us'] = _m(r'GCamera:MotionPhotoPresentationTimestampUs="(-?\d+)"', xmp_text, int, -1)
-    if _m(r'GCamera:MicroVideo="(\d+)"', xmp_text, int, 0) == 1:
+    if has_micro:
         info['is_motion'] = True
         info['is_legacy_micro'] = True
         info['microvideo_offset'] = _m(r'GCamera:MicroVideoOffset="(\d+)"', xmp_text, int)
         info['pts_us'] = _m(r'GCamera:MicroVideoPresentationTimestampUs="(-?\d+)"', xmp_text, int, -1)
+    info['has_both'] = has_motion and has_micro
     if 'ns.oplus.com/photos' in xmp_text or 'OpCamera:' in xmp_text:
         info['has_oplus'] = True
         info['oppo_video_len'] = _m(r'OpCamera:VideoLength="(\d+)"', xmp_text, int)

@@ -105,6 +105,96 @@ def insert_box_into_moov(data: bytes, box_type: bytes, payload: bytes) -> bytes:
     return bytes(buf[:insert_at]) + new_box + bytes(buf[insert_at:])
 
 
+def mp4_to_mov(data: bytes) -> bytes:
+    """把 MP4 的 ftyp 改为 QuickTime MOV 格式（major_brand=qt  ）。"""
+    if not has_ftyp(data):
+        raise Mp4Error('缺少 ftyp box')
+    buf = bytearray(data)
+    # ftyp box: size(4) + 'ftyp'(4) + major_brand(4) + minor_version(4) + compatible_brands...
+    buf[8:12] = b'qt  '
+    return bytes(buf)
+
+
+def add_apple_metadata(data: bytes, content_id: str) -> bytes:
+    """在 MP4/MOV 的 moov/udta 中添加 Apple QuickTime metadata。
+
+    写入 com.apple.quicktime.content.identifier 和 com.apple.quicktime.still-image-time。
+    如果 udta 不存在则创建。
+    """
+    cid_bytes = content_id.encode('utf-8')
+
+    # 构建 keys box
+    # key 1: com.apple.quicktime.content.identifier
+    # key 2: com.apple.quicktime.still-image-time
+    key1 = b'com.apple.quicktime.content.identifier'
+    key2 = b'com.apple.quicktime.still-image-time'
+    keys_payload = struct.pack('>I', 2)  # entry_count
+    keys_payload += struct.pack('>I', len(key1) + 8) + b'mdta' + key1
+    keys_payload += struct.pack('>I', len(key2) + 8) + b'mdta' + key2
+    keys_box = struct.pack('>I', len(keys_payload) + 8) + b'keys' + b'\x00' * 4 + keys_payload
+
+    # 构建 ilst box
+    # item 1: index=1, data=UTF-8 content_id
+    data1 = struct.pack('>I', len(cid_bytes) + 16) + b'data' + struct.pack('>II', 1, 0) + cid_bytes
+    item1 = struct.pack('>I', 1) + data1
+    # item 2: index=2, data=int32 0
+    data2 = struct.pack('>I', 20) + b'data' + struct.pack('>II', 22, 0) + struct.pack('>i', 0)
+    item2 = struct.pack('>I', 2) + data2
+    ilst_payload = item1 + item2
+    ilst_box = struct.pack('>I', len(ilst_payload) + 8) + b'ilst' + ilst_payload
+
+    # 构建 hdlr box（mdir handler）
+    hdlr_payload = b'\x00' * 4  # version + flags
+    hdlr_payload += b'\x00' * 4  # pre_defined
+    hdlr_payload += b'mdir'  # handler_type
+    hdlr_payload += b'\x00' * 12  # reserved
+    hdlr_payload += b'\x00'  # name (empty)
+    hdlr_box = struct.pack('>I', len(hdlr_payload) + 8) + b'hdlr' + hdlr_payload
+
+    # 构建 meta box（QuickTime 格式：FullBox header）
+    meta_payload = b'\x00' * 4 + hdlr_box + keys_box + ilst_box
+    meta_box = struct.pack('>I', len(meta_payload) + 8) + b'meta' + meta_payload
+
+    # 检查是否已有 udta
+    boxes = list(iter_boxes(data, 0, len(data)))
+    moov = next((b for b in boxes if b[0] == 'moov'), None)
+    if moov is None:
+        raise Mp4Error('MP4 缺少 moov box')
+    _t, moov_off, moov_size, _h = moov
+
+    # 在 moov 中查找 udta
+    moov_children = list(iter_boxes(data, moov_off + 8, moov_off + moov_size))
+    udta = next((b for b in moov_children if b[0] == 'udta'), None)
+
+    if udta is not None:
+        # udta 已存在：在 udta 内追加 meta，并修复 stco/co64（moov 变大导致 mdat 后移）
+        _t, udta_off, udta_size, _h = udta
+        delta = len(meta_box)
+        buf = bytearray(data)
+        # 修复 moov 内所有 stco/co64 条目
+        containers = ('trak', 'mdia', 'minf', 'stbl')
+        insert_at = udta_off + udta_size
+        for t, coff, csize, cheader in _walk_into(data, moov_off, moov_size, 8, containers):
+            if t in ('stco', 'co64'):
+                entry_size = 8 if t == 'co64' else 4
+                fmt = '>Q' if t == 'co64' else '>I'
+                body = coff + cheader
+                count = struct.unpack('>I', data[body + 4:body + 8])[0]
+                entries_start = body + 8
+                for i in range(count):
+                    epos = entries_start + i * entry_size
+                    val = struct.unpack(fmt, data[epos:epos + entry_size])[0]
+                    if val >= insert_at:
+                        struct.pack_into(fmt, buf, epos, val + delta)
+        # 更新 udta 和 moov 的 size
+        struct.pack_into('>I', buf, udta_off, udta_size + delta)
+        struct.pack_into('>I', buf, moov_off, moov_size + delta)
+        return bytes(buf[:insert_at]) + meta_box + bytes(buf[insert_at:])
+    else:
+        # 创建 udta，追加到 moov 末尾（insert_box_into_moov 内部修复 stco）
+        return insert_box_into_moov(data, b'udta', meta_box)
+
+
 def get_track_info(data: bytes):
     """解析主视频轨信息。
 

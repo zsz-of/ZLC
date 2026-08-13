@@ -50,7 +50,7 @@ def _copy_timestamps(src: str, dst: str):
 def convert_file(path: str, target: str, out_dir: str, log, options: dict) -> list:
     """转换单个文件为指定格式，返回输出文件路径列表。
 
-    target: 'google' | 'oppo' | 'vivo'
+    target: 'google' | 'apple' | 'oppo' | 'vivo' | 'xiaomi'
     options: {'google_mp_suffix': bool}
     """
     if target not in formats.BY_NAME:
@@ -58,7 +58,7 @@ def convert_file(path: str, target: str, out_dir: str, log, options: dict) -> li
 
     plugin, score = formats.detect_best(path)
     if plugin is None or score < 50:
-        raise ConvertError('无法识别的动态照片格式（非 Google/OPPO/vivo 动态照片）')
+        raise ConvertError('无法识别的动态照片格式（非 Google/OPPO/vivo/小米/Apple 动态照片）')
     log('info', f'识别为 {plugin.display}（置信度 {score}）', '转换')
 
     target_plugin = formats.BY_NAME[target]
@@ -77,6 +77,12 @@ def convert_file(path: str, target: str, out_dir: str, log, options: dict) -> li
                 dst_mp4 = os.path.join(out_dir, os.path.basename(mp4))
                 shutil.copy2(mp4, dst_mp4)
                 outputs.append(dst_mp4)
+        elif plugin.name == 'apple':
+            mov = os.path.splitext(path)[0] + '.mov'
+            if os.path.isfile(mov):
+                dst_mov = os.path.join(out_dir, os.path.basename(mov))
+                shutil.copy2(mov, dst_mov)
+                outputs.append(dst_mov)
         log('info', '源与目标格式相同，已原样复制（零损耗）', '转换')
         return outputs
 

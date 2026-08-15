@@ -1,6 +1,8 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -74,6 +76,16 @@ public sealed partial class MainWindow : Window
         ("xiaomi", "小米"),
     ];
 
+    // 最小窗口尺寸（逻辑像素 DIP，按当前 DPI 换算为物理像素后生效）
+    private const double MinWidthDip = 560;
+    private const double MinHeightDip = 500;
+
+    [DllImport("user32.dll")]
+    private static extern uint GetDpiForWindow(IntPtr hwnd);
+
+    private uint _lastDpi;
+    private bool _placed;
+
     public MainWindow()
     {
         InitializeComponent();
@@ -91,8 +103,54 @@ public sealed partial class MainWindow : Window
 
         OutDirBox.Text = _cfg.OutDir;
 
-        RestorePlacement();
+        // 构造阶段窗口尚未显示，GetDpiForWindow 只能拿到默认 96 DPI；
+        // 最小尺寸与位置恢复推迟到首次激活（此时 HWND 已挂到目标显示器，DPI 正确）
+        AppWindow.Changed += AppWindow_Changed;
+        Activated += MainWindow_Activated;
         Closed += MainWindow_Closed;
+    }
+
+    private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
+    {
+        if (_placed) return;
+        _placed = true;
+        ApplyMinSize();
+        RestorePlacement();
+    }
+
+    // ---------------------------------------------------------- 最小窗口尺寸（DPI 感知）
+
+    /// <summary>
+    /// OverlappedPresenter.PreferredMinimum* 接受物理像素且不感知 DPI（WinAppSDK 已知行为），
+    /// 故按窗口当前 DPI 将 DIP 最小尺寸换算为物理像素；跨显示器移动或系统缩放变化时重算。
+    /// </summary>
+    private void ApplyMinSize()
+    {
+        if (AppWindow.Presenter is not OverlappedPresenter presenter) return;
+
+        uint dpi = GetDpiForWindow(WinRT.Interop.WindowNative.GetWindowHandle(this));
+        if (dpi == 0) dpi = 96;
+        _lastDpi = dpi;
+
+        double scale = dpi / 96.0;
+        int minW = (int)Math.Round(MinWidthDip * scale);
+        int minH = (int)Math.Round(MinHeightDip * scale);
+        presenter.PreferredMinimumWidth = minW;
+        presenter.PreferredMinimumHeight = minH;
+
+        // DPI 变化后窗口当前尺寸可能低于新最小值，立即放大
+        var size = AppWindow.Size;
+        if (size.Width < minW || size.Height < minH)
+            AppWindow.Resize(new Windows.Graphics.SizeInt32(
+                Math.Max(size.Width, minW), Math.Max(size.Height, minH)));
+    }
+
+    private void AppWindow_Changed(AppWindow sender, AppWindowChangedEventArgs args)
+    {
+        // 窗口位置/尺寸变化可能伴随 DPI 变化（跨屏移动、系统缩放调整），检测并重算最小尺寸
+        uint dpi = GetDpiForWindow(WinRT.Interop.WindowNative.GetWindowHandle(this));
+        if (dpi != 0 && dpi != _lastDpi)
+            DispatcherQueue.TryEnqueue(ApplyMinSize);
     }
 
     // ---------------------------------------------------------- 窗口位置记忆
@@ -102,15 +160,30 @@ public sealed partial class MainWindow : Window
         var appWindow = AppWindow;
         if (appWindow is null) return;
 
+        double scale = _lastDpi / 96.0;
+        int minW = (int)Math.Round(MinWidthDip * scale);
+        int minH = (int)Math.Round(MinHeightDip * scale);
+        var area = DisplayArea.GetFromWindowId(appWindow.Id, DisplayAreaFallback.Primary).WorkArea;
+
+        int w, h;
         if (_cfg.Width > 400 && _cfg.Height > 300)
-            appWindow.Resize(new Windows.Graphics.SizeInt32(_cfg.Width, _cfg.Height));
+        {
+            // 恢复上次尺寸，但不低于最小尺寸（防止 DPI 变化后恢复出过小窗口）
+            w = Math.Max(_cfg.Width, minW);
+            h = Math.Max(_cfg.Height, minH);
+        }
         else
-            appWindow.Resize(new Windows.Graphics.SizeInt32(900, 700));
+        {
+            // 默认尺寸为 DIP，按 DPI 换算为物理像素
+            w = (int)Math.Round(900 * scale);
+            h = (int)Math.Round(700 * scale);
+        }
+        appWindow.Resize(new Windows.Graphics.SizeInt32(
+            Math.Min(w, area.Width), Math.Min(h, area.Height)));
 
         if (_cfg.X is int x && _cfg.Y is int y)
         {
             // 屏幕外坐标回退（防止最小化保存的 -32000 等问题）
-            var area = Microsoft.UI.Windowing.DisplayArea.Primary.WorkArea;
             if (x >= area.X - 100 && y >= area.Y - 100 && x < area.X + area.Width && y < area.Y + area.Height)
                 appWindow.Move(new Windows.Graphics.PointInt32(x, y));
         }

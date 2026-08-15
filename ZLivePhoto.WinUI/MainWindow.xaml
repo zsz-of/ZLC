@@ -7,6 +7,66 @@
     Title="Z-LivePhoto-Converter">
 
     <Grid Padding="12" RowSpacing="8">
+        <!-- ============================================================
+             动态排版（仿 Windows 11 设置）：
+             Narrow  < 700：格式单选竖排(2列)，输出目录两行，隐藏拖放提示
+             Medium 700-899：格式单选横排(3列)，输出目录一行，隐藏拖放提示
+             Wide   >= 900 ：格式单选横排(5列)，输出目录一行，显示拖放提示
+             阈值为逻辑像素（AdaptiveTrigger 按 DPI 自动换算）
+             ============================================================ -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="900" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="FormatPanel.Orientation" Value="Horizontal" />
+                        <Setter Target="FormatRadios.MaxColumns" Value="5" />
+                        <Setter Target="OutDirLabel.(Grid.Row)" Value="0" />
+                        <Setter Target="OutDirBox.(Grid.Row)" Value="0" />
+                        <Setter Target="OutDirBox.(Grid.Column)" Value="1" />
+                        <Setter Target="OutDirBox.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="BrowseBtn.(Grid.Row)" Value="0" />
+                        <Setter Target="BrowseBtn.(Grid.Column)" Value="2" />
+                        <Setter Target="DragHint.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="MediumState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="FormatPanel.Orientation" Value="Horizontal" />
+                        <Setter Target="FormatRadios.MaxColumns" Value="3" />
+                        <Setter Target="OutDirLabel.(Grid.Row)" Value="0" />
+                        <Setter Target="OutDirBox.(Grid.Row)" Value="0" />
+                        <Setter Target="OutDirBox.(Grid.Column)" Value="1" />
+                        <Setter Target="OutDirBox.(Grid.ColumnSpan)" Value="1" />
+                        <Setter Target="BrowseBtn.(Grid.Row)" Value="0" />
+                        <Setter Target="BrowseBtn.(Grid.Column)" Value="2" />
+                        <Setter Target="DragHint.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="FormatPanel.Orientation" Value="Vertical" />
+                        <Setter Target="FormatRadios.MaxColumns" Value="2" />
+                        <Setter Target="OutDirLabel.(Grid.Row)" Value="0" />
+                        <Setter Target="OutDirBox.(Grid.Row)" Value="1" />
+                        <Setter Target="OutDirBox.(Grid.Column)" Value="0" />
+                        <Setter Target="OutDirBox.(Grid.ColumnSpan)" Value="2" />
+                        <Setter Target="BrowseBtn.(Grid.Row)" Value="1" />
+                        <Setter Target="BrowseBtn.(Grid.Column)" Value="2" />
+                        <Setter Target="DragHint.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -29,7 +89,8 @@
             BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
             BorderThickness="1"
             CornerRadius="8"
-            Padding="4">
+            Padding="4"
+            MinHeight="120">
             <ListView.HeaderTemplate>
                 <DataTemplate>
                     <Grid ColumnSpacing="8">
@@ -83,27 +144,34 @@
             <Button Content="添加文件夹" Click="AddFolder_Click" />
             <Button Content="移除选中" Click="RemoveSelected_Click" />
             <Button Content="清空列表" Click="ClearList_Click" />
-            <TextBlock VerticalAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+            <TextBlock x:Name="DragHint" VerticalAlignment="Center"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                        Text="（可将文件/文件夹拖入列表）" />
         </StackPanel>
 
-        <!-- 输出格式（单选，Google/Apple 靠前） -->
-        <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="12" Margin="0,4,0,0">
+        <!-- 输出格式（单选，Google/Apple 靠前）；窄屏竖排、宽屏横排由 VisualState 切换 -->
+        <StackPanel x:Name="FormatPanel" Grid.Row="3" Orientation="Horizontal" Spacing="12" Margin="0,4,0,0">
             <TextBlock VerticalAlignment="Center" Text="输出格式：" FontWeight="SemiBold" />
             <RadioButtons x:Name="FormatRadios" MaxColumns="5" />
         </StackPanel>
 
-        <!-- 输出目录 -->
-        <Grid Grid.Row="4" ColumnSpacing="8" Margin="0,4,0,0">
+        <!-- 输出目录；窄屏标签独占一行、输入框+按钮第二行，宽屏单行，由 VisualState 切换 -->
+        <Grid Grid.Row="4" ColumnSpacing="8" RowSpacing="4" Margin="0,4,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TextBlock VerticalAlignment="Center" Text="输出目录：" FontWeight="SemiBold" />
-            <TextBox x:Name="OutDirBox" Grid.Column="1" VerticalAlignment="Center"
+            <TextBlock x:Name="OutDirLabel" Grid.Row="0" Grid.Column="0"
+                       VerticalAlignment="Center" Text="输出目录：" FontWeight="SemiBold" />
+            <TextBox x:Name="OutDirBox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"
                      PlaceholderText="留空则输出到源文件所在目录" />
-            <Button Grid.Column="2" Content="浏览…" Click="BrowseOutDir_Click" />
+            <Button x:Name="BrowseBtn" Grid.Row="0" Grid.Column="2"
+                    Content="浏览…" Click="BrowseOutDir_Click" />
         </Grid>
 
         <!-- 转换按钮 + 进度 -->

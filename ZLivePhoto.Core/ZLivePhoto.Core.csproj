@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>ZLivePhoto.Core</AssemblyName>
+    <RootNamespace>ZLivePhoto.Core</RootNamespace>
+    <Description>动态照片格式转换核心库（Google/Apple/OPPO/vivo/小米）</Description>
+    <Authors>zsz;Kimi-K3</Authors>
+    <Version>2.0.0</Version>
+  </PropertyGroup>
+
+</Project>

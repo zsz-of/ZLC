@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="ZLivePhoto.WinUI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ZLivePhoto.WinUI"
+    Title="Z-LivePhoto-Converter">
+
+    <Grid Padding="12" RowSpacing="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- 文件列表（支持拖放），卡片背景保证在 Mica 背景上可辨识 -->
+        <ListView
+            x:Name="FileList"
+            Grid.Row="0"
+            AllowDrop="True"
+            DragEnter="FileList_DragEnter"
+            Drop="FileList_Drop"
+            SelectionMode="Extended"
+            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            CornerRadius="8"
+            Padding="4">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid ColumnSpacing="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="1.2*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="文件" FontWeight="SemiBold" />
+                        <TextBlock Grid.Column="1" Text="格式" FontWeight="SemiBold" />
+                        <TextBlock Grid.Column="2" Text="状态" FontWeight="SemiBold" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:FileItem">
+                    <Grid ColumnSpacing="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="1.2*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind DisplayName}" TextTrimming="CharacterEllipsis"
+                                   Foreground="{x:Bind ForegroundBrush, Mode=OneWay}"
+                                   TextDecorations="{x:Bind TextDecorations, Mode=OneWay}"
+                                   ToolTipService.ToolTip="{x:Bind Path}" />
+                        <TextBlock Grid.Column="1" Text="{x:Bind FormatName}"
+                                   Foreground="{x:Bind ForegroundBrush, Mode=OneWay}"
+                                   TextDecorations="{x:Bind TextDecorations, Mode=OneWay}" />
+                        <TextBlock Grid.Column="2" Text="{x:Bind Status}"
+                                   Foreground="{x:Bind ForegroundBrush, Mode=OneWay}"
+                                   TextDecorations="{x:Bind TextDecorations, Mode=OneWay}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- 扫描进度（默认隐藏） -->
+        <Grid x:Name="ScanProgressPanel" Grid.Row="1" ColumnSpacing="8" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Text="正在扫描动态照片..." />
+            <ProgressBar Grid.Column="1" IsIndeterminate="True" VerticalAlignment="Center" />
+        </Grid>
+
+        <!-- 列表操作按钮 -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8">
+            <Button Content="添加文件" Click="AddFiles_Click" />
+            <Button Content="添加文件夹" Click="AddFolder_Click" />
+            <Button Content="移除选中" Click="RemoveSelected_Click" />
+            <Button Content="清空列表" Click="ClearList_Click" />
+            <TextBlock VerticalAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                       Text="（可将文件/文件夹拖入列表）" />
+        </StackPanel>
+
+        <!-- 输出格式（单选，Google/Apple 靠前） -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="12" Margin="0,4,0,0">
+            <TextBlock VerticalAlignment="Center" Text="输出格式：" FontWeight="SemiBold" />
+            <RadioButtons x:Name="FormatRadios" MaxColumns="5" />
+        </StackPanel>
+
+        <!-- 输出目录 -->
+        <Grid Grid.Row="4" ColumnSpacing="8" Margin="0,4,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Text="输出目录：" FontWeight="SemiBold" />
+            <TextBox x:Name="OutDirBox" Grid.Column="1" VerticalAlignment="Center"
+                     PlaceholderText="留空则输出到源文件所在目录" />
+            <Button Grid.Column="2" Content="浏览…" Click="BrowseOutDir_Click" />
+        </Grid>
+
+        <!-- 转换按钮 + 进度 -->
+        <Grid Grid.Row="5" ColumnSpacing="8" Margin="0,4,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ConvertBtn" Content="开始转换" Click="Convert_Click"
+                    Style="{ThemeResource AccentButtonStyle}" />
+            <ProgressBar x:Name="Progress" Grid.Column="1" VerticalAlignment="Center"
+                         Minimum="0" Maximum="100" Value="0" />
+        </Grid>
+
+        <!-- 底栏 -->
+        <Grid Grid.Row="6" Margin="0,4,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="StatusText" Grid.Column="1" VerticalAlignment="Center"
+                       Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="就绪" />
+        </Grid>
+    </Grid>
+</Window>

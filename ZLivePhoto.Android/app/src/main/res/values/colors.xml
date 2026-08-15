@@ -1,0 +1,8 @@
+<resources>
+    <color name="app_bg">#F5EFE3</color>
+    <color name="text_primary">#1C1C1E</color>
+    <color name="text_secondary">#6B6B6B</color>
+    <color name="accent">#0A84FF</color>
+    <color name="radio_text">#3C3C43</color>
+    <color name="radio_text_unselected">#8E8E93</color>
+</resources>

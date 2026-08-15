@@ -1,0 +1,38 @@
+# .NET 构建产物
+bin/
+obj/
+AppPackages/
+*.user
+*.suo
+.vs/
+
+# Python 缓存（OLD 参考代码残留防护）
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE / 编辑器
+.vscode/
+.idea/
+
+# 开发笔记（本地上下文，非公开内容）
+.agents/
+
+# OS / 临时文件
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.log
+.env
+
+# 签名材料（绝不入库）
+*.keystore
+signing.props
+signing.properties
+
+# Gradle 构建产物
+.gradle/
+build/
+*.apk
+local.properties

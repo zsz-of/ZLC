@@ -84,6 +84,7 @@ val formatOptions = listOf(
     FormatOption("oppo", "OPPO", "单文件，OPPO 私有 XMP 扩展"),
     FormatOption("vivo", "vivo", "JPG+MP4 双文件，vivo 私有 footer"),
     FormatOption("xiaomi", "小米", "单文件，双 XMP 标签 + EXIF 标识"),
+    FormatOption("honor", "荣耀", "单文件，Google Container + EIS matrix footer"),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -33,12 +33,19 @@ internal object EmbeddedReader {
             data.copyOfRange(consumed, data.size)
         }
 
-        if (!Mp4Util.hasFtyp(videoPayload))
-            throw IOException("JPEG 之后未找到有效的 MP4 视频（缺少 ftyp box）")
+        // 荣耀等格式在 JPEG EOI 和 ftyp 之间可能有非标准数据（EXIF preview 等），
+        // 需在剩余数据中搜索 ftyp box 起始位置。
+        var payload = videoPayload
+        if (!Mp4Util.hasFtyp(payload)) {
+            val ftypIdx = findFtyp(payload)
+            if (ftypIdx < 0)
+                throw IOException("JPEG 之后未找到有效的 MP4 视频（缺少 ftyp box）")
+            payload = payload.copyOfRange(ftypIdx, payload.size)
+        }
 
-        val mp4Len = Mp4Util.streamLength(videoPayload)
+        val mp4Len = Mp4Util.streamLength(payload)
         if (mp4Len <= 0) throw IOException("MP4 视频流解析失败")
-        val video = videoPayload.copyOfRange(0, mp4Len)
+        val video = payload.copyOfRange(0, mp4Len)
 
         val asset = LivePhotoAsset(
             primaryJpeg = primary,
@@ -48,7 +55,27 @@ internal object EmbeddedReader {
         )
         asset.presentationTsUs = xmpInfo.ptsUs
         asset.videoInfo = Mp4Util.getTrackInfo(video) ?: mutableMapOf()
-        asset.extras["payload_trailer"] = videoPayload.copyOfRange(mp4Len, videoPayload.size)
+        asset.extras["payload_trailer"] = payload.copyOfRange(mp4Len, payload.size)
         return asset
+    }
+
+    /**
+     * 在数据中搜索 MP4 ftyp box 起始位置。
+     * ftyp box 格式：[size 4B][type='ftyp' 4B]，搜索 "ftyp" 字符串后回退 4 字节。
+     */
+    private fun findFtyp(data: ByteArray): Int {
+        for (i in 4 until data.size - 4) {
+            if (data[i] == 'f'.code.toByte() && data[i + 1] == 't'.code.toByte() &&
+                data[i + 2] == 'y'.code.toByte() && data[i + 3] == 'p'.code.toByte()) {
+                val boxStart = i - 4
+                val size = ((data[boxStart].toInt() and 0xFF) shl 24) or
+                    ((data[boxStart + 1].toInt() and 0xFF) shl 16) or
+                    ((data[boxStart + 2].toInt() and 0xFF) shl 8) or
+                    (data[boxStart + 3].toInt() and 0xFF)
+                if (size >= 8 && boxStart + size <= data.size)
+                    return boxStart
+            }
+        }
+        return -1
     }
 }

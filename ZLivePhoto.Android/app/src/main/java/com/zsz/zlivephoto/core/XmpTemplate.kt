@@ -173,6 +173,48 @@ internal object XmpTemplate {
 
 """
 
+    // 荣耀模板（Adobe XMP Core 5.1.2 + Google Container，无 MotionPhoto 标签）
+    private const val HonorHeadHdr: String = """
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.2">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description
+     xmlns:Container="http://ns.google.com/photos/1.0/container/"
+     xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
+     xmlns:hdrgm="http://ns.adobe.com/hdr-gain-map/1.0/"
+     hdrgm:Version="1.0">
+
+"""
+
+    private const val HonorHeadNonHdr: String = """
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.2">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description
+     xmlns:Container="http://ns.google.com/photos/1.0/container/"
+     xmlns:Item="http://ns.google.com/photos/1.0/container/item/">
+
+"""
+
+    private const val HonorItemPrimary: String = """
+      <Container:Directory>
+        <rdf:Seq>
+          <rdf:li rdf:parseType="Resource">
+            <Container:Item
+             Item:Semantic="Primary"
+             Item:Mime="image/jpeg"/>
+          </rdf:li>
+
+"""
+
+    private const val HonorItemGainmap: String = """
+          <rdf:li rdf:parseType="Resource">
+            <Container:Item
+             Item:Semantic="GainMap"
+             Item:Mime="image/jpeg"
+             Item:Length="{gainmap_len}"/>
+          </rdf:li>
+
+"""
+
     // ---------------------------------------------------------------- 构建
 
     fun buildGoogleXmp(ptsUs: Long, gainmapLen: Int?, videoLen: Int): String {
@@ -233,6 +275,21 @@ internal object XmpTemplate {
             parts.add(VivoItemGainmap.replace("{gainmap_len}", gainmapLen.toString()))
         }
         parts.add(VivoTailClose)
+        parts.add(Tail)
+        return parts.joinToString("")
+    }
+
+    /**
+     * 荣耀 XMP：Adobe XMP Core 5.1.2 + Google Container{Primary, GainMap}。
+     * 注意：Container 内只含图像项，不含视频项（视频靠文件尾 LIVE_ 标记定位）。
+     */
+    fun buildHonorXmp(gainmapLen: Int?): String {
+        val head = if (gainmapLen != null) HonorHeadHdr else HonorHeadNonHdr
+        val parts = mutableListOf(head, HonorItemPrimary)
+        if (gainmapLen != null) {
+            parts.add(HonorItemGainmap.replace("{gainmap_len}", String.format("%08d", gainmapLen)))
+        }
+        parts.add(VivoTailClose) // 荣耀闭合缩进同 vivo
         parts.add(Tail)
         return parts.joinToString("")
     }

@@ -149,6 +149,49 @@ public static partial class XmpTemplate
 
 """;
 
+    // 荣耀模板（Adobe XMP Core 5.1.2 + Google Container，无 MotionPhoto 标签）
+    private const string HonorHeadHdr = """
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.2">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description
+     xmlns:Container="http://ns.google.com/photos/1.0/container/"
+     xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
+     xmlns:hdrgm="http://ns.adobe.com/hdr-gain-map/1.0/"
+     hdrgm:Version="1.0">
+
+""";
+
+    private const string HonorHeadNonHdr = """
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.2">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description
+     xmlns:Container="http://ns.google.com/photos/1.0/container/"
+     xmlns:Item="http://ns.google.com/photos/1.0/container/item/">
+
+""";
+
+    // 荣耀 Item 模板（无 Padding 属性，缩进同 vivo）
+    private const string HonorItemPrimary = """
+      <Container:Directory>
+        <rdf:Seq>
+          <rdf:li rdf:parseType="Resource">
+            <Container:Item
+             Item:Semantic="Primary"
+             Item:Mime="image/jpeg"/>
+          </rdf:li>
+
+""";
+
+    private const string HonorItemGainmap = """
+          <rdf:li rdf:parseType="Resource">
+            <Container:Item
+             Item:Semantic="GainMap"
+             Item:Mime="image/jpeg"
+             Item:Length="{gainmap_len}"/>
+          </rdf:li>
+
+""";
+
     // vivo 模板使用稍有不同的缩进（来自 vivo 样本）
     private const string VivoItemPrimary = """
       <Container:Directory>
@@ -240,6 +283,21 @@ public static partial class XmpTemplate
         return string.Concat(parts);
     }
 
+    /// <summary>
+    /// 荣耀 XMP：Adobe XMP Core 5.1.2 + Google Container{Primary, GainMap}。
+    /// 注意：Container 内只含图像项，不含视频项（视频靠文件尾 LIVE_ 标记定位）。
+    /// </summary>
+    public static string BuildHonorXmp(int? gainmapLen)
+    {
+        var head = gainmapLen is not null ? HonorHeadHdr : HonorHeadNonHdr;
+        var parts = new List<string> { head, HonorItemPrimary };
+        if (gainmapLen is not null)
+            parts.Add(HonorItemGainmap.Replace("{gainmap_len}", gainmapLen.Value.ToString("D8")));
+        parts.Add(VivoTailClose); // 荣耀闭合缩进同 vivo
+        parts.Add(Tail);
+        return string.Concat(parts);
+    }
+
     // ---------------------------------------------------------------- 解析
 
     public sealed class MotionXmpInfo
@@ -280,7 +338,8 @@ public static partial class XmpTemplate
     [GeneratedRegex(@"OpCamera:VideoLength=""(\d+)""")]
     private static partial Regex OppoVideoLenRegex();
 
-    [GeneratedRegex(@"<Container:Item\b([^>/]*)/?>", RegexOptions.Singleline)]
+    // [^>]*? 懒惰匹配到 /> 之前；不排除 / 因为 "image/jpeg" 含 /
+    [GeneratedRegex(@"<Container:Item\b([^>]*?)/\s*>", RegexOptions.Singleline)]
     private static partial Regex ContainerItemRegex();
 
     [GeneratedRegex(@"Item:Semantic=""([^""]+)""")]

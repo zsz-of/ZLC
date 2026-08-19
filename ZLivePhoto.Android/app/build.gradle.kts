@@ -14,8 +14,8 @@ android {
         applicationId = "com.zsz.zlivephoto"
         minSdk = 29
         targetSdk = 36
-        versionCode = 1
-        versionName = "2.0.0"
+        versionCode = 2
+        versionName = "2.2.0"
         ndk {
             abiFilters += listOf("arm64-v8a", "x86_64")
         }

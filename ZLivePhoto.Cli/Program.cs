@@ -17,7 +17,7 @@ static int Usage()
           zlpc detect <文件>                            识别动态照片格式
           zlpc convert <文件> --to <格式> [--out <目录>]  转换动态照片
           zlpc formats                                  列出支持的格式
-        格式: google | oppo | vivo | xiaomi | apple
+        格式: google | apple | oppo | vivo | xiaomi | honor
         """);
     return 2;
 }

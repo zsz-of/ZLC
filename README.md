@@ -1,9 +1,9 @@
 # Z-LivePhoto-Converter
 
-> 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / Apple Live Photo 字节级无损转换
+> 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / Apple Live Photo 字节级无损转换
 
 **开发者**: zsz & Kimi-K3  
-**版本**: v2.1.0
+**版本**: v2.2.0
 
 ---
 
@@ -38,12 +38,13 @@ Windows 端无需额外安装运行时（自包含部署）。Android 端无需�
 
 ## 项目简介
 
-本程序实现了五种主流动态照片格式之间的字节级无损互转：
+本程序实现了六种主流动态照片格式之间的字节级无损互转：
 
 - **Google Motion Photo**：JPEG(+GainMap) + MP4 裸拼，XMP 标记 Container Directory
 - **OPPO**：Google 格式 + XMP 私有标签（OpCamera/OLivePhoto/VCamera）+ moov 内 lpex box
 - **vivo**：双文件（JPG + MP4），footer JSON 关联 ID
 - **小米**：双 XMP 标签（MotionPhoto + MicroVideo）+ EXIF 0x8897
+- **荣耀**：JPEG(+GainMap) + MP4(large size) + uuid box(extend_type_matrix + EIS JSON) + 60B tail(LIVE_ID)
 - **Apple Live Photo**：双文件（JPG + MOV），ContentIdentifier UUID 配对
 
 核心解析纯字节级操作（JPEG/MP4 box 遍历），不依赖 FFmpeg 或外部工具。转换后保留源文件的 EXIF 元数据（GPS、拍摄时间等）和修改时间。
@@ -68,7 +69,7 @@ Windows 端无需额外安装运行时（自包含部署）。Android 端无需�
 
 | 功能 | 说明 |
 |------|------|
-| 五格式互转 | Google / OPPO / vivo / 小米 / Apple 之间任意互转 |
+| 六格式互转 | Google / OPPO / vivo / 小米 / 荣耀 / Apple 之间任意互转 |
 | 字节级无损 | 纯字节解析重组，不重新编码 |
 | EXIF 保留 | 保留 GPS、拍摄时间等所有 EXIF 元数据 |
 | 时间戳保留 | 输出文件保留源文件的修改时间 |
@@ -82,7 +83,7 @@ Windows 端无需额外安装运行时（自包含部署）。Android 端无需�
 ```
 Source/
 ├── ZLivePhoto.Core/              # 核心转换库（C#）
-│   ├── Formats/                  #   格式插件（Google/OPPO/vivo/小米/Apple）
+│   ├── Formats/                  #   格式插件（Google/Apple/OPPO/vivo/小米/荣耀）
 │   ├── Models/                   #   数据模型
 │   ├── Converter.cs              #   转换管线
 │   ├── JpegUtil.cs               #   JPEG 段解析

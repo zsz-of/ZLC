@@ -74,6 +74,7 @@ public sealed partial class MainWindow : Window
         ("oppo", "OPPO"),
         ("vivo", "vivo"),
         ("xiaomi", "小米"),
+        ("honor", "荣耀"),
     ];
 
     // 最小窗口尺寸（逻辑像素 DIP，按当前 DPI 换算为物理像素后生效）

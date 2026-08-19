@@ -12,7 +12,8 @@ public static class FormatRegistry
         new ApplePlugin(),
         new OppoPlugin(),
         new VivoPlugin(),
-        new XiaomiPlugin()
+        new XiaomiPlugin(),
+        new HonorPlugin()
     ];
 
     /// <summary>name -> plugin 索引</summary>

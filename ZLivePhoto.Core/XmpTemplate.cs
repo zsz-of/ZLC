@@ -219,6 +219,78 @@ public static partial class XmpTemplate
 
 """;
 
+    // vivo 单文件实况模板（逐字来自 vivo 相册「关闭实况」合并产物的真实样本）
+    // 结构 = Google 容器（Primary + GainMap + MotionPhoto 视频项）+ VCamera 私有字段；
+    // vivo 相册识别单文件实况的关键是 GCamera:MotionPhoto="1"（="0" 即关闭实况状态）
+    private const string VivoSingleHeadHdr = """
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description rdf:about=""
+        xmlns:hdrgm="http://ns.adobe.com/hdr-gain-map/1.0/"
+        xmlns:Container="http://ns.google.com/photos/1.0/container/"
+        xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
+        xmlns:GCamera="http://ns.google.com/photos/1.0/camera/"
+        xmlns:VCamera="http://ns.vivo.com/photos/1.0/camera/"
+      hdrgm:Version="1.0"
+      GCamera:MotionPhoto="1"
+      GCamera:MotionPhotoVersion="1"
+      GCamera:MotionPhotoPresentationTimestampUs="{pts}"
+      VCamera:VMotionPhotoVersion="1"
+      VCamera:VMediaKitVersion="1.0.0.9">
+""";
+
+    private const string VivoSingleHeadNonHdr = """
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description rdf:about=""
+        xmlns:Container="http://ns.google.com/photos/1.0/container/"
+        xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
+        xmlns:GCamera="http://ns.google.com/photos/1.0/camera/"
+        xmlns:VCamera="http://ns.vivo.com/photos/1.0/camera/"
+      GCamera:MotionPhoto="1"
+      GCamera:MotionPhotoVersion="1"
+      GCamera:MotionPhotoPresentationTimestampUs="{pts}"
+      VCamera:VMotionPhotoVersion="1"
+      VCamera:VMediaKitVersion="1.0.0.9">
+""";
+
+    private const string VivoSingleItemPrimary = """
+      <Container:Directory>
+        <rdf:Seq>
+          <rdf:li rdf:parseType="Resource">
+            <Container:Item
+              Item:Semantic="Primary"
+              Item:Mime="image/jpeg"/>
+          </rdf:li>
+""";
+
+    private const string VivoSingleItemGainmap = """
+          <rdf:li rdf:parseType="Resource">
+            <Container:Item
+              Item:Semantic="GainMap"
+              Item:Mime="image/jpeg"
+              Item:Length="{gainmap_len}"/>
+          </rdf:li>
+""";
+
+    private const string VivoSingleItemVideo = """
+          <rdf:li rdf:parseType="Resource">
+            <Container:Item
+              Item:Mime="video/mp4"
+              Item:Semantic="MotionPhoto"
+              Item:Length="{video_len}"
+              Item:Padding="0"/>
+          </rdf:li>
+        </rdf:Seq>
+      </Container:Directory>
+""";
+
+    private const string VivoSingleTail = """
+        </rdf:Description>
+      </rdf:RDF>
+    </x:xmpmeta>
+    """;
+
     // ---------------------------------------------------------------- 构建
 
     public static string BuildGoogleXmp(long ptsUs, int? gainmapLen, int videoLen)
@@ -280,6 +352,18 @@ public static partial class XmpTemplate
             parts.Add(VivoItemGainmap.Replace("{gainmap_len}", gainmapLen.Value.ToString()));
         parts.Add(VivoTailClose);
         parts.Add(Tail);
+        return string.Concat(parts);
+    }
+
+    /// <summary>vivo 单文件实况：Google 容器 + VCamera 私有字段，MotionPhoto 恒为 1。</summary>
+    public static string BuildVivoSingleXmp(long ptsUs, int? gainmapLen, int videoLen)
+    {
+        var head = gainmapLen is not null ? VivoSingleHeadHdr : VivoSingleHeadNonHdr;
+        var parts = new List<string> { head.Replace("{pts}", ptsUs.ToString()), VivoSingleItemPrimary };
+        if (gainmapLen is not null)
+            parts.Add(VivoSingleItemGainmap.Replace("{gainmap_len}", gainmapLen.Value.ToString()));
+        parts.Add(VivoSingleItemVideo.Replace("{video_len}", videoLen.ToString()));
+        parts.Add(VivoSingleTail);
         return string.Concat(parts);
     }
 

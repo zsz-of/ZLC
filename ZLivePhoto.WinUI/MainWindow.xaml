@@ -152,7 +152,13 @@
         <!-- 输出格式（单选，Google/Apple 靠前）；窄屏竖排、宽屏横排由 VisualState 切换 -->
         <StackPanel x:Name="FormatPanel" Grid.Row="3" Orientation="Horizontal" Spacing="12" Margin="0,4,0,0">
             <TextBlock VerticalAlignment="Center" Text="输出格式：" FontWeight="SemiBold" />
-            <RadioButtons x:Name="FormatRadios" MaxColumns="5" />
+            <RadioButtons x:Name="FormatRadios" MaxColumns="5" SelectionChanged="FormatRadios_SelectionChanged" />
+            <!-- vivo 单文件警告条（选中 vivo 单文件时显示，黑字红底） -->
+            <Border x:Name="VivoSingleWarning" Visibility="Collapsed" VerticalAlignment="Center"
+                    Background="#8B0000" CornerRadius="4" Padding="10,5">
+                <TextBlock Text="⚠ 过老的机型可能无法识别此格式"
+                           FontWeight="Bold" Foreground="Black" FontSize="12" />
+            </Border>
         </StackPanel>
 
         <!-- 输出目录；窄屏标签独占一行、输入框+按钮第二行，宽屏单行，由 VisualState 切换 -->

@@ -10,7 +10,8 @@ public sealed class OppoPlugin : FormatPlugin
     public override string Name => "oppo";
     public override string Display => "OPPO 动态照片（单文件）";
 
-    private static byte[] BuildLpexPayload(LivePhotoAsset asset)
+    /// <summary>合成 lpex (LivePhotoExtension) box 载荷（vivo/OPPO 共用；字段逐字对齐可被相册识别的输出）</summary>
+    public static byte[] BuildLpexPayload(LivePhotoAsset asset)
     {
         var vi = asset.VideoInfo;
         int vw = vi.GetValueOrDefault("width", 0) is int w ? w : 0;

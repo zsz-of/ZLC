@@ -37,7 +37,9 @@ public static class Converter
         options ??= new Dictionary<string, object>();
 
         // 同格式直通：原样复制，零损耗
-        if (plugin.Name == target)
+        // 例外 vivo_single：源可能是 vivo 相册「关闭实况」的合并产物（MotionPhoto="0"），
+        // 需走完整写出流程修复回 "1" 恢复动态效果
+        if (plugin.Name == target && plugin.Name != "vivo_single")
         {
             var directOuts = new List<string>();
             string dst = Path.Combine(outDir, Path.GetFileName(path));

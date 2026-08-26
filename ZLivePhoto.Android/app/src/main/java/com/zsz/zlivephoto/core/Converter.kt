@@ -36,7 +36,9 @@ internal object Converter {
         File(outDir).mkdirs()
 
         // 同格式直通：原样复制，零损耗
-        if (plugin.name == target) {
+        // 例外 vivo_single：源可能是 vivo 相册「关闭实况」的合并产物（MotionPhoto="0"），
+        // 需走完整写出流程修复回 "1" 恢复动态效果
+        if (plugin.name == target && plugin.name != "vivo_single") {
             val directOuts = mutableListOf<String>()
             val dst = File(outDir, File(path).name).path
             File(path).copyTo(File(dst), overwrite = true)

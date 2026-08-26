@@ -72,7 +72,8 @@ public sealed partial class MainWindow : Window
         ("google", "Google"),
         ("apple", "Apple"),
         ("oppo", "OPPO"),
-        ("vivo", "vivo"),
+        ("vivo_single", "vivo 单文件"),
+        ("vivo", "vivo 双文件"),
         ("xiaomi", "小米"),
         ("honor", "荣耀"),
     ];
@@ -207,6 +208,13 @@ public sealed partial class MainWindow : Window
     }
 
     // ---------------------------------------------------------- 文件管理
+
+    /// <summary>格式单选变化：vivo 单文件时显示兼容性警告</summary>
+    private void FormatRadios_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        bool isVivoSingle = FormatRadios.SelectedItem is RadioButton rb && (string)rb.Tag == "vivo_single";
+        VivoSingleWarning.Visibility = isVivoSingle ? Visibility.Visible : Visibility.Collapsed;
+    }
 
     private void AddPaths(IEnumerable<string> paths)
     {

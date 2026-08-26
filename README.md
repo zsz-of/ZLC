@@ -3,7 +3,7 @@
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / Apple Live Photo 字节级无损转换
 
 **开发者**: zsz & Kimi-K3  
-**版本**: v2.2.0
+**版本**: v2.3.0
 
 ---
 

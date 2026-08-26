@@ -10,6 +10,7 @@ internal object FormatRegistry {
         ApplePlugin(),
         OppoPlugin(),
         VivoPlugin(),
+        VivoSinglePlugin(),
         XiaomiPlugin(),
         HonorPlugin()
     )

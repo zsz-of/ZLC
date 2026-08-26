@@ -16,31 +16,34 @@ internal class OppoPlugin : FormatPlugin() {
     override val name: String = "oppo"
     override val display: String = "OPPO 动态照片（单文件）"
 
-    private fun buildLpexPayload(asset: LivePhotoAsset): ByteArray {
-        val vi = asset.videoInfo
-        val vw = (vi["width"] as? Int) ?: 0
-        val vh = (vi["height"] as? Int) ?: 0
-        val (iw, ih) = JpegUtil.getDimensions(asset.primaryJpeg)
+    internal companion object {
+        /** 合成 lpex (LivePhotoExtension) box 载荷（vivo/OPPO 共用；字段逐字对齐可被相册识别的输出） */
+        fun buildLpexPayload(asset: LivePhotoAsset): ByteArray {
+            val vi = asset.videoInfo
+            val vw = (vi["width"] as? Int) ?: 0
+            val vh = (vi["height"] as? Int) ?: 0
+            val (iw, ih) = JpegUtil.getDimensions(asset.primaryJpeg)
 
-        val payload = linkedMapOf<String, Any?>(
-            "coverFramePts" to asset.effectivePtsUs(),
-            "cropRect" to intArrayOf(0, 0, vw, vh),
-            "desc" to "OppoMotionVideoExt",
-            "matrixCount" to 0,
-            "originPhotoSize" to intArrayOf(iw, ih),
-            "photoCropFactor" to 1.0,
-            "photoCropMatrix" to doubleArrayOf(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0),
-            "photoCropRect" to intArrayOf(0, 0, iw, ih),
-            "photoEisCropFactor" to doubleArrayOf(1.0, 1.0),
-            "photoEisMatrix" to doubleArrayOf(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0),
-            "subVideoScaleFactor" to 0.5,
-            "version" to 1,
-            "videoOrientation" to ((vi["rotation"] as? Int) ?: 0),
-            "videoSize" to intArrayOf(vw, vh)
-        )
-        val jsonBytes = FooterUtil.buildFooterJson(payload)
-        val prefix = "LivePhotoExtension".toByteArray(Charsets.US_ASCII)
-        return prefix + jsonBytes
+            val payload = linkedMapOf<String, Any?>(
+                "coverFramePts" to asset.effectivePtsUs(),
+                "cropRect" to intArrayOf(0, 0, vw, vh),
+                "desc" to "OppoMotionVideoExt",
+                "matrixCount" to 0,
+                "originPhotoSize" to intArrayOf(iw, ih),
+                "photoCropFactor" to 1.0,
+                "photoCropMatrix" to doubleArrayOf(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0),
+                "photoCropRect" to intArrayOf(0, 0, iw, ih),
+                "photoEisCropFactor" to doubleArrayOf(1.0, 1.0),
+                "photoEisMatrix" to doubleArrayOf(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0),
+                "subVideoScaleFactor" to 0.5,
+                "version" to 1,
+                "videoOrientation" to ((vi["rotation"] as? Int) ?: 0),
+                "videoSize" to intArrayOf(vw, vh)
+            )
+            val jsonBytes = FooterUtil.buildFooterJson(payload)
+            val prefix = "LivePhotoExtension".toByteArray(Charsets.US_ASCII)
+            return prefix + jsonBytes
+        }
     }
 
     override fun detect(path: String): Int {

@@ -17,7 +17,7 @@
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <Platforms>x64</Platforms>
-    <Version>2.2.0</Version>
+    <Version>2.3.0</Version>
     <Authors>zsz;Kimi-K3</Authors>
     <Description>动态照片格式转换工具（Google/Apple/OPPO/vivo/小米/荣耀）</Description>
   </PropertyGroup>

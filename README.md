@@ -1,7 +1,6 @@
 # Z-LivePhoto-Converter
 
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / Apple Live Photo 字节级无损转换
-
 **开发者**: zsz & Kimi-K3  
 **版本**: v2.3.0
 
@@ -45,9 +44,11 @@ Windows 端无需额外安装运行时（自包含部署）。Android 端无需�
 - **vivo**：双文件（JPG + MP4），footer JSON 关联 ID
 - **小米**：双 XMP 标签（MotionPhoto + MicroVideo）+ EXIF 0x8897
 - **荣耀**：JPEG(+GainMap) + MP4(large size) + uuid box(extend_type_matrix + EIS JSON) + 60B tail(LIVE_ID)
-- **Apple Live Photo**：双文件（JPG + MOV），ContentIdentifier UUID 配对
+- **Apple Live Photo**：双文件（JPG + MOV），ContentIdentifier UUID 配对（当前版本支持识别与读取，输出至 Apple 格式暂不可用，详见「已知限制」）
 
 核心解析纯字节级操作（JPEG/MP4 box 遍历），不依赖 FFmpeg 或外部工具。转换后保留源文件的 EXIF 元数据（GPS、拍摄时间等）和修改时间。
+
+> **已知限制**：Apple Live Photo 输出存在技术问题（转换后的文件在部分机型上无法正常播放），v2.3.0 起输出格式中的 Apple 选项暂置灰不可选；识别为 Apple 的照片标记为「暂不支持转换」，处理时跳过。后续版本将修复此问题。
 
 ### 技术栈
 
@@ -69,13 +70,14 @@ Windows 端无需额外安装运行时（自包含部署）。Android 端无需�
 
 | 功能 | 说明 |
 |------|------|
-| 六格式互转 | Google / OPPO / vivo / 小米 / 荣耀 / Apple 之间任意互转 |
+| 六格式互转 | Google / OPPO / vivo / 小米 / 荣耀 / Apple 之间任意互转（Apple 输出暂不可用） |
 | 字节级无损 | 纯字节解析重组，不重新编码 |
 | EXIF 保留 | 保留 GPS、拍摄时间等所有 EXIF 元数据 |
 | 时间戳保留 | 输出文件保留源文件的修改时间 |
 | 同格式直通 | 源与目标格式相同时原样复制（零损耗） |
 | 自动配对 | vivo/Apple 双文件自动查找同目录视频 |
-| 批量转换 | 支持批量添加、批量转换 |
+| 批量导入 | Android 支持文件夹批量扫描导入（含子目录），流式处理不卡顿 |
+| 列表持久化 | Android 列表自动落盘本地 JSON，异常退出可检测并恢复 |
 | 系统分享 | Android 支持从系统分享接收照片转换 |
 
 ## 目录结构

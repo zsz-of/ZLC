@@ -4,6 +4,16 @@
 **开发者**: zsz & Kimi-K3  
 **版本**: v2.3.0
 
+## 许可证
+
+本程序基于 **GNU General Public License v3.0 (GPLv3)** 开源协议发布。
+
+Copyright (C) 2026 zsz & Kimi-K3
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+本程序分发时附带希望其有用的保证，但不提供任何担保；甚至不提供适销性或特定用途适用性的默示担保。详见 [LICENSE](LICENSE)。
+
 ---
 
 ## 系统要求

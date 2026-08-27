@@ -8,11 +8,13 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.os.Looper
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.provider.Settings
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.PredictiveBackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.IntentSenderRequest
@@ -23,15 +25,24 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -42,6 +53,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.TransformOrigin
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import com.zsz.zlivephoto.core.Converter
@@ -50,6 +64,7 @@ import com.zsz.zlivephoto.core.formats.FormatRegistry
 import com.zsz.zlivephoto.ui.FancyEasing
 import com.zsz.zlivephoto.ui.FileItem
 import com.zsz.zlivephoto.ui.MainScreen
+import com.zsz.zlivephoto.ui.Md3Checkbox
 import com.zsz.zlivephoto.ui.ZLivePhotoTheme
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
 import com.zsz.zlivephoto.ui.picker.AlbumInfo
@@ -58,8 +73,6 @@ import com.zsz.zlivephoto.ui.picker.MediaItem
 import com.zsz.zlivephoto.ui.picker.MediaRepo
 import com.zsz.zlivephoto.ui.picker.PhotoPickerScreen
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
@@ -69,10 +82,13 @@ import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.sync.withPermit
 import kotlinx.coroutines.withContext
+import org.json.JSONArray
+import org.json.JSONObject
 import java.io.File
 import java.io.IOException
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicInteger
+import kotlin.coroutines.cancellation.CancellationException
 import kotlin.coroutines.resume
 
 /** 文件名冲突处理动作 */
@@ -94,18 +110,28 @@ class MainActivity : ComponentActivity() {
     private var lastExportError: String? = null
     private var showPermissionDialog by mutableStateOf(false)
     private var showSettingsDialog by mutableStateOf(false)
+    // 清空/处理收尾过程中（清空按钮须禁用，防止动画期间重复触发或状态错乱）
+    private var clearBusy by mutableStateOf(false)
+    // 防抖落盘任务：识别完成等高频稳定态回调合并为一次 JSON 写入
+    private var stablePersistJob: kotlinx.coroutines.Job? = null
+    // Compose 内创建的触觉反馈控制器引用（清空/完成批量清理的快速两下振动用）
+    private var hapticController: com.zsz.zlivephoto.ui.HapticController? = null
+    // 识别检测用有界调度器：限制并发文件检测数，避免批量导入 >500 张时
+    // 并发协程过多导致资源耗尽崩溃
+    @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+    private val detectionDispatcher = Dispatchers.IO.limitedParallelism(4)
+    // 自上次落盘以来列表变更累计次数（每 50 条写一次本地 JSON）
+    private var dirtyCount = 0
 
-    // 进度第二行明细：列表转换「已处理 X/Y」；批量「已处理 X/Y」+ 第二行动态照片张数
+    // 进度第二行明细：列表转换「已处理 X/Y」；批量导入「已导入 X/Y」
     private var progressDetail by mutableStateOf("")
-    // 批量模式第二行明细（动态照片张数）；列表/导入模式为空
-    private var progressDetail2 by mutableStateOf("")
     // 内置选择器导入进度（已添加/总需添加个数）
     private var isImporting by mutableStateOf(false)
     private var importProgress by mutableFloatStateOf(0f)
-    // 批量处理模式（列表区显示叠加层）
-    private var isBatch by mutableStateOf(false)
     // 终止转换请求：处理完当前文件后立即停止
     @Volatile private var stopRequested = false
+    // 终止导入请求：导入循环下一项前检查，立即停止不再继续导入
+    @Volatile private var stopImportRequested = false
     // 内置选择器打开流程进行中（读相册列表）：完成前禁用「添加文件」按钮
     private var isPickerOpening by mutableStateOf(false)
     // 显式跟踪系统深浅色（uiMode configChanges 下 LocalConfiguration 传播不可靠，
@@ -169,8 +195,47 @@ class MainActivity : ComponentActivity() {
         else -> arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
+    // 媒体访问能力（不含 ACCESS_MEDIA_LOCATION）：任一媒体读取权限授予即可进入选择器
     private fun hasReadPermission(): Boolean =
-        requiredReadPermissions().any { checkSelfPermission(it) == PackageManager.PERMISSION_GRANTED }
+        requiredReadPermissions()
+            .filter { it != android.Manifest.permission.ACCESS_MEDIA_LOCATION }
+            .any { checkSelfPermission(it) == PackageManager.PERMISSION_GRANTED }
+
+    // Android 10+：缺 ACCESS_MEDIA_LOCATION 时系统（MediaStore/FUSE）会脱敏 GPS EXIF，
+    // 导致转换后照片丢失位置信息。必须单独确保该权限授予。
+    private fun hasMediaLocationPermission(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return true
+        return checkSelfPermission(android.Manifest.permission.ACCESS_MEDIA_LOCATION) ==
+            PackageManager.PERMISSION_GRANTED
+    }
+
+    // 位置权限授予后要执行的后续动作（打开内置选择器 / 启动批量选择器）
+    private var pendingActionAfterLocation: (() -> Unit)? = null
+
+    private fun ensureLocationThen(action: () -> Unit) {
+        if (hasMediaLocationPermission()) {
+            action()
+        } else {
+            pendingActionAfterLocation = action
+            requestLocationPermissionLauncher.launch(
+                android.Manifest.permission.ACCESS_MEDIA_LOCATION
+            )
+        }
+    }
+
+    // 单独请求 ACCESS_MEDIA_LOCATION（媒体权限已授予但缺位置权限时触发）
+    private val requestLocationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { granted ->
+        val action = pendingActionAfterLocation
+        pendingActionAfterLocation = null
+        statusText = if (granted) "已获得位置权限，转换后将保留 GPS 元数据"
+                     else "未授予位置权限：转换后的照片将丢失 GPS 位置信息"
+        action?.invoke()
+    }
+
+    // 媒体权限授予后要执行的动作（默认进入内置选择器；批量导入则继续打开文件夹选择器）
+    private var pendingPermissionAction: (() -> Unit)? = null
 
     private fun hasRequestedReadPermission(): Boolean =
         getSharedPreferences("zlivephoto", MODE_PRIVATE).getBoolean("req_read_media", false)
@@ -195,8 +260,10 @@ class MainActivity : ComponentActivity() {
                     .all { it.value }
             statusText = if (videoGranted) "已获得读取照片和视频权限"
                          else "已授权，但视频权限缺失：无法查找双文件动态照片附带的伴生视频"
-            // 修复：首次授权后进入内置选择器（而非系统选择器）
-            openBuiltInPicker()
+            // 执行授权前挂起的动作（批量导入→文件夹选择器；默认→内置选择器）
+            val action = pendingPermissionAction
+            pendingPermissionAction = null
+            (action ?: { openBuiltInPicker() })()
         } else {
             statusText = "未授予权限，可再次点击「添加文件」"
         }
@@ -226,11 +293,12 @@ class MainActivity : ComponentActivity() {
             withContext(Dispatchers.Main) {
                 statusText = if (failed > 0) "导入完成：成功 $imported 个，失败 $failed 个"
                              else "导入完成：共导入 $imported 个文件"
+                onListStable()
             }
         }
     }
 
-    // 批量处理文件夹选择器
+    // 批量导入文件夹选择器
     private val batchFolderLauncher = registerForActivityResult(
         ActivityResultContracts.OpenDocumentTree()
     ) { uri ->
@@ -243,7 +311,7 @@ class MainActivity : ComponentActivity() {
             statusText = "无法访问所选文件夹（仅支持本地存储目录）"
             return@registerForActivityResult
         }
-        startBatchProcess(rootPath)
+        importBatchFolder(rootPath)
     }
 
     // 项10：系统删除工具（回收站）结果回调——整批仅一次请求
@@ -359,6 +427,21 @@ class MainActivity : ComponentActivity() {
         // 启动时自动清理缓存（上次残留的暂存文件），避免占用空间无限膨胀
         cleanupAllCaches()
 
+        // 恢复上次会话的列表（本地 JSON）；异常退出则清空并提示
+        when (val s = readListState()) {
+            is ListState.Loaded -> {
+                files.addAll(s.files)
+                statusText = "已恢复上次会话（${s.files.size} 个文件）"
+                // 上次退出时仍在检测中的项，重新触发识别
+                s.files.forEach { f ->
+                    if (f.info == "检测中…") launchDetection(f.path, f.sourcePath ?: f.path)
+                }
+            }
+            is ListState.AbnormalExit ->
+                statusText = "检测到上次异常退出，已清空未完成的列表"
+            ListState.Corrupt, ListState.Empty -> {}
+        }
+
         mediaRepo = MediaRepo(contentResolver)
         scanner = AlbumScanner(mediaRepo)
 
@@ -368,6 +451,8 @@ class MainActivity : ComponentActivity() {
         if (selectedFormat == "vivo" && prefs.getString("vivo_mode", "single") == "single") {
             selectedFormat = "vivo_single"
         }
+        // Apple 输出存在技术问题暂不可用：旧配置若为 apple，回退到 google
+        if (selectedFormat == "apple") selectedFormat = "google"
         deleteOriginal = prefs.getBoolean("delete_original", false)
 
         // 初始深浅色（后续由 onConfigurationChanged 实时跟踪）
@@ -382,13 +467,43 @@ class MainActivity : ComponentActivity() {
             ZLivePhotoTheme(darkTheme = isDarkTheme) {
                 // 全局触觉反馈：弹窗按钮等无独立交互源的控件统一使用
                 val haptic = rememberHapticFeedback()
+                hapticController = haptic
+                // 主列表滚动状态（LazyColumn 复位/保持由 MainScreen 使用）
+                val listState = rememberLazyListState()
                 // 处理过程中吞掉系统返回键（预测式返回下同样生效）
                 BackHandler(enabled = isConverting) { /* 处理中不响应返回 */ }
+
+                // 预览式返回：内置选择器手势进度驱动内容缩小右移（顶层稳定注册，
+                // 不受 AnimatedContent 过渡重组影响；提交后回到主页）
+                val backAnim = remember { Animatable(0f) }
+                PredictiveBackHandler(enabled = showPicker) { flow ->
+                    try {
+                        flow.collect { backAnim.snapTo(it.progress) }
+                        showPicker = false
+                        backAnim.snapTo(0f)
+                    } catch (_: CancellationException) {
+                        backAnim.animateTo(0f, tween(200))
+                    }
+                }
 
                 // 进入/退出内置选择器的过渡动画（ImageToolbox fancySlideTransition 式）：
                 // 选择器从右侧整屏滑入 + 淡入，主页向左小幅滑出让位；返回时反向。
                 AnimatedContent(
                     targetState = showPicker,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        // 过渡动画期间两屏交错露出的底层必须使用主题背景，
+                        // 否则深色模式下会露出 Activity 窗口默认的白色背景
+                        .background(MaterialTheme.colorScheme.background)
+                        .graphicsLayer {
+                            val p = backAnim.value
+                            if (p > 0f) {
+                                scaleX = 1f - p * 0.06f
+                                scaleY = 1f - p * 0.06f
+                                translationX = p * size.width * 0.18f
+                                transformOrigin = TransformOrigin(0.5f, 0.5f)
+                            }
+                        },
                     transitionSpec = {
                         if (targetState) {
                             (slideInHorizontally(tween(450, easing = FancyEasing)) { it } +
@@ -417,7 +532,8 @@ class MainActivity : ComponentActivity() {
                                 importPickedItems(items)
                             },
                             onLaunchSystemPicker = {
-                                showPicker = false
+                                // 不立即关闭内置选择器：先弹警告弹窗，
+                                // 点「继续」才关闭内置选择器并打开系统选择器，点「返回」则留在此处
                                 maybeLaunchSystemPickerWithWarning()
                             }
                         )
@@ -427,15 +543,15 @@ class MainActivity : ComponentActivity() {
                             statusText = statusText,
                             progress = progress,
                             progressDetail = progressDetail,
-                            progressDetail2 = progressDetail2,
                             isImporting = isImporting,
                             importProgress = importProgress,
                             isConverting = isConverting,
-                            isBatch = isBatch,
                             isPickerOpening = isPickerOpening,
+                            clearBusy = clearBusy,
                             selectedFormat = selectedFormat,
+                            listState = listState,
                             onAddFiles = { onAddFiles() },
-                            onBatchProcess = { onBatchProcess() },
+                            onBatchImport = { onBatchImport() },
                             onClearFiles = { clearFiles() },
                             onConvert = { startConvert() },
                             onStopConvert = { stopConvert() },
@@ -450,7 +566,7 @@ class MainActivity : ComponentActivity() {
                                 getSharedPreferences("zlivephoto", MODE_PRIVATE)
                                     .edit().putBoolean("delete_original", on).apply()
                             },
-                            onRemoveFile = { path, isDoneRemove -> removeFile(path, isDoneRemove) }
+                            onRemoveFile = { path -> removeFile(path) }
                         )
                     }
                 }
@@ -532,14 +648,20 @@ class MainActivity : ComponentActivity() {
                                     "（位置、镜头参数等），且无法识别部分双文件动态照片。\n\n" +
                                     "建议优先使用内置选择器。"
                                 )
+                                // 整行可点击切换（MD3 习惯：文字也是点击目标）
                                 Row(
                                     verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
-                                    modifier = Modifier.padding(top = 12.dp)
+                                    modifier = Modifier
+                                        .padding(top = 12.dp)
+                                        .clip(RoundedCornerShape(8.dp))
+                                        .clickable {
+                                            haptic.click()
+                                            noRemind = !noRemind
+                                        }
+                                        .padding(horizontal = 4.dp, vertical = 8.dp)
                                 ) {
-                                    Checkbox(
-                                        checked = noRemind,
-                                        onCheckedChange = { noRemind = it }
-                                    )
+                                    Md3Checkbox(checked = noRemind)
+                                    Spacer(Modifier.width(12.dp))
                                     Text("不再提示")
                                 }
                             }
@@ -552,8 +674,16 @@ class MainActivity : ComponentActivity() {
                                         .edit().putBoolean("sys_picker_no_warn", true).apply()
                                 }
                                 showSystemPickerWarning = false
+                                showPicker = false
                                 launchSystemPicker()
                             }) { Text("继续") }
+                        },
+                        dismissButton = {
+                            FilledTonalButton(onClick = {
+                                haptic.click()
+                                // 仅关闭弹窗，不存储「不再询问」，保持内置选择器打开
+                                showSystemPickerWarning = false
+                            }) { Text("返回") }
                         }
                     )
                 }
@@ -593,13 +723,19 @@ class MainActivity : ComponentActivity() {
                                     onClick = { haptic.click(); req.onChoose(ConflictAction.RENAME) },
                                     modifier = Modifier.fillMaxWidth().height(42.dp)
                                 ) { Text("自动重命名") }
+                                // 整行可点击切换（MD3 习惯：文字也是点击目标）
                                 Row(
-                                    verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+                                    verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(8.dp))
+                                        .clickable {
+                                            haptic.click()
+                                            conflictAlways = !conflictAlways
+                                        }
+                                        .padding(horizontal = 4.dp, vertical = 8.dp)
                                 ) {
-                                    Checkbox(
-                                        checked = conflictAlways,
-                                        onCheckedChange = { conflictAlways = it }
-                                    )
+                                    Md3Checkbox(checked = conflictAlways)
+                                    Spacer(Modifier.width(12.dp))
                                     Text(
                                         "为后续冲突使用此处理方法",
                                         style = MaterialTheme.typography.labelMedium
@@ -628,6 +764,14 @@ class MainActivity : ComponentActivity() {
         isDarkTheme = (newConfig.uiMode and
             android.content.res.Configuration.UI_MODE_NIGHT_MASK) ==
             android.content.res.Configuration.UI_MODE_NIGHT_YES
+    }
+
+    /** 正常退出兜底：防抖的稳定态写入若尚未落盘，退出前同步补写尾部标记，
+     *  防止下次启动被误判为「异常退出」。 */
+    override fun onDestroy() {
+        stablePersistJob?.cancel()
+        if (files.isNotEmpty()) persistList(complete = true)
+        super.onDestroy()
     }
 
     // ---------- 分享 Intent 处理 ----------
@@ -671,6 +815,7 @@ class MainActivity : ComponentActivity() {
             withContext(Dispatchers.Main) {
                 statusText = if (failed > 0) "导入完成：成功 $imported 个，失败 $failed 个"
                              else "导入完成：共导入 $imported 个文件"
+                onListStable()
             }
         }
     }
@@ -678,11 +823,14 @@ class MainActivity : ComponentActivity() {
     // ---------- 权限 ----------
 
     private fun onAddFiles() {
-        if (hasReadPermission()) {
-            openBuiltInPicker()
-        } else {
+        if (!hasReadPermission()) {
             // 始终弹出自定义对话框；「拒绝」不退出，下次点击再请求
+            // 授权后进入内置选择器
+            pendingPermissionAction = { openBuiltInPicker() }
             showPermissionDialog = true
+        } else {
+            // 媒体权限已有但缺位置权限时，先补请求 ACCESS_MEDIA_LOCATION，再进入选择器
+            ensureLocationThen { openBuiltInPicker() }
         }
     }
 
@@ -711,13 +859,14 @@ class MainActivity : ComponentActivity() {
         val total = items.size
         isImporting = true
         importProgress = 0f
+        stopImportRequested = false
         progressDetail = "已添加 0/$total"
-        progressDetail2 = ""
         statusText = "正在导入 $total 个文件…"
         lifecycleScope.launch(Dispatchers.IO) {
             var imported = 0
             var failed = 0
             for (item in items) {
+                if (stopImportRequested) break // 停止导入：使用当前进度，不再继续
                 try {
                     val src = File(item.path)
                     if (!src.exists() || !src.canRead()) throw IOException("源文件不存在或不可读")
@@ -740,17 +889,25 @@ class MainActivity : ComponentActivity() {
                 isImporting = false
                 importProgress = 0f
                 progressDetail = ""
-                statusText = if (failed > 0) "导入完成：成功 $imported 个，失败 $failed 个"
-                             else "导入完成：共导入 $imported 个文件"
+                statusText = when {
+                    stopImportRequested -> "已停止导入：成功 $imported 个，失败 $failed 个"
+                    failed > 0 -> "导入完成：成功 $imported 个，失败 $failed 个"
+                    else -> "导入完成：共导入 $imported 个文件"
+                }
+                stopImportRequested = false
+                onListStable()
             }
         }
     }
 
-    /** 终止转换：处理完当前文件后立即停止（列表与批量模式通用） */
+    /** 终止转换/导入：转换处理完当前文件后停止；导入循环下一项前立即停止 */
     private fun stopConvert() {
         if (isConverting && !stopRequested) {
             stopRequested = true
             statusText = "正在停止…（完成当前文件后停止）"
+        } else if (isImporting && !stopImportRequested) {
+            stopImportRequested = true
+            statusText = "正在停止导入…"
         }
     }
 
@@ -811,6 +968,13 @@ class MainActivity : ComponentActivity() {
     private fun importFromPath(path: String, sourceUri: String? = null,
                                sourcePath: String? = null,
                                sourceTime: Long = 0L, sourceTaken: Long = 0L) {
+        // 批量导入在 IO 协程内调用：SnapshotStateList 变更必须在 Main 线程，切回 Main 保证线程安全
+        if (Looper.myLooper() != Looper.getMainLooper()) {
+            lifecycleScope.launch(Dispatchers.Main) {
+                importFromPath(path, sourceUri, sourcePath, sourceTime, sourceTaken)
+            }
+            return
+        }
         val srcPath = sourcePath ?: path
         val name = File(path).name
         if (files.any { it.path == path || it.name == name }) return
@@ -818,8 +982,20 @@ class MainActivity : ComponentActivity() {
             sourceUri = sourceUri, sourcePath = srcPath,
             sourceTime = sourceTime, sourceTaken = sourceTaken)
         files.add(item)
+        onListMutated()
+        launchDetection(path, srcPath)
+    }
 
-        lifecycleScope.launch(Dispatchers.IO) {
+    /**
+     * 异步识别格式（引用模式：直接使用源文件路径，不复制）。
+     * 识别完成后，对未匹配为单文件内嵌格式（Google/OPPO/vivo 单文件/小米/荣耀）的项目，
+     * 在源文件同目录按同名校验伴生视频（仅拼扩展名 mp4/mov + ftyp 头校验）：
+     * 存在则重新识别（vivo/Apple 双文件配对）；不存在则视为不匹配直接跳过。
+     * @param path 转换用路径：引用模式=原文件路径；受限回退模式=incoming 副本
+     * @param srcPath 原始文件绝对路径（伴生视频查找用）
+     */
+    private fun launchDetection(path: String, srcPath: String) {
+        lifecycleScope.launch(detectionDispatcher) {
             // 视频内嵌的单文件格式，转换不依赖伴生视频
             val embeddedFormats = setOf("google", "oppo", "vivo_single", "xiaomi", "honor")
             var (plugin, score) = FormatRegistry.detectBest(path)
@@ -844,14 +1020,23 @@ class MainActivity : ComponentActivity() {
             }
 
             val recognized = plugin != null && score >= 50
+            // Apple 格式转换存在技术问题（MOV 回读归一化后手机无法播放）：
+            // 标记为不可转换，处理时按非动态照片处理（跳过，不计入转换目标）
+            val appleBlocked = recognized && plugin?.name == "apple"
             withContext(Dispatchers.Main) {
                 val idx = files.indexOfFirst { it.path == path }
                 if (idx >= 0) {
                     files[idx] = files[idx].copy(
-                        info = if (recognized) plugin!!.display else "未识别的动态照片格式",
-                        isUnrecognized = !recognized,
+                        info = when {
+                            appleBlocked -> "Apple Live Photo（暂不支持转换）"
+                            recognized -> plugin!!.display
+                            else -> "未识别的动态照片格式"
+                        },
+                        isUnrecognized = !recognized || appleBlocked,
                         formatKey = if (recognized) plugin!!.name else null
                     )
+                    // 识别结果同步到本地 JSON（防抖合并，避免批量导入时高频写盘）
+                    onListStable()
                 }
             }
         }
@@ -859,15 +1044,15 @@ class MainActivity : ComponentActivity() {
 
     /**
      * 按路径移除列表项并清理本地缓存文件（含已复制的伴生视频）。
-     * @param isDoneRemove true=转换完成动画结束后的移除（不覆盖状态栏）；false=用户侧滑删除
      */
-    private fun removeFile(path: String, isDoneRemove: Boolean) {
+    private fun removeFile(path: String) {
         val idx = files.indexOfFirst { it.path == path }
         if (idx < 0) return
         val item = files[idx]
         cleanupIncomingItem(item)
         files.removeAt(idx)
-        if (!isDoneRemove) statusText = "已移除 ${item.name}"
+        statusText = "已移除 ${item.name}"
+        onListStable()
     }
 
     /** 清理列表项在 incoming 的缓存（图片 + 伴生视频）。
@@ -894,34 +1079,158 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    // ---------- 列表持久化（本地 JSON + 异常退出检测） ----------
+
+    private sealed class ListState {
+        object Empty : ListState()
+        data class Loaded(val files: List<FileItem>) : ListState()
+        object Corrupt : ListState()
+        data class AbnormalExit(val count: Int) : ListState()
+    }
+
+    private fun listStateFile() = File(filesDir, "list_state.json")
+
+    /** 把当前列表写入本地 JSON；complete=true 表示稳定态（尾部标记），
+     *  false 表示正在导入/处理中（标记被移除，用于异常退出检测）。 */
+    private fun persistList(complete: Boolean) {
+        try {
+            val arr = JSONArray()
+            for (f in files) {
+                val o = JSONObject()
+                o.put("path", f.path)
+                o.put("name", f.name)
+                o.put("info", f.info)
+                o.put("unrecognized", f.isUnrecognized)
+                o.put("sourceUri", f.sourceUri ?: "")
+                o.put("sourcePath", f.sourcePath ?: "")
+                o.put("sourceTime", f.sourceTime)
+                o.put("sourceTaken", f.sourceTaken)
+                o.put("formatKey", f.formatKey ?: "")
+                arr.put(o)
+            }
+            val root = JSONObject()
+            root.put("files", arr)
+            root.put("complete", complete)
+            val tmp = File(filesDir, "list_state.json.tmp")
+            tmp.writeText(root.toString())
+            val target = listStateFile()
+            if (target.exists()) target.delete()
+            tmp.renameTo(target)
+        } catch (_: Exception) {}
+    }
+
+    /** 读取本地 JSON：损坏即删并返回 Corrupt；无标记且非空返回 AbnormalExit。 */
+    private fun readListState(): ListState {
+        val f = listStateFile()
+        if (!f.exists()) return ListState.Empty
+        return try {
+            val root = JSONObject(f.readText())
+            val arr = root.optJSONArray("files") ?: run { f.delete(); return ListState.Corrupt }
+            val items = ArrayList<FileItem>(arr.length())
+            for (i in 0 until arr.length()) {
+                val o = arr.optJSONObject(i) ?: run { f.delete(); return ListState.Corrupt }
+                val path = o.optString("path")
+                if (path.isEmpty()) { f.delete(); return ListState.Corrupt }
+                items.add(FileItem(
+                    path = path,
+                    name = o.optString("name", File(path).name),
+                    info = o.optString("info", "检测中…"),
+                    isUnrecognized = o.optBoolean("unrecognized", false),
+                    sourceUri = o.optString("sourceUri").ifEmpty { null },
+                    sourcePath = o.optString("sourcePath").ifEmpty { null },
+                    sourceTime = o.optLong("sourceTime", 0L),
+                    sourceTaken = o.optLong("sourceTaken", 0L),
+                    formatKey = o.optString("formatKey").ifEmpty { null }
+                ))
+            }
+            when {
+                items.isEmpty() -> { f.delete(); ListState.Empty }
+                !root.optBoolean("complete", false) -> { f.delete(); ListState.AbnormalExit(items.size) }
+                else -> ListState.Loaded(items)
+            }
+        } catch (_: Exception) {
+            f.delete()
+            ListState.Corrupt
+        }
+    }
+
+    /** 标记列表进入不稳定态（导入/处理开始前移除尾部标记）。 */
+    private fun markIncomplete() {
+        dirtyCount = 0
+        stablePersistJob?.cancel()
+        persistList(complete = false)
+    }
+
+    /** 列表被追加/修改：首次变更写一次无标记 JSON，之后每 50 条写一次快照。 */
+    private fun onListMutated() {
+        dirtyCount++
+        stablePersistJob?.cancel() // 挂起的稳定态写入已过期，取消防止覆盖无标记状态
+        if (dirtyCount == 1 || dirtyCount >= 50) {
+            persistList(complete = false)
+            if (dirtyCount >= 50) dirtyCount = 0
+        }
+    }
+
+    /** 列表进入稳定态（导入/处理完成或清空后加回尾部标记）。
+     *  高频调用（如批量识别完成）时防抖 250ms 合并为一次写盘；紧急场景用 immediate。 */
+    private fun onListStable(immediate: Boolean = false) {
+        dirtyCount = 0
+        stablePersistJob?.cancel()
+        if (immediate) {
+            persistList(complete = true)
+        } else {
+            stablePersistJob = lifecycleScope.launch(Dispatchers.IO) {
+                delay(250)
+                persistList(complete = true) // 快照读取线程安全
+            }
+        }
+    }
+
     private fun clearFiles() {
-        files.clear()
-        File(incomingDir).listFiles()?.forEach { it.delete() }
-        File(outputDir).listFiles()?.forEach { it.delete() }
+        if (files.isEmpty() || clearBusy) return
+        clearBusy = true // 清理过程中禁用清空按钮
+        hapticController?.double() // 快速两下振动
         progress = 0f
         statusText = "已清空"
+        File(incomingDir).listFiles()?.forEach { it.delete() }
+        File(outputDir).listFiles()?.forEach { it.delete() }
+        // 快照：分 50 条一批移除，避免大量缓存删除 + 列表项移除
+        // 一次性执行造成主线程卡顿（>500 项时尤为明显）
+        val instant = files.toList()
+        lifecycleScope.launch(Dispatchers.Main) {
+            var i = 0
+            while (i < instant.size) {
+                val batch = instant.subList(i, minOf(i + 50, instant.size))
+                batch.forEach { cleanupIncomingItem(it) }
+                files.removeAll(batch.toSet())
+                i += 50
+                if (i < instant.size) delay(16) // 让出一帧，避免单帧重组/IO 卡顿
+            }
+            onListStable(immediate = true)
+            clearBusy = false
+        }
     }
 
     // ---------- 转换（列表模式） ----------
 
     private fun startConvert() {
         if (isConverting) return
-        val targets = files.filter { !it.info.contains("未识别") && !it.info.contains("失败") && !it.isDone }.toList()
+        // 排除未识别 / Apple 不可转换 / 失败项（Apple 已标记 isUnrecognized=true）
+        val targets = files.filter { !it.isUnrecognized && !it.info.contains("失败") }.toList()
         if (targets.isEmpty()) {
             statusText = "没有可转换的文件"
             return
         }
 
         isConverting = true
-        isBatch = false
         stopRequested = false
         progress = 0f
         progressDetail = "已处理 0/${targets.size}"
-        progressDetail2 = ""
         lastExportError = null
         claimedNames.clear()
         batchConflictAction = null // 「本批次总是」的选择仅当前批次有效
         resetPendingDeletes()
+        markIncomplete() // 处理开始：移除列表 JSON 尾部标记（异常退出可检测）
 
         lifecycleScope.launch(Dispatchers.IO) {
             // 4 路并发转换（Semaphore 限流），单文件异常隔离不中断
@@ -1007,18 +1316,13 @@ class MainActivity : ComponentActivity() {
             }
             jobs.joinAll()
             withContext(Dispatchers.Main) {
-                // 处理完成：统一触发成功项的左滑清除动画（一次左滑效果）
-                files.forEachIndexed { i, f ->
-                    if (f.path in successPaths) files[i] = f.copy(isDone = true)
-                }
-            }
-            // 等待左滑清除动画播完（滑出 260ms + 高度塌陷），再强制清理残留
-            delay(1200)
-            withContext(Dispatchers.Main) {
-                // 强制移除未触发动画回调的 isDone 项（列表滚出屏幕的项目）
-                files.filter { it.isDone }.forEach { cleanupIncomingItem(it) }
-                files.removeAll { it.isDone }
-                // 处理完成后自动清理全部缓存，避免占用空间无限膨胀
+                clearBusy = true // 收尾清理过程中禁用清空按钮
+                // 处理完成/终止：成功项直接无动画移除（快速两下振动提示），
+                // 失败项保留，由 animateItem placement 自动上移补位
+                hapticController?.double()
+                val successes = files.filter { it.path in successPaths }.toList()
+                successes.forEach { cleanupIncomingItem(it) }
+                files.removeAll(successes.toSet())
                 cleanupAllCaches()
                 val exportErr = lastExportError
                 statusText = when {
@@ -1029,201 +1333,111 @@ class MainActivity : ComponentActivity() {
                         "完成：$total 个文件处理完毕，导出 ${exported.get()} 个到相册"
                 }
                 isConverting = false
-                isBatch = false
                 progress = 0f
                 progressDetail = ""
-                progressDetail2 = ""
                 // 项10：批次完成，一次性请求把成功处理的原图移入回收站（系统删除工具）
                 if (deleteOriginal) requestDeleteOriginals(statusText)
+                onListStable(immediate = true) // 处理结束/终止：加回列表 JSON 尾部标记
+                clearBusy = false
             }
         }
     }
 
-    // ---------- 批量处理（文件夹模式） ----------
+    // ---------- 批量导入（文件夹模式） ----------
 
-    private fun onBatchProcess() {
-        if (isConverting) return
+    private fun onBatchImport() {
+        if (isConverting || isImporting) return
         if (!hasReadPermission()) {
-            // 批量处理同样需要媒体读取权限（直接 File 遍历 + 直读源文件）
+            // 批量导入同样需要媒体读取权限（直接 File 遍历 + 直读源文件）
+            // 授权后继续打开文件夹选择器，而不是进入内置选择器
+            pendingPermissionAction = { ensureLocationThen { batchFolderLauncher.launch(null) } }
             showPermissionDialog = true
             return
         }
-        batchFolderLauncher.launch(null)
+        ensureLocationThen { batchFolderLauncher.launch(null) }
     }
 
     /**
-     * 批量处理管线：
-     * 1. 先整树枚举全部文件（仅目录遍历，快速得到总数）
-     * 2. 2 个扫描线程平分文件做粗筛（QuickClassify），识别到动态照片立即入队不停止
-     * 3. 1 个处理线程流式消费：识别 → 转换 → 冲突处理 → 导出
-     * 4. 进度 = 已处理（含未识别直接跳过）/ 文件总数
-     * 5. 输出按源子目录结构放到相册输出目录对应子目录（MediaStore 自动创建）
+     * 批量导入：选择文件夹后整树枚举图片文件，粗筛（QuickClassify）出动态照片，
+     * 逐个添加到处理列表（引用模式，不复制、不转换）。格式识别在 importFromPath 内
+     * 异步进行；转换由用户随后点「开始转换」统一触发。
      */
-    private fun startBatchProcess(rootPath: String) {
+    private fun importBatchFolder(rootPath: String) {
         val root = File(rootPath)
         if (!root.isDirectory || !root.canRead()) {
             statusText = "无法读取所选文件夹"
             return
         }
 
-        isConverting = true
-        isBatch = true
-        stopRequested = false
-        progress = 0f
-        progressDetail = "已处理 0/0"
-        progressDetail2 = "动态照片 0 张"
-        lastExportError = null
-        claimedNames.clear()
-        batchConflictAction = null // 「本批次总是」的选择仅当前批次有效
-        resetPendingDeletes()
+        isImporting = true
+        importProgress = 0f
+        stopImportRequested = false
+        progressDetail = "已导入 0/0"
+        statusText = "正在扫描文件夹…"
 
         lifecycleScope.launch(Dispatchers.IO) {
-            // 1. 整树枚举
-            val allFiles = mutableListOf<File>()
+            // 1. 整树枚举图片文件（动态照片的主文件是 JPG/HEIC）
+            val imageFiles = mutableListOf<File>()
             fun walk(dir: File) {
                 val children = dir.listFiles() ?: return
                 for (c in children) {
                     if (c.isDirectory) walk(c)
-                    else if (c.isFile) allFiles.add(c)
+                    else if (c.isFile) {
+                        val ext = c.extension.lowercase()
+                        if (ext == "jpg" || ext == "jpeg" || ext == "heic") imageFiles.add(c)
+                    }
                 }
             }
             walk(root)
-            val total = allFiles.size
+            val total = imageFiles.size
             if (total == 0) {
                 withContext(Dispatchers.Main) {
-                    statusText = "所选文件夹为空"
-                    isConverting = false
-                    isBatch = false
+                    isImporting = false
+                    importProgress = 0f
                     progressDetail = ""
-                    progressDetail2 = ""
+                    statusText = "所选文件夹内未找到图片"
                 }
                 return@launch
             }
-            withContext(Dispatchers.Main) { progressDetail = "已处理 0/$total" }
 
-            statusText = "批量处理：开始扫描（共 $total 个文件）"
-            val processed = AtomicInteger(0)
-            val recognizedCount = AtomicInteger(0)
-            val converted = AtomicInteger(0)
-            val skipped = AtomicInteger(0)
-            val failed = AtomicInteger(0)
-
-            // 更新状态胶囊两行明细：第一行 a/b（已处理/总文件数）、第二行动态照片张数
-            fun updateDetails() {
-                val p = processed.get()
-                progress = p.toFloat() / total
-                progressDetail = "已处理 $p/$total"
-                progressDetail2 = "动态照片 ${converted.get() + skipped.get() + failed.get()} 张"
-            }
-
-            // 3. 处理线程：流式消费识别出的动态照片
-            val queue = Channel<String>(capacity = 64)
-            val processor: Job = launch(Dispatchers.IO) {
-                for (path in queue) {
-                    // 停止请求：处理完当前文件后立即终止（本项已出队，若停止则直接丢弃）
-                    if (stopRequested) break
-                    try {
-                        val ok = processBatchFile(path, root)
-                        if (ok) converted.incrementAndGet() else skipped.incrementAndGet()
-                    } catch (e: Exception) {
-                        failed.incrementAndGet()
-                        statusText = "批量处理失败：${File(path).name}（${e.message}）"
-                    }
-                    processed.incrementAndGet()
-                    updateDetails()
+            // 2. 粗筛动态照片并加入处理列表（引用模式，识别异步进行）
+            var added = 0
+            var skipped = 0
+            for (f in imageFiles) {
+                if (stopImportRequested) break // 停止导入：使用当前进度，不再继续
+                val path = f.absolutePath
+                if (QuickClassify.sniff(path)) {
+                    importFromPath(
+                        path = path, sourceUri = null, sourcePath = path,
+                        sourceTime = f.lastModified(), sourceTaken = 0L
+                    )
+                    added++
+                } else {
+                    skipped++
+                }
+                val done = added + skipped
+                withContext(Dispatchers.Main) {
+                    importProgress = done.toFloat() / total
+                    progressDetail = "已导入 $added/$total"
+                    statusText = "正在批量导入 $done/$total…"
                 }
             }
-
-            // 2. 两个扫描线程：平分文件列表粗筛；未识别的直接计为已处理（跳过）
-            val scanners = (0..1).map { idx ->
-                launch(Dispatchers.IO) {
-                    for (i in idx until allFiles.size step 2) {
-                        if (stopRequested) return@launch // 停止后不再扫描/入队
-                        val f = allFiles[i]
-                        if (QuickClassify.sniff(f.path)) {
-                            recognizedCount.incrementAndGet()
-                            queue.send(f.path) // 扫描不停止，交给处理线程
-                        } else {
-                            processed.incrementAndGet()
-                            updateDetails()
-                        }
-                    }
-                }
-            }
-            scanners.joinAll()
-            queue.close()
-            processor.join()
-
             withContext(Dispatchers.Main) {
-                statusText = if (stopRequested)
-                    "批量处理已停止：共 $total 个文件，识别 ${recognizedCount.get()} 个动态照片，" +
-                        "转换成功 ${converted.get()} 个，跳过 ${skipped.get()} 个，失败 ${failed.get()} 个"
-                else
-                    "批量处理完成：共 $total 个文件，" +
-                        "识别 ${recognizedCount.get()} 个动态照片，" +
-                        "转换成功 ${converted.get()} 个，" +
-                        "跳过 ${skipped.get()} 个，失败 ${failed.get()} 个"
-                isConverting = false
-                isBatch = false
-                progress = 0f
+                isImporting = false
+                importProgress = 0f
                 progressDetail = ""
-                progressDetail2 = ""
-                // 处理完成后自动清理全部缓存（含子目录），避免占用空间无限膨胀
-                cleanupAllCaches()
-                // 项10：批次完成，一次性请求把成功处理的原图移入回收站（系统删除工具）
-                if (deleteOriginal) requestDeleteOriginals(statusText)
+                statusText = when {
+                    stopImportRequested ->
+                        "已停止批量导入：共导入 $added 个动态照片" +
+                            (if (skipped > 0) "，跳过 $skipped 个非动态文件" else "")
+                    else ->
+                        "批量导入完成：共导入 $added 个动态照片" +
+                            (if (skipped > 0) "，跳过 $skipped 个非动态文件" else "")
+                }
+                stopImportRequested = false
+                onListStable()
             }
         }
-    }
-
-    /** 批量模式处理单个识别出的动态照片；返回是否成功转换（false=跳过/冲突跳过）。 */
-    private suspend fun processBatchFile(path: String, root: File): Boolean {
-        val src = File(path)
-        // 相对子目录（保留源目录结构输出）
-        val relDir = src.parentFile?.absolutePath
-            ?.removePrefix(root.absolutePath)?.trim('/') ?: ""
-
-        // 识别（粗筛后精确识别）
-        val (plugin, score) = FormatRegistry.detectBest(path)
-        if (plugin == null || score < 50) return false // 未识别：直接跳过
-
-        // 项10：在冲突/导出发生前解析原图 URI（含双文件伴生视频）——
-        // 覆盖会删除旧媒体条目，之后按路径查询会误中刚导出的新产物
-        val originalUris = if (deleteOriginal)
-            resolveOriginalUris(path, null, plugin.name)
-        else emptyList()
-
-        // 转换到暂存目录（按相对子目录结构）
-        val stageDir = File(outputDir, relDir).apply { mkdirs() }
-        val staged = Converter.convertFile(
-            path = path,
-            target = selectedFormat,
-            outDir = stageDir.absolutePath,
-            log = { level, msg, tag ->
-                if (level == "error" || level == "warn") statusText = "[$tag] $msg"
-            }
-        )
-
-        // 冲突处理（跳过 / 覆盖 / 自动后缀）
-        val finalOutputs = resolveConflicts(staged, relDir, path) ?: run {
-            staged.forEach { p -> try { File(p).delete() } catch (_: Exception) {} }
-            return false
-        }
-
-        // 导出（保留源文件修改时间）；项10 统计实际导出成功数（0=失败不删原图）
-        var exportedCount = 0
-        val srcTime = if (src.lastModified() > 0L) src.lastModified() else System.currentTimeMillis()
-        for (outPath in finalOutputs) {
-            File(outPath).setLastModified(srcTime)
-            if (exportToMediaStore(outPath, srcTime, relDir) != null) exportedCount++
-        }
-        // 清理暂存（finalOutputs 含改名后的文件；原名的删除为无害空操作）
-        (staged + finalOutputs).distinct().forEach { p ->
-            try { File(p).delete() } catch (_: Exception) {}
-        }
-        // 项10：成功导出的原图入待删集合（失败/跳过/覆盖保护项不删）
-        mergePendingDeletes(path, originalUris, exportedCount > 0)
-        return true
     }
 
     // ---------- 冲突处理 ----------
@@ -1450,10 +1664,10 @@ class MainActivity : ComponentActivity() {
     }
 
     /**
-     * 批次结束后一次性请求把原图移入回收站（系统删除工具：
+     * 批次结束后一次性请求把原图移入回收站（系统回收站工具：
      * 「Z-LivePhoto-Converter 想将 N 个项目移入回收站」）。
      * - 先过滤已失效条目（覆盖冲突中被替换的旧 URI 等），避免请求抛异常
-     * - Android 11+：createDeleteRequest 整批一次请求
+     * - Android 11+：createTrashRequest 整批一次请求移入回收站
      * - Android 10：无该 API，仅能直接删除本应用拥有的媒体（无回收站）
      */
     private fun requestDeleteOriginals(baseStatus: String) {
@@ -1474,15 +1688,15 @@ class MainActivity : ComponentActivity() {
         deleteBaseStatus = baseStatus
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             try {
-                val sender = MediaStore.createDeleteRequest(contentResolver, valid).intentSender
+                val sender = MediaStore.createTrashRequest(contentResolver, valid, true).intentSender
                 pendingDeleteCount = valid.size
                 deleteRequestLauncher.launch(IntentSenderRequest.Builder(sender).build())
             } catch (e: Exception) {
                 pendingDeleteCount = 0
-                statusText = "$baseStatus；原图删除请求失败（${e.message}）"
+                statusText = "$baseStatus；原图移入回收站请求失败（${e.message}）"
             }
         } else {
-            // Android 10：无 createDeleteRequest 与回收站；非本应用拥有的媒体无法删除
+            // Android 10：无 createTrashRequest 与回收站；非本应用拥有的媒体无法删除
             var deleted = 0
             for (uri in valid) {
                 try { contentResolver.delete(uri, null, null); deleted++ } catch (_: Exception) {}

@@ -16,7 +16,7 @@ import kotlin.math.round
  */
 internal class VivoPlugin : FormatPlugin() {
     override val name: String = "vivo"
-    override val display: String = "vivo 动态照片（JPG + MP4 双文件）"
+    override val display: String = "vivo 动态照片"
 
     private val vivoVersion: Int = 2107
 

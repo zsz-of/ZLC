@@ -14,7 +14,7 @@ import java.io.FileInputStream
  */
 internal class OppoPlugin : FormatPlugin() {
     override val name: String = "oppo"
-    override val display: String = "OPPO 动态照片（单文件）"
+    override val display: String = "OPPO 动态照片"
 
     internal companion object {
         /** 合成 lpex (LivePhotoExtension) box 载荷（vivo/OPPO 共用；字段逐字对齐可被相册识别的输出） */

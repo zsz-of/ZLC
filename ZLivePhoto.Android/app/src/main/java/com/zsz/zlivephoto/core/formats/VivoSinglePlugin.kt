@@ -26,7 +26,7 @@ import java.io.File
  */
 internal class VivoSinglePlugin : FormatPlugin() {
     override val name: String = "vivo_single"
-    override val display: String = "vivo 单文件实况（JPG+MP4 合并为一个文件）"
+    override val display: String = "vivo 单文件实况"
 
     override fun detect(path: String): Int {
         val xmp = GooglePlugin.sniffXmp(path)

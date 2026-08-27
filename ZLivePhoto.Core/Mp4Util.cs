@@ -181,6 +181,21 @@ public static class Mp4Util
         return buf;
     }
 
+    /// <summary>
+    /// 把 QuickTime MOV（major_brand=qt  ）恢复为标准 MP4（major_brand=isom）。
+    /// 用于从 Apple 读回时归一化视频流：vivo/Google/小米等 MP4 格式若保留
+    /// "qt  " 品牌，会导致相册能识别动态照片却无法正常播放。
+    /// </summary>
+    public static byte[] MovToMp4(byte[] data)
+    {
+        if (!HasFtyp(data))
+            return data;
+        var buf = data.ToArray();
+        if (buf.AsSpan(8, 4).SequenceEqual("qt  "u8))
+            "isom"u8.CopyTo(buf.AsSpan(8));
+        return buf;
+    }
+
     private static byte[] PackBox(string type, byte[] payload)
     {
         var result = new byte[8 + payload.Length];

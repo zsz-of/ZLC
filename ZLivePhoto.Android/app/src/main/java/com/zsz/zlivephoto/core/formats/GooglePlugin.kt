@@ -12,7 +12,7 @@ import java.io.FileInputStream
  */
 internal class GooglePlugin : FormatPlugin() {
     override val name: String = "google"
-    override val display: String = "Google Motion Photo（标准格式）"
+    override val display: String = "Google Motion Photo"
 
     companion object {
         /** 从文件头部直接定位 XMP 文本（检测用，容忍截断）。 */

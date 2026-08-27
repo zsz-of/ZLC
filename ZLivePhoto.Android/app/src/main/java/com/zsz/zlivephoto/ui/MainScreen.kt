@@ -33,6 +33,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -93,9 +94,7 @@ data class FileItem(
     val sourceTime: Long = 0L,
     val sourceTaken: Long = 0L,
     /** 识别出的格式（plugin.name），用于「目标=输入」蓝色提示 */
-    val formatKey: String? = null,
-    /** 转换成功：触发「完成」移除动画 */
-    val isDone: Boolean = false
+    val formatKey: String? = null
 )
 
 data class FormatOption(
@@ -120,15 +119,16 @@ fun MainScreen(
     statusText: String,
     progress: Float,
     progressDetail: String,
-    progressDetail2: String,
     isImporting: Boolean,
     importProgress: Float,
     isConverting: Boolean,
-    isBatch: Boolean,
     isPickerOpening: Boolean,
+    /** 清空/处理收尾动画播放中：清空按钮禁用 */
+    clearBusy: Boolean,
     selectedFormat: String,
+    listState: LazyListState,
     onAddFiles: () -> Unit,
-    onBatchProcess: () -> Unit,
+    onBatchImport: () -> Unit,
     onClearFiles: () -> Unit,
     onConvert: () -> Unit,
     onStopConvert: () -> Unit,
@@ -136,11 +136,13 @@ fun MainScreen(
     // 项10：处理完成后删除原图开关（开启=清脆震动 / 关闭=柔和震动）
     deleteOriginal: Boolean,
     onToggleDeleteOriginal: (Boolean) -> Unit,
-    onRemoveFile: (String, Boolean) -> Unit
+    onRemoveFile: (String) -> Unit
 ) {
     val haptic = rememberHapticFeedback()
     var showFormatSheet by remember { mutableStateOf(false) }
     var showStatusDetail by remember { mutableStateOf(false) }
+    // Apple 输出存在技术问题：选项置灰不可选，点击弹窗提示
+    var showAppleBlockedDialog by remember { mutableStateOf(false) }
 
     // 按钮按压反馈（项 5）：按下瞬间立即震动 + 圆角弹簧减小 + 轻微缩放
     val addFb = rememberPressFeedback()
@@ -312,6 +314,7 @@ fun MainScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(horizontal = 16.dp),
+                    state = listState,
                     contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 8.dp)
                 ) {
                     items(files, key = { it.path }) { item ->
@@ -330,8 +333,7 @@ fun MainScreen(
                                     item = item,
                                     isConverting = isConverting,
                                     sameFormat = item.formatKey != null && item.formatKey == effectiveTarget,
-                                    onDelete = { path -> onRemoveFile(path, false) },
-                                    onDoneRemove = { path -> onRemoveFile(path, true) }
+                                    onDelete = { path -> onRemoveFile(path) }
                                 )
                                 Spacer(modifier = Modifier.height(8.dp))
                             }
@@ -340,15 +342,6 @@ fun MainScreen(
                 }
             }
 
-            // 批量处理叠加层：与背景底色相同、完全不透明，仅遮挡列表区
-            // （空列表同样覆盖），位于底部控制区图层之下，为批量专属动画预留空间
-            if (isBatch) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(MaterialTheme.colorScheme.background)
-                )
-            }
         }
 
             // 底部控制区（浮起面板）
@@ -435,13 +428,6 @@ fun MainScreen(
                                             color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
                                     }
-                                    if (progressDetail2.isNotEmpty()) {
-                                        Text(
-                                            text = progressDetail2,
-                                            style = MaterialTheme.typography.labelMedium,
-                                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                                        )
-                                    }
                                 }
                             }
                         }
@@ -479,7 +465,7 @@ fun MainScreen(
                                     Text("添加文件", style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.MiddleEllipsis)
                                 }
                                 FilledTonalButton(
-                                    onClick = { onBatchProcess() },
+                                    onClick = { onBatchImport() },
                                     enabled = !busy,
                                     interactionSource = batchFb.interactionSource,
                                     modifier = Modifier
@@ -490,7 +476,7 @@ fun MainScreen(
                                 ) {
                                     Icon(Icons.Default.CreateNewFolder, contentDescription = null, modifier = Modifier.size(18.dp))
                                     Spacer(modifier = Modifier.width(6.dp))
-                                    Text("批量处理", style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.MiddleEllipsis)
+                                    Text("批量导入", style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.MiddleEllipsis)
                                 }
                             }
 
@@ -522,13 +508,13 @@ fun MainScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(52.dp)
+                                    .then(deleteFb.scaleModifier)
                                     .clip(RoundedCornerShape(deleteFb.corner))
                                     .background(MaterialTheme.colorScheme.secondaryContainer)
                                     .clickable(
                                         interactionSource = deleteFb.interactionSource,
                                         indication = null
                                     ) { onToggle(!deleteOriginal) }
-                                    .then(deleteFb.scaleModifier)
                                     .padding(horizontal = 20.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
@@ -570,11 +556,11 @@ fun MainScreen(
                         Box(modifier = Modifier.weight(1f - morph + 0.001f)) {
                             FilledTonalButton(
                                 onClick = { onClearFiles() },
-                                enabled = !busy && files.isNotEmpty(),
+                                enabled = !busy && !clearBusy && files.isNotEmpty(),
                                 interactionSource = clearFb.interactionSource,
                                 colors = ButtonDefaults.filledTonalButtonColors(
-                                    containerColor = MaterialTheme.colorScheme.errorContainer,
-                                    contentColor = MaterialTheme.colorScheme.onErrorContainer
+                                    containerColor = MaterialTheme.colorScheme.error,
+                                    contentColor = MaterialTheme.colorScheme.onError
                                 ),
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -668,7 +654,9 @@ fun MainScreen(
                     .verticalScroll(formatScrollState)
             ) {
                 formatOptions.forEach { opt ->
-                    val selected = opt.key == selectedFormat
+                    // Apple 输出存在技术问题：置灰不可选（点击弹窗提示）
+                    val blocked = opt.key == "apple"
+                    val selected = opt.key == selectedFormat && !blocked
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -678,18 +666,25 @@ fun MainScreen(
                                 if (selected) MaterialTheme.colorScheme.secondaryContainer
                                 else androidx.compose.ui.graphics.Color.Transparent
                             )
-                            .clickable {
+                            .clickable(enabled = !blocked) {
                                 haptic.click()
                                 onSelectFormat(opt.key)
                             }
+                            .then(
+                                if (blocked) Modifier.clickable {
+                                    haptic.click()
+                                    showAppleBlockedDialog = true
+                                } else Modifier
+                            )
                             .padding(horizontal = 12.dp, vertical = 4.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = opt.name,
+                            text = opt.name + if (blocked) "（暂不可用）" else "",
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
-                            color = if (selected) MaterialTheme.colorScheme.onSecondaryContainer
+                            color = if (blocked) MaterialTheme.colorScheme.onSurfaceVariant
+                            else if (selected) MaterialTheme.colorScheme.onSecondaryContainer
                             else MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier
                                 .weight(1f)
@@ -715,7 +710,7 @@ fun MainScreen(
                             text = "⚠ 过老的机型可能无法识别此格式",
                             style = MaterialTheme.typography.labelMedium,
                             fontWeight = FontWeight.Bold,
-                            color = androidx.compose.ui.graphics.Color(0xFF8B0000),
+                            color = MaterialTheme.colorScheme.error,
                             modifier = Modifier.padding(start = 36.dp, bottom = 6.dp)
                         )
                     }
@@ -723,6 +718,27 @@ fun MainScreen(
                 Spacer(modifier = Modifier.height(24.dp))
             }
         }
+    }
+
+    // Apple 输出格式暂不可用提示弹窗（技术问题，后续版本可能适配）
+    if (showAppleBlockedDialog) {
+        AlertDialog(
+            onDismissRequest = { showAppleBlockedDialog = false },
+            title = { Text("Apple 格式暂不可用") },
+            text = {
+                Text(
+                    "Apple 实况照片的输出存在技术问题（转换后部分机型无法正常播放），" +
+                        "当前版本暂不支持输出为 Apple 格式。\n\n" +
+                        "后续版本将修复此问题，敬请期待。"
+                )
+            },
+            confirmButton = {
+                FilledTonalButton(onClick = {
+                    haptic.click()
+                    showAppleBlockedDialog = false
+                }) { Text("知道了") }
+            }
+        )
     }
 
     // 状态详情对话框（完整内容，长按可选中复制；按钮带 tonal 底色）

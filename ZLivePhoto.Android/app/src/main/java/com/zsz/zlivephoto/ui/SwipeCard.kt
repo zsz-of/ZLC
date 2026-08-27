@@ -75,21 +75,19 @@ import kotlin.math.roundToInt
  * 侧滑删除（自研手势，参考 ImageToolbox 交互习惯）：
  * - 左右两个方向均可滑动删除
  * - 划出红色圆形垃圾桶徽章（带盖子开合动画），以划出空间的中点水平居中（垂直不动）
- * - 滑过 1/3：清脆振动 + 盖子打开；划回 1/3 以内：再次清脆振动 + 盖子关上
+ * - 滑过 1/5：清脆振动 + 盖子打开；划回 1/5 以内：再次清脆振动 + 盖子关上
  * - 过阈值后松手：沿滑动方向滑出屏幕 → 图标继续居中渐隐（划出屏后 +0.1s 完全透明）→ 移除列表项
  * - 未过阈值松手：弹簧动画回位（不移除）
  *
- * 转换完成移除动画：
- * - 一次左滑效果直接滑出屏幕（不显示垃圾桶徽章）
- * - 滑出后高度塌陷（后续项弹簧补位）
+ * 转换完成移除：
+ * - 由 Activity 直接无动画移除（附快速两下振动提示）
  */
 @Composable
 fun FileCard(
     item: FileItem,
     isConverting: Boolean,
     sameFormat: Boolean,
-    onDelete: (String) -> Unit,
-    onDoneRemove: (String) -> Unit
+    onDelete: (String) -> Unit
 ) {
     val haptic = rememberHapticFeedback()
     val density = LocalDensity.current
@@ -97,41 +95,25 @@ fun FileCard(
 
     // 状态用 State 对象承载：pointerInput(Unit) 闭包跨重组读取最新值
     var boxWidthPx by remember { mutableIntStateOf(0) }
-    var boxHeightPx by remember { mutableIntStateOf(0) }
     val offsetX = remember { Animatable(0f) }        // 侧滑位移（px，正=向右）
     val iconAlpha = remember { Animatable(1f) }       // 垃圾桶徽章透明度
-    val heightAnim = remember { Animatable(-1f) }     // 高度塌陷（px，-1=未开始）
     var lidOpen by remember { mutableStateOf(false) }
     var pastThreshold by remember { mutableStateOf(false) }
     var exiting by remember { mutableStateOf(false) }
-    // 转换完成触发的左滑退出（不显示垃圾桶徽章）
-    var doneExiting by remember { mutableStateOf(false) }
     // 垃圾桶条件显示：仅在拖动项目时显示（项 9）
     var dragging by remember { mutableStateOf(false) }
     // 垃圾桶盖方向：从右向左拉（off<0）→ 盖开向左边；从左向右拉（off>0）→ 盖开向右边
     var lidToLeft by remember { mutableStateOf(false) }
 
-    // 垃圾桶徽章显隐：仅手动拖动/手动删除退出时可见；转换完成的左滑退出不显示垃圾桶
+    // 垃圾桶徽章显隐：仅手动拖动/手动删除退出时可见
     val badgeAlpha by animateFloatAsState(
-        targetValue = if ((dragging || exiting) && !doneExiting) 1f else 0f,
+        targetValue = if (dragging || exiting) 1f else 0f,
         animationSpec = tween(120),
         label = "badgeAlpha"
     )
 
-    // 转换完成：一次左滑直接滑出屏幕（无垃圾桶），滑出后高度塌陷并移除
-    LaunchedEffect(item.isDone) {
-        if (!item.isDone) return@LaunchedEffect
-        exiting = true
-        doneExiting = true
-        if (heightAnim.value < 0f && boxHeightPx > 0) heightAnim.snapTo(boxHeightPx.toFloat())
-        val w = boxWidthPx.toFloat()
-        offsetX.animateTo(-w, tween(260, easing = FastOutSlowInEasing))
-        heightAnim.animateTo(0f, spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMediumLow))
-        onDoneRemove(item.path)
-    }
-
-    // 处理中 / 已完成 / 退出动画中：禁用侧滑手势
-    val gestureModifier = if (!isConverting && !item.isDone && !exiting) {
+    // 处理中 / 退出动画中：禁用侧滑手势
+    val gestureModifier = if (!isConverting && !exiting) {
         Modifier.pointerInput(Unit) {
             detectHorizontalDragGestures(
                 onDragStart = { dragging = true },
@@ -143,7 +125,7 @@ fun FileCard(
                     scope.launch { offsetX.snapTo(target) }
                     // 盖子方向跟随滑动方向：从右向左拉（off<0）→ 盖开向左边
                     if (target != 0f) lidToLeft = target < 0f
-                    val over = abs(target) > w / 3f
+                    val over = abs(target) > w / 5f
                     if (over != pastThreshold) {
                         pastThreshold = over
                         lidOpen = over
@@ -154,7 +136,7 @@ fun FileCard(
                     dragging = false
                     val w = boxWidthPx.toFloat()
                     if (w <= 0f) return@detectHorizontalDragGestures
-                    if (pastThreshold && abs(offsetX.value) > w / 3f) {
+                    if (pastThreshold && abs(offsetX.value) > w / 5f) {
                         // 删除：沿滑动方向滑出屏幕，图标渐隐（划出屏后 +0.1s 完全透明）
                         exiting = true
                         val dir = if (offsetX.value < 0f) -1f else 1f
@@ -186,12 +168,10 @@ fun FileCard(
         }
     } else Modifier
 
-    val useFixedHeight = heightAnim.value >= 0f
     Box(
         Modifier
             .fillMaxWidth()
-            .then(if (useFixedHeight) Modifier.height(with(density) { heightAnim.value.toDp() }) else Modifier)
-            .onSizeChanged { if (heightAnim.value < 0f) { boxWidthPx = it.width; boxHeightPx = it.height } }
+            .onSizeChanged { boxWidthPx = it.width }
             .clipToBounds()
             .then(gestureModifier)
     ) {
@@ -212,7 +192,7 @@ fun FileCard(
             }
         }
 
-        // 前景卡片：侧滑平移（手动删除与转换完成左滑共用 translationX）
+        // 前景卡片：侧滑平移（手动删除共用 translationX）
         Box(
             Modifier
                 .fillMaxWidth()

@@ -1,22 +1,39 @@
 package com.zsz.zlivephoto.ui
 
 import android.view.HapticFeedbackConstants
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.CubicBezierEasing
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathMeasure
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.StrokeJoin
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Dp
@@ -157,5 +174,68 @@ class HapticController(private val view: android.view.View) {
     /** 长按反馈（删除、确认） */
     fun longPress() {
         view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+    }
+
+    /** 快速连续两下清脆反馈（清空/处理完成的批量清理提示） */
+    fun double() {
+        val h = android.os.Handler(android.os.Looper.getMainLooper())
+        view.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
+        h.postDelayed({
+            view.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
+        }, 90)
+    }
+}
+
+/**
+ * 现代 MD3 风格复选框（弹窗用）：
+ * - 20dp 圆角方框，勾选时容器色从透明动画填充到 primary
+ * - 勾号按路径进度描边动画（180ms）
+ * - 未勾选显示 2dp 轮廓线（onSurfaceVariant）
+ */
+@Composable
+fun Md3Checkbox(
+    checked: Boolean,
+    modifier: Modifier = Modifier
+) {
+    val checkProgress by animateFloatAsState(
+        targetValue = if (checked) 1f else 0f,
+        animationSpec = tween(180, easing = FastOutSlowInEasing),
+        label = "md3CheckStroke"
+    )
+    val fillColor by animateColorAsState(
+        targetValue = if (checked) MaterialTheme.colorScheme.primary else Color.Transparent,
+        animationSpec = tween(180, easing = FastOutSlowInEasing),
+        label = "md3CheckFill"
+    )
+    val outlineColor = if (checked) Color.Transparent
+        else MaterialTheme.colorScheme.onSurfaceVariant
+    val checkColor = MaterialTheme.colorScheme.onPrimary
+    Box(
+        modifier = modifier
+            .size(20.dp)
+            .clip(RoundedCornerShape(5.dp))
+            .background(fillColor)
+            .border(2.dp, outlineColor, RoundedCornerShape(5.dp)),
+        contentAlignment = Alignment.Center
+    ) {
+        if (checkProgress > 0f) {
+            Canvas(modifier = Modifier.size(14.dp)) {
+                val w = size.width
+                val h = size.height
+                val checkPath = Path().apply {
+                    moveTo(w * 0.20f, h * 0.55f)
+                    lineTo(w * 0.42f, h * 0.78f)
+                    lineTo(w * 0.82f, h * 0.26f)
+                }
+                val measure = PathMeasure().apply { setPath(checkPath, false) }
+                val drawn = Path()
+                measure.getSegment(0f, measure.length * checkProgress, drawn, true)
+                drawPath(
+                    drawn,
+                    color = checkColor,
+                    style = Stroke(width = 2.dp.toPx(), cap = StrokeCap.Round, join = StrokeJoin.Round)
+                )
+            }
+        }
     }
 }

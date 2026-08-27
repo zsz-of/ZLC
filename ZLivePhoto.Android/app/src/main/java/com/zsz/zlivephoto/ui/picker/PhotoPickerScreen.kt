@@ -5,12 +5,10 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.util.LruCache
 import android.util.Size
-import androidx.activity.compose.PredictiveBackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloat
@@ -118,7 +116,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import java.util.Calendar
-import kotlin.coroutines.cancellation.CancellationException
 
 /**
  * 缩略图内存 LRU 缓存（项 9 按需加载）：
@@ -126,6 +123,11 @@ import kotlin.coroutines.cancellation.CancellationException
  * - 容量 96 条（约 5 屏）：未超出屏幕过远的保持加载，过远的被 LRU 淘汰（卸载）
  */
 private val thumbCache = LruCache<String, Bitmap>(96)
+
+// 缩略图加载有界并发：限制同时进行的 ContentResolver.loadThumbnail 数量，
+// 避免快速滚动/千张列表时并发 I/O 过多拖垮主线程与磁盘，造成卡顿
+@OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+private val thumbDispatcher = Dispatchers.IO.limitedParallelism(4)
 
 /**
  * 内置动态照片选择器。
@@ -158,8 +160,6 @@ fun PhotoPickerScreen(
     var albumsExpanded by remember { mutableStateOf(false) }
     // 相册切换滚动方向（项 4）：1=切到右侧相册（新内容自右侧进入、画面向左滚），-1=反向
     var slideDir by remember { mutableStateOf(1) }
-    // 预览式返回手势进度
-    val backAnim = remember { Animatable(0f) }
 
     // 进入/离开相册：进入 diff+续扫，离开取消（保留进度）
     DisposableEffect(bucketId) {
@@ -178,17 +178,6 @@ fun PhotoPickerScreen(
         }
     }
     val running = progress.second
-
-    // 系统返回手势（预览式返回）：内容随手势进度缩小右移，手势提交后返回主页；
-    // 手势取消（划回）动画还原。扫描线程运行在 scannerScope，不受返回动画影响
-    PredictiveBackHandler { flow ->
-        try {
-            flow.collect { backAnim.snapTo(it.progress) }
-            onBack()
-        } catch (_: CancellationException) {
-            backAnim.animateTo(0f, tween(200))
-        }
-    }
 
     // 网格显示顺序（项 3 有序标记）：全选时按此顺序（从上到下、从左到右）添加，
     // 序号与视觉顺序一致；固定按日期降序；size 读取驱动扫描追加时重算
@@ -238,16 +227,6 @@ fun PhotoPickerScreen(
         Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-            .graphicsLayer {
-                // 预览式返回：随手势进度以中心为基准缩小并向右平移
-                val p = backAnim.value
-                if (p > 0f) {
-                    scaleX = 1f - p * 0.06f
-                    scaleY = 1f - p * 0.06f
-                    translationX = p * size.width * 0.18f
-                    transformOrigin = TransformOrigin(0.5f, 0.5f)
-                }
-            }
     ) {
         // ── 顶栏（surfaceContainer 容器）──
         Column(
@@ -853,9 +832,9 @@ private fun MediaThumbnail(uri: Uri, resolver: ContentResolver, modifier: Modifi
         val key = uri.toString()
         // 命中缓存（滚动回来）：直接显示，不重复加载
         thumbCache.get(key)?.let { value = it; return@produceState }
-        value = withContext(Dispatchers.IO) {
+        value = withContext(thumbDispatcher) {
             val b = try {
-                resolver.loadThumbnail(uri, Size(256, 256), null)
+                resolver.loadThumbnail(uri, Size(160, 160), null)
             } catch (_: Exception) {
                 null
             }

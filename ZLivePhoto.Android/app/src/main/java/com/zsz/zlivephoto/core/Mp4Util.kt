@@ -165,6 +165,25 @@ internal object Mp4Util {
         return buf
     }
 
+    /**
+     * 把 QuickTime MOV（major_brand=qt  ）恢复为标准 MP4（major_brand=isom）。
+     * 用于从 Apple 读回时归一化视频流：vivo/Google/小米等 MP4 格式若保留
+     * "qt  " 品牌，会导致相册能识别动态照片却无法正常播放。
+     */
+    fun movToMp4(data: ByteArray): ByteArray {
+        if (!hasFtyp(data)) return data
+        val buf = data.copyOf()
+        val qt = byteArrayOf(0x71, 0x74, 0x20, 0x20) // "qt  "
+        if (BinaryUtils.arrayEquals(buf, 8, qt)) {
+            // "isom" = 0x69 0x73 0x6F 0x6D
+            buf[8] = 0x69.toByte()
+            buf[9] = 0x73.toByte()
+            buf[10] = 0x6F.toByte()
+            buf[11] = 0x6D.toByte()
+        }
+        return buf
+    }
+
     private fun packBox(type: String, payload: ByteArray): ByteArray {
         val result = ByteArray(8 + payload.size)
         BinaryUtils.writeU32BE(result, 0, (payload.size + 8).toLong())

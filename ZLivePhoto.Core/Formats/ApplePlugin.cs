@@ -77,11 +77,15 @@ public sealed class ApplePlugin : FormatPlugin
         if (!Mp4Util.HasFtyp(movData))
             throw new InvalidDataException("MOV 文件缺少 ftyp box");
 
+        // 归一化：MOV 的 major_brand "qt  " 恢复为标准 MP4 "isom"，
+        // 否则转回 vivo/Google/小米等 MP4 格式时相册可识别但无法播放。
+        var videoMp4 = Mp4Util.MovToMp4(movData);
+
         var asset = new LivePhotoAsset
         {
             PrimaryJpeg = primary,
             GainmapJpeg = null,
-            VideoMp4 = movData,
+            VideoMp4 = videoMp4,
             SourceFormat = Name,
             PresentationTsUs = 0 // Apple StillImageTime=0
         };
@@ -92,7 +96,8 @@ public sealed class ApplePlugin : FormatPlugin
     public override List<string> Write(LivePhotoAsset asset, string outDir, string stem,
         Action<string, string, string> log, Dictionary<string, object> options)
     {
-        var contentId = Guid.NewGuid().ToString("N").ToUpperInvariant();
+        // Apple 规范要求带连字符的标准 UUID（如 1E874403-E522-4589-948A-E97AC157F32D）
+        var contentId = Guid.NewGuid().ToString().ToUpperInvariant();
 
         // 图片端：写入 XMP ContentIdentifier
         var xmp = BuildAppleXmp(contentId);

@@ -14,6 +14,42 @@ public sealed class XiaomiPlugin : FormatPlugin
     /// <summary>小米相册识别的 EXIF 标签（十进制 34967）</summary>
     public const int XiaomiExifTag = 0x8897;
 
+    /// <summary>小米私有 0xE4 段前缀（含 {"8897":"1"} JSON 的 livephotoInfo）</summary>
+    private static readonly byte[] XiaomiCustomizePrefix = "XIAOMI_CUSTOMIZE"u8.ToArray();
+
+    /// <summary>遍历文件头 2MB 内是否存在小米私有 0xE4 段（payload 以 XIAOMI_CUSTOMIZE 开头）。</summary>
+    private static bool HasXiaomiCustomize(string path)
+    {
+        try
+        {
+            using var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            var head = new byte[Math.Min(2 * 1024 * 1024, fs.Length)];
+            int read = ReadFull(fs, head);
+            if (read < 2) return false;
+            foreach (var (_, _, _, payloadStart, _) in JpegUtil.IterateSegments(head[..read]))
+            {
+                if (payloadStart + XiaomiCustomizePrefix.Length <= head.Length &&
+                    head.AsSpan(payloadStart, XiaomiCustomizePrefix.Length).SequenceEqual(XiaomiCustomizePrefix))
+                    return true;
+            }
+        }
+        catch { /* 读取失败 */ }
+        return false;
+    }
+
+    /// <summary>循环读取直到填满 buffer，返回实际读取字节数。</summary>
+    private static int ReadFull(FileStream fs, byte[] buffer)
+    {
+        int total = 0;
+        while (total < buffer.Length)
+        {
+            int n = fs.Read(buffer, total, buffer.Length - total);
+            if (n <= 0) break;
+            total += n;
+        }
+        return total;
+    }
+
     public override int Detect(string path)
     {
         var xmpText = GooglePlugin.SniffXmp(path);
@@ -22,6 +58,11 @@ public sealed class XiaomiPlugin : FormatPlugin
         // 双标签并存是小米的强特征
         if (info.HasBoth && !info.HasOplus)
             return 95;
+
+        // 小米私有 0xE4 段（XIAOMI_CUSTOMIZE）是小米相机特有；
+        // 91 分压过 Google 的 90（EXIF 0x8897 被第三方传输剥掉时仍可识别）
+        if (HasXiaomiCustomize(path))
+            return 91;
 
         // EXIF 0x8897 存在也是小米特征（小米相机写在 ExifIFD，可能无 MicroVideo 双标签，
         // 布局与 Google 纯 Container 相同；92 分压过 Google 的 90 避免误判）

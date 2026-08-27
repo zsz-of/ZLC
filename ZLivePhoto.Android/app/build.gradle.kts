@@ -67,4 +67,7 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.lifecycle.runtime.ktx)
     debugImplementation(libs.compose.ui.tooling)
+
+    // JVM 单元测试（AndroidLogicGpsTest：验证转换不破坏 GPS）
+    testImplementation("junit:junit:4.13.2")
 }

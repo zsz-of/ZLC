@@ -245,7 +245,7 @@ internal object ExifUtil {
     private fun encodeInline(le: Boolean, tagType: Int, value: Int): ByteArray {
         val b = ByteArray(4)
         when (tagType) {
-            1 -> if (le) b[0] = value.toByte() else b[3] = value.toByte()
+            1 -> b[0] = value.toByte() // BYTE 恒为单字节值，与字节序无关（大端不可写 b[3]）
             3 -> if (le) BinaryUtils.writeU16LE(b, 0, value) else BinaryUtils.writeU16BE(b, 0, value)
             4 -> if (le) BinaryUtils.writeU32LE(b, 0, value.toLong()) else BinaryUtils.writeU32BE(b, 0, value.toLong())
             else -> throw ExifException("不支持的 inline 类型 $tagType")

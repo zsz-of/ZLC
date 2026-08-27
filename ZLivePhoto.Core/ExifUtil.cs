@@ -277,7 +277,7 @@ public static class ExifUtil
     /// <summary>按字节序编码 4 字节 inline 值（BYTE/SHORT/LONG）。</summary>
     private static byte[] EncodeInline(bool le, int tagType, int value) => tagType switch
     {
-        1 => le ? [(byte)value, 0, 0, 0] : [0, 0, 0, (byte)value],
+        1 => [(byte)value, 0, 0, 0], // BYTE 恒为单字节值，与字节序无关（大端不可写 b[3]）
         3 => Pack16(le, (ushort)value).Concat(new byte[2]).ToArray(),
         4 => Pack32(le, (uint)value),
         _ => throw new ExifException($"不支持的 inline 类型 {tagType}")

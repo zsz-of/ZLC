@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.core.BinaryUtils
 import com.zsz.zlivephoto.core.ExifUtil
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
@@ -18,6 +19,35 @@ internal class XiaomiPlugin : FormatPlugin() {
     companion object {
         /** 小米相册识别的 EXIF 标签（十进制 34967） */
         const val xiaomiExifTag: Int = 0x8897
+
+        /** 小米私有 0xE4 段前缀（含 {"8897":"1"} JSON 的 livephotoInfo） */
+        private val xiaomiCustomizePrefix: ByteArray = "XIAOMI_CUSTOMIZE".toByteArray()
+
+        /** 遍历文件头 2MB 内是否存在小米私有 0xE4 段（payload 以 XIAOMI_CUSTOMIZE 开头）。 */
+        private fun hasXiaomiCustomize(path: String): Boolean {
+            return try {
+                val fileSize = File(path).length().toInt()
+                val bufSize = minOf(2 * 1024 * 1024, fileSize)
+                if (bufSize < 2) return false
+                val head = ByteArray(bufSize)
+                FileInputStream(path).use { fs ->
+                    var read = 0
+                    while (read < bufSize) {
+                        val n = fs.read(head, read, bufSize - read)
+                        if (n < 0) break
+                        read += n
+                    }
+                }
+                for (seg in JpegUtil.iterateSegments(head)) {
+                    if (seg.payloadStart + xiaomiCustomizePrefix.size <= head.size &&
+                        BinaryUtils.arrayEquals(head, seg.payloadStart, xiaomiCustomizePrefix)
+                    ) return true
+                }
+                false
+            } catch (e: Exception) {
+                false
+            }
+        }
     }
 
     override fun detect(path: String): Int {
@@ -26,6 +56,10 @@ internal class XiaomiPlugin : FormatPlugin() {
 
         // 双标签并存是小米的强特征
         if (info.hasBoth && !info.hasOplus) return 95
+
+        // 小米私有 0xE4 段（XIAOMI_CUSTOMIZE）是小米相机特有；
+        // 91 分压过 Google 的 90（EXIF 0x8897 被第三方传输剥掉时仍可识别）
+        if (hasXiaomiCustomize(path)) return 91
 
         // EXIF 0x8897 存在也是小米特征（小米相机写在 ExifIFD，可能无 MicroVideo 双标签，
         // 布局与 Google 纯 Container 相同；92 分压过 Google 的 90 避免误判）

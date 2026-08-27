@@ -241,12 +241,11 @@ public static class ExifUtil
                 var oldBytes = jpeg[(exifIfdAbs + 2)..(exifIfdAbs + 2 + exifCount * 12)];
                 appended = Pack16(le, (ushort)(exifCount + 1)).Concat(oldBytes)
                     .Concat(newEntry).Concat(Pack32(le, 0)).ToArray();
-                if (totalLen + appended.Length > 65535) return jpeg; // APP1 段长上限
-
+                if (totalLen + appended.Length - 2 > 65535) return jpeg; // APP1 段长上限（段长字段不含 marker 2B）
                 var result = InsertBytes(jpeg, segStart + totalLen, appended);
                 // 改写 0x8769 指针 → 新 ExifIFD 偏移（原位，4 字节）
                 Pack32(le, (uint)appendRel).CopyTo(result, exifPtrEntryOff + 8);
-                UpdateSegLen(result, segStart, totalLen + appended.Length);
+                UpdateSegLen(result, segStart, totalLen + appended.Length - 2);
                 return result;
             }
 
@@ -260,12 +259,12 @@ public static class ExifUtil
                 .Concat(ptrEntry).Concat(Pack32(le, 0)).ToArray();
             var newExifIfd = Pack16(le, 1).Concat(newEntry).Concat(Pack32(le, 0)).ToArray();
             appended = newIfd0.Concat(newExifIfd).ToArray();
-            if (totalLen + appended.Length > 65535) return jpeg; // APP1 段长上限
+            if (totalLen + appended.Length - 2 > 65535) return jpeg; // APP1 段长上限（段长字段不含 marker 2B）
 
             var result2 = InsertBytes(jpeg, segStart + totalLen, appended);
             // 改写 TIFF 头 IFD0 偏移（原位，4 字节）
             Pack32(le, (uint)appendRel).CopyTo(result2, tiffStart + 4);
-            UpdateSegLen(result2, segStart, totalLen + appended.Length);
+            UpdateSegLen(result2, segStart, totalLen + appended.Length - 2);
             return result2;
         }
         catch

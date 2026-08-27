@@ -209,13 +209,12 @@ internal object ExifUtil {
                 val oldBytes = jpeg.copyOfRange(
                     exifIfdAbs + 2, exifIfdAbs + 2 + exifCount * 12)
                 appended = pack16(le, exifCount + 1) + oldBytes + newEntry + pack32(le, 0)
-                if (totalLen + appended.size > 65535) return jpeg // APP1 段长上限
-
+                if (totalLen + appended.size - 2 > 65535) return jpeg // APP1 段长上限（段长字段不含 marker 2B）
                 val result = insertBytes(jpeg, segStart + totalLen, appended)
                 // 改写 0x8769 指针 → 新 ExifIFD 偏移（原位，4 字节）
                 val ptr = pack32(le, appendRel.toLong())
                 System.arraycopy(ptr, 0, result, exifPtrEntryOff + 8, 4)
-                updateSegLen(result, segStart, totalLen + appended.size)
+                updateSegLen(result, segStart, totalLen + appended.size - 2)
                 return result
             }
 
@@ -229,13 +228,12 @@ internal object ExifUtil {
             val newIfd0 = pack16(le, ifd0Count + 1) + oldIfd0Bytes + ptrEntry + pack32(le, 0)
             val newExifIfd = pack16(le, 1) + newEntry + pack32(le, 0)
             appended = newIfd0 + newExifIfd
-            if (totalLen + appended.size > 65535) return jpeg // APP1 段长上限
-
+            if (totalLen + appended.size - 2 > 65535) return jpeg // APP1 段长上限（段长字段不含 marker 2B）
             val result = insertBytes(jpeg, segStart + totalLen, appended)
             // 改写 TIFF 头 IFD0 偏移（原位，4 字节）
             val hdr = pack32(le, appendRel.toLong())
             System.arraycopy(hdr, 0, result, tiffStart + 4, 4)
-            updateSegLen(result, segStart, totalLen + appended.size)
+            updateSegLen(result, segStart, totalLen + appended.size - 2)
             return result
         } catch (e: Exception) {
             // 解析失败：返回原 jpeg，识别兜底靠 XMP 双标签

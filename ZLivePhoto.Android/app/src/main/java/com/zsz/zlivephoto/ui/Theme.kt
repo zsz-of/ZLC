@@ -1,7 +1,10 @@
 package com.zsz.zlivephoto.ui
 
 import android.os.Build
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -81,17 +84,66 @@ fun ZLivePhotoTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
+    val context = LocalContext.current
+    val target = when {
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ->
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
         darkTheme -> DarkColors
         else -> LightColors
     }
+    // 深色/浅色切换时逐色过渡（约 400ms），避免 Activity 重建瞬变
+    val colorScheme = animateColorScheme(target)
 
     MaterialTheme(
         colorScheme = colorScheme,
         content = content
+    )
+}
+
+/** 对 ColorScheme 全部颜色做动画插值，实现主题切换的平滑过渡（ImageToolbox 式） */
+@Composable
+private fun animateColorScheme(target: ColorScheme): ColorScheme {
+    val spec = tween<Color>(400)
+
+    @Composable
+    fun anim(c: Color): Color = animateColorAsState(targetValue = c, animationSpec = spec, label = "schemeColor").value
+
+    return target.copy(
+        primary = anim(target.primary),
+        onPrimary = anim(target.onPrimary),
+        primaryContainer = anim(target.primaryContainer),
+        onPrimaryContainer = anim(target.onPrimaryContainer),
+        inversePrimary = anim(target.inversePrimary),
+        secondary = anim(target.secondary),
+        onSecondary = anim(target.onSecondary),
+        secondaryContainer = anim(target.secondaryContainer),
+        onSecondaryContainer = anim(target.onSecondaryContainer),
+        tertiary = anim(target.tertiary),
+        onTertiary = anim(target.onTertiary),
+        tertiaryContainer = anim(target.tertiaryContainer),
+        onTertiaryContainer = anim(target.onTertiaryContainer),
+        background = anim(target.background),
+        onBackground = anim(target.onBackground),
+        surface = anim(target.surface),
+        onSurface = anim(target.onSurface),
+        surfaceVariant = anim(target.surfaceVariant),
+        onSurfaceVariant = anim(target.onSurfaceVariant),
+        surfaceTint = anim(target.surfaceTint),
+        inverseSurface = anim(target.inverseSurface),
+        inverseOnSurface = anim(target.inverseOnSurface),
+        error = anim(target.error),
+        onError = anim(target.onError),
+        errorContainer = anim(target.errorContainer),
+        onErrorContainer = anim(target.onErrorContainer),
+        outline = anim(target.outline),
+        outlineVariant = anim(target.outlineVariant),
+        scrim = anim(target.scrim),
+        surfaceBright = anim(target.surfaceBright),
+        surfaceDim = anim(target.surfaceDim),
+        surfaceContainer = anim(target.surfaceContainer),
+        surfaceContainerHigh = anim(target.surfaceContainerHigh),
+        surfaceContainerHighest = anim(target.surfaceContainerHighest),
+        surfaceContainerLow = anim(target.surfaceContainerLow),
+        surfaceContainerLowest = anim(target.surfaceContainerLowest)
     )
 }

@@ -1,18 +1,21 @@
 package com.zsz.zlivephoto.ui
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
-import android.media.ExifInterface
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.rememberScrollState
@@ -37,17 +40,17 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.AddPhotoAlternate
+import androidx.compose.material.icons.filled.AutoDelete
 import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.CreateNewFolder
 import androidx.compose.material.icons.filled.DeleteOutline
 import androidx.compose.material.icons.filled.FormatPaint
 import androidx.compose.material.icons.filled.PhotoLibrary
+import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
@@ -55,41 +58,30 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.SwipeToDismissBox
-import androidx.compose.material3.SwipeToDismissBoxValue
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberModalBottomSheetState
-import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 data class FileItem(
     val path: String,
@@ -97,23 +89,28 @@ data class FileItem(
     val info: String,
     val isUnrecognized: Boolean = false,
     val sourceUri: String? = null,
+    val sourcePath: String? = null,
     val sourceTime: Long = 0L,
-    val sourceTaken: Long = 0L
+    val sourceTaken: Long = 0L,
+    /** 识别出的格式（plugin.name），用于「目标=输入」蓝色提示 */
+    val formatKey: String? = null,
+    /** 转换成功：触发「完成」移除动画 */
+    val isDone: Boolean = false
 )
 
 data class FormatOption(
     val key: String,
-    val name: String,
-    val desc: String
+    val name: String
 )
 
 val formatOptions = listOf(
-    FormatOption("google", "Google", "JPEG+MP4 单文件，兼容 Android 原生"),
-    FormatOption("apple", "Apple", "JPG+MOV 双文件，Apple Live Photo"),
-    FormatOption("oppo", "OPPO", "单文件，OPPO 私有 XMP 扩展"),
-    FormatOption("vivo", "vivo", "单/双文件可选（点开设置），vivo 私有 XMP + footer"),
-    FormatOption("xiaomi", "小米", "单文件，双 XMP 标签 + EXIF 标识"),
-    FormatOption("honor", "荣耀", "单文件，Google Container + EIS matrix footer"),
+    FormatOption("google", "Google"),
+    FormatOption("apple", "Apple"),
+    FormatOption("oppo", "OPPO"),
+    FormatOption("vivo_single", "vivo（单文件）"),
+    FormatOption("vivo", "vivo（双文件）"),
+    FormatOption("xiaomi", "小米"),
+    FormatOption("honor", "荣耀"),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -122,19 +119,44 @@ fun MainScreen(
     files: SnapshotStateList<FileItem>,
     statusText: String,
     progress: Float,
+    progressDetail: String,
+    progressDetail2: String,
+    isImporting: Boolean,
+    importProgress: Float,
     isConverting: Boolean,
+    isBatch: Boolean,
+    isPickerOpening: Boolean,
     selectedFormat: String,
     onAddFiles: () -> Unit,
+    onBatchProcess: () -> Unit,
     onClearFiles: () -> Unit,
     onConvert: () -> Unit,
+    onStopConvert: () -> Unit,
     onSelectFormat: (String) -> Unit,
-    vivoMode: String,
-    onSelectVivoMode: (String) -> Unit,
-    onRemoveFile: (String) -> Unit
+    // 项10：处理完成后删除原图开关（开启=清脆震动 / 关闭=柔和震动）
+    deleteOriginal: Boolean,
+    onToggleDeleteOriginal: (Boolean) -> Unit,
+    onRemoveFile: (String, Boolean) -> Unit
 ) {
     val haptic = rememberHapticFeedback()
     var showFormatSheet by remember { mutableStateOf(false) }
     var showStatusDetail by remember { mutableStateOf(false) }
+
+    // 按钮按压反馈（项 5）：按下瞬间立即震动 + 圆角弹簧减小 + 轻微缩放
+    val addFb = rememberPressFeedback()
+    val batchFb = rememberPressFeedback()
+    val formatFb = rememberPressFeedback()
+    val clearFb = rememberPressFeedback(baseCorner = 16.dp, pressedCorner = 6.dp)
+    val convertFb = rememberPressFeedback()
+    // 项10 开关行：保留圆角曲率+缩放的固定序列动画，但按下不震动
+    // （开启=清脆 / 关闭=柔和的差异化反馈由切换回调触发）
+    val deleteFb = rememberPressFeedback(hapticOnPress = false)
+
+    // 忙碌态（转换中或导入中）：隐藏三按钮组、进度条显示、转换按钮变形为停止
+    val busy = isConverting || isImporting
+
+    // 实际转换目标：vivo 已拆分为两个顶级选项（vivo_single / vivo），直接使用
+    val effectiveTarget = selectedFormat
 
     Scaffold(
         topBar = {
@@ -156,17 +178,19 @@ fun MainScreen(
                                 ),
                             contentAlignment = Alignment.Center
                         ) {
+                            // 标志色跟随主题 onPrimary：深色模式下渐变底变浅，onPrimary 深色仍清晰
+                            val markColor = MaterialTheme.colorScheme.onPrimary
                             Canvas(modifier = Modifier.size(22.dp)) {
                                 val c = this.center
-                                drawCircle(color = androidx.compose.ui.graphics.Color.White, radius = 2.5.dp.toPx(), center = c)
+                                drawCircle(color = markColor, radius = 2.5.dp.toPx(), center = c)
                                 drawCircle(
-                                    color = androidx.compose.ui.graphics.Color.White,
+                                    color = markColor,
                                     radius = 5.5.dp.toPx(),
                                     center = c,
                                     style = androidx.compose.ui.graphics.drawscope.Stroke(width = 1.6.dp.toPx())
                                 )
                                 drawCircle(
-                                    color = androidx.compose.ui.graphics.Color.White.copy(alpha = 0.6f),
+                                    color = markColor.copy(alpha = 0.6f),
                                     radius = 9.dp.toPx(),
                                     center = c,
                                     style = androidx.compose.ui.graphics.drawscope.Stroke(width = 1.4.dp.toPx())
@@ -183,7 +207,7 @@ fun MainScreen(
                                 overflow = TextOverflow.Ellipsis
                             )
                             Text(
-                                text = "动态照片格式互转 · 字节级无损",
+                                text = "动态照片格式互转",
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -218,12 +242,16 @@ fun MainScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
-            // 文件列表区域
+        // 文件列表区域（批量处理时被半透明叠加层覆盖，叠层低于底部控制区）
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+        ) {
             if (files.isEmpty()) {
                 Box(
                     modifier = Modifier
-                        .weight(1f)
-                        .fillMaxWidth(),
+                        .fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -235,7 +263,6 @@ fun MainScreen(
                             Canvas(modifier = Modifier.fillMaxSize()) {
                                 val c = this.center
                                 val maxR = this.size.minDimension / 2f
-                                // 由外向内渐浓的涟漪
                                 drawCircle(
                                     color = androidx.compose.ui.graphics.Color(0xFF4F46E5).copy(alpha = 0.08f),
                                     radius = maxR
@@ -278,36 +305,51 @@ fun MainScreen(
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSurface
                         )
-                        Spacer(modifier = Modifier.height(6.dp))
-                        Text(
-                            text = "支持 Google / Apple / vivo / OPPO / 小米 / 荣耀\n动态照片格式互转，字节级无损",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.padding(horizontal = 32.dp)
-                        )
                     }
                 }
             } else {
                 LazyColumn(
                     modifier = Modifier
-                        .weight(1f)
-                        .fillMaxWidth()
+                        .fillMaxSize()
                         .padding(horizontal = 16.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
                     contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 8.dp)
                 ) {
                     items(files, key = { it.path }) { item ->
-                        SwipeToDeleteFileCard(
-                            item = item,
-                            onDelete = {
-                                haptic.longPress()
-                                // 按路径删除：连续滑动删除时列表项位移不会导致误删/卡死
-                                onRemoveFile(item.path)
+                        // 项间距放在项内部：移除动画塌陷时连同间距一起收起；
+                        // 剩余项补位为弹簧平移（animateItem placement），可被新的侧滑打断
+                        Box(
+                            Modifier.animateItem(
+                                placementSpec = spring(
+                                    dampingRatio = Spring.DampingRatioMediumBouncy,
+                                    stiffness = Spring.StiffnessMedium
+                                )
+                            )
+                        ) {
+                            Column {
+                                FileCard(
+                                    item = item,
+                                    isConverting = isConverting,
+                                    sameFormat = item.formatKey != null && item.formatKey == effectiveTarget,
+                                    onDelete = { path -> onRemoveFile(path, false) },
+                                    onDoneRemove = { path -> onRemoveFile(path, true) }
+                                )
+                                Spacer(modifier = Modifier.height(8.dp))
                             }
-                        )
+                        }
                     }
                 }
             }
+
+            // 批量处理叠加层：与背景底色相同、完全不透明，仅遮挡列表区
+            // （空列表同样覆盖），位于底部控制区图层之下，为批量专属动画预留空间
+            if (isBatch) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                )
+            }
+        }
 
             // 底部控制区（浮起面板）
             Surface(
@@ -322,23 +364,16 @@ fun MainScreen(
                         .padding(horizontal = 16.dp, vertical = 12.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    // 进度条
-                    AnimatedVisibility(
-                        visible = isConverting,
-                        enter = fadeIn() + expandVertically(),
-                        exit = fadeOut() + shrinkVertically()
-                    ) {
-                        LinearProgressIndicator(
-                            progress = { progress },
-                            modifier = Modifier.fillMaxWidth(),
-                        )
-                    }
-
-                    // 状态文字（带彩色状态点的胶囊，点击查看完整详情）
+                    // 状态胶囊（带彩色状态点，点击查看完整详情）：
+                    // 忙碌时内部展开进度条 + a/b 明细（如「已处理 18/240」，批量模式
+                    // 另有第二行动态照片张数）——进度与明细常驻胶囊小背景板内
+                    // 圆点颜色：处理中=蓝、就绪=绿、错误=红、完成类=主题色
                     val statusColor = when {
+                        busy -> androidx.compose.ui.graphics.Color(0xFF1E88E5)
                         statusText.contains("失败") || statusText.contains("错误") || statusText.contains("无法") ->
                             MaterialTheme.colorScheme.error
-                        statusText.contains("完成") || statusText.contains("已导入") || statusText.contains("已获得") || statusText.contains("已移除") || statusText.contains("已清空") ->
+                        statusText == "就绪" -> androidx.compose.ui.graphics.Color(0xFF34A853)
+                        statusText.contains("完成") || statusText.contains("已导入") || statusText.contains("已获得") || statusText.contains("已移除") || statusText.contains("已清空") || statusText.contains("批量") || statusText.contains("已停止") ->
                             MaterialTheme.colorScheme.primary
                         else -> MaterialTheme.colorScheme.onSurfaceVariant
                     }
@@ -349,100 +384,222 @@ fun MainScreen(
                             .fillMaxWidth()
                             .clickable { haptic.click(); showStatusDetail = true }
                     ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
+                        Column(
                             modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
                         ) {
-                            Box(
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(8.dp)
+                                        .clip(CircleShape)
+                                        .background(statusColor)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(
+                                    text = statusText,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    maxLines = 3,
+                                    overflow = TextOverflow.Ellipsis,
+                                    modifier = Modifier.weight(1f)
+                                )
+                                // 长文本显示不完全时，给出可展开的提示箭头
+                                if (statusText.length > 40) {
+                                    Icon(
+                                        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                                        contentDescription = "查看详情",
+                                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        modifier = Modifier.size(18.dp)
+                                    )
+                                }
+                            }
+                            // 进度条 + a/b 明细（转换/导入/批量均显示在胶囊内）
+                            AnimatedVisibility(
+                                visible = busy,
+                                enter = fadeIn() + expandVertically(),
+                                exit = fadeOut() + shrinkVertically()
+                            ) {
+                                Column {
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    LinearProgressIndicator(
+                                        progress = { if (isImporting) importProgress else progress },
+                                        modifier = Modifier.fillMaxWidth(),
+                                    )
+                                    if (progressDetail.isNotEmpty()) {
+                                        Spacer(modifier = Modifier.height(4.dp))
+                                        Text(
+                                            text = progressDetail,
+                                            style = MaterialTheme.typography.labelMedium,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                    }
+                                    if (progressDetail2.isNotEmpty()) {
+                                        Text(
+                                            text = progressDetail2,
+                                            style = MaterialTheme.typography.labelMedium,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // 三按钮组（添加文件 / 批量处理 / 输出格式）：
+                    // 忙碌时下滑与停止按钮重合后隐藏（面板高度同步收缩，控件实时下移）；
+                    // 恢复时从底部贝塞尔曲线动画上移（0.5s，FancyEasing）
+                    AnimatedVisibility(
+                        visible = !busy,
+                        enter = slideInVertically(tween(500, easing = FancyEasing)) { it } +
+                                fadeIn(tween(300, 100)) + expandVertically(tween(500, easing = FancyEasing)),
+                        exit = slideOutVertically(tween(500, easing = FancyEasing)) { it } +
+                                fadeOut(tween(300)) + shrinkVertically(tween(500, easing = FancyEasing))
+                    ) {
+                        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            // 添加文件 + 批量处理（平分左右空间；处理中禁用）
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                FilledTonalButton(
+                                    onClick = { onAddFiles() },
+                                    // 选择器打开流程（读相册）完成前禁用，防止重入引发扫描竞态崩溃
+                                    enabled = !busy && !isPickerOpening,
+                                    interactionSource = addFb.interactionSource,
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .height(52.dp)
+                                        .then(addFb.scaleModifier),
+                                    shape = RoundedCornerShape(addFb.corner)
+                                ) {
+                                    Icon(Icons.Default.AddPhotoAlternate, contentDescription = null, modifier = Modifier.size(18.dp))
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text("添加文件", style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.MiddleEllipsis)
+                                }
+                                FilledTonalButton(
+                                    onClick = { onBatchProcess() },
+                                    enabled = !busy,
+                                    interactionSource = batchFb.interactionSource,
+                                    modifier = Modifier
+                                        .weight(1f)
+                                        .height(52.dp)
+                                        .then(batchFb.scaleModifier),
+                                    shape = RoundedCornerShape(batchFb.corner)
+                                ) {
+                                    Icon(Icons.Default.CreateNewFolder, contentDescription = null, modifier = Modifier.size(18.dp))
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text("批量处理", style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.MiddleEllipsis)
+                                }
+                            }
+
+                            // 格式选择按钮（处理中禁用）
+                            FilledTonalButton(
+                                onClick = { showFormatSheet = true },
+                                enabled = !busy,
+                                interactionSource = formatFb.interactionSource,
                                 modifier = Modifier
-                                    .size(8.dp)
-                                    .clip(CircleShape)
-                                    .background(statusColor)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text(
-                                text = statusText,
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                maxLines = 3,
-                                overflow = TextOverflow.Ellipsis,
-                                modifier = Modifier.weight(1f)
-                            )
-                            // 长文本显示不完全时，给出可展开的提示箭头
-                            if (statusText.length > 40) {
+                                    .fillMaxWidth()
+                                    .height(52.dp)
+                                    .then(formatFb.scaleModifier),
+                                shape = RoundedCornerShape(formatFb.corner)
+                            ) {
+                                Icon(Icons.Default.FormatPaint, contentDescription = null, modifier = Modifier.size(20.dp))
+                                Spacer(modifier = Modifier.width(8.dp))
+                                val fmtName = formatOptions.firstOrNull { it.key == selectedFormat }?.name ?: "Google"
+                                Text("输出格式：$fmtName", style = MaterialTheme.typography.titleSmall)
+                            }
+
+                            // 项10：处理完成后删除原图开关行（随按钮组在处理中隐藏禁用）；
+                            // 批次完成后由系统删除工具一次性移入回收站；
+                            // 开启=清脆震动 / 关闭=柔和震动
+                            val onToggle: (Boolean) -> Unit = { newValue ->
+                                if (newValue) haptic.click() else haptic.soft()
+                                onToggleDeleteOriginal(newValue)
+                            }
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(52.dp)
+                                    .clip(RoundedCornerShape(deleteFb.corner))
+                                    .background(MaterialTheme.colorScheme.secondaryContainer)
+                                    .clickable(
+                                        interactionSource = deleteFb.interactionSource,
+                                        indication = null
+                                    ) { onToggle(!deleteOriginal) }
+                                    .then(deleteFb.scaleModifier)
+                                    .padding(horizontal = 20.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
                                 Icon(
-                                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                                    contentDescription = "查看详情",
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    modifier = Modifier.size(18.dp)
+                                    Icons.Default.AutoDelete,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onSecondaryContainer,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                                Spacer(modifier = Modifier.width(10.dp))
+                                Text(
+                                    text = "处理完成后删除原图",
+                                    style = MaterialTheme.typography.titleSmall,
+                                    color = MaterialTheme.colorScheme.onSecondaryContainer
+                                )
+                                Spacer(modifier = Modifier.weight(1f))
+                                Switch(
+                                    checked = deleteOriginal,
+                                    onCheckedChange = onToggle
                                 )
                             }
                         }
                     }
 
-                    // 添加文件（系统照片选择器）
-                    FilledTonalButton(
-                        onClick = { haptic.click(); onAddFiles() },
-                        modifier = Modifier.fillMaxWidth().height(52.dp).scaleOnPress(),
-                        shape = RoundedCornerShape(16.dp)
-                    ) {
-                        Icon(Icons.Default.AddPhotoAlternate, contentDescription = null, modifier = Modifier.size(18.dp))
-                        Spacer(modifier = Modifier.width(6.dp))
-                        Text("添加文件", style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.MiddleEllipsis)
-                    }
-
-                    // 格式选择按钮
-                    FilledTonalButton(
-                        onClick = {
-                            haptic.click()
-                            showFormatSheet = true
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(52.dp)
-                            .scaleOnPress(),
-                        shape = RoundedCornerShape(16.dp)
-                    ) {
-                        Icon(Icons.Default.FormatPaint, contentDescription = null, modifier = Modifier.size(20.dp))
-                        Spacer(modifier = Modifier.width(8.dp))
-                        val fmtName = formatOptions.firstOrNull { it.key == selectedFormat }?.name ?: "Google"
-                        val vivoSuffix = if (selectedFormat == "vivo") {
-                            if (vivoMode == "single") "（单文件）" else "（双文件）"
-                        } else ""
-                        Text("输出格式：$fmtName$vivoSuffix", style = MaterialTheme.typography.titleSmall)
-                    }
-
+                    // 清空 + 开始转换/停止处理 morph 行：
+                    // 点击开始转换后，转换按钮以贝塞尔曲线（0.5s）平滑拉伸占据清空按钮位置；
+                    // 内容以 0.3s 淡入淡出整体切换为停止图标（实心方块）+「停止处理」；
+                    // 处理完成/停止后按相同动画反向还原
+                    val morph by animateFloatAsState(
+                        targetValue = if (busy) 1f else 0f,
+                        animationSpec = tween(500, easing = FancyEasing),
+                        label = "morph"
+                    )
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        horizontalArrangement = Arrangement.spacedBy((8 * (1f - morph)).dp)
                     ) {
-                        OutlinedButton(
-                            onClick = {
-                                haptic.click()
-                                onClearFiles()
-                            },
-                            modifier = Modifier
-                                .weight(1f)
-                                .height(52.dp)
-                                .scaleOnPress(),
-                            shape = RoundedCornerShape(16.dp)
-                        ) {
-                            Icon(Icons.Default.DeleteOutline, contentDescription = null, modifier = Modifier.size(20.dp))
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Text("清空")
+                        // 清空（tonal 容器带底色；随 morph 淡出并让位）
+                        Box(modifier = Modifier.weight(1f - morph + 0.001f)) {
+                            FilledTonalButton(
+                                onClick = { onClearFiles() },
+                                enabled = !busy && files.isNotEmpty(),
+                                interactionSource = clearFb.interactionSource,
+                                colors = ButtonDefaults.filledTonalButtonColors(
+                                    containerColor = MaterialTheme.colorScheme.errorContainer,
+                                    contentColor = MaterialTheme.colorScheme.onErrorContainer
+                                ),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(52.dp)
+                                    .alpha(1f - morph)
+                                    .then(clearFb.scaleModifier),
+                                shape = RoundedCornerShape(clearFb.corner)
+                            ) {
+                                Icon(Icons.Default.DeleteOutline, contentDescription = null, modifier = Modifier.size(20.dp))
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text("清空")
+                            }
                         }
 
-                        // 渐变主按钮（品牌色 Indigo → Violet）
+                        // 渐变主按钮（品牌色 Indigo → Violet）；动画播放过程中仍可点击
                         Button(
                             onClick = {
-                                haptic.longPress()
-                                onConvert()
+                                if (busy) onStopConvert() else onConvert()
                             },
+                            interactionSource = convertFb.interactionSource,
                             modifier = Modifier
-                                .weight(1.6f)
+                                .weight(1.6f + morph * 0.999f)
                                 .height(52.dp)
-                                .scaleOnPress()
-                                .clip(RoundedCornerShape(16.dp))
+                                .then(convertFb.scaleModifier)
+                                .clip(RoundedCornerShape(convertFb.corner))
                                 .background(
                                     Brush.linearGradient(
                                         listOf(
@@ -450,17 +607,34 @@ fun MainScreen(
                                             MaterialTheme.colorScheme.tertiary
                                         )
                                     ),
-                                    RoundedCornerShape(16.dp)
+                                    RoundedCornerShape(convertFb.corner)
                                 ),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = androidx.compose.ui.graphics.Color.Transparent
                             ),
-                            shape = RoundedCornerShape(16.dp),
-                            enabled = !isConverting
+                            shape = RoundedCornerShape(convertFb.corner)
                         ) {
-                            Icon(Icons.Default.Bolt, contentDescription = null, modifier = Modifier.size(20.dp))
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Text("开始转换", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                            AnimatedContent(
+                                targetState = busy,
+                                transitionSpec = {
+                                    (fadeIn(tween(300, 100, easing = AlphaEasing))) togetherWith
+                                            (fadeOut(tween(300, easing = AlphaEasing)))
+                                },
+                                label = "convertBtn"
+                            ) { converting ->
+                                // 文字和图标作为一个整体，按钮内居中显示
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    if (converting) {
+                                        Icon(Icons.Filled.Stop, contentDescription = null, modifier = Modifier.size(20.dp))
+                                        Spacer(modifier = Modifier.width(6.dp))
+                                        Text("停止处理", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                                    } else {
+                                        Icon(Icons.Default.Bolt, contentDescription = null, modifier = Modifier.size(20.dp))
+                                        Spacer(modifier = Modifier.width(4.dp))
+                                        Text("开始转换", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -468,9 +642,12 @@ fun MainScreen(
         }
     }
 
-    // 格式选择 BottomSheet
+    // 格式选择 BottomSheet（选择后不自动关闭，由用户自行关闭）
     if (showFormatSheet) {
         val sheetState = rememberModalBottomSheetState()
+        // 滚动状态提升到 sheet 顶层 remember：切换输出格式触发重组时复用同一实例，
+        // 选项列表的滚动位置不会丢失/重置（内联 rememberScrollState 在内容高度变化时易被重建）
+        val formatScrollState = rememberScrollState()
         ModalBottomSheet(
             onDismissRequest = { showFormatSheet = false },
             sheetState = sheetState
@@ -482,14 +659,13 @@ fun MainScreen(
                 modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)
             )
             HorizontalDivider()
-            // 列表限高 + 可滚动：vivo 单/双文件设置展开后，下方荣耀等选项
-            // 仍可通过滚动完整查看；滚动位置由 ScrollState 保持，不会重置
+            // 格式列表滚动区：vivo 已拆分为「单文件 / 双文件」两个顶级选项
             val maxListHeight = LocalConfiguration.current.screenHeightDp.dp * 0.62f
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .heightIn(max = maxListHeight)
-                    .verticalScroll(rememberScrollState())
+                    .verticalScroll(formatScrollState)
             ) {
                 formatOptions.forEach { opt ->
                     val selected = opt.key == selectedFormat
@@ -505,31 +681,20 @@ fun MainScreen(
                             .clickable {
                                 haptic.click()
                                 onSelectFormat(opt.key)
-                                // vivo 点开后保留 sheet 以切换单/双文件模式
-                                if (opt.key != "vivo") showFormatSheet = false
                             }
                             .padding(horizontal = 12.dp, vertical = 4.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Column(
+                        Text(
+                            text = opt.name,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = if (selected) MaterialTheme.colorScheme.onSecondaryContainer
+                            else MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier
                                 .weight(1f)
-                                .padding(horizontal = 12.dp, vertical = 10.dp)
-                        ) {
-                            Text(
-                                text = opt.name,
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.Bold,
-                                color = if (selected) MaterialTheme.colorScheme.onSecondaryContainer
-                                else MaterialTheme.colorScheme.onSurface
-                            )
-                            Text(
-                                text = opt.desc,
-                                style = MaterialTheme.typography.bodySmall,
-                                color = if (selected) MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.8f)
-                                else MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
+                                .padding(horizontal = 12.dp, vertical = 12.dp)
+                        )
                         AnimatedVisibility(
                             visible = selected,
                             enter = scaleIn() + fadeIn(),
@@ -544,47 +709,15 @@ fun MainScreen(
                         }
                     }
 
-                    // vivo 模式切换（选中 vivo 时展开）
-                    AnimatedVisibility(visible = selected && opt.key == "vivo") {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 24.dp, vertical = 4.dp)
-                                .clip(RoundedCornerShape(14.dp))
-                                .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
-                                .padding(horizontal = 12.dp, vertical = 8.dp)
-                        ) {
-                            Text(
-                                text = "输出模式",
-                                style = MaterialTheme.typography.labelLarge,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                            Spacer(modifier = Modifier.height(4.dp))
-
-                            VivoModeRow(
-                                label = "单文件",
-                                desc = "JPG+MP4 合并为一个文件，vivo 相册可直接识别",
-                                checked = vivoMode == "single",
-                                onClick = { haptic.click(); onSelectVivoMode("single") }
-                            )
-                            VivoModeRow(
-                                label = "双文件",
-                                desc = "JPG + MP4 两个文件，通过 footer 关联",
-                                checked = vivoMode == "double",
-                                onClick = { haptic.click(); onSelectVivoMode("double") }
-                            )
-
-                            // 单文件模式警告：暗红色字体
-                            if (vivoMode == "single") {
-                                Spacer(modifier = Modifier.height(6.dp))
-                                Text(
-                                    text = "⚠ 过老的机型可能无法识别此格式",
-                                    style = MaterialTheme.typography.labelMedium,
-                                    fontWeight = FontWeight.Bold,
-                                    color = androidx.compose.ui.graphics.Color(0xFF8B0000)
-                                )
-                            }
-                        }
+                    // vivo 单文件选项下方的兼容性警告（常驻显示）
+                    if (opt.key == "vivo_single") {
+                        Text(
+                            text = "⚠ 过老的机型可能无法识别此格式",
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = androidx.compose.ui.graphics.Color(0xFF8B0000),
+                            modifier = Modifier.padding(start = 36.dp, bottom = 6.dp)
+                        )
                     }
                 }
                 Spacer(modifier = Modifier.height(24.dp))
@@ -592,7 +725,7 @@ fun MainScreen(
         }
     }
 
-    // 状态详情对话框（完整内容，长按可选中复制）
+    // 状态详情对话框（完整内容，长按可选中复制；按钮带 tonal 底色）
     if (showStatusDetail) {
         // LocalClipboardManager 的替代品 LocalClipboard 是 suspend API，
         // 此处为同步复制场景，保留旧 API 并抑制弃用警告
@@ -619,195 +752,14 @@ fun MainScreen(
                 }
             },
             confirmButton = {
-                TextButton(onClick = {
+                FilledTonalButton(onClick = {
+                    haptic.click()
                     clipboard.setText(AnnotatedString(statusText))
                 }) { Text("复制") }
             },
             dismissButton = {
-                TextButton(onClick = { showStatusDetail = false }) { Text("关闭") }
+                FilledTonalButton(onClick = { haptic.click(); showStatusDetail = false }) { Text("关闭") }
             }
         )
-    }
-}
-
-// ---------- vivo 单/双文件模式行 ----------
-
-@Composable
-private fun VivoModeRow(label: String, desc: String, checked: Boolean, onClick: () -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(10.dp))
-            .background(
-                if (checked) MaterialTheme.colorScheme.primaryContainer
-                else androidx.compose.ui.graphics.Color.Transparent
-            )
-            .clickable { onClick() }
-            .padding(horizontal = 10.dp, vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        RadioButton(selected = checked, onClick = onClick)
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = label,
-                style = MaterialTheme.typography.bodyLarge,
-                fontWeight = if (checked) FontWeight.Bold else FontWeight.Normal,
-                color = if (checked) MaterialTheme.colorScheme.onPrimaryContainer
-                else MaterialTheme.colorScheme.onSurface
-            )
-            Text(
-                text = desc,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-    }
-}
-
-// ---------- 右滑删除文件卡片 ----------
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun SwipeToDeleteFileCard(item: FileItem, onDelete: () -> Unit) {
-    // rememberUpdatedState：confirmValueChange 在首次组合时被 SwipeToDismissBoxState
-    // 捕获，若直接引用 onDelete 会形成过期闭包（连续滑动删除时删错项/卡在删除态），
-    // 必须经由 State 读取最新回调
-    val currentOnDelete by rememberUpdatedState(onDelete)
-    val dismissState = rememberSwipeToDismissBoxState(
-        confirmValueChange = { value ->
-            if (value == SwipeToDismissBoxValue.EndToStart) {
-                currentOnDelete()
-                true
-            } else false
-        },
-        positionalThreshold = { distance -> distance * 0.5f }
-    )
-
-    // 缩略图：IO 线程降采样解码 + EXIF 方向校正
-    val thumb by produceState<Bitmap?>(null, item.path) {
-        value = withContext(Dispatchers.IO) { decodeThumbnail(item.path) }
-    }
-
-    SwipeToDismissBox(
-        state = dismissState,
-        backgroundContent = {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(MaterialTheme.colorScheme.errorContainer)
-                    .padding(horizontal = 20.dp),
-                contentAlignment = Alignment.CenterEnd
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = "删除",
-                    tint = MaterialTheme.colorScheme.onErrorContainer
-                )
-            }
-        },
-        enableDismissFromStartToEnd = false,
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(16.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
-            ),
-            elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 14.dp, vertical = 12.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                // 文件缩略图（解码失败回退图标）
-                Box(
-                    modifier = Modifier
-                        .size(40.dp)
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(
-                            if (item.isUnrecognized) MaterialTheme.colorScheme.errorContainer
-                            else MaterialTheme.colorScheme.primaryContainer
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    val t = thumb
-                    if (t != null) {
-                        Image(
-                            bitmap = t.asImageBitmap(),
-                            contentDescription = null,
-                            modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Crop
-                        )
-                    } else {
-                        Icon(
-                            imageVector = Icons.Default.PhotoLibrary,
-                            contentDescription = null,
-                            modifier = Modifier.size(22.dp),
-                            tint = if (item.isUnrecognized) MaterialTheme.colorScheme.onErrorContainer
-                            else MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-                    }
-                }
-                Spacer(modifier = Modifier.width(12.dp))
-                Column(modifier = Modifier.weight(1f)) {
-                    val nameColor = if (item.isUnrecognized) MaterialTheme.colorScheme.error
-                        else MaterialTheme.colorScheme.onSurface
-                    val nameDecoration = if (item.isUnrecognized) TextDecoration.LineThrough
-                        else TextDecoration.None
-                    Text(
-                        text = item.name,
-                        style = MaterialTheme.typography.titleSmall,
-                        fontWeight = FontWeight.Bold,
-                        color = nameColor,
-                        textDecoration = nameDecoration,
-                        maxLines = 1,
-                        overflow = TextOverflow.MiddleEllipsis
-                    )
-                    Spacer(modifier = Modifier.height(2.dp))
-                    Text(
-                        text = item.info,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = if (item.isUnrecognized) MaterialTheme.colorScheme.error
-                            else MaterialTheme.colorScheme.onSurfaceVariant,
-                        textDecoration = nameDecoration
-                    )
-                }
-            }
-        }
-    }
-}
-
-/** 解码列表缩略图：按 2 的幂降采样至约 128px，并按 EXIF 方向旋转；失败返回 null。 */
-private fun decodeThumbnail(path: String): Bitmap? {
-    return try {
-        val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
-        BitmapFactory.decodeFile(path, bounds)
-        if (bounds.outWidth <= 0 || bounds.outHeight <= 0) return null
-        var sample = 1
-        while (bounds.outWidth / (sample * 2) >= 128 && bounds.outHeight / (sample * 2) >= 128) {
-            sample *= 2
-        }
-        val opts = BitmapFactory.Options().apply { inSampleSize = sample }
-        val bmp = BitmapFactory.decodeFile(path, opts) ?: return null
-        val rotation = when (ExifInterface(path).getAttributeInt(
-            ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL
-        )) {
-            ExifInterface.ORIENTATION_ROTATE_90 -> 90f
-            ExifInterface.ORIENTATION_ROTATE_180 -> 180f
-            ExifInterface.ORIENTATION_ROTATE_270 -> 270f
-            else -> 0f
-        }
-        if (rotation != 0f) {
-            val matrix = Matrix().apply { postRotate(rotation) }
-            Bitmap.createBitmap(bmp, 0, 0, bmp.width, bmp.height, matrix, true)
-        } else {
-            bmp
-        }
-    } catch (_: Exception) {
-        null
     }
 }

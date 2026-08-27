@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 启动器图标前景（浅色）：白色同心圆标志（中心圆点 + 两圈描边），与 TopAppBar Logo 同款 -->
+<!-- 启动器图标前景（深色）：深紫同心圆标志（浅色渐变底上仍清晰） -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
@@ -7,18 +7,18 @@
     android:viewportHeight="108">
     <!-- 中心圆点（半径 7.5，位于安全区中心 54,54） -->
     <path
-        android:fillColor="#FFFFFFFF"
+        android:fillColor="#FF381E72"
         android:pathData="M54,46.5a7.5,7.5 0 1,0 0,15a7.5,7.5 0 1,0 0,-15z" />
     <!-- 中圈描边（半径 16.5，宽 4.8） -->
     <path
         android:fillColor="#00000000"
-        android:strokeColor="#FFFFFFFF"
+        android:strokeColor="#FF381E72"
         android:strokeWidth="4.8"
         android:pathData="M54,37.5a16.5,16.5 0 1,0 0,33a16.5,16.5 0 1,0 0,-33z" />
     <!-- 外圈描边（半径 27，宽 4.2，60% 不透明度） -->
     <path
         android:fillColor="#00000000"
-        android:strokeColor="#99FFFFFF"
+        android:strokeColor="#99381E72"
         android:strokeWidth="4.2"
         android:pathData="M54,27a27,27 0 1,0 0,54a27,27 0 1,0 0,-54z" />
 </vector>

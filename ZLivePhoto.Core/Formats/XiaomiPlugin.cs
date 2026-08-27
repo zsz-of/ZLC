@@ -23,7 +23,8 @@ public sealed class XiaomiPlugin : FormatPlugin
         if (info.HasBoth && !info.HasOplus)
             return 95;
 
-        // EXIF 0x8897 存在也是小米特征
+        // EXIF 0x8897 存在也是小米特征（小米相机写在 ExifIFD，可能无 MicroVideo 双标签，
+        // 布局与 Google 纯 Container 相同；92 分压过 Google 的 90 避免误判）
         try
         {
             using var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
@@ -31,7 +32,7 @@ public sealed class XiaomiPlugin : FormatPlugin
             int read = fs.Read(head, 0, head.Length);
             if (read >= 2 && head[0] == 0xFF && head[1] == 0xD8 &&
                 ExifUtil.HasExifTag(head[..read], XiaomiExifTag))
-                return 90;
+                return 92;
         }
         catch { /* 读取失败 */ }
         return 0;
@@ -50,8 +51,9 @@ public sealed class XiaomiPlugin : FormatPlugin
         var pts = asset.EffectivePtsUs();
         var xmp = XmpTemplate.BuildXiaomiXmp(pts, asset.GainmapLength, video.Length);
         var primary = JpegUtil.ReplaceOrInsertXmp(asset.PrimaryJpeg, xmp);
-        // 写入 EXIF 0x8897 = 1（小米相册识别标签）
-        primary = ExifUtil.AddIfd0Tag(primary, XiaomiExifTag, 1, 1);
+        // 写入 EXIF 0x8897 = 1（小米相册识别标签；写入 ExifIFD，与小米相机一致，
+        // 采用追加+指针改写策略，不移动既有 EXIF 数据，GPS/镜头等元数据零损坏）
+        primary = ExifUtil.AddExifIfdTag(primary, XiaomiExifTag, 1, 1);
 
         var output = new byte[primary.Length + (asset.GainmapJpeg?.Length ?? 0) + video.Length];
         int pos = 0;

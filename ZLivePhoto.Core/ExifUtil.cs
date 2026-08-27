@@ -64,7 +64,8 @@ public static class ExifUtil
         throw new ExifException("无效的 TIFF 字节序标记");
     }
 
-    /// <summary>检测 JPEG 的 IFD0 中是否存在指定 EXIF 标签。</summary>
+    /// <summary>检测 JPEG 的 IFD0 / ExifIFD 中是否存在指定 EXIF 标签。
+    /// 小米相机把 0x8897 写在 ExifIFD（0x8769 子 IFD）而非 IFD0，两处都要扫。</summary>
     public static bool HasExifTag(byte[] jpeg, int tagId)
     {
         var found = FindExifApp1(jpeg);
@@ -76,11 +77,23 @@ public static class ExifUtil
             bool le = IsLittleEndian(jpeg, tiffStart);
             int ifd0Abs = tiffStart + (int)Read32(jpeg, tiffStart + 4, le);
             ushort count = Read16(jpeg, ifd0Abs, le);
+            int exifIfdAbs = -1;
             for (int i = 0; i < count; i++)
             {
                 int entryOff = ifd0Abs + 2 + i * 12;
-                if (Read16(jpeg, entryOff, le) == tagId)
-                    return true;
+                ushort tag = Read16(jpeg, entryOff, le);
+                if (tag == tagId) return true;
+                if (tag == 0x8769)
+                    exifIfdAbs = tiffStart + (int)Read32(jpeg, entryOff + 8, le);
+            }
+            if (exifIfdAbs > tiffStart)
+            {
+                ushort exifCount = Read16(jpeg, exifIfdAbs, le);
+                for (int i = 0; i < exifCount; i++)
+                {
+                    if (Read16(jpeg, exifIfdAbs + 2 + i * 12, le) == tagId)
+                        return true;
+                }
             }
         }
         catch { /* 解析失败视为无标签 */ }
@@ -132,45 +145,41 @@ public static class ExifUtil
     }
 
     /// <summary>
-    /// 在 JPEG 的 EXIF IFD0 中添加一个标签（仅支持 inline 值：BYTE/SHORT/LONG）。
-    /// 若 JPEG 无 EXIF APP1 段，创建最小段。若已有该标签，替换之。
+    /// 在 EXIF 的 ExifIFD 中添加一个标签（仅支持 inline 值：BYTE/SHORT/LONG）。
+    /// 与小米相机行为一致（0x8897 写在 ExifIFD 而非 IFD0）。
+    ///
+    /// 采用「追加 + 指针改写」策略，绝不移动既有数据（零损坏风险）：
+    /// - 已有 ExifIFD：新 ExifIFD（旧 entry 逐字节复制 + 新 entry）追加到段尾，
+    ///   仅改写 IFD0 中 0x8769 指针的 inline 值；已有同 tag 则原位改写其值。
+    /// - 无 ExifIFD：新 IFD0（旧 entry 逐字节复制 + 0x8769 指针）与新 ExifIFD 追加到段尾，
+    ///   仅改写 TIFF 头的 IFD0 偏移。
+    /// - 无 EXIF 段：创建最小 APP1 插到 SOI 后。
+    /// 旧数据（GPS/ExifIFD/MakerNote/缩略图）全部保持原偏移。
+    /// 段长超 64KB 或解析失败时返回原 jpeg（识别仍可靠 XMP 双标签兜底）。
     /// </summary>
-    public static byte[] AddIfd0Tag(byte[] jpeg, int tagId, int tagType, int value)
+    public static byte[] AddExifIfdTag(byte[] jpeg, int tagId, int tagType, int value)
     {
         if (!TypeSizes.ContainsKey(tagType))
             throw new ExifException($"不支持的 TIFF 类型 {tagType}");
 
-        // 编码值到 4 字节 inline（小端布局，与 Python 原版一致）
-        byte[] valInline = tagType switch
-        {
-            1 => [(byte)value, 0, 0, 0],
-            3 => [(byte)(value & 0xFF), (byte)(value >> 8), 0, 0],
-            4 => [(byte)(value & 0xFF), (byte)(value >> 8), (byte)(value >> 16), (byte)(value >> 24)],
-            _ => throw new ExifException($"不支持的 inline 类型 {tagType}")
-        };
-        const int count = 1;
-
         var found = FindExifApp1(jpeg);
         if (found is null)
         {
-            // 创建最小 EXIF APP1 段（小端 II）
-            var ifd0 = new List<byte>();
-            ifd0.AddRange(Pack16(true, 1));
-            ifd0.AddRange(Pack16(true, (ushort)tagId));
-            ifd0.AddRange(Pack16(true, (ushort)tagType));
-            ifd0.AddRange(Pack32(true, count));
-            ifd0.AddRange(valInline);
-            ifd0.AddRange(Pack32(true, 0)); // next IFD offset
+            // 创建最小 EXIF：II + IFD0{0x8769→ExifIFD} + ExifIFD{tag}
+            const bool le = true;
+            int ifd0Size = 2 + 12 + 4; // count + 1 entry + next
+            int exifIfdOff = 8 + ifd0Size;
+            var ifd0 = Pack16(le, 1).Concat(Pack16(le, 0x8769)).Concat(Pack16(le, 4))
+                .Concat(Pack32(le, 1)).Concat(Pack32(le, (uint)exifIfdOff)).Concat(Pack32(le, 0)).ToArray();
+            var newEntry = Pack16(le, (ushort)tagId).Concat(Pack16(le, (ushort)tagType))
+                .Concat(Pack32(le, 1)).Concat(EncodeInline(le, tagType, value)).ToArray();
+            var exifIfd = Pack16(le, 1).Concat(newEntry).Concat(Pack32(le, 0)).ToArray();
 
-            var tiff = new List<byte>();
-            tiff.AddRange("II"u8.ToArray());
-            tiff.AddRange(Pack16(true, 42));
-            tiff.AddRange(Pack32(true, 8));
-            tiff.AddRange(ifd0);
-
-            var payload = new byte[ExifPrefix.Length + tiff.Count];
+            var tiff = "II"u8.ToArray().Concat(Pack16(le, 42)).Concat(Pack32(le, 8))
+                .Concat(ifd0).Concat(exifIfd).ToArray();
+            var payload = new byte[ExifPrefix.Length + tiff.Length];
             ExifPrefix.CopyTo(payload, 0);
-            tiff.ToArray().CopyTo(payload, ExifPrefix.Length);
+            tiff.CopyTo(payload, ExifPrefix.Length);
 
             var app1 = new byte[4 + payload.Length];
             app1[0] = 0xFF;
@@ -186,93 +195,110 @@ public static class ExifUtil
         }
 
         var (segStart, totalLen, tiffStart) = found.Value;
-        bool le = IsLittleEndian(jpeg, tiffStart);
-
-        uint ifd0Off = Read32(jpeg, tiffStart + 4, le);
-        int ifd0Abs = tiffStart + (int)ifd0Off;
-        ushort oldCount = Read16(jpeg, ifd0Abs, le);
-
-        // 读取现有 entry（排除同 tag，实现替换语义）
-        var entries = new List<(ushort tid, ushort ttype, uint tcount, byte[] tval)>();
-        for (int i = 0; i < oldCount; i++)
+        try
         {
-            int entryOff = ifd0Abs + 2 + i * 12;
-            ushort tid = Read16(jpeg, entryOff, le);
-            if (tid == tagId) continue;
-            ushort ttype = Read16(jpeg, entryOff + 2, le);
-            uint tcount = Read32(jpeg, entryOff + 4, le);
-            entries.Add((tid, ttype, tcount, jpeg[(entryOff + 8)..(entryOff + 12)]));
-        }
+            bool le = IsLittleEndian(jpeg, tiffStart);
+            int ifd0Off = (int)Read32(jpeg, tiffStart + 4, le);
+            int ifd0Abs = tiffStart + ifd0Off;
+            ushort ifd0Count = Read16(jpeg, ifd0Abs, le);
 
-        // 新增/替换一个 entry → 净增 12 字节
-        const int delta = 12;
-        uint dataAreaStartRel = ifd0Off + 2u + (uint)oldCount * 12u + 4u;
+            // 段尾追加位置（TIFF 相对偏移）：段绝对终点 - TIFF 起点
+            int appendRel = (segStart + totalLen) - tiffStart;
 
-        // 修复旧 entry 中的数据区偏移引用
-        var fixedEntries = new List<(ushort tid, ushort ttype, uint tcount, byte[] tval)>();
-        foreach (var e in entries)
-        {
-            var tval = e.tval;
-            int ts = TypeSizes.GetValueOrDefault(e.ttype, 1);
-            if (ts * (int)e.tcount > 4)
+            // 找 IFD0 中的 0x8769（ExifIFD 指针）
+            int exifPtrEntryOff = -1;
+            for (int i = 0; i < ifd0Count; i++)
             {
-                uint oldOff = le
-                    ? BinaryPrimitives.ReadUInt32LittleEndian(tval)
-                    : BinaryPrimitives.ReadUInt32BigEndian(tval);
-                if (oldOff >= dataAreaStartRel)
-                    tval = Pack32(le, oldOff + delta);
+                int entryOff = ifd0Abs + 2 + i * 12;
+                if (Read16(jpeg, entryOff, le) == 0x8769)
+                {
+                    exifPtrEntryOff = entryOff;
+                    break;
+                }
             }
-            fixedEntries.Add((e.tid, e.ttype, e.tcount, tval));
+
+            var newEntry = Pack16(le, (ushort)tagId).Concat(Pack16(le, (ushort)tagType))
+                .Concat(Pack32(le, 1)).Concat(EncodeInline(le, tagType, value)).ToArray();
+            byte[] appended;
+
+            if (exifPtrEntryOff >= 0)
+            {
+                int exifIfdAbs = tiffStart + (int)Read32(jpeg, exifPtrEntryOff + 8, le);
+                ushort exifCount = Read16(jpeg, exifIfdAbs, le);
+                // 已有同 tag → 原位改写值（零增长）
+                for (int i = 0; i < exifCount; i++)
+                {
+                    int e = exifIfdAbs + 2 + i * 12;
+                    if (Read16(jpeg, e, le) == tagId)
+                    {
+                        var patched = (byte[])jpeg.Clone();
+                        EncodeInline(le, tagType, value).CopyTo(patched, e + 8);
+                        return patched;
+                    }
+                }
+                // 新 ExifIFD = 旧 entries 逐字节复制 + 新 entry + next 指针归零
+                // （旧 next 指针不可带入 entries 区，否则新 entry 错位 4 字节）
+                var oldBytes = jpeg[(exifIfdAbs + 2)..(exifIfdAbs + 2 + exifCount * 12)];
+                appended = Pack16(le, (ushort)(exifCount + 1)).Concat(oldBytes)
+                    .Concat(newEntry).Concat(Pack32(le, 0)).ToArray();
+                if (totalLen + appended.Length > 65535) return jpeg; // APP1 段长上限
+
+                var result = InsertBytes(jpeg, segStart + totalLen, appended);
+                // 改写 0x8769 指针 → 新 ExifIFD 偏移（原位，4 字节）
+                Pack32(le, (uint)appendRel).CopyTo(result, exifPtrEntryOff + 8);
+                UpdateSegLen(result, segStart, totalLen + appended.Length);
+                return result;
+            }
+
+            // IFD0 无 ExifIFD：新 IFD0（旧 entries + 0x8769 + next 归零）+ 新 ExifIFD
+            var oldIfd0Bytes = jpeg[(ifd0Abs + 2)..(ifd0Abs + 2 + ifd0Count * 12)];
+            int newIfd0Size = 2 + (ifd0Count + 1) * 12 + 4;
+            int exifIfdOffNew = appendRel + newIfd0Size;
+            var ptrEntry = Pack16(le, 0x8769).Concat(Pack16(le, 4))
+                .Concat(Pack32(le, 1)).Concat(Pack32(le, (uint)exifIfdOffNew)).ToArray();
+            var newIfd0 = Pack16(le, (ushort)(ifd0Count + 1)).Concat(oldIfd0Bytes)
+                .Concat(ptrEntry).Concat(Pack32(le, 0)).ToArray();
+            var newExifIfd = Pack16(le, 1).Concat(newEntry).Concat(Pack32(le, 0)).ToArray();
+            appended = newIfd0.Concat(newExifIfd).ToArray();
+            if (totalLen + appended.Length > 65535) return jpeg; // APP1 段长上限
+
+            var result2 = InsertBytes(jpeg, segStart + totalLen, appended);
+            // 改写 TIFF 头 IFD0 偏移（原位，4 字节）
+            Pack32(le, (uint)appendRel).CopyTo(result2, tiffStart + 4);
+            UpdateSegLen(result2, segStart, totalLen + appended.Length);
+            return result2;
         }
-
-        // 合并新 entry 并按 tag ID 排序
-        var allEntries = fixedEntries
-            .Append(((ushort)tagId, (ushort)tagType, (uint)count, valInline))
-            .OrderBy(x => x.Item1)
-            .ToList();
-
-        var newIfd0 = new List<byte>();
-        newIfd0.AddRange(Pack16(le, (ushort)allEntries.Count));
-        foreach (var (tid, ttype, tcount, tval) in allEntries)
+        catch
         {
-            newIfd0.AddRange(Pack16(le, tid));
-            newIfd0.AddRange(Pack16(le, ttype));
-            newIfd0.AddRange(Pack32(le, tcount));
-            newIfd0.AddRange(tval);
+            // 解析失败：返回原 jpeg，识别兜底靠 XMP 双标签
+            return jpeg;
         }
+    }
 
-        // next IFD offset
-        int oldNextPos = ifd0Abs + 2 + oldCount * 12;
-        uint oldNext = Read32(jpeg, oldNextPos, le);
-        if (oldNext != 0)
-            oldNext += delta;
-        newIfd0.AddRange(Pack32(le, oldNext));
+    /// <summary>按字节序编码 4 字节 inline 值（BYTE/SHORT/LONG）。</summary>
+    private static byte[] EncodeInline(bool le, int tagType, int value) => tagType switch
+    {
+        1 => le ? [(byte)value, 0, 0, 0] : [0, 0, 0, (byte)value],
+        3 => Pack16(le, (ushort)value).Concat(new byte[2]).ToArray(),
+        4 => Pack32(le, (uint)value),
+        _ => throw new ExifException($"不支持的 inline 类型 {tagType}")
+    };
 
-        // IFD0 数据区（原样保留）
-        int app1End = segStart + totalLen;
-        var oldData = jpeg[(oldNextPos + 4)..app1End];
+    /// <summary>在 pos 处插入 bytes，返回新数组。</summary>
+    private static byte[] InsertBytes(byte[] src, int pos, byte[] bytes)
+    {
+        var outArr = new byte[src.Length + bytes.Length];
+        Array.Copy(src, 0, outArr, 0, pos);
+        Array.Copy(bytes, 0, outArr, pos, bytes.Length);
+        Array.Copy(src, pos, outArr, pos + bytes.Length, src.Length - pos);
+        return outArr;
+    }
 
-        // 重建 APP1 段
-        var newIfd0Arr = newIfd0.ToArray();
-        var newTiff = new byte[(int)ifd0Off + newIfd0Arr.Length + oldData.Length];
-        Array.Copy(jpeg, tiffStart, newTiff, 0, (int)ifd0Off);
-        Array.Copy(newIfd0Arr, 0, newTiff, (int)ifd0Off, newIfd0Arr.Length);
-        Array.Copy(oldData, 0, newTiff, (int)ifd0Off + newIfd0Arr.Length, oldData.Length);
-
-        var newPayload = new byte[ExifPrefix.Length + newTiff.Length];
-        ExifPrefix.CopyTo(newPayload, 0);
-        newTiff.CopyTo(newPayload, ExifPrefix.Length);
-
-        var newApp1 = new byte[4 + newPayload.Length];
-        newApp1[0] = 0xFF;
-        newApp1[1] = 0xE1;
-        BinaryPrimitives.WriteUInt16BigEndian(newApp1.AsSpan(2, 2), (ushort)(newPayload.Length + 2));
-        newPayload.CopyTo(newApp1, 4);
-
-        var result = new byte[jpeg.Length - totalLen + newApp1.Length];
-        Array.Copy(jpeg, 0, result, 0, segStart);
-        Array.Copy(newApp1, 0, result, segStart, newApp1.Length);
-        Array.Copy(jpeg, app1End, result, segStart + newApp1.Length, jpeg.Length - app1End);
-        return result;
+    /// <summary>更新 APP1 段长度字段；超 64KB 返回 false。</summary>
+    private static bool UpdateSegLen(byte[] jpeg, int segStart, int newTotal)
+    {
+        if (newTotal > 65535) return false;
+        BinaryPrimitives.WriteUInt16BigEndian(jpeg.AsSpan(segStart + 2, 2), (ushort)newTotal);
+        return true;
     }
 }

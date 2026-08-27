@@ -27,7 +27,8 @@ internal class XiaomiPlugin : FormatPlugin() {
         // 双标签并存是小米的强特征
         if (info.hasBoth && !info.hasOplus) return 95
 
-        // EXIF 0x8897 存在也是小米特征
+        // EXIF 0x8897 存在也是小米特征（小米相机写在 ExifIFD，可能无 MicroVideo 双标签，
+        // 布局与 Google 纯 Container 相同；92 分压过 Google 的 90 避免误判）
         try {
             FileInputStream(path).use { fs ->
                 val fileSize = File(path).length().toInt()
@@ -42,7 +43,7 @@ internal class XiaomiPlugin : FormatPlugin() {
                 }
                 if (read >= 2 && head[0] == 0xFF.toByte() && head[1] == 0xD8.toByte() &&
                     ExifUtil.hasExifTag(head.copyOfRange(0, read), xiaomiExifTag)
-                ) return 90
+                ) return 92
             }
         } catch (e: Exception) {
             // 读取失败
@@ -63,8 +64,9 @@ internal class XiaomiPlugin : FormatPlugin() {
         val pts = asset.effectivePtsUs()
         val xmp = XmpTemplate.buildXiaomiXmp(pts, asset.gainmapLength, video.size)
         var primary = JpegUtil.replaceOrInsertXmp(asset.primaryJpeg, xmp)
-        // 写入 EXIF 0x8897 = 1（小米相册识别标签）
-        primary = ExifUtil.addIfd0Tag(primary, xiaomiExifTag, 1, 1)
+        // 写入 EXIF 0x8897 = 1（小米相册识别标签；写入 ExifIFD，与小米相机一致，
+        // 采用追加+指针改写策略，不移动既有 EXIF 数据，GPS/镜头等元数据零损坏）
+        primary = ExifUtil.addExifIfdTag(primary, xiaomiExifTag, 1, 1)
 
         val gainmapLen = asset.gainmapJpeg?.size ?: 0
         val output = ByteArray(primary.size + gainmapLen + video.size)

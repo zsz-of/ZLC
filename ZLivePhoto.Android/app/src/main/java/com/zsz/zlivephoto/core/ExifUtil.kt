@@ -16,8 +16,6 @@ internal object ExifUtil {
         11 to 4, 12 to 8
     )
 
-    private class IfdEntry(val tid: Int, val ttype: Int, val tcount: Long, val tval: ByteArray)
-
     private data class ExifLocation(val segStart: Int, val totalLen: Int, val tiffStart: Int)
 
     private fun pack16(le: Boolean, v: Int): ByteArray {
@@ -56,7 +54,8 @@ internal object ExifUtil {
         throw ExifException("无效的 TIFF 字节序标记")
     }
 
-    /** 检测 JPEG 的 IFD0 中是否存在指定 EXIF 标签。 */
+    /** 检测 JPEG 的 IFD0 / ExifIFD 中是否存在指定 EXIF 标签。
+     *  小米相机把 0x8897 写在 ExifIFD（0x8769 子 IFD）而非 IFD0，两处都要扫。 */
     fun hasExifTag(jpeg: ByteArray, tagId: Int): Boolean {
         val found = findExifApp1(jpeg) ?: return false
         val (_, _, tiffStart) = found
@@ -64,9 +63,20 @@ internal object ExifUtil {
             val le = isLittleEndian(jpeg, tiffStart)
             val ifd0Abs = tiffStart + read32(jpeg, tiffStart + 4, le).toInt()
             val count = read16(jpeg, ifd0Abs, le)
+            var exifIfdAbs = -1
             for (i in 0 until count) {
                 val entryOff = ifd0Abs + 2 + i * 12
-                if (read16(jpeg, entryOff, le) == tagId) return true
+                val tag = read16(jpeg, entryOff, le)
+                if (tag == tagId) return true
+                if (tag == 0x8769) {
+                    exifIfdAbs = tiffStart + read32(jpeg, entryOff + 8, le).toInt()
+                }
+            }
+            if (exifIfdAbs > tiffStart) {
+                val exifCount = read16(jpeg, exifIfdAbs, le)
+                for (i in 0 until exifCount) {
+                    if (read16(jpeg, exifIfdAbs + 2 + i * 12, le) == tagId) return true
+                }
             }
             false
         } catch (e: Exception) {
@@ -111,53 +121,38 @@ internal object ExifUtil {
     }
 
     /**
-     * 在 JPEG 的 EXIF IFD0 中添加一个标签（仅支持 inline 值：BYTE/SHORT/LONG）。
-     * 若 JPEG 无 EXIF APP1 段，创建最小段。若已有该标签，替换之。
+     * 在 EXIF 的 ExifIFD 中添加一个标签（仅支持 inline 值：BYTE/SHORT/LONG）。
+     * 与小米相机行为一致（0x8897 写在 ExifIFD 而非 IFD0）。
+     *
+     * 采用「追加 + 指针改写」策略，绝不移动既有数据（零损坏风险）：
+     * - 已有 ExifIFD：新 ExifIFD（旧 entry 逐字节复制 + 新 entry）追加到段尾，
+     *   仅改写 IFD0 中 0x8769 指针的 inline 值；已有同 tag 则原位改写其值。
+     * - 无 ExifIFD：新 IFD0（旧 entry 逐字节复制 + 0x8769 指针）与新 ExifIFD 追加到段尾，
+     *   仅改写 TIFF 头的 IFD0 偏移。
+     * - 无 EXIF 段：创建最小 APP1 插到 SOI 后。
+     * 旧数据（GPS/ExifIFD/MakerNote/缩略图）全部保持原偏移。
+     * 段长超 64KB 或解析失败时返回原 jpeg（识别仍可靠 XMP 双标签兜底）。
      */
-    fun addIfd0Tag(jpeg: ByteArray, tagId: Int, tagType: Int, value: Int): ByteArray {
+    fun addExifIfdTag(jpeg: ByteArray, tagId: Int, tagType: Int, value: Int): ByteArray {
         if (!typeSizes.containsKey(tagType)) {
             throw ExifException("不支持的 TIFF 类型 $tagType")
         }
 
-        // 编码值到 4 字节 inline（小端布局，与 Python 原版一致）
-        val valInline: ByteArray = when (tagType) {
-            1 -> byteArrayOf(value.toByte(), 0, 0, 0)
-            3 -> byteArrayOf(
-                (value and 0xFF).toByte(),
-                ((value ushr 8) and 0xFF).toByte(),
-                0, 0
-            )
-            4 -> byteArrayOf(
-                (value and 0xFF).toByte(),
-                ((value ushr 8) and 0xFF).toByte(),
-                ((value ushr 16) and 0xFF).toByte(),
-                ((value ushr 24) and 0xFF).toByte()
-            )
-            else -> throw ExifException("不支持的 inline 类型 $tagType")
-        }
-        val count = 1L
-
         val found = findExifApp1(jpeg)
         if (found == null) {
-            // 创建最小 EXIF APP1 段（小端 II）
-            val ifd0 = mutableListOf<Byte>()
-            ifd0.addAll(pack16(true, 1).toList())
-            ifd0.addAll(pack16(true, tagId).toList())
-            ifd0.addAll(pack16(true, tagType).toList())
-            ifd0.addAll(pack32(true, count).toList())
-            ifd0.addAll(valInline.toList())
-            ifd0.addAll(pack32(true, 0L).toList()) // next IFD offset
+            // 创建最小 EXIF：II + IFD0{0x8769→ExifIFD} + ExifIFD{tag}
+            val le = true
+            val ifd0Size = 2 + 12 + 4 // count + 1 entry + next
+            val exifIfdOff = 8 + ifd0Size
+            val ifd0 = pack16(le, 1) + pack16(le, 0x8769) + pack16(le, 4) +
+                pack32(le, 1) + pack32(le, exifIfdOff.toLong()) + pack32(le, 0)
+            val newEntry = pack16(le, tagId) + pack16(le, tagType) +
+                pack32(le, 1) + encodeInline(le, tagType, value)
+            val exifIfd = pack16(le, 1) + newEntry + pack32(le, 0)
 
-            val tiff = mutableListOf<Byte>()
-            tiff.addAll(byteArrayOf('I'.code.toByte(), 'I'.code.toByte()).toList()) // "II"
-            tiff.addAll(pack16(true, 42).toList())
-            tiff.addAll(pack32(true, 8L).toList())
-            tiff.addAll(ifd0)
-
-            val tiffArr = tiff.toByteArray()
-            val payload = ByteArray(exifPrefix.size + tiffArr.size)
-            System.arraycopy(exifPrefix, 0, payload, 0, exifPrefix.size)
-            System.arraycopy(tiffArr, 0, payload, exifPrefix.size, tiffArr.size)
+            val tiff = byteArrayOf('I'.code.toByte(), 'I'.code.toByte()) +
+                pack16(le, 42) + pack32(le, 8) + ifd0 + exifIfd
+            val payload = exifPrefix + tiff
 
             val app1 = ByteArray(4 + payload.size)
             app1[0] = 0xFF.toByte()
@@ -173,87 +168,106 @@ internal object ExifUtil {
         }
 
         val (segStart, totalLen, tiffStart) = found
-        val le = isLittleEndian(jpeg, tiffStart)
+        try {
+            val le = isLittleEndian(jpeg, tiffStart)
+            val ifd0Off = read32(jpeg, tiffStart + 4, le).toInt()
+            val ifd0Abs = tiffStart + ifd0Off
+            val ifd0Count = read16(jpeg, ifd0Abs, le)
 
-        val ifd0Off = read32(jpeg, tiffStart + 4, le)
-        val ifd0Abs = tiffStart + ifd0Off.toInt()
-        val oldCount = read16(jpeg, ifd0Abs, le)
+            // 段尾追加位置（TIFF 相对偏移）：段绝对终点 - TIFF 起点
+            val appendRel = (segStart + totalLen) - tiffStart
 
-        // 读取现有 entry（排除同 tag，实现替换语义）
-        val entries = mutableListOf<IfdEntry>()
-        for (i in 0 until oldCount) {
-            val entryOff = ifd0Abs + 2 + i * 12
-            val tid = read16(jpeg, entryOff, le)
-            if (tid == tagId) continue
-            val ttype = read16(jpeg, entryOff + 2, le)
-            val tcount = read32(jpeg, entryOff + 4, le)
-            entries.add(IfdEntry(tid, ttype, tcount, jpeg.copyOfRange(entryOff + 8, entryOff + 12)))
-        }
-
-        // 新增/替换一个 entry → 净增 12 字节
-        val delta = 12L
-        val dataAreaStartRel = ifd0Off + 2L + oldCount.toLong() * 12L + 4L
-
-        // 修复旧 entry 中的数据区偏移引用
-        val fixedEntries = mutableListOf<IfdEntry>()
-        for (e in entries) {
-            var tval = e.tval
-            val ts = typeSizes[e.ttype] ?: 1
-            if (ts * e.tcount.toInt() > 4) {
-                val oldOff = if (le) BinaryUtils.readU32LE(tval, 0) else BinaryUtils.readU32BE(tval, 0)
-                if (oldOff >= dataAreaStartRel) {
-                    tval = pack32(le, oldOff + delta)
+            // 找 IFD0 中的 0x8769（ExifIFD 指针）
+            var exifPtrEntryOff = -1
+            for (i in 0 until ifd0Count) {
+                val entryOff = ifd0Abs + 2 + i * 12
+                if (read16(jpeg, entryOff, le) == 0x8769) {
+                    exifPtrEntryOff = entryOff
+                    break
                 }
             }
-            fixedEntries.add(IfdEntry(e.tid, e.ttype, e.tcount, tval))
+
+            val newEntry = pack16(le, tagId) + pack16(le, tagType) +
+                pack32(le, 1) + encodeInline(le, tagType, value)
+            var appended: ByteArray
+
+            if (exifPtrEntryOff >= 0) {
+                val exifIfdAbs = tiffStart + read32(jpeg, exifPtrEntryOff + 8, le).toInt()
+                val exifCount = read16(jpeg, exifIfdAbs, le)
+                // 已有同 tag → 原位改写值（零增长）
+                for (i in 0 until exifCount) {
+                    val e = exifIfdAbs + 2 + i * 12
+                    if (read16(jpeg, e, le) == tagId) {
+                        val result = jpeg.copyOf()
+                        val inline = encodeInline(le, tagType, value)
+                        System.arraycopy(inline, 0, result, e + 8, 4)
+                        return result
+                    }
+                }
+                // 新 ExifIFD = 旧 entries 逐字节复制 + 新 entry + next 指针归零
+                // （旧 next 指针不可带入 entries 区，否则新 entry 错位 4 字节）
+                val oldBytes = jpeg.copyOfRange(
+                    exifIfdAbs + 2, exifIfdAbs + 2 + exifCount * 12)
+                appended = pack16(le, exifCount + 1) + oldBytes + newEntry + pack32(le, 0)
+                if (totalLen + appended.size > 65535) return jpeg // APP1 段长上限
+
+                val result = insertBytes(jpeg, segStart + totalLen, appended)
+                // 改写 0x8769 指针 → 新 ExifIFD 偏移（原位，4 字节）
+                val ptr = pack32(le, appendRel.toLong())
+                System.arraycopy(ptr, 0, result, exifPtrEntryOff + 8, 4)
+                updateSegLen(result, segStart, totalLen + appended.size)
+                return result
+            }
+
+            // IFD0 无 ExifIFD：新 IFD0（旧 entries + 0x8769 + next 归零）+ 新 ExifIFD
+            val oldIfd0Bytes = jpeg.copyOfRange(
+                ifd0Abs + 2, ifd0Abs + 2 + ifd0Count * 12)
+            val newIfd0Size = 2 + (ifd0Count + 1) * 12 + 4
+            val exifIfdOff = appendRel + newIfd0Size
+            val ptrEntry = pack16(le, 0x8769) + pack16(le, 4) +
+                pack32(le, 1) + pack32(le, exifIfdOff.toLong())
+            val newIfd0 = pack16(le, ifd0Count + 1) + oldIfd0Bytes + ptrEntry + pack32(le, 0)
+            val newExifIfd = pack16(le, 1) + newEntry + pack32(le, 0)
+            appended = newIfd0 + newExifIfd
+            if (totalLen + appended.size > 65535) return jpeg // APP1 段长上限
+
+            val result = insertBytes(jpeg, segStart + totalLen, appended)
+            // 改写 TIFF 头 IFD0 偏移（原位，4 字节）
+            val hdr = pack32(le, appendRel.toLong())
+            System.arraycopy(hdr, 0, result, tiffStart + 4, 4)
+            updateSegLen(result, segStart, totalLen + appended.size)
+            return result
+        } catch (e: Exception) {
+            // 解析失败：返回原 jpeg，识别兜底靠 XMP 双标签
+            return jpeg
         }
+    }
 
-        // 合并新 entry 并按 tag ID 排序
-        val allEntries = (fixedEntries + IfdEntry(tagId, tagType, count, valInline))
-            .sortedBy { it.tid }
-
-        val newIfd0 = mutableListOf<Byte>()
-        newIfd0.addAll(pack16(le, allEntries.size).toList())
-        for (e in allEntries) {
-            newIfd0.addAll(pack16(le, e.tid).toList())
-            newIfd0.addAll(pack16(le, e.ttype).toList())
-            newIfd0.addAll(pack32(le, e.tcount).toList())
-            newIfd0.addAll(e.tval.toList())
+    /** 按字节序编码 4 字节 inline 值（BYTE/SHORT/LONG）。 */
+    private fun encodeInline(le: Boolean, tagType: Int, value: Int): ByteArray {
+        val b = ByteArray(4)
+        when (tagType) {
+            1 -> if (le) b[0] = value.toByte() else b[3] = value.toByte()
+            3 -> if (le) BinaryUtils.writeU16LE(b, 0, value) else BinaryUtils.writeU16BE(b, 0, value)
+            4 -> if (le) BinaryUtils.writeU32LE(b, 0, value.toLong()) else BinaryUtils.writeU32BE(b, 0, value.toLong())
+            else -> throw ExifException("不支持的 inline 类型 $tagType")
         }
+        return b
+    }
 
-        // next IFD offset
-        val oldNextPos = ifd0Abs + 2 + oldCount * 12
-        var oldNext = read32(jpeg, oldNextPos, le)
-        if (oldNext != 0L) {
-            oldNext += delta
-        }
-        newIfd0.addAll(pack32(le, oldNext).toList())
+    /** 在 pos 处插入 bytes，返回新数组。 */
+    private fun insertBytes(src: ByteArray, pos: Int, bytes: ByteArray): ByteArray {
+        val out = ByteArray(src.size + bytes.size)
+        System.arraycopy(src, 0, out, 0, pos)
+        System.arraycopy(bytes, 0, out, pos, bytes.size)
+        System.arraycopy(src, pos, out, pos + bytes.size, src.size - pos)
+        return out
+    }
 
-        // IFD0 数据区（原样保留）
-        val app1End = segStart + totalLen
-        val oldData = jpeg.copyOfRange(oldNextPos + 4, app1End)
-
-        // 重建 APP1 段
-        val newIfd0Arr = newIfd0.toByteArray()
-        val newTiff = ByteArray(ifd0Off.toInt() + newIfd0Arr.size + oldData.size)
-        System.arraycopy(jpeg, tiffStart, newTiff, 0, ifd0Off.toInt())
-        System.arraycopy(newIfd0Arr, 0, newTiff, ifd0Off.toInt(), newIfd0Arr.size)
-        System.arraycopy(oldData, 0, newTiff, ifd0Off.toInt() + newIfd0Arr.size, oldData.size)
-
-        val newPayload = ByteArray(exifPrefix.size + newTiff.size)
-        System.arraycopy(exifPrefix, 0, newPayload, 0, exifPrefix.size)
-        System.arraycopy(newTiff, 0, newPayload, exifPrefix.size, newTiff.size)
-
-        val newApp1 = ByteArray(4 + newPayload.size)
-        newApp1[0] = 0xFF.toByte()
-        newApp1[1] = 0xE1.toByte()
-        BinaryUtils.writeU16BE(newApp1, 2, newPayload.size + 2)
-        System.arraycopy(newPayload, 0, newApp1, 4, newPayload.size)
-
-        val result = ByteArray(jpeg.size - totalLen + newApp1.size)
-        System.arraycopy(jpeg, 0, result, 0, segStart)
-        System.arraycopy(newApp1, 0, result, segStart, newApp1.size)
-        System.arraycopy(jpeg, app1End, result, segStart + newApp1.size, jpeg.size - app1End)
-        return result
+    /** 更新 APP1 段长度字段；超 64KB 返回 false。 */
+    private fun updateSegLen(jpeg: ByteArray, segStart: Int, newTotal: Int): Boolean {
+        if (newTotal > 65535) return false
+        BinaryUtils.writeU16BE(jpeg, segStart + 2, newTotal)
+        return true
     }
 }

@@ -121,7 +121,7 @@ val formatOptions = listOf(
     FormatOption("xiaomi", "小米"),
     FormatOption("honor", "荣耀"),
     FormatOption("meizu", "魅族"),
-    FormatOption("extract", "拆解（照片+视频）"),
+    FormatOption("extract", "拆解"),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -162,6 +162,10 @@ fun MainScreen(
 
     // 实际转换目标：vivo 已拆分为两个顶级选项（vivo_single / vivo），直接使用
     val effectiveTarget = selectedFormat
+
+    // 队列含合成任务（formatKey=compose）时禁止选择「拆解」：拆解与合成语义互斥，
+    // 合成任务会把照片+视频合成动态照片，而拆解是反向操作，混用会产出不可识别产物
+    val hasComposeTask = files.any { it.formatKey == "compose" }
 
     // 横屏判断（提升到函数级，标题限宽与两栏布局共用）
     val isLandscape = LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp
@@ -396,16 +400,21 @@ fun MainScreen(
             ) {
                 formatOptions.forEach { opt ->
                     val selected = opt.key == selectedFormat
+                    // 拆解与合成互斥：队列已有合成任务时不可切换到拆解模式
+                    val disabled = opt.key == "extract" && hasComposeTask
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 12.dp, vertical = 2.dp)
                             .clip(RoundedCornerShape(14.dp))
                             .background(
-                                if (selected) MaterialTheme.colorScheme.secondaryContainer
-                                else androidx.compose.ui.graphics.Color.Transparent
+                                when {
+                                    selected -> MaterialTheme.colorScheme.secondaryContainer
+                                    disabled -> MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                                    else -> androidx.compose.ui.graphics.Color.Transparent
+                                }
                             )
-                            .clickable {
+                            .clickable(enabled = !disabled) {
                                 haptic.click()
                                 onSelectFormat(opt.key)
                             }
@@ -416,8 +425,11 @@ fun MainScreen(
                             text = opt.name,
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
-                            color = if (selected) MaterialTheme.colorScheme.onSecondaryContainer
-                            else MaterialTheme.colorScheme.onSurface,
+                            color = when {
+                                selected -> MaterialTheme.colorScheme.onSecondaryContainer
+                                disabled -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+                                else -> MaterialTheme.colorScheme.onSurface
+                            },
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(horizontal = 12.dp, vertical = 12.dp)
@@ -440,6 +452,16 @@ fun MainScreen(
                     if (opt.key == "vivo_single") {
                         Text(
                             text = "⚠ 过老的机型可能无法识别此格式",
+                            style = MaterialTheme.typography.labelMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.padding(start = 36.dp, bottom = 6.dp)
+                        )
+                    }
+                    // 拆解被禁用时的原因提示
+                    if (opt.key == "extract" && disabled) {
+                        Text(
+                            text = "⚠ 队列含合成任务，不能选择拆解",
                             style = MaterialTheme.typography.labelMedium,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.error,

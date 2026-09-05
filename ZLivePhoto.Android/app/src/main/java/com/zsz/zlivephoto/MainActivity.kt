@@ -676,9 +676,14 @@ class MainActivity : ComponentActivity() {
                             onConvert = { startConvert() },
                             onStopConvert = { stopConvert() },
                             onSelectFormat = { fmt ->
-                                selectedFormat = fmt
-                                getSharedPreferences("zlivephoto", MODE_PRIVATE)
-                                    .edit().putString("target", fmt).apply()
+                                // 拆解与合成互斥：队列已有合成任务时禁止切到拆解模式
+                                if (fmt == "extract" && files.any { it.formatKey == "compose" }) {
+                                    statusText = "队列含合成任务，不能切换为拆解模式"
+                                } else {
+                                    selectedFormat = fmt
+                                    getSharedPreferences("zlivephoto", MODE_PRIVATE)
+                                        .edit().putString("target", fmt).apply()
+                                }
                             },
                             deleteOriginal = deleteOriginal,
                             onToggleDeleteOriginal = { on ->
@@ -1054,6 +1059,14 @@ class MainActivity : ComponentActivity() {
             photos.size != videos.size ->
                 "照片 ${photos.size} 张、视频 ${videos.size} 个，按较少方已添加 $added 对合成任务"
             else -> "已添加 $added 个合成任务，点击「开始转换」执行合成"
+        }
+        // 拆解与合成互斥：合成任务入队时若当前还是拆解模式（无意义的合成目标），
+        // 自动切到默认的 Google 输出，避免“拆解模式下合成”产出不可识别产物
+        if (added > 0 && selectedFormat == "extract") {
+            selectedFormat = "google"
+            getSharedPreferences("zlivephoto", MODE_PRIVATE)
+                .edit().putString("target", "google").apply()
+            statusText += "（已自动切换输出格式为 Google）"
         }
         onListMutated()
         onListStable(immediate = true)

@@ -239,68 +239,109 @@ internal object JpegUtil {
      * 旧的 [stripXmpApp1] 会把整个 XMP 删掉，Ultra HDR 照片的 hdrgm:* 版本信息、
      * Container 对 GainMap 的引用会一并丢失 → 拆出来的照片只剩 SDR，HDR 高光数据没了。
      *
-     * 这里只做两件最小的事：
-     *  1. 从 XMP 中移除动态照片标记（MotionPhoto / MicroVideo / 厂商 LivePhoto 私有字段），
-     *     避免输出照片被识别成「没有视频的动态照片」；
+     * 这里处理**所有** XMP APP1 段（不是只看第一段），每段做两件事：
+     *  1. 从 XMP 中彻底移除动态照片标记（MotionPhoto / MicroVideo 属性与视频项），
+     *     保证输出照片不残留任何「MotionPhoto / MicroVideo」字节，否则会被本 App 的
+     *     QuickClassify / 各格式 detect 误判成「没有视频的动态照片」，导致用它做封面
+     *     合成时无法作为普通照片识别；
      *  2. 保留 hdrgm:Version、Container:Directory（Primary/GainMap）等 Ultra HDR 结构，
      *     GainMap JPEG 由调用方拼接在主 JPEG 之后输出，HDR 不丢。
+     *
+     * 清理后若仍发现 motion 标记字节（非常规写法等极端情况），兜底删除全部 XMP，
+     * 宁可放弃该照片的 HDR 元数据也要保证它是「干净」的普通静态照片。
      */
     fun sanitizeStillPhoto(jpeg: ByteArray): ByteArray {
         if (jpeg.size < 4 || jpeg[0] != 0xFF.toByte() || jpeg[1] != 0xD8.toByte()) return jpeg
-        val seg = findXmpSegment(jpeg) ?: return jpeg
-        val cleaned = sanitizeMotionXmp(seg.xmpText)
-        if (cleaned == seg.xmpText) return jpeg
-        return replaceOrInsertXmp(jpeg, cleaned)
+        val out = java.io.ByteArrayOutputStream(jpeg.size)
+        var changed = false
+        for (seg in iterateSegments(jpeg)) {
+            val m = seg.marker.toInt() and 0xFF
+            if (m == 0xDA) { // SOS 之后是熵编码数据与 EOI，原样保留
+                out.write(jpeg, seg.segStart, jpeg.size - seg.segStart)
+                break
+            }
+            val isXmp = m == 0xE1 && BinaryUtils.arrayEquals(jpeg, seg.payloadStart, xmpApp1Prefix)
+            if (!isXmp) {
+                out.write(jpeg, seg.segStart, seg.totalLen)
+                continue
+            }
+            val start = seg.payloadStart + xmpApp1Prefix.size
+            val text = String(jpeg, start, seg.payloadLen - xmpApp1Prefix.size, Charsets.UTF_8)
+            val cleaned = sanitizeMotionXmp(text)
+            if (cleaned == text) {
+                out.write(jpeg, seg.segStart, seg.totalLen)
+            } else {
+                changed = true
+                out.write(buildXmpApp1(cleaned))
+            }
+        }
+        if (!changed) return jpeg
+        val result = out.toByteArray()
+        // 兜底：仍残留 MotionPhoto/MicroVideo 字节时删除全部 XMP，确保输出是干净普通照片
+        if (containsHeaderMotionToken(result)) return stripXmpApp1(result)
+        return result
+    }
+
+    private val motionToken = "MotionPhoto".toByteArray(Charsets.US_ASCII)
+    private val microToken = "MicroVideo".toByteArray(Charsets.US_ASCII)
+
+    /** 遍历 JPEG 头部各段载荷，检查是否存在 MotionPhoto/MicroVideo 标记字节。 */
+    private fun containsHeaderMotionToken(jpeg: ByteArray): Boolean {
+        return try {
+            for (seg in iterateSegments(jpeg)) {
+                val m = seg.marker.toInt() and 0xFF
+                if (m == 0xDA || m == 0xD9) break
+                if (seg.payloadLen <= 0) continue
+                if (indexOfToken(jpeg, seg.payloadStart, seg.payloadLen, motionToken) >= 0) return true
+                if (indexOfToken(jpeg, seg.payloadStart, seg.payloadLen, microToken) >= 0) return true
+            }
+            false
+        } catch (_: Exception) {
+            true // 无法确认是否干净时保守处理（触发调用方删 XMP）
+        }
+    }
+
+    private fun indexOfToken(data: ByteArray, from: Int, len: Int, token: ByteArray): Int {
+        if (len < token.size || from < 0 || from + len > data.size) return -1
+        val last = from + len - token.size
+        outer@ for (i in from..last) {
+            for (j in token.indices) {
+                if (data[i + j] != token[j]) continue@outer
+            }
+            return i
+        }
+        return -1
     }
 
     /**
-     * 在 XMP 文本中去除动态照片标记（纯字符串处理，不做 XML 语义解析）：
-     * - Container:Directory 中指向 MotionPhoto 视频的 <rdf:li> 项；
-     * - 各家相机命名空间上的 MotionPhoto / MicroVideo / LivePhoto 属性。
-     * 对 hdrgm / Container / 其它图像 EXIF 扩展一律保留。
+     * 在 XMP 文本中彻底去除动态照片标记（纯字符串处理，不做 XML 语义解析）：
+     * - Container:Directory 中指向 MotionPhoto/MicroPhoto 视频的 <rdf:li> 项；
+     * - 任意命名空间上以 MotionPhoto / MicroVideo 开头的属性或元素
+     *   （不同相机前缀五花八门：GCamera/Camera/OpCamera/VCamera/MZCamera…）。
+     * 对 hdrgm / Container 的 Primary、GainMap 项及其它图像 EXIF 扩展一律保留。
      */
     private fun sanitizeMotionXmp(xmp: String): String {
         var text = xmp
-        // 1) 移除 Container:Directory 里的 MotionPhoto（视频）项。
+        // 1) 移除 Container:Directory 里指向 MotionPhoto/MicroVideo（视频）的 <rdf:li> 项。
         //    每个 <rdf:li> 只包一个 <Container:Item>，无嵌套 li，可安全按 li 边界删除。
         val liRegex = Regex("""<rdf:li\b(?:(?!</?rdf:li)[\s\S])*?</rdf:li>""")
         text = liRegex.replace(text) { m ->
             val li = m.value
-            val isMotionItem = Regex("""Item:Semantic\s*=\s*"(MotionPhoto|MotionPhoto[A-Za-z]*)"""").containsMatchIn(li)
+            val isMotionItem = Regex("""Item:Semantic\s*=\s*"(MotionPhoto|MicroVideo)[A-Za-z]*"""").containsMatchIn(li)
             if (isMotionItem) "" else li
         }
 
-        // 2) 移除各相机命名空间上的动态照片属性（属性形式）。
-        //    触发命名的属性删除后，对应 xmlns 声明保留无害。
-        val motionAttrs = listOf(
-            "GCamera" to "MotionPhoto",
-            "GCamera" to "MotionPhotoVersion",
-            "GCamera" to "MotionPhotoPresentationTimestampUs",
-            "GCamera" to "MotionPhotoPrimaryPresentationTimestampUs",
-            "GCamera" to "MicroVideo",
-            "GCamera" to "MicroVideoVersion",
-            "GCamera" to "MicroVideoOffset",
-            "GCamera" to "MicroVideoPresentationTimestampUs",
-            "Camera" to "MotionPhoto",
-            "Camera" to "MotionPhotoVersion",
-            "Camera" to "MotionPhotoPresentationTimestampUs",
-            "OpCamera" to "MotionPhotoOwner",
-            "OpCamera" to "MotionPhotoPrimaryPresentationTimestampUs",
-            "OpCamera" to "OLivePhotoVersion",
-            "OpCamera" to "VideoLength",
-            "OpCamera" to "MotionPhotoEnable",
-            "VCamera" to "VMotionPhotoVersion",
-            "VCamera" to "VMediaKitVersion",
-            "MZCamera" to "LivePhoto",
-        )
-        for ((prefix, attr) in motionAttrs) {
-            text = Regex("""\s+${Regex.escape(prefix)}:${Regex.escape(attr)}\s*=\s*"[^"]*"""").replace(text, "")
-            // 少量相机把字段写成元素形式：<GCamera:MotionPhoto>1</GCamera:MotionPhoto>
-            text = Regex("""\s*<${Regex.escape(prefix)}:${Regex.escape(attr)}\b[^>]*/>\s*""").replace(text, "")
-            text = Regex(
-                """\s*<${Regex.escape(prefix)}:${Regex.escape(attr)}\b[^>]*>[\s\S]*?</${Regex.escape(prefix)}:${Regex.escape(attr)}>\s*"""
-            ).replace(text, "")
-        }
+        // 2) 移除任意命名空间前缀上以 MotionPhoto/MicroVideo 开头的属性、空元素、成对元素。
+        //    例如 GCamera:MotionPhoto="1"、GCamera:MicroVideoOffset="123"、
+        //    <OpCamera:OLivePhotoVersion>2</...> 等，均按名称开头统一命中。
+        val ident = "[A-Za-z_][A-Za-z0-9_.-]*"
+        val motionName = "(MotionPhoto|MicroVideo)[A-Za-z0-9_.-]*"
+        text = Regex("""\s+""" + ident + """:""" + motionName + """\s*=\s*"[^"]*"""").replace(text, "")
+        text = Regex("""\s*<""" + ident + """:""" + motionName + """\b[^>]*/>\s*""").replace(text, "")
+        text = Regex(
+            """\s*<""" + ident + """:""" + motionName + """\b[^>]*>[\s\S]*?</""" +
+                ident + """:""" + motionName + """>\s*"""
+        ).replace(text, "")
         return text
     }
 }

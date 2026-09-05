@@ -13,7 +13,7 @@ import java.io.IOException
  */
 internal class ExtractPlugin : FormatPlugin() {
     override val name: String = "extract"
-    override val display: String = "拆解（照片+视频）"
+    override val display: String = "拆解"
 
     override fun detect(path: String): Int = 0 // 拆解只是输出格式，从不作为来源识别
 

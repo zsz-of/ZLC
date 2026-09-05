@@ -74,7 +74,9 @@ import com.zsz.zlivephoto.ui.Md3Checkbox
 import com.zsz.zlivephoto.ui.ReminderKey
 import com.zsz.zlivephoto.ui.SettingsScreen
 import com.zsz.zlivephoto.ui.ZLivePhotoTheme
+import com.zsz.zlivephoto.ui.UpdateFlowHosts
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
+import com.zsz.zlivephoto.ui.rememberUpdateFlow
 import com.zsz.zlivephoto.ui.picker.AlbumInfo
 import com.zsz.zlivephoto.ui.picker.AlbumScanner
 import com.zsz.zlivephoto.ui.picker.MediaItem
@@ -106,16 +108,6 @@ internal enum class ConflictAction { SKIP, OVERWRITE, RENAME }
 private class ConflictRequest(
     val displayNames: String,
     val onChoose: (ConflictAction) -> Unit
-)
-
-/** 合成视频失败时的处理动作（容器不受支持 → 询问是否重封装） */
-internal enum class ComposeFixAction { REMUX, SKIP }
-
-/** 合成视频失败询问请求（挂起协程 ↔ 弹窗之间的桥） */
-private class ComposeFixRequest(
-    val displayName: String,
-    val reason: String,
-    val onChoose: (ComposeFixAction) -> Unit
 )
 
 class MainActivity : ComponentActivity() {
@@ -171,14 +163,6 @@ class MainActivity : ComponentActivity() {
     /** 本批次内记住的冲突处理动作（null=每次询问；批次开始时清空，仅当前批次有效） */
     @Volatile private var batchConflictAction: ConflictAction? = null
 
-    // 合成视频失败弹窗（尝试重新封装 / 跳过）：与文件名冲突弹窗的「总是」记忆互相独立，
-    // 各自仅在本批次内有效，批次开始时分别清空
-    private var composeFixRequest by mutableStateOf<ComposeFixRequest?>(null)
-    /** 合成失败弹窗「对后续文件执行此操作」复选框（每次弹窗前重置） */
-    private var composeFixAlways by mutableStateOf(false)
-    /** 本批次内记住的合成失败处理动作（null=每次询问；仅当前批次有效） */
-    @Volatile private var batchComposeFixAction: ComposeFixAction? = null
-
     // ---------- 项10：处理完成后删除原图 ----------
     /** 开关（持久化；处理中控制区隐藏不可切换，保证批次语义确定） */
     private var deleteOriginal by mutableStateOf(false)
@@ -202,8 +186,6 @@ class MainActivity : ComponentActivity() {
     /** 顶层页面路由：Main 主页 / Picker 内置选择器 / Settings 设置页 */
     private enum class AppScreen { Main, Picker, Settings }
     private var screen by mutableStateOf(AppScreen.Main)
-    // 启动自动检查更新：发现新版本时非空，弹窗提示下载
-    private var pendingUpdate by mutableStateOf<UpdateCheckResult?>(null)
     private var pickerAlbums by mutableStateOf<List<AlbumInfo>>(emptyList())
 
     private lateinit var incomingDir: String
@@ -562,43 +544,24 @@ class MainActivity : ComponentActivity() {
                     IconManager.apply(this@MainActivity)
                 }
 
-                // 启动时自动检查更新（设置开启时）：后台比对 GitHub 最新 release
+                // 更新弹窗状态（发现新版本 4 按钮 / 说明子弹窗 / 下载进度 / 蓝奏失败回退）
+                val updateFlow = rememberUpdateFlow()
+
+                // 启动时自动检查更新（设置开启时）：后台比对 GitHub 最新 release；
+                // 用户点过「跳过此版本」的版本不再自动弹窗
                 LaunchedEffect(Unit) {
                     if (AppSettings.checkUpdateOnStartup) {
                         val r = UpdateChecker.check(BuildConfig.VERSION_NAME)
-                        if (r is UpdateCheckResult.Update) pendingUpdate = r
+                        if (r is UpdateCheckResult.Update &&
+                            !AppSettings.isVersionSkipped(r.info.version)
+                        ) {
+                            updateFlow.present(r.info)
+                        }
                     }
                 }
 
-                // 发现新版本：弹窗提示，点「下载」跳浏览器打开 GitHub 直接下载地址
-                val updateInfo = (pendingUpdate as? UpdateCheckResult.Update)?.info
-                if (updateInfo != null) {
-                    AlertDialog(
-                        onDismissRequest = { pendingUpdate = null },
-                        title = { Text("发现新版本 v${updateInfo.version}") },
-                        text = {
-                            Text(updateInfo.notes?.take(600)?.trim()
-                                ?: "前往 GitHub 下载最新版本安装包。")
-                        },
-                        confirmButton = {
-                            FilledTonalButton(onClick = {
-                                haptic.click()
-                                pendingUpdate = null
-                                try {
-                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(updateInfo.downloadUrl))
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                    startActivity(intent)
-                                } catch (_: Exception) {}
-                            }) { Text("下载") }
-                        },
-                        dismissButton = {
-                            FilledTonalButton(onClick = {
-                                haptic.click()
-                                pendingUpdate = null
-                            }) { Text("以后再说") }
-                        }
-                    )
-                }
+                // 发现新版本 / 更新说明 / 下载进度 / 蓝奏失败回退等弹窗统一在这里渲染
+                UpdateFlowHosts(updateFlow, vibrate = { haptic.click() })
 
                 // 预览式返回：选择器 / 设置页手势进度驱动内容缩小右移（顶层稳定注册，
                 // 不受 AnimatedContent 过渡重组影响；提交后回到主页）
@@ -890,60 +853,6 @@ class MainActivity : ComponentActivity() {
                                     Spacer(Modifier.width(12.dp))
                                     Text(
                                         "为后续冲突使用此处理方法",
-                                        style = MaterialTheme.typography.labelMedium
-                                    )
-                                }
-                            }
-                        },
-                        confirmButton = {},
-                        dismissButton = {}
-                    )
-                }
-
-                // 合成视频失败弹窗（视频容器不支持 → 尝试重新封装 / 跳过）
-                // 「对后续文件执行此操作」的记忆与文件名冲突弹窗互相独立，仅本批次有效
-                composeFixRequest?.let { req ->
-                    AlertDialog(
-                        onDismissRequest = {
-                            // 点外部关闭视同跳过，避免协程悬挂
-                            val cb = req.onChoose
-                            composeFixRequest = null
-                            cb(ComposeFixAction.SKIP)
-                        },
-                        title = { Text("合成视频失败") },
-                        text = {
-                            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                                Text(
-                                    "「${req.displayName}」的视频容器无法直接合成动态照片：\n\n" +
-                                    "${req.reason}\n\n" +
-                                    "「尝试重新封装」会把视频转为标准 MP4（H.264/AAC）后重试合成；" +
-                                    "「跳过」则跳过当前文件。"
-                                )
-                                // 按钮各占一行整宽：「尝试重新封装」文案较长，
-                                // 与「跳过」并排会因列宽不足而换行/挤压
-                                FilledTonalButton(
-                                    onClick = { haptic.click(); req.onChoose(ComposeFixAction.REMUX) },
-                                    modifier = Modifier.fillMaxWidth().height(42.dp)
-                                ) { Text("尝试重新封装") }
-                                FilledTonalButton(
-                                    onClick = { haptic.click(); req.onChoose(ComposeFixAction.SKIP) },
-                                    modifier = Modifier.fillMaxWidth().height(42.dp)
-                                ) { Text("跳过") }
-                                // 整行可点击切换（MD3 习惯：文字也是点击目标）
-                                Row(
-                                    verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
-                                    modifier = Modifier
-                                        .clip(RoundedCornerShape(8.dp))
-                                        .clickable {
-                                            haptic.click()
-                                            composeFixAlways = !composeFixAlways
-                                        }
-                                        .padding(horizontal = 4.dp, vertical = 8.dp)
-                                ) {
-                                    Md3Checkbox(checked = composeFixAlways)
-                                    Spacer(Modifier.width(12.dp))
-                                    Text(
-                                        "对后续文件执行此操作",
                                         style = MaterialTheme.typography.labelMedium
                                     )
                                 }
@@ -1535,8 +1444,6 @@ class MainActivity : ComponentActivity() {
         lastExportError = null
         claimedNames.clear()
         batchConflictAction = null // 「本批次总是」的选择仅当前批次有效
-        // 合成失败「总是重新封装/跳过」的记忆与冲突「总是」互相独立，批次开始时也清空
-        batchComposeFixAction = null
         resetPendingDeletes()
         markIncomplete() // 处理开始：移除列表 JSON 尾部标记（异常退出可检测）
 
@@ -1565,53 +1472,22 @@ class MainActivity : ComponentActivity() {
                         }
                         var n = 0
                         var staged: List<String>? = null
-                        // 合成模式独有的失败跳过标记（视频容器不支持且用户选择「跳过」）
-                        var composeSkipped = false
-                        // 重新封装产生的临时 MP4（合成完成后与暂存产物一并清理）
-                        val remuxTemps = ArrayList<File>()
                         try {
                             if (item.formatKey == "compose" && item.composeVideoPath != null) {
                                 // 合成任务：照片 + 配对视频 → 动态照片。
                                 // 视频容器不受支持（非 MP4 / MOV 等）时抛 VideoContainerException，
-                                // 弹窗询问「尝试重新封装 / 跳过」；重封装成功能自动用新视频重试合成。
-                                var videoSrc = item.composeVideoPath!!
-                                var attempt = 0
-                                var composeDone = false
-                                while (!composeDone) {
-                                    attempt++
-                                    // 防死循环：同一文件连续多次重封装仍失败则放弃
-                                    if (attempt > 4) {
-                                        throw com.zsz.zlivephoto.core.VideoContainerException(
-                                            "连续多次重新封装后视频仍无法合成，已放弃该文件"
-                                        )
-                                    }
-                                    try {
-                                        staged = Converter.compose(
-                                            photoPath = item.path,
-                                            videoPath = videoSrc,
-                                            target = selectedFormat,
-                                            outDir = outputDir,
-                                            log = { level, msg, tag ->
-                                                if (level == "error" || level == "warn") {
-                                                    statusText = "[$tag] $msg"
-                                                }
-                                            }
-                                        )
-                                        composeDone = true
-                                    } catch (e: com.zsz.zlivephoto.core.VideoContainerException) {
-                                        when (askComposeFix(File(videoSrc).name, e.message ?: "")) {
-                                            ComposeFixAction.SKIP -> {
-                                                composeSkipped = true
-                                                composeDone = true
-                                            }
-                                            ComposeFixAction.REMUX -> {
-                                                val remuxed = remuxVideoToCache(videoSrc)
-                                                remuxTemps.add(remuxed)
-                                                videoSrc = remuxed.absolutePath
-                                            }
+                                // 直接判失败（不自动转码/重封装），提示用户先把视频转成标准 MP4 再合成。
+                                staged = Converter.compose(
+                                    photoPath = item.path,
+                                    videoPath = item.composeVideoPath!!,
+                                    target = selectedFormat,
+                                    outDir = outputDir,
+                                    log = { level, msg, tag ->
+                                        if (level == "error" || level == "warn") {
+                                            statusText = "[$tag] $msg"
                                         }
                                     }
-                                }
+                                )
                             } else {
                                 // 普通项走转换管线
                                 staged = Converter.convertFile(
@@ -1625,48 +1501,40 @@ class MainActivity : ComponentActivity() {
                                     }
                                 )
                             }
-                            if (composeSkipped) {
-                                // 合成失败且用户选择跳过：该文件不导出、不入成功集合
-                                withContext(Dispatchers.Main) {
-                                    val i = files.indexOfFirst { it.path == item.path }
-                                    if (i >= 0) files[i] = files[i].copy(info = "跳过（视频容器不支持）")
+                            // 项10：必须在冲突/导出发生前解析原图 URI——覆盖会删除旧媒体
+                            // 条目，之后按路径查询会误中刚导出的新产物
+                            // 合成任务删除封面照片 + 配对视频；普通任务删除原图（含双文件伴生视频）
+                            val originalUris = if (deleteOriginal) {
+                                if (item.formatKey == "compose") {
+                                    resolveComposeOriginalUris(item.sourcePath, item.sourceUri, item.composeVideoPath)
+                                } else {
+                                    resolveOriginalUris(item.sourcePath, item.sourceUri, item.formatKey)
                                 }
-                            } else {
-                                // 项10：必须在冲突/导出发生前解析原图 URI——覆盖会删除旧媒体
-                                // 条目，之后按路径查询会误中刚导出的新产物
-                                // 合成任务删除封面照片 + 配对视频；普通任务删除原图（含双文件伴生视频）
-                                val originalUris = if (deleteOriginal) {
-                                    if (item.formatKey == "compose") {
-                                        resolveComposeOriginalUris(item.sourcePath, item.sourceUri, item.composeVideoPath)
-                                    } else {
-                                        resolveOriginalUris(item.sourcePath, item.sourceUri, item.formatKey)
-                                    }
-                                } else emptyList()
-                                // 输出文件名冲突处理（跳过 / 覆盖 / 自动后缀）
-                                val finalOutputs = resolveConflicts(staged.orEmpty(), "", item.sourcePath)
-                                if (finalOutputs != null) {
-                                    for (outPath in finalOutputs) {
-                                        // 输出时间戳：修改时间=源文件修改时间；创建时间=源文件拍摄时间
-                                        // （合成任务取照片的时间，二者在照片上天然同源）
-                                        val srcTime = if (item.sourceTime > 0L) item.sourceTime else System.currentTimeMillis()
-                                        val srcTaken = if (item.sourceTaken > 0L) item.sourceTaken else srcTime
-                                        File(outPath).setLastModified(srcTime)
-                                        if (exportToMediaStore(outPath, srcTime, srcTaken) != null) n++
-                                    }
+                            } else emptyList()
+                            // 输出文件名冲突处理（跳过 / 覆盖 / 自动后缀）
+                            val finalOutputs = resolveConflicts(staged.orEmpty(), "", item.sourcePath)
+                            if (finalOutputs != null) {
+                                for (outPath in finalOutputs) {
+                                    // 输出时间戳：修改时间=源文件修改时间；创建时间=源文件拍摄时间
+                                    // （合成任务取照片的时间，二者在照片上天然同源）
+                                    val srcTime = if (item.sourceTime > 0L) item.sourceTime else System.currentTimeMillis()
+                                    val srcTaken = if (item.sourceTaken > 0L) item.sourceTaken else srcTime
+                                    File(outPath).setLastModified(srcTime)
+                                    if (exportToMediaStore(outPath, srcTime, srcTaken) != null) n++
                                 }
-                                exported.addAndGet(n)
-                                // 项10：成功导出的原图入待删集合（失败/跳过/覆盖保护项不删）
-                                mergePendingDeletes(item.sourcePath, originalUris, n > 0)
-                                if (finalOutputs != null) successPaths.add(item.path)
-                                withContext(Dispatchers.Main) {
-                                    val i = files.indexOfFirst { it.path == item.path }
-                                    if (i >= 0) {
-                                        // 处理期间不移除项目：仅更新状态，待全部完成后统一左滑清除
-                                        files[i] = files[i].copy(
-                                            info = if (finalOutputs == null) "完成（跳过：同名冲突）"
-                                                   else "完成（导出 $n 个）"
-                                        )
-                                    }
+                            }
+                            exported.addAndGet(n)
+                            // 项10：成功导出的原图入待删集合（失败/跳过/覆盖保护项不删）
+                            mergePendingDeletes(item.sourcePath, originalUris, n > 0)
+                            if (finalOutputs != null) successPaths.add(item.path)
+                            withContext(Dispatchers.Main) {
+                                val i = files.indexOfFirst { it.path == item.path }
+                                if (i >= 0) {
+                                    // 处理期间不移除项目：仅更新状态，待全部完成后统一左滑清除
+                                    files[i] = files[i].copy(
+                                        info = if (finalOutputs == null) "完成（跳过：同名冲突）"
+                                               else "完成（导出 $n 个）"
+                                    )
                                 }
                             }
                         } catch (e: Exception) {
@@ -1679,7 +1547,6 @@ class MainActivity : ComponentActivity() {
                         } finally {
                             // 清理本地暂存产物（已导出 / 跳过 / 失败均清理）
                             staged?.forEach { p -> try { File(p).delete() } catch (_: Exception) {} }
-                            remuxTemps.forEach { t -> try { t.delete() } catch (_: Exception) {} }
                         }
                         val d = done.incrementAndGet()
                         progress = d.toFloat() / total
@@ -1911,55 +1778,6 @@ class MainActivity : ComponentActivity() {
                 conflictRequest = null
             }
         }
-    }
-
-    /** 挂起等待用户在「合成视频失败」弹窗中选择动作（互斥：同一时刻最多一个询问）。
-     *  「对后续文件执行此操作」的记忆用独立的 composeFixAlways / batchComposeFixAction，
-     *  与文件名冲突弹窗的「总是」互不干扰，各自仅本批次有效。 */
-    private suspend fun askComposeFix(displayName: String, reason: String): ComposeFixAction {
-        batchComposeFixAction?.let { return it }
-        return suspendCancellableCoroutine { cont ->
-            composeFixAlways = false // 每次弹窗前重置复选框
-            composeFixRequest = ComposeFixRequest(displayName, reason) { action ->
-                composeFixRequest = null
-                if (composeFixAlways) batchComposeFixAction = action // 本批次内总是
-                if (cont.isActive) cont.resume(action)
-            }
-            cont.invokeOnCancellation {
-                // 协程被取消（如 Activity 销毁）时清掉弹窗
-                composeFixRequest = null
-            }
-        }
-    }
-
-    /**
-     * 把容器不受支持的视频修复为缓存目录下的标准 MP4：
-     *  1. 先零重编码重封装（MediaExtractor→MediaMuxer，适合 MOV 等兼容编码，速度快）；
-     *  2. 失败则用 media3-Transformer 解码重编码为 H.264/AAC（等价简单 ffmpeg）。
-     * @throws Exception 两级均失败时抛出（不修改源视频，仅写缓存临时文件）。
-     */
-    private suspend fun remuxVideoToCache(srcPath: String): File {
-        val src = File(srcPath)
-        val dir = File(cacheDir, "zlc_remux").apply { mkdirs() }
-        val out = File(dir, "${src.nameWithoutExtension}_${System.currentTimeMillis()}.mp4")
-        // 1) 直接重封装（不重编码）
-        val remuxed = runCatching {
-            com.zsz.zlivephoto.core.VideoRemux.remuxContainer(srcPath, out.absolutePath)
-        }.getOrDefault(false)
-        if (remuxed && out.length() > 0L) return out
-        // 2) Transformer 转码
-        out.delete()
-        val ok = try {
-            com.zsz.zlivephoto.core.VideoRemux.transcodeToMp4(this, srcPath, out.absolutePath)
-        } catch (e: Exception) {
-            out.delete()
-            throw e
-        }
-        if (!ok) {
-            out.delete()
-            throw Exception("重新封装与转码均失败，视频可能已损坏或编码不受支持")
-        }
-        return out
     }
 
     /** 相册输出根目录名：normal 与 go 均统一输出到 Pictures/Z-LivePhoto-Converter（Go 仅体现在应用名） */

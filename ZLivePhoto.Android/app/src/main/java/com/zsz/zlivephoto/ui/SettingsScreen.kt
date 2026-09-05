@@ -464,9 +464,14 @@ private fun AboutScreen(onBack: () -> Unit) {
     // 手动检查更新：每次点击触发一次网络检查（正在检查时忽略重复点击）
     var checking by remember { mutableStateOf(false) }
     var updateResult by remember { mutableStateOf<UpdateCheckResult?>(null) }
+    // 更新弹窗状态：发现新版本（4 按钮）/ 说明子弹窗 / 下载进度 / 蓝奏失败回退
+    val updateFlow = rememberUpdateFlow()
     LaunchedEffect(checking) {
         if (checking) {
-            updateResult = UpdateChecker.check(BuildConfig.VERSION_NAME)
+            val r = UpdateChecker.check(BuildConfig.VERSION_NAME)
+            updateResult = r
+            // 手动检查不套用「跳过此版本」：用户主动点查就给出弹窗
+            if (r is UpdateCheckResult.Update) updateFlow.present(r.info)
             checking = false
         }
     }
@@ -634,30 +639,8 @@ private fun AboutScreen(onBack: () -> Unit) {
         }
     }
 
-    // 手动检查发现新版本：弹窗提供跳浏览器下载
-    val updateInfo = (updateResult as? UpdateCheckResult.Update)?.info
-    if (updateInfo != null) {
-        AlertDialog(
-            onDismissRequest = { updateResult = null },
-            title = { Text("发现新版本 v${updateInfo.version}") },
-            text = {
-                Text(updateInfo.notes?.take(600)?.trim() ?: "前往 GitHub 下载最新版本安装包。")
-            },
-            confirmButton = {
-                Button(onClick = {
-                    haptic.click()
-                    updateResult = null
-                    openInBrowser(context, updateInfo.downloadUrl)
-                }) { Text("下载") }
-            },
-            dismissButton = {
-                FilledTonalButton(onClick = {
-                    haptic.click()
-                    updateResult = null
-                }) { Text("以后再说") }
-            }
-        )
-    }
+    // 手动检查发现新版本：4 按钮更新弹窗（说明子弹窗/下载进度/蓝奏失败回退统一在此渲染）
+    UpdateFlowHosts(updateFlow, vibrate = { haptic.click() })
 
     // 支付宝赞助致谢弹窗（无「不再提示」）：感谢 + 礼貌谢绝学生
     if (showSponsorDialog) {

@@ -8,8 +8,10 @@
     <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
     <!-- Photo Picker 的 content 流默认脱敏 GPS EXIF；声明此权限后可读取完整位置元数据 -->
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
-    <!-- 设置页/启动时检查更新：访问 GitHub API 与跳转浏览器下载 -->
+    <!-- 设置页/启动时检查更新、应用内一键下载安装：访问 GitHub API / 蓝奏云 / 下载文件 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 应用内一键更新：下载完成后调起系统安装器（Android 8+ 需用户在本应用授权「安装未知应用」） -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <!-- 支付宝赞助：声明对支付宝包可见，Android 11+ 才能 resolveActivity 检测是否已安装。
          这只是清单可见性声明（非权限，不弹授权窗） -->
@@ -138,5 +140,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
+
+        <!-- 应用内一键更新安装：下载到 cache/zlc_update 的 APK 通过 FileProvider 授权给系统安装器 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 </manifest>

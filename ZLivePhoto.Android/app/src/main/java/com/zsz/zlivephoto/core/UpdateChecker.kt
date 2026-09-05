@@ -9,14 +9,16 @@ import java.net.URL
 
 /** 检查结果：有新版本 */
 data class UpdateInfo(
-    /** 新版本号（已去 v 前缀，如 "2.5.0"） */
+    /** 新版本号（已去 v 前缀，如 "3.1.0"） */
     val version: String,
-    /** APK 直接下载地址（GitHub release asset 的 browser_download_url；无 APK 资产时为 release 页） */
+    /** GitHub release 资产直链（browser_download_url；无匹配 APK 资产时为 release 页） */
     val downloadUrl: String,
     /** GitHub release 页面地址 */
     val releaseUrl: String,
-    /** 更新说明（release body，可空） */
-    val notes: String?
+    /** 更新说明（release body，完整原文，可空） */
+    val notes: String?,
+    /** 蓝奏云直链（与当前版本 flavor 匹配：标准版 / Go版），Release 正文里没写时为 null */
+    val lanzouUrl: String?,
 )
 
 /** 更新检查结果：区分「有新版本 / 已是最新 / 网络错误」 */
@@ -28,11 +30,28 @@ sealed class UpdateCheckResult {
 
 /**
  * GitHub 更新检查：读取 releases/latest 的 tag_name 与本地版本号语义化比对。
+ * 同时从 Release 正文按「规范化标签」解析蓝奏云直链：
+ *
+ *     [蓝奏云-标准版]: https://www.lanzoux.com/xxxx
+ *     [蓝奏云-Go版]:   https://www.lanzoux.com/yyyy
+ *
+ * 规则：
+ * - 标签必须写成 `[蓝奏云-标准版]` 或 `[蓝奏云-Go版]`（英文中括号 + 冒号），URL 写在后面。
+ * - 标准版（normal flavor）只认「标准版」标签；Go 版（go flavor）只认「Go版」标签。
+ * - 没写本版本对应标签行时 lanzouUrl=null，App 将自动回退从 GitHub 下载。
+ *
  * 无第三方依赖：HttpURLConnection + org.json（Android 内置）。
  */
 object UpdateChecker {
     private const val REPO = "zsz-of/ZLC"
     private const val API_LATEST = "https://api.github.com/repos/$REPO/releases/latest"
+
+    /** 蓝奏云标签行：`[蓝奏云-标准版]: url`（支持全角冒号与行内空格） */
+    private val LANZOU_LINE = Regex("""\[蓝奏云-(标准版|Go版)\]\s*[：:]\s*(\S+)""")
+
+    /** 当前版本对应的蓝奏云标签名（发布规范：go=Go版，其余=标准版） */
+    private fun lanzouLabel(): String =
+        if (BuildConfig.FLAVOR == "go") "Go版" else "标准版"
 
     /**
      * 检查更新（IO 协程执行）。
@@ -45,6 +64,8 @@ object UpdateChecker {
             conn.connectTimeout = 10_000
             conn.readTimeout = 10_000
             conn.setRequestProperty("Accept", "application/vnd.github+json")
+            // 注明 UA，避免被 GitHub 按默认 UA 限流
+            conn.setRequestProperty("User-Agent", "ZLC-Android-Updater")
             if (conn.responseCode != 200) return@withContext UpdateCheckResult.NetworkError
             val body = conn.inputStream.bufferedReader().use { it.readText() }
             val json = JSONObject(body)
@@ -80,6 +101,11 @@ object UpdateChecker {
                 apkUrl = apkAssets.firstOrNull { matches(it.first) }?.second
             }
             val releaseUrl = json.optString("html_url", "https://github.com/$REPO/releases")
+
+            // 从 Release 正文解析当前版本对应的蓝奏云直链（找不到返回 null，回退 GitHub）
+            val releaseBody = json.optString("body")
+            val lanzouUrl = parseLanzouUrl(releaseBody)
+
             UpdateCheckResult.Update(
                 UpdateInfo(
                     version = remote,
@@ -87,7 +113,8 @@ object UpdateChecker {
                     // 保证 Go 版跳转的是 Go 版本 APK 所在页面而非错误版本
                     downloadUrl = apkUrl ?: releaseUrl,
                     releaseUrl = releaseUrl,
-                    notes = json.optString("body").ifEmpty { null }
+                    notes = releaseBody.trim().ifEmpty { null },
+                    lanzouUrl = lanzouUrl
                 )
             )
         } catch (_: Exception) {
@@ -96,10 +123,28 @@ object UpdateChecker {
     }
 
     /**
+     * 从 Release 正文拆分出与当前版本匹配的蓝奏云直链。
+     * 格式约定（每行独立）：
+     * ```
+     * [蓝奏云-标准版]: https://xxx.lanzouX.com/xxxx
+     * [蓝奏云-Go版]:   https://xxx.lanzouX.com/yyyy
+     * ```
+     */
+    fun parseLanzouUrl(body: String): String? {
+        if (body.isBlank()) return null
+        val want = lanzouLabel()
+        for (line in body.lineSequence()) {
+            val m = LANZOU_LINE.find(line.trim()) ?: continue
+            if (m.groupValues[1] == want) return m.groupValues[2].trimEnd(')', '，', ',', '。')
+        }
+        return null
+    }
+
+    /**
      * 语义化版本比较：按 . 和 - 分段逐段数值比较（非数字段按 0 处理）。
      * 示例：("2.5.0", "2.4.0") = true；("2.4.0", "2.4.0") = false
      */
-    private fun isNewer(remote: String, current: String): Boolean {
+    fun isNewer(remote: String, current: String): Boolean {
         fun parse(v: String) = v.split('.', '-').map { it.toIntOrNull() ?: 0 }
         val r = parse(remote)
         val c = parse(current)

@@ -35,6 +35,9 @@ object AppSettings {
     /** 深色模式：system（跟随系统）/ dark（强制深色）/ light（强制浅色） */
     var themeMode by mutableStateOf("system")
         private set
+    /** 用户「跳过此版本」记住的版本号（空串=未跳过）；远端版本与之相同时不再提示更新 */
+    var skippedVersion by mutableStateOf("")
+        private set
 
     private lateinit var prefs: SharedPreferences
 
@@ -47,6 +50,7 @@ object AppSettings {
         customHue = prefs.getFloat("custom_hue", -1f)
         checkUpdateOnStartup = prefs.getBoolean("check_update_startup", true)
         themeMode = prefs.getString("theme_mode", "system") ?: "system"
+        skippedVersion = prefs.getString("skipped_version", "") ?: ""
         // go 轻量版：强制关闭马达反馈与按钮弹性动画（简化版无触感/无 q 弹）
         if (BuildConfig.FLAVOR == "go") {
             hapticsEnabled = false
@@ -92,6 +96,16 @@ object AppSettings {
         themeMode = mode
         prefs.edit().putString("theme_mode", mode).apply()
     }
+
+    /** 记住「跳过此版本」：记录版本号，除非发布了更新的版本否则不再提示 */
+    fun rememberSkippedVersion(version: String) {
+        skippedVersion = version
+        prefs.edit().putString("skipped_version", version).apply()
+    }
+
+    /** 远端版本是否因被用户跳过而不提示 */
+    fun isVersionSkipped(remoteVersion: String): Boolean =
+        skippedVersion.isNotEmpty() && skippedVersion == remoteVersion
 
     /** 某个「不再提示」弹窗是否已关闭（true=不再提示） */
     fun isReminderSuppressed(key: ReminderKey): Boolean =

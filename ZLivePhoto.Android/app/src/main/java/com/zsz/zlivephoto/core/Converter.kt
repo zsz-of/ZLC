@@ -13,7 +13,7 @@ internal open class ConvertException(message: String) : Exception(message)
 
 /**
  * 合成视频的容器不受支持（缺少 ftyp 头 / 是 QuickTime MOV 品牌等）。
- * UI 捕获此类异常后弹窗询问「尝试重新封装」或「跳过」。
+ * 抛给 UI 后把该任务标记为失败，message 提示用户先转码视频为 MP4 再合成。
  */
 internal class VideoContainerException(message: String) : ConvertException(message)
 
@@ -147,16 +147,16 @@ internal object Converter {
             }
             throw VideoContainerException(
                 "视频不是有效的 MP4 文件（检测到 $kind）。\n\n" +
-                "可尝试「重新封装」把视频转为标准 MP4（H.264/AAC）后再合成，或跳过该文件。"
+                "请先用其它工具把视频转为标准 MP4（H.264/AAC）后，再重新合成。"
             )
         }
         // ftyp 品牌为 QuickTime(qt  ) 的是 MOV 容器：字节拼接进动态照片后相册/播放器
-        // 无法识别，同样需要先重封装为标准 MP4
+        // 无法识别，同样需要先转为标准 MP4
         val brand = if (mp4.size >= 12) String(mp4, 8, 4, Charsets.US_ASCII) else ""
         if (brand == "qt  ") {
             throw VideoContainerException(
                 "视频是 QuickTime(MOV) 容器，不能直接合成动态照片。\n\n" +
-                "可尝试「重新封装」转为标准 MP4 后再合成，或跳过该文件。"
+                "请先用其它工具把视频转为标准 MP4（H.264/AAC）后，再重新合成。"
             )
         }
 

@@ -232,4 +232,75 @@ internal object JpegUtil {
         if (prev < jpeg.size) out.write(jpeg, prev, jpeg.size - prev)
         return out.toByteArray()
     }
+
+    /**
+     * 「拆解」专用：把动态照片的主 JPEG 改成普通静态照片，但保留 HDR(GainMap) 元数据。
+     *
+     * 旧的 [stripXmpApp1] 会把整个 XMP 删掉，Ultra HDR 照片的 hdrgm:* 版本信息、
+     * Container 对 GainMap 的引用会一并丢失 → 拆出来的照片只剩 SDR，HDR 高光数据没了。
+     *
+     * 这里只做两件最小的事：
+     *  1. 从 XMP 中移除动态照片标记（MotionPhoto / MicroVideo / 厂商 LivePhoto 私有字段），
+     *     避免输出照片被识别成「没有视频的动态照片」；
+     *  2. 保留 hdrgm:Version、Container:Directory（Primary/GainMap）等 Ultra HDR 结构，
+     *     GainMap JPEG 由调用方拼接在主 JPEG 之后输出，HDR 不丢。
+     */
+    fun sanitizeStillPhoto(jpeg: ByteArray): ByteArray {
+        if (jpeg.size < 4 || jpeg[0] != 0xFF.toByte() || jpeg[1] != 0xD8.toByte()) return jpeg
+        val seg = findXmpSegment(jpeg) ?: return jpeg
+        val cleaned = sanitizeMotionXmp(seg.xmpText)
+        if (cleaned == seg.xmpText) return jpeg
+        return replaceOrInsertXmp(jpeg, cleaned)
+    }
+
+    /**
+     * 在 XMP 文本中去除动态照片标记（纯字符串处理，不做 XML 语义解析）：
+     * - Container:Directory 中指向 MotionPhoto 视频的 <rdf:li> 项；
+     * - 各家相机命名空间上的 MotionPhoto / MicroVideo / LivePhoto 属性。
+     * 对 hdrgm / Container / 其它图像 EXIF 扩展一律保留。
+     */
+    private fun sanitizeMotionXmp(xmp: String): String {
+        var text = xmp
+        // 1) 移除 Container:Directory 里的 MotionPhoto（视频）项。
+        //    每个 <rdf:li> 只包一个 <Container:Item>，无嵌套 li，可安全按 li 边界删除。
+        val liRegex = Regex("""<rdf:li\b(?:(?!</?rdf:li)[\s\S])*?</rdf:li>""")
+        text = liRegex.replace(text) { m ->
+            val li = m.value
+            val isMotionItem = Regex("""Item:Semantic\s*=\s*"(MotionPhoto|MotionPhoto[A-Za-z]*)"""").containsMatchIn(li)
+            if (isMotionItem) "" else li
+        }
+
+        // 2) 移除各相机命名空间上的动态照片属性（属性形式）。
+        //    触发命名的属性删除后，对应 xmlns 声明保留无害。
+        val motionAttrs = listOf(
+            "GCamera" to "MotionPhoto",
+            "GCamera" to "MotionPhotoVersion",
+            "GCamera" to "MotionPhotoPresentationTimestampUs",
+            "GCamera" to "MotionPhotoPrimaryPresentationTimestampUs",
+            "GCamera" to "MicroVideo",
+            "GCamera" to "MicroVideoVersion",
+            "GCamera" to "MicroVideoOffset",
+            "GCamera" to "MicroVideoPresentationTimestampUs",
+            "Camera" to "MotionPhoto",
+            "Camera" to "MotionPhotoVersion",
+            "Camera" to "MotionPhotoPresentationTimestampUs",
+            "OpCamera" to "MotionPhotoOwner",
+            "OpCamera" to "MotionPhotoPrimaryPresentationTimestampUs",
+            "OpCamera" to "OLivePhotoVersion",
+            "OpCamera" to "VideoLength",
+            "OpCamera" to "MotionPhotoEnable",
+            "VCamera" to "VMotionPhotoVersion",
+            "VCamera" to "VMediaKitVersion",
+            "MZCamera" to "LivePhoto",
+        )
+        for ((prefix, attr) in motionAttrs) {
+            text = Regex("""\s+${Regex.escape(prefix)}:${Regex.escape(attr)}\s*=\s*"[^"]*"""").replace(text, "")
+            // 少量相机把字段写成元素形式：<GCamera:MotionPhoto>1</GCamera:MotionPhoto>
+            text = Regex("""\s*<${Regex.escape(prefix)}:${Regex.escape(attr)}\b[^>]*/>\s*""").replace(text, "")
+            text = Regex(
+                """\s*<${Regex.escape(prefix)}:${Regex.escape(attr)}\b[^>]*>[\s\S]*?</${Regex.escape(prefix)}:${Regex.escape(attr)}>\s*"""
+            ).replace(text, "")
+        }
+        return text
+    }
 }

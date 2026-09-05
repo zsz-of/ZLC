@@ -13,8 +13,8 @@ android {
     defaultConfig {
         applicationId = "com.zsz.zlivephoto"
         targetSdk = 36
-        versionCode = 6
-        versionName = "3.0.0"
+        versionCode = 7
+        versionName = "3.0.1"
         ndk {
             abiFilters += listOf("arm64-v8a", "x86_64")
         }
@@ -83,8 +83,6 @@ dependencies {
     implementation(libs.compose.material.icons.extended)
     implementation(libs.activity.compose)
     implementation(libs.lifecycle.runtime.ktx)
-    // 合成失败「尝试重新封装」：把 WebM/MKV/AVI/MOV 等转码为标准 MP4（H.264/AAC）
-    implementation(libs.media3.transformer)
     debugImplementation(libs.compose.ui.tooling)
 
     // JVM 单元测试（AndroidLogicGpsTest：验证转换不破坏 GPS）

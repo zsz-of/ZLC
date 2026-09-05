@@ -50,7 +50,6 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
@@ -288,24 +287,19 @@ private fun TrashBadge(open: Boolean, lidToLeft: Boolean) {
 
 // ---------- 卡片内容 ----------
 
-/** 同格式（目标=输入）文件名与提示的蓝色（随深色模式取深浅蓝） */
-private val SameFormatBlueLight = Color(0xFF1565C0)
-private val SameFormatBlueDark = Color(0xFF7EAEFF)
-
 @Composable
 private fun FileCardContent(item: FileItem, sameFormat: Boolean) {
     // 缩略图：IO 线程降采样解码 + EXIF 方向校正
     val thumb by produceState<Bitmap?>(null, item.path) {
         value = withContext(Dispatchers.IO) { decodeThumbnail(item.path) }
     }
-    val sameFormatBlue = if (isSystemInDarkTheme()) SameFormatBlueDark else SameFormatBlueLight
     val nameColor = when {
-        sameFormat -> sameFormatBlue
+        sameFormat -> MaterialTheme.colorScheme.primary
         item.isUnrecognized -> MaterialTheme.colorScheme.error
         else -> MaterialTheme.colorScheme.onSurface
     }
     val infoColor = when {
-        sameFormat -> sameFormatBlue
+        sameFormat -> MaterialTheme.colorScheme.primary
         item.isUnrecognized -> MaterialTheme.colorScheme.error
         else -> MaterialTheme.colorScheme.onSurfaceVariant
     }

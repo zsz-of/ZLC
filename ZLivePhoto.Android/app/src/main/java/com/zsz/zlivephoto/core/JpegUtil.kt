@@ -206,4 +206,30 @@ internal object JpegUtil {
         System.arraycopy(jpeg, insertAt, final, insertAt + newSeg.size, jpeg.size - insertAt)
         return final
     }
+
+    /**
+     * 移除 JPEG 中所有 XMP APP1 段（拆解动态照片时用于输出干净的静态照片，
+     * 避免残留的 motion XMP 让其它 App / 本 App 再次误判为动态照片）。
+     * 非 JPEG（如 HEIC）原样返回。
+     */
+    fun stripXmpApp1(jpeg: ByteArray): ByteArray {
+        if (jpeg.size < 4 || jpeg[0] != 0xFF.toByte() || jpeg[1] != 0xD8.toByte()) return jpeg
+        val ranges = ArrayList<IntRange>(2)
+        for (seg in iterateSegments(jpeg)) {
+            val m = seg.marker.toInt() and 0xFF
+            if (m == 0xE1 && BinaryUtils.arrayEquals(jpeg, seg.payloadStart, xmpApp1Prefix)) {
+                ranges.add(seg.segStart until (seg.segStart + seg.totalLen))
+            }
+            if (m == 0xDA) break // SOS 之后不再有头部段
+        }
+        if (ranges.isEmpty()) return jpeg
+        val out = java.io.ByteArrayOutputStream(jpeg.size - ranges.sumOf { it.count() })
+        var prev = 0
+        for (range in ranges) {
+            if (range.first > prev) out.write(jpeg, prev, range.first - prev)
+            prev = range.last
+        }
+        if (prev < jpeg.size) out.write(jpeg, prev, jpeg.size - prev)
+        return out.toByteArray()
+    }
 }

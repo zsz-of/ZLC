@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    API 26 以下（go 版覆盖的 Android 6–8）不支持 adaptive icon：
+    7 个桌面入口 alias 的主题图标仅存在于 mipmap-anydpi-v26，
+    若无兜底资源，API 23–25 设备解析 manifest 图标时会资源缺失。
+    这里把各 alias 图标在旧系统上退化为默认启动图标（密度位图已存在）。
+    API 26+ 上 anydpi-v26 的 adaptive 版本优先，此别名不会被选用。
+-->
+<resources>
+    <item name="ic_launcher_0" type="mipmap">@mipmap/ic_launcher</item>
+    <item name="ic_launcher_1" type="mipmap">@mipmap/ic_launcher</item>
+    <item name="ic_launcher_2" type="mipmap">@mipmap/ic_launcher</item>
+    <item name="ic_launcher_3" type="mipmap">@mipmap/ic_launcher</item>
+    <item name="ic_launcher_4" type="mipmap">@mipmap/ic_launcher</item>
+    <item name="ic_launcher_5" type="mipmap">@mipmap/ic_launcher</item>
+    <item name="ic_launcher_6" type="mipmap">@mipmap/ic_launcher</item>
+    <item name="ic_launcher_0_round" type="mipmap">@mipmap/ic_launcher_round</item>
+    <item name="ic_launcher_1_round" type="mipmap">@mipmap/ic_launcher_round</item>
+    <item name="ic_launcher_2_round" type="mipmap">@mipmap/ic_launcher_round</item>
+    <item name="ic_launcher_3_round" type="mipmap">@mipmap/ic_launcher_round</item>
+    <item name="ic_launcher_4_round" type="mipmap">@mipmap/ic_launcher_round</item>
+    <item name="ic_launcher_5_round" type="mipmap">@mipmap/ic_launcher_round</item>
+    <item name="ic_launcher_6_round" type="mipmap">@mipmap/ic_launcher_round</item>
+</resources>

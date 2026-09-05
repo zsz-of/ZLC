@@ -12,7 +12,9 @@ internal object FormatRegistry {
         VivoPlugin(),
         VivoSinglePlugin(),
         XiaomiPlugin(),
-        HonorPlugin()
+        HonorPlugin(),
+        MeizuPlugin(),
+        ExtractPlugin() // 拆解：仅作输出格式，detect 恒 0
     )
 
     /** name -> plugin 索引 */

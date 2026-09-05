@@ -12,7 +12,9 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import com.zsz.zlivephoto.BuildConfig
 
 // ImageToolBox 风格的颜色方案
 private val LightColors = lightColorScheme(
@@ -79,17 +81,92 @@ private val DarkColors = darkColorScheme(
     surfaceContainerHighest = Color(0xFF36343B),
 )
 
+// ---------- 预制主题色（7 个，色相派生）+ 自定义色相 ----------
+// 对基线紫方案做 HSV 色相替换：所有角色颜色换成所选色相，饱和度/明度档位
+// 保持 MD3 原版的对比度结构，light/dark 两套各自适配深浅模式。
+// 红色系（error/错误文字）不参与色相替换，保持警示语义。
+// 第 8 位固定留给「自定义调色板」，不在此列表内。
+internal val presetHues = floatArrayOf(
+    262f, // 紫罗兰（默认，接近原版基线）
+    222f, // 海洋蓝
+    195f, // 青碧
+    150f, // 森绿
+    105f, // 橄榄
+    45f,  // 琥珀
+    25f   // 落日橙
+)
+
+internal val presetNames = listOf("紫罗兰", "海洋蓝", "青碧", "森绿", "橄榄", "琥珀", "落日橙")
+
+/** 把颜色替换为指定色相（保留原饱和度/明度） */
+private fun shiftHue(c: Color, hue: Float): Color {
+    val hsv = floatArrayOf(0f, 0f, 0f)
+    android.graphics.Color.colorToHSV(c.toArgb(), hsv)
+    hsv[0] = hue
+    return Color(android.graphics.Color.HSVToColor(hsv))
+}
+
+/** 当前生效色相：自定义色相优先，否则取预制色下标对应色相 */
+internal fun themeHue(): Float =
+    if (AppSettings.customHue >= 0f) AppSettings.customHue
+    else presetHues[AppSettings.presetColor.coerceIn(0, presetHues.size - 1)]
+
+/** 预制色圆点（设置页选择器展示用）：该色相下 primary 的视觉近似 */
+internal fun presetSwatch(index: Int): Color =
+    shiftHue(LightColors.primary, presetHues[index.coerceIn(0, presetHues.size - 1)])
+
+/** 指定色相的主题色预览（自定义调色板实时预览用） */
+internal fun swatchForHue(hue: Float): Color =
+    shiftHue(LightColors.primary, hue.coerceIn(0f, 360f))
+
+/** 按色相生成 ColorScheme（对基线方案整体替换色相，error 保持不变） */
+internal fun buildScheme(hue: Float, dark: Boolean): ColorScheme {
+    val base = if (dark) DarkColors else LightColors
+    return base.copy(
+        primary = shiftHue(base.primary, hue),
+        onPrimary = base.onPrimary,
+        primaryContainer = shiftHue(base.primaryContainer, hue),
+        onPrimaryContainer = shiftHue(base.onPrimaryContainer, hue),
+        secondary = shiftHue(base.secondary, hue),
+        onSecondary = base.onSecondary,
+        secondaryContainer = shiftHue(base.secondaryContainer, hue),
+        onSecondaryContainer = shiftHue(base.onSecondaryContainer, hue),
+        tertiary = shiftHue(base.tertiary, hue),
+        onTertiary = base.onTertiary,
+        tertiaryContainer = shiftHue(base.tertiaryContainer, hue),
+        onTertiaryContainer = shiftHue(base.onTertiaryContainer, hue),
+        background = shiftHue(base.background, hue),
+        onBackground = base.onBackground,
+        surface = shiftHue(base.surface, hue),
+        onSurface = base.onSurface,
+        surfaceVariant = shiftHue(base.surfaceVariant, hue),
+        onSurfaceVariant = base.onSurfaceVariant,
+        outline = shiftHue(base.outline, hue),
+        outlineVariant = shiftHue(base.outlineVariant, hue),
+        surfaceTint = shiftHue(base.surfaceTint, hue),
+        inversePrimary = shiftHue(base.inversePrimary, hue),
+        surfaceContainerLowest = shiftHue(base.surfaceContainerLowest, hue),
+        surfaceContainerLow = shiftHue(base.surfaceContainerLow, hue),
+        surfaceContainer = shiftHue(base.surfaceContainer, hue),
+        surfaceContainerHigh = shiftHue(base.surfaceContainerHigh, hue),
+        surfaceContainerHighest = shiftHue(base.surfaceContainerHighest, hue)
+    )
+}
+
 @Composable
 fun ZLivePhotoTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
     val context = LocalContext.current
+    // 动态取色（Material You，Android 12+）开启时跟随系统壁纸色；
+    // 关闭时用预制色/自定义色相（AppSettings）。设置切换时经
+    // animateColorScheme 平滑过渡到新配色。
     val target = when {
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ->
+        AppSettings.dynamicTheme && BuildConfig.FLAVOR != "go" && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ->
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        darkTheme -> DarkColors
-        else -> LightColors
+        darkTheme -> buildScheme(themeHue(), dark = true)
+        else -> buildScheme(themeHue(), dark = false)
     }
     // 深色/浅色切换时逐色过渡（约 400ms），避免 Activity 重建瞬变
     val colorScheme = animateColorScheme(target)

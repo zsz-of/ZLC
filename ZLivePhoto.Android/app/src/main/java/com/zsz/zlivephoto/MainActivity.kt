@@ -22,6 +22,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
@@ -46,6 +47,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateListOf
@@ -59,12 +61,18 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import com.zsz.zlivephoto.core.Converter
+import com.zsz.zlivephoto.core.IconManager
 import com.zsz.zlivephoto.core.QuickClassify
+import com.zsz.zlivephoto.core.UpdateChecker
+import com.zsz.zlivephoto.core.UpdateCheckResult
 import com.zsz.zlivephoto.core.formats.FormatRegistry
+import com.zsz.zlivephoto.ui.AppSettings
 import com.zsz.zlivephoto.ui.FancyEasing
 import com.zsz.zlivephoto.ui.FileItem
 import com.zsz.zlivephoto.ui.MainScreen
 import com.zsz.zlivephoto.ui.Md3Checkbox
+import com.zsz.zlivephoto.ui.ReminderKey
+import com.zsz.zlivephoto.ui.SettingsScreen
 import com.zsz.zlivephoto.ui.ZLivePhotoTheme
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
 import com.zsz.zlivephoto.ui.picker.AlbumInfo
@@ -100,6 +108,16 @@ private class ConflictRequest(
     val onChoose: (ConflictAction) -> Unit
 )
 
+/** 合成视频失败时的处理动作（容器不受支持 → 询问是否重封装） */
+internal enum class ComposeFixAction { REMUX, SKIP }
+
+/** 合成视频失败询问请求（挂起协程 ↔ 弹窗之间的桥） */
+private class ComposeFixRequest(
+    val displayName: String,
+    val reason: String,
+    val onChoose: (ComposeFixAction) -> Unit
+)
+
 class MainActivity : ComponentActivity() {
 
     private val files = mutableStateListOf<FileItem>()
@@ -119,7 +137,9 @@ class MainActivity : ComponentActivity() {
     // 识别检测用有界调度器：限制并发文件检测数，避免批量导入 >500 张时
     // 并发协程过多导致资源耗尽崩溃
     @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
-    private val detectionDispatcher = Dispatchers.IO.limitedParallelism(4)
+    private val detectionDispatcher = Dispatchers.IO.limitedParallelism(
+        if (BuildConfig.FLAVOR == "go") 1 else 4
+    )
     // 自上次落盘以来列表变更累计次数（每 50 条写一次本地 JSON）
     private var dirtyCount = 0
 
@@ -151,6 +171,14 @@ class MainActivity : ComponentActivity() {
     /** 本批次内记住的冲突处理动作（null=每次询问；批次开始时清空，仅当前批次有效） */
     @Volatile private var batchConflictAction: ConflictAction? = null
 
+    // 合成视频失败弹窗（尝试重新封装 / 跳过）：与文件名冲突弹窗的「总是」记忆互相独立，
+    // 各自仅在本批次内有效，批次开始时分别清空
+    private var composeFixRequest by mutableStateOf<ComposeFixRequest?>(null)
+    /** 合成失败弹窗「对后续文件执行此操作」复选框（每次弹窗前重置） */
+    private var composeFixAlways by mutableStateOf(false)
+    /** 本批次内记住的合成失败处理动作（null=每次询问；仅当前批次有效） */
+    @Volatile private var batchComposeFixAction: ComposeFixAction? = null
+
     // ---------- 项10：处理完成后删除原图 ----------
     /** 开关（持久化；处理中控制区隐藏不可切换，保证批次语义确定） */
     private var deleteOriginal by mutableStateOf(false)
@@ -167,7 +195,15 @@ class MainActivity : ComponentActivity() {
     // 内置选择器（默认入口；系统选择器作为备选保留）
     private lateinit var mediaRepo: MediaRepo
     private lateinit var scanner: AlbumScanner
-    private var showPicker by mutableStateOf(false)
+    // 合成模式选择器：扫描普通照片+视频（供「合成动态照片」按序号配对）
+    private lateinit var composeScanner: AlbumScanner
+    // 当前打开的选择器是否为合成模式
+    private var pickerComposeMode by mutableStateOf(false)
+    /** 顶层页面路由：Main 主页 / Picker 内置选择器 / Settings 设置页 */
+    private enum class AppScreen { Main, Picker, Settings }
+    private var screen by mutableStateOf(AppScreen.Main)
+    // 启动自动检查更新：发现新版本时非空，弹窗提示下载
+    private var pendingUpdate by mutableStateOf<UpdateCheckResult?>(null)
     private var pickerAlbums by mutableStateOf<List<AlbumInfo>>(emptyList())
 
     private lateinit var incomingDir: String
@@ -192,7 +228,12 @@ class MainActivity : ComponentActivity() {
             android.Manifest.permission.READ_EXTERNAL_STORAGE,
             android.Manifest.permission.ACCESS_MEDIA_LOCATION
         )
-        else -> arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        // Android 9-：READ 读取媒体；WRITE 用于导出到公共 Pictures / 删除原图
+        // （WRITE_EXTERNAL_STORAGE 仅 Android 9- 生效，manifest 已限 maxSdk 29）
+        else -> arrayOf(
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
     }
 
     // 媒体访问能力（不含 ACCESS_MEDIA_LOCATION）：任一媒体读取权限授予即可进入选择器
@@ -269,13 +310,22 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    // 系统照片选择器
+    // 系统照片选择器（API 33+ 原生 Photo Picker；旧系统走 AndroidX 的 GMS backport）
     private val systemPickerLauncher = registerForActivityResult(
         ActivityResultContracts.PickMultipleVisualMedia()
-    ) { uris ->
-        if (uris.isNullOrEmpty()) {
+    ) { uris -> handleImportedUris(uris ?: emptyList()) }
+
+    // 系统选择器不可用时的退化选择器：系统文档多选（仅图片，ACTION_OPEN_DOCUMENT）。
+    // 覆盖无 GMS backport 的旧设备（Android 6–9 国产 ROM 常见），避免 ActivityNotFoundException。
+    private val legacySystemPickerLauncher = registerForActivityResult(
+        ActivityResultContracts.OpenMultipleDocuments()
+    ) { uris -> handleImportedUris(uris ?: emptyList()) }
+
+    /** 选择器返回一批 URI 后的统一导入流程（逐项 importPickedUri，汇总结果与状态栏）。 */
+    private fun handleImportedUris(uris: List<Uri>) {
+        if (uris.isEmpty()) {
             statusText = "未选择任何文件"
-            return@registerForActivityResult
+            return
         }
         statusText = "正在导入 ${uris.size} 个文件…"
         lifecycleScope.launch(Dispatchers.IO) {
@@ -330,16 +380,40 @@ class MainActivity : ComponentActivity() {
     private fun treeUriToFilePath(treeUri: Uri): String? {
         return try {
             if (treeUri.authority != "com.android.externalstorage.documents") return null
-            val docId = DocumentsContract.getTreeDocumentId(treeUri)
-            val idx = docId.indexOf(':')
-            if (idx < 0) return null
-            val volume = docId.substring(0, idx)
-            val path = docId.substring(idx + 1)
-            val volumeRoot = when (volume) {
-                "primary" -> Environment.getExternalStorageDirectory().absolutePath
-                else -> "/storage/$volume"
+            externalStorageDocToPath(DocumentsContract.getTreeDocumentId(treeUri))
+        } catch (_: Exception) { null }
+    }
+
+    /** 把外部存储 Documents docId（形如 "primary:DCIM/xxx.jpg"）映射为绝对路径。 */
+    private fun externalStorageDocToPath(docId: String): String? {
+        val idx = docId.indexOf(':')
+        if (idx < 0) return null
+        val volume = docId.substring(0, idx)
+        val path = docId.substring(idx + 1)
+        val volumeRoot = when (volume) {
+            "primary" -> Environment.getExternalStorageDirectory().absolutePath
+            else -> "/storage/$volume"
+        }
+        return if (path.isEmpty()) volumeRoot else File(volumeRoot, path).absolutePath
+    }
+
+    /** 系统选择器在 Android 9- 上退化为 ACTION_OPEN_DOCUMENT（ExternalStorageProvider 文档 URI），
+     *  尝试把文档 URI 映射回绝对路径。 */
+    private fun resolveDocumentPath(uri: Uri): String? {
+        return try {
+            if (uri.authority != "com.android.externalstorage.documents") return null
+            externalStorageDocToPath(DocumentsContract.getDocumentId(uri))
+        } catch (_: Exception) { null }
+    }
+
+    /** 查询 openable URI 的显示文件名（不可用时返回 null）。 */
+    private fun queryOpenableName(uri: Uri): String? {
+        return try {
+            contentResolver.query(
+                uri, arrayOf(android.provider.OpenableColumns.DISPLAY_NAME), null, null, null
+            )?.use { c ->
+                if (c.moveToFirst() && !c.isNull(0)) c.getString(0) else null
             }
-            if (path.isEmpty()) volumeRoot else File(volumeRoot, path).absolutePath
         } catch (_: Exception) { null }
     }
 
@@ -347,28 +421,33 @@ class MainActivity : ComponentActivity() {
      * 导入单个已选中的媒体 URI（须在 IO 协程内调用）。
      * 引用模式：解析出原始文件绝对路径后直接引用，不复制到应用缓存（零空间占用，
      * 且原文件 EXIF/位置/镜头数据天然完整保留）。
-     * 仅当路径不可直读（个别受限环境）时才回退为 content 流复制到 incoming。
+     * 仅当路径不可直读（文档 URI / 个别受限环境）时才回退为 content 流复制到 incoming。
      */
     private suspend fun importPickedUri(uri: Uri) {
-        // ① 解析原始文件绝对路径（拿不到路径则报告失败）
-        val srcPath = resolveMediaPath(uri)
-            ?: throw IOException("无法定位原文件路径（云端照片请先下载到本地）")
-        val srcFile = File(srcPath)
-        if (srcFile.exists() && srcFile.canRead()) {
-            // ② 引用模式：直接使用原文件路径
+        // ① 解析原始文件绝对路径：媒体库 DATA → 外部存储文档 URI（Android 9- 系统选择器退化场景）
+        var srcPath = resolveMediaPath(uri)
+        if (srcPath == null) srcPath = resolveDocumentPath(uri)
+        val srcFile = srcPath?.let { File(it) }
+        if (srcFile != null && srcFile.exists() && srcFile.canRead()) {
+            // ② 引用模式：直接使用原文件路径（时间戳查询失败时回退文件 mtime）
+            val mod = queryMediaModified(uri).takeIf { it > 0L } ?: srcFile.lastModified()
+            val taken = queryMediaTaken(uri).takeIf { it > 0L } ?: mod
             importFromPath(
-                path = srcPath, sourceUri = uri.toString(),
-                sourceTime = queryMediaModified(uri), sourceTaken = queryMediaTaken(uri)
+                path = srcPath, sourceUri = uri.toString(), sourcePath = srcPath,
+                sourceTime = mod, sourceTaken = taken
             )
         } else {
-            // ③ 受限环境回退：content 流复制到 incoming 再处理
-            val dst = File(incomingDir, srcFile.name).path
+            // ③ 受限环境/文档 URI 回退：content 流复制到 incoming 再处理（保字节，EXIF 完整）
+            val name = queryOpenableName(uri) ?: "import_${System.currentTimeMillis()}"
+            val dst = File(incomingDir, name).path
             contentResolver.openInputStream(uri)?.use { input ->
                 File(dst).outputStream().use { input.copyTo(it) }
             } ?: throw IOException("无法读取所选文件")
+            val dstFile = File(dst)
             importFromPath(
-                path = dst, sourceUri = uri.toString(), sourcePath = srcPath,
-                sourceTime = queryMediaModified(uri), sourceTaken = queryMediaTaken(uri)
+                path = dst, sourceUri = uri.toString(),
+                sourceTime = dstFile.lastModified().takeIf { dstFile.exists() } ?: 0L,
+                sourceTaken = 0L
             )
         }
     }
@@ -420,6 +499,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         CrashHandler.install()
 
+        // 全局设置（主题/触感/弹性动画/更新检查）：首帧组合前初始化
+        AppSettings.init(this)
+
         incomingDir = File(filesDir, "incoming").absolutePath
         outputDir = File(filesDir, "output").absolutePath
         File(incomingDir).mkdirs()
@@ -444,6 +526,7 @@ class MainActivity : ComponentActivity() {
 
         mediaRepo = MediaRepo(contentResolver)
         scanner = AlbumScanner(mediaRepo)
+        composeScanner = AlbumScanner(mediaRepo, composeMode = true)
 
         val prefs = getSharedPreferences("zlivephoto", MODE_PRIVATE)
         // 迁移：旧版 vivo + vivo_mode=single → 新版顶级选项 vivo_single
@@ -451,14 +534,10 @@ class MainActivity : ComponentActivity() {
         if (selectedFormat == "vivo" && prefs.getString("vivo_mode", "single") == "single") {
             selectedFormat = "vivo_single"
         }
-        // Apple 输出存在技术问题暂不可用：旧配置若为 apple，回退到 google
-        if (selectedFormat == "apple") selectedFormat = "google"
         deleteOriginal = prefs.getBoolean("delete_original", false)
 
-        // 初始深浅色（后续由 onConfigurationChanged 实时跟踪）
-        isDarkTheme = (resources.configuration.uiMode and
-            android.content.res.Configuration.UI_MODE_NIGHT_MASK) ==
-            android.content.res.Configuration.UI_MODE_NIGHT_YES
+        // 初始深浅色（后续由 onConfigurationChanged / 设置项变化实时跟踪）
+        isDarkTheme = computeDarkTheme()
 
         // 处理启动时通过分享 Intent 进入的情况
         handleShareIntent(intent)
@@ -470,26 +549,82 @@ class MainActivity : ComponentActivity() {
                 hapticController = haptic
                 // 主列表滚动状态（LazyColumn 复位/保持由 MainScreen 使用）
                 val listState = rememberLazyListState()
+                // 深色模式三选变化：同步 isDarkTheme 驱动主题与选择器即时切换
+                LaunchedEffect(AppSettings.themeMode) {
+                    isDarkTheme = computeDarkTheme()
+                }
                 // 处理过程中吞掉系统返回键（预测式返回下同样生效）
                 BackHandler(enabled = isConverting) { /* 处理中不响应返回 */ }
 
-                // 预览式返回：内置选择器手势进度驱动内容缩小右移（顶层稳定注册，
+                // 桌面图标跟随主题色：仅冷启动应用一次（前台运行时禁用正在使用的入口
+                // alias 会导致系统停掉本 Activity → 闪退；主题色变化后的同步在 onStop 完成）
+                LaunchedEffect(Unit) {
+                    IconManager.apply(this@MainActivity)
+                }
+
+                // 启动时自动检查更新（设置开启时）：后台比对 GitHub 最新 release
+                LaunchedEffect(Unit) {
+                    if (AppSettings.checkUpdateOnStartup) {
+                        val r = UpdateChecker.check(BuildConfig.VERSION_NAME)
+                        if (r is UpdateCheckResult.Update) pendingUpdate = r
+                    }
+                }
+
+                // 发现新版本：弹窗提示，点「下载」跳浏览器打开 GitHub 直接下载地址
+                val updateInfo = (pendingUpdate as? UpdateCheckResult.Update)?.info
+                if (updateInfo != null) {
+                    AlertDialog(
+                        onDismissRequest = { pendingUpdate = null },
+                        title = { Text("发现新版本 v${updateInfo.version}") },
+                        text = {
+                            Text(updateInfo.notes?.take(600)?.trim()
+                                ?: "前往 GitHub 下载最新版本安装包。")
+                        },
+                        confirmButton = {
+                            FilledTonalButton(onClick = {
+                                haptic.click()
+                                pendingUpdate = null
+                                try {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(updateInfo.downloadUrl))
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    startActivity(intent)
+                                } catch (_: Exception) {}
+                            }) { Text("下载") }
+                        },
+                        dismissButton = {
+                            FilledTonalButton(onClick = {
+                                haptic.click()
+                                pendingUpdate = null
+                            }) { Text("以后再说") }
+                        }
+                    )
+                }
+
+                // 预览式返回：选择器 / 设置页手势进度驱动内容缩小右移（顶层稳定注册，
                 // 不受 AnimatedContent 过渡重组影响；提交后回到主页）
                 val backAnim = remember { Animatable(0f) }
-                PredictiveBackHandler(enabled = showPicker) { flow ->
+                // 预览式返回：go 轻量版不启用（进一步简化）
+                PredictiveBackHandler(enabled = BuildConfig.FLAVOR != "go" &&
+                    (screen == AppScreen.Picker || screen == AppScreen.Settings)) { flow ->
                     try {
                         flow.collect { backAnim.snapTo(it.progress) }
-                        showPicker = false
+                        screen = AppScreen.Main
                         backAnim.snapTo(0f)
                     } catch (_: CancellationException) {
                         backAnim.animateTo(0f, tween(200))
                     }
                 }
+                // 系统返回键：选择器 / 设置页返回上一级（主页），不退出应用；
+                // 处理中由上方 BackHandler(enabled = isConverting) 吞掉，二者不冲突
+                BackHandler(enabled = screen == AppScreen.Picker || screen == AppScreen.Settings) {
+                    screen = AppScreen.Main
+                }
 
                 // 进入/退出内置选择器的过渡动画（ImageToolbox fancySlideTransition 式）：
                 // 选择器从右侧整屏滑入 + 淡入，主页向左小幅滑出让位；返回时反向。
+                // 设置页用淡入淡出 + 轻微缩放过渡。
                 AnimatedContent(
-                    targetState = showPicker,
+                    targetState = screen,
                     modifier = Modifier
                         .fillMaxSize()
                         // 过渡动画期间两屏交错露出的底层必须使用主题背景，
@@ -505,38 +640,58 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                     transitionSpec = {
-                        if (targetState) {
-                            (slideInHorizontally(tween(450, easing = FancyEasing)) { it } +
-                                    fadeIn(tween(300, 100))) togetherWith
-                                    (slideOutHorizontally(tween(450, easing = FancyEasing)) { -it / 4 } +
-                                            fadeOut(tween(300)))
-                        } else {
-                            (slideInHorizontally(tween(450, easing = FancyEasing)) { -it / 4 } +
-                                    fadeIn(tween(300, 100))) togetherWith
-                                    (slideOutHorizontally(tween(450, easing = FancyEasing)) { it } +
-                                            fadeOut(tween(300)))
+                        // 用 initialState / targetState 判断方向（screen 是可变的当前目标，
+                        // 动画开始时已指向目标页，用它判断「从主页进入」必然失败 → 会退化到兜底淡入）
+                        val slideIn = initialState == AppScreen.Main && (targetState == AppScreen.Picker || targetState == AppScreen.Settings)
+                        val slideOut = (initialState == AppScreen.Picker || initialState == AppScreen.Settings) && targetState == AppScreen.Main
+                        when {
+                            // 主页 → 选择器 / 设置页：目标页从右整屏推入，主页整屏被推向左，对称推拉
+                            slideIn ->
+                                (slideInHorizontally(tween(450, easing = FancyEasing)) { it } +
+                                        fadeIn(tween(300, 100))) togetherWith
+                                        (slideOutHorizontally(tween(450, easing = FancyEasing)) { -it } +
+                                                fadeOut(tween(300)))
+                            // 选择器 / 设置页 → 主页：反向对称推拉（主页整屏从左侧拉入，当前页整屏推出）
+                            slideOut ->
+                                (slideInHorizontally(tween(450, easing = FancyEasing)) { -it } +
+                                        fadeIn(tween(300, 100))) togetherWith
+                                        (slideOutHorizontally(tween(450, easing = FancyEasing)) { it } +
+                                                fadeOut(tween(300)))
+                            // 其余过渡（兜底）：淡入淡出 + 轻微缩放
+                            else ->
+                                (fadeIn(tween(250)) +
+                                        scaleIn(initialScale = 0.97f, animationSpec = tween(300, easing = FancyEasing))) togetherWith
+                                        (fadeOut(tween(180)))
                         }
                     },
-                    label = "pickerTransition"
-                ) { showPickerContent ->
-                    if (showPickerContent) {
+                    label = "screenTransition"
+                ) { page ->
+                    if (page == AppScreen.Picker) {
                         // 内置选择器（默认）：MediaStore 直查，路径第一手，EXIF 完整保留
                         PhotoPickerScreen(
                             albums = pickerAlbums,
-                            scanner = scanner,
+                            scanner = if (pickerComposeMode) composeScanner else scanner,
                             scannerScope = lifecycleScope,
                             isDarkTheme = isDarkTheme,
-                            onBack = { showPicker = false },
+                            onBack = { screen = AppScreen.Main },
                             onConfirm = { items ->
-                                showPicker = false
+                                screen = AppScreen.Main
                                 importPickedItems(items)
                             },
                             onLaunchSystemPicker = {
                                 // 不立即关闭内置选择器：先弹警告弹窗，
                                 // 点「继续」才关闭内置选择器并打开系统选择器，点「返回」则留在此处
                                 maybeLaunchSystemPickerWithWarning()
+                            },
+                            composeMode = pickerComposeMode,
+                            onConfirmCompose = { photos, videos ->
+                                screen = AppScreen.Main
+                                importComposeItems(photos, videos)
                             }
                         )
+                    } else if (page == AppScreen.Settings) {
+                        // 设置页：更新检查 / 触感与动画开关 / 主题定制 / 关于
+                        SettingsScreen(onBack = { screen = AppScreen.Main })
                     } else {
                         MainScreen(
                             files = files,
@@ -552,6 +707,8 @@ class MainActivity : ComponentActivity() {
                             listState = listState,
                             onAddFiles = { onAddFiles() },
                             onBatchImport = { onBatchImport() },
+                            onCompose = { onCompose() },
+                            onOpenSettings = { screen = AppScreen.Settings },
                             onClearFiles = { clearFiles() },
                             onConvert = { startConvert() },
                             onStopConvert = { stopConvert() },
@@ -640,14 +797,10 @@ class MainActivity : ComponentActivity() {
                     var noRemind by remember { mutableStateOf(false) }
                     AlertDialog(
                         onDismissRequest = { /* 不选继续不允许退出 */ },
-                        title = { Text("使用系统选择器？") },
+                        title = { Text(ReminderKey.SYSTEM_PICKER.title) },
                         text = {
                             Column {
-                                Text(
-                                    "通过系统选择器选择的照片可能丢失元数据" +
-                                    "（位置、镜头参数等），且无法识别部分双文件动态照片。\n\n" +
-                                    "建议优先使用内置选择器。"
-                                )
+                                Text(ReminderKey.SYSTEM_PICKER.message)
                                 // 整行可点击切换（MD3 习惯：文字也是点击目标）
                                 Row(
                                     verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
@@ -670,11 +823,10 @@ class MainActivity : ComponentActivity() {
                             FilledTonalButton(onClick = {
                                 haptic.click()
                                 if (noRemind) {
-                                    getSharedPreferences("zlivephoto", MODE_PRIVATE)
-                                        .edit().putBoolean("sys_picker_no_warn", true).apply()
+                                    AppSettings.setReminderSuppressed(ReminderKey.SYSTEM_PICKER, true)
                                 }
                                 showSystemPickerWarning = false
-                                showPicker = false
+                                screen = AppScreen.Main
                                 launchSystemPicker()
                             }) { Text("继续") }
                         },
@@ -747,6 +899,60 @@ class MainActivity : ComponentActivity() {
                         dismissButton = {}
                     )
                 }
+
+                // 合成视频失败弹窗（视频容器不支持 → 尝试重新封装 / 跳过）
+                // 「对后续文件执行此操作」的记忆与文件名冲突弹窗互相独立，仅本批次有效
+                composeFixRequest?.let { req ->
+                    AlertDialog(
+                        onDismissRequest = {
+                            // 点外部关闭视同跳过，避免协程悬挂
+                            val cb = req.onChoose
+                            composeFixRequest = null
+                            cb(ComposeFixAction.SKIP)
+                        },
+                        title = { Text("合成视频失败") },
+                        text = {
+                            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                                Text(
+                                    "「${req.displayName}」的视频容器无法直接合成动态照片：\n\n" +
+                                    "${req.reason}\n\n" +
+                                    "「尝试重新封装」会把视频转为标准 MP4（H.264/AAC）后重试合成；" +
+                                    "「跳过」则跳过当前文件。"
+                                )
+                                // 按钮各占一行整宽：「尝试重新封装」文案较长，
+                                // 与「跳过」并排会因列宽不足而换行/挤压
+                                FilledTonalButton(
+                                    onClick = { haptic.click(); req.onChoose(ComposeFixAction.REMUX) },
+                                    modifier = Modifier.fillMaxWidth().height(42.dp)
+                                ) { Text("尝试重新封装") }
+                                FilledTonalButton(
+                                    onClick = { haptic.click(); req.onChoose(ComposeFixAction.SKIP) },
+                                    modifier = Modifier.fillMaxWidth().height(42.dp)
+                                ) { Text("跳过") }
+                                // 整行可点击切换（MD3 习惯：文字也是点击目标）
+                                Row(
+                                    verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(8.dp))
+                                        .clickable {
+                                            haptic.click()
+                                            composeFixAlways = !composeFixAlways
+                                        }
+                                        .padding(horizontal = 4.dp, vertical = 8.dp)
+                                ) {
+                                    Md3Checkbox(checked = composeFixAlways)
+                                    Spacer(Modifier.width(12.dp))
+                                    Text(
+                                        "对后续文件执行此操作",
+                                        style = MaterialTheme.typography.labelMedium
+                                    )
+                                }
+                            }
+                        },
+                        confirmButton = {},
+                        dismissButton = {}
+                    )
+                }
             }
         }
     }
@@ -761,9 +967,32 @@ class MainActivity : ComponentActivity() {
     /** uiMode configChanges：Activity 不重建，显式跟踪深浅色变化驱动主题切换 */
     override fun onConfigurationChanged(newConfig: android.content.res.Configuration) {
         super.onConfigurationChanged(newConfig)
-        isDarkTheme = (newConfig.uiMode and
+        isDarkTheme = computeDarkTheme()
+    }
+
+    /** 系统当前是否处于深色模式（uiMode 夜间位） */
+    private fun systemIsDark(): Boolean =
+        (resources.configuration.uiMode and
             android.content.res.Configuration.UI_MODE_NIGHT_MASK) ==
             android.content.res.Configuration.UI_MODE_NIGHT_YES
+
+    /** 依据用户「深色模式」三选（跟随系统/深色/浅色）计算当前是否深色 */
+    private fun computeDarkTheme(): Boolean = when (AppSettings.themeMode) {
+        "dark" -> true
+        "light" -> false
+        else -> systemIsDark()
+    }
+
+    /** 退到后台时把桌面图标同步为当前主题色。
+     *  activity-alias 切换必须等 Activity 停止后再做：前台禁用正在运行的入口组件
+     *  会被系统判定为当前界面失效而停掉 Activity（表现为主界面闪退）。 */
+    override fun onStop() {
+        super.onStop()
+        try {
+            IconManager.apply(this)
+        } catch (_: Exception) {
+            // 极端场景（如系统组件状态异常）下忽略，冷启动仍会重试同步
+        }
     }
 
     /** 正常退出兜底：防抖的稳定态写入若尚未落盘，退出前同步补写尾部标记，
@@ -839,17 +1068,86 @@ class MainActivity : ComponentActivity() {
     private fun openBuiltInPicker() {
         if (isPickerOpening || isConverting) return
         isPickerOpening = true
+        pickerComposeMode = false
         scanner.newSession() // 每次进入选择器开启新会话（相册扫过即不再扫）
         statusText = "正在读取相册…"
         lifecycleScope.launch(Dispatchers.IO) {
             val albums = mediaRepo.queryAlbums()
             withContext(Dispatchers.Main) {
                 pickerAlbums = albums
-                showPicker = true
+                screen = AppScreen.Picker
                 isPickerOpening = false
                 statusText = if (albums.isEmpty()) "未找到相册" else "就绪"
             }
         }
+    }
+
+    /** 合成动态照片入口：打开合成模式选择器（普通照片+视频，按序号配对） */
+    private fun onCompose() {
+        if (!hasReadPermission()) {
+            pendingPermissionAction = { openComposePicker() }
+            showPermissionDialog = true
+        } else {
+            ensureLocationThen { openComposePicker() }
+        }
+    }
+
+    /** 打开合成模式选择器：扫描普通照片（非动态照片）+ 视频（含时长） */
+    private fun openComposePicker() {
+        if (isPickerOpening || isConverting) return
+        isPickerOpening = true
+        pickerComposeMode = true
+        composeScanner.newSession()
+        statusText = "正在读取相册…"
+        lifecycleScope.launch(Dispatchers.IO) {
+            val albums = mediaRepo.queryAlbums(includeVideos = true)
+            withContext(Dispatchers.Main) {
+                pickerAlbums = albums
+                screen = AppScreen.Picker
+                isPickerOpening = false
+                statusText = if (albums.isEmpty()) "未找到相册" else "就绪"
+            }
+        }
+    }
+
+    /**
+     * 合成模式确认导入：照片[i] + 视频[i] 按序号一一配对生成合成任务。
+     * 数量不一致时按较少一方配对并提示；任务项 formatKey=compose、
+     * composeVideoPath=配对视频，输出时间戳取照片的修改时间/拍摄时间。
+     */
+    private fun importComposeItems(photos: List<MediaItem>, videos: List<MediaItem>) {
+        val pairs = minOf(photos.size, videos.size)
+        if (pairs == 0) {
+            statusText = if (photos.isEmpty()) "未选择照片，无法合成"
+                         else "未选择视频，无法合成"
+            return
+        }
+        var added = 0
+        for (i in 0 until pairs) {
+            val p = photos[i]
+            val v = videos[i]
+            // 去重按绝对路径判断（跨相册同名照片可同时合成，不因 name 相同误跳）
+            if (files.any { it.path == p.path }) continue
+            files.add(FileItem(
+                path = p.path,
+                name = p.name,
+                info = "合成任务（点击开始转换执行合成）",
+                sourcePath = p.path,
+                sourceTime = p.dateModified * 1000L, // 输出修改时间=照片修改时间
+                sourceTaken = p.dateTaken,            // 输出创建时间=照片拍摄时间
+                formatKey = "compose",
+                composeVideoPath = v.path
+            ))
+            added++
+        }
+        statusText = when {
+            added == 0 -> "所选照片均已在列表中"
+            photos.size != videos.size ->
+                "照片 ${photos.size} 张、视频 ${videos.size} 个，按较少方已添加 $added 对合成任务"
+            else -> "已添加 $added 个合成任务，点击「开始转换」执行合成"
+        }
+        onListMutated()
+        onListStable(immediate = true)
     }
 
     /** 内置选择器确认导入：引用模式直接记录原文件路径（不复制，零空间占用，
@@ -913,8 +1211,7 @@ class MainActivity : ComponentActivity() {
 
     /** 打开系统选择器前弹警告（可勾选不再提示） */
     private fun maybeLaunchSystemPickerWithWarning() {
-        if (getSharedPreferences("zlivephoto", MODE_PRIVATE)
-                .getBoolean("sys_picker_no_warn", false)) {
+        if (AppSettings.isReminderSuppressed(ReminderKey.SYSTEM_PICKER)) {
             launchSystemPicker()
             return
         }
@@ -922,6 +1219,18 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun launchSystemPicker() {
+        // API 33+：原生 Photo Picker；更早版本由 AndroidX 决定是否走 GMS backport。
+        // 若 backport 不可用（无 GMS / 国产 ROM 未集成），退化到系统文档多选，
+        // 避免 ActivityNotFoundException 崩溃。
+        // （用字符串字面量而非 MediaStore.ACTION_SYSTEM_FALLBACK_PICK_IMAGES，
+        //   该常量属 API 30，避免低版本引用新 API 常量触发 lint/兼容问题）
+        if (Build.VERSION.SDK_INT < 33) {
+            val probe = Intent("android.provider.action.SYSTEM_FALLBACK_PICK_IMAGES").setType("image/*")
+            if (probe.resolveActivity(packageManager) == null) {
+                legacySystemPickerLauncher.launch(arrayOf("image/*"))
+                return
+            }
+        }
         systemPickerLauncher.launch(
             PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
         )
@@ -977,7 +1286,9 @@ class MainActivity : ComponentActivity() {
         }
         val srcPath = sourcePath ?: path
         val name = File(path).name
-        if (files.any { it.path == path || it.name == name }) return
+        // 去重仅按绝对路径判断：不同相册可能存在同名文件（如均含 IMG_xxx.jpg），
+        // 按 name 去重会误删跨相册同名文件，导致只导入其中一个相册的文件
+        if (files.any { it.path == path }) return
         val item = FileItem(path = path, name = name, info = "检测中…",
             sourceUri = sourceUri, sourcePath = srcPath,
             sourceTime = sourceTime, sourceTaken = sourceTaken)
@@ -1020,19 +1331,12 @@ class MainActivity : ComponentActivity() {
             }
 
             val recognized = plugin != null && score >= 50
-            // Apple 格式转换存在技术问题（MOV 回读归一化后手机无法播放）：
-            // 标记为不可转换，处理时按非动态照片处理（跳过，不计入转换目标）
-            val appleBlocked = recognized && plugin?.name == "apple"
             withContext(Dispatchers.Main) {
                 val idx = files.indexOfFirst { it.path == path }
                 if (idx >= 0) {
                     files[idx] = files[idx].copy(
-                        info = when {
-                            appleBlocked -> "Apple Live Photo（暂不支持转换）"
-                            recognized -> plugin!!.display
-                            else -> "未识别的动态照片格式"
-                        },
-                        isUnrecognized = !recognized || appleBlocked,
+                        info = if (recognized) plugin!!.display else "未识别的动态照片格式",
+                        isUnrecognized = !recognized,
                         formatKey = if (recognized) plugin!!.name else null
                     )
                     // 识别结果同步到本地 JSON（防抖合并，避免批量导入时高频写盘）
@@ -1106,6 +1410,7 @@ class MainActivity : ComponentActivity() {
                 o.put("sourceTime", f.sourceTime)
                 o.put("sourceTaken", f.sourceTaken)
                 o.put("formatKey", f.formatKey ?: "")
+                o.put("composeVideo", f.composeVideoPath ?: "")
                 arr.put(o)
             }
             val root = JSONObject()
@@ -1140,7 +1445,8 @@ class MainActivity : ComponentActivity() {
                     sourcePath = o.optString("sourcePath").ifEmpty { null },
                     sourceTime = o.optLong("sourceTime", 0L),
                     sourceTaken = o.optLong("sourceTaken", 0L),
-                    formatKey = o.optString("formatKey").ifEmpty { null }
+                    formatKey = o.optString("formatKey").ifEmpty { null },
+                    composeVideoPath = o.optString("composeVideo").ifEmpty { null }
                 ))
             }
             when {
@@ -1229,12 +1535,14 @@ class MainActivity : ComponentActivity() {
         lastExportError = null
         claimedNames.clear()
         batchConflictAction = null // 「本批次总是」的选择仅当前批次有效
+        // 合成失败「总是重新封装/跳过」的记忆与冲突「总是」互相独立，批次开始时也清空
+        batchComposeFixAction = null
         resetPendingDeletes()
         markIncomplete() // 处理开始：移除列表 JSON 尾部标记（异常退出可检测）
 
         lifecycleScope.launch(Dispatchers.IO) {
-            // 4 路并发转换（Semaphore 限流），单文件异常隔离不中断
-            val sem = Semaphore(4)
+            // 转换并发：normal 4 路（Semaphore 限流），go 单线程（老机型性能低），单文件异常隔离不中断
+            val sem = Semaphore(if (BuildConfig.FLAVOR == "go") 1 else 4)
             val total = targets.size
             val done = AtomicInteger(0)
             val exported = AtomicInteger(0)
@@ -1257,44 +1565,108 @@ class MainActivity : ComponentActivity() {
                         }
                         var n = 0
                         var staged: List<String>? = null
+                        // 合成模式独有的失败跳过标记（视频容器不支持且用户选择「跳过」）
+                        var composeSkipped = false
+                        // 重新封装产生的临时 MP4（合成完成后与暂存产物一并清理）
+                        val remuxTemps = ArrayList<File>()
                         try {
-                            staged = Converter.convertFile(
-                                path = item.path,
-                                target = selectedFormat,
-                                outDir = outputDir,
-                                log = { level, msg, tag ->
-                                    if (level == "error" || level == "warn") {
-                                        statusText = "[$tag] $msg"
+                            if (item.formatKey == "compose" && item.composeVideoPath != null) {
+                                // 合成任务：照片 + 配对视频 → 动态照片。
+                                // 视频容器不受支持（非 MP4 / MOV 等）时抛 VideoContainerException，
+                                // 弹窗询问「尝试重新封装 / 跳过」；重封装成功能自动用新视频重试合成。
+                                var videoSrc = item.composeVideoPath!!
+                                var attempt = 0
+                                var composeDone = false
+                                while (!composeDone) {
+                                    attempt++
+                                    // 防死循环：同一文件连续多次重封装仍失败则放弃
+                                    if (attempt > 4) {
+                                        throw com.zsz.zlivephoto.core.VideoContainerException(
+                                            "连续多次重新封装后视频仍无法合成，已放弃该文件"
+                                        )
+                                    }
+                                    try {
+                                        staged = Converter.compose(
+                                            photoPath = item.path,
+                                            videoPath = videoSrc,
+                                            target = selectedFormat,
+                                            outDir = outputDir,
+                                            log = { level, msg, tag ->
+                                                if (level == "error" || level == "warn") {
+                                                    statusText = "[$tag] $msg"
+                                                }
+                                            }
+                                        )
+                                        composeDone = true
+                                    } catch (e: com.zsz.zlivephoto.core.VideoContainerException) {
+                                        when (askComposeFix(File(videoSrc).name, e.message ?: "")) {
+                                            ComposeFixAction.SKIP -> {
+                                                composeSkipped = true
+                                                composeDone = true
+                                            }
+                                            ComposeFixAction.REMUX -> {
+                                                val remuxed = remuxVideoToCache(videoSrc)
+                                                remuxTemps.add(remuxed)
+                                                videoSrc = remuxed.absolutePath
+                                            }
+                                        }
                                     }
                                 }
-                            )
-                            // 项10：必须在冲突/导出发生前解析原图 URI——覆盖会删除旧媒体
-                            // 条目，之后按路径查询会误中刚导出的新产物
-                            val originalUris = if (deleteOriginal)
-                                resolveOriginalUris(item.sourcePath, item.sourceUri, item.formatKey)
-                            else emptyList()
-                            // 输出文件名冲突处理（跳过 / 覆盖 / 自动后缀）
-                            val finalOutputs = resolveConflicts(staged, "", item.sourcePath)
-                            if (finalOutputs != null) {
-                                for (outPath in finalOutputs) {
-                                    // 始终保留原图修改时间（原文件名时间信息不丢失）
-                                    val srcTime = if (item.sourceTime > 0L) item.sourceTime else System.currentTimeMillis()
-                                    File(outPath).setLastModified(srcTime)
-                                    if (exportToMediaStore(outPath, srcTime) != null) n++
-                                }
+                            } else {
+                                // 普通项走转换管线
+                                staged = Converter.convertFile(
+                                    path = item.path,
+                                    target = selectedFormat,
+                                    outDir = outputDir,
+                                    log = { level, msg, tag ->
+                                        if (level == "error" || level == "warn") {
+                                            statusText = "[$tag] $msg"
+                                        }
+                                    }
+                                )
                             }
-                            exported.addAndGet(n)
-                            // 项10：成功导出的原图入待删集合（失败/跳过/覆盖保护项不删）
-                            mergePendingDeletes(item.sourcePath, originalUris, n > 0)
-                            if (finalOutputs != null) successPaths.add(item.path)
-                            withContext(Dispatchers.Main) {
-                                val i = files.indexOfFirst { it.path == item.path }
-                                if (i >= 0) {
-                                    // 处理期间不移除项目：仅更新状态，待全部完成后统一左滑清除
-                                    files[i] = files[i].copy(
-                                        info = if (finalOutputs == null) "完成（跳过：同名冲突）"
-                                               else "完成（导出 $n 个）"
-                                    )
+                            if (composeSkipped) {
+                                // 合成失败且用户选择跳过：该文件不导出、不入成功集合
+                                withContext(Dispatchers.Main) {
+                                    val i = files.indexOfFirst { it.path == item.path }
+                                    if (i >= 0) files[i] = files[i].copy(info = "跳过（视频容器不支持）")
+                                }
+                            } else {
+                                // 项10：必须在冲突/导出发生前解析原图 URI——覆盖会删除旧媒体
+                                // 条目，之后按路径查询会误中刚导出的新产物
+                                // 合成任务删除封面照片 + 配对视频；普通任务删除原图（含双文件伴生视频）
+                                val originalUris = if (deleteOriginal) {
+                                    if (item.formatKey == "compose") {
+                                        resolveComposeOriginalUris(item.sourcePath, item.sourceUri, item.composeVideoPath)
+                                    } else {
+                                        resolveOriginalUris(item.sourcePath, item.sourceUri, item.formatKey)
+                                    }
+                                } else emptyList()
+                                // 输出文件名冲突处理（跳过 / 覆盖 / 自动后缀）
+                                val finalOutputs = resolveConflicts(staged.orEmpty(), "", item.sourcePath)
+                                if (finalOutputs != null) {
+                                    for (outPath in finalOutputs) {
+                                        // 输出时间戳：修改时间=源文件修改时间；创建时间=源文件拍摄时间
+                                        // （合成任务取照片的时间，二者在照片上天然同源）
+                                        val srcTime = if (item.sourceTime > 0L) item.sourceTime else System.currentTimeMillis()
+                                        val srcTaken = if (item.sourceTaken > 0L) item.sourceTaken else srcTime
+                                        File(outPath).setLastModified(srcTime)
+                                        if (exportToMediaStore(outPath, srcTime, srcTaken) != null) n++
+                                    }
+                                }
+                                exported.addAndGet(n)
+                                // 项10：成功导出的原图入待删集合（失败/跳过/覆盖保护项不删）
+                                mergePendingDeletes(item.sourcePath, originalUris, n > 0)
+                                if (finalOutputs != null) successPaths.add(item.path)
+                                withContext(Dispatchers.Main) {
+                                    val i = files.indexOfFirst { it.path == item.path }
+                                    if (i >= 0) {
+                                        // 处理期间不移除项目：仅更新状态，待全部完成后统一左滑清除
+                                        files[i] = files[i].copy(
+                                            info = if (finalOutputs == null) "完成（跳过：同名冲突）"
+                                                   else "完成（导出 $n 个）"
+                                        )
+                                    }
                                 }
                             }
                         } catch (e: Exception) {
@@ -1307,6 +1679,7 @@ class MainActivity : ComponentActivity() {
                         } finally {
                             // 清理本地暂存产物（已导出 / 跳过 / 失败均清理）
                             staged?.forEach { p -> try { File(p).delete() } catch (_: Exception) {} }
+                            remuxTemps.forEach { t -> try { t.delete() } catch (_: Exception) {} }
                         }
                         val d = done.incrementAndGet()
                         progress = d.toFloat() / total
@@ -1451,7 +1824,7 @@ class MainActivity : ComponentActivity() {
         if (mediaStoreExists(fileName, relSubDir)) return true
         val dir = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-            "Z-LivePhoto-Converter" + (if (relSubDir.isNotEmpty()) "/$relSubDir" else "")
+            albumFolder() + (if (relSubDir.isNotEmpty()) "/$relSubDir" else "")
         )
         return File(dir, fileName).exists()
     }
@@ -1540,8 +1913,62 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    /** 相册输出目录（Pictures/Z-LivePhoto-Converter[/<子目录>]）中是否已存在同名文件。 */
+    /** 挂起等待用户在「合成视频失败」弹窗中选择动作（互斥：同一时刻最多一个询问）。
+     *  「对后续文件执行此操作」的记忆用独立的 composeFixAlways / batchComposeFixAction，
+     *  与文件名冲突弹窗的「总是」互不干扰，各自仅本批次有效。 */
+    private suspend fun askComposeFix(displayName: String, reason: String): ComposeFixAction {
+        batchComposeFixAction?.let { return it }
+        return suspendCancellableCoroutine { cont ->
+            composeFixAlways = false // 每次弹窗前重置复选框
+            composeFixRequest = ComposeFixRequest(displayName, reason) { action ->
+                composeFixRequest = null
+                if (composeFixAlways) batchComposeFixAction = action // 本批次内总是
+                if (cont.isActive) cont.resume(action)
+            }
+            cont.invokeOnCancellation {
+                // 协程被取消（如 Activity 销毁）时清掉弹窗
+                composeFixRequest = null
+            }
+        }
+    }
+
+    /**
+     * 把容器不受支持的视频修复为缓存目录下的标准 MP4：
+     *  1. 先零重编码重封装（MediaExtractor→MediaMuxer，适合 MOV 等兼容编码，速度快）；
+     *  2. 失败则用 media3-Transformer 解码重编码为 H.264/AAC（等价简单 ffmpeg）。
+     * @throws Exception 两级均失败时抛出（不修改源视频，仅写缓存临时文件）。
+     */
+    private suspend fun remuxVideoToCache(srcPath: String): File {
+        val src = File(srcPath)
+        val dir = File(cacheDir, "zlc_remux").apply { mkdirs() }
+        val out = File(dir, "${src.nameWithoutExtension}_${System.currentTimeMillis()}.mp4")
+        // 1) 直接重封装（不重编码）
+        val remuxed = runCatching {
+            com.zsz.zlivephoto.core.VideoRemux.remuxContainer(srcPath, out.absolutePath)
+        }.getOrDefault(false)
+        if (remuxed && out.length() > 0L) return out
+        // 2) Transformer 转码
+        out.delete()
+        val ok = try {
+            com.zsz.zlivephoto.core.VideoRemux.transcodeToMp4(this, srcPath, out.absolutePath)
+        } catch (e: Exception) {
+            out.delete()
+            throw e
+        }
+        if (!ok) {
+            out.delete()
+            throw Exception("重新封装与转码均失败，视频可能已损坏或编码不受支持")
+        }
+        return out
+    }
+
+    /** 相册输出根目录名：normal 与 go 均统一输出到 Pictures/Z-LivePhoto-Converter（Go 仅体现在应用名） */
+    private fun albumFolder(): String = "Z-LivePhoto-Converter"
+
+    /** 相册输出目录（Pictures/Z-LivePhoto-Converter[/<子目录>]）中是否已存在同名文件。
+     *  Android 9-：输出落盘为物理文件，由 nameOccupied 的文件系统检查兜底，这里直接返回 false。 */
     private fun mediaStoreExists(displayName: String, relSubDir: String): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return false
         val rel = albumRelPath(relSubDir)
         for (collection in listOf(
             MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL),
@@ -1558,34 +1985,51 @@ class MainActivity : ComponentActivity() {
         return false
     }
 
-    /** 删除相册输出目录中的同名文件（覆盖前清理；仅能删除本应用写入的项）。 */
+    /** 删除相册输出目录中的同名文件（覆盖前清理）。
+     *  Android 10+：按 RELATIVE_PATH 查 MediaStore 行删除；
+     *  Android 9-：直接删除物理文件 + 按 DATA 查 MediaStore 行删除（无 RELATIVE_PATH 列）。 */
     private fun deleteFromMediaStore(displayName: String, relSubDir: String) {
-        val rel = albumRelPath(relSubDir)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val rel = albumRelPath(relSubDir)
+            for (collection in listOf(
+                MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL),
+                MediaStore.Video.Media.getContentUri(MediaStore.VOLUME_EXTERNAL)
+            )) {
+                try {
+                    contentResolver.query(
+                        collection, arrayOf(MediaStore.MediaColumns._ID),
+                        "${MediaStore.MediaColumns.DISPLAY_NAME}=? AND ${MediaStore.MediaColumns.RELATIVE_PATH}=?",
+                        arrayOf(displayName, rel), null
+                    )?.use { c ->
+                        while (c.moveToNext()) {
+                            val id = c.getLong(0)
+                            try {
+                                contentResolver.delete(
+                                    android.content.ContentUris.withAppendedId(collection, id), null, null)
+                            } catch (_: Exception) {}
+                        }
+                    }
+                } catch (_: Exception) {}
+            }
+            return
+        }
+        // Android 9-：物理文件 + 媒体行（按 DATA）一并删除
+        val f = File(outputAlbumDir(relSubDir), displayName)
+        try { if (f.exists()) f.delete() } catch (_: Exception) {}
+        val abs = f.absolutePath
         for (collection in listOf(
-            MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL),
-            MediaStore.Video.Media.getContentUri(MediaStore.VOLUME_EXTERNAL)
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            MediaStore.Video.Media.EXTERNAL_CONTENT_URI
         )) {
             try {
-                contentResolver.query(
-                    collection, arrayOf(MediaStore.MediaColumns._ID),
-                    "${MediaStore.MediaColumns.DISPLAY_NAME}=? AND ${MediaStore.MediaColumns.RELATIVE_PATH}=?",
-                    arrayOf(displayName, rel), null
-                )?.use { c ->
-                    while (c.moveToNext()) {
-                        val id = c.getLong(0)
-                        try {
-                            contentResolver.delete(
-                                android.content.ContentUris.withAppendedId(collection, id), null, null)
-                        } catch (_: Exception) {}
-                    }
-                }
+                contentResolver.delete(collection, "${MediaStore.MediaColumns.DATA}=?", arrayOf(abs))
             } catch (_: Exception) {}
         }
     }
 
-    /** 相册输出相对路径：Pictures/Z-LivePhoto-Converter[/<子目录>] */
+    /** 相册输出相对路径：Pictures/{albumFolder}[/<子目录>] */
     private fun albumRelPath(relSubDir: String): String =
-        Environment.DIRECTORY_PICTURES + "/Z-LivePhoto-Converter" +
+        Environment.DIRECTORY_PICTURES + "/" + albumFolder() +
             (if (relSubDir.isNotEmpty()) "/$relSubDir" else "")
 
     // ---------- 项10：处理完成后删除原图（辅助） ----------
@@ -1593,7 +2037,7 @@ class MainActivity : ComponentActivity() {
     /** 相册输出目录的文件系统路径（覆盖冲突保护判定用） */
     private fun outputAlbumDir(relSubDir: String): File = File(
         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-        "Z-LivePhoto-Converter" + (if (relSubDir.isNotEmpty()) "/$relSubDir" else "")
+        albumFolder() + (if (relSubDir.isNotEmpty()) "/$relSubDir" else "")
     )
 
     /**
@@ -1625,11 +2069,31 @@ class MainActivity : ComponentActivity() {
         return uris
     }
 
-    /** 按 DATA 绝对路径在媒体库查 URI（图片/视频集合各查一次） */
+    /**
+     * 合成任务的待删原文件：封面照片 + 配对视频。
+     * 合成任务无 sourceUri（引用普通照片/视频路径），统一按 DATA 路径回查 MediaStore URI。
+     */
+    private fun resolveComposeOriginalUris(
+        photoPath: String?, photoUri: String?, videoPath: String?
+    ): List<Uri> {
+        if (photoPath == null) return emptyList()
+        val uris = mutableListOf<Uri>()
+        if (photoUri != null && photoUri.startsWith("content://media/external/")) {
+            try { uris.add(Uri.parse(photoUri)) } catch (_: Exception) {}
+        } else {
+            resolveUriByPath(photoPath)?.let { uris.add(it) }
+        }
+        if (videoPath != null && File(videoPath).exists() && File(videoPath).length() > 8L) {
+            resolveUriByPath(videoPath)?.let { uris.add(it) }
+        }
+        return uris
+    }
+
+    /** 按 DATA 绝对路径在媒体库查 URI（图片/视频集合各查一次；EXTERNAL_CONTENT_URI 全版本可用） */
     private fun resolveUriByPath(path: String): Uri? {
         for (collection in listOf(
-            MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL),
-            MediaStore.Video.Media.getContentUri(MediaStore.VOLUME_EXTERNAL)
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            MediaStore.Video.Media.EXTERNAL_CONTENT_URI
         )) {
             try {
                 val id = contentResolver.query(
@@ -1697,14 +2161,17 @@ class MainActivity : ComponentActivity() {
             }
         } else {
             // Android 10：无 createTrashRequest 与回收站；非本应用拥有的媒体无法删除
+            // Android 9-：WRITE_EXTERNAL_STORAGE 允许直接删媒体行与物理文件（无回收站）
             var deleted = 0
             for (uri in valid) {
                 try { contentResolver.delete(uri, null, null); deleted++ } catch (_: Exception) {}
             }
+            val noTrash = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+                "Android 10 无回收站，直接删除" else "旧系统无回收站，已直接删除"
             statusText = if (deleted > 0)
-                "$baseStatus；已删除 $deleted 个原文件（Android 10 无回收站，直接删除）"
+                "$baseStatus；已删除 $deleted 个原文件（$noTrash）"
             else
-                "$baseStatus；Android 10 不支持回收站删除，原图已保留"
+                "$baseStatus；原文件删除失败，已保留"
         }
     }
 
@@ -1713,21 +2180,36 @@ class MainActivity : ComponentActivity() {
      * 1) MediaStore 标准写入（IS_PENDING，写完才出现在相册）；
      * 2) 失败回退：直接写公共 Pictures 目录 + MediaScannerConnection 触发媒体扫描；
      * 失败原因记录到 lastExportError，随转换结果一起展示。
+     *
+     * 时间戳语义（修复：修改时间此前被写入时间重写）：
+     * - modifiedMs → 修改时间：MediaStore DATE_MODIFIED + FUSE 文件 mtime（setLastModified）
+     * - takenMs → 创建时间：DATE_TAKEN（拍摄时间，缺省回退 modifiedMs）
      */
-    private fun exportToMediaStore(srcPath: String, timestamp: Long, relSubDir: String = ""): Uri? {
+    private fun exportToMediaStore(srcPath: String, modifiedMs: Long, takenMs: Long, relSubDir: String = ""): Uri? {
         val src = File(srcPath)
         if (!src.exists() || src.length() == 0L) {
             setExportError("转换产物缺失或为空：${src.name}")
             return null
         }
+        val taken = if (takenMs > 0L) takenMs else modifiedMs
         val ext = src.extension.lowercase()
         val isVideo = ext == "mp4" || ext == "mov"
         val mime = if (isVideo) (if (ext == "mov") "video/quicktime" else "video/mp4") else "image/jpeg"
+
+        // Android 9-：无 MediaStore 相对路径写入（RELATIVE_PATH/IS_PENDING/VOLUME 均为 Q+ 概念），
+        // 直接写公共 Pictures 目录 + 触发媒体扫描（需 WRITE_EXTERNAL_STORAGE，已在权限流程申请）
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return exportDirectWithScan(src, mime, modifiedMs, relSubDir)
+        }
+
         val collection = if (isVideo) {
             MediaStore.Video.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
         } else {
             MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
         }
+        // 图片与视频的 DATE_TAKEN 分属不同集合列（虽然底层同为 datetaken），
+        // 按目标集合取对应常量，保证视频的创建时间同样被正确写入
+        val dateTakenColumn = if (isVideo) MediaStore.Video.Media.DATE_TAKEN else MediaStore.Images.Media.DATE_TAKEN
         val relativePath = albumRelPath(relSubDir)
 
         // 1) MediaStore 标准写入（IS_PENDING 流程）
@@ -1740,8 +2222,8 @@ class MainActivity : ComponentActivity() {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     put(MediaStore.MediaColumns.IS_PENDING, 1)
                 }
-                put(MediaStore.MediaColumns.DATE_MODIFIED, timestamp / 1000)
-                put(MediaStore.Images.Media.DATE_TAKEN, timestamp)
+                put(MediaStore.MediaColumns.DATE_MODIFIED, modifiedMs / 1000)
+                put(dateTakenColumn, taken)
             }
             inserted = contentResolver.insert(collection, values)
             if (inserted == null) {
@@ -1764,8 +2246,8 @@ class MainActivity : ComponentActivity() {
             if (written) {
                 try {
                     val ts = ContentValues().apply {
-                        put(MediaStore.MediaColumns.DATE_MODIFIED, timestamp / 1000)
-                        put(MediaStore.Images.Media.DATE_TAKEN, timestamp)
+                        put(MediaStore.MediaColumns.DATE_MODIFIED, modifiedMs / 1000)
+                        put(dateTakenColumn, taken)
                     }
                     contentResolver.update(inserted, ts, null, null)
                 } catch (_: Exception) {}
@@ -1780,10 +2262,21 @@ class MainActivity : ComponentActivity() {
             if (written) {
                 try {
                     val ts = ContentValues().apply {
-                        put(MediaStore.MediaColumns.DATE_MODIFIED, timestamp / 1000)
-                        put(MediaStore.Images.Media.DATE_TAKEN, timestamp)
+                        put(MediaStore.MediaColumns.DATE_MODIFIED, modifiedMs / 1000)
+                        put(dateTakenColumn, taken)
                     }
                     contentResolver.update(inserted, ts, null, null)
+                    // FUSE 层文件 mtime 也会被写入时间重写（后续媒体扫描会用文件系统
+                    // mtime 覆盖回数据库，导致之前的固化失效）：查 DATA 实际路径后
+                    // 直接 setLastModified 修复文件系统层修改时间
+                    contentResolver.query(
+                        inserted, arrayOf(MediaStore.MediaColumns.DATA), null, null, null
+                    )?.use { c ->
+                        if (c.moveToFirst()) {
+                            val dataPath = c.getString(0)
+                            if (!dataPath.isNullOrEmpty()) File(dataPath).setLastModified(modifiedMs)
+                        }
+                    }
                 } catch (_: Exception) {}
             }
             if (written) return inserted
@@ -1796,16 +2289,19 @@ class MainActivity : ComponentActivity() {
         }
 
         // 2) 回退：直接写公共 Pictures 目录 + 触发媒体扫描（需「所有文件访问权限」/旧版写权限）
-        return exportDirectWithScan(src, mime, timestamp, relSubDir)
+        return exportDirectWithScan(src, mime, modifiedMs, relSubDir)
     }
 
-    /** 回退方案：直接写 Pictures/Z-LivePhoto-Converter 并触发媒体扫描。 */
-    private fun exportDirectWithScan(src: File, mime: String, timestamp: Long, relSubDir: String = ""): Uri? {
+    /** 回退方案：直接写 Pictures/Z-LivePhoto-Converter 并触发媒体扫描。
+     *  文件 mtime=修改时间；扫描后 MediaStore 的 DATE_TAKEN 取文件时间，尽力保留。 */
+    private fun exportDirectWithScan(
+        src: File, mime: String, modifiedMs: Long, relSubDir: String = ""
+    ): Uri? {
         return try {
             val dir = File(
                 File(
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-                    "Z-LivePhoto-Converter"
+                    albumFolder()
                 ),
                 relSubDir
             )
@@ -1815,7 +2311,7 @@ class MainActivity : ComponentActivity() {
             }
             val dst = File(dir, uniqueName(dir, src.name))
             src.copyTo(dst, overwrite = true)
-            dst.setLastModified(timestamp)
+            dst.setLastModified(modifiedMs)
             MediaScannerConnection.scanFile(this, arrayOf(dst.absolutePath), arrayOf(mime)) { _, _ -> }
             Uri.fromFile(dst)
         } catch (e: Exception) {

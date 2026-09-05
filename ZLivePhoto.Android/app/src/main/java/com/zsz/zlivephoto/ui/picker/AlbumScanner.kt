@@ -1,6 +1,7 @@
 package com.zsz.zlivephoto.ui.picker
 
 import androidx.compose.runtime.mutableStateListOf
+import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.core.QuickClassify
 import com.zsz.zlivephoto.core.formats.FormatRegistry
 import kotlinx.coroutines.CoroutineScope
@@ -23,9 +24,12 @@ import java.util.concurrent.atomic.AtomicInteger
  * - 未扫完就切走：立即中断；切回时清空旧进度从头重扫
  * - 转到新相册：立即开始该相册的扫描
  *
+ * composeMode=true（合成模式）：扫描普通照片（JPEG 且非动态照片）+ 视频，
+ * 供「合成动态照片」选择配对。
+ *
  * 无磁盘持久化：扫描结果仅存内存，不产生任何本地存储。
  */
-class AlbumScanner(private val repo: MediaRepo) {
+class AlbumScanner(private val repo: MediaRepo, private val composeMode: Boolean = false) {
 
     class ScanState {
         /** 已识别为动态照片的列表（Compose 状态，UI 直接观察） */
@@ -115,12 +119,23 @@ class AlbumScanner(private val repo: MediaRepo) {
         if (activeBucket == bucketId) activeBucket = null
     }
 
-    /** 单个扫描线程：粗筛 → 精判，扫到一张即在 Main 线程追加显示 */
+    /** 单个扫描线程：粗筛 → 精判，扫到一张即在 Main 线程追加显示。
+     *  合成模式：视频直接收录；照片收录普通 JPEG（非动态照片）。 */
     private suspend fun scanWorker(st: ScanState) {
         while (currentCoroutineContext().isActive) {
             val item = st.pending.poll() ?: break
             if (!st.known.containsKey(item.key)) continue // 队列残留已被删除的项
-            if (QuickClassify.sniff(item.path)) {
+            if (composeMode) {
+                if (item.isVideo || QuickClassify.isPlainComposeImage(item.path)) {
+                    withContext(Dispatchers.Main) {
+                        if (st.known.containsKey(item.key) &&
+                            st.results.none { it.id == item.id && it.isVideo == item.isVideo }
+                        ) {
+                            st.results.add(item)
+                        }
+                    }
+                }
+            } else if (QuickClassify.sniff(item.path)) {
                 try {
                     val (plugin, score) = FormatRegistry.detectBest(item.path)
                     if (plugin != null && score >= 50) {
@@ -149,7 +164,7 @@ class AlbumScanner(private val repo: MediaRepo) {
      * 返回是否有待扫项。
      */
     private fun diffRefresh(st: ScanState, bucketId: Long): Boolean {
-        val current = repo.queryAlbumImages(bucketId)
+        val current = repo.queryAlbumImages(bucketId, includeVideos = composeMode)
         for (item in current) {
             st.known[item.key] = item
             st.pending.add(item)
@@ -159,6 +174,8 @@ class AlbumScanner(private val repo: MediaRepo) {
     }
 
     companion object {
-        private const val SCAN_THREADS = 4
+        // go 轻量版单线程扫描（老机型性能低），normal 版 4 线程
+        private val SCAN_THREADS: Int
+            get() = if (BuildConfig.FLAVOR == "go") 1 else 4
     }
 }

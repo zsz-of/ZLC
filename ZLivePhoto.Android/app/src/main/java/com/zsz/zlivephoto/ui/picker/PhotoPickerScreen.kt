@@ -3,8 +3,10 @@ package com.zsz.zlivephoto.ui.picker
 import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.net.Uri
+import android.provider.MediaStore
 import android.util.LruCache
 import android.util.Size
+import com.zsz.zlivephoto.BuildConfig
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
@@ -18,11 +20,13 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
+import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
+import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideInVertically
@@ -46,11 +50,13 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
@@ -65,6 +71,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.outlined.ImageNotSupported
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
@@ -99,6 +106,7 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.state.ToggleableState
@@ -108,8 +116,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
 import com.zsz.zlivephoto.ui.AlphaEasing
+import com.zsz.zlivephoto.ui.AppSettings
 import com.zsz.zlivephoto.ui.FancyEasing
 import com.zsz.zlivephoto.ui.PressHapticEffect
+import com.zsz.zlivephoto.ui.ReminderInfoDialog
+import com.zsz.zlivephoto.ui.ReminderKey
 import com.zsz.zlivephoto.ui.rememberPressFeedback
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -127,7 +138,9 @@ private val thumbCache = LruCache<String, Bitmap>(96)
 // 缩略图加载有界并发：限制同时进行的 ContentResolver.loadThumbnail 数量，
 // 避免快速滚动/千张列表时并发 I/O 过多拖垮主线程与磁盘，造成卡顿
 @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
-private val thumbDispatcher = Dispatchers.IO.limitedParallelism(4)
+private val thumbDispatcher = Dispatchers.IO.limitedParallelism(
+    if (BuildConfig.FLAVOR == "go") 1 else 4
+)
 
 /**
  * 内置动态照片选择器。
@@ -151,12 +164,19 @@ fun PhotoPickerScreen(
     isDarkTheme: Boolean,
     onBack: () -> Unit,
     onConfirm: (List<MediaItem>) -> Unit,
-    onLaunchSystemPicker: () -> Unit
+    onLaunchSystemPicker: () -> Unit,
+    /** 合成模式：选择普通照片+视频配对合成动态照片 */
+    composeMode: Boolean = false,
+    /** 合成模式确认回调：(照片列表, 视频列表)，按序号一一配对 */
+    onConfirmCompose: ((List<MediaItem>, List<MediaItem>) -> Unit)? = null
 ) {
     val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
     var currentBucketId by remember { mutableStateOf(albums.firstOrNull()?.bucketId) }
     val bucketId = currentBucketId
     val selected = remember { mutableStateListOf<MediaItem>() }
+    // 合成模式：照片与视频分开计数（序号各自独立，第 1 张照片与第 1 个视频都是序号 1）
+    val selectedPhotos = remember { mutableStateListOf<MediaItem>() }
+    val selectedVideos = remember { mutableStateListOf<MediaItem>() }
     var albumsExpanded by remember { mutableStateOf(false) }
     // 相册切换滚动方向（项 4）：1=切到右侧相册（新内容自右侧进入、画面向左滚），-1=反向
     var slideDir by remember { mutableStateOf(1) }
@@ -186,22 +206,82 @@ fun PhotoPickerScreen(
         results.orEmpty().sortedByDescending { it.sortTime }
     }
 
-    // 单项选择切换（追加到末尾，序号递增）
+    // 合成模式视频时长告警阈值（超过 3 秒提示兼容性风险，但仍允许选择）
+    val videoWarnMs = 3000L
+
+    // 合成模式提示弹窗状态
+    var showOver3sWarning by remember { mutableStateOf(false) }
+    var showSysPickerBlocked by remember { mutableStateOf(false) }
+    // 合成模式：COMPOSE_SYSTEM_PICKER 弹窗勾选「不再提示」后，该「系统选择器」按钮
+    // 无任何实际作用（合成模式只能走内置选择器），直接隐藏；普通导入模式不受影响
+    var sysPickerNoRemind by remember {
+        mutableStateOf(
+            AppSettings.isReminderSuppressed(ReminderKey.COMPOSE_SYSTEM_PICKER)
+        )
+    }
+    val hideSysPickerButton = composeMode && sysPickerNoRemind
+
+    /** 项是否已选中（合成模式按类型查对应列表） */
+    fun isSelected(item: MediaItem): Boolean {
+        if (!composeMode) return selected.any { it.id == item.id }
+        val list = if (item.isVideo) selectedVideos else selectedPhotos
+        return list.any { it.id == item.id }
+    }
+
+    // 确认导入（合成模式：照片/视频都至少 1 个才可确认，回调按序号一一配对）
+    val selText = if (composeMode) {
+        if (selectedPhotos.isEmpty() && selectedVideos.isEmpty()) ""
+        else "照片 ${selectedPhotos.size} · 视频 ${selectedVideos.size}"
+    } else if (selected.isEmpty()) "" else "已选 ${selected.size} 张"
+    val canConfirm = if (composeMode) selectedPhotos.isNotEmpty() && selectedVideos.isNotEmpty()
+                     else selected.isNotEmpty()
+    val doConfirm: () -> Unit = {
+        if (composeMode) onConfirmCompose?.invoke(selectedPhotos.toList(), selectedVideos.toList())
+        else onConfirm(selected.toList())
+    }
+
+    // 单项选择切换（追加到末尾，序号递增）；
+    // 合成模式按类型分流到照片/视频列表，选择超过 3 秒的视频时提示兼容性风险
     val toggleItem: (MediaItem) -> Unit = { item ->
         haptic.click()
-        val idx = selected.indexOfFirst { it.id == item.id }
-        if (idx >= 0) selected.removeAt(idx) else selected.add(item)
+        val list = if (composeMode) (if (item.isVideo) selectedVideos else selectedPhotos) else selected
+        val idx = list.indexOfFirst { it.id == item.id && it.isVideo == item.isVideo }
+        if (idx >= 0) {
+            list.removeAt(idx)
+        } else {
+            list.add(item)
+            if (composeMode && item.isVideo && item.durationMs > videoWarnMs &&
+                !AppSettings.isReminderSuppressed(ReminderKey.COMPOSE_VIDEO_OVER_3S)) {
+                showOver3sWarning = true
+            }
+        }
     }
-    // 成组选择切换（日期栏/全选）：组内全选 → 全部取消；否则按传入顺序补齐未选
+    // 成组选择切换（日期栏/全选）：组内可选项全选 → 全部取消；否则按传入顺序补齐未选
     val toggleGroup: (List<MediaItem>) -> Unit = { group ->
+        val choosable = group
+        val allIn = choosable.isNotEmpty() && choosable.all { isSelected(it) }
         haptic.click()
-        val ids = group.map { it.id }.toSet()
-        val allIn = group.isNotEmpty() && group.all { g -> selected.any { it.id == g.id } }
+        val ids = choosable.map { it.id }.toSet()
         if (allIn) {
             selected.removeAll { it.id in ids }
+            selectedPhotos.removeAll { it.id in ids }
+            selectedVideos.removeAll { it.id in ids }
         } else {
-            for (g in group) if (selected.none { it.id == g.id }) selected.add(g)
+            for (g in choosable) {
+                if (composeMode) {
+                    if (g.isVideo) {
+                        if (selectedVideos.none { it.id == g.id }) selectedVideos.add(g)
+                    } else if (selectedPhotos.none { it.id == g.id }) selectedPhotos.add(g)
+                } else if (selected.none { it.id == g.id }) selected.add(g)
+            }
         }
+    }
+
+    /** 项的选中序号（合成模式照片/视频各自独立编号） */
+    fun selIndexOf(item: MediaItem): Int {
+        if (!composeMode) return selected.indexOfFirst { it.id == item.id }
+        val list = if (item.isVideo) selectedVideos else selectedPhotos
+        return list.indexOfFirst { it.id == item.id }
     }
 
     // 相册切换（项 4）：无论间隔多少个相册，均一次性平滑过渡到目标（直接跳转，
@@ -223,6 +303,8 @@ fun PhotoPickerScreen(
     // 深浅色切换时以 isDarkTheme 为 key 驱动全树重组：
     // uiMode configChanges 下部分控件（排序按钮/日期头/张数文本）曾不随主题切换
     key(isDarkTheme) {
+    // 横屏判断：顶栏分左右两栏（相册/系统选择器居左，全选/进度居右）
+    val isLandscape = LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp
     Column(
         Modifier
             .fillMaxSize()
@@ -235,78 +317,219 @@ fun PhotoPickerScreen(
                 .background(MaterialTheme.colorScheme.surfaceContainer)
                 .statusBarsPadding()
         ) {
-            // 标题行
-            Row(
-                Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 2.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                IconButton(onClick = { haptic.click(); onBack() }) {
-                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回",
-                        tint = MaterialTheme.colorScheme.onSurface)
-                }
-                Text("选择动态照片", style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.weight(1f))
-                // 系统选择器按钮（固定序列点击动画，项 1）
-                FilledTonalButton(
-                    onClick = { onLaunchSystemPicker() },
-                    interactionSource = sysPickerFb.interactionSource,
-                    shape = RoundedCornerShape(sysPickerFb.corner),
-                    modifier = Modifier
-                        .padding(end = 8.dp)
-                        .then(sysPickerFb.scaleModifier),
-                    contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)
-                ) { Text("系统选择器", style = MaterialTheme.typography.labelMedium) }
-            }
-
-            // 相册 chip 横滑条 + 右端展开按钮
-            if (albums.size > 1) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    LazyRow(
+            if (isLandscape) {
+                // ── 横屏：左栏（标题 → 系统选择器 → 垂直相册列表）+ 右栏（全选/进度/导入）──
+                Row(
+                    Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 2.dp),
+                    verticalAlignment = Alignment.Top
+                ) {
+                    Column(Modifier.weight(0.5f)) {
+                        // 标题行
+                        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                            IconButton(onClick = { haptic.click(); onBack() }) {
+                                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回",
+                                    tint = MaterialTheme.colorScheme.onSurface)
+                            }
+                            Text(if (composeMode) "合成动态照片" else "选择动态照片",
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.onSurface)
+                        }
+                        // 系统选择器按钮（紧跟标题下方；合成模式置灰，点击说明不支持原因；
+                        // 合成模式勾选「不再提示」后按钮整体隐藏，普通导入模式始终显示）
+                        if (!hideSysPickerButton) {
+                            FilledTonalButton(
+                                onClick = {
+                                    if (composeMode) showSysPickerBlocked = true
+                                    else onLaunchSystemPicker()
+                                },
+                                interactionSource = sysPickerFb.interactionSource,
+                                shape = RoundedCornerShape(sysPickerFb.corner),
+                                colors = if (composeMode) ButtonDefaults.filledTonalButtonColors(
+                                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                                ) else ButtonDefaults.filledTonalButtonColors(),
+                                modifier = Modifier
+                                    .padding(start = 12.dp, bottom = 4.dp)
+                                    .then(sysPickerFb.scaleModifier),
+                                contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)
+                            ) { Text("系统选择器", style = MaterialTheme.typography.labelMedium) }
+                        }
+                        // 相册列表（垂直排列）+ 右端展开按钮（封面横向展开）
+                        if (albums.size > 1) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                LazyColumn(
+                                    Modifier
+                                        .weight(1f)
+                                        .heightIn(max = 132.dp)
+                                        .padding(vertical = 4.dp),
+                                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                                ) {
+                                    items(albums, key = { it.bucketId }) { album ->
+                                        AlbumChip(
+                                            album = album,
+                                            selected = album.bucketId == bucketId,
+                                            expanded = albumsExpanded,
+                                            onClick = { switchAlbum(album.bucketId) },
+                                            horizontal = true
+                                        )
+                                    }
+                                }
+                                IconButton(
+                                    onClick = { haptic.click(); albumsExpanded = !albumsExpanded },
+                                    colors = IconButtonDefaults.iconButtonColors(
+                                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                ) {
+                                    val rotation by animateFloatAsState(
+                                        targetValue = if (albumsExpanded) 180f else 0f,
+                                        animationSpec = tween(250), label = "chevron"
+                                    )
+                                    Icon(
+                                        Icons.Filled.KeyboardArrowDown,
+                                        contentDescription = if (albumsExpanded) "收起相册封面" else "展开相册封面",
+                                        modifier = Modifier.rotate(rotation)
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    // 右栏：全选 / 扫描进度 / 已选数 + 导入按钮（不占底部整条空间）
+                    Column(
                         Modifier
-                            .weight(1f)
-                            .padding(vertical = 8.dp),
-                        contentPadding = PaddingValues(start = 12.dp, end = 4.dp),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            .weight(0.5f)
+                            .padding(end = 12.dp),
+                        horizontalAlignment = Alignment.End
                     ) {
-                        items(albums, key = { it.bucketId }) { album ->
-                            AlbumChip(
-                                album = album,
-                                selected = album.bucketId == bucketId,
-                                expanded = albumsExpanded,
-                                onClick = { switchAlbum(album.bucketId) }
+                        val allSel = n > 0 && displayOrder.all { isSelected(it) }
+        val someSel = displayOrder.any { isSelected(it) }
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(top = 4.dp)
+                        ) {
+                            Text("全选", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Spacer(Modifier.size(4.dp))
+                            CircleTriCheckbox(
+                                state = when {
+                                    allSel -> ToggleableState.On
+                                    someSel -> ToggleableState.Indeterminate
+                                    else -> ToggleableState.Off
+                                },
+                                onClick = { if (n > 0) toggleGroup(displayOrder) }
+                            )
+                        }
+                        AnimatedVisibility(visible = running) {
+                            LinearProgressIndicator(
+                                Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 6.dp)
+                            )
+                        }
+                        // 已选数 + 导入按钮（原底部确认栏在横屏下的替代位置）
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(top = 4.dp, bottom = 6.dp)
+                        ) {
+                            Text(
+                                selText,
+                                style = MaterialTheme.typography.labelLarge,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                            Spacer(Modifier.size(12.dp))
+                            Button(
+                                onClick = doConfirm,
+                                enabled = canConfirm,
+                                interactionSource = importFb.interactionSource,
+                                shape = RoundedCornerShape(importFb.corner),
+                                modifier = Modifier.then(importFb.scaleModifier),
+                                contentPadding = PaddingValues(horizontal = 20.dp, vertical = 6.dp)
+                            ) { Text("导入") }
+                        }
+                    }
+                }
+            } else {
+                // ── 竖屏：标题行 + 相册栏 + 进度条 ──
+                Row(
+                    Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 2.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    IconButton(onClick = { haptic.click(); onBack() }) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回",
+                            tint = MaterialTheme.colorScheme.onSurface)
+                    }
+                    Text(if (composeMode) "合成动态照片" else "选择动态照片",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.weight(1f))
+                    // 系统选择器按钮（固定序列点击动画，项 1）；
+                    // 合成模式置灰，点击说明不支持原因（需同时配对照片+视频）；
+                    // 合成模式勾选「不再提示」后按钮整体隐藏，普通导入模式始终显示
+                    if (!hideSysPickerButton) {
+                        FilledTonalButton(
+                            onClick = {
+                                if (composeMode) showSysPickerBlocked = true
+                                else onLaunchSystemPicker()
+                            },
+                            interactionSource = sysPickerFb.interactionSource,
+                            shape = RoundedCornerShape(sysPickerFb.corner),
+                            colors = if (composeMode) ButtonDefaults.filledTonalButtonColors(
+                                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                                contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                            ) else ButtonDefaults.filledTonalButtonColors(),
+                            modifier = Modifier
+                                .padding(end = 8.dp)
+                                .then(sysPickerFb.scaleModifier),
+                            contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)
+                        ) { Text("系统选择器", style = MaterialTheme.typography.labelMedium) }
+                    }
+                }
+
+                // 相册 chip 横滑条 + 右端展开按钮
+                if (albums.size > 1) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        LazyRow(
+                            Modifier
+                                .weight(1f)
+                                .padding(vertical = 8.dp),
+                            contentPadding = PaddingValues(start = 12.dp, end = 4.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            items(albums, key = { it.bucketId }) { album ->
+                                AlbumChip(
+                                    album = album,
+                                    selected = album.bucketId == bucketId,
+                                    expanded = albumsExpanded,
+                                    onClick = { switchAlbum(album.bucketId) }
+                                )
+                            }
+                        }
+                        IconButton(
+                            onClick = { haptic.click(); albumsExpanded = !albumsExpanded },
+                            colors = IconButtonDefaults.iconButtonColors(
+                                contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        ) {
+                            val rotation by animateFloatAsState(
+                                targetValue = if (albumsExpanded) 180f else 0f,
+                                animationSpec = tween(250), label = "chevron"
+                            )
+                            Icon(
+                                Icons.Filled.KeyboardArrowDown,
+                                contentDescription = if (albumsExpanded) "收起相册封面" else "展开相册封面",
+                                modifier = Modifier.rotate(rotation)
                             )
                         }
                     }
-                    IconButton(
-                        onClick = { haptic.click(); albumsExpanded = !albumsExpanded },
-                        colors = IconButtonDefaults.iconButtonColors(
-                            contentColor = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    ) {
-                        val rotation by animateFloatAsState(
-                            targetValue = if (albumsExpanded) 180f else 0f,
-                            animationSpec = tween(250), label = "chevron"
-                        )
-                        Icon(
-                            Icons.Filled.KeyboardArrowDown,
-                            contentDescription = if (albumsExpanded) "收起相册封面" else "展开相册封面",
-                            modifier = Modifier.rotate(rotation)
-                        )
-                    }
                 }
-            }
 
-            // 扫描进度条
-            AnimatedVisibility(visible = running) {
-                LinearProgressIndicator(
-                    Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp)
-                )
+                // 扫描进度条
+                AnimatedVisibility(visible = running) {
+                    LinearProgressIndicator(
+                        Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp)
+                    )
+                }
             }
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
         }
 
-        // ── 工具行：张数（左） + 全选（右）（排序功能已移除，固定日期降序） ──
+        // ── 工具行：张数（左）；横屏全选已在顶栏右栏，竖屏保留全选（右） ──
         Row(
             Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp),
             verticalAlignment = Alignment.CenterVertically
@@ -317,20 +540,22 @@ fun PhotoPickerScreen(
                 fontSize = 12.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            Spacer(Modifier.weight(1f))
-            // 全选（移至右侧，圆形现代样式，项 2/3）：按网格顺序有序标记
-            val allSel = n > 0 && displayOrder.all { g -> selected.any { it.id == g.id } }
-            val someSel = displayOrder.any { g -> selected.any { it.id == g.id } }
-            Text("全选", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Spacer(Modifier.size(4.dp))
-            CircleTriCheckbox(
-                state = when {
-                    allSel -> ToggleableState.On
-                    someSel -> ToggleableState.Indeterminate
-                    else -> ToggleableState.Off
-                },
-                onClick = { if (n > 0) toggleGroup(displayOrder) }
-            )
+            if (!isLandscape) {
+                Spacer(Modifier.weight(1f))
+                // 全选（移至右侧，圆形现代样式，项 2/3）：按网格顺序有序标记
+                val allSel = n > 0 && displayOrder.all { g -> selected.any { it.id == g.id } }
+                val someSel = displayOrder.any { g -> selected.any { it.id == g.id } }
+                Text("全选", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Spacer(Modifier.size(4.dp))
+                CircleTriCheckbox(
+                    state = when {
+                        allSel -> ToggleableState.On
+                        someSel -> ToggleableState.Indeterminate
+                        else -> ToggleableState.Off
+                    },
+                    onClick = { if (n > 0) toggleGroup(displayOrder) }
+                )
+            }
         }
 
         // ── 缩略图网格（3 列；相册切换横向滚动动画，方向反转项 4） ──
@@ -358,14 +583,17 @@ fun PhotoPickerScreen(
                 AlbumGridPage(
                     bucketId = targetBucket,
                     scanner = scanner,
-                    selected = selected,
+                    isSelected = { isSelected(it) },
+                    selIndexOf = { selIndexOf(it) },
                     onToggle = toggleItem,
-                    onToggleGroup = toggleGroup
+                    onToggleGroup = toggleGroup,
+                    composeMode = composeMode
                 )
             }
         }
 
-        // ── 底部确认栏 ──
+        // ── 底部确认栏（仅竖屏；横屏的导入按钮已移至顶栏右栏，不占底部空间）──
+        if (!isLandscape) {
         Surface(tonalElevation = 3.dp) {
             Row(
                 Modifier
@@ -375,19 +603,39 @@ fun PhotoPickerScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    if (selected.isEmpty()) "" else "已选 ${selected.size} 张",
+                    selText,
                     modifier = Modifier.weight(1f),
                     style = MaterialTheme.typography.labelLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Button(
-                    onClick = { onConfirm(selected.toList()) },
-                    enabled = selected.isNotEmpty(),
+                    onClick = doConfirm,
+                    enabled = canConfirm,
                     interactionSource = importFb.interactionSource,
                     shape = RoundedCornerShape(importFb.corner),
                     modifier = Modifier.then(importFb.scaleModifier)
                 ) { Text("导入") }
             }
+        }
+        }
+
+        // 合成模式提示弹窗（统一「不再提示」机制）
+        if (showOver3sWarning) {
+            ReminderInfoDialog(
+                key = ReminderKey.COMPOSE_VIDEO_OVER_3S,
+                onDismiss = { showOver3sWarning = false }
+            )
+        }
+        if (showSysPickerBlocked) {
+            ReminderInfoDialog(
+                key = ReminderKey.COMPOSE_SYSTEM_PICKER,
+                onDismiss = {
+                    showSysPickerBlocked = false
+                    // 弹窗内勾选「不再提示」后立即刷新本地状态，按钮随之隐藏
+                    sysPickerNoRemind =
+                        AppSettings.isReminderSuppressed(ReminderKey.COMPOSE_SYSTEM_PICKER)
+                }
+            )
         }
     }
     } // key(isDarkTheme)
@@ -403,9 +651,11 @@ fun PhotoPickerScreen(
 private fun AlbumGridPage(
     bucketId: Long?,
     scanner: AlbumScanner,
-    selected: SnapshotStateList<MediaItem>,
+    isSelected: (MediaItem) -> Boolean,
+    selIndexOf: (MediaItem) -> Int,
     onToggle: (MediaItem) -> Unit,
-    onToggleGroup: (List<MediaItem>) -> Unit
+    onToggleGroup: (List<MediaItem>) -> Unit,
+    composeMode: Boolean = false
 ) {
     val state = remember(bucketId) { if (bucketId != null) scanner.stateOf(bucketId) else null }
     val results = state?.results
@@ -433,12 +683,18 @@ private fun AlbumGridPage(
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(Modifier.height(12.dp))
-            Text("没有找到动态照片", style = MaterialTheme.typography.titleSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(
+                if (composeMode) "没有找到照片或视频" else "没有找到动态照片",
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
         else -> LazyVerticalGrid(
             state = rememberLazyGridState(),
-            columns = GridCells.Fixed(3),
+            // 竖屏 3 列；横屏固定 5 列（用户要求每行五张照片）
+            columns = GridCells.Fixed(
+                if (LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp) 5 else 3
+            ),
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = 2.dp),
@@ -450,8 +706,8 @@ private fun AlbumGridPage(
             for ((dk, groupItems) in groups) {
                 stickyHeader(key = "hdr_$dk") {
                     Box(Modifier.animateItem().fillMaxWidth()) {
-                        val allSel = groupItems.all { g -> selected.any { it.id == g.id } }
-                        val someSel = groupItems.any { g -> selected.any { it.id == g.id } }
+                        val allSel = groupItems.all { isSelected(it) }
+                        val someSel = groupItems.any { isSelected(it) }
                         DateHeader(
                             label = dateLabel(groupItems.first().sortTime),
                             checkState = when {
@@ -467,16 +723,18 @@ private fun AlbumGridPage(
                     Box(Modifier.animateItem()) {
                         GridCell(
                             item = item,
-                            selected = selected.any { it.id == item.id },
-                            selectionIndex = selected.indexOfFirst { it.id == item.id },
-                            onToggle = { onToggle(item) }
+                            selected = isSelected(item),
+                            selectionIndex = selIndexOf(item),
+                            onToggle = { onToggle(item) },
+                            durationText = if (composeMode && item.isVideo)
+                                formatDurationLabel(item.durationMs) else null
                         )
                     }
                 }
             }
             // 扫描中：网格底部加载圈
             if (running) {
-                item(span = { GridItemSpan(3) }) {
+                item(span = { GridItemSpan(maxLineSpan) }) {
                     Box(
                         Modifier.fillMaxWidth().padding(vertical = 20.dp),
                         contentAlignment = Alignment.Center
@@ -500,7 +758,8 @@ private fun AlbumChip(
     album: AlbumInfo,
     selected: Boolean,
     expanded: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    horizontal: Boolean = false
 ) {
     val resolver = LocalContext.current.contentResolver
     val density = LocalDensity.current
@@ -525,6 +784,51 @@ private fun AlbumChip(
         contentColor = if (selected) MaterialTheme.colorScheme.onSecondaryContainer
                        else MaterialTheme.colorScheme.onSurfaceVariant
     ) {
+        if (horizontal) {
+            // 横向布局（选择器横屏用）：文字在左，展开时封面在右侧横向展开
+            Row(
+                Modifier
+                    .animateContentSize(
+                        animationSpec = spring(
+                            dampingRatio = Spring.DampingRatioLowBouncy
+                        ),
+                        alignment = Alignment.CenterStart
+                    )
+                    .padding(
+                        horizontal = if (expanded) 8.dp else 12.dp,
+                        vertical = if (expanded) 6.dp else 6.dp
+                    ),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    album.name,
+                    style = MaterialTheme.typography.labelMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                AnimatedVisibility(
+                    visible = expanded,
+                    enter = fadeIn(tween(200)) + expandHorizontally(tween(250)),
+                    exit = fadeOut(tween(150)) + shrinkHorizontally(tween(200))
+                ) {
+                    Box(
+                        Modifier
+                            .padding(start = 8.dp)
+                            .size(width = 72.dp, height = 44.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                    ) {
+                        val coverUri = Uri.parse(
+                            (if (album.coverIsVideo)
+                                android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                            else
+                                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                            ).toString() + "/${album.coverId}"
+                        )
+                        MediaThumbnail(coverUri, resolver, Modifier.fillMaxSize())
+                    }
+                }
+            }
+        } else {
         Column(
             Modifier
                 .animateContentSize(
@@ -565,12 +869,16 @@ private fun AlbumChip(
                         .clip(RoundedCornerShape(8.dp))
                 ) {
                     val coverUri = Uri.parse(
-                        android.provider.MediaStore.Images.Media.getContentUri(
-                            android.provider.MediaStore.VOLUME_EXTERNAL).toString() + "/${album.coverId}"
+                        (if (album.coverIsVideo)
+                            android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                        else
+                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                        ).toString() + "/${album.coverId}"
                     )
                     MediaThumbnail(coverUri, resolver, Modifier.fillMaxSize())
                 }
             }
+        }
         }
     }
 }
@@ -703,14 +1011,27 @@ private fun dateLabel(time: Long): String {
     }
 }
 
+/** 视频时长徽标文本：≥10s 取整显示，否则保留 1 位小数（如 2.5s） */
+private fun formatDurationLabel(ms: Long): String {
+    val s = ms / 1000.0
+    return if (s >= 10.0) "${s.toInt()}s" else "${"%.1f".format(s)}s"
+}
+
 /**
  * 网格单元：
  * - 勾选徽章在右上角（项 2）
  * - 选中动画以几何中心为变换中心：图片中心缩放 0.86，徽章/数字以中心弹簧缩放（项 8）
  * - 圆角（项 7）：未选 6dp（较小），选中缩小并增大至 16dp
+ * - 合成模式视频项：左下角时长徽标
  */
 @Composable
-private fun GridCell(item: MediaItem, selected: Boolean, selectionIndex: Int, onToggle: () -> Unit) {
+private fun GridCell(
+    item: MediaItem,
+    selected: Boolean,
+    selectionIndex: Int,
+    onToggle: () -> Unit,
+    durationText: String? = null
+) {
     val resolver = LocalContext.current.contentResolver
     val transition = updateTransition(selected, label = "cell")
 
@@ -759,6 +1080,21 @@ private fun GridCell(item: MediaItem, selected: Boolean, selectionIndex: Int, on
                 )
         ) {
             MediaThumbnail(item.uri, resolver, Modifier.fillMaxSize())
+        }
+
+        // 合成模式视频项：左下角时长徽标（如 2.5s）
+        if (durationText != null) {
+            Text(
+                text = durationText,
+                color = Color.White,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .padding(start = 4.dp, bottom = 4.dp)
+                    .background(Color.Black.copy(alpha = 0.55f), RoundedCornerShape(6.dp))
+                    .padding(horizontal = 5.dp, vertical = 2.dp)
+            )
         }
 
         // 勾选徽章（右上角，项 2）：选中时 primary 圆底 + 白色序号，未选中空心圈；
@@ -822,10 +1158,50 @@ private fun GridCell(item: MediaItem, selected: Boolean, selectionIndex: Int, on
 }
 
 /**
- * 系统缩略图（loadThumbnail，走系统缓存不落盘）：
- * - 按需加载（项 9）：仅组合屏幕可见区域附近的项；命中 LRU 缓存直接显示
- * - 加载动画（ImageToolbox 式）：占位呼吸脉冲，加载完成淡入+缩放进入
+ * 兼容缩略图加载：
+ * - Android 10+：ContentResolver.loadThumbnail（系统缓存缩略图，不落盘）
+ * - Android 9-：无 loadThumbnail API，退化用 MediaStore MINI_KIND 内置缩略图；
+ *   仍取不到（新导入未生成缩略图）时按 DATA 路径采样解码兜底
  */
+private fun loadThumbCompat(resolver: ContentResolver, uri: Uri): Bitmap? {
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+        return try {
+            resolver.loadThumbnail(uri, Size(160, 160), null)
+        } catch (_: Exception) { null }
+    }
+    @Suppress("DEPRECATION")
+    val bmp = try {
+        val id = uri.lastPathSegment?.toLongOrNull() ?: return null
+        if (uri.toString().contains("/video/")) {
+            android.provider.MediaStore.Video.Thumbnails.getThumbnail(
+                resolver, id, android.provider.MediaStore.Video.Thumbnails.MINI_KIND, null)
+        } else {
+            android.provider.MediaStore.Images.Thumbnails.getThumbnail(
+                resolver, id, android.provider.MediaStore.Images.Thumbnails.MINI_KIND, null)
+        }
+    } catch (_: Exception) { null }
+    return bmp ?: decodePathFallback(resolver, uri)
+}
+
+/** Android 9- 兜底：按 DATA 路径采样解码（边长上限 ~512），避免过度占用内存。 */
+private fun decodePathFallback(resolver: ContentResolver, uri: Uri): Bitmap? {
+    val path = try {
+        resolver.query(uri, arrayOf(MediaStore.MediaColumns.DATA), null, null, null)?.use { c ->
+            if (c.moveToFirst() && !c.isNull(0)) c.getString(0) else null
+        }
+    } catch (_: Exception) { null }
+    if (path.isNullOrEmpty()) return null
+    return try {
+        val bounds = android.graphics.BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        android.graphics.BitmapFactory.decodeFile(path, bounds)
+        var sample = 1
+        var maxSide = maxOf(bounds.outWidth, bounds.outHeight)
+        while (maxSide / sample > 512) sample *= 2
+        val opts = android.graphics.BitmapFactory.Options().apply { inSampleSize = sample }
+        android.graphics.BitmapFactory.decodeFile(path, opts)
+    } catch (_: Exception) { null }
+}
+
 @Composable
 private fun MediaThumbnail(uri: Uri, resolver: ContentResolver, modifier: Modifier) {
     val bitmap by produceState<Bitmap?>(null, uri) {
@@ -833,11 +1209,7 @@ private fun MediaThumbnail(uri: Uri, resolver: ContentResolver, modifier: Modifi
         // 命中缓存（滚动回来）：直接显示，不重复加载
         thumbCache.get(key)?.let { value = it; return@produceState }
         value = withContext(thumbDispatcher) {
-            val b = try {
-                resolver.loadThumbnail(uri, Size(160, 160), null)
-            } catch (_: Exception) {
-                null
-            }
+            val b = loadThumbCompat(resolver, uri)
             if (b != null) thumbCache.put(key, b)
             b
         }

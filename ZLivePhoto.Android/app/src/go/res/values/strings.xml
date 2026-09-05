@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- go 轻量版应用名（覆盖 main）：ZLC Go，无连字符 -->
+    <string name="app_name">ZLC Go</string>
+</resources>

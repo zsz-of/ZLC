@@ -18,5 +18,5 @@ dependencyResolutionManagement {
         maven { url = uri("https://jitpack.io") }
     }
 }
-rootProject.name = "Z-LivePhoto-Converter"
+rootProject.name = "ZLC"
 include(":app")

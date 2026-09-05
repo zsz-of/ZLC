@@ -87,12 +87,58 @@ internal object QuickClassify {
                 null -> return false   // 非 JPEG / 读取失败
                 false -> { /* JPEG 未见标记：继续检查伴生视频 */ }
             }
-            // 同目录伴生视频（vivo/Apple 双文件），过滤空占位文件
-            val stem = path.substringBeforeLast('.')
-            File("$stem.mp4").let { it.exists() && it.length() > 8L } ||
-                File("$stem.mov").let { it.exists() && it.length() > 8L } ||
-                File("$stem.MP4").let { it.exists() && it.length() > 8L } ||
-                File("$stem.MOV").let { it.exists() && it.length() > 8L }
+            hasCompanionVideo(path)
+        } catch (_: Exception) {
+            false
+        }
+    }
+
+    /** 同目录同名伴生视频是否存在（vivo/Apple 双文件），过滤空占位文件。 */
+    private fun hasCompanionVideo(path: String): Boolean {
+        val stem = path.substringBeforeLast('.')
+        return File("$stem.mp4").let { it.exists() && it.length() > 8L } ||
+            File("$stem.mov").let { it.exists() && it.length() > 8L } ||
+            File("$stem.MP4").let { it.exists() && it.length() > 8L } ||
+            File("$stem.MOV").let { it.exists() && it.length() > 8L }
+    }
+
+    /**
+     * 合成模式用：普通照片（JPEG 且非动态照片）。
+     * 排除：非 JPEG/读取失败、含动态照片标记（Google/OPPO/小米/vivo 单文件/荣耀）、
+     * 带同名伴生视频（vivo/Apple 双文件）。
+     */
+    fun isPlainJpeg(path: String): Boolean {
+        return try {
+            checkJpeg(path) == false && !hasCompanionVideo(path)
+        } catch (_: Exception) {
+            false
+        }
+    }
+
+    /** WebP 魔数校验：RIFF....WEBP（前 4 字节 RIFF，偏移 8 起 WEBP）。 */
+    private fun isWebp(path: String): Boolean {
+        return try {
+            RandomAccessFile(path, "r").use { raf ->
+                if (raf.length() < 12) return false
+                val head = ByteArray(12)
+                raf.readFully(head)
+                head[0] == 'R'.code.toByte() && head[1] == 'I'.code.toByte() &&
+                    head[2] == 'F'.code.toByte() && head[3] == 'F'.code.toByte() &&
+                    head[8] == 'W'.code.toByte() && head[9] == 'E'.code.toByte() &&
+                    head[10] == 'B'.code.toByte() && head[11] == 'P'.code.toByte()
+            }
+        } catch (_: Exception) {
+            false
+        }
+    }
+
+    /**
+     * 合成模式用：普通封面图片（JPEG 或 WebP）。
+     * WebP 不可能携带动态照片 XMP，故直接视为普通图片收录。
+     */
+    fun isPlainComposeImage(path: String): Boolean {
+        return try {
+            isWebp(path) || isPlainJpeg(path)
         } catch (_: Exception) {
             false
         }

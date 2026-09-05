@@ -12,12 +12,28 @@ android {
 
     defaultConfig {
         applicationId = "com.zsz.zlivephoto"
-        minSdk = 29
         targetSdk = 36
-        versionCode = 3
-        versionName = "2.3.0"
+        versionCode = 6
+        versionName = "3.0.0"
         ndk {
             abiFilters += listOf("arm64-v8a", "x86_64")
+        }
+    }
+
+    flavorDimensions += "edition"
+    productFlavors {
+        // normal：完整版（Android 10+），应用名 ZLC
+        create("normal") {
+            dimension = "edition"
+            applicationId = "com.zsz.zlivephoto"
+            minSdk = 29
+        }
+        // go：轻量版（Android 6+，单线程、无动态取色），应用名 ZLC Go。
+        // 独立 applicationId 确保与 normal 版可同时安装
+        create("go") {
+            dimension = "edition"
+            applicationId = "com.zsz.zlivephoto.go"
+            minSdk = 23
         }
     }
 
@@ -50,6 +66,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -66,6 +83,8 @@ dependencies {
     implementation(libs.compose.material.icons.extended)
     implementation(libs.activity.compose)
     implementation(libs.lifecycle.runtime.ktx)
+    // 合成失败「尝试重新封装」：把 WebM/MKV/AVI/MOV 等转码为标准 MP4（H.264/AAC）
+    implementation(libs.media3.transformer)
     debugImplementation(libs.compose.ui.tooling)
 
     // JVM 单元测试（AndroidLogicGpsTest：验证转换不破坏 GPS）

@@ -49,6 +49,7 @@ internal class GooglePlugin : FormatPlugin() {
 
     override fun detect(path: String): Int {
         val info = XmpTemplate.parseMotionXmp(sniffXmp(path))
+        if (info.hasMeizu) return 0 // 魅族（MZCamera 命名空间）由 MeizuPlugin 识别
         if (info.isMotion && !info.isLegacyMicro && !info.hasOplus) return 90
         if (info.isLegacyMicro) return 80
         return 0

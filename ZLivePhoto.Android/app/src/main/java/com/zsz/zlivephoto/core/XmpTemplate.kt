@@ -281,6 +281,40 @@ internal object XmpTemplate {
 
 """
 
+    // 魅族模板（逐字来自真实样本 P20260111-104843.jpg）：
+    // 使用 MZCamera 私有命名空间 + Camera:（Google 相机命名空间的 Camera 前缀，非 GCamera）；
+    // Container 结构与 Google 一致（Primary + MotionPhoto 视频项），Primary 的 Padding=8。
+    private const val MeizuHead: String = """
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdf:Description rdf:about=""
+        xmlns:MZCamera="http://com.meizu.media/camera/2.0"
+        xmlns:Camera="http://ns.google.com/photos/1.0/camera/"
+        xmlns:Container="http://ns.google.com/photos/1.0/container/"
+        xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
+      MZCamera:CaptureMode="{captureMode}"
+      MZCamera:IsHDRActive="{isHdrActive}"
+      MZCamera:LensFacing="{lensFacing}"
+      MZCamera:SceneType="{sceneType}"
+      MZCamera:LivePhoto="{livePhoto}"
+      Camera:MotionPhoto="1"
+      Camera:MotionPhotoVersion="1"
+      Camera:MotionPhotoPresentationTimestampUs="{pts}">
+"""
+
+    private const val MeizuItemPrimary: String = """
+      <Container:Directory>
+        <rdf:Seq>
+          <rdf:li rdf:parseType="Resource">
+            <Container:Item
+              Item:Mime="image/jpeg"
+              Item:Semantic="Primary"
+              Item:Length="0"
+              Item:Padding="8"/>
+          </rdf:li>
+
+"""
+
     // ---------------------------------------------------------------- 构建
 
     fun buildGoogleXmp(ptsUs: Long, gainmapLen: Int?, videoLen: Int): String {
@@ -372,6 +406,27 @@ internal object XmpTemplate {
         return parts.joinToString("")
     }
 
+    /**
+     * 魅族 XMP：MZCamera 私有字段 + Camera:MotionPhoto（Camera 前缀）。
+     * LivePhoto 值为 "{封面帧毫秒:010d}_{视频字节长度:010d}"（与真实样本一致）。
+     */
+    fun buildMeizuXmp(
+        ptsUs: Long, videoLen: Int,
+        captureMode: String = "AUTO", isHdrActive: String = "False",
+        lensFacing: String = "Back", sceneType: String = "-1"
+    ): String {
+        val ptsMs = if (ptsUs >= 0) ptsUs / 1000L else 0L
+        val livePhoto = String.format("%010d_%010d", ptsMs, videoLen)
+        val head = MeizuHead
+            .replace("{captureMode}", captureMode)
+            .replace("{isHdrActive}", isHdrActive)
+            .replace("{lensFacing}", lensFacing)
+            .replace("{sceneType}", sceneType)
+            .replace("{livePhoto}", livePhoto)
+            .replace("{pts}", ptsUs.toString())
+        return head + MeizuItemPrimary + ItemVideo.replace("{video_len}", videoLen.toString()) + Tail
+    }
+
     // ---------------------------------------------------------------- 解析
 
     internal class MotionXmpInfo {
@@ -382,6 +437,12 @@ internal object XmpTemplate {
         var hasOplus: Boolean = false
         var oppoVideoLen: Int? = null
         var hasBoth: Boolean = false
+        var hasMeizu: Boolean = false
+        var meizuLivePhotoId: String? = null
+        var mzCaptureMode: String? = null
+        var mzIsHdrActive: String? = null
+        var mzLensFacing: String? = null
+        var mzSceneType: String? = null
         val items: MutableList<ContainerItem> = mutableListOf()
     }
 
@@ -405,6 +466,14 @@ internal object XmpTemplate {
     private val mimeRegex = Regex("""Item:Mime="([^"]+)"""")
     private val lengthRegex = Regex("""Item:Length="(\d+)"""")
     private val paddingRegex = Regex("""Item:Padding="(\d+)"""")
+    // 魅族 MZCamera 私有字段（魅族用 Camera 前缀而非 GCamera 前缀）
+    private val meizuLivePhotoRegex = Regex("""MZCamera:LivePhoto="([^"]*)"""")
+    private val mzCaptureModeRegex = Regex("""MZCamera:CaptureMode="([^"]*)"""")
+    private val mzIsHdrActiveRegex = Regex("""MZCamera:IsHDRActive="([^"]*)"""")
+    private val mzLensFacingRegex = Regex("""MZCamera:LensFacing="([^"]*)"""")
+    private val mzSceneTypeRegex = Regex("""MZCamera:SceneType="([^"]*)"""")
+    private val cameraMotionRegex = Regex("""Camera:MotionPhoto="(\d+)"""")
+    private val cameraMotionPtsRegex = Regex("""Camera:MotionPhotoPresentationTimestampUs="(-?\d+)"""")
 
     fun parseMotionXmp(xmpText: String): MotionXmpInfo {
         val info = MotionXmpInfo()
@@ -443,6 +512,23 @@ internal object XmpTemplate {
             val lenMatch = oppoVideoLenRegex.find(xmpText)
             if (lenMatch != null) {
                 lenMatch.groupValues[1].toIntOrNull()?.let { info.oppoVideoLen = it }
+            }
+        }
+
+        // 魅族：MZCamera 命名空间 + Camera:MotionPhoto（Camera 前缀，与 GCamera 区分）
+        val isMeizu = xmpText.contains("MZCamera:") || xmpText.contains("com.meizu.media")
+        if (isMeizu) {
+            info.hasMeizu = true
+            meizuLivePhotoRegex.find(xmpText)?.let { info.meizuLivePhotoId = it.groupValues[1] }
+            mzCaptureModeRegex.find(xmpText)?.let { info.mzCaptureMode = it.groupValues[1] }
+            mzIsHdrActiveRegex.find(xmpText)?.let { info.mzIsHdrActive = it.groupValues[1] }
+            mzLensFacingRegex.find(xmpText)?.let { info.mzLensFacing = it.groupValues[1] }
+            mzSceneTypeRegex.find(xmpText)?.let { info.mzSceneType = it.groupValues[1] }
+            cameraMotionRegex.find(xmpText)?.let {
+                if (it.groupValues[1] == "1") info.isMotion = true
+            }
+            cameraMotionPtsRegex.find(xmpText)?.let {
+                it.groupValues[1].toLongOrNull()?.let { p -> info.ptsUs = p }
             }
         }
 

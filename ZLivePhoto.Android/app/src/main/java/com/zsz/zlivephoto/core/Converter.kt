@@ -1,12 +1,21 @@
 package com.zsz.zlivephoto.core
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import com.zsz.zlivephoto.core.formats.FormatRegistry
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 /**
  * 转换管线：detect → read → write。同格式转换 = 原样复制（零损耗直通）。
  */
-internal class ConvertException(message: String) : Exception(message)
+internal open class ConvertException(message: String) : Exception(message)
+
+/**
+ * 合成视频的容器不受支持（缺少 ftyp 头 / 是 QuickTime MOV 品牌等）。
+ * UI 捕获此类异常后弹窗询问「尝试重新封装」或「跳过」。
+ */
+internal class VideoContainerException(message: String) : ConvertException(message)
 
 internal object Converter {
     /**
@@ -91,5 +100,93 @@ internal object Converter {
         val srcFile = File(src)
         val dstFile = File(dst)
         dstFile.setLastModified(srcFile.lastModified())
+    }
+
+    /**
+     * 合成动态照片：普通照片（JPEG 封面）+ 视频 → 指定目标格式。
+     * 构造 LivePhotoAsset 后直接走目标插件 write（与转换同一写出管线）。
+     * 视频时长不限（超过 3 秒的兼容性警告由 UI 层处理）。
+     *
+     * @param photoPath 封面照片路径（普通 JPEG）
+     * @param videoPath 视频路径（MP4）
+     * @param target 目标格式：google | oppo | vivo | vivo_single | xiaomi | honor | meizu
+     */
+    fun compose(
+        photoPath: String, videoPath: String, target: String, outDir: String,
+        log: (String, String, String) -> Unit, options: MutableMap<String, Any?> = mutableMapOf()
+    ): MutableList<String> {
+        val targetPlugin = FormatRegistry.byName[target]
+            ?: throw ConvertException("未知目标格式：$target")
+
+        val photo = File(photoPath)
+        if (!photo.exists() || photo.length() < 4) throw ConvertException("封面照片不存在或为空")
+        val jpeg = decodeCoverToJpeg(photo)
+
+        val video = File(videoPath)
+        if (!video.exists() || video.length() < 12) throw ConvertException("视频不存在或为空")
+        // 合成会把整个视频读入内存再与封面拼接，过大时会触发 OOM（OutOfMemoryError 属于
+        // Error，不会被上层 catch (e: Exception) 捕获，表现为闪退）。这里设安全上限，
+        // 超限时抛可捕获的 ConvertException，由 UI 显示友好提示而非崩溃。
+        val maxVideoBytes = 128L * 1024 * 1024
+        if (video.length() > maxVideoBytes) {
+            val mb = video.length() / 1024 / 1024
+            throw ConvertException("视频过大（${mb}MB），无法合成为动态照片，请选择更短的视频")
+        }
+        val mp4 = video.readBytes()
+        if (!Mp4Util.hasFtyp(mp4)) {
+            // hasFtyp 失败说明文件头 4-7 字节不是 "ftyp"，绝大多数是选错了容器：
+            // 下载目录里的视频常为 WebM/MKV（EBML 头）或 AVI/TS，并非标准 MP4。
+            // 这里给出具体容器类型，便于用户知道是格式不兼容而非程序崩溃。
+            val kind = when {
+                mp4.size >= 4 && mp4[0] == 0x1A.toByte() && mp4[1] == 0x45.toByte() &&
+                    mp4[2] == 0xDF.toByte() && mp4[3] == 0xA3.toByte() -> "WebM/Matroska"
+                mp4.size >= 4 && mp4[0] == 'R'.code.toByte() && mp4[1] == 'I'.code.toByte() &&
+                    mp4[2] == 'F'.code.toByte() && mp4[3] == 'F'.code.toByte() -> "AVI"
+                mp4.isNotEmpty() && mp4[0] == 0x47.toByte() -> "MPEG-TS"
+                else -> "缺少 ftyp 头（可能是 MOV 或非标准 MP4）"
+            }
+            throw VideoContainerException(
+                "视频不是有效的 MP4 文件（检测到 $kind）。\n\n" +
+                "可尝试「重新封装」把视频转为标准 MP4（H.264/AAC）后再合成，或跳过该文件。"
+            )
+        }
+        // ftyp 品牌为 QuickTime(qt  ) 的是 MOV 容器：字节拼接进动态照片后相册/播放器
+        // 无法识别，同样需要先重封装为标准 MP4
+        val brand = if (mp4.size >= 12) String(mp4, 8, 4, Charsets.US_ASCII) else ""
+        if (brand == "qt  ") {
+            throw VideoContainerException(
+                "视频是 QuickTime(MOV) 容器，不能直接合成动态照片。\n\n" +
+                "可尝试「重新封装」转为标准 MP4 后再合成，或跳过该文件。"
+            )
+        }
+
+        // 视频轨信息（时长/fps 等，vivo 等格式 footer 需要）
+        val stem = photo.nameWithoutExtension
+        File(outDir).mkdirs()
+
+        val asset = LivePhotoAsset(
+            primaryJpeg = jpeg,
+            gainmapJpeg = null,
+            videoMp4 = mp4,
+            sourceFormat = "compose"
+        )
+        asset.videoInfo = Mp4Util.getTrackInfo(mp4) ?: mutableMapOf()
+        log("info", "合成：照片 ${jpeg.size}B + 视频 ${mp4.size}B → ${targetPlugin.display}", "合成")
+
+        return targetPlugin.write(asset, outDir, stem, log, options)
+    }
+
+    /**
+     * 封面图 → JPEG 字节：JPEG 直接透传（保留 EXIF）；WebP 等其它格式解码后重编码为 JPEG。
+     */
+    private fun decodeCoverToJpeg(photo: File): ByteArray {
+        val raw = photo.readBytes()
+        if (raw.size >= 2 && raw[0] == 0xFF.toByte() && raw[1] == 0xD8.toByte()) return raw
+        val bmp = BitmapFactory.decodeFile(photo.path)
+            ?: throw ConvertException("封面不是有效的图片（仅支持 JPEG/WebP）")
+        val bos = ByteArrayOutputStream()
+        bmp.compress(Bitmap.CompressFormat.JPEG, 95, bos)
+        bmp.recycle()
+        return bos.toByteArray()
     }
 }

@@ -113,21 +113,24 @@ fun rememberPressFeedback(
     val scope = rememberCoroutineScope()
 
     // 按下瞬间立即震动 + 启动固定序列动画：
-    // 序列不受抬手状态直接控制（抬手时动画按自身时间线继续走完）
+    // 序列不受抬手状态直接控制（抬手时动画按自身时间线继续走完）；
+    // 设置「按钮弹性动画」关闭时跳过 q 弹序列（scale 恒 1）
     LaunchedEffect(interactionSource) {
         interactionSource.interactions.collect { interaction ->
             if (interaction is PressInteraction.Press) {
                 if (hapticOnPress) haptic.click()
-                scope.launch {
-                    // 缩放：q 弹一次
-                    scaleAnim.animateTo(0.965f, tween(90))
-                    scaleAnim.animateTo(
-                        1f,
-                        spring(
-                            dampingRatio = Spring.DampingRatioMediumBouncy,
-                            stiffness = Spring.StiffnessLow
+                if (AppSettings.bounceEnabled) {
+                    scope.launch {
+                        // 缩放：q 弹一次
+                        scaleAnim.animateTo(0.965f, tween(90))
+                        scaleAnim.animateTo(
+                            1f,
+                            spring(
+                                dampingRatio = Spring.DampingRatioMediumBouncy,
+                                stiffness = Spring.StiffnessLow
+                            )
                         )
-                    )
+                    }
                 }
             }
         }
@@ -161,23 +164,27 @@ fun rememberHapticFeedback(): HapticController {
 }
 
 class HapticController(private val view: android.view.View) {
-    /** 清脆反馈（选择、点击、开关开启） */
+    /** 清脆反馈（选择、点击、开关开启）；设置关闭时静默 */
     fun click() {
+        if (!AppSettings.hapticsEnabled) return
         view.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
     }
 
     /** 柔和反馈（开关关闭等轻量状态变化） */
     fun soft() {
+        if (!AppSettings.hapticsEnabled) return
         view.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK)
     }
 
     /** 长按反馈（删除、确认） */
     fun longPress() {
+        if (!AppSettings.hapticsEnabled) return
         view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
     }
 
     /** 快速连续两下清脆反馈（清空/处理完成的批量清理提示） */
     fun double() {
+        if (!AppSettings.hapticsEnabled) return
         val h = android.os.Handler(android.os.Looper.getMainLooper())
         view.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK)
         h.postDelayed({

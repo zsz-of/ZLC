@@ -13,8 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.FilledTonalButton
@@ -22,38 +21,33 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import java.io.File
 import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.core.AppUpdater
 import com.zsz.zlivephoto.core.UpdateInfo
+import java.io.File
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 /**
  * 更新弹窗的状态控制器：管理「发现新版本」主弹窗 + 更新说明子弹窗 +
- * 下载进度 + 蓝奏失败回退询问 + 结果提示 的全部状态与流程。
+ * 下载进度 + 结果提示 的全部状态与流程。
  *
- * 下载策略：点「下载更新」默认从蓝奏云下载（发布规范见 UpdateChecker），
- * 蓝奏云解析/下载失败时弹窗询问是否改用 GitHub 下载；GitHub 无本版本 APK
- * 资产直链时只能跳浏览器打开 release 页。
+ * 下载策略：主按钮「从 GitHub 下载」走内置下载（按 normal/go 自动匹配对应 APK
+ * 资产）；「从蓝奏云下载」仅跳外部浏览器打开分享页（不内置下载）。
  */
 internal class BusyState(val label: String, val fraction: Float?)
-
-internal class GithubFallbackAsk(val reason: String, val githubUrl: String)
 
 internal class UpdateFlowController(
     private val context: Context,
@@ -66,9 +60,6 @@ internal class UpdateFlowController(
         private set
     /** 下载/解压进行中 */
     var busy by mutableStateOf<BusyState?>(null)
-        private set
-    /** 蓝奏云失败，询问是否改用 GitHub 下载 */
-    var fallback by mutableStateOf<GithubFallbackAsk?>(null)
         private set
     /** 结果/错误提示 */
     var message by mutableStateOf<String?>(null)
@@ -83,7 +74,6 @@ internal class UpdateFlowController(
         info = newInfo
         showNotes = false
         busy = null
-        fallback = null
         message = null
     }
 
@@ -108,35 +98,39 @@ internal class UpdateFlowController(
         info = null
         showNotes = false
         busy = null
-        fallback = null
         message = null
     }
 
-    /** 跳转 GitHub release 页面（浏览器） */
-    fun openGitHubPage() {
-        val url = info?.releaseUrl
-        if (url != null) openBrowser(context, url)
-    }
-
-    /** GitHub 当前版本是否有可直接下载的 APK 资产 */
+    /** GitHub 当前版本是否有可直接下载的 APK 资产（UpdateChecker 已按 flavor 匹配） */
     private fun githubApkUrl(): String? =
         info?.downloadUrl?.takeIf { it.endsWith(".apk", ignoreCase = true) }
 
-    /** 点「下载更新」：默认从蓝奏云；无蓝奏直链则走 GitHub */
-    fun downloadUpdate() {
+    /** 点「从 GitHub 下载」：内置下载（下载/解压/调系统安装器） */
+    fun downloadFromGithub() {
+        val g = githubApkUrl()
+        if (g != null) {
+            busy = BusyState("正在从 GitHub 下载…", null)
+            scope.launch {
+                try {
+                    downloadAndInstall(g, "正在从 GitHub 下载…")
+                } catch (e: Exception) {
+                    busy = null
+                    message = "GitHub 下载失败：${e.message}\n\n可改用下方「从蓝奏云下载」在浏览器中下载安装包。"
+                }
+            }
+        } else {
+            message = "该版本没有提供与本版本匹配的安装包直链，请到 GitHub 发布页选择对应 APK。"
+        }
+    }
+
+    /** 点「从蓝奏云下载」：跳外部浏览器打开分享页 */
+    fun downloadFromLanzou() {
         val lz = info?.lanzouUrl
-        if (!lz.isNullOrEmpty()) startLanzou(lz) else startGithub()
-    }
-
-    /** 蓝奏云失败弹窗里的「改用 GitHub 下载」 */
-    fun downloadFromGithubFallback() {
-        val f = fallback ?: return
-        fallback = null
-        startGithub(f.githubUrl)
-    }
-
-    fun closeFallbackAsk() {
-        fallback = null
+        if (lz.isNullOrEmpty()) {
+            message = "该版本未提供蓝奏云下载链接。"
+        } else {
+            openBrowser(context, lz)
+        }
     }
 
     fun closeMessage() {
@@ -145,49 +139,10 @@ internal class UpdateFlowController(
 
     // ---------- 下载流程 ----------
 
-    private fun startLanzou(pageUrl: String) {
-        busy = BusyState("正在获取下载地址…", null)
-        scope.launch {
-            try {
-                val direct = withContext(Dispatchers.IO) {
-                    AppUpdater.lanzouDirectUrl(pageUrl)
-                }
-                downloadAndInstall(direct, pageUrl, "正在从蓝奏云下载…")
-            } catch (e: Exception) {
-                busy = null
-                val github = githubApkUrl()
-                if (github != null) {
-                    fallback = GithubFallbackAsk(e.message ?: "蓝奏云下载失败", github)
-                } else {
-                    message = "蓝奏云下载失败：${e.message}"
-                }
-            }
-        }
-    }
-
-    private fun startGithub(urlOverride: String? = null) {
-        val g = urlOverride ?: githubApkUrl()
-        if (g != null) {
-            busy = BusyState("正在从 GitHub 下载…", null)
-            scope.launch {
-                try {
-                    downloadAndInstall(g, null, "正在从 GitHub 下载…")
-                } catch (e: Exception) {
-                    busy = null
-                    message = "GitHub 下载失败：${e.message}"
-                }
-            }
-        } else {
-            // 没有匹配本版本的 APK 资产：跳浏览器打开 release 页手动选安装包
-            val page = info?.downloadUrl ?: info?.releaseUrl
-            if (page != null) openBrowser(context, page)
-        }
-    }
-
-    private suspend fun downloadAndInstall(url: String, referer: String?, label: String) {
+    private suspend fun downloadAndInstall(url: String, label: String) {
         busy = BusyState(label, null)
         try {
-            val file = AppUpdater.downloadToCache(context, url, referer) { done, total ->
+            val file = AppUpdater.downloadToCache(context, url, null) { done, total ->
                 busy = BusyState(
                     label,
                     if (total > 0L) (done.toFloat() / total.toFloat()).coerceIn(0f, 1f) else null
@@ -239,110 +194,7 @@ private fun notesForDisplay(notes: String?): String {
 /** 在宿主界面渲染更新相关的全部弹窗（调用一次即可，状态由 [flow] 驱动） */
 @Composable
 internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {}) {
-    // ── 更新说明子弹窗（点「查看更新说明」打开；关闭后回到主弹窗）──
-    val info = flow.info
-    if (info != null && flow.showNotes) {
-        AlertDialog(
-            onDismissRequest = { flow.closeNotes() },
-            title = { Text("v${info.version} · 更新说明") },
-            text = {
-                Column(Modifier.heightIn(max = 400.dp).verticalScroll(rememberScrollState())) {
-                    Text(
-                        notesForDisplay(info.notes),
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                }
-            },
-            confirmButton = {
-                Button(onClick = {
-                    vibrate()
-                    flow.closeNotes()
-                }) { Text("返回") }
-            }
-        )
-        return
-    }
-
-    // ── 「发现新版本」主弹窗（4 个按钮）──
-    if (info != null) {
-        AlertDialog(
-            onDismissRequest = {
-                // 点外部/返回视同「暂不更新」
-                vibrate()
-                flow.onLater()
-            },
-            title = { Text("发现新版本", fontWeight = FontWeight.SemiBold) },
-            text = {
-                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                    Text(
-                        "v${info.version} · ${flow.flavorLabel}",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                    Row(
-                        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
-                        modifier = Modifier
-                            .clip(androidx.compose.foundation.shape.RoundedCornerShape(6.dp))
-                            .clickable {
-                                vibrate()
-                                flow.openNotes()
-                            }
-                            .padding(vertical = 4.dp)
-                    ) {
-                        Text(
-                            "查看更新说明",
-                            style = MaterialTheme.typography.labelLarge,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                        Spacer(Modifier.width(2.dp))
-                        Text(
-                            "›",
-                            style = MaterialTheme.typography.labelLarge,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                    }
-                    Spacer(Modifier.height(6.dp))
-                    OutlinedButton(
-                        onClick = {
-                            vibrate()
-                            flow.onSkipThisVersion()
-                        },
-                        modifier = Modifier.fillMaxWidth().height(44.dp)
-                    ) { Text("跳过此版本") }
-                    FilledTonalButton(
-                        onClick = {
-                            vibrate()
-                            flow.onLater()
-                        },
-                        modifier = Modifier.fillMaxWidth().height(44.dp)
-                    ) { Text("暂不更新") }
-                    Button(
-                        onClick = {
-                            vibrate()
-                            flow.downloadUpdate()
-                        },
-                        modifier = Modifier.fillMaxWidth().height(48.dp)
-                    ) { Text("下载更新") }
-                    TextButton(
-                        onClick = {
-                            vibrate()
-                            flow.openGitHubPage()
-                        },
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
-                            Text("查看 GitHub")
-                        }
-                    }
-                }
-            },
-            confirmButton = {},
-            dismissButton = {}
-        )
-        return
-    }
-
-    // ── 下载 / 解压进度 ──
+    // ── 下载 / 解压进度（必须排在主弹窗之前渲染，否则进度被主弹窗分支吞掉）──
     val busy = flow.busy
     if (busy != null) {
         AlertDialog(
@@ -367,29 +219,6 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
         return
     }
 
-    // ── 蓝奏云失败 → 询问是否改用 GitHub 下载 ──
-    val fb = flow.fallback
-    if (fb != null) {
-        AlertDialog(
-            onDismissRequest = { flow.closeFallbackAsk() },
-            title = { Text("蓝奏云下载失败") },
-            text = { Text(fb.reason) },
-            confirmButton = {
-                Button(onClick = {
-                    vibrate()
-                    flow.downloadFromGithubFallback()
-                }) { Text("改用 GitHub 下载") }
-            },
-            dismissButton = {
-                TextButton(onClick = {
-                    vibrate()
-                    flow.closeFallbackAsk()
-                }) { Text("取消") }
-            }
-        )
-        return
-    }
-
     // ── 结果 / 错误提示 ──
     val msg = flow.message
     if (msg != null) {
@@ -403,6 +232,111 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
                     flow.closeMessage()
                 }) { Text("知道了") }
             }
+        )
+        return
+    }
+
+    // ── 更新说明子弹窗（markdown 排版；关闭后回到主弹窗）──
+    val info = flow.info
+    if (info != null && flow.showNotes) {
+        AlertDialog(
+            onDismissRequest = { flow.closeNotes() },
+            title = { Text("v${info.version} · 更新说明") },
+            text = {
+                MarkdownBody(
+                    markdown = notesForDisplay(info.notes),
+                    modifier = Modifier.heightIn(max = 400.dp).padding(top = 4.dp)
+                )
+            },
+            confirmButton = {
+                Button(onClick = {
+                    vibrate()
+                    flow.closeNotes()
+                }) { Text("返回") }
+            }
+        )
+        return
+    }
+
+    // ── 「发现新版本」主弹窗 ──
+    if (info != null) {
+        val lanzou = info.lanzouUrl
+        AlertDialog(
+            onDismissRequest = {
+                // 点外部/返回视同「暂不更新」
+                vibrate()
+                flow.onLater()
+            },
+            title = { Text("发现新版本", fontWeight = FontWeight.SemiBold) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    Text(
+                        "v${info.version} · ${flow.flavorLabel}",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(6.dp))
+                            .clickable {
+                                vibrate()
+                                flow.openNotes()
+                            }
+                            .padding(vertical = 4.dp)
+                    ) {
+                        Text(
+                            "查看更新说明",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        Spacer(Modifier.width(2.dp))
+                        Text(
+                            "›",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
+                    Spacer(Modifier.height(4.dp))
+                    // 默认渠道：GitHub（内置下载，已按 normal/go 匹配对应 APK 资产）
+                    Button(
+                        onClick = {
+                            vibrate()
+                            flow.downloadFromGithub()
+                        },
+                        modifier = Modifier.fillMaxWidth().height(48.dp)
+                    ) { Text("从 GitHub 下载") }
+                    // 备用渠道：蓝奏云（仅跳外部浏览器，不用内置下载器）
+                    if (!lanzou.isNullOrEmpty()) {
+                        OutlinedButton(
+                            onClick = {
+                                vibrate()
+                                flow.downloadFromLanzou()
+                            },
+                            modifier = Modifier.fillMaxWidth().height(44.dp)
+                        ) { Text("从蓝奏云下载") }
+                    }
+                    Spacer(Modifier.height(2.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        FilledTonalButton(
+                            onClick = {
+                                vibrate()
+                                flow.onLater()
+                            },
+                            modifier = Modifier.weight(1f).height(44.dp)
+                        ) { Text("暂不更新") }
+                        OutlinedButton(
+                            onClick = {
+                                vibrate()
+                                flow.onSkipThisVersion()
+                            },
+                            modifier = Modifier.weight(1f).height(44.dp)
+                        ) { Text("跳过此版本") }
+                    }
+                }
+            },
+            confirmButton = {},
+            dismissButton = {}
         )
     }
 }

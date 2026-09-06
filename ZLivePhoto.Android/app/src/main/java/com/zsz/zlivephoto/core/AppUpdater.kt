@@ -15,6 +15,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
+import java.util.zip.ZipFile
 import java.util.zip.ZipInputStream
 
 /**
@@ -102,6 +103,14 @@ internal object AppUpdater {
                 }
             }
             if (!raw.exists() || raw.length() <= 0L) throw UpdaterException("下载内容为空")
+            // 服务端给了明确长度但实际收到的字节数不一致 = 中途被掐断/注入，必须在此拦截，
+            // 否则截断的 APK 交给系统安装器只会得到笼统的「解析包出现问题」。
+            if (total > 0L && raw.length() != total) {
+                runCatching { raw.delete() }
+                throw UpdaterException(
+                    "下载不完整（已获取 ${raw.length()} / 共 $total 字节），请重新下载"
+                )
+            }
             raw
         } catch (e: CancellationException) {
             runCatching { raw.delete() }
@@ -157,12 +166,34 @@ internal object AppUpdater {
         }
     }.getOrDefault(false)
 
-    /** 安装前内容校验：非 APK/ZIP 魔数直接抛错，避免系统安装器报「解析包出错」 */
+    /** 安装前内容校验：非 APK/ZIP 魔数或结构损坏（截断/缺关键条目）直接抛错，
+     *  避免系统安装器报「解析包出错」这种无法区分原因的笼统错误。 */
     private fun requireApk(f: File) {
         if (!hasZipMagic(f)) {
             throw UpdaterException(
                 "下载到的不是有效的安装包（可能是网页或下载链接已失效），请重新下载或改用 GitHub 下载。"
             )
+        }
+        // 能读通 ZIP 中央目录 + 存在 Android 必备条目才算完整 APK：
+        // 截断/半成品包在 ZipFile 打开时即抛异常，不会走到系统安装器。
+        try {
+            ZipFile(f).use { zf ->
+                var hasManifest = false
+                var hasClasses = false
+                val e = zf.entries()
+                while (e.hasMoreElements()) {
+                    val n = e.nextElement().name
+                    if (n == "AndroidManifest.xml") hasManifest = true
+                    if (n.startsWith("classes") && n.endsWith(".dex")) hasClasses = true
+                }
+                if (!hasManifest || !hasClasses) {
+                    throw UpdaterException("安装包内容不完整，请重新下载或改用 GitHub 下载。")
+                }
+            }
+        } catch (e: UpdaterException) {
+            throw e
+        } catch (_: Exception) {
+            throw UpdaterException("安装包无法解析（可能下载不完整），请重新下载或改用 GitHub 下载。")
         }
     }
 
@@ -219,6 +250,17 @@ internal object AppUpdater {
     /**
      * 调起系统安装器安装 APK（FileProvider 授权）。
      * 调用前请确保 [needsInstallPermission] 为 false（已由调用方在授权返回后复核）。
+     *
+     * 新旧 Android 差异适配（本方法 + [installPermissionIntent] 共同覆盖）：
+     * - Android 6（API 23，Go 版最低）：FileProvider 自 API 21 起可用，统一走 content://，
+     *   无需区分 file:// 与 content:// 两套逻辑；
+     * - Android 7+：禁止 file:// 暴露，必须 FileProvider + FLAG_GRANT_READ_URI_PERMISSION；
+     * - Android 8+：应用级「安装未知应用」授权（canRequestPackageInstalls），已单列引导；
+     * - Android 11+（targetSdk 30+）：包可见性限制，需在 Manifest 用 <queries> 声明对
+     *   「查看 APK 安装包」意图的可见性（见 AndroidManifest.xml），否则可能解析不到安装器；
+     * - 主流/国产 ROM 偶发对一次性的 flag 授权不敏感：这里再对解析到的安装器包名
+     *   显式 grantUriPermission，确保安装器能读完整 APK，避免误报「解析包出现问题」。
+     *
      * @return null 表示已成功拉起；否则返回给用户的失败说明。
      */
     fun installApk(context: Context, apkFile: File): String? {
@@ -229,11 +271,26 @@ internal object AppUpdater {
         val intent = Intent(Intent.ACTION_VIEW)
             .setDataAndType(uri, "application/vnd.android.package-archive")
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        // 显式把读权限授予能处理该意图的系统安装器（含国产 ROM 的自定义安装器）
+        val installers = try {
+            context.packageManager.queryIntentActivities(intent, 0)
+        } catch (_: Exception) {
+            emptyList()
+        }
+        for (ri in installers) {
+            try {
+                context.grantUriPermission(
+                    ri.activityInfo.packageName, uri, Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+            } catch (_: Exception) {
+                // 个别 ROM 不允许手动授，忽略，FLAG 授权通常仍有效
+            }
+        }
         return try {
             context.startActivity(intent)
             null
         } catch (e: Exception) {
-            "无法调起系统安装器（${e.message}）"
+            "无法调起系统安装器（${e.message}），请到文件管理器手动打开安装包安装"
         }
     }
 }

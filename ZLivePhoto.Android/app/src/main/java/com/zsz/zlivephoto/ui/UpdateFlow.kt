@@ -235,8 +235,11 @@ internal class UpdateFlowController(
     private fun finishInstall(apk: File) {
         val err = AppUpdater.installApk(context, apk)
         if (err == null) {
-            // 成功拉起系统安装器
-            cleanupCache()
+            // 成功拉起系统安装器。
+            // 注意：绝不能在此删除缓存 APK——系统安装器是「异步」通过 FileProvider
+            // 读取文件的，startActivity 一返回就删文件会让安装器读到不存在的包，
+            // 表现为一律「解析包出现问题」（曾长期存在的根因）。
+            // 缓存目录会在下一次更新下载开始时自动清空，残留文件无害。
             dismissAll()
         } else {
             cleanupCache()

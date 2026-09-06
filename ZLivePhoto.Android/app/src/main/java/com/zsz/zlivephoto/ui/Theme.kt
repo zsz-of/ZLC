@@ -1,5 +1,7 @@
 package com.zsz.zlivephoto.ui
 
+import android.app.WallpaperManager
+import android.content.Context
 import android.os.Build
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
@@ -7,8 +9,6 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -111,6 +111,48 @@ internal fun themeHue(): Float =
     if (AppSettings.customHue >= 0f) AppSettings.customHue
     else presetHues[AppSettings.presetColor.coerceIn(0, presetHues.size - 1)]
 
+/**
+ * 动态取色（Android 12+）时从系统壁纸色提取主题色相：
+ * 依次取主色/次色/第三色中第一个饱和度足够的颜色（hsv[1] > 0.15）的色相，
+ * 全灰或读取失败返回 null（调用方回退到预制/自定义色）。
+ * 与 Material3 的 dynamicLight/Dark 色板不同，这里只提取「单一色相」，
+ * 让动态取色走与自定义调色板完全相同的 buildScheme 派生管线，
+ * 保证应用内 UI 与桌面图标（就近映射 7 个预制色）始终同源同步。
+ */
+internal fun wallpaperHue(context: Context): Float? {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return null
+    return try {
+        val colors = WallpaperManager.getInstance(context)
+            .getWallpaperColors(WallpaperManager.FLAG_SYSTEM) ?: return null
+        for (c in arrayOf(colors.primaryColor, colors.secondaryColor, colors.tertiaryColor)) {
+            if (c == null) continue
+            val hsv = floatArrayOf(0f, 0f, 0f)
+            android.graphics.Color.colorToHSV(c.toArgb(), hsv)
+            if (hsv[1] > 0.15f) return hsv[0]
+        }
+        null
+    } catch (_: Exception) {
+        null
+    }
+}
+
+/**
+ * 当前实际生效的主题色相（UI 主题与桌面图标共用的单一来源）：
+ * - 动态取色开启（非 go、Android 12+）：优先用缓存的 [AppSettings.liveDynamicHue]
+ *   （壁纸变化/开关切换时更新，值变更会驱动 UI 重组）；缓存未就绪时直接读一次壁纸。
+ * - 否则用预制色/自定义色相（themeHue）。
+ */
+internal fun currentHue(context: Context): Float {
+    val dynamic = AppSettings.dynamicTheme &&
+        BuildConfig.FLAVOR != "go" && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+    if (dynamic) {
+        val cached = AppSettings.liveDynamicHue
+        if (cached >= 0f) return cached
+        return wallpaperHue(context) ?: themeHue()
+    }
+    return themeHue()
+}
+
 /** 预制色圆点（设置页选择器展示用）：该色相下 primary 的视觉近似 */
 internal fun presetSwatch(index: Int): Color =
     shiftHue(LightColors.primary, presetHues[index.coerceIn(0, presetHues.size - 1)])
@@ -159,15 +201,11 @@ fun ZLivePhotoTheme(
     content: @Composable () -> Unit
 ) {
     val context = LocalContext.current
-    // 动态取色（Material You，Android 12+）开启时跟随系统壁纸色；
-    // 关闭时用预制色/自定义色相（AppSettings）。设置切换时经
-    // animateColorScheme 平滑过渡到新配色。
-    val target = when {
-        AppSettings.dynamicTheme && BuildConfig.FLAVOR != "go" && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ->
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        darkTheme -> buildScheme(themeHue(), dark = true)
-        else -> buildScheme(themeHue(), dark = false)
-    }
+    // 统一经 buildScheme 单色相管线：动态取色开启时色相来自系统壁纸
+    // （与桌面图标同一来源，见 currentHue），关闭时用预制/自定义色相。
+    // 设置/壁纸切换时经 animateColorScheme 平滑过渡到新配色。
+    val hue = currentHue(context)
+    val target = buildScheme(hue, darkTheme)
     // 深色/浅色切换时逐色过渡（约 400ms），避免 Activity 重建瞬变
     val colorScheme = animateColorScheme(target)
 

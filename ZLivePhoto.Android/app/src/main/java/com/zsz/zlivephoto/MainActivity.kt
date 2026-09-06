@@ -79,6 +79,7 @@ import com.zsz.zlivephoto.ui.ZLivePhotoTheme
 import com.zsz.zlivephoto.ui.UpdateFlowHosts
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
 import com.zsz.zlivephoto.ui.rememberUpdateFlow
+import com.zsz.zlivephoto.ui.wallpaperHue
 import com.zsz.zlivephoto.ui.picker.AlbumInfo
 import com.zsz.zlivephoto.ui.picker.AlbumScanner
 import com.zsz.zlivephoto.ui.picker.MediaItem
@@ -547,6 +548,9 @@ class MainActivity : ComponentActivity() {
                 LaunchedEffect(AppSettings.themeMode) {
                     isDarkTheme = computeDarkTheme()
                 }
+                // 动态取色开关变化：已在 AppSettings.setUseDynamicTheme 内同步写好
+                // liveDynamicHue（与自定义取色同一模式），此处无需再做异步刷新；
+                // 壁纸颜色变化则由 registerWallpaperColorListener 驱动同一内存态。
                 // 处理过程中吞掉系统返回键（预测式返回下同样生效）
                 BackHandler(enabled = isConverting) { /* 处理中不响应返回 */ }
 
@@ -930,7 +934,9 @@ class MainActivity : ComponentActivity() {
     }
 
     /** 注册系统壁纸颜色变化监听（Android 12+ 动态取色用）。
-     *  回调仅在「已退到后台 + 动态取色开启」时才切换桌面图标，避免前台闪退；
+     *  壁纸一变即刷新动态取色跟随的色相缓存（AppSettings.liveDynamicHue，
+     *  UI 主题与桌面图标共用，值变更会驱动 UI 下次重组为壁纸色）；
+     *  图标 alias 切换仅在「已退到后台 + 动态取色开启」时执行，避免前台闪退；
      *  前台期间发生的壁纸颜色变化由退出到桌面时 onStop 的同步兜底。 */
     private fun registerWallpaperColorListener() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
@@ -938,6 +944,8 @@ class MainActivity : ComponentActivity() {
         try {
             val wm = WallpaperManager.getInstance(this)
             val listener = WallpaperManager.OnColorsChangedListener { _, _ ->
+                // 统一色相来源：让 UI 主题（next recomposition）与桌面图标同步到壁纸色
+                AppSettings.updateLiveDynamicHue(wallpaperHue(this@MainActivity) ?: -1f)
                 if (iconApplySafe && AppSettings.dynamicTheme) {
                     try {
                         IconManager.apply(this@MainActivity)

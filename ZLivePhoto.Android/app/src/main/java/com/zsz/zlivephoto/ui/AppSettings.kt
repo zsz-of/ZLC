@@ -2,6 +2,7 @@ package com.zsz.zlivephoto.ui
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Build
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -29,6 +30,10 @@ object AppSettings {
     /** 自定义主题色相（-1f = 未自定义，用预制色）；0..360 为 HSV 色相 */
     var customHue by mutableStateOf(-1f)
         private set
+    /** 动态取色当前跟随的壁纸主题色相（0..360；-1f=尚未取得/动态关闭，回退静态色）。
+     *  仅内存态（不持久化）：供 UI 主题与桌面图标共用同一色相来源，保证二者始终同步。 */
+    var liveDynamicHue by mutableStateOf(-1f)
+        private set
     /** 启动时自动从 GitHub 检查更新 */
     var checkUpdateOnStartup by mutableStateOf(true)
         private set
@@ -40,9 +45,11 @@ object AppSettings {
         private set
 
     private lateinit var prefs: SharedPreferences
+    private lateinit var appCtx: Context
 
     fun init(context: Context) {
         prefs = context.getSharedPreferences("zlivephoto", Context.MODE_PRIVATE)
+        appCtx = context.applicationContext
         hapticsEnabled = prefs.getBoolean("haptics_enabled", true)
         bounceEnabled = prefs.getBoolean("bounce_enabled", true)
         dynamicTheme = prefs.getBoolean("dynamic_theme", true)
@@ -56,6 +63,21 @@ object AppSettings {
             hapticsEnabled = false
             bounceEnabled = false
         }
+        // 启动即同步一次动态取色的壁纸色相，保证首帧主题与图标都落到正确色
+        syncDynamicHue()
+    }
+
+    /**
+     * 动态取色开关或启动后同步内存态 [liveDynamicHue]（UI 主题与桌面图标共用的
+     * 单一色相来源）。与自定义取色写 [customHue] 一样在改动发生的同一调用栈内
+     * 同步完成 —— 退出到桌面时 onStop 的图标同步必然读到最新值，
+     * 不会出现「开启动态取色后图标仍停在旧色」的窗口期。
+     */
+    private fun syncDynamicHue() {
+        val dynamic = dynamicTheme &&
+            BuildConfig.FLAVOR != "go" &&
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+        liveDynamicHue = if (dynamic) wallpaperHue(appCtx) ?: -1f else -1f
     }
 
     fun setHaptics(v: Boolean) {
@@ -71,6 +93,9 @@ object AppSettings {
     fun setUseDynamicTheme(v: Boolean) {
         dynamicTheme = v
         prefs.edit().putBoolean("dynamic_theme", v).apply()
+        // 与自定义取色 setCustomHueValue 同一模式：改动当下就同步好共享色相，
+        // 让 UI 主题与随后 onStop 的桌面图标同步都基于最新值（开/关都即时生效）。
+        syncDynamicHue()
     }
 
     fun setPresetColorIndex(index: Int) {
@@ -85,6 +110,11 @@ object AppSettings {
     fun setCustomHueValue(hue: Float) {
         customHue = hue.coerceIn(0f, 360f)
         prefs.edit().putFloat("custom_hue", customHue).apply()
+    }
+
+    /** 更新动态取色跟随的壁纸色相（-1f = 清除/回退静态色；仅内存，不写盘） */
+    fun updateLiveDynamicHue(hue: Float) {
+        liveDynamicHue = hue.coerceIn(-1f, 360f)
     }
 
     fun setStartupUpdateCheck(v: Boolean) {

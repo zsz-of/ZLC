@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.webkit.CookieManager
 import androidx.core.content.FileProvider
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
@@ -66,6 +67,14 @@ internal object AppUpdater {
                 readTimeout = 30_000
                 setRequestProperty("User-Agent", DESKTOP_UA)
                 if (referer != null) setRequestProperty("Referer", referer)
+                // 蓝奏下载直链一般需要 WebView 已解出（acw_sc__v2 等）的会话 Cookie，
+                // 缺失时服务端会返回网页挑战页而不是安装包（旧版因此装到损坏文件报「解析包出错」）
+                val cookie = try {
+                    CookieManager.getInstance().getCookie(url)
+                } catch (_: Exception) {
+                    null
+                }
+                if (!cookie.isNullOrEmpty()) setRequestProperty("Cookie", cookie)
                 instanceFollowRedirects = true
             }.also { code = it.responseCode }
         } catch (e: CancellationException) {
@@ -110,25 +119,51 @@ internal object AppUpdater {
      * 若文件是 zip 压缩包（内部含 .apk）则解压；否则自身即 APK（GitHub 直链场景）。
      * 规整过程中目标文件叫 `update.part`，**解压/写入完整结束后**才重命名为 `update.apk`，
      * 保证任何时刻缓存里都不存在未完成的 `.apk`。
+     * 若内容不是 ZIP/APK（如蓝奏反爬返回的网页挑战页），抛出 [UpdaterException]
+     * 而不是把损坏文件交给系统安装器（避免「解析包出错」）。
      * 返回最终 APK 文件；失败抛 [UpdaterException]。
      */
     suspend fun resolveApk(context: Context, downloaded: File): File = withContext(Dispatchers.IO) {
-        val apkFromZip = try { extractApkFromZip(downloaded) } catch (e: CancellationException) {
-            throw e
-        } catch (_: Exception) {
-            null
+        // 只有头部是 ZIP/APK 魔数（PK）才可能是安装包或压缩包
+        if (hasZipMagic(downloaded)) {
+            val apkFromZip = try { extractApkFromZip(downloaded) } catch (e: CancellationException) {
+                throw e
+            } catch (_: Exception) {
+                null
+            }
+            if (apkFromZip != null) {
+                requireApk(apkFromZip)
+                downloaded.delete()
+                return@withContext apkFromZip
+            }
         }
-        if (apkFromZip != null) {
-            downloaded.delete()
-            return@withContext apkFromZip
+        // 非 zip（GitHub 直链 apk / 蓝奏未解出的裸 apk）：重命名为 .apk 便于识别；
+        // 内容不是 APK 时直接报错，不触发系统安装器
+        val apk = if (!downloaded.name.endsWith(".apk", ignoreCase = true)) {
+            val f = File(downloaded.parentFile, "update.apk")
+            if (downloaded.renameTo(f)) f else downloaded
+        } else {
+            downloaded
         }
-        // 不是压缩包（本身是 apk）：重命名为 .apk 便于识别
-        if (!downloaded.name.endsWith(".apk", ignoreCase = true)) {
-            val apk = File(downloaded.parentFile, "update.apk")
-            if (downloaded.renameTo(apk)) return@withContext apk
-            return@withContext downloaded
+        requireApk(apk)
+        apk
+    }
+
+    /** 文件头是否为 ZIP/APK 魔数（PK） */
+    private fun hasZipMagic(f: File): Boolean = runCatching {
+        f.inputStream().use { ins ->
+            val head = ByteArray(2)
+            ins.read(head) == 2 && head[0] == 0x50.toByte() && head[1] == 0x4B.toByte()
         }
-        downloaded
+    }.getOrDefault(false)
+
+    /** 安装前内容校验：非 APK/ZIP 魔数直接抛错，避免系统安装器报「解析包出错」 */
+    private fun requireApk(f: File) {
+        if (!hasZipMagic(f)) {
+            throw UpdaterException(
+                "下载到的不是有效的安装包（可能是网页或下载链接已失效），请重新下载或改用 GitHub 下载。"
+            )
+        }
     }
 
     /**

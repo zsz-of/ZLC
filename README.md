@@ -2,7 +2,7 @@
 
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / 魅族 / Apple Live Photo 互转、拆解与合成
 **开发者**: zsz & Kimi-K3  
-**版本**: v3.1.6
+**版本**: v3.1.7
 
 ## 许可证
 

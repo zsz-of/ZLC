@@ -68,6 +68,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -82,6 +83,8 @@ import androidx.compose.ui.unit.dp
 import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.core.UpdateChecker
 import com.zsz.zlivephoto.core.UpdateCheckResult
+import com.zsz.zlivephoto.core.UpdateInfo
+import kotlinx.coroutines.launch
 
 private const val GITHUB_REPO_URL = "https://github.com/zsz-of/ZLC"
 
@@ -465,18 +468,32 @@ private fun AboutScreen(onBack: () -> Unit) {
     // 手动检查更新：每次点击触发一次网络检查（正在检查时忽略重复点击）
     var checking by remember { mutableStateOf(false) }
     var updateResult by remember { mutableStateOf<UpdateCheckResult?>(null) }
-    // 「重新安装本版本」拉取最新版信息中（成功后直接弹「重新安装」弹窗）
-    var reinstallFetching by remember { mutableStateOf(false) }
+    // 最近一次拉取到的「最新 release」（无论是否比当前新）。
+    // 「重新安装本版本」仅当确认“当前已是最新版”时才允许点击，需要依赖这里的最新版本信息。
+    var latestInfo by remember { mutableStateOf<UpdateInfo?>(null) }
     // 更新弹窗状态：发现新版本（4 按钮）/ 说明子弹窗 / 下载进度 / 蓝奏失败回退
     val updateFlow = rememberUpdateFlow()
-    LaunchedEffect(checking) {
-        if (checking) {
-            val r = UpdateChecker.check(BuildConfig.VERSION_NAME)
-            updateResult = r
+    val checkScope = rememberCoroutineScope()
+
+    /** 拉取最新版并刷新状态；[presentIfNewer] 为 true（用户主动点「检查更新」）时发现新版直接弹窗 */
+    suspend fun performCheck(presentIfNewer: Boolean) {
+        val info = UpdateChecker.fetchLatest()
+        if (info == null) {
+            updateResult = UpdateCheckResult.NetworkError
+        } else {
+            latestInfo = info
+            val newer = UpdateChecker.isNewer(info.version, BuildConfig.VERSION_NAME)
+            updateResult = if (newer) UpdateCheckResult.Update(info) else UpdateCheckResult.UpToDate
             // 手动检查不套用「跳过此版本」：用户主动点查就给出弹窗
-            if (r is UpdateCheckResult.Update) updateFlow.present(r.info)
-            checking = false
+            if (newer && presentIfNewer) updateFlow.present(info)
         }
+    }
+
+    // 进入关于页先静默拉一次最新版本信息（不自动弹窗），让「重新安装本版本」的可用状态有据可依
+    LaunchedEffect(Unit) {
+        checking = true
+        performCheck(presentIfNewer = false)
+        checking = false
     }
     // 支付宝赞助相关弹窗
     var showSponsorDialog by remember { mutableStateOf(false) }
@@ -532,30 +549,52 @@ private fun AboutScreen(onBack: () -> Unit) {
                                 if (!checking) {
                                     haptic.click()
                                     checking = true
+                                    checkScope.launch {
+                                        performCheck(presentIfNewer = true)
+                                        checking = false
+                                    }
                                 }
                             }
                         )
                     },
                     { s ->
-                        // 重新安装本版本：直接把 GitHub 最新 release（通常＝当前版本）当作更新目标，
-                        // 走完整下载→安装链路，无需降级装旧版即可随时回归验证更新机制
+                        // 重新安装本版本：仅在“当前已是最新版”时可用（此时最新版信息就是当前版本）。
+                        // 若存在更新版本则禁用，引导用户先用「检查更新」升级，避免覆盖安装把新版本顶掉。
+                        val info = latestInfo
+                        val upToDate = info != null &&
+                            !UpdateChecker.isNewer(info.version, BuildConfig.VERSION_NAME)
+                        val newerVersion = if (info != null && !upToDate) info.version else null
                         SettingsActionRow(
                             shape = s,
                             title = "重新安装本版本",
-                            subtitle = "下载当前最新版覆盖安装（测试更新用）",
-                            icon = { Icon(Icons.Default.Refresh, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
-                            trailing = {
-                                Text(
-                                    if (reinstallFetching) "获取中…" else "",
-                                    style = MaterialTheme.typography.labelMedium,
-                                    color = MaterialTheme.colorScheme.primary
+                            subtitle = if (newerVersion == null)
+                                "下载当前最新版覆盖安装（测试更新用）"
+                            else
+                                "当前可升级到 v$newerVersion，请先用「检查更新」升级",
+                            icon = {
+                                Icon(
+                                    Icons.Default.Refresh,
+                                    contentDescription = null,
+                                    tint = if (upToDate) MaterialTheme.colorScheme.primary
+                                    else MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                             },
+                            trailing = {
+                                if (latestInfo == null && checking) {
+                                    Text(
+                                        "检查中…",
+                                        style = MaterialTheme.typography.labelMedium,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            },
+                            enabled = upToDate,
                             onClick = {
-                                if (!checking && !reinstallFetching) {
+                                val latest = latestInfo
+                                if (latest != null && upToDate && !checking) {
                                     haptic.click()
-                                    reinstallFetching = true
-                                    updateFlow.reinstallCurrent { reinstallFetching = false }
+                                    // 已确认为最新版：直接用持有信息弹出「重新安装本版本」弹窗，不再重复请求网络
+                                    updateFlow.startReinstall(latest)
                                 }
                             }
                         )
@@ -973,7 +1012,7 @@ private fun SettingsInfoRow(
     }
 }
 
-/** 可点击操作行（检查更新 / GitHub 链接），带弹性动画 */
+/** 可点击操作行（检查更新 / GitHub 链接），带弹性动画；[enabled]=false 时禁用（半透明、不可点） */
 @Composable
 private fun SettingsActionRow(
     shape: RoundedCornerShape,
@@ -981,6 +1020,7 @@ private fun SettingsActionRow(
     subtitle: String?,
     icon: @Composable () -> Unit,
     trailing: @Composable () -> Unit,
+    enabled: Boolean = true,
     onClick: () -> Unit
 ) {
     val fb = rememberPressFeedback(hapticOnPress = false)
@@ -989,11 +1029,19 @@ private fun SettingsActionRow(
             .fillMaxWidth()
             .heightIn(min = 64.dp)
             .background(MaterialTheme.colorScheme.surfaceContainerLow, shape)
-            .clickable(
-                interactionSource = fb.interactionSource,
-                indication = null
-            ) { onClick() }
-            .then(fb.scaleModifier)
+            .then(
+                if (enabled) {
+                    Modifier
+                        .clickable(
+                            interactionSource = fb.interactionSource,
+                            indication = null
+                        ) { onClick() }
+                        .then(fb.scaleModifier)
+                } else {
+                    Modifier
+                }
+            )
+            .alpha(if (enabled) 1f else 0.45f)
             .padding(horizontal = 20.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

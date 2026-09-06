@@ -1,10 +1,13 @@
 package com.zsz.zlivephoto.ui
 
 import android.annotation.SuppressLint
+import android.os.Message
+import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.FrameLayout
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -18,6 +21,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
@@ -52,13 +56,14 @@ import java.util.concurrent.atomic.AtomicBoolean
 /**
  * 内置浏览器（蓝奏云下载页）全屏弹层：
  * - 用桌面 UA 加载蓝奏分享页，让用户自行点击页面中的下载按钮；
- * - **单 WebView 方案**：`setSupportMultipleWindows(false)` 使页面里 target=_blank / window.open
- *   的下载弹窗一律留在当前 WebView 内加载（实测蓝奏下载 = 分享页 iframe → 点击弹新窗口
- *   developer2.lanrar.com 中间页 → JS 自动导航到 CDN 直链），避免弹窗逃逸到系统浏览器；
- * - 命中「真实文件直链」特征（webgetstore/dmpdmp 文件域、.apk/.zip/.7z 后缀）的导航
- *   立即转交下载流程并关页；其余 http(s) 导航一律返回 false 留在视图内加载；
- * - `setDownloadListener` 兜底：真正进入文件下载（Content-Disposition）那一刻也回调
- *   [onDownload]（含已解出的会话 Cookie，AppUpdater 用同一 Cookie 续传下载）；
+ * - **主/子 WebView 双捕获**：
+ *   1. 蓝奏下载按钮以 target=_blank / window.open 弹新窗 → `onCreateWindow` 把新窗口
+ *      承接进隐藏子 WebView（挂到进程内容器保证 JS/挑战真正跑起来解出 Cookie），
+ *      从机制上杜绝「弹窗逃逸到系统浏览器」和「系统静默下载不留痕」；
+ *   2. 主、子 WebView 均挂「真实文件直链」识别（webgetstore/dmpdmp 文件域、.apk/.zip/.7z）
+ *      + `setDownloadListener` 兜底：只要任一视图命中真实下载，立即回调 [onDownload]
+ *      转入应用内下载→安装，同时关闭本弹层；
+ * - 拦截到下载后只回调一次（AtomicBoolean 去重），避免主/子 WebView 重复触发；
  * - 不再按 URL 特征提前拦截 acw 挑战页（需由 WebView 真正跑完 JS 才能拿到 Cookie）；
  * - 系统返回键 / 顶部返回箭头均关闭本弹层并回到「发现新版本」弹窗；
  * - 全屏窗口首帧即满尺寸，内容整体从右边缘整屏滑入；顶栏背景延伸到状态栏区域，
@@ -72,7 +77,7 @@ internal fun LanzouBrowserDialog(
     vibrate: () -> Unit = {}
 ) {
     val context = LocalContext.current
-    // 拦截到下载后只回调一次，防止 shouldOverrideUrlLoading / DownloadListener 重复触发
+    // 拦截到下载后只回调一次，防止主/子 WebView 的多个监听器重复触发
     val handledFlag = remember { AtomicBoolean(false) }
     var title by remember { mutableStateOf("蓝奏云下载") }
     var loading by remember { mutableStateOf(true) }
@@ -80,7 +85,7 @@ internal fun LanzouBrowserDialog(
     val currentOnDismiss by rememberUpdatedState(onDismiss)
     val currentVibrate by rememberUpdatedState(vibrate)
 
-    /** 命中真实文件直链后的统一下载入口（须在主线程调用） */
+    /** 命中真实文件直链/真正开始下载后的统一下载入口（须在主线程调用） */
     val fireDownload: (String) -> Unit = { direct ->
         if (handledFlag.compareAndSet(false, true)) {
             currentOnDownload(direct)
@@ -101,15 +106,59 @@ internal fun LanzouBrowserDialog(
         return host.endsWith("webgetstore.com") || host.endsWith("dmpdmp.com")
     }
 
+    /**
+     * 生成带「下载捕获」的 WebViewClient：
+     * - [isMain] 时同步驱动页面加载进度/标题所在的上层 loading 状态；
+     * - 命中真实文件直链的导航立即回调 [fire]（返回 true 终止页面继续加载），
+     *   其余导航一律返回 false 留在本视图加载，绝不外跳系统浏览器。
+     */
+    fun makeDownloadAwareClient(isMain: Boolean): WebViewClient = object : WebViewClient() {
+        override fun onPageStarted(view: WebView?, url: String?, favicon: android.graphics.Bitmap?) {
+            if (isMain) loading = true
+        }
+
+        override fun onPageFinished(view: WebView?, url: String?) {
+            if (isMain) loading = false
+        }
+
+        // 兜底一：任何导航命中真实文件直链 → 立即转入下载流程，不再继续加载
+        @Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
+        override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+            val u = url
+            if (u != null && looksLikeDirectFile(u)) {
+                fireDownload(u)
+                return true
+            }
+            return false
+        }
+
+        // 兜底二（新版 API）：同上；其余 URL 返回 false 留在本视图加载，绝不外跳
+        @Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
+        override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+            val u = request?.url?.toString()
+            if (u != null && looksLikeDirectFile(u)) {
+                fireDownload(u)
+                return true
+            }
+            return false
+        }
+    }
+
+    // target=_blank 新窗口的子 WebView 统一挂到这个隐藏容器上（仅保证进程内真正
+    // 跑页面/JS 以解出反爬 Cookie），并随弹层关闭统一销毁。
+    val childHost = remember { FrameLayout(context) }
+    val children = remember { mutableListOf<WebView>() }
+
     val web = remember {
         @SuppressLint("SetJavaScriptEnabled")
         WebView(context).apply {
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
-            // 关键：关闭多窗口。蓝奏下载的 target=_blank 弹窗因此留在本视图内加载，
-            // 其后再跳 CDN 直链都经过本视图的 shouldOverrideUrlLoading/DownloadListener，
-            // 从机制上杜绝「跳到系统浏览器下载」。
-            settings.setSupportMultipleWindows(false)
+            settings.javaScriptCanOpenWindowsAutomatically = true
+            // 关键：开启多窗口。蓝奏下载按钮以 target=_blank / window.open 打开中间下载页，
+            // 在 onCreateWindow 中把新窗口承接进隐藏子 WebView 加载（让其跑 JS 解出 Cookie 并
+            // 触发真实下载），避免 ROM 默认把新窗口交给系统浏览器或静默下载而应用毫无感知。
+            settings.setSupportMultipleWindows(true)
             settings.loadWithOverviewMode = true
             settings.useWideViewPort = true
             settings.builtInZoomControls = true
@@ -117,37 +166,7 @@ internal fun LanzouBrowserDialog(
             // 桌面 UA：蓝奏对移动 UA 只返回无下载框的 WAP 页
             settings.userAgentString = AppUpdater.DESKTOP_UA
 
-            webViewClient = object : WebViewClient() {
-                override fun onPageStarted(view: WebView?, url: String?, favicon: android.graphics.Bitmap?) {
-                    loading = true
-                }
-
-                override fun onPageFinished(view: WebView?, url: String?) {
-                    loading = false
-                }
-
-                // 兜底一：任何导航命中真实文件直链 → 立即转入下载流程，不再继续加载
-                @Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
-                override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                    val u = url
-                    if (u != null && looksLikeDirectFile(u)) {
-                        fireDownload(u)
-                        return true
-                    }
-                    return false
-                }
-
-                // 兜底二（新版 API）：同上；其余 URL 返回 false 留在本视图加载，绝不外跳
-                @Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
-                override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-                    val u = request?.url?.toString()
-                    if (u != null && looksLikeDirectFile(u)) {
-                        fireDownload(u)
-                        return true
-                    }
-                    return false
-                }
-            }
+            webViewClient = makeDownloadAwareClient(isMain = true)
 
             webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView?, newProgress: Int) {
@@ -157,9 +176,44 @@ internal fun LanzouBrowserDialog(
                 override fun onReceivedTitle(view: WebView?, t: String?) {
                     if (!t.isNullOrBlank()) title = t
                 }
+
+                // 蓝奏下载按钮以 target=_blank 开新窗口：承接进隐藏子 WebView，让其
+                // 真正加载下载中间页/解出 Cookie；子 WebView 的 WebViewClient 与
+                // DownloadListener 同样挂载「下载捕获」，命中真实直链立即回调并关页。
+                override fun onCreateWindow(
+                    view: WebView?,
+                    isDialog: Boolean,
+                    isUserGesture: Boolean,
+                    resultMsg: Message
+                ): Boolean {
+                    if (handledFlag.get()) return false
+                    val base = view ?: return false
+                    val child = WebView(base.context).apply {
+                        settings.javaScriptEnabled = true
+                        settings.domStorageEnabled = true
+                        settings.javaScriptCanOpenWindowsAutomatically = true
+                        settings.setSupportMultipleWindows(true)
+                        settings.loadWithOverviewMode = true
+                        settings.useWideViewPort = true
+                        settings.builtInZoomControls = true
+                        settings.displayZoomControls = false
+                        settings.userAgentString = AppUpdater.DESKTOP_UA
+                        webViewClient = makeDownloadAwareClient(isMain = false)
+                        webChromeClient = WebChromeClient()
+                        // 兜底：子视图真正进入文件下载（Content-Disposition 等）时上报最终 URL
+                        setDownloadListener { u, _, _, _, _ -> fireDownload(u) }
+                    }
+                    val transport = resultMsg.obj as? WebView.WebViewTransport
+                        ?: return false
+                    childHost.addView(child, FrameLayout.LayoutParams(1, 1))
+                    children += child
+                    transport.webView = child
+                    resultMsg.sendToTarget()
+                    return true
+                }
             }
 
-            // 兜底三：WebView 真正开始下载文件（Content-Disposition 等）时上报最终 URL。
+            // 兜底：主框架真正开始下载文件（Content-Disposition 等）时上报最终 URL。
             // 蓝奏 CDN 直链带短时效签名（sg/e 参数），捕获到 URL 后应立即转交下载。
             setDownloadListener { u, _, _, _, _ -> fireDownload(u) }
 
@@ -169,6 +223,13 @@ internal fun LanzouBrowserDialog(
 
     DisposableEffect(Unit) {
         onDispose {
+            children.forEach { child ->
+                runCatching { child.stopLoading() }
+                runCatching { (child.parent as? ViewGroup)?.removeView(child) }
+                runCatching { child.destroy() }
+            }
+            children.clear()
+            runCatching { childHost.removeAllViews() }
             runCatching { web.stopLoading() }
             runCatching { web.destroy() }
         }
@@ -271,7 +332,7 @@ internal fun LanzouBrowserDialog(
                         } else {
                             Spacer(Modifier.height(3.dp))
                         }
-                        // ── 网页内容 ──
+                        // ── 网页内容 + 隐藏的子 WebView 挂载容器 ──
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -280,6 +341,11 @@ internal fun LanzouBrowserDialog(
                             AndroidView(
                                 factory = { web },
                                 modifier = Modifier.fillMaxSize()
+                            )
+                            // 仅作为 target=_blank 子 WebView 的进程内挂载点（不可见）
+                            AndroidView(
+                                factory = { childHost },
+                                modifier = Modifier.size(1.dp)
                             )
                         }
                         // ── 底部操作提示（背景延伸覆盖手势条区域）──

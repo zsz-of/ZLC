@@ -36,12 +36,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.core.AppUpdater
-import com.zsz.zlivephoto.core.UpdateChecker
 import com.zsz.zlivephoto.core.UpdateInfo
 import java.io.File
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
@@ -102,29 +102,13 @@ internal class UpdateFlowController(
     }
 
     /**
-     * 「重新安装本版本」：不比对版本号，直接把 GitHub 最新 release（安装的即是最新时＝当前版本）
-     * 当作更新目标展示，复用「下载→安装」链路，便于随时回归验证更新机制，无需降级装旧版。
-     * @param onDone 网络获取结束后的回调（无论成败），用于复位调用方的「获取中」状态
+     * 「重新安装本版本」：调用方已确认“当前即是最新版本”并持有最新版信息 [latest]，
+     * 直接把它当作更新目标展示，复用「下载→安装」链路，便于随时回归验证更新机制。
+     * 是否最新的判断由设置页在渲染该入口时完成，此处不再发起网络请求。
      */
-    fun reinstallCurrent(onDone: () -> Unit = {}) {
+    fun startReinstall(latest: UpdateInfo) {
         if (info != null || busy != null) return
-        downloadJob?.cancel()
-        downloadJob = scope.launch {
-            try {
-                val latest = UpdateChecker.fetchLatest()
-                if (latest == null) {
-                    message = "网络错误，无法获取下载信息，请稍后重试。"
-                } else {
-                    present(latest, reinstall = true)
-                }
-            } catch (e: CancellationException) {
-                throw e
-            } catch (e: Exception) {
-                message = "获取下载信息失败：${e.message ?: "未知错误"}"
-            } finally {
-                onDone()
-            }
-        }
+        present(latest, reinstall = true)
     }
 
     /** 跳过此版本：记住版本号，除非发布更新的版本否则不再提示 */
@@ -198,7 +182,21 @@ internal class UpdateFlowController(
             return
         }
         runDownload("GitHub 下载失败") {
-            downloadAndInstall(g, null, "正在从 GitHub 下载…")
+            // GitHub 资产走多级重定向直链，国内网络偶发首连失败；短暂等待后自动重试一次
+            var attempts = 0
+            while (true) {
+                attempts++
+                try {
+                    downloadAndInstall(g, null, "正在从 GitHub 下载…")
+                    return@runDownload
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    if (attempts >= 2) throw e
+                    busy = null
+                    delay(1500)
+                }
+            }
         }
     }
 

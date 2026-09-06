@@ -47,9 +47,9 @@ import kotlinx.coroutines.launch
  * 更新弹窗的状态控制器：管理「发现新版本」主弹窗 + 更新说明子弹窗 +
  * 下载进度 + 安装权限引导 + 结果提示 的全部状态与流程。
  *
- * 下载策略（v3.0.5 起）：
- * - 首选渠道「从蓝奏云下载」：内置下载。分享页 → 原生解析直链（不依赖公益 API）
- *   → 下载 zip → 解压 APK → 安装。
+ * 下载策略（v3.0.5+ 起）：
+ * - 首选渠道「从蓝奏云下载」：打开内置浏览器（WebView）加载分享页，用户自行点击下载，
+ *   拦截到最终直链后立即关闭页面 → 下载 zip → 解压 APK → 安装。
  * - 次选渠道「从 GitHub 下载」：内置下载对应 flavor 的 APK 资产。
  * - 下载弹窗可取消（立即停止并清理缓存）；下载完成前不会产生 .apk 半成品。
  * - 若安装需要「安装未知应用」权限：先引导去系统设置授权，授权返回后直接续装，
@@ -75,6 +75,9 @@ internal class UpdateFlowController(
     /** 结果/错误提示 */
     var message by mutableStateOf<String?>(null)
         private set
+    /** 内置浏览器（蓝奏云下载页）正在展示的分享页 URL；非空时渲染全屏 WebView 弹层 */
+    var browserUrl by mutableStateOf<String?>(null)
+        private set
 
     private var downloadJob: Job? = null
 
@@ -89,6 +92,7 @@ internal class UpdateFlowController(
         busy = null
         permissionApk = null
         message = null
+        browserUrl = null
         downloadJob = null
     }
 
@@ -117,23 +121,35 @@ internal class UpdateFlowController(
         busy = null
         permissionApk = null
         message = null
+        browserUrl = null
     }
 
     /** GitHub 当前版本是否有可直接下载的 APK 资产（UpdateChecker 已按 flavor 匹配） */
     private fun githubApkUrl(): String? =
         info?.downloadUrl?.takeIf { it.endsWith(".apk", ignoreCase = true) }
 
-    /** 首选渠道：点「从蓝奏云下载」→ 原生解析直链 → 内置下载安装 */
+    /** 首选渠道：点「从蓝奏云下载」→ 打开内置浏览器加载分享页，用户点击下载后拦截直链 */
     fun downloadFromLanzou() {
         val lz = info?.lanzouUrl
         if (lz.isNullOrEmpty()) {
             message = "该版本未提供蓝奏云下载链接，可改用 GitHub 下载。"
             return
         }
+        browserUrl = lz
+    }
+
+    /** 用户在内置浏览器点了关闭：回到「发现新版本」主弹窗 */
+    fun closeBrowser() {
+        browserUrl = null
+    }
+
+    /** 内置浏览器拦截到蓝奏最终直链：立即关页并转入下载/解压/安装流程 */
+    fun onBrowserDownloadStart(directUrl: String) {
+        if (browserUrl == null) return
+        val referer = info?.lanzouUrl
+        browserUrl = null
         runDownload("蓝奏云下载失败") {
-            busy = BusyState("正在解析蓝奏云下载链接…", null)
-            val direct = AppUpdater.lanzouDirectUrl(lz)
-            downloadAndInstall(direct, lz, "正在从蓝奏云下载…")
+            downloadAndInstall(directUrl, referer, "正在从蓝奏云下载…")
         }
     }
 
@@ -292,6 +308,18 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
         return
     }
 
+    // ── 内置浏览器（蓝奏云下载页）：用户自行点击下载，拦截到直链后自动转入下方进度流程 ──
+    val browser = flow.browserUrl
+    if (browser != null) {
+        LanzouBrowserDialog(
+            url = browser,
+            onDismiss = { flow.closeBrowser() },
+            onDownload = { flow.onBrowserDownloadStart(it) },
+            vibrate = vibrate
+        )
+        return
+    }
+
     // ── 安装权限引导（APK 已下载完，去授权后返回自动续装）──
     val pApk = flow.permissionApk
     if (pApk != null) {
@@ -399,7 +427,7 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
                         )
                     }
                     Spacer(Modifier.height(4.dp))
-                    // 首选渠道：蓝奏云（内置下载：分享页解析直链，无需外部浏览器/公益 API）
+                    // 首选渠道：蓝奏云（内置浏览器打开分享页，用户点击下载后自动拦截直链下载安装）
                     Button(
                         onClick = {
                             vibrate()

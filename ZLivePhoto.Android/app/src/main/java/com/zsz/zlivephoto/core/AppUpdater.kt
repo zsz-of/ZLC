@@ -14,13 +14,13 @@ import java.io.File
 import java.io.FileOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
-import java.net.URLEncoder
 import java.util.zip.ZipInputStream
 
 /**
  * 应用内一键下载更新：
  * - GitHub release 资产直链（*.apk）直接下载；
- * - 蓝奏云分享页 → 原生解析出直链（自实现，不依赖任何公益 API）→ 下载；
+ * - 蓝奏云：由 UI 层用内置 WebView 打开分享页，用户自行点击下载并拦截到最终直链，
+ *   再把直链交给 [downloadToCache] 下载（本类不再自行解析蓝奏页面）；
  * - 下载/解压全程使用非 `.apk` 临时文件名，规整完成后才落成 `update.apk`，
  *   因此下载过程中不会产生可被误识别/误安装的半成品 APK。
  * - 下载协程可取消：取消时立即中断并清理缓存目录。
@@ -32,8 +32,12 @@ import java.util.zip.ZipInputStream
 internal class UpdaterException(message: String) : Exception(message)
 
 internal object AppUpdater {
-    private const val UA =
-        "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Mobile Safari/537.36"
+    /**
+     * 下载与内置浏览器统一使用的桌面 Chrome UA：
+     * 蓝奏分享页对移动 UA 返回无下载框的 WAP 页，桌面 UA 才能命中可下载的 PC 版页面。
+     */
+    internal const val DESKTOP_UA =
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
 
     /** 下载/解压的临时缓存目录（cache 下，启动自动清理覆盖） */
     internal fun cacheDir(context: Context): File = File(context.cacheDir, "zlc_update")
@@ -60,7 +64,7 @@ internal object AppUpdater {
             (URL(url).openConnection() as HttpURLConnection).apply {
                 connectTimeout = 15_000
                 readTimeout = 30_000
-                setRequestProperty("User-Agent", UA)
+                setRequestProperty("User-Agent", DESKTOP_UA)
                 if (referer != null) setRequestProperty("Referer", referer)
                 instanceFollowRedirects = true
             }.also { code = it.responseCode }
@@ -195,204 +199,6 @@ internal object AppUpdater {
             null
         } catch (e: Exception) {
             "无法调起系统安装器（${e.message}）"
-        }
-    }
-
-    // ---------- 蓝奏云直链解析（原生自实现，不依赖公益 API） ----------
-
-    /**
-     * 解析蓝奏云分享页 → 最终直链。
-     * 机制：分享页抓取下载 iframe → iframe 页 JS 提取 sign/signs/websignkey →
-     * POST `/ajaxm.php`（action=downprocess）→ 返回 dom+url → 跟随跳转得到最终直链。
-     * @throws UpdaterException 页面结构不支持 / 网络异常 / 文件失效时抛出。
-     */
-    suspend fun lanzouDirectUrl(pageUrl: String, password: String? = null): String =
-        withContext(Dispatchers.IO) {
-            val home = httpGetText(pageUrl, null)
-            if (home == null) throw UpdaterException("无法访问蓝奏云页面")
-            if (home.contains("文件取消") || home.contains("已删除") ||
-                home.contains("链接不存在") || home.contains("文件已删除")
-            ) throw UpdaterException("该蓝奏云文件已失效")
-
-            if (password.isNullOrEmpty() && needsPassword(home)) {
-                throw UpdaterException("该蓝奏云分享需要访问密码，请在上方输入密码")
-            }
-
-            val frameSrc = iframeSrc(home)
-                ?: throw UpdaterException("蓝奏云页面结构无法解析（找不到下载框）")
-            val frameUrl = resolveUrl(pageUrl, frameSrc)
-            val origin = URL(frameUrl).let { "${it.protocol}://${it.authority}" }
-
-            val frame = httpGetText(frameUrl, pageUrl)
-                ?: throw UpdaterException("无法打开蓝奏云下载页")
-            if (frame.contains("文件取消") || frame.contains("已删除")) {
-                throw UpdaterException("该蓝奏云文件已失效")
-            }
-
-            val sign = jsVar(frame, "sign") ?: jsVar(frame, "new_sign")
-                ?: throw UpdaterException("蓝奏云页面缺少下载签名（可能已改版）")
-            val signs = jsVar(frame, "signs") ?: jsVar(frame, "skdklds") ?: ""
-            val websignkey = jsVar(frame, "websignkey") ?: ""
-            val p = if (password.isNullOrEmpty()) "" else URLEncoder.encode(password, "UTF-8")
-
-            val body = buildString {
-                append("action=downprocess")
-                append("&sign=").append(URLEncoder.encode(sign, "UTF-8"))
-                append("&signs=").append(URLEncoder.encode(signs, "UTF-8"))
-                if (p.isNotEmpty()) append("&p=").append(p)
-                append("&websign=&ves=1")
-                if (websignkey.isNotEmpty()) {
-                    append("&websignkey=").append(URLEncoder.encode(websignkey, "UTF-8"))
-                }
-            }
-            val res = httpPostText("$origin/ajaxm.php", body, frameUrl)
-                ?: throw UpdaterException("蓝奏云直链请求失败")
-
-            if (res.contains("密码错误") || (res.contains("请输入密码") && p.isEmpty())) {
-                throw UpdaterException("蓝奏云密码错误或需要密码")
-            }
-
-            // 情形1：JSON 返回 dom + url → 再跳一次拿最终直链
-            val dom = jsonField(res, "dom")
-            val urlPart = jsonField(res, "url")
-            val direct: String? = when {
-                !dom.isNullOrEmpty() && !urlPart.isNullOrEmpty() ->
-                    followLocation("$dom$urlPart", frameUrl)
-                !urlPart.isNullOrEmpty() && urlPart.startsWith("http") ->
-                    followLocation(urlPart, frameUrl)
-                else -> {
-                    // 情形2：直接返回 download 字段 / 其它字段里的完整地址
-                    jsonField(res, "download")?.takeIf { it.startsWith("http") }
-                        ?: Regex("""https?://[^\s"'\\]+""").find(res)?.value
-                }
-            }
-            direct?.takeIf { it.startsWith("http") }
-                ?: throw UpdaterException("未能从蓝奏云解析出下载链接（可能已改版）")
-        }
-
-    /** 是否需要输入访问密码（分享页出现密码输入框） */
-    private fun needsPassword(html: String): Boolean =
-        html.contains("passwddiv") ||
-            html.contains("请输入密码") ||
-            html.contains("访问密码") ||
-            html.contains("name=\"pwd\"")
-
-    /** 提取下载 iframe 的 src（多种写法兼容） */
-    private fun iframeSrc(html: String): String? {
-        Regex("""<iframe[^>]*class=["']ifr2["'][^>]*src=["']([^"']+)["']""").find(html)?.let {
-            return it.groupValues[1]
-        }
-        Regex("""<iframe[^>]*src=["']([^"']+)["'][^>]*class=["']ifr2["']""").find(html)?.let {
-            return it.groupValues[1]
-        }
-        // 兜底：任意带 name=noframe 的 iframe
-        Regex("""<iframe[^>]*name=["']noframe["'][^>]*src=["']([^"']+)["']""").find(html)?.let {
-            return it.groupValues[1]
-        }
-        return null
-    }
-
-    /** 从页面 JS 中抓形如 `var xxx = "value"` / `xxx:'value'` 的值 */
-    private fun jsVar(html: String, name: String): String? {
-        val quoted = "\"((?:[^\"\\\\]|\\\\.)*)\""
-        Regex("""(?:var\s+)?${Regex.escape(name)}\s*[=:]\s*$quoted""").find(html)?.let {
-            return unescapeJs(it.groupValues[1])
-        }
-        Regex("""${Regex.escape(name)}\s*=\s*'((?:[^'\\]|\\.)*)'""").find(html)?.let {
-            return unescapeJs(it.groupValues[1])
-        }
-        return null
-    }
-
-    private fun unescapeJs(s: String): String = s.replace("\\/", "/").replace("\\u0026", "&")
-
-    /** 从 ajax 返回中取 JSON 字段值（值可能是 json 数组等，仅取字符串） */
-    private fun jsonField(res: String, key: String): String? {
-        Regex("\"${Regex.escape(key)}\"\\s*:\\s*\"((?:[^\"\\\\]|\\\\.)*)\"").find(res)?.let {
-            return it.groupValues[1].replace("\\/", "/")
-        }
-        Regex("'${Regex.escape(key)}'\\s*:\\s*'((?:[^'\\\\]|\\\\.)*)'").find(res)?.let {
-            return it.groupValues[1].replace("\\/", "/")
-        }
-        return null
-    }
-
-    /** 请求一个不跟跳转的 GET，返回最终 Location（不存在则返回 null） */
-    private suspend fun followLocation(url: String, referer: String?): String? {
-        var conn: HttpURLConnection? = null
-        return try {
-            conn = URL(url).openConnection() as HttpURLConnection
-            conn.apply {
-                instanceFollowRedirects = false
-                connectTimeout = 10_000
-                readTimeout = 10_000
-                setRequestProperty("User-Agent", UA)
-                if (referer != null) setRequestProperty("Referer", referer)
-            }
-            val code = conn.responseCode
-            if (code in 300..399) {
-                val loc = conn.getHeaderField("Location")
-                loc?.takeIf { it.startsWith("http") } ?: loc?.let { resolveUrl(url, it) }
-            } else {
-                null
-            }
-        } catch (_: Exception) {
-            null
-        } finally {
-            runCatching { conn?.disconnect() }
-        }
-    }
-
-    private fun resolveUrl(base: String, rel: String): String {
-        if (rel.startsWith("http")) return rel
-        return try {
-            URL(URL(base), rel).toString()
-        } catch (_: Exception) {
-            rel
-        }
-    }
-
-    private fun httpGetText(url: String, referer: String?): String? {
-        var conn: HttpURLConnection? = null
-        return try {
-            conn = URL(url).openConnection() as HttpURLConnection
-            conn.apply {
-                connectTimeout = 10_000
-                readTimeout = 15_000
-                setRequestProperty("User-Agent", UA)
-                setRequestProperty("Accept", "*/*")
-                if (referer != null) setRequestProperty("Referer", referer)
-            }
-            if (conn.responseCode !in 200..299) return null
-            conn.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }
-        } catch (_: Exception) {
-            null
-        } finally {
-            runCatching { conn?.disconnect() }
-        }
-    }
-
-    private fun httpPostText(url: String, body: String, referer: String?): String? {
-        var conn: HttpURLConnection? = null
-        return try {
-            conn = URL(url).openConnection() as HttpURLConnection
-            conn.apply {
-                requestMethod = "POST"
-                connectTimeout = 10_000
-                readTimeout = 15_000
-                doOutput = true
-                setRequestProperty("User-Agent", UA)
-                setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
-                setRequestProperty("Referer", referer ?: url)
-                setRequestProperty("X-Requested-With", "XMLHttpRequest")
-            }
-            conn.outputStream.use { it.write(body.toByteArray(Charsets.UTF_8)) }
-            if (conn.responseCode !in 200..299) return null
-            conn.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }
-        } catch (_: Exception) {
-            null
-        } finally {
-            runCatching { conn?.disconnect() }
         }
     }
 }

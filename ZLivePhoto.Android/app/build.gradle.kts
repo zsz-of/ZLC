@@ -13,8 +13,8 @@ android {
     defaultConfig {
         applicationId = "com.zsz.zlivephoto"
         targetSdk = 36
-        versionCode = 11
-        versionName = "3.0.5"
+        versionCode = 12
+        versionName = "3.1.0"
         ndk {
             abiFilters += listOf("arm64-v8a", "x86_64")
         }

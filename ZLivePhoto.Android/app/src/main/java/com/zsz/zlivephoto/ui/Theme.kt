@@ -9,6 +9,8 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
@@ -201,11 +203,18 @@ fun ZLivePhotoTheme(
     content: @Composable () -> Unit
 ) {
     val context = LocalContext.current
-    // 统一经 buildScheme 单色相管线：动态取色开启时色相来自系统壁纸
-    // （与桌面图标同一来源，见 currentHue），关闭时用预制/自定义色相。
-    // 设置/壁纸切换时经 animateColorScheme 平滑过渡到新配色。
+    // 动态取色（Material You，Android 12+）开启时跟随系统壁纸色板：
+    // 直接用系统动态色板（dynamicLight/DarkColorScheme），壁纸差异在界面上有
+    // 明显可感知的变化；关闭时回落到 buildScheme 的预制/自定义色相（themeHue）。
+    // 这里始终读取一次 currentHue——它是 AppSettings.liveDynamicHue 等状态在
+    // 组合期的读点，动态取色开关 / 壁纸颜色变化时驱动本主题重组、重建动态色板。
     val hue = currentHue(context)
-    val target = buildScheme(hue, darkTheme)
+    val target = when {
+        AppSettings.dynamicTheme && BuildConfig.FLAVOR != "go" && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ->
+            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        darkTheme -> buildScheme(hue, dark = true)
+        else -> buildScheme(hue, dark = false)
+    }
     // 深色/浅色切换时逐色过渡（约 400ms），避免 Activity 重建瞬变
     val colorScheme = animateColorScheme(target)
 

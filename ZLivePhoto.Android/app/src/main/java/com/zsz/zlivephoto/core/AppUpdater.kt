@@ -34,6 +34,22 @@ import java.util.zip.ZipInputStream
 internal class UpdaterException(message: String) : Exception(message)
 
 internal object AppUpdater {
+    /** 当前正在进行的下载连接（下载协程注册，取消/关闭浏览器时由 [abortActiveDownload] 断开，
+     *  使阻塞在网络读上的线程立刻返回，避免协程悬挂到读超时才结束） */
+    @Volatile
+    private var activeConn: HttpURLConnection? = null
+
+    /**
+     * 立即中断当前正在进行的下载（若有）：断开活跃的 HTTP 连接。
+     * 配合协程 [Job.cancel] 使用——先取消任务再断开连接，阻塞中的
+     * read 会立刻抛异常，经 ensureActive 转成 CancellationException 静默退出。
+     */
+    fun abortActiveDownload() {
+        val c = activeConn ?: return
+        activeConn = null
+        runCatching { c.disconnect() }
+    }
+
     /**
      * 下载与内置浏览器统一使用的桌面 Chrome UA：
      * 蓝奏分享页对移动 UA 返回无下载框的 WAP 页，桌面 UA 才能命中可下载的 PC 版页面。
@@ -62,8 +78,14 @@ internal object AppUpdater {
         val raw = File(dir, "download.bin")
 
         var code = -1
-        val conn: HttpURLConnection = try {
-            (URL(url).openConnection() as HttpURLConnection).apply {
+        var conn: HttpURLConnection? = null
+        try {
+            val c = URL(url).openConnection() as HttpURLConnection
+            // 注册为当前活跃连接：取消下载/关闭浏览器时 abortActiveDownload() 断开它，
+            // 使阻塞中的 connect/read 立刻抛异常返回，不悬挂到读超时
+            activeConn = c
+            conn = c
+            c.apply {
                 connectTimeout = 15_000
                 readTimeout = 30_000
                 setRequestProperty("User-Agent", DESKTOP_UA)
@@ -77,19 +99,23 @@ internal object AppUpdater {
                 }
                 if (!cookie.isNullOrEmpty()) setRequestProperty("Cookie", cookie)
                 instanceFollowRedirects = true
-            }.also { code = it.responseCode }
+            }
+            code = c.responseCode
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
+            currentCoroutineContext().ensureActive() // 已取消：转 CancellationException 静默退出
             throw UpdaterException("无法连接下载服务器：${e.message}")
         }
         if (code !in 200..299) {
-            conn.disconnect()
+            if (activeConn === conn) activeConn = null
+            runCatching { conn?.disconnect() }
             throw UpdaterException("下载失败（HTTP $code）")
         }
+        val http = conn ?: throw UpdaterException("无法建立下载连接")
         try {
-            val total = conn.contentLengthLong
-            val input = conn.inputStream
+            val total = http.contentLengthLong
+            val input = http.inputStream
             FileOutputStream(raw).use { fos ->
                 val buf = ByteArray(64 * 1024)
                 var done = 0L
@@ -117,9 +143,11 @@ internal object AppUpdater {
             throw e
         } catch (e: Exception) {
             runCatching { raw.delete() }
+            currentCoroutineContext().ensureActive() // 已取消：不把中断误报成下载失败
             throw if (e is UpdaterException) e else UpdaterException("下载中断：${e.message}")
         } finally {
-            runCatching { conn.disconnect() }
+            if (activeConn === conn) activeConn = null
+            runCatching { conn?.disconnect() }
         }
     }
 

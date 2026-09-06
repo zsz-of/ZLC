@@ -170,9 +170,14 @@ internal class UpdateFlowController(
         browserUrl = lz
     }
 
-    /** 用户在内置浏览器点了关闭：回到「发现新版本」主弹窗 */
+    /** 用户在内置浏览器点了关闭（返回箭头/系统返回键）：立即中断可能残留的下载
+     *  线程并马上清理临时下载文件，避免后台协程继续阻塞或残留半成品缓存 */
     fun closeBrowser() {
+        downloadJob?.cancel()
+        downloadJob = null
+        AppUpdater.abortActiveDownload()
         browserUrl = null
+        cleanupCache()
     }
 
     /** 内置浏览器拦截到蓝奏最终直链：立即关页并转入下载/解压/安装流程 */
@@ -197,10 +202,11 @@ internal class UpdateFlowController(
         }
     }
 
-    /** 取消当前下载：立即停止并清理缓存目录 */
+    /** 取消当前下载：先取消协程、再断开阻塞中的网络连接，立即清理缓存目录 */
     fun cancelDownload() {
         downloadJob?.cancel()
         downloadJob = null
+        AppUpdater.abortActiveDownload()
         busy = null
         cleanupCache()
     }

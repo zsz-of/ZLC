@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto
 
+import android.app.WallpaperManager
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -8,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
 import android.os.Looper
 import android.provider.DocumentsContract
 import android.provider.MediaStore
@@ -149,6 +151,13 @@ class MainActivity : ComponentActivity() {
     // 显式跟踪系统深浅色（uiMode configChanges 下 LocalConfiguration 传播不可靠，
     // 部分 picker 控件（排序按钮/日期头/张数文本）曾不随主题切换）
     private var isDarkTheme by mutableStateOf(false)
+
+    // 动态取色时响应系统壁纸颜色变化：注册监听后，应用在后台时桌面图标可实时
+    // 跟随壁纸取色。前台禁用正在使用的入口 alias 会被系统中止 Activity（闪退），
+    // 因此仅当 iconApplySafe（已 onStop）时才真正切换；前台期间发生的壁纸变化
+    // 由用户退出到桌面时 onStop 里的同步兜底。
+    private var iconApplySafe = true
+    private var wallpaperColorsListener: WallpaperManager.OnColorsChangedListener? = null
 
     // 系统选择器警告弹窗（可能丢元数据 / 不能识别部分动态照片）
     private var showSystemPickerWarning by mutableStateOf(false)
@@ -524,6 +533,9 @@ class MainActivity : ComponentActivity() {
         // 处理启动时通过分享 Intent 进入的情况
         handleShareIntent(intent)
 
+        // 动态取色：系统壁纸/取色变化时，应用在后台则同步桌面图标颜色
+        registerWallpaperColorListener()
+
         setContent {
             ZLivePhotoTheme(darkTheme = isDarkTheme) {
                 // 全局触觉反馈：弹窗按钮等无独立交互源的控件统一使用
@@ -539,7 +551,8 @@ class MainActivity : ComponentActivity() {
                 BackHandler(enabled = isConverting) { /* 处理中不响应返回 */ }
 
                 // 桌面图标跟随主题色：仅冷启动应用一次（前台运行时禁用正在使用的入口
-                // alias 会导致系统停掉本 Activity → 闪退；主题色变化后的同步在 onStop 完成）
+                // alias 会导致系统停掉本 Activity → 闪退；主题色变化后的同步在 onStop
+                // 完成，动态取色下系统壁纸颜色变化由 registerWallpaperColorListener 驱动）
                 LaunchedEffect(Unit) {
                     IconManager.apply(this@MainActivity)
                 }
@@ -897,15 +910,46 @@ class MainActivity : ComponentActivity() {
         else -> systemIsDark()
     }
 
+    /** 进入前台：此后禁止 activity-alias 切换。前台禁用正在运行的入口组件会被
+     *  系统判定为当前界面失效而中止 Activity（表现为主界面闪退）。 */
+    override fun onStart() {
+        super.onStart()
+        iconApplySafe = false
+    }
+
     /** 退到后台时把桌面图标同步为当前主题色。
-     *  activity-alias 切换必须等 Activity 停止后再做：前台禁用正在运行的入口组件
-     *  会被系统判定为当前界面失效而停掉 Activity（表现为主界面闪退）。 */
+     *  activity-alias 切换必须等 Activity 停止后再做（见 onStart 注释）。 */
     override fun onStop() {
         super.onStop()
+        iconApplySafe = true
         try {
             IconManager.apply(this)
         } catch (_: Exception) {
             // 极端场景（如系统组件状态异常）下忽略，冷启动仍会重试同步
+        }
+    }
+
+    /** 注册系统壁纸颜色变化监听（Android 12+ 动态取色用）。
+     *  回调仅在「已退到后台 + 动态取色开启」时才切换桌面图标，避免前台闪退；
+     *  前台期间发生的壁纸颜色变化由退出到桌面时 onStop 的同步兜底。 */
+    private fun registerWallpaperColorListener() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
+        if (BuildConfig.FLAVOR == "go") return
+        try {
+            val wm = WallpaperManager.getInstance(this)
+            val listener = WallpaperManager.OnColorsChangedListener { _, _ ->
+                if (iconApplySafe && AppSettings.dynamicTheme) {
+                    try {
+                        IconManager.apply(this@MainActivity)
+                    } catch (_: Exception) {
+                        // 系统组件状态异常时忽略，退出到后台的 onStop 仍会兜底同步
+                    }
+                }
+            }
+            wallpaperColorsListener = listener
+            wm.addOnColorsChangedListener(listener, Handler(Looper.getMainLooper()))
+        } catch (_: Exception) {
+            // 个别 ROM 可能不提供该能力，忽略即可（图标仍随启动/onStop 更新）
         }
     }
 
@@ -914,6 +958,17 @@ class MainActivity : ComponentActivity() {
     override fun onDestroy() {
         stablePersistJob?.cancel()
         if (files.isNotEmpty()) persistList(complete = true)
+        // 移除壁纸颜色监听，防止泄漏
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            wallpaperColorsListener?.let { l ->
+                try {
+                    WallpaperManager.getInstance(this).removeOnColorsChangedListener(l)
+                } catch (_: Exception) {
+                    // 实例即将销毁，无需补救
+                }
+            }
+            wallpaperColorsListener = null
+        }
         super.onDestroy()
     }
 

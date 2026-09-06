@@ -47,6 +47,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -464,6 +465,8 @@ private fun AboutScreen(onBack: () -> Unit) {
     // 手动检查更新：每次点击触发一次网络检查（正在检查时忽略重复点击）
     var checking by remember { mutableStateOf(false) }
     var updateResult by remember { mutableStateOf<UpdateCheckResult?>(null) }
+    // 「重新安装本版本」拉取最新版信息中（成功后直接弹「重新安装」弹窗）
+    var reinstallFetching by remember { mutableStateOf(false) }
     // 更新弹窗状态：发现新版本（4 按钮）/ 说明子弹窗 / 下载进度 / 蓝奏失败回退
     val updateFlow = rememberUpdateFlow()
     LaunchedEffect(checking) {
@@ -529,6 +532,30 @@ private fun AboutScreen(onBack: () -> Unit) {
                                 if (!checking) {
                                     haptic.click()
                                     checking = true
+                                }
+                            }
+                        )
+                    },
+                    { s ->
+                        // 重新安装本版本：直接把 GitHub 最新 release（通常＝当前版本）当作更新目标，
+                        // 走完整下载→安装链路，无需降级装旧版即可随时回归验证更新机制
+                        SettingsActionRow(
+                            shape = s,
+                            title = "重新安装本版本",
+                            subtitle = "下载当前最新版覆盖安装（测试更新用）",
+                            icon = { Icon(Icons.Default.Refresh, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
+                            trailing = {
+                                Text(
+                                    if (reinstallFetching) "获取中…" else "",
+                                    style = MaterialTheme.typography.labelMedium,
+                                    color = MaterialTheme.colorScheme.primary
+                                )
+                            },
+                            onClick = {
+                                if (!checking && !reinstallFetching) {
+                                    haptic.click()
+                                    reinstallFetching = true
+                                    updateFlow.reinstallCurrent { reinstallFetching = false }
                                 }
                             }
                         )

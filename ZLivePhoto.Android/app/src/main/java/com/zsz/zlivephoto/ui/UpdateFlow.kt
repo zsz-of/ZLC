@@ -36,6 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.core.AppUpdater
+import com.zsz.zlivephoto.core.UpdateChecker
 import com.zsz.zlivephoto.core.UpdateInfo
 import java.io.File
 import kotlinx.coroutines.CancellationException
@@ -78,6 +79,9 @@ internal class UpdateFlowController(
     /** 内置浏览器（蓝奏云下载页）正在展示的分享页 URL；非空时渲染全屏 WebView 弹层 */
     var browserUrl by mutableStateOf<String?>(null)
         private set
+    /** 是否为「重新安装本版本」模式：弹窗标题/文案与「发现新版本」区分，隐藏「跳过此版本」 */
+    var reinstallMode by mutableStateOf(false)
+        private set
 
     private var downloadJob: Job? = null
 
@@ -86,14 +90,41 @@ internal class UpdateFlowController(
         get() = if (BuildConfig.FLAVOR == "go") "Go 版" else "标准版"
 
     /** 展示「发现新版本」弹窗 */
-    fun present(newInfo: UpdateInfo) {
+    fun present(newInfo: UpdateInfo, reinstall: Boolean = false) {
         info = newInfo
+        reinstallMode = reinstall
         showNotes = false
         busy = null
         permissionApk = null
         message = null
         browserUrl = null
         downloadJob = null
+    }
+
+    /**
+     * 「重新安装本版本」：不比对版本号，直接把 GitHub 最新 release（安装的即是最新时＝当前版本）
+     * 当作更新目标展示，复用「下载→安装」链路，便于随时回归验证更新机制，无需降级装旧版。
+     * @param onDone 网络获取结束后的回调（无论成败），用于复位调用方的「获取中」状态
+     */
+    fun reinstallCurrent(onDone: () -> Unit = {}) {
+        if (info != null || busy != null) return
+        downloadJob?.cancel()
+        downloadJob = scope.launch {
+            try {
+                val latest = UpdateChecker.fetchLatest()
+                if (latest == null) {
+                    message = "网络错误，无法获取下载信息，请稍后重试。"
+                } else {
+                    present(latest, reinstall = true)
+                }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                message = "获取下载信息失败：${e.message ?: "未知错误"}"
+            } finally {
+                onDone()
+            }
+        }
     }
 
     /** 跳过此版本：记住版本号，除非发布更新的版本否则不再提示 */
@@ -117,6 +148,7 @@ internal class UpdateFlowController(
         downloadJob?.cancel()
         downloadJob = null
         info = null
+        reinstallMode = false
         showNotes = false
         busy = null
         permissionApk = null
@@ -390,7 +422,7 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
         return
     }
 
-    // ── 「发现新版本」主弹窗 ──
+    // ── 「发现新版本」/「重新安装本版本」主弹窗 ──
     if (info != null) {
         val lanzou = info.lanzouUrl
         AlertDialog(
@@ -399,7 +431,12 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
                 vibrate()
                 flow.onLater()
             },
-            title = { Text("发现新版本", fontWeight = FontWeight.SemiBold) },
+            title = {
+                Text(
+                    if (flow.reinstallMode) "重新安装本版本" else "发现新版本",
+                    fontWeight = FontWeight.SemiBold
+                )
+            },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     Text(
@@ -407,6 +444,14 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.primary
                     )
+                    if (flow.reinstallMode) {
+                        // 「重新安装」模式：明确告知这是覆盖安装当前版本，用于验证下载→安装链路
+                        Text(
+                            "将下载并重新安装该版本（覆盖当前应用）。\n此功能用于回归测试更新机制。",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
@@ -448,21 +493,32 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
                         modifier = Modifier.fillMaxWidth().height(44.dp)
                     ) { Text("从 GitHub 下载") }
                     Spacer(Modifier.height(2.dp))
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    if (!flow.reinstallMode) {
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            FilledTonalButton(
+                                onClick = {
+                                    vibrate()
+                                    flow.onLater()
+                                },
+                                modifier = Modifier.weight(1f).height(44.dp)
+                            ) { Text("暂不更新") }
+                            OutlinedButton(
+                                onClick = {
+                                    vibrate()
+                                    flow.onSkipThisVersion()
+                                },
+                                modifier = Modifier.weight(1f).height(44.dp)
+                            ) { Text("跳过此版本") }
+                        }
+                    } else {
+                        // 「重新安装」模式无需「跳过此版本」（目标版本＝当前/最新版），只留暂不更新
                         FilledTonalButton(
                             onClick = {
                                 vibrate()
                                 flow.onLater()
                             },
-                            modifier = Modifier.weight(1f).height(44.dp)
+                            modifier = Modifier.fillMaxWidth().height(44.dp)
                         ) { Text("暂不更新") }
-                        OutlinedButton(
-                            onClick = {
-                                vibrate()
-                                flow.onSkipThisVersion()
-                            },
-                            modifier = Modifier.weight(1f).height(44.dp)
-                        ) { Text("跳过此版本") }
                     }
                 }
             },

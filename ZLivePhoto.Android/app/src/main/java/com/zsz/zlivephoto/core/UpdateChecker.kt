@@ -59,6 +59,21 @@ object UpdateChecker {
      * @return Update 有新版本 / UpToDate 已是最新 / NetworkError 网络或解析失败
      */
     suspend fun check(currentVersion: String): UpdateCheckResult = withContext(Dispatchers.IO) {
+        val info = fetchLatest()
+        when {
+            info == null -> UpdateCheckResult.NetworkError
+            isNewer(info.version, currentVersion) -> UpdateCheckResult.Update(info)
+            else -> UpdateCheckResult.UpToDate
+        }
+    }
+
+    /**
+     * 拉取 GitHub 最新 release 的完整信息（**不做版本号比对**，与本地版本是否相同都返回）。
+     * 供「检查更新」做版本比对；也供「重新安装本版本」直接把当前最新版当作更新目标展示，
+     * 从而无需降级/重装旧版即可随时回归验证「下载→安装」链路。
+     * @return null 表示网络或解析失败
+     */
+    suspend fun fetchLatest(): UpdateInfo? = withContext(Dispatchers.IO) {
         try {
             val conn = URL(API_LATEST).openConnection() as HttpURLConnection
             conn.connectTimeout = 10_000
@@ -66,14 +81,12 @@ object UpdateChecker {
             conn.setRequestProperty("Accept", "application/vnd.github+json")
             // 注明 UA，避免被 GitHub 按默认 UA 限流
             conn.setRequestProperty("User-Agent", "ZLC-Android-Updater")
-            if (conn.responseCode != 200) return@withContext UpdateCheckResult.NetworkError
+            if (conn.responseCode != 200) return@withContext null
             val body = conn.inputStream.bufferedReader().use { it.readText() }
             val json = JSONObject(body)
             val tag = json.optString("tag_name", "")
             val remote = tag.removePrefix("v").trim()
-            if (remote.isEmpty() || !isNewer(remote, currentVersion)) {
-                return@withContext UpdateCheckResult.UpToDate
-            }
+            if (remote.isEmpty()) return@withContext null
 
             // 优先取 APK 资产的直接下载地址（跳浏览器即可下载）。
             // normal / go 双版本：按当前 flavor 匹配对应 APK——
@@ -104,21 +117,18 @@ object UpdateChecker {
 
             // 从 Release 正文解析当前版本对应的蓝奏云直链（找不到返回 null，回退 GitHub）
             val releaseBody = json.optString("body")
-            val lanzouUrl = parseLanzouUrl(releaseBody)
 
-            UpdateCheckResult.Update(
-                UpdateInfo(
-                    version = remote,
-                    // 直链下载：命中本版本 APK 资产则直链；否则指向 release 页面，
-                    // 保证 Go 版跳转的是 Go 版本 APK 所在页面而非错误版本
-                    downloadUrl = apkUrl ?: releaseUrl,
-                    releaseUrl = releaseUrl,
-                    notes = releaseBody.trim().ifEmpty { null },
-                    lanzouUrl = lanzouUrl
-                )
+            UpdateInfo(
+                version = remote,
+                // 直链下载：命中本版本 APK 资产则直链；否则指向 release 页面，
+                // 保证 Go 版跳转的是 Go 版本 APK 所在页面而非错误版本
+                downloadUrl = apkUrl ?: releaseUrl,
+                releaseUrl = releaseUrl,
+                notes = releaseBody.trim().ifEmpty { null },
+                lanzouUrl = parseLanzouUrl(releaseBody)
             )
         } catch (_: Exception) {
-            UpdateCheckResult.NetworkError
+            null
         }
     }
 

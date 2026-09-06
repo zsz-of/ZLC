@@ -1,8 +1,11 @@
 package com.zsz.zlivephoto.ui
 
 import android.annotation.SuppressLint
+import android.os.Handler
+import android.os.Looper
 import android.os.Message
 import android.view.ViewGroup
+import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -68,7 +71,60 @@ import java.util.concurrent.atomic.AtomicBoolean
  * - 系统返回键 / 顶部返回箭头均关闭本弹层并回到「发现新版本」弹窗；
  * - 全屏窗口首帧即满尺寸，内容整体从右边缘整屏滑入；顶栏背景延伸到状态栏区域，
  *   底部提示延伸到手势条区域，避免出现色块/条纹。
+ *
+ * **主捕获机制（v3.1.8）——页面内 JS 探针自动取直链，不再依赖新窗口/下载回调**：
+ * 蓝奏分享页主体是一个同域 iframe（/fn?...）解析页，其 XHR 请求 ajaxfile.php 后
+ * 会渲染出「电信/联通/普通下载」三个按钮，按钮 href 直接指向
+ * `https://developer2.lanrar.com/file/?<token>`（该 URL 服务端直接 302 到
+ * zip*.webgetstore.com 的签名直链，无需 Cookie/Referer 即可下载）。因此在页面加载
+ * 完成后向主 WebView 注入一段轮询 JS，自动扫描主文档与同域 iframe 里的下载按钮
+ * href，一旦发现 developer2 分发 URL 立即通过 JsBridge 上报原生 → 关页 → 应用内
+ * 跟随 302 下载。彻底绕开「target=_blank 弹窗承接 / DownloadListener」这类在部分
+ * 机型上不触发的脆弱链路（v3.1.6/v3.1.7 真机验证：点击下载后既不关页也无提示）。
+ * 原多窗口承接 + DownloadListener 保留作兜底，双重保险。
  */
+private const val LANZOU_PROBE_JS: String =
+    """
+    (function () {
+      try { if (window.__zlProbeTimer) { clearInterval(window.__zlProbeTimer); } } catch (e) {}
+      var started = false;
+      function report(u) {
+        try {
+          if (window.zlcBridge && window.zlcBridge.onDownloadLink) window.zlcBridge.onDownloadLink(u);
+        } catch (e) {}
+      }
+      function scan(doc, out) {
+        if (!doc) return out;
+        try {
+          var as = doc.querySelectorAll('a[href]');
+          for (var i = 0; i < as.length; i++) {
+            var h = as[i].href || '';
+            if (h.indexOf('developer2.lanrar.com/file/') >= 0 && out.indexOf(h) < 0) out.push(h);
+          }
+        } catch (e) {}
+        return out;
+      }
+      function tick() {
+        if (started) return true;
+        var found = scan(document, []);
+        try {
+          var ifs = document.querySelectorAll('iframe');
+          for (var i = 0; i < ifs.length; i++) {
+            try { if (ifs[i].contentDocument) found = scan(ifs[i].contentDocument, found); } catch (e) {}
+          }
+        } catch (e) {}
+        if (found.length > 0) { report(found[found.length - 1]); started = true; return true; }
+        return false;
+      }
+      window.__zlProbeTimer = setInterval(function () {
+        var done = false;
+        try { done = tick(); } catch (e) {}
+        if (done) { try { clearInterval(window.__zlProbeTimer); } catch (e) {} }
+      }, 250);
+      setTimeout(function () { try { tick(); } catch (e) {} }, 300);
+    })();
+    """
+
 @Composable
 internal fun LanzouBrowserDialog(
     url: String,
@@ -93,17 +149,26 @@ internal fun LanzouBrowserDialog(
     }
 
     /**
-     * 判断 URL 是否是「真实文件直链」而不是中间解析页：
+     * 判断 URL 是否是「可直接转交应用内下载」的地址：
      * - 蓝奏文件服务器域名（webgetstore.com / dmpdmp.com），路径形如 /YYYY/MM/DD/{32hex}.zip?sg=...
      * - 或直接以 .apk/.zip/.7z 结尾（兼容其它静态直链）
-     * 注意：developer2.lanrar.com 这类中间页必须放行加载，由页面 JS 解析出直链后触发下载。
+     * - 或 `developer2.lanrar.com/file/?<token>` 下载分发页：服务端对该 URL 直接 302 到
+     *   签名 CDN 直链（无需 JS/Cookie/Referer），HttpURLConnection 跟随 302 即拿到安装包。
+     *   手动点击下载按钮 / target=_blank 落到主、子 WebView 时，这一步即完成捕获。
+     * 注意：其它 developer2.lanrar.com 中间页形态必须放行，由 JS 解析出直链后触发下载。
      */
     fun looksLikeDirectFile(u: String?): Boolean {
         if (u.isNullOrBlank()) return false
         val lower = u.lowercase()
         if (lower.endsWith(".apk") || lower.endsWith(".zip") || lower.endsWith(".7z")) return true
         val host = runCatching { java.net.URI(u).host?.lowercase() }.getOrNull() ?: return false
-        return host.endsWith("webgetstore.com") || host.endsWith("dmpdmp.com")
+        if (host.endsWith("webgetstore.com") || host.endsWith("dmpdmp.com")) return true
+        // developer2.lanrar.com 的 /file/?token 即下载分发入口（服务端 302 → CDN 文件）
+        if (host.endsWith("lanrar.com")) {
+            val path = runCatching { java.net.URI(u).path }.getOrNull() ?: ""
+            if (path.startsWith("/file/")) return true
+        }
+        return false
     }
 
     /**
@@ -118,7 +183,14 @@ internal fun LanzouBrowserDialog(
         }
 
         override fun onPageFinished(view: WebView?, url: String?) {
-            if (isMain) loading = false
+            if (!isMain) return
+            loading = false
+            // 主文档加载完成即注入探针 JS：轮询扫描主文档/同域 iframe 里的下载按钮 href，
+            // 发现 developer2.lanrar.com/file/?token 分发 URL 立即经 zlcBridge 上报原生，
+            // 无需用户点击、不依赖新窗口/DownloadListener 等易失效回调。
+            runCatching {
+                view?.evaluateJavascript(LANZOU_PROBE_JS, null)
+            }
         }
 
         // 兜底一：任何导航命中真实文件直链 → 立即转入下载流程，不再继续加载
@@ -167,6 +239,15 @@ internal fun LanzouBrowserDialog(
             settings.userAgentString = AppUpdater.DESKTOP_UA
 
             webViewClient = makeDownloadAwareClient(isMain = true)
+
+            // 探针 JS 上报下载分发 URL 的桥（探针在非 UI 线程回调，须 post 回主线程再 fireDownload）
+            addJavascriptInterface(object {
+                @JavascriptInterface
+                fun onDownloadLink(directUrl: String) {
+                    if (directUrl.isNullOrBlank() || handledFlag.get()) return
+                    Handler(Looper.getMainLooper()).post { fireDownload(directUrl) }
+                }
+            }, "zlcBridge")
 
             webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView?, newProgress: Int) {
@@ -311,7 +392,7 @@ internal fun LanzouBrowserDialog(
                                         color = MaterialTheme.colorScheme.onSurface
                                     )
                                     Text(
-                                        text = "请点击页面中的下载按钮，开始下载后自动返回本应用",
+                                        text = "正在解析下载链接，成功后自动返回本应用",
                                         style = MaterialTheme.typography.labelSmall,
                                         maxLines = 1,
                                         overflow = TextOverflow.Ellipsis,
@@ -350,7 +431,7 @@ internal fun LanzouBrowserDialog(
                         }
                         // ── 底部操作提示（背景延伸覆盖手势条区域）──
                         Text(
-                            text = "检测到下载后本页会自动关闭并继续安装；若长时间无反应，请改用「从 GitHub 下载」。",
+                            text = "解析到下载链接后本页会自动关闭并继续安装；若长时间无反应，请点击页面中的下载按钮，或改用「从 GitHub 下载」。",
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier

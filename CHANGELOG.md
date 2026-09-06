@@ -4,6 +4,19 @@
 
 ---
 
+## [3.1.8] - 2026-09-06
+
+### 🐛 修复：蓝奏内置浏览器仍捕获不到下载（v3.1.7 真机回归：下载开始后不关页、无提示）
+
+- **根因**：蓝奏分享页的下载按钮位于页内同域 iframe（`/fn?...` 解析页）中，点击是 `target=_blank` 新窗口 + 二级 302。Android WebView 对「iframe 内 target=_blank 弹窗」的承接（`onCreateWindow`/`DownloadListener`）在部分机型/内核上不触发，v3.1.7 恢复的多窗口机制仍漏捕获。
+- **新方案（不再依赖弹窗/下载回调）**：实测还原蓝奏真实链路——分享页 iframe 的 XHR 请求 `ajaxfile.php` 后即渲染出「电信/联通/普通下载」三个按钮，其 `href` 直接就是 `developer2.lanrar.com/file/?<token>` 分发 URL，服务端对该 URL 直接 302 到带签名的 CDN 直链（无需 Cookie/Referer/JS）。
+  - 页面加载完成后向主 WebView 注入**轮询探针 JS**，自动扫描主文档与同域 iframe 里的下载按钮 `href`；
+  - 一旦发现 developer2 分发 URL，经 JsBridge 上报原生 → **立即自动关闭浏览器** → 应用内下载（`HttpURLConnection` 自动跟随 302 到 CDN）→ 完整性校验 → 安装，全程无需用户点击、无「网络异常/点下载没反应/卡页面」。
+  - 原有「多窗口承接 + DownloadListener」保留作兜底；同时把 `developer2.lanrar.com/file/` 识别为可下载分发入口，手动点击下载按钮的路径同样能命中。
+- 打开蓝奏页即自动开始解析并下载，成功后自动返回应用内继续安装。
+
+---
+
 ## [3.1.7] - 2026-09-06
 
 ### 🐛 修复：蓝奏内置浏览器「点立即下载没反应 / 页面报网络异常 / 下载后浏览器不关闭、无任何提示」

@@ -18,7 +18,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.PredictiveBackHandler
 import androidx.activity.compose.setContent
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
@@ -74,7 +73,6 @@ import com.zsz.zlivephoto.ui.FancyEasing
 import com.zsz.zlivephoto.ui.FileItem
 import com.zsz.zlivephoto.ui.MainScreen
 import com.zsz.zlivephoto.ui.Md3Checkbox
-import com.zsz.zlivephoto.ui.ReminderKey
 import com.zsz.zlivephoto.ui.SettingsScreen
 import com.zsz.zlivephoto.ui.ZLivePhotoTheme
 import com.zsz.zlivephoto.ui.UpdateFlowHosts
@@ -160,9 +158,6 @@ class MainActivity : ComponentActivity() {
     // 由用户退出到桌面时 onStop 里的同步兜底。
     private var iconApplySafe = true
     private var wallpaperColorsListener: WallpaperManager.OnColorsChangedListener? = null
-
-    // 系统选择器警告弹窗（可能丢元数据 / 不能识别部分动态照片）
-    private var showSystemPickerWarning by mutableStateOf(false)
 
     // 文件名冲突弹窗（批量与单个转换共用）
     private var conflictRequest by mutableStateOf<ConflictRequest?>(null)
@@ -300,44 +295,6 @@ class MainActivity : ComponentActivity() {
             (action ?: { openBuiltInPicker() })()
         } else {
             statusText = "未授予权限，可再次点击「添加文件」"
-        }
-    }
-
-    // 系统照片选择器（API 33+ 原生 Photo Picker；旧系统走 AndroidX 的 GMS backport）
-    private val systemPickerLauncher = registerForActivityResult(
-        ActivityResultContracts.PickMultipleVisualMedia()
-    ) { uris -> handleImportedUris(uris ?: emptyList()) }
-
-    // 系统选择器不可用时的退化选择器：系统文档多选（仅图片，ACTION_OPEN_DOCUMENT）。
-    // 覆盖无 GMS backport 的旧设备（Android 6–9 国产 ROM 常见），避免 ActivityNotFoundException。
-    private val legacySystemPickerLauncher = registerForActivityResult(
-        ActivityResultContracts.OpenMultipleDocuments()
-    ) { uris -> handleImportedUris(uris ?: emptyList()) }
-
-    /** 选择器返回一批 URI 后的统一导入流程（逐项 importPickedUri，汇总结果与状态栏）。 */
-    private fun handleImportedUris(uris: List<Uri>) {
-        if (uris.isEmpty()) {
-            statusText = "未选择任何文件"
-            return
-        }
-        statusText = "正在导入 ${uris.size} 个文件…"
-        lifecycleScope.launch(Dispatchers.IO) {
-            var imported = 0
-            var failed = 0
-            for (uri in uris) {
-                try {
-                    importPickedUri(uri)
-                    imported++
-                } catch (e: Exception) {
-                    failed++
-                    withContext(Dispatchers.Main) { statusText = "导入失败：${e.message}" }
-                }
-            }
-            withContext(Dispatchers.Main) {
-                statusText = if (failed > 0) "导入完成：成功 $imported 个，失败 $failed 个"
-                             else "导入完成：共导入 $imported 个文件"
-                onListStable()
-            }
         }
     }
 
@@ -494,6 +451,9 @@ class MainActivity : ComponentActivity() {
 
         // 全局设置（主题/触感/弹性动画/更新检查）：首帧组合前初始化
         AppSettings.init(this)
+        // 转码器附加项（下载/校验/解压/调用 ffmpeg）：需在首帧组合前初始化，
+        // 否则设置页读取 appCtx / prefs 时抛 lateinit property appCtx has not been initialized
+        FfmpegAddon.init(this)
 
         incomingDir = File(filesDir, "incoming").absolutePath
         outputDir = File(filesDir, "output").absolutePath
@@ -659,11 +619,6 @@ class MainActivity : ComponentActivity() {
                                 screen = AppScreen.Main
                                 importPickedItems(items)
                             },
-                            onLaunchSystemPicker = {
-                                // 不立即关闭内置选择器：先弹警告弹窗，
-                                // 点「继续」才关闭内置选择器并打开系统选择器，点「返回」则留在此处
-                                maybeLaunchSystemPickerWithWarning()
-                            },
                             composeMode = pickerComposeMode,
                             onConfirmCompose = { photos, videos ->
                                 screen = AppScreen.Main
@@ -773,55 +728,6 @@ class MainActivity : ComponentActivity() {
                                 haptic.click()
                                 showSettingsDialog = false
                             }) { Text("取消") }
-                        }
-                    )
-                }
-
-                // 系统选择器警告弹窗：必须点「继续」才关闭并调用系统选择器；
-                // 点外部 / 返回键 / 其他任何操作都不退出弹窗
-                if (showSystemPickerWarning) {
-                    var noRemind by remember { mutableStateOf(false) }
-                    AlertDialog(
-                        onDismissRequest = { /* 不选继续不允许退出 */ },
-                        title = { Text(ReminderKey.SYSTEM_PICKER.title) },
-                        text = {
-                            Column {
-                                Text(ReminderKey.SYSTEM_PICKER.message)
-                                // 整行可点击切换（MD3 习惯：文字也是点击目标）
-                                Row(
-                                    verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
-                                    modifier = Modifier
-                                        .padding(top = 12.dp)
-                                        .clip(RoundedCornerShape(8.dp))
-                                        .clickable {
-                                            haptic.click()
-                                            noRemind = !noRemind
-                                        }
-                                        .padding(horizontal = 4.dp, vertical = 8.dp)
-                                ) {
-                                    Md3Checkbox(checked = noRemind)
-                                    Spacer(Modifier.width(12.dp))
-                                    Text("不再提示")
-                                }
-                            }
-                        },
-                        confirmButton = {
-                            FilledTonalButton(onClick = {
-                                haptic.click()
-                                if (noRemind) {
-                                    AppSettings.setReminderSuppressed(ReminderKey.SYSTEM_PICKER, true)
-                                }
-                                showSystemPickerWarning = false
-                                screen = AppScreen.Main
-                                launchSystemPicker()
-                            }) { Text("继续") }
-                        },
-                        dismissButton = {
-                            FilledTonalButton(onClick = {
-                                haptic.click()
-                                // 仅关闭弹窗，不存储「不再询问」，保持内置选择器打开
-                                showSystemPickerWarning = false
-                            }) { Text("返回") }
                         }
                     )
                 }
@@ -1193,33 +1099,6 @@ class MainActivity : ComponentActivity() {
             stopImportRequested = true
             statusText = "正在停止导入…"
         }
-    }
-
-    /** 打开系统选择器前弹警告（可勾选不再提示） */
-    private fun maybeLaunchSystemPickerWithWarning() {
-        if (AppSettings.isReminderSuppressed(ReminderKey.SYSTEM_PICKER)) {
-            launchSystemPicker()
-            return
-        }
-        showSystemPickerWarning = true
-    }
-
-    private fun launchSystemPicker() {
-        // API 33+：原生 Photo Picker；更早版本由 AndroidX 决定是否走 GMS backport。
-        // 若 backport 不可用（无 GMS / 国产 ROM 未集成），退化到系统文档多选，
-        // 避免 ActivityNotFoundException 崩溃。
-        // （用字符串字面量而非 MediaStore.ACTION_SYSTEM_FALLBACK_PICK_IMAGES，
-        //   该常量属 API 30，避免低版本引用新 API 常量触发 lint/兼容问题）
-        if (Build.VERSION.SDK_INT < 33) {
-            val probe = Intent("android.provider.action.SYSTEM_FALLBACK_PICK_IMAGES").setType("image/*")
-            if (probe.resolveActivity(packageManager) == null) {
-                legacySystemPickerLauncher.launch(arrayOf("image/*"))
-                return
-            }
-        }
-        systemPickerLauncher.launch(
-            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
-        )
     }
 
     private fun onPermissionConfirm() {

@@ -12,8 +12,10 @@ import kotlinx.coroutines.withContext
 import org.apache.commons.compress.archivers.sevenz.SevenZFile
 import org.json.JSONObject
 import java.io.File
+import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.security.MessageDigest
+import java.util.zip.ZipInputStream
 
 /**
  * ffmpeg 附加项（可选视频转码器）：
@@ -28,8 +30,19 @@ object FfmpegAddon {
     /** 标准 MP4 视频编码 fourcc（H.264 / H.265）；其余（vp09/av01/mp4v 等）需转码 */
     val STANDARD_MP4_CODECS = setOf("avc1", "avc3", "hev1", "hvc1")
 
-    /** 转码器元数据（从 Release 正文解析，下载入口使用） */
-    data class AddonMeta(val url: String, val sha1: String, val version: String)
+    /**
+     * 转码器元数据（从 Release 正文解析，下载入口使用）。
+     * @param url GitHub release 资产直链（主通道）
+     * @param sha1 7z 的 SHA-1（两个通道共用同一份文件，校验值相同）
+     * @param version 编码器版本号
+     * @param mirrorUrl 蓝奏云分享页地址（备用通道，可为空；下载时先解析出直链）
+     */
+    data class AddonMeta(
+        val url: String,
+        val sha1: String,
+        val version: String,
+        val mirrorUrl: String? = null
+    )
 
     // —— 可观察状态（设置页 UI 直接观察）——
     /** 下载进度 0..1；-1 表示未在下载 */
@@ -102,15 +115,90 @@ object FfmpegAddon {
 
     // —— 下载 / 校验 / 解压 ——
 
-    /** 下载 7z → 校验 sha-1 → 解压 → 删除 7z。失败抛 [AddonException]，成功更新 installedVersion。 */
+    /**
+     * 下载 7z 到缓存目录：先走 GitHub 主通道，失败再走蓝奏云备用通道。
+     * 两个通道任一成功即返回本地文件；都失败抛 [AddonException]。
+     */
+    private suspend fun fetchArchive(meta: AddonMeta): File {
+        var lastError: Exception? = null
+
+        // 主通道：GitHub release 资产直链
+        try {
+            return AppUpdater.downloadToCache(appCtx, meta.url) { done, total ->
+                downloadProgress = if (total > 0) done.toFloat() / total else -1f
+            }
+        } catch (e: kotlinx.coroutines.CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            lastError = e
+        }
+
+        // 备用通道：蓝奏云（分享页 → CDN 直链 → 下载）
+        val mirror = meta.mirrorUrl
+        if (!mirror.isNullOrBlank()) {
+            try {
+                return AppUpdater.downloadToCache(
+                    appCtx,
+                    AppUpdater.resolveLanzouDirectLink(mirror),
+                    referer = mirror
+                ) { done, total ->
+                    downloadProgress = if (total > 0) done.toFloat() / total else -1f
+                }
+            } catch (e: kotlinx.coroutines.CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                lastError = e
+            }
+        }
+
+        throw AddonException("下载转码器失败：${lastError?.message ?: "未知错误"}")
+    }
+
+    /**
+     * 蓝奏云镜像上传的是「zip 包裹的 7z」（蓝奏对 `.7z` 强制提取码 + 直链验证页，无法直接分发），
+     * 下载后若是 zip 容器则解出内层 7z 返回，其余情况原样返回。
+     * 解出的仍是同一份 7z，故 SHA-1 校验与 GitHub 主通道完全一致。
+     */
+    private fun unwrapMirrorArchive(archive: File): File {
+        // CDN 直链无扩展名，只能按文件头判断（PK\x03\x04 = zip）
+        val magic = ByteArray(4)
+        val isZip = runCatching {
+            FileInputStream(archive).use { it.read(magic) == 4 } &&
+                magic[0] == 'P'.code.toByte() && magic[1] == 'K'.code.toByte()
+        }.getOrDefault(false)
+        if (!isZip) return archive
+
+        val out = File(archive.parentFile, "ffmpeg-android.7z")
+        var found = false
+        ZipInputStream(FileInputStream(archive).buffered()).use { zin ->
+            var entry = zin.nextEntry
+            while (entry != null && !entry.name.endsWith(".7z", ignoreCase = true)) {
+                entry = zin.nextEntry
+            }
+            if (entry != null) {
+                found = true
+                FileOutputStream(out).use { fos -> zin.copyTo(fos) }
+            }
+        }
+        if (!found) {
+            runCatching { out.delete() }
+            throw AddonException("镜像压缩包内未找到转码器文件")
+        }
+        runCatching { archive.delete() }
+        return out
+    }
+
+    /**
+     * 下载 7z → 校验 sha-1 → 解压 → 删除 7z。失败抛 [AddonException]，成功更新 installedVersion。
+     * 下载通道：优先 GitHub release 资产直链；失败且元数据带蓝奏云地址时自动改用蓝奏云
+     * （先解析分享页得到 CDN 直链再下载，两个通道下载的是同一份文件，共用同一 SHA-1 校验）。
+     */
     suspend fun downloadAndInstall(meta: AddonMeta) {
         busy = true
         installError = null
         downloadProgress = 0f
         try {
-            val archive = AppUpdater.downloadToCache(appCtx, meta.url) { done, total ->
-                downloadProgress = if (total > 0) done.toFloat() / total else -1f
-            }
+            val archive = fetchArchive(meta)
             downloadProgress = 1f
 
             // sha-1 校验
@@ -167,9 +255,11 @@ object FfmpegAddon {
 
     /** 从最新 GitHub Release 拉取附加项元数据并下载安装；失败抛 [AddonException] 并设置 installError */
     suspend fun installFromLatestRelease() {
-        val meta = UpdateChecker.fetchLatest()?.notes?.let { UpdateChecker.parseAddonMeta(it) }
+        val meta = UpdateChecker.fetchLatest()?.notes?.let {
+            UpdateChecker.parseAddonMeta(it, BuildConfig.VERSION_NAME)
+        }
         if (meta == null) {
-            installError = "发布信息中未找到转码器附加项，请稍后重试"
+            installError = "发布信息中未找到适用于当前版本（v${BuildConfig.VERSION_NAME}）的转码器附加项，请稍后重试"
             throw AddonException(installError!!)
         }
         downloadAndInstall(meta)

@@ -13,6 +13,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
@@ -47,6 +48,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -194,7 +196,6 @@ fun PhotoPickerScreen(
     isDarkTheme: Boolean,
     onBack: () -> Unit,
     onConfirm: (List<MediaItem>) -> Unit,
-    onLaunchSystemPicker: () -> Unit,
     /** 合成模式：选择普通照片+视频配对合成动态照片 */
     composeMode: Boolean = false,
     /** 合成模式确认回调：(照片列表, 视频列表)，按序号一一配对 */
@@ -249,15 +250,6 @@ fun PhotoPickerScreen(
 
     // 合成模式提示弹窗状态
     var showOver3sWarning by remember { mutableStateOf(false) }
-    var showSysPickerBlocked by remember { mutableStateOf(false) }
-    // 合成模式：COMPOSE_SYSTEM_PICKER 弹窗勾选「不再提示」后，该「系统选择器」按钮
-    // 无任何实际作用（合成模式只能走内置选择器），直接隐藏；普通导入模式不受影响
-    var sysPickerNoRemind by remember {
-        mutableStateOf(
-            AppSettings.isReminderSuppressed(ReminderKey.COMPOSE_SYSTEM_PICKER)
-        )
-    }
-    val hideSysPickerButton = composeMode && sysPickerNoRemind
 
     /** 项是否已选中（合成模式按类型查对应列表） */
     fun isSelected(item: MediaItem): Boolean {
@@ -267,12 +259,15 @@ fun PhotoPickerScreen(
     }
 
     // 确认导入（合成模式：照片/视频都至少 1 个才可确认，回调按序号一一配对）
-    val selText = if (composeMode) {
-        if (selectedPhotos.isEmpty() && selectedVideos.isEmpty()) ""
-        else "照片 ${selectedPhotos.size} · 视频 ${selectedVideos.size}"
-    } else if (selected.isEmpty()) "" else "已选 ${selected.size} 张"
     val canConfirm = if (composeMode) selectedPhotos.isNotEmpty() && selectedVideos.isNotEmpty()
                      else selected.isNotEmpty()
+    // 右下角悬浮导入按钮文案（已选数量随按钮展示，省去额外计数栏）
+    val fabLabel = if (!composeMode) {
+        if (selected.isEmpty()) "导入" else "导入 ${selected.size}"
+    } else {
+        if (selectedPhotos.isEmpty() && selectedVideos.isEmpty()) "导入"
+        else "导入 图${selectedPhotos.size}·视${selectedVideos.size}"
+    }
     val doConfirm: () -> Unit = {
         if (composeMode) onConfirmCompose?.invoke(selectedPhotos.toList(), selectedVideos.toList())
         else onConfirm(selected.toList())
@@ -333,156 +328,114 @@ fun PhotoPickerScreen(
         }
     }
 
-    // 底部确认栏按钮固定序列点击动画（项 1）
+    // 导入按钮点击动画（项 1）
     val importFb = rememberPressFeedback(baseCorner = 20.dp, pressedCorner = 8.dp)
-    // 系统选择器按钮
-    val sysPickerFb = rememberPressFeedback(baseCorner = 20.dp, pressedCorner = 8.dp)
 
     // 深浅色切换时以 isDarkTheme 为 key 驱动全树重组：
     // uiMode configChanges 下部分控件（排序按钮/日期头/张数文本）曾不随主题切换
     key(isDarkTheme) {
-    // 横屏判断：顶栏分左右两栏（相册/系统选择器居左，全选/进度居右）
+    // 横屏判断
     val isLandscape = LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp
-    Column(
+    // 横屏左侧相册栏宽度：收起为窄栏（仅相册名），展开时整栏由左向右变宽（配合封面右向展开）
+    val railWidth by animateDpAsState(
+        targetValue = if (albumsExpanded) 176.dp else 132.dp,
+        animationSpec = spring(dampingRatio = Spring.DampingRatioLowBouncy, stiffness = Spring.StiffnessMediumLow),
+        label = "albumRailWidth"
+    )
+    Row(
         Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        // ── 顶栏（surfaceContainer 容器）──
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.surfaceContainer)
-                .statusBarsPadding()
-        ) {
-            if (isLandscape) {
-                // ── 横屏：左栏（标题 → 系统选择器 → 垂直相册列表）+ 右栏（全选/进度/导入）──
+        // ── 横屏：最左侧纵向铺开的相册栏（展开方向由左到右）──
+        if (isLandscape) {
+            Column(
+                Modifier
+                    .width(railWidth)
+                    .fillMaxHeight()
+                    .background(MaterialTheme.colorScheme.surfaceContainer)
+                    .statusBarsPadding()
+            ) {
+                // 标题行
                 Row(
-                    Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 2.dp),
-                    verticalAlignment = Alignment.Top
+                    Modifier.fillMaxWidth().padding(horizontal = 2.dp, vertical = 2.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Column(Modifier.weight(0.5f)) {
-                        // 标题行
-                        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                            IconButton(onClick = { haptic.click(); onBack() }) {
-                                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回",
-                                    tint = MaterialTheme.colorScheme.onSurface)
-                            }
-                            Text(if (composeMode) "合成动态照片" else "选择动态照片",
-                                style = MaterialTheme.typography.titleMedium,
-                                color = MaterialTheme.colorScheme.onSurface)
-                        }
-                        // 系统选择器按钮（紧跟标题下方；合成模式置灰，点击说明不支持原因；
-                        // 合成模式勾选「不再提示」后按钮整体隐藏，普通导入模式始终显示）
-                        if (!hideSysPickerButton) {
-                            FilledTonalButton(
-                                onClick = {
-                                    if (composeMode) showSysPickerBlocked = true
-                                    else onLaunchSystemPicker()
-                                },
-                                interactionSource = sysPickerFb.interactionSource,
-                                shape = RoundedCornerShape(sysPickerFb.corner),
-                                colors = if (composeMode) ButtonDefaults.filledTonalButtonColors(
-                                    containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant
-                                ) else ButtonDefaults.filledTonalButtonColors(),
-                                modifier = Modifier
-                                    .padding(start = 12.dp, bottom = 4.dp)
-                                    .then(sysPickerFb.scaleModifier),
-                                contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)
-                            ) { Text("系统选择器", style = MaterialTheme.typography.labelMedium) }
-                        }
-                        // 相册列表（垂直排列）+ 右端展开按钮（封面横向展开）
-                        if (albums.size > 1) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                LazyColumn(
-                                    Modifier
-                                        .weight(1f)
-                                        .heightIn(max = 132.dp)
-                                        .padding(vertical = 4.dp),
-                                    verticalArrangement = Arrangement.spacedBy(4.dp)
-                                ) {
-                                    items(albums, key = { it.bucketId }) { album ->
-                                        AlbumChip(
-                                            album = album,
-                                            selected = album.bucketId == bucketId,
-                                            expanded = albumsExpanded,
-                                            onClick = { switchAlbum(album.bucketId) },
-                                            horizontal = true
-                                        )
-                                    }
-                                }
-                                IconButton(
-                                    onClick = { haptic.click(); albumsExpanded = !albumsExpanded },
-                                    colors = IconButtonDefaults.iconButtonColors(
-                                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                ) {
-                                    val rotation by animateFloatAsState(
-                                        targetValue = if (albumsExpanded) 180f else 0f,
-                                        animationSpec = tween(250), label = "chevron"
-                                    )
-                                    Icon(
-                                        Icons.Filled.KeyboardArrowDown,
-                                        contentDescription = if (albumsExpanded) "收起相册封面" else "展开相册封面",
-                                        modifier = Modifier.rotate(rotation)
-                                    )
-                                }
-                            }
-                        }
+                    IconButton(onClick = { haptic.click(); onBack() }) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回",
+                            tint = MaterialTheme.colorScheme.onSurface)
                     }
-                    // 右栏：全选 / 扫描进度 / 已选数 + 导入按钮（不占底部整条空间）
-                    Column(
-                        Modifier
-                            .weight(0.5f)
-                            .padding(end = 12.dp),
-                        horizontalAlignment = Alignment.End
-                    ) {
-                        val allSel = n > 0 && displayOrder.all { isSelected(it) }
-        val someSel = displayOrder.any { isSelected(it) }
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(top = 4.dp)
-                        ) {
-                            Text("全选", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                            Spacer(Modifier.size(4.dp))
-                            CircleTriCheckbox(
-                                state = when {
-                                    allSel -> ToggleableState.On
-                                    someSel -> ToggleableState.Indeterminate
-                                    else -> ToggleableState.Off
-                                },
-                                onClick = { if (n > 0) toggleGroup(displayOrder) }
-                            )
-                        }
-                        AnimatedVisibility(visible = running) {
-                            LinearProgressIndicator(
-                                Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 6.dp)
-                            )
-                        }
-                        // 已选数 + 导入按钮（原底部确认栏在横屏下的替代位置）
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(top = 4.dp, bottom = 6.dp)
-                        ) {
-                            Text(
-                                selText,
-                                style = MaterialTheme.typography.labelLarge,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                            Spacer(Modifier.size(12.dp))
-                            Button(
-                                onClick = doConfirm,
-                                enabled = canConfirm,
-                                interactionSource = importFb.interactionSource,
-                                shape = RoundedCornerShape(importFb.corner),
-                                modifier = Modifier.then(importFb.scaleModifier),
-                                contentPadding = PaddingValues(horizontal = 20.dp, vertical = 6.dp)
-                            ) { Text("导入") }
-                        }
+                    Text(if (composeMode) "合成动态照片" else "选择动态照片",
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis)
+                }
+                // 相册数 + 展开/收起封面（箭头指向右 = 向右展开）
+                Row(
+                    Modifier.fillMaxWidth().padding(start = 10.dp, end = 2.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        "相册 ${albums.size}",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.weight(1f)
+                    )
+                    IconButton(onClick = { haptic.click(); albumsExpanded = !albumsExpanded }) {
+                        val rotation by animateFloatAsState(
+                            targetValue = if (albumsExpanded) 90f else 0f,
+                            animationSpec = tween(250), label = "railChevron"
+                        )
+                        Icon(
+                            Icons.Filled.KeyboardArrowDown,
+                            contentDescription = if (albumsExpanded) "收起相册封面" else "展开相册封面",
+                            modifier = Modifier.rotate(rotation)
+                        )
                     }
                 }
-            } else {
+                // 扫描进度
+                AnimatedVisibility(visible = running) {
+                    LinearProgressIndicator(
+                        Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 4.dp)
+                    )
+                }
+                // 相册列表：纵向铺开，占满剩余高度
+                LazyColumn(
+                    Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp, vertical = 4.dp),
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    items(albums, key = { it.bucketId }) { album ->
+                        AlbumChip(
+                            album = album,
+                            selected = album.bucketId == bucketId,
+                            expanded = albumsExpanded,
+                            onClick = { switchAlbum(album.bucketId) },
+                            horizontal = true
+                        )
+                    }
+                }
+            }
+        }
+
+        // ── 内容区（竖屏为整屏）──
+        Column(
+            Modifier
+                .weight(1f)
+                .fillMaxHeight()
+                .then(if (isLandscape) Modifier.statusBarsPadding() else Modifier)
+        ) {
+            if (!isLandscape) {
+                // ── 竖屏顶栏：标题行 + 相册 chip 横滑条 + 进度条（surfaceContainer 容器）──
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .background(MaterialTheme.colorScheme.surfaceContainer)
+                        .statusBarsPadding()
+                ) {
                 // ── 竖屏：标题行 + 相册栏 + 进度条 ──
                 Row(
                     Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 2.dp),
@@ -496,27 +449,6 @@ fun PhotoPickerScreen(
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.weight(1f))
-                    // 系统选择器按钮（固定序列点击动画，项 1）；
-                    // 合成模式置灰，点击说明不支持原因（需同时配对照片+视频）；
-                    // 合成模式勾选「不再提示」后按钮整体隐藏，普通导入模式始终显示
-                    if (!hideSysPickerButton) {
-                        FilledTonalButton(
-                            onClick = {
-                                if (composeMode) showSysPickerBlocked = true
-                                else onLaunchSystemPicker()
-                            },
-                            interactionSource = sysPickerFb.interactionSource,
-                            shape = RoundedCornerShape(sysPickerFb.corner),
-                            colors = if (composeMode) ButtonDefaults.filledTonalButtonColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                                contentColor = MaterialTheme.colorScheme.onSurfaceVariant
-                            ) else ButtonDefaults.filledTonalButtonColors(),
-                            modifier = Modifier
-                                .padding(end = 8.dp)
-                                .then(sysPickerFb.scaleModifier),
-                            contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)
-                        ) { Text("系统选择器", style = MaterialTheme.typography.labelMedium) }
-                    }
                 }
 
                 // 相册 chip 横滑条 + 右端展开按钮
@@ -577,7 +509,7 @@ fun PhotoPickerScreen(
             onSearchQuery = { searchQuery = it }
         )
 
-        // ── 工具行：张数（左）；横屏全选已在顶栏右栏，竖屏保留全选（右） ──
+        // ── 工具行：张数（左）+ 全选（右）──
         Row(
             Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp),
             verticalAlignment = Alignment.CenterVertically
@@ -588,25 +520,23 @@ fun PhotoPickerScreen(
                 fontSize = 12.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            if (!isLandscape) {
-                Spacer(Modifier.weight(1f))
-                // 全选（移至右侧，圆形现代样式，项 2/3）：按网格顺序有序标记
-                val allSel = n > 0 && displayOrder.all { g -> selected.any { it.id == g.id } }
-                val someSel = displayOrder.any { g -> selected.any { it.id == g.id } }
-                Text("全选", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Spacer(Modifier.size(4.dp))
-                CircleTriCheckbox(
-                    state = when {
-                        allSel -> ToggleableState.On
-                        someSel -> ToggleableState.Indeterminate
-                        else -> ToggleableState.Off
-                    },
-                    onClick = { if (n > 0) toggleGroup(displayOrder) }
-                )
-            }
+            Spacer(Modifier.weight(1f))
+            // 全选（圆形现代样式，项 2/3）：按网格顺序有序标记
+            val allSel = n > 0 && displayOrder.all { g -> selected.any { it.id == g.id } }
+            val someSel = displayOrder.any { g -> selected.any { it.id == g.id } }
+            Text("全选", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Spacer(Modifier.size(4.dp))
+            CircleTriCheckbox(
+                state = when {
+                    allSel -> ToggleableState.On
+                    someSel -> ToggleableState.Indeterminate
+                    else -> ToggleableState.Off
+                },
+                onClick = { if (n > 0) toggleGroup(displayOrder) }
+            )
         }
 
-        // ── 缩略图网格（3 列；相册切换横向滚动动画，方向反转项 4） ──
+        // ── 缩略图网格（3 列；相册切换横向滚动动画，方向反转项 4）──
         Box(Modifier.weight(1f).fillMaxWidth().clipToBounds()) {
             AnimatedContent(
                 targetState = bucketId,
@@ -641,33 +571,25 @@ fun PhotoPickerScreen(
                     searchQuery = searchQuery
                 )
             }
-        }
 
-        // ── 底部确认栏（仅竖屏；横屏的导入按钮已移至顶栏右栏，不占底部空间）──
-        if (!isLandscape) {
-        Surface(tonalElevation = 3.dp) {
-            Row(
-                Modifier
-                    .fillMaxWidth()
+            // ── 导入按钮：永远固定在右下角（无背景板，仅阴影）──
+            Button(
+                onClick = doConfirm,
+                enabled = canConfirm,
+                interactionSource = importFb.interactionSource,
+                shape = RoundedCornerShape(importFb.corner),
+                elevation = ButtonDefaults.buttonElevation(
+                    defaultElevation = 8.dp,
+                    pressedElevation = 3.dp,
+                    disabledElevation = 0.dp
+                ),
+                contentPadding = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
                     .navigationBarsPadding()
-                    .padding(horizontal = 16.dp, vertical = 12.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    selText,
-                    modifier = Modifier.weight(1f),
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Button(
-                    onClick = doConfirm,
-                    enabled = canConfirm,
-                    interactionSource = importFb.interactionSource,
-                    shape = RoundedCornerShape(importFb.corner),
-                    modifier = Modifier.then(importFb.scaleModifier)
-                ) { Text("导入") }
-            }
-        }
+                    .padding(16.dp)
+                    .then(importFb.scaleModifier)
+            ) { Text(fabLabel) }
         }
 
         // 合成模式提示弹窗（统一「不再提示」机制）
@@ -677,16 +599,6 @@ fun PhotoPickerScreen(
                 onDismiss = { showOver3sWarning = false }
             )
         }
-        if (showSysPickerBlocked) {
-            ReminderInfoDialog(
-                key = ReminderKey.COMPOSE_SYSTEM_PICKER,
-                onDismiss = {
-                    showSysPickerBlocked = false
-                    // 弹窗内勾选「不再提示」后立即刷新本地状态，按钮随之隐藏
-                    sysPickerNoRemind =
-                        AppSettings.isReminderSuppressed(ReminderKey.COMPOSE_SYSTEM_PICKER)
-                }
-            )
         }
     }
     } // key(isDarkTheme)
@@ -822,8 +734,9 @@ private fun AlbumGridPage(
 
 /**
  * 搜索 + 排序工具行：
- * 第一行搜索框（按名称过滤，右侧清空按钮）+ 正倒序切换按钮；
- * 第二行三个排序字段 chip（日期/大小/名称）。
+ * - 搜索改为「按钮」：默认只占一个图标位（不占地方），点击后平滑展开为输入框（由左到右），
+ *   清空/收起后回到按钮态；已输入关键字时按钮高亮提示当前处于过滤状态；
+ * - 右侧正倒序切换按钮 + 三个排序字段 chip（日期/大小/名称）。
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -836,33 +749,70 @@ private fun SortSearchBar(
     onSearchQuery: (String) -> Unit
 ) {
     val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
+    // 搜索展开态：默认收起为按钮，不占用宽度
+    var searchOpen by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxWidth()) {
         Row(
             Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            OutlinedTextField(
-                value = searchQuery,
-                onValueChange = onSearchQuery,
-                modifier = Modifier.weight(1f),
-                placeholder = { Text("按名称搜索", fontSize = 13.sp) },
-                leadingIcon = {
-                    Icon(Icons.Default.Search, contentDescription = "搜索",
-                        modifier = Modifier.size(18.dp))
-                },
-                trailingIcon = {
-                    if (searchQuery.isNotEmpty()) {
-                        IconButton(onClick = { onSearchQuery("") }) {
-                            Icon(Icons.Default.Close, contentDescription = "清空",
+            // 搜索区：按钮 ↔ 输入框（平滑展开/收起）
+            Row(
+                Modifier.weight(1f),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                AnimatedVisibility(
+                    visible = searchOpen,
+                    enter = fadeIn(tween(160)) + expandHorizontally(tween(240, easing = FancyEasing)),
+                    exit = fadeOut(tween(120)) + shrinkHorizontally(tween(200, easing = FancyEasing))
+                ) {
+                    OutlinedTextField(
+                        value = searchQuery,
+                        onValueChange = onSearchQuery,
+                        modifier = Modifier.fillMaxWidth(),
+                        placeholder = { Text("按名称搜索", fontSize = 13.sp) },
+                        leadingIcon = {
+                            Icon(Icons.Default.Search, contentDescription = "搜索",
                                 modifier = Modifier.size(18.dp))
-                        }
+                        },
+                        trailingIcon = {
+                            IconButton(onClick = {
+                                haptic.click()
+                                onSearchQuery("")
+                                searchOpen = false
+                            }) {
+                                Icon(Icons.Default.Close, contentDescription = "收起搜索",
+                                    modifier = Modifier.size(18.dp))
+                            }
+                        },
+                        singleLine = true,
+                        shape = RoundedCornerShape(12.dp),
+                        textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp)
+                    )
+                }
+                AnimatedVisibility(
+                    visible = !searchOpen,
+                    enter = fadeIn(tween(160)),
+                    exit = fadeOut(tween(120))
+                ) {
+                    IconButton(onClick = { haptic.click(); searchOpen = true }) {
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription = "搜索",
+                            tint = if (searchQuery.isNotEmpty()) MaterialTheme.colorScheme.primary
+                                   else MaterialTheme.colorScheme.onSurfaceVariant
+                        )
                     }
-                },
-                singleLine = true,
-                shape = RoundedCornerShape(12.dp),
-                textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp)
-            )
-            Spacer(Modifier.width(8.dp))
+                }
+            }
+            // 仅输入框收起且已有关键字时，提供一键清除（过滤仍然生效）
+            if (!searchOpen && searchQuery.isNotEmpty()) {
+                IconButton(onClick = { haptic.click(); onSearchQuery("") }) {
+                    Icon(Icons.Default.Close, contentDescription = "清空搜索",
+                        modifier = Modifier.size(18.dp),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+            }
             // 正/倒序切换
             IconButton(onClick = { haptic.click(); onToggleAscending() }) {
                 Icon(

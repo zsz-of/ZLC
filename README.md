@@ -2,7 +2,7 @@
 
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / 魅族 / Apple Live Photo 互转、拆解与合成
 **开发者**: zsz & Kimi-K3  
-**版本**: v3.2.0
+**版本**: v3.3.0
 
 ## 许可证
 
@@ -29,7 +29,7 @@ Android 端无需额外运行时。
 
 ## 下载安装
 
-前往 [Releases](https://github.com/zsz-of/Z-LivePhoto-Converter/releases) 下载最新版本，更新内容见 [CHANGELOG](CHANGELOG.md)。
+前往 [Releases](https://github.com/zsz-of/ZLC/releases) 下载最新版本，更新内容见 [CHANGELOG](CHANGELOG.md)。
 
 | 平台 | 安装包 | 格式 |
 |------|--------|------|

@@ -32,13 +32,6 @@ enum class ReminderKey(
     val title: String,
     val message: String
 ) {
-    SYSTEM_PICKER(
-        prefsKey = "sys_picker_no_warn",
-        category = "导入",
-        title = "使用系统选择器？",
-        message = "通过系统选择器选择的照片可能丢失元数据（位置、镜头参数等），" +
-            "且无法识别部分双文件动态照片。\n\n建议优先使用内置选择器。"
-    ),
     COMPOSE_VIDEO_OVER_3S(
         prefsKey = "compose_video_over3s_no_warn",
         category = "合成",
@@ -47,14 +40,6 @@ enum class ReminderKey(
             "• 可能无法正常播放\n" +
             "• 可能无法被系统相册识别\n" +
             "• 部分机型可能无法识别该动态照片"
-    ),
-    COMPOSE_SYSTEM_PICKER(
-        prefsKey = "compose_sys_picker_blocked_no_warn",
-        category = "合成",
-        title = "合成模式不支持系统选择器",
-        message = "合成动态照片需要同时选择照片和视频，并按序号一一配对，" +
-            "存在顺序要求，因此不能使用系统选择器。\n\n" +
-            "请使用内置选择器分别选择照片与视频。"
     )
 }
 

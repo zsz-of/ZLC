@@ -49,6 +49,9 @@ object UpdateChecker {
     /** 蓝奏云标签行：`[蓝奏云-标准版]: url`（支持全角冒号与行内空格） */
     private val LANZOU_LINE = Regex("""\[蓝奏云-(标准版|Go版)\]\s*[：:]\s*(\S+)""")
 
+    /** 转码器附加项标签行：`[转码器附加项]: <url> <sha1> <version>`（三个字段以空白分隔） */
+    private val ADDON_LINE = Regex("""\[转码器附加项\]\s*[：:]\s*(\S+)\s+(\S+)\s+(\S+)""")
+
     /** 当前版本对应的蓝奏云标签名（发布规范：go=Go版，其余=标准版） */
     private fun lanzouLabel(): String =
         if (BuildConfig.FLAVOR == "go") "Go版" else "标准版"
@@ -146,6 +149,27 @@ object UpdateChecker {
         for (line in body.lineSequence()) {
             val m = LANZOU_LINE.find(line.trim()) ?: continue
             if (m.groupValues[1] == want) return m.groupValues[2].trimEnd(')', '，', ',', '。')
+        }
+        return null
+    }
+
+    /**
+     * 从 Release 正文解析 ffmpeg 转码器附加项元数据。
+     * 格式约定（单行）：
+     * ```
+     * [转码器附加项]: https://github.com/zsz-of/ZLC/releases/download/v3.2.0/ffmpeg.7z <sha1> <version>
+     * ```
+     * 三个字段依次为下载直链、SHA-1 校验值、编码器版本号。
+     */
+    fun parseAddonMeta(body: String): FfmpegAddon.AddonMeta? {
+        if (body.isBlank()) return null
+        for (line in body.lineSequence()) {
+            val m = ADDON_LINE.find(line.trim()) ?: continue
+            return FfmpegAddon.AddonMeta(
+                url = m.groupValues[1],
+                sha1 = m.groupValues[2],
+                version = m.groupValues[3]
+            )
         }
         return null
     }

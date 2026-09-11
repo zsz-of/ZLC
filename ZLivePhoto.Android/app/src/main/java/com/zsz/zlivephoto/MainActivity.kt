@@ -63,6 +63,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import com.zsz.zlivephoto.core.Converter
+import com.zsz.zlivephoto.core.FfmpegAddon
 import com.zsz.zlivephoto.core.IconManager
 import com.zsz.zlivephoto.core.QuickClassify
 import com.zsz.zlivephoto.core.UpdateChecker
@@ -1551,8 +1552,8 @@ class MainActivity : ComponentActivity() {
                         try {
                             if (item.formatKey == "compose" && item.composeVideoPath != null) {
                                 // 合成任务：照片 + 配对视频 → 动态照片。
-                                // 视频容器不受支持（非 MP4 / MOV 等）时抛 VideoContainerException，
-                                // 直接判失败（不自动转码/重封装），提示用户先把视频转成标准 MP4 再合成。
+                                // 非标准 MP4（MOV/非 H.264/H.265 编码）时自动用 ffmpeg 附加项转码
+                                // 为标准 MP4；附加项未安装则抛 VideoContainerException 提示用户先下载。
                                 staged = Converter.compose(
                                     photoPath = item.path,
                                     videoPath = item.composeVideoPath!!,

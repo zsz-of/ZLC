@@ -2,7 +2,7 @@
 
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / 魅族 / Apple Live Photo 互转、拆解与合成
 **开发者**: zsz & Kimi-K3  
-**版本**: v3.1.9
+**版本**: v3.2.0
 
 ## 许可证
 
@@ -57,11 +57,11 @@ Android 端无需额外运行时。
 
 此外支持「拆解」输出（导出照片 + 视频双文件），以及「合成」（封面照片 + ≤3 秒视频生成动态照片）。
 
-核心解析纯字节级操作（JPEG/MP4 box 遍历），不依赖 FFmpeg 或外部工具。转换后保留源文件的 EXIF 元数据（GPS、拍摄时间等）和修改时间。
+核心解析纯字节级操作（JPEG/MP4 box 遍历），转换后保留源文件的 EXIF 元数据（GPS、拍摄时间等）和修改时间。视频转码为可选功能，需在设置中下载 ffmpeg 转码器附加项后启用。
 
 > **已知限制**：
 > - Apple 动态照片**转换为其他格式存在兼容性 bug**：产物在部分机型（如 vivo 相册）中可被识别为动态照片、封面与 EXIF（位置/拍摄时间/机型等）均正常，但无法长按播放、无法编辑（提示图片已破损），修复排期中。
-> - **合成时若输入视频不是标准 MP4 容器**（如 WebM/MKV/AV1），合成产物可能出现与上条相似的问题；应用会自动重封装或转码以规避，仍建议优先使用标准 MP4（H.264）素材。
+> - **合成时若输入视频不是标准 MP4 容器**（如 WebM/MKV/AV1），需先在设置中下载 ffmpeg 转码器附加项，合成时会自动转码为标准 MP4（H.265/H.264）；否则建议先用其它工具转码为标准 MP4 素材。
 > - Apple Live Photo 输出格式暂不可用（v2.3.0 起输出选项置灰，识别为 Apple 的照片标记「暂不支持转换」）。
 
 ### 技术栈
@@ -85,7 +85,7 @@ Android 端无需额外运行时。
 | 功能 | 说明 |
 |------|------|
 | 多格式互转 | Google / OPPO / vivo / 小米 / 荣耀 / 魅族 / Apple 之间互转（Apple 输出暂不可用） |
-| 合成动态照片 | 封面照片 + ≤3 秒视频合成动态照片；非标准 MP4 自动重封装/转码 |
+| 合成动态照片 | 封面照片 + ≤3 秒视频合成动态照片；非 JPEG 封面与非标准 MP4 视频自动转码 |
 | 拆解导出 | 将动态照片拆解为「照片 + 视频」双文件 |
 | 字节级无损 | 纯字节解析重组，不重新编码 |
 | EXIF 保留 | 保留 GPS、拍摄时间等所有 EXIF 元数据 |
@@ -97,6 +97,8 @@ Android 端无需额外运行时。
 | 动态桌面图标 | 应用图标随主题色 / 壁纸色自动切换 |
 | 检查更新 | 启动/手动检查新版本；GitHub/蓝奏云双通道**应用内直接下载安装**（蓝奏压缩包自动解出 APK），支持「跳过此版本」（Go 版匹配 Go 安装包） |
 | 批量导入 | Android 支持文件夹批量扫描导入（含子目录），流式处理不卡顿 |
+| 相册排序与搜索 | 内置选择器按大小 / 日期 / 名称排序（正序 / 倒序）并支持按名称搜索 |
+| 视频转码附加项 | 可选 ffmpeg 转码器（随 Release 附带 7z 下载），非标准 MP4 自动转标准 MP4（H.265/H.264） |
 | 列表持久化 | Android 列表自动落盘本地 JSON，异常退出可检测并恢复 |
 | 系统分享 | Android 支持从系统分享接收照片转换 |
 
@@ -168,3 +170,5 @@ cd Source/ZLivePhoto.Android
 | [WinUI 3](https://github.com/microsoft/microsoft-ui-xaml) | Windows UI 框架 |
 | [Jetpack Compose](https://developer.android.com/jetpack/compose) | Android UI 框架 |
 | [Material 3](https://m3.material.io/) | 设计系统 |
+| [FFmpeg](https://ffmpeg.org/) | 视频转码（可选附加项，预编译自 [vidra-ffmpeg](https://github.com/chomusuke-mk/vidra-ffmpeg)） |
+| [Apache Commons Compress](https://commons.apache.org/proper/commons-compress/) | 7z 转码器附加项解压 |

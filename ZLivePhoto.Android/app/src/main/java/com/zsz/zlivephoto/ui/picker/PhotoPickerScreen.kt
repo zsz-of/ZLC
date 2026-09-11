@@ -68,11 +68,16 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowDownward
+import androidx.compose.material.icons.filled.ArrowUpward
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.ImageNotSupported
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -80,6 +85,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -142,6 +148,30 @@ private val thumbDispatcher = Dispatchers.IO.limitedParallelism(
     if (BuildConfig.FLAVOR == "go") 1 else 4
 )
 
+/** 相册内排序字段 */
+enum class AlbumSortField { DATE, SIZE, NAME }
+
+/** 按字段排序（正/倒序）。名称比较忽略大小写，日期取 sortTime（拍摄时间，缺失回退修改时间）。 */
+private fun sortMediaItems(
+    items: List<MediaItem>,
+    field: AlbumSortField,
+    ascending: Boolean
+): List<MediaItem> {
+    val comparator = when (field) {
+        AlbumSortField.DATE -> compareBy<MediaItem> { it.sortTime }
+        AlbumSortField.SIZE -> compareBy { it.size }
+        AlbumSortField.NAME -> compareBy { it.name.lowercase() }
+    }
+    return if (ascending) items.sortedWith(comparator)
+           else items.sortedWith(comparator.reversed())
+}
+
+/** 按名称搜索过滤（忽略大小写） */
+private fun filterMediaItems(items: List<MediaItem>, query: String): List<MediaItem> {
+    if (query.isBlank()) return items
+    return items.filter { it.name.contains(query, ignoreCase = true) }
+}
+
 /**
  * 内置动态照片选择器。
  *
@@ -180,6 +210,10 @@ fun PhotoPickerScreen(
     var albumsExpanded by remember { mutableStateOf(false) }
     // 相册切换滚动方向（项 4）：1=切到右侧相册（新内容自右侧进入、画面向左滚），-1=反向
     var slideDir by remember { mutableStateOf(1) }
+    // 排序（大小/日期/名称 + 正倒序）与按名称搜索
+    var sortField by remember { mutableStateOf(AlbumSortField.DATE) }
+    var sortAscending by remember { mutableStateOf(false) }
+    var searchQuery by remember { mutableStateOf("") }
 
     // 进入/离开相册：进入 diff+续扫，离开取消（保留进度）
     DisposableEffect(bucketId) {
@@ -200,10 +234,14 @@ fun PhotoPickerScreen(
     val running = progress.second
 
     // 网格显示顺序（项 3 有序标记）：全选时按此顺序（从上到下、从左到右）添加，
-    // 序号与视觉顺序一致；固定按日期降序；size 读取驱动扫描追加时重算
+    // 序号与视觉顺序一致；应用排序（大小/日期/名称 + 正倒序）与名称搜索过滤；
+    // size 读取驱动扫描追加时重算
     val n = results?.size ?: 0
-    val displayOrder = remember(results, n) {
-        results.orEmpty().sortedByDescending { it.sortTime }
+    val displayOrder = remember(results, n, sortField, sortAscending, searchQuery) {
+        sortMediaItems(
+            filterMediaItems(results.orEmpty(), searchQuery),
+            sortField, sortAscending
+        )
     }
 
     // 合成模式视频时长告警阈值（超过 3 秒提示兼容性风险，但仍允许选择）
@@ -529,6 +567,16 @@ fun PhotoPickerScreen(
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
         }
 
+        // ── 搜索 + 排序工具行 ──
+        SortSearchBar(
+            sortField = sortField,
+            sortAscending = sortAscending,
+            searchQuery = searchQuery,
+            onSortField = { sortField = it },
+            onToggleAscending = { sortAscending = !sortAscending },
+            onSearchQuery = { searchQuery = it }
+        )
+
         // ── 工具行：张数（左）；横屏全选已在顶栏右栏，竖屏保留全选（右） ──
         Row(
             Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp),
@@ -587,7 +635,10 @@ fun PhotoPickerScreen(
                     selIndexOf = { selIndexOf(it) },
                     onToggle = toggleItem,
                     onToggleGroup = toggleGroup,
-                    composeMode = composeMode
+                    composeMode = composeMode,
+                    sortField = sortField,
+                    sortAscending = sortAscending,
+                    searchQuery = searchQuery
                 )
             }
         }
@@ -642,9 +693,10 @@ fun PhotoPickerScreen(
 }
 
 /**
- * 单个相册的网格页：固定按日期降序分组显示（排序功能已移除）。
- * 日期分组 + 粘性标题；必须先排序取快照再 groupBy 归组逐组发射
- * （扫描期间流式追加未排序，直接遍历发射会导致 stickyHeader 重复 key 崩溃）。
+ * 单个相册的网格页：应用排序（大小/日期/名称 + 正倒序）与名称搜索过滤。
+ * 仅日期排序时按日期分组 + 粘性标题；大小/名称排序为扁平列表（日期分组无意义）。
+ * 必须先排序取快照再 groupBy 归组逐组发射（扫描期间流式追加未排序，
+ * 直接遍历发射会导致 stickyHeader 重复 key 崩溃）。
  */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -655,7 +707,10 @@ private fun AlbumGridPage(
     selIndexOf: (MediaItem) -> Int,
     onToggle: (MediaItem) -> Unit,
     onToggleGroup: (List<MediaItem>) -> Unit,
-    composeMode: Boolean = false
+    composeMode: Boolean = false,
+    sortField: AlbumSortField = AlbumSortField.DATE,
+    sortAscending: Boolean = false,
+    searchQuery: String = ""
 ) {
     val state = remember(bucketId) { if (bucketId != null) scanner.stateOf(bucketId) else null }
     val results = state?.results
@@ -701,25 +756,43 @@ private fun AlbumGridPage(
             horizontalArrangement = Arrangement.spacedBy(2.dp),
             verticalArrangement = Arrangement.spacedBy(2.dp)
         ) {
-            val sorted = results.sortedByDescending { it.sortTime }
-            val groups = sorted.groupBy { dateKey(it.sortTime) }
-            for ((dk, groupItems) in groups) {
-                stickyHeader(key = "hdr_$dk") {
-                    Box(Modifier.animateItem().fillMaxWidth()) {
-                        val allSel = groupItems.all { isSelected(it) }
-                        val someSel = groupItems.any { isSelected(it) }
-                        DateHeader(
-                            label = dateLabel(groupItems.first().sortTime),
-                            checkState = when {
-                                allSel -> ToggleableState.On
-                                someSel -> ToggleableState.Indeterminate
-                                else -> ToggleableState.Off
-                            },
-                            onToggleAll = { onToggleGroup(groupItems) }
-                        )
+            val sorted = sortMediaItems(
+                filterMediaItems(results.orEmpty(), searchQuery),
+                sortField, sortAscending
+            )
+            if (sortField == AlbumSortField.DATE) {
+                val groups = sorted.groupBy { dateKey(it.sortTime) }
+                for ((dk, groupItems) in groups) {
+                    stickyHeader(key = "hdr_$dk") {
+                        Box(Modifier.animateItem().fillMaxWidth()) {
+                            val allSel = groupItems.all { isSelected(it) }
+                            val someSel = groupItems.any { isSelected(it) }
+                            DateHeader(
+                                label = dateLabel(groupItems.first().sortTime),
+                                checkState = when {
+                                    allSel -> ToggleableState.On
+                                    someSel -> ToggleableState.Indeterminate
+                                    else -> ToggleableState.Off
+                                },
+                                onToggleAll = { onToggleGroup(groupItems) }
+                            )
+                        }
+                    }
+                    items(groupItems, key = { it.key }) { item ->
+                        Box(Modifier.animateItem()) {
+                            GridCell(
+                                item = item,
+                                selected = isSelected(item),
+                                selectionIndex = selIndexOf(item),
+                                onToggle = { onToggle(item) },
+                                durationText = if (composeMode && item.isVideo)
+                                    formatDurationLabel(item.durationMs) else null
+                            )
+                        }
                     }
                 }
-                items(groupItems, key = { it.key }) { item ->
+            } else {
+                items(sorted, key = { it.key }) { item ->
                     Box(Modifier.animateItem()) {
                         GridCell(
                             item = item,
@@ -744,6 +817,95 @@ private fun AlbumGridPage(
                 }
             }
         }
+    }
+}
+
+/**
+ * 搜索 + 排序工具行：
+ * 第一行搜索框（按名称过滤，右侧清空按钮）+ 正倒序切换按钮；
+ * 第二行三个排序字段 chip（日期/大小/名称）。
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun SortSearchBar(
+    sortField: AlbumSortField,
+    sortAscending: Boolean,
+    searchQuery: String,
+    onSortField: (AlbumSortField) -> Unit,
+    onToggleAscending: () -> Unit,
+    onSearchQuery: (String) -> Unit
+) {
+    val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
+    Column(Modifier.fillMaxWidth()) {
+        Row(
+            Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = onSearchQuery,
+                modifier = Modifier.weight(1f),
+                placeholder = { Text("按名称搜索", fontSize = 13.sp) },
+                leadingIcon = {
+                    Icon(Icons.Default.Search, contentDescription = "搜索",
+                        modifier = Modifier.size(18.dp))
+                },
+                trailingIcon = {
+                    if (searchQuery.isNotEmpty()) {
+                        IconButton(onClick = { onSearchQuery("") }) {
+                            Icon(Icons.Default.Close, contentDescription = "清空",
+                                modifier = Modifier.size(18.dp))
+                        }
+                    }
+                },
+                singleLine = true,
+                shape = RoundedCornerShape(12.dp),
+                textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp)
+            )
+            Spacer(Modifier.width(8.dp))
+            // 正/倒序切换
+            IconButton(onClick = { haptic.click(); onToggleAscending() }) {
+                Icon(
+                    if (sortAscending) Icons.Default.ArrowUpward else Icons.Default.ArrowDownward,
+                    contentDescription = if (sortAscending) "倒序" else "正序",
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+        Row(
+            Modifier.fillMaxWidth().padding(horizontal = 12.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            SortFieldChip("日期", AlbumSortField.DATE, sortField, onSortField)
+            SortFieldChip("大小", AlbumSortField.SIZE, sortField, onSortField)
+            SortFieldChip("名称", AlbumSortField.NAME, sortField, onSortField)
+        }
+    }
+}
+
+/** 排序字段 chip：选中 secondaryContainer，未选中 surfaceContainerHigh（与相册 chip 一致） */
+@Composable
+private fun SortFieldChip(
+    label: String,
+    field: AlbumSortField,
+    current: AlbumSortField,
+    onClick: (AlbumSortField) -> Unit
+) {
+    val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
+    val selected = field == current
+    Surface(
+        onClick = { haptic.click(); onClick(field) },
+        shape = RoundedCornerShape(12.dp),
+        color = if (selected) MaterialTheme.colorScheme.secondaryContainer
+                else MaterialTheme.colorScheme.surfaceContainerHigh,
+        contentColor = if (selected) MaterialTheme.colorScheme.onSecondaryContainer
+                       else MaterialTheme.colorScheme.onSurfaceVariant
+    ) {
+        Text(
+            label,
+            style = MaterialTheme.typography.labelMedium,
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 6.dp)
+        )
     }
 }
 

@@ -13,8 +13,8 @@ android {
     defaultConfig {
         applicationId = "com.zsz.zlivephoto"
         targetSdk = 36
-        versionCode = 21
-        versionName = "3.1.9"
+        versionCode = 23
+        versionName = "3.2.0"
         ndk {
             abiFilters += listOf("arm64-v8a", "x86_64")
         }
@@ -84,6 +84,10 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.lifecycle.runtime.ktx)
     debugImplementation(libs.compose.ui.tooling)
+
+    // ffmpeg 附加项：解压超高压缩 7z（SevenZFile 依赖 xz）
+    implementation(libs.commons.compress)
+    implementation(libs.xz)
 
     // JVM 单元测试（AndroidLogicGpsTest：验证转换不破坏 GPS）
     testImplementation("junit:junit:4.13.2")

@@ -2,6 +2,7 @@ package com.zsz.zlivephoto.core
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.core.formats.FormatRegistry
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -111,7 +112,7 @@ internal object Converter {
      * @param videoPath 视频路径（MP4）
      * @param target 目标格式：google | oppo | vivo | vivo_single | xiaomi | honor | meizu
      */
-    fun compose(
+    suspend fun compose(
         photoPath: String, videoPath: String, target: String, outDir: String,
         log: (String, String, String) -> Unit, options: MutableMap<String, Any?> = mutableMapOf()
     ): MutableList<String> {
@@ -132,60 +133,85 @@ internal object Converter {
             val mb = video.length() / 1024 / 1024
             throw ConvertException("视频过大（${mb}MB），无法合成为动态照片，请选择更短的视频")
         }
-        val mp4 = video.readBytes()
-        if (!Mp4Util.hasFtyp(mp4)) {
-            // hasFtyp 失败说明文件头 4-7 字节不是 "ftyp"，绝大多数是选错了容器：
-            // 下载目录里的视频常为 WebM/MKV（EBML 头）或 AVI/TS，并非标准 MP4。
-            // 这里给出具体容器类型，便于用户知道是格式不兼容而非程序崩溃。
-            val kind = when {
-                mp4.size >= 4 && mp4[0] == 0x1A.toByte() && mp4[1] == 0x45.toByte() &&
-                    mp4[2] == 0xDF.toByte() && mp4[3] == 0xA3.toByte() -> "WebM/Matroska"
-                mp4.size >= 4 && mp4[0] == 'R'.code.toByte() && mp4[1] == 'I'.code.toByte() &&
-                    mp4[2] == 'F'.code.toByte() && mp4[3] == 'F'.code.toByte() -> "AVI"
-                mp4.isNotEmpty() && mp4[0] == 0x47.toByte() -> "MPEG-TS"
-                else -> "缺少 ftyp 头（可能是 MOV 或非标准 MP4）"
+
+        // 容器头判断：非 MP4（缺 ftyp）或 QuickTime(MOV，brand=qt  ) 需要转码为标准 MP4
+        val head = ByteArray(12)
+        video.inputStream().use { ins -> ins.read(head) }
+        val hasFtyp = Mp4Util.hasFtyp(head)
+        val brand = if (hasFtyp) String(head, 8, 4, Charsets.US_ASCII) else ""
+
+        var transcoded: File? = null
+        var mp4: ByteArray? = null
+        if (hasFtyp && brand != "qt  ") {
+            // 标准 MP4 容器：进一步检查视频编码是否为标准 H.264/H.265，
+            // 非标准编码（vp09/av01/mp4v 等）也需转码
+            val bytes = video.readBytes()
+            val codec = (Mp4Util.getTrackInfo(bytes)?.get("codec") as? String).orEmpty()
+            if (codec.isEmpty() || codec in FfmpegAddon.STANDARD_MP4_CODECS) {
+                mp4 = bytes
             }
-            throw VideoContainerException(
-                "视频不是有效的 MP4 文件（检测到 $kind）。\n\n" +
-                "请先用其它工具把视频转为标准 MP4（H.264/AAC）后，再重新合成。"
-            )
-        }
-        // ftyp 品牌为 QuickTime(qt  ) 的是 MOV 容器：字节拼接进动态照片后相册/播放器
-        // 无法识别，同样需要先转为标准 MP4
-        val brand = if (mp4.size >= 12) String(mp4, 8, 4, Charsets.US_ASCII) else ""
-        if (brand == "qt  ") {
-            throw VideoContainerException(
-                "视频是 QuickTime(MOV) 容器，不能直接合成动态照片。\n\n" +
-                "请先用其它工具把视频转为标准 MP4（H.264/AAC）后，再重新合成。"
-            )
         }
 
-        // 视频轨信息（时长/fps 等，vivo 等格式 footer 需要）
-        val stem = photo.nameWithoutExtension
-        File(outDir).mkdirs()
+        if (mp4 == null) {
+            // 需要转码为标准 MP4（H.265/H.264）
+            if (!FfmpegAddon.isReady()) {
+                throw VideoContainerException(videoTranscodeHint())
+            }
+            transcoded = try {
+                FfmpegAddon.transcodeToMp4(videoPath, log)
+            } catch (e: AddonException) {
+                throw VideoContainerException("视频转码失败：${e.message}")
+            }
+            mp4 = transcoded.readBytes()
+            if (mp4.size > maxVideoBytes) {
+                transcoded.delete()
+                throw ConvertException("转码后视频过大（${mp4.size / 1024 / 1024}MB），无法合成动态照片")
+            }
+        }
 
-        val asset = LivePhotoAsset(
-            primaryJpeg = jpeg,
-            gainmapJpeg = null,
-            videoMp4 = mp4,
-            sourceFormat = "compose"
-        )
-        asset.videoInfo = Mp4Util.getTrackInfo(mp4) ?: mutableMapOf()
-        log("info", "合成：照片 ${jpeg.size}B + 视频 ${mp4.size}B → ${targetPlugin.display}", "合成")
+        val mp4Bytes = mp4 ?: throw VideoContainerException(videoTranscodeHint())
 
-        return targetPlugin.write(asset, outDir, stem, log, options)
+        try {
+            // 视频轨信息（时长/fps 等，vivo 等格式 footer 需要）
+            val stem = photo.nameWithoutExtension
+            File(outDir).mkdirs()
+
+            val asset = LivePhotoAsset(
+                primaryJpeg = jpeg,
+                gainmapJpeg = null,
+                videoMp4 = mp4Bytes,
+                sourceFormat = "compose"
+            )
+            asset.videoInfo = Mp4Util.getTrackInfo(mp4Bytes) ?: mutableMapOf()
+            log("info", "合成：照片 ${jpeg.size}B + 视频 ${mp4Bytes.size}B → ${targetPlugin.display}", "合成")
+
+            return targetPlugin.write(asset, outDir, stem, log, options)
+        } finally {
+            // 转码临时产物：合成结束（成功/失败）立即删除
+            transcoded?.let { runCatching { it.delete() } }
+        }
     }
 
+    /** 视频需转码时的用户提示（未安装附加项 / 附加项不可用） */
+    private fun videoTranscodeHint(): String =
+        "视频不是标准 MP4（H.264/H.265 编码），无法直接合成动态照片。\n\n" +
+        "请在「设置 → 转码器附加项」下载 ffmpeg 编码器后重试，即可自动转码为标准 MP4。"
+
     /**
-     * 封面图 → JPEG 字节：JPEG 直接透传（保留 EXIF）；WebP 等其它格式解码后重编码为 JPEG。
+     * 封面图 → JPEG 字节：JPEG 直接透传（保留 EXIF）；
+     * WebP/PNG 等其它格式用内置 Bitmap 解码后以 100% 质量重编码为标准 JPEG。
+     * go 轻量版不提供任何转码，非 JPEG 封面直接判失败。
      */
     private fun decodeCoverToJpeg(photo: File): ByteArray {
         val raw = photo.readBytes()
         if (raw.size >= 2 && raw[0] == 0xFF.toByte() && raw[1] == 0xD8.toByte()) return raw
+        if (BuildConfig.FLAVOR == "go") {
+            throw ConvertException("封面不是 JPEG 图片（轻量版不支持转码，请改用 JPEG 照片）")
+        }
         val bmp = BitmapFactory.decodeFile(photo.path)
-            ?: throw ConvertException("封面不是有效的图片（仅支持 JPEG/WebP）")
+            ?: throw ConvertException("封面不是有效的图片（仅支持 JPEG/WebP/PNG）")
         val bos = ByteArrayOutputStream()
-        bmp.compress(Bitmap.CompressFormat.JPEG, 95, bos)
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, bos)
         bmp.recycle()
         return bos.toByteArray()
     }

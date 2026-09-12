@@ -36,3 +36,6 @@ signing.properties
 build/
 *.apk
 local.properties
+
+# 内置 ffmpeg 二进制（82MB，避免仓库膨胀；构建前从 Installer/Android/ffmpeg 解出放入）
+ZLivePhoto.Android/app/src/normal/jniLibs/

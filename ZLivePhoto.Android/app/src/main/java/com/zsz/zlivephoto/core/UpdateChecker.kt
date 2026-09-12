@@ -49,18 +49,6 @@ object UpdateChecker {
     /** 蓝奏云标签行：`[蓝奏云-标准版]: url`（支持全角冒号与行内空格） */
     private val LANZOU_LINE = Regex("""\[蓝奏云-(标准版|Go版)\]\s*[：:]\s*(\S+)""")
 
-    /** 转码器附加项标签（键值对形式，推荐）；旧版位置式仍兼容 */
-    private const val ADDON_TAG = "[转码器附加项]"
-
-    /**
-     * 转码器附加项键值对：`github=<url> sha1=<sha1> version=<ver> lanzou=<url> appver=<ver[,ver]>`
-     * 键名不区分大小写；除 github/url 外均可省略。
-     */
-    private val ADDON_KV = Regex("""([A-Za-z0-9]+)\s*=\s*(\S+)""")
-
-    /** 旧版位置式附加项行：`[转码器附加项]: <url> <sha1> <version>` */
-    private val ADDON_LINE = Regex("""\[转码器附加项\]\s*[：:]\s*(\S+)\s+(\S+)\s+(\S+)""")
-
     /** 蓝奏云标签名（发布规范：go=Go版，其余=标准版） */
     private fun lanzouLabel(isGo: Boolean): String =
         if (isGo) "Go版" else "标准版"
@@ -153,25 +141,6 @@ object UpdateChecker {
     }
 
     /**
-     * 按 tag 拉取指定版本的 Release 正文（供 ffmpeg 附加项按当前软件版本精确匹配）。
-     * @param tag 形如 "v3.4.0"；返回 null 表示不存在该版本或网络失败
-     */
-    suspend fun fetchReleaseBody(tag: String): String? = withContext(Dispatchers.IO) {
-        try {
-            val conn = URL("https://api.github.com/repos/$REPO/releases/tags/${tag}").openConnection() as HttpURLConnection
-            conn.connectTimeout = 10_000
-            conn.readTimeout = 10_000
-            conn.setRequestProperty("Accept", "application/vnd.github+json")
-            conn.setRequestProperty("User-Agent", "ZLC-Android-Updater")
-            if (conn.responseCode != 200) return@withContext null
-            val body = conn.inputStream.bufferedReader().use { it.readText() }
-            JSONObject(body).optString("body").takeIf { it.isNotBlank() }
-        } catch (_: Exception) {
-            null
-        }
-    }
-
-    /**
      * 从 Release 正文拆分出与 [isGo] 匹配的蓝奏云直链。
      * 格式约定（每行独立）：
      * ```
@@ -188,74 +157,6 @@ object UpdateChecker {
         }
         return null
     }
-
-    /**
-     * 从 Release 正文解析 ffmpeg 转码器附加项元数据（**按软件版本匹配**）。
-     *
-     * 推荐格式（键值对，单行内可同时给出主/备下载通道）：
-     * ```
-     * [转码器附加项] github=<GitHub 资产直链> sha1=<sha1> version=<编码器版本> lanzou=<蓝奏云分享页> appver=<适用软件版本[,版本…]>
-     * ```
-     * 规则：
-     * - `appver` 省略或写 `*` → 视为通用，任意软件版本可用；
-     * - `appver` 写了具体版本（可逗号分隔多个）→ 仅当与 [currentVersion] 完全一致时采用；
-     * - 正文存在多条附加项行时，优先返回与当前软件版本精确匹配的那条；
-     *   若都不匹配，则回退到未限定版本的通用行；仍无则返回 null。
-     * - 兼容旧版位置式写法：`[转码器附加项]: <url> <sha1> <version>`。
-     *
-     * @param currentVersion 当前软件版本号（默认取 BuildConfig.VERSION_NAME，可带 v 前缀）
-     */
-    fun parseAddonMeta(
-        body: String,
-        currentVersion: String = BuildConfig.VERSION_NAME
-    ): FfmpegAddon.AddonMeta? {
-        if (body.isBlank()) return null
-        val cur = currentVersion.removePrefix("v").trim()
-        var universal: FfmpegAddon.AddonMeta? = null
-        for (raw in body.lineSequence()) {
-            val line = raw.trim()
-            if (!line.contains(ADDON_TAG)) continue
-
-            // 键值对形式（优先）
-            if (line.contains('=')) {
-                val kv = ADDON_KV.findAll(line).associate {
-                    it.groupValues[1].lowercase() to it.groupValues[2]
-                }
-                val github = kv["github"] ?: kv["url"] ?: continue
-                val sha1 = kv["sha1"] ?: continue
-                val meta = FfmpegAddon.AddonMeta(
-                    url = github,
-                    sha1 = sha1,
-                    version = kv["version"] ?: "",
-                    mirrorUrl = kv["lanzou"] ?: kv["mirror"]
-                )
-                val appver = kv["appver"]
-                if (appver.isNullOrBlank() || appver == "*") {
-                    if (universal == null) universal = meta
-                    continue
-                }
-                if (appverMatches(appver, cur)) return meta
-                continue
-            }
-
-            // 旧版位置式：无版本限定，作为通用回退项
-            val m = ADDON_LINE.find(line) ?: continue
-            if (universal == null) {
-                universal = FfmpegAddon.AddonMeta(
-                    url = m.groupValues[1],
-                    sha1 = m.groupValues[2],
-                    version = m.groupValues[3]
-                )
-            }
-        }
-        return universal
-    }
-
-    /** `appver` 是否适用当前软件版本（支持逗号/斜杠分隔多版本，自动忽略 v 前缀） */
-    private fun appverMatches(spec: String, current: String): Boolean =
-        spec.split(',', '，', '/', '|')
-            .map { it.trim().removePrefix("v") }
-            .any { it == current }
 
     /**
      * 语义化版本比较：按 . 和 - 分段逐段数值比较（非数字段按 0 处理）。

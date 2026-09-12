@@ -3,6 +3,7 @@ package com.zsz.zlivephoto.ui
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import android.content.Context
+import android.os.Build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -82,6 +83,9 @@ internal class UpdateFlowController(
     /** 是否为「切换到正常版」模式：Go 版在 Android 10+ 上引导下载 normal 版 */
     var switchToNormalMode by mutableStateOf(false)
         private set
+    /** Go 强制切换但未能获取新版本信息（无网络等）：仍不可关闭，只提供「重试」 */
+    var forcedBlocked by mutableStateOf(false)
+        private set
 
     private var downloadJob: Job? = null
 
@@ -90,7 +94,16 @@ internal class UpdateFlowController(
      * 同一时刻只允许一个弹窗占用，处理（转换/导入）进行中一律延后。
      */
     val wantsDialog: Boolean
-        get() = busy != null || permissionApk != null || message != null || info != null
+        get() = forcedBlocked || busy != null || permissionApk != null ||
+            message != null || info != null
+
+    /**
+     * 是否为强制切换：Go 轻量版运行在 Android 10 及以上时，旧版本已不再兼容，
+     * 主弹窗不可通过外部点击/返回键关闭，也不提供「暂不切换」，必须更新后才能继续使用。
+     */
+    val forcedSwitch: Boolean
+        get() = BuildConfig.FLAVOR == "go" &&
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
     /** 当前版本对应的发布渠道标签（normal=标准版，go=Go版；切正常版时强制标准版） */
     val flavorLabel: String
@@ -101,6 +114,7 @@ internal class UpdateFlowController(
         info = newInfo
         reinstallMode = reinstall
         switchToNormalMode = false
+        forcedBlocked = false
         showNotes = false
         busy = null
         permissionApk = null
@@ -112,6 +126,16 @@ internal class UpdateFlowController(
     fun presentSwitchToNormal(newInfo: UpdateInfo) {
         present(newInfo, reinstall = false)
         switchToNormalMode = true
+    }
+
+    /** Go 强制切换拉取失败：显示不可关闭的阻塞弹窗（仅「重试」） */
+    fun showForcedBlocked() {
+        forcedBlocked = true
+    }
+
+    /** 关闭阻塞弹窗（重试前先收起，由宿主重新发起拉取） */
+    fun clearForcedBlocked() {
+        forcedBlocked = false
     }
 
     /**
@@ -147,6 +171,7 @@ internal class UpdateFlowController(
         info = null
         reinstallMode = false
         switchToNormalMode = false
+        forcedBlocked = false
         showNotes = false
         busy = null
         permissionApk = null
@@ -307,7 +332,8 @@ private fun notesForDisplay(notes: String?): String {
 internal fun UpdateFlowHosts(
     flow: UpdateFlowController,
     vibrate: () -> Unit = {},
-    enabled: Boolean = true
+    enabled: Boolean = true,
+    onForcedRetry: () -> Unit = {}
 ) {
     val context = LocalContext.current
 
@@ -320,6 +346,28 @@ internal fun UpdateFlowHosts(
 
     // 全局弹窗闸门：同一时刻只允许一个会话型弹窗（处理进行中时由闸门整体抑制）
     if (!enabled) return
+
+    // ── Go 强制切换但拉取失败：不可关闭，只能重试（未更新前无法继续使用）──
+    if (flow.forcedBlocked) {
+        AlertDialog(
+            onDismissRequest = {},
+            title = { Text("必须更新后才能继续使用", fontWeight = FontWeight.SemiBold) },
+            text = {
+                Text(
+                    "本机系统为 Android 10 及以上，Go 轻量版已不再适配，旧版本无法继续使用；" +
+                        "新版也不再提供 Go 兼容版本。\n\n" +
+                        "请连接网络后点击「重试」获取正常版本安装包。"
+                )
+            },
+            confirmButton = {
+                Button(onClick = {
+                    vibrate()
+                    onForcedRetry()
+                }) { Text("重试") }
+            }
+        )
+        return
+    }
 
     // ── 下载 / 解压进度（带「取消」按钮，立即停止并清理缓存）──
     val busy = flow.busy
@@ -421,11 +469,15 @@ internal fun UpdateFlowHosts(
     // ── 「发现新版本」/「重新安装本版本」主弹窗 ──
     if (info != null) {
         val lanzou = info.lanzouUrl
+        // Go 版在 Android 10+ 上强制切换：外部点击 / 返回键都关不掉，必须下载新版本
+        val forced = flow.forcedSwitch
         AlertDialog(
             onDismissRequest = {
-                // 点外部/返回视同「暂不更新」
-                vibrate()
-                flow.onLater()
+                // 点外部/返回视同「暂不更新」；强制切换模式下不响应
+                if (!forced) {
+                    vibrate()
+                    flow.onLater()
+                }
             },
             title = {
                 Text(
@@ -445,9 +497,10 @@ internal fun UpdateFlowHosts(
                         color = MaterialTheme.colorScheme.primary
                     )
                     if (flow.switchToNormalMode) {
-                        // 「切换到正常版」模式：说明旧 Go 版在系统上不再适用，引导下载 normal 版
+                        // 「切换到正常版」模式：写明旧兼容版（Go 版）在本机已不可继续使用
                         Text(
-                            "当前设备系统版本较高，Go 版已不再适用。\n建议下载并切换到正常版本继续使用。",
+                            "本机系统为 Android 10 及以上，Go 轻量版已不再适配，旧版本无法继续使用。\n" +
+                                "请下载并安装正常版本后继续使用（新版不再提供 Go 兼容版本）。",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -501,32 +554,37 @@ internal fun UpdateFlowHosts(
                         modifier = Modifier.fillMaxWidth().height(44.dp)
                     ) { Text("从 GitHub 下载") }
                     Spacer(Modifier.height(2.dp))
-                    if (!flow.reinstallMode && !flow.switchToNormalMode) {
-                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    when {
+                        // 强制切换：不提供任何关闭/跳过入口，必须更新后才能继续使用
+                        forced -> {}
+                        !flow.reinstallMode && !flow.switchToNormalMode -> {
+                            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                FilledTonalButton(
+                                    onClick = {
+                                        vibrate()
+                                        flow.onLater()
+                                    },
+                                    modifier = Modifier.weight(1f).height(44.dp)
+                                ) { Text("暂不更新") }
+                                OutlinedButton(
+                                    onClick = {
+                                        vibrate()
+                                        flow.onSkipThisVersion()
+                                    },
+                                    modifier = Modifier.weight(1f).height(44.dp)
+                                ) { Text("跳过此版本") }
+                            }
+                        }
+                        else -> {
+                            // 「重新安装」/「切换到正常版」模式无需「跳过此版本」，只留一个关闭动作
                             FilledTonalButton(
                                 onClick = {
                                     vibrate()
                                     flow.onLater()
                                 },
-                                modifier = Modifier.weight(1f).height(44.dp)
-                            ) { Text("暂不更新") }
-                            OutlinedButton(
-                                onClick = {
-                                    vibrate()
-                                    flow.onSkipThisVersion()
-                                },
-                                modifier = Modifier.weight(1f).height(44.dp)
-                            ) { Text("跳过此版本") }
+                                modifier = Modifier.fillMaxWidth().height(44.dp)
+                            ) { Text(if (flow.switchToNormalMode) "暂不切换" else "暂不更新") }
                         }
-                    } else {
-                        // 「重新安装」/「切换到正常版」模式无需「跳过此版本」，只留一个关闭动作
-                        FilledTonalButton(
-                            onClick = {
-                                vibrate()
-                                flow.onLater()
-                            },
-                            modifier = Modifier.fillMaxWidth().height(44.dp)
-                        ) { Text(if (flow.switchToNormalMode) "暂不切换" else "暂不更新") }
                     }
                 }
             },

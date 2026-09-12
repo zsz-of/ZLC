@@ -43,9 +43,6 @@ object AppSettings {
     /** 用户「跳过此版本」记住的版本号（空串=未跳过）；远端版本与之相同时不再提示更新 */
     var skippedVersion by mutableStateOf("")
         private set
-    /** 用户「跳过此版本」记住的转码器（编码器）版本号（空串=未跳过）；与自动检查到的编码器版本相同时不再提示 */
-    var skippedAddonVersion by mutableStateOf("")
-        private set
 
     private lateinit var prefs: SharedPreferences
     private lateinit var appCtx: Context
@@ -61,7 +58,6 @@ object AppSettings {
         checkUpdateOnStartup = prefs.getBoolean("check_update_startup", true)
         themeMode = prefs.getString("theme_mode", "system") ?: "system"
         skippedVersion = prefs.getString("skipped_version", "") ?: ""
-        skippedAddonVersion = prefs.getString("skipped_addon_version", "") ?: ""
         // go 轻量版：强制关闭马达反馈与按钮弹性动画（简化版无触感/无 q 弹）
         if (BuildConfig.FLAVOR == "go") {
             hapticsEnabled = false
@@ -140,16 +136,6 @@ object AppSettings {
     /** 远端版本是否因被用户跳过而不提示 */
     fun isVersionSkipped(remoteVersion: String): Boolean =
         skippedVersion.isNotEmpty() && skippedVersion == remoteVersion
-
-    /** 记住「跳过此转码器版本」：记录编码器版本号，除非发布了更新的编码器版本否则不再提示 */
-    fun rememberSkippedAddonVersion(version: String) {
-        skippedAddonVersion = version
-        prefs.edit().putString("skipped_addon_version", version).apply()
-    }
-
-    /** 自动检查到的编码器版本是否因被用户跳过而不提示 */
-    fun isAddonVersionSkipped(remoteVersion: String): Boolean =
-        skippedAddonVersion.isNotEmpty() && skippedAddonVersion == remoteVersion
 
     /** 某个「不再提示」弹窗是否已关闭（true=不再提示） */
     fun isReminderSuppressed(key: ReminderKey): Boolean =

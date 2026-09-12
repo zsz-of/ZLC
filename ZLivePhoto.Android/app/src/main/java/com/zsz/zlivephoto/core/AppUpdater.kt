@@ -79,8 +79,7 @@ internal object AppUpdater {
      * @return 最终 CDN 直链（带 sg/e 签名的 .zip/.apk 地址）
      * @throws UpdaterException 解析失败（链接失效 / 需密码 / 验证页）
      *
-     * 注：仅支持**无提取码**的分享页。蓝奏云对 `.7z` 会强制提取码并对直链加验证页，
-     * 故转码器镜像以「zip 包裹 7z」形式上架，由 [FfmpegAddon] 下载后再解出内层 7z。
+     * 注：仅支持**无提取码**的分享页（转码器已改为随包内置，不再需要下载）。
      */
     suspend fun resolveLanzouDirectLink(shareUrl: String): String = withContext(Dispatchers.IO) {
         val client = LanzouHttpClient()

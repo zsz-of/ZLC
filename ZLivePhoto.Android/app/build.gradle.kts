@@ -13,27 +13,42 @@ android {
     defaultConfig {
         applicationId = "com.zsz.zlivephoto"
         targetSdk = 36
-        versionCode = 28
-        versionName = "3.4.3"
-        ndk {
-            abiFilters += listOf("arm64-v8a", "x86_64")
-        }
+        versionCode = 29
+        versionName = "3.4.4"
     }
 
     flavorDimensions += "edition"
     productFlavors {
-        // normal：完整版（Android 10+），应用名 ZLC
+        // normal：完整版（Android 10+），应用名 ZLC，内置 ffmpeg 转码器
         create("normal") {
             dimension = "edition"
             applicationId = "com.zsz.zlivephoto"
             minSdk = 29
+            // 内置 ffmpeg 仅有 arm64-v8a 二进制；限定单 ABI，避免为不存在的 ABI 打包
+            ndk { abiFilters += "arm64-v8a" }
         }
-        // go：轻量版（Android 6+，单线程、无动态取色），应用名 ZLC Go。
+        // go：轻量版（Android 6+，单线程、无动态取色、不含 ffmpeg 转码器）。
         // 独立 applicationId 确保与 normal 版可同时安装
         create("go") {
             dimension = "edition"
             applicationId = "com.zsz.zlivephoto.go"
             minSdk = 23
+        }
+    }
+
+    sourceSets {
+        // 内置 ffmpeg（libffmpeg.so）仅打进 normal 版；go 轻量版不含该二进制
+        getByName("normal") {
+            jniLibs.directories.add("src/normal/jniLibs")
+        }
+    }
+
+    packaging {
+        jniLibs {
+            // 以 deflate 压缩存储 native 库，安装时由系统解压到 nativeLibraryDir。
+            // nativeLibraryDir 是 Android 10+ 唯一可执行二进制的目录（APK 内直接 mmap
+            // 的库无法用 ProcessBuilder 调用），同时压缩后 APK 体积显著减小。
+            useLegacyPackaging = true
         }
     }
 
@@ -84,10 +99,6 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.lifecycle.runtime.ktx)
     debugImplementation(libs.compose.ui.tooling)
-
-    // ffmpeg 附加项：解压超高压缩 7z（SevenZFile 依赖 xz）
-    implementation(libs.commons.compress)
-    implementation(libs.xz)
 
     // JVM 单元测试（AndroidLogicGpsTest：验证转换不破坏 GPS）
     testImplementation("junit:junit:4.13.2")

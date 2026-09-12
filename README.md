@@ -2,7 +2,7 @@
 
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / 魅族 / Apple Live Photo 互转、拆解与合成
 **开发者**: zsz & Kimi-K3  
-**版本**: v3.4.3
+**版本**: v3.4.4
 
 ## 许可证
 
@@ -23,10 +23,10 @@ This program is free software: you can redistribute it and/or modify it under th
 
 | 版本 | 最低系统版本 | 架构 |
 |------|-------------|------|
-| ZLC（完整版） | Android 10 (API 29) | arm64-v8a / x86_64 |
-| ZLC Go（轻量版） | Android 6 (API 23) | arm64-v8a / x86_64 |
+| ZLC（完整版） | Android 10 (API 29) | arm64-v8a |
+| ZLC Go（轻量版） | Android 6 (API 23) | arm64-v8a / armeabi-v7a / x86 / x86_64 |
 
-Android 端无需额外运行时。
+Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 arm64-v8a（当前绝大多数机型）；Go 轻量版不含转码器，因此仍覆盖更多架构。Go 版在 Android 10 及以上已不再适配，需改用完整版。
 
 ## 下载安装
 
@@ -58,11 +58,11 @@ Android 端无需额外运行时。
 
 此外支持「拆解」输出（导出照片 + 视频双文件），以及「合成」（封面照片 + ≤3 秒视频生成动态照片）。
 
-核心解析纯字节级操作（JPEG/MP4 box 遍历），转换后保留源文件的 EXIF 元数据（GPS、拍摄时间等）和修改时间。视频转码为可选功能，需在设置中下载 ffmpeg 转码器附加项后启用。
+核心解析纯字节级操作（JPEG/MP4 box 遍历），转换后保留源文件的 EXIF 元数据（GPS、拍摄时间等）和修改时间。视频转码为完整版内置功能（ffmpeg 随安装包内置，无需下载），Go 轻量版不含转码器。
 
 > **已知限制**：
 > - Apple 动态照片**转换为其他格式存在兼容性 bug**：产物在部分机型（如 vivo 相册）中可被识别为动态照片、封面与 EXIF（位置/拍摄时间/机型等）均正常，但无法长按播放、无法编辑（提示图片已破损），修复排期中。
-> - **合成时若输入视频不是标准 MP4 容器**（如 WebM/MKV/AV1），需先在设置中下载 ffmpeg 转码器附加项，合成时会自动转码为标准 MP4（H.265/H.264）；否则建议先用其它工具转码为标准 MP4 素材。
+> - **合成时若输入视频不是标准 MP4 容器**（如 WebM/MKV/AV1），完整版会用内置 ffmpeg 自动转码为标准 MP4（H.265/H.264）；Go 轻量版不含转码器，请改用完整版或先用其它工具转码为标准 MP4 素材。
 > - Apple Live Photo 输出格式暂不可用（v2.3.0 起输出选项置灰，识别为 Apple 的照片标记「暂不支持转换」）。
 
 ### 技术栈
@@ -90,14 +90,15 @@ Android 端无需额外运行时。
 | 时间戳保留 | 输出文件保留源文件的修改时间 |
 | 同格式直通 | 源与目标格式相同时原样复制（零损耗） |
 | 自动配对 | vivo/Apple 双文件自动查找同目录视频 |
-| 双版本 | ZLC 完整版（Android 10+）与 ZLC Go 轻量版（Android 6+，适配老设备） |
+| 双版本 | ZLC 完整版（Android 10+，内置 ffmpeg 转码器）与 ZLC Go 轻量版（Android 6+，适配老设备，不含转码器） |
 | Material You | Android 12+ 动态取色跟随壁纸；7 种预制主题色 + 自定义色相 |
 | 动态桌面图标 | 应用图标随主题色 / 壁纸色自动切换 |
 | 检查更新 | 启动/手动检查新版本；GitHub/蓝奏云双通道**应用内直接下载安装**（蓝奏压缩包自动解出 APK），支持「跳过此版本」（Go 版匹配 Go 安装包） |
-| 弹窗排队 | 权限请求 / 应用更新 / 转码器更新 / 所有文件访问引导等会话型弹窗统一按优先级排队，同一时刻只弹一个，处理进行中自动延后 |
+| 弹窗排队 | 权限请求 / 应用更新 / 所有文件访问引导等会话型弹窗统一按优先级排队，同一时刻只弹一个，处理进行中自动延后 |
 | 批量导入 | Android 支持文件夹批量扫描导入（含子目录），流式处理不卡顿 |
 | 相册排序与搜索 | 内置选择器按大小 / 日期 / 名称排序（正序 / 倒序）并支持按名称搜索 |
-| 视频转码附加项 | 可选 ffmpeg 转码器（随 Release 附带 7z 下载，设置页内安装 / 检查更新 / 删除），非标准 MP4 自动转标准 MP4（H.265/H.264）；更新提示含更新说明与「跳过此版本」，下载后显示 SHA-1 校验与解压进度 |
+| 内置视频转码 | ffmpeg 随完整版安装包内置（`libffmpeg.so`），非标准 MP4 自动转标准 MP4（H.265/H.264），设置页可调 CRF / 编码器 / 预设 |
+| 高刷新率 | 完整版启动时自动请求设备支持的最高刷新率（120 / 144 / 185Hz 等），动画跑满屏幕帧率上限 |
 | 列表持久化 | Android 列表自动落盘本地 JSON，异常退出可检测并恢复 |
 | 系统分享 | Android 支持从系统分享接收照片转换 |
 
@@ -122,6 +123,7 @@ Source/
 
 1. 安装 [Android SDK](https://developer.android.com/studio)（Command-line tools 即可）
 2. 配置 `local.properties` 指向 SDK 路径
+3. 完整版的内置转码器为预编译 ffmpeg 二进制（未入库，来自 [vidra-ffmpeg](https://github.com/chomusuke-mk/vidra-ffmpeg)），需放入 `app/src/normal/jniLibs/arm64-v8a/libffmpeg.so`；不放置时完整版编译通过但不含转码能力
 
 ```bash
 cd Source/ZLivePhoto.Android
@@ -139,5 +141,4 @@ cd Source/ZLivePhoto.Android
 |------|------|
 | [Jetpack Compose](https://developer.android.com/jetpack/compose) | Android UI 框架 |
 | [Material 3](https://m3.material.io/) | 设计系统 |
-| [FFmpeg](https://ffmpeg.org/) | 视频转码（可选附加项，预编译自 [vidra-ffmpeg](https://github.com/chomusuke-mk/vidra-ffmpeg)） |
-| [Apache Commons Compress](https://commons.apache.org/proper/commons-compress/) | 7z 转码器附加项解压 |
+| [FFmpeg](https://ffmpeg.org/) | 视频转码（完整版内置，预编译自 [vidra-ffmpeg](https://github.com/chomusuke-mk/vidra-ffmpeg)） |

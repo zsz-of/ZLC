@@ -76,11 +76,9 @@ import com.zsz.zlivephoto.ui.Md3Checkbox
 import com.zsz.zlivephoto.ui.SettingsScreen
 import com.zsz.zlivephoto.ui.ZLivePhotoTheme
 import com.zsz.zlivephoto.ui.UpdateFlowHosts
-import com.zsz.zlivephoto.ui.FfmpegFlowHosts
 import com.zsz.zlivephoto.ui.LegacyApp
 import com.zsz.zlivephoto.ui.LegacyUninstallFlowHosts
 import com.zsz.zlivephoto.ui.ReminderKey
-import com.zsz.zlivephoto.ui.rememberFfmpegFlow
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
 import com.zsz.zlivephoto.ui.rememberLegacyUninstallFlow
 import com.zsz.zlivephoto.ui.rememberUpdateFlow
@@ -116,7 +114,7 @@ internal enum class ConflictAction { SKIP, OVERWRITE, RENAME }
  * 会话型弹窗占用者（全局弹窗闸门）：同一时刻只允许一个弹窗占用屏幕。
  * 处理（转换 / 导入）进行中一律不占用，处理队列结束后再按此优先级依次弹出。
  */
-private enum class DialogOwner { NONE, PERMISSION, UPDATE, FFMPEG, ALL_FILES, LEGACY }
+private enum class DialogOwner { NONE, PERMISSION, UPDATE, ALL_FILES, LEGACY }
 
 /** 冲突询问请求（挂起协程 ↔ 弹窗之间的桥） */
 private class ConflictRequest(
@@ -494,14 +492,53 @@ class MainActivity : ComponentActivity() {
         } catch (_: Exception) { 0L }
     }
 
+    /**
+     * 把窗口切到屏幕支持的最高刷新率模式（120 / 144 / 165 / 185Hz…）。
+     *
+     * - `preferredDisplayModeId` 是多数 ROM 上真正生效的入口：设置后系统会把该显示切换到
+     *   对应模式，Compose 动画随 Choreographer 一并跑在更短的 VSYNC 周期上。
+     * - 优先挑选与当前分辨率相同的模式，避免为了高刷把分辨率降档。
+     * - Android 11+ 额外用 `View.setRequestedFrameRate` 声明期望帧率，便于可变刷新率设备按内容调度。
+     * - go 轻量版面向老设备、以省电为主，不做该请求。
+     */
+    @Suppress("DEPRECATION")
+    private fun applyMaxRefreshRate() {
+        if (BuildConfig.FLAVOR == "go") return
+        try {
+            val display = windowManager.defaultDisplay
+            val current = display.mode
+            val modes = display.supportedModes
+            if (modes.isEmpty()) return
+            val sameResolution = modes.filter {
+                it.physicalWidth == current.physicalWidth &&
+                    it.physicalHeight == current.physicalHeight
+            }
+            val best = (sameResolution.ifEmpty { modes.toList() }).maxByOrNull { it.refreshRate } ?: return
+            if (best.modeId != current.modeId) {
+                val lp = window.attributes
+                lp.preferredDisplayModeId = best.modeId
+                window.attributes = lp
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                window.decorView.requestedFrameRate = best.refreshRate
+            }
+        } catch (_: Exception) {
+            // 个别 ROM 不支持切换显示模式：忽略，保持系统默认刷新率
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         CrashHandler.install()
 
+        // 屏幕支持 120/144/165/185Hz 等高刷新率时，请求切到最高档，
+        // 保证界面动画能达到设备帧率上限（go 轻量版跳过）
+        applyMaxRefreshRate()
+
         // 全局设置（主题/触感/弹性动画/更新检查）：首帧组合前初始化
         AppSettings.init(this)
-        // 转码器附加项（下载/校验/解压/调用 ffmpeg）：需在首帧组合前初始化，
-        // 否则设置页读取 appCtx / prefs 时抛 lateinit property appCtx has not been initialized
+        // 内置转码器（ffmpeg）参数（CRF/预设/编码器）：需在首帧组合前初始化，
+        // 否则设置页读取 prefs 时抛 lateinit property prefs has not been initialized
         FfmpegAddon.init(this)
 
         incomingDir = File(filesDir, "incoming").absolutePath
@@ -573,47 +610,41 @@ class MainActivity : ComponentActivity() {
                     maybePromptAllFilesAccess()
                 }
 
-                // 更新弹窗状态（发现新版本 4 按钮 / 说明子弹窗 / 下载进度 / 蓝奏失败回退）
+                // 更新弹窗状态（发现新版本 / 说明子弹窗 / 下载进度 / 安装权限引导）
                 val updateFlow = rememberUpdateFlow()
-
-                // 转码器（ffmpeg 附加项）流程状态：检查更新 / 重新安装 / 下载通道选择
-                val ffmpegFlow = rememberFfmpegFlow()
 
                 // 旧版本（Go 版）卸载提示状态（普通版启动时检测）
                 val legacyFlow = rememberLegacyUninstallFlow()
 
-                // 启动时自动检查更新（设置开启时）：后台比对 GitHub 最新 release；
-                // 优先级：软件更新 → Go 版切正常版 → 转码器提示 → 旧版本卸载提示。
-                // 用户点过「跳过此版本」的版本不再自动弹窗。
-                LaunchedEffect(Unit) {
+                // 启动时自动检查更新。
+                // 优先级：Go 版强制切换正常版 → 软件更新 → 旧版本卸载提示。
+                // Go 轻量版在 Android 10+ 上必须切换（不受「启动时检查更新」开关与
+                // 「跳过此版本」影响，弹窗也不可关闭；拉取失败时挡住使用并提供重试）；
+                // 普通版仍遵循用户设置与跳过记录。
+                // startupCheckKey 用于「必须更新」弹窗上的「重试」重新发起拉取。
+                var startupCheckKey by remember { mutableStateOf(0) }
+                LaunchedEffect(startupCheckKey) {
+                    if (BuildConfig.FLAVOR == "go" && LegacyApp.shouldSwitchToNormal()) {
+                        val normalInfo = UpdateChecker.fetchLatestForNormal()
+                        if (normalInfo != null) {
+                            updateFlow.presentSwitchToNormal(normalInfo)
+                        } else {
+                            updateFlow.showForcedBlocked()
+                        }
+                        return@LaunchedEffect
+                    }
                     var updatePrompted = false
-                    var ffmpegPrompted = false
                     if (AppSettings.checkUpdateOnStartup) {
-                        // 1) Go 版在 Android 10+ 上：优先切换到正常版
-                        if (BuildConfig.FLAVOR == "go" && LegacyApp.shouldSwitchToNormal()) {
-                            val normalInfo = UpdateChecker.fetchLatestForNormal()
-                            if (normalInfo != null) {
-                                updateFlow.presentSwitchToNormal(normalInfo)
-                                updatePrompted = true
-                            }
-                        }
-                        // 2) 常规软件更新（go 版未命中切正常版时，或 normal 版）
-                        if (!updatePrompted) {
-                            val r = UpdateChecker.check(BuildConfig.VERSION_NAME)
-                            if (r is UpdateCheckResult.Update &&
-                                !AppSettings.isVersionSkipped(r.info.version)
-                            ) {
-                                updateFlow.present(r.info)
-                                updatePrompted = true
-                            }
-                        }
-                        // 3) 转码器提示（仅普通版；返回是否真的弹窗）
-                        if (!updatePrompted && BuildConfig.FLAVOR != "go") {
-                            ffmpegPrompted = ffmpegFlow.checkUpdateSuspend(quiet = true)
+                        val r = UpdateChecker.check(BuildConfig.VERSION_NAME)
+                        if (r is UpdateCheckResult.Update &&
+                            !AppSettings.isVersionSkipped(r.info.version)
+                        ) {
+                            updateFlow.present(r.info)
+                            updatePrompted = true
                         }
                     }
-                    // 4) 旧版本卸载提示（仅普通版；无更新/转码器提示时）
-                    if (!updatePrompted && !ffmpegPrompted && BuildConfig.FLAVOR != "go" &&
+                    // 旧版本卸载提示（仅普通版；无更新提示时）
+                    if (!updatePrompted && BuildConfig.FLAVOR != "go" &&
                         !AppSettings.isReminderSuppressed(ReminderKey.LEGACY_GO_INSTALLED) &&
                         LegacyApp.isGoInstalled(this@MainActivity)
                     ) {
@@ -622,31 +653,27 @@ class MainActivity : ComponentActivity() {
                 }
 
                 // ── 全局会话型弹窗闸门 ──
-                // 权限请求 / 应用更新 / 编码器更新 / 「所有文件访问」推荐 / 旧版本提示
+                // 权限请求 / 应用更新 / 「所有文件访问」推荐 / 旧版本提示
                 // 同一时刻只允许弹出一个：处理（转换 / 导入）进行中整体抑制，处理队列
                 // 完成后才弹出；当前占用者关闭后自动轮到下一个（按下列优先级）。
                 val sessionDialogOwner = when {
                     isConverting || isImporting -> DialogOwner.NONE
                     showPermissionDialog || showSettingsDialog -> DialogOwner.PERMISSION
                     updateFlow.wantsDialog -> DialogOwner.UPDATE
-                    ffmpegFlow.wantsDialog -> DialogOwner.FFMPEG
                     showAllFilesDialog -> DialogOwner.ALL_FILES
                     legacyFlow.visible -> DialogOwner.LEGACY
                     else -> DialogOwner.NONE
                 }
 
-                // 发现新版本 / 更新说明 / 下载进度 / 蓝奏失败回退等弹窗统一在这里渲染
+                // 发现新版本 / 更新说明 / 下载进度 / 安装权限引导等弹窗统一在这里渲染
                 UpdateFlowHosts(
                     updateFlow,
                     vibrate = { haptic.click() },
-                    enabled = sessionDialogOwner == DialogOwner.UPDATE
-                )
-
-                // 转码器相关的下载进度 / 结果提示 / 下载通道选择弹窗
-                FfmpegFlowHosts(
-                    ffmpegFlow,
-                    vibrate = { haptic.click() },
-                    enabled = sessionDialogOwner == DialogOwner.FFMPEG
+                    enabled = sessionDialogOwner == DialogOwner.UPDATE,
+                    onForcedRetry = {
+                        updateFlow.clearForcedBlocked()
+                        startupCheckKey++
+                    }
                 )
 
                 // 旧版本卸载提示弹窗

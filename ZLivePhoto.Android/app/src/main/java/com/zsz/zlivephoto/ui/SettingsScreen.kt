@@ -44,7 +44,6 @@ import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.Code
-import androidx.compose.material.icons.filled.DeleteOutline
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Palette
@@ -330,7 +329,7 @@ private fun SettingsMainContent(
                 )
             )
 
-            // ── 转码器附加项（可选，go 版隐藏）──
+            // ── 内置转码器参数（go 版隐藏）──
             TranscoderAddonSection()
 
             // ── 关于 ──
@@ -1087,192 +1086,88 @@ private fun SettingsActionRow(
 }
 
 /**
- * 转码器附加项（ffmpeg）：下载/安装/参数选择。
- * - go 轻量版不提供任何转码，整个区块隐藏；
- * - 下载前转码不可用（Converter 内部用 FfmpegAddon.isReady() 拦截），下载解压完成后自动就绪；
- * - 参数（CRF/编码器/预设）仅当已安装时展示，默认 cq18 / H.265 / slow。
+ * 内置转码器（ffmpeg）：随 APK 打包为 native 库，无需下载/校验/解压/更新，
+ * 设置页只保留转码参数选择。
+ * - go 轻量版不含内置转码器，整个区块隐藏；
+ * - 参数（CRF/编码器/预设）默认 cq18 / H.265 / slow。
  */
 @Composable
 private fun TranscoderAddonSection() {
     if (BuildConfig.FLAVOR == "go") return
-    val haptic = rememberHapticFeedback()
-    val ffmpegFlow = rememberFfmpegFlow()
 
-    SectionTitle("转码器附加项")
+    SectionTitle("视频转码")
 
     SettingsRowsGroup(
         listOf(
             { s ->
-                // 安装 / 重新安装：未安装时为「安装转码器」，已安装后变为「重新安装转码器」
-                val busy = FfmpegAddon.busy
-                val progress = FfmpegAddon.downloadProgress
-                val installed = FfmpegAddon.installedVersion
-                val expected = FfmpegAddon.expectedVersion
-                val error = FfmpegAddon.installError
-                val mismatched = installed.isNotEmpty() && expected.isNotEmpty() && installed != expected
-                val hasAddon = installed.isNotEmpty()
-                val subtitle = when {
-                    busy && progress >= 0f -> "下载中 ${(progress * 100).toInt()}%…"
-                    busy -> "校验 / 解压中…"
-                    mismatched -> "编码器版本 $installed 与当前版本所需 $expected 不匹配，请更新"
-                    hasAddon -> "已就绪 · 编码器版本 $installed"
-                    error != null -> error
-                    else -> "可选：把非标准 MP4 视频转码为标准 MP4 后再合成动态照片"
-                }
-                SettingsActionRow(
+                SettingsInfoRow(
                     shape = s,
-                    title = if (hasAddon) "重新安装转码器" else "安装转码器",
-                    subtitle = subtitle,
-                    icon = {
-                        Icon(
-                            Icons.Default.CloudDownload,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary
-                        )
-                    },
-                    trailing = {
-                        Text(
-                            when {
-                                busy -> "进行中"
-                                hasAddon -> "重装"
-                                else -> "安装"
-                            },
-                            style = MaterialTheme.typography.labelLarge,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                    },
-                    enabled = !busy,
-                    onClick = {
-                        haptic.click()
-                        ffmpegFlow.install(reinstall = hasAddon)
-                    }
-                )
-            },
-            { s ->
-                // 检查更新：仅安装转码器后可用（未安装时无“更新”可比对）
-                val installed = FfmpegAddon.installedVersion
-                val hasAddon = installed.isNotEmpty()
-                SettingsActionRow(
-                    shape = s,
-                    title = "检查更新",
-                    subtitle = when {
-                        !hasAddon -> "安装转码器后可用"
-                        ffmpegFlow.checking -> "正在检查…"
-                        else -> "比对当前版本与已安装的编码器版本"
-                    },
-                    icon = {
-                        Icon(
-                            Icons.Default.Refresh,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary
-                        )
-                    },
-                    trailing = {
-                        Text(
-                            if (ffmpegFlow.checking) "检查中" else "检查",
-                            style = MaterialTheme.typography.labelLarge,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                    },
-                    enabled = hasAddon && !ffmpegFlow.checking && !FfmpegAddon.busy,
-                    onClick = {
-                        haptic.click()
-                        ffmpegFlow.checkUpdate()
-                    }
-                )
-            },
-            { s ->
-                // 删除转码器：仅已安装时可用；背景板与主页「清空」按钮一致（error 配色）
-                val hasAddon = FfmpegAddon.installedVersion.isNotEmpty()
-                SettingsActionRow(
-                    shape = s,
-                    title = "删除转码器",
-                    subtitle = if (hasAddon) "删除已下载的转码器，转码功能随之停用"
-                               else "当前未安装转码器",
-                    icon = {
-                        Icon(
-                            Icons.Default.DeleteOutline,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onError
-                        )
-                    },
-                    trailing = {
-                        Text(
-                            "删除",
-                            style = MaterialTheme.typography.labelLarge,
-                            color = MaterialTheme.colorScheme.onError
-                        )
-                    },
-                    enabled = hasAddon && !FfmpegAddon.busy,
-                    danger = true,
-                    onClick = {
-                        haptic.click()
-                        ffmpegFlow.deleteAddon()
-                    }
+                    title = "内置转码器",
+                    value = "ffmpeg ${FfmpegAddon.BUNDLED_VERSION}"
                 )
             }
         )
     )
 
-    // 转码器相关弹窗（选择下载通道 / 下载进度 / 结果提示）
-    FfmpegFlowHosts(ffmpegFlow, vibrate = { haptic.click() })
+    Spacer(Modifier.height(12.dp))
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.surfaceContainerLow, RoundedCornerShape(16.dp))
+            .padding(horizontal = 20.dp, vertical = 12.dp)
+    ) {
+        Text("转码参数", style = MaterialTheme.typography.titleSmall)
+        Text(
+            "合成动态照片时，非标准 MP4 视频自动转码为标准 MP4（H.265/H.264）",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(Modifier.height(8.dp))
 
-    if (FfmpegAddon.installedVersion.isNotEmpty()) {
+        Text(
+            "质量 CRF：${FfmpegAddon.crf}",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Slider(
+            value = FfmpegAddon.crf.toFloat(),
+            onValueChange = { FfmpegAddon.updateCrf(it.toInt()) },
+            valueRange = 10f..30f,
+            steps = 19
+        )
+        Text(
+            "数值越小画质越高、体积越大（默认 18）",
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
         Spacer(Modifier.height(12.dp))
-        Column(
+        Text(
+            "编码器",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(Modifier.height(6.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            SelectChip("H.265", FfmpegAddon.codec == "h265") { FfmpegAddon.updateCodec("h265") }
+            SelectChip("H.264", FfmpegAddon.codec == "h264") { FfmpegAddon.updateCodec("h264") }
+        }
+
+        Spacer(Modifier.height(12.dp))
+        Text(
+            "压缩预设",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(Modifier.height(6.dp))
+        Row(
             Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.surfaceContainerLow, RoundedCornerShape(16.dp))
-                .padding(horizontal = 20.dp, vertical = 12.dp)
+                .horizontalScroll(rememberScrollState()),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Text("转码参数", style = MaterialTheme.typography.titleSmall)
-            Spacer(Modifier.height(8.dp))
-
-            Text(
-                "质量 CRF：${FfmpegAddon.crf}",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Slider(
-                value = FfmpegAddon.crf.toFloat(),
-                onValueChange = { FfmpegAddon.updateCrf(it.toInt()) },
-                valueRange = 10f..30f,
-                steps = 19
-            )
-            Text(
-                "数值越小画质越高、体积越大（默认 18）",
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-
-            Spacer(Modifier.height(12.dp))
-            Text(
-                "编码器",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Spacer(Modifier.height(6.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                SelectChip("H.265", FfmpegAddon.codec == "h265") { FfmpegAddon.updateCodec("h265") }
-                SelectChip("H.264", FfmpegAddon.codec == "h264") { FfmpegAddon.updateCodec("h264") }
-            }
-
-            Spacer(Modifier.height(12.dp))
-            Text(
-                "压缩预设",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Spacer(Modifier.height(6.dp))
-            Row(
-                Modifier
-                    .fillMaxWidth()
-                    .horizontalScroll(rememberScrollState()),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                for (p in FfmpegAddon.PRESETS) {
-                    SelectChip(p, FfmpegAddon.preset == p) { FfmpegAddon.updatePreset(p) }
-                }
+            for (p in FfmpegAddon.PRESETS) {
+                SelectChip(p, FfmpegAddon.preset == p) { FfmpegAddon.updatePreset(p) }
             }
         }
     }

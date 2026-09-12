@@ -18,7 +18,8 @@ This program is free software: you can redistribute it and/or modify it under th
 
 ## 系统要求
 
-> ⚠️ **维护声明**：自 v3.0.0 起停止维护与发布 **Windows 桌面版**（上一完整版本为 v2.3.0，源码仍保留在仓库与分支中），此后仅发布 Android 版本。
+> ⚠️ **维护声明**：自 v3.0.0 起停止维护与发布 **Windows 桌面版**，此后仅发布 Android 版本。
+> Windows 版（C# / WinUI 3，上一完整版本 v2.3.0）的完整源码保留在 **`v2.3.0` 分支**，`main` 分支已不再包含 Windows 端代码。
 
 | 版本 | 最低系统版本 | 架构 |
 |------|-------------|------|
@@ -66,19 +67,16 @@ Android 端无需额外运行时。
 
 ### 技术栈
 
-| 平台 | 语言 | 框架 |
-|------|------|------|
-| Windows | C# 13 / .NET 10 | WinUI 3 / Material 3 |
-| Android | Kotlin | Jetpack Compose / Material 3 |
-| 核心 | C# / Kotlin | 纯 stdlib 字节级解析 |
+| 语言 | 框架 |
+|------|------|
+| Kotlin | Jetpack Compose / Material 3 |
+| Kotlin | 纯 stdlib 字节级解析（JPEG 段 / MP4 box） |
 
 ### 入口文件
 
-| 平台 | 入口 |
-|------|------|
-| Windows | `ZLivePhoto.WinUI/MainWindow.xaml.cs` |
-| Android | `app/src/main/java/com/zsz/zlivephoto/MainActivity.kt` |
-| CLI | `ZLivePhoto.Cli/Program.cs` |
+| 入口 |
+|------|
+| `ZLivePhoto.Android/app/src/main/java/com/zsz/zlivephoto/MainActivity.kt` |
 
 ## 功能特性
 
@@ -107,45 +105,21 @@ Android 端无需额外运行时。
 
 ```
 Source/
-├── ZLivePhoto.Core/              # 核心转换库（C#）
-│   ├── Formats/                  #   格式插件（Google/Apple/OPPO/vivo/小米/荣耀）
-│   ├── Models/                   #   数据模型
-│   ├── Converter.cs              #   转换管线
-│   ├── JpegUtil.cs               #   JPEG 段解析
-│   ├── Mp4Util.cs                #   MP4 box 解析
-│   ├── XmpTemplate.cs            #   XMP 模板
-│   ├── FooterUtil.cs             #   cameralbum! footer
-│   └── ExifUtil.cs               #   EXIF 处理
-├── ZLivePhoto.WinUI/             # Windows 桌面应用
-│   ├── MainWindow.xaml           #   主窗口 UI
-│   ├── MainWindow.xaml.cs        #   主窗口逻辑
-│   └── AppConfig.cs              #   配置管理
-├── ZLivePhoto.Cli/               # 命令行工具
-│   └── Program.cs                #   CLI 入口
-├── ZLivePhoto.Android/           # Android 应用
+├── ZLivePhoto.Android/           # Android 应用（Gradle / Kotlin）
 │   ├── app/src/main/java/com/zsz/zlivephoto/
 │   │   ├── MainActivity.kt       #   主 Activity
-│   │   ├── core/                 #   核心转换库（Kotlin 移植）
+│   │   ├── core/                 #   核心转换库（Kotlin，纯字节级解析）
 │   │   └── ui/                   #   Compose UI
 │   └── app/src/main/res/         #   资源文件
-├── Directory.Build.props         # .NET 构建配置
+├── CHANGELOG.md                  # 更新日志
+├── LICENSE                       # GPLv3
 └── .gitignore
 ```
 
+> Windows 桌面版（C# / WinUI 3）与命令行工具的源码不在 `main` 分支，见 `v2.3.0` 分支。
+
 ### 从源码恢复开发环境
 
-#### Windows 端
-1. 安装 [.NET 10 SDK](https://dotnet.microsoft.com/download)
-2. 安装 [WiX Toolset 5](https://wixtoolset.org/)（可选，用于 MSI 打包）
-3. 安装 [Inno Setup 6](https://jrsoftware.org/isdl.php)（可选，用于 EXE 打包）
-
-```bash
-cd Source
-dotnet build ZLivePhoto.WinUI/ZLivePhoto.WinUI.csproj -c Debug
-dotnet run --project ZLivePhoto.WinUI/ZLivePhoto.WinUI.csproj
-```
-
-#### Android 端
 1. 安装 [Android SDK](https://developer.android.com/studio)（Command-line tools 即可）
 2. 配置 `local.properties` 指向 SDK 路径
 
@@ -156,11 +130,6 @@ cd Source/ZLivePhoto.Android
 
 ## 运行方式
 
-### Windows
-- **GUI**：从开始菜单启动，或运行 `Z-LivePhoto-Converter.exe`
-- **CLI**：`zlpc --cli --to {google|oppo|vivo|xiaomi|apple} <文件路径>`
-
-### Android
 - 启动应用 → 添加动态照片 → 选择输出格式 → 点击转换
 - 或从系统相册分享照片到本应用
 
@@ -168,7 +137,6 @@ cd Source/ZLivePhoto.Android
 
 | 项目 | 用途 |
 |------|------|
-| [WinUI 3](https://github.com/microsoft/microsoft-ui-xaml) | Windows UI 框架 |
 | [Jetpack Compose](https://developer.android.com/jetpack/compose) | Android UI 框架 |
 | [Material 3](https://m3.material.io/) | 设计系统 |
 | [FFmpeg](https://ffmpeg.org/) | 视频转码（可选附加项，预编译自 [vidra-ffmpeg](https://github.com/chomusuke-mk/vidra-ffmpeg)） |

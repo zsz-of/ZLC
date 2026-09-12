@@ -5,8 +5,8 @@ import java.io.RandomAccessFile
 
 /**
  * 动态照片快速粗筛（选择器扫描与批量处理共用）。
- * 与 Windows 版 GooglePlugin.SniffXmp 对齐：不依赖固定头部窗口，
- * 而是按 JPEG 段结构（marker + length）遍历，定位任意位置的 XMP 标记。
+ * 不依赖固定头部窗口，而是按 JPEG 段结构（marker + length）遍历，
+ * 定位任意位置的 XMP 标记。
  * 这样即使 EXIF 段很大（>64KB）把 XMP 推到更深的位置也不会漏检。
  *
  * 判定：

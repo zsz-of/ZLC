@@ -460,7 +460,7 @@ internal object XmpTemplate {
     private val microPtsRegex = Regex("""GCamera:MicroVideoPresentationTimestampUs="(-?\d+)"""")
     private val oppoVideoLenRegex = Regex("""OpCamera:VideoLength="(\d+)"""")
     // 注意：属性值允许含 '/'（如 Item:Mime="video/mp4"），故不能用 [^>/] 排除斜杠，
-    // 否则 video item 匹配在斜杠处截断（与 C# 端 [^>]*? 保持一致）
+    // 否则 video item 匹配在斜杠处截断
     private val containerItemRegex = Regex("""<Container:Item\b([^>]*?)/?>""", RegexOption.DOT_MATCHES_ALL)
     private val semanticRegex = Regex("""Item:Semantic="([^"]+)"""")
     private val mimeRegex = Regex("""Item:Mime="([^"]+)"""")

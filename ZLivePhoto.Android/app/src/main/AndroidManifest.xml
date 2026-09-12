@@ -15,6 +15,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 应用内一键更新：下载完成后调起系统安装器（Android 8+ 需用户在本应用授权「安装未知应用」） -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- 引导卸载旧版本（Go 版）：Android 9+ 发起卸载请求需声明此普通权限（无需运行时申请） -->
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
 
     <!-- 支付宝赞助：声明对支付宝包可见，Android 11+ 才能 resolveActivity 检测是否已安装。
          这只是清单可见性声明（非权限，不弹授权窗） -->
@@ -22,6 +24,8 @@
          并对其授予 FileProvider URI 读权限，否则调起安装器可能失败/安装器读不到文件 -->
     <queries>
         <package android:name="com.eg.android.AlipayGphone" />
+        <!-- 旧版本（Go 版）包名：Android 11+ 包可见性过滤下，声明后才能用 getPackageInfo 判断是否已安装 -->
+        <package android:name="com.zsz.zlivephoto.go" />
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:mimeType="application/vnd.android.package-archive" />

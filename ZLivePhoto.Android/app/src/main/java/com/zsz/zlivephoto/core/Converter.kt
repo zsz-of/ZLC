@@ -2,6 +2,8 @@ package com.zsz.zlivephoto.core
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.Color
 import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.core.formats.FormatRegistry
 import java.io.ByteArrayOutputStream
@@ -208,11 +210,23 @@ internal object Converter {
         if (BuildConfig.FLAVOR == "go") {
             throw ConvertException("封面不是 JPEG 图片（轻量版不支持转码，请改用 JPEG 照片）")
         }
-        val bmp = BitmapFactory.decodeFile(photo.path)
+        val decoded = BitmapFactory.decodeFile(photo.path)
             ?: throw ConvertException("封面不是有效的图片（仅支持 JPEG/WebP/PNG）")
+        // PNG/WebP 透明区域填充纯白：JPEG 无 alpha 通道，直接压缩会把透明区域压成黑色
+        val bmp = if (decoded.hasAlpha()) compositeOnWhite(decoded) else decoded
         val bos = ByteArrayOutputStream()
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, bos)
         bmp.recycle()
         return bos.toByteArray()
+    }
+
+    /** 透明图片合成到纯白底（返回新位图并回收原图），保证透明区域输出为白色而非黑色。 */
+    private fun compositeOnWhite(src: Bitmap): Bitmap {
+        val out = Bitmap.createBitmap(src.width, src.height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(out)
+        canvas.drawColor(Color.WHITE)
+        canvas.drawBitmap(src, 0f, 0f, null)
+        src.recycle()
+        return out
     }
 }

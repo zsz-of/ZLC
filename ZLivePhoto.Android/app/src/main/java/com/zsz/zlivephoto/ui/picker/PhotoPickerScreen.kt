@@ -39,10 +39,12 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -74,6 +76,9 @@ import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.ImageNotSupported
 import androidx.compose.material3.Button
@@ -87,11 +92,11 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
@@ -108,6 +113,7 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.asImageBitmap
@@ -338,7 +344,7 @@ fun PhotoPickerScreen(
     val isLandscape = LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp
     // 横屏左侧相册栏宽度：收起为窄栏（仅相册名），展开时整栏由左向右变宽（配合封面右向展开）
     val railWidth by animateDpAsState(
-        targetValue = if (albumsExpanded) 176.dp else 132.dp,
+        targetValue = if (albumsExpanded) 188.dp else 148.dp,
         animationSpec = spring(dampingRatio = Spring.DampingRatioLowBouncy, stiffness = Spring.StiffnessMediumLow),
         label = "albumRailWidth"
     )
@@ -369,9 +375,10 @@ fun PhotoPickerScreen(
                         style = MaterialTheme.typography.titleSmall,
                         color = MaterialTheme.colorScheme.onSurface,
                         maxLines = 1,
-                        overflow = TextOverflow.Ellipsis)
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.weight(1f))
                 }
-                // 相册数 + 展开/收起封面（箭头指向右 = 向右展开）
+                // 相册数 + 展开/收起封面（箭头未展开朝右、展开后朝左）
                 Row(
                     Modifier.fillMaxWidth().padding(start = 10.dp, end = 2.dp),
                     verticalAlignment = Alignment.CenterVertically
@@ -384,11 +391,11 @@ fun PhotoPickerScreen(
                     )
                     IconButton(onClick = { haptic.click(); albumsExpanded = !albumsExpanded }) {
                         val rotation by animateFloatAsState(
-                            targetValue = if (albumsExpanded) 90f else 0f,
+                            targetValue = if (albumsExpanded) 180f else 0f,
                             animationSpec = tween(250), label = "railChevron"
                         )
                         Icon(
-                            Icons.Filled.KeyboardArrowDown,
+                            Icons.Filled.KeyboardArrowRight,
                             contentDescription = if (albumsExpanded) "收起相册封面" else "展开相册封面",
                             modifier = Modifier.rotate(rotation)
                         )
@@ -541,7 +548,22 @@ fun PhotoPickerScreen(
             AnimatedContent(
                 targetState = bucketId,
                 transitionSpec = {
-                    if (slideDir >= 0) {
+                    if (isLandscape) {
+                        // 横屏：相册切换改为上下切换（新内容自下/上进入）
+                        if (slideDir >= 0) {
+                            (slideInVertically(tween(320, easing = FancyEasing)) { it } +
+                                    fadeIn(tween(240, easing = AlphaEasing)))
+                                .togetherWith(
+                                    slideOutVertically(tween(320, easing = FancyEasing)) { -it } +
+                                            fadeOut(tween(240, easing = AlphaEasing)))
+                        } else {
+                            (slideInVertically(tween(320, easing = FancyEasing)) { -it } +
+                                    fadeIn(tween(240, easing = AlphaEasing)))
+                                .togetherWith(
+                                    slideOutVertically(tween(320, easing = FancyEasing)) { it } +
+                                            fadeOut(tween(240, easing = AlphaEasing)))
+                        }
+                    } else if (slideDir >= 0) {
                         // 切到右侧相册：新内容自右侧进入、旧内容向左滑出（画面向左滚动）
                         (slideInHorizontally(tween(320, easing = FancyEasing)) { it } +
                                 fadeIn(tween(240, easing = AlphaEasing)))
@@ -634,6 +656,12 @@ private fun AlbumGridPage(
     }
     val running = pageProgress.second
 
+    val gridState = rememberLazyGridState()
+    // 切换排序字段/正倒序时回到网格顶部，避免停留在中部导致内容跳变（与日期排序一致）
+    LaunchedEffect(sortField, sortAscending) {
+        gridState.scrollToItem(0)
+    }
+
     when {
         results == null -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text("没有可用相册", color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -657,7 +685,7 @@ private fun AlbumGridPage(
             )
         }
         else -> LazyVerticalGrid(
-            state = rememberLazyGridState(),
+            state = gridState,
             // 竖屏 3 列；横屏固定 5 列（用户要求每行五张照片）
             columns = GridCells.Fixed(
                 if (LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp) 5 else 3
@@ -676,7 +704,7 @@ private fun AlbumGridPage(
                 val groups = sorted.groupBy { dateKey(it.sortTime) }
                 for ((dk, groupItems) in groups) {
                     stickyHeader(key = "hdr_$dk") {
-                        Box(Modifier.animateItem().fillMaxWidth()) {
+                        Box(Modifier.fillMaxWidth()) {
                             val allSel = groupItems.all { isSelected(it) }
                             val someSel = groupItems.any { isSelected(it) }
                             DateHeader(
@@ -691,16 +719,16 @@ private fun AlbumGridPage(
                         }
                     }
                     items(groupItems, key = { it.key }) { item ->
-                        Box(Modifier.animateItem()) {
-                            GridCell(
-                                item = item,
-                                selected = isSelected(item),
-                                selectionIndex = selIndexOf(item),
-                                onToggle = { onToggle(item) },
-                                durationText = if (composeMode && item.isVideo)
-                                    formatDurationLabel(item.durationMs) else null
-                            )
-                        }
+                        // 日期排序不启用 animateItem 重排动画：切换正/倒序时日期分组整体翻转，
+                        // 若叠加逐项位移动画会与 stickyHeader 重排竞争，导致图片位置乱飘
+                        GridCell(
+                            item = item,
+                            selected = isSelected(item),
+                            selectionIndex = selIndexOf(item),
+                            onToggle = { onToggle(item) },
+                            durationText = if (composeMode && item.isVideo)
+                                formatDurationLabel(item.durationMs) else null
+                        )
                     }
                 }
             } else {
@@ -712,7 +740,9 @@ private fun AlbumGridPage(
                             selectionIndex = selIndexOf(item),
                             onToggle = { onToggle(item) },
                             durationText = if (composeMode && item.isVideo)
-                                formatDurationLabel(item.durationMs) else null
+                                formatDurationLabel(item.durationMs) else null,
+                            sizeText = if (sortField == AlbumSortField.SIZE)
+                                formatSizeLabel(item.size) else null
                         )
                     }
                 }
@@ -734,9 +764,10 @@ private fun AlbumGridPage(
 
 /**
  * 搜索 + 排序工具行：
- * - 搜索改为「按钮」：默认只占一个图标位（不占地方），点击后平滑展开为输入框（由左到右），
- *   清空/收起后回到按钮态；已输入关键字时按钮高亮提示当前处于过滤状态；
- * - 右侧正倒序切换按钮 + 三个排序字段 chip（日期/大小/名称）。
+ * - 收起态：搜索按钮（带背景板）与三个排序 chip、正倒序按钮同排
+ * - 点击搜索：搜索图标背景板原地横向扩展为整宽搜索框（色块底色），
+ *   三个排序 chip 与正倒序按钮平滑下移到第二行，下方相册内容随高度变化让位
+ * - 已输入关键字时搜索背景板高亮（secondaryContainer 色块）
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -749,86 +780,164 @@ private fun SortSearchBar(
     onSearchQuery: (String) -> Unit
 ) {
     val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
-    // 搜索展开态：默认收起为按钮，不占用宽度
     var searchOpen by remember { mutableStateOf(false) }
-    Column(Modifier.fillMaxWidth()) {
-        Row(
-            Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // 搜索区：按钮 ↔ 输入框（平滑展开/收起）
+
+    val searchColor = if (searchQuery.isNotEmpty()) MaterialTheme.colorScheme.secondaryContainer
+                      else MaterialTheme.colorScheme.surfaceContainerHigh
+    val searchContentColor = if (searchQuery.isNotEmpty()) MaterialTheme.colorScheme.onSecondaryContainer
+                             else MaterialTheme.colorScheme.onSurfaceVariant
+
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        // 预测最终位置：展开态搜索背景板占满第一行内容宽度（扣除两端 12dp），
+        // 收起态仅为一个搜索图标方块。用 animateDpAsState 平滑扩展宽度，
+        // 不依赖 weight/animateContentSize 突变，避免展开到一半时闪现、割裂。
+        val collapsedWidth = 40.dp
+        val expandedWidth = maxWidth - 24.dp
+        val surfaceWidth by animateDpAsState(
+            targetValue = if (searchOpen) expandedWidth else collapsedWidth,
+            animationSpec = spring(
+                dampingRatio = Spring.DampingRatioLowBouncy,
+                stiffness = Spring.StiffnessMediumLow
+            ),
+            label = "searchWidth"
+        )
+
+        Column(Modifier.fillMaxWidth()) {
+            // 第一行：搜索背景板（原地平滑扩展）+ 收起态的排序控件
             Row(
-                Modifier.weight(1f),
+                Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                AnimatedVisibility(
-                    visible = searchOpen,
-                    enter = fadeIn(tween(160)) + expandHorizontally(tween(240, easing = FancyEasing)),
-                    exit = fadeOut(tween(120)) + shrinkHorizontally(tween(200, easing = FancyEasing))
+                Surface(
+                    shape = RoundedCornerShape(12.dp),
+                    color = searchColor,
+                    contentColor = searchContentColor,
+                    modifier = Modifier.width(surfaceWidth)
                 ) {
-                    OutlinedTextField(
-                        value = searchQuery,
-                        onValueChange = onSearchQuery,
-                        modifier = Modifier.fillMaxWidth(),
-                        placeholder = { Text("按名称搜索", fontSize = 13.sp) },
-                        leadingIcon = {
-                            Icon(Icons.Default.Search, contentDescription = "搜索",
-                                modifier = Modifier.size(18.dp))
-                        },
-                        trailingIcon = {
-                            IconButton(onClick = {
-                                haptic.click()
-                                onSearchQuery("")
-                                searchOpen = false
-                            }) {
-                                Icon(Icons.Default.Close, contentDescription = "收起搜索",
-                                    modifier = Modifier.size(18.dp))
+                    Row(
+                        Modifier.fillMaxWidth().padding(vertical = 2.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Box(
+                            Modifier
+                                .size(40.dp)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null
+                                ) {
+                                    haptic.click()
+                                    searchOpen = !searchOpen
+                                },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                if (searchOpen) Icons.Default.KeyboardArrowLeft else Icons.Default.Search,
+                                contentDescription = if (searchOpen) "收起搜索" else "搜索",
+                                modifier = Modifier.size(20.dp),
+                                tint = searchContentColor
+                            )
+                        }
+                        AnimatedVisibility(
+                            visible = searchOpen,
+                            modifier = Modifier.weight(1f),
+                            enter = fadeIn(tween(180)) + expandHorizontally(tween(240, easing = FancyEasing)),
+                            exit = fadeOut(tween(120)) + shrinkHorizontally(tween(180, easing = FancyEasing))
+                        ) {
+                            Row(
+                                Modifier.fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                BasicTextField(
+                                    value = searchQuery,
+                                    onValueChange = onSearchQuery,
+                                    modifier = Modifier.weight(1f),
+                                    singleLine = true,
+                                    textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp),
+                                    cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+                                    decorationBox = { innerTextField ->
+                                        Box {
+                                            if (searchQuery.isEmpty()) {
+                                                Text(
+                                                    "按名称搜索",
+                                                    fontSize = 13.sp,
+                                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                                )
+                                            }
+                                            innerTextField()
+                                        }
+                                    }
+                                )
+                                if (searchQuery.isNotEmpty()) {
+                                    IconButton(onClick = { haptic.click(); onSearchQuery("") }) {
+                                        Icon(Icons.Default.Close, contentDescription = "清空搜索",
+                                            modifier = Modifier.size(18.dp))
+                                    }
+                                }
                             }
-                        },
-                        singleLine = true,
-                        shape = RoundedCornerShape(12.dp),
-                        textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp)
-                    )
-                }
-                AnimatedVisibility(
-                    visible = !searchOpen,
-                    enter = fadeIn(tween(160)),
-                    exit = fadeOut(tween(120))
-                ) {
-                    IconButton(onClick = { haptic.click(); searchOpen = true }) {
-                        Icon(
-                            Icons.Default.Search,
-                            contentDescription = "搜索",
-                            tint = if (searchQuery.isNotEmpty()) MaterialTheme.colorScheme.primary
-                                   else MaterialTheme.colorScheme.onSurfaceVariant
-                        )
+                        }
                     }
                 }
-            }
-            // 仅输入框收起且已有关键字时，提供一键清除（过滤仍然生效）
-            if (!searchOpen && searchQuery.isNotEmpty()) {
-                IconButton(onClick = { haptic.click(); onSearchQuery("") }) {
-                    Icon(Icons.Default.Close, contentDescription = "清空搜索",
-                        modifier = Modifier.size(18.dp),
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant)
+
+                // 收起态：排序控件与搜索按钮同排（展开时横向收缩让位）
+                AnimatedVisibility(
+                    visible = !searchOpen,
+                    modifier = Modifier.weight(1f),
+                    enter = fadeIn(tween(160)) + expandHorizontally(tween(200, easing = FancyEasing)),
+                    exit = fadeOut(tween(120)) + shrinkHorizontally(tween(180, easing = FancyEasing))
+                ) {
+                    SortControlsRow(
+                        sortField = sortField,
+                        sortAscending = sortAscending,
+                        onSortField = onSortField,
+                        onToggleAscending = onToggleAscending
+                    )
                 }
             }
-            // 正/倒序切换
-            IconButton(onClick = { haptic.click(); onToggleAscending() }) {
-                Icon(
-                    if (sortAscending) Icons.Default.ArrowUpward else Icons.Default.ArrowDownward,
-                    contentDescription = if (sortAscending) "倒序" else "正序",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+
+            // 展开态：排序控件下移到第二行
+            AnimatedVisibility(
+                visible = searchOpen,
+                enter = slideInVertically(tween(240, easing = FancyEasing)) { -it } + fadeIn(tween(180)),
+                exit = slideOutVertically(tween(200, easing = FancyEasing)) { -it } + fadeOut(tween(140))
+            ) {
+                SortControlsRow(
+                    sortField = sortField,
+                    sortAscending = sortAscending,
+                    onSortField = onSortField,
+                    onToggleAscending = onToggleAscending,
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp)
                 )
             }
         }
-        Row(
-            Modifier.fillMaxWidth().padding(horizontal = 12.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            SortFieldChip("日期", AlbumSortField.DATE, sortField, onSortField)
-            SortFieldChip("大小", AlbumSortField.SIZE, sortField, onSortField)
-            SortFieldChip("名称", AlbumSortField.NAME, sortField, onSortField)
+    }
+}
+
+/** 排序控件行：三个排序 chip + 右侧正倒序按钮 */
+@Composable
+private fun SortControlsRow(
+    sortField: AlbumSortField,
+    sortAscending: Boolean,
+    onSortField: (AlbumSortField) -> Unit,
+    onToggleAscending: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
+    Row(
+        Modifier.fillMaxWidth().then(modifier),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        SortFieldChip("日期", AlbumSortField.DATE, sortField, onSortField)
+        SortFieldChip("大小", AlbumSortField.SIZE, sortField, onSortField)
+        SortFieldChip("名称", AlbumSortField.NAME, sortField, onSortField)
+        Spacer(Modifier.weight(1f))
+        IconButton(onClick = { haptic.click(); onToggleAscending() }) {
+            Icon(
+                if (sortAscending) Icons.Default.ArrowUpward else Icons.Default.ArrowDownward,
+                contentDescription = if (sortAscending) "倒序" else "正序",
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }
@@ -1129,6 +1238,16 @@ private fun formatDurationLabel(ms: Long): String {
     return if (s >= 10.0) "${s.toInt()}s" else "${"%.1f".format(s)}s"
 }
 
+/** 文件大小徽标文本：<1024KB 显示 KB，否则显示 MB（保留 1 位小数） */
+private fun formatSizeLabel(bytes: Long): String {
+    if (bytes < 1024L * 1024L) {
+        val kb = bytes / 1024.0
+        val text = if (kb >= 100f) "%.0f".format(kb) else "%.1f".format(kb)
+        return "${text}KB"
+    }
+    return "${"%.1f".format(bytes / (1024.0 * 1024.0))}MB"
+}
+
 /**
  * 网格单元：
  * - 勾选徽章在右上角（项 2）
@@ -1142,7 +1261,8 @@ private fun GridCell(
     selected: Boolean,
     selectionIndex: Int,
     onToggle: () -> Unit,
-    durationText: String? = null
+    durationText: String? = null,
+    sizeText: String? = null
 ) {
     val resolver = LocalContext.current.contentResolver
     val transition = updateTransition(selected, label = "cell")
@@ -1194,19 +1314,37 @@ private fun GridCell(
             MediaThumbnail(item.uri, resolver, Modifier.fillMaxSize())
         }
 
-        // 合成模式视频项：左下角时长徽标（如 2.5s）
-        if (durationText != null) {
-            Text(
-                text = durationText,
-                color = Color.White,
-                fontSize = 10.sp,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier
+        // 左下角徽标：合成模式视频时长 + 按大小排序时的文件大小（可叠加，时长在上、大小在下）
+        if (durationText != null || sizeText != null) {
+            Column(
+                Modifier
                     .align(Alignment.BottomStart)
-                    .padding(start = 4.dp, bottom = 4.dp)
-                    .background(Color.Black.copy(alpha = 0.55f), RoundedCornerShape(6.dp))
-                    .padding(horizontal = 5.dp, vertical = 2.dp)
-            )
+                    .padding(start = 4.dp, bottom = 4.dp),
+                verticalArrangement = Arrangement.spacedBy(2.dp)
+            ) {
+                if (durationText != null) {
+                    Text(
+                        text = durationText,
+                        color = Color.White,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier
+                            .background(Color.Black.copy(alpha = 0.55f), RoundedCornerShape(6.dp))
+                            .padding(horizontal = 5.dp, vertical = 2.dp)
+                    )
+                }
+                if (sizeText != null) {
+                    Text(
+                        text = sizeText,
+                        color = Color.White,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier
+                            .background(Color.Black.copy(alpha = 0.55f), RoundedCornerShape(6.dp))
+                            .padding(horizontal = 5.dp, vertical = 2.dp)
+                    )
+                }
+            }
         }
 
         // 勾选徽章（右上角，项 2）：选中时 primary 圆底 + 白色序号，未选中空心圈；

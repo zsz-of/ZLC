@@ -77,8 +77,12 @@ import com.zsz.zlivephoto.ui.SettingsScreen
 import com.zsz.zlivephoto.ui.ZLivePhotoTheme
 import com.zsz.zlivephoto.ui.UpdateFlowHosts
 import com.zsz.zlivephoto.ui.FfmpegFlowHosts
+import com.zsz.zlivephoto.ui.LegacyApp
+import com.zsz.zlivephoto.ui.LegacyUninstallFlowHosts
+import com.zsz.zlivephoto.ui.ReminderKey
 import com.zsz.zlivephoto.ui.rememberFfmpegFlow
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
+import com.zsz.zlivephoto.ui.rememberLegacyUninstallFlow
 import com.zsz.zlivephoto.ui.rememberUpdateFlow
 import com.zsz.zlivephoto.ui.wallpaperHue
 import com.zsz.zlivephoto.ui.picker.AlbumInfo
@@ -569,19 +573,45 @@ class MainActivity : ComponentActivity() {
                 // 转码器（ffmpeg 附加项）流程状态：检查更新 / 重新安装 / 下载通道选择
                 val ffmpegFlow = rememberFfmpegFlow()
 
+                // 旧版本（Go 版）卸载提示状态（普通版启动时检测）
+                val legacyFlow = rememberLegacyUninstallFlow()
+
                 // 启动时自动检查更新（设置开启时）：后台比对 GitHub 最新 release；
-                // 用户点过「跳过此版本」的版本不再自动弹窗；无软件更新时再静默检查转码器版本
+                // 优先级：软件更新 → Go 版切正常版 → 转码器提示 → 旧版本卸载提示。
+                // 用户点过「跳过此版本」的版本不再自动弹窗。
                 LaunchedEffect(Unit) {
+                    var updatePrompted = false
+                    var ffmpegPrompted = false
                     if (AppSettings.checkUpdateOnStartup) {
-                        val r = UpdateChecker.check(BuildConfig.VERSION_NAME)
-                        if (r is UpdateCheckResult.Update &&
-                            !AppSettings.isVersionSkipped(r.info.version)
-                        ) {
-                            updateFlow.present(r.info)
-                        } else if (BuildConfig.FLAVOR != "go") {
-                            // 无软件更新：检查转码器（已是最新则不弹提示，版本不匹配/未安装则弹窗）
-                            ffmpegFlow.checkUpdate(quiet = true)
+                        // 1) Go 版在 Android 10+ 上：优先切换到正常版
+                        if (BuildConfig.FLAVOR == "go" && LegacyApp.shouldSwitchToNormal()) {
+                            val normalInfo = UpdateChecker.fetchLatestForNormal()
+                            if (normalInfo != null) {
+                                updateFlow.presentSwitchToNormal(normalInfo)
+                                updatePrompted = true
+                            }
                         }
+                        // 2) 常规软件更新（go 版未命中切正常版时，或 normal 版）
+                        if (!updatePrompted) {
+                            val r = UpdateChecker.check(BuildConfig.VERSION_NAME)
+                            if (r is UpdateCheckResult.Update &&
+                                !AppSettings.isVersionSkipped(r.info.version)
+                            ) {
+                                updateFlow.present(r.info)
+                                updatePrompted = true
+                            }
+                        }
+                        // 3) 转码器提示（仅普通版；返回是否真的弹窗）
+                        if (!updatePrompted && BuildConfig.FLAVOR != "go") {
+                            ffmpegPrompted = ffmpegFlow.checkUpdateSuspend(quiet = true)
+                        }
+                    }
+                    // 4) 旧版本卸载提示（仅普通版；无更新/转码器提示时）
+                    if (!updatePrompted && !ffmpegPrompted && BuildConfig.FLAVOR != "go" &&
+                        !AppSettings.isReminderSuppressed(ReminderKey.LEGACY_GO_INSTALLED) &&
+                        LegacyApp.isGoInstalled(this@MainActivity)
+                    ) {
+                        legacyFlow.show()
                     }
                 }
 
@@ -590,6 +620,9 @@ class MainActivity : ComponentActivity() {
 
                 // 转码器相关的下载进度 / 结果提示 / 下载通道选择弹窗
                 FfmpegFlowHosts(ffmpegFlow, vibrate = { haptic.click() })
+
+                // 旧版本卸载提示弹窗
+                LegacyUninstallFlowHosts(legacyFlow, vibrate = { haptic.click() })
 
                 // 预览式返回：选择器 / 设置页手势进度驱动内容缩小右移（顶层稳定注册，
                 // 不受 AnimatedContent 过渡重组影响；提交后回到主页）

@@ -132,13 +132,31 @@ internal object QuickClassify {
         }
     }
 
+    /** PNG 魔数校验：89 50 4E 47 0D 0A 1A 0A。 */
+    private fun isPng(path: String): Boolean {
+        return try {
+            RandomAccessFile(path, "r").use { raf ->
+                if (raf.length() < 8) return false
+                val head = ByteArray(8)
+                raf.readFully(head)
+                head[0] == 0x89.toByte() && head[1] == 0x50.toByte() &&
+                    head[2] == 0x4E.toByte() && head[3] == 0x47.toByte() &&
+                    head[4] == 0x0D.toByte() && head[5] == 0x0A.toByte() &&
+                    head[6] == 0x1A.toByte() && head[7] == 0x0A.toByte()
+            }
+        } catch (_: Exception) {
+            false
+        }
+    }
+
     /**
-     * 合成模式用：普通封面图片（JPEG 或 WebP）。
-     * WebP 不可能携带动态照片 XMP，故直接视为普通图片收录。
+     * 合成模式用：普通封面图片（JPEG / WebP / PNG）。
+     * WebP/PNG 不可能携带动态照片 XMP，故直接视为普通图片收录，
+     * 导入后由 Converter 用系统图片转码器统一转为 100% 质量 JPEG。
      */
     fun isPlainComposeImage(path: String): Boolean {
         return try {
-            isWebp(path) || isPlainJpeg(path)
+            isWebp(path) || isPng(path) || isPlainJpeg(path)
         } catch (_: Exception) {
             false
         }

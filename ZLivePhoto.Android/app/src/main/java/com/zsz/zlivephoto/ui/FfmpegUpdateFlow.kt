@@ -74,28 +74,44 @@ internal class FfmpegFlowController(private val scope: CoroutineScope) {
      */
     fun checkUpdate(quiet: Boolean = false) {
         if (checking || FfmpegAddon.busy) return
-        scope.launch {
-            checking = true
-            try {
-                val meta = FfmpegAddon.fetchMetaForCurrentVersion()
-                if (meta == null) {
-                    if (!quiet) message = "当前版本暂无转码器附加项信息，请稍后重试"
-                    return@launch
-                }
-                val installed = FfmpegAddon.installedVersion
-                when {
-                    installed.isEmpty() -> presentPrompt(meta, "安装转码器")
-                    installed != meta.version ->
-                        presentPrompt(meta, "发现转码器更新（$installed → ${meta.version}）")
-                    else -> if (!quiet) message = "转码器已是最新版本（$installed）"
-                }
-            } catch (e: CancellationException) {
-                throw e
-            } catch (e: Exception) {
-                if (!quiet) message = e.message ?: "检查失败"
-            } finally {
-                checking = false
+        scope.launch { checkUpdateSuspend(quiet) }
+    }
+
+    /**
+     * 「检查更新」的挂起版本：返回本次是否真的弹出了「选择下载通道」提示，
+     * 供启动流程判断是否已占用弹窗（避免与旧版本卸载提示同框）。
+     */
+    suspend fun checkUpdateSuspend(quiet: Boolean = false): Boolean {
+        if (checking || FfmpegAddon.busy) return false
+        checking = true
+        try {
+            val meta = FfmpegAddon.fetchMetaForCurrentVersion()
+            if (meta == null) {
+                if (!quiet) message = "当前版本暂无转码器附加项信息，请稍后重试"
+                return false
             }
+            val installed = FfmpegAddon.installedVersion
+            return when {
+                installed.isEmpty() -> {
+                    presentPrompt(meta, "安装转码器")
+                    true
+                }
+                installed != meta.version -> {
+                    presentPrompt(meta, "发现转码器更新（$installed → ${meta.version}）")
+                    true
+                }
+                else -> {
+                    if (!quiet) message = "转码器已是最新版本（$installed）"
+                    false
+                }
+            }
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            if (!quiet) message = e.message ?: "检查失败"
+            return false
+        } finally {
+            checking = false
         }
     }
 

@@ -79,22 +79,32 @@ internal class UpdateFlowController(
     /** 是否为「重新安装本版本」模式：弹窗标题/文案与「发现新版本」区分，隐藏「跳过此版本」 */
     var reinstallMode by mutableStateOf(false)
         private set
+    /** 是否为「切换到正常版」模式：Go 版在 Android 10+ 上引导下载 normal 版 */
+    var switchToNormalMode by mutableStateOf(false)
+        private set
 
     private var downloadJob: Job? = null
 
-    /** 当前版本对应的发布渠道标签（normal=标准版，go=Go版） */
+    /** 当前版本对应的发布渠道标签（normal=标准版，go=Go版；切正常版时强制标准版） */
     val flavorLabel: String
-        get() = if (BuildConfig.FLAVOR == "go") "Go 版" else "标准版"
+        get() = if (switchToNormalMode || BuildConfig.FLAVOR != "go") "标准版" else "Go 版"
 
     /** 展示「发现新版本」弹窗 */
     fun present(newInfo: UpdateInfo, reinstall: Boolean = false) {
         info = newInfo
         reinstallMode = reinstall
+        switchToNormalMode = false
         showNotes = false
         busy = null
         permissionApk = null
         message = null
         downloadJob = null
+    }
+
+    /** 「切换到正常版」：Go 版在 Android 10+ 上引导下载 normal 版（文案与发现新版本区分） */
+    fun presentSwitchToNormal(newInfo: UpdateInfo) {
+        present(newInfo, reinstall = false)
+        switchToNormalMode = true
     }
 
     /**
@@ -129,6 +139,7 @@ internal class UpdateFlowController(
         downloadJob = null
         info = null
         reinstallMode = false
+        switchToNormalMode = false
         showNotes = false
         busy = null
         permissionApk = null
@@ -404,7 +415,11 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
             },
             title = {
                 Text(
-                    if (flow.reinstallMode) "重新安装本版本" else "发现新版本",
+                    when {
+                        flow.switchToNormalMode -> "切换到正常版本"
+                        flow.reinstallMode -> "重新安装本版本"
+                        else -> "发现新版本"
+                    },
                     fontWeight = FontWeight.SemiBold
                 )
             },
@@ -415,6 +430,14 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.primary
                     )
+                    if (flow.switchToNormalMode) {
+                        // 「切换到正常版」模式：说明旧 Go 版在系统上不再适用，引导下载 normal 版
+                        Text(
+                            "当前设备系统版本较高，Go 版已不再适用。\n建议下载并切换到正常版本继续使用。",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                     if (flow.reinstallMode) {
                         // 「重新安装」模式：明确告知这是覆盖安装当前版本，用于验证下载→安装链路
                         Text(
@@ -464,7 +487,7 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
                         modifier = Modifier.fillMaxWidth().height(44.dp)
                     ) { Text("从 GitHub 下载") }
                     Spacer(Modifier.height(2.dp))
-                    if (!flow.reinstallMode) {
+                    if (!flow.reinstallMode && !flow.switchToNormalMode) {
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             FilledTonalButton(
                                 onClick = {
@@ -482,14 +505,14 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
                             ) { Text("跳过此版本") }
                         }
                     } else {
-                        // 「重新安装」模式无需「跳过此版本」（目标版本＝当前/最新版），只留暂不更新
+                        // 「重新安装」/「切换到正常版」模式无需「跳过此版本」，只留一个关闭动作
                         FilledTonalButton(
                             onClick = {
                                 vibrate()
                                 flow.onLater()
                             },
                             modifier = Modifier.fillMaxWidth().height(44.dp)
-                        ) { Text("暂不更新") }
+                        ) { Text(if (flow.switchToNormalMode) "暂不切换" else "暂不更新") }
                     }
                 }
             },

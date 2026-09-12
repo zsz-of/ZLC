@@ -61,9 +61,9 @@ object UpdateChecker {
     /** 旧版位置式附加项行：`[转码器附加项]: <url> <sha1> <version>` */
     private val ADDON_LINE = Regex("""\[转码器附加项\]\s*[：:]\s*(\S+)\s+(\S+)\s+(\S+)""")
 
-    /** 当前版本对应的蓝奏云标签名（发布规范：go=Go版，其余=标准版） */
-    private fun lanzouLabel(): String =
-        if (BuildConfig.FLAVOR == "go") "Go版" else "标准版"
+    /** 蓝奏云标签名（发布规范：go=Go版，其余=标准版） */
+    private fun lanzouLabel(isGo: Boolean): String =
+        if (isGo) "Go版" else "标准版"
 
     /**
      * 检查更新（IO 协程执行）。
@@ -85,7 +85,16 @@ object UpdateChecker {
      * 从而无需降级/重装旧版即可随时回归验证「下载→安装」链路。
      * @return null 表示网络或解析失败
      */
-    suspend fun fetchLatest(): UpdateInfo? = withContext(Dispatchers.IO) {
+    suspend fun fetchLatest(): UpdateInfo? = fetchLatestInternal(BuildConfig.FLAVOR == "go")
+
+    /**
+     * 强制按「标准版」（normal）匹配拉取最新 release。
+     * 供 Go 版在 Android 10+ 上「切换到正常版本」时用：即使当前是 go flavor，
+     * 也按 normal 的 APK 资产与「标准版」蓝奏云标签解析，得到正常版的下载信息。
+     */
+    suspend fun fetchLatestForNormal(): UpdateInfo? = fetchLatestInternal(false)
+
+    private suspend fun fetchLatestInternal(isGo: Boolean): UpdateInfo? = withContext(Dispatchers.IO) {
         try {
             val conn = URL(API_LATEST).openConnection() as HttpURLConnection
             conn.connectTimeout = 10_000
@@ -101,12 +110,11 @@ object UpdateChecker {
             if (remote.isEmpty()) return@withContext null
 
             // 优先取 APK 资产的直接下载地址（跳浏览器即可下载）。
-            // normal / go 双版本：按当前 flavor 匹配对应 APK——
+            // normal / go 双版本：按参数 isGo 匹配对应 APK——
             //   go 版（给老安卓用，minSdk 23）只匹配资产名含 "go"（Go 版本后缀）的 APK；
             //   normal 版匹配资产名不含 "go" 的 APK。
             // 匹配不到本版本的 APK 时不再回退到任意 APK：go 版若误下 normal 版会因
             // minSdk 29 装不上，统一回退到 release 页面让用户手动选择对应安装包。
-            val isGo = BuildConfig.FLAVOR == "go"
             var apkUrl: String? = null
             val assets = json.optJSONArray("assets")
             if (assets != null) {
@@ -137,7 +145,7 @@ object UpdateChecker {
                 downloadUrl = apkUrl ?: releaseUrl,
                 releaseUrl = releaseUrl,
                 notes = releaseBody.trim().ifEmpty { null },
-                lanzouUrl = parseLanzouUrl(releaseBody)
+                lanzouUrl = parseLanzouUrl(releaseBody, isGo)
             )
         } catch (_: Exception) {
             null
@@ -164,16 +172,16 @@ object UpdateChecker {
     }
 
     /**
-     * 从 Release 正文拆分出与当前版本匹配的蓝奏云直链。
+     * 从 Release 正文拆分出与 [isGo] 匹配的蓝奏云直链。
      * 格式约定（每行独立）：
      * ```
      * [蓝奏云-标准版]: https://xxx.lanzouX.com/xxxx
      * [蓝奏云-Go版]:   https://xxx.lanzouX.com/yyyy
      * ```
      */
-    fun parseLanzouUrl(body: String): String? {
+    fun parseLanzouUrl(body: String, isGo: Boolean): String? {
         if (body.isBlank()) return null
-        val want = lanzouLabel()
+        val want = lanzouLabel(isGo)
         for (line in body.lineSequence()) {
             val m = LANZOU_LINE.find(line.trim()) ?: continue
             if (m.groupValues[1] == want) return m.groupValues[2].trimEnd(')', '，', ',', '。')

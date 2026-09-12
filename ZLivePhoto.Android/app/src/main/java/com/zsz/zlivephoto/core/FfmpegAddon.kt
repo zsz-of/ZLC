@@ -26,6 +26,9 @@ import java.util.zip.ZipInputStream
  */
 internal class AddonException(message: String) : Exception(message)
 
+/** ffmpeg 附加项下载通道（蓝奏云优先，GitHub 次选；由 UI 层让用户选择） */
+enum class DownloadChannel { LANZOU, GITHUB }
+
 object FfmpegAddon {
     /** 标准 MP4 视频编码 fourcc（H.264 / H.265）；其余（vp09/av01/mp4v 等）需转码 */
     val STANDARD_MP4_CODECS = setOf("avc1", "avc3", "hev1", "hvc1")
@@ -54,6 +57,9 @@ object FfmpegAddon {
     /** 已安装的编码器版本（空串=未安装） */
     var installedVersion by mutableStateOf("")
         private set
+    /** 当前软件版本期望的编码器版本（空串=未知，不参与匹配约束） */
+    var expectedVersion by mutableStateOf("")
+        private set
     /** 最近一次安装失败说明 */
     var installError by mutableStateOf<String?>(null)
         private set
@@ -76,6 +82,7 @@ object FfmpegAddon {
         appCtx = context.applicationContext
         prefs = appCtx.getSharedPreferences("zlivephoto", Context.MODE_PRIVATE)
         installedVersion = prefs.getString("ffmpeg_version", "") ?: ""
+        expectedVersion = prefs.getString("ffmpeg_expected", "") ?: ""
         crf = prefs.getInt("ffmpeg_crf", 18).coerceIn(10, 30)
         preset = prefs.getString("ffmpeg_preset", "slow") ?: "slow"
         codec = prefs.getString("ffmpeg_codec", "h265") ?: "h265"
@@ -83,11 +90,21 @@ object FfmpegAddon {
 
     fun isGo(): Boolean = BuildConfig.FLAVOR == "go"
 
-    /** 转码是否可用：二进制已解压且可执行，且非 go 轻量版 */
+    /** 转码是否可用：二进制已解压且可执行、版本与当前软件版本匹配，且非 go 轻量版 */
     fun isReady(): Boolean {
         if (isGo()) return false
         val f = binaryFile() ?: return false
-        return f.exists() && f.length() > 0 && f.canExecute()
+        return f.exists() && f.length() > 0 && f.canExecute() && isVersionMatched()
+    }
+
+    /** 已安装版本与当前软件版本期望版本是否匹配（期望版本未知时不强制约束） */
+    fun isVersionMatched(): Boolean =
+        expectedVersion.isEmpty() || installedVersion.isEmpty() || installedVersion == expectedVersion
+
+    /** 记录当前软件版本期望的编码器版本（软件升级后若与已装版本不一致，转码将被禁用直到重新安装） */
+    fun updateExpectedVersion(v: String) {
+        expectedVersion = v
+        prefs.edit().putString("ffmpeg_expected", v).apply()
     }
 
     /** 当前 ABI 解压后的 ffmpeg 二进制路径 */
@@ -116,41 +133,52 @@ object FfmpegAddon {
     // —— 下载 / 校验 / 解压 ——
 
     /**
-     * 下载 7z 到缓存目录：先走 GitHub 主通道，失败再走蓝奏云备用通道。
-     * 两个通道任一成功即返回本地文件；都失败抛 [AddonException]。
+     * 按用户选择的通道下载「zip 壳」压缩包（蓝奏云 / GitHub 均为同一份 zip，内含内层 7z）。
+     * 两个通道下载的是同一文件，共用同一 SHA-1 校验值。
      */
-    private suspend fun fetchArchive(meta: AddonMeta): File {
-        var lastError: Exception? = null
-
-        // 主通道：GitHub release 资产直链
-        try {
-            return AppUpdater.downloadToCache(appCtx, meta.url) { done, total ->
+    private suspend fun downloadZip(meta: AddonMeta, channel: DownloadChannel): File {
+        return when (channel) {
+            DownloadChannel.GITHUB -> AppUpdater.downloadToCache(appCtx, meta.url) { done, total ->
                 downloadProgress = if (total > 0) done.toFloat() / total else -1f
             }
-        } catch (e: kotlinx.coroutines.CancellationException) {
-            throw e
-        } catch (e: Exception) {
-            lastError = e
-        }
-
-        // 备用通道：蓝奏云（分享页 → CDN 直链 → 下载）
-        val mirror = meta.mirrorUrl
-        if (!mirror.isNullOrBlank()) {
-            try {
-                return AppUpdater.downloadToCache(
+            DownloadChannel.LANZOU -> {
+                val mirror = meta.mirrorUrl
+                if (mirror.isNullOrBlank()) {
+                    throw AddonException("该版本未提供蓝奏云下载链接，可改用 GitHub 下载")
+                }
+                AppUpdater.downloadToCache(
                     appCtx,
                     AppUpdater.resolveLanzouDirectLink(mirror),
                     referer = mirror
                 ) { done, total ->
                     downloadProgress = if (total > 0) done.toFloat() / total else -1f
                 }
+            }
+        }
+    }
+
+    /**
+     * 下载 + SHA-1 校验：校验失败时删除已下载的压缩包并自动重试（最多 3 次）。
+     * 全部失败抛 [AddonException]。
+     */
+    private suspend fun downloadWithVerify(meta: AddonMeta, channel: DownloadChannel): File {
+        var lastError: Exception? = null
+        for (attempt in 1..3) {
+            var archive: File? = null
+            try {
+                archive = downloadZip(meta, channel)
             } catch (e: kotlinx.coroutines.CancellationException) {
                 throw e
             } catch (e: Exception) {
                 lastError = e
             }
+            if (archive != null) {
+                val actual = sha1Hex(archive)
+                if (actual.equals(meta.sha1, ignoreCase = true)) return archive
+                runCatching { archive.delete() }
+                lastError = AddonException("SHA-1 校验失败，正在重新下载（第 $attempt 次）")
+            }
         }
-
         throw AddonException("下载转码器失败：${lastError?.message ?: "未知错误"}")
     }
 
@@ -189,29 +217,26 @@ object FfmpegAddon {
     }
 
     /**
-     * 下载 7z → 校验 sha-1 → 解压 → 删除 7z。失败抛 [AddonException]，成功更新 installedVersion。
-     * 下载通道：优先 GitHub release 资产直链；失败且元数据带蓝奏云地址时自动改用蓝奏云
-     * （先解析分享页得到 CDN 直链再下载，两个通道下载的是同一份文件，共用同一 SHA-1 校验）。
+     * 下载（zip 壳）→ SHA-1 校验（失败自动重试）→ 解出内层 7z → 解压安装 → 删除压缩包。
+     * 失败抛 [AddonException]，成功更新 installedVersion。
+     * @param channel 下载通道（蓝奏云优先 / GitHub 次选），由 UI 层让用户选择。
      */
-    suspend fun downloadAndInstall(meta: AddonMeta) {
+    suspend fun downloadAndInstall(meta: AddonMeta, channel: DownloadChannel) {
         busy = true
         installError = null
         downloadProgress = 0f
         try {
-            val archive = fetchArchive(meta)
+            // 1) 下载 zip 壳并校验 SHA-1（失败自动删除重下）
+            val zipArchive = downloadWithVerify(meta, channel)
             downloadProgress = 1f
 
-            // sha-1 校验
-            val actual = sha1Hex(archive)
-            if (!actual.equals(meta.sha1, ignoreCase = true)) {
-                runCatching { archive.delete() }
-                throw AddonException("7z 校验失败：SHA-1 不匹配，请重新下载")
-            }
+            // 2) 解出内层 7z（zip 壳在解出后即删除）
+            val sevenz = unwrapMirrorArchive(zipArchive)
 
-            // 解压
+            // 3) 解压 7z 安装
             val dest = File(appCtx.filesDir, "ffmpeg")
             val abi = Build.SUPPORTED_ABIS.firstOrNull() ?: "arm64-v8a"
-            val extracted = extract7z(archive, dest)
+            val extracted = extract7z(sevenz, dest)
 
             val binSrc = extracted.firstOrNull {
                 it.name == "ffmpeg" && it.parentFile?.name == abi
@@ -233,9 +258,10 @@ object FfmpegAddon {
 
             installedVersion = ver
             prefs.edit().putString("ffmpeg_version", ver).apply()
+            updateExpectedVersion(meta.version.ifBlank { ver })
 
             // 清理：删除 7z 与临时解压目录中除二进制外的其余内容
-            runCatching { archive.delete() }
+            runCatching { sevenz.delete() }
             dest.listFiles()?.forEach { f ->
                 if (f.name != "ffmpeg") runCatching { f.deleteRecursively() }
             }
@@ -253,16 +279,26 @@ object FfmpegAddon {
         }
     }
 
-    /** 从最新 GitHub Release 拉取附加项元数据并下载安装；失败抛 [AddonException] 并设置 installError */
-    suspend fun installFromLatestRelease() {
-        val meta = UpdateChecker.fetchLatest()?.notes?.let {
-            UpdateChecker.parseAddonMeta(it, BuildConfig.VERSION_NAME)
-        }
+    /**
+     * 拉取**当前软件版本**对应的 ffmpeg 附加项元数据（按 tag `v{版本}` 取该版本 Release 正文解析）。
+     * 返回 null 表示当前版本尚未发布附加项（或网络失败）。
+     */
+    suspend fun fetchMetaForCurrentVersion(): AddonMeta? {
+        val body = UpdateChecker.fetchReleaseBody("v${BuildConfig.VERSION_NAME}") ?: return null
+        val meta = UpdateChecker.parseAddonMeta(body, BuildConfig.VERSION_NAME) ?: return null
+        // 记录当前版本期望的编码器版本，供「版本不匹配则禁用转码」判断
+        if (meta.version.isNotBlank()) updateExpectedVersion(meta.version)
+        return meta
+    }
+
+    /** 下载并安装当前软件版本对应的转码器（默认走蓝奏云通道）；失败抛 [AddonException] 并设置 installError */
+    suspend fun installForCurrentVersion(channel: DownloadChannel = DownloadChannel.LANZOU) {
+        val meta = fetchMetaForCurrentVersion()
         if (meta == null) {
             installError = "发布信息中未找到适用于当前版本（v${BuildConfig.VERSION_NAME}）的转码器附加项，请稍后重试"
             throw AddonException(installError!!)
         }
-        downloadAndInstall(meta)
+        downloadAndInstall(meta, channel)
     }
 
     /** 解压 7z，返回所有解压出的文件（含目录内文件） */

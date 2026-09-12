@@ -56,7 +56,7 @@ object UpdateChecker {
      * 转码器附加项键值对：`github=<url> sha1=<sha1> version=<ver> lanzou=<url> appver=<ver[,ver]>`
      * 键名不区分大小写；除 github/url 外均可省略。
      */
-    private val ADDON_KV = Regex("""([A-Za-z]+)\s*=\s*(\S+)""")
+    private val ADDON_KV = Regex("""([A-Za-z0-9]+)\s*=\s*(\S+)""")
 
     /** 旧版位置式附加项行：`[转码器附加项]: <url> <sha1> <version>` */
     private val ADDON_LINE = Regex("""\[转码器附加项\]\s*[：:]\s*(\S+)\s+(\S+)\s+(\S+)""")
@@ -139,6 +139,25 @@ object UpdateChecker {
                 notes = releaseBody.trim().ifEmpty { null },
                 lanzouUrl = parseLanzouUrl(releaseBody)
             )
+        } catch (_: Exception) {
+            null
+        }
+    }
+
+    /**
+     * 按 tag 拉取指定版本的 Release 正文（供 ffmpeg 附加项按当前软件版本精确匹配）。
+     * @param tag 形如 "v3.4.0"；返回 null 表示不存在该版本或网络失败
+     */
+    suspend fun fetchReleaseBody(tag: String): String? = withContext(Dispatchers.IO) {
+        try {
+            val conn = URL("https://api.github.com/repos/$REPO/releases/tags/${tag}").openConnection() as HttpURLConnection
+            conn.connectTimeout = 10_000
+            conn.readTimeout = 10_000
+            conn.setRequestProperty("Accept", "application/vnd.github+json")
+            conn.setRequestProperty("User-Agent", "ZLC-Android-Updater")
+            if (conn.responseCode != 200) return@withContext null
+            val body = conn.inputStream.bufferedReader().use { it.readText() }
+            JSONObject(body).optString("body").takeIf { it.isNotBlank() }
         } catch (_: Exception) {
             null
         }

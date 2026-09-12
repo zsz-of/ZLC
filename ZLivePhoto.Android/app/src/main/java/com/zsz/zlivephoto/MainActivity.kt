@@ -76,6 +76,8 @@ import com.zsz.zlivephoto.ui.Md3Checkbox
 import com.zsz.zlivephoto.ui.SettingsScreen
 import com.zsz.zlivephoto.ui.ZLivePhotoTheme
 import com.zsz.zlivephoto.ui.UpdateFlowHosts
+import com.zsz.zlivephoto.ui.FfmpegFlowHosts
+import com.zsz.zlivephoto.ui.rememberFfmpegFlow
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
 import com.zsz.zlivephoto.ui.rememberUpdateFlow
 import com.zsz.zlivephoto.ui.wallpaperHue
@@ -122,6 +124,7 @@ class MainActivity : ComponentActivity() {
     private var lastExportError: String? = null
     private var showPermissionDialog by mutableStateOf(false)
     private var showSettingsDialog by mutableStateOf(false)
+    private var showAllFilesDialog by mutableStateOf(false)
     // 清空/处理收尾过程中（清空按钮须禁用，防止动画期间重复触发或状态错乱）
     private var clearBusy by mutableStateOf(false)
     // 防抖落盘任务：识别完成等高频稳定态回调合并为一次 JSON 写入
@@ -263,6 +266,40 @@ class MainActivity : ComponentActivity() {
         action?.invoke()
     }
 
+    // Android 11+ 是否已授予「所有文件访问」权限
+    private fun hasAllFilesAccess(): Boolean =
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()
+
+    // 「所有文件访问」授权页返回后：刷新状态提示
+    private val allFilesAccessLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        statusText = if (hasAllFilesAccess())
+            "已获得「所有文件访问」权限，转换将直写相册目录完整保留位置信息"
+        else
+            "未授予「所有文件访问」权限：个别机型转换后可能丢失位置信息"
+    }
+
+    private fun requestAllFilesAccess() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return
+        try {
+            val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+            intent.data = Uri.fromParts("package", packageName, null)
+            allFilesAccessLauncher.launch(intent)
+        } catch (_: Exception) {}
+    }
+
+    /** 仅在「有媒体读取权限但缺所有文件访问（R+）」时弹一次引导（持久化标记避免反复打扰） */
+    private fun maybePromptAllFilesAccess() {
+        if (!hasReadPermission()) return
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return
+        if (hasAllFilesAccess()) return
+        val prefs = getSharedPreferences("zlivephoto", MODE_PRIVATE)
+        if (prefs.getBoolean("all_files_prompted", false)) return
+        prefs.edit().putBoolean("all_files_prompted", true).apply()
+        showAllFilesDialog = true
+    }
+
     // 媒体权限授予后要执行的动作（默认进入内置选择器；批量导入则继续打开文件夹选择器）
     private var pendingPermissionAction: (() -> Unit)? = null
 
@@ -289,6 +326,8 @@ class MainActivity : ComponentActivity() {
                     .all { it.value }
             statusText = if (videoGranted) "已获得读取照片和视频权限"
                          else "已授权，但视频权限缺失：无法查找双文件动态照片附带的伴生视频"
+            // 授权后若缺「所有文件访问」（R+）弹一次引导，便于后续直写磁盘保留位置
+            maybePromptAllFilesAccess()
             // 执行授权前挂起的动作（批量导入→文件夹选择器；默认→内置选择器）
             val action = pendingPermissionAction
             pendingPermissionAction = null
@@ -520,13 +559,18 @@ class MainActivity : ComponentActivity() {
                 // 完成，动态取色下系统壁纸颜色变化由 registerWallpaperColorListener 驱动）
                 LaunchedEffect(Unit) {
                     IconManager.apply(this@MainActivity)
+                    // 已有媒体读取权限但缺「所有文件访问」（R+）时，弹一次引导（升级用户路径）
+                    maybePromptAllFilesAccess()
                 }
 
                 // 更新弹窗状态（发现新版本 4 按钮 / 说明子弹窗 / 下载进度 / 蓝奏失败回退）
                 val updateFlow = rememberUpdateFlow()
 
+                // 转码器（ffmpeg 附加项）流程状态：检查更新 / 重新安装 / 下载通道选择
+                val ffmpegFlow = rememberFfmpegFlow()
+
                 // 启动时自动检查更新（设置开启时）：后台比对 GitHub 最新 release；
-                // 用户点过「跳过此版本」的版本不再自动弹窗
+                // 用户点过「跳过此版本」的版本不再自动弹窗；无软件更新时再静默检查转码器版本
                 LaunchedEffect(Unit) {
                     if (AppSettings.checkUpdateOnStartup) {
                         val r = UpdateChecker.check(BuildConfig.VERSION_NAME)
@@ -534,12 +578,18 @@ class MainActivity : ComponentActivity() {
                             !AppSettings.isVersionSkipped(r.info.version)
                         ) {
                             updateFlow.present(r.info)
+                        } else if (BuildConfig.FLAVOR != "go") {
+                            // 无软件更新：检查转码器（已是最新则不弹提示，版本不匹配/未安装则弹窗）
+                            ffmpegFlow.checkUpdate(quiet = true)
                         }
                     }
                 }
 
                 // 发现新版本 / 更新说明 / 下载进度 / 蓝奏失败回退等弹窗统一在这里渲染
                 UpdateFlowHosts(updateFlow, vibrate = { haptic.click() })
+
+                // 转码器相关的下载进度 / 结果提示 / 下载通道选择弹窗
+                FfmpegFlowHosts(ffmpegFlow, vibrate = { haptic.click() })
 
                 // 预览式返回：选择器 / 设置页手势进度驱动内容缩小右移（顶层稳定注册，
                 // 不受 AnimatedContent 过渡重组影响；提交后回到主页）
@@ -728,6 +778,36 @@ class MainActivity : ComponentActivity() {
                                 haptic.click()
                                 showSettingsDialog = false
                             }) { Text("取消") }
+                        }
+                    )
+                }
+
+                // 「所有文件访问」引导（Android 11+：直写磁盘保留位置，个别 OEM 的 MediaStore 会脱敏 GPS）
+                if (showAllFilesDialog) {
+                    AlertDialog(
+                        onDismissRequest = {
+                            showAllFilesDialog = false
+                        },
+                        title = { Text("建议授予「所有文件访问」权限") },
+                        text = {
+                            Text(
+                                "部分机型（如魅族）通过系统相册接口写入会脱敏 GPS 位置信息，导致转换后照片丢失位置。\n\n" +
+                                "授予「所有文件访问」后，本程序将直接写入相册目录，完整保留位置元数据。\n\n" +
+                                "不授予也能正常转换，个别机型可能丢失位置信息。"
+                            )
+                        },
+                        confirmButton = {
+                            FilledTonalButton(onClick = {
+                                haptic.click()
+                                showAllFilesDialog = false
+                                requestAllFilesAccess()
+                            }) { Text("去授权") }
+                        },
+                        dismissButton = {
+                            FilledTonalButton(onClick = {
+                                haptic.click()
+                                showAllFilesDialog = false
+                            }) { Text("暂不") }
                         }
                     )
                 }
@@ -1969,6 +2049,14 @@ class MainActivity : ComponentActivity() {
         val ext = src.extension.lowercase()
         val isVideo = ext == "mp4" || ext == "mov"
         val mime = if (isVideo) (if (ext == "mov") "video/quicktime" else "video/mp4") else "image/jpeg"
+
+        // Android 11+：已授予「所有文件访问」时优先直写公共 Pictures 目录（字节级透传，
+        // 规避个别 OEM 经 MediaStore 写入脱敏 EXIF GPS 导致的位置丢失）
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && hasAllFilesAccess()) {
+            val direct = exportDirectWithScan(src, mime, modifiedMs, relSubDir)
+            if (direct != null) return direct
+            // 直写失败（如目录异常）继续回退 MediaStore
+        }
 
         // Android 9-：无 MediaStore 相对路径写入（RELATIVE_PATH/IS_PENDING/VOLUME 均为 Q+ 概念），
         // 直接写公共 Pictures 目录 + 触发媒体扫描（需 WRITE_EXTERNAL_STORAGE，已在权限流程申请）

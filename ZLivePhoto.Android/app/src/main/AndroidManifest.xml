@@ -8,6 +8,9 @@
     <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
     <!-- Photo Picker 的 content 流默认脱敏 GPS EXIF；声明此权限后可读取完整位置元数据 -->
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <!-- Android 11+「所有文件访问」：个别 OEM（如魅族）经 MediaStore 写入会脱敏 EXIF GPS，
+         授权后本程序改为直写公共相册目录，完整保留位置元数据 -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <!-- 设置页/启动时检查更新、应用内一键下载安装：访问 GitHub API / 蓝奏云 / 下载文件 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 应用内一键更新：下载完成后调起系统安装器（Android 8+ 需用户在本应用授权「安装未知应用」） -->

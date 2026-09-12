@@ -1080,21 +1080,25 @@ private fun SettingsActionRow(
 private fun TranscoderAddonSection() {
     if (BuildConfig.FLAVOR == "go") return
     val haptic = rememberHapticFeedback()
-    val scope = rememberCoroutineScope()
+    val ffmpegFlow = rememberFfmpegFlow()
 
     SectionTitle("转码器附加项")
 
     SettingsRowsGroup(
         listOf(
             { s ->
+                // 状态行：展示安装状态（不可点击，操作由下方「检查更新 / 重新安装」承担）
                 val busy = FfmpegAddon.busy
                 val progress = FfmpegAddon.downloadProgress
                 val installed = FfmpegAddon.installedVersion
+                val expected = FfmpegAddon.expectedVersion
                 val error = FfmpegAddon.installError
+                val mismatched = installed.isNotEmpty() && expected.isNotEmpty() && installed != expected
                 val subtitle = when {
                     busy && progress >= 0f -> "下载中 ${(progress * 100).toInt()}%…"
                     busy -> "校验 / 解压中…"
-                    installed.isNotEmpty() -> "已就绪 · 编码器版本 $installed（点击可重新下载）"
+                    mismatched -> "编码器版本 $installed 与当前版本所需 $expected 不匹配，请更新"
+                    installed.isNotEmpty() -> "已就绪 · 编码器版本 $installed"
                     error != null -> error
                     else -> "可选：把非标准 MP4 视频转码为标准 MP4 后再合成动态照片"
                 }
@@ -1113,28 +1117,76 @@ private fun TranscoderAddonSection() {
                         Text(
                             when {
                                 busy -> "进行中"
-                                installed.isNotEmpty() -> "重新下载"
-                                else -> "下载"
+                                mismatched -> "需更新"
+                                installed.isNotEmpty() -> installed
+                                else -> "未安装"
                             },
                             style = MaterialTheme.typography.labelLarge,
                             color = MaterialTheme.colorScheme.primary
                         )
                     },
-                    enabled = !busy,
+                    enabled = false,
+                    onClick = {}
+                )
+            },
+            { s ->
+                SettingsActionRow(
+                    shape = s,
+                    title = "检查更新",
+                    subtitle = if (ffmpegFlow.checking) "正在检查…"
+                               else "比对当前版本与已安装的编码器版本",
+                    icon = {
+                        Icon(
+                            Icons.Default.Refresh,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                    },
+                    trailing = {
+                        Text(
+                            if (ffmpegFlow.checking) "检查中" else "检查",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    },
+                    enabled = !ffmpegFlow.checking && !FfmpegAddon.busy,
                     onClick = {
                         haptic.click()
-                        scope.launch {
-                            try {
-                                FfmpegAddon.installFromLatestRelease()
-                            } catch (_: Exception) {
-                                // installError 已由 FfmpegAddon 记录，UI 直接展示
-                            }
-                        }
+                        ffmpegFlow.checkUpdate()
+                    }
+                )
+            },
+            { s ->
+                SettingsActionRow(
+                    shape = s,
+                    title = "重新安装",
+                    subtitle = "只安装与当前软件版本匹配的编码器版本",
+                    icon = {
+                        Icon(
+                            Icons.Default.CloudDownload,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                    },
+                    trailing = {
+                        Text(
+                            "重装",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    },
+                    enabled = !FfmpegAddon.busy,
+                    onClick = {
+                        haptic.click()
+                        ffmpegFlow.reinstall()
                     }
                 )
             }
         )
     )
+
+    // 转码器相关弹窗（选择下载通道 / 下载进度 / 结果提示）
+    FfmpegFlowHosts(ffmpegFlow, vibrate = { haptic.click() })
 
     if (FfmpegAddon.installedVersion.isNotEmpty()) {
         Spacer(Modifier.height(12.dp))

@@ -112,6 +112,12 @@ import kotlin.coroutines.resume
 /** 文件名冲突处理动作 */
 internal enum class ConflictAction { SKIP, OVERWRITE, RENAME }
 
+/**
+ * 会话型弹窗占用者（全局弹窗闸门）：同一时刻只允许一个弹窗占用屏幕。
+ * 处理（转换 / 导入）进行中一律不占用，处理队列结束后再按此优先级依次弹出。
+ */
+private enum class DialogOwner { NONE, PERMISSION, UPDATE, FFMPEG, ALL_FILES, LEGACY }
+
 /** 冲突询问请求（挂起协程 ↔ 弹窗之间的桥） */
 private class ConflictRequest(
     val displayNames: String,
@@ -615,14 +621,40 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
+                // ── 全局会话型弹窗闸门 ──
+                // 权限请求 / 应用更新 / 编码器更新 / 「所有文件访问」推荐 / 旧版本提示
+                // 同一时刻只允许弹出一个：处理（转换 / 导入）进行中整体抑制，处理队列
+                // 完成后才弹出；当前占用者关闭后自动轮到下一个（按下列优先级）。
+                val sessionDialogOwner = when {
+                    isConverting || isImporting -> DialogOwner.NONE
+                    showPermissionDialog || showSettingsDialog -> DialogOwner.PERMISSION
+                    updateFlow.wantsDialog -> DialogOwner.UPDATE
+                    ffmpegFlow.wantsDialog -> DialogOwner.FFMPEG
+                    showAllFilesDialog -> DialogOwner.ALL_FILES
+                    legacyFlow.visible -> DialogOwner.LEGACY
+                    else -> DialogOwner.NONE
+                }
+
                 // 发现新版本 / 更新说明 / 下载进度 / 蓝奏失败回退等弹窗统一在这里渲染
-                UpdateFlowHosts(updateFlow, vibrate = { haptic.click() })
+                UpdateFlowHosts(
+                    updateFlow,
+                    vibrate = { haptic.click() },
+                    enabled = sessionDialogOwner == DialogOwner.UPDATE
+                )
 
                 // 转码器相关的下载进度 / 结果提示 / 下载通道选择弹窗
-                FfmpegFlowHosts(ffmpegFlow, vibrate = { haptic.click() })
+                FfmpegFlowHosts(
+                    ffmpegFlow,
+                    vibrate = { haptic.click() },
+                    enabled = sessionDialogOwner == DialogOwner.FFMPEG
+                )
 
                 // 旧版本卸载提示弹窗
-                LegacyUninstallFlowHosts(legacyFlow, vibrate = { haptic.click() })
+                LegacyUninstallFlowHosts(
+                    legacyFlow,
+                    vibrate = { haptic.click() },
+                    enabled = sessionDialogOwner == DialogOwner.LEGACY
+                )
 
                 // 预览式返回：选择器 / 设置页手势进度驱动内容缩小右移（顶层稳定注册，
                 // 不受 AnimatedContent 过渡重组影响；提交后回到主页）
@@ -752,8 +784,8 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
-                // 权限请求对话框（首次或仍可请求时）
-                if (showPermissionDialog) {
+                // 权限请求对话框（首次或仍可请求时；由上方全局闸门决定是否轮到自己弹出）
+                if (showPermissionDialog && sessionDialogOwner == DialogOwner.PERMISSION) {
                     AlertDialog(
                         onDismissRequest = {
                             // 拒绝不退出应用，仅关闭对话框
@@ -785,8 +817,8 @@ class MainActivity : ComponentActivity() {
                     )
                 }
 
-                // 跳转设置对话框（用户选了「不再询问」）
-                if (showSettingsDialog) {
+                // 跳转设置对话框（用户选了「不再询问」；与权限请求同一闸门优先级）
+                if (showSettingsDialog && sessionDialogOwner == DialogOwner.PERMISSION) {
                     AlertDialog(
                         onDismissRequest = {
                             showSettingsDialog = false
@@ -816,7 +848,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 // 「所有文件访问」引导（Android 11+：直写磁盘保留位置，个别 OEM 的 MediaStore 会脱敏 GPS）
-                if (showAllFilesDialog) {
+                if (showAllFilesDialog && sessionDialogOwner == DialogOwner.ALL_FILES) {
                     AlertDialog(
                         onDismissRequest = {
                             showAllFilesDialog = false

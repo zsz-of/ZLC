@@ -161,8 +161,13 @@ fun rememberLegacyUninstallFlow(): LegacyUninstallFlowController =
 
 /** 渲染旧版本卸载提示弹窗（支持「不再提示」「卸载」两个动作） */
 @Composable
-fun LegacyUninstallFlowHosts(flow: LegacyUninstallFlowController, vibrate: () -> Unit = {}) {
-    if (!flow.visible) return
+fun LegacyUninstallFlowHosts(
+    flow: LegacyUninstallFlowController,
+    vibrate: () -> Unit = {},
+    enabled: Boolean = true
+) {
+    // 全局弹窗闸门：同一时刻只允许一个会话型弹窗（处理进行中时由闸门整体抑制）
+    if (!enabled || !flow.visible) return
     val context = LocalContext.current
     AlertDialog(
         onDismissRequest = { flow.dismiss() },

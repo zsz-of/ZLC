@@ -85,6 +85,13 @@ internal class UpdateFlowController(
 
     private var downloadJob: Job? = null
 
+    /**
+     * 是否有会话型弹窗需要占用屏幕。供宿主（MainActivity）的全局弹窗闸门排队：
+     * 同一时刻只允许一个弹窗占用，处理（转换/导入）进行中一律延后。
+     */
+    val wantsDialog: Boolean
+        get() = busy != null || permissionApk != null || message != null || info != null
+
     /** 当前版本对应的发布渠道标签（normal=标准版，go=Go版；切正常版时强制标准版） */
     val flavorLabel: String
         get() = if (switchToNormalMode || BuildConfig.FLAVOR != "go") "标准版" else "Go 版"
@@ -297,7 +304,11 @@ private fun notesForDisplay(notes: String?): String {
 
 /** 在宿主界面渲染更新相关的全部弹窗（调用一次即可，状态由 [flow] 驱动） */
 @Composable
-internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {}) {
+internal fun UpdateFlowHosts(
+    flow: UpdateFlowController,
+    vibrate: () -> Unit = {},
+    enabled: Boolean = true
+) {
     val context = LocalContext.current
 
     // 「安装未知应用」授权页返回后回调（已授权则自动续装）
@@ -306,6 +317,9 @@ internal fun UpdateFlowHosts(flow: UpdateFlowController, vibrate: () -> Unit = {
     ) {
         flow.onPermissionResult()
     }
+
+    // 全局弹窗闸门：同一时刻只允许一个会话型弹窗（处理进行中时由闸门整体抑制）
+    if (!enabled) return
 
     // ── 下载 / 解压进度（带「取消」按钮，立即停止并清理缓存）──
     val busy = flow.busy

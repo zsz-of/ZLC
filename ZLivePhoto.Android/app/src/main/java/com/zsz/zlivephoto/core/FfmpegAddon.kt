@@ -51,6 +51,9 @@ object FfmpegAddon {
     /** 下载进度 0..1；-1 表示未在下载 */
     var downloadProgress by mutableStateOf(-1f)
         private set
+    /** 解压进度 0..1；-1 表示未在解压（下载完成后进入解压阶段，UI 据此显示解压进度条） */
+    var extractProgress by mutableStateOf(-1f)
+        private set
     /** 下载/校验/解压进行中 */
     var busy by mutableStateOf(false)
         private set
@@ -225,45 +228,52 @@ object FfmpegAddon {
         busy = true
         installError = null
         downloadProgress = 0f
+        extractProgress = -1f
         try {
             // 1) 下载 zip 壳并校验 SHA-1（失败自动删除重下）
             val zipArchive = downloadWithVerify(meta, channel)
             downloadProgress = 1f
 
-            // 2) 解出内层 7z（zip 壳在解出后即删除）
-            val sevenz = unwrapMirrorArchive(zipArchive)
+            // 2)~4) 解 zip 壳 / 解压 7z / 落盘二进制：整体放在 IO 线程执行。
+            // 若留在调用方（主线程）上执行，解压期间会把主线程卡住 —— 既可能 ANR，
+            // 也让「解压中 x%」的进度永远刷不出来。
+            withContext(Dispatchers.IO) {
+                // 2) 解出内层 7z（zip 壳在解出后即删除）
+                val sevenz = unwrapMirrorArchive(zipArchive)
 
-            // 3) 解压 7z 安装
-            val dest = File(appCtx.filesDir, "ffmpeg")
-            val abi = Build.SUPPORTED_ABIS.firstOrNull() ?: "arm64-v8a"
-            val extracted = extract7z(sevenz, dest)
+                // 3) 解压 7z 安装（解压阶段单独上报进度，UI 显示「解压中 x%」更直观）
+                val dest = File(appCtx.filesDir, "ffmpeg")
+                val abi = Build.SUPPORTED_ABIS.firstOrNull() ?: "arm64-v8a"
+                extractProgress = 0f
+                val extracted = extract7z(sevenz, dest) { p -> extractProgress = p }
 
-            val binSrc = extracted.firstOrNull {
-                it.name == "ffmpeg" && it.parentFile?.name == abi
-            } ?: extracted.firstOrNull { it.name == "ffmpeg" }
-                ?: throw AddonException("7z 内未找到 ffmpeg 二进制（$abi）")
+                val binSrc = extracted.firstOrNull {
+                    it.name == "ffmpeg" && it.parentFile?.name == abi
+                } ?: extracted.firstOrNull { it.name == "ffmpeg" }
+                    ?: throw AddonException("7z 内未找到 ffmpeg 二进制（$abi）")
 
-            val target = File(dest, "ffmpeg")
-            binSrc.copyTo(target, overwrite = true)
-            target.setExecutable(true, false)
-            target.setReadable(true, false)
+                val target = File(dest, "ffmpeg")
+                binSrc.copyTo(target, overwrite = true)
+                target.setExecutable(true, false)
+                target.setReadable(true, false)
 
-            // 读取元数据识别版本
-            val metaFile = extracted.firstOrNull { it.name == "ffmpeg-meta.json" }
-            val ver = metaFile?.let { f ->
-                runCatching {
-                    JSONObject(f.readText(Charsets.UTF_8)).optString("version", "")
-                }.getOrDefault("")
-            }.orEmpty().ifEmpty { meta.version }
+                // 读取元数据识别版本
+                val metaFile = extracted.firstOrNull { it.name == "ffmpeg-meta.json" }
+                val ver = metaFile?.let { f ->
+                    runCatching {
+                        JSONObject(f.readText(Charsets.UTF_8)).optString("version", "")
+                    }.getOrDefault("")
+                }.orEmpty().ifEmpty { meta.version }
 
-            installedVersion = ver
-            prefs.edit().putString("ffmpeg_version", ver).apply()
-            updateExpectedVersion(meta.version.ifBlank { ver })
+                installedVersion = ver
+                prefs.edit().putString("ffmpeg_version", ver).apply()
+                updateExpectedVersion(meta.version.ifBlank { ver })
 
-            // 清理：删除 7z 与临时解压目录中除二进制外的其余内容
-            runCatching { sevenz.delete() }
-            dest.listFiles()?.forEach { f ->
-                if (f.name != "ffmpeg") runCatching { f.deleteRecursively() }
+                // 清理：删除 7z 与临时解压目录中除二进制外的其余内容
+                runCatching { sevenz.delete() }
+                dest.listFiles()?.forEach { f ->
+                    if (f.name != "ffmpeg") runCatching { f.deleteRecursively() }
+                }
             }
         } catch (e: AddonException) {
             installError = e.message
@@ -276,6 +286,7 @@ object FfmpegAddon {
         } finally {
             busy = false
             downloadProgress = -1f
+            extractProgress = -1f
         }
     }
 
@@ -314,11 +325,17 @@ object FfmpegAddon {
         if (::prefs.isInitialized) prefs.edit().remove("ffmpeg_version").apply()
     }
 
-    /** 解压 7z，返回所有解压出的文件（含目录内文件） */
-    private fun extract7z(archive: File, dest: File): List<File> {
+    /**
+     * 解压 7z，返回所有解压出的文件（含目录内文件）。
+     * 按 7z 头部的各条目未压缩大小计算总字节数，逐块回调解压进度（总大小未知时回调 -1）。
+     */
+    private fun extract7z(archive: File, dest: File, onProgress: (Float) -> Unit = {}): List<File> {
         dest.mkdirs()
         val out = mutableListOf<File>()
         SevenZFile(archive).use { sz ->
+            val total = sz.entries.sumOf { if (it.isDirectory) 0L else it.size }.coerceAtLeast(0L)
+            var done = 0L
+            onProgress(if (total > 0L) 0f else -1f)
             while (true) {
                 val entry = sz.nextEntry ?: break
                 val f = File(dest, entry.name)
@@ -333,10 +350,13 @@ object FfmpegAddon {
                         val n = sz.read(buf)
                         if (n < 0) break
                         fos.write(buf, 0, n)
+                        done += n
+                        onProgress(if (total > 0L) (done.toFloat() / total).coerceIn(0f, 1f) else -1f)
                     }
                 }
                 out.add(f)
             }
+            onProgress(1f)
         }
         return out
     }

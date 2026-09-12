@@ -803,7 +803,9 @@ private fun SortSearchBar(
         )
 
         Column(Modifier.fillMaxWidth()) {
-            // 第一行：搜索背景板（原地平滑扩展）+ 收起态的排序控件
+            // 第一行：搜索背景板（原地平滑扩展）+ 收起态的排序控件。
+            // 高度锁死为 40dp 并裁剪：宽度动画过程中内部文本/清除按钮一律不得换行或撑高，
+            // 否则整条栏会在展开/收起过程中“抽搐”。
             Row(
                 Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -816,7 +818,7 @@ private fun SortSearchBar(
                     modifier = Modifier.width(surfaceWidth)
                 ) {
                     Row(
-                        Modifier.fillMaxWidth().padding(vertical = 2.dp),
+                        Modifier.fillMaxWidth().height(40.dp).clipToBounds(),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Box(
@@ -845,7 +847,7 @@ private fun SortSearchBar(
                             exit = fadeOut(tween(120)) + shrinkHorizontally(tween(180, easing = FancyEasing))
                         ) {
                             Row(
-                                Modifier.fillMaxWidth(),
+                                Modifier.fillMaxWidth().clipToBounds(),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 BasicTextField(
@@ -853,6 +855,7 @@ private fun SortSearchBar(
                                     onValueChange = onSearchQuery,
                                     modifier = Modifier.weight(1f),
                                     singleLine = true,
+                                    maxLines = 1,
                                     textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp),
                                     cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
                                     decorationBox = { innerTextField ->
@@ -861,6 +864,8 @@ private fun SortSearchBar(
                                                 Text(
                                                     "按名称搜索",
                                                     fontSize = 13.sp,
+                                                    maxLines = 1,
+                                                    softWrap = false,
                                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                                 )
                                             }
@@ -869,9 +874,25 @@ private fun SortSearchBar(
                                     }
                                 )
                                 if (searchQuery.isNotEmpty()) {
-                                    IconButton(onClick = { haptic.click(); onSearchQuery("") }) {
-                                        Icon(Icons.Default.Close, contentDescription = "清空搜索",
-                                            modifier = Modifier.size(18.dp))
+                                    // 用 32dp 自绘点击块代替 IconButton（IconButton 最小触摸目标 48dp 会把
+                                    // 40dp 高的搜索栏撑高 → 展开/收起时高度抽搐）
+                                    Box(
+                                        Modifier
+                                            .size(32.dp)
+                                            .clickable(
+                                                interactionSource = remember { MutableInteractionSource() },
+                                                indication = null
+                                            ) {
+                                                haptic.click()
+                                                onSearchQuery("")
+                                            },
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Icon(
+                                            Icons.Default.Close,
+                                            contentDescription = "清空搜索",
+                                            modifier = Modifier.size(18.dp)
+                                        )
                                     }
                                 }
                             }
@@ -895,11 +916,15 @@ private fun SortSearchBar(
                 }
             }
 
-            // 展开态：排序控件下移到第二行
+            // 展开态：排序控件下移到第二行。
+            // 用 expand/shrinkVertically 平滑改变高度（原先 slide 是瞬时改高度 → 与宽度动画
+            // 不同步，表现为“垂直高度抽搐”）。
             AnimatedVisibility(
                 visible = searchOpen,
-                enter = slideInVertically(tween(240, easing = FancyEasing)) { -it } + fadeIn(tween(180)),
-                exit = slideOutVertically(tween(200, easing = FancyEasing)) { -it } + fadeOut(tween(140))
+                enter = expandVertically(tween(240, easing = FancyEasing), expandFrom = Alignment.Top) +
+                        fadeIn(tween(180)),
+                exit = shrinkVertically(tween(200, easing = FancyEasing), shrinkTowards = Alignment.Top) +
+                        fadeOut(tween(140))
             ) {
                 SortControlsRow(
                     sortField = sortField,

@@ -1,14 +1,18 @@
 package com.zsz.zlivephoto.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -19,10 +23,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.core.DownloadChannel
 import com.zsz.zlivephoto.core.FfmpegAddon
 import kotlinx.coroutines.CancellationException
@@ -44,6 +51,12 @@ internal class FfmpegFlowController(private val scope: CoroutineScope) {
     /** 弹窗标题：区分「发现转码器更新 / 首次安装」与「重新安装转码器」 */
     var promptTitle by mutableStateOf("安装转码器")
         private set
+    /** true=已安装且检测到新编码器版本（可「跳过此版本」）；false=首次安装/重新安装 */
+    var promptUpdateMode by mutableStateOf(false)
+        private set
+    /** 正在查看转码器更新说明（说明弹窗之上保留主弹窗状态，关闭说明后回到主弹窗） */
+    var showNotes by mutableStateOf(false)
+        private set
     /** 结果 / 错误提示 */
     var message by mutableStateOf<String?>(null)
         private set
@@ -51,15 +64,44 @@ internal class FfmpegFlowController(private val scope: CoroutineScope) {
     var checking by mutableStateOf(false)
         private set
 
+    /**
+     * 是否有会话型弹窗需要占用屏幕。供宿主（MainActivity）的全局弹窗闸门排队：
+     * 同一时刻只允许一个弹窗占用，处理（转换/导入）进行中一律延后。
+     */
+    val wantsDialog: Boolean
+        get() = FfmpegAddon.busy || message != null || promptMeta != null
+
     /** 展示「选择下载通道」弹窗 */
-    fun presentPrompt(meta: FfmpegAddon.AddonMeta, title: String) {
+    fun presentPrompt(meta: FfmpegAddon.AddonMeta, title: String, updateMode: Boolean = false) {
         promptMeta = meta
         promptTitle = title
+        promptUpdateMode = updateMode
+        showNotes = false
         message = null
+    }
+
+    fun openNotes() {
+        showNotes = true
+    }
+
+    fun closeNotes() {
+        showNotes = false
     }
 
     fun dismissPrompt() {
         promptMeta = null
+        promptTitle = "安装转码器"
+        promptUpdateMode = false
+        showNotes = false
+    }
+
+    /**
+     * 「跳过此版本」：记住当前编码器版本，除非发布更新的编码器版本，否则自动检查时不再提示
+     * （与软件更新的「跳过此版本」逻辑一致；手动「检查更新」仍会给出结果）。
+     */
+    fun skipThisVersion() {
+        promptMeta?.let { AppSettings.rememberSkippedAddonVersion(it.version) }
+        dismissPrompt()
     }
 
     fun closeMessage() {
@@ -69,7 +111,7 @@ internal class FfmpegFlowController(private val scope: CoroutineScope) {
     /**
      * 「检查更新」：拉取当前软件版本对应的转码器元数据，与已安装版本比对。
      * 未安装或版本不匹配 → 弹窗提示下载；匹配 → 提示已是最新。
-     * @param quiet true=静默检查（启动时用）：已是最新/无附加项信息时不弹提示，仅在不匹配时弹窗
+     * @param quiet true=静默检查（启动时用）：已是最新/无附加项信息/已跳过该版本时不弹提示，仅在不匹配时弹窗
      */
     fun checkUpdate(quiet: Boolean = false) {
         if (checking || FfmpegAddon.busy) return
@@ -96,7 +138,9 @@ internal class FfmpegFlowController(private val scope: CoroutineScope) {
                     true
                 }
                 installed != meta.version -> {
-                    presentPrompt(meta, "发现转码器更新（$installed → ${meta.version}）")
+                    // 用户已「跳过此版本」时，自动检查不再打扰（手动检查仍给出提示）
+                    if (quiet && AppSettings.isAddonVersionSkipped(meta.version)) return false
+                    presentPrompt(meta, "发现转码器更新", updateMode = true)
                     true
                 }
                 else -> {
@@ -178,21 +222,36 @@ internal fun rememberFfmpegFlow(): FfmpegFlowController {
     return remember { FfmpegFlowController(scope) }
 }
 
-/** 渲染 ffmpeg 转码器相关的全部弹窗（下载进度 / 结果提示 / 选择下载通道） */
+/** 渲染 ffmpeg 转码器相关的全部弹窗（下载/解压进度 / 结果提示 / 更新说明 / 选择下载通道） */
 @Composable
-internal fun FfmpegFlowHosts(flow: FfmpegFlowController, vibrate: () -> Unit = {}) {
+internal fun FfmpegFlowHosts(
+    flow: FfmpegFlowController,
+    vibrate: () -> Unit = {},
+    enabled: Boolean = true
+) {
+    // 全局弹窗闸门：同一时刻只允许一个会话型弹窗（处理进行中时由闸门整体抑制）
+    if (!enabled) return
+
     // ── 下载 / 校验 / 解压进度（状态由 FfmpegAddon 维护，与设置页共用）──
     if (FfmpegAddon.busy) {
         val progress = FfmpegAddon.downloadProgress
+        val extract = FfmpegAddon.extractProgress
+        val extracting = extract >= 0f
         AlertDialog(
             onDismissRequest = {},
-            title = { Text("下载转码器") },
+            title = { Text(if (extracting) "解压转码器" else "下载转码器") },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    val label = if (progress >= 0f) "下载中 ${(progress * 100).toInt()}%…" else "下载中…"
+                    val label = when {
+                        extracting && extract >= 0f -> "解压中 ${(extract * 100).toInt()}%…"
+                        extracting -> "解压中…"
+                        progress >= 0f -> "下载中 ${(progress * 100).toInt()}%…"
+                        else -> "下载中…"
+                    }
                     Text(label, style = MaterialTheme.typography.bodyMedium)
-                    if (progress >= 0f) {
-                        LinearProgressIndicator(progress = { progress }, modifier = Modifier.fillMaxWidth())
+                    val fraction = if (extracting) extract else progress
+                    if (fraction >= 0f) {
+                        LinearProgressIndicator(progress = { fraction }, modifier = Modifier.fillMaxWidth())
                     } else {
                         LinearProgressIndicator(Modifier.fillMaxWidth())
                     }
@@ -218,9 +277,29 @@ internal fun FfmpegFlowHosts(flow: FfmpegFlowController, vibrate: () -> Unit = {
         return
     }
 
-    // ── 选择下载通道（发现更新 / 首次安装 / 重新安装）──
+    // ── 编码器更新说明子弹窗（与软件更新的「更新说明」同构，关闭后回到主弹窗）──
     val meta = flow.promptMeta
+    if (meta != null && flow.showNotes) {
+        AlertDialog(
+            onDismissRequest = { flow.closeNotes() },
+            title = { Text("编码器 ${meta.version} · 说明") },
+            text = {
+                Text(
+                    addonNotes(meta),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            },
+            confirmButton = {
+                Button(onClick = { vibrate(); flow.closeNotes() }) { Text("返回") }
+            }
+        )
+        return
+    }
+
+    // ── 选择下载通道（发现更新 / 首次安装 / 重新安装）──
     if (meta != null) {
+        val installed = FfmpegAddon.installedVersion
         AlertDialog(
             onDismissRequest = {
                 vibrate()
@@ -237,10 +316,35 @@ internal fun FfmpegFlowHosts(flow: FfmpegFlowController, vibrate: () -> Unit = {
                         color = MaterialTheme.colorScheme.primary
                     )
                     Text(
-                        "下载完成后将自动校验 SHA-1 并解压安装，随后删除压缩包。",
+                        if (flow.promptUpdateMode && installed.isNotEmpty())
+                            "当前已安装 $installed，可更新到 ${meta.version}。"
+                        else
+                            "下载完成后将自动校验 SHA-1 并解压安装，随后删除压缩包。",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(6.dp))
+                            .clickable {
+                                vibrate()
+                                flow.openNotes()
+                            }
+                            .padding(vertical = 4.dp)
+                    ) {
+                        Text(
+                            "查看更新说明",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        Spacer(Modifier.width(2.dp))
+                        Text(
+                            "›",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
                     Spacer(Modifier.height(4.dp))
                     // 首选渠道：蓝奏云
                     Button(
@@ -261,18 +365,51 @@ internal fun FfmpegFlowHosts(flow: FfmpegFlowController, vibrate: () -> Unit = {
                         },
                         modifier = Modifier.fillMaxWidth().height(44.dp)
                     ) { Text("从 GitHub 下载") }
-                    // 暂不下载：与上面两个按钮同款尺寸/风格（整行宽度）
-                    OutlinedButton(
-                        onClick = {
-                            vibrate()
-                            flow.dismissPrompt()
-                        },
-                        modifier = Modifier.fillMaxWidth().height(44.dp)
-                    ) { Text("暂不下载") }
+                    Spacer(Modifier.height(2.dp))
+                    if (flow.promptUpdateMode) {
+                        // 更新模式：与软件更新一致 —— 「暂不下载」+「跳过此版本」
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            FilledTonalButton(
+                                onClick = {
+                                    vibrate()
+                                    flow.dismissPrompt()
+                                },
+                                modifier = Modifier.weight(1f).height(44.dp)
+                            ) { Text("暂不下载") }
+                            OutlinedButton(
+                                onClick = {
+                                    vibrate()
+                                    flow.skipThisVersion()
+                                },
+                                modifier = Modifier.weight(1f).height(44.dp)
+                            ) { Text("跳过此版本") }
+                        }
+                    } else {
+                        // 首次安装 / 重新安装：无可跳过的版本，只留整行「暂不下载」
+                        OutlinedButton(
+                            onClick = {
+                                vibrate()
+                                flow.dismissPrompt()
+                            },
+                            modifier = Modifier.fillMaxWidth().height(44.dp)
+                        ) { Text("暂不下载") }
+                    }
                 }
             },
             confirmButton = {},
             dismissButton = {}
         )
     }
+}
+
+/** 转码器「更新说明」正文：由附加项元数据生成（与发布页正文中的转码器说明对应） */
+private fun addonNotes(meta: FfmpegAddon.AddonMeta): String = buildString {
+    appendLine("编码器版本：${meta.version}")
+    appendLine("适用软件版本：v${BuildConfig.VERSION_NAME}")
+    appendLine()
+    appendLine("包含 libx264 / libx265 编码器，可把非标准 MP4 视频（如 WebM / MKV / AV1）转码为标准 MP4（H.264 / H.265）后再合成动态照片。")
+    appendLine()
+    appendLine("下载完成后自动校验 SHA-1 并解压安装，随后删除压缩包；转码器不内置在 APK 中，可随时在设置页删除。")
+    appendLine()
+    append("SHA-1：${meta.sha1}")
 }

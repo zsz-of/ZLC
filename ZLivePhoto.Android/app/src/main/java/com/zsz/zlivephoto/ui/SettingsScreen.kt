@@ -44,6 +44,7 @@ import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.Code
+import androidx.compose.material.icons.filled.DeleteOutline
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Palette
@@ -1017,7 +1018,10 @@ private fun SettingsInfoRow(
     }
 }
 
-/** 可点击操作行（检查更新 / GitHub 链接），带弹性动画；[enabled]=false 时禁用（半透明、不可点） */
+/**
+ * 可点击操作行（检查更新 / GitHub 链接），带弹性动画；[enabled]=false 时禁用（半透明、不可点）。
+ * [danger]=true 时背景板与文字改用 error 配色（与主页「清空」按钮同款背景板），用于破坏性操作。
+ */
 @Composable
 private fun SettingsActionRow(
     shape: RoundedCornerShape,
@@ -1026,6 +1030,7 @@ private fun SettingsActionRow(
     icon: @Composable () -> Unit,
     trailing: @Composable () -> Unit,
     enabled: Boolean = true,
+    danger: Boolean = false,
     onClick: () -> Unit
 ) {
     val fb = rememberPressFeedback(hapticOnPress = false)
@@ -1033,7 +1038,10 @@ private fun SettingsActionRow(
         Modifier
             .fillMaxWidth()
             .heightIn(min = 64.dp)
-            .background(MaterialTheme.colorScheme.surfaceContainerLow, shape)
+            .background(
+                if (danger) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.surfaceContainerLow,
+                shape
+            )
             .then(
                 if (enabled) {
                     Modifier
@@ -1053,13 +1061,21 @@ private fun SettingsActionRow(
         icon()
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
-            Text(title, style = MaterialTheme.typography.titleSmall)
+            Text(
+                title,
+                style = MaterialTheme.typography.titleSmall,
+                color = if (danger) MaterialTheme.colorScheme.onError else Color.Unspecified
+            )
             if (subtitle != null) {
                 Spacer(Modifier.height(2.dp))
                 Text(
                     subtitle,
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = if (danger) {
+                        MaterialTheme.colorScheme.onError.copy(alpha = 0.85f)
+                    } else {
+                        MaterialTheme.colorScheme.onSurfaceVariant
+                    },
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -1087,24 +1103,25 @@ private fun TranscoderAddonSection() {
     SettingsRowsGroup(
         listOf(
             { s ->
-                // 状态行：展示安装状态（不可点击，操作由下方「检查更新 / 重新安装」承担）
+                // 安装 / 重新安装：未安装时为「安装转码器」，已安装后变为「重新安装转码器」
                 val busy = FfmpegAddon.busy
                 val progress = FfmpegAddon.downloadProgress
                 val installed = FfmpegAddon.installedVersion
                 val expected = FfmpegAddon.expectedVersion
                 val error = FfmpegAddon.installError
                 val mismatched = installed.isNotEmpty() && expected.isNotEmpty() && installed != expected
+                val hasAddon = installed.isNotEmpty()
                 val subtitle = when {
                     busy && progress >= 0f -> "下载中 ${(progress * 100).toInt()}%…"
                     busy -> "校验 / 解压中…"
                     mismatched -> "编码器版本 $installed 与当前版本所需 $expected 不匹配，请更新"
-                    installed.isNotEmpty() -> "已就绪 · 编码器版本 $installed"
+                    hasAddon -> "已就绪 · 编码器版本 $installed"
                     error != null -> error
                     else -> "可选：把非标准 MP4 视频转码为标准 MP4 后再合成动态照片"
                 }
                 SettingsActionRow(
                     shape = s,
-                    title = "ffmpeg 视频转码器",
+                    title = if (hasAddon) "重新安装转码器" else "安装转码器",
                     subtitle = subtitle,
                     icon = {
                         Icon(
@@ -1117,24 +1134,32 @@ private fun TranscoderAddonSection() {
                         Text(
                             when {
                                 busy -> "进行中"
-                                mismatched -> "需更新"
-                                installed.isNotEmpty() -> installed
-                                else -> "未安装"
+                                hasAddon -> "重装"
+                                else -> "安装"
                             },
                             style = MaterialTheme.typography.labelLarge,
                             color = MaterialTheme.colorScheme.primary
                         )
                     },
-                    enabled = false,
-                    onClick = {}
+                    enabled = !busy,
+                    onClick = {
+                        haptic.click()
+                        ffmpegFlow.install(reinstall = hasAddon)
+                    }
                 )
             },
             { s ->
+                // 检查更新：仅安装转码器后可用（未安装时无“更新”可比对）
+                val installed = FfmpegAddon.installedVersion
+                val hasAddon = installed.isNotEmpty()
                 SettingsActionRow(
                     shape = s,
                     title = "检查更新",
-                    subtitle = if (ffmpegFlow.checking) "正在检查…"
-                               else "比对当前版本与已安装的编码器版本",
+                    subtitle = when {
+                        !hasAddon -> "安装转码器后可用"
+                        ffmpegFlow.checking -> "正在检查…"
+                        else -> "比对当前版本与已安装的编码器版本"
+                    },
                     icon = {
                         Icon(
                             Icons.Default.Refresh,
@@ -1149,7 +1174,7 @@ private fun TranscoderAddonSection() {
                             color = MaterialTheme.colorScheme.primary
                         )
                     },
-                    enabled = !ffmpegFlow.checking && !FfmpegAddon.busy,
+                    enabled = hasAddon && !ffmpegFlow.checking && !FfmpegAddon.busy,
                     onClick = {
                         haptic.click()
                         ffmpegFlow.checkUpdate()
@@ -1157,28 +1182,32 @@ private fun TranscoderAddonSection() {
                 )
             },
             { s ->
+                // 删除转码器：仅已安装时可用；背景板与主页「清空」按钮一致（error 配色）
+                val hasAddon = FfmpegAddon.installedVersion.isNotEmpty()
                 SettingsActionRow(
                     shape = s,
-                    title = "重新安装",
-                    subtitle = "只安装与当前软件版本匹配的编码器版本",
+                    title = "删除转码器",
+                    subtitle = if (hasAddon) "删除已下载的转码器，转码功能随之停用"
+                               else "当前未安装转码器",
                     icon = {
                         Icon(
-                            Icons.Default.CloudDownload,
+                            Icons.Default.DeleteOutline,
                             contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary
+                            tint = MaterialTheme.colorScheme.onError
                         )
                     },
                     trailing = {
                         Text(
-                            "重装",
+                            "删除",
                             style = MaterialTheme.typography.labelLarge,
-                            color = MaterialTheme.colorScheme.primary
+                            color = MaterialTheme.colorScheme.onError
                         )
                     },
-                    enabled = !FfmpegAddon.busy,
+                    enabled = hasAddon && !FfmpegAddon.busy,
+                    danger = true,
                     onClick = {
                         haptic.click()
-                        ffmpegFlow.reinstall()
+                        ffmpegFlow.deleteAddon()
                     }
                 )
             }

@@ -301,6 +301,19 @@ object FfmpegAddon {
         downloadAndInstall(meta, channel)
     }
 
+    /**
+     * 删除已安装的转码器（二进制与版本记录），转码功能随即停用。
+     * 保留 `ffmpeg_expected`（当前版本期望的编码器版本），便于重新安装时比对。
+     */
+    fun uninstall() {
+        if (::appCtx.isInitialized) {
+            runCatching { File(appCtx.filesDir, "ffmpeg").deleteRecursively() }
+        }
+        installedVersion = ""
+        installError = null
+        if (::prefs.isInitialized) prefs.edit().remove("ffmpeg_version").apply()
+    }
+
     /** 解压 7z，返回所有解压出的文件（含目录内文件） */
     private fun extract7z(archive: File, dest: File): List<File> {
         dest.mkdirs()

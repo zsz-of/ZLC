@@ -13,7 +13,6 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,12 +30,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 /**
- * ffmpeg 转码器附加项的「检查更新 / 重新安装」流程控制器 + 弹窗。
+ * ffmpeg 转码器附加项的「安装 / 重新安装 / 检查更新 / 删除」流程控制器 + 弹窗。
  *
  * 与软件更新弹窗 [UpdateFlowController] 同构：
  * - 发现「未安装 / 版本不匹配」时弹窗提示，给用户选择下载通道（蓝奏云优先 / GitHub 次选）；
  * - 下载进度由 [FfmpegAddon.busy] / [FfmpegAddon.downloadProgress] 驱动（与设置页共用同一状态）；
- * - 「重新安装」永远只安装与当前软件版本匹配的转码器版本。
+ * - 安装/重新安装永远只安装与当前软件版本匹配的转码器版本；删除仅清本地文件。
  */
 internal class FfmpegFlowController(private val scope: CoroutineScope) {
     /** 待下载/安装的转码器元数据（非 null = 展示「选择下载通道」弹窗） */
@@ -116,10 +115,11 @@ internal class FfmpegFlowController(private val scope: CoroutineScope) {
     }
 
     /**
-     * 「重新安装」：只安装与当前软件版本匹配的转码器版本。
-     * 拉取当前版本元数据后直接弹出「选择下载通道」弹窗（覆盖安装现有版本）。
+     * 「安装 / 重新安装转码器」：只安装与当前软件版本匹配的转码器版本。
+     * 拉取当前版本元数据后直接弹出「选择下载通道」弹窗（已安装时为覆盖安装）。
+     * @param reinstall true=已安装过（弹窗标题为「重新安装转码器」）
      */
-    fun reinstall() {
+    fun install(reinstall: Boolean = false) {
         if (checking || FfmpegAddon.busy) return
         scope.launch {
             checking = true
@@ -129,15 +129,22 @@ internal class FfmpegFlowController(private val scope: CoroutineScope) {
                     message = "当前版本暂无转码器附加项信息，请稍后重试"
                     return@launch
                 }
-                presentPrompt(meta, "重新安装转码器")
+                presentPrompt(meta, if (reinstall) "重新安装转码器" else "安装转码器")
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
-                message = e.message ?: "重新安装失败"
+                message = e.message ?: "操作失败"
             } finally {
                 checking = false
             }
         }
+    }
+
+    /** 「删除转码器」：删除本地已安装的转码器（不发网络请求），转码功能随即停用 */
+    fun deleteAddon() {
+        if (FfmpegAddon.busy) return
+        FfmpegAddon.uninstall()
+        message = "已删除转码器，转码功能已停用（可随时重新安装）"
     }
 
     private fun download(meta: FfmpegAddon.AddonMeta, channel: DownloadChannel) {
@@ -254,12 +261,18 @@ internal fun FfmpegFlowHosts(flow: FfmpegFlowController, vibrate: () -> Unit = {
                         },
                         modifier = Modifier.fillMaxWidth().height(44.dp)
                     ) { Text("从 GitHub 下载") }
+                    // 暂不下载：与上面两个按钮同款尺寸/风格（整行宽度）
+                    OutlinedButton(
+                        onClick = {
+                            vibrate()
+                            flow.dismissPrompt()
+                        },
+                        modifier = Modifier.fillMaxWidth().height(44.dp)
+                    ) { Text("暂不下载") }
                 }
             },
             confirmButton = {},
-            dismissButton = {
-                TextButton(onClick = { vibrate(); flow.dismissPrompt() }) { Text("暂不下载") }
-            }
+            dismissButton = {}
         )
     }
 }

@@ -1,0 +1,360 @@
+name: Android Release
+
+# 打 tag（v*）时自动构建两个 flavor 的签名 Release APK 并发布 GitHub Release。
+# 也支持在 Actions 页面手动触发（workflow_dispatch）：可只构建产出 Artifact（publish=false），
+# 用于在正式打 tag 之前先验证流水线是否可用。
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: '要发布的 tag（如 v3.4.7）。留空则由 app/build.gradle.kts 的 versionName 推导为 v<版本>'
+        required: false
+        type: string
+      publish:
+        description: '构建完成后发布 GitHub Release'
+        required: true
+        default: true
+        type: boolean
+
+# gh release create / upload / edit 需要写权限
+permissions:
+  contents: write
+
+# 同一个 tag 重复触发时取消旧运行，避免两个任务同时改同一个 Release
+concurrency:
+  group: android-release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  ANDROID_PROJECT_DIR: ZLivePhoto.Android
+  # 内置 ffmpeg 二进制（libffmpeg.so，约 82MB）被 .gitignore 排除、不入库，
+  # 只能从历史 Release 附件取回。v3.4.3 是最后一个附带该附件的版本。
+  FFMPEG_ASSET_TAG: v3.4.3
+  FFMPEG_ASSET_NAME: ffmpeg-android-n8.1.2.7.zip
+
+jobs:
+  build:
+    name: 构建签名 Release APK
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.package.outputs.version }}
+      tag: ${{ steps.package.outputs.tag }}
+    steps:
+      - name: 检出源码
+        uses: actions/checkout@v4
+        with:
+          # 生成 Release 正文时需要 tag 与提交历史
+          fetch-depth: 0
+
+      - name: 配置 JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: 配置 Gradle（含依赖缓存）
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: 配置 Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: 安装 SDK Platform 36 与 Build-Tools 36.0.0
+        run: |
+          set -euo pipefail
+          yes | sdkmanager --licenses >/dev/null 2>&1 || true
+          sdkmanager --install "platforms;android-36" "build-tools;36.0.0"
+
+      - name: 还原内置转码器 libffmpeg.so
+        run: |
+          set -euo pipefail
+          url="https://github.com/${GITHUB_REPOSITORY}/releases/download/${FFMPEG_ASSET_TAG}/${FFMPEG_ASSET_NAME}"
+          echo "下载 ${url}"
+          curl -fSL --retry 3 -o /tmp/ffmpeg.zip "$url"
+
+          rm -rf /tmp/ffmpeg && mkdir -p /tmp/ffmpeg && cd /tmp/ffmpeg
+          unzip -o /tmp/ffmpeg.zip
+
+          # 附件内层是 7z，且本仓库不保证其内部目录结构，用 find 兜底定位
+          if ! command -v 7z >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq p7zip-full
+          fi
+          7z x -y ffmpeg-android.7z -o./extract >/dev/null
+
+          # 注意：附件里的二进制名为 arm64-v8a/ffmpeg（不是 libffmpeg.so），
+          # 拷进 jniLibs 时必须改名成 libffmpeg.so，否则 Android 不会加载它。
+          so="$(find ./extract -type f -name 'libffmpeg.so' -print -quit)"
+          if [ -z "$so" ]; then
+            so="$(find ./extract -type f -name 'ffmpeg' -print -quit)"
+          fi
+          if [ -z "$so" ]; then
+            echo "::error::附件内未找到 ffmpeg 二进制（既无 libffmpeg.so 也无 ffmpeg）"
+            find ./extract -type f -exec ls -l {} \;
+            exit 1
+          fi
+          so_size="$(stat -c %s "$so")"
+          echo "取到转码器：$so（$so_size 字节）"
+          # 82MB 左右才算完整；体积异常说明附件下错或解压不完整
+          if [ "$so_size" -lt 50000000 ]; then
+            echo "::error::转码器体积异常（$so_size 字节），疑似解压不完整"
+            exit 1
+          fi
+
+          dest="${GITHUB_WORKSPACE}/${ANDROID_PROJECT_DIR}/app/src/normal/jniLibs/arm64-v8a"
+          mkdir -p "$dest"
+          cp "$so" "$dest/libffmpeg.so"
+          ls -l "$dest/libffmpeg.so"
+
+      - name: 写入签名配置
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [ -z "${KEYSTORE_BASE64:-}" ]; then
+            echo "::error::缺少仓库 Secret ANDROID_KEYSTORE_BASE64，无法产出可安装的签名 APK"
+            exit 1
+          fi
+          echo "$KEYSTORE_BASE64" | base64 -d > /tmp/zlivephoto.keystore
+
+          # 用 printf 逐行写而不是 heredoc：未加引号的 heredoc 会把密码里的 $ 与反引号
+          # 当成变量/命令替换展开，从而写出被悄悄改掉的密码。printf '%s' 只做原样输出。
+          # 注意：Java properties 用反斜杠做转义，密码里不要含反斜杠。
+          # signing.properties 已被 .gitignore 排除，不会进入提交。
+          {
+            printf 'storeFile=%s\n' "/tmp/zlivephoto.keystore"
+            printf 'storePassword=%s\n' "$KEYSTORE_PASSWORD"
+            printf 'keyAlias=%s\n' "$KEY_ALIAS"
+            printf 'keyPassword=%s\n' "$KEY_PASSWORD"
+          } > "${ANDROID_PROJECT_DIR}/signing.properties"
+          echo "已写入 ${ANDROID_PROJECT_DIR}/signing.properties（keyAlias=${KEY_ALIAS}）"
+
+      - name: 构建 normal 与 go 两个 flavor
+        working-directory: ${{ env.ANDROID_PROJECT_DIR }}
+        run: |
+          set -euo pipefail
+          chmod +x ./gradlew
+          ./gradlew --no-daemon --stacktrace assembleNormalRelease assembleGoRelease
+
+      - name: 重命名、校验并核对签名
+        id: package
+        working-directory: ${{ env.ANDROID_PROJECT_DIR }}
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+
+          # 用 sed 而不是 grep -P：后者依赖 UTF-8 locale，在 C locale 下会直接报错。
+          # 管道尾接 `|| true`：head 提前关闭管道会让 sed 收到 SIGPIPE，pipefail 下会误判失败。
+          version="$(sed -n 's/.*versionName[[:space:]]*=[[:space:]]*"\([^"]*\)".*/\1/p' app/build.gradle.kts | head -1 || true)"
+          if [ -z "$version" ]; then
+            echo "::error::未能从 app/build.gradle.kts 解析 versionName"
+            exit 1
+          fi
+
+          # 有签名配置时产物名为 app-<flavor>-release.apk；
+          # 没有签名配置时会变成 app-<flavor>-release-unsigned.apk——那种包不能发布，必须报错。
+          pick() {
+            local d="app/build/outputs/apk/$1/release"
+            local signed="${d}/app-$1-release.apk"
+            if [ -f "$signed" ]; then
+              echo "$signed"
+              return 0
+            fi
+            local any
+            any="$(ls "${d}"/*.apk 2>/dev/null | head -1 || true)"
+            if [ -n "$any" ]; then
+              echo "::error::$1 的产物不是签名包（$any），请确认仓库 Secret 已配置齐全" >&2
+            else
+              echo "::error::缺少构建产物 ${d}/*.apk" >&2
+            fi
+            return 1
+          }
+          normal="$(pick normal)"
+          go="$(pick go)"
+          ls -l "$normal" "$go"
+
+          # 完整版必须带内置转码器，否则打出来的包会静默缺少转码能力。
+          # 先落盘再 grep：`unzip -l | grep -q` 在 pipefail 下会把 grep 提前退出引发的
+          # SIGPIPE 当成 unzip 失败，从而误报「未包含内置转码器」。
+          unzip -l "$normal" > /tmp/apk-list.txt
+          if ! grep -q 'lib/arm64-v8a/libffmpeg.so' /tmp/apk-list.txt; then
+            echo "::error::完整版 APK 未包含内置转码器 lib/arm64-v8a/libffmpeg.so"
+            exit 1
+          fi
+
+          out="${GITHUB_WORKSPACE}/dist"
+          mkdir -p "$out"
+          cp "$normal" "${out}/ZLC_${version}.apk"
+          cp "$go" "${out}/ZLC_Go_${version}.apk"
+
+          sdk="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+          apksigner="$(find "$sdk/build-tools" -name apksigner -type f | sort -V | tail -1)"
+          if [ -z "$apksigner" ]; then
+            echo "::error::未找到 apksigner，无法核对签名"
+            exit 1
+          fi
+          for f in "${out}/ZLC_${version}.apk" "${out}/ZLC_Go_${version}.apk"; do
+            echo "校验签名：$f"
+            "$apksigner" verify --print-certs "$f"
+          done
+
+          ls -l "$out"
+
+          # tag 优先级：本次推送的 tag > 手动输入的 tag > v<versionName>
+          tag=""
+          if [ "${GITHUB_REF_TYPE:-}" = "tag" ]; then
+            tag="${GITHUB_REF_NAME}"
+          fi
+          if [ -z "$tag" ]; then
+            tag="${INPUT_TAG:-}"
+          fi
+          if [ -z "$tag" ]; then
+            tag="v${version}"
+          fi
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apks
+          path: dist/*.apk
+          if-no-files-found: error
+
+  release:
+    name: 发布 GitHub Release
+    needs: build
+    if: ${{ github.event_name == 'push' || inputs.publish }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出源码（用于生成提交清单）
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 下载构建产物
+        uses: actions/download-artifact@v4
+        with:
+          name: release-apks
+          path: dist
+
+      - name: 生成 Release 正文
+        env:
+          VERSION: ${{ needs.build.outputs.version }}
+          TAG: ${{ needs.build.outputs.tag }}
+          # 可选：在仓库 Settings → Secrets and variables → Actions → Variables 里配置，
+          # 配置后正文会自动带上蓝奏云下载段落（蓝奏云链接由人工上传后取得）
+          LANZOU_STANDARD_URL: ${{ vars.LANZOU_STANDARD_URL }}
+          LANZOU_GO_URL: ${{ vars.LANZOU_GO_URL }}
+        run: |
+          set -euo pipefail
+          git fetch --tags --force >/dev/null 2>&1 || true
+
+          prev="$(git describe --tags --abbrev=0 "${TAG}^" 2>/dev/null || true)"
+          if [ -n "$prev" ]; then
+            range="${prev}..${TAG}"
+          else
+            range="${TAG}"
+          fi
+          changes="$(git log --no-merges --pretty=format:'- %s' "$range" 2>/dev/null || true)"
+          if [ -z "$changes" ]; then
+            changes="- 本次发布未记录变更条目。"
+          fi
+
+          lanzou=""
+          if [ -n "${LANZOU_STANDARD_URL:-}" ] || [ -n "${LANZOU_GO_URL:-}" ]; then
+            {
+              echo "## ☁️ 蓝奏云下载"
+              echo
+              [ -n "${LANZOU_STANDARD_URL:-}" ] && echo "- [标准版](${LANZOU_STANDARD_URL})"
+              [ -n "${LANZOU_GO_URL:-}" ] && echo "- [Go 轻量版](${LANZOU_GO_URL})"
+              echo
+              echo "> 蓝奏云链接若打不开，多为分享域名调整，请改用上方 GitHub 附件下载。"
+              echo
+            } > lanzou.md
+            lanzou="$(cat lanzou.md)"
+          fi
+
+          # 附件大小（与历史 Release 正文的「大小」列保持一致）
+          size_normal="$(du -m "dist/ZLC_${VERSION}.apk" 2>/dev/null | cut -f1 || true)"
+          size_go="$(du -m "dist/ZLC_Go_${VERSION}.apk" 2>/dev/null | cut -f1 || true)"
+          size_normal="${size_normal:-?} MB"
+          size_go="${size_go:-?} MB"
+
+          cat > release-notes.md <<EOF
+          ## ⚠️ 系统要求
+
+          | 版本 | 最低系统版本 | 架构 |
+          |------|-------------|------|
+          | ZLC（完整版） | Android 10 (API 29) | arm64-v8a |
+          | ZLC Go（轻量版） | Android 6 (API 23) | arm64-v8a / armeabi-v7a / x86 / x86_64 |
+
+          > Go 轻量版在 Android 10 及以上已不再适配，需改用完整版。
+
+          ## 📦 下载安装
+
+          | 安装包 | 格式 | 大小 |
+          |--------|------|------|
+          | ZLC_${VERSION}.apk | APK（完整版） | ${size_normal} |
+          | ZLC_Go_${VERSION}.apk | APK（轻量版） | ${size_go} |
+
+          完整版内置 ffmpeg 转码器，轻量版不含。
+
+          安装步骤：下载 \`.apk\` → 允许「来自未知来源」安装 → 点击安装。两个版本包名不同，可同时安装。
+
+          ${lanzou}
+
+          ## ✨ 本版本更新内容
+
+          ${changes}
+
+          ## 🚀 首次使用
+
+          1. 安装并打开应用；
+          2. 授予照片 / 视频读取权限（双文件格式的动态照片会再申请「所有文件访问」）；
+          3. 点「添加」选择动态照片，或点「批量处理」扫描文件夹；
+          4. 选好输出格式后点「开始转换」。
+
+          ---
+
+          **开发者**: zsz
+          EOF
+
+          echo "----- release-notes.md -----"
+          cat release-notes.md
+
+      - name: 创建或更新 Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.build.outputs.version }}
+          TAG: ${{ needs.build.outputs.tag }}
+        run: |
+          set -euo pipefail
+
+          # tag 必须已存在：发布的是"已经推上去的那个提交"，绝不允许 Action 就地造 tag
+          if ! git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
+            echo "::error::tag ${TAG} 不存在。请先打 tag 并推送：git tag ${TAG} && git push origin ${TAG}"
+            exit 1
+          fi
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG 已存在，改为覆盖附件与正文"
+            gh release upload "$TAG" dist/*.apk --clobber
+            gh release edit "$TAG" \
+              --title "ZLC ${VERSION}" \
+              --notes-file release-notes.md \
+              --latest
+          else
+            gh release create "$TAG" dist/*.apk \
+              --title "ZLC ${VERSION}" \
+              --notes-file release-notes.md \
+              --latest
+          fi
+
+          gh release view "$TAG" --json url,tagName,name --jq '"已发布: \(.tagName)  \(.name)  \(.url)"'

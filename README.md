@@ -1,14 +1,15 @@
 # Z-LivePhoto-Converter
 
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / 魅族 / Apple Live Photo 互转、拆解与合成
-**开发者**: zsz & Kimi-K3  
-**版本**: v3.4.6
+
+**开发者**: zsz  
+**版本**: v3.4.7
 
 ## 许可证
 
 本程序基于 **GNU General Public License v3.0 (GPLv3)** 开源协议发布。
 
-Copyright (C) 2026 zsz & Kimi-K3
+Copyright (C) 2026 zsz
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
@@ -34,8 +35,8 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 
 | 平台 | 安装包 | 格式 |
 |------|--------|------|
-| Android（完整版） | ZLC.apk | APK |
-| Android（轻量版） | ZLC Go.apk | APK |
+| Android（完整版） | ZLC_<版本>.apk | APK |
+| Android（轻量版） | ZLC_Go_<版本>.apk | APK |
 
 ### Android 安装步骤
 1. 下载 `.apk` 文件
@@ -89,6 +90,7 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 | EXIF 保留 | 保留 GPS、拍摄时间等所有 EXIF 元数据 |
 | 时间戳保留 | 输出文件保留源文件的修改时间 |
 | 同格式直通 | 源与目标格式相同时原样复制（零损耗） |
+| 处理完成后删除原图 | 批次全部处理成功后直接删除磁盘原文件并清理媒体库条目；**必须先授予「所有文件访问」**才可开启，未授权时开关置灰并给出授权引导，Android 10 及以下不支持该功能 |
 | 自动配对 | vivo/Apple 双文件自动查找同目录视频 |
 | 双版本 | ZLC 完整版（Android 10+，内置 ffmpeg 转码器）与 ZLC Go 轻量版（Android 6+，适配老设备，不含转码器） |
 | Material You | Android 12+ 动态取色跟随壁纸；7 种预制主题色 + 自定义色相 |
@@ -107,11 +109,17 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 
 ```
 Source/
+├── .github/workflows/
+│   └── android-release.yml       # 打 tag 自动构建两个 flavor 并发布 GitHub Release
 ├── ZLivePhoto.Android/           # Android 应用（Gradle / Kotlin）
 │   ├── app/src/main/java/com/zsz/zlivephoto/
-│   │   ├── MainActivity.kt       #   主 Activity
+│   │   ├── MainActivity.kt       #   主 Activity（状态机 / 批量转换 / 权限 / 删除原图）
+│   │   ├── CrashHandler.kt       #   全局崩溃日志
 │   │   ├── core/                 #   核心转换库（Kotlin，纯字节级解析）
+│   │   │   └── formats/          #   各格式插件与注册表
 │   │   └── ui/                   #   Compose UI
+│   │       └── picker/           #   内置相册选择器
+│   ├── app/src/normal/jniLibs/   #   完整版内置转码器（不入库，需自行放置）
 │   └── app/src/main/res/         #   资源文件
 ├── CHANGELOG.md                  # 更新日志
 ├── LICENSE                       # GPLv3
@@ -135,6 +143,17 @@ cd Source/ZLivePhoto.Android
 
 - 启动应用 → 添加动态照片 → 选择输出格式 → 点击转换
 - 或从系统相册分享照片到本应用
+- 批量处理：点「批量处理」扫描文件夹，转换结束后可选择「处理完成后删除原图」
+  （需先授予「所有文件访问」，否则该开关不可用）
+
+## 配置位置
+
+| 内容 | 位置 |
+|------|------|
+| 应用设置（主题 / 触感 / 转码参数 / 跳过版本等） | 应用私有 SharedPreferences，文件 `zlivephoto.xml` |
+| 转换产物 | 相册目录 `Pictures/Z-LivePhoto-Converter/` |
+| 待处理列表的持久化快照 | 应用私有目录下的本地 JSON |
+| 崩溃日志 | 外部存储根目录 `Z-LivePhoto-Crash.log` |
 
 ## 开源引用
 

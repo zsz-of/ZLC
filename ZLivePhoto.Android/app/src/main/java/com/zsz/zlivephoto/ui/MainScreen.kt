@@ -158,6 +158,8 @@ fun MainScreen(
     onSelectFormat: (String) -> Unit,
     // 项10：处理完成后删除原图开关（开启=清脆震动 / 关闭=柔和震动）
     deleteOriginal: Boolean,
+    /** 开关是否可用：需「完全存储访问」；不可用时置灰，点击改为引导授权 */
+    deleteOriginalUsable: Boolean,
     onToggleDeleteOriginal: (Boolean) -> Unit,
     onRemoveFile: (String) -> Unit
 ) {
@@ -313,6 +315,7 @@ fun MainScreen(
                         busy = busy,
                         clearBusy = clearBusy,
                         deleteOriginal = deleteOriginal,
+                        deleteOriginalUsable = deleteOriginalUsable,
                         onToggleDeleteOriginal = onToggleDeleteOriginal,
                         onAddFiles = onAddFiles,
                         onOpenToolbox = { showToolboxSheet = true },
@@ -365,6 +368,7 @@ fun MainScreen(
                         busy = busy,
                         clearBusy = clearBusy,
                         deleteOriginal = deleteOriginal,
+                        deleteOriginalUsable = deleteOriginalUsable,
                         onToggleDeleteOriginal = onToggleDeleteOriginal,
                         onAddFiles = onAddFiles,
                         onOpenToolbox = { showToolboxSheet = true },
@@ -707,6 +711,7 @@ private fun BottomControls(
     busy: Boolean,
     clearBusy: Boolean,
     deleteOriginal: Boolean,
+    deleteOriginalUsable: Boolean,
     onToggleDeleteOriginal: (Boolean) -> Unit,
     onAddFiles: () -> Unit,
     onOpenToolbox: () -> Unit,
@@ -874,7 +879,8 @@ private fun BottomControls(
                 }
 
                 // 项10：处理完成后删除原图开关行（随按钮组在处理中隐藏禁用）；
-                // 批次完成后由系统删除工具一次性移入回收站；
+                // 批次完成后直接执行磁盘删除命令清理原图；
+                // 未获得「完全存储访问」时开关置灰不可切换，点击改为引导授权；
                 // 开启=清脆震动 / 关闭=柔和震动
                 val onToggle: (Boolean) -> Unit = { newValue ->
                     if (newValue) haptic.click() else haptic.soft()
@@ -883,10 +889,13 @@ private fun BottomControls(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(52.dp)
+                        .height(if (deleteOriginalUsable) 52.dp else 66.dp)
                         .then(deleteFb.scaleModifier)
                         .clip(RoundedCornerShape(deleteFb.corner))
-                        .background(MaterialTheme.colorScheme.secondaryContainer)
+                        .background(
+                            if (deleteOriginalUsable) MaterialTheme.colorScheme.secondaryContainer
+                            else MaterialTheme.colorScheme.surfaceContainerHighest
+                        )
                         .clickable(
                             interactionSource = deleteFb.interactionSource,
                             indication = null
@@ -897,21 +906,34 @@ private fun BottomControls(
                     Icon(
                         Icons.Default.AutoDelete,
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSecondaryContainer,
+                        tint = if (deleteOriginalUsable) MaterialTheme.colorScheme.onSecondaryContainer
+                               else MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.size(20.dp)
                     )
                     Spacer(modifier = Modifier.width(10.dp))
-                    Text(
-                        text = "处理完成后删除原图",
-                        style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.onSecondaryContainer
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = "处理完成后删除原图",
+                            style = MaterialTheme.typography.titleSmall,
+                            color = if (deleteOriginalUsable) MaterialTheme.colorScheme.onSecondaryContainer
+                                    else MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        if (!deleteOriginalUsable) {
+                            // 未授予「完全存储访问」：明确告知开关不可用及解锁方式
+                            Text(
+                                text = "需「所有文件访问」权限，点击查看",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(8.dp))
                     // 不复用整行的 deleteFb 按压源：行与开关共用同一 interactionSource
                     // 会导致 M3 滑块(小圆)在行级动画/快速切换时卡在放大态无法复原
                     Switch(
                         checked = deleteOriginal,
                         onCheckedChange = onToggle,
+                        enabled = deleteOriginalUsable,
                         colors = SwitchDefaults.colors(
                             checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
                             checkedTrackColor = MaterialTheme.colorScheme.primary,

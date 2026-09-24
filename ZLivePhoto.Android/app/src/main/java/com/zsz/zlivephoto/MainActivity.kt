@@ -18,7 +18,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.PredictiveBackHandler
 import androidx.activity.compose.setContent
-import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
@@ -138,6 +137,8 @@ class MainActivity : ComponentActivity() {
     private var showPermissionDialog by mutableStateOf(false)
     private var showSettingsDialog by mutableStateOf(false)
     private var showAllFilesDialog by mutableStateOf(false)
+    /** 「所有文件访问」引导弹窗的用途：true=为开启「处理完成后删除原图」而触发（文案不同） */
+    private var allFilesDialogForDelete by mutableStateOf(false)
     // 清空/处理收尾过程中（清空按钮须禁用，防止动画期间重复触发或状态错乱）
     private var clearBusy by mutableStateOf(false)
     // 防抖落盘任务：识别完成等高频稳定态回调合并为一次 JSON 写入
@@ -189,17 +190,22 @@ class MainActivity : ComponentActivity() {
     @Volatile private var batchConflictAction: ConflictAction? = null
 
     // ---------- 项10：处理完成后删除原图 ----------
+    /**
+     * 一个待删除的原文件：磁盘绝对路径 + 对应的媒体库条目（可空）。
+     * 删除走磁盘命令（[File.delete]），媒体库条目仅用于清理相册残留行。
+     */
+    private data class PendingDelete(val path: String, val uri: Uri?)
+
     /** 开关（持久化；处理中控制区隐藏不可切换，保证批次语义确定） */
     private var deleteOriginal by mutableStateOf(false)
-    /** 本批次成功处理后待删除的原图 URI（按源路径分组；IO 线程并发合并需加锁） */
-    private val pendingDeleteBySource = LinkedHashMap<String, MutableList<Uri>>()
+    /** 开关是否可用：需要「完全存储访问」（见 [hasFullStorageAccess]），否则置灰并引导授权 */
+    private var deleteOriginalUsable by mutableStateOf(false)
+    /** 本批次成功处理后待删除的原图（按源路径分组；IO 线程并发合并需加锁） */
+    private val pendingDeleteBySource = LinkedHashMap<String, MutableList<PendingDelete>>()
     private val pendingDeleteLock = Any()
     /** 覆盖冲突保护：被覆盖的输出就是原文件本身（源位于输出目录内）时禁止删除，
-     *  否则新导出的产物会被移入回收站造成永久丢失 */
+     *  否则新导出的产物会被删除造成永久丢失 */
     private val protectedOriginalPaths = ConcurrentHashMap.newKeySet<String>()
-    /** 删除结果回调时展示的项数与批次完成状态 */
-    private var pendingDeleteCount = 0
-    private var deleteBaseStatus = ""
 
     // 内置选择器（默认入口；系统选择器作为备选保留）
     private lateinit var mediaRepo: MediaRepo
@@ -286,10 +292,40 @@ class MainActivity : ComponentActivity() {
     private fun hasAllFilesAccess(): Boolean =
         Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()
 
-    // 「所有文件访问」授权页返回后：刷新状态提示
+    /**
+     * 是否已获得「完全存储访问」——直接执行磁盘删除命令的前提。
+     * - Android 11+（R）：需在系统设置中授予「所有文件访问」（MANAGE_EXTERNAL_STORAGE）
+     * - Android 10 及以下：需 WRITE_EXTERNAL_STORAGE（旧系统该权限即等价于完全磁盘访问）
+     * 说明：Android 10（API 29）既没有「所有文件访问」，本应用也未开启旧版存储兼容
+     * （AndroidManifest 未声明 requestLegacyExternalStorage），作用域存储下无法直接
+     * 删除其他应用的媒体文件，故该机型恒为 false（开关置灰不可用）。
+     */
+    private fun hasFullStorageAccess(): Boolean = when {
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> Environment.isExternalStorageManager()
+        else -> checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+            PackageManager.PERMISSION_GRANTED
+    }
+
+    /**
+     * 同步「处理完成后删除原图」开关的可用性。
+     * 完全存储访问被撤销（用户在系统设置里关掉「所有文件访问」）时强制关闭开关并落盘，
+     * 保证「未获得完全存储访问之前不允许使用自动删除」这一约束在冷启动/回前台都成立。
+     */
+    private fun refreshDeleteOriginalGate() {
+        val usable = hasFullStorageAccess()
+        deleteOriginalUsable = usable
+        if (!usable && deleteOriginal) {
+            deleteOriginal = false
+            getSharedPreferences("zlivephoto", MODE_PRIVATE)
+                .edit().putBoolean("delete_original", false).apply()
+        }
+    }
+
+    // 「所有文件访问」授权页返回后：刷新状态提示与删除原图开关可用性
     private val allFilesAccessLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
+        refreshDeleteOriginalGate()
         statusText = if (hasAllFilesAccess())
             "已获得「所有文件访问」权限，转换将直写相册目录完整保留位置信息"
         else
@@ -313,6 +349,7 @@ class MainActivity : ComponentActivity() {
         val prefs = getSharedPreferences("zlivephoto", MODE_PRIVATE)
         if (prefs.getBoolean("all_files_prompted", false)) return
         prefs.edit().putBoolean("all_files_prompted", true).apply()
+        allFilesDialogForDelete = false // 冷启动/授权后的引导只讲位置信息，与删除原图无关
         showAllFilesDialog = true
     }
 
@@ -367,18 +404,6 @@ class MainActivity : ComponentActivity() {
             return@registerForActivityResult
         }
         importBatchFolder(rootPath)
-    }
-
-    // 项10：系统删除工具（回收站）结果回调——整批仅一次请求
-    private val deleteRequestLauncher = registerForActivityResult(
-        ActivityResultContracts.StartIntentSenderForResult()
-    ) { result ->
-        val base = deleteBaseStatus
-        statusText = if (result.resultCode == RESULT_OK)
-            "$base；原图已移入回收站（${pendingDeleteCount} 项）"
-        else
-            "$base；已取消删除原图"
-        pendingDeleteCount = 0
     }
 
     /** 把 OpenDocumentTree 的树 URI 解析为本地存储绝对路径。 */
@@ -604,6 +629,8 @@ class MainActivity : ComponentActivity() {
             selectedFormat = "vivo_single"
         }
         deleteOriginal = prefs.getBoolean("delete_original", false)
+        // 冷启动即校验：权限已被撤销（或从未授予）时强制关闭开关并落盘
+        refreshDeleteOriginalGate()
 
         // 初始深浅色（后续由 onConfigurationChanged / 设置项变化实时跟踪）
         isDarkTheme = computeDarkTheme()
@@ -847,10 +874,29 @@ class MainActivity : ComponentActivity() {
                                 }
                             },
                             deleteOriginal = deleteOriginal,
+                            deleteOriginalUsable = deleteOriginalUsable,
                             onToggleDeleteOriginal = { on ->
-                                deleteOriginal = on
-                                getSharedPreferences("zlivephoto", MODE_PRIVATE)
-                                    .edit().putBoolean("delete_original", on).apply()
+                                val prefs = getSharedPreferences("zlivephoto", MODE_PRIVATE)
+                                when {
+                                    // 关闭：直接落盘，无需权限
+                                    !on -> {
+                                        deleteOriginal = false
+                                        prefs.edit().putBoolean("delete_original", false).apply()
+                                    }
+                                    // 已获得完全存储访问：允许开启
+                                    hasFullStorageAccess() -> {
+                                        deleteOriginal = true
+                                        prefs.edit().putBoolean("delete_original", true).apply()
+                                    }
+                                    // 未获得完全存储访问：不允许自动删除，改为引导授权
+                                    else -> {
+                                        deleteOriginal = false
+                                        prefs.edit().putBoolean("delete_original", false).apply()
+                                        statusText = "自动删除原图需要「所有文件访问」权限，请先授权"
+                                        allFilesDialogForDelete = true
+                                        showAllFilesDialog = true
+                                    }
+                                }
                             },
                             onRemoveFile = { path -> removeFile(path) }
                         )
@@ -920,33 +966,69 @@ class MainActivity : ComponentActivity() {
                     )
                 }
 
-                // 「所有文件访问」引导（Android 11+：直写磁盘保留位置，个别 OEM 的 MediaStore 会脱敏 GPS）
+                // 「所有文件访问」引导：两种用途（①直写磁盘保留位置信息 ②开启自动删除原图）
                 if (showAllFilesDialog && sessionDialogOwner == DialogOwner.ALL_FILES) {
+                    val forDelete = allFilesDialogForDelete
+                    // Android 11+ 才有「所有文件访问」；更低版本（含 Android 10）无法直接删盘
+                    val grantable = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
                     AlertDialog(
                         onDismissRequest = {
                             showAllFilesDialog = false
+                            allFilesDialogForDelete = false
                         },
-                        title = { Text("建议授予「所有文件访问」权限") },
+                        title = {
+                            Text(
+                                when {
+                                    forDelete && grantable -> "自动删除原图需要「所有文件访问」"
+                                    forDelete -> "本机不支持自动删除原图"
+                                    else -> "建议授予「所有文件访问」权限"
+                                }
+                            )
+                        },
                         text = {
                             Text(
-                                "部分机型（如魅族）通过系统相册接口写入会脱敏 GPS 位置信息，导致转换后照片丢失位置。\n\n" +
-                                "授予「所有文件访问」后，本程序将直接写入相册目录，完整保留位置元数据。\n\n" +
-                                "不授予也能正常转换，个别机型可能丢失位置信息。"
+                                if (forDelete) {
+                                    if (grantable) {
+                                        "「处理完成后删除原图」会直接删除磁盘上的原文件（照片及其伴生视频），" +
+                                        "该操作不可撤销，因此必须先授予「所有文件访问」权限。\n\n" +
+                                        "授权后开关才会变为可用，届时可自行开启。"
+                                    } else {
+                                        "当前系统（Android 10 及以下）不提供「所有文件访问」权限，" +
+                                        "无法直接删除磁盘上的原文件，因此本机不支持「处理完成后删除原图」。\n\n" +
+                                        "您可以在转换完成后通过系统相册手动清理原图。"
+                                    }
+                                } else {
+                                    "部分机型（如魅族）通过系统相册接口写入会脱敏 GPS 位置信息，导致转换后照片丢失位置。\n\n" +
+                                    "授予「所有文件访问」后，本程序将直接写入相册目录，完整保留位置元数据。\n\n" +
+                                    "不授予也能正常转换，个别机型可能丢失位置信息。"
+                                }
                             )
                         },
                         confirmButton = {
-                            FilledTonalButton(onClick = {
-                                haptic.click()
-                                showAllFilesDialog = false
-                                requestAllFilesAccess()
-                            }) { Text("去授权") }
+                            if (grantable) {
+                                FilledTonalButton(onClick = {
+                                    haptic.click()
+                                    showAllFilesDialog = false
+                                    allFilesDialogForDelete = false
+                                    requestAllFilesAccess()
+                                }) { Text("去授权") }
+                            } else {
+                                FilledTonalButton(onClick = {
+                                    haptic.click()
+                                    showAllFilesDialog = false
+                                    allFilesDialogForDelete = false
+                                }) { Text("知道了") }
+                            }
                         },
-                        dismissButton = {
-                            FilledTonalButton(onClick = {
-                                haptic.click()
-                                showAllFilesDialog = false
-                            }) { Text("暂不") }
-                        }
+                        dismissButton = if (grantable) {
+                            {
+                                FilledTonalButton(onClick = {
+                                    haptic.click()
+                                    showAllFilesDialog = false
+                                    allFilesDialogForDelete = false
+                                }) { Text("暂不") }
+                            }
+                        } else null
                     )
                 }
 
@@ -1052,6 +1134,8 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         if (BuildConfig.FLAVOR == "go" && LegacyApp.shouldSwitchToNormal()) goGateTick++
+        // 可能刚从系统设置页返回：「完全存储访问」的授予/撤销立即生效
+        refreshDeleteOriginalGate()
     }
 
     /** 退到后台时把桌面图标同步为当前主题色。
@@ -1719,14 +1803,14 @@ class MainActivity : ComponentActivity() {
                                     }
                                 )
                             }
-                            // 项10：必须在冲突/导出发生前解析原图 URI——覆盖会删除旧媒体
-                            // 条目，之后按路径查询会误中刚导出的新产物
+                            // 项10：必须在冲突/导出发生前解析原图目标（路径 + 媒体行）——覆盖会删除
+                            // 旧媒体条目，之后按路径查询会误中刚导出的新产物
                             // 合成任务删除封面照片 + 配对视频；普通任务删除原图（含双文件伴生视频）
-                            val originalUris = if (deleteOriginal) {
+                            val originalTargets = if (deleteOriginal) {
                                 if (item.formatKey == "compose") {
-                                    resolveComposeOriginalUris(item.sourcePath, item.sourceUri, item.composeVideoPath)
+                                    resolveComposeOriginalTargets(item.sourcePath, item.sourceUri, item.composeVideoPath)
                                 } else {
-                                    resolveOriginalUris(item.sourcePath, item.sourceUri, item.formatKey)
+                                    resolveOriginalTargets(item.sourcePath, item.sourceUri, item.formatKey)
                                 }
                             } else emptyList()
                             // 输出文件名冲突处理（跳过 / 覆盖 / 自动后缀）
@@ -1743,7 +1827,7 @@ class MainActivity : ComponentActivity() {
                             }
                             exported.addAndGet(n)
                             // 项10：成功导出的原图入待删集合（失败/跳过/覆盖保护项不删）
-                            mergePendingDeletes(item.sourcePath, originalUris, n > 0)
+                            mergePendingDeletes(item.sourcePath, originalTargets, n > 0)
                             if (finalOutputs != null) successPaths.add(item.path)
                             withContext(Dispatchers.Main) {
                                 val i = files.indexOfFirst { it.path == item.path }
@@ -1799,8 +1883,19 @@ class MainActivity : ComponentActivity() {
                 isConverting = false
                 progress = 0f
                 progressDetail = ""
-                // 项10：批次完成，一次性请求把成功处理的原图移入回收站（系统删除工具）
-                if (deleteOriginal) requestDeleteOriginals(statusText)
+                // 项10：批次完成，直接执行磁盘删除命令清理已成功处理的原图。
+                // 前提是「完全存储访问」——权限在批次中途被撤销时一律保留原图（绝不静默删除）。
+                // 删除是磁盘 IO，放到 IO 线程执行，避免大批量时卡住主线程。
+                if (deleteOriginal) {
+                    if (hasFullStorageAccess()) {
+                        val summary = withContext(Dispatchers.IO) { deleteOriginalsFromDisk() }
+                        statusText = "$statusText；$summary"
+                    } else {
+                        resetPendingDeletes()
+                        statusText = "$statusText；未获得「完全存储访问」权限，原图已保留"
+                        refreshDeleteOriginalGate()
+                    }
+                }
                 onListStable(immediate = true) // 处理结束/终止：加回列表 JSON 尾部标记
                 clearBusy = false
             }
@@ -1945,7 +2040,7 @@ class MainActivity : ComponentActivity() {
                         deleteFromMediaStore(name, relSubDir)
                         // 项10 覆盖保护：被覆盖的输出就是正在处理的原文件本身
                         // （源位于输出目录内、同名）时，新产物即将写回原位置——
-                        // 禁止删除该原图，否则新导出的产物会被移入回收站造成永久丢失
+                        // 禁止删除该原图，否则新导出的产物会被删除造成永久丢失
                         if (sourcePath != null && File(sourcePath).name == name &&
                             File(outputAlbumDir(relSubDir), name).absolutePath ==
                                 File(sourcePath).absolutePath
@@ -2083,52 +2178,54 @@ class MainActivity : ComponentActivity() {
     )
 
     /**
-     * 解析原图（含双文件伴生视频）的 MediaStore URI。
+     * 解析原图（含双文件伴生视频）的待删目标（磁盘路径 + 媒体库条目）。
      * - 主图：优先用内置选择器直查所得的媒体 URI（content://media/external/…）；
      *   Photo Picker 临时 URI 或缺失时按 DATA 路径回查
      * - 双文件格式（vivo/Apple）：伴生视频一并纳入（否则会残留孤儿视频）
      */
-    private fun resolveOriginalUris(
+    private fun resolveOriginalTargets(
         sourcePath: String?, sourceUri: String?, formatKey: String?
-    ): List<Uri> {
+    ): List<PendingDelete> {
         if (sourcePath == null) return emptyList()
-        val uris = mutableListOf<Uri>()
-        if (sourceUri != null && sourceUri.startsWith("content://media/external/")) {
-            try { uris.add(Uri.parse(sourceUri)) } catch (_: Exception) {}
+        val targets = mutableListOf<PendingDelete>()
+        val mainUri = if (sourceUri != null && sourceUri.startsWith("content://media/external/")) {
+            try { Uri.parse(sourceUri) } catch (_: Exception) { null }
         } else {
-            resolveUriByPath(sourcePath)?.let { uris.add(it) }
+            resolveUriByPath(sourcePath)
         }
+        targets.add(PendingDelete(sourcePath, mainUri))
         if (formatKey == "vivo" || formatKey == "apple") {
             val stem = sourcePath.substringBeforeLast('.')
             for (ext in listOf(".mp4", ".mov", ".MP4", ".MOV")) {
                 val videoPath = stem + ext
                 if (File(videoPath).exists() && File(videoPath).length() > 8L) {
-                    resolveUriByPath(videoPath)?.let { uris.add(it) }
+                    targets.add(PendingDelete(videoPath, resolveUriByPath(videoPath)))
                     break
                 }
             }
         }
-        return uris
+        return targets
     }
 
     /**
      * 合成任务的待删原文件：封面照片 + 配对视频。
      * 合成任务无 sourceUri（引用普通照片/视频路径），统一按 DATA 路径回查 MediaStore URI。
      */
-    private fun resolveComposeOriginalUris(
+    private fun resolveComposeOriginalTargets(
         photoPath: String?, photoUri: String?, videoPath: String?
-    ): List<Uri> {
+    ): List<PendingDelete> {
         if (photoPath == null) return emptyList()
-        val uris = mutableListOf<Uri>()
-        if (photoUri != null && photoUri.startsWith("content://media/external/")) {
-            try { uris.add(Uri.parse(photoUri)) } catch (_: Exception) {}
+        val targets = mutableListOf<PendingDelete>()
+        val coverUri = if (photoUri != null && photoUri.startsWith("content://media/external/")) {
+            try { Uri.parse(photoUri) } catch (_: Exception) { null }
         } else {
-            resolveUriByPath(photoPath)?.let { uris.add(it) }
+            resolveUriByPath(photoPath)
         }
+        targets.add(PendingDelete(photoPath, coverUri))
         if (videoPath != null && File(videoPath).exists() && File(videoPath).length() > 8L) {
-            resolveUriByPath(videoPath)?.let { uris.add(it) }
+            targets.add(PendingDelete(videoPath, resolveUriByPath(videoPath)))
         }
-        return uris
+        return targets
     }
 
     /** 按 DATA 绝对路径在媒体库查 URI（图片/视频集合各查一次；EXTERNAL_CONTENT_URI 全版本可用） */
@@ -2154,66 +2251,59 @@ class MainActivity : ComponentActivity() {
     private fun resetPendingDeletes() {
         synchronized(pendingDeleteLock) { pendingDeleteBySource.clear() }
         protectedOriginalPaths.clear()
-        pendingDeleteCount = 0
     }
 
     /**
-     * 成功导出后把原图 URI 并入待删集合（IO 线程并发调用，加锁）。
+     * 成功导出后把原图目标并入待删集合（IO 线程并发调用，加锁）。
      * @param exported 导出是否成功（false=失败/跳过，保留原图）
      */
-    private fun mergePendingDeletes(sourcePath: String?, uris: List<Uri>, exported: Boolean) {
-        if (sourcePath == null || !exported || uris.isEmpty()) return
+    private fun mergePendingDeletes(
+        sourcePath: String?, targets: List<PendingDelete>, exported: Boolean
+    ) {
+        if (sourcePath == null || !exported || targets.isEmpty()) return
         if (sourcePath in protectedOriginalPaths) return // 覆盖保护项不删
         synchronized(pendingDeleteLock) {
-            pendingDeleteBySource.getOrPut(sourcePath) { mutableListOf() }.addAll(uris)
+            pendingDeleteBySource.getOrPut(sourcePath) { mutableListOf() }.addAll(targets)
         }
     }
 
     /**
-     * 批次结束后一次性请求把原图移入回收站（系统回收站工具：
-     * 「Z-LivePhoto-Converter 想将 N 个项目移入回收站」）。
-     * - 先过滤已失效条目（覆盖冲突中被替换的旧 URI 等），避免请求抛异常
-     * - Android 11+：createTrashRequest 整批一次请求移入回收站
-     * - Android 10：无该 API，仅能直接删除本应用拥有的媒体（无回收站）
+     * 批次结束后直接执行磁盘删除命令清理原图（不再走系统回收站工具），返回结果说明文案。
+     * 前提：已获得「完全存储访问」（见 [hasFullStorageAccess]），调用方已先行校验。
+     * 步骤：删物理文件（[File.delete] 并复核 exists）→ 尽力清理媒体库条目，
+     * 避免相册里残留指向已删文件的幽灵条目。磁盘 IO，必须在 IO 线程调用。
      */
-    private fun requestDeleteOriginals(baseStatus: String) {
+    private fun deleteOriginalsFromDisk(): String {
         val all = synchronized(pendingDeleteLock) {
-            val flat = pendingDeleteBySource.values.flatten().distinct()
+            val dedup = LinkedHashMap<String, PendingDelete>()
+            pendingDeleteBySource.values.flatten().forEach { if (!dedup.containsKey(it.path)) dedup[it.path] = it }
             pendingDeleteBySource.clear()
-            flat
+            dedup.values.toList()
         }
         protectedOriginalPaths.clear()
-        if (all.isEmpty()) return
-        val valid = all.filter { uri ->
-            try {
-                contentResolver.query(uri, arrayOf(MediaStore.MediaColumns._ID), null, null, null)
-                    ?.use { c -> c.moveToFirst() } == true
+        if (all.isEmpty()) return "无需删除原图"
+
+        var deleted = 0
+        var failed = 0
+        for (target in all) {
+            val ok = try {
+                val f = File(target.path)
+                !f.exists() || (f.delete() && !f.exists())
             } catch (_: Exception) { false }
+            if (ok) {
+                deleted++
+                // 物理文件已删，媒体库条目已失效：按 URI 删除（失败也无妨，扫描/重启会自行清理）
+                target.uri?.let { uri ->
+                    try { contentResolver.delete(uri, null, null) } catch (_: Exception) {}
+                }
+            } else {
+                failed++
+            }
         }
-        if (valid.isEmpty()) return
-        deleteBaseStatus = baseStatus
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            try {
-                val sender = MediaStore.createTrashRequest(contentResolver, valid, true).intentSender
-                pendingDeleteCount = valid.size
-                deleteRequestLauncher.launch(IntentSenderRequest.Builder(sender).build())
-            } catch (e: Exception) {
-                pendingDeleteCount = 0
-                statusText = "$baseStatus；原图移入回收站请求失败（${e.message}）"
-            }
-        } else {
-            // Android 10：无 createTrashRequest 与回收站；非本应用拥有的媒体无法删除
-            // Android 9-：WRITE_EXTERNAL_STORAGE 允许直接删媒体行与物理文件（无回收站）
-            var deleted = 0
-            for (uri in valid) {
-                try { contentResolver.delete(uri, null, null); deleted++ } catch (_: Exception) {}
-            }
-            val noTrash = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
-                "Android 10 无回收站，直接删除" else "旧系统无回收站，已直接删除"
-            statusText = if (deleted > 0)
-                "$baseStatus；已删除 $deleted 个原文件（$noTrash）"
-            else
-                "$baseStatus；原文件删除失败，已保留"
+        return when {
+            deleted > 0 && failed > 0 -> "已删除 $deleted 个原文件（$failed 个删除失败，已保留）"
+            deleted > 0 -> "已删除 $deleted 个原文件"
+            else -> "原图删除失败（文件被占用或无写入权限），已保留"
         }
     }
 

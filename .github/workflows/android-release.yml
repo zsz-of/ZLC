@@ -279,13 +279,25 @@ jobs:
           set -euo pipefail
           git fetch --tags --force >/dev/null 2>&1 || true
 
-          prev="$(git describe --tags --abbrev=0 "${TAG}^" 2>/dev/null || true)"
-          if [ -n "$prev" ]; then
-            range="${prev}..${TAG}"
-          else
-            range="${TAG}"
+          # 更新内容优先取 CHANGELOG.md 里本版本的条目（面向用户的措辞），
+          # 取不到才退回「提交主题」列表，保证正文永远不为空。
+          changes="$(awk -v ver="${VERSION}" '
+            index($0, "## [" ver "]") == 1 { inside=1; next }
+            inside && index($0, "## [") == 1 { exit }
+            inside { print }
+          ' CHANGELOG.md 2>/dev/null | grep -v '^---$' || true)"
+          # 去掉首尾空行
+          changes="$(printf '%s\n' "$changes" | sed -e '/./,$!d' | sed -e :a -e '/^\n*$/{$d;N;ba' -e '}')"
+
+          if [ -z "$changes" ]; then
+            prev="$(git describe --tags --abbrev=0 "${TAG}^" 2>/dev/null || true)"
+            if [ -n "$prev" ]; then
+              range="${prev}..${TAG}"
+            else
+              range="${TAG}"
+            fi
+            changes="$(git log --no-merges --pretty=format:'- %s' "$range" 2>/dev/null || true)"
           fi
-          changes="$(git log --no-merges --pretty=format:'- %s' "$range" 2>/dev/null || true)"
           if [ -z "$changes" ]; then
             changes="- 本次发布未记录变更条目。"
           fi

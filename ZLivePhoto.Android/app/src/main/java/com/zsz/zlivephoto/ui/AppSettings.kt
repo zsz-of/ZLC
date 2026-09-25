@@ -37,6 +37,10 @@ object AppSettings {
     /** 启动时自动从 GitHub 检查更新 */
     var checkUpdateOnStartup by mutableStateOf(true)
         private set
+    /** 按源文件夹层级输出：产物落到 `Pictures/Z-LivePhoto-Converter/<原相册名>/`；
+     *  关闭时全部平铺在 `Pictures/Z-LivePhoto-Converter/` 下 */
+    var preserveFolders by mutableStateOf(true)
+        private set
     /** 深色模式：system（跟随系统）/ dark（强制深色）/ light（强制浅色） */
     var themeMode by mutableStateOf("system")
         private set
@@ -56,6 +60,7 @@ object AppSettings {
         presetColor = prefs.getInt("preset_color", 0).coerceIn(0, 6)
         customHue = prefs.getFloat("custom_hue", -1f)
         checkUpdateOnStartup = prefs.getBoolean("check_update_startup", true)
+        preserveFolders = prefs.getBoolean("preserve_folders", true)
         themeMode = prefs.getString("theme_mode", "system") ?: "system"
         skippedVersion = prefs.getString("skipped_version", "") ?: ""
         // go 轻量版：强制关闭马达反馈与按钮弹性动画（简化版无触感/无 q 弹）
@@ -120,6 +125,11 @@ object AppSettings {
     fun setStartupUpdateCheck(v: Boolean) {
         checkUpdateOnStartup = v
         prefs.edit().putBoolean("check_update_startup", v).apply()
+    }
+
+    fun setPreserveFolderStructure(v: Boolean) {
+        preserveFolders = v
+        prefs.edit().putBoolean("preserve_folders", v).apply()
     }
 
     fun setThemeModeValue(mode: String) {

@@ -45,6 +45,7 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.Person
@@ -324,6 +325,29 @@ private fun SettingsMainContent(
                                 haptic.click()
                                 onOpenReminder()
                             }
+                        )
+                    }
+                )
+            )
+
+            // ── 输出 ──
+            SectionTitle("输出")
+            SettingsRowsGroup(
+                listOf(
+                    { s ->
+                        SettingsSwitchRow(
+                            shape = s,
+                            title = "按源文件夹层级输出",
+                            subtitle = "转换结果按原相册名分子目录存放；关闭后全部平铺在同一个目录",
+                            checked = AppSettings.preserveFolders,
+                            leading = {
+                                Icon(
+                                    Icons.Default.Folder,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            },
+                            onToggle = { AppSettings.setPreserveFolderStructure(it) }
                         )
                     }
                 )

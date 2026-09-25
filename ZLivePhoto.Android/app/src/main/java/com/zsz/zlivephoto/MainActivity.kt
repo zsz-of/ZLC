@@ -221,6 +221,8 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var incomingDir: String
     private lateinit var outputDir: String
+    /** 每个转换任务独占的暂存子目录序号（避免同名文件并发写同一路径互相覆盖） */
+    private val taskSeq = AtomicInteger(0)
 
     // 动态照片 = 图片 + 伴生视频，必须同时申请图片与视频读取权限
     // （vivo/OPPO 等双文件格式需要直接读取同目录 .mp4，缺视频权限会报
@@ -1690,7 +1692,7 @@ class MainActivity : ComponentActivity() {
         progress = 0f
         statusText = "已清空"
         File(incomingDir).listFiles()?.forEach { it.delete() }
-        File(outputDir).listFiles()?.forEach { it.delete() }
+        File(outputDir).walkBottomUp().forEach { it.delete() }
         // 快照：分 50 条一批移除，避免大量缓存删除 + 列表项移除
         // 一次性执行造成主线程卡顿（>500 项时尤为明显）
         val instant = files.toList()
@@ -1760,6 +1762,10 @@ class MainActivity : ComponentActivity() {
                         }
                         var n = 0
                         var staged: List<String>? = null
+                        // 本任务独占的暂存目录：4 路并发下，不同目录的同名文件
+                        // （如 DCIM/Camera/IMG_0001.jpg 与 Pictures/微信/IMG_0001.jpg）
+                        // 若共用一个 outDir 会写同一路径互相覆盖，产物内容串味。
+                        val taskDir = File(outputDir, "job${taskSeq.incrementAndGet()}")
                         try {
                             if (item.formatKey == "compose" && item.composeVideoPath != null) {
                                 // 合成任务：照片 + 配对视频 → 动态照片。
@@ -1769,7 +1775,7 @@ class MainActivity : ComponentActivity() {
                                     photoPath = item.path,
                                     videoPath = item.composeVideoPath!!,
                                     target = selectedFormat,
-                                    outDir = outputDir,
+                                    outDir = taskDir.path,
                                     log = { level, msg, tag ->
                                         if (level == "error" || level == "warn") {
                                             statusText = "[$tag] $msg"
@@ -1795,7 +1801,7 @@ class MainActivity : ComponentActivity() {
                                 staged = Converter.convertFile(
                                     path = item.path,
                                     target = selectedFormat,
-                                    outDir = outputDir,
+                                    outDir = taskDir.path,
                                     log = { level, msg, tag ->
                                         if (level == "error" || level == "warn") {
                                             statusText = "[$tag] $msg"
@@ -1814,7 +1820,9 @@ class MainActivity : ComponentActivity() {
                                 }
                             } else emptyList()
                             // 输出文件名冲突处理（跳过 / 覆盖 / 自动后缀）
-                            val finalOutputs = resolveConflicts(staged.orEmpty(), "", item.sourcePath)
+                            // 子目录：开关开启时按源相册分目录，冲突判定也随之按子目录各判各的
+                            val subDir = sourceSubDir(item.sourcePath ?: item.path)
+                            val finalOutputs = resolveConflicts(staged.orEmpty(), subDir, item.sourcePath)
                             if (finalOutputs != null) {
                                 for (outPath in finalOutputs) {
                                     // 输出时间戳：修改时间=源文件修改时间；创建时间=源文件拍摄时间
@@ -1822,7 +1830,7 @@ class MainActivity : ComponentActivity() {
                                     val srcTime = if (item.sourceTime > 0L) item.sourceTime else System.currentTimeMillis()
                                     val srcTaken = if (item.sourceTaken > 0L) item.sourceTaken else srcTime
                                     File(outPath).setLastModified(srcTime)
-                                    if (exportToMediaStore(outPath, srcTime, srcTaken) != null) n++
+                                    if (exportToMediaStore(outPath, srcTime, srcTaken, subDir) != null) n++
                                 }
                             }
                             exported.addAndGet(n)
@@ -1854,7 +1862,7 @@ class MainActivity : ComponentActivity() {
                             }
                         } finally {
                             // 清理本地暂存产物（已导出 / 跳过 / 失败均清理）
-                            staged?.forEach { p -> try { File(p).delete() } catch (_: Exception) {} }
+                            try { taskDir.deleteRecursively() } catch (_: Exception) {}
                         }
                         val d = done.incrementAndGet()
                         progress = d.toFloat() / total
@@ -2102,11 +2110,67 @@ class MainActivity : ComponentActivity() {
     /** 相册输出根目录名：normal 与 go 均统一输出到 Pictures/Z-LivePhoto-Converter（Go 仅体现在应用名） */
     private fun albumFolder(): String = "Z-LivePhoto-Converter"
 
+    /**
+     * 输出子目录名（「按源文件夹层级输出」开关开启时用）：取源文件所在相册目录名，
+     * 使 `DCIM/Camera/a.jpg` 与 `Pictures/微信/a.jpg` 分别落到不同子目录，不再混在一起。
+     *
+     * 返回空串 = 平铺（关闭开关 / 无源路径 / 源目录不可用）。
+     * 三类特殊源一律返回空串：
+     * - 名为空或路径无父目录（根目录下的文件）；
+     * - 源就在输出根目录或其后代里（否则会越套越深，如 `.../Z-LivePhoto-Converter/风景/`）；
+     * - 源位于应用私有暂存目录（文档 URI 兜底复制进来的，原相册信息已经丢失）。
+     */
+    private fun sourceSubDir(path: String?): String {
+        if (!AppSettings.preserveFolders) return ""
+        if (path.isNullOrEmpty()) return ""
+        val src = try { File(path).canonicalFile } catch (_: Exception) { File(path) }
+        val parent = src.parentFile ?: return ""
+        // 源已在输出目录内：取其相对输出根的子路径，避免再套一层同名目录
+        val albumRoot = try {
+            File(
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                albumFolder()
+            ).canonicalFile
+        } catch (_: Exception) {
+            File(
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                albumFolder()
+            )
+        }
+        val parentPath = parent.absolutePath
+        if (parentPath == albumRoot.absolutePath) return ""
+        val rootPrefix = albumRoot.absolutePath + File.separator
+        if (parentPath.startsWith(rootPrefix)) {
+            return sanitizeSubDir(parentPath.removePrefix(rootPrefix))
+        }
+        // 应用私有暂存目录（content 流兜底复制）：原相册未知
+        try {
+            if (parentPath == File(incomingDir).canonicalFile.absolutePath) return ""
+        } catch (_: Exception) {}
+        return sanitizeSubDir(parent.name)
+    }
+
+    /**
+     * 清理子目录名：只保留单层目录，剔除分隔符与 `..` 等会跳出输出根的名字，
+     * 并限制长度（个别相册名可长达上百字符，过长会让路径超限写盘失败）。
+     * 结果为空或非法时返回空串（即平铺）。
+     */
+    private fun sanitizeSubDir(raw: String): String {
+        val cleaned = raw
+            .replace('\\', '_')
+            .replace('/', '_')
+            .replace('\u0000', '_')
+            .trim()
+            .trim('.')
+        if (cleaned.isEmpty() || cleaned == "." || cleaned == "..") return ""
+        return cleaned.take(64)
+    }
+
     /** 相册输出目录（Pictures/Z-LivePhoto-Converter[/<子目录>]）中是否已存在同名文件。
      *  Android 9-：输出落盘为物理文件，由 nameOccupied 的文件系统检查兜底，这里直接返回 false。 */
     private fun mediaStoreExists(displayName: String, relSubDir: String): Boolean {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) return false
-        val rel = albumRelPath(relSubDir)
+        val (rel, relSlash) = albumRelPathArgs(relSubDir)
         for (collection in listOf(
             MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL),
             MediaStore.Video.Media.getContentUri(MediaStore.VOLUME_EXTERNAL)
@@ -2114,8 +2178,8 @@ class MainActivity : ComponentActivity() {
             try {
                 contentResolver.query(
                     collection, arrayOf(MediaStore.MediaColumns._ID),
-                    "${MediaStore.MediaColumns.DISPLAY_NAME}=? AND ${MediaStore.MediaColumns.RELATIVE_PATH}=?",
-                    arrayOf(displayName, rel), null
+                    "${MediaStore.MediaColumns.DISPLAY_NAME}=? AND ${MediaStore.MediaColumns.RELATIVE_PATH} IN (?,?)",
+                    arrayOf(displayName, rel, relSlash), null
                 )?.use { c -> if (c.moveToFirst()) return true }
             } catch (_: Exception) {}
         }
@@ -2127,7 +2191,7 @@ class MainActivity : ComponentActivity() {
      *  Android 9-：直接删除物理文件 + 按 DATA 查 MediaStore 行删除（无 RELATIVE_PATH 列）。 */
     private fun deleteFromMediaStore(displayName: String, relSubDir: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            val rel = albumRelPath(relSubDir)
+            val (rel, relSlash) = albumRelPathArgs(relSubDir)
             for (collection in listOf(
                 MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL),
                 MediaStore.Video.Media.getContentUri(MediaStore.VOLUME_EXTERNAL)
@@ -2135,8 +2199,8 @@ class MainActivity : ComponentActivity() {
                 try {
                     contentResolver.query(
                         collection, arrayOf(MediaStore.MediaColumns._ID),
-                        "${MediaStore.MediaColumns.DISPLAY_NAME}=? AND ${MediaStore.MediaColumns.RELATIVE_PATH}=?",
-                        arrayOf(displayName, rel), null
+                        "${MediaStore.MediaColumns.DISPLAY_NAME}=? AND ${MediaStore.MediaColumns.RELATIVE_PATH} IN (?,?)",
+                        arrayOf(displayName, rel, relSlash), null
                     )?.use { c ->
                         while (c.moveToNext()) {
                             val id = c.getLong(0)
@@ -2168,6 +2232,19 @@ class MainActivity : ComponentActivity() {
     private fun albumRelPath(relSubDir: String): String =
         Environment.DIRECTORY_PICTURES + "/" + albumFolder() +
             (if (relSubDir.isNotEmpty()) "/$relSubDir" else "")
+
+    /**
+     * 查询 `RELATIVE_PATH` 时用的匹配候选。
+     *
+     * MediaStore 的契约是该列以 `/` 结尾（存库时会被系统规范化补上），
+     * 而本应用插入时用的是不带结尾斜杠的写法，两种形态都可能出现在库里。
+     * 只按不带斜杠的形式等值匹配会查不到任何行，导致「覆盖」模式删不掉旧记录、
+     * 新文件被系统静默改名为 `xxx (1).jpg`。因此查询时两种形态一起匹配。
+     */
+    private fun albumRelPathArgs(relSubDir: String): Pair<String, String> {
+        val rel = albumRelPath(relSubDir)
+        return rel to "$rel/"
+    }
 
     // ---------- 项10：处理完成后删除原图（辅助） ----------
 

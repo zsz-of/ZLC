@@ -4,6 +4,15 @@
 
 ---
 
+## [未发布]
+
+### 🚑 修复 Android 11 ~ 14 冷启动必闪退
+
+- **修复启动即闪退（Android 11 ~ 14）**：`View.setRequestedFrameRate` 是 **API 35（Android 15）** 才引入的方法，而自 v3.4.4 起把调用门禁写成了 **API 30（Android 11）**。于是在 Android 11 ~ 14 上冷启动会抛 `NoSuchMethodError`；该异常属于 `Error` / `LinkageError` 系而不是 `Exception`，原有的 `catch (Exception)` 兜不住，直接崩在 `MainActivity.onCreate`。现把门禁更正为 API 35，兜底改为 `catch (Throwable)`。Go 轻量版不受影响（它跳过了整个刷新率请求）。影响范围：v3.4.4 ~ v3.4.8 的正常版，在 Android 11 ~ 14 设备上必现。
+- **补上从未跑过的静态检查**：本项目的 Android Lint 一直没跑过 `NewApi` 检查，才让这个「门禁写低了」的问题从 v3.4.4 潜伏到 v3.4.8。现已用 lint 全量复核，除本处外没有其他同类问题。
+
+---
+
 ## [3.4.8] - 2026-09-25
 
 ### 📁 输出可按源文件夹分层 + 🐛 修复并发同名互相覆盖

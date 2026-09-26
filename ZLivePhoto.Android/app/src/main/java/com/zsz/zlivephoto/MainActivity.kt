@@ -537,7 +537,7 @@ class MainActivity : ComponentActivity() {
      * - 面板上报的刷新率常带浮点误差（如 89.97 / 164.98 / 239.76），这里吸附到标准档位后再请求，
      *   避免系统认为该帧率不被支持而回退到 60Hz。
      * - 同时写入 `preferredRefreshRate`，兼容只认该字段、忽略 modeId 的 ROM。
-     * - Android 11+ 再用 `View.setRequestedFrameRate` 声明期望帧率，便于可变刷新率设备按内容调度。
+     * - Android 15+ 再用 `View.setRequestedFrameRate` 声明期望帧率，便于可变刷新率设备按内容调度。
      * - go 轻量版面向老设备、以省电为主，不做该请求。
      */
     @Suppress("DEPRECATION")
@@ -568,11 +568,16 @@ class MainActivity : ComponentActivity() {
             }
             if (changed) window.attributes = lp
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // View.setRequestedFrameRate 是 API 35（Android 15）才引入的方法。
+            // 门禁若写成 R(30)，Android 11~14 上会抛 NoSuchMethodError ——
+            // 它属于 Error/LinkageError 系，外面那个 catch 拦不住，直接崩在 onCreate。
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
                 window.decorView.requestedFrameRate = rate
             }
-        } catch (_: Exception) {
-            // 个别 ROM 不支持切换显示模式：忽略，保持系统默认刷新率
+        } catch (_: Throwable) {
+            // 个别 ROM 不支持切换显示模式：忽略，保持系统默认刷新率。
+            // 必须兜 Throwable：低版本上调用不存在的 API 抛的是 NoSuchMethodError，
+            // catch(Exception) 拦不住。
         }
     }
 

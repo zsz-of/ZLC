@@ -21,12 +21,24 @@ import kotlin.math.roundToLong
  * 也不存在版本失配问题。
  *
  * go 轻量版不含该二进制（体积优先），[isReady] 恒为 false，转码功能整体禁用。
+ *
+ * 合成动态照片遇到不符合格式的视频时怎么处理，由用户在设置页三选一（见 [mode] /
+ * [MODE_OFF] / [MODE_REMUX] / [MODE_ENCODE]），默认 [MODE_REMUX]（只换容器不重新编码）。
  */
 internal class AddonException(message: String) : Exception(message)
 
 object FfmpegAddon {
     /** 标准 MP4 视频编码 fourcc（H.264 / H.265）；其余（vp09/av01/mp4v 等）需转码 */
     val STANDARD_MP4_CODECS = setOf("avc1", "avc3", "hev1", "hvc1")
+
+    /** 转码方式：完全不使用（不调用 ffmpeg，只做零拷贝的容器品牌改写） */
+    const val MODE_OFF = "off"
+
+    /** 转码方式：仅重封装容器（只换容器、不重新编码）—— 默认值 */
+    const val MODE_REMUX = "remux"
+
+    /** 转码方式：重新编码（同时重封装容器） */
+    const val MODE_ENCODE = "encode"
 
     /** 随包内置的 ffmpeg 版本（与 jniLibs 中的 libffmpeg.so 一致） */
     const val BUNDLED_VERSION = "n8.1.2.7"
@@ -44,6 +56,9 @@ object FfmpegAddon {
     /** 编码器：h265（默认）| h264 */
     var codec by mutableStateOf("h265")
         private set
+    /** 转码方式：见 [MODE_OFF] / [MODE_REMUX] / [MODE_ENCODE]，默认仅重封装容器 */
+    var mode by mutableStateOf(MODE_REMUX)
+        private set
 
     private lateinit var prefs: SharedPreferences
     private lateinit var appCtx: Context
@@ -54,6 +69,8 @@ object FfmpegAddon {
         crf = prefs.getInt("ffmpeg_crf", 18).coerceIn(10, 30)
         preset = prefs.getString("ffmpeg_preset", "slow") ?: "slow"
         codec = prefs.getString("ffmpeg_codec", "h265") ?: "h265"
+        // 老用户升级后默认「仅重封装容器」（不重新编码），未写过的 prefs 键即为此值
+        mode = normalizeMode(prefs.getString("ffmpeg_mode", MODE_REMUX))
     }
 
     fun isGo(): Boolean = BuildConfig.FLAVOR == "go"
@@ -78,6 +95,18 @@ object FfmpegAddon {
     fun updateCrf(v: Int) {
         crf = v.coerceIn(10, 30)
         prefs.edit().putInt("ffmpeg_crf", crf).apply()
+    }
+
+    /** 设置转码方式（非法值回落到默认的「仅重封装容器」） */
+    fun updateMode(v: String) {
+        mode = normalizeMode(v)
+        prefs.edit().putString("ffmpeg_mode", mode).apply()
+    }
+
+    private fun normalizeMode(v: String?): String = when (v) {
+        MODE_OFF -> MODE_OFF
+        MODE_ENCODE -> MODE_ENCODE
+        else -> MODE_REMUX
     }
 
     fun updatePreset(v: String) {
@@ -220,6 +249,64 @@ object FfmpegAddon {
             throw AddonException("ffmpeg 转码失败：${tail.toString().trim().takeLast(160)}")
         }
         log("info", "视频转码完成（${out.length() / 1024}KB）", "转码")
+        out
+    }
+
+    /**
+     * 用内置 ffmpeg 把 [input] **只换容器、不重新编码**（`-c copy`）封装为标准 MP4。
+     * 输出到 cache/ffmpeg_tmp，返回输出文件；失败抛 [AddonException]。
+     *
+     * 与 [transcodeToMp4] 的区别：不碰视频/音频码流，只把它们搬进 MP4 容器，
+     * 因此快得多、画质零损失；代价是**改变不了编码本身** —— 源视频编码不是
+     * MP4 能承载的 H.264/H.265 时（如 VP9/AV1），产物仍是非标准编码，需调用方复核。
+     *
+     * 与 [transcodeToMp4] 一致：只保留首路视频 + 首路音频轨道（`-sn -dn` 丢弃字幕/数据轨道），
+     * 用 `V` 而非 `v` 选择视频轨，避免 MKV 内嵌封面图被当成主视频。
+     * 不指定 `-tag:v`：源是 MP4/MOV 时保留原有的 avc1/hvc1 采样条目标签。
+     */
+    suspend fun remuxToMp4(
+        input: String,
+        log: (String, String, String) -> Unit
+    ): File = withContext(Dispatchers.IO) {
+        val bin = binaryFile() ?: throw AddonException("内置转码器不可用")
+        if (!bin.exists() || bin.length() <= 0L) throw AddonException("内置转码器不可用")
+
+        val tmpDir = File(appCtx.cacheDir, "ffmpeg_tmp").apply { mkdirs() }
+        val out = File(tmpDir, "remuxed_${System.currentTimeMillis()}.mp4")
+        val args = listOf(
+            "-y", "-nostats",
+            "-i", input,
+            "-map", "0:V:0", "-map", "0:a:0?",
+            "-sn", "-dn",
+            "-c", "copy",
+            "-movflags", "+faststart",
+            out.absolutePath
+        )
+        log("info", "正在重封装视频容器为标准 MP4（只换容器、不重新编码）", "转码")
+
+        val pb = ProcessBuilder(listOf(bin.absolutePath) + args)
+        pb.redirectErrorStream(true)
+        val proc = pb.start()
+
+        // 重封装很快且没有进度可言，只需保留尾部输出用于报错
+        val tail = StringBuilder()
+        runCatching {
+            proc.inputStream.bufferedReader().use { r ->
+                var line = r.readLine()
+                while (line != null) {
+                    tail.append(line).append('\n')
+                    if (tail.length > 8192) tail.delete(0, tail.length - 8192)
+                    line = r.readLine()
+                }
+            }
+        }
+        val exit = proc.waitFor()
+
+        if (exit != 0 || !out.exists() || out.length() <= 0L) {
+            runCatching { out.delete() }
+            throw AddonException("ffmpeg 重封装容器失败：${tail.toString().trim().takeLast(160)}")
+        }
+        log("info", "容器重封装完成（${out.length() / 1024}KB）", "转码")
         out
     }
 

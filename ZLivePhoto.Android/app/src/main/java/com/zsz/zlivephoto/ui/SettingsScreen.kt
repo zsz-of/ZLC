@@ -905,20 +905,21 @@ private fun SettingsRowsGroup(rows: List<@Composable (RoundedCornerShape) -> Uni
     }
 }
 
-/** 深色模式三选行：整行可点 + 弹性动画，选中项行尾显示对勾 */
+/** 三选一单选行：整行可点 + 弹性动画，选中项行尾显示对勾；[subtitle] 为可选通俗说明 */
 @Composable
 private fun ThemeModeRow(
     shape: RoundedCornerShape,
     title: String,
     selected: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    subtitle: String? = null
 ) {
     val fb = rememberPressFeedback(hapticOnPress = false)
     val haptic = rememberHapticFeedback()
     Row(
         Modifier
             .fillMaxWidth()
-            .heightIn(min = 52.dp)
+            .heightIn(min = if (subtitle == null) 52.dp else 64.dp)
             .background(MaterialTheme.colorScheme.surfaceContainerLow, shape)
             .clickable(
                 interactionSource = fb.interactionSource,
@@ -931,12 +932,19 @@ private fun ThemeModeRow(
             .padding(horizontal = 20.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            title,
-            style = MaterialTheme.typography.titleSmall,
-            modifier = Modifier.weight(1f)
-        )
+        Column(Modifier.weight(1f)) {
+            Text(title, style = MaterialTheme.typography.titleSmall)
+            if (subtitle != null) {
+                Spacer(Modifier.height(2.dp))
+                Text(
+                    subtitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
         if (selected) {
+            Spacer(Modifier.width(12.dp))
             Icon(
                 Icons.Default.Check,
                 contentDescription = null,
@@ -1111,9 +1119,10 @@ private fun SettingsActionRow(
 
 /**
  * 内置转码器（ffmpeg）：随 APK 打包为 native 库，无需下载/校验/解压/更新，
- * 设置页只保留转码参数选择。
+ * 设置页提供「转码方式」三选一与转码参数。
  * - go 轻量版不含内置转码器，整个区块隐藏；
- * - 参数（CRF/编码器/预设）默认 cq18 / H.265 / slow。
+ * - 转码方式默认「仅重封装容器」（只换容器不重新编码）；
+ * - 参数（CRF/编码器/预设）默认 cq18 / H.265 / slow，仅「重新编码」时生效。
  */
 @Composable
 private fun TranscoderAddonSection() {
@@ -1129,20 +1138,53 @@ private fun TranscoderAddonSection() {
                     title = "内置转码器",
                     value = "ffmpeg ${FfmpegAddon.BUNDLED_VERSION}"
                 )
+            },
+            { s ->
+                ThemeModeRow(
+                    shape = s,
+                    title = "重新编码",
+                    subtitle = "把视频重新压成 H.264/H.265 标准 MP4。兼容性最好，" +
+                        "什么格式都能用；代价是慢（几分钟），画质略有损失。",
+                    selected = FfmpegAddon.mode == FfmpegAddon.MODE_ENCODE,
+                    onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_ENCODE) }
+                )
+            },
+            { s ->
+                ThemeModeRow(
+                    shape = s,
+                    title = "仅重封装容器（推荐）",
+                    subtitle = "只把视频装进 MP4 容器，不重新压画质：速度快、画质零损失。" +
+                        "但视频本身不是 H.264/H.265 编码时救不回来，会直接报失败。",
+                    selected = FfmpegAddon.mode == FfmpegAddon.MODE_REMUX,
+                    onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_REMUX) }
+                )
+            },
+            { s ->
+                ThemeModeRow(
+                    shape = s,
+                    title = "完全不使用转码器",
+                    subtitle = "完全不调用 ffmpeg。只有本就是 MP4 的视频能直接用，" +
+                        "MOV 可靠改写容器头转换；MKV/WebM 等其它格式一律报失败。",
+                    selected = FfmpegAddon.mode == FfmpegAddon.MODE_OFF,
+                    onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_OFF) }
+                )
             }
         )
     )
 
     Spacer(Modifier.height(12.dp))
+    val encoding = FfmpegAddon.mode == FfmpegAddon.MODE_ENCODE
     Column(
         Modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.surfaceContainerLow, RoundedCornerShape(16.dp))
+            .alpha(if (encoding) 1f else 0.38f)
             .padding(horizontal = 20.dp, vertical = 12.dp)
     ) {
         Text("转码参数", style = MaterialTheme.typography.titleSmall)
         Text(
-            "合成动态照片时，非标准 MP4 视频自动转码为标准 MP4（H.265/H.264）",
+            if (encoding) "重新编码时使用的质量与压缩参数"
+            else "仅在「转码方式」选择「重新编码」时生效",
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -1157,7 +1199,8 @@ private fun TranscoderAddonSection() {
             value = FfmpegAddon.crf.toFloat(),
             onValueChange = { FfmpegAddon.updateCrf(it.toInt()) },
             valueRange = 10f..30f,
-            steps = 19
+            steps = 19,
+            enabled = encoding
         )
         Text(
             "数值越小画质越高、体积越大（默认 18）",
@@ -1173,8 +1216,12 @@ private fun TranscoderAddonSection() {
         )
         Spacer(Modifier.height(6.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            SelectChip("H.265", FfmpegAddon.codec == "h265") { FfmpegAddon.updateCodec("h265") }
-            SelectChip("H.264", FfmpegAddon.codec == "h264") { FfmpegAddon.updateCodec("h264") }
+            SelectChip("H.265", FfmpegAddon.codec == "h265", enabled = encoding) {
+                FfmpegAddon.updateCodec("h265")
+            }
+            SelectChip("H.264", FfmpegAddon.codec == "h264", enabled = encoding) {
+                FfmpegAddon.updateCodec("h264")
+            }
         }
 
         Spacer(Modifier.height(12.dp))
@@ -1191,7 +1238,9 @@ private fun TranscoderAddonSection() {
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             for (p in FfmpegAddon.PRESETS) {
-                SelectChip(p, FfmpegAddon.preset == p) { FfmpegAddon.updatePreset(p) }
+                SelectChip(p, FfmpegAddon.preset == p, enabled = encoding) {
+                    FfmpegAddon.updatePreset(p)
+                }
             }
         }
     }
@@ -1199,7 +1248,12 @@ private fun TranscoderAddonSection() {
 
 /** 可选胶囊：选中=primary 底 + onPrimary 字；未选=surfaceContainerHigh 底 + onSurfaceVariant 字 */
 @Composable
-private fun SelectChip(label: String, selected: Boolean, onClick: () -> Unit) {
+private fun SelectChip(
+    label: String,
+    selected: Boolean,
+    enabled: Boolean = true,
+    onClick: () -> Unit
+) {
     val haptic = rememberHapticFeedback()
     val bg by animateColorAsState(
         targetValue = if (selected) MaterialTheme.colorScheme.primary
@@ -1218,7 +1272,7 @@ private fun SelectChip(label: String, selected: Boolean, onClick: () -> Unit) {
         modifier = Modifier
             .clip(RoundedCornerShape(50))
             .background(bg)
-            .clickable { haptic.click(); onClick() }
+            .clickable(enabled = enabled) { haptic.click(); onClick() }
             .padding(horizontal = 14.dp, vertical = 8.dp)
     )
 }

@@ -1774,8 +1774,9 @@ class MainActivity : ComponentActivity() {
                         try {
                             if (item.formatKey == "compose" && item.composeVideoPath != null) {
                                 // 合成任务：照片 + 配对视频 → 动态照片。
-                                // 非标准 MP4（MOV/非 H.264/H.265 编码）时自动用 ffmpeg 附加项转码
-                                // 为标准 MP4；附加项未安装则抛 VideoContainerException 提示用户先下载。
+                                // 视频不符合标准 MP4（MOV / 非 H.264/H.265 编码 / MKV 等）时，
+                                // 按「设置 → 视频转码 → 转码方式」处理：重新编码 / 仅重封装容器 / 不使用；
+                                // 失败抛 VideoContainerException，提示里会写明该改成哪一项。
                                 staged = Converter.compose(
                                     photoPath = item.path,
                                     videoPath = item.composeVideoPath!!,

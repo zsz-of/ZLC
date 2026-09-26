@@ -905,21 +905,20 @@ private fun SettingsRowsGroup(rows: List<@Composable (RoundedCornerShape) -> Uni
     }
 }
 
-/** 三选一单选行：整行可点 + 弹性动画，选中项行尾显示对勾；[subtitle] 为可选通俗说明 */
+/** 三选一单选行：整行可点 + 弹性动画，选中项行尾显示对勾 */
 @Composable
 private fun ThemeModeRow(
     shape: RoundedCornerShape,
     title: String,
     selected: Boolean,
-    onClick: () -> Unit,
-    subtitle: String? = null
+    onClick: () -> Unit
 ) {
     val fb = rememberPressFeedback(hapticOnPress = false)
     val haptic = rememberHapticFeedback()
     Row(
         Modifier
             .fillMaxWidth()
-            .heightIn(min = if (subtitle == null) 52.dp else 64.dp)
+            .heightIn(min = 52.dp)
             .background(MaterialTheme.colorScheme.surfaceContainerLow, shape)
             .clickable(
                 interactionSource = fb.interactionSource,
@@ -932,17 +931,7 @@ private fun ThemeModeRow(
             .padding(horizontal = 20.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Column(Modifier.weight(1f)) {
-            Text(title, style = MaterialTheme.typography.titleSmall)
-            if (subtitle != null) {
-                Spacer(Modifier.height(2.dp))
-                Text(
-                    subtitle,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
-        }
+        Text(title, style = MaterialTheme.typography.titleSmall, modifier = Modifier.weight(1f))
         if (selected) {
             Spacer(Modifier.width(12.dp))
             Icon(
@@ -1143,8 +1132,6 @@ private fun TranscoderAddonSection() {
                 ThemeModeRow(
                     shape = s,
                     title = "重新编码",
-                    subtitle = "把视频重新压成 H.264/H.265 标准 MP4。兼容性最好，" +
-                        "什么格式都能用；代价是慢（几分钟），画质略有损失。",
                     selected = FfmpegAddon.mode == FfmpegAddon.MODE_ENCODE,
                     onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_ENCODE) }
                 )
@@ -1153,8 +1140,6 @@ private fun TranscoderAddonSection() {
                 ThemeModeRow(
                     shape = s,
                     title = "仅重封装容器（推荐）",
-                    subtitle = "只把视频装进 MP4 容器，不重新压画质：速度快、画质零损失。" +
-                        "但视频本身不是 H.264/H.265 编码时救不回来，会直接报失败。",
                     selected = FfmpegAddon.mode == FfmpegAddon.MODE_REMUX,
                     onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_REMUX) }
                 )
@@ -1163,8 +1148,6 @@ private fun TranscoderAddonSection() {
                 ThemeModeRow(
                     shape = s,
                     title = "完全不使用转码器",
-                    subtitle = "完全不调用 ffmpeg。只有本就是 MP4 的视频能直接用，" +
-                        "MOV 可靠改写容器头转换；MKV/WebM 等其它格式一律报失败。",
                     selected = FfmpegAddon.mode == FfmpegAddon.MODE_OFF,
                     onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_OFF) }
                 )

@@ -53,20 +53,35 @@ enum class ReminderKey(
         category = "更新",
         title = "检测到旧版本",
         message = "本设备仍安装了旧版本（Go 版）应用，该旧版本在本设备上已不可用，可卸载以释放空间。"
+    ),
+    REPLACE_MODE_RISK(
+        prefsKey = "replace_mode_risk_no_warn",
+        category = "转换",
+        title = "替换模式有损坏风险",
+        message = "替换模式会把转换结果直接写回原来的文件，原文件被覆盖后无法找回。\n\n" +
+            "• 写入过程中若应用被中断、存储空间不足或权限被撤销，源文件可能损坏\n" +
+            "• 转换本身无法保证 100% 成功，失败时源文件可能已经不可用\n" +
+            "• 建议先拿一两个文件试一次，确认没问题再批量处理\n" +
+            "• 重要照片请先自行备份\n\n" +
+            "本功能按「现状」提供，使用风险由你自行承担，作者不对文件损坏或丢失负责。"
     )
 }
 
 /**
  * 通用的「不再提示」信息弹窗（提示类，无业务副作用）。
  * - showDontRemind=true：显示「不再提示」复选框，确认时若勾选则写入抑制状态
- * - showDontRemind=false：仅展示标题+文案+「知道了」，点确认即关闭（用于设置页「查看对应弹窗」）
- * - onDismiss 统一负责关闭弹窗；点确认前会先落盘抑制状态（如启用）
+ * - showDontRemind=false：仅展示标题+文案+[confirmLabel]，点确认即关闭（用于设置页「查看对应弹窗」）
+ * - onDismiss 负责关闭弹窗；点确认前会先落盘抑制状态（如启用）
+ * - onConfirm 非空时由它接管「确认」动作（调用方自行关闭弹窗），
+ *   用于「确认后才执行某个有副作用的操作」的场景；取消/点外部仍走 onDismiss（即不执行）
  */
 @Composable
 fun ReminderInfoDialog(
     key: ReminderKey,
     showDontRemind: Boolean = true,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
+    confirmLabel: String = "知道了",
+    onConfirm: (() -> Unit)? = null
 ) {
     var dontRemind by remember { mutableStateOf(false) }
     AlertDialog(
@@ -94,8 +109,8 @@ fun ReminderInfoDialog(
         confirmButton = {
             FilledTonalButton(onClick = {
                 if (showDontRemind && dontRemind) AppSettings.setReminderSuppressed(key, true)
-                onDismiss()
-            }) { Text("知道了") }
+                if (onConfirm != null) onConfirm() else onDismiss()
+            }) { Text(confirmLabel) }
         }
     )
 }

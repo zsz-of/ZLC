@@ -137,8 +137,9 @@ class MainActivity : ComponentActivity() {
     private var showPermissionDialog by mutableStateOf(false)
     private var showSettingsDialog by mutableStateOf(false)
     private var showAllFilesDialog by mutableStateOf(false)
-    /** 「所有文件访问」引导弹窗的用途：true=为开启「处理完成后删除原图」而触发（文案不同） */
-    private var allFilesDialogForDelete by mutableStateOf(false)
+    /** 「所有文件访问」引导弹窗的用途：决定弹窗文案与标题 */
+    private enum class AllFilesPurpose { LOCATION, DELETE, REPLACE }
+    private var allFilesDialogPurpose by mutableStateOf(AllFilesPurpose.LOCATION)
     // 清空/处理收尾过程中（清空按钮须禁用，防止动画期间重复触发或状态错乱）
     private var clearBusy by mutableStateOf(false)
     // 防抖落盘任务：识别完成等高频稳定态回调合并为一次 JSON 写入
@@ -200,6 +201,10 @@ class MainActivity : ComponentActivity() {
     private var deleteOriginal by mutableStateOf(false)
     /** 开关是否可用：需要「完全存储访问」（见 [hasFullStorageAccess]），否则置灰并引导授权 */
     private var deleteOriginalUsable by mutableStateOf(false)
+    /** 工具箱「替换模式」：产物直接写回源文件本体（破坏性；与「删除原图」互斥） */
+    private var replaceMode by mutableStateOf(false)
+    /** 替换模式开关是否可用：同样需要「完全存储访问」 */
+    private var replaceModeUsable by mutableStateOf(false)
     /** 本批次成功处理后待删除的原图（按源路径分组；IO 线程并发合并需加锁） */
     private val pendingDeleteBySource = LinkedHashMap<String, MutableList<PendingDelete>>()
     private val pendingDeleteLock = Any()
@@ -309,25 +314,42 @@ class MainActivity : ComponentActivity() {
     }
 
     /**
-     * 同步「处理完成后删除原图」开关的可用性。
+     * 同步「处理完成后删除原图」与「替换模式」两个破坏性开关的可用性。
      * 完全存储访问被撤销（用户在系统设置里关掉「所有文件访问」）时强制关闭开关并落盘，
-     * 保证「未获得完全存储访问之前不允许使用自动删除」这一约束在冷启动/回前台都成立。
+     * 保证「未获得完全存储访问之前不允许使用自动删除/替换源文件」这一约束在冷启动/回前台都成立。
      */
-    private fun refreshDeleteOriginalGate() {
+    private fun refreshStorageGates() {
         val usable = hasFullStorageAccess()
         deleteOriginalUsable = usable
+        replaceModeUsable = usable
         if (!usable && deleteOriginal) {
             deleteOriginal = false
             getSharedPreferences("zlivephoto", MODE_PRIVATE)
                 .edit().putBoolean("delete_original", false).apply()
         }
+        if (!usable && replaceMode) {
+            replaceMode = false
+            AppSettings.setReplaceModeEnabled(false)
+        }
+    }
+
+    /** 开启其中一个破坏性开关时关掉另一个（替换源文件与删除源文件语义互斥） */
+    private fun disableReplaceMode() {
+        replaceMode = false
+        AppSettings.setReplaceModeEnabled(false)
+    }
+
+    private fun disableDeleteOriginal() {
+        deleteOriginal = false
+        getSharedPreferences("zlivephoto", MODE_PRIVATE)
+            .edit().putBoolean("delete_original", false).apply()
     }
 
     // 「所有文件访问」授权页返回后：刷新状态提示与删除原图开关可用性
     private val allFilesAccessLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
-        refreshDeleteOriginalGate()
+        refreshStorageGates()
         statusText = if (hasAllFilesAccess())
             "已获得「所有文件访问」权限，转换将直写相册目录完整保留位置信息"
         else
@@ -351,7 +373,7 @@ class MainActivity : ComponentActivity() {
         val prefs = getSharedPreferences("zlivephoto", MODE_PRIVATE)
         if (prefs.getBoolean("all_files_prompted", false)) return
         prefs.edit().putBoolean("all_files_prompted", true).apply()
-        allFilesDialogForDelete = false // 冷启动/授权后的引导只讲位置信息，与删除原图无关
+        allFilesDialogPurpose = AllFilesPurpose.LOCATION // 冷启动/授权后的引导只讲位置信息
         showAllFilesDialog = true
     }
 
@@ -636,8 +658,9 @@ class MainActivity : ComponentActivity() {
             selectedFormat = "vivo_single"
         }
         deleteOriginal = prefs.getBoolean("delete_original", false)
+        replaceMode = AppSettings.replaceMode
         // 冷启动即校验：权限已被撤销（或从未授予）时强制关闭开关并落盘
-        refreshDeleteOriginalGate()
+        refreshStorageGates()
 
         // 初始深浅色（后续由 onConfigurationChanged / 设置项变化实时跟踪）
         isDarkTheme = computeDarkTheme()
@@ -890,8 +913,12 @@ class MainActivity : ComponentActivity() {
                                         deleteOriginal = false
                                         prefs.edit().putBoolean("delete_original", false).apply()
                                     }
-                                    // 已获得完全存储访问：允许开启
+                                    // 已获得完全存储访问：允许开启（与「替换模式」互斥）
                                     hasFullStorageAccess() -> {
+                                        if (replaceMode) {
+                                            disableReplaceMode()
+                                            statusText = "已关闭替换模式（与「处理完成后删除原图」互斥）"
+                                        }
                                         deleteOriginal = true
                                         prefs.edit().putBoolean("delete_original", true).apply()
                                     }
@@ -900,8 +927,35 @@ class MainActivity : ComponentActivity() {
                                         deleteOriginal = false
                                         prefs.edit().putBoolean("delete_original", false).apply()
                                         statusText = "自动删除原图需要「所有文件访问」权限，请先授权"
-                                        allFilesDialogForDelete = true
+                                        allFilesDialogPurpose = AllFilesPurpose.DELETE
                                         showAllFilesDialog = true
+                                    }
+                                }
+                            },
+                            replaceMode = replaceMode,
+                            replaceModeUsable = replaceModeUsable,
+                            onToggleReplaceMode = { on ->
+                                when {
+                                    // 关闭：直接落盘，无需权限
+                                    !on -> {
+                                        disableReplaceMode()
+                                        statusText = "已关闭替换模式，转换结果重新写入相册目录"
+                                    }
+                                    // 未获得完全存储访问：不允许改写源文件，改为引导授权
+                                    !hasFullStorageAccess() -> {
+                                        disableReplaceMode()
+                                        statusText = "替换模式需要「所有文件访问」权限，请先授权"
+                                        allFilesDialogPurpose = AllFilesPurpose.REPLACE
+                                        showAllFilesDialog = true
+                                    }
+                                    // 已授权：开启（与「删除原图」互斥）
+                                    else -> {
+                                        if (deleteOriginal) {
+                                            disableDeleteOriginal()
+                                            statusText = "已关闭「处理完成后删除原图」（与替换模式互斥）"
+                                        }
+                                        replaceMode = true
+                                        AppSettings.setReplaceModeEnabled(true)
                                     }
                                 }
                             },
@@ -973,41 +1027,54 @@ class MainActivity : ComponentActivity() {
                     )
                 }
 
-                // 「所有文件访问」引导：两种用途（①直写磁盘保留位置信息 ②开启自动删除原图）
+                // 「所有文件访问」引导：三种用途（①直写磁盘保留位置信息 ②开启自动删除原图 ③开启替换模式）
                 if (showAllFilesDialog && sessionDialogOwner == DialogOwner.ALL_FILES) {
-                    val forDelete = allFilesDialogForDelete
-                    // Android 11+ 才有「所有文件访问」；更低版本（含 Android 10）无法直接删盘
+                    val purpose = allFilesDialogPurpose
+                    // Android 11+ 才有「所有文件访问」；更低版本（含 Android 10）无法直接改写公共目录文件
                     val grantable = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
                     AlertDialog(
                         onDismissRequest = {
                             showAllFilesDialog = false
-                            allFilesDialogForDelete = false
+                            allFilesDialogPurpose = AllFilesPurpose.LOCATION
                         },
                         title = {
                             Text(
                                 when {
-                                    forDelete && grantable -> "自动删除原图需要「所有文件访问」"
-                                    forDelete -> "本机不支持自动删除原图"
+                                    purpose == AllFilesPurpose.DELETE && grantable -> "自动删除原图需要「所有文件访问」"
+                                    purpose == AllFilesPurpose.DELETE -> "本机不支持自动删除原图"
+                                    purpose == AllFilesPurpose.REPLACE && grantable -> "替换模式需要「所有文件访问」"
+                                    purpose == AllFilesPurpose.REPLACE -> "本机不支持替换模式"
                                     else -> "建议授予「所有文件访问」权限"
                                 }
                             )
                         },
                         text = {
                             Text(
-                                if (forDelete) {
-                                    if (grantable) {
-                                        "「处理完成后删除原图」会直接删除磁盘上的原文件（照片及其伴生视频），" +
-                                        "该操作不可撤销，因此必须先授予「所有文件访问」权限。\n\n" +
-                                        "授权后开关才会变为可用，届时可自行开启。"
-                                    } else {
-                                        "当前系统（Android 10 及以下）不提供「所有文件访问」权限，" +
-                                        "无法直接删除磁盘上的原文件，因此本机不支持「处理完成后删除原图」。\n\n" +
-                                        "您可以在转换完成后通过系统相册手动清理原图。"
-                                    }
-                                } else {
-                                    "部分机型（如魅族）通过系统相册接口写入会脱敏 GPS 位置信息，导致转换后照片丢失位置。\n\n" +
-                                    "授予「所有文件访问」后，本程序将直接写入相册目录，完整保留位置元数据。\n\n" +
-                                    "不授予也能正常转换，个别机型可能丢失位置信息。"
+                                when (purpose) {
+                                    AllFilesPurpose.DELETE ->
+                                        if (grantable) {
+                                            "「处理完成后删除原图」会直接删除磁盘上的原文件（照片及其伴生视频），" +
+                                            "该操作不可撤销，因此必须先授予「所有文件访问」权限。\n\n" +
+                                            "授权后开关才会变为可用，届时可自行开启。"
+                                        } else {
+                                            "当前系统（Android 10 及以下）不提供「所有文件访问」权限，" +
+                                            "无法直接删除磁盘上的原文件，因此本机不支持「处理完成后删除原图」。\n\n" +
+                                            "您可以在转换完成后通过系统相册手动清理原图。"
+                                        }
+                                    AllFilesPurpose.REPLACE ->
+                                        if (grantable) {
+                                            "「替换模式」会直接把转换结果写回磁盘上的原文件（覆盖原内容），" +
+                                            "该操作不可撤销，因此必须先授予「所有文件访问」权限。\n\n" +
+                                            "授权后开关才会变为可用，届时可自行开启。"
+                                        } else {
+                                            "当前系统（Android 10 及以下）不提供「所有文件访问」权限，" +
+                                            "无法直接改写磁盘上的原文件，因此本机不支持「替换模式」。\n\n" +
+                                            "您可以继续用默认方式转换，结果会输出到相册目录。"
+                                        }
+                                    AllFilesPurpose.LOCATION ->
+                                        "部分机型（如魅族）通过系统相册接口写入会脱敏 GPS 位置信息，导致转换后照片丢失位置。\n\n" +
+                                        "授予「所有文件访问」后，本程序将直接写入相册目录，完整保留位置元数据。\n\n" +
+                                        "不授予也能正常转换，个别机型可能丢失位置信息。"
                                 }
                             )
                         },
@@ -1016,14 +1083,14 @@ class MainActivity : ComponentActivity() {
                                 FilledTonalButton(onClick = {
                                     haptic.click()
                                     showAllFilesDialog = false
-                                    allFilesDialogForDelete = false
+                                    allFilesDialogPurpose = AllFilesPurpose.LOCATION
                                     requestAllFilesAccess()
                                 }) { Text("去授权") }
                             } else {
                                 FilledTonalButton(onClick = {
                                     haptic.click()
                                     showAllFilesDialog = false
-                                    allFilesDialogForDelete = false
+                                    allFilesDialogPurpose = AllFilesPurpose.LOCATION
                                 }) { Text("知道了") }
                             }
                         },
@@ -1032,7 +1099,7 @@ class MainActivity : ComponentActivity() {
                                 FilledTonalButton(onClick = {
                                     haptic.click()
                                     showAllFilesDialog = false
-                                    allFilesDialogForDelete = false
+                                    allFilesDialogPurpose = AllFilesPurpose.LOCATION
                                 }) { Text("暂不") }
                             }
                         } else null
@@ -1142,7 +1209,7 @@ class MainActivity : ComponentActivity() {
         super.onResume()
         if (BuildConfig.FLAVOR == "go" && LegacyApp.shouldSwitchToNormal()) goGateTick++
         // 可能刚从系统设置页返回：「完全存储访问」的授予/撤销立即生效
-        refreshDeleteOriginalGate()
+        refreshStorageGates()
     }
 
     /** 退到后台时把桌面图标同步为当前主题色。
@@ -1815,41 +1882,52 @@ class MainActivity : ComponentActivity() {
                                     }
                                 )
                             }
-                            // 项10：必须在冲突/导出发生前解析原图目标（路径 + 媒体行）——覆盖会删除
-                            // 旧媒体条目，之后按路径查询会误中刚导出的新产物
-                            // 合成任务删除封面照片 + 配对视频；普通任务删除原图（含双文件伴生视频）
-                            val originalTargets = if (deleteOriginal) {
+                            // 项10/替换模式：必须在冲突/导出发生前解析原文件目标（路径 + 媒体行）
+                            // ——覆盖会删除旧媒体条目，之后按路径查询会误中刚导出的新产物
+                            // 合成任务：封面照片 + 配对视频；普通任务：原图（含双文件伴生视频）
+                            val originalTargets = if (deleteOriginal || replaceMode) {
                                 if (item.formatKey == "compose") {
                                     resolveComposeOriginalTargets(item.sourcePath, item.sourceUri, item.composeVideoPath)
                                 } else {
                                     resolveOriginalTargets(item.sourcePath, item.sourceUri, item.formatKey)
                                 }
                             } else emptyList()
-                            // 输出文件名冲突处理（跳过 / 覆盖 / 自动后缀）
-                            // 子目录：开关开启时按源相册分目录，冲突判定也随之按子目录各判各的
-                            val subDir = sourceSubDir(item.sourcePath ?: item.path)
-                            val finalOutputs = resolveConflicts(staged.orEmpty(), subDir, item.sourcePath)
-                            if (finalOutputs != null) {
-                                for (outPath in finalOutputs) {
-                                    // 输出时间戳：修改时间=源文件修改时间；创建时间=源文件拍摄时间
-                                    // （合成任务取照片的时间，二者在照片上天然同源）
-                                    val srcTime = if (item.sourceTime > 0L) item.sourceTime else System.currentTimeMillis()
-                                    val srcTaken = if (item.sourceTaken > 0L) item.sourceTaken else srcTime
-                                    File(outPath).setLastModified(srcTime)
-                                    if (exportToMediaStore(outPath, srcTime, srcTaken, subDir) != null) n++
+                            // 输出时间戳：修改时间=源文件修改时间；创建时间=源文件拍摄时间
+                            // （合成任务取照片的时间，二者在照片上天然同源）
+                            val srcTime = if (item.sourceTime > 0L) item.sourceTime else System.currentTimeMillis()
+                            val srcTaken = if (item.sourceTaken > 0L) item.sourceTaken else srcTime
+                            val itemInfo: String
+                            if (replaceMode) {
+                                // 替换模式：产物写回源文件本体，不在相册生成新文件
+                                val replaced = replaceSourceFiles(staged.orEmpty(), originalTargets, srcTime, srcTaken)
+                                exported.addAndGet(replaced)
+                                if (replaced > 0) successPaths.add(item.path)
+                                itemInfo = if (replaced > 0) "完成（替换 $replaced 个源文件）"
+                                           else "失败：${lastExportError ?: "替换源文件失败"}"
+                            } else {
+                                // 输出文件名冲突处理（跳过 / 覆盖 / 自动后缀）
+                                // 子目录：开关开启时按源相册分目录，冲突判定也随之按子目录各判各的
+                                val subDir = sourceSubDir(item.sourcePath ?: item.path)
+                                val finalOutputs = resolveConflicts(staged.orEmpty(), subDir, item.sourcePath)
+                                if (finalOutputs != null) {
+                                    for (outPath in finalOutputs) {
+                                        File(outPath).setLastModified(srcTime)
+                                        if (exportToMediaStore(outPath, srcTime, srcTaken, subDir) != null) n++
+                                    }
                                 }
+                                exported.addAndGet(n)
+                                // 项10：成功导出的原图入待删集合（失败/跳过/覆盖保护项不删）
+                                mergePendingDeletes(item.sourcePath, originalTargets, n > 0)
+                                if (finalOutputs != null) successPaths.add(item.path)
+                                itemInfo = if (finalOutputs == null) "完成（跳过：同名冲突）"
+                                           else "完成（导出 $n 个）"
                             }
-                            exported.addAndGet(n)
-                            // 项10：成功导出的原图入待删集合（失败/跳过/覆盖保护项不删）
-                            mergePendingDeletes(item.sourcePath, originalTargets, n > 0)
-                            if (finalOutputs != null) successPaths.add(item.path)
                             withContext(Dispatchers.Main) {
                                 val i = files.indexOfFirst { it.path == item.path }
                                 if (i >= 0) {
                                     // 处理期间不移除项目：仅更新状态，待全部完成后统一左滑清除
                                     files[i] = files[i].copy(
-                                        info = if (finalOutputs == null) "完成（跳过：同名冲突）"
-                                               else "完成（导出 $n 个）",
+                                        info = itemInfo,
                                         transcoding = false,
                                         transcodeEtaSec = -1L
                                     )
@@ -1887,12 +1965,15 @@ class MainActivity : ComponentActivity() {
                 files.removeAll(successes.toSet())
                 cleanupAllCaches()
                 val exportErr = lastExportError
+                // 替换模式下产物写回源文件本体，不再有「导出到相册」这一步，措辞随之调整
+                val verb = if (replaceMode) "替换" else "导出"
+                val suffix = if (replaceMode) " 个源文件" else " 个到相册"
                 statusText = when {
-                    stopRequested -> "已停止：$total 个文件中处理了 ${done.get()} 个，导出 ${exported.get()} 个到相册"
+                    stopRequested -> "已停止：$total 个文件中处理了 ${done.get()} 个，$verb ${exported.get()}$suffix"
                     exportErr != null ->
-                        "完成：$total 个文件处理完毕，导出 ${exported.get()} 个到相册（原因：$exportErr）"
+                        "完成：$total 个文件处理完毕，$verb ${exported.get()}$suffix（原因：$exportErr）"
                     else ->
-                        "完成：$total 个文件处理完毕，导出 ${exported.get()} 个到相册"
+                        "完成：$total 个文件处理完毕，$verb ${exported.get()}$suffix"
                 }
                 isConverting = false
                 progress = 0f
@@ -1907,7 +1988,7 @@ class MainActivity : ComponentActivity() {
                     } else {
                         resetPendingDeletes()
                         statusText = "$statusText；未获得「完全存储访问」权限，原图已保留"
-                        refreshDeleteOriginalGate()
+                        refreshStorageGates()
                     }
                 }
                 onListStable(immediate = true) // 处理结束/终止：加回列表 JSON 尾部标记
@@ -2554,6 +2635,168 @@ class MainActivity : ComponentActivity() {
             if (!File(dir, candidate).exists()) return candidate
             i++
         }
+    }
+
+    // ---------- 工具箱：替换模式（产物直接写回源文件） ----------
+
+    /**
+     * 替换模式：把转换产物直接写回源文件本体（原位覆盖），不在相册生成新文件。
+     *
+     * 源文件与产物的数量可能不一致，配对规则：
+     * - 1→1 / 2→2：逐位对应覆盖（第 i 个产物覆盖第 i 个源文件）
+     * - 1→2（如单张照片转成「照片 + 伴生视频」）：第 1 个产物覆盖源文件，多出的产物写到源文件旁
+     * - 2→1（如「照片 + 伴生视频」只转出一个文件）：产物覆盖源主文件，多出的源文件被删除
+     *
+     * 前提：已获得「完全存储访问」（见 [hasFullStorageAccess]），调用方已先行校验。
+     * 磁盘 IO，必须在 IO 线程调用。
+     * @return 实际写回的产物个数（0 表示失败，原因见 [lastExportError]）
+     */
+    private fun replaceSourceFiles(
+        staged: List<String>, targets: List<PendingDelete>, modifiedMs: Long, takenMs: Long
+    ): Int {
+        val outs = staged.map { File(it) }.filter { it.exists() && it.length() > 0L }
+        if (outs.isEmpty()) {
+            setExportError("转换产物缺失或为空")
+            return 0
+        }
+        if (targets.isEmpty()) {
+            setExportError("无法定位源文件，已跳过替换")
+            return 0
+        }
+
+        lastExportError = null
+        var written = 0
+        val paired = minOf(outs.size, targets.size)
+        for (i in 0 until paired) {
+            if (overwriteSourceFile(outs[i], targets[i], modifiedMs, takenMs)) written++
+        }
+
+        // 产物多于源文件：多出的产物写到源主文件旁，保持文件与媒体库都能看到
+        if (outs.size > targets.size && written > 0) {
+            val baseDir = File(targets[0].path).parentFile
+            if (baseDir != null && (baseDir.exists() || baseDir.mkdirs())) {
+                for (out in outs.drop(targets.size)) {
+                    try {
+                        val dst = File(baseDir, uniqueName(baseDir, out.name))
+                        out.copyTo(dst, overwrite = true)
+                        dst.setLastModified(modifiedMs)
+                        MediaScannerConnection.scanFile(this, arrayOf(dst.absolutePath), null) { _, _ -> }
+                        written++
+                    } catch (e: Exception) {
+                        setExportError("写回伴生文件失败：${e.message}")
+                    }
+                }
+            } else {
+                setExportError("源文件目录不可写，伴生文件未能写回")
+            }
+        }
+
+        // 源文件多于产物：多出的源文件（如已并入照片的伴生视频）不再需要，删掉以免残留
+        if (targets.size > outs.size && written > 0) {
+            for (i in outs.size until targets.size) deleteSourceFile(targets[i])
+        }
+        return written
+    }
+
+    /**
+     * 用产物覆盖单个源文件（原位替换）。
+     *
+     * 先在同目录写临时文件、再改名顶替，避免写到一半中断把源文件留成半截；
+     * 产物与源文件同名时直接顶替原路径，不同名（扩展名变了）时写新名并清掉旧文件与旧媒体行。
+     * 写完刷新媒体行的时间戳，让相册里的修改时间与拍摄时间保持一致。
+     */
+    private fun overwriteSourceFile(
+        out: File, target: PendingDelete, modifiedMs: Long, takenMs: Long
+    ): Boolean {
+        if (!out.exists() || out.length() == 0L) {
+            setExportError("转换产物缺失或为空：${out.name}")
+            return false
+        }
+        val targetFile = File(target.path)
+        val dir = targetFile.parentFile
+        if (dir == null || (!dir.exists() && !dir.mkdirs())) {
+            setExportError("源文件目录不可用：${dir?.absolutePath ?: target.path}")
+            return false
+        }
+        val sameName = out.name == targetFile.name
+        val dst = if (sameName) targetFile else File(dir, out.name)
+        val tmp = File(dir, ".zlc_replace_${System.nanoTime()}_${out.name}")
+        return try {
+            out.inputStream().use { input -> tmp.outputStream().use { output -> input.copyTo(output) } }
+            if (!tmp.renameTo(dst)) {
+                tmp.copyTo(dst, overwrite = true)
+                tmp.delete()
+            }
+            dst.setLastModified(modifiedMs)
+            if (sameName) {
+                refreshMediaRowAfterReplace(dst, target.uri, modifiedMs, takenMs)
+            } else {
+                // 文件名/扩展名变了：旧文件与旧媒体行都要清掉，再让系统扫描新文件建行
+                try { if (targetFile.exists()) targetFile.delete() } catch (_: Exception) {}
+                target.uri?.let { uri -> try { contentResolver.delete(uri, null, null) } catch (_: Exception) {} }
+                MediaScannerConnection.scanFile(this, arrayOf(dst.absolutePath), null) { _, _ -> }
+            }
+            true
+        } catch (e: Exception) {
+            setExportError("替换源文件失败：${e.message}")
+            try { if (tmp.exists()) tmp.delete() } catch (_: Exception) {}
+            false
+        }
+    }
+
+    /**
+     * 替换后刷新媒体库行：修改时间=源修改时间、创建时间=源拍摄时间（并把文件长度同步过去）。
+     * 有媒体 URI 时按 URI 更新；拿不到（或该行已不存在）时按 DATA 路径在两套集合各试一次；
+     * 都失败则退回触发媒体扫描，至少让相册内容与磁盘一致。
+     */
+    private fun refreshMediaRowAfterReplace(
+        file: File, uri: Uri?, modifiedMs: Long, takenMs: Long
+    ) {
+        val mime = when (file.extension.lowercase()) {
+            "mp4" -> "video/mp4"
+            "mov" -> "video/quicktime"
+            else -> "image/jpeg"
+        }
+        val isVideo = mime.startsWith("video/")
+        val dateTakenColumn =
+            if (isVideo) MediaStore.Video.Media.DATE_TAKEN else MediaStore.Images.Media.DATE_TAKEN
+        val values = ContentValues().apply {
+            put(MediaStore.MediaColumns.DATE_MODIFIED, modifiedMs / 1000)
+            put(dateTakenColumn, if (takenMs > 0L) takenMs else modifiedMs)
+            put(MediaStore.MediaColumns.SIZE, file.length())
+        }
+        var updated = false
+        if (uri != null) {
+            try { updated = contentResolver.update(uri, values, null, null) > 0 } catch (_: Exception) {}
+        }
+        if (!updated) {
+            for (collection in listOf(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+            )) {
+                try {
+                    if (contentResolver.update(
+                            collection, values,
+                            "${MediaStore.MediaColumns.DATA}=?", arrayOf(file.absolutePath)
+                        ) > 0
+                    ) { updated = true; break }
+                } catch (_: Exception) {}
+            }
+        }
+        // 无论是否更新成功都触发一次扫描：既兜底建行，也让文件系统层 mtime 与数据库对齐
+        MediaScannerConnection.scanFile(this, arrayOf(file.absolutePath), arrayOf(mime)) { _, _ -> }
+    }
+
+    /** 删除一个不再需要的源文件（含其媒体库行）；成功返回 true。 */
+    private fun deleteSourceFile(target: PendingDelete): Boolean {
+        val ok = try {
+            val f = File(target.path)
+            !f.exists() || (f.delete() && !f.exists())
+        } catch (_: Exception) { false }
+        if (ok) {
+            target.uri?.let { uri -> try { contentResolver.delete(uri, null, null) } catch (_: Exception) {} }
+        }
+        return ok
     }
 
     private fun setExportError(msg: String) {

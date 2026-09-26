@@ -53,6 +53,7 @@ import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Stop
+import androidx.compose.material.icons.filled.SwapHoriz
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -161,11 +162,18 @@ fun MainScreen(
     /** 开关是否可用：需「完全存储访问」；不可用时置灰，点击改为引导授权 */
     deleteOriginalUsable: Boolean,
     onToggleDeleteOriginal: (Boolean) -> Unit,
+    // 工具箱「替换模式」：转换产物直接写回源文件本体（破坏性操作）
+    replaceMode: Boolean,
+    /** 开关是否可用：需「完全存储访问」；不可用时置灰，点击改为引导授权 */
+    replaceModeUsable: Boolean,
+    onToggleReplaceMode: (Boolean) -> Unit,
     onRemoveFile: (String) -> Unit
 ) {
     val haptic = rememberHapticFeedback()
     var showFormatSheet by remember { mutableStateOf(false) }
     var showToolboxSheet by remember { mutableStateOf(false) }
+    // 替换模式首次开启：先弹风险说明，确认后才真正开启
+    var pendingReplaceEnable by remember { mutableStateOf(false) }
 
     // 忙碌态（转换中或导入中）：隐藏三按钮组、进度条显示、转换按钮变形为停止
     val busy = isConverting || isImporting
@@ -525,9 +533,52 @@ fun MainScreen(
                         onCompose()
                     }
                 )
+                ToolboxSwitchRow(
+                    icon = {
+                        Icon(
+                            Icons.Default.SwapHoriz,
+                            contentDescription = null,
+                            tint = if (replaceModeUsable) MaterialTheme.colorScheme.primary
+                                   else MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    },
+                    title = "替换模式",
+                    subtitle = if (replaceModeUsable) "转换结果直接写回原文件，不再生成新文件"
+                               else "需「所有文件访问」权限，点此去授权",
+                    checked = replaceMode,
+                    enabled = replaceModeUsable && !isConverting,
+                    onToggle = { on ->
+                        haptic.click()
+                        // 首次开启先弹风险说明（可在弹窗里勾选不再提示），确认后才真正开启
+                        if (on && !AppSettings.isReminderSuppressed(ReminderKey.REPLACE_MODE_RISK)) {
+                            showToolboxSheet = false
+                            pendingReplaceEnable = true
+                        } else {
+                            onToggleReplaceMode(on)
+                        }
+                    },
+                    onDisabledClick = {
+                        haptic.click()
+                        showToolboxSheet = false
+                        onToggleReplaceMode(true)
+                    }
+                )
                 Spacer(modifier = Modifier.height(24.dp))
             }
         }
+    }
+
+    // 替换模式首次开启前的风险说明（沿用统一「不再提示」弹窗）
+    if (pendingReplaceEnable) {
+        ReminderInfoDialog(
+            key = ReminderKey.REPLACE_MODE_RISK,
+            confirmLabel = "同意并开启",
+            onDismiss = { pendingReplaceEnable = false },
+            onConfirm = {
+                pendingReplaceEnable = false
+                onToggleReplaceMode(true)
+            }
+        )
     }
 }
 
@@ -689,6 +740,60 @@ private fun ToolboxRow(
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onSurfaceVariant
         )
+    }
+}
+
+/**
+ * 工具箱开关条目：图标 + 标题 + 副标题 + 行尾 [Switch]，整行可点。
+ * [enabled]=false 时置灰并由 [onDisabledClick] 接管点击（用于引导授权），
+ * 与主界面「删除原图」行的门禁交互保持一致。
+ */
+@Composable
+private fun ToolboxSwitchRow(
+    icon: @Composable () -> Unit,
+    title: String,
+    subtitle: String,
+    checked: Boolean,
+    enabled: Boolean,
+    onToggle: (Boolean) -> Unit,
+    onDisabledClick: () -> Unit
+) {
+    val fb = rememberPressFeedback(hapticOnPress = false)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 12.dp, vertical = 2.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .clickable(
+                interactionSource = fb.interactionSource,
+                indication = null
+            ) {
+                if (enabled) onToggle(!checked) else onDisabledClick()
+            }
+            .then(fb.scaleModifier)
+            .padding(horizontal = 12.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        icon()
+        Spacer(modifier = Modifier.width(16.dp))
+        Column(Modifier.weight(1f)) {
+            Text(
+                title,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                color = if (enabled) MaterialTheme.colorScheme.onSurface
+                        else MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(modifier = Modifier.height(2.dp))
+            Text(
+                subtitle,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        Spacer(modifier = Modifier.width(12.dp))
+        // onCheckedChange=null：点击完全交给整行处理，避免行与 Switch 双触发
+        Switch(checked = checked, onCheckedChange = null, enabled = enabled)
     }
 }
 

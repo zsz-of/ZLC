@@ -41,6 +41,10 @@ object AppSettings {
      *  关闭时全部平铺在 `Pictures/Z-LivePhoto-Converter/` 下 */
     var preserveFolders by mutableStateOf(true)
         private set
+    /** 替换模式：转换产物直接写回源文件本身（原位覆盖），不在相册生成新文件。
+     *  破坏性操作，需「完全存储访问」；首次开启时弹一次风险提示（可勾选不再提示） */
+    var replaceMode by mutableStateOf(false)
+        private set
     /** 深色模式：system（跟随系统）/ dark（强制深色）/ light（强制浅色） */
     var themeMode by mutableStateOf("system")
         private set
@@ -61,6 +65,7 @@ object AppSettings {
         customHue = prefs.getFloat("custom_hue", -1f)
         checkUpdateOnStartup = prefs.getBoolean("check_update_startup", true)
         preserveFolders = prefs.getBoolean("preserve_folders", true)
+        replaceMode = prefs.getBoolean("replace_mode", false)
         themeMode = prefs.getString("theme_mode", "system") ?: "system"
         skippedVersion = prefs.getString("skipped_version", "") ?: ""
         // go 轻量版：强制关闭马达反馈与按钮弹性动画（简化版无触感/无 q 弹）
@@ -130,6 +135,11 @@ object AppSettings {
     fun setPreserveFolderStructure(v: Boolean) {
         preserveFolders = v
         prefs.edit().putBoolean("preserve_folders", v).apply()
+    }
+
+    fun setReplaceModeEnabled(v: Boolean) {
+        replaceMode = v
+        prefs.edit().putBoolean("replace_mode", v).apply()
     }
 
     fun setThemeModeValue(mode: String) {

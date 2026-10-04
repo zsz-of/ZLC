@@ -87,26 +87,29 @@ internal class VivoSinglePlugin : FormatPlugin() {
         ))
         val footer = FooterUtil.buildFooter(footerJson, FooterUtil.oppoFixedId, FooterUtil.extPrefix)
 
-        // ── 4. XMP：视频项 Item:Length = video + footer（与 OPPO 约定一致，已被验证可识别） ──
+        // 真机尾部元数据不是裸 payload，而是完整的 uuid box：[size]["uuid"][payload]（与 OPPO 同构）。
+        val trailer = Mp4Util.wrapVivoUuidBox(footer)
+
+        // ── 4. XMP：视频项 Item:Length = video + trailer（含 uuid box 头，与真机一致） ──
         val pts = asset.effectivePtsUs()
-        val xmp = XmpTemplate.buildVivoSingleXmp(pts, asset.gainmapLength, video.size + footer.size)
+        val xmp = XmpTemplate.buildVivoSingleXmp(pts, asset.gainmapLength, video.size + trailer.size)
         val primary = JpegUtil.replaceOrInsertXmp(asset.primaryJpeg, xmp)
 
-        // ── 5. 拼装输出：[JPEG+XMP][GainMap][video(含 vivoMediaEStream + lpex)][convert footer] ──
+        // ── 5. 拼装输出：[JPEG+XMP][GainMap][video(含 vivoMediaEStream + lpex)][uuid box trailer] ──
         val gainmapLen = asset.gainmapJpeg?.size ?: 0
-        val output = ByteArray(primary.size + gainmapLen + video.size + footer.size)
+        val output = ByteArray(primary.size + gainmapLen + video.size + trailer.size)
         var pos = 0
         System.arraycopy(primary, 0, output, pos, primary.size); pos += primary.size
         asset.gainmapJpeg?.let { System.arraycopy(it, 0, output, pos, it.size); pos += it.size }
         System.arraycopy(video, 0, output, pos, video.size); pos += video.size
-        System.arraycopy(footer, 0, output, pos, footer.size)
+        System.arraycopy(trailer, 0, output, pos, trailer.size)
 
         // vivo 相册自己的合并文件不带 _MP 后缀，保持一致
         val outPath = File(outDir, "$stem.jpg").path
         writeBytes(outPath, output)
         log("info", "写出 vivo 单文件实况：${File(outPath).name}" +
             "（图像 ${primary.size}B + 视频 ${video.size}B（含 vivoMediaEStream + lpex）" +
-            " + footer ${footer.size}B）", "vivo")
+            " + trailer ${trailer.size}B）", "vivo")
         return mutableListOf(outPath)
     }
 }

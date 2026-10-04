@@ -43,9 +43,13 @@ internal object EmbeddedReader {
             payload = payload.copyOfRange(ftypIdx, payload.size)
         }
 
-        val mp4Len = Mp4Util.streamLength(payload)
+        // 真机动态照片尾部可能带 vivoMediaExtInfo uuid box（原生 OPPO/vivo 单文件格式）。
+        // 它是「尾部元数据」而不是视频流：若不先剥掉，streamLength 会把它整段算进视频，
+        // 写入端再追加一次自己的 trailer，产出「双 trailer」的损坏文件。
+        val stripped = Mp4Util.stripVivoUuid(payload)
+        val mp4Len = Mp4Util.streamLength(stripped)
         if (mp4Len <= 0) throw IOException("MP4 视频流解析失败")
-        val video = payload.copyOfRange(0, mp4Len)
+        val video = stripped.copyOfRange(0, mp4Len)
 
         val asset = LivePhotoAsset(
             primaryJpeg = primary,
@@ -55,7 +59,7 @@ internal object EmbeddedReader {
         )
         asset.presentationTsUs = xmpInfo.ptsUs
         asset.videoInfo = Mp4Util.getTrackInfo(video) ?: mutableMapOf()
-        asset.extras["payload_trailer"] = payload.copyOfRange(mp4Len, payload.size)
+        asset.extras["payload_trailer"] = stripped.copyOfRange(mp4Len, stripped.size)
         return asset
     }
 

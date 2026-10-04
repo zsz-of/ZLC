@@ -82,6 +82,28 @@ internal object Mp4Util {
         return data
     }
 
+    /**
+     * 把 cameralbum footer 载荷包成真机同构的 ISOBMFF uuid box：
+     *   [u32(payload.size + 8)]["uuid"][payload]
+     *
+     * 真机（OPPO/vivo 单文件动态照片）尾部元数据盒逐字节形如：
+     *   [00 00 00 F0]["uuid"]["vivoMediaExtInfo"(16B)]["vivo" …json… "cameralbum!" … 43B tail]
+     * 而 FooterUtil.extPrefix == "vivoMediaExtInfo" + "vivo"，
+     * 也就是 footer 载荷本身已经以 16 字节 user type 开头，因此这里只需补 8 字节 box 头。
+     *
+     * 缺这 8 字节 box 头时，尾部载荷前 4 字节（"vivo" = 0x7669766F ≈ 1.85 GiB）会被 ISO box
+     * 遍历当成 box size、且紧随的 4 字节恰好是可打印 ASCII（"Medi"），该段字节因此不是
+     * 良构的 box 链（回归用例 OppoDeviceContractTest.bareTrailer_isNotWellFormedIsobmff
+     * 固定的就是这个布局事实）。
+     *
+     * 边界（逆向 ColorOS 相册 com.coloros.gallery3d 17.10.7 得到）：它 fork 的 ExoPlayer
+     * `Mp4Extractor` 只在 `atomSize < atomHeaderBytesRead` 时抛 ParserException；超大未知
+     * atom 走「PositionHolder 请求 seek 到当前偏移 + size」的路径，并没有观察到「遇到裸
+     * trailer 必抛异常」。所以本改动只主张「产物尾部回到与真机同构的良构 box」这一可验证
+     * 事实，不主张它是设备端「可识别不可播放」的唯一根因。
+     */
+    fun wrapVivoUuidBox(payload: ByteArray): ByteArray = packBox("uuid", payload)
+
     private fun walkInto(
         data: ByteArray, offset: Int, size: Int, headerLen: Int, pathTypes: Set<String>
     ): Sequence<Box> = sequence {

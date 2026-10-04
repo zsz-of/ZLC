@@ -118,28 +118,33 @@ internal class OppoPlugin : FormatPlugin() {
         ))
         val footer = FooterUtil.buildFooter(footerJson, FooterUtil.oppoFixedId, FooterUtil.extPrefix)
 
+        // 真机尾部元数据不是裸 payload，而是完整的 uuid box：[size]["uuid"][payload]。
+        // 加这 8 字节头后，MP4 区字节与真机同构、是良构的 box 链；
+        // 设备端因果边界见 Mp4Util.wrapVivoUuidBox 的 KDoc（不主张唯一根因）。
+        val trailer = Mp4Util.wrapVivoUuidBox(footer)
+
         val pts = asset.effectivePtsUs()
         val xmp = XmpTemplate.buildOppoXmp(
             pts, asset.gainmapLength,
-            videoLen = video.size + footer.size,
+            videoLen = video.size + trailer.size,
             mp4Len = video.size
         )
         val primary = JpegUtil.replaceOrInsertXmp(asset.primaryJpeg, xmp)
 
         val gainmapLen = asset.gainmapJpeg?.size ?: 0
-        val output = ByteArray(primary.size + gainmapLen + video.size + footer.size)
+        val output = ByteArray(primary.size + gainmapLen + video.size + trailer.size)
         var pos = 0
         System.arraycopy(primary, 0, output, pos, primary.size); pos += primary.size
         asset.gainmapJpeg?.let {
             System.arraycopy(it, 0, output, pos, it.size); pos += it.size
         }
         System.arraycopy(video, 0, output, pos, video.size); pos += video.size
-        System.arraycopy(footer, 0, output, pos, footer.size)
+        System.arraycopy(trailer, 0, output, pos, trailer.size)
 
         val outPath = File(outDir, "$stem.jpg").path
         writeBytes(outPath, output)
         log("info", "写出 OPPO 格式：${File(outPath).name}" +
-            "（图像 ${primary.size}B + 视频 ${video.size}B + footer ${footer.size}B）", "OPPO")
+            "（图像 ${primary.size}B + 视频 ${video.size}B + trailer ${trailer.size}B）", "OPPO")
         return mutableListOf(outPath)
     }
 }

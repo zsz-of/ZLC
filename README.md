@@ -55,7 +55,7 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 - **小米**：双 XMP 标签（MotionPhoto + MicroVideo）+ EXIF 0x8897
 - **荣耀**：JPEG(+GainMap) + MP4(large size) + uuid box(extend_type_matrix + EIS JSON) + 60B tail(LIVE_ID)
 - **魅族**：MZCamera 动态照片（识别 / 读取 / 转出）
-- **Apple Live Photo**：双文件（JPG + MOV），ContentIdentifier UUID 配对（输出至 Apple 格式暂不可用，详见「已知限制」）
+- **Apple Live Photo**：双文件（JPG + MOV），ContentIdentifier UUID 配对（读入时会经 MediaExtractor/MediaMuxer 重封装以剔除 QuickTime 元数据轨）
 
 此外支持「拆解」输出（导出照片 + 视频双文件），以及「合成」（封面照片 + ≤3 秒视频生成动态照片）。
 
@@ -64,7 +64,6 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 > **已知限制**：
 > - Apple 动态照片**转换为其他格式存在兼容性 bug**：产物在部分机型（如 vivo 相册）中可被识别为动态照片、封面与 EXIF（位置/拍摄时间/机型等）均正常，但无法长按播放、无法编辑（提示图片已破损），修复排期中。
 > - **合成时若输入视频不符合标准 MP4**（MOV / WebM / MKV / 非 H.264·H.265 编码），处理方式由「设置 → 视频转码 → 转码方式」决定：**重新编码**（用内置 ffmpeg 重压，兼容性最好）、**仅重封装容器**（默认，只换容器不重压，快且无损，但编码本身不对时无从补救）、**完全不使用转码器**（只接受 MP4 与可零拷贝转换的 MOV）。Go 轻量版不含转码器，按「完全不使用转码器」处理。
-> - Apple Live Photo 输出格式暂不可用（v2.3.0 起输出选项置灰，识别为 Apple 的照片标记「暂不支持转换」）。
 
 ### 技术栈
 
@@ -83,7 +82,7 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 
 | 功能 | 说明 |
 |------|------|
-| 多格式互转 | Google / OPPO / vivo / 小米 / 荣耀 / 魅族 / Apple 之间互转（Apple 输出暂不可用） |
+| 多格式互转 | Google / OPPO / vivo / 小米 / 荣耀 / 魅族 / Apple 之间互转 |
 | 合成动态照片 | 封面照片 + ≤3 秒视频合成动态照片；非 JPEG 封面与非标准 MP4 视频自动转码 |
 | 拆解导出 | 将动态照片拆解为「照片 + 视频」双文件 |
 | 字节级无损 | 纯字节解析重组，不重新编码 |

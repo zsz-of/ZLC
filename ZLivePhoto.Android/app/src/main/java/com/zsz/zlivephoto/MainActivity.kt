@@ -688,11 +688,12 @@ class MainActivity : ComponentActivity() {
                 // 处理过程中吞掉系统返回键（预测式返回下同样生效）
                 BackHandler(enabled = isConverting) { /* 处理中不响应返回 */ }
 
-                // 桌面图标跟随主题色：仅冷启动应用一次（前台运行时禁用正在使用的入口
-                // alias 会导致系统停掉本 Activity → 闪退；主题色变化后的同步在 onStop
-                // 完成，动态取色下系统壁纸颜色变化由 registerWallpaperColorListener 驱动）
+                // 桌面图标跟随主题色：绝不在前台调用 IconManager.apply ——
+                // 前台禁用正在使用的入口 alias 会被系统判定当前界面失效而中止 Activity
+                // （主界面闪退，见 onStart / onStop 与 iconApplySafe 注释）。
+                // 冷启动的首次同步改由 onStop 完成；主题色变化同样在 onStop 同步；
+                // 动态取色下系统壁纸颜色变化由 registerWallpaperColorListener 守卫后触发。
                 LaunchedEffect(Unit) {
-                    IconManager.apply(this@MainActivity)
                     // 已有媒体读取权限但缺「所有文件访问」（R+）时，弹一次引导（升级用户路径）
                     maybePromptAllFilesAccess()
                 }

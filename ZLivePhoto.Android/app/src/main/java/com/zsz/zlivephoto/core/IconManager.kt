@@ -3,6 +3,7 @@ package com.zsz.zlivephoto.core
 import android.content.ComponentName
 import android.content.Context
 import android.content.pm.PackageManager
+import android.util.Log
 import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.ui.currentHue
 import com.zsz.zlivephoto.ui.presetHues
@@ -21,6 +22,7 @@ import kotlin.math.min
  */
 object IconManager {
     private const val ALIAS_COUNT = 7
+    private const val TAG = "IconManager"
 
     /** 当前生效主题色对应的最近预制色下标（图标颜色离散，任意色相就近映射） */
     private fun nearestPresetIndex(hue: Float): Int {
@@ -48,18 +50,45 @@ object IconManager {
         if (BuildConfig.FLAVOR == "go") return
         val target = nearestPresetIndex(currentHue(context))
         val pm = context.packageManager
+
+        // 先启用目标 alias，并把它当作「成败开关」：
+        // 旧实现按 0..6 顺序逐条切换，可能 6 条 disable 全部成功、而目标 enable 失败，
+        // 结果一个入口都不剩（桌面图标彻底消失）。这里改为目标成功后再清理其余。
+        val targetComp = ComponentName(context.packageName, aliasName(context, target))
+        try {
+            pm.setComponentEnabledSetting(
+                targetComp,
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                PackageManager.DONT_KILL_APP
+            )
+        } catch (t: Throwable) {
+            // 目标启用失败：保持现状（当前入口仍然可用），不做任何 disable。
+            // 注意必须兜 Throwable：链接期错误是 Error 而非 Exception。
+            Log.w(TAG, "启用桌面入口 alias$target 失败，保持现状", t)
+            return
+        }
+
         for (i in 0 until ALIAS_COUNT) {
-            val comp = ComponentName(context.packageName, "${context.packageName}.MainActivityAlias$i")
-            val state = if (i == target) {
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-            } else {
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-            }
+            // MainActivityAlias0 是清单里的默认 LAUNCHER 入口（android:enabled="true"），
+            // 绝大多数用户桌面上固定的就是它。一旦被 disable，已固定的图标会变成
+            // 「点不开的死图标」——这正是 issue #1「安装后桌面程序图标失效」的症状路径。
+            // 因此 alias0 永不禁用：代价是 target != 0 时应用列表里会多出一个默认色入口，
+            // 但保证任何情况下桌面都有可用入口。
+            if (i == target || i == 0) continue
+            val comp = ComponentName(context.packageName, aliasName(context, i))
             try {
-                pm.setComponentEnabledSetting(comp, state, PackageManager.DONT_KILL_APP)
-            } catch (_: Exception) {
-                // 某些桌面环境可能暂未注册 alias，忽略单次失败
+                pm.setComponentEnabledSetting(
+                    comp,
+                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                    PackageManager.DONT_KILL_APP
+                )
+            } catch (t: Throwable) {
+                // 某些桌面环境可能暂未注册 alias，忽略单次失败（但留下日志便于排查）
+                Log.w(TAG, "禁用桌面入口 alias$i 失败，忽略", t)
             }
         }
     }
+
+    private fun aliasName(context: Context, i: Int): String =
+        "${context.packageName}.MainActivityAlias$i"
 }

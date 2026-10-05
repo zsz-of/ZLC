@@ -326,4 +326,55 @@ class Mp4NormalizeTest {
             dir.deleteRecursively()
         }
     }
+
+    // ---------------------------------------------------------------- 6. 真实 Apple 样本
+
+    /**
+     * 用**真实** Apple 配对视频（Apple 官方 Sample Code 的 `pairedVideo.mov`）跑一遍完整归一。
+     *
+     * 该文件的实测形态：`ftyp(major='qt  ', minor=0, compat=['qt  ']) + wide + mdat +
+     * moov(mvhd, trak(vide: avc1 720x960 + colr), trak(meta: mebx), udta[com.apple.quicktime.*])`
+     * —— 正是「相册能识别、长按不播放」这类产物的源头形态。
+     *
+     * 样本不在仓库里，故用 `Assume` 在缺失时跳过（CI 不依赖它）；本机跑时是真实字节的回归。
+     */
+    @Test
+    fun normalizeMovToMp4_onRealApplePairedVideo() {
+        val path = System.getenv("ZLC_APPLE_MOV")
+            ?: "D:\\Code\\Program\\ZLC\\.agents\\tmp\\apple-real\\pairedVideo.mov"
+        val file = File(path)
+        org.junit.Assume.assumeTrue("缺少真实 Apple 样本（$path），跳过", file.isFile)
+
+        val data = file.readBytes()
+        assertEquals(
+            "前置条件：真实 Apple 配对视频应是 vide + meta 两条轨",
+            listOf("vide", "meta"), Mp4Util.trackHandlers(data)
+        )
+        val mdatAt = indexOf(data, "mdat")
+        val mdatSize = BinaryUtils.readU32BE(data, mdatAt - 4).toInt()
+        val mdat = data.copyOfRange(mdatAt - 4, mdatAt - 4 + mdatSize)
+
+        val out = Mp4Util.normalizeMovToMp4(data)
+
+        assertEquals("meta(mebx) 轨必须被剔除，视频轨必须保留", listOf("vide"), Mp4Util.trackHandlers(out))
+        assertTrue("视频 sample entry 必须仍是 avc1", contains(out, "avc1"))
+        assertTrue("不得残留 mebx 轨数据", !contains(out, "mebx"))
+        assertEquals("major_brand 必须改为 isom", "isom", String(out, 8, 4, Charsets.ISO_8859_1))
+        assertTrue(
+            "ftyp 内不得残留 qt   品牌（compat 里也写过 qt  ）",
+            !contains(out.copyOfRange(0, 32), "qt  ")
+        )
+        assertTrue("文件必须缩小（剔掉 meta trak）", out.size < data.size)
+        val newMdatAt = indexOf(out, "mdat")
+        assertEquals(
+            "moov 在 mdat 之后：mdat 位置不得移动",
+            mdatAt - 4, newMdatAt - 4
+        )
+        assertArrayEquals(
+            "mdat 必须逐字节不变（零拷贝、样本数据未改动）",
+            mdat, out.copyOfRange(newMdatAt - 4, newMdatAt - 4 + mdatSize)
+        )
+        val compat = Mp4Util.videoCompat(out)
+        assertEquals("真实样本的视频编码应是 avc1", "avc1", compat.videoCodec)
+    }
 }

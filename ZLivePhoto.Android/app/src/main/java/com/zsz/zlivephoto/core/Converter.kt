@@ -47,39 +47,50 @@ internal object Converter {
         val stem = File(path).nameWithoutExtension
         File(outDir).mkdirs()
 
-        // 同格式直通：原样复制，零损耗
-        // 例外 vivo_single：源可能是 vivo 相册「关闭实况」的合并产物（MotionPhoto="0"），
-        // 需走完整写出流程修复回 "1" 恢复动态效果
+        // 同格式直通：原样复制，零损耗。
+        // 两个例外都要改走完整写出流程：
+        //   1) vivo_single：源可能是 vivo 相册「关闭实况」的合并产物（MotionPhoto="0"），
+        //      需重写 XMP 修复回 "1" 才能恢复动态效果；
+        //   2) 源视频夹带非音视频轨（`mett`/`tmcd` 等）：直通只是把缺陷原样复制，
+        //      用户「把旧产物再转一次」这种最常见的修法会失效 —— 完整写出流程会在写前净化。
+        // 判定需要读一次源（只读解析，不写），干净时才走字节拷贝。
+        var reusedAsset: LivePhotoAsset? = null
         if (plugin.name == target && plugin.name != "vivo_single") {
-            val directOuts = mutableListOf<String>()
-            val dst = File(outDir, File(path).name).path
-            File(path).copyTo(File(dst), overwrite = true)
-            directOuts.add(dst)
+            reusedAsset = runCatching { plugin.read(path, { _, _, _ -> }) }.getOrNull()
+            val extraTracks = reusedAsset?.let { VideoTrackSanitizer.nonAvHandlers(it.videoMp4) }
+            if (extraTracks.isNullOrEmpty()) {
+                val directOuts = mutableListOf<String>()
+                val dst = File(outDir, File(path).name).path
+                File(path).copyTo(File(dst), overwrite = true)
+                directOuts.add(dst)
 
-            val parent = File(path).parentFile
-            when (plugin.name) {
-                "vivo" -> {
-                    val mp4 = if (parent != null) File(parent, "$stem.mp4").path else "$stem.mp4"
-                    if (File(mp4).exists()) {
-                        val dstMp4 = File(outDir, File(mp4).name).path
-                        File(mp4).copyTo(File(dstMp4), overwrite = true)
-                        directOuts.add(dstMp4)
+                val parent = File(path).parentFile
+                when (plugin.name) {
+                    "vivo" -> {
+                        val mp4 = if (parent != null) File(parent, "$stem.mp4").path else "$stem.mp4"
+                        if (File(mp4).exists()) {
+                            val dstMp4 = File(outDir, File(mp4).name).path
+                            File(mp4).copyTo(File(dstMp4), overwrite = true)
+                            directOuts.add(dstMp4)
+                        }
+                    }
+                    "apple" -> {
+                        val mov = if (parent != null) File(parent, "$stem.mov").path else "$stem.mov"
+                        if (File(mov).exists()) {
+                            val dstMov = File(outDir, File(mov).name).path
+                            File(mov).copyTo(File(dstMov), overwrite = true)
+                            directOuts.add(dstMov)
+                        }
                     }
                 }
-                "apple" -> {
-                    val mov = if (parent != null) File(parent, "$stem.mov").path else "$stem.mov"
-                    if (File(mov).exists()) {
-                        val dstMov = File(outDir, File(mov).name).path
-                        File(mov).copyTo(File(dstMov), overwrite = true)
-                        directOuts.add(dstMov)
-                    }
-                }
+                log("info", "源与目标格式相同，已原样复制（零损耗）", "转换")
+                return directOuts
             }
-            log("info", "源与目标格式相同，已原样复制（零损耗）", "转换")
-            return directOuts
+            log("info", "源视频含非音视频轨（${extraTracks.joinToString("/")}），"
+                + "跳过同格式直通，改走完整写出流程以净化", "转换")
         }
 
-        val asset = plugin.read(path, log)
+        val asset = reusedAsset ?: plugin.read(path, log)
         // 输入源夹带非音视频轨时先净化（见 sanitizeAssetVideo 注释）
         sanitizeAssetVideo(asset, log)
         if (asset.presentationTsUs < 0) {

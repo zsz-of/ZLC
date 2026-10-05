@@ -4,6 +4,21 @@
 
 ---
 
+## [3.4.15] - 2026-10-06
+
+### 🍎 Apple 实况照片（MOV/HEIC）转换链路修复
+
+- **容器品牌不再「只改一半」**：`mp4ToMov` 原来只把 `ftyp` 的 4 字节 `major_brand` 写成 `qt  `，`compatible_brands` 里残留的 `isom/avc1/mp41` 会让 QuickTime / 照片 App 仍按普通 MP4 处理；`movToMp4` 反向同理。现在**两个品牌列表都清洗**（等长改写，不改变文件大小、无需修 chunk 偏移），并跳过 `minor_version` 字段。新增纯字节函数 `Mp4Util.normalizeFtyp` / `normalizeMovToMp4`。
+- **附加轨剔除改为确定性字节级（不再依赖 MediaMuxer）**：3.4.13 用 MediaExtractor/MediaMuxer 重封装剔除 `mett`/`tmcd` 等非音视频轨，这是黑盒操作——在部分 ROM 上它会失败或丢轨，而失败路径只打日志、**静默产出未净化的产物**。现在优先走 `Mp4Util.pruneNonAvTracks`：直接减去被删 `trak` 的字节区间并同步扣减其后 `stco/co64` 条目；只有「被删轨之间夹着要保留的 box」这种无法用单段删除表达的情况才回退重封装。
+- **修复 `stco` 扣减顺序错误**（本次实现中自查发现）：必须**先在旧坐标下修正条目值、再做字节删除**；顺序反了会把「被删轨之后仍保留的轨」的 `stco` 条目写到错位的字节上，产物 chunk 偏移全错。
+- **HEIC 封面不再被直接丢弃**：iPhone 默认以 HEIC 作为实况照片封面，此前 `QuickClassify.sniff` 只认 JPEG（前两字节 `FF D8`），导致这类文件在**选择器里根本不显示**、批量导入时被静默跳过；即便强行进入转换也会在写 XMP 时抛 `JpegException("不是有效的 JPEG（缺少 SOI）")`。现在 `sniff` 会按 `ftyp` + `major_brand` 识别 HEIF/HEIC（要求存在同名配对视频），`JpegUtil.replaceOrInsertXmp` 对非 JPEG 原样返回，`Converter` 把 HEIC 解码为 JPEG 后嵌入（轻量版无编码器时给出明确提示而不是抛异常），`ApplePlugin` 按封面内容决定输出扩展名并跳过 XMP 写入（配对标识仍写在 MOV 的 `content.identifier` 里）。
+- **新增「仅重封装解决不了」的识别与指引**：`Mp4Util.videoCompat` 解析视频轨，检测**非 H.264/H.265 编码、10bit H.265、HDR（PQ/HLG 传输特性）、杜比视界、`hev1` 标记、非 AAC 音轨、镜像变换矩阵**——这些都无法靠改容器解决。命中时：若「设置 → 视频转码 → 转码方式」是「重新编码」且内置 ffmpeg 可用，则**自动重新编码**为 8bit H.264/H.265 + AAC；否则在日志里明确写出原因并指引用户改选「重新编码」，而不是产出一个「看着像动态照片、长按不播放」的文件。
+- **修正两个解析偏移 bug**：`mdhd` version 1 分支把 64 位创建时间的低位当成 timescale / duration（影响长视频时长与帧率显示）；`moov` 使用 64 位 box 头时，`addAppleMetadata` 与 `getTrackInfo` 的遍历仍硬编码 8 字节盒头。
+- **新增回归**：`Mp4NormalizeTest`（14 例：品牌清洗、末尾/中间附加轨剔除、`stco` 同步扣减、不安全布局回退、真机 Apple 布局）与 `VideoCompatTest`（9 例：10bit/HDR/杜比视界/`hev1`/非 AAC 音轨/镜像矩阵/ProRes，含「标准 8bit H.264+AAC 不得误报」）。全量 **39 tests × 2 flavor 全绿**。
+- **边界说明**：以上均为字节级/解析层的确定性修复，佐证来自真实 Apple 样本（Apple 官方 Sample Code 的 `keyPhoto.jpg` + `pairedVideo.mov`）与 ffmpeg 参考实现；**真机「长按播放」改善仍需设备确认（本机无设备，未做真机验证）**。
+
+---
+
 ## [3.4.14] - 2026-10-05
 
 ### 🔁 同格式转换不再放过坏产物

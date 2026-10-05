@@ -3,7 +3,7 @@
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / 魅族 / Apple Live Photo 互转、拆解与合成
 
 **开发者**: zsz  
-**版本**: v3.4.14
+**版本**: v3.4.15
 
 ## 许可证
 
@@ -55,14 +55,14 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 - **小米**：双 XMP 标签（MotionPhoto + MicroVideo）+ EXIF 0x8897
 - **荣耀**：JPEG(+GainMap) + MP4(large size) + uuid box(extend_type_matrix + EIS JSON) + 60B tail(LIVE_ID)
 - **魅族**：MZCamera 动态照片（识别 / 读取 / 转出）
-- **Apple Live Photo**：双文件（JPG + MOV），ContentIdentifier UUID 配对（读入时会经 MediaExtractor/MediaMuxer 重封装以剔除 QuickTime 元数据轨）
+- **Apple Live Photo**：双文件（JPG/MOV 或 HEIC/MOV），ContentIdentifier UUID 配对；`ftyp` 品牌双向清洗（MOV↔MP4 都清掉对方的品牌残留），非音视频轨用纯字节级剔除，仅无法单段删除时才回退重封装
 
 此外支持「拆解」输出（导出照片 + 视频双文件），以及「合成」（封面照片 + ≤3 秒视频生成动态照片）。
 
 核心解析纯字节级操作（JPEG/MP4 box 遍历），转换后保留源文件的 EXIF 元数据（GPS、拍摄时间等）和修改时间。视频转码为完整版内置功能（ffmpeg 随安装包内置，无需下载），Go 轻量版不含转码器。
 
 > **已知限制**：
-> - Apple 动态照片**转换为其他格式存在兼容性 bug**：产物在部分机型（如 vivo 相册）中可被识别为动态照片、封面与 EXIF（位置/拍摄时间/机型等）均正常，但无法长按播放、无法编辑（提示图片已破损）。v2.3.0 起读入 MOV 时会用 MediaExtractor/MediaMuxer 重封装以剔除 QuickTime `mett` 元数据轨；**v3.4.13 起**写产物前还会再统一净化一次（任何输入源夹带的 `mett`/`tmcd` 等非音视频轨都会被剔除），**v3.4.14 起**同格式转换也会先检测附加轨、命中就不再走零损耗直通，因此「把旧产物转成同一格式」即可修复历史产物。真机的播放/编辑改善仍待设备确认。
+> - Apple 动态照片**转换为其他格式曾存在兼容性 bug**：产物在部分机型（如 vivo 相册）中可被识别为动态照片、封面与 EXIF（位置/拍摄时间/机型等）均正常，但无法长按播放、无法编辑（提示图片已破损）。原因有两条：① 视频轨夹带 QuickTime 遗留的 `mett`/`tmcd` 等非音视频轨；② `ftyp` 只改了 `major_brand`，`compatible_brands` 里残留 QuickTime 品牌（或反向残留 `isom`）。**v3.4.15 起**两条都在纯字节层确定性修复（品牌双向清洗 + 字节级剔轨，仅无法单段删除才回退 MediaMuxer 重封装），并新增 HEIC 封面支持与「仅重封装解决不了」的检测（10bit/HDR/杜比视界/非 AAC 等会提示或按设置自动重新编码）。**真机的播放/编辑改善仍待设备确认**（开发机无设备，未做真机验证）。
 > - **合成时若输入视频不符合标准 MP4**（MOV / WebM / MKV / 非 H.264·H.265 编码），处理方式由「设置 → 视频转码 → 转码方式」决定：**重新编码**（用内置 ffmpeg 重压，兼容性最好）、**仅重封装容器**（默认，只换容器不重压，快且无损，但编码本身不对时无从补救）、**完全不使用转码器**（只接受 MP4 与可零拷贝转换的 MOV）。Go 轻量版不含转码器，按「完全不使用转码器」处理。
 
 ### 技术栈

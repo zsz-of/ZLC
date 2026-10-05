@@ -175,8 +175,14 @@ internal object JpegUtil {
 
     /**
      * 替换已有 XMP APP1 段；不存在则插入到第一个 APP1(Exif) 之后（无 APP1 则紧随 SOI）。
+     *
+     * 非 JPEG 输入（iPhone「高效」格式的 HEIC 主图等）原样返回：JPEG 段结构不存在，
+     * 强行解析会抛 `JpegException("不是有效的 JPEG（缺少 SOI）")` 并让整次转换失败。
+     * 调用方（`Converter.normalizeCover` / `ApplePlugin.write`）负责按目标格式决定是转码
+     * 成 JPEG 还是保留原格式，这里只保证「不因封面像素格式而崩」。
      */
     fun replaceOrInsertXmp(jpeg: ByteArray, newXmpText: String): ByteArray {
+        if (jpeg.size < 2 || jpeg[0] != 0xFF.toByte() || jpeg[1] != 0xD8.toByte()) return jpeg
         val newSeg = buildXmpApp1(newXmpText)
         val found = findXmpSegment(jpeg)
 

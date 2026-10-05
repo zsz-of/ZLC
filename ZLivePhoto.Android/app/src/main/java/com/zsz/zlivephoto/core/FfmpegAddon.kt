@@ -83,6 +83,16 @@ object FfmpegAddon {
     }
 
     /**
+     * 转码中间文件：统一放在应用缓存目录 `cache/ffmpeg_tmp`。
+     * 不用 `File.createTempFile`（依赖 `java.io.tmpdir`，在各 ROM 上指向不一致），
+     * 也不占用用户可见的输出目录。
+     */
+    fun tempFile(prefix: String, suffix: String): File {
+        val dir = File(appCtx.cacheDir, "ffmpeg_tmp").apply { mkdirs() }
+        return File(dir, "$prefix${System.currentTimeMillis()}$suffix")
+    }
+
+    /**
      * 内置 ffmpeg 二进制路径：APK native 库目录下的 `libffmpeg.so`。
      * 该目录由系统在安装时解压生成，带执行权限，是 Android 10+ 唯一可执行位置。
      */

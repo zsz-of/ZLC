@@ -13,12 +13,19 @@ import java.io.RandomAccessFile
  * - JPEG 段内出现 MotionPhoto/MicroVideo 标记 → Google/OPPO/小米/vivo 单文件
  * - 尾部含 LIVE_ → 荣耀
  * - 同目录存在同名 .mp4/.mov → vivo/Apple 双文件
+ * - HEIF/HEIC（iPhone 默认「高效」格式）主图 → 按同名 MOV 判定为 Apple 动态照片
  */
 internal object QuickClassify {
 
     private val MOTION_TAG = "MotionPhoto".toByteArray(Charsets.US_ASCII)
     private val MICRO_TAG = "MicroVideo".toByteArray(Charsets.US_ASCII)
     private val LIVE_TAG = "LIVE_".toByteArray(Charsets.US_ASCII)
+    private val FTYP_TAG = "ftyp".toByteArray(Charsets.US_ASCII)
+
+    /** HEIF 家族的 ftyp major_brand（`heic`/`heix` 为静态图，`mif1`/`msf1` 为通用容器）。 */
+    private val HEIF_BRANDS = setOf(
+        "heic", "heix", "heim", "heis", "hevc", "hevx", "hevm", "hevs", "mif1", "msf1"
+    )
 
     /**
      * @return true = 是动态照片；false = JPEG 但未见标记（仍可能为双文件）；null = 非 JPEG 或读取失败。
@@ -80,11 +87,34 @@ internal object QuickClassify {
         return false
     }
 
+    /**
+     * iPhone「高效」格式的主图是 HEIF（`ftyp` 品牌 heic/heix/mif1…）。这类照片本身不是 JPEG，
+     * 是否动态照片只能靠同名 MOV 判断；此前 `sniff` 一律把非 JPEG 判 false，导致 iPhone 默认
+     * 格式的实况照片在相册列表与批量导入里被**直接跳过**（用户根本看不到可选项）。
+     */
+    private fun isHeif(path: String): Boolean {
+        return try {
+            RandomAccessFile(path, "r").use { raf ->
+                if (raf.length() < 12) return false
+                val head = ByteArray(12)
+                raf.readFully(head)
+                if (!BinaryUtils.arrayEquals(head, 4, FTYP_TAG)) return false
+                val brand = String(head, 8, 4, Charsets.ISO_8859_1)
+                brand in HEIF_BRANDS
+            }
+        } catch (_: Exception) {
+            false
+        }
+    }
+
     fun sniff(path: String): Boolean {
         return try {
             when (checkJpeg(path)) {
                 true -> return true    // JPEG 内直接命中标记
-                null -> return false   // 非 JPEG / 读取失败
+                null -> {
+                    // 非 JPEG：仅 HEIF（iPhone 默认格式）继续按「主图 + 同名 MOV」判定
+                    if (!isHeif(path)) return false
+                }
                 false -> { /* JPEG 未见标记：继续检查伴生视频 */ }
             }
             hasCompanionVideo(path)

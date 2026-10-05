@@ -42,6 +42,21 @@ internal object VideoTrackSanitizer {
         log: (level: String, msg: String, tag: String) -> Unit = { _, _, _ -> }
     ): ByteArray? {
         if (!Mp4Util.hasFtyp(mp4)) return null
+
+        // ① 零拷贝确定性路径：纯字节级剔除末尾 trak（mebx/mett/tmcd…）并归一化 ftyp 品牌。
+        //    样本数据（mdat）逐字节不变，不依赖 MediaExtractor/MediaMuxer，因此行为确定、
+        //    也不存在重封装引入的编码/时间戳差异。仅当 moov 中确有可安全删除的末尾 trak
+        //    或品牌需要归一化时才走这条路。
+        val normalized = Mp4Util.normalizeMovToMp4(mp4)
+        if (!normalized.contentEquals(mp4)) {
+            val dropped = nonAvHandlers(mp4)
+            val extra = if (dropped.isEmpty()) "" else "剔除附加轨（${dropped.joinToString("/")}）、"
+            log("info", "已按字节级${extra}归一化容器品牌（零拷贝，样本数据未改动）", "净化")
+            return normalized
+        }
+
+        // ② 回退：结构不在可安全字节级处理的范围（例如非末尾 trak）时，用
+        //    MediaExtractor/MediaMuxer 重封装。
         val rotation = (Mp4Util.getTrackInfo(mp4)?.get("rotation") as? Int) ?: 0
 
         var tmpIn: File? = null

@@ -113,8 +113,18 @@ internal class ApplePlugin : FormatPlugin() {
         val contentId = UUID.randomUUID().toString().uppercase()
 
         val xmp = buildAppleXmp(contentId)
-        val primary = JpegUtil.replaceOrInsertXmp(asset.primaryJpeg, xmp)
-        val jpgPath = File(outDir, "$stem.jpg").path
+        // 主图可能是 HEIC（iPhone「高效」格式）：HEIC 不能插入 JPEG APP1 XMP 段，
+        // 此时保持原字节并按真实扩展名写出，配对标识只落在 MOV 的 udta/meta 里。
+        val isJpeg = asset.primaryJpeg.size >= 2 &&
+            asset.primaryJpeg[0] == 0xFF.toByte() && asset.primaryJpeg[1] == 0xD8.toByte()
+        val primary = if (isJpeg) {
+            JpegUtil.replaceOrInsertXmp(asset.primaryJpeg, xmp)
+        } else {
+            log("warning", "封面为 HEIC，跳过 XMP 写入（配对标识写在 MOV 的 ContentIdentifier）", "Apple")
+            asset.primaryJpeg
+        }
+        val ext = if (isJpeg) "jpg" else "heic"
+        val jpgPath = File(outDir, "$stem.$ext").path
         writeBytes(jpgPath, primary)
 
         var movData = Mp4Util.mp4ToMov(asset.videoMp4)
@@ -122,7 +132,7 @@ internal class ApplePlugin : FormatPlugin() {
         val movPath = File(outDir, "$stem.mov").path
         writeBytes(movPath, movData)
 
-        log("info", "写出 Apple 格式：$stem.jpg + $stem.mov" +
+        log("info", "写出 Apple 格式：$stem.$ext + $stem.mov" +
             "（ContentIdentifier=${contentId.substring(0, 8)}...）", "Apple")
         return mutableListOf(jpgPath, movPath)
     }

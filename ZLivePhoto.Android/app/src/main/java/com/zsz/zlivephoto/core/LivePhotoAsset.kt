@@ -6,8 +6,13 @@ import kotlin.math.round
  * 一张动态照片的规范化表示（所有字节均为无损透传）。
  */
 internal class LivePhotoAsset(
-    /** 主 JPEG（SOI 到 EOI，含全部 APPn 段） */
-    val primaryJpeg: ByteArray,
+    /**
+     * 主图（JPEG：SOI 到 EOI，含全部 APPn 段）。
+     *
+     * 可变：iPhone 默认「高效」格式的主图是 HEIC，除 Apple 目标（保留 HEIC）外的所有目标
+     * 格式都只能内嵌 JPEG，转换时会被转码替换（见 `Converter.normalizeCover`）。
+     */
+    var primaryJpeg: ByteArray,
     /** GainMap JPEG（Ultra HDR，无则 null） */
     val gainmapJpeg: ByteArray?,
     /**

@@ -297,9 +297,11 @@ class OppoTrailerUuidTest {
             val stripped = Mp4Util.stripVivoUuid(mp4Region)
             assertTrue("前置条件：A 必须带 uuid box trailer", stripped.size < mp4Region.size)
 
-            val outsB = com.zsz.zlivephoto.core.Converter.convertFile(
-                fileA, "google", outDirB.path, ::log
-            )
+            val outsB = kotlinx.coroutines.runBlocking {
+                com.zsz.zlivephoto.core.Converter.convertFile(
+                    fileA, "google", outDirB.path, ::log
+                )
+            }
             assertEquals(1, outsB.size)
             val dataB = File(outsB[0]).readBytes()
 

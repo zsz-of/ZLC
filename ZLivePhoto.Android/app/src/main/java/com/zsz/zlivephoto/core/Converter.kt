@@ -30,7 +30,7 @@ internal object Converter {
      * @param log 日志回调 (level, message, tag)
      * @param options 选项：google_mp_suffix (bool)
      */
-    fun convertFile(
+    suspend fun convertFile(
         path: String, target: String, outDir: String,
         log: (String, String, String) -> Unit, options: MutableMap<String, Any?> = mutableMapOf()
     ): MutableList<String> {
@@ -75,8 +75,9 @@ internal object Converter {
                         }
                     }
                     "apple" -> {
-                        val mov = if (parent != null) File(parent, "$stem.mov").path else "$stem.mov"
-                        if (File(mov).exists()) {
+                        // 大小写不敏感：iPhone 导出可能是 IMG_x.MOV
+                        val mov = findCompanion(parent, stem, "mov")
+                        if (mov != null) {
                             val dstMov = File(outDir, File(mov).name).path
                             File(mov).copyTo(File(dstMov), overwrite = true)
                             directOuts.add(dstMov)
@@ -93,6 +94,10 @@ internal object Converter {
         val asset = reusedAsset ?: plugin.read(path, log)
         // 输入源夹带非音视频轨时先净化（见 sanitizeAssetVideo 注释）
         sanitizeAssetVideo(asset, log)
+        // iPhone 默认「高效」格式的封面是 HEIC：除 Apple 目标外都必须内嵌 JPEG
+        normalizeCover(asset, targetPlugin.name, log)
+        // 10bit/HDR/杜比视界/hev1/PCM 音轨/镜像矩阵：仅重封装解决不了，需按设置决定是否重新编码
+        reencodeIfNeeded(asset, log)
         if (asset.presentationTsUs < 0) {
             log("warning", "源缺少封面帧时间戳，按规范回退为视频中点", "转换")
         }
@@ -112,24 +117,135 @@ internal object Converter {
     }
 
     /**
-     * 写产物前净化视频轨：输入源自带非音视频轨（Apple MOV 的 `mett` 元数据轨、时间码 `tmcd`
-     * 等）时，本工具的字节级搬运会把它原样带进产物，在部分机型上表现为「相册能识别为动态
-     * 照片，但长按无法播放 / 无法编辑」。仅在确实检测到这类轨时才重封装（无附加轨时零开销），
-     * 重封装失败则保留原字节并提示，不阻塞转换。
+     * 写产物前净化视频轨：输入源自带非音视频轨（Apple MOV 的 `mebx`/`mett` 元数据轨、时间码
+     * `tmcd` 等）时，本工具的字节级搬运会把它原样带进产物，在部分机型上表现为「相册能识别为
+     * 动态照片，但长按无法播放 / 无法编辑」。同时把 `qt  `（QuickTime）品牌归一成 `isom`——
+     * 只改 major_brand 会在 compatible_brands 里留下 `qt  `，解析器仍按 QuickTime 处理产物。
+     *
+     * 净化失败时**不再静默搬运原字节**：至少仍做零风险的品牌归一，并把失败原因报给用户。
      */
     private fun sanitizeAssetVideo(
         asset: LivePhotoAsset, log: (String, String, String) -> Unit
     ) {
         val extra = VideoTrackSanitizer.nonAvHandlers(asset.videoMp4)
-        if (extra.isEmpty()) return
-        val cleaned = VideoTrackSanitizer.sanitize(asset.videoMp4, log)
-        if (cleaned == null) {
-            log("warning", "视频含附加轨（${extra.joinToString("/")}），重封装失败，按原样输出", "转换")
+        val brandNormalized = Mp4Util.normalizeFtyp(asset.videoMp4)
+        if (extra.isEmpty()) {
+            // 无附加轨：只做字节数不变的品牌归一（Apple 来源即便已剔轨也可能残留 qt 品牌）
+            if (!brandNormalized.contentEquals(asset.videoMp4)) {
+                asset.videoMp4 = brandNormalized
+                log("info", "已归一化视频容器品牌（QuickTime → isom）", "转换")
+            }
             return
         }
-        log("info", "已剔除视频附加轨（${extra.joinToString("/")}）并重封装", "转换")
+        val cleaned = VideoTrackSanitizer.sanitize(asset.videoMp4, log)
+        if (cleaned == null) {
+            asset.videoMp4 = brandNormalized
+            log(
+                "warning",
+                "视频含附加轨（${extra.joinToString("/")}），无法净化，已按原样输出（该产物在部分机型可能无法长按播放）",
+                "转换"
+            )
+            return
+        }
+        log("info", "已剔除视频附加轨（${extra.joinToString("/")}）", "转换")
         asset.videoMp4 = cleaned
         asset.videoInfo = Mp4Util.getTrackInfo(cleaned) ?: asset.videoInfo
+    }
+
+    /**
+     * 「仅重封装容器」改动的是容器，改不动码流；下列问题只能靠**重新编码**解决
+     * （见 [Mp4Util.videoCompat]）：10bit H.265、HDR（PQ/HLG）、杜比视界、`hev1` 标记、
+     * 非 AAC 音轨（Apple 常见 PCM）、镜像变换矩阵、非 H.264/H.265 编码。
+     *
+     * 处理策略尊重「设置 → 视频转码 → 转码方式」这一显式选择：
+     * - 已选「重新编码」且内置转码器可用 → 转成 8bit H.264/H.265 + AAC（兼容性最好）；
+     * - 其它情况（默认「仅重封装容器」/「不使用」/ go 轻量版）→ **不擅自重编码**，
+     *   只明确告知风险与开关位置，产物仍与改动前一致（不会因为本判定而失败）。
+     */
+    private suspend fun reencodeIfNeeded(
+        asset: LivePhotoAsset, log: (String, String, String) -> Unit
+    ) {
+        val compat = Mp4Util.videoCompat(asset.videoMp4)
+        if (!compat.needsReencode) return
+        val why = compat.reasons.joinToString("；")
+
+        if (FfmpegAddon.mode != FfmpegAddon.MODE_ENCODE || !FfmpegAddon.isReady()) {
+            val blocker = if (FfmpegAddon.mode == FfmpegAddon.MODE_ENCODE) {
+                "内置转码器不可用"
+            } else {
+                "当前「转码方式」不重新编码"
+            }
+            log(
+                "warning",
+                "源视频$why；仅重封装容器无法解决（$blocker），"
+                    + "如产物仍无法长按播放，请在「设置 → 视频转码 → 转码方式」改选「重新编码」",
+                "转码"
+            )
+            return
+        }
+
+        val tmpIn = FfmpegAddon.tempFile("reencode_src_", ".mp4")
+        try {
+            tmpIn.writeBytes(asset.videoMp4)
+            log("info", "源视频$why，按设置重新编码为 8bit + AAC 以提升相册兼容性", "转码")
+            val out = FfmpegAddon.transcodeToMp4(tmpIn.path, log)
+            val bytes = runCatching { out.readBytes() }.getOrDefault(ByteArray(0))
+            runCatching { out.delete() }
+            if (bytes.isEmpty() || !Mp4Util.hasFtyp(bytes)) {
+                log("warning", "重新编码结果不可用，已按原样输出（该产物在部分机型可能无法长按播放）", "转码")
+                return
+            }
+            asset.videoMp4 = Mp4Util.normalizeFtyp(bytes)
+            asset.videoInfo = Mp4Util.getTrackInfo(asset.videoMp4) ?: asset.videoInfo
+            val after = Mp4Util.videoCompat(asset.videoMp4)
+            if (after.needsReencode) {
+                // 例：镜像矩阵、或设置里选了 H.265 时的 HDR 传输特性 —— 没有彻底消除
+                log("info", "重新编码后仍存在风险项（${after.reasons.joinToString("；")}）", "转码")
+            }
+        } catch (e: Exception) {
+            log("warning", "重新编码失败（${e.message}），已按原样输出（该产物在部分机型可能无法长按播放）", "转码")
+        } finally {
+            runCatching { tmpIn.delete() }
+        }
+    }
+
+    /**
+     * 在 [parent] 目录内查找同名同伴文件（大小写不敏感，如 `IMG_x.MOV`）。
+     * iPhone 导出的视频扩展名可能是 `.MOV`，只认小写会丢掉视频。
+     */
+    private fun findCompanion(parent: File?, stem: String, ext: String): String? {
+        if (parent == null) return null
+        for (candidate in listOf(ext.lowercase(), ext.uppercase())) {
+            val f = File(parent, "$stem.$candidate")
+            if (f.exists()) return f.path
+        }
+        return null
+    }
+
+    /**
+     * 封面归一：iPhone 默认「高效」格式导出的实况照片主图是 HEIC，而 Google/OPPO/vivo/小米等
+     * 目标格式的容器都只声明并内嵌 JPEG。此前 HEIC 会在 XMP 写入时抛
+     * `JpegException("不是有效的 JPEG（缺少 SOI）")` 导致整次转换失败；这里统一转成标准 JPEG。
+     *
+     * Apple → Apple 保留原字节（写回 `.heic`），不损失画质。
+     */
+    private fun normalizeCover(
+        asset: LivePhotoAsset, target: String, log: (String, String, String) -> Unit
+    ) {
+        val raw = asset.primaryJpeg
+        val isJpeg = raw.size >= 2 && raw[0] == 0xFF.toByte() && raw[1] == 0xD8.toByte()
+        if (isJpeg || target == "apple") return
+        if (BuildConfig.FLAVOR == "go") {
+            throw ConvertException("封面是 HEIC 图片（轻量版不支持转码，请在 iPhone 上导出为 JPEG 后再转换）")
+        }
+        val decoded = BitmapFactory.decodeByteArray(raw, 0, raw.size)
+            ?: throw ConvertException("封面不是有效的图片（HEIC 需要系统支持 HEIF 解码）")
+        val bmp = if (decoded.hasAlpha()) compositeOnWhite(decoded) else decoded
+        val bos = ByteArrayOutputStream()
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, bos)
+        bmp.recycle()
+        asset.primaryJpeg = bos.toByteArray()
+        log("info", "封面为 HEIC（非 JPEG），已转码为标准 JPEG 后再封装", "转换")
     }
 
     /** 复制源文件的修改时间到目标文件（访问时间/创建时间在 Android/Linux 上无原生 API，省略）。 */

@@ -10,8 +10,13 @@ internal class LivePhotoAsset(
     val primaryJpeg: ByteArray,
     /** GainMap JPEG（Ultra HDR，无则 null） */
     val gainmapJpeg: ByteArray?,
-    /** 纯 MP4 流（不含厂商附加数据/footer） */
-    val videoMp4: ByteArray,
+    /**
+     * 纯 MP4 流（不含厂商附加数据/footer）。
+     *
+     * 可变：读入后若发现夹带非音视频轨（`mett`/`tmcd` 等），写路径会先用
+     * [VideoTrackSanitizer] 重封装成只含音视频轨的 MP4 再写产物。
+     */
+    var videoMp4: ByteArray,
     /** 来源格式标识 */
     var sourceFormat: String = "",
 ) {

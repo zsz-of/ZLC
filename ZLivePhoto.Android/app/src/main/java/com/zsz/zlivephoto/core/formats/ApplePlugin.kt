@@ -1,17 +1,13 @@
 package com.zsz.zlivephoto.core.formats
 
-import android.media.MediaCodec
-import android.media.MediaExtractor
-import android.media.MediaFormat
-import android.media.MediaMuxer
 import com.zsz.zlivephoto.core.BinaryUtils
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
 import com.zsz.zlivephoto.core.Mp4Util
+import com.zsz.zlivephoto.core.VideoTrackSanitizer
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
-import java.nio.ByteBuffer
 import java.util.UUID
 
 /**
@@ -93,8 +89,9 @@ internal class ApplePlugin : FormatPlugin() {
 
         // Apple MOV 为 QuickTime 容器（含 mett 元数据轨 + com.apple.quicktime.* 元数据），
         // 仅改 ftyp 品牌（qt  → isom）后相册可识别但无法播放；
-        // 需用 MediaExtractor/MediaMuxer 重新封装为纯 MP4（仅保留音/视频轨）。
-        val videoMp4 = remuxMovToMp4(movPath)
+        // 统一交给 VideoTrackSanitizer 重封装为只含音视频轨的 MP4
+        // （它要求视频轨必须加入成功，否则返回 null，不会产出只有音频的产物）。
+        val videoMp4 = VideoTrackSanitizer.sanitize(movData, log)
             ?: Mp4Util.movToMp4(movData) // 重封装失败则回退字节级品牌补丁
 
         val asset = LivePhotoAsset(
@@ -106,83 +103,6 @@ internal class ApplePlugin : FormatPlugin() {
         asset.presentationTsUs = 0 // Apple StillImageTime=0
         asset.videoInfo = Mp4Util.getTrackInfo(movData) ?: mutableMapOf()
         return asset
-    }
-
-    /**
-     * 用 MediaExtractor + MediaMuxer 把 Apple QuickTime MOV 重新封装为纯 MP4：
-     * 仅保留音/视频轨，丢弃 mett 元数据轨与 com.apple.quicktime.* 元数据。
-     * 失败返回 null（调用方回退字节级品牌补丁）。
-     */
-    private fun remuxMovToMp4(movPath: String): ByteArray? {
-        val extractor = MediaExtractor()
-        var muxer: MediaMuxer? = null
-        var tmp: File? = null
-        var started = false
-        return try {
-            extractor.setDataSource(movPath)
-
-            // 收集音视频轨（丢弃 QuickTime 元数据/文本轨）
-            val srcTracks = ArrayList<Int>()
-            for (i in 0 until extractor.trackCount) {
-                val fmt = extractor.getTrackFormat(i)
-                val mime = fmt.getString(MediaFormat.KEY_MIME) ?: continue
-                if (mime.startsWith("video/") || mime.startsWith("audio/")) srcTracks.add(i)
-            }
-            if (srcTracks.isEmpty()) return null
-
-            tmp = File.createTempFile("zlive_remux", ".mp4")
-            muxer = MediaMuxer(tmp.absolutePath, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4)
-
-            // addTrack 可能因 MediaMuxer 不支持某轨道（如 PCM 音频）而抛异常，逐轨跳过
-            val dstTracks = IntArray(srcTracks.size)
-            var validCount = 0
-            for ((idx, src) in srcTracks.withIndex()) {
-                try {
-                    dstTracks[idx] = muxer.addTrack(extractor.getTrackFormat(src))
-                    validCount++
-                } catch (_: Exception) {
-                    dstTracks[idx] = -1
-                }
-            }
-            if (validCount == 0) return null
-
-            muxer.start()
-            started = true
-
-            val buffer = ByteBuffer.allocate(4 * 1024 * 1024)
-            val info = MediaCodec.BufferInfo()
-            while (true) {
-                val size = extractor.readSampleData(buffer, 0)
-                if (size < 0) break
-                val src = extractor.sampleTrackIndex
-                val dstIdx = srcTracks.indexOf(src)
-                if (dstIdx >= 0 && dstTracks[dstIdx] >= 0) {
-                    info.offset = 0
-                    info.size = size
-                    info.presentationTimeUs = extractor.sampleTime
-                    info.flags = if (extractor.sampleFlags and MediaExtractor.SAMPLE_FLAG_SYNC != 0)
-                        MediaCodec.BUFFER_FLAG_KEY_FRAME else 0
-                    muxer.writeSampleData(dstTracks[dstIdx], buffer, info)
-                }
-                extractor.advance()
-            }
-
-            muxer.stop()
-            muxer.release()
-            muxer = null
-
-            val out = tmp.readBytes()
-            if (out.isNotEmpty()) out else null
-        } catch (_: Exception) {
-            null
-        } finally {
-            if (muxer != null) {
-                try { if (started) muxer.stop() } catch (_: Exception) {}
-                try { muxer.release() } catch (_: Exception) {}
-            }
-            try { extractor.release() } catch (_: Exception) {}
-            try { tmp?.delete() } catch (_: Exception) {}
-        }
     }
 
     override fun write(

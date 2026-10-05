@@ -80,6 +80,8 @@ internal object Converter {
         }
 
         val asset = plugin.read(path, log)
+        // 输入源夹带非音视频轨时先净化（见 sanitizeAssetVideo 注释）
+        sanitizeAssetVideo(asset, log)
         if (asset.presentationTsUs < 0) {
             log("warning", "源缺少封面帧时间戳，按规范回退为视频中点", "转换")
         }
@@ -96,6 +98,27 @@ internal object Converter {
         }
 
         return outputs
+    }
+
+    /**
+     * 写产物前净化视频轨：输入源自带非音视频轨（Apple MOV 的 `mett` 元数据轨、时间码 `tmcd`
+     * 等）时，本工具的字节级搬运会把它原样带进产物，在部分机型上表现为「相册能识别为动态
+     * 照片，但长按无法播放 / 无法编辑」。仅在确实检测到这类轨时才重封装（无附加轨时零开销），
+     * 重封装失败则保留原字节并提示，不阻塞转换。
+     */
+    private fun sanitizeAssetVideo(
+        asset: LivePhotoAsset, log: (String, String, String) -> Unit
+    ) {
+        val extra = VideoTrackSanitizer.nonAvHandlers(asset.videoMp4)
+        if (extra.isEmpty()) return
+        val cleaned = VideoTrackSanitizer.sanitize(asset.videoMp4, log)
+        if (cleaned == null) {
+            log("warning", "视频含附加轨（${extra.joinToString("/")}），重封装失败，按原样输出", "转换")
+            return
+        }
+        log("info", "已剔除视频附加轨（${extra.joinToString("/")}）并重封装", "转换")
+        asset.videoMp4 = cleaned
+        asset.videoInfo = Mp4Util.getTrackInfo(cleaned) ?: asset.videoInfo
     }
 
     /** 复制源文件的修改时间到目标文件（访问时间/创建时间在 Android/Linux 上无原生 API，省略）。 */
@@ -184,7 +207,9 @@ internal object Converter {
                 sourceFormat = "compose"
             )
             asset.videoInfo = Mp4Util.getTrackInfo(mp4Bytes) ?: mutableMapOf()
-            log("info", "合成：照片 ${jpeg.size}B + 视频 ${mp4Bytes.size}B → ${targetPlugin.display}", "合成")
+            // 合成素材同样可能夹带附加轨（例如用户直接用带 mett 的 MP4 当素材）
+            sanitizeAssetVideo(asset, log)
+            log("info", "合成：照片 ${jpeg.size}B + 视频 ${asset.videoMp4.size}B → ${targetPlugin.display}", "合成")
 
             return targetPlugin.write(asset, outDir, stem, log, options)
         } finally {

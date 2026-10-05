@@ -104,6 +104,30 @@ internal object Mp4Util {
      */
     fun wrapVivoUuidBox(payload: ByteArray): ByteArray = packBox("uuid", payload)
 
+    /**
+     * 按文件顺序列出 moov 下每条 trak 的 hdlr `handler_type`（如 `vide`/`soun`/`meta`）。
+     *
+     * 用途：判断输入视频里是否夹带了非音视频轨（Apple MOV 常见的 `mett` 元数据轨、
+     * `tmcd` 时间码轨等）。这类轨会让产物在部分机型上「相册能识别、无法长按播放/编辑」，
+     * 需要在写动态照片之前剔除（见 [VideoTrackSanitizer]）。
+     * 纯字节解析，无 Android 依赖，可在 JVM 单测里直接验证。
+     */
+    fun trackHandlers(data: ByteArray): List<String> {
+        val boxes = iterateBoxes(data, 0, data.size).toList()
+        val moov = boxes.firstOrNull { it.type == "moov" } ?: return emptyList()
+        val out = ArrayList<String>()
+        for (b in iterateBoxes(data, moov.offset + moov.headerLen, moov.offset + moov.size)) {
+            if (b.type != "trak") continue
+            val trak = walkInto(data, b.offset, b.size, b.headerLen, setOf("mdia")).toList()
+            val hdlr = trak.firstOrNull { it.type == "hdlr" } ?: continue
+            // hdlr 为 FullBox：version/flags(4) + pre_defined(4) + handler_type(4)
+            val body = hdlr.offset + hdlr.headerLen
+            if (body + 12 > data.size) continue
+            out.add(String(data, body + 8, 4, Charsets.ISO_8859_1))
+        }
+        return out
+    }
+
     private fun walkInto(
         data: ByteArray, offset: Int, size: Int, headerLen: Int, pathTypes: Set<String>
     ): Sequence<Box> = sequence {

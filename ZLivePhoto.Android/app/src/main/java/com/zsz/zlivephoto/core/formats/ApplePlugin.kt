@@ -1,6 +1,8 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.BinaryUtils
+import com.zsz.zlivephoto.core.CoreText
 import com.zsz.zlivephoto.core.ExifUtil
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
@@ -16,7 +18,7 @@ import java.util.UUID
  */
 internal class ApplePlugin : FormatPlugin() {
     override val name: String = "apple"
-    override val display: String = "Apple Live Photo"
+    override val displayRes: Int = R.string.fmt_apple
 
     companion object {
         /** Apple MakerNote 里的配对标识键（exiftool Apple.pm：0x0011 ContentIdentifier，ASCII 字符串）。 */
@@ -85,12 +87,12 @@ internal class ApplePlugin : FormatPlugin() {
     override fun read(path: String, log: (String, String, String) -> Unit): LivePhotoAsset {
         log("info", "按 Apple Live Photo 解析", "Apple")
         val movPath = findMovSibling(path)
-            ?: throw IOException("未找到同名 .mov 视频文件")
+            ?: throw IOException(CoreText.of(R.string.fmt_err_apple_mov_missing))
 
         val primary = readBytes(path)
         val movData = readBytes(movPath)
         if (!Mp4Util.hasFtyp(movData)) {
-            throw IOException("MOV 文件缺少 ftyp box")
+            throw IOException(CoreText.of(R.string.fmt_err_apple_mov_no_ftyp))
         }
 
         // Apple MOV 为 QuickTime 容器（含 mett 元数据轨 + com.apple.quicktime.* 元数据），

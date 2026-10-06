@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Color
 import com.zsz.zlivephoto.BuildConfig
+import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.formats.FormatRegistry
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -35,14 +36,14 @@ internal object Converter {
         log: (String, String, String) -> Unit, options: MutableMap<String, Any?> = mutableMapOf()
     ): MutableList<String> {
         val targetPlugin = FormatRegistry.byName[target]
-            ?: throw ConvertException("未知目标格式：$target")
+            ?: throw ConvertException(CoreText.of(R.string.conv_unknown_target, target))
 
         val (plugin, score) = FormatRegistry.detectBest(path)
         if (plugin == null || score < 50) {
-            throw ConvertException("无法识别的动态照片格式（非 Google/OPPO/vivo/小米/Apple 动态照片）")
+            throw ConvertException(CoreText.of(R.string.conv_unrecognized_live_photo))
         }
 
-        log("info", "识别为 ${plugin.display}", "转换")
+        log("info", CoreText.of(R.string.conv_log_detected, plugin.display), CoreText.of(R.string.conv_tag_convert))
 
         val stem = File(path).nameWithoutExtension
         File(outDir).mkdirs()
@@ -84,11 +85,14 @@ internal object Converter {
                         }
                     }
                 }
-                log("info", "源与目标格式相同，已原样复制（零损耗）", "转换")
+                log("info", CoreText.of(R.string.conv_log_same_format_copied), CoreText.of(R.string.conv_tag_convert))
                 return directOuts
             }
-            log("info", "源视频含非音视频轨（${extraTracks.joinToString("/")}），"
-                + "跳过同格式直通，改走完整写出流程以净化", "转换")
+            log(
+                "info",
+                CoreText.of(R.string.conv_log_extra_tracks_bypass, extraTracks.joinToString("/")),
+                CoreText.of(R.string.conv_tag_convert)
+            )
         }
 
         val asset = reusedAsset ?: plugin.read(path, log)
@@ -99,7 +103,7 @@ internal object Converter {
         // 10bit/HDR/杜比视界/hev1/PCM 音轨/镜像矩阵：仅重封装解决不了，需按设置决定是否重新编码
         reencodeIfNeeded(asset, log)
         if (asset.presentationTsUs < 0) {
-            log("warning", "源缺少封面帧时间戳，按规范回退为视频中点", "转换")
+            log("warning", CoreText.of(R.string.conv_log_ts_fallback), CoreText.of(R.string.conv_tag_convert))
         }
 
         val outputs = targetPlugin.write(asset, outDir, stem, log, options)
@@ -133,7 +137,7 @@ internal object Converter {
             // 无附加轨：只做字节数不变的品牌归一（Apple 来源即便已剔轨也可能残留 qt 品牌）
             if (!brandNormalized.contentEquals(asset.videoMp4)) {
                 asset.videoMp4 = brandNormalized
-                log("info", "已归一化视频容器品牌（QuickTime → isom）", "转换")
+                log("info", CoreText.of(R.string.conv_log_brand_normalized), CoreText.of(R.string.conv_tag_convert))
             }
             return
         }
@@ -142,12 +146,12 @@ internal object Converter {
             asset.videoMp4 = brandNormalized
             log(
                 "warning",
-                "视频含附加轨（${extra.joinToString("/")}），无法净化，已按原样输出（该产物在部分机型可能无法长按播放）",
-                "转换"
+                CoreText.of(R.string.conv_log_sanitize_failed, extra.joinToString("/")),
+                CoreText.of(R.string.conv_tag_convert)
             )
             return
         }
-        log("info", "已剔除视频附加轨（${extra.joinToString("/")}）", "转换")
+        log("info", CoreText.of(R.string.conv_log_extra_tracks_removed, extra.joinToString("/")), CoreText.of(R.string.conv_tag_convert))
         asset.videoMp4 = cleaned
         asset.videoInfo = Mp4Util.getTrackInfo(cleaned) ?: asset.videoInfo
     }
@@ -171,15 +175,14 @@ internal object Converter {
 
         if (FfmpegAddon.mode != FfmpegAddon.MODE_ENCODE || !FfmpegAddon.isReady()) {
             val blocker = if (FfmpegAddon.mode == FfmpegAddon.MODE_ENCODE) {
-                "内置转码器不可用"
+                CoreText.of(R.string.conv_blocker_no_encoder)
             } else {
-                "当前「转码方式」不重新编码"
+                CoreText.of(R.string.conv_blocker_mode_no_encode)
             }
             log(
                 "warning",
-                "源视频$why；仅重封装容器无法解决（$blocker），"
-                    + "如产物仍无法长按播放，请在「设置 → 视频转码 → 转码方式」改选「重新编码」",
-                "转码"
+                CoreText.of(R.string.conv_log_remux_cannot_fix, why, blocker),
+                CoreText.of(R.string.conv_tag_transcode)
             )
             return
         }
@@ -187,12 +190,12 @@ internal object Converter {
         val tmpIn = FfmpegAddon.tempFile("reencode_src_", ".mp4")
         try {
             tmpIn.writeBytes(asset.videoMp4)
-            log("info", "源视频$why，按设置重新编码为 8bit + AAC 以提升相册兼容性", "转码")
+            log("info", CoreText.of(R.string.conv_log_reencoding, why), CoreText.of(R.string.conv_tag_transcode))
             val out = FfmpegAddon.transcodeToMp4(tmpIn.path, log)
             val bytes = runCatching { out.readBytes() }.getOrDefault(ByteArray(0))
             runCatching { out.delete() }
             if (bytes.isEmpty() || !Mp4Util.hasFtyp(bytes)) {
-                log("warning", "重新编码结果不可用，已按原样输出（该产物在部分机型可能无法长按播放）", "转码")
+                log("warning", CoreText.of(R.string.conv_log_reencode_result_unusable), CoreText.of(R.string.conv_tag_transcode))
                 return
             }
             asset.videoMp4 = Mp4Util.normalizeFtyp(bytes)
@@ -200,10 +203,10 @@ internal object Converter {
             val after = Mp4Util.videoCompat(asset.videoMp4)
             if (after.needsReencode) {
                 // 例：镜像矩阵、或设置里选了 H.265 时的 HDR 传输特性 —— 没有彻底消除
-                log("info", "重新编码后仍存在风险项（${after.reasons.joinToString("；")}）", "转码")
+                log("info", CoreText.of(R.string.conv_log_reencode_still_risky, after.reasons.joinToString("；")), CoreText.of(R.string.conv_tag_transcode))
             }
         } catch (e: Exception) {
-            log("warning", "重新编码失败（${e.message}），已按原样输出（该产物在部分机型可能无法长按播放）", "转码")
+            log("warning", CoreText.of(R.string.conv_log_reencode_failed, e.message), CoreText.of(R.string.conv_tag_transcode))
         } finally {
             runCatching { tmpIn.delete() }
         }
@@ -236,16 +239,16 @@ internal object Converter {
         val isJpeg = raw.size >= 2 && raw[0] == 0xFF.toByte() && raw[1] == 0xD8.toByte()
         if (isJpeg || target == "apple") return
         if (BuildConfig.FLAVOR == "go") {
-            throw ConvertException("封面是 HEIC 图片（轻量版不支持转码，请在 iPhone 上导出为 JPEG 后再转换）")
+            throw ConvertException(CoreText.of(R.string.conv_cover_heic_go))
         }
         val decoded = BitmapFactory.decodeByteArray(raw, 0, raw.size)
-            ?: throw ConvertException("封面不是有效的图片（HEIC 需要系统支持 HEIF 解码）")
+            ?: throw ConvertException(CoreText.of(R.string.conv_cover_invalid_heic))
         val bmp = if (decoded.hasAlpha()) compositeOnWhite(decoded) else decoded
         val bos = ByteArrayOutputStream()
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, bos)
         bmp.recycle()
         asset.primaryJpeg = bos.toByteArray()
-        log("info", "封面为 HEIC（非 JPEG），已转码为标准 JPEG 后再封装", "转换")
+        log("info", CoreText.of(R.string.conv_log_cover_heic_converted), CoreText.of(R.string.conv_tag_convert))
     }
 
     /** 复制源文件的修改时间到目标文件（访问时间/创建时间在 Android/Linux 上无原生 API，省略）。 */
@@ -271,21 +274,21 @@ internal object Converter {
         onTranscodeProgress: (frame: Long, total: Long, etaSec: Long) -> Unit = { _, _, _ -> }
     ): MutableList<String> {
         val targetPlugin = FormatRegistry.byName[target]
-            ?: throw ConvertException("未知目标格式：$target")
+            ?: throw ConvertException(CoreText.of(R.string.conv_unknown_target, target))
 
         val photo = File(photoPath)
-        if (!photo.exists() || photo.length() < 4) throw ConvertException("封面照片不存在或为空")
+        if (!photo.exists() || photo.length() < 4) throw ConvertException(CoreText.of(R.string.conv_cover_photo_missing))
         val jpeg = decodeCoverToJpeg(photo)
 
         val video = File(videoPath)
-        if (!video.exists() || video.length() < 12) throw ConvertException("视频不存在或为空")
+        if (!video.exists() || video.length() < 12) throw ConvertException(CoreText.of(R.string.conv_video_missing))
         // 合成会把整个视频读入内存再与封面拼接，过大时会触发 OOM（OutOfMemoryError 属于
         // Error，不会被上层 catch (e: Exception) 捕获，表现为闪退）。这里设安全上限，
         // 超限时抛可捕获的 ConvertException，由 UI 显示友好提示而非崩溃。
         val maxVideoBytes = 128L * 1024 * 1024
         if (video.length() > maxVideoBytes) {
             val mb = video.length() / 1024 / 1024
-            throw ConvertException("视频过大（${mb}MB），无法合成为动态照片，请选择更短的视频")
+            throw ConvertException(CoreText.of(R.string.conv_video_too_large, mb))
         }
 
         // 按内部文件结构（而非扩展名）判断视频是否「符合动态照片所需的标准 MP4」：
@@ -336,7 +339,7 @@ internal object Converter {
             asset.videoInfo = Mp4Util.getTrackInfo(mp4Bytes) ?: mutableMapOf()
             // 合成素材同样可能夹带附加轨（例如用户直接用带 mett 的 MP4 当素材）
             sanitizeAssetVideo(asset, log)
-            log("info", "合成：照片 ${jpeg.size}B + 视频 ${asset.videoMp4.size}B → ${targetPlugin.display}", "合成")
+            log("info", CoreText.of(R.string.conv_log_compose_sizes, jpeg.size, asset.videoMp4.size, targetPlugin.display), CoreText.of(R.string.conv_tag_compose))
 
             return targetPlugin.write(asset, outDir, stem, log, options)
         } finally {
@@ -375,12 +378,12 @@ internal object Converter {
             val out = try {
                 FfmpegAddon.transcodeToMp4(video.path, log, frameHint, onTranscodeProgress)
             } catch (e: AddonException) {
-                throw VideoContainerException("视频重新编码失败：${e.message}")
+                throw VideoContainerException(CoreText.of(R.string.conv_reencode_failed, e.message))
             }
             val bytes = out.readBytes()
             if (bytes.size > maxVideoBytes) {
                 out.delete()
-                throw ConvertException("转码后视频过大（${bytes.size / 1024 / 1024}MB），无法合成动态照片")
+                throw ConvertException(CoreText.of(R.string.conv_transcoded_too_large, bytes.size / 1024 / 1024))
             }
             return PreparedVideo(bytes, out)
         }
@@ -397,13 +400,13 @@ internal object Converter {
             if (!ready || FfmpegAddon.mode == FfmpegAddon.MODE_OFF) {
                 // 不调用 ffmpeg：只有 QuickTime MOV 能靠改写 ftyp 品牌零拷贝变成 MP4
                 if (!qt) throw VideoContainerException(noEncoderHint())
-                log("info", "未启用转码器：只改写容器品牌（MOV → MP4），不重新编码", "转码")
+                log("info", CoreText.of(R.string.conv_log_no_encoder_brand_only), CoreText.of(R.string.conv_tag_transcode))
                 Mp4Util.movToMp4(source)
             } else {
                 val out = try {
                     FfmpegAddon.remuxToMp4(video.path, log)
                 } catch (e: AddonException) {
-                    throw VideoContainerException("容器重封装失败：${e.message}")
+                    throw VideoContainerException(CoreText.of(R.string.conv_remux_failed, e.message))
                 }
                 temp = out
                 out.readBytes()
@@ -412,7 +415,7 @@ internal object Converter {
 
         if (bytes.size > maxVideoBytes) {
             temp?.delete()
-            throw ConvertException("视频过大（${bytes.size / 1024 / 1024}MB），无法合成动态照片")
+            throw ConvertException(CoreText.of(R.string.conv_video_too_large_compose, bytes.size / 1024 / 1024))
         }
         val codec = (Mp4Util.getTrackInfo(bytes)?.get("codec") as? String).orEmpty()
         if (codec !in FfmpegAddon.STANDARD_MP4_CODECS) {
@@ -424,19 +427,16 @@ internal object Converter {
 
     /** 只换容器救不了视频编码时的提示（codec 为空表示连轨道信息都解析不出来） */
     private fun remuxCannotFixHint(video: File, codec: String = ""): String {
-        val what = if (codec.isEmpty()) "不是能被识别的 H.264/H.265 视频" else "编码是 $codec"
-        return "视频「${video.name}」$what，只换容器（重封装）改变不了编码，无法合成动态照片。\n\n" +
-            "请在「设置 → 视频转码 → 转码方式」中改为「重新编码」，" +
-            "或先用其它工具把它转成 H.264/H.265 编码的 MP4。"
+        val what = if (codec.isEmpty()) {
+            CoreText.of(R.string.conv_codec_unknown)
+        } else {
+            CoreText.of(R.string.conv_codec_is, codec)
+        }
+        return CoreText.of(R.string.conv_hint_remux_cannot_fix, video.name, what)
     }
 
     /** 没有可用转码器、且视频不是能直接改写品牌的 MOV 时的提示 */
-    private fun noEncoderHint(): String =
-        "视频不是标准 MP4 容器（MOV / MKV / WebM / AVI 等），" +
-        "而当前「转码方式」不重新编码，无法合成动态照片。\n\n" +
-        "请在「设置 → 视频转码 → 转码方式」中改为「重新编码」" +
-        "（正常版本内置 ffmpeg 编码器；Go 轻量版不含转码器，请改用正常版本），" +
-        "或先把视频转成标准 MP4（H.264/H.265）。"
+    private fun noEncoderHint(): String = CoreText.of(R.string.conv_hint_no_encoder)
 
     /**
      * 封面图 → JPEG 字节：JPEG 直接透传（保留 EXIF）；
@@ -447,10 +447,10 @@ internal object Converter {
         val raw = photo.readBytes()
         if (raw.size >= 2 && raw[0] == 0xFF.toByte() && raw[1] == 0xD8.toByte()) return raw
         if (BuildConfig.FLAVOR == "go") {
-            throw ConvertException("封面不是 JPEG 图片（轻量版不支持转码，请改用 JPEG 照片）")
+            throw ConvertException(CoreText.of(R.string.conv_cover_not_jpeg_go))
         }
         val decoded = BitmapFactory.decodeFile(photo.path)
-            ?: throw ConvertException("封面不是有效的图片（仅支持 JPEG/WebP/PNG）")
+            ?: throw ConvertException(CoreText.of(R.string.conv_cover_invalid_image))
         // PNG/WebP 透明区域填充纯白：JPEG 无 alpha 通道，直接压缩会把透明区域压成黑色
         val bmp = if (decoded.hasAlpha()) compositeOnWhite(decoded) else decoded
         val bos = ByteArrayOutputStream()

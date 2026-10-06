@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.ui
 
+import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
@@ -86,6 +87,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -116,21 +118,25 @@ data class FileItem(
     val transcodeEtaSec: Long = -1L
 )
 
+/**
+ * 输出格式选项：[nameRes] 为展示名资源 id —— 用户可见文案统一放 res/values/strings_*.xml，
+ * 便于 119 语种翻译（本文件内不再出现硬编码文案）。
+ */
 data class FormatOption(
     val key: String,
-    val name: String
+    @StringRes val nameRes: Int
 )
 
 val formatOptions = listOf(
-    FormatOption("google", "Google"),
-    FormatOption("apple", "Apple"),
-    FormatOption("oppo", "OPPO"),
-    FormatOption("vivo_single", "vivo（单文件）"),
-    FormatOption("vivo", "vivo（双文件）"),
-    FormatOption("xiaomi", "小米"),
-    FormatOption("honor", "荣耀"),
-    FormatOption("meizu", "魅族"),
-    FormatOption("extract", "拆解"),
+    FormatOption("google", R.string.screen_format_google),
+    FormatOption("apple", R.string.screen_format_apple),
+    FormatOption("oppo", R.string.screen_format_oppo),
+    FormatOption("vivo_single", R.string.screen_format_vivo_single),
+    FormatOption("vivo", R.string.screen_format_vivo),
+    FormatOption("xiaomi", R.string.screen_format_xiaomi),
+    FormatOption("honor", R.string.screen_format_honor),
+    FormatOption("meizu", R.string.screen_format_meizu),
+    FormatOption("extract", R.string.screen_format_extract),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -241,7 +247,7 @@ fun MainScreen(
                                 overflow = TextOverflow.Ellipsis
                             )
                             Text(
-                                text = "动态照片格式互转",
+                                text = stringResource(R.string.screen_app_subtitle),
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -256,7 +262,9 @@ fun MainScreen(
                             modifier = Modifier.padding(end = 8.dp)
                         ) {
                             Text(
-                                text = "${files.size} 个文件",
+                                text = pluralStringResource(
+                                    R.plurals.screen_file_count, files.size, files.size
+                                ),
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer,
                                 fontWeight = FontWeight.SemiBold,
@@ -273,7 +281,7 @@ fun MainScreen(
                     ) {
                         Icon(
                             Icons.Default.Settings,
-                            contentDescription = "设置",
+                            contentDescription = stringResource(R.string.screen_settings),
                             tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
@@ -404,7 +412,7 @@ fun MainScreen(
             sheetState = sheetState
         ) {
             Text(
-                text = "选择输出格式",
+                text = stringResource(R.string.screen_select_output_format),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)
@@ -442,7 +450,7 @@ fun MainScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = opt.name,
+                            text = stringResource(opt.nameRes),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
                             color = when {
@@ -461,7 +469,7 @@ fun MainScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Check,
-                                contentDescription = "已选择",
+                                contentDescription = stringResource(R.string.screen_selected),
                                 tint = MaterialTheme.colorScheme.primary,
                                 modifier = Modifier.padding(end = 16.dp).size(24.dp)
                             )
@@ -471,7 +479,7 @@ fun MainScreen(
                     // vivo 单文件选项下方的兼容性警告（常驻显示）
                     if (opt.key == "vivo_single") {
                         Text(
-                            text = "⚠ 过老的机型可能无法识别此格式",
+                            text = stringResource(R.string.screen_vivo_single_warning),
                             style = MaterialTheme.typography.labelMedium,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.error,
@@ -481,7 +489,7 @@ fun MainScreen(
                     // 拆解被禁用时的原因提示
                     if (opt.key == "extract" && disabled) {
                         Text(
-                            text = "⚠ 队列含合成任务，不能选择拆解",
+                            text = stringResource(R.string.screen_extract_blocked),
                             style = MaterialTheme.typography.labelMedium,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.error,
@@ -502,7 +510,7 @@ fun MainScreen(
             sheetState = sheetState
         ) {
             Text(
-                text = "工具箱",
+                text = stringResource(R.string.screen_toolbox),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)
@@ -515,8 +523,8 @@ fun MainScreen(
             ) {
                 ToolboxRow(
                     icon = { Icon(Icons.Default.CreateNewFolder, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
-                    title = "批量导入",
-                    subtitle = "扫描整个相册并批量识别动态照片",
+                    title = stringResource(R.string.screen_batch_import),
+                    subtitle = stringResource(R.string.screen_batch_import_desc),
                     onClick = {
                         haptic.click()
                         showToolboxSheet = false
@@ -525,8 +533,8 @@ fun MainScreen(
                 )
                 ToolboxRow(
                     icon = { Icon(Icons.Default.PlayArrow, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
-                    title = "合成动态照片",
-                    subtitle = "选择一张照片和一段视频配对合成",
+                    title = stringResource(R.string.screen_compose),
+                    subtitle = stringResource(R.string.screen_compose_desc),
                     onClick = {
                         haptic.click()
                         showToolboxSheet = false
@@ -542,9 +550,9 @@ fun MainScreen(
                                    else MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     },
-                    title = "替换模式",
-                    subtitle = if (replaceModeUsable) "转换结果直接写回原文件，不再生成新文件"
-                               else "需「所有文件访问」权限，点此去授权",
+                    title = stringResource(R.string.screen_replace_mode),
+                    subtitle = if (replaceModeUsable) stringResource(R.string.screen_replace_mode_desc)
+                               else stringResource(R.string.screen_need_all_files_access_hint),
                     checked = replaceMode,
                     enabled = replaceModeUsable && !isConverting,
                     onToggle = { on ->
@@ -572,7 +580,7 @@ fun MainScreen(
     if (pendingReplaceEnable) {
         ReminderInfoDialog(
             key = ReminderKey.REPLACE_MODE_RISK,
-            confirmLabel = "同意并开启",
+            confirmLabel = stringResource(R.string.screen_agree_and_enable),
             onDismiss = { pendingReplaceEnable = false },
             onConfirm = {
                 pendingReplaceEnable = false
@@ -653,7 +661,7 @@ private fun FileListArea(
                     }
                     Spacer(modifier = Modifier.height(24.dp))
                     Text(
-                        text = "还没有添加文件",
+                        text = stringResource(R.string.screen_empty_no_files),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onSurface
@@ -847,14 +855,50 @@ private fun BottomControls(
         // 忙碌时内部展开进度条 + a/b 明细（如「已处理 18/240」，批量模式
         // 另有第二行动态照片张数）——进度与明细常驻胶囊小背景板内
         // 圆点颜色：处理中=蓝、就绪=绿、错误=红、完成类=主题色
-        val statusColor = when {
-            busy -> androidx.compose.ui.graphics.Color(0xFF1E88E5)
-            statusText.contains("失败") || statusText.contains("错误") || statusText.contains("无法") ->
-                MaterialTheme.colorScheme.error
-            statusText == "就绪" -> androidx.compose.ui.graphics.Color(0xFF34A853)
-            statusText.contains("完成") || statusText.contains("已导入") || statusText.contains("已获得") || statusText.contains("已移除") || statusText.contains("已清空") || statusText.contains("批量") || statusText.contains("已停止") ->
-                MaterialTheme.colorScheme.primary
-            else -> MaterialTheme.colorScheme.onSurfaceVariant
+        // i18n：**不能按中文字面量匹配**（切到别的语言后判定会全部失效），
+        // 这里改为从「本语言的资源文案」里取关键字：带占位符的模板取 `%` 之前的前缀做包含匹配，
+        // 无占位符的整串做相等匹配。statusText 由 MainActivity 生成，两侧共用同一批 main_status_* 资源。
+        val statusColor = run {
+            val ctx = androidx.compose.ui.platform.LocalContext.current
+            fun matchesRaw(raw: String): Boolean {
+                if (!raw.contains('%')) return statusText == raw
+                val kw = raw.substringBefore('%').trim().trimEnd('，', ',', '；', ';', ':', '：', '。', '.', '！', '!')
+                return kw.length >= 2 && statusText.contains(kw)
+            }
+            fun matches(id: Int) = matchesRaw(ctx.getString(id))
+            // <plurals> 取 count=2 的形态（中文只有 other；其它语言取一个常见复数形即可用于前缀匹配）
+            fun matchesPlural(id: Int) = matchesRaw(ctx.resources.getQuantityString(id, 2))
+            val isError = listOf(
+                R.string.main_status_import_failed, R.string.main_status_folder_unavailable,
+                R.string.main_status_folder_unreadable, R.string.main_status_compose_no_photo,
+                R.string.main_status_compose_no_video, R.string.main_status_nothing_to_convert,
+                R.string.main_status_no_images, R.string.main_status_delete_needs_all_files,
+                R.string.main_status_replace_needs_all_files
+            ).any { matches(it) }
+            val isReady = statusText == ctx.getString(R.string.main_status_ready)
+            val isDone = listOf(
+                R.string.main_status_import_done_partial,
+                R.string.main_status_import_stopped, R.string.main_status_removed,
+                R.string.main_status_cleared, R.string.main_status_replace_off,
+                R.string.main_status_replace_off_mutex, R.string.main_status_delete_off_mutex,
+                R.string.main_status_compose_all_added, R.string.main_status_all_files_granted,
+                R.string.main_status_location_granted, R.string.main_status_read_granted,
+                R.string.main_status_auto_google, R.string.main_status_done_export,
+                R.string.main_status_done_replace, R.string.main_status_done_export_reason,
+                R.string.main_status_done_replace_reason, R.string.main_status_stopped_export,
+                R.string.main_status_stopped_replace
+            ).any { matches(it) } || listOf(
+                R.plurals.main_status_import_done, R.plurals.main_status_batch_done,
+                R.plurals.main_status_batch_done_skipped, R.plurals.main_status_batch_stopped,
+                R.plurals.main_status_batch_stopped_skipped
+            ).any { matchesPlural(it) }
+            when {
+                busy -> androidx.compose.ui.graphics.Color(0xFF1E88E5)
+                isError -> MaterialTheme.colorScheme.error
+                isReady -> androidx.compose.ui.graphics.Color(0xFF34A853)
+                isDone -> MaterialTheme.colorScheme.primary
+                else -> MaterialTheme.colorScheme.onSurfaceVariant
+            }
         }
         Surface(
             shape = RoundedCornerShape(12.dp),
@@ -888,7 +932,7 @@ private fun BottomControls(
                     if (statusText.length > 40) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                            contentDescription = "查看详情",
+                            contentDescription = stringResource(R.string.screen_view_detail),
                             tint = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.size(18.dp)
                         )
@@ -948,7 +992,7 @@ private fun BottomControls(
                     ) {
                         Icon(Icons.Default.AddPhotoAlternate, contentDescription = null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(6.dp))
-                        Text("添加文件", style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.MiddleEllipsis)
+                        Text(stringResource(R.string.screen_add_files), style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.MiddleEllipsis)
                     }
                     FilledTonalButton(
                         onClick = { onOpenToolbox() },
@@ -962,7 +1006,7 @@ private fun BottomControls(
                     ) {
                         Icon(Icons.Default.Build, contentDescription = null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(6.dp))
-                        Text("工具箱", style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.MiddleEllipsis)
+                        Text(stringResource(R.string.screen_toolbox), style = MaterialTheme.typography.labelLarge, maxLines = 1, overflow = TextOverflow.MiddleEllipsis)
                     }
                 }
 
@@ -979,8 +1023,12 @@ private fun BottomControls(
                 ) {
                     Icon(Icons.Default.FormatPaint, contentDescription = null, modifier = Modifier.size(20.dp))
                     Spacer(modifier = Modifier.width(8.dp))
-                    val fmtName = formatOptions.firstOrNull { it.key == selectedFormat }?.name ?: "Google"
-                    Text("输出格式：$fmtName", style = MaterialTheme.typography.titleSmall)
+                    val fmtRes = formatOptions.firstOrNull { it.key == selectedFormat }?.nameRes
+                        ?: R.string.screen_format_google
+                    Text(
+                        stringResource(R.string.screen_output_format, stringResource(fmtRes)),
+                        style = MaterialTheme.typography.titleSmall
+                    )
                 }
 
                 // 项10：处理完成后删除原图开关行（随按钮组在处理中隐藏禁用）；
@@ -1018,7 +1066,7 @@ private fun BottomControls(
                     Spacer(modifier = Modifier.width(10.dp))
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = "处理完成后删除原图",
+                            text = stringResource(R.string.screen_delete_original),
                             style = MaterialTheme.typography.titleSmall,
                             color = if (deleteOriginalUsable) MaterialTheme.colorScheme.onSecondaryContainer
                                     else MaterialTheme.colorScheme.onSurfaceVariant
@@ -1026,7 +1074,7 @@ private fun BottomControls(
                         if (!deleteOriginalUsable) {
                             // 未授予「完全存储访问」：明确告知开关不可用及解锁方式
                             Text(
-                                text = "需「所有文件访问」权限，点击查看",
+                                text = stringResource(R.string.screen_need_all_files_access_view),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -1084,7 +1132,7 @@ private fun BottomControls(
                 ) {
                     Icon(Icons.Default.DeleteOutline, contentDescription = null, modifier = Modifier.size(20.dp))
                     Spacer(modifier = Modifier.width(4.dp))
-                    Text("清空")
+                    Text(stringResource(R.string.screen_clear))
                 }
             }
 
@@ -1126,11 +1174,11 @@ private fun BottomControls(
                         if (converting) {
                             Icon(Icons.Filled.Stop, contentDescription = null, modifier = Modifier.size(20.dp))
                             Spacer(modifier = Modifier.width(6.dp))
-                            Text("停止处理", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                            Text(stringResource(R.string.screen_stop), style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
                         } else {
                             Icon(Icons.Default.Bolt, contentDescription = null, modifier = Modifier.size(20.dp))
                             Spacer(modifier = Modifier.width(4.dp))
-                            Text("开始转换", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                            Text(stringResource(R.string.screen_start_convert), style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
                         }
                     }
                 }
@@ -1146,7 +1194,7 @@ private fun BottomControls(
         val clipboard = LocalClipboardManager.current
         AlertDialog(
             onDismissRequest = { showStatusDetail = false },
-            title = { Text("状态详情") },
+            title = { Text(stringResource(R.string.screen_status_detail)) },
             text = {
                 Column {
                     SelectionContainer {
@@ -1158,7 +1206,7 @@ private fun BottomControls(
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "长按文本可选中复制",
+                        text = stringResource(R.string.screen_long_press_copy),
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -1168,10 +1216,10 @@ private fun BottomControls(
                 FilledTonalButton(onClick = {
                     haptic.click()
                     clipboard.setText(AnnotatedString(statusText))
-                }) { Text("复制") }
+                }) { Text(stringResource(R.string.screen_copy)) }
             },
             dismissButton = {
-                FilledTonalButton(onClick = { haptic.click(); showStatusDetail = false }) { Text("关闭") }
+                FilledTonalButton(onClick = { haptic.click(); showStatusDetail = false }) { Text(stringResource(R.string.screen_close)) }
             }
         )
     }

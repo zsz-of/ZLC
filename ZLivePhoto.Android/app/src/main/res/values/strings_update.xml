@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  更新 / 下载相关文案（core/AppUpdater.kt、core/UpdateChecker.kt）。
+  key 前缀 update_，一旦确定不得改名（各语言文件引用同一 key 集）。
+  占位符用 %1$s / %1$d。
+  注意：core 层的 UpdaterException / AddonException 文本会经 MainActivity 的
+  statusText 直接显示在列表项与日志面板上，因此一律走资源。
+-->
+<resources>
+
+    <!-- ========== 蓝奏云分享页与直链解析 ========== -->
+    <string name="update_lanzou_gone">蓝奏云分享已被取消或文件不存在，请改用 GitHub 下载</string>
+    <string name="update_lanzou_gone_short">蓝奏云分享已被取消，请改用 GitHub 下载</string>
+    <string name="update_lanzou_resolve_failed">蓝奏云下载链接解析失败</string>
+    <string name="update_lanzou_need_passwd">该蓝奏云分享需要提取码，请改用 GitHub 下载（或到 Release 说明里找提取码）</string>
+    <string name="update_lanzou_wrong_passwd">蓝奏云提取码错误</string>
+    <string name="update_err_resolve_failed">解析失败</string>
+    <string name="update_err_resolve_with_host">%1$s（%2$s）</string>
+    <string name="update_err_anticrawl">蓝奏云反爬校验失败</string>
+    <string name="update_err_no_frame">无法解析蓝奏云下载页（未找到下载帧）</string>
+    <string name="update_err_no_file_id">无法解析蓝奏云文件标识</string>
+    <string name="update_err_no_sign">无法解析蓝奏云签名</string>
+    <string name="update_err_ajax_request">接口请求失败</string>
+    <string name="update_err_api_request">蓝奏云接口请求失败</string>
+    <string name="update_err_empty_direct">蓝奏云返回空下载地址</string>
+    <string name="update_err_direct_expired">蓝奏云下载地址已失效，请重新获取</string>
+    <string name="update_err_http_request">请求失败（HTTP %1$d）</string>
+
+    <!-- ========== 下载 ========== -->
+    <string name="update_err_connect">无法连接下载服务器：%1$s</string>
+    <string name="update_err_http">下载失败（HTTP %1$d）</string>
+    <string name="update_err_no_connection">无法建立下载连接</string>
+    <string name="update_err_empty">下载内容为空</string>
+    <string name="update_err_incomplete">下载不完整（已获取 %1$d / 共 %2$d 字节），请重新下载</string>
+    <string name="update_err_interrupted">下载中断：%1$s</string>
+
+    <!-- ========== 安装包校验与安装 ========== -->
+    <string name="update_err_not_apk">下载到的不是有效的安装包（可能是网页或下载链接已失效），请重新下载或改用 GitHub 下载。</string>
+    <string name="update_err_apk_incomplete">安装包内容不完整，请重新下载或改用 GitHub 下载。</string>
+    <string name="update_err_apk_unparsable">安装包无法解析（可能下载不完整），请重新下载或改用 GitHub 下载。</string>
+    <string name="update_err_no_install_permission">尚未获得「安装未知应用」权限</string>
+    <string name="update_err_installer_failed">无法调起系统安装器（%1$s），请到文件管理器手动打开安装包安装</string>
+
+</resources>

@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.BinaryUtils
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
@@ -12,7 +13,7 @@ import java.io.FileInputStream
  */
 internal class GooglePlugin : FormatPlugin() {
     override val name: String = "google"
-    override val display: String = "Google Motion Photo"
+    override val displayRes: Int = R.string.fmt_google
 
     companion object {
         /** 从文件头部直接定位 XMP 文本（检测用，容忍截断）。 */

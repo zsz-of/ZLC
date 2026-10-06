@@ -1,6 +1,8 @@
 package com.zsz.zlivephoto.ui
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.XmlResourceParser
 import android.net.Uri
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
@@ -47,6 +49,7 @@ import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Refresh
@@ -79,15 +82,19 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.zsz.zlivephoto.BuildConfig
+import com.zsz.zlivephoto.R
+import com.zsz.zlivephoto.core.AppLanguage
 import com.zsz.zlivephoto.core.FfmpegAddon
 import com.zsz.zlivephoto.core.UpdateChecker
 import com.zsz.zlivephoto.core.UpdateCheckResult
 import com.zsz.zlivephoto.core.UpdateInfo
 import kotlinx.coroutines.launch
+import org.xmlpull.v1.XmlPullParser
 
 private const val GITHUB_REPO_URL = "https://github.com/zsz-of/ZLC"
 
@@ -140,14 +147,17 @@ private fun SettingsMainContent(
     val context = LocalContext.current
 
     var showCustomPalette by remember { mutableStateOf(false) }
+    // 应用语言：currentTag 为空串表示跟随系统
+    var appLanguageTag by remember { mutableStateOf(AppLanguage.currentTag(context)) }
+    var showLanguageDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("设置", fontWeight = FontWeight.SemiBold) },
+                title = { Text(stringResource(R.string.settings_title), fontWeight = FontWeight.SemiBold) },
                 navigationIcon = {
                     IconButton(onClick = { haptic.click(); onBack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.settings_cd_back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -164,15 +174,15 @@ private fun SettingsMainContent(
                 .padding(horizontal = 16.dp, vertical = 8.dp)
         ) {
             // ── 通用 ──
-            SectionTitle("通用")
+            SectionTitle(stringResource(R.string.settings_section_general))
             val isGo = BuildConfig.FLAVOR == "go"
             SettingsRowsGroup(
                 buildList {
                     add { s ->
                         SettingsSwitchRow(
                             shape = s,
-                            title = "启动时检查更新",
-                            subtitle = "启动时自动从 GitHub 获取新版本，有更新时提示下载",
+                            title = stringResource(R.string.settings_startup_check_title),
+                            subtitle = stringResource(R.string.settings_startup_check_subtitle),
                             checked = AppSettings.checkUpdateOnStartup,
                             leading = {
                                 Icon(
@@ -189,8 +199,8 @@ private fun SettingsMainContent(
                         add { s ->
                             SettingsSwitchRow(
                                 shape = s,
-                                title = "震动反馈",
-                                subtitle = "按钮点击与状态变化时的触觉反馈",
+                                title = stringResource(R.string.settings_haptics_title),
+                                subtitle = stringResource(R.string.settings_haptics_subtitle),
                                 checked = AppSettings.hapticsEnabled,
                                 onToggle = { AppSettings.setHaptics(it) }
                             )
@@ -198,8 +208,8 @@ private fun SettingsMainContent(
                         add { s ->
                             SettingsSwitchRow(
                                 shape = s,
-                                title = "按钮弹性动画",
-                                subtitle = "按钮按下时的缩放回弹动画",
+                                title = stringResource(R.string.settings_bounce_title),
+                                subtitle = stringResource(R.string.settings_bounce_subtitle),
                                 checked = AppSettings.bounceEnabled,
                                 onToggle = { AppSettings.setBounce(it) }
                             )
@@ -209,14 +219,14 @@ private fun SettingsMainContent(
             )
 
             // ── 外观 ──
-            SectionTitle("外观")
+            SectionTitle(stringResource(R.string.settings_section_appearance))
             // 深色模式三选 + Material You 动态取色（go 无动态取色，隐藏对应行）
             SettingsRowsGroup(
                 buildList {
                     add { s ->
                         ThemeModeRow(
                             shape = s,
-                            title = "跟随系统",
+                            title = stringResource(R.string.settings_theme_system),
                             selected = AppSettings.themeMode == "system",
                             onClick = { AppSettings.setThemeModeValue("system") }
                         )
@@ -224,7 +234,7 @@ private fun SettingsMainContent(
                     add { s ->
                         ThemeModeRow(
                             shape = s,
-                            title = "深色",
+                            title = stringResource(R.string.settings_theme_dark),
                             selected = AppSettings.themeMode == "dark",
                             onClick = { AppSettings.setThemeModeValue("dark") }
                         )
@@ -232,7 +242,7 @@ private fun SettingsMainContent(
                     add { s ->
                         ThemeModeRow(
                             shape = s,
-                            title = "浅色",
+                            title = stringResource(R.string.settings_theme_light),
                             selected = AppSettings.themeMode == "light",
                             onClick = { AppSettings.setThemeModeValue("light") }
                         )
@@ -241,8 +251,8 @@ private fun SettingsMainContent(
                         add { s ->
                             SettingsSwitchRow(
                                 shape = s,
-                                title = "Material You 动态取色",
-                                subtitle = "跟随系统壁纸颜色（Android 12+）；关闭后使用下方预制主题色",
+                                title = stringResource(R.string.settings_dynamic_theme_title),
+                                subtitle = stringResource(R.string.settings_dynamic_theme_subtitle),
                                 checked = AppSettings.dynamicTheme,
                                 onToggle = { AppSettings.setUseDynamicTheme(it) }
                             )
@@ -261,11 +271,18 @@ private fun SettingsMainContent(
                     .alpha(if (presetEnabled) 1f else 0.38f)
                     .padding(horizontal = 20.dp, vertical = 12.dp)
             ) {
-                Text("预制主题色", style = MaterialTheme.typography.titleSmall)
+                Text(stringResource(R.string.settings_preset_colors_title), style = MaterialTheme.typography.titleSmall)
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    if (presetEnabled) "当前：${if (customActive) "自定义" else presetNames[AppSettings.presetColor]}"
-                    else "关闭「Material You 动态取色」后可选择",
+                    if (presetEnabled) {
+                        stringResource(
+                            R.string.settings_preset_current,
+                            if (customActive) stringResource(R.string.settings_custom)
+                            else presetNames[AppSettings.presetColor]
+                        )
+                    } else {
+                        stringResource(R.string.settings_preset_disabled_hint)
+                    },
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -304,15 +321,52 @@ private fun SettingsMainContent(
                 }
             }
 
-            // ── 默认选项 ──
-            SectionTitle("默认选项")
+            // ── 语言 ──
+            // 清单与系统「应用语言」同源：res/xml/locales_config.xml 声明的 119 个语种 +「跟随系统」
+            SectionTitle(stringResource(R.string.settings_section_language))
             SettingsRowsGroup(
                 listOf(
                     { s ->
                         SettingsActionRow(
                             shape = s,
-                            title = "不再提示弹窗",
-                            subtitle = "管理所有「不再提示」弹窗的开关",
+                            title = stringResource(R.string.app_language_title),
+                            subtitle = if (appLanguageTag.isEmpty()) {
+                                stringResource(R.string.app_language_follow_system)
+                            } else {
+                                AppLanguage.displayName(appLanguageTag)
+                            },
+                            icon = {
+                                Icon(
+                                    Icons.Default.Language,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            },
+                            trailing = {
+                                Icon(
+                                    Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            },
+                            onClick = {
+                                haptic.click()
+                                showLanguageDialog = true
+                            }
+                        )
+                    }
+                )
+            )
+
+            // ── 默认选项 ──
+            SectionTitle(stringResource(R.string.settings_section_defaults))
+            SettingsRowsGroup(
+                listOf(
+                    { s ->
+                        SettingsActionRow(
+                            shape = s,
+                            title = stringResource(R.string.settings_reminder_dialogs_title),
+                            subtitle = stringResource(R.string.settings_reminder_dialogs_subtitle),
                             icon = { Icon(Icons.Default.Check, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
                                 Icon(
@@ -331,14 +385,14 @@ private fun SettingsMainContent(
             )
 
             // ── 输出 ──
-            SectionTitle("输出")
+            SectionTitle(stringResource(R.string.settings_section_output))
             SettingsRowsGroup(
                 listOf(
                     { s ->
                         SettingsSwitchRow(
                             shape = s,
-                            title = "按源文件夹层级输出",
-                            subtitle = "转换结果按原相册名分子目录存放；关闭后全部平铺在同一个目录",
+                            title = stringResource(R.string.settings_preserve_folders_title),
+                            subtitle = stringResource(R.string.settings_preserve_folders_subtitle),
                             checked = AppSettings.preserveFolders,
                             leading = {
                                 Icon(
@@ -357,14 +411,14 @@ private fun SettingsMainContent(
             TranscoderAddonSection()
 
             // ── 关于 ──
-            SectionTitle("关于")
+            SectionTitle(stringResource(R.string.settings_section_about))
             SettingsRowsGroup(
                 listOf(
                     { s ->
                         SettingsActionRow(
                             shape = s,
-                            title = "关于",
-                            subtitle = "版本 · 检查更新 · 鸣谢与赞助",
+                            title = stringResource(R.string.settings_about_title),
+                            subtitle = stringResource(R.string.settings_about_subtitle),
                             icon = { Icon(Icons.Default.Info, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
                                 Icon(
@@ -392,7 +446,7 @@ private fun SettingsMainContent(
         }
         AlertDialog(
             onDismissRequest = { showCustomPalette = false },
-            title = { Text("自定义主题色") },
+            title = { Text(stringResource(R.string.settings_custom_color_title)) },
             text = {
                 Column {
                     // 实时预览
@@ -405,7 +459,7 @@ private fun SettingsMainContent(
                     )
                     Spacer(Modifier.height(16.dp))
                     Text(
-                        "色相 ${hue.toInt()}°",
+                        stringResource(R.string.settings_hue_value, hue.toInt()),
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -421,13 +475,64 @@ private fun SettingsMainContent(
                     haptic.click()
                     AppSettings.setCustomHueValue(hue)
                     showCustomPalette = false
-                }) { Text("应用") }
+                }) { Text(stringResource(R.string.settings_btn_apply)) }
             },
             dismissButton = {
                 FilledTonalButton(onClick = {
                     haptic.click()
                     showCustomPalette = false
-                }) { Text("取消") }
+                }) { Text(stringResource(R.string.settings_btn_cancel)) }
+            }
+        )
+    }
+
+    // 应用语言选择弹窗：顶部「跟随系统」，下面是 locales_config.xml 声明的全部语种，当前项打勾
+    if (showLanguageDialog) {
+        val localeTags = remember(context) { loadLocaleTags(context) }
+        AlertDialog(
+            onDismissRequest = { showLanguageDialog = false },
+            title = { Text(stringResource(R.string.settings_language_dialog_title), fontWeight = FontWeight.SemiBold) },
+            text = {
+                Column(
+                    Modifier
+                        .heightIn(max = 420.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    Text(
+                        stringResource(R.string.settings_language_count, localeTags.size + 1),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(bottom = 4.dp)
+                    )
+                    LanguageOptionRow(
+                        label = stringResource(R.string.app_language_follow_system),
+                        selected = appLanguageTag.isEmpty(),
+                        onClick = {
+                            haptic.click()
+                            AppLanguage.set(context, "")
+                            appLanguageTag = AppLanguage.currentTag(context)
+                            showLanguageDialog = false
+                        }
+                    )
+                    for (tag in localeTags) {
+                        LanguageOptionRow(
+                            label = AppLanguage.displayName(tag),
+                            selected = appLanguageTag == tag,
+                            onClick = {
+                                haptic.click()
+                                AppLanguage.set(context, tag)
+                                appLanguageTag = AppLanguage.currentTag(context)
+                                showLanguageDialog = false
+                            }
+                        )
+                    }
+                }
+            },
+            confirmButton = {
+                FilledTonalButton(onClick = {
+                    haptic.soft()
+                    showLanguageDialog = false
+                }) { Text(stringResource(R.string.settings_btn_close)) }
             }
         )
     }
@@ -445,10 +550,10 @@ private fun ReminderSettingsScreen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("不再提示弹窗", fontWeight = FontWeight.SemiBold) },
+                title = { Text(stringResource(R.string.settings_reminder_dialogs_title), fontWeight = FontWeight.SemiBold) },
                 navigationIcon = {
                     IconButton(onClick = { haptic.click(); onBack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.settings_cd_back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -472,7 +577,7 @@ private fun ReminderSettingsScreen(onBack: () -> Unit) {
                 }
             }
             Text(
-                "开关打开表示「不再提示」；关闭后，下次触发对应场景时会重新弹出提示。",
+                stringResource(R.string.settings_reminder_hint),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(start = 20.dp, top = 12.dp, bottom = 24.dp)
@@ -531,10 +636,10 @@ private fun AboutScreen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("关于", fontWeight = FontWeight.SemiBold) },
+                title = { Text(stringResource(R.string.settings_about_title), fontWeight = FontWeight.SemiBold) },
                 navigationIcon = {
                     IconButton(onClick = { haptic.click(); onBack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.settings_cd_back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -551,22 +656,22 @@ private fun AboutScreen(onBack: () -> Unit) {
                 .padding(horizontal = 16.dp, vertical = 8.dp)
         ) {
             // ── 应用 ──
-            SectionTitle("应用")
+            SectionTitle(stringResource(R.string.settings_section_app))
             SettingsRowsGroup(
                 listOf(
                     { s ->
                         SettingsActionRow(
                             shape = s,
-                            title = "检查更新",
-                            subtitle = "从 GitHub Releases 获取最新版本",
+                            title = stringResource(R.string.settings_check_update_title),
+                            subtitle = stringResource(R.string.settings_check_update_subtitle),
                             icon = { Icon(Icons.Default.CloudDownload, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
                                 Text(
                                     when (val r = updateResult) {
-                                        null -> if (checking) "检查中…" else ""
-                                        is UpdateCheckResult.Update -> "v${r.info.version} 可用"
-                                        UpdateCheckResult.UpToDate -> "已是最新版本"
-                                        UpdateCheckResult.NetworkError -> "网络错误，请稍后重试"
+                                        null -> if (checking) stringResource(R.string.settings_checking) else ""
+                                        is UpdateCheckResult.Update -> stringResource(R.string.settings_update_available, r.info.version)
+                                        UpdateCheckResult.UpToDate -> stringResource(R.string.settings_up_to_date)
+                                        UpdateCheckResult.NetworkError -> stringResource(R.string.settings_network_error)
                                     },
                                     style = MaterialTheme.typography.labelMedium,
                                     color = MaterialTheme.colorScheme.primary,
@@ -595,11 +700,12 @@ private fun AboutScreen(onBack: () -> Unit) {
                         val newerVersion = if (info != null && !upToDate) info.version else null
                         SettingsActionRow(
                             shape = s,
-                            title = "重新安装本版本",
-                            subtitle = if (newerVersion == null)
-                                "下载当前最新版覆盖安装（测试更新用）"
-                            else
-                                "当前可升级到 v$newerVersion，请先用「检查更新」升级",
+                            title = stringResource(R.string.settings_reinstall_title),
+                            subtitle = if (newerVersion == null) {
+                                stringResource(R.string.settings_reinstall_subtitle)
+                            } else {
+                                stringResource(R.string.settings_reinstall_newer_hint, newerVersion)
+                            },
                             icon = {
                                 Icon(
                                     Icons.Default.Refresh,
@@ -611,7 +717,7 @@ private fun AboutScreen(onBack: () -> Unit) {
                             trailing = {
                                 if (latestInfo == null && checking) {
                                     Text(
-                                        "检查中…",
+                                        stringResource(R.string.settings_checking),
                                         style = MaterialTheme.typography.labelMedium,
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
@@ -629,22 +735,26 @@ private fun AboutScreen(onBack: () -> Unit) {
                         )
                     },
                     { s ->
-                        SettingsInfoRow(shape = s, title = "版本", value = "v${BuildConfig.VERSION_NAME}")
+                        SettingsInfoRow(
+                            shape = s,
+                            title = stringResource(R.string.settings_version_title),
+                            value = stringResource(R.string.settings_version_value, BuildConfig.VERSION_NAME)
+                        )
                     }
                 )
             )
 
             // ── 鸣谢与赞助 ──
             // 用户要求「鸣谢板块」放在「开源许可证」前面
-            SectionTitle("鸣谢与赞助")
+            SectionTitle(stringResource(R.string.settings_section_credits))
             SettingsRowsGroup(
                 listOf(
                     { s ->
                         // 支付宝赞助：先弹致谢确认窗，再决定是否拉起支付宝
                         SettingsActionRow(
                             shape = s,
-                            title = "支付宝赞助",
-                            subtitle = "支持开发",
+                            title = stringResource(R.string.settings_alipay_title),
+                            subtitle = stringResource(R.string.settings_alipay_subtitle),
                             icon = { Icon(Icons.Default.Favorite, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
                                 Icon(
@@ -664,7 +774,7 @@ private fun AboutScreen(onBack: () -> Unit) {
                         SettingsActionRow(
                             shape = s,
                             title = "@毛血旺o",
-                            subtitle = "酷安用户 · 感谢他提供的支持",
+                            subtitle = stringResource(R.string.settings_coolapk_subtitle),
                             icon = { Icon(Icons.Default.Person, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
                                 Icon(
@@ -684,20 +794,20 @@ private fun AboutScreen(onBack: () -> Unit) {
                         SettingsCreditRow(
                             shape = s,
                             title = "Trae · GML · DeepSeek · Kimi",
-                            subtitle = "感谢 AI IDE 与 AI 模型在开发中提供的协助"
+                            subtitle = stringResource(R.string.settings_ai_credits_subtitle)
                         )
                     }
                 )
             )
 
             // ── 开源与授权 ──
-            SectionTitle("开源与授权")
+            SectionTitle(stringResource(R.string.settings_section_opensource))
             SettingsRowsGroup(
                 listOf(
                     { s ->
                         SettingsActionRow(
                             shape = s,
-                            title = "GitHub 开源地址",
+                            title = stringResource(R.string.settings_github_title),
                             subtitle = GITHUB_REPO_URL.removePrefix("https://"),
                             icon = { Icon(Icons.Default.Code, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
@@ -717,7 +827,7 @@ private fun AboutScreen(onBack: () -> Unit) {
                         // 开源许可证：书本图标
                         SettingsInfoRow(
                             shape = s,
-                            title = "开源许可证",
+                            title = stringResource(R.string.settings_license_title),
                             value = "GPL-3.0",
                             leading = {
                                 Icon(
@@ -741,14 +851,9 @@ private fun AboutScreen(onBack: () -> Unit) {
     if (showSponsorDialog) {
         AlertDialog(
             onDismissRequest = { showSponsorDialog = false },
-            title = { Text("感谢你的支持") },
+            title = { Text(stringResource(R.string.settings_sponsor_dialog_title)) },
             text = {
-                Text(
-                    "真的非常感谢你愿意支持这个应用！\n\n" +
-                    "如果你还是学生、或经济还没有独立，请千万不要破费——\n" +
-                    "把这份心意留在心里，继续使用下去，就是对我最好的支持。\n\n" +
-                    "愿意赞助的话，一块也是爱，我会把它投入到更好的维护与功能上：）"
-                )
+                Text(stringResource(R.string.settings_sponsor_dialog_text))
             },
             confirmButton = {
                 Button(onClick = {
@@ -756,13 +861,13 @@ private fun AboutScreen(onBack: () -> Unit) {
                     showSponsorDialog = false
                     // 成功拉起支付宝收款码则交给支付宝；失败（含未安装）单独提示
                     if (!launchAlipay(context)) alipayMissing = true
-                }) { Text("赞助") }
+                }) { Text(stringResource(R.string.settings_btn_sponsor)) }
             },
             dismissButton = {
                 FilledTonalButton(onClick = {
                     haptic.soft()
                     showSponsorDialog = false
-                }) { Text("关闭") }
+                }) { Text(stringResource(R.string.settings_btn_close)) }
             }
         )
     }
@@ -771,18 +876,15 @@ private fun AboutScreen(onBack: () -> Unit) {
     if (alipayMissing) {
         AlertDialog(
             onDismissRequest = { alipayMissing = false },
-            title = { Text("还没有安装支付宝") },
+            title = { Text(stringResource(R.string.settings_alipay_missing_title)) },
             text = {
-                Text(
-                    "没有检测到支付宝，暂时无法完成赞助。\n\n" +
-                    "没关系——无论怎样，都非常感谢你的好意！"
-                )
+                Text(stringResource(R.string.settings_alipay_missing_text))
             },
             confirmButton = {
                 Button(onClick = {
                     haptic.click()
                     alipayMissing = false
-                }) { Text("好") }
+                }) { Text(stringResource(R.string.settings_btn_ok)) }
             }
         )
     }
@@ -1117,21 +1219,21 @@ private fun SettingsActionRow(
 private fun TranscoderAddonSection() {
     if (BuildConfig.FLAVOR == "go") return
 
-    SectionTitle("视频转码")
+    SectionTitle(stringResource(R.string.settings_section_transcode))
 
     SettingsRowsGroup(
         listOf(
             { s ->
                 SettingsInfoRow(
                     shape = s,
-                    title = "内置转码器",
-                    value = "ffmpeg ${FfmpegAddon.BUNDLED_VERSION}"
+                    title = stringResource(R.string.settings_transcoder_title),
+                    value = stringResource(R.string.settings_transcoder_value, FfmpegAddon.BUNDLED_VERSION)
                 )
             },
             { s ->
                 ThemeModeRow(
                     shape = s,
-                    title = "重新编码",
+                    title = stringResource(R.string.settings_transcode_mode_encode),
                     selected = FfmpegAddon.mode == FfmpegAddon.MODE_ENCODE,
                     onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_ENCODE) }
                 )
@@ -1139,7 +1241,7 @@ private fun TranscoderAddonSection() {
             { s ->
                 ThemeModeRow(
                     shape = s,
-                    title = "仅重封装容器（推荐）",
+                    title = stringResource(R.string.settings_transcode_mode_remux),
                     selected = FfmpegAddon.mode == FfmpegAddon.MODE_REMUX,
                     onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_REMUX) }
                 )
@@ -1147,7 +1249,7 @@ private fun TranscoderAddonSection() {
             { s ->
                 ThemeModeRow(
                     shape = s,
-                    title = "完全不使用转码器",
+                    title = stringResource(R.string.settings_transcode_mode_off),
                     selected = FfmpegAddon.mode == FfmpegAddon.MODE_OFF,
                     onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_OFF) }
                 )
@@ -1164,17 +1266,17 @@ private fun TranscoderAddonSection() {
             .alpha(if (encoding) 1f else 0.38f)
             .padding(horizontal = 20.dp, vertical = 12.dp)
     ) {
-        Text("转码参数", style = MaterialTheme.typography.titleSmall)
+        Text(stringResource(R.string.settings_transcode_params_title), style = MaterialTheme.typography.titleSmall)
         Text(
-            if (encoding) "重新编码时使用的质量与压缩参数"
-            else "仅在「转码方式」选择「重新编码」时生效",
+            if (encoding) stringResource(R.string.settings_transcode_params_subtitle)
+            else stringResource(R.string.settings_transcode_params_disabled),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Spacer(Modifier.height(8.dp))
 
         Text(
-            "质量 CRF：${FfmpegAddon.crf}",
+            stringResource(R.string.settings_crf_value, FfmpegAddon.crf),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -1186,14 +1288,14 @@ private fun TranscoderAddonSection() {
             enabled = encoding
         )
         Text(
-            "数值越小画质越高、体积越大（默认 18）",
+            stringResource(R.string.settings_crf_hint),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
 
         Spacer(Modifier.height(12.dp))
         Text(
-            "编码器",
+            stringResource(R.string.settings_encoder_title),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -1209,7 +1311,7 @@ private fun TranscoderAddonSection() {
 
         Spacer(Modifier.height(12.dp))
         Text(
-            "压缩预设",
+            stringResource(R.string.settings_compress_preset_title),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -1370,7 +1472,7 @@ private fun PaletteLauncherDot(
             ) {
                 Icon(
                     Icons.Default.Palette,
-                    contentDescription = "自定义调色板",
+                    contentDescription = stringResource(R.string.settings_cd_custom_palette),
                     tint = if (selected) MaterialTheme.colorScheme.primary
                            else MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.size(16.dp)
@@ -1379,7 +1481,7 @@ private fun PaletteLauncherDot(
         }
         Spacer(Modifier.height(4.dp))
         Text(
-            "自定义",
+            stringResource(R.string.settings_custom),
             style = MaterialTheme.typography.labelSmall,
             color = if (selected) MaterialTheme.colorScheme.primary
                     else MaterialTheme.colorScheme.onSurfaceVariant
@@ -1420,3 +1522,62 @@ private fun launchAlipay(context: android.content.Context): Boolean {
         false // 拉起失败
     }
 }
+
+/** 语言列表中的一行：显示该语言的**自称**名，当前项高亮并在尾部打勾 */
+@Composable
+private fun LanguageOptionRow(label: String, selected: Boolean, onClick: () -> Unit) {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .clickable { onClick() }
+            .padding(vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            label,
+            style = MaterialTheme.typography.bodyMedium,
+            color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.weight(1f)
+        )
+        if (selected) {
+            Icon(
+                Icons.Default.Check,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(18.dp)
+            )
+        }
+    }
+}
+
+/**
+ * 读取 `res/xml/locales_config.xml` 声明的语种清单（与系统「应用语言」入口同源，
+ * 当前 119 项）。解析失败时退回 [FALLBACK_LOCALE_TAGS]，保证选择器仍然可用。
+ */
+private fun loadLocaleTags(context: Context): List<String> {
+    val tags = mutableListOf<String>()
+    try {
+        val parser: XmlResourceParser = context.resources.getXml(R.xml.locales_config)
+        var event = parser.eventType
+        while (event != XmlPullParser.END_DOCUMENT) {
+            if (event == XmlPullParser.START_TAG && parser.name == "locale") {
+                parser.getAttributeValue(ANDROID_NS, "name")
+                    ?.takeIf { it.isNotBlank() }
+                    ?.let { tags += it }
+            }
+            event = parser.next()
+        }
+        parser.close()
+    } catch (_: Exception) {
+        // 资源异常（极端情况）：使用兜底清单
+    }
+    return tags.ifEmpty { FALLBACK_LOCALE_TAGS }
+}
+
+private const val ANDROID_NS = "http://schemas.android.com/apk/res/android"
+
+/** [loadLocaleTags] 解析失败时的兜底（仅主流语种，非全量） */
+private val FALLBACK_LOCALE_TAGS = listOf(
+    "zh-Hans", "zh-Hant", "en", "ja", "ko", "es", "pt-BR", "fr",
+    "de", "ru", "ar", "hi", "id", "tr", "vi", "th"
+)

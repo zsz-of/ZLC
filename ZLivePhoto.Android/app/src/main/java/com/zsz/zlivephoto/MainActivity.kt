@@ -59,6 +59,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import com.zsz.zlivephoto.core.Converter
@@ -128,7 +129,7 @@ class MainActivity : ComponentActivity() {
         floatArrayOf(60f, 75f, 90f, 120f, 144f, 165f, 180f, 185f, 240f)
 
     private val files = mutableStateListOf<FileItem>()
-    private var statusText by mutableStateOf("就绪")
+    private var statusText by mutableStateOf("")
     private var progress by mutableFloatStateOf(0f)
     private var isConverting by mutableStateOf(false)
     private var selectedFormat by mutableStateOf("google")
@@ -285,8 +286,8 @@ class MainActivity : ComponentActivity() {
     ) { granted ->
         val action = pendingActionAfterLocation
         pendingActionAfterLocation = null
-        statusText = if (granted) "已获得位置权限，转换后将保留 GPS 元数据"
-                     else "未授予位置权限：转换后的照片将丢失 GPS 位置信息"
+        statusText = if (granted) getString(R.string.main_status_location_granted)
+                     else getString(R.string.main_status_location_denied)
         action?.invoke()
     }
 
@@ -346,9 +347,9 @@ class MainActivity : ComponentActivity() {
     ) {
         refreshStorageGates()
         statusText = if (hasAllFilesAccess())
-            "已获得「所有文件访问」权限，转换将直写相册目录完整保留位置信息"
+            getString(R.string.main_status_all_files_granted)
         else
-            "未授予「所有文件访问」权限：个别机型转换后可能丢失位置信息"
+            getString(R.string.main_status_all_files_denied)
     }
 
     private fun requestAllFilesAccess() {
@@ -396,8 +397,8 @@ class MainActivity : ComponentActivity() {
                 result.entries
                     .filter { it.key == android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED }
                     .all { it.value }
-            statusText = if (videoGranted) "已获得读取照片和视频权限"
-                         else "已授权，但视频权限缺失：无法查找双文件动态照片附带的伴生视频"
+            statusText = if (videoGranted) getString(R.string.main_status_read_granted)
+                         else getString(R.string.main_status_video_missing)
             // 授权后若缺「所有文件访问」（R+）弹一次引导，便于后续直写磁盘保留位置
             maybePromptAllFilesAccess()
             // 执行授权前挂起的动作（批量导入→文件夹选择器；默认→内置选择器）
@@ -405,7 +406,7 @@ class MainActivity : ComponentActivity() {
             pendingPermissionAction = null
             (action ?: { openBuiltInPicker() })()
         } else {
-            statusText = "未授予权限，可再次点击「添加文件」"
+            statusText = getString(R.string.main_status_permission_denied)
         }
     }
 
@@ -414,12 +415,12 @@ class MainActivity : ComponentActivity() {
         ActivityResultContracts.OpenDocumentTree()
     ) { uri ->
         if (uri == null) {
-            statusText = "未选择文件夹"
+            statusText = getString(R.string.main_status_folder_not_selected)
             return@registerForActivityResult
         }
         val rootPath = treeUriToFilePath(uri)
         if (rootPath == null) {
-            statusText = "无法访问所选文件夹（仅支持本地存储目录）"
+            statusText = getString(R.string.main_status_folder_unavailable)
             return@registerForActivityResult
         }
         importBatchFolder(rootPath)
@@ -607,6 +608,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         CrashHandler.install()
+        // 状态栏初始文案：属性初始化器阶段拿不到 Context，统一在首帧组合前用资源写入
+        statusText = getString(R.string.main_status_ready)
 
         // 屏幕支持 120/144/165/185Hz 等高刷新率时，请求切到最高档，
         // 保证界面动画能达到设备帧率上限（go 轻量版跳过）
@@ -631,14 +634,14 @@ class MainActivity : ComponentActivity() {
         when (val s = readListState()) {
             is ListState.Loaded -> {
                 files.addAll(s.files)
-                statusText = "已恢复上次会话（${s.files.size} 个文件）"
+                statusText = resources.getQuantityString(R.plurals.main_status_session_restored, s.files.size, s.files.size)
                 // 上次退出时仍在检测中的项，重新触发识别
                 s.files.forEach { f ->
-                    if (f.info == "检测中…") launchDetection(f.path, f.sourcePath ?: f.path)
+                    if (f.info == getString(R.string.main_info_detecting)) launchDetection(f.path, f.sourcePath ?: f.path)
                 }
             }
             is ListState.AbnormalExit ->
-                statusText = "检测到上次异常退出，已清空未完成的列表"
+                statusText = getString(R.string.main_status_abnormal_exit)
             ListState.Corrupt, ListState.Empty -> {}
         }
 
@@ -887,7 +890,7 @@ class MainActivity : ComponentActivity() {
                             onSelectFormat = { fmt ->
                                 // 拆解与合成互斥：队列已有合成任务时禁止切到拆解模式
                                 if (fmt == "extract" && files.any { it.formatKey == "compose" }) {
-                                    statusText = "队列含合成任务，不能切换为拆解模式"
+                                    statusText = getString(R.string.main_status_compose_blocks_extract)
                                 } else {
                                     selectedFormat = fmt
                                     getSharedPreferences("zlivephoto", MODE_PRIVATE)
@@ -908,7 +911,7 @@ class MainActivity : ComponentActivity() {
                                     hasFullStorageAccess() -> {
                                         if (replaceMode) {
                                             disableReplaceMode()
-                                            statusText = "已关闭替换模式（与「处理完成后删除原图」互斥）"
+                                            statusText = getString(R.string.main_status_replace_off_mutex)
                                         }
                                         deleteOriginal = true
                                         prefs.edit().putBoolean("delete_original", true).apply()
@@ -917,7 +920,7 @@ class MainActivity : ComponentActivity() {
                                     else -> {
                                         deleteOriginal = false
                                         prefs.edit().putBoolean("delete_original", false).apply()
-                                        statusText = "自动删除原图需要「所有文件访问」权限，请先授权"
+                                        statusText = getString(R.string.main_status_delete_needs_all_files)
                                         allFilesDialogPurpose = AllFilesPurpose.DELETE
                                         showAllFilesDialog = true
                                     }
@@ -930,12 +933,12 @@ class MainActivity : ComponentActivity() {
                                     // 关闭：直接落盘，无需权限
                                     !on -> {
                                         disableReplaceMode()
-                                        statusText = "已关闭替换模式，转换结果重新写入相册目录"
+                                        statusText = getString(R.string.main_status_replace_off)
                                     }
                                     // 未获得完全存储访问：不允许改写源文件，改为引导授权
                                     !hasFullStorageAccess() -> {
                                         disableReplaceMode()
-                                        statusText = "替换模式需要「所有文件访问」权限，请先授权"
+                                        statusText = getString(R.string.main_status_replace_needs_all_files)
                                         allFilesDialogPurpose = AllFilesPurpose.REPLACE
                                         showAllFilesDialog = true
                                     }
@@ -943,7 +946,7 @@ class MainActivity : ComponentActivity() {
                                     else -> {
                                         if (deleteOriginal) {
                                             disableDeleteOriginal()
-                                            statusText = "已关闭「处理完成后删除原图」（与替换模式互斥）"
+                                            statusText = getString(R.string.main_status_delete_off_mutex)
                                         }
                                         replaceMode = true
                                         AppSettings.setReplaceModeEnabled(true)
@@ -962,14 +965,10 @@ class MainActivity : ComponentActivity() {
                             // 拒绝不退出应用，仅关闭对话框
                             showPermissionDialog = false
                         },
-                        title = { Text("需要读取照片和视频权限") },
+                        title = { Text(stringResource(R.string.main_dialog_permission_title)) },
                         text = {
                             Text(
-                                "本程序需要读取您设备上的照片和视频：\n\n" +
-                                "• 照片权限：扫描设备相册，识别其中的动态照片\n" +
-                                "• 视频权限：查找双文件动态照片附带的伴生视频\n" +
-                                "• 位置权限：保留照片中的 GPS 位置元数据（缺失则转换后丢失位置信息）\n\n" +
-                                "拒绝后无法使用内置选择器，可稍后再次点击「添加文件」重新授权。"
+                                stringResource(R.string.main_dialog_permission_message)
                             )
                         },
                         confirmButton = {
@@ -977,13 +976,13 @@ class MainActivity : ComponentActivity() {
                                 haptic.click()
                                 showPermissionDialog = false
                                 onPermissionConfirm()
-                            }) { Text("授权") }
+                            }) { Text(stringResource(R.string.main_btn_grant)) }
                         },
                         dismissButton = {
                             FilledTonalButton(onClick = {
                                 haptic.click()
                                 showPermissionDialog = false
-                            }) { Text("拒绝") }
+                            }) { Text(stringResource(R.string.main_btn_deny)) }
                         }
                     )
                 }
@@ -994,12 +993,10 @@ class MainActivity : ComponentActivity() {
                         onDismissRequest = {
                             showSettingsDialog = false
                         },
-                        title = { Text("需要手动授予照片和视频权限") },
+                        title = { Text(stringResource(R.string.main_dialog_settings_title)) },
                         text = {
                             Text(
-                                "您之前选择了「不再询问」，系统不再弹出权限对话框。\n\n" +
-                                "请前往应用详情页 → 权限 → 照片和视频，手动授予访问权限后返回本应用。\n\n" +
-                                "注意：必须同时授予「照片」和「视频」权限，否则双文件动态照片将无法找到附带的伴生视频。"
+                                stringResource(R.string.main_dialog_settings_message)
                             )
                         },
                         confirmButton = {
@@ -1007,13 +1004,13 @@ class MainActivity : ComponentActivity() {
                                 haptic.click()
                                 showSettingsDialog = false
                                 openAppDetailSettings()
-                            }) { Text("去设置") }
+                            }) { Text(stringResource(R.string.main_btn_go_settings)) }
                         },
                         dismissButton = {
                             FilledTonalButton(onClick = {
                                 haptic.click()
                                 showSettingsDialog = false
-                            }) { Text("取消") }
+                            }) { Text(stringResource(R.string.main_btn_cancel)) }
                         }
                     )
                 }
@@ -1031,11 +1028,11 @@ class MainActivity : ComponentActivity() {
                         title = {
                             Text(
                                 when {
-                                    purpose == AllFilesPurpose.DELETE && grantable -> "自动删除原图需要「所有文件访问」"
-                                    purpose == AllFilesPurpose.DELETE -> "本机不支持自动删除原图"
-                                    purpose == AllFilesPurpose.REPLACE && grantable -> "替换模式需要「所有文件访问」"
-                                    purpose == AllFilesPurpose.REPLACE -> "本机不支持替换模式"
-                                    else -> "建议授予「所有文件访问」权限"
+                                    purpose == AllFilesPurpose.DELETE && grantable -> stringResource(R.string.main_dialog_allfiles_title_delete)
+                                    purpose == AllFilesPurpose.DELETE -> stringResource(R.string.main_dialog_allfiles_title_delete_unsupported)
+                                    purpose == AllFilesPurpose.REPLACE && grantable -> stringResource(R.string.main_dialog_allfiles_title_replace)
+                                    purpose == AllFilesPurpose.REPLACE -> stringResource(R.string.main_dialog_allfiles_title_replace_unsupported)
+                                    else -> stringResource(R.string.main_dialog_allfiles_title_location)
                                 }
                             )
                         },
@@ -1044,28 +1041,18 @@ class MainActivity : ComponentActivity() {
                                 when (purpose) {
                                     AllFilesPurpose.DELETE ->
                                         if (grantable) {
-                                            "「处理完成后删除原图」会直接删除磁盘上的原文件（照片及其伴生视频），" +
-                                            "该操作不可撤销，因此必须先授予「所有文件访问」权限。\n\n" +
-                                            "授权后开关才会变为可用，届时可自行开启。"
+                                            stringResource(R.string.main_dialog_allfiles_delete_message)
                                         } else {
-                                            "当前系统（Android 10 及以下）不提供「所有文件访问」权限，" +
-                                            "无法直接删除磁盘上的原文件，因此本机不支持「处理完成后删除原图」。\n\n" +
-                                            "您可以在转换完成后通过系统相册手动清理原图。"
+                                            stringResource(R.string.main_dialog_allfiles_delete_unsupported_message)
                                         }
                                     AllFilesPurpose.REPLACE ->
                                         if (grantable) {
-                                            "「替换模式」会直接把转换结果写回磁盘上的原文件（覆盖原内容），" +
-                                            "该操作不可撤销，因此必须先授予「所有文件访问」权限。\n\n" +
-                                            "授权后开关才会变为可用，届时可自行开启。"
+                                            stringResource(R.string.main_dialog_allfiles_replace_message)
                                         } else {
-                                            "当前系统（Android 10 及以下）不提供「所有文件访问」权限，" +
-                                            "无法直接改写磁盘上的原文件，因此本机不支持「替换模式」。\n\n" +
-                                            "您可以继续用默认方式转换，结果会输出到相册目录。"
+                                            stringResource(R.string.main_dialog_allfiles_replace_unsupported_message)
                                         }
                                     AllFilesPurpose.LOCATION ->
-                                        "部分机型（如魅族）通过系统相册接口写入会脱敏 GPS 位置信息，导致转换后照片丢失位置。\n\n" +
-                                        "授予「所有文件访问」后，本程序将直接写入相册目录，完整保留位置元数据。\n\n" +
-                                        "不授予也能正常转换，个别机型可能丢失位置信息。"
+                                        stringResource(R.string.main_dialog_allfiles_location_message)
                                 }
                             )
                         },
@@ -1076,13 +1063,13 @@ class MainActivity : ComponentActivity() {
                                     showAllFilesDialog = false
                                     allFilesDialogPurpose = AllFilesPurpose.LOCATION
                                     requestAllFilesAccess()
-                                }) { Text("去授权") }
+                                }) { Text(stringResource(R.string.main_btn_grant_access)) }
                             } else {
                                 FilledTonalButton(onClick = {
                                     haptic.click()
                                     showAllFilesDialog = false
                                     allFilesDialogPurpose = AllFilesPurpose.LOCATION
-                                }) { Text("知道了") }
+                                }) { Text(stringResource(R.string.main_btn_got_it)) }
                             }
                         },
                         dismissButton = if (grantable) {
@@ -1091,7 +1078,7 @@ class MainActivity : ComponentActivity() {
                                     haptic.click()
                                     showAllFilesDialog = false
                                     allFilesDialogPurpose = AllFilesPurpose.LOCATION
-                                }) { Text("暂不") }
+                                }) { Text(stringResource(R.string.main_btn_not_now)) }
                             }
                         } else null
                     )
@@ -1106,12 +1093,11 @@ class MainActivity : ComponentActivity() {
                             conflictRequest = null
                             cb(ConflictAction.SKIP)
                         },
-                        title = { Text("输出文件名冲突") },
+                        title = { Text(stringResource(R.string.main_dialog_conflict_title)) },
                         text = {
                             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                                 Text(
-                                    "输出目录中已存在同名文件：\n${req.displayNames}\n\n" +
-                                    "请选择处理方式。"
+                                    stringResource(R.string.main_dialog_conflict_message, req.displayNames)
                                 )
                                 // 第一行：跳过 / 覆盖
                                 Row(
@@ -1121,17 +1107,17 @@ class MainActivity : ComponentActivity() {
                                     FilledTonalButton(
                                         onClick = { haptic.click(); req.onChoose(ConflictAction.SKIP) },
                                         modifier = Modifier.weight(1f).height(42.dp)
-                                    ) { Text("跳过") }
+                                    ) { Text(stringResource(R.string.main_btn_skip)) }
                                     FilledTonalButton(
                                         onClick = { haptic.click(); req.onChoose(ConflictAction.OVERWRITE) },
                                         modifier = Modifier.weight(1f).height(42.dp)
-                                    ) { Text("覆盖") }
+                                    ) { Text(stringResource(R.string.main_btn_overwrite)) }
                                 }
                                 // 第二行：自动重命名（独占一行）
                                 FilledTonalButton(
                                     onClick = { haptic.click(); req.onChoose(ConflictAction.RENAME) },
                                     modifier = Modifier.fillMaxWidth().height(42.dp)
-                                ) { Text("自动重命名") }
+                                ) { Text(stringResource(R.string.main_btn_auto_rename)) }
                                 // 整行可点击切换（MD3 习惯：文字也是点击目标）
                                 Row(
                                     verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
@@ -1146,7 +1132,7 @@ class MainActivity : ComponentActivity() {
                                     Md3Checkbox(checked = conflictAlways)
                                     Spacer(Modifier.width(12.dp))
                                     Text(
-                                        "为后续冲突使用此处理方法",
+                                        stringResource(R.string.main_label_conflict_always),
                                         style = MaterialTheme.typography.labelMedium
                                     )
                                 }
@@ -1260,7 +1246,7 @@ class MainActivity : ComponentActivity() {
             else -> emptyList()
         }
         if (uris.isEmpty()) return
-        statusText = "正在导入分享的 ${uris.size} 张图片…"
+        statusText = resources.getQuantityString(R.plurals.main_status_importing_shared, uris.size, uris.size)
         lifecycleScope.launch(Dispatchers.IO) {
             var imported = 0
             var failed = 0
@@ -1270,12 +1256,12 @@ class MainActivity : ComponentActivity() {
                     imported++
                 } catch (e: Exception) {
                     failed++
-                    withContext(Dispatchers.Main) { statusText = "导入失败：${e.message}" }
+                    withContext(Dispatchers.Main) { statusText = getString(R.string.main_status_import_failed, e.message) }
                 }
             }
             withContext(Dispatchers.Main) {
-                statusText = if (failed > 0) "导入完成：成功 $imported 个，失败 $failed 个"
-                             else "导入完成：共导入 $imported 个文件"
+                statusText = if (failed > 0) getString(R.string.main_status_import_done_partial, imported, failed)
+                             else resources.getQuantityString(R.plurals.main_status_import_done, imported, imported)
                 onListStable()
             }
         }
@@ -1302,14 +1288,14 @@ class MainActivity : ComponentActivity() {
         isPickerOpening = true
         pickerComposeMode = false
         scanner.newSession() // 每次进入选择器开启新会话（相册扫过即不再扫）
-        statusText = "正在读取相册…"
+        statusText = getString(R.string.main_status_loading_albums)
         lifecycleScope.launch(Dispatchers.IO) {
             val albums = mediaRepo.queryAlbums()
             withContext(Dispatchers.Main) {
                 pickerAlbums = albums
                 screen = AppScreen.Picker
                 isPickerOpening = false
-                statusText = if (albums.isEmpty()) "未找到相册" else "就绪"
+                statusText = if (albums.isEmpty()) getString(R.string.main_status_no_albums) else getString(R.string.main_status_ready)
             }
         }
     }
@@ -1330,14 +1316,14 @@ class MainActivity : ComponentActivity() {
         isPickerOpening = true
         pickerComposeMode = true
         composeScanner.newSession()
-        statusText = "正在读取相册…"
+        statusText = getString(R.string.main_status_loading_albums)
         lifecycleScope.launch(Dispatchers.IO) {
             val albums = mediaRepo.queryAlbums(includeVideos = true)
             withContext(Dispatchers.Main) {
                 pickerAlbums = albums
                 screen = AppScreen.Picker
                 isPickerOpening = false
-                statusText = if (albums.isEmpty()) "未找到相册" else "就绪"
+                statusText = if (albums.isEmpty()) getString(R.string.main_status_no_albums) else getString(R.string.main_status_ready)
             }
         }
     }
@@ -1350,8 +1336,8 @@ class MainActivity : ComponentActivity() {
     private fun importComposeItems(photos: List<MediaItem>, videos: List<MediaItem>) {
         val pairs = minOf(photos.size, videos.size)
         if (pairs == 0) {
-            statusText = if (photos.isEmpty()) "未选择照片，无法合成"
-                         else "未选择视频，无法合成"
+            statusText = if (photos.isEmpty()) getString(R.string.main_status_compose_no_photo)
+                         else getString(R.string.main_status_compose_no_video)
             return
         }
         var added = 0
@@ -1363,7 +1349,7 @@ class MainActivity : ComponentActivity() {
             files.add(FileItem(
                 path = p.path,
                 name = p.name,
-                info = "合成任务（点击开始转换执行合成）",
+                info = getString(R.string.main_info_compose_task),
                 sourcePath = p.path,
                 sourceTime = p.dateModified * 1000L, // 输出修改时间=照片修改时间
                 sourceTaken = p.dateTaken,            // 输出创建时间=照片拍摄时间
@@ -1373,10 +1359,10 @@ class MainActivity : ComponentActivity() {
             added++
         }
         statusText = when {
-            added == 0 -> "所选照片均已在列表中"
+            added == 0 -> getString(R.string.main_status_compose_all_added)
             photos.size != videos.size ->
-                "照片 ${photos.size} 张、视频 ${videos.size} 个，按较少方已添加 $added 对合成任务"
-            else -> "已添加 $added 个合成任务，点击「开始转换」执行合成"
+                getString(R.string.main_status_compose_paired, photos.size, videos.size, added)
+            else -> resources.getQuantityString(R.plurals.main_status_compose_added, added, added)
         }
         // 拆解与合成互斥：合成任务入队时若当前还是拆解模式（无意义的合成目标），
         // 自动切到默认的 Google 输出，避免“拆解模式下合成”产出不可识别产物
@@ -1384,7 +1370,7 @@ class MainActivity : ComponentActivity() {
             selectedFormat = "google"
             getSharedPreferences("zlivephoto", MODE_PRIVATE)
                 .edit().putString("target", "google").apply()
-            statusText += "（已自动切换输出格式为 Google）"
+            statusText = getString(R.string.main_status_auto_google, statusText)
         }
         onListMutated()
         onListStable(immediate = true)
@@ -1398,8 +1384,8 @@ class MainActivity : ComponentActivity() {
         isImporting = true
         importProgress = 0f
         stopImportRequested = false
-        progressDetail = "已添加 0/$total"
-        statusText = "正在导入 $total 个文件…"
+        progressDetail = getString(R.string.main_progress_added, 0, total)
+        statusText = resources.getQuantityString(R.plurals.main_status_importing_files, total, total)
         lifecycleScope.launch(Dispatchers.IO) {
             var imported = 0
             var failed = 0
@@ -1419,8 +1405,8 @@ class MainActivity : ComponentActivity() {
                 withContext(Dispatchers.Main) {
                     val done = imported + failed
                     importProgress = done.toFloat() / total
-                    progressDetail = "已添加 $done/$total"
-                    statusText = "正在导入 $done/$total…"
+                    progressDetail = getString(R.string.main_progress_added, done, total)
+                    statusText = getString(R.string.main_status_importing_progress, done, total)
                 }
             }
             withContext(Dispatchers.Main) {
@@ -1428,9 +1414,9 @@ class MainActivity : ComponentActivity() {
                 importProgress = 0f
                 progressDetail = ""
                 statusText = when {
-                    stopImportRequested -> "已停止导入：成功 $imported 个，失败 $failed 个"
-                    failed > 0 -> "导入完成：成功 $imported 个，失败 $failed 个"
-                    else -> "导入完成：共导入 $imported 个文件"
+                    stopImportRequested -> getString(R.string.main_status_import_stopped, imported, failed)
+                    failed > 0 -> getString(R.string.main_status_import_done_partial, imported, failed)
+                    else -> resources.getQuantityString(R.plurals.main_status_import_done, imported, imported)
                 }
                 stopImportRequested = false
                 onListStable()
@@ -1442,10 +1428,10 @@ class MainActivity : ComponentActivity() {
     private fun stopConvert() {
         if (isConverting && !stopRequested) {
             stopRequested = true
-            statusText = "正在停止…（完成当前文件后停止）"
+            statusText = getString(R.string.main_status_stopping)
         } else if (isImporting && !stopImportRequested) {
             stopImportRequested = true
-            statusText = "正在停止导入…"
+            statusText = getString(R.string.main_status_stopping_import)
         }
     }
 
@@ -1502,7 +1488,7 @@ class MainActivity : ComponentActivity() {
         // 去重仅按绝对路径判断：不同相册可能存在同名文件（如均含 IMG_xxx.jpg），
         // 按 name 去重会误删跨相册同名文件，导致只导入其中一个相册的文件
         if (files.any { it.path == path }) return
-        val item = FileItem(path = path, name = name, info = "检测中…",
+        val item = FileItem(path = path, name = name, info = getString(R.string.main_info_detecting),
             sourceUri = sourceUri, sourcePath = srcPath,
             sourceTime = sourceTime, sourceTaken = sourceTaken)
         files.add(item)
@@ -1548,7 +1534,7 @@ class MainActivity : ComponentActivity() {
                 val idx = files.indexOfFirst { it.path == path }
                 if (idx >= 0) {
                     files[idx] = files[idx].copy(
-                        info = if (recognized) plugin!!.display else "未识别的动态照片格式",
+                        info = if (recognized) plugin!!.display else getString(R.string.main_info_unrecognized),
                         isUnrecognized = !recognized,
                         formatKey = if (recognized) plugin!!.name else null
                     )
@@ -1568,7 +1554,7 @@ class MainActivity : ComponentActivity() {
         val item = files[idx]
         cleanupIncomingItem(item)
         files.removeAt(idx)
-        statusText = "已移除 ${item.name}"
+        statusText = getString(R.string.main_status_removed, item.name)
         onListStable()
     }
 
@@ -1668,7 +1654,7 @@ class MainActivity : ComponentActivity() {
                 items.add(FileItem(
                     path = path,
                     name = o.optString("name", File(path).name),
-                    info = o.optString("info", "检测中…"),
+                    info = o.optString("info", getString(R.string.main_info_detecting)),
                     isUnrecognized = o.optBoolean("unrecognized", false),
                     sourceUri = o.optString("sourceUri").ifEmpty { null },
                     sourcePath = o.optString("sourcePath").ifEmpty { null },
@@ -1726,7 +1712,7 @@ class MainActivity : ComponentActivity() {
         clearBusy = true // 清理过程中禁用清空按钮
         hapticController?.double() // 快速两下振动
         progress = 0f
-        statusText = "已清空"
+        statusText = getString(R.string.main_status_cleared)
         File(incomingDir).listFiles()?.forEach { it.delete() }
         File(outputDir).walkBottomUp().forEach { it.delete() }
         // 快照：分 50 条一批移除，避免大量缓存删除 + 列表项移除
@@ -1751,16 +1737,16 @@ class MainActivity : ComponentActivity() {
     private fun startConvert() {
         if (isConverting) return
         // 排除未识别 / Apple 不可转换 / 失败项（Apple 已标记 isUnrecognized=true）
-        val targets = files.filter { !it.isUnrecognized && !it.info.contains("失败") }.toList()
+        val targets = files.filter { !it.isUnrecognized && !it.info.startsWith(getString(R.string.main_info_failed, "")) }.toList()
         if (targets.isEmpty()) {
-            statusText = "没有可转换的文件"
+            statusText = getString(R.string.main_status_nothing_to_convert)
             return
         }
 
         isConverting = true
         stopRequested = false
         progress = 0f
-        progressDetail = "已处理 0/${targets.size}"
+        progressDetail = getString(R.string.main_progress_processed, 0, targets.size)
         lastExportError = null
         claimedNames.clear()
         batchConflictAction = null // 「本批次总是」的选择仅当前批次有效
@@ -1783,13 +1769,13 @@ class MainActivity : ComponentActivity() {
                         if (stopRequested) {
                             val d = done.incrementAndGet()
                             progress = d.toFloat() / total
-                            progressDetail = "已处理 ${d - 1}/$total"
+                            progressDetail = getString(R.string.main_progress_processed, d - 1, total)
                             return@withPermit
                         }
                         withContext(Dispatchers.Main) {
                             val i0 = files.indexOfFirst { it.path == item.path }
                             if (i0 >= 0) files[i0] = files[i0].copy(
-                                info = "转换中…",
+                                info = getString(R.string.main_info_converting),
                                 transcoding = false,
                                 transcodeFrame = 0L,
                                 transcodeTotal = 0L,
@@ -1866,8 +1852,8 @@ class MainActivity : ComponentActivity() {
                                 val replaced = replaceSourceFiles(staged.orEmpty(), originalTargets, srcTime, srcTaken)
                                 exported.addAndGet(replaced)
                                 if (replaced > 0) successPaths.add(item.path)
-                                itemInfo = if (replaced > 0) "完成（替换 $replaced 个源文件）"
-                                           else "失败：${lastExportError ?: "替换源文件失败"}"
+                                itemInfo = if (replaced > 0) getString(R.string.main_info_done_replaced, replaced)
+                                           else getString(R.string.main_info_failed, lastExportError ?: getString(R.string.main_export_replace_failed_bare))
                             } else {
                                 // 输出文件名冲突处理（跳过 / 覆盖 / 自动后缀）
                                 // 子目录：开关开启时按源相册分目录，冲突判定也随之按子目录各判各的
@@ -1883,8 +1869,8 @@ class MainActivity : ComponentActivity() {
                                 // 项10：成功导出的原图入待删集合（失败/跳过/覆盖保护项不删）
                                 mergePendingDeletes(item.sourcePath, originalTargets, n > 0)
                                 if (finalOutputs != null) successPaths.add(item.path)
-                                itemInfo = if (finalOutputs == null) "完成（跳过：同名冲突）"
-                                           else "完成（导出 $n 个）"
+                                itemInfo = if (finalOutputs == null) getString(R.string.main_info_done_skipped)
+                                           else getString(R.string.main_info_done_exported, n)
                             }
                             withContext(Dispatchers.Main) {
                                 val i = files.indexOfFirst { it.path == item.path }
@@ -1902,7 +1888,7 @@ class MainActivity : ComponentActivity() {
                                 val i = files.indexOfFirst { it.path == item.path }
                                 if (i >= 0) {
                                     files[i] = files[i].copy(
-                                        info = "失败：${e.message}",
+                                        info = getString(R.string.main_info_failed, e.message),
                                         transcoding = false,
                                         transcodeEtaSec = -1L
                                     )
@@ -1914,7 +1900,7 @@ class MainActivity : ComponentActivity() {
                         }
                         val d = done.incrementAndGet()
                         progress = d.toFloat() / total
-                        progressDetail = "已处理 $d/$total"
+                        progressDetail = getString(R.string.main_progress_processed, d, total)
                     }
                 }
             }
@@ -1930,14 +1916,26 @@ class MainActivity : ComponentActivity() {
                 cleanupAllCaches()
                 val exportErr = lastExportError
                 // 替换模式下产物写回源文件本体，不再有「导出到相册」这一步，措辞随之调整
-                val verb = if (replaceMode) "替换" else "导出"
-                val suffix = if (replaceMode) " 个源文件" else " 个到相册"
                 statusText = when {
-                    stopRequested -> "已停止：$total 个文件中处理了 ${done.get()} 个，$verb ${exported.get()}$suffix"
+                    stopRequested -> {
+                        if (replaceMode) {
+                            getString(R.string.main_status_stopped_replace, total, done.get(), exported.get())
+                        } else {
+                            getString(R.string.main_status_stopped_export, total, done.get(), exported.get())
+                        }
+                    }
                     exportErr != null ->
-                        "完成：$total 个文件处理完毕，$verb ${exported.get()}$suffix（原因：$exportErr）"
+                        if (replaceMode) {
+                            getString(R.string.main_status_done_replace_reason, total, exported.get(), exportErr)
+                        } else {
+                            getString(R.string.main_status_done_export_reason, total, exported.get(), exportErr)
+                        }
                     else ->
-                        "完成：$total 个文件处理完毕，$verb ${exported.get()}$suffix"
+                        if (replaceMode) {
+                            getString(R.string.main_status_done_replace, total, exported.get())
+                        } else {
+                            getString(R.string.main_status_done_export, total, exported.get())
+                        }
                 }
                 isConverting = false
                 progress = 0f
@@ -1951,7 +1949,7 @@ class MainActivity : ComponentActivity() {
                         statusText = "$statusText；$summary"
                     } else {
                         resetPendingDeletes()
-                        statusText = "$statusText；未获得「完全存储访问」权限，原图已保留"
+                        statusText = getString(R.string.main_status_keep_originals, statusText)
                         refreshStorageGates()
                     }
                 }
@@ -1983,15 +1981,15 @@ class MainActivity : ComponentActivity() {
     private fun importBatchFolder(rootPath: String) {
         val root = File(rootPath)
         if (!root.isDirectory || !root.canRead()) {
-            statusText = "无法读取所选文件夹"
+            statusText = getString(R.string.main_status_folder_unreadable)
             return
         }
 
         isImporting = true
         importProgress = 0f
         stopImportRequested = false
-        progressDetail = "已导入 0/0"
-        statusText = "正在扫描文件夹…"
+        progressDetail = getString(R.string.main_progress_imported, 0, 0)
+        statusText = getString(R.string.main_status_scanning_folder)
 
         lifecycleScope.launch(Dispatchers.IO) {
             // 1. 整树枚举图片文件（动态照片的主文件是 JPG/HEIC）
@@ -2013,7 +2011,7 @@ class MainActivity : ComponentActivity() {
                     isImporting = false
                     importProgress = 0f
                     progressDetail = ""
-                    statusText = "所选文件夹内未找到图片"
+                    statusText = getString(R.string.main_status_no_images)
                 }
                 return@launch
             }
@@ -2036,8 +2034,8 @@ class MainActivity : ComponentActivity() {
                 val done = added + skipped
                 withContext(Dispatchers.Main) {
                     importProgress = done.toFloat() / total
-                    progressDetail = "已导入 $added/$total"
-                    statusText = "正在批量导入 $done/$total…"
+                    progressDetail = getString(R.string.main_progress_imported, added, total)
+                    statusText = getString(R.string.main_status_batch_importing, done, total)
                 }
             }
             withContext(Dispatchers.Main) {
@@ -2046,11 +2044,17 @@ class MainActivity : ComponentActivity() {
                 progressDetail = ""
                 statusText = when {
                     stopImportRequested ->
-                        "已停止批量导入：共导入 $added 个动态照片" +
-                            (if (skipped > 0) "，跳过 $skipped 个非动态文件" else "")
+                        if (skipped > 0) {
+                            resources.getQuantityString(R.plurals.main_status_batch_stopped_skipped, added, added, skipped)
+                        } else {
+                            resources.getQuantityString(R.plurals.main_status_batch_stopped, added, added)
+                        }
                     else ->
-                        "批量导入完成：共导入 $added 个动态照片" +
-                            (if (skipped > 0) "，跳过 $skipped 个非动态文件" else "")
+                        if (skipped > 0) {
+                            resources.getQuantityString(R.plurals.main_status_batch_done_skipped, added, added, skipped)
+                        } else {
+                            resources.getQuantityString(R.plurals.main_status_batch_done, added, added)
+                        }
                 }
                 stopImportRequested = false
                 onListStable()
@@ -2409,7 +2413,7 @@ class MainActivity : ComponentActivity() {
             dedup.values.toList()
         }
         protectedOriginalPaths.clear()
-        if (all.isEmpty()) return "无需删除原图"
+        if (all.isEmpty()) return getString(R.string.main_delete_nothing)
 
         var deleted = 0
         var failed = 0
@@ -2429,9 +2433,9 @@ class MainActivity : ComponentActivity() {
             }
         }
         return when {
-            deleted > 0 && failed > 0 -> "已删除 $deleted 个原文件（$failed 个删除失败，已保留）"
-            deleted > 0 -> "已删除 $deleted 个原文件"
-            else -> "原图删除失败（文件被占用或无写入权限），已保留"
+            deleted > 0 && failed > 0 -> getString(R.string.main_delete_partial, deleted, failed)
+            deleted > 0 -> resources.getQuantityString(R.plurals.main_delete_done, deleted, deleted)
+            else -> getString(R.string.main_delete_failed)
         }
     }
 
@@ -2448,7 +2452,7 @@ class MainActivity : ComponentActivity() {
     private fun exportToMediaStore(srcPath: String, modifiedMs: Long, takenMs: Long, relSubDir: String = ""): Uri? {
         val src = File(srcPath)
         if (!src.exists() || src.length() == 0L) {
-            setExportError("转换产物缺失或为空：${src.name}")
+            setExportError(getString(R.string.main_export_missing_output, src.name))
             return null
         }
         val taken = if (takenMs > 0L) takenMs else modifiedMs
@@ -2504,7 +2508,7 @@ class MainActivity : ComponentActivity() {
                 inserted = contentResolver.insert(fallback, values)
             }
             if (inserted == null) {
-                setExportError("MediaStore insert 返回 null")
+                setExportError(getString(R.string.main_export_insert_null))
                 throw IllegalStateException("insert null")
             }
             val written = contentResolver.openOutputStream(inserted, "w")?.use { output ->
@@ -2548,9 +2552,9 @@ class MainActivity : ComponentActivity() {
                 } catch (_: Exception) {}
             }
             if (written) return inserted
-            setExportError("MediaStore 输出流不可用")
+            setExportError(getString(R.string.main_export_output_stream))
         } catch (e: Exception) {
-            setExportError("MediaStore 写入失败：${e.message}")
+            setExportError(getString(R.string.main_export_write_failed, e.message))
             if (inserted != null) {
                 try { contentResolver.delete(inserted, null, null) } catch (_: Exception) {}
             }
@@ -2574,7 +2578,7 @@ class MainActivity : ComponentActivity() {
                 relSubDir
             )
             if (!dir.exists() && !dir.mkdirs()) {
-                setExportError("无法创建相册目录 $dir")
+                setExportError(getString(R.string.main_export_mkdir_failed, dir))
                 return null
             }
             val dst = File(dir, uniqueName(dir, src.name))
@@ -2583,7 +2587,7 @@ class MainActivity : ComponentActivity() {
             MediaScannerConnection.scanFile(this, arrayOf(dst.absolutePath), arrayOf(mime)) { _, _ -> }
             Uri.fromFile(dst)
         } catch (e: Exception) {
-            setExportError("写相册目录失败：${e.message}")
+            setExportError(getString(R.string.main_export_dir_write_failed, e.message))
             null
         }
     }
@@ -2620,11 +2624,11 @@ class MainActivity : ComponentActivity() {
     ): Int {
         val outs = staged.map { File(it) }.filter { it.exists() && it.length() > 0L }
         if (outs.isEmpty()) {
-            setExportError("转换产物缺失或为空")
+            setExportError(getString(R.string.main_export_missing_output_bare))
             return 0
         }
         if (targets.isEmpty()) {
-            setExportError("无法定位源文件，已跳过替换")
+            setExportError(getString(R.string.main_export_no_source))
             return 0
         }
 
@@ -2647,11 +2651,11 @@ class MainActivity : ComponentActivity() {
                         MediaScannerConnection.scanFile(this, arrayOf(dst.absolutePath), null) { _, _ -> }
                         written++
                     } catch (e: Exception) {
-                        setExportError("写回伴生文件失败：${e.message}")
+                        setExportError(getString(R.string.main_export_companion_failed, e.message))
                     }
                 }
             } else {
-                setExportError("源文件目录不可写，伴生文件未能写回")
+                setExportError(getString(R.string.main_export_source_dir_unwritable))
             }
         }
 
@@ -2673,13 +2677,13 @@ class MainActivity : ComponentActivity() {
         out: File, target: PendingDelete, modifiedMs: Long, takenMs: Long
     ): Boolean {
         if (!out.exists() || out.length() == 0L) {
-            setExportError("转换产物缺失或为空：${out.name}")
+            setExportError(getString(R.string.main_export_missing_output, out.name))
             return false
         }
         val targetFile = File(target.path)
         val dir = targetFile.parentFile
         if (dir == null || (!dir.exists() && !dir.mkdirs())) {
-            setExportError("源文件目录不可用：${dir?.absolutePath ?: target.path}")
+            setExportError(getString(R.string.main_export_source_dir_unavailable, dir?.absolutePath ?: target.path))
             return false
         }
         val sameName = out.name == targetFile.name
@@ -2702,7 +2706,7 @@ class MainActivity : ComponentActivity() {
             }
             true
         } catch (e: Exception) {
-            setExportError("替换源文件失败：${e.message}")
+            setExportError(getString(R.string.main_export_replace_failed, e.message))
             try { if (tmp.exists()) tmp.delete() } catch (_: Exception) {}
             false
         }

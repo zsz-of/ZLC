@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.BinaryUtils
 import com.zsz.zlivephoto.core.ExifUtil
 import com.zsz.zlivephoto.core.JpegUtil
@@ -14,7 +15,7 @@ import java.io.FileInputStream
  */
 internal class XiaomiPlugin : FormatPlugin() {
     override val name: String = "xiaomi"
-    override val display: String = "小米动态照片"
+    override val displayRes: Int = R.string.fmt_xiaomi
 
     companion object {
         /** 小米相册识别的 EXIF 标签（十进制 34967） */

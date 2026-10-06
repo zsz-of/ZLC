@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.BinaryUtils
 import com.zsz.zlivephoto.core.FooterUtil
 import com.zsz.zlivephoto.core.JpegUtil
@@ -14,7 +15,7 @@ import java.io.FileInputStream
  */
 internal class OppoPlugin : FormatPlugin() {
     override val name: String = "oppo"
-    override val display: String = "OPPO 动态照片"
+    override val displayRes: Int = R.string.fmt_oppo
 
     internal companion object {
         /** 合成 lpex (LivePhotoExtension) box 载荷（vivo/OPPO 共用；字段逐字对齐可被相册识别的输出） */

@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
 import com.zsz.zlivephoto.core.XmpTemplate
@@ -13,7 +14,7 @@ import java.io.File
  */
 internal class MeizuPlugin : FormatPlugin() {
     override val name: String = "meizu"
-    override val display: String = "魅族动态照片"
+    override val displayRes: Int = R.string.fmt_meizu
 
     override fun detect(path: String): Int {
         val info = XmpTemplate.parseMotionXmp(GooglePlugin.sniffXmp(path))

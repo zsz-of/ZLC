@@ -1,6 +1,8 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.BinaryUtils
+import com.zsz.zlivephoto.core.CoreText
 import com.zsz.zlivephoto.core.FooterUtil
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
@@ -16,7 +18,7 @@ import kotlin.math.round
  */
 internal class VivoPlugin : FormatPlugin() {
     override val name: String = "vivo"
-    override val display: String = "vivo 动态照片"
+    override val displayRes: Int = R.string.fmt_vivo
 
     private val vivoVersion: Int = 2107
 
@@ -86,16 +88,16 @@ internal class VivoPlugin : FormatPlugin() {
         val data = readBytes(path)
         val footer = FooterUtil.parseFooter(data)
         if (footer?.livephotoId == null)
-            throw IOException("JPG 尾部未找到 vivo livephoto 标记")
+            throw IOException(CoreText.of(R.string.fmt_err_vivo_no_marker))
 
         val liveId = footer.livephotoId!!
         val mp4Path = siblingMp4(path)
-            ?: throw IOException("缺少伴生视频文件：${File(path).nameWithoutExtension}.mp4")
+            ?: throw IOException(CoreText.of(R.string.fmt_err_vivo_companion_missing, File(path).nameWithoutExtension))
 
         // JPG 主体（去除 footer）→ 拆 Primary / GainMap
         val body = data.copyOfRange(0, footer.footerStart)
         val (jpegs, _) = JpegUtil.splitJpegs(body)
-        if (jpegs.isEmpty()) throw IOException("JPG 主体解析失败")
+        if (jpegs.isEmpty()) throw IOException(CoreText.of(R.string.fmt_err_vivo_parse_failed))
         val primary = jpegs[0]
         val gainmap = if (jpegs.size > 1) jpegs[1] else null
 
@@ -113,7 +115,7 @@ internal class VivoPlugin : FormatPlugin() {
 
         val video = Mp4Util.stripVivoUuid(mp4Raw)
         if (!Mp4Util.hasFtyp(video))
-            throw IOException("伴生 MP4 无效（缺少 ftyp box）")
+            throw IOException(CoreText.of(R.string.fmt_err_vivo_companion_invalid))
 
         val asset = LivePhotoAsset(
             primaryJpeg = primary,

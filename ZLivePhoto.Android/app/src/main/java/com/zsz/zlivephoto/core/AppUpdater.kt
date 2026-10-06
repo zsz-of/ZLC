@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Build
 import android.webkit.CookieManager
 import androidx.core.content.FileProvider
+import com.zsz.zlivephoto.R
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
@@ -105,9 +106,14 @@ internal object AppUpdater {
      * @return 命中时返回面向用户的说明，否则 null
      */
     internal fun lanzouGoneReason(html: String): String? =
-        if (LANZOU_GONE_MARKERS.any { html.contains(it) })
-            "蓝奏云分享已被取消或文件不存在，请改用 GitHub 下载"
-        else null
+        if (LANZOU_GONE_MARKERS.any { html.contains(it) }) {
+            // 纯 JVM 单测（LanzouResolveTest）断言该文案含 "GitHub" 且没有 Android
+            // Context，故兜底文案必须保留 GitHub 字样；正常运行一律走资源。
+            CoreText.ofOr(
+                R.string.update_lanzou_gone,
+                "Lanzou share was cancelled or the file does not exist; please use GitHub instead"
+            )
+        } else null
 
     /**
      * 从 `/fn` 帧页解析 `ajaxfile.php` 接口地址列表（纯函数）。
@@ -161,14 +167,23 @@ internal object AppUpdater {
                     return@withContext resolveOnHost(client, share, passwd)
                 } catch (e: LanzouShareGone) {
                     // 分享被取消：换域名是同样结果，直接把原因抛给 UI
-                    throw UpdaterException(e.message ?: "蓝奏云分享已被取消，请改用 GitHub 下载")
+                    throw UpdaterException(
+                        e.message ?: CoreText.ofOr(
+                            R.string.update_lanzou_gone_short,
+                            "Lanzou share was cancelled; please use GitHub instead"
+                        )
+                    )
                 } catch (e: CancellationException) {
                     throw e
                 } catch (e: Exception) {
-                    lastError = "${e.message ?: "解析失败"}（${hostOf(share)}）"
+                    lastError = CoreText.of(
+                        R.string.update_err_resolve_with_host,
+                        e.message ?: CoreText.of(R.string.update_err_resolve_failed),
+                        hostOf(share)
+                    )
                 }
             }
-            throw UpdaterException(lastError ?: "蓝奏云下载链接解析失败")
+            throw UpdaterException(lastError ?: CoreText.of(R.string.update_lanzou_resolve_failed))
         } finally {
             client.close()
         }
@@ -179,7 +194,7 @@ internal object AppUpdater {
         // 1. 首次访问，自动处理 acw_sc__v2 反爬
         var shareHtml = client.get(share, referer = "https://${hostOf(share)}/")
         if (shareHtml.isAcwChallenge()) {
-            val arg1 = shareHtml.acwArg1() ?: throw UpdaterException("蓝奏云反爬校验失败")
+            val arg1 = shareHtml.acwArg1() ?: throw UpdaterException(CoreText.of(R.string.update_err_anticrawl))
             client.setCookie("acw_sc__v2", acwScV2(arg1))
             shareHtml = client.get(share, referer = "https://${hostOf(share)}/")
         }
@@ -194,18 +209,18 @@ internal object AppUpdater {
         // 3. 提取 iframe 下载帧
         val iframeSrc = Regex("""<iframe[^>]+src=["']([^"']+)["']""", RegexOption.IGNORE_CASE)
             .find(shareHtml)?.groupValues?.get(1)
-            ?: throw UpdaterException("无法解析蓝奏云下载页（未找到下载帧）")
+            ?: throw UpdaterException(CoreText.of(R.string.update_err_no_frame))
         val fnUrl = if (iframeSrc.startsWith("http")) iframeSrc
         else "https://${hostOf(share)}$iframeSrc"
 
         // 4. GET /fn 帧页，提取 ajax 参数
         val fnHtml = client.get(fnUrl, referer = share)
         val fileId = Regex("""ajaxfile\.php\?file=(\d+)""").find(fnHtml)?.groupValues?.get(1)
-            ?: throw UpdaterException("无法解析蓝奏云文件标识")
+            ?: throw UpdaterException(CoreText.of(R.string.update_err_no_file_id))
         val ajaxdata = Regex("""var\s+ajaxdata\s*=\s*'([^']*)'""").find(fnHtml)?.groupValues?.get(1)
-            ?: throw UpdaterException("无法解析蓝奏云签名")
+            ?: throw UpdaterException(CoreText.of(R.string.update_err_no_sign))
         val wpSign = Regex("""var\s+wp_sign\s*=\s*'([^']*)'""").find(fnHtml)?.groupValues?.get(1)
-            ?: throw UpdaterException("无法解析蓝奏云签名")
+            ?: throw UpdaterException(CoreText.of(R.string.update_err_no_sign))
 
         // 5. POST ajaxfile.php：依次尝试帧页声明的接口，失败再回退旧链路
         val form = mapOf(
@@ -222,17 +237,17 @@ internal object AppUpdater {
             val json = try {
                 JSONObject(client.post(endpoint, form = form, referer = fnUrl))
             } catch (e: Exception) {
-                lastAjaxError = e.message ?: "接口请求失败"
+                lastAjaxError = e.message ?: CoreText.of(R.string.update_err_ajax_request)
                 continue
             }
             if (json.optInt("zt", 0) != 1) {
-                lastAjaxError = json.optString("inf", "蓝奏云下载链接解析失败")
+                lastAjaxError = json.optString("inf", CoreText.of(R.string.update_lanzou_resolve_failed))
                 continue
             }
             val dom = json.optString("dom")
             val token = json.optString("url")
             if (dom.isEmpty() || token.isEmpty()) {
-                lastAjaxError = "蓝奏云返回空下载地址"
+                lastAjaxError = CoreText.of(R.string.update_err_empty_direct)
                 continue
             }
 
@@ -240,12 +255,12 @@ internal object AppUpdater {
             //    并附带随机 IP 头规避「网络异常需验证」页
             val direct = followToDirect(client, "$dom/file/$token", fnUrl)
             if (direct.isNullOrEmpty()) {
-                lastAjaxError = "蓝奏云下载地址已失效，请重新获取"
+                lastAjaxError = CoreText.of(R.string.update_err_direct_expired)
                 continue
             }
             return direct
         }
-        throw UpdaterException(lastAjaxError ?: "蓝奏云下载链接解析失败")
+        throw UpdaterException(lastAjaxError ?: CoreText.of(R.string.update_lanzou_resolve_failed))
     }
 
     // ---------- 带提取码的分享页 ----------
@@ -312,10 +327,15 @@ internal object AppUpdater {
     ): String {
         val pwd = passwd?.trim().orEmpty()
         if (pwd.isEmpty()) {
-            throw UpdaterException("该蓝奏云分享需要提取码，请改用 GitHub 下载（或到 Release 说明里找提取码）")
+            throw UpdaterException(
+            CoreText.ofOr(
+                R.string.update_lanzou_need_passwd,
+                "This Lanzou share requires a password; please use GitHub instead"
+            )
+        )
         }
-        val sign = lanzouSign(shareHtml) ?: throw UpdaterException("无法解析蓝奏云签名")
-        val fileId = lanzouFileId(shareHtml) ?: throw UpdaterException("无法解析蓝奏云文件标识")
+        val sign = lanzouSign(shareHtml) ?: throw UpdaterException(CoreText.of(R.string.update_err_no_sign))
+        val fileId = lanzouFileId(shareHtml) ?: throw UpdaterException(CoreText.of(R.string.update_err_no_file_id))
 
         val json = try {
             JSONObject(
@@ -334,25 +354,25 @@ internal object AppUpdater {
         } catch (e: UpdaterException) {
             throw e
         } catch (e: Exception) {
-            throw UpdaterException(e.message ?: "蓝奏云接口请求失败")
+            throw UpdaterException(e.message ?: CoreText.of(R.string.update_err_api_request))
         }
 
         if (json.optInt("zt", 0) != 1) {
             val info = json.optString("inf", "")
             throw UpdaterException(
                 when {
-                    info.contains("密码") -> "蓝奏云提取码错误"
-                    info.isEmpty() -> "蓝奏云下载链接解析失败"
+                    info.contains("密码") -> CoreText.of(R.string.update_lanzou_wrong_passwd)
+                    info.isEmpty() -> CoreText.of(R.string.update_lanzou_resolve_failed)
                     else -> info
                 }
             )
         }
         val dom = json.optString("dom")
         val token = json.optString("url")
-        if (dom.isEmpty() || token.isEmpty()) throw UpdaterException("蓝奏云返回空下载地址")
+        if (dom.isEmpty() || token.isEmpty()) throw UpdaterException(CoreText.of(R.string.update_err_empty_direct))
 
         return followToDirect(client, "$dom/file/$token", shareUrl)
-            ?: throw UpdaterException("蓝奏云下载地址已失效，请重新获取")
+            ?: throw UpdaterException(CoreText.of(R.string.update_err_direct_expired))
     }
 
     /**
@@ -426,7 +446,7 @@ internal object AppUpdater {
             val conn = open(url, "GET", referer, null)
             try {
                 val code = conn.responseCode
-                if (code !in 200..299) throw UpdaterException("请求失败（HTTP $code）")
+                if (code !in 200..299) throw UpdaterException(CoreText.of(R.string.update_err_http_request, code))
                 readCookies(conn)
                 return conn.inputStream.bufferedReader().use { it.readText() }
             } finally {
@@ -455,7 +475,7 @@ internal object AppUpdater {
             val conn = open(url, "POST", referer, body, extraHeaders = headers)
             try {
                 val code = conn.responseCode
-                if (code !in 200..299) throw UpdaterException("请求失败（HTTP $code）")
+                if (code !in 200..299) throw UpdaterException(CoreText.of(R.string.update_err_http_request, code))
                 readCookies(conn)
                 return conn.inputStream.bufferedReader().use { it.readText() }
             } finally {
@@ -580,14 +600,14 @@ internal object AppUpdater {
             throw e
         } catch (e: Exception) {
             currentCoroutineContext().ensureActive() // 已取消：转 CancellationException 静默退出
-            throw UpdaterException("无法连接下载服务器：${e.message}")
+            throw UpdaterException(context.getString(R.string.update_err_connect, e.message))
         }
         if (code !in 200..299) {
             if (activeConn === conn) activeConn = null
             runCatching { conn?.disconnect() }
-            throw UpdaterException("下载失败（HTTP $code）")
+            throw UpdaterException(context.getString(R.string.update_err_http, code))
         }
-        val http = conn ?: throw UpdaterException("无法建立下载连接")
+        val http = conn ?: throw UpdaterException(context.getString(R.string.update_err_no_connection))
         try {
             val total = http.contentLengthLong
             val input = http.inputStream
@@ -603,13 +623,13 @@ internal object AppUpdater {
                     onProgress(done, if (total > 0) total else -1L)
                 }
             }
-            if (!raw.exists() || raw.length() <= 0L) throw UpdaterException("下载内容为空")
+            if (!raw.exists() || raw.length() <= 0L) throw UpdaterException(context.getString(R.string.update_err_empty))
             // 服务端给了明确长度但实际收到的字节数不一致 = 中途被掐断/注入，必须在此拦截，
             // 否则截断的 APK 交给系统安装器只会得到笼统的「解析包出现问题」。
             if (total > 0L && raw.length() != total) {
                 runCatching { raw.delete() }
                 throw UpdaterException(
-                    "下载不完整（已获取 ${raw.length()} / 共 $total 字节），请重新下载"
+                    context.getString(R.string.update_err_incomplete, raw.length(), total)
                 )
             }
             raw
@@ -619,7 +639,9 @@ internal object AppUpdater {
         } catch (e: Exception) {
             runCatching { raw.delete() }
             currentCoroutineContext().ensureActive() // 已取消：不把中断误报成下载失败
-            throw if (e is UpdaterException) e else UpdaterException("下载中断：${e.message}")
+            throw if (e is UpdaterException) e else UpdaterException(
+                context.getString(R.string.update_err_interrupted, e.message)
+            )
         } finally {
             if (activeConn === conn) activeConn = null
             runCatching { conn?.disconnect() }
@@ -644,7 +666,7 @@ internal object AppUpdater {
                 null
             }
             if (apkFromZip != null) {
-                requireApk(apkFromZip)
+                requireApk(context, apkFromZip)
                 downloaded.delete()
                 return@withContext apkFromZip
             }
@@ -657,7 +679,7 @@ internal object AppUpdater {
         } else {
             downloaded
         }
-        requireApk(apk)
+        requireApk(context, apk)
         apk
     }
 
@@ -671,11 +693,9 @@ internal object AppUpdater {
 
     /** 安装前内容校验：非 APK/ZIP 魔数或结构损坏（截断/缺关键条目）直接抛错，
      *  避免系统安装器报「解析包出错」这种无法区分原因的笼统错误。 */
-    private fun requireApk(f: File) {
+    private fun requireApk(context: Context, f: File) {
         if (!hasZipMagic(f)) {
-            throw UpdaterException(
-                "下载到的不是有效的安装包（可能是网页或下载链接已失效），请重新下载或改用 GitHub 下载。"
-            )
+            throw UpdaterException(context.getString(R.string.update_err_not_apk))
         }
         // 能读通 ZIP 中央目录 + 存在 Android 必备条目才算完整 APK：
         // 截断/半成品包在 ZipFile 打开时即抛异常，不会走到系统安装器。
@@ -690,13 +710,13 @@ internal object AppUpdater {
                     if (n.startsWith("classes") && n.endsWith(".dex")) hasClasses = true
                 }
                 if (!hasManifest || !hasClasses) {
-                    throw UpdaterException("安装包内容不完整，请重新下载或改用 GitHub 下载。")
+                    throw UpdaterException(context.getString(R.string.update_err_apk_incomplete))
                 }
             }
         } catch (e: UpdaterException) {
             throw e
         } catch (_: Exception) {
-            throw UpdaterException("安装包无法解析（可能下载不完整），请重新下载或改用 GitHub 下载。")
+            throw UpdaterException(context.getString(R.string.update_err_apk_unparsable))
         }
     }
 
@@ -767,7 +787,7 @@ internal object AppUpdater {
      * @return null 表示已成功拉起；否则返回给用户的失败说明。
      */
     fun installApk(context: Context, apkFile: File): String? {
-        if (needsInstallPermission(context)) return "尚未获得「安装未知应用」权限"
+        if (needsInstallPermission(context)) return context.getString(R.string.update_err_no_install_permission)
         val uri = FileProvider.getUriForFile(
             context, "${context.packageName}.fileprovider", apkFile
         )
@@ -793,7 +813,7 @@ internal object AppUpdater {
             context.startActivity(intent)
             null
         } catch (e: Exception) {
-            "无法调起系统安装器（${e.message}），请到文件管理器手动打开安装包安装"
+            context.getString(R.string.update_err_installer_failed, e.message)
         }
     }
 }

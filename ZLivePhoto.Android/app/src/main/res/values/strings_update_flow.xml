@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  更新流程文案（task-4，videolen-analyst 维护）—— 对应 ui/UpdateFlow.kt。
+  单独成文件：任务只指定了 strings_screens.xml / strings_formats.xml，
+  而 UpdateFlow 属更新模块，按 i18n-plan「每个模块一个 strings_*.xml」拆分，文件名带 update_flow 避免与其它任务撞名。
+  key 前缀 update_；res/values/ 为简体中文兜底。
+  UpdateFlowController（非 Composable）内用 context.getString(...)，弹窗内用 stringResource(...)。
+-->
+<resources>
+    <!-- 控制器侧提示（无 Context 依赖的 Composable 之外，均走 context.getString） -->
+    <string name="update_github_url_missing">未获取到 GitHub 下载地址，请稍后重试。</string>
+    <string name="update_flavor_standard">标准版</string>
+    <string name="update_flavor_go">Go 版</string>
+    <string name="update_lanzou_url_missing">该版本未提供蓝奏云下载链接，可改用 GitHub 下载。</string>
+    <string name="update_apk_direct_missing">该版本没有提供与本版本匹配的安装包直链，请到 GitHub 发布页选择对应 APK。</string>
+    <string name="update_install_permission_missing">未获得「安装未知应用」权限，无法自动安装。请到系统设置中允许后重试。</string>
+    <string name="update_error_unknown">未知错误</string>
+    <string name="update_fail_lanzou">蓝奏云下载失败</string>
+    <string name="update_fail_github">GitHub 下载失败</string>
+    <string name="update_lanzou_resolving">正在解析蓝奏云下载链接…</string>
+    <string name="update_lanzou_downloading">正在从蓝奏云下载…</string>
+    <string name="update_github_downloading">正在从 GitHub 下载…</string>
+    <string name="update_unzipping">正在解压安装包…</string>
+    <string name="update_notes_empty">该版本暂无更新说明。</string>
+
+    <!-- Go 版相关弹窗 -->
+    <string name="update_use_normal_title">请使用正常版本</string>
+    <string name="update_use_normal_body">本机系统为 Android 10 及以上，Go 轻量版已不再适配，旧版本无法继续使用。\n\n检测到本机已安装正常版本（ZLC），请直接打开正常版本继续使用（新版不再提供 Go 兼容版本，旧版本可卸载以释放空间）。</string>
+    <string name="update_open_normal">打开正常版</string>
+    <string name="update_must_update_title">必须更新后才能继续使用</string>
+    <string name="update_forced_body">本机系统为 Android 10 及以上，Go 轻量版已不再适配，旧版本无法继续使用；新版也不再提供 Go 兼容版本。\n\n请连接网络后点击「重试」获取正常版本安装包。</string>
+    <string name="update_retry">重试</string>
+    <string name="update_switch_normal_body">本机系统为 Android 10 及以上，Go 轻量版已不再适配，旧版本无法继续使用。\n请下载并安装正常版本后继续使用（新版不再提供 Go 兼容版本）。</string>
+
+    <!-- 下载 / 安装权限 / 结果提示 -->
+    <string name="update_downloading_title">下载更新</string>
+    <string name="update_cancel">取消</string>
+    <string name="update_need_permission_title">需要安装权限</string>
+    <string name="update_need_permission_body">安装新版本需要系统「安装未知应用」权限。\n\n点击「去授权」，在设置中允许后返回应用，将自动继续安装（无需重新下载）。</string>
+    <string name="update_grant">去授权</string>
+    <string name="update_notice_title">提示</string>
+    <string name="update_got_it">知道了</string>
+
+    <!-- 主弹窗 / 更新说明 -->
+    <string name="update_notes_title">v%1$s · 更新说明</string>
+    <string name="update_back">返回</string>
+    <string name="update_title_switch_normal">切换到正常版本</string>
+    <string name="update_title_reinstall">重新安装本版本</string>
+    <string name="update_title_new_version">发现新版本</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">将下载并重新安装该版本（覆盖当前应用）。\n此功能用于回归测试更新机制。</string>
+    <string name="update_view_notes">查看更新说明</string>
+    <string name="update_lanzou_unavailable">蓝奏云暂不可用</string>
+    <string name="update_download_lanzou">从蓝奏云下载</string>
+    <string name="update_download_github">从 GitHub 下载</string>
+    <string name="update_download_browser">从浏览器下载</string>
+    <string name="update_later">暂不更新</string>
+    <string name="update_later_switch">暂不切换</string>
+    <string name="update_skip_version">跳过此版本</string>
+</resources>

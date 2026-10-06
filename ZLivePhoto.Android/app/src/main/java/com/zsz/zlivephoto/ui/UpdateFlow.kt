@@ -35,9 +35,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.zsz.zlivephoto.BuildConfig
+import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.AppUpdater
 import com.zsz.zlivephoto.core.UpdateInfo
 import java.io.File
@@ -107,7 +109,7 @@ internal class UpdateFlowController(
     fun openGithubInBrowser() {
         val url = githubBrowserUrl()
         if (url.isNullOrEmpty()) {
-            message = "未获取到 GitHub 下载地址，请稍后重试。"
+            message = context.getString(R.string.update_github_url_missing)
             return
         }
         openInBrowser(context, url)
@@ -133,7 +135,7 @@ internal class UpdateFlowController(
 
     /** 当前版本对应的发布渠道标签（normal=标准版，go=Go版；切正常版时强制标准版） */
     val flavorLabel: String
-        get() = if (switchToNormalMode || BuildConfig.FLAVOR != "go") "标准版" else "Go 版"
+        get() = if (switchToNormalMode || BuildConfig.FLAVOR != "go") context.getString(R.string.update_flavor_standard) else context.getString(R.string.update_flavor_go)
 
     /** 展示「发现新版本」弹窗 */
     fun present(newInfo: UpdateInfo, reinstall: Boolean = false) {
@@ -224,15 +226,15 @@ internal class UpdateFlowController(
     fun downloadFromLanzou() {
         val lz = info?.lanzouUrl
         if (lz.isNullOrEmpty()) {
-            message = "该版本未提供蓝奏云下载链接，可改用 GitHub 下载。"
+            message = context.getString(R.string.update_lanzou_url_missing)
             return
         }
         // 蓝奏现已对非会员上传的分享强制加提取码，提取码与链接同写在 Release 正文里
         val passwd = info?.lanzouPasswd
-        runDownload("蓝奏云下载失败") {
-            busy = BusyState("正在解析蓝奏云下载链接…", null)
+        runDownload(context.getString(R.string.update_fail_lanzou)) {
+            busy = BusyState(context.getString(R.string.update_lanzou_resolving), null)
             val directUrl = AppUpdater.resolveLanzouDirectLink(lz, passwd)
-            downloadAndInstall(directUrl, lz, "正在从蓝奏云下载…")
+            downloadAndInstall(directUrl, lz, context.getString(R.string.update_lanzou_downloading))
         }
     }
 
@@ -240,16 +242,16 @@ internal class UpdateFlowController(
     fun downloadFromGithub() {
         val g = githubApkUrl()
         if (g == null) {
-            message = "该版本没有提供与本版本匹配的安装包直链，请到 GitHub 发布页选择对应 APK。"
+            message = context.getString(R.string.update_apk_direct_missing)
             return
         }
-        runDownload("GitHub 下载失败") {
+        runDownload(context.getString(R.string.update_fail_github)) {
             // GitHub 资产走多级重定向直链，国内网络偶发首连失败；短暂等待后自动重试一次
             var attempts = 0
             while (true) {
                 attempts++
                 try {
-                    downloadAndInstall(g, null, "正在从 GitHub 下载…")
+                    downloadAndInstall(g, null, context.getString(R.string.update_github_downloading))
                     return@runDownload
                 } catch (e: CancellationException) {
                     throw e
@@ -283,7 +285,7 @@ internal class UpdateFlowController(
         permissionApk = null
         if (AppUpdater.needsInstallPermission(context)) {
             cleanupCache()
-            message = "未获得「安装未知应用」权限，无法自动安装。请到系统设置中允许后重试。"
+            message = context.getString(R.string.update_install_permission_missing)
             return
         }
         finishInstall(apk)
@@ -306,7 +308,7 @@ internal class UpdateFlowController(
             } catch (e: Exception) {
                 busy = null
                 cleanupCache()
-                message = "$failPrefix：${e.message ?: "未知错误"}"
+                message = "$failPrefix：${e.message ?: context.getString(R.string.update_error_unknown)}"
             }
         }
     }
@@ -319,7 +321,7 @@ internal class UpdateFlowController(
                 if (total > 0L) (done.toFloat() / total.toFloat()).coerceIn(0f, 1f) else null
             )
         }
-        busy = BusyState("正在解压安装包…", null)
+        busy = BusyState(context.getString(R.string.update_unzipping), null)
         val apk = AppUpdater.resolveApk(context, file)
         busy = null
         if (AppUpdater.needsInstallPermission(context)) {
@@ -358,13 +360,13 @@ internal fun rememberUpdateFlow(): UpdateFlowController {
 }
 
 /** 从更新说明中隐藏「[蓝奏云-xx]: url」这类发布元数据行，只给用户看可读内容 */
-private fun notesForDisplay(notes: String?): String {
-    if (notes.isNullOrBlank()) return "该版本暂无更新说明。"
+private fun notesForDisplay(notes: String?, emptyText: String): String {
+    if (notes.isNullOrBlank()) return emptyText
     val kept = notes.lineSequence()
         .filterNot { it.trimStart().startsWith("[蓝奏云-") }
         .joinToString("\n")
         .trim()
-    return kept.ifEmpty { "该版本暂无更新说明。" }
+    return kept.ifEmpty { emptyText }
 }
 
 /** 在宿主界面渲染更新相关的全部弹窗（调用一次即可，状态由 [flow] 驱动） */
@@ -392,12 +394,10 @@ internal fun UpdateFlowHosts(
     if (flow.requireNormalOpen) {
         AlertDialog(
             onDismissRequest = {},
-            title = { Text("请使用正常版本", fontWeight = FontWeight.SemiBold) },
+            title = { Text(stringResource(R.string.update_use_normal_title), fontWeight = FontWeight.SemiBold) },
             text = {
                 Text(
-                    "本机系统为 Android 10 及以上，Go 轻量版已不再适配，旧版本无法继续使用。\n\n" +
-                        "检测到本机已安装正常版本（ZLC），请直接打开正常版本继续使用" +
-                        "（新版不再提供 Go 兼容版本，旧版本可卸载以释放空间）。"
+                    stringResource(R.string.update_use_normal_body)
                 )
             },
             confirmButton = {
@@ -406,7 +406,7 @@ internal fun UpdateFlowHosts(
                     LegacyApp.launchNormalIntent(context)?.let { intent ->
                         runCatching { context.startActivity(intent) }
                     }
-                }) { Text("打开正常版") }
+                }) { Text(stringResource(R.string.update_open_normal)) }
             }
         )
         return
@@ -416,19 +416,17 @@ internal fun UpdateFlowHosts(
     if (flow.forcedBlocked) {
         AlertDialog(
             onDismissRequest = {},
-            title = { Text("必须更新后才能继续使用", fontWeight = FontWeight.SemiBold) },
+            title = { Text(stringResource(R.string.update_must_update_title), fontWeight = FontWeight.SemiBold) },
             text = {
                 Text(
-                    "本机系统为 Android 10 及以上，Go 轻量版已不再适配，旧版本无法继续使用；" +
-                        "新版也不再提供 Go 兼容版本。\n\n" +
-                        "请连接网络后点击「重试」获取正常版本安装包。"
+                    stringResource(R.string.update_forced_body)
                 )
             },
             confirmButton = {
                 Button(onClick = {
                     vibrate()
                     onForcedRetry()
-                }) { Text("重试") }
+                }) { Text(stringResource(R.string.update_retry)) }
             }
         )
         return
@@ -439,7 +437,7 @@ internal fun UpdateFlowHosts(
     if (busy != null) {
         AlertDialog(
             onDismissRequest = {}, // 下载中不可通过外部点击关闭，需点「取消」
-            title = { Text("下载更新") },
+            title = { Text(stringResource(R.string.update_downloading_title)) },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Text(busy.label, style = MaterialTheme.typography.bodyMedium)
@@ -457,7 +455,7 @@ internal fun UpdateFlowHosts(
                 TextButton(onClick = {
                     vibrate()
                     flow.cancelDownload()
-                }) { Text("取消") }
+                }) { Text(stringResource(R.string.update_cancel)) }
             },
             dismissButton = {}
         )
@@ -469,24 +467,23 @@ internal fun UpdateFlowHosts(
     if (pApk != null) {
         AlertDialog(
             onDismissRequest = {}, // 必须明确选择，防止误关导致不知道安装包去向
-            title = { Text("需要安装权限") },
+            title = { Text(stringResource(R.string.update_need_permission_title)) },
             text = {
                 Text(
-                    "安装新版本需要系统「安装未知应用」权限。\n\n" +
-                        "点击「去授权」，在设置中允许后返回应用，将自动继续安装（无需重新下载）。"
+                    stringResource(R.string.update_need_permission_body)
                 )
             },
             confirmButton = {
                 Button(onClick = {
                     vibrate()
                     permissionLauncher.launch(AppUpdater.installPermissionIntent(context))
-                }) { Text("去授权") }
+                }) { Text(stringResource(R.string.update_grant)) }
             },
             dismissButton = {
                 TextButton(onClick = {
                     vibrate()
                     flow.cancelPermission()
-                }) { Text("取消") }
+                }) { Text(stringResource(R.string.update_cancel)) }
             }
         )
         return
@@ -497,13 +494,13 @@ internal fun UpdateFlowHosts(
     if (msg != null) {
         AlertDialog(
             onDismissRequest = { flow.closeMessage() },
-            title = { Text("提示") },
+            title = { Text(stringResource(R.string.update_notice_title)) },
             text = { Text(msg) },
             confirmButton = {
                 Button(onClick = {
                     vibrate()
                     flow.closeMessage()
-                }) { Text("知道了") }
+                }) { Text(stringResource(R.string.update_got_it)) }
             }
         )
         return
@@ -514,10 +511,13 @@ internal fun UpdateFlowHosts(
     if (info != null && flow.showNotes) {
         AlertDialog(
             onDismissRequest = { flow.closeNotes() },
-            title = { Text("v${info.version} · 更新说明") },
+            title = { Text(stringResource(R.string.update_notes_title, info.version)) },
             text = {
                 MarkdownBody(
-                    markdown = notesForDisplay(info.notes),
+                    markdown = notesForDisplay(
+                        info.notes,
+                        stringResource(R.string.update_notes_empty)
+                    ),
                     modifier = Modifier.heightIn(max = 400.dp).padding(top = 4.dp)
                 )
             },
@@ -525,7 +525,7 @@ internal fun UpdateFlowHosts(
                 Button(onClick = {
                     vibrate()
                     flow.closeNotes()
-                }) { Text("返回") }
+                }) { Text(stringResource(R.string.update_back)) }
             }
         )
         return
@@ -547,9 +547,9 @@ internal fun UpdateFlowHosts(
             title = {
                 Text(
                     when {
-                        flow.switchToNormalMode -> "切换到正常版本"
-                        flow.reinstallMode -> "重新安装本版本"
-                        else -> "发现新版本"
+                        flow.switchToNormalMode -> stringResource(R.string.update_title_switch_normal)
+                        flow.reinstallMode -> stringResource(R.string.update_title_reinstall)
+                        else -> stringResource(R.string.update_title_new_version)
                     },
                     fontWeight = FontWeight.SemiBold
                 )
@@ -557,15 +557,14 @@ internal fun UpdateFlowHosts(
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     Text(
-                        "v${info.version} · ${flow.flavorLabel}",
+                        stringResource(R.string.update_version_flavor, info.version, flow.flavorLabel),
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.primary
                     )
                     if (flow.switchToNormalMode) {
                         // 「切换到正常版」模式：写明旧兼容版（Go 版）在本机已不可继续使用
                         Text(
-                            "本机系统为 Android 10 及以上，Go 轻量版已不再适配，旧版本无法继续使用。\n" +
-                                "请下载并安装正常版本后继续使用（新版不再提供 Go 兼容版本）。",
+                            stringResource(R.string.update_switch_normal_body),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -573,7 +572,7 @@ internal fun UpdateFlowHosts(
                     if (flow.reinstallMode) {
                         // 「重新安装」模式：明确告知这是覆盖安装当前版本，用于验证下载→安装链路
                         Text(
-                            "将下载并重新安装该版本（覆盖当前应用）。\n此功能用于回归测试更新机制。",
+                            stringResource(R.string.update_reinstall_body),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -589,7 +588,7 @@ internal fun UpdateFlowHosts(
                             .padding(vertical = 4.dp)
                     ) {
                         Text(
-                            "查看更新说明",
+                            stringResource(R.string.update_view_notes),
                             style = MaterialTheme.typography.labelLarge,
                             color = MaterialTheme.colorScheme.primary
                         )
@@ -609,7 +608,7 @@ internal fun UpdateFlowHosts(
                         },
                         enabled = !lanzou.isNullOrEmpty(),
                         modifier = Modifier.fillMaxWidth().height(48.dp)
-                    ) { Text(if (lanzou.isNullOrEmpty()) "蓝奏云暂不可用" else "从蓝奏云下载") }
+                    ) { Text(if (lanzou.isNullOrEmpty()) stringResource(R.string.update_lanzou_unavailable) else stringResource(R.string.update_download_lanzou)) }
                     // 次选渠道：GitHub（内置下载，已按 normal/go 匹配对应 APK 资产）
                     OutlinedButton(
                         onClick = {
@@ -617,7 +616,7 @@ internal fun UpdateFlowHosts(
                             flow.downloadFromGithub()
                         },
                         modifier = Modifier.fillMaxWidth().height(44.dp)
-                    ) { Text("从 GitHub 下载") }
+                    ) { Text(stringResource(R.string.update_download_github)) }
                     // 兜底渠道：用外置浏览器打开对应的 GitHub 链接自行下载
                     Spacer(Modifier.height(6.dp))
                     OutlinedButton(
@@ -626,7 +625,7 @@ internal fun UpdateFlowHosts(
                             flow.openGithubInBrowser()
                         },
                         modifier = Modifier.fillMaxWidth().height(44.dp)
-                    ) { Text("从浏览器下载") }
+                    ) { Text(stringResource(R.string.update_download_browser)) }
                     Spacer(Modifier.height(2.dp))
                     when {
                         // 强制切换：不提供任何关闭/跳过入口，必须更新后才能继续使用
@@ -639,14 +638,14 @@ internal fun UpdateFlowHosts(
                                         flow.onLater()
                                     },
                                     modifier = Modifier.weight(1f).height(44.dp)
-                                ) { Text("暂不更新") }
+                                ) { Text(stringResource(R.string.update_later)) }
                                 OutlinedButton(
                                     onClick = {
                                         vibrate()
                                         flow.onSkipThisVersion()
                                     },
                                     modifier = Modifier.weight(1f).height(44.dp)
-                                ) { Text("跳过此版本") }
+                                ) { Text(stringResource(R.string.update_skip_version)) }
                             }
                         }
                         else -> {
@@ -657,7 +656,7 @@ internal fun UpdateFlowHosts(
                                     flow.onLater()
                                 },
                                 modifier = Modifier.fillMaxWidth().height(44.dp)
-                            ) { Text(if (flow.switchToNormalMode) "暂不切换" else "暂不更新") }
+                            ) { Text(if (flow.switchToNormalMode) stringResource(R.string.update_later_switch) else stringResource(R.string.update_later)) }
                         }
                     }
                 }

@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.BinaryUtils
 import com.zsz.zlivephoto.core.FooterUtil
 import com.zsz.zlivephoto.core.JpegUtil
@@ -26,7 +27,7 @@ import java.io.File
  */
 internal class VivoSinglePlugin : FormatPlugin() {
     override val name: String = "vivo_single"
-    override val display: String = "vivo 单文件实况"
+    override val displayRes: Int = R.string.fmt_vivo_single
 
     override fun detect(path: String): Int {
         val xmp = GooglePlugin.sniffXmp(path)

@@ -6,7 +6,12 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.LruCache
 import android.util.Size
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import com.zsz.zlivephoto.BuildConfig
+import com.zsz.zlivephoto.R
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
@@ -76,8 +81,6 @@ import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.ImageNotSupported
@@ -269,10 +272,13 @@ fun PhotoPickerScreen(
                      else selected.isNotEmpty()
     // 右下角悬浮导入按钮文案（已选数量随按钮展示，省去额外计数栏）
     val fabLabel = if (!composeMode) {
-        if (selected.isEmpty()) "导入" else "导入 ${selected.size}"
+        if (selected.isEmpty()) stringResource(R.string.screen_import)
+        else stringResource(R.string.screen_import_count, selected.size)
     } else {
-        if (selectedPhotos.isEmpty() && selectedVideos.isEmpty()) "导入"
-        else "导入 图${selectedPhotos.size}·视${selectedVideos.size}"
+        if (selectedPhotos.isEmpty() && selectedVideos.isEmpty()) stringResource(R.string.screen_import)
+        else stringResource(
+            R.string.screen_import_mixed, selectedPhotos.size, selectedVideos.size
+        )
     }
     val doConfirm: () -> Unit = {
         if (composeMode) onConfirmCompose?.invoke(selectedPhotos.toList(), selectedVideos.toList())
@@ -368,10 +374,10 @@ fun PhotoPickerScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     IconButton(onClick = { haptic.click(); onBack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回",
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.screen_back),
                             tint = MaterialTheme.colorScheme.onSurface)
                     }
-                    Text(if (composeMode) "合成动态照片" else "选择动态照片",
+                    Text(if (composeMode) stringResource(R.string.screen_compose) else stringResource(R.string.screen_picker_title_select),
                         style = MaterialTheme.typography.titleSmall,
                         color = MaterialTheme.colorScheme.onSurface,
                         maxLines = 1,
@@ -384,7 +390,7 @@ fun PhotoPickerScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        "相册 ${albums.size}",
+                        stringResource(R.string.screen_album_count, albums.size),
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.weight(1f)
@@ -395,8 +401,8 @@ fun PhotoPickerScreen(
                             animationSpec = tween(250), label = "railChevron"
                         )
                         Icon(
-                            Icons.Filled.KeyboardArrowRight,
-                            contentDescription = if (albumsExpanded) "收起相册封面" else "展开相册封面",
+                            Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                            contentDescription = if (albumsExpanded) stringResource(R.string.screen_album_collapse_cover) else stringResource(R.string.screen_album_expand_cover),
                             modifier = Modifier.rotate(rotation)
                         )
                     }
@@ -449,10 +455,10 @@ fun PhotoPickerScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     IconButton(onClick = { haptic.click(); onBack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回",
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.screen_back),
                             tint = MaterialTheme.colorScheme.onSurface)
                     }
-                    Text(if (composeMode) "合成动态照片" else "选择动态照片",
+                    Text(if (composeMode) stringResource(R.string.screen_compose) else stringResource(R.string.screen_picker_title_select),
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.weight(1f))
@@ -489,7 +495,7 @@ fun PhotoPickerScreen(
                             )
                             Icon(
                                 Icons.Filled.KeyboardArrowDown,
-                                contentDescription = if (albumsExpanded) "收起相册封面" else "展开相册封面",
+                                contentDescription = if (albumsExpanded) stringResource(R.string.screen_album_collapse_cover) else stringResource(R.string.screen_album_expand_cover),
                                 modifier = Modifier.rotate(rotation)
                             )
                         }
@@ -523,7 +529,10 @@ fun PhotoPickerScreen(
         ) {
             // 相册项目数量
             Text(
-                if (running) "扫描中 ${progress.first}/$total" else "${results?.size ?: 0} 张",
+                if (running) stringResource(R.string.screen_scanning_progress, progress.first, total)
+                else pluralStringResource(
+                    R.plurals.screen_photo_count, results?.size ?: 0, results?.size ?: 0
+                ),
                 fontSize = 12.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -531,7 +540,7 @@ fun PhotoPickerScreen(
             // 全选（圆形现代样式，项 2/3）：按网格顺序有序标记
             val allSel = n > 0 && displayOrder.all { g -> selected.any { it.id == g.id } }
             val someSel = displayOrder.any { g -> selected.any { it.id == g.id } }
-            Text("全选", fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(stringResource(R.string.screen_select_all), fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Spacer(Modifier.size(4.dp))
             CircleTriCheckbox(
                 state = when {
@@ -664,7 +673,7 @@ private fun AlbumGridPage(
 
     when {
         results == null -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text("没有可用相册", color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(stringResource(R.string.screen_no_albums), color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         results.isEmpty() && !running -> Column(
             Modifier.fillMaxSize().padding(bottom = 48.dp),
@@ -679,7 +688,7 @@ private fun AlbumGridPage(
             )
             Spacer(Modifier.height(12.dp))
             Text(
-                if (composeMode) "没有找到照片或视频" else "没有找到动态照片",
+                if (composeMode) stringResource(R.string.screen_no_media_compose) else stringResource(R.string.screen_no_media),
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -834,8 +843,9 @@ private fun SortSearchBar(
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                if (searchOpen) Icons.Default.KeyboardArrowLeft else Icons.Default.Search,
-                                contentDescription = if (searchOpen) "收起搜索" else "搜索",
+                                if (searchOpen) Icons.AutoMirrored.Filled.KeyboardArrowLeft
+                                else Icons.Default.Search,
+                                contentDescription = if (searchOpen) stringResource(R.string.screen_search_collapse) else stringResource(R.string.screen_search),
                                 modifier = Modifier.size(20.dp),
                                 tint = searchContentColor
                             )
@@ -862,7 +872,7 @@ private fun SortSearchBar(
                                         Box {
                                             if (searchQuery.isEmpty()) {
                                                 Text(
-                                                    "按名称搜索",
+                                                    stringResource(R.string.screen_search_hint),
                                                     fontSize = 13.sp,
                                                     maxLines = 1,
                                                     softWrap = false,
@@ -890,7 +900,7 @@ private fun SortSearchBar(
                                     ) {
                                         Icon(
                                             Icons.Default.Close,
-                                            contentDescription = "清空搜索",
+                                            contentDescription = stringResource(R.string.screen_search_clear),
                                             modifier = Modifier.size(18.dp)
                                         )
                                     }
@@ -953,9 +963,9 @@ private fun SortControlsRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        SortFieldChip("日期", AlbumSortField.DATE, sortField, onSortField)
-        SortFieldChip("大小", AlbumSortField.SIZE, sortField, onSortField)
-        SortFieldChip("名称", AlbumSortField.NAME, sortField, onSortField)
+        SortFieldChip(stringResource(R.string.screen_sort_date), AlbumSortField.DATE, sortField, onSortField)
+        SortFieldChip(stringResource(R.string.screen_sort_size), AlbumSortField.SIZE, sortField, onSortField)
+        SortFieldChip(stringResource(R.string.screen_sort_name), AlbumSortField.NAME, sortField, onSortField)
         Spacer(Modifier.weight(1f))
         // 用 40dp 自绘点击块代替 IconButton：IconButton 的最小触摸目标为 48dp，
         // 会把本行撑到 56dp；而搜索展开时本控件会移到第二行，第一行随之从 56dp 缩到 48dp，
@@ -974,7 +984,7 @@ private fun SortControlsRow(
         ) {
             Icon(
                 if (sortAscending) Icons.Default.ArrowUpward else Icons.Default.ArrowDownward,
-                contentDescription = if (sortAscending) "倒序" else "正序",
+                contentDescription = if (sortAscending) stringResource(R.string.screen_sort_desc) else stringResource(R.string.screen_sort_asc),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
@@ -1251,7 +1261,11 @@ private fun dateKey(time: Long): String {
     return "${cal.get(Calendar.YEAR)}-${cal.get(Calendar.MONTH)}-${cal.get(Calendar.DAY_OF_MONTH)}"
 }
 
-/** 日期标签：今天 / 昨天 / x月x日（今年） / yyyy年x月x日（往年） */
+/**
+ * 日期标签：今天 / 昨天 / x月x日（今年） / yyyy年x月x日（往年）。
+ * 改为 @Composable：文案走 strings_screens.xml（其它语种可用 %1$d 占位符重排顺序）。
+ */
+@Composable
 private fun dateLabel(time: Long): String {
     val cal = Calendar.getInstance().apply { timeInMillis = time }
     val now = Calendar.getInstance()
@@ -1262,12 +1276,18 @@ private fun dateLabel(time: Long): String {
 
     val yesterday = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, -1) }
     return when {
-        sameDay(cal, now) -> "今天"
-        sameDay(cal, yesterday) -> "昨天"
+        sameDay(cal, now) -> stringResource(R.string.screen_date_today)
+        sameDay(cal, yesterday) -> stringResource(R.string.screen_date_yesterday)
         cal.get(Calendar.YEAR) == now.get(Calendar.YEAR) ->
-            "${cal.get(Calendar.MONTH) + 1}月${cal.get(Calendar.DAY_OF_MONTH)}日"
+            stringResource(
+                R.string.screen_date_this_year,
+                cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH)
+            )
         else ->
-            "${cal.get(Calendar.YEAR)}年${cal.get(Calendar.MONTH) + 1}月${cal.get(Calendar.DAY_OF_MONTH)}日"
+            stringResource(
+                R.string.screen_date_other_year,
+                cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH)
+            )
     }
 }
 

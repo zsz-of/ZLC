@@ -1,5 +1,7 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.R
+import com.zsz.zlivephoto.core.CoreText
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
 import java.io.File
@@ -13,12 +15,12 @@ import java.io.IOException
  */
 internal class ExtractPlugin : FormatPlugin() {
     override val name: String = "extract"
-    override val display: String = "拆解"
+    override val displayRes: Int = R.string.fmt_extract
 
     override fun detect(path: String): Int = 0 // 拆解只是输出格式，从不作为来源识别
 
     override fun read(path: String, log: (String, String, String) -> Unit): LivePhotoAsset {
-        throw IOException("拆解是输出格式，不应作为输入格式读取")
+        throw IOException(CoreText.of(R.string.fmt_err_extract_read))
     }
 
     override fun write(

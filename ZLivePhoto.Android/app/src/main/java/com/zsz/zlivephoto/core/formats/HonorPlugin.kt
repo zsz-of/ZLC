@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
 import com.zsz.zlivephoto.core.Mp4Util
@@ -34,7 +35,7 @@ import java.nio.ByteOrder
  */
 internal class HonorPlugin : FormatPlugin() {
     override val name: String = "honor"
-    override val display: String = "荣耀动态照片"
+    override val displayRes: Int = R.string.fmt_honor
 
     companion object {
         private const val TAIL_SEGMENT_LEN = 20

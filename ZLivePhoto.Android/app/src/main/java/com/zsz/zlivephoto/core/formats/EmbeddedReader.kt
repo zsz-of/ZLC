@@ -1,5 +1,7 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.R
+import com.zsz.zlivephoto.core.CoreText
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
 import com.zsz.zlivephoto.core.Mp4Util
@@ -20,7 +22,7 @@ internal object EmbeddedReader {
         val xmpInfo = XmpTemplate.parseMotionXmp(xmpFound?.xmpText ?: "")
 
         val (jpegs, consumed) = JpegUtil.splitJpegs(data)
-        if (jpegs.isEmpty()) throw IOException("未找到主 JPEG 图像")
+        if (jpegs.isEmpty()) throw IOException(CoreText.of(R.string.fmt_err_no_primary_jpeg))
         val primary = jpegs[0]
         val gainmap = if (jpegs.size > 1) jpegs[1] else null
 
@@ -39,7 +41,7 @@ internal object EmbeddedReader {
         if (!Mp4Util.hasFtyp(payload)) {
             val ftypIdx = findFtyp(payload)
             if (ftypIdx < 0)
-                throw IOException("JPEG 之后未找到有效的 MP4 视频（缺少 ftyp box）")
+                throw IOException(CoreText.of(R.string.fmt_err_no_mp4_after_jpeg))
             payload = payload.copyOfRange(ftypIdx, payload.size)
         }
 
@@ -48,7 +50,7 @@ internal object EmbeddedReader {
         // 写入端再追加一次自己的 trailer，产出「双 trailer」的损坏文件。
         val stripped = Mp4Util.stripVivoUuid(payload)
         val mp4Len = Mp4Util.streamLength(stripped)
-        if (mp4Len <= 0) throw IOException("MP4 视频流解析失败")
+        if (mp4Len <= 0) throw IOException(CoreText.of(R.string.fmt_err_mp4_parse_failed))
         val video = stripped.copyOfRange(0, mp4Len)
 
         val asset = LivePhotoAsset(

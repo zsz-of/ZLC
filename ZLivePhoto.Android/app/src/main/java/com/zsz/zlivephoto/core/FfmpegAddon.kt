@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.zsz.zlivephoto.BuildConfig
+import com.zsz.zlivephoto.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -26,6 +27,29 @@ import kotlin.math.roundToLong
  * [MODE_OFF] / [MODE_REMUX] / [MODE_ENCODE]），默认 [MODE_REMUX]（只换容器不重新编码）。
  */
 internal class AddonException(message: String) : Exception(message)
+
+/**
+ * core 层的统一取文案入口。
+ *
+ * [Converter] / [AppUpdater] / [UpdateChecker] / [FfmpegAddon] 都是没有 Context 的
+ * object，而文案又必须随系统/应用语言变化，因此统一用 [FfmpegAddon.init] 时缓存的
+ * applicationContext 取资源（该 init 在 MainActivity.onCreate 首帧组合前调用，
+ * 早于任何转换与更新流程）。
+ *
+ * 取不到 Context 时（进程极早期，或纯 JVM 单测没有 Android 环境）返回 [ofOr] 的
+ * 兜底文案，**绝不触碰 android 框架 API** —— 否则单测会抛
+ * 「Method getString in android.content.Context not mocked」。
+ */
+internal object CoreText {
+    /** 取资源文案；无 Context 时为空串 */
+    fun of(resId: Int, vararg args: Any?): String = ofOr(resId, "", *args)
+
+    /** 取资源文案；无 Context 时返回 [fallback]（JVM 单测依赖该兜底保持既有契约） */
+    fun ofOr(resId: Int, fallback: String, vararg args: Any?): String {
+        val ctx = FfmpegAddon.cachedContext() ?: return fallback
+        return if (args.isEmpty()) ctx.getString(resId) else ctx.getString(resId, *args)
+    }
+}
 
 object FfmpegAddon {
     /** 标准 MP4 视频编码 fourcc（H.264 / H.265）；其余（vp09/av01/mp4v 等）需转码 */
@@ -72,6 +96,12 @@ object FfmpegAddon {
         // 老用户升级后默认「仅重封装容器」（不重新编码），未写过的 prefs 键即为此值
         mode = normalizeMode(prefs.getString("ffmpeg_mode", MODE_REMUX))
     }
+
+    /**
+     * 供 core 层取本地化文案用：init 之后返回 applicationContext，未初始化时为 null。
+     * 只在 [CoreText] 里用，业务代码不要直接取它做别的事。
+     */
+    internal fun cachedContext(): Context? = if (::appCtx.isInitialized) appCtx else null
 
     fun isGo(): Boolean = BuildConfig.FLAVOR == "go"
 
@@ -164,8 +194,8 @@ object FfmpegAddon {
         totalFramesHint: Long = -1L,
         onProgress: (frame: Long, total: Long, etaSec: Long) -> Unit = { _, _, _ -> }
     ): File = withContext(Dispatchers.IO) {
-        val bin = binaryFile() ?: throw AddonException("内置转码器不可用")
-        if (!bin.exists() || bin.length() <= 0L) throw AddonException("内置转码器不可用")
+        val bin = binaryFile() ?: throw AddonException(CoreText.of(R.string.conv_addon_unavailable))
+        if (!bin.exists() || bin.length() <= 0L) throw AddonException(CoreText.of(R.string.conv_addon_unavailable))
 
         val tmpDir = File(appCtx.cacheDir, "ffmpeg_tmp").apply { mkdirs() }
         val out = File(tmpDir, "transcoded_${System.currentTimeMillis()}.mp4")
@@ -187,7 +217,7 @@ object FfmpegAddon {
             "-tag:v", tag,
             out.absolutePath
         )
-        log("info", "正在用 ffmpeg 转码视频为标准 MP4（$vcodec / crf $crf / $preset，仅保留视频与音频轨道）", "转码")
+        log("info", CoreText.of(R.string.conv_log_ffmpeg_transcoding, vcodec, crf, preset), CoreText.of(R.string.conv_tag_transcode))
 
         val pb = ProcessBuilder(listOf(bin.absolutePath) + args)
         pb.redirectErrorStream(true)
@@ -256,9 +286,9 @@ object FfmpegAddon {
 
         if (exit != 0 || !out.exists() || out.length() <= 0L) {
             runCatching { out.delete() }
-            throw AddonException("ffmpeg 转码失败：${tail.toString().trim().takeLast(160)}")
+            throw AddonException(CoreText.of(R.string.conv_addon_transcode_failed, tail.toString().trim().takeLast(160)))
         }
-        log("info", "视频转码完成（${out.length() / 1024}KB）", "转码")
+        log("info", CoreText.of(R.string.conv_log_transcode_done, out.length() / 1024), CoreText.of(R.string.conv_tag_transcode))
         out
     }
 
@@ -278,8 +308,8 @@ object FfmpegAddon {
         input: String,
         log: (String, String, String) -> Unit
     ): File = withContext(Dispatchers.IO) {
-        val bin = binaryFile() ?: throw AddonException("内置转码器不可用")
-        if (!bin.exists() || bin.length() <= 0L) throw AddonException("内置转码器不可用")
+        val bin = binaryFile() ?: throw AddonException(CoreText.of(R.string.conv_addon_unavailable))
+        if (!bin.exists() || bin.length() <= 0L) throw AddonException(CoreText.of(R.string.conv_addon_unavailable))
 
         val tmpDir = File(appCtx.cacheDir, "ffmpeg_tmp").apply { mkdirs() }
         val out = File(tmpDir, "remuxed_${System.currentTimeMillis()}.mp4")
@@ -292,7 +322,7 @@ object FfmpegAddon {
             "-movflags", "+faststart",
             out.absolutePath
         )
-        log("info", "正在重封装视频容器为标准 MP4（只换容器、不重新编码）", "转码")
+        log("info", CoreText.of(R.string.conv_log_remuxing), CoreText.of(R.string.conv_tag_transcode))
 
         val pb = ProcessBuilder(listOf(bin.absolutePath) + args)
         pb.redirectErrorStream(true)
@@ -314,9 +344,9 @@ object FfmpegAddon {
 
         if (exit != 0 || !out.exists() || out.length() <= 0L) {
             runCatching { out.delete() }
-            throw AddonException("ffmpeg 重封装容器失败：${tail.toString().trim().takeLast(160)}")
+            throw AddonException(CoreText.of(R.string.conv_addon_remux_failed, tail.toString().trim().takeLast(160)))
         }
-        log("info", "容器重封装完成（${out.length() / 1024}KB）", "转码")
+        log("info", CoreText.of(R.string.conv_log_remux_done, out.length() / 1024), CoreText.of(R.string.conv_tag_transcode))
         out
     }
 

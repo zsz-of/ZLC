@@ -25,7 +25,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.zsz.zlivephoto.R
+import com.zsz.zlivephoto.core.CoreText
 
 /**
  * 所有带「不再提示」的弹窗统一定义。
@@ -35,36 +38,37 @@ import androidx.compose.ui.unit.dp
  */
 enum class ReminderKey(
     val prefsKey: String,
-    val category: String,
-    val title: String,
-    val message: String
+    private val categoryRes: Int,
+    private val titleRes: Int,
+    private val messageRes: Int
 ) {
     COMPOSE_VIDEO_OVER_3S(
         prefsKey = "compose_video_over3s_no_warn",
-        category = "合成",
-        title = "视频超过 3 秒",
-        message = "所选视频时长超过 3 秒，合成后的动态照片可能存在兼容性问题：\n\n" +
-            "• 可能无法正常播放\n" +
-            "• 可能无法被系统相册识别\n" +
-            "• 部分机型可能无法识别该动态照片"
+        categoryRes = R.string.conv_reminder_cat_compose,
+        titleRes = R.string.conv_reminder_video_over3s_title,
+        messageRes = R.string.conv_reminder_video_over3s_message
     ),
     LEGACY_GO_INSTALLED(
         prefsKey = "legacy_go_installed_no_warn",
-        category = "更新",
-        title = "检测到旧版本",
-        message = "本设备仍安装了旧版本（Go 版）应用，该旧版本在本设备上已不可用，可卸载以释放空间。"
+        categoryRes = R.string.conv_reminder_cat_update,
+        titleRes = R.string.conv_reminder_legacy_go_title,
+        messageRes = R.string.conv_reminder_legacy_go_message
     ),
     REPLACE_MODE_RISK(
         prefsKey = "replace_mode_risk_no_warn",
-        category = "转换",
-        title = "替换模式有损坏风险",
-        message = "替换模式会把转换结果直接写回原来的文件，原文件被覆盖后无法找回。\n\n" +
-            "• 写入过程中若应用被中断、存储空间不足或权限被撤销，源文件可能损坏\n" +
-            "• 转换本身无法保证 100% 成功，失败时源文件可能已经不可用\n" +
-            "• 建议先拿一两个文件试一次，确认没问题再批量处理\n" +
-            "• 重要照片请先自行备份\n\n" +
-            "本功能按「现状」提供，使用风险由你自行承担，作者不对文件损坏或丢失负责。"
-    )
+        categoryRes = R.string.conv_reminder_cat_convert,
+        titleRes = R.string.conv_reminder_replace_risk_title,
+        messageRes = R.string.conv_reminder_replace_risk_message
+    );
+
+    /**
+     * 分类 / 标题 / 正文按**当前语言即时解析**（不缓存），应用内切换语言后立刻生效。
+     * 枚举常量本身拿不到 Context，故走 [CoreText]（内部用 FfmpegAddon.init 缓存的
+     * applicationContext）；设置页等非 Compose 调用方仍直接读这三个属性。
+     */
+    val category: String get() = CoreText.of(categoryRes)
+    val title: String get() = CoreText.of(titleRes)
+    val message: String get() = CoreText.of(messageRes)
 }
 
 /**
@@ -80,7 +84,7 @@ fun ReminderInfoDialog(
     key: ReminderKey,
     showDontRemind: Boolean = true,
     onDismiss: () -> Unit,
-    confirmLabel: String = "知道了",
+    confirmLabel: String? = null,
     onConfirm: (() -> Unit)? = null
 ) {
     var dontRemind by remember { mutableStateOf(false) }
@@ -101,7 +105,7 @@ fun ReminderInfoDialog(
                     ) {
                         Md3Checkbox(checked = dontRemind)
                         Spacer(Modifier.width(12.dp))
-                        Text("不再提示")
+                        Text(stringResource(R.string.conv_reminder_dont_remind))
                     }
                 }
             }
@@ -110,7 +114,7 @@ fun ReminderInfoDialog(
             FilledTonalButton(onClick = {
                 if (showDontRemind && dontRemind) AppSettings.setReminderSuppressed(key, true)
                 if (onConfirm != null) onConfirm() else onDismiss()
-            }) { Text(confirmLabel) }
+            }) { Text(confirmLabel ?: stringResource(R.string.conv_reminder_confirm_ok)) }
         }
     )
 }
@@ -203,10 +207,10 @@ fun LegacyUninstallFlowHosts(
         title = { Text(ReminderKey.LEGACY_GO_INSTALLED.title) },
         text = { Text(ReminderKey.LEGACY_GO_INSTALLED.message) },
         confirmButton = {
-            Button(onClick = { vibrate(); flow.onUninstall(context) }) { Text("卸载") }
+            Button(onClick = { vibrate(); flow.onUninstall(context) }) { Text(stringResource(R.string.conv_reminder_uninstall)) }
         },
         dismissButton = {
-            TextButton(onClick = { vibrate(); flow.onDontRemind() }) { Text("不再提示") }
+            TextButton(onClick = { vibrate(); flow.onDontRemind() }) { Text(stringResource(R.string.conv_reminder_dont_remind)) }
         }
     )
 }

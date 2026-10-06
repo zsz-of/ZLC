@@ -1,6 +1,8 @@
 package com.zsz.zlivephoto.core.formats
 
+import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.BinaryUtils
+import com.zsz.zlivephoto.core.CoreText
 import com.zsz.zlivephoto.core.ExifUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
 import java.io.File
@@ -28,7 +30,7 @@ import java.io.RandomAccessFile
  */
 internal class NubiaPlugin : FormatPlugin() {
     override val name: String = "nubia"
-    override val display: String = "努比亚动态照片"
+    override val displayRes: Int = R.string.fmt_nubia
 
     companion object {
         /** 尾部魔数：UTF-16BE 编码的 `"nubiaVpfile"`（22 字节，**不是** ASCII）。 */
@@ -79,19 +81,19 @@ internal class NubiaPlugin : FormatPlugin() {
     override fun read(path: String, log: (String, String, String) -> Unit): LivePhotoAsset {
         val data = readBytes(path)
         val total = data.size
-        if (total < TAIL_LEN + FILL_LEN + 2) throw IOException("文件过短，不像努比亚动态照片")
+        if (total < TAIL_LEN + FILL_LEN + 2) throw IOException(CoreText.of(R.string.fmt_err_nubia_too_short))
         if (!BinaryUtils.arrayEquals(data, total - MAGIC.size, MAGIC)) {
-            throw IOException("缺少 nubiaVpfile 尾部魔数")
+            throw IOException(CoreText.of(R.string.fmt_err_nubia_no_magic))
         }
         val jpegLen = BinaryUtils.readU64BE(data, total - TAIL_LEN)
         if (jpegLen <= 0L || jpegLen + FILL_LEN >= total - TAIL_LEN) {
-            throw IOException("尾部记录的 JPEG 长度非法：$jpegLen")
+            throw IOException(CoreText.of(R.string.fmt_err_nubia_jpeg_len, jpegLen))
         }
         val l = jpegLen.toInt()
-        if (data[l] != 0.toByte()) throw IOException("JPEG 与视频之间缺少 0x00 填充字节")
+        if (data[l] != 0.toByte()) throw IOException(CoreText.of(R.string.fmt_err_nubia_no_padding))
         val videoStart = l + FILL_LEN
         val videoEnd = total - TAIL_LEN
-        if (videoEnd <= videoStart) throw IOException("内嵌视频长度为 0")
+        if (videoEnd <= videoStart) throw IOException(CoreText.of(R.string.fmt_err_nubia_empty_video))
 
         log("info", "按努比亚动态照片解析（nubiaVpfile 尾部）", "努比亚")
         return LivePhotoAsset(

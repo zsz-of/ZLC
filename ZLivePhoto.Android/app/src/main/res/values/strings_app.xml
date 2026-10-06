@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  应用级文案（Lead 维护）。与 values/strings.xml、strings_main.xml、strings_settings.xml 等
+  同目录多文件并存，构建时合并；请勿在本文件放其它模块的 key。
+-->
+<resources>
+    <!-- 「应用语言」选择器里表示跟随系统的那一项 -->
+    <string name="app_language_follow_system">跟随系统</string>
+    <!-- 应用语言选择器标题兜底（settings 模块也可用自己的 key） -->
+    <string name="app_language_title">应用语言</string>
+</resources>

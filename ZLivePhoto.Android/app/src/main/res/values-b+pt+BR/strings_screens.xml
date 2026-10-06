@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Português (Brasil) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Date placeholders were reordered to the local day/month/year form.
+  Quality: A.
+-->
+<resources>
+    <!-- Subtítulo da barra superior -->
+    <string name="screen_app_subtitle">Conversão entre formatos de Live Photo</string>
+    <!-- Quantidade de arquivos selecionados (barra superior) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d arquivo</item>
+        <item quantity="other">%1$d arquivos</item>
+    </plurals>
+    <!-- Entrada de configurações (apenas leitura por acessibilidade) -->
+    <string name="screen_settings">Configurações</string>
+
+    <!-- Diálogo de escolha do formato de saída -->
+    <string name="screen_select_output_format">Escolher formato de saída</string>
+    <string name="screen_selected">Selecionado</string>
+    <string name="screen_vivo_single_warning">⚠ Aparelhos muito antigos podem não reconhecer este formato</string>
+    <string name="screen_extract_blocked">⚠ A fila contém tarefas de composição; não é possível escolher Extrair</string>
+
+    <!-- Nomes curtos dos formatos (nomes longos em strings_formats.xml, fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (arquivo único)</string>
+    <string name="screen_format_vivo">vivo (dois arquivos)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Extrair</string>
+
+    <!-- Caixa de ferramentas (BottomSheet) -->
+    <string name="screen_toolbox">Ferramentas</string>
+    <string name="screen_batch_import">Importação em lote</string>
+    <string name="screen_batch_import_desc">Escaneia o álbum inteiro e identifica Live Photos em lote</string>
+    <string name="screen_compose">Compor Live Photo</string>
+    <string name="screen_compose_desc">Escolha uma foto e um vídeo para combinar</string>
+    <string name="screen_replace_mode">Modo substituição</string>
+    <string name="screen_replace_mode_desc">O resultado é gravado direto no arquivo original, sem gerar novos arquivos</string>
+    <string name="screen_need_all_files_access_hint">Requer «acesso a todos os arquivos»; toque para autorizar</string>
+    <string name="screen_agree_and_enable">Concordar e ativar</string>
+
+    <!-- Estado vazio / painel inferior -->
+    <string name="screen_empty_no_files">Nenhum arquivo adicionado ainda</string>
+    <string name="screen_view_detail">Ver detalhes</string>
+    <string name="screen_add_files">Adicionar arquivos</string>
+    <string name="screen_output_format">Formato de saída: %1$s</string>
+    <string name="screen_delete_original">Excluir os originais após o processamento</string>
+    <string name="screen_need_all_files_access_view">Requer «acesso a todos os arquivos»; toque para ver</string>
+    <string name="screen_clear">Limpar</string>
+    <string name="screen_stop">Parar processamento</string>
+    <string name="screen_start_convert">Iniciar conversão</string>
+
+    <!-- Diálogo de detalhes do status -->
+    <string name="screen_status_detail">Detalhes do status</string>
+    <string name="screen_long_press_copy">Mantenha o texto pressionado para selecionar e copiar</string>
+    <string name="screen_copy">Copiar</string>
+    <string name="screen_close">Fechar</string>
+
+    <!-- Seletor de álbuns -->
+    <string name="screen_back">Voltar</string>
+    <string name="screen_picker_title_select">Escolher Live Photos</string>
+    <string name="screen_album_count">Álbum %1$d</string>
+    <string name="screen_album_collapse_cover">Recolher a capa do álbum</string>
+    <string name="screen_album_expand_cover">Expandir a capa do álbum</string>
+    <string name="screen_scanning_progress">Escaneando %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d fotos</item>
+    </plurals>
+    <string name="screen_select_all">Selecionar tudo</string>
+    <string name="screen_no_albums">Nenhum álbum disponível</string>
+    <string name="screen_no_media">Nenhum Live Photo encontrado</string>
+    <string name="screen_no_media_compose">Nenhuma foto ou vídeo encontrado</string>
+    <string name="screen_import">Importar</string>
+    <string name="screen_import_count">Importar %1$d</string>
+    <string name="screen_import_mixed">Importar foto %1$d · vídeo %2$d</string>
+    <string name="screen_search">Pesquisar</string>
+    <string name="screen_search_collapse">Recolher a pesquisa</string>
+    <string name="screen_search_hint">Pesquisar por nome</string>
+    <string name="screen_search_clear">Limpar pesquisa</string>
+    <string name="screen_sort_date">Data</string>
+    <string name="screen_sort_size">Tamanho</string>
+    <string name="screen_sort_name">Nome</string>
+    <string name="screen_sort_asc">Crescente</string>
+    <string name="screen_sort_desc">Decrescente</string>
+
+    <!-- Rótulos de data do agrupamento de álbuns (%1$d etc. são números; podem ser reordenados) -->
+    <string name="screen_date_today">Hoje</string>
+    <string name="screen_date_yesterday">Ontem</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

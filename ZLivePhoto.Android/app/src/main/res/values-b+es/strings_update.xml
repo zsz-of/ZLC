@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC — cadenas en español (es).
+  Textos de actualización y descarga (core/AppUpdater.kt, core/UpdateChecker.kt).
+  El prefijo de clave update_ no debe cambiarse nunca.
+  Los marcadores usan siempre la forma numerada %1$s / %1$d.
+-->
+<resources>
+
+    <!-- ========== Página compartida de Lanzou Cloud y resolución del enlace directo ========== -->
+    <string name="update_lanzou_gone">El recurso compartido de Lanzou Cloud se canceló o el archivo no existe; usa la descarga de GitHub</string>
+    <string name="update_lanzou_gone_short">El recurso compartido de Lanzou Cloud se canceló; usa la descarga de GitHub</string>
+    <string name="update_lanzou_resolve_failed">No se pudo resolver el enlace de descarga de Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Este recurso de Lanzou Cloud requiere código de extracción; usa la descarga de GitHub (o busca el código en las notas de la versión)</string>
+    <string name="update_lanzou_wrong_passwd">Código de extracción de Lanzou Cloud incorrecto</string>
+    <string name="update_err_resolve_failed">Error de resolución</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Falló la verificación anti-scraping de Lanzou Cloud</string>
+    <string name="update_err_no_frame">No se pudo analizar la página de descarga de Lanzou Cloud (no se encontró el marco de descarga)</string>
+    <string name="update_err_no_file_id">No se pudo analizar el identificador de archivo de Lanzou Cloud</string>
+    <string name="update_err_no_sign">No se pudo analizar la firma de Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Error en la petición a la API</string>
+    <string name="update_err_api_request">Error en la petición a la API de Lanzou Cloud</string>
+    <string name="update_err_empty_direct">Lanzou Cloud devolvió una dirección de descarga vacía</string>
+    <string name="update_err_direct_expired">La dirección de descarga de Lanzou Cloud ha caducado; vuelve a obtenerla</string>
+    <string name="update_err_http_request">Error en la petición (HTTP %1$d)</string>
+
+    <!-- ========== Descarga ========== -->
+    <string name="update_err_connect">No se puede conectar al servidor de descargas: %1$s</string>
+    <string name="update_err_http">Error de descarga (HTTP %1$d)</string>
+    <string name="update_err_no_connection">No se pudo establecer la conexión de descarga</string>
+    <string name="update_err_empty">El contenido descargado está vacío</string>
+    <string name="update_err_incomplete">Descarga incompleta (%1$d de %2$d bytes); vuelve a descargarla</string>
+    <string name="update_err_interrupted">Descarga interrumpida: %1$s</string>
+
+    <!-- ========== Verificación e instalación del paquete ========== -->
+    <string name="update_err_not_apk">Lo descargado no es un paquete de instalación válido (quizá sea una página web o el enlace haya caducado); vuelve a descargarlo o usa la descarga de GitHub.</string>
+    <string name="update_err_apk_incomplete">El paquete de instalación está incompleto; vuelve a descargarlo o usa la descarga de GitHub.</string>
+    <string name="update_err_apk_unparsable">No se puede analizar el paquete de instalación (quizá la descarga esté incompleta); vuelve a descargarlo o usa la descarga de GitHub.</string>
+    <string name="update_err_no_install_permission">Todavía no tienes el permiso «Instalar aplicaciones desconocidas»</string>
+    <string name="update_err_installer_failed">No se pudo abrir el instalador del sistema (%1$s); abre el paquete manualmente desde el gestor de archivos</string>
+
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Filipino (Tagalog) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Filipino usage (English loanwords for technical actions are kept where they are the natural form); technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">I-extract</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo na isang file</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">Walang nakitang .mov na video file na may parehong pangalan</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Walang ftyp box ang MOV file</string>
+    <string name="fmt_err_extract_read">Ang Extract ay output format at hindi mababasa bilang input format</string>
+    <string name="fmt_err_no_primary_jpeg">Walang nakitang primary na JPEG na larawan</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Walang nakitang valid na MP4 video pagkatapos ng JPEG (walang ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Nabigo ang pag-parse sa MP4 video stream</string>
+    <string name="fmt_err_nubia_too_short">Masyadong maikli ang file para maging Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Wala ang nubiaVpfile na magic number sa dulo ng file</string>
+    <string name="fmt_err_nubia_jpeg_len">Hindi valid ang haba ng JPEG na nakatala sa dulo ng file: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Wala ang 0x00 padding bytes sa pagitan ng JPEG at video</string>
+    <string name="fmt_err_nubia_empty_video">0 ang haba ng nakapaloob na video</string>
+    <string name="fmt_err_vivo_no_marker">Walang nakitang vivo livephoto marker sa dulo ng JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Walang kasamang video file: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Nabigo ang pag-parse sa nilalaman ng JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">Hindi valid ang kasamang MP4 (walang ftyp box)</string>
+</resources>

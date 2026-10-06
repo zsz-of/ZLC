@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（维吾尔语 ug，B 级），可能存在不准确之处，欢迎社区修正。
+     بۇ ھۆججەت ماشىنا ياردىمىدە تەرجىمە قىلىنغان (B دەرىجە)، خاتالىقلار بولۇشى مۇمكىن.
+     占位符 %1$s / %1$d / %2$d 原样保留；`\n` 为换行。 -->
+<resources>
+
+    <!-- ========== Converter.kt：参数与素材校验 ========== -->
+    <string name="conv_unknown_target">نامەلۇم نىشان فورماتى: %1$s</string>
+    <string name="conv_unrecognized_live_photo">تونۇغىلى بولمايدىغان لىۋې فوتو فورماتى (Google/OPPO/vivo/Xiaomi/Apple لىۋې فوتوسى ئەمەس)</string>
+    <string name="conv_cover_photo_missing">مۇقاۋا سۈرىتى مەۋجۇت ئەمەس ياكى قۇرۇق</string>
+    <string name="conv_video_missing">سىن مەۋجۇت ئەمەس ياكى قۇرۇق</string>
+    <string name="conv_video_too_large">سىن بەك چوڭ (%1$dMB)، لىۋې فوتو قىلىپ بىرلەشتۈرگىلى بولمايدۇ، قىسقىراق سىن تاللاڭ</string>
+    <string name="conv_transcoded_too_large">كود ئايلاندۇرغاندىن كېيىن سىن بەك چوڭ (%1$dMB)، لىۋې فوتو قىلىپ بىرلەشتۈرگىلى بولمايدۇ</string>
+    <string name="conv_video_too_large_compose">سىن بەك چوڭ (%1$dMB)، لىۋې فوتو قىلىپ بىرلەشتۈرگىلى بولمايدۇ</string>
+
+    <!-- Converter.kt：封面（HEIC / 非 JPEG） -->
+    <string name="conv_cover_heic_go">مۇقاۋا HEIC رەسىم (يېنىك نەشرىدە كود ئايلاندۇرۇش قوللانمايدۇ، iPhone دا JPEG قىلىپ چىقىرىپ ئاندىن ئايلاندۇرۇڭ)</string>
+    <string name="conv_cover_invalid_heic">مۇقاۋا ئىناۋەتلىك رەسىم ئەمەس (HEIC ئۈچۈن سىستېما HEIF نى يېشەلەيدىغان بولۇشى كېرەك)</string>
+    <string name="conv_cover_not_jpeg_go">مۇقاۋا JPEG رەسىم ئەمەس (يېنىك نەشرىدە كود ئايلاندۇرۇش قوللانمايدۇ، JPEG سۈرەت ئىشلىتىڭ)</string>
+    <string name="conv_cover_invalid_image">مۇقاۋا ئىناۋەتلىك رەسىم ئەمەس (پەقەت JPEG/WebP/PNG قوللىنىدۇ)</string>
+
+    <!-- Converter.kt：转码 / 重封装失败与提示 -->
+    <string name="conv_reencode_failed">سىننى قايتا كودلاش مەغلۇپ بولدى: %1$s</string>
+    <string name="conv_remux_failed">قاچىنى قايتا ئوراش مەغلۇپ بولدى: %1$s</string>
+    <string name="conv_codec_unknown">تونۇغىلى بولىدىغان H.264/H.265 سىن ئەمەس</string>
+    <string name="conv_codec_is">كودلىنىشى %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">«%1$s» سىنى %2$s، پەقەت قاچىنى ئالماشتۇرۇش (قايتا ئوراش) كودلىنىشنى ئۆزگەرتەلمەيدۇ، لىۋې فوتو قىلىپ بىرلەشتۈرگىلى بولمايدۇ.\n\n«تەڭشەك → سىن كود ئايلاندۇرۇش → ئايلاندۇرۇش ئۇسۇلى» دا «قايتا كودلاش» نى تاللاڭ، ياكى باشقا قورال بىلەن ئۇنى H.264/H.265 كودلانغان MP4 قىلىڭ.</string>
+    <string name="conv_hint_no_encoder">سىن ئۆلچەملىك MP4 قاچىسى ئەمەس (MOV / MKV / WebM / AVI قاتارلىق)، ھازىرقى «ئايلاندۇرۇش ئۇسۇلى» قايتا كودلىمايدۇ، لىۋې فوتو قىلىپ بىرلەشتۈرگىلى بولمايدۇ.\n\n«تەڭشەك → سىن كود ئايلاندۇرۇش → ئايلاندۇرۇش ئۇسۇلى» دا «قايتا كودلاش» نى تاللاڭ (ئۆلچەملىك نەشرىدە ffmpeg كودلىغۇچ بار؛ Go يېنىك نەشرىدە كودلىغۇچ يوق، ئۆلچەملىك نەشرىنى ئىشلىتىڭ)، ياكى ئاۋۋال سىننى ئۆلچەملىك MP4 (H.264/H.265) قىلىڭ.</string>
+
+    <!-- ========== 转换日志 ========== -->
+    <string name="conv_log_detected">%1$s دەپ تونۇلدى</string>
+    <string name="conv_log_same_format_copied">مەنبە بىلەن نىشان فورماتى ئوخشاش، ئەسلىچە كۆچۈرۈلدى (زىيانسىز)</string>
+    <string name="conv_log_extra_tracks_bypass">مەنبە سىندا سىن/ئاۋاز بولمىغان يول بار (%1$s)، ئوخشاش فورماتنى بىۋاسىتە كۆچۈرۈش ئاتلىنىپ، تازىلاش ئۈچۈن تولۇق يېزىش جەريانى ئىشلىتىلدى</string>
+    <string name="conv_log_ts_fallback">مەنبەدە مۇقاۋا كادرنىڭ ۋاقىت بەلگىسى يوق، ئۆلچەم بويىچە سىننىڭ ئوتتۇرىسىغا قايتۇرۇلدى</string>
+    <string name="conv_log_brand_normalized">سىن قاچىسىنىڭ ماركىسى نورماللاشتۇرۇلدى (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">سىندا قوشۇمچە يول بار (%1$s)، تازىلغىلى بولمىدى، ئەسلىچە چىقىرىلدى (بۇ مەھسۇلات بەزى ئۈسكۈنىلەردە ئۇزۇن بېسىپ قويغىلى بولماسلىقى مۇمكىن)</string>
+    <string name="conv_log_extra_tracks_removed">سىندىكى قوشۇمچە يول چىقىرىۋېتىلدى (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">مەنبە سىن %1$s؛ پەقەت قاچىنى قايتا ئوراش ھەل قىلالمايدۇ (%2$s)، مەھسۇلات يەنىلا ئۇزۇن بېسىپ قويغىلى بولمىسا، «تەڭشەك → سىن كود ئايلاندۇرۇش → ئايلاندۇرۇش ئۇسۇلى» دا «قايتا كودلاش» نى تاللاڭ</string>
+    <string name="conv_log_reencoding">مەنبە سىن %1$s، ئالبوم ماسلىشىشىنى يۇقىرى كۆتۈرۈش ئۈچۈن تەڭشەك بويىچە 8bit + AAC قىلىپ قايتا كودلاندى</string>
+    <string name="conv_log_reencode_result_unusable">قايتا كودلاش نەتىجىسى ئىشلىتىشكە بولمايدۇ، ئەسلىچە چىقىرىلدى (بۇ مەھسۇلات بەزى ئۈسكۈنىلەردە ئۇزۇن بېسىپ قويغىلى بولماسلىقى مۇمكىن)</string>
+    <string name="conv_log_reencode_still_risky">قايتا كودلىغاندىن كېيىنمۇ خەتەرلىك تۈرلەر بار (%1$s)</string>
+    <string name="conv_log_reencode_failed">قايتا كودلاش مەغلۇپ بولدى (%1$s)، ئەسلىچە چىقىرىلدى (بۇ مەھسۇلات بەزى ئۈسكۈنىلەردە ئۇزۇن بېسىپ قويغىلى بولماسلىقى مۇمكىن)</string>
+    <string name="conv_log_cover_heic_converted">مۇقاۋا HEIC (JPEG ئەمەس)، ئۆلچەملىك JPEG قىلىپ ئايلاندۇرۇلغاندىن كېيىن قايتا ئورالدى</string>
+    <string name="conv_log_compose_sizes">بىرلەشتۈرۈش: سۈرەت %1$dB + سىن %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">كودلىغۇچ ئىشلىتىلمىدى: پەقەت قاچا ماركىسى ئۆزگەرتىلدى (MOV → MP4)، قايتا كودلانمىدى</string>
+
+    <!-- 日志标签 -->
+    <string name="conv_tag_convert">ئايلاندۇرۇش</string>
+    <string name="conv_tag_transcode">كود ئايلاندۇرۇش</string>
+    <string name="conv_tag_compose">بىرلەشتۈرۈش</string>
+
+    <!-- 转码方式阻塞原因 -->
+    <string name="conv_blocker_no_encoder">ئىچكى كودلىغۇچ ئىشلىمەيدۇ</string>
+    <string name="conv_blocker_mode_no_encode">نۆۋەتتىكى «ئايلاندۇرۇش ئۇسۇلى» قايتا كودلىمايدۇ</string>
+
+    <!-- ========== FfmpegAddon.kt ========== -->
+    <string name="conv_addon_unavailable">ئىچكى كودلىغۇچ ئىشلىمەيدۇ</string>
+    <string name="conv_addon_transcode_failed">ffmpeg كود ئايلاندۇرۇش مەغلۇپ بولدى: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg قاچىنى قايتا ئوراش مەغلۇپ بولدى: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg بىلەن سىن ئۆلچەملىك MP4 قىلىپ كود ئايلاندۇرۇلۇۋاتىدۇ (%1$s / crf %2$d / %3$s، پەقەت سىن ۋە ئاۋاز يوللىرى ساقلىنىدۇ)</string>
+    <string name="conv_log_transcode_done">سىن كود ئايلاندۇرۇش تاماملاندى (%1$dKB)</string>
+    <string name="conv_log_remuxing">سىن قاچىسى ئۆلچەملىك MP4 قىلىپ قايتا ئورۇلۇۋاتىدۇ (پەقەت قاچا ئالمىشىدۇ، قايتا كودلانمايدۇ)</string>
+    <string name="conv_log_remux_done">قاچىنى قايتا ئوراش تاماملاندى (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt ========== -->
+    <string name="conv_reminder_cat_compose">بىرلەشتۈرۈش</string>
+    <string name="conv_reminder_cat_convert">ئايلاندۇرۇش</string>
+    <string name="conv_reminder_cat_update">يېڭىلاش</string>
+    <string name="conv_reminder_video_over3s_title">سىن 3 سېكۇندىن ئۇزۇن</string>
+    <string name="conv_reminder_video_over3s_message">تاللانغان سىننىڭ ئۇزۇنلۇقى 3 سېكۇندىن ئاشتى، بىرلەشتۈرۈلگەن لىۋې فوتودا ماسلىشىش مەسىلىسى بولۇشى مۇمكىن:\n\n• نورمال قويغىلى بولماسلىقى مۇمكىن\n• سىستېما ئالبومى تونۇماسلىقى مۇمكىن\n• بەزى ئۈسكۈنىلەر بۇ لىۋې فوتونى تونۇماسلىقى مۇمكىن</string>
+    <string name="conv_reminder_legacy_go_title">كونا نەشرى بايقالدى</string>
+    <string name="conv_reminder_legacy_go_message">بۇ ئۈسكۈنىدە يەنىلا كونا نەشرى (Go نەشرى) قاچىلانغان، بۇ كونا نەشرى بۇ ئۈسكۈنىدە ئىشلىمەيدۇ، ئۆچۈرۈپ بوشلۇق ئىگىلىيەلەيسىز.</string>
+    <string name="conv_reminder_replace_risk_title">ئالماشتۇرۇش ھالىتىدە بۇزۇلۇش خەتەرى بار</string>
+    <!-- formatted="false"：正文里有一个只作字面量的全角 ％（100％），该串永远不带实参取用。 -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">ئالماشتۇرۇش ھالىتى ئايلاندۇرۇش نەتىجىسىنى بىۋاسىتە ئەسلى ھۆججەتكە يازىدۇ، ئەسلى ھۆججەت قاپلانغاندىن كېيىن قايتۇرۇپ ئېلىنمايدۇ.\n\n• يېزىش جەريانىدا ئەپ ئۈزۈلسە، ساقلىغۇچ بوشلۇقى يېتىشمىسە ياكى ھوقۇق بىكار قىلىنسا، مەنبە ھۆججەت بۇزۇلۇشى مۇمكىن\n• ئايلاندۇرۇشنىڭ 100％ مۇۋەپپەقىيەتلىك بولۇشىغا كاپالەتلىك قىلغىلى بولمايدۇ، مەغلۇپ بولغاندا مەنبە ھۆججەت ئىشلىتىشكە بولمايدىغان بولۇشى مۇمكىن\n• ئاۋۋال بىر-ئىككى ھۆججەت بىلەن سىناپ، مەسىلە يوقلۇقىنى جەزملەشتۈرۈپ ئاندىن توپ بىر تەرەپ قىلىڭ\n• مۇھىم سۈرەتلەرنى ئاۋۋال ئۆزىڭىز زاپاسلاڭ\n\nبۇ ئىقتىدار «ھازىرقى ھالەت» بويىچە تەمىنلىنىدۇ، ئىشلىتىش خەتەرىنى ئۆزىڭىز ئۈستىڭىزگە ئالىسىز، ئاپتور ھۆججەت بۇزۇلۇشى ياكى يوقىلىشى ئۈچۈن مەسئۇل ئەمەس.</string>
+    <string name="conv_reminder_dont_remind">قايتا ئەسكەرتمەسلىك</string>
+    <string name="conv_reminder_confirm_ok">چۈشەندىم</string>
+    <string name="conv_reminder_uninstall">ئۆچۈرۈش</string>
+
+</resources>

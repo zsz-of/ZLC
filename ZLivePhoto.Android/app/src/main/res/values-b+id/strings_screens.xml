@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bahasa Indonesia (Indonesian) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Indonesian Android usage; technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">Konversi antarformat Live Photo</string>
+    <plurals name="screen_file_count">
+        <item quantity="other">%1$d berkas</item>
+    </plurals>
+    <string name="screen_settings">Pengaturan</string>
+    <string name="screen_select_output_format">Pilih format keluaran</string>
+    <string name="screen_selected">Dipilih</string>
+    <string name="screen_vivo_single_warning">⚠ Sebagian perangkat lama mungkin tidak mengenali format ini</string>
+    <string name="screen_extract_blocked">⚠ Antrean berisi tugas komposisi; Ekstrak tidak dapat dipilih</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (satu berkas)</string>
+    <string name="screen_format_vivo">vivo (dua berkas)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Ekstrak</string>
+    <string name="screen_toolbox">Kotak alat</string>
+    <string name="screen_batch_import">Impor massal</string>
+    <string name="screen_batch_import_desc">Pindai seluruh galeri dan kenali Live Photo secara massal</string>
+    <string name="screen_compose">Susun Live Photo</string>
+    <string name="screen_compose_desc">Pilih satu foto dan satu video lalu pasangkan menjadi Live Photo</string>
+    <string name="screen_replace_mode">Mode ganti</string>
+    <string name="screen_replace_mode_desc">Tulis hasil konversi langsung kembali ke berkas asli alih-alih membuat berkas baru</string>
+    <string name="screen_need_all_files_access_hint">Memerlukan “Akses semua file”; ketuk untuk memberikannya</string>
+    <string name="screen_agree_and_enable">Setujui dan aktifkan</string>
+    <string name="screen_empty_no_files">Belum ada berkas yang ditambahkan</string>
+    <string name="screen_view_detail">Lihat detail</string>
+    <string name="screen_add_files">Tambah berkas</string>
+    <string name="screen_output_format">Format keluaran: %1$s</string>
+    <string name="screen_delete_original">Hapus berkas asli setelah diproses</string>
+    <string name="screen_need_all_files_access_view">Memerlukan “Akses semua file”; ketuk untuk melihat</string>
+    <string name="screen_clear">Bersihkan</string>
+    <string name="screen_stop">Hentikan pemrosesan</string>
+    <string name="screen_start_convert">Mulai konversi</string>
+    <string name="screen_status_detail">Detail status</string>
+    <string name="screen_long_press_copy">Tekan lama teks untuk memilih dan menyalin</string>
+    <string name="screen_copy">Salin</string>
+    <string name="screen_close">Tutup</string>
+    <string name="screen_back">Kembali</string>
+    <string name="screen_picker_title_select">Pilih Live Photo</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Ciutkan sampul album</string>
+    <string name="screen_album_expand_cover">Bentangkan sampul album</string>
+    <string name="screen_scanning_progress">Memindai %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">%1$d foto</item>
+    </plurals>
+    <string name="screen_select_all">Pilih semua</string>
+    <string name="screen_no_albums">Tidak ada album tersedia</string>
+    <string name="screen_no_media">Tidak ada Live Photo ditemukan</string>
+    <string name="screen_no_media_compose">Tidak ada foto atau video ditemukan</string>
+    <string name="screen_import">Impor</string>
+    <string name="screen_import_count">Impor %1$d</string>
+    <string name="screen_import_mixed">Impor %1$d foto · %2$d video</string>
+    <string name="screen_search">Cari</string>
+    <string name="screen_search_collapse">Ciutkan pencarian</string>
+    <string name="screen_search_hint">Cari berdasarkan nama</string>
+    <string name="screen_search_clear">Bersihkan pencarian</string>
+    <string name="screen_sort_date">Tanggal</string>
+    <string name="screen_sort_size">Ukuran</string>
+    <string name="screen_sort_name">Nama</string>
+    <string name="screen_sort_asc">Naik</string>
+    <string name="screen_sort_desc">Turun</string>
+    <string name="screen_date_today">Hari ini</string>
+    <string name="screen_date_yesterday">Kemarin</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%2$d/%1$d/%3$d</string>
+</resources>

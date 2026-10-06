@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ZLC · ar strings — Arabic (العربية, RTL)
+  ZLC · hi strings — Hindi (हिन्दी)
   Translated from res/values/strings.xml (Simplified Chinese baseline, the fallback locale).
-  Modern Standard Arabic. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
-  Model-assisted translation - community corrections welcome.
+  Hindi (Devanagari). Model-assisted translation - community corrections welcome.
   Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
 -->
 <resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Türkçe (tr) — ana ekran / galeri seçici (task-4).
+  Anahtar öneki screen_; anahtarlar res/values/ (Basitleştirilmiş Çince yedek metin) ile aynıdır.
+  Yer tutucular %1$s / %1$d numaralarını korur; sıralama değiştirilebilir (tarihler).
+-->
+<resources>
+    <!-- Üst çubuk alt başlığı -->
+    <string name="screen_app_subtitle">Hareketli fotoğraf biçimleri arasında dönüştürme</string>
+    <!-- Üst çubuğun sağında seçili dosya sayısı -->
+    <plurals name="screen_file_count">
+        <item quantity="other">%1$d dosya</item>
+    </plurals>
+    <!-- Üst çubuktaki ayarlar girişi (yalnızca ekran okuyucu) -->
+    <string name="screen_settings">Ayarlar</string>
+
+    <!-- Çıktı biçimi seçme penceresi -->
+    <string name="screen_select_output_format">Çıktı biçimini seç</string>
+    <string name="screen_selected">Seçildi</string>
+    <string name="screen_vivo_single_warning">⚠ Çok eski cihazlar bu biçimi tanımayabilir</string>
+    <string name="screen_extract_blocked">⚠ Kuyrukta birleştirme görevi var, ayırma seçilemez</string>
+
+    <!-- Biçim kısa adları (uzun adlar strings_formats.xml içindeki fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (tek dosya)</string>
+    <string name="screen_format_vivo">vivo (iki dosya)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Ayırma</string>
+
+    <!-- Araç kutusu (BottomSheet) -->
+    <string name="screen_toolbox">Araç kutusu</string>
+    <string name="screen_batch_import">Toplu içe aktarma</string>
+    <string name="screen_batch_import_desc">Tüm galeriyi tarayıp hareketli fotoğrafları toplu tanı</string>
+    <string name="screen_compose">Hareketli fotoğraf oluştur</string>
+    <string name="screen_compose_desc">Bir fotoğraf ve bir video seçip birleştirin</string>
+    <string name="screen_replace_mode">Değiştirme modu</string>
+    <string name="screen_replace_mode_desc">Dönüştürme sonucu yeni dosya oluşturmadan doğrudan özgün dosyaya yazılır</string>
+    <string name="screen_need_all_files_access_hint">„Tüm dosyalara erişim” izni gerekir; izin vermek için dokunun</string>
+    <string name="screen_agree_and_enable">Kabul et ve aç</string>
+
+    <!-- Boş durum / alt denetim paneli -->
+    <string name="screen_empty_no_files">Henüz dosya eklenmedi</string>
+    <string name="screen_view_detail">Ayrıntıları gör</string>
+    <string name="screen_add_files">Dosya ekle</string>
+    <string name="screen_output_format">Çıktı biçimi: %1$s</string>
+    <string name="screen_delete_original">İşlemden sonra özgün dosyaları sil</string>
+    <string name="screen_need_all_files_access_view">„Tüm dosyalara erişim” izni gerekir; görmek için dokunun</string>
+    <string name="screen_clear">Temizle</string>
+    <string name="screen_stop">İşlemeyi durdur</string>
+    <string name="screen_start_convert">Dönüştürmeyi başlat</string>
+
+    <!-- Durum ayrıntıları penceresi -->
+    <string name="screen_status_detail">Durum ayrıntıları</string>
+    <string name="screen_long_press_copy">Seçip kopyalamak için metne uzun basın</string>
+    <string name="screen_copy">Kopyala</string>
+    <string name="screen_close">Kapat</string>
+
+    <!-- Galeri seçici -->
+    <string name="screen_back">Geri</string>
+    <string name="screen_picker_title_select">Hareketli fotoğraf seç</string>
+    <string name="screen_album_count">Albüm: %1$d</string>
+    <string name="screen_album_collapse_cover">Albüm kapağını daralt</string>
+    <string name="screen_album_expand_cover">Albüm kapağını genişlet</string>
+    <string name="screen_scanning_progress">Taranıyor %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">%1$d fotoğraf</item>
+    </plurals>
+    <string name="screen_select_all">Tümünü seç</string>
+    <string name="screen_no_albums">Kullanılabilir albüm yok</string>
+    <string name="screen_no_media">Hareketli fotoğraf bulunamadı</string>
+    <string name="screen_no_media_compose">Fotoğraf veya video bulunamadı</string>
+    <string name="screen_import">İçe al</string>
+    <string name="screen_import_count">%1$d içe al</string>
+    <string name="screen_import_mixed">İçe al: %1$d foto · %2$d video</string>
+    <string name="screen_search">Ara</string>
+    <string name="screen_search_collapse">Aramayı daralt</string>
+    <string name="screen_search_hint">Ada göre ara</string>
+    <string name="screen_search_clear">Aramayı temizle</string>
+    <string name="screen_sort_date">Tarih</string>
+    <string name="screen_sort_size">Boyut</string>
+    <string name="screen_sort_name">Ad</string>
+    <string name="screen_sort_asc">Artan</string>
+    <string name="screen_sort_desc">Azalan</string>
+
+    <!-- Albüm gruplarındaki tarih etiketleri (Türkçe sıralama: gün.ay.yıl) -->
+    <string name="screen_date_today">Bugün</string>
+    <string name="screen_date_yesterday">Dün</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

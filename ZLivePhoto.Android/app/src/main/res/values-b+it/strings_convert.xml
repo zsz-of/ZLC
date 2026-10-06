@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Italiano strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: parametri e validazione dei contenuti ========== -->
+    <string name="conv_unknown_target">Formato di destinazione sconosciuto: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Formato Live Photo non riconosciuto (non è un Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">La foto di copertina non esiste o è vuota</string>
+    <string name="conv_video_missing">Il video non esiste o è vuoto</string>
+    <string name="conv_video_too_large">Video troppo grande (%1$dMB): impossibile comporre un Live Photo. Scegli un video più breve</string>
+    <string name="conv_transcoded_too_large">Il video transcodificato è troppo grande (%1$dMB): impossibile comporre un Live Photo</string>
+    <string name="conv_video_too_large_compose">Video troppo grande (%1$dMB): impossibile comporre un Live Photo</string>
+
+    <!-- Converter.kt: copertina (HEIC / non JPEG) -->
+    <string name="conv_cover_heic_go">La copertina è un\'immagine HEIC (la versione leggera non transcodifica: esportala come JPEG dall\'iPhone e riconverti)</string>
+    <string name="conv_cover_invalid_heic">La copertina non è un\'immagine valida (HEIC richiede il supporto di sistema alla decodifica HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">La copertina non è un\'immagine JPEG (la versione leggera non transcodifica: usa una foto JPEG)</string>
+    <string name="conv_cover_invalid_image">La copertina non è un\'immagine valida (solo JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: errori di ricodifica / rimux e avvisi -->
+    <string name="conv_reencode_failed">Ricodifica del video non riuscita: %1$s</string>
+    <string name="conv_remux_failed">Rimux del contenitore non riuscito: %1$s</string>
+    <string name="conv_codec_unknown">Non è un video H.264/H.265 riconoscibile</string>
+    <string name="conv_codec_is">La codifica è %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Il video «%1$s» %2$s; cambiare solo il contenitore (rimux) non modifica la codifica e non permette di comporre un Live Photo.\n\nIn «Impostazioni → Transcodifica video → Modalità di transcodifica» scegli «Ricodifica», oppure converti prima il video in MP4 H.264/H.265 con un altro strumento.</string>
+    <string name="conv_hint_no_encoder">Il video non è in un contenitore MP4 standard (MOV / MKV / WebM / AVI ecc.) e la «Modalità di transcodifica» attuale non ricodifica, quindi non è possibile comporre un Live Photo.\n\nIn «Impostazioni → Transcodifica video → Modalità di transcodifica» scegli «Ricodifica» (la versione normale include il codificatore ffmpeg; la versione leggera Go non ha il transcodificatore: usa la versione normale), oppure converti prima il video in MP4 standard (H.264/H.265).</string>
+
+    <!-- ========== Log di conversione ========== -->
+    <string name="conv_log_detected">Riconosciuto come %1$s</string>
+    <string name="conv_log_same_format_copied">Formato di origine e di destinazione identici: copiato così com\'è (senza perdite)</string>
+    <string name="conv_log_extra_tracks_bypass">Il video di origine contiene tracce non audio/video (%1$s): la copia diretta è stata saltata e si è usato il flusso di scrittura completo per ripulirlo</string>
+    <string name="conv_log_ts_fallback">L\'origine non ha il timestamp del fotogramma di copertina: per convenzione si usa il punto centrale del video</string>
+    <string name="conv_log_brand_normalized">Marchio del contenitore normalizzato (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Il video contiene tracce aggiuntive (%1$s) e non è stato possibile ripulirlo: l\'output è stato lasciato invariato (su alcuni dispositivi il risultato potrebbe non riprodursi con la pressione prolungata)</string>
+    <string name="conv_log_extra_tracks_removed">Tracce aggiuntive del video rimosse (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Video di origine %1$s; il solo rimux del contenitore non risolve (%2$s). Se il risultato continua a non riprodursi con la pressione prolungata, scegli «Ricodifica» in «Impostazioni → Transcodifica video → Modalità di transcodifica»</string>
+    <string name="conv_log_reencoding">Video di origine %1$s: ricodifica a 8 bit + AAC secondo le impostazioni per migliorare la compatibilità con la galleria</string>
+    <string name="conv_log_reencode_result_unusable">Il risultato della ricodifica non è utilizzabile: l\'output è stato lasciato invariato (su alcuni dispositivi il risultato potrebbe non riprodursi con la pressione prolungata)</string>
+    <string name="conv_log_reencode_still_risky">Anche dopo la ricodifica restano elementi a rischio (%1$s)</string>
+    <string name="conv_log_reencode_failed">Ricodifica non riuscita (%1$s): l\'output è stato lasciato invariato (su alcuni dispositivi il risultato potrebbe non riprodursi con la pressione prolungata)</string>
+    <string name="conv_log_cover_heic_converted">La copertina è HEIC (non JPEG): è stata transcodificata in JPEG standard prima del rimontaggio</string>
+    <string name="conv_log_compose_sizes">Composizione: foto %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transcodificatore non attivo: è stato riscritto solo il marchio del contenitore (MOV → MP4), senza ricodifica</string>
+
+    <!-- Etichette di log (mostrate come «[etichetta] testo») -->
+    <string name="conv_tag_convert">Conversione</string>
+    <string name="conv_tag_transcode">Transcodifica</string>
+    <string name="conv_tag_compose">Composizione</string>
+
+    <!-- Motivi di blocco della modalità di transcodifica -->
+    <string name="conv_blocker_no_encoder">Transcodificatore integrato non disponibile</string>
+    <string name="conv_blocker_mode_no_encode">La «Modalità di transcodifica» attuale non ricodifica</string>
+
+    <!-- ========== FfmpegAddon.kt ========== -->
+    <string name="conv_addon_unavailable">Transcodificatore integrato non disponibile</string>
+    <string name="conv_addon_transcode_failed">Transcodifica ffmpeg non riuscita: %1$s</string>
+    <string name="conv_addon_remux_failed">Rimux del contenitore con ffmpeg non riuscito: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Transcodifica del video con ffmpeg in MP4 standard (%1$s / crf %2$d / %3$s, mantenendo solo le tracce video e audio)</string>
+    <string name="conv_log_transcode_done">Transcodifica completata (%1$dKB)</string>
+    <string name="conv_log_remuxing">Rimux del contenitore video in MP4 standard (solo cambio di contenitore, senza ricodifica)</string>
+    <string name="conv_log_remux_done">Rimux del contenitore completato (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt ========== -->
+    <string name="conv_reminder_cat_compose">Composizione</string>
+    <string name="conv_reminder_cat_convert">Conversione</string>
+    <string name="conv_reminder_cat_update">Aggiornamento</string>
+    <string name="conv_reminder_video_over3s_title">Video più lungo di 3 secondi</string>
+    <string name="conv_reminder_video_over3s_message">Il video scelto dura più di 3 secondi: il Live Photo composto potrebbe avere problemi di compatibilità:\n\n• potrebbe non riprodursi correttamente\n• potrebbe non essere riconosciuto dalla galleria di sistema\n• alcuni dispositivi potrebbero non riconoscere questo Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">Rilevata una versione precedente</string>
+    <string name="conv_reminder_legacy_go_message">Su questo dispositivo è ancora installata la versione precedente (Go) dell\'app. Quella versione non è più utilizzabile su questo dispositivo; puoi disinstallarla per liberare spazio.</string>
+    <string name="conv_reminder_replace_risk_title">La modalità sostituzione può danneggiare i file</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">La modalità sostituzione scrive il risultato direttamente nel file originale; una volta sovrascritto, il file originale non è più recuperabile.\n\n• Se l\'app viene interrotta durante la scrittura, se lo spazio è insufficiente o se il permesso viene revocato, il file di origine può danneggiarsi\n• La conversione non garantisce il 100% di riuscita; in caso di errore il file di origine potrebbe non essere più utilizzabile\n• Si consiglia di provare prima con uno o due file, poi procedere in blocco\n• Fai un backup delle foto importanti\n\nQuesta funzione è fornita «così com\'è»: l\'uso è a tuo rischio e l\'autore non è responsabile per file danneggiati o persi.</string>
+    <string name="conv_reminder_dont_remind">Non mostrare più</string>
+    <string name="conv_reminder_confirm_ok">Ho capito</string>
+    <string name="conv_reminder_uninstall">Disinstalla</string>
+
+</resources>

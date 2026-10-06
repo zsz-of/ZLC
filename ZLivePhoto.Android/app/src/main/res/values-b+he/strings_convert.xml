@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · he strings — Hebrew (עברית, RTL)
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Hebrew. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">פורמט יעד לא מוכר: %1$s</string>
+    <string name="conv_unrecognized_live_photo">פורמט Live Photo לא מזוהה (לא Live Photo של Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">תמונת השער אינה קיימת או ריקה</string>
+    <string name="conv_video_missing">הווידאו אינו קיים או ריק</string>
+    <string name="conv_video_too_large">הווידאו גדול מדי (%1$d MB) ולא ניתן להרכיב ממנו Live Photo; בחר וידאו קצר יותר</string>
+    <string name="conv_transcoded_too_large">הווידאו לאחר המרת הקידוד גדול מדי (%1$d MB) ולא ניתן להרכיב ממנו Live Photo</string>
+    <string name="conv_video_too_large_compose">הווידאו גדול מדי (%1$d MB) ולא ניתן להרכיב ממנו Live Photo</string>
+    <string name="conv_cover_heic_go">השער הוא תמונת HEIC (המהדורה הקלה אינה תומכת בהמרת קידוד; ייצא אותה כ-JPEG מה-iPhone ואז המר)</string>
+    <string name="conv_cover_invalid_heic">השער אינו תמונה תקינה (HEIC דורש תמיכת מערכת בפענוח HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">השער אינו תמונת JPEG (המהדורה הקלה אינה תומכת בהמרת קידוד; השתמש בתמונת JPEG)</string>
+    <string name="conv_cover_invalid_image">השער אינו תמונה תקינה (נתמכות רק JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">המרת הקידוד של הווידאו נכשלה: %1$s</string>
+    <string name="conv_remux_failed">אריזת המכולה מחדש נכשלה: %1$s</string>
+    <string name="conv_codec_unknown">לא מדובר בווידאו H.264/H.265 מזוהה</string>
+    <string name="conv_codec_is">הקידוד הוא %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">הווידאו «%1$s» %2$s, והחלפת מכולה בלבד (אריזה מחדש) אינה משנה את הקידוד, ולכן אי אפשר להרכיב Live Photo.\n\nיש לשנות את השיטה ב«הגדרות ← המרת וידאו ← שיטת המרה» ל«המרת קידוד מחדש», או להמיר את הווידאו תחילה ל-MP4 בקידוד H.264/H.265 בכלי אחר.</string>
+    <string name="conv_hint_no_encoder">הווידאו אינו במכולת MP4 תקנית (MOV / MKV / WebM / AVI וכדומה), ו«שיטת ההמרה» הנוכחית אינה מבצעת המרת קידוד מחדש, ולכן אי אפשר להרכיב Live Photo.\n\nיש לשנות אותה ב«הגדרות ← המרת וידאו ← שיטת המרה» ל«המרת קידוד מחדש» (המהדורה הרגילה כוללת מקודד ffmpeg; המהדורה הקלה Go אינה כוללת מקודד, השתמש במהדורה הרגילה), או להמיר את הווידאו תחילה ל-MP4 תקני (H.264/H.265).</string>
+    <string name="conv_log_detected">זוהה כ-%1$s</string>
+    <string name="conv_log_same_format_copied">פורמט המקור ופורמט היעד זהים, והקובץ הועתק כפי שהוא (ללא אובדן)</string>
+    <string name="conv_log_extra_tracks_bypass">בווידאו המקור יש מסלולים שאינם אודיו/וידאו (%1$s); המעבר הישיר באותו פורמט דולג, ונעשה שימוש בכתיבה מלאה לצורך ניקוי</string>
+    <string name="conv_log_ts_fallback">במקור חסרה חותמת הזמן של פריים השער; בהתאם לתקן הוחזר אמצע הווידאו</string>
+    <string name="conv_log_brand_normalized">מותג מכולת הווידאו אוחד (QuickTime ← isom)</string>
+    <string name="conv_log_sanitize_failed">בווידאו יש מסלולים נוספים (%1$s) שלא ניתן היה לנקות, והפלט נשמר כפי שהוא (ייתכן שהפעלה בלחיצה ארוכה לא תעבוד במכשירים מסוימים)</string>
+    <string name="conv_log_extra_tracks_removed">המסלולים הנוספים של הווידאו הוסרו (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">הווידאו המקורי%1$s; אריזה מחדש של המכולה בלבד אינה פותרת את הבעיה (%2$s); אם הפלט עדיין אינו מופעל בלחיצה ארוכה, בחר «המרת קידוד מחדש» ב«הגדרות ← המרת וידאו ← שיטת המרה»</string>
+    <string name="conv_log_reencoding">הווידאו המקורי%1$s; הוא מומר מחדש לפי ההגדרות ל-8bit + AAC כדי לשפר את התאימות עם הגלריה</string>
+    <string name="conv_log_reencode_result_unusable">התוצאה של המרת הקידוד אינה שמישה, והפלט נשמר כפי שהוא (ייתכן שהפעלה בלחיצה ארוכה לא תעבוד במכשירים מסוימים)</string>
+    <string name="conv_log_reencode_still_risky">גם לאחר המרת הקידוד נותרו גורמי סיכון (%1$s)</string>
+    <string name="conv_log_reencode_failed">המרת הקידוד נכשלה (%1$s), והפלט נשמר כפי שהוא (ייתכן שהפעלה בלחיצה ארוכה לא תעבוד במכשירים מסוימים)</string>
+    <string name="conv_log_cover_heic_converted">השער הוא HEIC (לא JPEG), והומר ל-JPEG תקני לפני האריזה</string>
+    <string name="conv_log_compose_sizes">הרכבה: תמונה %1$dB + וידאו %2$dB ← %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">המקודד לא הופעל: רק מותג המכולה שונה (MOV ← MP4) בלי המרת קידוד</string>
+    <string name="conv_tag_convert">המרה</string>
+    <string name="conv_tag_transcode">קידוד</string>
+    <string name="conv_tag_compose">הרכבה</string>
+    <string name="conv_blocker_no_encoder">המקודד המובנה אינו זמין</string>
+    <string name="conv_blocker_mode_no_encode">«שיטת ההמרה» הנוכחית אינה מבצעת המרת קידוד מחדש</string>
+    <string name="conv_addon_unavailable">המקודד המובנה אינו זמין</string>
+    <string name="conv_addon_transcode_failed">המרת הקידוד ב-ffmpeg נכשלה: %1$s</string>
+    <string name="conv_addon_remux_failed">אריזת המכולה מחדש ב-ffmpeg נכשלה: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">הווידאו מומר ב-ffmpeg ל-MP4 תקני (%1$s / crf %2$d / %3$s, תוך שמירה על מסלולי הווידאו והאודיו בלבד)</string>
+    <string name="conv_log_transcode_done">המרת הקידוד של הווידאו הושלמה (%1$dKB)</string>
+    <string name="conv_log_remuxing">מכולת הווידאו נארזת מחדש ל-MP4 תקני (החלפת מכולה בלבד, ללא המרת קידוד)</string>
+    <string name="conv_log_remux_done">אריזת המכולה מחדש הושלמה (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">הרכבה</string>
+    <string name="conv_reminder_cat_convert">המרה</string>
+    <string name="conv_reminder_cat_update">עדכון</string>
+    <string name="conv_reminder_video_over3s_title">הווידאו ארוך מ-3 שניות</string>
+    <string name="conv_reminder_video_over3s_message">משך הווידאו שנבחר עולה על 3 שניות, ול-Live Photo שייווצר עשויות להיות בעיות תאימות:\n\n• ייתכן שלא יתנגן כראוי\n• ייתכן שגלריית המערכת לא תזהה אותו\n• ייתכן שמכשירים מסוימים לא יזהו את ה-Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">זוהתה גרסה ישנה</string>
+    <string name="conv_reminder_legacy_go_message">במכשיר זה עדיין מותקנת הגרסה הישנה (Go), שאינה שמישה בו, וניתן להסיר אותה כדי לפנות מקום.</string>
+    <string name="conv_reminder_replace_risk_title">במצב החלפה יש סיכון לנזק לקבצים</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">מצב ההחלפה כותב את תוצאות ההמרה ישירות על הקבצים המקוריים, ולאחר הדריסה אין דרך לשחזר אותם.\n\n• אם האפליקציה נעצרת, נגמר מקום האחסון או ההרשאה נשללת בזמן הכתיבה, קבצי המקור עלולים להיפגע\n• אין הבטחה שההמרה תצליח תמיד, ובמקרה של כישלון קבצי המקור עשויים להיות בלתי שמישים\n• נסה תחילה קובץ אחד או שניים לפני עיבוד בכמות\n• גבֵּה את התמונות החשובות שלך מראש\n\nתכונה זו מסופקת «כפי שהיא»; השימוש בה באחריותך, והמחבר אינו אחראי לנזק או לאובדן קבצים.</string>
+    <string name="conv_reminder_dont_remind">אל תציג שוב</string>
+    <string name="conv_reminder_confirm_ok">הבנתי</string>
+    <string name="conv_reminder_uninstall">הסרה</string>
+</resources>

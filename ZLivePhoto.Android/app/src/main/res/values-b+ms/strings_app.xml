@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bahasa Melayu (Malay) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Malaysian Android usage; technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="app_language_follow_system">Ikut sistem</string>
+    <string name="app_language_title">Bahasa apl</string>
+</resources>

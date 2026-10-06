@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bahasa Indonesia (Indonesian) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Indonesian Android usage; technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">Siap</string>
+    <string name="main_status_location_granted">Izin lokasi diberikan; metadata GPS akan dipertahankan setelah konversi</string>
+    <string name="main_status_location_denied">Izin lokasi tidak diberikan: foto hasil konversi akan kehilangan informasi lokasi GPS</string>
+    <string name="main_status_all_files_granted">“Akses semua file” diberikan; konversi akan menulis langsung ke folder galeri dan mempertahankan informasi lokasi sepenuhnya</string>
+    <string name="main_status_all_files_denied">“Akses semua file” tidak diberikan: sebagian perangkat mungkin kehilangan informasi lokasi setelah konversi</string>
+    <string name="main_status_read_granted">Izin membaca foto dan video diberikan</string>
+    <string name="main_status_video_missing">Diberikan, tetapi izin video tidak ada: tidak dapat menemukan video pendamping milik Live Photo dua berkas</string>
+    <string name="main_status_permission_denied">Izin tidak diberikan; Anda dapat mengetuk “Tambah berkas” lagi</string>
+    <string name="main_status_folder_not_selected">Tidak ada folder yang dipilih</string>
+    <string name="main_status_folder_unavailable">Tidak dapat mengakses folder yang dipilih (hanya folder penyimpanan lokal yang didukung)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">Sesi sebelumnya dipulihkan (%1$d berkas)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Terdeteksi keluar tidak normal sebelumnya; daftar yang belum selesai telah dibersihkan</string>
+    <string name="main_status_compose_blocks_extract">Antrean berisi tugas komposisi; tidak dapat beralih ke mode ekstrak</string>
+    <string name="main_status_replace_off_mutex">Mode ganti dimatikan (saling eksklusif dengan “Hapus berkas asli setelah diproses”)</string>
+    <string name="main_status_delete_needs_all_files">Menghapus berkas asli secara otomatis memerlukan “Akses semua file”; silakan memberikannya dulu</string>
+    <string name="main_status_replace_off">Mode ganti dimatikan; hasil konversi ditulis ke folder galeri lagi</string>
+    <string name="main_status_replace_needs_all_files">Mode ganti memerlukan “Akses semua file”; silakan memberikannya dulu</string>
+    <string name="main_status_delete_off_mutex">“Hapus berkas asli setelah diproses” dimatikan (saling eksklusif dengan mode ganti)</string>
+    <string name="main_status_loading_albums">Memuat album…</string>
+    <string name="main_status_no_albums">Tidak ada album ditemukan</string>
+    <string name="main_status_compose_no_photo">Tidak ada foto yang dipilih; tidak dapat menyusun</string>
+    <string name="main_status_compose_no_video">Tidak ada video yang dipilih; tidak dapat menyusun</string>
+    <string name="main_status_compose_all_added">Semua foto yang dipilih sudah ada dalam daftar</string>
+    <string name="main_status_compose_paired">%1$d foto dan %2$d video; menambahkan %3$d pasangan komposisi berdasarkan jumlah yang lebih kecil</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">Ditambahkan %1$d tugas komposisi; ketuk “Mulai konversi” untuk menyusun</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (format keluaran otomatis dialihkan ke Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">Mengimpor %1$d gambar yang dibagikan…</item>
+    </plurals>
+    <string name="main_status_import_failed">Impor gagal: %1$s</string>
+    <string name="main_status_import_done_partial">Impor selesai: %1$d berhasil, %2$d gagal</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">Impor selesai: total %1$d berkas diimpor</item>
+    </plurals>
+    <string name="main_status_import_stopped">Impor dihentikan: %1$d berhasil, %2$d gagal</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">Mengimpor %1$d berkas…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Mengimpor %1$d/%2$d…</string>
+    <string name="main_status_stopping">Menghentikan… (akan berhenti setelah berkas saat ini selesai)</string>
+    <string name="main_status_stopping_import">Menghentikan impor…</string>
+    <string name="main_status_removed">%1$s dihapus</string>
+    <string name="main_status_cleared">Dibersihkan</string>
+    <string name="main_status_nothing_to_convert">Tidak ada berkas untuk dikonversi</string>
+    <string name="main_status_folder_unreadable">Tidak dapat membaca folder yang dipilih</string>
+    <string name="main_status_scanning_folder">Memindai folder…</string>
+    <string name="main_status_no_images">Tidak ada gambar ditemukan di folder yang dipilih</string>
+    <string name="main_status_batch_importing">Mengimpor massal %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">Impor massal dihentikan: total %1$d Live Photo diimpor</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">Impor massal dihentikan: total %1$d Live Photo diimpor, %2$d berkas non-Live-Photo dilewati</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">Impor massal selesai: total %1$d Live Photo diimpor</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">Impor massal selesai: total %1$d Live Photo diimpor, %2$d berkas non-Live-Photo dilewati</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Dihentikan: dari %1$d berkas, %2$d diproses dan %3$d berkas sumber diganti</string>
+    <string name="main_status_stopped_export">Dihentikan: dari %1$d berkas, %2$d diproses dan %3$d diekspor ke galeri</string>
+    <string name="main_status_done_replace_reason">Selesai: %1$d berkas diproses, %2$d berkas sumber diganti (alasan: %3$s)</string>
+    <string name="main_status_done_export_reason">Selesai: %1$d berkas diproses, %2$d diekspor ke galeri (alasan: %3$s)</string>
+    <string name="main_status_done_replace">Selesai: %1$d berkas diproses, %2$d berkas sumber diganti</string>
+    <string name="main_status_done_export">Selesai: %1$d berkas diproses, %2$d diekspor ke galeri</string>
+    <string name="main_status_keep_originals">%1$s; “Akses penyimpanan penuh” tidak diberikan, jadi berkas asli dipertahankan</string>
+    <string name="main_info_detecting">Mendeteksi…</string>
+    <string name="main_info_unrecognized">Format Live Photo tidak dikenali</string>
+    <string name="main_info_converting">Mengonversi…</string>
+    <string name="main_info_compose_task">Tugas komposisi (ketuk Mulai konversi untuk menyusun)</string>
+    <string name="main_info_done_replaced">Selesai (%1$d berkas sumber diganti)</string>
+    <string name="main_info_done_skipped">Selesai (dilewati: nama bentrok)</string>
+    <string name="main_info_done_exported">Selesai (%1$d diekspor)</string>
+    <string name="main_info_failed">Gagal: %1$s</string>
+    <string name="main_progress_added">Ditambahkan %1$d/%2$d</string>
+    <string name="main_progress_processed">Diproses %1$d/%2$d</string>
+    <string name="main_progress_imported">Diimpor %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Izin membaca foto dan video diperlukan</string>
+    <string name="main_dialog_permission_message">Aplikasi ini perlu membaca foto dan video di perangkat Anda:\n\n• Izin foto: memindai galeri perangkat dan mengenali Live Photo di dalamnya\n• Izin video: menemukan video pendamping milik Live Photo dua berkas\n• Izin lokasi: mempertahankan metadata lokasi GPS pada foto (tanpanya, foto hasil konversi kehilangan informasi lokasi)\n\nJika Anda menolaknya, pemilih bawaan tidak dapat digunakan; Anda dapat mengetuk “Tambah berkas” nanti untuk memberikan izin lagi.</string>
+    <string name="main_dialog_settings_title">Izin foto dan video harus diberikan secara manual</string>
+    <string name="main_dialog_settings_message">Anda sebelumnya memilih “Jangan tanya lagi”, sehingga sistem tidak lagi menampilkan dialog izin.\n\nSilakan buka halaman detail aplikasi → Izin → Foto dan video, berikan akses secara manual, lalu kembali ke aplikasi ini.\n\nCatatan: izin “Foto” dan “Video” keduanya harus diberikan, jika tidak Live Photo dua berkas tidak akan dapat menemukan video pendampingnya.</string>
+    <string name="main_dialog_allfiles_title_delete">Menghapus berkas asli secara otomatis memerlukan “Akses semua file”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Perangkat ini tidak mendukung penghapusan berkas asli secara otomatis</string>
+    <string name="main_dialog_allfiles_title_replace">Mode ganti memerlukan “Akses semua file”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Perangkat ini tidak mendukung mode ganti</string>
+    <string name="main_dialog_allfiles_title_location">Sebaiknya berikan “Akses semua file”</string>
+    <string name="main_dialog_allfiles_delete_message">“Hapus berkas asli setelah diproses” menghapus berkas asli di penyimpanan secara langsung (foto beserta video pendampingnya). Tindakan ini tidak dapat dibatalkan, jadi “Akses semua file” harus diberikan lebih dulu.\n\nSakelar akan tersedia setelah Anda memberikannya; Anda dapat menyalakannya sendiri saat itu.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Sistem saat ini (Android 10 atau lebih lama) tidak menyediakan “Akses semua file”, sehingga berkas asli di penyimpanan tidak dapat dihapus langsung; karena itu perangkat ini tidak mendukung “Hapus berkas asli setelah diproses”.\n\nAnda dapat membersihkan berkas asli secara manual di galeri sistem setelah konversi.</string>
+    <string name="main_dialog_allfiles_replace_message">“Mode ganti” menulis hasil konversi langsung kembali ke berkas asli di penyimpanan (menimpa isinya). Tindakan ini tidak dapat dibatalkan, jadi “Akses semua file” harus diberikan lebih dulu.\n\nSakelar akan tersedia setelah Anda memberikannya; Anda dapat menyalakannya sendiri saat itu.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Sistem saat ini (Android 10 atau lebih lama) tidak menyediakan “Akses semua file”, sehingga berkas asli di penyimpanan tidak dapat ditulis ulang langsung; karena itu perangkat ini tidak mendukung “Mode ganti”.\n\nAnda dapat terus mengonversi dengan cara biasa; hasilnya ditulis ke folder galeri.</string>
+    <string name="main_dialog_allfiles_location_message">Di sebagian perangkat (misalnya Meizu), menulis melalui API galeri sistem menghilangkan informasi lokasi GPS, sehingga foto hasil konversi kehilangan lokasinya.\n\nSetelah Anda memberikan “Akses semua file”, aplikasi ini menulis langsung ke folder galeri dan mempertahankan metadata lokasi sepenuhnya.\n\nKonversi tetap berjalan tanpanya, tetapi sebagian perangkat mungkin kehilangan informasi lokasi.</string>
+    <string name="main_dialog_conflict_title">Nama berkas keluaran bentrok</string>
+    <string name="main_dialog_conflict_message">Berkas dengan nama yang sama sudah ada di folder keluaran:\n%1$s\n\nSilakan pilih cara menanganinya.</string>
+    <string name="main_label_conflict_always">Gunakan ini untuk semua bentrok berikutnya</string>
+    <string name="main_btn_grant">Berikan</string>
+    <string name="main_btn_deny">Tolak</string>
+    <string name="main_btn_go_settings">Buka pengaturan</string>
+    <string name="main_btn_cancel">Batal</string>
+    <string name="main_btn_grant_access">Berikan akses</string>
+    <string name="main_btn_got_it">Mengerti</string>
+    <string name="main_btn_not_now">Nanti saja</string>
+    <string name="main_btn_skip">Lewati</string>
+    <string name="main_btn_overwrite">Timpa</string>
+    <string name="main_btn_auto_rename">Ganti nama otomatis</string>
+    <plurals name="main_delete_done">
+        <item quantity="other">%1$d berkas asli dihapus</item>
+    </plurals>
+    <string name="main_delete_nothing">Tidak ada berkas asli yang perlu dihapus</string>
+    <string name="main_delete_partial">%1$d berkas asli dihapus (%2$d tidak dapat dihapus dan dipertahankan)</string>
+    <string name="main_delete_failed">Gagal menghapus berkas asli (berkas sedang dipakai atau tidak ada izin tulis); berkas telah dipertahankan</string>
+    <string name="main_export_missing_output">Keluaran konversi tidak ada atau kosong: %1$s</string>
+    <string name="main_export_missing_output_bare">Keluaran konversi tidak ada atau kosong</string>
+    <string name="main_export_insert_null">MediaStore insert mengembalikan null</string>
+    <string name="main_export_output_stream">Aliran keluaran MediaStore tidak tersedia</string>
+    <string name="main_export_write_failed">Penulisan MediaStore gagal: %1$s</string>
+    <string name="main_export_mkdir_failed">Tidak dapat membuat folder galeri %1$s</string>
+    <string name="main_export_dir_write_failed">Gagal menulis ke folder galeri: %1$s</string>
+    <string name="main_export_no_source">Tidak dapat menemukan berkas sumber; penggantian dilewati</string>
+    <string name="main_export_companion_failed">Gagal menulis kembali berkas pendamping: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Folder sumber tidak dapat ditulis, sehingga berkas pendamping tidak dapat ditulis kembali</string>
+    <string name="main_export_source_dir_unavailable">Folder sumber tidak tersedia: %1$s</string>
+    <string name="main_export_replace_failed">Gagal mengganti berkas sumber: %1$s</string>
+    <string name="main_export_replace_failed_bare">Gagal mengganti berkas sumber</string>
+</resources>

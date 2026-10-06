@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Italiano strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+
+    <!-- Generale -->
+    <string name="settings_title">Impostazioni</string>
+    <string name="settings_cd_back">Indietro</string>
+    <string name="settings_btn_apply">Applica</string>
+    <string name="settings_btn_cancel">Annulla</string>
+    <string name="settings_btn_close">Chiudi</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Sostieni</string>
+
+    <!-- Titoli delle sezioni -->
+    <string name="settings_section_general">Generale</string>
+    <string name="settings_section_appearance">Aspetto</string>
+    <string name="settings_section_language">Lingua</string>
+    <string name="settings_section_defaults">Opzioni predefinite</string>
+    <string name="settings_section_output">Output</string>
+    <string name="settings_section_transcode">Transcodifica video</string>
+    <string name="settings_section_about">Informazioni</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Ringraziamenti e sostegno</string>
+    <string name="settings_section_opensource">Open source e licenza</string>
+
+    <!-- Generale -->
+    <string name="settings_startup_check_title">Controlla aggiornamenti all\'avvio</string>
+    <string name="settings_startup_check_subtitle">Cerca automaticamente nuove versioni su GitHub all\'avvio e avvisa quando ce ne sono</string>
+    <string name="settings_haptics_title">Feedback di vibrazione</string>
+    <string name="settings_haptics_subtitle">Feedback aptico quando si toccano i pulsanti e quando cambia lo stato</string>
+    <string name="settings_bounce_title">Animazione elastica dei pulsanti</string>
+    <string name="settings_bounce_subtitle">Animazione di scala e rimbalzo alla pressione dei pulsanti</string>
+
+    <!-- Aspetto -->
+    <string name="settings_theme_system">Segui il sistema</string>
+    <string name="settings_theme_dark">Scuro</string>
+    <string name="settings_theme_light">Chiaro</string>
+    <string name="settings_dynamic_theme_title">Colori dinamici Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Segue i colori dello sfondo di sistema (Android 12+); se disattivato usa i colori del tema predefiniti qui sotto</string>
+    <string name="settings_preset_colors_title">Colori del tema predefiniti</string>
+    <string name="settings_preset_current">Attuale: %1$s</string>
+    <string name="settings_preset_disabled_hint">Disponibile dopo aver disattivato «Colori dinamici Material You»</string>
+    <string name="settings_custom">Personalizzato</string>
+    <string name="settings_custom_color_title">Colore del tema personalizzato</string>
+    <string name="settings_cd_custom_palette">Tavolozza personalizzata</string>
+    <string name="settings_hue_value">Tonalità %1$d°</string>
+
+    <!-- Lingua dell'app -->
+    <string name="settings_language_dialog_title">Scegli la lingua dell\'app</string>
+    <string name="settings_language_count">%1$d lingue</string>
+
+    <!-- Opzioni predefinite -->
+    <string name="settings_reminder_dialogs_title">Non mostrare più gli avvisi</string>
+    <string name="settings_reminder_dialogs_subtitle">Gestisci le opzioni «non mostrare più» di tutti gli avvisi</string>
+    <string name="settings_reminder_hint">Attivo significa «non mostrare più»; se lo disattivi, l\'avviso ricomparirà la prossima volta.</string>
+
+    <!-- Output -->
+    <string name="settings_preserve_folders_title">Mantieni la struttura delle cartelle di origine</string>
+    <string name="settings_preserve_folders_subtitle">I risultati vengono salvati in sottocartelle con il nome dell\'album originale; se disattivato, finiscono tutti nella stessa cartella</string>
+
+    <!-- Informazioni -->
+    <string name="settings_about_title">Informazioni</string>
+    <string name="settings_about_subtitle">Versione · Controlla aggiornamenti · Ringraziamenti e sostegno</string>
+    <string name="settings_check_update_title">Controlla aggiornamenti</string>
+    <string name="settings_check_update_subtitle">Ottieni la versione più recente dalle Release di GitHub</string>
+    <string name="settings_checking">Controllo in corso…</string>
+    <string name="settings_update_available">v%1$s disponibile</string>
+    <string name="settings_up_to_date">Hai già la versione più recente</string>
+    <string name="settings_network_error">Errore di rete. Riprova più tardi</string>
+    <string name="settings_reinstall_title">Reinstalla questa versione</string>
+    <string name="settings_reinstall_subtitle">Scarica la versione più recente e installala sopra quella attuale (per testare gli aggiornamenti)</string>
+    <string name="settings_reinstall_newer_hint">È disponibile la v%1$s; usa prima «Controlla aggiornamenti»</string>
+    <string name="settings_version_title">Versione</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Sostieni con Alipay</string>
+    <string name="settings_alipay_subtitle">Sostieni lo sviluppo</string>
+    <string name="settings_coolapk_subtitle">Utente di Coolapk · grazie per il sostegno</string>
+    <string name="settings_ai_credits_subtitle">Grazie alle IDE con IA e ai modelli di IA per l\'aiuto dato allo sviluppo</string>
+    <string name="settings_github_title">Indirizzo open source su GitHub</string>
+    <string name="settings_license_title">Licenza open source</string>
+    <string name="settings_sponsor_dialog_title">Grazie per il tuo sostegno</string>
+    <string name="settings_sponsor_dialog_text">Grazie davvero di cuore per voler sostenere questa app!\n\nSe sei ancora studente o non hai ancora indipendenza economica, non spendere nulla — tieni questo pensiero nel cuore e continua a usare l\'app: è già il miglior sostegno che possa ricevere.\n\nSe vuoi comunque contribuire, va bene qualsiasi cifra; la investirò in migliore manutenzione e nuove funzioni:)</string>
+    <string name="settings_alipay_missing_title">Alipay non è installato</string>
+    <string name="settings_alipay_missing_text">Non abbiamo rilevato Alipay, quindi al momento non è possibile completare il sostegno.\n\nNon importa — in ogni caso, grazie mille per la tua buona volontà!</string>
+
+    <!-- Transcodifica video -->
+    <string name="settings_transcoder_title">Transcodificatore integrato</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Ricodifica</string>
+    <string name="settings_transcode_mode_remux">Solo rimux del contenitore (consigliato)</string>
+    <string name="settings_transcode_mode_off">Non usare il transcodificatore</string>
+    <string name="settings_transcode_params_title">Parametri di transcodifica</string>
+    <string name="settings_transcode_params_subtitle">Parametri di qualità e compressione usati durante la ricodifica</string>
+    <string name="settings_transcode_params_disabled">Ha effetto solo quando «Modalità di transcodifica» è impostata su «Ricodifica»</string>
+    <string name="settings_crf_value">Qualità CRF: %1$d</string>
+    <string name="settings_crf_hint">Più il valore è basso, più alta è la qualità e più grande il file (predefinito 18)</string>
+    <string name="settings_encoder_title">Codificatore</string>
+    <string name="settings_compress_preset_title">Preset di compressione</string>
+
+</resources>

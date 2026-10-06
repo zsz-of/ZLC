@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · fa strings — Persian (فارسی, RTL)
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline, the fallback locale).
+  Persian (Farsi). RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">قالب مقصد ناشناخته: %1$s</string>
+    <string name="conv_unrecognized_live_photo">قالب Live Photo ناشناخته است (نه Live Photo گوگل/OPPO/vivo/شیائومی/اپل)</string>
+    <string name="conv_cover_photo_missing">عکس جلد وجود ندارد یا خالی است</string>
+    <string name="conv_video_missing">ویدیو وجود ندارد یا خالی است</string>
+    <string name="conv_video_too_large">ویدیو بیش از حد بزرگ است (%1$d MB) و نمی‌توان آن را در Live Photo ترکیب کرد؛ ویدیوی کوتاه‌تری انتخاب کنید</string>
+    <string name="conv_transcoded_too_large">ویدیو پس از تبدیل کد بیش از حد بزرگ است (%1$d MB) و نمی‌توان آن را در Live Photo ترکیب کرد</string>
+    <string name="conv_video_too_large_compose">ویدیو بیش از حد بزرگ است (%1$d MB) و نمی‌توان آن را در Live Photo ترکیب کرد</string>
+    <string name="conv_cover_heic_go">جلد یک تصویر HEIC است (نسخه سبک از تبدیل کد پشتیبانی نمی‌کند؛ آن را از iPhone به‌صورت JPEG صادر کنید و سپس تبدیل کنید)</string>
+    <string name="conv_cover_invalid_heic">جلد تصویر معتبری نیست (HEIC به پشتیبانی سیستم برای رمزگشایی HEIF نیاز دارد)</string>
+    <string name="conv_cover_not_jpeg_go">جلد تصویر JPEG نیست (نسخه سبک از تبدیل کد پشتیبانی نمی‌کند؛ از عکس JPEG استفاده کنید)</string>
+    <string name="conv_cover_invalid_image">جلد تصویر معتبری نیست (فقط JPEG/WebP/PNG پشتیبانی می‌شود)</string>
+    <string name="conv_reencode_failed">رمزگذاری مجدد ویدیو ناموفق بود: %1$s</string>
+    <string name="conv_remux_failed">بسته‌بندی مجدد محفظه ناموفق بود: %1$s</string>
+    <string name="conv_codec_unknown">ویدیوی H.264/H.265 قابل‌شناسایی نیست</string>
+    <string name="conv_codec_is">کدک %1$s است</string>
+    <string name="conv_hint_remux_cannot_fix">ویدیوی «%1$s» %2$s، و تنها تعویض محفظه (بسته‌بندی مجدد) کدک را تغییر نمی‌دهد، بنابراین ترکیب Live Photo ممکن نیست.\n\nلطفاً روش را در «تنظیمات ← تبدیل ویدیو ← روش تبدیل» به «رمزگذاری مجدد» تغییر دهید، یا ابتدا ویدیو را با ابزاری دیگر به MP4 با کدک H.264/H.265 تبدیل کنید.</string>
+    <string name="conv_hint_no_encoder">ویدیو در محفظه استاندارد MP4 نیست (MOV / MKV / WebM / AVI و غیره)، و «روش تبدیل» فعلی رمزگذاری مجدد انجام نمی‌دهد، بنابراین ترکیب Live Photo ممکن نیست.\n\nلطفاً آن را در «تنظیمات ← تبدیل ویدیو ← روش تبدیل» به «رمزگذاری مجدد» تغییر دهید (نسخه عادی رمزگذار ffmpeg را در خود دارد؛ نسخه سبک Go رمزگذار ندارد، از نسخه عادی استفاده کنید)، یا ابتدا ویدیو را به MP4 استاندارد (H.264/H.265) تبدیل کنید.</string>
+    <string name="conv_log_detected">به‌عنوان %1$s شناسایی شد</string>
+    <string name="conv_log_same_format_copied">قالب مبدأ و مقصد یکسان است؛ بدون تغییر کپی شد (بدون افت)</string>
+    <string name="conv_log_extra_tracks_bypass">ویدیوی مبدأ دارای مسیرهای غیرصوتی/تصویری است (%1$s)؛ عبور مستقیم با همان قالب رد شد و مسیر نوشتن کامل برای پاک‌سازی انتخاب شد</string>
+    <string name="conv_log_ts_fallback">مبدأ فاقد برچسب زمانی فریم جلد است؛ طبق استاندارد به میانه ویدیو بازگشت داده شد</string>
+    <string name="conv_log_brand_normalized">برند محفظه ویدیو یکسان‌سازی شد (QuickTime ← isom)</string>
+    <string name="conv_log_sanitize_failed">ویدیو دارای مسیرهای اضافی است (%1$s) که پاک‌سازی نشدند؛ خروجی بدون تغییر ذخیره شد (ممکن است پخش با فشار طولانی در برخی دستگاه‌ها کار نکند)</string>
+    <string name="conv_log_extra_tracks_removed">مسیرهای اضافی ویدیو حذف شد (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">ویدیوی مبدأ%1$s؛ بسته‌بندی مجدد محفظه به‌تنهایی مشکل را حل نمی‌کند (%2$s)؛ اگر خروجی همچنان با فشار طولانی پخش نشد، در «تنظیمات ← تبدیل ویدیو ← روش تبدیل» گزینه «رمزگذاری مجدد» را انتخاب کنید</string>
+    <string name="conv_log_reencoding">ویدیوی مبدأ%1$s؛ طبق تنظیمات به 8bit + AAC رمزگذاری مجدد می‌شود تا سازگاری با گالری بهتر شود</string>
+    <string name="conv_log_reencode_result_unusable">نتیجه رمزگذاری مجدد قابل استفاده نیست؛ خروجی بدون تغییر ذخیره شد (ممکن است پخش با فشار طولانی در برخی دستگاه‌ها کار نکند)</string>
+    <string name="conv_log_reencode_still_risky">پس از رمزگذاری مجدد هنوز موارد پرخطر وجود دارد (%1$s)</string>
+    <string name="conv_log_reencode_failed">رمزگذاری مجدد ناموفق بود (%1$s)؛ خروجی بدون تغییر ذخیره شد (ممکن است پخش با فشار طولانی در برخی دستگاه‌ها کار نکند)</string>
+    <string name="conv_log_cover_heic_converted">جلد HEIC بود (نه JPEG) و پیش از بسته‌بندی به JPEG استاندارد تبدیل شد</string>
+    <string name="conv_log_compose_sizes">ترکیب: عکس %1$dB + ویدیو %2$dB ← %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">رمزگذار فعال نشد: فقط برند محفظه بازنویسی می‌شود (MOV ← MP4) و رمزگذاری مجدد انجام نمی‌شود</string>
+    <string name="conv_tag_convert">تبدیل</string>
+    <string name="conv_tag_transcode">تبدیل کد</string>
+    <string name="conv_tag_compose">ترکیب</string>
+    <string name="conv_blocker_no_encoder">رمزگذار داخلی در دسترس نیست</string>
+    <string name="conv_blocker_mode_no_encode">«روش تبدیل» فعلی رمزگذاری مجدد انجام نمی‌دهد</string>
+    <string name="conv_addon_unavailable">رمزگذار داخلی در دسترس نیست</string>
+    <string name="conv_addon_transcode_failed">تبدیل کد ffmpeg ناموفق بود: %1$s</string>
+    <string name="conv_addon_remux_failed">بسته‌بندی مجدد محفظه با ffmpeg ناموفق بود: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ویدیو با ffmpeg به MP4 استاندارد تبدیل می‌شود (%1$s / crf %2$d / %3$s، تنها با نگه‌داشتن مسیرهای ویدیو و صدا)</string>
+    <string name="conv_log_transcode_done">تبدیل کد ویدیو کامل شد (%1$dKB)</string>
+    <string name="conv_log_remuxing">محفظه ویدیو به MP4 استاندارد بسته‌بندی مجدد می‌شود (فقط تعویض محفظه، بدون رمزگذاری مجدد)</string>
+    <string name="conv_log_remux_done">بسته‌بندی مجدد محفظه کامل شد (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">ترکیب</string>
+    <string name="conv_reminder_cat_convert">تبدیل</string>
+    <string name="conv_reminder_cat_update">به‌روزرسانی</string>
+    <string name="conv_reminder_video_over3s_title">ویدیو بیش از 3 ثانیه است</string>
+    <string name="conv_reminder_video_over3s_message">مدت ویدیوی انتخاب‌شده بیش از 3 ثانیه است و Live Photo ساخته‌شده ممکن است مشکلات سازگاری داشته باشد:\n\n• ممکن است درست پخش نشود\n• ممکن است گالری سیستم آن را شناسایی نکند\n• ممکن است برخی دستگاه‌ها این Live Photo را نشناسند</string>
+    <string name="conv_reminder_legacy_go_title">نسخه قدیمی شناسایی شد</string>
+    <string name="conv_reminder_legacy_go_message">نسخه قدیمی (Go) هنوز روی این دستگاه نصب است و روی آن قابل استفاده نیست؛ می‌توانید برای آزاد کردن فضا آن را حذف کنید.</string>
+    <string name="conv_reminder_replace_risk_title">حالت جایگزینی خطر آسیب به فایل دارد</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">حالت جایگزینی نتایج تبدیل را مستقیماً روی فایل‌های اصلی می‌نویسد و پس از بازنویسی نمی‌توان آن‌ها را بازگرداند.\n\n• اگر برنامه در حین نوشتن متوقف شود، فضا تمام شود یا دسترسی لغو شود، فایل‌های مبدأ ممکن است آسیب ببینند\n• موفقیت تبدیل تضمین‌شده نیست و در صورت شکست ممکن است فایل‌های مبدأ قابل استفاده نباشند\n• پیش از پردازش گروهی، ابتدا یک یا دو فایل را آزمایش کنید\n• از عکس‌های مهم خود از قبل نسخه پشتیبان بگیرید\n\nاین قابلیت «همان‌گونه که هست» ارائه می‌شود؛ استفاده از آن با مسئولیت خودتان است و نویسنده مسئول آسیب یا از دست رفتن فایل‌ها نیست.</string>
+    <string name="conv_reminder_dont_remind">دیگر نشان نده</string>
+    <string name="conv_reminder_confirm_ok">متوجه شدم</string>
+    <string name="conv_reminder_uninstall">حذف نصب</string>
+</resources>

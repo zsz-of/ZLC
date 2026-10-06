@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC — cadenas en español de Argentina (es-AR).
+  Adaptadas de res/values-b+es/ (español neutro de España): mismas claves, mismo orden y mismos marcadores.
+  Diferencias regionales: voseo (tocá, elegí, podés, tenés, sos), video (sin tilde), celular,
+  computadora, Configuración, Agregar, acá.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Extracción</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Live Photo de Honor</string>
+    <string name="fmt_meizu">Live Photo de Meizu</string>
+    <string name="fmt_nubia">Live Photo de Nubia</string>
+    <string name="fmt_oppo">Live Photo de OPPO</string>
+    <string name="fmt_vivo">Live Photo de vivo</string>
+    <string name="fmt_vivo_single">Live Photo de vivo (archivo único)</string>
+    <string name="fmt_xiaomi">Live Photo de Xiaomi</string>
+
+    <!--
+      Avisos de fallo visibles que lanzan los complementos (texto de IOException): llegan a la barra
+      de estado y a «Detalles del estado» a través de e.message, por lo que también son texto visible.
+    -->
+    <string name="fmt_err_apple_mov_missing">No se encontró el archivo de video .mov con el mismo nombre</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Al archivo MOV le falta el box ftyp</string>
+    <string name="fmt_err_extract_read">Extracción es un formato de salida y no debe leerse como formato de entrada</string>
+    <string name="fmt_err_no_primary_jpeg">No se encontró la imagen JPEG principal</string>
+    <string name="fmt_err_no_mp4_after_jpeg">No se encontró un video MP4 válido después del JPEG (falta el box ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">No se pudo analizar el flujo de video MP4</string>
+    <string name="fmt_err_nubia_too_short">El archivo es demasiado corto; no parece una Live Photo de Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Falta el número mágico nubiaVpfile al final</string>
+    <string name="fmt_err_nubia_jpeg_len">Longitud de JPEG no válida registrada al final: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Faltan los bytes de relleno 0x00 entre el JPEG y el video</string>
+    <string name="fmt_err_nubia_empty_video">La longitud del video incrustado es 0</string>
+    <string name="fmt_err_vivo_no_marker">No se encontró la marca vivo livephoto al final del JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Falta el archivo de video asociado: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">No se pudo analizar el cuerpo del JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">El MP4 asociado no es válido (falta el box ftyp)</string>
+</resources>

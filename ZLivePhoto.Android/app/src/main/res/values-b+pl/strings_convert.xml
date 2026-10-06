@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Polski (pl) — konwersja / transkodowanie / przypomnienia
+  (core/Converter.kt, core/FfmpegAddon.kt, ui/Reminders.kt).
+  Prefiks kluczy conv_; klucze odpowiadają res/values/ (chiński tekst zapasowy).
+  Symbole zastępcze w formie %1$s / %1$d; `\n` oznacza nowy wiersz.
+  Uwaga: w oryginale napis conv_reminder_replace_risk_message ma atrybut formatted="false"
+  z powodu literalnego znaku %; tutaj zastąpiono go słowem, więc atrybut nie jest potrzebny.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: sprawdzanie parametrów i materiałów (wyjątek → powód niepowodzenia w interfejsie) ========== -->
+    <string name="conv_unknown_target">Nieznany format docelowy: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Nierozpoznany format zdjęcia ruchomego (to nie jest zdjęcie ruchome Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Zdjęcie okładki nie istnieje lub jest puste</string>
+    <string name="conv_video_missing">Film nie istnieje lub jest pusty</string>
+    <string name="conv_video_too_large">Film jest za duży (%1$dMB) — nie można utworzyć zdjęcia ruchomego; wybierz krótszy film</string>
+    <string name="conv_transcoded_too_large">Film po transkodowaniu jest za duży (%1$dMB) — nie można utworzyć zdjęcia ruchomego</string>
+    <string name="conv_video_too_large_compose">Film jest za duży (%1$dMB) — nie można utworzyć zdjęcia ruchomego</string>
+
+    <!-- Converter.kt: okładka (HEIC / nie JPEG) -->
+    <string name="conv_cover_heic_go">Okładka to obraz HEIC (wersja lekka nie obsługuje transkodowania — wyeksportuj JPEG na iPhonie i spróbuj ponownie)</string>
+    <string name="conv_cover_invalid_heic">Okładka nie jest prawidłowym obrazem (HEIC wymaga obsługi dekodowania HEIF w systemie)</string>
+    <string name="conv_cover_not_jpeg_go">Okładka nie jest obrazem JPEG (wersja lekka nie obsługuje transkodowania — użyj zdjęcia JPEG)</string>
+    <string name="conv_cover_invalid_image">Okładka nie jest prawidłowym obrazem (obsługiwane są tylko JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: niepowodzenie transkodowania / remuksowania oraz wskazówka, że zmiana kontenera nie naprawi kodowania -->
+    <string name="conv_reencode_failed">Ponowne kodowanie filmu nie powiodło się: %1$s</string>
+    <string name="conv_remux_failed">Remuksowanie kontenera nie powiodło się: %1$s</string>
+    <string name="conv_codec_unknown">To nie jest rozpoznawalny film H.264/H.265</string>
+    <string name="conv_codec_is">Kodek to %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Film „%1$s” %2$s — sama zmiana kontenera (remuksowanie) nie zmieni kodowania i nie pozwoli utworzyć zdjęcia ruchomego.\n\nW „Ustawienia → Transkodowanie wideo → Metoda transkodowania” wybierz „Koduj ponownie” albo najpierw przekonwertuj film na MP4 w H.264/H.265 innym narzędziem.</string>
+    <string name="conv_hint_no_encoder">Film nie jest w standardowym kontenerze MP4 (MOV / MKV / WebM / AVI itp.), a bieżąca „Metoda transkodowania” nie koduje ponownie — nie można utworzyć zdjęcia ruchomego.\n\nW „Ustawienia → Transkodowanie wideo → Metoda transkodowania” wybierz „Koduj ponownie” (wersja standardowa ma wbudowany koder ffmpeg; wersja lekka Go nie zawiera transkodera — użyj wersji standardowej) lub najpierw przekonwertuj film na standardowy MP4 (H.264/H.265).</string>
+
+    <!-- ========== Dziennik konwersji (widoczny na liście i w panelu dziennika) ========== -->
+    <string name="conv_log_detected">Rozpoznano jako %1$s</string>
+    <string name="conv_log_same_format_copied">Format źródłowy i docelowy są takie same — skopiowano bez zmian (bez strat)</string>
+    <string name="conv_log_extra_tracks_bypass">Film źródłowy zawiera ścieżki inne niż audio/wideo (%1$s) — pominięto kopiowanie w tym samym formacie i użyto pełnego zapisu w celu oczyszczenia</string>
+    <string name="conv_log_ts_fallback">W źródle brak znacznika czasu klatki okładki — zgodnie ze specyfikacją użyto środka filmu</string>
+    <string name="conv_log_brand_normalized">Znormalizowano markę kontenera filmu (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Film zawiera dodatkowe ścieżki (%1$s), których nie można usunąć — zapisano bez zmian (na niektórych urządzeniach taki plik może się nie odtwarzać po przytrzymaniu)</string>
+    <string name="conv_log_extra_tracks_removed">Usunięto dodatkowe ścieżki filmu (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Film źródłowy %1$s; samo remuksowanie kontenera tego nie rozwiąże (%2$s) — jeśli wynik nadal nie odtwarza się po przytrzymaniu, w „Ustawienia → Transkodowanie wideo → Metoda transkodowania” wybierz „Koduj ponownie”</string>
+    <string name="conv_log_reencoding">Film źródłowy %1$s — zgodnie z ustawieniami kodowany ponownie do 8bit + AAC dla lepszej zgodności z galerią</string>
+    <string name="conv_log_reencode_result_unusable">Wynik ponownego kodowania jest nieużyteczny — zapisano bez zmian (na niektórych urządzeniach taki plik może się nie odtwarzać po przytrzymaniu)</string>
+    <string name="conv_log_reencode_still_risky">Po ponownym kodowaniu nadal występują ryzykowne elementy (%1$s)</string>
+    <string name="conv_log_reencode_failed">Ponowne kodowanie nie powiodło się (%1$s) — zapisano bez zmian (na niektórych urządzeniach taki plik może się nie odtwarzać po przytrzymaniu)</string>
+    <string name="conv_log_cover_heic_converted">Okładka to HEIC (nie JPEG) — przekonwertowano ją na standardowy JPEG przed zapakowaniem</string>
+    <string name="conv_log_compose_sizes">Kompozycja: zdjęcie %1$dB + film %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkoder nieaktywny: zmieniono tylko markę kontenera (MOV → MP4), bez ponownego kodowania</string>
+
+    <!-- Etykiety dziennika (interfejs pokazuje „[etykieta] tekst”) -->
+    <string name="conv_tag_convert">Konwersja</string>
+    <string name="conv_tag_transcode">Transkodowanie</string>
+    <string name="conv_tag_compose">Kompozycja</string>
+
+    <!-- Przyczyny blokady metody transkodowania (składane do powyższych komunikatów ostrzegawczych) -->
+    <string name="conv_blocker_no_encoder">Wbudowany transkoder jest niedostępny</string>
+    <string name="conv_blocker_mode_no_encode">Bieżąca „Metoda transkodowania” nie koduje ponownie</string>
+
+    <!-- ========== FfmpegAddon.kt: wbudowane transkodowanie / remuksowanie ffmpeg ========== -->
+    <string name="conv_addon_unavailable">Wbudowany transkoder jest niedostępny</string>
+    <string name="conv_addon_transcode_failed">Transkodowanie ffmpeg nie powiodło się: %1$s</string>
+    <string name="conv_addon_remux_failed">Remuksowanie kontenera przez ffmpeg nie powiodło się: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Trwa transkodowanie filmu do standardowego MP4 za pomocą ffmpeg (%1$s / crf %2$d / %3$s, zachowywane są tylko ścieżki wideo i audio)</string>
+    <string name="conv_log_transcode_done">Transkodowanie filmu zakończone (%1$dKB)</string>
+    <string name="conv_log_remuxing">Trwa przepakowywanie kontenera filmu do standardowego MP4 (tylko kontener, bez ponownego kodowania)</string>
+    <string name="conv_log_remux_done">Przepakowanie kontenera zakończone (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: okno „Nie przypominaj” ========== -->
+    <string name="conv_reminder_cat_compose">Kompozycja</string>
+    <string name="conv_reminder_cat_convert">Konwersja</string>
+    <string name="conv_reminder_cat_update">Aktualizacja</string>
+    <string name="conv_reminder_video_over3s_title">Film dłuższy niż 3 sekundy</string>
+    <string name="conv_reminder_video_over3s_message">Wybrany film trwa dłużej niż 3 sekundy; utworzone zdjęcie ruchome może mieć problemy ze zgodnością:\n\n• może się nie odtwarzać prawidłowo\n• może nie być rozpoznane przez galerię systemową\n• na niektórych urządzeniach może nie zostać rozpoznane</string>
+    <string name="conv_reminder_legacy_go_title">Wykryto starą wersję</string>
+    <string name="conv_reminder_legacy_go_message">Na tym urządzeniu nadal jest zainstalowana stara wersja (Go). Ta wersja nie działa na tym urządzeniu — możesz ją odinstalować, aby zwolnić miejsce.</string>
+    <string name="conv_reminder_replace_risk_title">Tryb zastępowania grozi uszkodzeniem</string>
+    <!-- Zamiast literalnego znaku % z oryginału użyto sformułowania słownego, dlatego atrybut
+         formatted="false" nie jest tu potrzebny. -->
+    <string name="conv_reminder_replace_risk_message">Tryb zastępowania zapisuje wynik konwersji bezpośrednio do oryginalnego pliku — po nadpisaniu nie da się go odzyskać.\n\n• Jeśli w trakcie zapisu aplikacja zostanie przerwana, zabraknie miejsca lub uprawnienia zostaną cofnięte, plik źródłowy może ulec uszkodzeniu\n• Konwersja nie daje stuprocentowej pewności sukcesu, a przy niepowodzeniu plik źródłowy może być już nieużyteczny\n• Najpierw przetestuj na jednym lub dwóch plikach, a dopiero potem uruchom przetwarzanie wsadowe\n• Ważne zdjęcia najpierw wykonaj kopię zapasową\n\nTa funkcja jest udostępniana „tak jak jest”; ryzyko użycia ponosisz sam, a autor nie odpowiada za uszkodzenie lub utratę plików.</string>
+    <string name="conv_reminder_dont_remind">Nie przypominaj</string>
+    <string name="conv_reminder_confirm_ok">Rozumiem</string>
+    <string name="conv_reminder_uninstall">Odinstaluj</string>
+
+</resources>

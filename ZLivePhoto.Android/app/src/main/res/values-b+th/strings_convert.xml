@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ไทย (th) — ข้อความการแปลง / แปลงรหัส / การแจ้งเตือน
+  (core/Converter.kt, core/FfmpegAddon.kt, ui/Reminders.kt)
+  คำนำหน้าคีย์ conv_; คีย์ตรงกับ res/values/ (ข้อความจีนตัวย่อสำรอง)
+  ตัวแทนค่าใช้รูปแบบ %1$s / %1$d; `\n` คือขึ้นบรรทัดใหม่
+  หมายเหตุ: ข้อความต้นฉบับ conv_reminder_replace_risk_message มีแอตทริบิวต์ formatted="false"
+  เพราะมีเครื่องหมาย % ตามตัวอักษร ในที่นี้เปลี่ยนเป็นคำ จึงไม่จำเป็นต้องใช้แอตทริบิวต์นั้น
+  เอกสารนี้เป็นการแปลโดยใช้โมเดลช่วย อาจมีความไม่ถูกต้อง ยินดีรับการแก้ไขจากชุมชน
+-->
+<resources>
+
+    <!-- ========== Converter.kt: ตรวจสอบพารามิเตอร์และไฟล์ต้นทาง (ข้อยกเว้น → เหตุผลที่ล้มเหลวบนหน้าจอ) ========== -->
+    <string name="conv_unknown_target">รูปแบบเป้าหมายไม่รู้จัก: %1$s</string>
+    <string name="conv_unrecognized_live_photo">รูปแบบภาพเคลื่อนไหวที่ไม่สามารถระบุได้ (ไม่ใช่ภาพเคลื่อนไหวของ Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">ภาพหน้าปกไม่มีอยู่หรือว่างเปล่า</string>
+    <string name="conv_video_missing">วิดีโอไม่มีอยู่หรือว่างเปล่า</string>
+    <string name="conv_video_too_large">วิดีโอใหญ่เกินไป (%1$dMB) จึงสร้างภาพเคลื่อนไหวไม่ได้ กรุณาเลือกวิดีโอที่สั้นลง</string>
+    <string name="conv_transcoded_too_large">วิดีโอหลังแปลงรหัสใหญ่เกินไป (%1$dMB) จึงสร้างภาพเคลื่อนไหวไม่ได้</string>
+    <string name="conv_video_too_large_compose">วิดีโอใหญ่เกินไป (%1$dMB) จึงสร้างภาพเคลื่อนไหวไม่ได้</string>
+
+    <!-- Converter.kt: ภาพหน้าปก (HEIC / ไม่ใช่ JPEG) -->
+    <string name="conv_cover_heic_go">ภาพหน้าปกเป็นภาพ HEIC (เวอร์ชันเบาไม่รองรับการแปลงรหัส กรุณาส่งออกเป็น JPEG บน iPhone แล้วแปลงใหม่)</string>
+    <string name="conv_cover_invalid_heic">ภาพหน้าปกไม่ใช่ภาพที่ถูกต้อง (HEIC ต้องมีระบบรองรับการถอดรหัส HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">ภาพหน้าปกไม่ใช่ภาพ JPEG (เวอร์ชันเบาไม่รองรับการแปลงรหัส กรุณาใช้ภาพ JPEG)</string>
+    <string name="conv_cover_invalid_image">ภาพหน้าปกไม่ใช่ภาพที่ถูกต้อง (รองรับเฉพาะ JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: การแปลงรหัส / บรรจุใหม่ล้มเหลว และคำแนะนำว่าเปลี่ยนคอนเทนเนอร์ไม่ช่วยเรื่องตัวเข้ารหัส -->
+    <string name="conv_reencode_failed">การเข้ารหัสวิดีโอใหม่ล้มเหลว: %1$s</string>
+    <string name="conv_remux_failed">การบรรจุคอนเทนเนอร์ใหม่ล้มเหลว: %1$s</string>
+    <string name="conv_codec_unknown">ไม่ใช่วิดีโอ H.264/H.265 ที่สามารถระบุได้</string>
+    <string name="conv_codec_is">ตัวเข้ารหัสคือ %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">วิดีโอ “%1$s” %2$s การเปลี่ยนเฉพาะคอนเทนเนอร์ (บรรจุใหม่) ไม่สามารถเปลี่ยนตัวเข้ารหัสได้ จึงสร้างภาพเคลื่อนไหวไม่ได้\n\nกรุณาไปที่ “การตั้งค่า → แปลงรหัสวิดีโอ → วิธีแปลงรหัส” แล้วเลือก “เข้ารหัสใหม่” หรือใช้เครื่องมืออื่นแปลงวิดีโอเป็น MP4 ที่เข้ารหัส H.264/H.265 ก่อน</string>
+    <string name="conv_hint_no_encoder">วิดีโอไม่ได้อยู่ในคอนเทนเนอร์ MP4 มาตรฐาน (MOV / MKV / WebM / AVI ฯลฯ) และ “วิธีแปลงรหัส” ปัจจุบันไม่ได้เข้ารหัสใหม่ จึงสร้างภาพเคลื่อนไหวไม่ได้\n\nกรุณาไปที่ “การตั้งค่า → แปลงรหัสวิดีโอ → วิธีแปลงรหัส” แล้วเลือก “เข้ารหัสใหม่” (เวอร์ชันมาตรฐานมีตัวเข้ารหัส ffmpeg ในตัว ส่วนเวอร์ชัน Go เบาไม่มีตัวแปลงรหัส กรุณาใช้เวอร์ชันมาตรฐาน) หรือแปลงวิดีโอเป็น MP4 มาตรฐาน (H.264/H.265) ก่อน</string>
+
+    <!-- ========== บันทึกการแปลง (แสดงในแถบสถานะของรายการและแผงบันทึก) ========== -->
+    <string name="conv_log_detected">ระบุเป็น %1$s</string>
+    <string name="conv_log_same_format_copied">รูปแบบต้นทางและปลายทางเหมือนกัน คัดลอกตามเดิม (ไม่สูญเสียคุณภาพ)</string>
+    <string name="conv_log_extra_tracks_bypass">วิดีโอต้นทางมีแทร็กที่ไม่ใช่เสียง/ภาพ (%1$s) จึงข้ามการคัดลอกรูปแบบเดียวกันและใช้ขั้นตอนเขียนเต็มรูปแบบเพื่อทำความสะอาด</string>
+    <string name="conv_log_ts_fallback">ต้นทางไม่มีเวลาของเฟรมหน้าปก จึงใช้จุดกึ่งกลางวิดีโอตามมาตรฐาน</string>
+    <string name="conv_log_brand_normalized">ปรับแบรนด์คอนเทนเนอร์วิดีโอให้เป็นมาตรฐานแล้ว (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">วิดีโอมีแทร็กเพิ่มเติม (%1$s) ที่ล้างไม่ได้ จึงส่งออกตามเดิม (ไฟล์นี้อาจเล่นไม่ได้เมื่อกดค้างบนบางรุ่น)</string>
+    <string name="conv_log_extra_tracks_removed">นำแทร็กเพิ่มเติมของวิดีโอออกแล้ว (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">วิดีโอต้นทาง %1$s การบรรจุคอนเทนเนอร์ใหม่เพียงอย่างเดียวแก้ไม่ได้ (%2$s) หากผลลัพธ์ยังเล่นไม่ได้เมื่อกดค้าง กรุณาไปที่ “การตั้งค่า → แปลงรหัสวิดีโอ → วิธีแปลงรหัส” แล้วเลือก “เข้ารหัสใหม่”</string>
+    <string name="conv_log_reencoding">วิดีโอต้นทาง %1$s เข้ารหัสใหม่เป็น 8bit + AAC ตามการตั้งค่าเพื่อเพิ่มความเข้ากันได้กับแกลเลอรี</string>
+    <string name="conv_log_reencode_result_unusable">ผลลัพธ์การเข้ารหัสใหม่ใช้งานไม่ได้ จึงส่งออกตามเดิม (ไฟล์นี้อาจเล่นไม่ได้เมื่อกดค้างบนบางรุ่น)</string>
+    <string name="conv_log_reencode_still_risky">หลังเข้ารหัสใหม่ยังมีความเสี่ยง (%1$s)</string>
+    <string name="conv_log_reencode_failed">การเข้ารหัสใหม่ล้มเหลว (%1$s) จึงส่งออกตามเดิม (ไฟล์นี้อาจเล่นไม่ได้เมื่อกดค้างบนบางรุ่น)</string>
+    <string name="conv_log_cover_heic_converted">ภาพหน้าปกเป็น HEIC (ไม่ใช่ JPEG) ได้แปลงเป็น JPEG มาตรฐานก่อนบรรจุ</string>
+    <string name="conv_log_compose_sizes">การรวม: ภาพ %1$dB + วิดีโอ %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ไม่ได้เปิดตัวแปลงรหัส: เปลี่ยนเฉพาะแบรนด์คอนเทนเนอร์ (MOV → MP4) ไม่ได้เข้ารหัสใหม่</string>
+
+    <!-- ป้ายบันทึก (หน้าจอแสดงเป็น “[ป้าย] ข้อความ”) -->
+    <string name="conv_tag_convert">แปลง</string>
+    <string name="conv_tag_transcode">แปลงรหัส</string>
+    <string name="conv_tag_compose">รวม</string>
+
+    <!-- เหตุผลที่วิธีแปลงรหัสถูกบล็อก (ต่อเข้ากับข้อความเตือนด้านบน) -->
+    <string name="conv_blocker_no_encoder">ตัวแปลงรหัสในตัวใช้งานไม่ได้</string>
+    <string name="conv_blocker_mode_no_encode">“วิธีแปลงรหัส” ปัจจุบันไม่ได้เข้ารหัสใหม่</string>
+
+    <!-- ========== FfmpegAddon.kt: การแปลงรหัส / บรรจุใหม่ด้วย ffmpeg ในตัว ========== -->
+    <string name="conv_addon_unavailable">ตัวแปลงรหัสในตัวใช้งานไม่ได้</string>
+    <string name="conv_addon_transcode_failed">การแปลงรหัสด้วย ffmpeg ล้มเหลว: %1$s</string>
+    <string name="conv_addon_remux_failed">การบรรจุคอนเทนเนอร์ใหม่ด้วย ffmpeg ล้มเหลว: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">กำลังใช้ ffmpeg แปลงวิดีโอเป็น MP4 มาตรฐาน (%1$s / crf %2$d / %3$s เก็บเฉพาะแทร็กภาพและเสียง)</string>
+    <string name="conv_log_transcode_done">แปลงรหัสวิดีโอเสร็จสิ้น (%1$dKB)</string>
+    <string name="conv_log_remuxing">กำลังบรรจุคอนเทนเนอร์วิดีโอใหม่เป็น MP4 มาตรฐาน (เปลี่ยนเฉพาะคอนเทนเนอร์ ไม่เข้ารหัสใหม่)</string>
+    <string name="conv_log_remux_done">บรรจุคอนเทนเนอร์ใหม่เสร็จสิ้น (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: หน้าต่าง “ไม่ต้องแจ้งอีก” ========== -->
+    <string name="conv_reminder_cat_compose">รวม</string>
+    <string name="conv_reminder_cat_convert">แปลง</string>
+    <string name="conv_reminder_cat_update">อัปเดต</string>
+    <string name="conv_reminder_video_over3s_title">วิดีโอยาวเกิน 3 วินาที</string>
+    <string name="conv_reminder_video_over3s_message">วิดีโอที่เลือกยาวเกิน 3 วินาที ภาพเคลื่อนไหวที่รวมแล้วอาจมีปัญหาความเข้ากันได้:\n\n• อาจเล่นไม่ได้ตามปกติ\n• อาจไม่ถูกแกลเลอรีของระบบตรวจจับ\n• บางรุ่นอาจตรวจจับภาพเคลื่อนไหวนี้ไม่ได้</string>
+    <string name="conv_reminder_legacy_go_title">ตรวจพบเวอร์ชันเก่า</string>
+    <string name="conv_reminder_legacy_go_message">อุปกรณ์นี้ยังติดตั้งเวอร์ชันเก่า (เวอร์ชัน Go) ซึ่งใช้งานบนอุปกรณ์นี้ไม่ได้ สามารถถอนการติดตั้งเพื่อคืนพื้นที่ได้</string>
+    <string name="conv_reminder_replace_risk_title">โหมดแทนที่มีความเสี่ยงไฟล์เสียหาย</string>
+    <!-- เปลี่ยนเครื่องหมาย % แบบliteral ในต้นฉบับเป็นคำ จึงไม่ต้องใช้ formatted="false" -->
+    <string name="conv_reminder_replace_risk_message">โหมดแทนที่จะเขียนผลลัพธ์การแปลงกลับไปยังไฟล์เดิมโดยตรง เมื่อเขียนทับแล้วจะกู้คืนไม่ได้\n\n• หากระหว่างเขียนแอปถูกขัดจังหวะ พื้นที่เก็บข้อมูลไม่พอ หรือสิทธิ์ถูกเพิกถอน ไฟล์ต้นทางอาจเสียหาย\n• การแปลงเองไม่รับประกันความสำเร็จทั้งหมด เมื่อล้มเหลวไฟล์ต้นทางอาจใช้งานไม่ได้แล้ว\n• แนะนำให้ลองกับไฟล์หนึ่งหรือสองไฟล์ก่อน เมื่อไม่มีปัญหาจึงประมวลผลเป็นชุด\n• ภาพสำคัญกรุณาสำรองข้อมูลด้วยตนเองก่อน\n\nฟีเจอร์นี้ให้บริการ “ตามสภาพที่เป็นอยู่” ความเสี่ยงในการใช้งานเป็นความรับผิดชอบของคุณ ผู้เขียนไม่รับผิดชอบต่อความเสียหายหรือการสูญหายของไฟล์</string>
+    <string name="conv_reminder_dont_remind">ไม่ต้องแจ้งอีก</string>
+    <string name="conv_reminder_confirm_ok">รับทราบ</string>
+    <string name="conv_reminder_uninstall">ถอนการติดตั้ง</string>
+
+</resources>

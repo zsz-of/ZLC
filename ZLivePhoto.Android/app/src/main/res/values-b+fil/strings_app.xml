@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Filipino (Tagalog) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Filipino usage (English loanwords for technical actions are kept where they are the natural form); technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="app_language_follow_system">Sundin ang system</string>
+    <string name="app_language_title">Wika ng app</string>
+</resources>

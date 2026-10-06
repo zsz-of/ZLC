@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Filipino (Tagalog) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Filipino usage (English loanwords for technical actions are kept where they are the natural form); technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">Hindi kilalang target na format: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Hindi kilalang format ng Live Photo (hindi Live Photo ng Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Nawawala o walang laman ang cover na larawan</string>
+    <string name="conv_video_missing">Nawawala o walang laman ang video</string>
+    <string name="conv_video_too_large">Masyadong malaki ang video (%1$d MB) para makagawa ng Live Photo; pumili ng mas maikling video</string>
+    <string name="conv_transcoded_too_large">Masyado pa ring malaki ang video pagkatapos i-transcode (%1$d MB); hindi makakagawa ng Live Photo</string>
+    <string name="conv_video_too_large_compose">Masyadong malaki ang video (%1$d MB); hindi makakagawa ng Live Photo</string>
+    <string name="conv_cover_heic_go">HEIC na larawan ang cover (hindi kayang mag-transcode ang lightweight edition; i-export muna ito bilang JPEG sa iPhone, pagkatapos ay i-convert)</string>
+    <string name="conv_cover_invalid_heic">Hindi valid na larawan ang cover (kailangan ng HEIC ang suporta sa HEIF decoding ng system)</string>
+    <string name="conv_cover_not_jpeg_go">Hindi JPEG na larawan ang cover (hindi kayang mag-transcode ang lightweight edition; gumamit ng JPEG na larawan)</string>
+    <string name="conv_cover_invalid_image">Hindi valid na larawan ang cover (JPEG/WebP/PNG lang ang sinusuportahan)</string>
+    <string name="conv_reencode_failed">Nabigo ang pag-re-encode ng video: %1$s</string>
+    <string name="conv_remux_failed">Nabigo ang pag-remux ng container: %1$s</string>
+    <string name="conv_codec_unknown">Hindi ito kinikilalang H.264/H.265 na video</string>
+    <string name="conv_codec_is">Ang codec ay %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Ang video na “%1$s” ay %2$s; hindi mababago ng pagpapalit ng container lang (remux) ang codec, kaya hindi makakagawa ng Live Photo.\n\nItakda ang “Mga setting → Pag-transcode ng video → Mode ng pag-transcode” sa “I-re-encode”, o i-convert muna ito sa H.264/H.265 na MP4 gamit ang ibang tool.</string>
+    <string name="conv_hint_no_encoder">Wala ang video sa standard na MP4 container (MOV / MKV / WebM / AVI, atbp.), at hindi nagre-re-encode ang kasalukuyang “Mode ng pag-transcode”, kaya hindi makakagawa ng Live Photo.\n\nItakda ang “Mga setting → Pag-transcode ng video → Mode ng pag-transcode” sa “I-re-encode” (may kasamang ffmpeg encoder ang standard edition; walang transcoder ang Go lightweight edition, kaya gamitin ang standard edition), o i-convert muna ang video sa standard na MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">Nakita bilang %1$s</string>
+    <string name="conv_log_same_format_copied">Pareho ang source at target na format; kinopya nang walang pagbabago (walang loss)</string>
+    <string name="conv_log_extra_tracks_bypass">May mga track na hindi audio/video ang source video (%1$s); nilaktawan ang same-format na pagkopya at ginamit ang buong write path para linisin</string>
+    <string name="conv_log_ts_fallback">Walang timestamp ng cover frame ang source; ginamit ang gitna ng video ayon sa specification</string>
+    <string name="conv_log_brand_normalized">Na-normalize ang brand ng video container (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">May mga extra track ang video (%1$s) na hindi malinis; inilabas nang ganito (maaaring hindi mag-play sa long-press sa ilang device)</string>
+    <string name="conv_log_extra_tracks_removed">Tinanggal ang mga extra na video track (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Ang source video ay %1$s; hindi ito maaayos ng remux ng container lang (%2$s). Kung hindi pa rin nag-play sa long-press ang resulta, itakda ang “Mga setting → Pag-transcode ng video → Mode ng pag-transcode” sa “I-re-encode”.</string>
+    <string name="conv_log_reencoding">Ang source video ay %1$s; nagre-re-encode sa 8-bit + AAC ayon sa configuration para mapabuti ang compatibility sa gallery</string>
+    <string name="conv_log_reencode_result_unusable">Hindi magamit ang resulta ng pag-re-encode; inilabas nang ganito (maaaring hindi mag-play sa long-press sa ilang device)</string>
+    <string name="conv_log_reencode_still_risky">May natitirang risk pagkatapos ng pag-re-encode (%1$s)</string>
+    <string name="conv_log_reencode_failed">Nabigo ang pag-re-encode (%1$s); inilabas nang ganito (maaaring hindi mag-play sa long-press sa ilang device)</string>
+    <string name="conv_log_cover_heic_converted">HEIC ang cover (hindi JPEG); ni-transcode sa standard na JPEG bago i-package</string>
+    <string name="conv_log_compose_sizes">Pag-compose: larawan %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Hindi naka-enable ang transcoder: brand ng container lang ang muling isinulat (MOV → MP4), walang pag-re-encode</string>
+    <string name="conv_tag_convert">I-convert</string>
+    <string name="conv_tag_transcode">I-transcode</string>
+    <string name="conv_tag_compose">I-compose</string>
+    <string name="conv_blocker_no_encoder">Hindi available ang built-in na transcoder</string>
+    <string name="conv_blocker_mode_no_encode">Hindi nagre-re-encode ang kasalukuyang “Mode ng pag-transcode”</string>
+    <string name="conv_addon_unavailable">Hindi available ang built-in na transcoder</string>
+    <string name="conv_addon_transcode_failed">Nabigo ang ffmpeg transcode: %1$s</string>
+    <string name="conv_addon_remux_failed">Nabigo ang ffmpeg container remux: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Nagta-transcode ng video sa standard na MP4 gamit ang ffmpeg (%1$s / crf %2$d / %3$s; video at audio track lang ang itinatago)</string>
+    <string name="conv_log_transcode_done">Tapos na ang pag-transcode ng video (%1$d KB)</string>
+    <string name="conv_log_remuxing">Nagre-remux ng video container sa standard na MP4 (container lang, walang pag-re-encode)</string>
+    <string name="conv_log_remux_done">Tapos na ang container remux (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Pag-compose</string>
+    <string name="conv_reminder_cat_convert">Pag-convert</string>
+    <string name="conv_reminder_cat_update">Update</string>
+    <string name="conv_reminder_video_over3s_title">Mahigit 3 segundo ang video</string>
+    <string name="conv_reminder_video_over3s_message">Mahigit 3 segundo ang piniling video, kaya maaaring magkaroon ng isyu sa compatibility ang nabuong Live Photo:\n\n• Maaaring hindi ito mag-play nang maayos\n• Maaaring hindi ito makilala ng gallery ng system\n• May mga device na hindi makikilala ang Live Photo na ito</string>
+    <string name="conv_reminder_legacy_go_title">May nakitang lumang bersyon</string>
+    <string name="conv_reminder_legacy_go_message">Nakainstall pa sa device na ito ang lumang bersyon (Go edition) ng app na ito. Hindi na ito gumagana dito; maaari mo itong i-uninstall para makapagbakante ng espasyo.</string>
+    <string name="conv_reminder_replace_risk_title">May panganib ng pagkasira ang replace mode</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Direktang isinusulat ng replace mode ang resulta ng conversion pabalik sa orihinal na mga file; kapag na-overwrite, hindi na mababawi ang mga orihinal.\n\n• Kung maantala ang app, maubos ang storage, o mabawi ang pahintulot habang nagsusulat, maaaring masira ang mga source file\n• Walang conversion na garantisadong magtatagumpay, at kapag nabigo ay maaaring hindi na magamit ang mga source file\n• Subukan muna ang isa o dalawang file para matiyak na maayos ang lahat bago mag-batch\n• Mag-backup muna ng mahahalagang larawan\n\nIbinibigay ang feature na ito “as is”; gagamitin mo ito sa sarili mong risk, at hindi mananagot ang may-akda sa mga nasirang o nawalang file.</string>
+    <string name="conv_reminder_dont_remind">Huwag nang ipakita</string>
+    <string name="conv_reminder_confirm_ok">Naiintindihan</string>
+    <string name="conv_reminder_uninstall">I-uninstall</string>
+</resources>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Filipino (Tagalog) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Filipino usage (English loanwords for technical actions are kept where they are the natural form); technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">Handa</string>
+    <string name="main_status_location_granted">Ibinigay ang pahintulot sa lokasyon; mapapanatili ang GPS metadata pagkatapos ng conversion</string>
+    <string name="main_status_location_denied">Hindi ibinigay ang pahintulot sa lokasyon: mawawala ang impormasyon ng GPS location sa mga na-convert na larawan</string>
+    <string name="main_status_all_files_granted">Ibinigay ang “Access sa lahat ng file”; direktang magsusulat ang conversion sa folder ng gallery at buong mapapanatili ang impormasyon ng lokasyon</string>
+    <string name="main_status_all_files_denied">Hindi ibinigay ang “Access sa lahat ng file”: maaaring mawala ang impormasyon ng lokasyon pagkatapos ng conversion sa ilang device</string>
+    <string name="main_status_read_granted">Ibinigay ang pahintulot na bumasa ng mga larawan at video</string>
+    <string name="main_status_video_missing">Ibinigay, ngunit wala ang pahintulot sa video: hindi mahanap ang mga kasamang video ng dalawang-file na Live Photo</string>
+    <string name="main_status_permission_denied">Hindi ibinigay ang pahintulot; puwede mong i-tap muli ang “Magdagdag ng file”</string>
+    <string name="main_status_folder_not_selected">Walang piniling folder</string>
+    <string name="main_status_folder_unavailable">Hindi ma-access ang piniling folder (mga local storage folder lang ang sinusuportahan)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">Naisauli ang nakaraang session (%1$d file)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">May nakitang abnormal na pag-exit dati; na-clear na ang hindi natapos na listahan</string>
+    <string name="main_status_compose_blocks_extract">May mga compose task sa pila; hindi makakapagpalit sa extract mode</string>
+    <string name="main_status_replace_off_mutex">Pinatay ang replace mode (hindi ito maaaring sabay sa “Tanggalin ang mga orihinal pagkatapos iproseso”)</string>
+    <string name="main_status_delete_needs_all_files">Kailangan ng “Access sa lahat ng file” para awtomatikong tanggalin ang mga orihinal; ibigay muna ito</string>
+    <string name="main_status_replace_off">Pinatay ang replace mode; isinusulat muli ang resulta ng conversion sa folder ng gallery</string>
+    <string name="main_status_replace_needs_all_files">Kailangan ng replace mode ang “Access sa lahat ng file”; ibigay muna ito</string>
+    <string name="main_status_delete_off_mutex">Pinatay ang “Tanggalin ang mga orihinal pagkatapos iproseso” (hindi ito maaaring sabay sa replace mode)</string>
+    <string name="main_status_loading_albums">Naglo-load ng mga album…</string>
+    <string name="main_status_no_albums">Walang nakitang album</string>
+    <string name="main_status_compose_no_photo">Walang piniling larawan; hindi makakapag-compose</string>
+    <string name="main_status_compose_no_video">Walang piniling video; hindi makakapag-compose</string>
+    <string name="main_status_compose_all_added">Nasa listahan na ang lahat ng piniling larawan</string>
+    <string name="main_status_compose_paired">%1$d larawan at %2$d video; nagdagdag ng %3$d compose pair base sa mas maliit na bilang</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">Nagdagdag ng %1$d compose task; i-tap ang “Simulan ang conversion” para mag-compose</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (automatikong inilipat sa Google ang output format)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">Nag-a-import ng %1$d shared na larawan…</item>
+    </plurals>
+    <string name="main_status_import_failed">Nabigo ang pag-import: %1$s</string>
+    <string name="main_status_import_done_partial">Tapos ang pag-import: %1$d ang nagtagumpay, %2$d ang nabigo</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">Tapos ang pag-import: %1$d file ang na-import sa kabuuan</item>
+    </plurals>
+    <string name="main_status_import_stopped">Itinigil ang pag-import: %1$d ang nagtagumpay, %2$d ang nabigo</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">Nag-a-import ng %1$d file…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Nag-a-import %1$d/%2$d…</string>
+    <string name="main_status_stopping">Itinitigil… (hihinto kapag natapos ang kasalukuyang file)</string>
+    <string name="main_status_stopping_import">Itinitigil ang pag-import…</string>
+    <string name="main_status_removed">Tinanggal ang %1$s</string>
+    <string name="main_status_cleared">Na-clear</string>
+    <string name="main_status_nothing_to_convert">Walang file na iko-convert</string>
+    <string name="main_status_folder_unreadable">Hindi mabasa ang piniling folder</string>
+    <string name="main_status_scanning_folder">Nag-scan ng folder…</string>
+    <string name="main_status_no_images">Walang nakitang larawan sa piniling folder</string>
+    <string name="main_status_batch_importing">Nagba-batch import %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">Itinigil ang batch import: %1$d Live Photo ang na-import sa kabuuan</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">Itinigil ang batch import: %1$d Live Photo ang na-import sa kabuuan, %2$d file na hindi Live Photo ang nilaktawan</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">Tapos ang batch import: %1$d Live Photo ang na-import sa kabuuan</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">Tapos ang batch import: %1$d Live Photo ang na-import sa kabuuan, %2$d file na hindi Live Photo ang nilaktawan</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Itinigil: sa %1$d file, %2$d ang naproseso at %3$d source file ang napalitan</string>
+    <string name="main_status_stopped_export">Itinigil: sa %1$d file, %2$d ang naproseso at %3$d ang na-export sa gallery</string>
+    <string name="main_status_done_replace_reason">Tapos: %1$d file ang naproseso, %2$d source file ang napalitan (dahilan: %3$s)</string>
+    <string name="main_status_done_export_reason">Tapos: %1$d file ang naproseso, %2$d ang na-export sa gallery (dahilan: %3$s)</string>
+    <string name="main_status_done_replace">Tapos: %1$d file ang naproseso, %2$d source file ang napalitan</string>
+    <string name="main_status_done_export">Tapos: %1$d file ang naproseso, %2$d ang na-export sa gallery</string>
+    <string name="main_status_keep_originals">%1$s; hindi ibinigay ang “Full storage access”, kaya pinanatili ang mga orihinal</string>
+    <string name="main_info_detecting">Nagde-detect…</string>
+    <string name="main_info_unrecognized">Hindi kinikilalang format ng Live Photo</string>
+    <string name="main_info_converting">Nagko-convert…</string>
+    <string name="main_info_compose_task">Gawain sa pag-compose (i-tap ang Simulan ang conversion para mag-compose)</string>
+    <string name="main_info_done_replaced">Tapos (%1$d source file ang napalitan)</string>
+    <string name="main_info_done_skipped">Tapos (nilaktawan: conflict sa pangalan)</string>
+    <string name="main_info_done_exported">Tapos (%1$d ang na-export)</string>
+    <string name="main_info_failed">Nabigo: %1$s</string>
+    <string name="main_progress_added">Nagdagdag ng %1$d/%2$d</string>
+    <string name="main_progress_processed">Naproseso %1$d/%2$d</string>
+    <string name="main_progress_imported">Na-import %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Kailangan ang pahintulot na bumasa ng mga larawan at video</string>
+    <string name="main_dialog_permission_message">Kailangan ng app na ito na bumasa ng mga larawan at video sa device mo:\n\n• Pahintulot sa larawan: i-scan ang gallery ng device at kilalanin ang mga Live Photo dito\n• Pahintulot sa video: hanapin ang mga kasamang video ng dalawang-file na Live Photo\n• Pahintulot sa lokasyon: panatilihin ang GPS location metadata sa mga larawan (kung wala ito, mawawala ang impormasyon ng lokasyon ng mga na-convert na larawan)\n\nKung tatanggihan mo ito, hindi magagamit ang built-in na picker; puwede mong i-tap ang “Magdagdag ng file” mamaya para ibigay muli ang pahintulot.</string>
+    <string name="main_dialog_settings_title">Kailangang manu-manong ibigay ang pahintulot sa mga larawan at video</string>
+    <string name="main_dialog_settings_message">Pinili mo dati ang “Huwag nang itanong”, kaya hindi na nagpapakita ng dialog ng pahintulot ang system.\n\nPumunta sa pahina ng detalye ng app → Mga pahintulot → Mga larawan at video, ibigay nang manu-mano ang access, pagkatapos ay bumalik sa app na ito.\n\nTandaan: kailangang ibigay ang parehong pahintulot na “Mga larawan” at “Video”, kung hindi ay hindi mahanap ng dalawang-file na Live Photo ang kasamang video nito.</string>
+    <string name="main_dialog_allfiles_title_delete">Kailangan ng “Access sa lahat ng file” para awtomatikong tanggalin ang mga orihinal</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Hindi sinusuportahan ng device na ito ang awtomatikong pagtanggal ng mga orihinal</string>
+    <string name="main_dialog_allfiles_title_replace">Kailangan ng replace mode ang “Access sa lahat ng file”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Hindi sinusuportahan ng device na ito ang replace mode</string>
+    <string name="main_dialog_allfiles_title_location">Inirerekomenda na ibigay ang “Access sa lahat ng file”</string>
+    <string name="main_dialog_allfiles_delete_message">Direktang tinatanggal ng “Tanggalin ang mga orihinal pagkatapos iproseso” ang mga orihinal na file sa storage (ang larawan at ang kasamang video nito). Hindi na ito maibabalik, kaya kailangang ibigay muna ang “Access sa lahat ng file”.\n\nMagiging available ang switch kapag ibinigay mo ito; puwede mong buksan ito nang sarili mo pagkatapos.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Hindi nagbibigay ang kasalukuyang system (Android 10 o mas luma) ng “Access sa lahat ng file”, kaya hindi direktang matatanggal ang mga orihinal na file sa storage; dahil dito, hindi sinusuportahan ng device na ito ang “Tanggalin ang mga orihinal pagkatapos iproseso”.\n\nPuwede mong manu-manong linisin ang mga orihinal sa gallery ng system pagkatapos ng conversion.</string>
+    <string name="main_dialog_allfiles_replace_message">Direktang isinusulat ng “Replace mode” ang resulta ng conversion pabalik sa mga orihinal na file sa storage (nino-overwrite ang nilalaman nito). Hindi na ito maibabalik, kaya kailangang ibigay muna ang “Access sa lahat ng file”.\n\nMagiging available ang switch kapag ibinigay mo ito; puwede mong buksan ito nang sarili mo pagkatapos.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Hindi nagbibigay ang kasalukuyang system (Android 10 o mas luma) ng “Access sa lahat ng file”, kaya hindi direktang maisusulat muli ang mga orihinal na file sa storage; dahil dito, hindi sinusuportahan ng device na ito ang “Replace mode”.\n\nMaaari kang magpatuloy sa pag-convert sa karaniwang paraan; isinusulat ang mga resulta sa folder ng gallery.</string>
+    <string name="main_dialog_allfiles_location_message">Sa ilang device (tulad ng Meizu), nawawala ang GPS location metadata kapag nagsusulat sa pamamagitan ng gallery API ng system, kaya nawawala ang lokasyon ng mga na-convert na larawan.\n\nKapag ibinigay mo ang “Access sa lahat ng file”, direktang magsusulat ang app na ito sa folder ng gallery at buong mapapanatili ang location metadata.\n\nGumagana pa rin ang conversion kahit wala ito, ngunit maaaring mawala ang impormasyon ng lokasyon sa ilang device.</string>
+    <string name="main_dialog_conflict_title">May conflict sa pangalan ng output file</string>
+    <string name="main_dialog_conflict_message">May file nang may parehong pangalan sa output folder:\n%1$s\n\nPumili kung paano ito haharapin.</string>
+    <string name="main_label_conflict_always">Gamitin ito sa lahat ng susunod na conflict</string>
+    <string name="main_btn_grant">Ibigay</string>
+    <string name="main_btn_deny">Tanggihan</string>
+    <string name="main_btn_go_settings">Buksan ang mga setting</string>
+    <string name="main_btn_cancel">Kanselahin</string>
+    <string name="main_btn_grant_access">Ibigay ang access</string>
+    <string name="main_btn_got_it">Naiintindihan</string>
+    <string name="main_btn_not_now">Hindi ngayon</string>
+    <string name="main_btn_skip">Laktawan</string>
+    <string name="main_btn_overwrite">I-overwrite</string>
+    <string name="main_btn_auto_rename">Auto-rename</string>
+    <plurals name="main_delete_done">
+        <item quantity="other">Tinanggal ang %1$d orihinal na file</item>
+    </plurals>
+    <string name="main_delete_nothing">Walang orihinal na kailangang tanggalin</string>
+    <string name="main_delete_partial">%1$d orihinal na file ang tinanggal (%2$d ang hindi natanggal at pinanatili)</string>
+    <string name="main_delete_failed">Nabigo ang pagtanggal sa mga orihinal (ginagamit ang file o walang write permission); pinanatili ang mga ito</string>
+    <string name="main_export_missing_output">Nawawala o walang laman ang output ng conversion: %1$s</string>
+    <string name="main_export_missing_output_bare">Nawawala o walang laman ang output ng conversion</string>
+    <string name="main_export_insert_null">Nagbalik ng null ang MediaStore insert</string>
+    <string name="main_export_output_stream">Hindi available ang MediaStore output stream</string>
+    <string name="main_export_write_failed">Nabigo ang pagsulat sa MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">Hindi magawa ang folder ng gallery na %1$s</string>
+    <string name="main_export_dir_write_failed">Nabigo ang pagsulat sa folder ng gallery: %1$s</string>
+    <string name="main_export_no_source">Hindi mahanap ang source file; nilaktawan ang pagpapalit</string>
+    <string name="main_export_companion_failed">Nabigo ang pagsulat pabalik sa kasamang file: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Hindi maisusulat ang source folder, kaya hindi naisulat pabalik ang kasamang file</string>
+    <string name="main_export_source_dir_unavailable">Hindi available ang source folder: %1$s</string>
+    <string name="main_export_replace_failed">Nabigo ang pagpapalit sa source file: %1$s</string>
+    <string name="main_export_replace_failed_bare">Nabigo ang pagpapalit sa source file</string>
+</resources>

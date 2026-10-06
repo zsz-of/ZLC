@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tiếng Việt (vi) — màn hình chính / trình chọn thư viện ảnh (task-4).
+  Tiền tố khóa screen_; khóa tương ứng res/values/ (văn bản tiếng Trung giản thể dự phòng).
+  Placeholder giữ nguyên số thứ tự %1$s / %1$d; có thể đổi thứ tự (ngày tháng).
+-->
+<resources>
+    <!-- Phụ đề thanh trên cùng -->
+    <string name="screen_app_subtitle">Chuyển đổi qua lại các định dạng ảnh động</string>
+    <!-- Số tệp đã chọn ở bên phải thanh trên cùng -->
+    <plurals name="screen_file_count">
+        <item quantity="other">%1$d tệp</item>
+    </plurals>
+    <!-- Lối vào cài đặt trên thanh trên cùng (chỉ để đọc bằng trình đọc màn hình) -->
+    <string name="screen_settings">Cài đặt</string>
+
+    <!-- Hộp thoại chọn định dạng đầu ra -->
+    <string name="screen_select_output_format">Chọn định dạng đầu ra</string>
+    <string name="screen_selected">Đã chọn</string>
+    <string name="screen_vivo_single_warning">⚠ Máy quá cũ có thể không nhận dạng được định dạng này</string>
+    <string name="screen_extract_blocked">⚠ Hàng đợi có tác vụ ghép, không thể chọn tách</string>
+
+    <!-- Tên ngắn của định dạng (tên dài xem fmt_* trong strings_formats.xml) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (một tệp)</string>
+    <string name="screen_format_vivo">vivo (hai tệp)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Tách</string>
+
+    <!-- Hộp công cụ (BottomSheet) -->
+    <string name="screen_toolbox">Hộp công cụ</string>
+    <string name="screen_batch_import">Nhập hàng loạt</string>
+    <string name="screen_batch_import_desc">Quét toàn bộ thư viện ảnh và nhận dạng ảnh động hàng loạt</string>
+    <string name="screen_compose">Tạo ảnh động</string>
+    <string name="screen_compose_desc">Chọn một ảnh và một video để ghép</string>
+    <string name="screen_replace_mode">Chế độ thay thế</string>
+    <string name="screen_replace_mode_desc">Kết quả chuyển đổi ghi trực tiếp vào tệp gốc, không tạo tệp mới</string>
+    <string name="screen_need_all_files_access_hint">Cần quyền “Truy cập tất cả tệp”, nhấn để cấp quyền</string>
+    <string name="screen_agree_and_enable">Đồng ý và bật</string>
+
+    <!-- Trạng thái trống / bảng điều khiển dưới cùng -->
+    <string name="screen_empty_no_files">Chưa thêm tệp nào</string>
+    <string name="screen_view_detail">Xem chi tiết</string>
+    <string name="screen_add_files">Thêm tệp</string>
+    <string name="screen_output_format">Định dạng đầu ra: %1$s</string>
+    <string name="screen_delete_original">Xóa ảnh gốc sau khi xử lý</string>
+    <string name="screen_need_all_files_access_view">Cần quyền “Truy cập tất cả tệp”, nhấn để xem</string>
+    <string name="screen_clear">Xóa hết</string>
+    <string name="screen_stop">Dừng xử lý</string>
+    <string name="screen_start_convert">Bắt đầu chuyển đổi</string>
+
+    <!-- Hộp thoại chi tiết trạng thái -->
+    <string name="screen_status_detail">Chi tiết trạng thái</string>
+    <string name="screen_long_press_copy">Nhấn giữ văn bản để chọn và sao chép</string>
+    <string name="screen_copy">Sao chép</string>
+    <string name="screen_close">Đóng</string>
+
+    <!-- Trình chọn thư viện ảnh -->
+    <string name="screen_back">Quay lại</string>
+    <string name="screen_picker_title_select">Chọn ảnh động</string>
+    <string name="screen_album_count">Album: %1$d</string>
+    <string name="screen_album_collapse_cover">Thu gọn ảnh bìa album</string>
+    <string name="screen_album_expand_cover">Mở rộng ảnh bìa album</string>
+    <string name="screen_scanning_progress">Đang quét %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">%1$d ảnh</item>
+    </plurals>
+    <string name="screen_select_all">Chọn tất cả</string>
+    <string name="screen_no_albums">Không có album khả dụng</string>
+    <string name="screen_no_media">Không tìm thấy ảnh động</string>
+    <string name="screen_no_media_compose">Không tìm thấy ảnh hoặc video</string>
+    <string name="screen_import">Nhập</string>
+    <string name="screen_import_count">Nhập %1$d</string>
+    <string name="screen_import_mixed">Nhập ảnh %1$d · video %2$d</string>
+    <string name="screen_search">Tìm kiếm</string>
+    <string name="screen_search_collapse">Thu gọn tìm kiếm</string>
+    <string name="screen_search_hint">Tìm theo tên</string>
+    <string name="screen_search_clear">Xóa tìm kiếm</string>
+    <string name="screen_sort_date">Ngày</string>
+    <string name="screen_sort_size">Kích thước</string>
+    <string name="screen_sort_name">Tên</string>
+    <string name="screen_sort_asc">Tăng dần</string>
+    <string name="screen_sort_desc">Giảm dần</string>
+
+    <!-- Nhãn ngày trong nhóm album (thứ tự Việt Nam: ngày/tháng/năm) -->
+    <string name="screen_date_today">Hôm nay</string>
+    <string name="screen_date_yesterday">Hôm qua</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

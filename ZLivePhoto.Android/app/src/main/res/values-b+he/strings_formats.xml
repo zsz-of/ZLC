@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · he strings — Hebrew (עברית, RTL)
+  Translated from res/values/strings_formats.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Hebrew. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">חילוץ</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo בקובץ בודד</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">לא נמצא קובץ וידאו .mov באותו שם</string>
+    <string name="fmt_err_apple_mov_no_ftyp">לקובץ MOV חסרה תיבת ftyp</string>
+    <string name="fmt_err_extract_read">חילוץ הוא פורמט פלט ולא ניתן לקרוא אותו כפורמט קלט</string>
+    <string name="fmt_err_no_primary_jpeg">לא נמצאה תמונת JPEG ראשית</string>
+    <string name="fmt_err_no_mp4_after_jpeg">לא נמצא וידאו MP4 תקין אחרי ה-JPEG (חסרה תיבת ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">ניתוח זרם הווידאו MP4 נכשל</string>
+    <string name="fmt_err_nubia_too_short">הקובץ קצר מדי מכדי להיות Live Photo של Nubia</string>
+    <string name="fmt_err_nubia_no_magic">חסר מספר הקסם nubiaVpfile בסוף הקובץ</string>
+    <string name="fmt_err_nubia_jpeg_len">אורך ה-JPEG הרשום בסוף אינו חוקי: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">חסרים בתי ריפוד 0x00 בין ה-JPEG לווידאו</string>
+    <string name="fmt_err_nubia_empty_video">אורך הווידאו המוטבע הוא 0</string>
+    <string name="fmt_err_vivo_no_marker">לא נמצא סימון vivo livephoto בסוף ה-JPG</string>
+    <string name="fmt_err_vivo_companion_missing">קובץ הווידאו הנלווה חסר: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">ניתוח גוף ה-JPG נכשל</string>
+    <string name="fmt_err_vivo_companion_invalid">קובץ ה-MP4 הנלווה אינו תקין (חסרה תיבת ftyp)</string>
+</resources>

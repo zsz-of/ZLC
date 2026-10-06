@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · hi strings — Hindi (हिन्दी)
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline, the fallback locale).
+  Hindi (Devanagari). Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">अज्ञात लक्ष्य फ़ॉर्मैट: %1$s</string>
+    <string name="conv_unrecognized_live_photo">अपरिचित Live Photo फ़ॉर्मैट (Google/OPPO/vivo/Xiaomi/Apple का Live Photo नहीं)</string>
+    <string name="conv_cover_photo_missing">कवर फ़ोटो मौजूद नहीं है या खाली है</string>
+    <string name="conv_video_missing">वीडियो मौजूद नहीं है या खाली है</string>
+    <string name="conv_video_too_large">वीडियो बहुत बड़ा है (%1$d MB), इसे Live Photo में नहीं जोड़ा जा सकता; छोटा वीडियो चुनें</string>
+    <string name="conv_transcoded_too_large">ट्रांसकोड के बाद वीडियो बहुत बड़ा है (%1$d MB), इसे Live Photo में नहीं जोड़ा जा सकता</string>
+    <string name="conv_video_too_large_compose">वीडियो बहुत बड़ा है (%1$d MB), इसे Live Photo में नहीं जोड़ा जा सकता</string>
+    <string name="conv_cover_heic_go">कवर HEIC छवि है (हल्का संस्करण ट्रांसकोडिंग का समर्थन नहीं करता; इसे iPhone से JPEG में निर्यात करें, फिर कन्वर्ट करें)</string>
+    <string name="conv_cover_invalid_heic">कवर मान्य छवि नहीं है (HEIC के लिए HEIF डिकोडिंग हेतु सिस्टम समर्थन चाहिए)</string>
+    <string name="conv_cover_not_jpeg_go">कवर JPEG छवि नहीं है (हल्का संस्करण ट्रांसकोडिंग का समर्थन नहीं करता; JPEG फ़ोटो इस्तेमाल करें)</string>
+    <string name="conv_cover_invalid_image">कवर मान्य छवि नहीं है (केवल JPEG/WebP/PNG समर्थित हैं)</string>
+    <string name="conv_reencode_failed">वीडियो री-एनकोडिंग विफल रही: %1$s</string>
+    <string name="conv_remux_failed">कंटेनर रीमक्स विफल रहा: %1$s</string>
+    <string name="conv_codec_unknown">यह पहचानने योग्य H.264/H.265 वीडियो नहीं है</string>
+    <string name="conv_codec_is">कोडेक %1$s है</string>
+    <string name="conv_hint_remux_cannot_fix">वीडियो «%1$s» %2$s है, और केवल कंटेनर बदलने (रीमक्स) से कोडेक नहीं बदलता, इसलिए Live Photo नहीं बनाया जा सकता।\n\nकृपया «सेटिंग्स ← वीडियो ट्रांसकोडिंग ← ट्रांसकोडिंग विधि» में «री-एनकोड» चुनें, या पहले किसी अन्य टूल से वीडियो को H.264/H.265 MP4 में बदलें।</string>
+    <string name="conv_hint_no_encoder">वीडियो मानक MP4 कंटेनर में नहीं है (MOV / MKV / WebM / AVI आदि), और मौजूदा «ट्रांसकोडिंग विधि» री-एनकोड नहीं करती, इसलिए Live Photo नहीं बनाया जा सकता।\n\nकृपया «सेटिंग्स ← वीडियो ट्रांसकोडिंग ← ट्रांसकोडिंग विधि» में इसे «री-एनकोड» पर बदलें (सामान्य संस्करण में ffmpeg एनकोडर मौजूद है; Go हल्के संस्करण में एनकोडर नहीं है, सामान्य संस्करण इस्तेमाल करें), या पहले वीडियो को मानक MP4 (H.264/H.265) में बदलें।</string>
+    <string name="conv_log_detected">%1$s के रूप में पहचाना गया</string>
+    <string name="conv_log_same_format_copied">स्रोत और लक्ष्य फ़ॉर्मैट समान हैं, फ़ाइल ज्यों की त्यों कॉपी की गई (बिना नुकसान)</string>
+    <string name="conv_log_extra_tracks_bypass">स्रोत वीडियो में ऑडियो/वीडियो के अलावा अन्य ट्रैक हैं (%1$s); समान फ़ॉर्मैट में सीधा पास छोड़कर पूरी राइट प्रक्रिया से सफ़ाई की गई</string>
+    <string name="conv_log_ts_fallback">स्रोत में कवर फ़्रेम का टाइमस्टैम्प नहीं है; मानक के अनुसार वीडियो के मध्य बिंदु पर लौटाया गया</string>
+    <string name="conv_log_brand_normalized">वीडियो कंटेनर ब्रांड सामान्य किया गया (QuickTime ← isom)</string>
+    <string name="conv_log_sanitize_failed">वीडियो में अतिरिक्त ट्रैक हैं (%1$s) जिन्हें साफ़ नहीं किया जा सका; आउटपुट ज्यों का त्यों रखा गया (कुछ डिवाइसों पर लंबे दबाव से प्लेबैक काम नहीं कर सकता)</string>
+    <string name="conv_log_extra_tracks_removed">वीडियो के अतिरिक्त ट्रैक हटाए गए (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">स्रोत वीडियो %1$s है; केवल कंटेनर रीमक्स करने से समस्या हल नहीं होती (%2$s); अगर आउटपुट फिर भी लंबे दबाव से न चले, तो «सेटिंग्स ← वीडियो ट्रांसकोडिंग ← ट्रांसकोडिंग विधि» में «री-एनकोड» चुनें</string>
+    <string name="conv_log_reencoding">स्रोत वीडियो %1$s है; गैलरी संगतता बढ़ाने के लिए सेटिंग्स के अनुसार इसे 8bit + AAC में री-एनकोड किया जा रहा है</string>
+    <string name="conv_log_reencode_result_unusable">री-एनकोड का नतीजा उपयोगी नहीं है; आउटपुट ज्यों का त्यों रखा गया (कुछ डिवाइसों पर लंबे दबाव से प्लेबैक काम नहीं कर सकता)</string>
+    <string name="conv_log_reencode_still_risky">री-एनकोड के बाद भी जोखिम वाले बिंदु मौजूद हैं (%1$s)</string>
+    <string name="conv_log_reencode_failed">री-एनकोड विफल रहा (%1$s); आउटपुट ज्यों का त्यों रखा गया (कुछ डिवाइसों पर लंबे दबाव से प्लेबैक काम नहीं कर सकता)</string>
+    <string name="conv_log_cover_heic_converted">कवर HEIC था (JPEG नहीं); पैकेजिंग से पहले इसे मानक JPEG में बदला गया</string>
+    <string name="conv_log_compose_sizes">कंपोज़: फ़ोटो %1$dB + वीडियो %2$dB ← %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">एनकोडर सक्रिय नहीं: केवल कंटेनर ब्रांड बदला गया (MOV ← MP4), री-एनकोड नहीं</string>
+    <string name="conv_tag_convert">कन्वर्ट</string>
+    <string name="conv_tag_transcode">ट्रांसकोड</string>
+    <string name="conv_tag_compose">कंपोज़</string>
+    <string name="conv_blocker_no_encoder">अंतर्निहित एनकोडर उपलब्ध नहीं है</string>
+    <string name="conv_blocker_mode_no_encode">मौजूदा «ट्रांसकोडिंग विधि» री-एनकोड नहीं करती</string>
+    <string name="conv_addon_unavailable">अंतर्निहित एनकोडर उपलब्ध नहीं है</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ट्रांसकोडिंग विफल रही: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg से कंटेनर रीमक्स विफल रहा: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg से वीडियो को मानक MP4 में ट्रांसकोड किया जा रहा है (%1$s / crf %2$d / %3$s, केवल वीडियो और ऑडियो ट्रैक रखे जा रहे हैं)</string>
+    <string name="conv_log_transcode_done">वीडियो ट्रांसकोडिंग पूरी हुई (%1$dKB)</string>
+    <string name="conv_log_remuxing">वीडियो कंटेनर को मानक MP4 में रीमक्स किया जा रहा है (केवल कंटेनर बदलना, री-एनकोड नहीं)</string>
+    <string name="conv_log_remux_done">कंटेनर रीमक्स पूरा हुआ (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">कंपोज़</string>
+    <string name="conv_reminder_cat_convert">कन्वर्ट</string>
+    <string name="conv_reminder_cat_update">अपडेट</string>
+    <string name="conv_reminder_video_over3s_title">वीडियो 3 सेकंड से अधिक है</string>
+    <string name="conv_reminder_video_over3s_message">चुना गया वीडियो 3 सेकंड से अधिक लंबा है, बनाए गए Live Photo में संगतता संबंधी समस्याएँ हो सकती हैं:\n\n• ठीक से चल न सके\n• सिस्टम गैलरी उसे पहचान न सके\n• कुछ डिवाइस इस Live Photo को न पहचानें</string>
+    <string name="conv_reminder_legacy_go_title">पुराना संस्करण मिला</string>
+    <string name="conv_reminder_legacy_go_message">इस डिवाइस पर अभी भी पुराना संस्करण (Go) इंस्टॉल है, जो इस पर काम नहीं करता; जगह खाली करने के लिए इसे अनइंस्टॉल कर सकते हैं।</string>
+    <string name="conv_reminder_replace_risk_title">रिप्लेस मोड में फ़ाइल खराब होने का जोखिम है</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">रिप्लेस मोड कन्वर्ज़न के नतीजे सीधे मूल फ़ाइलों पर लिखता है, और लिखने के बाद उन्हें वापस नहीं पाया जा सकता।\n\n• लिखने के दौरान ऐप बंद होने, स्टोरेज भर जाने या अनुमति हटने पर स्रोत फ़ाइलें खराब हो सकती हैं\n• कन्वर्ज़न की सफलता की गारंटी नहीं है, और विफल होने पर स्रोत फ़ाइलें अनुपयोगी हो सकती हैं\n• बड़े पैमाने पर प्रोसेस करने से पहले एक-दो फ़ाइलों पर आज़माएँ\n• ज़रूरी फ़ोटो का पहले खुद बैकअप लें\n\nयह सुविधा «जैसी है वैसी» दी गई है; इसका उपयोग आपकी ज़िम्मेदारी पर है, और लेखक फ़ाइल खराब होने या खोने के लिए उत्तरदायी नहीं है।</string>
+    <string name="conv_reminder_dont_remind">दोबारा न दिखाएँ</string>
+    <string name="conv_reminder_confirm_ok">समझ गया</string>
+    <string name="conv_reminder_uninstall">अनइंस्टॉल करें</string>
+</resources>

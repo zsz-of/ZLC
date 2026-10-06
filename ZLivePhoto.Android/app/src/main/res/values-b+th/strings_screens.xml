@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ไทย (th) — หน้าจอหลัก / ตัวเลือกจากแกลเลอรี (task-4)
+  คำนำหน้าคีย์ screen_; คีย์ตรงกับ res/values/ (ข้อความจีนตัวย่อสำรอง)
+  ตัวแทนค่ารักษาลำดับหมายเลข %1$s / %1$d และสามารถสลับลำดับได้ (วันที่)
+  เอกสารนี้เป็นการแปลโดยใช้โมเดลช่วย อาจมีความไม่ถูกต้อง ยินดีรับการแก้ไขจากชุมชน
+-->
+<resources>
+    <!-- คำบรรยายใต้แถบด้านบน -->
+    <string name="screen_app_subtitle">แปลงรูปแบบภาพเคลื่อนไหวไปมาระหว่างกัน</string>
+    <!-- จำนวนไฟล์ที่เลือกทางขวาของแถบด้านบน -->
+    <plurals name="screen_file_count">
+        <item quantity="other">%1$d ไฟล์</item>
+    </plurals>
+    <!-- ทางเข้าตั้งค่าบนแถบด้านบน (สำหรับโปรแกรมอ่านหน้าจอเท่านั้น) -->
+    <string name="screen_settings">การตั้งค่า</string>
+
+    <!-- หน้าต่างเลือกรูปแบบผลลัพธ์ -->
+    <string name="screen_select_output_format">เลือกรูปแบบผลลัพธ์</string>
+    <string name="screen_selected">เลือกแล้ว</string>
+    <string name="screen_vivo_single_warning">⚠ เครื่องรุ่นเก่าเกินไปอาจไม่รู้จักรูปแบบนี้</string>
+    <string name="screen_extract_blocked">⚠ คิวมีงานรวมภาพ จึงเลือกแยกไม่ได้</string>
+
+    <!-- ชื่อย่อของรูปแบบ (ชื่อเต็มดู fmt_* ใน strings_formats.xml) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (ไฟล์เดียว)</string>
+    <string name="screen_format_vivo">vivo (สองไฟล์)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">แยก</string>
+
+    <!-- กล่องเครื่องมือ (BottomSheet) -->
+    <string name="screen_toolbox">กล่องเครื่องมือ</string>
+    <string name="screen_batch_import">นำเข้าเป็นชุด</string>
+    <string name="screen_batch_import_desc">สแกนแกลเลอรีทั้งหมดและตรวจจับภาพเคลื่อนไหวเป็นชุด</string>
+    <string name="screen_compose">สร้างภาพเคลื่อนไหว</string>
+    <string name="screen_compose_desc">เลือกภาพหนึ่งภาพและวิดีโอหนึ่งไฟล์มาจับคู่รวมกัน</string>
+    <string name="screen_replace_mode">โหมดแทนที่</string>
+    <string name="screen_replace_mode_desc">ผลลัพธ์การแปลงจะเขียนกลับไปยังไฟล์เดิมโดยตรง ไม่สร้างไฟล์ใหม่</string>
+    <string name="screen_need_all_files_access_hint">ต้องใช้สิทธิ์ “เข้าถึงไฟล์ทั้งหมด” แตะที่นี่เพื่อให้สิทธิ์</string>
+    <string name="screen_agree_and_enable">ยอมรับและเปิด</string>
+
+    <!-- สถานะว่าง / แผงควบคุมด้านล่าง -->
+    <string name="screen_empty_no_files">ยังไม่ได้เพิ่มไฟล์</string>
+    <string name="screen_view_detail">ดูรายละเอียด</string>
+    <string name="screen_add_files">เพิ่มไฟล์</string>
+    <string name="screen_output_format">รูปแบบผลลัพธ์: %1$s</string>
+    <string name="screen_delete_original">ลบไฟล์ต้นฉบับหลังประมวลผล</string>
+    <string name="screen_need_all_files_access_view">ต้องใช้สิทธิ์ “เข้าถึงไฟล์ทั้งหมด” แตะเพื่อดู</string>
+    <string name="screen_clear">ล้าง</string>
+    <string name="screen_stop">หยุดประมวลผล</string>
+    <string name="screen_start_convert">เริ่มแปลง</string>
+
+    <!-- หน้าต่างรายละเอียดสถานะ -->
+    <string name="screen_status_detail">รายละเอียดสถานะ</string>
+    <string name="screen_long_press_copy">กดข้อความค้างเพื่อเลือกและคัดลอก</string>
+    <string name="screen_copy">คัดลอก</string>
+    <string name="screen_close">ปิด</string>
+
+    <!-- ตัวเลือกจากแกลเลอรี -->
+    <string name="screen_back">ย้อนกลับ</string>
+    <string name="screen_picker_title_select">เลือกภาพเคลื่อนไหว</string>
+    <string name="screen_album_count">อัลบั้ม %1$d</string>
+    <string name="screen_album_collapse_cover">ย่อปกอัลบั้ม</string>
+    <string name="screen_album_expand_cover">ขยายปกอัลบั้ม</string>
+    <string name="screen_scanning_progress">กำลังสแกน %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">%1$d รูป</item>
+    </plurals>
+    <string name="screen_select_all">เลือกทั้งหมด</string>
+    <string name="screen_no_albums">ไม่มีอัลบั้มที่ใช้ได้</string>
+    <string name="screen_no_media">ไม่พบภาพเคลื่อนไหว</string>
+    <string name="screen_no_media_compose">ไม่พบภาพหรือวิดีโอ</string>
+    <string name="screen_import">นำเข้า</string>
+    <string name="screen_import_count">นำเข้า %1$d</string>
+    <string name="screen_import_mixed">นำเข้า ภาพ %1$d · วิดีโอ %2$d</string>
+    <string name="screen_search">ค้นหา</string>
+    <string name="screen_search_collapse">ย่อการค้นหา</string>
+    <string name="screen_search_hint">ค้นหาตามชื่อ</string>
+    <string name="screen_search_clear">ล้างการค้นหา</string>
+    <string name="screen_sort_date">วันที่</string>
+    <string name="screen_sort_size">ขนาด</string>
+    <string name="screen_sort_name">ชื่อ</string>
+    <string name="screen_sort_asc">จากน้อยไปมาก</string>
+    <string name="screen_sort_desc">จากมากไปน้อย</string>
+
+    <!-- ป้ายวันที่ในกลุ่มอัลบั้ม (ลำดับไทย: วัน/เดือน/ปี) -->
+    <string name="screen_date_today">วันนี้</string>
+    <string name="screen_date_yesterday">เมื่อวาน</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

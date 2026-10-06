@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（维吾尔语 ug，B 级），可能存在不准确之处，欢迎社区修正。
+     بۇ ھۆججەت ماشىنا ياردىمىدە تەرجىمە قىلىنغان (B دەرىجە)، خاتالىقلار بولۇشى مۇمكىن.
+     专有名词 Material You / ffmpeg / Alipay / Coolapk / GitHub / Android 保留原文。 -->
+<resources>
+
+    <string name="settings_title">تەڭشەك</string>
+    <string name="settings_cd_back">قايتىش</string>
+    <string name="settings_btn_apply">قوللىنىش</string>
+    <string name="settings_btn_cancel">بىكار قىلىش</string>
+    <string name="settings_btn_close">تاقاش</string>
+    <string name="settings_btn_ok">بولىدۇ</string>
+    <string name="settings_btn_sponsor">ئىئانە قىلىش</string>
+
+    <string name="settings_section_general">ئومۇمىي</string>
+    <string name="settings_section_appearance">كۆرۈنۈش</string>
+    <string name="settings_section_language">تىل</string>
+    <string name="settings_section_defaults">سۈكۈتتىكى تاللانمىلار</string>
+    <string name="settings_section_output">چىقىرىش</string>
+    <string name="settings_section_transcode">سىن كود ئايلاندۇرۇش</string>
+    <string name="settings_section_about">ھەققىدە</string>
+    <string name="settings_section_app">ئەپ</string>
+    <string name="settings_section_credits">تەشەككۈر ۋە ئىئانە</string>
+    <string name="settings_section_opensource">ئوچۇق كود ۋە لىتسېنزىيە</string>
+
+    <string name="settings_startup_check_title">ئىجرا بولغاندا يېڭىلاشنى تەكشۈرۈش</string>
+    <string name="settings_startup_check_subtitle">ئىجرا بولغاندا GitHub دىن ئاپتوماتىك يېڭى نەشرىنى ئالىدۇ، يېڭىلاش بولسا چۈشۈرۈشنى ئەسكەرتىدۇ</string>
+    <string name="settings_haptics_title">تىترەش ئىنكاسى</string>
+    <string name="settings_haptics_subtitle">كۇنۇپكا بېسىش ۋە ھالەت ئۆزگەرگەندىكى تىترەش ئىنكاسى</string>
+    <string name="settings_bounce_title">كۇنۇپكىنىڭ ئېلاستىك ئانىماتسىيەسى</string>
+    <string name="settings_bounce_subtitle">كۇنۇپكا بېسىلغاندا كىچىكلەپ قايتا چوڭىيىدىغان ئانىماتسىيە</string>
+
+    <string name="settings_theme_system">سىستېمىغا ئەگىشىش</string>
+    <string name="settings_theme_dark">قاراڭغۇ</string>
+    <string name="settings_theme_light">يورۇق</string>
+    <string name="settings_dynamic_theme_title">Material You دىنامىكىلىق رەڭ ئېلىش</string>
+    <string name="settings_dynamic_theme_subtitle">سىستېما تەپەلكەر رەڭگىگە ئەگىشىدۇ (Android 12+)؛ تاقىغاندىن كېيىن تۆۋەندىكى ئالدىن بېكىتىلگەن تېما رەڭگى ئىشلىتىلىدۇ</string>
+    <string name="settings_preset_colors_title">ئالدىن بېكىتىلگەن تېما رەڭگى</string>
+    <string name="settings_preset_current">نۆۋەتتىكى: %1$s</string>
+    <string name="settings_preset_disabled_hint">«Material You دىنامىكىلىق رەڭ ئېلىش» نى تاقىغاندىن كېيىن تاللىغىلى بولىدۇ</string>
+    <string name="settings_custom">ئۆزىڭىز بېكىتىش</string>
+    <string name="settings_custom_color_title">ئۆزىڭىز بېكىتكەن تېما رەڭگى</string>
+    <string name="settings_cd_custom_palette">ئۆزىڭىز بېكىتكەن رەڭ تاختىسى</string>
+    <string name="settings_hue_value">رەڭ تەڭشىكى %1$d°</string>
+
+    <string name="settings_language_dialog_title">ئەپ تىلىنى تاللاڭ</string>
+    <string name="settings_language_count">جەمئىي %1$d خىل تىل</string>
+
+    <string name="settings_reminder_dialogs_title">قايتا ئەسكەرتمەسلىك كۆزنىكى</string>
+    <string name="settings_reminder_dialogs_subtitle">بارلىق «قايتا ئەسكەرتمەسلىك» كۆزنەكلىرىنىڭ كۇنۇپكىسىنى باشقۇرۇش</string>
+    <string name="settings_reminder_hint">كۇنۇپكا ئېچىلغان بولسا «قايتا ئەسكەرتمەسلىك» دېگەنلىك؛ تاقىغاندىن كېيىن، كېيىنكى قېتىم مۇناسىۋەتلىك ئەھۋال يۈز بەرگەندە ئەسكەرتىش قايتا چىقىدۇ.</string>
+
+    <string name="settings_preserve_folders_title">مەنبە ھۆججەت قىسقۇچ قاتلىمى بويىچە چىقىرىش</string>
+    <string name="settings_preserve_folders_subtitle">ئايلاندۇرۇش نەتىجىسى ئەسلى ئالبوم نامى بويىچە تارماق مۇندەرىجىلەرگە ساقلىنىدۇ؛ تاقىغاندىن كېيىن ھەممىسى بىر مۇندەرىجىگە يېيىلىدۇ</string>
+
+    <string name="settings_about_title">ھەققىدە</string>
+    <string name="settings_about_subtitle">نەشرى · يېڭىلاشنى تەكشۈرۈش · تەشەككۈر ۋە ئىئانە</string>
+    <string name="settings_check_update_title">يېڭىلاشنى تەكشۈرۈش</string>
+    <string name="settings_check_update_subtitle">GitHub Releases دىن ئەڭ يېڭى نەشرىنى ئېلىش</string>
+    <string name="settings_checking">تەكشۈرۈلۈۋاتىدۇ…</string>
+    <string name="settings_update_available">v%1$s ئىشلىتىشكە بولىدۇ</string>
+    <string name="settings_up_to_date">ئەڭ يېڭى نەشرى</string>
+    <string name="settings_network_error">تور خاتالىقى، سەل تۇرۇپ قايتا سىناڭ</string>
+    <string name="settings_reinstall_title">بۇ نەشرىنى قايتا قاچىلاش</string>
+    <string name="settings_reinstall_subtitle">نۆۋەتتىكى ئەڭ يېڭى نەشرىنى چۈشۈرۈپ قاپلاپ قاچىلاش (يېڭىلاشنى سىناش ئۈچۈن)</string>
+    <string name="settings_reinstall_newer_hint">نۆۋەتتە v%1$s غا يېڭىلىغىلى بولىدۇ، ئاۋۋال «يېڭىلاشنى تەكشۈرۈش» نى ئىشلىتىڭ</string>
+    <string name="settings_version_title">نەشرى</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay ئىئانىسى</string>
+    <string name="settings_alipay_subtitle">تەرەققىياتنى قوللاش</string>
+    <string name="settings_coolapk_subtitle">Coolapk ئىشلەتكۈچىسى · قوللىغانلىقى ئۈچۈن تەشەككۈر</string>
+    <string name="settings_ai_credits_subtitle">تەرەققىيات جەريانىدا ياردەم بەرگەن AI IDE ۋە AI مودېللىرىغا تەشەككۈر</string>
+    <string name="settings_github_title">GitHub ئوچۇق كود ئادرېسى</string>
+    <string name="settings_license_title">ئوچۇق كود لىتسېنزىيەسى</string>
+    <string name="settings_sponsor_dialog_title">قوللىغانلىقىڭىزغا تەشەككۈر</string>
+    <string name="settings_sponsor_dialog_text">بۇ ئەپنى قوللاشنى خالىغانلىقىڭىزغا ئىنتايىن تەشەككۈر!\n\nئەگەر سىز يەنىلا ئوقۇغۇچى بولسىڭىز ياكى ئىقتىسادىي جەھەتتىن مۇستەقىل بولمىسىڭىز، چىقىم قىلماڭ——\nبۇ كۆڭۈلنى يۈرىكىڭىزدە ساقلاپ، ئىشلىتىپ داۋاملاشتۇرسىڭىز، مېنىڭ ئۈچۈن ئەڭ ياخشى قوللاش.\n\nئىئانە قىلىشنى خالىسىڭىز، بىر يۈەنمۇ مېھىر-مۇھەببەت، مەن ئۇنى تېخىمۇ ياخشى تەرەققىيات ۋە ئىقتىدارلارغا ئىشلىتىمەن :)</string>
+    <string name="settings_alipay_missing_title">Alipay تېخى قاچىلانمىغان</string>
+    <string name="settings_alipay_missing_text">Alipay بايقالمىدى، ھازىرچە ئىئانە تاماملانمايدۇ.\n\nمەيلى——قانداقلا بولمىسۇن، ياخشى نىيىتىڭىزگە ئىنتايىن تەشەككۈر!</string>
+
+    <string name="settings_transcoder_title">ئىچكى كودلىغۇچ</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">قايتا كودلاش</string>
+    <string name="settings_transcode_mode_remux">پەقەت قاچىنى قايتا ئوراش (تەۋسىيە)</string>
+    <string name="settings_transcode_mode_off">كودلىغۇچنى تامامەن ئىشلەتمەسلىك</string>
+    <string name="settings_transcode_params_title">كود ئايلاندۇرۇش پارامېتىرلىرى</string>
+    <string name="settings_transcode_params_subtitle">قايتا كودلىغاندا ئىشلىتىلىدىغان سۈپەت ۋە پىرىسلاش پارامېتىرلىرى</string>
+    <string name="settings_transcode_params_disabled">پەقەت «ئايلاندۇرۇش ئۇسۇلى» دا «قايتا كودلاش» تاللانغاندا كۈچكە ئىگە</string>
+    <string name="settings_crf_value">سۈپەت CRF: %1$d</string>
+    <string name="settings_crf_hint">سان قانچە كىچىك بولسا سۈپەت شۇنچە يۇقىرى، ھەجىمى شۇنچە چوڭ (سۈكۈتتىكى 18)</string>
+    <string name="settings_encoder_title">كودلىغۇچ</string>
+    <string name="settings_compress_preset_title">پىرىسلاش ئالدىن بېكىتمىسى</string>
+
+</resources>

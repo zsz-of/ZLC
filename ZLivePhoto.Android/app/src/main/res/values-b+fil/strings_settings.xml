@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Filipino (Tagalog) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Filipino usage (English loanwords for technical actions are kept where they are the natural form); technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Mga setting</string>
+    <string name="settings_cd_back">Bumalik</string>
+    <string name="settings_btn_apply">Ilapat</string>
+    <string name="settings_btn_cancel">Kanselahin</string>
+    <string name="settings_btn_close">Isara</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Mag-donate</string>
+    <string name="settings_section_general">Pangkalahatan</string>
+    <string name="settings_section_appearance">Itsura</string>
+    <string name="settings_section_language">Wika</string>
+    <string name="settings_section_defaults">Mga default</string>
+    <string name="settings_section_output">Output</string>
+    <string name="settings_section_transcode">Pag-transcode ng video</string>
+    <string name="settings_section_about">Tungkol</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Mga kredito at donasyon</string>
+    <string name="settings_section_opensource">Open source at lisensya</string>
+    <string name="settings_startup_check_title">Tingnan ang mga update sa pagsisimula</string>
+    <string name="settings_startup_check_subtitle">Awtomatikong kumuha ng bagong bersyon mula sa GitHub sa pagsisimula at mag-alok ng download kapag may available</string>
+    <string name="settings_haptics_title">Haptic feedback</string>
+    <string name="settings_haptics_subtitle">Haptic feedback kapag nag-tap ng button at nagbago ang estado</string>
+    <string name="settings_bounce_title">Animation ng bounce ng button</string>
+    <string name="settings_bounce_subtitle">Scale-and-bounce na animation kapag pinindot ang button</string>
+    <string name="settings_theme_system">Sundin ang system</string>
+    <string name="settings_theme_dark">Madilim</string>
+    <string name="settings_theme_light">Maliwanag</string>
+    <string name="settings_dynamic_theme_title">Dynamic na kulay ng Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Sundin ang kulay ng wallpaper ng system (Android 12+); kapag patay, gagamitin ang mga preset na kulay ng tema sa ibaba</string>
+    <string name="settings_preset_colors_title">Mga preset na kulay ng tema</string>
+    <string name="settings_preset_current">Kasalukuyan: %1$s</string>
+    <string name="settings_preset_disabled_hint">Patayin ang “Dynamic na kulay ng Material You” para pumili</string>
+    <string name="settings_custom">Custom</string>
+    <string name="settings_custom_color_title">Custom na kulay ng tema</string>
+    <string name="settings_cd_custom_palette">Custom na palette</string>
+    <string name="settings_hue_value">Hue %1$d°</string>
+    <string name="settings_language_dialog_title">Piliin ang wika ng app</string>
+    <string name="settings_language_count">%1$d wika ang available</string>
+    <string name="settings_reminder_dialogs_title">Mga dialog na “Huwag nang ipakita”</string>
+    <string name="settings_reminder_dialogs_subtitle">Pamahalaan ang mga switch ng lahat ng dialog na “Huwag nang ipakita”</string>
+    <string name="settings_reminder_hint">Kapag naka-on ang switch, hindi na ipinapakita ang prompt na iyon; kapag naka-off, lalabas muli ang prompt sa susunod na mangyari ang katumbas na sitwasyon.</string>
+    <string name="settings_preserve_folders_title">Gamitin ang hierarchy ng source folder sa output</string>
+    <string name="settings_preserve_folders_subtitle">Ang mga resulta ay nakaimbak sa mga subfolder na pinangalanan ayon sa orihinal na album; kapag patay, lahat ay inilalagay nang patag sa isang folder</string>
+    <string name="settings_about_title">Tungkol</string>
+    <string name="settings_about_subtitle">Bersyon · Tingnan ang mga update · Mga kredito at donasyon</string>
+    <string name="settings_check_update_title">Tingnan ang mga update</string>
+    <string name="settings_check_update_subtitle">Kumuha ng pinakabagong bersyon mula sa GitHub Releases</string>
+    <string name="settings_checking">Sinusesuri…</string>
+    <string name="settings_update_available">May v%1$s</string>
+    <string name="settings_up_to_date">Nasa pinakabagong bersyon ka na</string>
+    <string name="settings_network_error">Error sa network; subukan muli mamaya</string>
+    <string name="settings_reinstall_title">I-reinstall ang bersyong ito</string>
+    <string name="settings_reinstall_subtitle">I-download ang pinakabagong build at i-install ito sa ibabaw ng bersyong ito (para subukan ang update)</string>
+    <string name="settings_reinstall_newer_hint">May v%1$s; gamitin muna ang “Tingnan ang mga update” para mag-upgrade</string>
+    <string name="settings_version_title">Bersyon</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Mag-donate sa pamamagitan ng Alipay</string>
+    <string name="settings_alipay_subtitle">Suportahan ang development</string>
+    <string name="settings_coolapk_subtitle">User ng Coolapk · salamat sa suporta</string>
+    <string name="settings_ai_credits_subtitle">Salamat sa mga AI IDE at AI model na tumulong sa development</string>
+    <string name="settings_github_title">GitHub repository</string>
+    <string name="settings_license_title">Open-source na lisensya</string>
+    <string name="settings_sponsor_dialog_title">Salamat sa iyong suporta</string>
+    <string name="settings_sponsor_dialog_text">Labis kong pinapahalagahan ang kagustuhan mong suportahan ang app na ito!\n\nKung estudyante ka pa o wala pang sariling kita, huwag maggastos para dito — ang itago ang kabaitang iyon sa puso at ang patuloy na paggamit ng app na ito ay ang pinakamagandang suportang hinihiling ko.\n\nKung talagang gusto mong mag-donate, malaking tulong na ang kahit maliit, at gagamitin ko ito para sa mas maayos na maintenance at mga feature:)</string>
+    <string name="settings_alipay_missing_title">Hindi naka-install ang Alipay</string>
+    <string name="settings_alipay_missing_text">Hindi nakita ang Alipay, kaya hindi makumpleto ang donasyon sa ngayon.\n\nAyos lang — maraming salamat sa iyong kabaitan!</string>
+    <string name="settings_transcoder_title">Built-in na transcoder</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">I-re-encode</string>
+    <string name="settings_transcode_mode_remux">Remux ng container lang (inirerekomenda)</string>
+    <string name="settings_transcode_mode_off">Huwag gamitin ang transcoder</string>
+    <string name="settings_transcode_params_title">Mga parameter ng pag-transcode</string>
+    <string name="settings_transcode_params_subtitle">Mga parameter ng kalidad at compression na ginagamit sa pag-re-encode</string>
+    <string name="settings_transcode_params_disabled">Epektibo lang kapag nakatakda ang “Mode ng pag-transcode” sa “I-re-encode”</string>
+    <string name="settings_crf_value">Kalidad CRF: %1$d</string>
+    <string name="settings_crf_hint">Mas mababang value ay mas mataas na kalidad at mas malaking file (default 18)</string>
+    <string name="settings_encoder_title">Encoder</string>
+    <string name="settings_compress_preset_title">Preset ng compression</string>
+</resources>

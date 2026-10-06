@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bahasa Melayu (Malay) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Malaysian Android usage; technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">Tiada URL muat turun GitHub diperoleh; sila cuba lagi kemudian.</string>
+    <string name="update_flavor_standard">Edisi standard</string>
+    <string name="update_flavor_go">Edisi Go</string>
+    <string name="update_lanzou_url_missing">Versi ini tidak menyediakan pautan muat turun Lanzou Cloud; anda boleh menggunakan GitHub.</string>
+    <string name="update_apk_direct_missing">Versi ini tidak menyediakan pautan pakej terus yang sepadan dengan edisi anda; sila pilih APK yang betul di halaman keluaran GitHub.</string>
+    <string name="update_install_permission_missing">Kebenaran “pasang apl tidak diketahui” belum diberikan, jadi pemasangan automatik tidak dapat dilakukan. Sila benarkan dalam tetapan sistem dan cuba lagi.</string>
+    <string name="update_error_unknown">Ralat tidak diketahui</string>
+    <string name="update_fail_lanzou">Muat turun Lanzou Cloud gagal</string>
+    <string name="update_fail_github">Muat turun GitHub gagal</string>
+    <string name="update_lanzou_resolving">Menyelesaikan pautan muat turun Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Memuat turun daripada Lanzou Cloud…</string>
+    <string name="update_github_downloading">Memuat turun daripada GitHub…</string>
+    <string name="update_unzipping">Mengekstrak pakej…</string>
+    <string name="update_notes_empty">Versi ini tiada nota keluaran.</string>
+    <string name="update_use_normal_title">Sila gunakan edisi standard</string>
+    <string name="update_use_normal_body">Peranti ini menjalankan Android 10 atau lebih baharu, dan edisi ringan Go tidak lagi disokong; versi lama tidak boleh digunakan lagi.\n\nEdisi standard (ZLC) sudah dipasang pada peranti ini — sila buka dan teruskan di sana (keluaran baharu tidak lagi menyertakan binaan yang serasi dengan Go; versi lama boleh dinyahpasang untuk mengosongkan ruang).</string>
+    <string name="update_open_normal">Buka edisi standard</string>
+    <string name="update_must_update_title">Anda perlu mengemas kini sebelum boleh meneruskan</string>
+    <string name="update_forced_body">Peranti ini menjalankan Android 10 atau lebih baharu, dan edisi ringan Go tidak lagi disokong; versi lama tidak boleh digunakan lagi, dan keluaran baharu tidak lagi menyertakan binaan yang serasi dengan Go.\n\nSila sambung ke internet dan ketik “Cuba lagi” untuk mendapatkan pakej edisi standard.</string>
+    <string name="update_retry">Cuba lagi</string>
+    <string name="update_switch_normal_body">Peranti ini menjalankan Android 10 atau lebih baharu, dan edisi ringan Go tidak lagi disokong; versi lama tidak boleh digunakan lagi.\nSila muat turun dan pasang edisi standard untuk meneruskan (keluaran baharu tidak lagi menyertakan binaan yang serasi dengan Go).</string>
+    <string name="update_downloading_title">Muat turun kemas kini</string>
+    <string name="update_cancel">Batal</string>
+    <string name="update_need_permission_title">Kebenaran pemasangan diperlukan</string>
+    <string name="update_need_permission_body">Memasang versi baharu memerlukan kebenaran sistem “pasang apl tidak diketahui”.\n\nKetik “Benarkan”, benarkan dalam tetapan dan kembali ke apl; pemasangan akan diteruskan secara automatik (tidak perlu muat turun lagi).</string>
+    <string name="update_grant">Benarkan</string>
+    <string name="update_notice_title">Notis</string>
+    <string name="update_got_it">Faham</string>
+    <string name="update_notes_title">v%1$s · Nota keluaran</string>
+    <string name="update_back">Kembali</string>
+    <string name="update_title_switch_normal">Tukar ke edisi standard</string>
+    <string name="update_title_reinstall">Pasang semula versi ini</string>
+    <string name="update_title_new_version">Versi baharu tersedia</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Ini akan memuat turun dan memasang semula versi ini (menimpa apl semasa).\nCiri ini digunakan untuk menguji mekanisme kemas kini.</string>
+    <string name="update_view_notes">Lihat nota keluaran</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud tidak tersedia buat sementara waktu</string>
+    <string name="update_download_lanzou">Muat turun daripada Lanzou Cloud</string>
+    <string name="update_download_github">Muat turun daripada GitHub</string>
+    <string name="update_download_browser">Muat turun daripada pelayar</string>
+    <string name="update_later">Kemas kini kemudian</string>
+    <string name="update_later_switch">Tukar kemudian</string>
+    <string name="update_skip_version">Langkau versi ini</string>
+</resources>

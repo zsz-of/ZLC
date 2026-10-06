@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bahasa Melayu (Malay) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Malaysian Android usage; technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">Sedia</string>
+    <string name="main_status_location_granted">Kebenaran lokasi diberikan; metadata GPS akan dikekalkan selepas penukaran</string>
+    <string name="main_status_location_denied">Kebenaran lokasi tidak diberikan: foto hasil penukaran akan kehilangan maklumat lokasi GPS</string>
+    <string name="main_status_all_files_granted">“Akses semua fail” diberikan; penukaran akan menulis terus ke folder galeri dan mengekalkan maklumat lokasi sepenuhnya</string>
+    <string name="main_status_all_files_denied">“Akses semua fail” tidak diberikan: sesetengah peranti mungkin kehilangan maklumat lokasi selepas penukaran</string>
+    <string name="main_status_read_granted">Kebenaran membaca foto dan video diberikan</string>
+    <string name="main_status_video_missing">Diberikan, tetapi kebenaran video tiada: tidak dapat mencari video pasangan bagi Live Photo dua fail</string>
+    <string name="main_status_permission_denied">Kebenaran tidak diberikan; anda boleh ketik “Tambah fail” sekali lagi</string>
+    <string name="main_status_folder_not_selected">Tiada folder dipilih</string>
+    <string name="main_status_folder_unavailable">Tidak dapat mengakses folder yang dipilih (hanya folder storan setempat disokong)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">Sesi terdahulu dipulihkan (%1$d fail)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Keluar tidak normal yang lalu dikesan; senarai yang belum selesai telah dikosongkan</string>
+    <string name="main_status_compose_blocks_extract">Baris gilir mengandungi tugasan gabung; tidak boleh bertukar ke mod ekstrak</string>
+    <string name="main_status_replace_off_mutex">Mod ganti dimatikan (saling eksklusif dengan “Padam fail asal selepas diproses”)</string>
+    <string name="main_status_delete_needs_all_files">Memadam fail asal secara automatik memerlukan “Akses semua fail”; sila berikannya dahulu</string>
+    <string name="main_status_replace_off">Mod ganti dimatikan; hasil penukaran ditulis ke folder galeri semula</string>
+    <string name="main_status_replace_needs_all_files">Mod ganti memerlukan “Akses semua fail”; sila berikannya dahulu</string>
+    <string name="main_status_delete_off_mutex">“Padam fail asal selepas diproses” dimatikan (saling eksklusif dengan mod ganti)</string>
+    <string name="main_status_loading_albums">Memuatkan album…</string>
+    <string name="main_status_no_albums">Tiada album dijumpai</string>
+    <string name="main_status_compose_no_photo">Tiada foto dipilih; tidak dapat menggabungkan</string>
+    <string name="main_status_compose_no_video">Tiada video dipilih; tidak dapat menggabungkan</string>
+    <string name="main_status_compose_all_added">Semua foto yang dipilih sudah ada dalam senarai</string>
+    <string name="main_status_compose_paired">%1$d foto dan %2$d video; menambah %3$d pasangan gabungan berdasarkan bilangan yang lebih kecil</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">Ditambah %1$d tugasan gabung; ketik “Mula tukar format” untuk menggabungkan</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (format output bertukar secara automatik kepada Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">Mengimport %1$d imej yang dikongsi…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import gagal: %1$s</string>
+    <string name="main_status_import_done_partial">Import selesai: %1$d berjaya, %2$d gagal</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">Import selesai: sejumlah %1$d fail diimport</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import dihentikan: %1$d berjaya, %2$d gagal</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">Mengimport %1$d fail…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Mengimport %1$d/%2$d…</string>
+    <string name="main_status_stopping">Menghentikan… (akan berhenti selepas fail semasa selesai)</string>
+    <string name="main_status_stopping_import">Menghentikan import…</string>
+    <string name="main_status_removed">%1$s dibuang</string>
+    <string name="main_status_cleared">Dikosongkan</string>
+    <string name="main_status_nothing_to_convert">Tiada fail untuk ditukar format</string>
+    <string name="main_status_folder_unreadable">Tidak dapat membaca folder yang dipilih</string>
+    <string name="main_status_scanning_folder">Mengimbas folder…</string>
+    <string name="main_status_no_images">Tiada imej dijumpai dalam folder yang dipilih</string>
+    <string name="main_status_batch_importing">Mengimport pukal %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">Import pukal dihentikan: sejumlah %1$d Live Photo diimport</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">Import pukal dihentikan: sejumlah %1$d Live Photo diimport, %2$d fail bukan Live Photo dilangkau</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">Import pukal selesai: sejumlah %1$d Live Photo diimport</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">Import pukal selesai: sejumlah %1$d Live Photo diimport, %2$d fail bukan Live Photo dilangkau</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Dihentikan: daripada %1$d fail, %2$d diproses dan %3$d fail sumber diganti</string>
+    <string name="main_status_stopped_export">Dihentikan: daripada %1$d fail, %2$d diproses dan %3$d dieksport ke galeri</string>
+    <string name="main_status_done_replace_reason">Selesai: %1$d fail diproses, %2$d fail sumber diganti (sebab: %3$s)</string>
+    <string name="main_status_done_export_reason">Selesai: %1$d fail diproses, %2$d dieksport ke galeri (sebab: %3$s)</string>
+    <string name="main_status_done_replace">Selesai: %1$d fail diproses, %2$d fail sumber diganti</string>
+    <string name="main_status_done_export">Selesai: %1$d fail diproses, %2$d dieksport ke galeri</string>
+    <string name="main_status_keep_originals">%1$s; “Akses storan penuh” tidak diberikan, jadi fail asal dikekalkan</string>
+    <string name="main_info_detecting">Mengesan…</string>
+    <string name="main_info_unrecognized">Format Live Photo tidak dikenali</string>
+    <string name="main_info_converting">Menukar format…</string>
+    <string name="main_info_compose_task">Tugasan gabung (ketik Mula tukar format untuk menggabungkan)</string>
+    <string name="main_info_done_replaced">Selesai (%1$d fail sumber diganti)</string>
+    <string name="main_info_done_skipped">Selesai (dilangkau: nama berkonflik)</string>
+    <string name="main_info_done_exported">Selesai (%1$d dieksport)</string>
+    <string name="main_info_failed">Gagal: %1$s</string>
+    <string name="main_progress_added">Ditambah %1$d/%2$d</string>
+    <string name="main_progress_processed">Diproses %1$d/%2$d</string>
+    <string name="main_progress_imported">Diimport %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Kebenaran membaca foto dan video diperlukan</string>
+    <string name="main_dialog_permission_message">Apl ini perlu membaca foto dan video pada peranti anda:\n\n• Kebenaran foto: mengimbas galeri peranti dan mengenal pasti Live Photo di dalamnya\n• Kebenaran video: mencari video pasangan bagi Live Photo dua fail\n• Kebenaran lokasi: mengekalkan metadata lokasi GPS dalam foto (tanpanya, foto hasil penukaran kehilangan maklumat lokasi)\n\nJika anda menolaknya, pemilih terbina dalam tidak boleh digunakan; anda boleh ketik “Tambah fail” kemudian untuk memberikan kebenaran sekali lagi.</string>
+    <string name="main_dialog_settings_title">Kebenaran foto dan video perlu diberikan secara manual</string>
+    <string name="main_dialog_settings_message">Anda sebelum ini memilih “Jangan tanya lagi”, jadi sistem tidak lagi memaparkan dialog kebenaran.\n\nSila pergi ke halaman butiran apl → Kebenaran → Foto dan video, berikan akses secara manual, kemudian kembali ke apl ini.\n\nNota: kebenaran “Foto” dan “Video” kedua-duanya perlu diberikan, jika tidak Live Photo dua fail tidak akan dapat mencari video pasangannya.</string>
+    <string name="main_dialog_allfiles_title_delete">Memadam fail asal secara automatik memerlukan “Akses semua fail”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Peranti ini tidak menyokong pemadaman fail asal secara automatik</string>
+    <string name="main_dialog_allfiles_title_replace">Mod ganti memerlukan “Akses semua fail”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Peranti ini tidak menyokong mod ganti</string>
+    <string name="main_dialog_allfiles_title_location">Memberikan “Akses semua fail” adalah disyorkan</string>
+    <string name="main_dialog_allfiles_delete_message">“Padam fail asal selepas diproses” memadam fail asal dalam storan secara terus (foto serta video pasangannya). Tindakan ini tidak boleh dibatalkan, jadi “Akses semua fail” perlu diberikan dahulu.\n\nSuis akan tersedia selepas anda memberikannya; anda boleh menghidupkannya sendiri ketika itu.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Sistem semasa (Android 10 atau lebih lama) tidak menyediakan “Akses semua fail”, jadi fail asal dalam storan tidak boleh dipadam terus; oleh itu peranti ini tidak menyokong “Padam fail asal selepas diproses”.\n\nAnda boleh membersihkan fail asal secara manual dalam galeri sistem selepas penukaran.</string>
+    <string name="main_dialog_allfiles_replace_message">“Mod ganti” menulis hasil penukaran terus kembali ke fail asal dalam storan (menulis ganti kandungannya). Tindakan ini tidak boleh dibatalkan, jadi “Akses semua fail” perlu diberikan dahulu.\n\nSuis akan tersedia selepas anda memberikannya; anda boleh menghidupkannya sendiri ketika itu.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Sistem semasa (Android 10 atau lebih lama) tidak menyediakan “Akses semua fail”, jadi fail asal dalam storan tidak boleh ditulis semula secara terus; oleh itu peranti ini tidak menyokong “Mod ganti”.\n\nAnda boleh terus menukar format dengan cara biasa; hasilnya ditulis ke folder galeri.</string>
+    <string name="main_dialog_allfiles_location_message">Pada sesetengah peranti (misalnya Meizu), menulis melalui API galeri sistem membuang maklumat lokasi GPS, jadi foto hasil penukaran kehilangan lokasinya.\n\nSetelah anda memberikan “Akses semua fail”, apl ini menulis terus ke folder galeri dan mengekalkan metadata lokasi sepenuhnya.\n\nPenukaran tetap berfungsi tanpanya, tetapi sesetengah peranti mungkin kehilangan maklumat lokasi.</string>
+    <string name="main_dialog_conflict_title">Nama fail output berkonflik</string>
+    <string name="main_dialog_conflict_message">Fail dengan nama yang sama sudah wujud dalam folder output:\n%1$s\n\nSila pilih cara menanganinya.</string>
+    <string name="main_label_conflict_always">Gunakan ini untuk semua konflik seterusnya</string>
+    <string name="main_btn_grant">Benarkan</string>
+    <string name="main_btn_deny">Tolak</string>
+    <string name="main_btn_go_settings">Buka tetapan</string>
+    <string name="main_btn_cancel">Batal</string>
+    <string name="main_btn_grant_access">Berikan akses</string>
+    <string name="main_btn_got_it">Faham</string>
+    <string name="main_btn_not_now">Bukan sekarang</string>
+    <string name="main_btn_skip">Langkau</string>
+    <string name="main_btn_overwrite">Tulis ganti</string>
+    <string name="main_btn_auto_rename">Tukar nama automatik</string>
+    <plurals name="main_delete_done">
+        <item quantity="other">%1$d fail asal dipadam</item>
+    </plurals>
+    <string name="main_delete_nothing">Tiada fail asal yang perlu dipadam</string>
+    <string name="main_delete_partial">%1$d fail asal dipadam (%2$d tidak dapat dipadam dan dikekalkan)</string>
+    <string name="main_delete_failed">Gagal memadam fail asal (fail sedang digunakan atau tiada kebenaran menulis); fail telah dikekalkan</string>
+    <string name="main_export_missing_output">Output penukaran tiada atau kosong: %1$s</string>
+    <string name="main_export_missing_output_bare">Output penukaran tiada atau kosong</string>
+    <string name="main_export_insert_null">MediaStore insert memulangkan null</string>
+    <string name="main_export_output_stream">Strim output MediaStore tidak tersedia</string>
+    <string name="main_export_write_failed">Penulisan MediaStore gagal: %1$s</string>
+    <string name="main_export_mkdir_failed">Tidak dapat mencipta folder galeri %1$s</string>
+    <string name="main_export_dir_write_failed">Gagal menulis ke folder galeri: %1$s</string>
+    <string name="main_export_no_source">Tidak dapat mencari fail sumber; penggantian dilangkau</string>
+    <string name="main_export_companion_failed">Gagal menulis semula fail pasangan: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Folder sumber tidak boleh ditulis, jadi fail pasangan tidak dapat ditulis semula</string>
+    <string name="main_export_source_dir_unavailable">Folder sumber tidak tersedia: %1$s</string>
+    <string name="main_export_replace_failed">Gagal menggantikan fail sumber: %1$s</string>
+    <string name="main_export_replace_failed_bare">Gagal menggantikan fail sumber</string>
+</resources>

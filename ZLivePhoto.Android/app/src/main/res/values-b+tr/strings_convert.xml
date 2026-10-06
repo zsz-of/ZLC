@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Türkçe (tr) — dönüştürme / kod dönüştürme / anımsatıcı metinleri
+  (core/Converter.kt, core/FfmpegAddon.kt, ui/Reminders.kt).
+  Anahtar öneki conv_; anahtarlar res/values/ (Basitleştirilmiş Çince yedek metin) ile aynıdır.
+  Yer tutucular %1$s / %1$d biçimindedir; `\n` yeni satır demektir.
+  Not: özgün conv_reminder_replace_risk_message metni birebir % işareti içerdiği için
+  formatted="false" taşır; burada sözcükle yazıldığından bu özniteliğe gerek yoktur.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: parametre ve malzeme denetimi (istisna → arayüzde hata nedeni) ========== -->
+    <string name="conv_unknown_target">Bilinmeyen hedef biçim: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Tanınamayan hareketli fotoğraf biçimi (Google/OPPO/vivo/Xiaomi/Apple hareketli fotoğrafı değil)</string>
+    <string name="conv_cover_photo_missing">Kapak fotoğrafı yok veya boş</string>
+    <string name="conv_video_missing">Video yok veya boş</string>
+    <string name="conv_video_too_large">Video çok büyük (%1$dMB); hareketli fotoğraf oluşturulamıyor, daha kısa bir video seçin</string>
+    <string name="conv_transcoded_too_large">Dönüştürülen video çok büyük (%1$dMB); hareketli fotoğraf oluşturulamıyor</string>
+    <string name="conv_video_too_large_compose">Video çok büyük (%1$dMB); hareketli fotoğraf oluşturulamıyor</string>
+
+    <!-- Converter.kt: kapak (HEIC / JPEG değil) -->
+    <string name="conv_cover_heic_go">Kapak bir HEIC görseli (hafif sürüm dönüştürmeyi desteklemez; iPhone\'da JPEG olarak dışa aktarıp tekrar deneyin)</string>
+    <string name="conv_cover_invalid_heic">Kapak geçerli bir görsel değil (HEIC için sistemin HEIF kod çözme desteği gerekir)</string>
+    <string name="conv_cover_not_jpeg_go">Kapak bir JPEG görseli değil (hafif sürüm dönüştürmeyi desteklemez; JPEG fotoğraf kullanın)</string>
+    <string name="conv_cover_invalid_image">Kapak geçerli bir görsel değil (yalnızca JPEG/WebP/PNG desteklenir)</string>
+
+    <!-- Converter.kt: kod dönüştürme / yeniden paketleme hatası ve „kapsayıcıyı değiştirmek kodeği kurtarmaz” uyarısı -->
+    <string name="conv_reencode_failed">Videonun yeniden kodlanması başarısız: %1$s</string>
+    <string name="conv_remux_failed">Kapsayıcının yeniden paketlenmesi başarısız: %1$s</string>
+    <string name="conv_codec_unknown">Tanınabilir bir H.264/H.265 videosu değil</string>
+    <string name="conv_codec_is">Kodek: %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">„%1$s” videosu %2$s; yalnızca kapsayıcıyı değiştirmek (yeniden paketleme) kodeği değiştirmez ve hareketli fotoğraf oluşturulamaz.\n\n„Ayarlar → Video dönüştürme → Dönüştürme yöntemi” bölümünde „Yeniden kodla” seçeneğini seçin veya videoyu başka bir araçla H.264/H.265 kodlu MP4\'e dönüştürün.</string>
+    <string name="conv_hint_no_encoder">Video standart bir MP4 kapsayıcısında değil (MOV / MKV / WebM / AVI vb.) ve geçerli „Dönüştürme yöntemi” yeniden kodlamıyor; hareketli fotoğraf oluşturulamaz.\n\n„Ayarlar → Video dönüştürme → Dönüştürme yöntemi” bölümünde „Yeniden kodla” seçeneğini seçin (standart sürümde ffmpeg kodlayıcı gömülüdür; hafif Go sürümünde dönüştürücü yoktur, standart sürümü kullanın) veya videoyu önce standart bir MP4\'e (H.264/H.265) dönüştürün.</string>
+
+    <!-- ========== Dönüştürme günlüğü (liste durum çubuğunda ve günlük panelinde görünür) ========== -->
+    <string name="conv_log_detected">%1$s olarak tanındı</string>
+    <string name="conv_log_same_format_copied">Kaynak ve hedef biçim aynı; olduğu gibi kopyalandı (kayıpsız)</string>
+    <string name="conv_log_extra_tracks_bypass">Kaynak video, ses/video dışı parçalar içeriyor (%1$s); aynı biçimde kopyalama atlandı ve temizlemek için tam yazma akışı kullanıldı</string>
+    <string name="conv_log_ts_fallback">Kaynakta kapak karesi zaman damgası yok; standart gereği videonun ortası kullanıldı</string>
+    <string name="conv_log_brand_normalized">Video kapsayıcı markası normalleştirildi (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Video ek parçalar içeriyor (%1$s) ve temizlenemiyor; olduğu gibi kaydedildi (bu dosya bazı cihazlarda basılı tutunca oynatılmayabilir)</string>
+    <string name="conv_log_extra_tracks_removed">Videonun ek parçaları kaldırıldı (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Kaynak video %1$s; yalnızca kapsayıcıyı yeniden paketlemek bunu çözmez (%2$s). Sonuç hâlâ basılı tutunca oynatılmıyorsa „Ayarlar → Video dönüştürme → Dönüştürme yöntemi” bölümünde „Yeniden kodla” seçeneğini seçin</string>
+    <string name="conv_log_reencoding">Kaynak video %1$s; galeri uyumluluğu için ayarlara göre 8bit + AAC olarak yeniden kodlanıyor</string>
+    <string name="conv_log_reencode_result_unusable">Yeniden kodlama sonucu kullanılamaz; olduğu gibi kaydedildi (bu dosya bazı cihazlarda basılı tutunca oynatılmayabilir)</string>
+    <string name="conv_log_reencode_still_risky">Yeniden kodlamadan sonra hâlâ riskli öğeler var (%1$s)</string>
+    <string name="conv_log_reencode_failed">Yeniden kodlama başarısız (%1$s); olduğu gibi kaydedildi (bu dosya bazı cihazlarda basılı tutunca oynatılmayabilir)</string>
+    <string name="conv_log_cover_heic_converted">Kapak HEIC (JPEG değil); paketlemeden önce standart JPEG\'e dönüştürüldü</string>
+    <string name="conv_log_compose_sizes">Birleştirme: fotoğraf %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Dönüştürücü etkin değil: yalnızca kapsayıcı markası değiştirildi (MOV → MP4), yeniden kodlama yok</string>
+
+    <!-- Günlük etiketleri (arayüz „[etiket] metin” biçiminde gösterir) -->
+    <string name="conv_tag_convert">Dönüştürme</string>
+    <string name="conv_tag_transcode">Kod dönüştürme</string>
+    <string name="conv_tag_compose">Birleştirme</string>
+
+    <!-- Dönüştürme yöntemi engel nedenleri (yukarıdaki uyarı metinlerine eklenir) -->
+    <string name="conv_blocker_no_encoder">Gömülü dönüştürücü kullanılamıyor</string>
+    <string name="conv_blocker_mode_no_encode">Geçerli „Dönüştürme yöntemi” yeniden kodlamıyor</string>
+
+    <!-- ========== FfmpegAddon.kt: gömülü ffmpeg kod dönüştürme / yeniden paketleme ========== -->
+    <string name="conv_addon_unavailable">Gömülü dönüştürücü kullanılamıyor</string>
+    <string name="conv_addon_transcode_failed">ffmpeg kod dönüştürmesi başarısız: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg kapsayıcı yeniden paketlemesi başarısız: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Video ffmpeg ile standart MP4\'e dönüştürülüyor (%1$s / crf %2$d / %3$s; yalnızca video ve ses parçaları korunur)</string>
+    <string name="conv_log_transcode_done">Video dönüştürme tamamlandı (%1$dKB)</string>
+    <string name="conv_log_remuxing">Video kapsayıcısı standart MP4\'e yeniden paketleniyor (yalnızca kapsayıcı, yeniden kodlama yok)</string>
+    <string name="conv_log_remux_done">Kapsayıcı yeniden paketleme tamamlandı (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: „Bir daha gösterme” penceresi ========== -->
+    <string name="conv_reminder_cat_compose">Birleştirme</string>
+    <string name="conv_reminder_cat_convert">Dönüştürme</string>
+    <string name="conv_reminder_cat_update">Güncelleme</string>
+    <string name="conv_reminder_video_over3s_title">Video 3 saniyeden uzun</string>
+    <string name="conv_reminder_video_over3s_message">Seçilen video 3 saniyeden uzun; oluşturulan hareketli fotoğrafta uyumluluk sorunları olabilir:\n\n• düzgün oynatılmayabilir\n• sistem galerisi tarafından tanınmayabilir\n• bazı cihazlarda bu hareketli fotoğraf tanınmayabilir</string>
+    <string name="conv_reminder_legacy_go_title">Eski sürüm algılandı</string>
+    <string name="conv_reminder_legacy_go_message">Bu cihazda hâlâ eski (Go) sürüm kurulu. Bu eski sürüm cihazda kullanılamaz; yer açmak için kaldırabilirsiniz.</string>
+    <string name="conv_reminder_replace_risk_title">Değiştirme modu bozulma riski taşıyor</string>
+    <!-- Özgündeki birebir % işareti yerine sözcük kullanıldı; bu nedenle formatted="false" gerekmez. -->
+    <string name="conv_reminder_replace_risk_message">Değiştirme modu dönüştürme sonucunu doğrudan özgün dosyanın üzerine yazar; üzerine yazıldıktan sonra geri alınamaz.\n\n• Yazma sırasında uygulama kesilirse, depolama alanı yetmezse veya izinler kaldırılırsa kaynak dosya bozulabilir\n• Dönüştürmenin başarılı olacağı kesin değildir; başarısız olduğunda kaynak dosya kullanılamaz hâle gelmiş olabilir\n• Önce bir iki dosyada deneyip sorun olmadığını doğrulayın, sonra toplu işlem yapın\n• Önemli fotoğrafların yedeğini önceden alın\n\nBu özellik „olduğu gibi” sunulur; kullanım riski size aittir ve yazar dosya bozulmasından veya kaybından sorumlu değildir.</string>
+    <string name="conv_reminder_dont_remind">Bir daha gösterme</string>
+    <string name="conv_reminder_confirm_ok">Anladım</string>
+    <string name="conv_reminder_uninstall">Kaldır</string>
+
+</resources>

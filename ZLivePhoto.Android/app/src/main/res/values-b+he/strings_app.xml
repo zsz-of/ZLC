@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · he strings — Hebrew (עברית, RTL)
+  Translated from res/values/strings_app.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Hebrew. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="app_language_follow_system">לפי המערכת</string>
+    <string name="app_language_title">שפת האפליקציה</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bahasa Indonesia (Indonesian) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Indonesian Android usage; technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">Tidak ada URL unduhan GitHub yang diperoleh; silakan coba lagi nanti.</string>
+    <string name="update_flavor_standard">Edisi standar</string>
+    <string name="update_flavor_go">Edisi Go</string>
+    <string name="update_lanzou_url_missing">Versi ini tidak menyediakan tautan unduhan Lanzou Cloud; Anda dapat memakai GitHub.</string>
+    <string name="update_apk_direct_missing">Versi ini tidak menyediakan tautan paket langsung yang sesuai dengan edisi Anda; silakan pilih APK yang tepat di halaman rilis GitHub.</string>
+    <string name="update_install_permission_missing">Izin “memasang aplikasi tidak dikenal” belum diberikan, sehingga pemasangan otomatis tidak mungkin dilakukan. Silakan izinkan di pengaturan sistem lalu coba lagi.</string>
+    <string name="update_error_unknown">Kesalahan tidak dikenal</string>
+    <string name="update_fail_lanzou">Unduhan Lanzou Cloud gagal</string>
+    <string name="update_fail_github">Unduhan GitHub gagal</string>
+    <string name="update_lanzou_resolving">Menyelesaikan tautan unduhan Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Mengunduh dari Lanzou Cloud…</string>
+    <string name="update_github_downloading">Mengunduh dari GitHub…</string>
+    <string name="update_unzipping">Mengekstrak paket…</string>
+    <string name="update_notes_empty">Versi ini tidak memiliki catatan rilis.</string>
+    <string name="update_use_normal_title">Silakan gunakan edisi standar</string>
+    <string name="update_use_normal_body">Perangkat ini menjalankan Android 10 atau lebih baru, dan edisi ringan Go tidak lagi didukung; versi lama tidak dapat dipakai lagi.\n\nEdisi standar (ZLC) sudah terpasang di perangkat ini — silakan buka dan lanjutkan di sana (rilis baru tidak lagi menyertakan build yang kompatibel dengan Go; versi lama dapat dihapus untuk mengosongkan ruang).</string>
+    <string name="update_open_normal">Buka edisi standar</string>
+    <string name="update_must_update_title">Anda harus memperbarui sebelum dapat melanjutkan</string>
+    <string name="update_forced_body">Perangkat ini menjalankan Android 10 atau lebih baru, dan edisi ringan Go tidak lagi didukung; versi lama tidak dapat dipakai lagi, dan rilis baru tidak lagi menyertakan build yang kompatibel dengan Go.\n\nSilakan sambungkan ke internet dan ketuk “Coba lagi” untuk mendapatkan paket edisi standar.</string>
+    <string name="update_retry">Coba lagi</string>
+    <string name="update_switch_normal_body">Perangkat ini menjalankan Android 10 atau lebih baru, dan edisi ringan Go tidak lagi didukung; versi lama tidak dapat dipakai lagi.\nSilakan unduh dan pasang edisi standar untuk melanjutkan (rilis baru tidak lagi menyertakan build yang kompatibel dengan Go).</string>
+    <string name="update_downloading_title">Unduh pembaruan</string>
+    <string name="update_cancel">Batal</string>
+    <string name="update_need_permission_title">Izin pemasangan diperlukan</string>
+    <string name="update_need_permission_body">Memasang versi baru memerlukan izin sistem “memasang aplikasi tidak dikenal”.\n\nKetuk “Berikan”, izinkan di pengaturan lalu kembali ke aplikasi; pemasangan akan dilanjutkan otomatis (tidak perlu mengunduh lagi).</string>
+    <string name="update_grant">Berikan</string>
+    <string name="update_notice_title">Pemberitahuan</string>
+    <string name="update_got_it">Mengerti</string>
+    <string name="update_notes_title">v%1$s · Catatan rilis</string>
+    <string name="update_back">Kembali</string>
+    <string name="update_title_switch_normal">Beralih ke edisi standar</string>
+    <string name="update_title_reinstall">Pasang ulang versi ini</string>
+    <string name="update_title_new_version">Versi baru tersedia</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Ini akan mengunduh dan memasang ulang versi ini (menimpa aplikasi saat ini).\nFitur ini dipakai untuk menguji mekanisme pembaruan.</string>
+    <string name="update_view_notes">Lihat catatan rilis</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud untuk sementara tidak tersedia</string>
+    <string name="update_download_lanzou">Unduh dari Lanzou Cloud</string>
+    <string name="update_download_github">Unduh dari GitHub</string>
+    <string name="update_download_browser">Unduh dari peramban</string>
+    <string name="update_later">Perbarui nanti</string>
+    <string name="update_later_switch">Beralih nanti</string>
+    <string name="update_skip_version">Lewati versi ini</string>
+</resources>

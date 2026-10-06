@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bahasa Indonesia (Indonesian) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Indonesian Android usage; technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">Tautan Lanzou Cloud telah dibatalkan atau berkasnya tidak ada; silakan unduh dari GitHub</string>
+    <string name="update_lanzou_gone_short">Tautan Lanzou Cloud telah dibatalkan; silakan unduh dari GitHub</string>
+    <string name="update_lanzou_resolve_failed">Gagal menyelesaikan tautan unduhan Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Tautan Lanzou Cloud ini memerlukan kode akses; silakan unduh dari GitHub (atau cari kode aksesnya di catatan rilis)</string>
+    <string name="update_lanzou_wrong_passwd">Kode akses Lanzou Cloud salah</string>
+    <string name="update_err_resolve_failed">Gagal menyelesaikan</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Pemeriksaan anti-crawler Lanzou Cloud gagal</string>
+    <string name="update_err_no_frame">Tidak dapat mengurai halaman unduhan Lanzou Cloud (frame unduhan tidak ditemukan)</string>
+    <string name="update_err_no_file_id">Tidak dapat mengurai pengenal berkas Lanzou Cloud</string>
+    <string name="update_err_no_sign">Tidak dapat mengurai tanda tangan Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Permintaan API gagal</string>
+    <string name="update_err_api_request">Permintaan API Lanzou Cloud gagal</string>
+    <string name="update_err_empty_direct">Lanzou Cloud mengembalikan URL unduhan yang kosong</string>
+    <string name="update_err_direct_expired">URL unduhan Lanzou Cloud sudah kedaluwarsa; silakan ambil lagi</string>
+    <string name="update_err_http_request">Permintaan gagal (HTTP %1$d)</string>
+    <string name="update_err_connect">Tidak dapat terhubung ke server unduhan: %1$s</string>
+    <string name="update_err_http">Unduhan gagal (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Tidak dapat membuat koneksi unduhan</string>
+    <string name="update_err_empty">Konten yang diunduh kosong</string>
+    <string name="update_err_incomplete">Unduhan tidak lengkap (%1$d dari %2$d byte diterima); silakan unduh lagi</string>
+    <string name="update_err_interrupted">Unduhan terganggu: %1$s</string>
+    <string name="update_err_not_apk">Berkas yang diunduh bukan paket yang valid (mungkin halaman web, atau tautan unduhan sudah kedaluwarsa); silakan unduh lagi atau gunakan GitHub.</string>
+    <string name="update_err_apk_incomplete">Isi paket tidak lengkap; silakan unduh lagi atau gunakan GitHub.</string>
+    <string name="update_err_apk_unparsable">Paket tidak dapat diurai (unduhan mungkin tidak lengkap); silakan unduh lagi atau gunakan GitHub.</string>
+    <string name="update_err_no_install_permission">Izin “memasang aplikasi tidak dikenal” belum diberikan</string>
+    <string name="update_err_installer_failed">Tidak dapat menjalankan pemasang sistem (%1$s); silakan buka paket dari pengelola berkas dan pasang secara manual</string>
+</resources>

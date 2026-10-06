@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Português (Portugal) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  European Portuguese: ficheiro / ecrã / definições, and "a + infinitivo" progressives.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+
+    <!-- Geral -->
+    <string name="settings_title">Definições</string>
+    <string name="settings_cd_back">Voltar</string>
+    <string name="settings_btn_apply">Aplicar</string>
+    <string name="settings_btn_cancel">Cancelar</string>
+    <string name="settings_btn_close">Fechar</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Patrocinar</string>
+
+    <!-- Títulos de secção -->
+    <string name="settings_section_general">Geral</string>
+    <string name="settings_section_appearance">Aparência</string>
+    <string name="settings_section_language">Idioma</string>
+    <string name="settings_section_defaults">Opções predefinidas</string>
+    <string name="settings_section_output">Saída</string>
+    <string name="settings_section_transcode">Transcodificação de vídeo</string>
+    <string name="settings_section_about">Acerca de</string>
+    <string name="settings_section_app">Aplicação</string>
+    <string name="settings_section_credits">Agradecimentos e patrocínio</string>
+    <string name="settings_section_opensource">Código aberto e licença</string>
+
+    <!-- Geral -->
+    <string name="settings_startup_check_title">Verificar atualizações ao iniciar</string>
+    <string name="settings_startup_check_subtitle">Procura automaticamente novas versões no GitHub ao iniciar e avisa quando houver atualização</string>
+    <string name="settings_haptics_title">Vibração</string>
+    <string name="settings_haptics_subtitle">Resposta tátil ao tocar nos botões e ao mudar de estado</string>
+    <string name="settings_bounce_title">Animação elástica dos botões</string>
+    <string name="settings_bounce_subtitle">Animação de escala e retorno ao premir os botões</string>
+
+    <!-- Aparência -->
+    <string name="settings_theme_system">Seguir o sistema</string>
+    <string name="settings_theme_dark">Escuro</string>
+    <string name="settings_theme_light">Claro</string>
+    <string name="settings_dynamic_theme_title">Cores dinâmicas do Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Segue as cores do fundo do ecrã do sistema (Android 12+); ao desativar, usa as cores de tema predefinidas abaixo</string>
+    <string name="settings_preset_colors_title">Cores de tema predefinidas</string>
+    <string name="settings_preset_current">Atual: %1$s</string>
+    <string name="settings_preset_disabled_hint">Disponível depois de desativar «Cores dinâmicas do Material You»</string>
+    <string name="settings_custom">Personalizado</string>
+    <string name="settings_custom_color_title">Cor de tema personalizada</string>
+    <string name="settings_cd_custom_palette">Paleta personalizada</string>
+    <string name="settings_hue_value">Matiz %1$d°</string>
+
+    <!-- Idioma da aplicação -->
+    <string name="settings_language_dialog_title">Escolher idioma da aplicação</string>
+    <string name="settings_language_count">%1$d idiomas</string>
+
+    <!-- Opções predefinidas -->
+    <string name="settings_reminder_dialogs_title">Não voltar a mostrar avisos</string>
+    <string name="settings_reminder_dialogs_subtitle">Gerir as opções «não voltar a mostrar» de todos os avisos</string>
+    <string name="settings_reminder_hint">Ativado significa «não voltar a mostrar»; ao desativar, o aviso volta a aparecer na próxima vez.</string>
+
+    <!-- Saída -->
+    <string name="settings_preserve_folders_title">Manter a estrutura de pastas de origem</string>
+    <string name="settings_preserve_folders_subtitle">Os resultados são guardados em subpastas com o nome do álbum original; ao desativar, ficam todos na mesma pasta</string>
+
+    <!-- Acerca de -->
+    <string name="settings_about_title">Acerca de</string>
+    <string name="settings_about_subtitle">Versão · Verificar atualizações · Agradecimentos e patrocínio</string>
+    <string name="settings_check_update_title">Verificar atualizações</string>
+    <string name="settings_check_update_subtitle">Obter a versão mais recente nas Releases do GitHub</string>
+    <string name="settings_checking">A verificar…</string>
+    <string name="settings_update_available">v%1$s disponível</string>
+    <string name="settings_up_to_date">Já tem a versão mais recente</string>
+    <string name="settings_network_error">Erro de rede. Tente novamente mais tarde</string>
+    <string name="settings_reinstall_title">Reinstalar esta versão</string>
+    <string name="settings_reinstall_subtitle">Transferir a versão mais recente e instalar por cima (para testar atualizações)</string>
+    <string name="settings_reinstall_newer_hint">Há atualização para v%1$s; use primeiro «Verificar atualizações»</string>
+    <string name="settings_version_title">Versão</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Patrocinar via Alipay</string>
+    <string name="settings_alipay_subtitle">Apoie o desenvolvimento</string>
+    <string name="settings_coolapk_subtitle">Utilizador do Coolapk · agradecemos o apoio prestado</string>
+    <string name="settings_ai_credits_subtitle">Agradecemos às IDEs com IA e aos modelos de IA o apoio no desenvolvimento</string>
+    <string name="settings_github_title">Endereço do projeto no GitHub</string>
+    <string name="settings_license_title">Licença de código aberto</string>
+    <string name="settings_sponsor_dialog_title">Obrigado pelo seu apoio</string>
+    <string name="settings_sponsor_dialog_text">Muito obrigado por querer apoiar esta aplicação!\n\nSe ainda é estudante ou ainda não tem independência financeira, não gaste nada — guarde este carinho no coração e continue a usar a aplicação: isso já é o melhor apoio que posso receber.\n\nSe quiser patrocinar, qualquer valor é bem-vindo; vou investi-lo em melhor manutenção e novos recursos:)</string>
+    <string name="settings_alipay_missing_title">O Alipay não está instalado</string>
+    <string name="settings_alipay_missing_text">Não detetámos o Alipay, por isso não é possível concluir o patrocínio de momento.\n\nNão faz mal — de qualquer forma, muito obrigado pela sua boa vontade!</string>
+
+    <!-- Transcodificação de vídeo -->
+    <string name="settings_transcoder_title">Transcodificador integrado</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Codificar novamente</string>
+    <string name="settings_transcode_mode_remux">Apenas remuxar o contentor (recomendado)</string>
+    <string name="settings_transcode_mode_off">Não usar o transcodificador</string>
+    <string name="settings_transcode_params_title">Parâmetros de transcodificação</string>
+    <string name="settings_transcode_params_subtitle">Parâmetros de qualidade e compressão usados ao codificar novamente</string>
+    <string name="settings_transcode_params_disabled">Só tem efeito quando «Modo de transcodificação» está em «Codificar novamente»</string>
+    <string name="settings_crf_value">Qualidade CRF: %1$d</string>
+    <string name="settings_crf_hint">Quanto menor o valor, maior a qualidade e o tamanho do ficheiro (predefinição 18)</string>
+    <string name="settings_encoder_title">Codificador</string>
+    <string name="settings_compress_preset_title">Predefinição de compressão</string>
+
+</resources>

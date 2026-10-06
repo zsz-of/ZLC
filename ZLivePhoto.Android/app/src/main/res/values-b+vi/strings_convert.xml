@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tiếng Việt (vi) — văn bản chuyển đổi / chuyển mã / nhắc nhở
+  (core/Converter.kt, core/FfmpegAddon.kt, ui/Reminders.kt).
+  Tiền tố khóa conv_; khóa tương ứng res/values/ (văn bản tiếng Trung giản thể dự phòng).
+  Placeholder dạng %1$s / %1$d; `\n` là xuống dòng.
+  Lưu ý: chuỗi gốc conv_reminder_replace_risk_message có thuộc tính formatted="false" vì chứa
+  ký tự % theo nghĩa đen; ở đây đã thay bằng từ ngữ nên không cần thuộc tính đó.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: kiểm tra tham số và tư liệu (ngoại lệ → lý do thất bại trên giao diện) ========== -->
+    <string name="conv_unknown_target">Định dạng đích không xác định: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Định dạng ảnh động không nhận dạng được (không phải ảnh động Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Ảnh bìa không tồn tại hoặc trống</string>
+    <string name="conv_video_missing">Video không tồn tại hoặc trống</string>
+    <string name="conv_video_too_large">Video quá lớn (%1$dMB), không thể tạo ảnh động, hãy chọn video ngắn hơn</string>
+    <string name="conv_transcoded_too_large">Video sau khi chuyển mã quá lớn (%1$dMB), không thể tạo ảnh động</string>
+    <string name="conv_video_too_large_compose">Video quá lớn (%1$dMB), không thể tạo ảnh động</string>
+
+    <!-- Converter.kt: ảnh bìa (HEIC / không phải JPEG) -->
+    <string name="conv_cover_heic_go">Ảnh bìa là ảnh HEIC (bản rút gọn không hỗ trợ chuyển mã, hãy xuất sang JPEG trên iPhone rồi chuyển đổi lại)</string>
+    <string name="conv_cover_invalid_heic">Ảnh bìa không phải ảnh hợp lệ (HEIC cần hệ thống hỗ trợ giải mã HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">Ảnh bìa không phải ảnh JPEG (bản rút gọn không hỗ trợ chuyển mã, hãy dùng ảnh JPEG)</string>
+    <string name="conv_cover_invalid_image">Ảnh bìa không phải ảnh hợp lệ (chỉ hỗ trợ JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: chuyển mã / đóng gói lại thất bại và gợi ý „đổi container không cứu được codec” -->
+    <string name="conv_reencode_failed">Mã hóa lại video thất bại: %1$s</string>
+    <string name="conv_remux_failed">Đóng gói lại container thất bại: %1$s</string>
+    <string name="conv_codec_unknown">Không phải video H.264/H.265 nhận dạng được</string>
+    <string name="conv_codec_is">Codec là %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Video “%1$s” %2$s, chỉ đổi container (đóng gói lại) không thay đổi được codec nên không thể tạo ảnh động.\n\nHãy vào “Cài đặt → Chuyển mã video → Cách chuyển mã” chọn “Mã hóa lại”, hoặc dùng công cụ khác chuyển video thành MP4 mã H.264/H.265 trước.</string>
+    <string name="conv_hint_no_encoder">Video không ở container MP4 chuẩn (MOV / MKV / WebM / AVI…), mà “Cách chuyển mã” hiện tại không mã hóa lại nên không thể tạo ảnh động.\n\nHãy vào “Cài đặt → Chuyển mã video → Cách chuyển mã” chọn “Mã hóa lại” (bản tiêu chuẩn có sẵn bộ mã hóa ffmpeg; bản Go rút gọn không có bộ chuyển mã, hãy dùng bản tiêu chuẩn), hoặc chuyển video thành MP4 chuẩn (H.264/H.265) trước.</string>
+
+    <!-- ========== Nhật ký chuyển đổi (hiển thị ở thanh trạng thái mục danh sách và bảng nhật ký) ========== -->
+    <string name="conv_log_detected">Nhận dạng là %1$s</string>
+    <string name="conv_log_same_format_copied">Định dạng nguồn và đích giống nhau, đã sao chép nguyên bản (không mất dữ liệu)</string>
+    <string name="conv_log_extra_tracks_bypass">Video nguồn chứa track không phải âm thanh/hình ảnh (%1$s), bỏ qua sao chép cùng định dạng và dùng quy trình ghi đầy đủ để làm sạch</string>
+    <string name="conv_log_ts_fallback">Nguồn thiếu dấu thời gian khung hình bìa, theo chuẩn dùng điểm giữa video</string>
+    <string name="conv_log_brand_normalized">Đã chuẩn hóa thương hiệu container video (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Video chứa track bổ sung (%1$s), không thể làm sạch, đã xuất nguyên bản (sản phẩm này trên một số máy có thể không phát khi nhấn giữ)</string>
+    <string name="conv_log_extra_tracks_removed">Đã loại bỏ track bổ sung của video (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Video nguồn %1$s; chỉ đóng gói lại container không giải quyết được (%2$s), nếu sản phẩm vẫn không phát khi nhấn giữ, hãy vào “Cài đặt → Chuyển mã video → Cách chuyển mã” chọn “Mã hóa lại”</string>
+    <string name="conv_log_reencoding">Video nguồn %1$s, theo cài đặt mã hóa lại thành 8bit + AAC để tăng khả năng tương thích với thư viện ảnh</string>
+    <string name="conv_log_reencode_result_unusable">Kết quả mã hóa lại không dùng được, đã xuất nguyên bản (sản phẩm này trên một số máy có thể không phát khi nhấn giữ)</string>
+    <string name="conv_log_reencode_still_risky">Sau khi mã hóa lại vẫn còn mục rủi ro (%1$s)</string>
+    <string name="conv_log_reencode_failed">Mã hóa lại thất bại (%1$s), đã xuất nguyên bản (sản phẩm này trên một số máy có thể không phát khi nhấn giữ)</string>
+    <string name="conv_log_cover_heic_converted">Ảnh bìa là HEIC (không phải JPEG), đã chuyển mã thành JPEG chuẩn rồi đóng gói</string>
+    <string name="conv_log_compose_sizes">Ghép: ảnh %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Chưa bật bộ chuyển mã: chỉ đổi thương hiệu container (MOV → MP4), không mã hóa lại</string>
+
+    <!-- Nhãn nhật ký (giao diện hiển thị “[nhãn] văn bản”) -->
+    <string name="conv_tag_convert">Chuyển đổi</string>
+    <string name="conv_tag_transcode">Chuyển mã</string>
+    <string name="conv_tag_compose">Ghép</string>
+
+    <!-- Lý do chặn cách chuyển mã (ghép vào các văn bản cảnh báo ở trên) -->
+    <string name="conv_blocker_no_encoder">Bộ chuyển mã tích hợp không khả dụng</string>
+    <string name="conv_blocker_mode_no_encode">“Cách chuyển mã” hiện tại không mã hóa lại</string>
+
+    <!-- ========== FfmpegAddon.kt: chuyển mã / đóng gói lại bằng ffmpeg tích hợp ========== -->
+    <string name="conv_addon_unavailable">Bộ chuyển mã tích hợp không khả dụng</string>
+    <string name="conv_addon_transcode_failed">Chuyển mã ffmpeg thất bại: %1$s</string>
+    <string name="conv_addon_remux_failed">Đóng gói lại container bằng ffmpeg thất bại: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Đang dùng ffmpeg chuyển mã video thành MP4 chuẩn (%1$s / crf %2$d / %3$s, chỉ giữ track hình ảnh và âm thanh)</string>
+    <string name="conv_log_transcode_done">Chuyển mã video hoàn tất (%1$dKB)</string>
+    <string name="conv_log_remuxing">Đang đóng gói lại container video thành MP4 chuẩn (chỉ đổi container, không mã hóa lại)</string>
+    <string name="conv_log_remux_done">Đóng gói lại container hoàn tất (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: hộp thoại “Không nhắc lại” ========== -->
+    <string name="conv_reminder_cat_compose">Ghép</string>
+    <string name="conv_reminder_cat_convert">Chuyển đổi</string>
+    <string name="conv_reminder_cat_update">Cập nhật</string>
+    <string name="conv_reminder_video_over3s_title">Video dài hơn 3 giây</string>
+    <string name="conv_reminder_video_over3s_message">Video đã chọn dài hơn 3 giây, ảnh động sau khi ghép có thể gặp vấn đề tương thích:\n\n• Có thể không phát được bình thường\n• Có thể không được thư viện ảnh hệ thống nhận dạng\n• Một số máy có thể không nhận dạng được ảnh động này</string>
+    <string name="conv_reminder_legacy_go_title">Phát hiện bản cũ</string>
+    <string name="conv_reminder_legacy_go_message">Thiết bị này vẫn còn cài bản cũ (bản Go), bản cũ này không dùng được trên thiết bị, có thể gỡ để giải phóng dung lượng.</string>
+    <string name="conv_reminder_replace_risk_title">Chế độ thay thế có nguy cơ hỏng tệp</string>
+    <!-- Đã thay ký tự % theo nghĩa đen trong bản gốc bằng từ ngữ, nên không cần formatted="false". -->
+    <string name="conv_reminder_replace_risk_message">Chế độ thay thế ghi kết quả chuyển đổi trực tiếp vào tệp gốc; sau khi ghi đè không thể khôi phục.\n\n• Nếu quá trình ghi bị gián đoạn, hết dung lượng hoặc quyền bị thu hồi, tệp nguồn có thể hỏng\n• Bản thân việc chuyển đổi không đảm bảo thành công tuyệt đối, khi thất bại tệp nguồn có thể đã không còn dùng được\n• Nên thử với một hai tệp trước, xác nhận không có vấn đề rồi mới xử lý hàng loạt\n• Ảnh quan trọng hãy tự sao lưu trước\n\nTính năng này được cung cấp “nguyên trạng”, rủi ro khi dùng do bạn tự chịu, tác giả không chịu trách nhiệm về hỏng hoặc mất tệp.</string>
+    <string name="conv_reminder_dont_remind">Không nhắc lại</string>
+    <string name="conv_reminder_confirm_ok">Đã hiểu</string>
+    <string name="conv_reminder_uninstall">Gỡ cài đặt</string>
+
+</resources>

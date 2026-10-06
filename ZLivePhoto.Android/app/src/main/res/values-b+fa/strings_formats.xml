@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · fa strings — Persian (فارسی, RTL)
+  Translated from res/values/strings_formats.xml (Simplified Chinese baseline, the fallback locale).
+  Persian (Farsi). RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">استخراج</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo تک‌فایل</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">فایل ویدیوی .mov با همین نام پیدا نشد</string>
+    <string name="fmt_err_apple_mov_no_ftyp">فایل MOV فاقد جعبه ftyp است</string>
+    <string name="fmt_err_extract_read">استخراج یک قالب خروجی است و نمی‌توان آن را به‌عنوان قالب ورودی خواند</string>
+    <string name="fmt_err_no_primary_jpeg">تصویر JPEG اصلی پیدا نشد</string>
+    <string name="fmt_err_no_mp4_after_jpeg">پس از JPEG ویدیوی MP4 معتبری پیدا نشد (فاقد جعبه ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">تجزیه جریان ویدیوی MP4 ناموفق بود</string>
+    <string name="fmt_err_nubia_too_short">فایل برای Live Photo نوبیا بیش از حد کوتاه است</string>
+    <string name="fmt_err_nubia_no_magic">عدد جادویی nubiaVpfile در انتهای فایل وجود ندارد</string>
+    <string name="fmt_err_nubia_jpeg_len">طول JPEG ثبت‌شده در انتهای فایل نامعتبر است: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">بایت‌های پرشدگی 0x00 بین JPEG و ویدیو وجود ندارد</string>
+    <string name="fmt_err_nubia_empty_video">طول ویدیوی جاسازی‌شده صفر است</string>
+    <string name="fmt_err_vivo_no_marker">نشانگر vivo livephoto در انتهای JPG پیدا نشد</string>
+    <string name="fmt_err_vivo_companion_missing">فایل ویدیوی همراه موجود نیست: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">تجزیه بدنه JPG ناموفق بود</string>
+    <string name="fmt_err_vivo_companion_invalid">فایل MP4 همراه نامعتبر است (فاقد جعبه ftyp)</string>
+</resources>

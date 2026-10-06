@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（维吾尔语 ug，B 级），可能存在不准确之处，欢迎社区修正。
+     بۇ ھۆججەت ماشىنا ياردىمىدە تەرجىمە قىلىنغان (B دەرىجە)، خاتالىقلار بولۇشى مۇمكىن.
+     RTL：不写死物理左右方向；品牌短名保留原文。 -->
+<resources>
+    <string name="screen_app_subtitle">لىۋې فوتو فورماتلىرىنى ئۆز-ئارا ئايلاندۇرۇش</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d ھۆججەت</item>
+        <item quantity="other">%1$d ھۆججەت</item>
+    </plurals>
+    <string name="screen_settings">تەڭشەك</string>
+
+    <string name="screen_select_output_format">چىقىرىش فورماتىنى تاللاڭ</string>
+    <string name="screen_selected">تاللاندى</string>
+    <string name="screen_vivo_single_warning">⚠ بەك كونا ئۈسكۈنىلەر بۇ فورماتنى تونۇماسلىقى مۇمكىن</string>
+    <string name="screen_extract_blocked">⚠ نۆۋەتتە بىرلەشتۈرۈش ۋەزىپىسى بار، ئايرىشنى تاللىغىلى بولمايدۇ</string>
+
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (بىر ھۆججەت)</string>
+    <string name="screen_format_vivo">vivo (ئىككى ھۆججەت)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">ئايرىش</string>
+
+    <string name="screen_toolbox">قورال ساندۇقى</string>
+    <string name="screen_batch_import">توپ ئەكىرىش</string>
+    <string name="screen_batch_import_desc">پۈتۈن ئالبومنى تاراپ، لىۋې فوتولارنى توپ تونۇش</string>
+    <string name="screen_compose">لىۋې فوتو بىرلەشتۈرۈش</string>
+    <string name="screen_compose_desc">بىر سۈرەت بىلەن بىر سىننى تاللاپ جۈپلەشتۈرۈپ بىرلەشتۈرۈش</string>
+    <string name="screen_replace_mode">ئالماشتۇرۇش ھالىتى</string>
+    <string name="screen_replace_mode_desc">ئايلاندۇرۇش نەتىجىسى بىۋاسىتە ئەسلى ھۆججەتكە يېزىلىدۇ، يېڭى ھۆججەت ھاسىل قىلىنمايدۇ</string>
+    <string name="screen_need_all_files_access_hint">«بارلىق ھۆججەتلەرگە ئېرىشىش» ھوقۇقى كېرەك، بۇ يەرنى بېسىپ ھوقۇق بېرىڭ</string>
+    <string name="screen_agree_and_enable">قوشۇلۇپ ئاچىمەن</string>
+
+    <string name="screen_empty_no_files">تېخى ھۆججەت قوشۇلمىدى</string>
+    <string name="screen_view_detail">تەپسىلاتنى كۆرۈش</string>
+    <string name="screen_add_files">ھۆججەت قوشۇش</string>
+    <string name="screen_output_format">چىقىرىش فورماتى: %1$s</string>
+    <string name="screen_delete_original">بىر تەرەپ قىلىپ بولغاندىن كېيىن ئەسلى سۈرەتنى ئۆچۈرۈش</string>
+    <string name="screen_need_all_files_access_view">«بارلىق ھۆججەتلەرگە ئېرىشىش» ھوقۇقى كېرەك، كۆرۈش ئۈچۈن بېسىڭ</string>
+    <string name="screen_clear">تازىلاش</string>
+    <string name="screen_stop">بىر تەرەپ قىلىشنى توختىتىش</string>
+    <string name="screen_start_convert">ئايلاندۇرۇشنى باشلاش</string>
+
+    <string name="screen_status_detail">ھالەت تەپسىلاتى</string>
+    <string name="screen_long_press_copy">تېكىستنى ئۇزۇن بېسىپ تاللاپ كۆچۈرۈڭ</string>
+    <string name="screen_copy">كۆچۈرۈش</string>
+    <string name="screen_close">تاقاش</string>
+
+    <string name="screen_back">قايتىش</string>
+    <string name="screen_picker_title_select">لىۋې فوتو تاللاش</string>
+    <string name="screen_album_count">ئالبوم %1$d</string>
+    <string name="screen_album_collapse_cover">ئالبوم مۇقاۋىسىنى يىغىش</string>
+    <string name="screen_album_expand_cover">ئالبوم مۇقاۋىسىنى يېيىش</string>
+    <string name="screen_scanning_progress">تارىلىۋاتىدۇ %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d پارچە</item>
+        <item quantity="other">%1$d پارچە</item>
+    </plurals>
+    <string name="screen_select_all">ھەممىنى تاللاش</string>
+    <string name="screen_no_albums">ئىشلىتىشكە بولىدىغان ئالبوم يوق</string>
+    <string name="screen_no_media">لىۋې فوتو تېپىلمىدى</string>
+    <string name="screen_no_media_compose">سۈرەت ياكى سىن تېپىلمىدى</string>
+    <string name="screen_import">ئەكىرىش</string>
+    <string name="screen_import_count">%1$d نى ئەكىرىش</string>
+    <string name="screen_import_mixed">ئەكىرىش: سۈرەت %1$d · سىن %2$d</string>
+    <string name="screen_search">ئىزدەش</string>
+    <string name="screen_search_collapse">ئىزدەشنى يىغىش</string>
+    <string name="screen_search_hint">ئىسىم بويىچە ئىزدەش</string>
+    <string name="screen_search_clear">ئىزدەشنى تازىلاش</string>
+    <string name="screen_sort_date">چېسلا</string>
+    <string name="screen_sort_size">چوڭلۇقى</string>
+    <string name="screen_sort_name">ئىسمى</string>
+    <string name="screen_sort_asc">ئۆسۈش تەرتىپى</string>
+    <string name="screen_sort_desc">تۆۋەنلەش تەرتىپى</string>
+
+    <string name="screen_date_today">بۈگۈن</string>
+    <string name="screen_date_yesterday">تۈنۈگۈن</string>
+    <string name="screen_date_this_year">%1$d-ئاينىڭ %2$d-كۈنى</string>
+    <string name="screen_date_other_year">%1$d-يىلى %2$d-ئاينىڭ %3$d-كۈنى</string>
+</resources>

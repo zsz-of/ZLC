@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC — cadenas en español (es).
+  Flujo de actualización (ui/UpdateFlow.kt). El prefijo de clave update_ no debe cambiarse nunca.
+  Los marcadores usan siempre la forma numerada %1$s / %1$d.
+-->
+<resources>
+    <!-- Avisos del controlador (fuera de los composables sin dependencia de Context, vía context.getString) -->
+    <string name="update_github_url_missing">No se obtuvo la dirección de descarga de GitHub; inténtalo de nuevo más tarde.</string>
+    <string name="update_flavor_standard">Versión estándar</string>
+    <string name="update_flavor_go">Versión Go</string>
+    <string name="update_lanzou_url_missing">Esta versión no ofrece enlace de descarga de Lanzou Cloud; puedes usar la descarga de GitHub.</string>
+    <string name="update_apk_direct_missing">Esta versión no ofrece un enlace directo al paquete correspondiente; elige el APK adecuado en la página de versiones de GitHub.</string>
+    <string name="update_install_permission_missing">No tienes el permiso «Instalar aplicaciones desconocidas», así que no se puede instalar automáticamente. Concédelo en los ajustes del sistema e inténtalo de nuevo.</string>
+    <string name="update_error_unknown">Error desconocido</string>
+    <string name="update_fail_lanzou">Falló la descarga desde Lanzou Cloud</string>
+    <string name="update_fail_github">Falló la descarga desde GitHub</string>
+    <string name="update_lanzou_resolving">Resolviendo el enlace de descarga de Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Descargando desde Lanzou Cloud…</string>
+    <string name="update_github_downloading">Descargando desde GitHub…</string>
+    <string name="update_unzipping">Descomprimiendo el paquete de instalación…</string>
+    <string name="update_notes_empty">Esta versión no tiene notas de la versión.</string>
+
+    <!-- Diálogos relacionados con la versión Go -->
+    <string name="update_use_normal_title">Usa la versión normal</string>
+    <string name="update_use_normal_body">Este dispositivo usa Android 10 o posterior; la versión ligera Go ya no es compatible y la versión antigua no puede seguir usándose.\n\nSe ha detectado la versión normal (ZLC) instalada en este dispositivo; abre directamente la versión normal para seguir usándola (las versiones nuevas ya no ofrecen compatibilidad con Go; puedes desinstalar la versión antigua para liberar espacio).</string>
+    <string name="update_open_normal">Abrir la versión normal</string>
+    <string name="update_must_update_title">Debes actualizar para seguir usándola</string>
+    <string name="update_forced_body">Este dispositivo usa Android 10 o posterior; la versión ligera Go ya no es compatible y la versión antigua no puede seguir usándose; las versiones nuevas tampoco ofrecen compatibilidad con Go.\n\nConéctate a internet y pulsa «Reintentar» para obtener el paquete de la versión normal.</string>
+    <string name="update_retry">Reintentar</string>
+    <string name="update_switch_normal_body">Este dispositivo usa Android 10 o posterior; la versión ligera Go ya no es compatible y la versión antigua no puede seguir usándose.\nDescarga e instala la versión normal para seguir usándola (las versiones nuevas ya no ofrecen compatibilidad con Go).</string>
+
+    <!-- Avisos de descarga / permiso de instalación / resultado -->
+    <string name="update_downloading_title">Descargar actualización</string>
+    <string name="update_cancel">Cancelar</string>
+    <string name="update_need_permission_title">Se necesita permiso de instalación</string>
+    <string name="update_need_permission_body">Instalar la versión nueva requiere el permiso del sistema «Instalar aplicaciones desconocidas».\n\nPulsa «Conceder acceso», permite la instalación en los ajustes y vuelve a la aplicación; la instalación continuará automáticamente (sin volver a descargar).</string>
+    <string name="update_grant">Conceder acceso</string>
+    <string name="update_notice_title">Aviso</string>
+    <string name="update_got_it">Entendido</string>
+
+    <!-- Ventana principal / notas de la versión -->
+    <string name="update_notes_title">v%1$s · Notas de la versión</string>
+    <string name="update_back">Atrás</string>
+    <string name="update_title_switch_normal">Cambiar a la versión normal</string>
+    <string name="update_title_reinstall">Reinstalar esta versión</string>
+    <string name="update_title_new_version">Nueva versión disponible</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Se descargará y reinstalará esta versión (sobrescribiendo la aplicación actual).\nEsta función sirve para probar el mecanismo de actualización.</string>
+    <string name="update_view_notes">Ver las notas de la versión</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud no está disponible</string>
+    <string name="update_download_lanzou">Descargar desde Lanzou Cloud</string>
+    <string name="update_download_github">Descargar desde GitHub</string>
+    <string name="update_download_browser">Descargar desde el navegador</string>
+    <string name="update_later">Actualizar más tarde</string>
+    <string name="update_later_switch">Cambiar más tarde</string>
+    <string name="update_skip_version">Omitir esta versión</string>
+</resources>

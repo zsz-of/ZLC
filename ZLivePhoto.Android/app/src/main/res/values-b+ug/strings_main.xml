@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（维吾尔语 ug，B 级），可能存在不准确之处，欢迎社区修正。
+     بۇ ھۆججەت ماشىنا ياردىمىدە تەرجىمە قىلىنغان (B دەرىجە)، خاتالىقلار بولۇشى مۇمكىن.
+     RTL：不写死物理左右方向；占位符 %1$s / %1$d / %2$d / %3$s 原样保留；`\n` 为换行。 -->
+<resources>
+    <!-- ── ھالەت بالدىقى / ئەسكەرتىش ── -->
+    <string name="main_status_ready">تەييار</string>
+    <string name="main_status_location_granted">ئورۇن ھوقۇقى بېرىلدى، ئايلاندۇرغاندىن كېيىن GPS مېتاداتاسى ساقلىنىدۇ</string>
+    <string name="main_status_location_denied">ئورۇن ھوقۇقى بېرىلمىدى: ئايلاندۇرۇلغان سۈرەتتە GPS ئورۇن ئۇچۇرى يوقىلىدۇ</string>
+    <string name="main_status_all_files_granted">«بارلىق ھۆججەتلەرگە ئېرىشىش» ھوقۇقى بېرىلدى، ئايلاندۇرۇش ئالبوم مۇندەرىجىسىگە بىۋاسىتە يېزىلىپ ئورۇن ئۇچۇرى تولۇق ساقلىنىدۇ</string>
+    <string name="main_status_all_files_denied">«بارلىق ھۆججەتلەرگە ئېرىشىش» ھوقۇقى بېرىلمىدى: بەزى ئۈسكۈنىلەردە ئايلاندۇرغاندىن كېيىن ئورۇن ئۇچۇرى يوقىلىشى مۇمكىن</string>
+    <string name="main_status_read_granted">سۈرەت ۋە سىن ئوقۇش ھوقۇقى بېرىلدى</string>
+    <string name="main_status_video_missing">ھوقۇق بېرىلدى، ئەمما سىن ھوقۇقى يوق: ئىككى ھۆججەتلىك لىۋې فوتونىڭ ھەمراھ سىنىنى تاپقىلى بولمايدۇ</string>
+    <string name="main_status_permission_denied">ھوقۇق بېرىلمىدى، «ھۆججەت قوشۇش» نى قايتا بېسىڭ</string>
+    <string name="main_status_folder_not_selected">ھۆججەت قىسقۇچ تاللانمىدى</string>
+    <string name="main_status_folder_unavailable">تاللانغان ھۆججەت قىسقۇچقا ئېرىشىش مۇمكىن ئەمەس (پەقەت يەرلىك ساقلاش مۇندەرىجىسى قوللىنىدۇ)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">ئۆتكەن قېتىملىق ئەمەلىيەت ئەسلىگە كەلتۈرۈلدى (%1$d ھۆججەت)</item>
+        <item quantity="other">ئۆتكەن قېتىملىق ئەمەلىيەت ئەسلىگە كەلتۈرۈلدى (%1$d ھۆججەت)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">ئۆتكەن قېتىم نورمالسىز چېكىنگەنلىك بايقالدى، تاماملانمىغان تىزىملىك تازىلاندى</string>
+    <string name="main_status_compose_blocks_extract">نۆۋەتتە بىرلەشتۈرۈش ۋەزىپىسى بار، ئايرىش ھالىتىگە ئالماشتۇرغىلى بولمايدۇ</string>
+    <string name="main_status_replace_off_mutex">ئالماشتۇرۇش ھالىتى تاقالدى («بىر تەرەپ قىلىپ بولغاندىن كېيىن ئەسلى سۈرەتنى ئۆچۈرۈش» بىلەن ئۆز-ئارا چەكلەيدۇ)</string>
+    <string name="main_status_delete_needs_all_files">ئەسلى سۈرەتنى ئاپتوماتىك ئۆچۈرۈش ئۈچۈن «بارلىق ھۆججەتلەرگە ئېرىشىش» ھوقۇقى كېرەك، ئاۋۋال ھوقۇق بېرىڭ</string>
+    <string name="main_status_replace_off">ئالماشتۇرۇش ھالىتى تاقالدى، ئايلاندۇرۇش نەتىجىسى ئالبوم مۇندەرىجىسىگە قايتا يېزىلىدۇ</string>
+    <string name="main_status_replace_needs_all_files">ئالماشتۇرۇش ھالىتى ئۈچۈن «بارلىق ھۆججەتلەرگە ئېرىشىش» ھوقۇقى كېرەك، ئاۋۋال ھوقۇق بېرىڭ</string>
+    <string name="main_status_delete_off_mutex">«بىر تەرەپ قىلىپ بولغاندىن كېيىن ئەسلى سۈرەتنى ئۆچۈرۈش» تاقالدى (ئالماشتۇرۇش ھالىتى بىلەن ئۆز-ئارا چەكلەيدۇ)</string>
+    <string name="main_status_loading_albums">ئالبوم ئوقۇلۇۋاتىدۇ…</string>
+    <string name="main_status_no_albums">ئالبوم تېپىلمىدى</string>
+    <string name="main_status_compose_no_photo">سۈرەت تاللانمىدى، بىرلەشتۈرگىلى بولمايدۇ</string>
+    <string name="main_status_compose_no_video">سىن تاللانمىدى، بىرلەشتۈرگىلى بولمايدۇ</string>
+    <string name="main_status_compose_all_added">تاللانغان سۈرەتلەرنىڭ ھەممىسى تىزىملىكتە بار</string>
+    <string name="main_status_compose_paired">سۈرەت %1$d پارچە، سىن %2$d، ئازراق تەرەپ بويىچە %3$d جۈپ بىرلەشتۈرۈش ۋەزىپىسى قوشۇلدى</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d بىرلەشتۈرۈش ۋەزىپىسى قوشۇلدى، بىرلەشتۈرۈشنى ئىجرا قىلىش ئۈچۈن «ئايلاندۇرۇشنى باشلاش» نى بېسىڭ</item>
+        <item quantity="other">%1$d بىرلەشتۈرۈش ۋەزىپىسى قوشۇلدى، بىرلەشتۈرۈشنى ئىجرا قىلىش ئۈچۈن «ئايلاندۇرۇشنى باشلاش» نى بېسىڭ</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (چىقىرىش فورماتى ئاپتوماتىك Google غا ئالماشتۇرۇلدى)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">ھەمبەھىرلەنگەن %1$d رەسىم ئەكىرىلىۋاتىدۇ…</item>
+        <item quantity="other">ھەمبەھىرلەنگەن %1$d رەسىم ئەكىرىلىۋاتىدۇ…</item>
+    </plurals>
+    <string name="main_status_import_failed">ئەكىرىش مەغلۇپ بولدى: %1$s</string>
+    <string name="main_status_import_done_partial">ئەكىرىش تاماملاندى: مۇۋەپپەقىيەت %1$d، مەغلۇپ %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">ئەكىرىش تاماملاندى: جەمئىي %1$d ھۆججەت ئەكىرىلدى</item>
+        <item quantity="other">ئەكىرىش تاماملاندى: جەمئىي %1$d ھۆججەت ئەكىرىلدى</item>
+    </plurals>
+    <string name="main_status_import_stopped">ئەكىرىش توختىتىلدى: مۇۋەپپەقىيەت %1$d، مەغلۇپ %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d ھۆججەت ئەكىرىلىۋاتىدۇ…</item>
+        <item quantity="other">%1$d ھۆججەت ئەكىرىلىۋاتىدۇ…</item>
+    </plurals>
+    <string name="main_status_importing_progress">ئەكىرىلىۋاتىدۇ %1$d/%2$d…</string>
+    <string name="main_status_stopping">توختىتىلىۋاتىدۇ… (نۆۋەتتىكى ھۆججەت تاماملانغاندىن كېيىن توختايدۇ)</string>
+    <string name="main_status_stopping_import">ئەكىرىش توختىتىلىۋاتىدۇ…</string>
+    <string name="main_status_removed">%1$s چىقىرىۋېتىلدى</string>
+    <string name="main_status_cleared">تازىلاندى</string>
+    <string name="main_status_nothing_to_convert">ئايلاندۇرغىلى بولىدىغان ھۆججەت يوق</string>
+    <string name="main_status_folder_unreadable">تاللانغان ھۆججەت قىسقۇچنى ئوقۇغىلى بولمىدى</string>
+    <string name="main_status_scanning_folder">ھۆججەت قىسقۇچ تارىلىۋاتىدۇ…</string>
+    <string name="main_status_no_images">تاللانغان ھۆججەت قىسقۇچتا رەسىم تېپىلمىدى</string>
+    <string name="main_status_batch_importing">توپ ئەكىرىلىۋاتىدۇ %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">توپ ئەكىرىش توختىتىلدى: جەمئىي %1$d لىۋې فوتو ئەكىرىلدى</item>
+        <item quantity="other">توپ ئەكىرىش توختىتىلدى: جەمئىي %1$d لىۋې فوتو ئەكىرىلدى</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">توپ ئەكىرىش توختىتىلدى: جەمئىي %1$d لىۋې فوتو ئەكىرىلدى، %2$d لىۋې فوتو بولمىغان ھۆججەت ئاتلاندى</item>
+        <item quantity="other">توپ ئەكىرىش توختىتىلدى: جەمئىي %1$d لىۋې فوتو ئەكىرىلدى، %2$d لىۋې فوتو بولمىغان ھۆججەت ئاتلاندى</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">توپ ئەكىرىش تاماملاندى: جەمئىي %1$d لىۋې فوتو ئەكىرىلدى</item>
+        <item quantity="other">توپ ئەكىرىش تاماملاندى: جەمئىي %1$d لىۋې فوتو ئەكىرىلدى</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">توپ ئەكىرىش تاماملاندى: جەمئىي %1$d لىۋې فوتو ئەكىرىلدى، %2$d لىۋې فوتو بولمىغان ھۆججەت ئاتلاندى</item>
+        <item quantity="other">توپ ئەكىرىش تاماملاندى: جەمئىي %1$d لىۋې فوتو ئەكىرىلدى، %2$d لىۋې فوتو بولمىغان ھۆججەت ئاتلاندى</item>
+    </plurals>
+    <string name="main_status_stopped_replace">توختىتىلدى: %1$d ھۆججەتتىن %2$d ى بىر تەرەپ قىلىندى، %3$d مەنبە ھۆججەت ئالماشتۇرۇلدى</string>
+    <string name="main_status_stopped_export">توختىتىلدى: %1$d ھۆججەتتىن %2$d ى بىر تەرەپ قىلىندى، %3$d ئالبومغا چىقىرىلدى</string>
+    <string name="main_status_done_replace_reason">تاماملاندى: %1$d ھۆججەت بىر تەرەپ قىلىندى، %2$d مەنبە ھۆججەت ئالماشتۇرۇلدى (سەۋەب: %3$s)</string>
+    <string name="main_status_done_export_reason">تاماملاندى: %1$d ھۆججەت بىر تەرەپ قىلىندى، %2$d ئالبومغا چىقىرىلدى (سەۋەب: %3$s)</string>
+    <string name="main_status_done_replace">تاماملاندى: %1$d ھۆججەت بىر تەرەپ قىلىندى، %2$d مەنبە ھۆججەت ئالماشتۇرۇلدى</string>
+    <string name="main_status_done_export">تاماملاندى: %1$d ھۆججەت بىر تەرەپ قىلىندى، %2$d ئالبومغا چىقىرىلدى</string>
+    <string name="main_status_keep_originals">%1$s؛ «تولۇق ساقلاش ئېرىشىش» ھوقۇقى بېرىلمىدى، ئەسلى سۈرەت ساقلاندى</string>
+
+    <!-- ── تىزىملىك تۈرى ئۇچۇرى ── -->
+    <string name="main_info_detecting">تەكشۈرۈلۈۋاتىدۇ…</string>
+    <string name="main_info_unrecognized">تونۇلمىغان لىۋې فوتو فورماتى</string>
+    <string name="main_info_converting">ئايلاندۇرۇلۇۋاتىدۇ…</string>
+    <string name="main_info_compose_task">بىرلەشتۈرۈش ۋەزىپىسى (بىرلەشتۈرۈشنى ئىجرا قىلىش ئۈچۈن «ئايلاندۇرۇشنى باشلاش» نى بېسىڭ)</string>
+    <string name="main_info_done_replaced">تاماملاندى (%1$d مەنبە ھۆججەت ئالماشتۇرۇلدى)</string>
+    <string name="main_info_done_skipped">تاماملاندى (ئاتلاندى: ئوخشاش نام توقۇنۇشى)</string>
+    <string name="main_info_done_exported">تاماملاندى (%1$d چىقىرىلدى)</string>
+    <string name="main_info_failed">مەغلۇپ بولدى: %1$s</string>
+
+    <!-- ── ئىلگىرىلەش تەپسىلاتى ── -->
+    <string name="main_progress_added">قوشۇلدى %1$d/%2$d</string>
+    <string name="main_progress_processed">بىر تەرەپ قىلىندى %1$d/%2$d</string>
+    <string name="main_progress_imported">ئەكىرىلدى %1$d/%2$d</string>
+
+    <!-- ── ھوقۇق سۆزلەشكۈسى ── -->
+    <string name="main_dialog_permission_title">سۈرەت ۋە سىن ئوقۇش ھوقۇقى كېرەك</string>
+    <string name="main_dialog_permission_message">بۇ ئەپ ئۈسكۈنىڭىزدىكى سۈرەت ۋە سىنلارنى ئوقۇشى كېرەك:\n\n• سۈرەت ھوقۇقى: ئۈسكۈنە ئالبومىنى تاراپ، ئۇنىڭدىكى لىۋې فوتولارنى تونۇش\n• سىن ھوقۇقى: ئىككى ھۆججەتلىك لىۋې فوتونىڭ ھەمراھ سىنىنى ئىزدەش\n• ئورۇن ھوقۇقى: سۈرەتتىكى GPS ئورۇن مېتاداتاسىنى ساقلاش (يوق بولسا ئايلاندۇرغاندىن كېيىن ئورۇن ئۇچۇرى يوقىلىدۇ)\n\nرەت قىلغاندىن كېيىن ئىچكى تاللىغۇچنى ئىشلىتەلمەيسىز، كېيىن «ھۆججەت قوشۇش» نى قايتا بېسىپ ھوقۇق بېرەلەيسىز.</string>
+    <string name="main_dialog_settings_title">سۈرەت ۋە سىن ھوقۇقىنى قولدا بېرىش كېرەك</string>
+    <string name="main_dialog_settings_message">سىز ئىلگىرى «قايتا سورىماسلىق» نى تاللىغان، سىستېما ئەمدى ھوقۇق كۆزنىكىنى چىقارمايدۇ.\n\nئەپ تەپسىلاتى بېتى → ھوقۇق → سۈرەت ۋە سىن غا كىرىپ، قولدا ئېرىشىش ھوقۇقىنى بېرىپ ئاندىن بۇ ئەپكە قايتىڭ.\n\nئەسكەرتىش: «سۈرەت» ۋە «سىن» ھوقۇقىنى چوقۇم بىرگە بېرىش كېرەك، بولمىسا ئىككى ھۆججەتلىك لىۋې فوتونىڭ ھەمراھ سىنى تېپىلمايدۇ.</string>
+
+    <!-- ── «بارلىق ھۆججەتلەرگە ئېرىشىش» چۈشەندۈرۈشى ── -->
+    <string name="main_dialog_allfiles_title_delete">ئەسلى سۈرەتنى ئاپتوماتىك ئۆچۈرۈش ئۈچۈن «بارلىق ھۆججەتلەرگە ئېرىشىش» كېرەك</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">بۇ ئۈسكۈنە ئەسلى سۈرەتنى ئاپتوماتىك ئۆچۈرۈشنى قوللىمايدۇ</string>
+    <string name="main_dialog_allfiles_title_replace">ئالماشتۇرۇش ھالىتى ئۈچۈن «بارلىق ھۆججەتلەرگە ئېرىشىش» كېرەك</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">بۇ ئۈسكۈنە ئالماشتۇرۇش ھالىتىنى قوللىمايدۇ</string>
+    <string name="main_dialog_allfiles_title_location">«بارلىق ھۆججەتلەرگە ئېرىشىش» ھوقۇقىنى بېرىش تەۋسىيە قىلىنىدۇ</string>
+    <string name="main_dialog_allfiles_delete_message">«بىر تەرەپ قىلىپ بولغاندىن كېيىن ئەسلى سۈرەتنى ئۆچۈرۈش» دىسكېدىكى ئەسلى ھۆججەتنى (سۈرەت ۋە ھەمراھ سىنى) بىۋاسىتە ئۆچۈرىدۇ، بۇ مەشغۇلات قايتۇرۇلمايدۇ، شۇڭا ئاۋۋال «بارلىق ھۆججەتلەرگە ئېرىشىش» ھوقۇقى بېرىلىشى كېرەك.\n\nھوقۇق بېرىلگەندىن كېيىن كۇنۇپكا ئىشلىتىشكە بولىدۇ، شۇ چاغدا ئۆزىڭىز ئاچالايسىز.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">نۆۋەتتىكى سىستېما (Android 10 ۋە ئۇنىڭدىن تۆۋەن) «بارلىق ھۆججەتلەرگە ئېرىشىش» ھوقۇقىنى تەمىنلىمەيدۇ، دىسكېدىكى ئەسلى ھۆججەتنى بىۋاسىتە ئۆچۈرگىلى بولمايدۇ، شۇڭا بۇ ئۈسكۈنە «بىر تەرەپ قىلىپ بولغاندىن كېيىن ئەسلى سۈرەتنى ئۆچۈرۈش» نى قوللىمايدۇ.\n\nئايلاندۇرۇش تاماملانغاندىن كېيىن سىستېما ئالبومىدىن ئەسلى سۈرەتنى قولدا تازىلىيالايسىز.</string>
+    <string name="main_dialog_allfiles_replace_message">«ئالماشتۇرۇش ھالىتى» ئايلاندۇرۇش نەتىجىسىنى بىۋاسىتە دىسكېدىكى ئەسلى ھۆججەتكە قايتا يازىدۇ (ئەسلى مەزمۇننى قاپلايدۇ)، بۇ مەشغۇلات قايتۇرۇلمايدۇ، شۇڭا ئاۋۋال «بارلىق ھۆججەتلەرگە ئېرىشىش» ھوقۇقى بېرىلىشى كېرەك.\n\nھوقۇق بېرىلگەندىن كېيىن كۇنۇپكا ئىشلىتىشكە بولىدۇ، شۇ چاغدا ئۆزىڭىز ئاچالايسىز.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">نۆۋەتتىكى سىستېما (Android 10 ۋە ئۇنىڭدىن تۆۋەن) «بارلىق ھۆججەتلەرگە ئېرىشىش» ھوقۇقىنى تەمىنلىمەيدۇ، دىسكېدىكى ئەسلى ھۆججەتنى بىۋاسىتە ئۆزگەرتكىلى بولمايدۇ، شۇڭا بۇ ئۈسكۈنە «ئالماشتۇرۇش ھالىتى» نى قوللىمايدۇ.\n\nسىز سۈكۈتتىكى ئۇسۇل بىلەن ئايلاندۇرۇشنى داۋاملاشتۇرسىڭىز بولىدۇ، نەتىجە ئالبوم مۇندەرىجىسىگە چىقىرىلىدۇ.</string>
+    <string name="main_dialog_allfiles_location_message">بەزى ئۈسكۈنىلەر (مەسىلەن Meizu) سىستېما ئالبوم ئىنتېرفېيسى ئارقىلىق يازغاندا GPS ئورۇن ئۇچۇرىنى يوشۇرۇۋېتىدۇ، نەتىجىدە ئايلاندۇرۇلغان سۈرەتتە ئورۇن يوقىلىدۇ.\n\n«بارلىق ھۆججەتلەرگە ئېرىشىش» بېرىلگەندىن كېيىن، بۇ ئەپ ئالبوم مۇندەرىجىسىگە بىۋاسىتە يازىدۇ، ئورۇن مېتاداتاسى تولۇق ساقلىنىدۇ.\n\nبەرمىسىڭىزمۇ نورمال ئايلاندۇرغىلى بولىدۇ، بەزى ئۈسكۈنىلەردە ئورۇن ئۇچۇرى يوقىلىشى مۇمكىن.</string>
+
+    <!-- ── چىقىرىش ھۆججەت نامى توقۇنۇشى ── -->
+    <string name="main_dialog_conflict_title">چىقىرىش ھۆججەت نامى توقۇنۇشى</string>
+    <string name="main_dialog_conflict_message">چىقىرىش مۇندەرىجىسىدە ئوخشاش ناملىق ھۆججەت بار:\n%1$s\n\nبىر تەرەپ قىلىش ئۇسۇلىنى تاللاڭ.</string>
+    <string name="main_label_conflict_always">كېيىنكى توقۇنۇشلار ئۈچۈن مۇشۇ ئۇسۇلنى ئىشلىتىش</string>
+
+    <!-- ── سۆزلەشكۈ كۇنۇپكىلىرى ── -->
+    <string name="main_btn_grant">ھوقۇق بېرىش</string>
+    <string name="main_btn_deny">رەت قىلىش</string>
+    <string name="main_btn_go_settings">تەڭشەككە بېرىش</string>
+    <string name="main_btn_cancel">بىكار قىلىش</string>
+    <string name="main_btn_grant_access">ھوقۇق بېرىشكە بېرىش</string>
+    <string name="main_btn_got_it">چۈشەندىم</string>
+    <string name="main_btn_not_now">ھازىرچە ياق</string>
+    <string name="main_btn_skip">ئاتلاپ كېتىش</string>
+    <string name="main_btn_overwrite">قاپلاش</string>
+    <string name="main_btn_auto_rename">ئاپتوماتىك ئىسىم ئۆزگەرتىش</string>
+
+    <!-- ── نەتىجە / چىقىرىش مەغلۇپ سەۋەبلىرى ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d ئەسلى ھۆججەت ئۆچۈرۈلدى</item>
+        <item quantity="other">%1$d ئەسلى ھۆججەت ئۆچۈرۈلدى</item>
+    </plurals>
+    <string name="main_delete_nothing">ئەسلى سۈرەتنى ئۆچۈرۈش كەتمەيدۇ</string>
+    <string name="main_delete_partial">%1$d ئەسلى ھۆججەت ئۆچۈرۈلدى (%2$d ى ئۆچۈرۈلمىدى، ساقلاندى)</string>
+    <string name="main_delete_failed">ئەسلى سۈرەتنى ئۆچۈرۈش مەغلۇپ بولدى (ھۆججەت ئىشلىتىلىۋاتىدۇ ياكى يېزىش ھوقۇقى يوق)، ساقلاندى</string>
+    <string name="main_export_missing_output">ئايلاندۇرۇش مەھسۇلاتى يوق ياكى قۇرۇق: %1$s</string>
+    <string name="main_export_missing_output_bare">ئايلاندۇرۇش مەھسۇلاتى يوق ياكى قۇرۇق</string>
+    <string name="main_export_insert_null">MediaStore insert null قايتۇردى</string>
+    <string name="main_export_output_stream">MediaStore چىقىرىش ئېقىمى ئىشلىمەيدۇ</string>
+    <string name="main_export_write_failed">MediaStore يېزىش مەغلۇپ بولدى: %1$s</string>
+    <string name="main_export_mkdir_failed">ئالبوم مۇندەرىجىسىنى قۇرغىلى بولمىدى %1$s</string>
+    <string name="main_export_dir_write_failed">ئالبوم مۇندەرىجىسىگە يېزىش مەغلۇپ بولدى: %1$s</string>
+    <string name="main_export_no_source">مەنبە ھۆججەتنى تاپقىلى بولمىدى، ئالماشتۇرۇش ئاتلاندى</string>
+    <string name="main_export_companion_failed">ھەمراھ ھۆججەتنى قايتا يېزىش مەغلۇپ بولدى: %1$s</string>
+    <string name="main_export_source_dir_unwritable">مەنبە ھۆججەت مۇندەرىجىسىگە يازغىلى بولمايدۇ، ھەمراھ ھۆججەت قايتا يېزىلمىدى</string>
+    <string name="main_export_source_dir_unavailable">مەنبە ھۆججەت مۇندەرىجىسى ئىشلىمەيدۇ: %1$s</string>
+    <string name="main_export_replace_failed">مەنبە ھۆججەتنى ئالماشتۇرۇش مەغلۇپ بولدى: %1$s</string>
+    <string name="main_export_replace_failed_bare">مەنبە ھۆججەتنى ئالماشتۇرۇش مەغلۇپ بولدى</string>
+</resources>

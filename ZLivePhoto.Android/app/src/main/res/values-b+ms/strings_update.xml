@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bahasa Melayu (Malay) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Malaysian Android usage; technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">Perkongsian Lanzou Cloud telah dibatalkan atau failnya tidak wujud; sila muat turun daripada GitHub</string>
+    <string name="update_lanzou_gone_short">Perkongsian Lanzou Cloud telah dibatalkan; sila muat turun daripada GitHub</string>
+    <string name="update_lanzou_resolve_failed">Gagal menyelesaikan pautan muat turun Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Perkongsian Lanzou Cloud ini memerlukan kod akses; sila muat turun daripada GitHub (atau cari kod akses dalam nota keluaran)</string>
+    <string name="update_lanzou_wrong_passwd">Kod akses Lanzou Cloud salah</string>
+    <string name="update_err_resolve_failed">Gagal menyelesaikan</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Pemeriksaan anti-crawler Lanzou Cloud gagal</string>
+    <string name="update_err_no_frame">Tidak dapat menghurai halaman muat turun Lanzou Cloud (frame muat turun tidak dijumpai)</string>
+    <string name="update_err_no_file_id">Tidak dapat menghurai pengenal pasti fail Lanzou Cloud</string>
+    <string name="update_err_no_sign">Tidak dapat menghurai tandatangan Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Permintaan API gagal</string>
+    <string name="update_err_api_request">Permintaan API Lanzou Cloud gagal</string>
+    <string name="update_err_empty_direct">Lanzou Cloud memulangkan URL muat turun yang kosong</string>
+    <string name="update_err_direct_expired">URL muat turun Lanzou Cloud telah luput; sila ambil semula</string>
+    <string name="update_err_http_request">Permintaan gagal (HTTP %1$d)</string>
+    <string name="update_err_connect">Tidak dapat menyambung ke pelayan muat turun: %1$s</string>
+    <string name="update_err_http">Muat turun gagal (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Tidak dapat membuka sambungan muat turun</string>
+    <string name="update_err_empty">Kandungan yang dimuat turun kosong</string>
+    <string name="update_err_incomplete">Muat turun tidak lengkap (%1$d daripada %2$d bait diterima); sila muat turun lagi</string>
+    <string name="update_err_interrupted">Muat turun terganggu: %1$s</string>
+    <string name="update_err_not_apk">Fail yang dimuat turun bukan pakej yang sah (mungkin halaman web, atau pautan muat turun telah luput); sila muat turun lagi atau gunakan GitHub.</string>
+    <string name="update_err_apk_incomplete">Kandungan pakej tidak lengkap; sila muat turun lagi atau gunakan GitHub.</string>
+    <string name="update_err_apk_unparsable">Pakej tidak dapat dihurai (muat turun mungkin tidak lengkap); sila muat turun lagi atau gunakan GitHub.</string>
+    <string name="update_err_no_install_permission">Kebenaran “pasang apl tidak diketahui” belum diberikan</string>
+    <string name="update_err_installer_failed">Tidak dapat melancarkan pemasang sistem (%1$s); sila buka pakej daripada pengurus fail dan pasang secara manual</string>
+</resources>

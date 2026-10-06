@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bahasa Melayu (Malay) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Malaysian Android usage; technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Tetapan</string>
+    <string name="settings_cd_back">Kembali</string>
+    <string name="settings_btn_apply">Guna</string>
+    <string name="settings_btn_cancel">Batal</string>
+    <string name="settings_btn_close">Tutup</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Derma</string>
+    <string name="settings_section_general">Umum</string>
+    <string name="settings_section_appearance">Penampilan</string>
+    <string name="settings_section_language">Bahasa</string>
+    <string name="settings_section_defaults">Lalai</string>
+    <string name="settings_section_output">Output</string>
+    <string name="settings_section_transcode">Transkod video</string>
+    <string name="settings_section_about">Perihal</string>
+    <string name="settings_section_app">Apl</string>
+    <string name="settings_section_credits">Kredit &amp; derma</string>
+    <string name="settings_section_opensource">Sumber terbuka &amp; pelesenan</string>
+    <string name="settings_startup_check_title">Semak kemas kini semasa mula</string>
+    <string name="settings_startup_check_subtitle">Ambil versi baharu daripada GitHub secara automatik semasa mula dan tawarkan muat turun apabila tersedia</string>
+    <string name="settings_haptics_title">Maklum balas haptik</string>
+    <string name="settings_haptics_subtitle">Maklum balas haptik apabila butang ditekan dan status berubah</string>
+    <string name="settings_bounce_title">Animasi lantunan butang</string>
+    <string name="settings_bounce_subtitle">Animasi skala dan lantunan apabila butang ditekan</string>
+    <string name="settings_theme_system">Ikut sistem</string>
+    <string name="settings_theme_dark">Gelap</string>
+    <string name="settings_theme_light">Cerah</string>
+    <string name="settings_dynamic_theme_title">Warna dinamik Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Ikut warna kertas dinding sistem (Android 12+); apabila dimatikan, warna tema praset di bawah digunakan</string>
+    <string name="settings_preset_colors_title">Warna tema praset</string>
+    <string name="settings_preset_current">Semasa: %1$s</string>
+    <string name="settings_preset_disabled_hint">Matikan “Warna dinamik Material You” untuk memilih</string>
+    <string name="settings_custom">Tersuai</string>
+    <string name="settings_custom_color_title">Warna tema tersuai</string>
+    <string name="settings_cd_custom_palette">Palet tersuai</string>
+    <string name="settings_hue_value">Hue %1$d°</string>
+    <string name="settings_language_dialog_title">Pilih bahasa apl</string>
+    <string name="settings_language_count">%1$d bahasa tersedia</string>
+    <string name="settings_reminder_dialogs_title">Dialog “Jangan tunjuk lagi”</string>
+    <string name="settings_reminder_dialogs_subtitle">Urus suis untuk semua dialog “Jangan tunjuk lagi”</string>
+    <string name="settings_reminder_hint">Apabila suis dihidupkan, gesaan itu tidak ditunjukkan lagi; apabila dimatikan, gesaan muncul semula pada kali seterusnya keadaan berkenaan berlaku.</string>
+    <string name="settings_preserve_folders_title">Output menggunakan hierarki folder sumber</string>
+    <string name="settings_preserve_folders_subtitle">Hasil disimpan dalam subfolder yang dinamakan sempena album asal; apabila dimatikan, semuanya diletakkan rata dalam satu folder</string>
+    <string name="settings_about_title">Perihal</string>
+    <string name="settings_about_subtitle">Versi · Semak kemas kini · Kredit &amp; derma</string>
+    <string name="settings_check_update_title">Semak kemas kini</string>
+    <string name="settings_check_update_subtitle">Ambil versi terkini daripada GitHub Releases</string>
+    <string name="settings_checking">Menyemak…</string>
+    <string name="settings_update_available">v%1$s tersedia</string>
+    <string name="settings_up_to_date">Anda menggunakan versi terkini</string>
+    <string name="settings_network_error">Ralat rangkaian; sila cuba lagi kemudian</string>
+    <string name="settings_reinstall_title">Pasang semula versi ini</string>
+    <string name="settings_reinstall_subtitle">Muat turun binaan terkini dan pasang menimpa versi ini (untuk menguji kemas kini)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s tersedia; sila gunakan “Semak kemas kini” untuk menaik taraf dahulu</string>
+    <string name="settings_version_title">Versi</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Derma melalui Alipay</string>
+    <string name="settings_alipay_subtitle">Sokong pembangunan</string>
+    <string name="settings_coolapk_subtitle">Pengguna Coolapk · terima kasih atas sokongan</string>
+    <string name="settings_ai_credits_subtitle">Terima kasih kepada IDE AI dan model AI yang membantu pembangunan</string>
+    <string name="settings_github_title">Repositori GitHub</string>
+    <string name="settings_license_title">Lesen sumber terbuka</string>
+    <string name="settings_sponsor_dialog_title">Terima kasih atas sokongan anda</string>
+    <string name="settings_sponsor_dialog_text">Saya sangat menghargai kesediaan anda menyokong apl ini!\n\nJika anda masih pelajar atau belum berdikari dari segi kewangan, jangan membelanjakan wang untuk ini — menyimpan kebaikan itu di hati dan terus menggunakan apl ini sudah menjadi sokongan terbaik yang saya harapkan.\n\nJika anda tetap ingin menderma, berapa pun jumlahnya amat membantu, dan saya akan menggunakannya untuk penyelenggaraan dan ciri yang lebih baik:)</string>
+    <string name="settings_alipay_missing_title">Alipay tidak dipasang</string>
+    <string name="settings_alipay_missing_text">Alipay tidak dikesan, jadi derma tidak dapat diselesaikan sekarang.\n\nTidak mengapa — terima kasih banyak atas kebaikan anda!</string>
+    <string name="settings_transcoder_title">Transkoder terbina dalam</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Kod semula</string>
+    <string name="settings_transcode_mode_remux">Remux bekas sahaja (disyorkan)</string>
+    <string name="settings_transcode_mode_off">Jangan gunakan transkoder</string>
+    <string name="settings_transcode_params_title">Parameter transkod</string>
+    <string name="settings_transcode_params_subtitle">Parameter kualiti dan mampatan yang digunakan semasa mengekod semula</string>
+    <string name="settings_transcode_params_disabled">Hanya berkesan apabila “Mod transkod” ditetapkan kepada “Kod semula”</string>
+    <string name="settings_crf_value">Kualiti CRF: %1$d</string>
+    <string name="settings_crf_hint">Nilai lebih rendah bermaksud kualiti lebih tinggi dan fail lebih besar (lalai 18)</string>
+    <string name="settings_encoder_title">Pengekod</string>
+    <string name="settings_compress_preset_title">Praset mampatan</string>
+</resources>

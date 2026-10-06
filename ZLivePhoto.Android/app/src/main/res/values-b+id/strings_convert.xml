@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bahasa Indonesia (Indonesian) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Terminology follows common Indonesian Android usage; technical and brand names stay in English.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">Format tujuan tidak dikenal: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Format Live Photo tidak dikenal (bukan Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Foto sampul tidak ada atau kosong</string>
+    <string name="conv_video_missing">Video tidak ada atau kosong</string>
+    <string name="conv_video_too_large">Video terlalu besar (%1$d MB) untuk membuat Live Photo; silakan pilih video yang lebih pendek</string>
+    <string name="conv_transcoded_too_large">Video masih terlalu besar setelah transkode (%1$d MB); Live Photo tidak dapat dibuat</string>
+    <string name="conv_video_too_large_compose">Video terlalu besar (%1$d MB); Live Photo tidak dapat dibuat</string>
+    <string name="conv_cover_heic_go">Sampul adalah gambar HEIC (edisi ringan tidak dapat melakukan transkode; ekspor sebagai JPEG di iPhone terlebih dahulu, lalu konversi)</string>
+    <string name="conv_cover_invalid_heic">Sampul bukan gambar yang valid (HEIC memerlukan dukungan dekode HEIF sistem)</string>
+    <string name="conv_cover_not_jpeg_go">Sampul bukan gambar JPEG (edisi ringan tidak dapat melakukan transkode; silakan gunakan foto JPEG)</string>
+    <string name="conv_cover_invalid_image">Sampul bukan gambar yang valid (hanya JPEG/WebP/PNG yang didukung)</string>
+    <string name="conv_reencode_failed">Gagal mengodekan ulang video: %1$s</string>
+    <string name="conv_remux_failed">Gagal remux kontainer: %1$s</string>
+    <string name="conv_codec_unknown">Bukan video H.264/H.265 yang dikenali</string>
+    <string name="conv_codec_is">Codec adalah %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Video “%1$s” %2$s; mengganti kontainer saja (remux) tidak dapat mengubah codec, sehingga Live Photo tidak dapat dibuat.\n\nSilakan atur “Pengaturan → Transkode video → Mode transkode” ke “Kodekan ulang”, atau konversi dulu ke MP4 H.264/H.265 dengan alat lain.</string>
+    <string name="conv_hint_no_encoder">Video tidak berada dalam kontainer MP4 standar (MOV / MKV / WebM / AVI, dsb.), dan “Mode transkode” saat ini tidak mengodekan ulang, sehingga Live Photo tidak dapat dibuat.\n\nSilakan atur “Pengaturan → Transkode video → Mode transkode” ke “Kodekan ulang” (edisi standar menyertakan encoder ffmpeg; edisi ringan Go tidak memiliki transkoder, jadi gunakan edisi standar), atau konversi dulu video ke MP4 standar (H.264/H.265).</string>
+    <string name="conv_log_detected">Terdeteksi sebagai %1$s</string>
+    <string name="conv_log_same_format_copied">Format sumber dan tujuan sama; disalin apa adanya (tanpa kehilangan)</string>
+    <string name="conv_log_extra_tracks_bypass">Video sumber memuat trek selain audio/video (%1$s); melewati penyalinan format sama dan memakai jalur tulis penuh untuk membersihkan</string>
+    <string name="conv_log_ts_fallback">Sumber tidak memiliki stempel waktu bingkai sampul; memakai titik tengah video sesuai spesifikasi</string>
+    <string name="conv_log_brand_normalized">Merek kontainer video dinormalkan (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Video memuat trek tambahan (%1$s) yang tidak dapat dibersihkan; keluaran apa adanya (hasil mungkin tidak dapat diputar dengan tekan lama di sebagian perangkat)</string>
+    <string name="conv_log_extra_tracks_removed">Trek video tambahan dihapus (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Video sumber %1$s; remux kontainer saja tidak dapat memperbaikinya (%2$s). Jika hasilnya masih tidak dapat diputar dengan tekan lama, atur “Pengaturan → Transkode video → Mode transkode” ke “Kodekan ulang”.</string>
+    <string name="conv_log_reencoding">Video sumber %1$s; mengodekan ulang ke 8-bit + AAC sesuai konfigurasi untuk meningkatkan kompatibilitas galeri</string>
+    <string name="conv_log_reencode_result_unusable">Hasil pengodean ulang tidak dapat dipakai; keluaran apa adanya (hasil mungkin tidak dapat diputar dengan tekan lama di sebagian perangkat)</string>
+    <string name="conv_log_reencode_still_risky">Masih ada risiko setelah pengodean ulang (%1$s)</string>
+    <string name="conv_log_reencode_failed">Pengodean ulang gagal (%1$s); keluaran apa adanya (hasil mungkin tidak dapat diputar dengan tekan lama di sebagian perangkat)</string>
+    <string name="conv_log_cover_heic_converted">Sampul berupa HEIC (bukan JPEG); ditranskode ke JPEG standar sebelum pengemasan</string>
+    <string name="conv_log_compose_sizes">Komposisi: foto %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkoder tidak aktif: hanya menulis ulang merek kontainer (MOV → MP4), tanpa pengodean ulang</string>
+    <string name="conv_tag_convert">Konversi</string>
+    <string name="conv_tag_transcode">Transkode</string>
+    <string name="conv_tag_compose">Komposisi</string>
+    <string name="conv_blocker_no_encoder">Transkoder bawaan tidak tersedia</string>
+    <string name="conv_blocker_mode_no_encode">“Mode transkode” saat ini tidak mengodekan ulang</string>
+    <string name="conv_addon_unavailable">Transkoder bawaan tidak tersedia</string>
+    <string name="conv_addon_transcode_failed">Transkode ffmpeg gagal: %1$s</string>
+    <string name="conv_addon_remux_failed">Remux kontainer ffmpeg gagal: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Mentranskode video ke MP4 standar dengan ffmpeg (%1$s / crf %2$d / %3$s; hanya menyimpan trek video dan audio)</string>
+    <string name="conv_log_transcode_done">Transkode video selesai (%1$d KB)</string>
+    <string name="conv_log_remuxing">Meremux kontainer video ke MP4 standar (hanya kontainer, tanpa pengodean ulang)</string>
+    <string name="conv_log_remux_done">Remux kontainer selesai (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Komposisi</string>
+    <string name="conv_reminder_cat_convert">Konversi</string>
+    <string name="conv_reminder_cat_update">Pembaruan</string>
+    <string name="conv_reminder_video_over3s_title">Video lebih dari 3 detik</string>
+    <string name="conv_reminder_video_over3s_message">Video yang dipilih lebih dari 3 detik, sehingga Live Photo yang dihasilkan mungkin bermasalah dalam hal kompatibilitas:\n\n• Mungkin tidak dapat diputar dengan benar\n• Mungkin tidak dikenali oleh galeri sistem\n• Sebagian perangkat mungkin tidak mengenali Live Photo ini</string>
+    <string name="conv_reminder_legacy_go_title">Versi lama terdeteksi</string>
+    <string name="conv_reminder_legacy_go_message">Versi lama (edisi Go) aplikasi ini masih terpasang di perangkat ini. Versi tersebut tidak lagi berfungsi di sini; Anda dapat menghapus pemasangannya untuk mengosongkan ruang.</string>
+    <string name="conv_reminder_replace_risk_title">Mode ganti berisiko merusak berkas</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Mode ganti menulis hasil konversi langsung kembali ke berkas asli; setelah ditimpa, berkas asli tidak dapat dipulihkan.\n\n• Jika aplikasi terhenti, penyimpanan habis, atau izin dicabut saat menulis, berkas sumber dapat rusak\n• Tidak ada konversi yang dijamin berhasil, dan jika gagal berkas sumber mungkin sudah tidak dapat dipakai\n• Coba satu atau dua berkas dulu untuk memastikan semuanya baik sebelum memproses secara massal\n• Cadangkan sendiri foto penting Anda sebelumnya\n\nFitur ini disediakan “apa adanya”; Anda memakainya dengan risiko sendiri, dan penulis tidak bertanggung jawab atas berkas yang rusak atau hilang.</string>
+    <string name="conv_reminder_dont_remind">Jangan tampilkan lagi</string>
+    <string name="conv_reminder_confirm_ok">Mengerti</string>
+    <string name="conv_reminder_uninstall">Hapus pemasangan</string>
+</resources>

@@ -227,9 +227,11 @@ internal class UpdateFlowController(
             message = "该版本未提供蓝奏云下载链接，可改用 GitHub 下载。"
             return
         }
+        // 蓝奏现已对非会员上传的分享强制加提取码，提取码与链接同写在 Release 正文里
+        val passwd = info?.lanzouPasswd
         runDownload("蓝奏云下载失败") {
             busy = BusyState("正在解析蓝奏云下载链接…", null)
-            val directUrl = AppUpdater.resolveLanzouDirectLink(lz)
+            val directUrl = AppUpdater.resolveLanzouDirectLink(lz, passwd)
             downloadAndInstall(directUrl, lz, "正在从蓝奏云下载…")
         }
     }

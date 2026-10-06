@@ -19,6 +19,11 @@ data class UpdateInfo(
     val notes: String?,
     /** 蓝奏云直链（与当前版本 flavor 匹配：标准版 / Go版），Release 正文里没写时为 null */
     val lanzouUrl: String?,
+    /**
+     * 蓝奏云提取码（Release 正文里写在链接同一行时为非空）。
+     * 蓝奏现已对非会员上传的文件强制加提取码，App 需要它才能解析出直链。
+     */
+    val lanzouPasswd: String? = null,
 )
 
 /** 更新检查结果：区分「有新版本 / 已是最新 / 网络错误」 */
@@ -33,10 +38,12 @@ sealed class UpdateCheckResult {
  * 同时从 Release 正文按「规范化标签」解析蓝奏云直链：
  *
  *     [蓝奏云-标准版]: https://www.lanzoux.com/xxxx
- *     [蓝奏云-Go版]:   https://www.lanzoux.com/yyyy
+ *     [蓝奏云-Go版]:   https://www.lanzoux.com/yyyy 提取码：3e4i
  *
  * 规则：
  * - 标签必须写成 `[蓝奏云-标准版]` 或 `[蓝奏云-Go版]`（英文中括号 + 冒号），URL 写在后面。
+ * - URL 后可再跟提取码（`提取码：xxxx` / `密码：xxxx` / `pwd:xxxx`）；蓝奏现已对
+ *   非会员上传的分享强制加提取码，App 没有它就解析不出直链。
  * - 标准版（normal flavor）只认「标准版」标签；Go 版（go flavor）只认「Go版」标签。
  * - 没写本版本对应标签行时 lanzouUrl=null，App 将自动回退从 GitHub 下载。
  *
@@ -46,8 +53,17 @@ object UpdateChecker {
     private const val REPO = "zsz-of/ZLC"
     private const val API_LATEST = "https://api.github.com/repos/$REPO/releases/latest"
 
-    /** 蓝奏云标签行：`[蓝奏云-标准版]: url`（支持全角冒号与行内空格） */
-    private val LANZOU_LINE = Regex("""\[蓝奏云-(标准版|Go版)\]\s*[：:]\s*(\S+)""")
+    /**
+     * 蓝奏云标签行：`[蓝奏云-标准版]: url`（支持全角冒号与行内空格）。
+     * 链接后面可以再跟提取码（蓝奏对非会员上传的分享强制加码，必须写出来：
+     * 既给用户手动下载用，也给 App 自动解析用）：
+     *
+     *     [蓝奏云-标准版]: https://www.lanzoux.com/xxxx 提取码：3e4i
+     */
+    private val LANZOU_LINE = Regex(
+        """\[蓝奏云-(标准版|Go版)\]\s*[：:]\s*(\S+)(?:\s*(?:提取码|提取密码|密码|pwd)\s*[：:]?\s*(\S+))?""",
+        RegexOption.IGNORE_CASE
+    )
 
     /** 蓝奏云标签名（发布规范：go=Go版，其余=标准版） */
     private fun lanzouLabel(isGo: Boolean): String =
@@ -123,8 +139,9 @@ object UpdateChecker {
             }
             val releaseUrl = json.optString("html_url", "https://github.com/$REPO/releases")
 
-            // 从 Release 正文解析当前版本对应的蓝奏云直链（找不到返回 null，回退 GitHub）
+            // 从 Release 正文解析当前版本对应的蓝奏云直链与提取码（找不到返回 null，回退 GitHub）
             val releaseBody = json.optString("body")
+            val (lanzouUrl, lanzouPasswd) = parseLanzouLine(releaseBody, isGo)
 
             UpdateInfo(
                 version = remote,
@@ -133,7 +150,8 @@ object UpdateChecker {
                 downloadUrl = apkUrl ?: releaseUrl,
                 releaseUrl = releaseUrl,
                 notes = releaseBody.trim().ifEmpty { null },
-                lanzouUrl = parseLanzouUrl(releaseBody, isGo)
+                lanzouUrl = lanzouUrl,
+                lanzouPasswd = lanzouPasswd,
             )
         } catch (_: Exception) {
             null
@@ -141,22 +159,34 @@ object UpdateChecker {
     }
 
     /**
-     * 从 Release 正文拆分出与 [isGo] 匹配的蓝奏云直链。
+     * 从 Release 正文拆分出与 [isGo] 匹配的蓝奏云链接与提取码。
      * 格式约定（每行独立）：
      * ```
      * [蓝奏云-标准版]: https://xxx.lanzouX.com/xxxx
-     * [蓝奏云-Go版]:   https://xxx.lanzouX.com/yyyy
+     * [蓝奏云-Go版]:   https://xxx.lanzouX.com/yyyy 提取码：3e4i
      * ```
+     * @return (链接, 提取码)；没有该标签行时返回 (null, null)，提取码缺失时为 (url, null)
      */
-    fun parseLanzouUrl(body: String, isGo: Boolean): String? {
-        if (body.isBlank()) return null
+    fun parseLanzouLine(body: String, isGo: Boolean): Pair<String?, String?> {
+        if (body.isBlank()) return null to null
         val want = lanzouLabel(isGo)
         for (line in body.lineSequence()) {
             val m = LANZOU_LINE.find(line.trim()) ?: continue
-            if (m.groupValues[1] == want) return m.groupValues[2].trimEnd(')', '，', ',', '。')
+            if (m.groupValues[1] != want) continue
+            val url = m.groupValues[2].trimEnd(')', '，', ',', '。')
+            val pwd = m.groupValues[3]
+                .trimEnd(')', '，', ',', '。')
+                .takeIf { it.isNotEmpty() }
+            return url to pwd
         }
-        return null
+        return null to null
     }
+
+    /** 只取蓝奏云链接（[parseLanzouLine] 的链接部分） */
+    fun parseLanzouUrl(body: String, isGo: Boolean): String? = parseLanzouLine(body, isGo).first
+
+    /** 只取蓝奏云提取码 */
+    fun parseLanzouPasswd(body: String, isGo: Boolean): String? = parseLanzouLine(body, isGo).second
 
     /**
      * 语义化版本比较：按 . 和 - 分段逐段数值比较（非数字段按 0 处理）。

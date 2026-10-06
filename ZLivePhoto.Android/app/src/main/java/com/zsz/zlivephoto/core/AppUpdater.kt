@@ -137,26 +137,28 @@ internal object AppUpdater {
      *   0. 分享页按 [lanzouShareHosts] 依次尝试（蓝奏官方域名会轮换）；
      *   1. 首次 GET 分享页可能触发 acw_sc__v2 反爬（返回含 `arg1='...'` 的挑战页），
      *      用 [acwScV2] 解出 cookie 后重试；页面若为「文件取消分享」直接给出可读原因；
-     *   2. 从分享页 HTML 提取 `<iframe src="/fn?..."` 下载帧地址；
-     *   3. GET `/fn` 帧页，提取 `ajaxfile.php?file=<id>`、`ajaxdata`、`wp_sign`、`kdns`；
-     *   4. POST `/ajaxfile.php`（action=downprocess 等）得到 `dom` + `url`——
+     *   2. **带提取码**的分享页（页面内联 `down_p`、没有 `/fn` 下载帧）：走
+     *      [resolvePasswordShare]——「最后一个非空 `isngis`」+ 提取码 POST 接口；
+     *   3. 普通分享页：从 HTML 提取 `<iframe src="/fn?..."` 下载帧地址；
+     *   4. GET `/fn` 帧页，提取 `ajaxfile.php?file=<id>`、`ajaxdata`、`wp_sign`、`kdns`；
+     *   5. POST `/ajaxfile.php`（action=downprocess 等）得到 `dom` + `url`——
      *      接口地址取帧页声明的 `domain1/domain2`（`apifile.woozooo.com` /
      *      `apifile.lanzouw.com`）并**依次回退**，最后才是分享页域名的旧链路；
-     *   5. GET `dom + "/file/" + url`，**Referer 必须是 `/fn` 帧页地址**（而非分享页），
-     *      并附带随机 X-FORWARDED-FOR/CLIENT-IP 头规避「网络异常需验证」页 → 302 到最终直链。
+     *   6. GET `dom + "/file/" + url` → 302 到最终直链；若返回的是 acw_sc__v2 挑战页
+     *      （带提取码的分发链接常见），解出 cookie 后重试（见 [followToDirect]）。
      *
-     * @return 最终 CDN 直链（带 sg/e 签名的 .zip/.apk 地址）
-     * @throws UpdaterException 解析失败（分享已取消 / 需密码 / 验证页 / 全部接口不可用）
-     *
-     * 注：仅支持**无提取码**的分享页（转码器已改为随包内置，不再需要下载）。
+     * @param passwd Release 正文里随链接一起给出的提取码（`[蓝奏云-标准版]: <url> 提取码：xxxx`）。
+     *   仅当分享页需要提取码时使用；无提取码的分享页传 null 即可。
+     * @return 最终 CDN 直链（带签名参数的 .zip/.apk 地址）
+     * @throws UpdaterException 解析失败（分享已取消 / 需要提取码 / 提取码错误 / 验证页 / 接口不可用）
      */
-    suspend fun resolveLanzouDirectLink(shareUrl: String): String = withContext(Dispatchers.IO) {
+    suspend fun resolveLanzouDirectLink(shareUrl: String, passwd: String? = null): String = withContext(Dispatchers.IO) {
         val client = LanzouHttpClient()
         try {
             var lastError: String? = null
             for (share in lanzouShareHosts(shareUrl)) {
                 try {
-                    return@withContext resolveOnHost(client, share)
+                    return@withContext resolveOnHost(client, share, passwd)
                 } catch (e: LanzouShareGone) {
                     // 分享被取消：换域名是同样结果，直接把原因抛给 UI
                     throw UpdaterException(e.message ?: "蓝奏云分享已被取消，请改用 GitHub 下载")
@@ -173,7 +175,7 @@ internal object AppUpdater {
     }
 
     /** 在单个分享域名上走完「分享页 → 帧页 → ajaxfile 接口 → 最终直链」全流程 */
-    private fun resolveOnHost(client: LanzouHttpClient, share: String): String {
+    private fun resolveOnHost(client: LanzouHttpClient, share: String, passwd: String?): String {
         // 1. 首次访问，自动处理 acw_sc__v2 反爬
         var shareHtml = client.get(share, referer = "https://${hostOf(share)}/")
         if (shareHtml.isAcwChallenge()) {
@@ -184,14 +186,19 @@ internal object AppUpdater {
         // 分享被取消 / 文件不存在：HTTP 200 但页面内容已变
         lanzouGoneReason(shareHtml)?.let { throw LanzouShareGone(it) }
 
-        // 2. 提取 iframe 下载帧
+        // 2. 需要提取码的分享页（页面内联 down_p，没有 /fn 下载帧）走另一条链路
+        if (isLanzouPasswordShare(shareHtml)) {
+            return resolvePasswordShare(client, shareHtml, share, passwd)
+        }
+
+        // 3. 提取 iframe 下载帧
         val iframeSrc = Regex("""<iframe[^>]+src=["']([^"']+)["']""", RegexOption.IGNORE_CASE)
             .find(shareHtml)?.groupValues?.get(1)
             ?: throw UpdaterException("无法解析蓝奏云下载页（未找到下载帧）")
         val fnUrl = if (iframeSrc.startsWith("http")) iframeSrc
         else "https://${hostOf(share)}$iframeSrc"
 
-        // 3. GET /fn 帧页，提取 ajax 参数
+        // 4. GET /fn 帧页，提取 ajax 参数
         val fnHtml = client.get(fnUrl, referer = share)
         val fileId = Regex("""ajaxfile\.php\?file=(\d+)""").find(fnHtml)?.groupValues?.get(1)
             ?: throw UpdaterException("无法解析蓝奏云文件标识")
@@ -200,7 +207,7 @@ internal object AppUpdater {
         val wpSign = Regex("""var\s+wp_sign\s*=\s*'([^']*)'""").find(fnHtml)?.groupValues?.get(1)
             ?: throw UpdaterException("无法解析蓝奏云签名")
 
-        // 4. POST ajaxfile.php：依次尝试帧页声明的接口，失败再回退旧链路
+        // 5. POST ajaxfile.php：依次尝试帧页声明的接口，失败再回退旧链路
         val form = mapOf(
             "action" to "downprocess",
             "websignkey" to ajaxdata,
@@ -229,8 +236,9 @@ internal object AppUpdater {
                 continue
             }
 
-            // 5. 请求分发链接拿最终直链：Referer 必须是 /fn 帧页，并附带随机 IP 头
-            val direct = client.location("$dom/file/$token", referer = fnUrl)
+            // 6. 请求分发链接拿最终直链：Referer 用 /fn 帧页（与浏览器行为一致），
+            //    并附带随机 IP 头规避「网络异常需验证」页
+            val direct = followToDirect(client, "$dom/file/$token", fnUrl)
             if (direct.isNullOrEmpty()) {
                 lastAjaxError = "蓝奏云下载地址已失效，请重新获取"
                 continue
@@ -238,6 +246,135 @@ internal object AppUpdater {
             return direct
         }
         throw UpdaterException(lastAjaxError ?: "蓝奏云下载链接解析失败")
+    }
+
+    // ---------- 带提取码的分享页 ----------
+
+    /**
+     * 从分享页解析「**最后一个非空**」的 `var isngis`。
+     *
+     * 蓝奏的带提取码分享页会**连续声明两次**同名变量（实测原文）：
+     * ```
+     * var isngis = '';
+     * var isngis = 'AGZaZAs6BTQHDgE_…_c';   // 真正提交给 ajaxfile 的签名
+     * ```
+     * 只取第一次会拿到空串，服务端一律回「文件无法识别」——
+     * 这正是「带提取码的分享页怎么都解析不了」的根因，与其他反爬无关。
+     * 签名**每次加载页面都会变**，因此必须现取现用，不能缓存复用。
+     */
+    internal fun lanzouSign(html: String): String? =
+        Regex("""var\s+isngis\s*=\s*'([^']*)'""")
+            .findAll(html)
+            .map { it.groupValues[1] }
+            .lastOrNull { it.isNotEmpty() }
+
+    /**
+     * 分享页是否需要提取码（纯函数）：页面带有密码输入区，且没有 `/fn` 下载帧。
+     *
+     * 无提取码的分享页一定有 `<iframe src="/fn?…">`；带提取码的页面则内联一个 `down_p()`
+     * 直接 POST `apifile.woozooo.com/ajaxfile.php`，两条链路互斥。
+     */
+    internal fun isLanzouPasswordShare(html: String): Boolean {
+        val hasPwdUi = html.contains("passwddiv") || html.contains("passwdinput") ||
+            html.contains("id='pwd'") || html.contains("id=\"pwd\"")
+        val hasFrame = Regex("""<iframe[^>]+src=["'][^"']*/fn""", RegexOption.IGNORE_CASE)
+            .containsMatchIn(html)
+        return hasPwdUi && !hasFrame
+    }
+
+    /** 分享页里的文件 ID（`ajaxfile.php?file=<id>`） */
+    internal fun lanzouFileId(html: String): String? =
+        Regex("""ajaxfile\.php\?file=(\d+)""").find(html)?.groupValues?.get(1)
+
+    /** 分享页声明的 ajaxfile 接口地址（含 file 参数）；缺失时按官方接口兜底 */
+    internal fun lanzouShareApi(html: String, fileId: String): String =
+        Regex("""https?://[A-Za-z0-9.\-]*woozooo\.com/ajaxfile\.php\?file=\d+""")
+            .find(html)?.value
+            ?: "https://apifile.woozooo.com/ajaxfile.php?file=$fileId"
+
+    /**
+     * 「需要提取码」的分享页解析（命令行全流程实测通过）：
+     * ```
+     * GET 分享页 → 取最后一个非空 isngis + kdns
+     * POST apifile.woozooo.com/ajaxfile.php?file=<id>
+     *      action=downprocess & sign=<isngis> & kd=<kdns> & p=<提取码>
+     *      （必须带 X-Requested-With: XMLHttpRequest，模拟页面里的 jQuery）
+     *   → {"zt":1,"dom":"https://developer4.lanrar.com","url":"?…"}
+     * GET  <dom>/file/<url> → acw_sc__v2 挑战页 → 解 cookie 重试 → 302 最终直链
+     * ```
+     * 提取码由服务端强校验：p 为空或错误时返回 `{"zt":0,"inf":"密码错误"}`。
+     */
+    private fun resolvePasswordShare(
+        client: LanzouHttpClient,
+        shareHtml: String,
+        shareUrl: String,
+        passwd: String?
+    ): String {
+        val pwd = passwd?.trim().orEmpty()
+        if (pwd.isEmpty()) {
+            throw UpdaterException("该蓝奏云分享需要提取码，请改用 GitHub 下载（或到 Release 说明里找提取码）")
+        }
+        val sign = lanzouSign(shareHtml) ?: throw UpdaterException("无法解析蓝奏云签名")
+        val fileId = lanzouFileId(shareHtml) ?: throw UpdaterException("无法解析蓝奏云文件标识")
+
+        val json = try {
+            JSONObject(
+                client.post(
+                    lanzouShareApi(shareHtml, fileId),
+                    form = mapOf(
+                        "action" to "downprocess",
+                        "sign" to sign,
+                        "kd" to lanzouKd(shareHtml),
+                        "p" to pwd,
+                    ),
+                    referer = shareUrl,
+                    ajax = true,
+                )
+            )
+        } catch (e: UpdaterException) {
+            throw e
+        } catch (e: Exception) {
+            throw UpdaterException(e.message ?: "蓝奏云接口请求失败")
+        }
+
+        if (json.optInt("zt", 0) != 1) {
+            val info = json.optString("inf", "")
+            throw UpdaterException(
+                when {
+                    info.contains("密码") -> "蓝奏云提取码错误"
+                    info.isEmpty() -> "蓝奏云下载链接解析失败"
+                    else -> info
+                }
+            )
+        }
+        val dom = json.optString("dom")
+        val token = json.optString("url")
+        if (dom.isEmpty() || token.isEmpty()) throw UpdaterException("蓝奏云返回空下载地址")
+
+        return followToDirect(client, "$dom/file/$token", shareUrl)
+            ?: throw UpdaterException("蓝奏云下载地址已失效，请重新获取")
+    }
+
+    /**
+     * 取最终 CDN 直链：`<dom>/file/<token>` 有两种回应——
+     *  - 302：`Location` 就是直链（无提取码的分享通常如此）；
+     *  - 200 + `acw_sc__v2` 挑战页（带提取码的分发链接常见，且不跟随重定向也拿不到 Location）：
+     *    用 [acwScV2] 解出 cookie 后重试，第 2 次即 302。
+     *
+     * 兜底：页面正文里直接出现 .zip/.apk 直链时也接受。
+     */
+    private fun followToDirect(client: LanzouHttpClient, url: String, referer: String): String? {
+        var lastHtml = ""
+        for (attempt in 0 until 3) {
+            val (code, location, html) = client.probe(url, referer)
+            lastHtml = html
+            if (code in 300..399) return location
+            if (!html.isAcwChallenge()) break
+            val arg1 = html.acwArg1() ?: break
+            client.setCookie("acw_sc__v2", acwScV2(arg1))
+        }
+        return Regex("""https?://[^"'\s<>]+\.(?:zip|apk)(?:\?[^"'\s<>]*)?""", RegexOption.IGNORE_CASE)
+            .find(lastHtml)?.value
     }
 
     /** 蓝奏云 acw_sc__v2 反爬 cookie 解密（对 arg1 做定序重排 + 与固定掩码异或） */
@@ -297,11 +434,25 @@ internal object AppUpdater {
             }
         }
 
-        fun post(url: String, form: Map<String, String>, referer: String): String {
+        /**
+         * POST 表单。
+         * @param ajax true 时补齐网页端 jQuery 的请求头（`X-Requested-With` / JSON Accept）。
+         *   带提取码的 `ajaxfile.php` 接口按此头放行，缺失时返回「文件无法识别」。
+         */
+        fun post(
+            url: String,
+            form: Map<String, String>,
+            referer: String,
+            ajax: Boolean = false
+        ): String {
             val body = form.entries.joinToString("&") { (k, v) ->
                 "${URLEncoder.encode(k, "UTF-8")}=${URLEncoder.encode(v, "UTF-8")}"
             }
-            val conn = open(url, "POST", referer, body)
+            val headers = if (ajax) mapOf(
+                "X-Requested-With" to "XMLHttpRequest",
+                "Accept" to "application/json, text/javascript, */*"
+            ) else emptyMap()
+            val conn = open(url, "POST", referer, body, extraHeaders = headers)
             try {
                 val code = conn.responseCode
                 if (code !in 200..299) throw UpdaterException("请求失败（HTTP $code）")
@@ -312,30 +463,41 @@ internal object AppUpdater {
             }
         }
 
-        /** 手动跟随重定向，返回最终 Location（若无则返回 null）；不下载内容体 */
-        fun location(url: String, referer: String): String? {
-            val conn = open(url, "GET", referer, null)
+        /**
+         * 不跟随重定向的探测请求：返回 `(状态码, Location, 正文)`。
+         * 3xx 不算错误（正文为空，由调用方取 Location），其余非 2xx 也返回空正文。
+         */
+        fun probe(url: String, referer: String): Triple<Int, String?, String> {
+            val conn = open(url, "GET", referer, null, followRedirects = false)
             try {
-                conn.instanceFollowRedirects = false
                 val code = conn.responseCode
                 readCookies(conn)
-                if (code in 300..399) return conn.getHeaderField("Location")
-                return null
+                if (code in 300..399) return Triple(code, conn.getHeaderField("Location"), "")
+                if (code !in 200..299) return Triple(code, null, "")
+                return Triple(code, null, conn.inputStream.bufferedReader().use { it.readText() })
             } finally {
                 conn.disconnect()
             }
         }
 
-        private fun open(url: String, method: String, referer: String, formBody: String?): HttpURLConnection {
+        private fun open(
+            url: String,
+            method: String,
+            referer: String,
+            formBody: String?,
+            followRedirects: Boolean = true,
+            extraHeaders: Map<String, String> = emptyMap()
+        ): HttpURLConnection {
             val conn = URL(url).openConnection() as HttpURLConnection
             conn.connectTimeout = 15_000
             conn.readTimeout = 20_000
             conn.requestMethod = method
-            conn.instanceFollowRedirects = true
+            conn.instanceFollowRedirects = followRedirects
             conn.setRequestProperty("User-Agent", DESKTOP_UA)
             conn.setRequestProperty("Referer", referer)
             conn.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
             conn.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.9")
+            extraHeaders.forEach { (k, v) -> conn.setRequestProperty(k, v) }
             val ip = randomIp()
             conn.setRequestProperty("X-FORWARDED-FOR", ip)
             conn.setRequestProperty("CLIENT-IP", ip)

@@ -1,6 +1,7 @@
 package com.zsz.zlivephoto.core
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -14,6 +15,8 @@ import org.junit.Test
  * - 分享页域名会轮换，同一 `<fileID>` 在所有官方别名域名下都能打开同一文件页，
  *   因此换域名重试是安全回退。
  * - 分享被取消时分享页仍返回 **HTTP 200**，只能靠页面文案识别。
+ * - 非会员账号新上传的文件会被蓝奏**强制加提取码**（`task=23` 关码接口返回「此功能仅会员使用」），
+ *   带码分享页内联 `down_p()` 且**两次声明 `var isngis`**（第一次为空），提取码由服务端强校验。
  *
  * 这里只覆盖纯函数（不联网）；真实链路已由 `.agents/tools/lanzou_probe.py` 实测。
  */
@@ -98,5 +101,90 @@ class LanzouResolveTest {
         assertEquals("1", AppUpdater.lanzouKd(frameHtml))
         assertEquals("133", AppUpdater.lanzouKd("var kdns=133;"))
         assertEquals("1", AppUpdater.lanzouKd("<html>no kdns</html>"))
+    }
+
+    // ---------- 带提取码的分享页（2026-10 实测） ----------
+
+    /**
+     * 带提取码的分享页会**连续声明两次** `var isngis`：第一次为空串，第二次才是真签名。
+     * 只取第一次（旧实现的正则 find）会拿到空串，服务端一律回「文件无法识别」——
+     * 这就是「带提取码的分享怎么都解析不了」的根因，必须在纯逻辑层钉死。
+     */
+    @Test
+    fun lanzouSign_takesLastNonEmptyDeclaration() {
+        val realPage = """
+            var kdns =1;
+            var isngis = '';
+            var isngis = 'AGZaZAs6BTQHDgE_bBDRUaFc_c';
+        """.trimIndent()
+
+        assertEquals("AGZaZAs6BTQHDgE_bBDRUaFc_c", AppUpdater.lanzouSign(realPage))
+        assertEquals("ONLY", AppUpdater.lanzouSign("var isngis = 'ONLY';"))
+        assertNull("全为空串时视为没有签名", AppUpdater.lanzouSign("var isngis = '';"))
+        assertNull("页面没有该变量", AppUpdater.lanzouSign("<html>no sign</html>"))
+    }
+
+    /** 需提取码的页面与普通分享页互斥：「有密码输入区 + 没有 /fn 下载帧」才算需要提取码 */
+    @Test
+    fun isLanzouPasswordShare_distinguishesPasswordPageFromFramePage() {
+        val passwordPage = """
+            <div id="passwddiv"><input id="pwd" class="passwdinput"></div>
+            <script>url : 'https://apifile.woozooo.com/ajaxfile.php?file=322573829',</script>
+        """.trimIndent()
+        assertTrue("密码页应判定为需要提取码", AppUpdater.isLanzouPasswordShare(passwordPage))
+
+        val framePage = "<html><body><iframe src=\"/fn?kdsdn=1\"></iframe></body></html>"
+        assertFalse("普通分享页有 /fn 帧，不能误判", AppUpdater.isLanzouPasswordShare(framePage))
+        assertFalse(
+            "同时含密码区标记与 /fn 帧时以帧页为准",
+            AppUpdater.isLanzouPasswordShare("$passwordPage$framePage")
+        )
+        assertFalse("无关页面", AppUpdater.isLanzouPasswordShare("<html>nothing</html>"))
+    }
+
+    @Test
+    fun lanzouFileIdAndShareApi_readEndpointFromPasswordPage() {
+        val page = """
+            var isngis = 'XYZ';
+            url : 'https://apifile.woozooo.com/ajaxfile.php?file=322573829',
+        """.trimIndent()
+
+        assertEquals("322573829", AppUpdater.lanzouFileId(page))
+        assertEquals(
+            "https://apifile.woozooo.com/ajaxfile.php?file=322573829",
+            AppUpdater.lanzouShareApi(page, "322573829")
+        )
+        assertEquals(
+            "页面没写绝对地址时回退官方接口",
+            "https://apifile.woozooo.com/ajaxfile.php?file=42",
+            AppUpdater.lanzouShareApi("<html>no endpoint</html>", "42")
+        )
+        assertNull(AppUpdater.lanzouFileId("<html>no id</html>"))
+    }
+
+    /** Release 正文里的提取码（可选）解析，且必须只认本 flavor 的标签行 */
+    @Test
+    fun parseLanzouLine_readsOptionalPasswdPerFlavor() {
+        val body = """
+            ## 📦 下载安装
+            [蓝奏云-标准版]: https://wwapb.lanzout.com/irENZ4b0uj4j 提取码：3e4i
+            [蓝奏云-Go版]:   https://wwapb.lanzout.com/i2s7d4b0uj6b 提取码: 41c4
+        """.trimIndent()
+
+        assertEquals(
+            "https://wwapb.lanzout.com/irENZ4b0uj4j" to "3e4i",
+            UpdateChecker.parseLanzouLine(body, isGo = false)
+        )
+        assertEquals(
+            "https://wwapb.lanzout.com/i2s7d4b0uj6b" to "41c4",
+            UpdateChecker.parseLanzouLine(body, isGo = true)
+        )
+        // 老版式（不带提取码）必须继续可用
+        assertEquals(
+            "https://wapb.lanzout.com/old" to null,
+            UpdateChecker.parseLanzouLine("[蓝奏云-标准版]: https://wapb.lanzout.com/old", isGo = false)
+        )
+        assertEquals(null to null, UpdateChecker.parseLanzouLine("[蓝奏云-Go版]: https://x/y", isGo = false))
+        assertEquals(null to null, UpdateChecker.parseLanzouLine("", isGo = false))
     }
 }

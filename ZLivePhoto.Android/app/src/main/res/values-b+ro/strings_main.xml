@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Romanian (ro) strings — main screen and background flows.
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Plural quantities follow CLDR for Romanian: one / few / other.
+-->
+<resources>
+    <!-- ── Status bar / toasts ── -->
+    <string name="main_status_ready">Pregătit</string>
+    <string name="main_status_location_granted">Permisiunea de localizare a fost acordată; metadatele GPS vor fi păstrate după conversie</string>
+    <string name="main_status_location_denied">Fără permisiune de localizare: fotografiile convertite vor pierde informațiile de locație GPS</string>
+    <string name="main_status_all_files_granted">Permisiunea „Acces la toate fișierele” a fost acordată; conversia scrie direct în folderul albumului și păstrează complet informațiile de locație</string>
+    <string name="main_status_all_files_denied">Fără permisiunea „Acces la toate fișierele”: pe unele dispozitive fotografiile pot pierde informațiile de locație după conversie</string>
+    <string name="main_status_read_granted">Permisiunea de citire a fotografiilor și videoclipurilor a fost acordată</string>
+    <string name="main_status_video_missing">Permisiune acordată, dar lipsește permisiunea pentru videoclipuri: videoclipul asociat al Live Photo cu două fișiere nu poate fi găsit</string>
+    <string name="main_status_permission_denied">Permisiune neacordată; poți apăsa din nou „Adaugă fișiere”</string>
+    <string name="main_status_folder_not_selected">Niciun folder selectat</string>
+    <string name="main_status_folder_unavailable">Folderul selectat nu este accesibil (sunt acceptate doar folderele de stocare locale)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Sesiunea anterioară a fost restaurată (%1$d fișier)</item>
+        <item quantity="few">Sesiunea anterioară a fost restaurată (%1$d fișiere)</item>
+        <item quantity="other">Sesiunea anterioară a fost restaurată (%1$d de fișiere)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">S-a detectat o închidere anormală anterioară; lista neterminată a fost golită</string>
+    <string name="main_status_compose_blocks_extract">Coada conține taskuri de compunere; nu se poate trece în modul de extragere</string>
+    <string name="main_status_replace_off_mutex">Modul de înlocuire a fost dezactivat (se exclude reciproc cu „Șterge originalele după procesare”)</string>
+    <string name="main_status_delete_needs_all_files">Ștergerea automată a originalelor necesită permisiunea „Acces la toate fișierele”; acord-o mai întâi</string>
+    <string name="main_status_replace_off">Modul de înlocuire a fost dezactivat; rezultatele sunt scrise din nou în folderul albumului</string>
+    <string name="main_status_replace_needs_all_files">Modul de înlocuire necesită permisiunea „Acces la toate fișierele”; acord-o mai întâi</string>
+    <string name="main_status_delete_off_mutex">„Șterge originalele după procesare” a fost dezactivat (se exclude reciproc cu modul de înlocuire)</string>
+    <string name="main_status_loading_albums">Se încarcă albumele…</string>
+    <string name="main_status_no_albums">Nu s-au găsit albume</string>
+    <string name="main_status_compose_no_photo">Nicio fotografie selectată; compunerea nu este posibilă</string>
+    <string name="main_status_compose_no_video">Niciun videoclip selectat; compunerea nu este posibilă</string>
+    <string name="main_status_compose_all_added">Toate fotografiile selectate sunt deja în listă</string>
+    <string name="main_status_compose_paired">%1$d fotografii, %2$d videoclipuri; au fost adăugate %3$d perechi de taskuri de compunere după partea mai mică</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">A fost adăugat %1$d task de compunere; apasă „Începe conversia” pentru a executa compunerea</item>
+        <item quantity="few">Au fost adăugate %1$d taskuri de compunere; apasă „Începe conversia” pentru a executa compunerea</item>
+        <item quantity="other">Au fost adăugate %1$d de taskuri de compunere; apasă „Începe conversia” pentru a executa compunerea</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (formatul de ieșire a fost schimbat automat în Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Se importă %1$d imagine partajată…</item>
+        <item quantity="few">Se importă %1$d imagini partajate…</item>
+        <item quantity="other">Se importă %1$d de imagini partajate…</item>
+    </plurals>
+    <string name="main_status_import_failed">Importul a eșuat: %1$s</string>
+    <string name="main_status_import_done_partial">Import finalizat: %1$d reușite, %2$d eșecuri</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import finalizat: %1$d fișier importat</item>
+        <item quantity="few">Import finalizat: %1$d fișiere importate</item>
+        <item quantity="other">Import finalizat: %1$d de fișiere importate</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import oprit: %1$d reușite, %2$d eșecuri</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Se importă %1$d fișier…</item>
+        <item quantity="few">Se importă %1$d fișiere…</item>
+        <item quantity="other">Se importă %1$d de fișiere…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Se importă %1$d/%2$d…</string>
+    <string name="main_status_stopping">Se oprește… (se va opri după fișierul curent)</string>
+    <string name="main_status_stopping_import">Se oprește importul…</string>
+    <string name="main_status_removed">Eliminat: %1$s</string>
+    <string name="main_status_cleared">Lista a fost golită</string>
+    <string name="main_status_nothing_to_convert">Niciun fișier de convertit</string>
+    <string name="main_status_folder_unreadable">Folderul selectat nu poate fi citit</string>
+    <string name="main_status_scanning_folder">Se scanează folderul…</string>
+    <string name="main_status_no_images">Nu s-au găsit imagini în folderul selectat</string>
+    <string name="main_status_batch_importing">Import în lot %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Importul în lot s-a oprit: %1$d Live Photo importat</item>
+        <item quantity="few">Importul în lot s-a oprit: %1$d Live Photo importate</item>
+        <item quantity="other">Importul în lot s-a oprit: %1$d de Live Photo importate</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Importul în lot s-a oprit: %1$d Live Photo importat, %2$d fișier non-Live Photo omis</item>
+        <item quantity="few">Importul în lot s-a oprit: %1$d Live Photo importate, %2$d fișiere non-Live Photo omise</item>
+        <item quantity="other">Importul în lot s-a oprit: %1$d de Live Photo importate, %2$d de fișiere non-Live Photo omise</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Importul în lot s-a încheiat: %1$d Live Photo importat</item>
+        <item quantity="few">Importul în lot s-a încheiat: %1$d Live Photo importate</item>
+        <item quantity="other">Importul în lot s-a încheiat: %1$d de Live Photo importate</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Importul în lot s-a încheiat: %1$d Live Photo importat, %2$d fișier non-Live Photo omis</item>
+        <item quantity="few">Importul în lot s-a încheiat: %1$d Live Photo importate, %2$d fișiere non-Live Photo omise</item>
+        <item quantity="other">Importul în lot s-a încheiat: %1$d de Live Photo importate, %2$d de fișiere non-Live Photo omise</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Oprit: din %1$d fișiere au fost procesate %2$d, %3$d fișiere sursă înlocuite</string>
+    <string name="main_status_stopped_export">Oprit: din %1$d fișiere au fost procesate %2$d, %3$d exportate în album</string>
+    <string name="main_status_done_replace_reason">Finalizat: %1$d fișiere procesate, %2$d fișiere sursă înlocuite (motiv: %3$s)</string>
+    <string name="main_status_done_export_reason">Finalizat: %1$d fișiere procesate, %2$d exportate în album (motiv: %3$s)</string>
+    <string name="main_status_done_replace">Finalizat: %1$d fișiere procesate, %2$d fișiere sursă înlocuite</string>
+    <string name="main_status_done_export">Finalizat: %1$d fișiere procesate, %2$d exportate în album</string>
+    <string name="main_status_keep_originals">%1$s; permisiunea „Acces complet la stocare” nu a fost acordată, originalele au fost păstrate</string>
+
+    <!-- ── List item info ── -->
+    <string name="main_info_detecting">Se detectează…</string>
+    <string name="main_info_unrecognized">Format Live Photo nerecunoscut</string>
+    <string name="main_info_converting">Se convertește…</string>
+    <string name="main_info_compose_task">Task de compunere (apasă pentru a începe conversia)</string>
+    <string name="main_info_done_replaced">Finalizat (%1$d fișiere sursă înlocuite)</string>
+    <string name="main_info_done_skipped">Finalizat (omis: conflict de nume)</string>
+    <string name="main_info_done_exported">Finalizat (%1$d exportate)</string>
+    <string name="main_info_failed">Eșec: %1$s</string>
+
+    <!-- ── Progress detail ── -->
+    <string name="main_progress_added">Adăugate %1$d/%2$d</string>
+    <string name="main_progress_processed">Procesate %1$d/%2$d</string>
+    <string name="main_progress_imported">Importate %1$d/%2$d</string>
+
+    <!-- ── Permission dialogs ── -->
+    <string name="main_dialog_permission_title">Este nevoie de permisiunea de citire a fotografiilor și videoclipurilor</string>
+    <string name="main_dialog_permission_message">Aplicația are nevoie de acces la fotografiile și videoclipurile de pe dispozitiv:\n\n• Permisiunea pentru fotografii: scanează albumul dispozitivului pentru a identifica Live Photo\n• Permisiunea pentru videoclipuri: găsește videoclipul asociat al Live Photo cu două fișiere\n• Permisiunea de localizare: păstrează metadatele GPS din fotografii (fără ea, informațiile de locație se pierd după conversie)\n\nDacă o refuzi, selectorul integrat nu va funcționa; poți apăsa din nou „Adaugă fișiere” mai târziu pentru a reacorda permisiunea.</string>
+    <string name="main_dialog_settings_title">Permisiunea pentru fotografii și videoclipuri trebuie acordată manual</string>
+    <string name="main_dialog_settings_message">Ai ales anterior „Nu mai întreba”, astfel încât sistemul nu mai afișează dialogul de permisiuni.\n\nMergi la pagina de detalii a aplicației → Permisiuni → Fotografii și videoclipuri, acordă manual accesul și revino în aplicație.\n\nAtenție: trebuie acordate ambele permisiuni, „Fotografii” și „Videoclipuri”, altfel Live Photo cu două fișiere nu va găsi videoclipul asociat.</string>
+
+    <!-- ── All-files-access dialogs ── -->
+    <string name="main_dialog_allfiles_title_delete">Ștergerea automată a originalelor necesită „Acces la toate fișierele”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Acest dispozitiv nu acceptă ștergerea automată a originalelor</string>
+    <string name="main_dialog_allfiles_title_replace">Modul de înlocuire necesită „Acces la toate fișierele”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Acest dispozitiv nu acceptă modul de înlocuire</string>
+    <string name="main_dialog_allfiles_title_location">Se recomandă acordarea permisiunii „Acces la toate fișierele”</string>
+    <string name="main_dialog_allfiles_delete_message">„Șterge originalele după procesare” șterge direct fișierele originale de pe disc (fotografia și videoclipul asociat), iar operațiunea este ireversibilă, de aceea trebuie acordată mai întâi permisiunea „Acces la toate fișierele”.\n\nComutatorul devine disponibil după acordare și îl poți activa singur.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Sistemul actual (Android 10 și versiuni mai vechi) nu oferă permisiunea „Acces la toate fișierele”, deci fișierele originale nu pot fi șterse direct de pe disc; prin urmare acest dispozitiv nu acceptă „Șterge originalele după procesare”.\n\nPoți curăța manual originalele din albumul sistemului după conversie.</string>
+    <string name="main_dialog_allfiles_replace_message">„Modul de înlocuire” scrie direct rezultatul conversiei peste fișierele originale de pe disc (le suprascrie conținutul), iar operațiunea este ireversibilă, de aceea trebuie acordată mai întâi permisiunea „Acces la toate fișierele”.\n\nComutatorul devine disponibil după acordare și îl poți activa singur.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Sistemul actual (Android 10 și versiuni mai vechi) nu oferă permisiunea „Acces la toate fișierele”, deci fișierele originale nu pot fi suprascrise direct; prin urmare acest dispozitiv nu acceptă „Modul de înlocuire”.\n\nPoți continua conversia în modul implicit; rezultatele vor fi scrise în folderul albumului.</string>
+    <string name="main_dialog_allfiles_location_message">Unele dispozitive (de exemplu Meizu) ascund informațiile de locație GPS atunci când se scrie prin API-ul albumului, astfel încât fotografiile convertite pierd locația.\n\nCu permisiunea „Acces la toate fișierele”, aplicația scrie direct în folderul albumului și păstrează complet metadatele de locație.\n\nConversia funcționează și fără această permisiune, dar pe unele dispozitive informațiile de locație pot fi pierdute.</string>
+
+    <!-- ── Output file name conflict dialog ── -->
+    <string name="main_dialog_conflict_title">Conflict de nume de fișier de ieșire</string>
+    <string name="main_dialog_conflict_message">În folderul de ieșire există deja un fișier cu același nume:\n%1$s\n\nAlege metoda de tratare.</string>
+    <string name="main_label_conflict_always">Folosește această metodă pentru conflictele următoare</string>
+
+    <!-- ── Dialog buttons ── -->
+    <string name="main_btn_grant">Acordă</string>
+    <string name="main_btn_deny">Refuză</string>
+    <string name="main_btn_go_settings">Setări</string>
+    <string name="main_btn_cancel">Anulează</string>
+    <string name="main_btn_grant_access">Acordă accesul</string>
+    <string name="main_btn_got_it">Am înțeles</string>
+    <string name="main_btn_not_now">Nu acum</string>
+    <string name="main_btn_skip">Omite</string>
+    <string name="main_btn_overwrite">Suprascrie</string>
+    <string name="main_btn_auto_rename">Redenumire automată</string>
+
+    <!-- ── Conversion result / export failure reasons ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">A fost șters %1$d fișier original</item>
+        <item quantity="few">Au fost șterse %1$d fișiere originale</item>
+        <item quantity="other">Au fost șterse %1$d de fișiere originale</item>
+    </plurals>
+    <string name="main_delete_nothing">Nu este nevoie să ștergi originalele</string>
+    <string name="main_delete_partial">Au fost șterse %1$d fișiere originale (%2$d ștergeri eșuate, păstrate)</string>
+    <string name="main_delete_failed">Ștergerea originalelor a eșuat (fișierul este utilizat sau nu ai drept de scriere); au fost păstrate</string>
+    <string name="main_export_missing_output">Rezultatul conversiei lipsește sau este gol: %1$s</string>
+    <string name="main_export_missing_output_bare">Rezultatul conversiei lipsește sau este gol</string>
+    <string name="main_export_insert_null">MediaStore insert a returnat null</string>
+    <string name="main_export_output_stream">Fluxul de ieșire MediaStore nu este disponibil</string>
+    <string name="main_export_write_failed">Scrierea în MediaStore a eșuat: %1$s</string>
+    <string name="main_export_mkdir_failed">Folderul albumului nu a putut fi creat: %1$s</string>
+    <string name="main_export_dir_write_failed">Scrierea în folderul albumului a eșuat: %1$s</string>
+    <string name="main_export_no_source">Fișierul sursă nu a putut fi localizat; înlocuirea a fost omisă</string>
+    <string name="main_export_companion_failed">Scrierea fișierului asociat a eșuat: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Folderul fișierului sursă nu este inscriptibil; fișierul asociat nu a fost scris</string>
+    <string name="main_export_source_dir_unavailable">Folderul fișierului sursă nu este disponibil: %1$s</string>
+    <string name="main_export_replace_failed">Înlocuirea fișierului sursă a eșuat: %1$s</string>
+    <string name="main_export_replace_failed_bare">Înlocuirea fișierului sursă a eșuat</string>
+</resources>

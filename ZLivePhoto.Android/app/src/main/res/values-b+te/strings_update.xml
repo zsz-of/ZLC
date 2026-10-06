@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · తెలుగు స్ట్రింగ్లు (te).
+  ZLC · Telugu strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">Lanzou Cloud షేర్ రద్దు చేయబడింది లేదా ఫైల్ లేదు; దయచేసి బదులుగా GitHub నుండి డౌన్లోడ్ చేయండి</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud షేర్ రద్దు చేయబడింది; దయచేసి బదులుగా GitHub నుండి డౌన్లోడ్ చేయండి</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud డౌన్లోడ్ లింక్ను పరిష్కరించడం విఫలమైంది</string>
+    <string name="update_lanzou_need_passwd">ఈ Lanzou Cloud షేర్కు యాక్సెస్ కోడ్ అవసరం; దయచేసి బదులుగా GitHub నుండి డౌన్లోడ్ చేయండి (లేదా విడుదల నోట్స్లో యాక్సెస్ కోడ్ చూడండి)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud యాక్సెస్ కోడ్ తప్పు</string>
+    <string name="update_err_resolve_failed">పరిష్కరించలేకపోయాం</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud యాంటీ-క్రాలర్ తనిఖీ విఫలమైంది</string>
+    <string name="update_err_no_frame">Lanzou Cloud డౌన్లోడ్ పేజీని విశ్లేషించలేము (డౌన్లోడ్ ఫ్రేమ్ కనుగొనబడలేదు)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud ఫైల్ ఐడెంటిఫైయర్ను విశ్లేషించలేము</string>
+    <string name="update_err_no_sign">Lanzou Cloud సంతకాన్ని విశ్లేషించలేము</string>
+    <string name="update_err_ajax_request">API అభ్యర్థన విఫలమైంది</string>
+    <string name="update_err_api_request">Lanzou Cloud API అభ్యర్థన విఫలమైంది</string>
+    <string name="update_err_empty_direct">Lanzou Cloud ఖాళీ డౌన్లోడ్ URLను అందించింది</string>
+    <string name="update_err_direct_expired">Lanzou Cloud డౌన్లోడ్ URL గడువు ముగిసింది; దయచేసి మళ్లీ పొందండి</string>
+    <string name="update_err_http_request">అభ్యర్థన విఫలమైంది (HTTP %1$d)</string>
+    <string name="update_err_connect">డౌన్లోడ్ సర్వర్కు కనెక్ట్ కాలేము: %1$s</string>
+    <string name="update_err_http">డౌన్లోడ్ విఫలమైంది (HTTP %1$d)</string>
+    <string name="update_err_no_connection">డౌన్లోడ్ కనెక్షన్ ఏర్పాటు చేయలేము</string>
+    <string name="update_err_empty">డౌన్లోడ్ చేసిన కంటెంట్ ఖాళీగా ఉంది</string>
+    <string name="update_err_incomplete">డౌన్లోడ్ అసంపూర్ణం (%2$d బైట్లలో %1$d అందింది); దయచేసి మళ్లీ డౌన్లోడ్ చేయండి</string>
+    <string name="update_err_interrupted">డౌన్లోడ్ అంతరాయం కలిగింది: %1$s</string>
+    <string name="update_err_not_apk">డౌన్లోడ్ చేసిన ఫైల్ చెల్లుబాటు అయ్యే ప్యాకేజీ కాదు (అది ఒక వెబ్ పేజీ కావచ్చు, లేదా డౌన్లోడ్ లింక్ గడువు ముగిసి ఉండవచ్చు); దయచేసి మళ్లీ డౌన్లోడ్ చేయండి లేదా GitHub ఉపయోగించండి.</string>
+    <string name="update_err_apk_incomplete">ప్యాకేజీ కంటెంట్ అసంపూర్ణం; దయచేసి మళ్లీ డౌన్లోడ్ చేయండి లేదా GitHub ఉపయోగించండి.</string>
+    <string name="update_err_apk_unparsable">ప్యాకేజీని విశ్లేషించలేము (డౌన్లోడ్ అసంపూర్ణం కావచ్చు); దయచేసి మళ్లీ డౌన్లోడ్ చేయండి లేదా GitHub ఉపయోగించండి.</string>
+    <string name="update_err_no_install_permission">“తెలియని యాప్లను ఇన్స్టాల్ చేయి” అనుమతి ఇవ్వబడలేదు</string>
+    <string name="update_err_installer_failed">సిస్టమ్ ఇన్స్టాలర్ను ప్రారంభించలేము (%1$s); దయచేసి ఫైల్ మేనేజర్లో ప్యాకేజీని తెరిచి మాన్యువల్గా ఇన్స్టాల్ చేయండి</string>
+</resources>

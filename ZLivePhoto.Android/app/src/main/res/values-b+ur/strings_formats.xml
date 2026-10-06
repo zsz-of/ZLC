@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · اردو (Urdu, RTL) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Urdu is right-to-left; no physical left/right direction is hard-coded and placeholders stay LTR.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">ایکسٹریکٹ</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor لائیو فوٹو</string>
+    <string name="fmt_meizu">Meizu لائیو فوٹو</string>
+    <string name="fmt_nubia">Nubia لائیو فوٹو</string>
+    <string name="fmt_oppo">OPPO لائیو فوٹو</string>
+    <string name="fmt_vivo">vivo لائیو فوٹو</string>
+    <string name="fmt_vivo_single">vivo سنگل فائل لائیو فوٹو</string>
+    <string name="fmt_xiaomi">Xiaomi لائیو فوٹو</string>
+    <string name="fmt_err_apple_mov_missing">اسی نام کی .mov ویڈیو فائل نہیں ملی</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV فائل میں ftyp box موجود نہیں</string>
+    <string name="fmt_err_extract_read">ایکسٹریکٹ ایک آؤٹ پٹ فارمیٹ ہے، اسے ان پٹ فارمیٹ کے طور پر نہیں پڑھا جا سکتا</string>
+    <string name="fmt_err_no_primary_jpeg">کوئی بنیادی JPEG تصویر نہیں ملی</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG کے بعد کوئی درست MP4 ویڈیو نہیں ملی (ftyp box موجود نہیں)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 ویڈیو اسٹریم کی تجزیہ کاری ناکام ہوئی</string>
+    <string name="fmt_err_nubia_too_short">فائل بہت مختصر ہے، یہ Nubia لائیو فوٹو نہیں لگتی</string>
+    <string name="fmt_err_nubia_no_magic">nubiaVpfile کے آخری magic number موجود نہیں</string>
+    <string name="fmt_err_nubia_jpeg_len">ٹریلر میں درج JPEG کی لمبائی غلط ہے: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG اور ویڈیو کے درمیان 0x00 padding bytes موجود نہیں</string>
+    <string name="fmt_err_nubia_empty_video">سرایت شدہ ویڈیو کی لمبائی 0 ہے</string>
+    <string name="fmt_err_vivo_no_marker">JPG کے آخر میں vivo livephoto مارکر نہیں ملا</string>
+    <string name="fmt_err_vivo_companion_missing">ساتھی ویڈیو فائل موجود نہیں: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG کے مرکزی حصے کی تجزیہ کاری ناکام ہوئی</string>
+    <string name="fmt_err_vivo_companion_invalid">ساتھی MP4 درست نہیں (ftyp box موجود نہیں)</string>
+</resources>

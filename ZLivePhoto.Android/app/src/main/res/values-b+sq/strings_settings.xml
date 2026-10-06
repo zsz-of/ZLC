@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Albanian (sq) strings — settings screen.
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- Të përgjithshme -->
+    <string name="settings_title">Cilësimet</string>
+    <string name="settings_cd_back">Kthehu</string>
+    <string name="settings_btn_apply">Zbato</string>
+    <string name="settings_btn_cancel">Anulo</string>
+    <string name="settings_btn_close">Mbyll</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Sponsorizo</string>
+
+    <!-- Titujt e seksioneve -->
+    <string name="settings_section_general">Të përgjithshme</string>
+    <string name="settings_section_appearance">Pamja</string>
+    <string name="settings_section_language">Gjuha</string>
+    <string name="settings_section_defaults">Opsionet e parazgjedhura</string>
+    <string name="settings_section_output">Dalja</string>
+    <string name="settings_section_transcode">Transkodimi i videos</string>
+    <string name="settings_section_about">Rreth</string>
+    <string name="settings_section_app">Aplikacioni</string>
+    <string name="settings_section_credits">Falënderime dhe sponsorizim</string>
+    <string name="settings_section_opensource">Burim i hapur dhe licenca</string>
+
+    <!-- Të përgjithshme -->
+    <string name="settings_startup_check_title">Kontrollo përditësimet në nisje</string>
+    <string name="settings_startup_check_subtitle">Shkarkon automatikisht versionin e ri nga GitHub në nisje dhe njofton kur ka përditësim</string>
+    <string name="settings_haptics_title">Reagim me dridhje</string>
+    <string name="settings_haptics_subtitle">Reagim prekës kur shtypen butonat dhe kur ndryshon gjendja</string>
+    <string name="settings_bounce_title">Animacion elastik i butonave</string>
+    <string name="settings_bounce_subtitle">Animacion zmadhimi dhe kthimi kur shtypet butoni</string>
+
+    <!-- Pamja -->
+    <string name="settings_theme_system">Sistemi</string>
+    <string name="settings_theme_dark">E errët</string>
+    <string name="settings_theme_light">E ndritshme</string>
+    <string name="settings_dynamic_theme_title">Ngjyra dinamike Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Ndjek ngjyrat e sfondit të sistemit (Android 12+); kur çaktivizohet, përdoren ngjyrat e paracaktuara më poshtë</string>
+    <string name="settings_preset_colors_title">Ngjyra tematike të paracaktuara</string>
+    <string name="settings_preset_current">Aktuale: %1$s</string>
+    <string name="settings_preset_disabled_hint">Disponohet pas çaktivizimit të „Ngjyra dinamike Material You”</string>
+    <string name="settings_custom">E personalizuar</string>
+    <string name="settings_custom_color_title">Ngjyrë tematike e personalizuar</string>
+    <string name="settings_cd_custom_palette">Paletë e personalizuar</string>
+    <string name="settings_hue_value">Nuanca %1$d°</string>
+
+    <!-- Gjuha e aplikacionit -->
+    <string name="settings_language_dialog_title">Zgjidh gjuhën e aplikacionit</string>
+    <string name="settings_language_count">%1$d gjuhë në dispozicion</string>
+
+    <!-- Opsionet e parazgjedhura -->
+    <string name="settings_reminder_dialogs_title">Mos i shfaq më dritaret</string>
+    <string name="settings_reminder_dialogs_subtitle">Menaxho të gjitha dritaret „Mos pyet më”</string>
+    <string name="settings_reminder_hint">Aktiv do të thotë „mos e shfaq më”; nëse çaktivizohet, dritarja do të shfaqet përsëri herën tjetër.</string>
+
+    <!-- Dalja -->
+    <string name="settings_preserve_folders_title">Dalje sipas strukturës së dosjeve burimore</string>
+    <string name="settings_preserve_folders_subtitle">Rezultatet ruhen në nëndosje sipas albumit; kur çaktivizohet, të gjitha vendosen në një dosje të vetme</string>
+
+    <!-- Rreth -->
+    <string name="settings_about_title">Rreth</string>
+    <string name="settings_about_subtitle">Versioni · Kontrollo përditësimet · Falënderime</string>
+    <string name="settings_check_update_title">Kontrollo përditësimet</string>
+    <string name="settings_check_update_subtitle">Merr versionin më të ri nga GitHub Releases</string>
+    <string name="settings_checking">Duke kontrolluar…</string>
+    <string name="settings_update_available">v%1$s në dispozicion</string>
+    <string name="settings_up_to_date">Jeni në versionin më të ri</string>
+    <string name="settings_network_error">Gabim rrjeti, provoni përsëri më vonë</string>
+    <string name="settings_reinstall_title">Riinstalo këtë version</string>
+    <string name="settings_reinstall_subtitle">Shkarko versionin aktual dhe instaloje sipër (për testimin e përditësimeve)</string>
+    <string name="settings_reinstall_newer_hint">Mund të përditësohet në v%1$s; përdorni fillimisht „Kontrollo përditësimet”</string>
+    <string name="settings_version_title">Versioni</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Sponsorizim me Alipay</string>
+    <string name="settings_alipay_subtitle">Mbështet zhvillimin</string>
+    <string name="settings_coolapk_subtitle">Përdorues i Coolapk · Faleminderit për mbështetjen</string>
+    <string name="settings_ai_credits_subtitle">Falënderim AI IDE-ve dhe modeleve AI për ndihmën në zhvillim</string>
+    <string name="settings_github_title">Depoja GitHub me burim të hapur</string>
+    <string name="settings_license_title">Licenca e burimit të hapur</string>
+    <string name="settings_sponsor_dialog_title">Faleminderit për mbështetjen</string>
+    <string name="settings_sponsor_dialog_text">Ju falënderoj shumë që dëshironi të mbështesni këtë aplikacion!\n\nNëse jeni ende nxënës ose student, ose nuk jeni financiarisht i pavarur, ju lutem mos shpenzoni para—\nmbajeni këtë dëshirë në zemër dhe vazhdoni ta përdorni; kjo është mbështetja më e mirë për mua.\n\nNëse dëshironi të sponsorizoni, edhe një shumë e vogël ka vlerë; do ta investoj në mirëmbajtje dhe funksione më të mira:)</string>
+    <string name="settings_alipay_missing_title">Alipay nuk është i instaluar</string>
+    <string name="settings_alipay_missing_text">Nuk u zbulua Alipay, prandaj sponsorizimi nuk mund të kryhet tani.\n\nNuk ka problem—faleminderit gjithsesi për qëllimin e mirë!</string>
+
+    <!-- Transkodimi i videos -->
+    <string name="settings_transcoder_title">Transkodues i integruar</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Rikodim</string>
+    <string name="settings_transcode_mode_remux">Vetëm rikontejnerizim (rekomandohet)</string>
+    <string name="settings_transcode_mode_off">Pa përdorur transkoduesin</string>
+    <string name="settings_transcode_params_title">Parametrat e transkodimit</string>
+    <string name="settings_transcode_params_subtitle">Parametrat e cilësisë dhe kompresimit gjatë rikodimit</string>
+    <string name="settings_transcode_params_disabled">Zbatohet vetëm kur „Mënyra e transkodimit” është „Rikodim”</string>
+    <string name="settings_crf_value">Cilësia CRF: %1$d</string>
+    <string name="settings_crf_hint">Sa më e vogël vlera, aq më e lartë cilësia dhe aq më i madh skedari (parazgjedhur 18)</string>
+    <string name="settings_encoder_title">Koduesi</string>
+    <string name="settings_compress_preset_title">Paracaktimi i kompresimit</string>
+
+</resources>

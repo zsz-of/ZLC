@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lietuvių (lt) — naujinimo eigos tekstai (ui/UpdateFlow.kt, raktai update_*).
+  Šaltinis: res/values/strings_update_flow.xml (supaprastinta kinų kalba).
+-->
+<resources>
+    <string name="update_github_url_missing">Negautas GitHub atsisiuntimo adresas. Bandykite dar kartą vėliau.</string>
+    <string name="update_flavor_standard">Standartinė versija</string>
+    <string name="update_flavor_go">Go versija</string>
+    <string name="update_lanzou_url_missing">Ši versija neturi Lanzou Cloud atsisiuntimo nuorodos. Naudokite GitHub.</string>
+    <string name="update_apk_direct_missing">Ši versija neturi tiesioginės nuorodos į tinkamą APK. Pasirinkite atitinkamą APK GitHub leidimų puslapyje.</string>
+    <string name="update_install_permission_missing">Nesuteiktas leidimas „Diegti nežinomas programas“, todėl automatinis diegimas negalimas. Leiskite jį sistemos nustatymuose ir bandykite dar kartą.</string>
+    <string name="update_error_unknown">Nežinoma klaida</string>
+    <string name="update_fail_lanzou">Lanzou Cloud atsisiuntimas nepavyko</string>
+    <string name="update_fail_github">GitHub atsisiuntimas nepavyko</string>
+    <string name="update_lanzou_resolving">Nustatoma Lanzou Cloud atsisiuntimo nuoroda…</string>
+    <string name="update_lanzou_downloading">Atsisiunčiama iš Lanzou Cloud…</string>
+    <string name="update_github_downloading">Atsisiunčiama iš GitHub…</string>
+    <string name="update_unzipping">Išpakuojamas diegimo paketas…</string>
+    <string name="update_notes_empty">Ši versija neturi leidimo aprašo.</string>
+
+    <!-- Su „Go“ versija susiję dialogai -->
+    <string name="update_use_normal_title">Naudokite standartinę versiją</string>
+    <string name="update_use_normal_body">Šio įrenginio sistema yra Android 10 arba naujesnė; lengvoji „Go“ versija nebepalaikoma ir senosios versijos naudoti nebegalima.\n\nĮrenginyje aptikta standartinė versija (ZLC) — atidarykite ją ir tęskite (naujose versijose „Go“ varianto nebėra; senąją versiją galite pašalinti, kad atlaisvintumėte vietos).</string>
+    <string name="update_open_normal">Atidaryti standartinę versiją</string>
+    <string name="update_must_update_title">Norėdami tęsti, turite atnaujinti</string>
+    <string name="update_forced_body">Šio įrenginio sistema yra Android 10 arba naujesnė; lengvoji „Go“ versija nebepalaikoma ir senosios versijos naudoti nebegalima, o naujose versijose „Go“ varianto taip pat nebėra.\n\nPrisijunkite prie interneto ir spauskite „Bandyti dar kartą“, kad atsisiųstumėte standartinę versiją.</string>
+    <string name="update_retry">Bandyti dar kartą</string>
+    <string name="update_switch_normal_body">Šio įrenginio sistema yra Android 10 arba naujesnė; lengvoji „Go“ versija nebepalaikoma ir senosios versijos naudoti nebegalima.\nAtsisiųskite ir įdiekite standartinę versiją, kad galėtumėte tęsti (naujose versijose „Go“ varianto nebėra).</string>
+
+    <!-- Atsisiuntimas / diegimo leidimas / rezultatas -->
+    <string name="update_downloading_title">Naujinimo atsisiuntimas</string>
+    <string name="update_cancel">Atšaukti</string>
+    <string name="update_need_permission_title">Reikalingas diegimo leidimas</string>
+    <string name="update_need_permission_body">Norint įdiegti naują versiją, reikia sistemos leidimo „Diegti nežinomas programas“.\n\nSpauskite „Leisti“, leiskite jį nustatymuose ir grįžkite į programą — diegimas bus tęsiamas automatiškai (atsisiųsti iš naujo nereikės).</string>
+    <string name="update_grant">Leisti</string>
+    <string name="update_notice_title">Dėmesio</string>
+    <string name="update_got_it">Supratau</string>
+
+    <!-- Pagrindinis dialogas / leidimo aprašas -->
+    <string name="update_notes_title">v%1$s · leidimo aprašas</string>
+    <string name="update_back">Atgal</string>
+    <string name="update_title_switch_normal">Perėjimas prie standartinės versijos</string>
+    <string name="update_title_reinstall">Šios versijos įdiegimas iš naujo</string>
+    <string name="update_title_new_version">Rasta nauja versija</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Ši versija bus atsisiųsta ir įdiegta iš naujo (perrašant dabartinę programą).\nFunkcija skirta naujinimo mechanizmo regresiniam testavimui.</string>
+    <string name="update_view_notes">Peržiūrėti leidimo aprašą</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud laikinai nepasiekiamas</string>
+    <string name="update_download_lanzou">Atsisiųsti iš Lanzou Cloud</string>
+    <string name="update_download_github">Atsisiųsti iš GitHub</string>
+    <string name="update_download_browser">Atsisiųsti naršyklėje</string>
+    <string name="update_later">Vėliau</string>
+    <string name="update_later_switch">Nepereiti</string>
+    <string name="update_skip_version">Praleisti šią versiją</string>
+</resources>

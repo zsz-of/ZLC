@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · اردو (Urdu, RTL) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Urdu is right-to-left; no physical left/right direction is hard-coded and placeholders stay LTR.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">ترتیبات</string>
+    <string name="settings_cd_back">واپس</string>
+    <string name="settings_btn_apply">لاگو کریں</string>
+    <string name="settings_btn_cancel">منسوخ کریں</string>
+    <string name="settings_btn_close">بند کریں</string>
+    <string name="settings_btn_ok">ٹھیک ہے</string>
+    <string name="settings_btn_sponsor">معاونت کریں</string>
+    <string name="settings_section_general">عمومی</string>
+    <string name="settings_section_appearance">ظاہری شکل</string>
+    <string name="settings_section_language">زبان</string>
+    <string name="settings_section_defaults">پہلے سے طے شدہ</string>
+    <string name="settings_section_output">آؤٹ پٹ</string>
+    <string name="settings_section_transcode">ویڈیو ٹرانس کوڈنگ</string>
+    <string name="settings_section_about">کے بارے میں</string>
+    <string name="settings_section_app">ایپ</string>
+    <string name="settings_section_credits">شکریہ اور معاونت</string>
+    <string name="settings_section_opensource">اوپن سورس اور لائسنس</string>
+    <string name="settings_startup_check_title">شروع ہونے پر اپ ڈیٹ چیک کریں</string>
+    <string name="settings_startup_check_subtitle">شروع ہونے پر GitHub سے خودکار طور پر نئی ورژن حاصل کریں، اپ ڈیٹ ہونے پر ڈاؤن لوڈ کی اطلاع دیں</string>
+    <string name="settings_haptics_title">وائبریشن فیڈبیک</string>
+    <string name="settings_haptics_subtitle">بٹن دبانے اور حالت بدلنے پر وائبریشن فیڈبیک</string>
+    <string name="settings_bounce_title">بٹن کی اسپرنگ اینیمیشن</string>
+    <string name="settings_bounce_subtitle">بٹن دبانے پر اسکیل ہو کر واپس اسپرنگ ہونے والی اینیمیشن</string>
+    <string name="settings_theme_system">سسٹم کی پیروی کریں</string>
+    <string name="settings_theme_dark">گہرا</string>
+    <string name="settings_theme_light">ہلکا</string>
+    <string name="settings_dynamic_theme_title">Material You ڈائنامک رنگ</string>
+    <string name="settings_dynamic_theme_subtitle">سسٹم وال پیپر کے رنگ کی پیروی (Android 12+)؛ بند کرنے پر نیچے دیے گئے پہلے سے طے شدہ رنگ استعمال ہوں گے</string>
+    <string name="settings_preset_colors_title">پہلے سے طے شدہ تھیم رنگ</string>
+    <string name="settings_preset_current">موجودہ: %1$s</string>
+    <string name="settings_preset_disabled_hint">“Material You ڈائنامک رنگ” بند کرنے کے بعد منتخب کیا جا سکتا ہے</string>
+    <string name="settings_custom">حسب ضرورت</string>
+    <string name="settings_custom_color_title">حسب ضرورت تھیم رنگ</string>
+    <string name="settings_cd_custom_palette">حسب ضرورت پیلیٹ</string>
+    <string name="settings_hue_value">رنگت %1$d°</string>
+    <string name="settings_language_dialog_title">ایپ کی زبان منتخب کریں</string>
+    <string name="settings_language_count">کل %1$d زبانیں</string>
+    <string name="settings_reminder_dialogs_title">مزید پاپ اپ نہ دکھائیں</string>
+    <string name="settings_reminder_dialogs_subtitle">تمام “مزید نہ دکھائیں” پاپ اپ کے سوئچ کا انتظام کریں</string>
+    <string name="settings_reminder_hint">سوئچ آن ہونے کا مطلب ہے “مزید نہ دکھائیں”؛ بند کرنے پر اگلی بار متعلقہ صورت حال آنے پر دوبارہ پیغام ظاہر ہوگا۔</string>
+    <string name="settings_preserve_folders_title">ماخذ فولڈر کے مطابق آؤٹ پٹ</string>
+    <string name="settings_preserve_folders_subtitle">تبدیلی کے نتائج اصل البم کے نام کے مطابق ذیلی فولڈرز میں رکھے جائیں گے؛ بند کرنے پر سب ایک ہی فولڈر میں ہوں گے</string>
+    <string name="settings_about_title">کے بارے میں</string>
+    <string name="settings_about_subtitle">ورژن · اپ ڈیٹ چیک کریں · شکریہ اور معاونت</string>
+    <string name="settings_check_update_title">اپ ڈیٹ چیک کریں</string>
+    <string name="settings_check_update_subtitle">GitHub Releases سے تازہ ترین ورژن حاصل کریں</string>
+    <string name="settings_checking">چیک کیا جا رہا ہے…</string>
+    <string name="settings_update_available">v%1$s دستیاب ہے</string>
+    <string name="settings_up_to_date">یہ تازہ ترین ورژن ہے</string>
+    <string name="settings_network_error">نیٹ ورک کی خرابی، بعد میں دوبارہ کوشش کریں</string>
+    <string name="settings_reinstall_title">یہ ورژن دوبارہ انسٹال کریں</string>
+    <string name="settings_reinstall_subtitle">موجودہ تازہ ترین ورژن ڈاؤن لوڈ کر کے دوبارہ انسٹال کریں (اپ ڈیٹ کی جانچ کے لیے)</string>
+    <string name="settings_reinstall_newer_hint">ابھی v%1$s پر اپ گریڈ کیا جا سکتا ہے، پہلے “اپ ڈیٹ چیک کریں” استعمال کریں</string>
+    <string name="settings_version_title">ورژن</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay معاونت</string>
+    <string name="settings_alipay_subtitle">ترقی میں معاونت کریں</string>
+    <string name="settings_coolapk_subtitle">Coolapk صارف · ان کی معاونت کا شکریہ</string>
+    <string name="settings_ai_credits_subtitle">ترقی میں AI IDE اور AI ماڈلز کی مدد کا شکریہ</string>
+    <string name="settings_github_title">GitHub اوپن سورس پتہ</string>
+    <string name="settings_license_title">اوپن سورس لائسنس</string>
+    <string name="settings_sponsor_dialog_title">آپ کی معاونت کا شکریہ</string>
+    <string name="settings_sponsor_dialog_text">اس ایپ کی معاونت کے لیے آپ کی تیاری کا بہت بہت شکریہ!
+
+اگر آپ ابھی طالب علم ہیں یا مالی طور پر خودمختار نہیں ہیں، تو بالکل خرچ نہ کریں——
+اس نیک نیتی کو دل میں رکھیں اور استعمال جاری رکھیں؛ میرے لیے یہی بہترین معاونت ہے۔
+
+اگر آپ معاونت کرنا چاہتے ہیں تو ایک روپیہ بھی محبت ہے، میں اسے بہتر دیکھ بھال اور خصوصیات پر لگاؤں گا :）</string>
+    <string name="settings_alipay_missing_title">Alipay ابھی انسٹال نہیں ہے</string>
+    <string name="settings_alipay_missing_text">Alipay نہیں ملا، اس وقت معاونت مکمل نہیں ہو سکتی۔
+
+کوئی بات نہیں——بہر حال، آپ کی نیک نیتی کا بہت شکریہ!</string>
+    <string name="settings_transcoder_title">بلٹ اِن ٹرانس کوڈر</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">دوبارہ انکوڈنگ</string>
+    <string name="settings_transcode_mode_remux">صرف کنٹینر دوبارہ بنائیں (تجویز کردہ)</string>
+    <string name="settings_transcode_mode_off">ٹرانس کوڈر بالکل استعمال نہ کریں</string>
+    <string name="settings_transcode_params_title">ٹرانس کوڈ کے پیرامیٹرز</string>
+    <string name="settings_transcode_params_subtitle">دوبارہ انکوڈنگ کے وقت استعمال ہونے والے معیار اور کمپریشن کے پیرامیٹرز</string>
+    <string name="settings_transcode_params_disabled">صرف اس وقت مؤثر جب “ٹرانس کوڈ کا طریقہ” میں “دوبارہ انکوڈنگ” منتخب ہو</string>
+    <string name="settings_crf_value">معیار CRF: %1$d</string>
+    <string name="settings_crf_hint">قدر جتنی کم ہوگی معیار اتنا اونچا اور حجم اتنا بڑا ہوگا (ڈیفالٹ 18)</string>
+    <string name="settings_encoder_title">انکوڈر</string>
+    <string name="settings_compress_preset_title">کمپریشن پریسیٹ</string>
+</resources>

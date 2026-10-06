@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Albanian (sq) strings — format plugin names and diagnostics.
+  Translated from res/values/strings_formats.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Nxjerrje</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo me një skedar të vetëm</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Nuk u gjet asnjë skedar video .mov me të njëjtin emër</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Skedarit MOV i mungon kutia ftyp</string>
+    <string name="fmt_err_extract_read">Nxjerrja është format dalës dhe nuk mund të lexohet si format hyrës</string>
+    <string name="fmt_err_no_primary_jpeg">Nuk u gjet imazhi JPEG kryesor</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Nuk u gjet asnjë video MP4 e vlefshme pas JPEG (mungon kutia ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">Analizimi i transmetimit video MP4 dështoi</string>
+    <string name="fmt_err_nubia_too_short">Skedari është shumë i shkurtër për të qenë një Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Mungon numri magjik nubiaVpfile në fund</string>
+    <string name="fmt_err_nubia_jpeg_len">Gjatësi JPEG e pavlefshme në trailer: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Mungojnë bajtët e mbushjes 0x00 midis JPEG dhe videos</string>
+    <string name="fmt_err_nubia_empty_video">Gjatësia e videos së integruar është 0</string>
+    <string name="fmt_err_vivo_no_marker">Nuk u gjet shenja vivo livephoto në fund të JPG-së</string>
+    <string name="fmt_err_vivo_companion_missing">Mungon skedari video shoqërues: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Analizimi i trupit të JPG-së dështoi</string>
+    <string name="fmt_err_vivo_companion_invalid">MP4 shoqërues është i pavlefshëm (mungon kutia ftyp)</string>
+</resources>

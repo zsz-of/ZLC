@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · नेपाली (Nepali) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Nepali (Devanagari); technical terms follow the English loanword where common.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">एक्सट्र्याक्ट</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor लाइभ फोटो</string>
+    <string name="fmt_meizu">Meizu लाइभ फोटो</string>
+    <string name="fmt_nubia">Nubia लाइभ फोटो</string>
+    <string name="fmt_oppo">OPPO लाइभ फोटो</string>
+    <string name="fmt_vivo">vivo लाइभ फोटो</string>
+    <string name="fmt_vivo_single">vivo एकल-फाइल लाइभ फोटो</string>
+    <string name="fmt_xiaomi">Xiaomi लाइभ फोटो</string>
+    <string name="fmt_err_apple_mov_missing">एउटै नामको .mov भिडियो फाइल भेटिएन</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV फाइलमा ftyp box छैन</string>
+    <string name="fmt_err_extract_read">एक्सट्र्याक्ट आउटपुट ढाँचा हो, यसलाई इनपुट ढाँचाको रूपमा पढ्न मिल्दैन</string>
+    <string name="fmt_err_no_primary_jpeg">कुनै प्राथमिक JPEG छवि भेटिएन</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG पछि कुनै मान्य MP4 भिडियो भेटिएन (ftyp box छैन)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 भिडियो स्ट्रिम पार्स गर्न सकिएन</string>
+    <string name="fmt_err_nubia_too_short">फाइल धेरै छोटो छ, Nubia लाइभ फोटो जस्तो लाग्दैन</string>
+    <string name="fmt_err_nubia_no_magic">nubiaVpfile को अन्त्यमा रहेको magic number छैन</string>
+    <string name="fmt_err_nubia_jpeg_len">ट्रेलरमा लेखिएको JPEG लम्बाइ अमान्य छ: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG र भिडियो बीच 0x00 padding bytes छैनन्</string>
+    <string name="fmt_err_nubia_empty_video">एम्बेड गरिएको भिडियोको लम्बाइ 0 छ</string>
+    <string name="fmt_err_vivo_no_marker">JPG को अन्त्यमा vivo livephoto मार्कर भेटिएन</string>
+    <string name="fmt_err_vivo_companion_missing">सहवर्ती भिडियो फाइल छैन: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG को मुख्य भाग पार्स गर्न सकिएन</string>
+    <string name="fmt_err_vivo_companion_invalid">सहवर्ती MP4 अमान्य छ (ftyp box छैन)</string>
+</resources>

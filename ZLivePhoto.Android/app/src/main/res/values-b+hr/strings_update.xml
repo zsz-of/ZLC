@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou Cloud dijeljenje je otkazano ili datoteka ne postoji. Umjesto toga preuzmite s GitHuba</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud dijeljenje je otkazano. Umjesto toga preuzmite s GitHuba</string>
+    <string name="update_lanzou_resolve_failed">Razrješavanje poveznice za preuzimanje s Lanzou Cloud nije uspjelo</string>
+    <string name="update_lanzou_need_passwd">Ovo Lanzou Cloud dijeljenje zahtijeva pristupni kod. Umjesto toga preuzmite s GitHuba (ili kod potražite u opisu izdanja)</string>
+    <string name="update_lanzou_wrong_passwd">Neispravan pristupni kod za Lanzou Cloud</string>
+    <string name="update_err_resolve_failed">Razrješavanje nije uspjelo</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Provjera protiv automatiziranog preuzimanja na Lanzou Cloud nije uspjela</string>
+    <string name="update_err_no_frame">Nije moguće razriješiti stranicu za preuzimanje s Lanzou Cloud (okvir za preuzimanje nije pronađen)</string>
+    <string name="update_err_no_file_id">Nije moguće odrediti identifikator datoteke na Lanzou Cloud</string>
+    <string name="update_err_no_sign">Nije moguće odrediti potpis Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Zahtjev prema sučelju nije uspio</string>
+    <string name="update_err_api_request">Zahtjev prema sučelju Lanzou Cloud nije uspio</string>
+    <string name="update_err_empty_direct">Lanzou Cloud je vratio praznu adresu za preuzimanje</string>
+    <string name="update_err_direct_expired">Adresa za preuzimanje s Lanzou Cloud je istekla, zatražite je ponovno</string>
+    <string name="update_err_http_request">Zahtjev nije uspio (HTTP %1$d)</string>
+    <string name="update_err_connect">Nije moguće povezati se s poslužiteljem za preuzimanje: %1$s</string>
+    <string name="update_err_http">Preuzimanje nije uspjelo (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Nije moguće uspostaviti vezu za preuzimanje</string>
+    <string name="update_err_empty">Preuzeti sadržaj je prazan</string>
+    <string name="update_err_incomplete">Preuzimanje je nepotpuno (preuzeto %1$d od %2$d bajtova), preuzmite ponovno</string>
+    <string name="update_err_interrupted">Preuzimanje prekinuto: %1$s</string>
+    <string name="update_err_not_apk">Preuzeta datoteka nije valjana instalacijska datoteka (možda je to web-stranica ili je poveznica istekla). Preuzmite ponovno ili upotrijebite GitHub.</string>
+    <string name="update_err_apk_incomplete">Sadržaj instalacijske datoteke je nepotpun. Preuzmite ponovno ili upotrijebite GitHub.</string>
+    <string name="update_err_apk_unparsable">Instalacijsku datoteku nije moguće razriješiti (vjerojatno nepotpuno preuzimanje). Preuzmite ponovno ili upotrijebite GitHub.</string>
+    <string name="update_err_no_install_permission">Nedostaje dopuštenje „Instaliranje nepoznatih aplikacija“</string>
+    <string name="update_err_installer_failed">Nije moguće pokrenuti sistemski instalacijski program (%1$s). Otvorite instalacijsku datoteku ručno u upravitelju datoteka.</string>
+</resources>

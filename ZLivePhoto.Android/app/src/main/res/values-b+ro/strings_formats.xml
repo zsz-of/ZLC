@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Romanian (ro) strings — format plugin names and diagnostics.
+  Translated from res/values/strings_formats.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Extragere</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo într-un singur fișier</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Nu s-a găsit niciun fișier video .mov cu același nume</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Fișierului MOV îi lipsește caseta ftyp</string>
+    <string name="fmt_err_extract_read">Extragerea este un format de ieșire și nu poate fi citită ca format de intrare</string>
+    <string name="fmt_err_no_primary_jpeg">Nu s-a găsit imaginea JPEG principală</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Nu s-a găsit un videoclip MP4 valid după JPEG (lipsește caseta ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">Analizarea fluxului video MP4 a eșuat</string>
+    <string name="fmt_err_nubia_too_short">Fișierul este prea scurt pentru a fi un Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Lipsește numărul magic nubiaVpfile de la sfârșit</string>
+    <string name="fmt_err_nubia_jpeg_len">Lungime JPEG invalidă în trailer: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Lipsesc octeții de umplere 0x00 dintre JPEG și videoclip</string>
+    <string name="fmt_err_nubia_empty_video">Lungimea videoclipului încorporat este 0</string>
+    <string name="fmt_err_vivo_no_marker">Nu s-a găsit marcajul vivo livephoto la sfârșitul JPG-ului</string>
+    <string name="fmt_err_vivo_companion_missing">Lipsește fișierul video asociat: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Analizarea corpului JPG a eșuat</string>
+    <string name="fmt_err_vivo_companion_invalid">MP4-ul asociat este invalid (lipsește caseta ftyp)</string>
+</resources>

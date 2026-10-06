@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · नेपाली (Nepali) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Nepali (Devanagari); technical terms follow the English loanword where common.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">सेटिङ</string>
+    <string name="settings_cd_back">फर्कनुहोस्</string>
+    <string name="settings_btn_apply">लागू गर्नुहोस्</string>
+    <string name="settings_btn_cancel">रद्द गर्नुहोस्</string>
+    <string name="settings_btn_close">बन्द गर्नुहोस्</string>
+    <string name="settings_btn_ok">ठीक छ</string>
+    <string name="settings_btn_sponsor">सहयोग गर्नुहोस्</string>
+    <string name="settings_section_general">सामान्य</string>
+    <string name="settings_section_appearance">देखावट</string>
+    <string name="settings_section_language">भाषा</string>
+    <string name="settings_section_defaults">पूर्वनिर्धारित</string>
+    <string name="settings_section_output">आउटपुट</string>
+    <string name="settings_section_transcode">भिडियो ट्रान्सकोडिङ</string>
+    <string name="settings_section_about">बारेमा</string>
+    <string name="settings_section_app">एप</string>
+    <string name="settings_section_credits">धन्यवाद र सहयोग</string>
+    <string name="settings_section_opensource">खुला स्रोत र इजाजतपत्र</string>
+    <string name="settings_startup_check_title">सुरु गर्दा अद्यावधिक जाँच्नुहोस्</string>
+    <string name="settings_startup_check_subtitle">सुरु गर्दा GitHub बाट नयाँ संस्करण स्वतः प्राप्त गर्नुहोस्, अद्यावधिक भएमा डाउनलोड गर्न सुझाव दिनुहोस्</string>
+    <string name="settings_haptics_title">भाइब्रेसन प्रतिक्रिया</string>
+    <string name="settings_haptics_subtitle">बटन थिच्दा र स्थिति परिवर्तन हुँदा भाइब्रेसन प्रतिक्रिया</string>
+    <string name="settings_bounce_title">बटन स्प्रिङ एनिमेसन</string>
+    <string name="settings_bounce_subtitle">बटन थिच्दा स्केल भई फर्किने स्प्रिङ एनिमेसन</string>
+    <string name="settings_theme_system">प्रणालीको अनुसरण गर्नुहोस्</string>
+    <string name="settings_theme_dark">गाढा</string>
+    <string name="settings_theme_light">उज्यालो</string>
+    <string name="settings_dynamic_theme_title">Material You गतिशील रङ</string>
+    <string name="settings_dynamic_theme_subtitle">प्रणालीको वालपेपर रङको अनुसरण (Android 12+); बन्द गरेपछि तलका पूर्वनिर्धारित रङ प्रयोग हुनेछन्</string>
+    <string name="settings_preset_colors_title">पूर्वनिर्धारित थिम रङ</string>
+    <string name="settings_preset_current">हाल: %1$s</string>
+    <string name="settings_preset_disabled_hint">“Material You गतिशील रङ” बन्द गरेपछि छान्न सकिन्छ</string>
+    <string name="settings_custom">अनुकूलित</string>
+    <string name="settings_custom_color_title">अनुकूलित थिम रङ</string>
+    <string name="settings_cd_custom_palette">अनुकूलित प्यालेट</string>
+    <string name="settings_hue_value">ह्यु %1$d°</string>
+    <string name="settings_language_dialog_title">एप भाषा छान्नुहोस्</string>
+    <string name="settings_language_count">जम्मा %1$d भाषा</string>
+    <string name="settings_reminder_dialogs_title">पुनः सूचना नदेखाउनुहोस्</string>
+    <string name="settings_reminder_dialogs_subtitle">सबै “पुनः नदेखाउनुहोस्” सूचनाका स्विच व्यवस्थापन गर्नुहोस्</string>
+    <string name="settings_reminder_hint">स्विच खुला हुनुको अर्थ “पुनः नदेखाउनुहोस्” हो; बन्द गरेपछि अर्को पटक सम्बन्धित अवस्था आउँदा सूचना फेरि देखिनेछ।</string>
+    <string name="settings_preserve_folders_title">स्रोत फोल्डर अनुसार आउटपुट</string>
+    <string name="settings_preserve_folders_subtitle">रूपान्तरणका परिणाम पुरानो एल्बम नाम अनुसार उपफोल्डरमा राखिन्छ; बन्द गरेपछि सबै एउटै फोल्डरमा रहन्छन्</string>
+    <string name="settings_about_title">बारेमा</string>
+    <string name="settings_about_subtitle">संस्करण · अद्यावधिक जाँच्नुहोस् · धन्यवाद र सहयोग</string>
+    <string name="settings_check_update_title">अद्यावधिक जाँच्नुहोस्</string>
+    <string name="settings_check_update_subtitle">GitHub Releases बाट नवीनतम संस्करण प्राप्त गर्नुहोस्</string>
+    <string name="settings_checking">जाँच हुँदैछ…</string>
+    <string name="settings_update_available">v%1$s उपलब्ध छ</string>
+    <string name="settings_up_to_date">यो नै नवीनतम संस्करण हो</string>
+    <string name="settings_network_error">नेटवर्क त्रुटि, पछि पुनः प्रयास गर्नुहोस्</string>
+    <string name="settings_reinstall_title">यो संस्करण पुनः स्थापना गर्नुहोस्</string>
+    <string name="settings_reinstall_subtitle">हालको नवीनतम संस्करण डाउनलोड गरी पुनः स्थापना गर्नुहोस् (अद्यावधिक परीक्षणका लागि)</string>
+    <string name="settings_reinstall_newer_hint">अहिले v%1$s मा स्तरोन्नति गर्न सकिन्छ, पहिले “अद्यावधिक जाँच्नुहोस्” प्रयोग गर्नुहोस्</string>
+    <string name="settings_version_title">संस्करण</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay सहयोग</string>
+    <string name="settings_alipay_subtitle">विकासलाई सहयोग गर्नुहोस्</string>
+    <string name="settings_coolapk_subtitle">Coolapk प्रयोगकर्ता · उहाँको सहयोगको लागि धन्यवाद</string>
+    <string name="settings_ai_credits_subtitle">विकासमा AI IDE र AI मोडेलको सहयोगको लागि धन्यवाद</string>
+    <string name="settings_github_title">GitHub खुला स्रोत ठेगाना</string>
+    <string name="settings_license_title">खुला स्रोत इजाजतपत्र</string>
+    <string name="settings_sponsor_dialog_title">तपाईंको सहयोगको लागि धन्यवाद</string>
+    <string name="settings_sponsor_dialog_text">यो एपलाई सहयोग गर्न तपाईं तयार हुनुभएकोमा साँच्चै धेरै धन्यवाद!
+
+यदि तपाईं अझै विद्यार्थी हुनुहुन्छ वा आर्थिक रूपमा स्वतन्त्र हुनुहुन्न भने, कृपया खर्च नगर्नुहोस्——
+यो भावना मनमा राख्नुहोस् र प्रयोग जारी राख्नुहोस्; मेरो लागि त्यही उत्तम सहयोग हो।
+
+सहयोग गर्न चाहनुहुन्छ भने एक रुपैयाँ पनि माया हो, म यसलाई राम्रो मर्मत र सुविधामा लगाउनेछु :）</string>
+    <string name="settings_alipay_missing_title">Alipay अझै स्थापना गरिएको छैन</string>
+    <string name="settings_alipay_missing_text">Alipay भेटिएन, अहिले सहयोग पूरा गर्न सकिँदैन।
+
+चिन्ता नगर्नुहोस्——जे भए पनि, तपाईंको सद्भावनाको लागि धेरै धन्यवाद!</string>
+    <string name="settings_transcoder_title">आन्तरिक ट्रान्सकोडर</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">पुनः इन्कोडिङ</string>
+    <string name="settings_transcode_mode_remux">कन्टेनर मात्र पुनः प्याक गर्नुहोस् (सिफारिस)</string>
+    <string name="settings_transcode_mode_off">ट्रान्सकोडर प्रयोग नगर्नुहोस्</string>
+    <string name="settings_transcode_params_title">ट्रान्सकोड प्यारामिटर</string>
+    <string name="settings_transcode_params_subtitle">पुनः इन्कोडिङ गर्दा प्रयोग हुने गुणस्तर र कम्प्रेसन प्यारामिटर</string>
+    <string name="settings_transcode_params_disabled">“ट्रान्सकोड विधि” मा “पुनः इन्कोडिङ” छान्दा मात्र लागू हुन्छ</string>
+    <string name="settings_crf_value">गुणस्तर CRF: %1$d</string>
+    <string name="settings_crf_hint">मान जति सानो हुन्छ गुणस्तर त्यति उच्च र आकार त्यति ठूलो हुन्छ (पूर्वनिर्धारित 18)</string>
+    <string name="settings_encoder_title">इन्कोडर</string>
+    <string name="settings_compress_preset_title">कम्प्रेसन प्रिसेट</string>
+</resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · O'zbekcha (Uzbek) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Uzbek (Latin); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Sozlamalar</string>
+    <string name="settings_cd_back">Orqaga</string>
+    <string name="settings_btn_apply">Qoʻllash</string>
+    <string name="settings_btn_cancel">Bekor qilish</string>
+    <string name="settings_btn_close">Yopish</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Qoʻllab-quvvatlash</string>
+    <string name="settings_section_general">Umumiy</string>
+    <string name="settings_section_appearance">Koʻrinish</string>
+    <string name="settings_section_language">Til</string>
+    <string name="settings_section_defaults">Standart</string>
+    <string name="settings_section_output">Chiqish</string>
+    <string name="settings_section_transcode">Video transkodlash</string>
+    <string name="settings_section_about">Ilova haqida</string>
+    <string name="settings_section_app">Ilova</string>
+    <string name="settings_section_credits">Minnatdorchilik va homiylik</string>
+    <string name="settings_section_opensource">Ochiq kod va litsenziya</string>
+    <string name="settings_startup_check_title">Ishga tushganda yangilanishni tekshirish</string>
+    <string name="settings_startup_check_subtitle">Ishga tushganda GitHubdan yangi versiyani avtomatik oladi va yangilanish boʻlsa yuklab olishni taklif qiladi</string>
+    <string name="settings_haptics_title">Vibratsiya javobi</string>
+    <string name="settings_haptics_subtitle">Tugma bosilganda va holat oʻzgarganda vibratsiya javobi</string>
+    <string name="settings_bounce_title">Tugma prujina animatsiyasi</string>
+    <string name="settings_bounce_subtitle">Tugma bosilganda kattalashib qaytib prujinalanuvchi animatsiya</string>
+    <string name="settings_theme_system">Tizimga amal qilish</string>
+    <string name="settings_theme_dark">Qorongʻi</string>
+    <string name="settings_theme_light">Yorugʻ</string>
+    <string name="settings_dynamic_theme_title">Material You dinamik rang</string>
+    <string name="settings_dynamic_theme_subtitle">Tizim fon rasmi rangiga amal qiladi (Android 12+); oʻchirilganda quyidagi tayyor ranglar ishlatiladi</string>
+    <string name="settings_preset_colors_title">Tayyor mavzu ranglari</string>
+    <string name="settings_preset_current">Joriy: %1$s</string>
+    <string name="settings_preset_disabled_hint">“Material You dinamik rang” oʻchirilgandan soʻng tanlash mumkin</string>
+    <string name="settings_custom">Moslashtirilgan</string>
+    <string name="settings_custom_color_title">Moslashtirilgan mavzu rangi</string>
+    <string name="settings_cd_custom_palette">Moslashtirilgan palitra</string>
+    <string name="settings_hue_value">Rang ohangi %1$d°</string>
+    <string name="settings_language_dialog_title">Ilova tilini tanlash</string>
+    <string name="settings_language_count">Jami %1$d til</string>
+    <string name="settings_reminder_dialogs_title">Endi ogohlantirish koʻrsatmaslik</string>
+    <string name="settings_reminder_dialogs_subtitle">Barcha “Endi koʻrsatmaslik” ogohlantirishlarining kalitlarini boshqarish</string>
+    <string name="settings_reminder_hint">Kalit yoniq boʻlsa “Endi koʻrsatmaslik” maʼnosini bildiradi; oʻchirilganda keyingi safar tegishli holat yuz berganda ogohlantirish yana chiqadi.</string>
+    <string name="settings_preserve_folders_title">Manba jild tuzilishi boʻyicha chiqarish</string>
+    <string name="settings_preserve_folders_subtitle">Konvertatsiya natijalari asl albom nomi boʻyicha ichki jildlarga joylanadi; oʻchirilganda barchasi bitta jildda boʻladi</string>
+    <string name="settings_about_title">Ilova haqida</string>
+    <string name="settings_about_subtitle">Versiya · Yangilanishni tekshirish · Minnatdorchilik va homiylik</string>
+    <string name="settings_check_update_title">Yangilanishni tekshirish</string>
+    <string name="settings_check_update_subtitle">GitHub Releasesdan eng soʻnggi versiyani olish</string>
+    <string name="settings_checking">Tekshirilmoqda…</string>
+    <string name="settings_update_available">v%1$s mavjud</string>
+    <string name="settings_up_to_date">Bu eng soʻnggi versiya</string>
+    <string name="settings_network_error">Tarmoq xatosi, keyinroq qayta urinib koʻring</string>
+    <string name="settings_reinstall_title">Bu versiyani qayta oʻrnatish</string>
+    <string name="settings_reinstall_subtitle">Joriy eng soʻnggi versiyani yuklab, qayta oʻrnatish (yangilanishni sinash uchun)</string>
+    <string name="settings_reinstall_newer_hint">Hozir v%1$s ga yangilash mumkin, avval “Yangilanishni tekshirish”dan foydalaning</string>
+    <string name="settings_version_title">Versiya</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay orqali homiylik</string>
+    <string name="settings_alipay_subtitle">Ishlab chiqishni qoʻllab-quvvatlash</string>
+    <string name="settings_coolapk_subtitle">Coolapk foydalanuvchisi · Uning yordami uchun rahmat</string>
+    <string name="settings_ai_credits_subtitle">Ishlab chiqishda AI IDE va AI modellarining yordami uchun rahmat</string>
+    <string name="settings_github_title">GitHub ochiq kod manzili</string>
+    <string name="settings_license_title">Ochiq kod litsenziyasi</string>
+    <string name="settings_sponsor_dialog_title">Yordamingiz uchun rahmat</string>
+    <string name="settings_sponsor_dialog_text">Bu ilovani qoʻllab-quvvatlashga tayyor ekaningiz uchun chin dildan katta rahmat!
+
+Agar siz hali talaba boʻlsangiz yoki moliyaviy jihatdan mustaqil boʻlmasangiz, iltimos, pul sarflamang——
+bu niyatni yuragingizda saqlab, foydalanishda davom eting; men uchun bu eng yaxshi yordam.
+
+Homiylik qilishni istasangiz, bir soʻm ham mehr, men uni yaxshiroq xizmat koʻrsatish va funksiyalarga sarflayman :）</string>
+    <string name="settings_alipay_missing_title">Alipay hali oʻrnatilmagan</string>
+    <string name="settings_alipay_missing_text">Alipay topilmadi, shuning uchun hozircha homiylikni yakunlab boʻlmaydi.
+
+Hechqisi yoʻq——baribir, yaxshi niyatingiz uchun katta rahmat!</string>
+    <string name="settings_transcoder_title">Ichki transkoder</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Qayta kodlash</string>
+    <string name="settings_transcode_mode_remux">Faqat konteynerni qayta qadoqlash (tavsiya etiladi)</string>
+    <string name="settings_transcode_mode_off">Transkoderdan umuman foydalanmaslik</string>
+    <string name="settings_transcode_params_title">Transkod parametrlari</string>
+    <string name="settings_transcode_params_subtitle">Qayta kodlashda ishlatiladigan sifat va siqish parametrlari</string>
+    <string name="settings_transcode_params_disabled">“Transkod usuli”da “Qayta kodlash” tanlanganda amal qiladi</string>
+    <string name="settings_crf_value">Sifat CRF: %1$d</string>
+    <string name="settings_crf_hint">Qiymat qanchalik kichik boʻlsa, sifat shunchalik yuqori va hajm katta (standart 18)</string>
+    <string name="settings_encoder_title">Kodlovchi</string>
+    <string name="settings_compress_preset_title">Siqish preseti</string>
+</resources>

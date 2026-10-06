@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ar strings — Arabic (العربية, RTL)
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Standard Arabic. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">تم إلغاء مشاركة Lanzou أو أن الملف غير موجود؛ استخدم التنزيل من GitHub بدلًا من ذلك</string>
+    <string name="update_lanzou_gone_short">تم إلغاء مشاركة Lanzou؛ استخدم التنزيل من GitHub بدلًا من ذلك</string>
+    <string name="update_lanzou_resolve_failed">تعذّر تحليل رابط التنزيل من Lanzou</string>
+    <string name="update_lanzou_need_passwd">تحتاج مشاركة Lanzou هذه إلى رمز استخراج؛ استخدم التنزيل من GitHub (أو ابحث عن الرمز في وصف Release)</string>
+    <string name="update_lanzou_wrong_passwd">رمز استخراج Lanzou غير صحيح</string>
+    <string name="update_err_resolve_failed">فشل التحليل</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">فشل التحقق من مكافحة الزحف في Lanzou</string>
+    <string name="update_err_no_frame">تعذّر تحليل صفحة تنزيل Lanzou (لم يُعثر على إطار التنزيل)</string>
+    <string name="update_err_no_file_id">تعذّر تحليل معرّف ملف Lanzou</string>
+    <string name="update_err_no_sign">تعذّر تحليل توقيع Lanzou</string>
+    <string name="update_err_ajax_request">فشل طلب الواجهة</string>
+    <string name="update_err_api_request">فشل طلب واجهة Lanzou</string>
+    <string name="update_err_empty_direct">أعاد Lanzou عنوان تنزيل فارغًا</string>
+    <string name="update_err_direct_expired">انتهت صلاحية عنوان تنزيل Lanzou؛ احصل عليه من جديد</string>
+    <string name="update_err_http_request">فشل الطلب (HTTP %1$d)</string>
+    <string name="update_err_connect">تعذّر الاتصال بخادم التنزيل: %1$s</string>
+    <string name="update_err_http">فشل التنزيل (HTTP %1$d)</string>
+    <string name="update_err_no_connection">تعذّر إنشاء اتصال التنزيل</string>
+    <string name="update_err_empty">محتوى التنزيل فارغ</string>
+    <string name="update_err_incomplete">التنزيل غير مكتمل (تم الحصول على %1$d من %2$d بايت)، أعد التنزيل</string>
+    <string name="update_err_interrupted">توقف التنزيل: %1$s</string>
+    <string name="update_err_not_apk">الملف الذي تم تنزيله ليس حزمة تثبيت صالحة (قد يكون صفحة ويب أو انتهت صلاحية الرابط)، أعد التنزيل أو استخدم GitHub.</string>
+    <string name="update_err_apk_incomplete">محتوى حزمة التثبيت غير مكتمل، أعد التنزيل أو استخدم GitHub.</string>
+    <string name="update_err_apk_unparsable">تعذّر تحليل حزمة التثبيت (قد يكون التنزيل غير مكتمل)، أعد التنزيل أو استخدم GitHub.</string>
+    <string name="update_err_no_install_permission">لم يُمنح إذن «تثبيت التطبيقات غير المعروفة» بعد</string>
+    <string name="update_err_installer_failed">تعذّر استدعاء مثبّت النظام (%1$s)؛ افتح حزمة التثبيت يدويًا من مدير الملفات</string>
+</resources>

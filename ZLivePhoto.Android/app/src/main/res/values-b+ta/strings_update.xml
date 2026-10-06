@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · தமிழ் சரங்கள் (ta)।
+  ZLC · Tamil strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">Lanzou Cloud பங்கீடு ரத்து செய்யப்பட்டுள்ளது அல்லது கோப்பு இல்லை; இதற்குப் பதிலாக GitHub-இல் இருந்து பதிவிறக்கவும்</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud பங்கீடு ரத்து செய்யப்பட்டுள்ளது; இதற்குப் பதிலாக GitHub-இல் இருந்து பதிவிறக்கவும்</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud பதிவிறக்க இணைப்பைத் தீர்க்க முடியவில்லை</string>
+    <string name="update_lanzou_need_passwd">இந்த Lanzou Cloud பங்கீட்டுக்கு அணுகல் குறியீடு தேவை; இதற்குப் பதிலாக GitHub-இல் இருந்து பதிவிறக்கவும் (அல்லது வெளியீட்டுக் குறிப்புகளில் அணுகல் குறியீட்டைத் தேடவும்)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud அணுகல் குறியீடு தவறானது</string>
+    <string name="update_err_resolve_failed">தீர்க்க முடியவில்லை</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud எதிர்-தேடல் சரிபார்ப்பு தோல்வி</string>
+    <string name="update_err_no_frame">Lanzou Cloud பதிவிறக்கப் பக்கத்தைப் பாகுபடுத்த முடியவில்லை (பதிவிறக்க சட்டகம் கிடைக்கவில்லை)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud கோப்பு அடையாளங்காட்டியைப் பாகுபடுத்த முடியவில்லை</string>
+    <string name="update_err_no_sign">Lanzou Cloud கையொப்பத்தைப் பாகுபடுத்த முடியவில்லை</string>
+    <string name="update_err_ajax_request">API கோரிக்கை தோல்வி</string>
+    <string name="update_err_api_request">Lanzou Cloud API கோரிக்கை தோல்வி</string>
+    <string name="update_err_empty_direct">Lanzou Cloud காலியான பதிவிறக்க URL-ஐ வழங்கியது</string>
+    <string name="update_err_direct_expired">Lanzou Cloud பதிவிறக்க URL காலாவதியாகிவிட்டது; மீண்டும் பெறவும்</string>
+    <string name="update_err_http_request">கோரிக்கை தோல்வி (HTTP %1$d)</string>
+    <string name="update_err_connect">பதிவிறக்க சேவையகத்துடன் இணைக்க முடியவில்லை: %1$s</string>
+    <string name="update_err_http">பதிவிறக்கம் தோல்வி (HTTP %1$d)</string>
+    <string name="update_err_no_connection">பதிவிறக்க இணைப்பை ஏற்படுத்த முடியவில்லை</string>
+    <string name="update_err_empty">பதிவிறக்கிய உள்ளடக்கம் காலியாக உள்ளது</string>
+    <string name="update_err_incomplete">பதிவிறக்கம் முழுமையடையவில்லை (%2$d பைட்டுகளில் %1$d பெறப்பட்டது); மீண்டும் பதிவிறக்கவும்</string>
+    <string name="update_err_interrupted">பதிவிறக்கம் குறுக்கப்பட்டது: %1$s</string>
+    <string name="update_err_not_apk">பதிவிறக்கிய கோப்பு செல்லுபடியான தொகுப்பு அல்ல (அது ஒரு வலைப்பக்கம் அல்லது பதிவிறக்க இணைப்பு காலாவதியாகியிருக்கலாம்); மீண்டும் பதிவிறக்கவும் அல்லது GitHub-ஐப் பயன்படுத்தவும்.</string>
+    <string name="update_err_apk_incomplete">தொகுப்பின் உள்ளடக்கம் முழுமையடையவில்லை; மீண்டும் பதிவிறக்கவும் அல்லது GitHub-ஐப் பயன்படுத்தவும்.</string>
+    <string name="update_err_apk_unparsable">தொகுப்பைப் பாகுபடுத்த முடியவில்லை (பதிவிறக்கம் முழுமையடையவில்லை); மீண்டும் பதிவிறக்கவும் அல்லது GitHub-ஐப் பயன்படுத்தவும்.</string>
+    <string name="update_err_no_install_permission">“அறியப்படாத பயன்பாடுகளை நிறுவு” அனுமதி வழங்கப்படவில்லை</string>
+    <string name="update_err_installer_failed">கணினி நிறுவியைத் தொடங்க முடியவில்லை (%1$s); கோப்பு மேலாளரில் தொகுப்பைத் திறந்து கைமுறையாக நிறுவவும்</string>
+</resources>

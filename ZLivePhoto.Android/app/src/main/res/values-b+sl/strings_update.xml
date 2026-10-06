@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="update_lanzou_gone">Deljenje na Lanzou Cloud je preklicano ali datoteka ne obstaja. Uporabite prenos z GitHuba</string>
+    <string name="update_lanzou_gone_short">Deljenje na Lanzou Cloud je preklicano. Uporabite prenos z GitHuba</string>
+    <string name="update_lanzou_resolve_failed">Razčlenjevanje povezave za prenos z Lanzou Cloud ni uspelo</string>
+    <string name="update_lanzou_need_passwd">To deljenje na Lanzou Cloud zahteva kodo za dostop. Uporabite prenos z GitHuba (ali kodo poiščite v opisu izdaje)</string>
+    <string name="update_lanzou_wrong_passwd">Napačna koda za dostop Lanzou Cloud</string>
+    <string name="update_err_resolve_failed">Razčlenjevanje ni uspelo</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Preverjanje proti samodejnemu prenašanju pri Lanzou Cloud ni uspelo</string>
+    <string name="update_err_no_frame">Strani za prenos z Lanzou Cloud ni mogoče razčleniti (okvir za prenos ni najden)</string>
+    <string name="update_err_no_file_id">Identifikatorja datoteke na Lanzou Cloud ni mogoče določiti</string>
+    <string name="update_err_no_sign">Podpisa Lanzou Cloud ni mogoče določiti</string>
+    <string name="update_err_ajax_request">Zahteva na vmesnik ni uspela</string>
+    <string name="update_err_api_request">Zahteva na vmesnik Lanzou Cloud ni uspela</string>
+    <string name="update_err_empty_direct">Lanzou Cloud je vrnil prazen naslov za prenos</string>
+    <string name="update_err_direct_expired">Naslov za prenos z Lanzou Cloud je potekel, pridobite ga znova</string>
+    <string name="update_err_http_request">Zahteva ni uspela (HTTP %1$d)</string>
+    <string name="update_err_connect">Ni mogoče se povezati s strežnikom za prenos: %1$s</string>
+    <string name="update_err_http">Prenos ni uspel (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ni mogoče vzpostaviti povezave za prenos</string>
+    <string name="update_err_empty">Prenesena vsebina je prazna</string>
+    <string name="update_err_incomplete">Prenos je nepopoln (pridobljenih %1$d od %2$d bajtov), prenesite znova</string>
+    <string name="update_err_interrupted">Prenos prekinjen: %1$s</string>
+    <string name="update_err_not_apk">Prenesena datoteka ni veljavna namestitvena datoteka (morda gre za spletno stran ali je povezava potekla). Prenesite znova ali uporabite GitHub.</string>
+    <string name="update_err_apk_incomplete">Vsebina namestitvene datoteke je nepopolna. Prenesite znova ali uporabite GitHub.</string>
+    <string name="update_err_apk_unparsable">Namestitvene datoteke ni mogoče razčleniti (verjetno nepopoln prenos). Prenesite znova ali uporabite GitHub.</string>
+    <string name="update_err_no_install_permission">Manjka dovoljenje »Namestitev neznanih aplikacij«</string>
+    <string name="update_err_installer_failed">Sistemskega namestitvenega programa ni mogoče zagnati (%1$s). Namestitveno datoteko odprite ročno v upravitelju datotek.</string>
+</resources>

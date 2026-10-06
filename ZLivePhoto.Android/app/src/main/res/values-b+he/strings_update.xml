@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · he strings — Hebrew (עברית, RTL)
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Hebrew. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">שיתוף Lanzou בוטל או שהקובץ אינו קיים; השתמשו בהורדה מ-GitHub</string>
+    <string name="update_lanzou_gone_short">שיתוף Lanzou בוטל; השתמשו בהורדה מ-GitHub</string>
+    <string name="update_lanzou_resolve_failed">פענוח קישור ההורדה מ-Lanzou נכשל</string>
+    <string name="update_lanzou_need_passwd">השיתוף הזה ב-Lanzou דורש קוד חילוץ; השתמשו בהורדה מ-GitHub (או חפשו את הקוד בתיאור Release)</string>
+    <string name="update_lanzou_wrong_passwd">קוד החילוץ של Lanzou שגוי</string>
+    <string name="update_err_resolve_failed">הפענוח נכשל</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">בדיקת מניעת הסריקה של Lanzou נכשלה</string>
+    <string name="update_err_no_frame">לא ניתן לפענח את עמוד ההורדה של Lanzou (לא נמצאה מסגרת הורדה)</string>
+    <string name="update_err_no_file_id">לא ניתן לפענח את מזהה הקובץ ב-Lanzou</string>
+    <string name="update_err_no_sign">לא ניתן לפענח את החתימה של Lanzou</string>
+    <string name="update_err_ajax_request">בקשת הממשק נכשלה</string>
+    <string name="update_err_api_request">בקשת ה-API של Lanzou נכשלה</string>
+    <string name="update_err_empty_direct">Lanzou החזיר כתובת הורדה ריקה</string>
+    <string name="update_err_direct_expired">תוקף כתובת ההורדה של Lanzou פג; יש להשיג אותה מחדש</string>
+    <string name="update_err_http_request">הבקשה נכשלה (HTTP %1$d)</string>
+    <string name="update_err_connect">לא ניתן להתחבר לשרת ההורדות: %1$s</string>
+    <string name="update_err_http">ההורדה נכשלה (HTTP %1$d)</string>
+    <string name="update_err_no_connection">לא ניתן ליצור חיבור הורדה</string>
+    <string name="update_err_empty">תוכן ההורדה ריק</string>
+    <string name="update_err_incomplete">ההורדה לא הושלמה (התקבלו %1$d מתוך %2$d בתים), יש להוריד מחדש</string>
+    <string name="update_err_interrupted">ההורדה נקטעה: %1$s</string>
+    <string name="update_err_not_apk">מה שהורד אינו חבילת התקנה תקינה (ייתכן שזה עמוד אינטרנט או שהקישור פג), הורידו מחדש או השתמשו ב-GitHub.</string>
+    <string name="update_err_apk_incomplete">תוכן חבילת ההתקנה אינו שלם, הורידו מחדש או השתמשו ב-GitHub.</string>
+    <string name="update_err_apk_unparsable">לא ניתן לפענח את חבילת ההתקנה (ייתכן שההורדה לא הושלמה), הורידו מחדש או השתמשו ב-GitHub.</string>
+    <string name="update_err_no_install_permission">ההרשאה «התקנת אפליקציות לא מוכרות» עדיין לא ניתנה</string>
+    <string name="update_err_installer_failed">לא ניתן להפעיל את מתקין המערכת (%1$s); פתחו את חבילת ההתקנה ידנית ממנהל הקבצים</string>
+</resources>

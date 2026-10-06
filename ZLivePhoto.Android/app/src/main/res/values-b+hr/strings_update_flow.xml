@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="update_github_url_missing">Adresa za preuzimanje s GitHuba nije dobivena, pokušajte kasnije.</string>
+    <string name="update_flavor_standard">Standardna verzija</string>
+    <string name="update_flavor_go">Verzija Go</string>
+    <string name="update_lanzou_url_missing">Ova verzija ne nudi poveznicu za preuzimanje s Lanzou Cloud, upotrijebite GitHub.</string>
+    <string name="update_apk_direct_missing">Ova verzija ne nudi izravnu poveznicu na instalacijsku datoteku koja odgovara vašoj verziji. Odaberite odgovarajući APK na stranici izdanja na GitHubu.</string>
+    <string name="update_install_permission_missing">Nedostaje dopuštenje „Instaliranje nepoznatih aplikacija“, automatska instalacija nije moguća. Odobrite ga u sistemskim postavkama i pokušajte ponovno.</string>
+    <string name="update_error_unknown">Nepoznata pogreška</string>
+    <string name="update_fail_lanzou">Preuzimanje s Lanzou Cloud nije uspjelo</string>
+    <string name="update_fail_github">Preuzimanje s GitHuba nije uspjelo</string>
+    <string name="update_lanzou_resolving">Razrješavanje poveznice za preuzimanje s Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Preuzimanje s Lanzou Cloud…</string>
+    <string name="update_github_downloading">Preuzimanje s GitHuba…</string>
+    <string name="update_unzipping">Raspakiravanje instalacijske datoteke…</string>
+    <string name="update_notes_empty">Za ovu verziju nema napomena o izdanju.</string>
+    <string name="update_use_normal_title">Upotrijebite standardnu verziju</string>
+    <string name="update_use_normal_body">Ovaj sustav je Android 10 ili noviji; lagana verzija Go više nije podržana i staru verziju nije moguće dalje koristiti.\n\nOtkrili smo da je instalirana standardna verzija (ZLC). Otvorite je i nastavite s korištenjem (nova verzija više ne nudi kompatibilnu verziju Go; staru verziju možete deinstalirati i osloboditi prostor).</string>
+    <string name="update_open_normal">Otvori standardnu verziju</string>
+    <string name="update_must_update_title">Za nastavak je potrebno ažuriranje</string>
+    <string name="update_forced_body">Ovaj sustav je Android 10 ili noviji; lagana verzija Go više nije podržana i staru verziju nije moguće dalje koristiti. Ni nova verzija više ne nudi kompatibilnu verziju Go.\n\nPovežite se na internet i dodirom na „Pokušaj ponovno“ preuzmite instalacijsku datoteku standardne verzije.</string>
+    <string name="update_retry">Pokušaj ponovno</string>
+    <string name="update_switch_normal_body">Ovaj sustav je Android 10 ili noviji; lagana verzija Go više nije podržana i staru verziju nije moguće dalje koristiti.\nPreuzmite i instalirajte standardnu verziju te nastavite s korištenjem (nova verzija više ne podržava verziju Go).</string>
+    <string name="update_downloading_title">Preuzmi ažuriranje</string>
+    <string name="update_cancel">Odustani</string>
+    <string name="update_need_permission_title">Potrebno je dopuštenje za instalaciju</string>
+    <string name="update_need_permission_body">Instalacija nove verzije zahtijeva sistemsko dopuštenje „Instaliranje nepoznatih aplikacija“.\n\nDodirnite „Idi na dopuštenje“, odobrite ga u postavkama i vratite se u aplikaciju; instalacija će se automatski nastaviti (bez ponovnog preuzimanja).</string>
+    <string name="update_grant">Idi na dopuštenje</string>
+    <string name="update_notice_title">Napomena</string>
+    <string name="update_got_it">Razumijem</string>
+    <string name="update_notes_title">v%1$s · napomene o izdanju</string>
+    <string name="update_back">Natrag</string>
+    <string name="update_title_switch_normal">Prebaci na standardnu verziju</string>
+    <string name="update_title_reinstall">Ponovno instaliraj ovu verziju</string>
+    <string name="update_title_new_version">Dostupna je nova verzija</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Ova će se verzija preuzeti i ponovno instalirati (prepisuje trenutnu aplikaciju).\nOva je funkcija namijenjena regresijskom testiranju mehanizma ažuriranja.</string>
+    <string name="update_view_notes">Prikaži napomene o izdanju</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud je trenutačno nedostupan</string>
+    <string name="update_download_lanzou">Preuzmi s Lanzou Cloud</string>
+    <string name="update_download_github">Preuzmi s GitHuba</string>
+    <string name="update_download_browser">Preuzmi u pregledniku</string>
+    <string name="update_later">Ažuriraj kasnije</string>
+    <string name="update_later_switch">Prebaci kasnije</string>
+    <string name="update_skip_version">Preskoči ovu verziju</string>
+</resources>

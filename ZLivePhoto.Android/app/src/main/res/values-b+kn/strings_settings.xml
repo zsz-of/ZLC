@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ಕನ್ನಡ ಸ್ಟ್ರಿಂಗ್ಗಳು (kn).
+  ZLC · Kannada strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">ಸೆಟ್ಟಿಂಗ್ಗಳು</string>
+    <string name="settings_cd_back">ಹಿಂದೆ</string>
+    <string name="settings_btn_apply">ಅನ್ವಯಿಸಿ</string>
+    <string name="settings_btn_cancel">ರದ್ದು</string>
+    <string name="settings_btn_close">ಮುಚ್ಚಿ</string>
+    <string name="settings_btn_ok">ಸರಿ</string>
+    <string name="settings_btn_sponsor">ದೇಣಿಗೆ</string>
+    <string name="settings_section_general">ಸಾಮಾನ್ಯ</string>
+    <string name="settings_section_appearance">ರೂಪ</string>
+    <string name="settings_section_language">ಭಾಷೆ</string>
+    <string name="settings_section_defaults">ಡೀಫಾಲ್ಟ್ಗಳು</string>
+    <string name="settings_section_output">ಔಟ್ಪುಟ್</string>
+    <string name="settings_section_transcode">ವೀಡಿಯೊ ಟ್ರಾನ್ಸ್ಕೋಡಿಂಗ್</string>
+    <string name="settings_section_about">ಬಗ್ಗೆ</string>
+    <string name="settings_section_app">ಆ್ಯಪ್</string>
+    <string name="settings_section_credits">ಕೃತಜ್ಞತೆಗಳು &amp; ದೇಣಿಗೆಗಳು</string>
+    <string name="settings_section_opensource">ಓಪನ್ ಸೋರ್ಸ್ &amp; ಪರವಾನಗಿ</string>
+    <string name="settings_startup_check_title">ಪ್ರಾರಂಭದಲ್ಲಿ ಅಪ್ಡೇಟ್ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ</string>
+    <string name="settings_startup_check_subtitle">ಪ್ರಾರಂಭದಲ್ಲಿ GitHub ನಿಂದ ಹೊಸ ಆವೃತ್ತಿಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪಡೆದು, ಯಾವುದಾದರೂ ಲಭ್ಯವಿದ್ದರೆ ಡೌನ್ಲೋಡ್ ಮಾಡಲು ಕೇಳುತ್ತದೆ</string>
+    <string name="settings_haptics_title">ಹ್ಯಾಪ್ಟಿಕ್ ಪ್ರತಿಕ್ರಿಯೆ</string>
+    <string name="settings_haptics_subtitle">ಬಟನ್ ಒತ್ತಿದಾಗ ಮತ್ತು ಸ್ಥಿತಿ ಬದಲಾದಾಗ ಹ್ಯಾಪ್ಟಿಕ್ ಪ್ರತಿಕ್ರಿಯೆ</string>
+    <string name="settings_bounce_title">ಬಟನ್ ಬೌನ್ಸ್ ಅನಿಮೇಷನ್</string>
+    <string name="settings_bounce_subtitle">ಬಟನ್ ಒತ್ತಿದಾಗ ಸ್ಕೇಲ್-ಬೌನ್ಸ್ ಅನಿಮೇಷನ್</string>
+    <string name="settings_theme_system">ಸಿಸ್ಟಂ ಅನ್ನು ಅನುಸರಿಸಿ</string>
+    <string name="settings_theme_dark">ಡಾರ್ಕ್</string>
+    <string name="settings_theme_light">ಲೈಟ್</string>
+    <string name="settings_dynamic_theme_title">Material You ಡೈನಾಮಿಕ್ ಬಣ್ಣ</string>
+    <string name="settings_dynamic_theme_subtitle">ಸಿಸ್ಟಂ ವಾಲ್ಪೇಪರ್ ಬಣ್ಣವನ್ನು ಅನುಸರಿಸುತ್ತದೆ (Android 12+); ಆಫ್ ಮಾಡಿದರೆ ಕೆಳಗಿನ ಪ್ರೀಸೆಟ್ ಬಣ್ಣಗಳು ಬಳಕೆಯಾಗುತ್ತವೆ</string>
+    <string name="settings_preset_colors_title">ಪ್ರೀಸೆಟ್ ಥೀಮ್ ಬಣ್ಣಗಳು</string>
+    <string name="settings_preset_current">ಪ್ರಸ್ತುತ: %1$s</string>
+    <string name="settings_preset_disabled_hint">ಆಯ್ಕೆಮಾಡಲು “Material You ಡೈನಾಮಿಕ್ ಬಣ್ಣ”ವನ್ನು ಆಫ್ ಮಾಡಿ</string>
+    <string name="settings_custom">ಕಸ್ಟಮ್</string>
+    <string name="settings_custom_color_title">ಕಸ್ಟಮ್ ಥೀಮ್ ಬಣ್ಣ</string>
+    <string name="settings_cd_custom_palette">ಕಸ್ಟಮ್ ಪ್ಯಾಲೆಟ್</string>
+    <string name="settings_hue_value">ಹ್ಯೂ %1$d°</string>
+    <string name="settings_language_dialog_title">ಆ್ಯಪ್ ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="settings_language_count">%1$d ಭಾಷೆಗಳು ಲಭ್ಯವಿವೆ</string>
+    <string name="settings_reminder_dialogs_title">“ಮತ್ತೆ ತೋರಿಸಬೇಡ” ಡೈಲಾಗ್ಗಳು</string>
+    <string name="settings_reminder_dialogs_subtitle">ಎಲ್ಲಾ “ಮತ್ತೆ ತೋರಿಸಬೇಡ” ಡೈಲಾಗ್ಗಳ ಸ್ವಿಚ್ಗಳನ್ನು ನಿರ್ವಹಿಸಿ</string>
+    <string name="settings_reminder_hint">ಸ್ವಿಚ್ ಆನ್ ಇದ್ದರೆ ಆ ಪ್ರಾಂಪ್ಟ್ ಮತ್ತೆ ತೋರಿಸಲಾಗುವುದಿಲ್ಲ; ಆಫ್ ಇದ್ದರೆ ಸಂಬಂಧಿತ ಸಂದರ್ಭ ಮುಂದಿನ ಬಾರಿ ಬಂದಾಗ ಪ್ರಾಂಪ್ಟ್ ಮತ್ತೆ ಕಾಣಿಸುತ್ತದೆ.</string>
+    <string name="settings_preserve_folders_title">ಮೂಲ ಫೋಲ್ಡರ್ ರಚನೆಯನ್ನು ಬಳಸಿ ಔಟ್ಪುಟ್ ಮಾಡಿ</string>
+    <string name="settings_preserve_folders_subtitle">ಫಲಿತಾಂಶಗಳನ್ನು ಮೂಲ ಆಲ್ಬಮ್ಗಳ ಹೆಸರಿನ ಉಪಫೋಲ್ಡರ್ಗಳಲ್ಲಿ ಸಂಗ್ರಹಿಸಲಾಗುತ್ತದೆ; ಆಫ್ ಮಾಡಿದರೆ ಎಲ್ಲವೂ ಒಂದೇ ಫೋಲ್ಡರ್ನಲ್ಲಿ ಚಪ್ಪಟೆಯಾಗಿ ಇಡಲಾಗುತ್ತದೆ</string>
+    <string name="settings_about_title">ಬಗ್ಗೆ</string>
+    <string name="settings_about_subtitle">ಆವೃತ್ತಿ · ಅಪ್ಡೇಟ್ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ · ಕೃತಜ್ಞತೆಗಳು &amp; ದೇಣಿಗೆಗಳು</string>
+    <string name="settings_check_update_title">ಅಪ್ಡೇಟ್ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ</string>
+    <string name="settings_check_update_subtitle">GitHub Releases ನಿಂದ ಇತ್ತೀಚಿನ ಆವೃತ್ತಿ ಪಡೆಯಿರಿ</string>
+    <string name="settings_checking">ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="settings_update_available">v%1$s ಲಭ್ಯವಿದೆ</string>
+    <string name="settings_up_to_date">ನೀವು ಇತ್ತೀಚಿನ ಆವೃತ್ತಿಯಲ್ಲಿದ್ದೀರಿ</string>
+    <string name="settings_network_error">ನೆಟ್ವರ್ಕ್ ದೋಷ; ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="settings_reinstall_title">ಈ ಆವೃತ್ತಿಯನ್ನು ಮರುಸ್ಥಾಪಿಸಿ</string>
+    <string name="settings_reinstall_subtitle">ಪ್ರಸ್ತುತ ಇತ್ತೀಚಿನ ಬಿಲ್ಡ್ ಅನ್ನು ಡೌನ್ಲೋಡ್ ಮಾಡಿ ಇದರ ಮೇಲೆ ಇನ್ಸ್ಟಾಲ್ ಮಾಡಿ (ಅಪ್ಡೇಟ್ಗಳನ್ನು ಪರೀಕ್ಷಿಸಲು)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s ಲಭ್ಯವಿದೆ; ಮೊದಲು “ಅಪ್ಡೇಟ್ಗಳನ್ನು ಪರಿಶೀಲಿಸಿ” ಬಳಸಿ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ</string>
+    <string name="settings_version_title">ಆವೃತ್ತಿ</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay ಮೂಲಕ ದೇಣಿಗೆ</string>
+    <string name="settings_alipay_subtitle">ಅಭಿವೃದ್ಧಿಗೆ ಬೆಂಬಲ ನೀಡಿ</string>
+    <string name="settings_coolapk_subtitle">Coolapk ಬಳಕೆದಾರ · ಬೆಂಬಲಕ್ಕೆ ಧನ್ಯವಾದಗಳು</string>
+    <string name="settings_ai_credits_subtitle">ಅಭಿವೃದ್ಧಿಗೆ ಸಹಾಯ ಮಾಡಿದ AI IDEಗಳು ಮತ್ತು AI ಮಾದರಿಗಳಿಗೆ ಧನ್ಯವಾದಗಳು</string>
+    <string name="settings_github_title">GitHub ರೆಪೊಸಿಟರಿ</string>
+    <string name="settings_license_title">ಓಪನ್ ಸೋರ್ಸ್ ಪರವಾನಗಿ</string>
+    <string name="settings_sponsor_dialog_title">ನಿಮ್ಮ ಬೆಂಬಲಕ್ಕೆ ಧನ್ಯವಾದಗಳು</string>
+    <string name="settings_sponsor_dialog_text">ಈ ಆ್ಯಪ್ಗೆ ಬೆಂಬಲ ನೀಡುವ ನಿಮ್ಮ ಇಚ್ಛೆಗೆ ಹೃದಯಪೂರ್ವಕ ಧನ್ಯವಾದಗಳು!\n\nನೀವು ಇನ್ನೂ ವಿದ್ಯಾರ್ಥಿಯಾಗಿದ್ದರೆ, ಅಥವಾ ಆರ್ಥಿಕ ಸ್ವಾತಂತ್ರ್ಯ ಇಲ್ಲದಿದ್ದರೆ, ದಯವಿಟ್ಟು ಇದಕ್ಕೆ ಹಣ ಖರ್ಚು ಮಾಡಬೇಡಿ — ಆ ದಯೆಯನ್ನು ಹೃದಯದಲ್ಲಿ ಇಟ್ಟುಕೊಂಡು ಆ್ಯಪ್ ಬಳಸುವುದನ್ನು ಮುಂದುವರಿಸುವುದೇ ನನಗೆ ಸಿಗುವ ಉತ್ತಮ ಬೆಂಬಲ.\n\nನೀವು ದೇಣಿಗೆ ನೀಡಲು ಬಯಸಿದರೆ, ಸ್ವಲ್ಪವೂ ಸಹಾಯಕ, ಅದನ್ನು ಉತ್ತಮ ನಿರ್ವಹಣೆ ಮತ್ತು ವೈಶಿಷ್ಟ್ಯಗಳಿಗೆ ಬಳಸುತ್ತೇನೆ:)</string>
+    <string name="settings_alipay_missing_title">Alipay ಇನ್ಸ್ಟಾಲ್ ಆಗಿಲ್ಲ</string>
+    <string name="settings_alipay_missing_text">Alipay ಕಂಡುಬಂದಿಲ್ಲ, ಆದ್ದರಿಂದ ಈಗ ದೇಣಿಗೆ ಪೂರ್ಣಗೊಳಿಸಲಾಗುವುದಿಲ್ಲ.\n\nಪರವಾಗಿಲ್ಲ — ಹೇಗಿದ್ದರೂ ನಿಮ್ಮ ದಯೆಗೆ ತುಂಬಾ ಧನ್ಯವಾದಗಳು!</string>
+    <string name="settings_transcoder_title">ಅಂತರ್ಗತ ಟ್ರಾನ್ಸ್ಕೋಡರ್</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">ಮತ್ತೆ ಎನ್ಕೋಡ್</string>
+    <string name="settings_transcode_mode_remux">ಕಂಟೇನರ್ ಅನ್ನು ಮಾತ್ರ ರೀಮಕ್ಸ್ ಮಾಡಿ (ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ)</string>
+    <string name="settings_transcode_mode_off">ಟ್ರಾನ್ಸ್ಕೋಡರ್ ಅನ್ನು ಎಂದಿಗೂ ಬಳಸಬೇಡಿ</string>
+    <string name="settings_transcode_params_title">ಟ್ರಾನ್ಸ್ಕೋಡಿಂಗ್ ಪ್ಯಾರಾಮೀಟರ್ಗಳು</string>
+    <string name="settings_transcode_params_subtitle">ಮತ್ತೆ ಎನ್ಕೋಡ್ ಮಾಡುವಾಗ ಬಳಸುವ ಗುಣಮಟ್ಟ ಮತ್ತು ಸಂಕೋಚನ ಪ್ಯಾರಾಮೀಟರ್ಗಳು</string>
+    <string name="settings_transcode_params_disabled">“ಟ್ರಾನ್ಸ್ಕೋಡಿಂಗ್ ಮೋಡ್” “ಮತ್ತೆ ಎನ್ಕೋಡ್” ಆಗಿದ್ದಾಗ ಮಾತ್ರ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ</string>
+    <string name="settings_crf_value">ಗುಣಮಟ್ಟ CRF: %1$d</string>
+    <string name="settings_crf_hint">ಕಡಿಮೆ ಮೌಲ್ಯಗಳು ಹೆಚ್ಚಿನ ಗುಣಮಟ್ಟ ಮತ್ತು ದೊಡ್ಡ ಫೈಲ್ಗಳು ಎಂದರ್ಥ (ಡೀಫಾಲ್ಟ್ 18)</string>
+    <string name="settings_encoder_title">ಎನ್ಕೋಡರ್</string>
+    <string name="settings_compress_preset_title">ಸಂಕೋಚನ ಪ್ರೀಸೆಟ್</string>
+</resources>

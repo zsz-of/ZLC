@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Albanian (sq) strings — main screen and background flows.
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Plural quantities follow CLDR for Albanian: one / other.
+-->
+<resources>
+    <!-- ── Shiriti i statusit / njoftimet ── -->
+    <string name="main_status_ready">Gati</string>
+    <string name="main_status_location_granted">Leja e vendndodhjes u dha; metadatat GPS do të ruhen pas konvertimit</string>
+    <string name="main_status_location_denied">Pa leje vendndodhjeje: fotografitë e konvertuara do të humbin informacionin e vendndodhjes GPS</string>
+    <string name="main_status_all_files_granted">Leja „Akses në të gjithë skedarët” u dha; konvertimi shkruan direkt në dosjen e albumit dhe ruan plotësisht informacionin e vendndodhjes</string>
+    <string name="main_status_all_files_denied">Pa lejen „Akses në të gjithë skedarët”: në disa modele fotografitë mund të humbin informacionin e vendndodhjes pas konvertimit</string>
+    <string name="main_status_read_granted">Leja për leximin e fotografive dhe videove u dha</string>
+    <string name="main_status_video_missing">Leja u dha, por mungon leja për videot: videoja shoqëruese e Live Photo me dy skedarë nuk mund të gjendet</string>
+    <string name="main_status_permission_denied">Leja nuk u dha; mund të shtypni përsëri „Shto skedarë”</string>
+    <string name="main_status_folder_not_selected">Nuk është zgjedhur dosje</string>
+    <string name="main_status_folder_unavailable">Dosja e zgjedhur nuk është e aksesueshme (mbështeten vetëm dosjet e ruajtjes lokale)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Sesioni i mëparshëm u rikthye (%1$d skedar)</item>
+        <item quantity="other">Sesioni i mëparshëm u rikthye (%1$d skedarë)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">U zbulua një mbyllje jonormale e mëparshme; lista e papërfunduar u pastrua</string>
+    <string name="main_status_compose_blocks_extract">Radha përmban detyra kompozimi; nuk mund të kalohet në modalitetin e nxjerrjes</string>
+    <string name="main_status_replace_off_mutex">Modaliteti i zëvendësimit u çaktivizua (përjashtohet reciprokisht me „Fshi origjinalet pas përpunimit”)</string>
+    <string name="main_status_delete_needs_all_files">Fshirja automatike e origjinaleve kërkon lejen „Akses në të gjithë skedarët”; jepeni fillimisht</string>
+    <string name="main_status_replace_off">Modaliteti i zëvendësimit u çaktivizua; rezultatet shkruhen përsëri në dosjen e albumit</string>
+    <string name="main_status_replace_needs_all_files">Modaliteti i zëvendësimit kërkon lejen „Akses në të gjithë skedarët”; jepeni fillimisht</string>
+    <string name="main_status_delete_off_mutex">„Fshi origjinalet pas përpunimit” u çaktivizua (përjashtohet reciprokisht me modalitetin e zëvendësimit)</string>
+    <string name="main_status_loading_albums">Duke lexuar albumet…</string>
+    <string name="main_status_no_albums">Nuk u gjetën albume</string>
+    <string name="main_status_compose_no_photo">Nuk është zgjedhur foto; kompozimi nuk është i mundur</string>
+    <string name="main_status_compose_no_video">Nuk është zgjedhur video; kompozimi nuk është i mundur</string>
+    <string name="main_status_compose_all_added">Të gjitha fotografitë e zgjedhura janë tashmë në listë</string>
+    <string name="main_status_compose_paired">%1$d foto, %2$d video; u shtuan %3$d çifte detyrash kompozimi sipas anës më të vogël</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">U shtua %1$d detyrë kompozimi; shtypni „Fillo konvertimin” për të ekzekutuar kompozimin</item>
+        <item quantity="other">U shtuan %1$d detyra kompozimi; shtypni „Fillo konvertimin” për të ekzekutuar kompozimin</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (formati i daljes u ndryshua automatikisht në Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Duke importuar %1$d imazh të ndarë…</item>
+        <item quantity="other">Duke importuar %1$d imazhe të ndara…</item>
+    </plurals>
+    <string name="main_status_import_failed">Importimi dështoi: %1$s</string>
+    <string name="main_status_import_done_partial">Importimi përfundoi: %1$d të suksesshme, %2$d dështime</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importimi përfundoi: %1$d skedar i importuar</item>
+        <item quantity="other">Importimi përfundoi: %1$d skedarë të importuar</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importimi u ndal: %1$d të suksesshme, %2$d dështime</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Duke importuar %1$d skedar…</item>
+        <item quantity="other">Duke importuar %1$d skedarë…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Duke importuar %1$d/%2$d…</string>
+    <string name="main_status_stopping">Duke ndaluar… (ndalon pas skedarit aktual)</string>
+    <string name="main_status_stopping_import">Duke ndaluar importimin…</string>
+    <string name="main_status_removed">U hoq: %1$s</string>
+    <string name="main_status_cleared">U pastrua</string>
+    <string name="main_status_nothing_to_convert">Nuk ka skedarë për konvertim</string>
+    <string name="main_status_folder_unreadable">Dosja e zgjedhur nuk mund të lexohet</string>
+    <string name="main_status_scanning_folder">Duke skanuar dosjen…</string>
+    <string name="main_status_no_images">Nuk u gjetën imazhe në dosjen e zgjedhur</string>
+    <string name="main_status_batch_importing">Importim në grup %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Importimi në grup u ndal: u importua %1$d Live Photo</item>
+        <item quantity="other">Importimi në grup u ndal: u importuan %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Importimi në grup u ndal: u importua %1$d Live Photo, u kapërcye %2$d skedar jo-Live Photo</item>
+        <item quantity="other">Importimi në grup u ndal: u importuan %1$d Live Photo, u kapërcyen %2$d skedarë jo-Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Importimi në grup përfundoi: u importua %1$d Live Photo</item>
+        <item quantity="other">Importimi në grup përfundoi: u importuan %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Importimi në grup përfundoi: u importua %1$d Live Photo, u kapërcye %2$d skedar jo-Live Photo</item>
+        <item quantity="other">Importimi në grup përfundoi: u importuan %1$d Live Photo, u kapërcyen %2$d skedarë jo-Live Photo</item>
+    </plurals>
+    <string name="main_status_stopped_replace">U ndal: nga %1$d skedarë u përpunuan %2$d, u zëvendësuan %3$d skedarë burimorë</string>
+    <string name="main_status_stopped_export">U ndal: nga %1$d skedarë u përpunuan %2$d, u eksportuan %3$d në album</string>
+    <string name="main_status_done_replace_reason">Përfundoi: %1$d skedarë u përpunuan, %2$d skedarë burimorë u zëvendësuan (arsyeja: %3$s)</string>
+    <string name="main_status_done_export_reason">Përfundoi: %1$d skedarë u përpunuan, %2$d u eksportuan në album (arsyeja: %3$s)</string>
+    <string name="main_status_done_replace">Përfundoi: %1$d skedarë u përpunuan, %2$d skedarë burimorë u zëvendësuan</string>
+    <string name="main_status_done_export">Përfundoi: %1$d skedarë u përpunuan, %2$d u eksportuan në album</string>
+    <string name="main_status_keep_originals">%1$s; leja „Akses i plotë në ruajtje” nuk u dha, origjinalet u ruajtën</string>
+
+    <!-- ── Informacioni i elementeve të listës ── -->
+    <string name="main_info_detecting">Duke zbuluar…</string>
+    <string name="main_info_unrecognized">Format Live Photo i panjohur</string>
+    <string name="main_info_converting">Duke konvertuar…</string>
+    <string name="main_info_compose_task">Detyrë kompozimi (shtypni për të filluar konvertimin)</string>
+    <string name="main_info_done_replaced">Përfundoi (u zëvendësuan %1$d skedarë burimorë)</string>
+    <string name="main_info_done_skipped">Përfundoi (u kapërcye: konflikt emri)</string>
+    <string name="main_info_done_exported">Përfundoi (u eksportuan %1$d)</string>
+    <string name="main_info_failed">Dështoi: %1$s</string>
+
+    <!-- ── Detajet e përparimit ── -->
+    <string name="main_progress_added">U shtuan %1$d/%2$d</string>
+    <string name="main_progress_processed">U përpunuan %1$d/%2$d</string>
+    <string name="main_progress_imported">U importuan %1$d/%2$d</string>
+
+    <!-- ── Dritaret e lejeve ── -->
+    <string name="main_dialog_permission_title">Nevojitet leja për leximin e fotografive dhe videove</string>
+    <string name="main_dialog_permission_message">Ky aplikacion ka nevojë të lexojë fotografitë dhe videot në pajisjen tuaj:\n\n• Leja për fotot: skanon albumin e pajisjes për të identifikuar Live Photo\n• Leja për videot: gjen videon shoqëruese të Live Photo me dy skedarë\n• Leja e vendndodhjes: ruan metadatat GPS në foto (nëse mungon, informacioni i vendndodhjes humbet pas konvertimit)\n\nNëse e refuzoni, zgjedhësi i integruar nuk mund të përdoret; mund të shtypni përsëri „Shto skedarë” më vonë për të dhënë përsëri lejen.</string>
+    <string name="main_dialog_settings_title">Leja për fotot dhe videot duhet dhënë manualisht</string>
+    <string name="main_dialog_settings_message">Ju zgjodhët më parë „Mos pyet më”, kështu që sistemi nuk shfaq më dritaren e lejeve.\n\nShkoni te faqja e detajeve të aplikacionit → Lejet → Fotot dhe videot, jepni manualisht aksesin dhe kthehuni në aplikacion.\n\nKujdes: duhet të jepen të dyja lejet, „Fotot” dhe „Videot”, përndryshe Live Photo me dy skedarë nuk do të gjejë videon shoqëruese.</string>
+
+    <!-- ── Dritaret e lejes „Akses në të gjithë skedarët” ── -->
+    <string name="main_dialog_allfiles_title_delete">Fshirja automatike e origjinaleve kërkon „Akses në të gjithë skedarët”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Kjo pajisje nuk mbështet fshirjen automatike të origjinaleve</string>
+    <string name="main_dialog_allfiles_title_replace">Modaliteti i zëvendësimit kërkon „Akses në të gjithë skedarët”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Kjo pajisje nuk mbështet modalitetin e zëvendësimit</string>
+    <string name="main_dialog_allfiles_title_location">Rekomandohet dhënia e lejes „Akses në të gjithë skedarët”</string>
+    <string name="main_dialog_allfiles_delete_message">„Fshi origjinalet pas përpunimit” fshin drejtpërdrejt skedarët origjinalë në disk (foton dhe videon shoqëruese); veprimi është i pakthyeshëm, prandaj duhet dhënë fillimisht leja „Akses në të gjithë skedarët”.\n\nPas dhënies, çelësi bëhet i disponueshëm dhe mund ta aktivizoni vetë.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Sistemi aktual (Android 10 dhe më poshtë) nuk ofron lejen „Akses në të gjithë skedarët”, kështu që skedarët origjinalë nuk mund të fshihen drejtpërdrejt nga disku; për këtë arsye kjo pajisje nuk mbështet „Fshi origjinalet pas përpunimit”.\n\nMund t\'i pastroni manualisht origjinalet nga albumi i sistemit pas konvertimit.</string>
+    <string name="main_dialog_allfiles_replace_message">„Modaliteti i zëvendësimit” shkruan drejtpërdrejt rezultatin e konvertimit mbi skedarët origjinalë në disk (i mbishkruan ato); veprimi është i pakthyeshëm, prandaj duhet dhënë fillimisht leja „Akses në të gjithë skedarët”.\n\nPas dhënies, çelësi bëhet i disponueshëm dhe mund ta aktivizoni vetë.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Sistemi aktual (Android 10 dhe më poshtë) nuk ofron lejen „Akses në të gjithë skedarët”, kështu që skedarët origjinalë nuk mund të mbishkruhen drejtpërdrejt; për këtë arsye kjo pajisje nuk mbështet „Modalitetin e zëvendësimit”.\n\nMund të vazhdoni konvertimin në mënyrën e parazgjedhur; rezultatet shkruhen në dosjen e albumit.</string>
+    <string name="main_dialog_allfiles_location_message">Disa pajisje (p.sh. Meizu) heqin informacionin e vendndodhjes GPS kur shkruhet përmes API-së së albumit të sistemit, duke bërë që fotografitë e konvertuara të humbin vendndodhjen.\n\nMe lejen „Akses në të gjithë skedarët”, aplikacioni shkruan drejtpërdrejt në dosjen e albumit dhe ruan plotësisht metadatat e vendndodhjes.\n\nKonvertimi funksionon edhe pa këtë leje, por në disa modele informacioni i vendndodhjes mund të humbet.</string>
+
+    <!-- ── Dritarja e konfliktit të emrit të skedarit dalës ── -->
+    <string name="main_dialog_conflict_title">Konflikt i emrit të skedarit dalës</string>
+    <string name="main_dialog_conflict_message">Në dosjen e daljes ekziston tashmë një skedar me të njëjtin emër:\n%1$s\n\nZgjidhni mënyrën e trajtimit.</string>
+    <string name="main_label_conflict_always">Përdor këtë mënyrë për konfliktet e mëpasshme</string>
+
+    <!-- ── Butonat e dritareve ── -->
+    <string name="main_btn_grant">Jep</string>
+    <string name="main_btn_deny">Refuzo</string>
+    <string name="main_btn_go_settings">Cilësimet</string>
+    <string name="main_btn_cancel">Anulo</string>
+    <string name="main_btn_grant_access">Jep aksesin</string>
+    <string name="main_btn_got_it">E kuptova</string>
+    <string name="main_btn_not_now">Jo tani</string>
+    <string name="main_btn_skip">Kapërce</string>
+    <string name="main_btn_overwrite">Mbishkruaj</string>
+    <string name="main_btn_auto_rename">Riemërto automatikisht</string>
+
+    <!-- ── Rezultati i konvertimit / arsyet e dështimit të eksportit ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">U fshi %1$d skedar origjinal</item>
+        <item quantity="other">U fshinë %1$d skedarë origjinalë</item>
+    </plurals>
+    <string name="main_delete_nothing">Nuk ka nevojë të fshihen origjinalet</string>
+    <string name="main_delete_partial">U fshinë %1$d skedarë origjinalë (%2$d fshirje dështuan, u ruajtën)</string>
+    <string name="main_delete_failed">Fshirja e origjinaleve dështoi (skedari është në përdorim ose nuk ka leje shkrimi); u ruajtën</string>
+    <string name="main_export_missing_output">Rezultati i konvertimit mungon ose është bosh: %1$s</string>
+    <string name="main_export_missing_output_bare">Rezultati i konvertimit mungon ose është bosh</string>
+    <string name="main_export_insert_null">MediaStore insert ktheu null</string>
+    <string name="main_export_output_stream">Rrjedha dalëse e MediaStore nuk është e disponueshme</string>
+    <string name="main_export_write_failed">Shkrimi në MediaStore dështoi: %1$s</string>
+    <string name="main_export_mkdir_failed">Dosja e albumit nuk mund të krijohet: %1$s</string>
+    <string name="main_export_dir_write_failed">Shkrimi në dosjen e albumit dështoi: %1$s</string>
+    <string name="main_export_no_source">Skedari burimor nuk mund të lokalizohet; zëvendësimi u kapërcye</string>
+    <string name="main_export_companion_failed">Shkrimi i skedarit shoqërues dështoi: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Dosja e skedarit burimor nuk është e shkrueshme; skedari shoqërues nuk u shkrua</string>
+    <string name="main_export_source_dir_unavailable">Dosja e skedarit burimor nuk është e disponueshme: %1$s</string>
+    <string name="main_export_replace_failed">Zëvendësimi i skedarit burimor dështoi: %1$s</string>
+    <string name="main_export_replace_failed_bare">Zëvendësimi i skedarit burimor dështoi</string>
+</resources>

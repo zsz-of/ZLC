@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · he strings — Hebrew (עברית, RTL)
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Hebrew. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">לא התקבלה כתובת הורדה מ-GitHub, נסו שוב מאוחר יותר.</string>
+    <string name="update_flavor_standard">גרסה רגילה</string>
+    <string name="update_flavor_go">גרסת Go</string>
+    <string name="update_lanzou_url_missing">גרסה זו אינה מספקת קישור הורדה מ-Lanzou; אפשר להשתמש ב-GitHub.</string>
+    <string name="update_apk_direct_missing">גרסה זו אינה מספקת קישור ישיר לחבילת התקנה שמתאימה לגרסה הזו; בחרו את קובץ ה-APK המתאים בעמוד הגרסאות ב-GitHub.</string>
+    <string name="update_install_permission_missing">ההרשאה «התקנת אפליקציות לא מוכרות» לא ניתנה, ולכן אי אפשר להתקין אוטומטית. אשרו אותה בהגדרות המערכת ונסו שוב.</string>
+    <string name="update_error_unknown">שגיאה לא ידועה</string>
+    <string name="update_fail_lanzou">ההורדה מ-Lanzou נכשלה</string>
+    <string name="update_fail_github">ההורדה מ-GitHub נכשלה</string>
+    <string name="update_lanzou_resolving">מפענח את קישור ההורדה מ-Lanzou…</string>
+    <string name="update_lanzou_downloading">מוריד מ-Lanzou…</string>
+    <string name="update_github_downloading">מוריד מ-GitHub…</string>
+    <string name="update_unzipping">מחלץ את חבילת ההתקנה…</string>
+    <string name="update_notes_empty">אין הערות גרסה לגרסה הזו.</string>
+    <string name="update_use_normal_title">יש להשתמש בגרסה הרגילה</string>
+    <string name="update_use_normal_body">המערכת במכשיר זה היא Android 10 ואילך, גרסת Go הקלה אינה נתמכת עוד, ולא ניתן להמשיך להשתמש בגרסה הישנה.\n\nזוהתה התקנה של הגרסה הרגילה (ZLC) במכשיר; פתחו אותה ישירות כדי להמשיך (גרסאות חדשות אינן מספקות עוד גרסת Go תואמת, ואפשר להסיר את הגרסה הישנה כדי לפנות מקום).</string>
+    <string name="update_open_normal">פתח את הגרסה הרגילה</string>
+    <string name="update_must_update_title">יש לעדכן כדי להמשיך</string>
+    <string name="update_forced_body">המערכת במכשיר זה היא Android 10 ואילך, גרסת Go הקלה אינה נתמכת עוד, ולא ניתן להמשיך להשתמש בגרסה הישנה; גם הגרסאות החדשות אינן מספקות עוד גרסת Go תואמת.\n\nהתחברו לרשת והקישו «נסה שוב» כדי לקבל את חבילת ההתקנה של הגרסה הרגילה.</string>
+    <string name="update_retry">נסה שוב</string>
+    <string name="update_switch_normal_body">המערכת במכשיר זה היא Android 10 ואילך, גרסת Go הקלה אינה נתמכת עוד, ולא ניתן להמשיך להשתמש בגרסה הישנה.\nהורידו והתקינו את הגרסה הרגילה כדי להמשיך (גרסאות חדשות אינן מספקות עוד גרסת Go תואמת).</string>
+    <string name="update_downloading_title">הורדת עדכון</string>
+    <string name="update_cancel">ביטול</string>
+    <string name="update_need_permission_title">נדרשת הרשאת התקנה</string>
+    <string name="update_need_permission_body">התקנת הגרסה החדשה דורשת את הרשאת המערכת «התקנת אפליקציות לא מוכרות».\n\nהקישו «מתן הרשאה», אשרו בהגדרות וחזרו לאפליקציה — ההתקנה תמשיך אוטומטית (בלי להוריד שוב).</string>
+    <string name="update_grant">מתן הרשאה</string>
+    <string name="update_notice_title">הודעה</string>
+    <string name="update_got_it">הבנתי</string>
+    <string name="update_notes_title">v%1$s · הערות גרסה</string>
+    <string name="update_back">חזרה</string>
+    <string name="update_title_switch_normal">מעבר לגרסה הרגילה</string>
+    <string name="update_title_reinstall">התקנה מחדש של גרסה זו</string>
+    <string name="update_title_new_version">נמצאה גרסה חדשה</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">הגרסה הזו תורד ותותקן מחדש (מעל האפליקציה הנוכחית).\nהתכונה מיועדת לבדיקת מנגנון העדכון.</string>
+    <string name="update_view_notes">הצג הערות גרסה</string>
+    <string name="update_lanzou_unavailable">Lanzou אינו זמין כרגע</string>
+    <string name="update_download_lanzou">הורדה מ-Lanzou</string>
+    <string name="update_download_github">הורדה מ-GitHub</string>
+    <string name="update_download_browser">הורדה מהדפדפן</string>
+    <string name="update_later">לא עכשיו</string>
+    <string name="update_later_switch">לא להחליף עכשיו</string>
+    <string name="update_skip_version">דלג על גרסה זו</string>
+</resources>

@@ -5,8 +5,8 @@
     <plurals name="screen_file_count">
         <item quantity="one">%1$d súbor</item>
         <item quantity="few">%1$d súbory</item>
-        <item quantity="many">%1$d súborov</item>
-        <item quantity="other">%1$d súboru</item>
+        <item quantity="many">%1$d súboru</item>
+        <item quantity="other">%1$d súborov</item>
     </plurals>
     <string name="screen_settings">Nastavenia</string>
     <string name="screen_select_output_format">Vyberte výstupný formát</string>
@@ -53,8 +53,8 @@
     <plurals name="screen_photo_count">
         <item quantity="one">%1$d fotka</item>
         <item quantity="few">%1$d fotky</item>
-        <item quantity="many">%1$d fotiek</item>
-        <item quantity="other">%1$d fotky</item>
+        <item quantity="many">%1$d fotky</item>
+        <item quantity="other">%1$d fotiek</item>
     </plurals>
     <string name="screen_select_all">Vybrať všetko</string>
     <string name="screen_no_albums">Nie sú k dispozícii žiadne albumy</string>

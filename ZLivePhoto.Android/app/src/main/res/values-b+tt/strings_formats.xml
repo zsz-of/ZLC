@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Татарча (Tatar) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Tatar (Cyrillic); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Аерып алу</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor хәрәкәтле фото</string>
+    <string name="fmt_meizu">Meizu хәрәкәтле фото</string>
+    <string name="fmt_nubia">Nubia хәрәкәтле фото</string>
+    <string name="fmt_oppo">OPPO хәрәкәтле фото</string>
+    <string name="fmt_vivo">vivo хәрәкәтле фото</string>
+    <string name="fmt_vivo_single">vivo бер файллы хәрәкәтле фото</string>
+    <string name="fmt_xiaomi">Xiaomi хәрәкәтле фото</string>
+    <string name="fmt_err_apple_mov_missing">Шул ук исемле .mov видео файлы табылмады</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV файлында ftyp box юк</string>
+    <string name="fmt_err_extract_read">Аерып алу чыгару форматы, аны кертү форматы итеп укырга мөмкин түгел</string>
+    <string name="fmt_err_no_primary_jpeg">Төп JPEG рәсеме табылмады</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEGдән соң яраклы MP4 видео табылмады (ftyp box юк)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 видео агымын анализләү уңышсыз тәмамланды</string>
+    <string name="fmt_err_nubia_too_short">Файл бик кыска, Nubia хәрәкәтле фотосына охшамый</string>
+    <string name="fmt_err_nubia_no_magic">nubiaVpfile ахырындагы magic number юк</string>
+    <string name="fmt_err_nubia_jpeg_len">Trailerда язылган JPEG озынлыгы яраксыз: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG белән видео арасында 0x00 padding bytes юк</string>
+    <string name="fmt_err_nubia_empty_video">Кертелгән видеоның озынлыгы 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG ахырыннан vivo livephoto билгесе табылмады</string>
+    <string name="fmt_err_vivo_companion_missing">Иярчен видео файлы юк: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPGның төп өлешен анализләү уңышсыз тәмамланды</string>
+    <string name="fmt_err_vivo_companion_invalid">Иярчен MP4 яраксыз (ftyp box юк)</string>
+</resources>

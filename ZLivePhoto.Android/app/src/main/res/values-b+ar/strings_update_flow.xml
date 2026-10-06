@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ar strings — Arabic (العربية, RTL)
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Standard Arabic. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">لم يتم الحصول على رابط تنزيل GitHub، حاول لاحقًا.</string>
+    <string name="update_flavor_standard">النسخة القياسية</string>
+    <string name="update_flavor_go">نسخة Go</string>
+    <string name="update_lanzou_url_missing">هذا الإصدار لا يوفر رابط تنزيل من Lanzou؛ يمكنك استخدام GitHub بدلًا من ذلك.</string>
+    <string name="update_apk_direct_missing">لا يوفر هذا الإصدار رابطًا مباشرًا لحزمة تثبيت مطابقة لهذه النسخة؛ اختر ملف APK المناسب من صفحة إصدارات GitHub.</string>
+    <string name="update_install_permission_missing">لم يُمنح إذن «تثبيت التطبيقات غير المعروفة»، لذا لا يمكن التثبيت تلقائيًا. اسمح به من إعدادات النظام ثم حاول مجددًا.</string>
+    <string name="update_error_unknown">خطأ غير معروف</string>
+    <string name="update_fail_lanzou">فشل التنزيل من Lanzou</string>
+    <string name="update_fail_github">فشل التنزيل من GitHub</string>
+    <string name="update_lanzou_resolving">جارٍ تحليل رابط التنزيل من Lanzou…</string>
+    <string name="update_lanzou_downloading">جارٍ التنزيل من Lanzou…</string>
+    <string name="update_github_downloading">جارٍ التنزيل من GitHub…</string>
+    <string name="update_unzipping">جارٍ فك ضغط حزمة التثبيت…</string>
+    <string name="update_notes_empty">لا تتوفر ملاحظات إصدار لهذه النسخة.</string>
+    <string name="update_use_normal_title">يُرجى استخدام النسخة العادية</string>
+    <string name="update_use_normal_body">نظام هذا الجهاز هو Android 10 أو أحدث، ولم تعد نسخة Go الخفيفة متوافقة، ولا يمكن متابعة استخدام الإصدار القديم.\n\nتم اكتشاف أن النسخة العادية (ZLC) مثبّتة على الجهاز؛ افتحها مباشرة لمتابعة الاستخدام (الإصدارات الجديدة لم تعد توفر نسخة Go المتوافقة، ويمكن إزالة الإصدار القديم لتحرير المساحة).</string>
+    <string name="update_open_normal">افتح النسخة العادية</string>
+    <string name="update_must_update_title">يجب التحديث لمتابعة الاستخدام</string>
+    <string name="update_forced_body">نظام هذا الجهاز هو Android 10 أو أحدث، ولم تعد نسخة Go الخفيفة متوافقة، ولا يمكن متابعة استخدام الإصدار القديم؛ كما لم تعد الإصدارات الجديدة توفر نسخة Go المتوافقة.\n\nاتصل بالشبكة ثم اضغط «إعادة المحاولة» للحصول على حزمة تثبيت النسخة العادية.</string>
+    <string name="update_retry">إعادة المحاولة</string>
+    <string name="update_switch_normal_body">نظام هذا الجهاز هو Android 10 أو أحدث، ولم تعد نسخة Go الخفيفة متوافقة، ولا يمكن متابعة استخدام الإصدار القديم.\nنزّل النسخة العادية وثبّتها ثم تابع الاستخدام (الإصدارات الجديدة لم تعد توفر نسخة Go المتوافقة).</string>
+    <string name="update_downloading_title">تنزيل التحديث</string>
+    <string name="update_cancel">إلغاء</string>
+    <string name="update_need_permission_title">يلزم إذن التثبيت</string>
+    <string name="update_need_permission_body">يتطلب تثبيت الإصدار الجديد إذن النظام «تثبيت التطبيقات غير المعروفة».\n\nاضغط «منح الإذن»، وبعد السماح به من الإعدادات ارجع إلى التطبيق ليُستأنف التثبيت تلقائيًا (دون إعادة التنزيل).</string>
+    <string name="update_grant">منح الإذن</string>
+    <string name="update_notice_title">تنبيه</string>
+    <string name="update_got_it">فهمت</string>
+    <string name="update_notes_title">v%1$s · ملاحظات الإصدار</string>
+    <string name="update_back">رجوع</string>
+    <string name="update_title_switch_normal">التبديل إلى النسخة العادية</string>
+    <string name="update_title_reinstall">إعادة تثبيت هذا الإصدار</string>
+    <string name="update_title_new_version">يتوفر إصدار جديد</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">سيتم تنزيل هذا الإصدار وإعادة تثبيته (فوق التطبيق الحالي).\nتُستخدم هذه الميزة لاختبار آلية التحديث.</string>
+    <string name="update_view_notes">عرض ملاحظات الإصدار</string>
+    <string name="update_lanzou_unavailable">Lanzou غير متاح مؤقتًا</string>
+    <string name="update_download_lanzou">التنزيل من Lanzou</string>
+    <string name="update_download_github">التنزيل من GitHub</string>
+    <string name="update_download_browser">التنزيل من المتصفح</string>
+    <string name="update_later">لاحقًا</string>
+    <string name="update_later_switch">عدم التبديل الآن</string>
+    <string name="update_skip_version">تخطّي هذا الإصدار</string>
+</resources>

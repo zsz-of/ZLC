@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lietuvių (lt) — pagrindinis ekranas ir foniniai procesai (MainActivity, raktai main_*).
+  Šaltinis: res/values/strings_main.xml (supaprastinta kinų kalba).
+  Žymenys: %1$s / %1$d. Skaičiuojamos frazės — per <plurals> (one / few / many / other).
+-->
+<resources>
+    <!-- ── Būsenos juosta / pranešimai ── -->
+    <string name="main_status_ready">Paruošta</string>
+    <string name="main_status_location_granted">Vietos leidimas suteiktas — po konvertavimo GPS metaduomenys bus išsaugoti</string>
+    <string name="main_status_location_denied">Vietos leidimas nesuteiktas: po konvertavimo nuotraukos neteks GPS informacijos</string>
+    <string name="main_status_all_files_granted">Leidimas „Prieiga prie visų failų“ suteiktas — rezultatai įrašomi tiesiai į galerijos aplanką, o vietos informacija išsaugoma visiškai</string>
+    <string name="main_status_all_files_denied">Leidimas „Prieiga prie visų failų“ nesuteiktas: kai kuriuose įrenginiuose po konvertavimo vietos informacija gali būti prarasta</string>
+    <string name="main_status_read_granted">Suteiktas leidimas skaityti nuotraukas ir vaizdo įrašus</string>
+    <string name="main_status_video_missing">Leidimas suteiktas, bet trūksta vaizdo įrašų prieigos: nepavyksta rasti dviejų failų Live Photo lydimojo įrašo</string>
+    <string name="main_status_permission_denied">Leidimas nesuteiktas; galite dar kartą spausti „Pridėti failų“</string>
+    <string name="main_status_folder_not_selected">Aplankas nepasirinktas</string>
+    <string name="main_status_folder_unavailable">Pasirinktas aplankas nepasiekiamas (palaikomi tik vietinės saugyklos aplankai)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Atkurta ankstesnė sesija (%1$d failas)</item>
+        <item quantity="few">Atkurta ankstesnė sesija (%1$d failai)</item>
+        <item quantity="many">Atkurta ankstesnė sesija (%1$d failų)</item>
+        <item quantity="other">Atkurta ankstesnė sesija (%1$d failų)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Aptiktas netikėtas uždarymas; nebaigtas sąrašas išvalytas</string>
+    <string name="main_status_compose_blocks_extract">Eilėje yra sudarymo užduočių — negalima perjungti į išskaidymo režimą</string>
+    <string name="main_status_replace_off_mutex">Pakeitimo režimas išjungtas (nesuderinamas su „Ištrinti originalus po apdorojimo“)</string>
+    <string name="main_status_delete_needs_all_files">Automatiniam originalų trynimui reikia leidimo „Prieiga prie visų failų“ — pirmiausia jį suteikite</string>
+    <string name="main_status_replace_off">Pakeitimo režimas išjungtas; rezultatai vėl įrašomi į galerijos aplanką</string>
+    <string name="main_status_replace_needs_all_files">Pakeitimo režimui reikia leidimo „Prieiga prie visų failų“ — pirmiausia jį suteikite</string>
+    <string name="main_status_delete_off_mutex">„Ištrinti originalus po apdorojimo“ išjungta (nesuderinama su pakeitimo režimu)</string>
+    <string name="main_status_loading_albums">Įkeliama galerija…</string>
+    <string name="main_status_no_albums">Albumų nerasta</string>
+    <string name="main_status_compose_no_photo">Nepasirinkta nuotrauka, sudaryti negalima</string>
+    <string name="main_status_compose_no_video">Nepasirinktas vaizdo įrašas, sudaryti negalima</string>
+    <string name="main_status_compose_all_added">Visos pasirinktos nuotraukos jau yra sąraše</string>
+    <string name="main_status_compose_paired">Nuotraukų: %1$d, vaizdo įrašų: %2$d; pagal mažesnį skaičių pridėta %3$d sudarymo užduočių porų</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Pridėta %1$d sudarymo užduotis — spauskite „Pradėti konvertavimą“, kad ji būtų įvykdyta</item>
+        <item quantity="few">Pridėtos %1$d sudarymo užduotys — spauskite „Pradėti konvertavimą“, kad jos būtų įvykdytos</item>
+        <item quantity="many">Pridėta %1$d sudarymo užduočių — spauskite „Pradėti konvertavimą“, kad jos būtų įvykdytos</item>
+        <item quantity="other">Pridėta %1$d sudarymo užduočių — spauskite „Pradėti konvertavimą“, kad jos būtų įvykdytos</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (išvesties formatas automatiškai pakeistas į Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Importuojama %1$d bendrinama nuotrauka…</item>
+        <item quantity="few">Importuojamos %1$d bendrinamos nuotraukos…</item>
+        <item quantity="many">Importuojama %1$d bendrinamų nuotraukų…</item>
+        <item quantity="other">Importuojama %1$d bendrinamų nuotraukų…</item>
+    </plurals>
+    <string name="main_status_import_failed">Importavimas nepavyko: %1$s</string>
+    <string name="main_status_import_done_partial">Importavimas baigtas: sėkmingai %1$d, nesėkmingai %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importavimas baigtas: iš viso importuotas %1$d failas</item>
+        <item quantity="few">Importavimas baigtas: iš viso importuoti %1$d failai</item>
+        <item quantity="many">Importavimas baigtas: iš viso importuota %1$d failų</item>
+        <item quantity="other">Importavimas baigtas: iš viso importuota %1$d failų</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importavimas sustabdytas: sėkmingai %1$d, nesėkmingai %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Importuojamas %1$d failas…</item>
+        <item quantity="few">Importuojami %1$d failai…</item>
+        <item quantity="many">Importuojama %1$d failų…</item>
+        <item quantity="other">Importuojama %1$d failų…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importuojama %1$d/%2$d…</string>
+    <string name="main_status_stopping">Stabdoma… (sustabdoma pabaigus dabartinį failą)</string>
+    <string name="main_status_stopping_import">Stabdomas importavimas…</string>
+    <string name="main_status_removed">%1$s pašalinta</string>
+    <string name="main_status_cleared">Išvalyta</string>
+    <string name="main_status_nothing_to_convert">Nėra failų konvertavimui</string>
+    <string name="main_status_folder_unreadable">Pasirinkto aplanko nepavyksta perskaityti</string>
+    <string name="main_status_scanning_folder">Nuskaitomas aplankas…</string>
+    <string name="main_status_no_images">Pasirinktame aplanke nuotraukų nerasta</string>
+    <string name="main_status_batch_importing">Paketinis importavimas %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Paketinis importavimas sustabdytas: iš viso %1$d Live Photo įrašas</item>
+        <item quantity="few">Paketinis importavimas sustabdytas: iš viso %1$d Live Photo įrašai</item>
+        <item quantity="many">Paketinis importavimas sustabdytas: iš viso %1$d Live Photo įrašų</item>
+        <item quantity="other">Paketinis importavimas sustabdytas: iš viso %1$d Live Photo įrašų</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Paketinis importavimas sustabdytas: iš viso %1$d Live Photo įrašas, praleistas %2$d ne dinaminis failas</item>
+        <item quantity="few">Paketinis importavimas sustabdytas: iš viso %1$d Live Photo įrašai, praleisti %2$d ne dinaminiai failai</item>
+        <item quantity="many">Paketinis importavimas sustabdytas: iš viso %1$d Live Photo įrašų, praleista %2$d ne dinaminių failų</item>
+        <item quantity="other">Paketinis importavimas sustabdytas: iš viso %1$d Live Photo įrašų, praleista %2$d ne dinaminių failų</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Paketinis importavimas baigtas: iš viso %1$d Live Photo įrašas</item>
+        <item quantity="few">Paketinis importavimas baigtas: iš viso %1$d Live Photo įrašai</item>
+        <item quantity="many">Paketinis importavimas baigtas: iš viso %1$d Live Photo įrašų</item>
+        <item quantity="other">Paketinis importavimas baigtas: iš viso %1$d Live Photo įrašų</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Paketinis importavimas baigtas: iš viso %1$d Live Photo įrašas, praleistas %2$d ne dinaminis failas</item>
+        <item quantity="few">Paketinis importavimas baigtas: iš viso %1$d Live Photo įrašai, praleisti %2$d ne dinaminiai failai</item>
+        <item quantity="many">Paketinis importavimas baigtas: iš viso %1$d Live Photo įrašų, praleista %2$d ne dinaminių failų</item>
+        <item quantity="other">Paketinis importavimas baigtas: iš viso %1$d Live Photo įrašų, praleista %2$d ne dinaminių failų</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Sustabdyta: apdorota %2$d iš %1$d failų, pakeista %3$d šaltinio failų</string>
+    <string name="main_status_stopped_export">Sustabdyta: apdorota %2$d iš %1$d failų, eksportuota %3$d į galeriją</string>
+    <string name="main_status_done_replace_reason">Baigta: apdorota %1$d failų, pakeista %2$d šaltinio failų (priežastis: %3$s)</string>
+    <string name="main_status_done_export_reason">Baigta: apdorota %1$d failų, eksportuota %2$d į galeriją (priežastis: %3$s)</string>
+    <string name="main_status_done_replace">Baigta: apdorota %1$d failų, pakeista %2$d šaltinio failų</string>
+    <string name="main_status_done_export">Baigta: apdorota %1$d failų, eksportuota %2$d į galeriją</string>
+    <string name="main_status_keep_originals">%1$s; leidimas „Prieiga prie visų failų“ nesuteiktas, originalai išsaugoti</string>
+
+    <!-- ── Sąrašo elemento informacija ── -->
+    <string name="main_info_detecting">Nustatoma…</string>
+    <string name="main_info_unrecognized">Neatpažintas Live Photo formatas</string>
+    <string name="main_info_converting">Konvertuojama…</string>
+    <string name="main_info_compose_task">Sudarymo užduotis (spauskite „Pradėti konvertavimą“)</string>
+    <string name="main_info_done_replaced">Baigta (pakeista %1$d šaltinio failų)</string>
+    <string name="main_info_done_skipped">Baigta (praleista: toks pat pavadinimas)</string>
+    <string name="main_info_done_exported">Baigta (eksportuota %1$d)</string>
+    <string name="main_info_failed">Nepavyko: %1$s</string>
+
+    <!-- ── Eigos informacija ── -->
+    <string name="main_progress_added">Pridėta %1$d/%2$d</string>
+    <string name="main_progress_processed">Apdorota %1$d/%2$d</string>
+    <string name="main_progress_imported">Importuota %1$d/%2$d</string>
+
+    <!-- ── Leidimų dialogas ── -->
+    <string name="main_dialog_permission_title">Reikia leidimo skaityti nuotraukas ir vaizdo įrašus</string>
+    <string name="main_dialog_permission_message">Šiai programai reikia prieigos prie įrenginio nuotraukų ir vaizdo įrašų:\n\n• Nuotraukų leidimas: sistemos galerijos nuskaitymas ir Live Photo atpažinimas joje\n• Vaizdo įrašų leidimas: dviejų failų Live Photo lydimojo įrašo radimas\n• Vietos leidimas: GPS metaduomenų išsaugojimas nuotraukose (be jo po konvertavimo vietos informacija prarandama)\n\nAtsisakius integruoto parinkiklio naudoti negalima; vėliau galite vėl spausti „Pridėti failų“ ir suteikti leidimą.</string>
+    <string name="main_dialog_settings_title">Nuotraukų ir vaizdo įrašų leidimus reikia suteikti rankiniu būdu</string>
+    <string name="main_dialog_settings_message">Anksčiau pasirinkote „Daugiau neklausyti“, todėl sistema leidimų dialogo neberodo.\n\nEikite į programos puslapį → Leidimai → Nuotraukos ir vaizdo įrašai, suteikite prieigą rankiniu būdu ir grįžkite į programą.\n\nPastaba: leidimus „Nuotraukos“ ir „Vaizdo įrašai“ būtina suteikti kartu, kitaip dviejų failų Live Photo lydimasis įrašas nebus rastas.</string>
+
+    <!-- ── Dialogai dėl leidimo „Prieiga prie visų failų“ ── -->
+    <string name="main_dialog_allfiles_title_delete">Automatiniam originalų trynimui reikia „Prieigos prie visų failų“</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Šis įrenginys nepalaiko automatinio originalų trynimo</string>
+    <string name="main_dialog_allfiles_title_replace">Pakeitimo režimui reikia „Prieigos prie visų failų“</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Šis įrenginys nepalaiko pakeitimo režimo</string>
+    <string name="main_dialog_allfiles_title_location">Rekomenduojama suteikti leidimą „Prieiga prie visų failų“</string>
+    <string name="main_dialog_allfiles_delete_message">„Ištrinti originalus po apdorojimo“ ištrina failus tiesiai iš disko (nuotrauką ir jos lydimąjį įrašą); šio veiksmo atkurti negalima, todėl pirmiausia reikia leidimo „Prieiga prie visų failų“.\n\nJungiklis taps pasiekiamas tik suteikus leidimą, tada galėsite jį įjungti.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Dabartinė sistema (Android 10 ir senesnė) neteikia leidimo „Prieiga prie visų failų“, todėl failų negalima trinti tiesiai iš disko ir automatinis originalų trynimas nepalaikomas.\n\nPo konvertavimo originalus galite išvalyti rankiniu būdu per sistemos galeriją.</string>
+    <string name="main_dialog_allfiles_replace_message">„Pakeitimo režimas“ konvertavimo rezultatą įrašo tiesiai į diske esantį pradinį failą (perrašo turinį); šio veiksmo atkurti negalima, todėl pirmiausia reikia leidimo „Prieiga prie visų failų“.\n\nJungiklis taps pasiekiamas tik suteikus leidimą, tada galėsite jį įjungti.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Dabartinė sistema (Android 10 ir senesnė) neteikia leidimo „Prieiga prie visų failų“, todėl pradinių failų negalima perrašyti tiesiai diske ir pakeitimo režimas nepalaikomas.\n\nGalite toliau konvertuoti įprastu būdu — rezultatas įrašomas į galerijos aplanką.</string>
+    <string name="main_dialog_allfiles_location_message">Kai kuriuose įrenginiuose (pvz., Meizu) įrašymas per sistemos galerijos sąsają pašalina GPS informaciją ir po konvertavimo nuotraukos netenka vietos.\n\nSuteikus „Prieigą prie visų failų“, programa įrašo tiesiai į galerijos aplanką ir visiškai išsaugo vietos metaduomenis.\n\nIr be šio leidimo konvertuoti galima, tik kai kuriuose įrenginiuose vietos informacija gali būti prarasta.</string>
+
+    <!-- ── Išvesties failo pavadinimo konflikto dialogas ── -->
+    <string name="main_dialog_conflict_title">Išvesties failo pavadinimo konfliktas</string>
+    <string name="main_dialog_conflict_message">Išvesties aplanke jau yra to paties pavadinimo failas:\n%1$s\n\nPasirinkite, ką daryti.</string>
+    <string name="main_label_conflict_always">Taikyti šį sprendimą visiems tolesniems konfliktams</string>
+
+    <!-- ── Dialogų mygtukai ── -->
+    <string name="main_btn_grant">Leisti</string>
+    <string name="main_btn_deny">Atmesti</string>
+    <string name="main_btn_go_settings">Į nustatymus</string>
+    <string name="main_btn_cancel">Atšaukti</string>
+    <string name="main_btn_grant_access">Leisti</string>
+    <string name="main_btn_got_it">Supratau</string>
+    <string name="main_btn_not_now">Ne dabar</string>
+    <string name="main_btn_skip">Praleisti</string>
+    <string name="main_btn_overwrite">Perrašyti</string>
+    <string name="main_btn_auto_rename">Pervadinti automatiškai</string>
+
+    <!-- ── Konvertavimo rezultatas / eksportavimo klaidų priežastys ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Ištrintas %1$d pradinis failas</item>
+        <item quantity="few">Ištrinti %1$d pradiniai failai</item>
+        <item quantity="many">Ištrinta %1$d pradinių failų</item>
+        <item quantity="other">Ištrinta %1$d pradinių failų</item>
+    </plurals>
+    <string name="main_delete_nothing">Nėra ką trinti</string>
+    <string name="main_delete_partial">Ištrinta %1$d pradinių failų (%2$d nepavyko ištrinti, jie išsaugoti)</string>
+    <string name="main_delete_failed">Pradinių failų ištrinti nepavyko (failas užimtas arba nėra rašymo leidimo), jie išsaugoti</string>
+    <string name="main_export_missing_output">Konvertavimo rezultato nėra arba jis tuščias: %1$s</string>
+    <string name="main_export_missing_output_bare">Konvertavimo rezultato nėra arba jis tuščias</string>
+    <string name="main_export_insert_null">MediaStore insert grąžino null</string>
+    <string name="main_export_output_stream">MediaStore išvesties srautas nepasiekiamas</string>
+    <string name="main_export_write_failed">Rašymas į MediaStore nepavyko: %1$s</string>
+    <string name="main_export_mkdir_failed">Nepavyksta sukurti galerijos aplanko %1$s</string>
+    <string name="main_export_dir_write_failed">Rašymas į galerijos aplanką nepavyko: %1$s</string>
+    <string name="main_export_no_source">Nepavyksta rasti šaltinio failo, pakeitimas praleistas</string>
+    <string name="main_export_companion_failed">Lydimojo failo įrašymas nepavyko: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Šaltinio failo aplankas neįrašomas, lydimasis failas neįrašytas</string>
+    <string name="main_export_source_dir_unavailable">Šaltinio failo aplankas nepasiekiamas: %1$s</string>
+    <string name="main_export_replace_failed">Šaltinio failo pakeitimas nepavyko: %1$s</string>
+    <string name="main_export_replace_failed_bare">Šaltinio failo pakeitimas nepavyko</string>
+</resources>

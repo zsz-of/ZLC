@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ಕನ್ನಡ ಸ್ಟ್ರಿಂಗ್ಗಳು (kn).
+  ZLC · Kannada strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">Lanzou Cloud ಶೇರ್ ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ ಅಥವಾ ಫೈಲ್ ಇಲ್ಲ; ದಯವಿಟ್ಟು ಬದಲಿಗೆ GitHub ನಿಂದ ಡೌನ್ಲೋಡ್ ಮಾಡಿ</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud ಶೇರ್ ರದ್ದುಗೊಳಿಸಲಾಗಿದೆ; ದಯವಿಟ್ಟು ಬದಲಿಗೆ GitHub ನಿಂದ ಡೌನ್ಲೋಡ್ ಮಾಡಿ</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud ಡೌನ್ಲೋಡ್ ಲಿಂಕ್ ಅನ್ನು ಪರಿಹರಿಸಲು ವಿಫಲವಾಯಿತು</string>
+    <string name="update_lanzou_need_passwd">ಈ Lanzou Cloud ಶೇರ್ಗೆ ಪ್ರವೇಶ ಕೋಡ್ ಬೇಕು; ದಯವಿಟ್ಟು ಬದಲಿಗೆ GitHub ನಿಂದ ಡೌನ್ಲೋಡ್ ಮಾಡಿ (ಅಥವಾ ಬಿಡುಗಡೆ ಟಿಪ್ಪಣಿಗಳಲ್ಲಿ ಪ್ರವೇಶ ಕೋಡ್ ನೋಡಿ)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud ಪ್ರವೇಶ ಕೋಡ್ ತಪ್ಪಾಗಿದೆ</string>
+    <string name="update_err_resolve_failed">ಪರಿಹರಿಸಲು ವಿಫಲವಾಯಿತು</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud ಆಂಟಿ-ಕ್ರಾಲರ್ ಪರಿಶೀಲನೆ ವಿಫಲವಾಯಿತು</string>
+    <string name="update_err_no_frame">Lanzou Cloud ಡೌನ್ಲೋಡ್ ಪುಟವನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುವುದಿಲ್ಲ (ಡೌನ್ಲೋಡ್ ಫ್ರೇಮ್ ಕಂಡುಬಂದಿಲ್ಲ)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud ಫೈಲ್ ಐಡೆಂಟಿಫೈಯರ್ ಅನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="update_err_no_sign">Lanzou Cloud ಸಹಿಯನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="update_err_ajax_request">API ವಿನಂತಿ ವಿಫಲವಾಯಿತು</string>
+    <string name="update_err_api_request">Lanzou Cloud API ವಿನಂತಿ ವಿಫಲವಾಯಿತು</string>
+    <string name="update_err_empty_direct">Lanzou Cloud ಖಾಲಿ ಡೌನ್ಲೋಡ್ URL ಅನ್ನು ನೀಡಿತು</string>
+    <string name="update_err_direct_expired">Lanzou Cloud ಡೌನ್ಲೋಡ್ URL ಅವಧಿ ಮುಗಿದಿದೆ; ದಯವಿಟ್ಟು ಮತ್ತೆ ಪಡೆಯಿರಿ</string>
+    <string name="update_err_http_request">ವಿನಂತಿ ವಿಫಲವಾಯಿತು (HTTP %1$d)</string>
+    <string name="update_err_connect">ಡೌನ್ಲೋಡ್ ಸರ್ವರ್ಗೆ ಸಂಪರ್ಕಿಸಲಾಗುವುದಿಲ್ಲ: %1$s</string>
+    <string name="update_err_http">ಡೌನ್ಲೋಡ್ ವಿಫಲವಾಯಿತು (HTTP %1$d)</string>
+    <string name="update_err_no_connection">ಡೌನ್ಲೋಡ್ ಸಂಪರ್ಕವನ್ನು ಸ್ಥಾಪಿಸಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="update_err_empty">ಡೌನ್ಲೋಡ್ ಮಾಡಿದ ವಿಷಯ ಖಾಲಿಯಾಗಿದೆ</string>
+    <string name="update_err_incomplete">ಡೌನ್ಲೋಡ್ ಅಪೂರ್ಣ (%2$d ಬೈಟ್ಗಳಲ್ಲಿ %1$d ಸ್ವೀಕರಿಸಲಾಗಿದೆ); ದಯವಿಟ್ಟು ಮತ್ತೆ ಡೌನ್ಲೋಡ್ ಮಾಡಿ</string>
+    <string name="update_err_interrupted">ಡೌನ್ಲೋಡ್ ಅಡ್ಡಿಯಾಗಿದೆ: %1$s</string>
+    <string name="update_err_not_apk">ಡೌನ್ಲೋಡ್ ಮಾಡಿದ ಫೈಲ್ ಮಾನ್ಯವಾದ ಪ್ಯಾಕೇಜ್ ಅಲ್ಲ (ಅದು ವೆಬ್ ಪುಟವಾಗಿರಬಹುದು, ಅಥವಾ ಡೌನ್ಲೋಡ್ ಲಿಂಕ್ ಅವಧಿ ಮುಗಿದಿರಬಹುದು); ದಯವಿಟ್ಟು ಮತ್ತೆ ಡೌನ್ಲೋಡ್ ಮಾಡಿ ಅಥವಾ GitHub ಬಳಸಿ.</string>
+    <string name="update_err_apk_incomplete">ಪ್ಯಾಕೇಜ್ ವಿಷಯ ಅಪೂರ್ಣವಾಗಿದೆ; ದಯವಿಟ್ಟು ಮತ್ತೆ ಡೌನ್ಲೋಡ್ ಮಾಡಿ ಅಥವಾ GitHub ಬಳಸಿ.</string>
+    <string name="update_err_apk_unparsable">ಪ್ಯಾಕೇಜ್ ಅನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುವುದಿಲ್ಲ (ಡೌನ್ಲೋಡ್ ಅಪೂರ್ಣವಾಗಿರಬಹುದು); ದಯವಿಟ್ಟು ಮತ್ತೆ ಡೌನ್ಲೋಡ್ ಮಾಡಿ ಅಥವಾ GitHub ಬಳಸಿ.</string>
+    <string name="update_err_no_install_permission">“ಅಜ್ಞಾತ ಆ್ಯಪ್ಗಳನ್ನು ಇನ್ಸ್ಟಾಲ್ ಮಾಡಿ” ಅನುಮತಿ ನೀಡಿಲ್ಲ</string>
+    <string name="update_err_installer_failed">ಸಿಸ್ಟಂ ಇನ್ಸ್ಟಾಲರ್ ಅನ್ನು ಪ್ರಾರಂಭಿಸಲಾಗುವುದಿಲ್ಲ (%1$s); ದಯವಿಟ್ಟು ಫೈಲ್ ಮ್ಯಾನೇಜರ್ನಲ್ಲಿ ಪ್ಯಾಕೇಜ್ ತೆರೆದು ಹಸ್ತಚಾಲಿತವಾಗಿ ಇನ್ಸ್ಟಾಲ್ ಮಾಡಿ</string>
+</resources>

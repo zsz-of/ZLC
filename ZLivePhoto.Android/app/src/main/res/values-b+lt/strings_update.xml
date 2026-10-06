@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lietuvių (lt) — naujinimo ir atsisiuntimo pranešimai (raktai update_*).
+  Šaltinis: res/values/strings_update.xml (supaprastinta kinų kalba).
+  Lanzou Cloud — Kinijos failų bendrinimo paslauga.
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud bendrinimo puslapis ir tiesioginės nuorodos ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud bendrinimas atšauktas arba failo nėra. Atsisiųskite iš GitHub</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud bendrinimas atšauktas. Atsisiųskite iš GitHub</string>
+    <string name="update_lanzou_resolve_failed">Nepavyko nustatyti Lanzou Cloud atsisiuntimo nuorodos</string>
+    <string name="update_lanzou_need_passwd">Šiam Lanzou Cloud bendrinimui reikia prieigos kodo. Atsisiųskite iš GitHub (arba ieškokite kodo leidimo apraše)</string>
+    <string name="update_lanzou_wrong_passwd">Neteisingas Lanzou Cloud prieigos kodas</string>
+    <string name="update_err_resolve_failed">Nustatyti nepavyko</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Nepavyko Lanzou Cloud apsaugos nuo automatizuoto atsisiuntimo patikra</string>
+    <string name="update_err_no_frame">Nepavyko atpažinti Lanzou Cloud atsisiuntimo puslapio (nerastas atsisiuntimo rėmelis)</string>
+    <string name="update_err_no_file_id">Nepavyko nustatyti Lanzou Cloud failo identifikatoriaus</string>
+    <string name="update_err_no_sign">Nepavyko nustatyti Lanzou Cloud parašo</string>
+    <string name="update_err_ajax_request">Užklausa sąsajai nepavyko</string>
+    <string name="update_err_api_request">Lanzou Cloud sąsajos užklausa nepavyko</string>
+    <string name="update_err_empty_direct">Lanzou Cloud grąžino tuščią atsisiuntimo adresą</string>
+    <string name="update_err_direct_expired">Lanzou Cloud atsisiuntimo adresas nebegalioja. Gaukite jį iš naujo</string>
+    <string name="update_err_http_request">Užklausa nepavyko (HTTP %1$d)</string>
+
+    <!-- ========== Atsisiuntimas ========== -->
+    <string name="update_err_connect">Nepavyksta prisijungti prie atsisiuntimo serverio: %1$s</string>
+    <string name="update_err_http">Atsisiuntimas nepavyko (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Nepavyksta užmegzti atsisiuntimo ryšio</string>
+    <string name="update_err_empty">Atsisiųstas turinys tuščias</string>
+    <string name="update_err_incomplete">Atsisiuntimas nepilnas (gauta %1$d iš %2$d baitų). Atsisiųskite iš naujo</string>
+    <string name="update_err_interrupted">Atsisiuntimas nutrauktas: %1$s</string>
+
+    <!-- ========== Paketo tikrinimas ir diegimas ========== -->
+    <string name="update_err_not_apk">Atsisiųstas failas nėra tinkamas diegimo paketas (galbūt tai tinklalapis arba nuoroda nebegalioja). Atsisiųskite iš naujo arba naudokite GitHub.</string>
+    <string name="update_err_apk_incomplete">Diegimo paketo turinys nepilnas. Atsisiųskite iš naujo arba naudokite GitHub.</string>
+    <string name="update_err_apk_unparsable">Diegimo paketo nepavyksta išanalizuoti (galbūt atsisiuntimas nepilnas). Atsisiųskite iš naujo arba naudokite GitHub.</string>
+    <string name="update_err_no_install_permission">Nesuteiktas leidimas „Diegti nežinomas programas“</string>
+    <string name="update_err_installer_failed">Nepavyksta paleisti sistemos diegimo priemonės (%1$s). Atidarykite paketą rankiniu būdu failų tvarkyklėje</string>
+
+</resources>

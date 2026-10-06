@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Монгол (Mongolian) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Mongolian (Cyrillic); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Тохиргоо</string>
+    <string name="settings_cd_back">Буцах</string>
+    <string name="settings_btn_apply">Хэрэглэх</string>
+    <string name="settings_btn_cancel">Цуцлах</string>
+    <string name="settings_btn_close">Хаах</string>
+    <string name="settings_btn_ok">За</string>
+    <string name="settings_btn_sponsor">Дэмжих</string>
+    <string name="settings_section_general">Ерөнхий</string>
+    <string name="settings_section_appearance">Харагдац</string>
+    <string name="settings_section_language">Хэл</string>
+    <string name="settings_section_defaults">Өгөгдмөл</string>
+    <string name="settings_section_output">Гаралт</string>
+    <string name="settings_section_transcode">Видео транскод</string>
+    <string name="settings_section_about">Тухай</string>
+    <string name="settings_section_app">Апп</string>
+    <string name="settings_section_credits">Талархал ба дэмжлэг</string>
+    <string name="settings_section_opensource">Нээлттэй эх ба лиценз</string>
+    <string name="settings_startup_check_title">Эхлэх үед шинэчлэлт шалгах</string>
+    <string name="settings_startup_check_subtitle">Эхлэх үед GitHub-аас шинэ хувилбарыг автоматаар татаж, шинэчлэлт байвал татахыг сануулна</string>
+    <string name="settings_haptics_title">Чичрэлтийн хариу</string>
+    <string name="settings_haptics_subtitle">Товч дарах болон төлөв өөрчлөгдөх үед чичрэлтийн хариу</string>
+    <string name="settings_bounce_title">Товчны пүрш анимаци</string>
+    <string name="settings_bounce_subtitle">Товч дарах үед томорч буцаж пүрших анимаци</string>
+    <string name="settings_theme_system">Системийг дагах</string>
+    <string name="settings_theme_dark">Бараан</string>
+    <string name="settings_theme_light">Гэрэлтэй</string>
+    <string name="settings_dynamic_theme_title">Material You динамик өнгө</string>
+    <string name="settings_dynamic_theme_subtitle">Системийн дэвсгэр зургийн өнгийг дагана (Android 12+); унтраасан үед доорх урьдчилан тохируулсан өнгө хэрэглэнэ</string>
+    <string name="settings_preset_colors_title">Урьдчилан тохируулсан загварын өнгө</string>
+    <string name="settings_preset_current">Одоогийн: %1$s</string>
+    <string name="settings_preset_disabled_hint">“Material You динамик өнгө”-ийг унтраасны дараа сонгох боломжтой</string>
+    <string name="settings_custom">Өөрчлөн тохируулах</string>
+    <string name="settings_custom_color_title">Өөрийн загварын өнгө</string>
+    <string name="settings_cd_custom_palette">Өөрийн өнгөний палитр</string>
+    <string name="settings_hue_value">Өнгөний аялга %1$d°</string>
+    <string name="settings_language_dialog_title">Аппын хэл сонгох</string>
+    <string name="settings_language_count">Нийт %1$d хэл</string>
+    <string name="settings_reminder_dialogs_title">Дахин сануулга харуулахгүй</string>
+    <string name="settings_reminder_dialogs_subtitle">Бүх “Дахин харуулахгүй” сануулгын унтраалгыг удирдах</string>
+    <string name="settings_reminder_hint">Унтраалга асаалттай нь “Дахин харуулахгүй” гэсэн үг; унтраасан үед дараагийн удаа холбогдох нөхцөл үүсэхэд сануулга дахин гарна.</string>
+    <string name="settings_preserve_folders_title">Эх хавтасны бүтцээр гаралт гаргах</string>
+    <string name="settings_preserve_folders_subtitle">Хөрвүүлэлтийн үр дүнг анхны цомгийн нэрээр дэд хавтаст хадгална; унтраасан үед бүгд нэг хавтаст байрлана</string>
+    <string name="settings_about_title">Тухай</string>
+    <string name="settings_about_subtitle">Хувилбар · Шинэчлэлт шалгах · Талархал ба дэмжлэг</string>
+    <string name="settings_check_update_title">Шинэчлэлт шалгах</string>
+    <string name="settings_check_update_subtitle">GitHub Releases-аас хамгийн сүүлийн хувилбарыг авах</string>
+    <string name="settings_checking">Шалгаж байна…</string>
+    <string name="settings_update_available">v%1$s боломжтой</string>
+    <string name="settings_up_to_date">Энэ нь хамгийн сүүлийн хувилбар байна</string>
+    <string name="settings_network_error">Сүлжээний алдаа, дараа дахин оролдоно уу</string>
+    <string name="settings_reinstall_title">Энэ хувилбарыг дахин суулгах</string>
+    <string name="settings_reinstall_subtitle">Одоогийн хамгийн сүүлийн хувилбарыг татаж дахин суулгах (шинэчлэлт турших зорилгоор)</string>
+    <string name="settings_reinstall_newer_hint">Одоо v%1$s руу шинэчлэх боломжтой, эхлээд “Шинэчлэлт шалгах”-ыг ашиглана уу</string>
+    <string name="settings_version_title">Хувилбар</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay-аар дэмжих</string>
+    <string name="settings_alipay_subtitle">Хөгжүүлэлтийг дэмжих</string>
+    <string name="settings_coolapk_subtitle">Coolapk хэрэглэгч · Түүний дэмжлэгт талархлаа</string>
+    <string name="settings_ai_credits_subtitle">Хөгжүүлэлтэд AI IDE болон AI загваруудын үзүүлсэн тусламжид талархлаа</string>
+    <string name="settings_github_title">GitHub нээлттэй эхийн хаяг</string>
+    <string name="settings_license_title">Нээлттэй эхийн лиценз</string>
+    <string name="settings_sponsor_dialog_title">Дэмжлэгт тань баярлалаа</string>
+    <string name="settings_sponsor_dialog_text">Энэ аппыг дэмжихээр шийдсэнд тань үнэхээр их баярлалаа!
+
+Хэрэв та оюутан эсвэл санхүүгийн хувьд бие даагаагүй бол мөнгө зарцуулах хэрэггүй——
+энэ санааг зүрхэндээ хадгалаад үргэлжлүүлэн ашиглаарай; миний хувьд энэ нь хамгийн сайн дэмжлэг юм.
+
+Дэмжихийг хүсвэл нэг төгрөг ч гэсэн хайр, би үүнийг илүү сайн арчилгаа, функцэд зарцуулна :）</string>
+    <string name="settings_alipay_missing_title">Alipay хараахан суулгаагүй байна</string>
+    <string name="settings_alipay_missing_text">Alipay олдсонгүй тул одоогоор дэмжлэг гүйцэтгэх боломжгүй.
+
+Зүгээр ээ——ямар ч байсан сайн сэтгэл таньд баярлалаа!</string>
+    <string name="settings_transcoder_title">Суулгасан транскодер</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Дахин кодлох</string>
+    <string name="settings_transcode_mode_remux">Зөвхөн контейнерийг дахин савлах (санал болгож байна)</string>
+    <string name="settings_transcode_mode_off">Транскодер огт ашиглахгүй</string>
+    <string name="settings_transcode_params_title">Транскодын параметрүүд</string>
+    <string name="settings_transcode_params_subtitle">Дахин кодлох үед ашиглах чанар ба шахах параметрүүд</string>
+    <string name="settings_transcode_params_disabled">“Транскодын арга” дотор “Дахин кодлох”-ыг сонгосон үед л хүчинтэй</string>
+    <string name="settings_crf_value">Чанар CRF: %1$d</string>
+    <string name="settings_crf_hint">Утга бага байх тусам чанар өндөр, хэмжээ том (өгөгдмөл 18)</string>
+    <string name="settings_encoder_title">Кодлогч</string>
+    <string name="settings_compress_preset_title">Шахах урьдчилсан тохиргоо</string>
+</resources>

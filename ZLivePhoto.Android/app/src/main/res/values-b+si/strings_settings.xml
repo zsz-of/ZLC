@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · සිංහල (Sinhala) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Sinhala; technical terms follow the English loanword where common.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">සැකසුම්</string>
+    <string name="settings_cd_back">ආපසු</string>
+    <string name="settings_btn_apply">යොදන්න</string>
+    <string name="settings_btn_cancel">අවලංගු කරන්න</string>
+    <string name="settings_btn_close">වසන්න</string>
+    <string name="settings_btn_ok">හරි</string>
+    <string name="settings_btn_sponsor">අනුග්‍රහය දක්වන්න</string>
+    <string name="settings_section_general">සාමාන්‍ය</string>
+    <string name="settings_section_appearance">පෙනුම</string>
+    <string name="settings_section_language">භාෂාව</string>
+    <string name="settings_section_defaults">පෙරනිමි</string>
+    <string name="settings_section_output">ප්‍රතිදානය</string>
+    <string name="settings_section_transcode">වීඩියෝ ට්‍රාන්ස්කෝඩිං</string>
+    <string name="settings_section_about">පිළිබඳව</string>
+    <string name="settings_section_app">යෙදුම</string>
+    <string name="settings_section_credits">ස්තූතිය හා අනුග්‍රහය</string>
+    <string name="settings_section_opensource">විවෘත මූලාශ්‍ර සහ බලපත්‍රය</string>
+    <string name="settings_startup_check_title">ආරම්භයේදී යාවත්කාලීන පරීක්ෂා කරන්න</string>
+    <string name="settings_startup_check_subtitle">ආරම්භයේදී GitHub වෙතින් නව අනුවාදය ස්වයංක්‍රීයව ලබා ගන්න, යාවත්කාලීනයක් ඇත්නම් බාගැනීමට දන්වන්න</string>
+    <string name="settings_haptics_title">කම්පන ප්‍රතිචාරය</string>
+    <string name="settings_haptics_subtitle">බොත්තම එබීමේදී සහ තත්ත්වය වෙනස් වන විට කම්පන ප්‍රතිචාරය</string>
+    <string name="settings_bounce_title">බොත්තම් ස්ප්‍රිං සජීවිකරණය</string>
+    <string name="settings_bounce_subtitle">බොත්තම එබීමේදී පරිමාණය වී ආපසු වැනෙන සජීවිකරණය</string>
+    <string name="settings_theme_system">පද්ධතිය අනුගමනය කරන්න</string>
+    <string name="settings_theme_dark">අඳුරු</string>
+    <string name="settings_theme_light">ආලෝකවත්</string>
+    <string name="settings_dynamic_theme_title">Material You ගතික වර්ණ</string>
+    <string name="settings_dynamic_theme_subtitle">පද්ධති බිතුපතෙහි වර්ණ අනුගමනය කරයි (Android 12+); අක්‍රිය කළ පසු පහත පෙරනිමි වර්ණ භාවිතා වේ</string>
+    <string name="settings_preset_colors_title">පෙරනිමි තේමා වර්ණ</string>
+    <string name="settings_preset_current">වර්තමානය: %1$s</string>
+    <string name="settings_preset_disabled_hint">“Material You ගතික වර්ණ” අක්‍රිය කිරීමෙන් පසු තෝරා ගත හැක</string>
+    <string name="settings_custom">අභිරුචි</string>
+    <string name="settings_custom_color_title">අභිරුචි තේමා වර්ණය</string>
+    <string name="settings_cd_custom_palette">අභිරුචි වර්ණ පුවරුව</string>
+    <string name="settings_hue_value">වර්ණය %1$d°</string>
+    <string name="settings_language_dialog_title">යෙදුම් භාෂාව තෝරන්න</string>
+    <string name="settings_language_count">භාෂා %1$dක්</string>
+    <string name="settings_reminder_dialogs_title">නැවත පණිවිඩ නොපෙන්වන්න</string>
+    <string name="settings_reminder_dialogs_subtitle">සියලුම “නැවත නොපෙන්වන්න” පණිවිඩවල ස්විච් කළමනාකරණය කරන්න</string>
+    <string name="settings_reminder_hint">ස්විචය ක්‍රියාත්මක නම් “නැවත නොපෙන්වන්න” යන්නයි; අක්‍රිය කළ පසු ඊළඟ වතාවේ අදාළ අවස්ථාවේදී නැවත පණිවිඩය පෙන්වයි.</string>
+    <string name="settings_preserve_folders_title">මූලාශ්‍ර ෆෝල්ඩර ව්‍යුහය අනුව ප්‍රතිදානය</string>
+    <string name="settings_preserve_folders_subtitle">පරිවර්තන ප්‍රතිඵල මුල් ඇල්බම නම අනුව උප ෆෝල්ඩරවල තබයි; අක්‍රිය කළ පසු සියල්ල එකම ෆෝල්ඩරයක තබයි</string>
+    <string name="settings_about_title">පිළිබඳව</string>
+    <string name="settings_about_subtitle">අනුවාදය · යාවත්කාලීන පරීක්ෂා කරන්න · ස්තූතිය හා අනුග්‍රහය</string>
+    <string name="settings_check_update_title">යාවත්කාලීන පරීක්ෂා කරන්න</string>
+    <string name="settings_check_update_subtitle">GitHub Releases වෙතින් නවතම අනුවාදය ලබා ගන්න</string>
+    <string name="settings_checking">පරීක්ෂා කරමින්…</string>
+    <string name="settings_update_available">v%1$s ලබා ගත හැක</string>
+    <string name="settings_up_to_date">මෙය නවතම අනුවාදයයි</string>
+    <string name="settings_network_error">ජාල දෝෂයක්, පසුව නැවත උත්සාහ කරන්න</string>
+    <string name="settings_reinstall_title">මෙම අනුවාදය නැවත ස්ථාපනය කරන්න</string>
+    <string name="settings_reinstall_subtitle">වර්තමාන නවතම අනුවාදය බාගෙන නැවත ස්ථාපනය කරන්න (යාවත්කාලීන පරීක්ෂණය සඳහා)</string>
+    <string name="settings_reinstall_newer_hint">දැන් v%1$s වෙත උත්ශ්‍රේණි කළ හැක, පළමුව “යාවත්කාලීන පරීක්ෂා කරන්න” භාවිතා කරන්න</string>
+    <string name="settings_version_title">අනුවාදය</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay අනුග්‍රහය</string>
+    <string name="settings_alipay_subtitle">සංවර්ධනයට අනුග්‍රහය දක්වන්න</string>
+    <string name="settings_coolapk_subtitle">Coolapk පරිශීලක · ඔහුගේ සහායට ස්තූතියි</string>
+    <string name="settings_ai_credits_subtitle">සංවර්ධනයේදී AI IDE සහ AI ආකෘතිවල සහායට ස්තූතියි</string>
+    <string name="settings_github_title">GitHub විවෘත මූලාශ්‍ර ලිපිනය</string>
+    <string name="settings_license_title">විවෘත මූලාශ්‍ර බලපත්‍රය</string>
+    <string name="settings_sponsor_dialog_title">ඔබේ සහායට ස්තූතියි</string>
+    <string name="settings_sponsor_dialog_text">මෙම යෙදුමට සහාය දැක්වීමට ඔබ සූදානම් වූවාට ඇත්තටම බොහොම ස්තූතියි!
+
+ඔබ තවම ශිෂ්‍යයෙක් නම් හෝ ආර්ථිකව ස්වාධීන නොවේ නම්, කරුණාකර මුදල් වියදම් නොකරන්න——
+මෙම හිතවත්කම හදවතේ තබාගෙන භාවිතය දිගටම කරගෙන යන්න; මට එයම හොඳම සහායයි.
+
+අනුග්‍රහය දැක්වීමට කැමති නම් රුපියලක් වුවද ආදරයකි, මම එය වඩා හොඳ නඩත්තුවට සහ විශේෂාංගවලට යොදවන්නෙමි :）</string>
+    <string name="settings_alipay_missing_title">Alipay තවම ස්ථාපනය කර නැත</string>
+    <string name="settings_alipay_missing_text">Alipay හමු නොවිණි, දැනට අනුග්‍රහය සම්පූර්ණ කළ නොහැක.
+
+කමක් නැහැ——කෙසේ වුවද, ඔබේ හිතවත්කමට බොහොම ස්තූතියි!</string>
+    <string name="settings_transcoder_title">අභ්‍යන්තර ට්‍රාන්ස්කෝඩරය</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">නැවත කේතනය</string>
+    <string name="settings_transcode_mode_remux">බහාලුම පමණක් නැවත ඇසුරුම් කරන්න (නිර්දේශිත)</string>
+    <string name="settings_transcode_mode_off">ට්‍රාන්ස්කෝඩරය කිසිසේත් භාවිතා නොකරන්න</string>
+    <string name="settings_transcode_params_title">ට්‍රාන්ස්කෝඩ පරාමිති</string>
+    <string name="settings_transcode_params_subtitle">නැවත කේතනය කිරීමේදී භාවිතා වන ගුණත්ව හා සම්පීඩන පරාමිති</string>
+    <string name="settings_transcode_params_disabled">“ට්‍රාන්ස්කෝඩ ක්‍රමය” තුළ “නැවත කේතනය” තෝරාගත් විට පමණක් ක්‍රියාත්මක වේ</string>
+    <string name="settings_crf_value">ගුණත්වය CRF: %1$d</string>
+    <string name="settings_crf_hint">අගය කුඩා වන විට ගුණත්වය ඉහළත් ප්‍රමාණය විශාලත් වේ (පෙරනිමි 18)</string>
+    <string name="settings_encoder_title">කේතකය</string>
+    <string name="settings_compress_preset_title">සම්පීඩන පෙරසැකසුම</string>
+</resources>

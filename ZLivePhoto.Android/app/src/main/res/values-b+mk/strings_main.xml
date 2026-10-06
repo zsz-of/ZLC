@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Macedonian (mk) strings — main screen and background flows.
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Plural quantities follow CLDR for Macedonian: one / other.
+-->
+<resources>
+    <!-- ── Статусна лента / известувања ── -->
+    <string name="main_status_ready">Подготвено</string>
+    <string name="main_status_location_granted">Дозволата за локација е доделена; GPS метаподатоците ќе се зачуваат по конверзијата</string>
+    <string name="main_status_location_denied">Без дозвола за локација: конвертираните фотографии ќе ја загубат GPS локацијата</string>
+    <string name="main_status_all_files_granted">Дозволата „Пристап до сите датотеки” е доделена; конверзијата пишува директно во папката на албумот и целосно ја зачувува локацијата</string>
+    <string name="main_status_all_files_denied">Без дозволата „Пристап до сите датотеки”: на некои модели фотографиите може да ја загубат локацијата по конверзијата</string>
+    <string name="main_status_read_granted">Дозволата за читање фотографии и видеа е доделена</string>
+    <string name="main_status_video_missing">Дозволата е доделена, но недостасува дозволата за видеа: не може да се најде придружното видео на Live Photo со две датотеки</string>
+    <string name="main_status_permission_denied">Дозволата не е доделена; можете повторно да притиснете „Додај датотеки”</string>
+    <string name="main_status_folder_not_selected">Не е избрана папка</string>
+    <string name="main_status_folder_unavailable">Избраната папка е недостапна (поддржани се само локални папки за складирање)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Претходната сесија е вратена (%1$d датотека)</item>
+        <item quantity="other">Претходната сесија е вратена (%1$d датотеки)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Откриено е претходно необично затворање; недовршената листа е исчистена</string>
+    <string name="main_status_compose_blocks_extract">Редот содржи задачи за составување; не може да се префрли во режим на извлекување</string>
+    <string name="main_status_replace_off_mutex">Режимот на замена е исклучен (се исклучува со „Избриши ги оригиналите по обработката”)</string>
+    <string name="main_status_delete_needs_all_files">Автоматското бришење на оригиналите бара дозвола „Пристап до сите датотеки”; доделете ја прво</string>
+    <string name="main_status_replace_off">Режимот на замена е исклучен; резултатите повторно се пишуваат во папката на албумот</string>
+    <string name="main_status_replace_needs_all_files">Режимот на замена бара дозвола „Пристап до сите датотеки”; доделете ја прво</string>
+    <string name="main_status_delete_off_mutex">„Избриши ги оригиналите по обработката” е исклучено (се исклучува со режимот на замена)</string>
+    <string name="main_status_loading_albums">Се читаат албумите…</string>
+    <string name="main_status_no_albums">Не се пронајдени албуми</string>
+    <string name="main_status_compose_no_photo">Не е избрана фотографија; составувањето не е можно</string>
+    <string name="main_status_compose_no_video">Не е избрано видео; составувањето не е можно</string>
+    <string name="main_status_compose_all_added">Сите избрани фотографии се веќе во листата</string>
+    <string name="main_status_compose_paired">%1$d фотографии, %2$d видеа; додадени се %3$d парови задачи за составување според помалата страна</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Додадена е %1$d задача за составување; притиснете „Започни конверзија” за да се изврши составувањето</item>
+        <item quantity="other">Додадени се %1$d задачи за составување; притиснете „Започни конверзија” за да се изврши составувањето</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (излезниот формат автоматски е сменет во Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Се увезува %1$d споделена слика…</item>
+        <item quantity="other">Се увезуваат %1$d споделени слики…</item>
+    </plurals>
+    <string name="main_status_import_failed">Увозот не успеа: %1$s</string>
+    <string name="main_status_import_done_partial">Увозот заврши: %1$d успешни, %2$d неуспешни</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Увозот заврши: увезена е %1$d датотека</item>
+        <item quantity="other">Увозот заврши: увезени се %1$d датотеки</item>
+    </plurals>
+    <string name="main_status_import_stopped">Увозот е запрен: %1$d успешни, %2$d неуспешни</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Се увезува %1$d датотека…</item>
+        <item quantity="other">Се увезуваат %1$d датотеки…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Се увезува %1$d/%2$d…</string>
+    <string name="main_status_stopping">Се запира… (запира по тековната датотека)</string>
+    <string name="main_status_stopping_import">Се запира увозот…</string>
+    <string name="main_status_removed">Отстранета: %1$s</string>
+    <string name="main_status_cleared">Исчистено</string>
+    <string name="main_status_nothing_to_convert">Нема датотеки за конверзија</string>
+    <string name="main_status_folder_unreadable">Избраната папка не може да се прочита</string>
+    <string name="main_status_scanning_folder">Се скенира папката…</string>
+    <string name="main_status_no_images">Не се пронајдени слики во избраната папка</string>
+    <string name="main_status_batch_importing">Групен увоз %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Групниот увоз е запрен: увезена е %1$d Live Photo</item>
+        <item quantity="other">Групниот увоз е запрен: увезени се %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Групниот увоз е запрен: увезена е %1$d Live Photo, прескокната е %2$d не-Live Photo датотека</item>
+        <item quantity="other">Групниот увоз е запрен: увезени се %1$d Live Photo, прескокнати се %2$d не-Live Photo датотеки</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Групниот увоз заврши: увезена е %1$d Live Photo</item>
+        <item quantity="other">Групниот увоз заврши: увезени се %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Групниот увоз заврши: увезена е %1$d Live Photo, прескокната е %2$d не-Live Photo датотека</item>
+        <item quantity="other">Групниот увоз заврши: увезени се %1$d Live Photo, прескокнати се %2$d не-Live Photo датотеки</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Запрено: од %1$d датотеки обработени се %2$d, заменети се %3$d изворни датотеки</string>
+    <string name="main_status_stopped_export">Запрено: од %1$d датотеки обработени се %2$d, извезени се %3$d во албумот</string>
+    <string name="main_status_done_replace_reason">Завршено: обработени се %1$d датотеки, заменети се %2$d изворни датотеки (причина: %3$s)</string>
+    <string name="main_status_done_export_reason">Завршено: обработени се %1$d датотеки, извезени се %2$d во албумот (причина: %3$s)</string>
+    <string name="main_status_done_replace">Завршено: обработени се %1$d датотеки, заменети се %2$d изворни датотеки</string>
+    <string name="main_status_done_export">Завршено: обработени се %1$d датотеки, извезени се %2$d во албумот</string>
+    <string name="main_status_keep_originals">%1$s; дозволата „Целосен пристап до складиштето” не е доделена, оригиналите се зачувани</string>
+
+    <!-- ── Информации за елементите од листата ── -->
+    <string name="main_info_detecting">Се открива…</string>
+    <string name="main_info_unrecognized">Непрепознаен формат на Live Photo</string>
+    <string name="main_info_converting">Се конвертира…</string>
+    <string name="main_info_compose_task">Задача за составување (притиснете за да започне конверзијата)</string>
+    <string name="main_info_done_replaced">Завршено (заменети %1$d изворни датотеки)</string>
+    <string name="main_info_done_skipped">Завршено (прескокнато: конфликт на имиња)</string>
+    <string name="main_info_done_exported">Завршено (извезени %1$d)</string>
+    <string name="main_info_failed">Неуспешно: %1$s</string>
+
+    <!-- ── Детали за напредокот ── -->
+    <string name="main_progress_added">Додадени %1$d/%2$d</string>
+    <string name="main_progress_processed">Обработени %1$d/%2$d</string>
+    <string name="main_progress_imported">Увезени %1$d/%2$d</string>
+
+    <!-- ── Дијалози за дозволи ── -->
+    <string name="main_dialog_permission_title">Потребна е дозвола за читање фотографии и видеа</string>
+    <string name="main_dialog_permission_message">Оваа апликација треба да чита фотографии и видеа од вашиот уред:\n\n• Дозвола за фотографии: скенира системскиот албум и препознава Live Photo\n• Дозвола за видеа: го наоѓа придружното видео на Live Photo со две датотеки\n• Дозвола за локација: ги зачувува GPS метаподатоците во фотографиите (без неа, локацијата се губи по конверзијата)\n\nАко ја одбиете, вградениот избирач нема да работи; можете подоцна повторно да притиснете „Додај датотеки” за да ја доделите.</string>
+    <string name="main_dialog_settings_title">Дозволата за фотографии и видеа мора да се додели рачно</string>
+    <string name="main_dialog_settings_message">Претходно избравте „Не прашувај повторно”, па системот повеќе не го прикажува дијалогот за дозволи.\n\nОдете во страницата со детали за апликацијата → Дозволи → Фотографии и видеа, рачно доделете пристап и вратете се во апликацијата.\n\nВнимание: мора да се доделат двете дозволи, „Фотографии” и „Видеа”, инаку Live Photo со две датотеки нема да го најде придружното видео.</string>
+
+    <!-- ── Дијалози за дозволата „Пристап до сите датотеки” ── -->
+    <string name="main_dialog_allfiles_title_delete">Автоматското бришење на оригиналите бара „Пристап до сите датотеки”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Овој уред не поддржува автоматско бришење на оригиналите</string>
+    <string name="main_dialog_allfiles_title_replace">Режимот на замена бара „Пристап до сите датотеки”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Овој уред не поддржува режим на замена</string>
+    <string name="main_dialog_allfiles_title_location">Се препорачува доделување на дозволата „Пристап до сите датотеки”</string>
+    <string name="main_dialog_allfiles_delete_message">„Избриши ги оригиналите по обработката” директно ги брише изворните датотеки од дискот (фотографијата и придружното видео), а операцијата е неповратна, затоа прво мора да се додели дозволата „Пристап до сите датотеки”.\n\nПо доделувањето прекинувачот станува достапен и можете сами да го вклучите.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Тековниот систем (Android 10 и постари) не ја обезбедува дозволата „Пристап до сите датотеки”, па изворните датотеки не можат директно да се избришат од дискот; затоа овој уред не поддржува „Избриши ги оригиналите по обработката”.\n\nМожете рачно да ги исчистите оригиналите од системскиот албум по конверзијата.</string>
+    <string name="main_dialog_allfiles_replace_message">„Режимот на замена” директно го запишува резултатот од конверзијата врз изворните датотеки на дискот (ги презапишува), а операцијата е неповратна, затоа прво мора да се додели дозволата „Пристап до сите датотеки”.\n\nПо доделувањето прекинувачот станува достапен и можете сами да го вклучите.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Тековниот систем (Android 10 и постари) не ја обезбедува дозволата „Пристап до сите датотеки”, па изворните датотеки не можат директно да се презапишат; затоа овој уред не поддржува „Режим на замена”.\n\nМожете да продолжите со стандардната конверзија; резултатите ќе се запишат во папката на албумот.</string>
+    <string name="main_dialog_allfiles_location_message">Некои модели (на пример Meizu) ги отстрануваат GPS информациите за локација кога се пишува преку системскиот API на албумот, поради што конвертираните фотографии ја губат локацијата.\n\nСо дозволата „Пристап до сите датотеки”, апликацијата пишува директно во папката на албумот и целосно ги зачувува метаподатоците за локација.\n\nКонверзијата работи и без оваа дозвола, но на некои модели локацијата може да се изгуби.</string>
+
+    <!-- ── Дијалог за конфликт на име на излезна датотека ── -->
+    <string name="main_dialog_conflict_title">Конфликт на име на излезна датотека</string>
+    <string name="main_dialog_conflict_message">Во излезната папка веќе постои датотека со исто име:\n%1$s\n\nИзберете начин на постапување.</string>
+    <string name="main_label_conflict_always">Користи го овој начин за следните конфликти</string>
+
+    <!-- ── Копчиња во дијалозите ── -->
+    <string name="main_btn_grant">Дозволи</string>
+    <string name="main_btn_deny">Одбиј</string>
+    <string name="main_btn_go_settings">Поставки</string>
+    <string name="main_btn_cancel">Откажи</string>
+    <string name="main_btn_grant_access">Дозволи пристап</string>
+    <string name="main_btn_got_it">Разубрав</string>
+    <string name="main_btn_not_now">Не сега</string>
+    <string name="main_btn_skip">Прескокни</string>
+    <string name="main_btn_overwrite">Презапиши</string>
+    <string name="main_btn_auto_rename">Автоматско преименување</string>
+
+    <!-- ── Резултат од конверзијата / причини за неуспешен извоз ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Избришана е %1$d изворна датотека</item>
+        <item quantity="other">Избришани се %1$d изворни датотеки</item>
+    </plurals>
+    <string name="main_delete_nothing">Нема потреба да се бришат оригиналите</string>
+    <string name="main_delete_partial">Избришани се %1$d изворни датотеки (%2$d бришења не успеаја, зачувани)</string>
+    <string name="main_delete_failed">Бришењето на оригиналите не успеа (датотеката е зафатена или нема дозвола за пишување); зачувани</string>
+    <string name="main_export_missing_output">Резултатот од конверзијата недостасува или е празен: %1$s</string>
+    <string name="main_export_missing_output_bare">Резултатот од конверзијата недостасува или е празен</string>
+    <string name="main_export_insert_null">MediaStore insert врати null</string>
+    <string name="main_export_output_stream">Излезниот тек на MediaStore е недостапен</string>
+    <string name="main_export_write_failed">Пишувањето во MediaStore не успеа: %1$s</string>
+    <string name="main_export_mkdir_failed">Не може да се создаде папката на албумот %1$s</string>
+    <string name="main_export_dir_write_failed">Пишувањето во папката на албумот не успеа: %1$s</string>
+    <string name="main_export_no_source">Изворната датотека не може да се лоцира; замената е прескокната</string>
+    <string name="main_export_companion_failed">Пишувањето на придружната датотека не успеа: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Папката на изворната датотека не е достапна за пишување; придружната датотека не е запишана</string>
+    <string name="main_export_source_dir_unavailable">Папката на изворната датотека е недостапна: %1$s</string>
+    <string name="main_export_replace_failed">Замената на изворната датотека не успеа: %1$s</string>
+    <string name="main_export_replace_failed_bare">Замената на изворната датотека не успеа</string>
+</resources>

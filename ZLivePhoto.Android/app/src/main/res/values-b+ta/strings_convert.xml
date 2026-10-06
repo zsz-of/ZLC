@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · தமிழ் சரங்கள் (ta)।
+  ZLC · Tamil strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">அறியப்படாத இலக்கு வடிவம்: %1$s</string>
+    <string name="conv_unrecognized_live_photo">அடையாளம் காண முடியாத Live Photo வடிவம் (Google/OPPO/vivo/Xiaomi/Apple Live Photo அல்ல)</string>
+    <string name="conv_cover_photo_missing">அட்டைப் படம் இல்லை அல்லது காலியாக உள்ளது</string>
+    <string name="conv_video_missing">காணொளி இல்லை அல்லது காலியாக உள்ளது</string>
+    <string name="conv_video_too_large">Live Photo உருவாக்க காணொளி மிகப் பெரியது (%1$d MB); சுருக்கமான காணொளியைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="conv_transcoded_too_large">டிரான்ஸ்கோட் செய்த பிறகும் காணொளி மிகப் பெரியது (%1$d MB); Live Photo உருவாக்க முடியாது</string>
+    <string name="conv_video_too_large_compose">காணொளி மிகப் பெரியது (%1$d MB); Live Photo உருவாக்க முடியாது</string>
+    <string name="conv_cover_heic_go">அட்டை HEIC படம் (இலகு பதிப்பால் டிரான்ஸ்கோட் செய்ய முடியாது; iPhone-இல் முதலில் JPEG ஆக ஏற்றுமதி செய்து, பிறகு மாற்றவும்)</string>
+    <string name="conv_cover_invalid_heic">அட்டை செல்லுபடியான படம் அல்ல (HEIC-க்கு கணினி HEIF ஆதரவு தேவை)</string>
+    <string name="conv_cover_not_jpeg_go">அட்டை JPEG படம் அல்ல (இலகு பதிப்பால் டிரான்ஸ்கோட் செய்ய முடியாது; JPEG படத்தைப் பயன்படுத்தவும்)</string>
+    <string name="conv_cover_invalid_image">அட்டை செல்லுபடியான படம் அல்ல (JPEG/WebP/PNG மட்டுமே ஆதரிக்கப்படும்)</string>
+    <string name="conv_reencode_failed">காணொளி மறு-குறியாக்கம் தோல்வி: %1$s</string>
+    <string name="conv_remux_failed">கொண்டெய்னர் மறு-இணைப்பு தோல்வி: %1$s</string>
+    <string name="conv_codec_unknown">அங்கீகரிக்கப்பட்ட H.264/H.265 காணொளி அல்ல</string>
+    <string name="conv_codec_is">கோடெக் %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">“%1$s” காணொளி %2$s; கொண்டெய்னரை மட்டும் மாற்றுவதால் (remux) கோடெக்கை மாற்ற முடியாது, எனவே Live Photo உருவாக்க முடியாது.\n\n“அமைப்புகள் → காணொளி டிரான்ஸ்கோடிங் → டிரான்ஸ்கோட் பயன்முறை”-ஐ “மறு-குறியாக்கம்” என அமைக்கவும், அல்லது வேறு கருவியால் அதை H.264/H.265 MP4 ஆக மாற்றவும்.</string>
+    <string name="conv_hint_no_encoder">இந்தக் காணொளி நிலையான MP4 கொண்டெய்னரில் இல்லை (MOV / MKV / WebM / AVI போன்றவை), தற்போதைய “டிரான்ஸ்கோட் பயன்முறை” மறு-குறியாக்கம் செய்யாது, எனவே Live Photo உருவாக்க முடியாது.\n\n“அமைப்புகள் → காணொளி டிரான்ஸ்கோடிங் → டிரான்ஸ்கோட் பயன்முறை”-ஐ “மறு-குறியாக்கம்” என அமைக்கவும் (நிலையான பதிப்பில் ffmpeg குறியாக்கி உள்ளது; Go இலகு பதிப்பில் டிரான்ஸ்கோடர் இல்லை, நிலையான பதிப்பைப் பயன்படுத்தவும்), அல்லது காணொளியை முதலில் நிலையான MP4 (H.264/H.265) ஆக மாற்றவும்.</string>
+    <string name="conv_log_detected">%1$s எனக் கண்டறியப்பட்டது</string>
+    <string name="conv_log_same_format_copied">மூலமும் இலக்கும் ஒரே வடிவம்; அப்படியே நகலெடுக்கப்பட்டது (இழப்பு இல்லை)</string>
+    <string name="conv_log_extra_tracks_bypass">மூலக் காணொளியில் ஒலி/காணொளி அல்லாத தடங்கள் உள்ளன (%1$s); ஒரே வடிவ நேரடி நகலெடுப்பைத் தவிர்த்து, சுத்திகரிக்க முழு எழுத்துப் பாதை பயன்படுத்தப்படுகிறது</string>
+    <string name="conv_log_ts_fallback">மூலத்தில் அட்டைச் சட்ட நேர முத்திரை இல்லை; குறிப்பிட்டபடி காணொளியின் நடுப்புள்ளிக்குத் திரும்புகிறது</string>
+    <string name="conv_log_brand_normalized">காணொளிக் கொண்டெய்னர் பிராண்ட் இயல்பாக்கப்பட்டது (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">காணொளியில் சுத்திகரிக்க முடியாத கூடுதல் தடங்கள் உள்ளன (%1$s); அப்படியே வெளியிடப்படுகிறது (சில சாதனங்களில் நீண்ட அழுத்தலில் இயங்காமல் போகலாம்)</string>
+    <string name="conv_log_extra_tracks_removed">கூடுதல் காணொளித் தடங்கள் நீக்கப்பட்டன (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">மூலக் காணொளி %1$s; கொண்டெய்னரை மட்டும் remux செய்வதால் சரிசெய்ய முடியாது (%2$s). விளைவு இன்னும் நீண்ட அழுத்தலில் இயங்கவில்லை என்றால், “அமைப்புகள் → காணொளி டிரான்ஸ்கோடிங் → டிரான்ஸ்கோட் பயன்முறை”-ஐ “மறு-குறியாக்கம்” என அமைக்கவும்.</string>
+    <string name="conv_log_reencoding">மூலக் காணொளி %1$s; அமைப்பின்படி 8-பிட் + AAC ஆக மறு-குறியாக்கம் செய்யப்படுகிறது (கேலரி இணக்கத்தை மேம்படுத்த)</string>
+    <string name="conv_log_reencode_result_unusable">மறு-குறியாக்க முடிவு பயன்படுத்த முடியாதது; அப்படியே வெளியிடப்படுகிறது (சில சாதனங்களில் நீண்ட அழுத்தலில் இயங்காமல் போகலாம்)</string>
+    <string name="conv_log_reencode_still_risky">மறு-குறியாக்கத்திற்குப் பிறகும் ஆபத்துகள் உள்ளன (%1$s)</string>
+    <string name="conv_log_reencode_failed">மறு-குறியாக்கம் தோல்வி (%1$s); அப்படியே வெளியிடப்படுகிறது (சில சாதனங்களில் நீண்ட அழுத்தலில் இயங்காமல் போகலாம்)</string>
+    <string name="conv_log_cover_heic_converted">அட்டை HEIC ஆக இருந்தது (JPEG அல்ல); தொகுப்பதற்கு முன் நிலையான JPEG ஆக டிரான்ஸ்கோட் செய்யப்பட்டது</string>
+    <string name="conv_log_compose_sizes">கூட்டமைப்பு: படம் %1$d B + காணொளி %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">டிரான்ஸ்கோடர் இயக்கப்படவில்லை: கொண்டெய்னர் பிராண்ட் மட்டும் மாற்றப்படுகிறது (MOV → MP4), மறு-குறியாக்கம் இல்லை</string>
+    <string name="conv_tag_convert">மாற்று</string>
+    <string name="conv_tag_transcode">டிரான்ஸ்கோட்</string>
+    <string name="conv_tag_compose">கூட்டமைப்பு</string>
+    <string name="conv_blocker_no_encoder">உள்ளமைந்த டிரான்ஸ்கோடர் கிடைக்கவில்லை</string>
+    <string name="conv_blocker_mode_no_encode">தற்போதைய “டிரான்ஸ்கோட் பயன்முறை” மறு-குறியாக்கம் செய்யாது</string>
+    <string name="conv_addon_unavailable">உள்ளமைந்த டிரான்ஸ்கோடர் கிடைக்கவில்லை</string>
+    <string name="conv_addon_transcode_failed">ffmpeg டிரான்ஸ்கோட் தோல்வி: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg கொண்டெய்னர் remux தோல்வி: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg மூலம் காணொளி நிலையான MP4 ஆக டிரான்ஸ்கோட் (%1$s / crf %2$d / %3$s; காணொளி மற்றும் ஒலித் தடங்கள் மட்டும் வைக்கப்படுகின்றன)</string>
+    <string name="conv_log_transcode_done">காணொளி டிரான்ஸ்கோட் முடிந்தது (%1$d KB)</string>
+    <string name="conv_log_remuxing">காணொளிக் கொண்டெய்னர் நிலையான MP4 ஆக remux (கொண்டெய்னர் மட்டும், மறு-குறியாக்கம் இல்லை)</string>
+    <string name="conv_log_remux_done">கொண்டெய்னர் remux முடிந்தது (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">கூட்டமைப்பு</string>
+    <string name="conv_reminder_cat_convert">மாற்று</string>
+    <string name="conv_reminder_cat_update">புதுப்பிப்பு</string>
+    <string name="conv_reminder_video_over3s_title">காணொளி 3 வினாடிகளுக்கு மேல்</string>
+    <string name="conv_reminder_video_over3s_message">தேர்ந்தெடுத்த காணொளி 3 வினாடிகளுக்கு மேல் உள்ளது, எனவே உருவாகும் Live Photo-வில் இணக்கச் சிக்கல்கள் இருக்கலாம்:\n\n• சரியாக இயங்காமல் போகலாம்\n• கணினி கேலரி அதை அடையாளம் காணாமல் போகலாம்\n• சில சாதனங்கள் இந்த Live Photo-வை அடையாளம் காணாமல் போகலாம்</string>
+    <string name="conv_reminder_legacy_go_title">பழைய பதிப்பு கண்டறியப்பட்டது</string>
+    <string name="conv_reminder_legacy_go_message">இந்தச் சாதனத்தில் இந்தப் பயன்பாட்டின் பழைய பதிப்பு (Go பதிப்பு) இன்னும் நிறுவப்பட்டுள்ளது. அது இனி இங்கு வேலை செய்யாது; இடத்தைக் காலி செய்ய அதை நீக்கலாம்.</string>
+    <string name="conv_reminder_replace_risk_title">மாற்று பயன்முறையில் சிதைவு ஆபத்து உள்ளது</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">மாற்று பயன்முறை மாற்றத்தின் முடிவுகளை நேரடியாக மூலக் கோப்புகளில் எழுதுகிறது; ஒருமுறை மேலெழுதப்பட்ட பிறகு மூலங்களை மீட்டெடுக்க முடியாது.\n\n• எழுதும் போது பயன்பாடு குறுக்கப்பட்டால், சேமிப்பிடம் தீர்ந்தால் அல்லது அனுமதி பறிக்கப்பட்டால், மூலக் கோப்புகள் சிதைந்து போகலாம்\n• எந்த மாற்றமும் வெற்றியடையும் என உறுதி இல்லை; தோல்வியில் மூலக் கோப்புகள் ஏற்கனவே பயன்படுத்த முடியாததாக இருக்கலாம்\n• மொத்தமாகச் செயலாக்குவதற்கு முன் ஒன்று அல்லது இரண்டு கோப்புகளில் முயற்சித்து எல்லாம் சரியாக உள்ளதா என உறுதிப்படுத்தவும்\n• முக்கியமான புகைப்படங்களை முன்பே காப்புப்பிரதி எடுத்துக்கொள்ளவும்\n\nஇந்த அம்சம் “அப்படியே” வழங்கப்படுகிறது; அதைப் பயன்படுத்துவதில் உள்ள ஆபத்து உங்களுடையது; சிதைந்த அல்லது இழந்த கோப்புகளுக்கு ஆசிரியர் பொறுப்பேற்க மாட்டார்.</string>
+    <string name="conv_reminder_dont_remind">மீண்டும் காட்டாதே</string>
+    <string name="conv_reminder_confirm_ok">புரிந்தது</string>
+    <string name="conv_reminder_uninstall">நிறுவல் நீக்கு</string>
+</resources>

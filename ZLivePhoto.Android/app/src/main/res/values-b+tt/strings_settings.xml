@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Татарча (Tatar) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Tatar (Cyrillic); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Көйләүләр</string>
+    <string name="settings_cd_back">Кире</string>
+    <string name="settings_btn_apply">Куллану</string>
+    <string name="settings_btn_cancel">Кире кагу</string>
+    <string name="settings_btn_close">Ябу</string>
+    <string name="settings_btn_ok">Ярар</string>
+    <string name="settings_btn_sponsor">Ярдәм итү</string>
+    <string name="settings_section_general">Гомуми</string>
+    <string name="settings_section_appearance">Күренеш</string>
+    <string name="settings_section_language">Тел</string>
+    <string name="settings_section_defaults">Килешүле</string>
+    <string name="settings_section_output">Чыгару</string>
+    <string name="settings_section_transcode">Видео транскодлау</string>
+    <string name="settings_section_about">Турында</string>
+    <string name="settings_section_app">Кушымта</string>
+    <string name="settings_section_credits">Рәхмәт һәм ярдәм</string>
+    <string name="settings_section_opensource">Ачык чыганак һәм лицензия</string>
+    <string name="settings_startup_check_title">Башлаганда яңартуны тикшерү</string>
+    <string name="settings_startup_check_subtitle">Башлаганда GitHubтан яңа юраманы автоматик ала һәм яңарту булса йөкләүне тәкъдим итә</string>
+    <string name="settings_haptics_title">Кагу реакциясе</string>
+    <string name="settings_haptics_subtitle">Төймә басылганда һәм халәт үзгәргәндә кагу реакциясе</string>
+    <string name="settings_bounce_title">Төймә пружина анимациясе</string>
+    <string name="settings_bounce_subtitle">Төймә басылганда зураеп кире пружиналанган анимация</string>
+    <string name="settings_theme_system">Системага иярергә</string>
+    <string name="settings_theme_dark">Караңгы</string>
+    <string name="settings_theme_light">Якты</string>
+    <string name="settings_dynamic_theme_title">Material You динамик төс</string>
+    <string name="settings_dynamic_theme_subtitle">Системадагы обой төсенә иярә (Android 12+); сүндергәч түбәндәге килешүле төсләр кулланыла</string>
+    <string name="settings_preset_colors_title">Килешүле тема төсләре</string>
+    <string name="settings_preset_current">Хәзерге: %1$s</string>
+    <string name="settings_preset_disabled_hint">“Material You динамик төс” сүндерелгәннән соң сайларга мөмкин</string>
+    <string name="settings_custom">Көйләнгән</string>
+    <string name="settings_custom_color_title">Көйләнгән тема төсе</string>
+    <string name="settings_cd_custom_palette">Көйләнгән палитра</string>
+    <string name="settings_hue_value">Төс аңы %1$d°</string>
+    <string name="settings_language_dialog_title">Кушымта телен сайлау</string>
+    <string name="settings_language_count">Барлыгы %1$d тел</string>
+    <string name="settings_reminder_dialogs_title">Инде кисәтү күрсәтмәү</string>
+    <string name="settings_reminder_dialogs_subtitle">Барлык “Инде күрсәтмәү” кисәтүләренең көйләгечләрен идарә итү</string>
+    <string name="settings_reminder_hint">Көйләгеч кабынган булса “Инде күрсәтмәү” дигәнне аңлата; сүндергәч киләсе тапкыр тиешле хәл булганда кисәтү яңадан чыга.</string>
+    <string name="settings_preserve_folders_title">Чыганак папка төзелеше буенча чыгару</string>
+    <string name="settings_preserve_folders_subtitle">Әверелү нәтиҗәләре башлангыч альбом исеме буенча эчке папкаларга саклана; сүндергәч барысы да бер папкада була</string>
+    <string name="settings_about_title">Турында</string>
+    <string name="settings_about_subtitle">Юрама · Яңартуны тикшерү · Рәхмәт һәм ярдәм</string>
+    <string name="settings_check_update_title">Яңартуны тикшерү</string>
+    <string name="settings_check_update_subtitle">GitHub Releasesтан иң соңгы юраманы алу</string>
+    <string name="settings_checking">Тикшерелә…</string>
+    <string name="settings_update_available">v%1$s бар</string>
+    <string name="settings_up_to_date">Бу иң соңгы юрама</string>
+    <string name="settings_network_error">Челтәр хатасы, соңрак яңадан тырышып карагыз</string>
+    <string name="settings_reinstall_title">Бу юраманы яңадан урнаштыру</string>
+    <string name="settings_reinstall_subtitle">Хәзерге иң соңгы юраманы йөкләп яңадан урнаштыру (яңартуны сынау өчен)</string>
+    <string name="settings_reinstall_newer_hint">Хәзер v%1$s ка яңартырга мөмкин, башта “Яңартуны тикшерү”не кулланыгыз</string>
+    <string name="settings_version_title">Юрама</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay аша ярдәм</string>
+    <string name="settings_alipay_subtitle">Эшләүне яклау</string>
+    <string name="settings_coolapk_subtitle">Coolapk кулланучысы · Аның ярдәменә рәхмәт</string>
+    <string name="settings_ai_credits_subtitle">Эшләүдә AI IDE һәм AI модельләренең ярдәменә рәхмәт</string>
+    <string name="settings_github_title">GitHub ачык чыганак адресы</string>
+    <string name="settings_license_title">Ачык чыганак лицензиясе</string>
+    <string name="settings_sponsor_dialog_title">Ярдәмегез өчен рәхмәт</string>
+    <string name="settings_sponsor_dialog_text">Бу кушымтаны якларга әзер булганыгыз өчен чын күңелдән зур рәхмәт!
+
+Әгәр сез әле студент булсагыз яки финанс яктан бәйсез булмасагыз, зинһар, акча сарыф итмәгез——
+бу ниятне йөрәгегездә саклап, куллануны дәвам итегез; минем өчен бу иң яхшы ярдәм.
+
+Ярдәм итәсегез килсә, бер сум да мәхәббәт, мин аны яхшырак хезмәт күрсәтүгә һәм функцияләргә сарыф итәрмен :）</string>
+    <string name="settings_alipay_missing_title">Alipay әле урнаштырылмаган</string>
+    <string name="settings_alipay_missing_text">Alipay табылмады, шуңа күрә хәзерге вакытта ярдәмне тәмамлап булмый.
+
+Берни дә түгел——ничек кенә булса да, яхшы ниятегез өчен зур рәхмәт!</string>
+    <string name="settings_transcoder_title">Эчке транскодер</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Яңадан кодлау</string>
+    <string name="settings_transcode_mode_remux">Контейнерны гына яңадан төрү (тәкъдим ителә)</string>
+    <string name="settings_transcode_mode_off">Транскодерны бөтенләй кулланмау</string>
+    <string name="settings_transcode_params_title">Транскод параметрлары</string>
+    <string name="settings_transcode_params_subtitle">Яңадан кодлаганда кулланыла торган сыйфат һәм кысу параметрлары</string>
+    <string name="settings_transcode_params_disabled">“Транскод ысулы”нда “Яңадан кодлау” сайланганда гына гамәлдә</string>
+    <string name="settings_crf_value">Сыйфат CRF: %1$d</string>
+    <string name="settings_crf_hint">Кыйммәт кечерәк булган саен сыйфат югарырак һәм күләме зуррак (килешүле 18)</string>
+    <string name="settings_encoder_title">Кодлаучы</string>
+    <string name="settings_compress_preset_title">Кысу көйләве</string>
+</resources>

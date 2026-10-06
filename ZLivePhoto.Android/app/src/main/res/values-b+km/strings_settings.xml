@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ខ្មែរ (Khmer) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Khmer has no grammatical plural; only the 'other' quantity is emitted.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">ការកំណត់</string>
+    <string name="settings_cd_back">ត្រឡប់</string>
+    <string name="settings_btn_apply">អនុវត្ត</string>
+    <string name="settings_btn_cancel">បោះបង់</string>
+    <string name="settings_btn_close">បិទ</string>
+    <string name="settings_btn_ok">យល់ព្រម</string>
+    <string name="settings_btn_sponsor">ឧបត្ថម្ភ</string>
+    <string name="settings_section_general">ទូទៅ</string>
+    <string name="settings_section_appearance">រូបរាង</string>
+    <string name="settings_section_language">ភាសា</string>
+    <string name="settings_section_defaults">លំនាំដើម</string>
+    <string name="settings_section_output">លទ្ធផល</string>
+    <string name="settings_section_transcode">ការបំប្លែងវីដេអូ</string>
+    <string name="settings_section_about">អំពី</string>
+    <string name="settings_section_app">កម្មវិធី</string>
+    <string name="settings_section_credits">សេចក្តីថ្លែងអំណរគុណ និងការឧបត្ថម្ភ</string>
+    <string name="settings_section_opensource">ប្រភពបើកចំហ និងអាជ្ញាបណ្ណ</string>
+    <string name="settings_startup_check_title">ពិនិត្យបច្ចុប្បន្នភាពពេលចាប់ផ្តើម</string>
+    <string name="settings_startup_check_subtitle">ទាញយកកំណែថ្មីដោយស្វ័យប្រវត្តិពី GitHub ពេលចាប់ផ្តើម និងជូនដំណឹងនៅពេលមានបច្ចុប្បន្នភាព</string>
+    <string name="settings_haptics_title">ការរំញ័រត្រឡប់</string>
+    <string name="settings_haptics_subtitle">ការរំញ័រពេលចុចប៊ូតុង និងពេលស្ថានភាពប្រែប្រួល</string>
+    <string name="settings_bounce_title">ចលនាលោតរបស់ប៊ូតុង</string>
+    <string name="settings_bounce_subtitle">ចលនាពង្រីក និងលោតត្រឡប់ពេលចុចប៊ូតុង</string>
+    <string name="settings_theme_system">ធ្វើតាមប្រព័ន្ធ</string>
+    <string name="settings_theme_dark">ងងឹត</string>
+    <string name="settings_theme_light">ភ្លឺ</string>
+    <string name="settings_dynamic_theme_title">ការប្រើពណ៌ស្វ័យប្រវត្តិ Material You</string>
+    <string name="settings_dynamic_theme_subtitle">ធ្វើតាមពណ៌ផ្ទាំងរូបភាពរបស់ប្រព័ន្ធ (Android 12+); បន្ទាប់ពីបិទ នឹងប្រើពណ៌ដែលកំណត់ទុកខាងក្រោម</string>
+    <string name="settings_preset_colors_title">ពណ៌ស្បែកដែលកំណត់ទុក</string>
+    <string name="settings_preset_current">បច្ចុប្បន្ន៖ %1$s</string>
+    <string name="settings_preset_disabled_hint">អាចជ្រើសបានបន្ទាប់ពីបិទ “ការប្រើពណ៌ស្វ័យប្រវត្តិ Material You”</string>
+    <string name="settings_custom">ផ្ទាល់ខ្លួន</string>
+    <string name="settings_custom_color_title">ពណ៌ស្បែកផ្ទាល់ខ្លួន</string>
+    <string name="settings_cd_custom_palette">ក្ដារពណ៌ផ្ទាល់ខ្លួន</string>
+    <string name="settings_hue_value">សម្លេងពណ៌ %1$d°</string>
+    <string name="settings_language_dialog_title">ជ្រើសភាសាកម្មវិធី</string>
+    <string name="settings_language_count">សរុប %1$d ភាសា</string>
+    <string name="settings_reminder_dialogs_title">លែងបង្ហាញការជូនដំណឹង</string>
+    <string name="settings_reminder_dialogs_subtitle">គ្រប់គ្រងកុងតាក់នៃការជូនដំណឹង “លែងបង្ហាញ” ទាំងអស់</string>
+    <string name="settings_reminder_hint">កុងតាក់បើកមានន័យថា “លែងបង្ហាញ”; បន្ទាប់ពីបិទ លើកក្រោយពេលជួបស្ថានភាពដូចគ្នា នឹងបង្ហាញការជូនដំណឹងម្តងទៀត។</string>
+    <string name="settings_preserve_folders_title">បញ្ចេញលទ្ធផលតាមរចនាសម្ព័ន្ធថតដើម</string>
+    <string name="settings_preserve_folders_subtitle">លទ្ធផលបំប្លែងត្រូវដាក់ក្នុងថតរងតាមឈ្មោះអាល់ប៊ុមដើម; បន្ទាប់ពីបិទ ទាំងអស់នឹងស្ថិតក្នុងថតតែមួយ</string>
+    <string name="settings_about_title">អំពី</string>
+    <string name="settings_about_subtitle">កំណែ · ពិនិត្យបច្ចុប្បន្នភាព · សេចក្តីថ្លែងអំណរគុណ និងការឧបត្ថម្ភ</string>
+    <string name="settings_check_update_title">ពិនិត្យបច្ចុប្បន្នភាព</string>
+    <string name="settings_check_update_subtitle">ទាញយកកំណែចុងក្រោយពី GitHub Releases</string>
+    <string name="settings_checking">កំពុងពិនិត្យ…</string>
+    <string name="settings_update_available">មាន v%1$s</string>
+    <string name="settings_up_to_date">នេះជាកំណែចុងក្រោយបំផុត</string>
+    <string name="settings_network_error">កំហុសបណ្តាញ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ</string>
+    <string name="settings_reinstall_title">ដំឡើងកំណែនេះឡើងវិញ</string>
+    <string name="settings_reinstall_subtitle">ទាញយកកំណែចុងក្រោយបច្ចុប្បន្ន ហើយដំឡើងជំនួស (សម្រាប់សាកល្បងបច្ចុប្បន្នភាព)</string>
+    <string name="settings_reinstall_newer_hint">អាចដំឡើងឡើងដល់ v%1$s សូមប្រើ “ពិនិត្យបច្ចុប្បន្នភាព” ជាមុន</string>
+    <string name="settings_version_title">កំណែ</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">ការឧបត្ថម្ភតាម Alipay</string>
+    <string name="settings_alipay_subtitle">គាំទ្រការអភិវឌ្ឍ</string>
+    <string name="settings_coolapk_subtitle">អ្នកប្រើ Coolapk · អរគុណសម្រាប់ការគាំទ្ររបស់គាត់</string>
+    <string name="settings_ai_credits_subtitle">អរគុណដល់ AI IDE និងគំរូ AI ដែលបានជួយក្នុងការអភិវឌ្ឍ</string>
+    <string name="settings_github_title">អាសយដ្ឋានប្រភពបើកចំហ GitHub</string>
+    <string name="settings_license_title">អាជ្ញាបណ្ណប្រភពបើកចំហ</string>
+    <string name="settings_sponsor_dialog_title">អរគុណសម្រាប់ការគាំទ្ររបស់អ្នក</string>
+    <string name="settings_sponsor_dialog_text">សូមអរគុណយ៉ាងខ្លាំងដែលអ្នកសុខចិត្តគាំទ្រកម្មវិធីនេះ!
+
+ប្រសិនបើអ្នកនៅជាសិស្ស ឬមិនទាន់មានហិរញ្ញវត្ថុឯករាជ្យ សូមកុំចំណាយអ្វីឡើយ——
+រក្សាចិត្តល្អនេះទុកក្នុងចិត្ត ហើយបន្តប្រើប្រាស់ទៅ; សម្រាប់ខ្ញុំ នោះជាការគាំទ្រដ៏ល្អបំផុត។
+
+ប្រសិនបើចង់ឧបត្ថម្ភ សូម្បីតែមួយរៀលក៏ជាសេចក្តីស្រលាញ់ ខ្ញុំនឹងយកវាទៅវិនិយោគលើការថែទាំ និងមុខងារល្អប្រសើរ :）</string>
+    <string name="settings_alipay_missing_title">មិនទាន់បានដំឡើង Alipay</string>
+    <string name="settings_alipay_missing_text">រកមិនឃើញ Alipay ដូច្នេះមិនអាចបញ្ចប់ការឧបត្ថម្ភបានទេ។
+
+មិនអីទេ——ទោះយ៉ាងណា សូមអរគុណចំពោះចិត្តល្អរបស់អ្នក!</string>
+    <string name="settings_transcoder_title">ឧបករណ៍បំប្លែងក្នុងកម្មវិធី</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">អ៊ិនកូដឡើងវិញ</string>
+    <string name="settings_transcode_mode_remux">ខ្ចប់ធុងឡើងវិញតែប៉ុណ្ណោះ (ណែនាំ)</string>
+    <string name="settings_transcode_mode_off">មិនប្រើឧបករណ៍បំប្លែងទាល់តែសោះ</string>
+    <string name="settings_transcode_params_title">ប៉ារ៉ាម៉ែត្របំប្លែង</string>
+    <string name="settings_transcode_params_subtitle">ប៉ារ៉ាម៉ែត្រគុណភាព និងការបង្ហាប់ដែលប្រើពេលអ៊ិនកូដឡើងវិញ</string>
+    <string name="settings_transcode_params_disabled">អនុវត្តតែពេលជ្រើស “អ៊ិនកូដឡើងវិញ” ក្នុង “វិធីបំប្លែង”</string>
+    <string name="settings_crf_value">គុណភាព CRF៖ %1$d</string>
+    <string name="settings_crf_hint">តម្លៃកាន់តែតូច គុណភាពកាន់តែខ្ពស់ និងទំហំកាន់តែធំ (លំនាំដើម 18)</string>
+    <string name="settings_encoder_title">អ៊ិនកូដឌ័រ</string>
+    <string name="settings_compress_preset_title">ការកំណត់បង្ហាប់ស្រាប់</string>
+</resources>

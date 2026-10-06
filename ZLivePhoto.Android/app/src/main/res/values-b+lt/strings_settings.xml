@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lietuvių (lt) — nustatymų ekranas (ui/SettingsScreen.kt, raktai settings_*).
+  Šaltinis: res/values/strings_settings.xml (supaprastinta kinų kalba).
+  Žymenys: %1$s / %1$d. Neverčiama: "@毛血旺o", "GPL-3.0", "H.264"/"H.265", GitHub adresas.
+-->
+<resources>
+
+    <!-- Bendra -->
+    <string name="settings_title">Nustatymai</string>
+    <string name="settings_cd_back">Atgal</string>
+    <string name="settings_btn_apply">Taikyti</string>
+    <string name="settings_btn_cancel">Atšaukti</string>
+    <string name="settings_btn_close">Uždaryti</string>
+    <string name="settings_btn_ok">Gerai</string>
+    <string name="settings_btn_sponsor">Parama</string>
+
+    <!-- Skirsnių pavadinimai -->
+    <string name="settings_section_general">Bendrieji</string>
+    <string name="settings_section_appearance">Išvaizda</string>
+    <string name="settings_section_language">Kalba</string>
+    <string name="settings_section_defaults">Numatytieji nustatymai</string>
+    <string name="settings_section_output">Išvestis</string>
+    <string name="settings_section_transcode">Vaizdo įrašų perkodavimas</string>
+    <string name="settings_section_about">Apie</string>
+    <string name="settings_section_app">Programa</string>
+    <string name="settings_section_credits">Padėkos ir parama</string>
+    <string name="settings_section_opensource">Atvirasis kodas ir licencija</string>
+
+    <!-- Bendra -->
+    <string name="settings_startup_check_title">Tikrinti naujinimus paleidžiant</string>
+    <string name="settings_startup_check_subtitle">Paleidus automatiškai tikrinama, ar GitHub yra nauja versija, ir siūloma atsisiųsti</string>
+    <string name="settings_haptics_title">Vibracijos atsakas</string>
+    <string name="settings_haptics_subtitle">Lytėjimo atsakas spaudžiant mygtukus ir keičiantis būsenai</string>
+    <string name="settings_bounce_title">Elastinga mygtukų animacija</string>
+    <string name="settings_bounce_subtitle">Mygtuko suspaudimo ir atšokimo animacija paspaudus</string>
+
+    <!-- Išvaizda -->
+    <string name="settings_theme_system">Kaip sistemoje</string>
+    <string name="settings_theme_dark">Tamsi</string>
+    <string name="settings_theme_light">Šviesi</string>
+    <string name="settings_dynamic_theme_title">Dinaminės spalvos (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">Sekamos sistemos fono spalvos (Android 12+); išjungus naudojamos žemiau paruoštos spalvos</string>
+    <string name="settings_preset_colors_title">Paruoštos spalvų temos</string>
+    <string name="settings_preset_current">Dabartinė: %1$s</string>
+    <string name="settings_preset_disabled_hint">Pasiekiama išjungus „Dinaminės spalvos (Material You)“</string>
+    <string name="settings_custom">Pasirinktinė</string>
+    <string name="settings_custom_color_title">Pasirinktinė temos spalva</string>
+    <string name="settings_cd_custom_palette">Pasirinktinė paletė</string>
+    <string name="settings_hue_value">Atspalvis %1$d°</string>
+
+    <!-- Programos kalba -->
+    <string name="settings_language_dialog_title">Programos kalbos pasirinkimas</string>
+    <string name="settings_language_count">Iš viso %1$d kalbų</string>
+
+    <!-- Numatytieji nustatymai -->
+    <string name="settings_reminder_dialogs_title">Dialogai „Daugiau nerodyti“</string>
+    <string name="settings_reminder_dialogs_subtitle">Visų jungiklių „Daugiau nerodyti“ valdymas</string>
+    <string name="settings_reminder_hint">Įjungtas jungiklis reiškia „Daugiau nerodyti“; išjungus pranešimas vėl pasirodys kitą kartą patekus į atitinkamą situaciją.</string>
+
+    <!-- Išvestis -->
+    <string name="settings_preserve_folders_title">Išvestis pagal šaltinio aplankų struktūrą</string>
+    <string name="settings_preserve_folders_subtitle">Rezultatai dedami į poaplankius pagal pradinio albumo pavadinimą; išjungus viskas dedama į vieną aplanką</string>
+
+    <!-- Apie -->
+    <string name="settings_about_title">Apie</string>
+    <string name="settings_about_subtitle">Versija · Naujinimų tikrinimas · Padėkos ir parama</string>
+    <string name="settings_check_update_title">Tikrinti naujinimus</string>
+    <string name="settings_check_update_subtitle">Naujausios versijos gavimas iš GitHub Releases</string>
+    <string name="settings_checking">Tikrinama…</string>
+    <string name="settings_update_available">Galima v%1$s</string>
+    <string name="settings_up_to_date">Jau turite naujausią versiją</string>
+    <string name="settings_network_error">Tinklo klaida. Bandykite dar kartą vėliau</string>
+    <string name="settings_reinstall_title">Šios versijos įdiegimas iš naujo</string>
+    <string name="settings_reinstall_subtitle">Naujausios versijos atsisiuntimas ir įdiegimas per dabartinę (naujinimo testavimui)</string>
+    <string name="settings_reinstall_newer_hint">Galima atnaujinti iki v%1$s — pirmiausia naudokite „Tikrinti naujinimus“</string>
+    <string name="settings_version_title">Versija</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Parama per Alipay</string>
+    <string name="settings_alipay_subtitle">Paremkite kūrimą</string>
+    <string name="settings_coolapk_subtitle">Coolapk naudotojas · dėkojame už paramą</string>
+    <string name="settings_ai_credits_subtitle">Dėkojame AI kūrimo aplinkoms ir AI modeliams už pagalbą kuriant</string>
+    <string name="settings_github_title">Atvirasis kodas GitHub</string>
+    <string name="settings_license_title">Atvirojo kodo licencija</string>
+    <string name="settings_sponsor_dialog_title">Dėkojame už paramą</string>
+    <string name="settings_sponsor_dialog_text">Nuoširdžiai dėkoju, kad norite paremti šią programą!\n\nJei dar mokotės ar dar nesate finansiškai nepriklausomi, prašau neleiskite pinigų —\nlaikykite šį gerą jausmą širdyje ir toliau naudokitės programa; tai man geriausia parama.\n\nJei vis dėlto norite paremti, ir mažiausia suma svarbi — ją investuosiu į geresnę priežiūrą ir naujas funkcijas :)</string>
+    <string name="settings_alipay_missing_title">Alipay neįdiegta</string>
+    <string name="settings_alipay_missing_text">Alipay nerasta, todėl šiuo metu paramos atlikti negalima.\n\nNieko tokio — vis tiek labai dėkojame už geranoriškumą!</string>
+
+    <!-- Vaizdo įrašų perkodavimas -->
+    <string name="settings_transcoder_title">Integruota perkodavimo priemonė</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Perkodavimas</string>
+    <string name="settings_transcode_mode_remux">Tik konteinerio perpakavimas (rekomenduojama)</string>
+    <string name="settings_transcode_mode_off">Visiškai nenaudoti perkodavimo priemonės</string>
+    <string name="settings_transcode_params_title">Perkodavimo parametrai</string>
+    <string name="settings_transcode_params_subtitle">Kokybės ir glaudinimo parametrai perkoduojant</string>
+    <string name="settings_transcode_params_disabled">Galioja tik pasirinkus „Perkodavimas“ skiltyje „Perkodavimo būdas“</string>
+    <string name="settings_crf_value">Kokybė CRF: %1$d</string>
+    <string name="settings_crf_hint">Kuo mažesnė reikšmė, tuo aukštesnė kokybė ir didesnis failas (numatytoji 18)</string>
+    <string name="settings_encoder_title">Kodavimo priemonė</string>
+    <string name="settings_compress_preset_title">Glaudinimo profilis</string>
+
+</resources>

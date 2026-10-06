@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ಕನ್ನಡ ಸ್ಟ್ರಿಂಗ್ಗಳು (kn).
+  ZLC · Kannada strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">Live Photo ಸ್ವರೂಪಗಳ ನಡುವೆ ಪರಿವರ್ತಿಸಿ</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d ಫೈಲ್</item>
+        <item quantity="other">%1$d ಫೈಲ್ಗಳು</item>
+    </plurals>
+    <string name="screen_settings">ಸೆಟ್ಟಿಂಗ್ಗಳು</string>
+    <string name="screen_select_output_format">ಔಟ್ಪುಟ್ ಸ್ವರೂಪ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="screen_selected">ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ</string>
+    <string name="screen_vivo_single_warning">⚠ ಕೆಲವು ಹಳೆಯ ಸಾಧನಗಳು ಈ ಸ್ವರೂಪವನ್ನು ಗುರುತಿಸದಿರಬಹುದು</string>
+    <string name="screen_extract_blocked">⚠ ಕ್ಯೂನಲ್ಲಿ ಕಂಪೋಸ್ ಕೆಲಸಗಳಿವೆ; ಹೊರತೆಗೆಯುವಿಕೆಯನ್ನು ಆಯ್ಕೆಮಾಡಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (ಏಕ ಫೈಲ್)</string>
+    <string name="screen_format_vivo">vivo (ಎರಡು ಫೈಲ್ಗಳು)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">ಹೊರತೆಗೆ</string>
+    <string name="screen_toolbox">ಟೂಲ್ಬಾಕ್ಸ್</string>
+    <string name="screen_batch_import">ಬ್ಯಾಚ್ ಆಮದು</string>
+    <string name="screen_batch_import_desc">ಇಡೀ ಗ್ಯಾಲರಿಯನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ Live Photoಗಳನ್ನು ಸಾಮೂಹಿಕವಾಗಿ ಗುರುತಿಸಿ</string>
+    <string name="screen_compose">Live Photo ಕಂಪೋಸ್ ಮಾಡಿ</string>
+    <string name="screen_compose_desc">ಒಂದು ಫೋಟೋ ಮತ್ತು ಒಂದು ವೀಡಿಯೊ ಆಯ್ಕೆಮಾಡಿ ಅವನ್ನು ಒಂದು Live Photo ಆಗಿ ಜೋಡಿಸಿ</string>
+    <string name="screen_replace_mode">ರಿಪ್ಲೇಸ್ ಮೋಡ್</string>
+    <string name="screen_replace_mode_desc">ಹೊಸ ಫೈಲ್ಗಳನ್ನು ರಚಿಸದೆ, ಪರಿವರ್ತನೆ ಫಲಿತಾಂಶಗಳನ್ನು ನೇರವಾಗಿ ಮೂಲ ಫೈಲ್ಗಳಿಗೆ ಬರೆಯಿರಿ</string>
+    <string name="screen_need_all_files_access_hint">“ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ಬೇಕು; ನೀಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="screen_agree_and_enable">ಒಪ್ಪಿ ಆನ್ ಮಾಡಿ</string>
+    <string name="screen_empty_no_files">ಇನ್ನೂ ಯಾವುದೇ ಫೈಲ್ಗಳನ್ನು ಸೇರಿಸಲಾಗಿಲ್ಲ</string>
+    <string name="screen_view_detail">ವಿವರಗಳನ್ನು ನೋಡಿ</string>
+    <string name="screen_add_files">ಫೈಲ್ಗಳನ್ನು ಸೇರಿಸಿ</string>
+    <string name="screen_output_format">ಔಟ್ಪುಟ್ ಸ್ವರೂಪ: %1$s</string>
+    <string name="screen_delete_original">ಪ್ರಕ್ರಿಯೆಯ ನಂತರ ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಅಳಿಸಿ</string>
+    <string name="screen_need_all_files_access_view">“ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ಬೇಕು; ನೋಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="screen_clear">ಅಳಿಸಿ</string>
+    <string name="screen_stop">ಪ್ರಕ್ರಿಯೆ ನಿಲ್ಲಿಸಿ</string>
+    <string name="screen_start_convert">ಪರಿವರ್ತನೆ ಪ್ರಾರಂಭಿಸಿ</string>
+    <string name="screen_status_detail">ಸ್ಥಿತಿ ವಿವರಗಳು</string>
+    <string name="screen_long_press_copy">ಪಠ್ಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ ನಕಲಿಸಲು ದೀರ್ಘವಾಗಿ ಒತ್ತಿರಿ</string>
+    <string name="screen_copy">ನಕಲಿಸಿ</string>
+    <string name="screen_close">ಮುಚ್ಚಿ</string>
+    <string name="screen_back">ಹಿಂದೆ</string>
+    <string name="screen_picker_title_select">Live Photoಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="screen_album_count">ಆಲ್ಬಮ್ %1$d</string>
+    <string name="screen_album_collapse_cover">ಆಲ್ಬಮ್ ಕವರ್ ಸಂಕುಚಿಸಿ</string>
+    <string name="screen_album_expand_cover">ಆಲ್ಬಮ್ ಕವರ್ ವಿಸ್ತರಿಸಿ</string>
+    <string name="screen_scanning_progress">%1$d/%2$d ಸ್ಕ್ಯಾನ್ ಆಗುತ್ತಿದೆ</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d ಫೋಟೋ</item>
+        <item quantity="other">%1$d ಫೋಟೋಗಳು</item>
+    </plurals>
+    <string name="screen_select_all">ಎಲ್ಲವನ್ನೂ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="screen_no_albums">ಆಲ್ಬಮ್ಗಳು ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="screen_no_media">Live Photoಗಳು ಯಾವುವೂ ಸಿಗಲಿಲ್ಲ</string>
+    <string name="screen_no_media_compose">ಫೋಟೋಗಳು ಅಥವಾ ವೀಡಿಯೊಗಳು ಸಿಗಲಿಲ್ಲ</string>
+    <string name="screen_import">ಆಮದು</string>
+    <string name="screen_import_count">%1$d ಆಮದು ಮಾಡಿ</string>
+    <string name="screen_import_mixed">%1$d ಫೋಟೋ · %2$d ವೀಡಿಯೊ ಆಮದು ಮಾಡಿ</string>
+    <string name="screen_search">ಹುಡುಕಿ</string>
+    <string name="screen_search_collapse">ಹುಡುಕಾಟ ಸಂಕುಚಿಸಿ</string>
+    <string name="screen_search_hint">ಹೆಸರಿನಿಂದ ಹುಡುಕಿ</string>
+    <string name="screen_search_clear">ಹುಡುಕಾಟ ಅಳಿಸಿ</string>
+    <string name="screen_sort_date">ದಿನಾಂಕ</string>
+    <string name="screen_sort_size">ಗಾತ್ರ</string>
+    <string name="screen_sort_name">ಹೆಸರು</string>
+    <string name="screen_sort_asc">ಆರೋಹಣ</string>
+    <string name="screen_sort_desc">ಅವರೋಹಣ</string>
+    <string name="screen_date_today">ಇಂದು</string>
+    <string name="screen_date_yesterday">ನಿನ್ನೆ</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · hi strings — Hindi (हिन्दी)
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Hindi (Devanagari). Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">Lanzou शेयर हटा दिया गया है या फ़ाइल मौजूद नहीं है, GitHub से डाउनलोड करें</string>
+    <string name="update_lanzou_gone_short">Lanzou शेयर हटा दिया गया है, GitHub से डाउनलोड करें</string>
+    <string name="update_lanzou_resolve_failed">Lanzou डाउनलोड लिंक का विश्लेषण विफल रहा</string>
+    <string name="update_lanzou_need_passwd">इस Lanzou शेयर के लिए एक्सट्रैक्शन कोड चाहिए, GitHub से डाउनलोड करें (या Release विवरण में कोड देखें)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou एक्सट्रैक्शन कोड ग़लत है</string>
+    <string name="update_err_resolve_failed">विश्लेषण विफल</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou की एंटी-क्रॉल जाँच विफल रही</string>
+    <string name="update_err_no_frame">Lanzou डाउनलोड पेज का विश्लेषण नहीं हो सका (डाउनलोड फ़्रेम नहीं मिला)</string>
+    <string name="update_err_no_file_id">Lanzou फ़ाइल पहचान का विश्लेषण नहीं हो सका</string>
+    <string name="update_err_no_sign">Lanzou हस्ताक्षर का विश्लेषण नहीं हो सका</string>
+    <string name="update_err_ajax_request">इंटरफ़ेस अनुरोध विफल रहा</string>
+    <string name="update_err_api_request">Lanzou API अनुरोध विफल रहा</string>
+    <string name="update_err_empty_direct">Lanzou ने खाली डाउनलोड पता लौटाया</string>
+    <string name="update_err_direct_expired">Lanzou डाउनलोड पता समाप्त हो गया, दोबारा प्राप्त करें</string>
+    <string name="update_err_http_request">अनुरोध विफल (HTTP %1$d)</string>
+    <string name="update_err_connect">डाउनलोड सर्वर से कनेक्ट नहीं हो सका: %1$s</string>
+    <string name="update_err_http">डाउनलोड विफल (HTTP %1$d)</string>
+    <string name="update_err_no_connection">डाउनलोड कनेक्शन नहीं बन सका</string>
+    <string name="update_err_empty">डाउनलोड सामग्री खाली है</string>
+    <string name="update_err_incomplete">डाउनलोड अधूरा (%2$d में से %1$d बाइट मिले), दोबारा डाउनलोड करें</string>
+    <string name="update_err_interrupted">डाउनलोड बीच में रुका: %1$s</string>
+    <string name="update_err_not_apk">डाउनलोड की गई फ़ाइल मान्य इंस्टॉल पैकेज नहीं है (वेब पेज हो सकता है या लिंक समाप्त), दोबारा डाउनलोड करें या GitHub इस्तेमाल करें।</string>
+    <string name="update_err_apk_incomplete">इंस्टॉल पैकेज की सामग्री अधूरी है, दोबारा डाउनलोड करें या GitHub इस्तेमाल करें।</string>
+    <string name="update_err_apk_unparsable">इंस्टॉल पैकेज का विश्लेषण नहीं हो सका (डाउनलोड अधूरा हो सकता है), दोबारा डाउनलोड करें या GitHub इस्तेमाल करें।</string>
+    <string name="update_err_no_install_permission">«अज्ञात ऐप इंस्टॉल करने» की अनुमति अभी नहीं मिली है</string>
+    <string name="update_err_installer_failed">सिस्टम इंस्टॉलर नहीं खुल सका (%1$s), फ़ाइल मैनेजर से इंस्टॉल पैकेज खोलकर मैन्युअल रूप से इंस्टॉल करें</string>
+</resources>

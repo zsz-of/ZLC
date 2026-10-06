@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="update_github_url_missing">Adresa na stiahnutie z GitHubu sa nezískala, skúste to neskôr.</string>
+    <string name="update_flavor_standard">Štandardná verzia</string>
+    <string name="update_flavor_go">Verzia Go</string>
+    <string name="update_lanzou_url_missing">Táto verzia neponúka odkaz na stiahnutie z Lanzou Cloud, použite GitHub.</string>
+    <string name="update_apk_direct_missing">Táto verzia neponúka priamy odkaz na inštalačný balík zodpovedajúci vašej verzii. Vyberte príslušný APK na stránke vydania na GitHube.</string>
+    <string name="update_install_permission_missing">Chýba oprávnenie „Inštalovať neznáme aplikácie“, automatická inštalácia nie je možná. Povoľte ho v nastaveniach systému a skúste to znova.</string>
+    <string name="update_error_unknown">Neznáma chyba</string>
+    <string name="update_fail_lanzou">Stiahnutie z Lanzou Cloud zlyhalo</string>
+    <string name="update_fail_github">Stiahnutie z GitHubu zlyhalo</string>
+    <string name="update_lanzou_resolving">Spracúva sa odkaz na stiahnutie z Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Sťahuje sa z Lanzou Cloud…</string>
+    <string name="update_github_downloading">Sťahuje sa z GitHubu…</string>
+    <string name="update_unzipping">Rozbaľuje sa inštalačný balík…</string>
+    <string name="update_notes_empty">Pre túto verziu nie sú k dispozícii poznámky k vydaniu.</string>
+    <string name="update_use_normal_title">Použite štandardnú verziu</string>
+    <string name="update_use_normal_body">Tento systém je Android 10 alebo novší; odľahčená verzia Go už nie je podporovaná a starú verziu nie je možné ďalej používať.\n\nZistili sme, že je nainštalovaná štandardná verzia (ZLC). Otvorte ju a pokračujte v používaní (nová verzia už kompatibilnú verziu Go neponúka; starú verziu môžete odinštalovať a uvoľniť miesto).</string>
+    <string name="update_open_normal">Otvoriť štandardnú verziu</string>
+    <string name="update_must_update_title">Na pokračovanie je potrebná aktualizácia</string>
+    <string name="update_forced_body">Tento systém je Android 10 alebo novší; odľahčená verzia Go už nie je podporovaná a starú verziu nie je možné ďalej používať. Nová verzia tiež už neponúka kompatibilnú verziu Go.\n\nPripojte sa na internet a klepnutím na „Skúsiť znova“ získajte inštalačný balík štandardnej verzie.</string>
+    <string name="update_retry">Skúsiť znova</string>
+    <string name="update_switch_normal_body">Tento systém je Android 10 alebo novší; odľahčená verzia Go už nie je podporovaná a starú verziu nie je možné ďalej používať.\nStiahnite a nainštalujte štandardnú verziu a pokračujte v používaní (nová verzia už nepodporuje verziu Go).</string>
+    <string name="update_downloading_title">Stiahnuť aktualizáciu</string>
+    <string name="update_cancel">Zrušiť</string>
+    <string name="update_need_permission_title">Vyžaduje sa oprávnenie na inštaláciu</string>
+    <string name="update_need_permission_body">Inštalácia novej verzie vyžaduje systémové oprávnenie „Inštalovať neznáme aplikácie“.\n\nKlepnite na „Prejsť k oprávneniu“, povoľte ho v nastaveniach a vráťte sa do aplikácie; inštalácia bude automaticky pokračovať (bez opätovného sťahovania).</string>
+    <string name="update_grant">Prejsť k oprávneniu</string>
+    <string name="update_notice_title">Upozornenie</string>
+    <string name="update_got_it">Rozumiem</string>
+    <string name="update_notes_title">v%1$s · poznámky k vydaniu</string>
+    <string name="update_back">Späť</string>
+    <string name="update_title_switch_normal">Prepnúť na štandardnú verziu</string>
+    <string name="update_title_reinstall">Preinštalovať túto verziu</string>
+    <string name="update_title_new_version">Je k dispozícii nová verzia</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Táto verzia bude stiahnutá a znova nainštalovaná (prepíše súčasnú aplikáciu).\nTáto funkcia slúži na regresné testovanie mechanizmu aktualizácií.</string>
+    <string name="update_view_notes">Zobraziť poznámky k vydaniu</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud je dočasne nedostupný</string>
+    <string name="update_download_lanzou">Stiahnuť z Lanzou Cloud</string>
+    <string name="update_download_github">Stiahnuť z GitHubu</string>
+    <string name="update_download_browser">Stiahnuť v prehliadači</string>
+    <string name="update_later">Aktualizovať neskôr</string>
+    <string name="update_later_switch">Prepnúť neskôr</string>
+    <string name="update_skip_version">Preskočiť túto verziu</string>
+</resources>

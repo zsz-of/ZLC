@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Latviešu (lv) — iestatījumu ekrāns (ui/SettingsScreen.kt, atslēgas settings_*).
+  Avots: res/values/strings_settings.xml (vienkāršotā ķīniešu valoda).
+  Vietturi: %1$s / %1$d. Netulkot: "@毛血旺o", "GPL-3.0", "H.264"/"H.265", GitHub URL.
+-->
+<resources>
+
+    <!-- Vispārīgi -->
+    <string name="settings_title">Iestatījumi</string>
+    <string name="settings_cd_back">Atpakaļ</string>
+    <string name="settings_btn_apply">Lietot</string>
+    <string name="settings_btn_cancel">Atcelt</string>
+    <string name="settings_btn_close">Aizvērt</string>
+    <string name="settings_btn_ok">Labi</string>
+    <string name="settings_btn_sponsor">Atbalstīt</string>
+
+    <!-- Sadaļu virsraksti -->
+    <string name="settings_section_general">Vispārīgi</string>
+    <string name="settings_section_appearance">Izskats</string>
+    <string name="settings_section_language">Valoda</string>
+    <string name="settings_section_defaults">Noklusējuma opcijas</string>
+    <string name="settings_section_output">Izvade</string>
+    <string name="settings_section_transcode">Video pārkodēšana</string>
+    <string name="settings_section_about">Par lietotni</string>
+    <string name="settings_section_app">Lietotne</string>
+    <string name="settings_section_credits">Pateicības un atbalsts</string>
+    <string name="settings_section_opensource">Atvērtais kods un licence</string>
+
+    <!-- Vispārīgi -->
+    <string name="settings_startup_check_title">Pārbaudīt atjauninājumus palaišanas laikā</string>
+    <string name="settings_startup_check_subtitle">Palaižot automātiski pārbauda GitHub jaunu versiju un piedāvā to lejupielādēt</string>
+    <string name="settings_haptics_title">Vibrācijas atgriezeniskā saite</string>
+    <string name="settings_haptics_subtitle">Taustes atgriezeniskā saite, nospiežot pogas un mainoties statusam</string>
+    <string name="settings_bounce_title">Pogu elastīgā animācija</string>
+    <string name="settings_bounce_subtitle">Pogas samazināšanas un atsitiena animācija nospiešanas brīdī</string>
+
+    <!-- Izskats -->
+    <string name="settings_theme_system">Kā sistēmā</string>
+    <string name="settings_theme_dark">Tumšais</string>
+    <string name="settings_theme_light">Gaišais</string>
+    <string name="settings_dynamic_theme_title">Materiāla You dinamiskās krāsas</string>
+    <string name="settings_dynamic_theme_subtitle">Seko sistēmas fona attēla krāsām (Android 12+); izslēdzot tiek izmantotas zemāk dotās gatavās krāsas</string>
+    <string name="settings_preset_colors_title">Gatavās tēmas krāsas</string>
+    <string name="settings_preset_current">Pašreizējā: %1$s</string>
+    <string name="settings_preset_disabled_hint">Pieejams pēc „Material You dinamisko krāsu“ izslēgšanas</string>
+    <string name="settings_custom">Pielāgota</string>
+    <string name="settings_custom_color_title">Pielāgota tēmas krāsa</string>
+    <string name="settings_cd_custom_palette">Pielāgota palete</string>
+    <string name="settings_hue_value">Tonis %1$d°</string>
+
+    <!-- Lietotnes valoda -->
+    <string name="settings_language_dialog_title">Izvēlieties lietotnes valodu</string>
+    <string name="settings_language_count">Kopā %1$d valodas</string>
+
+    <!-- Noklusējuma opcijas -->
+    <string name="settings_reminder_dialogs_title">Dialoglodziņi „Vairs nerādīt“</string>
+    <string name="settings_reminder_dialogs_subtitle">Pārvaldiet visus slēdžus „Vairs nerādīt“</string>
+    <string name="settings_reminder_hint">Ieslēgts slēdzis nozīmē „Vairs nerādīt“; pēc izslēgšanas paziņojums parādīsies atkal nākamajā attiecīgās situācijas iestāšanās reizē.</string>
+
+    <!-- Izvade -->
+    <string name="settings_preserve_folders_title">Saglabāt avota mapju struktūru</string>
+    <string name="settings_preserve_folders_subtitle">Rezultāti tiek ievietoti apakšmapēs ar sākotnējā albuma nosaukumu; izslēdzot visi faili tiek likti vienā mapē</string>
+
+    <!-- Par lietotni -->
+    <string name="settings_about_title">Par lietotni</string>
+    <string name="settings_about_subtitle">Versija · Atjauninājumu pārbaude · Pateicības un atbalsts</string>
+    <string name="settings_check_update_title">Pārbaudīt atjauninājumus</string>
+    <string name="settings_check_update_subtitle">Iegūt jaunāko versiju no GitHub Releases</string>
+    <string name="settings_checking">Pārbauda…</string>
+    <string name="settings_update_available">Pieejama v%1$s</string>
+    <string name="settings_up_to_date">Jau ir jaunākā versija</string>
+    <string name="settings_network_error">Tīkla kļūda. Mēģiniet vēlāk vēlreiz</string>
+    <string name="settings_reinstall_title">Šīs versijas pārinstalēšana</string>
+    <string name="settings_reinstall_subtitle">Lejupielādēt jaunāko versiju un instalēt to pašreizējās vietā (atjaunināšanas testēšanai)</string>
+    <string name="settings_reinstall_newer_hint">Pieejams atjauninājums uz v%1$s — vispirms izmantojiet „Pārbaudīt atjauninājumus“</string>
+    <string name="settings_version_title">Versija</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Atbalsts ar Alipay</string>
+    <string name="settings_alipay_subtitle">Atbalstiet izstrādi</string>
+    <string name="settings_coolapk_subtitle">Coolapk lietotājs · paldies par sniegto atbalstu</string>
+    <string name="settings_ai_credits_subtitle">Paldies AI izstrādes vidēm un AI modeļiem par palīdzību izstrādē</string>
+    <string name="settings_github_title">Atvērtā koda adrese GitHub</string>
+    <string name="settings_license_title">Atvērtā koda licence</string>
+    <string name="settings_sponsor_dialog_title">Paldies par atbalstu</string>
+    <string name="settings_sponsor_dialog_text">Ļoti liels paldies, ka vēlaties atbalstīt šo lietotni!\n\nJa vēl mācāties vai vēl neesat finansiāli patstāvīgs, lūdzu, netērējiet naudu —\nglabājiet šo labo nodomu sirdī un vienkārši turpiniet lietot lietotni; tas man ir labākais atbalsts.\n\nJa tomēr vēlaties atbalstīt, arī mazākā summa ir nozīmīga — ieguldīšu to labākā uzturēšanā un jaunās funkcijās :)</string>
+    <string name="settings_alipay_missing_title">Alipay nav instalēts</string>
+    <string name="settings_alipay_missing_text">Alipay netika atrasts, tāpēc šobrīd atbalstu nav iespējams sniegt.\n\nNekas — jebkurā gadījumā ļoti paldies par jūsu labo gribu!</string>
+
+    <!-- Video pārkodēšana -->
+    <string name="settings_transcoder_title">Iebūvētais pārkodētājs</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Pārkodēšana</string>
+    <string name="settings_transcode_mode_remux">Tikai konteinera pārpakošana (ieteicams)</string>
+    <string name="settings_transcode_mode_off">Pārkodētāju neizmantot vispār</string>
+    <string name="settings_transcode_params_title">Pārkodēšanas parametri</string>
+    <string name="settings_transcode_params_subtitle">Kvalitātes un saspiešanas parametri pārkodēšanas laikā</string>
+    <string name="settings_transcode_params_disabled">Darbojas tikai tad, ja „Pārkodēšanas veids“ ir „Pārkodēšana“</string>
+    <string name="settings_crf_value">Kvalitāte CRF: %1$d</string>
+    <string name="settings_crf_hint">Jo mazāka vērtība, jo augstāka kvalitāte un lielāks apjoms (noklusējums 18)</string>
+    <string name="settings_encoder_title">Kodētājs</string>
+    <string name="settings_compress_preset_title">Saspiešanas profils</string>
+
+</resources>

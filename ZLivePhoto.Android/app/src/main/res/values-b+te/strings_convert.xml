@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · తెలుగు స్ట్రింగ్లు (te).
+  ZLC · Telugu strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">తెలియని లక్ష్య ఫార్మాట్: %1$s</string>
+    <string name="conv_unrecognized_live_photo">గుర్తించలేని Live Photo ఫార్మాట్ (Google/OPPO/vivo/Xiaomi/Apple Live Photo కాదు)</string>
+    <string name="conv_cover_photo_missing">కవర్ ఫోటో లేదు లేదా ఖాళీగా ఉంది</string>
+    <string name="conv_video_missing">వీడియో లేదు లేదా ఖాళీగా ఉంది</string>
+    <string name="conv_video_too_large">Live Photo సృష్టించడానికి వీడియో చాలా పెద్దది (%1$d MB); చిన్న వీడియోను ఎంచుకోండి</string>
+    <string name="conv_transcoded_too_large">ట్రాన్స్కోడ్ చేసిన తర్వాత కూడా వీడియో చాలా పెద్దది (%1$d MB); Live Photo సృష్టించలేము</string>
+    <string name="conv_video_too_large_compose">వీడియో చాలా పెద్దది (%1$d MB); Live Photo సృష్టించలేము</string>
+    <string name="conv_cover_heic_go">కవర్ HEIC చిత్రం (లైట్వెయిట్ ఎడిషన్ ట్రాన్స్కోడ్ చేయలేదు; iPhoneలో మొదట JPEGగా ఎగుమతి చేసి, తర్వాత మార్చండి)</string>
+    <string name="conv_cover_invalid_heic">కవర్ చెల్లుబాటు అయ్యే చిత్రం కాదు (HEICకి సిస్టమ్ HEIF మద్దతు అవసరం)</string>
+    <string name="conv_cover_not_jpeg_go">కవర్ JPEG చిత్రం కాదు (లైట్వెయిట్ ఎడిషన్ ట్రాన్స్కోడ్ చేయలేదు; JPEG ఫోటోను ఉపయోగించండి)</string>
+    <string name="conv_cover_invalid_image">కవర్ చెల్లుబాటు అయ్యే చిత్రం కాదు (JPEG/WebP/PNG మాత్రమే మద్దతు)</string>
+    <string name="conv_reencode_failed">వీడియో రీ-ఎన్కోడ్ విఫలమైంది: %1$s</string>
+    <string name="conv_remux_failed">కంటైనర్ రీమక్స్ విఫలమైంది: %1$s</string>
+    <string name="conv_codec_unknown">గుర్తించిన H.264/H.265 వీడియో కాదు</string>
+    <string name="conv_codec_is">కోడెక్ %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">“%1$s” వీడియో %2$s; కంటైనర్ను మాత్రమే మార్చడం (remux) కోడెక్ను మార్చలేదు, కాబట్టి Live Photo సృష్టించలేము.\n\n“సెట్టింగ్లు → వీడియో ట్రాన్స్కోడింగ్ → ట్రాన్స్కోడ్ మోడ్”-ను “రీ-ఎన్కోడ్”గా సెట్ చేయండి, లేదా మరో సాధనంతో దాన్ని H.264/H.265 MP4గా మార్చండి.</string>
+    <string name="conv_hint_no_encoder">ఈ వీడియో ప్రామాణిక MP4 కంటైనర్లో లేదు (MOV / MKV / WebM / AVI మొదలైనవి), ప్రస్తుత “ట్రాన్స్కోడ్ మోడ్” రీ-ఎన్కోడ్ చేయదు, కాబట్టి Live Photo సృష్టించలేము.\n\n“సెట్టింగ్లు → వీడియో ట్రాన్స్కోడింగ్ → ట్రాన్స్కోడ్ మోడ్”-ను “రీ-ఎన్కోడ్”గా సెట్ చేయండి (ప్రామాణిక ఎడిషన్లో ffmpeg ఎన్కోడర్ ఉంటుంది; Go లైట్వెయిట్ ఎడిషన్లో ట్రాన్స్కోడర్ లేదు, ప్రామాణిక ఎడిషన్ ఉపయోగించండి), లేదా వీడియోను మొదట ప్రామాణిక MP4 (H.264/H.265)గా మార్చండి.</string>
+    <string name="conv_log_detected">%1$sగా గుర్తించబడింది</string>
+    <string name="conv_log_same_format_copied">మూలం, లక్ష్యం ఒకే ఫార్మాట్; అలాగే కాపీ చేయబడింది (నష్టం లేదు)</string>
+    <string name="conv_log_extra_tracks_bypass">మూల వీడియోలో ఆడియో/వీడియోయేతర ట్రాక్లు ఉన్నాయి (%1$s); ఒకే-ఫార్మాట్ నేరు కాపీని దాటవేసి, శుద్ధి చేయడానికి పూర్తి రైట్ మార్గం ఉపయోగించబడుతోంది</string>
+    <string name="conv_log_ts_fallback">మూలంలో కవర్-ఫ్రేమ్ టైమ్స్టామ్ప్ లేదు; పేర్కొన్న విధంగా వీడియో మధ్య బిందువుకు వెనక్కి వెళ్తోంది</string>
+    <string name="conv_log_brand_normalized">వీడియో కంటైనర్ బ్రాండ్ సాధారణీకరించబడింది (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">వీడియోలో శుద్ధి చేయలేని అదనపు ట్రాక్లు ఉన్నాయి (%1$s); అలాగే అవుట్పుట్ చేయబడుతోంది (కొన్ని పరికరాల్లో దీర్ఘ నొక్కడంపై ప్లే కాకపోవచ్చు)</string>
+    <string name="conv_log_extra_tracks_removed">అదనపు వీడియో ట్రాక్లు తొలగించబడ్డాయి (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">మూల వీడియో %1$s; కంటైనర్ను మాత్రమే remux చేయడం దాన్ని సరిచేయలేదు (%2$s). ఫలితం ఇప్పటికీ దీర్ఘ నొక్కడంపై ప్లే కాకపోతే, “సెట్టింగ్లు → వీడియో ట్రాన్స్కోడింగ్ → ట్రాన్స్కోడ్ మోడ్”-ను “రీ-ఎన్కోడ్”గా సెట్ చేయండి.</string>
+    <string name="conv_log_reencoding">మూల వీడియో %1$s; గ్యాలరీ అనుకూలత మెరుగుపరచడానికి సెట్ చేసిన విధంగా 8-బిట్ + AACగా రీ-ఎన్కోడ్ చేయబడుతోంది</string>
+    <string name="conv_log_reencode_result_unusable">రీ-ఎన్కోడ్ ఫలితం ఉపయోగించలేనిది; అలాగే అవుట్పుట్ చేయబడుతోంది (కొన్ని పరికరాల్లో దీర్ఘ నొక్కడంపై ప్లే కాకపోవచ్చు)</string>
+    <string name="conv_log_reencode_still_risky">రీ-ఎన్కోడ్ తర్వాత కూడా ప్రమాదాలు మిగిలి ఉన్నాయి (%1$s)</string>
+    <string name="conv_log_reencode_failed">రీ-ఎన్కోడ్ విఫలమైంది (%1$s); అలాగే అవుట్పుట్ చేయబడుతోంది (కొన్ని పరికరాల్లో దీర్ఘ నొక్కడంపై ప్లే కాకపోవచ్చు)</string>
+    <string name="conv_log_cover_heic_converted">కవర్ HEIC (JPEG కాదు); ప్యాకేజ్ చేయడానికి ముందు ప్రామాణిక JPEGగా ట్రాన్స్కోడ్ చేయబడింది</string>
+    <string name="conv_log_compose_sizes">కంపోజ్: ఫోటో %1$d B + వీడియో %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ట్రాన్స్కోడర్ ప్రారంభించబడలేదు: కంటైనర్ బ్రాండ్ మాత్రమే తిరిగి రాయబడుతోంది (MOV → MP4), రీ-ఎన్కోడ్ లేదు</string>
+    <string name="conv_tag_convert">మార్చు</string>
+    <string name="conv_tag_transcode">ట్రాన్స్కోడ్</string>
+    <string name="conv_tag_compose">కంపోజ్</string>
+    <string name="conv_blocker_no_encoder">అంతర్నిర్మిత ట్రాన్స్కోడర్ అందుబాటులో లేదు</string>
+    <string name="conv_blocker_mode_no_encode">ప్రస్తుత “ట్రాన్స్కోడ్ మోడ్” రీ-ఎన్కోడ్ చేయదు</string>
+    <string name="conv_addon_unavailable">అంతర్నిర్మిత ట్రాన్స్కోడర్ అందుబాటులో లేదు</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ట్రాన్స్కోడ్ విఫలమైంది: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg కంటైనర్ remux విఫలమైంది: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpegతో వీడియోను ప్రామాణిక MP4గా ట్రాన్స్కోడ్ చేస్తోంది (%1$s / crf %2$d / %3$s; వీడియో, ఆడియో ట్రాక్లు మాత్రమే ఉంచబడతాయి)</string>
+    <string name="conv_log_transcode_done">వీడియో ట్రాన్స్కోడ్ పూర్తయింది (%1$d KB)</string>
+    <string name="conv_log_remuxing">వీడియో కంటైనర్ను ప్రామాణిక MP4గా remux చేస్తోంది (కంటైనర్ మాత్రమే, రీ-ఎన్కోడ్ లేదు)</string>
+    <string name="conv_log_remux_done">కంటైనర్ remux పూర్తయింది (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">కంపోజ్</string>
+    <string name="conv_reminder_cat_convert">మార్చు</string>
+    <string name="conv_reminder_cat_update">అప్డేట్</string>
+    <string name="conv_reminder_video_over3s_title">వీడియో 3 సెకన్ల కంటే పొడవుగా ఉంది</string>
+    <string name="conv_reminder_video_over3s_message">ఎంచుకున్న వీడియో 3 సెకన్ల కంటే పొడవుగా ఉంది, కాబట్టి ఏర్పడే Live Photoకి అనుకూలత సమస్యలు రావచ్చు:\n\n• సరిగ్గా ప్లే కాకపోవచ్చు\n• సిస్టమ్ గ్యాలరీ దాన్ని గుర్తించకపోవచ్చు\n• కొన్ని పరికరాలు ఈ Live Photoను గుర్తించకపోవచ్చు</string>
+    <string name="conv_reminder_legacy_go_title">పాత వెర్షన్ గుర్తించబడింది</string>
+    <string name="conv_reminder_legacy_go_message">ఈ పరికరంలో ఈ యాప్ పాత వెర్షన్ (Go ఎడిషన్) ఇంకా ఇన్స్టాల్ చేయబడి ఉంది. అది ఇక్కడ పనిచేయదు; స్థలం ఖాళీ చేయడానికి దాన్ని అన్ఇన్స్టాల్ చేయవచ్చు.</string>
+    <string name="conv_reminder_replace_risk_title">రిప్లేస్ మోడ్లో పాడయ్యే ప్రమాదం ఉంది</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">రిప్లేస్ మోడ్ మార్పిడి ఫలితాలను నేరుగా మూల ఫైళ్లలో రాస్తుంది; ఒకసారి ఓవర్రైట్ అయిన తర్వాత మూలాలను తిరిగి పొందలేము.\n\n• రాస్తున్నప్పుడు యాప్ అంతరాయం కలిగితే, నిల్వ నిండిపోతే లేదా అనుమతి ఉపసంహరించబడితే, మూల ఫైళ్లు పాడయ్యే అవకాశం ఉంది\n• ఏ మార్పిడీ విజయవంతమవుతుందని హామీ లేదు; విఫలమైతే మూల ఫైళ్లు ఇప్పటికే ఉపయోగించలేనివిగా ఉండవచ్చు\n• అన్నింటినీ బ్యాచ్గా చేయడానికి ముందు ఒకటి లేదా రెండు ఫైళ్లతో ప్రయత్నించి అంతా సరిగ్గా ఉందని నిర్ధారించుకోండి\n• ముఖ్యమైన ఫోటోలను ముందుగానే మీరే బ్యాకప్ చేసుకోండి\n\nఈ ఫీచర్ “అలాగే” అందించబడుతోంది; దాన్ని ఉపయోగించే ప్రమాదం మీదే; పాడైన లేదా పోయిన ఫైళ్లకు రచయిత బాధ్యత వహించడు.</string>
+    <string name="conv_reminder_dont_remind">మళ్లీ చూపించవద్దు</string>
+    <string name="conv_reminder_confirm_ok">అర్థమైంది</string>
+    <string name="conv_reminder_uninstall">అన్ఇన్స్టాల్</string>
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Latviešu (lv) — atjaunināšanas un lejupielādes teksti (atslēgas update_*).
+  Avots: res/values/strings_update.xml (vienkāršotā ķīniešu valoda).
+  „蓝奏云“ (Lanzou Cloud) ir ķīniešu failu koplietošanas pakalpojums.
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud koplietošanas lapa un tiešās saites ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud koplietošana ir atcelta vai fails neeksistē. Lejupielādējiet no GitHub</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud koplietošana ir atcelta. Lejupielādējiet no GitHub</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud lejupielādes saites noteikšana neizdevās</string>
+    <string name="update_lanzou_need_passwd">Šai Lanzou Cloud koplietošanai nepieciešams piekļuves kods. Lejupielādējiet no GitHub (vai meklējiet kodu laidiena aprakstā)</string>
+    <string name="update_lanzou_wrong_passwd">Nepareizs Lanzou Cloud piekļuves kods</string>
+    <string name="update_err_resolve_failed">Noteikšana neizdevās</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud pretrobotu pārbaude neizdevās</string>
+    <string name="update_err_no_frame">Lanzou Cloud lejupielādes lapu nevar noteikt (nav atrasts lejupielādes kadrs)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud faila identifikatoru nevar noteikt</string>
+    <string name="update_err_no_sign">Lanzou Cloud parakstu nevar noteikt</string>
+    <string name="update_err_ajax_request">Pieprasījums saskarnei neizdevās</string>
+    <string name="update_err_api_request">Pieprasījums Lanzou Cloud saskarnei neizdevās</string>
+    <string name="update_err_empty_direct">Lanzou Cloud atgrieza tukšu lejupielādes adresi</string>
+    <string name="update_err_direct_expired">Lanzou Cloud lejupielādes adrese ir novecojusi. Iegūstiet to no jauna</string>
+    <string name="update_err_http_request">Pieprasījums neizdevās (HTTP %1$d)</string>
+
+    <!-- ========== Lejupielāde ========== -->
+    <string name="update_err_connect">Nevar savienoties ar lejupielādes serveri: %1$s</string>
+    <string name="update_err_http">Lejupielāde neizdevās (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Nevar izveidot lejupielādes savienojumu</string>
+    <string name="update_err_empty">Lejupielādētais saturs ir tukšs</string>
+    <string name="update_err_incomplete">Lejupielāde ir nepilnīga (iegūti %1$d no %2$d baitiem). Lejupielādējiet vēlreiz</string>
+    <string name="update_err_interrupted">Lejupielāde pārtraukta: %1$s</string>
+
+    <!-- ========== Instalācijas pakotnes pārbaude un instalēšana ========== -->
+    <string name="update_err_not_apk">Lejupielādētais fails nav derīga instalācijas pakotne (iespējams, tā ir tīmekļa lapa vai saite ir novecojusi). Lejupielādējiet vēlreiz vai izmantojiet GitHub.</string>
+    <string name="update_err_apk_incomplete">Instalācijas pakotnes saturs ir nepilnīgs. Lejupielādējiet vēlreiz vai izmantojiet GitHub.</string>
+    <string name="update_err_apk_unparsable">Instalācijas pakotni nevar nolasīt (iespējams, lejupielāde ir nepilnīga). Lejupielādējiet vēlreiz vai izmantojiet GitHub.</string>
+    <string name="update_err_no_install_permission">Nav piešķirta atļauja „Instalēt nezināmas lietotnes“</string>
+    <string name="update_err_installer_failed">Nevar palaist sistēmas instalētāju (%1$s). Atveriet pakotni manuāli failu pārvaldniekā</string>
+
+</resources>

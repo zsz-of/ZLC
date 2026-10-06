@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Монгол (Mongolian) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Mongolian (Cyrillic); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Задлах</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor хөдөлгөөнт зураг</string>
+    <string name="fmt_meizu">Meizu хөдөлгөөнт зураг</string>
+    <string name="fmt_nubia">Nubia хөдөлгөөнт зураг</string>
+    <string name="fmt_oppo">OPPO хөдөлгөөнт зураг</string>
+    <string name="fmt_vivo">vivo хөдөлгөөнт зураг</string>
+    <string name="fmt_vivo_single">vivo нэг файлтай хөдөлгөөнт зураг</string>
+    <string name="fmt_xiaomi">Xiaomi хөдөлгөөнт зураг</string>
+    <string name="fmt_err_apple_mov_missing">Ижил нэртэй .mov видео файл олдсонгүй</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV файлд ftyp box байхгүй</string>
+    <string name="fmt_err_extract_read">Задлах нь гаралтын формат тул оролтын формат болгон унших боломжгүй</string>
+    <string name="fmt_err_no_primary_jpeg">Үндсэн JPEG зураг олдсонгүй</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG-ийн дараа хүчинтэй MP4 видео олдсонгүй (ftyp box байхгүй)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 видео урсгалыг задлан шинжлэхэд алдаа гарлаа</string>
+    <string name="fmt_err_nubia_too_short">Файл хэт богино, Nubia хөдөлгөөнт зураг биш бололтой</string>
+    <string name="fmt_err_nubia_no_magic">nubiaVpfile-ийн төгсгөлийн magic number байхгүй</string>
+    <string name="fmt_err_nubia_jpeg_len">Trailer-т бичигдсэн JPEG урт буруу: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG болон видеоны хооронд 0x00 padding bytes байхгүй</string>
+    <string name="fmt_err_nubia_empty_video">Суулгасан видеоны урт 0 байна</string>
+    <string name="fmt_err_vivo_no_marker">JPG-ийн төгсгөлөөс vivo livephoto тэмдэг олдсонгүй</string>
+    <string name="fmt_err_vivo_companion_missing">Хавсаргасан видео файл байхгүй: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG-ийн үндсэн хэсгийг задлан шинжлэхэд алдаа гарлаа</string>
+    <string name="fmt_err_vivo_companion_invalid">Хавсаргасан MP4 хүчингүй (ftyp box байхгүй)</string>
+</resources>

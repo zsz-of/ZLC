@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · fa strings — Persian (فارسی, RTL)
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Persian (Farsi). RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">نشانی دانلود GitHub دریافت نشد؛ کمی بعد دوباره تلاش کنید.</string>
+    <string name="update_flavor_standard">نسخه استاندارد</string>
+    <string name="update_flavor_go">نسخه Go</string>
+    <string name="update_lanzou_url_missing">این نسخه لینک دانلود Lanzou ندارد؛ می‌توانید از GitHub استفاده کنید.</string>
+    <string name="update_apk_direct_missing">این نسخه لینک مستقیم بسته نصبی متناسب با خود را ارائه نمی‌دهد؛ فایل APK مناسب را از صفحه انتشار GitHub انتخاب کنید.</string>
+    <string name="update_install_permission_missing">مجوز «نصب برنامه‌های ناشناس» داده نشده است و نصب خودکار ممکن نیست. آن را در تنظیمات سیستم فعال کنید و دوباره تلاش کنید.</string>
+    <string name="update_error_unknown">خطای ناشناخته</string>
+    <string name="update_fail_lanzou">دانلود از Lanzou ناموفق بود</string>
+    <string name="update_fail_github">دانلود از GitHub ناموفق بود</string>
+    <string name="update_lanzou_resolving">در حال تجزیه لینک دانلود Lanzou…</string>
+    <string name="update_lanzou_downloading">در حال دانلود از Lanzou…</string>
+    <string name="update_github_downloading">در حال دانلود از GitHub…</string>
+    <string name="update_unzipping">در حال استخراج بسته نصب…</string>
+    <string name="update_notes_empty">برای این نسخه توضیح به‌روزرسانی وجود ندارد.</string>
+    <string name="update_use_normal_title">لطفاً از نسخه عادی استفاده کنید</string>
+    <string name="update_use_normal_body">سیستم این دستگاه Android 10 یا بالاتر است؛ نسخه سبک Go دیگر پشتیبانی نمی‌شود و نسخه قدیمی قابل استفاده نیست.\n\nمشخص شد که نسخه عادی (ZLC) روی دستگاه نصب است؛ برای ادامه مستقیماً آن را باز کنید (نسخه‌های جدید دیگر نسخه سازگار Go را ارائه نمی‌کنند و می‌توانید نسخه قدیمی را برای آزاد کردن فضا حذف کنید).</string>
+    <string name="update_open_normal">باز کردن نسخه عادی</string>
+    <string name="update_must_update_title">برای ادامه استفاده باید به‌روزرسانی کنید</string>
+    <string name="update_forced_body">سیستم این دستگاه Android 10 یا بالاتر است؛ نسخه سبک Go دیگر پشتیبانی نمی‌شود و نسخه قدیمی قابل استفاده نیست؛ نسخه‌های جدید هم دیگر نسخه سازگار Go را ارائه نمی‌کنند.\n\nبه شبکه وصل شوید و «تلاش مجدد» را بزنید تا بسته نصب نسخه عادی دریافت شود.</string>
+    <string name="update_retry">تلاش مجدد</string>
+    <string name="update_switch_normal_body">سیستم این دستگاه Android 10 یا بالاتر است؛ نسخه سبک Go دیگر پشتیبانی نمی‌شود و نسخه قدیمی قابل استفاده نیست.\nنسخه عادی را دانلود و نصب کنید و سپس ادامه دهید (نسخه‌های جدید دیگر نسخه سازگار Go را ارائه نمی‌کنند).</string>
+    <string name="update_downloading_title">دانلود به‌روزرسانی</string>
+    <string name="update_cancel">لغو</string>
+    <string name="update_need_permission_title">نیاز به مجوز نصب</string>
+    <string name="update_need_permission_body">نصب نسخه جدید به مجوز سیستم «نصب برنامه‌های ناشناس» نیاز دارد.\n\nروی «دادن مجوز» بزنید، در تنظیمات اجازه دهید و به برنامه بازگردید تا نصب به‌طور خودکار ادامه یابد (بدون دانلود دوباره).</string>
+    <string name="update_grant">دادن مجوز</string>
+    <string name="update_notice_title">توجه</string>
+    <string name="update_got_it">متوجه شدم</string>
+    <string name="update_notes_title">v%1$s · توضیح به‌روزرسانی</string>
+    <string name="update_back">بازگشت</string>
+    <string name="update_title_switch_normal">تغییر به نسخه عادی</string>
+    <string name="update_title_reinstall">نصب دوباره همین نسخه</string>
+    <string name="update_title_new_version">نسخه جدیدی یافت شد</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">این نسخه دانلود و دوباره نصب می‌شود (روی برنامه فعلی).\nاین قابلیت برای آزمودن سازوکار به‌روزرسانی است.</string>
+    <string name="update_view_notes">مشاهده توضیح به‌روزرسانی</string>
+    <string name="update_lanzou_unavailable">Lanzou فعلاً در دسترس نیست</string>
+    <string name="update_download_lanzou">دانلود از Lanzou</string>
+    <string name="update_download_github">دانلود از GitHub</string>
+    <string name="update_download_browser">دانلود از مرورگر</string>
+    <string name="update_later">بعداً</string>
+    <string name="update_later_switch">فعلاً تغییر نده</string>
+    <string name="update_skip_version">پرش از این نسخه</string>
+</resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · தமிழ் சரங்கள் (ta)।
+  ZLC · Tamil strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">அமைப்புகள்</string>
+    <string name="settings_cd_back">பின்செல்</string>
+    <string name="settings_btn_apply">பயன்படுத்து</string>
+    <string name="settings_btn_cancel">ரத்து</string>
+    <string name="settings_btn_close">மூடு</string>
+    <string name="settings_btn_ok">சரி</string>
+    <string name="settings_btn_sponsor">நன்கொடை</string>
+    <string name="settings_section_general">பொது</string>
+    <string name="settings_section_appearance">தோற்றம்</string>
+    <string name="settings_section_language">மொழி</string>
+    <string name="settings_section_defaults">இயல்புநிலைகள்</string>
+    <string name="settings_section_output">வெளியீடு</string>
+    <string name="settings_section_transcode">வீடியோ டிரான்ஸ்கோடிங்</string>
+    <string name="settings_section_about">பற்றி</string>
+    <string name="settings_section_app">பயன்பாடு</string>
+    <string name="settings_section_credits">நன்றிகள் &amp; நன்கொடைகள்</string>
+    <string name="settings_section_opensource">திறந்த மூலம் &amp; உரிமம்</string>
+    <string name="settings_startup_check_title">தொடக்கத்தில் புதுப்பிப்புகளைச் சரிபார்</string>
+    <string name="settings_startup_check_subtitle">தொடங்கும்போது GitHub-இல் இருந்து புதிய பதிப்புகளைத் தானாகப் பெற்று, ஏதேனும் கிடைத்தால் பதிவிறக்கக் கேட்கும்</string>
+    <string name="settings_haptics_title">ஹாப்டிக் பின்னூட்டம்</string>
+    <string name="settings_haptics_subtitle">பொத்தான்களைத் தட்டும்போதும் நிலை மாறும்போதும் ஹாப்டிக் பின்னூட்டம்</string>
+    <string name="settings_bounce_title">பொத்தான் துள்ளல் அனிமேஷன்</string>
+    <string name="settings_bounce_subtitle">பொத்தானை அழுத்தும்போது அளவு மாறி துள்ளும் அனிமேஷன்</string>
+    <string name="settings_theme_system">கணினி அமைப்பைப் பின்பற்று</string>
+    <string name="settings_theme_dark">இருள்</string>
+    <string name="settings_theme_light">ஒளி</string>
+    <string name="settings_dynamic_theme_title">Material You மாறும் நிறம்</string>
+    <string name="settings_dynamic_theme_subtitle">கணினி வால்பேப்பர் நிறத்தைப் பின்பற்றும் (Android 12+); அணைத்தால் கீழே உள்ள முன்னமைவு நிறங்கள் பயன்படும்</string>
+    <string name="settings_preset_colors_title">முன்னமைவு தீம் நிறங்கள்</string>
+    <string name="settings_preset_current">தற்போதையது: %1$s</string>
+    <string name="settings_preset_disabled_hint">தேர்ந்தெடுக்க “Material You மாறும் நிறம்”-ஐ அணைக்கவும்</string>
+    <string name="settings_custom">தனிப்பயன்</string>
+    <string name="settings_custom_color_title">தனிப்பயன் தீம் நிறம்</string>
+    <string name="settings_cd_custom_palette">தனிப்பயன் நிறத்தொகுப்பு</string>
+    <string name="settings_hue_value">நிறச்சாயல் %1$d°</string>
+    <string name="settings_language_dialog_title">பயன்பாட்டு மொழியைத் தேர்ந்தெடு</string>
+    <string name="settings_language_count">%1$d மொழிகள் கிடைக்கின்றன</string>
+    <string name="settings_reminder_dialogs_title">“மீண்டும் காட்டாதே” உரையாடல்கள்</string>
+    <string name="settings_reminder_dialogs_subtitle">அனைத்து “மீண்டும் காட்டாதே” உரையாடல்களின் இயக்கிகளை நிர்வகி</string>
+    <string name="settings_reminder_hint">இயக்கி இயக்கத்தில் இருந்தால் அந்தக் கேள்வி மீண்டும் காட்டப்படாது; அணைந்திருந்தால் அடுத்த முறை அந்த நிலை வரும்போது மீண்டும் தோன்றும்.</string>
+    <string name="settings_preserve_folders_title">மூல கோப்புறை அமைப்பைப் பயன்படுத்தி வெளியிடு</string>
+    <string name="settings_preserve_folders_subtitle">முடிவுகள் அசல் ஆல்பங்களின் பெயரில் உள்ள துணைக்கோப்புறைகளில் சேமிக்கப்படும்; அணைத்தால் அனைத்தும் ஒரே கோப்புறையில் தட்டையாக வைக்கப்படும்</string>
+    <string name="settings_about_title">பற்றி</string>
+    <string name="settings_about_subtitle">பதிப்பு · புதுப்பிப்புகளைச் சரிபார் · நன்றிகள் &amp; நன்கொடைகள்</string>
+    <string name="settings_check_update_title">புதுப்பிப்புகளைச் சரிபார்</string>
+    <string name="settings_check_update_subtitle">GitHub Releases-இல் இருந்து சமீபத்திய பதிப்பைப் பெறு</string>
+    <string name="settings_checking">சரிபார்க்கப்படுகிறது…</string>
+    <string name="settings_update_available">v%1$s கிடைக்கிறது</string>
+    <string name="settings_up_to_date">நீங்கள் சமீபத்திய பதிப்பில் உள்ளீர்கள்</string>
+    <string name="settings_network_error">நெட்வொர்க் பிழை; சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்</string>
+    <string name="settings_reinstall_title">இந்தப் பதிப்பை மீண்டும் நிறுவு</string>
+    <string name="settings_reinstall_subtitle">தற்போதைய சமீபத்திய கட்டுமானத்தைப் பதிவிறக்கி இதன் மேல் நிறுவு (புதுப்பிப்புகளைச் சோதிக்க)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s கிடைக்கிறது; முதலில் “புதுப்பிப்புகளைச் சரிபார்” மூலம் மேம்படுத்தவும்</string>
+    <string name="settings_version_title">பதிப்பு</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay மூலம் நன்கொடை</string>
+    <string name="settings_alipay_subtitle">உருவாக்கத்தை ஆதரி</string>
+    <string name="settings_coolapk_subtitle">Coolapk பயனர் · ஆதரவுக்கு நன்றி</string>
+    <string name="settings_ai_credits_subtitle">உருவாக்கத்தில் உதவிய AI IDE-கள் மற்றும் AI மாதிரிகளுக்கு நன்றி</string>
+    <string name="settings_github_title">GitHub களஞ்சியம்</string>
+    <string name="settings_license_title">திறந்த மூல உரிமம்</string>
+    <string name="settings_sponsor_dialog_title">உங்கள் ஆதரவுக்கு நன்றி</string>
+    <string name="settings_sponsor_dialog_text">இந்தப் பயன்பாட்டை ஆதரிக்க உங்கள் விருப்பத்திற்கு மனமார்ந்த நன்றி!\n\nநீங்கள் இன்னும் மாணவராக இருந்தால், அல்லது பொருளாதாரச் சுதந்திரம் இல்லாதவராக இருந்தால், தயவுசெய்து இதற்குப் பணம் செலவிட வேண்டாம் — அந்த அன்பை மனதில் வைத்துக்கொண்டு பயன்பாட்டைத் தொடர்ந்து பயன்படுத்துவதே எனக்குக் கிடைக்கும் சிறந்த ஆதரவு.\n\nநீங்கள் நன்கொடை அளிக்க விரும்பினால், சிறிதளவு கூட உதவும், அதைச் சிறந்த பராமரிப்பு மற்றும் அம்சங்களுக்குச் செலவிடுவேன்:)</string>
+    <string name="settings_alipay_missing_title">Alipay நிறுவப்படவில்லை</string>
+    <string name="settings_alipay_missing_text">Alipay கண்டறியப்படவில்லை, எனவே இப்போது நன்கொடையை முடிக்க முடியாது.\n\nபரவாயில்லை — எப்படியிருந்தாலும் உங்கள் அன்புக்கு மிக்க நன்றி!</string>
+    <string name="settings_transcoder_title">உள்ளமைந்த டிரான்ஸ்கோடர்</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">மீண்டும் குறியாக்கம்</string>
+    <string name="settings_transcode_mode_remux">கொள்கலனை மட்டும் மாற்று (பரிந்துரைக்கப்படுகிறது)</string>
+    <string name="settings_transcode_mode_off">டிரான்ஸ்கோடரை ஒருபோதும் பயன்படுத்தாதே</string>
+    <string name="settings_transcode_params_title">டிரான்ஸ்கோடிங் அளவுருக்கள்</string>
+    <string name="settings_transcode_params_subtitle">மீண்டும் குறியாக்கம் செய்யும்போது பயன்படும் தரம் மற்றும் சுருக்க அளவுருக்கள்</string>
+    <string name="settings_transcode_params_disabled">“டிரான்ஸ்கோடிங் பயன்முறை” “மீண்டும் குறியாக்கம்” ஆக இருக்கும்போது மட்டுமே செல்லுபடியாகும்</string>
+    <string name="settings_crf_value">தரம் CRF: %1$d</string>
+    <string name="settings_crf_hint">குறைந்த மதிப்புகள் அதிக தரத்தையும் பெரிய கோப்புகளையும் குறிக்கும் (இயல்புநிலை 18)</string>
+    <string name="settings_encoder_title">குறியாக்கி</string>
+    <string name="settings_compress_preset_title">சுருக்க முன்னமைவு</string>
+</resources>

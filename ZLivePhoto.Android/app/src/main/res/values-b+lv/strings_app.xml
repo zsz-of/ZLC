@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Latviešu (lv) — lietotnes valodas iestatījumi (strings_app.xml).
+  Avots: res/values/strings_app.xml (vienkāršotā ķīniešu valoda).
+-->
+<resources>
+    <string name="app_language_follow_system">Kā sistēmā</string>
+    <string name="app_language_title">Lietotnes valoda</string>
+</resources>

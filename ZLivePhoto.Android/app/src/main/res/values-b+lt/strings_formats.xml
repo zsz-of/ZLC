@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lietuvių (lt) — formatų pavadinimai ir klaidų pranešimai (raktai fmt_*).
+  Šaltinis: res/values/strings_formats.xml (supaprastinta kinų kalba).
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Išskaidymas</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (vienas failas)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Nerastas to paties pavadinimo .mov vaizdo failas</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV faile trūksta ftyp box</string>
+    <string name="fmt_err_extract_read">Išskaidymas yra išvesties formatas, jo negalima skaityti kaip įvesties</string>
+    <string name="fmt_err_no_primary_jpeg">Nerastas pagrindinis JPEG vaizdas</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Po JPEG nerastas tinkamas MP4 vaizdo įrašas (trūksta ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Nepavyko išanalizuoti MP4 vaizdo srauto</string>
+    <string name="fmt_err_nubia_too_short">Failas per trumpas, kad būtų Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Trūksta baigiamojo nubiaVpfile magiškojo skaičiaus</string>
+    <string name="fmt_err_nubia_jpeg_len">Netinkamas faile įrašytas JPEG ilgis: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Tarp JPEG ir vaizdo įrašo trūksta 0x00 užpildo baitų</string>
+    <string name="fmt_err_nubia_empty_video">Įterpto vaizdo įrašo ilgis yra 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG pabaigoje nerastas vivo livephoto žymeklis</string>
+    <string name="fmt_err_vivo_companion_missing">Trūksta lydimojo vaizdo įrašo failo: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Nepavyko išanalizuoti JPG turinio</string>
+    <string name="fmt_err_vivo_companion_invalid">Lydimasis MP4 netinkamas (trūksta ftyp box)</string>
+</resources>

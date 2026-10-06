@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lietuvių (lt) — programos kalbos nuostatos (strings_app.xml).
+  Šaltinis: res/values/strings_app.xml (supaprastinta kinų kalba).
+-->
+<resources>
+    <string name="app_language_follow_system">Kaip sistemoje</string>
+    <string name="app_language_title">Programos kalba</string>
+</resources>

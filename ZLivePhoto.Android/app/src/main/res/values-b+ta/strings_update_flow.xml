@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · தமிழ் சரங்கள் (ta)।
+  ZLC · Tamil strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">GitHub பதிவிறக்க URL எதுவும் பெறப்படவில்லை; சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="update_flavor_standard">நிலையான பதிப்பு</string>
+    <string name="update_flavor_go">Go பதிப்பு</string>
+    <string name="update_lanzou_url_missing">இந்தப் பதிப்பு Lanzou Cloud பதிவிறக்க இணைப்பை வழங்கவில்லை; இதற்குப் பதிலாக GitHub-ஐப் பயன்படுத்தலாம்.</string>
+    <string name="update_apk_direct_missing">இந்தப் பதிப்பு உங்கள் பதிப்புக்குப் பொருந்தும் நேரடித் தொகுப்பு இணைப்பை வழங்கவில்லை; GitHub வெளியீட்டுப் பக்கத்தில் சரியான APK-ஐத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="update_install_permission_missing">“அறியப்படாத பயன்பாடுகளை நிறுவு” அனுமதி வழங்கப்படவில்லை, எனவே தானியங்கி நிறுவல் சாத்தியமில்லை. கணினி அமைப்புகளில் அதை அனுமதித்து மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="update_error_unknown">அறியப்படாத பிழை</string>
+    <string name="update_fail_lanzou">Lanzou Cloud பதிவிறக்கம் தோல்வி</string>
+    <string name="update_fail_github">GitHub பதிவிறக்கம் தோல்வி</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud பதிவிறக்க இணைப்பு தீர்க்கப்படுகிறது…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud-இல் இருந்து பதிவிறக்கப்படுகிறது…</string>
+    <string name="update_github_downloading">GitHub-இல் இருந்து பதிவிறக்கப்படுகிறது…</string>
+    <string name="update_unzipping">தொகுப்பு பிரிக்கப்படுகிறது…</string>
+    <string name="update_notes_empty">இந்தப் பதிப்புக்கு வெளியீட்டுக் குறிப்புகள் இல்லை.</string>
+    <string name="update_use_normal_title">நிலையான பதிப்பைப் பயன்படுத்தவும்</string>
+    <string name="update_use_normal_body">இந்தச் சாதனம் Android 10 அல்லது அதற்குப் பிந்தையதை இயக்குகிறது, Go இலகு பதிப்பு இனி ஆதரிக்கப்படாது; பழைய பதிப்பை இனி பயன்படுத்த முடியாது.\n\nநிலையான பதிப்பு (ZLC) ஏற்கனவே இந்தச் சாதனத்தில் நிறுவப்பட்டுள்ளது — அதைத் திறந்து அங்கே தொடரவும் (புதிய வெளியீடுகளில் Go-இணக்கமான கட்டுமானம் இல்லை; இடத்தைக் காலி செய்ய பழைய பதிப்பை நீக்கலாம்).</string>
+    <string name="update_open_normal">நிலையான பதிப்பைத் திற</string>
+    <string name="update_must_update_title">தொடர்வதற்கு முன் புதுப்பிக்க வேண்டும்</string>
+    <string name="update_forced_body">இந்தச் சாதனம் Android 10 அல்லது அதற்குப் பிந்தையதை இயக்குகிறது, Go இலகு பதிப்பு இனி ஆதரிக்கப்படாது; பழைய பதிப்பை இனி பயன்படுத்த முடியாது, புதிய வெளியீடுகளில் Go-இணக்கமான கட்டுமானம் இல்லை.\n\nஇணையத்துடன் இணைத்து “மீண்டும் முயற்சி”-ஐத் தட்டி நிலையான பதிப்புத் தொகுப்பைப் பெறவும்.</string>
+    <string name="update_retry">மீண்டும் முயற்சி</string>
+    <string name="update_switch_normal_body">இந்தச் சாதனம் Android 10 அல்லது அதற்குப் பிந்தையதை இயக்குகிறது, Go இலகு பதிப்பு இனி ஆதரிக்கப்படாது; பழைய பதிப்பை இனி பயன்படுத்த முடியாது.\nதொடர நிலையான பதிப்பைப் பதிவிறக்கி நிறுவவும் (புதிய வெளியீடுகளில் Go-இணக்கமான கட்டுமானம் இல்லை).</string>
+    <string name="update_downloading_title">புதுப்பிப்பைப் பதிவிறக்கு</string>
+    <string name="update_cancel">ரத்து</string>
+    <string name="update_need_permission_title">நிறுவல் அனுமதி தேவை</string>
+    <string name="update_need_permission_body">புதிய பதிப்பை நிறுவ கணினியின் “அறியப்படாத பயன்பாடுகளை நிறுவு” அனுமதி தேவை.\n\n“வழங்கு”-ஐத் தட்டி, அமைப்புகளில் அதை அனுமதித்து பயன்பாட்டுக்குத் திரும்பவும்; பிறகு நிறுவல் தானாகத் தொடரும் (மீண்டும் பதிவிறக்கத் தேவையில்லை).</string>
+    <string name="update_grant">வழங்கு</string>
+    <string name="update_notice_title">அறிவிப்பு</string>
+    <string name="update_got_it">புரிந்தது</string>
+    <string name="update_notes_title">v%1$s · வெளியீட்டுக் குறிப்புகள்</string>
+    <string name="update_back">பின்செல்</string>
+    <string name="update_title_switch_normal">நிலையான பதிப்புக்கு மாறு</string>
+    <string name="update_title_reinstall">இந்தப் பதிப்பை மீண்டும் நிறுவு</string>
+    <string name="update_title_new_version">புதிய பதிப்பு கிடைக்கிறது</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">இது இந்தப் பதிப்பைப் பதிவிறக்கி மீண்டும் நிறுவும் (தற்போதைய பயன்பாட்டை மேலெழுதும்).\nஇந்த அம்சம் புதுப்பிப்பு முறையைப் பின்னடைவுச் சோதனை செய்யப் பயன்படுகிறது.</string>
+    <string name="update_view_notes">வெளியீட்டுக் குறிப்புகளைப் பார்</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud தற்காலிகமாகக் கிடைக்கவில்லை</string>
+    <string name="update_download_lanzou">Lanzou Cloud-இல் இருந்து பதிவிறக்கு</string>
+    <string name="update_download_github">GitHub-இல் இருந்து பதிவிறக்கு</string>
+    <string name="update_download_browser">உலாவியில் இருந்து பதிவிறக்கு</string>
+    <string name="update_later">பிறகு புதுப்பி</string>
+    <string name="update_later_switch">பிறகு மாறு</string>
+    <string name="update_skip_version">இந்தப் பதிப்பைத் தவிர்</string>
+</resources>

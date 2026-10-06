@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="update_lanzou_gone">Sdílení na Lanzou Cloud bylo zrušeno nebo soubor neexistuje. Použijte stažení z GitHubu</string>
+    <string name="update_lanzou_gone_short">Sdílení na Lanzou Cloud bylo zrušeno. Použijte stažení z GitHubu</string>
+    <string name="update_lanzou_resolve_failed">Nepodařilo se zpracovat odkaz ke stažení z Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Toto sdílení na Lanzou Cloud vyžaduje přístupový kód. Použijte stažení z GitHubu (nebo kód najdete v popisu vydání)</string>
+    <string name="update_lanzou_wrong_passwd">Nesprávný přístupový kód Lanzou Cloud</string>
+    <string name="update_err_resolve_failed">Zpracování se nezdařilo</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Ověření proti automatickému stahování u Lanzou Cloud selhalo</string>
+    <string name="update_err_no_frame">Nelze zpracovat stránku ke stažení z Lanzou Cloud (nenalezen rámec pro stažení)</string>
+    <string name="update_err_no_file_id">Nelze zjistit identifikátor souboru na Lanzou Cloud</string>
+    <string name="update_err_no_sign">Nelze zjistit podpis Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Požadavek na rozhraní selhal</string>
+    <string name="update_err_api_request">Požadavek na rozhraní Lanzou Cloud selhal</string>
+    <string name="update_err_empty_direct">Lanzou Cloud vrátil prázdnou adresu ke stažení</string>
+    <string name="update_err_direct_expired">Adresa ke stažení z Lanzou Cloud vypršela, získejte ji znovu</string>
+    <string name="update_err_http_request">Požadavek selhal (HTTP %1$d)</string>
+    <string name="update_err_connect">Nelze se připojit k serveru pro stahování: %1$s</string>
+    <string name="update_err_http">Stažení selhalo (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Nelze navázat spojení pro stažení</string>
+    <string name="update_err_empty">Stažený obsah je prázdný</string>
+    <string name="update_err_incomplete">Stažení je neúplné (získáno %1$d z %2$d bajtů), stáhněte znovu</string>
+    <string name="update_err_interrupted">Stažení přerušeno: %1$s</string>
+    <string name="update_err_not_apk">Stažený soubor není platný instalační balíček (může jít o webovou stránku nebo vypršel odkaz). Stáhněte znovu nebo použijte GitHub.</string>
+    <string name="update_err_apk_incomplete">Obsah instalačního balíčku je neúplný. Stáhněte znovu nebo použijte GitHub.</string>
+    <string name="update_err_apk_unparsable">Instalační balíček nelze zpracovat (pravděpodobně neúplné stažení). Stáhněte znovu nebo použijte GitHub.</string>
+    <string name="update_err_no_install_permission">Chybí oprávnění „Instalovat neznámé aplikace“</string>
+    <string name="update_err_installer_failed">Nelze spustit systémový instalátor (%1$s). Otevřete instalační balíček ručně ve správci souborů.</string>
+</resources>

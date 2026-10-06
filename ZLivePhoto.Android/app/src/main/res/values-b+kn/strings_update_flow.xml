@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ಕನ್ನಡ ಸ್ಟ್ರಿಂಗ್ಗಳು (kn).
+  ZLC · Kannada strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">GitHub ಡೌನ್ಲೋಡ್ URL ಸಿಗಲಿಲ್ಲ; ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="update_flavor_standard">ಪ್ರಮಾಣಿತ ಆವೃತ್ತಿ</string>
+    <string name="update_flavor_go">Go ಆವೃತ್ತಿ</string>
+    <string name="update_lanzou_url_missing">ಈ ಆವೃತ್ತಿ Lanzou Cloud ಡೌನ್ಲೋಡ್ ಲಿಂಕ್ ನೀಡುವುದಿಲ್ಲ; ಬದಲಿಗೆ GitHub ಬಳಸಬಹುದು.</string>
+    <string name="update_apk_direct_missing">ಈ ಆವೃತ್ತಿ ನಿಮ್ಮ ಎಡಿಷನ್ಗೆ ಹೊಂದುವ ನೇರ ಪ್ಯಾಕೇಜ್ ಲಿಂಕ್ ನೀಡುವುದಿಲ್ಲ; ದಯವಿಟ್ಟು GitHub ಬಿಡುಗಡೆ ಪುಟದಲ್ಲಿ ಸರಿಯಾದ APK ಆಯ್ಕೆಮಾಡಿ.</string>
+    <string name="update_install_permission_missing">“ಅಜ್ಞಾತ ಆ್ಯಪ್ಗಳನ್ನು ಇನ್ಸ್ಟಾಲ್ ಮಾಡಿ” ಅನುಮತಿ ನೀಡಿಲ್ಲ, ಆದ್ದರಿಂದ ಸ್ವಯಂಚಾಲಿತ ಇನ್ಸ್ಟಾಲ್ ಸಾಧ್ಯವಿಲ್ಲ. ದಯವಿಟ್ಟು ಸಿಸ್ಟಂ ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ ಅನುಮತಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="update_error_unknown">ಅಜ್ಞಾತ ದೋಷ</string>
+    <string name="update_fail_lanzou">Lanzou Cloud ಡೌನ್ಲೋಡ್ ವಿಫಲವಾಯಿತು</string>
+    <string name="update_fail_github">GitHub ಡೌನ್ಲೋಡ್ ವಿಫಲವಾಯಿತು</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud ಡೌನ್ಲೋಡ್ ಲಿಂಕ್ ಪರಿಹರಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud ನಿಂದ ಡೌನ್ಲೋಡ್ ಆಗುತ್ತಿದೆ…</string>
+    <string name="update_github_downloading">GitHub ನಿಂದ ಡೌನ್ಲೋಡ್ ಆಗುತ್ತಿದೆ…</string>
+    <string name="update_unzipping">ಪ್ಯಾಕೇಜ್ ಹೊರತೆಗೆಯಲಾಗುತ್ತಿದೆ…</string>
+    <string name="update_notes_empty">ಈ ಆವೃತ್ತಿಗೆ ಬಿಡುಗಡೆ ಟಿಪ್ಪಣಿಗಳಿಲ್ಲ.</string>
+    <string name="update_use_normal_title">ದಯವಿಟ್ಟು ಪ್ರಮಾಣಿತ ಆವೃತ್ತಿ ಬಳಸಿ</string>
+    <string name="update_use_normal_body">ಈ ಸಾಧನವು Android 10 ಅಥವಾ ನಂತರದ್ದನ್ನು ಚಲಾಯಿಸುತ್ತದೆ, Go ಲೈಟ್ವೇಟ್ ಆವೃತ್ತಿ ಇನ್ನು ಬೆಂಬಲಿತವಲ್ಲ; ಹಳೆಯ ಆವೃತ್ತಿಯನ್ನು ಇನ್ನು ಬಳಸಲಾಗುವುದಿಲ್ಲ.\n\nಪ್ರಮಾಣಿತ ಆವೃತ್ತಿ (ZLC) ಈಗಾಗಲೇ ಈ ಸಾಧನದಲ್ಲಿ ಇನ್ಸ್ಟಾಲ್ ಆಗಿದೆ — ದಯವಿಟ್ಟು ಅದನ್ನು ತೆರೆದು ಅಲ್ಲಿಯೇ ಮುಂದುವರಿಸಿ (ಹೊಸ ಬಿಡುಗಡೆಗಳಲ್ಲಿ Go-ಹೊಂದಾಣಿಕೆಯ ಬಿಲ್ಡ್ ಇಲ್ಲ; ಜಾಗ ಖಾಲಿ ಮಾಡಲು ಹಳೆಯ ಆವೃತ್ತಿಯನ್ನು ಅನ್ಇನ್ಸ್ಟಾಲ್ ಮಾಡಬಹುದು).</string>
+    <string name="update_open_normal">ಪ್ರಮಾಣಿತ ಆವೃತ್ತಿ ತೆರೆಯಿರಿ</string>
+    <string name="update_must_update_title">ಮುಂದುವರಿಯಲು ಮೊದಲು ಅಪ್ಡೇಟ್ ಮಾಡಬೇಕು</string>
+    <string name="update_forced_body">ಈ ಸಾಧನವು Android 10 ಅಥವಾ ನಂತರದ್ದನ್ನು ಚಲಾಯಿಸುತ್ತದೆ, Go ಲೈಟ್ವೇಟ್ ಆವೃತ್ತಿ ಇನ್ನು ಬೆಂಬಲಿತವಲ್ಲ; ಹಳೆಯ ಆವೃತ್ತಿಯನ್ನು ಇನ್ನು ಬಳಸಲಾಗುವುದಿಲ್ಲ, ಮತ್ತು ಹೊಸ ಬಿಡುಗಡೆಗಳಲ್ಲಿ Go-ಹೊಂದಾಣಿಕೆಯ ಬಿಲ್ಡ್ ಇಲ್ಲ.\n\nದಯವಿಟ್ಟು ಇಂಟರ್ನೆಟ್ಗೆ ಸಂಪರ್ಕಿಸಿ “ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ” ಒತ್ತಿ ಪ್ರಮಾಣಿತ ಆವೃತ್ತಿ ಪ್ಯಾಕೇಜ್ ಪಡೆಯಿರಿ.</string>
+    <string name="update_retry">ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="update_switch_normal_body">ಈ ಸಾಧನವು Android 10 ಅಥವಾ ನಂತರದ್ದನ್ನು ಚಲಾಯಿಸುತ್ತದೆ, Go ಲೈಟ್ವೇಟ್ ಆವೃತ್ತಿ ಇನ್ನು ಬೆಂಬಲಿತವಲ್ಲ; ಹಳೆಯ ಆವೃತ್ತಿಯನ್ನು ಇನ್ನು ಬಳಸಲಾಗುವುದಿಲ್ಲ.\nಮುಂದುವರಿಯಲು ದಯವಿಟ್ಟು ಪ್ರಮಾಣಿತ ಆವೃತ್ತಿಯನ್ನು ಡೌನ್ಲೋಡ್ ಮಾಡಿ ಇನ್ಸ್ಟಾಲ್ ಮಾಡಿ (ಹೊಸ ಬಿಡುಗಡೆಗಳಲ್ಲಿ Go-ಹೊಂದಾಣಿಕೆಯ ಬಿಲ್ಡ್ ಇಲ್ಲ).</string>
+    <string name="update_downloading_title">ಅಪ್ಡೇಟ್ ಡೌನ್ಲೋಡ್</string>
+    <string name="update_cancel">ರದ್ದು</string>
+    <string name="update_need_permission_title">ಇನ್ಸ್ಟಾಲ್ ಅನುಮತಿ ಬೇಕು</string>
+    <string name="update_need_permission_body">ಹೊಸ ಆವೃತ್ತಿಯನ್ನು ಇನ್ಸ್ಟಾಲ್ ಮಾಡಲು ಸಿಸ್ಟಂ “ಅಜ್ಞಾತ ಆ್ಯಪ್ಗಳನ್ನು ಇನ್ಸ್ಟಾಲ್ ಮಾಡಿ” ಅನುಮತಿ ಬೇಕು.\n\n“ಅನುಮತಿಸಿ” ಒತ್ತಿ, ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ ಅದನ್ನು ಅನುಮತಿಸಿ ಆ್ಯಪ್ಗೆ ಹಿಂತಿರುಗಿ; ನಂತರ ಇನ್ಸ್ಟಾಲ್ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಮುಂದುವರಿಯುತ್ತದೆ (ಮತ್ತೆ ಡೌನ್ಲೋಡ್ ಬೇಕಿಲ್ಲ).</string>
+    <string name="update_grant">ಅನುಮತಿಸಿ</string>
+    <string name="update_notice_title">ಸೂಚನೆ</string>
+    <string name="update_got_it">ಅರ್ಥವಾಯಿತು</string>
+    <string name="update_notes_title">v%1$s · ಬಿಡುಗಡೆ ಟಿಪ್ಪಣಿಗಳು</string>
+    <string name="update_back">ಹಿಂದೆ</string>
+    <string name="update_title_switch_normal">ಪ್ರಮಾಣಿತ ಆವೃತ್ತಿಗೆ ಬದಲಾಯಿಸಿ</string>
+    <string name="update_title_reinstall">ಈ ಆವೃತ್ತಿಯನ್ನು ಮರುಸ್ಥಾಪಿಸಿ</string>
+    <string name="update_title_new_version">ಹೊಸ ಆವೃತ್ತಿ ಲಭ್ಯವಿದೆ</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">ಇದು ಈ ಆವೃತ್ತಿಯನ್ನು ಡೌನ್ಲೋಡ್ ಮಾಡಿ ಮರುಸ್ಥಾಪಿಸುತ್ತದೆ (ಪ್ರಸ್ತುತ ಆ್ಯಪ್ ಅನ್ನು ಓವರ್ರೈಟ್ ಮಾಡುತ್ತದೆ).\nಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಅಪ್ಡೇಟ್ ವಿಧಾನವನ್ನು ರಿಗ್ರೆಷನ್ ಪರೀಕ್ಷಿಸಲು ಬಳಸಲಾಗುತ್ತದೆ.</string>
+    <string name="update_view_notes">ಬಿಡುಗಡೆ ಟಿಪ್ಪಣಿಗಳನ್ನು ನೋಡಿ</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud ತಾತ್ಕಾಲಿಕವಾಗಿ ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="update_download_lanzou">Lanzou Cloud ನಿಂದ ಡೌನ್ಲೋಡ್ ಮಾಡಿ</string>
+    <string name="update_download_github">GitHub ನಿಂದ ಡೌನ್ಲೋಡ್ ಮಾಡಿ</string>
+    <string name="update_download_browser">ಬ್ರೌಸರ್ನಿಂದ ಡೌನ್ಲೋಡ್ ಮಾಡಿ</string>
+    <string name="update_later">ನಂತರ ಅಪ್ಡೇಟ್ ಮಾಡಿ</string>
+    <string name="update_later_switch">ನಂತರ ಬದಲಾಯಿಸಿ</string>
+    <string name="update_skip_version">ಈ ಆವೃತ್ತಿಯನ್ನು ಬಿಟ್ಟುಬಿಡಿ</string>
+</resources>

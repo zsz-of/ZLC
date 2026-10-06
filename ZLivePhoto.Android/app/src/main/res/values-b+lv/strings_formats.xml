@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Latviešu (lv) — formātu nosaukumi un lietotājam redzamie kļūdu paziņojumi (atslēgas fmt_*).
+  Avots: res/values/strings_formats.xml (vienkāršotā ķīniešu valoda).
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Izvilkt</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (viens fails)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Nav atrasts tāda paša nosaukuma .mov video fails</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV failā trūkst ftyp box</string>
+    <string name="fmt_err_extract_read">Izvilkt ir izvades formāts, to nevar nolasīt kā ievades formātu</string>
+    <string name="fmt_err_no_primary_jpeg">Nav atrasts galvenais JPEG attēls</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Pēc JPEG nav atrasts derīgs MP4 video (trūkst ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 video plūsmas parsēšana neizdevās</string>
+    <string name="fmt_err_nubia_too_short">Fails ir pārāk īss, lai būtu Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Trūkst nubiaVpfile noslēguma maģiskā skaitļa</string>
+    <string name="fmt_err_nubia_jpeg_len">Faila beigās norādītais JPEG garums nav derīgs: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Starp JPEG un video trūkst 0x00 aizpildes baitu</string>
+    <string name="fmt_err_nubia_empty_video">Iegultā video garums ir 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG beigās nav atrasts vivo livephoto marķieris</string>
+    <string name="fmt_err_vivo_companion_missing">Trūkst papildu video faila: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG pamatdaļas parsēšana neizdevās</string>
+    <string name="fmt_err_vivo_companion_invalid">Papildu MP4 nav derīgs (trūkst ftyp box)</string>
+</resources>

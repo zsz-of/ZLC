@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · O'zbekcha (Uzbek) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Uzbek (Latin); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Ajratish</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor jonli foto</string>
+    <string name="fmt_meizu">Meizu jonli foto</string>
+    <string name="fmt_nubia">Nubia jonli foto</string>
+    <string name="fmt_oppo">OPPO jonli foto</string>
+    <string name="fmt_vivo">vivo jonli foto</string>
+    <string name="fmt_vivo_single">vivo bitta faylli jonli foto</string>
+    <string name="fmt_xiaomi">Xiaomi jonli foto</string>
+    <string name="fmt_err_apple_mov_missing">Xuddi shu nomdagi .mov video fayli topilmadi</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV faylida ftyp box yoʻq</string>
+    <string name="fmt_err_extract_read">Ajratish chiqish formati, uni kirish formati sifatida oʻqib boʻlmaydi</string>
+    <string name="fmt_err_no_primary_jpeg">Asosiy JPEG tasvir topilmadi</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEGdan keyin yaroqli MP4 video topilmadi (ftyp box yoʻq)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 video oqimini tahlil qilib boʻlmadi</string>
+    <string name="fmt_err_nubia_too_short">Fayl juda qisqa, Nubia jonli fotosiga oʻxshamaydi</string>
+    <string name="fmt_err_nubia_no_magic">nubiaVpfile oxiridagi magic number yoʻq</string>
+    <string name="fmt_err_nubia_jpeg_len">Trailerda yozilgan JPEG uzunligi yaroqsiz: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG va video oʻrtasida 0x00 padding bytes yoʻq</string>
+    <string name="fmt_err_nubia_empty_video">Ichiga joylashtirilgan video uzunligi 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG oxirida vivo livephoto belgisi topilmadi</string>
+    <string name="fmt_err_vivo_companion_missing">Hamroh video fayli yoʻq: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG asosiy qismini tahlil qilib boʻlmadi</string>
+    <string name="fmt_err_vivo_companion_invalid">Hamroh MP4 yaroqsiz (ftyp box yoʻq)</string>
+</resources>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Romanian (ro) strings — settings screen.
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- General -->
+    <string name="settings_title">Setări</string>
+    <string name="settings_cd_back">Înapoi</string>
+    <string name="settings_btn_apply">Aplică</string>
+    <string name="settings_btn_cancel">Anulează</string>
+    <string name="settings_btn_close">Închide</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Sponsorizează</string>
+
+    <!-- Titluri de secțiune -->
+    <string name="settings_section_general">General</string>
+    <string name="settings_section_appearance">Aspect</string>
+    <string name="settings_section_language">Limbă</string>
+    <string name="settings_section_defaults">Opțiuni implicite</string>
+    <string name="settings_section_output">Ieșire</string>
+    <string name="settings_section_transcode">Transcodare video</string>
+    <string name="settings_section_about">Despre</string>
+    <string name="settings_section_app">Aplicație</string>
+    <string name="settings_section_credits">Mulțumiri și sponsorizare</string>
+    <string name="settings_section_opensource">Open source și licență</string>
+
+    <!-- General -->
+    <string name="settings_startup_check_title">Verifică actualizările la pornire</string>
+    <string name="settings_startup_check_subtitle">Descarcă automat noua versiune de pe GitHub la pornire și notifică atunci când există o actualizare</string>
+    <string name="settings_haptics_title">Feedback prin vibrații</string>
+    <string name="settings_haptics_subtitle">Feedback haptic la apăsarea butoanelor și la schimbarea stării</string>
+    <string name="settings_bounce_title">Animație elastică a butoanelor</string>
+    <string name="settings_bounce_subtitle">Animație de micșorare și revenire la apăsarea butonului</string>
+
+    <!-- Aspect -->
+    <string name="settings_theme_system">Sistem</string>
+    <string name="settings_theme_dark">Întunecat</string>
+    <string name="settings_theme_light">Luminos</string>
+    <string name="settings_dynamic_theme_title">Culori dinamice Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Urmărește culorile tapetului sistemului (Android 12+); când este dezactivat, se folosesc culorile prestabilite de mai jos</string>
+    <string name="settings_preset_colors_title">Culori de temă prestabilite</string>
+    <string name="settings_preset_current">Curent: %1$s</string>
+    <string name="settings_preset_disabled_hint">Disponibil după dezactivarea „Culori dinamice Material You”</string>
+    <string name="settings_custom">Personalizat</string>
+    <string name="settings_custom_color_title">Culoare de temă personalizată</string>
+    <string name="settings_cd_custom_palette">Paletă personalizată</string>
+    <string name="settings_hue_value">Nuanță %1$d°</string>
+
+    <!-- Limba aplicației -->
+    <string name="settings_language_dialog_title">Alege limba aplicației</string>
+    <string name="settings_language_count">%1$d limbi disponibile</string>
+
+    <!-- Opțiuni implicite -->
+    <string name="settings_reminder_dialogs_title">Nu mai afișa dialogurile</string>
+    <string name="settings_reminder_dialogs_subtitle">Gestionează toate dialogurile „Nu mai întreba”</string>
+    <string name="settings_reminder_hint">Activat înseamnă „nu mai afișa”; dacă îl dezactivezi, dialogul va reapărea data viitoare.</string>
+
+    <!-- Ieșire -->
+    <string name="settings_preserve_folders_title">Ieșire după structura folderelor sursă</string>
+    <string name="settings_preserve_folders_subtitle">Rezultatele sunt salvate în subfoldere pe album; dacă este dezactivat, toate ajung într-un singur folder</string>
+
+    <!-- Despre -->
+    <string name="settings_about_title">Despre</string>
+    <string name="settings_about_subtitle">Versiune · Verificare actualizări · Mulțumiri</string>
+    <string name="settings_check_update_title">Verifică actualizările</string>
+    <string name="settings_check_update_subtitle">Obține cea mai recentă versiune de pe GitHub Releases</string>
+    <string name="settings_checking">Se verifică…</string>
+    <string name="settings_update_available">v%1$s disponibilă</string>
+    <string name="settings_up_to_date">Ai cea mai recentă versiune</string>
+    <string name="settings_network_error">Eroare de rețea, încearcă din nou mai târziu</string>
+    <string name="settings_reinstall_title">Reinstalează această versiune</string>
+    <string name="settings_reinstall_subtitle">Descarcă versiunea curentă și instaleaz-o peste (pentru testarea actualizărilor)</string>
+    <string name="settings_reinstall_newer_hint">Poți actualiza la v%1$s; folosește mai întâi „Verifică actualizările”</string>
+    <string name="settings_version_title">Versiune</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Sponsorizare prin Alipay</string>
+    <string name="settings_alipay_subtitle">Susține dezvoltarea</string>
+    <string name="settings_coolapk_subtitle">Utilizator Coolapk · Mulțumim pentru sprijin</string>
+    <string name="settings_ai_credits_subtitle">Mulțumim AI IDE-urilor și modelelor AI pentru ajutorul acordat în dezvoltare</string>
+    <string name="settings_github_title">Depozit GitHub open source</string>
+    <string name="settings_license_title">Licență open source</string>
+    <string name="settings_sponsor_dialog_title">Mulțumim pentru sprijin</string>
+    <string name="settings_sponsor_dialog_text">Îți mulțumesc foarte mult că vrei să susții această aplicație!\n\nDacă ești încă elev sau student ori nu ai independență financiară, te rog să nu cheltui bani—\npăstrează acest gând în suflet și continuă să o folosești; acesta este cel mai bun sprijin pentru mine.\n\nDacă totuși vrei să contribui, chiar și o sumă mică contează; o voi investi în întreținere și funcții mai bune:)</string>
+    <string name="settings_alipay_missing_title">Alipay nu este instalat</string>
+    <string name="settings_alipay_missing_text">Nu am detectat Alipay, așa că sponsorizarea nu este posibilă deocamdată.\n\nNu-i nimic—mulțumim oricum pentru intenția frumoasă!</string>
+
+    <!-- Transcodare video -->
+    <string name="settings_transcoder_title">Transcodificator integrat</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Recodificare</string>
+    <string name="settings_transcode_mode_remux">Doar remuxarea containerului (recomandat)</string>
+    <string name="settings_transcode_mode_off">Fără a folosi transcodificatorul</string>
+    <string name="settings_transcode_params_title">Parametri de transcodare</string>
+    <string name="settings_transcode_params_subtitle">Parametrii de calitate și compresie folosiți la recodificare</string>
+    <string name="settings_transcode_params_disabled">Se aplică doar când „Modul de transcodare” este „Recodificare”</string>
+    <string name="settings_crf_value">Calitate CRF: %1$d</string>
+    <string name="settings_crf_hint">Cu cât valoarea este mai mică, cu atât calitatea este mai mare și fișierul mai mare (implicit 18)</string>
+    <string name="settings_encoder_title">Codificator</string>
+    <string name="settings_compress_preset_title">Presetare de compresie</string>
+
+</resources>

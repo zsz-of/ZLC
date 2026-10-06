@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · සිංහල (Sinhala) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Sinhala; technical terms follow the English loanword where common.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">උපුටා ගැනීම</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor ලයිව් ෆෝටෝ</string>
+    <string name="fmt_meizu">Meizu ලයිව් ෆෝටෝ</string>
+    <string name="fmt_nubia">Nubia ලයිව් ෆෝටෝ</string>
+    <string name="fmt_oppo">OPPO ලයිව් ෆෝටෝ</string>
+    <string name="fmt_vivo">vivo ලයිව් ෆෝටෝ</string>
+    <string name="fmt_vivo_single">vivo තනි ගොනු ලයිව් ෆෝටෝ</string>
+    <string name="fmt_xiaomi">Xiaomi ලයිව් ෆෝටෝ</string>
+    <string name="fmt_err_apple_mov_missing">එකම නමැති .mov වීඩියෝ ගොනුව හමු නොවිණි</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV ගොනුවේ ftyp box නොමැත</string>
+    <string name="fmt_err_extract_read">උපුටා ගැනීම ප්‍රතිදාන ආකෘතියකි, එය ආදාන ආකෘතියක් ලෙස කියවිය නොහැක</string>
+    <string name="fmt_err_no_primary_jpeg">ප්‍රධාන JPEG රූපයක් හමු නොවිණි</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG ට පසු වලංගු MP4 වීඩියෝවක් හමු නොවිණි (ftyp box නොමැත)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 වීඩියෝ ප්‍රවාහය විග්‍රහ කිරීම අසාර්ථක විය</string>
+    <string name="fmt_err_nubia_too_short">ගොනුව කෙටි වැඩිය, Nubia ලයිව් ෆෝටෝවක් ලෙස නොපෙනේ</string>
+    <string name="fmt_err_nubia_no_magic">nubiaVpfile හි අවසාන magic number නොමැත</string>
+    <string name="fmt_err_nubia_jpeg_len">ට්‍රේලරයේ සටහන් කර ඇති JPEG දිග වලංගු නොවේ: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG සහ වීඩියෝ අතර 0x00 padding bytes නොමැත</string>
+    <string name="fmt_err_nubia_empty_video">කාවැද්දූ වීඩියෝවේ දිග 0 වේ</string>
+    <string name="fmt_err_vivo_no_marker">JPG හි අවසානයේ vivo livephoto සලකුණ හමු නොවිණි</string>
+    <string name="fmt_err_vivo_companion_missing">සහකාර වීඩියෝ ගොනුව නොමැත: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG ප්‍රධාන කොටස විග්‍රහ කිරීම අසාර්ථක විය</string>
+    <string name="fmt_err_vivo_companion_invalid">සහකාර MP4 වලංගු නොවේ (ftyp box නොමැත)</string>
+</resources>

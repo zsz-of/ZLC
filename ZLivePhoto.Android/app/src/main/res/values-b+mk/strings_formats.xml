@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Macedonian (mk) strings — format plugin names and diagnostics.
+  Translated from res/values/strings_formats.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Извлекување</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo во една датотека</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Не е пронајдена видео датотека .mov со исто име</string>
+    <string name="fmt_err_apple_mov_no_ftyp">На MOV датотеката ѝ недостасува кутијата ftyp</string>
+    <string name="fmt_err_extract_read">Извлекувањето е излезен формат и не може да се чита како влезен формат</string>
+    <string name="fmt_err_no_primary_jpeg">Не е пронајдена главната JPEG слика</string>
+    <string name="fmt_err_no_mp4_after_jpeg">По JPEG не е пронајдено валидно MP4 видео (недостасува кутијата ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">Парсирањето на MP4 видео текот не успеа</string>
+    <string name="fmt_err_nubia_too_short">Датотеката е премногу кратка за да биде Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Недостасува завршниот магичен број nubiaVpfile</string>
+    <string name="fmt_err_nubia_jpeg_len">Невалидна должина на JPEG во trailer: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Недостасуваат бајтите за полнење 0x00 помеѓу JPEG и видеото</string>
+    <string name="fmt_err_nubia_empty_video">Должината на вграденото видео е 0</string>
+    <string name="fmt_err_vivo_no_marker">Не е пронајдена ознаката vivo livephoto на крајот од JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Недостасува придружната видео датотека: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Парсирањето на телото на JPG не успеа</string>
+    <string name="fmt_err_vivo_companion_invalid">Придружниот MP4 е невалиден (недостасува кутијата ftyp)</string>
+</resources>

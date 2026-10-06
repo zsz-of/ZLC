@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lietuvių (lt) — pagrindinis ekranas / albumų parinkiklis (raktai screen_*).
+  Šaltinis: res/values/strings_screens.xml (supaprastinta kinų kalba).
+  Daugiskaita: one / few / many / other.
+-->
+<resources>
+    <string name="screen_app_subtitle">Konvertavimas tarp Live Photo formatų</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d failas</item>
+        <item quantity="few">%1$d failai</item>
+        <item quantity="many">%1$d failų</item>
+        <item quantity="other">%1$d failų</item>
+    </plurals>
+    <string name="screen_settings">Nustatymai</string>
+
+    <string name="screen_select_output_format">Išvesties formato pasirinkimas</string>
+    <string name="screen_selected">Pasirinkta</string>
+    <string name="screen_vivo_single_warning">⚠ Senesni įrenginiai gali neatpažinti šio formato</string>
+    <string name="screen_extract_blocked">⚠ Eilėje yra sudarymo užduočių, išskaidymo pasirinkti negalima</string>
+
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (vienas failas)</string>
+    <string name="screen_format_vivo">vivo (du failai)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Išskaidymas</string>
+
+    <string name="screen_toolbox">Įrankiai</string>
+    <string name="screen_batch_import">Paketinis importavimas</string>
+    <string name="screen_batch_import_desc">Nuskaito visą galeriją ir paketais atpažįsta Live Photo</string>
+    <string name="screen_compose">Sukurti Live Photo</string>
+    <string name="screen_compose_desc">Pasirinkite nuotrauką ir vaizdo įrašą ir sujunkite juos į Live Photo</string>
+    <string name="screen_replace_mode">Pakeitimo režimas</string>
+    <string name="screen_replace_mode_desc">Rezultatas įrašomas tiesiai į pradinį failą, naujas failas nekuriamas</string>
+    <string name="screen_need_all_files_access_hint">Reikia leidimo „Prieiga prie visų failų“ — palieskite, kad suteiktumėte</string>
+    <string name="screen_agree_and_enable">Sutikti ir įjungti</string>
+
+    <string name="screen_empty_no_files">Dar nepridėta failų</string>
+    <string name="screen_view_detail">Rodyti informaciją</string>
+    <string name="screen_add_files">Pridėti failų</string>
+    <string name="screen_output_format">Išvesties formatas: %1$s</string>
+    <string name="screen_delete_original">Ištrinti originalus po apdorojimo</string>
+    <string name="screen_need_all_files_access_view">Reikia leidimo „Prieiga prie visų failų“ — palieskite, kad peržiūrėtumėte</string>
+    <string name="screen_clear">Išvalyti</string>
+    <string name="screen_stop">Sustabdyti apdorojimą</string>
+    <string name="screen_start_convert">Pradėti konvertavimą</string>
+
+    <string name="screen_status_detail">Būsenos informacija</string>
+    <string name="screen_long_press_copy">Palaikykite tekstą, kad jį pasirinktumėte ir nukopijuotumėte</string>
+    <string name="screen_copy">Kopijuoti</string>
+    <string name="screen_close">Uždaryti</string>
+
+    <string name="screen_back">Atgal</string>
+    <string name="screen_picker_title_select">Pasirinkti Live Photo</string>
+    <string name="screen_album_count">Albumas %1$d</string>
+    <string name="screen_album_collapse_cover">Sutraukti albumo viršelį</string>
+    <string name="screen_album_expand_cover">Išskleisti albumo viršelį</string>
+    <string name="screen_scanning_progress">Nuskaitoma %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d nuotrauka</item>
+        <item quantity="few">%1$d nuotraukos</item>
+        <item quantity="many">%1$d nuotraukų</item>
+        <item quantity="other">%1$d nuotraukų</item>
+    </plurals>
+    <string name="screen_select_all">Pasirinkti viską</string>
+    <string name="screen_no_albums">Nėra galimų albumų</string>
+    <string name="screen_no_media">Live Photo nerasta</string>
+    <string name="screen_no_media_compose">Nuotraukų ar vaizdo įrašų nerasta</string>
+    <string name="screen_import">Importuoti</string>
+    <string name="screen_import_count">Importuoti %1$d</string>
+    <string name="screen_import_mixed">Importuoti nuotraukų %1$d · įrašų %2$d</string>
+    <string name="screen_search">Paieška</string>
+    <string name="screen_search_collapse">Uždaryti paiešką</string>
+    <string name="screen_search_hint">Ieškoti pagal pavadinimą</string>
+    <string name="screen_search_clear">Išvalyti paiešką</string>
+    <string name="screen_sort_date">Data</string>
+    <string name="screen_sort_size">Dydis</string>
+    <string name="screen_sort_name">Pavadinimas</string>
+    <string name="screen_sort_asc">Didėjančiai</string>
+    <string name="screen_sort_desc">Mažėjančiai</string>
+
+    <string name="screen_date_today">Šiandien</string>
+    <string name="screen_date_yesterday">Vakar</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · తెలుగు స్ట్రింగ్లు (te).
+  ZLC · Telugu strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">సెట్టింగ్లు</string>
+    <string name="settings_cd_back">వెనుకకు</string>
+    <string name="settings_btn_apply">వర్తించు</string>
+    <string name="settings_btn_cancel">రద్దు</string>
+    <string name="settings_btn_close">మూసివేయి</string>
+    <string name="settings_btn_ok">సరే</string>
+    <string name="settings_btn_sponsor">విరాళం</string>
+    <string name="settings_section_general">సాధారణం</string>
+    <string name="settings_section_appearance">రూపం</string>
+    <string name="settings_section_language">భాష</string>
+    <string name="settings_section_defaults">డిఫాల్ట్లు</string>
+    <string name="settings_section_output">అవుట్పుట్</string>
+    <string name="settings_section_transcode">వీడియో ట్రాన్స్కోడింగ్</string>
+    <string name="settings_section_about">గురించి</string>
+    <string name="settings_section_app">యాప్</string>
+    <string name="settings_section_credits">కృతజ్ఞతలు &amp; విరాళాలు</string>
+    <string name="settings_section_opensource">ఓపెన్ సోర్స్ &amp; లైసెన్స్</string>
+    <string name="settings_startup_check_title">ప్రారంభంలో అప్డేట్లను తనిఖీ చేయి</string>
+    <string name="settings_startup_check_subtitle">ప్రారంభంలో GitHub నుండి కొత్త వెర్షన్లను స్వయంచాలకంగా పొంది, ఏదైనా అందుబాటులో ఉంటే డౌన్లోడ్ చేయమని అడుగుతుంది</string>
+    <string name="settings_haptics_title">హాప్టిక్ ఫీడ్బ్యాక్</string>
+    <string name="settings_haptics_subtitle">బటన్ నొక్కినప్పుడు మరియు స్థితి మారినప్పుడు హాప్టిక్ ఫీడ్బ్యాక్</string>
+    <string name="settings_bounce_title">బటన్ బౌన్స్ యానిమేషన్</string>
+    <string name="settings_bounce_subtitle">బటన్ నొక్కినప్పుడు స్కేల్-బౌన్స్ యానిమేషన్</string>
+    <string name="settings_theme_system">సిస్టమ్ను అనుసరించు</string>
+    <string name="settings_theme_dark">డార్క్</string>
+    <string name="settings_theme_light">లైట్</string>
+    <string name="settings_dynamic_theme_title">Material You డైనమిక్ రంగు</string>
+    <string name="settings_dynamic_theme_subtitle">సిస్టమ్ వాల్పేపర్ రంగును అనుసరిస్తుంది (Android 12+); ఆఫ్ చేస్తే క్రింది ప్రీసెట్ రంగులు వాడబడతాయి</string>
+    <string name="settings_preset_colors_title">ప్రీసెట్ థీమ్ రంగులు</string>
+    <string name="settings_preset_current">ప్రస్తుతం: %1$s</string>
+    <string name="settings_preset_disabled_hint">ఎంచుకోవడానికి “Material You డైనమిక్ రంగు”ని ఆఫ్ చేయండి</string>
+    <string name="settings_custom">కస్టమ్</string>
+    <string name="settings_custom_color_title">కస్టమ్ థీమ్ రంగు</string>
+    <string name="settings_cd_custom_palette">కస్టమ్ పాలెట్</string>
+    <string name="settings_hue_value">హ్యూ %1$d°</string>
+    <string name="settings_language_dialog_title">యాప్ భాషను ఎంచుకోండి</string>
+    <string name="settings_language_count">%1$d భాషలు అందుబాటులో ఉన్నాయి</string>
+    <string name="settings_reminder_dialogs_title">“మళ్లీ చూపించవద్దు” డైలాగ్లు</string>
+    <string name="settings_reminder_dialogs_subtitle">అన్ని “మళ్లీ చూపించవద్దు” డైలాగ్ల స్విచ్లను నిర్వహించు</string>
+    <string name="settings_reminder_hint">స్విచ్ ఆన్లో ఉంటే ఆ ప్రాంప్ట్ మళ్లీ చూపించబడదు; ఆఫ్లో ఉంటే సంబంధిత సన్నివేశం తర్వాతి సారి వచ్చినప్పుడు ప్రాంప్ట్ మళ్లీ కనిపిస్తుంది.</string>
+    <string name="settings_preserve_folders_title">మూల ఫోల్డర్ నిర్మాణాన్ని ఉపయోగించి అవుట్పుట్ చేయి</string>
+    <string name="settings_preserve_folders_subtitle">ఫలితాలు అసలు ఆల్బమ్ల పేరుతో ఉన్న సబ్ఫోల్డర్లలో నిల్వ చేయబడతాయి; ఆఫ్ చేస్తే అన్నీ ఒకే ఫోల్డర్లో చదునుగా ఉంచబడతాయి</string>
+    <string name="settings_about_title">గురించి</string>
+    <string name="settings_about_subtitle">వెర్షన్ · అప్డేట్లను తనిఖీ చేయి · కృతజ్ఞతలు &amp; విరాళాలు</string>
+    <string name="settings_check_update_title">అప్డేట్లను తనిఖీ చేయి</string>
+    <string name="settings_check_update_subtitle">GitHub Releases నుండి తాజా వెర్షన్ను పొందు</string>
+    <string name="settings_checking">తనిఖీ అవుతోంది…</string>
+    <string name="settings_update_available">v%1$s అందుబాటులో ఉంది</string>
+    <string name="settings_up_to_date">మీరు తాజా వెర్షన్లో ఉన్నారు</string>
+    <string name="settings_network_error">నెట్వర్క్ లోపం; దయచేసి కాసేపటి తర్వాత మళ్లీ ప్రయత్నించండి</string>
+    <string name="settings_reinstall_title">ఈ వెర్షన్ను మళ్లీ ఇన్స్టాల్ చేయి</string>
+    <string name="settings_reinstall_subtitle">ప్రస్తుత తాజా బిల్డ్ను డౌన్లోడ్ చేసి దీనిపై ఇన్స్టాల్ చేయి (అప్డేట్లను పరీక్షించడానికి)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s అందుబాటులో ఉంది; ముందుగా “అప్డేట్లను తనిఖీ చేయి” ఉపయోగించి అప్గ్రేడ్ చేయండి</string>
+    <string name="settings_version_title">వెర్షన్</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay ద్వారా విరాళం</string>
+    <string name="settings_alipay_subtitle">అభివృద్ధికి మద్దతు ఇవ్వండి</string>
+    <string name="settings_coolapk_subtitle">Coolapk వినియోగదారు · మద్దతుకు కృతజ్ఞతలు</string>
+    <string name="settings_ai_credits_subtitle">అభివృద్ధిలో సహాయపడిన AI IDEలు మరియు AI మోడళ్లకు కృతజ్ఞతలు</string>
+    <string name="settings_github_title">GitHub రిపాజిటరీ</string>
+    <string name="settings_license_title">ఓపెన్ సోర్స్ లైసెన్స్</string>
+    <string name="settings_sponsor_dialog_title">మీ మద్దతుకు ధన్యవాదాలు</string>
+    <string name="settings_sponsor_dialog_text">ఈ యాప్కు మద్దతు ఇవ్వాలన్న మీ కోరికకు హృదయపూర్వక ధన్యవాదాలు!\n\nమీరు ఇంకా విద్యార్థి అయినా, లేదా ఆర్థిక స్వాతంత్ర్యం లేని వారైనా, దయచేసి దీనిపై డబ్బు ఖర్చు చేయవద్దు — ఆ దయను హృదయంలో ఉంచుకుని యాప్ను కొనసాగించడమే నాకు లభించే ఉత్తమ మద్దతు.\n\nమీరు విరాళం ఇవ్వాలనుకుంటే, కొంచెమైనా సహాయపడుతుంది, దాన్ని మెరుగైన నిర్వహణ మరియు ఫీచర్ల కోసం వినియోగిస్తాను:)</string>
+    <string name="settings_alipay_missing_title">Alipay ఇన్స్టాల్ చేయబడలేదు</string>
+    <string name="settings_alipay_missing_text">Alipay కనుగొనబడలేదు, కాబట్టి ఇప్పుడు విరాళాన్ని పూర్తి చేయలేము.\n\nపర్వాలేదు — ఏది ఏమైనా మీ దయకు చాలా ధన్యవాదాలు!</string>
+    <string name="settings_transcoder_title">అంతర్నిర్మిత ట్రాన్స్కోడర్</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">మళ్లీ ఎన్కోడ్</string>
+    <string name="settings_transcode_mode_remux">కంటైనర్ను మాత్రమే రీమక్స్ చేయి (సిఫార్సు చేయబడింది)</string>
+    <string name="settings_transcode_mode_off">ట్రాన్స్కోడర్ను ఎప్పుడూ ఉపయోగించవద్దు</string>
+    <string name="settings_transcode_params_title">ట్రాన్స్కోడింగ్ పారామితులు</string>
+    <string name="settings_transcode_params_subtitle">మళ్లీ ఎన్కోడ్ చేసేటప్పుడు ఉపయోగించే నాణ్యత మరియు కుదింపు పారామితులు</string>
+    <string name="settings_transcode_params_disabled">“ట్రాన్స్కోడింగ్ మోడ్” “మళ్లీ ఎన్కోడ్”గా ఉన్నప్పుడే పనిచేస్తుంది</string>
+    <string name="settings_crf_value">నాణ్యత CRF: %1$d</string>
+    <string name="settings_crf_hint">తక్కువ విలువలు అధిక నాణ్యత మరియు పెద్ద ఫైళ్లు అని అర్థం (డిఫాల్ట్ 18)</string>
+    <string name="settings_encoder_title">ఎన్కోడర్</string>
+    <string name="settings_compress_preset_title">కుదింపు ప్రీసెట్</string>
+</resources>

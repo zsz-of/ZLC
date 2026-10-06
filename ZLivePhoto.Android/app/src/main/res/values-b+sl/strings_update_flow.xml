@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="update_github_url_missing">Naslova za prenos z GitHuba ni bilo mogoče pridobiti, poskusite pozneje.</string>
+    <string name="update_flavor_standard">Standardna različica</string>
+    <string name="update_flavor_go">Različica Go</string>
+    <string name="update_lanzou_url_missing">Ta različica ne ponuja povezave za prenos z Lanzou Cloud, uporabite GitHub.</string>
+    <string name="update_apk_direct_missing">Ta različica ne ponuja neposredne povezave do namestitvene datoteke, ki ustreza vaši različici. Ustrezni APK izberite na strani izdaje na GitHubu.</string>
+    <string name="update_install_permission_missing">Manjka dovoljenje »Namestitev neznanih aplikacij«, samodejna namestitev ni mogoča. Dovolite ga v sistemskih nastavitvah in poskusite znova.</string>
+    <string name="update_error_unknown">Neznana napaka</string>
+    <string name="update_fail_lanzou">Prenos z Lanzou Cloud ni uspel</string>
+    <string name="update_fail_github">Prenos z GitHuba ni uspel</string>
+    <string name="update_lanzou_resolving">Razčlenjevanje povezave za prenos z Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Prenašanje z Lanzou Cloud…</string>
+    <string name="update_github_downloading">Prenašanje z GitHuba…</string>
+    <string name="update_unzipping">Razširjanje namestitvene datoteke…</string>
+    <string name="update_notes_empty">Za to različico ni opomb o izdaji.</string>
+    <string name="update_use_normal_title">Uporabite standardno različico</string>
+    <string name="update_use_normal_body">Ta sistem je Android 10 ali novejši; lahka različica Go ni več podprta in stare različice ni več mogoče uporabljati.\n\nZaznali smo, da je nameščena standardna različica (ZLC). Odprite jo in nadaljujte z uporabo (nova različica ne ponuja več združljive različice Go; staro različico lahko odstranite in sprostite prostor).</string>
+    <string name="update_open_normal">Odpri standardno različico</string>
+    <string name="update_must_update_title">Za nadaljevanje je potrebna posodobitev</string>
+    <string name="update_forced_body">Ta sistem je Android 10 ali novejši; lahka različica Go ni več podprta in stare različice ni več mogoče uporabljati. Tudi nova različica ne ponuja več združljive različice Go.\n\nPovežite se v internet in s pritiskom na »Poskusi znova« pridobite namestitveno datoteko standardne različice.</string>
+    <string name="update_retry">Poskusi znova</string>
+    <string name="update_switch_normal_body">Ta sistem je Android 10 ali novejši; lahka različica Go ni več podprta in stare različice ni več mogoče uporabljati.\nPrenesite in namestite standardno različico ter nadaljujte z uporabo (nova različica ne podpira več različice Go).</string>
+    <string name="update_downloading_title">Prenesi posodobitev</string>
+    <string name="update_cancel">Prekliči</string>
+    <string name="update_need_permission_title">Potrebno je dovoljenje za namestitev</string>
+    <string name="update_need_permission_body">Namestitev nove različice zahteva sistemsko dovoljenje »Namestitev neznanih aplikacij«.\n\nPritisnite »Pojdi na dovoljenje«, dovolite ga v nastavitvah in se vrnite v aplikacijo; namestitev se bo samodejno nadaljevala (brez ponovnega prenosa).</string>
+    <string name="update_grant">Pojdi na dovoljenje</string>
+    <string name="update_notice_title">Obvestilo</string>
+    <string name="update_got_it">Razumem</string>
+    <string name="update_notes_title">v%1$s · opombe o izdaji</string>
+    <string name="update_back">Nazaj</string>
+    <string name="update_title_switch_normal">Preklopi na standardno različico</string>
+    <string name="update_title_reinstall">Znova namesti to različico</string>
+    <string name="update_title_new_version">Na voljo je nova različica</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Ta različica bo prenesena in znova nameščena (prepiše trenutno aplikacijo).\nTa funkcija je namenjena regresijskemu preizkušanju mehanizma posodobitev.</string>
+    <string name="update_view_notes">Prikaži opombe o izdaji</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud je trenutno nedosegljiv</string>
+    <string name="update_download_lanzou">Prenesi z Lanzou Cloud</string>
+    <string name="update_download_github">Prenesi z GitHuba</string>
+    <string name="update_download_browser">Prenesi v brskalniku</string>
+    <string name="update_later">Posodobi pozneje</string>
+    <string name="update_later_switch">Preklopi pozneje</string>
+    <string name="update_skip_version">Preskoči to različico</string>
+</resources>

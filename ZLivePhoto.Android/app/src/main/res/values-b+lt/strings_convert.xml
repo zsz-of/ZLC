@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lietuvių (lt) — konvertavimas / perkodavimas / priminimai (raktai conv_*).
+  Šaltinis: res/values/strings_convert.xml (supaprastinta kinų kalba).
+  Žymenys: %1$s / %1$d; `\n` — nauja eilutė.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: parametrų ir medžiagos tikrinimas ========== -->
+    <string name="conv_unknown_target">Nežinomas tikslinis formatas: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Neatpažintas Live Photo formatas (ne Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Viršelio nuotraukos nėra arba ji tuščia</string>
+    <string name="conv_video_missing">Vaizdo įrašo nėra arba jis tuščias</string>
+    <string name="conv_video_too_large">Vaizdo įrašas per didelis (%1$dMB), jo negalima sujungti į Live Photo. Pasirinkite trumpesnį įrašą</string>
+    <string name="conv_transcoded_too_large">Po perkodavimo vaizdo įrašas per didelis (%1$dMB), jo negalima sujungti į Live Photo</string>
+    <string name="conv_video_too_large_compose">Vaizdo įrašas per didelis (%1$dMB), jo negalima sujungti į Live Photo</string>
+
+    <!-- Converter.kt: viršelis (HEIC / ne JPEG) -->
+    <string name="conv_cover_heic_go">Viršelis yra HEIC vaizdas (lengvoji versija nepalaiko perkodavimo — eksportuokite jį kaip JPEG iš iPhone ir bandykite dar kartą)</string>
+    <string name="conv_cover_invalid_heic">Viršelis nėra tinkamas vaizdas (HEIC reikia sistemos HEIF dekodavimo palaikymo)</string>
+    <string name="conv_cover_not_jpeg_go">Viršelis nėra JPEG vaizdas (lengvoji versija nepalaiko perkodavimo — naudokite JPEG nuotrauką)</string>
+    <string name="conv_cover_invalid_image">Viršelis nėra tinkamas vaizdas (palaikomi tik JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: perkodavimo / perpakavimo klaidos -->
+    <string name="conv_reencode_failed">Vaizdo įrašo perkodavimas nepavyko: %1$s</string>
+    <string name="conv_remux_failed">Konteinerio perpakavimas nepavyko: %1$s</string>
+    <string name="conv_codec_unknown">Neatpažįstamas H.264/H.265 vaizdo įrašas</string>
+    <string name="conv_codec_is">Kodekas yra %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Vaizdo įrašas „%1$s“ %2$s; vien konteinerio perpakavimas kodeko nepakeis, todėl Live Photo sukurti negalima.\n\nNustatymuose „Nustatymai → Vaizdo įrašų perkodavimas → Perkodavimo būdas“ pasirinkite „Perkodavimas“ arba pirmiausia kitu įrankiu konvertuokite įrašą į MP4 su H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Vaizdo įrašas nėra standartiniame MP4 konteineryje (MOV / MKV / WebM / AVI ir kt.), o dabartinis „Perkodavimo būdas“ neperkoduoja, todėl Live Photo sukurti negalima.\n\nNustatymuose „Nustatymai → Vaizdo įrašų perkodavimas → Perkodavimo būdas“ pasirinkite „Perkodavimas“ (standartinėje versijoje yra ffmpeg kodavimo priemonė; lengvojoje „Go“ versijoje perkodavimo priemonės nėra — naudokite standartinę versiją) arba pirmiausia konvertuokite įrašą į standartinį MP4 (H.264/H.265).</string>
+
+    <!-- ========== Konvertavimo žurnalas ========== -->
+    <string name="conv_log_detected">Atpažinta kaip %1$s</string>
+    <string name="conv_log_same_format_copied">Šaltinio ir tikslinis formatai sutampa — nukopijuota be pakeitimų (be nuostolių)</string>
+    <string name="conv_log_extra_tracks_bypass">Šaltinio įraše yra ne garso ar vaizdo takelių (%1$s) — tiesioginis kopijavimas praleidžiamas ir naudojamas visas įrašymo procesas išvalymui</string>
+    <string name="conv_log_ts_fallback">Šaltinyje nėra viršelio kadro laiko žymos — pagal specifikaciją naudojama įrašo vidurio vieta</string>
+    <string name="conv_log_brand_normalized">Vaizdo konteinerio prekės ženklas normalizuotas (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Įraše yra papildomų takelių (%1$s), jo išvalyti nepavyko — išvesta be pakeitimų (kai kuriuose įrenginiuose toks failas gali būti neatkuriamas ilgu paspaudimu)</string>
+    <string name="conv_log_extra_tracks_removed">Papildomi vaizdo takeliai (%1$s) pašalinti</string>
+    <string name="conv_log_remux_cannot_fix">Šaltinio įrašas %1$s; vien konteinerio perpakavimas problemos neišsprendžia (%2$s). Jei failas vis tiek neatkuriamas ilgu paspaudimu, nustatymuose „Nustatymai → Vaizdo įrašų perkodavimas → Perkodavimo būdas“ pasirinkite „Perkodavimas“</string>
+    <string name="conv_log_reencoding">Šaltinio įrašas %1$s; pagal nustatymus perkoduojamas į 8bit + AAC, kad suderinamumas su galerija būtų geresnis</string>
+    <string name="conv_log_reencode_result_unusable">Perkodavimo rezultatas netinkamas — išvesta be pakeitimų (kai kuriuose įrenginiuose toks failas gali būti neatkuriamas ilgu paspaudimu)</string>
+    <string name="conv_log_reencode_still_risky">Net ir po perkodavimo lieka rizikos veiksnių (%1$s)</string>
+    <string name="conv_log_reencode_failed">Perkodavimas nepavyko (%1$s) — išvesta be pakeitimų (kai kuriuose įrenginiuose toks failas gali būti neatkuriamas ilgu paspaudimu)</string>
+    <string name="conv_log_cover_heic_converted">Viršelis yra HEIC (ne JPEG) — perkoduotas į standartinį JPEG ir tada supakuotas</string>
+    <string name="conv_log_compose_sizes">Sudarymas: nuotrauka %1$dB + vaizdo įrašas %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Perkodavimo priemonė neišnaudojama: keičiamas tik konteinerio prekės ženklas (MOV → MP4), be perkodavimo</string>
+
+    <!-- Žurnalo žymos (rodomos kaip „[žyma] tekstas“) -->
+    <string name="conv_tag_convert">Konvertavimas</string>
+    <string name="conv_tag_transcode">Perkodavimas</string>
+    <string name="conv_tag_compose">Sudarymas</string>
+
+    <!-- Perkodavimą blokuojančios priežastys -->
+    <string name="conv_blocker_no_encoder">Integruota perkodavimo priemonė nepasiekiama</string>
+    <string name="conv_blocker_mode_no_encode">Dabartinis „Perkodavimo būdas“ neperkoduoja</string>
+
+    <!-- ========== FfmpegAddon.kt ========== -->
+    <string name="conv_addon_unavailable">Integruota perkodavimo priemonė nepasiekiama</string>
+    <string name="conv_addon_transcode_failed">ffmpeg perkodavimas nepavyko: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg konteinerio perpakavimas nepavyko: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Vaizdo įrašas perkoduojamas su ffmpeg į standartinį MP4 (%1$s / crf %2$d / %3$s, paliekami tik vaizdo ir garso takeliai)</string>
+    <string name="conv_log_transcode_done">Vaizdo įrašo perkodavimas baigtas (%1$dKB)</string>
+    <string name="conv_log_remuxing">Vaizdo konteineris perpakuojamas į standartinį MP4 (keičiamas tik konteineris, neperkoduojama)</string>
+    <string name="conv_log_remux_done">Konteinerio perpakavimas baigtas (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: dialogai „Daugiau nerodyti“ ========== -->
+    <string name="conv_reminder_cat_compose">Sudarymas</string>
+    <string name="conv_reminder_cat_convert">Konvertavimas</string>
+    <string name="conv_reminder_cat_update">Naujinimas</string>
+    <string name="conv_reminder_video_over3s_title">Vaizdo įrašas ilgesnis nei 3 sekundės</string>
+    <string name="conv_reminder_video_over3s_message">Pasirinktas vaizdo įrašas ilgesnis nei 3 sekundės; sukurtas Live Photo gali turėti suderinamumo problemų:\n\n• gali būti neatkuriamas tinkamai\n• sistemos galerija gali jo neatpažinti\n• kai kuriuose įrenginiuose Live Photo gali būti neatpažintas</string>
+    <string name="conv_reminder_legacy_go_title">Aptikta sena versija</string>
+    <string name="conv_reminder_legacy_go_message">Šiame įrenginyje dar įdiegta senosios versijos („Go“) programa. Ji šiame įrenginyje nebeveikia, todėl galite ją pašalinti ir atlaisvinti vietos.</string>
+    <string name="conv_reminder_replace_risk_title">Pakeitimo režimas gali sugadinti failus</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Pakeitimo režimas konvertavimo rezultatą įrašo tiesiai į pradinį failą, o jį perrašius atkurti nebegalima.\n\n• Jei įrašymo metu programa nutraukiama, pritrūksta vietos arba atšaukiamas leidimas, pradinis failas gali būti sugadintas\n• Pats konvertavimas negarantuoja sėkmės visomis sąlygomis, o nepavykus pradinis failas gali tapti netinkamas\n• Pirmiausia išbandykite su vienu ar dviem failais ir tik įsitikinę pereikite prie paketinio apdorojimo\n• Svarbias nuotraukas iš anksto nusikopijuokite\n\nŠi funkcija teikiama „tokia, kokia yra“; riziką prisiimate patys, o autorius neatsako už failų sugadinimą ar praradimą.</string>
+    <string name="conv_reminder_dont_remind">Daugiau nerodyti</string>
+    <string name="conv_reminder_confirm_ok">Supratau</string>
+    <string name="conv_reminder_uninstall">Pašalinti</string>
+
+</resources>

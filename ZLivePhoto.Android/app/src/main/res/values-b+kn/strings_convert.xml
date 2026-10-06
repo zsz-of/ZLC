@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ಕನ್ನಡ ಸ್ಟ್ರಿಂಗ್ಗಳು (kn).
+  ZLC · Kannada strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">ಅಜ್ಞಾತ ಗುರಿ ಸ್ವರೂಪ: %1$s</string>
+    <string name="conv_unrecognized_live_photo">ಗುರುತಿಸಲಾಗದ Live Photo ಸ್ವರೂಪ (Google/OPPO/vivo/Xiaomi/Apple Live Photo ಅಲ್ಲ)</string>
+    <string name="conv_cover_photo_missing">ಕವರ್ ಫೋಟೋ ಇಲ್ಲ ಅಥವಾ ಖಾಲಿಯಾಗಿದೆ</string>
+    <string name="conv_video_missing">ವೀಡಿಯೊ ಇಲ್ಲ ಅಥವಾ ಖಾಲಿಯಾಗಿದೆ</string>
+    <string name="conv_video_too_large">Live Photo ರಚಿಸಲು ವೀಡಿಯೊ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ (%1$d MB); ಚಿಕ್ಕ ವೀಡಿಯೊವನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="conv_transcoded_too_large">ಟ್ರಾನ್ಸ್ಕೋಡ್ ನಂತರವೂ ವೀಡಿಯೊ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ (%1$d MB); Live Photo ರಚಿಸಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="conv_video_too_large_compose">ವೀಡಿಯೊ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ (%1$d MB); Live Photo ರಚಿಸಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="conv_cover_heic_go">ಕವರ್ HEIC ಚಿತ್ರ (ಲೈಟ್ವೇಟ್ ಆವೃತ್ತಿ ಟ್ರಾನ್ಸ್ಕೋಡ್ ಮಾಡಲಾರದು; iPhone ನಲ್ಲಿ ಮೊದಲು JPEG ಆಗಿ ರಫ್ತು ಮಾಡಿ, ನಂತರ ಪರಿವರ್ತಿಸಿ)</string>
+    <string name="conv_cover_invalid_heic">ಕವರ್ ಮಾನ್ಯವಾದ ಚಿತ್ರವಲ್ಲ (HEIC ಗೆ ಸಿಸ್ಟಂ HEIF ಬೆಂಬಲ ಬೇಕು)</string>
+    <string name="conv_cover_not_jpeg_go">ಕವರ್ JPEG ಚಿತ್ರವಲ್ಲ (ಲೈಟ್ವೇಟ್ ಆವೃತ್ತಿ ಟ್ರಾನ್ಸ್ಕೋಡ್ ಮಾಡಲಾರದು; JPEG ಫೋಟೋ ಬಳಸಿ)</string>
+    <string name="conv_cover_invalid_image">ಕವರ್ ಮಾನ್ಯವಾದ ಚಿತ್ರವಲ್ಲ (JPEG/WebP/PNG ಮಾತ್ರ ಬೆಂಬಲಿತ)</string>
+    <string name="conv_reencode_failed">ವೀಡಿಯೊ ಮರು-ಎನ್ಕೋಡ್ ವಿಫಲವಾಯಿತು: %1$s</string>
+    <string name="conv_remux_failed">ಕಂಟೇನರ್ ರೀಮಕ್ಸ್ ವಿಫಲವಾಯಿತು: %1$s</string>
+    <string name="conv_codec_unknown">ಗುರುತಿಸಿದ H.264/H.265 ವೀಡಿಯೊ ಅಲ್ಲ</string>
+    <string name="conv_codec_is">ಕೋಡೆಕ್ %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">“%1$s” ವೀಡಿಯೊ %2$s; ಕಂಟೇನರ್ ಅನ್ನು ಮಾತ್ರ ಬದಲಿಸುವುದರಿಂದ (remux) ಕೋಡೆಕ್ ಬದಲಾಗುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ Live Photo ರಚಿಸಲಾಗುವುದಿಲ್ಲ.\n\n“ಸೆಟ್ಟಿಂಗ್ಗಳು → ವೀಡಿಯೊ ಟ್ರಾನ್ಸ್ಕೋಡಿಂಗ್ → ಟ್ರಾನ್ಸ್ಕೋಡ್ ಮೋಡ್” ಅನ್ನು “ಮರು-ಎನ್ಕೋಡ್” ಎಂದು ಹೊಂದಿಸಿ, ಅಥವಾ ಬೇರೆ ಸಾಧನದಿಂದ ಅದನ್ನು H.264/H.265 MP4 ಆಗಿ ಪರಿವರ್ತಿಸಿ.</string>
+    <string name="conv_hint_no_encoder">ಈ ವೀಡಿಯೊ ಪ್ರಮಾಣಿತ MP4 ಕಂಟೇನರ್ನಲ್ಲಿಲ್ಲ (MOV / MKV / WebM / AVI ಮುಂತಾದವು), ಮತ್ತು ಪ್ರಸ್ತುತ “ಟ್ರಾನ್ಸ್ಕೋಡ್ ಮೋಡ್” ಮರು-ಎನ್ಕೋಡ್ ಮಾಡುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ Live Photo ರಚಿಸಲಾಗುವುದಿಲ್ಲ.\n\n“ಸೆಟ್ಟಿಂಗ್ಗಳು → ವೀಡಿಯೊ ಟ್ರಾನ್ಸ್ಕೋಡಿಂಗ್ → ಟ್ರಾನ್ಸ್ಕೋಡ್ ಮೋಡ್” ಅನ್ನು “ಮರು-ಎನ್ಕೋಡ್” ಎಂದು ಹೊಂದಿಸಿ (ಪ್ರಮಾಣಿತ ಆವೃತ್ತಿಯಲ್ಲಿ ffmpeg ಎನ್ಕೋಡರ್ ಇರುತ್ತದೆ; Go ಲೈಟ್ವೇಟ್ ಆವೃತ್ತಿಯಲ್ಲಿ ಟ್ರಾನ್ಸ್ಕೋಡರ್ ಇಲ್ಲ, ಪ್ರಮಾಣಿತ ಆವೃತ್ತಿ ಬಳಸಿ), ಅಥವಾ ವೀಡಿಯೊವನ್ನು ಮೊದಲು ಪ್ರಮಾಣಿತ MP4 (H.264/H.265) ಆಗಿ ಪರಿವರ್ತಿಸಿ.</string>
+    <string name="conv_log_detected">%1$s ಎಂದು ಗುರುತಿಸಲಾಗಿದೆ</string>
+    <string name="conv_log_same_format_copied">ಮೂಲ ಮತ್ತು ಗುರಿ ಒಂದೇ ಸ್ವರೂಪ; ಹಾಗೆಯೇ ನಕಲಿಸಲಾಗಿದೆ (ನಷ್ಟವಿಲ್ಲ)</string>
+    <string name="conv_log_extra_tracks_bypass">ಮೂಲ ವೀಡಿಯೊದಲ್ಲಿ ಆಡಿಯೊ/ವೀಡಿಯೊವಲ್ಲದ ಟ್ರ್ಯಾಕ್ಗಳಿವೆ (%1$s); ಒಂದೇ-ಸ್ವರೂಪದ ನೇರ ನಕಲನ್ನು ಬಿಟ್ಟು, ಶುದ್ಧೀಕರಿಸಲು ಪೂರ್ಣ ರೈಟ್ ಮಾರ್ಗ ಬಳಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="conv_log_ts_fallback">ಮೂಲದಲ್ಲಿ ಕವರ್-ಫ್ರೇಮ್ ಟೈಮ್ಸ್ಟ್ಯಾಂಪ್ ಇಲ್ಲ; ಸೂಚಿಸಿದಂತೆ ವೀಡಿಯೊದ ಮಧ್ಯಬಿಂದುವಿಗೆ ಹಿಂತಿರುಗಲಾಗುತ್ತಿದೆ</string>
+    <string name="conv_log_brand_normalized">ವೀಡಿಯೊ ಕಂಟೇನರ್ ಬ್ರ್ಯಾಂಡ್ ಸಾಮಾನ್ಯೀಕರಿಸಲಾಗಿದೆ (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">ವೀಡಿಯೊದಲ್ಲಿ ಶುದ್ಧೀಕರಿಸಲಾಗದ ಹೆಚ್ಚುವರಿ ಟ್ರ್ಯಾಕ್ಗಳಿವೆ (%1$s); ಹಾಗೆಯೇ ಔಟ್ಪುಟ್ ಮಾಡಲಾಗುತ್ತಿದೆ (ಕೆಲವು ಸಾಧನಗಳಲ್ಲಿ ದೀರ್ಘ ಒತ್ತುವಿಕೆಯಲ್ಲಿ ಪ್ಲೇ ಆಗದಿರಬಹುದು)</string>
+    <string name="conv_log_extra_tracks_removed">ಹೆಚ್ಚುವರಿ ವೀಡಿಯೊ ಟ್ರ್ಯಾಕ್ಗಳನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">ಮೂಲ ವೀಡಿಯೊ %1$s; ಕಂಟೇನರ್ ಅನ್ನು ಮಾತ್ರ remux ಮಾಡುವುದರಿಂದ ಅದನ್ನು ಸರಿಪಡಿಸಲಾಗಿಲ್ಲ (%2$s). ಫಲಿತಾಂಶವು ಇನ್ನೂ ದೀರ್ಘ ಒತ್ತುವಿಕೆಯಲ್ಲಿ ಪ್ಲೇ ಆಗದಿದ್ದರೆ, “ಸೆಟ್ಟಿಂಗ್ಗಳು → ವೀಡಿಯೊ ಟ್ರಾನ್ಸ್ಕೋಡಿಂಗ್ → ಟ್ರಾನ್ಸ್ಕೋಡ್ ಮೋಡ್” ಅನ್ನು “ಮರು-ಎನ್ಕೋಡ್” ಎಂದು ಹೊಂದಿಸಿ.</string>
+    <string name="conv_log_reencoding">ಮೂಲ ವೀಡಿಯೊ %1$s; ಗ್ಯಾಲರಿ ಹೊಂದಾಣಿಕೆ ಸುಧಾರಿಸಲು ಸೆಟ್ ಮಾಡಿದಂತೆ 8-ಬಿಟ್ + AAC ಆಗಿ ಮರು-ಎನ್ಕೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ</string>
+    <string name="conv_log_reencode_result_unusable">ಮರು-ಎನ್ಕೋಡ್ ಫಲಿತಾಂಶ ಬಳಸಲಾಗದ್ದು; ಹಾಗೆಯೇ ಔಟ್ಪುಟ್ ಮಾಡಲಾಗುತ್ತಿದೆ (ಕೆಲವು ಸಾಧನಗಳಲ್ಲಿ ದೀರ್ಘ ಒತ್ತುವಿಕೆಯಲ್ಲಿ ಪ್ಲೇ ಆಗದಿರಬಹುದು)</string>
+    <string name="conv_log_reencode_still_risky">ಮರು-ಎನ್ಕೋಡ್ ನಂತರವೂ ಅಪಾಯಗಳು ಉಳಿದಿವೆ (%1$s)</string>
+    <string name="conv_log_reencode_failed">ಮರು-ಎನ್ಕೋಡ್ ವಿಫಲವಾಯಿತು (%1$s); ಹಾಗೆಯೇ ಔಟ್ಪುಟ್ ಮಾಡಲಾಗುತ್ತಿದೆ (ಕೆಲವು ಸಾಧನಗಳಲ್ಲಿ ದೀರ್ಘ ಒತ್ತುವಿಕೆಯಲ್ಲಿ ಪ್ಲೇ ಆಗದಿರಬಹುದು)</string>
+    <string name="conv_log_cover_heic_converted">ಕವರ್ HEIC ಆಗಿತ್ತು (JPEG ಅಲ್ಲ); ಪ್ಯಾಕೇಜ್ ಮಾಡುವ ಮೊದಲು ಪ್ರಮಾಣಿತ JPEG ಆಗಿ ಟ್ರಾನ್ಸ್ಕೋಡ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="conv_log_compose_sizes">ಕಂಪೋಸ್: ಫೋಟೋ %1$d B + ವೀಡಿಯೊ %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ಟ್ರಾನ್ಸ್ಕೋಡರ್ ಸಕ್ರಿಯವಾಗಿಲ್ಲ: ಕಂಟೇನರ್ ಬ್ರ್ಯಾಂಡ್ ಅನ್ನು ಮಾತ್ರ ಮರುಬರೆಯಲಾಗುತ್ತಿದೆ (MOV → MP4), ಮರು-ಎನ್ಕೋಡ್ ಇಲ್ಲ</string>
+    <string name="conv_tag_convert">ಪರಿವರ್ತಿಸು</string>
+    <string name="conv_tag_transcode">ಟ್ರಾನ್ಸ್ಕೋಡ್</string>
+    <string name="conv_tag_compose">ಕಂಪೋಸ್</string>
+    <string name="conv_blocker_no_encoder">ಅಂತರ್ನಿರ್ಮಿತ ಟ್ರಾನ್ಸ್ಕೋಡರ್ ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="conv_blocker_mode_no_encode">ಪ್ರಸ್ತುತ “ಟ್ರಾನ್ಸ್ಕೋಡ್ ಮೋಡ್” ಮರು-ಎನ್ಕೋಡ್ ಮಾಡುವುದಿಲ್ಲ</string>
+    <string name="conv_addon_unavailable">ಅಂತರ್ನಿರ್ಮಿತ ಟ್ರಾನ್ಸ್ಕೋಡರ್ ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ಟ್ರಾನ್ಸ್ಕೋಡ್ ವಿಫಲವಾಯಿತು: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg ಕಂಟೇನರ್ ರೀಮಕ್ಸ್ ವಿಫಲವಾಯಿತು: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg ನಿಂದ ವೀಡಿಯೊವನ್ನು ಪ್ರಮಾಣಿತ MP4 ಆಗಿ ಟ್ರಾನ್ಸ್ಕೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ (%1$s / crf %2$d / %3$s; ವೀಡಿಯೊ ಮತ್ತು ಆಡಿಯೊ ಟ್ರ್ಯಾಕ್ಗಳನ್ನು ಮಾತ್ರ ಇಟ್ಟುಕೊಳ್ಳಲಾಗುತ್ತದೆ)</string>
+    <string name="conv_log_transcode_done">ವೀಡಿಯೊ ಟ್ರಾನ್ಸ್ಕೋಡ್ ಪೂರ್ಣಗೊಂಡಿದೆ (%1$d KB)</string>
+    <string name="conv_log_remuxing">ವೀಡಿಯೊ ಕಂಟೇನರ್ ಅನ್ನು ಪ್ರಮಾಣಿತ MP4 ಆಗಿ ರೀಮಕ್ಸ್ ಮಾಡಲಾಗುತ್ತಿದೆ (ಕಂಟೇನರ್ ಮಾತ್ರ, ಮರು-ಎನ್ಕೋಡ್ ಇಲ್ಲ)</string>
+    <string name="conv_log_remux_done">ಕಂಟೇನರ್ ರೀಮಕ್ಸ್ ಪೂರ್ಣಗೊಂಡಿದೆ (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">ಕಂಪೋಸ್</string>
+    <string name="conv_reminder_cat_convert">ಪರಿವರ್ತಿಸು</string>
+    <string name="conv_reminder_cat_update">ಅಪ್ಡೇಟ್</string>
+    <string name="conv_reminder_video_over3s_title">ವೀಡಿಯೊ 3 ಸೆಕೆಂಡ್ಗಳಿಗಿಂತ ಉದ್ದವಾಗಿದೆ</string>
+    <string name="conv_reminder_video_over3s_message">ಆಯ್ಕೆ ಮಾಡಿದ ವೀಡಿಯೊ 3 ಸೆಕೆಂಡ್ಗಳಿಗಿಂತ ಉದ್ದವಾಗಿದೆ, ಆದ್ದರಿಂದ ಉಂಟಾಗುವ Live Photo ಗೆ ಹೊಂದಾಣಿಕೆ ಸಮಸ್ಯೆಗಳಿರಬಹುದು:\n\n• ಸರಿಯಾಗಿ ಪ್ಲೇ ಆಗದಿರಬಹುದು\n• ಸಿಸ್ಟಂ ಗ್ಯಾಲರಿ ಅದನ್ನು ಗುರುತಿಸದಿರಬಹುದು\n• ಕೆಲವು ಸಾಧನಗಳು ಈ Live Photo ಅನ್ನು ಗುರುತಿಸದಿರಬಹುದು</string>
+    <string name="conv_reminder_legacy_go_title">ಹಳೆಯ ಆವೃತ್ತಿ ಪತ್ತೆಯಾಗಿದೆ</string>
+    <string name="conv_reminder_legacy_go_message">ಈ ಸಾಧನದಲ್ಲಿ ಈ ಆ್ಯಪ್ನ ಹಳೆಯ ಆವೃತ್ತಿ (Go ಆವೃತ್ತಿ) ಇನ್ನೂ ಸ್ಥಾಪಿಸಲಾಗಿದೆ. ಅದು ಇನ್ನು ಇಲ್ಲಿ ಕೆಲಸ ಮಾಡುವುದಿಲ್ಲ; ಜಾಗ ಖಾಲಿ ಮಾಡಲು ಅದನ್ನು ಅನ್ಇನ್ಸ್ಟಾಲ್ ಮಾಡಬಹುದು.</string>
+    <string name="conv_reminder_replace_risk_title">ರಿಪ್ಲೇಸ್ ಮೋಡ್ನಲ್ಲಿ ಹಾಳಾಗುವ ಅಪಾಯವಿದೆ</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">ರಿಪ್ಲೇಸ್ ಮೋಡ್ ಪರಿವರ್ತನೆಯ ಫಲಿತಾಂಶಗಳನ್ನು ನೇರವಾಗಿ ಮೂಲ ಫೈಲ್ಗಳಿಗೆ ಬರೆಯುತ್ತದೆ; ಒಮ್ಮೆ ಓವರ್ರೈಟ್ ಆದ ಮೇಲೆ ಮೂಲಗಳನ್ನು ಮರಳಿ ಪಡೆಯಲಾಗುವುದಿಲ್ಲ.\n\n• ಬರೆಯುವಾಗ ಆ್ಯಪ್ ಅಡ್ಡಿಯಾದರೆ, ಸಂಗ್ರಹ ತುಂಬಿದರೆ ಅಥವಾ ಅನುಮತಿ ಹಿಂಪಡೆದರೆ, ಮೂಲ ಫೈಲ್ಗಳು ಹಾಳಾಗಬಹುದು\n• ಯಾವುದೇ ಪರಿವರ್ತನೆ ಯಶಸ್ವಿಯಾಗುತ್ತದೆ ಎಂಬ ಭರವಸೆ ಇಲ್ಲ; ವಿಫಲವಾದರೆ ಮೂಲ ಫೈಲ್ಗಳು ಈಗಾಗಲೇ ಬಳಸಲಾಗದಂತಿರಬಹುದು\n• ಎಲ್ಲವನ್ನೂ ಬ್ಯಾಚ್ ಆಗಿ ಮಾಡುವ ಮೊದಲು ಒಂದೆರಡು ಫೈಲ್ಗಳಲ್ಲಿ ಪ್ರಯತ್ನಿಸಿ ಎಲ್ಲವೂ ಸರಿಯಾಗಿದೆಯೇ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ\n• ಮುಖ್ಯವಾದ ಫೋಟೋಗಳನ್ನು ಮೊದಲೇ ನೀವೇ ಬ್ಯಾಕಪ್ ಮಾಡಿಕೊಳ್ಳಿ\n\nಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು “ಹಾಗೆಯೇ” ಒದಗಿಸಲಾಗಿದೆ; ಅದನ್ನು ಬಳಸುವ ಅಪಾಯ ನಿಮ್ಮದೇ; ಹಾಳಾದ ಅಥವಾ ಕಳೆದುಹೋದ ಫೈಲ್ಗಳಿಗೆ ಲೇಖಕ ಜವಾಬ್ದಾರನಲ್ಲ.</string>
+    <string name="conv_reminder_dont_remind">ಇನ್ನೂ ತೋರಿಸಬೇಡ</string>
+    <string name="conv_reminder_confirm_ok">ಅರ್ಥವಾಯಿತು</string>
+    <string name="conv_reminder_uninstall">ಅನ್ಇನ್ಸ್ಟಾಲ್</string>
+</resources>

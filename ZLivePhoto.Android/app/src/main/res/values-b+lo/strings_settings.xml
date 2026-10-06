@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ລາວ (Lao) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Lao has no grammatical plural; only the 'other' quantity is emitted.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">ການຕັ້ງຄ່າ</string>
+    <string name="settings_cd_back">ກັບຄືນ</string>
+    <string name="settings_btn_apply">ນຳໃຊ້</string>
+    <string name="settings_btn_cancel">ຍົກເລີກ</string>
+    <string name="settings_btn_close">ປິດ</string>
+    <string name="settings_btn_ok">ຕົກລົງ</string>
+    <string name="settings_btn_sponsor">ສະໜັບສະໜູນ</string>
+    <string name="settings_section_general">ທົ່ວໄປ</string>
+    <string name="settings_section_appearance">ຮູບລັກສະນະ</string>
+    <string name="settings_section_language">ພາສາ</string>
+    <string name="settings_section_defaults">ຄ່າເລີ່ມຕົ້ນ</string>
+    <string name="settings_section_output">ຜົນອອກ</string>
+    <string name="settings_section_transcode">ການແປງວິດີໂອ</string>
+    <string name="settings_section_about">ກ່ຽວກັບ</string>
+    <string name="settings_section_app">ແອັບ</string>
+    <string name="settings_section_credits">ຂອບໃຈ ແລະ ການສະໜັບສະໜູນ</string>
+    <string name="settings_section_opensource">ໂອເພນຊອດ ແລະ ໃບອະນຸຍາດ</string>
+    <string name="settings_startup_check_title">ກວດສອບການອັບເດດຕອນເລີ່ມຕົ້ນ</string>
+    <string name="settings_startup_check_subtitle">ດຶງເອົາເວີຊັນໃໝ່ຈາກ GitHub ໂດຍອັດຕະໂນມັດຕອນເລີ່ມຕົ້ນ, ແຈ້ງເຕືອນໃຫ້ດາວໂຫລດເມື່ອມີການອັບເດດ</string>
+    <string name="settings_haptics_title">ການສັ່ນສະເທືອນ</string>
+    <string name="settings_haptics_subtitle">ການສັ່ນສະເທືອນເມື່ອກົດປຸ່ມ ແລະ ເມື່ອສະຖານະປ່ຽນ</string>
+    <string name="settings_bounce_title">ອານິເມຊັນສະປຣິງຂອງປຸ່ມ</string>
+    <string name="settings_bounce_subtitle">ອານິເມຊັນຂະຫຍາຍ ແລະ ດີດກັບເມື່ອກົດປຸ່ມ</string>
+    <string name="settings_theme_system">ຕາມລະບົບ</string>
+    <string name="settings_theme_dark">ມືດ</string>
+    <string name="settings_theme_light">ແຈ້ງ</string>
+    <string name="settings_dynamic_theme_title">ການດຶງສີແບບເຄື່ອນໄຫວ Material You</string>
+    <string name="settings_dynamic_theme_subtitle">ຕາມສີຮູບພື້ນຫຼັງຂອງລະບົບ (Android 12+); ເມື່ອປິດແລ້ວຈະໃຊ້ສີທີ່ກຳນົດໄວ້ຂ້າງລຸ່ມ</string>
+    <string name="settings_preset_colors_title">ສີທີ່ມີໃຫ້ເລືອກ</string>
+    <string name="settings_preset_current">ປັດຈຸບັນ: %1$s</string>
+    <string name="settings_preset_disabled_hint">ສາມາດເລືອກໄດ້ຫຼັງປິດ “ການດຶງສີແບບເຄື່ອນໄຫວ Material You”</string>
+    <string name="settings_custom">ກຳນົດເອງ</string>
+    <string name="settings_custom_color_title">ສີທີ່ກຳນົດເອງ</string>
+    <string name="settings_cd_custom_palette">ຈານສີທີ່ກຳນົດເອງ</string>
+    <string name="settings_hue_value">ເສດສີ %1$d°</string>
+    <string name="settings_language_dialog_title">ເລືອກພາສາແອັບ</string>
+    <string name="settings_language_count">ທັງໝົດ %1$d ພາສາ</string>
+    <string name="settings_reminder_dialogs_title">ບໍ່ສະແດງການແຈ້ງເຕືອນອີກ</string>
+    <string name="settings_reminder_dialogs_subtitle">ຈັດການສະວິດຂອງການແຈ້ງເຕືອນ “ບໍ່ສະແດງອີກ” ທັງໝົດ</string>
+    <string name="settings_reminder_hint">ສະວິດເປີດໝາຍເຖິງ “ບໍ່ສະແດງອີກ”; ເມື່ອປິດແລ້ວ ເທື່ອຕໍ່ໄປເມື່ອເກີດສະຖານະການດັ່ງກ່າວ ຈະສະແດງການແຈ້ງເຕືອນອີກຄັ້ງ.</string>
+    <string name="settings_preserve_folders_title">ຜົນອອກຕາມໂຄງສ້າງໂຟນເດີຕົ້ນທາງ</string>
+    <string name="settings_preserve_folders_subtitle">ຜົນການແປງຈະຖືກເກັບໃນໂຟນເດີຍ່ອຍຕາມຊື່ອາລະບ້ຳເດີມ; ເມື່ອປິດແລ້ວ ທັງໝົດຈະຢູ່ໃນໂຟນເດີດຽວກັນ</string>
+    <string name="settings_about_title">ກ່ຽວກັບ</string>
+    <string name="settings_about_subtitle">ເວີຊັນ · ກວດສອບການອັບເດດ · ຂອບໃຈ ແລະ ການສະໜັບສະໜູນ</string>
+    <string name="settings_check_update_title">ກວດສອບການອັບເດດ</string>
+    <string name="settings_check_update_subtitle">ດຶງເອົາເວີຊັນຫຼ້າສຸດຈາກ GitHub Releases</string>
+    <string name="settings_checking">ກຳລັງກວດສອບ…</string>
+    <string name="settings_update_available">ມີ v%1$s</string>
+    <string name="settings_up_to_date">ນີ້ແມ່ນເວີຊັນຫຼ້າສຸດແລ້ວ</string>
+    <string name="settings_network_error">ເຄືອຂ່າຍຜິດພາດ, ກະລຸນາລອງໃໝ່ພາຍຫຼັງ</string>
+    <string name="settings_reinstall_title">ຕິດຕັ້ງເວີຊັນນີ້ຄືນໃໝ່</string>
+    <string name="settings_reinstall_subtitle">ດາວໂຫລດເວີຊັນຫຼ້າສຸດປັດຈຸບັນ ແລະ ຕິດຕັ້ງທັບ (ສຳລັບທົດສອບການອັບເດດ)</string>
+    <string name="settings_reinstall_newer_hint">ປັດຈຸບັນສາມາດອັບເກຣດເປັນ v%1$s, ກະລຸນາໃຊ້ “ກວດສອບການອັບເດດ” ກ່ອນ</string>
+    <string name="settings_version_title">ເວີຊັນ</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">ສະໜັບສະໜູນຜ່ານ Alipay</string>
+    <string name="settings_alipay_subtitle">ສະໜັບສະໜູນການພັດທະນາ</string>
+    <string name="settings_coolapk_subtitle">ຜູ້ໃຊ້ Coolapk · ຂອບໃຈສຳລັບການສະໜັບສະໜູນຂອງລາວ</string>
+    <string name="settings_ai_credits_subtitle">ຂອບໃຈ AI IDE ແລະ ໂມເດລ AI ທີ່ຊ່ວຍໃນການພັດທະນາ</string>
+    <string name="settings_github_title">ທີ່ຢູ່ໂອເພນຊອດ GitHub</string>
+    <string name="settings_license_title">ໃບອະນຸຍາດໂອເພນຊອດ</string>
+    <string name="settings_sponsor_dialog_title">ຂອບໃຈສຳລັບການສະໜັບສະໜູນຂອງທ່ານ</string>
+    <string name="settings_sponsor_dialog_text">ຂອບໃຈຢ່າງຫຼາຍທີ່ທ່ານຍິນດີສະໜັບສະໜູນແອັບນີ້!
+
+ຖ້າທ່ານຍັງເປັນນັກຮຽນ ຫຼື ຍັງບໍ່ມີຄວາມເປັນເອກະລາດທາງການເງິນ, ກະລຸນາຢ່າຈ່າຍເງິນເລີຍ——
+ເກັບຄວາມຕັ້ງໃຈນີ້ໄວ້ໃນໃຈ ແລະ ສືບຕໍ່ໃຊ້ຕໍ່ໄປ; ສຳລັບຂ້ອຍ ນັ້ນແມ່ນການສະໜັບສະໜູນທີ່ດີທີ່ສຸດ.
+
+ຖ້າຢາກສະໜັບສະໜູນ ແມ່ນແຕ່ໜຶ່ງກີບກໍ່ແມ່ນຄວາມຮັກ, ຂ້ອຍຈະເອົາໄປລົງທຶນໃນການດູແລ ແລະ ຟັງຊັນທີ່ດີຂຶ້ນ :）</string>
+    <string name="settings_alipay_missing_title">ຍັງບໍ່ໄດ້ຕິດຕັ້ງ Alipay</string>
+    <string name="settings_alipay_missing_text">ບໍ່ພົບ Alipay, ດັ່ງນັ້ນຈຶ່ງບໍ່ສາມາດສຳເລັດການສະໜັບສະໜູນໄດ້ໃນຕອນນີ້.
+
+ບໍ່ເປັນຫຍັງ——ເຖິງຢ່າງໃດກໍ່ຕາມ, ຂອບໃຈສຳລັບນ້ຳໃຈດີຂອງທ່ານ!</string>
+    <string name="settings_transcoder_title">ຕົວແປງພາຍໃນ</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">ເອນໂຄດຄືນໃໝ່</string>
+    <string name="settings_transcode_mode_remux">ຫຸ້ມຄອນເທນເນີຄືນໃໝ່ເທົ່ານັ້ນ (ແນະນຳ)</string>
+    <string name="settings_transcode_mode_off">ບໍ່ໃຊ້ຕົວແປງເລີຍ</string>
+    <string name="settings_transcode_params_title">ພາລາມິເຕີການແປງ</string>
+    <string name="settings_transcode_params_subtitle">ພາລາມິເຕີຄຸນນະພາບ ແລະ ການບີບອັດທີ່ໃຊ້ເມື່ອເອນໂຄດຄືນໃໝ່</string>
+    <string name="settings_transcode_params_disabled">ໃຊ້ໄດ້ສະເພາະເມື່ອເລືອກ “ເອນໂຄດຄືນໃໝ່” ໃນ “ວິທີແປງ”</string>
+    <string name="settings_crf_value">ຄຸນນະພາບ CRF: %1$d</string>
+    <string name="settings_crf_hint">ຄ່າຍິ່ງນ້ອຍ ຄຸນນະພາບຍິ່ງສູງ ແລະ ຂະໜາດຍິ່ງໃຫຍ່ (ຄ່າເລີ່ມຕົ້ນ 18)</string>
+    <string name="settings_encoder_title">ຕົວເອນໂຄດ</string>
+    <string name="settings_compress_preset_title">ຄ່າຕັ້ງການບີບອັດສຳເລັດຮູບ</string>
+</resources>

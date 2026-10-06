@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Кыргызча (Kyrgyz) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Kyrgyz (Cyrillic); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Жөндөөлөр</string>
+    <string name="settings_cd_back">Артка</string>
+    <string name="settings_btn_apply">Колдонуу</string>
+    <string name="settings_btn_cancel">Жокко чыгаруу</string>
+    <string name="settings_btn_close">Жабуу</string>
+    <string name="settings_btn_ok">Болуптур</string>
+    <string name="settings_btn_sponsor">Колдоо</string>
+    <string name="settings_section_general">Жалпы</string>
+    <string name="settings_section_appearance">Көрүнүш</string>
+    <string name="settings_section_language">Тил</string>
+    <string name="settings_section_defaults">Демейки</string>
+    <string name="settings_section_output">Чыгаруу</string>
+    <string name="settings_section_transcode">Видео транскоддоо</string>
+    <string name="settings_section_about">Жөнүндө</string>
+    <string name="settings_section_app">Колдонмо</string>
+    <string name="settings_section_credits">Ыраазычылык жана колдоо</string>
+    <string name="settings_section_opensource">Ачык булак жана лицензия</string>
+    <string name="settings_startup_check_title">Баштоодо жаңыртууну текшерүү</string>
+    <string name="settings_startup_check_subtitle">Баштоодо GitHubден жаңы версияны автоматтык түрдө алып, жаңыртуу болсо жүктөөнү сунуштайт</string>
+    <string name="settings_haptics_title">Дирилдөө реакциясы</string>
+    <string name="settings_haptics_subtitle">Баскыч басылганда жана абал өзгөргөндө дирилдөө реакциясы</string>
+    <string name="settings_bounce_title">Баскычтын пружина анимациясы</string>
+    <string name="settings_bounce_subtitle">Баскыч басылганда чоңоюп кайра пружиналанган анимация</string>
+    <string name="settings_theme_system">Системди ээрчи</string>
+    <string name="settings_theme_dark">Караңгы</string>
+    <string name="settings_theme_light">Жарык</string>
+    <string name="settings_dynamic_theme_title">Material You динамикалык түс</string>
+    <string name="settings_dynamic_theme_subtitle">Системдин обои түсүн ээрчийт (Android 12+); өчүргөндө төмөнкү демейки түстөр колдонулат</string>
+    <string name="settings_preset_colors_title">Демейки тема түстөрү</string>
+    <string name="settings_preset_current">Учурдагы: %1$s</string>
+    <string name="settings_preset_disabled_hint">“Material You динамикалык түс” өчүрүлгөндөн кийин тандаса болот</string>
+    <string name="settings_custom">Ыңгайлаштыруу</string>
+    <string name="settings_custom_color_title">Ыңгайлаштырылган тема түсү</string>
+    <string name="settings_cd_custom_palette">Ыңгайлаштырылган палитра</string>
+    <string name="settings_hue_value">Түс аянты %1$d°</string>
+    <string name="settings_language_dialog_title">Колдонмо тилин тандоо</string>
+    <string name="settings_language_count">Бардыгы %1$d тил</string>
+    <string name="settings_reminder_dialogs_title">Эми эскертүү көрсөтпөө</string>
+    <string name="settings_reminder_dialogs_subtitle">Бардык “Эми көрсөтпөө” эскертүүлөрүнүн которгучтарын башкаруу</string>
+    <string name="settings_reminder_hint">Которгуч күйгүзүлсө “Эми көрсөтпөө” дегенди билдирет; өчүргөндөн кийин кийинки жолу тиешелүү кырдаал болгондо эскертүү кайра чыгат.</string>
+    <string name="settings_preserve_folders_title">Булак папканын түзүлүшү боюнча чыгаруу</string>
+    <string name="settings_preserve_folders_subtitle">Айландыруу натыйжалары баштапкы альбом аты боюнча ички папкаларга сакталат; өчүргөндө баары бир папкада болот</string>
+    <string name="settings_about_title">Жөнүндө</string>
+    <string name="settings_about_subtitle">Версия · Жаңыртууну текшерүү · Ыраазычылык жана колдоо</string>
+    <string name="settings_check_update_title">Жаңыртууну текшерүү</string>
+    <string name="settings_check_update_subtitle">GitHub Releasesтен акыркы версияны алуу</string>
+    <string name="settings_checking">Текшерилүүдө…</string>
+    <string name="settings_update_available">v%1$s жеткиликтүү</string>
+    <string name="settings_up_to_date">Бул эң акыркы версия</string>
+    <string name="settings_network_error">Тармак катасы, кийинчерээк кайра аракет кылыңыз</string>
+    <string name="settings_reinstall_title">Бул версияны кайра орнотуу</string>
+    <string name="settings_reinstall_subtitle">Учурдагы акыркы версияны жүктөп кайра орнотуу (жаңыртууну сыноо үчүн)</string>
+    <string name="settings_reinstall_newer_hint">Азыр v%1$s га жаңыртууга болот, адегенде “Жаңыртууну текшерүү” колдонуңуз</string>
+    <string name="settings_version_title">Версия</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay аркылуу колдоо</string>
+    <string name="settings_alipay_subtitle">Иштеп чыгууну колдоо</string>
+    <string name="settings_coolapk_subtitle">Coolapk колдонуучусу · Анын колдоосу үчүн ыраазычылык</string>
+    <string name="settings_ai_credits_subtitle">Иштеп чыгууга AI IDE жана AI моделдеринин жардамы үчүн ыраазычылык</string>
+    <string name="settings_github_title">GitHub ачык булак дареги</string>
+    <string name="settings_license_title">Ачык булак лицензиясы</string>
+    <string name="settings_sponsor_dialog_title">Колдооңуз үчүн ыраазычылык</string>
+    <string name="settings_sponsor_dialog_text">Бул колдонмого колдоо көрсөтүүгө даяр болгонуңуз үчүн чындап чоң ыраазычылык!
+
+Эгер сиз дагы студент болсоңуз же каржылык жактан көз карандысыз болбосоңуз, сураныч, акча сарптабаңыз——
+бул ниетти жүрөгүңүздө сактап, колдонууну улантыңыз; мен үчүн бул эң жакшы колдоо.
+
+Колдоо көрсөткүңүз келсе, бир сом да сүйүү, мен аны жакшыраак тейлөөгө жана функцияларга жумшайм :）</string>
+    <string name="settings_alipay_missing_title">Alipay азырынча орнотулган эмес</string>
+    <string name="settings_alipay_missing_text">Alipay табылган жок, ошондуктан азырынча колдоо аяктай албайт.
+
+Эч нерсе эмес——кантип болбосун, жакшы ниетиңиз үчүн чоң ыраазычылык!</string>
+    <string name="settings_transcoder_title">Ички транскодер</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Кайра коддоо</string>
+    <string name="settings_transcode_mode_remux">Контейнерди гана кайра таңуу (сунушталат)</string>
+    <string name="settings_transcode_mode_off">Транскодерди такыр колдонбоо</string>
+    <string name="settings_transcode_params_title">Транскод параметрлери</string>
+    <string name="settings_transcode_params_subtitle">Кайра коддоодо колдонулуучу сапат жана кысуу параметрлери</string>
+    <string name="settings_transcode_params_disabled">“Транскод ыкмасы” ичинде “Кайра коддоо” тандалганда гана күчүндө</string>
+    <string name="settings_crf_value">Сапат CRF: %1$d</string>
+    <string name="settings_crf_hint">Маани канчалык кичине болсо, сапат ошончолук жогору жана көлөм чоң (демейки 18)</string>
+    <string name="settings_encoder_title">Коддоочу</string>
+    <string name="settings_compress_preset_title">Кысуу пресети</string>
+</resources>

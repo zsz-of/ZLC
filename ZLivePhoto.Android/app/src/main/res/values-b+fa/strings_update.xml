@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · fa strings — Persian (فارسی, RTL)
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Persian (Farsi). RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">اشتراک Lanzou لغو شده یا فایل وجود ندارد؛ از دانلود GitHub استفاده کنید</string>
+    <string name="update_lanzou_gone_short">اشتراک Lanzou لغو شده است؛ از دانلود GitHub استفاده کنید</string>
+    <string name="update_lanzou_resolve_failed">تجزیه لینک دانلود Lanzou ناموفق بود</string>
+    <string name="update_lanzou_need_passwd">این اشتراک Lanzou به کد استخراج نیاز دارد؛ از دانلود GitHub استفاده کنید (یا کد را در توضیحات Release ببینید)</string>
+    <string name="update_lanzou_wrong_passwd">کد استخراج Lanzou نادرست است</string>
+    <string name="update_err_resolve_failed">تجزیه ناموفق بود</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">بررسی ضد‌خزش Lanzou ناموفق بود</string>
+    <string name="update_err_no_frame">تجزیه صفحه دانلود Lanzou ممکن نبود (قاب دانلود پیدا نشد)</string>
+    <string name="update_err_no_file_id">تجزیه شناسه فایل Lanzou ممکن نبود</string>
+    <string name="update_err_no_sign">تجزیه امضای Lanzou ممکن نبود</string>
+    <string name="update_err_ajax_request">درخواست رابط ناموفق بود</string>
+    <string name="update_err_api_request">درخواست API لانزو ناموفق بود</string>
+    <string name="update_err_empty_direct">Lanzou نشانی دانلود خالی برگرداند</string>
+    <string name="update_err_direct_expired">نشانی دانلود Lanzou منقضی شده است؛ دوباره دریافت کنید</string>
+    <string name="update_err_http_request">درخواست ناموفق بود (HTTP %1$d)</string>
+    <string name="update_err_connect">اتصال به سرور دانلود ممکن نبود: %1$s</string>
+    <string name="update_err_http">دانلود ناموفق بود (HTTP %1$d)</string>
+    <string name="update_err_no_connection">ایجاد اتصال دانلود ممکن نبود</string>
+    <string name="update_err_empty">محتوای دانلود خالی است</string>
+    <string name="update_err_incomplete">دانلود کامل نشد (%1$d از %2$d بایت دریافت شد)؛ دوباره دانلود کنید</string>
+    <string name="update_err_interrupted">دانلود قطع شد: %1$s</string>
+    <string name="update_err_not_apk">فایل دانلودشده بسته نصب معتبری نیست (ممکن است صفحه وب باشد یا لینک منقضی شده باشد)؛ دوباره دانلود کنید یا از GitHub استفاده کنید.</string>
+    <string name="update_err_apk_incomplete">محتوای بسته نصب کامل نیست؛ دوباره دانلود کنید یا از GitHub استفاده کنید.</string>
+    <string name="update_err_apk_unparsable">بسته نصب قابل تجزیه نیست (ممکن است دانلود کامل نشده باشد)؛ دوباره دانلود کنید یا از GitHub استفاده کنید.</string>
+    <string name="update_err_no_install_permission">مجوز «نصب برنامه‌های ناشناس» هنوز داده نشده است</string>
+    <string name="update_err_installer_failed">نصب‌کننده سیستم اجرا نشد (%1$s)؛ بسته نصب را دستی از مدیر فایل باز کنید</string>
+</resources>

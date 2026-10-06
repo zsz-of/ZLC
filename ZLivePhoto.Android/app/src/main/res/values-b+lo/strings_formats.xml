@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ລາວ (Lao) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Lao has no grammatical plural; only the 'other' quantity is emitted.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">ດຶງອອກ</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">ຮູບຖ່າຍເຄື່ອນໄຫວ Honor</string>
+    <string name="fmt_meizu">ຮູບຖ່າຍເຄື່ອນໄຫວ Meizu</string>
+    <string name="fmt_nubia">ຮູບຖ່າຍເຄື່ອນໄຫວ Nubia</string>
+    <string name="fmt_oppo">ຮູບຖ່າຍເຄື່ອນໄຫວ OPPO</string>
+    <string name="fmt_vivo">ຮູບຖ່າຍເຄື່ອນໄຫວ vivo</string>
+    <string name="fmt_vivo_single">ຮູບຖ່າຍເຄື່ອນໄຫວ vivo ໄຟລ໌ດຽວ</string>
+    <string name="fmt_xiaomi">ຮູບຖ່າຍເຄື່ອນໄຫວ Xiaomi</string>
+    <string name="fmt_err_apple_mov_missing">ບໍ່ພົບໄຟລ໌ວິດີໂອ .mov ທີ່ມີຊື່ດຽວກັນ</string>
+    <string name="fmt_err_apple_mov_no_ftyp">ໄຟລ໌ MOV ຂາດ ftyp box</string>
+    <string name="fmt_err_extract_read">ການດຶງອອກເປັນຮູບແບບຜົນອອກ ຈຶ່ງອ່ານເປັນຮູບແບບອິນພຸດບໍ່ໄດ້</string>
+    <string name="fmt_err_no_primary_jpeg">ບໍ່ພົບຮູບ JPEG ຫຼັກ</string>
+    <string name="fmt_err_no_mp4_after_jpeg">ບໍ່ພົບວິດີໂອ MP4 ທີ່ຖືກຕ້ອງຫຼັງ JPEG (ຂາດ ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">ແຍກວິເຄາະສະຕຣີມວິດີໂອ MP4 ລົ້ມເຫຼວ</string>
+    <string name="fmt_err_nubia_too_short">ໄຟລ໌ສັ້ນເກີນໄປ ບໍ່ຄ້າຍກັບຮູບຖ່າຍເຄື່ອນໄຫວ Nubia</string>
+    <string name="fmt_err_nubia_no_magic">ຂາດ magic number ທ້າຍຂອງ nubiaVpfile</string>
+    <string name="fmt_err_nubia_jpeg_len">ຄວາມຍາວ JPEG ທີ່ບັນທຶກໃນ trailer ບໍ່ຖືກຕ້ອງ: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">ຂາດ padding bytes 0x00 ລະຫວ່າງ JPEG ແລະ ວິດີໂອ</string>
+    <string name="fmt_err_nubia_empty_video">ຄວາມຍາວວິດີໂອທີ່ຝັງໄວ້ແມ່ນ 0</string>
+    <string name="fmt_err_vivo_no_marker">ບໍ່ພົບ marker vivo livephoto ຢູ່ທ້າຍ JPG</string>
+    <string name="fmt_err_vivo_companion_missing">ຂາດໄຟລ໌ວິດີໂອຄູ່ກັນ: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">ແຍກວິເຄາະເນື້ອໃນ JPG ລົ້ມເຫຼວ</string>
+    <string name="fmt_err_vivo_companion_invalid">MP4 ຄູ່ກັນບໍ່ຖືກຕ້ອງ (ຂາດ ftyp box)</string>
+</resources>

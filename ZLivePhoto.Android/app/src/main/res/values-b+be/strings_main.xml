@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Belarusian (be) strings — main screen and background flows.
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Plural quantities follow CLDR for Belarusian: one / few / many / other.
+-->
+<resources>
+    <!-- ── Радок стану / паведамленні ── -->
+    <string name="main_status_ready">Гатова</string>
+    <string name="main_status_location_granted">Дазвол на геалакацыю атрыманы; метаданыя GPS будуць захаваны пасля канвертацыі</string>
+    <string name="main_status_location_denied">Без дазволу на геалакацыю: сканвертаваныя фота страцяць даныя пра месцазнаходжанне GPS</string>
+    <string name="main_status_all_files_granted">Дазвол «Доступ да ўсіх файлаў» атрыманы; канвертацыя піша напрамкі ў папку альбома і цалкам захоўвае месцазнаходжанне</string>
+    <string name="main_status_all_files_denied">Без дазволу «Доступ да ўсіх файлаў»: на некаторых мадэлях фота могуць страціць месцазнаходжанне пасля канвертацыі</string>
+    <string name="main_status_read_granted">Дазвол на чытанне фота і відэа атрыманы</string>
+    <string name="main_status_video_missing">Дазвол ёсць, але няма дазволу на відэа: немагчыма знайсці спадарожнае відэа двухфайлавага Live Photo</string>
+    <string name="main_status_permission_denied">Дазвол не дадзены; можна зноў націснуць «Дадаць файлы»</string>
+    <string name="main_status_folder_not_selected">Папка не выбрана</string>
+    <string name="main_status_folder_unavailable">Выбраная папка недаступная (падтрымліваюцца толькі лакальныя сховішчы)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Папярэдняя сесія адноўлена (%1$d файл)</item>
+        <item quantity="few">Папярэдняя сесія адноўлена (%1$d файлы)</item>
+        <item quantity="many">Папярэдняя сесія адноўлена (%1$d файлаў)</item>
+        <item quantity="other">Папярэдняя сесія адноўлена (%1$d файла)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Выяўлена папярэдняе аварыйнае закрыццё; незавершаны спіс ачышчаны</string>
+    <string name="main_status_compose_blocks_extract">Чарга змяшчае задачы сінтэзу; нельга пераключыцца ў рэжым вымання</string>
+    <string name="main_status_replace_off_mutex">Рэжым замены выключаны (узаемавыключальны з «Выдаляць арыгіналы пасля апрацоўкі»)</string>
+    <string name="main_status_delete_needs_all_files">Аўтаматычнае выдаленне арыгіналаў патрабуе дазволу «Доступ да ўсіх файлаў»; спачатку дайце яго</string>
+    <string name="main_status_replace_off">Рэжым замены выключаны; вынікі зноў запісваюцца ў папку альбома</string>
+    <string name="main_status_replace_needs_all_files">Рэжым замены патрабуе дазволу «Доступ да ўсіх файлаў»; спачатку дайце яго</string>
+    <string name="main_status_delete_off_mutex">«Выдаляць арыгіналы пасля апрацоўкі» выключана (узаемавыключальна з рэжымам замены)</string>
+    <string name="main_status_loading_albums">Чытанне альбомаў…</string>
+    <string name="main_status_no_albums">Альбомы не знойдзены</string>
+    <string name="main_status_compose_no_photo">Фота не выбрана, сінтэз немагчымы</string>
+    <string name="main_status_compose_no_video">Відэа не выбрана, сінтэз немагчымы</string>
+    <string name="main_status_compose_all_added">Усе выбраныя фота ўжо ў спісе</string>
+    <string name="main_status_compose_paired">%1$d фота, %2$d відэа; дададзена %3$d пар задач сінтэзу па меншай колькасці</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Дададзена %1$d задача сінтэзу; націсніце «Пачаць канвертацыю», каб выканаць сінтэз</item>
+        <item quantity="few">Дададзены %1$d задачы сінтэзу; націсніце «Пачаць канвертацыю», каб выканаць сінтэз</item>
+        <item quantity="many">Дададзена %1$d задач сінтэзу; націсніце «Пачаць канвертацыю», каб выканаць сінтэз</item>
+        <item quantity="other">Дададзена %1$d задачы сінтэзу; націсніце «Пачаць канвертацыю», каб выканаць сінтэз</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (фармат вываду аўтаматычна зменены на Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Імпарт %1$d агульнай выявы…</item>
+        <item quantity="few">Імпарт %1$d агульных выяў…</item>
+        <item quantity="many">Імпарт %1$d агульных выяў…</item>
+        <item quantity="other">Імпарт %1$d агульнай выявы…</item>
+    </plurals>
+    <string name="main_status_import_failed">Памылка імпарту: %1$s</string>
+    <string name="main_status_import_done_partial">Імпарт завершаны: паспяхова %1$d, няўдала %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Імпарт завершаны: імпартаваны %1$d файл</item>
+        <item quantity="few">Імпарт завершаны: імпартаваны %1$d файлы</item>
+        <item quantity="many">Імпарт завершаны: імпартавана %1$d файлаў</item>
+        <item quantity="other">Імпарт завершаны: імпартавана %1$d файла</item>
+    </plurals>
+    <string name="main_status_import_stopped">Імпарт спынены: паспяхова %1$d, няўдала %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Імпарт %1$d файла…</item>
+        <item quantity="few">Імпарт %1$d файлаў…</item>
+        <item quantity="many">Імпарт %1$d файлаў…</item>
+        <item quantity="other">Імпарт %1$d файла…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Імпарт %1$d/%2$d…</string>
+    <string name="main_status_stopping">Спыненне… (спыніцца пасля бягучага файла)</string>
+    <string name="main_status_stopping_import">Спыненне імпарту…</string>
+    <string name="main_status_removed">Выдалена: %1$s</string>
+    <string name="main_status_cleared">Ачышчана</string>
+    <string name="main_status_nothing_to_convert">Няма файлаў для канвертацыі</string>
+    <string name="main_status_folder_unreadable">Не ўдалося прачытаць выбраную папку</string>
+    <string name="main_status_scanning_folder">Сканіраванне папкі…</string>
+    <string name="main_status_no_images">У выбранай папцы не знойдзены выявы</string>
+    <string name="main_status_batch_importing">Групавы імпарт %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Групавы імпарт спынены: імпартаваны %1$d Live Photo</item>
+        <item quantity="few">Групавы імпарт спынены: імпартаваны %1$d Live Photo</item>
+        <item quantity="many">Групавы імпарт спынены: імпартавана %1$d Live Photo</item>
+        <item quantity="other">Групавы імпарт спынены: імпартавана %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Групавы імпарт спынены: імпартаваны %1$d Live Photo, прапушчаны %2$d не-Live Photo файл</item>
+        <item quantity="few">Групавы імпарт спынены: імпартаваны %1$d Live Photo, прапушчаны %2$d не-Live Photo файлы</item>
+        <item quantity="many">Групавы імпарт спынены: імпартавана %1$d Live Photo, прапушчана %2$d не-Live Photo файлаў</item>
+        <item quantity="other">Групавы імпарт спынены: імпартавана %1$d Live Photo, прапушчана %2$d не-Live Photo файла</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Групавы імпарт завершаны: імпартаваны %1$d Live Photo</item>
+        <item quantity="few">Групавы імпарт завершаны: імпартаваны %1$d Live Photo</item>
+        <item quantity="many">Групавы імпарт завершаны: імпартавана %1$d Live Photo</item>
+        <item quantity="other">Групавы імпарт завершаны: імпартавана %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Групавы імпарт завершаны: імпартаваны %1$d Live Photo, прапушчаны %2$d не-Live Photo файл</item>
+        <item quantity="few">Групавы імпарт завершаны: імпартаваны %1$d Live Photo, прапушчаны %2$d не-Live Photo файлы</item>
+        <item quantity="many">Групавы імпарт завершаны: імпартавана %1$d Live Photo, прапушчана %2$d не-Live Photo файлаў</item>
+        <item quantity="other">Групавы імпарт завершаны: імпартавана %1$d Live Photo, прапушчана %2$d не-Live Photo файла</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Спынена: з %1$d файлаў апрацавана %2$d, заменена %3$d зыходных файлаў</string>
+    <string name="main_status_stopped_export">Спынена: з %1$d файлаў апрацавана %2$d, экспартавана %3$d у альбом</string>
+    <string name="main_status_done_replace_reason">Завершана: апрацавана %1$d файлаў, заменена %2$d зыходных файлаў (прычына: %3$s)</string>
+    <string name="main_status_done_export_reason">Завершана: апрацавана %1$d файлаў, экспартавана %2$d у альбом (прычына: %3$s)</string>
+    <string name="main_status_done_replace">Завершана: апрацавана %1$d файлаў, заменена %2$d зыходных файлаў</string>
+    <string name="main_status_done_export">Завершана: апрацавана %1$d файлаў, экспартавана %2$d у альбом</string>
+    <string name="main_status_keep_originals">%1$s; дазвол «Поўны доступ да сховішча» не дадзены, арыгіналы захаваны</string>
+
+    <!-- ── Інфармацыя пра элементы спіса ── -->
+    <string name="main_info_detecting">Вызначэнне…</string>
+    <string name="main_info_unrecognized">Нераспазнаны фармат Live Photo</string>
+    <string name="main_info_converting">Канвертацыя…</string>
+    <string name="main_info_compose_task">Задача сінтэзу (націсніце, каб пачаць канвертацыю)</string>
+    <string name="main_info_done_replaced">Завершана (заменена %1$d зыходных файлаў)</string>
+    <string name="main_info_done_skipped">Завершана (прапушчана: канфлікт імёнаў)</string>
+    <string name="main_info_done_exported">Завершана (экспартавана %1$d)</string>
+    <string name="main_info_failed">Памылка: %1$s</string>
+
+    <!-- ── Дэталі прагрэсу ── -->
+    <string name="main_progress_added">Дададзена %1$d/%2$d</string>
+    <string name="main_progress_processed">Апрацавана %1$d/%2$d</string>
+    <string name="main_progress_imported">Імпартавана %1$d/%2$d</string>
+
+    <!-- ── Дыялогі дазволаў ── -->
+    <string name="main_dialog_permission_title">Патрэбны дазвол на чытанне фота і відэа</string>
+    <string name="main_dialog_permission_message">Праграме патрэбны доступ да фота і відэа на вашай прыладзе:\n\n• Дазвол на фота: сканіраванне альбома прылады для вызначэння Live Photo\n• Дазвол на відэа: пошук спадарожнага відэа двухфайлавага Live Photo\n• Дазвол на геалакацыю: захаванне метаданых GPS у фота (без яго месцазнаходжанне страціцца пасля канвертацыі)\n\nПасля адмовы ўбудаваны выбаршчык не будзе працаваць; пазней можна зноў націснуць «Дадаць файлы» і даць дазвол.</string>
+    <string name="main_dialog_settings_title">Дазвол на фота і відэа трэба даць уручную</string>
+    <string name="main_dialog_settings_message">Вы раней выбралі «Больш не пытаць», таму сістэма больш не паказвае дыялог дазволаў.\n\nПерайдзіце на старонку звестак пра праграму → Дазволы → Фота і відэа, дайце доступ уручную і вярніцеся ў праграму.\n\nУвага: трэба даць абодва дазволы — «Фота» і «Відэа», інакш двухфайлавы Live Photo не знойдзе спадарожнае відэа.</string>
+
+    <!-- ── Дыялогі дазволу «Доступ да ўсіх файлаў» ── -->
+    <string name="main_dialog_allfiles_title_delete">Аўтаматычнае выдаленне арыгіналаў патрабуе «Доступ да ўсіх файлаў»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Гэта прылада не падтрымлівае аўтаматычнае выдаленне арыгіналаў</string>
+    <string name="main_dialog_allfiles_title_replace">Рэжым замены патрабуе «Доступ да ўсіх файлаў»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Гэта прылада не падтрымлівае рэжым замены</string>
+    <string name="main_dialog_allfiles_title_location">Рэкамендуецца даць дазвол «Доступ да ўсіх файлаў»</string>
+    <string name="main_dialog_allfiles_delete_message">«Выдаляць арыгіналы пасля апрацоўкі» напрамкі выдаляе зыходныя файлы з дыска (фота і спадарожнае відэа), дзеянне незваротнае, таму спачатку трэба даць дазвол «Доступ да ўсіх файлаў».\n\nПасля гэтага пераключальнік стане даступным, і вы зможаце ўключыць яго самі.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Бягучая сістэма (Android 10 і ніжэй) не дае дазволу «Доступ да ўсіх файлаў», таму зыходныя файлы нельга выдаліць напрамкі з дыска; з гэтай прычыны прылада не падтрымлівае «Выдаляць арыгіналы пасля апрацоўкі».\n\nВы можаце ўручную прыбраць арыгіналы з альбома сістэмы пасля канвертацыі.</string>
+    <string name="main_dialog_allfiles_replace_message">«Рэжым замены» напрамкі запісвае вынік канвертацыі паверх зыходных файлаў на дыску (перазапісвае іх), дзеянне незваротнае, таму спачатку трэба даць дазвол «Доступ да ўсіх файлаў».\n\nПасля гэтага пераключальнік стане даступным, і вы зможаце ўключыць яго самі.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Бягучая сістэма (Android 10 і ніжэй) не дае дазволу «Доступ да ўсіх файлаў», таму зыходныя файлы нельга перазапісаць напрамкі; з гэтай прычыны прылада не падтрымлівае «Рэжым замены».\n\nМожна працягнуць звычайную канвертацыю; вынікі будуць запісаны ў папку альбома.</string>
+    <string name="main_dialog_allfiles_location_message">Некаторыя мадэлі (напрыклад Meizu) выдаляюць даныя GPS пры запісе праз API альбома сістэмы, таму сканвертаваныя фота страчваюць месцазнаходжанне.\n\nЗ дазволам «Доступ да ўсіх файлаў» праграма піша напрамкі ў папку альбома і цалкам захоўвае метаданыя месцазнаходжання.\n\nКанвертацыя працуе і без гэтага дазволу, але на асобных мадэлях месцазнаходжанне можа страціцца.</string>
+
+    <!-- ── Дыялог канфлікту імя выходнага файла ── -->
+    <string name="main_dialog_conflict_title">Канфлікт імя выходнага файла</string>
+    <string name="main_dialog_conflict_message">У выходнай папцы ўжо ёсць файл з такой назвай:\n%1$s\n\nВыберыце спосаб дзеяння.</string>
+    <string name="main_label_conflict_always">Выкарыстоўваць гэты спосаб для наступных канфліктаў</string>
+
+    <!-- ── Кнопкі дыялогаў ── -->
+    <string name="main_btn_grant">Дазволіць</string>
+    <string name="main_btn_deny">Адхіліць</string>
+    <string name="main_btn_go_settings">Налады</string>
+    <string name="main_btn_cancel">Скасаваць</string>
+    <string name="main_btn_grant_access">Дазволіць доступ</string>
+    <string name="main_btn_got_it">Зразумела</string>
+    <string name="main_btn_not_now">Не зараз</string>
+    <string name="main_btn_skip">Прапусціць</string>
+    <string name="main_btn_overwrite">Перазапісаць</string>
+    <string name="main_btn_auto_rename">Аўтаперайменаванне</string>
+
+    <!-- ── Вынік канвертацыі / прычыны няўдалага экспарту ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Выдалены %1$d арыгінальны файл</item>
+        <item quantity="few">Выдалены %1$d арыгінальныя файлы</item>
+        <item quantity="many">Выдалена %1$d арыгінальных файлаў</item>
+        <item quantity="other">Выдалена %1$d арыгінальнага файла</item>
+    </plurals>
+    <string name="main_delete_nothing">Не трэба выдаляць арыгіналы</string>
+    <string name="main_delete_partial">Выдалена %1$d арыгінальных файлаў (%2$d не ўдалося выдаліць, захаваны)</string>
+    <string name="main_delete_failed">Не ўдалося выдаліць арыгіналы (файл заняты або няма правоў запісу); захаваны</string>
+    <string name="main_export_missing_output">Вынік канвертацыі адсутнічае або пусты: %1$s</string>
+    <string name="main_export_missing_output_bare">Вынік канвертацыі адсутнічае або пусты</string>
+    <string name="main_export_insert_null">MediaStore insert вярнуў null</string>
+    <string name="main_export_output_stream">Выходны паток MediaStore недаступны</string>
+    <string name="main_export_write_failed">Памылка запісу ў MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">Не ўдалося стварыць папку альбома %1$s</string>
+    <string name="main_export_dir_write_failed">Памылка запісу ў папку альбома: %1$s</string>
+    <string name="main_export_no_source">Не ўдалося знайсці зыходны файл, замену прапушчана</string>
+    <string name="main_export_companion_failed">Не ўдалося запісаць спадарожны файл: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Папка зыходнага файла недаступная для запісу; спадарожны файл не запісаны</string>
+    <string name="main_export_source_dir_unavailable">Папка зыходнага файла недаступная: %1$s</string>
+    <string name="main_export_replace_failed">Не ўдалося замяніць зыходны файл: %1$s</string>
+    <string name="main_export_replace_failed_bare">Не ўдалося замяніць зыходны файл</string>
+</resources>

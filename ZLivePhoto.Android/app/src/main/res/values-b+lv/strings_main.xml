@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Latviešu (lv) — galvenais ekrāns un fona procesi (MainActivity, atslēgas main_*).
+  Avots: res/values/strings_main.xml (vienkāršotā ķīniešu valoda).
+  Vietturi: %1$s / %1$d. Skaitāmas frāzes — ar <plurals> (zero / one / other).
+-->
+<resources>
+    <!-- ── Statusa josla / paziņojumi ── -->
+    <string name="main_status_ready">Gatavs</string>
+    <string name="main_status_location_granted">Vietas atļauja piešķirta — pēc konvertēšanas GPS metadati tiks saglabāti</string>
+    <string name="main_status_location_denied">Vietas atļauja nav piešķirta: pēc konvertēšanas fotoattēli zaudēs GPS informāciju</string>
+    <string name="main_status_all_files_granted">Atļauja „Piekļuve visiem failiem“ piešķirta — rezultāti tiek rakstīti tieši galerijas mapē un vietas informācija tiek saglabāta pilnībā</string>
+    <string name="main_status_all_files_denied">Atļauja „Piekļuve visiem failiem“ nav piešķirta: atsevišķos modeļos pēc konvertēšanas vietas informācija var zust</string>
+    <string name="main_status_read_granted">Piešķirta atļauja lasīt fotoattēlus un video</string>
+    <string name="main_status_video_missing">Atļauja piešķirta, bet trūkst video piekļuves: nevar atrast divu failu Live Photo papildu video</string>
+    <string name="main_status_permission_denied">Atļauja nav piešķirta; varat vēlreiz piespiest „Pievienot failus“</string>
+    <string name="main_status_folder_not_selected">Mape nav izvēlēta</string>
+    <string name="main_status_folder_unavailable">Izvēlētā mape nav pieejama (atbalstītas tikai vietējās krātuves mapes)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="zero">Atjaunota iepriekšējā sesija (%1$d failu)</item>
+        <item quantity="one">Atjaunota iepriekšējā sesija (%1$d fails)</item>
+        <item quantity="other">Atjaunota iepriekšējā sesija (%1$d faili)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Konstatēta iepriekšēja avārijas aizvēršana; nepabeigtais saraksts ir notīrīts</string>
+    <string name="main_status_compose_blocks_extract">Rindā ir salikšanas uzdevumi, tāpēc nevar pārslēgties uz izvilkšanas režīmu</string>
+    <string name="main_status_replace_off_mutex">Aizstāšanas režīms izslēgts (nav savienojams ar „Dzēst oriģinālus pēc apstrādes“)</string>
+    <string name="main_status_delete_needs_all_files">Oriģinālu automātiskai dzēšanai nepieciešama atļauja „Piekļuve visiem failiem“ — vispirms to piešķiriet</string>
+    <string name="main_status_replace_off">Aizstāšanas režīms izslēgts; konvertēšanas rezultāti atkal tiek rakstīti galerijas mapē</string>
+    <string name="main_status_replace_needs_all_files">Aizstāšanas režīmam nepieciešama atļauja „Piekļuve visiem failiem“ — vispirms to piešķiriet</string>
+    <string name="main_status_delete_off_mutex">„Dzēst oriģinālus pēc apstrādes“ izslēgts (nav savienojams ar aizstāšanas režīmu)</string>
+    <string name="main_status_loading_albums">Notiek galerijas ielāde…</string>
+    <string name="main_status_no_albums">Albumi nav atrasti</string>
+    <string name="main_status_compose_no_photo">Fotoattēls nav izvēlēts, salikt nav iespējams</string>
+    <string name="main_status_compose_no_video">Video nav izvēlēts, salikt nav iespējams</string>
+    <string name="main_status_compose_all_added">Visi izvēlētie fotoattēli jau ir sarakstā</string>
+    <string name="main_status_compose_paired">Fotoattēli: %1$d, video: %2$d; pēc mazākā skaita pievienotas %3$d salikšanas uzdevumu pāri</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="zero">Pievienoti %1$d salikšanas uzdevumu — piespiediet „Sākt konvertēšanu“, lai tos izpildītu</item>
+        <item quantity="one">Pievienots %1$d salikšanas uzdevums — piespiediet „Sākt konvertēšanu“, lai to izpildītu</item>
+        <item quantity="other">Pievienoti %1$d salikšanas uzdevumi — piespiediet „Sākt konvertēšanu“, lai tos izpildītu</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (izvades formāts automātiski nomainīts uz Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="zero">Notiek %1$d kopīgoto fotoattēlu imports…</item>
+        <item quantity="one">Notiek %1$d kopīgotā fotoattēla imports…</item>
+        <item quantity="other">Notiek %1$d kopīgoto fotoattēlu imports…</item>
+    </plurals>
+    <string name="main_status_import_failed">Imports neizdevās: %1$s</string>
+    <string name="main_status_import_done_partial">Imports pabeigts: veiksmīgi %1$d, neveiksmīgi %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="zero">Imports pabeigts: kopā importēti %1$d failu</item>
+        <item quantity="one">Imports pabeigts: kopā importēts %1$d fails</item>
+        <item quantity="other">Imports pabeigts: kopā importēti %1$d faili</item>
+    </plurals>
+    <string name="main_status_import_stopped">Imports apturēts: veiksmīgi %1$d, neveiksmīgi %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="zero">Notiek %1$d failu imports…</item>
+        <item quantity="one">Notiek %1$d faila imports…</item>
+        <item quantity="other">Notiek %1$d failu imports…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Notiek imports %1$d/%2$d…</string>
+    <string name="main_status_stopping">Notiek apturēšana… (tiks apturēts pēc pašreizējā faila)</string>
+    <string name="main_status_stopping_import">Notiek importa apturēšana…</string>
+    <string name="main_status_removed">%1$s noņemts</string>
+    <string name="main_status_cleared">Notīrīts</string>
+    <string name="main_status_nothing_to_convert">Nav failu, ko konvertēt</string>
+    <string name="main_status_folder_unreadable">Izvēlēto mapi nevar nolasīt</string>
+    <string name="main_status_scanning_folder">Notiek mapes skenēšana…</string>
+    <string name="main_status_no_images">Izvēlētajā mapē nav atrasts neviens attēls</string>
+    <string name="main_status_batch_importing">Notiek masveida imports %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="zero">Masveida imports apturēts: kopā %1$d Live Photo ierakstu</item>
+        <item quantity="one">Masveida imports apturēts: kopā %1$d Live Photo ieraksts</item>
+        <item quantity="other">Masveida imports apturēts: kopā %1$d Live Photo ieraksti</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="zero">Masveida imports apturēts: kopā %1$d Live Photo ierakstu, izlaists %2$d nedinamisks fails</item>
+        <item quantity="one">Masveida imports apturēts: kopā %1$d Live Photo ieraksts, izlaists %2$d nedinamisks fails</item>
+        <item quantity="other">Masveida imports apturēts: kopā %1$d Live Photo ieraksti, izlaisti %2$d nedinamiski faili</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="zero">Masveida imports pabeigts: kopā %1$d Live Photo ierakstu</item>
+        <item quantity="one">Masveida imports pabeigts: kopā %1$d Live Photo ieraksts</item>
+        <item quantity="other">Masveida imports pabeigts: kopā %1$d Live Photo ieraksti</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="zero">Masveida imports pabeigts: kopā %1$d Live Photo ierakstu, izlaists %2$d nedinamisks fails</item>
+        <item quantity="one">Masveida imports pabeigts: kopā %1$d Live Photo ieraksts, izlaists %2$d nedinamisks fails</item>
+        <item quantity="other">Masveida imports pabeigts: kopā %1$d Live Photo ieraksti, izlaisti %2$d nedinamiski faili</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Apturēts: apstrādāti %2$d no %1$d failiem, aizstāti %3$d avota faili</string>
+    <string name="main_status_stopped_export">Apturēts: apstrādāti %2$d no %1$d failiem, eksportēti %3$d uz galeriju</string>
+    <string name="main_status_done_replace_reason">Pabeigts: apstrādāti %1$d faili, aizstāti %2$d avota faili (iemesls: %3$s)</string>
+    <string name="main_status_done_export_reason">Pabeigts: apstrādāti %1$d faili, eksportēti %2$d uz galeriju (iemesls: %3$s)</string>
+    <string name="main_status_done_replace">Pabeigts: apstrādāti %1$d faili, aizstāti %2$d avota faili</string>
+    <string name="main_status_done_export">Pabeigts: apstrādāti %1$d faili, eksportēti %2$d uz galeriju</string>
+    <string name="main_status_keep_originals">%1$s; atļauja „Piekļuve visiem failiem“ nav piešķirta, oriģināli saglabāti</string>
+
+    <!-- ── Saraksta elementa informācija ── -->
+    <string name="main_info_detecting">Notiek noteikšana…</string>
+    <string name="main_info_unrecognized">Neatpazīts Live Photo formāts</string>
+    <string name="main_info_converting">Notiek konvertēšana…</string>
+    <string name="main_info_compose_task">Salikšanas uzdevums (piespiediet „Sākt konvertēšanu“, lai izpildītu)</string>
+    <string name="main_info_done_replaced">Pabeigts (aizstāti %1$d avota faili)</string>
+    <string name="main_info_done_skipped">Pabeigts (izlaists: tāds pats nosaukums)</string>
+    <string name="main_info_done_exported">Pabeigts (eksportēti %1$d)</string>
+    <string name="main_info_failed">Neizdevās: %1$s</string>
+
+    <!-- ── Progresa informācija ── -->
+    <string name="main_progress_added">Pievienoti %1$d/%2$d</string>
+    <string name="main_progress_processed">Apstrādāti %1$d/%2$d</string>
+    <string name="main_progress_imported">Importēti %1$d/%2$d</string>
+
+    <!-- ── Atļauju dialoglodziņš ── -->
+    <string name="main_dialog_permission_title">Nepieciešama atļauja lasīt fotoattēlus un video</string>
+    <string name="main_dialog_permission_message">Šai lietotnei nepieciešama piekļuve ierīces fotoattēliem un video:\n\n• Fotoattēlu atļauja: sistēmas galerijas skenēšana un Live Photo atpazīšana tajā\n• Video atļauja: divu failu Live Photo papildu video atrašana\n• Vietas atļauja: GPS metadatu saglabāšana fotoattēlos (bez tās pēc konvertēšanas vietas informācija zūd)\n\nAtteikšanās gadījumā iebūvēto izvēlētāju izmantot nevarēs; vēlāk varat atkal piespiest „Pievienot failus“ un piešķirt atļauju.</string>
+    <string name="main_dialog_settings_title">Fotoattēlu un video atļaujas jāpiešķir manuāli</string>
+    <string name="main_dialog_settings_message">Iepriekš izvēlējāties „Vairs nejautāt“, tāpēc sistēma atļauju dialoglodziņu vairs nerāda.\n\nAtveriet lietotnes lapu → Atļaujas → Fotoattēli un video, piešķiriet piekļuvi manuāli un atgriezieties lietotnē.\n\nPiezīme: atļaujas „Fotoattēli“ un „Video“ jāpiešķir vienlaikus, citādi divu failu Live Photo papildu video netiks atrasts.</string>
+
+    <!-- ── Dialoglodziņi par atļauju „Piekļuve visiem failiem“ ── -->
+    <string name="main_dialog_allfiles_title_delete">Oriģinālu automātiskai dzēšanai nepieciešama „Piekļuve visiem failiem“</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Šī ierīce neatbalsta oriģinālu automātisku dzēšanu</string>
+    <string name="main_dialog_allfiles_title_replace">Aizstāšanas režīmam nepieciešama „Piekļuve visiem failiem“</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Šī ierīce neatbalsta aizstāšanas režīmu</string>
+    <string name="main_dialog_allfiles_title_location">Ieteicams piešķirt atļauju „Piekļuve visiem failiem“</string>
+    <string name="main_dialog_allfiles_delete_message">„Dzēst oriģinālus pēc apstrādes“ dzēš failus tieši no diska (fotoattēlu un tā papildu video); šo darbību nevar atsaukt, tāpēc vispirms nepieciešama atļauja „Piekļuve visiem failiem“.\n\nSlēdzis kļūs pieejams tikai pēc atļaujas piešķiršanas, un tad to varēsiet ieslēgt.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Pašreizējā sistēma (Android 10 un vecāka) nenodrošina atļauju „Piekļuve visiem failiem“, tāpēc failus nevar dzēst tieši no diska un oriģinālu automātiskā dzēšana netiek atbalstīta.\n\nPēc konvertēšanas oriģinālus varat notīrīt manuāli sistēmas galerijā.</string>
+    <string name="main_dialog_allfiles_replace_message">„Aizstāšanas režīms“ konvertēšanas rezultātu ieraksta tieši diska sākotnējā failā (pārraksta saturu); šo darbību nevar atsaukt, tāpēc vispirms nepieciešama atļauja „Piekļuve visiem failiem“.\n\nSlēdzis kļūs pieejams tikai pēc atļaujas piešķiršanas, un tad to varēsiet ieslēgt.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Pašreizējā sistēma (Android 10 un vecāka) nenodrošina atļauju „Piekļuve visiem failiem“, tāpēc sākotnējos failus nevar pārrakstīt tieši diskā un aizstāšanas režīms netiek atbalstīts.\n\nVarat turpināt konvertēt parastajā veidā — rezultāts tiek ierakstīts galerijas mapē.</string>
+    <string name="main_dialog_allfiles_location_message">Dažos modeļos (piemēram, Meizu) rakstīšana caur sistēmas galerijas saskarni noņem GPS informāciju, un pēc konvertēšanas fotoattēli zaudē vietu.\n\nPiešķirot „Piekļuvi visiem failiem“, lietotne raksta tieši galerijas mapē un pilnībā saglabā vietas metadatus.\n\nArī bez šīs atļaujas konvertēšana darbojas, tikai atsevišķos modeļos vietas informācija var zust.</string>
+
+    <!-- ── Izvades faila nosaukuma konflikta dialoglodziņš ── -->
+    <string name="main_dialog_conflict_title">Izvades faila nosaukuma konflikts</string>
+    <string name="main_dialog_conflict_message">Izvades mapē jau ir fails ar tādu pašu nosaukumu:\n%1$s\n\nIzvēlieties, kā rīkoties.</string>
+    <string name="main_label_conflict_always">Piemērot šo risinājumu visiem turpmākajiem konfliktiem</string>
+
+    <!-- ── Dialoglodziņu pogas ── -->
+    <string name="main_btn_grant">Atļaut</string>
+    <string name="main_btn_deny">Noraidīt</string>
+    <string name="main_btn_go_settings">Uz iestatījumiem</string>
+    <string name="main_btn_cancel">Atcelt</string>
+    <string name="main_btn_grant_access">Atļaut</string>
+    <string name="main_btn_got_it">Sapratu</string>
+    <string name="main_btn_not_now">Ne tagad</string>
+    <string name="main_btn_skip">Izlaist</string>
+    <string name="main_btn_overwrite">Pārrakstīt</string>
+    <string name="main_btn_auto_rename">Pārdēvēt automātiski</string>
+
+    <!-- ── Konvertēšanas rezultāts / eksporta kļūdu iemesli ── -->
+    <plurals name="main_delete_done">
+        <item quantity="zero">Izdzēsti %1$d oriģinālfailu</item>
+        <item quantity="one">Izdzēsts %1$d oriģinālfails</item>
+        <item quantity="other">Izdzēsti %1$d oriģinālfaili</item>
+    </plurals>
+    <string name="main_delete_nothing">Nav ko dzēst</string>
+    <string name="main_delete_partial">Izdzēsti %1$d oriģinālfaili (%2$d neizdevās izdzēst, tie saglabāti)</string>
+    <string name="main_delete_failed">Oriģinālfailu dzēšana neizdevās (fails tiek lietots vai nav rakstīšanas atļaujas), tie saglabāti</string>
+    <string name="main_export_missing_output">Konvertēšanas rezultāta nav vai tas ir tukšs: %1$s</string>
+    <string name="main_export_missing_output_bare">Konvertēšanas rezultāta nav vai tas ir tukšs</string>
+    <string name="main_export_insert_null">MediaStore insert atgrieza null</string>
+    <string name="main_export_output_stream">MediaStore izvades plūsma nav pieejama</string>
+    <string name="main_export_write_failed">Rakstīšana MediaStore neizdevās: %1$s</string>
+    <string name="main_export_mkdir_failed">Nevar izveidot galerijas mapi %1$s</string>
+    <string name="main_export_dir_write_failed">Rakstīšana galerijas mapē neizdevās: %1$s</string>
+    <string name="main_export_no_source">Nevar atrast avota failu, aizstāšana izlaista</string>
+    <string name="main_export_companion_failed">Papildu faila ierakstīšana neizdevās: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Avota faila mape nav ierakstāma, papildu fails netika ierakstīts</string>
+    <string name="main_export_source_dir_unavailable">Avota faila mape nav pieejama: %1$s</string>
+    <string name="main_export_replace_failed">Avota faila aizstāšana neizdevās: %1$s</string>
+    <string name="main_export_replace_failed_bare">Avota faila aizstāšana neizdevās</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · తెలుగు స్ట్రింగ్లు (te).
+  ZLC · Telugu strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">GitHub డౌన్లోడ్ URL ఏదీ పొందలేదు; దయచేసి కాసేపటి తర్వాత మళ్లీ ప్రయత్నించండి.</string>
+    <string name="update_flavor_standard">ప్రామాణిక ఎడిషన్</string>
+    <string name="update_flavor_go">Go ఎడిషన్</string>
+    <string name="update_lanzou_url_missing">ఈ వెర్షన్ Lanzou Cloud డౌన్లోడ్ లింక్ను అందించదు; బదులుగా GitHub ఉపయోగించవచ్చు.</string>
+    <string name="update_apk_direct_missing">ఈ వెర్షన్ మీ ఎడిషన్కు సరిపోయే నేరు ప్యాకేజీ లింక్ను అందించదు; దయచేసి GitHub విడుదల పేజీలో సరైన APK ఎంచుకోండి.</string>
+    <string name="update_install_permission_missing">“తెలియని యాప్లను ఇన్స్టాల్ చేయి” అనుమతి ఇవ్వబడలేదు, కాబట్టి స్వయంచాలక ఇన్స్టాల్ సాధ్యం కాదు. దయచేసి సిస్టమ్ సెట్టింగ్లలో అనుమతించి మళ్లీ ప్రయత్నించండి.</string>
+    <string name="update_error_unknown">తెలియని లోపం</string>
+    <string name="update_fail_lanzou">Lanzou Cloud డౌన్లోడ్ విఫలమైంది</string>
+    <string name="update_fail_github">GitHub డౌన్లోడ్ విఫలమైంది</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud డౌన్లోడ్ లింక్ పరిష్కరించబడుతోంది…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud నుండి డౌన్లోడ్ అవుతోంది…</string>
+    <string name="update_github_downloading">GitHub నుండి డౌన్లోడ్ అవుతోంది…</string>
+    <string name="update_unzipping">ప్యాకేజీ సంగ్రహించబడుతోంది…</string>
+    <string name="update_notes_empty">ఈ వెర్షన్కు విడుదల నోట్స్ లేవు.</string>
+    <string name="update_use_normal_title">దయచేసి ప్రామాణిక ఎడిషన్ ఉపయోగించండి</string>
+    <string name="update_use_normal_body">ఈ పరికరం Android 10 లేదా ఆ తర్వాత నడుపుతోంది, Go లైట్వెయిట్ ఎడిషన్ ఇక మద్దతు లేదు; పాత వెర్షన్ ఇక ఉపయోగించలేము.\n\nప్రామాణిక ఎడిషన్ (ZLC) ఇప్పటికే ఈ పరికరంలో ఇన్స్టాల్ చేయబడి ఉంది — దయచేసి దాన్ని తెరిచి అక్కడ కొనసాగండి (కొత్త విడుదలల్లో Go-అనుకూల బిల్డ్ లేదు; స్థలం ఖాళీ చేయడానికి పాత వెర్షన్ను అన్ఇన్స్టాల్ చేయవచ్చు).</string>
+    <string name="update_open_normal">ప్రామాణిక ఎడిషన్ తెరువు</string>
+    <string name="update_must_update_title">కొనసాగడానికి ముందు తప్పక అప్డేట్ చేయాలి</string>
+    <string name="update_forced_body">ఈ పరికరం Android 10 లేదా ఆ తర్వాత నడుపుతోంది, Go లైట్వెయిట్ ఎడిషన్ ఇక మద్దతు లేదు; పాత వెర్షన్ ఇక ఉపయోగించలేము, మరియు కొత్త విడుదలల్లో Go-అనుకూల బిల్డ్ లేదు.\n\nదయచేసి ఇంటర్నెట్కు కనెక్ట్ అయి “మళ్లీ ప్రయత్నించు” నొక్కి ప్రామాణిక ఎడిషన్ ప్యాకేజీని పొందండి.</string>
+    <string name="update_retry">మళ్లీ ప్రయత్నించు</string>
+    <string name="update_switch_normal_body">ఈ పరికరం Android 10 లేదా ఆ తర్వాత నడుపుతోంది, Go లైట్వెయిట్ ఎడిషన్ ఇక మద్దతు లేదు; పాత వెర్షన్ ఇక ఉపయోగించలేము.\nకొనసాగడానికి దయచేసి ప్రామాణిక ఎడిషన్ను డౌన్లోడ్ చేసి ఇన్స్టాల్ చేయండి (కొత్త విడుదలల్లో Go-అనుకూల బిల్డ్ లేదు).</string>
+    <string name="update_downloading_title">అప్డేట్ డౌన్లోడ్</string>
+    <string name="update_cancel">రద్దు</string>
+    <string name="update_need_permission_title">ఇన్స్టాల్ అనుమతి అవసరం</string>
+    <string name="update_need_permission_body">కొత్త వెర్షన్ను ఇన్స్టాల్ చేయడానికి సిస్టమ్ “తెలియని యాప్లను ఇన్స్టాల్ చేయి” అనుమతి అవసరం.\n\n“అనుమతించు” నొక్కి, సెట్టింగ్లలో దాన్ని అనుమతించి యాప్కు తిరిగి రండి; ఆ తర్వాత ఇన్స్టాల్ స్వయంచాలకంగా కొనసాగుతుంది (మళ్లీ డౌన్లోడ్ అవసరం లేదు).</string>
+    <string name="update_grant">అనుమతించు</string>
+    <string name="update_notice_title">నోటీసు</string>
+    <string name="update_got_it">అర్థమైంది</string>
+    <string name="update_notes_title">v%1$s · విడుదల నోట్స్</string>
+    <string name="update_back">వెనుకకు</string>
+    <string name="update_title_switch_normal">ప్రామాణిక ఎడిషన్కు మార్చు</string>
+    <string name="update_title_reinstall">ఈ వెర్షన్ను మళ్లీ ఇన్స్టాల్ చేయి</string>
+    <string name="update_title_new_version">కొత్త వెర్షన్ అందుబాటులో ఉంది</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">ఇది ఈ వెర్షన్ను డౌన్లోడ్ చేసి మళ్లీ ఇన్స్టాల్ చేస్తుంది (ప్రస్తుత యాప్ను ఓవర్రైట్ చేస్తుంది).\nఈ ఫీచర్ అప్డేట్ విధానాన్ని రిగ్రెషన్ పరీక్షించడానికి ఉపయోగించబడుతుంది.</string>
+    <string name="update_view_notes">విడుదల నోట్స్ చూడు</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud తాత్కాలికంగా అందుబాటులో లేదు</string>
+    <string name="update_download_lanzou">Lanzou Cloud నుండి డౌన్లోడ్ చేయి</string>
+    <string name="update_download_github">GitHub నుండి డౌన్లోడ్ చేయి</string>
+    <string name="update_download_browser">బ్రౌజర్ నుండి డౌన్లోడ్ చేయి</string>
+    <string name="update_later">తర్వాత అప్డేట్ చేయి</string>
+    <string name="update_later_switch">తర్వాత మార్చు</string>
+    <string name="update_skip_version">ఈ వెర్షన్ను దాటవేయి</string>
+</resources>

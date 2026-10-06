@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+     ii（彝语 / 凉山彝文）属低资源语种：本文件未做实质性翻译（无可靠词表，拒绝臆造彝文），
+     仅保留纯格式串（无自然语言词汇），其余 key 缺失将回落中文。 -->
+<resources>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+</resources>

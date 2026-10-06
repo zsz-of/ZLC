@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Greek (el) strings — format plugin names and diagnostics.
+  Translated from res/values/strings_formats.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Εξαγωγή</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo σε ένα αρχείο</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Δεν βρέθηκε αρχείο βίντεο .mov με το ίδιο όνομα</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Το αρχείο MOV δεν έχει ftyp box</string>
+    <string name="fmt_err_extract_read">Η εξαγωγή είναι μορφή εξόδου και δεν μπορεί να διαβαστεί ως μορφή εισόδου</string>
+    <string name="fmt_err_no_primary_jpeg">Δεν βρέθηκε κύρια εικόνα JPEG</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Δεν βρέθηκε έγκυρο βίντεο MP4 μετά το JPEG (λείπει το ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Αποτυχία ανάλυσης της ροής βίντεο MP4</string>
+    <string name="fmt_err_nubia_too_short">Το αρχείο είναι πολύ μικρό για Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Λείπει ο magic number nubiaVpfile στο τέλος</string>
+    <string name="fmt_err_nubia_jpeg_len">Μη έγκυρο μήκος JPEG στο trailer: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Λείπουν τα bytes γέμισης 0x00 μεταξύ JPEG και βίντεο</string>
+    <string name="fmt_err_nubia_empty_video">Το μήκος του ενσωματωμένου βίντεο είναι 0</string>
+    <string name="fmt_err_vivo_no_marker">Δεν βρέθηκε δείκτης vivo livephoto στο τέλος του JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Λείπει το συνοδευτικό αρχείο βίντεο: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Αποτυχία ανάλυσης του σώματος του JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">Το συνοδευτικό MP4 δεν είναι έγκυρο (λείπει το ftyp box)</string>
+</resources>

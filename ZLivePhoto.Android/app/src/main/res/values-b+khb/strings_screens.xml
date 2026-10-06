@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+     khb（傣泐 / 新傣仂文）属低资源语种：本文件未做实质性翻译（无可靠词表，拒绝臆造傣仂文），
+     仅保留品牌专名（按规范不翻译），其余 key 缺失将回落中文。 -->
+<resources>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+</resources>

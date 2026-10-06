@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Српски (sr) — поруке о ажурирању и преузимању (кључеви update_*).
+  Извор: res/values/strings_update.xml (поједностављени кинески).
+  „蓝奏云“ (Lanzou Cloud) је кинеска услуга за дељење датотека.
+-->
+<resources>
+
+    <!-- ========== Страница за дељење и директне везе ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud дељење је отказано или датотека не постоји. Преузмите са GitHub-а</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud дељење је отказано. Преузмите са GitHub-а</string>
+    <string name="update_lanzou_resolve_failed">Разрешавање везе за преузимање са Lanzou Cloud-а није успело</string>
+    <string name="update_lanzou_need_passwd">Ово Lanzou Cloud дељење захтева приступни код. Преузмите са GitHub-а (или потражите код у белешкама издања)</string>
+    <string name="update_lanzou_wrong_passwd">Погрешан приступни код за Lanzou Cloud</string>
+    <string name="update_err_resolve_failed">Разрешавање није успело</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Провера против аутоматског преузимања на Lanzou Cloud-у није прошла</string>
+    <string name="update_err_no_frame">Није могуће парсирати страницу за преузимање са Lanzou Cloud-а (није пронађен оквир за преузимање)</string>
+    <string name="update_err_no_file_id">Није могуће парсирати идентификатор датотеке на Lanzou Cloud-у</string>
+    <string name="update_err_no_sign">Није могуће парсирати потпис Lanzou Cloud-а</string>
+    <string name="update_err_ajax_request">Захтев ка интерфејсу није успео</string>
+    <string name="update_err_api_request">Захтев ка Lanzou Cloud интерфејсу није успео</string>
+    <string name="update_err_empty_direct">Lanzou Cloud је вратио празну адресу за преузимање</string>
+    <string name="update_err_direct_expired">Адреса за преузимање са Lanzou Cloud-а је истекла. Преузмите поново</string>
+    <string name="update_err_http_request">Захтев није успео (HTTP %1$d)</string>
+
+    <!-- ========== Преузимање ========== -->
+    <string name="update_err_connect">Није могуће повезати се са сервером за преузимање: %1$s</string>
+    <string name="update_err_http">Преузимање није успело (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Није могуће успоставити везу за преузимање</string>
+    <string name="update_err_empty">Преузети садржај је празан</string>
+    <string name="update_err_incomplete">Преузимање је непотпуно (преузето %1$d од укупно %2$d бајтова). Преузмите поново</string>
+    <string name="update_err_interrupted">Преузимање је прекинуто: %1$s</string>
+
+    <!-- ========== Провера и инсталација пакета ========== -->
+    <string name="update_err_not_apk">Преузета датотека није важећи инсталациони пакет (можда је веб страница или је веза истекла). Преузмите поново или користите GitHub.</string>
+    <string name="update_err_apk_incomplete">Садржај инсталационог пакета је непотпун. Преузмите поново или користите GitHub.</string>
+    <string name="update_err_apk_unparsable">Инсталациони пакет се не може парсирати (можда је преузимање непотпуно). Преузмите поново или користите GitHub.</string>
+    <string name="update_err_no_install_permission">Нема дозволе „Инсталирање непознатих апликација“</string>
+    <string name="update_err_installer_failed">Није могуће покренути системски инсталер (%1$s). Отворите пакет ручно из менаџера датотека</string>
+
+</resources>

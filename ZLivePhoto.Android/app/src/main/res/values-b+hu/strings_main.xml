@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Hungarian (hu) strings — main screen and background flows.
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <!-- ── Állapotsáv / üzenetek ── -->
+    <string name="main_status_ready">Készen áll</string>
+    <string name="main_status_location_granted">Helyhozzáférés megadva; a konvertálás után a GPS-metaadatok megmaradnak</string>
+    <string name="main_status_location_denied">Nincs helyhozzáférés: a konvertált fényképek elveszítik a GPS-helyadatokat</string>
+    <string name="main_status_all_files_granted">„Minden fájlhoz való hozzáférés” megadva; a konvertálás közvetlenül az album mappájába ír, és teljesen megőrzi a helyadatokat</string>
+    <string name="main_status_all_files_denied">Nincs „Minden fájlhoz való hozzáférés” engedély: egyes készülékeken a konvertálás után elveszhetnek a helyadatok</string>
+    <string name="main_status_read_granted">Fénykép- és videóolvasási engedély megadva</string>
+    <string name="main_status_video_missing">Engedély megadva, de a videóengedély hiányzik: nem található a kétfájlos Live Photo kísérővideója</string>
+    <string name="main_status_permission_denied">Nincs engedély; koppintson ismét a „Fájlok hozzáadása” gombra</string>
+    <string name="main_status_folder_not_selected">Nincs mappa kiválasztva</string>
+    <string name="main_status_folder_unavailable">A kiválasztott mappa nem érhető el (csak helyi tárhelymappák támogatottak)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Az előző munkamenet visszaállítva (%1$d fájl)</item>
+        <item quantity="other">Az előző munkamenet visszaállítva (%1$d fájl)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Az előző kilépés rendellenes volt; a befejezetlen lista törölve</string>
+    <string name="main_status_compose_blocks_extract">A sorban összeállítási feladatok vannak, nem váltható kibontási módra</string>
+    <string name="main_status_replace_off_mutex">A cseremód kikapcsolva (kölcsönösen kizárja a „Konvertálás után az eredeti törlése” opciót)</string>
+    <string name="main_status_delete_needs_all_files">Az eredeti fájlok automatikus törléséhez „Minden fájlhoz való hozzáférés” engedély kell; először adja meg az engedélyt</string>
+    <string name="main_status_replace_off">A cseremód kikapcsolva; az eredmények ismét az album mappájába kerülnek</string>
+    <string name="main_status_replace_needs_all_files">A cseremódhoz „Minden fájlhoz való hozzáférés” engedély kell; először adja meg az engedélyt</string>
+    <string name="main_status_delete_off_mutex">A „Konvertálás után az eredeti törlése” kikapcsolva (kölcsönösen kizárja a cseremódot)</string>
+    <string name="main_status_loading_albums">Albumok betöltése…</string>
+    <string name="main_status_no_albums">Nem található album</string>
+    <string name="main_status_compose_no_photo">Nincs fénykép kiválasztva, nem lehet összeállítani</string>
+    <string name="main_status_compose_no_video">Nincs videó kiválasztva, nem lehet összeállítani</string>
+    <string name="main_status_compose_all_added">A kiválasztott fényképek már mind a listán vannak</string>
+    <string name="main_status_compose_paired">%1$d fénykép, %2$d videó; %3$d összeállítási feladat hozzáadva a kevesebb fél alapján</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d összeállítási feladat hozzáadva; koppintson a „Konvertálás indítása” gombra</item>
+        <item quantity="other">%1$d összeállítási feladat hozzáadva; koppintson a „Konvertálás indítása” gombra</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (a kimeneti formátum automatikusan Google-re váltott)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">%1$d megosztott kép importálása…</item>
+        <item quantity="other">%1$d megosztott kép importálása…</item>
+    </plurals>
+    <string name="main_status_import_failed">Az importálás sikertelen: %1$s</string>
+    <string name="main_status_import_done_partial">Az importálás befejeződött: %1$d sikeres, %2$d sikertelen</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Az importálás befejeződött: %1$d fájl importálva</item>
+        <item quantity="other">Az importálás befejeződött: %1$d fájl importálva</item>
+    </plurals>
+    <string name="main_status_import_stopped">Az importálás leállt: %1$d sikeres, %2$d sikertelen</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d fájl importálása…</item>
+        <item quantity="other">%1$d fájl importálása…</item>
+    </plurals>
+    <string name="main_status_importing_progress">%1$d/%2$d importálása…</string>
+    <string name="main_status_stopping">Leállítás… (az aktuális fájl befejezése után leáll)</string>
+    <string name="main_status_stopping_import">Az importálás leállítása…</string>
+    <string name="main_status_removed">Eltávolítva: %1$s</string>
+    <string name="main_status_cleared">A lista kiürítve</string>
+    <string name="main_status_nothing_to_convert">Nincs konvertálható fájl</string>
+    <string name="main_status_folder_unreadable">A kiválasztott mappa nem olvasható</string>
+    <string name="main_status_scanning_folder">Mappa beolvasása…</string>
+    <string name="main_status_no_images">A kiválasztott mappában nem található kép</string>
+    <string name="main_status_batch_importing">Kötegelt importálás %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">A kötegelt importálás leállt: %1$d Live Photo importálva</item>
+        <item quantity="other">A kötegelt importálás leállt: %1$d Live Photo importálva</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">A kötegelt importálás leállt: %1$d Live Photo importálva, %2$d nem Live Photo fájl kihagyva</item>
+        <item quantity="other">A kötegelt importálás leállt: %1$d Live Photo importálva, %2$d nem Live Photo fájl kihagyva</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">A kötegelt importálás befejeződött: %1$d Live Photo importálva</item>
+        <item quantity="other">A kötegelt importálás befejeződött: %1$d Live Photo importálva</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">A kötegelt importálás befejeződött: %1$d Live Photo importálva, %2$d nem Live Photo fájl kihagyva</item>
+        <item quantity="other">A kötegelt importálás befejeződött: %1$d Live Photo importálva, %2$d nem Live Photo fájl kihagyva</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Leállt: %1$d fájlból %2$d feldolgozva, %3$d forrásfájl lecserélve</string>
+    <string name="main_status_stopped_export">Leállt: %1$d fájlból %2$d feldolgozva, %3$d exportálva az albumba</string>
+    <string name="main_status_done_replace_reason">Befejezve: %1$d fájl feldolgozva, %2$d forrásfájl lecserélve (ok: %3$s)</string>
+    <string name="main_status_done_export_reason">Befejezve: %1$d fájl feldolgozva, %2$d exportálva az albumba (ok: %3$s)</string>
+    <string name="main_status_done_replace">Befejezve: %1$d fájl feldolgozva, %2$d forrásfájl lecserélve</string>
+    <string name="main_status_done_export">Befejezve: %1$d fájl feldolgozva, %2$d exportálva az albumba</string>
+    <string name="main_status_keep_originals">%1$s; nincs „Teljes tárhelyhozzáférés” engedély, az eredeti fájlok megmaradtak</string>
+
+    <!-- ── Listaelem-információk ── -->
+    <string name="main_info_detecting">Észlelés…</string>
+    <string name="main_info_unrecognized">Ismeretlen Live Photo formátum</string>
+    <string name="main_info_converting">Konvertálás…</string>
+    <string name="main_info_compose_task">Összeállítási feladat (koppintson a konvertálás indításához)</string>
+    <string name="main_info_done_replaced">Kész (%1$d forrásfájl lecserélve)</string>
+    <string name="main_info_done_skipped">Kész (kihagyva: azonos név ütközik)</string>
+    <string name="main_info_done_exported">Kész (%1$d exportálva)</string>
+    <string name="main_info_failed">Sikertelen: %1$s</string>
+
+    <!-- ── Folyamat részletei ── -->
+    <string name="main_progress_added">%1$d/%2$d hozzáadva</string>
+    <string name="main_progress_processed">%1$d/%2$d feldolgozva</string>
+    <string name="main_progress_imported">%1$d/%2$d importálva</string>
+
+    <!-- ── Engedélykérő párbeszédablakok ── -->
+    <string name="main_dialog_permission_title">Fénykép- és videóolvasási engedély szükséges</string>
+    <string name="main_dialog_permission_message">Az alkalmazásnak hozzáférésre van szüksége a készülékén lévő fényképekhez és videókhoz:\n\n• Fényképengedély: a készülék albumának beolvasása a Live Photo fájlok felismeréséhez\n• Videóengedély: a kétfájlos Live Photo kísérővideójának megkeresése\n• Helyengedély: a fényképek GPS-metaadatainak megőrzése (hiányában a konvertálás után elvesznek a helyadatok)\n\nElutasítás esetén a beépített választó nem használható; később ismét koppinthat a „Fájlok hozzáadása” gombra az engedély újbóli kéréséhez.</string>
+    <string name="main_dialog_settings_title">A fénykép- és videóengedélyt kézzel kell megadni</string>
+    <string name="main_dialog_settings_message">Korábban a „Ne kérdezze újra” lehetőséget választotta, ezért a rendszer már nem jeleníti meg az engedélykérő párbeszédablakot.\n\nNyissa meg az alkalmazás adatait → Engedélyek → Fényképek és videók, adja meg kézzel a hozzáférést, majd térjen vissza az alkalmazásba.\n\nMegjegyzés: a „Fényképek” és a „Videók” engedélyt is meg kell adni, különben a kétfájlos Live Photo nem találja meg a kísérővideót.</string>
+
+    <!-- ── „Minden fájlhoz való hozzáférés” párbeszédablakok ── -->
+    <string name="main_dialog_allfiles_title_delete">Az eredeti fájlok automatikus törléséhez „Minden fájlhoz való hozzáférés” kell</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Ez a készülék nem támogatja az eredeti fájlok automatikus törlését</string>
+    <string name="main_dialog_allfiles_title_replace">A cseremódhoz „Minden fájlhoz való hozzáférés” kell</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Ez a készülék nem támogatja a cseremódot</string>
+    <string name="main_dialog_allfiles_title_location">Javasolt megadni a „Minden fájlhoz való hozzáférés” engedélyt</string>
+    <string name="main_dialog_allfiles_delete_message">A „Konvertálás után az eredeti törlése” közvetlenül törli az eredeti fájlokat a lemezről (a fényképet és a kísérővideót), és ez nem vonható vissza, ezért először meg kell adni a „Minden fájlhoz való hozzáférés” engedélyt.\n\nAz engedély megadása után a kapcsoló használhatóvá válik, és saját maga bekapcsolhatja.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">A jelenlegi rendszer (Android 10 és régebbi) nem biztosít „Minden fájlhoz való hozzáférés” engedélyt, ezért az eredeti fájlok közvetlen törlése a lemezről nem lehetséges; így ez a készülék nem támogatja a „Konvertálás után az eredeti törlése” funkciót.\n\nA konvertálás után a rendszeralbum segítségével kézzel törölheti az eredeti fájlokat.</string>
+    <string name="main_dialog_allfiles_replace_message">A „Cseremód” közvetlenül az eredeti fájlokra írja a konvertálás eredményét (felülírja a tartalmukat), és ez nem vonható vissza, ezért először meg kell adni a „Minden fájlhoz való hozzáférés” engedélyt.\n\nAz engedély megadása után a kapcsoló használhatóvá válik, és saját maga bekapcsolhatja.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">A jelenlegi rendszer (Android 10 és régebbi) nem biztosít „Minden fájlhoz való hozzáférés” engedélyt, ezért az eredeti fájlok közvetlen felülírása nem lehetséges; így ez a készülék nem támogatja a „Cseremód” funkciót.\n\nTovább konvertálhat az alapértelmezett módon; az eredmények az album mappájába kerülnek.</string>
+    <string name="main_dialog_allfiles_location_message">Egyes készülékek (pl. Meizu) az album API-n keresztül írva elrejtik a GPS-helyadatokat, így a konvertált fényképek elveszítik a helyadatokat.\n\nA „Minden fájlhoz való hozzáférés” engedéllyel az alkalmazás közvetlenül az album mappájába ír, és teljesen megőrzi a hely-metaadatokat.\n\nEngedély nélkül is működik a konvertálás, de egyes készülékeken elveszhetnek a helyadatok.</string>
+
+    <!-- ── Kimeneti fájlnév ütközése ── -->
+    <string name="main_dialog_conflict_title">Kimeneti fájlnév ütközik</string>
+    <string name="main_dialog_conflict_message">A kimeneti mappában már létezik azonos nevű fájl:\n%1$s\n\nVálassza ki a kezelési módot.</string>
+    <string name="main_label_conflict_always">A további ütközéseknél is ezt a kezelést használja</string>
+
+    <!-- ── Párbeszédablak gombjai ── -->
+    <string name="main_btn_grant">Engedélyezés</string>
+    <string name="main_btn_deny">Elutasítás</string>
+    <string name="main_btn_go_settings">Beállítások</string>
+    <string name="main_btn_cancel">Mégse</string>
+    <string name="main_btn_grant_access">Engedély megadása</string>
+    <string name="main_btn_got_it">Értem</string>
+    <string name="main_btn_not_now">Most nem</string>
+    <string name="main_btn_skip">Kihagyás</string>
+    <string name="main_btn_overwrite">Felülírás</string>
+    <string name="main_btn_auto_rename">Automatikus átnevezés</string>
+
+    <!-- ── Konvertálási eredmény / exportálási hibaokok ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d eredeti fájl törölve</item>
+        <item quantity="other">%1$d eredeti fájl törölve</item>
+    </plurals>
+    <string name="main_delete_nothing">Nincs szükség az eredeti fájlok törlésére</string>
+    <string name="main_delete_partial">%1$d eredeti fájl törölve (%2$d törlés sikertelen, megmaradtak)</string>
+    <string name="main_delete_failed">Az eredeti fájlok törlése sikertelen (a fájl használatban van vagy nincs írási jog), megmaradtak</string>
+    <string name="main_export_missing_output">A konvertálás eredménye hiányzik vagy üres: %1$s</string>
+    <string name="main_export_missing_output_bare">A konvertálás eredménye hiányzik vagy üres</string>
+    <string name="main_export_insert_null">A MediaStore insert null értéket adott vissza</string>
+    <string name="main_export_output_stream">A MediaStore kimeneti folyama nem érhető el</string>
+    <string name="main_export_write_failed">A MediaStore írása sikertelen: %1$s</string>
+    <string name="main_export_mkdir_failed">Nem hozható létre az album mappa: %1$s</string>
+    <string name="main_export_dir_write_failed">Az album mappába írás sikertelen: %1$s</string>
+    <string name="main_export_no_source">A forrásfájl nem található, a csere kihagyva</string>
+    <string name="main_export_companion_failed">A kísérőfájl visszaírása sikertelen: %1$s</string>
+    <string name="main_export_source_dir_unwritable">A forrásfájl mappája nem írható, a kísérőfájl nem íródott vissza</string>
+    <string name="main_export_source_dir_unavailable">A forrásfájl mappája nem érhető el: %1$s</string>
+    <string name="main_export_replace_failed">A forrásfájl cseréje sikertelen: %1$s</string>
+    <string name="main_export_replace_failed_bare">A forrásfájl cseréje sikertelen</string>
+</resources>

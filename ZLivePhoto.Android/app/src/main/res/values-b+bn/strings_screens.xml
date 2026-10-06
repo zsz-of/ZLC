@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · বাংলা স্ট্রিং (bn)।
+  ZLC · Bengali strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">লাইভ ফটো ফরম্যাটের মধ্যে রূপান্তর</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$dটি ফাইল</item>
+        <item quantity="other">%1$dটি ফাইল</item>
+    </plurals>
+    <string name="screen_settings">সেটিংস</string>
+    <string name="screen_select_output_format">আউটপুট ফরম্যাট বেছে নিন</string>
+    <string name="screen_selected">নির্বাচিত</string>
+    <string name="screen_vivo_single_warning">⚠ কিছু পুরোনো ডিভাইস এই ফরম্যাট চিনতে নাও পারে</string>
+    <string name="screen_extract_blocked">⚠ কিউতে কম্পোজ কাজ আছে; এক্সট্র্যাক্ট বেছে নেওয়া যাবে না</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (একক ফাইল)</string>
+    <string name="screen_format_vivo">vivo (দুই ফাইল)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">এক্সট্র্যাক্ট</string>
+    <string name="screen_toolbox">টুলবক্স</string>
+    <string name="screen_batch_import">ব্যাচ ইমপোর্ট</string>
+    <string name="screen_batch_import_desc">পুরো গ্যালারি স্ক্যান করে একসাথে সব লাইভ ফটো খুঁজে বের করুন</string>
+    <string name="screen_compose">লাইভ ফটো কম্পোজ করুন</string>
+    <string name="screen_compose_desc">একটি ছবি ও একটি ভিডিও বেছে নিয়ে জোড়া লাগিয়ে লাইভ ফটো তৈরি করুন</string>
+    <string name="screen_replace_mode">রিপ্লেস মোড</string>
+    <string name="screen_replace_mode_desc">নতুন ফাইল না বানিয়ে রূপান্তরের ফলাফল সরাসরি মূল ফাইলে লেখা হয়</string>
+    <string name="screen_need_all_files_access_hint">“সব ফাইলে অ্যাক্সেস” দরকার; দিতে ট্যাপ করুন</string>
+    <string name="screen_agree_and_enable">সম্মত হয়ে চালু করুন</string>
+    <string name="screen_empty_no_files">এখনও কোনো ফাইল যোগ করা হয়নি</string>
+    <string name="screen_view_detail">বিস্তারিত দেখুন</string>
+    <string name="screen_add_files">ফাইল যোগ করুন</string>
+    <string name="screen_output_format">আউটপুট ফরম্যাট: %1$s</string>
+    <string name="screen_delete_original">প্রক্রিয়ার পরে মূল ফাইল মুছে ফেলুন</string>
+    <string name="screen_need_all_files_access_view">“সব ফাইলে অ্যাক্সেস” দরকার; দেখতে ট্যাপ করুন</string>
+    <string name="screen_clear">সাফ করুন</string>
+    <string name="screen_stop">প্রক্রিয়া থামান</string>
+    <string name="screen_start_convert">রূপান্তর শুরু করুন</string>
+    <string name="screen_status_detail">স্ট্যাটাসের বিস্তারিত</string>
+    <string name="screen_long_press_copy">টেক্সট চেপে ধরে বেছে নিয়ে কপি করুন</string>
+    <string name="screen_copy">কপি</string>
+    <string name="screen_close">বন্ধ করুন</string>
+    <string name="screen_back">ফিরে যান</string>
+    <string name="screen_picker_title_select">লাইভ ফটো বেছে নিন</string>
+    <string name="screen_album_count">অ্যালবাম %1$d</string>
+    <string name="screen_album_collapse_cover">অ্যালবাম কভার গুটিয়ে নিন</string>
+    <string name="screen_album_expand_cover">অ্যালবাম কভার খুলুন</string>
+    <string name="screen_scanning_progress">স্ক্যান হচ্ছে %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$dটি ছবি</item>
+        <item quantity="other">%1$dটি ছবি</item>
+    </plurals>
+    <string name="screen_select_all">সব বেছে নিন</string>
+    <string name="screen_no_albums">কোনো অ্যালবাম নেই</string>
+    <string name="screen_no_media">কোনো লাইভ ফটো পাওয়া যায়নি</string>
+    <string name="screen_no_media_compose">কোনো ছবি বা ভিডিও পাওয়া যায়নি</string>
+    <string name="screen_import">ইমপোর্ট</string>
+    <string name="screen_import_count">%1$dটি ইমপোর্ট করুন</string>
+    <string name="screen_import_mixed">%1$dটি ছবি · %2$dটি ভিডিও ইমপোর্ট করুন</string>
+    <string name="screen_search">খুঁজুন</string>
+    <string name="screen_search_collapse">সার্চ গুটিয়ে নিন</string>
+    <string name="screen_search_hint">নাম দিয়ে খুঁজুন</string>
+    <string name="screen_search_clear">সার্চ মুছুন</string>
+    <string name="screen_sort_date">তারিখ</string>
+    <string name="screen_sort_size">আকার</string>
+    <string name="screen_sort_name">নাম</string>
+    <string name="screen_sort_asc">ঊর্ধ্বক্রমে</string>
+    <string name="screen_sort_desc">নিম্নক্রমে</string>
+    <string name="screen_date_today">আজ</string>
+    <string name="screen_date_yesterday">গতকাল</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="conv_unknown_target">Neznana ciljna oblika: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Neprepoznana oblika Live Photo (ni Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Naslovna fotografija ne obstaja ali je prazna</string>
+    <string name="conv_video_missing">Videoposnetek ne obstaja ali je prazen</string>
+    <string name="conv_video_too_large">Videoposnetek je prevelik (%1$d MB), zato iz njega ni mogoče ustvariti Live Photo. Izberite krajši videoposnetek</string>
+    <string name="conv_transcoded_too_large">Videoposnetek je po pretvorbi prevelik (%1$d MB), zato Live Photo ni mogoče ustvariti</string>
+    <string name="conv_video_too_large_compose">Videoposnetek je prevelik (%1$d MB), zato Live Photo ni mogoče ustvariti</string>
+    <string name="conv_cover_heic_go">Naslovna fotografija je slika HEIC (lahka različica ne podpira pretvorbe; na iPhonu jo izvozite kot JPEG in šele nato pretvorite)</string>
+    <string name="conv_cover_invalid_heic">Naslovna fotografija ni veljavna slika (HEIC zahteva sistemsko podporo za dekodiranje HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">Naslovna fotografija ni slika JPEG (lahka različica ne podpira pretvorbe, uporabite fotografijo JPEG)</string>
+    <string name="conv_cover_invalid_image">Naslovna fotografija ni veljavna slika (podprti so le JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Ponovno kodiranje videa ni uspelo: %1$s</string>
+    <string name="conv_remux_failed">Prepakiranje vsebnika ni uspelo: %1$s</string>
+    <string name="conv_codec_unknown">To ni prepoznaven videoposnetek H.264/H.265</string>
+    <string name="conv_codec_is">ima kodek %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Videoposnetek „%1$s“ %2$s, prepakiranje vsebnika kodeka ne spremeni, zato Live Photo ni mogoče ustvariti.\n\nV »Nastavitve → Pretvorba videa → Način pretvorbe« izberite »Ponovno kodiranje« ali videoposnetek najprej z drugim orodjem pretvorite v MP4 s kodekom H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Videoposnetek ni v standardnem vsebniku MP4 (MOV / MKV / WebM / AVI itd.), trenutni »Način pretvorbe« pa ne izvede ponovnega kodiranja, zato Live Photo ni mogoče ustvariti.\n\nV »Nastavitve → Pretvorba videa → Način pretvorbe« izberite »Ponovno kodiranje« (standardna različica vsebuje koder ffmpeg; lahka različica Go pretvornika ne vsebuje, uporabite standardno različico) ali videoposnetek najprej pretvorite v standardni MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">Prepoznano kot %1$s</string>
+    <string name="conv_log_same_format_copied">Izvorna in ciljna oblika sta enaki, datoteka je bila kopirana nespremenjena (brez izgube kakovosti)</string>
+    <string name="conv_log_extra_tracks_bypass">Izvorni videoposnetek vsebuje sledi, ki niso avdio/video (%1$s); neposredno kopiranje enake oblike je preskočeno in uporabljen je celoten postopek izpisa zaradi očiščenja</string>
+    <string name="conv_log_ts_fallback">Vir ne vsebuje časovnega žiga naslovne sličice, zato se v skladu s specifikacijo uporabi sredina videoposnetka</string>
+    <string name="conv_log_brand_normalized">Znamka vsebnika videa je bila normalizirana (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Videoposnetek vsebuje dodatne sledi (%1$s), ki jih ni mogoče očistiti, zato je izpis nespremenjen (te datoteke na nekaterih napravah morda ne bo mogoče predvajati z dolgim pritiskom)</string>
+    <string name="conv_log_extra_tracks_removed">Dodatne sledi videa so bile odstranjene (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Izvorni videoposnetek %1$s; samo prepakiranje vsebnika težave ne odpravi (%2$s). Če izpisa še vedno ni mogoče predvajati z dolgim pritiskom, v »Nastavitve → Pretvorba videa → Način pretvorbe« izberite »Ponovno kodiranje«</string>
+    <string name="conv_log_reencoding">Izvorni videoposnetek %1$s; v skladu z nastavitvami se ponovno kodira v 8bit + AAC za boljšo združljivost z galerijo</string>
+    <string name="conv_log_reencode_result_unusable">Rezultat ponovnega kodiranja ni uporaben, izpis je ostal nespremenjen (te datoteke na nekaterih napravah morda ne bo mogoče predvajati z dolgim pritiskom)</string>
+    <string name="conv_log_reencode_still_risky">Po ponovnem kodiranju so še vedno prisotni dejavniki tveganja (%1$s)</string>
+    <string name="conv_log_reencode_failed">Ponovno kodiranje ni uspelo (%1$s), izpis je ostal nespremenjen (te datoteke na nekaterih napravah morda ne bo mogoče predvajati z dolgim pritiskom)</string>
+    <string name="conv_log_cover_heic_converted">Naslovna fotografija je HEIC (ne JPEG); pred pakiranjem je bila pretvorjena v standardni JPEG</string>
+    <string name="conv_log_compose_sizes">Sestavljanje: fotografija %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Pretvornik ni omogočen: spremeni se le znamka vsebnika (MOV → MP4), brez ponovnega kodiranja</string>
+    <string name="conv_tag_convert">Pretvorba</string>
+    <string name="conv_tag_transcode">Prekodiranje</string>
+    <string name="conv_tag_compose">Sestavljanje</string>
+    <string name="conv_blocker_no_encoder">Vgrajeni pretvornik ni na voljo</string>
+    <string name="conv_blocker_mode_no_encode">Trenutni »Način pretvorbe« ne izvede ponovnega kodiranja</string>
+    <string name="conv_addon_unavailable">Vgrajeni pretvornik ni na voljo</string>
+    <string name="conv_addon_transcode_failed">Prekodiranje s ffmpeg ni uspelo: %1$s</string>
+    <string name="conv_addon_remux_failed">Prepakiranje vsebnika s ffmpeg ni uspelo: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Videoposnetek se s ffmpeg prekodira v standardni MP4 (%1$s / crf %2$d / %3$s, ohranjene so le video in avdio sledi)</string>
+    <string name="conv_log_transcode_done">Prekodiranje videoposnetka končano (%1$d kB)</string>
+    <string name="conv_log_remuxing">Vsebnik videa se prepakira v standardni MP4 (le vsebnik, brez ponovnega kodiranja)</string>
+    <string name="conv_log_remux_done">Prepakiranje vsebnika končano (%1$d kB)</string>
+    <string name="conv_reminder_cat_compose">Sestavljanje</string>
+    <string name="conv_reminder_cat_convert">Pretvorba</string>
+    <string name="conv_reminder_cat_update">Posodobitev</string>
+    <string name="conv_reminder_video_over3s_title">Videoposnetek je daljši od 3 sekund</string>
+    <string name="conv_reminder_video_over3s_message">Izbrani videoposnetek je daljši od 3 sekund, zato ima lahko nastala Live Photo težave z združljivostjo:\n\n• morda se ne bo pravilno predvajala\n• sistemska galerija je morda ne bo prepoznala\n• nekatere naprave je morda ne bodo prepoznale</string>
+    <string name="conv_reminder_legacy_go_title">Zaznana je stara različica</string>
+    <string name="conv_reminder_legacy_go_message">V tej napravi je še vedno nameščena stara različica aplikacije (Go). Ta stara različica na tej napravi ni več uporabna; odstranite jo lahko in sprostite prostor.</string>
+    <string name="conv_reminder_replace_risk_title">Način zamenjave lahko poškoduje datoteke</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Način zamenjave zapiše rezultat pretvorbe neposredno nazaj v izvirno datoteko; po prepisu izvirnika ga ni več mogoče obnoviti.\n\n• Če je aplikacija med pisanjem prekinjena, če zmanjka prostora ali je dovoljenje odvzeto, se lahko izvirna datoteka poškoduje\n• Pretvorba ne more zagotoviti stoodstotnega uspeha; ob neuspehu izvirna datoteka morda ne bo več uporabna\n• Najprej preizkusite eno ali dve datoteki in šele nato zaženite paketno obdelavo\n• Pomembne fotografije predhodno varnostno kopirajte\n\nTa funkcija je na voljo »takšna, kot je«; tveganje nosi uporabnik, avtor pa ne odgovarja za poškodovanje ali izgubo datotek.</string>
+    <string name="conv_reminder_dont_remind">Ne prikaži več</string>
+    <string name="conv_reminder_confirm_ok">Razumem</string>
+    <string name="conv_reminder_uninstall">Odstrani</string>
+</resources>

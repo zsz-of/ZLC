@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ar strings — Arabic (العربية, RTL)
+  Translated from res/values/strings_screens.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Standard Arabic. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">تحويل صيغ الصور الحية فيما بينها</string>
+    <plurals name="screen_file_count">
+        <item quantity="zero">%1$d ملف</item>
+        <item quantity="one">%1$d ملف</item>
+        <item quantity="two">%1$d ملفان</item>
+        <item quantity="few">%1$d ملفات</item>
+        <item quantity="many">%1$d ملفًا</item>
+        <item quantity="other">%1$d ملف</item>
+    </plurals>
+    <string name="screen_settings">الإعدادات</string>
+    <string name="screen_select_output_format">اختيار تنسيق الإخراج</string>
+    <string name="screen_selected">محدد</string>
+    <string name="screen_vivo_single_warning">⚠ قد لا تتعرف الأجهزة القديمة جدًا على هذا التنسيق</string>
+    <string name="screen_extract_blocked">⚠ تحتوي قائمة الانتظار على مهام دمج، لا يمكن اختيار الاستخراج</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (ملف واحد)</string>
+    <string name="screen_format_vivo">vivo (ملفان)</string>
+    <string name="screen_format_xiaomi">شاومي</string>
+    <string name="screen_format_honor">HONOR</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">استخراج</string>
+    <string name="screen_toolbox">صندوق الأدوات</string>
+    <string name="screen_batch_import">استيراد دفعي</string>
+    <string name="screen_batch_import_desc">فحص الألبوم بالكامل والتعرف على الصور الحية دفعة واحدة</string>
+    <string name="screen_compose">دمج صورة حية</string>
+    <string name="screen_compose_desc">اختيار صورة وفيديو ودمجهما كزوج</string>
+    <string name="screen_replace_mode">وضع الاستبدال</string>
+    <string name="screen_replace_mode_desc">تُكتب نتائج التحويل مباشرة على الملفات الأصلية دون إنشاء ملفات جديدة</string>
+    <string name="screen_need_all_files_access_hint">يتطلب إذن «الوصول إلى جميع الملفات»، اضغط هنا لمنحه</string>
+    <string name="screen_agree_and_enable">الموافقة والتشغيل</string>
+    <string name="screen_empty_no_files">لم تُضف أي ملفات بعد</string>
+    <string name="screen_view_detail">عرض التفاصيل</string>
+    <string name="screen_add_files">إضافة ملفات</string>
+    <string name="screen_output_format">تنسيق الإخراج: %1$s</string>
+    <string name="screen_delete_original">حذف الصورة الأصلية بعد اكتمال المعالجة</string>
+    <string name="screen_need_all_files_access_view">يتطلب إذن «الوصول إلى جميع الملفات»، اضغط للعرض</string>
+    <string name="screen_clear">إفراغ</string>
+    <string name="screen_stop">إيقاف المعالجة</string>
+    <string name="screen_start_convert">بدء التحويل</string>
+    <string name="screen_status_detail">تفاصيل الحالة</string>
+    <string name="screen_long_press_copy">اضغط مطولًا على النص لتحديده ونسخه</string>
+    <string name="screen_copy">نسخ</string>
+    <string name="screen_close">إغلاق</string>
+    <string name="screen_back">رجوع</string>
+    <string name="screen_picker_title_select">اختيار الصور الحية</string>
+    <string name="screen_album_count">الألبوم %1$d</string>
+    <string name="screen_album_collapse_cover">طي غلاف الألبوم</string>
+    <string name="screen_album_expand_cover">توسيع غلاف الألبوم</string>
+    <string name="screen_scanning_progress">جارٍ الفحص %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="zero">%1$d صورة</item>
+        <item quantity="one">%1$d صورة</item>
+        <item quantity="two">%1$d صورتان</item>
+        <item quantity="few">%1$d صور</item>
+        <item quantity="many">%1$d صورةً</item>
+        <item quantity="other">%1$d صورة</item>
+    </plurals>
+    <string name="screen_select_all">تحديد الكل</string>
+    <string name="screen_no_albums">لا توجد ألبومات متاحة</string>
+    <string name="screen_no_media">لم يتم العثور على صور حية</string>
+    <string name="screen_no_media_compose">لم يتم العثور على صور أو فيديوهات</string>
+    <string name="screen_import">استيراد</string>
+    <string name="screen_import_count">استيراد %1$d</string>
+    <string name="screen_import_mixed">استيراد: صور %1$d · فيديو %2$d</string>
+    <string name="screen_search">بحث</string>
+    <string name="screen_search_collapse">طي البحث</string>
+    <string name="screen_search_hint">البحث بالاسم</string>
+    <string name="screen_search_clear">إفراغ البحث</string>
+    <string name="screen_sort_date">التاريخ</string>
+    <string name="screen_sort_size">الحجم</string>
+    <string name="screen_sort_name">الاسم</string>
+    <string name="screen_sort_asc">تصاعدي</string>
+    <string name="screen_sort_desc">تنازلي</string>
+    <string name="screen_date_today">اليوم</string>
+    <string name="screen_date_yesterday">أمس</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Izvlačenje</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (jedna datoteka)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">Nije pronađena videodatoteka .mov istog naziva</string>
+    <string name="fmt_err_apple_mov_no_ftyp">U datoteci MOV nedostaje ftyp box</string>
+    <string name="fmt_err_extract_read">Izvlačenje je izlazni format i ne može se čitati kao ulazni format</string>
+    <string name="fmt_err_no_primary_jpeg">Glavna slika JPEG nije pronađena</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Nakon slike JPEG nije pronađen valjani videozapis MP4 (nedostaje ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Razrješavanje videozapisa MP4 nije uspjelo</string>
+    <string name="fmt_err_nubia_too_short">Datoteka je prekratka i ne izgleda kao Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Nedostaje završni magični broj nubiaVpfile</string>
+    <string name="fmt_err_nubia_jpeg_len">Nevaljana duljina JPEG zapisana na kraju: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Između slike JPEG i videozapisa nedostaju bajtovi za popunu 0x00</string>
+    <string name="fmt_err_nubia_empty_video">Duljina ugrađenog videozapisa je 0</string>
+    <string name="fmt_err_vivo_no_marker">Na kraju datoteke JPG nije pronađena oznaka vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Nedostaje popratna videodatoteka: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Razrješavanje tijela datoteke JPG nije uspjelo</string>
+    <string name="fmt_err_vivo_companion_invalid">Popratna datoteka MP4 nije valjana (nedostaje ftyp box)</string>
+</resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · hi strings — Hindi (हिन्दी)
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Hindi (Devanagari). Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">सेटिंग्स</string>
+    <string name="settings_cd_back">वापस</string>
+    <string name="settings_btn_apply">लागू करें</string>
+    <string name="settings_btn_cancel">रद्द करें</string>
+    <string name="settings_btn_close">बंद करें</string>
+    <string name="settings_btn_ok">ठीक है</string>
+    <string name="settings_btn_sponsor">सहयोग करें</string>
+    <string name="settings_section_general">सामान्य</string>
+    <string name="settings_section_appearance">रूप-रंग</string>
+    <string name="settings_section_language">भाषा</string>
+    <string name="settings_section_defaults">डिफ़ॉल्ट विकल्प</string>
+    <string name="settings_section_output">आउटपुट</string>
+    <string name="settings_section_transcode">वीडियो ट्रांसकोडिंग</string>
+    <string name="settings_section_about">परिचय</string>
+    <string name="settings_section_app">ऐप</string>
+    <string name="settings_section_credits">आभार और सहयोग</string>
+    <string name="settings_section_opensource">ओपन सोर्स और लाइसेंस</string>
+    <string name="settings_startup_check_title">शुरू होने पर अपडेट जाँचें</string>
+    <string name="settings_startup_check_subtitle">शुरू होने पर GitHub से नया संस्करण अपने-आप लाता है और अपडेट होने पर डाउनलोड का सुझाव देता है</string>
+    <string name="settings_haptics_title">कंपन प्रतिक्रिया</string>
+    <string name="settings_haptics_subtitle">बटन दबाने और स्थिति बदलने पर स्पर्श प्रतिक्रिया</string>
+    <string name="settings_bounce_title">बटन की लचीली एनिमेशन</string>
+    <string name="settings_bounce_subtitle">बटन दबाने पर सिकुड़ने-उछलने की एनिमेशन</string>
+    <string name="settings_theme_system">सिस्टम के अनुसार</string>
+    <string name="settings_theme_dark">गहरा</string>
+    <string name="settings_theme_light">हल्का</string>
+    <string name="settings_dynamic_theme_title">Material You डायनामिक रंग</string>
+    <string name="settings_dynamic_theme_subtitle">सिस्टम वॉलपेपर के रंगों के अनुसार (Android 12+); बंद करने पर नीचे दिए तैयार रंग इस्तेमाल होते हैं</string>
+    <string name="settings_preset_colors_title">तैयार थीम रंग</string>
+    <string name="settings_preset_current">वर्तमान: %1$s</string>
+    <string name="settings_preset_disabled_hint">«Material You डायनामिक रंग» बंद करने के बाद चुन सकते हैं</string>
+    <string name="settings_custom">कस्टम</string>
+    <string name="settings_custom_color_title">कस्टम थीम रंग</string>
+    <string name="settings_cd_custom_palette">कस्टम पैलेट</string>
+    <string name="settings_hue_value">रंगत %1$d°</string>
+    <string name="settings_language_dialog_title">ऐप की भाषा चुनें</string>
+    <string name="settings_language_count">कुल %1$d भाषाएँ</string>
+    <string name="settings_reminder_dialogs_title">«दोबारा न दिखाएँ» डायलॉग</string>
+    <string name="settings_reminder_dialogs_subtitle">सभी «दोबारा न दिखाएँ» डायलॉग के स्विच प्रबंधित करें</string>
+    <string name="settings_reminder_hint">स्विच चालू होने का अर्थ «दोबारा न दिखाएँ» है; बंद करने पर अगली बार वही स्थिति आने पर चेतावनी फिर दिखेगी।</string>
+    <string name="settings_preserve_folders_title">स्रोत फ़ोल्डर ढाँचे के अनुसार आउटपुट</string>
+    <string name="settings_preserve_folders_subtitle">रूपांतरण के नतीजे मूल एल्बम नाम के उप-फ़ोल्डरों में रखे जाते हैं; बंद करने पर सब एक ही फ़ोल्डर में रहते हैं</string>
+    <string name="settings_about_title">परिचय</string>
+    <string name="settings_about_subtitle">संस्करण · अपडेट जाँच · आभार और सहयोग</string>
+    <string name="settings_check_update_title">अपडेट जाँचें</string>
+    <string name="settings_check_update_subtitle">GitHub Releases से नवीनतम संस्करण लाएँ</string>
+    <string name="settings_checking">जाँच हो रही है…</string>
+    <string name="settings_update_available">v%1$s उपलब्ध है</string>
+    <string name="settings_up_to_date">आपके पास नवीनतम संस्करण है</string>
+    <string name="settings_network_error">नेटवर्क त्रुटि, कुछ देर बाद फिर कोशिश करें</string>
+    <string name="settings_reinstall_title">इसी संस्करण को फिर से इंस्टॉल करें</string>
+    <string name="settings_reinstall_subtitle">नवीनतम संस्करण डाउनलोड कर वर्तमान पर इंस्टॉल करें (अपडेट जाँचने के लिए)</string>
+    <string name="settings_reinstall_newer_hint">अभी v%1$s पर अपग्रेड किया जा सकता है; पहले «अपडेट जाँचें» से अपग्रेड करें</string>
+    <string name="settings_version_title">संस्करण</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay से सहयोग</string>
+    <string name="settings_alipay_subtitle">विकास में सहयोग</string>
+    <string name="settings_coolapk_subtitle">Coolapk उपयोगकर्ता · उनके सहयोग के लिए धन्यवाद</string>
+    <string name="settings_ai_credits_subtitle">विकास में मदद करने वाले AI IDE और AI मॉडलों का धन्यवाद</string>
+    <string name="settings_github_title">GitHub ओपन सोर्स पता</string>
+    <string name="settings_license_title">ओपन सोर्स लाइसेंस</string>
+    <string name="settings_sponsor_dialog_title">आपके सहयोग के लिए धन्यवाद</string>
+    <string name="settings_sponsor_dialog_text">इस ऐप का साथ देने की आपकी इच्छा के लिए सचमुच बहुत धन्यवाद!\n\nअगर आप अभी विद्यार्थी हैं या आर्थिक रूप से स्वतंत्र नहीं हैं, तो कृपया पैसा खर्च न करें——\nइस भावना को दिल में रखिए और ऐप का इस्तेमाल करते रहिए; यही मेरे लिए सबसे बड़ा सहयोग है।\n\nअगर सहयोग करना चाहें, तो थोड़ी-सी राशि भी प्रेम है, और मैं उसे बेहतर रख-रखाव और नई सुविधाओं में लगाऊँगा :)</string>
+    <string name="settings_alipay_missing_title">Alipay इंस्टॉल नहीं है</string>
+    <string name="settings_alipay_missing_text">Alipay नहीं मिला, इसलिए अभी सहयोग पूरा नहीं किया जा सकता।\n\nकोई बात नहीं——किसी भी हाल में, आपकी अच्छी भावना के लिए बहुत धन्यवाद!</string>
+    <string name="settings_transcoder_title">अंतर्निहित ट्रांसकोडर</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">री-एनकोड</string>
+    <string name="settings_transcode_mode_remux">केवल कंटेनर रीमक्स (अनुशंसित)</string>
+    <string name="settings_transcode_mode_off">ट्रांसकोडर बिलकुल इस्तेमाल न करें</string>
+    <string name="settings_transcode_params_title">ट्रांसकोडिंग पैरामीटर</string>
+    <string name="settings_transcode_params_subtitle">री-एनकोड करते समय इस्तेमाल होने वाले गुणवत्ता और संपीड़न पैरामीटर</string>
+    <string name="settings_transcode_params_disabled">यह केवल तभी लागू होता है जब «ट्रांसकोडिंग विधि» में «री-एनकोड» चुना हो</string>
+    <string name="settings_crf_value">गुणवत्ता CRF: %1$d</string>
+    <string name="settings_crf_hint">संख्या जितनी छोटी, गुणवत्ता उतनी ऊँची और आकार उतना बड़ा (डिफ़ॉल्ट 18)</string>
+    <string name="settings_encoder_title">एनकोडर</string>
+    <string name="settings_compress_preset_title">संपीड़न प्रीसेट</string>
+</resources>

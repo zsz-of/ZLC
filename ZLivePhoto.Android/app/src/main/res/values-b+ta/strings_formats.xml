@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · தமிழ் சரங்கள் (ta)।
+  ZLC · Tamil strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">பிரித்தெடு</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo ஒற்றைக் கோப்பு Live Photo</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">அதே பெயரில் .mov காணொளிக் கோப்பு எதுவும் கிடைக்கவில்லை</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV கோப்பில் ftyp பாக்ஸ் இல்லை</string>
+    <string name="fmt_err_extract_read">பிரித்தெடுத்தல் என்பது வெளியீட்டு வடிவம்; அதை உள்ளீட்டு வடிவமாகப் படிக்க முடியாது</string>
+    <string name="fmt_err_no_primary_jpeg">முதன்மை JPEG படம் எதுவும் கிடைக்கவில்லை</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG-க்குப் பிறகு செல்லுபடியாகும் MP4 காணொளி இல்லை (ftyp பாக்ஸ் இல்லை)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 காணொளி ஸ்ட்ரீமைப் பாகுபடுத்த முடியவில்லை</string>
+    <string name="fmt_err_nubia_too_short">Nubia Live Photo ஆக இருக்கக் கோப்பு மிகச் சிறியது</string>
+    <string name="fmt_err_nubia_no_magic">nubiaVpfile இறுதி மேஜிக் எண் இல்லை</string>
+    <string name="fmt_err_nubia_jpeg_len">டிரெயிலரில் பதிவாகியுள்ள JPEG நீளம் தவறானது: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG-க்கும் காணொளிக்கும் இடையே 0x00 நிரப்பு பைட்டுகள் இல்லை</string>
+    <string name="fmt_err_nubia_empty_video">உட்பொதிந்த காணொளியின் நீளம் 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG-இன் இறுதியில் vivo livephoto குறியீடு எதுவும் இல்லை</string>
+    <string name="fmt_err_vivo_companion_missing">இணைக் காணொளிக் கோப்பு இல்லை: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG உள்ளடக்கத்தைப் பாகுபடுத்த முடியவில்லை</string>
+    <string name="fmt_err_vivo_companion_invalid">இணை MP4 செல்லுபடியாகாது (ftyp பாக்ஸ் இல்லை)</string>
+</resources>

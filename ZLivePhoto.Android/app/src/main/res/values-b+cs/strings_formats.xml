@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Extrakce</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (jeden soubor)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">Nebyl nalezen video soubor .mov se stejným názvem</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Souboru MOV chybí ftyp box</string>
+    <string name="fmt_err_extract_read">Extrakce je výstupní formát a nelze ji čítat jako vstupní formát</string>
+    <string name="fmt_err_no_primary_jpeg">Nebyl nalezen hlavní obrázek JPEG</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Po obrázku JPEG nebylo nalezeno platné video MP4 (chybí ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Zpracování video streamu MP4 se nezdařilo</string>
+    <string name="fmt_err_nubia_too_short">Soubor je příliš krátký, nevypadá jako Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Chybí koncové magické číslo nubiaVpfile</string>
+    <string name="fmt_err_nubia_jpeg_len">Neplatná délka JPEG uvedená na konci: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Mezi obrázkem JPEG a videem chybí výplňové bajty 0x00</string>
+    <string name="fmt_err_nubia_empty_video">Délka vloženého videa je 0</string>
+    <string name="fmt_err_vivo_no_marker">Na konci souboru JPG nebyla nalezena značka vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Chybí doprovodný video soubor: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Zpracování těla souboru JPG se nezdařilo</string>
+    <string name="fmt_err_vivo_companion_invalid">Doprovodný soubor MP4 je neplatný (chybí ftyp box)</string>
+</resources>

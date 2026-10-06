@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ಕನ್ನಡ ಸ್ಟ್ರಿಂಗ್ಗಳು (kn).
+  ZLC · Kannada strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">ಹೊರತೆಗೆ</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo ಏಕ-ಫೈಲ್ Live Photo</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">ಅದೇ ಹೆಸರಿನ .mov ವೀಡಿಯೊ ಫೈಲ್ ಕಂಡುಬಂದಿಲ್ಲ</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV ಫೈಲ್ನಲ್ಲಿ ftyp ಬಾಕ್ಸ್ ಇಲ್ಲ</string>
+    <string name="fmt_err_extract_read">ಹೊರತೆಗೆಯುವಿಕೆ ಒಂದು ಔಟ್ಪುಟ್ ಸ್ವರೂಪ; ಅದನ್ನು ಇನ್ಪುಟ್ ಸ್ವರೂಪವಾಗಿ ಓದಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="fmt_err_no_primary_jpeg">ಪ್ರಾಥಮಿಕ JPEG ಚಿತ್ರ ಕಂಡುಬಂದಿಲ್ಲ</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG ನಂತರ ಮಾನ್ಯವಾದ MP4 ವೀಡಿಯೊ ಇಲ್ಲ (ftyp ಬಾಕ್ಸ್ ಇಲ್ಲ)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 ವೀಡಿಯೊ ಸ್ಟ್ರೀಮ್ ಅನ್ನು ವಿಶ್ಲೇಷಿಸಲು ವಿಫಲವಾಯಿತು</string>
+    <string name="fmt_err_nubia_too_short">Nubia Live Photo ಆಗಿರಲು ಫೈಲ್ ತುಂಬಾ ಚಿಕ್ಕದಾಗಿದೆ</string>
+    <string name="fmt_err_nubia_no_magic">nubiaVpfile ಕೊನೆಯ ಮ್ಯಾಜಿಕ್ ಸಂಖ್ಯೆ ಇಲ್ಲ</string>
+    <string name="fmt_err_nubia_jpeg_len">ಟ್ರೈಲರ್ನಲ್ಲಿ ದಾಖಲಾದ JPEG ಉದ್ದ ಅಮಾನ್ಯ: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG ಮತ್ತು ವೀಡಿಯೊ ನಡುವೆ 0x00 ಪ್ಯಾಡಿಂಗ್ ಬೈಟ್ಗಳಿಲ್ಲ</string>
+    <string name="fmt_err_nubia_empty_video">ಎಂಬೆಡ್ ಮಾಡಿದ ವೀಡಿಯೊ ಉದ್ದ 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG ಕೊನೆಯಲ್ಲಿ vivo livephoto ಮಾರ್ಕರ್ ಕಂಡುಬಂದಿಲ್ಲ</string>
+    <string name="fmt_err_vivo_companion_missing">ಜೋಡಿ ವೀಡಿಯೊ ಫೈಲ್ ಇಲ್ಲ: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG ಬಾಡಿಯನ್ನು ವಿಶ್ಲೇಷಿಸಲು ವಿಫಲವಾಯಿತು</string>
+    <string name="fmt_err_vivo_companion_invalid">ಜೋಡಿ MP4 ಅಮಾನ್ಯವಾಗಿದೆ (ftyp ಬಾಕ್ಸ್ ಇಲ್ಲ)</string>
+</resources>

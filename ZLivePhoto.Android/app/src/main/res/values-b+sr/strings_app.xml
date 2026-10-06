@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Српски (sr) — језичке поставке апликације (strings_app.xml).
+  Извор: res/values/strings_app.xml (поједностављени кинески).
+-->
+<resources>
+    <string name="app_language_follow_system">Прати систем</string>
+    <string name="app_language_title">Језик апликације</string>
+</resources>

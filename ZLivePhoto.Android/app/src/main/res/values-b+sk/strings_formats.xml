@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Extrakcia</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (jeden súbor)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">Nenašiel sa videosúbor .mov s rovnakým názvom</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Súboru MOV chýba ftyp box</string>
+    <string name="fmt_err_extract_read">Extrakcia je výstupný formát a nemožno ju čítať ako vstupný formát</string>
+    <string name="fmt_err_no_primary_jpeg">Nenašiel sa hlavný obrázok JPEG</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Po obrázku JPEG sa nenašlo platné video MP4 (chýba ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Spracovanie video streamu MP4 zlyhalo</string>
+    <string name="fmt_err_nubia_too_short">Súbor je príliš krátky, nevyzerá ako Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Chýba koncové magické číslo nubiaVpfile</string>
+    <string name="fmt_err_nubia_jpeg_len">Neplatná dĺžka JPEG uvedená na konci: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Medzi obrázkom JPEG a videom chýbajú výplňové bajty 0x00</string>
+    <string name="fmt_err_nubia_empty_video">Dĺžka vloženého videa je 0</string>
+    <string name="fmt_err_vivo_no_marker">Na konci súboru JPG sa nenašla značka vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Chýba sprievodný videosúbor: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Spracovanie tela súboru JPG zlyhalo</string>
+    <string name="fmt_err_vivo_companion_invalid">Sprievodný súbor MP4 je neplatný (chýba ftyp box)</string>
+</resources>

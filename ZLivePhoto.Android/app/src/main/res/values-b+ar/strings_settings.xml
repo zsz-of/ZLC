@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ar strings — Arabic (العربية, RTL)
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Standard Arabic. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_cd_back">رجوع</string>
+    <string name="settings_btn_apply">تطبيق</string>
+    <string name="settings_btn_cancel">إلغاء</string>
+    <string name="settings_btn_close">إغلاق</string>
+    <string name="settings_btn_ok">حسنًا</string>
+    <string name="settings_btn_sponsor">دعم</string>
+    <string name="settings_section_general">عام</string>
+    <string name="settings_section_appearance">المظهر</string>
+    <string name="settings_section_language">اللغة</string>
+    <string name="settings_section_defaults">الخيارات الافتراضية</string>
+    <string name="settings_section_output">الإخراج</string>
+    <string name="settings_section_transcode">تحويل الفيديو</string>
+    <string name="settings_section_about">حول</string>
+    <string name="settings_section_app">التطبيق</string>
+    <string name="settings_section_credits">الشكر والدعم</string>
+    <string name="settings_section_opensource">المصادر المفتوحة والترخيص</string>
+    <string name="settings_startup_check_title">التحقق من التحديثات عند التشغيل</string>
+    <string name="settings_startup_check_subtitle">يجلب الإصدارات الجديدة تلقائيًا من GitHub عند التشغيل، ويقترح التنزيل عند وجود تحديث</string>
+    <string name="settings_haptics_title">الاهتزاز</string>
+    <string name="settings_haptics_subtitle">اهتزاز عند لمس الأزرار وتغيّر الحالة</string>
+    <string name="settings_bounce_title">حركة ارتداد الأزرار</string>
+    <string name="settings_bounce_subtitle">حركة تكبير وارتداد عند الضغط على الأزرار</string>
+    <string name="settings_theme_system">حسب النظام</string>
+    <string name="settings_theme_dark">داكن</string>
+    <string name="settings_theme_light">فاتح</string>
+    <string name="settings_dynamic_theme_title">ألوان Material You الديناميكية</string>
+    <string name="settings_dynamic_theme_subtitle">يتبع ألوان خلفية النظام (Android 12+)؛ عند الإيقاف تُستخدم ألوان القوالب الجاهزة أدناه</string>
+    <string name="settings_preset_colors_title">ألوان جاهزة</string>
+    <string name="settings_preset_current">الحالي: %1$s</string>
+    <string name="settings_preset_disabled_hint">يمكن الاختيار بعد إيقاف «ألوان Material You الديناميكية»</string>
+    <string name="settings_custom">مخصص</string>
+    <string name="settings_custom_color_title">لون مخصص</string>
+    <string name="settings_cd_custom_palette">لوحة ألوان مخصصة</string>
+    <string name="settings_hue_value">درجة اللون %1$d°</string>
+    <string name="settings_language_dialog_title">اختر لغة التطبيق</string>
+    <string name="settings_language_count">%1$d لغة</string>
+    <string name="settings_reminder_dialogs_title">نوافذ «عدم الإظهار مجددًا»</string>
+    <string name="settings_reminder_dialogs_subtitle">إدارة مفاتيح كل نوافذ «عدم الإظهار مجددًا»</string>
+    <string name="settings_reminder_hint">المفتاح المُشغَّل يعني «عدم الإظهار مجددًا»؛ عند إيقافه سيظهر التنبيه مجددًا في المرة التالية لحدوث الحالة.</string>
+    <string name="settings_preserve_folders_title">الإخراج حسب تسلسل مجلدات المصدر</string>
+    <string name="settings_preserve_folders_subtitle">تُحفظ النتائج في مجلدات فرعية بأسماء الألبومات الأصلية؛ عند الإيقاف تُوضع كلها في مجلد واحد</string>
+    <string name="settings_about_title">حول</string>
+    <string name="settings_about_subtitle">الإصدار · التحقق من التحديثات · الشكر والدعم</string>
+    <string name="settings_check_update_title">التحقق من التحديثات</string>
+    <string name="settings_check_update_subtitle">جلب أحدث إصدار من GitHub Releases</string>
+    <string name="settings_checking">جارٍ التحقق…</string>
+    <string name="settings_update_available">v%1$s متاح</string>
+    <string name="settings_up_to_date">لديك أحدث إصدار</string>
+    <string name="settings_network_error">خطأ في الشبكة، حاول لاحقًا</string>
+    <string name="settings_reinstall_title">إعادة تثبيت هذا الإصدار</string>
+    <string name="settings_reinstall_subtitle">تنزيل أحدث إصدار حالي وتثبيته فوق الحالي (لاختبار التحديث)</string>
+    <string name="settings_reinstall_newer_hint">يمكن الترقية الآن إلى v%1$s؛ استخدم «التحقق من التحديثات» للترقية أولًا</string>
+    <string name="settings_version_title">الإصدار</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">الدعم عبر Alipay</string>
+    <string name="settings_alipay_subtitle">دعم التطوير</string>
+    <string name="settings_coolapk_subtitle">مستخدم Coolapk · شكرًا لدعمه</string>
+    <string name="settings_ai_credits_subtitle">شكرًا لبيئات تطوير الذكاء الاصطناعي ونماذجه على ما قدمته من مساعدة في التطوير</string>
+    <string name="settings_github_title">مستودع GitHub المفتوح المصدر</string>
+    <string name="settings_license_title">رخصة المصدر المفتوح</string>
+    <string name="settings_sponsor_dialog_title">شكرًا لدعمك</string>
+    <string name="settings_sponsor_dialog_text">شكرًا جزيلًا حقًا على رغبتك في دعم هذا التطبيق!\n\nإذا كنت ما زلت طالبًا أو لم تستقل ماليًا بعد، فأرجوك ألا تنفق من أجل ذلك——\nاحتفظ بهذه النية في قلبك واستمر في استخدام التطبيق؛ فهذا أفضل دعم لي.\n\nوإن أردت الدعم، فأي مبلغ ولو صغير هو لفتة محبة، وسأستثمره في صيانة أفضل ومزايا أكثر :)</string>
+    <string name="settings_alipay_missing_title">Alipay غير مثبّت</string>
+    <string name="settings_alipay_missing_text">لم يتم العثور على Alipay، لذا لا يمكن إتمام الدعم حاليًا.\n\nلا بأس——شكرًا جزيلًا على نيتك الطيبة في كل الأحوال!</string>
+    <string name="settings_transcoder_title">المحوّل المدمج</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">إعادة الترميز</string>
+    <string name="settings_transcode_mode_remux">إعادة تغليف الحاوية فقط (موصى به)</string>
+    <string name="settings_transcode_mode_off">عدم استخدام المحوّل إطلاقًا</string>
+    <string name="settings_transcode_params_title">معلمات التحويل</string>
+    <string name="settings_transcode_params_subtitle">معلمات الجودة والضغط المستخدمة عند إعادة الترميز</string>
+    <string name="settings_transcode_params_disabled">يعمل فقط عند اختيار «إعادة الترميز» في «طريقة التحويل»</string>
+    <string name="settings_crf_value">الجودة CRF: %1$d</string>
+    <string name="settings_crf_hint">كلما صغر الرقم ارتفعت الجودة وكبر الحجم (الافتراضي 18)</string>
+    <string name="settings_encoder_title">المرمّز</string>
+    <string name="settings_compress_preset_title">إعدادات ضغط جاهزة</string>
+</resources>

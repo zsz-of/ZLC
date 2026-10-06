@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · fa strings — Persian (فارسی, RTL)
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Persian (Farsi). RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">تنظیمات</string>
+    <string name="settings_cd_back">بازگشت</string>
+    <string name="settings_btn_apply">اعمال</string>
+    <string name="settings_btn_cancel">لغو</string>
+    <string name="settings_btn_close">بستن</string>
+    <string name="settings_btn_ok">تأیید</string>
+    <string name="settings_btn_sponsor">حمایت</string>
+    <string name="settings_section_general">عمومی</string>
+    <string name="settings_section_appearance">ظاهر</string>
+    <string name="settings_section_language">زبان</string>
+    <string name="settings_section_defaults">گزینه‌های پیش‌فرض</string>
+    <string name="settings_section_output">خروجی</string>
+    <string name="settings_section_transcode">تبدیل ویدیو</string>
+    <string name="settings_section_about">درباره</string>
+    <string name="settings_section_app">برنامه</string>
+    <string name="settings_section_credits">سپاس و حمایت</string>
+    <string name="settings_section_opensource">متن‌باز و مجوز</string>
+    <string name="settings_startup_check_title">بررسی به‌روزرسانی هنگام اجرا</string>
+    <string name="settings_startup_check_subtitle">هنگام اجرا نسخه جدید را به‌طور خودکار از GitHub می‌گیرد و در صورت وجود به‌روزرسانی، دانلود را پیشنهاد می‌دهد</string>
+    <string name="settings_haptics_title">بازخورد لرزش</string>
+    <string name="settings_haptics_subtitle">بازخورد لمسی هنگام لمس دکمه‌ها و تغییر وضعیت</string>
+    <string name="settings_bounce_title">انیمیشن فنری دکمه‌ها</string>
+    <string name="settings_bounce_subtitle">انیمیشن کوچک‌شدن و برگشت هنگام فشار دکمه</string>
+    <string name="settings_theme_system">پیروی از سیستم</string>
+    <string name="settings_theme_dark">تیره</string>
+    <string name="settings_theme_light">روشن</string>
+    <string name="settings_dynamic_theme_title">رنگ‌های پویا Material You</string>
+    <string name="settings_dynamic_theme_subtitle">پیروی از رنگ پس‌زمینه سیستم (Android 12+)؛ پس از خاموش کردن، از رنگ‌های آماده زیر استفاده می‌شود</string>
+    <string name="settings_preset_colors_title">رنگ‌های آماده</string>
+    <string name="settings_preset_current">فعلی: %1$s</string>
+    <string name="settings_preset_disabled_hint">پس از خاموش کردن «رنگ‌های پویا Material You» قابل انتخاب است</string>
+    <string name="settings_custom">سفارشی</string>
+    <string name="settings_custom_color_title">رنگ سفارشی</string>
+    <string name="settings_cd_custom_palette">پالت رنگ سفارشی</string>
+    <string name="settings_hue_value">رنگ %1$d°</string>
+    <string name="settings_language_dialog_title">انتخاب زبان برنامه</string>
+    <string name="settings_language_count">%1$d زبان</string>
+    <string name="settings_reminder_dialogs_title">پنجره‌های «دیگر نشان نده»</string>
+    <string name="settings_reminder_dialogs_subtitle">مدیریت کلید همه پنجره‌های «دیگر نشان نده»</string>
+    <string name="settings_reminder_hint">روشن بودن کلید یعنی «دیگر نشان نده»؛ پس از خاموش کردن، در دفعه بعد که همان موقعیت پیش بیاید هشدار دوباره نمایش داده می‌شود.</string>
+    <string name="settings_preserve_folders_title">خروجی بر اساس ساختار پوشه مبدأ</string>
+    <string name="settings_preserve_folders_subtitle">نتایج تبدیل در زیرپوشه‌هایی با نام آلبوم اصلی ذخیره می‌شوند؛ پس از خاموش کردن، همه در یک پوشه قرار می‌گیرند</string>
+    <string name="settings_about_title">درباره</string>
+    <string name="settings_about_subtitle">نسخه · بررسی به‌روزرسانی · سپاس و حمایت</string>
+    <string name="settings_check_update_title">بررسی به‌روزرسانی</string>
+    <string name="settings_check_update_subtitle">دریافت آخرین نسخه از GitHub Releases</string>
+    <string name="settings_checking">در حال بررسی…</string>
+    <string name="settings_update_available">v%1$s موجود است</string>
+    <string name="settings_up_to_date">آخرین نسخه را دارید</string>
+    <string name="settings_network_error">خطای شبکه؛ کمی بعد دوباره تلاش کنید</string>
+    <string name="settings_reinstall_title">نصب دوباره همین نسخه</string>
+    <string name="settings_reinstall_subtitle">دانلود آخرین نسخه و نصب روی نسخه فعلی (برای آزمودن به‌روزرسانی)</string>
+    <string name="settings_reinstall_newer_hint">اکنون می‌توان به v%1$s ارتقا داد؛ ابتدا با «بررسی به‌روزرسانی» ارتقا دهید</string>
+    <string name="settings_version_title">نسخه</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">حمایت با Alipay</string>
+    <string name="settings_alipay_subtitle">حمایت از توسعه</string>
+    <string name="settings_coolapk_subtitle">کاربر Coolapk · سپاس از حمایتش</string>
+    <string name="settings_ai_credits_subtitle">سپاس از محیط‌های توسعه و مدل‌های هوش مصنوعی برای کمکی که در توسعه کردند</string>
+    <string name="settings_github_title">مخزن متن‌باز GitHub</string>
+    <string name="settings_license_title">مجوز متن‌باز</string>
+    <string name="settings_sponsor_dialog_title">سپاس از حمایت شما</string>
+    <string name="settings_sponsor_dialog_text">واقعاً از اینکه می‌خواهید از این برنامه حمایت کنید سپاسگزارم!\n\nاگر هنوز دانشجو هستید یا استقلال مالی ندارید، لطفاً هزینه نکنید——\nهمین نیت را در دل نگه دارید و به استفاده ادامه دهید؛ همین بهترین حمایت از من است.\n\nاگر خواستید حمایت کنید، هر مبلغی هرچند کوچک هم ارزشمند است و آن را در نگهداری بهتر و قابلیت‌های بیشتر سرمایه‌گذاری می‌کنم :)</string>
+    <string name="settings_alipay_missing_title">Alipay نصب نیست</string>
+    <string name="settings_alipay_missing_text">Alipay پیدا نشد، بنابراین فعلاً امکان تکمیل حمایت نیست.\n\nاشکالی ندارد——در هر حال از نیت خوب شما بسیار سپاسگزارم!</string>
+    <string name="settings_transcoder_title">تبدیل‌کننده داخلی</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">رمزگذاری مجدد</string>
+    <string name="settings_transcode_mode_remux">فقط بسته‌بندی مجدد محفظه (توصیه‌شده)</string>
+    <string name="settings_transcode_mode_off">عدم استفاده کامل از تبدیل‌کننده</string>
+    <string name="settings_transcode_params_title">پارامترهای تبدیل</string>
+    <string name="settings_transcode_params_subtitle">پارامترهای کیفیت و فشرده‌سازی هنگام رمزگذاری مجدد</string>
+    <string name="settings_transcode_params_disabled">تنها زمانی مؤثر است که در «روش تبدیل» گزینه «رمزگذاری مجدد» انتخاب شود</string>
+    <string name="settings_crf_value">کیفیت CRF: %1$d</string>
+    <string name="settings_crf_hint">هرچه عدد کوچک‌تر باشد کیفیت بالاتر و حجم بیشتر است (پیش‌فرض 18)</string>
+    <string name="settings_encoder_title">رمزگذار</string>
+    <string name="settings_compress_preset_title">پیش‌تنظیم فشرده‌سازی</string>
+</resources>

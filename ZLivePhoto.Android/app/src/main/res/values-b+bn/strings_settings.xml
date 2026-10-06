@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · বাংলা স্ট্রিং (bn)।
+  ZLC · Bengali strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">সেটিংস</string>
+    <string name="settings_cd_back">ফিরে যান</string>
+    <string name="settings_btn_apply">প্রয়োগ করুন</string>
+    <string name="settings_btn_cancel">বাতিল</string>
+    <string name="settings_btn_close">বন্ধ করুন</string>
+    <string name="settings_btn_ok">ঠিক আছে</string>
+    <string name="settings_btn_sponsor">দান করুন</string>
+    <string name="settings_section_general">সাধারণ</string>
+    <string name="settings_section_appearance">চেহারা</string>
+    <string name="settings_section_language">ভাষা</string>
+    <string name="settings_section_defaults">ডিফল্ট</string>
+    <string name="settings_section_output">আউটপুট</string>
+    <string name="settings_section_transcode">ভিডিও ট্রান্সকোডিং</string>
+    <string name="settings_section_about">সম্পর্কে</string>
+    <string name="settings_section_app">অ্যাপ</string>
+    <string name="settings_section_credits">কৃতজ্ঞতা ও অনুদান</string>
+    <string name="settings_section_opensource">ওপেন সোর্স ও লাইসেন্স</string>
+    <string name="settings_startup_check_title">চালু হওয়ার সময় আপডেট দেখুন</string>
+    <string name="settings_startup_check_subtitle">চালু হওয়ার সময় GitHub থেকে স্বয়ংক্রিয়ভাবে নতুন সংস্করণ আনা হয় এবং নতুন সংস্করণ থাকলে ডাউনলোডের অনুরোধ দেখানো হয়</string>
+    <string name="settings_haptics_title">হ্যাপটিক ফিডব্যাক</string>
+    <string name="settings_haptics_subtitle">বোতাম চাপা ও অবস্থা বদলের সময় হ্যাপটিক ফিডব্যাক</string>
+    <string name="settings_bounce_title">বোতাম বাউন্স অ্যানিমেশন</string>
+    <string name="settings_bounce_subtitle">বোতাম চাপলে স্কেল-বাউন্স অ্যানিমেশন</string>
+    <string name="settings_theme_system">সিস্টেম অনুসরণ করুন</string>
+    <string name="settings_theme_dark">ডার্ক</string>
+    <string name="settings_theme_light">লাইট</string>
+    <string name="settings_dynamic_theme_title">Material You ডাইনামিক রঙ</string>
+    <string name="settings_dynamic_theme_subtitle">সিস্টেম ওয়ালপেপারের রঙ অনুসরণ করুন (Android 12+); বন্ধ থাকলে নিচের প্রিসেট থিম রঙ ব্যবহৃত হয়</string>
+    <string name="settings_preset_colors_title">প্রিসেট থিম রঙ</string>
+    <string name="settings_preset_current">বর্তমান: %1$s</string>
+    <string name="settings_preset_disabled_hint">বেছে নিতে “Material You ডাইনামিক রঙ” বন্ধ করুন</string>
+    <string name="settings_custom">কাস্টম</string>
+    <string name="settings_custom_color_title">কাস্টম থিম রঙ</string>
+    <string name="settings_cd_custom_palette">কাস্টম প্যালেট</string>
+    <string name="settings_hue_value">হিউ %1$d°</string>
+    <string name="settings_language_dialog_title">অ্যাপের ভাষা বেছে নিন</string>
+    <string name="settings_language_count">%1$dটি ভাষা পাওয়া যাচ্ছে</string>
+    <string name="settings_reminder_dialogs_title">“আর দেখাবেন না” ডায়ালগ</string>
+    <string name="settings_reminder_dialogs_subtitle">সব “আর দেখাবেন না” ডায়ালগের সুইচ ব্যবস্থাপনা করুন</string>
+    <string name="settings_reminder_hint">সুইচ চালু থাকলে ওই অনুরোধটি আর দেখানো হয় না; বন্ধ থাকলে পরের বার সেই পরিস্থিতিতে অনুরোধটি আবার আসে।</string>
+    <string name="settings_preserve_folders_title">সোর্স ফোল্ডার কাঠামো অনুযায়ী আউটপুট</string>
+    <string name="settings_preserve_folders_subtitle">ফলাফল মূল অ্যালবামের নামের সাবফোল্ডারে রাখা হয়; বন্ধ থাকলে সব একই ফোল্ডারে সমানভাবে রাখা হয়</string>
+    <string name="settings_about_title">সম্পর্কে</string>
+    <string name="settings_about_subtitle">সংস্করণ · আপডেট দেখুন · কৃতজ্ঞতা ও অনুদান</string>
+    <string name="settings_check_update_title">আপডেট দেখুন</string>
+    <string name="settings_check_update_subtitle">GitHub Releases থেকে সর্বশেষ সংস্করণ আনুন</string>
+    <string name="settings_checking">দেখা হচ্ছে…</string>
+    <string name="settings_update_available">v%1$s পাওয়া যাচ্ছে</string>
+    <string name="settings_up_to_date">আপনি সর্বশেষ সংস্করণেই আছেন</string>
+    <string name="settings_network_error">নেটওয়ার্ক সমস্যা; অনুগ্রহ করে পরে আবার চেষ্টা করুন</string>
+    <string name="settings_reinstall_title">এই সংস্করণ আবার ইনস্টল করুন</string>
+    <string name="settings_reinstall_subtitle">বর্তমান সর্বশেষ বিল্ড ডাউনলোড করে এর উপরে ইনস্টল করুন (আপডেট পরীক্ষার জন্য)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s পাওয়া যাচ্ছে; অনুগ্রহ করে আগে “আপডেট দেখুন” দিয়ে আপগ্রেড করুন</string>
+    <string name="settings_version_title">সংস্করণ</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay দিয়ে অনুদান</string>
+    <string name="settings_alipay_subtitle">ডেভেলপমেন্টে সহায়তা করুন</string>
+    <string name="settings_coolapk_subtitle">Coolapk ব্যবহারকারী · সমর্থনের জন্য ধন্যবাদ</string>
+    <string name="settings_ai_credits_subtitle">ডেভেলপমেন্টে সহায়তা করা AI IDE ও AI মডেলদের ধন্যবাদ</string>
+    <string name="settings_github_title">GitHub রিপোজিটরি</string>
+    <string name="settings_license_title">ওপেন সোর্স লাইসেন্স</string>
+    <string name="settings_sponsor_dialog_title">আপনার সমর্থনের জন্য ধন্যবাদ</string>
+    <string name="settings_sponsor_dialog_text">এই অ্যাপটিকে সমর্থন করার আপনার ইচ্ছার জন্য সত্যিই কৃতজ্ঞ!\n\nআপনি যদি এখনও শিক্ষার্থী হন, বা এখনও আর্থিকভাবে স্বনির্ভর না হন, তাহলে অনুগ্রহ করে এতে টাকা খরচ করবেন না — ওই সদিচ্ছাটি মনে ধরে রেখে অ্যাপটি ব্যবহার চালিয়ে যাওয়াই আমার কাছে সেরা সমর্থন।\n\nআপনি যদি সত্যিই অনুদান দিতে চান, একটু হলেও সাহায্য করে, আর আমি সেটি আরও ভালো রক্ষণাবেক্ষণ ও ফিচারে লাগাব:)</string>
+    <string name="settings_alipay_missing_title">Alipay ইনস্টল করা নেই</string>
+    <string name="settings_alipay_missing_text">Alipay পাওয়া যায়নি, তাই এই মুহূর্তে অনুদান সম্পন্ন করা যাবে না।\n\nকোনো সমস্যা নেই — যেভাবেই হোক আপনার সদিচ্ছার জন্য অনেক ধন্যবাদ!</string>
+    <string name="settings_transcoder_title">অন্তর্নির্মিত ট্রান্সকোডার</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">পুনরায় এনকোড</string>
+    <string name="settings_transcode_mode_remux">শুধু কনটেইনার রিমাক্স (প্রস্তাবিত)</string>
+    <string name="settings_transcode_mode_off">ট্রান্সকোডার কখনও ব্যবহার করবেন না</string>
+    <string name="settings_transcode_params_title">ট্রান্সকোডিং প্যারামিটার</string>
+    <string name="settings_transcode_params_subtitle">পুনরায় এনকোডের সময় ব্যবহৃত কোয়ালিটি ও কম্প্রেশন প্যারামিটার</string>
+    <string name="settings_transcode_params_disabled">শুধু “ট্রান্সকোডিং মোড” “পুনরায় এনকোড”-এ থাকলে কাজ করে</string>
+    <string name="settings_crf_value">কোয়ালিটি CRF: %1$d</string>
+    <string name="settings_crf_hint">কম মান মানে বেশি কোয়ালিটি ও বড় ফাইল (ডিফল্ট 18)</string>
+    <string name="settings_encoder_title">এনকোডার</string>
+    <string name="settings_compress_preset_title">কম্প্রেশন প্রিসেট</string>
+</resources>

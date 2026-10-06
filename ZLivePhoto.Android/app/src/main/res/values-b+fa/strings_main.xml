@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · fa strings — Persian (فارسی, RTL)
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Persian (Farsi). RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">آماده</string>
+    <string name="main_status_location_granted">مجوز موقعیت مکانی داده شد؛ پس از تبدیل، داده‌های GPS حفظ می‌شود</string>
+    <string name="main_status_location_denied">مجوز موقعیت مکانی داده نشد: عکس‌های تبدیل‌شده اطلاعات موقعیت GPS را از دست می‌دهند</string>
+    <string name="main_status_all_files_granted">مجوز «دسترسی به همه فایل‌ها» داده شد؛ تبدیل مستقیماً در پوشه آلبوم می‌نویسد و اطلاعات موقعیت به‌طور کامل حفظ می‌شود</string>
+    <string name="main_status_all_files_denied">مجوز «دسترسی به همه فایل‌ها» داده نشد: در برخی مدل‌ها ممکن است اطلاعات موقعیت پس از تبدیل از دست برود</string>
+    <string name="main_status_read_granted">مجوز خواندن عکس‌ها و ویدیوها داده شد</string>
+    <string name="main_status_video_missing">مجوز داده شد، اما مجوز ویدیو وجود ندارد: پیدا کردن ویدیوی همراه Live Photoهای دو‌فایلی ممکن نیست</string>
+    <string name="main_status_permission_denied">مجوزها داده نشدند؛ می‌توانید دوباره روی «افزودن فایل» بزنید</string>
+    <string name="main_status_folder_not_selected">پوشه‌ای انتخاب نشده است</string>
+    <string name="main_status_folder_unavailable">دسترسی به پوشه انتخاب‌شده ممکن نیست (فقط حافظه داخلی پشتیبانی می‌شود)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">نشست قبلی بازیابی شد — تعداد فایل: %1$d</item>
+        <item quantity="other">نشست قبلی بازیابی شد (%1$d فایل)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">خروج غیرعادی در اجرای قبلی شناسایی شد؛ فهرست ناتمام پاک شد</string>
+    <string name="main_status_compose_blocks_extract">صف شامل وظایف ترکیب است، بنابراین تغییر به حالت استخراج ممکن نیست</string>
+    <string name="main_status_replace_off_mutex">حالت جایگزینی خاموش شد (با «حذف فایل اصلی پس از پایان پردازش» ناسازگار است)</string>
+    <string name="main_status_delete_needs_all_files">حذف خودکار فایل اصلی به مجوز «دسترسی به همه فایل‌ها» نیاز دارد؛ ابتدا آن را بدهید</string>
+    <string name="main_status_replace_off">حالت جایگزینی خاموش شد؛ نتایج تبدیل در پوشه آلبوم نوشته می‌شود</string>
+    <string name="main_status_replace_needs_all_files">حالت جایگزینی به مجوز «دسترسی به همه فایل‌ها» نیاز دارد؛ ابتدا آن را بدهید</string>
+    <string name="main_status_delete_off_mutex">«حذف فایل اصلی پس از پایان پردازش» خاموش شد (با حالت جایگزینی ناسازگار است)</string>
+    <string name="main_status_loading_albums">در حال خواندن آلبوم‌ها…</string>
+    <string name="main_status_no_albums">آلبومی پیدا نشد</string>
+    <string name="main_status_compose_no_photo">عکسی انتخاب نشده است، ترکیب ممکن نیست</string>
+    <string name="main_status_compose_no_video">ویدیویی انتخاب نشده است، ترکیب ممکن نیست</string>
+    <string name="main_status_compose_all_added">همه عکس‌های انتخاب‌شده از قبل در فهرست هستند</string>
+    <string name="main_status_compose_paired">%1$d عکس و %2$d ویدیو؛ بر اساس تعداد کمتر %3$d وظیفه ترکیب افزوده شد</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">یک وظیفه ترکیب افزوده شد — برای اجرا روی «شروع تبدیل» بزنید (تعداد وظایف: %1$d)</item>
+        <item quantity="other">%1$d وظیفه ترکیب افزوده شد — برای اجرا روی «شروع تبدیل» بزنید</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (قالب خروجی به‌طور خودکار به Google تغییر کرد)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">در حال وارد کردن یک تصویر اشتراک‌گذاشته‌شده (تعداد تصاویر: %1$d)…</item>
+        <item quantity="other">در حال وارد کردن %1$d تصویر اشتراک‌گذاشته‌شده…</item>
+    </plurals>
+    <string name="main_status_import_failed">وارد کردن ناموفق بود: %1$s</string>
+    <string name="main_status_import_done_partial">وارد کردن کامل شد: %1$d موفق، %2$d ناموفق</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">وارد کردن کامل شد — یک فایل وارد شد (تعداد فایل‌ها: %1$d)</item>
+        <item quantity="other">وارد کردن کامل شد: در کل %1$d فایل وارد شد</item>
+    </plurals>
+    <string name="main_status_import_stopped">وارد کردن متوقف شد: %1$d موفق، %2$d ناموفق</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">در حال وارد کردن یک فایل (تعداد فایل‌ها: %1$d)…</item>
+        <item quantity="other">در حال وارد کردن %1$d فایل…</item>
+    </plurals>
+    <string name="main_status_importing_progress">در حال وارد کردن %1$d/%2$d…</string>
+    <string name="main_status_stopping">در حال توقف… (پس از پایان فایل جاری متوقف می‌شود)</string>
+    <string name="main_status_stopping_import">در حال توقف وارد کردن…</string>
+    <string name="main_status_removed">حذف شد: %1$s</string>
+    <string name="main_status_cleared">پاک شد</string>
+    <string name="main_status_nothing_to_convert">فایلی برای تبدیل وجود ندارد</string>
+    <string name="main_status_folder_unreadable">خواندن پوشه انتخاب‌شده ممکن نیست</string>
+    <string name="main_status_scanning_folder">در حال پیمایش پوشه…</string>
+    <string name="main_status_no_images">در پوشه انتخاب‌شده تصویری پیدا نشد</string>
+    <string name="main_status_batch_importing">در حال وارد کردن دسته‌ای %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">وارد کردن دسته‌ای متوقف شد — یک Live Photo وارد شد (تعداد: %1$d)</item>
+        <item quantity="other">وارد کردن دسته‌ای متوقف شد: در کل %1$d Live Photo وارد شد</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">وارد کردن دسته‌ای متوقف شد — یک Live Photo وارد شد و %2$d فایل غیر Live Photo نادیده گرفته شد (تعداد: %1$d)</item>
+        <item quantity="other">وارد کردن دسته‌ای متوقف شد: %1$d Live Photo وارد شد و %2$d فایل غیر Live Photo نادیده گرفته شد</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">وارد کردن دسته‌ای کامل شد — یک Live Photo وارد شد (تعداد: %1$d)</item>
+        <item quantity="other">وارد کردن دسته‌ای کامل شد: در کل %1$d Live Photo وارد شد</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">وارد کردن دسته‌ای کامل شد — یک Live Photo وارد شد و %2$d فایل غیر Live Photo نادیده گرفته شد (تعداد: %1$d)</item>
+        <item quantity="other">وارد کردن دسته‌ای کامل شد: %1$d Live Photo وارد شد و %2$d فایل غیر Live Photo نادیده گرفته شد</item>
+    </plurals>
+    <string name="main_status_stopped_replace">متوقف شد: از %1$d فایل، %2$d پردازش و %3$d فایل اصلی جایگزین شد</string>
+    <string name="main_status_stopped_export">متوقف شد: از %1$d فایل، %2$d پردازش و %3$d در آلبوم ذخیره شد</string>
+    <string name="main_status_done_replace_reason">کامل شد: %1$d فایل پردازش و %2$d فایل اصلی جایگزین شد (دلیل: %3$s)</string>
+    <string name="main_status_done_export_reason">کامل شد: %1$d فایل پردازش و %2$d در آلبوم ذخیره شد (دلیل: %3$s)</string>
+    <string name="main_status_done_replace">کامل شد: %1$d فایل پردازش و %2$d فایل اصلی جایگزین شد</string>
+    <string name="main_status_done_export">کامل شد: %1$d فایل پردازش و %2$d در آلبوم ذخیره شد</string>
+    <string name="main_status_keep_originals">%1$s؛ مجوز «دسترسی کامل به حافظه» داده نشد و فایل اصلی حفظ شد</string>
+    <string name="main_info_detecting">در حال بررسی…</string>
+    <string name="main_info_unrecognized">قالب Live Photo ناشناخته</string>
+    <string name="main_info_converting">در حال تبدیل…</string>
+    <string name="main_info_compose_task">وظیفه ترکیب (برای اجرا روی «شروع تبدیل» بزنید)</string>
+    <string name="main_info_done_replaced">کامل شد (%1$d فایل اصلی جایگزین شد)</string>
+    <string name="main_info_done_skipped">کامل شد (نادیده گرفته شد: تعارض نام)</string>
+    <string name="main_info_done_exported">کامل شد (%1$d ذخیره شد)</string>
+    <string name="main_info_failed">ناموفق: %1$s</string>
+    <string name="main_progress_added">افزوده شد %1$d/%2$d</string>
+    <string name="main_progress_processed">پردازش شد %1$d/%2$d</string>
+    <string name="main_progress_imported">وارد شد %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">نیاز به مجوز خواندن عکس‌ها و ویدیوها</string>
+    <string name="main_dialog_permission_message">این برنامه برای خواندن عکس‌ها و ویدیوهای دستگاه به مجوز نیاز دارد:\n\n• مجوز عکس: پیمایش آلبوم‌های دستگاه و شناسایی Live Photoهای درون آن\n• مجوز ویدیو: یافتن ویدیوی همراه Live Photoهای دو‌فایلی\n• مجوز موقعیت مکانی: حفظ داده‌های GPS عکس‌ها (در صورت نبود آن، اطلاعات موقعیت پس از تبدیل از دست می‌رود)\n\nدر صورت رد کردن، نمی‌توانید از انتخابگر داخلی استفاده کنید؛ می‌توانید بعداً دوباره روی «افزودن فایل» بزنید و مجوز بدهید.</string>
+    <string name="main_dialog_settings_title">لازم است مجوز عکس‌ها و ویدیوها را دستی بدهید</string>
+    <string name="main_dialog_settings_message">شما پیش‌تر «دیگر نپرس» را انتخاب کرده‌اید، بنابراین سیستم پنجره مجوزها را نمایش نمی‌دهد.\n\nبه صفحه جزئیات برنامه ← مجوزها ← عکس‌ها و ویدیوها بروید، دسترسی را دستی بدهید و سپس به برنامه بازگردید.\n\nتوجه: باید هم مجوز «عکس‌ها» و هم مجوز «ویدیو» را بدهید، در غیر این صورت Live Photoهای دو‌فایلی نمی‌توانند ویدیوی همراه را پیدا کنند.</string>
+    <string name="main_dialog_allfiles_title_delete">حذف خودکار فایل اصلی به «دسترسی به همه فایل‌ها» نیاز دارد</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">این دستگاه از حذف خودکار فایل اصلی پشتیبانی نمی‌کند</string>
+    <string name="main_dialog_allfiles_title_replace">حالت جایگزینی به «دسترسی به همه فایل‌ها» نیاز دارد</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">این دستگاه از حالت جایگزینی پشتیبانی نمی‌کند</string>
+    <string name="main_dialog_allfiles_title_location">توصیه می‌شود مجوز «دسترسی به همه فایل‌ها» را بدهید</string>
+    <string name="main_dialog_allfiles_delete_message">«حذف فایل اصلی پس از پایان پردازش» فایل‌های اصلی روی حافظه (عکس و ویدیوی همراه) را مستقیماً حذف می‌کند و این کار قابل بازگشت نیست؛ بنابراین ابتدا باید مجوز «دسترسی به همه فایل‌ها» را بدهید.\n\nکلید تنها پس از دادن مجوز فعال می‌شود و آن‌گاه می‌توانید خودتان آن را روشن کنید.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">سیستم فعلی (Android 10 و پایین‌تر) مجوز «دسترسی به همه فایل‌ها» را ارائه نمی‌دهد، بنابراین حذف مستقیم فایل‌های اصلی از حافظه ممکن نیست و این دستگاه از «حذف فایل اصلی پس از پایان پردازش» پشتیبانی نمی‌کند.\n\nمی‌توانید پس از پایان تبدیل، فایل‌های اصلی را دستی از آلبوم سیستم پاک کنید.</string>
+    <string name="main_dialog_allfiles_replace_message">«حالت جایگزینی» نتایج تبدیل را مستقیماً روی فایل‌های اصلی روی حافظه می‌نویسد (بازنویسی محتوای اصلی) و این کار قابل بازگشت نیست؛ بنابراین ابتدا باید مجوز «دسترسی به همه فایل‌ها» را بدهید.\n\nکلید تنها پس از دادن مجوز فعال می‌شود و آن‌گاه می‌توانید خودتان آن را روشن کنید.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">سیستم فعلی (Android 10 و پایین‌تر) مجوز «دسترسی به همه فایل‌ها» را ارائه نمی‌دهد، بنابراین بازنویسی مستقیم فایل‌های اصلی روی حافظه ممکن نیست و این دستگاه از «حالت جایگزینی» پشتیبانی نمی‌کند.\n\nمی‌توانید تبدیل را با روش پیش‌فرض ادامه دهید؛ نتایج در پوشه آلبوم نوشته می‌شوند.</string>
+    <string name="main_dialog_allfiles_location_message">برخی مدل‌ها (مثلاً Meizu) هنگام نوشتن از طریق رابط آلبوم سیستم، اطلاعات موقعیت GPS را حذف می‌کنند و در نتیجه عکس‌های تبدیل‌شده موقعیت خود را از دست می‌دهند.\n\nپس از دادن «دسترسی به همه فایل‌ها»، برنامه مستقیماً در پوشه آلبوم می‌نویسد و داده‌های موقعیت را به‌طور کامل حفظ می‌کند.\n\nبدون دادن مجوز هم تبدیل ممکن است، اما در برخی مدل‌ها اطلاعات موقعیت از دست می‌رود.</string>
+    <string name="main_dialog_conflict_title">تعارض نام فایل خروجی</string>
+    <string name="main_dialog_conflict_message">فایلی با همین نام در پوشه خروجی وجود دارد:\n%1$s\n\nلطفاً روش پردازش را انتخاب کنید.</string>
+    <string name="main_label_conflict_always">برای تعارض‌های بعدی از همین روش استفاده شود</string>
+    <string name="main_btn_grant">دادن مجوز</string>
+    <string name="main_btn_deny">رد کردن</string>
+    <string name="main_btn_go_settings">تنظیمات</string>
+    <string name="main_btn_cancel">لغو</string>
+    <string name="main_btn_grant_access">دادن دسترسی</string>
+    <string name="main_btn_got_it">متوجه شدم</string>
+    <string name="main_btn_not_now">الآن نه</string>
+    <string name="main_btn_skip">نادیده گرفتن</string>
+    <string name="main_btn_overwrite">بازنویسی</string>
+    <string name="main_btn_auto_rename">تغییر نام خودکار</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">یک فایل اصلی حذف شد (تعداد فایل‌ها: %1$d)</item>
+        <item quantity="other">%1$d فایل اصلی حذف شد</item>
+    </plurals>
+    <string name="main_delete_nothing">نیازی به حذف فایل اصلی نیست</string>
+    <string name="main_delete_partial">%1$d فایل اصلی حذف شد (%2$d حذف ناموفق بود و حفظ شد)</string>
+    <string name="main_delete_failed">حذف فایل اصلی ناموفق بود (فایل در استفاده است یا مجوز نوشتن وجود ندارد) و حفظ شد</string>
+    <string name="main_export_missing_output">محصول تبدیل موجود نیست یا خالی است: %1$s</string>
+    <string name="main_export_missing_output_bare">محصول تبدیل موجود نیست یا خالی است</string>
+    <string name="main_export_insert_null">MediaStore insert مقدار null برگرداند</string>
+    <string name="main_export_output_stream">جریان خروجی MediaStore در دسترس نیست</string>
+    <string name="main_export_write_failed">نوشتن در MediaStore ناموفق بود: %1$s</string>
+    <string name="main_export_mkdir_failed">ساخت پوشه آلبوم ناموفق بود %1$s</string>
+    <string name="main_export_dir_write_failed">نوشتن در پوشه آلبوم ناموفق بود: %1$s</string>
+    <string name="main_export_no_source">فایل مبدأ پیدا نشد؛ جایگزینی نادیده گرفته شد</string>
+    <string name="main_export_companion_failed">نوشتن مجدد فایل همراه ناموفق بود: %1$s</string>
+    <string name="main_export_source_dir_unwritable">پوشه فایل مبدأ قابل نوشتن نیست و فایل همراه نوشته نشد</string>
+    <string name="main_export_source_dir_unavailable">پوشه فایل مبدأ در دسترس نیست: %1$s</string>
+    <string name="main_export_replace_failed">جایگزینی فایل مبدأ ناموفق بود: %1$s</string>
+    <string name="main_export_replace_failed_bare">جایگزینی فایل مبدأ ناموفق بود</string>
+</resources>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · বাংলা স্ট্রিং (bn)।
+  ZLC · Bengali strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">প্রস্তুত</string>
+    <string name="main_status_location_granted">লোকেশন অনুমতি দেওয়া হয়েছে; রূপান্তরের পরে GPS মেটাডেটা সংরক্ষিত থাকবে</string>
+    <string name="main_status_location_denied">লোকেশন অনুমতি দেওয়া হয়নি: রূপান্তরিত ছবিতে GPS লোকেশন তথ্য থাকবে না</string>
+    <string name="main_status_all_files_granted">“সব ফাইলে অ্যাক্সেস” দেওয়া হয়েছে; রূপান্তর সরাসরি গ্যালারি ফোল্ডারে লেখা হবে এবং লোকেশন তথ্য সম্পূর্ণ সংরক্ষিত থাকবে</string>
+    <string name="main_status_all_files_denied">“সব ফাইলে অ্যাক্সেস” দেওয়া হয়নি: কিছু ডিভাইসে রূপান্তরের পরে লোকেশন তথ্য হারিয়ে যেতে পারে</string>
+    <string name="main_status_read_granted">ছবি ও ভিডিও পড়ার অনুমতি দেওয়া হয়েছে</string>
+    <string name="main_status_video_missing">অনুমতি দেওয়া হয়েছে, কিন্তু ভিডিওর অনুমতি নেই: দুই-ফাইল লাইভ ফটোর সঙ্গী ভিডিও খুঁজে পাওয়া যাচ্ছে না</string>
+    <string name="main_status_permission_denied">অনুমতি দেওয়া হয়নি; আপনি আবার “ফাইল যোগ করুন”-এ ট্যাপ করতে পারেন</string>
+    <string name="main_status_folder_not_selected">কোনো ফোল্ডার বেছে নেওয়া হয়নি</string>
+    <string name="main_status_folder_unavailable">বেছে নেওয়া ফোল্ডারে পৌঁছানো যাচ্ছে না (শুধু স্থানীয় স্টোরেজের ফোল্ডার সমর্থিত)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">আগের সেশন পুনরুদ্ধার করা হয়েছে (%1$dটি ফাইল)</item>
+        <item quantity="other">আগের সেশন পুনরুদ্ধার করা হয়েছে (%1$dটি ফাইল)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">আগের বার অস্বাভাবিকভাবে বন্ধ হওয়া শনাক্ত হয়েছে; অসমাপ্ত তালিকা সাফ করা হয়েছে</string>
+    <string name="main_status_compose_blocks_extract">কিউতে কম্পোজ কাজ আছে; এক্সট্র্যাক্ট মোডে যাওয়া যাবে না</string>
+    <string name="main_status_replace_off_mutex">রিপ্লেস মোড বন্ধ করা হয়েছে (“প্রক্রিয়ার পরে মূল ফাইল মুছুন”-এর সাথে একসাথে চলে না)</string>
+    <string name="main_status_delete_needs_all_files">মূল ফাইল স্বয়ংক্রিয়ভাবে মুছতে “সব ফাইলে অ্যাক্সেস” দরকার; অনুগ্রহ করে আগে সেটি দিন</string>
+    <string name="main_status_replace_off">রিপ্লেস মোড বন্ধ করা হয়েছে; রূপান্তরের ফলাফল আবার গ্যালারি ফোল্ডারে লেখা হচ্ছে</string>
+    <string name="main_status_replace_needs_all_files">রিপ্লেস মোডের জন্য “সব ফাইলে অ্যাক্সেস” দরকার; অনুগ্রহ করে আগে সেটি দিন</string>
+    <string name="main_status_delete_off_mutex">“প্রক্রিয়ার পরে মূল ফাইল মুছুন” বন্ধ করা হয়েছে (রিপ্লেস মোডের সাথে একসাথে চলে না)</string>
+    <string name="main_status_loading_albums">অ্যালবাম লোড হচ্ছে…</string>
+    <string name="main_status_no_albums">কোনো অ্যালবাম পাওয়া যায়নি</string>
+    <string name="main_status_compose_no_photo">কোনো ছবি বেছে নেওয়া হয়নি; কম্পোজ করা যাবে না</string>
+    <string name="main_status_compose_no_video">কোনো ভিডিও বেছে নেওয়া হয়নি; কম্পোজ করা যাবে না</string>
+    <string name="main_status_compose_all_added">বেছে নেওয়া সব ছবি আগেই তালিকায় আছে</string>
+    <string name="main_status_compose_paired">%1$dটি ছবি ও %2$dটি ভিডিও; কম সংখ্যার ভিত্তিতে %3$dটি কম্পোজ জোড়া যোগ করা হয়েছে</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$dটি কম্পোজ কাজ যোগ করা হয়েছে; কম্পোজ করতে “রূপান্তর শুরু করুন”-এ ট্যাপ করুন</item>
+        <item quantity="other">%1$dটি কম্পোজ কাজ যোগ করা হয়েছে; কম্পোজ করতে “রূপান্তর শুরু করুন”-এ ট্যাপ করুন</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (আউটপুট ফরম্যাট স্বয়ংক্রিয়ভাবে Google-এ বদলানো হয়েছে)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">%1$dটি শেয়ার করা ছবি ইমপোর্ট হচ্ছে…</item>
+        <item quantity="other">%1$dটি শেয়ার করা ছবি ইমপোর্ট হচ্ছে…</item>
+    </plurals>
+    <string name="main_status_import_failed">ইমপোর্ট ব্যর্থ: %1$s</string>
+    <string name="main_status_import_done_partial">ইমপোর্ট সম্পন্ন: %1$dটি সফল, %2$dটি ব্যর্থ</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">ইমপোর্ট সম্পন্ন: মোট %1$dটি ফাইল ইমপোর্ট হয়েছে</item>
+        <item quantity="other">ইমপোর্ট সম্পন্ন: মোট %1$dটি ফাইল ইমপোর্ট হয়েছে</item>
+    </plurals>
+    <string name="main_status_import_stopped">ইমপোর্ট থেমে গেছে: %1$dটি সফল, %2$dটি ব্যর্থ</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$dটি ফাইল ইমপোর্ট হচ্ছে…</item>
+        <item quantity="other">%1$dটি ফাইল ইমপোর্ট হচ্ছে…</item>
+    </plurals>
+    <string name="main_status_importing_progress">ইমপোর্ট হচ্ছে %1$d/%2$d…</string>
+    <string name="main_status_stopping">থামানো হচ্ছে… (বর্তমান ফাইল শেষ হলে থামবে)</string>
+    <string name="main_status_stopping_import">ইমপোর্ট থামানো হচ্ছে…</string>
+    <string name="main_status_removed">%1$s সরানো হয়েছে</string>
+    <string name="main_status_cleared">সাফ করা হয়েছে</string>
+    <string name="main_status_nothing_to_convert">রূপান্তর করার মতো কোনো ফাইল নেই</string>
+    <string name="main_status_folder_unreadable">বেছে নেওয়া ফোল্ডার পড়া যাচ্ছে না</string>
+    <string name="main_status_scanning_folder">ফোল্ডার স্ক্যান হচ্ছে…</string>
+    <string name="main_status_no_images">বেছে নেওয়া ফোল্ডারে কোনো ছবি পাওয়া যায়নি</string>
+    <string name="main_status_batch_importing">ব্যাচ ইমপোর্ট হচ্ছে %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">ব্যাচ ইমপোর্ট থেমে গেছে: মোট %1$dটি লাইভ ফটো ইমপোর্ট হয়েছে</item>
+        <item quantity="other">ব্যাচ ইমপোর্ট থেমে গেছে: মোট %1$dটি লাইভ ফটো ইমপোর্ট হয়েছে</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">ব্যাচ ইমপোর্ট থেমে গেছে: মোট %1$dটি লাইভ ফটো ইমপোর্ট হয়েছে, %2$dটি লাইভ ফটো নয় এমন ফাইল বাদ দেওয়া হয়েছে</item>
+        <item quantity="other">ব্যাচ ইমপোর্ট থেমে গেছে: মোট %1$dটি লাইভ ফটো ইমপোর্ট হয়েছে, %2$dটি লাইভ ফটো নয় এমন ফাইল বাদ দেওয়া হয়েছে</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">ব্যাচ ইমপোর্ট সম্পন্ন: মোট %1$dটি লাইভ ফটো ইমপোর্ট হয়েছে</item>
+        <item quantity="other">ব্যাচ ইমপোর্ট সম্পন্ন: মোট %1$dটি লাইভ ফটো ইমপোর্ট হয়েছে</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">ব্যাচ ইমপোর্ট সম্পন্ন: মোট %1$dটি লাইভ ফটো ইমপোর্ট হয়েছে, %2$dটি লাইভ ফটো নয় এমন ফাইল বাদ দেওয়া হয়েছে</item>
+        <item quantity="other">ব্যাচ ইমপোর্ট সম্পন্ন: মোট %1$dটি লাইভ ফটো ইমপোর্ট হয়েছে, %2$dটি লাইভ ফটো নয় এমন ফাইল বাদ দেওয়া হয়েছে</item>
+    </plurals>
+    <string name="main_status_stopped_replace">থেমে গেছে: %1$dটি ফাইলের মধ্যে %2$dটি প্রক্রিয়া হয়েছে এবং %3$dটি সোর্স ফাইল প্রতিস্থাপিত হয়েছে</string>
+    <string name="main_status_stopped_export">থেমে গেছে: %1$dটি ফাইলের মধ্যে %2$dটি প্রক্রিয়া হয়েছে এবং %3$dটি গ্যালারিতে এক্সপোর্ট হয়েছে</string>
+    <string name="main_status_done_replace_reason">সম্পন্ন: %1$dটি ফাইল প্রক্রিয়া হয়েছে, %2$dটি সোর্স ফাইল প্রতিস্থাপিত (কারণ: %3$s)</string>
+    <string name="main_status_done_export_reason">সম্পন্ন: %1$dটি ফাইল প্রক্রিয়া হয়েছে, %2$dটি গ্যালারিতে এক্সপোর্ট হয়েছে (কারণ: %3$s)</string>
+    <string name="main_status_done_replace">সম্পন্ন: %1$dটি ফাইল প্রক্রিয়া হয়েছে, %2$dটি সোর্স ফাইল প্রতিস্থাপিত</string>
+    <string name="main_status_done_export">সম্পন্ন: %1$dটি ফাইল প্রক্রিয়া হয়েছে, %2$dটি গ্যালারিতে এক্সপোর্ট হয়েছে</string>
+    <string name="main_status_keep_originals">%1$s; “সম্পূর্ণ স্টোরেজ অ্যাক্সেস” দেওয়া হয়নি, তাই মূল ফাইল রাখা হয়েছে</string>
+    <string name="main_info_detecting">শনাক্ত করা হচ্ছে…</string>
+    <string name="main_info_unrecognized">অচেনা লাইভ ফটো ফরম্যাট</string>
+    <string name="main_info_converting">রূপান্তর হচ্ছে…</string>
+    <string name="main_info_compose_task">কম্পোজ কাজ (“রূপান্তর শুরু করুন”-এ ট্যাপ করে কম্পোজ করুন)</string>
+    <string name="main_info_done_replaced">সম্পন্ন (%1$dটি সোর্স ফাইল প্রতিস্থাপিত)</string>
+    <string name="main_info_done_skipped">সম্পন্ন (বাদ দেওয়া হয়েছে: নামের সংঘর্ষ)</string>
+    <string name="main_info_done_exported">সম্পন্ন (%1$dটি এক্সপোর্ট হয়েছে)</string>
+    <string name="main_info_failed">ব্যর্থ: %1$s</string>
+    <string name="main_progress_added">%1$d/%2$d যোগ করা হয়েছে</string>
+    <string name="main_progress_processed">%1$d/%2$d প্রক্রিয়া হয়েছে</string>
+    <string name="main_progress_imported">%1$d/%2$d ইমপোর্ট হয়েছে</string>
+    <string name="main_dialog_permission_title">ছবি ও ভিডিও পড়ার অনুমতি দরকার</string>
+    <string name="main_dialog_permission_message">এই অ্যাপটির আপনার ডিভাইসের ছবি ও ভিডিও পড়ার অনুমতি দরকার:\n\n• ছবির অনুমতি: ডিভাইস গ্যালারি স্ক্যান করে সেখানকার লাইভ ফটো শনাক্ত করা\n• ভিডিওর অনুমতি: দুই-ফাইল লাইভ ফটোর সঙ্গী ভিডিও খুঁজে পাওয়া\n• লোকেশন অনুমতি: ছবির GPS লোকেশন মেটাডেটা সংরক্ষণ করা (এটি ছাড়া রূপান্তরিত ছবিতে লোকেশন তথ্য থাকবে না)\n\nআপনি অনুমতি না দিলে অন্তর্নির্মিত পিকার ব্যবহার করা যাবে না; পরে “ফাইল যোগ করুন”-এ ট্যাপ করে আবার অনুমতি দিতে পারেন।</string>
+    <string name="main_dialog_settings_title">ছবি ও ভিডিওর অনুমতি নিজে দিতে হবে</string>
+    <string name="main_dialog_settings_message">আপনি আগে “আর জিজ্ঞাসা করবেন না” বেছেছিলেন, তাই সিস্টেম আর অনুমতির ডায়ালগ দেখায় না।\n\nঅনুগ্রহ করে অ্যাপের বিস্তারিত পেজ → অনুমতি → ছবি ও ভিডিও-তে গিয়ে নিজে অ্যাক্সেস দিন, তারপর এই অ্যাপে ফিরে আসুন।\n\nলক্ষ্য রাখুন: “ছবি” ও “ভিডিও” দুটি অনুমতিই দিতে হবে, নইলে দুই-ফাইল লাইভ ফটো তার সঙ্গী ভিডিও খুঁজে পাবে না।</string>
+    <string name="main_dialog_allfiles_title_delete">মূল ফাইল স্বয়ংক্রিয়ভাবে মুছতে “সব ফাইলে অ্যাক্সেস” দরকার</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">এই ডিভাইস মূল ফাইল স্বয়ংক্রিয়ভাবে মুছা সমর্থন করে না</string>
+    <string name="main_dialog_allfiles_title_replace">রিপ্লেস মোডের জন্য “সব ফাইলে অ্যাক্সেস” দরকার</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">এই ডিভাইস রিপ্লেস মোড সমর্থন করে না</string>
+    <string name="main_dialog_allfiles_title_location">“সব ফাইলে অ্যাক্সেস” দেওয়া বাঞ্ছনীয়</string>
+    <string name="main_dialog_allfiles_delete_message">“প্রক্রিয়ার পরে মূল ফাইল মুছুন” সরাসরি ডিস্কের মূল ফাইল (ছবি ও তার সঙ্গী ভিডিও) মুছে ফেলে। এটি ফেরানো যায় না, তাই আগে “সব ফাইলে অ্যাক্সেস” দিতে হবে।\n\nঅনুমতি দিলে সুইচটি চালু হবে; তখন আপনি নিজে চালু করতে পারেন।</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">বর্তমান সিস্টেমে (Android 10 বা তার নিচে) “সব ফাইলে অ্যাক্সেস” নেই, তাই ডিস্কের মূল ফাইল সরাসরি মুছা যায় না; এই কারণে এই ডিভাইস “প্রক্রিয়ার পরে মূল ফাইল মুছুন” সমর্থন করে না।\n\nরূপান্তরের পরে আপনি সিস্টেম গ্যালারিতে নিজে মূল ফাইলগুলো পরিষ্কার করতে পারেন।</string>
+    <string name="main_dialog_allfiles_replace_message">“রিপ্লেস মোড” রূপান্তরের ফলাফল সরাসরি ডিস্কের মূল ফাইলে লেখে (তার বিষয়বস্তু ওভাররাইট করে)। এটি ফেরানো যায় না, তাই আগে “সব ফাইলে অ্যাক্সেস” দিতে হবে।\n\nঅনুমতি দিলে সুইচটি চালু হবে; তখন আপনি নিজে চালু করতে পারেন।</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">বর্তমান সিস্টেমে (Android 10 বা তার নিচে) “সব ফাইলে অ্যাক্সেস” নেই, তাই ডিস্কের মূল ফাইল সরাসরি লেখা যায় না; এই কারণে এই ডিভাইস “রিপ্লেস মোড” সমর্থন করে না।\n\nআপনি আগের মতোই রূপান্তর চালিয়ে যেতে পারেন; ফলাফল গ্যালারি ফোল্ডারে লেখা হয়।</string>
+    <string name="main_dialog_allfiles_location_message">কিছু ডিভাইসে (যেমন Meizu) সিস্টেম গ্যালারি API দিয়ে লিখলে GPS লোকেশন তথ্য মুছে যায়, তাই রূপান্তরিত ছবিতে লোকেশন থাকবে না।\n\nআপনি “সব ফাইলে অ্যাক্সেস” দিলে এই অ্যাপ সরাসরি গ্যালারি ফোল্ডারে লেখে এবং লোকেশন মেটাডেটা সম্পূর্ণ সংরক্ষণ করে।\n\nএটি ছাড়াও রূপান্তর কাজ করে, তবে কিছু ডিভাইসে লোকেশন তথ্য হারিয়ে যেতে পারে।</string>
+    <string name="main_dialog_conflict_title">আউটপুট ফাইলের নামের সংঘর্ষ</string>
+    <string name="main_dialog_conflict_message">আউটপুট ফোল্ডারে একই নামের ফাইল আগেই আছে:\n%1$s\n\nকীভাবে সামলাবেন তা বেছে নিন।</string>
+    <string name="main_label_conflict_always">পরে সব সংঘর্ষেও এটি ব্যবহার করুন</string>
+    <string name="main_btn_grant">অনুমতি দিন</string>
+    <string name="main_btn_deny">দেব না</string>
+    <string name="main_btn_go_settings">সেটিংস খুলুন</string>
+    <string name="main_btn_cancel">বাতিল</string>
+    <string name="main_btn_grant_access">অ্যাক্সেস দিন</string>
+    <string name="main_btn_got_it">বুঝেছি</string>
+    <string name="main_btn_not_now">এখন নয়</string>
+    <string name="main_btn_skip">এড়িয়ে যান</string>
+    <string name="main_btn_overwrite">ওভাররাইট</string>
+    <string name="main_btn_auto_rename">স্বয়ংক্রিয় নাম পরিবর্তন</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$dটি মূল ফাইল মুছে ফেলা হয়েছে</item>
+        <item quantity="other">%1$dটি মূল ফাইল মুছে ফেলা হয়েছে</item>
+    </plurals>
+    <string name="main_delete_nothing">মুছে ফেলার মতো মূল ফাইল নেই</string>
+    <string name="main_delete_partial">%1$dটি মূল ফাইল মুছে ফেলা হয়েছে (%2$dটি মুছা যায়নি, রাখা হয়েছে)</string>
+    <string name="main_delete_failed">মূল ফাইল মুছতে ব্যর্থ (ফাইল ব্যবহারে আছে বা লেখার অনুমতি নেই); ফাইলগুলো রাখা হয়েছে</string>
+    <string name="main_export_missing_output">রূপান্তরের আউটপুট নেই বা খালি: %1$s</string>
+    <string name="main_export_missing_output_bare">রূপান্তরের আউটপুট নেই বা খালি</string>
+    <string name="main_export_insert_null">MediaStore ইনসার্ট null ফেরত দিয়েছে</string>
+    <string name="main_export_output_stream">MediaStore আউটপুট স্ট্রিম পাওয়া যাচ্ছে না</string>
+    <string name="main_export_write_failed">MediaStore-এ লেখা ব্যর্থ: %1$s</string>
+    <string name="main_export_mkdir_failed">গ্যালারি ফোল্ডার %1$s তৈরি করা যাচ্ছে না</string>
+    <string name="main_export_dir_write_failed">গ্যালারি ফোল্ডারে লেখা যায়নি: %1$s</string>
+    <string name="main_export_no_source">সোর্স ফাইল খুঁজে পাওয়া যাচ্ছে না; প্রতিস্থাপন বাদ দেওয়া হয়েছে</string>
+    <string name="main_export_companion_failed">সঙ্গী ফাইলে লেখা যায়নি: %1$s</string>
+    <string name="main_export_source_dir_unwritable">সোর্স ফোল্ডারে লেখা যায় না, তাই সঙ্গী ফাইলে লেখা সম্ভব হয়নি</string>
+    <string name="main_export_source_dir_unavailable">সোর্স ফোল্ডার পাওয়া যাচ্ছে না: %1$s</string>
+    <string name="main_export_replace_failed">সোর্স ফাইল প্রতিস্থাপন ব্যর্থ: %1$s</string>
+    <string name="main_export_replace_failed_bare">সোর্স ফাইল প্রতিস্থাপন ব্যর্থ</string>
+</resources>

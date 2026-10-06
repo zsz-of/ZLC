@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Hungarian (hu) strings — format plugin names and diagnostics.
+  Translated from res/values/strings_formats.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Kibontás</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo egyfájlos Live Photo</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Nem található azonos nevű .mov videófájl</string>
+    <string name="fmt_err_apple_mov_no_ftyp">A MOV fájlból hiányzik az ftyp box</string>
+    <string name="fmt_err_extract_read">A kibontás kimeneti formátum, nem olvasható bemeneti formátumként</string>
+    <string name="fmt_err_no_primary_jpeg">Nem található elsődleges JPEG kép</string>
+    <string name="fmt_err_no_mp4_after_jpeg">A JPEG után nem található érvényes MP4 videó (hiányzó ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Az MP4 videófolyam elemzése sikertelen</string>
+    <string name="fmt_err_nubia_too_short">A fájl túl rövid ahhoz, hogy Nubia Live Photo legyen</string>
+    <string name="fmt_err_nubia_no_magic">Hiányzik a nubiaVpfile záró mágikus szám</string>
+    <string name="fmt_err_nubia_jpeg_len">Érvénytelen JPEG-hossz a záró részben: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Hiányoznak a 0x00 kitöltő bájtok a JPEG és a videó között</string>
+    <string name="fmt_err_nubia_empty_video">A beágyazott videó hossza 0</string>
+    <string name="fmt_err_vivo_no_marker">A JPG végén nem található vivo livephoto jelölő</string>
+    <string name="fmt_err_vivo_companion_missing">Hiányzik a kísérő videófájl: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">A JPG törzsének elemzése sikertelen</string>
+    <string name="fmt_err_vivo_companion_invalid">A kísérő MP4 érvénytelen (hiányzó ftyp box)</string>
+</resources>

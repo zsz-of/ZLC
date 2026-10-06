@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Greek (el) strings — settings screen.
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- General -->
+    <string name="settings_title">Ρυθμίσεις</string>
+    <string name="settings_cd_back">Πίσω</string>
+    <string name="settings_btn_apply">Εφαρμογή</string>
+    <string name="settings_btn_cancel">Άκυρο</string>
+    <string name="settings_btn_close">Κλείσιμο</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Υποστήριξη</string>
+
+    <!-- Section titles -->
+    <string name="settings_section_general">Γενικά</string>
+    <string name="settings_section_appearance">Εμφάνιση</string>
+    <string name="settings_section_language">Γλώσσα</string>
+    <string name="settings_section_defaults">Προεπιλογές</string>
+    <string name="settings_section_output">Έξοδος</string>
+    <string name="settings_section_transcode">Κωδικοποίηση βίντεο</string>
+    <string name="settings_section_about">Σχετικά</string>
+    <string name="settings_section_app">Εφαρμογή</string>
+    <string name="settings_section_credits">Ευχαριστίες και υποστήριξη</string>
+    <string name="settings_section_opensource">Ανοιχτός κώδικας και άδεια</string>
+
+    <!-- General -->
+    <string name="settings_startup_check_title">Έλεγχος ενημερώσεων κατά την εκκίνηση</string>
+    <string name="settings_startup_check_subtitle">Λήψη νέας έκδοσης από το GitHub κατά την εκκίνηση, με ειδοποίηση όταν υπάρχει ενημέρωση</string>
+    <string name="settings_haptics_title">Δόνηση</string>
+    <string name="settings_haptics_subtitle">Απτική ανάδραση σε πατήματα κουμπιών και αλλαγές κατάστασης</string>
+    <string name="settings_bounce_title">Ελαστική κίνηση κουμπιών</string>
+    <string name="settings_bounce_subtitle">Κίνηση σμίκρυνσης και επαναφοράς όταν πατιέται ένα κουμπί</string>
+
+    <!-- Appearance -->
+    <string name="settings_theme_system">Σύστημα</string>
+    <string name="settings_theme_dark">Σκούρο</string>
+    <string name="settings_theme_light">Φωτεινό</string>
+    <string name="settings_dynamic_theme_title">Δυναμικά χρώματα Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Ακολουθεί τα χρώματα ταπετσαρίας του συστήματος (Android 12+)· όταν είναι ανενεργό χρησιμοποιούνται τα παρακάτω έτοιμα χρώματα</string>
+    <string name="settings_preset_colors_title">Έτοιμα χρώματα θέματος</string>
+    <string name="settings_preset_current">Τρέχον: %1$s</string>
+    <string name="settings_preset_disabled_hint">Διαθέσιμο αφού απενεργοποιήσετε τα «Δυναμικά χρώματα Material You»</string>
+    <string name="settings_custom">Προσαρμοσμένο</string>
+    <string name="settings_custom_color_title">Προσαρμοσμένο χρώμα θέματος</string>
+    <string name="settings_cd_custom_palette">Προσαρμοσμένη παλέτα</string>
+    <string name="settings_hue_value">Απόχρωση %1$d°</string>
+
+    <!-- App language: title and the "follow system" row reuse strings_app.xml -->
+    <string name="settings_language_dialog_title">Επιλογή γλώσσας εφαρμογής</string>
+    <string name="settings_language_count">%1$d γλώσσες διαθέσιμες</string>
+
+    <!-- Defaults -->
+    <string name="settings_reminder_dialogs_title">Να μην εμφανίζονται ξανά διάλογοι</string>
+    <string name="settings_reminder_dialogs_subtitle">Διαχείριση όλων των διαλόγων «Να μην εμφανιστεί ξανά»</string>
+    <string name="settings_reminder_hint">Ενεργό σημαίνει «να μην εμφανίζεται ξανά»· αν το απενεργοποιήσετε, ο διάλογος θα εμφανιστεί ξανά την επόμενη φορά.</string>
+
+    <!-- Output -->
+    <string name="settings_preserve_folders_title">Δομή φακέλων όπως στην πηγή</string>
+    <string name="settings_preserve_folders_subtitle">Τα αποτελέσματα αποθηκεύονται σε υποφακέλους ανά άλμπουμ· αν απενεργοποιηθεί, όλα μπαίνουν σε έναν φάκελο</string>
+
+    <!-- About -->
+    <string name="settings_about_title">Σχετικά</string>
+    <string name="settings_about_subtitle">Έκδοση · Έλεγχος ενημερώσεων · Ευχαριστίες</string>
+    <string name="settings_check_update_title">Έλεγχος ενημερώσεων</string>
+    <string name="settings_check_update_subtitle">Λήψη της τελευταίας έκδοσης από το GitHub Releases</string>
+    <string name="settings_checking">Έλεγχος…</string>
+    <string name="settings_update_available">Διαθέσιμη έκδοση v%1$s</string>
+    <string name="settings_up_to_date">Έχετε την τελευταία έκδοση</string>
+    <string name="settings_network_error">Σφάλμα δικτύου, δοκιμάστε ξανά αργότερα</string>
+    <string name="settings_reinstall_title">Επανεγκατάσταση αυτής της έκδοσης</string>
+    <string name="settings_reinstall_subtitle">Λήψη της τρέχουσας έκδοσης για εγκατάσταση από πάνω (για δοκιμή ενημερώσεων)</string>
+    <string name="settings_reinstall_newer_hint">Μπορείτε να ενημερώσετε σε v%1$s· χρησιμοποιήστε πρώτα τον «Έλεγχο ενημερώσεων»</string>
+    <string name="settings_version_title">Έκδοση</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Υποστήριξη μέσω Alipay</string>
+    <string name="settings_alipay_subtitle">Υποστηρίξτε την ανάπτυξη</string>
+    <string name="settings_coolapk_subtitle">Χρήστης του Coolapk · Ευχαριστούμε για την υποστήριξη</string>
+    <string name="settings_ai_credits_subtitle">Ευχαριστούμε τα AI IDE και τα μοντέλα AI για τη βοήθειά τους στην ανάπτυξη</string>
+    <string name="settings_github_title">Αποθετήριο GitHub</string>
+    <string name="settings_license_title">Άδεια ανοιχτού κώδικα</string>
+    <string name="settings_sponsor_dialog_title">Ευχαριστούμε για την υποστήριξη</string>
+    <string name="settings_sponsor_dialog_text">Σας ευχαριστώ πραγματικά που θέλετε να στηρίξετε αυτή την εφαρμογή!\n\nΑν είστε ακόμη μαθητής ή δεν έχετε οικονομική ανεξαρτησία, μην ξοδέψετε χρήματα—\nκρατήστε αυτή την πρόθεση στην καρδιά σας και συνεχίστε να τη χρησιμοποιείτε· αυτή είναι η καλύτερη υποστήριξη για μένα.\n\nΑν θέλετε να συνεισφέρετε, ακόμη και ένα μικρό ποσό μετράει· θα το επενδύσω σε καλύτερη συντήρηση και λειτουργίες:)</string>
+    <string name="settings_alipay_missing_title">Το Alipay δεν είναι εγκατεστημένο</string>
+    <string name="settings_alipay_missing_text">Δεν εντοπίστηκε το Alipay, οπότε η υποστήριξη δεν είναι δυνατή αυτή τη στιγμή.\n\nΔεν πειράζει—ευχαριστούμε πολύ για την καλή σας πρόθεση!</string>
+
+    <!-- Video transcoding -->
+    <string name="settings_transcoder_title">Ενσωματωμένος μετατροπέας</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Επανκωδικοποίηση</string>
+    <string name="settings_transcode_mode_remux">Μόνο επανασυσκευασία (προτείνεται)</string>
+    <string name="settings_transcode_mode_off">Χωρίς χρήση μετατροπέα</string>
+    <string name="settings_transcode_params_title">Παράμετροι κωδικοποίησης</string>
+    <string name="settings_transcode_params_subtitle">Παράμετροι ποιότητας και συμπίεσης για την επανκωδικοποίηση</string>
+    <string name="settings_transcode_params_disabled">Ισχύει μόνο όταν η «Λειτουργία κωδικοποίησης» είναι «Επανκωδικοποίηση»</string>
+    <string name="settings_crf_value">Ποιότητα CRF: %1$d</string>
+    <string name="settings_crf_hint">Όσο μικρότερη η τιμή, τόσο υψηλότερη η ποιότητα και μεγαλύτερο το μέγεθος (προεπιλογή 18)</string>
+    <string name="settings_encoder_title">Κωδικοποιητής</string>
+    <string name="settings_compress_preset_title">Προεπιλογή συμπίεσης</string>
+
+</resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · he strings — Hebrew (עברית, RTL)
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Hebrew. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">הגדרות</string>
+    <string name="settings_cd_back">חזרה</string>
+    <string name="settings_btn_apply">החל</string>
+    <string name="settings_btn_cancel">ביטול</string>
+    <string name="settings_btn_close">סגירה</string>
+    <string name="settings_btn_ok">אישור</string>
+    <string name="settings_btn_sponsor">תמיכה</string>
+    <string name="settings_section_general">כללי</string>
+    <string name="settings_section_appearance">מראה</string>
+    <string name="settings_section_language">שפה</string>
+    <string name="settings_section_defaults">ברירות מחדל</string>
+    <string name="settings_section_output">פלט</string>
+    <string name="settings_section_transcode">המרת וידאו</string>
+    <string name="settings_section_about">אודות</string>
+    <string name="settings_section_app">האפליקציה</string>
+    <string name="settings_section_credits">תודות ותמיכה</string>
+    <string name="settings_section_opensource">קוד פתוח ורישיון</string>
+    <string name="settings_startup_check_title">בדיקת עדכונים בעת ההפעלה</string>
+    <string name="settings_startup_check_subtitle">מביא אוטומטית גרסה חדשה מ-GitHub בעת ההפעלה, ומציע להוריד כשיש עדכון</string>
+    <string name="settings_haptics_title">משוב רטט</string>
+    <string name="settings_haptics_subtitle">משוב מגע בלחיצה על כפתורים ובשינוי מצב</string>
+    <string name="settings_bounce_title">אנימציית קפיצה לכפתורים</string>
+    <string name="settings_bounce_subtitle">אנימציית התכווצות וקפיצה בלחיצה על כפתור</string>
+    <string name="settings_theme_system">לפי המערכת</string>
+    <string name="settings_theme_dark">כהה</string>
+    <string name="settings_theme_light">בהיר</string>
+    <string name="settings_dynamic_theme_title">צבעים דינמיים של Material You</string>
+    <string name="settings_dynamic_theme_subtitle">לפי צבעי הרקע של המערכת (Android 12+); כשמכבים, משתמשים בצבעי הערכות המוכנות שלמטה</string>
+    <string name="settings_preset_colors_title">צבעי ערכה מוכנים</string>
+    <string name="settings_preset_current">נוכחי: %1$s</string>
+    <string name="settings_preset_disabled_hint">אפשר לבחור אחרי כיבוי «צבעים דינמיים של Material You»</string>
+    <string name="settings_custom">מותאם אישית</string>
+    <string name="settings_custom_color_title">צבע מותאם אישית</string>
+    <string name="settings_cd_custom_palette">לוח צבעים מותאם אישית</string>
+    <string name="settings_hue_value">גוון %1$d°</string>
+    <string name="settings_language_dialog_title">בחירת שפת האפליקציה</string>
+    <string name="settings_language_count">%1$d שפות</string>
+    <string name="settings_reminder_dialogs_title">חלונות «לא להציג שוב»</string>
+    <string name="settings_reminder_dialogs_subtitle">ניהול המתגים של כל חלונות «לא להציג שוב»</string>
+    <string name="settings_reminder_hint">מתג דלוק משמעו «לא להציג שוב»; כשמכבים, ההתראה תופיע שוב בפעם הבאה שהמצב יקרה.</string>
+    <string name="settings_preserve_folders_title">פלט לפי מבנה תיקיות המקור</string>
+    <string name="settings_preserve_folders_subtitle">תוצאות ההמרה נשמרות בתיקיות משנה לפי שם האלבום המקורי; כשמכבים, הכול נשמר באותה תיקייה</string>
+    <string name="settings_about_title">אודות</string>
+    <string name="settings_about_subtitle">גרסה · בדיקת עדכונים · תודות ותמיכה</string>
+    <string name="settings_check_update_title">בדיקת עדכונים</string>
+    <string name="settings_check_update_subtitle">להביא את הגרסה האחרונה מ-GitHub Releases</string>
+    <string name="settings_checking">בודק…</string>
+    <string name="settings_update_available">v%1$s זמין</string>
+    <string name="settings_up_to_date">יש לך את הגרסה האחרונה</string>
+    <string name="settings_network_error">שגיאת רשת, נסו שוב מאוחר יותר</string>
+    <string name="settings_reinstall_title">התקנה מחדש של גרסה זו</string>
+    <string name="settings_reinstall_subtitle">הורדת הגרסה האחרונה והתקנתה מעל הנוכחית (לבדיקת עדכון)</string>
+    <string name="settings_reinstall_newer_hint">אפשר לשדרג כעת ל-v%1$s; השתמשו ב«בדיקת עדכונים» כדי לשדרג קודם</string>
+    <string name="settings_version_title">גרסה</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">תמיכה ב-Alipay</string>
+    <string name="settings_alipay_subtitle">תמיכה בפיתוח</string>
+    <string name="settings_coolapk_subtitle">משתמש Coolapk · תודה על התמיכה</string>
+    <string name="settings_ai_credits_subtitle">תודה לסביבות הפיתוח ולמודלי הבינה המלאכותית שסייעו בפיתוח</string>
+    <string name="settings_github_title">מאגר GitHub בקוד פתוח</string>
+    <string name="settings_license_title">רישיון קוד פתוח</string>
+    <string name="settings_sponsor_dialog_title">תודה על התמיכה</string>
+    <string name="settings_sponsor_dialog_text">תודה רבה באמת על הרצון לתמוך באפליקציה הזו!\n\nאם אתם עדיין תלמידים או שעדיין אין לכם עצמאות כלכלית, בבקשה אל תוציאו כסף——\nשמרו את הכוונה הטובה בלב והמשיכו להשתמש; זו התמיכה הטובה ביותר מבחינתי.\n\nואם בכל זאת תרצו לתמוך, כל סכום הוא מחווה של אהבה, ואשקיע אותו בתחזוקה טובה יותר ובתכונות נוספות :)</string>
+    <string name="settings_alipay_missing_title">Alipay לא מותקן</string>
+    <string name="settings_alipay_missing_text">לא נמצא Alipay, ולכן אי אפשר להשלים את התמיכה כרגע.\n\nלא נורא——בכל מקרה, תודה רבה על הכוונה הטובה!</string>
+    <string name="settings_transcoder_title">ממיר מובנה</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">קידוד מחדש</string>
+    <string name="settings_transcode_mode_remux">אריזת מכל מחדש בלבד (מומלץ)</string>
+    <string name="settings_transcode_mode_off">בלי להשתמש בממיר כלל</string>
+    <string name="settings_transcode_params_title">פרמטרי המרה</string>
+    <string name="settings_transcode_params_subtitle">פרמטרי איכות ודחיסה בעת קידוד מחדש</string>
+    <string name="settings_transcode_params_disabled">פועל רק כשנבחר «קידוד מחדש» ב«שיטת המרה»</string>
+    <string name="settings_crf_value">איכות CRF: %1$d</string>
+    <string name="settings_crf_hint">ככל שהמספר קטן האיכות גבוהה יותר והנפח גדול יותר (ברירת מחדל 18)</string>
+    <string name="settings_encoder_title">מקודד</string>
+    <string name="settings_compress_preset_title">ערכת דחיסה מוכנה</string>
+</resources>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（藏语 bo，C 级：低资源语种，术语多为新造词，仅供理解），可能存在不准确之处，欢迎社区修正。
+     ཡིག་ཆ་འདི་དཔེ་རྒྱུད་ཨང་རྟགས་ཀྱིས་བསྒྱུར་བ་ཡིན། ཡང་དག་མིན་པ་ཡོད་སྲིད།
+     占位符 %1$s / %1$d / %2$d 原样保留；`\n` 为换行。
+     新造词：处理 → ལག་བསྟར；保留 → ཉར；导出 → ཕྱིར་འདྲེན；导入 → ནང་འདྲེན。 -->
+<resources>
+    <!-- ── 状态栏 / 提示 ── -->
+    <string name="main_status_ready">གྲ་སྒྲིག</string>
+    <string name="main_status_location_granted">གནས་ཀྱི་དབང་ཆ་ཐོབ་ཟིན། བསྒྱུར་རྗེས་ GPS གི་མེ་ཊ་ཌེ་ཊ་ཉར་ངེས</string>
+    <string name="main_status_location_denied">གནས་ཀྱི་དབང་ཆ་མ་སྤྲད། བསྒྱུར་རྗེས་ཀྱི་པར་ལ་ GPS གི་གནས་ཚུལ་ཤོར་ངེས</string>
+    <string name="main_status_all_files_granted">«ཡིག་ཆ་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་ཐོབ་ཟིན། བསྒྱུར་བ་ཐད་ཀར་པར་སྣོད་སྣོད་ཡིག་ཏུ་བྲིས་ཏེ་གནས་ཚུལ་ཚང་མ་ཉར་ངེས</string>
+    <string name="main_status_all_files_denied">«ཡིག་ཆ་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་མ་སྤྲད། ཁ་པར་འགའ་ཞིག་ལ་བསྒྱུར་རྗེས་གནས་ཚུལ་ཤོར་སྲིད</string>
+    <string name="main_status_read_granted">པར་དང་བརྙན་ཀློག་པའི་དབང་ཆ་ཐོབ་ཟིན</string>
+    <string name="main_status_video_missing">དབང་ཆ་སྤྲད་ཟིན་ཡང་བརྙན་གྱི་དབང་ཆ་མེད་པས། ཡིག་ཆ་གཉིས་ཀྱི་འགུལ་པར་གྱི་ལྷན་ཐབས་བརྙན་འཚོལ་མི་ཐུབ</string>
+    <string name="main_status_permission_denied">དབང་ཆ་མ་སྤྲད། «ཡིག་ཆ་བཀོད» ཡང་བསྐྱར་མནན་ཆོག</string>
+    <string name="main_status_folder_not_selected">སྣོད་ཡིག་མ་འདེམས</string>
+    <string name="main_status_folder_unavailable">འདེམས་པའི་སྣོད་ཡིག་ལ་འཛུལ་མི་ཐུབ (ས་གནས་ཀྱི་གསོག་ཆས་སྣོད་ཡིག་ཁོ་ན་རྒྱབ་སྐྱོར་བྱེད)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">སྔོན་མའི་ལས་ཚན་སླར་གསོ་བྱས (ཡིག་ཆ་ %1$d)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">ཐེངས་སྔོན་མར་ཕྱིར་ཐོན་མ་ཚང་བ་ཤེས་སོང་། མ་རྫོགས་པའི་ཐོ་ཡིག་སྟོང་པར་བཟོས</string>
+    <string name="main_status_compose_blocks_extract">རེས་རིམ་ནང་མཉམ་སྦྲེལ་གྱི་ལས་འགན་ཡོད་པས་ཁ་བཤེར་གྱི་ཐབས་ལ་བརྗེ་མི་ཆོག</string>
+    <string name="main_status_replace_off_mutex">བརྗེ་ལེན་ཐབས་ཁ་རྒྱག་ཟིན («ལག་བསྟར་རྫོགས་རྗེས་ཐོག་མའི་པར་བསུབ» དང་ཕན་ཚུན་འགལ)</string>
+    <string name="main_status_delete_needs_all_files">རང་འགུལ་གྱིས་ཐོག་མའི་པར་བསུབ་པར་ «ཡིག་ཆ་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་དགོས། སྔོན་ལ་དབང་ཆ་སྤྲོད</string>
+    <string name="main_status_replace_off">བརྗེ་ལེན་ཐབས་ཁ་རྒྱག་ཟིན། བསྒྱུར་བའི་གྲུབ་འབྲས་ཡང་བསྐྱར་པར་སྣོད་སྣོད་ཡིག་ཏུ་བྲིས</string>
+    <string name="main_status_replace_needs_all_files">བརྗེ་ལེན་ཐབས་ལ་ «ཡིག་ཆ་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་དགོས། སྔོན་ལ་དབང་ཆ་སྤྲོད</string>
+    <string name="main_status_delete_off_mutex">«ལག་བསྟར་རྫོགས་རྗེས་ཐོག་མའི་པར་བསུབ» ཁ་རྒྱག་ཟིན (བརྗེ་ལེན་ཐབས་དང་ཕན་ཚུན་འགལ)</string>
+    <string name="main_status_loading_albums">པར་སྣོད་ཀློག་བཞིན་ཡོད…</string>
+    <string name="main_status_no_albums">པར་སྣོད་མ་རྙེད</string>
+    <string name="main_status_compose_no_photo">པར་མ་འདེམས་པས་མཉམ་སྦྲེལ་བྱེད་མི་ཐུབ</string>
+    <string name="main_status_compose_no_video">བརྙན་མ་འདེམས་པས་མཉམ་སྦྲེལ་བྱེད་མི་ཐུབ</string>
+    <string name="main_status_compose_all_added">འདེམས་པའི་པར་ཚང་མ་ཐོ་ཡིག་ནང་ཡོད་ཟིན</string>
+    <string name="main_status_compose_paired">པར་ %1$d དང་བརྙན་ %2$d ཡོད་པས། ཉུང་བའི་ཕྱོགས་ལྟར་མཉམ་སྦྲེལ་གྱི་ལས་འགན་ %3$d ཟུང་བཀོད་ཟིན</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">མཉམ་སྦྲེལ་གྱི་ལས་འགན་ %1$d བཀོད་ཟིན། «བསྒྱུར་བ་འགོ་འཛུགས» མནན་ནས་མཉམ་སྦྲེལ་ལག་བསྟར་བྱོས</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (ཕྱིར་བཏོན་གྱི་རྣམ་གཞི་རང་འགུལ་ངང་ Google ལ་བརྗེས)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">བརྗེ་སྤེལ་བྱས་པའི་པར་ %1$d ནང་འདྲེན་བྱེད་བཞིན་ཡོད…</item>
+    </plurals>
+    <string name="main_status_import_failed">ནང་འདྲེན་མ་གྲུབ: %1$s</string>
+    <string name="main_status_import_done_partial">ནང་འདྲེན་རྫོགས: གྲུབ་ %1$d ། མ་གྲུབ་ %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">ནང་འདྲེན་རྫོགས: ཡིག་ཆ་ %1$d ནང་འདྲེན་བྱས</item>
+    </plurals>
+    <string name="main_status_import_stopped">ནང་འདྲེན་མཚམས་བཅད་ཟིན: གྲུབ་ %1$d ། མ་གྲུབ་ %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">ཡིག་ཆ་ %1$d ནང་འདྲེན་བྱེད་བཞིན་ཡོད…</item>
+    </plurals>
+    <string name="main_status_importing_progress">ནང་འདྲེན་བྱེད་བཞིན་ཡོད %1$d/%2$d…</string>
+    <string name="main_status_stopping">མཚམས་འཇོག་བྱེད་བཞིན་ཡོད… (ད་ལྟའི་ཡིག་ཆ་རྫོགས་རྗེས་མཚམས་འཇོག)</string>
+    <string name="main_status_stopping_import">ནང་འདྲེན་མཚམས་འཇོག་བྱེད་བཞིན་ཡོད…</string>
+    <string name="main_status_removed">%1$s བསུབ་ཟིན</string>
+    <string name="main_status_cleared">སྟོང་པར་བཟོས་ཟིན</string>
+    <string name="main_status_nothing_to_convert">བསྒྱུར་ཆོག་པའི་ཡིག་ཆ་མེད</string>
+    <string name="main_status_folder_unreadable">འདེམས་པའི་སྣོད་ཡིག་ཀློག་མི་ཐུབ</string>
+    <string name="main_status_scanning_folder">སྣོད་ཡིག་བཤེར་ཞིབ་བྱེད་བཞིན་ཡོད…</string>
+    <string name="main_status_no_images">འདེམས་པའི་སྣོད་ཡིག་ནང་པར་མ་རྙེད</string>
+    <string name="main_status_batch_importing">ཚོགས་ནང་འདྲེན་བྱེད་བཞིན་ཡོད %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">ཚོགས་ནང་འདྲེན་མཚམས་བཅད་ཟིན: འགུལ་པར་ %1$d ནང་འདྲེན་བྱས</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">ཚོགས་ནང་འདྲེན་མཚམས་བཅད་ཟིན: འགུལ་པར་ %1$d ནང་འདྲེན་བྱས། འགུལ་པར་མིན་པའི་ཡིག་ཆ་ %2$d མཆོང་བ</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">ཚོགས་ནང་འདྲེན་རྫོགས: འགུལ་པར་ %1$d ནང་འདྲེན་བྱས</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">ཚོགས་ནང་འདྲེན་རྫོགས: འགུལ་པར་ %1$d ནང་འདྲེན་བྱས། འགུལ་པར་མིན་པའི་ཡིག་ཆ་ %2$d མཆོང་བ</item>
+    </plurals>
+    <string name="main_status_stopped_replace">མཚམས་བཅད་ཟིན: ཡིག་ཆ་ %1$d ནང་ %2$d ལག་བསྟར་བྱས། ཐོག་མའི་ཡིག་ཆ་ %3$d བརྗེས</string>
+    <string name="main_status_stopped_export">མཚམས་བཅད་ཟིན: ཡིག་ཆ་ %1$d ནང་ %2$d ལག་བསྟར་བྱས། %3$d པར་སྣོད་ལ་ཕྱིར་འདྲེན་བྱས</string>
+    <string name="main_status_done_replace_reason">རྫོགས་སོང: ཡིག་ཆ་ %1$d ལག་བསྟར་རྫོགས། ཐོག་མའི་ཡིག་ཆ་ %2$d བརྗེས (རྒྱུ་མཚན: %3$s)</string>
+    <string name="main_status_done_export_reason">རྫོགས་སོང: ཡིག་ཆ་ %1$d ལག་བསྟར་རྫོགས། %2$d པར་སྣོད་ལ་ཕྱིར་འདྲེན་བྱས (རྒྱུ་མཚན: %3$s)</string>
+    <string name="main_status_done_replace">རྫོགས་སོང: ཡིག་ཆ་ %1$d ལག་བསྟར་རྫོགས། ཐོག་མའི་ཡིག་ཆ་ %2$d བརྗེས</string>
+    <string name="main_status_done_export">རྫོགས་སོང: ཡིག་ཆ་ %1$d ལག་བསྟར་རྫོགས། %2$d པར་སྣོད་ལ་ཕྱིར་འདྲེན་བྱས</string>
+    <string name="main_status_keep_originals">%1$s; «གསོག་ཆས་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་མ་ཐོབ་པས་ཐོག་མའི་པར་ཉར་ཟིན</string>
+
+    <!-- ── 列表项信息 ── -->
+    <string name="main_info_detecting">ངོས་འཛིན་བྱེད་བཞིན་ཡོད…</string>
+    <string name="main_info_unrecognized">ངོས་འཛིན་མ་ཐུབ་པའི་འགུལ་པར་གྱི་རྣམ་གཞི</string>
+    <string name="main_info_converting">བསྒྱུར་བྱེད་བཞིན་ཡོད…</string>
+    <string name="main_info_compose_task">མཉམ་སྦྲེལ་གྱི་ལས་འགན (བསྒྱུར་བ་འགོ་འཛུགས་མནན་ནས་མཉམ་སྦྲེལ་ལག་བསྟར་བྱོས)</string>
+    <string name="main_info_done_replaced">རྫོགས་སོང (ཐོག་མའི་ཡིག་ཆ་ %1$d བརྗེས)</string>
+    <string name="main_info_done_skipped">རྫོགས་སོང (མཆོང་བ: མིང་འདྲ་བ)</string>
+    <string name="main_info_done_exported">རྫོགས་སོང (%1$d ཕྱིར་འདྲེན་བྱས)</string>
+    <string name="main_info_failed">མ་གྲུབ: %1$s</string>
+
+    <!-- ── 进度明细 ── -->
+    <string name="main_progress_added">%1$d/%2$d བཀོད་ཟིན</string>
+    <string name="main_progress_processed">%1$d/%2$d ལག་བསྟར་བྱས</string>
+    <string name="main_progress_imported">%1$d/%2$d ནང་འདྲེན་བྱས</string>
+
+    <!-- ── 权限对话框 ── -->
+    <string name="main_dialog_permission_title">པར་དང་བརྙན་ཀློག་པའི་དབང་ཆ་དགོས</string>
+    <string name="main_dialog_permission_message">ལས་རིམ་འདིར་ཁྱེད་ཀྱི་ཐབས་ཆས་ཀྱི་པར་དང་བརྙན་ཀློག་དགོས:\n\n• པར་གྱི་དབང་ཆ: ཐབས་ཆས་ཀྱི་པར་སྣོད་བཤེར་ཞིབ་བྱས་ཏེ་ནང་གི་འགུལ་པར་ངོས་འཛིན\n• བརྙན་གྱི་དབང་ཆ: ཡིག་ཆ་གཉིས་ཀྱི་འགུལ་པར་གྱི་ལྷན་ཐབས་བརྙན་འཚོལ\n• གནས་ཀྱི་དབང་ཆ: པར་ནང་གི་ GPS གནས་ཚུལ་ཉར (མེད་ན་བསྒྱུར་རྗེས་གནས་ཤོར)\n\nཁས་མི་ལེན་ན་ནང་སྦྲགས་ཀྱི་འདེམས་སྒྲིག་བེད་སྤྱོད་མི་ཐུབ། རྗེས་སུ་ «ཡིག་ཆ་བཀོད» ཡང་བསྐྱར་མནན་ནས་དབང་ཆ་སྤྲོད་ཆོག</string>
+    <string name="main_dialog_settings_title">པར་དང་བརྙན་གྱི་དབང་ཆ་ལག་ཐོག་ནས་སྤྲོད་དགོས</string>
+    <string name="main_dialog_settings_message">ཁྱེད་ཀྱིས་སྔོན་ཆད་ «ཡང་བསྐྱར་མི་དྲི» འདེམས་པས་མ་ལག་གིས་དབང་ཆའི་སྒྲོམ་ཁ་མི་ཕྱེ་ཡོང་།\n\nམཉེན་ཆས་ཀྱི་ཞིབ་ཕྲའི་ཤོག་ངོས → དབང་ཆ → པར་དང་བརྙན་དུ་སོང་ནས་དབང་ཆ་ལག་ཐོག་ནས་སྤྲད་རྗེས་མཉེན་ཆས་འདིར་ལོག\n\nདོ་སྣང་: «པར» དང་ «བརྙན» གཉིས་ཀར་དབང་ཆ་སྤྲོད་དགོས། དེ་མིན་ཡིག་ཆ་གཉིས་ཀྱི་འགུལ་པར་གྱི་ལྷན་ཐབས་བརྙན་འཚོལ་མི་ཐུབ</string>
+
+    <!-- ── 「所有文件访问」权限说明对话框 ── -->
+    <string name="main_dialog_allfiles_title_delete">རང་འགུལ་གྱིས་ཐོག་མའི་པར་བསུབ་པར་ «ཡིག་ཆ་ཚང་མར་འཛུལ་བ» དགོས</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">ཐབས་ཆས་འདིར་རང་འགུལ་གྱིས་ཐོག་མའི་པར་བསུབ་མི་རྒྱབ་སྐྱོར</string>
+    <string name="main_dialog_allfiles_title_replace">བརྗེ་ལེན་ཐབས་ལ་ «ཡིག་ཆ་ཚང་མར་འཛུལ་བ» དགོས</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">ཐབས་ཆས་འདིར་བརྗེ་ལེན་ཐབས་མི་རྒྱབ་སྐྱོར</string>
+    <string name="main_dialog_allfiles_title_location">«ཡིག་ཆ་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་སྤྲོད་པར་འོས་སྦྱོར</string>
+    <string name="main_dialog_allfiles_delete_message">«ལག་བསྟར་རྫོགས་རྗེས་ཐོག་མའི་པར་བསུབ» ཀྱིས་གསོག་ཆས་ནང་གི་ཐོག་མའི་ཡིག་ཆ་ (པར་དང་དེའི་ལྷན་ཐབས་བརྙན) ཐད་ཀར་བསུབ་པས་ཕྱིར་ལོག་མི་ཐུབ། དེས་ན་སྔོན་ལ་ «ཡིག་ཆ་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་སྤྲོད་དགོས།\n\nདབང་ཆ་སྤྲད་རྗེས་སྒོ་སྒྲིག་བེད་སྤྱོད་ཆོག་པར་འགྱུར་བས་དེ་སྐབས་རང་ཉིད་ཀྱིས་ཁ་ཕྱེ་ཆོག</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">མ་ལག་ད་ལྟ་པ་ (Android 10 དང་དེ་མན) ཡིས་ «ཡིག་ཆ་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་མི་སྤྲོད་པས་གསོག་ཆས་ནང་གི་ཐོག་མའི་ཡིག་ཆ་ཐད་ཀར་བསུབ་མི་ཐུབ། དེས་ན་ཐབས་ཆས་འདིར་ «ལག་བསྟར་རྫོགས་རྗེས་ཐོག་མའི་པར་བསུབ» མི་རྒྱབ་སྐྱོར།\n\nབསྒྱུར་རྗེས་མ་ལག་གི་པར་སྣོད་ནས་ཐོག་མའི་པར་ལག་ཐོག་ནས་གཙང་སྦྲ་བྱོས</string>
+    <string name="main_dialog_allfiles_replace_message">«བརྗེ་ལེན་ཐབས» ཀྱིས་བསྒྱུར་བའི་གྲུབ་འབྲས་ཐད་ཀར་གསོག་ཆས་ཀྱི་ཐོག་མའི་ཡིག་ཆར་ (ནང་དོན་བཀབ་ནས) བྲིས་པས་ཕྱིར་ལོག་མི་ཐུབ། དེས་ན་སྔོན་ལ་ «ཡིག་ཆ་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་སྤྲོད་དགོས།\n\nདབང་ཆ་སྤྲད་རྗེས་སྒོ་སྒྲིག་བེད་སྤྱོད་ཆོག་པར་འགྱུར་བས་དེ་སྐབས་རང་ཉིད་ཀྱིས་ཁ་ཕྱེ་ཆོག</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">མ་ལག་ད་ལྟ་པ་ (Android 10 དང་དེ་མན) ཡིས་ «ཡིག་ཆ་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་མི་སྤྲོད་པས་གསོག་ཆས་ནང་གི་ཐོག་མའི་ཡིག་ཆ་ཐད་ཀར་བསྒྱུར་མི་ཐུབ། དེས་ན་ཐབས་ཆས་འདིར་ «བརྗེ་ལེན་ཐབས» མི་རྒྱབ་སྐྱོར།\n\nསྔོན་སྒྲིག་གི་ཐབས་ལ་མུ་མཐུད་བསྒྱུར་ཆོག གྲུབ་འབྲས་པར་སྣོད་སྣོད་ཡིག་ཏུ་ཕྱིར་བཏོན་བྱེད</string>
+    <string name="main_dialog_allfiles_location_message">ཁ་པར་འགའ་ཞིག་ (Meizu ལ་སོགས) གིས་མ་ལག་གི་པར་སྣོད་ལམ་ནས་བྲིས་ན་ GPS གནས་ཚུལ་སྦས་ཏེ་བསྒྱུར་རྗེས་ཀྱི་པར་ལ་གནས་ཤོར་ཡོང་།\n\n«ཡིག་ཆ་ཚང་མར་འཛུལ་བ» སྤྲད་ན་ལས་རིམ་འདིས་ཐད་ཀར་པར་སྣོད་སྣོད་ཡིག་ཏུ་བྲིས་ཏེ་གནས་ཀྱི་མེ་ཊ་ཌེ་ཊ་ཚང་མ་ཉར་ངེས།\n\nམ་སྤྲད་ཀྱང་བསྒྱུར་ཆོག ཁ་པར་འགའ་ཞིག་ལ་གནས་ཚུལ་ཤོར་སྲིད</string>
+
+    <!-- ── 输出文件名冲突对话框 ── -->
+    <string name="main_dialog_conflict_title">ཕྱིར་བཏོན་ཡིག་ཆའི་མིང་འགལ་བ</string>
+    <string name="main_dialog_conflict_message">ཕྱིར་བཏོན་སྣོད་ཡིག་ནང་མིང་འདྲ་བའི་ཡིག་ཆ་ཡོད་ཟིན:\n%1$s\n\nལག་བསྟར་ཐབས་ཤིག་འདེམས</string>
+    <string name="main_label_conflict_always">ཕྱི་མའི་འགལ་བར་ལག་བསྟར་ཐབས་འདི་བེད་སྤྱོད་བྱོས</string>
+
+    <!-- ── 对话框按钮 ── -->
+    <string name="main_btn_grant">དབང་ཆ་སྤྲོད</string>
+    <string name="main_btn_deny">ཁས་མི་ལེན</string>
+    <string name="main_btn_go_settings">སྒྲིག་བཀོད་ལ་སོང</string>
+    <string name="main_btn_cancel">རྩིས་མེད</string>
+    <string name="main_btn_grant_access">དབང་ཆ་སྤྲོད་པར་སོང</string>
+    <string name="main_btn_got_it">ཤེས་སོང</string>
+    <string name="main_btn_not_now">ད་ལྟ་མི</string>
+    <string name="main_btn_skip">མཆོང་བ</string>
+    <string name="main_btn_overwrite">བཀབ་བརྗེ</string>
+    <string name="main_btn_auto_rename">རང་འགུལ་མིང་བསྒྱུར</string>
+
+    <!-- ── 转换结果 / 导出失败原因 ── -->
+    <plurals name="main_delete_done">
+        <item quantity="other">ཐོག་མའི་ཡིག་ཆ་ %1$d བསུབ་ཟིན</item>
+    </plurals>
+    <string name="main_delete_nothing">ཐོག་མའི་པར་བསུབ་མི་དགོས</string>
+    <string name="main_delete_partial">ཐོག་མའི་ཡིག་ཆ་ %1$d བསུབ་ཟིན (%2$d བསུབ་མ་ཐུབ་པས་ཉར་ཟིན)</string>
+    <string name="main_delete_failed">ཐོག་མའི་པར་བསུབ་མ་ཐུབ (ཡིག་ཆ་བཀོལ་བཞིན་པའམ་བྲིས་པའི་དབང་ཆ་མེད) ཉར་ཟིན</string>
+    <string name="main_export_missing_output">བསྒྱུར་བའི་གྲུབ་འབྲས་མེད་པའམ་སྟོང་པ: %1$s</string>
+    <string name="main_export_missing_output_bare">བསྒྱུར་བའི་གྲུབ་འབྲས་མེད་པའམ་སྟོང་པ</string>
+    <string name="main_export_insert_null">MediaStore insert གིས་ null ཕྱིར་ལོག་བྱས</string>
+    <string name="main_export_output_stream">MediaStore ཀྱི་ཕྱིར་བཏོན་རྒྱུན་ལག་ལེན་མི་ཐུབ</string>
+    <string name="main_export_write_failed">MediaStore བྲིས་པ་མ་གྲུབ: %1$s</string>
+    <string name="main_export_mkdir_failed">པར་སྣོད་སྣོད་ཡིག་ %1$s བཟོ་མི་ཐུབ</string>
+    <string name="main_export_dir_write_failed">པར་སྣོད་སྣོད་ཡིག་ལ་བྲིས་པ་མ་གྲུབ: %1$s</string>
+    <string name="main_export_no_source">ཁུངས་ཡིག་ཆ་རྙེད་མ་ཐུབ་པས་བརྗེ་ལེན་མཆོང་བ</string>
+    <string name="main_export_companion_failed">ལྷན་ཐབས་ཡིག་ཆ་ཕྱིར་བྲིས་པ་མ་གྲུབ: %1$s</string>
+    <string name="main_export_source_dir_unwritable">ཁུངས་ཡིག་ཆའི་སྣོད་ཡིག་ལ་བྲིས་མི་ཐུབ་པས་ལྷན་ཐབས་ཡིག་ཆ་ཕྱིར་བྲིས་མ་ཐུབ</string>
+    <string name="main_export_source_dir_unavailable">ཁུངས་ཡིག་ཆའི་སྣོད་ཡིག་ལག་ལེན་མི་ཐུབ: %1$s</string>
+    <string name="main_export_replace_failed">ཁུངས་ཡིག་ཆ་བརྗེ་བ་མ་གྲུབ: %1$s</string>
+    <string name="main_export_replace_failed_bare">ཁུངས་ཡིག་ཆ་བརྗེ་བ་མ་གྲུབ</string>
+</resources>

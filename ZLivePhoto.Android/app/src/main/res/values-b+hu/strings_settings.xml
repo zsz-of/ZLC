@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Hungarian (hu) strings — settings screen.
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- Általános -->
+    <string name="settings_title">Beállítások</string>
+    <string name="settings_cd_back">Vissza</string>
+    <string name="settings_btn_apply">Alkalmaz</string>
+    <string name="settings_btn_cancel">Mégse</string>
+    <string name="settings_btn_close">Bezárás</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Támogatás</string>
+
+    <!-- Szakaszcímek -->
+    <string name="settings_section_general">Általános</string>
+    <string name="settings_section_appearance">Megjelenés</string>
+    <string name="settings_section_language">Nyelv</string>
+    <string name="settings_section_defaults">Alapértelmezések</string>
+    <string name="settings_section_output">Kimenet</string>
+    <string name="settings_section_transcode">Videó átkódolása</string>
+    <string name="settings_section_about">Névjegy</string>
+    <string name="settings_section_app">Alkalmazás</string>
+    <string name="settings_section_credits">Köszönet és támogatás</string>
+    <string name="settings_section_opensource">Nyílt forráskód és licenc</string>
+
+    <!-- Általános -->
+    <string name="settings_startup_check_title">Frissítés keresése indításkor</string>
+    <string name="settings_startup_check_subtitle">Indításkor automatikusan letölti az új verziót a GitHubról, és értesít, ha van frissítés</string>
+    <string name="settings_haptics_title">Rezgéses visszajelzés</string>
+    <string name="settings_haptics_subtitle">Haptikus visszajelzés gombnyomáskor és állapotváltozáskor</string>
+    <string name="settings_bounce_title">Rugalmas gombanimáció</string>
+    <string name="settings_bounce_subtitle">Kicsinyítő és visszaugró animáció gomb megnyomásakor</string>
+
+    <!-- Megjelenés -->
+    <string name="settings_theme_system">Rendszer</string>
+    <string name="settings_theme_dark">Sötét</string>
+    <string name="settings_theme_light">Világos</string>
+    <string name="settings_dynamic_theme_title">Material You dinamikus színek</string>
+    <string name="settings_dynamic_theme_subtitle">A rendszer háttérképének színeit követi (Android 12+); kikapcsolva az alábbi előre beállított színek érvényesek</string>
+    <string name="settings_preset_colors_title">Előre beállított témaszínek</string>
+    <string name="settings_preset_current">Jelenlegi: %1$s</string>
+    <string name="settings_preset_disabled_hint">A „Material You dinamikus színek” kikapcsolása után választható</string>
+    <string name="settings_custom">Egyéni</string>
+    <string name="settings_custom_color_title">Egyéni témaszín</string>
+    <string name="settings_cd_custom_palette">Egyéni paletta</string>
+    <string name="settings_hue_value">Árnyalat %1$d°</string>
+
+    <!-- Alkalmazás nyelve -->
+    <string name="settings_language_dialog_title">Alkalmazás nyelvének kiválasztása</string>
+    <string name="settings_language_count">%1$d nyelv érhető el</string>
+
+    <!-- Alapértelmezések -->
+    <string name="settings_reminder_dialogs_title">Ne jelenjenek meg újra a párbeszédablakok</string>
+    <string name="settings_reminder_dialogs_subtitle">Az összes „Ne kérdezze újra” párbeszédablak kezelése</string>
+    <string name="settings_reminder_hint">A bekapcsolt állapot azt jelenti, hogy „ne jelenjen meg újra”; kikapcsolva a következő alkalommal ismét megjelenik a párbeszédablak.</string>
+
+    <!-- Kimenet -->
+    <string name="settings_preserve_folders_title">Kimenet a forrásmappa szerkezetében</string>
+    <string name="settings_preserve_folders_subtitle">Az eredmények albumonkénti almappákba kerülnek; kikapcsolva minden egyetlen mappába kerül</string>
+
+    <!-- Névjegy -->
+    <string name="settings_about_title">Névjegy</string>
+    <string name="settings_about_subtitle">Verzió · Frissítés keresése · Köszönet</string>
+    <string name="settings_check_update_title">Frissítés keresése</string>
+    <string name="settings_check_update_subtitle">A legújabb verzió letöltése a GitHub Releases oldalról</string>
+    <string name="settings_checking">Ellenőrzés…</string>
+    <string name="settings_update_available">v%1$s elérhető</string>
+    <string name="settings_up_to_date">A legfrissebb verzióval rendelkezik</string>
+    <string name="settings_network_error">Hálózati hiba, próbálja újra később</string>
+    <string name="settings_reinstall_title">A verzió újratelepítése</string>
+    <string name="settings_reinstall_subtitle">Az aktuális legújabb verzió letöltése és felültelepítése (frissítés teszteléséhez)</string>
+    <string name="settings_reinstall_newer_hint">Frissíthet a v%1$s verzióra, először használja a „Frissítés keresése” lehetőséget</string>
+    <string name="settings_version_title">Verzió</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Támogatás Alipay-jel</string>
+    <string name="settings_alipay_subtitle">Támogassa a fejlesztést</string>
+    <string name="settings_coolapk_subtitle">Coolapk-felhasználó · Köszönjük a támogatást</string>
+    <string name="settings_ai_credits_subtitle">Köszönjük az AI IDE-ek és AI-modellek segítségét a fejlesztésben</string>
+    <string name="settings_github_title">GitHub nyílt forráskódú tároló</string>
+    <string name="settings_license_title">Nyílt forráskódú licenc</string>
+    <string name="settings_sponsor_dialog_title">Köszönjük a támogatást</string>
+    <string name="settings_sponsor_dialog_text">Nagyon köszönöm, hogy támogatni szeretné ezt az alkalmazást!\n\nHa Ön még diák, vagy anyagilag nem független, kérjük, ne költsön pénzt—\nőrizze meg ezt a szándékot a szívében, és használja tovább; ez a legjobb támogatás számomra.\n\nHa mégis szeretne hozzájárulni, egy kis összeg is számít; jobb karbantartásra és funkciókra fordítom:)</string>
+    <string name="settings_alipay_missing_title">Az Alipay nincs telepítve</string>
+    <string name="settings_alipay_missing_text">Nem található az Alipay, ezért a támogatás jelenleg nem lehetséges.\n\nNem baj—mindenesetre nagyon köszönjük a jószándékát!</string>
+
+    <!-- Videó átkódolása -->
+    <string name="settings_transcoder_title">Beépített átkódoló</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Újrakódolás</string>
+    <string name="settings_transcode_mode_remux">Csak a konténer újracsomagolása (ajánlott)</string>
+    <string name="settings_transcode_mode_off">Az átkódoló teljes kihagyása</string>
+    <string name="settings_transcode_params_title">Átkódolási paraméterek</string>
+    <string name="settings_transcode_params_subtitle">Újrakódoláskor használt minőségi és tömörítési paraméterek</string>
+    <string name="settings_transcode_params_disabled">Csak akkor érvényes, ha az „Átkódolási mód” értéke „Újrakódolás”</string>
+    <string name="settings_crf_value">Minőség CRF: %1$d</string>
+    <string name="settings_crf_hint">Minél kisebb az érték, annál jobb a minőség és nagyobb a fájlméret (alapértelmezés: 18)</string>
+    <string name="settings_encoder_title">Kódoló</string>
+    <string name="settings_compress_preset_title">Tömörítési előbeállítás</string>
+
+</resources>

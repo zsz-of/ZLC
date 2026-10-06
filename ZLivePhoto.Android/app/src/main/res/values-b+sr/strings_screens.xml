@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Српски (sr) — главни екран / бирач албума (кључеви screen_*).
+  Извор: res/values/strings_screens.xml (поједностављени кинески).
+  Ознаке задржавају нумерацију %1$s / %1$d и могу се прераспоредити.
+  Множина: једнина / мало (2–4) / остало.
+-->
+<resources>
+    <string name="screen_app_subtitle">Конвертовање између формата Live Photo</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d датотека</item>
+        <item quantity="few">%1$d датотеке</item>
+        <item quantity="other">%1$d датотека</item>
+    </plurals>
+    <string name="screen_settings">Подешавања</string>
+
+    <string name="screen_select_output_format">Избор излазног формата</string>
+    <string name="screen_selected">Изабрано</string>
+    <string name="screen_vivo_single_warning">⚠ Старији уређаји можда неће препознати овај формат</string>
+    <string name="screen_extract_blocked">⚠ Ред садржи задатке састављања — издвајање се не може изабрати</string>
+
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (једна датотека)</string>
+    <string name="screen_format_vivo">vivo (две датотеке)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Издвајање</string>
+
+    <string name="screen_toolbox">Алатке</string>
+    <string name="screen_batch_import">Групни увоз</string>
+    <string name="screen_batch_import_desc">Скенира целу галерију и препознаје Live Photo у групама</string>
+    <string name="screen_compose">Састави Live Photo</string>
+    <string name="screen_compose_desc">Изаберите фотографију и видео и спојите их у Live Photo</string>
+    <string name="screen_replace_mode">Режим замене</string>
+    <string name="screen_replace_mode_desc">Резултат се уписује директно у изворну датотеку, без прављења нове</string>
+    <string name="screen_need_all_files_access_hint">Потребна је дозвола „Приступ свим датотекама“ — додирните да је доделите</string>
+    <string name="screen_agree_and_enable">Прихвати и укључи</string>
+
+    <string name="screen_empty_no_files">Још нема додатих датотека</string>
+    <string name="screen_view_detail">Прикажи детаље</string>
+    <string name="screen_add_files">Додај датотеке</string>
+    <string name="screen_output_format">Излазни формат: %1$s</string>
+    <string name="screen_delete_original">Обриши оригинале након обраде</string>
+    <string name="screen_need_all_files_access_view">Потребна је дозвола „Приступ свим датотекама“ — додирните да видите</string>
+    <string name="screen_clear">Очисти</string>
+    <string name="screen_stop">Заустави обраду</string>
+    <string name="screen_start_convert">Почни конвертовање</string>
+
+    <string name="screen_status_detail">Детаљи стања</string>
+    <string name="screen_long_press_copy">Дуго притисните текст да га изаберете и копирате</string>
+    <string name="screen_copy">Копирај</string>
+    <string name="screen_close">Затвори</string>
+
+    <string name="screen_back">Назад</string>
+    <string name="screen_picker_title_select">Изабери Live Photo</string>
+    <string name="screen_album_count">Албум %1$d</string>
+    <string name="screen_album_collapse_cover">Скупи насловницу албума</string>
+    <string name="screen_album_expand_cover">Прошири насловницу албума</string>
+    <string name="screen_scanning_progress">Скенирање %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d фотографија</item>
+        <item quantity="few">%1$d фотографије</item>
+        <item quantity="other">%1$d фотографија</item>
+    </plurals>
+    <string name="screen_select_all">Изабери све</string>
+    <string name="screen_no_albums">Нема доступних албума</string>
+    <string name="screen_no_media">Нису пронађени Live Photo снимци</string>
+    <string name="screen_no_media_compose">Нису пронађене фотографије или видеа</string>
+    <string name="screen_import">Увези</string>
+    <string name="screen_import_count">Увези %1$d</string>
+    <string name="screen_import_mixed">Увези слика %1$d · видеа %2$d</string>
+    <string name="screen_search">Претрага</string>
+    <string name="screen_search_collapse">Затвори претрагу</string>
+    <string name="screen_search_hint">Претрага по имену</string>
+    <string name="screen_search_clear">Очисти претрагу</string>
+    <string name="screen_sort_date">Датум</string>
+    <string name="screen_sort_size">Величина</string>
+    <string name="screen_sort_name">Име</string>
+    <string name="screen_sort_asc">Растуће</string>
+    <string name="screen_sort_desc">Опадајуће</string>
+
+    <string name="screen_date_today">Данас</string>
+    <string name="screen_date_yesterday">Јуче</string>
+    <string name="screen_date_this_year">%2$d.%1$d.</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d.</string>
+</resources>

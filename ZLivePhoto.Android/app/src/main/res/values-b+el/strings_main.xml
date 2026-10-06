@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Greek (el) strings — main screen and background flows.
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <!-- ── Status bar / toasts ── -->
+    <string name="main_status_ready">Έτοιμο</string>
+    <string name="main_status_location_granted">Δόθηκε άδεια τοποθεσίας· τα μεταδεδομένα GPS θα διατηρηθούν μετά τη μετατροπή</string>
+    <string name="main_status_location_denied">Δεν δόθηκε άδεια τοποθεσίας: οι φωτογραφίες θα χάσουν τις πληροφορίες θέσης GPS μετά τη μετατροπή</string>
+    <string name="main_status_all_files_granted">Δόθηκε άδεια «Πρόσβαση σε όλα τα αρχεία»· η μετατροπή γράφει απευθείας στον φάκελο του άλμπουμ και διατηρεί πλήρως τις πληροφορίες θέσης</string>
+    <string name="main_status_all_files_denied">Δεν δόθηκε άδεια «Πρόσβαση σε όλα τα αρχεία»: σε ορισμένες συσκευές οι φωτογραφίες μπορεί να χάσουν τις πληροφορίες θέσης μετά τη μετατροπή</string>
+    <string name="main_status_read_granted">Δόθηκε άδεια ανάγνωσης φωτογραφιών και βίντεο</string>
+    <string name="main_status_video_missing">Δόθηκε άδεια, αλλά λείπει η άδεια βίντεο: δεν είναι δυνατή η εύρεση του συνοδευτικού βίντεο των Live Photo δύο αρχείων</string>
+    <string name="main_status_permission_denied">Δεν δόθηκε άδεια· μπορείτε να πατήσετε ξανά «Προσθήκη αρχείων»</string>
+    <string name="main_status_folder_not_selected">Δεν επιλέχθηκε φάκελος</string>
+    <string name="main_status_folder_unavailable">Ο επιλεγμένος φάκελος δεν είναι προσβάσιμος (υποστηρίζονται μόνο τοπικοί φάκελοι αποθήκευσης)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Έγινε επαναφορά της προηγούμενης συνεδρίας (%1$d αρχείο)</item>
+        <item quantity="other">Έγινε επαναφορά της προηγούμενης συνεδρίας (%1$d αρχεία)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Εντοπίστηκε μη φυσιολογική έξοδος την προηγούμενη φορά· η ημιτελής λίστα διαγράφηκε</string>
+    <string name="main_status_compose_blocks_extract">Η ουρά περιέχει εργασίες σύνθεσης· δεν είναι δυνατή η εναλλαγή σε λειτουργία εξαγωγής</string>
+    <string name="main_status_replace_off_mutex">Η λειτουργία αντικατάστασης απενεργοποιήθηκε (είναι αμοιβαία αποκλειόμενη με τη «Διαγραφή των αρχικών μετά την επεξεργασία»)</string>
+    <string name="main_status_delete_needs_all_files">Η αυτόματη διαγραφή των αρχικών απαιτεί άδεια «Πρόσβαση σε όλα τα αρχεία»· δώστε πρώτα την άδεια</string>
+    <string name="main_status_replace_off">Η λειτουργία αντικατάστασης απενεργοποιήθηκε· τα αποτελέσματα γράφονται ξανά στον φάκελο του άλμπουμ</string>
+    <string name="main_status_replace_needs_all_files">Η λειτουργία αντικατάστασης απαιτεί άδεια «Πρόσβαση σε όλα τα αρχεία»· δώστε πρώτα την άδεια</string>
+    <string name="main_status_delete_off_mutex">Η «Διαγραφή των αρχικών μετά την επεξεργασία» απενεργοποιήθηκε (είναι αμοιβαία αποκλειόμενη με τη λειτουργία αντικατάστασης)</string>
+    <string name="main_status_loading_albums">Φόρτωση άλμπουμ…</string>
+    <string name="main_status_no_albums">Δεν βρέθηκαν άλμπουμ</string>
+    <string name="main_status_compose_no_photo">Δεν επιλέχθηκε φωτογραφία· δεν είναι δυνατή η σύνθεση</string>
+    <string name="main_status_compose_no_video">Δεν επιλέχθηκε βίντεο· δεν είναι δυνατή η σύνθεση</string>
+    <string name="main_status_compose_all_added">Όλες οι επιλεγμένες φωτογραφίες είναι ήδη στη λίστα</string>
+    <string name="main_status_compose_paired">Φωτογραφίες %1$d, βίντεο %2$d· προστέθηκαν %3$d ζεύγη εργασιών σύνθεσης με βάση το μικρότερο πλήθος</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Προστέθηκε %1$d εργασία σύνθεσης· πατήστε «Έναρξη μετατροπής» για εκτέλεση</item>
+        <item quantity="other">Προστέθηκαν %1$d εργασίες σύνθεσης· πατήστε «Έναρξη μετατροπής» για εκτέλεση</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (η μορφή εξόδου άλλαξε αυτόματα σε Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Γίνεται εισαγωγή %1$d κοινόχρηστης εικόνας…</item>
+        <item quantity="other">Γίνεται εισαγωγή %1$d κοινόχρηστων εικόνων…</item>
+    </plurals>
+    <string name="main_status_import_failed">Η εισαγωγή απέτυχε: %1$s</string>
+    <string name="main_status_import_done_partial">Η εισαγωγή ολοκληρώθηκε: %1$d επιτυχίες, %2$d αποτυχίες</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Η εισαγωγή ολοκληρώθηκε: εισήχθη %1$d αρχείο</item>
+        <item quantity="other">Η εισαγωγή ολοκληρώθηκε: εισήχθησαν %1$d αρχεία</item>
+    </plurals>
+    <string name="main_status_import_stopped">Η εισαγωγή σταμάτησε: %1$d επιτυχίες, %2$d αποτυχίες</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Γίνεται εισαγωγή %1$d αρχείου…</item>
+        <item quantity="other">Γίνεται εισαγωγή %1$d αρχείων…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Γίνεται εισαγωγή %1$d/%2$d…</string>
+    <string name="main_status_stopping">Γίνεται διακοπή… (θα σταματήσει μετά το τρέχον αρχείο)</string>
+    <string name="main_status_stopping_import">Γίνεται διακοπή της εισαγωγής…</string>
+    <string name="main_status_removed">Αφαιρέθηκε: %1$s</string>
+    <string name="main_status_cleared">Η λίστα άδειασε</string>
+    <string name="main_status_nothing_to_convert">Δεν υπάρχουν αρχεία για μετατροπή</string>
+    <string name="main_status_folder_unreadable">Δεν είναι δυνατή η ανάγνωση του επιλεγμένου φακέλου</string>
+    <string name="main_status_scanning_folder">Σάρωση φακέλου…</string>
+    <string name="main_status_no_images">Δεν βρέθηκαν εικόνες στον επιλεγμένο φάκελο</string>
+    <string name="main_status_batch_importing">Μαζική εισαγωγή %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Η μαζική εισαγωγή σταμάτησε: εισήχθη %1$d Live Photo</item>
+        <item quantity="other">Η μαζική εισαγωγή σταμάτησε: εισήχθησαν %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Η μαζική εισαγωγή σταμάτησε: εισήχθη %1$d Live Photo, παραλείφθηκε %2$d μη Live Photo αρχείο</item>
+        <item quantity="other">Η μαζική εισαγωγή σταμάτησε: εισήχθησαν %1$d Live Photo, παραλείφθηκαν %2$d μη Live Photo αρχεία</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Η μαζική εισαγωγή ολοκληρώθηκε: εισήχθη %1$d Live Photo</item>
+        <item quantity="other">Η μαζική εισαγωγή ολοκληρώθηκε: εισήχθησαν %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Η μαζική εισαγωγή ολοκληρώθηκε: εισήχθη %1$d Live Photo, παραλείφθηκε %2$d μη Live Photo αρχείο</item>
+        <item quantity="other">Η μαζική εισαγωγή ολοκληρώθηκε: εισήχθησαν %1$d Live Photo, παραλείφθηκαν %2$d μη Live Photo αρχεία</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Σταμάτησε: από %1$d αρχεία επεξεργάστηκαν %2$d, αντικαταστάθηκαν %3$d αρχεία πηγής</string>
+    <string name="main_status_stopped_export">Σταμάτησε: από %1$d αρχεία επεξεργάστηκαν %2$d, εξήχθησαν %3$d στο άλμπουμ</string>
+    <string name="main_status_done_replace_reason">Ολοκληρώθηκε: %1$d αρχεία επεξεργάστηκαν, αντικαταστάθηκαν %2$d αρχεία πηγής (αιτία: %3$s)</string>
+    <string name="main_status_done_export_reason">Ολοκληρώθηκε: %1$d αρχεία επεξεργάστηκαν, εξήχθησαν %2$d στο άλμπουμ (αιτία: %3$s)</string>
+    <string name="main_status_done_replace">Ολοκληρώθηκε: %1$d αρχεία επεξεργάστηκαν, αντικαταστάθηκαν %2$d αρχεία πηγής</string>
+    <string name="main_status_done_export">Ολοκληρώθηκε: %1$d αρχεία επεξεργάστηκαν, εξήχθησαν %2$d στο άλμπουμ</string>
+    <string name="main_status_keep_originals">%1$s· δεν δόθηκε άδεια «Πλήρης πρόσβαση αποθήκευσης», τα αρχικά διατηρήθηκαν</string>
+
+    <!-- ── List item info ── -->
+    <string name="main_info_detecting">Ανίχνευση…</string>
+    <string name="main_info_unrecognized">Μη αναγνωρισμένη μορφή Live Photo</string>
+    <string name="main_info_converting">Μετατροπή…</string>
+    <string name="main_info_compose_task">Εργασία σύνθεσης (πατήστε έναρξη μετατροπής για εκτέλεση)</string>
+    <string name="main_info_done_replaced">Ολοκληρώθηκε (αντικαταστάθηκαν %1$d αρχεία πηγής)</string>
+    <string name="main_info_done_skipped">Ολοκληρώθηκε (παράλειψη: σύγκρουση ονόματος)</string>
+    <string name="main_info_done_exported">Ολοκληρώθηκε (εξήχθησαν %1$d)</string>
+    <string name="main_info_failed">Αποτυχία: %1$s</string>
+
+    <!-- ── Progress detail ── -->
+    <string name="main_progress_added">Προστέθηκαν %1$d/%2$d</string>
+    <string name="main_progress_processed">Επεξεργάστηκαν %1$d/%2$d</string>
+    <string name="main_progress_imported">Εισήχθησαν %1$d/%2$d</string>
+
+    <!-- ── Permission dialogs ── -->
+    <string name="main_dialog_permission_title">Απαιτείται άδεια ανάγνωσης φωτογραφιών και βίντεο</string>
+    <string name="main_dialog_permission_message">Αυτή η εφαρμογή χρειάζεται πρόσβαση στις φωτογραφίες και τα βίντεο της συσκευής σας:\n\n• Άδεια φωτογραφιών: σάρωση του άλμπουμ της συσκευής για αναγνώριση των Live Photo\n• Άδεια βίντεο: εύρεση του συνοδευτικού βίντεο των Live Photo δύο αρχείων\n• Άδεια τοποθεσίας: διατήρηση των μεταδεδομένων GPS στις φωτογραφίες (χωρίς αυτήν χάνονται οι πληροφορίες θέσης μετά τη μετατροπή)\n\nΑν την αρνηθείτε, ο ενσωματωμένος επιλογέας δεν θα λειτουργεί· μπορείτε να πατήσετε ξανά «Προσθήκη αρχείων» αργότερα για νέα χορήγηση.</string>
+    <string name="main_dialog_settings_title">Απαιτείται χειροκίνητη χορήγηση άδειας φωτογραφιών και βίντεο</string>
+    <string name="main_dialog_settings_message">Επιλέξατε προηγουμένως «Να μην ερωτηθώ ξανά», οπότε το σύστημα δεν εμφανίζει πλέον τον διάλογο αδειών.\n\nΜεταβείτε στη σελίδα λεπτομερειών της εφαρμογής → Άδειες → Φωτογραφίες και βίντεο, χορηγήστε χειροκίνητα την πρόσβαση και επιστρέψτε στην εφαρμογή.\n\nΣημείωση: πρέπει να χορηγήσετε και τις δύο άδειες, «Φωτογραφίες» και «Βίντεο», αλλιώς τα Live Photo δύο αρχείων δεν θα βρίσκουν το συνοδευτικό βίντεο.</string>
+
+    <!-- ── All files access dialogs ── -->
+    <string name="main_dialog_allfiles_title_delete">Η αυτόματη διαγραφή των αρχικών απαιτεί «Πρόσβαση σε όλα τα αρχεία»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Η συσκευή δεν υποστηρίζει αυτόματη διαγραφή των αρχικών</string>
+    <string name="main_dialog_allfiles_title_replace">Η λειτουργία αντικατάστασης απαιτεί «Πρόσβαση σε όλα τα αρχεία»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Η συσκευή δεν υποστηρίζει λειτουργία αντικατάστασης</string>
+    <string name="main_dialog_allfiles_title_location">Συνιστάται η χορήγηση «Πρόσβασης σε όλα τα αρχεία»</string>
+    <string name="main_dialog_allfiles_delete_message">Η «Διαγραφή των αρχικών μετά την επεξεργασία» διαγράφει απευθείας τα αρχικά αρχεία από τον δίσκο (τη φωτογραφία και το συνοδευτικό βίντεο) και δεν αναιρείται, για αυτό απαιτείται πρώτα η άδεια «Πρόσβαση σε όλα τα αρχεία».\n\nΟ διακόπτης θα ενεργοποιηθεί μετά τη χορήγηση και μπορείτε τότε να τον ανοίξετε.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Το τρέχον σύστημα (Android 10 και παλαιότερο) δεν παρέχει άδεια «Πρόσβαση σε όλα τα αρχεία», οπότε δεν είναι δυνατή η απευθείας διαγραφή των αρχικών αρχείων από τον δίσκο· επομένως η συσκευή δεν υποστηρίζει τη «Διαγραφή των αρχικών μετά την επεξεργασία».\n\nΜπορείτε να καθαρίσετε χειροκίνητα τα αρχικά από το άλμπουμ του συστήματος μετά τη μετατροπή.</string>
+    <string name="main_dialog_allfiles_replace_message">Η «Λειτουργία αντικατάστασης» γράφει απευθείας το αποτέλεσμα πάνω στα αρχικά αρχεία του δίσκου (αντικαθιστά το περιεχόμενό τους) και δεν αναιρείται, για αυτό απαιτείται πρώτα η άδεια «Πρόσβαση σε όλα τα αρχεία».\n\nΟ διακόπτης θα ενεργοποιηθεί μετά τη χορήγηση και μπορείτε τότε να τον ανοίξετε.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Το τρέχον σύστημα (Android 10 και παλαιότερο) δεν παρέχει άδεια «Πρόσβαση σε όλα τα αρχεία», οπότε δεν είναι δυνατή η απευθείας εγγραφή στα αρχικά αρχεία του δίσκου· επομένως η συσκευή δεν υποστηρίζει τη «Λειτουργία αντικατάστασης».\n\nΜπορείτε να συνεχίσετε με την προεπιλεγμένη μετατροπή· τα αποτελέσματα θα γράφονται στον φάκελο του άλμπουμ.</string>
+    <string name="main_dialog_allfiles_location_message">Ορισμένες συσκευές (π.χ. Meizu) αποκρύπτουν τις πληροφορίες θέσης GPS όταν γράφουν μέσω του API του άλμπουμ, με αποτέλεσμα οι φωτογραφίες να χάνουν τη θέση μετά τη μετατροπή.\n\nΜε την «Πρόσβαση σε όλα τα αρχεία» η εφαρμογή γράφει απευθείας στον φάκελο του άλμπουμ και διατηρεί πλήρως τα μεταδεδομένα θέσης.\n\nΗ μετατροπή λειτουργεί και χωρίς αυτήν, αλλά σε ορισμένες συσκευές μπορεί να χαθούν οι πληροφορίες θέσης.</string>
+
+    <!-- ── Output file name conflict dialog ── -->
+    <string name="main_dialog_conflict_title">Σύγκρουση ονόματος αρχείου εξόδου</string>
+    <string name="main_dialog_conflict_message">Υπάρχει ήδη αρχείο με το ίδιο όνομα στον φάκελο εξόδου:\n%1$s\n\nΕπιλέξτε τρόπο χειρισμού.</string>
+    <string name="main_label_conflict_always">Να χρησιμοποιείται αυτός ο χειρισμός για τις επόμενες συγκρούσεις</string>
+
+    <!-- ── Dialog buttons ── -->
+    <string name="main_btn_grant">Χορήγηση</string>
+    <string name="main_btn_deny">Άρνηση</string>
+    <string name="main_btn_go_settings">Ρυθμίσεις</string>
+    <string name="main_btn_cancel">Άκυρο</string>
+    <string name="main_btn_grant_access">Χορήγηση άδειας</string>
+    <string name="main_btn_got_it">Κατανοητό</string>
+    <string name="main_btn_not_now">Όχι τώρα</string>
+    <string name="main_btn_skip">Παράλειψη</string>
+    <string name="main_btn_overwrite">Αντικατάσταση</string>
+    <string name="main_btn_auto_rename">Αυτόματη μετονομασία</string>
+
+    <!-- ── Conversion result / export failure reasons ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Διαγράφηκε %1$d αρχικό αρχείο</item>
+        <item quantity="other">Διαγράφηκαν %1$d αρχικά αρχεία</item>
+    </plurals>
+    <string name="main_delete_nothing">Δεν χρειάζεται διαγραφή των αρχικών</string>
+    <string name="main_delete_partial">Διαγράφηκαν %1$d αρχικά αρχεία (%2$d αποτυχίες, διατηρήθηκαν)</string>
+    <string name="main_delete_failed">Η διαγραφή των αρχικών απέτυχε (αρχείο σε χρήση ή χωρίς δικαίωμα εγγραφής)· διατηρήθηκαν</string>
+    <string name="main_export_missing_output">Το αποτέλεσμα της μετατροπής λείπει ή είναι κενό: %1$s</string>
+    <string name="main_export_missing_output_bare">Το αποτέλεσμα της μετατροπής λείπει ή είναι κενό</string>
+    <string name="main_export_insert_null">Το MediaStore insert επέστρεψε null</string>
+    <string name="main_export_output_stream">Η ροή εξόδου του MediaStore δεν είναι διαθέσιμη</string>
+    <string name="main_export_write_failed">Αποτυχία εγγραφής στο MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">Δεν ήταν δυνατή η δημιουργία του φακέλου άλμπουμ %1$s</string>
+    <string name="main_export_dir_write_failed">Αποτυχία εγγραφής στον φάκελο του άλμπουμ: %1$s</string>
+    <string name="main_export_no_source">Δεν ήταν δυνατός ο εντοπισμός του αρχείου πηγής· η αντικατάσταση παραλείφθηκε</string>
+    <string name="main_export_companion_failed">Αποτυχία εγγραφής του συνοδευτικού αρχείου: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Ο φάκελος του αρχείου πηγής δεν είναι εγγράψιμος· το συνοδευτικό αρχείο δεν γράφτηκε</string>
+    <string name="main_export_source_dir_unavailable">Ο φάκελος του αρχείου πηγής δεν είναι διαθέσιμος: %1$s</string>
+    <string name="main_export_replace_failed">Αποτυχία αντικατάστασης του αρχείου πηγής: %1$s</string>
+    <string name="main_export_replace_failed_bare">Αποτυχία αντικατάστασης του αρχείου πηγής</string>
+</resources>

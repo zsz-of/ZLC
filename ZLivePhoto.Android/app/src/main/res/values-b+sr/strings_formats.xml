@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Српски (sr) — називи формата и корисничке поруке о грешкама (кључеви fmt_*).
+  Извор: res/values/strings_formats.xml (поједностављени кинески).
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Издвајање</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (једна датотека)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Није пронађена .mov видео датотека са истим именом</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV датотеци недостаје ftyp box</string>
+    <string name="fmt_err_extract_read">Издвајање је излазни формат и не може се читати као улазни</string>
+    <string name="fmt_err_no_primary_jpeg">Није пронађена главна JPEG слика</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Након JPEG-а није пронађен важећи MP4 видео (недостаје ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Парсирање MP4 видео тока није успело</string>
+    <string name="fmt_err_nubia_too_short">Датотека је прекратка да би била Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Недостаје магични број nubiaVpfile на крају</string>
+    <string name="fmt_err_nubia_jpeg_len">Неважећа дужина JPEG-а забележена на крају: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Недостају 0x00 бајтови за попуну између JPEG-а и видеа</string>
+    <string name="fmt_err_nubia_empty_video">Дужина уграђеног видеа је 0</string>
+    <string name="fmt_err_vivo_no_marker">На крају JPG-а није пронађен маркер vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Недостаје пратећа видео датотека: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Парсирање тела JPG-а није успело</string>
+    <string name="fmt_err_vivo_companion_invalid">Пратећи MP4 није важећи (недостаје ftyp box)</string>
+</resources>

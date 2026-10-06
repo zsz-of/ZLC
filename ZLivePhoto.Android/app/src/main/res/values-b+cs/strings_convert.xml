@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="conv_unknown_target">Neznámý cílový formát: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Nerozpoznaný formát Live Photo (není Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Úvodní snímek neexistuje nebo je prázdný</string>
+    <string name="conv_video_missing">Video neexistuje nebo je prázdné</string>
+    <string name="conv_video_too_large">Video je příliš velké (%1$d MB), Live Photo z něj nelze vytvořit. Vyberte kratší video</string>
+    <string name="conv_transcoded_too_large">Video je po převodu příliš velké (%1$d MB), Live Photo nelze vytvořit</string>
+    <string name="conv_video_too_large_compose">Video je příliš velké (%1$d MB), Live Photo nelze vytvořit</string>
+    <string name="conv_cover_heic_go">Úvodní snímek je obrázek HEIC (odlehčená verze nepodporuje převod; exportujte jej na iPhonu jako JPEG a teprve poté převeďte)</string>
+    <string name="conv_cover_invalid_heic">Úvodní snímek není platný obrázek (HEIC vyžaduje systémovou podporu dekódování HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">Úvodní snímek není obrázek JPEG (odlehčená verze nepodporuje převod, použijte fotografii JPEG)</string>
+    <string name="conv_cover_invalid_image">Úvodní snímek není platný obrázek (podporovány jsou pouze JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Opětovné kódování videa selhalo: %1$s</string>
+    <string name="conv_remux_failed">Změna kontejneru selhala: %1$s</string>
+    <string name="conv_codec_unknown">Není to rozpoznatelné video H.264/H.265</string>
+    <string name="conv_codec_is">má kodek %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Video „%1$s“ %2$s, změna kontejneru kodek nezmění, proto Live Photo nelze vytvořit.\n\nV „Nastavení → Převod videa → Způsob převodu“ zvolte „Opětovné kódování“, nebo video nejprve jiným nástrojem převeďte na MP4 s kodekem H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Video není ve standardním kontejneru MP4 (MOV / MKV / WebM / AVI atd.) a aktuální „Způsob převodu“ neprovádí opětovné kódování, proto Live Photo nelze vytvořit.\n\nV „Nastavení → Převod videa → Způsob převodu“ zvolte „Opětovné kódování“ (standardní verze obsahuje kodér ffmpeg; odlehčená verze Go převodník neobsahuje, použijte standardní verzi), nebo video nejprve převeďte na standardní MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">Rozpoznáno jako %1$s</string>
+    <string name="conv_log_same_format_copied">Zdrojový a cílový formát jsou stejné, soubor byl zkopírován beze změny (bez ztráty kvality)</string>
+    <string name="conv_log_extra_tracks_bypass">Zdrojové video obsahuje stopy, které nejsou audio/video (%1$s); přímé kopírování stejného formátu se přeskakuje a použije se úplné vypsání kvůli očištění</string>
+    <string name="conv_log_ts_fallback">Zdroj neobsahuje časové razítko úvodního snímku, podle specifikace se použije střed videa</string>
+    <string name="conv_log_brand_normalized">Značka kontejneru videa byla normalizována (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Video obsahuje další stopy (%1$s) a nelze je očistit, výstup zůstal beze změny (tento soubor se na některých zařízeních nemusí přehrát dlouhým stiskem)</string>
+    <string name="conv_log_extra_tracks_removed">Dodatečné stopy videa byly odstraněny (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Zdrojové video %1$s; pouhá změna kontejneru problém nevyřeší (%2$s). Pokud výstup stále nelze přehrát dlouhým stiskem, zvolte v „Nastavení → Převod videa → Způsob převodu“ možnost „Opětovné kódování“</string>
+    <string name="conv_log_reencoding">Zdrojové video %1$s; podle nastavení se překóduje na 8bit + AAC pro lepší kompatibilitu s galerií</string>
+    <string name="conv_log_reencode_result_unusable">Výsledek opětovného kódování je nepoužitelný, výstup zůstal beze změny (tento soubor se na některých zařízeních nemusí přehrát dlouhým stiskem)</string>
+    <string name="conv_log_reencode_still_risky">Po opětovném kódování stále existují rizikové faktory (%1$s)</string>
+    <string name="conv_log_reencode_failed">Opětovné kódování selhalo (%1$s), výstup zůstal beze změny (tento soubor se na některých zařízeních nemusí přehrát dlouhým stiskem)</string>
+    <string name="conv_log_cover_heic_converted">Úvodní snímek je HEIC (ne JPEG); před zabalením byl převeden na standardní JPEG</string>
+    <string name="conv_log_compose_sizes">Sestavení: fotografie %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Převodník není zapnutý: mění se pouze značka kontejneru (MOV → MP4), bez opětovného kódování</string>
+    <string name="conv_tag_convert">Převod</string>
+    <string name="conv_tag_transcode">Transkódování</string>
+    <string name="conv_tag_compose">Sestavení</string>
+    <string name="conv_blocker_no_encoder">Vestavěný převodník není k dispozici</string>
+    <string name="conv_blocker_mode_no_encode">Aktuální „Způsob převodu“ neprovádí opětovné kódování</string>
+    <string name="conv_addon_unavailable">Vestavěný převodník není k dispozici</string>
+    <string name="conv_addon_transcode_failed">Transkódování ffmpeg selhalo: %1$s</string>
+    <string name="conv_addon_remux_failed">Změna kontejneru pomocí ffmpeg selhala: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Probíhá transkódování videa pomocí ffmpeg na standardní MP4 (%1$s / crf %2$d / %3$s, zachovány jsou pouze video a audio stopy)</string>
+    <string name="conv_log_transcode_done">Transkódování videa dokončeno (%1$d kB)</string>
+    <string name="conv_log_remuxing">Probíhá změna kontejneru videa na standardní MP4 (pouze kontejner, bez opětovného kódování)</string>
+    <string name="conv_log_remux_done">Změna kontejneru dokončena (%1$d kB)</string>
+    <string name="conv_reminder_cat_compose">Sestavení</string>
+    <string name="conv_reminder_cat_convert">Převod</string>
+    <string name="conv_reminder_cat_update">Aktualizace</string>
+    <string name="conv_reminder_video_over3s_title">Video je delší než 3 sekundy</string>
+    <string name="conv_reminder_video_over3s_message">Vybrané video je delší než 3 sekundy, výsledná Live Photo může mít problémy s kompatibilitou:\n\n• nemusí se správně přehrávat\n• systémová galerie ji nemusí rozpoznat\n• některá zařízení ji nemusí rozpoznat</string>
+    <string name="conv_reminder_legacy_go_title">Byla zjištěna stará verze</string>
+    <string name="conv_reminder_legacy_go_message">V tomto zařízení je stále nainstalována stará verze aplikace (Go). Tato stará verze už na tomto zařízení nefunguje; můžete ji odinstalovat a uvolnit místo.</string>
+    <string name="conv_reminder_replace_risk_title">Režim nahrazení může poškodit soubory</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Režim nahrazení zapisuje výsledek převodu přímo zpět do původního souboru; po přepsání originálu už jej nelze obnovit.\n\n• Pokud je aplikace během zápisu přerušena, dojde místo na úložišti nebo je odebráno oprávnění, může se zdrojový soubor poškodit\n• Převod nemůže zaručit stoprocentní úspěch; při selhání už zdrojový soubor nemusí být použitelný\n• Nejprve vyzkoušejte jeden nebo dva soubory a teprve poté spouštějte dávkové zpracování\n• Důležité fotografie si nejprve zálohujte\n\nTato funkce je poskytována „tak, jak je“; riziko nese uživatel a autor neodpovídá za poškození ani ztrátu souborů.</string>
+    <string name="conv_reminder_dont_remind">Už nezobrazovat</string>
+    <string name="conv_reminder_confirm_ok">Rozumím</string>
+    <string name="conv_reminder_uninstall">Odinstalovat</string>
+</resources>

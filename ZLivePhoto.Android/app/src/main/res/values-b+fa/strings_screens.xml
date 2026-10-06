@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · fa strings — Persian (فارسی, RTL)
+  Translated from res/values/strings_screens.xml (Simplified Chinese baseline, the fallback locale).
+  Persian (Farsi). RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">تبدیل متقابل قالب‌های Live Photo</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d فایل</item>
+        <item quantity="other">%1$d فایل</item>
+    </plurals>
+    <string name="screen_settings">تنظیمات</string>
+    <string name="screen_select_output_format">انتخاب قالب خروجی</string>
+    <string name="screen_selected">انتخاب‌شده</string>
+    <string name="screen_vivo_single_warning">⚠ مدل‌های خیلی قدیمی ممکن است این قالب را نشناسند</string>
+    <string name="screen_extract_blocked">⚠ صف شامل وظایف ترکیب است؛ انتخاب استخراج ممکن نیست</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (تک‌فایل)</string>
+    <string name="screen_format_vivo">vivo (دو‌فایلی)</string>
+    <string name="screen_format_xiaomi">شیائومی</string>
+    <string name="screen_format_honor">HONOR</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">استخراج</string>
+    <string name="screen_toolbox">جعبه‌ابزار</string>
+    <string name="screen_batch_import">وارد کردن دسته‌ای</string>
+    <string name="screen_batch_import_desc">پیمایش کل آلبوم و شناسایی دسته‌ای Live Photoها</string>
+    <string name="screen_compose">ترکیب Live Photo</string>
+    <string name="screen_compose_desc">انتخاب یک عکس و یک ویدیو و ترکیب آن‌ها</string>
+    <string name="screen_replace_mode">حالت جایگزینی</string>
+    <string name="screen_replace_mode_desc">نتایج تبدیل مستقیماً روی فایل‌های اصلی نوشته می‌شود و فایل جدیدی ساخته نمی‌شود</string>
+    <string name="screen_need_all_files_access_hint">به مجوز «دسترسی به همه فایل‌ها» نیاز دارد؛ برای دادن آن اینجا بزنید</string>
+    <string name="screen_agree_and_enable">موافقت و فعال‌سازی</string>
+    <string name="screen_empty_no_files">هنوز فایلی افزوده نشده است</string>
+    <string name="screen_view_detail">مشاهده جزئیات</string>
+    <string name="screen_add_files">افزودن فایل</string>
+    <string name="screen_output_format">قالب خروجی: %1$s</string>
+    <string name="screen_delete_original">حذف فایل اصلی پس از پایان پردازش</string>
+    <string name="screen_need_all_files_access_view">به مجوز «دسترسی به همه فایل‌ها» نیاز دارد؛ برای مشاهده بزنید</string>
+    <string name="screen_clear">پاک کردن</string>
+    <string name="screen_stop">توقف پردازش</string>
+    <string name="screen_start_convert">شروع تبدیل</string>
+    <string name="screen_status_detail">جزئیات وضعیت</string>
+    <string name="screen_long_press_copy">برای انتخاب و رونوشت، متن را طولانی فشار دهید</string>
+    <string name="screen_copy">رونوشت</string>
+    <string name="screen_close">بستن</string>
+    <string name="screen_back">بازگشت</string>
+    <string name="screen_picker_title_select">انتخاب Live Photo</string>
+    <string name="screen_album_count">آلبوم %1$d</string>
+    <string name="screen_album_collapse_cover">جمع کردن جلد آلبوم</string>
+    <string name="screen_album_expand_cover">باز کردن جلد آلبوم</string>
+    <string name="screen_scanning_progress">در حال پیمایش %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d عکس</item>
+        <item quantity="other">%1$d عکس</item>
+    </plurals>
+    <string name="screen_select_all">انتخاب همه</string>
+    <string name="screen_no_albums">آلبوم قابل استفاده‌ای وجود ندارد</string>
+    <string name="screen_no_media">هیچ Live Photo پیدا نشد</string>
+    <string name="screen_no_media_compose">عکس یا ویدیویی پیدا نشد</string>
+    <string name="screen_import">وارد کردن</string>
+    <string name="screen_import_count">وارد کردن %1$d</string>
+    <string name="screen_import_mixed">وارد کردن: %1$d عکس · %2$d ویدیو</string>
+    <string name="screen_search">جست‌وجو</string>
+    <string name="screen_search_collapse">جمع کردن جست‌وجو</string>
+    <string name="screen_search_hint">جست‌وجو بر اساس نام</string>
+    <string name="screen_search_clear">پاک کردن جست‌وجو</string>
+    <string name="screen_sort_date">تاریخ</string>
+    <string name="screen_sort_size">حجم</string>
+    <string name="screen_sort_name">نام</string>
+    <string name="screen_sort_asc">صعودی</string>
+    <string name="screen_sort_desc">نزولی</string>
+    <string name="screen_date_today">امروز</string>
+    <string name="screen_date_yesterday">دیروز</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

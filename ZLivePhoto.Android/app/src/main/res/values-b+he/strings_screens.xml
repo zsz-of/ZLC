@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · he strings — Hebrew (עברית, RTL)
+  Translated from res/values/strings_screens.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Hebrew. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">המרה בין תבניות של תמונות חיות</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d קובץ</item>
+        <item quantity="two">%1$d קבצים</item>
+        <item quantity="many">%1$d קבצים</item>
+        <item quantity="other">%1$d קבצים</item>
+    </plurals>
+    <string name="screen_settings">הגדרות</string>
+    <string name="screen_select_output_format">בחירת תבנית פלט</string>
+    <string name="screen_selected">נבחר</string>
+    <string name="screen_vivo_single_warning">⚠ מכשירים ישנים מדי עשויים שלא לזהות תבנית זו</string>
+    <string name="screen_extract_blocked">⚠ התור מכיל משימות הרכבה, לא ניתן לבחור חילוץ</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (קובץ אחד)</string>
+    <string name="screen_format_vivo">vivo (שני קבצים)</string>
+    <string name="screen_format_xiaomi">שיאומי</string>
+    <string name="screen_format_honor">HONOR</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">חילוץ</string>
+    <string name="screen_toolbox">ארגז כלים</string>
+    <string name="screen_batch_import">ייבוא באצווה</string>
+    <string name="screen_batch_import_desc">סריקת האלבום כולו וזיהוי תמונות חיות באצווה</string>
+    <string name="screen_compose">הרכבת תמונה חיה</string>
+    <string name="screen_compose_desc">בחירת תמונה וסרטון והרכבתם לזוג</string>
+    <string name="screen_replace_mode">מצב החלפה</string>
+    <string name="screen_replace_mode_desc">תוצאות ההמרה נכתבות ישירות על קבצי המקור, בלי ליצור קבצים חדשים</string>
+    <string name="screen_need_all_files_access_hint">דורש הרשאת «גישה לכל הקבצים», הקש כאן כדי לאשר</string>
+    <string name="screen_agree_and_enable">הסכמה והפעלה</string>
+    <string name="screen_empty_no_files">לא נוספו קבצים עדיין</string>
+    <string name="screen_view_detail">הצגת פרטים</string>
+    <string name="screen_add_files">הוספת קבצים</string>
+    <string name="screen_output_format">תבנית פלט: %1$s</string>
+    <string name="screen_delete_original">מחיקת המקור לאחר סיום העיבוד</string>
+    <string name="screen_need_all_files_access_view">דורש הרשאת «גישה לכל הקבצים», הקש לצפייה</string>
+    <string name="screen_clear">ניקוי</string>
+    <string name="screen_stop">עצירת העיבוד</string>
+    <string name="screen_start_convert">התחל המרה</string>
+    <string name="screen_status_detail">פרטי המצב</string>
+    <string name="screen_long_press_copy">לחיצה ארוכה על הטקסט לבחירה והעתקה</string>
+    <string name="screen_copy">העתקה</string>
+    <string name="screen_close">סגירה</string>
+    <string name="screen_back">חזרה</string>
+    <string name="screen_picker_title_select">בחירת תמונות חיות</string>
+    <string name="screen_album_count">אלבום %1$d</string>
+    <string name="screen_album_collapse_cover">כיווץ עטיפת האלבום</string>
+    <string name="screen_album_expand_cover">פריסת עטיפת האלבום</string>
+    <string name="screen_scanning_progress">סורק %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d תמונה</item>
+        <item quantity="two">%1$d תמונות</item>
+        <item quantity="many">%1$d תמונות</item>
+        <item quantity="other">%1$d תמונות</item>
+    </plurals>
+    <string name="screen_select_all">בחר הכול</string>
+    <string name="screen_no_albums">אין אלבומים זמינים</string>
+    <string name="screen_no_media">לא נמצאו תמונות חיות</string>
+    <string name="screen_no_media_compose">לא נמצאו תמונות או סרטונים</string>
+    <string name="screen_import">ייבוא</string>
+    <string name="screen_import_count">ייבוא %1$d</string>
+    <string name="screen_import_mixed">ייבוא: %1$d תמונות · %2$d סרטונים</string>
+    <string name="screen_search">חיפוש</string>
+    <string name="screen_search_collapse">כיווץ החיפוש</string>
+    <string name="screen_search_hint">חיפוש לפי שם</string>
+    <string name="screen_search_clear">ניקוי החיפוש</string>
+    <string name="screen_sort_date">תאריך</string>
+    <string name="screen_sort_size">גודל</string>
+    <string name="screen_sort_name">שם</string>
+    <string name="screen_sort_asc">סדר עולה</string>
+    <string name="screen_sort_desc">סדר יורד</string>
+    <string name="screen_date_today">היום</string>
+    <string name="screen_date_yesterday">אתמול</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

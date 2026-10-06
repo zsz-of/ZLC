@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="screen_app_subtitle">Pretvorba između formata Live Photo</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d datoteka</item>
+        <item quantity="few">%1$d datoteke</item>
+        <item quantity="other">%1$d datoteka</item>
+    </plurals>
+    <string name="screen_settings">Postavke</string>
+    <string name="screen_select_output_format">Odaberite izlazni format</string>
+    <string name="screen_selected">Odabrano</string>
+    <string name="screen_vivo_single_warning">⚠ Prestari uređaji možda neće prepoznati ovaj format</string>
+    <string name="screen_extract_blocked">⚠ Red čekanja sadrži zadatak sastavljanja pa nije moguće odabrati izvlačenje</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (jedna datoteka)</string>
+    <string name="screen_format_vivo">vivo (dvije datoteke)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Izvlačenje</string>
+    <string name="screen_toolbox">Alati</string>
+    <string name="screen_batch_import">Skupni uvoz</string>
+    <string name="screen_batch_import_desc">Pregledava cijelu galeriju i skupno prepoznaje Live Photo</string>
+    <string name="screen_compose">Sastavi Live Photo</string>
+    <string name="screen_compose_desc">Odaberite fotografiju i videozapis te ih uparite</string>
+    <string name="screen_replace_mode">Način zamjene</string>
+    <string name="screen_replace_mode_desc">Rezultat pretvorbe zapisuje se izravno u izvornu datoteku, nova datoteka se ne stvara</string>
+    <string name="screen_need_all_files_access_hint">Potrebno je dopuštenje „Pristup svim datotekama“, dodirnite za odobrenje</string>
+    <string name="screen_agree_and_enable">Prihvati i omogući</string>
+    <string name="screen_empty_no_files">Još nema dodanih datoteka</string>
+    <string name="screen_view_detail">Prikaži pojedinosti</string>
+    <string name="screen_add_files">Dodaj datoteke</string>
+    <string name="screen_output_format">Izlazni format: %1$s</string>
+    <string name="screen_delete_original">Nakon dovršetka obrade izbriši izvornu fotografiju</string>
+    <string name="screen_need_all_files_access_view">Potrebno je dopuštenje „Pristup svim datotekama“, dodirnite za prikaz</string>
+    <string name="screen_clear">Očisti</string>
+    <string name="screen_stop">Zaustavi obradu</string>
+    <string name="screen_start_convert">Pokreni pretvorbu</string>
+    <string name="screen_status_detail">Pojedinosti stanja</string>
+    <string name="screen_long_press_copy">Dugim dodirom tekst odabirete i kopirate</string>
+    <string name="screen_copy">Kopiraj</string>
+    <string name="screen_close">Zatvori</string>
+    <string name="screen_back">Natrag</string>
+    <string name="screen_picker_title_select">Odaberite Live Photo</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Sažmi naslovnicu albuma</string>
+    <string name="screen_album_expand_cover">Proširi naslovnicu albuma</string>
+    <string name="screen_scanning_progress">Pregledavanje %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d fotografija</item>
+        <item quantity="few">%1$d fotografije</item>
+        <item quantity="other">%1$d fotografija</item>
+    </plurals>
+    <string name="screen_select_all">Odaberi sve</string>
+    <string name="screen_no_albums">Nema dostupnih albuma</string>
+    <string name="screen_no_media">Nisu pronađeni Live Photo</string>
+    <string name="screen_no_media_compose">Nisu pronađene fotografije ni videozapisi</string>
+    <string name="screen_import">Uvezi</string>
+    <string name="screen_import_count">Uvezi %1$d</string>
+    <string name="screen_import_mixed">Uvezi fotografije %1$d · videozapise %2$d</string>
+    <string name="screen_search">Pretraži</string>
+    <string name="screen_search_collapse">Zatvori pretraživanje</string>
+    <string name="screen_search_hint">Pretraži po nazivu</string>
+    <string name="screen_search_clear">Očisti pretraživanje</string>
+    <string name="screen_sort_date">Datum</string>
+    <string name="screen_sort_size">Veličina</string>
+    <string name="screen_sort_name">Naziv</string>
+    <string name="screen_sort_asc">Uzlazno</string>
+    <string name="screen_sort_desc">Silazno</string>
+    <string name="screen_date_today">Danas</string>
+    <string name="screen_date_yesterday">Jučer</string>
+    <string name="screen_date_this_year">%1$d. %2$d.</string>
+    <string name="screen_date_other_year">%3$d. %2$d. %1$d</string>
+</resources>

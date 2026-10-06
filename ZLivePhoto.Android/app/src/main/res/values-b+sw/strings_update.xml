@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Kiswahili (Swahili) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Reviewed for standard Kiswahili orthography but not yet proofread by a native speaker; a native review pass is recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">Usambazaji wa Lanzou Cloud umefutwa au faili halipo; tafadhali pakua kutoka GitHub</string>
+    <string name="update_lanzou_gone_short">Usambazaji wa Lanzou Cloud umefutwa; tafadhali pakua kutoka GitHub</string>
+    <string name="update_lanzou_resolve_failed">Kutafuta kiungo cha kupakua cha Lanzou Cloud kumeshindikana</string>
+    <string name="update_lanzou_need_passwd">Usambazaji huu wa Lanzou Cloud unahitaji msimbo wa ufikiaji; tafadhali pakua kutoka GitHub (au tafuta msimbo wa ufikiaji kwenye maelezo ya toleo)</string>
+    <string name="update_lanzou_wrong_passwd">Msimbo wa ufikiaji wa Lanzou Cloud si sahihi</string>
+    <string name="update_err_resolve_failed">Kutafuta kumeshindikana</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Ukaguzi wa anti-crawler wa Lanzou Cloud umeshindikana</string>
+    <string name="update_err_no_frame">Haiwezi kuchanganua ukurasa wa kupakua wa Lanzou Cloud (frame ya kupakua haipatikani)</string>
+    <string name="update_err_no_file_id">Haiwezi kuchanganua kitambulisho cha faili cha Lanzou Cloud</string>
+    <string name="update_err_no_sign">Haiwezi kuchanganua saini ya Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Ombi la API limeshindikana</string>
+    <string name="update_err_api_request">Ombi la API la Lanzou Cloud limeshindikana</string>
+    <string name="update_err_empty_direct">Lanzou Cloud imerudisha URL ya kupakua tupu</string>
+    <string name="update_err_direct_expired">URL ya kupakua ya Lanzou Cloud imeisha muda; tafadhali ipate tena</string>
+    <string name="update_err_http_request">Ombi limeshindikana (HTTP %1$d)</string>
+    <string name="update_err_connect">Haiwezi kuunganisha na seva ya kupakua: %1$s</string>
+    <string name="update_err_http">Kupakua kumeshindikana (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Haiwezi kufungua muunganisho wa kupakua</string>
+    <string name="update_err_empty">Maudhui yaliyopakuliwa ni tupu</string>
+    <string name="update_err_incomplete">Kupakua hakukukamilika (%1$d kati ya baiti %2$d zimepokelewa); tafadhali pakua tena</string>
+    <string name="update_err_interrupted">Kupakua kumekatika: %1$s</string>
+    <string name="update_err_not_apk">Faili lililopakuliwa si kifurushi sahihi (inaweza kuwa ukurasa wa wavuti, au kiungo cha kupakua kimeisha muda); tafadhali pakua tena au tumia GitHub.</string>
+    <string name="update_err_apk_incomplete">Maudhui ya kifurushi hayakukamilika; tafadhali pakua tena au tumia GitHub.</string>
+    <string name="update_err_apk_unparsable">Kifurushi hakiwezi kuchanganuliwa (kupakua kunaweza kuwa hakukukamilika); tafadhali pakua tena au tumia GitHub.</string>
+    <string name="update_err_no_install_permission">Ruhusa ya “kusakinisha programu zisizojulikana” haikutolewa</string>
+    <string name="update_err_installer_failed">Haiwezi kuanzisha kisakinishi cha mfumo (%1$s); tafadhali fungua kifurushi kutoka kwa kidhibiti cha faili na usakinishe kwa mkono</string>
+</resources>

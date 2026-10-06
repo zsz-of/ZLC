@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ไทย (th) — หน้าจอการตั้งค่า (ui/SettingsScreen.kt) คำนำหน้าคีย์ settings_
+  คีย์ตรงกับ res/values/ (ข้อความจีนตัวย่อสำรอง)
+  ตัวแทนค่าใช้รูปแบบมีหมายเลขเสมอ: %1$s / %1$d
+  ไม่แปลชื่อเฉพาะและรหัส: “@毛血旺o”, “Trae · GML · DeepSeek · Kimi”,
+  “GPL-3.0”, “H.265”/“H.264”, ที่อยู่ GitHub
+  เอกสารนี้เป็นการแปลโดยใช้โมเดลช่วย อาจมีความไม่ถูกต้อง ยินดีรับการแก้ไขจากชุมชน
+-->
+<resources>
+
+    <!-- ทั่วไป -->
+    <string name="settings_title">การตั้งค่า</string>
+    <string name="settings_cd_back">ย้อนกลับ</string>
+    <string name="settings_btn_apply">ใช้งาน</string>
+    <string name="settings_btn_cancel">ยกเลิก</string>
+    <string name="settings_btn_close">ปิด</string>
+    <string name="settings_btn_ok">ตกลง</string>
+    <string name="settings_btn_sponsor">สนับสนุน</string>
+
+    <!-- หัวข้อกลุ่ม -->
+    <string name="settings_section_general">ทั่วไป</string>
+    <string name="settings_section_appearance">รูปลักษณ์</string>
+    <string name="settings_section_language">ภาษา</string>
+    <string name="settings_section_defaults">ตัวเลือกเริ่มต้น</string>
+    <string name="settings_section_output">ผลลัพธ์</string>
+    <string name="settings_section_transcode">แปลงรหัสวิดีโอ</string>
+    <string name="settings_section_about">เกี่ยวกับ</string>
+    <string name="settings_section_app">แอป</string>
+    <string name="settings_section_credits">ขอบคุณและสนับสนุน</string>
+    <string name="settings_section_opensource">โอเพนซอร์สและสัญญาอนุญาต</string>
+
+    <!-- ทั่วไป -->
+    <string name="settings_startup_check_title">ตรวจสอบการอัปเดตเมื่อเริ่มทำงาน</string>
+    <string name="settings_startup_check_subtitle">ดึงเวอร์ชันใหม่จาก GitHub อัตโนมัติเมื่อเริ่มทำงาน และแจ้งให้ดาวน์โหลดเมื่อมีอัปเดต</string>
+    <string name="settings_haptics_title">การสั่นตอบสนอง</string>
+    <string name="settings_haptics_subtitle">การตอบสนองด้วยการสั่นเมื่อกดปุ่มและเมื่อสถานะเปลี่ยน</string>
+    <string name="settings_bounce_title">แอนิเมชันปุ่มแบบยืดหยุ่น</string>
+    <string name="settings_bounce_subtitle">แอนิเมชันย่อแล้วดีดกลับเมื่อกดปุ่ม</string>
+
+    <!-- รูปลักษณ์ -->
+    <string name="settings_theme_system">ตามระบบ</string>
+    <string name="settings_theme_dark">มืด</string>
+    <string name="settings_theme_light">สว่าง</string>
+    <string name="settings_dynamic_theme_title">Material You สีแบบไดนามิก</string>
+    <string name="settings_dynamic_theme_subtitle">ตามสีวอลเปเปอร์ของระบบ (Android 12 ขึ้นไป) เมื่อปิดจะใช้สีธีมสำเร็จรูปด้านล่าง</string>
+    <string name="settings_preset_colors_title">สีธีมสำเร็จรูป</string>
+    <string name="settings_preset_current">ปัจจุบัน: %1$s</string>
+    <string name="settings_preset_disabled_hint">เลือกได้หลังปิด “Material You สีแบบไดนามิก”</string>
+    <string name="settings_custom">กำหนดเอง</string>
+    <string name="settings_custom_color_title">สีธีมกำหนดเอง</string>
+    <string name="settings_cd_custom_palette">จานสีกำหนดเอง</string>
+    <string name="settings_hue_value">เฉดสี %1$d°</string>
+
+    <!-- ภาษาของแอป: หัวข้อและ “ตามระบบ” อยู่ใน strings_app.xml
+         (R.string.app_language_title / R.string.app_language_follow_system) จึงไม่นิยามซ้ำที่นี่ -->
+    <string name="settings_language_dialog_title">เลือกภาษาของแอป</string>
+    <string name="settings_language_count">รวม %1$d ภาษา</string>
+
+    <!-- ตัวเลือกเริ่มต้น -->
+    <string name="settings_reminder_dialogs_title">หน้าต่าง “ไม่ต้องแจ้งอีก”</string>
+    <string name="settings_reminder_dialogs_subtitle">จัดการสวิตช์ของหน้าต่าง “ไม่ต้องแจ้งอีก” ทั้งหมด</string>
+    <string name="settings_reminder_hint">สวิตช์เปิดหมายถึง “ไม่ต้องแจ้งอีก” เมื่อปิด ครั้งต่อไปที่เกิดสถานการณ์นั้นจะแสดงหน้าต่างอีกครั้ง</string>
+
+    <!-- ผลลัพธ์ -->
+    <string name="settings_preserve_folders_title">คงโครงสร้างโฟลเดอร์ต้นทาง</string>
+    <string name="settings_preserve_folders_subtitle">ผลลัพธ์จะเก็บในโฟลเดอร์ย่อยตามชื่ออัลบั้มเดิม เมื่อปิดจะรวมไว้ในโฟลเดอร์เดียว</string>
+
+    <!-- เกี่ยวกับ -->
+    <string name="settings_about_title">เกี่ยวกับ</string>
+    <string name="settings_about_subtitle">เวอร์ชัน · ตรวจสอบการอัปเดต · ขอบคุณและสนับสนุน</string>
+    <string name="settings_check_update_title">ตรวจสอบการอัปเดต</string>
+    <string name="settings_check_update_subtitle">ดึงเวอร์ชันล่าสุดจาก GitHub Releases</string>
+    <string name="settings_checking">กำลังตรวจสอบ…</string>
+    <string name="settings_update_available">มีเวอร์ชัน v%1$s</string>
+    <string name="settings_up_to_date">เป็นเวอร์ชันล่าสุดแล้ว</string>
+    <string name="settings_network_error">เครือข่ายผิดพลาด กรุณาลองใหม่ภายหลัง</string>
+    <string name="settings_reinstall_title">ติดตั้งเวอร์ชันนี้ใหม่</string>
+    <string name="settings_reinstall_subtitle">ดาวน์โหลดเวอร์ชันล่าสุดปัจจุบันแล้วติดตั้งทับ (ใช้ทดสอบการอัปเดต)</string>
+    <string name="settings_reinstall_newer_hint">สามารถอัปเกรดเป็น v%1$s ได้ กรุณาใช้ “ตรวจสอบการอัปเดต” ก่อน</string>
+    <string name="settings_version_title">เวอร์ชัน</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">สนับสนุนผ่าน Alipay</string>
+    <string name="settings_alipay_subtitle">สนับสนุนการพัฒนา</string>
+    <string name="settings_coolapk_subtitle">ผู้ใช้ Coolapk · ขอบคุณสำหรับการสนับสนุน</string>
+    <string name="settings_ai_credits_subtitle">ขอบคุณ AI IDE และโมเดล AI ที่ช่วยในการพัฒนา</string>
+    <string name="settings_github_title">ที่อยู่โอเพนซอร์สบน GitHub</string>
+    <string name="settings_license_title">สัญญาอนุญาตโอเพนซอร์ส</string>
+    <string name="settings_sponsor_dialog_title">ขอบคุณสำหรับการสนับสนุน</string>
+    <string name="settings_sponsor_dialog_text">ขอบคุณมากจริง ๆ ที่คุณต้องการสนับสนุนแอปนี้!\n\nหากคุณยังเป็นนักเรียนหรือยังไม่มีความมั่นคงทางการเงิน กรุณาอย่าใช้จ่ายเลย —\nเก็บความรู้สึกดี ๆ นี้ไว้ในใจแล้วใช้งานต่อไป นั่นคือการสนับสนุนที่ดีที่สุดสำหรับผม\n\nหากต้องการสนับสนุน หนึ่งบาทก็คือความรัก ผมจะนำไปใช้ในการดูแลและพัฒนาให้ดีขึ้น:)</string>
+    <string name="settings_alipay_missing_title">ยังไม่ได้ติดตั้ง Alipay</string>
+    <string name="settings_alipay_missing_text">ตรวจไม่พบ Alipay จึงยังไม่สามารถสนับสนุนได้ในตอนนี้\n\nไม่เป็นไร — อย่างไรก็ขอบคุณน้ำใจของคุณมาก</string>
+
+    <!-- แปลงรหัสวิดีโอ -->
+    <string name="settings_transcoder_title">ตัวแปลงรหัสในตัว</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">เข้ารหัสใหม่</string>
+    <string name="settings_transcode_mode_remux">บรรจุคอนเทนเนอร์ใหม่เท่านั้น (แนะนำ)</string>
+    <string name="settings_transcode_mode_off">ไม่ใช้ตัวแปลงรหัสเลย</string>
+    <string name="settings_transcode_params_title">พารามิเตอร์แปลงรหัส</string>
+    <string name="settings_transcode_params_subtitle">พารามิเตอร์คุณภาพและการบีบอัดที่ใช้เมื่อเข้ารหัสใหม่</string>
+    <string name="settings_transcode_params_disabled">มีผลเฉพาะเมื่อเลือก “เข้ารหัสใหม่” ใน “วิธีแปลงรหัส”</string>
+    <string name="settings_crf_value">คุณภาพ CRF: %1$d</string>
+    <string name="settings_crf_hint">ค่ายิ่งน้อยคุณภาพยิ่งสูงและไฟล์ยิ่งใหญ่ (ค่าเริ่มต้น 18)</string>
+    <string name="settings_encoder_title">ตัวเข้ารหัส</string>
+    <string name="settings_compress_preset_title">พรีเซ็ตการบีบอัด</string>
+
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Български (bg) — текстове на процеса по актуализация (ui/UpdateFlow.kt, ключове update_*).
+  База: res/values/strings_update_flow.xml (опростен китайски).
+-->
+<resources>
+    <string name="update_github_url_missing">Не е получен адрес за изтегляне от GitHub. Опитайте отново по-късно.</string>
+    <string name="update_flavor_standard">Стандартна версия</string>
+    <string name="update_flavor_go">Go версия</string>
+    <string name="update_lanzou_url_missing">Тази версия не предлага връзка за изтегляне от Lanzou Cloud. Използвайте GitHub.</string>
+    <string name="update_apk_direct_missing">Тази версия не предлага директен линк към подходящия APK. Изберете съответния APK от страницата с изданията в GitHub.</string>
+    <string name="update_install_permission_missing">Няма разрешение „Инсталиране на неизвестни приложения“, затова автоматичното инсталиране е невъзможно. Разрешете го в системните настройки и опитайте отново.</string>
+    <string name="update_error_unknown">Неизвестна грешка</string>
+    <string name="update_fail_lanzou">Неуспешно изтегляне от Lanzou Cloud</string>
+    <string name="update_fail_github">Неуспешно изтегляне от GitHub</string>
+    <string name="update_lanzou_resolving">Разпознаване на връзката за изтегляне от Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Изтегляне от Lanzou Cloud…</string>
+    <string name="update_github_downloading">Изтегляне от GitHub…</string>
+    <string name="update_unzipping">Разархивиране на инсталационния пакет…</string>
+    <string name="update_notes_empty">Тази версия няма бележки към изданието.</string>
+
+    <!-- Диалози, свързани с Go версията -->
+    <string name="update_use_normal_title">Моля, използвайте стандартната версия</string>
+    <string name="update_use_normal_body">Системата на устройството е Android 10 или по-нова; леката Go версия вече не се поддържа и старата версия не може да се използва.\n\nНа устройството е открита стандартната версия (ZLC) — отворете нея, за да продължите (новите версии вече не предлагат Go вариант; старата версия може да бъде деинсталирана, за да се освободи място).</string>
+    <string name="update_open_normal">Отвори стандартната версия</string>
+    <string name="update_must_update_title">Трябва да актуализирате, за да продължите</string>
+    <string name="update_forced_body">Системата на устройството е Android 10 или по-нова; леката Go версия вече не се поддържа и старата версия не може да се използва, а новите версии също не предлагат Go вариант.\n\nСвържете се с интернет и натиснете „Опитайте отново“, за да изтеглите стандартната версия.</string>
+    <string name="update_retry">Опитайте отново</string>
+    <string name="update_switch_normal_body">Системата на устройството е Android 10 или по-нова; леката Go версия вече не се поддържа и старата версия не може да се използва.\nИзтеглете и инсталирайте стандартната версия, за да продължите (новите версии вече не предлагат Go вариант).</string>
+
+    <!-- Изтегляне / разрешение за инсталиране / резултат -->
+    <string name="update_downloading_title">Изтегляне на актуализация</string>
+    <string name="update_cancel">Отказ</string>
+    <string name="update_need_permission_title">Необходимо е разрешение за инсталиране</string>
+    <string name="update_need_permission_body">За инсталиране на новата версия е необходимо системното разрешение „Инсталиране на неизвестни приложения“.\n\nНатиснете „Разреши“, разрешете го в настройките и се върнете в приложението — инсталирането ще продължи автоматично (без ново изтегляне).</string>
+    <string name="update_grant">Разреши</string>
+    <string name="update_notice_title">Внимание</string>
+    <string name="update_got_it">Разбрах</string>
+
+    <!-- Основен диалог / бележки към изданието -->
+    <string name="update_notes_title">v%1$s · Бележки към изданието</string>
+    <string name="update_back">Назад</string>
+    <string name="update_title_switch_normal">Преминаване към стандартната версия</string>
+    <string name="update_title_reinstall">Преинсталиране на тази версия</string>
+    <string name="update_title_new_version">Налична е нова версия</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Тази версия ще бъде изтеглена и инсталирана отново (с презаписване на текущото приложение).\nФункцията служи за регресионно тестване на механизма за актуализации.</string>
+    <string name="update_view_notes">Виж бележките към изданието</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud временно не е достъпен</string>
+    <string name="update_download_lanzou">Изтегли от Lanzou Cloud</string>
+    <string name="update_download_github">Изтегли от GitHub</string>
+    <string name="update_download_browser">Изтегли от браузъра</string>
+    <string name="update_later">По-късно</string>
+    <string name="update_later_switch">Без преминаване</string>
+    <string name="update_skip_version">Пропусни тази версия</string>
+</resources>

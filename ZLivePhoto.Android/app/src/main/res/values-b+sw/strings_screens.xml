@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Kiswahili (Swahili) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Reviewed for standard Kiswahili orthography but not yet proofread by a native speaker; a native review pass is recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">Badilisha kati ya miundo ya Live Photo</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">faili %1$d</item>
+        <item quantity="other">faili %1$d</item>
+    </plurals>
+    <string name="screen_settings">Mipangilio</string>
+    <string name="screen_select_output_format">Chagua muundo wa matokeo</string>
+    <string name="screen_selected">Imechaguliwa</string>
+    <string name="screen_vivo_single_warning">⚠ Baadhi ya vifaa vya zamani vinaweza kutotambua muundo huu</string>
+    <string name="screen_extract_blocked">⚠ Foleni ina kazi za utungaji; Toa haiwezi kuchaguliwa</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (faili moja)</string>
+    <string name="screen_format_vivo">vivo (faili mbili)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Toa</string>
+    <string name="screen_toolbox">Kisanduku cha zana</string>
+    <string name="screen_batch_import">Uingizaji wa kundi</string>
+    <string name="screen_batch_import_desc">Changanua matunzio yote na tambua Live Photo kwa wingi</string>
+    <string name="screen_compose">Tunga Live Photo</string>
+    <string name="screen_compose_desc">Chagua picha moja na video moja na uzipange kuwa Live Photo</string>
+    <string name="screen_replace_mode">Hali ya kubadilisha</string>
+    <string name="screen_replace_mode_desc">Andika matokeo ya ubadilishaji moja kwa moja kwenye faili za awali badala ya kutengeneza mpya</string>
+    <string name="screen_need_all_files_access_hint">Inahitaji “Ufikiaji wa faili zote”; gusa ili kuitoa</string>
+    <string name="screen_agree_and_enable">Kubali na uwashe</string>
+    <string name="screen_empty_no_files">Hakuna faili lililoongezwa bado</string>
+    <string name="screen_view_detail">Ona maelezo</string>
+    <string name="screen_add_files">Ongeza faili</string>
+    <string name="screen_output_format">Muundo wa matokeo: %1$s</string>
+    <string name="screen_delete_original">Futa faili za awali baada ya kuchakata</string>
+    <string name="screen_need_all_files_access_view">Inahitaji “Ufikiaji wa faili zote”; gusa ili kuona</string>
+    <string name="screen_clear">Safisha</string>
+    <string name="screen_stop">Simamisha uchakataji</string>
+    <string name="screen_start_convert">Anza ubadilishaji</string>
+    <string name="screen_status_detail">Maelezo ya hali</string>
+    <string name="screen_long_press_copy">Bonyeza maandishi kwa muda mrefu ili kuchagua na kunakili</string>
+    <string name="screen_copy">Nakili</string>
+    <string name="screen_close">Funga</string>
+    <string name="screen_back">Rudi</string>
+    <string name="screen_picker_title_select">Chagua Live Photo</string>
+    <string name="screen_album_count">Albamu %1$d</string>
+    <string name="screen_album_collapse_cover">Kunja jalada la albamu</string>
+    <string name="screen_album_expand_cover">Panua jalada la albamu</string>
+    <string name="screen_scanning_progress">Inachanganua %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">picha %1$d</item>
+        <item quantity="other">picha %1$d</item>
+    </plurals>
+    <string name="screen_select_all">Chagua zote</string>
+    <string name="screen_no_albums">Hakuna albamu inayopatikana</string>
+    <string name="screen_no_media">Hakuna Live Photo iliyopatikana</string>
+    <string name="screen_no_media_compose">Hakuna picha au video iliyopatikana</string>
+    <string name="screen_import">Ingiza</string>
+    <string name="screen_import_count">Ingiza %1$d</string>
+    <string name="screen_import_mixed">Ingiza picha %1$d · video %2$d</string>
+    <string name="screen_search">Tafuta</string>
+    <string name="screen_search_collapse">Kunja utafutaji</string>
+    <string name="screen_search_hint">Tafuta kwa jina</string>
+    <string name="screen_search_clear">Safisha utafutaji</string>
+    <string name="screen_sort_date">Tarehe</string>
+    <string name="screen_sort_size">Ukubwa</string>
+    <string name="screen_sort_name">Jina</string>
+    <string name="screen_sort_asc">Kupanda</string>
+    <string name="screen_sort_desc">Kushuka</string>
+    <string name="screen_date_today">Leo</string>
+    <string name="screen_date_yesterday">Jana</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%2$d/%1$d/%3$d</string>
+</resources>

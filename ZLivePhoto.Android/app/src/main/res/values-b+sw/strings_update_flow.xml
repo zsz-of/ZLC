@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Kiswahili (Swahili) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Reviewed for standard Kiswahili orthography but not yet proofread by a native speaker; a native review pass is recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">Hakuna URL ya kupakua ya GitHub iliyopatikana; tafadhali jaribu tena baadaye.</string>
+    <string name="update_flavor_standard">Toleo la kawaida</string>
+    <string name="update_flavor_go">Toleo la Go</string>
+    <string name="update_lanzou_url_missing">Toleo hili halitoi kiungo cha kupakua cha Lanzou Cloud; unaweza kutumia GitHub.</string>
+    <string name="update_apk_direct_missing">Toleo hili halitoi kiungo cha kifurushi cha moja kwa moja kinacholingana na toleo lako; tafadhali chagua APK sahihi kwenye ukurasa wa matoleo ya GitHub.</string>
+    <string name="update_install_permission_missing">Ruhusa ya “kusakinisha programu zisizojulikana” haikutolewa, kwa hiyo usakinishaji wa kiotomatiki hauwezekani. Tafadhali iruhusu kwenye mipangilio ya mfumo na ujaribu tena.</string>
+    <string name="update_error_unknown">Hitilafu isiyojulikana</string>
+    <string name="update_fail_lanzou">Kupakua kutoka Lanzou Cloud kumeshindikana</string>
+    <string name="update_fail_github">Kupakua kutoka GitHub kumeshindikana</string>
+    <string name="update_lanzou_resolving">Inatafuta kiungo cha kupakua cha Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Inapakua kutoka Lanzou Cloud…</string>
+    <string name="update_github_downloading">Inapakua kutoka GitHub…</string>
+    <string name="update_unzipping">Inatoa kifurushi…</string>
+    <string name="update_notes_empty">Toleo hili halina maelezo ya toleo.</string>
+    <string name="update_use_normal_title">Tafadhali tumia toleo la kawaida</string>
+    <string name="update_use_normal_body">Kifaa hiki kinaendeshwa na Android 10 au la baadaye, na toleo jepesi la Go halitumiki tena; toleo la zamani haliwezi kutumika tena.\n\nToleo la kawaida (ZLC) limesakinishwa kwenye kifaa hiki — tafadhali lifungue na uendelee hapo (matoleo mapya hayajumuishi build inayolingana na Go; toleo la zamani linaweza kuondolewa ili kupata nafasi).</string>
+    <string name="update_open_normal">Fungua toleo la kawaida</string>
+    <string name="update_must_update_title">Lazima usasishe kabla ya kuendelea</string>
+    <string name="update_forced_body">Kifaa hiki kinaendeshwa na Android 10 au la baadaye, na toleo jepesi la Go halitumiki tena; toleo la zamani haliwezi kutumika tena, na matoleo mapya hayajumuishi build inayolingana na Go.\n\nTafadhali unganisha na intaneti na uguse “Jaribu tena” ili kupata kifurushi cha toleo la kawaida.</string>
+    <string name="update_retry">Jaribu tena</string>
+    <string name="update_switch_normal_body">Kifaa hiki kinaendeshwa na Android 10 au la baadaye, na toleo jepesi la Go halitumiki tena; toleo la zamani haliwezi kutumika tena.\nTafadhali pakua na usakinishe toleo la kawaida ili kuendelea (matoleo mapya hayajumuishi build inayolingana na Go).</string>
+    <string name="update_downloading_title">Pakua sasisho</string>
+    <string name="update_cancel">Ghairi</string>
+    <string name="update_need_permission_title">Ruhusa ya usakinishaji inahitajika</string>
+    <string name="update_need_permission_body">Kusakinisha toleo jipya kunahitaji ruhusa ya mfumo ya “kusakinisha programu zisizojulikana”.\n\nGusa “Ruhusu”, iruhusu kwenye mipangilio na urudi kwenye programu; usakinishaji utaendelea kiotomatiki (hauhitaji kupakua tena).</string>
+    <string name="update_grant">Ruhusu</string>
+    <string name="update_notice_title">Taarifa</string>
+    <string name="update_got_it">Nimeelewa</string>
+    <string name="update_notes_title">v%1$s · Maelezo ya toleo</string>
+    <string name="update_back">Rudi</string>
+    <string name="update_title_switch_normal">Badilisha kwenda toleo la kawaida</string>
+    <string name="update_title_reinstall">Sakinisha upya toleo hili</string>
+    <string name="update_title_new_version">Toleo jipya linapatikana</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Hii itapakua na kusakinisha upya toleo hili (juu ya programu ya sasa).\nKipengele hiki hutumika kujaribu mfumo wa masasisho.</string>
+    <string name="update_view_notes">Ona maelezo ya toleo</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud haipatikani kwa muda</string>
+    <string name="update_download_lanzou">Pakua kutoka Lanzou Cloud</string>
+    <string name="update_download_github">Pakua kutoka GitHub</string>
+    <string name="update_download_browser">Pakua kutoka kivinjari</string>
+    <string name="update_later">Sasisha baadaye</string>
+    <string name="update_later_switch">Badilisha baadaye</string>
+    <string name="update_skip_version">Ruka toleo hili</string>
+</resources>

@@ -4,7 +4,7 @@
 
 ---
 
-## [3.4.20] - 2026-10-06
+## [3.5.0] - 2026-10-06
 
 ### 🧹 移除「桌面图标自动改色」（修复部分桌面出现两个图标）
 
@@ -13,6 +13,14 @@
 - **为什么保留 alias0 而不是把 LAUNCHER 挪回 `MainActivity`**：已安装用户桌面上固定的入口组件名就是 `MainActivityAlias0`，改名会让旧快捷方式变成「打不开的死图标」（正是此前 issue #1 的症状路径）。
 - **UI「动态取色」不受影响**：壁纸颜色监听仍然保留（只用于刷新 UI 主题跟随的色相缓存），设置里的动态取色/主题色开关照旧生效。
 - 顺带清理：README 删除「动态桌面图标」特性行；`AppSettings` 中「与桌面图标共用色相」的注释措辞改为仅 UI 主题。`mipmap ic_launcher_1..6*` 暂留为未引用资源（后续可清理）。
+
+### 🌏 多语言支持（119 种语言）+ 从右到左（RTL）适配
+
+- **文案资源化**：此前界面文案全部硬编码在 Kotlin 里、`strings.xml` 只有应用名；本次把 **30 个文件、404 条用户可见文案**抽成资源（`res\values\strings_{app,main,screens,settings,convert,update,update_flow,formats}.xml`）。**兜底语言仍是简体中文**：设备语言不在支持清单内时回落中文，现有用户零感知。
+- **119 种语言**：新增 `res\xml\locales_config.xml`（对齐「我的世界 Java 版」量级），含简繁中文各变体（`zh-Hans`/`zh-Hant`/`zh-HK`/`zh-MO`/`zh-TW`，按地区用词区分）、葡萄牙语双地区（`pt-BR`/`pt-PT`），以及少数民族与低资源语言（**藏语 `bo`、傣泐 `khb`、彝语 `ii`、维吾尔语 `ug`** 等）。
+- **设置页「应用语言」选择器**（外观分组下）：首项「跟随系统」，其后 119 种语言按**自称名**列出、当前项打勾，选择后立即生效。Android 13+ 走系统每应用语言（`LocaleManager`，与系统「应用语言」入口互通）；Android 13 以下由 `ZlcApplication.attachBaseContext` 按已保存语言包装 Context 并重建界面。
+- **翻译质量分级**：主流语种（英/日/韩/德/法/俄/乌/西/葡/意/荷等）为完整高质量翻译；低资源语种为尽力翻译，**资源文件头已注明质量等级**；任何缺失条目自动回落中文，不会出现空白界面。
+- **RTL**：`android:supportsRtl="true"`；全工程审计确认无 `padding(left/right=)`、无 `absolutePadding`、无 `TextAlign.Left/Right`；方向性图标改用 `Icons.AutoMirrored.*`；三处横向推拉动效按 `LocalLayoutDirection` 取反；`MainScreen` 状态点颜色不再匹配中文字面量，改为按本语言资源文案匹配。
 
 ---
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Български (bg) — имена на форматите и потребителски съобщения за грешки (ключове fmt_*).
+  База: res/values/strings_formats.xml (опростен китайски).
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Извличане</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (един файл)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Не е намерен .mov видеофайл със същото име</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV файлът няма ftyp box</string>
+    <string name="fmt_err_extract_read">Извличането е изходен формат и не може да се чете като входен</string>
+    <string name="fmt_err_no_primary_jpeg">Не е намерено основно JPEG изображение</string>
+    <string name="fmt_err_no_mp4_after_jpeg">След JPEG не е намерено валидно MP4 видео (липсва ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Неуспешен анализ на MP4 видео потока</string>
+    <string name="fmt_err_nubia_too_short">Файлът е твърде къс, за да е Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Липсва заключителният магически номер nubiaVpfile</string>
+    <string name="fmt_err_nubia_jpeg_len">Невалидна дължина на JPEG в края на файла: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Липсват байтове за подравняване 0x00 между JPEG и видеото</string>
+    <string name="fmt_err_nubia_empty_video">Дължината на вграденото видео е 0</string>
+    <string name="fmt_err_vivo_no_marker">В края на JPG не е намерен маркерът vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Липсва придружаващ видеофайл: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Неуспешен анализ на тялото на JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">Придружаващият MP4 е невалиден (липсва ftyp box)</string>
+</resources>

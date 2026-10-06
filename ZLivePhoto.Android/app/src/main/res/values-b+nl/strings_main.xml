@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Nederlands strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+
+    <!-- ── Statusbalk / meldingen ── -->
+    <string name="main_status_ready">Gereed</string>
+    <string name="main_status_location_granted">Locatiemachtiging verleend; de GPS-metagegevens blijven na de conversie behouden</string>
+    <string name="main_status_location_denied">Geen locatiemachtiging verleend: geconverteerde foto\'s verliezen de GPS-informatie</string>
+    <string name="main_status_all_files_granted">Machtiging "toegang tot alle bestanden" verleend; de conversie schrijft direct naar de galerij en behoudt de locatiegegevens</string>
+    <string name="main_status_all_files_denied">Machtiging "toegang tot alle bestanden" niet verleend: op sommige toestellen kunnen locatiegegevens na de conversie verloren gaan</string>
+    <string name="main_status_read_granted">Machtiging voor het lezen van foto\'s en video\'s verleend</string>
+    <string name="main_status_video_missing">Toegestaan, maar de videomachtiging ontbreekt: het bijbehorende videobestand van Live Photo\'s met twee bestanden kan niet worden gevonden</string>
+    <string name="main_status_permission_denied">Machtiging niet verleend; tik nogmaals op "Bestanden toevoegen"</string>
+    <string name="main_status_folder_not_selected">Geen map geselecteerd</string>
+    <string name="main_status_folder_unavailable">Geen toegang tot de geselecteerde map (alleen lokale opslagmappen)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Vorige sessie hersteld (%1$d bestand)</item>
+        <item quantity="other">Vorige sessie hersteld (%1$d bestanden)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Een eerdere onverwachte afsluiting is gedetecteerd; de niet-voltooide lijst is gewist</string>
+    <string name="main_status_compose_blocks_extract">De wachtrij bevat samenstellingstaken; je kunt niet overschakelen naar de modus Uitpakken</string>
+    <string name="main_status_replace_off_mutex">Vervangmodus uitgeschakeld (niet te combineren met "Originelen verwijderen na verwerking")</string>
+    <string name="main_status_delete_needs_all_files">Automatisch originelen verwijderen vereist de machtiging "toegang tot alle bestanden". Verleen deze eerst</string>
+    <string name="main_status_replace_off">Vervangmodus uitgeschakeld; resultaten worden weer naar de galerij geschreven</string>
+    <string name="main_status_replace_needs_all_files">De vervangmodus vereist de machtiging "toegang tot alle bestanden". Verleen deze eerst</string>
+    <string name="main_status_delete_off_mutex">"Originelen verwijderen na verwerking" uitgeschakeld (niet te combineren met de vervangmodus)</string>
+    <string name="main_status_loading_albums">Albums worden gelezen…</string>
+    <string name="main_status_no_albums">Geen albums gevonden</string>
+    <string name="main_status_compose_no_photo">Geen foto geselecteerd; samenstellen niet mogelijk</string>
+    <string name="main_status_compose_no_video">Geen video geselecteerd; samenstellen niet mogelijk</string>
+    <string name="main_status_compose_all_added">Alle geselecteerde foto\'s staan al in de lijst</string>
+    <string name="main_status_compose_paired">%1$d foto\'s en %2$d video\'s; %3$d samenstellingsparen toegevoegd (op basis van de kleinste groep)</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d samenstellingstaak toegevoegd; tik op "Conversie starten" om samen te stellen</item>
+        <item quantity="other">%1$d samenstellingstaken toegevoegd; tik op "Conversie starten" om samen te stellen</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (uitvoerformaat automatisch gewijzigd naar Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">%1$d gedeelde afbeelding wordt geïmporteerd…</item>
+        <item quantity="other">%1$d gedeelde afbeeldingen worden geïmporteerd…</item>
+    </plurals>
+    <string name="main_status_import_failed">Importeren mislukt: %1$s</string>
+    <string name="main_status_import_done_partial">Importeren voltooid: %1$d geslaagd, %2$d mislukt</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importeren voltooid: %1$d bestand geïmporteerd</item>
+        <item quantity="other">Importeren voltooid: %1$d bestanden geïmporteerd</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importeren gestopt: %1$d geslaagd, %2$d mislukt</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d bestand wordt geïmporteerd…</item>
+        <item quantity="other">%1$d bestanden worden geïmporteerd…</item>
+    </plurals>
+    <string name="main_status_importing_progress">%1$d/%2$d importeren…</string>
+    <string name="main_status_stopping">Stoppen… (stopt na het huidige bestand)</string>
+    <string name="main_status_stopping_import">Importeren wordt gestopt…</string>
+    <string name="main_status_removed">%1$s verwijderd</string>
+    <string name="main_status_cleared">Lijst gewist</string>
+    <string name="main_status_nothing_to_convert">Geen bestanden om te converteren</string>
+    <string name="main_status_folder_unreadable">Kan de geselecteerde map niet lezen</string>
+    <string name="main_status_scanning_folder">Map wordt gescand…</string>
+    <string name="main_status_no_images">Geen afbeeldingen gevonden in de geselecteerde map</string>
+    <string name="main_status_batch_importing">Batchimport %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Batchimport gestopt: %1$d Live Photo geïmporteerd</item>
+        <item quantity="other">Batchimport gestopt: %1$d Live Photo\'s geïmporteerd</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Batchimport gestopt: %1$d Live Photo geïmporteerd, %2$d niet-dynamische bestanden overgeslagen</item>
+        <item quantity="other">Batchimport gestopt: %1$d Live Photo\'s geïmporteerd, %2$d niet-dynamische bestanden overgeslagen</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Batchimport voltooid: %1$d Live Photo geïmporteerd</item>
+        <item quantity="other">Batchimport voltooid: %1$d Live Photo\'s geïmporteerd</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Batchimport voltooid: %1$d Live Photo geïmporteerd, %2$d niet-dynamische bestanden overgeslagen</item>
+        <item quantity="other">Batchimport voltooid: %1$d Live Photo\'s geïmporteerd, %2$d niet-dynamische bestanden overgeslagen</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Gestopt: van %1$d bestanden zijn er %2$d verwerkt en %3$d bronbestanden vervangen</string>
+    <string name="main_status_stopped_export">Gestopt: van %1$d bestanden zijn er %2$d verwerkt en %3$d naar de galerij geëxporteerd</string>
+    <string name="main_status_done_replace_reason">Voltooid: %1$d bestanden verwerkt, %2$d bronbestanden vervangen (reden: %3$s)</string>
+    <string name="main_status_done_export_reason">Voltooid: %1$d bestanden verwerkt, %2$d naar de galerij geëxporteerd (reden: %3$s)</string>
+    <string name="main_status_done_replace">Voltooid: %1$d bestanden verwerkt, %2$d bronbestanden vervangen</string>
+    <string name="main_status_done_export">Voltooid: %1$d bestanden verwerkt, %2$d naar de galerij geëxporteerd</string>
+    <string name="main_status_keep_originals">%1$s; zonder de machtiging "volledige opslagtoegang" zijn de originelen behouden</string>
+
+    <!-- ── Informatie per lijstitem ── -->
+    <string name="main_info_detecting">Detecteren…</string>
+    <string name="main_info_unrecognized">Onbekend Live Photo-formaat</string>
+    <string name="main_info_converting">Converteren…</string>
+    <string name="main_info_compose_task">Samenstellingstaak (tik op Conversie starten om samen te stellen)</string>
+    <string name="main_info_done_replaced">Voltooid (%1$d bronbestanden vervangen)</string>
+    <string name="main_info_done_skipped">Voltooid (overgeslagen: naamconflict)</string>
+    <string name="main_info_done_exported">Voltooid (%1$d geëxporteerd)</string>
+    <string name="main_info_failed">Mislukt: %1$s</string>
+
+    <!-- ── Voortgangsdetails ── -->
+    <string name="main_progress_added">%1$d/%2$d toegevoegd</string>
+    <string name="main_progress_processed">%1$d/%2$d verwerkt</string>
+    <string name="main_progress_imported">%1$d/%2$d geïmporteerd</string>
+
+    <!-- ── Machtigingsdialoog ── -->
+    <string name="main_dialog_permission_title">Machtiging nodig om foto\'s en video\'s te lezen</string>
+    <string name="main_dialog_permission_message">Deze app moet de foto\'s en video\'s op je toestel lezen:\n\n• Fototoegang: de galerij scannen en Live Photo\'s herkennen\n• Videotoegang: het bijbehorende videobestand van Live Photo\'s met twee bestanden vinden\n• Locatietoegang: de GPS-metagegevens van de foto behouden (zonder deze gaat de locatie na de conversie verloren)\n\nAls je weigert, werkt de ingebouwde kiezer niet; tik later opnieuw op "Bestanden toevoegen" om toestemming te geven.</string>
+    <string name="main_dialog_settings_title">Je moet de foto- en videomachtigingen handmatig verlenen</string>
+    <string name="main_dialog_settings_message">Je hebt gekozen voor "niet meer vragen", dus het systeem toont het machtigingsvenster niet meer.\n\nGa naar App-details → Machtigingen → Foto\'s en video\'s, verleen de toegang handmatig en kom terug naar de app.\n\nLet op: je moet zowel "Foto\'s" als "Video\'s" toestaan, anders kunnen Live Photo\'s met twee bestanden het bijbehorende videobestand niet vinden.</string>
+
+    <!-- ── Vensters over "toegang tot alle bestanden" ── -->
+    <string name="main_dialog_allfiles_title_delete">Automatisch originelen verwijderen vereist "toegang tot alle bestanden"</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Dit toestel ondersteunt het automatisch verwijderen van originelen niet</string>
+    <string name="main_dialog_allfiles_title_replace">De vervangmodus vereist "toegang tot alle bestanden"</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Dit toestel ondersteunt de vervangmodus niet</string>
+    <string name="main_dialog_allfiles_title_location">We raden aan "toegang tot alle bestanden" te verlenen</string>
+    <string name="main_dialog_allfiles_delete_message">"Originelen verwijderen na verwerking" verwijdert de bestanden rechtstreeks van de schijf (de foto en de bijbehorende video). Dit kan niet ongedaan worden gemaakt, dus je moet eerst de machtiging "toegang tot alle bestanden" verlenen.\n\nPas na autorisatie wordt de schakelaar beschikbaar en kun je hem aanzetten.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Het huidige systeem (Android 10 of lager) biedt geen machtiging "toegang tot alle bestanden" en staat het verwijderen van bestanden van de schijf niet toe, dus dit toestel ondersteunt "Originelen verwijderen na verwerking" niet.\n\nJe kunt de originelen na de conversie handmatig opruimen via de systeemgalerij.</string>
+    <string name="main_dialog_allfiles_replace_message">De "vervangmodus" schrijft het resultaat rechtstreeks naar de bestanden op de schijf (het originele bestand wordt overschreven). Dit kan niet ongedaan worden gemaakt, dus je moet eerst de machtiging "toegang tot alle bestanden" verlenen.\n\nPas na autorisatie wordt de schakelaar beschikbaar en kun je hem aanzetten.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Het huidige systeem (Android 10 of lager) biedt geen machtiging "toegang tot alle bestanden" en staat het herschrijven van bestanden op de schijf niet toe, dus dit toestel ondersteunt de "vervangmodus" niet.\n\nJe kunt blijven converteren op de standaardmanier; het resultaat komt in de galerijmap.</string>
+    <string name="main_dialog_allfiles_location_message">Op sommige toestellen (zoals Meizu) verwijdert schrijven via de API van de systeemgalerij de GPS-metagegevens, waardoor de foto na de conversie de locatie verliest.\n\nMet "toegang tot alle bestanden" schrijft de app direct naar de galerijmap en blijven de locatiegegevens behouden.\n\nConverteren werkt ook zonder deze machtiging, maar op sommige toestellen kan de locatie verloren gaan.</string>
+
+    <!-- ── Naamconflictvenster ── -->
+    <string name="main_dialog_conflict_title">Conflict in de naam van het uitvoerbestand</string>
+    <string name="main_dialog_conflict_message">In de uitvoermap bestaat al een bestand met dezelfde naam:\n%1$s\n\nKies hoe je verder wilt gaan.</string>
+    <string name="main_label_conflict_always">Deze keuze ook voor volgende conflicten gebruiken</string>
+
+    <!-- ── Knoppen in de vensters ── -->
+    <string name="main_btn_grant">Autoriseren</string>
+    <string name="main_btn_deny">Weigeren</string>
+    <string name="main_btn_go_settings">Instellingen openen</string>
+    <string name="main_btn_cancel">Annuleren</string>
+    <string name="main_btn_grant_access">Autoriseren</string>
+    <string name="main_btn_got_it">Begrepen</string>
+    <string name="main_btn_not_now">Niet nu</string>
+    <string name="main_btn_skip">Overslaan</string>
+    <string name="main_btn_overwrite">Overschrijven</string>
+    <string name="main_btn_auto_rename">Automatisch hernoemen</string>
+
+    <!-- ── Conversieresultaat / redenen van mislukte export ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d bronbestand verwijderd</item>
+        <item quantity="other">%1$d bronbestanden verwijderd</item>
+    </plurals>
+    <string name="main_delete_nothing">Geen originelen om te verwijderen</string>
+    <string name="main_delete_partial">%1$d bronbestanden verwijderd (%2$d mislukt en behouden)</string>
+    <string name="main_delete_failed">Verwijderen van originelen mislukt (bestand in gebruik of geen schrijfrechten); ze zijn behouden</string>
+    <string name="main_export_missing_output">Conversieresultaat ontbreekt of is leeg: %1$s</string>
+    <string name="main_export_missing_output_bare">Conversieresultaat ontbreekt of is leeg</string>
+    <string name="main_export_insert_null">MediaStore insert gaf null terug</string>
+    <string name="main_export_output_stream">MediaStore-uitvoerstroom niet beschikbaar</string>
+    <string name="main_export_write_failed">Schrijven via MediaStore mislukt: %1$s</string>
+    <string name="main_export_mkdir_failed">Kan de galerijmap %1$s niet aanmaken</string>
+    <string name="main_export_dir_write_failed">Schrijven naar de galerijmap mislukt: %1$s</string>
+    <string name="main_export_no_source">Kan het bronbestand niet vinden; vervangen overgeslagen</string>
+    <string name="main_export_companion_failed">Schrijven van het bijbehorende bestand mislukt: %1$s</string>
+    <string name="main_export_source_dir_unwritable">De map van het bronbestand is niet beschrijfbaar; het bijbehorende bestand kon niet worden teruggeschreven</string>
+    <string name="main_export_source_dir_unavailable">Map van het bronbestand niet beschikbaar: %1$s</string>
+    <string name="main_export_replace_failed">Vervangen van het bronbestand mislukt: %1$s</string>
+    <string name="main_export_replace_failed_bare">Vervangen van het bronbestand mislukt</string>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · বাংলা স্ট্রিং (bn)।
+  ZLC · Bengali strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple লাইভ ফটো</string>
+    <string name="fmt_extract">এক্সট্র্যাক্ট</string>
+    <string name="fmt_google">Google মোশন ফটো</string>
+    <string name="fmt_honor">Honor লাইভ ফটো</string>
+    <string name="fmt_meizu">Meizu লাইভ ফটো</string>
+    <string name="fmt_nubia">Nubia লাইভ ফটো</string>
+    <string name="fmt_oppo">OPPO লাইভ ফটো</string>
+    <string name="fmt_vivo">vivo লাইভ ফটো</string>
+    <string name="fmt_vivo_single">vivo একক-ফাইল লাইভ ফটো</string>
+    <string name="fmt_xiaomi">Xiaomi লাইভ ফটো</string>
+    <string name="fmt_err_apple_mov_missing">একই নামের .mov ভিডিও ফাইল পাওয়া যায়নি</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV ফাইলে ftyp box নেই</string>
+    <string name="fmt_err_extract_read">এক্সট্র্যাক্ট একটি আউটপুট ফরম্যাট, ইনপুট ফরম্যাট হিসেবে পড়া যায় না</string>
+    <string name="fmt_err_no_primary_jpeg">প্রধান JPEG ছবি পাওয়া যায়নি</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG-এর পরে বৈধ MP4 ভিডিও পাওয়া যায়নি (ftyp box নেই)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 ভিডিও স্ট্রিম বিশ্লেষণ করা যায়নি</string>
+    <string name="fmt_err_nubia_too_short">ফাইলটি খুব ছোট, Nubia লাইভ ফটো বলে মনে হচ্ছে না</string>
+    <string name="fmt_err_nubia_no_magic">শেষে nubiaVpfile ম্যাজিক নম্বর নেই</string>
+    <string name="fmt_err_nubia_jpeg_len">শেষে লেখা JPEG দৈর্ঘ্য অবৈধ: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG ও ভিডিওর মাঝে 0x00 প্যাডিং বাইট নেই</string>
+    <string name="fmt_err_nubia_empty_video">এমবেড করা ভিডিওর দৈর্ঘ্য 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG-এর শেষে vivo livephoto মার্কার পাওয়া যায়নি</string>
+    <string name="fmt_err_vivo_companion_missing">সঙ্গী ভিডিও ফাইল নেই: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG বডি বিশ্লেষণ করা যায়নি</string>
+    <string name="fmt_err_vivo_companion_invalid">সঙ্গী MP4 অবৈধ (ftyp box নেই)</string>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Polski (pl) — ekran ustawień (ui/SettingsScreen.kt). Prefiks kluczy settings_.
+  Klucze odpowiadają res/values/ (chiński tekst zapasowy).
+  Symbole zastępcze zawsze w formie numerowanej: %1$s / %1$d.
+  Poza tłumaczeniem (nazwy własne i oznaczenia): „@毛血旺o”, „Trae · GML · DeepSeek · Kimi”,
+  „GPL-3.0”, „H.265”/„H.264”, adres GitHub.
+-->
+<resources>
+
+    <!-- Ogólne -->
+    <string name="settings_title">Ustawienia</string>
+    <string name="settings_cd_back">Wstecz</string>
+    <string name="settings_btn_apply">Zastosuj</string>
+    <string name="settings_btn_cancel">Anuluj</string>
+    <string name="settings_btn_close">Zamknij</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Wspieraj</string>
+
+    <!-- Tytuły grup -->
+    <string name="settings_section_general">Ogólne</string>
+    <string name="settings_section_appearance">Wygląd</string>
+    <string name="settings_section_language">Język</string>
+    <string name="settings_section_defaults">Domyślne opcje</string>
+    <string name="settings_section_output">Wyjście</string>
+    <string name="settings_section_transcode">Transkodowanie wideo</string>
+    <string name="settings_section_about">O aplikacji</string>
+    <string name="settings_section_app">Aplikacja</string>
+    <string name="settings_section_credits">Podziękowania i wsparcie</string>
+    <string name="settings_section_opensource">Open source i licencje</string>
+
+    <!-- Ogólne -->
+    <string name="settings_startup_check_title">Sprawdzaj aktualizacje przy starcie</string>
+    <string name="settings_startup_check_subtitle">Przy starcie automatycznie pobiera nową wersję z GitHub i proponuje pobranie, gdy jest dostępna</string>
+    <string name="settings_haptics_title">Wibracje</string>
+    <string name="settings_haptics_subtitle">Wibracje przy dotknięciach przycisków i zmianach stanu</string>
+    <string name="settings_bounce_title">Animacja sprężysta przycisków</string>
+    <string name="settings_bounce_subtitle">Animacja zmniejszania i odbicia przy naciśnięciu przycisku</string>
+
+    <!-- Wygląd -->
+    <string name="settings_theme_system">Zgodnie z systemem</string>
+    <string name="settings_theme_dark">Ciemny</string>
+    <string name="settings_theme_light">Jasny</string>
+    <string name="settings_dynamic_theme_title">Material You — dynamiczne kolory</string>
+    <string name="settings_dynamic_theme_subtitle">Kolory z tapety systemu (Android 12+); po wyłączeniu używane są gotowe motywy poniżej</string>
+    <string name="settings_preset_colors_title">Gotowe kolory motywu</string>
+    <string name="settings_preset_current">Bieżący: %1$s</string>
+    <string name="settings_preset_disabled_hint">Dostępne po wyłączeniu „Material You — dynamiczne kolory”</string>
+    <string name="settings_custom">Niestandardowy</string>
+    <string name="settings_custom_color_title">Niestandardowy kolor motywu</string>
+    <string name="settings_cd_custom_palette">Niestandardowa paleta</string>
+    <string name="settings_hue_value">Barwa %1$d°</string>
+
+    <!-- Język aplikacji: tytuł i „Zgodnie z systemem” są w strings_app.xml
+         (R.string.app_language_title / R.string.app_language_follow_system) — nie powtarzamy ich tutaj -->
+    <string name="settings_language_dialog_title">Wybierz język aplikacji</string>
+    <string name="settings_language_count">Dostępne języki: %1$d</string>
+
+    <!-- Domyślne opcje -->
+    <string name="settings_reminder_dialogs_title">Okna „Nie przypominaj”</string>
+    <string name="settings_reminder_dialogs_subtitle">Zarządzaj przełącznikami wszystkich okien „Nie przypominaj”</string>
+    <string name="settings_reminder_hint">Włączony przełącznik oznacza „nie przypominaj”; po wyłączeniu następne wystąpienie danej sytuacji znów pokaże okno.</string>
+
+    <!-- Wyjście -->
+    <string name="settings_preserve_folders_title">Zachowaj strukturę folderów źródłowych</string>
+    <string name="settings_preserve_folders_subtitle">Wyniki trafiają do podkatalogów nazwanych jak oryginalne albumy; po wyłączeniu wszystko jest w jednym katalogu</string>
+
+    <!-- O aplikacji -->
+    <string name="settings_about_title">O aplikacji</string>
+    <string name="settings_about_subtitle">Wersja · Sprawdź aktualizacje · Podziękowania i wsparcie</string>
+    <string name="settings_check_update_title">Sprawdź aktualizacje</string>
+    <string name="settings_check_update_subtitle">Pobierz najnowszą wersję z GitHub Releases</string>
+    <string name="settings_checking">Sprawdzanie…</string>
+    <string name="settings_update_available">Dostępna wersja v%1$s</string>
+    <string name="settings_up_to_date">Masz najnowszą wersję</string>
+    <string name="settings_network_error">Błąd sieci — spróbuj ponownie później</string>
+    <string name="settings_reinstall_title">Zainstaluj ponownie tę wersję</string>
+    <string name="settings_reinstall_subtitle">Pobierz bieżącą najnowszą wersję i zainstaluj ją ponownie (do testów aktualizacji)</string>
+    <string name="settings_reinstall_newer_hint">Można zaktualizować do v%1$s — najpierw użyj „Sprawdź aktualizacje”</string>
+    <string name="settings_version_title">Wersja</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Wsparcie przez Alipay</string>
+    <string name="settings_alipay_subtitle">Wspieraj rozwój</string>
+    <string name="settings_coolapk_subtitle">Użytkownik Coolapk · dziękujemy za wsparcie</string>
+    <string name="settings_ai_credits_subtitle">Dziękujemy IDE i modelom AI za pomoc w rozwoju</string>
+    <string name="settings_github_title">Adres open source na GitHub</string>
+    <string name="settings_license_title">Licencja open source</string>
+    <string name="settings_sponsor_dialog_title">Dziękujemy za wsparcie</string>
+    <string name="settings_sponsor_dialog_text">Naprawdę bardzo dziękuję, że chcesz wesprzeć tę aplikację!\n\nJeśli jeszcze się uczysz albo nie masz własnych dochodów, absolutnie nie wydawaj na to pieniędzy —\nzachowaj tę życzliwość w sercu i po prostu korzystaj dalej; to dla mnie najlepsze wsparcie.\n\nJeśli chcesz wesprzeć, nawet złotówka się liczy — przeznaczę ją na lepsze utrzymanie i nowe funkcje:)</string>
+    <string name="settings_alipay_missing_title">Alipay nie jest zainstalowany</string>
+    <string name="settings_alipay_missing_text">Nie wykryto Alipay, więc nie można teraz dokończyć wsparcia.\n\nNie szkodzi — w każdym razie bardzo dziękuję za dobre chęci!</string>
+
+    <!-- Transkodowanie wideo -->
+    <string name="settings_transcoder_title">Wbudowany transkoder</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Koduj ponownie</string>
+    <string name="settings_transcode_mode_remux">Tylko przepakuj kontener (zalecane)</string>
+    <string name="settings_transcode_mode_off">Nie używaj transkodera wcale</string>
+    <string name="settings_transcode_params_title">Parametry transkodowania</string>
+    <string name="settings_transcode_params_subtitle">Parametry jakości i kompresji używane przy ponownym kodowaniu</string>
+    <string name="settings_transcode_params_disabled">Działa tylko, gdy w „Metoda transkodowania” wybrano „Koduj ponownie”</string>
+    <string name="settings_crf_value">Jakość CRF: %1$d</string>
+    <string name="settings_crf_hint">Im mniejsza wartość, tym wyższa jakość i większy rozmiar (domyślnie 18)</string>
+    <string name="settings_encoder_title">Koder</string>
+    <string name="settings_compress_preset_title">Preset kompresji</string>
+
+</resources>

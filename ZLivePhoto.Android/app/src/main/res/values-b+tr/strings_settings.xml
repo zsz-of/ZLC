@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Türkçe (tr) — ayarlar ekranı (ui/SettingsScreen.kt). Anahtar öneki settings_.
+  Anahtarlar res/values/ (Basitleştirilmiş Çince yedek metin) ile aynıdır.
+  Yer tutucular her zaman numaralı biçimde: %1$s / %1$d.
+  Çevrilmeyen özel adlar ve kodlar: „@毛血旺o”, „Trae · GML · DeepSeek · Kimi”,
+  „GPL-3.0”, „H.265”/„H.264”, GitHub adresi.
+-->
+<resources>
+
+    <!-- Genel -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_cd_back">Geri</string>
+    <string name="settings_btn_apply">Uygula</string>
+    <string name="settings_btn_cancel">İptal</string>
+    <string name="settings_btn_close">Kapat</string>
+    <string name="settings_btn_ok">Tamam</string>
+    <string name="settings_btn_sponsor">Destek ol</string>
+
+    <!-- Grup başlıkları -->
+    <string name="settings_section_general">Genel</string>
+    <string name="settings_section_appearance">Görünüm</string>
+    <string name="settings_section_language">Dil</string>
+    <string name="settings_section_defaults">Varsayılan seçenekler</string>
+    <string name="settings_section_output">Çıktı</string>
+    <string name="settings_section_transcode">Video dönüştürme</string>
+    <string name="settings_section_about">Hakkında</string>
+    <string name="settings_section_app">Uygulama</string>
+    <string name="settings_section_credits">Teşekkürler ve destek</string>
+    <string name="settings_section_opensource">Açık kaynak ve lisanslar</string>
+
+    <!-- Genel -->
+    <string name="settings_startup_check_title">Başlangıçta güncellemeleri denetle</string>
+    <string name="settings_startup_check_subtitle">Başlangıçta GitHub\'dan yeni sürümü otomatik alır ve güncelleme varsa indirmeyi önerir</string>
+    <string name="settings_haptics_title">Titreşim geri bildirimi</string>
+    <string name="settings_haptics_subtitle">Düğme dokunuşlarında ve durum değişimlerinde dokunsal geri bildirim</string>
+    <string name="settings_bounce_title">Düğme yay animasyonu</string>
+    <string name="settings_bounce_subtitle">Düğmeye basıldığında küçülüp geri yaylanma animasyonu</string>
+
+    <!-- Görünüm -->
+    <string name="settings_theme_system">Sistemi izle</string>
+    <string name="settings_theme_dark">Koyu</string>
+    <string name="settings_theme_light">Açık</string>
+    <string name="settings_dynamic_theme_title">Material You dinamik renk</string>
+    <string name="settings_dynamic_theme_subtitle">Sistem duvar kâğıdı renklerini izler (Android 12+); kapatıldığında aşağıdaki hazır tema renkleri kullanılır</string>
+    <string name="settings_preset_colors_title">Hazır tema renkleri</string>
+    <string name="settings_preset_current">Geçerli: %1$s</string>
+    <string name="settings_preset_disabled_hint">„Material You dinamik renk” kapatıldığında seçilebilir</string>
+    <string name="settings_custom">Özel</string>
+    <string name="settings_custom_color_title">Özel tema rengi</string>
+    <string name="settings_cd_custom_palette">Özel palet</string>
+    <string name="settings_hue_value">Renk tonu %1$d°</string>
+
+    <!-- Uygulama dili: başlık ve „Sistemi izle” strings_app.xml içindedir
+         (R.string.app_language_title / R.string.app_language_follow_system), burada yinelenmez -->
+    <string name="settings_language_dialog_title">Uygulama dilini seç</string>
+    <string name="settings_language_count">%1$d dil</string>
+
+    <!-- Varsayılan seçenekler -->
+    <string name="settings_reminder_dialogs_title">„Bir daha gösterme” pencereleri</string>
+    <string name="settings_reminder_dialogs_subtitle">Tüm „Bir daha gösterme” pencerelerinin anahtarlarını yönet</string>
+    <string name="settings_reminder_hint">Açık anahtar „bir daha gösterme” anlamına gelir; kapatıldığında ilgili durum tekrar oluştuğunda pencere yeniden gösterilir.</string>
+
+    <!-- Çıktı -->
+    <string name="settings_preserve_folders_title">Kaynak klasör yapısını koru</string>
+    <string name="settings_preserve_folders_subtitle">Sonuçlar özgün albüm adlarıyla alt klasörlere konur; kapatıldığında tümü tek klasöre düz olarak yazılır</string>
+
+    <!-- Hakkında -->
+    <string name="settings_about_title">Hakkında</string>
+    <string name="settings_about_subtitle">Sürüm · Güncellemeleri denetle · Teşekkürler ve destek</string>
+    <string name="settings_check_update_title">Güncellemeleri denetle</string>
+    <string name="settings_check_update_subtitle">En yeni sürümü GitHub Releases\'ten al</string>
+    <string name="settings_checking">Denetleniyor…</string>
+    <string name="settings_update_available">v%1$s kullanılabilir</string>
+    <string name="settings_up_to_date">En son sürümdesiniz</string>
+    <string name="settings_network_error">Ağ hatası, lütfen daha sonra tekrar deneyin</string>
+    <string name="settings_reinstall_title">Bu sürümü yeniden kur</string>
+    <string name="settings_reinstall_subtitle">Geçerli en yeni sürümü indirip üzerine kur (güncelleme testi için)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s sürümüne yükseltilebilir; önce „Güncellemeleri denetle” seçeneğini kullanın</string>
+    <string name="settings_version_title">Sürüm</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay ile destek</string>
+    <string name="settings_alipay_subtitle">Geliştirmeyi destekle</string>
+    <string name="settings_coolapk_subtitle">Coolapk kullanıcısı · desteği için teşekkürler</string>
+    <string name="settings_ai_credits_subtitle">Geliştirmede yardımcı olan AI IDE ve AI modellerine teşekkürler</string>
+    <string name="settings_github_title">GitHub açık kaynak adresi</string>
+    <string name="settings_license_title">Açık kaynak lisansı</string>
+    <string name="settings_sponsor_dialog_title">Desteğiniz için teşekkürler</string>
+    <string name="settings_sponsor_dialog_text">Bu uygulamayı desteklemek istediğin için gerçekten çok teşekkür ederim!\n\nHâlâ öğrenciysen ya da kendi gelirin yoksa lütfen hiç harcama yapma —\nbu iyi niyeti içinde sakla ve kullanmaya devam et; bu benim için en iyi destektir.\n\nDestek olmak istersen bir lira bile değerlidir; onu daha iyi bakım ve yeni özelliklere aktaracağım:)</string>
+    <string name="settings_alipay_missing_title">Alipay yüklü değil</string>
+    <string name="settings_alipay_missing_text">Alipay bulunamadı, bu yüzden destek şu anda tamamlanamıyor.\n\nÖnemli değil — her hâlükârda iyi niyetiniz için çok teşekkürler!</string>
+
+    <!-- Video dönüştürme -->
+    <string name="settings_transcoder_title">Gömülü dönüştürücü</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Yeniden kodla</string>
+    <string name="settings_transcode_mode_remux">Yalnızca kapsayıcıyı yeniden paketle (önerilir)</string>
+    <string name="settings_transcode_mode_off">Dönüştürücüyü hiç kullanma</string>
+    <string name="settings_transcode_params_title">Dönüştürme parametreleri</string>
+    <string name="settings_transcode_params_subtitle">Yeniden kodlarken kullanılan kalite ve sıkıştırma parametreleri</string>
+    <string name="settings_transcode_params_disabled">Yalnızca „Dönüştürme yöntemi” olarak „Yeniden kodla” seçildiğinde geçerlidir</string>
+    <string name="settings_crf_value">Kalite CRF: %1$d</string>
+    <string name="settings_crf_hint">Değer küçüldükçe kalite artar ve boyut büyür (varsayılan 18)</string>
+    <string name="settings_encoder_title">Kodlayıcı</string>
+    <string name="settings_compress_preset_title">Sıkıştırma ön ayarı</string>
+
+</resources>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Italiano strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+
+    <!-- ── Barra di stato / avvisi ── -->
+    <string name="main_status_ready">Pronto</string>
+    <string name="main_status_location_granted">Permesso di localizzazione concesso: i metadati GPS verranno mantenuti dopo la conversione</string>
+    <string name="main_status_location_denied">Permesso di localizzazione non concesso: le foto convertite perderanno le informazioni GPS</string>
+    <string name="main_status_all_files_granted">Permesso «accesso a tutti i file» concesso: la conversione scriverà direttamente nella galleria e manterrà le informazioni di posizione</string>
+    <string name="main_status_all_files_denied">Permesso «accesso a tutti i file» non concesso: su alcuni dispositivi le informazioni di posizione potrebbero andare perse dopo la conversione</string>
+    <string name="main_status_read_granted">Permesso di lettura di foto e video concesso</string>
+    <string name="main_status_video_missing">Autorizzato, ma manca il permesso video: impossibile trovare il video associato dei Live Photo a due file</string>
+    <string name="main_status_permission_denied">Permesso non concesso: tocca di nuovo «Aggiungi file»</string>
+    <string name="main_status_folder_not_selected">Nessuna cartella selezionata</string>
+    <string name="main_status_folder_unavailable">Impossibile accedere alla cartella selezionata (solo directory di archiviazione locale)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Sessione precedente ripristinata (%1$d file)</item>
+        <item quantity="other">Sessione precedente ripristinata (%1$d file)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Rilevata una chiusura anomala precedente: la lista non completata è stata svuotata</string>
+    <string name="main_status_compose_blocks_extract">La coda contiene attività di composizione: non puoi passare alla modalità Estrai</string>
+    <string name="main_status_replace_off_mutex">Modalità sostituzione disattivata (incompatibile con «Elimina gli originali al termine»)</string>
+    <string name="main_status_delete_needs_all_files">L\'eliminazione automatica degli originali richiede il permesso «accesso a tutti i file». Autorizza prima</string>
+    <string name="main_status_replace_off">Modalità sostituzione disattivata: i risultati tornano a essere scritti nella galleria</string>
+    <string name="main_status_replace_needs_all_files">La modalità sostituzione richiede il permesso «accesso a tutti i file». Autorizza prima</string>
+    <string name="main_status_delete_off_mutex">«Elimina gli originali al termine» disattivato (incompatibile con la modalità sostituzione)</string>
+    <string name="main_status_loading_albums">Lettura degli album…</string>
+    <string name="main_status_no_albums">Nessun album trovato</string>
+    <string name="main_status_compose_no_photo">Nessuna foto selezionata: impossibile comporre</string>
+    <string name="main_status_compose_no_video">Nessun video selezionato: impossibile comporre</string>
+    <string name="main_status_compose_all_added">Tutte le foto selezionate sono già nella lista</string>
+    <string name="main_status_compose_paired">%1$d foto e %2$d video: aggiunte %3$d coppie di composizione (in base al lato minore)</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d attività di composizione aggiunta: tocca «Avvia conversione» per comporre</item>
+        <item quantity="other">%1$d attività di composizione aggiunte: tocca «Avvia conversione» per comporre</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (formato di output cambiato automaticamente in Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Importazione di %1$d immagine condivisa…</item>
+        <item quantity="other">Importazione di %1$d immagini condivise…</item>
+    </plurals>
+    <string name="main_status_import_failed">Importazione non riuscita: %1$s</string>
+    <string name="main_status_import_done_partial">Importazione completata: %1$d riusciti, %2$d non riusciti</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importazione completata: %1$d file importato</item>
+        <item quantity="other">Importazione completata: %1$d file importati</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importazione interrotta: %1$d riusciti, %2$d non riusciti</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Importazione di %1$d file…</item>
+        <item quantity="other">Importazione di %1$d file…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importazione %1$d/%2$d…</string>
+    <string name="main_status_stopping">Interruzione… (termina dopo il file corrente)</string>
+    <string name="main_status_stopping_import">Interruzione dell\'importazione…</string>
+    <string name="main_status_removed">%1$s rimosso</string>
+    <string name="main_status_cleared">Lista svuotata</string>
+    <string name="main_status_nothing_to_convert">Nessun file da convertire</string>
+    <string name="main_status_folder_unreadable">Impossibile leggere la cartella selezionata</string>
+    <string name="main_status_scanning_folder">Scansione della cartella…</string>
+    <string name="main_status_no_images">Nessuna immagine trovata nella cartella selezionata</string>
+    <string name="main_status_batch_importing">Importazione in blocco %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Importazione in blocco interrotta: %1$d Live Photo importato</item>
+        <item quantity="other">Importazione in blocco interrotta: %1$d Live Photo importati</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Importazione in blocco interrotta: %1$d Live Photo importato, %2$d file non dinamici saltati</item>
+        <item quantity="other">Importazione in blocco interrotta: %1$d Live Photo importati, %2$d file non dinamici saltati</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Importazione in blocco completata: %1$d Live Photo importato</item>
+        <item quantity="other">Importazione in blocco completata: %1$d Live Photo importati</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Importazione in blocco completata: %1$d Live Photo importato, %2$d file non dinamici saltati</item>
+        <item quantity="other">Importazione in blocco completata: %1$d Live Photo importati, %2$d file non dinamici saltati</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Interrotto: su %1$d file ne sono stati elaborati %2$d e sostituiti %3$d file di origine</string>
+    <string name="main_status_stopped_export">Interrotto: su %1$d file ne sono stati elaborati %2$d e %3$d esportati nella galleria</string>
+    <string name="main_status_done_replace_reason">Completato: %1$d file elaborati, %2$d file di origine sostituiti (motivo: %3$s)</string>
+    <string name="main_status_done_export_reason">Completato: %1$d file elaborati, %2$d esportati nella galleria (motivo: %3$s)</string>
+    <string name="main_status_done_replace">Completato: %1$d file elaborati, %2$d file di origine sostituiti</string>
+    <string name="main_status_done_export">Completato: %1$d file elaborati, %2$d esportati nella galleria</string>
+    <string name="main_status_keep_originals">%1$s; senza il permesso di «accesso completo all\'archiviazione» gli originali sono stati mantenuti</string>
+
+    <!-- ── Informazioni sull'elemento della lista ── -->
+    <string name="main_info_detecting">Rilevamento…</string>
+    <string name="main_info_unrecognized">Formato Live Photo non riconosciuto</string>
+    <string name="main_info_converting">Conversione…</string>
+    <string name="main_info_compose_task">Attività di composizione (tocca Avvia conversione per comporre)</string>
+    <string name="main_info_done_replaced">Completato (%1$d file di origine sostituiti)</string>
+    <string name="main_info_done_skipped">Completato (saltato: conflitto di nome)</string>
+    <string name="main_info_done_exported">Completato (%1$d esportati)</string>
+    <string name="main_info_failed">Non riuscito: %1$s</string>
+
+    <!-- ── Dettagli di avanzamento ── -->
+    <string name="main_progress_added">%1$d/%2$d aggiunti</string>
+    <string name="main_progress_processed">%1$d/%2$d elaborati</string>
+    <string name="main_progress_imported">%1$d/%2$d importati</string>
+
+    <!-- ── Finestra dei permessi ── -->
+    <string name="main_dialog_permission_title">Serve il permesso per leggere foto e video</string>
+    <string name="main_dialog_permission_message">Questa app deve leggere le foto e i video del dispositivo:\n\n• Permesso foto: analizzare la galleria del dispositivo e riconoscere i Live Photo\n• Permesso video: trovare il video associato dei Live Photo a due file\n• Permesso posizione: mantenere i metadati GPS della foto (senza di esso la posizione va persa dopo la conversione)\n\nSe rifiuti, il selettore integrato non funzionerà; potrai toccare di nuovo «Aggiungi file» per autorizzare.</string>
+    <string name="main_dialog_settings_title">Devi concedere manualmente i permessi per foto e video</string>
+    <string name="main_dialog_settings_message">Hai scelto «non chiedere più», quindi il sistema non mostra più la finestra dei permessi.\n\nVai su Dettagli app → Autorizzazioni → Foto e video, concedi l\'accesso manualmente e torna all\'app.\n\nAttenzione: devi concedere sia «Foto» sia «Video», altrimenti i Live Photo a due file non troveranno il video associato.</string>
+
+    <!-- ── Finestre su «accesso a tutti i file» ── -->
+    <string name="main_dialog_allfiles_title_delete">L\'eliminazione automatica degli originali richiede «accesso a tutti i file»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Questo dispositivo non supporta l\'eliminazione automatica degli originali</string>
+    <string name="main_dialog_allfiles_title_replace">La modalità sostituzione richiede «accesso a tutti i file»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Questo dispositivo non supporta la modalità sostituzione</string>
+    <string name="main_dialog_allfiles_title_location">Consigliamo di concedere «accesso a tutti i file»</string>
+    <string name="main_dialog_allfiles_delete_message">«Elimina gli originali al termine» cancella direttamente i file dal disco (la foto e il video associato). L\'operazione non è reversibile, quindi devi prima concedere il permesso «accesso a tutti i file».\n\nSolo dopo l\'autorizzazione l\'interruttore diventa disponibile e potrai attivarlo.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Il sistema attuale (Android 10 o precedente) non offre il permesso «accesso a tutti i file» e non consente di cancellare file dal disco, quindi questo dispositivo non supporta «Elimina gli originali al termine».\n\nPuoi rimuovere gli originali manualmente dalla galleria di sistema dopo la conversione.</string>
+    <string name="main_dialog_allfiles_replace_message">La «modalità sostituzione» scrive il risultato direttamente nei file sul disco (sovrascrivendo il contenuto originale). L\'operazione non è reversibile, quindi devi prima concedere il permesso «accesso a tutti i file».\n\nSolo dopo l\'autorizzazione l\'interruttore diventa disponibile e potrai attivarlo.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Il sistema attuale (Android 10 o precedente) non offre il permesso «accesso a tutti i file» e non consente di riscrivere file sul disco, quindi questo dispositivo non supporta la «modalità sostituzione».\n\nPuoi continuare a convertire in modalità predefinita: il risultato viene salvato nella cartella della galleria.</string>
+    <string name="main_dialog_allfiles_location_message">Su alcuni dispositivi (ad esempio Meizu), la scrittura tramite l\'API della galleria di sistema rimuove i metadati GPS e la foto perde la posizione dopo la conversione.\n\nCon «accesso a tutti i file», l\'app scrive direttamente nella cartella della galleria e conserva i metadati di posizione.\n\nLa conversione funziona anche senza il permesso, ma su alcuni dispositivi la posizione potrebbe andare persa.</string>
+
+    <!-- ── Finestra di conflitto sul nome ── -->
+    <string name="main_dialog_conflict_title">Conflitto nel nome del file di output</string>
+    <string name="main_dialog_conflict_message">Nella cartella di output esiste già un file con lo stesso nome:\n%1$s\n\nScegli come procedere.</string>
+    <string name="main_label_conflict_always">Usa questa scelta per i prossimi conflitti</string>
+
+    <!-- ── Pulsanti delle finestre ── -->
+    <string name="main_btn_grant">Autorizza</string>
+    <string name="main_btn_deny">Rifiuta</string>
+    <string name="main_btn_go_settings">Apri impostazioni</string>
+    <string name="main_btn_cancel">Annulla</string>
+    <string name="main_btn_grant_access">Autorizza</string>
+    <string name="main_btn_got_it">Ho capito</string>
+    <string name="main_btn_not_now">Non ora</string>
+    <string name="main_btn_skip">Salta</string>
+    <string name="main_btn_overwrite">Sovrascrivi</string>
+    <string name="main_btn_auto_rename">Rinomina automaticamente</string>
+
+    <!-- ── Esito della conversione / motivi di errore dell'esportazione ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d file di origine eliminato</item>
+        <item quantity="other">%1$d file di origine eliminati</item>
+    </plurals>
+    <string name="main_delete_nothing">Nessun originale da eliminare</string>
+    <string name="main_delete_partial">%1$d file di origine eliminati (%2$d non eliminati e conservati)</string>
+    <string name="main_delete_failed">Eliminazione degli originali non riuscita (file in uso o senza permesso di scrittura): sono stati conservati</string>
+    <string name="main_export_missing_output">Il risultato della conversione manca o è vuoto: %1$s</string>
+    <string name="main_export_missing_output_bare">Il risultato della conversione manca o è vuoto</string>
+    <string name="main_export_insert_null">MediaStore insert ha restituito null</string>
+    <string name="main_export_output_stream">Flusso di output di MediaStore non disponibile</string>
+    <string name="main_export_write_failed">Scrittura su MediaStore non riuscita: %1$s</string>
+    <string name="main_export_mkdir_failed">Impossibile creare la cartella della galleria %1$s</string>
+    <string name="main_export_dir_write_failed">Scrittura nella cartella della galleria non riuscita: %1$s</string>
+    <string name="main_export_no_source">Impossibile individuare il file di origine: sostituzione saltata</string>
+    <string name="main_export_companion_failed">Scrittura del file associato non riuscita: %1$s</string>
+    <string name="main_export_source_dir_unwritable">La cartella del file di origine non è scrivibile: il file associato non è stato riscritto</string>
+    <string name="main_export_source_dir_unavailable">Cartella del file di origine non disponibile: %1$s</string>
+    <string name="main_export_replace_failed">Sostituzione del file di origine non riuscita: %1$s</string>
+    <string name="main_export_replace_failed_bare">Sostituzione del file di origine non riuscita</string>
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Български (bg) — съобщения за актуализации и изтегляне (ключове update_*).
+  База: res/values/strings_update.xml (опростен китайски).
+  „蓝奏云“ (Lanzou Cloud) е китайска услуга за споделяне на файлове.
+-->
+<resources>
+
+    <!-- ========== Страница за споделяне в Lanzou Cloud и директни връзки ========== -->
+    <string name="update_lanzou_gone">Споделянето в Lanzou Cloud е отменено или файлът не съществува. Изтеглете от GitHub</string>
+    <string name="update_lanzou_gone_short">Споделянето в Lanzou Cloud е отменено. Изтеглете от GitHub</string>
+    <string name="update_lanzou_resolve_failed">Неуспешно разпознаване на връзката за изтегляне от Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Това споделяне в Lanzou Cloud изисква код за достъп. Изтеглете от GitHub (или потърсете кода в бележките към изданието)</string>
+    <string name="update_lanzou_wrong_passwd">Грешен код за достъп в Lanzou Cloud</string>
+    <string name="update_err_resolve_failed">Неуспешно разпознаване</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Неуспешна проверка срещу автоматизирано изтегляне в Lanzou Cloud</string>
+    <string name="update_err_no_frame">Страницата за изтегляне на Lanzou Cloud не може да бъде разпозната (не е намерен фрейм за изтегляне)</string>
+    <string name="update_err_no_file_id">Идентификаторът на файла в Lanzou Cloud не може да бъде разпознат</string>
+    <string name="update_err_no_sign">Подписът на Lanzou Cloud не може да бъде разпознат</string>
+    <string name="update_err_ajax_request">Неуспешна заявка към интерфейса</string>
+    <string name="update_err_api_request">Неуспешна заявка към интерфейса на Lanzou Cloud</string>
+    <string name="update_err_empty_direct">Lanzou Cloud върна празен адрес за изтегляне</string>
+    <string name="update_err_direct_expired">Адресът за изтегляне от Lanzou Cloud е изтекъл. Изтеглете го отново</string>
+    <string name="update_err_http_request">Неуспешна заявка (HTTP %1$d)</string>
+
+    <!-- ========== Изтегляне ========== -->
+    <string name="update_err_connect">Няма връзка със сървъра за изтегляне: %1$s</string>
+    <string name="update_err_http">Неуспешно изтегляне (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Не може да се установи връзка за изтегляне</string>
+    <string name="update_err_empty">Изтегленото съдържание е празно</string>
+    <string name="update_err_incomplete">Изтеглянето е непълно (получени %1$d от общо %2$d байта). Изтеглете отново</string>
+    <string name="update_err_interrupted">Изтеглянето е прекъснато: %1$s</string>
+
+    <!-- ========== Проверка и инсталиране на пакета ========== -->
+    <string name="update_err_not_apk">Изтегленият файл не е валиден инсталационен пакет (възможно е да е уеб страница или връзката да е невалидна). Изтеглете отново или използвайте GitHub.</string>
+    <string name="update_err_apk_incomplete">Съдържанието на инсталационния пакет е непълно. Изтеглете отново или използвайте GitHub.</string>
+    <string name="update_err_apk_unparsable">Инсталационният пакет не може да бъде анализиран (възможно е изтеглянето да е непълно). Изтеглете отново или използвайте GitHub.</string>
+    <string name="update_err_no_install_permission">Няма разрешение „Инсталиране на неизвестни приложения“</string>
+    <string name="update_err_installer_failed">Системният инсталатор не може да бъде стартиран (%1$s). Отворете пакета ръчно от файловия мениджър</string>
+
+</resources>

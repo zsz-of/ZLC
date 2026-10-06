@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Kiswahili (Swahili) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Reviewed for standard Kiswahili orthography but not yet proofread by a native speaker; a native review pass is recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Toa</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo ya faili moja</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">Hakuna faili la video .mov lenye jina moja lililopatikana</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Faili la MOV halina box ya ftyp</string>
+    <string name="fmt_err_extract_read">Toa ni muundo wa matokeo na hauwezi kusomwa kama muundo wa pembejeo</string>
+    <string name="fmt_err_no_primary_jpeg">Hakuna picha kuu ya JPEG iliyopatikana</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Hakuna video sahihi ya MP4 iliyopatikana baada ya JPEG (box ya ftyp haipo)</string>
+    <string name="fmt_err_mp4_parse_failed">Kuchanganua mtiririko wa video ya MP4 kumeshindikana</string>
+    <string name="fmt_err_nubia_too_short">Faili ni fupi mno kuwa Live Photo ya Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Magic number ya nubiaVpfile haipo mwisho wa faili</string>
+    <string name="fmt_err_nubia_jpeg_len">Urefu wa JPEG uliorekodiwa mwisho wa faili si sahihi: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Baiti za padding 0x00 kati ya JPEG na video hazipo</string>
+    <string name="fmt_err_nubia_empty_video">Urefu wa video iliyopachikwa ni 0</string>
+    <string name="fmt_err_vivo_no_marker">Alama ya livephoto ya vivo haipatikani mwisho wa JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Faili la video inayoandamana halipo: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Kuchanganua maudhui ya JPG kumeshindikana</string>
+    <string name="fmt_err_vivo_companion_invalid">MP4 inayoandamana si sahihi (box ya ftyp haipo)</string>
+</resources>

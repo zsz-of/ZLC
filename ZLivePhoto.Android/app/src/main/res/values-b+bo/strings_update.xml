@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（藏语 bo，C 级：低资源语种，术语多为新造词，仅供理解），可能存在不准确之处，欢迎社区修正。
+     ཡིག་ཆ་འདི་དཔེ་རྒྱུད་ཨང་རྟགས་ཀྱིས་བསྒྱུར་བ་ཡིན། ཡང་དག་མིན་པ་ཡོད་སྲིད།
+     「Lanzou Cloud」品牌名保留拉丁写法；占位符 %1$s / %1$d 保持原样。 -->
+<resources>
+
+    <!-- ========== Lanzou Cloud བརྗེ་སྤེལ་དང་ཐད་ཀའི་སྦྲེལ་ཐག་དབྱེ་ཞིབ ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud གི་བརྗེ་སྤེལ་བཀག་ཟིན་པའམ་ཡིག་ཆ་མེད་པས། GitHub ནས་ཕབ་ལེན་བྱོས</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud གི་བརྗེ་སྤེལ་བཀག་ཟིན། GitHub ནས་ཕབ་ལེན་བྱོས</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud གི་ཕབ་ལེན་སྦྲེལ་ཐག་དབྱེ་ཞིབ་མ་གྲུབ</string>
+    <string name="update_lanzou_need_passwd">Lanzou Cloud གི་བརྗེ་སྤེལ་འདིར་ལེན་ཨང་དགོས་པས། GitHub ནས་ཕབ་ལེན་བྱོས (ཡང་ན་ Release གི་འགྲེལ་བཤད་ནང་ལེན་ཨང་འཚོལ)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud གི་ལེན་ཨང་ནོར་འདུག</string>
+    <string name="update_err_resolve_failed">དབྱེ་ཞིབ་མ་གྲུབ</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud གི་རང་འཁོར་བཤེར་འགོག་ཞིབ་བཤེར་མ་གྲུབ</string>
+    <string name="update_err_no_frame">Lanzou Cloud གི་ཕབ་ལེན་ཤོག་ངོས་དབྱེ་ཞིབ་མ་ཐུབ (ཕབ་ལེན་སྒྲོམ་མ་རྙེད)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud གི་ཡིག་ཆའི་རྟགས་དབྱེ་ཞིབ་མ་ཐུབ</string>
+    <string name="update_err_no_sign">Lanzou Cloud གི་མིང་རྟགས་དབྱེ་ཞིབ་མ་ཐུབ</string>
+    <string name="update_err_ajax_request">བར་སྦྲེལ་རེ་བ་མ་གྲུབ</string>
+    <string name="update_err_api_request">Lanzou Cloud གི་བར་སྦྲེལ་རེ་བ་མ་གྲུབ</string>
+    <string name="update_err_empty_direct">Lanzou Cloud ཀྱིས་སྟོང་པའི་ཕབ་ལེན་ཁ་བྱང་ཕྱིར་ལོག་བྱས</string>
+    <string name="update_err_direct_expired">Lanzou Cloud གི་ཕབ་ལེན་ཁ་བྱང་དུས་ཡོལ་སོང་། ཡང་བསྐྱར་ལེན་དགོས</string>
+    <string name="update_err_http_request">རེ་བ་མ་གྲུབ (HTTP %1$d)</string>
+
+    <!-- ========== ཕབ་ལེན ========== -->
+    <string name="update_err_connect">ཕབ་ལེན་བརྩེགས་ཆས་དང་མཐུད་མ་ཐུབ: %1$s</string>
+    <string name="update_err_http">ཕབ་ལེན་མ་གྲུབ (HTTP %1$d)</string>
+    <string name="update_err_no_connection">ཕབ་ལེན་གྱི་མཐུད་སྦྲེལ་བཙུགས་མ་ཐུབ</string>
+    <string name="update_err_empty">ཕབ་ལེན་བྱས་པའི་ནང་དོན་སྟོང་པ་རེད</string>
+    <string name="update_err_incomplete">ཕབ་ལེན་མ་ཚང་། (%1$d / བསྡོམས་ %2$d བདུན་ཕྲག་ཐོབ) ཡང་བསྐྱར་ཕབ་ལེན་བྱོས</string>
+    <string name="update_err_interrupted">ཕབ་ལེན་བཅད་སོང: %1$s</string>
+
+    <!-- ========== སྒྲིག་འཛུགས་ཡིག་ཆ་ཞིབ་བཤེར་དང་སྒྲིག་འཛུགས ========== -->
+    <string name="update_err_not_apk">ཕབ་ལེན་བྱས་པ་དེ་ཕན་ཐོགས་པའི་སྒྲིག་འཛུགས་ཡིག་ཆ་མིན། (དྲ་ངོས་སམ་ཕབ་ལེན་སྦྲེལ་ཐག་དུས་ཡོལ་ཡིན་སྲིད) ཡང་བསྐྱར་ཕབ་ལེན་བྱོས་སམ་ GitHub ནས་ཕབ་ལེན་བྱོས།</string>
+    <string name="update_err_apk_incomplete">སྒྲིག་འཛུགས་ཡིག་ཆའི་ནང་དོན་མ་ཚང་། ཡང་བསྐྱར་ཕབ་ལེན་བྱོས་སམ་ GitHub ནས་ཕབ་ལེན་བྱོས།</string>
+    <string name="update_err_apk_unparsable">སྒྲིག་འཛུགས་ཡིག་ཆ་དབྱེ་ཞིབ་མ་ཐུབ། (ཕབ་ལེན་མ་ཚང་བ་ཡིན་སྲིད) ཡང་བསྐྱར་ཕབ་ལེན་བྱོས་སམ་ GitHub ནས་ཕབ་ལེན་བྱོས།</string>
+    <string name="update_err_no_install_permission">«མི་ཤེས་པའི་མཉེན་ཆས་སྒྲིག་འཛུགས»ཀྱི་དབང་ཆ་མ་ཐོབ</string>
+    <string name="update_err_installer_failed">མ་ལག་གི་སྒྲིག་འཛུགས་ཆས་འགོ་འཛུགས་མ་ཐུབ (%1$s)། ཡིག་ཆ་དོ་དམ་ཆས་ནས་སྒྲིག་འཛུགས་ཡིག་ཆ་ལག་ཐོག་ནས་ཁ་ཕྱེ་སྒྲིག་འཛུགས་བྱོས</string>
+
+</resources>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Kiswahili (Swahili) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Reviewed for standard Kiswahili orthography but not yet proofread by a native speaker; a native review pass is recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">Tayari</string>
+    <string name="main_status_location_granted">Ruhusa ya mahali imetolewa; metadata ya GPS itahifadhiwa baada ya ubadilishaji</string>
+    <string name="main_status_location_denied">Ruhusa ya mahali haikutolewa: picha zilizobadilishwa zitapoteza taarifa za mahali pa GPS</string>
+    <string name="main_status_all_files_granted">“Ufikiaji wa faili zote” umetolewa; ubadilishaji utaandika moja kwa moja kwenye folda ya matunzio na kuhifadhi taarifa za mahali kikamilifu</string>
+    <string name="main_status_all_files_denied">“Ufikiaji wa faili zote” haukutolewa: baadhi ya vifaa vinaweza kupoteza taarifa za mahali baada ya ubadilishaji</string>
+    <string name="main_status_read_granted">Ruhusa ya kusoma picha na video imetolewa</string>
+    <string name="main_status_video_missing">Imetolewa, lakini ruhusa ya video haipo: haiwezi kupata video zinazoandamana za Live Photo za faili mbili</string>
+    <string name="main_status_permission_denied">Ruhusa haikutolewa; unaweza kugusa “Ongeza faili” tena</string>
+    <string name="main_status_folder_not_selected">Hakuna folda iliyochaguliwa</string>
+    <string name="main_status_folder_unavailable">Haiwezi kufikia folda iliyochaguliwa (folda za hifadhi ya ndani pekee zinatumika)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Kikao kilichopita kimerejeshwa (faili %1$d)</item>
+        <item quantity="other">Kikao kilichopita kimerejeshwa (faili %1$d)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Kutoka kwa hitilafu kunakugundulika kutoka awali; orodha isiyokamilika imefutwa</string>
+    <string name="main_status_compose_blocks_extract">Foleni ina kazi za utungaji; hauwezi kubadilisha kwenda hali ya kutoa</string>
+    <string name="main_status_replace_off_mutex">Hali ya kubadilisha imezimwa (haiwezi kutumika pamoja na “Futa faili za awali baada ya kuchakata”)</string>
+    <string name="main_status_delete_needs_all_files">Kufuta faili za awali kiotomatiki kunahitaji “Ufikiaji wa faili zote”; tafadhali itoe kwanza</string>
+    <string name="main_status_replace_off">Hali ya kubadilisha imezimwa; matokeo ya ubadilishaji yanaandikwa kwenye folda ya matunzio tena</string>
+    <string name="main_status_replace_needs_all_files">Hali ya kubadilisha inahitaji “Ufikiaji wa faili zote”; tafadhali itoe kwanza</string>
+    <string name="main_status_delete_off_mutex">“Futa faili za awali baada ya kuchakata” imezimwa (haiwezi kutumika pamoja na hali ya kubadilisha)</string>
+    <string name="main_status_loading_albums">Inapakia albamu…</string>
+    <string name="main_status_no_albums">Hakuna albamu iliyopatikana</string>
+    <string name="main_status_compose_no_photo">Hakuna picha iliyochaguliwa; hauwezi kutunga</string>
+    <string name="main_status_compose_no_video">Hakuna video iliyochaguliwa; hauwezi kutunga</string>
+    <string name="main_status_compose_all_added">Picha zote zilizochaguliwa tayari ziko kwenye orodha</string>
+    <string name="main_status_compose_paired">Picha %1$d na video %2$d; zimeongezwa jozi %3$d za utungaji kulingana na idadi ndogo</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Kazi %1$d ya utungaji imeongezwa; gusa “Anza ubadilishaji” ili kutunga</item>
+        <item quantity="other">Kazi %1$d za utungaji zimeongezwa; gusa “Anza ubadilishaji” ili kutunga</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (muundo wa matokeo umebadilishwa kiotomatiki kuwa Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Inaingiza picha %1$d iliyoshirikiwa…</item>
+        <item quantity="other">Inaingiza picha %1$d zilizoshirikiwa…</item>
+    </plurals>
+    <string name="main_status_import_failed">Uingizaji umeshindikana: %1$s</string>
+    <string name="main_status_import_done_partial">Uingizaji umekamilika: %1$d zimefanikiwa, %2$d zimeshindikana</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Uingizaji umekamilika: faili %1$d limeingizwa kwa jumla</item>
+        <item quantity="other">Uingizaji umekamilika: faili %1$d zimeingizwa kwa jumla</item>
+    </plurals>
+    <string name="main_status_import_stopped">Uingizaji umesimamishwa: %1$d zimefanikiwa, %2$d zimeshindikana</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Inaingiza faili %1$d…</item>
+        <item quantity="other">Inaingiza faili %1$d…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Inaingiza %1$d/%2$d…</string>
+    <string name="main_status_stopping">Inasimamisha… (itasimama baada ya faili la sasa kukamilika)</string>
+    <string name="main_status_stopping_import">Inasimamisha uingizaji…</string>
+    <string name="main_status_removed">%1$s imeondolewa</string>
+    <string name="main_status_cleared">Imesafishwa</string>
+    <string name="main_status_nothing_to_convert">Hakuna faili la kubadilisha</string>
+    <string name="main_status_folder_unreadable">Haiwezi kusoma folda iliyochaguliwa</string>
+    <string name="main_status_scanning_folder">Inachanganua folda…</string>
+    <string name="main_status_no_images">Hakuna picha iliyopatikana kwenye folda iliyochaguliwa</string>
+    <string name="main_status_batch_importing">Inaingiza kwa kundi %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Uingizaji wa kundi umesimamishwa: Live Photo %1$d imeingizwa kwa jumla</item>
+        <item quantity="other">Uingizaji wa kundi umesimamishwa: Live Photo %1$d zimeingizwa kwa jumla</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Uingizaji wa kundi umesimamishwa: Live Photo %1$d imeingizwa kwa jumla, faili %2$d zisizo Live Photo zimerukwa</item>
+        <item quantity="other">Uingizaji wa kundi umesimamishwa: Live Photo %1$d zimeingizwa kwa jumla, faili %2$d zisizo Live Photo zimerukwa</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Uingizaji wa kundi umekamilika: Live Photo %1$d imeingizwa kwa jumla</item>
+        <item quantity="other">Uingizaji wa kundi umekamilika: Live Photo %1$d zimeingizwa kwa jumla</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Uingizaji wa kundi umekamilika: Live Photo %1$d imeingizwa kwa jumla, faili %2$d zisizo Live Photo zimerukwa</item>
+        <item quantity="other">Uingizaji wa kundi umekamilika: Live Photo %1$d zimeingizwa kwa jumla, faili %2$d zisizo Live Photo zimerukwa</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Imesimamishwa: kati ya faili %1$d, %2$d zilichakatwa na faili %3$d za chanzo zilibadilishwa</string>
+    <string name="main_status_stopped_export">Imesimamishwa: kati ya faili %1$d, %2$d zilichakatwa na %3$d zilihamishwa kwenda matunzio</string>
+    <string name="main_status_done_replace_reason">Imekamilika: faili %1$d zilichakatwa, faili %2$d za chanzo zilibadilishwa (sababu: %3$s)</string>
+    <string name="main_status_done_export_reason">Imekamilika: faili %1$d zilichakatwa, %2$d zilihamishwa kwenda matunzio (sababu: %3$s)</string>
+    <string name="main_status_done_replace">Imekamilika: faili %1$d zilichakatwa, faili %2$d za chanzo zilibadilishwa</string>
+    <string name="main_status_done_export">Imekamilika: faili %1$d zilichakatwa, %2$d zilihamishwa kwenda matunzio</string>
+    <string name="main_status_keep_originals">%1$s; “Ufikiaji kamili wa hifadhi” haukutolewa, kwa hiyo faili za awali zimehifadhiwa</string>
+    <string name="main_info_detecting">Inatambua…</string>
+    <string name="main_info_unrecognized">Muundo wa Live Photo hautambuliki</string>
+    <string name="main_info_converting">Inabadilisha…</string>
+    <string name="main_info_compose_task">Kazi ya utungaji (gusa Anza ubadilishaji ili kutunga)</string>
+    <string name="main_info_done_replaced">Imekamilika (faili %1$d za chanzo zilibadilishwa)</string>
+    <string name="main_info_done_skipped">Imekamilika (imerukwa: mgongano wa jina)</string>
+    <string name="main_info_done_exported">Imekamilika (%1$d zilihamishwa)</string>
+    <string name="main_info_failed">Imeshinduikana: %1$s</string>
+    <string name="main_progress_added">Zimeongezwa %1$d/%2$d</string>
+    <string name="main_progress_processed">Zimechakatwa %1$d/%2$d</string>
+    <string name="main_progress_imported">Zimeingizwa %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Ruhusa ya kusoma picha na video inahitajika</string>
+    <string name="main_dialog_permission_message">Programu hii inahitaji kusoma picha na video kwenye kifaa chako:\n\n• Ruhusa ya picha: kuchanganua matunzio ya kifaa na kutambua Live Photo zilizomo\n• Ruhusa ya video: kupata video zinazoandamana za Live Photo za faili mbili\n• Ruhusa ya mahali: kuhifadhi metadata ya mahali pa GPS kwenye picha (bila hiyo, picha zilizobadilishwa zinapoteza taarifa za mahali)\n\nUkikataa, kichaguzi kilichojengwa ndani hakiwezi kutumika; unaweza kugusa “Ongeza faili” baadaye ili kutoa ruhusa tena.</string>
+    <string name="main_dialog_settings_title">Ruhusa za picha na video lazima zitolewe kwa mkono</string>
+    <string name="main_dialog_settings_message">Hapo awali ulichagua “Usiulize tena”, kwa hiyo mfumo hauonyeshi kidirisha cha ruhusa tena.\n\nTafadhali nenda kwenye ukurasa wa maelezo ya programu → Ruhusa → Picha na video, toa ufikiaji kwa mkono, kisha urudi kwenye programu hii.\n\nKumbuka: ruhusa za “Picha” na “Video” zote mbili lazima zitolewe, vinginevyo Live Photo za faili mbili hazitaweza kupata video zinazoandamana.</string>
+    <string name="main_dialog_allfiles_title_delete">Kufuta faili za awali kiotomatiki kunahitaji “Ufikiaji wa faili zote”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Kifaa hiki hakitumii kufuta faili za awali kiotomatiki</string>
+    <string name="main_dialog_allfiles_title_replace">Hali ya kubadilisha inahitaji “Ufikiaji wa faili zote”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Kifaa hiki hakitumii hali ya kubadilisha</string>
+    <string name="main_dialog_allfiles_title_location">Inashauriwa kutoa “Ufikiaji wa faili zote”</string>
+    <string name="main_dialog_allfiles_delete_message">“Futa faili za awali baada ya kuchakata” hufuta faili za awali kwenye hifadhi moja kwa moja (picha na video inayoandamana). Hili haliwezi kutenduliwa, kwa hiyo “Ufikiaji wa faili zote” lazima itolewe kwanza.\n\nSwichi itapatikana mara utakapoitoa; unaweza kuiwasha mwenyewe wakati huo.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Mfumo wa sasa (Android 10 au la zamani zaidi) hautoi “Ufikiaji wa faili zote”, kwa hiyo faili za awali kwenye hifadhi haziwezi kufutwa moja kwa moja; hivyo kifaa hiki hakitumii “Futa faili za awali baada ya kuchakata”.\n\nUnaweza kusafisha faili za awali kwa mkono kwenye matunzio ya mfumo baada ya ubadilishaji.</string>
+    <string name="main_dialog_allfiles_replace_message">“Hali ya kubadilisha” inaandika matokeo ya ubadilishaji moja kwa moja kwenye faili za awali kwenye hifadhi (inabadilisha maudhui yake). Hili haliwezi kutenduliwa, kwa hiyo “Ufikiaji wa faili zote” lazima itolewe kwanza.\n\nSwichi itapatikana mara utakapoitoa; unaweza kuiwasha mwenyewe wakati huo.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Mfumo wa sasa (Android 10 au la zamani zaidi) hautoi “Ufikiaji wa faili zote”, kwa hiyo faili za awali kwenye hifadhi haziwezi kuandikwa upya moja kwa moja; hivyo kifaa hiki hakitumii “Hali ya kubadilisha”.\n\nUnaweza kuendelea kubadilisha kwa njia ya kawaida; matokeo yanaandikwa kwenye folda ya matunzio.</string>
+    <string name="main_dialog_allfiles_location_message">Kwenye baadhi ya vifaa (kama Meizu), kuandika kupitia API ya matunzio ya mfumo huondoa taarifa za mahali pa GPS, kwa hiyo picha zilizobadilishwa zinapoteza mahali pake.\n\nMara utakapotoa “Ufikiaji wa faili zote”, programu hii inaandika moja kwa moja kwenye folda ya matunzio na kuhifadhi metadata ya mahali kikamilifu.\n\nUbadilishaji unafanya kazi bila hiyo, lakini baadhi ya vifaa vinaweza kupoteza taarifa za mahali.</string>
+    <string name="main_dialog_conflict_title">Mgongano wa jina la faili la matokeo</string>
+    <string name="main_dialog_conflict_message">Faili lenye jina moja tayari lipo kwenye folda ya matokeo:\n%1$s\n\nTafadhali chagua jinsi ya kulishughulikia.</string>
+    <string name="main_label_conflict_always">Tumia hii kwa migongano yote inayofuata</string>
+    <string name="main_btn_grant">Ruhusu</string>
+    <string name="main_btn_deny">Kataa</string>
+    <string name="main_btn_go_settings">Fungua mipangilio</string>
+    <string name="main_btn_cancel">Ghairi</string>
+    <string name="main_btn_grant_access">Toa ufikiaji</string>
+    <string name="main_btn_got_it">Nimeelewa</string>
+    <string name="main_btn_not_now">Si sasa</string>
+    <string name="main_btn_skip">Ruka</string>
+    <string name="main_btn_overwrite">Andika juu</string>
+    <string name="main_btn_auto_rename">Badilisha jina kiotomatiki</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Faili %1$d la awali limefutwa</item>
+        <item quantity="other">Faili %1$d za awali zimefutwa</item>
+    </plurals>
+    <string name="main_delete_nothing">Hakuna faili la awali la kufuta</string>
+    <string name="main_delete_partial">Faili %1$d za awali zimefutwa (%2$d hazikuweza kufutwa na zimehifadhiwa)</string>
+    <string name="main_delete_failed">Kufuta faili za awali kumeshindikana (faili linatumika au hakuna ruhusa ya kuandika); zimehifadhiwa</string>
+    <string name="main_export_missing_output">Matokeo ya ubadilishaji hayapo au ni tupu: %1$s</string>
+    <string name="main_export_missing_output_bare">Matokeo ya ubadilishaji hayapo au ni tupu</string>
+    <string name="main_export_insert_null">MediaStore insert imerudisha null</string>
+    <string name="main_export_output_stream">Mtiririko wa matokeo wa MediaStore haupatikani</string>
+    <string name="main_export_write_failed">Uandishi wa MediaStore umeshindikana: %1$s</string>
+    <string name="main_export_mkdir_failed">Haiwezi kutengeneza folda ya matunzio %1$s</string>
+    <string name="main_export_dir_write_failed">Kuandika kwenye folda ya matunzio kumeshindikana: %1$s</string>
+    <string name="main_export_no_source">Haiwezi kupata faili la chanzo; ubadilishaji umerukwa</string>
+    <string name="main_export_companion_failed">Kuandika faili inayoandamana kumeshindikana: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Folda ya chanzo haiwezi kuandikwa, kwa hiyo faili inayoandamana halikuweza kuandikwa</string>
+    <string name="main_export_source_dir_unavailable">Folda ya chanzo haipatikani: %1$s</string>
+    <string name="main_export_replace_failed">Kubadilisha faili la chanzo kumeshindikana: %1$s</string>
+    <string name="main_export_replace_failed_bare">Kubadilisha faili la chanzo kumeshindikana</string>
+</resources>

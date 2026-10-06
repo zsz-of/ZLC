@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Български (bg) — езикови настройки на приложението (strings_app.xml).
+  База: res/values/strings_app.xml (опростен китайски).
+-->
+<resources>
+    <string name="app_language_follow_system">Според системата</string>
+    <string name="app_language_title">Език на приложението</string>
+</resources>

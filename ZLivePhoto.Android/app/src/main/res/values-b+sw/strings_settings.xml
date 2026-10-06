@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Kiswahili (Swahili) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Reviewed for standard Kiswahili orthography but not yet proofread by a native speaker; a native review pass is recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Mipangilio</string>
+    <string name="settings_cd_back">Rudi</string>
+    <string name="settings_btn_apply">Tumia</string>
+    <string name="settings_btn_cancel">Ghairi</string>
+    <string name="settings_btn_close">Funga</string>
+    <string name="settings_btn_ok">Sawa</string>
+    <string name="settings_btn_sponsor">Changia</string>
+    <string name="settings_section_general">Jumla</string>
+    <string name="settings_section_appearance">Muonekano</string>
+    <string name="settings_section_language">Lugha</string>
+    <string name="settings_section_defaults">Chaguo-msingi</string>
+    <string name="settings_section_output">Matokeo</string>
+    <string name="settings_section_transcode">Transkodi ya video</string>
+    <string name="settings_section_about">Kuhusu</string>
+    <string name="settings_section_app">Programu</string>
+    <string name="settings_section_credits">Shukrani na michango</string>
+    <string name="settings_section_opensource">Chanzo huria na leseni</string>
+    <string name="settings_startup_check_title">Angalia masasisho wakati wa kuanza</string>
+    <string name="settings_startup_check_subtitle">Pakua toleo jipya kutoka GitHub kiotomatiki wakati wa kuanza na kutoa taarifa ya kupakua linapopatikana</string>
+    <string name="settings_haptics_title">Mrejesho wa kugusa</string>
+    <string name="settings_haptics_subtitle">Mrejesho wa kugusa unapogusa vitufe na hali inapobadilika</string>
+    <string name="settings_bounce_title">Uhuishaji wa kuruka kwa kitufe</string>
+    <string name="settings_bounce_subtitle">Uhuishaji wa kupanua na kuruka kitufe kinapobonyezwa</string>
+    <string name="settings_theme_system">Fuata mfumo</string>
+    <string name="settings_theme_dark">Nyeusi</string>
+    <string name="settings_theme_light">Nyepesi</string>
+    <string name="settings_dynamic_theme_title">Rangi inayobadilika ya Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Fuata rangi ya mandhari ya ukuta ya mfumo (Android 12+); ikizimwa, rangi za mandhari zilizowekwa tayari hapa chini zinatumika</string>
+    <string name="settings_preset_colors_title">Rangi za mandhari zilizowekwa tayari</string>
+    <string name="settings_preset_current">Ya sasa: %1$s</string>
+    <string name="settings_preset_disabled_hint">Zima “Rangi inayobadilika ya Material You” ili kuchagua</string>
+    <string name="settings_custom">Maalum</string>
+    <string name="settings_custom_color_title">Rangi maalum ya mandhari</string>
+    <string name="settings_cd_custom_palette">Paleti maalum</string>
+    <string name="settings_hue_value">Hue %1$d°</string>
+    <string name="settings_language_dialog_title">Chagua lugha ya programu</string>
+    <string name="settings_language_count">Lugha %1$d zinapatikana</string>
+    <string name="settings_reminder_dialogs_title">Vidirisha vya “Usionyeshe tena”</string>
+    <string name="settings_reminder_dialogs_subtitle">Simamia swichi za vidirisha vyote vya “Usionyeshe tena”</string>
+    <string name="settings_reminder_hint">Swichi ikiwa imewashwa, kidirisha hicho hakionyeshwi tena; ikiwa imezimwa, kidirisha kinaonekana tena mara hali inayohusika itakapotokea.</string>
+    <string name="settings_preserve_folders_title">Matokeo yatumie mpangilio wa folda za chanzo</string>
+    <string name="settings_preserve_folders_subtitle">Matokeo huhifadhiwa katika folda ndogo zilizopewa jina la albamu za awali; ikiwa imezimwa, yote yanawekwa pamoja katika folda moja</string>
+    <string name="settings_about_title">Kuhusu</string>
+    <string name="settings_about_subtitle">Toleo · Angalia masasisho · Shukrani na michango</string>
+    <string name="settings_check_update_title">Angalia masasisho</string>
+    <string name="settings_check_update_subtitle">Pakua toleo la hivi punde kutoka GitHub Releases</string>
+    <string name="settings_checking">Inaangalia…</string>
+    <string name="settings_update_available">v%1$s inapatikana</string>
+    <string name="settings_up_to_date">Uko kwenye toleo la hivi punde</string>
+    <string name="settings_network_error">Hitilafu ya mtandao; tafadhali jaribu tena baadaye</string>
+    <string name="settings_reinstall_title">Sakinisha upya toleo hili</string>
+    <string name="settings_reinstall_subtitle">Pakua build ya hivi punde na uisakinishe juu ya toleo hili (kwa kujaribu masasisho)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s inapatikana; tafadhali tumia “Angalia masasisho” kupandisha kwanza</string>
+    <string name="settings_version_title">Toleo</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Changia kupitia Alipay</string>
+    <string name="settings_alipay_subtitle">Suporta maendeleo</string>
+    <string name="settings_coolapk_subtitle">Mtumiaji wa Coolapk · asante kwa msaada</string>
+    <string name="settings_ai_credits_subtitle">Asante kwa IDE za AI na modeli za AI zilizosaidia maendeleo</string>
+    <string name="settings_github_title">Hazina ya GitHub</string>
+    <string name="settings_license_title">Leseni ya chanzo huria</string>
+    <string name="settings_sponsor_dialog_title">Asante kwa msaada wako</string>
+    <string name="settings_sponsor_dialog_text">Nathamini sana nia yako ya kusaidia programu hii!\n\nKama bado wewe ni mwanafunzi, au hujajitegemea kifedha, tafadhali usitumie fedha kwa hili — kuhifadhi wema huo moyoni na kuendelea kutumia programu hii ndiyo msaada bora ninaotaka.\n\nKama bado unataka kuchangia, hata kidogo kinasaidia, na nitakitumia katika matengenezo bora na vipengele zaidi:)</string>
+    <string name="settings_alipay_missing_title">Alipay haijasakinishwa</string>
+    <string name="settings_alipay_missing_text">Alipay haikutambuliwa, kwa hiyo mchango hauwezi kukamilika kwa sasa.\n\nNi sawa — asante sana kwa wema wako!</string>
+    <string name="settings_transcoder_title">Kifaa cha transkodi kilichojengwa ndani</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Simba upya</string>
+    <string name="settings_transcode_mode_remux">Remux ya chombo pekee (inashauriwa)</string>
+    <string name="settings_transcode_mode_off">Usitumie kifaa cha transkodi</string>
+    <string name="settings_transcode_params_title">Vigezo vya transkodi</string>
+    <string name="settings_transcode_params_subtitle">Vigezo vya ubora na mbano vinavyotumika wakati wa kusimba upya</string>
+    <string name="settings_transcode_params_disabled">Vinatumika tu wakati “Hali ya transkodi” imewekwa kuwa “Simba upya”</string>
+    <string name="settings_crf_value">Ubora CRF: %1$d</string>
+    <string name="settings_crf_hint">Thamani ndogo humaanisha ubora wa juu na faili kubwa (chaguo-msingi 18)</string>
+    <string name="settings_encoder_title">Encoder</string>
+    <string name="settings_compress_preset_title">Mpangilio tayari wa mbano</string>
+</resources>

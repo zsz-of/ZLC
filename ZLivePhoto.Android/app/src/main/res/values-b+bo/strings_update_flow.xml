@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（藏语 bo，C 级：低资源语种，术语多为新造词，仅供理解），可能存在不准确之处，欢迎社区修正。
+     ཡིག་ཆ་འདི་དཔེ་རྒྱུད་ཨང་རྟགས་ཀྱིས་བསྒྱུར་བ་ཡིན། ཡང་དག་མིན་པ་ཡོད་སྲིད། -->
+<resources>
+    <!-- ཚོད་འཛིན་ཆས་ཀྱི་དྲན་སྐུལ -->
+    <string name="update_github_url_missing">GitHub གི་ཕབ་ལེན་ཁ་བྱང་མ་ཐོབ། ཏོག་ཙམ་ནས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱོས།</string>
+    <string name="update_flavor_standard">ཚད་ལྡན་པར་གཞི</string>
+    <string name="update_flavor_go">Go པར་གཞི</string>
+    <string name="update_lanzou_url_missing">པར་གཞི་འདིར་ Lanzou Cloud གི་ཕབ་ལེན་སྦྲེལ་ཐག་མེད། GitHub ནས་ཕབ་ལེན་བྱོས།</string>
+    <string name="update_apk_direct_missing">པར་གཞི་འདིར་མཐུན་པའི་སྒྲིག་འཛུགས་ཡིག་ཆའི་ཐད་ཀའི་སྦྲེལ་ཐག་མེད། GitHub གི་ཁྱབ་བསྒྲགས་ཤོག་ངོས་ནས་ APK འདེམས།</string>
+    <string name="update_install_permission_missing">«མི་ཤེས་པའི་མཉེན་ཆས་སྒྲིག་འཛུགས»ཀྱི་དབང་ཆ་མ་ཐོབ་པས་རང་འགུལ་སྒྲིག་འཛུགས་བྱེད་མི་ཐུབ། མ་ལག་སྒྲིག་བཀོད་ནང་ཆོག་མཆན་སྤྲད་ནས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱོས།</string>
+    <string name="update_error_unknown">མི་ཤེས་པའི་ནོར་འཁྲུལ</string>
+    <string name="update_fail_lanzou">Lanzou Cloud ནས་ཕབ་ལེན་མ་གྲུབ</string>
+    <string name="update_fail_github">GitHub ནས་ཕབ་ལེན་མ་གྲུབ</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud གི་ཕབ་ལེན་སྦྲེལ་ཐག་དབྱེ་ཞིབ་བྱེད་བཞིན་ཡོད…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud ནས་ཕབ་ལེན་བྱེད་བཞིན་ཡོད…</string>
+    <string name="update_github_downloading">GitHub ནས་ཕབ་ལེན་བྱེད་བཞིན་ཡོད…</string>
+    <string name="update_unzipping">སྒྲིག་འཛུགས་ཡིག་ཆ་ཁ་གདེང་བྱེད་བཞིན་ཡོད…</string>
+    <string name="update_notes_empty">པར་གཞི་འདིར་གསར་སྒྱུར་གྱི་འགྲེལ་བཤད་མེད།</string>
+
+    <!-- Go པར་གཞིའི་སྐོར་གྱི་སྒྲོམ་ཁ -->
+    <string name="update_use_normal_title">ཚད་ལྡན་པར་གཞི་བེད་སྤྱོད་བྱོས</string>
+    <string name="update_use_normal_body">མ་ལག་འདི་ Android 10 དང་དེ་ཡན་ཡིན་པས་ Go ཡང་པའི་པར་གཞི་མི་འཚམ། པར་གཞི་རྙིང་པ་མུ་མཐུད་བེད་སྤྱོད་བྱེད་མི་ཐུབ།\n\nམ་ལག་འདིར་ཚད་ལྡན་པར་གཞི (ZLC) སྒྲིག་འཛུགས་ཟིན་པ་ཤེས་སོང་། ཚད་ལྡན་པར་གཞི་ཐད་ཀར་ཁ་ཕྱེ་ནས་མུ་མཐུད་བེད་སྤྱོད་བྱོས། (པར་གཞི་གསར་པར་ Go མཐུན་སྒྲིག་པར་གཞི་མེད། པར་གཞི་རྙིང་པ་བསུབ་ནས་བར་སྟོང་ཕྱིར་ལེན་ཆོག)</string>
+    <string name="update_open_normal">ཚད་ལྡན་པར་གཞི་ཁ་ཕྱེ</string>
+    <string name="update_must_update_title">མུ་མཐུད་བེད་སྤྱོད་བྱེད་པར་གསར་སྒྱུར་བྱེད་དགོས</string>
+    <string name="update_forced_body">མ་ལག་འདི་ Android 10 དང་དེ་ཡན་ཡིན་པས་ Go ཡང་པའི་པར་གཞི་མི་འཚམ། པར་གཞི་རྙིང་པ་མུ་མཐུད་བེད་སྤྱོད་བྱེད་མི་ཐུབ། པར་གཞི་གསར་པར་ཡང་ Go མཐུན་སྒྲིག་པར་གཞི་མེད།\n\nདྲ་བར་མཐུད་ནས་ «ཡང་བསྐྱར་ཚོད་ལྟ» མནན་ནས་ཚད་ལྡན་པར་གཞིའི་སྒྲིག་འཛུགས་ཡིག་ཆ་ལེན།</string>
+    <string name="update_retry">ཡང་བསྐྱར་ཚོད་ལྟ</string>
+    <string name="update_switch_normal_body">མ་ལག་འདི་ Android 10 དང་དེ་ཡན་ཡིན་པས་ Go ཡང་པའི་པར་གཞི་མི་འཚམ། པར་གཞི་རྙིང་པ་མུ་མཐུད་བེད་སྤྱོད་བྱེད་མི་ཐུབ།\nཚད་ལྡན་པར་གཞི་ཕབ་ལེན་བྱས་ནས་སྒྲིག་འཛུགས་རྗེས་མུ་མཐུད་བེད་སྤྱོད་བྱོས། (པར་གཞི་གསར་པར་ Go མཐུན་སྒྲིག་པར་གཞི་མེད)</string>
+
+    <!-- ཕབ་ལེན / སྒྲིག་འཛུགས་དབང་ཆ / གྲུབ་འབྲས་ཀྱི་དྲན་སྐུལ -->
+    <string name="update_downloading_title">གསར་སྒྱུར་ཕབ་ལེན</string>
+    <string name="update_cancel">རྩིས་མེད</string>
+    <string name="update_need_permission_title">སྒྲིག་འཛུགས་ཀྱི་དབང་ཆ་དགོས</string>
+    <string name="update_need_permission_body">པར་གཞི་གསར་པ་སྒྲིག་འཛུགས་བྱེད་པར་མ་ལག་གི་ «མི་ཤེས་པའི་མཉེན་ཆས་སྒྲིག་འཛུགས»ཀྱི་དབང་ཆ་དགོས།\n\n«དབང་ཆ་སྤྲོད» མནན་ནས་སྒྲིག་བཀོད་ནང་ཆོག་མཆན་སྤྲད་རྗེས་མཉེན་ཆས་ལ་ལོག་ཡོང་ན། རང་འགུལ་སྒྲིག་འཛུགས་མུ་མཐུད་བྱེད་ངེས། (ཡང་བསྐྱར་ཕབ་ལེན་མི་དགོས)</string>
+    <string name="update_grant">དབང་ཆ་སྤྲོད</string>
+    <string name="update_notice_title">དྲན་སྐུལ</string>
+    <string name="update_got_it">ཤེས་སོང</string>
+
+    <!-- གཙོ་བོའི་སྒྲོམ་ཁ / གསར་སྒྱུར་གྱི་འགྲེལ་བཤད -->
+    <string name="update_notes_title">v%1$s · གསར་སྒྱུར་གྱི་འགྲེལ་བཤད</string>
+    <string name="update_back">ཕྱིར་ལོག</string>
+    <string name="update_title_switch_normal">ཚད་ལྡན་པར་གཞིར་བརྗེ་བ</string>
+    <string name="update_title_reinstall">པར་གཞི་འདི་ཡང་བསྐྱར་སྒྲིག་འཛུགས</string>
+    <string name="update_title_new_version">པར་གཞི་གསར་པ་རྙེད་སོང</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">པར་གཞི་འདི་ཕབ་ལེན་བྱས་ནས་ཡང་བསྐྱར་སྒྲིག་འཛུགས་བྱེད་ངེས། (ད་ལྟའི་མཉེན་ཆས་བཀབ་བརྗེ་བྱེད)།\nབྱེད་ནུས་འདི་གསར་སྒྱུར་གྱི་ལམ་ལུགས་ཚོད་ལྟ་བྱེད་པར་ཡིན།</string>
+    <string name="update_view_notes">གསར་སྒྱུར་གྱི་འགྲེལ་བཤད་ལྟ</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud ད་ལྟ་མི་ལག་ལེན་</string>
+    <string name="update_download_lanzou">Lanzou Cloud ནས་ཕབ་ལེན</string>
+    <string name="update_download_github">GitHub ནས་ཕབ་ལེན</string>
+    <string name="update_download_browser">དྲ་ཞིབ་ནས་ཕབ་ལེན</string>
+    <string name="update_later">ད་ལྟ་གསར་སྒྱུར་མི་བྱེད</string>
+    <string name="update_later_switch">ད་ལྟ་མི་བརྗེ</string>
+    <string name="update_skip_version">པར་གཞི་འདི་མཆོང་བ</string>
+</resources>

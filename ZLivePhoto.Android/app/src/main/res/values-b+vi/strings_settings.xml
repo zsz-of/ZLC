@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tiếng Việt (vi) — màn hình cài đặt (ui/SettingsScreen.kt). Tiền tố khóa settings_.
+  Khóa tương ứng res/values/ (văn bản tiếng Trung giản thể dự phòng).
+  Placeholder luôn ở dạng có số thứ tự: %1$s / %1$d.
+  Không dịch tên riêng và mã: “@毛血旺o”, “Trae · GML · DeepSeek · Kimi”,
+  “GPL-3.0”, “H.265”/“H.264”, địa chỉ GitHub.
+-->
+<resources>
+
+    <!-- Chung -->
+    <string name="settings_title">Cài đặt</string>
+    <string name="settings_cd_back">Quay lại</string>
+    <string name="settings_btn_apply">Áp dụng</string>
+    <string name="settings_btn_cancel">Hủy</string>
+    <string name="settings_btn_close">Đóng</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Tài trợ</string>
+
+    <!-- Tiêu đề nhóm -->
+    <string name="settings_section_general">Chung</string>
+    <string name="settings_section_appearance">Giao diện</string>
+    <string name="settings_section_language">Ngôn ngữ</string>
+    <string name="settings_section_defaults">Tùy chọn mặc định</string>
+    <string name="settings_section_output">Đầu ra</string>
+    <string name="settings_section_transcode">Chuyển mã video</string>
+    <string name="settings_section_about">Giới thiệu</string>
+    <string name="settings_section_app">Ứng dụng</string>
+    <string name="settings_section_credits">Cảm ơn và tài trợ</string>
+    <string name="settings_section_opensource">Mã nguồn mở và giấy phép</string>
+
+    <!-- Chung -->
+    <string name="settings_startup_check_title">Kiểm tra cập nhật khi khởi động</string>
+    <string name="settings_startup_check_subtitle">Tự động lấy bản mới từ GitHub khi khởi động và nhắc tải xuống khi có cập nhật</string>
+    <string name="settings_haptics_title">Phản hồi rung</string>
+    <string name="settings_haptics_subtitle">Phản hồi xúc giác khi nhấn nút và khi trạng thái thay đổi</string>
+    <string name="settings_bounce_title">Hiệu ứng nảy của nút</string>
+    <string name="settings_bounce_subtitle">Hiệu ứng thu nhỏ rồi bật lại khi nhấn nút</string>
+
+    <!-- Giao diện -->
+    <string name="settings_theme_system">Theo hệ thống</string>
+    <string name="settings_theme_dark">Tối</string>
+    <string name="settings_theme_light">Sáng</string>
+    <string name="settings_dynamic_theme_title">Material You — màu động</string>
+    <string name="settings_dynamic_theme_subtitle">Theo màu hình nền hệ thống (Android 12+); khi tắt sẽ dùng màu chủ đề có sẵn bên dưới</string>
+    <string name="settings_preset_colors_title">Màu chủ đề có sẵn</string>
+    <string name="settings_preset_current">Hiện tại: %1$s</string>
+    <string name="settings_preset_disabled_hint">Có thể chọn sau khi tắt “Material You — màu động”</string>
+    <string name="settings_custom">Tùy chỉnh</string>
+    <string name="settings_custom_color_title">Màu chủ đề tùy chỉnh</string>
+    <string name="settings_cd_custom_palette">Bảng màu tùy chỉnh</string>
+    <string name="settings_hue_value">Tông màu %1$d°</string>
+
+    <!-- Ngôn ngữ ứng dụng: tiêu đề và “Theo hệ thống” nằm trong strings_app.xml
+         (R.string.app_language_title / R.string.app_language_follow_system), không định nghĩa lại ở đây -->
+    <string name="settings_language_dialog_title">Chọn ngôn ngữ ứng dụng</string>
+    <string name="settings_language_count">Tổng %1$d ngôn ngữ</string>
+
+    <!-- Tùy chọn mặc định -->
+    <string name="settings_reminder_dialogs_title">Hộp thoại “Không nhắc lại”</string>
+    <string name="settings_reminder_dialogs_subtitle">Quản lý công tắc của mọi hộp thoại “Không nhắc lại”</string>
+    <string name="settings_reminder_hint">Công tắc bật nghĩa là “không nhắc lại”; khi tắt, lần tới gặp tình huống tương ứng hộp thoại sẽ hiện lại.</string>
+
+    <!-- Đầu ra -->
+    <string name="settings_preserve_folders_title">Giữ nguyên cấu trúc thư mục nguồn</string>
+    <string name="settings_preserve_folders_subtitle">Kết quả được lưu vào thư mục con theo tên album gốc; khi tắt, tất cả nằm chung một thư mục</string>
+
+    <!-- Giới thiệu -->
+    <string name="settings_about_title">Giới thiệu</string>
+    <string name="settings_about_subtitle">Phiên bản · Kiểm tra cập nhật · Cảm ơn và tài trợ</string>
+    <string name="settings_check_update_title">Kiểm tra cập nhật</string>
+    <string name="settings_check_update_subtitle">Lấy bản mới nhất từ GitHub Releases</string>
+    <string name="settings_checking">Đang kiểm tra…</string>
+    <string name="settings_update_available">Có bản v%1$s</string>
+    <string name="settings_up_to_date">Đã là bản mới nhất</string>
+    <string name="settings_network_error">Lỗi mạng, vui lòng thử lại sau</string>
+    <string name="settings_reinstall_title">Cài lại bản này</string>
+    <string name="settings_reinstall_subtitle">Tải bản mới nhất hiện tại và cài đè (dùng để thử cập nhật)</string>
+    <string name="settings_reinstall_newer_hint">Có thể nâng cấp lên v%1$s, hãy dùng “Kiểm tra cập nhật” trước</string>
+    <string name="settings_version_title">Phiên bản</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Tài trợ qua Alipay</string>
+    <string name="settings_alipay_subtitle">Ủng hộ phát triển</string>
+    <string name="settings_coolapk_subtitle">Người dùng Coolapk · cảm ơn sự ủng hộ</string>
+    <string name="settings_ai_credits_subtitle">Cảm ơn các AI IDE và mô hình AI đã hỗ trợ trong quá trình phát triển</string>
+    <string name="settings_github_title">Địa chỉ mã nguồn mở trên GitHub</string>
+    <string name="settings_license_title">Giấy phép mã nguồn mở</string>
+    <string name="settings_sponsor_dialog_title">Cảm ơn bạn đã ủng hộ</string>
+    <string name="settings_sponsor_dialog_text">Thật sự rất cảm ơn bạn đã muốn ủng hộ ứng dụng này!\n\nNếu bạn còn là học sinh hoặc chưa tự chủ về tài chính, xin đừng chi tiêu —\nhãy giữ tấm lòng này trong tim và tiếp tục sử dụng, đó đã là sự ủng hộ tốt nhất dành cho tôi.\n\nNếu muốn ủng hộ, một đồng cũng là tình cảm, tôi sẽ dùng nó cho việc bảo trì và tính năng tốt hơn:)</string>
+    <string name="settings_alipay_missing_title">Chưa cài Alipay</string>
+    <string name="settings_alipay_missing_text">Không phát hiện Alipay nên tạm thời chưa thể hoàn tất ủng hộ.\n\nKhông sao — dù thế nào cũng rất cảm ơn tấm lòng của bạn!</string>
+
+    <!-- Chuyển mã video -->
+    <string name="settings_transcoder_title">Bộ chuyển mã tích hợp</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Mã hóa lại</string>
+    <string name="settings_transcode_mode_remux">Chỉ đóng gói lại container (khuyến nghị)</string>
+    <string name="settings_transcode_mode_off">Không dùng bộ chuyển mã</string>
+    <string name="settings_transcode_params_title">Tham số chuyển mã</string>
+    <string name="settings_transcode_params_subtitle">Tham số chất lượng và nén dùng khi mã hóa lại</string>
+    <string name="settings_transcode_params_disabled">Chỉ có hiệu lực khi “Cách chuyển mã” chọn “Mã hóa lại”</string>
+    <string name="settings_crf_value">Chất lượng CRF: %1$d</string>
+    <string name="settings_crf_hint">Giá trị càng nhỏ thì chất lượng càng cao và dung lượng càng lớn (mặc định 18)</string>
+    <string name="settings_encoder_title">Bộ mã hóa</string>
+    <string name="settings_compress_preset_title">Cấu hình nén sẵn</string>
+
+</resources>

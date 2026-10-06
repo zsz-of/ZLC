@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Armenian (hy) strings — settings screen.
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- Ընդհանուր -->
+    <string name="settings_title">Կարգավորումներ</string>
+    <string name="settings_cd_back">Հետ</string>
+    <string name="settings_btn_apply">Կիրառել</string>
+    <string name="settings_btn_cancel">Չեղարկել</string>
+    <string name="settings_btn_close">Փակել</string>
+    <string name="settings_btn_ok">Լավ</string>
+    <string name="settings_btn_sponsor">Աջակցել</string>
+
+    <!-- Խմբերի վերնագրեր -->
+    <string name="settings_section_general">Ընդհանուր</string>
+    <string name="settings_section_appearance">Արտաքին տեսք</string>
+    <string name="settings_section_language">Լեզու</string>
+    <string name="settings_section_defaults">Կանխադրված ընտրանքներ</string>
+    <string name="settings_section_output">Ելք</string>
+    <string name="settings_section_transcode">Վիդեոյի վերակոդավորում</string>
+    <string name="settings_section_about">Ծրագրի մասին</string>
+    <string name="settings_section_app">Հավելված</string>
+    <string name="settings_section_credits">Շնորհակալություն և աջակցություն</string>
+    <string name="settings_section_opensource">Բաց կոդ և լիցենզիա</string>
+
+    <!-- Ընդհանուր -->
+    <string name="settings_startup_check_title">Ստուգել թարմացումները գործարկման ժամանակ</string>
+    <string name="settings_startup_check_subtitle">Գործարկման ժամանակ ինքնաշխատ ներբեռնում է նոր տարբերակը GitHub-ից և տեղեկացնում թարմացման մասին</string>
+    <string name="settings_haptics_title">Վիբրացիոն արձագանք</string>
+    <string name="settings_haptics_subtitle">Հպումային արձագանք կոճակներին սեղմելիս և վիճակի փոփոխության ժամանակ</string>
+    <string name="settings_bounce_title">Կոճակների առաձգական անիմացիա</string>
+    <string name="settings_bounce_subtitle">Կոճակը սեղմելիս փոքրացման և վերադարձի անիմացիա</string>
+
+    <!-- Արտաքին տեսք -->
+    <string name="settings_theme_system">Հետևել համակարգին</string>
+    <string name="settings_theme_dark">Մուգ</string>
+    <string name="settings_theme_light">Բաց</string>
+    <string name="settings_dynamic_theme_title">Material You դինամիկ գույներ</string>
+    <string name="settings_dynamic_theme_subtitle">Հետևում է համակարգի պաստառի գույներին (Android 12+)․ անջատելու դեպքում օգտագործվում են ստորև նշված նախապես սահմանված գույները</string>
+    <string name="settings_preset_colors_title">Թեմայի նախապես սահմանված գույներ</string>
+    <string name="settings_preset_current">Ընթացիկ՝ %1$s</string>
+    <string name="settings_preset_disabled_hint">Հասանելի է «Material You դինամիկ գույները» անջատելուց հետո</string>
+    <string name="settings_custom">Անհատական</string>
+    <string name="settings_custom_color_title">Թեմայի անհատական գույն</string>
+    <string name="settings_cd_custom_palette">Անհատական գունապնակ</string>
+    <string name="settings_hue_value">Երանգ՝ %1$d°</string>
+
+    <!-- Հավելվածի լեզուն -->
+    <string name="settings_language_dialog_title">Ընտրեք հավելվածի լեզուն</string>
+    <string name="settings_language_count">Ընդամենը %1$d լեզու</string>
+
+    <!-- Կանխադրված ընտրանքներ -->
+    <string name="settings_reminder_dialogs_title">Այլևս չցուցադրել երկխոսությունները</string>
+    <string name="settings_reminder_dialogs_subtitle">Կառավարել բոլոր «այլևս չհարցնել» երկխոսությունները</string>
+    <string name="settings_reminder_hint">Միացվածը նշանակում է «այլևս չցուցադրել»․ անջատելու դեպքում երկխոսությունը կրկին կհայտնվի հաջորդ անգամ։</string>
+
+    <!-- Ելք -->
+    <string name="settings_preserve_folders_title">Ելքը՝ ըստ աղբյուր թղթապանակների կառուցվածքի</string>
+    <string name="settings_preserve_folders_subtitle">Արդյունքները պահվում են ալբոմով ենթաթղթապանակներում․ անջատելու դեպքում բոլոր ֆայլերը մեկ թղթապանակում են</string>
+
+    <!-- Ծրագրի մասին -->
+    <string name="settings_about_title">Ծրագրի մասին</string>
+    <string name="settings_about_subtitle">Տարբերակ · Թարմացումների ստուգում · Շնորհակալություն և աջակցություն</string>
+    <string name="settings_check_update_title">Ստուգել թարմացումները</string>
+    <string name="settings_check_update_subtitle">Ստանալ նորագույն տարբերակը GitHub Releases-ից</string>
+    <string name="settings_checking">Ստուգվում է…</string>
+    <string name="settings_update_available">Հասանելի է v%1$s</string>
+    <string name="settings_up_to_date">Դուք ունեք նորագույն տարբերակը</string>
+    <string name="settings_network_error">Ցանցի սխալ, փորձեք ավելի ուշ</string>
+    <string name="settings_reinstall_title">Կրկին տեղադրել այս տարբերակը</string>
+    <string name="settings_reinstall_subtitle">Ներբեռնել ընթացիկ տարբերակը և տեղադրել վերևից (թարմացումը ստուգելու համար)</string>
+    <string name="settings_reinstall_newer_hint">Հնարավոր է թարմացում մինչև v%1$s․ նախ օգտագործեք «Ստուգել թարմացումները»</string>
+    <string name="settings_version_title">Տարբերակ</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Աջակցություն Alipay-ով</string>
+    <string name="settings_alipay_subtitle">Աջակցեք մշակմանը</string>
+    <string name="settings_coolapk_subtitle">Coolapk-ի օգտատեր · Շնորհակալություն աջակցության համար</string>
+    <string name="settings_ai_credits_subtitle">Շնորհակալություն AI IDE-ներին և AI մոդելներին մշակման հարցում օգնության համար</string>
+    <string name="settings_github_title">Բաց կոդի GitHub հասցե</string>
+    <string name="settings_license_title">Բաց կոդի լիցենզիա</string>
+    <string name="settings_sponsor_dialog_title">Շնորհակալություն աջակցության համար</string>
+    <string name="settings_sponsor_dialog_text">Շատ շնորհակալ եմ, որ ցանկանում եք աջակցել այս հավելվածին։\n\nԵթե դեռ աշակերտ կամ ուսանող եք և ֆինանսապես անկախ չեք, խնդրում եմ գումար չծախսեք—\nպահեք այս ցանկությունը սրտում և պարզապես շարունակեք օգտվել հավելվածից․ դա ինձ համար լավագույն աջակցությունն է։\n\nԵթե այնուամենայնիվ ցանկանում եք աջակցել, նվազագույն գումարն էլ կարևոր է․ ես այն կներդնեմ ավելի լավ սպասարկման և գործառույթների մեջ։)</string>
+    <string name="settings_alipay_missing_title">Alipay-ը տեղադրված չէ</string>
+    <string name="settings_alipay_missing_text">Alipay-ը չի գտնվել, ուստի աջակցությունն առայժմ հնարավոր չէ։\n\nՈչինչ—ամեն դեպքում շնորհակալություն բարի մտադրության համար։</string>
+
+    <!-- Վիդեոյի վերակոդավորում -->
+    <string name="settings_transcoder_title">Ներկառուցված վերակոդավորիչ</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Վերակոդավորում</string>
+    <string name="settings_transcode_mode_remux">Միայն կոնտեյների վերափաթեթավորում (խորհուրդ է տրվում)</string>
+    <string name="settings_transcode_mode_off">Չօգտագործել վերակոդավորիչը</string>
+    <string name="settings_transcode_params_title">Վերակոդավորման պարամետրեր</string>
+    <string name="settings_transcode_params_subtitle">Որակի և սեղմման պարամետրերը վերակոդավորման ժամանակ</string>
+    <string name="settings_transcode_params_disabled">Գործում է միայն երբ «Վերակոդավորման եղանակը» դրված է «Վերակոդավորում»</string>
+    <string name="settings_crf_value">Որակ CRF՝ %1$d</string>
+    <string name="settings_crf_hint">Որքան փոքր է արժեքը, այնքան բարձր է որակը և մեծ է ֆայլը (կանխադրված 18)</string>
+    <string name="settings_encoder_title">Կոդավորիչ</string>
+    <string name="settings_compress_preset_title">Սեղմման նախադրվածք</string>
+
+</resources>

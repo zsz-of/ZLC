@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Armenian (hy) strings — main screen and background flows.
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Plural quantities follow CLDR for Armenian: one / other.
+-->
+<resources>
+    <!-- ── Կարգավիճակի տող / հաղորդագրություններ ── -->
+    <string name="main_status_ready">Պատրաստ է</string>
+    <string name="main_status_location_granted">Տեղադրության թույլտվությունը տրված է․ փոխակերպումից հետո GPS մետատվյալները կպահպանվեն</string>
+    <string name="main_status_location_denied">Առանց տեղադրության թույլտվության՝ փոխակերպված լուսանկարները կկորցնեն GPS տեղադրության տվյալները</string>
+    <string name="main_status_all_files_granted">«Բոլոր ֆայլերի հասանելիություն» թույլտվությունը տրված է․ փոխակերպումը գրում է ուղիղ ալբոմի թղթապանակում և ամբողջությամբ պահպանում է տեղադրությունը</string>
+    <string name="main_status_all_files_denied">Առանց «Բոլոր ֆայլերի հասանելիություն» թույլտվության՝ որոշ մոդելներում լուսանկարները կարող են կորցնել տեղադրության տվյալները</string>
+    <string name="main_status_read_granted">Լուսանկարներ և վիդեո կարդալու թույլտվությունը տրված է</string>
+    <string name="main_status_video_missing">Թույլտվությունը տրված է, բայց վիդեոյի թույլտվությունը բացակայում է․ հնարավոր չէ գտնել երկֆայլ Live Photo-ի ուղեկցող վիդեոն</string>
+    <string name="main_status_permission_denied">Թույլտվությունը տրված չէ․ կարող եք կրկին սեղմել «Ավելացնել ֆայլեր»</string>
+    <string name="main_status_folder_not_selected">Թղթապանակ ընտրված չէ</string>
+    <string name="main_status_folder_unavailable">Ընտրված թղթապանակը հասանելի չէ (աջակցվում է միայն տեղական պահոցը)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Նախորդ սեսիան վերականգնվել է (%1$d ֆայլ)</item>
+        <item quantity="other">Նախորդ սեսիան վերականգնվել է (%1$d ֆայլ)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Հայտնաբերվել է նախորդ աննորմալ փակումը․ անավարտ ցանկը մաքրվել է</string>
+    <string name="main_status_compose_blocks_extract">Հերթում կան սինթեզի առաջադրանքներ․ հնարավոր չէ անցնել առանձնացման ռեժիմին</string>
+    <string name="main_status_replace_off_mutex">Փոխարինման ռեժիմն անջատված է (փոխադարձ բացառող է «Մշակումից հետո ջնջել բնօրինակները» տարբերակի հետ)</string>
+    <string name="main_status_delete_needs_all_files">Բնօրինակների ինքնաշխատ ջնջումը պահանջում է «Բոլոր ֆայլերի հասանելիություն» թույլտվությունը․ նախ տվեք այն</string>
+    <string name="main_status_replace_off">Փոխարինման ռեժիմն անջատված է․ արդյունքները կրկին գրվում են ալբոմի թղթապանակում</string>
+    <string name="main_status_replace_needs_all_files">Փոխարինման ռեժիմը պահանջում է «Բոլոր ֆայլերի հասանելիություն» թույլտվությունը․ նախ տվեք այն</string>
+    <string name="main_status_delete_off_mutex">Անջատված է «Մշակումից հետո ջնջել բնօրինակները» (փոխադարձ բացառող է փոխարինման ռեժիմի հետ)</string>
+    <string name="main_status_loading_albums">Ալբոմները բեռնվում են…</string>
+    <string name="main_status_no_albums">Ալբոմներ չեն գտնվել</string>
+    <string name="main_status_compose_no_photo">Լուսանկար ընտրված չէ, սինթեզն անհնար է</string>
+    <string name="main_status_compose_no_video">Վիդեո ընտրված չէ, սինթեզն անհնար է</string>
+    <string name="main_status_compose_all_added">Ընտրված բոլոր լուսանկարներն արդեն ցանկում են</string>
+    <string name="main_status_compose_paired">%1$d լուսանկար, %2$d վիդեո․ փոքր քանակի չափով ավելացվել է %3$d զույգ սինթեզի առաջադրանք</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Ավելացվել է %1$d սինթեզի առաջադրանք․ սինթեզն սկսելու համար սեղմեք «Սկսել փոխակերպումը»</item>
+        <item quantity="other">Ավելացվել է %1$d սինթեզի առաջադրանք․ սինթեզն սկսելու համար սեղմեք «Սկսել փոխակերպումը»</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (ելքային ձևաչափը ինքնաշխատ փոխվել է Google-ի)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Ներմուծվում է %1$d կիսված պատկեր…</item>
+        <item quantity="other">Ներմուծվում է %1$d կիսված պատկեր…</item>
+    </plurals>
+    <string name="main_status_import_failed">Ներմուծումը ձախողվեց՝ %1$s</string>
+    <string name="main_status_import_done_partial">Ներմուծումն ավարտվեց՝ հաջող %1$d, ձախող %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Ներմուծումն ավարտվեց․ ընդամենը ներմուծվել է %1$d ֆայլ</item>
+        <item quantity="other">Ներմուծումն ավարտվեց․ ընդամենը ներմուծվել է %1$d ֆայլ</item>
+    </plurals>
+    <string name="main_status_import_stopped">Ներմուծումը կանգնեցվեց՝ հաջող %1$d, ձախող %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Ներմուծվում է %1$d ֆայլ…</item>
+        <item quantity="other">Ներմուծվում է %1$d ֆայլ…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Ներմուծվում է %1$d/%2$d…</string>
+    <string name="main_status_stopping">Կանգնեցվում է… (կկանգնի ընթացիկ ֆայլից հետո)</string>
+    <string name="main_status_stopping_import">Ներմուծման կանգնեցում…</string>
+    <string name="main_status_removed">Հեռացվել է՝ %1$s</string>
+    <string name="main_status_cleared">Մաքրվել է</string>
+    <string name="main_status_nothing_to_convert">Փոխակերպելու ֆայլեր չկան</string>
+    <string name="main_status_folder_unreadable">Չհաջողվեց կարդալ ընտրված թղթապանակը</string>
+    <string name="main_status_scanning_folder">Թղթապանակը սկանավորվում է…</string>
+    <string name="main_status_no_images">Ընտրված թղթապանակում պատկերներ չեն գտնվել</string>
+    <string name="main_status_batch_importing">Խմբային ներմուծում %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Խմբային ներմուծումը կանգնեցվեց․ ընդամենը ներմուծվել է %1$d Live Photo</item>
+        <item quantity="other">Խմբային ներմուծումը կանգնեցվեց․ ընդամենը ներմուծվել է %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Խմբային ներմուծումը կանգնեցվեց․ ընդամենը ներմուծվել է %1$d Live Photo, բաց թողնվեց %2$d ոչ Live ֆայլ</item>
+        <item quantity="other">Խմբային ներմուծումը կանգնեցվեց․ ընդամենը ներմուծվել է %1$d Live Photo, բաց թողնվեց %2$d ոչ Live ֆայլ</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Խմբային ներմուծումն ավարտվեց․ ընդամենը ներմուծվել է %1$d Live Photo</item>
+        <item quantity="other">Խմբային ներմուծումն ավարտվեց․ ընդամենը ներմուծվել է %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Խմբային ներմուծումն ավարտվեց․ ընդամենը ներմուծվել է %1$d Live Photo, բաց թողնվեց %2$d ոչ Live ֆայլ</item>
+        <item quantity="other">Խմբային ներմուծումն ավարտվեց․ ընդամենը ներմուծվել է %1$d Live Photo, բաց թողնվեց %2$d ոչ Live ֆայլ</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Կանգնեցվեց․ %1$d ֆայլից մշակվեց %2$d, փոխարինվեց %3$d աղբյուր ֆայլ</string>
+    <string name="main_status_stopped_export">Կանգնեցվեց․ %1$d ֆայլից մշակվեց %2$d, ալբոմ արտահանվեց %3$d</string>
+    <string name="main_status_done_replace_reason">Ավարտվեց․ մշակվեց %1$d ֆայլ, փոխարինվեց %2$d աղբյուր ֆայլ (պատճառը՝ %3$s)</string>
+    <string name="main_status_done_export_reason">Ավարտվեց․ մշակվեց %1$d ֆայլ, ալբոմ արտահանվեց %2$d (պատճառը՝ %3$s)</string>
+    <string name="main_status_done_replace">Ավարտվեց․ մշակվեց %1$d ֆայլ, փոխարինվեց %2$d աղբյուր ֆայլ</string>
+    <string name="main_status_done_export">Ավարտվեց․ մշակվեց %1$d ֆայլ, ալբոմ արտահանվեց %2$d</string>
+    <string name="main_status_keep_originals">%1$s․ «Պահոցին ամբողջական հասանելիություն» թույլտվությունը տրված չէ, բնօրինակները պահպանվել են</string>
+
+    <!-- ── Ցանկի տարրերի տեղեկություն ── -->
+    <string name="main_info_detecting">Հայտնաբերվում է…</string>
+    <string name="main_info_unrecognized">Live Photo-ի չճանաչված ձևաչափ</string>
+    <string name="main_info_converting">Փոխակերպում…</string>
+    <string name="main_info_compose_task">Սինթեզի առաջադրանք (սեղմեք փոխակերպումն սկսելու համար)</string>
+    <string name="main_info_done_replaced">Ավարտվեց (փոխարինվեց %1$d աղբյուր ֆայլ)</string>
+    <string name="main_info_done_skipped">Ավարտվեց (բաց թողնվեց՝ անվան կոնֆլիկտ)</string>
+    <string name="main_info_done_exported">Ավարտվեց (արտահանվեց %1$d)</string>
+    <string name="main_info_failed">Սխալ՝ %1$s</string>
+
+    <!-- ── Առաջընթացի մանրամասներ ── -->
+    <string name="main_progress_added">Ավելացվել է %1$d/%2$d</string>
+    <string name="main_progress_processed">Մշակվել է %1$d/%2$d</string>
+    <string name="main_progress_imported">Ներմուծվել է %1$d/%2$d</string>
+
+    <!-- ── Թույլտվությունների երկխոսություններ ── -->
+    <string name="main_dialog_permission_title">Անհրաժեշտ է լուսանկարներ և վիդեո կարդալու թույլտվություն</string>
+    <string name="main_dialog_permission_message">Ծրագրին անհրաժեշտ է հասանելիություն ձեր սարքի լուսանկարներին և վիդեոներին՝\n\n• Լուսանկարների թույլտվություն՝ սկանավորել սարքի ալբոմը Live Photo-ները ճանաչելու համար\n• Վիդեոյի թույլտվություն՝ գտնել երկֆայլ Live Photo-ի ուղեկցող վիդեոն\n• Տեղադրության թույլտվություն՝ պահպանել լուսանկարների GPS մետատվյալները (առանց դրա փոխակերպումից հետո տեղադրությունը կկորչի)\n\nՄերժելուց հետո ներկառուցված ընտրիչը չի աշխատի․ ավելի ուշ կարող եք կրկին սեղմել «Ավելացնել ֆայլեր» և տալ թույլտվությունները։</string>
+    <string name="main_dialog_settings_title">Լուսանկարների և վիդեոյի թույլտվությունը պետք է տալ ձեռքով</string>
+    <string name="main_dialog_settings_message">Նախկինում ընտրել եք «այլևս չհարցնել», ուստի համակարգն այլևս չի ցուցադրում թույլտվության երկխոսությունը։\n\nԱնցեք հավելվածի մանրամասների էջ → Թույլտվություններ → Լուսանկարներ և վիդեո, ձեռքով տվեք հասանելիությունը և վերադարձեք հավելված։\n\nՈւշադրություն․ պետք է տալ երկու թույլտվությունները՝ «Լուսանկարներ» և «Վիդեո», հակառակ դեպքում երկֆայլ Live Photo-ն չի գտնի ուղեկցող վիդեոն։</string>
+
+    <!-- ── «Բոլոր ֆայլերի հասանելիություն» թույլտվության երկխոսություններ ── -->
+    <string name="main_dialog_allfiles_title_delete">Բնօրինակների ինքնաշխատ ջնջումը պահանջում է «Բոլոր ֆայլերի հասանելիություն»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Այս սարքը չի աջակցում բնօրինակների ինքնաշխատ ջնջումը</string>
+    <string name="main_dialog_allfiles_title_replace">Փոխարինման ռեժիմը պահանջում է «Բոլոր ֆայլերի հասանելիություն»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Այս սարքը չի աջակցում փոխարինման ռեժիմը</string>
+    <string name="main_dialog_allfiles_title_location">Խորհուրդ է տրվում տալ «Բոլոր ֆայլերի հասանելիություն» թույլտվությունը</string>
+    <string name="main_dialog_allfiles_delete_message">«Մշակումից հետո ջնջել բնօրինակները» ուղղակիորեն ջնջում է սկավառակի բնօրինակ ֆայլերը (լուսանկարը և ուղեկցող վիդեոն), գործողությունն անշրջելի է, ուստի նախ անհրաժեշտ է «Բոլոր ֆայլերի հասանելիություն» թույլտվությունը։\n\nԹույլտվությունը տալուց հետո անջատիչը կդառնա հասանելի, և դուք ինքներդ կկարողանաք միացնել այն։</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Ընթացիկ համակարգը (Android 10 և ավելի հին) չի տրամադրում «Բոլոր ֆայլերի հասանելիություն» թույլտվությունը, ուստի հնարավոր չէ ուղղակիորեն ջնջել սկավառակի բնօրինակ ֆայլերը․ այդ պատճառով սարքը չի աջակցում «Մշակումից հետո ջնջել բնօրինակները»։\n\nՓոխակերպումից հետո կարող եք ձեռքով մաքրել բնօրինակները համակարգի ալբոմից։</string>
+    <string name="main_dialog_allfiles_replace_message">«Փոխարինման ռեժիմը» ուղղակիորեն գրում է փոխակերպման արդյունքը սկավառակի բնօրինակ ֆայլերում (վերագրանցում է դրանք), գործողությունն անշրջելի է, ուստի նախ անհրաժեշտ է «Բոլոր ֆայլերի հասանելիություն» թույլտվությունը։\n\nԹույլտվությունը տալուց հետո անջատիչը կդառնա հասանելի, և դուք ինքներդ կկարողանաք միացնել այն։</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Ընթացիկ համակարգը (Android 10 և ավելի հին) չի տրամադրում «Բոլոր ֆայլերի հասանելիություն» թույլտվությունը, ուստի հնարավոր չէ ուղղակիորեն վերագրանցել սկավառակի բնօրինակ ֆայլերը․ այդ պատճառով սարքը չի աջակցում «Փոխարինման ռեժիմը»։\n\nԿարող եք շարունակել սովորական փոխակերպումը․ արդյունքները կգրվեն ալբոմի թղթապանակում։</string>
+    <string name="main_dialog_allfiles_location_message">Որոշ մոդելներ (օր․՝ Meizu) համակարգի ալբոմի API-ով գրելիս զրկում են GPS տեղադրության տվյալներից, ինչի հետևանքով փոխակերպված լուսանկարները կորցնում են տեղադրությունը։\n\n«Բոլոր ֆայլերի հասանելիություն» թույլտվությամբ ծրագիրը գրում է ուղիղ ալբոմի թղթապանակում և ամբողջությամբ պահպանում է տեղադրության մետատվյալները։\n\nՓոխակերպումն աշխատում է նաև առանց այդ թույլտվության, սակայն որոշ մոդելներում տեղադրությունը կարող է կորչել։</string>
+
+    <!-- ── Ելքային ֆայլի անվան կոնֆլիկտի երկխոսություն ── -->
+    <string name="main_dialog_conflict_title">Ելքային ֆայլի անվան կոնֆլիկտ</string>
+    <string name="main_dialog_conflict_message">Ելքային թղթապանակում արդեն կա նույն անունով ֆայլ՝\n%1$s\n\nԸնտրեք գործողության եղանակը։</string>
+    <string name="main_label_conflict_always">Օգտագործել այս եղանակը հետագա կոնֆլիկտների համար</string>
+
+    <!-- ── Երկխոսությունների կոճակներ ── -->
+    <string name="main_btn_grant">Թույլատրել</string>
+    <string name="main_btn_deny">Մերժել</string>
+    <string name="main_btn_go_settings">Կարգավորումներ</string>
+    <string name="main_btn_cancel">Չեղարկել</string>
+    <string name="main_btn_grant_access">Տալ հասանելիություն</string>
+    <string name="main_btn_got_it">Հասկանալի է</string>
+    <string name="main_btn_not_now">Ոչ հիմա</string>
+    <string name="main_btn_skip">Բաց թողնել</string>
+    <string name="main_btn_overwrite">Վերագրանցել</string>
+    <string name="main_btn_auto_rename">Ինքնաշխատ վերանվանել</string>
+
+    <!-- ── Փոխակերպման արդյունք / արտահանման ձախողման պատճառներ ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Ջնջվել է %1$d բնօրինակ ֆայլ</item>
+        <item quantity="other">Ջնջվել է %1$d բնօրինակ ֆայլ</item>
+    </plurals>
+    <string name="main_delete_nothing">Բնօրինակները ջնջելու կարիք չկա</string>
+    <string name="main_delete_partial">Ջնջվել է %1$d բնօրինակ ֆայլ (%2$d-ը չհաջողվեց ջնջել, պահպանվել են)</string>
+    <string name="main_delete_failed">Բնօրինակների ջնջումը ձախողվեց (ֆայլը զբաղված է կամ գրելու իրավունք չկա), պահպանվել են</string>
+    <string name="main_export_missing_output">Փոխակերպման արդյունքը բացակայում է կամ դատարկ է՝ %1$s</string>
+    <string name="main_export_missing_output_bare">Փոխակերպման արդյունքը բացակայում է կամ դատարկ է</string>
+    <string name="main_export_insert_null">MediaStore insert-ը վերադարձրեց null</string>
+    <string name="main_export_output_stream">MediaStore-ի ելքային հոսքը հասանելի չէ</string>
+    <string name="main_export_write_failed">MediaStore-ում գրելը ձախողվեց՝ %1$s</string>
+    <string name="main_export_mkdir_failed">Չհաջողվեց ստեղծել ալբոմի թղթապանակը՝ %1$s</string>
+    <string name="main_export_dir_write_failed">Ալբոմի թղթապանակում գրելը ձախողվեց՝ %1$s</string>
+    <string name="main_export_no_source">Չհաջողվեց գտնել աղբյուր ֆայլը, փոխարինումը բաց թողնվեց</string>
+    <string name="main_export_companion_failed">Ուղեկցող ֆայլը գրելը ձախողվեց՝ %1$s</string>
+    <string name="main_export_source_dir_unwritable">Աղբյուր ֆայլի թղթապանակը գրելի չէ․ ուղեկցող ֆայլը չի գրվել</string>
+    <string name="main_export_source_dir_unavailable">Աղբյուր ֆայլի թղթապանակը հասանելի չէ՝ %1$s</string>
+    <string name="main_export_replace_failed">Աղբյուր ֆայլի փոխարինումը ձախողվեց՝ %1$s</string>
+    <string name="main_export_replace_failed_bare">Աղբյուր ֆայլի փոխարինումը ձախողվեց</string>
+</resources>

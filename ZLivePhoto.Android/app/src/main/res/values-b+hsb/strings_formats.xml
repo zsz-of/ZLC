@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Wupakować</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (jedna dataja)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Žana .mov wideodataja samsneho mjena njenamakana</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Dataja MOV nima ftyp box</string>
+    <string name="fmt_err_extract_read">Wupakowanje je wudawanski format a njeda so jako zapodawanski format čitać</string>
+    <string name="fmt_err_no_primary_jpeg">Žane hłowne JPEG wobraz njenamakane</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Po JPEG žane płaćiwe MP4 wideo njenamakane (ftyp box faluje)</string>
+    <string name="fmt_err_mp4_parse_failed">Analiza MP4 wideostruje je so njeporadźiła</string>
+    <string name="fmt_err_nubia_too_short">Dataja je překrótka za Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Kónčna magiska ličba nubiaVpfile faluje</string>
+    <string name="fmt_err_nubia_jpeg_len">Njedowolena JPEG dołhosć na kóncu dataje: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Mjez JPEG a widejom faluja wupjelnjace bajty 0x00</string>
+    <string name="fmt_err_nubia_empty_video">Dołhosć zapřijateho widea je 0</string>
+    <string name="fmt_err_vivo_no_marker">Na kóncu JPG žane znamjo vivo livephoto njenamakane</string>
+    <string name="fmt_err_vivo_companion_missing">Přidružena wideodataja faluje: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Analiza JPG-tělesa je so njeporadźiła</string>
+    <string name="fmt_err_vivo_companion_invalid">Přidružene MP4 je njepłaćiwe (ftyp box faluje)</string>
+</resources>

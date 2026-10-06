@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Català (ca).
+  Traduït del xinès simplificat de res/values/strings_*.xml (locale de reserva).
+  Qualitat: A (llengua ben dotada; terminologia revisada manualment, pendent una lectura nativa final).
+  Es conserven totes les claus, els marcadors (%1$s / %1$d) i les seqüències d'escapament.
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

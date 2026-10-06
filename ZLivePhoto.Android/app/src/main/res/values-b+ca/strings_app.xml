@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Català (ca) — textos de nivell d'aplicació.
+  Traduït del xinès simplificat de res/values/strings_app.xml (locale de reserva).
+  Qualitat: A.
+-->
+<resources>
+    <!-- Element del selector «Idioma de l'aplicació» que segueix el sistema -->
+    <string name="app_language_follow_system">Segueix el sistema</string>
+    <!-- Títol del selector d'idioma de l'aplicació -->
+    <string name="app_language_title">Idioma de l\'aplicació</string>
+</resources>

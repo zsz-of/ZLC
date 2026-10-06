@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Armenian (hy) strings — app-level.
+  Translated from res/values/strings_app.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="app_language_follow_system">Հետևել համակարգին</string>
+    <string name="app_language_title">Հավելվածի լեզուն</string>
+</resources>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+
+    <!-- Powšitkowne -->
+    <string name="settings_title">Nastajenja</string>
+    <string name="settings_cd_back">Wróćo</string>
+    <string name="settings_btn_apply">Nałožić</string>
+    <string name="settings_btn_cancel">Přetorhnyć</string>
+    <string name="settings_btn_close">Zaćisnyć</string>
+    <string name="settings_btn_ok">W porjadku</string>
+    <string name="settings_btn_sponsor">Spěchować</string>
+
+    <!-- Skupinske zapiski -->
+    <string name="settings_section_general">Powšitkowne</string>
+    <string name="settings_section_appearance">Wuhlad</string>
+    <string name="settings_section_language">Rěč</string>
+    <string name="settings_section_defaults">Standardne opcije</string>
+    <string name="settings_section_output">Wudaće</string>
+    <string name="settings_section_transcode">Překoděrowanje widea</string>
+    <string name="settings_section_about">Wo aplikaciji</string>
+    <string name="settings_section_app">Aplikacija</string>
+    <string name="settings_section_credits">Dźak a spěchowanje</string>
+    <string name="settings_section_opensource">Wotewrjeny žórłowy kod a licenca</string>
+
+    <!-- Powšitkowne -->
+    <string name="settings_startup_check_title">Při startje aktualizacije přepruwować</string>
+    <string name="settings_startup_check_subtitle">Při startje so z GitHub nowa wersija samočinje wupytuje a so lejbowanje poskići</string>
+    <string name="settings_haptics_title">Wibraciska reakcija</string>
+    <string name="settings_haptics_subtitle">Dotykowa reakcija při kliknjenju na tłóčatka a při změnje statusa</string>
+    <string name="settings_bounce_title">Elastiska animacija tłóčatkow</string>
+    <string name="settings_bounce_subtitle">Animacija pomjeńšenja a wotbijanja při kliknjenju na tłóčatko</string>
+
+    <!-- Wuhlad -->
+    <string name="settings_theme_system">Po systemje</string>
+    <string name="settings_theme_dark">Ćmowa</string>
+    <string name="settings_theme_light">Swětła</string>
+    <string name="settings_dynamic_theme_title">Dynamiske barby (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">Sleduje barby systemoweho pozadka (Android 12+); po wupinjenju so deleka podate hotowe barby wužiwaja</string>
+    <string name="settings_preset_colors_title">Hotowe barby temow</string>
+    <string name="settings_preset_current">Aktualna: %1$s</string>
+    <string name="settings_preset_disabled_hint">Přistupne po wupinjenju „Dynamiske barby (Material You)“</string>
+    <string name="settings_custom">Swójska</string>
+    <string name="settings_custom_color_title">Swójska barba tema</string>
+    <string name="settings_cd_custom_palette">Swójska paleta</string>
+    <string name="settings_hue_value">Barwowy ton %1$d°</string>
+
+    <!-- Rěč aplikacije -->
+    <string name="settings_language_dialog_title">Rěč aplikacije wubrać</string>
+    <string name="settings_language_count">Cyłkownje %1$d rěčow</string>
+
+    <!-- Standardne opcije -->
+    <string name="settings_reminder_dialogs_title">Dialogi „Hižo njepokazać“</string>
+    <string name="settings_reminder_dialogs_subtitle">Wšě přepinače „Hižo njepokazać“ rjadować</string>
+    <string name="settings_reminder_hint">Zapinjeny přepinač woznamjenja „Hižo njepokazać“; po wupinjenju so pokiw při přichodnym wuwołanju wotpowědneje situacije znowa pokaza.</string>
+
+    <!-- Wudaće -->
+    <string name="settings_preserve_folders_title">Strukturu žórłowych rjadow zachować</string>
+    <string name="settings_preserve_folders_subtitle">Wuslědki so w podrjadoch z mjenom originalneho albuma składuja; po wupinjenju so wšě do samsneho rjada zasadźa</string>
+
+    <!-- Wo aplikaciji -->
+    <string name="settings_about_title">Wo aplikaciji</string>
+    <string name="settings_about_subtitle">Wersija · Aktualizacije · Dźak a spěchowanje</string>
+    <string name="settings_check_update_title">Aktualizacije přepruwować</string>
+    <string name="settings_check_update_subtitle">Najnowšu wersiju z GitHub Releases wzać</string>
+    <string name="settings_checking">Přepruwuje so…</string>
+    <string name="settings_update_available">v%1$s k dispoziciji</string>
+    <string name="settings_up_to_date">Hižo najnowša wersija</string>
+    <string name="settings_network_error">Syćowa zmylka, prošu pozdźišo znowa</string>
+    <string name="settings_reinstall_title">Tutu wersiju znowa instalować</string>
+    <string name="settings_reinstall_subtitle">Aktualnu najnowšu wersiju lejbowac a přez nju instalować (za test aktualizacijow)</string>
+    <string name="settings_reinstall_newer_hint">Aktualizacija na v%1$s je k dispoziciji, prošu najprjedy „Aktualizacije přepruwować“</string>
+    <string name="settings_version_title">Wersija</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Spěchowanje přez Alipay</string>
+    <string name="settings_alipay_subtitle">Wuwijanje podpěrać</string>
+    <string name="settings_coolapk_subtitle">Wužiwar Coolapk · dźak za podpěru</string>
+    <string name="settings_ai_credits_subtitle">Dźak AI-wuwijanskim wobswětam a AI-modelam za pomoc při wuwijanju</string>
+    <string name="settings_github_title">Žórłowy kod na GitHub</string>
+    <string name="settings_license_title">Licenca wotewrjeneho žórła</string>
+    <string name="settings_sponsor_dialog_title">Dźak za wašu podpěru</string>
+    <string name="settings_sponsor_dialog_text">Wulki dźak, zo chceće tutu aplikaciju podpěrać!\n\nJeli hišće studujeće abo hišće njejsće finansielnje samostatny, prošu njewudawajće pjenjezy —\nzachowajće tutu dobru mysl w swojim wutrobje a wužiwajće aplikaciju dale; to je za mnje najlěpša podpěra.\n\nJeli pak chceće spěchować, tež mały přinošk je wažny — włožu jón do lěpšeje wothladowanki a nowych funkcijow :)</string>
+    <string name="settings_alipay_missing_title">Alipay nicht instalowany</string>
+    <string name="settings_alipay_missing_text">Alipay nieje wotkryty, tohodla spěchowanje tuchwilu móžno njeje.\n\nNičo to nječini — wulki dźak za wašu dobru wolu, hinak njeje!</string>
+
+    <!-- Překoděrowanje widea -->
+    <string name="settings_transcoder_title">Zabudowany překoděrowak</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Znowa koděrować</string>
+    <string name="settings_transcode_mode_remux">Jenož kontejner přepakować (doporučene)</string>
+    <string name="settings_transcode_mode_off">Překoděrowak wšědny njezyć</string>
+    <string name="settings_transcode_params_title">Překoděrowanske parametry</string>
+    <string name="settings_transcode_params_subtitle">Parametry kwality a kompresije při znowa koděrowanju</string>
+    <string name="settings_transcode_params_disabled">Jenož skutkuje, hdyž je w „Značce Překoděrowanja“ „Znowa koděrować“ wubrane</string>
+    <string name="settings_crf_value">Kwalita CRF: %1$d</string>
+    <string name="settings_crf_hint">Čim mniša hódnota, čim wyša kwalita a wjetši wobjim (standard 18)</string>
+    <string name="settings_encoder_title">Koděrowak</string>
+    <string name="settings_compress_preset_title">Kompresijowy profil</string>
+
+</resources>

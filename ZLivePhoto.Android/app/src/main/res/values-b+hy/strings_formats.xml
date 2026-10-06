@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Armenian (hy) strings — format plugin names and diagnostics.
+  Translated from res/values/strings_formats.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Առանձնացում</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo մեկ ֆայլում</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Նույնանուն .mov վիդեո ֆայլը չի գտնվել</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV ֆայլում բացակայում է ftyp box-ը</string>
+    <string name="fmt_err_extract_read">Առանձնացումը ելքային ձևաչափ է և չի կարող կարդացվել որպես մուտքային ձևաչափ</string>
+    <string name="fmt_err_no_primary_jpeg">Հիմնական JPEG պատկերը չի գտնվել</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG-ից հետո վավեր MP4 վիդեո չի գտնվել (բացակայում է ftyp box-ը)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 վիդեո հոսքի վերլուծությունը ձախողվեց</string>
+    <string name="fmt_err_nubia_too_short">Ֆայլը չափազանց կարճ է Nubia Live Photo-ի համար</string>
+    <string name="fmt_err_nubia_no_magic">Բացակայում է nubiaVpfile-ի պոչային մոգական թիվը</string>
+    <string name="fmt_err_nubia_jpeg_len">Պոչում գրանցված JPEG-ի երկարությունը սխալ է՝ %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG-ի և վիդեոյի միջև բացակայում են 0x00 լրացնող բայթերը</string>
+    <string name="fmt_err_nubia_empty_video">Ներկառուցված վիդեոյի երկարությունը 0 է</string>
+    <string name="fmt_err_vivo_no_marker">JPG-ի պոչում vivo livephoto նշիչը չի գտնվել</string>
+    <string name="fmt_err_vivo_companion_missing">Բացակայում է ուղեկցող վիդեո ֆայլը՝ %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG-ի հիմնական մասի վերլուծությունը ձախողվեց</string>
+    <string name="fmt_err_vivo_companion_invalid">Ուղեկցող MP4-ը անվավեր է (բացակայում է ftyp box-ը)</string>
+</resources>

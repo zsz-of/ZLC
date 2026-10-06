@@ -446,6 +446,133 @@ internal object ExifUtil {
         }
     }
 
+    /** EXIF UserComment 标签（0x9286）。努比亚用它标记动态照片。 */
+    private const val TAG_USER_COMMENT = 0x9286
+
+    /**
+     * 写入/更新 EXIF UserComment（0x9286，UNDEFINED），值 = `"ASCII\0\0\0"` + 文本。
+     *
+     * 努比亚相册（`cn.nubia.gallery3d`）靠 UserComment 里是否含子串 `"livep"`
+     * 把图片判为动态照片（`LocalImage.getExifSourceType()` → `TYPE_DYNAMICPHOTO`），
+     * 与 XMP 完全无关。详见 `.agents/research/nubia-gallery-requirements.md`。
+     */
+    fun upsertUserComment(jpeg: ByteArray, text: String): ByteArray {
+        val value = "ASCII\u0000\u0000\u0000".toByteArray(Charsets.ISO_8859_1) +
+            text.toByteArray(Charsets.ISO_8859_1)
+        return upsertExifIfdValue(jpeg, TAG_USER_COMMENT, TYPE_UNDEFINED, value)
+    }
+
+    /**
+     * 在 ExifIFD 里写入/替换一个「值块」标签（类型与长度任意）。
+     *
+     * 策略与 [addExifIfdTag]/[upsertMakerNoteAsciiTag] 一致：
+     * - 有 ExifIFD 指针：新 ExifIFD（旧条目逐字节复制、跳过同 tag）+ 条目 + 值块追加到段尾，
+     *   只改写 IFD0 里 0x8769 指针的 inline 值；旧条目引用的数据保持原偏移。
+     * - 无 ExifIFD 指针：同时追加新 IFD0（旧条目 + 0x8769）与新 ExifIFD，改写 TIFF 头 IFD0 偏移。
+     * - 无 EXIF 段：新建最小 APP1 插到 SOI 之后。
+     * 结构异常或 APP1 超 64KB 时返回原 jpeg。
+     */
+    private fun upsertExifIfdValue(jpeg: ByteArray, tagId: Int, tagType: Int, value: ByteArray): ByteArray {
+        val found = findExifApp1(jpeg)
+        if (found == null) {
+            // 最小 EXIF：IFD0{0x8769} + ExifIFD{tag} + 值
+            val le = true
+            val ifd0Size = 2 + 12 + 4
+            val exifIfdSize = 2 + 12 + 4
+            val exifIfdOff = 8 + ifd0Size
+            val valueOff = exifIfdOff + exifIfdSize
+            val ifd0 = pack16(le, 1) + pack16(le, TAG_EXIF_IFD) + pack16(le, 4) +
+                pack32(le, 1) + pack32(le, exifIfdOff.toLong()) + pack32(le, 0)
+            val exifIfd = pack16(le, 1) + pack16(le, tagId) + pack16(le, tagType) +
+                pack32(le, value.size.toLong()) + pack32(le, valueOff.toLong()) + pack32(le, 0)
+            val tiff = byteArrayOf('I'.code.toByte(), 'I'.code.toByte()) +
+                pack16(le, 42) + pack32(le, 8) + ifd0 + exifIfd + value
+            val payload = exifPrefix + tiff
+            val app1 = ByteArray(4 + payload.size)
+            app1[0] = 0xFF.toByte()
+            app1[1] = 0xE1.toByte()
+            BinaryUtils.writeU16BE(app1, 2, payload.size + 2)
+            System.arraycopy(payload, 0, app1, 4, payload.size)
+            val combined = ByteArray(jpeg.size + app1.size)
+            System.arraycopy(jpeg, 0, combined, 0, 2)
+            System.arraycopy(app1, 0, combined, 2, app1.size)
+            System.arraycopy(jpeg, 2, combined, 2 + app1.size, jpeg.size - 2)
+            return combined
+        }
+
+        val (segStart, totalLen, tiffStart) = found
+        return try {
+            val le = isLittleEndian(jpeg, tiffStart)
+            val ifd0Abs = tiffStart + read32(jpeg, tiffStart + 4, le).toInt()
+            val ifd0Count = read16(jpeg, ifd0Abs, le)
+            val ifd0Entries = jpeg.copyOfRange(ifd0Abs + 2, ifd0Abs + 2 + ifd0Count * 12)
+
+            var exifPtrEntryOff = -1
+            for (i in 0 until ifd0Count) {
+                val e = ifd0Abs + 2 + i * 12
+                if (read16(jpeg, e, le) == TAG_EXIF_IFD) {
+                    exifPtrEntryOff = e
+                    break
+                }
+            }
+            val appendRel = (segStart + totalLen) - tiffStart
+
+            var exifEntries = ByteArray(0)
+            var exifCount = 0
+            if (exifPtrEntryOff >= 0) {
+                val exifAbs = tiffStart + read32(jpeg, exifPtrEntryOff + 8, le).toInt()
+                if (exifAbs + 2 > jpeg.size) return jpeg
+                exifCount = read16(jpeg, exifAbs, le)
+                if (exifAbs + 2 + exifCount * 12 > jpeg.size) return jpeg
+                exifEntries = jpeg.copyOfRange(exifAbs + 2, exifAbs + 2 + exifCount * 12)
+            }
+
+            val kept = ArrayList<ByteArray>()
+            for (i in 0 until exifCount) {
+                val off = i * 12
+                if (read16(exifEntries, off, le) == tagId) continue // 替换同 tag，不产生重复
+                kept.add(exifEntries.copyOfRange(off, off + 12))
+            }
+            val newExifCount = kept.size + 1
+
+            val needNewIfd0 = exifPtrEntryOff < 0
+            val ifd0Size = if (needNewIfd0) 2 + (ifd0Count + 1) * 12 + 4 else 0
+            val exifIfdRel = appendRel + ifd0Size
+            val exifIfdSize = 2 + newExifCount * 12 + 4
+            val valueRel = exifIfdRel + exifIfdSize
+
+            val appended = ByteArray(ifd0Size + exifIfdSize) + value
+            var p = 0
+            if (needNewIfd0) {
+                put16(appended, p, le, ifd0Count + 1); p += 2
+                System.arraycopy(ifd0Entries, 0, appended, p, ifd0Entries.size); p += ifd0Entries.size
+                p = putEntry(appended, p, le, TAG_EXIF_IFD, 4, 1L, exifIfdRel.toLong())
+                p = put32(appended, p, le, 0L)
+            }
+            put16(appended, p, le, newExifCount); p += 2
+            for (e in kept) {
+                System.arraycopy(e, 0, appended, p, 12); p += 12
+            }
+            p = putEntry(appended, p, le, tagId, tagType, value.size.toLong(), valueRel.toLong())
+            p = put32(appended, p, le, 0L)
+            System.arraycopy(value, 0, appended, p, value.size)
+
+            if (totalLen + appended.size - 2 > 65535) return jpeg
+            val result = insertBytes(jpeg, segStart + totalLen, appended)
+            if (needNewIfd0) {
+                val hdr = pack32(le, appendRel.toLong())
+                System.arraycopy(hdr, 0, result, tiffStart + 4, 4)
+            } else {
+                val ptr = pack32(le, exifIfdRel.toLong())
+                System.arraycopy(ptr, 0, result, exifPtrEntryOff + 8, 4)
+            }
+            updateSegLen(result, segStart, totalLen + appended.size - 2)
+            result
+        } catch (e: Exception) {
+            jpeg
+        }
+    }
+
     /** 按字节序编码 4 字节 inline 值（BYTE/SHORT/LONG）。 */
     private fun encodeInline(le: Boolean, tagType: Int, value: Int): ByteArray {
         val b = ByteArray(4)

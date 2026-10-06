@@ -4,6 +4,21 @@
 
 ---
 
+## [3.4.19] - 2026-10-06
+
+### 🆕 新增努比亚（Nubia / 红魔）动态照片格式
+
+- **格式来自逆向**（`cn.nubia.gallery3d`，neovision10.0 V11.0.70；完整报告见 `.agents/research/nubia-gallery-requirements.md`）：努比亚的识别与 XMP **完全无关**——唯一开关是 JPEG 的 EXIF `UserComment`(0x9286) 里含子串 `"livep"`（`LocalImage.getExifSourceType()` → `setSourceType(0xc)` = `TYPE_DYNAMICPHOTO`），视频定位靠**固定 30 字节尾部**：
+  `[JPEG][0x00][MP4][BE64(JPEG 长度 L)][UTF-16BE "nubiaVpfile"(22B)]`，
+  播放器按 `setDataSource(fd, L+1, 总长-L-30)` 的字节区间播放（长度故意比视频多 1，含长度字段首字节）。
+- **新增 `NubiaPlugin`**（`core/formats/NubiaPlugin.kt`，已注册进 `FormatRegistry`）：识别采用三重校验（尾部 UTF-16BE 魔数 + `L` 合法 + JPEG 后确实是 `0x00` 填充）；解析按 `L` 切出封面、按纯 MP4 区间 `[L+1, 总长-30)` 取视频；写出同时写 `UserComment` 与尾部。
+- **必须双写**：只写尾部 → 能播但不被识别为动态照片；只写 `"livep"` → 被识别但长按播放 `isNubiaVpFile()` 返回 false 而失败。写入时 `UserComment` 不含 `aper`/`bper`/`image3d`，避免落入其它特殊类型的优先级分支（`LocalImage` 是 `else if` 链）。
+- **`ExifUtil` 新增 `upsertUserComment` 与通用 `upsertExifIfdValue(jpeg, tagId, type, value)`**：沿用「段尾追加 + 指针改写、绝不移动既有数据」策略，可写入任意类型的值块标签（UserComment 值 = `"ASCII\0\0\0"` + 文本），同 tag 替换而非追加，APP1 超 64KB 或结构异常返回原图。
+- **新增回归**：`NubiaVpFileTest`（3 例：尾部布局/长度字段/`0x00` 填充与 UserComment 双重校验、写入→识别→读回往返、普通 JPEG 与 ASCII 魔数负例）。全量 **62 tests × 2 flavor 全绿**；转换冒烟 `smoke_run.py` 20/20 PASS（无回归）。
+- **边界**：本机**无任何努比亚真机样本**（相册目录只有 iQOO），格式全部来自静态逆向 + 合成样本往返；相机写入的 `UserComment` 完整字符串与字符集前缀、`videoLength` 的 +1 语义均**未在真机验证**；努比亚相册内编辑会清空 `UserComment`（`GalleryUtils.UpdateProcessExif`），动态照片身份随之丢失。
+
+---
+
 ## [3.4.18] - 2026-10-06
 
 ### 🍎 Apple 实况照片配对标识与静帧时刻 + 荣耀尾部定位修复

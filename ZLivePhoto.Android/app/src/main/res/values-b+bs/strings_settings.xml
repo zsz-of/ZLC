@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bosnian (bs) strings — settings screen.
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- Općenito -->
+    <string name="settings_title">Postavke</string>
+    <string name="settings_cd_back">Nazad</string>
+    <string name="settings_btn_apply">Primijeni</string>
+    <string name="settings_btn_cancel">Otkaži</string>
+    <string name="settings_btn_close">Zatvori</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Podrži</string>
+
+    <!-- Naslovi grupa -->
+    <string name="settings_section_general">Općenito</string>
+    <string name="settings_section_appearance">Izgled</string>
+    <string name="settings_section_language">Jezik</string>
+    <string name="settings_section_defaults">Zadane opcije</string>
+    <string name="settings_section_output">Izlaz</string>
+    <string name="settings_section_transcode">Transkodiranje videa</string>
+    <string name="settings_section_about">O aplikaciji</string>
+    <string name="settings_section_app">Aplikacija</string>
+    <string name="settings_section_credits">Zahvale i podrška</string>
+    <string name="settings_section_opensource">Otvoreni kod i licenca</string>
+
+    <!-- Općenito -->
+    <string name="settings_startup_check_title">Provjeri ažuriranja pri pokretanju</string>
+    <string name="settings_startup_check_subtitle">Pri pokretanju automatski preuzima novu verziju s GitHuba i obavještava o ažuriranju</string>
+    <string name="settings_haptics_title">Vibracijska povratna informacija</string>
+    <string name="settings_haptics_subtitle">Haptička povratna informacija pri dodiru dugmadi i promjeni stanja</string>
+    <string name="settings_bounce_title">Elastična animacija dugmadi</string>
+    <string name="settings_bounce_subtitle">Animacija smanjivanja i vraćanja pri pritisku dugmeta</string>
+
+    <!-- Izgled -->
+    <string name="settings_theme_system">Prati sistem</string>
+    <string name="settings_theme_dark">Tamna</string>
+    <string name="settings_theme_light">Svijetla</string>
+    <string name="settings_dynamic_theme_title">Material You dinamične boje</string>
+    <string name="settings_dynamic_theme_subtitle">Prati boje sistemske pozadine (Android 12+); kada je isključeno, koriste se unaprijed postavljene boje ispod</string>
+    <string name="settings_preset_colors_title">Unaprijed postavljene boje teme</string>
+    <string name="settings_preset_current">Trenutno: %1$s</string>
+    <string name="settings_preset_disabled_hint">Dostupno nakon isključivanja „Material You dinamične boje“</string>
+    <string name="settings_custom">Prilagođeno</string>
+    <string name="settings_custom_color_title">Prilagođena boja teme</string>
+    <string name="settings_cd_custom_palette">Prilagođena paleta</string>
+    <string name="settings_hue_value">Nijansa %1$d°</string>
+
+    <!-- Jezik aplikacije -->
+    <string name="settings_language_dialog_title">Odaberite jezik aplikacije</string>
+    <string name="settings_language_count">Ukupno %1$d jezika</string>
+
+    <!-- Zadane opcije -->
+    <string name="settings_reminder_dialogs_title">Ne prikazuj više dijaloge</string>
+    <string name="settings_reminder_dialogs_subtitle">Upravljanje svim dijalozima „ne pitaj ponovo“</string>
+    <string name="settings_reminder_hint">Uključeno znači „ne prikazuj više“; kada isključite, dijalog će se ponovo pojaviti sljedeći put.</string>
+
+    <!-- Izlaz -->
+    <string name="settings_preserve_folders_title">Izlaz prema strukturi izvornih foldera</string>
+    <string name="settings_preserve_folders_subtitle">Rezultati se čuvaju u podfolderima po albumu; kada je isključeno, sve datoteke su u jednom folderu</string>
+
+    <!-- O aplikaciji -->
+    <string name="settings_about_title">O aplikaciji</string>
+    <string name="settings_about_subtitle">Verzija · Provjera ažuriranja · Zahvale i podrška</string>
+    <string name="settings_check_update_title">Provjeri ažuriranja</string>
+    <string name="settings_check_update_subtitle">Preuzmi najnoviju verziju s GitHub Releases</string>
+    <string name="settings_checking">Provjera…</string>
+    <string name="settings_update_available">Dostupna je v%1$s</string>
+    <string name="settings_up_to_date">Imate najnoviju verziju</string>
+    <string name="settings_network_error">Mrežna greška, pokušajte kasnije</string>
+    <string name="settings_reinstall_title">Ponovo instaliraj ovu verziju</string>
+    <string name="settings_reinstall_subtitle">Preuzmi trenutnu verziju i instaliraj povrh (za testiranje ažuriranja)</string>
+    <string name="settings_reinstall_newer_hint">Moguće je ažuriranje na v%1$s; prvo upotrijebite „Provjeri ažuriranja“</string>
+    <string name="settings_version_title">Verzija</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Podrška putem Alipaya</string>
+    <string name="settings_alipay_subtitle">Podržite razvoj</string>
+    <string name="settings_coolapk_subtitle">Korisnik Coolapka · Hvala na podršci</string>
+    <string name="settings_ai_credits_subtitle">Hvala AI IDE-ovima i AI modelima za pomoć u razvoju</string>
+    <string name="settings_github_title">GitHub adresa otvorenog koda</string>
+    <string name="settings_license_title">Licenca otvorenog koda</string>
+    <string name="settings_sponsor_dialog_title">Hvala na podršci</string>
+    <string name="settings_sponsor_dialog_text">Zaista hvala što želite podržati ovu aplikaciju!\n\nAko ste još učenik ili student i niste finansijski neovisni, molim vas ne trošite novac—\nsačuvajte tu želju u srcu i jednostavno nastavite koristiti aplikaciju; to mi je najbolja podrška.\n\nAko ipak želite podržati, i najmanji iznos je podrška; uložit ću ga u bolje održavanje i funkcije:)</string>
+    <string name="settings_alipay_missing_title">Alipay nije instaliran</string>
+    <string name="settings_alipay_missing_text">Alipay nije pronađen, pa podrška trenutno nije moguća.\n\nNema problema—u svakom slučaju, hvala na dobrim namjerama!</string>
+
+    <!-- Transkodiranje videa -->
+    <string name="settings_transcoder_title">Ugrađeni transkoder</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Ponovno kodiranje</string>
+    <string name="settings_transcode_mode_remux">Samo remuksavanje kontejnera (preporučeno)</string>
+    <string name="settings_transcode_mode_off">Ne koristi transkoder</string>
+    <string name="settings_transcode_params_title">Parametri transkodiranja</string>
+    <string name="settings_transcode_params_subtitle">Parametri kvalitete i kompresije pri ponovnom kodiranju</string>
+    <string name="settings_transcode_params_disabled">Djeluje samo kada je „Način transkodiranja“ postavljen na „Ponovno kodiranje“</string>
+    <string name="settings_crf_value">Kvaliteta CRF: %1$d</string>
+    <string name="settings_crf_hint">Manja vrijednost znači veću kvalitetu i veću datoteku (zadano 18)</string>
+    <string name="settings_encoder_title">Koder</string>
+    <string name="settings_compress_preset_title">Unaprijed postavka kompresije</string>
+
+</resources>

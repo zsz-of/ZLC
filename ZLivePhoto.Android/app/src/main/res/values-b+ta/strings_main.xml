@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · தமிழ் சரங்கள் (ta)।
+  ZLC · Tamil strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">தயார்</string>
+    <string name="main_status_location_granted">இருப்பிட அனுமதி வழங்கப்பட்டது; மாற்றத்திற்குப் பிறகு GPS மெட்டாடேட்டா பாதுகாக்கப்படும்</string>
+    <string name="main_status_location_denied">இருப்பிட அனுமதி வழங்கப்படவில்லை: மாற்றப்பட்ட புகைப்படங்கள் GPS இருப்பிடத் தகவலை இழக்கும்</string>
+    <string name="main_status_all_files_granted">“அனைத்து கோப்புகளுக்கான அணுகல்” வழங்கப்பட்டது; மாற்றங்கள் நேரடியாக படத்தொகுப்பு கோப்புறையில் எழுதப்பட்டு இருப்பிடத் தகவல் முழுமையாகப் பாதுகாக்கப்படும்</string>
+    <string name="main_status_all_files_denied">“அனைத்து கோப்புகளுக்கான அணுகல்” வழங்கப்படவில்லை: சில சாதனங்களில் மாற்றத்திற்குப் பிறகு இருப்பிடத் தகவல் இழக்கலாம்</string>
+    <string name="main_status_read_granted">புகைப்படங்கள் மற்றும் வீடியோக்களைப் படிக்கும் அனுமதி வழங்கப்பட்டது</string>
+    <string name="main_status_video_missing">வழங்கப்பட்டது, ஆனால் வீடியோ அனுமதி இல்லை: இரண்டு-கோப்பு Live Photo-க்களுடன் வரும் துணை வீடியோக்களைக் கண்டறிய முடியாது</string>
+    <string name="main_status_permission_denied">அனுமதி வழங்கப்படவில்லை; “கோப்புகளைச் சேர்” என்பதை மீண்டும் தட்டலாம்</string>
+    <string name="main_status_folder_not_selected">எந்தக் கோப்புறையும் தேர்ந்தெடுக்கப்படவில்லை</string>
+    <string name="main_status_folder_unavailable">தேர்ந்தெடுத்த கோப்புறையை அணுக முடியாது (உள்ளகச் சேமிப்புக் கோப்புறைகள் மட்டுமே ஆதரிக்கப்படும்)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">முந்தைய அமர்வு மீட்டெடுக்கப்பட்டது (%1$d கோப்பு)</item>
+        <item quantity="other">முந்தைய அமர்வு மீட்டெடுக்கப்பட்டது (%1$d கோப்புகள்)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">முந்தைய அசாதாரண வெளியேற்றம் கண்டறியப்பட்டது; முடிக்கப்படாத பட்டியல் அழிக்கப்பட்டது</string>
+    <string name="main_status_compose_blocks_extract">வரிசையில் கூட்டமைப்பு பணிகள் உள்ளன; பிரித்தெடுப்பு பயன்முறைக்கு மாற முடியாது</string>
+    <string name="main_status_replace_off_mutex">மாற்றீட்டு பயன்முறை அணைக்கப்பட்டது (“செயலாக்கத்திற்குப் பிறகு அசலை நீக்கு” உடன் ஒன்றுக்கொன்று பிரத்தியேகம்)</string>
+    <string name="main_status_delete_needs_all_files">அசல்களைத் தானாக நீக்க “அனைத்து கோப்புகளுக்கான அணுகல்” தேவை; முதலில் அதை வழங்கவும்</string>
+    <string name="main_status_replace_off">மாற்றீட்டு பயன்முறை அணைக்கப்பட்டது; மாற்ற முடிவுகள் மீண்டும் படத்தொகுப்பு கோப்புறையில் எழுதப்படும்</string>
+    <string name="main_status_replace_needs_all_files">மாற்றீட்டு பயன்முறைக்கு “அனைத்து கோப்புகளுக்கான அணுகல்” தேவை; முதலில் அதை வழங்கவும்</string>
+    <string name="main_status_delete_off_mutex">“செயலாக்கத்திற்குப் பிறகு அசலை நீக்கு” அணைக்கப்பட்டது (மாற்றீட்டு பயன்முறையுடன் ஒன்றுக்கொன்று பிரத்தியேகம்)</string>
+    <string name="main_status_loading_albums">ஆல்பங்கள் ஏற்றப்படுகின்றன…</string>
+    <string name="main_status_no_albums">ஆல்பங்கள் எதுவும் கிடைக்கவில்லை</string>
+    <string name="main_status_compose_no_photo">புகைப்படம் எதுவும் தேர்ந்தெடுக்கப்படவில்லை; கூட்டமைக்க முடியாது</string>
+    <string name="main_status_compose_no_video">வீடியோ எதுவும் தேர்ந்தெடுக்கப்படவில்லை; கூட்டமைக்க முடியாது</string>
+    <string name="main_status_compose_all_added">தேர்ந்தெடுத்த புகைப்படங்கள் அனைத்தும் ஏற்கனவே பட்டியலில் உள்ளன</string>
+    <string name="main_status_compose_paired">%1$d புகைப்படங்கள் மற்றும் %2$d வீடியோக்கள்; குறைந்த எண்ணிக்கையின் அடிப்படையில் %3$d கூட்டமைப்பு இணைகள் சேர்க்கப்பட்டன</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d கூட்டமைப்பு பணி சேர்க்கப்பட்டது; கூட்டமைக்க “மாற்றத்தைத் தொடங்கு” என்பதைத் தட்டவும்</item>
+        <item quantity="other">%1$d கூட்டமைப்பு பணிகள் சேர்க்கப்பட்டன; கூட்டமைக்க “மாற்றத்தைத் தொடங்கு” என்பதைத் தட்டவும்</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (வெளியீட்டு வடிவம் தானாக Google ஆக மாற்றப்பட்டது)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">%1$d பகிரப்பட்ட படம் இறக்குமதி செய்யப்படுகிறது…</item>
+        <item quantity="other">%1$d பகிரப்பட்ட படங்கள் இறக்குமதி செய்யப்படுகின்றன…</item>
+    </plurals>
+    <string name="main_status_import_failed">இறக்குமதி தோல்வி: %1$s</string>
+    <string name="main_status_import_done_partial">இறக்குமதி முடிந்தது: %1$d வெற்றி, %2$d தோல்வி</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">இறக்குமதி முடிந்தது: மொத்தம் %1$d கோப்பு இறக்குமதி செய்யப்பட்டது</item>
+        <item quantity="other">இறக்குமதி முடிந்தது: மொத்தம் %1$d கோப்புகள் இறக்குமதி செய்யப்பட்டன</item>
+    </plurals>
+    <string name="main_status_import_stopped">இறக்குமதி நிறுத்தப்பட்டது: %1$d வெற்றி, %2$d தோல்வி</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d கோப்பு இறக்குமதி செய்யப்படுகிறது…</item>
+        <item quantity="other">%1$d கோப்புகள் இறக்குமதி செய்யப்படுகின்றன…</item>
+    </plurals>
+    <string name="main_status_importing_progress">இறக்குமதி %1$d/%2$d…</string>
+    <string name="main_status_stopping">நிறுத்தப்படுகிறது… (தற்போதைய கோப்பு முடிந்ததும் நிற்கும்)</string>
+    <string name="main_status_stopping_import">இறக்குமதி நிறுத்தப்படுகிறது…</string>
+    <string name="main_status_removed">%1$s நீக்கப்பட்டது</string>
+    <string name="main_status_cleared">அழிக்கப்பட்டது</string>
+    <string name="main_status_nothing_to_convert">மாற்றுவதற்கு கோப்புகள் இல்லை</string>
+    <string name="main_status_folder_unreadable">தேர்ந்தெடுத்த கோப்புறையைப் படிக்க முடியாது</string>
+    <string name="main_status_scanning_folder">கோப்புறை ஸ்கேன் செய்யப்படுகிறது…</string>
+    <string name="main_status_no_images">தேர்ந்தெடுத்த கோப்புறையில் படங்கள் எதுவும் இல்லை</string>
+    <string name="main_status_batch_importing">தொகுதி இறக்குமதி %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">தொகுதி இறக்குமதி நிறுத்தப்பட்டது: மொத்தம் %1$d Live Photo இறக்குமதி செய்யப்பட்டது</item>
+        <item quantity="other">தொகுதி இறக்குமதி நிறுத்தப்பட்டது: மொத்தம் %1$d Live Photo-க்கள் இறக்குமதி செய்யப்பட்டன</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">தொகுதி இறக்குமதி நிறுத்தப்பட்டது: மொத்தம் %1$d Live Photo இறக்குமதி, %2$d Live Photo அல்லாத கோப்புகள் தவிர்க்கப்பட்டன</item>
+        <item quantity="other">தொகுதி இறக்குமதி நிறுத்தப்பட்டது: மொத்தம் %1$d Live Photo-க்கள் இறக்குமதி, %2$d Live Photo அல்லாத கோப்புகள் தவிர்க்கப்பட்டன</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">தொகுதி இறக்குமதி முடிந்தது: மொத்தம் %1$d Live Photo இறக்குமதி செய்யப்பட்டது</item>
+        <item quantity="other">தொகுதி இறக்குமதி முடிந்தது: மொத்தம் %1$d Live Photo-க்கள் இறக்குமதி செய்யப்பட்டன</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">தொகுதி இறக்குமதி முடிந்தது: மொத்தம் %1$d Live Photo இறக்குமதி, %2$d Live Photo அல்லாத கோப்புகள் தவிர்க்கப்பட்டன</item>
+        <item quantity="other">தொகுதி இறக்குமதி முடிந்தது: மொத்தம் %1$d Live Photo-க்கள் இறக்குமதி, %2$d Live Photo அல்லாத கோப்புகள் தவிர்க்கப்பட்டன</item>
+    </plurals>
+    <string name="main_status_stopped_replace">நிறுத்தப்பட்டது: %1$d கோப்புகளில் %2$d செயலாக்கப்பட்டு %3$d மூலக் கோப்புகள் மாற்றப்பட்டன</string>
+    <string name="main_status_stopped_export">நிறுத்தப்பட்டது: %1$d கோப்புகளில் %2$d செயலாக்கப்பட்டு %3$d படத்தொகுப்புக்கு ஏற்றுமதி செய்யப்பட்டன</string>
+    <string name="main_status_done_replace_reason">முடிந்தது: %1$d கோப்புகள் செயலாக்கப்பட்டு %2$d மூலக் கோப்புகள் மாற்றப்பட்டன (காரணம்: %3$s)</string>
+    <string name="main_status_done_export_reason">முடிந்தது: %1$d கோப்புகள் செயலாக்கப்பட்டு %2$d படத்தொகுப்புக்கு ஏற்றுமதி செய்யப்பட்டன (காரணம்: %3$s)</string>
+    <string name="main_status_done_replace">முடிந்தது: %1$d கோப்புகள் செயலாக்கப்பட்டு %2$d மூலக் கோப்புகள் மாற்றப்பட்டன</string>
+    <string name="main_status_done_export">முடிந்தது: %1$d கோப்புகள் செயலாக்கப்பட்டு %2$d படத்தொகுப்புக்கு ஏற்றுமதி செய்யப்பட்டன</string>
+    <string name="main_status_keep_originals">%1$s; “முழு சேமிப்பக அணுகல்” வழங்கப்படாததால் அசல்கள் வைக்கப்பட்டுள்ளன</string>
+    <string name="main_info_detecting">கண்டறியப்படுகிறது…</string>
+    <string name="main_info_unrecognized">அறியப்படாத Live Photo வடிவம்</string>
+    <string name="main_info_converting">மாற்றப்படுகிறது…</string>
+    <string name="main_info_compose_task">கூட்டமைப்பு பணி (கூட்டமைக்க “மாற்றத்தைத் தொடங்கு” என்பதைத் தட்டவும்)</string>
+    <string name="main_info_done_replaced">முடிந்தது (%1$d மூலக் கோப்புகள் மாற்றப்பட்டன)</string>
+    <string name="main_info_done_skipped">முடிந்தது (தவிர்க்கப்பட்டது: பெயர் மோதல்)</string>
+    <string name="main_info_done_exported">முடிந்தது (%1$d ஏற்றுமதி செய்யப்பட்டன)</string>
+    <string name="main_info_failed">தோல்வி: %1$s</string>
+    <string name="main_progress_added">%1$d/%2$d சேர்க்கப்பட்டது</string>
+    <string name="main_progress_processed">%1$d/%2$d செயலாக்கப்பட்டது</string>
+    <string name="main_progress_imported">%1$d/%2$d இறக்குமதி செய்யப்பட்டது</string>
+    <string name="main_dialog_permission_title">புகைப்படங்கள் மற்றும் வீடியோக்களைப் படிக்கும் அனுமதி தேவை</string>
+    <string name="main_dialog_permission_message">இந்தப் பயன்பாடு உங்கள் சாதனத்தில் உள்ள புகைப்படங்களையும் வீடியோக்களையும் படிக்க வேண்டும்:\n\n• புகைப்பட அனுமதி: சாதன படத்தொகுப்பை ஸ்கேன் செய்து அதில் உள்ள Live Photo-க்களைக் கண்டறிய\n• வீடியோ அனுமதி: இரண்டு-கோப்பு Live Photo-க்களுடன் வரும் துணை வீடியோக்களைக் கண்டறிய\n• இருப்பிட அனுமதி: புகைப்படங்களில் உள்ள GPS இருப்பிட மெட்டாடேட்டாவைப் பாதுகாக்க (இல்லையெனில் மாற்றப்பட்ட புகைப்படங்கள் இருப்பிடத் தகவலை இழக்கும்)\n\nமறுத்தால், உள்ளமைந்த தேர்வியைப் பயன்படுத்த முடியாது; பின்னர் “கோப்புகளைச் சேர்” என்பதைத் தட்டி மீண்டும் அனுமதி வழங்கலாம்.</string>
+    <string name="main_dialog_settings_title">புகைப்படங்கள் மற்றும் வீடியோக்களுக்கான அனுமதிகள் கைமுறையாக வழங்கப்பட வேண்டும்</string>
+    <string name="main_dialog_settings_message">நீங்கள் முன்பு “மீண்டும் கேட்காதே” என்பதைத் தேர்ந்தெடுத்ததால், கணினி அனுமதி உரையாடலை இனி காட்டாது.\n\nபயன்பாட்டு விவரப் பக்கம் → அனுமதிகள் → புகைப்படங்கள் மற்றும் வீடியோக்கள் என்பதற்குச் சென்று கைமுறையாக அணுகலை வழங்கி, பிறகு இந்தப் பயன்பாட்டுக்குத் திரும்பவும்.\n\nகுறிப்பு: “புகைப்படங்கள்” மற்றும் “வீடியோக்கள்” இரண்டு அனுமதிகளும் வழங்கப்பட வேண்டும், இல்லையெனில் இரண்டு-கோப்பு Live Photo-க்கள் துணை வீடியோக்களைக் கண்டறிய முடியாது.</string>
+    <string name="main_dialog_allfiles_title_delete">அசல்களைத் தானாக நீக்க “அனைத்து கோப்புகளுக்கான அணுகல்” தேவை</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">இந்தச் சாதனம் அசல்களைத் தானாக நீக்குவதை ஆதரிக்கவில்லை</string>
+    <string name="main_dialog_allfiles_title_replace">மாற்றீட்டு பயன்முறைக்கு “அனைத்து கோப்புகளுக்கான அணுகல்” தேவை</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">இந்தச் சாதனம் மாற்றீட்டு பயன்முறையை ஆதரிக்கவில்லை</string>
+    <string name="main_dialog_allfiles_title_location">“அனைத்து கோப்புகளுக்கான அணுகல்” வழங்கப் பரிந்துரைக்கப்படுகிறது</string>
+    <string name="main_dialog_allfiles_delete_message">“செயலாக்கத்திற்குப் பிறகு அசலை நீக்கு” என்பது வட்டில் உள்ள அசல் கோப்புகளை (புகைப்படம் மற்றும் அதன் துணை வீடியோ) நேரடியாக நீக்கும். இதை மீட்டெடுக்க முடியாது, எனவே முதலில் “அனைத்து கோப்புகளுக்கான அணுகல்” வழங்கப்பட வேண்டும்.\n\nவழங்கியதும் இயக்கி கிடைக்கும்; அப்போது நீங்களே அதை இயக்கலாம்.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">தற்போதைய கணினி (Android 10 அல்லது அதற்குக் கீழ்) “அனைத்து கோப்புகளுக்கான அணுகலை” வழங்காததால், வட்டில் உள்ள அசல் கோப்புகளை நேரடியாக நீக்க முடியாது; எனவே இந்தச் சாதனம் “செயலாக்கத்திற்குப் பிறகு அசலை நீக்கு” என்பதை ஆதரிக்கவில்லை.\n\nமாற்றத்திற்குப் பிறகு கணினி படத்தொகுப்பில் அசல்களைக் கைமுறையாகச் சுத்தம் செய்யலாம்.</string>
+    <string name="main_dialog_allfiles_replace_message">“மாற்றீட்டு பயன்முறை” மாற்ற முடிவை நேரடியாக வட்டில் உள்ள அசல் கோப்புகளில் திரும்ப எழுதும் (அவற்றின் உள்ளடக்கத்தை மேலெழுதும்). இதை மீட்டெடுக்க முடியாது, எனவே முதலில் “அனைத்து கோப்புகளுக்கான அணுகல்” வழங்கப்பட வேண்டும்.\n\nவழங்கியதும் இயக்கி கிடைக்கும்; அப்போது நீங்களே அதை இயக்கலாம்.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">தற்போதைய கணினி (Android 10 அல்லது அதற்குக் கீழ்) “அனைத்து கோப்புகளுக்கான அணுகலை” வழங்காததால், வட்டில் உள்ள அசல் கோப்புகளை நேரடியாக மீண்டும் எழுத முடியாது; எனவே இந்தச் சாதனம் “மாற்றீட்டு பயன்முறையை” ஆதரிக்கவில்லை.\n\nவழக்கமான முறையில் தொடர்ந்து மாற்றலாம்; முடிவுகள் படத்தொகுப்பு கோப்புறையில் எழுதப்படும்.</string>
+    <string name="main_dialog_allfiles_location_message">சில சாதனங்களில் (Meizu போன்றவை), கணினி படத்தொகுப்பு API வழியாக எழுதும்போது GPS இருப்பிடத் தகவல் நீக்கப்படும், எனவே மாற்றப்பட்ட புகைப்படங்கள் இருப்பிடத்தை இழக்கும்.\n\n“அனைத்து கோப்புகளுக்கான அணுகலை” வழங்கியதும், இந்தப் பயன்பாடு நேரடியாக படத்தொகுப்பு கோப்புறையில் எழுதி இருப்பிட மெட்டாடேட்டாவை முழுமையாகப் பாதுகாக்கும்.\n\nஇது இல்லாமலும் மாற்றம் வேலை செய்யும், ஆனால் சில சாதனங்களில் இருப்பிடத் தகவல் இழக்கலாம்.</string>
+    <string name="main_dialog_conflict_title">வெளியீட்டு கோப்பு பெயர் மோதல்</string>
+    <string name="main_dialog_conflict_message">வெளியீட்டு கோப்புறையில் அதே பெயரில் ஒரு கோப்பு ஏற்கனவே உள்ளது:\n%1$s\n\nஎப்படிக் கையாள்வது என்பதைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="main_label_conflict_always">இதையே பின்வரும் அனைத்து மோதல்களுக்கும் பயன்படுத்து</string>
+    <string name="main_btn_grant">வழங்கு</string>
+    <string name="main_btn_deny">மறு</string>
+    <string name="main_btn_go_settings">அமைப்புகளைத் திற</string>
+    <string name="main_btn_cancel">ரத்து</string>
+    <string name="main_btn_grant_access">அணுகலை வழங்கு</string>
+    <string name="main_btn_got_it">புரிந்தது</string>
+    <string name="main_btn_not_now">இப்போது வேண்டாம்</string>
+    <string name="main_btn_skip">தவிர்</string>
+    <string name="main_btn_overwrite">மேலெழுது</string>
+    <string name="main_btn_auto_rename">தானாகப் பெயர் மாற்று</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d அசல் கோப்பு நீக்கப்பட்டது</item>
+        <item quantity="other">%1$d அசல் கோப்புகள் நீக்கப்பட்டன</item>
+    </plurals>
+    <string name="main_delete_nothing">நீக்க வேண்டிய அசல்கள் இல்லை</string>
+    <string name="main_delete_partial">%1$d அசல் கோப்புகள் நீக்கப்பட்டன (%2$d நீக்க முடியாமல் வைக்கப்பட்டன)</string>
+    <string name="main_delete_failed">அசல்களை நீக்க முடியவில்லை (கோப்புகள் பயன்பாட்டில் உள்ளன அல்லது எழுதும் அனுமதி இல்லை); அவை வைக்கப்பட்டுள்ளன</string>
+    <string name="main_export_missing_output">மாற்ற வெளியீடு இல்லை அல்லது காலியாக உள்ளது: %1$s</string>
+    <string name="main_export_missing_output_bare">மாற்ற வெளியீடு இல்லை அல்லது காலியாக உள்ளது</string>
+    <string name="main_export_insert_null">MediaStore செருகல் null-ஐத் திரும்பியது</string>
+    <string name="main_export_output_stream">MediaStore வெளியீட்டு ஸ்ட்ரீம் கிடைக்கவில்லை</string>
+    <string name="main_export_write_failed">MediaStore எழுத்து தோல்வி: %1$s</string>
+    <string name="main_export_mkdir_failed">படத்தொகுப்பு கோப்புறையை %1$s உருவாக்க முடியாது</string>
+    <string name="main_export_dir_write_failed">படத்தொகுப்பு கோப்புறையில் எழுத முடியவில்லை: %1$s</string>
+    <string name="main_export_no_source">மூலக் கோப்பைக் கண்டறிய முடியவில்லை; மாற்றீடு தவிர்க்கப்பட்டது</string>
+    <string name="main_export_companion_failed">துணைக் கோப்பைத் திரும்ப எழுத முடியவில்லை: %1$s</string>
+    <string name="main_export_source_dir_unwritable">மூலக் கோப்புறை எழுத முடியாததால், துணைக் கோப்பைத் திரும்ப எழுத முடியவில்லை</string>
+    <string name="main_export_source_dir_unavailable">மூலக் கோப்புறை கிடைக்கவில்லை: %1$s</string>
+    <string name="main_export_replace_failed">மூலக் கோப்பை மாற்ற முடியவில்லை: %1$s</string>
+    <string name="main_export_replace_failed_bare">மூலக் கோப்பை மாற்ற முடியவில்லை</string>
+</resources>

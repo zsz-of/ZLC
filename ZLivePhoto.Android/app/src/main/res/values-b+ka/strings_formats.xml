@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Georgian (ka) strings — format plugin names and diagnostics.
+  Translated from res/values/strings_formats.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">ამოღება</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo ერთ ფაილში</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">იგივე სახელის მქონე .mov ვიდეო ფაილი ვერ მოიძებნა</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV ფაილს აკლია ftyp box</string>
+    <string name="fmt_err_extract_read">ამოღება გამოსავალი ფორმატია და არ შეიძლება შესავალი ფორმატად წაკითხვა</string>
+    <string name="fmt_err_no_primary_jpeg">მთავარი JPEG სურათი ვერ მოიძებნა</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG-ის შემდეგ ვალიდური MP4 ვიდეო ვერ მოიძებნა (აკლია ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 ვიდეო ნაკადის ანალიზი ვერ მოხერხდა</string>
+    <string name="fmt_err_nubia_too_short">ფაილი ძალიან მოკლეა Nubia Live Photo-სთვის</string>
+    <string name="fmt_err_nubia_no_magic">აკლია nubiaVpfile-ის კუდის მაგიური რიცხვი</string>
+    <string name="fmt_err_nubia_jpeg_len">კუდში ჩაწერილი JPEG-ის სიგრძე არასწორია: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG-სა და ვიდეოს შორის აკლია 0x00 შემავსებელი ბაიტები</string>
+    <string name="fmt_err_nubia_empty_video">ჩაშენებული ვიდეოს სიგრძე 0-ია</string>
+    <string name="fmt_err_vivo_no_marker">JPG-ის კუდში vivo livephoto მარკერი ვერ მოიძებნა</string>
+    <string name="fmt_err_vivo_companion_missing">აკლია თანმხვედრი ვიდეო ფაილი: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG-ის ძირითადი ნაწილის ანალიზი ვერ მოხერხდა</string>
+    <string name="fmt_err_vivo_companion_invalid">თანმხვედრი MP4 არავალიდურია (აკლია ftyp box)</string>
+</resources>

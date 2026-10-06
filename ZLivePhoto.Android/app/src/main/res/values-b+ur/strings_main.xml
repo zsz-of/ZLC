@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · اردو (Urdu, RTL) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Urdu is right-to-left; no physical left/right direction is hard-coded and placeholders stay LTR.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">تیار</string>
+    <string name="main_status_location_granted">مقام کی اجازت مل گئی؛ تبدیلی کے بعد GPS میٹا ڈیٹا محفوظ رہے گا</string>
+    <string name="main_status_location_denied">مقام کی اجازت نہیں دی گئی: تبدیل شدہ تصاویر میں GPS مقام ضائع ہو جائے گا</string>
+    <string name="main_status_all_files_granted">”تمام فائلوں تک رسائی“ کی اجازت مل گئی؛ تبدیلی براہ راست البم میں لکھی جائے گی اور مقام مکمل محفوظ رہے گا</string>
+    <string name="main_status_all_files_denied">”تمام فائلوں تک رسائی“ کی اجازت نہیں دی گئی: کچھ آلات پر تبدیلی کے بعد مقام ضائع ہو سکتا ہے</string>
+    <string name="main_status_read_granted">تصاویر اور ویڈیوز پڑھنے کی اجازت مل گئی</string>
+    <string name="main_status_video_missing">اجازت مل گئی، لیکن ویڈیو کی اجازت نہیں: دو فائلوں والی لائیو فوٹو کے ساتھ والی ویڈیو نہیں مل سکتی</string>
+    <string name="main_status_permission_denied">اجازت نہیں دی گئی؛ آپ دوبارہ ”فائل شامل کریں“ پر ٹیپ کر سکتے ہیں</string>
+    <string name="main_status_folder_not_selected">کوئی فولڈر منتخب نہیں کیا گیا</string>
+    <string name="main_status_folder_unavailable">منتخب فولڈر تک رسائی نہیں (صرف مقامی اسٹوریج کی حمایت ہے)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">پچھلا سیشن بحال ہو گیا (%1$d فائلیں)</item>
+        <item quantity="other">پچھلا سیشن بحال ہو گیا (%1$d فائلیں)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">پچھلی بار غیر معمولی بندش کا پتہ چلا؛ نامکمل فہرست صاف کر دی گئی</string>
+    <string name="main_status_compose_blocks_extract">قطار میں کمپوز ٹاسک موجود ہے، ایکسٹریکٹ موڈ پر نہیں جا سکتے</string>
+    <string name="main_status_replace_off_mutex">تبدیلی کا موڈ بند کر دیا گیا (”پروسیسنگ کے بعد اصل تصویر حذف کریں“ کے ساتھ متبادل)</string>
+    <string name="main_status_delete_needs_all_files">اصل تصاویر خودکار حذف کرنے کے لیے ”تمام فائلوں تک رسائی“ درکار ہے، پہلے اجازت دیں</string>
+    <string name="main_status_replace_off">تبدیلی کا موڈ بند؛ نتائج دوبارہ البم میں لکھے جائیں گے</string>
+    <string name="main_status_replace_needs_all_files">تبدیلی کے موڈ کے لیے ”تمام فائلوں تک رسائی“ درکار ہے، پہلے اجازت دیں</string>
+    <string name="main_status_delete_off_mutex">”پروسیسنگ کے بعد اصل تصویر حذف کریں“ بند کر دیا گیا (تبدیلی کے موڈ کے ساتھ متبادل)</string>
+    <string name="main_status_loading_albums">البمز پڑھے جا رہے ہیں…</string>
+    <string name="main_status_no_albums">کوئی البم نہیں ملا</string>
+    <string name="main_status_compose_no_photo">کوئی تصویر منتخب نہیں، کمپوز نہیں ہو سکتا</string>
+    <string name="main_status_compose_no_video">کوئی ویڈیو منتخب نہیں، کمپوز نہیں ہو سکتا</string>
+    <string name="main_status_compose_all_added">منتخب تمام تصاویر پہلے ہی فہرست میں ہیں</string>
+    <string name="main_status_compose_paired">تصاویر %1$d، ویڈیوز %2$d؛ کم تعداد کے مطابق %3$d کمپوز ٹاسک شامل کیے گئے</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d کمپوز ٹاسک شامل کیے گئے، چلانے کے لیے ”تبدیلی شروع کریں“ پر ٹیپ کریں</item>
+        <item quantity="other">%1$d کمپوز ٹاسک شامل کیے گئے، چلانے کے لیے ”تبدیلی شروع کریں“ پر ٹیپ کریں</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (آؤٹ پٹ فارمیٹ خودکار طور پر Google پر منتقل کر دیا گیا)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">شیئر کی گئی %1$d تصاویر درآمد ہو رہی ہیں…</item>
+        <item quantity="other">شیئر کی گئی %1$d تصاویر درآمد ہو رہی ہیں…</item>
+    </plurals>
+    <string name="main_status_import_failed">درآمد ناکام: %1$s</string>
+    <string name="main_status_import_done_partial">درآمد مکمل: %1$d کامیاب، %2$d ناکام</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">درآمد مکمل: کل %1$d فائلیں</item>
+        <item quantity="other">درآمد مکمل: کل %1$d فائلیں</item>
+    </plurals>
+    <string name="main_status_import_stopped">درآمد روک دی گئی: %1$d کامیاب، %2$d ناکام</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d فائلیں درآمد ہو رہی ہیں…</item>
+        <item quantity="other">%1$d فائلیں درآمد ہو رہی ہیں…</item>
+    </plurals>
+    <string name="main_status_importing_progress">درآمد %1$d/%2$d…</string>
+    <string name="main_status_stopping">روکا جا رہا ہے… (موجودہ فائل مکمل ہونے پر رکے گا)</string>
+    <string name="main_status_stopping_import">درآمد روکی جا رہی ہے…</string>
+    <string name="main_status_removed">%1$s ہٹا دیا گیا</string>
+    <string name="main_status_cleared">صاف کر دیا گیا</string>
+    <string name="main_status_nothing_to_convert">تبدیل کرنے کے لیے کوئی فائل نہیں</string>
+    <string name="main_status_folder_unreadable">منتخب فولڈر پڑھا نہیں جا سکتا</string>
+    <string name="main_status_scanning_folder">فولڈر اسکین ہو رہا ہے…</string>
+    <string name="main_status_no_images">منتخب فولڈر میں کوئی تصویر نہیں ملی</string>
+    <string name="main_status_batch_importing">بلک درآمد %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">بلک درآمد روک دی گئی: کل %1$d لائیو فوٹو</item>
+        <item quantity="other">بلک درآمد روک دی گئی: کل %1$d لائیو فوٹو</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">بلک درآمد روک دی گئی: کل %1$d لائیو فوٹو، %2$d غیر لائیو فائلیں چھوڑ دی گئیں</item>
+        <item quantity="other">بلک درآمد روک دی گئی: کل %1$d لائیو فوٹو، %2$d غیر لائیو فائلیں چھوڑ دی گئیں</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">بلک درآمد مکمل: کل %1$d لائیو فوٹو</item>
+        <item quantity="other">بلک درآمد مکمل: کل %1$d لائیو فوٹو</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">بلک درآمد مکمل: کل %1$d لائیو فوٹو، %2$d غیر لائیو فائلیں چھوڑ دی گئیں</item>
+        <item quantity="other">بلک درآمد مکمل: کل %1$d لائیو فوٹو، %2$d غیر لائیو فائلیں چھوڑ دی گئیں</item>
+    </plurals>
+    <string name="main_status_stopped_replace">روک دیا گیا: %1$d فائلوں میں سے %2$d پروسیس ہوئیں اور %3$d اصل فائلیں بدلی گئیں</string>
+    <string name="main_status_stopped_export">روک دیا گیا: %1$d فائلوں میں سے %2$d پروسیس ہوئیں اور %3$d البم میں برآمد ہوئیں</string>
+    <string name="main_status_done_replace_reason">مکمل: %1$d فائلیں پروسیس ہوئیں، %2$d اصل فائلیں بدلی گئیں (وجہ: %3$s)</string>
+    <string name="main_status_done_export_reason">مکمل: %1$d فائلیں پروسیس ہوئیں، %2$d البم میں برآمد ہوئیں (وجہ: %3$s)</string>
+    <string name="main_status_done_replace">مکمل: %1$d فائلیں پروسیس ہوئیں، %2$d اصل فائلیں بدلی گئیں</string>
+    <string name="main_status_done_export">مکمل: %1$d فائلیں پروسیس ہوئیں، %2$d البم میں برآمد ہوئیں</string>
+    <string name="main_status_keep_originals">%1$s؛ ”مکمل اسٹوریج تک رسائی“ نہیں ملی، اصل تصاویر محفوظ رہیں</string>
+    <string name="main_info_detecting">پتہ لگایا جا رہا ہے…</string>
+    <string name="main_info_unrecognized">نامعلوم لائیو فوٹو فارمیٹ</string>
+    <string name="main_info_converting">تبدیل ہو رہا ہے…</string>
+    <string name="main_info_compose_task">کمپوز ٹاسک (چلانے کے لیے ”تبدیلی شروع کریں“ پر ٹیپ کریں)</string>
+    <string name="main_info_done_replaced">مکمل (%1$d اصل فائلیں بدلی گئیں)</string>
+    <string name="main_info_done_skipped">مکمل (چھوڑ دیا: ایک جیسا نام)</string>
+    <string name="main_info_done_exported">مکمل (%1$d برآمد)</string>
+    <string name="main_info_failed">ناکام: %1$s</string>
+    <string name="main_progress_added">شامل %1$d/%2$d</string>
+    <string name="main_progress_processed">پروسیس %1$d/%2$d</string>
+    <string name="main_progress_imported">درآمد %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">تصاویر اور ویڈیوز پڑھنے کی اجازت درکار ہے</string>
+    <string name="main_dialog_permission_message">یہ پروگرام آپ کے آلے کی تصاویر اور ویڈیوز پڑھنا چاہتا ہے:
+
+• تصویر کی اجازت: آلے کے البم اسکین کر کے لائیو فوٹو کی شناخت
+• ویڈیو کی اجازت: دو فائلوں والی لائیو فوٹو کے ساتھ والی ویڈیو تلاش کرنا
+• مقام کی اجازت: تصاویر میں GPS مقام کا میٹا ڈیٹا محفوظ رکھنا (نہ ہونے پر تبدیلی کے بعد مقام ضائع ہو جائے گا)
+
+انکار کرنے پر بلٹ اِن منتخب کنندہ استعمال نہیں ہو سکے گا؛ آپ بعد میں دوبارہ ”فائل شامل کریں“ پر ٹیپ کر کے اجازت دے سکتے ہیں۔</string>
+    <string name="main_dialog_settings_title">تصاویر اور ویڈیوز کی اجازت دستی طور پر دینی ہوگی</string>
+    <string name="main_dialog_settings_message">آپ نے پہلے ”دوبارہ نہ پوچھیں“ منتخب کیا تھا، اس لیے سسٹم اجازت کا ڈائیلاگ نہیں دکھائے گا۔
+
+ایپ کی تفصیلات → اجازتیں → تصاویر اور ویڈیوز پر جا کر دستی طور پر رسائی دیں اور اس ایپ پر واپس آئیں۔
+
+نوٹ: ”تصاویر“ اور ”ویڈیو“ دونوں اجازتیں ایک ساتھ دینی ہوں گی، ورنہ دو فائلوں والی لائیو فوٹو کے ساتھ والی ویڈیو نہیں ملے گی۔</string>
+    <string name="main_dialog_allfiles_title_delete">اصل تصاویر خودکار حذف کرنے کے لیے ”تمام فائلوں تک رسائی“ درکار ہے</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">یہ آلہ خودکار حذف کی حمایت نہیں کرتا</string>
+    <string name="main_dialog_allfiles_title_replace">تبدیلی کے موڈ کے لیے ”تمام فائلوں تک رسائی“ درکار ہے</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">یہ آلہ تبدیلی کے موڈ کی حمایت نہیں کرتا</string>
+    <string name="main_dialog_allfiles_title_location">”تمام فائلوں تک رسائی“ دینے کی سفارش کی جاتی ہے</string>
+    <string name="main_dialog_allfiles_delete_message">”پروسیسنگ کے بعد اصل تصویر حذف کریں“ ڈسک پر اصل فائل (تصویر اور ساتھ والی ویڈیو) براہ راست حذف کرتا ہے؛ یہ عمل واپس نہیں ہو سکتا، اس لیے پہلے ”تمام فائلوں تک رسائی“ دینا ضروری ہے۔
+
+اجازت ملنے پر ہی سوئچ فعال ہوگا، پھر آپ خود چالو کر سکتے ہیں۔</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">موجودہ سسٹم (Android 10 اور اس سے نیچے) ”تمام فائلوں تک رسائی“ فراہم نہیں کرتا، ڈسک پر اصل فائل براہ راست حذف نہیں ہو سکتی، اس لیے یہ آلہ ”پروسیسنگ کے بعد اصل تصویر حذف کریں“ کی حمایت نہیں کرتا۔
+
+تبدیلی کے بعد آپ سسٹم البم سے اصل تصاویر خود صاف کر سکتے ہیں۔</string>
+    <string name="main_dialog_allfiles_replace_message">”تبدیلی کا موڈ“ ڈسک پر اصل فائل میں نتائج براہ راست لکھتا ہے (اصل مواد بدل جاتا ہے)؛ یہ عمل واپس نہیں ہو سکتا، اس لیے پہلے ”تمام فائلوں تک رسائی“ دینا ضروری ہے۔
+
+اجازت ملنے پر ہی سوئچ فعال ہوگا، پھر آپ خود چالو کر سکتے ہیں۔</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">موجودہ سسٹم (Android 10 اور اس سے نیچے) ”تمام فائلوں تک رسائی“ فراہم نہیں کرتا، ڈسک پر اصل فائل براہ راست تبدیل نہیں ہو سکتی، اس لیے یہ آلہ ”تبدیلی کے موڈ“ کی حمایت نہیں کرتا۔
+
+آپ طے شدہ طریقے سے تبدیلی جاری رکھ سکتے ہیں؛ نتیجہ البم میں آئے گا۔</string>
+    <string name="main_dialog_allfiles_location_message">کچھ آلات (جیسے Meizu) سسٹم البم API سے لکھتے وقت GPS مقام کی معلومات چھپا دیتے ہیں، جس سے تبدیلی کے بعد تصویر کا مقام ضائع ہو جاتا ہے۔
+
+”تمام فائلوں تک رسائی“ دینے پر یہ پروگرام براہ راست البم میں لکھے گا اور مقام کا میٹا ڈیٹا مکمل محفوظ رہے گا۔
+
+اجازت نہ دینے پر بھی تبدیلی معمول کے مطابق ہوگی؛ کچھ آلات پر مقام ضائع ہو سکتا ہے۔</string>
+    <string name="main_dialog_conflict_title">آؤٹ پٹ فائل کے نام کا ٹکراؤ</string>
+    <string name="main_dialog_conflict_message">آؤٹ پٹ فولڈر میں اسی نام کی فائل موجود ہے:
+%1$s
+
+کارروائی منتخب کریں۔</string>
+    <string name="main_label_conflict_always">آگے کے ٹکراؤ کے لیے یہی کارروائی استعمال کریں</string>
+    <string name="main_btn_grant">اجازت دیں</string>
+    <string name="main_btn_deny">انکار</string>
+    <string name="main_btn_go_settings">ترتیبات پر جائیں</string>
+    <string name="main_btn_cancel">منسوخ کریں</string>
+    <string name="main_btn_grant_access">رسائی دیں</string>
+    <string name="main_btn_got_it">سمجھ گیا</string>
+    <string name="main_btn_not_now">ابھی نہیں</string>
+    <string name="main_btn_skip">چھوڑیں</string>
+    <string name="main_btn_overwrite">اوور رائٹ</string>
+    <string name="main_btn_auto_rename">خودکار نام تبدیل کریں</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d اصل فائلیں حذف ہوئیں</item>
+        <item quantity="other">%1$d اصل فائلیں حذف ہوئیں</item>
+    </plurals>
+    <string name="main_delete_nothing">حذف کرنے کے لیے کوئی اصل تصویر نہیں</string>
+    <string name="main_delete_partial">%1$d اصل فائلیں حذف ہوئیں (%2$d حذف نہ ہو سکیں اور محفوظ رہیں)</string>
+    <string name="main_delete_failed">اصل تصویر حذف نہیں ہو سکی (فائل مصروف ہے یا تحریری اجازت نہیں)، محفوظ رکھی گئی</string>
+    <string name="main_export_missing_output">تبدیلی کا نتیجہ غائب یا خالی ہے: %1$s</string>
+    <string name="main_export_missing_output_bare">تبدیلی کا نتیجہ غائب یا خالی ہے</string>
+    <string name="main_export_insert_null">MediaStore insert نے null واپس کیا</string>
+    <string name="main_export_output_stream">MediaStore آؤٹ پٹ اسٹریم دستیاب نہیں</string>
+    <string name="main_export_write_failed">MediaStore میں تحریر ناکام: %1$s</string>
+    <string name="main_export_mkdir_failed">البم فولڈر %1$s نہیں بنایا جا سکا</string>
+    <string name="main_export_dir_write_failed">البم فولڈر میں تحریر ناکام: %1$s</string>
+    <string name="main_export_no_source">اصل فائل نہیں مل سکی، تبدیلی چھوڑ دی گئی</string>
+    <string name="main_export_companion_failed">ساتھ والی فائل میں تحریر ناکام: %1$s</string>
+    <string name="main_export_source_dir_unwritable">اصل فائل کا فولڈر قابلِ تحریر نہیں؛ ساتھ والی فائل واپس نہیں لکھی جا سکی</string>
+    <string name="main_export_source_dir_unavailable">اصل فائل کا فولڈر دستیاب نہیں: %1$s</string>
+    <string name="main_export_replace_failed">اصل فائل تبدیل کرنا ناکام: %1$s</string>
+    <string name="main_export_replace_failed_bare">اصل فائل تبدیل کرنا ناکام</string>
+</resources>

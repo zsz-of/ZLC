@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · සිංහල (Sinhala) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Sinhala; technical terms follow the English loanword where common.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">සූදානම්</string>
+    <string name="main_status_location_granted">ස්ථාන අවසරය ලබා දී ඇත; පරිවර්තනයෙන් පසු GPS මෙටාදත්ත රැකෙනු ඇත</string>
+    <string name="main_status_location_denied">ස්ථාන අවසරය ලබා දී නැත: පරිවර්තිත ඡායාරූපවල GPS ස්ථානය නැති වනු ඇත</string>
+    <string name="main_status_all_files_granted">“සියලුම ගොනු ප්‍රවේශය” අවසරය ලබා දී ඇත; පරිවර්තනය කෙලින්ම ඇල්බමයට ලියන අතර ස්ථානය සම්පූර්ණයෙන් රැකෙනු ඇත</string>
+    <string name="main_status_all_files_denied">“සියලුම ගොනු ප්‍රවේශය” අවසරය ලබා දී නැත: සමහර උපාංගවල පරිවර්තනයෙන් පසු ස්ථානය නැති විය හැක</string>
+    <string name="main_status_read_granted">ඡායාරූප හා වීඩියෝ කියවීමේ අවසරය ලබා දී ඇත</string>
+    <string name="main_status_video_missing">අවසරය ලබා දී ඇත, නමුත් වීඩියෝ අවසරය නැත: ගොනු දෙකක ලයිව් ෆෝටෝ සමඟ ඇති සහකාර වීඩියෝ සොයාගත නොහැක</string>
+    <string name="main_status_permission_denied">අවසරය ලබා දී නැත; “ගොනු එක් කරන්න” නැවත තට්ටු කළ හැක</string>
+    <string name="main_status_folder_not_selected">ෆෝල්ඩරයක් තෝරා නැත</string>
+    <string name="main_status_folder_unavailable">තෝරාගත් ෆෝල්ඩරයට ප්‍රවේශ විය නොහැක (දේශීය ගබඩාව පමණක් සහාය දක්වයි)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">පෙර සැසිය නැවත පිහිටුවන ලදී (ගොනු %1$d)</item>
+        <item quantity="other">පෙර සැසිය නැවත පිහිටුවන ලදී (ගොනු %1$d)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">පෙර වතාවේ අසාමාන්‍ය ලෙස ඉවත් වී ඇති බව හඳුනා ගන්නා ලදී; අසම්පූර්ණ ලැයිස්තුව හිස් කරන ලදී</string>
+    <string name="main_status_compose_blocks_extract">පෝලිමේ සංයෝජන කාර්යයක් ඇත, උපුටා ගැනීම් ප්‍රකාරයට මාරු විය නොහැක</string>
+    <string name="main_status_replace_off_mutex">ප්‍රතිස්ථාපන ප්‍රකාරය ක්‍රියා විරහිත කරන ලදී (“සැකසීමෙන් පසු මුල් ඡායාරූපය මකන්න” සමඟ පරස්පර)</string>
+    <string name="main_status_delete_needs_all_files">මුල් ඡායාරූප ස්වයංක්‍රීයව මැකීමට “සියලුම ගොනු ප්‍රවේශය” අවශ්‍යයි, පළමුව අවසර දෙන්න</string>
+    <string name="main_status_replace_off">ප්‍රතිස්ථාපන ප්‍රකාරය ක්‍රියා විරහිතයි; ප්‍රතිඵල නැවත ඇල්බමයට ලියනු ලැබේ</string>
+    <string name="main_status_replace_needs_all_files">ප්‍රතිස්ථාපන ප්‍රකාරයට “සියලුම ගොනු ප්‍රවේශය” අවශ්‍යයි, පළමුව අවසර දෙන්න</string>
+    <string name="main_status_delete_off_mutex">“සැකසීමෙන් පසු මුල් ඡායාරූපය මකන්න” ක්‍රියා විරහිත කරන ලදී (ප්‍රතිස්ථාපන ප්‍රකාරය සමඟ පරස්පර)</string>
+    <string name="main_status_loading_albums">ඇල්බම කියවමින්…</string>
+    <string name="main_status_no_albums">ඇල්බම හමු නොවීය</string>
+    <string name="main_status_compose_no_photo">ඡායාරූපයක් තෝරා නැත, සංයෝජනය කළ නොහැක</string>
+    <string name="main_status_compose_no_video">වීඩියෝවක් තෝරා නැත, සංයෝජනය කළ නොහැක</string>
+    <string name="main_status_compose_all_added">තෝරාගත් සියලුම ඡායාරූප දැනටමත් ලැයිස්තුවේ ඇත</string>
+    <string name="main_status_compose_paired">ඡායාරූප %1$d, වීඩියෝ %2$d; අඩු ප්‍රමාණය අනුව සංයෝජන කාර්ය %3$d ක් එක් කරන ලදී</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">සංයෝජන කාර්ය %1$d ක් එක් කරන ලදී, ක්‍රියාත්මක කිරීමට “පරිවර්තනය අරඹන්න” තට්ටු කරන්න</item>
+        <item quantity="other">සංයෝජන කාර්ය %1$d ක් එක් කරන ලදී, ක්‍රියාත්මක කිරීමට “පරිවර්තනය අරඹන්න” තට්ටු කරන්න</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (ප්‍රතිදාන ආකෘතිය ස්වයංක්‍රීයව Google ලෙස වෙනස් කරන ලදී)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">බෙදාගත් ඡායාරූප %1$d ක් ආයාත වෙමින්…</item>
+        <item quantity="other">බෙදාගත් ඡායාරූප %1$d ක් ආයාත වෙමින්…</item>
+    </plurals>
+    <string name="main_status_import_failed">ආයාතය අසාර්ථකයි: %1$s</string>
+    <string name="main_status_import_done_partial">ආයාතය සම්පූර්ණයි: %1$d සාර්ථක, %2$d අසාර්ථක</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">ආයාතය සම්පූර්ණයි: ගොනු %1$d ක්</item>
+        <item quantity="other">ආයාතය සම්පූර්ණයි: ගොනු %1$d ක්</item>
+    </plurals>
+    <string name="main_status_import_stopped">ආයාතය නවතා ඇත: %1$d සාර්ථක, %2$d අසාර්ථක</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">ගොනු %1$d ක් ආයාත වෙමින්…</item>
+        <item quantity="other">ගොනු %1$d ක් ආයාත වෙමින්…</item>
+    </plurals>
+    <string name="main_status_importing_progress">ආයාත වෙමින් %1$d/%2$d…</string>
+    <string name="main_status_stopping">නවතමින්… (වර්තමාන ගොනුව අවසන් වූ පසු නවතිනු ඇත)</string>
+    <string name="main_status_stopping_import">ආයාතය නවතමින්…</string>
+    <string name="main_status_removed">%1$s ඉවත් කරන ලදී</string>
+    <string name="main_status_cleared">හිස් කරන ලදී</string>
+    <string name="main_status_nothing_to_convert">පරිවර්තනය කිරීමට ගොනු නැත</string>
+    <string name="main_status_folder_unreadable">තෝරාගත් ෆෝල්ඩරය කියවිය නොහැක</string>
+    <string name="main_status_scanning_folder">ෆෝල්ඩරය පරිලෝකනය වෙමින්…</string>
+    <string name="main_status_no_images">තෝරාගත් ෆෝල්ඩරයේ ඡායාරූප හමු නොවීය</string>
+    <string name="main_status_batch_importing">කණ්ඩායම් ආයාතය %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">කණ්ඩායම් ආයාතය නවතා ඇත: ලයිව් ෆෝටෝ %1$d ක්</item>
+        <item quantity="other">කණ්ඩායම් ආයාතය නවතා ඇත: ලයිව් ෆෝටෝ %1$d ක්</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">කණ්ඩායම් ආයාතය නවතා ඇත: ලයිව් ෆෝටෝ %1$d ක්, ලයිව් නොවන ගොනු %2$d ක් මඟ හැරිය</item>
+        <item quantity="other">කණ්ඩායම් ආයාතය නවතා ඇත: ලයිව් ෆෝටෝ %1$d ක්, ලයිව් නොවන ගොනු %2$d ක් මඟ හැරිය</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">කණ්ඩායම් ආයාතය සම්පූර්ණයි: ලයිව් ෆෝටෝ %1$d ක්</item>
+        <item quantity="other">කණ්ඩායම් ආයාතය සම්පූර්ණයි: ලයිව් ෆෝටෝ %1$d ක්</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">කණ්ඩායම් ආයාතය සම්පූර්ණයි: ලයිව් ෆෝටෝ %1$d ක්, ලයිව් නොවන ගොනු %2$d ක් මඟ හැරිය</item>
+        <item quantity="other">කණ්ඩායම් ආයාතය සම්පූර්ණයි: ලයිව් ෆෝටෝ %1$d ක්, ලයිව් නොවන ගොනු %2$d ක් මඟ හැරිය</item>
+    </plurals>
+    <string name="main_status_stopped_replace">නවතා ඇත: ගොනු %1$d න් %2$d ක් සකසන ලද අතර මුල් ගොනු %3$d ක් ප්‍රතිස්ථාපනය කරන ලදී</string>
+    <string name="main_status_stopped_export">නවතා ඇත: ගොනු %1$d න් %2$d ක් සකසන ලද අතර %3$d ක් ඇල්බමයට නිර්යාත කරන ලදී</string>
+    <string name="main_status_done_replace_reason">සම්පූර්ණයි: ගොනු %1$d ක් සකසන ලදී, මුල් ගොනු %2$d ක් ප්‍රතිස්ථාපනය කරන ලදී (හේතුව: %3$s)</string>
+    <string name="main_status_done_export_reason">සම්පූර්ණයි: ගොනු %1$d ක් සකසන ලදී, %2$d ක් ඇල්බමයට නිර්යාත කරන ලදී (හේතුව: %3$s)</string>
+    <string name="main_status_done_replace">සම්පූර්ණයි: ගොනු %1$d ක් සකසන ලදී, මුල් ගොනු %2$d ක් ප්‍රතිස්ථාපනය කරන ලදී</string>
+    <string name="main_status_done_export">සම්පූර්ණයි: ගොනු %1$d ක් සකසන ලදී, %2$d ක් ඇල්බමයට නිර්යාත කරන ලදී</string>
+    <string name="main_status_keep_originals">%1$s; “සම්පූර්ණ ගබඩා ප්‍රවේශය” ලබා නැත, මුල් ඡායාරූප රැක ඇත</string>
+    <string name="main_info_detecting">හඳුනා ගනිමින්…</string>
+    <string name="main_info_unrecognized">හඳුනා නොගත් ලයිව් ෆෝටෝ ආකෘතියක්</string>
+    <string name="main_info_converting">පරිවර්තනය වෙමින්…</string>
+    <string name="main_info_compose_task">සංයෝජන කාර්යය (ක්‍රියාත්මක කිරීමට “පරිවර්තනය අරඹන්න” තට්ටු කරන්න)</string>
+    <string name="main_info_done_replaced">සම්පූර්ණයි (මුල් ගොනු %1$d ක් ප්‍රතිස්ථාපනය)</string>
+    <string name="main_info_done_skipped">සම්පූර්ණයි (මඟ හැරිය: එකම නම)</string>
+    <string name="main_info_done_exported">සම්පූර්ණයි (%1$d ක් නිර්යාත)</string>
+    <string name="main_info_failed">අසාර්ථකයි: %1$s</string>
+    <string name="main_progress_added">එක් කළා %1$d/%2$d</string>
+    <string name="main_progress_processed">සකසන ලදී %1$d/%2$d</string>
+    <string name="main_progress_imported">ආයාත කළා %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">ඡායාරූප හා වීඩියෝ කියවීමේ අවසරය අවශ්‍යයි</string>
+    <string name="main_dialog_permission_message">මෙම යෙදුමට ඔබගේ උපාංගයේ ඡායාරූප හා වීඩියෝ කියවීමට අවශ්‍යයි:
+
+• ඡායාරූප අවසරය: උපාංගයේ ඇල්බම පරිලෝකනය කර ලයිව් ෆෝටෝ හඳුනා ගැනීමට
+• වීඩියෝ අවසරය: ගොනු දෙකක ලයිව් ෆෝටෝ සමඟ ඇති සහකාර වීඩියෝ සොයා ගැනීමට
+• ස්ථාන අවසරය: ඡායාරූපවල GPS ස්ථාන මෙටාදත්ත රැක ගැනීමට (නොමැති නම් පරිවර්තනයෙන් පසු ස්ථානය නැති වේ)
+
+ප්‍රතික්ෂේප කළහොත් ගොඩනැගූ තේරීම්කරු භාවිත කළ නොහැක; පසුව නැවත “ගොනු එක් කරන්න” තට්ටු කර අවසර දිය හැක.</string>
+    <string name="main_dialog_settings_title">ඡායාරූප හා වීඩියෝ අවසරය අතින් ලබා දිය යුතුය</string>
+    <string name="main_dialog_settings_message">ඔබ කලින් “නැවත නොඅසන්න” තෝරා ඇත, එබැවින් පද්ධතිය අවසර සංවාදය නොපෙන්වයි.
+
+යෙදුම් විස්තර → අවසර → ඡායාරූප හා වීඩියෝ වෙත ගොස් අතින් ප්‍රවේශය ලබා දී මෙම යෙදුමට නැවත එන්න.
+
+සටහන: “ඡායාරූප” සහ “වීඩියෝ” අවසර දෙකම එකවර ලබා දිය යුතුය, එසේ නොමැති නම් ගොනු දෙකක ලයිව් ෆෝටෝ සමඟ ඇති සහකාර වීඩියෝ සොයාගත නොහැක.</string>
+    <string name="main_dialog_allfiles_title_delete">ස්වයංක්‍රීයව මුල් මැකීමට “සියලුම ගොනු ප්‍රවේශය” අවශ්‍යයි</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">මෙම උපාංගය ස්වයංක්‍රීය මුල් මැකීමට සහාය නොදක්වයි</string>
+    <string name="main_dialog_allfiles_title_replace">ප්‍රතිස්ථාපන ප්‍රකාරයට “සියලුම ගොනු ප්‍රවේශය” අවශ්‍යයි</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">මෙම උපාංගය ප්‍රතිස්ථාපන ප්‍රකාරයට සහාය නොදක්වයි</string>
+    <string name="main_dialog_allfiles_title_location">“සියලුම ගොනු ප්‍රවේශය” ලබා දීම නිර්දේශ කෙරේ</string>
+    <string name="main_dialog_allfiles_delete_message">“සැකසීමෙන් පසු මුල් ඡායාරූපය මකන්න” මගින් තැටියේ ඇති මුල් ගොනුව (ඡායාරූපය සහ සහකාර වීඩියෝව) කෙලින්ම මකයි; මෙය ආපසු හැරවිය නොහැක, එබැවින් පළමුව “සියලුම ගොනු ප්‍රවේශය” ලබා දිය යුතුය.
+
+අවසර ලබා දුන් පසුව පමණක් ස්විචය සක්‍රීය වේ, එවිට ඔබට එය ක්‍රියාත්මක කළ හැක.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">වර්තමාන පද්ධතිය (Android 10 සහ පහළ) “සියලුම ගොනු ප්‍රවේශය” ලබා නොදේ, තැටියේ මුල් ගොනුව කෙලින්ම මැකිය නොහැක, එබැවින් මෙම උපාංගය “සැකසීමෙන් පසු මුල් ඡායාරූපය මකන්න” සඳහා සහාය නොදක්වයි.
+
+පරිවර්තනයෙන් පසු පද්ධති ඇල්බමය හරහා මුල් ඡායාරූප අතින් ඉවත් කළ හැක.</string>
+    <string name="main_dialog_allfiles_replace_message">“ප්‍රතිස්ථාපන ප්‍රකාරය” මගින් පරිවර්තන ප්‍රතිඵලය තැටියේ ඇති මුල් ගොනුවට කෙලින්ම ලියයි (මුල් අන්තර්ගතය ප්‍රතිස්ථාපනය වේ); මෙය ආපසු හැරවිය නොහැක, එබැවින් පළමුව “සියලුම ගොනු ප්‍රවේශය” ලබා දිය යුතුය.
+
+අවසර ලබා දුන් පසුව පමණක් ස්විචය සක්‍රීය වේ, එවිට ඔබට එය ක්‍රියාත්මක කළ හැක.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">වර්තමාන පද්ධතිය (Android 10 සහ පහළ) “සියලුම ගොනු ප්‍රවේශය” ලබා නොදේ, තැටියේ මුල් ගොනුව කෙලින්ම වෙනස් කළ නොහැක, එබැවින් මෙම උපාංගය “ප්‍රතිස්ථාපන ප්‍රකාරය” සඳහා සහාය නොදක්වයි.
+
+ඔබට පෙරනිමි ක්‍රමයෙන් පරිවර්තනය දිගටම කළ හැක; ප්‍රතිඵලය ඇල්බමයට පිටවේ.</string>
+    <string name="main_dialog_allfiles_location_message">සමහර උපාංග (උදා. Meizu) පද්ධති ඇල්බම API හරහා ලියන විට GPS ස්ථාන තොරතුරු ඉවත් කරයි, එහි ප්‍රතිඵලයක් ලෙස පරිවර්තනයෙන් පසු ඡායාරූපයේ ස්ථානය නැති වේ.
+
+“සියලුම ගොනු ප්‍රවේශය” ලබා දුන් විට මෙම යෙදුම කෙලින්ම ඇල්බමයට ලියන අතර ස්ථාන මෙටාදත්ත සම්පූර්ණයෙන් රැකේ.
+
+නොදුන්නත් පරිවර්තනය සාමාන්‍ය ලෙස සිදු වේ; සමහර උපාංගවල ස්ථානය නැති විය හැක.</string>
+    <string name="main_dialog_conflict_title">ප්‍රතිදාන ගොනු නාම ගැටුම</string>
+    <string name="main_dialog_conflict_message">ප්‍රතිදාන ෆෝල්ඩරයේ එකම නමින් ගොනුවක් දැනටමත් ඇත:
+%1$s
+
+ක්‍රියා කරන ආකාරය තෝරන්න.</string>
+    <string name="main_label_conflict_always">ඉදිරි ගැටුම් සඳහා මෙම ක්‍රමය භාවිත කරන්න</string>
+    <string name="main_btn_grant">අවසර දෙන්න</string>
+    <string name="main_btn_deny">ප්‍රතික්ෂේප</string>
+    <string name="main_btn_go_settings">සැකසුම් වෙත යන්න</string>
+    <string name="main_btn_cancel">අවලංගු කරන්න</string>
+    <string name="main_btn_grant_access">ප්‍රවේශය දෙන්න</string>
+    <string name="main_btn_got_it">තේරුණා</string>
+    <string name="main_btn_not_now">දැන් නොවේ</string>
+    <string name="main_btn_skip">මඟ හරින්න</string>
+    <string name="main_btn_overwrite">උඩින් ලියන්න</string>
+    <string name="main_btn_auto_rename">ස්වයංක්‍රීයව නම වෙනස් කරන්න</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">මුල් ගොනු %1$d ක් මකන ලදී</item>
+        <item quantity="other">මුල් ගොනු %1$d ක් මකන ලදී</item>
+    </plurals>
+    <string name="main_delete_nothing">මැකීමට මුල් ඡායාරූප නැත</string>
+    <string name="main_delete_partial">මුල් ගොනු %1$d ක් මකන ලදී (%2$d ක් මැකීමට අසාර්ථක වූ අතර රැක ඇත)</string>
+    <string name="main_delete_failed">මුල් ඡායාරූපය මැකීමට අසාර්ථකයි (ගොනුව භාවිතයේ හෝ ලිවීමේ අවසරයක් නැත), රැක ඇත</string>
+    <string name="main_export_missing_output">පරිවර්තන ප්‍රතිදානය නැති වී ඇත හෝ හිස්: %1$s</string>
+    <string name="main_export_missing_output_bare">පරිවර්තන ප්‍රතිදානය නැති වී ඇත හෝ හිස්</string>
+    <string name="main_export_insert_null">MediaStore insert මගින් null ආපසු දුන්නේය</string>
+    <string name="main_export_output_stream">MediaStore ප්‍රතිදාන ප්‍රවාහය නොමැත</string>
+    <string name="main_export_write_failed">MediaStore වෙත ලිවීම අසාර්ථකයි: %1$s</string>
+    <string name="main_export_mkdir_failed">ඇල්බම ෆෝල්ඩරය %1$s සෑදිය නොහැක</string>
+    <string name="main_export_dir_write_failed">ඇල්බම ෆෝල්ඩරයට ලිවීම අසාර්ථකයි: %1$s</string>
+    <string name="main_export_no_source">මුල් ගොනුව සොයා ගත නොහැක, ප්‍රතිස්ථාපනය මඟ හරින ලදී</string>
+    <string name="main_export_companion_failed">සහකාර ගොනුවට ලිවීම අසාර්ථකයි: %1$s</string>
+    <string name="main_export_source_dir_unwritable">මුල් ගොනුවේ ෆෝල්ඩරය ලිවිය නොහැක, සහකාර ගොනුව ආපසු ලිවිය නොහැක</string>
+    <string name="main_export_source_dir_unavailable">මුල් ගොනුවේ ෆෝල්ඩරය නොමැත: %1$s</string>
+    <string name="main_export_replace_failed">මුල් ගොනුව ප්‍රතිස්ථාපනය අසාර්ථකයි: %1$s</string>
+    <string name="main_export_replace_failed_bare">මුල් ගොනුව ප්‍රතිස්ථාපනය අසාර්ථකයි</string>
+</resources>

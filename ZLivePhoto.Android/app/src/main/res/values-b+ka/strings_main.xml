@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Georgian (ka) strings — main screen and background flows.
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Georgian has a single CLDR plural category; the one/other items carry the same text.
+-->
+<resources>
+    <!-- ── სტატუსის ზოლი / შეტყობინებები ── -->
+    <string name="main_status_ready">მზადაა</string>
+    <string name="main_status_location_granted">მდებარეობის ნებართვა მიღებულია; კონვერტაციის შემდეგ GPS მეტამონაცემები შენარჩუნდება</string>
+    <string name="main_status_location_denied">მდებარეობის ნებართვის გარეშე: კონვერტირებული ფოტოები დაკარგავენ GPS მდებარეობის ინფორმაციას</string>
+    <string name="main_status_all_files_granted">„ყველა ფაილზე წვდომის“ ნებართვა მიღებულია; კონვერტაცია პირდაპირ წერს ალბომის საქაღალდეში და სრულად ინახავს მდებარეობას</string>
+    <string name="main_status_all_files_denied">„ყველა ფაილზე წვდომის“ ნებართვის გარეშე: ზოგიერთ მოდელზე ფოტოებმა შეიძლება დაკარგონ მდებარეობის ინფორმაცია</string>
+    <string name="main_status_read_granted">ფოტოებისა და ვიდეოს წაკითხვის ნებართვა მიღებულია</string>
+    <string name="main_status_video_missing">ნებართვა მიღებულია, მაგრამ ვიდეოს ნებართვა აკლია: ორფაილიანი Live Photo-ს თანმხვედრი ვიდეო ვერ მოიძებნება</string>
+    <string name="main_status_permission_denied">ნებართვა არ არის მიცემული; შეგიძლიათ კვლავ დააჭიროთ „ფაილების დამატებას“</string>
+    <string name="main_status_folder_not_selected">საქაღალდე არჩეული არ არის</string>
+    <string name="main_status_folder_unavailable">არჩეული საქაღალდე მიუწვდომელია (მხარდაჭერილია მხოლოდ ლოკალური მეხსიერება)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">წინა სესია აღდგა (%1$d ფაილი)</item>
+        <item quantity="other">წინა სესია აღდგა (%1$d ფაილი)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">გამოვლინდა წინა არანორმალური დახურვა; დაუსრულებელი სია გასუფთავდა</string>
+    <string name="main_status_compose_blocks_extract">რიგში არის შედგენის ამოცანები; ამოღების რეჟიმზე გადართვა შეუძლებელია</string>
+    <string name="main_status_replace_off_mutex">ჩანაცვლების რეჟიმი გამორთულია (ურთიერთგამომრიცხავია „დამუშავების შემდეგ ორიგინალების წაშლასთან“)</string>
+    <string name="main_status_delete_needs_all_files">ორიგინალების ავტომატური წაშლა მოითხოვს „ყველა ფაილზე წვდომის“ ნებართვას; ჯერ მიეცით იგი</string>
+    <string name="main_status_replace_off">ჩანაცვლების რეჟიმი გამორთულია; შედეგები კვლავ ალბომის საქაღალდეში იწერება</string>
+    <string name="main_status_replace_needs_all_files">ჩანაცვლების რეჟიმი მოითხოვს „ყველა ფაილზე წვდომის“ ნებართვას; ჯერ მიეცით იგი</string>
+    <string name="main_status_delete_off_mutex">გამორთულია „დამუშავების შემდეგ ორიგინალების წაშლა“ (ურთიერთგამომრიცხავია ჩანაცვლების რეჟიმთან)</string>
+    <string name="main_status_loading_albums">ალბომები იტვირთება…</string>
+    <string name="main_status_no_albums">ალბომები ვერ მოიძებნა</string>
+    <string name="main_status_compose_no_photo">ფოტო არჩეული არ არის, შედგენა შეუძლებელია</string>
+    <string name="main_status_compose_no_video">ვიდეო არჩეული არ არის, შედგენა შეუძლებელია</string>
+    <string name="main_status_compose_all_added">ყველა არჩეული ფოტო უკვე სიაშია</string>
+    <string name="main_status_compose_paired">%1$d ფოტო, %2$d ვიდეო; ნაკლები რაოდენობის მიხედვით დაემატა %3$d წყვილი შედგენის ამოცანა</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">დაემატა %1$d შედგენის ამოცანა; შედგენისთვის დააჭირეთ „კონვერტაციის დაწყებას“</item>
+        <item quantity="other">დაემატა %1$d შედგენის ამოცანა; შედგენისთვის დააჭირეთ „კონვერტაციის დაწყებას“</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (გამოსავალი ფორმატი ავტომატურად შეიცვალა Google-ზე)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">მიმდინარეობს %1$d გაზიარებული სურათის იმპორტი…</item>
+        <item quantity="other">მიმდინარეობს %1$d გაზიარებული სურათის იმპორტი…</item>
+    </plurals>
+    <string name="main_status_import_failed">იმპორტი ვერ მოხერხდა: %1$s</string>
+    <string name="main_status_import_done_partial">იმპორტი დასრულდა: წარმატებით %1$d, წარუმატებლად %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">იმპორტი დასრულდა: სულ იმპორტირდა %1$d ფაილი</item>
+        <item quantity="other">იმპორტი დასრულდა: სულ იმპორტირდა %1$d ფაილი</item>
+    </plurals>
+    <string name="main_status_import_stopped">იმპორტი შეჩერდა: წარმატებით %1$d, წარუმატებლად %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">მიმდინარეობს %1$d ფაილის იმპორტი…</item>
+        <item quantity="other">მიმდინარეობს %1$d ფაილის იმპორტი…</item>
+    </plurals>
+    <string name="main_status_importing_progress">მიმდინარეობს იმპორტი %1$d/%2$d…</string>
+    <string name="main_status_stopping">ჩერდება… (დასრულდება მიმდინარე ფაილის შემდეგ)</string>
+    <string name="main_status_stopping_import">იმპორტის შეჩერება…</string>
+    <string name="main_status_removed">ამოღებულია: %1$s</string>
+    <string name="main_status_cleared">გასუფთავებულია</string>
+    <string name="main_status_nothing_to_convert">კონვერტაციისთვის ფაილები არ არის</string>
+    <string name="main_status_folder_unreadable">არჩეული საქაღალდის წაკითხვა ვერ მოხერხდა</string>
+    <string name="main_status_scanning_folder">საქაღალდე მოწმდება…</string>
+    <string name="main_status_no_images">არჩეულ საქაღალდეში სურათები ვერ მოიძებნა</string>
+    <string name="main_status_batch_importing">ჯგუფური იმპორტი %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">ჯგუფური იმპორტი შეჩერდა: სულ იმპორტირდა %1$d Live Photo</item>
+        <item quantity="other">ჯგუფური იმპორტი შეჩერდა: სულ იმპორტირდა %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">ჯგუფური იმპორტი შეჩერდა: სულ იმპორტირდა %1$d Live Photo, გამოტოვდა %2$d არა-Live ფაილი</item>
+        <item quantity="other">ჯგუფური იმპორტი შეჩერდა: სულ იმპორტირდა %1$d Live Photo, გამოტოვდა %2$d არა-Live ფაილი</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">ჯგუფური იმპორტი დასრულდა: სულ იმპორტირდა %1$d Live Photo</item>
+        <item quantity="other">ჯგუფური იმპორტი დასრულდა: სულ იმპორტირდა %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">ჯგუფური იმპორტი დასრულდა: სულ იმპორტირდა %1$d Live Photo, გამოტოვდა %2$d არა-Live ფაილი</item>
+        <item quantity="other">ჯგუფური იმპორტი დასრულდა: სულ იმპორტირდა %1$d Live Photo, გამოტოვდა %2$d არა-Live ფაილი</item>
+    </plurals>
+    <string name="main_status_stopped_replace">შეჩერდა: %1$d ფაილიდან დამუშავდა %2$d, ჩანაცვლდა %3$d წყარო ფაილი</string>
+    <string name="main_status_stopped_export">შეჩერდა: %1$d ფაილიდან დამუშავდა %2$d, ალბომში გავიდა %3$d</string>
+    <string name="main_status_done_replace_reason">დასრულდა: დამუშავდა %1$d ფაილი, ჩანაცვლდა %2$d წყარო ფაილი (მიზეზი: %3$s)</string>
+    <string name="main_status_done_export_reason">დასრულდა: დამუშავდა %1$d ფაილი, ალბომში გავიდა %2$d (მიზეზი: %3$s)</string>
+    <string name="main_status_done_replace">დასრულდა: დამუშავდა %1$d ფაილი, ჩანაცვლდა %2$d წყარო ფაილი</string>
+    <string name="main_status_done_export">დასრულდა: დამუშავდა %1$d ფაილი, ალბომში გავიდა %2$d</string>
+    <string name="main_status_keep_originals">%1$s; „მეხსიერებაზე სრული წვდომის“ ნებართვა არ არის მიღებული, ორიგინალები შენარჩუნებულია</string>
+
+    <!-- ── სიის ელემენტების ინფორმაცია ── -->
+    <string name="main_info_detecting">მოწმდება…</string>
+    <string name="main_info_unrecognized">Live Photo-ს უცნობი ფორმატი</string>
+    <string name="main_info_converting">კონვერტაცია…</string>
+    <string name="main_info_compose_task">შედგენის ამოცანა (დააჭირეთ კონვერტაციის დასაწყებად)</string>
+    <string name="main_info_done_replaced">დასრულდა (ჩანაცვლდა %1$d წყარო ფაილი)</string>
+    <string name="main_info_done_skipped">დასრულდა (გამოტოვდა: სახელების კონფლიქტი)</string>
+    <string name="main_info_done_exported">დასრულდა (გავიდა %1$d)</string>
+    <string name="main_info_failed">შეცდომა: %1$s</string>
+
+    <!-- ── პროგრესის დეტალები ── -->
+    <string name="main_progress_added">დაემატა %1$d/%2$d</string>
+    <string name="main_progress_processed">დამუშავდა %1$d/%2$d</string>
+    <string name="main_progress_imported">იმპორტირდა %1$d/%2$d</string>
+
+    <!-- ── ნებართვების დიალოგები ── -->
+    <string name="main_dialog_permission_title">საჭიროა ფოტოებისა და ვიდეოს წაკითხვის ნებართვა</string>
+    <string name="main_dialog_permission_message">აპლიკაციას სჭირდება წვდომა თქვენი მოწყობილობის ფოტოებსა და ვიდეოებზე:\n\n• ფოტოების ნებართვა: მოწყობილობის ალბომის სკანირება Live Photo-ების ამოსაცნობად\n• ვიდეოს ნებართვა: ორფაილიანი Live Photo-ს თანმხვედრი ვიდეოს მოძიება\n• მდებარეობის ნებართვა: ფოტოებში GPS მეტამონაცემების შენარჩუნება (მის გარეშე კონვერტაციის შემდეგ მდებარეობა დაიკარგება)\n\nუარის შემდეგ ჩაშენებული ამრჩევი არ იმუშავებს; მოგვიანებით შეგიძლიათ კვლავ დააჭიროთ „ფაილების დამატებას“ და მისცეთ ნებართვები.</string>
+    <string name="main_dialog_settings_title">ფოტოებისა და ვიდეოს ნებართვა ხელით უნდა მისცეთ</string>
+    <string name="main_dialog_settings_message">ადრე აირჩიეთ „აღარ მკითხო“, ამიტომ სისტემა ნებართვის დიალოგს აღარ აჩვენებს.\n\nგადადით აპლიკაციის დეტალების გვერდზე → ნებართვები → ფოტოები და ვიდეო, ხელით მისცით წვდომა და დაბრუნდით აპლიკაციაში.\n\nყურადღება: აუცილებელია ორივე ნებართვის მიცემა — „ფოტოები“ და „ვიდეო“, წინააღმდეგ შემთხვევაში ორფაილიანი Live Photo თანმხვედრ ვიდეოს ვერ იპოვის.</string>
+
+    <!-- ── „ყველა ფაილზე წვდომის“ ნებართვის დიალოგები ── -->
+    <string name="main_dialog_allfiles_title_delete">ორიგინალების ავტომატური წაშლა მოითხოვს „ყველა ფაილზე წვდომას“</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">ეს მოწყობილობა არ უჭერს მხარს ორიგინალების ავტომატურ წაშლას</string>
+    <string name="main_dialog_allfiles_title_replace">ჩანაცვლების რეჟიმი მოითხოვს „ყველა ფაილზე წვდომას“</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">ეს მოწყობილობა არ უჭერს მხარს ჩანაცვლების რეჟიმს</string>
+    <string name="main_dialog_allfiles_title_location">რეკომენდებულია „ყველა ფაილზე წვდომის“ ნებართვის მიცემა</string>
+    <string name="main_dialog_allfiles_delete_message">„დამუშავების შემდეგ ორიგინალების წაშლა“ პირდაპირ შლის დისკზე არსებულ ორიგინალ ფაილებს (ფოტოს და თანმხვედრ ვიდეოს), მოქმედება შეუქცევადია, ამიტომ ჯერ საჭიროა „ყველა ფაილზე წვდომის“ ნებართვა.\n\nნებართვის მიღების შემდეგ გადამრთველი გააქტიურდება და თავად შეძლებთ მის ჩართვას.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">მიმდინარე სისტემა (Android 10 და უფრო ძველი) არ იძლევა „ყველა ფაილზე წვდომის“ ნებართვას, ამიტომ დისკზე ორიგინალი ფაილების პირდაპირ წაშლა შეუძლებელია; ამ მიზეზით მოწყობილობა არ უჭერს მხარს „დამუშავების შემდეგ ორიგინალების წაშლას“.\n\nკონვერტაციის შემდეგ შეგიძლიათ ორიგინალები ხელით წაშალოთ სისტემური ალბომიდან.</string>
+    <string name="main_dialog_allfiles_replace_message">„ჩანაცვლების რეჟიმი“ პირდაპირ წერს კონვერტაციის შედეგს დისკზე არსებულ ორიგინალ ფაილებში (გადაწერს მათ), მოქმედება შეუქცევადია, ამიტომ ჯერ საჭიროა „ყველა ფაილზე წვდომის“ ნებართვა.\n\nნებართვის მიღების შემდეგ გადამრთველი გააქტიურდება და თავად შეძლებთ მის ჩართვას.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">მიმდინარე სისტემა (Android 10 და უფრო ძველი) არ იძლევა „ყველა ფაილზე წვდომის“ ნებართვას, ამიტომ დისკზე ორიგინალი ფაილების პირდაპირ გადაწერა შეუძლებელია; ამ მიზეზით მოწყობილობა არ უჭერს მხარს „ჩანაცვლების რეჟიმს“.\n\nშეგიძლიათ გააგრძელოთ ჩვეულებრივი კონვერტაცია; შედეგები ალბომის საქაღალდეში ჩაიწერება.</string>
+    <string name="main_dialog_allfiles_location_message">ზოგიერთი მოდელი (მაგ. Meizu) სისტემური ალბომის API-ით ჩაწერისას აცილებს GPS მდებარეობის ინფორმაციას, რის გამოც კონვერტირებული ფოტოები კარგავენ მდებარეობას.\n\n„ყველა ფაილზე წვდომის“ ნებართვით აპლიკაცია პირდაპირ წერს ალბომის საქაღალდეში და სრულად ინახავს მდებარეობის მეტამონაცემებს.\n\nნებართვის გარეშეც მუშაობს კონვერტაცია, მაგრამ ზოგიერთ მოდელზე მდებარეობა შეიძლება დაიკარგოს.</string>
+
+    <!-- ── გამოსავალი ფაილის სახელის კონფლიქტის დიალოგი ── -->
+    <string name="main_dialog_conflict_title">გამოსავალი ფაილის სახელის კონფლიქტი</string>
+    <string name="main_dialog_conflict_message">გამოსავალ საქაღალდეში უკვე არსებობს ამავე სახელის ფაილი:\n%1$s\n\nაირჩიეთ მოქმედების გზა.</string>
+    <string name="main_label_conflict_always">გამოიყენე ეს გზა შემდგომი კონფლიქტებისთვის</string>
+
+    <!-- ── დიალოგის ღილაკები ── -->
+    <string name="main_btn_grant">დაშვება</string>
+    <string name="main_btn_deny">უარი</string>
+    <string name="main_btn_go_settings">პარამეტრები</string>
+    <string name="main_btn_cancel">გაუქმება</string>
+    <string name="main_btn_grant_access">წვდომის მიცემა</string>
+    <string name="main_btn_got_it">გასაგებია</string>
+    <string name="main_btn_not_now">ახლა არა</string>
+    <string name="main_btn_skip">გამოტოვება</string>
+    <string name="main_btn_overwrite">გადაწერა</string>
+    <string name="main_btn_auto_rename">ავტომატური გადარქმევა</string>
+
+    <!-- ── კონვერტაციის შედეგი / წარუმატებელი ექსპორტის მიზეზები ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">წაიშალა %1$d ორიგინალი ფაილი</item>
+        <item quantity="other">წაიშალა %1$d ორიგინალი ფაილი</item>
+    </plurals>
+    <string name="main_delete_nothing">ორიგინალების წაშლა საჭირო არ არის</string>
+    <string name="main_delete_partial">წაიშალა %1$d ორიგინალი ფაილი (%2$d ვერ წაიშალა, შენარჩუნებულია)</string>
+    <string name="main_delete_failed">ორიგინალების წაშლა ვერ მოხერხდა (ფაილი დაკავებულია ან ჩაწერის უფლება არ არის), შენარჩუნებულია</string>
+    <string name="main_export_missing_output">კონვერტაციის შედეგი აკლია ან ცარიელია: %1$s</string>
+    <string name="main_export_missing_output_bare">კონვერტაციის შედეგი აკლია ან ცარიელია</string>
+    <string name="main_export_insert_null">MediaStore insert-მა დააბრუნა null</string>
+    <string name="main_export_output_stream">MediaStore-ის გამოსავალი ნაკადი მიუწვდომელია</string>
+    <string name="main_export_write_failed">MediaStore-ში ჩაწერა ვერ მოხერხდა: %1$s</string>
+    <string name="main_export_mkdir_failed">ალბომის საქაღალდის შექმნა ვერ მოხერხდა: %1$s</string>
+    <string name="main_export_dir_write_failed">ალბომის საქაღალდეში ჩაწერა ვერ მოხერხდა: %1$s</string>
+    <string name="main_export_no_source">წყარო ფაილი ვერ მოიძებნა, ჩანაცვლება გამოტოვდა</string>
+    <string name="main_export_companion_failed">თანმხვედრი ფაილის ჩაწერა ვერ მოხერხდა: %1$s</string>
+    <string name="main_export_source_dir_unwritable">წყარო ფაილის საქაღალდე ჩასაწერად მიუწვდომელია; თანმხვედრი ფაილი არ ჩაიწერა</string>
+    <string name="main_export_source_dir_unavailable">წყარო ფაილის საქაღალდე მიუწვდომელია: %1$s</string>
+    <string name="main_export_replace_failed">წყარო ფაილის ჩანაცვლება ვერ მოხერხდა: %1$s</string>
+    <string name="main_export_replace_failed_bare">წყარო ფაილის ჩანაცვლება ვერ მოხერხდა</string>
+</resources>

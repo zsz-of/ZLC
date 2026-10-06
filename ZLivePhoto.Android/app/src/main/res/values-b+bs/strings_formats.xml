@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bosnian (bs) strings — format plugin names and diagnostics.
+  Translated from res/values/strings_formats.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Izdvajanje</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo u jednoj datoteci</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Nije pronađena .mov video datoteka s istim imenom</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV datoteci nedostaje ftyp box</string>
+    <string name="fmt_err_extract_read">Izdvajanje je izlazni format i ne može se čitati kao ulazni format</string>
+    <string name="fmt_err_no_primary_jpeg">Nije pronađena glavna JPEG slika</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Nakon JPEG-a nije pronađen ispravan MP4 video (nedostaje ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Raščlanjivanje MP4 video toka nije uspjelo</string>
+    <string name="fmt_err_nubia_too_short">Datoteka je prekratka da bi bila Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Nedostaje završni magični broj nubiaVpfile</string>
+    <string name="fmt_err_nubia_jpeg_len">Neispravna dužina JPEG-a u repu: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Između JPEG-a i videa nedostaju 0x00 bajtovi za popunu</string>
+    <string name="fmt_err_nubia_empty_video">Dužina ugrađenog videa je 0</string>
+    <string name="fmt_err_vivo_no_marker">Na kraju JPG-a nije pronađen marker vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Nedostaje prateća video datoteka: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Raščlanjivanje glavnog dijela JPG-a nije uspjelo</string>
+    <string name="fmt_err_vivo_companion_invalid">Prateći MP4 je neispravan (nedostaje ftyp box)</string>
+</resources>

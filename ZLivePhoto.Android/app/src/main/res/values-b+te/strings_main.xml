@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · తెలుగు స్ట్రింగ్లు (te).
+  ZLC · Telugu strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">సిద్ధంగా ఉంది</string>
+    <string name="main_status_location_granted">లొకేషన్ అనుమతి మంజూరు చేయబడింది; మార్పిడి తర్వాత GPS మెటాడేటా భద్రంగా ఉంచబడుతుంది</string>
+    <string name="main_status_location_denied">లొకేషన్ అనుమతి మంజూరు కాలేదు: మార్చిన ఫోటోలు GPS లొకేషన్ సమాచారాన్ని కోల్పోతాయి</string>
+    <string name="main_status_all_files_granted">“అన్ని ఫైళ్లకు యాక్సెస్” మంజూరు చేయబడింది; మార్పిడులు నేరుగా గ్యాలరీ ఫోల్డర్లో రాయబడి లొకేషన్ సమాచారం పూర్తిగా భద్రంగా ఉంటుంది</string>
+    <string name="main_status_all_files_denied">“అన్ని ఫైళ్లకు యాక్సెస్” మంజూరు కాలేదు: కొన్ని పరికరాల్లో మార్పిడి తర్వాత లొకేషన్ సమాచారం పోవచ్చు</string>
+    <string name="main_status_read_granted">ఫోటోలు మరియు వీడియోలను చదవడానికి అనుమతి మంజూరు చేయబడింది</string>
+    <string name="main_status_video_missing">మంజూరు చేయబడింది, కానీ వీడియో అనుమతి లేదు: రెండు-ఫైల్ Live Photoలతో వచ్చే తోడి వీడియోలను కనుగొనలేము</string>
+    <string name="main_status_permission_denied">అనుమతి మంజూరు కాలేదు; “ఫైళ్లు జోడించు”ను మళ్లీ నొక్కవచ్చు</string>
+    <string name="main_status_folder_not_selected">ఏ ఫోల్డర్ ఎంచుకోబడలేదు</string>
+    <string name="main_status_folder_unavailable">ఎంచుకున్న ఫోల్డర్ను యాక్సెస్ చేయలేము (స్థానిక నిల్వ ఫోల్డర్లు మాత్రమే మద్దతు)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">మునుపటి సెషన్ పునరుద్ధరించబడింది (%1$d ఫైల్)</item>
+        <item quantity="other">మునుపటి సెషన్ పునరుద్ధరించబడింది (%1$d ఫైళ్లు)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">మునుపటి అసాధారణ నిష్క్రమణ గుర్తించబడింది; పూర్తికాని జాబితా క్లియర్ చేయబడింది</string>
+    <string name="main_status_compose_blocks_extract">క్యూలో కంపోజ్ పనులు ఉన్నాయి; సంగ్రహించు మోడ్కు మారలేము</string>
+    <string name="main_status_replace_off_mutex">రీప్లేస్ మోడ్ ఆఫ్ చేయబడింది (“ప్రాసెస్ తర్వాత అసలు ఫైళ్లను తొలగించు”తో పరస్పర విరుద్ధం)</string>
+    <string name="main_status_delete_needs_all_files">అసలు ఫైళ్లను స్వయంగా తొలగించడానికి “అన్ని ఫైళ్లకు యాక్సెస్” అవసరం; ముందుగా దాన్ని మంజూరు చేయండి</string>
+    <string name="main_status_replace_off">రీప్లేస్ మోడ్ ఆఫ్ చేయబడింది; మార్పిడి ఫలితాలు మళ్లీ గ్యాలరీ ఫోల్డర్లో రాయబడతాయి</string>
+    <string name="main_status_replace_needs_all_files">రీప్లేస్ మోడ్కు “అన్ని ఫైళ్లకు యాక్సెస్” అవసరం; ముందుగా దాన్ని మంజూరు చేయండి</string>
+    <string name="main_status_delete_off_mutex">“ప్రాసెస్ తర్వాత అసలు ఫైళ్లను తొలగించు” ఆఫ్ చేయబడింది (రీప్లేస్ మోడ్తో పరస్పర విరుద్ధం)</string>
+    <string name="main_status_loading_albums">ఆల్బమ్లు లోడ్ అవుతున్నాయి…</string>
+    <string name="main_status_no_albums">ఆల్బమ్లు ఏవీ కనుగొనబడలేదు</string>
+    <string name="main_status_compose_no_photo">ఫోటో ఏదీ ఎంచుకోబడలేదు; కంపోజ్ చేయలేము</string>
+    <string name="main_status_compose_no_video">వీడియో ఏదీ ఎంచుకోబడలేదు; కంపోజ్ చేయలేము</string>
+    <string name="main_status_compose_all_added">ఎంచుకున్న ఫోటోలు అన్నీ ఇప్పటికే జాబితాలో ఉన్నాయి</string>
+    <string name="main_status_compose_paired">%1$d ఫోటోలు మరియు %2$d వీడియోలు; తక్కువ సంఖ్య ఆధారంగా %3$d కంపోజ్ జతలు జోడించబడ్డాయి</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d కంపోజ్ పని జోడించబడింది; కంపోజ్ చేయడానికి “మార్పిడి ప్రారంభించు” నొక్కండి</item>
+        <item quantity="other">%1$d కంపోజ్ పనులు జోడించబడ్డాయి; కంపోజ్ చేయడానికి “మార్పిడి ప్రారంభించు” నొక్కండి</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (అవుట్పుట్ ఆకృతి స్వయంగా Googleకు మార్చబడింది)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">%1$d షేర్ చేసిన చిత్రం దిగుమతి అవుతోంది…</item>
+        <item quantity="other">%1$d షేర్ చేసిన చిత్రాలు దిగుమతి అవుతున్నాయి…</item>
+    </plurals>
+    <string name="main_status_import_failed">దిగుమతి విఫలమైంది: %1$s</string>
+    <string name="main_status_import_done_partial">దిగుమతి పూర్తయింది: %1$d విజయవంతం, %2$d విఫలం</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">దిగుమతి పూర్తయింది: మొత్తం %1$d ఫైల్ దిగుమతి అయింది</item>
+        <item quantity="other">దిగుమతి పూర్తయింది: మొత్తం %1$d ఫైళ్లు దిగుమతి అయ్యాయి</item>
+    </plurals>
+    <string name="main_status_import_stopped">దిగుమతి ఆపబడింది: %1$d విజయవంతం, %2$d విఫలం</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d ఫైల్ దిగుమతి అవుతోంది…</item>
+        <item quantity="other">%1$d ఫైళ్లు దిగుమతి అవుతున్నాయి…</item>
+    </plurals>
+    <string name="main_status_importing_progress">దిగుమతి %1$d/%2$d…</string>
+    <string name="main_status_stopping">ఆపుతోంది… (ప్రస్తుత ఫైల్ పూర్తయిన తర్వాత ఆగుతుంది)</string>
+    <string name="main_status_stopping_import">దిగుమతి ఆపుతోంది…</string>
+    <string name="main_status_removed">%1$s తీసివేయబడింది</string>
+    <string name="main_status_cleared">క్లియర్ చేయబడింది</string>
+    <string name="main_status_nothing_to_convert">మార్చడానికి ఫైళ్లు లేవు</string>
+    <string name="main_status_folder_unreadable">ఎంచుకున్న ఫోల్డర్ను చదవలేము</string>
+    <string name="main_status_scanning_folder">ఫోల్డర్ స్కాన్ అవుతోంది…</string>
+    <string name="main_status_no_images">ఎంచుకున్న ఫోల్డర్లో చిత్రాలు ఏవీ లేవు</string>
+    <string name="main_status_batch_importing">బ్యాచ్ దిగుమతి %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">బ్యాచ్ దిగుమతి ఆపబడింది: మొత్తం %1$d Live Photo దిగుమతి అయింది</item>
+        <item quantity="other">బ్యాచ్ దిగుమతి ఆపబడింది: మొత్తం %1$d Live Photoలు దిగుమతి అయ్యాయి</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">బ్యాచ్ దిగుమతి ఆపబడింది: మొత్తం %1$d Live Photo దిగుమతి, %2$d Live Photo కాని ఫైళ్లు దాటవేయబడ్డాయి</item>
+        <item quantity="other">బ్యాచ్ దిగుమతి ఆపబడింది: మొత్తం %1$d Live Photoలు దిగుమతి, %2$d Live Photo కాని ఫైళ్లు దాటవేయబడ్డాయి</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">బ్యాచ్ దిగుమతి పూర్తయింది: మొత్తం %1$d Live Photo దిగుమతి అయింది</item>
+        <item quantity="other">బ్యాచ్ దిగుమతి పూర్తయింది: మొత్తం %1$d Live Photoలు దిగుమతి అయ్యాయి</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">బ్యాచ్ దిగుమతి పూర్తయింది: మొత్తం %1$d Live Photo దిగుమతి, %2$d Live Photo కాని ఫైళ్లు దాటవేయబడ్డాయి</item>
+        <item quantity="other">బ్యాచ్ దిగుమతి పూర్తయింది: మొత్తం %1$d Live Photoలు దిగుమతి, %2$d Live Photo కాని ఫైళ్లు దాటవేయబడ్డాయి</item>
+    </plurals>
+    <string name="main_status_stopped_replace">ఆపబడింది: %1$d ఫైళ్లలో %2$d ప్రాసెస్ చేయబడి %3$d మూల ఫైళ్లు భర్తీ చేయబడ్డాయి</string>
+    <string name="main_status_stopped_export">ఆపబడింది: %1$d ఫైళ్లలో %2$d ప్రాసెస్ చేయబడి %3$d గ్యాలరీకి ఎగుమతి చేయబడ్డాయి</string>
+    <string name="main_status_done_replace_reason">పూర్తయింది: %1$d ఫైళ్లు ప్రాసెస్ చేయబడి %2$d మూల ఫైళ్లు భర్తీ చేయబడ్డాయి (కారణం: %3$s)</string>
+    <string name="main_status_done_export_reason">పూర్తయింది: %1$d ఫైళ్లు ప్రాసెస్ చేయబడి %2$d గ్యాలరీకి ఎగుమతి చేయబడ్డాయి (కారణం: %3$s)</string>
+    <string name="main_status_done_replace">పూర్తయింది: %1$d ఫైళ్లు ప్రాసెస్ చేయబడి %2$d మూల ఫైళ్లు భర్తీ చేయబడ్డాయి</string>
+    <string name="main_status_done_export">పూర్తయింది: %1$d ఫైళ్లు ప్రాసెస్ చేయబడి %2$d గ్యాలరీకి ఎగుమతి చేయబడ్డాయి</string>
+    <string name="main_status_keep_originals">%1$s; “పూర్తి నిల్వ యాక్సెస్” మంజూరు కానందున అసలు ఫైళ్లు ఉంచబడ్డాయి</string>
+    <string name="main_info_detecting">గుర్తిస్తోంది…</string>
+    <string name="main_info_unrecognized">గుర్తించని Live Photo ఆకృతి</string>
+    <string name="main_info_converting">మారుస్తోంది…</string>
+    <string name="main_info_compose_task">కంపోజ్ పని (కంపోజ్ చేయడానికి “మార్పిడి ప్రారంభించు” నొక్కండి)</string>
+    <string name="main_info_done_replaced">పూర్తయింది (%1$d మూల ఫైళ్లు భర్తీ చేయబడ్డాయి)</string>
+    <string name="main_info_done_skipped">పూర్తయింది (దాటవేయబడింది: పేరు ఘర్షణ)</string>
+    <string name="main_info_done_exported">పూర్తయింది (%1$d ఎగుమతి చేయబడ్డాయి)</string>
+    <string name="main_info_failed">విఫలమైంది: %1$s</string>
+    <string name="main_progress_added">%1$d/%2$d జోడించబడింది</string>
+    <string name="main_progress_processed">%1$d/%2$d ప్రాసెస్ చేయబడింది</string>
+    <string name="main_progress_imported">%1$d/%2$d దిగుమతి చేయబడింది</string>
+    <string name="main_dialog_permission_title">ఫోటోలు మరియు వీడియోలను చదవడానికి అనుమతి అవసరం</string>
+    <string name="main_dialog_permission_message">ఈ యాప్ మీ పరికరంలోని ఫోటోలు మరియు వీడియోలను చదవాలి:\n\n• ఫోటోల అనుమతి: పరికర గ్యాలరీని స్కాన్ చేసి అందులోని Live Photoలను గుర్తించడానికి\n• వీడియోల అనుమతి: రెండు-ఫైల్ Live Photoలతో వచ్చే తోడి వీడియోలను కనుగొనడానికి\n• లొకేషన్ అనుమతి: ఫోటోలలోని GPS లొకేషన్ మెటాడేటాను సంరక్షించడానికి (లేకపోతే మార్చిన ఫోటోలు లొకేషన్ సమాచారాన్ని కోల్పోతాయి)\n\nనిరాకరిస్తే, అంతర్నిర్మిత పికర్ను ఉపయోగించలేరు; తర్వాత “ఫైళ్లు జోడించు” నొక్కి మళ్లీ అనుమతి ఇవ్వవచ్చు.</string>
+    <string name="main_dialog_settings_title">ఫోటోలు మరియు వీడియోల అనుమతులు మాన్యువల్గా మంజూరు చేయాలి</string>
+    <string name="main_dialog_settings_message">మీరు ముందుగా “మళ్లీ అడగవద్దు” ఎంచుకున్నందున, సిస్టమ్ ఇకపై అనుమతి డైలాగ్ను చూపించదు.\n\nయాప్ వివరాల పేజీ → అనుమతులు → ఫోటోలు మరియు వీడియోలు కు వెళ్లి మాన్యువల్గా యాక్సెస్ ఇచ్చి, తర్వాత ఈ యాప్కు తిరిగి రండి.\n\nగమనిక: “ఫోటోలు” మరియు “వీడియోలు” రెండు అనుమతులూ మంజూరు కావాలి, లేకపోతే రెండు-ఫైల్ Live Photoలు తోడి వీడియోలను కనుగొనలేవు.</string>
+    <string name="main_dialog_allfiles_title_delete">అసలు ఫైళ్లను స్వయంగా తొలగించడానికి “అన్ని ఫైళ్లకు యాక్సెస్” అవసరం</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">ఈ పరికరం అసలు ఫైళ్లను స్వయంగా తొలగించడాన్ని మద్దతు ఇవ్వదు</string>
+    <string name="main_dialog_allfiles_title_replace">రీప్లేస్ మోడ్కు “అన్ని ఫైళ్లకు యాక్సెస్” అవసరం</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">ఈ పరికరం రీప్లేస్ మోడ్కు మద్దతు ఇవ్వదు</string>
+    <string name="main_dialog_allfiles_title_location">“అన్ని ఫైళ్లకు యాక్సెస్” మంజూరు చేయడం సిఫార్సు చేయబడింది</string>
+    <string name="main_dialog_allfiles_delete_message">“ప్రాసెస్ తర్వాత అసలు ఫైళ్లను తొలగించు” డిస్క్లోని అసలు ఫైళ్లను (ఫోటో మరియు దాని తోడి వీడియో) నేరుగా తొలగిస్తుంది. ఇది వెనక్కి తీసుకోలేము, కాబట్టి ముందుగా “అన్ని ఫైళ్లకు యాక్సెస్” మంజూరు చేయాలి.\n\nమంజూరు చేసిన తర్వాత స్విచ్ అందుబాటులోకి వస్తుంది; అప్పుడు మీరే దాన్ని ఆన్ చేయవచ్చు.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">ప్రస్తుత సిస్టమ్ (Android 10 లేదా అంతకంటే తక్కువ) “అన్ని ఫైళ్లకు యాక్సెస్” ఇవ్వదు, కాబట్టి డిస్క్లోని అసలు ఫైళ్లను నేరుగా తొలగించలేము; అందుకే ఈ పరికరం “ప్రాసెస్ తర్వాత అసలు ఫైళ్లను తొలగించు”కు మద్దతు ఇవ్వదు.\n\nమార్పిడి తర్వాత సిస్టమ్ గ్యాలరీలో అసలు ఫైళ్లను మాన్యువల్గా శుభ్రం చేసుకోవచ్చు.</string>
+    <string name="main_dialog_allfiles_replace_message">“రీప్లేస్ మోడ్” మార్పిడి ఫలితాన్ని నేరుగా డిస్క్లోని అసలు ఫైళ్లలోకి తిరిగి రాస్తుంది (వాటి కంటెంట్ను ఓవర్రైట్ చేస్తుంది). ఇది వెనక్కి తీసుకోలేము, కాబట్టి ముందుగా “అన్ని ఫైళ్లకు యాక్సెస్” మంజూరు చేయాలి.\n\nమంజూరు చేసిన తర్వాత స్విచ్ అందుబాటులోకి వస్తుంది; అప్పుడు మీరే దాన్ని ఆన్ చేయవచ్చు.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">ప్రస్తుత సిస్టమ్ (Android 10 లేదా అంతకంటే తక్కువ) “అన్ని ఫైళ్లకు యాక్సెస్” ఇవ్వదు, కాబట్టి డిస్క్లోని అసలు ఫైళ్లను నేరుగా తిరిగి రాయలేము; అందుకే ఈ పరికరం “రీప్లేస్ మోడ్”కు మద్దతు ఇవ్వదు.\n\nసాధారణ పద్ధతిలో మార్పిడి కొనసాగించవచ్చు; ఫలితాలు గ్యాలరీ ఫోల్డర్లో రాయబడతాయి.</string>
+    <string name="main_dialog_allfiles_location_message">కొన్ని పరికరాల్లో (Meizu వంటివి), సిస్టమ్ గ్యాలరీ API ద్వారా రాయడం వల్ల GPS లొకేషన్ సమాచారం తొలగించబడుతుంది, కాబట్టి మార్చిన ఫోటోలు లొకేషన్ కోల్పోతాయి.\n\n“అన్ని ఫైళ్లకు యాక్సెస్” మంజూరు చేసిన తర్వాత, ఈ యాప్ నేరుగా గ్యాలరీ ఫోల్డర్లో రాసి లొకేషన్ మెటాడేటాను పూర్తిగా సంరక్షిస్తుంది.\n\nఇది లేకుండా కూడా మార్పిడి పనిచేస్తుంది, కానీ కొన్ని పరికరాల్లో లొకేషన్ సమాచారం పోవచ్చు.</string>
+    <string name="main_dialog_conflict_title">అవుట్పుట్ ఫైల్ పేరు ఘర్షణ</string>
+    <string name="main_dialog_conflict_message">అవుట్పుట్ ఫోల్డర్లో అదే పేరుతో ఫైల్ ఇప్పటికే ఉంది:\n%1$s\n\nఎలా నిర్వహించాలో ఎంచుకోండి.</string>
+    <string name="main_label_conflict_always">తర్వాతి అన్ని ఘర్షణలకు ఇదే ఉపయోగించు</string>
+    <string name="main_btn_grant">మంజూరు చేయి</string>
+    <string name="main_btn_deny">నిరాకరించు</string>
+    <string name="main_btn_go_settings">సెట్టింగ్లు తెరువు</string>
+    <string name="main_btn_cancel">రద్దు</string>
+    <string name="main_btn_grant_access">యాక్సెస్ మంజూరు చేయి</string>
+    <string name="main_btn_got_it">అర్థమైంది</string>
+    <string name="main_btn_not_now">ఇప్పుడు కాదు</string>
+    <string name="main_btn_skip">దాటవేయి</string>
+    <string name="main_btn_overwrite">ఓవర్రైట్ చేయి</string>
+    <string name="main_btn_auto_rename">స్వయంగా పేరు మార్చు</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d అసలు ఫైల్ తొలగించబడింది</item>
+        <item quantity="other">%1$d అసలు ఫైళ్లు తొలగించబడ్డాయి</item>
+    </plurals>
+    <string name="main_delete_nothing">తొలగించాల్సిన అసలు ఫైళ్లు లేవు</string>
+    <string name="main_delete_partial">%1$d అసలు ఫైళ్లు తొలగించబడ్డాయి (%2$d తొలగించలేక ఉంచబడ్డాయి)</string>
+    <string name="main_delete_failed">అసలు ఫైళ్లను తొలగించడం విఫలమైంది (ఫైళ్లు వాడుకలో ఉన్నాయి లేదా రైట్ అనుమతి లేదు); అవి ఉంచబడ్డాయి</string>
+    <string name="main_export_missing_output">మార్పిడి అవుట్పుట్ లేదు లేదా ఖాళీగా ఉంది: %1$s</string>
+    <string name="main_export_missing_output_bare">మార్పిడి అవుట్పుట్ లేదు లేదా ఖాళీగా ఉంది</string>
+    <string name="main_export_insert_null">MediaStore ఇన్సర్ట్ nullని తిరిగి ఇచ్చింది</string>
+    <string name="main_export_output_stream">MediaStore అవుట్పుట్ స్ట్రీమ్ అందుబాటులో లేదు</string>
+    <string name="main_export_write_failed">MediaStore రైట్ విఫలమైంది: %1$s</string>
+    <string name="main_export_mkdir_failed">గ్యాలరీ ఫోల్డర్ %1$s సృష్టించలేము</string>
+    <string name="main_export_dir_write_failed">గ్యాలరీ ఫోల్డర్లో రాయడం విఫలమైంది: %1$s</string>
+    <string name="main_export_no_source">మూల ఫైల్ను కనుగొనలేము; భర్తీ దాటవేయబడింది</string>
+    <string name="main_export_companion_failed">తోడి ఫైల్ను తిరిగి రాయడం విఫలమైంది: %1$s</string>
+    <string name="main_export_source_dir_unwritable">మూల ఫోల్డర్ రాయదగినది కానందున, తోడి ఫైల్ను తిరిగి రాయలేకపోయాం</string>
+    <string name="main_export_source_dir_unavailable">మూల ఫోల్డర్ అందుబాటులో లేదు: %1$s</string>
+    <string name="main_export_replace_failed">మూల ఫైల్ను భర్తీ చేయడం విఫలమైంది: %1$s</string>
+    <string name="main_export_replace_failed_bare">మూల ఫైల్ను భర్తీ చేయడం విఫలమైంది</string>
+</resources>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bosnian (bs) strings — main screen and background flows.
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Plural quantities follow CLDR for Bosnian: one / few / other.
+-->
+<resources>
+    <!-- ── Statusna traka / poruke ── -->
+    <string name="main_status_ready">Spremno</string>
+    <string name="main_status_location_granted">Dozvola za lokaciju odobrena; GPS metapodaci bit će sačuvani nakon konverzije</string>
+    <string name="main_status_location_denied">Bez dozvole za lokaciju: konvertirane fotografije izgubit će GPS podatke o lokaciji</string>
+    <string name="main_status_all_files_granted">Dozvola „pristup svim datotekama“ odobrena; konverzija piše izravno u folder albuma i potpuno čuva lokaciju</string>
+    <string name="main_status_all_files_denied">Bez dozvole „pristup svim datotekama“: na pojedinim modelima fotografije mogu izgubiti podatke o lokaciji</string>
+    <string name="main_status_read_granted">Dozvola za čitanje fotografija i videa odobrena</string>
+    <string name="main_status_video_missing">Dozvola je odobrena, ali nedostaje dozvola za video: nije moguće pronaći prateći video kod Live Photo s dvije datoteke</string>
+    <string name="main_status_permission_denied">Dozvola nije odobrena; možete ponovo dodirnuti „Dodaj datoteke“</string>
+    <string name="main_status_folder_not_selected">Folder nije odabran</string>
+    <string name="main_status_folder_unavailable">Odabrani folder nije dostupan (podržana je samo lokalna pohrana)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Prethodna sesija vraćena (%1$d datoteka)</item>
+        <item quantity="few">Prethodna sesija vraćena (%1$d datoteke)</item>
+        <item quantity="other">Prethodna sesija vraćena (%1$d datoteka)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Otkriveno je prethodno abnormalno zatvaranje; nedovršena lista je očišćena</string>
+    <string name="main_status_compose_blocks_extract">Red sadrži zadatke sastavljanja; nije moguće prebaciti na način izdvajanja</string>
+    <string name="main_status_replace_off_mutex">Način zamjene isključen (međusobno isključivo s „Izbriši izvorne datoteke nakon obrade“)</string>
+    <string name="main_status_delete_needs_all_files">Automatsko brisanje izvornih datoteka zahtijeva dozvolu „pristup svim datotekama“; prvo je odobrite</string>
+    <string name="main_status_replace_off">Način zamjene isključen; rezultati se ponovo upisuju u folder albuma</string>
+    <string name="main_status_replace_needs_all_files">Način zamjene zahtijeva dozvolu „pristup svim datotekama“; prvo je odobrite</string>
+    <string name="main_status_delete_off_mutex">Isključeno je „Izbriši izvorne datoteke nakon obrade“ (međusobno isključivo s načinom zamjene)</string>
+    <string name="main_status_loading_albums">Učitavanje albuma…</string>
+    <string name="main_status_no_albums">Nisu pronađeni albumi</string>
+    <string name="main_status_compose_no_photo">Fotografija nije odabrana, sastavljanje nije moguće</string>
+    <string name="main_status_compose_no_video">Video nije odabran, sastavljanje nije moguće</string>
+    <string name="main_status_compose_all_added">Sve odabrane fotografije su već na listi</string>
+    <string name="main_status_compose_paired">%1$d fotografija, %2$d videa; dodano %3$d parova zadataka sastavljanja prema manjem broju</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Dodan je %1$d zadatak sastavljanja; dodirnite „Započni konverziju“ za sastavljanje</item>
+        <item quantity="few">Dodana su %1$d zadatka sastavljanja; dodirnite „Započni konverziju“ za sastavljanje</item>
+        <item quantity="other">Dodano je %1$d zadataka sastavljanja; dodirnite „Započni konverziju“ za sastavljanje</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (izlazni format automatski promijenjen u Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Uvoz %1$d podijeljene slike…</item>
+        <item quantity="few">Uvoz %1$d podijeljene slike…</item>
+        <item quantity="other">Uvoz %1$d podijeljenih slika…</item>
+    </plurals>
+    <string name="main_status_import_failed">Uvoz nije uspio: %1$s</string>
+    <string name="main_status_import_done_partial">Uvoz završen: uspješno %1$d, neuspješno %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Uvoz završen: uvezena %1$d datoteka</item>
+        <item quantity="few">Uvoz završen: uvezene %1$d datoteke</item>
+        <item quantity="other">Uvoz završen: uvezeno %1$d datoteka</item>
+    </plurals>
+    <string name="main_status_import_stopped">Uvoz zaustavljen: uspješno %1$d, neuspješno %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Uvoz %1$d datoteke…</item>
+        <item quantity="few">Uvoz %1$d datoteke…</item>
+        <item quantity="other">Uvoz %1$d datoteka…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Uvoz %1$d/%2$d…</string>
+    <string name="main_status_stopping">Zaustavljanje… (zaustavit će se nakon trenutne datoteke)</string>
+    <string name="main_status_stopping_import">Zaustavljanje uvoza…</string>
+    <string name="main_status_removed">Uklonjeno: %1$s</string>
+    <string name="main_status_cleared">Očišćeno</string>
+    <string name="main_status_nothing_to_convert">Nema datoteka za konverziju</string>
+    <string name="main_status_folder_unreadable">Nije moguće pročitati odabrani folder</string>
+    <string name="main_status_scanning_folder">Skeniranje foldera…</string>
+    <string name="main_status_no_images">U odabranom folderu nisu pronađene slike</string>
+    <string name="main_status_batch_importing">Skupni uvoz %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Skupni uvoz zaustavljen: uvezena %1$d Live Photo</item>
+        <item quantity="few">Skupni uvoz zaustavljen: uvezene %1$d Live Photo</item>
+        <item quantity="other">Skupni uvoz zaustavljen: uvezeno %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Skupni uvoz zaustavljen: uvezena %1$d Live Photo, preskočena %2$d ne-Live Photo datoteka</item>
+        <item quantity="few">Skupni uvoz zaustavljen: uvezene %1$d Live Photo, preskočene %2$d ne-Live Photo datoteke</item>
+        <item quantity="other">Skupni uvoz zaustavljen: uvezeno %1$d Live Photo, preskočeno %2$d ne-Live Photo datoteka</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Skupni uvoz završen: uvezena %1$d Live Photo</item>
+        <item quantity="few">Skupni uvoz završen: uvezene %1$d Live Photo</item>
+        <item quantity="other">Skupni uvoz završen: uvezeno %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Skupni uvoz završen: uvezena %1$d Live Photo, preskočena %2$d ne-Live Photo datoteka</item>
+        <item quantity="few">Skupni uvoz završen: uvezene %1$d Live Photo, preskočene %2$d ne-Live Photo datoteke</item>
+        <item quantity="other">Skupni uvoz završen: uvezeno %1$d Live Photo, preskočeno %2$d ne-Live Photo datoteka</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Zaustavljeno: od %1$d datoteka obrađeno %2$d, zamijenjeno %3$d izvornih datoteka</string>
+    <string name="main_status_stopped_export">Zaustavljeno: od %1$d datoteka obrađeno %2$d, izvezeno %3$d u album</string>
+    <string name="main_status_done_replace_reason">Završeno: obrađeno %1$d datoteka, zamijenjeno %2$d izvornih datoteka (razlog: %3$s)</string>
+    <string name="main_status_done_export_reason">Završeno: obrađeno %1$d datoteka, izvezeno %2$d u album (razlog: %3$s)</string>
+    <string name="main_status_done_replace">Završeno: obrađeno %1$d datoteka, zamijenjeno %2$d izvornih datoteka</string>
+    <string name="main_status_done_export">Završeno: obrađeno %1$d datoteka, izvezeno %2$d u album</string>
+    <string name="main_status_keep_originals">%1$s; dozvola „potpuni pristup pohrani“ nije odobrena, izvorne datoteke su sačuvane</string>
+
+    <!-- ── Informacije o stavkama liste ── -->
+    <string name="main_info_detecting">Otkrivanje…</string>
+    <string name="main_info_unrecognized">Neprepoznat format Live Photo</string>
+    <string name="main_info_converting">Konverzija…</string>
+    <string name="main_info_compose_task">Zadatak sastavljanja (dodirnite za početak konverzije)</string>
+    <string name="main_info_done_replaced">Završeno (zamijenjeno %1$d izvornih datoteka)</string>
+    <string name="main_info_done_skipped">Završeno (preskočeno: sukob istog imena)</string>
+    <string name="main_info_done_exported">Završeno (izvezeno %1$d)</string>
+    <string name="main_info_failed">Neuspjeh: %1$s</string>
+
+    <!-- ── Detalji napretka ── -->
+    <string name="main_progress_added">Dodano %1$d/%2$d</string>
+    <string name="main_progress_processed">Obrađeno %1$d/%2$d</string>
+    <string name="main_progress_imported">Uvezeno %1$d/%2$d</string>
+
+    <!-- ── Dijalozi za dozvole ── -->
+    <string name="main_dialog_permission_title">Potrebna je dozvola za čitanje fotografija i videa</string>
+    <string name="main_dialog_permission_message">Aplikaciji je potreban pristup fotografijama i videima na vašem uređaju:\n\n• Dozvola za fotografije: skeniranje albuma uređaja radi prepoznavanja Live Photo\n• Dozvola za video: pronalaženje pratećeg videa kod Live Photo s dvije datoteke\n• Dozvola za lokaciju: čuvanje GPS metapodataka u fotografijama (bez nje se lokacija gubi nakon konverzije)\n\nNakon odbijanja ugrađeni birač neće raditi; kasnije možete ponovo dodirnuti „Dodaj datoteke“ i odobriti dozvole.</string>
+    <string name="main_dialog_settings_title">Dozvolu za fotografije i video morate odobriti ručno</string>
+    <string name="main_dialog_settings_message">Prethodno ste odabrali „ne pitaj ponovo“, pa sistem više ne prikazuje dijalog za dozvole.\n\nIdite na stranicu s detaljima aplikacije → Dozvole → Fotografije i video, ručno odobrite pristup i vratite se u aplikaciju.\n\nNapomena: morate odobriti obje dozvole — „Fotografije“ i „Video“, inače Live Photo s dvije datoteke neće pronaći prateći video.</string>
+
+    <!-- ── Dijalozi o dozvoli „pristup svim datotekama“ ── -->
+    <string name="main_dialog_allfiles_title_delete">Automatsko brisanje izvornih datoteka zahtijeva „pristup svim datotekama“</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Ovaj uređaj ne podržava automatsko brisanje izvornih datoteka</string>
+    <string name="main_dialog_allfiles_title_replace">Način zamjene zahtijeva „pristup svim datotekama“</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Ovaj uređaj ne podržava način zamjene</string>
+    <string name="main_dialog_allfiles_title_location">Preporučuje se odobravanje dozvole „pristup svim datotekama“</string>
+    <string name="main_dialog_allfiles_delete_message">„Izbriši izvorne datoteke nakon obrade“ izravno briše izvorne datoteke s diska (fotografiju i prateći video), radnja je nepovratna, pa je prvo potrebno odobriti dozvolu „pristup svim datotekama“.\n\nNakon odobrenja prekidač će postati dostupan i moći ćete ga sami uključiti.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Trenutni sistem (Android 10 i stariji) ne pruža dozvolu „pristup svim datotekama“, pa nije moguće izravno brisati izvorne datoteke s diska; zato ovaj uređaj ne podržava „Izbriši izvorne datoteke nakon obrade“.\n\nIzvorne datoteke možete ručno ukloniti iz sistemskog albuma nakon konverzije.</string>
+    <string name="main_dialog_allfiles_replace_message">„Način zamjene“ izravno upisuje rezultat konverzije u izvorne datoteke na disku (prepisuje ih), radnja je nepovratna, pa je prvo potrebno odobriti dozvolu „pristup svim datotekama“.\n\nNakon odobrenja prekidač će postati dostupan i moći ćete ga sami uključiti.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Trenutni sistem (Android 10 i stariji) ne pruža dozvolu „pristup svim datotekama“, pa nije moguće izravno prepisati izvorne datoteke; zato ovaj uređaj ne podržava „Način zamjene“.\n\nMožete nastaviti s uobičajenom konverzijom; rezultati će se upisati u folder albuma.</string>
+    <string name="main_dialog_allfiles_location_message">Pojedini modeli (npr. Meizu) prilikom upisa putem sistemskog API-ja albuma uklanjaju GPS podatke, pa konvertirane fotografije gube lokaciju.\n\nUz dozvolu „pristup svim datotekama“ aplikacija piše izravno u folder albuma i potpuno čuva metapodatke lokacije.\n\nKonverzija radi i bez te dozvole, ali na pojedinim modelima lokacija može biti izgubljena.</string>
+
+    <!-- ── Dijalog sukoba naziva izlazne datoteke ── -->
+    <string name="main_dialog_conflict_title">Sukob naziva izlazne datoteke</string>
+    <string name="main_dialog_conflict_message">U izlaznom folderu već postoji datoteka s istim imenom:\n%1$s\n\nOdaberite način rješavanja.</string>
+    <string name="main_label_conflict_always">Koristi ovaj način za buduće sukobe</string>
+
+    <!-- ── Dugmad u dijalozima ── -->
+    <string name="main_btn_grant">Odobri</string>
+    <string name="main_btn_deny">Odbij</string>
+    <string name="main_btn_go_settings">Postavke</string>
+    <string name="main_btn_cancel">Otkaži</string>
+    <string name="main_btn_grant_access">Odobri pristup</string>
+    <string name="main_btn_got_it">Razumijem</string>
+    <string name="main_btn_not_now">Ne sada</string>
+    <string name="main_btn_skip">Preskoči</string>
+    <string name="main_btn_overwrite">Prepiši</string>
+    <string name="main_btn_auto_rename">Automatski preimenuj</string>
+
+    <!-- ── Rezultat konverzije / razlozi neuspjelog izvoza ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Izbrisana %1$d izvorna datoteka</item>
+        <item quantity="few">Izbrisane %1$d izvorne datoteke</item>
+        <item quantity="other">Izbrisano %1$d izvornih datoteka</item>
+    </plurals>
+    <string name="main_delete_nothing">Nije potrebno brisati izvorne datoteke</string>
+    <string name="main_delete_partial">Izbrisano %1$d izvornih datoteka (%2$d nije moguće izbrisati, sačuvane)</string>
+    <string name="main_delete_failed">Brisanje izvornih datoteka nije uspjelo (datoteka je zauzeta ili nema prava pisanja); sačuvane</string>
+    <string name="main_export_missing_output">Rezultat konverzije nedostaje ili je prazan: %1$s</string>
+    <string name="main_export_missing_output_bare">Rezultat konverzije nedostaje ili je prazan</string>
+    <string name="main_export_insert_null">MediaStore insert je vratio null</string>
+    <string name="main_export_output_stream">Izlazni tok MediaStorea nije dostupan</string>
+    <string name="main_export_write_failed">Upis u MediaStore nije uspio: %1$s</string>
+    <string name="main_export_mkdir_failed">Nije moguće kreirati folder albuma %1$s</string>
+    <string name="main_export_dir_write_failed">Upis u folder albuma nije uspio: %1$s</string>
+    <string name="main_export_no_source">Nije moguće pronaći izvornu datoteku, zamjena preskočena</string>
+    <string name="main_export_companion_failed">Upis prateće datoteke nije uspio: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Folder izvorne datoteke nije upisiv; prateća datoteka nije upisana</string>
+    <string name="main_export_source_dir_unavailable">Folder izvorne datoteke nije dostupan: %1$s</string>
+    <string name="main_export_replace_failed">Zamjena izvorne datoteke nije uspjela: %1$s</string>
+    <string name="main_export_replace_failed_bare">Zamjena izvorne datoteke nije uspjela</string>
+</resources>

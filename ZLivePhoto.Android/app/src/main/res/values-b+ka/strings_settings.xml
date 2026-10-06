@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Georgian (ka) strings — settings screen.
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- ზოგადი -->
+    <string name="settings_title">პარამეტრები</string>
+    <string name="settings_cd_back">უკან</string>
+    <string name="settings_btn_apply">გამოყენება</string>
+    <string name="settings_btn_cancel">გაუქმება</string>
+    <string name="settings_btn_close">დახურვა</string>
+    <string name="settings_btn_ok">კარგი</string>
+    <string name="settings_btn_sponsor">მხარდაჭერა</string>
+
+    <!-- ჯგუფების სათაურები -->
+    <string name="settings_section_general">ზოგადი</string>
+    <string name="settings_section_appearance">გარეგნობა</string>
+    <string name="settings_section_language">ენა</string>
+    <string name="settings_section_defaults">ნაგულისხმევი პარამეტრები</string>
+    <string name="settings_section_output">გამოსავალი</string>
+    <string name="settings_section_transcode">ვიდეოს ტრანსკოდირება</string>
+    <string name="settings_section_about">შესახებ</string>
+    <string name="settings_section_app">აპლიკაცია</string>
+    <string name="settings_section_credits">მადლობა და მხარდაჭერა</string>
+    <string name="settings_section_opensource">ღია კოდი და ლიცენზია</string>
+
+    <!-- ზოგადი -->
+    <string name="settings_startup_check_title">გაშვებისას განახლებების შემოწმება</string>
+    <string name="settings_startup_check_subtitle">გაშვებისას ავტომატურად იწერს ახალ ვერსიას GitHub-იდან და ატყობინებს განახლებაზე</string>
+    <string name="settings_haptics_title">ვიბრაციული უკუკავშირი</string>
+    <string name="settings_haptics_subtitle">ჰაპტიკური უკუკავშირი ღილაკზე დაჭერისა და მდგომარეობის ცვლილებისას</string>
+    <string name="settings_bounce_title">ღილაკების ელასტიკური ანიმაცია</string>
+    <string name="settings_bounce_subtitle">ღილაკის დაჭერისას შემცირებისა და დაბრუნების ანიმაცია</string>
+
+    <!-- გარეგნობა -->
+    <string name="settings_theme_system">სისტემის მიხედვით</string>
+    <string name="settings_theme_dark">მუქი</string>
+    <string name="settings_theme_light">ღია</string>
+    <string name="settings_dynamic_theme_title">Material You დინამიური ფერები</string>
+    <string name="settings_dynamic_theme_subtitle">მიჰყვება სისტემის ფონის ფერებს (Android 12+); გამორთვისას გამოიყენება ქვემოთ მოცემული წინასწარ განსაზღვრული ფერები</string>
+    <string name="settings_preset_colors_title">თემის წინასწარ განსაზღვრული ფერები</string>
+    <string name="settings_preset_current">მიმდინარე: %1$s</string>
+    <string name="settings_preset_disabled_hint">ხელმისაწვდომია „Material You დინამიური ფერების“ გამორთვის შემდეგ</string>
+    <string name="settings_custom">მორგებული</string>
+    <string name="settings_custom_color_title">თემის მორგებული ფერი</string>
+    <string name="settings_cd_custom_palette">მორგებული პალიტრა</string>
+    <string name="settings_hue_value">ტონი %1$d°</string>
+
+    <!-- აპლიკაციის ენა -->
+    <string name="settings_language_dialog_title">აირჩიეთ აპლიკაციის ენა</string>
+    <string name="settings_language_count">სულ %1$d ენა</string>
+
+    <!-- ნაგულისხმევი პარამეტრები -->
+    <string name="settings_reminder_dialogs_title">დიალოგების შემდგომ არ ჩვენება</string>
+    <string name="settings_reminder_dialogs_subtitle">ყველა „აღარ მკითხო“ დიალოგის მართვა</string>
+    <string name="settings_reminder_hint">ჩართვა ნიშნავს „აღარ ჩვენებას“; გამორთვისას დიალოგი მომდევნო ჯერზე ისევ გამოჩნდება.</string>
+
+    <!-- გამოსავალი -->
+    <string name="settings_preserve_folders_title">გამოსავალი წყარო საქაღალდეების სტრუქტურის მიხედვით</string>
+    <string name="settings_preserve_folders_subtitle">შედეგები ინახება ალბომის მიხედვით ქვესაქაღალდეებში; გამორთვისას ყველა ფაილი ერთ საქაღალდეშია</string>
+
+    <!-- შესახებ -->
+    <string name="settings_about_title">შესახებ</string>
+    <string name="settings_about_subtitle">ვერსია · განახლების შემოწმება · მადლობა და მხარდაჭერა</string>
+    <string name="settings_check_update_title">განახლებების შემოწმება</string>
+    <string name="settings_check_update_subtitle">უახლესი ვერსიის მიღება GitHub Releases-იდან</string>
+    <string name="settings_checking">მოწმდება…</string>
+    <string name="settings_update_available">ხელმისაწვდომია v%1$s</string>
+    <string name="settings_up_to_date">თქვენ გაქვთ უახლესი ვერსია</string>
+    <string name="settings_network_error">ქსელის შეცდომა, სცადეთ მოგვიანებით</string>
+    <string name="settings_reinstall_title">ამ ვერსიის ხელახლა დაყენება</string>
+    <string name="settings_reinstall_subtitle">მიმდინარე ვერსიის ჩამოტვირთვა და ზემოდან დაყენება (განახლების ტესტისთვის)</string>
+    <string name="settings_reinstall_newer_hint">შესაძლებელია განახლება v%1$s-მდე; ჯერ გამოიყენეთ „განახლებების შემოწმება“</string>
+    <string name="settings_version_title">ვერსია</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">მხარდაჭერა Alipay-ით</string>
+    <string name="settings_alipay_subtitle">დაუჭირეთ მხარი განვითარებას</string>
+    <string name="settings_coolapk_subtitle">Coolapk-ის მომხმარებელი · მადლობა მხარდაჭერისთვის</string>
+    <string name="settings_ai_credits_subtitle">მადლობა AI IDE-ებსა და AI მოდელებს განვითარებაში დახმარებისთვის</string>
+    <string name="settings_github_title">ღია კოდის GitHub მისამართი</string>
+    <string name="settings_license_title">ღია კოდის ლიცენზია</string>
+    <string name="settings_sponsor_dialog_title">მადლობა მხარდაჭერისთვის</string>
+    <string name="settings_sponsor_dialog_text">დიდი მადლობა, რომ გსურთ ამ აპლიკაციის მხარდაჭერა!\n\nთუ ჯერ მოსწავლე ან სტუდენტი ხართ და ფინანსურად დამოუკიდებელი არ ხართ, გთხოვთ, ნუ დახარჯავთ ფულს—\nშეინახეთ ეს სურვილი გულში და უბრალოდ განაგრძეთ აპლიკაციის გამოყენება; ეს ჩემთვის საუკეთესო მხარდაჭერაა.\n\nთუ მაინც გსურთ მხარდაჭერა, უმცირესი თანხაც მნიშვნელოვანია; მას უკეთეს მოვლასა და ფუნქციებში ჩავდებ:)</string>
+    <string name="settings_alipay_missing_title">Alipay არ არის დაყენებული</string>
+    <string name="settings_alipay_missing_text">Alipay ვერ მოიძებნა, ამიტომ მხარდაჭერა ჯერჯერობით შეუძლებელია.\n\nარაუშავს—ნებისმიერ შემთხვევაში, მადლობა კეთილი განზრახვისთვის!</string>
+
+    <!-- ვიდეოს ტრანსკოდირება -->
+    <string name="settings_transcoder_title">ჩაშენებული ტრანსკოდერი</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">ხელახალი კოდირება</string>
+    <string name="settings_transcode_mode_remux">მხოლოდ კონტეინერის რემუქსი (რეკომენდებული)</string>
+    <string name="settings_transcode_mode_off">ტრანსკოდერის გამოუყენება</string>
+    <string name="settings_transcode_params_title">ტრანსკოდირების პარამეტრები</string>
+    <string name="settings_transcode_params_subtitle">ხარისხისა და შეკუმშვის პარამეტრები ხელახალი კოდირებისას</string>
+    <string name="settings_transcode_params_disabled">მოქმედებს მხოლოდ მაშინ, როცა „ტრანსკოდირების რეჟიმი“ არის „ხელახალი კოდირება“</string>
+    <string name="settings_crf_value">ხარისხი CRF: %1$d</string>
+    <string name="settings_crf_hint">რაც ნაკლებია მნიშვნელობა, მით უფრო მაღალია ხარისხი და დიდია ფაილი (ნაგულისხმევი 18)</string>
+    <string name="settings_encoder_title">ენკოდერი</string>
+    <string name="settings_compress_preset_title">შეკუმშვის წინასწარ დაყენება</string>
+
+</resources>

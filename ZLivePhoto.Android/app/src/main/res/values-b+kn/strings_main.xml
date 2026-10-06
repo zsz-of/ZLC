@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ಕನ್ನಡ ಸ್ಟ್ರಿಂಗ್ಗಳು (kn).
+  ZLC · Kannada strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">ಸಿದ್ಧವಾಗಿದೆ</string>
+    <string name="main_status_location_granted">ಸ್ಥಳ ಅನುಮತಿ ನೀಡಲಾಗಿದೆ; ಪರಿವರ್ತನೆಯ ನಂತರ GPS ಮೆಟಾಡೇಟಾ ಸಂರಕ್ಷಿಸಲಾಗುತ್ತದೆ</string>
+    <string name="main_status_location_denied">ಸ್ಥಳ ಅನುಮತಿ ನೀಡಲಾಗಿಲ್ಲ: ಪರಿವರ್ತಿಸಿದ ಫೋಟೋಗಳು GPS ಸ್ಥಳ ಮಾಹಿತಿಯನ್ನು ಕಳೆದುಕೊಳ್ಳುತ್ತವೆ</string>
+    <string name="main_status_all_files_granted">“ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ನೀಡಲಾಗಿದೆ; ಪರಿವರ್ತನೆಗಳು ನೇರವಾಗಿ ಗ್ಯಾಲರಿ ಫೋಲ್ಡರ್ಗೆ ಬರೆಯಲ್ಪಟ್ಟು ಸ್ಥಳ ಮಾಹಿತಿ ಸಂಪೂರ್ಣವಾಗಿ ಸಂರಕ್ಷಿಸಲಾಗುತ್ತದೆ</string>
+    <string name="main_status_all_files_denied">“ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ನೀಡಲಾಗಿಲ್ಲ: ಕೆಲವು ಸಾಧನಗಳಲ್ಲಿ ಪರಿವರ್ತನೆಯ ನಂತರ ಸ್ಥಳ ಮಾಹಿತಿ ಕಳೆದುಹೋಗಬಹುದು</string>
+    <string name="main_status_read_granted">ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಓದಲು ಅನುಮತಿ ನೀಡಲಾಗಿದೆ</string>
+    <string name="main_status_video_missing">ನೀಡಲಾಗಿದೆ, ಆದರೆ ವೀಡಿಯೊ ಅನುಮತಿ ಇಲ್ಲ: ಎರಡು-ಫೈಲ್ Live Photoಗಳ ಜೊತೆ ಬರುವ ಜೋಡಿ ವೀಡಿಯೊಗಳನ್ನು ಹುಡುಕಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="main_status_permission_denied">ಅನುಮತಿ ನೀಡಲಾಗಿಲ್ಲ; “ಫೈಲ್ಗಳನ್ನು ಸೇರಿಸಿ” ಅನ್ನು ಮತ್ತೆ ಟ್ಯಾಪ್ ಮಾಡಬಹುದು</string>
+    <string name="main_status_folder_not_selected">ಯಾವುದೇ ಫೋಲ್ಡರ್ ಆಯ್ಕೆಮಾಡಲಾಗಿಲ್ಲ</string>
+    <string name="main_status_folder_unavailable">ಆಯ್ಕೆಮಾಡಿದ ಫೋಲ್ಡರ್ ಪ್ರವೇಶಿಸಲಾಗುವುದಿಲ್ಲ (ಸ್ಥಳೀಯ ಸಂಗ್ರಹ ಫೋಲ್ಡರ್ಗಳಿಗೆ ಮಾತ್ರ ಬೆಂಬಲ)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">ಹಿಂದಿನ ಅಧಿವೇಶನ ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ (%1$d ಫೈಲ್)</item>
+        <item quantity="other">ಹಿಂದಿನ ಅಧಿವೇಶನ ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ (%1$d ಫೈಲ್ಗಳು)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">ಹಿಂದಿನ ಅಸಹಜ ನಿರ್ಗಮನ ಪತ್ತೆಯಾಗಿದೆ; ಪೂರ್ಣಗೊಳ್ಳದ ಪಟ್ಟಿ ಅಳಿಸಲಾಗಿದೆ</string>
+    <string name="main_status_compose_blocks_extract">ಸರತಿಯಲ್ಲಿ ಕಂಪೋಸ್ ಕೆಲಸಗಳಿವೆ; ಹೊರತೆಗೆಯುವ ಮೋಡ್ಗೆ ಬದಲಾಯಿಸಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="main_status_replace_off_mutex">ರಿಪ್ಲೇಸ್ ಮೋಡ್ ಆಫ್ ಆಗಿದೆ (“ಪ್ರಕ್ರಿಯೆಯ ನಂತರ ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಅಳಿಸಿ” ಜೊತೆ ಪರಸ್ಪರ ವಿಶೇಷ)</string>
+    <string name="main_status_delete_needs_all_files">ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಅಳಿಸಲು “ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ಬೇಕು; ಮೊದಲು ಅದನ್ನು ನೀಡಿ</string>
+    <string name="main_status_replace_off">ರಿಪ್ಲೇಸ್ ಮೋಡ್ ಆಫ್ ಆಗಿದೆ; ಪರಿವರ್ತನೆ ಫಲಿತಾಂಶಗಳು ಮತ್ತೆ ಗ್ಯಾಲರಿ ಫೋಲ್ಡರ್ಗೆ ಬರೆಯಲ್ಪಡುತ್ತವೆ</string>
+    <string name="main_status_replace_needs_all_files">ರಿಪ್ಲೇಸ್ ಮೋಡ್ಗೆ “ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ಬೇಕು; ಮೊದಲು ಅದನ್ನು ನೀಡಿ</string>
+    <string name="main_status_delete_off_mutex">“ಪ್ರಕ್ರಿಯೆಯ ನಂತರ ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಅಳಿಸಿ” ಆಫ್ ಆಗಿದೆ (ರಿಪ್ಲೇಸ್ ಮೋಡ್ ಜೊತೆ ಪರಸ್ಪರ ವಿಶೇಷ)</string>
+    <string name="main_status_loading_albums">ಆಲ್ಬಮ್ಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ…</string>
+    <string name="main_status_no_albums">ಆಲ್ಬಮ್ಗಳು ಯಾವುವೂ ಸಿಗಲಿಲ್ಲ</string>
+    <string name="main_status_compose_no_photo">ಯಾವುದೇ ಫೋಟೋ ಆಯ್ಕೆಯಾಗಿಲ್ಲ; ಕಂಪೋಸ್ ಮಾಡಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="main_status_compose_no_video">ಯಾವುದೇ ವೀಡಿಯೊ ಆಯ್ಕೆಯಾಗಿಲ್ಲ; ಕಂಪೋಸ್ ಮಾಡಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="main_status_compose_all_added">ಆಯ್ಕೆಮಾಡಿದ ಫೋಟೋಗಳೆಲ್ಲವೂ ಈಗಾಗಲೇ ಪಟ್ಟಿಯಲ್ಲಿವೆ</string>
+    <string name="main_status_compose_paired">%1$d ಫೋಟೋಗಳು ಮತ್ತು %2$d ವೀಡಿಯೊಗಳು; ಕಡಿಮೆ ಸಂಖ್ಯೆಯ ಆಧಾರದಲ್ಲಿ %3$d ಕಂಪೋಸ್ ಜೋಡಿಗಳನ್ನು ಸೇರಿಸಲಾಗಿದೆ</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d ಕಂಪೋಸ್ ಕೆಲಸ ಸೇರಿಸಲಾಗಿದೆ; ಕಂಪೋಸ್ ಮಾಡಲು “ಪರಿವರ್ತನೆ ಪ್ರಾರಂಭಿಸಿ” ಟ್ಯಾಪ್ ಮಾಡಿ</item>
+        <item quantity="other">%1$d ಕಂಪೋಸ್ ಕೆಲಸಗಳನ್ನು ಸೇರಿಸಲಾಗಿದೆ; ಕಂಪೋಸ್ ಮಾಡಲು “ಪರಿವರ್ತನೆ ಪ್ರಾರಂಭಿಸಿ” ಟ್ಯಾಪ್ ಮಾಡಿ</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (ಔಟ್ಪುಟ್ ಸ್ವರೂಪ ಸ್ವಯಂಚಾಲಿತವಾಗಿ Google ಗೆ ಬದಲಾಯಿತು)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">%1$d ಹಂಚಿಕೊಂಡ ಚಿತ್ರ ಆಮದು ಆಗುತ್ತಿದೆ…</item>
+        <item quantity="other">%1$d ಹಂಚಿಕೊಂಡ ಚಿತ್ರಗಳು ಆಮದು ಆಗುತ್ತಿವೆ…</item>
+    </plurals>
+    <string name="main_status_import_failed">ಆಮದು ವಿಫಲವಾಯಿತು: %1$s</string>
+    <string name="main_status_import_done_partial">ಆಮದು ಪೂರ್ಣಗೊಂಡಿದೆ: %1$d ಯಶಸ್ವಿ, %2$d ವಿಫಲ</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">ಆಮದು ಪೂರ್ಣಗೊಂಡಿದೆ: ಒಟ್ಟು %1$d ಫೈಲ್ ಆಮದು ಆಗಿದೆ</item>
+        <item quantity="other">ಆಮದು ಪೂರ್ಣಗೊಂಡಿದೆ: ಒಟ್ಟು %1$d ಫೈಲ್ಗಳು ಆಮದು ಆಗಿವೆ</item>
+    </plurals>
+    <string name="main_status_import_stopped">ಆಮದು ನಿಲ್ಲಿಸಲಾಗಿದೆ: %1$d ಯಶಸ್ವಿ, %2$d ವಿಫಲ</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d ಫೈಲ್ ಆಮದು ಆಗುತ್ತಿದೆ…</item>
+        <item quantity="other">%1$d ಫೈಲ್ಗಳು ಆಮದು ಆಗುತ್ತಿವೆ…</item>
+    </plurals>
+    <string name="main_status_importing_progress">ಆಮದು %1$d/%2$d…</string>
+    <string name="main_status_stopping">ನಿಲ್ಲಿಸಲಾಗುತ್ತಿದೆ… (ಪ್ರಸ್ತುತ ಫೈಲ್ ಮುಗಿದ ನಂತರ ನಿಲ್ಲುತ್ತದೆ)</string>
+    <string name="main_status_stopping_import">ಆಮದು ನಿಲ್ಲಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="main_status_removed">%1$s ತೆಗೆದುಹಾಕಲಾಗಿದೆ</string>
+    <string name="main_status_cleared">ಅಳಿಸಲಾಗಿದೆ</string>
+    <string name="main_status_nothing_to_convert">ಪರಿವರ್ತಿಸಲು ಫೈಲ್ಗಳಿಲ್ಲ</string>
+    <string name="main_status_folder_unreadable">ಆಯ್ಕೆಮಾಡಿದ ಫೋಲ್ಡರ್ ಓದಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="main_status_scanning_folder">ಫೋಲ್ಡರ್ ಸ್ಕ್ಯಾನ್ ಆಗುತ್ತಿದೆ…</string>
+    <string name="main_status_no_images">ಆಯ್ಕೆಮಾಡಿದ ಫೋಲ್ಡರ್ನಲ್ಲಿ ಚಿತ್ರಗಳು ಯಾವುವೂ ಇಲ್ಲ</string>
+    <string name="main_status_batch_importing">ಬ್ಯಾಚ್ ಆಮದು %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">ಬ್ಯಾಚ್ ಆಮದು ನಿಲ್ಲಿಸಲಾಗಿದೆ: ಒಟ್ಟು %1$d Live Photo ಆಮದು ಆಗಿದೆ</item>
+        <item quantity="other">ಬ್ಯಾಚ್ ಆಮದು ನಿಲ್ಲಿಸಲಾಗಿದೆ: ಒಟ್ಟು %1$d Live Photoಗಳು ಆಮದು ಆಗಿವೆ</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">ಬ್ಯಾಚ್ ಆಮದು ನಿಲ್ಲಿಸಲಾಗಿದೆ: ಒಟ್ಟು %1$d Live Photo ಆಮದು, %2$d Live Photo ಅಲ್ಲದ ಫೈಲ್ಗಳನ್ನು ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ</item>
+        <item quantity="other">ಬ್ಯಾಚ್ ಆಮದು ನಿಲ್ಲಿಸಲಾಗಿದೆ: ಒಟ್ಟು %1$d Live Photoಗಳು ಆಮದು, %2$d Live Photo ಅಲ್ಲದ ಫೈಲ್ಗಳನ್ನು ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">ಬ್ಯಾಚ್ ಆಮದು ಪೂರ್ಣಗೊಂಡಿದೆ: ಒಟ್ಟು %1$d Live Photo ಆಮದು ಆಗಿದೆ</item>
+        <item quantity="other">ಬ್ಯಾಚ್ ಆಮದು ಪೂರ್ಣಗೊಂಡಿದೆ: ಒಟ್ಟು %1$d Live Photoಗಳು ಆಮದು ಆಗಿವೆ</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">ಬ್ಯಾಚ್ ಆಮದು ಪೂರ್ಣಗೊಂಡಿದೆ: ಒಟ್ಟು %1$d Live Photo ಆಮದು, %2$d Live Photo ಅಲ್ಲದ ಫೈಲ್ಗಳನ್ನು ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ</item>
+        <item quantity="other">ಬ್ಯಾಚ್ ಆಮದು ಪೂರ್ಣಗೊಂಡಿದೆ: ಒಟ್ಟು %1$d Live Photoಗಳು ಆಮದು, %2$d Live Photo ಅಲ್ಲದ ಫೈಲ್ಗಳನ್ನು ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ</item>
+    </plurals>
+    <string name="main_status_stopped_replace">ನಿಲ್ಲಿಸಲಾಗಿದೆ: %1$d ಫೈಲ್ಗಳಲ್ಲಿ %2$d ಪ್ರಕ್ರಿಯೆಗೊಂಡು %3$d ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಬದಲಿಸಲಾಗಿದೆ</string>
+    <string name="main_status_stopped_export">ನಿಲ್ಲಿಸಲಾಗಿದೆ: %1$d ಫೈಲ್ಗಳಲ್ಲಿ %2$d ಪ್ರಕ್ರಿಯೆಗೊಂಡು %3$d ಗ್ಯಾಲರಿಗೆ ರಫ್ತಾಗಿವೆ</string>
+    <string name="main_status_done_replace_reason">ಪೂರ್ಣಗೊಂಡಿದೆ: %1$d ಫೈಲ್ಗಳು ಪ್ರಕ್ರಿಯೆಗೊಂಡು %2$d ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಬದಲಿಸಲಾಗಿದೆ (ಕಾರಣ: %3$s)</string>
+    <string name="main_status_done_export_reason">ಪೂರ್ಣಗೊಂಡಿದೆ: %1$d ಫೈಲ್ಗಳು ಪ್ರಕ್ರಿಯೆಗೊಂಡು %2$d ಗ್ಯಾಲರಿಗೆ ರಫ್ತಾಗಿವೆ (ಕಾರಣ: %3$s)</string>
+    <string name="main_status_done_replace">ಪೂರ್ಣಗೊಂಡಿದೆ: %1$d ಫೈಲ್ಗಳು ಪ್ರಕ್ರಿಯೆಗೊಂಡು %2$d ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಬದಲಿಸಲಾಗಿದೆ</string>
+    <string name="main_status_done_export">ಪೂರ್ಣಗೊಂಡಿದೆ: %1$d ಫೈಲ್ಗಳು ಪ್ರಕ್ರಿಯೆಗೊಂಡು %2$d ಗ್ಯಾಲರಿಗೆ ರಫ್ತಾಗಿವೆ</string>
+    <string name="main_status_keep_originals">%1$s; “ಪೂರ್ಣ ಸಂಗ್ರಹ ಪ್ರವೇಶ” ನೀಡದ ಕಾರಣ ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="main_info_detecting">ಪತ್ತೆ ಮಾಡಲಾಗುತ್ತಿದೆ…</string>
+    <string name="main_info_unrecognized">ಗುರುತಿಸಲಾಗದ Live Photo ಸ್ವರೂಪ</string>
+    <string name="main_info_converting">ಪರಿವರ್ತಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="main_info_compose_task">ಕಂಪೋಸ್ ಕೆಲಸ (ಕಂಪೋಸ್ ಮಾಡಲು “ಪರಿವರ್ತನೆ ಪ್ರಾರಂಭಿಸಿ” ಟ್ಯಾಪ್ ಮಾಡಿ)</string>
+    <string name="main_info_done_replaced">ಪೂರ್ಣಗೊಂಡಿದೆ (%1$d ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಬದಲಿಸಲಾಗಿದೆ)</string>
+    <string name="main_info_done_skipped">ಪೂರ್ಣಗೊಂಡಿದೆ (ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ: ಹೆಸರು ಘರ್ಷಣೆ)</string>
+    <string name="main_info_done_exported">ಪೂರ್ಣಗೊಂಡಿದೆ (%1$d ರಫ್ತಾಗಿವೆ)</string>
+    <string name="main_info_failed">ವಿಫಲವಾಯಿತು: %1$s</string>
+    <string name="main_progress_added">%1$d/%2$d ಸೇರಿಸಲಾಗಿದೆ</string>
+    <string name="main_progress_processed">%1$d/%2$d ಪ್ರಕ್ರಿಯೆಗೊಂಡಿದೆ</string>
+    <string name="main_progress_imported">%1$d/%2$d ಆಮದು ಆಗಿದೆ</string>
+    <string name="main_dialog_permission_title">ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಓದಲು ಅನುಮತಿ ಬೇಕು</string>
+    <string name="main_dialog_permission_message">ಈ ಆ್ಯಪ್ ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿನ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಓದಬೇಕು:\n\n• ಫೋಟೋಗಳ ಅನುಮತಿ: ಸಾಧನ ಗ್ಯಾಲರಿಯನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಅದರಲ್ಲಿನ Live Photoಗಳನ್ನು ಗುರುತಿಸಲು\n• ವೀಡಿಯೊಗಳ ಅನುಮತಿ: ಎರಡು-ಫೈಲ್ Live Photoಗಳ ಜೊತೆ ಬರುವ ಜೋಡಿ ವೀಡಿಯೊಗಳನ್ನು ಹುಡುಕಲು\n• ಸ್ಥಳ ಅನುಮತಿ: ಫೋಟೋಗಳಲ್ಲಿನ GPS ಸ್ಥಳ ಮೆಟಾಡೇಟಾವನ್ನು ಸಂರಕ್ಷಿಸಲು (ಇಲ್ಲದಿದ್ದರೆ ಪರಿವರ್ತಿಸಿದ ಫೋಟೋಗಳು ಸ್ಥಳ ಮಾಹಿತಿ ಕಳೆದುಕೊಳ್ಳುತ್ತವೆ)\n\nನಿರಾಕರಿಸಿದರೆ, ಅಂತರ್ಗತ ಪಿಕರ್ ಬಳಸಲಾಗುವುದಿಲ್ಲ; ನಂತರ “ಫೈಲ್ಗಳನ್ನು ಸೇರಿಸಿ” ಟ್ಯಾಪ್ ಮಾಡಿ ಮತ್ತೆ ಅನುಮತಿ ನೀಡಬಹುದು.</string>
+    <string name="main_dialog_settings_title">ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳ ಅನುಮತಿಗಳನ್ನು ಕೈಯಿಂದ ನೀಡಬೇಕು</string>
+    <string name="main_dialog_settings_message">ನೀವು ಹಿಂದೆ “ಮತ್ತೆ ಕೇಳಬೇಡ” ಆಯ್ಕೆ ಮಾಡಿದ ಕಾರಣ ಸಿಸ್ಟಂ ಇನ್ನು ಅನುಮತಿ ಡೈಲಾಗ್ ತೋರಿಸುವುದಿಲ್ಲ.\n\nಆ್ಯಪ್ ವಿವರಗಳ ಪುಟ → ಅನುಮತಿಗಳು → ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳು ಗೆ ಹೋಗಿ ಕೈಯಿಂದ ಪ್ರವೇಶ ನೀಡಿ, ನಂತರ ಈ ಆ್ಯಪ್ಗೆ ಹಿಂತಿರುಗಿ.\n\nಸೂಚನೆ: “ಫೋಟೋಗಳು” ಮತ್ತು “ವೀಡಿಯೊಗಳು” ಎರಡೂ ಅನುಮತಿಗಳು ನೀಡಲ್ಪಡಬೇಕು, ಇಲ್ಲದಿದ್ದರೆ ಎರಡು-ಫೈಲ್ Live Photoಗಳು ಜೋಡಿ ವೀಡಿಯೊಗಳನ್ನು ಹುಡುಕಲಾರವು.</string>
+    <string name="main_dialog_allfiles_title_delete">ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಅಳಿಸಲು “ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ಬೇಕು</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">ಈ ಸಾಧನವು ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಅಳಿಸುವುದನ್ನು ಬೆಂಬಲಿಸುವುದಿಲ್ಲ</string>
+    <string name="main_dialog_allfiles_title_replace">ರಿಪ್ಲೇಸ್ ಮೋಡ್ಗೆ “ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ಬೇಕು</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">ಈ ಸಾಧನವು ರಿಪ್ಲೇಸ್ ಮೋಡ್ ಅನ್ನು ಬೆಂಬಲಿಸುವುದಿಲ್ಲ</string>
+    <string name="main_dialog_allfiles_title_location">“ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ನೀಡುವುದು ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ</string>
+    <string name="main_dialog_allfiles_delete_message">“ಪ್ರಕ್ರಿಯೆಯ ನಂತರ ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಅಳಿಸಿ” ಡಿಸ್ಕ್ನಲ್ಲಿನ ಮೂಲ ಫೈಲ್ಗಳನ್ನು (ಫೋಟೋ ಮತ್ತು ಅದರ ಜೋಡಿ ವೀಡಿಯೊ) ನೇರವಾಗಿ ಅಳಿಸುತ್ತದೆ. ಇದನ್ನು ಹಿಂತಿರುಗಿಸಲಾಗುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ ಮೊದಲು “ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ನೀಡಬೇಕು.\n\nನೀಡಿದ ನಂತರ ಸ್ವಿಚ್ ಲಭ್ಯವಾಗುತ್ತದೆ; ಆಗ ನೀವೇ ಅದನ್ನು ಆನ್ ಮಾಡಬಹುದು.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">ಪ್ರಸ್ತುತ ಸಿಸ್ಟಂ (Android 10 ಅಥವಾ ಕೆಳಗಿನ) “ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ನೀಡುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ ಡಿಸ್ಕ್ನಲ್ಲಿನ ಮೂಲ ಫೈಲ್ಗಳನ್ನು ನೇರವಾಗಿ ಅಳಿಸಲಾಗುವುದಿಲ್ಲ; ಆದ್ದರಿಂದ ಈ ಸಾಧನವು “ಪ್ರಕ್ರಿಯೆಯ ನಂತರ ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಅಳಿಸಿ” ಅನ್ನು ಬೆಂಬಲಿಸುವುದಿಲ್ಲ.\n\nಪರಿವರ್ತನೆಯ ನಂತರ ಸಿಸ್ಟಂ ಗ್ಯಾಲರಿಯಲ್ಲಿ ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಕೈಯಿಂದ ಸ್ವಚ್ಛಗೊಳಿಸಬಹುದು.</string>
+    <string name="main_dialog_allfiles_replace_message">“ರಿಪ್ಲೇಸ್ ಮೋಡ್” ಪರಿವರ್ತನೆ ಫಲಿತಾಂಶವನ್ನು ನೇರವಾಗಿ ಡಿಸ್ಕ್ನಲ್ಲಿನ ಮೂಲ ಫೈಲ್ಗಳಿಗೆ ಹಿಂತಿರುಗಿ ಬರೆಯುತ್ತದೆ (ಅವುಗಳ ವಿಷಯವನ್ನು ಓವರ್ರೈಟ್ ಮಾಡುತ್ತದೆ). ಇದನ್ನು ಹಿಂತಿರುಗಿಸಲಾಗುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ ಮೊದಲು “ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ನೀಡಬೇಕು.\n\nನೀಡಿದ ನಂತರ ಸ್ವಿಚ್ ಲಭ್ಯವಾಗುತ್ತದೆ; ಆಗ ನೀವೇ ಅದನ್ನು ಆನ್ ಮಾಡಬಹುದು.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">ಪ್ರಸ್ತುತ ಸಿಸ್ಟಂ (Android 10 ಅಥವಾ ಕೆಳಗಿನ) “ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ನೀಡುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ ಡಿಸ್ಕ್ನಲ್ಲಿನ ಮೂಲ ಫೈಲ್ಗಳನ್ನು ನೇರವಾಗಿ ಮತ್ತೆ ಬರೆಯಲಾಗುವುದಿಲ್ಲ; ಆದ್ದರಿಂದ ಈ ಸಾಧನವು “ರಿಪ್ಲೇಸ್ ಮೋಡ್” ಅನ್ನು ಬೆಂಬಲಿಸುವುದಿಲ್ಲ.\n\nಸಾಮಾನ್ಯ ವಿಧಾನದಲ್ಲಿ ಪರಿವರ್ತನೆ ಮುಂದುವರಿಸಬಹುದು; ಫಲಿತಾಂಶಗಳನ್ನು ಗ್ಯಾಲರಿ ಫೋಲ್ಡರ್ನಲ್ಲಿ ಬರೆಯಲಾಗುತ್ತದೆ.</string>
+    <string name="main_dialog_allfiles_location_message">ಕೆಲವು ಸಾಧನಗಳಲ್ಲಿ (Meizu ಮುಂತಾದವು), ಸಿಸ್ಟಂ ಗ್ಯಾಲರಿ API ಮೂಲಕ ಬರೆಯುವಾಗ GPS ಸ್ಥಳ ಮಾಹಿತಿ ತೆಗೆದುಹಾಕಲ್ಪಡುತ್ತದೆ, ಆದ್ದರಿಂದ ಪರಿವರ್ತಿಸಿದ ಫೋಟೋಗಳು ಸ್ಥಳ ಕಳೆದುಕೊಳ್ಳುತ್ತವೆ.\n\n“ಎಲ್ಲಾ ಫೈಲ್ಗಳಿಗೆ ಪ್ರವೇಶ” ನೀಡಿದ ನಂತರ, ಈ ಆ್ಯಪ್ ನೇರವಾಗಿ ಗ್ಯಾಲರಿ ಫೋಲ್ಡರ್ಗೆ ಬರೆದು ಸ್ಥಳ ಮೆಟಾಡೇಟಾವನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಸಂರಕ್ಷಿಸುತ್ತದೆ.\n\nಇದಿಲ್ಲದೆಯೂ ಪರಿವರ್ತನೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ, ಆದರೆ ಕೆಲವು ಸಾಧನಗಳಲ್ಲಿ ಸ್ಥಳ ಮಾಹಿತಿ ಕಳೆದುಹೋಗಬಹುದು.</string>
+    <string name="main_dialog_conflict_title">ಔಟ್ಪುಟ್ ಫೈಲ್ ಹೆಸರು ಘರ್ಷಣೆ</string>
+    <string name="main_dialog_conflict_message">ಔಟ್ಪುಟ್ ಫೋಲ್ಡರ್ನಲ್ಲಿ ಅದೇ ಹೆಸರಿನ ಫೈಲ್ ಈಗಾಗಲೇ ಇದೆ:\n%1$s\n\nಹೇಗೆ ನಿರ್ವಹಿಸಬೇಕೆಂದು ಆಯ್ಕೆಮಾಡಿ.</string>
+    <string name="main_label_conflict_always">ಮುಂದಿನ ಎಲ್ಲಾ ಘರ್ಷಣೆಗಳಿಗೂ ಇದನ್ನೇ ಬಳಸಿ</string>
+    <string name="main_btn_grant">ನೀಡಿ</string>
+    <string name="main_btn_deny">ನಿರಾಕರಿಸಿ</string>
+    <string name="main_btn_go_settings">ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ತೆರೆಯಿರಿ</string>
+    <string name="main_btn_cancel">ರದ್ದು</string>
+    <string name="main_btn_grant_access">ಪ್ರವೇಶ ನೀಡಿ</string>
+    <string name="main_btn_got_it">ಅರ್ಥವಾಯಿತು</string>
+    <string name="main_btn_not_now">ಈಗ ಬೇಡ</string>
+    <string name="main_btn_skip">ಬಿಟ್ಟುಬಿಡಿ</string>
+    <string name="main_btn_overwrite">ಓವರ್ರೈಟ್ ಮಾಡಿ</string>
+    <string name="main_btn_auto_rename">ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಹೆಸರು ಬದಲಿಸಿ</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d ಮೂಲ ಫೈಲ್ ಅಳಿಸಲಾಗಿದೆ</item>
+        <item quantity="other">%1$d ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಅಳಿಸಲಾಗಿದೆ</item>
+    </plurals>
+    <string name="main_delete_nothing">ಅಳಿಸಬೇಕಾದ ಮೂಲ ಫೈಲ್ಗಳಿಲ್ಲ</string>
+    <string name="main_delete_partial">%1$d ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಅಳಿಸಲಾಗಿದೆ (%2$d ಅಳಿಸಲಾಗದೆ ಉಳಿಸಲಾಗಿದೆ)</string>
+    <string name="main_delete_failed">ಮೂಲ ಫೈಲ್ಗಳನ್ನು ಅಳಿಸಲು ವಿಫಲವಾಯಿತು (ಫೈಲ್ಗಳು ಬಳಕೆಯಲ್ಲಿವೆ ಅಥವಾ ಬರೆಯುವ ಅನುಮತಿ ಇಲ್ಲ); ಅವನ್ನು ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="main_export_missing_output">ಪರಿವರ್ತನೆ ಔಟ್ಪುಟ್ ಇಲ್ಲ ಅಥವಾ ಖಾಲಿಯಾಗಿದೆ: %1$s</string>
+    <string name="main_export_missing_output_bare">ಪರಿವರ್ತನೆ ಔಟ್ಪುಟ್ ಇಲ್ಲ ಅಥವಾ ಖಾಲಿಯಾಗಿದೆ</string>
+    <string name="main_export_insert_null">MediaStore ಇನ್ಸರ್ಟ್ null ಅನ್ನು ಹಿಂತಿರುಗಿಸಿತು</string>
+    <string name="main_export_output_stream">MediaStore ಔಟ್ಪುಟ್ ಸ್ಟ್ರೀಮ್ ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="main_export_write_failed">MediaStore ಬರವಣಿಗೆ ವಿಫಲವಾಯಿತು: %1$s</string>
+    <string name="main_export_mkdir_failed">ಗ್ಯಾಲರಿ ಫೋಲ್ಡರ್ %1$s ರಚಿಸಲಾಗುವುದಿಲ್ಲ</string>
+    <string name="main_export_dir_write_failed">ಗ್ಯಾಲರಿ ಫೋಲ್ಡರ್ಗೆ ಬರೆಯಲು ವಿಫಲವಾಯಿತು: %1$s</string>
+    <string name="main_export_no_source">ಮೂಲ ಫೈಲ್ ಪತ್ತೆಯಾಗಲಿಲ್ಲ; ಬದಲಾವಣೆ ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ</string>
+    <string name="main_export_companion_failed">ಜೋಡಿ ಫೈಲ್ ಅನ್ನು ಹಿಂತಿರುಗಿ ಬರೆಯಲು ವಿಫಲವಾಯಿತು: %1$s</string>
+    <string name="main_export_source_dir_unwritable">ಮೂಲ ಫೋಲ್ಡರ್ ಬರೆಯಲು ಸಾಧ್ಯವಿಲ್ಲದ ಕಾರಣ, ಜೋಡಿ ಫೈಲ್ ಅನ್ನು ಹಿಂತಿರುಗಿ ಬರೆಯಲಾಗಲಿಲ್ಲ</string>
+    <string name="main_export_source_dir_unavailable">ಮೂಲ ಫೋಲ್ಡರ್ ಲಭ್ಯವಿಲ್ಲ: %1$s</string>
+    <string name="main_export_replace_failed">ಮೂಲ ಫೈಲ್ ಬದಲಾಯಿಸಲು ವಿಫಲವಾಯಿತು: %1$s</string>
+    <string name="main_export_replace_failed_bare">ಮೂಲ ಫೈಲ್ ಬದಲಾಯಿಸಲು ವಿಫಲವಾಯಿತು</string>
+</resources>

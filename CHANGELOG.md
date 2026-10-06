@@ -4,6 +4,19 @@
 
 ---
 
+## [3.4.18] - 2026-10-06
+
+### 🍎 Apple 实况照片配对标识与静帧时刻 + 荣耀尾部定位修复
+
+- **荣耀（关键修复）**：荣耀相册**不解析 Google XMP**，它靠文件尾部 60 字节定位内嵌 MP4 —— `[len-60]` 是版本标记（`v2_f01`）、`[len-40]` 是播放信息、`[len-20]` 是 **`LIVE_<N>`**，其中 **N 是「视频起始到 (len-40) 的字节数」**：`LiveUtils.getVideoOffset(String)` 直接 `Long.parseLong(split("_")[1])`，扫描器 `SpecialMediaUtils.extractLivePhoto` 再以 `videoOffset=(len-40)-N` 去 `QueryVideoInfoUtils.queryFrameRate/queryWidthAndHeight` 真实解码、把结果写进数据库列 `hn_livephoto_decode_info`。此前这里写的是**9 位随机 ID**（`generateLiveId`），荣耀算出的偏移是垃圾值，扫描器取不到帧率/宽高 → **相册不识别，或识别了也无法播放**。现在按真实布局反算 `N = (总长-40) - 视频起始偏移`。
+- **荣耀 uuid 盒 usertype 修正**：写出的 `uuid` 盒 usertype 由 `extend_type_matrix`（17B）改为荣耀自己的 `VIDEO_USERTYPE = " honor.org.video"`（16B，**含前导空格**）；否则 `LiveUtils.readUUIDBox` 逐字节比对失败（`this is not target uuid box`），AI/编辑相关能力取不到视频盒。
+- **Apple 图片侧配对标识（此前完全没写）**：Apple 官方（`AVCapturePhotoSettings.livePhotoMovieMetadata`）明确静态图侧的标识在 **`kCGImagePropertyExifMakerNote`**，与 MOV 的 `com.apple.quicktime.content.identifier` 配对；exiftool `Apple.pm` 给出键号 **0x0011 = ContentIdentifier（ASCII 字符串）**。本工具此前只写 XMP 的 `apple-fi:ContentIdentifier`（Final Cut 命名空间，与配对无关），HEIC 封面更是完全跳过。现在新增字节级 `ExifUtil.upsertMakerNoteAsciiTag(jpeg, 0x0011, contentId)`：沿用「段尾追加 + 指针改写、绝不移动既有数据」策略写入 MakerNote 内部 IFD，旧条目（RunTime/HDR 等）与其数据保持原偏移；`typeSizes` 补齐 TIFF type 13/16/17/18（Apple 会用 LONG8，缺了会算错偏移写坏 MakerNote）。
+- **Apple 静帧时刻（此前双向丢失）**：真实 Apple MOV 用 `mebx` sample entry 的 timed metadata 轨记录静帧时刻（条目值恒为 -1，真实时刻 = `mdhd` 时基上的样本时间 + `edts/elst` 的空 edit；实测 iPhone 15 Pro / iOS 18.5：movie timescale 600、空 edit 740 → 1.2333 s）。此前读方向把该轨当垃圾轨删除、又硬编码 `presentationTsUs = 0` → Apple → 小米/Google/OPPO/vivo 的 `MotionPhotoPresentationTimestampUs` 恒为 0、封面永远落在视频第 0 帧。现在新增 `Mp4Util.appleStillImageTimeUs()` 从 `mebx`/`mett` 轨的 `elst` 空 edit 解析真实时刻并写入 asset；写方向的 `still-image-time` 也不再写死 `0`（0 会被读成「静帧在第 0 帧」），改为按 Apple 约定写 `-1`。
+- **新增回归**：`AppleLivePhotoTest`（6 例：MakerNote 新建/扩展/同键替换不重复、`elst` 空 edit 解析 1.2333 s、无 mebx 时返回 -1、整条 Apple 写路径的图片侧标识与 MOV 侧 content.identifier 一致）；`HonorTailLayoutTest`（2 例，断言 `(len-40)-N` 精确落在 `ftyp`）。全量 **59 tests × 2 flavor 全绿**。
+- **边界与未做**：①本工具**暂不合成** Apple 的 `mebx` timed metadata 轨（需要真实 iPhone 样张逐字节比对才能安全实现），因此写到 Apple 的产物静帧时刻仍缺这一载体；②HEIC 封面暂不写 MakerNote（HEIC 的 EXIF 在 Exif item 内，属另一处实现），仅写 MOV 侧标识；③荣耀与 Apple 的改动均**未做真机验证**（本机无相应设备，也无可比对的真实样张），结论来自 smali/规范逆向与单元测试。
+
+---
+
 ## [3.4.17] - 2026-10-06
 
 ### 🔑 蓝奏云「提取码」支持（应用内仍可一键下载）

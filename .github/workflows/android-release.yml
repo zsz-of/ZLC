@@ -275,6 +275,11 @@ jobs:
           # 配置后正文会自动带上蓝奏云下载段落（蓝奏云链接由人工上传后取得）
           LANZOU_STANDARD_URL: ${{ vars.LANZOU_STANDARD_URL }}
           LANZOU_GO_URL: ${{ vars.LANZOU_GO_URL }}
+          # 蓝奏现已对非会员账号上传的分享**强制加提取码**（task=23 关码接口返回「此功能仅会员使用」），
+          # 因此提取码也要一并写进正文：既给手动下载的用户看，也给 App 更新器解析
+          # （App 3.4.17+ 支持带提取码的分享页）。
+          LANZOU_STANDARD_PWD: ${{ vars.LANZOU_STANDARD_PWD }}
+          LANZOU_GO_PWD: ${{ vars.LANZOU_GO_PWD }}
         run: |
           set -euo pipefail
           git fetch --tags --force >/dev/null 2>&1 || true
@@ -304,13 +309,29 @@ jobs:
 
           lanzou=""
           if [ -n "${LANZOU_STANDARD_URL:-}" ] || [ -n "${LANZOU_GO_URL:-}" ]; then
+            # 注意：这里一律用 if 而不是 `[ -n ... ] && echo`——后者在 set -e 下
+            # 只要有一个变量为空就会让整条命令返回 1，从而中断步骤。
+            pwd_suffix() { [ -n "${1:-}" ] && printf ' 提取码：%s' "$1" || true; }
             {
               echo "## ☁️ 蓝奏云下载"
               echo
-              [ -n "${LANZOU_STANDARD_URL:-}" ] && echo "- [标准版](${LANZOU_STANDARD_URL})"
-              [ -n "${LANZOU_GO_URL:-}" ] && echo "- [Go 轻量版](${LANZOU_GO_URL})"
+              if [ -n "${LANZOU_STANDARD_URL:-}" ]; then
+                echo "- [标准版](${LANZOU_STANDARD_URL})$(pwd_suffix "${LANZOU_STANDARD_PWD:-}")"
+              fi
+              if [ -n "${LANZOU_GO_URL:-}" ]; then
+                echo "- [Go 轻量版](${LANZOU_GO_URL})$(pwd_suffix "${LANZOU_GO_PWD:-}")"
+              fi
               echo
               echo "> 蓝奏云链接若打不开，多为分享域名调整，请改用上方 GitHub 附件下载。"
+              echo
+              # App 更新器按下面两行解析蓝奏直链（3.4.17+ 支持行尾提取码）；
+              # 若只在上面的列表里给链接，应用内「从蓝奏云下载」会提示未提供链接。
+              if [ -n "${LANZOU_STANDARD_URL:-}" ]; then
+                echo "[蓝奏云-标准版]: ${LANZOU_STANDARD_URL}$(pwd_suffix "${LANZOU_STANDARD_PWD:-}")"
+              fi
+              if [ -n "${LANZOU_GO_URL:-}" ]; then
+                echo "[蓝奏云-Go版]: ${LANZOU_GO_URL}$(pwd_suffix "${LANZOU_GO_PWD:-}")"
+              fi
               echo
             } > lanzou.md
             lanzou="$(cat lanzou.md)"

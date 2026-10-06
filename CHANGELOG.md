@@ -4,6 +4,18 @@
 
 ---
 
+## [3.4.20] - 2026-10-06
+
+### 🧹 移除「桌面图标自动改色」（修复部分桌面出现两个图标）
+
+- **问题**：有用户反馈桌面上会出现**两个 ZLC 图标**。动态图标用 7 个 `activity-alias` 承载桌面入口，运行时按主题色启用其一、禁用其余；部分桌面（Launcher）在组件启停后不会立即回收旧入口，于是新旧入口同时存在。
+- **处理**：**整体移除**该功能 —— 清单只保留一个 `activity-alias`（`MainActivityAlias0`，`android:enabled="true"`）作为唯一桌面入口，图标固定为默认配色；删除 `MainActivityAlias1..6`，并删除 `core\IconManager.kt` 及其全部调用点（`MainActivity` 的 `onStart`/`onStop` 覆盖、`iconApplySafe` 状态、壁纸监听里的图标切换分支）。
+- **为什么保留 alias0 而不是把 LAUNCHER 挪回 `MainActivity`**：已安装用户桌面上固定的入口组件名就是 `MainActivityAlias0`，改名会让旧快捷方式变成「打不开的死图标」（正是此前 issue #1 的症状路径）。
+- **UI「动态取色」不受影响**：壁纸颜色监听仍然保留（只用于刷新 UI 主题跟随的色相缓存），设置里的动态取色/主题色开关照旧生效。
+- 顺带清理：README 删除「动态桌面图标」特性行；`AppSettings` 中「与桌面图标共用色相」的注释措辞改为仅 UI 主题。`mipmap ic_launcher_1..6*` 暂留为未引用资源（后续可清理）。
+
+---
+
 ## [3.4.19] - 2026-10-06
 
 ### 🆕 新增努比亚（Nubia / 红魔）动态照片格式

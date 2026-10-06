@@ -63,7 +63,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import com.zsz.zlivephoto.core.Converter
 import com.zsz.zlivephoto.core.FfmpegAddon
-import com.zsz.zlivephoto.core.IconManager
 import com.zsz.zlivephoto.core.QuickClassify
 import com.zsz.zlivephoto.core.UpdateChecker
 import com.zsz.zlivephoto.core.UpdateCheckResult
@@ -170,11 +169,7 @@ class MainActivity : ComponentActivity() {
     // 部分 picker 控件（排序按钮/日期头/张数文本）曾不随主题切换）
     private var isDarkTheme by mutableStateOf(false)
 
-    // 动态取色时响应系统壁纸颜色变化：注册监听后，应用在后台时桌面图标可实时
-    // 跟随壁纸取色。前台禁用正在使用的入口 alias 会被系统中止 Activity（闪退），
-    // 因此仅当 iconApplySafe（已 onStop）时才真正切换；前台期间发生的壁纸变化
-    // 由用户退出到桌面时 onStop 里的同步兜底。
-    private var iconApplySafe = true
+    // 系统壁纸颜色变化监听（Android 12+ 动态取色）：壁纸一变即刷新 UI 主题跟随的色相缓存。
     private var wallpaperColorsListener: WallpaperManager.OnColorsChangedListener? = null
 
     /** Go 版门禁重新判定的触发计数：每次回到前台递增（见 onResume），驱动启动检查重跑 */
@@ -668,7 +663,7 @@ class MainActivity : ComponentActivity() {
         // 处理启动时通过分享 Intent 进入的情况
         handleShareIntent(intent)
 
-        // 动态取色：系统壁纸/取色变化时，应用在后台则同步桌面图标颜色
+        // 动态取色：系统壁纸颜色变化时刷新 UI 主题跟随的色相缓存
         registerWallpaperColorListener()
 
         setContent {
@@ -688,11 +683,6 @@ class MainActivity : ComponentActivity() {
                 // 处理过程中吞掉系统返回键（预测式返回下同样生效）
                 BackHandler(enabled = isConverting) { /* 处理中不响应返回 */ }
 
-                // 桌面图标跟随主题色：绝不在前台调用 IconManager.apply ——
-                // 前台禁用正在使用的入口 alias 会被系统判定当前界面失效而中止 Activity
-                // （主界面闪退，见 onStart / onStop 与 iconApplySafe 注释）。
-                // 冷启动的首次同步改由 onStop 完成；主题色变化同样在 onStop 同步；
-                // 动态取色下系统壁纸颜色变化由 registerWallpaperColorListener 守卫后触发。
                 LaunchedEffect(Unit) {
                     // 已有媒体读取权限但缺「所有文件访问」（R+）时，弹一次引导（升级用户路径）
                     maybePromptAllFilesAccess()
@@ -1196,13 +1186,6 @@ class MainActivity : ComponentActivity() {
         else -> systemIsDark()
     }
 
-    /** 进入前台：此后禁止 activity-alias 切换。前台禁用正在运行的入口组件会被
-     *  系统判定为当前界面失效而中止 Activity（表现为主界面闪退）。 */
-    override fun onStart() {
-        super.onStart()
-        iconApplySafe = false
-    }
-
     /** 回到前台：Go 版在 Android 10+ 上的门禁必须重新判定——用户可能刚装完正常版返回
      *  （此时应改为「打开正常版」而不能再放行旧版），也可能中途卸载了正常版
      *  （此时回到「必须更新」）。 */
@@ -1213,43 +1196,23 @@ class MainActivity : ComponentActivity() {
         refreshStorageGates()
     }
 
-    /** 退到后台时把桌面图标同步为当前主题色。
-     *  activity-alias 切换必须等 Activity 停止后再做（见 onStart 注释）。 */
-    override fun onStop() {
-        super.onStop()
-        iconApplySafe = true
-        try {
-            IconManager.apply(this)
-        } catch (_: Exception) {
-            // 极端场景（如系统组件状态异常）下忽略，冷启动仍会重试同步
-        }
-    }
-
     /** 注册系统壁纸颜色变化监听（Android 12+ 动态取色用）。
-     *  壁纸一变即刷新动态取色跟随的色相缓存（AppSettings.liveDynamicHue，
-     *  UI 主题与桌面图标共用，值变更会驱动 UI 下次重组为壁纸色）；
-     *  图标 alias 切换仅在「已退到后台 + 动态取色开启」时执行，避免前台闪退；
-     *  前台期间发生的壁纸颜色变化由退出到桌面时 onStop 的同步兜底。 */
+     *  壁纸一变即刷新动态取色跟随的色相缓存（AppSettings.liveDynamicHue），
+     *  值变更会驱动 UI 主题下次重组为壁纸色。
+     *  （历史上的「桌面图标跟随主题色」已整体移除：有用户反馈会出现两个桌面图标。） */
     private fun registerWallpaperColorListener() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
         if (BuildConfig.FLAVOR == "go") return
         try {
             val wm = WallpaperManager.getInstance(this)
             val listener = WallpaperManager.OnColorsChangedListener { _, _ ->
-                // 统一色相来源：让 UI 主题（next recomposition）与桌面图标同步到壁纸色
+                // 统一色相来源：让 UI 主题（next recomposition）同步到壁纸色
                 AppSettings.updateLiveDynamicHue(wallpaperHue(this@MainActivity) ?: -1f)
-                if (iconApplySafe && AppSettings.dynamicTheme) {
-                    try {
-                        IconManager.apply(this@MainActivity)
-                    } catch (_: Exception) {
-                        // 系统组件状态异常时忽略，退出到后台的 onStop 仍会兜底同步
-                    }
-                }
             }
             wallpaperColorsListener = listener
             wm.addOnColorsChangedListener(listener, Handler(Looper.getMainLooper()))
         } catch (_: Exception) {
-            // 个别 ROM 可能不提供该能力，忽略即可（图标仍随启动/onStop 更新）
+            // 个别 ROM 可能不提供该能力，忽略即可（下次启动仍会重新读取壁纸色）
         }
     }
 

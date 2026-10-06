@@ -31,7 +31,7 @@ object AppSettings {
     var customHue by mutableStateOf(-1f)
         private set
     /** 动态取色当前跟随的壁纸主题色相（0..360；-1f=尚未取得/动态关闭，回退静态色）。
-     *  仅内存态（不持久化）：供 UI 主题与桌面图标共用同一色相来源，保证二者始终同步。 */
+     *  仅内存态（不持久化）：UI 主题取色的单一色相来源，保证各处始终同步。 */
     var liveDynamicHue by mutableStateOf(-1f)
         private set
     /** 启动时自动从 GitHub 检查更新 */
@@ -78,10 +78,9 @@ object AppSettings {
     }
 
     /**
-     * 动态取色开关或启动后同步内存态 [liveDynamicHue]（UI 主题与桌面图标共用的
-     * 单一色相来源）。与自定义取色写 [customHue] 一样在改动发生的同一调用栈内
-     * 同步完成 —— 退出到桌面时 onStop 的图标同步必然读到最新值，
-     * 不会出现「开启动态取色后图标仍停在旧色」的窗口期。
+     * 动态取色开关或启动后同步内存态 [liveDynamicHue]（UI 主题取色的单一色相来源）。
+     * 与自定义取色写 [customHue] 一样在改动发生的同一调用栈内同步完成，
+     * 保证 UI 主题立即基于最新值渲染（开/关都即时生效）。
      */
     private fun syncDynamicHue() {
         val dynamic = dynamicTheme &&
@@ -104,7 +103,7 @@ object AppSettings {
         dynamicTheme = v
         prefs.edit().putBoolean("dynamic_theme", v).apply()
         // 与自定义取色 setCustomHueValue 同一模式：改动当下就同步好共享色相，
-        // 让 UI 主题与随后 onStop 的桌面图标同步都基于最新值（开/关都即时生效）。
+        // 让 UI 主题立即基于最新值渲染（开/关都即时生效）。
         syncDynamicHue()
     }
 

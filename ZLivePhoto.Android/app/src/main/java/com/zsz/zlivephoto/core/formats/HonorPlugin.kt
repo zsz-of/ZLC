@@ -11,9 +11,26 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
 /**
- * 荣耀动态照片格式（Honor Motion Photo）。
- * 结构：JPEG(含 Google Container XMP) + MP4(ftyp→moov→free→mdat[large size]) + uuid box(extend_type_matrix + EIS JSON) + 60B 尾部(v2_fXX + 比例 + LIVE_ID)。
- * XMP 不含 MotionPhoto 标签，仅靠 Container Directory + 文件尾 LIVE_ 标记识别。
+ * 荣耀动态照片格式（Honor Live Photo）。
+ * 结构：JPEG(含 Google Container XMP) + MP4 + uuid box(EIS JSON) + 60B 尾部。
+ *
+ * 60B 尾部三段（每段 20B，空格填充）由荣耀相册 `com.hihonor.photos` 的
+ * `Lcom/hihonor/gallery/livephoto/LiveUtils;` 逐行逆向确定：
+ * ```
+ * [len-60, len-40) = "vX_fYY"      // VERSION_TAG="v2_"，PATTERN ^[vV](\d+)_[fF](\d+)
+ * [len-40, len-20) = 播放信息串     // 按 ':' split，默认 ["0","500"]
+ * [len-20, len  ) = "LIVE_<N>"     // N 必须使 (len-40)-N 精确落在 MP4 起点
+ * ```
+ * 证据：
+ * - `LiveUtils.getVideoOffset(String)`：读最后 20B → 必须 `startsWith("LIVE_")` →
+ *   `Long.parseLong(split("_")[1])`，**当作视频长度**（不是随机 ID）；
+ * - `SpecialMediaUtils.extractLivePhoto(...)`：`videoOffset=(len-40)-N`，再用
+ *   `QueryVideoInfoUtils.queryFrameRate/queryWidthAndHeight(path, videoOffset, N)` 真实解码，
+ *   偏移不对就取不到帧率/宽高，扫描入库的 `hn_livephoto_decode_info` 为空 → 相册不认；
+ * - `LiveUtils.getVersionAndFrameNum(String)`：`seek(len-60)` 读 20B 解析版本/帧号。
+ *
+ * uuid box 的 usertype 也必须是荣耀的 `VIDEO_USERTYPE = " honor.org.video"`（16B），
+ * 否则 `LiveUtils.readUUIDBox` 会判 `this is not target uuid box`。
  */
 internal class HonorPlugin : FormatPlugin() {
     override val name: String = "honor"
@@ -23,7 +40,13 @@ internal class HonorPlugin : FormatPlugin() {
         private const val TAIL_SEGMENT_LEN = 20
         private const val DEFAULT_VERSION = "v2_f01"
         private const val DEFAULT_RATIO = "100:1000"
-        private val HONOR_EXTEND_TYPE = "extend_type_matrix".toByteArray()
+
+        /**
+         * uuid box 的 16 字节 usertype：荣耀 `LiveUtils.VIDEO_USERTYPE` 原文
+         * （**含前导空格**，共 16 字节；`COVER_USERTYPE` 为 `" honor.org.cover"`）。
+         * 读侧 `readUUIDBox(MediaItem, userType)` 会逐字节比对，写错就取不到盒。
+         */
+        private val HONOR_VIDEO_USERTYPE = " honor.org.video".toByteArray(Charsets.US_ASCII)
     }
 
     override fun detect(path: String): Int {
@@ -71,11 +94,15 @@ internal class HonorPlugin : FormatPlugin() {
         val xmp = XmpTemplate.buildHonorXmp(asset.gainmapLength)
         var primary = JpegUtil.replaceOrInsertXmp(asset.primaryJpeg, xmp)
 
-        // uuid box：含 extend_type_matrix + EIS JSON 数组
+        // uuid box：usertype 必须是荣耀的 " honor.org.video"，payload 为逐帧 EIS 矩阵 JSON
         val uuidBox = buildHonorUuidBox(asset)
 
-        // 60B 固定尾部
-        val tail = buildHonorTail(asset)
+        // 60B 固定尾部。第三段 LIVE_<N> 里的 N 不是随机 ID，而是荣耀用来定位视频的长度：
+        // 荣耀侧 videoOffset = (len - 40) - N，必须在 MP4 起点，故按真实布局反算。
+        val videoStart = primary.size + (asset.gainmapJpeg?.size ?: 0)
+        val totalLen = videoStart + video.size + uuidBox.size + TAIL_SEGMENT_LEN * 3
+        val liveLength = totalLen - 40 - videoStart
+        val tail = buildHonorTail(asset, liveLength)
 
         // 拼接：JPEG(+GainMap) + MP4 + uuid box + tail
         val baos = ByteArrayOutputStream(
@@ -90,15 +117,17 @@ internal class HonorPlugin : FormatPlugin() {
         val outPath = File(outDir, "$stem.jpg").path
         writeBytes(outPath, baos.toByteArray())
         log("info", "写出荣耀格式：${File(outPath).name}" +
-            "（图像 ${primary.size}B + 视频 ${video.size}B + EIS ${uuidBox.size}B）", "荣耀")
+            "（图像 ${primary.size}B + 视频 ${video.size}B + EIS ${uuidBox.size}B，" +
+            "LIVE_$liveLength）", "荣耀")
         return mutableListOf(outPath)
     }
 
     // ---------------------------------------------------------- uuid box 构建
 
     /**
-     * 构建荣耀 uuid box：[size 4B]['uuid' 4B]['extend_type_matrix' 17B][EIS JSON 数组]。
-     * 每帧生成默认单位矩阵（从 VideoInfo 取宽高，无则用 0）。
+     * 构建荣耀 uuid box：[size 4B]['uuid' 4B][16B usertype][EIS JSON 数组]。
+     * usertype 必须是荣耀 `LiveUtils.VIDEO_USERTYPE`（`" honor.org.video"`，含前导空格共 16B），
+     * 否则 `readUUIDBox` 逐字节比对失败、取不到视频盒。每帧生成默认单位矩阵（宽高取自 VideoInfo，无则 0）。
      */
     private fun buildHonorUuidBox(asset: LivePhotoAsset): ByteArray {
         val width = (asset.videoInfo["width"] as? Int) ?: 0
@@ -120,13 +149,13 @@ internal class HonorPlugin : FormatPlugin() {
         sb.append(']')
 
         val jsonBytes = sb.toString().toByteArray(Charsets.UTF_8)
-        // size = 4(size) + 4(uuid) + 17(extend_type_matrix) + json.size
-        val totalSize = 8 + HONOR_EXTEND_TYPE.size + jsonBytes.size
+        // size = 4(size) + 4(uuid) + 16(usertype) + json.size
+        val totalSize = 8 + HONOR_VIDEO_USERTYPE.size + jsonBytes.size
 
         val buf = ByteBuffer.allocate(totalSize).order(ByteOrder.BIG_ENDIAN)
         buf.putInt(totalSize)
         buf.put("uuid".toByteArray())
-        buf.put(HONOR_EXTEND_TYPE)
+        buf.put(HONOR_VIDEO_USERTYPE)
         buf.put(jsonBytes)
         return buf.array()
     }
@@ -134,17 +163,19 @@ internal class HonorPlugin : FormatPlugin() {
     // ---------------------------------------------------------- 60B 尾部构建
 
     /**
-     * 60B 固定尾部：[v2_fXX 20B][NNN:NNNN 20B][LIVE_XXXXXXXX 20B]，空格填充。
+     * 60B 固定尾部：[v2_fXX 20B][播放信息 20B][LIVE_<N> 20B]，空格填充。
+     *
+     * @param liveLength 第三段的 N：荣耀侧 `videoOffset = (len - 40) - N` 必须落在 MP4 起点，
+     *   因此 N 由真实布局反算（= 视频起点到 len-40 的字节数），**不是**随机 ID。
      */
-    private fun buildHonorTail(asset: LivePhotoAsset): ByteArray {
-        val liveId = "LIVE_" + generateLiveId(asset)
+    private fun buildHonorTail(asset: LivePhotoAsset, liveLength: Int): ByteArray {
         val version = (asset.extras["honor_version"] as? String) ?: DEFAULT_VERSION
         val ratio = (asset.extras["honor_ratio"] as? String) ?: DEFAULT_RATIO
 
         val tail = ByteArray(TAIL_SEGMENT_LEN * 3)
         fillSegment(tail, 0, version)
         fillSegment(tail, TAIL_SEGMENT_LEN, ratio)
-        fillSegment(tail, TAIL_SEGMENT_LEN * 2, liveId)
+        fillSegment(tail, TAIL_SEGMENT_LEN * 2, "LIVE_$liveLength")
         return tail
     }
 
@@ -154,13 +185,5 @@ internal class HonorPlugin : FormatPlugin() {
         val bytes = text.toByteArray(Charsets.US_ASCII)
         val len = minOf(bytes.size, TAIL_SEGMENT_LEN)
         System.arraycopy(bytes, 0, buf, offset, len)
-    }
-
-    /** 生成 9 位 LIVE_ID。优先复用源 ID，否则基于时间戳生成稳定值。 */
-    private fun generateLiveId(asset: LivePhotoAsset): String {
-        (asset.extras["honor_live_id"] as? String)?.let { if (it.length == 9) return it }
-        val seed = if (asset.effectivePtsUs() >= 0) asset.effectivePtsUs() else System.currentTimeMillis()
-        val rnd = java.util.Random(seed)
-        return (rnd.nextInt(900_000_000) + 100_000_000).toString()
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Português (Portugal) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Extrair</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Live Photo Honor</string>
+    <string name="fmt_meizu">Live Photo Meizu</string>
+    <string name="fmt_nubia">Live Photo Nubia</string>
+    <string name="fmt_oppo">Live Photo OPPO</string>
+    <string name="fmt_vivo">Live Photo vivo</string>
+    <string name="fmt_vivo_single">Live Photo vivo num único ficheiro</string>
+    <string name="fmt_xiaomi">Live Photo Xiaomi</string>
+
+    <string name="fmt_err_apple_mov_missing">Não foi encontrado nenhum ficheiro de vídeo .mov com o mesmo nome</string>
+    <string name="fmt_err_apple_mov_no_ftyp">O ficheiro MOV não tem o box ftyp</string>
+    <string name="fmt_err_extract_read">Extrair é um formato de saída e não pode ser lido como formato de entrada</string>
+    <string name="fmt_err_no_primary_jpeg">Não foi encontrada nenhuma imagem JPEG principal</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Não foi encontrado nenhum vídeo MP4 válido depois do JPEG (falta o box ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">Falha ao analisar o fluxo de vídeo MP4</string>
+    <string name="fmt_err_nubia_too_short">Ficheiro demasiado curto para ser um Live Photo Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Falta o número mágico nubiaVpfile no fim do ficheiro</string>
+    <string name="fmt_err_nubia_jpeg_len">Comprimento de JPEG inválido registado no fim do ficheiro: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Faltam os bytes de preenchimento 0x00 entre o JPEG e o vídeo</string>
+    <string name="fmt_err_nubia_empty_video">O vídeo incorporado tem comprimento 0</string>
+    <string name="fmt_err_vivo_no_marker">Marcador vivo livephoto não encontrado no fim do JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Ficheiro de vídeo companheiro em falta: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Falha ao analisar o corpo do JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">MP4 companheiro inválido (falta o box ftyp)</string>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Polski (pl) — teksty aktualizacji i pobierania (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Prefiks kluczy: update_ — po ustaleniu nie wolno ich zmieniać (wszystkie języki korzystają z tego samego zestawu).
+  Symbole zastępcze: %1$s / %1$d.
+  Uwaga: teksty UpdaterException / AddonException z warstwy core trafiają przez statusText
+  w MainActivity wprost na listę i do panelu dziennika, dlatego zawsze idą przez zasoby.
+-->
+<resources>
+
+    <!-- ========== Strona udostępniania Lanzou Cloud i odczyt linku bezpośredniego ========== -->
+    <string name="update_lanzou_gone">Udostępnianie w Lanzou Cloud zostało anulowane lub plik nie istnieje — użyj pobierania z GitHub</string>
+    <string name="update_lanzou_gone_short">Udostępnianie w Lanzou Cloud zostało anulowane — użyj pobierania z GitHub</string>
+    <string name="update_lanzou_resolve_failed">Nie udało się odczytać linku pobierania z Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">To udostępnianie Lanzou Cloud wymaga kodu dostępu — użyj pobierania z GitHub (albo poszukaj kodu w opisie wydania)</string>
+    <string name="update_lanzou_wrong_passwd">Nieprawidłowy kod dostępu Lanzou Cloud</string>
+    <string name="update_err_resolve_failed">Nie udało się odczytać</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Weryfikacja antyscrapingowa Lanzou Cloud nie powiodła się</string>
+    <string name="update_err_no_frame">Nie udało się odczytać strony pobierania Lanzou Cloud (brak ramki pobierania)</string>
+    <string name="update_err_no_file_id">Nie udało się odczytać identyfikatora pliku Lanzou Cloud</string>
+    <string name="update_err_no_sign">Nie udało się odczytać podpisu Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Żądanie do interfejsu nie powiodło się</string>
+    <string name="update_err_api_request">Żądanie do interfejsu Lanzou Cloud nie powiodło się</string>
+    <string name="update_err_empty_direct">Lanzou Cloud zwrócił pusty adres pobierania</string>
+    <string name="update_err_direct_expired">Adres pobierania z Lanzou Cloud wygasł — pobierz go ponownie</string>
+    <string name="update_err_http_request">Żądanie nie powiodło się (HTTP %1$d)</string>
+
+    <!-- ========== Pobieranie ========== -->
+    <string name="update_err_connect">Nie można połączyć się z serwerem pobierania: %1$s</string>
+    <string name="update_err_http">Pobieranie nie powiodło się (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Nie można ustanowić połączenia pobierania</string>
+    <string name="update_err_empty">Pobrana zawartość jest pusta</string>
+    <string name="update_err_incomplete">Pobieranie niepełne (otrzymano %1$d z %2$d bajtów) — pobierz ponownie</string>
+    <string name="update_err_interrupted">Pobieranie przerwane: %1$s</string>
+
+    <!-- ========== Weryfikacja i instalacja pakietu ========== -->
+    <string name="update_err_not_apk">Pobrany plik nie jest prawidłowym pakietem instalacyjnym (to może być strona WWW albo wygasły link) — pobierz ponownie lub użyj GitHub.</string>
+    <string name="update_err_apk_incomplete">Zawartość pakietu instalacyjnego jest niekompletna — pobierz ponownie lub użyj GitHub.</string>
+    <string name="update_err_apk_unparsable">Nie można odczytać pakietu instalacyjnego (pobieranie mogło być niepełne) — pobierz ponownie lub użyj GitHub.</string>
+    <string name="update_err_no_install_permission">Brak uprawnienia „Instalowanie nieznanych aplikacji”</string>
+    <string name="update_err_installer_failed">Nie można uruchomić systemowego instalatora (%1$s) — otwórz pakiet instalacyjny ręcznie w menedżerze plików</string>
+
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（维吾尔语 ug，B 级），可能存在不准确之处，欢迎社区修正。
+     بۇ ھۆججەت ماشىنا ياردىمىدە تەرجىمە قىلىنغان (B دەرىجە)، خاتالىقلار بولۇشى مۇمكىن.
+     「Lanzou Cloud」品牌名保留拉丁写法；占位符 %1$s / %1$d 保持原样。 -->
+<resources>
+
+    <!-- ========== ھەمبەھىر بېتى ۋە بىۋاسىتە ئۇلىنىشنى تەھلىل قىلىش ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud ھەمبەھىرلىشى بىكار قىلىنغان ياكى ھۆججەت مەۋجۇت ئەمەس، GitHub دىن چۈشۈرۈڭ</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud ھەمبەھىرلىشى بىكار قىلىندى، GitHub دىن چۈشۈرۈڭ</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud چۈشۈرۈش ئۇلىنىشىنى تەھلىل قىلىش مەغلۇپ بولدى</string>
+    <string name="update_lanzou_need_passwd">بۇ Lanzou Cloud ھەمبەھىرلىشى ئۈچۈن ئېلىش كودى كېرەك، GitHub دىن چۈشۈرۈڭ (ياكى Release چۈشەندۈرۈشىدىن ئېلىش كودىنى ئىزدەڭ)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud ئېلىش كودى خاتا</string>
+    <string name="update_err_resolve_failed">تەھلىل قىلىش مەغلۇپ بولدى</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud نىڭ ئاپتوماتىك تاراشقا قارشى تەكشۈرۈشى مەغلۇپ بولدى</string>
+    <string name="update_err_no_frame">Lanzou Cloud چۈشۈرۈش بېتىنى تەھلىل قىلغىلى بولمىدى (چۈشۈرۈش رامكىسى تېپىلمىدى)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud ھۆججەت بەلگىسىنى تەھلىل قىلغىلى بولمىدى</string>
+    <string name="update_err_no_sign">Lanzou Cloud ئىمزاسىنى تەھلىل قىلغىلى بولمىدى</string>
+    <string name="update_err_ajax_request">ئىنتېرفېيس تەلەپ قىلىش مەغلۇپ بولدى</string>
+    <string name="update_err_api_request">Lanzou Cloud ئىنتېرفېيس تەلەپ قىلىش مەغلۇپ بولدى</string>
+    <string name="update_err_empty_direct">Lanzou Cloud قۇرۇق چۈشۈرۈش ئادرېسىنى قايتۇردى</string>
+    <string name="update_err_direct_expired">Lanzou Cloud چۈشۈرۈش ئادرېسى كۈچتىن قالدى، قايتا ئېلىڭ</string>
+    <string name="update_err_http_request">تەلەپ قىلىش مەغلۇپ بولدى (HTTP %1$d)</string>
+
+    <!-- ========== چۈشۈرۈش ========== -->
+    <string name="update_err_connect">چۈشۈرۈش مۇلازىمېتىرىغا ئۇلانغىلى بولمىدى: %1$s</string>
+    <string name="update_err_http">چۈشۈرۈش مەغلۇپ بولدى (HTTP %1$d)</string>
+    <string name="update_err_no_connection">چۈشۈرۈش ئۇلىنىشىنى قۇرغىلى بولمىدى</string>
+    <string name="update_err_empty">چۈشۈرۈلگەن مەزمۇن قۇرۇق</string>
+    <string name="update_err_incomplete">چۈشۈرۈش تامام ئەمەس (%1$d / جەمئىي %2$d بايت ئېلىندى)، قايتا چۈشۈرۈڭ</string>
+    <string name="update_err_interrupted">چۈشۈرۈش ئۈزۈلدى: %1$s</string>
+
+    <!-- ========== قاچىلاش بولىقىنى تەكشۈرۈش ۋە قاچىلاش ========== -->
+    <string name="update_err_not_apk">چۈشۈرۈلگەن ھۆججەت ئىناۋەتلىك قاچىلاش بولىقى ئەمەس (تور بېتى بولۇشى ياكى ئۇلىنىش كۈچتىن قالغان بولۇشى مۇمكىن)، قايتا چۈشۈرۈڭ ياكى GitHub دىن چۈشۈرۈڭ.</string>
+    <string name="update_err_apk_incomplete">قاچىلاش بولىقىنىڭ مەزمۇنى تامام ئەمەس، قايتا چۈشۈرۈڭ ياكى GitHub دىن چۈشۈرۈڭ.</string>
+    <string name="update_err_apk_unparsable">قاچىلاش بولىقىنى تەھلىل قىلغىلى بولمىدى (چۈشۈرۈش تامام بولمىغان بولۇشى مۇمكىن)، قايتا چۈشۈرۈڭ ياكى GitHub دىن چۈشۈرۈڭ.</string>
+    <string name="update_err_no_install_permission">«نامەلۇم مەنبەلىك ئەپنى قاچىلاش» ھوقۇقى بېرىلمىدى</string>
+    <string name="update_err_installer_failed">سىستېما قاچىلىغۇچنى ئىجرا قىلغىلى بولمىدى (%1$s)، ھۆججەت باشقۇرغۇچتىن قاچىلاش بولىقىنى قولدا ئېچىپ قاچىلاڭ</string>
+
+</resources>

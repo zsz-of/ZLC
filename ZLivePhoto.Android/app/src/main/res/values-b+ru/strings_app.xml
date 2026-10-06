@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Русский (ru) — ресурсы уровня приложения.
+  База: res/values/strings_app.xml (китайский, упрощённый).
+-->
+<resources>
+    <!-- Пункт «как в системе» в выборе языка приложения -->
+    <string name="app_language_follow_system">Как в системе</string>
+    <string name="app_language_title">Язык приложения</string>
+</resources>

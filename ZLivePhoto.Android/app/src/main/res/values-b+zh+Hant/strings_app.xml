@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  應用層級文案。與 values/strings.xml、strings_main.xml、strings_settings.xml 等
+  同目錄多檔案並存，建置時合併。
+-->
+<resources>
+    <!-- 「應用程式語言」選擇器中表示跟隨系統的那一項 -->
+    <string name="app_language_follow_system">跟隨系統</string>
+    <!-- 應用程式語言選擇器標題 -->
+    <string name="app_language_title">應用程式語言</string>
+</resources>

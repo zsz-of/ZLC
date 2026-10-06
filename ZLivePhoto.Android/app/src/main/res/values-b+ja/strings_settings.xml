@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  設定画面（ui/SettingsScreen.kt）の文言（日本語 / ja）。key は values/strings_settings.xml と 1 対 1 で対応。
+  プレースホルダーは %1$s / %1$d。翻訳品質：A。
+  翻訳しないもの：@毛血旺o、Trae · GML · DeepSeek · Kimi、GPL-3.0、H.265/H.264、GitHub URL。
+-->
+<resources>
+
+    <!-- 共通 -->
+    <string name="settings_title">設定</string>
+    <string name="settings_cd_back">戻る</string>
+    <string name="settings_btn_apply">適用</string>
+    <string name="settings_btn_cancel">キャンセル</string>
+    <string name="settings_btn_close">閉じる</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">支援</string>
+
+    <!-- セクション見出し -->
+    <string name="settings_section_general">一般</string>
+    <string name="settings_section_appearance">外観</string>
+    <string name="settings_section_language">言語</string>
+    <string name="settings_section_defaults">既定のオプション</string>
+    <string name="settings_section_output">出力</string>
+    <string name="settings_section_transcode">動画トランスコード</string>
+    <string name="settings_section_about">このアプリについて</string>
+    <string name="settings_section_app">アプリ</string>
+    <string name="settings_section_credits">謝辞と支援</string>
+    <string name="settings_section_opensource">オープンソースとライセンス</string>
+
+    <!-- 一般 -->
+    <string name="settings_startup_check_title">起動時に更新を確認</string>
+    <string name="settings_startup_check_subtitle">起動時に GitHub から新しいバージョンを取得し、更新があればダウンロードを促します</string>
+    <string name="settings_haptics_title">振動フィードバック</string>
+    <string name="settings_haptics_subtitle">ボタンのタップや状態変化の際の触覚フィードバック</string>
+    <string name="settings_bounce_title">ボタンのバウンスアニメーション</string>
+    <string name="settings_bounce_subtitle">ボタンを押したときの拡大縮小の跳ね返りアニメーション</string>
+
+    <!-- 外観 -->
+    <string name="settings_theme_system">システムに従う</string>
+    <string name="settings_theme_dark">ダーク</string>
+    <string name="settings_theme_light">ライト</string>
+    <string name="settings_dynamic_theme_title">Material You の動的配色</string>
+    <string name="settings_dynamic_theme_subtitle">システムの壁紙の色に従います（Android 12+）。オフにすると下のプリセットテーマ色を使用します</string>
+    <string name="settings_preset_colors_title">プリセットテーマ色</string>
+    <string name="settings_preset_current">現在：%1$s</string>
+    <string name="settings_preset_disabled_hint">「Material You の動的配色」をオフにすると選択できます</string>
+    <string name="settings_custom">カスタム</string>
+    <string name="settings_custom_color_title">カスタムテーマ色</string>
+    <string name="settings_cd_custom_palette">カスタムパレット</string>
+    <string name="settings_hue_value">色相 %1$d°</string>
+
+    <!-- アプリの言語：「システムに従う」は Lead 管理の strings_app.xml を再利用 -->
+    <string name="settings_language_dialog_title">アプリの言語を選択</string>
+    <string name="settings_language_count">全 %1$d 言語</string>
+
+    <!-- 既定のオプション -->
+    <string name="settings_reminder_dialogs_title">「今後表示しない」ダイアログ</string>
+    <string name="settings_reminder_dialogs_subtitle">すべての「今後表示しない」ダイアログのスイッチを管理します</string>
+    <string name="settings_reminder_hint">スイッチがオンなら「今後表示しない」。オフにすると、次に同じ状況になったときに再び表示されます。</string>
+
+    <!-- 出力 -->
+    <string name="settings_preserve_folders_title">元のフォルダ階層で出力</string>
+    <string name="settings_preserve_folders_subtitle">変換結果を元のアルバム名のサブディレクトリに分けて保存します。オフにするとすべて同じディレクトリに並びます</string>
+
+    <!-- このアプリについて -->
+    <string name="settings_about_title">このアプリについて</string>
+    <string name="settings_about_subtitle">バージョン · 更新確認 · 謝辞と支援</string>
+    <string name="settings_check_update_title">更新を確認</string>
+    <string name="settings_check_update_subtitle">GitHub Releases から最新バージョンを取得します</string>
+    <string name="settings_checking">確認中…</string>
+    <string name="settings_update_available">v%1$s が利用可能</string>
+    <string name="settings_up_to_date">最新バージョンです</string>
+    <string name="settings_network_error">ネットワークエラーです。しばらくしてから再試行してください</string>
+    <string name="settings_reinstall_title">このバージョンを再インストール</string>
+    <string name="settings_reinstall_subtitle">現在の最新版をダウンロードして上書きインストールします（更新機能のテスト用）</string>
+    <string name="settings_reinstall_newer_hint">現在 v%1$s にアップグレードできます。先に「更新を確認」でアップグレードしてください</string>
+    <string name="settings_version_title">バージョン</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay での支援</string>
+    <string name="settings_alipay_subtitle">開発を支援</string>
+    <string name="settings_coolapk_subtitle">Coolapk ユーザー · ご支援に感謝します</string>
+    <string name="settings_ai_credits_subtitle">開発を支えてくれた AI IDE と AI モデルに感謝します</string>
+    <string name="settings_github_title">GitHub リポジトリ</string>
+    <string name="settings_license_title">オープンソースライセンス</string>
+    <string name="settings_sponsor_dialog_title">ご支援ありがとうございます</string>
+    <string name="settings_sponsor_dialog_text">このアプリを支援してくださり、本当にありがとうございます！\n\nもし学生だったり、まだ経済的に自立していなかったりするなら、どうか無理をしないでください。\nその気持ちを心に留めて使い続けていただけることが、私にとって何よりの支えです。\n\n支援してくださるなら 1 円でも嬉しいです。より良い保守と機能に充てさせていただきます：）</string>
+    <string name="settings_alipay_missing_title">Alipay がインストールされていません</string>
+    <string name="settings_alipay_missing_text">Alipay が検出できないため、今は支援を完了できません。\n\n大丈夫です。いずれにしても、お気持ちに本当に感謝します！</string>
+
+    <!-- 動画トランスコード -->
+    <string name="settings_transcoder_title">内蔵トランスコーダー</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">再エンコード</string>
+    <string name="settings_transcode_mode_remux">コンテナ変換のみ（推奨）</string>
+    <string name="settings_transcode_mode_off">トランスコーダーをまったく使用しない</string>
+    <string name="settings_transcode_params_title">トランスコード設定</string>
+    <string name="settings_transcode_params_subtitle">再エンコード時に使用する画質と圧縮の設定</string>
+    <string name="settings_transcode_params_disabled">「変換方式」で「再エンコード」を選んだときのみ有効です</string>
+    <string name="settings_crf_value">画質 CRF：%1$d</string>
+    <string name="settings_crf_hint">値が小さいほど高画質・大容量になります（既定 18）</string>
+    <string name="settings_encoder_title">エンコーダー</string>
+    <string name="settings_compress_preset_title">圧縮プリセット</string>
+
+</resources>

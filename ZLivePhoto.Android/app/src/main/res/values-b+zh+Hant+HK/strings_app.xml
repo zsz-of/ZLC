@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 香港繁體（zh-HK）用語版本：由 zh-Hant 通用譯本套用香港用語表產生（內建→內置、相容→兼容、佇列→隊列、中繼資料→元資料、覆寫→覆蓋、略過→跳過、連線→連接、取得→獲取、彈窗→彈出視窗）。 -->
+<!--
+  應用層級文案。與 values/strings.xml、strings_main.xml、strings_settings.xml 等
+  同目錄多檔案並存，建置時合併。
+-->
+<resources>
+    <!-- 「應用程式語言」選擇器中表示跟隨系統的那一項 -->
+    <string name="app_language_follow_system">跟隨系統</string>
+    <!-- 應用程式語言選擇器標題 -->
+    <string name="app_language_title">應用程式語言</string>
+</resources>

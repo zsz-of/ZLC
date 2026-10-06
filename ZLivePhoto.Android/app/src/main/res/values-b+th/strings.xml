@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ไทย (th). ชื่อแอปไม่ต้องแปล
+     เอกสารนี้เป็นการแปลโดยใช้โมเดลช่วย อาจมีความไม่ถูกต้อง ยินดีรับการแก้ไขจากชุมชน -->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

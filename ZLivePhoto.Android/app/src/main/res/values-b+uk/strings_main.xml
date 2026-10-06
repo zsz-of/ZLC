@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Українська (uk) — головний екран і фонові процеси (MainActivity, префікс key: main_).
+  База: res/values/strings_main.xml (китайська, спрощена).
+  Заповнювачі: %1$s / %1$d. Категорії множини: one / few / many / other.
+-->
+<resources>
+    <!-- ── Рядок стану / підказки ── -->
+    <string name="main_status_ready">Готово</string>
+    <string name="main_status_location_granted">Дозвіл на геолокацію отримано: метадані GPS збережуться після конвертації</string>
+    <string name="main_status_location_denied">Дозвіл на геолокацію не надано: після конвертації фотографії втратять дані про місцеположення</string>
+    <string name="main_status_all_files_granted">Отримано дозвіл «Доступ до всіх файлів»: результат записується напряму в папку галереї з повним збереженням геоданих</string>
+    <string name="main_status_all_files_denied">Дозвіл «Доступ до всіх файлів» не надано: на окремих пристроях після конвертації може втратитися інформація про місцеположення</string>
+    <string name="main_status_read_granted">Отримано дозвіл на читання фото та відео</string>
+    <string name="main_status_video_missing">Дозвіл надано, але немає доступу до відео: не вдається знайти парне відео двофайлових динамічних фото</string>
+    <string name="main_status_permission_denied">Дозвіл не надано; можна знову натиснути «Додати файли»</string>
+    <string name="main_status_folder_not_selected">Папку не вибрано</string>
+    <string name="main_status_folder_unavailable">Немає доступу до вибраної папки (підтримується лише локальне сховище)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Відновлено попередній сеанс (%1$d файл)</item>
+        <item quantity="few">Відновлено попередній сеанс (%1$d файли)</item>
+        <item quantity="many">Відновлено попередній сеанс (%1$d файлів)</item>
+        <item quantity="other">Відновлено попередній сеанс (%1$d файла)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Виявлено аварійне завершення; незавершений список очищено</string>
+    <string name="main_status_compose_blocks_extract">У черзі є завдання збирання — переключитися на вилучення не можна</string>
+    <string name="main_status_replace_off_mutex">Режим заміни вимкнено (несумісний із «Видаляти вихідні фото після обробки»)</string>
+    <string name="main_status_delete_needs_all_files">Для автоматичного видалення вихідних фото потрібен дозвіл «Доступ до всіх файлів» — спершу надайте його</string>
+    <string name="main_status_replace_off">Режим заміни вимкнено; результати знову записуються в папку галереї</string>
+    <string name="main_status_replace_needs_all_files">Для режиму заміни потрібен дозвіл «Доступ до всіх файлів» — спершу надайте його</string>
+    <string name="main_status_delete_off_mutex">«Видаляти вихідні фото після обробки» вимкнено (несумісно з режимом заміни)</string>
+    <string name="main_status_loading_albums">Читання галереї…</string>
+    <string name="main_status_no_albums">Альбоми не знайдено</string>
+    <string name="main_status_compose_no_photo">Фото не вибрано, зібрати неможливо</string>
+    <string name="main_status_compose_no_video">Відео не вибрано, зібрати неможливо</string>
+    <string name="main_status_compose_all_added">Усі вибрані фото вже у списку</string>
+    <string name="main_status_compose_paired">Фото: %1$d, відео: %2$d; за меншою стороною додано %3$d пар завдань збирання</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Додано %1$d завдання збирання — натисніть «Почати конвертацію», щоб запустити</item>
+        <item quantity="few">Додано %1$d завдання збирання — натисніть «Почати конвертацію», щоб запустити</item>
+        <item quantity="many">Додано %1$d завдань збирання — натисніть «Почати конвертацію», щоб запустити</item>
+        <item quantity="other">Додано %1$d завдання збирання — натисніть «Почати конвертацію», щоб запустити</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (вихідний формат автоматично переключено на Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Імпорт %1$d зображення зі спільного доступу…</item>
+        <item quantity="few">Імпорт %1$d зображення зі спільного доступу…</item>
+        <item quantity="many">Імпорт %1$d зображень зі спільного доступу…</item>
+        <item quantity="other">Імпорт %1$d зображення зі спільного доступу…</item>
+    </plurals>
+    <string name="main_status_import_failed">Помилка імпорту: %1$s</string>
+    <string name="main_status_import_done_partial">Імпорт завершено: успішно %1$d, з помилкою %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Імпорт завершено: усього імпортовано %1$d файл</item>
+        <item quantity="few">Імпорт завершено: усього імпортовано %1$d файли</item>
+        <item quantity="many">Імпорт завершено: усього імпортовано %1$d файлів</item>
+        <item quantity="other">Імпорт завершено: усього імпортовано %1$d файла</item>
+    </plurals>
+    <string name="main_status_import_stopped">Імпорт зупинено: успішно %1$d, з помилкою %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Імпорт: %1$d файл…</item>
+        <item quantity="few">Імпорт: %1$d файли…</item>
+        <item quantity="many">Імпорт: %1$d файлів…</item>
+        <item quantity="other">Імпорт: %1$d файла…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Імпорт %1$d/%2$d…</string>
+    <string name="main_status_stopping">Зупинка… (після завершення поточного файлу)</string>
+    <string name="main_status_stopping_import">Зупинка імпорту…</string>
+    <string name="main_status_removed">Вилучено: %1$s</string>
+    <string name="main_status_cleared">Очищено</string>
+    <string name="main_status_nothing_to_convert">Немає файлів для конвертації</string>
+    <string name="main_status_folder_unreadable">Не вдалося прочитати вибрану папку</string>
+    <string name="main_status_scanning_folder">Сканування папки…</string>
+    <string name="main_status_no_images">У вибраній папці зображень не знайдено</string>
+    <string name="main_status_batch_importing">Пакетний імпорт %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Пакетний імпорт зупинено: імпортовано %1$d динамічне фото</item>
+        <item quantity="few">Пакетний імпорт зупинено: імпортовано %1$d динамічних фото</item>
+        <item quantity="many">Пакетний імпорт зупинено: імпортовано %1$d динамічних фото</item>
+        <item quantity="other">Пакетний імпорт зупинено: імпортовано %1$d динамічних фото</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Пакетний імпорт зупинено: імпортовано %1$d динамічне фото, пропущено %2$d файлів без руху</item>
+        <item quantity="few">Пакетний імпорт зупинено: імпортовано %1$d динамічних фото, пропущено %2$d файлів без руху</item>
+        <item quantity="many">Пакетний імпорт зупинено: імпортовано %1$d динамічних фото, пропущено %2$d файлів без руху</item>
+        <item quantity="other">Пакетний імпорт зупинено: імпортовано %1$d динамічних фото, пропущено %2$d файлів без руху</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Пакетний імпорт завершено: імпортовано %1$d динамічне фото</item>
+        <item quantity="few">Пакетний імпорт завершено: імпортовано %1$d динамічних фото</item>
+        <item quantity="many">Пакетний імпорт завершено: імпортовано %1$d динамічних фото</item>
+        <item quantity="other">Пакетний імпорт завершено: імпортовано %1$d динамічних фото</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Пакетний імпорт завершено: імпортовано %1$d динамічне фото, пропущено %2$d файлів без руху</item>
+        <item quantity="few">Пакетний імпорт завершено: імпортовано %1$d динамічних фото, пропущено %2$d файлів без руху</item>
+        <item quantity="many">Пакетний імпорт завершено: імпортовано %1$d динамічних фото, пропущено %2$d файлів без руху</item>
+        <item quantity="other">Пакетний імпорт завершено: імпортовано %1$d динамічних фото, пропущено %2$d файлів без руху</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Зупинено: оброблено %2$d з %1$d файлів, замінено %3$d вихідних файлів</string>
+    <string name="main_status_stopped_export">Зупинено: оброблено %2$d з %1$d файлів, експортовано %3$d у галерею</string>
+    <string name="main_status_done_replace_reason">Готово: оброблено %1$d файлів, замінено %2$d вихідних (причина: %3$s)</string>
+    <string name="main_status_done_export_reason">Готово: оброблено %1$d файлів, експортовано %2$d у галерею (причина: %3$s)</string>
+    <string name="main_status_done_replace">Готово: оброблено %1$d файлів, замінено %2$d вихідних</string>
+    <string name="main_status_done_export">Готово: оброблено %1$d файлів, експортовано %2$d у галерею</string>
+    <string name="main_status_keep_originals">%1$s; дозвіл «Доступ до всіх файлів» не отримано, вихідні файли збережено</string>
+
+    <!-- ── Інформація про елемент списку ── -->
+    <string name="main_info_detecting">Визначення…</string>
+    <string name="main_info_unrecognized">Нерозпізнаний формат динамічного фото</string>
+    <string name="main_info_converting">Конвертація…</string>
+    <string name="main_info_compose_task">Завдання збирання (натисніть «Почати конвертацію», щоб запустити)</string>
+    <string name="main_info_done_replaced">Готово (замінено %1$d вихідних файлів)</string>
+    <string name="main_info_done_skipped">Готово (пропущено: конфлікт назв)</string>
+    <string name="main_info_done_exported">Готово (експортовано %1$d)</string>
+    <string name="main_info_failed">Помилка: %1$s</string>
+
+    <!-- ── Деталі прогресу ── -->
+    <string name="main_progress_added">Додано %1$d/%2$d</string>
+    <string name="main_progress_processed">Оброблено %1$d/%2$d</string>
+    <string name="main_progress_imported">Імпортовано %1$d/%2$d</string>
+
+    <!-- ── Діалоги дозволів ── -->
+    <string name="main_dialog_permission_title">Потрібен доступ до фото та відео</string>
+    <string name="main_dialog_permission_message">Застосунку потрібен доступ до фото й відео на вашому пристрої:\n\n• Доступ до фото: сканування галереї та пошук у ній динамічних фото\n• Доступ до відео: пошук парних відео двофайлових динамічних фото\n• Доступ до геолокації: збереження метаданих GPS у фотографіях (без нього після конвертації дані про місцеположення буде втрачено)\n\nУ разі відмови вбудований вибір файлів стане недоступним; можна пізніше знову натиснути «Додати файли» й надати дозвіл.</string>
+    <string name="main_dialog_settings_title">Потрібно надати доступ до фото та відео вручну</string>
+    <string name="main_dialog_settings_message">Раніше ви вибрали «Більше не запитувати», тому система більше не показує запит дозволу.\n\nВідкрийте сторінку застосунку → Дозволи → Фото та відео, надайте доступ вручну й поверніться до застосунку.\n\nВажливо: потрібно надати обидва дозволи — «Фото» та «Відео», інакше для двофайлових динамічних фото не вдасться знайти парне відео.</string>
+
+    <!-- ── Діалоги про «Доступ до всіх файлів» ── -->
+    <string name="main_dialog_allfiles_title_delete">Для автовидалення вихідних фото потрібен «Доступ до всіх файлів»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Пристрій не підтримує автовидалення вихідних фото</string>
+    <string name="main_dialog_allfiles_title_replace">Для режиму заміни потрібен «Доступ до всіх файлів»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Пристрій не підтримує режим заміни</string>
+    <string name="main_dialog_allfiles_title_location">Рекомендується надати «Доступ до всіх файлів»</string>
+    <string name="main_dialog_allfiles_delete_message">«Видаляти вихідні фото після обробки» видаляє файли з диска (фото та парне відео) без можливості скасування, тому спершу потрібно надати дозвіл «Доступ до всіх файлів».\n\nПісля надання перемикач стане доступним, і його можна буде увімкнути.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Поточна система (Android 10 і нижче) не надає дозвіл «Доступ до всіх файлів», тому видаляти файли з диска напряму не можна, і автовидалення вихідних фото не підтримується.\n\nВихідні фото можна видалити вручну через системну галерею після конвертації.</string>
+    <string name="main_dialog_allfiles_replace_message">«Режим заміни» записує результат конвертації прямо у вихідний файл на диску (перезаписуючи вміст) без можливості скасування, тому спершу потрібно надати дозвіл «Доступ до всіх файлів».\n\nПісля надання перемикач стане доступним, і його можна буде увімкнути.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Поточна система (Android 10 і нижче) не надає дозвіл «Доступ до всіх файлів», тому перезаписувати вихідні файли напряму не можна, і режим заміни не підтримується.\n\nМожна й далі конвертувати звичайним способом — результат потрапить у папку галереї.</string>
+    <string name="main_dialog_allfiles_location_message">На деяких пристроях (наприклад, Meizu) запис через системну галерею видаляє геодані GPS, через що після конвертації фото втрачають місцеположення.\n\nПісля надання «Доступу до всіх файлів» застосунок писатиме напряму в папку галереї та повністю збереже метадані про місцеположення.\n\nБез цього дозволу конвертація теж працює, але на окремих пристроях дані про місцеположення можуть втратитися.</string>
+
+    <!-- ── Діалог конфлікту назв вихідних файлів ── -->
+    <string name="main_dialog_conflict_title">Конфлікт назв вихідних файлів</string>
+    <string name="main_dialog_conflict_message">У папці виводу вже є файл із такою назвою:\n%1$s\n\nВиберіть спосіб обробки.</string>
+    <string name="main_label_conflict_always">Використовувати цей спосіб для всіх наступних конфліктів</string>
+
+    <!-- ── Кнопки діалогів ── -->
+    <string name="main_btn_grant">Дозволити</string>
+    <string name="main_btn_deny">Відмовити</string>
+    <string name="main_btn_go_settings">До налаштувань</string>
+    <string name="main_btn_cancel">Скасувати</string>
+    <string name="main_btn_grant_access">Дозволити</string>
+    <string name="main_btn_got_it">Зрозуміло</string>
+    <string name="main_btn_not_now">Не зараз</string>
+    <string name="main_btn_skip">Пропустити</string>
+    <string name="main_btn_overwrite">Перезаписати</string>
+    <string name="main_btn_auto_rename">Автоперейменування</string>
+
+    <!-- ── Результат конвертації / причини помилок експорту ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Видалено %1$d вихідний файл</item>
+        <item quantity="few">Видалено %1$d вихідних файли</item>
+        <item quantity="many">Видалено %1$d вихідних файлів</item>
+        <item quantity="other">Видалено %1$d вихідних файла</item>
+    </plurals>
+    <string name="main_delete_nothing">Видаляти вихідні фото не потрібно</string>
+    <string name="main_delete_partial">Видалено %1$d вихідних файлів (%2$d не вдалося видалити, їх збережено)</string>
+    <string name="main_delete_failed">Не вдалося видалити вихідні фото (файл зайнятий або немає прав на запис) — їх збережено</string>
+    <string name="main_export_missing_output">Результат конвертації відсутній або порожній: %1$s</string>
+    <string name="main_export_missing_output_bare">Результат конвертації відсутній або порожній</string>
+    <string name="main_export_insert_null">MediaStore insert повернув null</string>
+    <string name="main_export_output_stream">Потік виводу MediaStore недоступний</string>
+    <string name="main_export_write_failed">Помилка запису MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">Не вдалося створити папку галереї %1$s</string>
+    <string name="main_export_dir_write_failed">Помилка запису в папку галереї: %1$s</string>
+    <string name="main_export_no_source">Не вдалося знайти вихідний файл, заміну пропущено</string>
+    <string name="main_export_companion_failed">Не вдалося записати парний файл: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Папка вихідного файлу недоступна для запису, парний файл не записано</string>
+    <string name="main_export_source_dir_unavailable">Папка вихідного файлу недоступна: %1$s</string>
+    <string name="main_export_replace_failed">Не вдалося замінити вихідний файл: %1$s</string>
+    <string name="main_export_replace_failed_bare">Не вдалося замінити вихідний файл</string>
+</resources>

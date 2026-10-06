@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Türkçe (tr) — güncelleme / indirme metinleri (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Anahtar öneki: update_ — belirlendikten sonra değiştirilemez (tüm diller aynı anahtar kümesini kullanır).
+  Yer tutucular: %1$s / %1$d.
+  Not: core katmanındaki UpdaterException / AddonException metinleri MainActivity'deki
+  statusText üzerinden doğrudan listeye ve günlük paneline gider, bu yüzden her zaman kaynak kullanır.
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud paylaşım sayfası ve doğrudan bağlantı çözümleme ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud paylaşımı iptal edilmiş veya dosya yok — GitHub\'dan indirin</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud paylaşımı iptal edildi — GitHub\'dan indirin</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud indirme bağlantısı çözümlenemedi</string>
+    <string name="update_lanzou_need_passwd">Bu Lanzou Cloud paylaşımı erişim kodu gerektiriyor — GitHub\'dan indirin (veya kodu sürüm notlarında arayın)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud erişim kodu yanlış</string>
+    <string name="update_err_resolve_failed">Çözümleme başarısız</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud anti-crawl doğrulaması başarısız</string>
+    <string name="update_err_no_frame">Lanzou Cloud indirme sayfası çözümlenemedi (indirme çerçevesi bulunamadı)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud dosya kimliği çözümlenemedi</string>
+    <string name="update_err_no_sign">Lanzou Cloud imzası çözümlenemedi</string>
+    <string name="update_err_ajax_request">API isteği başarısız</string>
+    <string name="update_err_api_request">Lanzou Cloud API isteği başarısız</string>
+    <string name="update_err_empty_direct">Lanzou Cloud boş indirme adresi döndürdü</string>
+    <string name="update_err_direct_expired">Lanzou Cloud indirme adresinin süresi doldu — yeniden alın</string>
+    <string name="update_err_http_request">İstek başarısız (HTTP %1$d)</string>
+
+    <!-- ========== İndirme ========== -->
+    <string name="update_err_connect">İndirme sunucusuna bağlanılamıyor: %1$s</string>
+    <string name="update_err_http">İndirme başarısız (HTTP %1$d)</string>
+    <string name="update_err_no_connection">İndirme bağlantısı kurulamıyor</string>
+    <string name="update_err_empty">İndirilen içerik boş</string>
+    <string name="update_err_incomplete">İndirme tamamlanmadı (%2$d baytın %1$d kadarı alındı) — yeniden indirin</string>
+    <string name="update_err_interrupted">İndirme kesildi: %1$s</string>
+
+    <!-- ========== Kurulum paketi doğrulama ve kurulum ========== -->
+    <string name="update_err_not_apk">İndirilen dosya geçerli bir kurulum paketi değil (bir web sayfası ya da süresi dolmuş bir bağlantı olabilir) — yeniden indirin veya GitHub kullanın.</string>
+    <string name="update_err_apk_incomplete">Kurulum paketinin içeriği eksik — yeniden indirin veya GitHub kullanın.</string>
+    <string name="update_err_apk_unparsable">Kurulum paketi çözümlenemiyor (indirme eksik olabilir) — yeniden indirin veya GitHub kullanın.</string>
+    <string name="update_err_no_install_permission">„Bilinmeyen uygulamaları yükleme” izni verilmedi</string>
+    <string name="update_err_installer_failed">Sistem yükleyicisi açılamadı (%1$s) — kurulum paketini dosya yöneticisinden elle açın</string>
+
+</resources>

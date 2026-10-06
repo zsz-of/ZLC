@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  更新 / ダウンロード関連の文言（core/AppUpdater.kt、core/UpdateChecker.kt / 日本語 ja）。
+  key は values/strings_update.xml と 1 対 1 で対応。プレースホルダーは %1$s / %1$d。
+  固有名詞「Lanzou Cloud」（蓝奏云）は現地語名がないためラテン表記のまま。翻訳品質：A。
+-->
+<resources>
+
+    <!-- ========== 共有ページと直リンクの解析 ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud の共有が取り消されたか、ファイルが存在しません。GitHub からのダウンロードをご利用ください</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud の共有が取り消されました。GitHub からのダウンロードをご利用ください</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud のダウンロードリンクの解析に失敗しました</string>
+    <string name="update_lanzou_need_passwd">この Lanzou Cloud の共有には抽出コードが必要です。GitHub からのダウンロードをご利用ください（または Release の説明で抽出コードを確認してください）</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud の抽出コードが正しくありません</string>
+    <string name="update_err_resolve_failed">解析に失敗しました</string>
+    <string name="update_err_resolve_with_host">%1$s（%2$s）</string>
+    <string name="update_err_anticrawl">Lanzou Cloud のアンチクロール検証に失敗しました</string>
+    <string name="update_err_no_frame">Lanzou Cloud のダウンロードページを解析できません（ダウンロードフレームが見つかりません）</string>
+    <string name="update_err_no_file_id">Lanzou Cloud のファイル識別子を解析できません</string>
+    <string name="update_err_no_sign">Lanzou Cloud の署名を解析できません</string>
+    <string name="update_err_ajax_request">API リクエストに失敗しました</string>
+    <string name="update_err_api_request">Lanzou Cloud の API リクエストに失敗しました</string>
+    <string name="update_err_empty_direct">Lanzou Cloud が空のダウンロード URL を返しました</string>
+    <string name="update_err_direct_expired">Lanzou Cloud のダウンロード URL が失効しました。再取得してください</string>
+    <string name="update_err_http_request">リクエストに失敗しました（HTTP %1$d）</string>
+
+    <!-- ========== ダウンロード ========== -->
+    <string name="update_err_connect">ダウンロードサーバーに接続できません：%1$s</string>
+    <string name="update_err_http">ダウンロードに失敗しました（HTTP %1$d）</string>
+    <string name="update_err_no_connection">ダウンロード接続を確立できません</string>
+    <string name="update_err_empty">ダウンロード内容が空です</string>
+    <string name="update_err_incomplete">ダウンロードが不完全です（%1$d / 全 %2$d バイトを取得）。再ダウンロードしてください</string>
+    <string name="update_err_interrupted">ダウンロードが中断されました：%1$s</string>
+
+    <!-- ========== インストールパッケージの検証とインストール ========== -->
+    <string name="update_err_not_apk">ダウンロードしたものが有効なインストールパッケージではありません（Web ページか、ダウンロードリンクが失効している可能性があります）。再ダウンロードするか、GitHub からのダウンロードをご利用ください。</string>
+    <string name="update_err_apk_incomplete">インストールパッケージの内容が不完全です。再ダウンロードするか、GitHub からのダウンロードをご利用ください。</string>
+    <string name="update_err_apk_unparsable">インストールパッケージを解析できません（ダウンロードが不完全な可能性があります）。再ダウンロードするか、GitHub からのダウンロードをご利用ください。</string>
+    <string name="update_err_no_install_permission">「提供元不明のアプリのインストール」権限がありません</string>
+    <string name="update_err_installer_failed">システムのインストーラーを起動できません（%1$s）。ファイルマネージャーからインストールパッケージを手動で開いてインストールしてください</string>
+
+</resources>

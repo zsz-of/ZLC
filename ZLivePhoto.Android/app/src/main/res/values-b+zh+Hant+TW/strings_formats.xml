@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 臺灣繁體（zh-TW）用語版本：由 zh-Hant 通用譯本套用臺灣用語表產生（網絡→網路、用戶→使用者、壁紙→桌布、彈窗→彈出視窗、對話框→對話方塊）。 -->
+<!--
+  格式外掛顯示名稱。key 前綴 fmt_；與 res/values/strings_formats.xml 的 key 一一對應。
+  品牌名稱（Apple / Google / OPPO / vivo / 小米 / 榮耀 / 魅族 / 努比亞）依原文保留。
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">拆解</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">榮耀動態相片</string>
+    <string name="fmt_meizu">魅族動態相片</string>
+    <string name="fmt_nubia">努比亞動態相片</string>
+    <string name="fmt_oppo">OPPO 動態相片</string>
+    <string name="fmt_vivo">vivo 動態相片</string>
+    <string name="fmt_vivo_single">vivo 單檔實況</string>
+    <string name="fmt_xiaomi">小米動態相片</string>
+
+    <!-- 外掛使用者可見的失敗提示 -->
+    <string name="fmt_err_apple_mov_missing">未找到同名 .mov 影片檔案</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV 檔案缺少 ftyp box</string>
+    <string name="fmt_err_extract_read">拆解是輸出格式，不應作為輸入格式讀取</string>
+    <string name="fmt_err_no_primary_jpeg">未找到主 JPEG 圖像</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG 之後未找到有效的 MP4 影片（缺少 ftyp box）</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 影片串流解析失敗</string>
+    <string name="fmt_err_nubia_too_short">檔案過短，不像努比亞動態相片</string>
+    <string name="fmt_err_nubia_no_magic">缺少 nubiaVpfile 尾部魔數</string>
+    <string name="fmt_err_nubia_jpeg_len">尾部記錄的 JPEG 長度非法：%1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG 與影片之間缺少 0x00 填充位元組</string>
+    <string name="fmt_err_nubia_empty_video">內嵌影片長度為 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG 尾部未找到 vivo livephoto 標記</string>
+    <string name="fmt_err_vivo_companion_missing">缺少伴生影片檔案：%1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG 主體解析失敗</string>
+    <string name="fmt_err_vivo_companion_invalid">伴生 MP4 無效（缺少 ftyp box）</string>
+</resources>

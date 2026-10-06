@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 香港繁體（zh-HK）用語版本：由 zh-Hant 通用譯本套用香港用語表產生（內建→內置、相容→兼容、佇列→隊列、中繼資料→元資料、覆寫→覆蓋、略過→跳過、連線→連接、取得→獲取、彈窗→彈出視窗）。 -->
+<!--
+  主介面與背景流程文案（MainActivity 模組）。key 一律 main_ 前綴，請勿改名。
+  繁體中文（zh-Hant，通用繁體）譯本；佔位符統一使用 %1$s / %1$d；單一數量的可數名詞短語使用 <plurals>。
+-->
+<resources>
+    <!-- ── 狀態列 / 提示（Activity 方法內，getString） ── -->
+    <string name="main_status_ready">就緒</string>
+    <string name="main_status_location_granted">已獲取位置權限，轉換後將保留 GPS 元資料</string>
+    <string name="main_status_location_denied">未授予位置權限：轉換後的相片將遺失 GPS 位置資訊</string>
+    <string name="main_status_all_files_granted">已獲取「所有檔案存取」權限，轉換將直寫相簿目錄並完整保留位置資訊</string>
+    <string name="main_status_all_files_denied">未授予「所有檔案存取」權限：個別機型轉換後可能遺失位置資訊</string>
+    <string name="main_status_read_granted">已獲取讀取相片和影片權限</string>
+    <string name="main_status_video_missing">已授權，但缺少影片權限：無法尋找雙檔動態相片附帶的伴隨影片</string>
+    <string name="main_status_permission_denied">未授予權限，可再次點擊「加入檔案」</string>
+    <string name="main_status_folder_not_selected">未選擇資料夾</string>
+    <string name="main_status_folder_unavailable">無法存取所選資料夾（僅支援本機儲存目錄）</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">已恢復上次工作階段（%1$d 個檔案）</item>
+        <item quantity="other">已恢復上次工作階段（%1$d 個檔案）</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">偵測到上次異常結束，已清空未完成的清單</string>
+    <string name="main_status_compose_blocks_extract">隊列含合成任務，不能切換為拆解模式</string>
+    <string name="main_status_replace_off_mutex">已關閉取代模式（與「處理完成後刪除原圖」互斥）</string>
+    <string name="main_status_delete_needs_all_files">自動刪除原圖需要「所有檔案存取」權限，請先授權</string>
+    <string name="main_status_replace_off">已關閉取代模式，轉換結果重新寫入相簿目錄</string>
+    <string name="main_status_replace_needs_all_files">取代模式需要「所有檔案存取」權限，請先授權</string>
+    <string name="main_status_delete_off_mutex">已關閉「處理完成後刪除原圖」（與取代模式互斥）</string>
+    <string name="main_status_loading_albums">正在讀取相簿…</string>
+    <string name="main_status_no_albums">未找到相簿</string>
+    <string name="main_status_compose_no_photo">未選擇相片，無法合成</string>
+    <string name="main_status_compose_no_video">未選擇影片，無法合成</string>
+    <string name="main_status_compose_all_added">所選相片均已在清單中</string>
+    <string name="main_status_compose_paired">相片 %1$d 張、影片 %2$d 個，已按較少的一方加入 %3$d 對合成任務</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">已加入 %1$d 個合成任務，點擊「開始轉換」執行合成</item>
+        <item quantity="other">已加入 %1$d 個合成任務，點擊「開始轉換」執行合成</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s（已自動切換輸出格式為 Google）</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">正在匯入分享的 %1$d 張圖片…</item>
+        <item quantity="other">正在匯入分享的 %1$d 張圖片…</item>
+    </plurals>
+    <string name="main_status_import_failed">匯入失敗：%1$s</string>
+    <string name="main_status_import_done_partial">匯入完成：成功 %1$d 個，失敗 %2$d 個</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">匯入完成：共匯入 %1$d 個檔案</item>
+        <item quantity="other">匯入完成：共匯入 %1$d 個檔案</item>
+    </plurals>
+    <string name="main_status_import_stopped">已停止匯入：成功 %1$d 個，失敗 %2$d 個</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">正在匯入 %1$d 個檔案…</item>
+        <item quantity="other">正在匯入 %1$d 個檔案…</item>
+    </plurals>
+    <string name="main_status_importing_progress">正在匯入 %1$d/%2$d…</string>
+    <string name="main_status_stopping">正在停止…（完成目前檔案後停止）</string>
+    <string name="main_status_stopping_import">正在停止匯入…</string>
+    <string name="main_status_removed">已移除 %1$s</string>
+    <string name="main_status_cleared">已清空</string>
+    <string name="main_status_nothing_to_convert">沒有可轉換的檔案</string>
+    <string name="main_status_folder_unreadable">無法讀取所選資料夾</string>
+    <string name="main_status_scanning_folder">正在掃描資料夾…</string>
+    <string name="main_status_no_images">所選資料夾內未找到圖片</string>
+    <string name="main_status_batch_importing">正在批次匯入 %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">已停止批次匯入：共匯入 %1$d 個動態相片</item>
+        <item quantity="other">已停止批次匯入：共匯入 %1$d 個動態相片</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">已停止批次匯入：共匯入 %1$d 個動態相片，跳過 %2$d 個非動態檔案</item>
+        <item quantity="other">已停止批次匯入：共匯入 %1$d 個動態相片，跳過 %2$d 個非動態檔案</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">批次匯入完成：共匯入 %1$d 個動態相片</item>
+        <item quantity="other">批次匯入完成：共匯入 %1$d 個動態相片</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">批次匯入完成：共匯入 %1$d 個動態相片，跳過 %2$d 個非動態檔案</item>
+        <item quantity="other">批次匯入完成：共匯入 %1$d 個動態相片，跳過 %2$d 個非動態檔案</item>
+    </plurals>
+    <string name="main_status_stopped_replace">已停止：%1$d 個檔案中處理了 %2$d 個，取代 %3$d 個來源檔案</string>
+    <string name="main_status_stopped_export">已停止：%1$d 個檔案中處理了 %2$d 個，匯出 %3$d 個到相簿</string>
+    <string name="main_status_done_replace_reason">完成：%1$d 個檔案處理完畢，取代 %2$d 個來源檔案（原因：%3$s）</string>
+    <string name="main_status_done_export_reason">完成：%1$d 個檔案處理完畢，匯出 %2$d 個到相簿（原因：%3$s）</string>
+    <string name="main_status_done_replace">完成：%1$d 個檔案處理完畢，取代 %2$d 個來源檔案</string>
+    <string name="main_status_done_export">完成：%1$d 個檔案處理完畢，匯出 %2$d 個到相簿</string>
+    <string name="main_status_keep_originals">%1$s；未獲取「完整儲存空間存取」權限，原圖已保留</string>
+
+    <!-- ── 清單項目資訊（FileItem.info） ── -->
+    <string name="main_info_detecting">偵測中…</string>
+    <string name="main_info_unrecognized">無法識別的動態相片格式</string>
+    <string name="main_info_converting">轉換中…</string>
+    <string name="main_info_compose_task">合成任務（點擊開始轉換以執行合成）</string>
+    <string name="main_info_done_replaced">完成（取代 %1$d 個來源檔案）</string>
+    <string name="main_info_done_skipped">完成（跳過：同名衝突）</string>
+    <string name="main_info_done_exported">完成（匯出 %1$d 個）</string>
+    <string name="main_info_failed">失敗：%1$s</string>
+
+    <!-- ── 進度明細（progressDetail） ── -->
+    <string name="main_progress_added">已加入 %1$d/%2$d</string>
+    <string name="main_progress_processed">已處理 %1$d/%2$d</string>
+    <string name="main_progress_imported">已匯入 %1$d/%2$d</string>
+
+    <!-- ── 權限對話框 ── -->
+    <string name="main_dialog_permission_title">需要讀取相片和影片權限</string>
+    <string name="main_dialog_permission_message">本程式需要讀取您裝置上的相片和影片：\n\n• 相片權限：掃描裝置相簿，識別其中的動態相片\n• 影片權限：尋找雙檔動態相片附帶的伴隨影片\n• 位置權限：保留相片中的 GPS 位置元資料（缺少時，轉換後將遺失位置資訊）\n\n拒絕後將無法使用內置選擇器，可稍後再次點擊「加入檔案」重新授權。</string>
+    <string name="main_dialog_settings_title">需要手動授予相片和影片權限</string>
+    <string name="main_dialog_settings_message">您先前選擇了「不再詢問」，系統不會再彈出權限對話框。\n\n請前往應用程式詳細資料頁 → 權限 → 相片和影片，手動授予存取權限後返回本程式。\n\n注意：必須同時授予「相片」和「影片」權限，否則雙檔動態相片將無法找到附帶的伴隨影片。</string>
+
+    <!-- ── 「所有檔案存取」權限說明對話框 ── -->
+    <string name="main_dialog_allfiles_title_delete">自動刪除原圖需要「所有檔案存取」</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">本機不支援自動刪除原圖</string>
+    <string name="main_dialog_allfiles_title_replace">取代模式需要「所有檔案存取」</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">本機不支援取代模式</string>
+    <string name="main_dialog_allfiles_title_location">建議授予「所有檔案存取」權限</string>
+    <string name="main_dialog_allfiles_delete_message">「處理完成後刪除原圖」會直接刪除磁碟上的原始檔案（相片及其伴隨影片），此操作無法復原，因此必須先授予「所有檔案存取」權限。\n\n授權後開關才會變為可用，屆時可自行開啟。</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">目前系統（Android 10 及以下）不提供「所有檔案存取」權限，無法直接刪除磁碟上的原始檔案，因此本機不支援「處理完成後刪除原圖」。\n\n您可以在轉換完成後透過系統相簿手動清理原圖。</string>
+    <string name="main_dialog_allfiles_replace_message">「取代模式」會直接把轉換結果寫回磁碟上的原始檔案（覆蓋原內容），此操作無法復原，因此必須先授予「所有檔案存取」權限。\n\n授權後開關才會變為可用，屆時可自行開啟。</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">目前系統（Android 10 及以下）不提供「所有檔案存取」權限，無法直接改寫磁碟上的原始檔案，因此本機不支援「取代模式」。\n\n您可以繼續用預設方式轉換，結果會輸出到相簿目錄。</string>
+    <string name="main_dialog_allfiles_location_message">部分機型（如魅族）透過系統相簿介面寫入時會遮蔽 GPS 位置資訊，導致轉換後的相片遺失位置。\n\n授予「所有檔案存取」後，本程式將直接寫入相簿目錄，完整保留位置元資料。\n\n不授予也能正常轉換，個別機型可能遺失位置資訊。</string>
+
+    <!-- ── 輸出檔名衝突對話框 ── -->
+    <string name="main_dialog_conflict_title">輸出檔名衝突</string>
+    <string name="main_dialog_conflict_message">輸出目錄中已存在同名檔案：\n%1$s\n\n請選擇處理方式。</string>
+    <string name="main_label_conflict_always">後續衝突沿用此處理方式</string>
+
+    <!-- ── 對話框按鈕 ── -->
+    <string name="main_btn_grant">授權</string>
+    <string name="main_btn_deny">拒絕</string>
+    <string name="main_btn_go_settings">前往設定</string>
+    <string name="main_btn_cancel">取消</string>
+    <string name="main_btn_grant_access">前往授權</string>
+    <string name="main_btn_got_it">知道了</string>
+    <string name="main_btn_not_now">暫不</string>
+    <string name="main_btn_skip">跳過</string>
+    <string name="main_btn_overwrite">覆蓋</string>
+    <string name="main_btn_auto_rename">自動重新命名</string>
+
+    <!-- ── 轉換結果 / 匯出失敗原因（隨「原因：%3$s」顯示給使用者） ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">已刪除 %1$d 個原始檔案</item>
+        <item quantity="other">已刪除 %1$d 個原始檔案</item>
+    </plurals>
+    <string name="main_delete_nothing">無需刪除原圖</string>
+    <string name="main_delete_partial">已刪除 %1$d 個原始檔案（%2$d 個刪除失敗，已保留）</string>
+    <string name="main_delete_failed">原圖刪除失敗（檔案被佔用或無寫入權限），已保留</string>
+    <string name="main_export_missing_output">轉換產物缺失或為空：%1$s</string>
+    <string name="main_export_missing_output_bare">轉換產物缺失或為空</string>
+    <string name="main_export_insert_null">MediaStore insert 傳回 null</string>
+    <string name="main_export_output_stream">MediaStore 輸出串流不可用</string>
+    <string name="main_export_write_failed">MediaStore 寫入失敗：%1$s</string>
+    <string name="main_export_mkdir_failed">無法建立相簿目錄 %1$s</string>
+    <string name="main_export_dir_write_failed">寫入相簿目錄失敗：%1$s</string>
+    <string name="main_export_no_source">無法定位來源檔案，已跳過取代</string>
+    <string name="main_export_companion_failed">寫回伴隨檔案失敗：%1$s</string>
+    <string name="main_export_source_dir_unwritable">來源檔案目錄不可寫入，伴隨檔案未能寫回</string>
+    <string name="main_export_source_dir_unavailable">來源檔案目錄無法使用：%1$s</string>
+    <string name="main_export_replace_failed">取代來源檔案失敗：%1$s</string>
+    <string name="main_export_replace_failed_bare">取代來源檔案失敗</string>
+</resources>

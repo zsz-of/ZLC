@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 澳門繁體（zh-MO）用語版本：盡力翻譯（模型輔助）。澳門軟件用詞依香港慣例，與 zh-HK 文本一致；本語料未出現需要單獨區分的澳門／葡語借詞場景。 -->
+<!--
+  應用層級文案。與 values/strings.xml、strings_main.xml、strings_settings.xml 等
+  同目錄多檔案並存，建置時合併。
+-->
+<resources>
+    <!-- 「應用程式語言」選擇器中表示跟隨系統的那一項 -->
+    <string name="app_language_follow_system">跟隨系統</string>
+    <!-- 應用程式語言選擇器標題 -->
+    <string name="app_language_title">應用程式語言</string>
+</resources>

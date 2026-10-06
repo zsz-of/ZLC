@@ -109,15 +109,20 @@ fun SettingsScreen(onBack: () -> Unit) {
     val settingsScrollState = rememberScrollState()
     // 任一子页打开时，系统返回键先回到设置页（而非直接回主页）
     BackHandler(enabled = subpage != 0) { subpage = 0 }
+    // RTL：子页推拉方向跟随布局方向（阿语/希伯来语下整体反号，否则前进/后退会反着滑）
+    val rtlDir = if (
+        androidx.compose.ui.platform.LocalLayoutDirection.current ==
+        androidx.compose.ui.unit.LayoutDirection.Rtl
+    ) -1 else 1
     AnimatedContent(
         targetState = subpage,
         transitionSpec = {
             if (targetState == 0) {
-                (slideInHorizontally(tween(300, easing = FancyEasing)) { -it } + fadeIn(tween(200))) togetherWith
-                    (slideOutHorizontally(tween(300, easing = FancyEasing)) { it } + fadeOut(tween(200)))
+                (slideInHorizontally(tween(300, easing = FancyEasing)) { -it * rtlDir } + fadeIn(tween(200))) togetherWith
+                    (slideOutHorizontally(tween(300, easing = FancyEasing)) { it * rtlDir } + fadeOut(tween(200)))
             } else {
-                (slideInHorizontally(tween(300, easing = FancyEasing)) { it } + fadeIn(tween(200))) togetherWith
-                    (slideOutHorizontally(tween(300, easing = FancyEasing)) { -it } + fadeOut(tween(200)))
+                (slideInHorizontally(tween(300, easing = FancyEasing)) { it * rtlDir } + fadeIn(tween(200))) togetherWith
+                    (slideOutHorizontally(tween(300, easing = FancyEasing)) { -it * rtlDir } + fadeOut(tween(200)))
             }
         },
         label = "settingsSubNav"

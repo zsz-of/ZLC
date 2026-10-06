@@ -803,6 +803,13 @@ class MainActivity : ComponentActivity() {
                 // 进入/退出内置选择器的过渡动画（ImageToolbox fancySlideTransition 式）：
                 // 选择器从右侧整屏滑入 + 淡入，主页向左小幅滑出让位；返回时反向。
                 // 设置页用淡入淡出 + 轻微缩放过渡。
+                // RTL：推拉方向必须跟随布局方向（阿拉伯语/希伯来语等从右到左时整体取反），
+                // 否则 RTL 下「前进」会从反方向滑入。transitionSpec / graphicsLayer 都不是
+                // @Composable 作用域，所以在这里先取好方向值再捕获进闭包。
+                val rtlDir = if (
+                    androidx.compose.ui.platform.LocalLayoutDirection.current ==
+                    androidx.compose.ui.unit.LayoutDirection.Rtl
+                ) -1 else 1 // Int：slideInHorizontally 的 fullWidth 是 Int；与 Float 相乘会自动提升
                 AnimatedContent(
                     targetState = screen,
                     modifier = Modifier
@@ -815,7 +822,7 @@ class MainActivity : ComponentActivity() {
                             if (p > 0f) {
                                 scaleX = 1f - p * 0.06f
                                 scaleY = 1f - p * 0.06f
-                                translationX = p * size.width * 0.18f
+                                translationX = p * size.width * 0.18f * rtlDir
                                 transformOrigin = TransformOrigin(0.5f, 0.5f)
                             }
                         },
@@ -826,16 +833,17 @@ class MainActivity : ComponentActivity() {
                         val slideOut = (initialState == AppScreen.Picker || initialState == AppScreen.Settings) && targetState == AppScreen.Main
                         when {
                             // 主页 → 选择器 / 设置页：目标页从右整屏推入，主页整屏被推向左，对称推拉
+                            // （`* rtlDir`：RTL 下整体反号，改为从左推入/向右让位）
                             slideIn ->
-                                (slideInHorizontally(tween(450, easing = FancyEasing)) { it } +
+                                (slideInHorizontally(tween(450, easing = FancyEasing)) { it * rtlDir } +
                                         fadeIn(tween(300, 100))) togetherWith
-                                        (slideOutHorizontally(tween(450, easing = FancyEasing)) { -it } +
+                                        (slideOutHorizontally(tween(450, easing = FancyEasing)) { -it * rtlDir } +
                                                 fadeOut(tween(300)))
                             // 选择器 / 设置页 → 主页：反向对称推拉（主页整屏从左侧拉入，当前页整屏推出）
                             slideOut ->
-                                (slideInHorizontally(tween(450, easing = FancyEasing)) { -it } +
+                                (slideInHorizontally(tween(450, easing = FancyEasing)) { -it * rtlDir } +
                                         fadeIn(tween(300, 100))) togetherWith
-                                        (slideOutHorizontally(tween(450, easing = FancyEasing)) { it } +
+                                        (slideOutHorizontally(tween(450, easing = FancyEasing)) { it * rtlDir } +
                                                 fadeOut(tween(300)))
                             // 其余过渡（兜底）：淡入淡出 + 轻微缩放
                             else ->

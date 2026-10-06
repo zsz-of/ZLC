@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Italiano strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+
+    <!-- ========== Condivisione Lanzou e risoluzione del link diretto ========== -->
+    <string name="update_lanzou_gone">La condivisione Lanzou è stata annullata o il file non esiste. Usa GitHub per scaricare</string>
+    <string name="update_lanzou_gone_short">La condivisione Lanzou è stata annullata. Usa GitHub per scaricare</string>
+    <string name="update_lanzou_resolve_failed">Impossibile risolvere il link di download di Lanzou</string>
+    <string name="update_lanzou_need_passwd">Questa condivisione Lanzou richiede un codice di accesso. Usa GitHub per scaricare (oppure cerca il codice di accesso nelle note di rilascio)</string>
+    <string name="update_lanzou_wrong_passwd">Codice di accesso Lanzou errato</string>
+    <string name="update_err_resolve_failed">Risoluzione non riuscita</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Verifica anti-scraping di Lanzou non riuscita</string>
+    <string name="update_err_no_frame">Impossibile analizzare la pagina di download di Lanzou (frame di download non trovato)</string>
+    <string name="update_err_no_file_id">Impossibile analizzare l\'identificatore del file su Lanzou</string>
+    <string name="update_err_no_sign">Impossibile analizzare la firma di Lanzou</string>
+    <string name="update_err_ajax_request">Richiesta all\'interfaccia non riuscita</string>
+    <string name="update_err_api_request">Richiesta all\'API di Lanzou non riuscita</string>
+    <string name="update_err_empty_direct">Lanzou ha restituito un indirizzo di download vuoto</string>
+    <string name="update_err_direct_expired">L\'indirizzo di download di Lanzou è scaduto. Richiedilo di nuovo</string>
+    <string name="update_err_http_request">Richiesta non riuscita (HTTP %1$d)</string>
+
+    <!-- ========== Download ========== -->
+    <string name="update_err_connect">Impossibile connettersi al server di download: %1$s</string>
+    <string name="update_err_http">Download non riuscito (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Impossibile stabilire la connessione di download</string>
+    <string name="update_err_empty">Il contenuto scaricato è vuoto</string>
+    <string name="update_err_incomplete">Download incompleto (%1$d di %2$d byte ricevuti). Scarica di nuovo</string>
+    <string name="update_err_interrupted">Download interrotto: %1$s</string>
+
+    <!-- ========== Verifica e installazione del pacchetto ========== -->
+    <string name="update_err_not_apk">Il file scaricato non è un pacchetto di installazione valido (potrebbe essere una pagina web o il link è scaduto). Scarica di nuovo o usa GitHub.</string>
+    <string name="update_err_apk_incomplete">Il contenuto del pacchetto di installazione è incompleto. Scarica di nuovo o usa GitHub.</string>
+    <string name="update_err_apk_unparsable">Impossibile analizzare il pacchetto di installazione (download probabilmente incompleto). Scarica di nuovo o usa GitHub.</string>
+    <string name="update_err_no_install_permission">Il permesso «installa app sconosciute» non è ancora stato concesso</string>
+    <string name="update_err_installer_failed">Impossibile avviare il programma di installazione di sistema (%1$s). Apri il pacchetto manualmente dal gestore di file</string>
+
+</resources>

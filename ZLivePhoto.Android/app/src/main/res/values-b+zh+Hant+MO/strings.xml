@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 澳門繁體（zh-MO）用語版本：盡力翻譯（模型輔助）。澳門軟件用詞依香港慣例，與 zh-HK 文本一致；本語料未出現需要單獨區分的澳門／葡語借詞場景。 -->
+<!--
+  繁體中文（通用）。應用名稱屬品牌，不作翻譯。
+  地區變體：zh-Hant+TW / zh-Hant+HK / zh-Hant+MO 由本目錄派生。
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

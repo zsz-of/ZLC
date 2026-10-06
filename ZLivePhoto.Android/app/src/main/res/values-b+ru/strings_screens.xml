@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Русский (ru) — главный экран и выбор из галереи (префикс key: screen_).
+  База: res/values/strings_screens.xml (китайский, упрощённый).
+  Порядок заполнителей можно менять; для дат используется русский формат (день.месяц.год).
+-->
+<resources>
+    <!-- Подзаголовок верхней панели -->
+    <string name="screen_app_subtitle">Конвертация динамических фото</string>
+    <!-- Число выбранных файлов (plurals: one / few / many / other) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d файл</item>
+        <item quantity="few">%1$d файла</item>
+        <item quantity="many">%1$d файлов</item>
+        <item quantity="other">%1$d файла</item>
+    </plurals>
+    <!-- Вход в настройки (только для озвучивания) -->
+    <string name="screen_settings">Настройки</string>
+
+    <!-- Диалог выбора выходного формата -->
+    <string name="screen_select_output_format">Выбор выходного формата</string>
+    <string name="screen_selected">Выбрано</string>
+    <string name="screen_vivo_single_warning">⚠ Слишком старые устройства могут не распознать этот формат</string>
+    <string name="screen_extract_blocked">⚠ В очереди есть задачи сборки — извлечение выбрать нельзя</string>
+
+    <!-- Короткие имена форматов (полные — fmt_* в strings_formats.xml) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (один файл)</string>
+    <string name="screen_format_vivo">vivo (два файла)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Извлечение</string>
+
+    <!-- Нижняя панель «Инструменты» -->
+    <string name="screen_toolbox">Инструменты</string>
+    <string name="screen_batch_import">Пакетный импорт</string>
+    <string name="screen_batch_import_desc">Сканировать всю галерею и найти динамические фото</string>
+    <string name="screen_compose">Собрать динамическое фото</string>
+    <string name="screen_compose_desc">Выберите фото и видео и объедините их в пару</string>
+    <string name="screen_replace_mode">Режим замены</string>
+    <string name="screen_replace_mode_desc">Результат записывается прямо в исходный файл, новые файлы не создаются</string>
+    <string name="screen_need_all_files_access_hint">Нужно разрешение «Доступ ко всем файлам» — нажмите, чтобы выдать</string>
+    <string name="screen_agree_and_enable">Согласен, включить</string>
+
+    <!-- Пустое состояние / нижняя панель управления -->
+    <string name="screen_empty_no_files">Файлы ещё не добавлены</string>
+    <string name="screen_view_detail">Подробнее</string>
+    <string name="screen_add_files">Добавить файлы</string>
+    <string name="screen_output_format">Выходной формат: %1$s</string>
+    <string name="screen_delete_original">Удалять исходные фото после обработки</string>
+    <string name="screen_need_all_files_access_view">Нужно разрешение «Доступ ко всем файлам» — нажмите, чтобы посмотреть</string>
+    <string name="screen_clear">Очистить</string>
+    <string name="screen_stop">Остановить обработку</string>
+    <string name="screen_start_convert">Начать конвертацию</string>
+
+    <!-- Диалог подробностей состояния -->
+    <string name="screen_status_detail">Подробности состояния</string>
+    <string name="screen_long_press_copy">Долгое нажатие выделяет текст для копирования</string>
+    <string name="screen_copy">Копировать</string>
+    <string name="screen_close">Закрыть</string>
+
+    <!-- Выбор из галереи -->
+    <string name="screen_back">Назад</string>
+    <string name="screen_picker_title_select">Выбор динамического фото</string>
+    <string name="screen_album_count">Альбом %1$d</string>
+    <string name="screen_album_collapse_cover">Свернуть обложку альбома</string>
+    <string name="screen_album_expand_cover">Развернуть обложку альбома</string>
+    <string name="screen_scanning_progress">Сканирование %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d снимок</item>
+        <item quantity="few">%1$d снимка</item>
+        <item quantity="many">%1$d снимков</item>
+        <item quantity="other">%1$d снимка</item>
+    </plurals>
+    <string name="screen_select_all">Выбрать все</string>
+    <string name="screen_no_albums">Нет доступных альбомов</string>
+    <string name="screen_no_media">Динамические фото не найдены</string>
+    <string name="screen_no_media_compose">Фото или видео не найдены</string>
+    <string name="screen_import">Импорт</string>
+    <string name="screen_import_count">Импортировать %1$d</string>
+    <string name="screen_import_mixed">Импорт: фото %1$d · видео %2$d</string>
+    <string name="screen_search">Поиск</string>
+    <string name="screen_search_collapse">Свернуть поиск</string>
+    <string name="screen_search_hint">Поиск по имени</string>
+    <string name="screen_search_clear">Очистить поиск</string>
+    <string name="screen_sort_date">Дата</string>
+    <string name="screen_sort_size">Размер</string>
+    <string name="screen_sort_name">Имя</string>
+    <string name="screen_sort_asc">По возрастанию</string>
+    <string name="screen_sort_desc">По убыванию</string>
+
+    <!-- Метки дат в группировке галереи -->
+    <string name="screen_date_today">Сегодня</string>
+    <string name="screen_date_yesterday">Вчера</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

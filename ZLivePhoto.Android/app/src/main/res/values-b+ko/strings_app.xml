@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  앱 전체 문구 (한국어 / ko). key는 values/strings_app.xml과 1:1 대응.
+  번역 품질: A (주요 언어).
+-->
+<resources>
+    <!-- 「앱 언어」 선택기에서 시스템 설정을 따르는 항목 -->
+    <string name="app_language_follow_system">시스템 설정 따르기</string>
+    <!-- 앱 언어 선택기 제목 -->
+    <string name="app_language_title">앱 언어</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · English (Australia) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Australian spelling and date conventions (colour, -ise, licence, D/M/Y).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="app_language_follow_system">Follow system</string>
+    <string name="app_language_title">App language</string>
+</resources>

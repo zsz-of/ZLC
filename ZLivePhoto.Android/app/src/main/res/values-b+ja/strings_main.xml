@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  メイン画面とバックグラウンド処理の文言（MainActivity モジュール / 日本語 ja）。
+  key は values/strings_main.xml と 1 対 1 で対応。プレースホルダーは %1$s / %1$d。
+  数量に依存する文言は <plurals>（日本語は other のみ）。翻訳品質：A。
+-->
+<resources>
+    <!-- ── ステータスバー / 通知 ── -->
+    <string name="main_status_ready">準備完了</string>
+    <string name="main_status_location_granted">位置情報の権限を取得しました。変換後も GPS メタデータが保持されます</string>
+    <string name="main_status_location_denied">位置情報の権限がありません：変換後の写真から GPS 位置情報が失われます</string>
+    <string name="main_status_all_files_granted">「すべてのファイルへのアクセス」権限を取得しました。アルバムディレクトリに直接書き込むため位置情報が完全に保持されます</string>
+    <string name="main_status_all_files_denied">「すべてのファイルへのアクセス」権限がありません：一部の機種では変換後に位置情報が失われる可能性があります</string>
+    <string name="main_status_read_granted">写真と動画の読み取り権限を取得しました</string>
+    <string name="main_status_video_missing">権限はありますが、動画の権限がありません：2 ファイル形式のライブフォトに付属するペア動画を検索できません</string>
+    <string name="main_status_permission_denied">権限がありません。「ファイルを追加」をもう一度タップしてください</string>
+    <string name="main_status_folder_not_selected">フォルダが選択されていません</string>
+    <string name="main_status_folder_unavailable">選択したフォルダにアクセスできません（ローカルストレージのディレクトリのみ対応）</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">前回のセッションを復元しました（%1$d 個のファイル）</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">前回の異常終了を検出したため、未完了のリストを消去しました</string>
+    <string name="main_status_compose_blocks_extract">キューに合成タスクが含まれているため、分解モードに切り替えられません</string>
+    <string name="main_status_replace_off_mutex">置き換えモードをオフにしました（「処理後に元の写真を削除」と排他）</string>
+    <string name="main_status_delete_needs_all_files">元の写真の自動削除には「すべてのファイルへのアクセス」権限が必要です。先に許可してください</string>
+    <string name="main_status_replace_off">置き換えモードをオフにしました。変換結果はアルバムディレクトリに書き出されます</string>
+    <string name="main_status_replace_needs_all_files">置き換えモードには「すべてのファイルへのアクセス」権限が必要です。先に許可してください</string>
+    <string name="main_status_delete_off_mutex">「処理後に元の写真を削除」をオフにしました（置き換えモードと排他）</string>
+    <string name="main_status_loading_albums">アルバムを読み込んでいます…</string>
+    <string name="main_status_no_albums">アルバムが見つかりません</string>
+    <string name="main_status_compose_no_photo">写真が選択されていないため合成できません</string>
+    <string name="main_status_compose_no_video">動画が選択されていないため合成できません</string>
+    <string name="main_status_compose_all_added">選択した写真はすべてリストに追加済みです</string>
+    <string name="main_status_compose_paired">写真 %1$d 枚、動画 %2$d 本。少ない方に合わせて %3$d 組の合成タスクを追加しました</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">%1$d 個の合成タスクを追加しました。「変換を開始」をタップして合成を実行してください</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s（出力形式を自動的に Google に切り替えました）</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">共有された %1$d 枚の画像をインポートしています…</item>
+    </plurals>
+    <string name="main_status_import_failed">インポートに失敗しました：%1$s</string>
+    <string name="main_status_import_done_partial">インポート完了：成功 %1$d 件、失敗 %2$d 件</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">インポート完了：合計 %1$d 個のファイルをインポートしました</item>
+    </plurals>
+    <string name="main_status_import_stopped">インポートを停止しました：成功 %1$d 件、失敗 %2$d 件</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">%1$d 個のファイルをインポートしています…</item>
+    </plurals>
+    <string name="main_status_importing_progress">インポート中 %1$d/%2$d…</string>
+    <string name="main_status_stopping">停止しています…（現在のファイルの完了後に停止します）</string>
+    <string name="main_status_stopping_import">インポートを停止しています…</string>
+    <string name="main_status_removed">%1$s を削除しました</string>
+    <string name="main_status_cleared">消去しました</string>
+    <string name="main_status_nothing_to_convert">変換できるファイルがありません</string>
+    <string name="main_status_folder_unreadable">選択したフォルダを読み取れません</string>
+    <string name="main_status_scanning_folder">フォルダをスキャンしています…</string>
+    <string name="main_status_no_images">選択したフォルダに画像が見つかりません</string>
+    <string name="main_status_batch_importing">一括インポート中 %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">一括インポートを停止しました：合計 %1$d 個のライブフォトをインポートしました</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">一括インポートを停止しました：合計 %1$d 個のライブフォトをインポートし、%2$d 個の非ライブフォトファイルをスキップしました</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">一括インポート完了：合計 %1$d 個のライブフォトをインポートしました</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">一括インポート完了：合計 %1$d 個のライブフォトをインポートし、%2$d 個の非ライブフォトファイルをスキップしました</item>
+    </plurals>
+    <string name="main_status_stopped_replace">停止しました：%1$d 個のうち %2$d 個を処理し、%3$d 個の元ファイルを置き換えました</string>
+    <string name="main_status_stopped_export">停止しました：%1$d 個のうち %2$d 個を処理し、%3$d 個をアルバムに書き出しました</string>
+    <string name="main_status_done_replace_reason">完了：%1$d 個のファイルを処理し、%2$d 個の元ファイルを置き換えました（理由：%3$s）</string>
+    <string name="main_status_done_export_reason">完了：%1$d 個のファイルを処理し、%2$d 個をアルバムに書き出しました（理由：%3$s）</string>
+    <string name="main_status_done_replace">完了：%1$d 個のファイルを処理し、%2$d 個の元ファイルを置き換えました</string>
+    <string name="main_status_done_export">完了：%1$d 個のファイルを処理し、%2$d 個をアルバムに書き出しました</string>
+    <string name="main_status_keep_originals">%1$s；「完全なストレージアクセス」権限がないため、元の写真は保持されました</string>
+
+    <!-- ── リスト項目の情報 ── -->
+    <string name="main_info_detecting">検出中…</string>
+    <string name="main_info_unrecognized">認識できないライブフォト形式</string>
+    <string name="main_info_converting">変換中…</string>
+    <string name="main_info_compose_task">合成タスク（「変換を開始」をタップして合成を実行）</string>
+    <string name="main_info_done_replaced">完了（%1$d 個の元ファイルを置き換え）</string>
+    <string name="main_info_done_skipped">完了（スキップ：同名の競合）</string>
+    <string name="main_info_done_exported">完了（%1$d 個を書き出し）</string>
+    <string name="main_info_failed">失敗：%1$s</string>
+
+    <!-- ── 進捗の詳細 ── -->
+    <string name="main_progress_added">追加済み %1$d/%2$d</string>
+    <string name="main_progress_processed">処理済み %1$d/%2$d</string>
+    <string name="main_progress_imported">インポート済み %1$d/%2$d</string>
+
+    <!-- ── 権限ダイアログ ── -->
+    <string name="main_dialog_permission_title">写真と動画の読み取り権限が必要です</string>
+    <string name="main_dialog_permission_message">本アプリは端末内の写真と動画を読み取る必要があります：\n\n• 写真の権限：端末のアルバムをスキャンし、その中のライブフォトを認識します\n• 動画の権限：2 ファイル形式のライブフォトに付属するペア動画を検索します\n• 位置情報の権限：写真内の GPS 位置メタデータを保持します（ない場合は変換後に位置情報が失われます）\n\n拒否すると内蔵の選択ツールが使用できません。後で「ファイルを追加」をもう一度タップして再許可できます。</string>
+    <string name="main_dialog_settings_title">写真と動画の権限を手動で許可してください</string>
+    <string name="main_dialog_settings_message">以前「今後表示しない」を選択したため、システムは権限ダイアログを表示しません。\n\nアプリ詳細ページ → 権限 → 写真と動画 に進み、手動でアクセスを許可してから本アプリに戻ってください。\n\n注意：「写真」と「動画」の権限を両方許可する必要があります。そうでないと、2 ファイル形式のライブフォトに付属するペア動画を見つけられません。</string>
+
+    <!-- ── 「すべてのファイルへのアクセス」権限の説明ダイアログ ── -->
+    <string name="main_dialog_allfiles_title_delete">元の写真の自動削除には「すべてのファイルへのアクセス」が必要です</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">この端末は元の写真の自動削除に対応していません</string>
+    <string name="main_dialog_allfiles_title_replace">置き換えモードには「すべてのファイルへのアクセス」が必要です</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">この端末は置き換えモードに対応していません</string>
+    <string name="main_dialog_allfiles_title_location">「すべてのファイルへのアクセス」権限の付与を推奨します</string>
+    <string name="main_dialog_allfiles_delete_message">「処理後に元の写真を削除」はディスク上の元ファイル（写真とペア動画）を直接削除します。この操作は取り消せないため、先に「すべてのファイルへのアクセス」権限を許可する必要があります。\n\n許可するとスイッチが使用可能になるので、ご自身でオンにしてください。</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">現在のシステム（Android 10 以下）では「すべてのファイルへのアクセス」権限が提供されず、ディスク上の元ファイルを直接削除できないため、この端末は「処理後に元の写真を削除」に対応していません。\n\n変換後にシステムのアルバムから手動で元の写真を整理できます。</string>
+    <string name="main_dialog_allfiles_replace_message">「置き換えモード」は変換結果をディスク上の元ファイルに直接書き戻します（元の内容を上書き）。この操作は取り消せないため、先に「すべてのファイルへのアクセス」権限を許可する必要があります。\n\n許可するとスイッチが使用可能になるので、ご自身でオンにしてください。</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">現在のシステム（Android 10 以下）では「すべてのファイルへのアクセス」権限が提供されず、ディスク上の元ファイルを直接書き換えられないため、この端末は「置き換えモード」に対応していません。\n\n通常の方法で変換を続けられます。結果はアルバムディレクトリに出力されます。</string>
+    <string name="main_dialog_allfiles_location_message">一部の機種（Meizu など）では、システムのアルバム API 経由で書き込むと GPS 位置情報が匿名化され、変換後の写真から位置情報が失われます。\n\n「すべてのファイルへのアクセス」を許可すると、本アプリはアルバムディレクトリに直接書き込み、位置メタデータを完全に保持します。\n\n許可しなくても変換は可能ですが、一部の機種では位置情報が失われる場合があります。</string>
+
+    <!-- ── 出力ファイル名の競合ダイアログ ── -->
+    <string name="main_dialog_conflict_title">出力ファイル名の競合</string>
+    <string name="main_dialog_conflict_message">出力先ディレクトリに同名のファイルが既に存在します：\n%1$s\n\n処理方法を選択してください。</string>
+    <string name="main_label_conflict_always">以降の競合にもこの処理方法を使用する</string>
+
+    <!-- ── ダイアログのボタン ── -->
+    <string name="main_btn_grant">許可</string>
+    <string name="main_btn_deny">拒否</string>
+    <string name="main_btn_go_settings">設定へ</string>
+    <string name="main_btn_cancel">キャンセル</string>
+    <string name="main_btn_grant_access">許可する</string>
+    <string name="main_btn_got_it">了解</string>
+    <string name="main_btn_not_now">後で</string>
+    <string name="main_btn_skip">スキップ</string>
+    <string name="main_btn_overwrite">上書き</string>
+    <string name="main_btn_auto_rename">自動リネーム</string>
+
+    <!-- ── 変換結果 / 書き出し失敗の理由（「理由：%3$s」として表示） ── -->
+    <plurals name="main_delete_done">
+        <item quantity="other">%1$d 個の元ファイルを削除しました</item>
+    </plurals>
+    <string name="main_delete_nothing">元の写真を削除する必要はありません</string>
+    <string name="main_delete_partial">%1$d 個の元ファイルを削除しました（%2$d 個は削除に失敗したため保持）</string>
+    <string name="main_delete_failed">元の写真の削除に失敗しました（ファイルが使用中か書き込み権限がありません）。保持されています</string>
+    <string name="main_export_missing_output">変換結果が存在しないか空です：%1$s</string>
+    <string name="main_export_missing_output_bare">変換結果が存在しないか空です</string>
+    <string name="main_export_insert_null">MediaStore insert が null を返しました</string>
+    <string name="main_export_output_stream">MediaStore の出力ストリームが使用できません</string>
+    <string name="main_export_write_failed">MediaStore への書き込みに失敗しました：%1$s</string>
+    <string name="main_export_mkdir_failed">アルバムディレクトリ %1$s を作成できません</string>
+    <string name="main_export_dir_write_failed">アルバムディレクトリへの書き込みに失敗しました：%1$s</string>
+    <string name="main_export_no_source">元ファイルを特定できないため、置き換えをスキップしました</string>
+    <string name="main_export_companion_failed">ペアファイルの書き戻しに失敗しました：%1$s</string>
+    <string name="main_export_source_dir_unwritable">元ファイルのディレクトリに書き込めないため、ペアファイルを書き戻せませんでした</string>
+    <string name="main_export_source_dir_unavailable">元ファイルのディレクトリが使用できません：%1$s</string>
+    <string name="main_export_replace_failed">元ファイルの置き換えに失敗しました：%1$s</string>
+    <string name="main_export_replace_failed_bare">元ファイルの置き換えに失敗しました</string>
+</resources>

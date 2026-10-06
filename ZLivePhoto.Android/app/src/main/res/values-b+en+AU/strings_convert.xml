@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · English (Australia) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Australian spelling and date conventions (colour, -ise, licence, D/M/Y).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">Unknown target format: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Unrecognised Live Photo format (not a Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Cover photo is missing or empty</string>
+    <string name="conv_video_missing">Video is missing or empty</string>
+    <string name="conv_video_too_large">Video is too large (%1$d MB) to create a Live Photo; please choose a shorter video</string>
+    <string name="conv_transcoded_too_large">Video is still too large after transcoding (%1$d MB); cannot create a Live Photo</string>
+    <string name="conv_video_too_large_compose">Video is too large (%1$d MB); cannot create a Live Photo</string>
+    <string name="conv_cover_heic_go">Cover is a HEIC image (the lightweight edition cannot transcode; export it as JPEG on iPhone first, then convert)</string>
+    <string name="conv_cover_invalid_heic">Cover is not a valid image (HEIC requires system HEIF decoding support)</string>
+    <string name="conv_cover_not_jpeg_go">Cover is not a JPEG image (the lightweight edition cannot transcode; please use a JPEG photo)</string>
+    <string name="conv_cover_invalid_image">Cover is not a valid image (only JPEG/WebP/PNG are supported)</string>
+    <string name="conv_reencode_failed">Video re-encode failed: %1$s</string>
+    <string name="conv_remux_failed">Container remux failed: %1$s</string>
+    <string name="conv_codec_unknown">Not a recognised H.264/H.265 video</string>
+    <string name="conv_codec_is">Codec is %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">The video “%1$s” %2$s; changing only the container (remuxing) cannot change the codec, so a Live Photo cannot be created.\n\nPlease set “Settings → Video transcoding → Transcoding mode” to “Re-encode”, or convert it to an H.264/H.265 MP4 with another tool first.</string>
+    <string name="conv_hint_no_encoder">The video is not in a standard MP4 container (MOV / MKV / WebM / AVI, etc.), and the current “Transcoding mode” does not re-encode, so a Live Photo cannot be created.\n\nPlease set “Settings → Video transcoding → Transcoding mode” to “Re-encode” (the standard edition bundles an ffmpeg encoder; the Go lightweight edition has no transcoder, so please use the standard edition), or convert the video to a standard MP4 (H.264/H.265) first.</string>
+    <string name="conv_log_detected">Detected as %1$s</string>
+    <string name="conv_log_same_format_copied">Source and target formats are identical; copied as-is (zero loss)</string>
+    <string name="conv_log_extra_tracks_bypass">Source video contains non-audio/video tracks (%1$s); skipping same-format passthrough and using the full write path to sanitise</string>
+    <string name="conv_log_ts_fallback">Source has no cover-frame timestamp; falling back to the video midpoint as specified</string>
+    <string name="conv_log_brand_normalized">Normalised the video container brand (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Video contains extra tracks (%1$s) that cannot be sanitised; output as-is (the result may not play on long-press on some devices)</string>
+    <string name="conv_log_extra_tracks_removed">Removed extra video tracks (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Source video %1$s; remuxing the container alone cannot fix it (%2$s). If the result still does not play on long-press, set “Settings → Video transcoding → Transcoding mode” to “Re-encode”.</string>
+    <string name="conv_log_reencoding">Source video %1$s; re-encoding to 8-bit + AAC as configured to improve gallery compatibility</string>
+    <string name="conv_log_reencode_result_unusable">Re-encode result is unusable; output as-is (the result may not play on long-press on some devices)</string>
+    <string name="conv_log_reencode_still_risky">Risks remain after re-encoding (%1$s)</string>
+    <string name="conv_log_reencode_failed">Re-encode failed (%1$s); output as-is (the result may not play on long-press on some devices)</string>
+    <string name="conv_log_cover_heic_converted">Cover was HEIC (not JPEG); transcoded to a standard JPEG before packaging</string>
+    <string name="conv_log_compose_sizes">Compose: photo %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transcoder not enabled: only rewriting the container brand (MOV → MP4), no re-encoding</string>
+    <string name="conv_tag_convert">Convert</string>
+    <string name="conv_tag_transcode">Transcode</string>
+    <string name="conv_tag_compose">Compose</string>
+    <string name="conv_blocker_no_encoder">Built-in transcoder unavailable</string>
+    <string name="conv_blocker_mode_no_encode">The current “Transcoding mode” does not re-encode</string>
+    <string name="conv_addon_unavailable">Built-in transcoder unavailable</string>
+    <string name="conv_addon_transcode_failed">ffmpeg transcode failed: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg container remux failed: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Transcoding video to standard MP4 with ffmpeg (%1$s / crf %2$d / %3$s; keeping only the video and audio tracks)</string>
+    <string name="conv_log_transcode_done">Video transcoding complete (%1$d KB)</string>
+    <string name="conv_log_remuxing">Remuxing the video container to standard MP4 (container only, no re-encoding)</string>
+    <string name="conv_log_remux_done">Container remux complete (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Compose</string>
+    <string name="conv_reminder_cat_convert">Convert</string>
+    <string name="conv_reminder_cat_update">Update</string>
+    <string name="conv_reminder_video_over3s_title">Video is longer than 3 seconds</string>
+    <string name="conv_reminder_video_over3s_message">The selected video is longer than 3 seconds, so the resulting Live Photo may have compatibility issues:\n\n• It may not play properly\n• It may not be recognised by the system gallery\n• Some devices may not recognise this Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">Older version detected</string>
+    <string name="conv_reminder_legacy_go_message">An older version (Go edition) of this app is still installed on this device. That version no longer works here; you can uninstall it to free up space.</string>
+    <string name="conv_reminder_replace_risk_title">Replace mode carries a risk of corruption</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Replace mode writes conversion results straight back to the original files; once overwritten, the originals cannot be recovered.\n\n• If the app is interrupted, storage runs out, or permission is revoked while writing, the source files may be corrupted\n• No conversion is guaranteed to succeed, and on failure the source files may already be unusable\n• Try one or two files first to make sure everything is fine before processing in bulk\n• Back up important photos yourself beforehand\n\nThis feature is provided “as is”; you use it at your own risk, and the author is not liable for corrupted or lost files.</string>
+    <string name="conv_reminder_dont_remind">Don\'t show again</string>
+    <string name="conv_reminder_confirm_ok">Got it</string>
+    <string name="conv_reminder_uninstall">Uninstall</string>
+</resources>

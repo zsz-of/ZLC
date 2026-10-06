@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ไทย (th) — ข้อความอัปเดต / ดาวน์โหลด (core/AppUpdater.kt, core/UpdateChecker.kt)
+  คำนำหน้าคีย์: update_ เมื่อกำหนดแล้วห้ามเปลี่ยนชื่อ (ทุกภาษาอ้างอิงชุดคีย์เดียวกัน)
+  ตัวแทนค่า: %1$s / %1$d
+  หมายเหตุ: ข้อความ UpdaterException / AddonException ของเลเยอร์ core จะแสดงผ่าน
+  statusText ใน MainActivity ลงในรายการและแผงบันทึกโดยตรง จึงใช้ทรัพยากรเสมอ
+  เอกสารนี้เป็นการแปลโดยใช้โมเดลช่วย อาจมีความไม่ถูกต้อง ยินดีรับการแก้ไขจากชุมชน
+-->
+<resources>
+
+    <!-- ========== หน้าถูกแชร์ Lanzou Cloud และการแยกวิเคราะห์ลิงก์ตรง ========== -->
+    <string name="update_lanzou_gone">การแชร์ Lanzou Cloud ถูกยกเลิกหรือไม่มีไฟล์ — กรุณาดาวน์โหลดจาก GitHub</string>
+    <string name="update_lanzou_gone_short">การแชร์ Lanzou Cloud ถูกยกเลิก — กรุณาดาวน์โหลดจาก GitHub</string>
+    <string name="update_lanzou_resolve_failed">แยกวิเคราะห์ลิงก์ดาวน์โหลด Lanzou Cloud ไม่สำเร็จ</string>
+    <string name="update_lanzou_need_passwd">การแชร์ Lanzou Cloud นี้ต้องใช้รหัสเข้าถึง — กรุณาดาวน์โหลดจาก GitHub (หรือดูรหัสในคำอธิบาย Release)</string>
+    <string name="update_lanzou_wrong_passwd">รหัสเข้าถึง Lanzou Cloud ไม่ถูกต้อง</string>
+    <string name="update_err_resolve_failed">แยกวิเคราะห์ไม่สำเร็จ</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">การตรวจสอบป้องกันบอตของ Lanzou Cloud ล้มเหลว</string>
+    <string name="update_err_no_frame">แยกวิเคราะห์หน้าดาวน์โหลด Lanzou Cloud ไม่สำเร็จ (ไม่พบเฟรมดาวน์โหลด)</string>
+    <string name="update_err_no_file_id">แยกวิเคราะห์รหัสไฟล์ Lanzou Cloud ไม่สำเร็จ</string>
+    <string name="update_err_no_sign">แยกวิเคราะห์ลายเซ็น Lanzou Cloud ไม่สำเร็จ</string>
+    <string name="update_err_ajax_request">คำขอ API ล้มเหลว</string>
+    <string name="update_err_api_request">คำขอ API ของ Lanzou Cloud ล้มเหลว</string>
+    <string name="update_err_empty_direct">Lanzou Cloud ส่งคืนที่อยู่ดาวน์โหลดว่างเปล่า</string>
+    <string name="update_err_direct_expired">ที่อยู่ดาวน์โหลด Lanzou Cloud หมดอายุแล้ว — กรุณาขอใหม่</string>
+    <string name="update_err_http_request">คำขอล้มเหลว (HTTP %1$d)</string>
+
+    <!-- ========== การดาวน์โหลด ========== -->
+    <string name="update_err_connect">เชื่อมต่อเซิร์ฟเวอร์ดาวน์โหลดไม่ได้: %1$s</string>
+    <string name="update_err_http">ดาวน์โหลดล้มเหลว (HTTP %1$d)</string>
+    <string name="update_err_no_connection">สร้างการเชื่อมต่อดาวน์โหลดไม่ได้</string>
+    <string name="update_err_empty">เนื้อหาที่ดาวน์โหลดว่างเปล่า</string>
+    <string name="update_err_incomplete">ดาวน์โหลดไม่ครบถ้วน (ได้รับ %1$d / %2$d ไบต์) — กรุณาดาวน์โหลดใหม่</string>
+    <string name="update_err_interrupted">การดาวน์โหลดถูกขัดจังหวะ: %1$s</string>
+
+    <!-- ========== การตรวจสอบและติดตั้งแพ็กเกจ ========== -->
+    <string name="update_err_not_apk">ไฟล์ที่ดาวน์โหลดไม่ใช่แพ็กเกจติดตั้งที่ถูกต้อง (อาจเป็นหน้าเว็บหรือลิงก์หมดอายุ) — กรุณาดาวน์โหลดใหม่หรือใช้ GitHub</string>
+    <string name="update_err_apk_incomplete">เนื้อหาแพ็กเกจติดตั้งไม่ครบถ้วน — กรุณาดาวน์โหลดใหม่หรือใช้ GitHub</string>
+    <string name="update_err_apk_unparsable">แยกวิเคราะห์แพ็กเกจติดตั้งไม่ได้ (อาจดาวน์โหลดไม่ครบ) — กรุณาดาวน์โหลดใหม่หรือใช้ GitHub</string>
+    <string name="update_err_no_install_permission">ยังไม่ได้รับสิทธิ์ “ติดตั้งแอปที่ไม่รู้จัก”</string>
+    <string name="update_err_installer_failed">เรียกตัวติดตั้งของระบบไม่ได้ (%1$s) — กรุณาเปิดแพ็กเกจติดตั้งด้วยตัวเองในตัวจัดการไฟล์</string>
+
+</resources>

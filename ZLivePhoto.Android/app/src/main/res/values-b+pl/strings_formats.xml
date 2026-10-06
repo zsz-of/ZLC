@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Polski (pl): nazwy wyświetlane wtyczek formatów. Prefiks kluczy: fmt_.
+  Podstawa: res/values/strings_formats.xml (chiński uproszczony, język zapasowy).
+  Uwaga: FormatPlugin.display nadal dostarcza chiński tekst zapasowy dla starych
+  miejsc wywołania (MainActivity/AlbumScanner/Converter); tabela LEGACY_ZH_NAMES
+  odpowiada temu plikowi — przy zmianie tekstów trzeba ją zaktualizować, dopóki
+  stare miejsca wywołania nie przejdą na displayRes.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Rozpakowanie</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Live Photo Honor</string>
+    <string name="fmt_meizu">Live Photo Meizu</string>
+    <string name="fmt_nubia">Live Photo Nubia</string>
+    <string name="fmt_oppo">Live Photo OPPO</string>
+    <string name="fmt_vivo">Live Photo vivo</string>
+    <string name="fmt_vivo_single">Live Photo vivo (pojedynczy plik)</string>
+    <string name="fmt_xiaomi">Live Photo Xiaomi</string>
+
+    <!--
+      Komunikaty błędów widoczne dla użytkownika po stronie wtyczek (teksty IOException):
+      trafiają przez MainActivity/Converter (e.message) do paska stanu i „szczegółów stanu”,
+      dlatego również są zasobami. Wtyczki nie mają Context — korzystają z CoreText.of(...)
+      (core/FfmpegAddon.kt; przed inicjalizacją zwraca pusty łańcuch, więc testy czystego JVM
+      nie dotykają API Androida), zgodnie z konwencją Converter/AppUpdater.
+    -->
+    <string name="fmt_err_apple_mov_missing">Nie znaleziono pliku wideo .mov o tej samej nazwie</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Plik MOV nie zawiera boxu ftyp</string>
+    <string name="fmt_err_extract_read">Rozpakowanie to format wyjściowy — nie należy go wczytywać jako formatu wejściowego</string>
+    <string name="fmt_err_no_primary_jpeg">Nie znaleziono głównego obrazu JPEG</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Po JPEG nie znaleziono prawidłowego filmu MP4 (brak boxu ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">Nie udało się przeanalizować strumienia wideo MP4</string>
+    <string name="fmt_err_nubia_too_short">Plik jest zbyt krótki, to nie wygląda na Live Photo Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Brak magicznego znacznika nubiaVpfile na końcu pliku</string>
+    <string name="fmt_err_nubia_jpeg_len">Nieprawidłowa długość JPEG zapisana na końcu pliku: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Między JPEG a filmem brakuje bajtów dopełnienia 0x00</string>
+    <string name="fmt_err_nubia_empty_video">Długość osadzonego filmu wynosi 0</string>
+    <string name="fmt_err_vivo_no_marker">Na końcu pliku JPG nie znaleziono znacznika vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Brak towarzyszącego pliku wideo: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Nie udało się przeanalizować głównej części pliku JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">Towarzyszący plik MP4 jest nieprawidłowy (brak boxu ftyp)</string>
+</resources>

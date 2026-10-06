@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Türkçe (tr) — güncelleme akışı metinleri, ui/UpdateFlow.kt karşılığı.
+  Ayrı dosya: UpdateFlow güncelleme modülüne aittir ve i18n-plan her modül için bir
+  strings_*.xml öngörür; update_flow adı diğer görevlerle çakışmayı önler.
+  Anahtar öneki: update_; res/values/ Basitleştirilmiş Çince yedek metindir.
+  UpdateFlowController (Composable değil) context.getString(...), pencereler stringResource(...) kullanır.
+-->
+<resources>
+    <!-- ========== Denetleyici tarafı mesajlar ========== -->
+    <string name="update_github_url_missing">GitHub indirme adresi alınamadı — lütfen daha sonra tekrar deneyin.</string>
+    <string name="update_flavor_standard">Standart sürüm</string>
+    <string name="update_flavor_go">Go sürümü</string>
+    <string name="update_lanzou_url_missing">Bu sürüm Lanzou Cloud indirme bağlantısı sunmuyor — GitHub\'dan indirebilirsiniz.</string>
+    <string name="update_apk_direct_missing">Bu sürüm için uyumlu doğrudan APK bağlantısı yok; GitHub sürüm sayfasından ilgili APK\'yı seçin.</string>
+    <string name="update_install_permission_missing">„Bilinmeyen uygulamaları yükleme” izni yok, otomatik kurulum yapılamıyor. Sistem ayarlarından izin verip tekrar deneyin.</string>
+    <string name="update_error_unknown">Bilinmeyen hata</string>
+    <string name="update_fail_lanzou">Lanzou Cloud indirmesi başarısız</string>
+    <string name="update_fail_github">GitHub indirmesi başarısız</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud indirme bağlantısı çözümleniyor…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud\'dan indiriliyor…</string>
+    <string name="update_github_downloading">GitHub\'dan indiriliyor…</string>
+    <string name="update_unzipping">Kurulum paketi açılıyor…</string>
+    <string name="update_notes_empty">Bu sürüm için henüz sürüm notu yok.</string>
+
+    <!-- ========== Go sürümüyle ilgili pencereler ========== -->
+    <string name="update_use_normal_title">Lütfen standart sürümü kullanın</string>
+    <string name="update_use_normal_body">Bu cihazın sistemi Android 10 veya üzeri; hafif Go sürümü artık desteklenmiyor ve eski sürüm kullanılamaz.\n\nCihazda standart sürümün (ZLC) kurulu olduğu algılandı — kullanmaya onunla devam edin (yeni sürümler Go uyumlu sürüm sunmaz; yer açmak için eski sürümü kaldırabilirsiniz).</string>
+    <string name="update_open_normal">Standart sürümü aç</string>
+    <string name="update_must_update_title">Devam etmek için güncellemeniz gerekiyor</string>
+    <string name="update_forced_body">Bu cihazın sistemi Android 10 veya üzeri; hafif Go sürümü artık desteklenmiyor ve eski sürüm kullanılamaz. Yeni sürümler de Go uyumlu sürüm sunmuyor.\n\nİnternete bağlanıp „Yeniden dene”ye dokunarak standart sürüm kurulum paketini alın.</string>
+    <string name="update_retry">Yeniden dene</string>
+    <string name="update_switch_normal_body">Bu cihazın sistemi Android 10 veya üzeri; hafif Go sürümü artık desteklenmiyor ve eski sürüm kullanılamaz.\nDevam etmek için standart sürümü indirip kurun (yeni sürümler Go uyumlu sürüm sunmaz).</string>
+
+    <!-- ========== İndirme / kurulum izni / sonuç mesajları ========== -->
+    <string name="update_downloading_title">Güncellemeyi indir</string>
+    <string name="update_cancel">İptal</string>
+    <string name="update_need_permission_title">Kurulum izni gerekli</string>
+    <string name="update_need_permission_body">Yeni sürümü kurmak için sistemin „Bilinmeyen uygulamaları yükleme” izni gerekir.\n\n„İzin ver”e dokunun, ayarlardan izin verip uygulamaya dönün; kurulum otomatik olarak sürer (yeniden indirme gerekmez).</string>
+    <string name="update_grant">İzin ver</string>
+    <string name="update_notice_title">Bilgi</string>
+    <string name="update_got_it">Anladım</string>
+
+    <!-- ========== Ana pencere / sürüm notları ========== -->
+    <string name="update_notes_title">v%1$s · Sürüm notları</string>
+    <string name="update_back">Geri</string>
+    <string name="update_title_switch_normal">Standart sürüme geç</string>
+    <string name="update_title_reinstall">Bu sürümü yeniden kur</string>
+    <string name="update_title_new_version">Yeni sürüm bulundu</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Bu sürüm indirilip yeniden kurulacak (mevcut uygulamanın üzerine).\nBu özellik, güncelleme mekanizmasının regresyon testi içindir.</string>
+    <string name="update_view_notes">Sürüm notlarını gör</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud şu anda kullanılamıyor</string>
+    <string name="update_download_lanzou">Lanzou Cloud\'dan indir</string>
+    <string name="update_download_github">GitHub\'dan indir</string>
+    <string name="update_download_browser">Tarayıcıdan indir</string>
+    <string name="update_later">Daha sonra</string>
+    <string name="update_later_switch">Şimdi değil</string>
+    <string name="update_skip_version">Bu sürümü atla</string>
+</resources>

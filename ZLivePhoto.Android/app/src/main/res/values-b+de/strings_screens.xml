@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Deutsch (de) — Hauptbildschirm und Galerieauswahl (Key-Präfix: screen_).
+  Basis: res/values/strings_screens.xml (Chinesisch, vereinfacht).
+  Die Reihenfolge der Platzhalter darf geändert werden; Datumsangaben im deutschen Format.
+-->
+<resources>
+    <!-- Untertitel der oberen Leiste -->
+    <string name="screen_app_subtitle">Motion Photos umwandeln</string>
+    <!-- Anzahl der ausgewählten Dateien (plurals: one / other) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d Datei</item>
+        <item quantity="other">%1$d Dateien</item>
+    </plurals>
+    <!-- Einstieg in die Einstellungen (nur für die Sprachausgabe) -->
+    <string name="screen_settings">Einstellungen</string>
+
+    <!-- Dialog zur Auswahl des Ausgabeformats -->
+    <string name="screen_select_output_format">Ausgabeformat wählen</string>
+    <string name="screen_selected">Ausgewählt</string>
+    <string name="screen_vivo_single_warning">⚠ Sehr alte Geräte erkennen dieses Format möglicherweise nicht</string>
+    <string name="screen_extract_blocked">⚠ Die Warteschlange enthält Zusammenfüge-Aufgaben – Extrahieren ist nicht wählbar</string>
+
+    <!-- Kurzname der Formate (Langnamen: fmt_* in strings_formats.xml) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (Einzeldatei)</string>
+    <string name="screen_format_vivo">vivo (zwei Dateien)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Extrahieren</string>
+
+    <!-- Bottom-Sheet „Werkzeuge“ -->
+    <string name="screen_toolbox">Werkzeuge</string>
+    <string name="screen_batch_import">Stapelimport</string>
+    <string name="screen_batch_import_desc">Die gesamte Galerie durchsuchen und Motion Photos stapelweise erkennen</string>
+    <string name="screen_compose">Motion Photo zusammenfügen</string>
+    <string name="screen_compose_desc">Ein Foto und ein Video auswählen und zu einem Paar zusammenfügen</string>
+    <string name="screen_replace_mode">Ersetzungsmodus</string>
+    <string name="screen_replace_mode_desc">Das Ergebnis wird direkt in die Originaldatei geschrieben, es entstehen keine neuen Dateien</string>
+    <string name="screen_need_all_files_access_hint">Berechtigung „Zugriff auf alle Dateien“ erforderlich – hier tippen zum Erteilen</string>
+    <string name="screen_agree_and_enable">Zustimmen und aktivieren</string>
+
+    <!-- Leerer Zustand / untere Steuerleiste -->
+    <string name="screen_empty_no_files">Es wurden noch keine Dateien hinzugefügt</string>
+    <string name="screen_view_detail">Details ansehen</string>
+    <string name="screen_add_files">Dateien hinzufügen</string>
+    <string name="screen_output_format">Ausgabeformat: %1$s</string>
+    <string name="screen_delete_original">Originale nach der Verarbeitung löschen</string>
+    <string name="screen_need_all_files_access_view">Berechtigung „Zugriff auf alle Dateien“ erforderlich – hier tippen zum Ansehen</string>
+    <string name="screen_clear">Leeren</string>
+    <string name="screen_stop">Verarbeitung stoppen</string>
+    <string name="screen_start_convert">Konvertierung starten</string>
+
+    <!-- Dialog mit Statusdetails -->
+    <string name="screen_status_detail">Statusdetails</string>
+    <string name="screen_long_press_copy">Text per Langdruck zum Kopieren markieren</string>
+    <string name="screen_copy">Kopieren</string>
+    <string name="screen_close">Schließen</string>
+
+    <!-- Galerieauswahl -->
+    <string name="screen_back">Zurück</string>
+    <string name="screen_picker_title_select">Motion Photo auswählen</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Album-Titelbild einklappen</string>
+    <string name="screen_album_expand_cover">Album-Titelbild ausklappen</string>
+    <string name="screen_scanning_progress">Scannen %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d Foto</item>
+        <item quantity="other">%1$d Fotos</item>
+    </plurals>
+    <string name="screen_select_all">Alle auswählen</string>
+    <string name="screen_no_albums">Keine Alben verfügbar</string>
+    <string name="screen_no_media">Keine Motion Photos gefunden</string>
+    <string name="screen_no_media_compose">Keine Fotos oder Videos gefunden</string>
+    <string name="screen_import">Importieren</string>
+    <string name="screen_import_count">%1$d importieren</string>
+    <string name="screen_import_mixed">Import: Fotos %1$d · Videos %2$d</string>
+    <string name="screen_search">Suchen</string>
+    <string name="screen_search_collapse">Suche einklappen</string>
+    <string name="screen_search_hint">Nach Name suchen</string>
+    <string name="screen_search_clear">Suche leeren</string>
+    <string name="screen_sort_date">Datum</string>
+    <string name="screen_sort_size">Größe</string>
+    <string name="screen_sort_name">Name</string>
+    <string name="screen_sort_asc">Aufsteigend</string>
+    <string name="screen_sort_desc">Absteigend</string>
+
+    <!-- Datumsmarken der Galerie-Gruppierung -->
+    <string name="screen_date_today">Heute</string>
+    <string name="screen_date_yesterday">Gestern</string>
+    <string name="screen_date_this_year">%2$d.%1$d.</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

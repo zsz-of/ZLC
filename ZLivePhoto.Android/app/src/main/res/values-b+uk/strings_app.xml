@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Українська (uk) — ресурси рівня застосунку.
+  База: res/values/strings_app.xml (китайська, спрощена).
+-->
+<resources>
+    <!-- Пункт «як у системі» у виборі мови застосунку -->
+    <string name="app_language_follow_system">Як у системі</string>
+    <string name="app_language_title">Мова застосунку</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Polski (pl) — teksty na poziomie aplikacji.
+  Podstawa: res/values/strings_app.xml (chiński uproszczony, język zapasowy).
+  Apostrofy zapisujemy jako \' (wymóg zasobów Androida).
+-->
+<resources>
+    <!-- Pozycja „zgodnie z systemem” na liście wyboru języka aplikacji -->
+    <string name="app_language_follow_system">Zgodnie z systemem</string>
+    <!-- Tytuł wyboru języka aplikacji (zapasowo dla modułu ustawień) -->
+    <string name="app_language_title">Język aplikacji</string>
+</resources>

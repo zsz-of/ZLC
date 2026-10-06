@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  메인 화면 / 앨범 선택기 문구 (한국어 / ko). key는 values/strings_screens.xml과 1:1 대응.
+  번역 품질: A.
+-->
+<resources>
+    <!-- 상단 표시줄 부제 -->
+    <string name="screen_app_subtitle">라이브 포토 형식 상호 변환</string>
+    <!-- 상단 표시줄 오른쪽의 선택 파일 수 (수량 의존) -->
+    <plurals name="screen_file_count">
+        <item quantity="other">파일 %1$d개</item>
+    </plurals>
+    <!-- 상단 표시줄 설정 진입 (스크린 리더 읽기 전용) -->
+    <string name="screen_settings">설정</string>
+
+    <!-- 출력 형식 선택 대화상자 -->
+    <string name="screen_select_output_format">출력 형식 선택</string>
+    <string name="screen_selected">선택됨</string>
+    <string name="screen_vivo_single_warning">⚠ 너무 오래된 기기에서는 이 형식을 인식하지 못할 수 있습니다</string>
+    <string name="screen_extract_blocked">⚠ 대기열에 합성 작업이 있어 분해를 선택할 수 없습니다</string>
+
+    <!-- 형식 옵션 짧은 이름 (긴 이름은 strings_formats.xml의 fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo(단일 파일)</string>
+    <string name="screen_format_vivo">vivo(2파일)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">분해</string>
+
+    <!-- 도구 상자 BottomSheet -->
+    <string name="screen_toolbox">도구 상자</string>
+    <string name="screen_batch_import">일괄 가져오기</string>
+    <string name="screen_batch_import_desc">앨범 전체를 검색해 라이브 포토를 일괄 인식합니다</string>
+    <string name="screen_compose">라이브 포토 합성</string>
+    <string name="screen_compose_desc">사진 1장과 동영상 1개를 선택해 짝지어 합성합니다</string>
+    <string name="screen_replace_mode">대체 모드</string>
+    <string name="screen_replace_mode_desc">변환 결과를 원본 파일에 직접 기록하고 새 파일을 만들지 않습니다</string>
+    <string name="screen_need_all_files_access_hint">“모든 파일 접근” 권한이 필요합니다. 여기를 눌러 허용하세요</string>
+    <string name="screen_agree_and_enable">동의하고 켜기</string>
+
+    <!-- 빈 상태 / 하단 컨트롤 패널 -->
+    <string name="screen_empty_no_files">아직 파일을 추가하지 않았습니다</string>
+    <string name="screen_view_detail">상세 보기</string>
+    <string name="screen_add_files">파일 추가</string>
+    <string name="screen_output_format">출력 형식: %1$s</string>
+    <string name="screen_delete_original">처리 후 원본 사진 삭제</string>
+    <string name="screen_need_all_files_access_view">“모든 파일 접근” 권한이 필요합니다. 눌러서 보기</string>
+    <string name="screen_clear">비우기</string>
+    <string name="screen_stop">처리 중지</string>
+    <string name="screen_start_convert">변환 시작</string>
+
+    <!-- 상태 상세 대화상자 -->
+    <string name="screen_status_detail">상태 상세</string>
+    <string name="screen_long_press_copy">텍스트를 길게 누르면 선택해 복사할 수 있습니다</string>
+    <string name="screen_copy">복사</string>
+    <string name="screen_close">닫기</string>
+
+    <!-- 앨범 선택기 -->
+    <string name="screen_back">뒤로</string>
+    <string name="screen_picker_title_select">라이브 포토 선택</string>
+    <string name="screen_album_count">앨범 %1$d</string>
+    <string name="screen_album_collapse_cover">앨범 커버 접기</string>
+    <string name="screen_album_expand_cover">앨범 커버 펼치기</string>
+    <string name="screen_scanning_progress">검색 중 %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">%1$d장</item>
+    </plurals>
+    <string name="screen_select_all">전체 선택</string>
+    <string name="screen_no_albums">사용 가능한 앨범이 없습니다</string>
+    <string name="screen_no_media">라이브 포토를 찾을 수 없습니다</string>
+    <string name="screen_no_media_compose">사진 또는 동영상을 찾을 수 없습니다</string>
+    <string name="screen_import">가져오기</string>
+    <string name="screen_import_count">가져오기 %1$d</string>
+    <string name="screen_import_mixed">가져오기 사진%1$d·동영상%2$d</string>
+    <string name="screen_search">검색</string>
+    <string name="screen_search_collapse">검색 접기</string>
+    <string name="screen_search_hint">이름으로 검색</string>
+    <string name="screen_search_clear">검색어 지우기</string>
+    <string name="screen_sort_date">날짜</string>
+    <string name="screen_sort_size">크기</string>
+    <string name="screen_sort_name">이름</string>
+    <string name="screen_sort_asc">오름차순</string>
+    <string name="screen_sort_desc">내림차순</string>
+
+    <!-- 앨범 그룹의 날짜 라벨 -->
+    <string name="screen_date_today">오늘</string>
+    <string name="screen_date_yesterday">어제</string>
+    <string name="screen_date_this_year">%1$d월 %2$d일</string>
+    <string name="screen_date_other_year">%1$d년 %2$d월 %3$d일</string>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Nederlands strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Uitpakken</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo in één bestand</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Geen .mov-videobestand met dezelfde naam gevonden</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Het MOV-bestand mist de ftyp-box</string>
+    <string name="fmt_err_extract_read">Uitpakken is een uitvoerformaat en kan niet als invoerformaat worden gelezen</string>
+    <string name="fmt_err_no_primary_jpeg">Geen primaire JPEG-afbeelding gevonden</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Geen geldige MP4-video na de JPEG gevonden (ftyp-box ontbreekt)</string>
+    <string name="fmt_err_mp4_parse_failed">Parseren van de MP4-videostream mislukt</string>
+    <string name="fmt_err_nubia_too_short">Bestand is te kort om een Nubia Live Photo te zijn</string>
+    <string name="fmt_err_nubia_no_magic">Het magische nummer nubiaVpfile achteraan het bestand ontbreekt</string>
+    <string name="fmt_err_nubia_jpeg_len">Ongeldige JPEG-lengte in de trailer: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">De 0x00-opvulbytes tussen de JPEG en de video ontbreken</string>
+    <string name="fmt_err_nubia_empty_video">De lengte van de ingesloten video is 0</string>
+    <string name="fmt_err_vivo_no_marker">Geen vivo livephoto-markering aan het einde van de JPG gevonden</string>
+    <string name="fmt_err_vivo_companion_missing">Bijbehorend videobestand ontbreekt: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Parseren van de JPG-body mislukt</string>
+    <string name="fmt_err_vivo_companion_invalid">Bijbehorende MP4 is ongeldig (ftyp-box ontbreekt)</string>
+</resources>

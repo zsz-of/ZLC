@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  更新 / 下載相關文案。key 前綴 update_；佔位符用 %1$s / %1$d。
+-->
+<resources>
+
+    <!-- ========== 藍奏雲分享頁與直連解析 ========== -->
+    <string name="update_lanzou_gone">藍奏雲分享已被取消或檔案不存在，請改用 GitHub 下載</string>
+    <string name="update_lanzou_gone_short">藍奏雲分享已被取消，請改用 GitHub 下載</string>
+    <string name="update_lanzou_resolve_failed">藍奏雲下載連結解析失敗</string>
+    <string name="update_lanzou_need_passwd">該藍奏雲分享需要提取碼，請改用 GitHub 下載（或到 Release 說明中尋找提取碼）</string>
+    <string name="update_lanzou_wrong_passwd">藍奏雲提取碼錯誤</string>
+    <string name="update_err_resolve_failed">解析失敗</string>
+    <string name="update_err_resolve_with_host">%1$s（%2$s）</string>
+    <string name="update_err_anticrawl">藍奏雲反爬蟲驗證失敗</string>
+    <string name="update_err_no_frame">無法解析藍奏雲下載頁面（未找到下載頁框）</string>
+    <string name="update_err_no_file_id">無法解析藍奏雲檔案識別碼</string>
+    <string name="update_err_no_sign">無法解析藍奏雲簽名</string>
+    <string name="update_err_ajax_request">API 請求失敗</string>
+    <string name="update_err_api_request">藍奏雲 API 請求失敗</string>
+    <string name="update_err_empty_direct">藍奏雲傳回空的下載網址</string>
+    <string name="update_err_direct_expired">藍奏雲下載網址已失效，請重新取得</string>
+    <string name="update_err_http_request">請求失敗（HTTP %1$d）</string>
+
+    <!-- ========== 下載 ========== -->
+    <string name="update_err_connect">無法連線下載伺服器：%1$s</string>
+    <string name="update_err_http">下載失敗（HTTP %1$d）</string>
+    <string name="update_err_no_connection">無法建立下載連線</string>
+    <string name="update_err_empty">下載內容為空</string>
+    <string name="update_err_incomplete">下載不完整（已取得 %1$d / 共 %2$d 位元組），請重新下載</string>
+    <string name="update_err_interrupted">下載中斷：%1$s</string>
+
+    <!-- ========== 安裝檔驗證與安裝 ========== -->
+    <string name="update_err_not_apk">下載到的不是有效的安裝檔（可能是網頁或下載連結已失效），請重新下載或改用 GitHub 下載。</string>
+    <string name="update_err_apk_incomplete">安裝檔內容不完整，請重新下載或改用 GitHub 下載。</string>
+    <string name="update_err_apk_unparsable">安裝檔無法解析（可能下載不完整），請重新下載或改用 GitHub 下載。</string>
+    <string name="update_err_no_install_permission">尚未獲得「安裝未知應用程式」權限</string>
+    <string name="update_err_installer_failed">無法叫起系統安裝程式（%1$s），請到檔案管理器手動開啟安裝檔安裝</string>
+
+</resources>

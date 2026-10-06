@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Français (fr) — mises à jour et téléchargements (préfixe de clé : update_).
+  Base : res/values/strings_update.xml (chinois simplifié).
+  Espaces réservés : %1$s / %1$d. Les apostrophes sont échappées en \'.
+-->
+<resources>
+
+    <!-- ========== Page de partage Lanzouyun et résolution du lien direct ========== -->
+    <string name="update_lanzou_gone">Le partage Lanzouyun a été annulé ou le fichier n\'existe pas. Veuillez télécharger depuis GitHub</string>
+    <string name="update_lanzou_gone_short">Le partage Lanzouyun a été annulé. Veuillez télécharger depuis GitHub</string>
+    <string name="update_lanzou_resolve_failed">Échec de la résolution du lien de téléchargement Lanzouyun</string>
+    <string name="update_lanzou_need_passwd">Ce partage Lanzouyun nécessite un code d\'accès. Veuillez télécharger depuis GitHub (ou chercher le code dans les notes de version)</string>
+    <string name="update_lanzou_wrong_passwd">Code d\'accès Lanzouyun incorrect</string>
+    <string name="update_err_resolve_failed">Échec de la résolution</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Échec de la vérification anti-robot de Lanzouyun</string>
+    <string name="update_err_no_frame">Impossible d\'analyser la page de téléchargement Lanzouyun (cadre de téléchargement introuvable)</string>
+    <string name="update_err_no_file_id">Impossible de déterminer l\'identifiant du fichier Lanzouyun</string>
+    <string name="update_err_no_sign">Impossible de déterminer la signature Lanzouyun</string>
+    <string name="update_err_ajax_request">Échec de la requête API</string>
+    <string name="update_err_api_request">Échec de la requête à l\'API Lanzouyun</string>
+    <string name="update_err_empty_direct">Lanzouyun a renvoyé une adresse de téléchargement vide</string>
+    <string name="update_err_direct_expired">L\'adresse de téléchargement Lanzouyun a expiré, veuillez la récupérer à nouveau</string>
+    <string name="update_err_http_request">Échec de la requête (HTTP %1$d)</string>
+
+    <!-- ========== Téléchargement ========== -->
+    <string name="update_err_connect">Impossible de se connecter au serveur de téléchargement : %1$s</string>
+    <string name="update_err_http">Échec du téléchargement (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Impossible d\'établir la connexion de téléchargement</string>
+    <string name="update_err_empty">Le contenu téléchargé est vide</string>
+    <string name="update_err_incomplete">Téléchargement incomplet (%1$d sur %2$d octets reçus), veuillez réessayer</string>
+    <string name="update_err_interrupted">Téléchargement interrompu : %1$s</string>
+
+    <!-- ========== Vérification du paquet et installation ========== -->
+    <string name="update_err_not_apk">Le fichier téléchargé n\'est pas un paquet d\'installation valide (il s\'agit peut-être d\'une page web ou le lien a expiré). Veuillez réessayer ou utiliser GitHub.</string>
+    <string name="update_err_apk_incomplete">Le paquet d\'installation est incomplet. Veuillez réessayer ou utiliser GitHub.</string>
+    <string name="update_err_apk_unparsable">Impossible d\'analyser le paquet d\'installation (téléchargement peut-être incomplet). Veuillez réessayer ou utiliser GitHub.</string>
+    <string name="update_err_no_install_permission">L\'autorisation « Installer des applications inconnues » n\'est pas accordée</string>
+    <string name="update_err_installer_failed">Impossible de lancer l\'installateur du système (%1$s). Veuillez ouvrir le paquet manuellement dans le gestionnaire de fichiers</string>
+
+</resources>

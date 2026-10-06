@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（维吾尔语 ug，B 级），可能存在不准确之处，欢迎社区修正。
+     بۇ ھۆججەت ماشىنا ياردىمىدە تەرجىمە قىلىنغان (B دەرىجە)، خاتالىقلار بولۇشى مۇمكىن.
+     RTL 文本：不写死左右方向；占位符保持拉丁字符与序号。 -->
+<resources>
+    <!-- كونتروللىغۇچ تەرەپ ئەسكەرتىشلىرى -->
+    <string name="update_github_url_missing">GitHub چۈشۈرۈش ئادرېسى ئېلىنمىدى، سەل تۇرۇپ قايتا سىناڭ.</string>
+    <string name="update_flavor_standard">ئۆلچەملىك نەشرى</string>
+    <string name="update_flavor_go">Go نەشرى</string>
+    <string name="update_lanzou_url_missing">بۇ نەشرىدە Lanzou Cloud چۈشۈرۈش ئۇلىنىشى يوق، GitHub دىن چۈشۈرۈڭ.</string>
+    <string name="update_apk_direct_missing">بۇ نەشرىدە مۇشۇ نەشرىگە ماس قاچىلاش بولىقىنىڭ بىۋاسىتە ئۇلىنىشى يوق، GitHub بېتىدىن ماس APK نى تاللاڭ.</string>
+    <string name="update_install_permission_missing">«نامەلۇم مەنبەلىك ئەپنى قاچىلاش» ھوقۇقى يوق، ئاپتوماتىك قاچىلىغىلى بولمايدۇ. سىستېما تەڭشەكلىرىدە رۇخسەت بېرىپ قايتا سىناڭ.</string>
+    <string name="update_error_unknown">نامەلۇم خاتالىق</string>
+    <string name="update_fail_lanzou">Lanzou Cloud دىن چۈشۈرۈش مەغلۇپ بولدى</string>
+    <string name="update_fail_github">GitHub دىن چۈشۈرۈش مەغلۇپ بولدى</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud چۈشۈرۈش ئۇلىنىشى تەھلىل قىلىنىۋاتىدۇ…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud دىن چۈشۈرۈلۈۋاتىدۇ…</string>
+    <string name="update_github_downloading">GitHub دىن چۈشۈرۈلۈۋاتىدۇ…</string>
+    <string name="update_unzipping">قاچىلاش بولىقى يېشىلىۋاتىدۇ…</string>
+    <string name="update_notes_empty">بۇ نەشرىنىڭ يېڭىلاش چۈشەندۈرۈشى يوق.</string>
+
+    <!-- Go نەشرىگە ئالاقىدار سۆزلەشكۈلەر -->
+    <string name="update_use_normal_title">ئۆلچەملىك نەشرىنى ئىشلىتىڭ</string>
+    <string name="update_use_normal_body">بۇ ئۈسكۈنىنىڭ سىستېمىسى Android 10 ياكى ئۇنىڭدىن يۇقىرى، Go يېنىك نەشرىسى ئەمدى ماسلاشمايدۇ، كونا نەشرىنى ئىشلىتىش تاماملانمايدۇ.\n\nبۇ ئۈسكۈنىدە ئۆلچەملىك نەشرى (ZLC) قاچىلانغانلىقى بايقالدى. ئۆلچەملىك نەشرىنى بىۋاسىتە ئېچىپ داۋاملاشتۇرۇڭ (يېڭى نەشرىدە Go ماسلىشىش نەشرىسى يوق، كونا نەشرىنى ئۆچۈرۈپ بوشلۇق ئىگىلىيەلەيسىز).</string>
+    <string name="update_open_normal">ئۆلچەملىك نەشرىنى ئېچىش</string>
+    <string name="update_must_update_title">داۋاملاشتۇرۇش ئۈچۈن يېڭىلاش شەرت</string>
+    <string name="update_forced_body">بۇ ئۈسكۈنىنىڭ سىستېمىسى Android 10 ياكى ئۇنىڭدىن يۇقىرى، Go يېنىك نەشرىسى ئەمدى ماسلاشمايدۇ، كونا نەشرىنى ئىشلىتىش تاماملانمايدۇ؛ يېڭى نەشرىدىمۇ Go ماسلىشىش نەشرىسى يوق.\n\nتورغا ئۇلىنىپ «قايتا سىناش» نى بېسىپ ئۆلچەملىك نەشرىنىڭ قاچىلاش بولىقىنى ئېلىڭ.</string>
+    <string name="update_retry">قايتا سىناش</string>
+    <string name="update_switch_normal_body">بۇ ئۈسكۈنىنىڭ سىستېمىسى Android 10 ياكى ئۇنىڭدىن يۇقىرى، Go يېنىك نەشرىسى ئەمدى ماسلاشمايدۇ، كونا نەشرىنى ئىشلىتىش تاماملانمايدۇ.\nئۆلچەملىك نەشرىنى چۈشۈرۈپ قاچىلىغاندىن كېيىن داۋاملاشتۇرۇڭ (يېڭى نەشرىدە Go ماسلىشىش نەشرىسى يوق).</string>
+
+    <!-- چۈشۈرۈش / قاچىلاش ھوقۇقى / نەتىجە ئەسكەرتىشلىرى -->
+    <string name="update_downloading_title">يېڭىلاشنى چۈشۈرۈش</string>
+    <string name="update_cancel">بىكار قىلىش</string>
+    <string name="update_need_permission_title">قاچىلاش ھوقۇقى كېرەك</string>
+    <string name="update_need_permission_body">يېڭى نەشرىنى قاچىلاش ئۈچۈن سىستېمىنىڭ «نامەلۇم مەنبەلىك ئەپنى قاچىلاش» ھوقۇقى كېرەك.\n\n«ھوقۇق بېرىش» نى بېسىپ، تەڭشەكتە رۇخسەت بەرگەندىن كېيىن ئەپكە قايتسىڭىز، ئاپتوماتىك قاچىلاش داۋاملىشىدۇ (قايتا چۈشۈرۈش زۆرۈر ئەمەس).</string>
+    <string name="update_grant">ھوقۇق بېرىش</string>
+    <string name="update_notice_title">ئەسكەرتىش</string>
+    <string name="update_got_it">چۈشەندىم</string>
+
+    <!-- ئاساسىي سۆزلەشكۈ / يېڭىلاش چۈشەندۈرۈشى -->
+    <string name="update_notes_title">v%1$s · يېڭىلاش چۈشەندۈرۈشى</string>
+    <string name="update_back">قايتىش</string>
+    <string name="update_title_switch_normal">ئۆلچەملىك نەشرىگە ئالماشتۇرۇش</string>
+    <string name="update_title_reinstall">بۇ نەشرىنى قايتا قاچىلاش</string>
+    <string name="update_title_new_version">يېڭى نەشرى بايقالدى</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">بۇ نەشرى چۈشۈرۈلۈپ قايتا قاچىلىنىدۇ (نۆۋەتتىكى ئەپنى قاپلايدۇ).\nبۇ ئىقتىدار يېڭىلاش مېخانىزمىنى رېگرېسسىيە سىناش ئۈچۈن.</string>
+    <string name="update_view_notes">يېڭىلاش چۈشەندۈرۈشىنى كۆرۈش</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud ھازىرچە ئىشلىمەيدۇ</string>
+    <string name="update_download_lanzou">Lanzou Cloud دىن چۈشۈرۈش</string>
+    <string name="update_download_github">GitHub دىن چۈشۈرۈش</string>
+    <string name="update_download_browser">توركۆرگۈدىن چۈشۈرۈش</string>
+    <string name="update_later">ھازىرچە يېڭىلىماسلىق</string>
+    <string name="update_later_switch">ھازىرچە ئالماشتۇرماسلىق</string>
+    <string name="update_skip_version">بۇ نەشرىنى ئاتلاپ كېتىش</string>
+</resources>

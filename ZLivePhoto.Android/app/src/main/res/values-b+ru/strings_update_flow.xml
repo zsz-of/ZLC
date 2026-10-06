@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Русский (ru) — сценарий обновления (ui/UpdateFlow.kt, префикс key: update_).
+  База: res/values/strings_update_flow.xml (китайский, упрощённый).
+-->
+<resources>
+    <string name="update_github_url_missing">Не удалось получить ссылку для скачивания с GitHub. Повторите попытку позже.</string>
+    <string name="update_flavor_standard">Обычная версия</string>
+    <string name="update_flavor_go">Версия Go</string>
+    <string name="update_lanzou_url_missing">Для этой версии нет ссылки Lanzouyun — можно скачать с GitHub.</string>
+    <string name="update_apk_direct_missing">Для этой версии нет прямой ссылки на подходящий APK. Выберите нужный APK на странице релизов GitHub.</string>
+    <string name="update_install_permission_missing">Нет разрешения «Установка неизвестных приложений», автоматическая установка невозможна. Разрешите его в настройках системы и повторите.</string>
+    <string name="update_error_unknown">Неизвестная ошибка</string>
+    <string name="update_fail_lanzou">Ошибка загрузки с Lanzouyun</string>
+    <string name="update_fail_github">Ошибка загрузки с GitHub</string>
+    <string name="update_lanzou_resolving">Разбор ссылки Lanzouyun…</string>
+    <string name="update_lanzou_downloading">Загрузка с Lanzouyun…</string>
+    <string name="update_github_downloading">Загрузка с GitHub…</string>
+    <string name="update_unzipping">Распаковка установочного пакета…</string>
+    <string name="update_notes_empty">Для этой версии нет описания изменений.</string>
+
+    <!-- Диалоги о версии Go -->
+    <string name="update_use_normal_title">Используйте обычную версию</string>
+    <string name="update_use_normal_body">На этом устройстве Android 10 или новее: облегчённая версия Go больше не поддерживается, старая версия не работает.\n\nОбнаружена установленная обычная версия (ZLC) — просто откройте её, чтобы продолжить (Go-версия больше не выпускается, старую можно удалить, чтобы освободить место).</string>
+    <string name="update_open_normal">Открыть обычную версию</string>
+    <string name="update_must_update_title">Для продолжения нужно обновление</string>
+    <string name="update_forced_body">На этом устройстве Android 10 или новее: облегчённая версия Go больше не поддерживается, старая версия не работает; новая Go-версия также не выпускается.\n\nПодключитесь к интернету и нажмите «Повторить», чтобы скачать обычную версию.</string>
+    <string name="update_retry">Повторить</string>
+    <string name="update_switch_normal_body">На этом устройстве Android 10 или новее: облегчённая версия Go больше не поддерживается, старая версия не работает.\nСкачайте и установите обычную версию, чтобы продолжить (новая Go-версия не выпускается).</string>
+
+    <!-- Загрузка, разрешение на установку, результат -->
+    <string name="update_downloading_title">Загрузка обновления</string>
+    <string name="update_cancel">Отмена</string>
+    <string name="update_need_permission_title">Требуется разрешение на установку</string>
+    <string name="update_need_permission_body">Для установки новой версии нужно системное разрешение «Установка неизвестных приложений».\n\nНажмите «Разрешить», включите его в настройках и вернитесь в приложение — установка продолжится автоматически (повторно скачивать не нужно).</string>
+    <string name="update_grant">Разрешить</string>
+    <string name="update_notice_title">Внимание</string>
+    <string name="update_got_it">Понятно</string>
+
+    <!-- Основной диалог и описание изменений -->
+    <string name="update_notes_title">v%1$s · Что нового</string>
+    <string name="update_back">Назад</string>
+    <string name="update_title_switch_normal">Переход на обычную версию</string>
+    <string name="update_title_reinstall">Переустановка этой версии</string>
+    <string name="update_title_new_version">Доступна новая версия</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Эта версия будет скачана и установлена заново (с заменой текущего приложения).\nФункция предназначена для проверки механизма обновлений.</string>
+    <string name="update_view_notes">Смотреть описание обновления</string>
+    <string name="update_lanzou_unavailable">Lanzouyun временно недоступен</string>
+    <string name="update_download_lanzou">Скачать с Lanzouyun</string>
+    <string name="update_download_github">Скачать с GitHub</string>
+    <string name="update_download_browser">Скачать в браузере</string>
+    <string name="update_later">Не сейчас</string>
+    <string name="update_later_switch">Не переключать</string>
+    <string name="update_skip_version">Пропустить эту версию</string>
+</resources>

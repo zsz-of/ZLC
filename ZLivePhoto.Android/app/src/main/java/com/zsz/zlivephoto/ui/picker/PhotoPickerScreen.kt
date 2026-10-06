@@ -554,6 +554,11 @@ fun PhotoPickerScreen(
 
         // ── 缩略图网格（3 列；相册切换横向滚动动画，方向反转项 4）──
         Box(Modifier.weight(1f).fillMaxWidth().clipToBounds()) {
+            // RTL：相册切换的横向滚动方向必须跟随布局方向（阿语/希伯来语下整体反号）
+            val rtlDir = if (
+                androidx.compose.ui.platform.LocalLayoutDirection.current ==
+                androidx.compose.ui.unit.LayoutDirection.Rtl
+            ) -1 else 1
             AnimatedContent(
                 targetState = bucketId,
                 transitionSpec = {
@@ -573,17 +578,17 @@ fun PhotoPickerScreen(
                                             fadeOut(tween(240, easing = AlphaEasing)))
                         }
                     } else if (slideDir >= 0) {
-                        // 切到右侧相册：新内容自右侧进入、旧内容向左滑出（画面向左滚动）
-                        (slideInHorizontally(tween(320, easing = FancyEasing)) { it } +
+                        // 切到右侧相册：新内容自右侧进入、旧内容向左滑出（画面向左滚动）；RTL 下反号
+                        (slideInHorizontally(tween(320, easing = FancyEasing)) { it * rtlDir } +
                                 fadeIn(tween(240, easing = AlphaEasing)))
                             .togetherWith(
-                                slideOutHorizontally(tween(320, easing = FancyEasing)) { -it } +
+                                slideOutHorizontally(tween(320, easing = FancyEasing)) { -it * rtlDir } +
                                         fadeOut(tween(240, easing = AlphaEasing)))
                     } else {
-                        (slideInHorizontally(tween(320, easing = FancyEasing)) { -it } +
+                        (slideInHorizontally(tween(320, easing = FancyEasing)) { -it * rtlDir } +
                                 fadeIn(tween(240, easing = AlphaEasing)))
                             .togetherWith(
-                                slideOutHorizontally(tween(320, easing = FancyEasing)) { it } +
+                                slideOutHorizontally(tween(320, easing = FancyEasing)) { it * rtlDir } +
                                         fadeOut(tween(240, easing = AlphaEasing)))
                     }
                 },

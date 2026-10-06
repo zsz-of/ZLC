@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ar strings — Arabic (العربية, RTL)
+  Translated from res/values/strings_formats.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Standard Arabic. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple" name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract" name="fmt_extract">استخراج</string>
+    <string name="fmt_google" name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor" name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu" name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia" name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo" name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo" name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single" name="fmt_vivo_single">vivo Live Photo أحادي الملف</string>
+    <string name="fmt_xiaomi" name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing" name="fmt_err_apple_mov_missing">لم يُعثر على ملف فيديو ‎.mov‎ بالاسم نفسه</string>
+    <string name="fmt_err_apple_mov_no_ftyp" name="fmt_err_apple_mov_no_ftyp">ملف MOV يفتقد صندوق ftyp</string>
+    <string name="fmt_err_extract_read" name="fmt_err_extract_read">الاستخراج صيغة إخراج ولا يمكن قراءته كصيغة إدخال</string>
+    <string name="fmt_err_no_primary_jpeg" name="fmt_err_no_primary_jpeg">لم يُعثر على صورة JPEG الرئيسية</string>
+    <string name="fmt_err_no_mp4_after_jpeg" name="fmt_err_no_mp4_after_jpeg">لم يُعثر على فيديو MP4 صالح بعد JPEG (يفتقد صندوق ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed" name="fmt_err_mp4_parse_failed">فشل تحليل مسار فيديو MP4</string>
+    <string name="fmt_err_nubia_too_short" name="fmt_err_nubia_too_short">الملف أقصر من أن يكون Live Photo من Nubia</string>
+    <string name="fmt_err_nubia_no_magic" name="fmt_err_nubia_no_magic">يفتقد الرقم السحري nubiaVpfile في نهاية الملف</string>
+    <string name="fmt_err_nubia_jpeg_len" name="fmt_err_nubia_jpeg_len">طول JPEG المسجَّل في النهاية غير صالح: %1$d</string>
+    <string name="fmt_err_nubia_no_padding" name="fmt_err_nubia_no_padding">يفتقد بايتات حشو 0x00 بين JPEG والفيديو</string>
+    <string name="fmt_err_nubia_empty_video" name="fmt_err_nubia_empty_video">طول الفيديو المضمَّن يساوي 0</string>
+    <string name="fmt_err_vivo_no_marker" name="fmt_err_vivo_no_marker">لم يُعثر على علامة vivo livephoto في نهاية JPG</string>
+    <string name="fmt_err_vivo_companion_missing" name="fmt_err_vivo_companion_missing">ملف الفيديو المرافق مفقود: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed" name="fmt_err_vivo_parse_failed">فشل تحليل جسم ملف JPG</string>
+    <string name="fmt_err_vivo_companion_invalid" name="fmt_err_vivo_companion_invalid">ملف MP4 المرافق غير صالح (يفتقد صندوق ftyp)</string>
+</resources>

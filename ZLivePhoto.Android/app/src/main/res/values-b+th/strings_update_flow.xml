@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ไทย (th) — ข้อความขั้นตอนการอัปเดต ตรงกับ ui/UpdateFlow.kt
+  แยกไฟล์: UpdateFlow อยู่ในโมดูลการอัปเดต ตาม i18n-plan ที่ให้หนึ่งไฟล์ strings_*.xml ต่อโมดูล
+  ชื่อ update_flow ใช้เลี่ยงการชนกับงานอื่น
+  คำนำหน้าคีย์: update_; res/values/ เป็นข้อความจีนตัวย่อสำรอง
+  UpdateFlowController (ไม่ใช่ Composable) ใช้ context.getString(...) ส่วนหน้าต่างใช้ stringResource(...)
+  เอกสารนี้เป็นการแปลโดยใช้โมเดลช่วย อาจมีความไม่ถูกต้อง ยินดีรับการแก้ไขจากชุมชน
+-->
+<resources>
+    <!-- ========== ข้อความฝั่งตัวควบคุม ========== -->
+    <string name="update_github_url_missing">ไม่ได้รับที่อยู่ดาวน์โหลดจาก GitHub กรุณาลองใหม่ภายหลัง</string>
+    <string name="update_flavor_standard">เวอร์ชันมาตรฐาน</string>
+    <string name="update_flavor_go">เวอร์ชัน Go</string>
+    <string name="update_lanzou_url_missing">เวอร์ชันนี้ไม่มีลิงก์ดาวน์โหลด Lanzou Cloud สามารถใช้ GitHub แทนได้</string>
+    <string name="update_apk_direct_missing">เวอร์ชันนี้ไม่มีลิงก์ตรงของแพ็กเกจ APK ที่เข้ากัน กรุณาเลือก APK ที่ต้องการบนหน้า Release ของ GitHub</string>
+    <string name="update_install_permission_missing">ยังไม่ได้รับสิทธิ์ “ติดตั้งแอปที่ไม่รู้จัก” จึงติดตั้งอัตโนมัติไม่ได้ กรุณาอนุญาตในการตั้งค่าระบบแล้วลองใหม่</string>
+    <string name="update_error_unknown">ข้อผิดพลาดที่ไม่รู้จัก</string>
+    <string name="update_fail_lanzou">ดาวน์โหลดจาก Lanzou Cloud ล้มเหลว</string>
+    <string name="update_fail_github">ดาวน์โหลดจาก GitHub ล้มเหลว</string>
+    <string name="update_lanzou_resolving">กำลังแยกวิเคราะห์ลิงก์ดาวน์โหลด Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">กำลังดาวน์โหลดจาก Lanzou Cloud…</string>
+    <string name="update_github_downloading">กำลังดาวน์โหลดจาก GitHub…</string>
+    <string name="update_unzipping">กำลังแตกไฟล์แพ็กเกจติดตั้ง…</string>
+    <string name="update_notes_empty">เวอร์ชันนี้ยังไม่มีบันทึกการอัปเดต</string>
+
+    <!-- ========== หน้าต่างที่เกี่ยวกับเวอร์ชัน Go ========== -->
+    <string name="update_use_normal_title">กรุณาใช้เวอร์ชันมาตรฐาน</string>
+    <string name="update_use_normal_body">ระบบของเครื่องนี้เป็น Android 10 ขึ้นไป เวอร์ชัน Go แบบเบาไม่รองรับแล้ว และเวอร์ชันเก่าไม่สามารถใช้ต่อได้\n\nตรวจพบว่าติดตั้งเวอร์ชันมาตรฐาน (ZLC) ไว้แล้ว กรุณาเปิดเวอร์ชันมาตรฐานเพื่อใช้งานต่อ (เวอร์ชันใหม่ไม่มีรุ่นที่เข้ากันได้กับ Go และสามารถถอนการติดตั้งเวอร์ชันเก่าเพื่อคืนพื้นที่ได้)</string>
+    <string name="update_open_normal">เปิดเวอร์ชันมาตรฐาน</string>
+    <string name="update_must_update_title">ต้องอัปเดตก่อนจึงจะใช้งานต่อได้</string>
+    <string name="update_forced_body">ระบบของเครื่องนี้เป็น Android 10 ขึ้นไป เวอร์ชัน Go แบบเบาไม่รองรับแล้ว และเวอร์ชันเก่าไม่สามารถใช้ต่อได้ อีกทั้งเวอร์ชันใหม่ก็ไม่มีรุ่นที่เข้ากันได้กับ Go\n\nกรุณาเชื่อมต่ออินเทอร์เน็ตแล้วแตะ “ลองใหม่” เพื่อรับแพ็กเกจติดตั้งเวอร์ชันมาตรฐาน</string>
+    <string name="update_retry">ลองใหม่</string>
+    <string name="update_switch_normal_body">ระบบของเครื่องนี้เป็น Android 10 ขึ้นไป เวอร์ชัน Go แบบเบาไม่รองรับแล้ว และเวอร์ชันเก่าไม่สามารถใช้ต่อได้\nกรุณาดาวน์โหลดและติดตั้งเวอร์ชันมาตรฐานเพื่อใช้งานต่อ (เวอร์ชันใหม่ไม่มีรุ่นที่เข้ากันได้กับ Go)</string>
+
+    <!-- ========== การดาวน์โหลด / สิทธิ์ติดตั้ง / ข้อความผลลัพธ์ ========== -->
+    <string name="update_downloading_title">ดาวน์โหลดการอัปเดต</string>
+    <string name="update_cancel">ยกเลิก</string>
+    <string name="update_need_permission_title">ต้องได้รับสิทธิ์ติดตั้ง</string>
+    <string name="update_need_permission_body">การติดตั้งเวอร์ชันใหม่ต้องใช้สิทธิ์ “ติดตั้งแอปที่ไม่รู้จัก” ของระบบ\n\nแตะ “ให้สิทธิ์” อนุญาตในการตั้งค่าแล้วกลับเข้าสู่แอป ระบบจะติดตั้งต่อโดยอัตโนมัติ (ไม่ต้องดาวน์โหลดใหม่)</string>
+    <string name="update_grant">ให้สิทธิ์</string>
+    <string name="update_notice_title">แจ้งเตือน</string>
+    <string name="update_got_it">รับทราบ</string>
+
+    <!-- ========== หน้าต่างหลัก / บันทึกการอัปเดต ========== -->
+    <string name="update_notes_title">v%1$s · บันทึกการอัปเดต</string>
+    <string name="update_back">ย้อนกลับ</string>
+    <string name="update_title_switch_normal">สลับไปเวอร์ชันมาตรฐาน</string>
+    <string name="update_title_reinstall">ติดตั้งเวอร์ชันนี้ใหม่</string>
+    <string name="update_title_new_version">พบเวอร์ชันใหม่</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">ระบบจะดาวน์โหลดและติดตั้งเวอร์ชันนี้ใหม่ (ทับแอปปัจจุบัน)\nฟีเจอร์นี้ใช้สำหรับทดสอบการทำงานของการอัปเดต</string>
+    <string name="update_view_notes">ดูบันทึกการอัปเดต</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud ใช้งานไม่ได้ชั่วคราว</string>
+    <string name="update_download_lanzou">ดาวน์โหลดจาก Lanzou Cloud</string>
+    <string name="update_download_github">ดาวน์โหลดจาก GitHub</string>
+    <string name="update_download_browser">ดาวน์โหลดผ่านเบราว์เซอร์</string>
+    <string name="update_later">ไว้ภายหลัง</string>
+    <string name="update_later_switch">ค่อยสลับ</string>
+    <string name="update_skip_version">ข้ามเวอร์ชันนี้</string>
+</resources>

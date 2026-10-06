@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Deutsch (de) — Einstellungsbildschirm (ui/SettingsScreen.kt, Key-Präfix: settings_).
+  Basis: res/values/strings_settings.xml (Chinesisch, vereinfacht).
+  Platzhalter: %1$s / %1$d.
+  Werden nicht übersetzt und bleiben im Code: "@毛血旺o", "Trae · GML · DeepSeek · Kimi",
+  "GPL-3.0", "H.265"/"H.264", GitHub-URL.
+-->
+<resources>
+
+    <!-- Allgemein -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_cd_back">Zurück</string>
+    <string name="settings_btn_apply">Übernehmen</string>
+    <string name="settings_btn_cancel">Abbrechen</string>
+    <string name="settings_btn_close">Schließen</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Unterstützen</string>
+
+    <!-- Abschnittsüberschriften -->
+    <string name="settings_section_general">Allgemein</string>
+    <string name="settings_section_appearance">Darstellung</string>
+    <string name="settings_section_language">Sprache</string>
+    <string name="settings_section_defaults">Standardeinstellungen</string>
+    <string name="settings_section_output">Ausgabe</string>
+    <string name="settings_section_transcode">Videokonvertierung</string>
+    <string name="settings_section_about">Über die App</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Danksagung und Unterstützung</string>
+    <string name="settings_section_opensource">Open Source und Lizenz</string>
+
+    <!-- Allgemein -->
+    <string name="settings_startup_check_title">Beim Start nach Updates suchen</string>
+    <string name="settings_startup_check_subtitle">Beim Start automatisch neue Versionen auf GitHub abrufen und den Download anbieten</string>
+    <string name="settings_haptics_title">Vibrationsfeedback</string>
+    <string name="settings_haptics_subtitle">Haptisches Feedback beim Tippen auf Schaltflächen und bei Statusänderungen</string>
+    <string name="settings_bounce_title">Federnde Schaltflächenanimation</string>
+    <string name="settings_bounce_subtitle">Verkleinern und Zurückfedern beim Drücken von Schaltflächen</string>
+
+    <!-- Darstellung -->
+    <string name="settings_theme_system">Wie im System</string>
+    <string name="settings_theme_dark">Dunkel</string>
+    <string name="settings_theme_light">Hell</string>
+    <string name="settings_dynamic_theme_title">Dynamische Farben (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">Den Farben des Systemhintergrunds folgen (Android 12+); nach dem Ausschalten werden die voreingestellten Farben unten verwendet</string>
+    <string name="settings_preset_colors_title">Voreingestellte Themenfarben</string>
+    <string name="settings_preset_current">Aktuell: %1$s</string>
+    <string name="settings_preset_disabled_hint">Verfügbar, nachdem „Dynamische Farben (Material You)“ ausgeschaltet wurde</string>
+    <string name="settings_custom">Benutzerdefiniert</string>
+    <string name="settings_custom_color_title">Benutzerdefinierte Themenfarbe</string>
+    <string name="settings_cd_custom_palette">Benutzerdefinierte Palette</string>
+    <string name="settings_hue_value">Farbton %1$d°</string>
+
+    <!-- App-Sprache -->
+    <string name="settings_language_dialog_title">App-Sprache wählen</string>
+    <string name="settings_language_count">Insgesamt %1$d Sprachen</string>
+
+    <!-- Standardeinstellungen -->
+    <string name="settings_reminder_dialogs_title">Dialoge „nicht mehr erinnern“</string>
+    <string name="settings_reminder_dialogs_subtitle">Alle Schalter für „nicht mehr erinnern“ verwalten</string>
+    <string name="settings_reminder_hint">Ein eingeschalteter Schalter bedeutet „nicht mehr erinnern“; nach dem Ausschalten erscheint der Hinweis beim nächsten Auslösen der betreffenden Situation erneut.</string>
+
+    <!-- Ausgabe -->
+    <string name="settings_preserve_folders_title">Ordnerstruktur der Quelle beibehalten</string>
+    <string name="settings_preserve_folders_subtitle">Ergebnisse werden in Unterordnern mit den ursprünglichen Albumnamen abgelegt; nach dem Ausschalten landen alle in einem einzigen Ordner</string>
+
+    <!-- Über die App -->
+    <string name="settings_about_title">Über die App</string>
+    <string name="settings_about_subtitle">Version · Updateprüfung · Danksagung</string>
+    <string name="settings_check_update_title">Nach Updates suchen</string>
+    <string name="settings_check_update_subtitle">Die neueste Version von GitHub Releases abrufen</string>
+    <string name="settings_checking">Suche läuft…</string>
+    <string name="settings_update_available">v%1$s verfügbar</string>
+    <string name="settings_up_to_date">Es ist die neueste Version</string>
+    <string name="settings_network_error">Netzwerkfehler, bitte später erneut versuchen</string>
+    <string name="settings_reinstall_title">Diese Version neu installieren</string>
+    <string name="settings_reinstall_subtitle">Die aktuelle neueste Version herunterladen und darüber installieren (zum Testen des Updates)</string>
+    <string name="settings_reinstall_newer_hint">Ein Update auf v%1$s ist verfügbar – bitte zuerst „Nach Updates suchen“ verwenden</string>
+    <string name="settings_version_title">Version</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Unterstützung per Alipay</string>
+    <string name="settings_alipay_subtitle">Die Entwicklung unterstützen</string>
+    <string name="settings_coolapk_subtitle">Coolapk-Nutzer · vielen Dank für die Unterstützung</string>
+    <string name="settings_ai_credits_subtitle">Dank an KI-Entwicklungsumgebungen und KI-Modelle für die Unterstützung bei der Entwicklung</string>
+    <string name="settings_github_title">Open-Source-Projekt auf GitHub</string>
+    <string name="settings_license_title">Open-Source-Lizenz</string>
+    <string name="settings_sponsor_dialog_title">Vielen Dank für die Unterstützung</string>
+    <string name="settings_sponsor_dialog_text">Vielen Dank, dass Sie diese App unterstützen möchten!\n\nWenn Sie noch studieren oder finanziell noch nicht auf eigenen Beinen stehen, geben Sie bitte kein Geld aus:\nBehalten Sie diese Wertschätzung einfach im Herzen und nutzen Sie die App weiter – das ist die beste Unterstützung für mich.\n\nWenn Sie dennoch unterstützen möchten, ist jeder Betrag willkommen – ich investiere ihn in Pflege und neue Funktionen :)</string>
+    <string name="settings_alipay_missing_title">Alipay ist nicht installiert</string>
+    <string name="settings_alipay_missing_text">Alipay wurde nicht gefunden, eine Unterstützung ist derzeit nicht möglich.\n\nKein Problem – vielen Dank in jedem Fall für Ihre Freundlichkeit!</string>
+
+    <!-- Videokonvertierung -->
+    <string name="settings_transcoder_title">Eingebauter Encoder</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Neukodieren</string>
+    <string name="settings_transcode_mode_remux">Nur Container neu verpacken (empfohlen)</string>
+    <string name="settings_transcode_mode_off">Encoder nicht verwenden</string>
+    <string name="settings_transcode_params_title">Kodierparameter</string>
+    <string name="settings_transcode_params_subtitle">Qualitäts- und Komprimierungsparameter beim Neukodieren</string>
+    <string name="settings_transcode_params_disabled">Wirkt nur, wenn unter „Modus“ die Option „Neukodieren“ gewählt ist</string>
+    <string name="settings_crf_value">Qualität CRF: %1$d</string>
+    <string name="settings_crf_hint">Je kleiner der Wert, desto höher die Qualität und desto größer die Datei (Standard 18)</string>
+    <string name="settings_encoder_title">Encoder</string>
+    <string name="settings_compress_preset_title">Komprimierungsprofil</string>
+
+</resources>

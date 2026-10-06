@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tiếng Việt (vi): tên hiển thị của các trình cắm định dạng. Tiền tố khóa: fmt_.
+  Cơ sở: res/values/strings_formats.xml (tiếng Trung giản thể, ngôn ngữ dự phòng).
+  Lưu ý: FormatPlugin.display vẫn trả văn bản tiếng Trung dự phòng cho các điểm gọi cũ
+  (MainActivity/AlbumScanner/Converter); bảng LEGACY_ZH_NAMES tương ứng 1-1 với tệp này —
+  khi đổi văn bản phải cập nhật bảng đó cho tới khi các điểm gọi cũ chuyển sang displayRes.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Tách</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Live Photo Honor</string>
+    <string name="fmt_meizu">Live Photo Meizu</string>
+    <string name="fmt_nubia">Live Photo Nubia</string>
+    <string name="fmt_oppo">Live Photo OPPO</string>
+    <string name="fmt_vivo">Live Photo vivo</string>
+    <string name="fmt_vivo_single">Live Photo vivo (tệp đơn)</string>
+    <string name="fmt_xiaomi">Live Photo Xiaomi</string>
+
+    <!--
+      Thông báo lỗi người dùng thấy ở phía trình cắm (văn bản IOException): đi qua
+      MainActivity/Converter (e.message) vào thanh trạng thái và "chi tiết trạng thái",
+      nên cũng được tách thành tài nguyên. Trình cắm không có Context — dùng
+      CoreText.of(...) (core/FfmpegAddon.kt; trước khi khởi tạo trả về chuỗi rỗng nên
+      kiểm thử JVM thuần không chạm API Android), đúng quy ước của Converter/AppUpdater.
+    -->
+    <string name="fmt_err_apple_mov_missing">Không tìm thấy tệp video .mov cùng tên</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Tệp MOV thiếu box ftyp</string>
+    <string name="fmt_err_extract_read">Tách là định dạng đầu ra, không nên đọc như định dạng đầu vào</string>
+    <string name="fmt_err_no_primary_jpeg">Không tìm thấy ảnh JPEG chính</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Không tìm thấy video MP4 hợp lệ sau JPEG (thiếu box ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">Không phân tích được luồng video MP4</string>
+    <string name="fmt_err_nubia_too_short">Tệp quá ngắn, không giống Live Photo Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Thiếu magic number nubiaVpfile ở cuối tệp</string>
+    <string name="fmt_err_nubia_jpeg_len">Độ dài JPEG ghi ở cuối tệp không hợp lệ: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Thiếu byte đệm 0x00 giữa JPEG và video</string>
+    <string name="fmt_err_nubia_empty_video">Độ dài video nhúng bằng 0</string>
+    <string name="fmt_err_vivo_no_marker">Không tìm thấy dấu vivo livephoto ở cuối JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Thiếu tệp video đi kèm: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Không phân tích được phần chính của JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">MP4 đi kèm không hợp lệ (thiếu box ftyp)</string>
+</resources>

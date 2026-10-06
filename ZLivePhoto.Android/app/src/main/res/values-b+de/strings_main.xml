@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Deutsch (de) — Hauptbildschirm und Hintergrundabläufe (MainActivity, Key-Präfix: main_).
+  Basis: res/values/strings_main.xml (Chinesisch, vereinfacht).
+  Platzhalter: %1$s / %1$d. Pluralkategorien: one / other.
+-->
+<resources>
+    <!-- ── Statusleiste / Hinweise ── -->
+    <string name="main_status_ready">Bereit</string>
+    <string name="main_status_location_granted">Standortberechtigung erteilt: GPS-Metadaten bleiben nach der Konvertierung erhalten</string>
+    <string name="main_status_location_denied">Keine Standortberechtigung: Nach der Konvertierung verlieren die Fotos ihre GPS-Standortdaten</string>
+    <string name="main_status_all_files_granted">Berechtigung „Zugriff auf alle Dateien“ erteilt: Ergebnisse werden direkt in den Galerieordner geschrieben und die Standortdaten bleiben vollständig erhalten</string>
+    <string name="main_status_all_files_denied">Berechtigung „Zugriff auf alle Dateien“ nicht erteilt: Auf einzelnen Geräten können nach der Konvertierung Standortdaten verloren gehen</string>
+    <string name="main_status_read_granted">Berechtigung zum Lesen von Fotos und Videos erteilt</string>
+    <string name="main_status_video_missing">Berechtigung erteilt, aber Videoberechtigung fehlt: das zugehörige Video von Zwei-Datei-Motion-Photos kann nicht gefunden werden</string>
+    <string name="main_status_permission_denied">Keine Berechtigung erteilt; „Dateien hinzufügen“ kann erneut angetippt werden</string>
+    <string name="main_status_folder_not_selected">Kein Ordner ausgewählt</string>
+    <string name="main_status_folder_unavailable">Auf den gewählten Ordner kann nicht zugegriffen werden (nur lokale Speicherordner werden unterstützt)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Die letzte Sitzung wurde wiederhergestellt (%1$d Datei)</item>
+        <item quantity="other">Die letzte Sitzung wurde wiederhergestellt (%1$d Dateien)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Ein unerwartetes Beenden wurde erkannt; die unvollständige Liste wurde geleert</string>
+    <string name="main_status_compose_blocks_extract">Die Warteschlange enthält Zusammenfüge-Aufgaben; ein Wechsel zum Extrahieren ist nicht möglich</string>
+    <string name="main_status_replace_off_mutex">Ersetzungsmodus ausgeschaltet (nicht mit „Originale nach der Verarbeitung löschen“ kombinierbar)</string>
+    <string name="main_status_delete_needs_all_files">Für das automatische Löschen der Originale ist die Berechtigung „Zugriff auf alle Dateien“ nötig – bitte zuerst erteilen</string>
+    <string name="main_status_replace_off">Ersetzungsmodus ausgeschaltet; Ergebnisse werden wieder in den Galerieordner geschrieben</string>
+    <string name="main_status_replace_needs_all_files">Der Ersetzungsmodus benötigt die Berechtigung „Zugriff auf alle Dateien“ – bitte zuerst erteilen</string>
+    <string name="main_status_delete_off_mutex">„Originale nach der Verarbeitung löschen“ ausgeschaltet (nicht mit dem Ersetzungsmodus kombinierbar)</string>
+    <string name="main_status_loading_albums">Galerie wird gelesen…</string>
+    <string name="main_status_no_albums">Keine Alben gefunden</string>
+    <string name="main_status_compose_no_photo">Kein Foto ausgewählt, Zusammenfügen nicht möglich</string>
+    <string name="main_status_compose_no_video">Kein Video ausgewählt, Zusammenfügen nicht möglich</string>
+    <string name="main_status_compose_all_added">Alle ausgewählten Fotos sind bereits in der Liste</string>
+    <string name="main_status_compose_paired">Fotos: %1$d, Videos: %2$d; entsprechend der kleineren Anzahl wurden %3$d Aufgabenpaare hinzugefügt</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d Zusammenfüge-Aufgabe hinzugefügt – zum Starten auf „Konvertierung starten“ tippen</item>
+        <item quantity="other">%1$d Zusammenfüge-Aufgaben hinzugefügt – zum Starten auf „Konvertierung starten“ tippen</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (Ausgabeformat automatisch auf Google umgestellt)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">%1$d geteiltes Bild wird importiert…</item>
+        <item quantity="other">%1$d geteilte Bilder werden importiert…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import fehlgeschlagen: %1$s</string>
+    <string name="main_status_import_done_partial">Import abgeschlossen: %1$d erfolgreich, %2$d fehlgeschlagen</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import abgeschlossen: insgesamt %1$d Datei importiert</item>
+        <item quantity="other">Import abgeschlossen: insgesamt %1$d Dateien importiert</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import gestoppt: %1$d erfolgreich, %2$d fehlgeschlagen</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d Datei wird importiert…</item>
+        <item quantity="other">%1$d Dateien werden importiert…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importiere %1$d/%2$d…</string>
+    <string name="main_status_stopping">Wird gestoppt… (nach Abschluss der aktuellen Datei)</string>
+    <string name="main_status_stopping_import">Import wird gestoppt…</string>
+    <string name="main_status_removed">%1$s entfernt</string>
+    <string name="main_status_cleared">Geleert</string>
+    <string name="main_status_nothing_to_convert">Keine Dateien zum Konvertieren</string>
+    <string name="main_status_folder_unreadable">Der gewählte Ordner konnte nicht gelesen werden</string>
+    <string name="main_status_scanning_folder">Ordner wird durchsucht…</string>
+    <string name="main_status_no_images">Im gewählten Ordner wurden keine Bilder gefunden</string>
+    <string name="main_status_batch_importing">Stapelimport %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Stapelimport gestoppt: insgesamt %1$d Motion Photo importiert</item>
+        <item quantity="other">Stapelimport gestoppt: insgesamt %1$d Motion Photos importiert</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Stapelimport gestoppt: insgesamt %1$d Motion Photo importiert, %2$d Dateien ohne Bewegung übersprungen</item>
+        <item quantity="other">Stapelimport gestoppt: insgesamt %1$d Motion Photos importiert, %2$d Dateien ohne Bewegung übersprungen</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Stapelimport abgeschlossen: insgesamt %1$d Motion Photo importiert</item>
+        <item quantity="other">Stapelimport abgeschlossen: insgesamt %1$d Motion Photos importiert</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Stapelimport abgeschlossen: insgesamt %1$d Motion Photo importiert, %2$d Dateien ohne Bewegung übersprungen</item>
+        <item quantity="other">Stapelimport abgeschlossen: insgesamt %1$d Motion Photos importiert, %2$d Dateien ohne Bewegung übersprungen</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Gestoppt: %2$d von %1$d Dateien verarbeitet, %3$d Originaldateien ersetzt</string>
+    <string name="main_status_stopped_export">Gestoppt: %2$d von %1$d Dateien verarbeitet, %3$d in die Galerie exportiert</string>
+    <string name="main_status_done_replace_reason">Fertig: %1$d Dateien verarbeitet, %2$d Originaldateien ersetzt (Grund: %3$s)</string>
+    <string name="main_status_done_export_reason">Fertig: %1$d Dateien verarbeitet, %2$d in die Galerie exportiert (Grund: %3$s)</string>
+    <string name="main_status_done_replace">Fertig: %1$d Dateien verarbeitet, %2$d Originaldateien ersetzt</string>
+    <string name="main_status_done_export">Fertig: %1$d Dateien verarbeitet, %2$d in die Galerie exportiert</string>
+    <string name="main_status_keep_originals">%1$s; die Berechtigung „Zugriff auf alle Dateien“ wurde nicht erteilt, die Originale bleiben erhalten</string>
+
+    <!-- ── Informationen zum Listeneintrag ── -->
+    <string name="main_info_detecting">Erkennung läuft…</string>
+    <string name="main_info_unrecognized">Nicht erkanntes Motion-Photo-Format</string>
+    <string name="main_info_converting">Konvertierung läuft…</string>
+    <string name="main_info_compose_task">Zusammenfüge-Aufgabe (zum Starten auf „Konvertierung starten“ tippen)</string>
+    <string name="main_info_done_replaced">Fertig (%1$d Originaldateien ersetzt)</string>
+    <string name="main_info_done_skipped">Fertig (übersprungen: Namenskonflikt)</string>
+    <string name="main_info_done_exported">Fertig (%1$d exportiert)</string>
+    <string name="main_info_failed">Fehlgeschlagen: %1$s</string>
+
+    <!-- ── Fortschrittsdetails ── -->
+    <string name="main_progress_added">%1$d/%2$d hinzugefügt</string>
+    <string name="main_progress_processed">%1$d/%2$d verarbeitet</string>
+    <string name="main_progress_imported">%1$d/%2$d importiert</string>
+
+    <!-- ── Berechtigungsdialoge ── -->
+    <string name="main_dialog_permission_title">Zugriff auf Fotos und Videos erforderlich</string>
+    <string name="main_dialog_permission_message">Diese App benötigt Zugriff auf die Fotos und Videos auf Ihrem Gerät:\n\n• Fotoberechtigung: die Gerätegalerie durchsuchen und darin Motion Photos erkennen\n• Videoberechtigung: das zugehörige Video von Zwei-Datei-Motion-Photos finden\n• Standortberechtigung: die GPS-Metadaten in Fotos erhalten (ohne sie gehen nach der Konvertierung die Standortdaten verloren)\n\nBei Ablehnung steht die eingebaute Auswahl nicht zur Verfügung; „Dateien hinzufügen“ kann später erneut angetippt werden, um die Berechtigung zu erteilen.</string>
+    <string name="main_dialog_settings_title">Zugriff auf Fotos und Videos muss manuell erteilt werden</string>
+    <string name="main_dialog_settings_message">Sie haben zuvor „Nicht mehr fragen“ gewählt, daher zeigt das System den Berechtigungsdialog nicht mehr an.\n\nBitte die App-Detailseite öffnen → Berechtigungen → Fotos und Videos, den Zugriff manuell erteilen und zur App zurückkehren.\n\nWichtig: Es müssen beide Berechtigungen erteilt werden – „Fotos“ und „Videos“ –, sonst kann das zugehörige Video von Zwei-Datei-Motion-Photos nicht gefunden werden.</string>
+
+    <!-- ── Dialoge zu „Zugriff auf alle Dateien“ ── -->
+    <string name="main_dialog_allfiles_title_delete">Für das automatische Löschen der Originale ist „Zugriff auf alle Dateien“ nötig</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Dieses Gerät unterstützt das automatische Löschen der Originale nicht</string>
+    <string name="main_dialog_allfiles_title_replace">Der Ersetzungsmodus benötigt „Zugriff auf alle Dateien“</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Dieses Gerät unterstützt den Ersetzungsmodus nicht</string>
+    <string name="main_dialog_allfiles_title_location">Berechtigung „Zugriff auf alle Dateien“ empfohlen</string>
+    <string name="main_dialog_allfiles_delete_message">„Originale nach der Verarbeitung löschen“ löscht die Originaldateien auf dem Datenträger (das Foto und sein zugehöriges Video); das lässt sich nicht rückgängig machen. Daher muss zuerst die Berechtigung „Zugriff auf alle Dateien“ erteilt werden.\n\nErst danach wird der Schalter nutzbar und kann selbst eingeschaltet werden.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Das aktuelle System (Android 10 und älter) bietet die Berechtigung „Zugriff auf alle Dateien“ nicht; Dateien können daher nicht direkt vom Datenträger gelöscht werden, und das automatische Löschen der Originale wird nicht unterstützt.\n\nSie können die Originale nach der Konvertierung manuell über die Systemgalerie aufräumen.</string>
+    <string name="main_dialog_allfiles_replace_message">Der „Ersetzungsmodus“ schreibt das Konvertierungsergebnis direkt in die Originaldatei auf dem Datenträger (überschreibt den Inhalt); das lässt sich nicht rückgängig machen. Daher muss zuerst die Berechtigung „Zugriff auf alle Dateien“ erteilt werden.\n\nErst danach wird der Schalter nutzbar und kann selbst eingeschaltet werden.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Das aktuelle System (Android 10 und älter) bietet die Berechtigung „Zugriff auf alle Dateien“ nicht; Originaldateien können daher nicht direkt überschrieben werden, und der Ersetzungsmodus wird nicht unterstützt.\n\nSie können weiterhin auf dem üblichen Weg konvertieren; das Ergebnis landet im Galerieordner.</string>
+    <string name="main_dialog_allfiles_location_message">Auf manchen Geräten (zum Beispiel Meizu) entfernt das Schreiben über die Systemgalerie die GPS-Standortdaten, sodass die Fotos nach der Konvertierung ihren Standort verlieren.\n\nNach Erteilung von „Zugriff auf alle Dateien“ schreibt die App direkt in den Galerieordner und erhält die Standortmetadaten vollständig.\n\nAuch ohne diese Berechtigung funktioniert die Konvertierung, auf einzelnen Geräten können jedoch Standortdaten verloren gehen.</string>
+
+    <!-- ── Dialog zum Namenskonflikt der Ausgabedatei ── -->
+    <string name="main_dialog_conflict_title">Namenskonflikt bei der Ausgabedatei</string>
+    <string name="main_dialog_conflict_message">Im Ausgabeordner existiert bereits eine Datei mit diesem Namen:\n%1$s\n\nBitte die gewünschte Vorgehensweise wählen.</string>
+    <string name="main_label_conflict_always">Diese Vorgehensweise für alle weiteren Konflikte verwenden</string>
+
+    <!-- ── Schaltflächen der Dialoge ── -->
+    <string name="main_btn_grant">Erteilen</string>
+    <string name="main_btn_deny">Ablehnen</string>
+    <string name="main_btn_go_settings">Zu den Einstellungen</string>
+    <string name="main_btn_cancel">Abbrechen</string>
+    <string name="main_btn_grant_access">Erteilen</string>
+    <string name="main_btn_got_it">Verstanden</string>
+    <string name="main_btn_not_now">Jetzt nicht</string>
+    <string name="main_btn_skip">Überspringen</string>
+    <string name="main_btn_overwrite">Überschreiben</string>
+    <string name="main_btn_auto_rename">Automatisch umbenennen</string>
+
+    <!-- ── Ergebnis der Konvertierung / Gründe für Exportfehler ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d Originaldatei gelöscht</item>
+        <item quantity="other">%1$d Originaldateien gelöscht</item>
+    </plurals>
+    <string name="main_delete_nothing">Es müssen keine Originale gelöscht werden</string>
+    <string name="main_delete_partial">%1$d Originaldateien gelöscht (%2$d konnten nicht gelöscht werden und bleiben erhalten)</string>
+    <string name="main_delete_failed">Die Originale konnten nicht gelöscht werden (Datei ist belegt oder die Schreibberechtigung fehlt); sie bleiben erhalten</string>
+    <string name="main_export_missing_output">Das Konvertierungsergebnis fehlt oder ist leer: %1$s</string>
+    <string name="main_export_missing_output_bare">Das Konvertierungsergebnis fehlt oder ist leer</string>
+    <string name="main_export_insert_null">MediaStore insert hat null zurückgegeben</string>
+    <string name="main_export_output_stream">Der MediaStore-Ausgabestream ist nicht verfügbar</string>
+    <string name="main_export_write_failed">Schreiben in MediaStore fehlgeschlagen: %1$s</string>
+    <string name="main_export_mkdir_failed">Der Galerieordner %1$s konnte nicht erstellt werden</string>
+    <string name="main_export_dir_write_failed">Schreiben in den Galerieordner fehlgeschlagen: %1$s</string>
+    <string name="main_export_no_source">Die Quelldatei konnte nicht gefunden werden, das Ersetzen wurde übersprungen</string>
+    <string name="main_export_companion_failed">Die zugehörige Datei konnte nicht zurückgeschrieben werden: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Der Ordner der Quelldatei ist nicht beschreibbar, die zugehörige Datei wurde nicht zurückgeschrieben</string>
+    <string name="main_export_source_dir_unavailable">Der Ordner der Quelldatei ist nicht verfügbar: %1$s</string>
+    <string name="main_export_replace_failed">Ersetzen der Quelldatei fehlgeschlagen: %1$s</string>
+    <string name="main_export_replace_failed_bare">Ersetzen der Quelldatei fehlgeschlagen</string>
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 臺灣繁體（zh-TW）用語版本：由 zh-Hant 通用譯本套用臺灣用語表產生（網絡→網路、用戶→使用者、壁紙→桌布、彈窗→彈出視窗、對話框→對話方塊）。 -->
+<!--
+  更新流程文案（對應 ui/UpdateFlow.kt）。key 前綴 update_。
+  `\n` 為換行；佔位符用 %1$s / %2$s。
+-->
+<resources>
+    <!-- 控制器側提示 -->
+    <string name="update_github_url_missing">未取得 GitHub 下載網址，請稍後重試。</string>
+    <string name="update_flavor_standard">標準版</string>
+    <string name="update_flavor_go">Go 版</string>
+    <string name="update_lanzou_url_missing">該版本未提供藍奏雲下載連結，可改用 GitHub 下載。</string>
+    <string name="update_apk_direct_missing">該版本沒有提供與本版本相符的安裝檔直連，請到 GitHub 發布頁選擇對應的 APK。</string>
+    <string name="update_install_permission_missing">未獲得「安裝未知應用程式」權限，無法自動安裝。請到系統設定中允許後重試。</string>
+    <string name="update_error_unknown">未知錯誤</string>
+    <string name="update_fail_lanzou">藍奏雲下載失敗</string>
+    <string name="update_fail_github">GitHub 下載失敗</string>
+    <string name="update_lanzou_resolving">正在解析藍奏雲下載連結…</string>
+    <string name="update_lanzou_downloading">正在從藍奏雲下載…</string>
+    <string name="update_github_downloading">正在從 GitHub 下載…</string>
+    <string name="update_unzipping">正在解壓縮安裝檔…</string>
+    <string name="update_notes_empty">該版本暫無更新說明。</string>
+
+    <!-- Go 版相關彈窗 -->
+    <string name="update_use_normal_title">請使用正常版本</string>
+    <string name="update_use_normal_body">本機系統為 Android 10 及以上，Go 輕量版已不再適用，舊版本無法繼續使用。\n\n偵測到本機已安裝正常版本（ZLC），請直接開啟正常版本繼續使用（新版不再提供 Go 相容版本，舊版本可解除安裝以釋放空間）。</string>
+    <string name="update_open_normal">開啟正常版</string>
+    <string name="update_must_update_title">必須更新後才能繼續使用</string>
+    <string name="update_forced_body">本機系統為 Android 10 及以上，Go 輕量版已不再適用，舊版本無法繼續使用；新版也不再提供 Go 相容版本。\n\n請連接網路後點擊「重試」取得正常版本安裝檔。</string>
+    <string name="update_retry">重試</string>
+    <string name="update_switch_normal_body">本機系統為 Android 10 及以上，Go 輕量版已不再適用，舊版本無法繼續使用。\n請下載並安裝正常版本後繼續使用（新版不再提供 Go 相容版本）。</string>
+
+    <!-- 下載 / 安裝權限 / 結果提示 -->
+    <string name="update_downloading_title">下載更新</string>
+    <string name="update_cancel">取消</string>
+    <string name="update_need_permission_title">需要安裝權限</string>
+    <string name="update_need_permission_body">安裝新版本需要系統「安裝未知應用程式」權限。\n\n點擊「前往授權」，在設定中允許後返回應用程式，將自動繼續安裝（無需重新下載）。</string>
+    <string name="update_grant">前往授權</string>
+    <string name="update_notice_title">提示</string>
+    <string name="update_got_it">知道了</string>
+
+    <!-- 主彈窗 / 更新說明 -->
+    <string name="update_notes_title">v%1$s · 更新說明</string>
+    <string name="update_back">返回</string>
+    <string name="update_title_switch_normal">切換到正常版本</string>
+    <string name="update_title_reinstall">重新安裝本版本</string>
+    <string name="update_title_new_version">發現新版本</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">將下載並重新安裝該版本（覆寫目前應用程式）。\n此功能用於回歸測試更新機制。</string>
+    <string name="update_view_notes">檢視更新說明</string>
+    <string name="update_lanzou_unavailable">藍奏雲暫不可用</string>
+    <string name="update_download_lanzou">從藍奏雲下載</string>
+    <string name="update_download_github">從 GitHub 下載</string>
+    <string name="update_download_browser">從瀏覽器下載</string>
+    <string name="update_later">暫不更新</string>
+    <string name="update_later_switch">暫不切換</string>
+    <string name="update_skip_version">略過此版本</string>
+</resources>

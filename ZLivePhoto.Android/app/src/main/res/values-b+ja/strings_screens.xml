@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  メイン画面 / アルバム選択ツールの文言（日本語 / ja）。key は values/strings_screens.xml と 1 対 1 で対応。
+  翻訳品質：A。
+-->
+<resources>
+    <!-- トップバーのサブタイトル -->
+    <string name="screen_app_subtitle">ライブフォト形式の相互変換</string>
+    <!-- トップバー右側の選択ファイル数（数量に依存） -->
+    <plurals name="screen_file_count">
+        <item quantity="other">%1$d 個のファイル</item>
+    </plurals>
+    <!-- トップバーの設定入口（スクリーンリーダー読み上げ専用） -->
+    <string name="screen_settings">設定</string>
+
+    <!-- 出力形式の選択ダイアログ -->
+    <string name="screen_select_output_format">出力形式を選択</string>
+    <string name="screen_selected">選択済み</string>
+    <string name="screen_vivo_single_warning">⚠ 古すぎる機種ではこの形式を認識できない可能性があります</string>
+    <string name="screen_extract_blocked">⚠ キューに合成タスクが含まれているため、分解を選択できません</string>
+
+    <!-- 形式オプションの短い名前（長い名前は strings_formats.xml の fmt_*） -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo（単一ファイル）</string>
+    <string name="screen_format_vivo">vivo（2 ファイル）</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">分解</string>
+
+    <!-- ツールボックスの BottomSheet -->
+    <string name="screen_toolbox">ツールボックス</string>
+    <string name="screen_batch_import">一括インポート</string>
+    <string name="screen_batch_import_desc">アルバム全体をスキャンしてライブフォトを一括認識します</string>
+    <string name="screen_compose">ライブフォトを合成</string>
+    <string name="screen_compose_desc">写真 1 枚と動画 1 本を選んで組み合わせて合成します</string>
+    <string name="screen_replace_mode">置き換えモード</string>
+    <string name="screen_replace_mode_desc">変換結果を元のファイルに直接書き戻し、新しいファイルを作成しません</string>
+    <string name="screen_need_all_files_access_hint">「すべてのファイルへのアクセス」権限が必要です。ここをタップして許可してください</string>
+    <string name="screen_agree_and_enable">同意して有効にする</string>
+
+    <!-- 空の状態 / 下部コントロールパネル -->
+    <string name="screen_empty_no_files">まだファイルが追加されていません</string>
+    <string name="screen_view_detail">詳細を表示</string>
+    <string name="screen_add_files">ファイルを追加</string>
+    <string name="screen_output_format">出力形式：%1$s</string>
+    <string name="screen_delete_original">処理後に元の写真を削除</string>
+    <string name="screen_need_all_files_access_view">「すべてのファイルへのアクセス」権限が必要です。タップして表示</string>
+    <string name="screen_clear">クリア</string>
+    <string name="screen_stop">処理を停止</string>
+    <string name="screen_start_convert">変換を開始</string>
+
+    <!-- ステータス詳細ダイアログ -->
+    <string name="screen_status_detail">ステータス詳細</string>
+    <string name="screen_long_press_copy">テキストを長押しすると選択してコピーできます</string>
+    <string name="screen_copy">コピー</string>
+    <string name="screen_close">閉じる</string>
+
+    <!-- アルバム選択ツール -->
+    <string name="screen_back">戻る</string>
+    <string name="screen_picker_title_select">ライブフォトを選択</string>
+    <string name="screen_album_count">アルバム %1$d</string>
+    <string name="screen_album_collapse_cover">アルバムのカバーを折りたたむ</string>
+    <string name="screen_album_expand_cover">アルバムのカバーを展開</string>
+    <string name="screen_scanning_progress">スキャン中 %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">%1$d 枚</item>
+    </plurals>
+    <string name="screen_select_all">すべて選択</string>
+    <string name="screen_no_albums">利用可能なアルバムがありません</string>
+    <string name="screen_no_media">ライブフォトが見つかりません</string>
+    <string name="screen_no_media_compose">写真または動画が見つかりません</string>
+    <string name="screen_import">インポート</string>
+    <string name="screen_import_count">インポート %1$d</string>
+    <string name="screen_import_mixed">インポート 写真%1$d・動画%2$d</string>
+    <string name="screen_search">検索</string>
+    <string name="screen_search_collapse">検索を閉じる</string>
+    <string name="screen_search_hint">名前で検索</string>
+    <string name="screen_search_clear">検索をクリア</string>
+    <string name="screen_sort_date">日付</string>
+    <string name="screen_sort_size">サイズ</string>
+    <string name="screen_sort_name">名前</string>
+    <string name="screen_sort_asc">昇順</string>
+    <string name="screen_sort_desc">降順</string>
+
+    <!-- アルバムの日付ラベル -->
+    <string name="screen_date_today">今日</string>
+    <string name="screen_date_yesterday">昨日</string>
+    <string name="screen_date_this_year">%1$d月%2$d日</string>
+    <string name="screen_date_other_year">%1$d年%2$d月%3$d日</string>
+</resources>

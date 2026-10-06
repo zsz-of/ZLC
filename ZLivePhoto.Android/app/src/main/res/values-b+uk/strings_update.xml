@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Українська (uk) — оновлення та завантаження (префікс key: update_).
+  База: res/values/strings_update.xml (китайська, спрощена).
+  Заповнювачі: %1$s / %1$d.
+-->
+<resources>
+
+    <!-- ========== Сторінка Lanzouyun і розбір прямого посилання ========== -->
+    <string name="update_lanzou_gone">Посилання Lanzouyun скасовано або файл не існує. Скористайтеся GitHub</string>
+    <string name="update_lanzou_gone_short">Посилання Lanzouyun скасовано. Скористайтеся GitHub</string>
+    <string name="update_lanzou_resolve_failed">Не вдалося розібрати посилання для завантаження з Lanzouyun</string>
+    <string name="update_lanzou_need_passwd">Для цього посилання Lanzouyun потрібен код доступу. Скористайтеся GitHub (або знайдіть код в описі релізу)</string>
+    <string name="update_lanzou_wrong_passwd">Невірний код доступу Lanzouyun</string>
+    <string name="update_err_resolve_failed">Помилка розбору</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Не пройдено антибот-перевірку Lanzouyun</string>
+    <string name="update_err_no_frame">Не вдалося розібрати сторінку завантаження Lanzouyun (не знайдено фрейм завантаження)</string>
+    <string name="update_err_no_file_id">Не вдалося визначити ідентифікатор файлу Lanzouyun</string>
+    <string name="update_err_no_sign">Не вдалося визначити підпис Lanzouyun</string>
+    <string name="update_err_ajax_request">Помилка запиту до API</string>
+    <string name="update_err_api_request">Помилка запиту до API Lanzouyun</string>
+    <string name="update_err_empty_direct">Lanzouyun повернув порожню адресу завантаження</string>
+    <string name="update_err_direct_expired">Посилання Lanzouyun застаріло, отримайте його знову</string>
+    <string name="update_err_http_request">Помилка запиту (HTTP %1$d)</string>
+
+    <!-- ========== Завантаження ========== -->
+    <string name="update_err_connect">Не вдалося підключитися до сервера завантаження: %1$s</string>
+    <string name="update_err_http">Помилка завантаження (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Не вдалося встановити з\'єднання для завантаження</string>
+    <string name="update_err_empty">Порожній вміст завантаження</string>
+    <string name="update_err_incomplete">Завантаження не завершено (отримано %1$d з %2$d байтів). Завантажте ще раз</string>
+    <string name="update_err_interrupted">Завантаження перервано: %1$s</string>
+
+    <!-- ========== Перевірка пакета та встановлення ========== -->
+    <string name="update_err_not_apk">Завантажений файл не є коректним інсталяційним пакетом (можливо, це вебсторінка або посилання застаріло). Завантажте ще раз або скористайтеся GitHub.</string>
+    <string name="update_err_apk_incomplete">Інсталяційний пакет неповний. Завантажте ще раз або скористайтеся GitHub.</string>
+    <string name="update_err_apk_unparsable">Не вдалося розібрати інсталяційний пакет (можливо, завантаження неповне). Завантажте ще раз або скористайтеся GitHub.</string>
+    <string name="update_err_no_install_permission">Немає дозволу «Встановлення невідомих застосунків»</string>
+    <string name="update_err_installer_failed">Не вдалося запустити системний інсталятор (%1$s). Відкрийте пакет вручну через файловий менеджер</string>
+
+</resources>

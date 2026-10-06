@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- アプリ名（ブランド名のため翻訳しない）。values/strings.xml と同一内容。翻訳品質：A。 -->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

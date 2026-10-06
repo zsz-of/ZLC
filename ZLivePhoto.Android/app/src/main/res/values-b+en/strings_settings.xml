@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · English strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Neutral English (US-leaning spelling).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Settings</string>
+    <string name="settings_cd_back">Back</string>
+    <string name="settings_btn_apply">Apply</string>
+    <string name="settings_btn_cancel">Cancel</string>
+    <string name="settings_btn_close">Close</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Donate</string>
+    <string name="settings_section_general">General</string>
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_section_language">Language</string>
+    <string name="settings_section_defaults">Defaults</string>
+    <string name="settings_section_output">Output</string>
+    <string name="settings_section_transcode">Video transcoding</string>
+    <string name="settings_section_about">About</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Credits &amp; donations</string>
+    <string name="settings_section_opensource">Open source &amp; licensing</string>
+    <string name="settings_startup_check_title">Check for updates on startup</string>
+    <string name="settings_startup_check_subtitle">Automatically fetch new versions from GitHub on startup and prompt to download when one is available</string>
+    <string name="settings_haptics_title">Haptic feedback</string>
+    <string name="settings_haptics_subtitle">Haptic feedback on button taps and state changes</string>
+    <string name="settings_bounce_title">Button bounce animation</string>
+    <string name="settings_bounce_subtitle">Scale-and-bounce animation when a button is pressed</string>
+    <string name="settings_theme_system">Follow system</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_dynamic_theme_title">Material You dynamic color</string>
+    <string name="settings_dynamic_theme_subtitle">Follow the system wallpaper color (Android 12+); when off, the preset theme colors below are used</string>
+    <string name="settings_preset_colors_title">Preset theme colors</string>
+    <string name="settings_preset_current">Current: %1$s</string>
+    <string name="settings_preset_disabled_hint">Turn off “Material You dynamic color” to choose</string>
+    <string name="settings_custom">Custom</string>
+    <string name="settings_custom_color_title">Custom theme color</string>
+    <string name="settings_cd_custom_palette">Custom palette</string>
+    <string name="settings_hue_value">Hue %1$d°</string>
+    <string name="settings_language_dialog_title">Select app language</string>
+    <string name="settings_language_count">%1$d languages available</string>
+    <string name="settings_reminder_dialogs_title">“Don\'t show again” dialogs</string>
+    <string name="settings_reminder_dialogs_subtitle">Manage the switches for all “Don\'t show again” dialogs</string>
+    <string name="settings_reminder_hint">When a switch is on, that prompt is not shown again; when it is off, the prompt appears again the next time the corresponding situation occurs.</string>
+    <string name="settings_preserve_folders_title">Output using the source folder hierarchy</string>
+    <string name="settings_preserve_folders_subtitle">Results are stored in subfolders named after the original albums; when off, everything is placed flat in a single folder</string>
+    <string name="settings_about_title">About</string>
+    <string name="settings_about_subtitle">Version · Check for updates · Credits &amp; donations</string>
+    <string name="settings_check_update_title">Check for updates</string>
+    <string name="settings_check_update_subtitle">Fetch the latest version from GitHub Releases</string>
+    <string name="settings_checking">Checking…</string>
+    <string name="settings_update_available">v%1$s available</string>
+    <string name="settings_up_to_date">You\'re on the latest version</string>
+    <string name="settings_network_error">Network error; please try again later</string>
+    <string name="settings_reinstall_title">Reinstall this version</string>
+    <string name="settings_reinstall_subtitle">Download the current latest build and install it over this one (for testing updates)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s is available; please use “Check for updates” to upgrade first</string>
+    <string name="settings_version_title">Version</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Donate via Alipay</string>
+    <string name="settings_alipay_subtitle">Support development</string>
+    <string name="settings_coolapk_subtitle">Coolapk user · thanks for the support</string>
+    <string name="settings_ai_credits_subtitle">Thanks to the AI IDEs and AI models that assisted with development</string>
+    <string name="settings_github_title">GitHub repository</string>
+    <string name="settings_license_title">Open-source license</string>
+    <string name="settings_sponsor_dialog_title">Thank you for your support</string>
+    <string name="settings_sponsor_dialog_text">I truly appreciate your willingness to support this app!\n\nIf you are still a student, or not financially independent yet, please do not spend money on this — keeping that kindness in your heart and continuing to use the app is the best support I could ask for.\n\nIf you do want to donate, even a little helps, and I will put it into better maintenance and features:)</string>
+    <string name="settings_alipay_missing_title">Alipay is not installed</string>
+    <string name="settings_alipay_missing_text">Alipay was not detected, so the donation cannot be completed right now.\n\nThat\'s all right — thank you very much for your kindness either way!</string>
+    <string name="settings_transcoder_title">Built-in transcoder</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Re-encode</string>
+    <string name="settings_transcode_mode_remux">Remux container only (recommended)</string>
+    <string name="settings_transcode_mode_off">Never use the transcoder</string>
+    <string name="settings_transcode_params_title">Transcoding parameters</string>
+    <string name="settings_transcode_params_subtitle">Quality and compression parameters used when re-encoding</string>
+    <string name="settings_transcode_params_disabled">Only takes effect when “Transcoding mode” is set to “Re-encode”</string>
+    <string name="settings_crf_value">Quality CRF: %1$d</string>
+    <string name="settings_crf_hint">Lower values mean higher quality and larger files (default 18)</string>
+    <string name="settings_encoder_title">Encoder</string>
+    <string name="settings_compress_preset_title">Compression preset</string>
+</resources>

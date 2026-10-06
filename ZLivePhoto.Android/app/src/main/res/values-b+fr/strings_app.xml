@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Français (fr) — textes au niveau de l\'application.
+  Base : res/values/strings_app.xml (chinois simplifié).
+  Les apostrophes sont échappées en \' (obligatoire dans les ressources Android).
+-->
+<resources>
+    <!-- Entrée « suivre le système » dans le sélecteur de langue -->
+    <string name="app_language_follow_system">Suivre le système</string>
+    <string name="app_language_title">Langue de l\'application</string>
+</resources>

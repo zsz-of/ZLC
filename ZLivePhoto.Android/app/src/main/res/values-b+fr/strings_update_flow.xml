@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Français (fr) — déroulement de la mise à jour (ui/UpdateFlow.kt, préfixe de clé : update_).
+  Base : res/values/strings_update_flow.xml (chinois simplifié).
+  Les apostrophes sont échappées en \'.
+-->
+<resources>
+    <string name="update_github_url_missing">Adresse de téléchargement GitHub introuvable. Veuillez réessayer plus tard.</string>
+    <string name="update_flavor_standard">Version standard</string>
+    <string name="update_flavor_go">Version Go</string>
+    <string name="update_lanzou_url_missing">Cette version ne fournit pas de lien de téléchargement Lanzouyun ; vous pouvez utiliser GitHub.</string>
+    <string name="update_apk_direct_missing">Cette version ne fournit pas de lien direct vers l\'APK correspondant. Veuillez choisir l\'APK approprié sur la page des versions GitHub.</string>
+    <string name="update_install_permission_missing">Sans l\'autorisation « Installer des applications inconnues », l\'installation automatique est impossible. Veuillez l\'autoriser dans les paramètres du système, puis réessayer.</string>
+    <string name="update_error_unknown">Erreur inconnue</string>
+    <string name="update_fail_lanzou">Échec du téléchargement depuis Lanzouyun</string>
+    <string name="update_fail_github">Échec du téléchargement depuis GitHub</string>
+    <string name="update_lanzou_resolving">Résolution du lien de téléchargement Lanzouyun…</string>
+    <string name="update_lanzou_downloading">Téléchargement depuis Lanzouyun…</string>
+    <string name="update_github_downloading">Téléchargement depuis GitHub…</string>
+    <string name="update_unzipping">Décompression du paquet d\'installation…</string>
+    <string name="update_notes_empty">Aucune note de version pour cette version.</string>
+
+    <!-- Dialogues liés à la version Go -->
+    <string name="update_use_normal_title">Veuillez utiliser la version standard</string>
+    <string name="update_use_normal_body">Cet appareil fonctionne sous Android 10 ou version ultérieure : la version allégée Go n\'est plus prise en charge et l\'ancienne version ne fonctionne plus.\n\nUne version standard (ZLC) installée a été détectée — ouvrez-la directement pour continuer (la version Go n\'est plus proposée ; l\'ancienne peut être désinstallée pour libérer de l\'espace).</string>
+    <string name="update_open_normal">Ouvrir la version standard</string>
+    <string name="update_must_update_title">Une mise à jour est nécessaire pour continuer</string>
+    <string name="update_forced_body">Cet appareil fonctionne sous Android 10 ou version ultérieure : la version allégée Go n\'est plus prise en charge et l\'ancienne version ne fonctionne plus ; aucune nouvelle version Go n\'est proposée non plus.\n\nVeuillez vous connecter à Internet et appuyer sur « Réessayer » pour obtenir le paquet d\'installation de la version standard.</string>
+    <string name="update_retry">Réessayer</string>
+    <string name="update_switch_normal_body">Cet appareil fonctionne sous Android 10 ou version ultérieure : la version allégée Go n\'est plus prise en charge et l\'ancienne version ne fonctionne plus.\nVeuillez télécharger et installer la version standard pour continuer (aucune nouvelle version Go n\'est proposée).</string>
+
+    <!-- Téléchargement, autorisation d\'installation, résultat -->
+    <string name="update_downloading_title">Télécharger la mise à jour</string>
+    <string name="update_cancel">Annuler</string>
+    <string name="update_need_permission_title">Autorisation d\'installation requise</string>
+    <string name="update_need_permission_body">L\'installation de la nouvelle version nécessite l\'autorisation système « Installer des applications inconnues ».\n\nAppuyez sur « Autoriser », activez-la dans les paramètres puis revenez à l\'application : l\'installation reprendra automatiquement (aucun nouveau téléchargement nécessaire).</string>
+    <string name="update_grant">Autoriser</string>
+    <string name="update_notice_title">Remarque</string>
+    <string name="update_got_it">Compris</string>
+
+    <!-- Boîte de dialogue principale et notes de version -->
+    <string name="update_notes_title">v%1$s · Notes de version</string>
+    <string name="update_back">Retour</string>
+    <string name="update_title_switch_normal">Passer à la version standard</string>
+    <string name="update_title_reinstall">Réinstaller cette version</string>
+    <string name="update_title_new_version">Nouvelle version disponible</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Cette version sera téléchargée et réinstallée (en remplaçant l\'application actuelle).\nCette fonction sert à tester le mécanisme de mise à jour.</string>
+    <string name="update_view_notes">Voir les notes de version</string>
+    <string name="update_lanzou_unavailable">Lanzouyun est temporairement indisponible</string>
+    <string name="update_download_lanzou">Télécharger depuis Lanzouyun</string>
+    <string name="update_download_github">Télécharger depuis GitHub</string>
+    <string name="update_download_browser">Télécharger dans le navigateur</string>
+    <string name="update_later">Plus tard</string>
+    <string name="update_later_switch">Ne pas changer</string>
+    <string name="update_skip_version">Ignorer cette version</string>
+</resources>

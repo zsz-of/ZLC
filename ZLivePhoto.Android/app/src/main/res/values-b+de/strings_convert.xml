@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Deutsch (de) — Konvertierung / Neukodierung / Erinnerungen (Key-Präfix: conv_).
+  Basis: res/values/strings_convert.xml (Chinesisch, vereinfacht).
+  Platzhalter: %1$s / %1$d; `\n` ist ein Zeilenumbruch.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: Parameter- und Materialprüfung ========== -->
+    <string name="conv_unknown_target">Unbekanntes Zielformat: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Nicht erkanntes Motion-Photo-Format (kein Google/OPPO/vivo/Xiaomi/Apple Motion Photo)</string>
+    <string name="conv_cover_photo_missing">Titelbild fehlt oder ist leer</string>
+    <string name="conv_video_missing">Video fehlt oder ist leer</string>
+    <string name="conv_video_too_large">Video zu groß (%1$d MB), daraus kann kein Motion Photo erstellt werden. Bitte ein kürzeres Video wählen</string>
+    <string name="conv_transcoded_too_large">Video nach der Neukodierung zu groß (%1$d MB), ein Motion Photo kann nicht erstellt werden</string>
+    <string name="conv_video_too_large_compose">Video zu groß (%1$d MB), ein Motion Photo kann nicht erstellt werden</string>
+
+    <!-- Converter.kt: Titelbild (HEIC / kein JPEG) -->
+    <string name="conv_cover_heic_go">Das Titelbild ist ein HEIC-Bild (die schlanke Version kann nicht umkodieren; bitte auf dem iPhone als JPEG exportieren und erneut versuchen)</string>
+    <string name="conv_cover_invalid_heic">Das Titelbild ist kein gültiges Bild (für HEIC ist HEIF-Decodierung im System erforderlich)</string>
+    <string name="conv_cover_not_jpeg_go">Das Titelbild ist kein JPEG-Bild (die schlanke Version kann nicht umkodieren; bitte ein JPEG-Foto verwenden)</string>
+    <string name="conv_cover_invalid_image">Das Titelbild ist kein gültiges Bild (unterstützt werden nur JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: Fehler bei Neukodierung / Neuverpackung und Hinweise -->
+    <string name="conv_reencode_failed">Neukodierung des Videos fehlgeschlagen: %1$s</string>
+    <string name="conv_remux_failed">Neuverpackung des Containers fehlgeschlagen: %1$s</string>
+    <string name="conv_codec_unknown">Kein erkennbares H.264/H.265-Video</string>
+    <string name="conv_codec_is">Codec: %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Das Video „%1$s“ %2$s. Ein reiner Containerwechsel (Neuverpackung) ändert den Codec nicht, ein Motion Photo kann nicht erstellt werden.\n\nBitte unter „Einstellungen → Videokonvertierung → Modus“ auf „Neukodieren“ umstellen oder das Video zuerst mit einem anderen Werkzeug in ein MP4 mit H.264/H.265 umwandeln.</string>
+    <string name="conv_hint_no_encoder">Das Video liegt nicht in einem Standard-MP4-Container vor (MOV / MKV / WebM / AVI usw.), und der aktuelle Modus kodiert nicht neu – ein Motion Photo kann daher nicht erstellt werden.\n\nBitte unter „Einstellungen → Videokonvertierung → Modus“ auf „Neukodieren“ umstellen (die Standardversion enthält einen ffmpeg-Encoder; die schlanke Go-Version enthält keinen – bitte die Standardversion verwenden) oder das Video zuerst in ein Standard-MP4 (H.264/H.265) umwandeln.</string>
+
+    <!-- ========== Konvertierungsprotokoll ========== -->
+    <string name="conv_log_detected">Erkannt als %1$s</string>
+    <string name="conv_log_same_format_copied">Quell- und Zielformat sind identisch – Datei unverändert kopiert (verlustfrei)</string>
+    <string name="conv_log_extra_tracks_bypass">Das Quellvideo enthält Spuren, die weder Video noch Audio sind (%1$s); die Direktdurchleitung für dasselbe Format wird übersprungen und der vollständige Schreibvorgang zur Bereinigung ausgeführt</string>
+    <string name="conv_log_ts_fallback">In der Quelle fehlt der Zeitstempel des Titelbild-Frames – laut Spezifikation wird die Videomitde verwendet</string>
+    <string name="conv_log_brand_normalized">Die Marke des Videocontainers wurde normalisiert (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Das Video enthält Zusatzspuren (%1$s), eine Bereinigung war nicht möglich – die Datei wurde unverändert ausgegeben (auf manchen Geräten lässt sie sich eventuell nicht per Langdruck abspielen)</string>
+    <string name="conv_log_extra_tracks_removed">Zusatzspuren des Videos wurden entfernt (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Quellvideo %1$s; allein durch Neuverpacken des Containers ist das nicht zu beheben (%2$s). Falls sich das Ergebnis weiterhin nicht per Langdruck abspielen lässt, unter „Einstellungen → Videokonvertierung → Modus“ auf „Neukodieren“ umstellen</string>
+    <string name="conv_log_reencoding">Quellvideo %1$s; laut Einstellung auf 8 Bit + AAC neu kodiert, um die Kompatibilität mit der Galerie zu verbessern</string>
+    <string name="conv_log_reencode_result_unusable">Das Ergebnis der Neukodierung ist unbrauchbar – die Datei wurde unverändert ausgegeben (auf manchen Geräten lässt sie sich eventuell nicht per Langdruck abspielen)</string>
+    <string name="conv_log_reencode_still_risky">Nach der Neukodierung bestehen weiterhin Risikofaktoren (%1$s)</string>
+    <string name="conv_log_reencode_failed">Neukodierung fehlgeschlagen (%1$s) – die Datei wurde unverändert ausgegeben (auf manchen Geräten lässt sie sich eventuell nicht per Langdruck abspielen)</string>
+    <string name="conv_log_cover_heic_converted">Das Titelbild lag als HEIC (nicht JPEG) vor und wurde vor dem Verpacken in Standard-JPEG umkodiert</string>
+    <string name="conv_log_compose_sizes">Zusammenfügen: Foto %1$d B + Video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Kein Encoder aktiv: nur die Containermarke wurde geändert (MOV → MP4), ohne Neukodierung</string>
+
+    <!-- Protokoll-Marken (in der Oberfläche als „[Marke] Text“) -->
+    <string name="conv_tag_convert">Konvertierung</string>
+    <string name="conv_tag_transcode">Neukodierung</string>
+    <string name="conv_tag_compose">Zusammenfügen</string>
+
+    <!-- Gründe für eine Blockade des Neukodier-Modus -->
+    <string name="conv_blocker_no_encoder">Der eingebaute Encoder ist nicht verfügbar</string>
+    <string name="conv_blocker_mode_no_encode">Der aktuelle Modus kodiert nicht neu</string>
+
+    <!-- ========== FfmpegAddon.kt ========== -->
+    <string name="conv_addon_unavailable">Der eingebaute Encoder ist nicht verfügbar</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-Neukodierung fehlgeschlagen: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-Neuverpackung des Containers fehlgeschlagen: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Das Video wird mit ffmpeg in Standard-MP4 umkodiert (%1$s / crf %2$d / %3$s, nur Video- und Audiospuren bleiben erhalten)</string>
+    <string name="conv_log_transcode_done">Neukodierung des Videos abgeschlossen (%1$d KB)</string>
+    <string name="conv_log_remuxing">Der Videocontainer wird in Standard-MP4 neu verpackt (nur Containerwechsel, keine Neukodierung)</string>
+    <string name="conv_log_remux_done">Neuverpackung des Containers abgeschlossen (%1$d KB)</string>
+
+    <!-- ========== Reminders.kt: Dialoge „nicht mehr erinnern“ ========== -->
+    <string name="conv_reminder_cat_compose">Zusammenfügen</string>
+    <string name="conv_reminder_cat_convert">Konvertierung</string>
+    <string name="conv_reminder_cat_update">Update</string>
+    <string name="conv_reminder_video_over3s_title">Video länger als 3 Sekunden</string>
+    <string name="conv_reminder_video_over3s_message">Das gewählte Video ist länger als 3 Sekunden; beim erzeugten Motion Photo kann es zu Kompatibilitätsproblemen kommen:\n\n• Es lässt sich eventuell nicht korrekt abspielen\n• Es wird eventuell nicht von der Systemgalerie erkannt\n• Auf manchen Geräten wird das Motion Photo möglicherweise nicht erkannt</string>
+    <string name="conv_reminder_legacy_go_title">Alte Version erkannt</string>
+    <string name="conv_reminder_legacy_go_message">Auf diesem Gerät ist noch eine alte App-Version (Go) installiert, die hier nicht mehr funktioniert. Sie kann deinstalliert werden, um Speicher freizugeben.</string>
+    <string name="conv_reminder_replace_risk_title">Der Ersetzungsmodus kann Dateien beschädigen</string>
+    <!-- formatted="false": die Zeichenkette wird ohne Formatierungsargumente verwendet -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Im Ersetzungsmodus wird das Konvertierungsergebnis direkt in die Originaldatei geschrieben; nach dem Überschreiben ist sie nicht wiederherstellbar.\n\n• Wird die App während des Schreibens unterbrochen, reicht der Speicher nicht oder wird eine Berechtigung entzogen, kann die Quelldatei beschädigt werden\n• Die Konvertierung ist nicht in jedem Fall erfolgreich; bei einem Fehlschlag ist die Quelldatei möglicherweise schon unbrauchbar\n• Bitte zuerst mit ein oder zwei Dateien testen und erst dann die Stapelverarbeitung starten\n• Wichtige Fotos vorher selbst sichern\n\nDiese Funktion wird „wie besehen“ bereitgestellt; das Nutzungsrisiko tragen Sie selbst, der Autor haftet nicht für Dateischäden oder Datenverlust.</string>
+    <string name="conv_reminder_dont_remind">Nicht mehr erinnern</string>
+    <string name="conv_reminder_confirm_ok">Verstanden</string>
+    <string name="conv_reminder_uninstall">Deinstallieren</string>
+
+</resources>

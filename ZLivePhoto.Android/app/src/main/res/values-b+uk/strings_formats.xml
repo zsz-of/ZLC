@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Українська (uk) — відображувані назви форматів (префікс key: fmt_).
+  База: res/values/strings_formats.xml (китайська, спрощена).
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Вилучення</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Динамічне фото Honor</string>
+    <string name="fmt_meizu">Динамічне фото Meizu</string>
+    <string name="fmt_nubia">Динамічне фото Nubia</string>
+    <string name="fmt_oppo">Динамічне фото OPPO</string>
+    <string name="fmt_vivo">Динамічне фото vivo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (один файл)</string>
+    <string name="fmt_xiaomi">Динамічне фото Xiaomi</string>
+
+    <!-- Повідомлення про помилки плагінів, видимі користувачу -->
+    <string name="fmt_err_apple_mov_missing">Не знайдено відеофайл .mov з такою ж назвою</string>
+    <string name="fmt_err_apple_mov_no_ftyp">У файлі MOV відсутній бокс ftyp</string>
+    <string name="fmt_err_extract_read">Вилучення — це формат виводу, його не можна читати як вхідний формат</string>
+    <string name="fmt_err_no_primary_jpeg">Основне зображення JPEG не знайдено</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Після JPEG не знайдено коректне відео MP4 (відсутній бокс ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">Не вдалося розібрати відеопотік MP4</string>
+    <string name="fmt_err_nubia_too_short">Файл занадто короткий — це не схоже на динамічне фото Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Відсутня сигнатура nubiaVpfile у кінці файлу</string>
+    <string name="fmt_err_nubia_jpeg_len">Неприпустима довжина JPEG у кінці файлу: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Між JPEG і відео відсутні байти заповнення 0x00</string>
+    <string name="fmt_err_nubia_empty_video">Довжина вбудованого відео дорівнює 0</string>
+    <string name="fmt_err_vivo_no_marker">У кінці JPG не знайдено мітку vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Відсутній парний відеофайл: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Не вдалося розібрати основну частину JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">Парний файл MP4 некоректний (відсутній бокс ftyp)</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Türkçe (tr) — uygulama düzeyi metinler.
+  Temel: res/values/strings_app.xml (Basitleştirilmiş Çince, yedek dil).
+  Kesme işaretleri \' olarak yazılır (Android kaynak zorunluluğu).
+-->
+<resources>
+    <!-- Dil seçicideki "sistemle aynı" seçeneği -->
+    <string name="app_language_follow_system">Sistemle aynı</string>
+    <!-- Uygulama dili seçici başlığı (ayarlar modülü için yedek) -->
+    <string name="app_language_title">Uygulama dili</string>
+</resources>

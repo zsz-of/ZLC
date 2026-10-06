@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tiếng Việt (vi) — văn bản luồng cập nhật, tương ứng ui/UpdateFlow.kt.
+  Tệp riêng: UpdateFlow thuộc mô-đun cập nhật, theo i18n-plan mỗi mô-đun một tệp
+  strings_*.xml; tên update_flow tránh trùng với các nhiệm vụ khác.
+  Tiền tố khóa: update_; res/values/ là văn bản tiếng Trung giản thể dự phòng.
+  UpdateFlowController (không phải Composable) dùng context.getString(...), hộp thoại dùng stringResource(...).
+-->
+<resources>
+    <!-- ========== Thông báo phía bộ điều khiển ========== -->
+    <string name="update_github_url_missing">Chưa lấy được địa chỉ tải xuống GitHub, vui lòng thử lại sau.</string>
+    <string name="update_flavor_standard">Bản tiêu chuẩn</string>
+    <string name="update_flavor_go">Bản Go</string>
+    <string name="update_lanzou_url_missing">Bản này không có liên kết tải xuống Lanzou Cloud, bạn có thể tải từ GitHub.</string>
+    <string name="update_apk_direct_missing">Bản này không có liên kết trực tiếp tới gói APK tương ứng, hãy chọn APK phù hợp trên trang phát hành GitHub.</string>
+    <string name="update_install_permission_missing">Chưa có quyền “Cài đặt ứng dụng không rõ nguồn gốc”, không thể cài tự động. Hãy cho phép trong cài đặt hệ thống rồi thử lại.</string>
+    <string name="update_error_unknown">Lỗi không xác định</string>
+    <string name="update_fail_lanzou">Tải xuống từ Lanzou Cloud thất bại</string>
+    <string name="update_fail_github">Tải xuống từ GitHub thất bại</string>
+    <string name="update_lanzou_resolving">Đang phân giải liên kết tải xuống Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Đang tải từ Lanzou Cloud…</string>
+    <string name="update_github_downloading">Đang tải từ GitHub…</string>
+    <string name="update_unzipping">Đang giải nén gói cài đặt…</string>
+    <string name="update_notes_empty">Bản này chưa có mô tả cập nhật.</string>
+
+    <!-- ========== Hộp thoại liên quan bản Go ========== -->
+    <string name="update_use_normal_title">Hãy dùng bản tiêu chuẩn</string>
+    <string name="update_use_normal_body">Hệ thống máy này là Android 10 trở lên, bản Go rút gọn không còn được hỗ trợ và bản cũ không thể tiếp tục dùng.\n\nĐã phát hiện bản tiêu chuẩn (ZLC) được cài trên máy, hãy mở bản tiêu chuẩn để tiếp tục dùng (các bản mới không còn bản tương thích Go; có thể gỡ bản cũ để giải phóng dung lượng).</string>
+    <string name="update_open_normal">Mở bản tiêu chuẩn</string>
+    <string name="update_must_update_title">Phải cập nhật mới có thể tiếp tục sử dụng</string>
+    <string name="update_forced_body">Hệ thống máy này là Android 10 trở lên, bản Go rút gọn không còn được hỗ trợ và bản cũ không thể tiếp tục dùng; bản mới cũng không còn bản tương thích Go.\n\nHãy kết nối mạng rồi nhấn “Thử lại” để lấy gói cài đặt bản tiêu chuẩn.</string>
+    <string name="update_retry">Thử lại</string>
+    <string name="update_switch_normal_body">Hệ thống máy này là Android 10 trở lên, bản Go rút gọn không còn được hỗ trợ và bản cũ không thể tiếp tục dùng.\nHãy tải và cài bản tiêu chuẩn để tiếp tục dùng (bản mới không còn bản tương thích Go).</string>
+
+    <!-- ========== Tải xuống / quyền cài đặt / thông báo kết quả ========== -->
+    <string name="update_downloading_title">Tải bản cập nhật</string>
+    <string name="update_cancel">Hủy</string>
+    <string name="update_need_permission_title">Cần quyền cài đặt</string>
+    <string name="update_need_permission_body">Cài bản mới cần quyền hệ thống “Cài đặt ứng dụng không rõ nguồn gốc”.\n\nNhấn “Cấp quyền”, cho phép trong cài đặt rồi quay lại ứng dụng, quá trình cài sẽ tự tiếp tục (không cần tải lại).</string>
+    <string name="update_grant">Cấp quyền</string>
+    <string name="update_notice_title">Thông báo</string>
+    <string name="update_got_it">Đã hiểu</string>
+
+    <!-- ========== Hộp thoại chính / mô tả cập nhật ========== -->
+    <string name="update_notes_title">v%1$s · Mô tả cập nhật</string>
+    <string name="update_back">Quay lại</string>
+    <string name="update_title_switch_normal">Chuyển sang bản tiêu chuẩn</string>
+    <string name="update_title_reinstall">Cài lại bản này</string>
+    <string name="update_title_new_version">Đã có bản mới</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Bản này sẽ được tải về và cài lại (ghi đè ứng dụng hiện tại).\nTính năng này dùng để kiểm thử hồi quy cơ chế cập nhật.</string>
+    <string name="update_view_notes">Xem mô tả cập nhật</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud tạm thời không khả dụng</string>
+    <string name="update_download_lanzou">Tải từ Lanzou Cloud</string>
+    <string name="update_download_github">Tải từ GitHub</string>
+    <string name="update_download_browser">Tải bằng trình duyệt</string>
+    <string name="update_later">Để sau</string>
+    <string name="update_later_switch">Chưa chuyển</string>
+    <string name="update_skip_version">Bỏ qua phiên bản này</string>
+</resources>

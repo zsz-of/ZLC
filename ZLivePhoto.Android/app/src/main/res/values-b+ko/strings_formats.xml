@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  형식 플러그인 표시 이름과 사용자에게 보이는 실패 메시지 (한국어 / ko).
+  key는 values/strings_formats.xml과 1:1 대응. 번역 품질: A.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">분해</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor 라이브 포토</string>
+    <string name="fmt_meizu">Meizu 라이브 포토</string>
+    <string name="fmt_nubia">Nubia 라이브 포토</string>
+    <string name="fmt_oppo">OPPO 라이브 포토</string>
+    <string name="fmt_vivo">vivo 라이브 포토</string>
+    <string name="fmt_vivo_single">vivo 단일 파일 라이브 포토</string>
+    <string name="fmt_xiaomi">Xiaomi 라이브 포토</string>
+
+    <!--
+      플러그인 측의 사용자에게 보이는 실패 메시지(IOException 문구).
+      MainActivity/Converter의 e.message를 거쳐 상태 표시줄과 「상태 상세」에 표시된다.
+    -->
+    <string name="fmt_err_apple_mov_missing">같은 이름의 .mov 동영상 파일을 찾을 수 없습니다</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV 파일에 ftyp box가 없습니다</string>
+    <string name="fmt_err_extract_read">분해는 출력 형식입니다. 입력 형식으로 읽을 수 없습니다</string>
+    <string name="fmt_err_no_primary_jpeg">기본 JPEG 이미지를 찾을 수 없습니다</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG 뒤에서 유효한 MP4 동영상을 찾을 수 없습니다(ftyp box 없음)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 동영상 스트림 분석에 실패했습니다</string>
+    <string name="fmt_err_nubia_too_short">파일이 너무 짧아 Nubia 라이브 포토가 아닌 것 같습니다</string>
+    <string name="fmt_err_nubia_no_magic">끝부분에 nubiaVpfile 매직 넘버가 없습니다</string>
+    <string name="fmt_err_nubia_jpeg_len">끝부분에 기록된 JPEG 길이가 잘못되었습니다: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG와 동영상 사이에 0x00 패딩 바이트가 없습니다</string>
+    <string name="fmt_err_nubia_empty_video">내장 동영상 길이가 0입니다</string>
+    <string name="fmt_err_vivo_no_marker">JPG 끝부분에서 vivo livephoto 마커를 찾을 수 없습니다</string>
+    <string name="fmt_err_vivo_companion_missing">동반 동영상 파일이 없습니다: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG 본문 분석에 실패했습니다</string>
+    <string name="fmt_err_vivo_companion_invalid">동반 MP4가 유효하지 않습니다(ftyp box 없음)</string>
+</resources>

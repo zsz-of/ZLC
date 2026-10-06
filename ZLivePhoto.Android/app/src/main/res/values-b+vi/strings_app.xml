@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tiếng Việt (vi) — văn bản cấp ứng dụng.
+  Cơ sở: res/values/strings_app.xml (tiếng Trung giản thể, ngôn ngữ dự phòng).
+  Dấu nháy đơn được ghi là \' (bắt buộc trong tài nguyên Android).
+-->
+<resources>
+    <!-- Mục "theo hệ thống" trong trình chọn ngôn ngữ ứng dụng -->
+    <string name="app_language_follow_system">Theo hệ thống</string>
+    <!-- Tiêu đề trình chọn ngôn ngữ ứng dụng (dự phòng cho mô-đun cài đặt) -->
+    <string name="app_language_title">Ngôn ngữ ứng dụng</string>
+</resources>

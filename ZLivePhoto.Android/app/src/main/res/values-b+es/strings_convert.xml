@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC — cadenas en español (es).
+  Traducidas de res/values/strings_*.xml (chino simplificado, idioma de reserva).
+  Español neutro con ortografía de España (vídeo, móvil, ordenador).
+  Cada clave replica la del idioma base; los marcadores (%1$s / %1$d) y las secuencias de escape se conservan tal cual.
+  El prefijo de clave conv_ no debe cambiarse nunca (todos los idiomas comparten el mismo conjunto de claves).
+-->
+<resources>
+
+    <!-- ========== Converter.kt: validación de parámetros y material (las excepciones se muestran como motivo del fallo) ========== -->
+    <string name="conv_unknown_target">Formato de destino desconocido: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Formato de Live Photo no reconocido (no es una Live Photo de Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">La foto de portada no existe o está vacía</string>
+    <string name="conv_video_missing">El vídeo no existe o está vacío</string>
+    <string name="conv_video_too_large">El vídeo es demasiado grande (%1$dMB) y no se puede componer la Live Photo; elige un vídeo más corto</string>
+    <string name="conv_transcoded_too_large">El vídeo transcodificado es demasiado grande (%1$dMB); no se puede componer la Live Photo</string>
+    <string name="conv_video_too_large_compose">El vídeo es demasiado grande (%1$dMB); no se puede componer la Live Photo</string>
+
+    <!-- Converter.kt: portada (HEIC / no JPEG) -->
+    <string name="conv_cover_heic_go">La portada es una imagen HEIC (la versión ligera no admite transcodificación; expórtala como JPEG en el iPhone y vuelve a convertir)</string>
+    <string name="conv_cover_invalid_heic">La portada no es una imagen válida (HEIC necesita que el sistema admita la decodificación HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">La portada no es una imagen JPEG (la versión ligera no admite transcodificación; usa una foto JPEG)</string>
+    <string name="conv_cover_invalid_image">La portada no es una imagen válida (solo se admiten JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: fallos de transcodificación / reempaquetado y aviso de que cambiar solo el contenedor no arregla la codificación -->
+    <string name="conv_reencode_failed">No se pudo recodificar el vídeo: %1$s</string>
+    <string name="conv_remux_failed">No se pudo reempaquetar el contenedor: %1$s</string>
+    <string name="conv_codec_unknown">No es un vídeo H.264/H.265 reconocible</string>
+    <string name="conv_codec_is">La codificación es %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">El vídeo «%1$s» %2$s: cambiar solo el contenedor (reempaquetar) no modifica la codificación, así que no se puede componer la Live Photo.\n\nEn «Ajustes → Transcodificación de vídeo → Modo de transcodificación», cambia a «Recodificar»; o convierte antes el vídeo a un MP4 con codificación H.264/H.265 con otra herramienta.</string>
+    <string name="conv_hint_no_encoder">El vídeo no está en un contenedor MP4 estándar (MOV / MKV / WebM / AVI, etc.) y el «Modo de transcodificación» actual no recodifica, así que no se puede componer la Live Photo.\n\nEn «Ajustes → Transcodificación de vídeo → Modo de transcodificación», elige «Recodificar» (la versión normal incluye el codificador ffmpeg; la versión ligera Go no incluye transcodificador, así que usa la versión normal); o convierte antes el vídeo a un MP4 estándar (H.264/H.265).</string>
+
+    <!-- ========== Registro de conversión (aparece en la barra de estado de cada elemento y en el panel de registro) ========== -->
+    <string name="conv_log_detected">Identificado como %1$s</string>
+    <string name="conv_log_same_format_copied">El formato de origen y el de destino coinciden; se copió tal cual (sin pérdida)</string>
+    <string name="conv_log_extra_tracks_bypass">El vídeo de origen contiene pistas que no son de audio ni de vídeo (%1$s); se omite la copia directa y se usa el proceso completo de escritura para limpiarlo</string>
+    <string name="conv_log_ts_fallback">La fuente no tiene marca de tiempo del fotograma de portada; se usa el punto medio del vídeo según la especificación</string>
+    <string name="conv_log_brand_normalized">Marca del contenedor de vídeo normalizada (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">El vídeo contiene pistas adicionales (%1$s) y no se pudieron limpiar; se emitió tal cual (puede que en algunos modelos no se reproduzca al mantener pulsado)</string>
+    <string name="conv_log_extra_tracks_removed">Se eliminaron las pistas adicionales del vídeo (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">El vídeo de origen %1$s; reempaquetar solo el contenedor no lo soluciona (%2$s). Si el resultado sigue sin reproducirse al mantener pulsado, elige «Recodificar» en «Ajustes → Transcodificación de vídeo → Modo de transcodificación»</string>
+    <string name="conv_log_reencoding">El vídeo de origen %1$s; se recodifica a 8 bits + AAC según los ajustes para mejorar la compatibilidad con la galería</string>
+    <string name="conv_log_reencode_result_unusable">El resultado de la recodificación no es utilizable; se emitió tal cual (puede que en algunos modelos no se reproduzca al mantener pulsado)</string>
+    <string name="conv_log_reencode_still_risky">Tras recodificar siguen existiendo elementos de riesgo (%1$s)</string>
+    <string name="conv_log_reencode_failed">Falló la recodificación (%1$s); se emitió tal cual (puede que en algunos modelos no se reproduzca al mantener pulsado)</string>
+    <string name="conv_log_cover_heic_converted">La portada era HEIC (no JPEG); se transcodificó a JPEG estándar antes de empaquetarla</string>
+    <string name="conv_log_compose_sizes">Composición: foto %1$dB + vídeo %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transcodificador no activado: solo se cambia la marca del contenedor (MOV → MP4), sin recodificar</string>
+
+    <!-- Etiquetas del registro (en la interfaz se muestran como «[etiqueta] texto») -->
+    <string name="conv_tag_convert">Conversión</string>
+    <string name="conv_tag_transcode">Transcodificación</string>
+    <string name="conv_tag_compose">Composición</string>
+
+    <!-- Motivos de bloqueo del modo de transcodificación (se insertan en los avisos anteriores) -->
+    <string name="conv_blocker_no_encoder">El transcodificador integrado no está disponible</string>
+    <string name="conv_blocker_mode_no_encode">El «Modo de transcodificación» actual no recodifica</string>
+
+    <!-- ========== FfmpegAddon.kt: transcodificación / reempaquetado con el ffmpeg integrado ========== -->
+    <string name="conv_addon_unavailable">El transcodificador integrado no está disponible</string>
+    <string name="conv_addon_transcode_failed">Falló la transcodificación con ffmpeg: %1$s</string>
+    <string name="conv_addon_remux_failed">Falló el reempaquetado del contenedor con ffmpeg: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Transcodificando el vídeo a MP4 estándar con ffmpeg (%1$s / crf %2$d / %3$s, conservando solo las pistas de vídeo y audio)</string>
+    <string name="conv_log_transcode_done">Transcodificación del vídeo completada (%1$dKB)</string>
+    <string name="conv_log_remuxing">Reempaquetando el contenedor de vídeo a MP4 estándar (solo el contenedor, sin recodificar)</string>
+    <string name="conv_log_remux_done">Reempaquetado del contenedor completado (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: diálogos de «No volver a mostrar» ========== -->
+    <string name="conv_reminder_cat_compose">Composición</string>
+    <string name="conv_reminder_cat_convert">Conversión</string>
+    <string name="conv_reminder_cat_update">Actualización</string>
+    <string name="conv_reminder_video_over3s_title">El vídeo supera los 3 segundos</string>
+    <string name="conv_reminder_video_over3s_message">El vídeo seleccionado dura más de 3 segundos; la Live Photo resultante puede tener problemas de compatibilidad:\n\n• Puede que no se reproduzca correctamente\n• Puede que la galería del sistema no la reconozca\n• Algunos modelos pueden no reconocer esta Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">Se detectó una versión antigua</string>
+    <string name="conv_reminder_legacy_go_message">En este dispositivo todavía está instalada una versión antigua (Go) de la aplicación. Esa versión ya no funciona en este dispositivo; puedes desinstalarla para liberar espacio.</string>
+    <string name="conv_reminder_replace_risk_title">El modo Reemplazo puede dañar archivos</string>
+    <!-- formatted="false": el texto solo contiene caracteres literales y nunca se formatea con argumentos. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">El modo Reemplazo escribe el resultado de la conversión directamente en los archivos originales; una vez sobrescritos, no se pueden recuperar.\n\n• Si la aplicación se interrumpe, se agota el almacenamiento o se revoca el permiso durante la escritura, los archivos de origen pueden dañarse\n• Ninguna conversión garantiza el éxito y, si falla, los archivos de origen pueden haber quedado inservibles\n• Prueba primero con uno o dos archivos y, si todo va bien, procesa por lotes\n• Haz una copia de seguridad de las fotos importantes\n\nEsta función se ofrece «tal cual»; el uso es bajo tu responsabilidad y el autor no se hace responsable de archivos dañados o perdidos.</string>
+    <string name="conv_reminder_dont_remind">No volver a mostrar</string>
+    <string name="conv_reminder_confirm_ok">Entendido</string>
+    <string name="conv_reminder_uninstall">Desinstalar</string>
+
+</resources>

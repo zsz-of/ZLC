@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  形式プラグインの表示名とユーザーに見える失敗メッセージ（日本語 / ja）。
+  key は values/strings_formats.xml と 1 対 1 で対応。翻訳品質：A。
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">分解</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor のライブフォト</string>
+    <string name="fmt_meizu">Meizu のライブフォト</string>
+    <string name="fmt_nubia">Nubia のライブフォト</string>
+    <string name="fmt_oppo">OPPO のライブフォト</string>
+    <string name="fmt_vivo">vivo のライブフォト</string>
+    <string name="fmt_vivo_single">vivo 単一ファイルのライブフォト</string>
+    <string name="fmt_xiaomi">Xiaomi のライブフォト</string>
+
+    <!--
+      プラグイン側のユーザーに見える失敗メッセージ（IOException の文言）。
+      MainActivity/Converter の e.message を経由してステータスバーと「ステータス詳細」に表示される。
+    -->
+    <string name="fmt_err_apple_mov_missing">同名の .mov 動画ファイルが見つかりません</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV ファイルに ftyp box がありません</string>
+    <string name="fmt_err_extract_read">分解は出力形式です。入力形式として読み込むことはできません</string>
+    <string name="fmt_err_no_primary_jpeg">メインの JPEG 画像が見つかりません</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG の後に有効な MP4 動画が見つかりません（ftyp box がありません）</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 動画ストリームの解析に失敗しました</string>
+    <string name="fmt_err_nubia_too_short">ファイルが短すぎます。Nubia のライブフォトではないようです</string>
+    <string name="fmt_err_nubia_no_magic">末尾の nubiaVpfile マジックナンバーがありません</string>
+    <string name="fmt_err_nubia_jpeg_len">末尾に記録された JPEG の長さが不正です：%1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG と動画の間に 0x00 のパディングバイトがありません</string>
+    <string name="fmt_err_nubia_empty_video">埋め込み動画の長さが 0 です</string>
+    <string name="fmt_err_vivo_no_marker">JPG の末尾に vivo livephoto マーカーが見つかりません</string>
+    <string name="fmt_err_vivo_companion_missing">ペアの動画ファイルがありません：%1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG 本体の解析に失敗しました</string>
+    <string name="fmt_err_vivo_companion_invalid">ペアの MP4 が無効です（ftyp box がありません）</string>
+</resources>

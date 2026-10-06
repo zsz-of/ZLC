@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Русский (ru) — обновление и загрузка (префикс key: update_).
+  База: res/values/strings_update.xml (китайский, упрощённый).
+  Заполнители: %1$s / %1$d.
+-->
+<resources>
+
+    <!-- ========== Страница Lanzouyun и разбор прямой ссылки ========== -->
+    <string name="update_lanzou_gone">Ссылка Lanzouyun отозвана или файл не существует. Скачайте с GitHub</string>
+    <string name="update_lanzou_gone_short">Ссылка Lanzouyun отозвана. Скачайте с GitHub</string>
+    <string name="update_lanzou_resolve_failed">Не удалось разобрать ссылку для скачивания с Lanzouyun</string>
+    <string name="update_lanzou_need_passwd">Для этой ссылки Lanzouyun нужен код доступа. Скачайте с GitHub (или найдите код в описании релиза)</string>
+    <string name="update_lanzou_wrong_passwd">Неверный код доступа Lanzouyun</string>
+    <string name="update_err_resolve_failed">Ошибка разбора</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Не пройдена антибот-проверка Lanzouyun</string>
+    <string name="update_err_no_frame">Не удалось разобрать страницу загрузки Lanzouyun (не найден фрейм загрузки)</string>
+    <string name="update_err_no_file_id">Не удалось определить идентификатор файла Lanzouyun</string>
+    <string name="update_err_no_sign">Не удалось определить подпись Lanzouyun</string>
+    <string name="update_err_ajax_request">Ошибка запроса к API</string>
+    <string name="update_err_api_request">Ошибка запроса к API Lanzouyun</string>
+    <string name="update_err_empty_direct">Lanzouyun вернул пустой адрес загрузки</string>
+    <string name="update_err_direct_expired">Ссылка Lanzouyun устарела, получите её заново</string>
+    <string name="update_err_http_request">Ошибка запроса (HTTP %1$d)</string>
+
+    <!-- ========== Загрузка ========== -->
+    <string name="update_err_connect">Не удалось подключиться к серверу загрузки: %1$s</string>
+    <string name="update_err_http">Ошибка загрузки (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Не удалось установить соединение для загрузки</string>
+    <string name="update_err_empty">Пустое содержимое загрузки</string>
+    <string name="update_err_incomplete">Загрузка не завершена (получено %1$d из %2$d байт). Скачайте заново</string>
+    <string name="update_err_interrupted">Загрузка прервана: %1$s</string>
+
+    <!-- ========== Проверка пакета и установка ========== -->
+    <string name="update_err_not_apk">Скачанный файл не является корректным установочным пакетом (возможно, это веб-страница или ссылка устарела). Скачайте заново или воспользуйтесь GitHub.</string>
+    <string name="update_err_apk_incomplete">Установочный пакет неполный. Скачайте заново или воспользуйтесь GitHub.</string>
+    <string name="update_err_apk_unparsable">Не удалось разобрать установочный пакет (возможно, загрузка неполная). Скачайте заново или воспользуйтесь GitHub.</string>
+    <string name="update_err_no_install_permission">Нет разрешения «Установка неизвестных приложений»</string>
+    <string name="update_err_installer_failed">Не удалось запустить системный установщик (%1$s). Откройте пакет вручную через файловый менеджер</string>
+
+</resources>

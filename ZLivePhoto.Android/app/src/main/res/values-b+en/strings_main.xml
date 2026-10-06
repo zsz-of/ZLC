@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · English strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Neutral English (US-leaning spelling).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">Ready</string>
+    <string name="main_status_location_granted">Location permission granted; GPS metadata will be preserved after conversion</string>
+    <string name="main_status_location_denied">Location permission not granted: converted photos will lose GPS location information</string>
+    <string name="main_status_all_files_granted">“All files access” granted; conversions will write directly into the gallery folder and fully preserve location information</string>
+    <string name="main_status_all_files_denied">“All files access” not granted: some devices may lose location information after conversion</string>
+    <string name="main_status_read_granted">Permission to read photos and videos granted</string>
+    <string name="main_status_video_missing">Granted, but the video permission is missing: cannot find the companion videos that come with two-file Live Photos</string>
+    <string name="main_status_permission_denied">Permission not granted; you can tap “Add files” again</string>
+    <string name="main_status_folder_not_selected">No folder selected</string>
+    <string name="main_status_folder_unavailable">Cannot access the selected folder (only local storage folders are supported)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Restored the previous session (%1$d file)</item>
+        <item quantity="other">Restored the previous session (%1$d files)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Previous abnormal exit detected; the unfinished list has been cleared</string>
+    <string name="main_status_compose_blocks_extract">The queue contains compose tasks; cannot switch to extract mode</string>
+    <string name="main_status_replace_off_mutex">Replace mode turned off (mutually exclusive with “Delete originals after processing”)</string>
+    <string name="main_status_delete_needs_all_files">Automatically deleting originals requires “All files access”; please grant it first</string>
+    <string name="main_status_replace_off">Replace mode turned off; conversion results are written into the gallery folder again</string>
+    <string name="main_status_replace_needs_all_files">Replace mode requires “All files access”; please grant it first</string>
+    <string name="main_status_delete_off_mutex">“Delete originals after processing” turned off (mutually exclusive with replace mode)</string>
+    <string name="main_status_loading_albums">Loading albums…</string>
+    <string name="main_status_no_albums">No albums found</string>
+    <string name="main_status_compose_no_photo">No photo selected; cannot compose</string>
+    <string name="main_status_compose_no_video">No video selected; cannot compose</string>
+    <string name="main_status_compose_all_added">All the selected photos are already in the list</string>
+    <string name="main_status_compose_paired">%1$d photos and %2$d videos; added %3$d compose pairs based on the smaller count</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Added %1$d compose task; tap “Start conversion” to compose</item>
+        <item quantity="other">Added %1$d compose tasks; tap “Start conversion” to compose</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (output format automatically switched to Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Importing %1$d shared image…</item>
+        <item quantity="other">Importing %1$d shared images…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import failed: %1$s</string>
+    <string name="main_status_import_done_partial">Import complete: %1$d succeeded, %2$d failed</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import complete: %1$d file imported in total</item>
+        <item quantity="other">Import complete: %1$d files imported in total</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import stopped: %1$d succeeded, %2$d failed</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Importing %1$d file…</item>
+        <item quantity="other">Importing %1$d files…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importing %1$d/%2$d…</string>
+    <string name="main_status_stopping">Stopping… (will stop once the current file finishes)</string>
+    <string name="main_status_stopping_import">Stopping import…</string>
+    <string name="main_status_removed">Removed %1$s</string>
+    <string name="main_status_cleared">Cleared</string>
+    <string name="main_status_nothing_to_convert">No files to convert</string>
+    <string name="main_status_folder_unreadable">Cannot read the selected folder</string>
+    <string name="main_status_scanning_folder">Scanning folder…</string>
+    <string name="main_status_no_images">No images found in the selected folder</string>
+    <string name="main_status_batch_importing">Batch importing %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Batch import stopped: %1$d Live Photo imported in total</item>
+        <item quantity="other">Batch import stopped: %1$d Live Photos imported in total</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Batch import stopped: %1$d Live Photo imported in total, %2$d non-Live-Photo files skipped</item>
+        <item quantity="other">Batch import stopped: %1$d Live Photos imported in total, %2$d non-Live-Photo files skipped</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Batch import complete: %1$d Live Photo imported in total</item>
+        <item quantity="other">Batch import complete: %1$d Live Photos imported in total</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Batch import complete: %1$d Live Photo imported in total, %2$d non-Live-Photo files skipped</item>
+        <item quantity="other">Batch import complete: %1$d Live Photos imported in total, %2$d non-Live-Photo files skipped</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Stopped: of %1$d files, %2$d were processed and %3$d source files were replaced</string>
+    <string name="main_status_stopped_export">Stopped: of %1$d files, %2$d were processed and %3$d were exported to the gallery</string>
+    <string name="main_status_done_replace_reason">Done: %1$d files processed, %2$d source files replaced (reason: %3$s)</string>
+    <string name="main_status_done_export_reason">Done: %1$d files processed, %2$d exported to the gallery (reason: %3$s)</string>
+    <string name="main_status_done_replace">Done: %1$d files processed, %2$d source files replaced</string>
+    <string name="main_status_done_export">Done: %1$d files processed, %2$d exported to the gallery</string>
+    <string name="main_status_keep_originals">%1$s; “Full storage access” was not granted, so the originals have been kept</string>
+    <string name="main_info_detecting">Detecting…</string>
+    <string name="main_info_unrecognized">Unrecognized Live Photo format</string>
+    <string name="main_info_converting">Converting…</string>
+    <string name="main_info_compose_task">Compose task (tap Start conversion to compose)</string>
+    <string name="main_info_done_replaced">Done (%1$d source files replaced)</string>
+    <string name="main_info_done_skipped">Done (skipped: name conflict)</string>
+    <string name="main_info_done_exported">Done (%1$d exported)</string>
+    <string name="main_info_failed">Failed: %1$s</string>
+    <string name="main_progress_added">Added %1$d/%2$d</string>
+    <string name="main_progress_processed">Processed %1$d/%2$d</string>
+    <string name="main_progress_imported">Imported %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Permission to read photos and videos is required</string>
+    <string name="main_dialog_permission_message">This app needs to read photos and videos on your device:\n\n• Photos permission: scan the device gallery and identify the Live Photos in it\n• Videos permission: find the companion videos that come with two-file Live Photos\n• Location permission: preserve the GPS location metadata in photos (without it, converted photos lose their location information)\n\nIf you deny it, the built-in picker cannot be used; you can tap “Add files” later to grant permission again.</string>
+    <string name="main_dialog_settings_title">Photos and videos permissions must be granted manually</string>
+    <string name="main_dialog_settings_message">You previously chose “Don\'t ask again”, so the system no longer shows the permission dialog.\n\nPlease go to the app details page → Permissions → Photos and videos, grant access manually, then return to this app.\n\nNote: both the “Photos” and “Videos” permissions must be granted, otherwise two-file Live Photos will not be able to find their companion videos.</string>
+    <string name="main_dialog_allfiles_title_delete">Automatically deleting originals requires “All files access”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">This device does not support automatically deleting originals</string>
+    <string name="main_dialog_allfiles_title_replace">Replace mode requires “All files access”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">This device does not support replace mode</string>
+    <string name="main_dialog_allfiles_title_location">Granting “All files access” is recommended</string>
+    <string name="main_dialog_allfiles_delete_message">“Delete originals after processing” deletes the original files on disk directly (the photo and its companion video). This cannot be undone, so “All files access” must be granted first.\n\nThe switch becomes available once you grant it; you can turn it on yourself then.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">The current system (Android 10 or lower) does not provide “All files access”, so original files on disk cannot be deleted directly; this device therefore does not support “Delete originals after processing”.\n\nYou can clean up the originals manually in the system gallery after conversion.</string>
+    <string name="main_dialog_allfiles_replace_message">“Replace mode” writes the conversion result straight back to the original files on disk (overwriting their contents). This cannot be undone, so “All files access” must be granted first.\n\nThe switch becomes available once you grant it; you can turn it on yourself then.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">The current system (Android 10 or lower) does not provide “All files access”, so original files on disk cannot be rewritten directly; this device therefore does not support “Replace mode”.\n\nYou can keep converting in the default way; the results are written into the gallery folder.</string>
+    <string name="main_dialog_allfiles_location_message">On some devices (such as Meizu), writing through the system gallery API strips GPS location information, so converted photos lose their location.\n\nOnce you grant “All files access”, this app writes directly into the gallery folder and fully preserves the location metadata.\n\nConversion still works without it, but some devices may lose location information.</string>
+    <string name="main_dialog_conflict_title">Output file name conflict</string>
+    <string name="main_dialog_conflict_message">A file with the same name already exists in the output folder:\n%1$s\n\nPlease choose how to handle it.</string>
+    <string name="main_label_conflict_always">Use this for all later conflicts</string>
+    <string name="main_btn_grant">Grant</string>
+    <string name="main_btn_deny">Deny</string>
+    <string name="main_btn_go_settings">Open settings</string>
+    <string name="main_btn_cancel">Cancel</string>
+    <string name="main_btn_grant_access">Grant access</string>
+    <string name="main_btn_got_it">Got it</string>
+    <string name="main_btn_not_now">Not now</string>
+    <string name="main_btn_skip">Skip</string>
+    <string name="main_btn_overwrite">Overwrite</string>
+    <string name="main_btn_auto_rename">Auto-rename</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Deleted %1$d original file</item>
+        <item quantity="other">Deleted %1$d original files</item>
+    </plurals>
+    <string name="main_delete_nothing">No originals need deleting</string>
+    <string name="main_delete_partial">Deleted %1$d original files (%2$d could not be deleted and were kept)</string>
+    <string name="main_delete_failed">Failed to delete the originals (files in use or no write permission); they have been kept</string>
+    <string name="main_export_missing_output">Conversion output is missing or empty: %1$s</string>
+    <string name="main_export_missing_output_bare">Conversion output is missing or empty</string>
+    <string name="main_export_insert_null">MediaStore insert returned null</string>
+    <string name="main_export_output_stream">MediaStore output stream is unavailable</string>
+    <string name="main_export_write_failed">MediaStore write failed: %1$s</string>
+    <string name="main_export_mkdir_failed">Cannot create the gallery folder %1$s</string>
+    <string name="main_export_dir_write_failed">Failed to write to the gallery folder: %1$s</string>
+    <string name="main_export_no_source">Cannot locate the source file; replacement skipped</string>
+    <string name="main_export_companion_failed">Failed to write back the companion file: %1$s</string>
+    <string name="main_export_source_dir_unwritable">The source folder is not writable, so the companion file could not be written back</string>
+    <string name="main_export_source_dir_unavailable">Source folder unavailable: %1$s</string>
+    <string name="main_export_replace_failed">Failed to replace the source file: %1$s</string>
+    <string name="main_export_replace_failed_bare">Failed to replace the source file</string>
+</resources>

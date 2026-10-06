@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（维吾尔语 ug，B 级），可能存在不准确之处，欢迎社区修正。
+     بۇ ھۆججەت ماشىنا ياردىمىدە تەرجىمە قىلىنغان (B دەرىجە)، خاتالىقلار بولۇشى مۇمكىن.
+     品牌名（Apple Live Photo / Google Motion Photo / OPPO / vivo / Xiaomi / Honor / Meizu / Nubia）
+     与技术名词（ftyp box / JPEG / MP4 / HEIC）保留原文。 -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">ئايرىش</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor لىۋې فوتوسى</string>
+    <string name="fmt_meizu">Meizu لىۋې فوتوسى</string>
+    <string name="fmt_nubia">Nubia لىۋې فوتوسى</string>
+    <string name="fmt_oppo">OPPO لىۋې فوتوسى</string>
+    <string name="fmt_vivo">vivo لىۋې فوتوسى</string>
+    <string name="fmt_vivo_single">vivo بىر ھۆججەتلىك لىۋې فوتو</string>
+    <string name="fmt_xiaomi">Xiaomi لىۋې فوتوسى</string>
+
+    <string name="fmt_err_apple_mov_missing">ئوخشاش نامدىكى .mov سىن ھۆججىتى تېپىلمىدى</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV ھۆججىتىدە ftyp box يوق</string>
+    <string name="fmt_err_extract_read">ئايرىش چىقىرىش فورماتى، كىرگۈزۈش فورماتى سۈپىتىدە ئوقۇلمايدۇ</string>
+    <string name="fmt_err_no_primary_jpeg">ئاساسىي JPEG رەسىم تېپىلمىدى</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG دىن كېيىن ئىناۋەتلىك MP4 سىن تېپىلمىدى (ftyp box يوق)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 سىن ئېقىمىنى تەھلىل قىلىش مەغلۇپ بولدى</string>
+    <string name="fmt_err_nubia_too_short">ھۆججەت بەك قىسقا، Nubia لىۋې فوتوسىغا ئوخشىمايدۇ</string>
+    <string name="fmt_err_nubia_no_magic">nubiaVpfile ئاخىرقى magic سانى يوق</string>
+    <string name="fmt_err_nubia_jpeg_len">ئاخىرىدا خاتىرىلەنگەن JPEG ئۇزۇنلۇقى ئىناۋەتسىز: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG بىلەن سىن ئارىسىدا 0x00 تولدۇرۇش بايتى يوق</string>
+    <string name="fmt_err_nubia_empty_video">ئىچىگە ئورۇنلاشتۇرۇلغان سىن ئۇزۇنلۇقى 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG ئاخىرىدا vivo livephoto بەلگىسى تېپىلمىدى</string>
+    <string name="fmt_err_vivo_companion_missing">ھەمراھ سىن ھۆججىتى يوق: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG ئاساسىي قىسمىنى تەھلىل قىلىش مەغلۇپ بولدى</string>
+    <string name="fmt_err_vivo_companion_invalid">ھەمراھ MP4 ئىناۋەتسىز (ftyp box يوق)</string>
+</resources>

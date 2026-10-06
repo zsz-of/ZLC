@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Deutsch (de) — Updates und Downloads (Key-Präfix: update_).
+  Basis: res/values/strings_update.xml (Chinesisch, vereinfacht).
+  Platzhalter: %1$s / %1$d.
+-->
+<resources>
+
+    <!-- ========== Lanzouyun-Freigabeseite und Direktlink-Auflösung ========== -->
+    <string name="update_lanzou_gone">Die Lanzouyun-Freigabe wurde zurückgezogen oder die Datei existiert nicht. Bitte über GitHub herunterladen</string>
+    <string name="update_lanzou_gone_short">Die Lanzouyun-Freigabe wurde zurückgezogen. Bitte über GitHub herunterladen</string>
+    <string name="update_lanzou_resolve_failed">Der Lanzouyun-Downloadlink konnte nicht aufgelöst werden</string>
+    <string name="update_lanzou_need_passwd">Für diese Lanzouyun-Freigabe ist ein Zugriffscode nötig. Bitte über GitHub herunterladen (oder den Code in der Release-Beschreibung suchen)</string>
+    <string name="update_lanzou_wrong_passwd">Falscher Lanzouyun-Zugriffscode</string>
+    <string name="update_err_resolve_failed">Auflösen fehlgeschlagen</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Die Bot-Schutzprüfung von Lanzouyun ist fehlgeschlagen</string>
+    <string name="update_err_no_frame">Die Lanzouyun-Downloadseite konnte nicht ausgewertet werden (kein Download-Frame gefunden)</string>
+    <string name="update_err_no_file_id">Die Lanzouyun-Dateikennung konnte nicht ermittelt werden</string>
+    <string name="update_err_no_sign">Die Lanzouyun-Signatur konnte nicht ermittelt werden</string>
+    <string name="update_err_ajax_request">API-Anfrage fehlgeschlagen</string>
+    <string name="update_err_api_request">Anfrage an die Lanzouyun-Schnittstelle fehlgeschlagen</string>
+    <string name="update_err_empty_direct">Lanzouyun hat eine leere Downloadadresse zurückgegeben</string>
+    <string name="update_err_direct_expired">Die Lanzouyun-Downloadadresse ist abgelaufen, bitte neu abrufen</string>
+    <string name="update_err_http_request">Anfrage fehlgeschlagen (HTTP %1$d)</string>
+
+    <!-- ========== Download ========== -->
+    <string name="update_err_connect">Keine Verbindung zum Downloadserver möglich: %1$s</string>
+    <string name="update_err_http">Download fehlgeschlagen (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Es konnte keine Downloadverbindung hergestellt werden</string>
+    <string name="update_err_empty">Der heruntergeladene Inhalt ist leer</string>
+    <string name="update_err_incomplete">Download unvollständig (%1$d von %2$d Bytes erhalten), bitte erneut herunterladen</string>
+    <string name="update_err_interrupted">Download unterbrochen: %1$s</string>
+
+    <!-- ========== Paketprüfung und Installation ========== -->
+    <string name="update_err_not_apk">Die heruntergeladene Datei ist kein gültiges Installationspaket (möglicherweise eine Webseite oder der Link ist abgelaufen). Bitte erneut herunterladen oder GitHub verwenden.</string>
+    <string name="update_err_apk_incomplete">Das Installationspaket ist unvollständig. Bitte erneut herunterladen oder GitHub verwenden.</string>
+    <string name="update_err_apk_unparsable">Das Installationspaket konnte nicht ausgewertet werden (möglicherweise unvollständiger Download). Bitte erneut herunterladen oder GitHub verwenden.</string>
+    <string name="update_err_no_install_permission">Die Berechtigung „Unbekannte Apps installieren“ fehlt</string>
+    <string name="update_err_installer_failed">Der System-Installer konnte nicht gestartet werden (%1$s). Bitte das Paket im Dateimanager manuell öffnen</string>
+
+</resources>

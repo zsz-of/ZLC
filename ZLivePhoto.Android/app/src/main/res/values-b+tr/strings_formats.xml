@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Türkçe (tr): biçim eklentilerinin görünen adları. Anahtar öneki: fmt_.
+  Temel: res/values/strings_formats.xml (Basitleştirilmiş Çince, yedek dil).
+  Not: FormatPlugin.display eski çağrı yerleri (MainActivity/AlbumScanner/Converter)
+  için hâlâ Çince yedek metin döndürür; LEGACY_ZH_NAMES tablosu bu dosyayla birebir
+  eşleşir — metin değişirse eski çağrı yerleri displayRes'e taşınana kadar o tablo da
+  güncellenmelidir.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Ayıklama</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo tek dosyalı Live Photo</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <!--
+      Eklenti tarafında kullanıcıya görünen hata mesajları (IOException metinleri):
+      MainActivity/Converter üzerinden e.message ile durum çubuğuna ve "durum
+      ayrıntılarına" gider, bu yüzden bunlar da kaynak olarak tutulur. Eklentilerin
+      Context'i yoktur; CoreText.of(...) kullanırlar (core/FfmpegAddon.kt; başlatılmadan
+      önce boş dize döner, böylece saf JVM testleri Android API'sine dokunmaz) —
+      Converter/AppUpdater ile aynı sözleşme.
+    -->
+    <string name="fmt_err_apple_mov_missing">Aynı ada sahip .mov video dosyası bulunamadı</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV dosyasında ftyp box eksik</string>
+    <string name="fmt_err_extract_read">Ayıklama bir çıktı biçimidir; giriş biçimi olarak okunmamalıdır</string>
+    <string name="fmt_err_no_primary_jpeg">Ana JPEG görüntüsü bulunamadı</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG\'den sonra geçerli bir MP4 video bulunamadı (ftyp box eksik)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 video akışı çözümlenemedi</string>
+    <string name="fmt_err_nubia_too_short">Dosya çok kısa; Nubia Live Photo\'ya benzemiyor</string>
+    <string name="fmt_err_nubia_no_magic">Dosya sonunda nubiaVpfile sihirli sayısı eksik</string>
+    <string name="fmt_err_nubia_jpeg_len">Sonda kayıtlı JPEG uzunluğu geçersiz: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG ile video arasında 0x00 dolgu baytları eksik</string>
+    <string name="fmt_err_nubia_empty_video">Gömülü video uzunluğu 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG sonunda vivo livephoto işareti bulunamadı</string>
+    <string name="fmt_err_vivo_companion_missing">Eşlik eden video dosyası eksik: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG gövdesi çözümlenemedi</string>
+    <string name="fmt_err_vivo_companion_invalid">Eşlik eden MP4 geçersiz (ftyp box eksik)</string>
+</resources>

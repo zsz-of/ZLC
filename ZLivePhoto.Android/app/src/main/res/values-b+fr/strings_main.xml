@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Français (fr) — écran principal et processus d\'arrière-plan (MainActivity, préfixe de clé : main_).
+  Base : res/values/strings_main.xml (chinois simplifié).
+  Espaces réservés : %1$s / %1$d. Catégories de pluriel : one / other.
+-->
+<resources>
+    <!-- ── Barre d\'état / messages ── -->
+    <string name="main_status_ready">Prêt</string>
+    <string name="main_status_location_granted">Autorisation de localisation accordée : les métadonnées GPS seront conservées après la conversion</string>
+    <string name="main_status_location_denied">Autorisation de localisation non accordée : après la conversion, les photos perdront leurs données de localisation GPS</string>
+    <string name="main_status_all_files_granted">Autorisation « Accès à tous les fichiers » accordée : les résultats seront écrits directement dans le dossier de la galerie, avec conservation complète des données de localisation</string>
+    <string name="main_status_all_files_denied">Autorisation « Accès à tous les fichiers » non accordée : sur certains appareils, les données de localisation peuvent être perdues après la conversion</string>
+    <string name="main_status_read_granted">Autorisation de lecture des photos et des vidéos accordée</string>
+    <string name="main_status_video_missing">Autorisation accordée, mais l\'accès aux vidéos manque : impossible de trouver la vidéo associée des photos animées à deux fichiers</string>
+    <string name="main_status_permission_denied">Autorisation non accordée ; vous pouvez appuyer de nouveau sur « Ajouter des fichiers »</string>
+    <string name="main_status_folder_not_selected">Aucun dossier sélectionné</string>
+    <string name="main_status_folder_unavailable">Accès impossible au dossier sélectionné (seuls les dossiers de stockage local sont pris en charge)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Session précédente restaurée (%1$d fichier)</item>
+        <item quantity="other">Session précédente restaurée (%1$d fichiers)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Un arrêt anormal a été détecté ; la liste inachevée a été vidée</string>
+    <string name="main_status_compose_blocks_extract">La file d\'attente contient des tâches d\'assemblage : impossible de passer en mode extraction</string>
+    <string name="main_status_replace_off_mutex">Mode remplacement désactivé (incompatible avec « Supprimer les originaux après le traitement »)</string>
+    <string name="main_status_delete_needs_all_files">La suppression automatique des originaux nécessite l\'autorisation « Accès à tous les fichiers », veuillez d\'abord l\'accorder</string>
+    <string name="main_status_replace_off">Mode remplacement désactivé ; les résultats sont de nouveau écrits dans le dossier de la galerie</string>
+    <string name="main_status_replace_needs_all_files">Le mode remplacement nécessite l\'autorisation « Accès à tous les fichiers », veuillez d\'abord l\'accorder</string>
+    <string name="main_status_delete_off_mutex">« Supprimer les originaux après le traitement » désactivé (incompatible avec le mode remplacement)</string>
+    <string name="main_status_loading_albums">Lecture de la galerie…</string>
+    <string name="main_status_no_albums">Aucun album trouvé</string>
+    <string name="main_status_compose_no_photo">Aucune photo sélectionnée, assemblage impossible</string>
+    <string name="main_status_compose_no_video">Aucune vidéo sélectionnée, assemblage impossible</string>
+    <string name="main_status_compose_all_added">Toutes les photos sélectionnées sont déjà dans la liste</string>
+    <string name="main_status_compose_paired">Photos : %1$d, vidéos : %2$d ; %3$d paires de tâches d\'assemblage ont été ajoutées selon la quantité la plus faible</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d tâche d\'assemblage ajoutée, appuyez sur « Démarrer la conversion » pour la lancer</item>
+        <item quantity="other">%1$d tâches d\'assemblage ajoutées, appuyez sur « Démarrer la conversion » pour les lancer</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (format de sortie automatiquement basculé sur Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Import de %1$d image partagée…</item>
+        <item quantity="other">Import de %1$d images partagées…</item>
+    </plurals>
+    <string name="main_status_import_failed">Échec de l\'import : %1$s</string>
+    <string name="main_status_import_done_partial">Import terminé : %1$d réussis, %2$d échoués</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import terminé : %1$d fichier importé au total</item>
+        <item quantity="other">Import terminé : %1$d fichiers importés au total</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import arrêté : %1$d réussis, %2$d échoués</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Import de %1$d fichier…</item>
+        <item quantity="other">Import de %1$d fichiers…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Import %1$d/%2$d…</string>
+    <string name="main_status_stopping">Arrêt en cours… (après le fichier en cours)</string>
+    <string name="main_status_stopping_import">Arrêt de l\'import…</string>
+    <string name="main_status_removed">%1$s supprimé</string>
+    <string name="main_status_cleared">Vidé</string>
+    <string name="main_status_nothing_to_convert">Aucun fichier à convertir</string>
+    <string name="main_status_folder_unreadable">Impossible de lire le dossier sélectionné</string>
+    <string name="main_status_scanning_folder">Analyse du dossier…</string>
+    <string name="main_status_no_images">Aucune image trouvée dans le dossier sélectionné</string>
+    <string name="main_status_batch_importing">Import par lots %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Import par lots arrêté : %1$d photo animée importée au total</item>
+        <item quantity="other">Import par lots arrêté : %1$d photos animées importées au total</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Import par lots arrêté : %1$d photo animée importée au total, %2$d fichiers non animés ignorés</item>
+        <item quantity="other">Import par lots arrêté : %1$d photos animées importées au total, %2$d fichiers non animés ignorés</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Import par lots terminé : %1$d photo animée importée au total</item>
+        <item quantity="other">Import par lots terminé : %1$d photos animées importées au total</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Import par lots terminé : %1$d photo animée importée au total, %2$d fichiers non animés ignorés</item>
+        <item quantity="other">Import par lots terminé : %1$d photos animées importées au total, %2$d fichiers non animés ignorés</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Arrêté : %2$d fichiers traités sur %1$d, %3$d fichiers source remplacés</string>
+    <string name="main_status_stopped_export">Arrêté : %2$d fichiers traités sur %1$d, %3$d exportés vers la galerie</string>
+    <string name="main_status_done_replace_reason">Terminé : %1$d fichiers traités, %2$d fichiers source remplacés (raison : %3$s)</string>
+    <string name="main_status_done_export_reason">Terminé : %1$d fichiers traités, %2$d exportés vers la galerie (raison : %3$s)</string>
+    <string name="main_status_done_replace">Terminé : %1$d fichiers traités, %2$d fichiers source remplacés</string>
+    <string name="main_status_done_export">Terminé : %1$d fichiers traités, %2$d exportés vers la galerie</string>
+    <string name="main_status_keep_originals">%1$s ; l\'autorisation « Accès à tous les fichiers » n\'a pas été accordée, les originaux ont été conservés</string>
+
+    <!-- ── Informations sur l\'élément de liste ── -->
+    <string name="main_info_detecting">Détection…</string>
+    <string name="main_info_unrecognized">Format de photo animée non reconnu</string>
+    <string name="main_info_converting">Conversion…</string>
+    <string name="main_info_compose_task">Tâche d\'assemblage (appuyez sur « Démarrer la conversion » pour la lancer)</string>
+    <string name="main_info_done_replaced">Terminé (%1$d fichiers source remplacés)</string>
+    <string name="main_info_done_skipped">Terminé (ignoré : conflit de noms)</string>
+    <string name="main_info_done_exported">Terminé (%1$d exportés)</string>
+    <string name="main_info_failed">Échec : %1$s</string>
+
+    <!-- ── Détails de progression ── -->
+    <string name="main_progress_added">%1$d/%2$d ajoutés</string>
+    <string name="main_progress_processed">%1$d/%2$d traités</string>
+    <string name="main_progress_imported">%1$d/%2$d importés</string>
+
+    <!-- ── Boîtes de dialogue d\'autorisation ── -->
+    <string name="main_dialog_permission_title">Accès aux photos et vidéos requis</string>
+    <string name="main_dialog_permission_message">Cette application a besoin d\'accéder aux photos et aux vidéos de votre appareil :\n\n• Autorisation photos : analyser la galerie de l\'appareil pour y repérer les photos animées\n• Autorisation vidéos : trouver la vidéo associée des photos animées à deux fichiers\n• Autorisation de localisation : conserver les métadonnées GPS des photos (sans elle, les données de localisation sont perdues après la conversion)\n\nEn cas de refus, le sélecteur intégré sera indisponible ; vous pourrez appuyer plus tard sur « Ajouter des fichiers » pour accorder de nouveau l\'autorisation.</string>
+    <string name="main_dialog_settings_title">L\'accès aux photos et vidéos doit être accordé manuellement</string>
+    <string name="main_dialog_settings_message">Vous avez choisi « Ne plus demander » auparavant, le système n\'affiche donc plus la boîte de dialogue d\'autorisation.\n\nOuvrez la page de l\'application → Autorisations → Photos et vidéos, accordez l\'accès manuellement, puis revenez dans l\'application.\n\nRemarque : il faut accorder à la fois les autorisations « Photos » et « Vidéos », sinon la vidéo associée des photos animées à deux fichiers sera introuvable.</string>
+
+    <!-- ── Boîtes de dialogue « Accès à tous les fichiers » ── -->
+    <string name="main_dialog_allfiles_title_delete">La suppression automatique des originaux nécessite « Accès à tous les fichiers »</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Cet appareil ne prend pas en charge la suppression automatique des originaux</string>
+    <string name="main_dialog_allfiles_title_replace">Le mode remplacement nécessite « Accès à tous les fichiers »</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Cet appareil ne prend pas en charge le mode remplacement</string>
+    <string name="main_dialog_allfiles_title_location">Il est recommandé d\'accorder « Accès à tous les fichiers »</string>
+    <string name="main_dialog_allfiles_delete_message">« Supprimer les originaux après le traitement » supprime directement les fichiers d\'origine du disque (la photo et sa vidéo associée) ; cette opération est irréversible. Il faut donc d\'abord accorder l\'autorisation « Accès à tous les fichiers ».\n\nL\'interrupteur ne deviendra utilisable qu\'après l\'autorisation ; vous pourrez alors l\'activer vous-même.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Le système actuel (Android 10 et antérieur) ne propose pas l\'autorisation « Accès à tous les fichiers » ; il est donc impossible de supprimer directement les fichiers d\'origine du disque, et la suppression automatique des originaux n\'est pas prise en charge.\n\nVous pouvez nettoyer les originaux manuellement via la galerie du système après la conversion.</string>
+    <string name="main_dialog_allfiles_replace_message">Le « mode remplacement » écrit directement le résultat de la conversion dans le fichier d\'origine sur le disque (en écrasant son contenu) ; cette opération est irréversible. Il faut donc d\'abord accorder l\'autorisation « Accès à tous les fichiers ».\n\nL\'interrupteur ne deviendra utilisable qu\'après l\'autorisation ; vous pourrez alors l\'activer vous-même.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Le système actuel (Android 10 et antérieur) ne propose pas l\'autorisation « Accès à tous les fichiers » ; il est donc impossible de réécrire directement les fichiers d\'origine sur le disque, et le mode remplacement n\'est pas pris en charge.\n\nVous pouvez continuer à convertir de façon classique : le résultat sera écrit dans le dossier de la galerie.</string>
+    <string name="main_dialog_allfiles_location_message">Sur certains appareils (comme Meizu), l\'écriture via la galerie du système supprime les données GPS, ce qui fait perdre la localisation aux photos après la conversion.\n\nUne fois « Accès à tous les fichiers » accordé, l\'application écrit directement dans le dossier de la galerie et conserve intégralement les métadonnées de localisation.\n\nSans cette autorisation, la conversion fonctionne aussi, mais certains appareils peuvent perdre les données de localisation.</string>
+
+    <!-- ── Boîte de dialogue de conflit de noms en sortie ── -->
+    <string name="main_dialog_conflict_title">Conflit de noms de fichier en sortie</string>
+    <string name="main_dialog_conflict_message">Un fichier du même nom existe déjà dans le dossier de sortie :\n%1$s\n\nVeuillez choisir le mode de traitement.</string>
+    <string name="main_label_conflict_always">Utiliser ce mode pour tous les conflits suivants</string>
+
+    <!-- ── Boutons des boîtes de dialogue ── -->
+    <string name="main_btn_grant">Autoriser</string>
+    <string name="main_btn_deny">Refuser</string>
+    <string name="main_btn_go_settings">Vers les paramètres</string>
+    <string name="main_btn_cancel">Annuler</string>
+    <string name="main_btn_grant_access">Autoriser</string>
+    <string name="main_btn_got_it">Compris</string>
+    <string name="main_btn_not_now">Pas maintenant</string>
+    <string name="main_btn_skip">Ignorer</string>
+    <string name="main_btn_overwrite">Écraser</string>
+    <string name="main_btn_auto_rename">Renommer automatiquement</string>
+
+    <!-- ── Résultat de la conversion / raisons d\'échec de l\'export ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d fichier d\'origine supprimé</item>
+        <item quantity="other">%1$d fichiers d\'origine supprimés</item>
+    </plurals>
+    <string name="main_delete_nothing">Aucun fichier d\'origine à supprimer</string>
+    <string name="main_delete_partial">%1$d fichiers d\'origine supprimés (%2$d n\'ont pas pu être supprimés et ont été conservés)</string>
+    <string name="main_delete_failed">Échec de la suppression des originaux (fichier utilisé ou droits d\'écriture manquants) ; ils ont été conservés</string>
+    <string name="main_export_missing_output">Le résultat de la conversion est absent ou vide : %1$s</string>
+    <string name="main_export_missing_output_bare">Le résultat de la conversion est absent ou vide</string>
+    <string name="main_export_insert_null">MediaStore insert a renvoyé null</string>
+    <string name="main_export_output_stream">Le flux de sortie MediaStore n\'est pas disponible</string>
+    <string name="main_export_write_failed">Échec de l\'écriture dans MediaStore : %1$s</string>
+    <string name="main_export_mkdir_failed">Impossible de créer le dossier de la galerie %1$s</string>
+    <string name="main_export_dir_write_failed">Échec de l\'écriture dans le dossier de la galerie : %1$s</string>
+    <string name="main_export_no_source">Impossible de localiser le fichier source, le remplacement a été ignoré</string>
+    <string name="main_export_companion_failed">Échec de la réécriture du fichier associé : %1$s</string>
+    <string name="main_export_source_dir_unwritable">Le dossier du fichier source n\'est pas accessible en écriture, le fichier associé n\'a pas été réécrit</string>
+    <string name="main_export_source_dir_unavailable">Le dossier du fichier source est indisponible : %1$s</string>
+    <string name="main_export_replace_failed">Échec du remplacement du fichier source : %1$s</string>
+    <string name="main_export_replace_failed_bare">Échec du remplacement du fichier source</string>
+</resources>

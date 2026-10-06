@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Deutsch (de) — App-weite Texte.
+  Basis: res/values/strings_app.xml (Chinesisch, vereinfacht).
+-->
+<resources>
+    <!-- Eintrag „wie im System" in der App-Sprachauswahl -->
+    <string name="app_language_follow_system">Wie im System</string>
+    <string name="app_language_title">App-Sprache</string>
+</resources>

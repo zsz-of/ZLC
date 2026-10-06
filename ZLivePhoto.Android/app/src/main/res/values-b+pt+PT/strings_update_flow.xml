@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Português (Portugal) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+    <string name="update_github_url_missing">Não foi possível obter o endereço de transferência do GitHub. Tente novamente mais tarde.</string>
+    <string name="update_flavor_standard">Versão padrão</string>
+    <string name="update_flavor_go">Versão Go</string>
+    <string name="update_lanzou_url_missing">Esta versão não disponibiliza ligação de transferência pelo Lanzou. Pode usar o GitHub.</string>
+    <string name="update_apk_direct_missing">Esta versão não disponibiliza uma ligação direta para o pacote compatível. Escolha o APK correspondente na página de lançamentos do GitHub.</string>
+    <string name="update_install_permission_missing">Sem a permissão «instalar aplicações desconhecidas» não é possível instalar automaticamente. Autorize nas definições do sistema e tente novamente.</string>
+    <string name="update_error_unknown">Erro desconhecido</string>
+    <string name="update_fail_lanzou">Falha na transferência pelo Lanzou</string>
+    <string name="update_fail_github">Falha na transferência pelo GitHub</string>
+    <string name="update_lanzou_resolving">A resolver a ligação de transferência do Lanzou…</string>
+    <string name="update_lanzou_downloading">A transferir do Lanzou…</string>
+    <string name="update_github_downloading">A transferir do GitHub…</string>
+    <string name="update_unzipping">A extrair o pacote de instalação…</string>
+    <string name="update_notes_empty">Esta versão não tem notas de atualização.</string>
+
+    <!-- Diálogos da versão Go -->
+    <string name="update_use_normal_title">Utilize a versão normal</string>
+    <string name="update_use_normal_body">Este dispositivo tem Android 10 ou superior; a versão leve Go já não é compatível e a versão antiga não pode continuar a ser utilizada.\n\nDetetámos que a versão normal (ZLC) já está instalada. Abra a versão normal para continuar (as novas versões já não disponibilizam a versão compatível Go; pode desinstalar a versão antiga para libertar espaço).</string>
+    <string name="update_open_normal">Abrir a versão normal</string>
+    <string name="update_must_update_title">É necessário atualizar para continuar</string>
+    <string name="update_forced_body">Este dispositivo tem Android 10 ou superior; a versão leve Go já não é compatível e a versão antiga não pode continuar a ser utilizada; as novas versões também já não disponibilizam a versão compatível Go.\n\nLigue-se à internet e toque em «Tentar novamente» para obter o pacote da versão normal.</string>
+    <string name="update_retry">Tentar novamente</string>
+    <string name="update_switch_normal_body">Este dispositivo tem Android 10 ou superior; a versão leve Go já não é compatível e a versão antiga não pode continuar a ser utilizada.\nTransfira e instale a versão normal para continuar (as novas versões já não disponibilizam a versão compatível Go).</string>
+
+    <!-- Transferência / permissão de instalação / resultado -->
+    <string name="update_downloading_title">Transferir atualização</string>
+    <string name="update_cancel">Cancelar</string>
+    <string name="update_need_permission_title">Permissão de instalação necessária</string>
+    <string name="update_need_permission_body">Instalar a nova versão exige a permissão do sistema «instalar aplicações desconhecidas».\n\nToque em «Autorizar», permita nas definições e volte à aplicação: a instalação continuará automaticamente (sem transferir de novo).</string>
+    <string name="update_grant">Autorizar</string>
+    <string name="update_notice_title">Aviso</string>
+    <string name="update_got_it">Entendi</string>
+
+    <!-- Diálogo principal / notas de atualização -->
+    <string name="update_notes_title">v%1$s · Notas de atualização</string>
+    <string name="update_back">Voltar</string>
+    <string name="update_title_switch_normal">Mudar para a versão normal</string>
+    <string name="update_title_reinstall">Reinstalar esta versão</string>
+    <string name="update_title_new_version">Nova versão disponível</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Vamos transferir e reinstalar esta versão (substituindo a aplicação atual).\nEsta funcionalidade serve para testes de regressão do mecanismo de atualização.</string>
+    <string name="update_view_notes">Ver notas de atualização</string>
+    <string name="update_lanzou_unavailable">Lanzou indisponível de momento</string>
+    <string name="update_download_lanzou">Transferir do Lanzou</string>
+    <string name="update_download_github">Transferir do GitHub</string>
+    <string name="update_download_browser">Transferir pelo navegador</string>
+    <string name="update_later">Atualizar mais tarde</string>
+    <string name="update_later_switch">Mudar mais tarde</string>
+    <string name="update_skip_version">Ignorar esta versão</string>
+</resources>

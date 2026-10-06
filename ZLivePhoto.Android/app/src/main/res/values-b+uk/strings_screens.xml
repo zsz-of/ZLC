@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Українська (uk) — головний екран і вибір із галереї (префікс key: screen_).
+  База: res/values/strings_screens.xml (китайська, спрощена).
+  Порядок заповнювачів можна змінювати; для дат використовується український формат.
+-->
+<resources>
+    <!-- Підзаголовок верхньої панелі -->
+    <string name="screen_app_subtitle">Конвертація динамічних фото</string>
+    <!-- Кількість вибраних файлів (plurals: one / few / many / other) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d файл</item>
+        <item quantity="few">%1$d файли</item>
+        <item quantity="many">%1$d файлів</item>
+        <item quantity="other">%1$d файла</item>
+    </plurals>
+    <!-- Вхід у налаштування (лише для озвучення) -->
+    <string name="screen_settings">Налаштування</string>
+
+    <!-- Діалог вибору вихідного формату -->
+    <string name="screen_select_output_format">Вибір вихідного формату</string>
+    <string name="screen_selected">Вибрано</string>
+    <string name="screen_vivo_single_warning">⚠ Занадто старі пристрої можуть не розпізнати цей формат</string>
+    <string name="screen_extract_blocked">⚠ У черзі є завдання збирання — вилучення вибрати не можна</string>
+
+    <!-- Короткі назви форматів (повні — fmt_* у strings_formats.xml) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (один файл)</string>
+    <string name="screen_format_vivo">vivo (два файли)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Вилучення</string>
+
+    <!-- Нижня панель «Інструменти» -->
+    <string name="screen_toolbox">Інструменти</string>
+    <string name="screen_batch_import">Пакетний імпорт</string>
+    <string name="screen_batch_import_desc">Сканувати всю галерею та знайти динамічні фото</string>
+    <string name="screen_compose">Зібрати динамічне фото</string>
+    <string name="screen_compose_desc">Виберіть фото й відео та об\'єднайте їх у пару</string>
+    <string name="screen_replace_mode">Режим заміни</string>
+    <string name="screen_replace_mode_desc">Результат записується прямо у вихідний файл, нові файли не створюються</string>
+    <string name="screen_need_all_files_access_hint">Потрібен дозвіл «Доступ до всіх файлів» — натисніть, щоб надати</string>
+    <string name="screen_agree_and_enable">Погоджуюся, увімкнути</string>
+
+    <!-- Порожній стан / нижня панель керування -->
+    <string name="screen_empty_no_files">Файли ще не додано</string>
+    <string name="screen_view_detail">Детальніше</string>
+    <string name="screen_add_files">Додати файли</string>
+    <string name="screen_output_format">Вихідний формат: %1$s</string>
+    <string name="screen_delete_original">Видаляти вихідні фото після обробки</string>
+    <string name="screen_need_all_files_access_view">Потрібен дозвіл «Доступ до всіх файлів» — натисніть, щоб переглянути</string>
+    <string name="screen_clear">Очистити</string>
+    <string name="screen_stop">Зупинити обробку</string>
+    <string name="screen_start_convert">Почати конвертацію</string>
+
+    <!-- Діалог деталей стану -->
+    <string name="screen_status_detail">Деталі стану</string>
+    <string name="screen_long_press_copy">Довге натискання виділяє текст для копіювання</string>
+    <string name="screen_copy">Копіювати</string>
+    <string name="screen_close">Закрити</string>
+
+    <!-- Вибір із галереї -->
+    <string name="screen_back">Назад</string>
+    <string name="screen_picker_title_select">Вибір динамічного фото</string>
+    <string name="screen_album_count">Альбом %1$d</string>
+    <string name="screen_album_collapse_cover">Згорнути обкладинку альбому</string>
+    <string name="screen_album_expand_cover">Розгорнути обкладинку альбому</string>
+    <string name="screen_scanning_progress">Сканування %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d знімок</item>
+        <item quantity="few">%1$d знімки</item>
+        <item quantity="many">%1$d знімків</item>
+        <item quantity="other">%1$d знімка</item>
+    </plurals>
+    <string name="screen_select_all">Вибрати все</string>
+    <string name="screen_no_albums">Немає доступних альбомів</string>
+    <string name="screen_no_media">Динамічних фото не знайдено</string>
+    <string name="screen_no_media_compose">Фото або відео не знайдено</string>
+    <string name="screen_import">Імпорт</string>
+    <string name="screen_import_count">Імпортувати %1$d</string>
+    <string name="screen_import_mixed">Імпорт: фото %1$d · відео %2$d</string>
+    <string name="screen_search">Пошук</string>
+    <string name="screen_search_collapse">Згорнути пошук</string>
+    <string name="screen_search_hint">Пошук за назвою</string>
+    <string name="screen_search_clear">Очистити пошук</string>
+    <string name="screen_sort_date">Дата</string>
+    <string name="screen_sort_size">Розмір</string>
+    <string name="screen_sort_name">Назва</string>
+    <string name="screen_sort_asc">За зростанням</string>
+    <string name="screen_sort_desc">За спаданням</string>
+
+    <!-- Мітки дат у групуванні галереї -->
+    <string name="screen_date_today">Сьогодні</string>
+    <string name="screen_date_yesterday">Учора</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

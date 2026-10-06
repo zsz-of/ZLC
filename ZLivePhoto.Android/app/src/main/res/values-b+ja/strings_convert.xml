@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  変換 / トランスコード / リマインダー関連の文言（日本語 / ja）。
+  key は values/strings_convert.xml と 1 対 1 で対応。プレースホルダーは %1$s / %1$d のまま。
+  `\n` は改行。翻訳品質：A。
+-->
+<resources>
+
+    <!-- ========== Converter.kt：パラメーターと素材の検証（例外 → 画面に失敗理由を表示） ========== -->
+    <string name="conv_unknown_target">不明な出力形式：%1$s</string>
+    <string name="conv_unrecognized_live_photo">認識できないライブフォト形式です（Google/OPPO/vivo/Xiaomi/Apple のライブフォトではありません）</string>
+    <string name="conv_cover_photo_missing">カバー写真が存在しないか空です</string>
+    <string name="conv_video_missing">動画が存在しないか空です</string>
+    <string name="conv_video_too_large">動画が大きすぎます（%1$dMB）。ライブフォトとして合成できないため、より短い動画を選択してください</string>
+    <string name="conv_transcoded_too_large">トランスコード後の動画が大きすぎます（%1$dMB）。ライブフォトとして合成できません</string>
+    <string name="conv_video_too_large_compose">動画が大きすぎます（%1$dMB）。ライブフォトとして合成できません</string>
+
+    <!-- Converter.kt：カバー（HEIC / JPEG 以外） -->
+    <string name="conv_cover_heic_go">カバーが HEIC 画像です（軽量版はトランスコード非対応。iPhone で JPEG として書き出してから変換してください）</string>
+    <string name="conv_cover_invalid_heic">カバーが有効な画像ではありません（HEIC の復号にはシステムの HEIF 対応が必要です）</string>
+    <string name="conv_cover_not_jpeg_go">カバーが JPEG 画像ではありません（軽量版はトランスコード非対応。JPEG 写真を使用してください）</string>
+    <string name="conv_cover_invalid_image">カバーが有効な画像ではありません（JPEG/WebP/PNG のみ対応）</string>
+
+    <!-- Converter.kt：トランスコード / コンテナ変換の失敗と「コンテナを変えてもコーデックは救えない」案内 -->
+    <string name="conv_reencode_failed">動画の再エンコードに失敗しました：%1$s</string>
+    <string name="conv_remux_failed">コンテナの変換に失敗しました：%1$s</string>
+    <string name="conv_codec_unknown">認識できる H.264/H.265 動画ではありません</string>
+    <string name="conv_codec_is">コーデック %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">動画「%1$s」は%2$s。コンテナを変えてもコーデックは変わらないため、ライブフォトとして合成できません。\n\n「設定 → 動画トランスコード → 変換方式」で「再エンコード」に変更するか、他のツールで H.264/H.265 の MP4 に変換してください。</string>
+    <string name="conv_hint_no_encoder">動画が標準 MP4 コンテナ（MOV / MKV / WebM / AVI など）ではなく、現在の「変換方式」では再エンコードしないため、ライブフォトとして合成できません。\n\n「設定 → 動画トランスコード → 変換方式」で「再エンコード」に変更するか（通常版には ffmpeg エンコーダーが内蔵されています。Go 軽量版にはトランスコーダーが含まれないため通常版をご利用ください）、先に動画を標準 MP4（H.264/H.265）に変換してください。</string>
+
+    <!-- ========== 変換ログ（リスト項目のステータスバーとログパネルに表示される） ========== -->
+    <string name="conv_log_detected">%1$s として認識</string>
+    <string name="conv_log_same_format_copied">ソースと出力形式が同じため、そのままコピーしました（無劣化）</string>
+    <string name="conv_log_extra_tracks_bypass">ソース動画に音声・映像以外のトラック（%1$s）が含まれるため、同一形式の直接コピーをスキップし、クリーンアップのため通常の書き出し処理を行います</string>
+    <string name="conv_log_ts_fallback">ソースにカバー画像のタイムスタンプがないため、仕様に従い動画の中間点を使用します</string>
+    <string name="conv_log_brand_normalized">動画コンテナのブランドを正規化しました（QuickTime → isom）</string>
+    <string name="conv_log_sanitize_failed">動画に追加トラック（%1$s）が含まれていますが、クリーンアップできないためそのまま出力しました（一部の機種では長押し再生できない場合があります）</string>
+    <string name="conv_log_extra_tracks_removed">動画の追加トラック（%1$s）を削除しました</string>
+    <string name="conv_log_remux_cannot_fix">ソース動画は%1$s。コンテナの変換だけでは解決できません（%2$s）。出力が長押し再生できない場合は、「設定 → 動画トランスコード → 変換方式」で「再エンコード」を選択してください</string>
+    <string name="conv_log_reencoding">ソース動画は%1$s。アルバム互換性を高めるため、設定に従い 8bit + AAC に再エンコードします</string>
+    <string name="conv_log_reencode_result_unusable">再エンコード結果が使用できないため、そのまま出力しました（一部の機種では長押し再生できない場合があります）</string>
+    <string name="conv_log_reencode_still_risky">再エンコード後もリスク項目があります（%1$s）</string>
+    <string name="conv_log_reencode_failed">再エンコードに失敗しました（%1$s）。そのまま出力しました（一部の機種では長押し再生できない場合があります）</string>
+    <string name="conv_log_cover_heic_converted">カバーが HEIC（JPEG 以外）のため、標準 JPEG に変換してからパッケージしました</string>
+    <string name="conv_log_compose_sizes">合成：写真 %1$dB + 動画 %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">トランスコーダー未使用：コンテナブランドのみ書き換えます（MOV → MP4）。再エンコードは行いません</string>
+
+    <!-- ログのタグ（画面では「[タグ] 文言」として表示） -->
+    <string name="conv_tag_convert">変換</string>
+    <string name="conv_tag_transcode">トランスコード</string>
+    <string name="conv_tag_compose">合成</string>
+
+    <!-- 変換方式がブロックされる理由（上記の警告文に埋め込まれる） -->
+    <string name="conv_blocker_no_encoder">内蔵トランスコーダーが利用できません</string>
+    <string name="conv_blocker_mode_no_encode">現在の「変換方式」では再エンコードしません</string>
+
+    <!-- ========== FfmpegAddon.kt：内蔵 ffmpeg のトランスコード / コンテナ変換 ========== -->
+    <string name="conv_addon_unavailable">内蔵トランスコーダーが利用できません</string>
+    <string name="conv_addon_transcode_failed">ffmpeg のトランスコードに失敗しました：%1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg でのコンテナ変換に失敗しました：%1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg で動画を標準 MP4 にトランスコードしています（%1$s / crf %2$d / %3$s。映像と音声のトラックのみ保持）</string>
+    <string name="conv_log_transcode_done">動画のトランスコードが完了しました（%1$dKB）</string>
+    <string name="conv_log_remuxing">動画コンテナを標準 MP4 に変換しています（コンテナのみ変更、再エンコードなし）</string>
+    <string name="conv_log_remux_done">コンテナの変換が完了しました（%1$dKB）</string>
+
+    <!-- ========== Reminders.kt：「今後表示しない」ダイアログ ========== -->
+    <string name="conv_reminder_cat_compose">合成</string>
+    <string name="conv_reminder_cat_convert">変換</string>
+    <string name="conv_reminder_cat_update">更新</string>
+    <string name="conv_reminder_video_over3s_title">動画が 3 秒を超えています</string>
+    <string name="conv_reminder_video_over3s_message">選択した動画の長さが 3 秒を超えています。合成したライブフォトは互換性の問題が起きる可能性があります：\n\n• 正常に再生できない場合があります\n• システムのアルバムに認識されない場合があります\n• 一部の機種ではこのライブフォトを認識できない場合があります</string>
+    <string name="conv_reminder_legacy_go_title">古いバージョンを検出しました</string>
+    <string name="conv_reminder_legacy_go_message">この端末には旧バージョン（Go 版）のアプリがまだインストールされています。この旧バージョンは本端末では使用できないため、アンインストールして空き容量を確保できます。</string>
+    <string name="conv_reminder_replace_risk_title">置き換えモードには破損のリスクがあります</string>
+    <!-- formatted="false"：本文中に文字列としての ％ があり、書式引数付きで呼ばれないため、
+         非書式文字列として宣言して aapt2/lint の String.format 検証を避ける。 -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">置き換えモードは変換結果を元のファイルに直接書き戻すため、元のファイルが上書きされると復元できません。\n\n• 書き込み中にアプリが中断されたり、ストレージ容量が不足したり、権限が取り消されたりすると、元のファイルが破損する可能性があります\n• 変換自体が 100％ 成功することを保証できず、失敗した時点で元のファイルがすでに使用できなくなっている可能性があります\n• まず 1～2 個のファイルで試して問題がないことを確認してから、一括処理することをおすすめします\n• 大切な写真は事前にご自身でバックアップしてください\n\n本機能は「現状のまま」提供されます。使用リスクはご自身で負担していただくものとし、作者はファイルの破損や損失について責任を負いません。</string>
+    <string name="conv_reminder_dont_remind">今後表示しない</string>
+    <string name="conv_reminder_confirm_ok">了解</string>
+    <string name="conv_reminder_uninstall">アンインストール</string>
+
+</resources>

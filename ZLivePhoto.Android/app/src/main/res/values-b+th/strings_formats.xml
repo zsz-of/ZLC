@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ไทย (th): ชื่อที่แสดงของปลั๊กอินรูปแบบไฟล์ คำนำหน้าคีย์: fmt_
+  ต้นฉบับ: res/values/strings_formats.xml (จีนตัวย่อ เป็นภาษาสำรอง)
+  หมายเหตุ: FormatPlugin.display ยังคืนข้อความจีนสำรองให้จุดเรียกเก่า
+  (MainActivity/AlbumScanner/Converter) ตาราง LEGACY_ZH_NAMES ตรงกับไฟล์นี้แบบหนึ่งต่อหนึ่ง
+  หากแก้ข้อความต้องอัปเดตตารางนั้นด้วย จนกว่าจุดเรียกเก่าจะย้ายไปใช้ displayRes
+  เอกสารนี้เป็นการแปลโดยใช้โมเดลช่วย อาจมีความไม่ถูกต้อง ยินดีรับการแก้ไขจากชุมชน
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">แยก</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Live Photo Honor</string>
+    <string name="fmt_meizu">Live Photo Meizu</string>
+    <string name="fmt_nubia">Live Photo Nubia</string>
+    <string name="fmt_oppo">Live Photo OPPO</string>
+    <string name="fmt_vivo">Live Photo vivo</string>
+    <string name="fmt_vivo_single">Live Photo vivo (ไฟล์เดียว)</string>
+    <string name="fmt_xiaomi">Live Photo Xiaomi</string>
+
+    <!--
+      ข้อความข้อผิดพลาดที่ผู้ใช้เห็นฝั่งปลั๊กอิน (ข้อความ IOException): ส่งผ่าน
+      MainActivity/Converter (e.message) ไปยังแถบสถานะและ "รายละเอียดสถานะ"
+      จึงแยกเป็นทรัพยากรด้วย ปลั๊กอินไม่มี Context ใช้ CoreText.of(...)
+      (core/FfmpegAddon.kt ก่อนเริ่มต้นจะคืนสตริงว่าง ทำให้การทดสอบ JVM ล้วน
+      ไม่แตะ API ของ Android) ตรงตามข้อตกลงเดิมของ Converter/AppUpdater
+    -->
+    <string name="fmt_err_apple_mov_missing">ไม่พบไฟล์วิดีโอ .mov ที่มีชื่อเดียวกัน</string>
+    <string name="fmt_err_apple_mov_no_ftyp">ไฟล์ MOV ไม่มี ftyp box</string>
+    <string name="fmt_err_extract_read">การแยกเป็นรูปแบบเอาต์พุต ไม่ควรอ่านเป็นรูปแบบอินพุต</string>
+    <string name="fmt_err_no_primary_jpeg">ไม่พบภาพ JPEG หลัก</string>
+    <string name="fmt_err_no_mp4_after_jpeg">ไม่พบวิดีโอ MP4 ที่ถูกต้องหลัง JPEG (ไม่มี ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">แยกวิเคราะห์สตรีมวิดีโอ MP4 ไม่สำเร็จ</string>
+    <string name="fmt_err_nubia_too_short">ไฟล์สั้นเกินไป ไม่เหมือน Live Photo Nubia</string>
+    <string name="fmt_err_nubia_no_magic">ไม่มี magic number nubiaVpfile ท้ายไฟล์</string>
+    <string name="fmt_err_nubia_jpeg_len">ความยาว JPEG ที่บันทึกไว้ท้ายไฟล์ไม่ถูกต้อง: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">ไม่มีไบต์เติม 0x00 ระหว่าง JPEG กับวิดีโอ</string>
+    <string name="fmt_err_nubia_empty_video">ความยาววิดีโอที่ฝังเป็น 0</string>
+    <string name="fmt_err_vivo_no_marker">ไม่พบเครื่องหมาย vivo livephoto ท้าย JPG</string>
+    <string name="fmt_err_vivo_companion_missing">ไม่มีไฟล์วิดีโอที่มาคู่กัน: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">แยกวิเคราะห์เนื้อหาหลักของ JPG ไม่สำเร็จ</string>
+    <string name="fmt_err_vivo_companion_invalid">MP4 ที่มาคู่กันไม่ถูกต้อง (ไม่มี ftyp box)</string>
+</resources>

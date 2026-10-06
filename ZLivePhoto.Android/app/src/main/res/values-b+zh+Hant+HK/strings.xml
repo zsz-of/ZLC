@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 香港繁體（zh-HK）用語版本：由 zh-Hant 通用譯本套用香港用語表產生（內建→內置、相容→兼容、佇列→隊列、中繼資料→元資料、覆寫→覆蓋、略過→跳過、連線→連接、取得→獲取、彈窗→彈出視窗）。 -->
+<!--
+  繁體中文（通用）。應用名稱屬品牌，不作翻譯。
+  地區變體：zh-Hant+TW / zh-Hant+HK / zh-Hant+MO 由本目錄派生。
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

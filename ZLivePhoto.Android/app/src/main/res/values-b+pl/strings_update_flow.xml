@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Polski (pl) — teksty procesu aktualizacji, odpowiadają ui/UpdateFlow.kt.
+  Osobny plik: UpdateFlow należy do modułu aktualizacji, a konwencja i18n-plan zakłada
+  jeden plik strings_*.xml na moduł; nazwa update_flow unika kolizji z innymi zadaniami.
+  Prefiks kluczy: update_; res/values/ to chiński tekst zapasowy.
+  W UpdateFlowController (nie-Composable) używamy context.getString(...), w oknach dialogowych stringResource(...).
+-->
+<resources>
+    <!-- ========== Komunikaty kontrolera ========== -->
+    <string name="update_github_url_missing">Nie udało się pobrać adresu pobierania z GitHub — spróbuj ponownie później.</string>
+    <string name="update_flavor_standard">Wersja standardowa</string>
+    <string name="update_flavor_go">Wersja Go</string>
+    <string name="update_lanzou_url_missing">Ta wersja nie udostępnia linku Lanzou Cloud — możesz użyć pobierania z GitHub.</string>
+    <string name="update_apk_direct_missing">Ta wersja nie ma bezpośredniego linku do pasującego pakietu APK — wybierz odpowiedni APK na stronie wydania GitHub.</string>
+    <string name="update_install_permission_missing">Brak uprawnienia „Instalowanie nieznanych aplikacji” — nie można zainstalować automatycznie. Zezwól w ustawieniach systemowych i spróbuj ponownie.</string>
+    <string name="update_error_unknown">Nieznany błąd</string>
+    <string name="update_fail_lanzou">Pobieranie z Lanzou Cloud nie powiodło się</string>
+    <string name="update_fail_github">Pobieranie z GitHub nie powiodło się</string>
+    <string name="update_lanzou_resolving">Odczytywanie linku pobierania z Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Pobieranie z Lanzou Cloud…</string>
+    <string name="update_github_downloading">Pobieranie z GitHub…</string>
+    <string name="update_unzipping">Rozpakowywanie pakietu instalacyjnego…</string>
+    <string name="update_notes_empty">Ta wersja nie ma jeszcze opisu zmian.</string>
+
+    <!-- ========== Okna dialogowe dotyczące wersji Go ========== -->
+    <string name="update_use_normal_title">Użyj wersji standardowej</string>
+    <string name="update_use_normal_body">System na tym urządzeniu to Android 10 lub nowszy; lekka wersja Go nie jest już obsługiwana i stara wersja nie może być dalej używana.\n\nWykryto zainstalowaną wersję standardową (ZLC) — otwórz ją, aby kontynuować (nowe wydania nie zawierają wersji zgodnej z Go; starą wersję możesz odinstalować, aby zwolnić miejsce).</string>
+    <string name="update_open_normal">Otwórz wersję standardową</string>
+    <string name="update_must_update_title">Aby kontynuować, musisz zaktualizować</string>
+    <string name="update_forced_body">System na tym urządzeniu to Android 10 lub nowszy; lekka wersja Go nie jest już obsługiwana i stara wersja nie może być dalej używana. Nowe wydania również nie zawierają wersji zgodnej z Go.\n\nPołącz się z internetem i dotknij „Ponów”, aby pobrać pakiet wersji standardowej.</string>
+    <string name="update_retry">Ponów</string>
+    <string name="update_switch_normal_body">System na tym urządzeniu to Android 10 lub nowszy; lekka wersja Go nie jest już obsługiwana i stara wersja nie może być dalej używana.\nPobierz i zainstaluj wersję standardową, aby kontynuować (nowe wydania nie zawierają wersji zgodnej z Go).</string>
+
+    <!-- ========== Pobieranie / uprawnienia / komunikaty wyniku ========== -->
+    <string name="update_downloading_title">Pobieranie aktualizacji</string>
+    <string name="update_cancel">Anuluj</string>
+    <string name="update_need_permission_title">Wymagane uprawnienie do instalacji</string>
+    <string name="update_need_permission_body">Instalacja nowej wersji wymaga systemowego uprawnienia „Instalowanie nieznanych aplikacji”.\n\nDotknij „Przyznaj”, zezwól w ustawieniach i wróć do aplikacji — instalacja zostanie wznowiona automatycznie (bez ponownego pobierania).</string>
+    <string name="update_grant">Przyznaj</string>
+    <string name="update_notice_title">Informacja</string>
+    <string name="update_got_it">Rozumiem</string>
+
+    <!-- ========== Główne okno / opis zmian ========== -->
+    <string name="update_notes_title">v%1$s · Opis zmian</string>
+    <string name="update_back">Wstecz</string>
+    <string name="update_title_switch_normal">Przełącz na wersję standardową</string>
+    <string name="update_title_reinstall">Zainstaluj ponownie tę wersję</string>
+    <string name="update_title_new_version">Dostępna nowa wersja</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Ta wersja zostanie pobrana i zainstalowana ponownie (zastąpi obecną aplikację).\nTa funkcja służy do testów regresyjnych mechanizmu aktualizacji.</string>
+    <string name="update_view_notes">Zobacz opis zmian</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud jest chwilowo niedostępny</string>
+    <string name="update_download_lanzou">Pobierz z Lanzou Cloud</string>
+    <string name="update_download_github">Pobierz z GitHub</string>
+    <string name="update_download_browser">Pobierz w przeglądarce</string>
+    <string name="update_later">Później</string>
+    <string name="update_later_switch">Nie teraz</string>
+    <string name="update_skip_version">Pomiń tę wersję</string>
+</resources>

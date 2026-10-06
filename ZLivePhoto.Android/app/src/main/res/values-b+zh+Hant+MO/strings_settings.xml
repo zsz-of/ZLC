@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 澳門繁體（zh-MO）用語版本：盡力翻譯（模型輔助）。澳門軟件用詞依香港慣例，與 zh-HK 文本一致；本語料未出現需要單獨區分的澳門／葡語借詞場景。 -->
+<!--
+  設定頁（ui/SettingsScreen.kt）文案。key 前綴 settings_。
+  繁體中文（zh-Hant，通用繁體）譯本；佔位符一律用帶序號形式：%1$s / %1$d。
+  不譯：專有名詞與代號（@毛血旺o、GPL-3.0、H.265/H.264、GitHub、Material You、Android、ffmpeg）。
+-->
+<resources>
+
+    <!-- 通用 -->
+    <string name="settings_title">設定</string>
+    <string name="settings_cd_back">返回</string>
+    <string name="settings_btn_apply">套用</string>
+    <string name="settings_btn_cancel">取消</string>
+    <string name="settings_btn_close">關閉</string>
+    <string name="settings_btn_ok">好</string>
+    <string name="settings_btn_sponsor">贊助</string>
+
+    <!-- 分組標題 -->
+    <string name="settings_section_general">一般</string>
+    <string name="settings_section_appearance">外觀</string>
+    <string name="settings_section_language">語言</string>
+    <string name="settings_section_defaults">預設選項</string>
+    <string name="settings_section_output">輸出</string>
+    <string name="settings_section_transcode">影片轉碼</string>
+    <string name="settings_section_about">關於</string>
+    <string name="settings_section_app">應用程式</string>
+    <string name="settings_section_credits">鳴謝與贊助</string>
+    <string name="settings_section_opensource">開源與授權</string>
+
+    <!-- 通用 -->
+    <string name="settings_startup_check_title">啟動時檢查更新</string>
+    <string name="settings_startup_check_subtitle">啟動時自動從 GitHub 獲取新版本，有更新時提示下載</string>
+    <string name="settings_haptics_title">震動回饋</string>
+    <string name="settings_haptics_subtitle">按鈕點擊與狀態變化時的觸覺回饋</string>
+    <string name="settings_bounce_title">按鈕彈性動畫</string>
+    <string name="settings_bounce_subtitle">按鈕按下時的縮放回彈動畫</string>
+
+    <!-- 外觀 -->
+    <string name="settings_theme_system">跟隨系統</string>
+    <string name="settings_theme_dark">深色</string>
+    <string name="settings_theme_light">淺色</string>
+    <string name="settings_dynamic_theme_title">Material You 動態取色</string>
+    <string name="settings_dynamic_theme_subtitle">跟隨系統壁紙顏色（Android 12+）；關閉後使用下方預製主題色</string>
+    <string name="settings_preset_colors_title">預製主題色</string>
+    <string name="settings_preset_current">目前：%1$s</string>
+    <string name="settings_preset_disabled_hint">關閉「Material You 動態取色」後可選擇</string>
+    <string name="settings_custom">自訂</string>
+    <string name="settings_custom_color_title">自訂主題色</string>
+    <string name="settings_cd_custom_palette">自訂調色盤</string>
+    <string name="settings_hue_value">色相 %1$d°</string>
+
+    <!-- 應用語言：標題與「跟隨系統」兩項複用 strings_app.xml
+         （app_language_title / app_language_follow_system），此處不重複定義 -->
+    <string name="settings_language_dialog_title">選擇應用程式語言</string>
+    <string name="settings_language_count">共 %1$d 種語言</string>
+
+    <!-- 預設選項 -->
+    <string name="settings_reminder_dialogs_title">不再提示彈出視窗</string>
+    <string name="settings_reminder_dialogs_subtitle">管理所有「不再提示」彈出視窗的開關</string>
+    <string name="settings_reminder_hint">開關開啟表示「不再提示」；關閉後，下次觸發對應情境時會重新彈出提示。</string>
+
+    <!-- 輸出 -->
+    <string name="settings_preserve_folders_title">按來源資料夾層級輸出</string>
+    <string name="settings_preserve_folders_subtitle">轉換結果按原相簿名稱分子目錄存放；關閉後全部平鋪在同一個目錄</string>
+
+    <!-- 關於 -->
+    <string name="settings_about_title">關於</string>
+    <string name="settings_about_subtitle">版本 · 檢查更新 · 鳴謝與贊助</string>
+    <string name="settings_check_update_title">檢查更新</string>
+    <string name="settings_check_update_subtitle">從 GitHub Releases 獲取最新版本</string>
+    <string name="settings_checking">檢查中…</string>
+    <string name="settings_update_available">v%1$s 可用</string>
+    <string name="settings_up_to_date">已是最新版本</string>
+    <string name="settings_network_error">網絡錯誤，請稍後重試</string>
+    <string name="settings_reinstall_title">重新安裝本版本</string>
+    <string name="settings_reinstall_subtitle">下載目前最新版覆蓋安裝（測試更新用）</string>
+    <string name="settings_reinstall_newer_hint">目前可升級至 v%1$s，請先用「檢查更新」升級</string>
+    <string name="settings_version_title">版本</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">支付寶贊助</string>
+    <string name="settings_alipay_subtitle">支持開發</string>
+    <string name="settings_coolapk_subtitle">酷安用戶 · 感謝他提供的支持</string>
+    <string name="settings_ai_credits_subtitle">感謝 AI IDE 與 AI 模型在開發中提供的協助</string>
+    <string name="settings_github_title">GitHub 開源地址</string>
+    <string name="settings_license_title">開源許可證</string>
+    <string name="settings_sponsor_dialog_title">感謝你的支持</string>
+    <string name="settings_sponsor_dialog_text">真的非常感謝你願意支持這個應用程式！\n\n如果你還是學生、或經濟還沒有獨立，請千萬不要破費——\n把這份心意留在心裡，繼續使用下去，就是對我最好的支持。\n\n願意贊助的話，一塊也是愛，我會把它投入到更好的維護與功能上：）</string>
+    <string name="settings_alipay_missing_title">還沒有安裝支付寶</string>
+    <string name="settings_alipay_missing_text">沒有偵測到支付寶，暫時無法完成贊助。\n\n沒關係——無論怎樣，都非常感謝你的好意！</string>
+
+    <!-- 影片轉碼 -->
+    <string name="settings_transcoder_title">內置轉碼器</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">重新編碼</string>
+    <string name="settings_transcode_mode_remux">僅重封裝容器（推薦）</string>
+    <string name="settings_transcode_mode_off">完全不使用轉碼器</string>
+    <string name="settings_transcode_params_title">轉碼參數</string>
+    <string name="settings_transcode_params_subtitle">重新編碼時使用的品質與壓縮參數</string>
+    <string name="settings_transcode_params_disabled">僅在「轉碼方式」選擇「重新編碼」時生效</string>
+    <string name="settings_crf_value">品質 CRF：%1$d</string>
+    <string name="settings_crf_hint">數值越小畫質越高、體積越大（預設 18）</string>
+    <string name="settings_encoder_title">編碼器</string>
+    <string name="settings_compress_preset_title">壓縮預設</string>
+
+</resources>

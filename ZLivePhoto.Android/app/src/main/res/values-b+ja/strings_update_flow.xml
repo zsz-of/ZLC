@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  更新フローの文言（ui/UpdateFlow.kt / 日本語 ja）。key は values/strings_update_flow.xml と 1 対 1 で対応。
+  固有名詞「Lanzou Cloud」はラテン表記のまま。翻訳品質：A。
+-->
+<resources>
+    <!-- コントローラー側の通知 -->
+    <string name="update_github_url_missing">GitHub のダウンロード URL を取得できませんでした。しばらくしてから再試行してください。</string>
+    <string name="update_flavor_standard">通常版</string>
+    <string name="update_flavor_go">Go 版</string>
+    <string name="update_lanzou_url_missing">このバージョンには Lanzou Cloud のダウンロードリンクがありません。GitHub からのダウンロードをご利用ください。</string>
+    <string name="update_apk_direct_missing">このバージョンには、本バージョンに一致するインストールパッケージの直リンクがありません。GitHub のリリースページで該当する APK を選択してください。</string>
+    <string name="update_install_permission_missing">「提供元不明のアプリのインストール」権限がないため、自動インストールできません。システム設定で許可してから再試行してください。</string>
+    <string name="update_error_unknown">不明なエラー</string>
+    <string name="update_fail_lanzou">Lanzou Cloud からのダウンロードに失敗しました</string>
+    <string name="update_fail_github">GitHub からのダウンロードに失敗しました</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud のダウンロードリンクを解析しています…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud からダウンロードしています…</string>
+    <string name="update_github_downloading">GitHub からダウンロードしています…</string>
+    <string name="update_unzipping">インストールパッケージを展開しています…</string>
+    <string name="update_notes_empty">このバージョンの更新内容はありません。</string>
+
+    <!-- Go 版関連のダイアログ -->
+    <string name="update_use_normal_title">通常版をご利用ください</string>
+    <string name="update_use_normal_body">本端末のシステムは Android 10 以上で、Go 軽量版は対応しなくなり、旧バージョンは使用できません。\n\n本端末には通常版（ZLC）がインストールされていることを検出しました。通常版を直接開いて続けてください（新版は Go 互換版を提供しません。旧バージョンはアンインストールして空き容量を確保できます）。</string>
+    <string name="update_open_normal">通常版を開く</string>
+    <string name="update_must_update_title">続けるには更新が必要です</string>
+    <string name="update_forced_body">本端末のシステムは Android 10 以上で、Go 軽量版は対応しなくなり、旧バージョンは使用できません。新版も Go 互換版を提供しません。\n\nネットワークに接続して「再試行」をタップし、通常版のインストールパッケージを取得してください。</string>
+    <string name="update_retry">再試行</string>
+    <string name="update_switch_normal_body">本端末のシステムは Android 10 以上で、Go 軽量版は対応しなくなり、旧バージョンは使用できません。\n通常版をダウンロードしてインストールしてから続けてください（新版は Go 互換版を提供しません）。</string>
+
+    <!-- ダウンロード / インストール権限 / 結果の通知 -->
+    <string name="update_downloading_title">更新をダウンロード</string>
+    <string name="update_cancel">キャンセル</string>
+    <string name="update_need_permission_title">インストール権限が必要です</string>
+    <string name="update_need_permission_body">新しいバージョンのインストールには、システムの「提供元不明のアプリのインストール」権限が必要です。\n\n「許可する」をタップし、設定で許可してからアプリに戻ると、自動的にインストールを続行します（再ダウンロードは不要です）。</string>
+    <string name="update_grant">許可する</string>
+    <string name="update_notice_title">お知らせ</string>
+    <string name="update_got_it">了解</string>
+
+    <!-- メインダイアログ / 更新内容 -->
+    <string name="update_notes_title">v%1$s · 更新内容</string>
+    <string name="update_back">戻る</string>
+    <string name="update_title_switch_normal">通常版に切り替え</string>
+    <string name="update_title_reinstall">このバージョンを再インストール</string>
+    <string name="update_title_new_version">新しいバージョンがあります</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">このバージョンをダウンロードして再インストールします（現在のアプリを上書き）。\nこの機能は更新機構の回帰テスト用です。</string>
+    <string name="update_view_notes">更新内容を表示</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud は現在利用できません</string>
+    <string name="update_download_lanzou">Lanzou Cloud からダウンロード</string>
+    <string name="update_download_github">GitHub からダウンロード</string>
+    <string name="update_download_browser">ブラウザーからダウンロード</string>
+    <string name="update_later">後で更新</string>
+    <string name="update_later_switch">後で切り替え</string>
+    <string name="update_skip_version">このバージョンをスキップ</string>
+</resources>

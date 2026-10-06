@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tiếng Việt (vi) — văn bản cập nhật / tải xuống (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Tiền tố khóa: update_ — không được đổi tên sau khi đã chốt (mọi ngôn ngữ dùng chung tập khóa).
+  Tham số giữ chỗ: %1$s / %1$d.
+  Lưu ý: văn bản UpdaterException / AddonException của tầng core đi qua statusText trong
+  MainActivity để hiện trực tiếp lên danh sách và bảng nhật ký, nên luôn dùng tài nguyên.
+-->
+<resources>
+
+    <!-- ========== Trang chia sẻ Lanzou Cloud và phân giải liên kết trực tiếp ========== -->
+    <string name="update_lanzou_gone">Chia sẻ Lanzou Cloud đã bị hủy hoặc tệp không tồn tại — hãy tải từ GitHub</string>
+    <string name="update_lanzou_gone_short">Chia sẻ Lanzou Cloud đã bị hủy — hãy tải từ GitHub</string>
+    <string name="update_lanzou_resolve_failed">Không phân giải được liên kết tải xuống Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Chia sẻ Lanzou Cloud này cần mã truy cập — hãy tải từ GitHub (hoặc tìm mã trong phần mô tả bản phát hành)</string>
+    <string name="update_lanzou_wrong_passwd">Mã truy cập Lanzou Cloud không đúng</string>
+    <string name="update_err_resolve_failed">Phân giải thất bại</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Xác minh chống thu thập dữ liệu của Lanzou Cloud thất bại</string>
+    <string name="update_err_no_frame">Không phân tích được trang tải xuống Lanzou Cloud (không thấy khung tải xuống)</string>
+    <string name="update_err_no_file_id">Không phân tích được mã định danh tệp Lanzou Cloud</string>
+    <string name="update_err_no_sign">Không phân tích được chữ ký Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Yêu cầu API thất bại</string>
+    <string name="update_err_api_request">Yêu cầu API Lanzou Cloud thất bại</string>
+    <string name="update_err_empty_direct">Lanzou Cloud trả về địa chỉ tải xuống trống</string>
+    <string name="update_err_direct_expired">Địa chỉ tải xuống Lanzou Cloud đã hết hạn — hãy lấy lại</string>
+    <string name="update_err_http_request">Yêu cầu thất bại (HTTP %1$d)</string>
+
+    <!-- ========== Tải xuống ========== -->
+    <string name="update_err_connect">Không thể kết nối máy chủ tải xuống: %1$s</string>
+    <string name="update_err_http">Tải xuống thất bại (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Không thể thiết lập kết nối tải xuống</string>
+    <string name="update_err_empty">Nội dung tải xuống trống</string>
+    <string name="update_err_incomplete">Tải xuống chưa đầy đủ (đã nhận %1$d / %2$d byte) — hãy tải lại</string>
+    <string name="update_err_interrupted">Tải xuống bị gián đoạn: %1$s</string>
+
+    <!-- ========== Kiểm tra và cài đặt gói ========== -->
+    <string name="update_err_not_apk">Tệp tải về không phải gói cài đặt hợp lệ (có thể là trang web hoặc liên kết đã hết hạn) — hãy tải lại hoặc dùng GitHub.</string>
+    <string name="update_err_apk_incomplete">Nội dung gói cài đặt không đầy đủ — hãy tải lại hoặc dùng GitHub.</string>
+    <string name="update_err_apk_unparsable">Không thể phân tích gói cài đặt (có thể tải chưa đầy đủ) — hãy tải lại hoặc dùng GitHub.</string>
+    <string name="update_err_no_install_permission">Chưa được cấp quyền “Cài đặt ứng dụng không rõ nguồn gốc”</string>
+    <string name="update_err_installer_failed">Không gọi được trình cài đặt hệ thống (%1$s) — hãy mở gói cài đặt thủ công trong trình quản lý tệp</string>
+
+</resources>

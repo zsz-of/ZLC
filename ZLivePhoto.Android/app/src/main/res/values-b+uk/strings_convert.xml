@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Українська (uk) — конвертація / перекодування / нагадування (префікс key: conv_).
+  База: res/values/strings_convert.xml (китайська, спрощена).
+  Заповнювачі: %1$s / %1$d; `\n` — перехід рядка.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: перевірка параметрів і матеріалів ========== -->
+    <string name="conv_unknown_target">Невідомий цільовий формат: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Нерозпізнаний формат динамічного фото (не Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Фото обкладинки відсутнє або порожнє</string>
+    <string name="conv_video_missing">Відео відсутнє або порожнє</string>
+    <string name="conv_video_too_large">Відео занадто велике (%1$d МБ), з нього не можна зібрати динамічне фото. Виберіть коротше відео</string>
+    <string name="conv_transcoded_too_large">Після перекодування відео занадто велике (%1$d МБ), зібрати динамічне фото неможливо</string>
+    <string name="conv_video_too_large_compose">Відео занадто велике (%1$d МБ), зібрати динамічне фото неможливо</string>
+
+    <!-- Converter.kt: обкладинка (HEIC / не JPEG) -->
+    <string name="conv_cover_heic_go">Обкладинка — зображення HEIC (полегшена версія не вміє перекодовувати; експортуйте його в JPEG на iPhone і повторіть)</string>
+    <string name="conv_cover_invalid_heic">Обкладинка не є коректним зображенням (для HEIC потрібна підтримка декодування HEIF у системі)</string>
+    <string name="conv_cover_not_jpeg_go">Обкладинка не є зображенням JPEG (полегшена версія не вміє перекодовувати; використайте фото JPEG)</string>
+    <string name="conv_cover_invalid_image">Обкладинка не є коректним зображенням (підтримуються лише JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: помилки перекодування / перезбирання та підказки -->
+    <string name="conv_reencode_failed">Помилка перекодування відео: %1$s</string>
+    <string name="conv_remux_failed">Помилка перезбирання контейнера: %1$s</string>
+    <string name="conv_codec_unknown">Це не розпізнаване відео H.264/H.265</string>
+    <string name="conv_codec_is">Кодек: %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Відео «%1$s» %2$s. Зміна лише контейнера (перезбирання) не змінює кодек, зібрати динамічне фото неможливо.\n\nВиберіть «Налаштування → Перекодування відео → Режим» → «Перекодування» або спочатку перетворіть відео в MP4 з кодеком H.264/H.265 іншим інструментом.</string>
+    <string name="conv_hint_no_encoder">Відео не в стандартному контейнері MP4 (MOV / MKV / WebM / AVI тощо), а поточний режим не виконує повторного кодування, тому зібрати динамічне фото неможливо.\n\nВиберіть «Налаштування → Перекодування відео → Режим» → «Перекодування» (у звичайній версії вбудовано кодувальник ffmpeg; у полегшеній версії Go кодувальника немає — використовуйте звичайну версію) або спочатку перетворіть відео в стандартний MP4 (H.264/H.265).</string>
+
+    <!-- ========== Журнал конвертації ========== -->
+    <string name="conv_log_detected">Розпізнано як %1$s</string>
+    <string name="conv_log_same_format_copied">Початковий і цільовий формати збігаються — файл скопійовано без змін (без втрат)</string>
+    <string name="conv_log_extra_tracks_bypass">Початкове відео містить доріжки, що не є відео- чи аудіодоріжками (%1$s); прямий прохід для того самого формату пропущено, виконується повний запис для очищення</string>
+    <string name="conv_log_ts_fallback">У джерелі немає позначки часу кадру обкладинки — за специфікацією використовується середина відео</string>
+    <string name="conv_log_brand_normalized">Бренд відеоконтейнера нормалізовано (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Відео містить додаткові доріжки (%1$s), очистити не вдалося — файл виведено як є (на деяких пристроях його не можна буде відтворити довгим натисканням)</string>
+    <string name="conv_log_extra_tracks_removed">Додаткові доріжки відео вилучено (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Початкове відео %1$s; самим лише перезбиранням контейнера це не виправити (%2$s). Якщо результат усе ще не відтворюється довгим натисканням, виберіть «Налаштування → Перекодування відео → Режим» → «Перекодування»</string>
+    <string name="conv_log_reencoding">Початкове відео %1$s; згідно з налаштуваннями перекодовано в 8 біт + AAC для кращої сумісності з галереєю</string>
+    <string name="conv_log_reencode_result_unusable">Результат перекодування непридатний — файл виведено як є (на деяких пристроях його не можна буде відтворити довгим натисканням)</string>
+    <string name="conv_log_reencode_still_risky">Після перекодування залишаються фактори ризику (%1$s)</string>
+    <string name="conv_log_reencode_failed">Помилка перекодування (%1$s) — файл виведено як є (на деяких пристроях його не можна буде відтворити довгим натисканням)</string>
+    <string name="conv_log_cover_heic_converted">Обкладинку у форматі HEIC (не JPEG) перекодовано в стандартний JPEG і потім упаковано</string>
+    <string name="conv_log_compose_sizes">Збирання: фото %1$d Б + відео %2$d Б → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Кодувальник не задіяно: змінено лише бренд контейнера (MOV → MP4), без перекодування</string>
+
+    <!-- Мітки журналу (в інтерфейсі показуються як «[мітка] текст») -->
+    <string name="conv_tag_convert">Конвертація</string>
+    <string name="conv_tag_transcode">Перекодування</string>
+    <string name="conv_tag_compose">Збирання</string>
+
+    <!-- Причини блокування режиму перекодування -->
+    <string name="conv_blocker_no_encoder">Вбудований кодувальник недоступний</string>
+    <string name="conv_blocker_mode_no_encode">Поточний режим не виконує перекодування</string>
+
+    <!-- ========== FfmpegAddon.kt ========== -->
+    <string name="conv_addon_unavailable">Вбудований кодувальник недоступний</string>
+    <string name="conv_addon_transcode_failed">Помилка перекодування ffmpeg: %1$s</string>
+    <string name="conv_addon_remux_failed">Помилка перезбирання контейнера ffmpeg: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Перекодування відео в стандартний MP4 за допомогою ffmpeg (%1$s / crf %2$d / %3$s, зберігаються лише відео- та аудіодоріжки)</string>
+    <string name="conv_log_transcode_done">Перекодування відео завершено (%1$d КБ)</string>
+    <string name="conv_log_remuxing">Перезбирання відеоконтейнера в стандартний MP4 (лише зміна контейнера, без перекодування)</string>
+    <string name="conv_log_remux_done">Перезбирання контейнера завершено (%1$d КБ)</string>
+
+    <!-- ========== Reminders.kt: діалоги «більше не нагадувати» ========== -->
+    <string name="conv_reminder_cat_compose">Збирання</string>
+    <string name="conv_reminder_cat_convert">Конвертація</string>
+    <string name="conv_reminder_cat_update">Оновлення</string>
+    <string name="conv_reminder_video_over3s_title">Відео довше 3 секунд</string>
+    <string name="conv_reminder_video_over3s_message">Вибране відео довше 3 секунд; у зібраного динамічного фото можуть виникнути проблеми із сумісністю:\n\n• може не відтворюватися нормально\n• може не розпізнаватися системною галереєю\n• на деяких пристроях таке динамічне фото може не розпізнаватися</string>
+    <string name="conv_reminder_legacy_go_title">Виявлено стару версію</string>
+    <string name="conv_reminder_legacy_go_message">На цьому пристрої все ще встановлено стару версію застосунку (Go), яка тут більше не працює. Її можна видалити, щоб звільнити місце.</string>
+    <string name="conv_reminder_replace_risk_title">Режим заміни може пошкодити файли</string>
+    <!-- formatted="false": рядок використовується без аргументів форматування -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">У режимі заміни результат конвертації записується прямо у вихідний файл; після перезапису відновити його неможливо.\n\n• Якщо під час запису застосунок буде перервано, не вистачить місця або буде відкликано дозвіл, вихідний файл може бути пошкоджено\n• Конвертація не гарантує успіх у будь-якому разі; у разі збою вихідний файл може виявитися вже непридатним\n• Спробуйте спочатку на одному-двох файлах і лише потім запускайте пакетну обробку\n• Важливі фотографії заздалегідь скопіюйте в надійне місце\n\nФункція надається «як є»; ризик використання ви берете на себе, автор не несе відповідальності за пошкодження чи втрату файлів.</string>
+    <string name="conv_reminder_dont_remind">Більше не нагадувати</string>
+    <string name="conv_reminder_confirm_ok">Зрозуміло</string>
+    <string name="conv_reminder_uninstall">Видалити</string>
+
+</resources>

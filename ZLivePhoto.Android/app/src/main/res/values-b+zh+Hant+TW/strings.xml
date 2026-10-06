@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 臺灣繁體（zh-TW）用語版本：由 zh-Hant 通用譯本套用臺灣用語表產生（網絡→網路、用戶→使用者、壁紙→桌布、彈窗→彈出視窗、對話框→對話方塊）。 -->
+<!--
+  繁體中文（通用）。應用名稱屬品牌，不作翻譯。
+  地區變體：zh-Hant+TW / zh-Hant+HK / zh-Hant+MO 由本目錄派生。
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

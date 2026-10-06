@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  アプリ全体の文言（日本語 / ja）。key は values/strings_app.xml と 1 対 1 で対応。
+  翻訳品質：A（主要言語）。
+-->
+<resources>
+    <!-- 「アプリの言語」セレクターでシステムに従う項目 -->
+    <string name="app_language_follow_system">システムに従う</string>
+    <!-- アプリの言語セレクターのタイトル -->
+    <string name="app_language_title">アプリの言語</string>
+</resources>

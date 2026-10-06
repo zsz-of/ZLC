@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  메인 화면과 백그라운드 처리 문구 (MainActivity 모듈 / 한국어 ko).
+  key는 values/strings_main.xml과 1:1 대응. 자리 표시자는 %1$s / %1$d.
+  수량에 따라 달라지는 문구는 <plurals> (한국어는 other만). 번역 품질: A.
+-->
+<resources>
+    <!-- ── 상태 표시줄 / 알림 ── -->
+    <string name="main_status_ready">준비됨</string>
+    <string name="main_status_location_granted">위치 권한을 허용했습니다. 변환 후에도 GPS 메타데이터가 유지됩니다</string>
+    <string name="main_status_location_denied">위치 권한이 없습니다: 변환된 사진에서 GPS 위치 정보가 사라집니다</string>
+    <string name="main_status_all_files_granted">“모든 파일 접근” 권한을 허용했습니다. 앨범 디렉터리에 직접 기록하므로 위치 정보가 완전히 유지됩니다</string>
+    <string name="main_status_all_files_denied">“모든 파일 접근” 권한이 없습니다: 일부 기기에서는 변환 후 위치 정보가 사라질 수 있습니다</string>
+    <string name="main_status_read_granted">사진과 동영상 읽기 권한을 허용했습니다</string>
+    <string name="main_status_video_missing">권한은 있지만 동영상 권한이 없습니다: 2파일 형식 라이브 포토에 딸린 동반 동영상을 찾을 수 없습니다</string>
+    <string name="main_status_permission_denied">권한이 없습니다. “파일 추가”를 다시 눌러 주세요</string>
+    <string name="main_status_folder_not_selected">폴더를 선택하지 않았습니다</string>
+    <string name="main_status_folder_unavailable">선택한 폴더에 접근할 수 없습니다(로컬 저장소 디렉터리만 지원)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">이전 세션을 복원했습니다(파일 %1$d개)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">이전 비정상 종료가 감지되어 완료되지 않은 목록을 비웠습니다</string>
+    <string name="main_status_compose_blocks_extract">대기열에 합성 작업이 있어 분해 모드로 전환할 수 없습니다</string>
+    <string name="main_status_replace_off_mutex">대체 모드를 껐습니다(“처리 후 원본 사진 삭제”와 상호 배타)</string>
+    <string name="main_status_delete_needs_all_files">원본 사진 자동 삭제에는 “모든 파일 접근” 권한이 필요합니다. 먼저 허용해 주세요</string>
+    <string name="main_status_replace_off">대체 모드를 껐습니다. 변환 결과는 앨범 디렉터리에 기록됩니다</string>
+    <string name="main_status_replace_needs_all_files">대체 모드에는 “모든 파일 접근” 권한이 필요합니다. 먼저 허용해 주세요</string>
+    <string name="main_status_delete_off_mutex">“처리 후 원본 사진 삭제”를 껐습니다(대체 모드와 상호 배타)</string>
+    <string name="main_status_loading_albums">앨범을 불러오는 중…</string>
+    <string name="main_status_no_albums">앨범을 찾을 수 없습니다</string>
+    <string name="main_status_compose_no_photo">사진을 선택하지 않아 합성할 수 없습니다</string>
+    <string name="main_status_compose_no_video">동영상을 선택하지 않아 합성할 수 없습니다</string>
+    <string name="main_status_compose_all_added">선택한 사진이 모두 목록에 있습니다</string>
+    <string name="main_status_compose_paired">사진 %1$d장, 동영상 %2$d개. 적은 쪽에 맞춰 합성 작업 %3$d쌍을 추가했습니다</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">합성 작업 %1$d개를 추가했습니다. “변환 시작”을 눌러 합성을 실행하세요</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s(출력 형식을 Google로 자동 전환했습니다)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">공유된 이미지 %1$d장을 가져오는 중…</item>
+    </plurals>
+    <string name="main_status_import_failed">가져오기 실패: %1$s</string>
+    <string name="main_status_import_done_partial">가져오기 완료: 성공 %1$d개, 실패 %2$d개</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">가져오기 완료: 총 %1$d개 파일을 가져왔습니다</item>
+    </plurals>
+    <string name="main_status_import_stopped">가져오기를 중지했습니다: 성공 %1$d개, 실패 %2$d개</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">파일 %1$d개를 가져오는 중…</item>
+    </plurals>
+    <string name="main_status_importing_progress">가져오는 중 %1$d/%2$d…</string>
+    <string name="main_status_stopping">중지하는 중…(현재 파일을 마친 뒤 중지합니다)</string>
+    <string name="main_status_stopping_import">가져오기를 중지하는 중…</string>
+    <string name="main_status_removed">%1$s을(를) 제거했습니다</string>
+    <string name="main_status_cleared">비웠습니다</string>
+    <string name="main_status_nothing_to_convert">변환할 파일이 없습니다</string>
+    <string name="main_status_folder_unreadable">선택한 폴더를 읽을 수 없습니다</string>
+    <string name="main_status_scanning_folder">폴더를 검색하는 중…</string>
+    <string name="main_status_no_images">선택한 폴더에서 이미지를 찾을 수 없습니다</string>
+    <string name="main_status_batch_importing">일괄 가져오는 중 %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">일괄 가져오기를 중지했습니다: 총 %1$d개의 라이브 포토를 가져왔습니다</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">일괄 가져오기를 중지했습니다: 총 %1$d개의 라이브 포토를 가져오고 %2$d개의 비라이브 포토 파일을 건너뛰었습니다</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">일괄 가져오기 완료: 총 %1$d개의 라이브 포토를 가져왔습니다</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">일괄 가져오기 완료: 총 %1$d개의 라이브 포토를 가져오고 %2$d개의 비라이브 포토 파일을 건너뛰었습니다</item>
+    </plurals>
+    <string name="main_status_stopped_replace">중지했습니다: %1$d개 중 %2$d개를 처리하고 원본 파일 %3$d개를 대체했습니다</string>
+    <string name="main_status_stopped_export">중지했습니다: %1$d개 중 %2$d개를 처리하고 %3$d개를 앨범에 내보냈습니다</string>
+    <string name="main_status_done_replace_reason">완료: %1$d개 파일을 처리하고 원본 파일 %2$d개를 대체했습니다(이유: %3$s)</string>
+    <string name="main_status_done_export_reason">완료: %1$d개 파일을 처리하고 %2$d개를 앨범에 내보냈습니다(이유: %3$s)</string>
+    <string name="main_status_done_replace">완료: %1$d개 파일을 처리하고 원본 파일 %2$d개를 대체했습니다</string>
+    <string name="main_status_done_export">완료: %1$d개 파일을 처리하고 %2$d개를 앨범에 내보냈습니다</string>
+    <string name="main_status_keep_originals">%1$s; “완전한 저장소 접근” 권한이 없어 원본 사진을 유지했습니다</string>
+
+    <!-- ── 목록 항목 정보 ── -->
+    <string name="main_info_detecting">감지 중…</string>
+    <string name="main_info_unrecognized">인식할 수 없는 라이브 포토 형식</string>
+    <string name="main_info_converting">변환 중…</string>
+    <string name="main_info_compose_task">합성 작업(“변환 시작”을 눌러 합성 실행)</string>
+    <string name="main_info_done_replaced">완료(원본 파일 %1$d개 대체)</string>
+    <string name="main_info_done_skipped">완료(건너뜀: 같은 이름 충돌)</string>
+    <string name="main_info_done_exported">완료(%1$d개 내보냄)</string>
+    <string name="main_info_failed">실패: %1$s</string>
+
+    <!-- ── 진행 상세 ── -->
+    <string name="main_progress_added">추가됨 %1$d/%2$d</string>
+    <string name="main_progress_processed">처리됨 %1$d/%2$d</string>
+    <string name="main_progress_imported">가져옴 %1$d/%2$d</string>
+
+    <!-- ── 권한 대화상자 ── -->
+    <string name="main_dialog_permission_title">사진과 동영상 읽기 권한이 필요합니다</string>
+    <string name="main_dialog_permission_message">이 앱은 기기의 사진과 동영상을 읽어야 합니다:\n\n• 사진 권한: 기기 앨범을 검색해 그 안의 라이브 포토를 인식합니다\n• 동영상 권한: 2파일 형식 라이브 포토에 딸린 동반 동영상을 찾습니다\n• 위치 권한: 사진의 GPS 위치 메타데이터를 유지합니다(없으면 변환 후 위치 정보가 사라집니다)\n\n거부하면 내장 선택기를 사용할 수 없습니다. 나중에 “파일 추가”를 다시 눌러 재허용할 수 있습니다.</string>
+    <string name="main_dialog_settings_title">사진과 동영상 권한을 직접 허용해 주세요</string>
+    <string name="main_dialog_settings_message">이전에 “다시 묻지 않음”을 선택해 시스템이 권한 대화상자를 표시하지 않습니다.\n\n앱 상세 페이지 → 권한 → 사진 및 동영상으로 이동해 직접 접근을 허용한 뒤 이 앱으로 돌아와 주세요.\n\n주의: “사진”과 “동영상” 권한을 모두 허용해야 합니다. 그렇지 않으면 2파일 형식 라이브 포토의 동반 동영상을 찾을 수 없습니다.</string>
+
+    <!-- ── “모든 파일 접근” 권한 설명 대화상자 ── -->
+    <string name="main_dialog_allfiles_title_delete">원본 사진 자동 삭제에는 “모든 파일 접근”이 필요합니다</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">이 기기는 원본 사진 자동 삭제를 지원하지 않습니다</string>
+    <string name="main_dialog_allfiles_title_replace">대체 모드에는 “모든 파일 접근”이 필요합니다</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">이 기기는 대체 모드를 지원하지 않습니다</string>
+    <string name="main_dialog_allfiles_title_location">“모든 파일 접근” 권한 허용을 권장합니다</string>
+    <string name="main_dialog_allfiles_delete_message">“처리 후 원본 사진 삭제”는 디스크의 원본 파일(사진과 동반 동영상)을 직접 삭제합니다. 이 작업은 되돌릴 수 없으므로 먼저 “모든 파일 접근” 권한을 허용해야 합니다.\n\n허용하면 스위치를 사용할 수 있게 되며, 그때 직접 켜면 됩니다.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">현재 시스템(Android 10 이하)은 “모든 파일 접근” 권한을 제공하지 않아 디스크의 원본 파일을 직접 삭제할 수 없으므로, 이 기기는 “처리 후 원본 사진 삭제”를 지원하지 않습니다.\n\n변환 후 시스템 앨범에서 원본 사진을 직접 정리할 수 있습니다.</string>
+    <string name="main_dialog_allfiles_replace_message">“대체 모드”는 변환 결과를 디스크의 원본 파일에 직접 기록합니다(원래 내용을 덮어씀). 이 작업은 되돌릴 수 없으므로 먼저 “모든 파일 접근” 권한을 허용해야 합니다.\n\n허용하면 스위치를 사용할 수 있게 되며, 그때 직접 켜면 됩니다.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">현재 시스템(Android 10 이하)은 “모든 파일 접근” 권한을 제공하지 않아 디스크의 원본 파일을 직접 고쳐 쓸 수 없으므로, 이 기기는 “대체 모드”를 지원하지 않습니다.\n\n기본 방식으로 계속 변환할 수 있으며, 결과는 앨범 디렉터리에 출력됩니다.</string>
+    <string name="main_dialog_allfiles_location_message">일부 기기(예: Meizu)는 시스템 앨범 API로 기록하면 GPS 위치 정보가 익명화되어 변환된 사진에서 위치가 사라집니다.\n\n“모든 파일 접근”을 허용하면 이 앱이 앨범 디렉터리에 직접 기록해 위치 메타데이터를 완전히 유지합니다.\n\n허용하지 않아도 변환은 가능하지만 일부 기기에서는 위치 정보가 사라질 수 있습니다.</string>
+
+    <!-- ── 출력 파일 이름 충돌 대화상자 ── -->
+    <string name="main_dialog_conflict_title">출력 파일 이름 충돌</string>
+    <string name="main_dialog_conflict_message">출력 디렉터리에 같은 이름의 파일이 이미 있습니다:\n%1$s\n\n처리 방법을 선택하세요.</string>
+    <string name="main_label_conflict_always">이후 충돌에도 이 처리 방법 사용</string>
+
+    <!-- ── 대화상자 버튼 ── -->
+    <string name="main_btn_grant">허용</string>
+    <string name="main_btn_deny">거부</string>
+    <string name="main_btn_go_settings">설정으로</string>
+    <string name="main_btn_cancel">취소</string>
+    <string name="main_btn_grant_access">허용하러 가기</string>
+    <string name="main_btn_got_it">확인</string>
+    <string name="main_btn_not_now">나중에</string>
+    <string name="main_btn_skip">건너뛰기</string>
+    <string name="main_btn_overwrite">덮어쓰기</string>
+    <string name="main_btn_auto_rename">자동 이름 변경</string>
+
+    <!-- ── 변환 결과 / 내보내기 실패 이유 (“이유: %3$s”로 표시) ── -->
+    <plurals name="main_delete_done">
+        <item quantity="other">원본 파일 %1$d개를 삭제했습니다</item>
+    </plurals>
+    <string name="main_delete_nothing">원본 사진을 삭제할 필요가 없습니다</string>
+    <string name="main_delete_partial">원본 파일 %1$d개를 삭제했습니다(%2$d개는 삭제 실패로 유지)</string>
+    <string name="main_delete_failed">원본 사진 삭제에 실패했습니다(파일이 사용 중이거나 쓰기 권한이 없음). 유지했습니다</string>
+    <string name="main_export_missing_output">변환 결과가 없거나 비어 있습니다: %1$s</string>
+    <string name="main_export_missing_output_bare">변환 결과가 없거나 비어 있습니다</string>
+    <string name="main_export_insert_null">MediaStore insert가 null을 반환했습니다</string>
+    <string name="main_export_output_stream">MediaStore 출력 스트림을 사용할 수 없습니다</string>
+    <string name="main_export_write_failed">MediaStore 쓰기 실패: %1$s</string>
+    <string name="main_export_mkdir_failed">앨범 디렉터리 %1$s을(를) 만들 수 없습니다</string>
+    <string name="main_export_dir_write_failed">앨범 디렉터리 쓰기 실패: %1$s</string>
+    <string name="main_export_no_source">원본 파일을 찾을 수 없어 대체를 건너뛰었습니다</string>
+    <string name="main_export_companion_failed">동반 파일 기록 실패: %1$s</string>
+    <string name="main_export_source_dir_unwritable">원본 파일 디렉터리에 쓸 수 없어 동반 파일을 기록하지 못했습니다</string>
+    <string name="main_export_source_dir_unavailable">원본 파일 디렉터리를 사용할 수 없습니다: %1$s</string>
+    <string name="main_export_replace_failed">원본 파일 대체 실패: %1$s</string>
+    <string name="main_export_replace_failed_bare">원본 파일 대체에 실패했습니다</string>
+</resources>

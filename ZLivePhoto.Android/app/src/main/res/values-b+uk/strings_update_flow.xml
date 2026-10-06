@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Українська (uk) — сценарій оновлення (ui/UpdateFlow.kt, префікс key: update_).
+  База: res/values/strings_update_flow.xml (китайська, спрощена).
+-->
+<resources>
+    <string name="update_github_url_missing">Не вдалося отримати посилання для завантаження з GitHub. Спробуйте пізніше.</string>
+    <string name="update_flavor_standard">Звичайна версія</string>
+    <string name="update_flavor_go">Версія Go</string>
+    <string name="update_lanzou_url_missing">Для цієї версії немає посилання Lanzouyun — можна завантажити з GitHub.</string>
+    <string name="update_apk_direct_missing">Для цієї версії немає прямого посилання на відповідний APK. Виберіть потрібний APK на сторінці релізів GitHub.</string>
+    <string name="update_install_permission_missing">Немає дозволу «Встановлення невідомих застосунків», автоматичне встановлення неможливе. Дозвольте його в налаштуваннях системи та повторіть.</string>
+    <string name="update_error_unknown">Невідома помилка</string>
+    <string name="update_fail_lanzou">Помилка завантаження з Lanzouyun</string>
+    <string name="update_fail_github">Помилка завантаження з GitHub</string>
+    <string name="update_lanzou_resolving">Розбір посилання Lanzouyun…</string>
+    <string name="update_lanzou_downloading">Завантаження з Lanzouyun…</string>
+    <string name="update_github_downloading">Завантаження з GitHub…</string>
+    <string name="update_unzipping">Розпакування інсталяційного пакета…</string>
+    <string name="update_notes_empty">Для цієї версії немає опису змін.</string>
+
+    <!-- Діалоги щодо версії Go -->
+    <string name="update_use_normal_title">Скористайтеся звичайною версією</string>
+    <string name="update_use_normal_body">На цьому пристрої Android 10 або новіше: полегшена версія Go більше не підтримується, стара версія не працює.\n\nВиявлено встановлену звичайну версію (ZLC) — просто відкрийте її, щоб продовжити (версія Go більше не випускається, стару можна видалити, щоб звільнити місце).</string>
+    <string name="update_open_normal">Відкрити звичайну версію</string>
+    <string name="update_must_update_title">Для продовження потрібне оновлення</string>
+    <string name="update_forced_body">На цьому пристрої Android 10 або новіше: полегшена версія Go більше не підтримується, стара версія не працює; нова версія Go також не випускається.\n\nПідключіться до інтернету та натисніть «Повторити», щоб завантажити звичайну версію.</string>
+    <string name="update_retry">Повторити</string>
+    <string name="update_switch_normal_body">На цьому пристрої Android 10 або новіше: полегшена версія Go більше не підтримується, стара версія не працює.\nЗавантажте та встановіть звичайну версію, щоб продовжити (нова версія Go не випускається).</string>
+
+    <!-- Завантаження, дозвіл на встановлення, результат -->
+    <string name="update_downloading_title">Завантаження оновлення</string>
+    <string name="update_cancel">Скасувати</string>
+    <string name="update_need_permission_title">Потрібен дозвіл на встановлення</string>
+    <string name="update_need_permission_body">Для встановлення нової версії потрібен системний дозвіл «Встановлення невідомих застосунків».\n\nНатисніть «Дозволити», увімкніть його в налаштуваннях і поверніться до застосунку — встановлення продовжиться автоматично (повторно завантажувати не потрібно).</string>
+    <string name="update_grant">Дозволити</string>
+    <string name="update_notice_title">Увага</string>
+    <string name="update_got_it">Зрозуміло</string>
+
+    <!-- Основний діалог і опис змін -->
+    <string name="update_notes_title">v%1$s · Що нового</string>
+    <string name="update_back">Назад</string>
+    <string name="update_title_switch_normal">Перехід на звичайну версію</string>
+    <string name="update_title_reinstall">Перевстановлення цієї версії</string>
+    <string name="update_title_new_version">Доступна нова версія</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Цю версію буде завантажено та встановлено заново (із заміною поточного застосунку).\nФункція призначена для перевірки механізму оновлень.</string>
+    <string name="update_view_notes">Переглянути опис оновлення</string>
+    <string name="update_lanzou_unavailable">Lanzouyun тимчасово недоступний</string>
+    <string name="update_download_lanzou">Завантажити з Lanzouyun</string>
+    <string name="update_download_github">Завантажити з GitHub</string>
+    <string name="update_download_browser">Завантажити в браузері</string>
+    <string name="update_later">Не зараз</string>
+    <string name="update_later_switch">Не перемикати</string>
+    <string name="update_skip_version">Пропустити цю версію</string>
+</resources>

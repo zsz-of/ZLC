@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Français (fr) — conversion / transcodage / rappels (préfixe de clé : conv_).
+  Base : res/values/strings_convert.xml (chinois simplifié).
+  Espaces réservés : %1$s / %1$d ; `\n` est un saut de ligne.
+  Toutes les apostrophes sont échappées en \'.
+-->
+<resources>
+
+    <!-- ========== Converter.kt : vérification des paramètres et des sources ========== -->
+    <string name="conv_unknown_target">Format cible inconnu : %1$s</string>
+    <string name="conv_unrecognized_live_photo">Format de photo animée non reconnu (ni Google/OPPO/vivo/Xiaomi/Apple Motion Photo)</string>
+    <string name="conv_cover_photo_missing">La photo de couverture est absente ou vide</string>
+    <string name="conv_video_missing">La vidéo est absente ou vide</string>
+    <string name="conv_video_too_large">Vidéo trop volumineuse (%1$d Mo), impossible de créer une photo animée. Veuillez choisir une vidéo plus courte</string>
+    <string name="conv_transcoded_too_large">Après transcodage, la vidéo est trop volumineuse (%1$d Mo) : impossible de créer une photo animée</string>
+    <string name="conv_video_too_large_compose">Vidéo trop volumineuse (%1$d Mo) : impossible de créer une photo animée</string>
+
+    <!-- Converter.kt : couverture (HEIC / non JPEG) -->
+    <string name="conv_cover_heic_go">La couverture est une image HEIC (la version allégée ne peut pas transcoder ; exportez-la en JPEG depuis l\'iPhone puis réessayez)</string>
+    <string name="conv_cover_invalid_heic">La couverture n\'est pas une image valide (le HEIC nécessite la prise en charge du décodage HEIF par le système)</string>
+    <string name="conv_cover_not_jpeg_go">La couverture n\'est pas une image JPEG (la version allégée ne peut pas transcoder ; utilisez une photo JPEG)</string>
+    <string name="conv_cover_invalid_image">La couverture n\'est pas une image valide (seuls JPEG/WebP/PNG sont pris en charge)</string>
+
+    <!-- Converter.kt : échecs de transcodage / remultiplexage et conseils -->
+    <string name="conv_reencode_failed">Échec du réencodage de la vidéo : %1$s</string>
+    <string name="conv_remux_failed">Échec du remultiplexage du conteneur : %1$s</string>
+    <string name="conv_codec_unknown">Ce n\'est pas une vidéo H.264/H.265 reconnaissable</string>
+    <string name="conv_codec_is">Le codec est %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">La vidéo « %1$s » %2$s. Un simple changement de conteneur (remultiplexage) ne modifie pas le codec : impossible de créer une photo animée.\n\nVeuillez passer à « Réencodage » dans « Paramètres → Transcodage vidéo → Mode », ou convertir d\'abord la vidéo en MP4 H.264/H.265 avec un autre outil.</string>
+    <string name="conv_hint_no_encoder">La vidéo n\'est pas dans un conteneur MP4 standard (MOV / MKV / WebM / AVI, etc.) et le mode actuel ne réencode pas : impossible de créer une photo animée.\n\nVeuillez passer à « Réencodage » dans « Paramètres → Transcodage vidéo → Mode » (la version standard intègre un encodeur ffmpeg ; la version allégée Go n\'en a pas, utilisez la version standard), ou convertir d\'abord la vidéo en MP4 standard (H.264/H.265).</string>
+
+    <!-- ========== Journal de conversion ========== -->
+    <string name="conv_log_detected">Reconnu comme %1$s</string>
+    <string name="conv_log_same_format_copied">Les formats source et cible sont identiques : fichier copié tel quel (sans perte)</string>
+    <string name="conv_log_extra_tracks_bypass">La vidéo source contient des pistes qui ne sont ni vidéo ni audio (%1$s) ; le passage direct pour un format identique est ignoré au profit du processus d\'écriture complet, afin d\'assainir le fichier</string>
+    <string name="conv_log_ts_fallback">L\'horodatage de l\'image de couverture est absent de la source : conformément à la spécification, le milieu de la vidéo est utilisé</string>
+    <string name="conv_log_brand_normalized">La marque du conteneur vidéo a été normalisée (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">La vidéo contient des pistes supplémentaires (%1$s) et n\'a pas pu être assainie ; le fichier a été produit tel quel (sur certains appareils, il risque de ne pas se lire par appui long)</string>
+    <string name="conv_log_extra_tracks_removed">Les pistes supplémentaires de la vidéo ont été supprimées (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Vidéo source %1$s ; un simple remultiplexage du conteneur ne peut pas corriger cela (%2$s). Si le résultat ne se lit toujours pas par appui long, passez à « Réencodage » dans « Paramètres → Transcodage vidéo → Mode »</string>
+    <string name="conv_log_reencoding">Vidéo source %1$s ; réencodée en 8 bits + AAC selon les réglages, pour améliorer la compatibilité avec la galerie</string>
+    <string name="conv_log_reencode_result_unusable">Le résultat du réencodage est inutilisable ; le fichier a été produit tel quel (sur certains appareils, il risque de ne pas se lire par appui long)</string>
+    <string name="conv_log_reencode_still_risky">Des facteurs de risque subsistent après le réencodage (%1$s)</string>
+    <string name="conv_log_reencode_failed">Échec du réencodage (%1$s) ; le fichier a été produit tel quel (sur certains appareils, il risque de ne pas se lire par appui long)</string>
+    <string name="conv_log_cover_heic_converted">La couverture était au format HEIC (et non JPEG) : elle a été transcodée en JPEG standard avant l\'encapsulation</string>
+    <string name="conv_log_compose_sizes">Assemblage : photo %1$d o + vidéo %2$d o → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Encodeur non utilisé : seule la marque du conteneur a été modifiée (MOV → MP4), sans réencodage</string>
+
+    <!-- Étiquettes du journal (affichées sous la forme « [étiquette] texte ») -->
+    <string name="conv_tag_convert">Conversion</string>
+    <string name="conv_tag_transcode">Transcodage</string>
+    <string name="conv_tag_compose">Assemblage</string>
+
+    <!-- Raisons de blocage du mode de transcodage -->
+    <string name="conv_blocker_no_encoder">L\'encodeur intégré n\'est pas disponible</string>
+    <string name="conv_blocker_mode_no_encode">Le mode actuel ne réencode pas</string>
+
+    <!-- ========== FfmpegAddon.kt ========== -->
+    <string name="conv_addon_unavailable">L\'encodeur intégré n\'est pas disponible</string>
+    <string name="conv_addon_transcode_failed">Échec du transcodage ffmpeg : %1$s</string>
+    <string name="conv_addon_remux_failed">Échec du remultiplexage du conteneur par ffmpeg : %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Transcodage de la vidéo en MP4 standard avec ffmpeg (%1$s / crf %2$d / %3$s, seules les pistes vidéo et audio sont conservées)</string>
+    <string name="conv_log_transcode_done">Transcodage de la vidéo terminé (%1$d Ko)</string>
+    <string name="conv_log_remuxing">Remultiplexage du conteneur vidéo en MP4 standard (changement de conteneur uniquement, sans réencodage)</string>
+    <string name="conv_log_remux_done">Remultiplexage du conteneur terminé (%1$d Ko)</string>
+
+    <!-- ========== Reminders.kt : dialogues « ne plus afficher » ========== -->
+    <string name="conv_reminder_cat_compose">Assemblage</string>
+    <string name="conv_reminder_cat_convert">Conversion</string>
+    <string name="conv_reminder_cat_update">Mise à jour</string>
+    <string name="conv_reminder_video_over3s_title">Vidéo de plus de 3 secondes</string>
+    <string name="conv_reminder_video_over3s_message">La vidéo sélectionnée dépasse 3 secondes ; la photo animée obtenue peut présenter des problèmes de compatibilité :\n\n• elle peut ne pas se lire correctement\n• elle peut ne pas être reconnue par la galerie du système\n• sur certains appareils, elle peut ne pas être reconnue du tout</string>
+    <string name="conv_reminder_legacy_go_title">Ancienne version détectée</string>
+    <string name="conv_reminder_legacy_go_message">Une ancienne version de l\'application (Go) est encore installée sur cet appareil et n\'y fonctionne plus. Vous pouvez la désinstaller pour libérer de l\'espace.</string>
+    <string name="conv_reminder_replace_risk_title">Le mode remplacement comporte un risque de corruption</string>
+    <!-- formatted="false" : la chaîne est utilisée sans argument de formatage -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Le mode remplacement écrit le résultat de la conversion directement dans le fichier d\'origine ; une fois écrasé, celui-ci est irrécupérable.\n\n• Si l\'application est interrompue pendant l\'écriture, si l\'espace de stockage est insuffisant ou si une autorisation est révoquée, le fichier source peut être corrompu\n• La conversion ne réussit pas dans tous les cas ; en cas d\'échec, le fichier source peut déjà être inutilisable\n• Essayez d\'abord sur un ou deux fichiers, puis lancez le traitement par lots\n• Sauvegardez vous-même les photos importantes au préalable\n\nCette fonction est fournie « en l\'état » ; vous assumez seul les risques d\'utilisation, l\'auteur n\'est pas responsable des dommages ou pertes de fichiers.</string>
+    <string name="conv_reminder_dont_remind">Ne plus afficher</string>
+    <string name="conv_reminder_confirm_ok">Compris</string>
+    <string name="conv_reminder_uninstall">Désinstaller</string>
+
+</resources>

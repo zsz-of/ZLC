@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · English (United Kingdom) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  British spelling and date conventions (colour, -ise, licence, D/M/Y).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">No GitHub download URL was obtained; please try again later.</string>
+    <string name="update_flavor_standard">Standard edition</string>
+    <string name="update_flavor_go">Go edition</string>
+    <string name="update_lanzou_url_missing">This version does not provide a Lanzou Cloud download link; you can use GitHub instead.</string>
+    <string name="update_apk_direct_missing">This version does not provide a direct package link that matches your edition; please choose the right APK on the GitHub releases page.</string>
+    <string name="update_install_permission_missing">Permission to “install unknown apps” has not been granted, so automatic installation is not possible. Please allow it in system settings and try again.</string>
+    <string name="update_error_unknown">Unknown error</string>
+    <string name="update_fail_lanzou">Lanzou Cloud download failed</string>
+    <string name="update_fail_github">GitHub download failed</string>
+    <string name="update_lanzou_resolving">Resolving the Lanzou Cloud download link…</string>
+    <string name="update_lanzou_downloading">Downloading from Lanzou Cloud…</string>
+    <string name="update_github_downloading">Downloading from GitHub…</string>
+    <string name="update_unzipping">Extracting the package…</string>
+    <string name="update_notes_empty">This version has no release notes.</string>
+    <string name="update_use_normal_title">Please use the standard edition</string>
+    <string name="update_use_normal_body">This device runs Android 10 or later, and the Go lightweight edition is no longer supported; the older version can no longer be used.\n\nThe standard edition (ZLC) is already installed on this device — please open it and continue there (new releases no longer include a Go-compatible build; the old version can be uninstalled to free up space).</string>
+    <string name="update_open_normal">Open the standard edition</string>
+    <string name="update_must_update_title">You must update before you can continue</string>
+    <string name="update_forced_body">This device runs Android 10 or later, and the Go lightweight edition is no longer supported; the older version can no longer be used, and new releases no longer include a Go-compatible build.\n\nPlease connect to the internet and tap “Retry” to get the standard edition package.</string>
+    <string name="update_retry">Retry</string>
+    <string name="update_switch_normal_body">This device runs Android 10 or later, and the Go lightweight edition is no longer supported; the older version can no longer be used.\nPlease download and install the standard edition to continue (new releases no longer include a Go-compatible build).</string>
+    <string name="update_downloading_title">Download update</string>
+    <string name="update_cancel">Cancel</string>
+    <string name="update_need_permission_title">Installation permission required</string>
+    <string name="update_need_permission_body">Installing the new version requires the system “install unknown apps” permission.\n\nTap “Grant”, allow it in settings and return to the app; installation will then continue automatically (no need to download again).</string>
+    <string name="update_grant">Grant</string>
+    <string name="update_notice_title">Notice</string>
+    <string name="update_got_it">Got it</string>
+    <string name="update_notes_title">v%1$s · Release notes</string>
+    <string name="update_back">Back</string>
+    <string name="update_title_switch_normal">Switch to the standard edition</string>
+    <string name="update_title_reinstall">Reinstall this version</string>
+    <string name="update_title_new_version">New version available</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">This will download and reinstall this version (overwriting the current app).\nThis feature is used to regression-test the update mechanism.</string>
+    <string name="update_view_notes">View release notes</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud is temporarily unavailable</string>
+    <string name="update_download_lanzou">Download from Lanzou Cloud</string>
+    <string name="update_download_github">Download from GitHub</string>
+    <string name="update_download_browser">Download from browser</string>
+    <string name="update_later">Update later</string>
+    <string name="update_later_switch">Switch later</string>
+    <string name="update_skip_version">Skip this version</string>
+</resources>

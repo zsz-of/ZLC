@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Português (Portugal) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+
+    <!-- ========== Partilha Lanzou e resolução de ligação direta ========== -->
+    <string name="update_lanzou_gone">A partilha do Lanzou foi cancelada ou o ficheiro não existe. Use o GitHub para transferir</string>
+    <string name="update_lanzou_gone_short">A partilha do Lanzou foi cancelada. Use o GitHub para transferir</string>
+    <string name="update_lanzou_resolve_failed">Falha ao resolver a ligação de transferência do Lanzou</string>
+    <string name="update_lanzou_need_passwd">Esta partilha do Lanzou exige um código de acesso. Use o GitHub para transferir (ou procure o código de acesso nas notas da versão)</string>
+    <string name="update_lanzou_wrong_passwd">Código de acesso do Lanzou incorreto</string>
+    <string name="update_err_resolve_failed">Falha na resolução</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Falha na verificação anti-raspagem do Lanzou</string>
+    <string name="update_err_no_frame">Não foi possível analisar a página de transferência do Lanzou (frame de transferência não encontrado)</string>
+    <string name="update_err_no_file_id">Não foi possível analisar o identificador do ficheiro no Lanzou</string>
+    <string name="update_err_no_sign">Não foi possível analisar a assinatura do Lanzou</string>
+    <string name="update_err_ajax_request">Falha no pedido à interface</string>
+    <string name="update_err_api_request">Falha no pedido à API do Lanzou</string>
+    <string name="update_err_empty_direct">O Lanzou devolveu um endereço de transferência vazio</string>
+    <string name="update_err_direct_expired">O endereço de transferência do Lanzou expirou. Obtenha um novo</string>
+    <string name="update_err_http_request">Falha no pedido (HTTP %1$d)</string>
+
+    <!-- ========== Transferência ========== -->
+    <string name="update_err_connect">Não foi possível ligar ao servidor de transferência: %1$s</string>
+    <string name="update_err_http">Falha na transferência (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Não foi possível estabelecer a ligação de transferência</string>
+    <string name="update_err_empty">O conteúdo transferido está vazio</string>
+    <string name="update_err_incomplete">Transferência incompleta (%1$d de %2$d bytes recebidos). Transfira novamente</string>
+    <string name="update_err_interrupted">Transferência interrompida: %1$s</string>
+
+    <!-- ========== Validação e instalação do pacote ========== -->
+    <string name="update_err_not_apk">O que foi transferido não é um pacote de instalação válido (pode ser uma página web ou a ligação expirou). Transfira novamente ou use o GitHub.</string>
+    <string name="update_err_apk_incomplete">O conteúdo do pacote de instalação está incompleto. Transfira novamente ou use o GitHub.</string>
+    <string name="update_err_apk_unparsable">Não foi possível analisar o pacote de instalação (transferência provavelmente incompleta). Transfira novamente ou use o GitHub.</string>
+    <string name="update_err_no_install_permission">A permissão «instalar aplicações desconhecidas» ainda não foi concedida</string>
+    <string name="update_err_installer_failed">Não foi possível abrir o instalador do sistema (%1$s). Abra o pacote manualmente através do gestor de ficheiros</string>
+
+</resources>

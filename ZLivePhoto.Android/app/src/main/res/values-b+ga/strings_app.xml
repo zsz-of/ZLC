@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Gaeilge (ga) — téacsanna leibhéal na haipe.
+  Aistríodh ó res/values/strings_app.xml (Sínis shimplithe, an locale cúltaca).
+  Cáilíocht: B.
+-->
+<resources>
+    <!-- An mhír sa roghnóir «Teanga an aipe» a leanann an córas -->
+    <string name="app_language_follow_system">Lean an córas</string>
+    <!-- Teideal an roghnóra teanga -->
+    <string name="app_language_title">Teanga an aipe</string>
+</resources>

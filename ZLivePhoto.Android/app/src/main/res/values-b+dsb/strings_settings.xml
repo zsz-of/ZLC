@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+
+    <!-- Powšykne -->
+    <string name="settings_title">Nastajenja</string>
+    <string name="settings_cd_back">Slědk</string>
+    <string name="settings_btn_apply">Nałožyś</string>
+    <string name="settings_btn_cancel">Pśetergnuś</string>
+    <string name="settings_btn_close">Zacyniś</string>
+    <string name="settings_btn_ok">W pórěźe</string>
+    <string name="settings_btn_sponsor">Spěchowaś</string>
+
+    <!-- Skupinske zapiski -->
+    <string name="settings_section_general">Powšykne</string>
+    <string name="settings_section_appearance">Wuglěd</string>
+    <string name="settings_section_language">Rěc</string>
+    <string name="settings_section_defaults">Standardne opcije</string>
+    <string name="settings_section_output">Wudaśe</string>
+    <string name="settings_section_transcode">Pśekoděrowanje wideo</string>
+    <string name="settings_section_about">Wó aplikaciji</string>
+    <string name="settings_section_app">Aplikacija</string>
+    <string name="settings_section_credits">Žěk a spěchowanje</string>
+    <string name="settings_section_opensource">Wótwórjony žrědłowy kod a licenca</string>
+
+    <!-- Powšykne -->
+    <string name="settings_startup_check_title">Pśi startu aktualizacije pśekontrolowaś</string>
+    <string name="settings_startup_check_subtitle">Pśi startu se z GitHub nowa wersija awtomatiski wupyta a se lejbowanje pórucyjo</string>
+    <string name="settings_haptics_title">Wibraciske reakcije</string>
+    <string name="settings_haptics_subtitle">Dotykowa reakcija pśi kliknjenju tłocaškow a pśi změnje statusa</string>
+    <string name="settings_bounce_title">Elastiska animacija tłocaškow</string>
+    <string name="settings_bounce_subtitle">Animacija pómjeńšenja a wótbijanja pśi kliknjenju tłocaška</string>
+
+    <!-- Wuglěd -->
+    <string name="settings_theme_system">Pó systemje</string>
+    <string name="settings_theme_dark">Śmowa</string>
+    <string name="settings_theme_light">Swětła</string>
+    <string name="settings_dynamic_theme_title">Dynamiske barwy (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">Slědujo barwam systemowego pozadka (Android 12+); pó wušaltowanju se dołojce pódane gótowe barwy wužywaju</string>
+    <string name="settings_preset_colors_title">Gótowe barwy temow</string>
+    <string name="settings_preset_current">Aktualna: %1$s</string>
+    <string name="settings_preset_disabled_hint">Pśistupne pó wušaltowanju „Dynamiske barwy (Material You)“</string>
+    <string name="settings_custom">Swójska</string>
+    <string name="settings_custom_color_title">Swójska barwa temy</string>
+    <string name="settings_cd_custom_palette">Swójska paleta</string>
+    <string name="settings_hue_value">Barwowy ton %1$d°</string>
+
+    <!-- Rěc aplikacije -->
+    <string name="settings_language_dialog_title">Rěc aplikacije wubraś</string>
+    <string name="settings_language_count">Dogromady %1$d rěcow</string>
+
+    <!-- Standardne opcije -->
+    <string name="settings_reminder_dialogs_title">Dialogi „Wěcej njepokazaś“</string>
+    <string name="settings_reminder_dialogs_subtitle">Wšykne pśepinače „Wěcej njepokazaś“ zrjadowaś</string>
+    <string name="settings_reminder_hint">Zapinjony pśepinač wóznamjenijo „Wěcej njepokazaś“; pó wušaltowanju se pókuška pśi pśiducem wółańju wótpowědneje situacije znowa pokaza.</string>
+
+    <!-- Wudaśe -->
+    <string name="settings_preserve_folders_title">Strukturu žrědłowych zarědow zachowaś</string>
+    <string name="settings_preserve_folders_subtitle">Wuslědki se w pódrědach z mjenim originalnego albuma składuju; pó wušaltowanju se wšykne do samskego rěda zasadnu</string>
+
+    <!-- Wó aplikaciji -->
+    <string name="settings_about_title">Wó aplikaciji</string>
+    <string name="settings_about_subtitle">Wersija · Aktualizacije · Žěk a spěchowanje</string>
+    <string name="settings_check_update_title">Aktualizacije pśekontrolowaś</string>
+    <string name="settings_check_update_subtitle">Nejnowšu wersiju z GitHub Releases wześ</string>
+    <string name="settings_checking">Pśekontrolujo se…</string>
+    <string name="settings_update_available">v%1$s k dispoziciji</string>
+    <string name="settings_up_to_date">Južo nejnowša wersija</string>
+    <string name="settings_network_error">Seśowa zmólka, pšosym pózdźej znowa</string>
+    <string name="settings_reinstall_title">Toś tu wersiju znowa instalěrowaś</string>
+    <string name="settings_reinstall_subtitle">Aktualnu nejnowšu wersiju ześěgnuś a pśez nju instalěrowaś (za test aktualizacijow)</string>
+    <string name="settings_reinstall_newer_hint">Aktualizacija na v%1$s jo k dispoziciji, pšosym nejpjerwjej „Aktualizacije pśekontrolowaś“</string>
+    <string name="settings_version_title">Wersija</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Spěchowanje pśez Alipay</string>
+    <string name="settings_alipay_subtitle">Wuwijanje pódpěraś</string>
+    <string name="settings_coolapk_subtitle">Wužywaŕ Coolapk · žěk za pódpěru</string>
+    <string name="settings_ai_credits_subtitle">Žěk AI-wuwijarskim wobswětam a AI-modelam za pómoc pśi wuwijanju</string>
+    <string name="settings_github_title">Žrědłowy kod na GitHub</string>
+    <string name="settings_license_title">Licenca wótwórjonego žrědła</string>
+    <string name="settings_sponsor_dialog_title">Žěk za wašu pódpěru</string>
+    <string name="settings_sponsor_dialog_text">Wjeliki žěk, až cośo toś tu aplikaciju pódpěraś!\n\nJolic hyšći studěrujośo abo hyšći njejsćo financielnje samostatny, pšosym njewudawajśo pjenjeze —\nzachowajśo toś tu dobru mysl w swójom wutšobje a wužywajśo aplikaciju dalej; to jo za mnjo nejlěpša pódpěra.\n\nJolic pak cośo spěchowaś, teke mały pśinosk jo wažny — włožym jón do lěpšego wuglěda a nowych funkcijow :)</string>
+    <string name="settings_alipay_missing_title">Alipay njejo instalěrowany</string>
+    <string name="settings_alipay_missing_text">Alipay njejo wótwórjony, togodla spěchowanje tuchylu móžne njejo.\n\nNic to njestaja — wjeliki žěk za wašu dobru wólu, drugo nic!</string>
+
+    <!-- Pśekoděrowanje wideo -->
+    <string name="settings_transcoder_title">Wbudowany pśekoděrowak</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Znowa koděrowaś</string>
+    <string name="settings_transcode_mode_remux">Jano kontejner pśepakowaś (dopórucone)</string>
+    <string name="settings_transcode_mode_off">Pśekoděrowak powšyknje wušaltowaś</string>
+    <string name="settings_transcode_params_title">Pśekoděrowańske parametry</string>
+    <string name="settings_transcode_params_subtitle">Parametry kwality a kompresije pśi znowa koděrowanju</string>
+    <string name="settings_transcode_params_disabled">Jano skutkujo, gaž jo w „Značce Pśekoděrowanja“ „Znowa koděrowaś“ wubrane</string>
+    <string name="settings_crf_value">Kwalita CRF: %1$d</string>
+    <string name="settings_crf_hint">Cym mjeńša gódnota, cym wuša kwalita a wětšy wopśimjeśe (standard 18)</string>
+    <string name="settings_encoder_title">Koděrowak</string>
+    <string name="settings_compress_preset_title">Kompresijowy profil</string>
+
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Кыргызча (Kyrgyz) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Kyrgyz (Cyrillic); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">Кыймылдуу сүрөт форматын айландыруу</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d файл</item>
+        <item quantity="other">%1$d файл</item>
+    </plurals>
+    <string name="screen_settings">Жөндөөлөр</string>
+    <string name="screen_select_output_format">Чыгуу форматын тандоо</string>
+    <string name="screen_selected">Тандалды</string>
+    <string name="screen_vivo_single_warning">⚠ Эски түзмөктөр бул форматты тааныбашы мүмкүн</string>
+    <string name="screen_extract_blocked">⚠ Кезекте кураштыруу тапшырмасы бар, бөлүп алууну тандоо мүмкүн эмес</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (бир файл)</string>
+    <string name="screen_format_vivo">vivo (эки файл)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Бөлүп алуу</string>
+    <string name="screen_toolbox">Куралдар кутусу</string>
+    <string name="screen_batch_import">Топтомо импорт</string>
+    <string name="screen_batch_import_desc">Бүт галереяны скандап, кыймылдуу сүрөттөрдү топтомо таануу</string>
+    <string name="screen_compose">Кыймылдуу сүрөт кураштыруу</string>
+    <string name="screen_compose_desc">Бир сүрөт жана бир видео тандап, түгөйлөштүрүү</string>
+    <string name="screen_replace_mode">Алмаштыруу режими</string>
+    <string name="screen_replace_mode_desc">Жыйынтык түз эле баштапкы файлга жазылат, жаңы файл түзүлбөйт</string>
+    <string name="screen_need_all_files_access_hint">Бардык файлдарга кирүү уруксаты керек, уруксат берүү үчүн бул жерди басыңыз</string>
+    <string name="screen_agree_and_enable">Макул болуп ачуу</string>
+    <string name="screen_empty_no_files">Азырынча файл кошула элек</string>
+    <string name="screen_view_detail">Чоо-жайын көрүү</string>
+    <string name="screen_add_files">Файл кошуу</string>
+    <string name="screen_output_format">Чыгуу форматы: %1$s</string>
+    <string name="screen_delete_original">Иштетүүдөн кийин баштапкы сүрөттү жок кылуу</string>
+    <string name="screen_need_all_files_access_view">Бардык файлдарга кирүү уруксаты керек, көрүү үчүн басыңыз</string>
+    <string name="screen_clear">Тазалоо</string>
+    <string name="screen_stop">Иштетүүнү токтотуу</string>
+    <string name="screen_start_convert">Айландырууну баштоо</string>
+    <string name="screen_status_detail">Абалдын чоо-жайы</string>
+    <string name="screen_long_press_copy">Текстти тандап көчүрүү үчүн узак басыңыз</string>
+    <string name="screen_copy">Көчүрүү</string>
+    <string name="screen_close">Жабуу</string>
+    <string name="screen_back">Артка</string>
+    <string name="screen_picker_title_select">Кыймылдуу сүрөт тандоо</string>
+    <string name="screen_album_count">Альбом %1$d</string>
+    <string name="screen_album_collapse_cover">Альбомдун мукабасын жыйноо</string>
+    <string name="screen_album_expand_cover">Альбомдун мукабасын жайуу</string>
+    <string name="screen_scanning_progress">Скандалып жатат %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d сүрөт</item>
+        <item quantity="other">%1$d сүрөт</item>
+    </plurals>
+    <string name="screen_select_all">Баарын тандоо</string>
+    <string name="screen_no_albums">Жеткиликтүү альбом жок</string>
+    <string name="screen_no_media">Кыймылдуу сүрөт табылган жок</string>
+    <string name="screen_no_media_compose">Сүрөт же видео табылган жок</string>
+    <string name="screen_import">Импорттоо</string>
+    <string name="screen_import_count">Импорттоо %1$d</string>
+    <string name="screen_import_mixed">Импорттоо сүрөт %1$d · видео %2$d</string>
+    <string name="screen_search">Издөө</string>
+    <string name="screen_search_collapse">Издөөнү жыйноо</string>
+    <string name="screen_search_hint">Аты боюнча издөө</string>
+    <string name="screen_search_clear">Издөөнү тазалоо</string>
+    <string name="screen_sort_date">Дата</string>
+    <string name="screen_sort_size">Өлчөм</string>
+    <string name="screen_sort_name">Аталыш</string>
+    <string name="screen_sort_asc">Өсүү</string>
+    <string name="screen_sort_desc">Кемүү</string>
+    <string name="screen_date_today">Бүгүн</string>
+    <string name="screen_date_yesterday">Кечээ</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%2$d.%1$d.%3$d</string>
+</resources>

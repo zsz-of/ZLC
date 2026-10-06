@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Asturianu (ast) — la pantalla d'Axustes.
+  Traducíu de res/values/strings_settings.xml (chinu simplificáu, la llocalización de repléu).
+  Calidá: B. Los marcadores caltiénense na so forma numberada (%1$s / %1$d), como nel orixinal.
+-->
+<resources>
+
+    <!-- Xeneral -->
+    <string name="settings_title">Axustes</string>
+    <string name="settings_cd_back">Volver</string>
+    <string name="settings_btn_apply">Aplicar</string>
+    <string name="settings_btn_cancel">Encaboxar</string>
+    <string name="settings_btn_close">Zarrar</string>
+    <string name="settings_btn_ok">Val</string>
+    <string name="settings_btn_sponsor">Sofitar</string>
+
+    <!-- Títulos de seiciones -->
+    <string name="settings_section_general">Xeneral</string>
+    <string name="settings_section_appearance">Aspeutu</string>
+    <string name="settings_section_language">Llingua</string>
+    <string name="settings_section_defaults">Opciones predeterminaes</string>
+    <string name="settings_section_output">Salida</string>
+    <string name="settings_section_transcode">Trescodificación de videu</string>
+    <string name="settings_section_about">Tocante a</string>
+    <string name="settings_section_app">Aplicación</string>
+    <string name="settings_section_credits">Agradecimientos y sofitu</string>
+    <string name="settings_section_opensource">Códigu abiertu y llicencia</string>
+
+    <!-- Xeneral -->
+    <string name="settings_startup_check_title">Comprobar anovamientos al aniciar</string>
+    <string name="settings_startup_check_subtitle">L\'aplicación descarga automáticamente les versiones nueves dende GitHub al aniciar, y ufrez descargales cuando tan disponibles</string>
+    <string name="settings_haptics_title">Respuesta por vibración</string>
+    <string name="settings_haptics_subtitle">Respuesta táctil al primir botones y al camudar l\'estáu</string>
+    <string name="settings_bounce_title">Animación elástica de los botones</string>
+    <string name="settings_bounce_subtitle">Animación de zoom y rebote al primir los botones</string>
+
+    <!-- Aspeutu -->
+    <string name="settings_theme_system">Siguir el sistema</string>
+    <string name="settings_theme_dark">Escuru</string>
+    <string name="settings_theme_light">Claru</string>
+    <string name="settings_dynamic_theme_title">Colores dinámicos Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Sigue\'l color del fondu de pantalla del sistema (Android 12+); al desactivalu, úsense los colores predefiníos darréu baxo</string>
+    <string name="settings_preset_colors_title">Colores predefiníos</string>
+    <string name="settings_preset_current">Actual: %1$s</string>
+    <string name="settings_preset_disabled_hint">Disponible al desactivar «Colores dinámicos Material You»</string>
+    <string name="settings_custom">Personalizáu</string>
+    <string name="settings_custom_color_title">Color del tema personalizáu</string>
+    <string name="settings_cd_custom_palette">Paleta personalizada</string>
+    <string name="settings_hue_value">Tón %1$d°</string>
+
+    <!-- Llingua de l'aplicación -->
+    <string name="settings_language_dialog_title">Escoyer la llingua de l\'aplicación</string>
+    <string name="settings_language_count">%1$d llingües en total</string>
+
+    <!-- Opciones predeterminaes -->
+    <string name="settings_reminder_dialogs_title">Nun volver amosar los diálogos</string>
+    <string name="settings_reminder_dialogs_subtitle">Xestionar tolos diálogos de «nun volver amosar»</string>
+    <string name="settings_reminder_hint">L\'interruptor activáu significa «nun volver amosar»; al desactivalu, l\'avisu volverá apaecer la próxima vez qu\'asoceda la situación.</string>
+
+    <!-- Salida -->
+    <string name="settings_preserve_folders_title">Salida según la xerarquía de carpetes d\'orixe</string>
+    <string name="settings_preserve_folders_subtitle">Los resultaos guárdense en socarpetes nomaes según l\'álbum orixinal; al desactivalu, too quédase nuna sola carpeta</string>
+
+    <!-- Tocante a -->
+    <string name="settings_about_title">Tocante a</string>
+    <string name="settings_about_subtitle">Versión · Comprobar anovamientos · Agradecimientos y sofitu</string>
+    <string name="settings_check_update_title">Comprobar anovamientos</string>
+    <string name="settings_check_update_subtitle">Consiguir la versión más reciente dende GitHub Releases</string>
+    <string name="settings_checking">Comprobando…</string>
+    <string name="settings_update_available">v%1$s disponible</string>
+    <string name="settings_up_to_date">Yá tienes la versión más reciente</string>
+    <string name="settings_network_error">Error de rede; inténtalo de nueves más tarde</string>
+    <string name="settings_reinstall_title">Reinstalar esta versión</string>
+    <string name="settings_reinstall_subtitle">Descargar la versión más reciente ya instalala enriba (pa probar anovamientos)</string>
+    <string name="settings_reinstall_newer_hint">Pues anovar a v%1$s; usa «Comprobar anovamientos» primero</string>
+    <string name="settings_version_title">Versión</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Sofitu per Alipay</string>
+    <string name="settings_alipay_subtitle">Sofitar el desenvolvimientu</string>
+    <string name="settings_coolapk_subtitle">Usuariu de Coolapk · Gracies pol so sofitu</string>
+    <string name="settings_ai_credits_subtitle">Gracies a los IDE y a los modelos d\'IA pola so ayuda nel desenvolvimientu</string>
+    <string name="settings_github_title">Direición de GitHub del proyeutu</string>
+    <string name="settings_license_title">Llicencia de códigu abiertu</string>
+    <string name="settings_sponsor_dialog_title">Gracies pol to sofitu</string>
+    <string name="settings_sponsor_dialog_text">¡Munches gracies por querer sofitare esta aplicación!\n\nSi entá yes estudiante, o nun tienes independencia económica, nun gastes nada:\nguarda esta intención nel to corazón y sigue usando l\'aplicación — ye\'l meyor sofitu que me pues dar.\n\nSi quies sofitar, cualquier ayuda, por pequeña que seya, ye un regalu, y voi dedicala a meyorar y caltener l\'aplicación :)</string>
+    <string name="settings_alipay_missing_title">Alipay entá nun ta instaláu</string>
+    <string name="settings_alipay_missing_text">Nun escontramos Alipay, asina que\'l sofitu nun se pue completar agora.\n\nNun importa — de toes formes, ¡munches gracies pola to bona voluntá!</string>
+
+    <!-- Trescodificación de videu -->
+    <string name="settings_transcoder_title">Trescodificador integráu</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Recodificar</string>
+    <string name="settings_transcode_mode_remux">Namás remuxar el contenedor (recomendáu)</string>
+    <string name="settings_transcode_mode_off">Nun usar el trescodificador n\'absoluto</string>
+    <string name="settings_transcode_params_title">Parámetros de trescodificación</string>
+    <string name="settings_transcode_params_subtitle">Calidá y compresión usaes al recodificar</string>
+    <string name="settings_transcode_params_disabled">Namás efeutivu cuando se seleiciona «Recodificar» en «Mou de trescodificación»</string>
+    <string name="settings_crf_value">Calidá CRF: %1$d</string>
+    <string name="settings_crf_hint">Cuanto menor el valor, mayor la calidá y el tamañu (predetermináu 18)</string>
+    <string name="settings_encoder_title">Codificador</string>
+    <string name="settings_compress_preset_title">Predefinición de compresión</string>
+
+</resources>

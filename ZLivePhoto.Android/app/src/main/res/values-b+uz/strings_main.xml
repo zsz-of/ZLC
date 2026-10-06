@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · O'zbekcha (Uzbek) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Uzbek (Latin); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">Tayyor</string>
+    <string name="main_status_location_granted">Joylashuv ruxsati olindi; konvertatsiyadan soʻng GPS meta maʼlumotlari saqlanadi</string>
+    <string name="main_status_location_denied">Joylashuv ruxsati berilmadi: konvertatsiya qilingan foto GPS joylashuvini yoʻqotadi</string>
+    <string name="main_status_all_files_granted">«Barcha fayllarga kirish» ruxsati olindi; konvertatsiya albom jildiga toʻgʻridan-toʻgʻri yozadi va joylashuv maʼlumotlarini toʻliq saqlaydi</string>
+    <string name="main_status_all_files_denied">«Barcha fayllarga kirish» ruxsati berilmadi: ayrim modellarda konvertatsiyadan soʻng joylashuv maʼlumotlari yoʻqolishi mumkin</string>
+    <string name="main_status_read_granted">Foto va videolarni oʻqish ruxsati olindi</string>
+    <string name="main_status_video_missing">Ruxsat olindi, lekin video ruxsati yoʻq: ikki faylli jonli fotoning hamroh videosini topib boʻlmaydi</string>
+    <string name="main_status_permission_denied">Ruxsat berilmadi, «Fayl qoʻshish» tugmasini yana bosishingiz mumkin</string>
+    <string name="main_status_folder_not_selected">Jild tanlanmagan</string>
+    <string name="main_status_folder_unavailable">Tanlangan jildga kirish mumkin emas (faqat lokal xotira jildlari qoʻllab-quvvatlanadi)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Oldingi sessiya tiklandi (%1$d fayl)</item>
+        <item quantity="other">Oldingi sessiya tiklandi (%1$d fayl)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Oldingi noodatiy chiqish aniqlandi, tugallanmagan roʻyxat tozalandi</string>
+    <string name="main_status_compose_blocks_extract">Navbatda birlashtirish vazifasi bor, ajratish rejimiga oʻtib boʻlmaydi</string>
+    <string name="main_status_replace_off_mutex">Almashtirish rejimi oʻchirildi («Qayta ishlashdan soʻng asl fotoni oʻchirish» bilan birga ishlamaydi)</string>
+    <string name="main_status_delete_needs_all_files">Asl fotoni avtomatik oʻchirish uchun «Barcha fayllarga kirish» ruxsati kerak, avval ruxsat bering</string>
+    <string name="main_status_replace_off">Almashtirish rejimi oʻchirildi, natija yana albom jildiga yoziladi</string>
+    <string name="main_status_replace_needs_all_files">Almashtirish rejimi «Barcha fayllarga kirish» ruxsatini talab qiladi, avval ruxsat bering</string>
+    <string name="main_status_delete_off_mutex">«Qayta ishlashdan soʻng asl fotoni oʻchirish» oʻchirildi (almashtirish rejimi bilan birga ishlamaydi)</string>
+    <string name="main_status_loading_albums">Albomlar oʻqilmoqda…</string>
+    <string name="main_status_no_albums">Albom topilmadi</string>
+    <string name="main_status_compose_no_photo">Foto tanlanmagan, birlashtirib boʻlmaydi</string>
+    <string name="main_status_compose_no_video">Video tanlanmagan, birlashtirib boʻlmaydi</string>
+    <string name="main_status_compose_all_added">Tanlangan fotolarning barchasi roʻyxatda</string>
+    <string name="main_status_compose_paired">%1$d foto, %2$d video; kamrogʻiga qarab %3$d juft birlashtirish vazifasi qoʻshildi</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d birlashtirish vazifasi qoʻshildi, «Konvertatsiyani boshlash» tugmasini bosing</item>
+        <item quantity="other">%1$d birlashtirish vazifasi qoʻshildi, «Konvertatsiyani boshlash» tugmasini bosing</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (chiqish formati avtomatik Google ga oʻzgartirildi)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Ulashilgan %1$d foto import qilinmoqda…</item>
+        <item quantity="other">Ulashilgan %1$d foto import qilinmoqda…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import muvaffaqiyatsiz: %1$s</string>
+    <string name="main_status_import_done_partial">Import tugadi: muvaffaqiyatli %1$d, muvaffaqiyatsiz %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import tugadi: jami %1$d fayl</item>
+        <item quantity="other">Import tugadi: jami %1$d fayl</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import toʻxtatildi: muvaffaqiyatli %1$d, muvaffaqiyatsiz %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d fayl import qilinmoqda…</item>
+        <item quantity="other">%1$d fayl import qilinmoqda…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Import qilinmoqda %1$d/%2$d…</string>
+    <string name="main_status_stopping">Toʻxtatilmoqda… (joriy fayl tugagach toʻxtaydi)</string>
+    <string name="main_status_stopping_import">Import toʻxtatilmoqda…</string>
+    <string name="main_status_removed">%1$s olib tashlandi</string>
+    <string name="main_status_cleared">Tozalandi</string>
+    <string name="main_status_nothing_to_convert">Konvertatsiya qilinadigan fayl yoʻq</string>
+    <string name="main_status_folder_unreadable">Tanlangan jildni oʻqib boʻlmaydi</string>
+    <string name="main_status_scanning_folder">Jild skanerlanmoqda…</string>
+    <string name="main_status_no_images">Tanlangan jildda foto topilmadi</string>
+    <string name="main_status_batch_importing">Ommaviy import qilinmoqda %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Ommaviy import toʻxtatildi: jami %1$d jonli foto</item>
+        <item quantity="other">Ommaviy import toʻxtatildi: jami %1$d jonli foto</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Ommaviy import toʻxtatildi: jami %1$d jonli foto, %2$d jonsiz fayl oʻtkazib yuborildi</item>
+        <item quantity="other">Ommaviy import toʻxtatildi: jami %1$d jonli foto, %2$d jonsiz fayl oʻtkazib yuborildi</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Ommaviy import tugadi: jami %1$d jonli foto</item>
+        <item quantity="other">Ommaviy import tugadi: jami %1$d jonli foto</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Ommaviy import tugadi: jami %1$d jonli foto, %2$d jonsiz fayl oʻtkazib yuborildi</item>
+        <item quantity="other">Ommaviy import tugadi: jami %1$d jonli foto, %2$d jonsiz fayl oʻtkazib yuborildi</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Toʻxtatildi: %1$d fayldan %2$d qayta ishlandi va %3$d asl fayl almashtirildi</string>
+    <string name="main_status_stopped_export">Toʻxtatildi: %1$d fayldan %2$d qayta ishlandi va %3$d albomga eksport qilindi</string>
+    <string name="main_status_done_replace_reason">Tugadi: %1$d fayl qayta ishlandi, %2$d asl fayl almashtirildi (sabab: %3$s)</string>
+    <string name="main_status_done_export_reason">Tugadi: %1$d fayl qayta ishlandi, %2$d albomga eksport qilindi (sabab: %3$s)</string>
+    <string name="main_status_done_replace">Tugadi: %1$d fayl qayta ishlandi, %2$d asl fayl almashtirildi</string>
+    <string name="main_status_done_export">Tugadi: %1$d fayl qayta ishlandi, %2$d albomga eksport qilindi</string>
+    <string name="main_status_keep_originals">%1$s; «Toʻliq xotiraga kirish» ruxsati olinmadi, asl foto saqlab qolindi</string>
+    <string name="main_info_detecting">Aniqlanmoqda…</string>
+    <string name="main_info_unrecognized">Tanilmagan jonli foto formati</string>
+    <string name="main_info_converting">Konvertatsiya qilinmoqda…</string>
+    <string name="main_info_compose_task">Birlashtirish vazifasi («Konvertatsiyani boshlash» tugmasini bosing)</string>
+    <string name="main_info_done_replaced">Tugadi (%1$d asl fayl almashtirildi)</string>
+    <string name="main_info_done_skipped">Tugadi (oʻtkazib yuborildi: nom toʻqnashdi)</string>
+    <string name="main_info_done_exported">Tugadi (%1$d eksport qilindi)</string>
+    <string name="main_info_failed">Muvaffaqiyatsiz: %1$s</string>
+    <string name="main_progress_added">Qoʻshildi %1$d/%2$d</string>
+    <string name="main_progress_processed">Qayta ishlandi %1$d/%2$d</string>
+    <string name="main_progress_imported">Import qilindi %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Foto va videolarni oʻqish ruxsati kerak</string>
+    <string name="main_dialog_permission_message">Bu dastur qurilmangizdagi foto va videolarni oʻqishi kerak:
+
+• Foto ruxsati: qurilma albomini skanerlab, jonli fotolarni aniqlaydi
+• Video ruxsati: ikki faylli jonli fotoning hamroh videosini topadi
+• Joylashuv ruxsati: fotodagi GPS joylashuv meta maʼlumotlarini saqlaydi (boʻlmasa konvertatsiyadan soʻng joylashuv yoʻqoladi)
+
+Rad etsangiz oʻrnatilgan tanlagichdan foydalanib boʻlmaydi; keyinroq «Fayl qoʻshish» tugmasini yana bosib ruxsat olishingiz mumkin.</string>
+    <string name="main_dialog_settings_title">Foto va video ruxsatini qoʻlda berish kerak</string>
+    <string name="main_dialog_settings_message">Siz avval «Boshqa soʻramaslik»ni tanlagansiz, shuning uchun tizim ruxsat oynasini koʻrsatmaydi.
+
+Ilova tafsilotlari → Ruxsatlar → Foto va video boʻlimiga oʻtib, qoʻlda ruxsat bering va bu ilovaga qayting.
+
+Diqqat: «Foto» va «Video» ruxsatlarini ikkalasini ham berish kerak, aks holda ikki faylli jonli fotoning hamroh videosini topib boʻlmaydi.</string>
+    <string name="main_dialog_allfiles_title_delete">Asl fotoni avtomatik oʻchirish uchun «Barcha fayllarga kirish» kerak</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Bu qurilma asl fotoni avtomatik oʻchirishni qoʻllab-quvvatlamaydi</string>
+    <string name="main_dialog_allfiles_title_replace">Almashtirish rejimi «Barcha fayllarga kirish»ni talab qiladi</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Bu qurilma almashtirish rejimini qoʻllab-quvvatlamaydi</string>
+    <string name="main_dialog_allfiles_title_location">«Barcha fayllarga kirish» ruxsatini berish tavsiya etiladi</string>
+    <string name="main_dialog_allfiles_delete_message">«Qayta ishlashdan soʻng asl fotoni oʻchirish» diskdagi asl faylni (foto va uning hamroh videosi) toʻgʻridan-toʻgʻri oʻchiradi; bu amalni qaytarib boʻlmaydi, shuning uchun avval «Barcha fayllarga kirish» ruxsatini berish kerak.
+
+Ruxsat bergandan keyingina kalit faollashadi, shunda oʻzingiz yoqishingiz mumkin.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Joriy tizim (Android 10 va undan past) «Barcha fayllarga kirish» ruxsatini bermaydi, diskdagi asl faylni toʻgʻridan-toʻgʻri oʻchirib boʻlmaydi; shuning uchun bu qurilma «Qayta ishlashdan soʻng asl fotoni oʻchirish»ni qoʻllab-quvvatlamaydi.
+
+Konvertatsiyadan soʻng tizim albomi orqali asl fotoni qoʻlda tozalashingiz mumkin.</string>
+    <string name="main_dialog_allfiles_replace_message">«Almashtirish rejimi» konvertatsiya natijasini diskdagi asl faylga toʻgʻridan-toʻgʻri yozadi (eski mazmun ustiga); bu amalni qaytarib boʻlmaydi, shuning uchun avval «Barcha fayllarga kirish» ruxsatini berish kerak.
+
+Ruxsat bergandan keyingina kalit faollashadi, shunda oʻzingiz yoqishingiz mumkin.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Joriy tizim (Android 10 va undan past) «Barcha fayllarga kirish» ruxsatini bermaydi, diskdagi asl faylni toʻgʻridan-toʻgʻri yozib boʻlmaydi; shuning uchun bu qurilma «Almashtirish rejimi»ni qoʻllab-quvvatlamaydi.
+
+Odatiy usulda konvertatsiyani davom ettirishingiz mumkin; natija albom jildiga chiqadi.</string>
+    <string name="main_dialog_allfiles_location_message">Ayrim modellar (masalan, Meizu) tizim albomi interfeysi orqali yozganda GPS joylashuv maʼlumotlarini olib tashlaydi, natijada konvertatsiyadan soʻng foto joylashuvini yoʻqotadi.
+
+«Barcha fayllarga kirish» ruxsatini bergandan soʻng bu dastur albom jildiga toʻgʻridan-toʻgʻri yozadi va joylashuv meta maʼlumotlarini toʻliq saqlaydi.
+
+Bermasangiz ham odatdagidek konvertatsiya qilish mumkin; ayrim modellarda joylashuv maʼlumotlari yoʻqolishi mumkin.</string>
+    <string name="main_dialog_conflict_title">Chiqish fayli nomi toʻqnashdi</string>
+    <string name="main_dialog_conflict_message">Chiqish jildida shu nomdagi fayl bor:
+%1$s
+
+Qanday ishlashni tanlang.</string>
+    <string name="main_label_conflict_always">Keyingi toʻqnashuvlar uchun shu usulni qoʻllash</string>
+    <string name="main_btn_grant">Ruxsat berish</string>
+    <string name="main_btn_deny">Rad etish</string>
+    <string name="main_btn_go_settings">Sozlamalarga</string>
+    <string name="main_btn_cancel">Bekor qilish</string>
+    <string name="main_btn_grant_access">Ruxsat berish</string>
+    <string name="main_btn_got_it">Tushundim</string>
+    <string name="main_btn_not_now">Hozir emas</string>
+    <string name="main_btn_skip">Oʻtkazib yuborish</string>
+    <string name="main_btn_overwrite">Ustiga yozish</string>
+    <string name="main_btn_auto_rename">Avtomatik nomini oʻzgartirish</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d asl fayl oʻchirildi</item>
+        <item quantity="other">%1$d asl fayl oʻchirildi</item>
+    </plurals>
+    <string name="main_delete_nothing">Oʻchiriladigan asl foto yoʻq</string>
+    <string name="main_delete_partial">%1$d asl fayl oʻchirildi (%2$d oʻchirilmadi, saqlab qolindi)</string>
+    <string name="main_delete_failed">Asl fotoni oʻchirish muvaffaqiyatsiz (fayl band yoki yozish huquqi yoʻq), saqlab qolindi</string>
+    <string name="main_export_missing_output">Konvertatsiya natijasi yoʻq yoki boʻsh: %1$s</string>
+    <string name="main_export_missing_output_bare">Konvertatsiya natijasi yoʻq yoki boʻsh</string>
+    <string name="main_export_insert_null">MediaStore insert null qaytardi</string>
+    <string name="main_export_output_stream">MediaStore chiqish oqimi mavjud emas</string>
+    <string name="main_export_write_failed">MediaStore tizimiga yozish muvaffaqiyatsiz: %1$s</string>
+    <string name="main_export_mkdir_failed">%1$s albom jildini yaratib boʻlmaydi</string>
+    <string name="main_export_dir_write_failed">Albom jildiga yozish muvaffaqiyatsiz: %1$s</string>
+    <string name="main_export_no_source">Asl fayl topilmadi, almashtirish oʻtkazib yuborildi</string>
+    <string name="main_export_companion_failed">Hamroh faylga qayta yozish muvaffaqiyatsiz: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Asl fayl jildi yozilmaydi, hamroh fayl qayta yozilmadi</string>
+    <string name="main_export_source_dir_unavailable">Asl fayl jildi mavjud emas: %1$s</string>
+    <string name="main_export_replace_failed">Asl faylni almashtirish muvaffaqiyatsiz: %1$s</string>
+    <string name="main_export_replace_failed_bare">Asl faylni almashtirish muvaffaqiyatsiz</string>
+</resources>

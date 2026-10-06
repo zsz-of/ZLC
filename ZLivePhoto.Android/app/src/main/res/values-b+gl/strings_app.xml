@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Galego (gl) — textos de nivel de aplicación.
+  Traducido do chinés simplificado de res/values/strings_app.xml (locale de reserva).
+  Calidade: A.
+-->
+<resources>
+    <!-- Elemento do selector «Idioma da aplicación» que segue o sistema -->
+    <string name="app_language_follow_system">Seguir o sistema</string>
+    <!-- Título do selector de idioma da aplicación -->
+    <string name="app_language_title">Idioma da aplicación</string>
+</resources>

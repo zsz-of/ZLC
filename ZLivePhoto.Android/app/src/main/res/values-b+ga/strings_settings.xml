@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Gaeilge (ga) — scáileán na Socruithe.
+  Aistríodh ó res/values/strings_settings.xml (Sínis shimplithe, an locale cúltaca).
+  Cáilíocht: B. Coinnítear na sealbhóirí áite san fhoirm uimhrithe (%1$s / %1$d), mar atá san bhunleagan.
+-->
+<resources>
+
+    <!-- Ginearálta -->
+    <string name="settings_title">Socruithe</string>
+    <string name="settings_cd_back">Ar ais</string>
+    <string name="settings_btn_apply">Cuir i bhfeidhm</string>
+    <string name="settings_btn_cancel">Cealaigh</string>
+    <string name="settings_btn_close">Dún</string>
+    <string name="settings_btn_ok">Ceart go leor</string>
+    <string name="settings_btn_sponsor">Urraigh</string>
+
+    <!-- Teidil na rannóg -->
+    <string name="settings_section_general">Ginearálta</string>
+    <string name="settings_section_appearance">Cuma</string>
+    <string name="settings_section_language">Teanga</string>
+    <string name="settings_section_defaults">Réamhshocruithe</string>
+    <string name="settings_section_output">Aschur</string>
+    <string name="settings_section_transcode">Traschódú físe</string>
+    <string name="settings_section_about">Maidir le</string>
+    <string name="settings_section_app">Aip</string>
+    <string name="settings_section_credits">Buíochas agus urraíocht</string>
+    <string name="settings_section_opensource">Foinse oscailte agus ceadúnas</string>
+
+    <!-- Ginearálta -->
+    <string name="settings_startup_check_title">Seiceáil le haghaidh nuashonruithe ag tosú</string>
+    <string name="settings_startup_check_subtitle">Faightear leaganacha nua ó GitHub go huathoibríoch agus an aip ag tosú, agus tairgtear iad a íoslódáil nuair a bhíonn siad ar fáil</string>
+    <string name="settings_haptics_title">Aiseolas crithireachta</string>
+    <string name="settings_haptics_subtitle">Aiseolas tadhlach nuair a chliceáiltear cnaipí agus nuair a athraíonn an staid</string>
+    <string name="settings_bounce_title">Beochan leaisteach na gcnaipí</string>
+    <string name="settings_bounce_subtitle">Beochan zúmála agus athléime agus cnaipí á mbrú</string>
+
+    <!-- Cuma -->
+    <string name="settings_theme_system">Lean an córas</string>
+    <string name="settings_theme_dark">Dorcha</string>
+    <string name="settings_theme_light">Geal</string>
+    <string name="settings_dynamic_theme_title">Dathanna dinimiciúla Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Leantar dath pháipéar balla an chórais (Android 12+); má dhíghnítear é, úsáidtear na réamhdhathanna thíos</string>
+    <string name="settings_preset_colors_title">Réamhdhathanna</string>
+    <string name="settings_preset_current">Faoi láthair: %1$s</string>
+    <string name="settings_preset_disabled_hint">Ar fáil tar éis «Dathanna dinimiciúla Material You» a dhíghníomhú</string>
+    <string name="settings_custom">Saincheaptha</string>
+    <string name="settings_custom_color_title">Dath téama saincheaptha</string>
+    <string name="settings_cd_custom_palette">Pailéad saincheaptha</string>
+    <string name="settings_hue_value">Há %1$d°</string>
+
+    <!-- Teanga an aipe -->
+    <string name="settings_language_dialog_title">Roghnaigh teanga na haipe</string>
+    <string name="settings_language_count">%1$d teanga san iomlán</string>
+
+    <!-- Réamhshocruithe -->
+    <string name="settings_reminder_dialogs_title">Ná taispeáin fógairtí arís</string>
+    <string name="settings_reminder_dialogs_subtitle">Bainistigh gach fógairt «ná taispeáin arís»</string>
+    <string name="settings_reminder_hint">Ciallaíonn an lasc atá ar siúl «ná taispeáin arís»; má dhíghnítear í, taispeánfar an fhógairt arís an chéad uair eile a tharlóidh an cás.</string>
+
+    <!-- Aschur -->
+    <string name="settings_preserve_folders_title">Aschur de réir struchtúr fillteán na foinse</string>
+    <string name="settings_preserve_folders_subtitle">Sábháiltear na torthaí in fofhillteáin atá ainmnithe i ndiaidh an albaim bhunaidh; má dhíghnítear é, fanann gach rud in aon fhillteán amháin</string>
+
+    <!-- Maidir le -->
+    <string name="settings_about_title">Maidir le</string>
+    <string name="settings_about_subtitle">Leagan · Seiceáil nuashonruithe · Buíochas agus urraíocht</string>
+    <string name="settings_check_update_title">Seiceáil le haghaidh nuashonruithe</string>
+    <string name="settings_check_update_subtitle">Faigh an leagan is déanaí ó GitHub Releases</string>
+    <string name="settings_checking">Á sheiceáil…</string>
+    <string name="settings_update_available">v%1$s ar fáil</string>
+    <string name="settings_up_to_date">Tá an leagan is déanaí agat cheana féin</string>
+    <string name="settings_network_error">Earráid líonra; bain triail eile as ar ball</string>
+    <string name="settings_reinstall_title">Athshuiteáil an leagan seo</string>
+    <string name="settings_reinstall_subtitle">Íoslódáil an leagan is déanaí agus suiteáil é thar an gceann reatha (chun nuashonruithe a thástáil)</string>
+    <string name="settings_reinstall_newer_hint">Is féidir leat uasghrádú go v%1$s; úsáid «Seiceáil le haghaidh nuashonruithe» ar dtús</string>
+    <string name="settings_version_title">Leagan</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Urraíocht le Alipay</string>
+    <string name="settings_alipay_subtitle">Tacaigh leis an bhforbairt</string>
+    <string name="settings_coolapk_subtitle">Úsáideoir Coolapk · Buíochas leis as a thacaíocht</string>
+    <string name="settings_ai_credits_subtitle">Buíochas leis na IDEanna AI agus leis na samhlacha AI as a gcúnamh le linn na forbartha</string>
+    <string name="settings_github_title">Seoladh GitHub an tionscadail</string>
+    <string name="settings_license_title">Ceadúnas foinse oscailte</string>
+    <string name="settings_sponsor_dialog_title">Go raibh maith agat as do thacaíocht</string>
+    <string name="settings_sponsor_dialog_text">Go raibh míle maith agat as ucht a bheith sásta tacú leis an aip seo!\n\nMá tá tú fós i do mhac léinn, nó gan neamhspleáchas airgeadais, ná caith airgead ar chor ar bith:\ncoinnigh an rún seo i do chroí agus lean ort ag úsáid na haipe — sin an tacaíocht is fearr is féidir leat a thabhairt dom.\n\nMás mian leat urraíocht a thabhairt, is bronntanas í gach síntiús, cibé chomh beag é, agus cuirfidh mé i dtreo a cothabhála agus a feabhsaithe:)</string>
+    <string name="settings_alipay_missing_title">Níl Alipay suiteáilte agat fós</string>
+    <string name="settings_alipay_missing_text">Níor aimsíodh Alipay, mar sin ní féidir an urraíocht a chríochnú faoi láthair.\n\nNá bíodh imní ort: mar sin féin, go raibh míle maith agat as do dhea-mhéin!</string>
+
+    <!-- Traschódú físe -->
+    <string name="settings_transcoder_title">Traschódóir ionsuite</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Athchódaigh</string>
+    <string name="settings_transcode_mode_remux">An coimeádán a athrú amháin (molta)</string>
+    <string name="settings_transcode_mode_off">Ná húsáid an traschódóir ar chor ar bith</string>
+    <string name="settings_transcode_params_title">Paraiméadair traschódaithe</string>
+    <string name="settings_transcode_params_subtitle">Cáilíocht agus comhbhrú a úsáidtear agus athchódú á dhéanamh</string>
+    <string name="settings_transcode_params_disabled">Ní bhíonn feidhm leis ach amháin nuair is «Athchódaigh» a roghnaítear i «Modh traschódaithe»</string>
+    <string name="settings_crf_value">Cáilíocht CRF: %1$d</string>
+    <string name="settings_crf_hint">Dá lú an luach, is ea is airde an cháilíocht agus an méid (réamhshocrú 18)</string>
+    <string name="settings_encoder_title">Códóir</string>
+    <string name="settings_compress_preset_title">Réamhshocruithe comhbhrúite</string>
+
+</resources>

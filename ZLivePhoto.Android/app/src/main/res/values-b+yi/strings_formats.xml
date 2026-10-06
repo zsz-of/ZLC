@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">אַרויסנעמען</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (איין טעפּע)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">נישט געפֿונען קיין .mov ווידעאָ מיט דעם זעלבן נאָמען</string>
+    <string name="fmt_err_apple_mov_no_ftyp">די MOV טעפּע האָט נישט קיין ftyp box</string>
+    <string name="fmt_err_extract_read">אַרויסנעמען איז אַ פֿאָרמאַט פֿון רעזולטאַט און קען נישט ווערן געלייענט ווי אַן אַרײַנגאַנג</string>
+    <string name="fmt_err_no_primary_jpeg">נישט געפֿונען קיין הויפּט JPEG בילד</string>
+    <string name="fmt_err_no_mp4_after_jpeg">נישט געפֿונען קיין פּאַסיק MP4 ווידעאָ נאָך דעם JPEG (קיין ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">די אַנאַליז פֿון דעם MP4 ווידעאָ שטראָם איז דורכגעפֿאַלן</string>
+    <string name="fmt_err_nubia_too_short">די טעפּע איז צו קורץ פֿאַר Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">די מאַגישע נומער nubiaVpfile פֿעלט ביים סוף פֿון דער טעפּע</string>
+    <string name="fmt_err_nubia_jpeg_len">אומלעגאַלע JPEG לענג ביים סוף פֿון דער טעפּע: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">עס פֿעלן 0x00 פּאָל־בייטעס צווישן JPEG און ווידעאָ</string>
+    <string name="fmt_err_nubia_empty_video">די לענג פֿון דעם אַרײַנגעלייגטן ווידעאָ איז 0</string>
+    <string name="fmt_err_vivo_no_marker">נישט געפֿונען קיין vivo livephoto צייכן ביים סוף פֿון JPG</string>
+    <string name="fmt_err_vivo_companion_missing">די פֿאַרבונדענע ווידעאָ טעפּע פֿעלט: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">די אַנאַליז פֿון דעם JPG קערפּער איז דורכגעפֿאַלן</string>
+    <string name="fmt_err_vivo_companion_invalid">די פֿאַרבונדענע MP4 איז נישט פּאַסיק (קיין ftyp box)</string>
+</resources>

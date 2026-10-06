@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Nivell B: traducció assistida per model en valencià; esmenes benvingudes. -->
+<resources>
+    <string name="app_language_follow_system">Segueix el sistema</string>
+    <string name="app_language_title">Idioma de l\'aplicació</string>
+</resources>

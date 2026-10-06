@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Azerbaijani (az) strings — settings screen.
+  Translated from res/values/strings_settings.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- Ümumi -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_cd_back">Geri</string>
+    <string name="settings_btn_apply">Tətbiq et</string>
+    <string name="settings_btn_cancel">Ləğv et</string>
+    <string name="settings_btn_close">Bağla</string>
+    <string name="settings_btn_ok">Oldu</string>
+    <string name="settings_btn_sponsor">Dəstəklə</string>
+
+    <!-- Qrup başlıqları -->
+    <string name="settings_section_general">Ümumi</string>
+    <string name="settings_section_appearance">Görünüş</string>
+    <string name="settings_section_language">Dil</string>
+    <string name="settings_section_defaults">Standart seçimlər</string>
+    <string name="settings_section_output">Çıxış</string>
+    <string name="settings_section_transcode">Video transkodlaşdırma</string>
+    <string name="settings_section_about">Tətbiq haqqında</string>
+    <string name="settings_section_app">Tətbiq</string>
+    <string name="settings_section_credits">Təşəkkür və dəstək</string>
+    <string name="settings_section_opensource">Açıq kod və lisenziya</string>
+
+    <!-- Ümumi -->
+    <string name="settings_startup_check_title">Başlatmada yeniləmələri yoxla</string>
+    <string name="settings_startup_check_subtitle">Başlatmada GitHub-dan avtomatik yeni versiya endirir və yeniləmə barədə xəbərdar edir</string>
+    <string name="settings_haptics_title">Vibrasiya əks-əlaqəsi</string>
+    <string name="settings_haptics_subtitle">Düymələrə toxunma və vəziyyət dəyişikliyi zamanı haptik əks-əlaqə</string>
+    <string name="settings_bounce_title">Düymələrin elastik animasiyası</string>
+    <string name="settings_bounce_subtitle">Düymə basıldıqda kiçilmə və geri qayıtma animasiyası</string>
+
+    <!-- Görünüş -->
+    <string name="settings_theme_system">Sistemi izlə</string>
+    <string name="settings_theme_dark">Tünd</string>
+    <string name="settings_theme_light">İşıqlı</string>
+    <string name="settings_dynamic_theme_title">Material You dinamik rənglər</string>
+    <string name="settings_dynamic_theme_subtitle">Sistem divar kağızı rənglərini izləyir (Android 12+); söndürüldükdə aşağıdakı əvvəlcədən təyin edilmiş rənglər istifadə olunur</string>
+    <string name="settings_preset_colors_title">Əvvəlcədən təyin edilmiş tema rəngləri</string>
+    <string name="settings_preset_current">Cari: %1$s</string>
+    <string name="settings_preset_disabled_hint">„Material You dinamik rənglər“ söndürüldükdən sonra əlçatandır</string>
+    <string name="settings_custom">Fərdi</string>
+    <string name="settings_custom_color_title">Fərdi tema rəngi</string>
+    <string name="settings_cd_custom_palette">Fərdi palitra</string>
+    <string name="settings_hue_value">Çalar: %1$d°</string>
+
+    <!-- Tətbiq dili -->
+    <string name="settings_language_dialog_title">Tətbiq dilini seçin</string>
+    <string name="settings_language_count">Cəmi %1$d dil</string>
+
+    <!-- Standart seçimlər -->
+    <string name="settings_reminder_dialogs_title">Dialoqları bir daha göstərmə</string>
+    <string name="settings_reminder_dialogs_subtitle">Bütün „bir daha soruşma“ dialoqlarını idarə et</string>
+    <string name="settings_reminder_hint">Aktiv olması „bir daha göstərmə“ deməkdir; söndürdükdə dialoq növbəti dəfə yenidən görünəcək.</string>
+
+    <!-- Çıxış -->
+    <string name="settings_preserve_folders_title">Çıxış mənbə qovluq strukturuna görə</string>
+    <string name="settings_preserve_folders_subtitle">Nəticələr alboma görə alt qovluqlarda saxlanılır; söndürüldükdə bütün fayllar bir qovluqda olur</string>
+
+    <!-- Tətbiq haqqında -->
+    <string name="settings_about_title">Tətbiq haqqında</string>
+    <string name="settings_about_subtitle">Versiya · Yeniləmə yoxlaması · Təşəkkür və dəstək</string>
+    <string name="settings_check_update_title">Yeniləmələri yoxla</string>
+    <string name="settings_check_update_subtitle">Ən son versiyanı GitHub Releases-dən əldə et</string>
+    <string name="settings_checking">Yoxlanılır…</string>
+    <string name="settings_update_available">v%1$s mövcuddur</string>
+    <string name="settings_up_to_date">Ən son versiyanız var</string>
+    <string name="settings_network_error">Şəbəkə xətası, sonra yenidən cəhd edin</string>
+    <string name="settings_reinstall_title">Bu versiyanı yenidən quraşdır</string>
+    <string name="settings_reinstall_subtitle">Cari versiyanı endir və üzərinə quraşdır (yeniləməni sınamaq üçün)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s versiyasına yeniləmə mümkündür; əvvəlcə „Yeniləmələri yoxla“ istifadə edin</string>
+    <string name="settings_version_title">Versiya</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay ilə dəstək</string>
+    <string name="settings_alipay_subtitle">İnkişafı dəstəkləyin</string>
+    <string name="settings_coolapk_subtitle">Coolapk istifadəçisi · Dəstəyə görə təşəkkürlər</string>
+    <string name="settings_ai_credits_subtitle">İnkişafda köməyə görə AI IDE-lərə və AI modellərinə təşəkkürlər</string>
+    <string name="settings_github_title">Açıq kod GitHub ünvanı</string>
+    <string name="settings_license_title">Açıq kod lisenziyası</string>
+    <string name="settings_sponsor_dialog_title">Dəstəyə görə təşəkkürlər</string>
+    <string name="settings_sponsor_dialog_text">Bu tətbiqi dəstəkləmək istədiyiniz üçün çox sağ olun!\n\nHələ şagird və ya tələbəsinizsə və maddi cəhətdən müstəqil deyilsinizsə, xahiş edirəm pul xərcləməyin—\nbu niyyəti ürəyinizdə saxlayın və sadəcə tətbiqdən istifadə etməyə davam edin; bu mənim üçün ən yaxşı dəstəkdir.\n\nYenə də dəstəkləmək istəyirsinizsə, ən kiçik məbləğ də dəyərlidir; onu daha yaxşı baxım və funksiyalara yatıracağam:)</string>
+    <string name="settings_alipay_missing_title">Alipay quraşdırılmayıb</string>
+    <string name="settings_alipay_missing_text">Alipay tapılmadı, buna görə dəstək hələlik mümkün deyil.\n\nProblem deyil—hər halda, yaxşı niyyətinizə görə təşəkkürlər!</string>
+
+    <!-- Video transkodlaşdırma -->
+    <string name="settings_transcoder_title">Daxili transkoder</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Yenidən kodlaşdırma</string>
+    <string name="settings_transcode_mode_remux">Yalnız konteynerin remuksu (tövsiyə olunur)</string>
+    <string name="settings_transcode_mode_off">Transkoderi istifadə etmə</string>
+    <string name="settings_transcode_params_title">Transkodlaşdırma parametrləri</string>
+    <string name="settings_transcode_params_subtitle">Yenidən kodlaşdırma zamanı keyfiyyət və sıxılma parametrləri</string>
+    <string name="settings_transcode_params_disabled">Yalnız „Transkodlaşdırma üsulu“ „Yenidən kodlaşdırma“ olduqda təsir edir</string>
+    <string name="settings_crf_value">Keyfiyyət CRF: %1$d</string>
+    <string name="settings_crf_hint">Dəyər nə qədər kiçikdirsə, keyfiyyət bir o qədər yüksək və fayl böyükdür (standart 18)</string>
+    <string name="settings_encoder_title">Koder</string>
+    <string name="settings_compress_preset_title">Sıxılma profili</string>
+
+</resources>

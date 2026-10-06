@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Afrikaans (af).
+  ZLC · Afrikaans strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Instellings</string>
+    <string name="settings_cd_back">Terug</string>
+    <string name="settings_btn_apply">Pas toe</string>
+    <string name="settings_btn_cancel">Kanselleer</string>
+    <string name="settings_btn_close">Maak toe</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Skenk</string>
+    <string name="settings_section_general">Algemeen</string>
+    <string name="settings_section_appearance">Voorkoms</string>
+    <string name="settings_section_language">Taal</string>
+    <string name="settings_section_defaults">Verstek</string>
+    <string name="settings_section_output">Uitset</string>
+    <string name="settings_section_transcode">Video-herkodering</string>
+    <string name="settings_section_about">Oor</string>
+    <string name="settings_section_app">Program</string>
+    <string name="settings_section_credits">Erkennings &amp; skenkings</string>
+    <string name="settings_section_opensource">Oopbron &amp; lisensiëring</string>
+    <string name="settings_startup_check_title">Kyk vir opdaterings met die begin</string>
+    <string name="settings_startup_check_subtitle">Haal outomaties nuwe weergawes van GitHub af met die begin en vra om af te laai wanneer een beskikbaar is</string>
+    <string name="settings_haptics_title">Haptiese terugvoer</string>
+    <string name="settings_haptics_subtitle">Haptiese terugvoer by knoppiedrukkings en toestandsveranderings</string>
+    <string name="settings_bounce_title">Knop-bons-animasie</string>
+    <string name="settings_bounce_subtitle">Skaal-en-bons-animasie wanneer \'n knoppie gedruk word</string>
+    <string name="settings_theme_system">Volg stelsel</string>
+    <string name="settings_theme_dark">Donker</string>
+    <string name="settings_theme_light">Lig</string>
+    <string name="settings_dynamic_theme_title">Material You-dinamiese kleur</string>
+    <string name="settings_dynamic_theme_subtitle">Volg die stelsel se muurpapierkleur (Android 12+); wanneer af, word die voorafbepaalde temakleure hieronder gebruik</string>
+    <string name="settings_preset_colors_title">Voorafbepaalde temakleure</string>
+    <string name="settings_preset_current">Huidige: %1$s</string>
+    <string name="settings_preset_disabled_hint">Skakel “Material You-dinamiese kleur” af om te kies</string>
+    <string name="settings_custom">Pasgemaak</string>
+    <string name="settings_custom_color_title">Pasgemaakte temakleur</string>
+    <string name="settings_cd_custom_palette">Pasgemaakte palet</string>
+    <string name="settings_hue_value">Kleurtint %1$d°</string>
+    <string name="settings_language_dialog_title">Kies programtaal</string>
+    <string name="settings_language_count">%1$d tale beskikbaar</string>
+    <string name="settings_reminder_dialogs_title">“Moenie weer wys nie”-dialoë</string>
+    <string name="settings_reminder_dialogs_subtitle">Bestuur die skakelaars vir alle “Moenie weer wys nie”-dialoë</string>
+    <string name="settings_reminder_hint">Wanneer \'n skakelaar aan is, word daardie versoek nie weer gewys nie; wanneer dit af is, verskyn die versoek weer die volgende keer.</string>
+    <string name="settings_preserve_folders_title">Uitset met die bronvouer-hiërargie</string>
+    <string name="settings_preserve_folders_subtitle">Resultate word in subvouers gestoor wat na die oorspronklike albums vernoem is; wanneer af, word alles plat in een vouer geplaas</string>
+    <string name="settings_about_title">Oor</string>
+    <string name="settings_about_subtitle">Weergawe · Kyk vir opdaterings · Erkennings &amp; skenkings</string>
+    <string name="settings_check_update_title">Kyk vir opdaterings</string>
+    <string name="settings_check_update_subtitle">Haal die nuutste weergawe van GitHub Releases af</string>
+    <string name="settings_checking">Kontroleer…</string>
+    <string name="settings_update_available">v%1$s beskikbaar</string>
+    <string name="settings_up_to_date">Jy het die nuutste weergawe</string>
+    <string name="settings_network_error">Netwerkfout; probeer later weer</string>
+    <string name="settings_reinstall_title">Herinstalleer hierdie weergawe</string>
+    <string name="settings_reinstall_subtitle">Laai die nuutste bou af en installeer dit oor hierdie een (om opdaterings te toets)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s is beskikbaar; gebruik “Kyk vir opdaterings” om eers op te gradeer</string>
+    <string name="settings_version_title">Weergawe</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Skenk via Alipay</string>
+    <string name="settings_alipay_subtitle">Ondersteun ontwikkeling</string>
+    <string name="settings_coolapk_subtitle">Coolapk-gebruiker · dankie vir die ondersteuning</string>
+    <string name="settings_ai_credits_subtitle">Dankie aan die KI-IDE\'s en KI-modelle wat met die ontwikkeling gehelp het</string>
+    <string name="settings_github_title">GitHub-bewaarplek</string>
+    <string name="settings_license_title">Oopbron-lisensie</string>
+    <string name="settings_sponsor_dialog_title">Dankie vir jou ondersteuning</string>
+    <string name="settings_sponsor_dialog_text">Ek waardeer opreg jou bereidwilligheid om hierdie program te ondersteun!\n\nAs jy steeds \'n student is, of nog nie finansieel onafhanklik is nie, moenie geld hieraan spandeer nie — om daardie vriendelikheid in jou hart te hou en die program te bly gebruik is die beste ondersteuning wat ek kan vra.\n\nAs jy wel wil skenk, help selfs \'n bietjie, en ek sal dit in beter instandhouding en funksies belê:)</string>
+    <string name="settings_alipay_missing_title">Alipay is nie geïnstalleer nie</string>
+    <string name="settings_alipay_missing_text">Alipay is nie gevind nie, so die skenking kan nie nou voltooi word nie.\n\nDit is heeltemal reg — baie dankie vir jou vriendelikheid in elk geval!</string>
+    <string name="settings_transcoder_title">Ingeboude herkodeerder</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Herkodeer</string>
+    <string name="settings_transcode_mode_remux">Slegs hervermeng die houer (aanbeveel)</string>
+    <string name="settings_transcode_mode_off">Moenie die herkodeerder gebruik nie</string>
+    <string name="settings_transcode_params_title">Herkoderingsparameters</string>
+    <string name="settings_transcode_params_subtitle">Kwaliteit- en kompressieparameters wat tydens herkodering gebruik word</string>
+    <string name="settings_transcode_params_disabled">Werk net wanneer “Herkoderingsmodus” op “Herkodeer” gestel is</string>
+    <string name="settings_crf_value">Kwaliteit CRF: %1$d</string>
+    <string name="settings_crf_hint">Laer waardes beteken hoër kwaliteit en groter lêers (verstek 18)</string>
+    <string name="settings_encoder_title">Enkodeerder</string>
+    <string name="settings_compress_preset_title">Kompressieprofiel</string>
+</resources>

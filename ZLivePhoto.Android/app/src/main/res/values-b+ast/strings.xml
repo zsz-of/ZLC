@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Asturianu (ast).
+  Traducíu de res/values/strings_*.xml (chinu simplificáu, la llocalización de repléu).
+  Calidá: B (asturianu estándar; aconseyable una revisión por una persona falante nativa).
+  Caltiénense toles claves, tolos marcadores (%1$s / %1$d) y les secuencies d'escape talamente.
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

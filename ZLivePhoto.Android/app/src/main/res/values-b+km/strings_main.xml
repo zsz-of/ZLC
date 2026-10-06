@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ខ្មែរ (Khmer) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Khmer has no grammatical plural; only the 'other' quantity is emitted.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">រួចរាល់</string>
+    <string name="main_status_location_granted">បានអនុញ្ញាតទីតាំង; បន្ទាប់ពីបំលែង ទិន្នន័យ GPS នឹងរក្សាទុក</string>
+    <string name="main_status_location_denied">មិនបានអនុញ្ញាតទីតាំង៖ រូបថតដែលបំលែងរួចនឹងបាត់បង់ទីតាំង GPS</string>
+    <string name="main_status_all_files_granted">បានអនុញ្ញាត «ចូលប្រើឯកសារទាំងអស់»; ការបំលែងនឹងសរសេរផ្ទាល់ទៅអាល់ប៊ុម ហើយរក្សាទីតាំងពេញលេញ</string>
+    <string name="main_status_all_files_denied">មិនបានអនុញ្ញាត «ចូលប្រើឯកសារទាំងអស់»៖ ម៉ាស៊ីនមួយចំនួនអាចបាត់បង់ទីតាំងបន្ទាប់ពីបំលែង</string>
+    <string name="main_status_read_granted">បានអនុញ្ញាតអានរូបថត និងវីដេអូ</string>
+    <string name="main_status_video_missing">បានអនុញ្ញាត ប៉ុន្តែខ្វះការអនុញ្ញាតវីដេអូ៖ មិនអាចរកវីដេអូភ្ជាប់របស់រូបថតចលនាពីរឯកសារ</string>
+    <string name="main_status_permission_denied">មិនបានអនុញ្ញាត; អ្នកអាចចុច «បន្ថែមឯកសារ» ម្តងទៀត</string>
+    <string name="main_status_folder_not_selected">មិនបានជ្រើសថត</string>
+    <string name="main_status_folder_unavailable">មិនអាចចូលប្រើថតដែលបានជ្រើស (គាំទ្រតែឧបករណ៍ផ្ទុកក្នុងម៉ាស៊ីន)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">បានស្តារវគ្គមុនឡើងវិញ (ឯកសារ %1$d)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">រកឃើញការចាកចេញមិនប្រក្រតីលើកមុន បញ្ជីមិនពេញលេញត្រូវបានសម្អាត</string>
+    <string name="main_status_compose_blocks_extract">មានភារកិច្ចផ្គុំក្នុងជួរ មិនអាចប្តូរទៅរបៀបដកស្រង់</string>
+    <string name="main_status_replace_off_mutex">បានបិទរបៀបជំនួស (ផ្ទុយនឹង «លុបរូបដើមបន្ទាប់ពីដំណើរការ»)</string>
+    <string name="main_status_delete_needs_all_files">ការលុបរូបដើមដោយស្វ័យប្រវត្តិត្រូវការ «ចូលប្រើឯកសារទាំងអស់» សូមអនុញ្ញាតជាមុន</string>
+    <string name="main_status_replace_off">បានបិទរបៀបជំនួស លទ្ធផលនឹងសរសេរទៅអាល់ប៊ុមវិញ</string>
+    <string name="main_status_replace_needs_all_files">របៀបជំនួសត្រូវការ «ចូលប្រើឯកសារទាំងអស់» សូមអនុញ្ញាតជាមុន</string>
+    <string name="main_status_delete_off_mutex">បានបិទ «លុបរូបដើមបន្ទាប់ពីដំណើរការ» (ផ្ទុយនឹងរបៀបជំនួស)</string>
+    <string name="main_status_loading_albums">កំពុងអានអាល់ប៊ុម…</string>
+    <string name="main_status_no_albums">រកមិនឃើញអាល់ប៊ុម</string>
+    <string name="main_status_compose_no_photo">មិនបានជ្រើសរូបថត មិនអាចផ្គុំ</string>
+    <string name="main_status_compose_no_video">មិនបានជ្រើសវីដេអូ មិនអាចផ្គុំ</string>
+    <string name="main_status_compose_all_added">រូបថតដែលបានជ្រើសទាំងអស់មានក្នុងបញ្ជីរួចហើយ</string>
+    <string name="main_status_compose_paired">រូបថត %1$d វីដេអូ %2$d; បានបន្ថែមភារកិច្ចផ្គុំ %3$d គូតាមចំនួនតិចជាង</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">បានបន្ថែមភារកិច្ចផ្គុំ %1$d ចុច «ចាប់ផ្តើមបំលែង» ដើម្បីដំណើរការ</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (បានប្តូរទម្រង់ចេញទៅ Google ដោយស្វ័យប្រវត្តិ)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">កំពុងនាំចូលរូបថតដែលបានចែករំលែក %1$d…</item>
+    </plurals>
+    <string name="main_status_import_failed">នាំចូលបរាជ័យ៖ %1$s</string>
+    <string name="main_status_import_done_partial">នាំចូលរួចរាល់៖ ជោគជ័យ %1$d បរាជ័យ %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">នាំចូលរួចរាល់៖ សរុបឯកសារ %1$d</item>
+    </plurals>
+    <string name="main_status_import_stopped">បានបញ្ឈប់ការនាំចូល៖ ជោគជ័យ %1$d បរាជ័យ %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">កំពុងនាំចូលឯកសារ %1$d…</item>
+    </plurals>
+    <string name="main_status_importing_progress">កំពុងនាំចូល %1$d/%2$d…</string>
+    <string name="main_status_stopping">កំពុងបញ្ឈប់… (នឹងបញ្ឈប់បន្ទាប់ពីឯកសារបច្ចុប្បន្នចប់)</string>
+    <string name="main_status_stopping_import">កំពុងបញ្ឈប់ការនាំចូល…</string>
+    <string name="main_status_removed">បានដក %1$s ចេញ</string>
+    <string name="main_status_cleared">បានសម្អាត</string>
+    <string name="main_status_nothing_to_convert">គ្មានឯកសារសម្រាប់បំលែង</string>
+    <string name="main_status_folder_unreadable">មិនអាចអានថតដែលបានជ្រើស</string>
+    <string name="main_status_scanning_folder">កំពុងស្កេនថត…</string>
+    <string name="main_status_no_images">រកមិនឃើញរូបថតក្នុងថតដែលបានជ្រើស</string>
+    <string name="main_status_batch_importing">នាំចូលជាក្រុម %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">បានបញ្ឈប់ការនាំចូលជាក្រុម៖ សរុបរូបថតចលនា %1$d</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">បានបញ្ឈប់ការនាំចូលជាក្រុម៖ សរុបរូបថតចលនា %1$d រំលងឯកសារមិនចលនា %2$d</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">នាំចូលជាក្រុមរួចរាល់៖ សរុបរូបថតចលនា %1$d</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">នាំចូលជាក្រុមរួចរាល់៖ សរុបរូបថតចលនា %1$d រំលងឯកសារមិនចលនា %2$d</item>
+    </plurals>
+    <string name="main_status_stopped_replace">បានបញ្ឈប់៖ ក្នុងឯកសារ %1$d បានដំណើរការ %2$d និងជំនួសឯកសារដើម %3$d</string>
+    <string name="main_status_stopped_export">បានបញ្ឈប់៖ ក្នុងឯកសារ %1$d បានដំណើរការ %2$d និងនាំចេញ %3$d ទៅអាល់ប៊ុម</string>
+    <string name="main_status_done_replace_reason">រួចរាល់៖ ដំណើរការឯកសារ %1$d ជំនួសឯកសារដើម %2$d (មូលហេតុ៖ %3$s)</string>
+    <string name="main_status_done_export_reason">រួចរាល់៖ ដំណើរការឯកសារ %1$d នាំចេញ %2$d ទៅអាល់ប៊ុម (មូលហេតុ៖ %3$s)</string>
+    <string name="main_status_done_replace">រួចរាល់៖ ដំណើរការឯកសារ %1$d ជំនួសឯកសារដើម %2$d</string>
+    <string name="main_status_done_export">រួចរាល់៖ ដំណើរការឯកសារ %1$d នាំចេញ %2$d ទៅអាល់ប៊ុម</string>
+    <string name="main_status_keep_originals">%1$s; មិនបាន «ចូលប្រើឃ្លាំងពេញលេញ» រូបដើមត្រូវបានរក្សាទុក</string>
+    <string name="main_info_detecting">កំពុងរកឃើញ…</string>
+    <string name="main_info_unrecognized">ទម្រង់រូបថតចលនាមិនស្គាល់</string>
+    <string name="main_info_converting">កំពុងបំលែង…</string>
+    <string name="main_info_compose_task">ភារកិច្ចផ្គុំ (ចុច «ចាប់ផ្តើមបំលែង» ដើម្បីដំណើរការ)</string>
+    <string name="main_info_done_replaced">រួចរាល់ (ជំនួសឯកសារដើម %1$d)</string>
+    <string name="main_info_done_skipped">រួចរាល់ (រំលង៖ ឈ្មោះដូចគ្នា)</string>
+    <string name="main_info_done_exported">រួចរាល់ (នាំចេញ %1$d)</string>
+    <string name="main_info_failed">បរាជ័យ៖ %1$s</string>
+    <string name="main_progress_added">បានបន្ថែម %1$d/%2$d</string>
+    <string name="main_progress_processed">បានដំណើរការ %1$d/%2$d</string>
+    <string name="main_progress_imported">បាននាំចូល %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">ត្រូវការការអនុញ្ញាតអានរូបថត និងវីដេអូ</string>
+    <string name="main_dialog_permission_message">កម្មវិធីនេះត្រូវការអានរូបថត និងវីដេអូក្នុងឧបករណ៍របស់អ្នក៖
+
+• ការអនុញ្ញាតរូបថត៖ ស្កេនអាល់ប៊ុម និងស្គាល់រូបថតចលនា
+• ការអនុញ្ញាតវីដេអូ៖ រកវីដេអូភ្ជាប់របស់រូបថតចលនាពីរឯកសារ
+• ការអនុញ្ញាតទីតាំង៖ រក្សាទិន្នន័យទីតាំង GPS ក្នុងរូបថត (បើខ្វះ នឹងបាត់បង់ទីតាំងបន្ទាប់ពីបំលែង)
+
+បើបដិសេធ មិនអាចប្រើឧបករណ៍ជ្រើសដែលមានស្រាប់បានទេ; ក្រោយមកអ្នកអាចចុច «បន្ថែមឯកសារ» ម្តងទៀតដើម្បីអនុញ្ញាត។</string>
+    <string name="main_dialog_settings_title">ត្រូវផ្តល់ការអនុញ្ញាតរូបថត និងវីដេអូដោយដៃ</string>
+    <string name="main_dialog_settings_message">អ្នកបានជ្រើស «មិនសួរទៀត» ពីមុន ដូច្នេះប្រព័ន្ធនឹងមិនបង្ហាញប្រអប់អនុញ្ញាតទេ។
+
+សូមទៅព័ត៌មានលម្អិតកម្មវិធី → ការអនុញ្ញាត → រូបថត និងវីដេអូ ផ្តល់សិទ្ធិដោយដៃ រួចត្រឡប់មកកម្មវិធីនេះវិញ។
+
+ចំណាំ៖ ត្រូវផ្តល់ការអនុញ្ញាត «រូបថត» និង «វីដេអូ» ទាំងពីរក្នុងពេលតែមួយ បើមិនដូច្នេះនឹងរកមិនឃើញវីដេអូភ្ជាប់របស់រូបថតចលនាពីរឯកសារ។</string>
+    <string name="main_dialog_allfiles_title_delete">ការលុបរូបដើមដោយស្វ័យប្រវត្តិត្រូវការ «ចូលប្រើឯកសារទាំងអស់»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">ឧបករណ៍នេះមិនគាំទ្រការលុបរូបដើមដោយស្វ័យប្រវត្តិ</string>
+    <string name="main_dialog_allfiles_title_replace">របៀបជំនួសត្រូវការ «ចូលប្រើឯកសារទាំងអស់»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">ឧបករណ៍នេះមិនគាំទ្ររបៀបជំនួស</string>
+    <string name="main_dialog_allfiles_title_location">សូមណែនាំផ្តល់ «ចូលប្រើឯកសារទាំងអស់»</string>
+    <string name="main_dialog_allfiles_delete_message">«លុបរូបដើមបន្ទាប់ពីដំណើរការ» នឹងលុបឯកសារដើមក្នុងឌីសផ្ទាល់ (រូបថត និងវីដេអូភ្ជាប់); សកម្មភាពនេះមិនអាចត្រឡប់វិញបាន ដូច្នេះត្រូវផ្តល់ «ចូលប្រើឯកសារទាំងអស់» ជាមុន។
+
+ក្រោយពេលអនុញ្ញាត កុងតាក់នឹងដំណើរការ ហើយអ្នកអាចបើកវាដោយខ្លួនឯង។</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">ប្រព័ន្ធបច្ចុប្បន្ន (Android 10 និងក្រោម) មិនផ្តល់ «ចូលប្រើឯកសារទាំងអស់» មិនអាចលុបឯកសារដើមក្នុងឌីសផ្ទាល់ ដូច្នេះឧបករណ៍នេះមិនគាំទ្រ «លុបរូបដើមបន្ទាប់ពីដំណើរការ»។
+
+អ្នកអាចសម្អាតរូបដើមដោយដៃតាមអាល់ប៊ុមប្រព័ន្ធបន្ទាប់ពីបំលែង។</string>
+    <string name="main_dialog_allfiles_replace_message">«របៀបជំនួស» នឹងសរសេរលទ្ធផលបំលែងទៅឯកសារដើមក្នុងឌីសផ្ទាល់ (ជំនួសខ្លឹមសារដើម); សកម្មភាពនេះមិនអាចត្រឡប់វិញបាន ដូច្នេះត្រូវផ្តល់ «ចូលប្រើឯកសារទាំងអស់» ជាមុន។
+
+ក្រោយពេលអនុញ្ញាត កុងតាក់នឹងដំណើរការ ហើយអ្នកអាចបើកវាដោយខ្លួនឯង។</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">ប្រព័ន្ធបច្ចុប្បន្ន (Android 10 និងក្រោម) មិនផ្តល់ «ចូលប្រើឯកសារទាំងអស់» មិនអាចកែឯកសារដើមក្នុងឌីសផ្ទាល់ ដូច្នេះឧបករណ៍នេះមិនគាំទ្រ «របៀបជំនួស»។
+
+អ្នកអាចបន្តបំលែងតាមវិធីលំនាំដើម; លទ្ធផលនឹងចេញទៅអាល់ប៊ុម។</string>
+    <string name="main_dialog_allfiles_location_message">ឧបករណ៍មួយចំនួន (ដូចជា Meizu) បំបាត់ព័ត៌មានទីតាំង GPS ពេលសរសេរតាម API អាល់ប៊ុមប្រព័ន្ធ ដែលធ្វើឱ្យរូបថតបាត់ទីតាំងបន្ទាប់ពីបំលែង។
+
+ក្រោយផ្តល់ «ចូលប្រើឯកសារទាំងអស់» កម្មវិធីនេះនឹងសរសេរផ្ទាល់ទៅអាល់ប៊ុម ហើយរក្សាទិន្នន័យទីតាំងពេញលេញ។
+
+បើមិនផ្តល់ក៏អាចបំលែងបានធម្មតា; ម៉ាស៊ីនមួយចំនួនអាចបាត់ទីតាំង។</string>
+    <string name="main_dialog_conflict_title">ជម្លោះឈ្មោះឯកសារចេញ</string>
+    <string name="main_dialog_conflict_message">មានឯកសារឈ្មោះដូចគ្នាក្នុងថតចេញរួចហើយ៖
+%1$s
+
+សូមជ្រើសវិធីដោះស្រាយ។</string>
+    <string name="main_label_conflict_always">ប្រើវិធីនេះសម្រាប់ជម្លោះបន្ទាប់</string>
+    <string name="main_btn_grant">អនុញ្ញាត</string>
+    <string name="main_btn_deny">បដិសេធ</string>
+    <string name="main_btn_go_settings">ទៅការកំណត់</string>
+    <string name="main_btn_cancel">បោះបង់</string>
+    <string name="main_btn_grant_access">ផ្តល់សិទ្ធិ</string>
+    <string name="main_btn_got_it">យល់ហើយ</string>
+    <string name="main_btn_not_now">មិនឥឡូវ</string>
+    <string name="main_btn_skip">រំលង</string>
+    <string name="main_btn_overwrite">សរសេរជាន់</string>
+    <string name="main_btn_auto_rename">ប្តូរឈ្មោះស្វ័យប្រវត្តិ</string>
+    <plurals name="main_delete_done">
+        <item quantity="other">បានលុបឯកសារដើម %1$d</item>
+    </plurals>
+    <string name="main_delete_nothing">គ្មានរូបដើមត្រូវលុប</string>
+    <string name="main_delete_partial">បានលុបឯកសារដើម %1$d (%2$d លុបបរាជ័យ បានរក្សាទុក)</string>
+    <string name="main_delete_failed">លុបរូបដើមបរាជ័យ (ឯកសារកំពុងប្រើ ឬគ្មានសិទ្ធិសរសេរ) បានរក្សាទុក</string>
+    <string name="main_export_missing_output">លទ្ធផលបំលែងបាត់ ឬទទេ៖ %1$s</string>
+    <string name="main_export_missing_output_bare">លទ្ធផលបំលែងបាត់ ឬទទេ</string>
+    <string name="main_export_insert_null">MediaStore insert ត្រឡប់ null</string>
+    <string name="main_export_output_stream">ស្ទ្រីមចេញ MediaStore មិនអាចប្រើ</string>
+    <string name="main_export_write_failed">សរសេរទៅ MediaStore បរាជ័យ៖ %1$s</string>
+    <string name="main_export_mkdir_failed">មិនអាចបង្កើតថតអាល់ប៊ុម %1$s</string>
+    <string name="main_export_dir_write_failed">សរសេរទៅថតអាល់ប៊ុមបរាជ័យ៖ %1$s</string>
+    <string name="main_export_no_source">រកមិនឃើញឯកសារដើម បានរំលងការជំនួស</string>
+    <string name="main_export_companion_failed">សរសេរត្រឡប់ទៅឯកសារភ្ជាប់បរាជ័យ៖ %1$s</string>
+    <string name="main_export_source_dir_unwritable">ថតឯកសារដើមមិនអាចសរសេរ ឯកសារភ្ជាប់មិនអាចសរសេរត្រឡប់</string>
+    <string name="main_export_source_dir_unavailable">ថតឯកសារដើមមិនអាចប្រើ៖ %1$s</string>
+    <string name="main_export_replace_failed">ជំនួសឯកសារដើមបរាជ័យ៖ %1$s</string>
+    <string name="main_export_replace_failed_bare">ជំនួសឯកសារដើមបរាជ័យ</string>
+</resources>

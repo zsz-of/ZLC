@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ລາວ (Lao) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Lao has no grammatical plural; only the 'other' quantity is emitted.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">ການແປງຮູບແບບຮູບຖ່າຍເຄື່ອນໄຫວ</string>
+    <plurals name="screen_file_count">
+        <item quantity="other">%1$d ໄຟລ໌</item>
+    </plurals>
+    <string name="screen_settings">ການຕັ້ງຄ່າ</string>
+    <string name="screen_select_output_format">ເລືອກຮູບແບບຜົນອອກ</string>
+    <string name="screen_selected">ເລືອກແລ້ວ</string>
+    <string name="screen_vivo_single_warning">⚠ ອຸປະກອນເກົ່າອາດຈະບໍ່ຮູ້ຈັກຮູບແບບນີ້</string>
+    <string name="screen_extract_blocked">⚠ ໃນຄິວມີວຽກປະກອບ ຈຶ່ງເລືອກດຶງອອກບໍ່ໄດ້</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (ໄຟລ໌ດຽວ)</string>
+    <string name="screen_format_vivo">vivo (ສອງໄຟລ໌)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">ດຶງອອກ</string>
+    <string name="screen_toolbox">ກ່ອງເຄື່ອງມື</string>
+    <string name="screen_batch_import">ນຳເຂົ້າເປັນຊຸດ</string>
+    <string name="screen_batch_import_desc">ສະແກນອາລະບ້ຳທັງໝົດ ແລະ ຮູ້ຈັກຮູບຖ່າຍເຄື່ອນໄຫວເປັນຊຸດ</string>
+    <string name="screen_compose">ປະກອບຮູບຖ່າຍເຄື່ອນໄຫວ</string>
+    <string name="screen_compose_desc">ເລືອກຮູບໜຶ່ງ ແລະ ວິດີໂອໜຶ່ງ ເພື່ອຈັບຄູ່</string>
+    <string name="screen_replace_mode">ໂໝດແທນທີ່</string>
+    <string name="screen_replace_mode_desc">ຜົນລັບຂຽນກັບໄປໄຟລ໌ເດີມໂດຍກົງ ບໍ່ສ້າງໄຟລ໌ໃໝ່</string>
+    <string name="screen_need_all_files_access_hint">ຕ້ອງການສິດເຂົ້າເຖິງໄຟລ໌ທັງໝົດ ກົດທີ່ນີ້ເພື່ອອະນຸຍາດ</string>
+    <string name="screen_agree_and_enable">ຍອມຮັບ ແລະ ເປີດ</string>
+    <string name="screen_empty_no_files">ຍັງບໍ່ໄດ້ເພີ່ມໄຟລ໌</string>
+    <string name="screen_view_detail">ເບິ່ງລາຍລະອຽດ</string>
+    <string name="screen_add_files">ເພີ່ມໄຟລ໌</string>
+    <string name="screen_output_format">ຮູບແບບຜົນອອກ: %1$s</string>
+    <string name="screen_delete_original">ລຶບຮູບເດີມຫຼັງປະມວນຜົນ</string>
+    <string name="screen_need_all_files_access_view">ຕ້ອງການສິດເຂົ້າເຖິງໄຟລ໌ທັງໝົດ ກົດເພື່ອເບິ່ງ</string>
+    <string name="screen_clear">ລ້າງ</string>
+    <string name="screen_stop">ຢຸດປະມວນຜົນ</string>
+    <string name="screen_start_convert">ເລີ່ມແປງ</string>
+    <string name="screen_status_detail">ລາຍລະອຽດສະຖານະ</string>
+    <string name="screen_long_press_copy">ກົດຍາວເທິງຂໍ້ຄວາມເພື່ອເລືອກ ແລະ ສຳເນົາ</string>
+    <string name="screen_copy">ສຳເນົາ</string>
+    <string name="screen_close">ປິດ</string>
+    <string name="screen_back">ກັບຄືນ</string>
+    <string name="screen_picker_title_select">ເລືອກຮູບຖ່າຍເຄື່ອນໄຫວ</string>
+    <string name="screen_album_count">ອາລະບ້ຳ %1$d</string>
+    <string name="screen_album_collapse_cover">ຫຍໍ້ປົກອາລະບ້ຳ</string>
+    <string name="screen_album_expand_cover">ຂະຫຍາຍປົກອາລະບ້ຳ</string>
+    <string name="screen_scanning_progress">ກຳລັງສະແກນ %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">%1$d ຮູບ</item>
+    </plurals>
+    <string name="screen_select_all">ເລືອກທັງໝົດ</string>
+    <string name="screen_no_albums">ບໍ່ມີອາລະບ້ຳທີ່ໃຊ້ໄດ້</string>
+    <string name="screen_no_media">ບໍ່ພົບຮູບຖ່າຍເຄື່ອນໄຫວ</string>
+    <string name="screen_no_media_compose">ບໍ່ພົບຮູບ ຫຼື ວິດີໂອ</string>
+    <string name="screen_import">ນຳເຂົ້າ</string>
+    <string name="screen_import_count">ນຳເຂົ້າ %1$d</string>
+    <string name="screen_import_mixed">ນຳເຂົ້າ ຮູບ %1$d · ວິດີໂອ %2$d</string>
+    <string name="screen_search">ຄົ້ນຫາ</string>
+    <string name="screen_search_collapse">ຫຍໍ້ການຄົ້ນຫາ</string>
+    <string name="screen_search_hint">ຄົ້ນຫາຕາມຊື່</string>
+    <string name="screen_search_clear">ລ້າງການຄົ້ນຫາ</string>
+    <string name="screen_sort_date">ວັນທີ</string>
+    <string name="screen_sort_size">ຂະໜາດ</string>
+    <string name="screen_sort_name">ຊື່</string>
+    <string name="screen_sort_asc">ລຳດັບຂຶ້ນ</string>
+    <string name="screen_sort_desc">ລຳດັບລົງ</string>
+    <string name="screen_date_today">ມື້ນີ້</string>
+    <string name="screen_date_yesterday">ມື້ວານນີ້</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%2$d/%1$d/%3$d</string>
+</resources>

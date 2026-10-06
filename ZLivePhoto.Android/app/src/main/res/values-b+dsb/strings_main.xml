@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Dolnoserbska rěc — toś ta dataja jo "best effort" pśełožk (modelowa pódpěra), gódnota B/C.
+  Žrědłowy tekst jo chinski; gaž něco njejo wěste, glědajśo do chinskeje wersije.
+-->
+<resources>
+    <!-- ── Statusowa rědka / pokaze ── -->
+    <string name="main_status_ready">Gótowe</string>
+    <string name="main_status_location_granted">Pšawa za městno su dostaśone, pó konwertěrowanju GPS-metadaty se zachowaju</string>
+    <string name="main_status_location_denied">Pšawa za městno njedane: konwertěrowane foty zgubiju GPS-poziciju</string>
+    <string name="main_status_all_files_granted">Pšawa «pśistup k wšym datajam» su dostaśone, konwertěrowanje pisa direktnje do albumowego zapisa a dopołnje zachowa poziciju</string>
+    <string name="main_status_all_files_denied">Pšawa «pśistup k wšym datajam» njedane: pśi jadnotliwych typach móžo pozicija pó konwertěrowanju se zgubiś</string>
+    <string name="main_status_read_granted">Pšawa za cytanje fotow a wideoow su dostaśone</string>
+    <string name="main_status_video_missing">Pšawa su dane, ale pšawo za widea felujo: pśisłušne wideo k dwójnej Live Photo njedajo se namakaś</string>
+    <string name="main_status_permission_denied">Pšawa njedane, klikniśo zasej na «Pśidaś dataje»</string>
+    <string name="main_status_folder_not_selected">Žeden zapis wubrany</string>
+    <string name="main_status_folder_unavailable">Wubrany zapis njepśistupny (pódpěraju se jano lokalne składowańske zapisy)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Zajźone pósejźenje wótnowjone (%1$d dataja)</item>
+        <item quantity="two">Zajźone pósejźenje wótnowjone (%1$d dataji)</item>
+        <item quantity="few">Zajźone pósejźenje wótnowjone (%1$d dataje)</item>
+        <item quantity="other">Zajźone pósejźenje wótnowjone (%1$d datajow)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Zajźone njepšawidłowne skóńcenje spóznane, njedoceńcona lisćina jo wupraznjona</string>
+    <string name="main_status_compose_blocks_extract">Rěd wopśimujo syntezowe nadawki, pśepinanje do modusa rozłoženja njejo móžne</string>
+    <string name="main_status_replace_off_mutex">Modus wuměny jo wupinjony (wuwześe z «Pó konwertěrowanju žrědłowe foty wulašowaś»)</string>
+    <string name="main_status_delete_needs_all_files">Awtomatiske wulašowanje žrědłowych fotow wobsebjaga pšawo «pśistup k wšym datajam», pšosym dajśo nejpjerwjej pšawo</string>
+    <string name="main_status_replace_off">Modus wuměny jo wupinjony, konwertěrowane wuslědki se zasej do albumowego zapisa pisaju</string>
+    <string name="main_status_replace_needs_all_files">Modus wuměny wobsebjaga pšawo «pśistup k wšym datajam», pšosym dajśo nejpjerwjej pšawo</string>
+    <string name="main_status_delete_off_mutex">«Pó konwertěrowanju žrědłowe foty wulašowaś» jo wupinjone (wuwześe z modusom wuměny)</string>
+    <string name="main_status_loading_albums">Alby se cytaju…</string>
+    <string name="main_status_no_albums">Žeden album namakany</string>
+    <string name="main_status_compose_no_photo">Žedne foto wubrane, synteza njejo móžna</string>
+    <string name="main_status_compose_no_video">Žedne wideo wubrane, synteza njejo móžna</string>
+    <string name="main_status_compose_all_added">Wšykne wubrane foty su južo w lisćinje</string>
+    <string name="main_status_compose_paired">%1$d fotow, %2$d wideoow, pó mjeńšej licbje pśidane %3$d syntezowe nadawki</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d syntezowy nadawk pśidany, klikniśo na «Konwertěrowanje startowaś»</item>
+        <item quantity="two">%1$d syntezowej nadawka pśidanej, klikniśo na «Konwertěrowanje startowaś»</item>
+        <item quantity="few">%1$d syntezowe nadawki pśidane, klikniśo na «Konwertěrowanje startowaś»</item>
+        <item quantity="other">%1$d syntezowych nadawkow pśidane, klikniśo na «Konwertěrowanje startowaś»</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (wudawański format jo awtomatiski na Google pśestajony)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Źělonu %1$d wobraz se importujo…</item>
+        <item quantity="two">Źělonej %1$d wobraza se importujotej…</item>
+        <item quantity="few">Źělone %1$d wobraze se importuju…</item>
+        <item quantity="other">Źělonych %1$d wobrazow se importujo…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import zwrěšył: %1$s</string>
+    <string name="main_status_import_done_partial">Import dokóńcony: %1$d wuspěšnych, %2$d zwrěšonych</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import dokóńcony: %1$d dataja importowana</item>
+        <item quantity="two">Import dokóńcony: %1$d dataji importowanej</item>
+        <item quantity="few">Import dokóńcony: %1$d dataje importowane</item>
+        <item quantity="other">Import dokóńcony: %1$d datajow importowanych</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import zastajony: %1$d wuspěšnych, %2$d zwrěšonych</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d dataja se importujo…</item>
+        <item quantity="two">%1$d dataji se importujotej…</item>
+        <item quantity="few">%1$d dataje se importuju…</item>
+        <item quantity="other">%1$d datajow se importujo…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importujo se %1$d/%2$d…</string>
+    <string name="main_status_stopping">Zastajanje… (pó dokóńcenju aktualneje dataje)</string>
+    <string name="main_status_stopping_import">Import se zastaja…</string>
+    <string name="main_status_removed">%1$s wótwónoźone</string>
+    <string name="main_status_cleared">Wupraznjone</string>
+    <string name="main_status_nothing_to_convert">Žedne dataje za konwertěrowanje</string>
+    <string name="main_status_folder_unreadable">Wubrany zapis njedajo se cytaś</string>
+    <string name="main_status_scanning_folder">Zapis se pśepytujo…</string>
+    <string name="main_status_no_images">W wubranem zapisu žedne wobraze namakane</string>
+    <string name="main_status_batch_importing">Masowy import %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Masowy import zastajony: %1$d Live Photo importowane</item>
+        <item quantity="two">Masowy import zastajony: %1$d Live Photo importowanej</item>
+        <item quantity="few">Masowy import zastajony: %1$d Live Photo importowane</item>
+        <item quantity="other">Masowy import zastajony: %1$d Live Photo importowanych</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Masowy import zastajony: %1$d Live Photo importowane, %2$d nje-Live-Photo dataja pśeskócena</item>
+        <item quantity="two">Masowy import zastajony: %1$d Live Photo importowanej, %2$d nje-Live-Photo dataji pśeskócenej</item>
+        <item quantity="few">Masowy import zastajony: %1$d Live Photo importowane, %2$d nje-Live-Photo dataje pśeskócene</item>
+        <item quantity="other">Masowy import zastajony: %1$d Live Photo importowanych, %2$d nje-Live-Photo datajow pśeskóconych</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Masowy import dokóńcony: %1$d Live Photo importowane</item>
+        <item quantity="two">Masowy import dokóńcony: %1$d Live Photo importowanej</item>
+        <item quantity="few">Masowy import dokóńcony: %1$d Live Photo importowane</item>
+        <item quantity="other">Masowy import dokóńcony: %1$d Live Photo importowanych</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Masowy import dokóńcony: %1$d Live Photo importowane, %2$d nje-Live-Photo dataja pśeskócena</item>
+        <item quantity="two">Masowy import dokóńcony: %1$d Live Photo importowanej, %2$d nje-Live-Photo dataji pśeskócenej</item>
+        <item quantity="few">Masowy import dokóńcony: %1$d Live Photo importowane, %2$d nje-Live-Photo dataje pśeskócene</item>
+        <item quantity="other">Masowy import dokóńcony: %1$d Live Photo importowanych, %2$d nje-Live-Photo datajow pśeskóconych</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Zastajone: z %1$d datajow %2$d wobźěłane, %3$d žrědłowych datajow wuměnjonych</string>
+    <string name="main_status_stopped_export">Zastajone: z %1$d datajow %2$d wobźěłane, %3$d do albuma eksportowane</string>
+    <string name="main_status_done_replace_reason">Dokóńcone: %1$d datajow wobźěłane, %2$d žrědłowych datajow wuměnjonych (pśicyna: %3$s)</string>
+    <string name="main_status_done_export_reason">Dokóńcone: %1$d datajow wobźěłane, %2$d do albuma eksportowane (pśicyna: %3$s)</string>
+    <string name="main_status_done_replace">Dokóńcone: %1$d datajow wobźěłane, %2$d žrědłowych datajow wuměnjonych</string>
+    <string name="main_status_done_export">Dokóńcone: %1$d datajow wobźěłane, %2$d do albuma eksportowane</string>
+    <string name="main_status_keep_originals">%1$s; pšawo «dopołny pśistup k składowanju» njedane, žrědłowe foty su zachowane</string>
+
+    <!-- ── Lisćinowe informacije ── -->
+    <string name="main_info_detecting">Spóznawa se…</string>
+    <string name="main_info_unrecognized">Njespóznaty format Live Photo</string>
+    <string name="main_info_converting">Konwertěrujo se…</string>
+    <string name="main_info_compose_task">Syntezowy nadawk (klikniśo na start konwertěrowanja)</string>
+    <string name="main_info_done_replaced">Dokóńcone (wuměnjonych %1$d žrědłowych datajow)</string>
+    <string name="main_info_done_skipped">Dokóńcone (pśeskócene: konflikt samskego mjenja)</string>
+    <string name="main_info_done_exported">Dokóńcone (eksportowane %1$d)</string>
+    <string name="main_info_failed">Zwrěšone: %1$s</string>
+
+    <!-- ── Podrobnosći póstupa ── -->
+    <string name="main_progress_added">Pśidane %1$d/%2$d</string>
+    <string name="main_progress_processed">Wobźěłane %1$d/%2$d</string>
+    <string name="main_progress_imported">Importowane %1$d/%2$d</string>
+
+    <!-- ── Dialog pšawow ── -->
+    <string name="main_dialog_permission_title">Trjebaju se pšawa za cytanje fotow a wideoow</string>
+    <string name="main_dialog_permission_message">Toś ten program trjeba pśistup k wašym fotam a wideoam na wašom rědźe:\n\n• Pšawa za foty: pśepytowanje wašych albow a spóznawanje Live Photos\n• Pšawa za widea: namakanje pśisłušnych wideoow k dwójnym Live Photos\n• Pšawa za městno: zachowanje GPS-metadatow we fotach (bźez nich pozicija pó konwertěrowanju se zgubijo)\n\nPó wótpokazanju njejo móžno zabudowany wuběrač wužywaś; klikniśo pózdźej zasej na «Pśidaś dataje».</string>
+    <string name="main_dialog_settings_title">Pšawa za foty a widea muse se manuelnje daś</string>
+    <string name="main_dialog_settings_message">Pjerwjej sćo wubrał «Wěcej se njepšašaś», system wěcej žedne dialogi pšawow njepokazujo.\n\nPšosym źiśo do podrobnosćow nałoženja → Pšawa → Foty a widea, dajśo pśistup manuelnje a wrośćo se do toś togo nałoženja.\n\nGlědajśo: pšawa za «Foty» a «Widea» muse se gromadu daś, howac pśisłušne wideo k dwójnym Live Photos njedajo se namakaś.</string>
+
+    <!-- ── Dialog wó pšawach «pśistup k wšym datajam» ── -->
+    <string name="main_dialog_allfiles_title_delete">Awtomatiske wulašowanje žrědłowych fotow wobsebjaga «pśistup k wšym datajam»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Toś ten rěd awtomatiske wulašowanje žrědłowych fotow njepódpěrujo</string>
+    <string name="main_dialog_allfiles_title_replace">Modus wuměny wobsebjaga «pśistup k wšym datajam»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Toś ten rěd modus wuměny njepódpěrujo</string>
+    <string name="main_dialog_allfiles_title_location">Pórucujomy pšawo «pśistup k wšym datajam»</string>
+    <string name="main_dialog_allfiles_delete_message">«Pó konwertěrowanju žrědłowe foty wulašowaś» wulašujo direktnje žrědłowe dataje na diskowem wobcerku (foty a pśisłušne wideo). Toś ta akcija njedajo se wrośiś, togodla musy se nejpjerwjej pšawo «pśistup k wšym datajam» daś.\n\nPó dowólonju se pśepinač aktiwěrujo a móžośo jogo sam zapinaś.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Aktualny system (Android 10 a staršy) pšawo «pśistup k wšym datajam» njepósrědijo, togodla žrědłowe dataje na diskowem wobcerku njedaju se direktnje wulašowaś a toś ten rěd «Pó konwertěrowanju žrědłowe foty wulašowaś» njepódpěrujo.\n\nMóžośo pó konwertěrowanju žrědłowe foty w systemowem albuma manuelnje wuproznjaś.</string>
+    <string name="main_dialog_allfiles_replace_message">«Modus wuměny» pisa konwertěrowane wuslědki direktnje do žrědłowych datajow na diskowem wobcerku (pśepisujo wopśimjeśe). Toś ta akcija njedajo se wrośiś, togodla musy se nejpjerwjej pšawo «pśistup k wšym datajam» daś.\n\nPó dowólonju se pśepinač aktiwěrujo a móžośo jogo sam zapinaś.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Aktualny system (Android 10 a staršy) pšawo «pśistup k wšym datajam» njepósrědijo, togodla žrědłowe dataje na diskowem wobcerku njedaju se direktnje pśepisaś a toś ten rěd «Modus wuměny» njepódpěrujo.\n\nMóžośo dalej z normalnym wašnjom konwertěrowaś; wuslědki se do albumowego zapisa wudaju.</string>
+    <string name="main_dialog_allfiles_location_message">Pśi jadnotliwych typach (na pś. Meizu) se pśez systemowy albumowy interfejs GPS-pozicija anonymizěrujo, tak až konwertěrowane foty poziciju zgubiju.\n\nPó dowólonju «pśistup k wšym datajam» pisa toś ten program direktnje do albumowego zapisa a dopołnje zachowa městnostne metadaty.\n\nKonwertěrowanje funkcioněrujo teke bźez toś togo pšawa, ale pśi jadnotliwych typach móžo pozicija se zgubiś.</string>
+
+    <!-- ── Dialog konflikta mjenjow ── -->
+    <string name="main_dialog_conflict_title">Konflikt mjenja wudawańskeje dataje</string>
+    <string name="main_dialog_conflict_message">W wudawańskem zapisu južo eksistěrujo dataja ze samskim mjenim:\n%1$s\n\nPšosym wubjeŕśo wašnju wobźěłanja.</string>
+    <string name="main_label_conflict_always">Toś tu wašnju za pśiducy konflikty wužywaś</string>
+
+    <!-- ── Butony dialogow ── -->
+    <string name="main_btn_grant">Dowóliś</string>
+    <string name="main_btn_deny">Wótpokazaś</string>
+    <string name="main_btn_go_settings">Do nastajenjow</string>
+    <string name="main_btn_cancel">Pśetergnuś</string>
+    <string name="main_btn_grant_access">Pšawa dowóliś</string>
+    <string name="main_btn_got_it">Zrozměł</string>
+    <string name="main_btn_not_now">Něnto nic</string>
+    <string name="main_btn_skip">Pśeskócyś</string>
+    <string name="main_btn_overwrite">Pśepisaś</string>
+    <string name="main_btn_auto_rename">Awtomatiski pśemjenjowaś</string>
+
+    <!-- ── Pśicyny wulašowanja / eksporta ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d žrědłowa dataja wulašowana</item>
+        <item quantity="two">%1$d žrědłowej dataji wulašowanej</item>
+        <item quantity="few">%1$d žrědłowe dataje wulašowane</item>
+        <item quantity="other">%1$d žrědłowych datajow wulašowanych</item>
+    </plurals>
+    <string name="main_delete_nothing">Žrědłowe foty njetrjebaju se wulašowaś</string>
+    <string name="main_delete_partial">%1$d žrědłowych datajow wulašowanych (%2$d njedachu se wulašowaś, su zachowane)</string>
+    <string name="main_delete_failed">Wulašowanje žrědłowych fotow zwrěšyło (dataja wužyta abo žedne pšawo pisanja), su zachowane</string>
+    <string name="main_export_missing_output">Konwertěrowany produkt felujo abo jo prozny: %1$s</string>
+    <string name="main_export_missing_output_bare">Konwertěrowany produkt felujo abo jo prozny</string>
+    <string name="main_export_insert_null">MediaStore insert wrośa null</string>
+    <string name="main_export_output_stream">Wudawański tok MediaStore njestoj k dispoziciji</string>
+    <string name="main_export_write_failed">Pisanje do MediaStore zwrěšyło: %1$s</string>
+    <string name="main_export_mkdir_failed">Albumowy zapis %1$s njedajo se napóraś</string>
+    <string name="main_export_dir_write_failed">Pisanje do albumowego zapisa zwrěšyło: %1$s</string>
+    <string name="main_export_no_source">Žrědłowa dataja njedajo se namakaś, wuměna jo pśeskócena</string>
+    <string name="main_export_companion_failed">Wróśopisowanje pśisłušneje dataje zwrěšyło: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Žrědłowy zapis njedajo se pisaś, pśisłušna dataja njedajo se wrośiś</string>
+    <string name="main_export_source_dir_unavailable">Žrědłowy zapis njestoj k dispoziciji: %1$s</string>
+    <string name="main_export_replace_failed">Wuměna žrědłoweje dataje zwrěšyła: %1$s</string>
+    <string name="main_export_replace_failed_bare">Wuměna žrědłoweje dataje zwrěšyła</string>
+</resources>

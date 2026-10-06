@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Azerbaijani (az) strings — main screen and background flows.
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Plural quantities follow CLDR for Azerbaijani: one / other.
+-->
+<resources>
+    <!-- ── Vəziyyət sətri / mesajlar ── -->
+    <string name="main_status_ready">Hazırdır</string>
+    <string name="main_status_location_granted">Məkan icazəsi verildi; çevrilmədən sonra GPS metadataları saxlanılacaq</string>
+    <string name="main_status_location_denied">Məkan icazəsi olmadan: çevrilmiş fotoşəkillər GPS məkan məlumatını itirəcək</string>
+    <string name="main_status_all_files_granted">„Bütün fayllara giriş“ icazəsi verildi; çevrilmə birbaşa albom qovluğuna yazır və məkanı tam saxlayır</string>
+    <string name="main_status_all_files_denied">„Bütün fayllara giriş“ icazəsi olmadan: bəzi modellərdə fotoşəkillər məkan məlumatını itirə bilər</string>
+    <string name="main_status_read_granted">Fotoşəkil və video oxuma icazəsi verildi</string>
+    <string name="main_status_video_missing">İcazə verildi, lakin video icazəsi yoxdur: iki fayllı Live Photo-nun yoldaş videosu tapıla bilmir</string>
+    <string name="main_status_permission_denied">İcazə verilmədi; yenidən „Fayl əlavə et“ düyməsinə toxuna bilərsiniz</string>
+    <string name="main_status_folder_not_selected">Qovluq seçilməyib</string>
+    <string name="main_status_folder_unavailable">Seçilmiş qovluq əlçatan deyil (yalnız yerli yaddaş dəstəklənir)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Əvvəlki sessiya bərpa edildi (%1$d fayl)</item>
+        <item quantity="other">Əvvəlki sessiya bərpa edildi (%1$d fayl)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Əvvəlki anormal bağlanma aşkarlandı; yarımçıq siyahı təmizləndi</string>
+    <string name="main_status_compose_blocks_extract">Növbədə sintez tapşırıqları var; çıxarma rejiminə keçmək mümkün deyil</string>
+    <string name="main_status_replace_off_mutex">Əvəzetmə rejimi söndürüldü („Emaldan sonra orijinalları sil“ ilə qarşılıqlı istisnadır)</string>
+    <string name="main_status_delete_needs_all_files">Orijinalların avtomatik silinməsi „Bütün fayllara giriş“ icazəsi tələb edir; əvvəlcə onu verin</string>
+    <string name="main_status_replace_off">Əvəzetmə rejimi söndürüldü; nəticələr yenidən albom qovluğuna yazılır</string>
+    <string name="main_status_replace_needs_all_files">Əvəzetmə rejimi „Bütün fayllara giriş“ icazəsi tələb edir; əvvəlcə onu verin</string>
+    <string name="main_status_delete_off_mutex">„Emaldan sonra orijinalları sil“ söndürüldü (əvəzetmə rejimi ilə qarşılıqlı istisnadır)</string>
+    <string name="main_status_loading_albums">Albomlar oxunur…</string>
+    <string name="main_status_no_albums">Albom tapılmadı</string>
+    <string name="main_status_compose_no_photo">Fotoşəkil seçilməyib, sintez mümkün deyil</string>
+    <string name="main_status_compose_no_video">Video seçilməyib, sintez mümkün deyil</string>
+    <string name="main_status_compose_all_added">Seçilmiş bütün fotoşəkillər artıq siyahıdadır</string>
+    <string name="main_status_compose_paired">%1$d fotoşəkil, %2$d video; az olan tərəfə görə %3$d cüt sintez tapşırığı əlavə edildi</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d sintez tapşırığı əlavə edildi; sintez üçün „Çevrilməyə başla“ düyməsinə toxunun</item>
+        <item quantity="other">%1$d sintez tapşırığı əlavə edildi; sintez üçün „Çevrilməyə başla“ düyməsinə toxunun</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (çıxış formatı avtomatik Google-a dəyişdirildi)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Paylaşılan %1$d şəkil idxal olunur…</item>
+        <item quantity="other">Paylaşılan %1$d şəkil idxal olunur…</item>
+    </plurals>
+    <string name="main_status_import_failed">İdxal alınmadı: %1$s</string>
+    <string name="main_status_import_done_partial">İdxal tamamlandı: uğurlu %1$d, uğursuz %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">İdxal tamamlandı: cəmi %1$d fayl idxal edildi</item>
+        <item quantity="other">İdxal tamamlandı: cəmi %1$d fayl idxal edildi</item>
+    </plurals>
+    <string name="main_status_import_stopped">İdxal dayandırıldı: uğurlu %1$d, uğursuz %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d fayl idxal olunur…</item>
+        <item quantity="other">%1$d fayl idxal olunur…</item>
+    </plurals>
+    <string name="main_status_importing_progress">İdxal olunur %1$d/%2$d…</string>
+    <string name="main_status_stopping">Dayandırılır… (cari fayldan sonra dayanacaq)</string>
+    <string name="main_status_stopping_import">İdxal dayandırılır…</string>
+    <string name="main_status_removed">Silindi: %1$s</string>
+    <string name="main_status_cleared">Təmizləndi</string>
+    <string name="main_status_nothing_to_convert">Çevriləcək fayl yoxdur</string>
+    <string name="main_status_folder_unreadable">Seçilmiş qovluq oxuna bilmədi</string>
+    <string name="main_status_scanning_folder">Qovluq skan edilir…</string>
+    <string name="main_status_no_images">Seçilmiş qovluqda şəkil tapılmadı</string>
+    <string name="main_status_batch_importing">Toplu idxal %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Toplu idxal dayandırıldı: cəmi %1$d Live Photo idxal edildi</item>
+        <item quantity="other">Toplu idxal dayandırıldı: cəmi %1$d Live Photo idxal edildi</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Toplu idxal dayandırıldı: cəmi %1$d Live Photo idxal edildi, %2$d Live olmayan fayl ötürüldü</item>
+        <item quantity="other">Toplu idxal dayandırıldı: cəmi %1$d Live Photo idxal edildi, %2$d Live olmayan fayl ötürüldü</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Toplu idxal tamamlandı: cəmi %1$d Live Photo idxal edildi</item>
+        <item quantity="other">Toplu idxal tamamlandı: cəmi %1$d Live Photo idxal edildi</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Toplu idxal tamamlandı: cəmi %1$d Live Photo idxal edildi, %2$d Live olmayan fayl ötürüldü</item>
+        <item quantity="other">Toplu idxal tamamlandı: cəmi %1$d Live Photo idxal edildi, %2$d Live olmayan fayl ötürüldü</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Dayandırıldı: %1$d fayldan %2$d emal edildi, %3$d mənbə fayl əvəz edildi</string>
+    <string name="main_status_stopped_export">Dayandırıldı: %1$d fayldan %2$d emal edildi, %3$d alboma çıxarıldı</string>
+    <string name="main_status_done_replace_reason">Tamamlandı: %1$d fayl emal edildi, %2$d mənbə fayl əvəz edildi (səbəb: %3$s)</string>
+    <string name="main_status_done_export_reason">Tamamlandı: %1$d fayl emal edildi, %2$d alboma çıxarıldı (səbəb: %3$s)</string>
+    <string name="main_status_done_replace">Tamamlandı: %1$d fayl emal edildi, %2$d mənbə fayl əvəz edildi</string>
+    <string name="main_status_done_export">Tamamlandı: %1$d fayl emal edildi, %2$d alboma çıxarıldı</string>
+    <string name="main_status_keep_originals">%1$s; „Yaddaşa tam giriş“ icazəsi verilmədi, orijinallar saxlanıldı</string>
+
+    <!-- ── Siyahı elementlərinin məlumatı ── -->
+    <string name="main_info_detecting">Aşkarlanır…</string>
+    <string name="main_info_unrecognized">Live Photo-nun tanınmayan formatı</string>
+    <string name="main_info_converting">Çevrilir…</string>
+    <string name="main_info_compose_task">Sintez tapşırığı (çevrilməyə başlamaq üçün toxunun)</string>
+    <string name="main_info_done_replaced">Tamamlandı (%1$d mənbə fayl əvəz edildi)</string>
+    <string name="main_info_done_skipped">Tamamlandı (ötürüldü: ad konflikti)</string>
+    <string name="main_info_done_exported">Tamamlandı (%1$d çıxarıldı)</string>
+    <string name="main_info_failed">Xəta: %1$s</string>
+
+    <!-- ── İrəliləyiş təfərrüatları ── -->
+    <string name="main_progress_added">Əlavə edildi %1$d/%2$d</string>
+    <string name="main_progress_processed">Emal edildi %1$d/%2$d</string>
+    <string name="main_progress_imported">İdxal edildi %1$d/%2$d</string>
+
+    <!-- ── İcazə dialoqları ── -->
+    <string name="main_dialog_permission_title">Fotoşəkil və video oxuma icazəsi tələb olunur</string>
+    <string name="main_dialog_permission_message">Tətbiq cihazınızdakı fotoşəkil və videolara giriş tələb edir:\n\n• Fotoşəkil icazəsi: cihaz albomunu skan edərək Live Photo-ları tanımaq\n• Video icazəsi: iki fayllı Live Photo-nun yoldaş videosunu tapmaq\n• Məkan icazəsi: fotoşəkillərdə GPS məkan metadatalarını saxlamaq (olmadan çevrilmədən sonra məkan itirilir)\n\nİmtina etdikdən sonra daxili seçici işləməyəcək; sonra yenidən „Fayl əlavə et“ düyməsinə toxunub icazələri verə bilərsiniz.</string>
+    <string name="main_dialog_settings_title">Fotoşəkil və video icazəsi əl ilə verilməlidir</string>
+    <string name="main_dialog_settings_message">Əvvəllər „bir daha soruşma“ seçmisiniz, buna görə sistem artıq icazə dialoqunu göstərmir.\n\nTətbiq məlumatları səhifəsinə keçin → İcazələr → Fotoşəkillər və video, əl ilə giriş verin və tətbiqə qayıdın.\n\nDiqqət: hər iki icazə verilməlidir — „Fotoşəkillər“ və „Video“, əks halda iki fayllı Live Photo yoldaş videonu tapa bilməyəcək.</string>
+
+    <!-- ── „Bütün fayllara giriş“ icazəsi dialoqları ── -->
+    <string name="main_dialog_allfiles_title_delete">Orijinalların avtomatik silinməsi „Bütün fayllara giriş“ tələb edir</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Bu cihaz orijinalların avtomatik silinməsini dəstəkləmir</string>
+    <string name="main_dialog_allfiles_title_replace">Əvəzetmə rejimi „Bütün fayllara giriş“ tələb edir</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Bu cihaz əvəzetmə rejimini dəstəkləmir</string>
+    <string name="main_dialog_allfiles_title_location">„Bütün fayllara giriş“ icazəsinin verilməsi tövsiyə olunur</string>
+    <string name="main_dialog_allfiles_delete_message">„Emaldan sonra orijinalları sil“ diskdəki orijinal faylları (fotoşəkli və yoldaş videonu) birbaşa silir, əməliyyat geri qaytarıla bilməz, buna görə əvvəlcə „Bütün fayllara giriş“ icazəsi lazımdır.\n\nİcazə verildikdən sonra açar əlçatan olacaq və onu özünüz aktiv edə biləcəksiniz.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Cari sistem (Android 10 və daha köhnə) „Bütün fayllara giriş“ icazəsini vermir, buna görə diskdəki orijinal faylları birbaşa silmək mümkün deyil; bu səbəbdən cihaz „Emaldan sonra orijinalları sil“ funksiyasını dəstəkləmir.\n\nÇevrilmədən sonra orijinalları sistem albomundan əl ilə təmizləyə bilərsiniz.</string>
+    <string name="main_dialog_allfiles_replace_message">„Əvəzetmə rejimi“ çevrilmə nəticəsini diskdəki orijinal fayllara birbaşa yazır (üzərinə yazır), əməliyyat geri qaytarıla bilməz, buna görə əvvəlcə „Bütün fayllara giriş“ icazəsi lazımdır.\n\nİcazə verildikdən sonra açar əlçatan olacaq və onu özünüz aktiv edə biləcəksiniz.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Cari sistem (Android 10 və daha köhnə) „Bütün fayllara giriş“ icazəsini vermir, buna görə diskdəki orijinal faylların üzərinə birbaşa yazmaq mümkün deyil; bu səbəbdən cihaz „Əvəzetmə rejimi“ni dəstəkləmir.\n\nAdi çevrilmə ilə davam edə bilərsiniz; nəticələr albom qovluğuna yazılacaq.</string>
+    <string name="main_dialog_allfiles_location_message">Bəzi modellər (məs. Meizu) sistem albom API-si ilə yazarkən GPS məkan məlumatını silir, nəticədə çevrilmiş fotoşəkillər məkanı itirir.\n\n„Bütün fayllara giriş“ icazəsi ilə tətbiq birbaşa albom qovluğuna yazır və məkan metadatalarını tam saxlayır.\n\nÇevrilmə bu icazə olmadan da işləyir, lakin bəzi modellərdə məkan itirilə bilər.</string>
+
+    <!-- ── Çıxış fayl adı konflikti dialoqu ── -->
+    <string name="main_dialog_conflict_title">Çıxış fayl adı konflikti</string>
+    <string name="main_dialog_conflict_message">Çıxış qovluğunda artıq eyni adlı fayl var:\n%1$s\n\nEmal üsulunu seçin.</string>
+    <string name="main_label_conflict_always">Bu üsulu sonrakı konfliktlər üçün istifadə et</string>
+
+    <!-- ── Dialoq düymələri ── -->
+    <string name="main_btn_grant">İcazə ver</string>
+    <string name="main_btn_deny">İmtina et</string>
+    <string name="main_btn_go_settings">Ayarlar</string>
+    <string name="main_btn_cancel">Ləğv et</string>
+    <string name="main_btn_grant_access">Giriş icazəsi ver</string>
+    <string name="main_btn_got_it">Anladım</string>
+    <string name="main_btn_not_now">İndi yox</string>
+    <string name="main_btn_skip">Ötür</string>
+    <string name="main_btn_overwrite">Üzərinə yaz</string>
+    <string name="main_btn_auto_rename">Avtomatik adlandır</string>
+
+    <!-- ── Çevrilmə nəticəsi / uğursuz çıxarış səbəbləri ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d orijinal fayl silindi</item>
+        <item quantity="other">%1$d orijinal fayl silindi</item>
+    </plurals>
+    <string name="main_delete_nothing">Orijinalları silməyə ehtiyac yoxdur</string>
+    <string name="main_delete_partial">%1$d orijinal fayl silindi (%2$d silinə bilmədi, saxlanıldı)</string>
+    <string name="main_delete_failed">Orijinallar silinə bilmədi (fayl məşğuldur və ya yazma icazəsi yoxdur), saxlanıldı</string>
+    <string name="main_export_missing_output">Çevrilmə nəticəsi yoxdur və ya boşdur: %1$s</string>
+    <string name="main_export_missing_output_bare">Çevrilmə nəticəsi yoxdur və ya boşdur</string>
+    <string name="main_export_insert_null">MediaStore insert null qaytardı</string>
+    <string name="main_export_output_stream">MediaStore çıxış axını əlçatan deyil</string>
+    <string name="main_export_write_failed">MediaStore-a yazma alınmadı: %1$s</string>
+    <string name="main_export_mkdir_failed">Albom qovluğu yaradıla bilmədi: %1$s</string>
+    <string name="main_export_dir_write_failed">Albom qovluğuna yazma alınmadı: %1$s</string>
+    <string name="main_export_no_source">Mənbə fayl tapılmadı, əvəzetmə ötürüldü</string>
+    <string name="main_export_companion_failed">Yoldaş fayl yazıla bilmədi: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Mənbə fayl qovluğu yazıla bilən deyil; yoldaş fayl yazılmadı</string>
+    <string name="main_export_source_dir_unavailable">Mənbə fayl qovluğu əlçatan deyil: %1$s</string>
+    <string name="main_export_replace_failed">Mənbə fayl əvəz edilə bilmədi: %1$s</string>
+    <string name="main_export_replace_failed_bare">Mənbə fayl əvəz edilə bilmədi</string>
+</resources>

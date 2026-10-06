@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Gàidhlig (gd) — an scrìn Roghainnean.
+  Air eadar-theangachadh o res/values/strings_settings.xml (Sìnis shìmplidh, an locale cùl-taic).
+  Càileachd: B. Glèidhear na gleusan-àite san riochd àireamhaichte (%1$s / %1$d), mar anns a' bhun-tùs.
+-->
+<resources>
+
+    <!-- Coitcheann -->
+    <string name="settings_title">Roghainnean</string>
+    <string name="settings_cd_back">Air ais</string>
+    <string name="settings_btn_apply">Cuir an sàs</string>
+    <string name="settings_btn_cancel">Sguir dheth</string>
+    <string name="settings_btn_close">Dùin</string>
+    <string name="settings_btn_ok">Ceart gu leòr</string>
+    <string name="settings_btn_sponsor">Thoir taic</string>
+
+    <!-- Tiotal nan earrannan -->
+    <string name="settings_section_general">Coitcheann</string>
+    <string name="settings_section_appearance">Coltas</string>
+    <string name="settings_section_language">Cànan</string>
+    <string name="settings_section_defaults">Roghainnean bunaiteach</string>
+    <string name="settings_section_output">Toradh</string>
+    <string name="settings_section_transcode">Tar-chòdadh bhidio</string>
+    <string name="settings_section_about">Mu dheidhinn</string>
+    <string name="settings_section_app">Aplacaid</string>
+    <string name="settings_section_credits">Taing is taic-airgid</string>
+    <string name="settings_section_opensource">Bun-tùs fosgailte is ceadachas</string>
+
+    <!-- Coitcheann -->
+    <string name="settings_startup_check_title">Seall airson ùrachaidhean nuair a thòisicheas e</string>
+    <string name="settings_startup_check_subtitle">Gheibhear dreachan ùra bho GitHub gu fèin-obrachail nuair a thòisicheas an aplacaid, agus thathar gan moladh airson an luchdadh a-nuas nuair a bhios iad rim faighinn</string>
+    <string name="settings_haptics_title">Aiseolas crithidh</string>
+    <string name="settings_haptics_subtitle">Aiseolas fhaireachail nuair a phutas tu putanan agus nuair a thig atharrachadh air an staid</string>
+    <string name="settings_bounce_title">Beothachadh leastair nam putan</string>
+    <string name="settings_bounce_subtitle">Beothachadh sùmaidh is ath-leuma nuair a phutear putanan</string>
+
+    <!-- Coltas -->
+    <string name="settings_theme_system">Lean an siostam</string>
+    <string name="settings_theme_dark">Dorcha</string>
+    <string name="settings_theme_light">Soilleir</string>
+    <string name="settings_dynamic_theme_title">Dathan fiùghantach Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Leanar dath pàipear-balla an t-siostaim (Android 12+); ma chuirear dheth e, cleachdar na dathan ro-shuidhichte gu h-ìosal</string>
+    <string name="settings_preset_colors_title">Dathan ro-shuidhichte</string>
+    <string name="settings_preset_current">An-dràsta: %1$s</string>
+    <string name="settings_preset_disabled_hint">Ri fhaighinn às dèidh «Dathan fiùghantach Material You» a chur dheth</string>
+    <string name="settings_custom">Gnàthaichte</string>
+    <string name="settings_custom_color_title">Dath gnàth-thèama</string>
+    <string name="settings_cd_custom_palette">Pailte gnàthaichte</string>
+    <string name="settings_hue_value">Dath %1$d°</string>
+
+    <!-- Cànan na h-aplacaid -->
+    <string name="settings_language_dialog_title">Tagh cànan na h-aplacaid</string>
+    <string name="settings_language_count">%1$d cànan gu lèir</string>
+
+    <!-- Roghainnean bunaiteach -->
+    <string name="settings_reminder_dialogs_title">Na seall fiosan a-rithist</string>
+    <string name="settings_reminder_dialogs_subtitle">Stiùirich gach fios «na seall a-rithist»</string>
+    <string name="settings_reminder_hint">Ma tha an suids air, tha sin a ciallachadh «na seall a-rithist»; ma chuireas tu dheth e, nochdaidh am fios a-rithist an ath thuras a thachras an suidheachadh.</string>
+
+    <!-- Toradh -->
+    <string name="settings_preserve_folders_title">Toradh a rèir structar nam pasganan tùsail</string>
+    <string name="settings_preserve_folders_subtitle">Tèid na toraidhean a shàbhaladh ann am fo-phasganan air an ainmeachadh às dèidh an albaim thùsail; ma chuirear dheth e, fanaidh a h-uile rud ann an aon phasgan còmhnard</string>
+
+    <!-- Mu dheidhinn -->
+    <string name="settings_about_title">Mu dheidhinn</string>
+    <string name="settings_about_subtitle">Dreach · Sgrùdadh ùrachaidhean · Taing is taic-airgid</string>
+    <string name="settings_check_update_title">Seall airson ùrachaidhean</string>
+    <string name="settings_check_update_subtitle">Faigh an dreach as ùire bho GitHub Releases</string>
+    <string name="settings_checking">Ga sgrùdadh…</string>
+    <string name="settings_update_available">v%1$s ri fhaighinn</string>
+    <string name="settings_up_to_date">Tha an dreach as ùire agad mar-thà</string>
+    <string name="settings_network_error">Mearachd lìonra; feuch a-rithist nas fhaide air adhart</string>
+    <string name="settings_reinstall_title">Ath-stàlaich an dreach seo</string>
+    <string name="settings_reinstall_subtitle">Luchdaich a-nuas an dreach as ùire is stàlaich e thairis air (airson ùrachaidhean a dhearbhadh)</string>
+    <string name="settings_reinstall_newer_hint">Faodaidh tu ùrachadh gu v%1$s; cleachd «Seall airson ùrachaidhean» an-toiseach</string>
+    <string name="settings_version_title">Dreach</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Taic-airgid le Alipay</string>
+    <string name="settings_alipay_subtitle">Thoir taic don leasachadh</string>
+    <string name="settings_coolapk_subtitle">Neach-cleachdaidh Coolapk · Taing airson na taic a thug e</string>
+    <string name="settings_ai_credits_subtitle">Taing dha na h-IDEan AI is dha na modailean AI airson an cuideachaidh sa leasachadh</string>
+    <string name="settings_github_title">Seòladh pròiseict GitHub</string>
+    <string name="settings_license_title">Ceadachas bun-tùs fosgailte</string>
+    <string name="settings_sponsor_dialog_title">Taing airson do thaic</string>
+    <string name="settings_sponsor_dialog_text">Mòran taing dha-rìribh airson a bhith deònach taic a thoirt don aplacaid seo!\n\nMa tha thu fhathast nad oileanach, no gun neo-eisimeileachd airgid, na caith airgead idir:\ncum an rùn seo nad chridhe is lean ort gad chleachdadh — sin an taic as fheàrr a bheir thu dhomh.\n\nMa thogras tu taic-airgid a thoirt, tha gach tabhartas, ge cho beag sa tha e, na thiodhlac, is cuiridh mi e ri cumail suas is leasachadh na h-aplacaid:)</string>
+    <string name="settings_alipay_missing_title">Chan eil Alipay stàlaichte agad fhathast</string>
+    <string name="settings_alipay_missing_text">Cha deach Alipay a lorg, agus mar sin chan urrainnear an taic-airgid a choileanadh an-dràsta.\n\nNa gabh dragh: co-dhiù, mòran taing airson do dheagh rùin!</string>
+
+    <!-- Tar-chòdadh bhidio -->
+    <string name="settings_transcoder_title">Tar-chòdaire a-staigh</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Ath-chòdaich</string>
+    <string name="settings_transcode_mode_remux">Dìreach an soitheach atharrachadh (air a mholadh)</string>
+    <string name="settings_transcode_mode_off">Na cleachd an tar-chòdaire idir</string>
+    <string name="settings_transcode_params_title">Paramadairean tar-chòdaidh</string>
+    <string name="settings_transcode_params_subtitle">Càileachd is teannachadh a chleachdar nuair a nìthear ath-chòdadh</string>
+    <string name="settings_transcode_params_disabled">Cha bhithear ga chleachdadh ach nuair a thaghas tu «Ath-chòdaich» ann am «Modh tar-chòdaidh»</string>
+    <string name="settings_crf_value">Càileachd CRF: %1$d</string>
+    <string name="settings_crf_hint">Mar as lugha an luach, \'s ann as àirde a bhios a\' chàileachd is am meud (ro-shuidhichte 18)</string>
+    <string name="settings_encoder_title">Còdaire</string>
+    <string name="settings_compress_preset_title">Ro-shuidheachadh teannachaidh</string>
+
+</resources>

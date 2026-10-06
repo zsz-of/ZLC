@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Poziom C: překład uosprawiany modelem na ślůnski; możliwe feler, poprawki mile widźane. -->
+<resources>
+    <string name="app_language_follow_system">Jak w systymie</string>
+    <string name="app_language_title">Godka aplikacyje</string>
+</resources>

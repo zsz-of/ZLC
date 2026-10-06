@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Livèło C: tradussion asistìa da modeło in vèneto; segnalassion benvegnùe. -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Estrazion</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Foto dinamica Honor</string>
+    <string name="fmt_meizu">Foto dinamica Meizu</string>
+    <string name="fmt_nubia">Foto dinamica Nubia</string>
+    <string name="fmt_oppo">Foto dinamica OPPO</string>
+    <string name="fmt_vivo">Foto dinamica vivo</string>
+    <string name="fmt_vivo_single">vivo Live Photo in un file solo</string>
+    <string name="fmt_xiaomi">Foto dinamica Xiaomi</string>
+    <string name="fmt_err_apple_mov_missing">No gh\'è el file video .mov co el stesso nome</string>
+    <string name="fmt_err_apple_mov_no_ftyp">El file MOV no ga el box ftyp</string>
+    <string name="fmt_err_extract_read">Estrazion ła xe un formato de uscita, no se pol lexarla come formato de entrada</string>
+    <string name="fmt_err_no_primary_jpeg">No gh\'è l\'imàjine JPEG prinçipale</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Dopo el JPEG no gh\'è un video MP4 valido (manca el box ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">No se ga podesto lesar el flusso video MP4</string>
+    <string name="fmt_err_nubia_too_short">El file xe masa curto, no el someja na foto dinamica Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Manca el magic number nubiaVpfile in fondo</string>
+    <string name="fmt_err_nubia_jpeg_len">La longhessa JPEG scrita in fondo no ła xe valida: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Tra el JPEG e el video no gh\'è i byte de riempimento 0x00</string>
+    <string name="fmt_err_nubia_empty_video">La longhessa del video incorporà xe 0</string>
+    <string name="fmt_err_vivo_no_marker">In fondo al JPG no gh\'è el marker vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Manca el file video compagno: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">No se ga podesto lesar el corpo del JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">El MP4 compagno no el xe valido (manca el box ftyp)</string>
+</resources>

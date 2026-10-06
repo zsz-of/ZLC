@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- सामान्य -->
+    <string name="settings_title">सेटिंग्ज</string>
+    <string name="settings_cd_back">मागे</string>
+    <string name="settings_btn_apply">लागू करा</string>
+    <string name="settings_btn_cancel">रद्द करा</string>
+    <string name="settings_btn_close">बंद करा</string>
+    <string name="settings_btn_ok">ठीक आहे</string>
+    <string name="settings_btn_sponsor">समर्थन करा</string>
+
+    <!-- विभाग -->
+    <string name="settings_section_general">सामान्य</string>
+    <string name="settings_section_appearance">स्वरूप</string>
+    <string name="settings_section_language">भाषा</string>
+    <string name="settings_section_defaults">डीफॉल्ट पर्याय</string>
+    <string name="settings_section_output">आउटपुट</string>
+    <string name="settings_section_transcode">व्हिडिओ ट्रान्सकोडिंग</string>
+    <string name="settings_section_about">अ‍ॅपबद्दल</string>
+    <string name="settings_section_app">अ‍ॅप्लिकेशन</string>
+    <string name="settings_section_credits">आभार आणि समर्थन</string>
+    <string name="settings_section_opensource">मुक्त स्रोत आणि परवाना</string>
+
+    <!-- सामान्य -->
+    <string name="settings_startup_check_title">सुरू होताना अपडेट तपासा</string>
+    <string name="settings_startup_check_subtitle">सुरू होताना GitHub वरून नवीन आवृत्ती शोधून इन्स्टॉलची ऑफर देते</string>
+    <string name="settings_haptics_title">कंपन प्रतिसाद</string>
+    <string name="settings_haptics_subtitle">बटणे दाबल्यावर आणि स्थिती बदलल्यावर होणारा प्रतिसाद</string>
+    <string name="settings_bounce_title">बटणांचे लवचिक अ‍ॅनिमेशन</string>
+    <string name="settings_bounce_subtitle">बटण दाबल्यावर आकुंचन आणि पुन्हा येण्याचे अ‍ॅनिमेशन</string>
+
+    <!-- स्वरूप -->
+    <string name="settings_theme_system">सिस्टमनुसार</string>
+    <string name="settings_theme_dark">गडद</string>
+    <string name="settings_theme_light">फिकट</string>
+    <string name="settings_dynamic_theme_title">डायनॅमिक रंग (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">सिस्टमचे रंग अनुसरते (Android 12+); बंद केल्यास खालील तयार रंग वापरले जातात</string>
+    <string name="settings_preset_colors_title">तयार थीम रंग</string>
+    <string name="settings_preset_current">सध्याचा: %1$s</string>
+    <string name="settings_preset_disabled_hint">“डायनॅमिक रंग (Material You)” बंद केल्यानंतर उपलब्ध</string>
+    <string name="settings_custom">स्वतःचा</string>
+    <string name="settings_custom_color_title">स्वतःचा थीम रंग</string>
+    <string name="settings_cd_custom_palette">स्वतःची पॅलेट</string>
+    <string name="settings_hue_value">रंग टोन %1$d°</string>
+
+    <!-- अ‍ॅप भाषा -->
+    <string name="settings_language_dialog_title">अ‍ॅप भाषा निवडा</string>
+    <string name="settings_language_count">एकूण %1$d भाषा</string>
+
+    <!-- डीफॉल्ट पर्याय -->
+    <string name="settings_reminder_dialogs_title">“पुन्हा दाखवू नका” संवाद</string>
+    <string name="settings_reminder_dialogs_subtitle">सर्व “पुन्हा दाखवू नका” स्विच व्यवस्थापित करा</string>
+    <string name="settings_reminder_hint">चालू स्विचचा अर्थ “पुन्हा दाखवू नका”; बंद केल्यास त्या परिस्थितीत इशारा पुन्हा दाखवला जातो.</string>
+
+    <!-- आउटपुट -->
+    <string name="settings_preserve_folders_title">स्रोत फोल्डरची रचना जपा</string>
+    <string name="settings_preserve_folders_subtitle">निकाल स्रोत अल्बमच्या नावाच्या उपफोल्डरमध्ये ठेवले जातात; बंद केल्यास सर्व एकाच फोल्डरमध्ये जातात</string>
+
+    <!-- अ‍ॅपबद्दल -->
+    <string name="settings_about_title">अ‍ॅपबद्दल</string>
+    <string name="settings_about_subtitle">आवृत्ती · अपडेट · आभार आणि समर्थन</string>
+    <string name="settings_check_update_title">अपडेट तपासा</string>
+    <string name="settings_check_update_subtitle">GitHub Releases वरून नवीनतम आवृत्ती मिळवा</string>
+    <string name="settings_checking">तपासत आहे…</string>
+    <string name="settings_update_available">v%1$s उपलब्ध</string>
+    <string name="settings_up_to_date">आधीच नवीनतम आवृत्ती</string>
+    <string name="settings_network_error">नेटवर्क त्रुटी, नंतर पुन्हा प्रयत्न करा</string>
+    <string name="settings_reinstall_title">ही आवृत्ती पुन्हा इन्स्टॉल करा</string>
+    <string name="settings_reinstall_subtitle">सध्याची नवीनतम आवृत्ती डाउनलोड करून इन्स्टॉल करा (अपडेट चाचणीसाठी)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s वर अपडेट उपलब्ध आहे, आधी “अपडेट तपासा” निवडा</string>
+    <string name="settings_version_title">आवृत्ती</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay द्वारे समर्थन</string>
+    <string name="settings_alipay_subtitle">विकासाला समर्थन द्या</string>
+    <string name="settings_coolapk_subtitle">Coolapk वापरकर्ता · समर्थनाबद्दल आभार</string>
+    <string name="settings_ai_credits_subtitle">विकासात मदत केल्याबद्दल AI वातावरण आणि AI मॉडेल्सचे आभार</string>
+    <string name="settings_github_title">GitHub वर स्रोत कोड</string>
+    <string name="settings_license_title">मुक्त स्रोत परवाना</string>
+    <string name="settings_sponsor_dialog_title">तुमच्या समर्थनाबद्दल आभार</string>
+    <string name="settings_sponsor_dialog_text">हा अ‍ॅप सपोर्ट करण्याची इच्छा दाखवल्याबद्दल खूप आभार!\n\nतुम्ही अजून विद्यार्थी असाल किंवा आर्थिकदृष्ट्या स्वतंत्र नसाल, तर कृपया पैसे देऊ नका —\nती चांगली भावना मनात ठेवा आणि अ‍ॅप वापरत राहा; तेच माझ्यासाठी सर्वोत्तम समर्थन आहे.\n\nपण समर्थन द्यायचे असेल, तर छोटे योगदानही महत्त्वाचे आहे — ते मी चांगल्या स्वरूपासाठी आणि नवीन वैशिष्ट्यांसाठी वापरेन :)</string>
+    <string name="settings_alipay_missing_title">Alipay इन्स्टॉल केलेले नाही</string>
+    <string name="settings_alipay_missing_text">Alipay उघडले नाही, त्यामुळे सध्या समर्थन शक्य नाही.\n\nकाहीच हरकत नाही — तुमच्या चांगल्या भावनेबद्दल खूप आभार, बाकी काही नको!</string>
+
+    <!-- व्हिडिओ ट्रान्सकोडिंग -->
+    <string name="settings_transcoder_title">अंतर्गत ट्रान्सकोडर</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">पुन्हा एन्कोड करा</string>
+    <string name="settings_transcode_mode_remux">फक्त कंटेनर बदला (शिफारस)</string>
+    <string name="settings_transcode_mode_off">ट्रान्सकोडर पूर्णपणे बंद करा</string>
+    <string name="settings_transcode_params_title">ट्रान्सकोडिंग पॅरामीटर्स</string>
+    <string name="settings_transcode_params_subtitle">पुन्हा एन्कोड करतानाचे गुणवत्ता आणि संकुचन पॅरामीटर्स</string>
+    <string name="settings_transcode_params_disabled">“व्हिडिओ ट्रान्सकोडिंग” मध्ये “पुन्हा एन्कोड करा” निवडल्यासच कार्य करते</string>
+    <string name="settings_crf_value">CRF गुणवत्ता: %1$d</string>
+    <string name="settings_crf_hint">लहान मूल्य = जास्त गुणवत्ता आणि मोठा आकार (डीफॉल्ट 18)</string>
+    <string name="settings_encoder_title">एन्कोडर</string>
+    <string name="settings_compress_preset_title">संकुचन प्रोफाइल</string>
+
+</resources>

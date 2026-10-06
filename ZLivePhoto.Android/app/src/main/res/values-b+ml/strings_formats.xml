@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">വേർതിരിക്കുക</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (ഒറ്റ ഫയൽ)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">അതേ പേരിലുള്ള .mov വീഡിയോ ഫയൽ കണ്ടെത്തിയില്ല</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV ഫയലിൽ ftyp box ഇല്ല</string>
+    <string name="fmt_err_extract_read">വേർതിരിക്കൽ ഒരു ഔട്ട്പുട്ട് ഫോർമാറ്റാണ്, ഇൻപുട്ട് ഫോർമാറ്റായി വായിക്കാനാകില്ല</string>
+    <string name="fmt_err_no_primary_jpeg">പ്രധാന JPEG ചിത്രം കണ്ടെത്തിയില്ല</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG-ന് ശേഷം സാധുവായ MP4 വീഡിയോ കണ്ടെത്തിയില്ല (ftyp box ഇല്ല)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 വീഡിയോ സ്ട്രീം വിശകലനം പരാജയപ്പെട്ടു</string>
+    <string name="fmt_err_nubia_too_short">Nubia Live Photo-യ്ക്ക് ഫയൽ വളരെ ചെറുതാണ്</string>
+    <string name="fmt_err_nubia_no_magic">ഫയലിന്റെ അവസാനത്തിൽ nubiaVpfile മാജിക് നമ്പർ ഇല്ല</string>
+    <string name="fmt_err_nubia_jpeg_len">ഫയലിന്റെ അവസാനത്തിൽ അസാധുവായ JPEG നീളം: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG-നും വീഡിയോയ്ക്കും ഇടയിൽ 0x00 പാഡിംഗ് ബൈറ്റുകൾ ഇല്ല</string>
+    <string name="fmt_err_nubia_empty_video">ഉൾപ്പെടുത്തിയ വീഡിയോയുടെ നീളം 0 ആണ്</string>
+    <string name="fmt_err_vivo_no_marker">JPG-യുടെ അവസാനത്തിൽ vivo livephoto അടയാളം കണ്ടെത്തിയില്ല</string>
+    <string name="fmt_err_vivo_companion_missing">അനുബന്ധ വീഡിയോ ഫയൽ ഇല്ല: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG ബോഡി വിശകലനം പരാജയപ്പെട്ടു</string>
+    <string name="fmt_err_vivo_companion_invalid">അനുബന്ധ MP4 അസാധുവാണ് (ftyp box ഇല്ല)</string>
+</resources>

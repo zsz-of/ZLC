@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Gàidhlig (gd) — teacsaichean ìre na h-aplacaid.
+  Air eadar-theangachadh o res/values/strings_app.xml (Sìnis shìmplidh, an locale cùl-taic).
+  Càileachd: B.
+-->
+<resources>
+    <!-- An nì sa roghaiche «Cànan na h-aplacaid» a leanas an siostam -->
+    <string name="app_language_follow_system">Lean an siostam</string>
+    <!-- Tiotal roghaiche a' chànain -->
+    <string name="app_language_title">Cànan na h-aplacaid</string>
+</resources>

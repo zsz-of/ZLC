@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Frysk (fy).
+  ZLC · West Frisian strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Ynstellings</string>
+    <string name="settings_cd_back">Werom</string>
+    <string name="settings_btn_apply">Tapasse</string>
+    <string name="settings_btn_cancel">Annulearje</string>
+    <string name="settings_btn_close">Slute</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Donaasje</string>
+    <string name="settings_section_general">Algemien</string>
+    <string name="settings_section_appearance">Utterlik</string>
+    <string name="settings_section_language">Taal</string>
+    <string name="settings_section_defaults">Standert</string>
+    <string name="settings_section_output">Utfier</string>
+    <string name="settings_section_transcode">Fideo-transkodearjen</string>
+    <string name="settings_section_about">Oer</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Tank &amp; donaasjes</string>
+    <string name="settings_section_opensource">Iepen boarne &amp; lisinsje</string>
+    <string name="settings_startup_check_title">By it starten op updates kontrolearje</string>
+    <string name="settings_startup_check_subtitle">Helje automatysk nije ferzjes fan GitHub by it starten en freegje om te downloaden as der ien is</string>
+    <string name="settings_haptics_title">Haptyske feedback</string>
+    <string name="settings_haptics_subtitle">Haptyske feedback by knopdruk en steatsferoarings</string>
+    <string name="settings_bounce_title">Knopbounce-animaasje</string>
+    <string name="settings_bounce_subtitle">Skaal- en bounce-animaasje as in knop yndrukt wurdt</string>
+    <string name="settings_theme_system">Systeem folgje</string>
+    <string name="settings_theme_dark">Tsjuster</string>
+    <string name="settings_theme_light">Ljocht</string>
+    <string name="settings_dynamic_theme_title">Material You dynamyske kleur</string>
+    <string name="settings_dynamic_theme_subtitle">Folgje de kleur fan de systeemwallpaper (Android 12+); as dit út stiet wurde de foarôf ynstelde temakleuren hjirûnder brûkt</string>
+    <string name="settings_preset_colors_title">Foarôf ynstelde temakleuren</string>
+    <string name="settings_preset_current">Aktueel: %1$s</string>
+    <string name="settings_preset_disabled_hint">Skeakel “Material You dynamyske kleur” út om te kiezen</string>
+    <string name="settings_custom">Oanpast</string>
+    <string name="settings_custom_color_title">Oanpaste temakleur</string>
+    <string name="settings_cd_custom_palette">Oanpast palet</string>
+    <string name="settings_hue_value">Kleurtint %1$d°</string>
+    <string name="settings_language_dialog_title">Kies de taal fan de app</string>
+    <string name="settings_language_count">%1$d talen beskikber</string>
+    <string name="settings_reminder_dialogs_title">“Net wer sjen litte”-dialogen</string>
+    <string name="settings_reminder_dialogs_subtitle">Behear de skeakels foar alle “Net wer sjen litte”-dialogen</string>
+    <string name="settings_reminder_hint">As in skeakel oan stiet wurdt dy prompt net wer toand; as er út stiet komt de prompt wer by de folgjende kear.</string>
+    <string name="settings_preserve_folders_title">Utfier mei de mappestruktuer fan de boarne</string>
+    <string name="settings_preserve_folders_subtitle">Resultaten wurde opslein yn submapen neamd nei de orizjinele albums; as dit út stiet komt alles flak yn ien map</string>
+    <string name="settings_about_title">Oer</string>
+    <string name="settings_about_subtitle">Ferzje · Op updates kontrolearje · Tank &amp; donaasjes</string>
+    <string name="settings_check_update_title">Op updates kontrolearje</string>
+    <string name="settings_check_update_subtitle">Helje de nijste ferzje fan GitHub Releases</string>
+    <string name="settings_checking">Kontrolearret…</string>
+    <string name="settings_update_available">v%1$s beskikber</string>
+    <string name="settings_up_to_date">Do hast de nijste ferzje</string>
+    <string name="settings_network_error">Netwurkflater; besykje it letter wer</string>
+    <string name="settings_reinstall_title">Dizze ferzje opnij ynstallearje</string>
+    <string name="settings_reinstall_subtitle">Download de nijste build en ynstallearje dy oer dizze hinne (om updates te testen)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s is beskikber; brûk “Op updates kontrolearje” om earst te fernijen</string>
+    <string name="settings_version_title">Ferzje</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Donaasje fia Alipay</string>
+    <string name="settings_alipay_subtitle">Stipe de ûntwikkeling</string>
+    <string name="settings_coolapk_subtitle">Coolapk-brûker · tank foar de stipe</string>
+    <string name="settings_ai_credits_subtitle">Tank oan de AI-IDE\'s en AI-modellen dy\'t holpen hawwe by de ûntwikkeling</string>
+    <string name="settings_github_title">GitHub-opslachplak</string>
+    <string name="settings_license_title">Iepenboarne-lisinsje</string>
+    <string name="settings_sponsor_dialog_title">Tank foar dyn stipe</string>
+    <string name="settings_sponsor_dialog_text">Ik wurdearje it echt datst dit app stypje wolst!\n\nAs do noch studint bist, of noch net finansjeel ûnôfhinklik, besteegje dan gjin jild hjir oan — dy freonlikheid yn it hert drage en de app blyfwe brûken is de bêste stipe dy\'t ik freegje kin.\n\nAs do dochs donearje wolst, helpt sels in bytsje, en ik sil it yn better ûnderhâld en funksjes stekke:)</string>
+    <string name="settings_alipay_missing_title">Alipay is net ynstallearre</string>
+    <string name="settings_alipay_missing_text">Alipay waard net fûn, dus de donaasje kin no net foltôge wurde.\n\nDat is hielendal goed — tige tank foar dyn freonlikheid likegoed!</string>
+    <string name="settings_transcoder_title">Ynboude transkodearrer</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Opnij kodearje</string>
+    <string name="settings_transcode_mode_remux">Allinnich remux fan konteiner (oanrekommandearre)</string>
+    <string name="settings_transcode_mode_off">Brûk de transkodearrer nea</string>
+    <string name="settings_transcode_params_title">Transkodearingsparameters</string>
+    <string name="settings_transcode_params_subtitle">Kwaliteits- en kompresjeparameters dy\'t brûkt wurde by it opnij kodearjen</string>
+    <string name="settings_transcode_params_disabled">Wurket allinnich as “Transkodearingsmodus” op “Opnij kodearje” stiet</string>
+    <string name="settings_crf_value">Kwaliteit CRF: %1$d</string>
+    <string name="settings_crf_hint">Legere wearden betsjutte hegere kwaliteit en gruttere bestannen (standert 18)</string>
+    <string name="settings_encoder_title">Kodearrer</string>
+    <string name="settings_compress_preset_title">Kompresjeprofyl</string>
+</resources>

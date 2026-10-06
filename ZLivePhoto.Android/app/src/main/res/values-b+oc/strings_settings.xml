@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Occitan (oc) — l'ecran Paramètres.
+  Traduch de res/values/strings_settings.xml (chinés simplificat, la locale de remplaçament).
+  Qualitat: B. Los marcaires son servats dins lor forma numerotada (%1$s / %1$d), coma dins la font.
+-->
+<resources>
+
+    <!-- General -->
+    <string name="settings_title">Paramètres</string>
+    <string name="settings_cd_back">Retorn</string>
+    <string name="settings_btn_apply">Aplicar</string>
+    <string name="settings_btn_cancel">Anullar</string>
+    <string name="settings_btn_close">Tampar</string>
+    <string name="settings_btn_ok">D\'acòrdi</string>
+    <string name="settings_btn_sponsor">Sostenir</string>
+
+    <!-- Títols de seccions -->
+    <string name="settings_section_general">General</string>
+    <string name="settings_section_appearance">Aparéncia</string>
+    <string name="settings_section_language">Lenga</string>
+    <string name="settings_section_defaults">Opcions per defaut</string>
+    <string name="settings_section_output">Sortida</string>
+    <string name="settings_section_transcode">Transcodatge vidèo</string>
+    <string name="settings_section_about">A prepaus</string>
+    <string name="settings_section_app">Aplicacion</string>
+    <string name="settings_section_credits">Remèrcis e sosten</string>
+    <string name="settings_section_opensource">Open source e licéncia</string>
+
+    <!-- General -->
+    <string name="settings_startup_check_title">Verificar las mesas a jorn al lançament</string>
+    <string name="settings_startup_check_subtitle">L\'aplicacion quèrre automaticament de versions novèlas sus GitHub al lançament, e prepausa de las telecargar quand son disponiblas</string>
+    <string name="settings_haptics_title">Retorn vibratòri</string>
+    <string name="settings_haptics_subtitle">Retorn tactil quand se premejatz de botons e quand l\'estat cambia</string>
+    <string name="settings_bounce_title">Animacion elastica dels botons</string>
+    <string name="settings_bounce_subtitle">Animacion de zoom e rebomb quand se premejatz de botons</string>
+
+    <!-- Aparéncia -->
+    <string name="settings_theme_system">Seguir lo sistèma</string>
+    <string name="settings_theme_dark">Escur</string>
+    <string name="settings_theme_light">Clar</string>
+    <string name="settings_dynamic_theme_title">Colors dinamic Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Seguís la color del fons d\'ecran del sistèma (Android 12+) ; un còp desactivat, s\'utilizan las colors predefinidas çai-jos</string>
+    <string name="settings_preset_colors_title">Colors predefinidas</string>
+    <string name="settings_preset_current">Actuala: %1$s</string>
+    <string name="settings_preset_disabled_hint">Disponible un còp «Colors dinamic Material You» desactivat</string>
+    <string name="settings_custom">Personalizat</string>
+    <string name="settings_custom_color_title">Color de tèma personalizada</string>
+    <string name="settings_cd_custom_palette">Paleta personalizada</string>
+    <string name="settings_hue_value">Tona %1$d°</string>
+
+    <!-- Lenga de l'aplicacion -->
+    <string name="settings_language_dialog_title">Causir la lenga de l\'aplicacion</string>
+    <string name="settings_language_count">%1$d lengas en total</string>
+
+    <!-- Opcions per defaut -->
+    <string name="settings_reminder_dialogs_title">Mostrar pas mai las bóstias de dialòg</string>
+    <string name="settings_reminder_dialogs_subtitle">Gerir totas las bóstias «mostrar pas mai»</string>
+    <string name="settings_reminder_hint">Quand l\'interruptor es activat, significa «mostrar pas mai» ; un còp desactivat, la notificacion tornarà aparéisser la pròxima vegada que lo cas se produirà.</string>
+
+    <!-- Sortida -->
+    <string name="settings_preserve_folders_title">Sortida segon l\'estructura dels dorsièrs d\'origina</string>
+    <string name="settings_preserve_folders_subtitle">Los resultats son gardats dins de sosdorsièrs nomenats segon l\'album d\'origina ; un còp desactivat, tot es amolonat dins un meteis dorsièr</string>
+
+    <!-- A prepaus -->
+    <string name="settings_about_title">A prepaus</string>
+    <string name="settings_about_subtitle">Version · Verificar las mesas a jorn · Remèrcis e sosten</string>
+    <string name="settings_check_update_title">Verificar las mesas a jorn</string>
+    <string name="settings_check_update_subtitle">Obténer la darrièra version dempuèi GitHub Releases</string>
+    <string name="settings_checking">Verificacion…</string>
+    <string name="settings_update_available">v%1$s disponibla</string>
+    <string name="settings_up_to_date">Ja avètz la darrièra version</string>
+    <string name="settings_network_error">Error de ret ; tornatz ensajar mai tard</string>
+    <string name="settings_reinstall_title">Tornar installar aquesta version</string>
+    <string name="settings_reinstall_subtitle">Telecargar la darrièra version e l\'installar dessús (per testar las mesas a jorn)</string>
+    <string name="settings_reinstall_newer_hint">Podètz actualizar a v%1$s ; utilizatz «Verificar las mesas a jorn» primièr</string>
+    <string name="settings_version_title">Version</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Sosten via Alipay</string>
+    <string name="settings_alipay_subtitle">Sostenir lo desvolopament</string>
+    <string name="settings_coolapk_subtitle">Utilizaire de Coolapk · Mercé per son sosten</string>
+    <string name="settings_ai_credits_subtitle">Mercé als IDE e als modèls d\'IA per lor ajuda dins lo desvolopament</string>
+    <string name="settings_github_title">Adreça GitHub del projècte</string>
+    <string name="settings_license_title">Licéncia open source</string>
+    <string name="settings_sponsor_dialog_title">Mercé per vòstre sosten</string>
+    <string name="settings_sponsor_dialog_text">Un grand mercé per voler sosténer aquesta aplicacion !\n\nSe sètz encara estudiant, o sens independéncia financièra, despensatz pas res :\ngardatz aquesta intencion dins vòstre còr e continuatz d\'utilizar l\'aplicacion — es lo melhor sosten que me podètz donar.\n\nSe volètz sostenir, cada ajuda, tan pichona siá, es un present, e la consacrarai a melhorar e a mantenir l\'aplicacion :)</string>
+    <string name="settings_alipay_missing_title">Alipay es pas encara installat</string>
+    <string name="settings_alipay_missing_text">Avèm pas detectat Alipay ; lo sosten pòt pas èsser completat pel moment.\n\nAquò\'s pas res — en tot cas, un grand mercé per vòstra bona intencion !</string>
+
+    <!-- Transcodatge vidèo -->
+    <string name="settings_transcoder_title">Transcodaire integrat</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Reencodar</string>
+    <string name="settings_transcode_mode_remux">Remuxar lo contenedor solament (recomandat)</string>
+    <string name="settings_transcode_mode_off">Utilizar pas lo transcodaire del tot</string>
+    <string name="settings_transcode_params_title">Paramètres de transcodatge</string>
+    <string name="settings_transcode_params_subtitle">Qualitat e compression utilizadas pendent lo reencodatge</string>
+    <string name="settings_transcode_params_disabled">Actiu solament quand «Reencodar» es seleccionat dins «Mòde de transcodatge»</string>
+    <string name="settings_crf_value">Qualitat CRF: %1$d</string>
+    <string name="settings_crf_hint">Mai pichon es lo valor, mai nauta es la qualitat e mai granda la talha (defaut 18)</string>
+    <string name="settings_encoder_title">Encodaire</string>
+    <string name="settings_compress_preset_title">Perfil de compression</string>
+
+</resources>

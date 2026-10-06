@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 分級 C：文言（模型輔助）盡力翻譯，措辭與用例僅供理解，歡迎社群修正。 -->
+<resources>
+    <string name="app_language_follow_system">隨系統</string>
+    <string name="app_language_title">程式語文</string>
+</resources>

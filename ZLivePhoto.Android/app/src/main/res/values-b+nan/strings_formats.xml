@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 分級 C：閩南語（模型輔助）盡力翻譯，用字與用例僅供理解，歡迎社群修正。 -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">拆解</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor 動態相片</string>
+    <string name="fmt_meizu">Meizu 動態相片</string>
+    <string name="fmt_nubia">Nubia 動態相片</string>
+    <string name="fmt_oppo">OPPO 動態相片</string>
+    <string name="fmt_vivo">vivo 動態相片</string>
+    <string name="fmt_vivo_single">vivo 單檔 Live Photo</string>
+    <string name="fmt_xiaomi">Xiaomi 動態相片</string>
+    <string name="fmt_err_apple_mov_missing">揣無同名的 .mov 影片檔</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV 檔無 ftyp box</string>
+    <string name="fmt_err_extract_read">拆解是輸出格式，袂當當做輸入來讀</string>
+    <string name="fmt_err_no_primary_jpeg">揣無主要的 JPEG 影像</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG 後壁揣無有效的 MP4 影片（無 ftyp box）</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 影片串流讀無</string>
+    <string name="fmt_err_nubia_too_short">檔案傷短，無親像 Nubia 動態相片</string>
+    <string name="fmt_err_nubia_no_magic">上尾無 nubiaVpfile 魔術數字</string>
+    <string name="fmt_err_nubia_jpeg_len">上尾寫的 JPEG 長度無效：%1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG 佮影片中間無 0x00 補齊位元組</string>
+    <string name="fmt_err_nubia_empty_video">內嵌影片的長度是 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG 上尾揣無 vivo livephoto 標記</string>
+    <string name="fmt_err_vivo_companion_missing">揣無同伴影片檔：%1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG 檔身讀無</string>
+    <string name="fmt_err_vivo_companion_invalid">同伴 MP4 無效（無 ftyp box）</string>
+</resources>

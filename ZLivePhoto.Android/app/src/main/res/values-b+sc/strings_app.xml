@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Sardu (sc) — testos de livellu de s'aplicatzione.
+  Tradùidu dae res/values/strings_app.xml (tzinesu simplificadu, sa locale de recàmbiu).
+  Calidade: B/C.
+-->
+<resources>
+    <!-- S'elementu de su seletore «Lingua de s'aplicatzione» chi sighit su sistema -->
+    <string name="app_language_follow_system">Sighire su sistema</string>
+    <!-- Tìtulu de su seletore de limba -->
+    <string name="app_language_title">Limba de s\'aplicatzione</string>
+</resources>

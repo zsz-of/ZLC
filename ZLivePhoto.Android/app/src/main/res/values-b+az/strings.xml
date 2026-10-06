@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Azerbaijani (az) strings.
+  Translated from res/values/strings.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

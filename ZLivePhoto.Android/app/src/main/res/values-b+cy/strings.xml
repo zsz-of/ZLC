@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Cymraeg (cy).
+  Cyfieithwyd o res/values/strings_*.xml (Tsieinëeg syml, y locale wrth gefn).
+  Ansawdd: B (Cymraeg safonol; mae angen prawf-ddarllen gan siaradwr brodorol ar y treigladau a'r termau technegol).
+  Cedwir pob allwedd, pob dalfan (%1$s / %1$d) a phob dilyniant dianc yn union fel y maent.
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

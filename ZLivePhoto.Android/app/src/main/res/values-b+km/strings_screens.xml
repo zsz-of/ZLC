@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ខ្មែរ (Khmer) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Khmer has no grammatical plural; only the 'other' quantity is emitted.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">ការបំលែងទម្រង់រូបថតចលនា</string>
+    <plurals name="screen_file_count">
+        <item quantity="other">%1$d ឯកសារ</item>
+    </plurals>
+    <string name="screen_settings">ការកំណត់</string>
+    <string name="screen_select_output_format">ជ្រើសរើសទម្រង់លទ្ធផល</string>
+    <string name="screen_selected">បានជ្រើសរើស</string>
+    <string name="screen_vivo_single_warning">⚠ ឧបករណ៍ចាស់អាចមិនស្គាល់ទម្រង់នេះ</string>
+    <string name="screen_extract_blocked">⚠ ក្នុងជួរមានការងារផ្សំ មិនអាចជ្រើសរើសដកស្រង់បានទេ</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (ឯកសារតែមួយ)</string>
+    <string name="screen_format_vivo">vivo (ឯកសារពីរ)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">ដកស្រង់</string>
+    <string name="screen_toolbox">ប្រអប់ឧបករណ៍</string>
+    <string name="screen_batch_import">នាំចូលជាក្រុម</string>
+    <string name="screen_batch_import_desc">ស្កេនវិចិត្រសាលទាំងមូល និងស្គាល់រូបថតចលនាជាក្រុម</string>
+    <string name="screen_compose">បង្កើតរូបថតចលនា</string>
+    <string name="screen_compose_desc">ជ្រើសរើសរូបថតមួយ និងវីដេអូមួយ ដើម្បីផ្គូផ្គង</string>
+    <string name="screen_replace_mode">របៀបជំនួស</string>
+    <string name="screen_replace_mode_desc">លទ្ធផលសរសេរត្រឡប់ទៅឯកសារដើមផ្ទាល់ មិនបង្កើតឯកសារថ្មី</string>
+    <string name="screen_need_all_files_access_hint">ត្រូវការការអនុញ្ញាតចូលប្រើឯកសារទាំងអស់ ចុចទីនេះដើម្បីអនុញ្ញាត</string>
+    <string name="screen_agree_and_enable">យល់ព្រម និងបើក</string>
+    <string name="screen_empty_no_files">មិនទាន់បានបន្ថែមឯកសារ</string>
+    <string name="screen_view_detail">មើលព័ត៌មានលម្អិត</string>
+    <string name="screen_add_files">បន្ថែមឯកសារ</string>
+    <string name="screen_output_format">ទម្រង់លទ្ធផល៖ %1$s</string>
+    <string name="screen_delete_original">លុបរូបថតដើមបន្ទាប់ពីដំណើរការ</string>
+    <string name="screen_need_all_files_access_view">ត្រូវការការអនុញ្ញាតចូលប្រើឯកសារទាំងអស់ ចុចដើម្បីមើល</string>
+    <string name="screen_clear">សម្អាត</string>
+    <string name="screen_stop">បញ្ឈប់ដំណើរការ</string>
+    <string name="screen_start_convert">ចាប់ផ្តើមបំលែង</string>
+    <string name="screen_status_detail">ព័ត៌មានលម្អិតស្ថានភាព</string>
+    <string name="screen_long_press_copy">ចុចយូរលើអត្ថបទដើម្បីជ្រើសរើស និងចម្លង</string>
+    <string name="screen_copy">ចម្លង</string>
+    <string name="screen_close">បិទ</string>
+    <string name="screen_back">ត្រឡប់</string>
+    <string name="screen_picker_title_select">ជ្រើសរើសរូបថតចលនា</string>
+    <string name="screen_album_count">អាល់ប៊ុម %1$d</string>
+    <string name="screen_album_collapse_cover">បង្រួមគម្របអាល់ប៊ុម</string>
+    <string name="screen_album_expand_cover">ពង្រីកគម្របអាល់ប៊ុម</string>
+    <string name="screen_scanning_progress">កំពុងស្កេន %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">%1$d សន្លឹក</item>
+    </plurals>
+    <string name="screen_select_all">ជ្រើសរើសទាំងអស់</string>
+    <string name="screen_no_albums">គ្មានអាល់ប៊ុមដែលអាចប្រើ</string>
+    <string name="screen_no_media">រកមិនឃើញរូបថតចលនា</string>
+    <string name="screen_no_media_compose">រកមិនឃើញរូបថត ឬវីដេអូ</string>
+    <string name="screen_import">នាំចូល</string>
+    <string name="screen_import_count">នាំចូល %1$d</string>
+    <string name="screen_import_mixed">នាំចូល រូបថត %1$d · វីដេអូ %2$d</string>
+    <string name="screen_search">ស្វែងរក</string>
+    <string name="screen_search_collapse">បង្រួមការស្វែងរក</string>
+    <string name="screen_search_hint">ស្វែងរកតាមឈ្មោះ</string>
+    <string name="screen_search_clear">សម្អាតការស្វែងរក</string>
+    <string name="screen_sort_date">កាលបរិច្ឆេទ</string>
+    <string name="screen_sort_size">ទំហំ</string>
+    <string name="screen_sort_name">ឈ្មោះ</string>
+    <string name="screen_sort_asc">ឡើង</string>
+    <string name="screen_sort_desc">ចុះ</string>
+    <string name="screen_date_today">ថ្ងៃនេះ</string>
+    <string name="screen_date_yesterday">ម្សិលមិញ</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%2$d/%1$d/%3$d</string>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · nynorsk (nn).
+  ZLC · Norwegian Nynorsk strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Pakk ut</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo med éi fil</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">Fann ingen .mov-videofil med same namn</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV-fila manglar ftyp-boksen</string>
+    <string name="fmt_err_extract_read">Utpakking er eit utdataformat og kan ikkje lesast som eit inndataformat</string>
+    <string name="fmt_err_no_primary_jpeg">Fann ikkje noko primært JPEG-bilete</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Fann ingen gyldig MP4-video etter JPEG-biletet (ftyp-boksen manglar)</string>
+    <string name="fmt_err_mp4_parse_failed">Klarte ikkje å tolke MP4-videostraumen</string>
+    <string name="fmt_err_nubia_too_short">Fila er for kort til å vere eit Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Det avsluttande nubiaVpfile-magitalet manglar</string>
+    <string name="fmt_err_nubia_jpeg_len">Ugyldig JPEG-lengd registrert i traileren: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">0x00-utfyllingsbyta mellom JPEG-biletet og videoen manglar</string>
+    <string name="fmt_err_nubia_empty_video">Lengda på den innebygde videoen er 0</string>
+    <string name="fmt_err_vivo_no_marker">Fann ingen vivo livephoto-markør på slutten av JPG-fila</string>
+    <string name="fmt_err_vivo_companion_missing">Tilhøyrande videofil manglar: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Klarte ikkje å tolke JPG-innhaldet</string>
+    <string name="fmt_err_vivo_companion_invalid">Tilhøyrande MP4 er ugyldig (ftyp-boksen manglar)</string>
+</resources>

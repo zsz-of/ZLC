@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Plattdüütsch (nds).
+  ZLC · Low German strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Instellen</string>
+    <string name="settings_cd_back">Torüch</string>
+    <string name="settings_btn_apply">Anwennen</string>
+    <string name="settings_btn_cancel">Afbreken</string>
+    <string name="settings_btn_close">Sluten</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Spennen</string>
+    <string name="settings_section_general">Allgemeen</string>
+    <string name="settings_section_appearance">Utsehn</string>
+    <string name="settings_section_language">Spraak</string>
+    <string name="settings_section_defaults">Standard</string>
+    <string name="settings_section_output">Utgaav</string>
+    <string name="settings_section_transcode">Video-Transkoderen</string>
+    <string name="settings_section_about">Över</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Dank &amp; Spennen</string>
+    <string name="settings_section_opensource">Open Source &amp; Lizenz</string>
+    <string name="settings_startup_check_title">Bi den Start op Updates pröven</string>
+    <string name="settings_startup_check_subtitle">Haalt bi den Start automaatsch nee Versionen vun GitHub un fraagt na en Download, wenn een dor is</string>
+    <string name="settings_haptics_title">Haptisch Feedback</string>
+    <string name="settings_haptics_subtitle">Haptisch Feedback bi Knööp un Tostandswessels</string>
+    <string name="settings_bounce_title">Knööp-Sprunganimatschoon</string>
+    <string name="settings_bounce_subtitle">Skaal- un Sprunganimatschoon, wenn en Knopf drückt warrt</string>
+    <string name="settings_theme_system">System folgen</string>
+    <string name="settings_theme_dark">Düüster</string>
+    <string name="settings_theme_light">Hell</string>
+    <string name="settings_dynamic_theme_title">Material You-dynaamsche Klöör</string>
+    <string name="settings_dynamic_theme_subtitle">Folg de Klöör vun dat System-Wallpaper (Android 12+); wenn ut, warrt de vörinstellten Themenklören hier ünnen bruukt</string>
+    <string name="settings_preset_colors_title">Vörinstellte Themenklören</string>
+    <string name="settings_preset_current">Aktuell: %1$s</string>
+    <string name="settings_preset_disabled_hint">Maak “Material You-dynaamsche Klöör” ut, üm to kiezen</string>
+    <string name="settings_custom">Egen</string>
+    <string name="settings_custom_color_title">Egen Themenklöör</string>
+    <string name="settings_cd_custom_palette">Egen Palett</string>
+    <string name="settings_hue_value">Farvtoon %1$d°</string>
+    <string name="settings_language_dialog_title">Söök de Spraak vun de App ut</string>
+    <string name="settings_language_count">%1$d Spraken verföögbar</string>
+    <string name="settings_reminder_dialogs_title">“Nich wedder wiesen”-Dialogen</string>
+    <string name="settings_reminder_dialogs_subtitle">Verwalt de Schalters för all “Nich wedder wiesen”-Dialogen</string>
+    <string name="settings_reminder_hint">Wenn en Schalter an is, warrt de Henwies nich wedder wiest; wenn he ut is, kummt de Henwies bi de nächste Gelegenheit wedder.</string>
+    <string name="settings_preserve_folders_title">Utgaav mit de Born-Ordnerstruktur</string>
+    <string name="settings_preserve_folders_subtitle">Resultaten warrt in Ünnerordnern na de Original-Alben spiekert; wenn ut, warrt allens flach in een Ordner leggt</string>
+    <string name="settings_about_title">Över</string>
+    <string name="settings_about_subtitle">Version · Op Updates pröven · Dank &amp; Spennen</string>
+    <string name="settings_check_update_title">Op Updates pröven</string>
+    <string name="settings_check_update_subtitle">Haalt de niegste Version vun GitHub Releases</string>
+    <string name="settings_checking">Pröövt…</string>
+    <string name="settings_update_available">v%1$s verföögbar</string>
+    <string name="settings_up_to_date">Du hest de niegste Version</string>
+    <string name="settings_network_error">Netwarkfehler; versöök dat later wedder</string>
+    <string name="settings_reinstall_title">Disse Version nee installeren</string>
+    <string name="settings_reinstall_subtitle">Laadt den niegsten Build daal un installeert em över dissen (üm Updates to testen)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s is verföögbar; bruuk “Op Updates pröven”, üm toeerst to upgraden</string>
+    <string name="settings_version_title">Version</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Spenn över Alipay</string>
+    <string name="settings_alipay_subtitle">Ünnerstütt de Entwicklung</string>
+    <string name="settings_coolapk_subtitle">Coolapk-Bruker · Dank för de Ünnerstützung</string>
+    <string name="settings_ai_credits_subtitle">Dank an de KI-IDEs un KI-Modellen, de bi de Entwicklung hulpen hebbt</string>
+    <string name="settings_github_title">GitHub-Repositorium</string>
+    <string name="settings_license_title">Open-Source-Lizenz</string>
+    <string name="settings_sponsor_dialog_title">Dank för dien Ünnerstützung</string>
+    <string name="settings_sponsor_dialog_text">Ik freu mi wohrhaftig över dien Willen, disse App to ünnerstütten!\n\nWenn du noch Student büst oder noch nich finanziell unafhängig, denn giff keen Geld dor för ut — disse Fründlichkeit in dat Hart to dregen un de App wieder to bruken is de beste Ünnerstützung, de ik kriegen kann.\n\nWenn du doch wat spennen wullt, helpt ok en lüttje Betrag, un ik warr dat in beter Pleeg un Funktionen steken:)</string>
+    <string name="settings_alipay_missing_title">Alipay is nich installeert</string>
+    <string name="settings_alipay_missing_text">Alipay is nich funnen worrn, so kann de Spenn nu nich afsluten warrn.\n\nDat is ganz in Ordnung — veel Dank för dien Fründlichkeit so oder so!</string>
+    <string name="settings_transcoder_title">Inbaute Transkoderer</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Nekoderen</string>
+    <string name="settings_transcode_mode_remux">Bloots Remux vun den Container (anraden)</string>
+    <string name="settings_transcode_mode_off">Bruuk den Transkoderer nienich</string>
+    <string name="settings_transcode_params_title">Transkoderens-Parameters</string>
+    <string name="settings_transcode_params_subtitle">Qualitäts- un Kompräschons-Parameters, de bi dat Nekoderen bruukt warrt</string>
+    <string name="settings_transcode_params_disabled">Warkt bloots, wenn “Transkoderens-Modus” op “Nekoderen” steiht</string>
+    <string name="settings_crf_value">Qualität CRF: %1$d</string>
+    <string name="settings_crf_hint">Lüttere Weerten bedüüdt högere Qualität un gröttere Dateien (Standard 18)</string>
+    <string name="settings_encoder_title">Kodierer</string>
+    <string name="settings_compress_preset_title">Kompräschons-Profil</string>
+</resources>

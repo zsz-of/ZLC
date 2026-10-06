@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · norsk (no).
+  ZLC · Norwegian strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Innstillinger</string>
+    <string name="settings_cd_back">Tilbake</string>
+    <string name="settings_btn_apply">Bruk</string>
+    <string name="settings_btn_cancel">Avbryt</string>
+    <string name="settings_btn_close">Lukk</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Doner</string>
+    <string name="settings_section_general">Generelt</string>
+    <string name="settings_section_appearance">Utseende</string>
+    <string name="settings_section_language">Språk</string>
+    <string name="settings_section_defaults">Standarder</string>
+    <string name="settings_section_output">Utdata</string>
+    <string name="settings_section_transcode">Video-transkoding</string>
+    <string name="settings_section_about">Om</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Takk &amp; donasjoner</string>
+    <string name="settings_section_opensource">Åpen kildekode &amp; lisens</string>
+    <string name="settings_startup_check_title">Se etter oppdateringer ved oppstart</string>
+    <string name="settings_startup_check_subtitle">Hent automatisk nye versjoner fra GitHub ved oppstart, og be om nedlasting når en er tilgjengelig</string>
+    <string name="settings_haptics_title">Haptisk tilbakemelding</string>
+    <string name="settings_haptics_subtitle">Haptisk tilbakemelding ved knappetrykk og tilstandsendringer</string>
+    <string name="settings_bounce_title">Fjæranimasjon på knapper</string>
+    <string name="settings_bounce_subtitle">Skalerings- og fjæranimasjon når en knapp trykkes</string>
+    <string name="settings_theme_system">Følg systemet</string>
+    <string name="settings_theme_dark">Mørk</string>
+    <string name="settings_theme_light">Lys</string>
+    <string name="settings_dynamic_theme_title">Material You-dynamiske farger</string>
+    <string name="settings_dynamic_theme_subtitle">Følg systemets bakgrunnsbilde-farge (Android 12+); når av brukes de forhåndsinnstilte temafargene nedenfor</string>
+    <string name="settings_preset_colors_title">Forhåndsinnstilte temafarger</string>
+    <string name="settings_preset_current">Gjeldende: %1$s</string>
+    <string name="settings_preset_disabled_hint">Slå av “Material You-dynamiske farger” for å velge</string>
+    <string name="settings_custom">Egendefinert</string>
+    <string name="settings_custom_color_title">Egendefinert temafarge</string>
+    <string name="settings_cd_custom_palette">Egendefinert palett</string>
+    <string name="settings_hue_value">Fargetone %1$d°</string>
+    <string name="settings_language_dialog_title">Velg appens språk</string>
+    <string name="settings_language_count">%1$d språk tilgjengelige</string>
+    <string name="settings_reminder_dialogs_title">“Ikke vis igjen”-dialoger</string>
+    <string name="settings_reminder_dialogs_subtitle">Administrer bryterne for alle “Ikke vis igjen”-dialoger</string>
+    <string name="settings_reminder_hint">Når en bryter er på, vises ikke den meldingen igjen; når den er av, vises meldingen igjen neste gang situasjonen oppstår.</string>
+    <string name="settings_preserve_folders_title">Utdata med kildemappestrukturen</string>
+    <string name="settings_preserve_folders_subtitle">Resultater lagres i undermapper oppkalt etter de opprinnelige albumene; når av legges alt flatt i én mappe</string>
+    <string name="settings_about_title">Om</string>
+    <string name="settings_about_subtitle">Versjon · Se etter oppdateringer · Takk &amp; donasjoner</string>
+    <string name="settings_check_update_title">Se etter oppdateringer</string>
+    <string name="settings_check_update_subtitle">Hent den nyeste versjonen fra GitHub Releases</string>
+    <string name="settings_checking">Sjekker…</string>
+    <string name="settings_update_available">v%1$s tilgjengelig</string>
+    <string name="settings_up_to_date">Du har den nyeste versjonen</string>
+    <string name="settings_network_error">Nettverksfeil; prøv igjen senere</string>
+    <string name="settings_reinstall_title">Reinstaller denne versjonen</string>
+    <string name="settings_reinstall_subtitle">Last ned den nyeste byggingen og installer den over denne (for testing av oppdateringer)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s er tilgjengelig; bruk “Se etter oppdateringer” for å oppgradere først</string>
+    <string name="settings_version_title">Versjon</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Doner via Alipay</string>
+    <string name="settings_alipay_subtitle">Støtt utviklingen</string>
+    <string name="settings_coolapk_subtitle">Coolapk-bruker · takk for støtten</string>
+    <string name="settings_ai_credits_subtitle">Takk til AI-IDE-ene og AI-modellene som har hjulpet med utviklingen</string>
+    <string name="settings_github_title">GitHub-repositorium</string>
+    <string name="settings_license_title">Åpen kildekode-lisens</string>
+    <string name="settings_sponsor_dialog_title">Takk for støtten din</string>
+    <string name="settings_sponsor_dialog_text">Jeg setter virkelig pris på at du vil støtte denne appen!\n\nHvis du fortsatt er student, eller ennå ikke er økonomisk uavhengig, vær så snill å ikke bruke penger på dette — å bære den vennligheten i hjertet og fortsette å bruke appen er den beste støtten jeg kan få.\n\nHvis du likevel vil donere, hjelper selv litt, og jeg vil bruke det på bedre vedlikehold og funksjoner:)</string>
+    <string name="settings_alipay_missing_title">Alipay er ikke installert</string>
+    <string name="settings_alipay_missing_text">Alipay ble ikke funnet, så donasjonen kan ikke fullføres akkurat nå.\n\nDet er helt greit — tusen takk for vennligheten uansett!</string>
+    <string name="settings_transcoder_title">Innebygd transkoder</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Omkod</string>
+    <string name="settings_transcode_mode_remux">Kun remux av container (anbefalt)</string>
+    <string name="settings_transcode_mode_off">Bruk aldri transkoderen</string>
+    <string name="settings_transcode_params_title">Transkodingsparametere</string>
+    <string name="settings_transcode_params_subtitle">Kvalitets- og komprimeringsparametere som brukes ved omkoding</string>
+    <string name="settings_transcode_params_disabled">Virker bare når “Transkodingsmodus” er satt til “Omkod”</string>
+    <string name="settings_crf_value">Kvalitet CRF: %1$d</string>
+    <string name="settings_crf_hint">Lavere verdier betyr høyere kvalitet og større filer (standard 18)</string>
+    <string name="settings_encoder_title">Koder</string>
+    <string name="settings_compress_preset_title">Komprimeringsprofil</string>
+</resources>

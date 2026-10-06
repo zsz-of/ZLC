@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Ġenerali -->
+    <string name="settings_title">Impostazzjonijiet</string>
+    <string name="settings_cd_back">Lura</string>
+    <string name="settings_btn_apply">Applika</string>
+    <string name="settings_btn_cancel">Ikkanċella</string>
+    <string name="settings_btn_close">Agħlaq</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Appoġġja</string>
+
+    <!-- Taqsimiet -->
+    <string name="settings_section_general">Ġenerali</string>
+    <string name="settings_section_appearance">Dehra</string>
+    <string name="settings_section_language">Lingwa</string>
+    <string name="settings_section_defaults">Għażliet default</string>
+    <string name="settings_section_output">Output</string>
+    <string name="settings_section_transcode">Transkodifikazzjoni tal-vidjo</string>
+    <string name="settings_section_about">Dwar l-app</string>
+    <string name="settings_section_app">Applikazzjoni</string>
+    <string name="settings_section_credits">Rikonoxximenti u appoġġ</string>
+    <string name="settings_section_opensource">Sors miftuħ u liċenzja</string>
+
+    <!-- Ġenerali -->
+    <string name="settings_startup_check_title">Iċċekkja l-aġġornamenti mal-bidu</string>
+    <string name="settings_startup_check_subtitle">Mal-bidu tfittex verżjoni ġdida fuq GitHub u toffri l-installazzjoni</string>
+    <string name="settings_haptics_title">Reazzjoni bil-vibrazzjoni</string>
+    <string name="settings_haptics_subtitle">Reazzjoni meta tagħfas il-buttuni u meta jinbidel l-istat</string>
+    <string name="settings_bounce_title">Animazzjoni elastika tal-buttuni</string>
+    <string name="settings_bounce_subtitle">L-animazzjoni tat-tnaqqis u r-ritorn meta tagħfas buttuna</string>
+
+    <!-- Dehra -->
+    <string name="settings_theme_system">Skont is-sistema</string>
+    <string name="settings_theme_dark">Skur</string>
+    <string name="settings_theme_light">Ċar</string>
+    <string name="settings_dynamic_theme_title">Kuluri dinamiċi (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">Ssegwi l-kuluri tas-sistema (Android 12+); meta mitfi, jintużaw il-kuluri lesti ta\' hawn taħt</string>
+    <string name="settings_preset_colors_title">Kuluri lesti tat-tema</string>
+    <string name="settings_preset_current">Attwali: %1$s</string>
+    <string name="settings_preset_disabled_hint">Disponibbli wara li titfi “Kuluri dinamiċi (Material You)”</string>
+    <string name="settings_custom">Personalizzat</string>
+    <string name="settings_custom_color_title">Kulur personalizzat tat-tema</string>
+    <string name="settings_cd_custom_palette">Paletta personalizzata</string>
+    <string name="settings_hue_value">Tonalità tal-kulur %1$d°</string>
+
+    <!-- Lingwa tal-app -->
+    <string name="settings_language_dialog_title">Agħżel il-lingwa tal-app</string>
+    <string name="settings_language_count">Total ta\' %1$d lingwi</string>
+
+    <!-- Għażliet default -->
+    <string name="settings_reminder_dialogs_title">Djalogi “Ma turix aktar”</string>
+    <string name="settings_reminder_dialogs_subtitle">Immaniġġja l-interrutturi kollha “Ma turix aktar”</string>
+    <string name="settings_reminder_hint">Interruttur mixgħul ifisser “ma turix aktar”; meta mitfi, it-twissija terġa\' tidher meta sseħħ dik is-sitwazzjoni.</string>
+
+    <!-- Output -->
+    <string name="settings_preserve_folders_title">Żomm l-istruttura tal-folders tas-sors</string>
+    <string name="settings_preserve_folders_subtitle">Ir-riżultati jinħażnu f\'subfolders bl-isem tal-album tas-sors; meta mitfi, kollha jmorru fi folder wieħed</string>
+
+    <!-- Dwar l-app -->
+    <string name="settings_about_title">Dwar l-app</string>
+    <string name="settings_about_subtitle">Verżjoni · Aġġornamenti · Rikonoxximenti u appoġġ</string>
+    <string name="settings_check_update_title">Iċċekkja l-aġġornamenti</string>
+    <string name="settings_check_update_subtitle">Ikseb l-aktar verżjoni ġdida minn GitHub Releases</string>
+    <string name="settings_checking">Qed jiċċekkja…</string>
+    <string name="settings_update_available">v%1$s disponibbli</string>
+    <string name="settings_up_to_date">Diġà l-aktar verżjoni ġdida</string>
+    <string name="settings_network_error">Żball tan-netwerk, erġa\' pprova aktar tard</string>
+    <string name="settings_reinstall_title">Installa mill-ġdid din il-verżjoni</string>
+    <string name="settings_reinstall_subtitle">Niżżel u installa l-aktar verżjoni ġdida attwali (biex tittestja l-aġġornamenti)</string>
+    <string name="settings_reinstall_newer_hint">Hemm aġġornament għal v%1$s, agħżel l-ewwel “Iċċekkja l-aġġornamenti”</string>
+    <string name="settings_version_title">Verżjoni</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Appoġġja permezz ta\' Alipay</string>
+    <string name="settings_alipay_subtitle">Appoġġja l-iżvilupp</string>
+    <string name="settings_coolapk_subtitle">Utent ta\' Coolapk · grazzi għall-appoġġ</string>
+    <string name="settings_ai_credits_subtitle">Grazzi lill-ambjenti tal-AI u lill-mudelli tal-AI għall-għajnuna fl-iżvilupp</string>
+    <string name="settings_github_title">Kodiċi tas-sors fuq GitHub</string>
+    <string name="settings_license_title">Liċenzja tas-sors miftuħ</string>
+    <string name="settings_sponsor_dialog_title">Grazzi għall-appoġġ tiegħek</string>
+    <string name="settings_sponsor_dialog_text">Grazzi ħafna talli trid tappoġġja din l-app!\n\nJekk għadek student jew għadek mhux indipendenti finanzjarjament, jekk jogħġbok tagħtix flus —\nżomm dik il-ħsieb tajjeb f\'qalbek u kompli uża l-app; dik hija l-aqwa appoġġ għalija.\n\nImma jekk trid tappoġġja, anki kontribut żgħir huwa importanti — se nużah biex intejjeb id-dehra u nżid karatteristiċi ġodda :)</string>
+    <string name="settings_alipay_missing_title">Alipay mhux installat</string>
+    <string name="settings_alipay_missing_text">Alipay ma nfetħetx, għalhekk bħalissa l-appoġġ mhux possibbli.\n\nMhuwiex problema — grazzi ħafna għall-ħsieb tajjeb tiegħek, xejn aktar!</string>
+
+    <!-- Transkodifikazzjoni tal-vidjo -->
+    <string name="settings_transcoder_title">Transkodifikatur integrat</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Erġa\' enkodja</string>
+    <string name="settings_transcode_mode_remux">Biddel biss il-kontenitur (rakkomandat)</string>
+    <string name="settings_transcode_mode_off">Itfi t-transkodifikatur kompletament</string>
+    <string name="settings_transcode_params_title">Parametri tat-transkodifikazzjoni</string>
+    <string name="settings_transcode_params_subtitle">Parametri tal-kwalità u tal-kompressjoni meta terġa\' tenkodja</string>
+    <string name="settings_transcode_params_disabled">Jaħdem biss meta “Erġa\' enkodja” jintgħażel f\'“Transkodifikazzjoni tal-vidjo”</string>
+    <string name="settings_crf_value">Kwalità CRF: %1$d</string>
+    <string name="settings_crf_hint">Valur iżgħar ifisser kwalità ogħla u daqs akbar (default 18)</string>
+    <string name="settings_encoder_title">Enkodatur</string>
+    <string name="settings_compress_preset_title">Profil tal-kompressjoni</string>
+
+</resources>

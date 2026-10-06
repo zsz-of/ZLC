@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 分級 C：閩南語（模型輔助）盡力翻譯，用字與用例僅供理解，歡迎社群修正。 -->
+<resources>
+    <string name="main_status_ready">準備好矣</string>
+    <string name="main_status_location_granted">已經允准位置權限；轉換了後 GPS 資料會保留</string>
+    <string name="main_status_location_denied">無允准位置權限：轉換了後相片會無 GPS 位置</string>
+    <string name="main_status_all_files_granted">已經允准所有檔案的權限；轉換會直接寫入相簿資料夾，位置會保留</string>
+    <string name="main_status_all_files_denied">無允准所有檔案的權限：一寡機型轉換了後位置可能會無去</string>
+    <string name="main_status_read_granted">已經允准讀取相片佮影片</string>
+    <string name="main_status_video_missing">有允准矣，但是無影片權限：揣無兩檔動態相片的同伴影片</string>
+    <string name="main_status_permission_denied">無允准權限；閣揤「加檔案」</string>
+    <string name="main_status_folder_not_selected">無揀資料夾</string>
+    <string name="main_status_folder_unavailable">無法度進入揀的資料夾（干焦支持內部儲存的資料夾）</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">已經恢復前一改的作業（%1$d 个檔案）</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">有發現前一改無正常關閉；無完整的清單已經清掉矣</string>
+    <string name="main_status_compose_blocks_extract">隊伍內有合成的工課；袂當切去拆解模式</string>
+    <string name="main_status_replace_off_mutex">取代模式關起來矣（佮「完成後刪除原檔」無合）</string>
+    <string name="main_status_delete_needs_all_files">自動刪除原檔需要所有檔案的權限；先予我權限</string>
+    <string name="main_status_replace_off">取代模式關起來矣；結果會重新寫入相簿資料夾</string>
+    <string name="main_status_replace_needs_all_files">取代模式需要所有檔案的權限；先予我權限</string>
+    <string name="main_status_delete_off_mutex">「完成後刪除原檔」關起來矣（佮取代模式無合）</string>
+    <string name="main_status_loading_albums">咧讀相簿…</string>
+    <string name="main_status_no_albums">揣無相簿</string>
+    <string name="main_status_compose_no_photo">無揀相片；袂當合成</string>
+    <string name="main_status_compose_no_video">無揀影片；袂當合成</string>
+    <string name="main_status_compose_all_added">揀的相片攏已經佇清單內</string>
+    <string name="main_status_compose_paired">%1$d 張相片佮 %2$d 支影片；照較短的一爿，加矣 %3$d 組合成的工課</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">加矣 %1$d 組合成的工課；揤「開始轉換」來合成</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s（輸出格式自動換做 Google）</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">咧匯入 %1$d 張分享的圖…</item>
+    </plurals>
+    <string name="main_status_import_failed">匯入失敗：%1$s</string>
+    <string name="main_status_import_done_partial">匯入完成：%1$d 个成功、%2$d 个失敗</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">匯入完成：匯入 %1$d 个檔案</item>
+    </plurals>
+    <string name="main_status_import_stopped">匯入停止：%1$d 个成功、%2$d 个失敗</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">咧匯入 %1$d 个檔案…</item>
+    </plurals>
+    <string name="main_status_importing_progress">咧匯入 %1$d/%2$d…</string>
+    <string name="main_status_stopping">咧停止…（等這个檔案處理完才會停）</string>
+    <string name="main_status_stopping_import">咧停止匯入…</string>
+    <string name="main_status_removed">提掉 %1$s</string>
+    <string name="main_status_cleared">清掉矣</string>
+    <string name="main_status_nothing_to_convert">無檔案通轉換</string>
+    <string name="main_status_folder_unreadable">揀的資料夾讀無</string>
+    <string name="main_status_scanning_folder">咧掃資料夾…</string>
+    <string name="main_status_no_images">揀的資料夾內揣無圖</string>
+    <string name="main_status_batch_importing">批量匯入 %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">批量匯入停止：匯入 %1$d 張動態相片</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">批量匯入停止：匯入 %1$d 張動態相片，跳過 %2$d 个非動態檔案</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">批量匯入完成：匯入 %1$d 張動態相片</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">批量匯入完成：匯入 %1$d 張動態相片，跳過 %2$d 个非動態檔案</item>
+    </plurals>
+    <string name="main_status_stopped_replace">停止矣：處理 %2$d/%1$d 个檔案，取代 %3$d 个原檔</string>
+    <string name="main_status_stopped_export">停止矣：處理 %2$d/%1$d 个檔案，匯出 %3$d 个到相簿</string>
+    <string name="main_status_done_replace_reason">完成矣：處理 %1$d 个檔案，取代 %2$d 个原檔（原因：%3$s）</string>
+    <string name="main_status_done_export_reason">完成矣：處理 %1$d 个檔案，匯出 %2$d 个到相簿（原因：%3$s）</string>
+    <string name="main_status_done_replace">完成矣：處理 %1$d 个檔案，取代 %2$d 个原檔</string>
+    <string name="main_status_done_export">完成矣：處理 %1$d 个檔案，匯出 %2$d 个到相簿</string>
+    <string name="main_status_keep_originals">%1$s；無完整的儲存權限，原檔已經保留</string>
+    <string name="main_info_detecting">咧判斷…</string>
+    <string name="main_info_unrecognized">認無的動態相片格式</string>
+    <string name="main_info_converting">咧轉換…</string>
+    <string name="main_info_compose_task">合成的工課（揤開始轉換來合成）</string>
+    <string name="main_info_done_replaced">完成矣（取代 %1$d 个原檔）</string>
+    <string name="main_info_done_skipped">完成矣（跳過：名相仝）</string>
+    <string name="main_info_done_exported">完成矣（匯出 %1$d 个）</string>
+    <string name="main_info_failed">失敗：%1$s</string>
+    <string name="main_progress_added">加矣 %1$d/%2$d</string>
+    <string name="main_progress_processed">處理 %1$d/%2$d</string>
+    <string name="main_progress_imported">匯入 %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">需要讀取相片佮影片的權限</string>
+    <string name="main_dialog_permission_message">這个程式需要讀你裝置內的相片佮影片：\n\n• 相片權限：掃裝置的相簿，揣出內底的動態相片\n• 影片權限：揣兩檔動態相片的同伴影片\n• 位置權限：保留相片的 GPS 資料（若無，轉換了後位置會無去）\n\n若是你拒絕，就袂當使用內建的檔案揀選器；後改會當閣揤「加檔案」來予我權限。</string>
+    <string name="main_dialog_settings_title">相片佮影片權限需要手動允准</string>
+    <string name="main_dialog_settings_message">進前你揀「莫閣問」，所以系統無閣顯示權限對話框。\n\n去程式的詳細資料頁 → 權限 → 相片佮影片，手動允准存取，閣轉來程式。\n\n注意：著愛同時允准「相片」佮「影片」兩項權限；若無，兩檔動態相片會揣無同伴影片。</string>
+    <string name="main_dialog_allfiles_title_delete">自動刪除原檔需要「所有檔案存取」</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">這台裝置無支持自動刪除原檔</string>
+    <string name="main_dialog_allfiles_title_replace">取代模式需要「所有檔案存取」</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">這台裝置無支持取代模式</string>
+    <string name="main_dialog_allfiles_title_location">建議允准「所有檔案存取」</string>
+    <string name="main_dialog_allfiles_delete_message">「完成後刪除原檔」會直接對磁碟刪掉原檔（相片佮伊的同伴影片）；這个動作無法度復原，所以先愛允准「所有檔案存取」。\n\n允准了後開關才會拍開；彼時你才通家己開。</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">這馬的系統（Android 10 抑是較舊）無「所有檔案存取」，所以袂當直接對磁碟刪原檔；這台裝置無支持「完成後刪除原檔」。\n\n轉換完成後會當佇系統相簿手動清原檔。</string>
+    <string name="main_dialog_allfiles_replace_message">「取代模式」會直接共轉換的結果寫佇磁碟的原檔頂面（換掉內容）；這个動作無法度復原，所以先愛允准「所有檔案存取」。\n\n允准了後開關才會拍開；彼時你才通家己開。</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">這馬的系統（Android 10 抑是較舊）無「所有檔案存取」，所以袂當直接寫佇磁碟的原檔頂面；這台裝置無支持「取代模式」。\n\n會當繼續照預設轉換；結果會寫入相簿資料夾。</string>
+    <string name="main_dialog_allfiles_location_message">一寡機型（親像 Meizu）透過系統相簿寫入，佇遐共 GPS 位置擦掉，所以轉換了後的相片會無位置。\n\n若是你允准「所有檔案存取」，程式會直接寫入相簿資料夾，保留全部的位置資料。\n\n無允准嘛會當轉換；一寡機型的位置可能會無去。</string>
+    <string name="main_dialog_conflict_title">輸出檔名相衝</string>
+    <string name="main_dialog_conflict_message">輸出資料夾內已經有同名的檔案：\n%1$s\n\n揀欲按怎繼續。</string>
+    <string name="main_label_conflict_always">後面的相衝嘛用這款方式</string>
+    <string name="main_btn_grant">允准</string>
+    <string name="main_btn_deny">拒絕</string>
+    <string name="main_btn_go_settings">去設定頁</string>
+    <string name="main_btn_cancel">取消</string>
+    <string name="main_btn_grant_access">允准存取</string>
+    <string name="main_btn_got_it">知影矣</string>
+    <string name="main_btn_not_now">這馬毋</string>
+    <string name="main_btn_skip">跳過</string>
+    <string name="main_btn_overwrite">覆蓋</string>
+    <string name="main_btn_auto_rename">自動改名</string>
+    <plurals name="main_delete_done">
+        <item quantity="other">刪掉 %1$d 个原檔</item>
+    </plurals>
+    <string name="main_delete_nothing">無原檔通刪</string>
+    <string name="main_delete_partial">刪掉 %1$d 个原檔（%2$d 个刪無去，有保留）</string>
+    <string name="main_delete_failed">原檔刪無去（檔案咧用抑是無寫入權限）；有保留</string>
+    <string name="main_export_missing_output">轉換結果無去抑是空的：%1$s</string>
+    <string name="main_export_missing_output_bare">轉換結果無去抑是空的</string>
+    <string name="main_export_insert_null">MediaStore 插入回傳 null</string>
+    <string name="main_export_output_stream">MediaStore 的輸出串流無通使用</string>
+    <string name="main_export_write_failed">寫入 MediaStore 失敗：%1$s</string>
+    <string name="main_export_mkdir_failed">開相簿資料夾 %1$s 失敗</string>
+    <string name="main_export_dir_write_failed">寫入相簿資料夾失敗：%1$s</string>
+    <string name="main_export_no_source">揣無原檔；跳過取代</string>
+    <string name="main_export_companion_failed">重寫同伴檔案失敗：%1$s</string>
+    <string name="main_export_source_dir_unwritable">原檔資料夾無法度寫入；同伴檔案重寫無去</string>
+    <string name="main_export_source_dir_unavailable">原檔資料夾無通使用：%1$s</string>
+    <string name="main_export_replace_failed">取代原檔失敗：%1$s</string>
+    <string name="main_export_replace_failed_bare">取代原檔失敗</string>
+</resources>

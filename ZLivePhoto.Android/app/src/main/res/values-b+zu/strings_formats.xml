@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Khipha</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (ifayela elilodwa)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Ayitholakalanga ifayela le-.mov elinegama elifanayo</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Ifayela le-MOV alinayo i-ftyp box</string>
+    <string name="fmt_err_extract_read">Ukukhipha kuyifomethi yokukhishwa, akukwazi ukufundwa njengefomethi yokufaka</string>
+    <string name="fmt_err_no_primary_jpeg">Ayitholakalanga isithombe se-JPEG esiyinhloko</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Ayitholakalanga ividiyo ye-MP4 evumelekile ngemva kwe-JPEG (ayikho i-ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Ukuhlaziya umfudlana wevidiyo ye-MP4 kwehlulekile</string>
+    <string name="fmt_err_nubia_too_short">Ifayela lifushane kakhulu kwi-Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Inombolo yomlingo nubiaVpfile ayikho ekugcineni kwefayela</string>
+    <string name="fmt_err_nubia_jpeg_len">Ubude be-JPEG obungavumelekile ekugcineni kwefayela: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Azikho izigaxa zokugcwalisa ezingama-0x00 phakathi kwe-JPEG nevidiyo</string>
+    <string name="fmt_err_nubia_empty_video">Ubude bevidiyo efakiwe bungu-0</string>
+    <string name="fmt_err_vivo_no_marker">Ayitholakalanga uphawu lwe-vivo livephoto ekugcineni kwe-JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Ifayela levidiyo elihambisana nalo alikho: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Ukuhlaziya umzimba we-JPG kwehlulekile</string>
+    <string name="fmt_err_vivo_companion_invalid">I-MP4 ehambisana nayo ayivumelekile (ayikho i-ftyp box)</string>
+</resources>

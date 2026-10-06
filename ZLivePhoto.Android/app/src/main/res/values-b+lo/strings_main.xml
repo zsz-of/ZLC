@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ລາວ (Lao) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Lao has no grammatical plural; only the 'other' quantity is emitted.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">ພ້ອມ</string>
+    <string name="main_status_location_granted">ໄດ້ຮັບອະນຸຍາດຕຳແໜ່ງແລ້ວ; ຫຼັງການແປງ ຂໍ້ມູນ GPS ຈະຖືກຮັກສາໄວ້</string>
+    <string name="main_status_location_denied">ບໍ່ໄດ້ຮັບອະນຸຍາດຕຳແໜ່ງ: ຮູບທີ່ແປງແລ້ວຈະສູນເສຍຕຳແໜ່ງ GPS</string>
+    <string name="main_status_all_files_granted">ໄດ້ຮັບອະນຸຍາດ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ»; ການແປງຈະຂຽນລົງອາລະບ້ຳໂດຍກົງ ແລະ ຮັກສາຕຳແໜ່ງຢ່າງຄົບຖ້ວນ</string>
+    <string name="main_status_all_files_denied">ບໍ່ໄດ້ຮັບອະນຸຍາດ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ»: ບາງເຄື່ອງອາດສູນເສຍຕຳແໜ່ງຫຼັງການແປງ</string>
+    <string name="main_status_read_granted">ໄດ້ຮັບອະນຸຍາດອ່ານຮູບຖ່າຍ ແລະ ວິດີໂອ</string>
+    <string name="main_status_video_missing">ໄດ້ຮັບອະນຸຍາດ ແຕ່ຂາດອະນຸຍາດວິດີໂອ: ບໍ່ສາມາດຊອກວິດີໂອຄູ່ຂອງຮູບຖ່າຍເຄື່ອນໄຫວສອງໄຟລ໌</string>
+    <string name="main_status_permission_denied">ບໍ່ໄດ້ຮັບອະນຸຍາດ, ທ່ານສາມາດກົດ «ເພີ່ມໄຟລ໌» ອີກຄັ້ງ</string>
+    <string name="main_status_folder_not_selected">ຍັງບໍ່ໄດ້ເລືອກໂຟນເດີ</string>
+    <string name="main_status_folder_unavailable">ບໍ່ສາມາດເຂົ້າເຖິງໂຟນເດີທີ່ເລືອກ (ຮອງຮັບສະເພາະບ່ອນເກັບໃນເຄື່ອງ)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">ກູ້ຄືນເຊສຊັນກ່ອນແລ້ວ (%1$d ໄຟລ໌)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">ພົບການອອກຈາກລະບົບຜິດປົກກະຕິຄັ້ງກ່ອນ, ລາຍການທີ່ບໍ່ສຳເລັດຖືກລຶບລ້າງແລ້ວ</string>
+    <string name="main_status_compose_blocks_extract">ມີວຽກປະກອບໃນຄິວ, ບໍ່ສາມາດສະຫຼັບໄປໂໝດດຶງອອກ</string>
+    <string name="main_status_replace_off_mutex">ປິດໂໝດແທນທີ່ແລ້ວ (ຂັດກັບ «ລຶບຮູບຕົ້ນສະບັບຫຼັງປະມວນຜົນ»)</string>
+    <string name="main_status_delete_needs_all_files">ການລຶບຮູບຕົ້ນສະບັບອັດຕະໂນມັດຕ້ອງການ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ», ກະລຸນາອະນຸຍາດກ່ອນ</string>
+    <string name="main_status_replace_off">ປິດໂໝດແທນທີ່ແລ້ວ, ຜົນລັບຈະຖືກຂຽນລົງອາລະບ້ຳອີກຄັ້ງ</string>
+    <string name="main_status_replace_needs_all_files">ໂໝດແທນທີ່ຕ້ອງການ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ», ກະລຸນາອະນຸຍາດກ່ອນ</string>
+    <string name="main_status_delete_off_mutex">ປິດ «ລຶບຮູບຕົ້ນສະບັບຫຼັງປະມວນຜົນ» ແລ້ວ (ຂັດກັບໂໝດແທນທີ່)</string>
+    <string name="main_status_loading_albums">ກຳລັງອ່ານອາລະບ້ຳ…</string>
+    <string name="main_status_no_albums">ບໍ່ພົບອາລະບ້ຳ</string>
+    <string name="main_status_compose_no_photo">ຍັງບໍ່ໄດ້ເລືອກຮູບຖ່າຍ, ບໍ່ສາມາດປະກອບ</string>
+    <string name="main_status_compose_no_video">ຍັງບໍ່ໄດ້ເລືອກວິດີໂອ, ບໍ່ສາມາດປະກອບ</string>
+    <string name="main_status_compose_all_added">ຮູບຖ່າຍທີ່ເລືອກທັງໝົດມີໃນລາຍການແລ້ວ</string>
+    <string name="main_status_compose_paired">ຮູບຖ່າຍ %1$d, ວິດີໂອ %2$d; ເພີ່ມວຽກປະກອບ %3$d ຄູ່ຕາມຈຳນວນທີ່ໜ້ອຍກວ່າ</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">ເພີ່ມວຽກປະກອບ %1$d ແລ້ວ, ກົດ «ເລີ່ມແປງ» ເພື່ອດຳເນີນການ</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (ປ່ຽນຮູບແບບຜົນລັບເປັນ Google ອັດຕະໂນມັດແລ້ວ)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">ກຳລັງນຳເຂົ້າຮູບທີ່ແບ່ງປັນ %1$d…</item>
+    </plurals>
+    <string name="main_status_import_failed">ນຳເຂົ້າລົ້ມເຫຼວ: %1$s</string>
+    <string name="main_status_import_done_partial">ນຳເຂົ້າສຳເລັດ: ສຳເລັດ %1$d, ລົ້ມເຫຼວ %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">ນຳເຂົ້າສຳເລັດ: ທັງໝົດ %1$d ໄຟລ໌</item>
+    </plurals>
+    <string name="main_status_import_stopped">ຢຸດການນຳເຂົ້າແລ້ວ: ສຳເລັດ %1$d, ລົ້ມເຫຼວ %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">ກຳລັງນຳເຂົ້າ %1$d ໄຟລ໌…</item>
+    </plurals>
+    <string name="main_status_importing_progress">ກຳລັງນຳເຂົ້າ %1$d/%2$d…</string>
+    <string name="main_status_stopping">ກຳລັງຢຸດ… (ຈະຢຸດຫຼັງໄຟລ໌ປັດຈຸບັນສຳເລັດ)</string>
+    <string name="main_status_stopping_import">ກຳລັງຢຸດການນຳເຂົ້າ…</string>
+    <string name="main_status_removed">ລຶບ %1$s ອອກແລ້ວ</string>
+    <string name="main_status_cleared">ລຶບລ້າງແລ້ວ</string>
+    <string name="main_status_nothing_to_convert">ບໍ່ມີໄຟລ໌ໃຫ້ແປງ</string>
+    <string name="main_status_folder_unreadable">ບໍ່ສາມາດອ່ານໂຟນເດີທີ່ເລືອກ</string>
+    <string name="main_status_scanning_folder">ກຳລັງສະແກນໂຟນເດີ…</string>
+    <string name="main_status_no_images">ບໍ່ພົບຮູບຖ່າຍໃນໂຟນເດີທີ່ເລືອກ</string>
+    <string name="main_status_batch_importing">ນຳເຂົ້າເປັນຊຸດ %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">ຢຸດການນຳເຂົ້າເປັນຊຸດ: ທັງໝົດ %1$d ຮູບຖ່າຍເຄື່ອນໄຫວ</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">ຢຸດການນຳເຂົ້າເປັນຊຸດ: ທັງໝົດ %1$d ຮູບຖ່າຍເຄື່ອນໄຫວ, ຂ້າມ %2$d ໄຟລ໌ທີ່ບໍ່ເຄື່ອນໄຫວ</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">ນຳເຂົ້າເປັນຊຸດສຳເລັດ: ທັງໝົດ %1$d ຮູບຖ່າຍເຄື່ອນໄຫວ</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">ນຳເຂົ້າເປັນຊຸດສຳເລັດ: ທັງໝົດ %1$d ຮູບຖ່າຍເຄື່ອນໄຫວ, ຂ້າມ %2$d ໄຟລ໌ທີ່ບໍ່ເຄື່ອນໄຫວ</item>
+    </plurals>
+    <string name="main_status_stopped_replace">ຢຸດແລ້ວ: ໃນ %1$d ໄຟລ໌ ປະມວນຜົນ %2$d ແລະ ແທນທີ່ໄຟລ໌ຕົ້ນສະບັບ %3$d</string>
+    <string name="main_status_stopped_export">ຢຸດແລ້ວ: ໃນ %1$d ໄຟລ໌ ປະມວນຜົນ %2$d ແລະ ສົ່ງອອກ %3$d ໄປອາລະບ້ຳ</string>
+    <string name="main_status_done_replace_reason">ສຳເລັດ: ປະມວນຜົນ %1$d ໄຟລ໌, ແທນທີ່ໄຟລ໌ຕົ້ນສະບັບ %2$d (ເຫດຜົນ: %3$s)</string>
+    <string name="main_status_done_export_reason">ສຳເລັດ: ປະມວນຜົນ %1$d ໄຟລ໌, ສົ່ງອອກ %2$d ໄປອາລະບ້ຳ (ເຫດຜົນ: %3$s)</string>
+    <string name="main_status_done_replace">ສຳເລັດ: ປະມວນຜົນ %1$d ໄຟລ໌, ແທນທີ່ໄຟລ໌ຕົ້ນສະບັບ %2$d</string>
+    <string name="main_status_done_export">ສຳເລັດ: ປະມວນຜົນ %1$d ໄຟລ໌, ສົ່ງອອກ %2$d ໄປອາລະບ້ຳ</string>
+    <string name="main_status_keep_originals">%1$s; ບໍ່ໄດ້ຮັບ «ເຂົ້າເຖິງບ່ອນເກັບເຕັມ», ຮູບຕົ້ນສະບັບຖືກເກັບໄວ້</string>
+    <string name="main_info_detecting">ກຳລັງກວດຫາ…</string>
+    <string name="main_info_unrecognized">ຮູບແບບຮູບຖ່າຍເຄື່ອນໄຫວທີ່ບໍ່ຮູ້ຈັກ</string>
+    <string name="main_info_converting">ກຳລັງແປງ…</string>
+    <string name="main_info_compose_task">ວຽກປະກອບ (ກົດ «ເລີ່ມແປງ» ເພື່ອດຳເນີນການ)</string>
+    <string name="main_info_done_replaced">ສຳເລັດ (ແທນທີ່ໄຟລ໌ຕົ້ນສະບັບ %1$d)</string>
+    <string name="main_info_done_skipped">ສຳເລັດ (ຂ້າມ: ຊື່ຊ້ຳກັນ)</string>
+    <string name="main_info_done_exported">ສຳເລັດ (ສົ່ງອອກ %1$d)</string>
+    <string name="main_info_failed">ລົ້ມເຫຼວ: %1$s</string>
+    <string name="main_progress_added">ເພີ່ມແລ້ວ %1$d/%2$d</string>
+    <string name="main_progress_processed">ປະມວນຜົນແລ້ວ %1$d/%2$d</string>
+    <string name="main_progress_imported">ນຳເຂົ້າແລ້ວ %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">ຕ້ອງການອະນຸຍາດອ່ານຮູບຖ່າຍ ແລະ ວິດີໂອ</string>
+    <string name="main_dialog_permission_message">ໂປຣແກຣມນີ້ຕ້ອງການອ່ານຮູບຖ່າຍ ແລະ ວິດີໂອໃນອຸປະກອນຂອງທ່ານ:
+
+• ອະນຸຍາດຮູບຖ່າຍ: ສະແກນອາລະບ້ຳ ແລະ ກວດຫາຮູບຖ່າຍເຄື່ອນໄຫວ
+• ອະນຸຍາດວິດີໂອ: ຊອກວິດີໂອຄູ່ຂອງຮູບຖ່າຍເຄື່ອນໄຫວສອງໄຟລ໌
+• ອະນຸຍາດຕຳແໜ່ງ: ຮັກສາຂໍ້ມູນຕຳແໜ່ງ GPS ໃນຮູບຖ່າຍ (ຖ້າຂາດ ຈະສູນເສຍຕຳແໜ່ງຫຼັງການແປງ)
+
+ຖ້າປະຕິເສດ ຈະໃຊ້ຕົວເລືອກທີ່ມີໃນເຄື່ອງບໍ່ໄດ້; ຕໍ່ມາທ່ານສາມາດກົດ «ເພີ່ມໄຟລ໌» ອີກຄັ້ງເພື່ອອະນຸຍາດ.</string>
+    <string name="main_dialog_settings_title">ຕ້ອງອະນຸຍາດຮູບຖ່າຍ ແລະ ວິດີໂອດ້ວຍຕົນເອງ</string>
+    <string name="main_dialog_settings_message">ທ່ານເຄີຍເລືອກ «ບໍ່ຖາມອີກ» ກ່ອນໜ້ານີ້, ດັ່ງນັ້ນລະບົບຈະບໍ່ສະແດງກ່ອງອະນຸຍາດ.
+
+ກະລຸນາໄປທີ່ລາຍລະອຽດແອັບ → ການອະນຸຍາດ → ຮູບຖ່າຍ ແລະ ວິດີໂອ, ໃຫ້ສິດດ້ວຍຕົນເອງ ແລ້ວກັບມາແອັບນີ້.
+
+ໝາຍເຫດ: ຕ້ອງໃຫ້ອະນຸຍາດ «ຮູບຖ່າຍ» ແລະ «ວິດີໂອ» ພ້ອມກັນ, ຖ້າບໍ່ດັ່ງນັ້ນຈະຊອກວິດີໂອຄູ່ຂອງຮູບຖ່າຍເຄື່ອນໄຫວສອງໄຟລ໌ບໍ່ໄດ້.</string>
+    <string name="main_dialog_allfiles_title_delete">ການລຶບຮູບຕົ້ນສະບັບອັດຕະໂນມັດຕ້ອງການ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">ເຄື່ອງນີ້ບໍ່ຮອງຮັບການລຶບຮູບຕົ້ນສະບັບອັດຕະໂນມັດ</string>
+    <string name="main_dialog_allfiles_title_replace">ໂໝດແທນທີ່ຕ້ອງການ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">ເຄື່ອງນີ້ບໍ່ຮອງຮັບໂໝດແທນທີ່</string>
+    <string name="main_dialog_allfiles_title_location">ແນະນຳໃຫ້ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ»</string>
+    <string name="main_dialog_allfiles_delete_message">«ລຶບຮູບຕົ້ນສະບັບຫຼັງປະມວນຜົນ» ຈະລຶບໄຟລ໌ຕົ້ນສະບັບໃນດິສໂດຍກົງ (ຮູບຖ່າຍ ແລະ ວິດີໂອຄູ່); ການກະທຳນີ້ຍ້ອນກັບບໍ່ໄດ້, ດັ່ງນັ້ນຕ້ອງໃຫ້ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ» ກ່ອນ.
+
+ຫຼັງອະນຸຍາດ ສະວິດຈຶ່ງຈະໃຊ້ໄດ້, ແລ້ວທ່ານສາມາດເປີດເອງ.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">ລະບົບປັດຈຸບັນ (Android 10 ລົງມາ) ບໍ່ມີ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ», ບໍ່ສາມາດລຶບໄຟລ໌ຕົ້ນສະບັບໃນດິສໂດຍກົງ, ດັ່ງນັ້ນເຄື່ອງນີ້ບໍ່ຮອງຮັບ «ລຶບຮູບຕົ້ນສະບັບຫຼັງປະມວນຜົນ».
+
+ທ່ານສາມາດລຶບຮູບຕົ້ນສະບັບດ້ວຍຕົນເອງຜ່ານອາລະບ້ຳລະບົບຫຼັງການແປງ.</string>
+    <string name="main_dialog_allfiles_replace_message">«ໂໝດແທນທີ່» ຈະຂຽນຜົນການແປງລົງໄຟລ໌ຕົ້ນສະບັບໃນດິສໂດຍກົງ (ແທນເນື້ອໃນເດີມ); ການກະທຳນີ້ຍ້ອນກັບບໍ່ໄດ້, ດັ່ງນັ້ນຕ້ອງໃຫ້ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ» ກ່ອນ.
+
+ຫຼັງອະນຸຍາດ ສະວິດຈຶ່ງຈະໃຊ້ໄດ້, ແລ້ວທ່ານສາມາດເປີດເອງ.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">ລະບົບປັດຈຸບັນ (Android 10 ລົງມາ) ບໍ່ມີ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ», ບໍ່ສາມາດແກ້ໄຟລ໌ຕົ້ນສະບັບໃນດິສໂດຍກົງ, ດັ່ງນັ້ນເຄື່ອງນີ້ບໍ່ຮອງຮັບ «ໂໝດແທນທີ່».
+
+ທ່ານສາມາດແປງຕໍ່ດ້ວຍວິທີເລີ່ມຕົ້ນ; ຜົນຈະອອກໄປອາລະບ້ຳ.</string>
+    <string name="main_dialog_allfiles_location_message">ບາງເຄື່ອງ (ເຊັ່ນ Meizu) ຈະລຶບຂໍ້ມູນຕຳແໜ່ງ GPS ເມື່ອຂຽນຜ່ານ API ອາລະບ້ຳລະບົບ, ເຮັດໃຫ້ຮູບສູນເສຍຕຳແໜ່ງຫຼັງການແປງ.
+
+ຫຼັງໃຫ້ «ເຂົ້າເຖິງໄຟລ໌ທັງໝົດ» ໂປຣແກຣມນີ້ຈະຂຽນລົງອາລະບ້ຳໂດຍກົງ ແລະ ຮັກສາຂໍ້ມູນຕຳແໜ່ງຢ່າງຄົບຖ້ວນ.
+
+ຖ້າບໍ່ໃຫ້ ກໍ່ຍັງແປງໄດ້ຕາມປົກກະຕິ; ບາງເຄື່ອງອາດສູນເສຍຕຳແໜ່ງ.</string>
+    <string name="main_dialog_conflict_title">ຊື່ໄຟລ໌ຜົນລັບຊ້ຳກັນ</string>
+    <string name="main_dialog_conflict_message">ມີໄຟລ໌ຊື່ດຽວກັນໃນໂຟນເດີຜົນລັບແລ້ວ:
+%1$s
+
+ກະລຸນາເລືອກວິທີຈັດການ.</string>
+    <string name="main_label_conflict_always">ໃຊ້ວິທີນີ້ສຳລັບການຊ້ຳກັນຕໍ່ໄປ</string>
+    <string name="main_btn_grant">ອະນຸຍາດ</string>
+    <string name="main_btn_deny">ປະຕິເສດ</string>
+    <string name="main_btn_go_settings">ໄປການຕັ້ງຄ່າ</string>
+    <string name="main_btn_cancel">ຍົກເລີກ</string>
+    <string name="main_btn_grant_access">ໃຫ້ສິດເຂົ້າເຖິງ</string>
+    <string name="main_btn_got_it">ເຂົ້າໃຈແລ້ວ</string>
+    <string name="main_btn_not_now">ບໍ່ດຽວນີ້</string>
+    <string name="main_btn_skip">ຂ້າມ</string>
+    <string name="main_btn_overwrite">ຂຽນທັບ</string>
+    <string name="main_btn_auto_rename">ປ່ຽນຊື່ອັດຕະໂນມັດ</string>
+    <plurals name="main_delete_done">
+        <item quantity="other">ລຶບໄຟລ໌ຕົ້ນສະບັບ %1$d ແລ້ວ</item>
+    </plurals>
+    <string name="main_delete_nothing">ບໍ່ມີຮູບຕົ້ນສະບັບທີ່ຕ້ອງລຶບ</string>
+    <string name="main_delete_partial">ລຶບໄຟລ໌ຕົ້ນສະບັບ %1$d ແລ້ວ (%2$d ລຶບບໍ່ໄດ້, ເກັບໄວ້)</string>
+    <string name="main_delete_failed">ລຶບຮູບຕົ້ນສະບັບລົ້ມເຫຼວ (ໄຟລ໌ຖືກໃຊ້ຢູ່ ຫຼື ບໍ່ມີສິດຂຽນ), ເກັບໄວ້</string>
+    <string name="main_export_missing_output">ຜົນລັບການແປງສູນຫາຍ ຫຼື ຫວ່າງເປົ່າ: %1$s</string>
+    <string name="main_export_missing_output_bare">ຜົນລັບການແປງສູນຫາຍ ຫຼື ຫວ່າງເປົ່າ</string>
+    <string name="main_export_insert_null">MediaStore insert ຄືນ null</string>
+    <string name="main_export_output_stream">ສະຕຣີມຜົນລັບ MediaStore ບໍ່ພ້ອມໃຊ້</string>
+    <string name="main_export_write_failed">ຂຽນລົງ MediaStore ລົ້ມເຫຼວ: %1$s</string>
+    <string name="main_export_mkdir_failed">ບໍ່ສາມາດສ້າງໂຟນເດີອາລະບ້ຳ %1$s</string>
+    <string name="main_export_dir_write_failed">ຂຽນລົງໂຟນເດີອາລະບ້ຳລົ້ມເຫຼວ: %1$s</string>
+    <string name="main_export_no_source">ບໍ່ພົບໄຟລ໌ຕົ້ນສະບັບ, ຂ້າມການແທນທີ່</string>
+    <string name="main_export_companion_failed">ຂຽນກັບຄືນໄຟລ໌ຄູ່ລົ້ມເຫຼວ: %1$s</string>
+    <string name="main_export_source_dir_unwritable">ໂຟນເດີໄຟລ໌ຕົ້ນສະບັບຂຽນບໍ່ໄດ້, ໄຟລ໌ຄູ່ຂຽນກັບບໍ່ໄດ້</string>
+    <string name="main_export_source_dir_unavailable">ໂຟນເດີໄຟລ໌ຕົ້ນສະບັບບໍ່ພ້ອມໃຊ້: %1$s</string>
+    <string name="main_export_replace_failed">ແທນທີ່ໄຟລ໌ຕົ້ນສະບັບລົ້ມເຫຼວ: %1$s</string>
+    <string name="main_export_replace_failed_bare">ແທນທີ່ໄຟລ໌ຕົ້ນສະບັບລົ້ມເຫຼວ</string>
+</resources>

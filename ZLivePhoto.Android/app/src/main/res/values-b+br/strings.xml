@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Brezhoneg (br).
+  Troet diwar res/values/strings_*.xml (sinaeg simplaet, al locale dre ziouer).
+  Perzhded: B (brezhoneg reizh; ezhomm zo ur prantad adlenn gant ur brezhoneger a-vihanik).
+  Miret e vez an holl alc'hwezioù, an holl verkoù (%1$s / %1$d) hag an holl heuliadoù tec'hout.
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Cymraeg (cy) — y sgrin Gosodiadau.
+  Cyfieithwyd o res/values/strings_settings.xml (Tsieinëeg syml, y locale wrth gefn).
+  Ansawdd: B. Cedwir y dalfannau yn y ffurf rifedig (%1$s / %1$d), fel yn y gwreiddiol.
+-->
+<resources>
+
+    <!-- Cyffredinol -->
+    <string name="settings_title">Gosodiadau</string>
+    <string name="settings_cd_back">Yn ôl</string>
+    <string name="settings_btn_apply">Cymhwyso</string>
+    <string name="settings_btn_cancel">Canslo</string>
+    <string name="settings_btn_close">Cau</string>
+    <string name="settings_btn_ok">Iawn</string>
+    <string name="settings_btn_sponsor">Noddwch</string>
+
+    <!-- Teitlau adrannau -->
+    <string name="settings_section_general">Cyffredinol</string>
+    <string name="settings_section_appearance">Ymddangosiad</string>
+    <string name="settings_section_language">Iaith</string>
+    <string name="settings_section_defaults">Diofynion</string>
+    <string name="settings_section_output">Allbwn</string>
+    <string name="settings_section_transcode">Trawsgodio fideo</string>
+    <string name="settings_section_about">Ynglŷn â</string>
+    <string name="settings_section_app">Ap</string>
+    <string name="settings_section_credits">Cydnabyddiaeth a nawdd</string>
+    <string name="settings_section_opensource">Ffynhonnell agored a thrwydded</string>
+
+    <!-- Cyffredinol -->
+    <string name="settings_startup_check_title">Gwirio am ddiweddariadau wrth lansio</string>
+    <string name="settings_startup_check_subtitle">Estynnir fersiynau newydd o GitHub yn awtomatig wrth lansio, ac anogir eu lawrlwytho pan fo rhai ar gael</string>
+    <string name="settings_haptics_title">Adborth dirgrynol</string>
+    <string name="settings_haptics_subtitle">Adborth cyffyrddol wrth dapio botymau a phan fo\'r cyflwr yn newid</string>
+    <string name="settings_bounce_title">Animeiddiad gwrthneidiol y botymau</string>
+    <string name="settings_bounce_subtitle">Animeiddiad chwyddo a gwrthneidio wrth wasgu botymau</string>
+
+    <!-- Ymddangosiad -->
+    <string name="settings_theme_system">Dilyn y system</string>
+    <string name="settings_theme_dark">Tywyll</string>
+    <string name="settings_theme_light">Golau</string>
+    <string name="settings_dynamic_theme_title">Lliwiau deinamig Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Dilyn lliw papur wal y system (Android 12+); ar ôl ei ddiffodd, defnyddir y lliwiau rhagosodedig isod</string>
+    <string name="settings_preset_colors_title">Lliwiau rhagosodedig</string>
+    <string name="settings_preset_current">Ar hyn o bryd: %1$s</string>
+    <string name="settings_preset_disabled_hint">Ar gael ar ôl diffodd «Lliwiau deinamig Material You»</string>
+    <string name="settings_custom">Wedi\'i addasu</string>
+    <string name="settings_custom_color_title">Lliw thema wedi\'i addasu</string>
+    <string name="settings_cd_custom_palette">Palet wedi\'i addasu</string>
+    <string name="settings_hue_value">Arlliw %1$d°</string>
+
+    <!-- Iaith yr ap -->
+    <string name="settings_language_dialog_title">Dewiswch iaith yr ap</string>
+    <string name="settings_language_count">%1$d iaith i gyd</string>
+
+    <!-- Diofynion -->
+    <string name="settings_reminder_dialogs_title">Peidio â dangos hysbysiadau eto</string>
+    <string name="settings_reminder_dialogs_subtitle">Rheoli pob hysbysiad «peidio â dangos eto»</string>
+    <string name="settings_reminder_hint">Mae\'r switsh ymlaen yn golygu «peidio â dangos eto»; ar ôl ei ddiffodd, bydd yr hysbysiad yn ymddangos eto y tro nesaf y digwydd y sefyllfa.</string>
+
+    <!-- Allbwn -->
+    <string name="settings_preserve_folders_title">Allbwn yn ôl strwythur ffolderi\'r ffynhonnell</string>
+    <string name="settings_preserve_folders_subtitle">Caiff canlyniadau eu storio mewn is-ffolderi a enwir ar ôl yr albwm gwreiddiol; ar ôl ei ddiffodd, bydd popeth yn un ffolder gwastad</string>
+
+    <!-- Ynglŷn â -->
+    <string name="settings_about_title">Ynglŷn â</string>
+    <string name="settings_about_subtitle">Fersiwn · Gwirio diweddariadau · Cydnabyddiaeth a nawdd</string>
+    <string name="settings_check_update_title">Gwirio am ddiweddariadau</string>
+    <string name="settings_check_update_subtitle">Estyn y fersiwn diweddaraf o GitHub Releases</string>
+    <string name="settings_checking">Yn gwirio…</string>
+    <string name="settings_update_available">v%1$s ar gael</string>
+    <string name="settings_up_to_date">Rydych ar y fersiwn diweddaraf</string>
+    <string name="settings_network_error">Gwall rhwydwaith; rhowch gynnig arall arni\'n nes ymlaen</string>
+    <string name="settings_reinstall_title">Ailosod y fersiwn hon</string>
+    <string name="settings_reinstall_subtitle">Lawrlwytho\'r fersiwn diweddaraf a\'i gosod drosti (ar gyfer profi diweddariadau)</string>
+    <string name="settings_reinstall_newer_hint">Gallwch uwchraddio i v%1$s; defnyddiwch «Gwirio am ddiweddariadau» yn gyntaf</string>
+    <string name="settings_version_title">Fersiwn</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Nawdd drwy Alipay</string>
+    <string name="settings_alipay_subtitle">Cefnogi\'r datblygiad</string>
+    <string name="settings_coolapk_subtitle">Defnyddiwr Coolapk · Diolch am ei gefnogaeth</string>
+    <string name="settings_ai_credits_subtitle">Diolch i\'r IDEau AI a\'r modelau AI am eu cymorth yn ystod y datblygiad</string>
+    <string name="settings_github_title">Cyfeiriad GitHub y prosiect</string>
+    <string name="settings_license_title">Trwydded ffynhonnell agored</string>
+    <string name="settings_sponsor_dialog_title">Diolch am eich cefnogaeth</string>
+    <string name="settings_sponsor_dialog_text">Diolch o galon am fod yn fodlon cefnogi\'r ap hwn!\n\nOs ydych yn dal yn fyfyriwr, neu heb annibyniaeth ariannol, peidiwch â gwario dim o gwbl:\ncadwch y bwriad yn eich calon a pharhewch i ddefnyddio\'r ap — dyna\'r gefnogaeth orau y gallwch ei rhoi i mi.\n\nOs hoffech noddi, mae pob cyfraniad, pa mor fach bynnag, yn anrheg, a byddaf yn ei roi tuag at ei gynnal a\'i wella ymhellach:)</string>
+    <string name="settings_alipay_missing_title">Nid yw Alipay wedi\'i osod gennych eto</string>
+    <string name="settings_alipay_missing_text">Ni chanfuwyd Alipay, felly ni ellir cwblhau\'r nawdd ar hyn o bryd.\n\nDim ots: beth bynnag, diolch yn fawr am eich ewyllys da!</string>
+
+    <!-- Trawsgodio fideo -->
+    <string name="settings_transcoder_title">Trawsgodwr adeiledig</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Ail-godio</string>
+    <string name="settings_transcode_mode_remux">Newid y cynhwysydd yn unig (argymhellir)</string>
+    <string name="settings_transcode_mode_off">Peidio â defnyddio\'r trawsgodwr o gwbl</string>
+    <string name="settings_transcode_params_title">Paramedrau trawsgodio</string>
+    <string name="settings_transcode_params_subtitle">Ansawdd a chywasgiad a ddefnyddir wrth ail-godio</string>
+    <string name="settings_transcode_params_disabled">Dim ond pan fo «Modd trawsgodio» yn «Ail-godio» y mae\'n berthnasol</string>
+    <string name="settings_crf_value">Ansawdd CRF: %1$d</string>
+    <string name="settings_crf_hint">Po isaf y gwerth, po uchaf yr ansawdd a\'r maint (diofyn 18)</string>
+    <string name="settings_encoder_title">Codwr</string>
+    <string name="settings_compress_preset_title">Rhagosodiad cywasgu</string>
+
+</resources>

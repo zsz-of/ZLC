@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">वेगळे करा</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (एकच फाइल)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">त्याच नावाची .mov व्हिडिओ फाइल सापडली नाही</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV फाइलमध्ये ftyp box नाही</string>
+    <string name="fmt_err_extract_read">वेगळे करणे हे आउटपुट स्वरूप आहे, इनपुट स्वरूप म्हणून वाचता येत नाही</string>
+    <string name="fmt_err_no_primary_jpeg">मुख्य JPEG प्रतिमा सापडली नाही</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG नंतर वैध MP4 व्हिडिओ सापडला नाही (ftyp box नाही)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 व्हिडिओ स्ट्रीमचे विश्लेषण अयशस्वी</string>
+    <string name="fmt_err_nubia_too_short">Nubia Live Photo साठी फाइल खूप लहान आहे</string>
+    <string name="fmt_err_nubia_no_magic">फाइलच्या शेवटी nubiaVpfile मॅजिक क्रमांक नाही</string>
+    <string name="fmt_err_nubia_jpeg_len">फाइलच्या शेवटी अवैध JPEG लांबी: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG आणि व्हिडिओ दरम्यान 0x00 पॅडिंग बाइट नाहीत</string>
+    <string name="fmt_err_nubia_empty_video">समाविष्ट व्हिडिओची लांबी 0 आहे</string>
+    <string name="fmt_err_vivo_no_marker">JPG च्या शेवटी vivo livephoto खूण सापडली नाही</string>
+    <string name="fmt_err_vivo_companion_missing">सोबतची व्हिडिओ फाइल नाही: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG बॉडीचे विश्लेषण अयशस्वी</string>
+    <string name="fmt_err_vivo_companion_invalid">सोबतची MP4 वैध नाही (ftyp box नाही)</string>
+</resources>

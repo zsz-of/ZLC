@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · føroyskt (fo).
+  ZLC · Faroese strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Stillingar</string>
+    <string name="settings_cd_back">Aftur</string>
+    <string name="settings_btn_apply">Nýta</string>
+    <string name="settings_btn_cancel">Avlýs</string>
+    <string name="settings_btn_close">Stong</string>
+    <string name="settings_btn_ok">Í lagi</string>
+    <string name="settings_btn_sponsor">Stuðningur</string>
+    <string name="settings_section_general">Alment</string>
+    <string name="settings_section_appearance">Útsjónd</string>
+    <string name="settings_section_language">Mál</string>
+    <string name="settings_section_defaults">Standard</string>
+    <string name="settings_section_output">Úttak</string>
+    <string name="settings_section_transcode">Videotranskoding</string>
+    <string name="settings_section_about">Um</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Tøkk &amp; gávur</string>
+    <string name="settings_section_opensource">Opinn kóði &amp; loyvi</string>
+    <string name="settings_startup_check_title">Kanna uppdateringar í byrjan</string>
+    <string name="settings_startup_check_subtitle">Søk nýggjar útgávur sjálvvirkandi frá GitHub í byrjan og bið um niðurhal tá tær eru tøkar</string>
+    <string name="settings_haptics_title">Haptisk endurgjald</string>
+    <string name="settings_haptics_subtitle">Haptisk endurgjald tá ið knappar verða trýstir og støður broytast</string>
+    <string name="settings_bounce_title">Støkkhreyfing á knappum</string>
+    <string name="settings_bounce_subtitle">Skaleringar- og støkkhreyfing tá ið ein knappur verður trýstur</string>
+    <string name="settings_theme_system">Fylg systeminum</string>
+    <string name="settings_theme_dark">Myrkt</string>
+    <string name="settings_theme_light">Ljóst</string>
+    <string name="settings_dynamic_theme_title">Material You dynamiskir litir</string>
+    <string name="settings_dynamic_theme_subtitle">Fylg litinum á bakgrundarmyndini hjá systeminum (Android 12+); tá ið sløkt er verða forstilltu temalitirnir niðanfyri brúktir</string>
+    <string name="settings_preset_colors_title">Forstilltir temalitir</string>
+    <string name="settings_preset_current">Núverandi: %1$s</string>
+    <string name="settings_preset_disabled_hint">Sløkk fyri “Material You dynamiskum litum” at velja</string>
+    <string name="settings_custom">Serstakt</string>
+    <string name="settings_custom_color_title">Serstakur temalitur</string>
+    <string name="settings_cd_custom_palette">Serstakt litaspjald</string>
+    <string name="settings_hue_value">Litstig %1$d°</string>
+    <string name="settings_language_dialog_title">Vel málið hjá appini</string>
+    <string name="settings_language_count">%1$d mál tøk</string>
+    <string name="settings_reminder_dialogs_title">“Vís ikki aftur”-gluggar</string>
+    <string name="settings_reminder_dialogs_subtitle">Umsit rofarnar fyri allar “Vís ikki aftur”-gluggar</string>
+    <string name="settings_reminder_hint">Tá ið ein rofi er í, verður tann boðskapurin ikki vístur aftur; tá ið hann er av, kemur boðskapurin aftur næstu ferð.</string>
+    <string name="settings_preserve_folders_title">Úttak við mappuskipan upprunans</string>
+    <string name="settings_preserve_folders_subtitle">Úrslit verða goymd í undirmappum nevnd eftir upprunaligu albumunum; tá ið sløkt er verður alt lagt flatt í eina mappu</string>
+    <string name="settings_about_title">Um</string>
+    <string name="settings_about_subtitle">Útgáva · Kanna uppdateringar · Tøkk &amp; gávur</string>
+    <string name="settings_check_update_title">Kanna uppdateringar</string>
+    <string name="settings_check_update_subtitle">Søk nýggju útgávuna frá GitHub Releases</string>
+    <string name="settings_checking">Kannar…</string>
+    <string name="settings_update_available">v%1$s tøk</string>
+    <string name="settings_up_to_date">Tú hevur nýggju útgávuna</string>
+    <string name="settings_network_error">Netvilla; royn aftur seinni</string>
+    <string name="settings_reinstall_title">Set hesa útgávuna upp aftur</string>
+    <string name="settings_reinstall_subtitle">Søk nýggjastu byggingina og set hana upp oman á hesa (til at royna uppdateringar)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s er tøk; brúka “Kanna uppdateringar” at uppdatera fyrst</string>
+    <string name="settings_version_title">Útgáva</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Gev gávu við Alipay</string>
+    <string name="settings_alipay_subtitle">Stuðla menningini</string>
+    <string name="settings_coolapk_subtitle">Coolapk-brúkari · takk fyri stuðulin</string>
+    <string name="settings_ai_credits_subtitle">Tøkk til AI-tóleindir og AI-modellir sum hjálptu við menningini</string>
+    <string name="settings_github_title">GitHub-fylkjaløga</string>
+    <string name="settings_license_title">Loyvi fyri opnum kóða</string>
+    <string name="settings_sponsor_dialog_title">Takk fyri stuðulin</string>
+    <string name="settings_sponsor_dialog_text">Eg set veruliga virði á at tú vilt stuðla hesi appini!\n\nUm tú enn ert lesandi, ella enn ikki ert fíggjarliga sjálvstøðugur, so brúka ikki pening til hetta — at bera ta góðviljan í hjartanum og halda áfram at brúka appina er besti stuðningurin, eg kundi fingið.\n\nUm tú kortini vilt geva eina gávu, hjálpir eisini eitt sindur, og eg fari at seta tað í betri viðlíkahald og funktiónir:)</string>
+    <string name="settings_alipay_missing_title">Alipay er ikki lagt inn</string>
+    <string name="settings_alipay_missing_text">Alipay varð ikki funnið, so gávan kann ikki fullførast nú.\n\nTað er í lagi — nógv takk fyri góðviljan hvørveg!</string>
+    <string name="settings_transcoder_title">Innbygdur transkodari</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Endurkoda</string>
+    <string name="settings_transcode_mode_remux">Bert remux av gámi (mælt til)</string>
+    <string name="settings_transcode_mode_off">Brúka ongantíð transkodaran</string>
+    <string name="settings_transcode_params_title">Transkodingarparametrar</string>
+    <string name="settings_transcode_params_subtitle">Góðsk- og trýstiparametrar sum verða brúktir tá ið endurkodað verður</string>
+    <string name="settings_transcode_params_disabled">Virkar bert tá ið “Transkodingarhamur” er settur til “Endurkoda”</string>
+    <string name="settings_crf_value">Góðsk CRF: %1$d</string>
+    <string name="settings_crf_hint">Lægri virði merkja hægri góðsk og størri fílur (standard 18)</string>
+    <string name="settings_encoder_title">Kodari</string>
+    <string name="settings_compress_preset_title">Trýstiforseting</string>
+</resources>

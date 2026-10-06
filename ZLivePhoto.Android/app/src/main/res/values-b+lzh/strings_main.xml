@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 分級 C：文言（模型輔助）盡力翻譯，措辭與用例僅供理解，歡迎社群修正。 -->
+<resources>
+    <string name="main_status_ready">就緒</string>
+    <string name="main_status_location_granted">已得位置之權，轉換後存 GPS 中繼資料</string>
+    <string name="main_status_location_denied">未得位置之權：轉換後之相將失 GPS 之位</string>
+    <string name="main_status_all_files_granted">已得「盡覽諸檔」之權，轉換直書於相簿之夾，盡存其位</string>
+    <string name="main_status_all_files_denied">未得「盡覽諸檔」之權：個別機型轉換後或失其位</string>
+    <string name="main_status_read_granted">已得讀相片與影片之權</string>
+    <string name="main_status_video_missing">已授，然影片之權缺：不得尋雙檔動態相片所附之伴生影片</string>
+    <string name="main_status_permission_denied">未得權，可復按「加檔」</string>
+    <string name="main_status_folder_not_selected">未擇夾</string>
+    <string name="main_status_folder_unavailable">不得入所擇之夾（僅支本地儲存之目錄）</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">已復前次之局（%1$d 檔）</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">覺前次異常而退，已清未成之列</string>
+    <string name="main_status_compose_blocks_extract">列中有合成之事，不可易為拆解之式</string>
+    <string name="main_status_replace_off_mutex">已閉替換之式（與「成後刪原圖」相斥）</string>
+    <string name="main_status_delete_needs_all_files">自刪原圖需「盡覽諸檔」之權，請先授之</string>
+    <string name="main_status_replace_off">已閉替換之式，轉換之果復書於相簿之夾</string>
+    <string name="main_status_replace_needs_all_files">替換之式需「盡覽諸檔」之權，請先授之</string>
+    <string name="main_status_delete_off_mutex">已閉「成後刪原圖」（與替換之式相斥）</string>
+    <string name="main_status_loading_albums">正讀相簿…</string>
+    <string name="main_status_no_albums">未見相簿</string>
+    <string name="main_status_compose_no_photo">未擇相，不可合成</string>
+    <string name="main_status_compose_no_video">未擇影片，不可合成</string>
+    <string name="main_status_compose_all_added">所擇之相皆已在列</string>
+    <string name="main_status_compose_paired">相 %1$d 張、影片 %2$d 個，依其少者已加 %3$d 對合成之事</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">已加 %1$d 合成之事，按「始轉換」以行合成</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s（已自易輸出之式為 Google）</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">正引所享之 %1$d 圖…</item>
+    </plurals>
+    <string name="main_status_import_failed">導入不成：%1$s</string>
+    <string name="main_status_import_done_partial">導入已畢：成 %1$d，敗 %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">導入已畢：共入 %1$d 檔</item>
+    </plurals>
+    <string name="main_status_import_stopped">已止導入：成 %1$d，敗 %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">正導入 %1$d 檔…</item>
+    </plurals>
+    <string name="main_status_importing_progress">正導入 %1$d/%2$d…</string>
+    <string name="main_status_stopping">正止…（畢此檔而止）</string>
+    <string name="main_status_stopping_import">正止導入…</string>
+    <string name="main_status_removed">已除 %1$s</string>
+    <string name="main_status_cleared">已清</string>
+    <string name="main_status_nothing_to_convert">無可轉之檔</string>
+    <string name="main_status_folder_unreadable">不得讀所擇之夾</string>
+    <string name="main_status_scanning_folder">正察其夾…</string>
+    <string name="main_status_no_images">所擇之夾內未見圖</string>
+    <string name="main_status_batch_importing">正批量導入 %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">已止批量導入：共入 %1$d 動態相片</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">已止批量導入：共入 %1$d 動態相片，略 %2$d 非動態之檔</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">批量導入已畢：共入 %1$d 動態相片</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">批量導入已畢：共入 %1$d 動態相片，略 %2$d 非動態之檔</item>
+    </plurals>
+    <string name="main_status_stopped_replace">已止：%1$d 檔中理 %2$d，代 %3$d 源檔</string>
+    <string name="main_status_stopped_export">已止：%1$d 檔中理 %2$d，出 %3$d 於相簿</string>
+    <string name="main_status_done_replace_reason">畢：%1$d 檔理畢，代 %2$d 源檔（由：%3$s）</string>
+    <string name="main_status_done_export_reason">畢：%1$d 檔理畢，出 %2$d 於相簿（由：%3$s）</string>
+    <string name="main_status_done_replace">畢：%1$d 檔理畢，代 %2$d 源檔</string>
+    <string name="main_status_done_export">畢：%1$d 檔理畢，出 %2$d 於相簿</string>
+    <string name="main_status_keep_originals">%1$s；未得「盡覽儲存」之權，原圖已存</string>
+    <string name="main_info_detecting">察中…</string>
+    <string name="main_info_unrecognized">未識之動態相片式</string>
+    <string name="main_info_converting">轉換中…</string>
+    <string name="main_info_compose_task">合成之事（按始轉換以行合成）</string>
+    <string name="main_info_done_replaced">畢（代 %1$d 源檔）</string>
+    <string name="main_info_done_skipped">畢（略：同名相衝）</string>
+    <string name="main_info_done_exported">畢（出 %1$d）</string>
+    <string name="main_info_failed">敗：%1$s</string>
+    <string name="main_progress_added">已加 %1$d/%2$d</string>
+    <string name="main_progress_processed">已理 %1$d/%2$d</string>
+    <string name="main_progress_imported">已入 %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">需讀相片與影片之權</string>
+    <string name="main_dialog_permission_message">此程式需讀君機中之相片與影片：\n\n• 相片之權：察機中相簿，識其動態相片\n• 影片之權：尋雙檔動態相片所附之伴生影片\n• 位置之權：存相中 GPS 之位（若缺，則轉換後失其位）\n\n拒之則不得用內置之擇器，可後復按「加檔」而重授。</string>
+    <string name="main_dialog_settings_title">需手授相片與影片之權</string>
+    <string name="main_dialog_settings_message">君前擇「不復問」，故系統不復示權限之窗。\n\n請往程式詳情之頁 → 權限 → 相片與影片，手授其權而返此程式。\n\n注意：必兼授「相片」與「影片」之權，否則雙檔動態相片不得尋其所附之伴生影片。</string>
+    <string name="main_dialog_allfiles_title_delete">自刪原圖需「盡覽諸檔」</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">本機不支自刪原圖</string>
+    <string name="main_dialog_allfiles_title_replace">替換之式需「盡覽諸檔」</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">本機不支替換之式</string>
+    <string name="main_dialog_allfiles_title_location">宜授「盡覽諸檔」之權</string>
+    <string name="main_dialog_allfiles_delete_message">「成後刪原圖」將直刪磁碟之原檔（相片及其伴生影片），此舉不可復，故必先授「盡覽諸檔」之權。\n\n授後其開關方為可用，屆時可自啟之。</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">今之系統（Android 10 及以下）不與「盡覽諸檔」之權，不得直刪磁碟之原檔，故本機不支「成後刪原圖」。\n\n君可於轉換畢後由系統相簿手清原圖。</string>
+    <string name="main_dialog_allfiles_replace_message">「替換之式」將直以轉換之果書返磁碟之原檔（覆其舊），此舉不可復，故必先授「盡覽諸檔」之權。\n\n授後其開關方為可用，屆時可自啟之。</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">今之系統（Android 10 及以下）不與「盡覽諸檔」之權，不得直改磁碟之原檔，故本機不支「替換之式」。\n\n君可仍以默式轉換，其果當出於相簿之夾。</string>
+    <string name="main_dialog_allfiles_location_message">部分機型（如魅族）由系統相簿之介而書，將掩 GPS 之位，致轉換後之相失其位。\n\n授「盡覽諸檔」後，此程式將直書於相簿之夾，盡存位置之資料。\n\n不授亦可常轉，個別機型或失其位。</string>
+    <string name="main_dialog_conflict_title">輸出檔名相衝</string>
+    <string name="main_dialog_conflict_message">輸出之夾已有同名之檔：\n%1$s\n\n請擇處之之法。</string>
+    <string name="main_label_conflict_always">後之相衝皆用此法</string>
+    <string name="main_btn_grant">授權</string>
+    <string name="main_btn_deny">拒</string>
+    <string name="main_btn_go_settings">往設定</string>
+    <string name="main_btn_cancel">取消</string>
+    <string name="main_btn_grant_access">往授權</string>
+    <string name="main_btn_got_it">知之矣</string>
+    <string name="main_btn_not_now">暫不</string>
+    <string name="main_btn_skip">略過</string>
+    <string name="main_btn_overwrite">覆蓋</string>
+    <string name="main_btn_auto_rename">自改名</string>
+    <plurals name="main_delete_done">
+        <item quantity="other">已刪 %1$d 原檔</item>
+    </plurals>
+    <string name="main_delete_nothing">無需刪原圖</string>
+    <string name="main_delete_partial">已刪 %1$d 原檔（%2$d 刪不成，已存）</string>
+    <string name="main_delete_failed">原圖刪不成（檔被佔或無書之權），已存</string>
+    <string name="main_export_missing_output">轉換之果缺或空：%1$s</string>
+    <string name="main_export_missing_output_bare">轉換之果缺或空</string>
+    <string name="main_export_insert_null">MediaStore insert 返 null</string>
+    <string name="main_export_output_stream">MediaStore 之出流不可用</string>
+    <string name="main_export_write_failed">MediaStore 書不成：%1$s</string>
+    <string name="main_export_mkdir_failed">不得建相簿之夾 %1$s</string>
+    <string name="main_export_dir_write_failed">書相簿之夾不成：%1$s</string>
+    <string name="main_export_no_source">不得定源檔，已略替換</string>
+    <string name="main_export_companion_failed">書返伴生之檔不成：%1$s</string>
+    <string name="main_export_source_dir_unwritable">源檔之夾不可書，伴生之檔未能寫返</string>
+    <string name="main_export_source_dir_unavailable">源檔之夾不可用：%1$s</string>
+    <string name="main_export_replace_failed">代源檔不成：%1$s</string>
+    <string name="main_export_replace_failed_bare">代源檔不成</string>
+</resources>

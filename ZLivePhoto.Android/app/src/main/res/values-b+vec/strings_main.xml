@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Livèło C: tradussion asistìa da modeło in vèneto; segnalassion benvegnùe. -->
+<resources>
+    <string name="main_status_ready">Pronto</string>
+    <string name="main_status_location_granted">Parmesso de posission concedùo; dopo ła conversion i metadati GPS i resta</string>
+    <string name="main_status_location_denied">Sensa parmesso de posission: dopo ła conversion łe foto łe perde ła posission GPS</string>
+    <string name="main_status_all_files_granted">Parmesso de tuti i file concedùo; ła conversion ła scrive drito inte ła cartèła de ła galeria e ła conserva ła posission</string>
+    <string name="main_status_all_files_denied">Sensa parmesso de tuti i file: su alguni modèi ła posission ła se pol perder dopo ła conversion</string>
+    <string name="main_status_read_granted">Parmesso de leser foto e video concedùo</string>
+    <string name="main_status_video_missing">Parmesso concedùo, ma manca cheło dei video: no se cata el video compagno de łe foto dinamiche a do file</string>
+    <string name="main_status_permission_denied">Parmesso mia concedùo; struca de novo "Zonta file"</string>
+    <string name="main_status_folder_not_selected">Nissuna cartèła selessionada</string>
+    <string name="main_status_folder_unavailable">No se pol aceder a ła cartèła selessionada (se pol solo che cartèłe de memòria interna)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Sesion precedente ripristinada (%1$d file)</item>
+        <item quantity="other">Sesion precedente ripristinada (%1$d file)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Rilevà na chiusura anòmala precedente; ła lista mia finia ła xe stà netà</string>
+    <string name="main_status_compose_blocks_extract">In coa ghe xe robe da conponer; no se pol passar al modo estrazion</string>
+    <string name="main_status_replace_off_mutex">Modo sostituission distivà (el xe incompatìbiłe co "Descançela l\'orixinale")</string>
+    <string name="main_status_delete_needs_all_files">Descançelar da solo l\'orixinale el ghe vol el parmesso de tuti i file: concèdelo prima</string>
+    <string name="main_status_replace_off">Modo sostituission distivà; i risultati i vien scrii de novo inte ła cartèła de ła galeria</string>
+    <string name="main_status_replace_needs_all_files">El modo sostituission el ghe vol el parmesso de tuti i file: concèdelo prima</string>
+    <string name="main_status_delete_off_mutex">"Descançela l\'orixinale" distivà (el xe incompatìbiłe col modo sostituission)</string>
+    <string name="main_status_loading_albums">So drio cargar i album…</string>
+    <string name="main_status_no_albums">No gh\'è album</string>
+    <string name="main_status_compose_no_photo">Nissuna foto selessionada; no se pol conponer</string>
+    <string name="main_status_compose_no_video">Nissun video selessionà; no se pol conponer</string>
+    <string name="main_status_compose_all_added">Tute łe foto selessionae łe xe xà in lista</string>
+    <string name="main_status_compose_paired">%1$d foto e %2$d video; secondo el lato pì curto, xontae %3$d cubie de robe da conponer</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Xontà %1$d roba da conponer; struca "Scumissia ła conversion" par conponer</item>
+        <item quantity="other">Xontae %1$d robe da conponer; struca "Scumissia ła conversion" par conponer</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (formato de uscita cambià da solo in Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">So drio importar %1$d imàjine condivixa…</item>
+        <item quantity="other">So drio importar %1$d imàjini condivixe…</item>
+    </plurals>
+    <string name="main_status_import_failed">Eror de importassion: %1$s</string>
+    <string name="main_status_import_done_partial">Importassion finia: %1$d riusie, %2$d fałie</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importassion finia: %1$d file importà</item>
+        <item quantity="other">Importassion finia: %1$d file importai</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importassion fermada: %1$d riusie, %2$d fałie</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">So drio importar %1$d file…</item>
+        <item quantity="other">So drio importar %1$d file…</item>
+    </plurals>
+    <string name="main_status_importing_progress">So drio importar %1$d/%2$d…</string>
+    <string name="main_status_stopping">So drio fermar… (el finisse el file che xe drio)</string>
+    <string name="main_status_stopping_import">So drio fermar l\'importassion…</string>
+    <string name="main_status_removed">Cavà %1$s</string>
+    <string name="main_status_cleared">Netà</string>
+    <string name="main_status_nothing_to_convert">No gh\'è file da convertir</string>
+    <string name="main_status_folder_unreadable">No se pol leser ła cartèła selessionada</string>
+    <string name="main_status_scanning_folder">So drio scansionar ła cartèła…</string>
+    <string name="main_status_no_images">No gh\'è imàjini inte ła cartèła selessionada</string>
+    <string name="main_status_batch_importing">Importassion in bloco %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Importassion in bloco fermada: importada %1$d foto dinamica</item>
+        <item quantity="other">Importassion in bloco fermada: importae %1$d foto dinamiche</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Importassion in bloco fermada: importada %1$d foto dinamica, saltà %2$d file mia dinamisi</item>
+        <item quantity="other">Importassion in bloco fermada: importae %1$d foto dinamiche, saltà %2$d file mia dinamisi</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Importassion in bloco finia: importada %1$d foto dinamica</item>
+        <item quantity="other">Importassion in bloco finia: importae %1$d foto dinamiche</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Importassion in bloco finia: importada %1$d foto dinamica, saltà %2$d file mia dinamisi</item>
+        <item quantity="other">Importassion in bloco finia: importae %1$d foto dinamiche, saltà %2$d file mia dinamisi</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Fermà: laorà %2$d de %1$d file, sostituii %3$d orixinai</string>
+    <string name="main_status_stopped_export">Fermà: laorà %2$d de %1$d file, esportà %3$d in galeria</string>
+    <string name="main_status_done_replace_reason">Finio: laorà %1$d file, sostituii %2$d orixinai (motivo: %3$s)</string>
+    <string name="main_status_done_export_reason">Finio: laorà %1$d file, esportà %2$d in galeria (motivo: %3$s)</string>
+    <string name="main_status_done_replace">Finio: laorà %1$d file, sostituii %2$d orixinai</string>
+    <string name="main_status_done_export">Finio: laorà %1$d file, esportà %2$d in galeria</string>
+    <string name="main_status_keep_originals">%1$s; sensa el parmesso completo de ła memòria i orixinai i xe stà conservai</string>
+    <string name="main_info_detecting">So drio recołegar…</string>
+    <string name="main_info_unrecognized">Formato de foto dinamica mia riconosùo</string>
+    <string name="main_info_converting">So drio convertir…</string>
+    <string name="main_info_compose_task">Roba da conponer (struca Scumissia ła conversion par conponer)</string>
+    <string name="main_info_done_replaced">Finio (sostituii %1$d orixinai)</string>
+    <string name="main_info_done_skipped">Finio (saltà: nome dopio)</string>
+    <string name="main_info_done_exported">Finio (esportà %1$d)</string>
+    <string name="main_info_failed">Eror: %1$s</string>
+    <string name="main_progress_added">Xontà %1$d/%2$d</string>
+    <string name="main_progress_processed">Laorà %1$d/%2$d</string>
+    <string name="main_progress_imported">Importà %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Ghe vol el parmesso par leser foto e video</string>
+    <string name="main_dialog_permission_message">Sta aplicassion ła ga bisogno de leser łe foto e i video del to dispositivo:\n\n• Parmesso foto: scansionar ła galeria del dispositivo e catar łe foto dinamiche\n• Parmesso video: catar el video compagno de łe foto dinamiche a do file\n• Parmesso posission: conservar i metadati GPS de łe foto (se manca, dopo ła conversion ła posission ła se perde)\n\nSe te rifiuti, no te podi miga doparar el sełetor de file integrà; pì tardi te pol strucar de novo "Zonta file" par concèderlo.</string>
+    <string name="main_dialog_settings_title">I parmessi de foto e video i va concedui a man</string>
+    <string name="main_dialog_settings_message">Prima te ghè sielto "No stà domandar pì", donca el sistema nol mostra pì el dialogo dei parmessi.\n\nVà inte ła pàgina de detaji de l\'aplicassion → Parmessi → Foto e video, concèdi l\'aceso a man e torna inte l\'aplicassion.\n\nOcio: ghe vol conceder insieme sia el parmesso "Foto" sia cheło "Video"; se no, łe foto dinamiche a do file no łe cata el video compagno.</string>
+    <string name="main_dialog_allfiles_title_delete">Descançelar da solo l\'orixinale el ghe vol "Aceso a tuti i file"</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Sto dispositivo no l\'insiste descançelar da solo l\'orixinale</string>
+    <string name="main_dialog_allfiles_title_replace">El modo sostituission el ghe vol "Aceso a tuti i file"</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Sto dispositivo no l\'insiste el modo sostituission</string>
+    <string name="main_dialog_allfiles_title_location">Se conseja de concèder "Aceso a tuti i file"</string>
+    <string name="main_dialog_allfiles_delete_message">"Descançela l\'orixinale" el cançela drito i file orixinai dal disco (ła foto e el so video compagno); l\'operassion no ła se pol desfar, donca prima ghe vol "Aceso a tuti i file".\n\nEl interutor el se ativa solo dopo averlo concedùo; dopo te pol ativarlo ti.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">El sistema de adeso (Android 10 o pì vecio) no l ga "Aceso a tuti i file", donca no se pol cançelar drito i orixinai dal disco; sto dispositivo no l\'insiste "Descançela l\'orixinale".\n\nCo ła conversion ła xe finia te pol netar i orixinai a man da ła galeria del sistema.</string>
+    <string name="main_dialog_allfiles_replace_message">El "modo sostituission" el scrive drito el risultato de ła conversion sora i file orixinai sul disco (el ghe cambia el contenuto); l\'operassion no ła se pol desfar, donca prima ghe vol "Aceso a tuti i file".\n\nEl interutor el se ativa solo dopo averlo concedùo; dopo te pol ativarlo ti.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">El sistema de adeso (Android 10 o pì vecio) no l ga "Aceso a tuti i file", donca no se pol scriver drito sora i orixinai sul disco; sto dispositivo no l\'insiste el "modo sostituission".\n\nTe pol seguir a convertir normalmente; el risultato el vien scrito inte ła cartèła de ła galeria.</string>
+    <string name="main_dialog_allfiles_location_message">Alguni modèi (tipo Meizu) i scrive traverso ła galeria del sistema e i ghe desfa ła posission GPS, donca łe foto convertie łe perde ła posission.\n\nSe te concèdi "Aceso a tuti i file", l\'aplicassion ła scrive drito inte ła cartèła de ła galeria e ła conserva tuti i metadati de ła posission.\n\nTe pol anca convertir sensa concederlo; su alguni modèi ła posission ła se pol perder.</string>
+    <string name="main_dialog_conflict_title">Conflito de nome del file de uscita</string>
+    <string name="main_dialog_conflict_message">Inte ła cartèła de uscita ghe xe xà un file col stesso nome:\n%1$s\n\nSerne come che te vol seguir.</string>
+    <string name="main_label_conflict_always">Dòpara sto modo par i prosimi confliti</string>
+    <string name="main_btn_grant">Concèdi</string>
+    <string name="main_btn_deny">Rifiuta</string>
+    <string name="main_btn_go_settings">Và a łe inpostassion</string>
+    <string name="main_btn_cancel">Anùla</string>
+    <string name="main_btn_grant_access">Concèdi aceso</string>
+    <string name="main_btn_got_it">Go capio</string>
+    <string name="main_btn_not_now">No deso</string>
+    <string name="main_btn_skip">Salta</string>
+    <string name="main_btn_overwrite">Sorascrivi</string>
+    <string name="main_btn_auto_rename">Rinòmena da solo</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Descançelà %1$d file orixinale</item>
+        <item quantity="other">Descançelai %1$d file orixinai</item>
+    </plurals>
+    <string name="main_delete_nothing">No gh\'è orixinai da descançelar</string>
+    <string name="main_delete_partial">Descançelai %1$d file orixinai (%2$d no se ga podesto descançelarli e i xe restai)</string>
+    <string name="main_delete_failed">No se ga podesto descançelar l\'orixinale (file doparà o sensa parmesso de scriver); el xe restà</string>
+    <string name="main_export_missing_output">El risultato de ła conversion el manca o el xe vodo: %1$s</string>
+    <string name="main_export_missing_output_bare">El risultato de ła conversion el manca o el xe vodo</string>
+    <string name="main_export_insert_null">L\'inserimento in MediaStore el ga dà null</string>
+    <string name="main_export_output_stream">El flusso de uscita de MediaStore no el xe disponibile</string>
+    <string name="main_export_write_failed">No se ga podesto scriver in MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">No se ga podesto crear ła cartèła de ła galeria %1$s</string>
+    <string name="main_export_dir_write_failed">No se ga podesto scriver inte ła cartèła de ła galeria: %1$s</string>
+    <string name="main_export_no_source">No se ga catà el file orixinale; sostituission saltada</string>
+    <string name="main_export_companion_failed">No se ga podesto scriver de novo el file compagno: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Ła cartèła orixinale no ła se pol scriver; no se ga podesto scriver de novo el file compagno</string>
+    <string name="main_export_source_dir_unavailable">Ła cartèła orixinale no ła xe disponibile: %1$s</string>
+    <string name="main_export_replace_failed">No se ga podesto sostituir el file orixinale: %1$s</string>
+    <string name="main_export_replace_failed_bare">No se ga podesto sostituir el file orixinale</string>
+</resources>

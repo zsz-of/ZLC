@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Lëtzebuergesch (lb).
+  ZLC · Luxembourgish strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Astellungen</string>
+    <string name="settings_cd_back">Zréck</string>
+    <string name="settings_btn_apply">Uwenden</string>
+    <string name="settings_btn_cancel">Ofbriechen</string>
+    <string name="settings_btn_close">Zoumaachen</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Spenden</string>
+    <string name="settings_section_general">Allgemeng</string>
+    <string name="settings_section_appearance">Ausgesinn</string>
+    <string name="settings_section_language">Sprooch</string>
+    <string name="settings_section_defaults">Standard</string>
+    <string name="settings_section_output">Ausgab</string>
+    <string name="settings_section_transcode">Video-Transkodéierung</string>
+    <string name="settings_section_about">Iwwer</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Merci &amp; Spenden</string>
+    <string name="settings_section_opensource">Open Source &amp; Lizenz</string>
+    <string name="settings_startup_check_title">Beim Start no Updates sichen</string>
+    <string name="settings_startup_check_subtitle">Beim Start automatesch nei Versiounen vun GitHub sichen an zum Download froen, wann eng disponibel ass</string>
+    <string name="settings_haptics_title">Haptesche Feedback</string>
+    <string name="settings_haptics_subtitle">Haptesche Feedback bei Knäppdrécken an Zoustandsännerungen</string>
+    <string name="settings_bounce_title">Knäpp-Bounce-Animatioun</string>
+    <string name="settings_bounce_subtitle">Skaléierungs- a Bounce-Animatioun, wann e Knäpp gedréckt gëtt</string>
+    <string name="settings_theme_system">System suivéieren</string>
+    <string name="settings_theme_dark">Däischter</string>
+    <string name="settings_theme_light">Hell</string>
+    <string name="settings_dynamic_theme_title">Material You dynamesch Faarf</string>
+    <string name="settings_dynamic_theme_subtitle">Follegt d\'Faarf vum System-Hannergrond (Android 12+); wann aus, ginn déi viragestallte Themenfaarwen hei drënner benotzt</string>
+    <string name="settings_preset_colors_title">Viragestallte Themenfaarwen</string>
+    <string name="settings_preset_current">Aktuell: %1$s</string>
+    <string name="settings_preset_disabled_hint">Schalt “Material You dynamesch Faarf” aus fir ze wielen</string>
+    <string name="settings_custom">Personaliséiert</string>
+    <string name="settings_custom_color_title">Personaliséiert Themenfaarf</string>
+    <string name="settings_cd_custom_palette">Personaliséiert Palette</string>
+    <string name="settings_hue_value">Faarftonn %1$d°</string>
+    <string name="settings_language_dialog_title">Sprooch vun der App auswielen</string>
+    <string name="settings_language_count">%1$d Sproochen disponibel</string>
+    <string name="settings_reminder_dialogs_title">“Net méi weisen”-Dialogen</string>
+    <string name="settings_reminder_dialogs_subtitle">Verwalt d\'Schaltere fir all “Net méi weisen”-Dialogen</string>
+    <string name="settings_reminder_hint">Wann e Schalter un ass, gëtt dee Prompt net méi gewisen; wann en aus ass, erschéngt de Prompt déi nächst Kéier erëm.</string>
+    <string name="settings_preserve_folders_title">Ausgab mat der Quell-Dossierstruktur</string>
+    <string name="settings_preserve_folders_subtitle">Resultater ginn an Ënnerdossiere gespäichert, déi no den Original-Alben benannt sinn; wann aus, gëtt alles flaach an engem Dossier ofgeluecht</string>
+    <string name="settings_about_title">Iwwer</string>
+    <string name="settings_about_subtitle">Versioun · No Updates sichen · Merci &amp; Spenden</string>
+    <string name="settings_check_update_title">No Updates sichen</string>
+    <string name="settings_check_update_subtitle">Déi lescht Versioun vun GitHub Releases sichen</string>
+    <string name="settings_checking">Préift…</string>
+    <string name="settings_update_available">v%1$s disponibel</string>
+    <string name="settings_up_to_date">Du hues déi lescht Versioun</string>
+    <string name="settings_network_error">Netzwierkfehler; probéier méi spéit nach emol</string>
+    <string name="settings_reinstall_title">Dës Versioun nei installéieren</string>
+    <string name="settings_reinstall_subtitle">Lued déi lescht Build erof a installéier se iwwer dës (fir Updates ze testen)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s ass disponibel; benotz “No Updates sichen” fir d\'éischt ze upgraden</string>
+    <string name="settings_version_title">Versioun</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Spende via Alipay</string>
+    <string name="settings_alipay_subtitle">Ënnerstëtz d\'Entwécklung</string>
+    <string name="settings_coolapk_subtitle">Coolapk-Benotzer · Merci fir d\'Ënnerstëtzung</string>
+    <string name="settings_ai_credits_subtitle">Merci un d\'KI-IDEen an d\'KI-Modeller, déi bei der Entwécklung gehollef hunn</string>
+    <string name="settings_github_title">GitHub-Repositorium</string>
+    <string name="settings_license_title">Open-Source-Lizenz</string>
+    <string name="settings_sponsor_dialog_title">Merci fir deng Ënnerstëtzung</string>
+    <string name="settings_sponsor_dialog_text">Ech schätze wierklech deng Bereetschaft, dës App z\'ënnerstëtzen!\n\nWann du nach Student bass oder nach net finanziell onofhängeg, dann gëff w.e.g. keng Suen dofir aus — dës Frëndlechkeet am Häerz ze droen an d\'App weider ze benotzen ass déi bescht Ënnerstëtzung, déi ech ka kréien.\n\nWann du awer wëlls spenden, hëlleft och e bëssen, an ech wäert et an eng besser Ënnerhalung a Funktioune stiechen:)</string>
+    <string name="settings_alipay_missing_title">Alipay ass net installéiert</string>
+    <string name="settings_alipay_missing_text">Alipay gouf net fonnt, dofir kann d\'Spend elo net ofgeschloss ginn.\n\nDat ass ganz an der Rei — villmools Merci fir deng Frëndlechkeet esouwisou!</string>
+    <string name="settings_transcoder_title">Agebaute Transkodéierer</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Nei-Codéieren</string>
+    <string name="settings_transcode_mode_remux">Nëmme Remux vum Container (recommandéiert)</string>
+    <string name="settings_transcode_mode_off">Benotz den Transkodéierer ni</string>
+    <string name="settings_transcode_params_title">Transkodéierungsparameter</string>
+    <string name="settings_transcode_params_subtitle">Qualitéits- a Kompressiounsparameter, déi beim Nei-Codéiere benotzt ginn</string>
+    <string name="settings_transcode_params_disabled">Funktionéiert nëmme wann “Transkodéierungsmodus” op “Nei-Codéieren” gesat ass</string>
+    <string name="settings_crf_value">Qualitéit CRF: %1$d</string>
+    <string name="settings_crf_hint">Méi niddereg Wäerter bedeiten méi héich Qualitéit a méi grouss Dateien (Standard 18)</string>
+    <string name="settings_encoder_title">Codéierer</string>
+    <string name="settings_compress_preset_title">Kompressiounsprofil</string>
+</resources>

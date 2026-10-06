@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Sardu (sc) — sa schermada de Cunfiguratzione.
+  Tradùidu dae res/values/strings_settings.xml (tzinesu simplificadu, sa locale de recàmbiu).
+  Calidade: B/C. Is marcadores sunt mantènnidos in sa forma numerada issoro (%1$s / %1$d), comente in s'orizinale.
+-->
+<resources>
+
+    <!-- Generale -->
+    <string name="settings_title">Cunfiguratzione</string>
+    <string name="settings_cd_back">Torrare</string>
+    <string name="settings_btn_apply">Àplicare</string>
+    <string name="settings_btn_cancel">Annullare</string>
+    <string name="settings_btn_close">Serrare</string>
+    <string name="settings_btn_ok">Bene</string>
+    <string name="settings_btn_sponsor">Sustènnere</string>
+
+    <!-- Tìtulos de is setziones -->
+    <string name="settings_section_general">Generale</string>
+    <string name="settings_section_appearance">Aspetu</string>
+    <string name="settings_section_language">Limba</string>
+    <string name="settings_section_defaults">Otziones predefinidas</string>
+    <string name="settings_section_output">Essida</string>
+    <string name="settings_section_transcode">Transcodìfica de vìdeo</string>
+    <string name="settings_section_about">A pitzus de</string>
+    <string name="settings_section_app">Aplicatzione</string>
+    <string name="settings_section_credits">Ringratziamentos e sustènnidu</string>
+    <string name="settings_section_opensource">Còdighe abertu e litzèntzia</string>
+
+    <!-- Generale -->
+    <string name="settings_startup_check_title">Controllare is atualizatziones a s\'achida</string>
+    <string name="settings_startup_check_subtitle">S\'aplicatzione iscarrigat in automàticu is versiones noas dae GitHub cando s\'àplicat, e proponet de ddas iscarrigare cando sunt disponìbiles</string>
+    <string name="settings_haptics_title">Risposta cun tremulore</string>
+    <string name="settings_haptics_subtitle">Risposta tàtile cando si primint is botones e cando cambiat s\'istadu</string>
+    <string name="settings_bounce_title">Animadura elàstica de is botones</string>
+    <string name="settings_bounce_subtitle">Animadura de zoom e rebote cando si primint is botones</string>
+
+    <!-- Aspetu -->
+    <string name="settings_theme_system">Sighire su sistema</string>
+    <string name="settings_theme_dark">Iscuru</string>
+    <string name="settings_theme_light">Cràuru</string>
+    <string name="settings_dynamic_theme_title">Colores dinàmicos Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Sighit su colore de su papè de parete de su sistema (Android 12+); a pustis de ddu disativare, s\'impitant is colores predefinidos in s\'imbàs</string>
+    <string name="settings_preset_colors_title">Colores predefinidos</string>
+    <string name="settings_preset_current">Atuale: %1$s</string>
+    <string name="settings_preset_disabled_hint">Disponìbile a pustis de disativare «Colores dinàmicos Material You»</string>
+    <string name="settings_custom">Personalitzadu</string>
+    <string name="settings_custom_color_title">Colore de su tema personalitzadu</string>
+    <string name="settings_cd_custom_palette">Paleta personalitzada</string>
+    <string name="settings_hue_value">Tonalidade %1$d°</string>
+
+    <!-- Limba de s'aplicatzione -->
+    <string name="settings_language_dialog_title">Sèber sa limba de s\'aplicatzione</string>
+    <string name="settings_language_count">%1$d limbas in totale</string>
+
+    <!-- Otziones predefinidas -->
+    <string name="settings_reminder_dialogs_title">Non mustrare is ventanas craras</string>
+    <string name="settings_reminder_dialogs_subtitle">Amministrare totu is ventanas «non mustrare prus»</string>
+    <string name="settings_reminder_hint">S\'iswitchu allutu bolet nàrrere «non mustrare prus»; a pustis de ddu istudare, s\'avisu at a torrare a cumparèssere sa borta chi benit.</string>
+
+    <!-- Essida -->
+    <string name="settings_preserve_folders_title">Essida segundu s\'ierarchia de is cartellas de orìgine</string>
+    <string name="settings_preserve_folders_subtitle">Is resurtados ant a èssere sarvados in sutacartellas numenadas a pustis de s\'album de orìgine; a pustis de ddu disativare, totu s\'ammentat in una cartella ebbia</string>
+
+    <!-- A pitzus de -->
+    <string name="settings_about_title">A pitzus de</string>
+    <string name="settings_about_subtitle">Versione · Controllare is atualizatziones · Ringratziamentos e sustènnidu</string>
+    <string name="settings_check_update_title">Controllare is atualizatziones</string>
+    <string name="settings_check_update_subtitle">Otenner sa versione prus noa dae GitHub Releases</string>
+    <string name="settings_checking">Controllende…</string>
+    <string name="settings_update_available">v%1$s disponìbile</string>
+    <string name="settings_up_to_date">Già tenes sa versione prus noa</string>
+    <string name="settings_network_error">Errore de rete; torra a proare prus a tardu</string>
+    <string name="settings_reinstall_title">Torrare a installare custa versione</string>
+    <string name="settings_reinstall_subtitle">Iscarrigare sa versione prus noa e dda installare subra (pro proare is atualizatziones)</string>
+    <string name="settings_reinstall_newer_hint">Podes atualizare a v%1$s; imprea «Controllare is atualizatziones» a primu</string>
+    <string name="settings_version_title">Versione</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Sustènnidu cun Alipay</string>
+    <string name="settings_alipay_subtitle">Sustènnere s\'isvilupu</string>
+    <string name="settings_coolapk_subtitle">Impreade de Coolapk · Gràtzias pro su sustènnidu suo</string>
+    <string name="settings_ai_credits_subtitle">Gràtzias a is IDE e a is modellos de IA pro s\'agiudu insu s\'isvilupu</string>
+    <string name="settings_github_title">Indiritzu GitHub de su progetu</string>
+    <string name="settings_license_title">Litzèntzia de còdighe abertu</string>
+    <string name="settings_sponsor_dialog_title">Gràtzias pro su sustènnidu tuo</string>
+    <string name="settings_sponsor_dialog_text">Gràtzias medas pro chèrrere sustènnere custa aplicatzione!\n\nSi ses ancora unu istudiante, o non tenes indipendentzia econòmica, non ispesire nudda:\ncustòdia custa intenzione in su coro tuo e sighi a impreare s\'aplicatzione — est su sustènnidu mègius chi mi podes dare.\n\nSi boles sustènnere, cada agiudu, mannu o minore chi siat, est unu donu, e ddu dedicherai a megiorare e mantènnere s\'aplicatzione :)</string>
+    <string name="settings_alipay_missing_title">Alipay non est ancora installadu</string>
+    <string name="settings_alipay_missing_text">Non amus agatadu Alipay, duncas su sustènnidu non si podet cumpletare como.\n\nNon importat — de totu manera, gràtzias medas pro sa voluntade bona tua!</string>
+
+    <!-- Transcodìfica de vìdeo -->
+    <string name="settings_transcoder_title">Transcodificadore integradu</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Torrare a codificare</string>
+    <string name="settings_transcode_mode_remux">Càmbiu de su contenidore ebbia (cussigiadu)</string>
+    <string name="settings_transcode_mode_off">Non impreare su transcodificadore in nudda</string>
+    <string name="settings_transcode_params_title">Paràmetros de transcodìfica</string>
+    <string name="settings_transcode_params_subtitle">Calidade e cumpressione impreadas cando si torrat a codificare</string>
+    <string name="settings_transcode_params_disabled">Ativu ebbia cando est seberadu «Torrare a codificare» in «Modu de transcodìfica»</string>
+    <string name="settings_crf_value">Calidade CRF: %1$d</string>
+    <string name="settings_crf_hint">Prus minore su balore, prus manna sa calidade e sa mannària (predefinidu 18)</string>
+    <string name="settings_encoder_title">Codificadore</string>
+    <string name="settings_compress_preset_title">Predefinidu de cumpressione</string>
+
+</resources>

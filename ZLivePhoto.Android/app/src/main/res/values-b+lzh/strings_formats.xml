@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 分級 C：文言（模型輔助）盡力翻譯，措辭與用例僅供理解，歡迎社群修正。 -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">拆解</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">榮耀動態相片</string>
+    <string name="fmt_meizu">魅族動態相片</string>
+    <string name="fmt_nubia">努比亞動態相片</string>
+    <string name="fmt_oppo">OPPO 動態相片</string>
+    <string name="fmt_vivo">vivo 動態相片</string>
+    <string name="fmt_vivo_single">vivo 單檔實況</string>
+    <string name="fmt_xiaomi">小米動態相片</string>
+    <string name="fmt_err_apple_mov_missing">未見同名 .mov 影片</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV 檔無 ftyp box</string>
+    <string name="fmt_err_extract_read">拆解乃輸出之式，不當作輸入而讀</string>
+    <string name="fmt_err_no_primary_jpeg">未見主 JPEG 影像</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG 之後未見可用之 MP4 影片（無 ftyp box）</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 影片流解析失敗</string>
+    <string name="fmt_err_nubia_too_short">檔案過短，不似努比亞動態相片</string>
+    <string name="fmt_err_nubia_no_magic">缺 nubiaVpfile 尾部魔數</string>
+    <string name="fmt_err_nubia_jpeg_len">尾部所記 JPEG 之長非法：%1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG 與影片之間無 0x00 填充位元組</string>
+    <string name="fmt_err_nubia_empty_video">內嵌影片之長為 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG 尾部未見 vivo livephoto 之標記</string>
+    <string name="fmt_err_vivo_companion_missing">缺伴生影片：%1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG 主體解析失敗</string>
+    <string name="fmt_err_vivo_companion_invalid">伴生 MP4 無效（無 ftyp box）</string>
+</resources>

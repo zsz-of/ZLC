@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Рівень C: машинно-асистований переклад русинською; можливі помилки, вітаємо поправкы. -->
+<resources>
+    <string name="app_language_follow_system">Як в системі</string>
+    <string name="app_language_title">Язык аплікації</string>
+</resources>

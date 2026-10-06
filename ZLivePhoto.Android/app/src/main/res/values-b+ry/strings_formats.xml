@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Рівень C: машинно-асистований переклад русинською; можливі помилки, вітаємо поправкы. -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Выдїлїня</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Дінамічна фотка Honor</string>
+    <string name="fmt_meizu">Дінамічна фотка Meizu</string>
+    <string name="fmt_nubia">Дінамічна фотка Nubia</string>
+    <string name="fmt_oppo">Дінамічна фотка OPPO</string>
+    <string name="fmt_vivo">Дінамічна фотка vivo</string>
+    <string name="fmt_vivo_single">vivo Live Photo в їднім файлї</string>
+    <string name="fmt_xiaomi">Дінамічна фотка Xiaomi</string>
+    <string name="fmt_err_apple_mov_missing">Не найденый відеофайл .mov з тым самым іменом</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Файл MOV не має боксу ftyp</string>
+    <string name="fmt_err_extract_read">Выдїлїня є выходным форматом, не має ся чітати як входистый</string>
+    <string name="fmt_err_no_primary_jpeg">Не найденый головный JPEG образ</string>
+    <string name="fmt_err_no_mp4_after_jpeg">По JPEG не найденый платный MP4 відео (не має ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Не ся удало розобрати поток MP4 відеа</string>
+    <string name="fmt_err_nubia_too_short">Файл занадто куртый, не подобный на дінамічну фотку Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Не має магічного числа nubiaVpfile на кінцї</string>
+    <string name="fmt_err_nubia_jpeg_len">Довжка JPEG записана на кінцї не платна: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Меджі JPEG і відеом не має 0x00 заполных байтів</string>
+    <string name="fmt_err_nubia_empty_video">Довжка вложеного відеа є 0</string>
+    <string name="fmt_err_vivo_no_marker">На кінцї JPG не найденый маркер vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Не має супровідного відеофайла: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Не ся удало розобрати тїло JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">Супровідный MP4 не платный (не має ftyp box)</string>
+</resources>

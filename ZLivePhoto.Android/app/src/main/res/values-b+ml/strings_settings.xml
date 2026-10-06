@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- പൊതുവായത് -->
+    <string name="settings_title">ക്രമീകരണങ്ങൾ</string>
+    <string name="settings_cd_back">പിന്നോട്ട്</string>
+    <string name="settings_btn_apply">പ്രയോഗിക്കുക</string>
+    <string name="settings_btn_cancel">റദ്ദാക്കുക</string>
+    <string name="settings_btn_close">അടയ്ക്കുക</string>
+    <string name="settings_btn_ok">ശരി</string>
+    <string name="settings_btn_sponsor">പിന്തുണയ്ക്കുക</string>
+
+    <!-- വിഭാഗങ്ങൾ -->
+    <string name="settings_section_general">പൊതുവായത്</string>
+    <string name="settings_section_appearance">രൂപം</string>
+    <string name="settings_section_language">ഭാഷ</string>
+    <string name="settings_section_defaults">സ്ഥിരസ്ഥിതി ഓപ്ഷനുകൾ</string>
+    <string name="settings_section_output">ഔട്ട്പുട്ട്</string>
+    <string name="settings_section_transcode">വീഡിയോ ട്രാൻസ്കോഡിംഗ്</string>
+    <string name="settings_section_about">ആപ്പിനെക്കുറിച്ച്</string>
+    <string name="settings_section_app">ആപ്ലിക്കേഷൻ</string>
+    <string name="settings_section_credits">നന്ദിയും പിന്തുണയും</string>
+    <string name="settings_section_opensource">ഓപ്പൺ സോഴ്‌സും ലൈസൻസും</string>
+
+    <!-- പൊതുവായത് -->
+    <string name="settings_startup_check_title">തുടക്കത്തിൽ അപ്ഡേറ്റുകൾ പരിശോധിക്കുക</string>
+    <string name="settings_startup_check_subtitle">ആരംഭിക്കുമ്പോൾ GitHub-ൽ നിന്ന് പുതിയ പതിപ്പ് കണ്ടെത്തി ഇൻസ്റ്റാൾ ചെയ്യാൻ നിർദ്ദേശിക്കുന്നു</string>
+    <string name="settings_haptics_title">വൈബ്രേഷൻ പ്രതികരണം</string>
+    <string name="settings_haptics_subtitle">ബട്ടണുകൾ അമർത്തുമ്പോഴും നില മാറുമ്പോഴും ഉള്ള പ്രതികരണം</string>
+    <string name="settings_bounce_title">ബട്ടണുകളുടെ ഇലാസ്റ്റിക് അനിമേഷൻ</string>
+    <string name="settings_bounce_subtitle">ബട്ടൺ അമർത്തുമ്പോൾ ചെറുതാകുന്നതും തിരികെ വരുന്നതുമായ അനിമേഷൻ</string>
+
+    <!-- രൂപം -->
+    <string name="settings_theme_system">സിസ്റ്റം അനുസരിച്ച്</string>
+    <string name="settings_theme_dark">ഇരുണ്ടത്</string>
+    <string name="settings_theme_light">വെളുത്തത്</string>
+    <string name="settings_dynamic_theme_title">ഡൈനാമിക് നിറങ്ങൾ (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">സിസ്റ്റം നിറങ്ങൾ പിന്തുടരുന്നു (Android 12+); ഓഫ് ചെയ്താൽ താഴെ നൽകിയ നിറങ്ങൾ ഉപയോഗിക്കുന്നു</string>
+    <string name="settings_preset_colors_title">സജ്ജമായ തീം നിറങ്ങൾ</string>
+    <string name="settings_preset_current">നിലവിലുള്ളത്: %1$s</string>
+    <string name="settings_preset_disabled_hint">“ഡൈനാമിക് നിറങ്ങൾ (Material You)” ഓഫ് ചെയ്തതിന് ശേഷം ലഭ്യം</string>
+    <string name="settings_custom">ഇഷ്ടാനുസൃതം</string>
+    <string name="settings_custom_color_title">ഇഷ്ടാനുസൃത തീം നിറം</string>
+    <string name="settings_cd_custom_palette">ഇഷ്ടാനുസൃത പാലറ്റ്</string>
+    <string name="settings_hue_value">നിറ സ്വരം %1$d°</string>
+
+    <!-- ആപ്പ് ഭാഷ -->
+    <string name="settings_language_dialog_title">ആപ്പ് ഭാഷ തിരഞ്ഞെടുക്കുക</string>
+    <string name="settings_language_count">ആകെ %1$d ഭാഷകൾ</string>
+
+    <!-- സ്ഥിരസ്ഥിതി ഓപ്ഷനുകൾ -->
+    <string name="settings_reminder_dialogs_title">“വീണ്ടും കാണിക്കരുത്” ഡയലോഗുകൾ</string>
+    <string name="settings_reminder_dialogs_subtitle">എല്ലാ “വീണ്ടും കാണിക്കരുത്” സ്വിച്ചുകളും നിയന്ത്രിക്കുക</string>
+    <string name="settings_reminder_hint">ഓൺ ചെയ്ത സ്വിച്ച് “വീണ്ടും കാണിക്കരുത്” എന്നാണ് അർഥം; ഓഫ് ചെയ്താൽ അതാത് സന്ദർഭത്തിൽ മുന്നറിയിപ്പ് വീണ്ടും കാണിക്കും.</string>
+
+    <!-- ഔട്ട്പുട്ട് -->
+    <string name="settings_preserve_folders_title">സ്രോതസ്സ് ഫോൾഡർ ഘടന നിലനിർത്തുക</string>
+    <string name="settings_preserve_folders_subtitle">ഫലങ്ങൾ സ്രോതസ്സ് ആൽബത്തിന്റെ പേരിലുള്ള സബ്‌ഫോൾഡറുകളിൽ സൂക്ഷിക്കുന്നു; ഓഫ് ചെയ്താൽ എല്ലാം ഒരേ ഫോൾഡറിൽ ചേർക്കുന്നു</string>
+
+    <!-- ആപ്പിനെക്കുറിച്ച് -->
+    <string name="settings_about_title">ആപ്പിനെക്കുറിച്ച്</string>
+    <string name="settings_about_subtitle">പതിപ്പ് · അപ്ഡേറ്റുകൾ · നന്ദിയും പിന്തുണയും</string>
+    <string name="settings_check_update_title">അപ്ഡേറ്റുകൾ പരിശോധിക്കുക</string>
+    <string name="settings_check_update_subtitle">GitHub Releases-ൽ നിന്ന് ഏറ്റവും പുതിയ പതിപ്പ് നേടുക</string>
+    <string name="settings_checking">പരിശോധിക്കുന്നു…</string>
+    <string name="settings_update_available">v%1$s ലഭ്യം</string>
+    <string name="settings_up_to_date">ഇതിനകം ഏറ്റവും പുതിയ പതിപ്പ്</string>
+    <string name="settings_network_error">നെറ്റ്‌വർക്ക് പിശക്, പിന്നീട് വീണ്ടും ശ്രമിക്കുക</string>
+    <string name="settings_reinstall_title">ഈ പതിപ്പ് വീണ്ടും ഇൻസ്റ്റാൾ ചെയ്യുക</string>
+    <string name="settings_reinstall_subtitle">നിലവിലെ ഏറ്റവും പുതിയ പതിപ്പ് ഡൗൺലോഡ് ചെയ്ത് ഇൻസ്റ്റാൾ ചെയ്യുക (അപ്ഡേറ്റ് പരിശോധിക്കാൻ)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s-ലേക്ക് അപ്ഡേറ്റ് ലഭ്യമാണ്, ആദ്യം “അപ്ഡേറ്റുകൾ പരിശോധിക്കുക” തിരഞ്ഞെടുക്കുക</string>
+    <string name="settings_version_title">പതിപ്പ്</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay വഴി പിന്തുണയ്ക്കുക</string>
+    <string name="settings_alipay_subtitle">വികസനത്തെ പിന്തുണയ്ക്കുക</string>
+    <string name="settings_coolapk_subtitle">Coolapk ഉപയോക്താവ് · പിന്തുണയ്ക്ക് നന്ദി</string>
+    <string name="settings_ai_credits_subtitle">വികസനത്തിൽ സഹായിച്ച AI പരിസ്ഥിതികളോടും AI മോഡലുകളോടും നന്ദി</string>
+    <string name="settings_github_title">GitHub-ൽ സോഴ്‌സ് കോഡ്</string>
+    <string name="settings_license_title">ഓപ്പൺ സോഴ്‌സ് ലൈസൻസ്</string>
+    <string name="settings_sponsor_dialog_title">നിങ്ങളുടെ പിന്തുണയ്ക്ക് നന്ദി</string>
+    <string name="settings_sponsor_dialog_text">ഈ ആപ്പിനെ പിന്തുണയ്ക്കാൻ താൽപ്പര്യം കാണിച്ചതിന് വളരെ നന്ദി!\n\nനിങ്ങൾ ഇപ്പോഴും വിദ്യാർഥിയാണെങ്കിലോ സാമ്പത്തികമായി സ്വതന്ത്രനല്ലെങ്കിലോ, ദയവായി പണം നൽകരുത് —\nആ നല്ല ചിന്ത നിങ്ങളുടെ ഹൃദയത്തിൽ സൂക്ഷിച്ച് ആപ്പ് തുടർന്നും ഉപയോഗിക്കുക; അതാണ് എനിക്ക് ഏറ്റവും നല്ല പിന്തുണ.\n\nഎന്നാൽ പിന്തുണയ്ക്കാൻ താൽപ്പര്യമുണ്ടെങ്കിൽ, ചെറിയ സംഭാവനയും പ്രധാനമാണ് — അത് മെച്ചപ്പെട്ട രൂപത്തിനും പുതിയ സവിശേഷതകൾക്കും ഞാൻ ഉപയോഗിക്കും :)</string>
+    <string name="settings_alipay_missing_title">Alipay ഇൻസ്റ്റാൾ ചെയ്തിട്ടില്ല</string>
+    <string name="settings_alipay_missing_text">Alipay തുറന്നില്ല, അതിനാൽ ഇപ്പോൾ പിന്തുണയ്ക്കാൻ കഴിയില്ല.\n\nഅത് കുഴപ്പമില്ല — നിങ്ങളുടെ നല്ല മനസ്സിന് വളരെ നന്ദി, മറ്റൊന്നും വേണ്ട!</string>
+
+    <!-- വീഡിയോ ട്രാൻസ്കോഡിംഗ് -->
+    <string name="settings_transcoder_title">അന്തർനിർമിത ട്രാൻസ്കോഡർ</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">വീണ്ടും എൻകോഡ് ചെയ്യുക</string>
+    <string name="settings_transcode_mode_remux">കണ്ടെയ്നർ മാത്രം മാറ്റുക (ശുപാർശ ചെയ്യുന്നു)</string>
+    <string name="settings_transcode_mode_off">ട്രാൻസ്കോഡർ പൂർണ്ണമായി ഓഫ് ചെയ്യുക</string>
+    <string name="settings_transcode_params_title">ട്രാൻസ്കോഡിംഗ് പരാമീറ്ററുകൾ</string>
+    <string name="settings_transcode_params_subtitle">വീണ്ടും എൻകോഡ് ചെയ്യുമ്പോഴുള്ള ഗുണനിലവാര, കംപ്രഷൻ പരാമീറ്ററുകൾ</string>
+    <string name="settings_transcode_params_disabled">“വീഡിയോ ട്രാൻസ്കോഡിംഗ്”-ൽ “വീണ്ടും എൻകോഡ് ചെയ്യുക” തിരഞ്ഞെടുത്താൽ മാത്രം പ്രവർത്തിക്കും</string>
+    <string name="settings_crf_value">CRF ഗുണനിലവാരം: %1$d</string>
+    <string name="settings_crf_hint">ചെറിയ മൂല്യം കൂടിയ ഗുണനിലവാരവും വലിയ വലിപ്പവും നൽകുന്നു (സ്ഥിരസ്ഥിതി 18)</string>
+    <string name="settings_encoder_title">എൻകോഡർ</string>
+    <string name="settings_compress_preset_title">കംപ്രഷൻ പ്രൊഫൈൽ</string>
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Euskara (eu) — aplikazio mailako testuak.
+  Itzulia res/values/strings_app.xml (txinera sinplifikatua, erreserba-localea) oinarritzat hartuta.
+  Kalitatea: A.
+-->
+<resources>
+    <!-- «Aplikazioaren hizkuntza» hautatzailean sistema jarraitzen duen elementua -->
+    <string name="app_language_follow_system">Jarraitu sistemari</string>
+    <!-- Aplikazioaren hizkuntza-hautatzailearen izenburua -->
+    <string name="app_language_title">Aplikazioaren hizkuntza</string>
+</resources>

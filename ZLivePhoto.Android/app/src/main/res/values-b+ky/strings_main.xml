@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Кыргызча (Kyrgyz) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Kyrgyz (Cyrillic); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">Даяр</string>
+    <string name="main_status_location_granted">Жайгашуу уруксаты алынды; айландыруудан кийин GPS метаберилиши сакталат</string>
+    <string name="main_status_location_denied">Жайгашуу уруксаты берилген жок: айландырылган сүрөт GPS жайгашуусун жоготот</string>
+    <string name="main_status_all_files_granted">«Бардык файлдарга кирүү» уруксаты алынды; айландыруу альбом каталогуна түз жазат жана жайгашуу маалыматын толук сактайт</string>
+    <string name="main_status_all_files_denied">«Бардык файлдарга кирүү» уруксаты берилген жок: айрым моделдерде айландыруудан кийин жайгашуу маалыматы жоголушу мүмкүн</string>
+    <string name="main_status_read_granted">Сүрөт жана видео окуу уруксаты алынды</string>
+    <string name="main_status_video_missing">Уруксат алынды, бирок видео уруксаты жок: кош файлдуу кыймылдуу сүрөттүн коштоочу видеосун табуу мүмкүн эмес</string>
+    <string name="main_status_permission_denied">Уруксат берилген жок, «Файл кошуу» баскычын дагы басып көрүңүз</string>
+    <string name="main_status_folder_not_selected">Папка тандалган жок</string>
+    <string name="main_status_folder_unavailable">Тандалган папкага кирүү мүмкүн эмес (жергиликтүү сактоо каталогу гана колдоого алынат)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Мурунку сессия кайра жүктөлдү (%1$d файл)</item>
+        <item quantity="other">Мурунку сессия кайра жүктөлдү (%1$d файл)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Өткөн жолку анормалдуу чыгуу аныкталды, бүтпөгөн тизме тазаланды</string>
+    <string name="main_status_compose_blocks_extract">Кезекте кураштыруу тапшырмасы бар, бөлүп алуу режимине өтүү мүмкүн эмес</string>
+    <string name="main_status_replace_off_mutex">Алмаштыруу режими өчүрүлдү («Иштетүүдөн кийин түпнуска сүрөттү өчүрүү» менен өз ара жокко чыгарат)</string>
+    <string name="main_status_delete_needs_all_files">Түпнуска сүрөттү автоматтык өчүрүү үчүн «Бардык файлдарга кирүү» уруксаты керек, адегенде уруксат бериңиз</string>
+    <string name="main_status_replace_off">Алмаштыруу режими өчүрүлдү, натыйжа альбом каталогуна кайра жазылат</string>
+    <string name="main_status_replace_needs_all_files">Алмаштыруу режими «Бардык файлдарга кирүү» уруксатын талап кылат, адегенде уруксат бериңиз</string>
+    <string name="main_status_delete_off_mutex">«Иштетүүдөн кийин түпнуска сүрөттү өчүрүү» өчүрүлдү (алмаштыруу режими менен өз ара жокко чыгарат)</string>
+    <string name="main_status_loading_albums">Альбомдор окулуп жатат…</string>
+    <string name="main_status_no_albums">Альбом табылган жок</string>
+    <string name="main_status_compose_no_photo">Сүрөт тандалган жок, кураштыруу мүмкүн эмес</string>
+    <string name="main_status_compose_no_video">Видео тандалган жок, кураштыруу мүмкүн эмес</string>
+    <string name="main_status_compose_all_added">Тандалган сүрөттөрдүн баары тизмеде</string>
+    <string name="main_status_compose_paired">%1$d сүрөт, %2$d видео; азыраак тарапка жараша %3$d жуп кураштыруу тапшырмасы кошулду</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d кураштыруу тапшырмасы кошулду, «Айландырууну баштоо» басыңыз</item>
+        <item quantity="other">%1$d кураштыруу тапшырмасы кошулду, «Айландырууну баштоо» басыңыз</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (чыгуу форматы Google болуп автоматтык өзгөртүлдү)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Бөлүшүлгөн %1$d сүрөт импорттолуп жатат…</item>
+        <item quantity="other">Бөлүшүлгөн %1$d сүрөт импорттолуп жатат…</item>
+    </plurals>
+    <string name="main_status_import_failed">Импорт ишке ашкан жок: %1$s</string>
+    <string name="main_status_import_done_partial">Импорт бүттү: ийгиликтүү %1$d, ийгиликсиз %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Импорт бүттү: бардыгы %1$d файл</item>
+        <item quantity="other">Импорт бүттү: бардыгы %1$d файл</item>
+    </plurals>
+    <string name="main_status_import_stopped">Импорт токтотулду: ийгиликтүү %1$d, ийгиликсиз %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d файл импорттолуп жатат…</item>
+        <item quantity="other">%1$d файл импорттолуп жатат…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Импорттолуп жатат %1$d/%2$d…</string>
+    <string name="main_status_stopping">Токтотулуп жатат… (учурдагы файл бүткөндөн кийин токтойт)</string>
+    <string name="main_status_stopping_import">Импорт токтотулуп жатат…</string>
+    <string name="main_status_removed">%1$s алынып салынды</string>
+    <string name="main_status_cleared">Тазаланды</string>
+    <string name="main_status_nothing_to_convert">Айландырууга файл жок</string>
+    <string name="main_status_folder_unreadable">Тандалган папканы окуу мүмкүн эмес</string>
+    <string name="main_status_scanning_folder">Папка скандалып жатат…</string>
+    <string name="main_status_no_images">Тандалган папкадан сүрөт табылган жок</string>
+    <string name="main_status_batch_importing">Топтом импорттолуп жатат %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Топтом импорт токтотулду: бардыгы %1$d кыймылдуу сүрөт</item>
+        <item quantity="other">Топтом импорт токтотулду: бардыгы %1$d кыймылдуу сүрөт</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Топтом импорт токтотулду: бардыгы %1$d кыймылдуу сүрөт, %2$d кыймылсыз файл өткөрүп жиберилди</item>
+        <item quantity="other">Топтом импорт токтотулду: бардыгы %1$d кыймылдуу сүрөт, %2$d кыймылсыз файл өткөрүп жиберилди</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Топтом импорт бүттү: бардыгы %1$d кыймылдуу сүрөт</item>
+        <item quantity="other">Топтом импорт бүттү: бардыгы %1$d кыймылдуу сүрөт</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Топтом импорт бүттү: бардыгы %1$d кыймылдуу сүрөт, %2$d кыймылсыз файл өткөрүп жиберилди</item>
+        <item quantity="other">Топтом импорт бүттү: бардыгы %1$d кыймылдуу сүрөт, %2$d кыймылсыз файл өткөрүп жиберилди</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Токтотулду: %1$d файлдын ичинен %2$d иштетилип, %3$d түпнуска файл алмаштырылды</string>
+    <string name="main_status_stopped_export">Токтотулду: %1$d файлдын ичинен %2$d иштетилип, %3$d альбомго экспорттолду</string>
+    <string name="main_status_done_replace_reason">Бүттү: %1$d файл иштетилди, %2$d түпнуска файл алмаштырылды (себеби: %3$s)</string>
+    <string name="main_status_done_export_reason">Бүттү: %1$d файл иштетилди, %2$d альбомго экспорттолду (себеби: %3$s)</string>
+    <string name="main_status_done_replace">Бүттү: %1$d файл иштетилди, %2$d түпнуска файл алмаштырылды</string>
+    <string name="main_status_done_export">Бүттү: %1$d файл иштетилди, %2$d альбомго экспорттолду</string>
+    <string name="main_status_keep_originals">%1$s; «Толук сактоо катмарына кирүү» уруксаты алынган жок, түпнуска сүрөт сакталды</string>
+    <string name="main_info_detecting">Аныкталып жатат…</string>
+    <string name="main_info_unrecognized">Таанылбаган кыймылдуу сүрөт форматы</string>
+    <string name="main_info_converting">Айландырылып жатат…</string>
+    <string name="main_info_compose_task">Кураштыруу тапшырмасы («Айландырууну баштоо» басып аткарыңыз)</string>
+    <string name="main_info_done_replaced">Бүттү (%1$d түпнуска файл алмаштырылды)</string>
+    <string name="main_info_done_skipped">Бүттү (өткөрүп жиберилди: ат кагылышты)</string>
+    <string name="main_info_done_exported">Бүттү (%1$d экспорттолду)</string>
+    <string name="main_info_failed">Ишке ашкан жок: %1$s</string>
+    <string name="main_progress_added">Кошулду %1$d/%2$d</string>
+    <string name="main_progress_processed">Иштетилди %1$d/%2$d</string>
+    <string name="main_progress_imported">Импорттолду %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Сүрөт жана видео окуу уруксаты талап кылынат</string>
+    <string name="main_dialog_permission_message">Бул программа түзмөгүңүздөгү сүрөттөрдү жана видеолорду окушу керек:
+
+• Сүрөт уруксаты: түзмөк альбомун скандап, кыймылдуу сүрөттөрдү аныктайт
+• Видео уруксаты: кош файлдуу кыймылдуу сүрөттүн коштоочу видеосун табат
+• Жайгашуу уруксаты: сүрөттөгү GPS жайгашуу метаберилишин сактайт (жок болсо айландыруудан кийин жайгашуу жоголот)
+
+Баш тартсаңыз курулган тандагычты колдонуу мүмкүн эмес; кийин «Файл кошуу» баскычын дагы басып уруксат алсаңыз болот.</string>
+    <string name="main_dialog_settings_title">Сүрөт жана видео уруксатын кол менен берүү керек</string>
+    <string name="main_dialog_settings_message">Сиз мурун «Кайра сураба» дегенди тандагансыз, ошондуктан система уруксат терезесин көрсөтпөйт.
+
+Колдонмо деталдары → Уруксаттар → Сүрөт жана видео бөлүмүнө өтүп, кол менен уруксат берип, бул колдонмого кайтыңыз.
+
+Эскертүү: «Сүрөт» жана «Видео» уруксаттарын экөөнү тең берүү керек, болбосо кош файлдуу кыймылдуу сүрөттүн коштоочу видеосун табуу мүмкүн эмес.</string>
+    <string name="main_dialog_allfiles_title_delete">Түпнуска сүрөттү автоматтык өчүрүү үчүн «Бардык файлдарга кирүү» керек</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Бул түзмөк түпнуска сүрөттү автоматтык өчүрүүнү колдобойт</string>
+    <string name="main_dialog_allfiles_title_replace">Алмаштыруу режими «Бардык файлдарга кирүү» талап кылат</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Бул түзмөк алмаштыруу режимин колдобойт</string>
+    <string name="main_dialog_allfiles_title_location">«Бардык файлдарга кирүү» уруксатын берүү сунушталат</string>
+    <string name="main_dialog_allfiles_delete_message">«Иштетүүдөн кийин түпнуска сүрөттү өчүрүү» дисктеги түпнуска файлды (сүрөт жана анын коштоочу видеосу) түз өчүрөт; бул аракетти артка кайтаруу мүмкүн эмес, ошондуктан адегенде «Бардык файлдарга кирүү» уруксатын берүү керек.
+
+Уруксат бергенден кийин гана которгуч жанданат, ошондо өзүңүз күйгүзө аласыз.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Учурдагы система (Android 10 жана андан ылдый) «Бардык файлдарга кирүү» уруксатын бербейт, дисктеги түпнуска файлды түз өчүрүү мүмкүн эмес; ошондуктан бул түзмөк «Иштетүүдөн кийин түпнуска сүрөттү өчүрүүнү» колдобойт.
+
+Айландыруудан кийин системалык альбом аркылуу түпнуска сүрөттү кол менен өчүрсөңүз болот.</string>
+    <string name="main_dialog_allfiles_replace_message">«Алмаштыруу режими» айландыруу натыйжасын дисктеги түпнуска файлга түз жазат (мурунку мазмундун үстүнөн жазат); бул аракетти артка кайтаруу мүмкүн эмес, ошондуктан адегенде «Бардык файлдарга кирүү» уруксатын берүү керек.
+
+Уруксат бергенден кийин гана которгуч жанданат, ошондо өзүңүз күйгүзө аласыз.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Учурдагы система (Android 10 жана андан ылдый) «Бардык файлдарга кирүү» уруксатын бербейт, дисктеги түпнуска файлды түз жазуу мүмкүн эмес; ошондуктан бул түзмөк «Алмаштыруу режимин» колдобойт.
+
+Демейки ыкма менен айландырууну улантсаңыз болот; натыйжа альбом каталогуна чыгат.</string>
+    <string name="main_dialog_allfiles_location_message">Айрым моделдер (мисалы Meizu) системалык альбом интерфейси аркылуу жазганда GPS жайгашуу маалыматын алып салат, натыйжада айландыруудан кийин сүрөт жайгашуусун жоготот.
+
+«Бардык файлдарга кирүү» уруксатын бергенден кийин бул программа альбом каталогуна түз жазып, жайгашуу метаберилишин толук сактайт.
+
+Бербесеңиз да кадимкидей айландырса болот; айрым моделдерде жайгашуу маалыматы жоголушу мүмкүн.</string>
+    <string name="main_dialog_conflict_title">Чыгуу файлынын аты кагылышты</string>
+    <string name="main_dialog_conflict_message">Чыгуу каталогунда ушундай аталыштагы файл бар:
+%1$s
+
+Кантип иштетүүнү тандаңыз.</string>
+    <string name="main_label_conflict_always">Кийинки кагылышууларга ушул ыкманы колдонуу</string>
+    <string name="main_btn_grant">Уруксат берүү</string>
+    <string name="main_btn_deny">Баш тартуу</string>
+    <string name="main_btn_go_settings">Жөндөөлөргө</string>
+    <string name="main_btn_cancel">Жокко чыгаруу</string>
+    <string name="main_btn_grant_access">Уруксат берүү</string>
+    <string name="main_btn_got_it">Түшүндүм</string>
+    <string name="main_btn_not_now">Азыр эмес</string>
+    <string name="main_btn_skip">Өткөрүп жиберүү</string>
+    <string name="main_btn_overwrite">Үстүнөн жазуу</string>
+    <string name="main_btn_auto_rename">Автоматтык атын өзгөртүү</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d түпнуска файл өчүрүлдү</item>
+        <item quantity="other">%1$d түпнуска файл өчүрүлдү</item>
+    </plurals>
+    <string name="main_delete_nothing">Өчүрүлүүчү түпнуска сүрөт жок</string>
+    <string name="main_delete_partial">%1$d түпнуска файл өчүрүлдү (%2$d өчүрүлбөдү, сакталды)</string>
+    <string name="main_delete_failed">Түпнуска сүрөттү өчүрүү ишке ашкан жок (файл колдонулуп жатат же жазуу укугу жок), сакталды</string>
+    <string name="main_export_missing_output">Айландыруу натыйжасы жок же бош: %1$s</string>
+    <string name="main_export_missing_output_bare">Айландыруу натыйжасы жок же бош</string>
+    <string name="main_export_insert_null">MediaStore insert null кайтарды</string>
+    <string name="main_export_output_stream">MediaStore чыгуу агымы жеткиликсиз</string>
+    <string name="main_export_write_failed">MediaStore тутумуна жазуу ишке ашкан жок: %1$s</string>
+    <string name="main_export_mkdir_failed">Альбом каталогун %1$s түзүү мүмкүн эмес</string>
+    <string name="main_export_dir_write_failed">Альбом каталогуна жазуу ишке ашкан жок: %1$s</string>
+    <string name="main_export_no_source">Түпнуска файл табылган жок, алмаштыруу өткөрүп жиберилди</string>
+    <string name="main_export_companion_failed">Коштоочу файлга кайра жазуу ишке ашкан жок: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Түпнуска файлдын каталогу жазылбайт, коштоочу файл кайра жазылган жок</string>
+    <string name="main_export_source_dir_unavailable">Түпнуска файлдын каталогу жеткиликсиз: %1$s</string>
+    <string name="main_export_replace_failed">Түпнуска файлды алмаштыруу ишке ашкан жок: %1$s</string>
+    <string name="main_export_replace_failed_bare">Түпнуска файлды алмаштыруу ишке ашкан жок</string>
+</resources>

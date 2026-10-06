@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Brezhoneg (br) — testennoù live an arload.
+  Troet diwar res/values/strings_app.xml (sinaeg simplaet, al locale dre ziouer).
+  Perzhded: B.
+-->
+<resources>
+    <!-- An elfenn er seleter «Yezh an arload» a heuilh ar reizhiad -->
+    <string name="app_language_follow_system">Heuliañ ar reizhiad</string>
+    <!-- Titl seleter ar yezh -->
+    <string name="app_language_title">Yezh an arload</string>
+</resources>

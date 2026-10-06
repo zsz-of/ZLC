@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Nivell C: tradüziun assistida da model in lumbard; currezzion benvegüde. -->
+<resources>
+    <string name="main_status_ready">Pront</string>
+    <string name="main_status_location_granted">Permess de posizion concedud; despoeu la conversion i metadad GPS resten</string>
+    <string name="main_status_location_denied">Senza permess de posizion: despoeu la conversion i foto perden la posizion GPS</string>
+    <string name="main_status_all_files_granted">Permess de tucc i file concedud; la conversion la scriv de dritt in de la cartella de la galeria e la conserva la posizion</string>
+    <string name="main_status_all_files_denied">Senza permess de tucc i file: su d\'un quaj model la posizion la sa pò perd despoeu la conversion</string>
+    <string name="main_status_read_granted">Permess de lensg foto e video concedud</string>
+    <string name="main_status_video_missing">Permess concedud, ma el manca quell di video: el sa troeuva nò el video compagn di foto dinamich a duu file</string>
+    <string name="main_status_permission_denied">Permess nò concedud; clicca ancamò "Giunta file"</string>
+    <string name="main_status_folder_not_selected">Nissuna cartella selinzionada</string>
+    <string name="main_status_folder_unavailable">El sa pò nò andà dent in de la cartella selinzionada (domà cartell de memoria interna)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Session precedenta ripristinada (%1$d file)</item>
+        <item quantity="other">Session precedenta ripristinada (%1$d file)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Rilevada una saradura anomala de prima; la lista nò finida l\'è stada netada</string>
+    <string name="main_status_compose_blocks_extract">In de la cova el gh\'è di lavor de compòn; el sa pò nò passà al mod estrazion</string>
+    <string name="main_status_replace_off_mutex">Mod sostituzion disattivad (l\'è nò compatibil cont "Scancella l\'original quand che l\'è finid")</string>
+    <string name="main_status_delete_needs_all_files">Scancellà deperlù l\'original el voeur el permess de tucc i file; concedel prima</string>
+    <string name="main_status_replace_off">Mod sostituzion disattivad; i risultad vegnen scrivud de noeuv in de la cartella de la galeria</string>
+    <string name="main_status_replace_needs_all_files">El mod sostituzion el voeur el permess de tucc i file; concedel prima</string>
+    <string name="main_status_delete_off_mutex">"Scancella l\'original quand che l\'è finid" disattivad (l\'è nò compatibil cont el mod sostituzion)</string>
+    <string name="main_status_loading_albums">Dree a carià i album…</string>
+    <string name="main_status_no_albums">El sa troeuva nò nissun album</string>
+    <string name="main_status_compose_no_photo">Nissuna foto selinzionada; el sa pò nò compòn</string>
+    <string name="main_status_compose_no_video">Nissun video selinzionad; el sa pò nò compòn</string>
+    <string name="main_status_compose_all_added">Tucc i foto selinzionad inn giamò in de la lista</string>
+    <string name="main_status_compose_paired">%1$d foto e %2$d video; segond el lat pussee curt, giuntad %3$d cobbi de lavor de compòn</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Giuntad %1$d lavor de compòn; clicca "Scomincia la conversion" per compòn</item>
+        <item quantity="other">Giuntad %1$d lavor de compòn; clicca "Scomincia la conversion" per compòn</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (formad de sortida cambiad deperlù in Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Dree a importà %1$d imagin condivisa…</item>
+        <item quantity="other">Dree a importà %1$d imagin condivis…</item>
+    </plurals>
+    <string name="main_status_import_failed">Eror de importazion: %1$s</string>
+    <string name="main_status_import_done_partial">Importazion finida: %1$d riussid, %2$d falid</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importazion finida: %1$d file importad</item>
+        <item quantity="other">Importazion finida: %1$d file importad</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importazion fermada: %1$d riussid, %2$d falid</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Dree a importà %1$d file…</item>
+        <item quantity="other">Dree a importà %1$d file…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Dree a importà %1$d/%2$d…</string>
+    <string name="main_status_stopping">Dree a fermà… (el finiss el file che l\'è dree)</string>
+    <string name="main_status_stopping_import">Dree a fermà l\'importazion…</string>
+    <string name="main_status_removed">Trad foeura %1$s</string>
+    <string name="main_status_cleared">Netad</string>
+    <string name="main_status_nothing_to_convert">El gh\'è nò file de convertì</string>
+    <string name="main_status_folder_unreadable">El sa pò nò lensg la cartella selinzionada</string>
+    <string name="main_status_scanning_folder">Dree a scansionà la cartella…</string>
+    <string name="main_status_no_images">In de la cartella selinzionada el gh\'è nò imagin</string>
+    <string name="main_status_batch_importing">Importazion in bloch %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Importazion in bloch fermada: importada %1$d foto dinamica</item>
+        <item quantity="other">Importazion in bloch fermada: importad %1$d foto dinamich</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Importazion in bloch fermada: importada %1$d foto dinamica, saltad %2$d file nò dinamich</item>
+        <item quantity="other">Importazion in bloch fermada: importad %1$d foto dinamich, saltad %2$d file nò dinamich</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Importazion in bloch finida: importada %1$d foto dinamica</item>
+        <item quantity="other">Importazion in bloch finida: importad %1$d foto dinamich</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Importazion in bloch finida: importada %1$d foto dinamica, saltad %2$d file nò dinamich</item>
+        <item quantity="other">Importazion in bloch finida: importad %1$d foto dinamich, saltad %2$d file nò dinamich</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Fermad: lavorad %2$d de %1$d file, sostituid %3$d originaj</string>
+    <string name="main_status_stopped_export">Fermad: lavorad %2$d de %1$d file, esportad %3$d in galeria</string>
+    <string name="main_status_done_replace_reason">Finid: lavorad %1$d file, sostituid %2$d originaj (motiv: %3$s)</string>
+    <string name="main_status_done_export_reason">Finid: lavorad %1$d file, esportad %2$d in galeria (motiv: %3$s)</string>
+    <string name="main_status_done_replace">Finid: lavorad %1$d file, sostituid %2$d originaj</string>
+    <string name="main_status_done_export">Finid: lavorad %1$d file, esportad %2$d in galeria</string>
+    <string name="main_status_keep_originals">%1$s; senza el permess intregh de la memoria i originaj inn restad</string>
+    <string name="main_info_detecting">Dree a recognoss…</string>
+    <string name="main_info_unrecognized">Formad de foto dinamica nò recognossud</string>
+    <string name="main_info_converting">Dree a convertì…</string>
+    <string name="main_info_compose_task">Lavor de compòn (clicca Scomincia la conversion per compòn)</string>
+    <string name="main_info_done_replaced">Finid (sostituid %1$d originaj)</string>
+    <string name="main_info_done_skipped">Finid (saltad: nom doppi)</string>
+    <string name="main_info_done_exported">Finid (esportad %1$d)</string>
+    <string name="main_info_failed">Eror: %1$s</string>
+    <string name="main_progress_added">Giuntad %1$d/%2$d</string>
+    <string name="main_progress_processed">Lavorad %1$d/%2$d</string>
+    <string name="main_progress_imported">Importad %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">El voeur el permess de lensg foto e video</string>
+    <string name="main_dialog_permission_message">Questa aplicazion la gh\'ha besogn de lensg i foto e i video del tò dispositiv:\n\n• Permess di foto: scansionà la galeria del dispositiv e trovà dent i foto dinamich\n• Permess di video: trovà el video compagn di foto dinamich a duu file\n• Permess de posizion: conservà i metadad GPS di foto (se el manca, despoeu la conversion la posizion la sa perd)\n\nSe te el refud, te pòdet nò doprà el selinzionador de file integrad; pussee tard te pòdet cliccà ancamò "Giunta file" per concedel.</string>
+    <string name="main_dialog_settings_title">I permess di foto e di video inn de conced a man</string>
+    <string name="main_dialog_settings_message">Prima te gh\'hee sernid "Domandà pussee nò", donca el sistema el mostra pussee nò el dialogh di permess.\n\nVa dent in de la pagina di detaj de l\'aplicazion → Permess → Foto e video, conced l\'access a man e torna in de l\'aplicazion.\n\nAttenzion: el voeur conced insema sia el permess "Foto" sia quell "Video"; sedenò i foto dinamich a duu file troeuven nò el video compagn.</string>
+    <string name="main_dialog_allfiles_title_delete">Scancellà deperlù l\'original el voeur "Access a tucc i file"</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Quest dispositiv el sostegn nò el scancellà deperlù l\'original</string>
+    <string name="main_dialog_allfiles_title_replace">El mod sostituzion el voeur "Access a tucc i file"</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Quest dispositiv el sostegn nò el mod sostituzion</string>
+    <string name="main_dialog_allfiles_title_location">El se conseja de conced "Access a tucc i file"</string>
+    <string name="main_dialog_allfiles_delete_message">"Scancella l\'original quand che l\'è finid" el scancella de dritt i file originaj del disch (la foto e el sò video compagn); l\'operazion la sa pò nò desfà, donca prima el voeur "Access a tucc i file".\n\nEl interrutor el sa attiva domà despoeu avèll concedud; despoeu te el pòdet attivà ti.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">El sistema de adess (Android 10 o pussee vegg) el gh\'ha nò "Access a tucc i file", donca el sa pò nò scancellà de dritt i originaj del disch; quest dispositiv el sostegn nò "Scancella l\'original quand che l\'è finid".\n\nQuand che la conversion l\'è finida te pòdet netà a man i originaj in de la galeria del sistema.</string>
+    <string name="main_dialog_allfiles_replace_message">El "mod sostituzion" el scriv de dritt el risultad de la conversion sora i file originaj sul disch (el ghe cambia el contegnud); l\'operazion la sa pò nò desfà, donca prima el voeur "Access a tucc i file".\n\nEl interrutor el sa attiva domà despoeu avèll concedud; despoeu te el pòdet attivà ti.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">El sistema de adess (Android 10 o pussee vegg) el gh\'ha nò "Access a tucc i file", donca el sa pò nò scriv de dritt sora i originaj sul disch; quest dispositiv el sostegn nò el "mod sostituzion".\n\nTe pòdet seguità a convertì de norma; el risultad el vegn scrivud in de la cartella de la galeria.</string>
+    <string name="main_dialog_allfiles_location_message">Un quaj model (compagn del Meizu) el scriv travers la galeria del sistema e el ghe scancella la posizion GPS, donca i foto convertid perden la posizion.\n\nSe te concedet "Access a tucc i file", l\'aplicazion la scriv de dritt in de la cartella de la galeria e la conserva tucc i metadad de la posizion.\n\nTe pòdet anca convertì senza concedel; su d\'un quaj model la posizion la sa pò perd.</string>
+    <string name="main_dialog_conflict_title">Conflit de nom del file de sortida</string>
+    <string name="main_dialog_conflict_message">In de la cartella de sortida el gh\'è giamò un file cont l\'istess nom:\n%1$s\n\nSerniss come seguità.</string>
+    <string name="main_label_conflict_always">Dopera quest mod per i conflit che vegnen</string>
+    <string name="main_btn_grant">Conced</string>
+    <string name="main_btn_deny">Refudà</string>
+    <string name="main_btn_go_settings">Va a l\'impostazion</string>
+    <string name="main_btn_cancel">Anulla</string>
+    <string name="main_btn_grant_access">Conced l\'access</string>
+    <string name="main_btn_got_it">Ho capid</string>
+    <string name="main_btn_not_now">Nò adess</string>
+    <string name="main_btn_skip">Salta</string>
+    <string name="main_btn_overwrite">Sovrascriv</string>
+    <string name="main_btn_auto_rename">Cambia el nom deperlù</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Scancellad %1$d file original</item>
+        <item quantity="other">Scancellad %1$d file originaj</item>
+    </plurals>
+    <string name="main_delete_nothing">El gh\'è nò originaj de scancellà</string>
+    <string name="main_delete_partial">Scancellad %1$d file originaj (%2$d el s\'è nò podud scancellà e inn restad)</string>
+    <string name="main_delete_failed">El s\'è nò podud scancellà l\'original (file doprad o senza permess de scriv); l\'è restad</string>
+    <string name="main_export_missing_output">El risultad de la conversion el manca o l\'è voeuj: %1$s</string>
+    <string name="main_export_missing_output_bare">El risultad de la conversion el manca o l\'è voeuj</string>
+    <string name="main_export_insert_null">L\'inseriment in MediaStore l\'ha dà indree null</string>
+    <string name="main_export_output_stream">El fluss de sortida de MediaStore l\'è nò disponibil</string>
+    <string name="main_export_write_failed">El s\'è nò podud scriv in MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">El s\'è nò podud creà la cartella de la galeria %1$s</string>
+    <string name="main_export_dir_write_failed">El s\'è nò podud scriv in de la cartella de la galeria: %1$s</string>
+    <string name="main_export_no_source">El s\'è nò podud trovà el file original; sostituzion saltada</string>
+    <string name="main_export_companion_failed">El s\'è nò podud scriv de noeuv el file compagn: %1$s</string>
+    <string name="main_export_source_dir_unwritable">La cartella original la sa pò nò scriv; el file compagn el s\'è nò podud scriv de noeuv</string>
+    <string name="main_export_source_dir_unavailable">La cartella original l\'è nò disponibil: %1$s</string>
+    <string name="main_export_replace_failed">El s\'è nò podud sostituì el file original: %1$s</string>
+    <string name="main_export_replace_failed_bare">El s\'è nò podud sostituì el file original</string>
+</resources>

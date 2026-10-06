@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Nivell B: traducció assistida per model en valencià; esmenes benvingudes. -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Extracció</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Foto dinàmica Honor</string>
+    <string name="fmt_meizu">Foto dinàmica Meizu</string>
+    <string name="fmt_nubia">Foto dinàmica Nubia</string>
+    <string name="fmt_oppo">Foto dinàmica OPPO</string>
+    <string name="fmt_vivo">Foto dinàmica vivo</string>
+    <string name="fmt_vivo_single">vivo Live Photo d\'un sol fitxer</string>
+    <string name="fmt_xiaomi">Foto dinàmica Xiaomi</string>
+    <string name="fmt_err_apple_mov_missing">No s\'ha trobat cap vídeo .mov amb el mateix nom</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Al fitxer MOV li falta la capsa ftyp</string>
+    <string name="fmt_err_extract_read">L\'extracció és un format d\'eixida; no s\'ha de llegir com a format d\'entrada</string>
+    <string name="fmt_err_no_primary_jpeg">No s\'ha trobat la imatge JPEG principal</string>
+    <string name="fmt_err_no_mp4_after_jpeg">No s\'ha trobat cap vídeo MP4 vàlid després del JPEG (falta la capsa ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">No s\'ha pogut analitzar el flux de vídeo MP4</string>
+    <string name="fmt_err_nubia_too_short">El fitxer és massa curt; no pareix una foto dinàmica Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Falta el nombre màgic nubiaVpfile del final</string>
+    <string name="fmt_err_nubia_jpeg_len">La longitud JPEG registrada al final no és vàlida: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Falten els bytes de farciment 0x00 entre el JPEG i el vídeo</string>
+    <string name="fmt_err_nubia_empty_video">La longitud del vídeo incrustat és 0</string>
+    <string name="fmt_err_vivo_no_marker">No s\'ha trobat la marca vivo livephoto al final del JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Falta el vídeo acompanyant: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">No s\'ha pogut analitzar el cos del JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">El MP4 acompanyant no és vàlid (falta la capsa ftyp)</string>
+</resources>

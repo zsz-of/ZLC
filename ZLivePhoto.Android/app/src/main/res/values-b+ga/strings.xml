@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Gaeilge (ga).
+  Aistríodh ó res/values/strings_*.xml (Sínis shimplithe, an locale cúltaca).
+  Cáilíocht: B (Gaeilge chaighdeánach; teastaíonn léamhphromhadh ó chainteoir dúchais ar na téarmaí teicniúla).
+  Coinnítear gach eochair, gach sealbhóir áite (%1$s / %1$d) agus gach seicheamh éalaithe mar atá siad.
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

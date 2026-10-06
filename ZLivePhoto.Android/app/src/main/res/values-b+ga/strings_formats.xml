@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Gaeilge (ga) — ainmneacha formáide na bhforlíonadh agus teachtaireachtaí earráide.
+  Aistríodh ó res/values/strings_formats.xml (Sínis shimplithe, an locale cúltaca).
+  Cáilíocht: B.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Asbhain</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo i gcomhad amháin</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Níor aimsíodh aon chomhad físe .mov leis an ainm céanna</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Tá an bosca ftyp ar iarraidh sa chomhad MOV</string>
+    <string name="fmt_err_extract_read">Formáid aschuir is ea Asbhain agus ní féidir í a léamh mar fhormáid ionchuir</string>
+    <string name="fmt_err_no_primary_jpeg">Níor aimsíodh aon phríomhíomhá JPEG</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Níor aimsíodh aon fhíseán MP4 bailí tar éis an JPEG (tá an bosca ftyp ar iarraidh)</string>
+    <string name="fmt_err_mp4_parse_failed">Theip ar anailís a dhéanamh ar shruth físe MP4</string>
+    <string name="fmt_err_nubia_too_short">Tá an comhad ró-ghearr le bheith ina Live Photo Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Tá an uimhir dhraíochta nubiaVpfile ag an deireadh ar iarraidh</string>
+    <string name="fmt_err_nubia_jpeg_len">Fad JPEG a taifeadadh ag an deireadh neamhbhailí: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Tá na bearta líonta 0x00 idir an JPEG agus an físeán ar iarraidh</string>
+    <string name="fmt_err_nubia_empty_video">Is é 0 fad an fhíseáin leabaithe</string>
+    <string name="fmt_err_vivo_no_marker">Níor aimsíodh an marc vivo livephoto ag deireadh an JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Tá an comhad físe compánach ar iarraidh: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Theip ar anailís a dhéanamh ar chorp an JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">Tá an MP4 compánach neamhbhailí (tá an bosca ftyp ar iarraidh)</string>
+</resources>

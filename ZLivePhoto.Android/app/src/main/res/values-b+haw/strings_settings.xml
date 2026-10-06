@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+
+    <!-- Pālahalaha -->
+    <string name="settings_title">Nā hoʻonohonoho</string>
+    <string name="settings_cd_back">Hoʻi</string>
+    <string name="settings_btn_apply">Hoʻohana</string>
+    <string name="settings_btn_cancel">Hoʻōki</string>
+    <string name="settings_btn_close">Pani</string>
+    <string name="settings_btn_ok">ʻAe</string>
+    <string name="settings_btn_sponsor">Kākoʻo</string>
+
+    <!-- Nā māhele -->
+    <string name="settings_section_general">Pālahalaha</string>
+    <string name="settings_section_appearance">Hiʻohiʻona</string>
+    <string name="settings_section_language">ʻŌlelo</string>
+    <string name="settings_section_defaults">Nā koho paʻamau</string>
+    <string name="settings_section_output">Puka</string>
+    <string name="settings_section_transcode">Hoʻololi wikiō</string>
+    <string name="settings_section_about">No ka polokalamu</string>
+    <string name="settings_section_app">Polokalamu</string>
+    <string name="settings_section_credits">Mahalo a kākoʻo</string>
+    <string name="settings_section_opensource">Kumu wehe ʻia a laikini</string>
+
+    <!-- Pālahalaha -->
+    <string name="settings_startup_check_title">E nānā i nā mea hou i ka wā hoʻomaka</string>
+    <string name="settings_startup_check_subtitle">I ka hoʻomaka ʻana, e ʻimi ʻia ka mana hou mai GitHub a hāʻawi ʻia ke koho hoʻouka</string>
+    <string name="settings_haptics_title">Pane haʻalulu</string>
+    <string name="settings_haptics_subtitle">Pane ʻoni i ke kaomi ʻana i nā pihi a i ka loli ʻana o ke kūlana</string>
+    <string name="settings_bounce_title">ʻOni ʻōpiopio o nā pihi</string>
+    <string name="settings_bounce_subtitle">ʻOni liʻiliʻi a pā hou i ke kaomi ʻana i ka pihi</string>
+
+    <!-- Hiʻohiʻona -->
+    <string name="settings_theme_system">E like me ka ʻōnaehana</string>
+    <string name="settings_theme_dark">Pōʻeleʻele</string>
+    <string name="settings_theme_light">Mālamalama</string>
+    <string name="settings_dynamic_theme_title">Nā waihoʻoluʻu ʻōnaehana (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">E hahai i nā waihoʻoluʻu o ka ʻōnaehana (Android 12+); ke pio, e hoʻohana ʻia nā waihoʻoluʻu mākaukau ma lalo</string>
+    <string name="settings_preset_colors_title">Nā waihoʻoluʻu mākaukau</string>
+    <string name="settings_preset_current">I kēia manawa: %1$s</string>
+    <string name="settings_preset_disabled_hint">Loaʻa ma hope o ka pio ʻana o “Nā waihoʻoluʻu ʻōnaehana (Material You)”</string>
+    <string name="settings_custom">Pilikino</string>
+    <string name="settings_custom_color_title">Waihoʻoluʻu pilikino</string>
+    <string name="settings_cd_custom_palette">Papa kala pilikino</string>
+    <string name="settings_hue_value">Kala %1$d°</string>
+
+    <!-- ʻŌlelo o ka polokalamu -->
+    <string name="settings_language_dialog_title">E koho i ka ʻōlelo o ka polokalamu</string>
+    <string name="settings_language_count">He %1$d ʻōlelo ka nui</string>
+
+    <!-- Nā koho paʻamau -->
+    <string name="settings_reminder_dialogs_title">Nā walaʻau “Mai hōʻike hou”</string>
+    <string name="settings_reminder_dialogs_subtitle">E hoʻoponopono i nā koho “Mai hōʻike hou” a pau</string>
+    <string name="settings_reminder_hint">ʻO ke koho i hoʻā ʻia, ʻo ia “mai hōʻike hou”; ke pio, e hōʻike hou ʻia ke ao i ka wā e pili ana.</string>
+
+    <!-- Puka -->
+    <string name="settings_preserve_folders_title">E mālama i ke ʻano o nā waihona kumu</string>
+    <string name="settings_preserve_folders_subtitle">E mālama ʻia nā hualoaʻa i loko o nā waihona me ka inoa o ka album kumu; ke pio, e hoʻokomo ʻia a pau i loko o hoʻokahi waihona</string>
+
+    <!-- No ka polokalamu -->
+    <string name="settings_about_title">No ka polokalamu</string>
+    <string name="settings_about_subtitle">Mana · Nā mea hou · Mahalo a kākoʻo</string>
+    <string name="settings_check_update_title">E nānā i nā mea hou</string>
+    <string name="settings_check_update_subtitle">E kiʻi i ka mana hou loa mai GitHub Releases</string>
+    <string name="settings_checking">Ke nānā nei…</string>
+    <string name="settings_update_available">Loaʻa v%1$s</string>
+    <string name="settings_up_to_date">ʻO ka mana hou loa kēia</string>
+    <string name="settings_network_error">Hapa pūnaewele, e hoʻāʻo hou ma hope</string>
+    <string name="settings_reinstall_title">E hoʻouka hou i kēia mana</string>
+    <string name="settings_reinstall_subtitle">E kau i ka mana hou loa o kēia manawa (no ka hoʻāʻo ʻana i nā mea hou)</string>
+    <string name="settings_reinstall_newer_hint">Loaʻa ka mea hou v%1$s, e koho mua i “E nānā i nā mea hou”</string>
+    <string name="settings_version_title">Mana</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Kākoʻo ma o Alipay</string>
+    <string name="settings_alipay_subtitle">E kākoʻo i ka hana ʻana</string>
+    <string name="settings_coolapk_subtitle">Mea hoʻohana Coolapk · mahalo no ke kākoʻo</string>
+    <string name="settings_ai_credits_subtitle">Mahalo i nā AI no ke kōkua ʻana i ka hana ʻana</string>
+    <string name="settings_github_title">Kumu wehe ʻia ma GitHub</string>
+    <string name="settings_license_title">Laikini kumu wehe</string>
+    <string name="settings_sponsor_dialog_title">Mahalo no kou kākoʻo</string>
+    <string name="settings_sponsor_dialog_text">Mahalo nui no kou makemake e kākoʻo i kēia polokalamu!\n\nInā he haumāna ʻoe a ʻaʻole lawa kāu kālā, mai hāʻawi kālā —\ne mālama wale i kēia manaʻo maikaʻi i loko o kou puʻuwai a hoʻohana mau i ka polokalamu; ʻo ia kaʻu kākoʻo maikaʻi loa.\n\nAkā inā makemake ʻoe e kākoʻo, he mea nui nō hoʻi ka hāʻawi liʻiliʻi — e hoʻohana au ia mea no ka hoʻomaikaʻi ʻana i ka hiʻohiʻona a me nā hiʻohiʻona hou :)</string>
+    <string name="settings_alipay_missing_title">ʻAʻole i kau ʻia ʻo Alipay</string>
+    <string name="settings_alipay_missing_text">ʻAʻole i wehe ʻia ʻo Alipay, no laila ʻaʻole hiki ke kākoʻo i kēia manawa.\n\nʻAʻohe pilikia — mahalo nui no kou manaʻo maikaʻi, ʻo ia wale nō!</string>
+
+    <!-- Hoʻololi wikiō -->
+    <string name="settings_transcoder_title">Mea hoʻololi wikiō i loko</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">E hoʻololi hou</string>
+    <string name="settings_transcode_mode_remux">E hoʻololi wale i ka pahu (paipai ʻia)</string>
+    <string name="settings_transcode_mode_off">E pio loa i ka mea hoʻololi</string>
+    <string name="settings_transcode_params_title">Nā palena hoʻololi</string>
+    <string name="settings_transcode_params_subtitle">Nā palena o ka maikaʻi a me ke kaomi ʻana i ka hoʻololi hou</string>
+    <string name="settings_transcode_params_disabled">E hana wale ana inā koho ʻia “E hoʻololi hou” ma “Hoʻololi wikiō”</string>
+    <string name="settings_crf_value">Maikaʻi CRF: %1$d</string>
+    <string name="settings_crf_hint">ʻOi aku ka liʻiliʻi o ka helu, ʻoi aku ka maikaʻi a me ka nui (maʻamau 18)</string>
+    <string name="settings_encoder_title">Mea hoʻololi</string>
+    <string name="settings_compress_preset_title">Palena kaomi</string>
+
+</resources>

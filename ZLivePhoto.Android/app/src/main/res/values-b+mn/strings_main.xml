@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Монгол (Mongolian) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Mongolian (Cyrillic); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">Бэлэн</string>
+    <string name="main_status_location_granted">Байршлын зөвшөөрөл авсан; хөрвүүлсний дараа GPS мета өгөгдөл хадгалагдана</string>
+    <string name="main_status_location_denied">Байршлын зөвшөөрөл өгөөгүй: хөрвүүлсэн зураг GPS байршлаа алдана</string>
+    <string name="main_status_all_files_granted">«Бүх файлд хандах» зөвшөөрөл авсан; хөрвүүлэлт цомгийн хавтас руу шууд бичиж, байршлын мэдээллийг бүрэн хадгална</string>
+    <string name="main_status_all_files_denied">«Бүх файлд хандах» зөвшөөрөл өгөөгүй: зарим загварт хөрвүүлсний дараа байршлын мэдээлэл алдагдаж болно</string>
+    <string name="main_status_read_granted">Зураг болон видео унших зөвшөөрөл авсан</string>
+    <string name="main_status_video_missing">Зөвшөөрөл авсан ч видеоны зөвшөөрөл дутуу: хос файлт хөдөлгөөнт зургийн дагалдах видеог олох боломжгүй</string>
+    <string name="main_status_permission_denied">Зөвшөөрөл өгөөгүй, «Файл нэмэх» дээр дахин дарж болно</string>
+    <string name="main_status_folder_not_selected">Хавтас сонгоогүй</string>
+    <string name="main_status_folder_unavailable">Сонгосон хавтас руу хандах боломжгүй (зөвхөн локал хадгалах сан дэмжигдэнэ)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Өмнөх сесс сэргээгдсэн (%1$d файл)</item>
+        <item quantity="other">Өмнөх сесс сэргээгдсэн (%1$d файл)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Өмнөх удаагийн хэвийн бус гаралт илэрсэн, дуусаагүй жагсаалтыг цэвэрлэсэн</string>
+    <string name="main_status_compose_blocks_extract">Дараалалд нэгтгэх ажил байна, задлах горимд шилжих боломжгүй</string>
+    <string name="main_status_replace_off_mutex">Солих горим хаагдсан («Боловсруулсны дараа эх зургийг устгах»-тай харилцан үйлчлэлтэй)</string>
+    <string name="main_status_delete_needs_all_files">Эх зургийг автоматаар устгахад «Бүх файлд хандах» зөвшөөрөл шаардлагатай, эхлээд зөвшөөрнө үү</string>
+    <string name="main_status_replace_off">Солих горим хаагдсан, хөрвүүлсэн үр дүн цомгийн хавтас руу дахин бичигдэнэ</string>
+    <string name="main_status_replace_needs_all_files">Солих горимд «Бүх файлд хандах» зөвшөөрөл шаардлагатай, эхлээд зөвшөөрнө үү</string>
+    <string name="main_status_delete_off_mutex">«Боловсруулсны дараа эх зургийг устгах» хаагдсан (солих горимтой харилцан үйлчлэлтэй)</string>
+    <string name="main_status_loading_albums">Цомог уншиж байна…</string>
+    <string name="main_status_no_albums">Цомог олдсонгүй</string>
+    <string name="main_status_compose_no_photo">Зураг сонгоогүй, нэгтгэх боломжгүй</string>
+    <string name="main_status_compose_no_video">Видео сонгоогүй, нэгтгэх боломжгүй</string>
+    <string name="main_status_compose_all_added">Сонгосон бүх зураг жагсаалтад байна</string>
+    <string name="main_status_compose_paired">%1$d зураг, %2$d видео; цөөн талын дагуу %3$d хос нэгтгэх ажил нэмэгдсэн</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Нэгтгэх %1$d ажил нэмэгдсэн, «Хөрвүүлэх эхлэх» дээр дарж гүйцэтгэнэ</item>
+        <item quantity="other">Нэгтгэх %1$d ажил нэмэгдсэн, «Хөрвүүлэх эхлэх» дээр дарж гүйцэтгэнэ</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (гаралтын форматыг Google болгож автоматаар сольсон)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Хуваалцсан %1$d зураг импортлож байна…</item>
+        <item quantity="other">Хуваалцсан %1$d зураг импортлож байна…</item>
+    </plurals>
+    <string name="main_status_import_failed">Импорт амжилтгүй: %1$s</string>
+    <string name="main_status_import_done_partial">Импорт дууссан: амжилттай %1$d, амжилтгүй %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Импорт дууссан: нийт %1$d файл импортлогдсон</item>
+        <item quantity="other">Импорт дууссан: нийт %1$d файл импортлогдсон</item>
+    </plurals>
+    <string name="main_status_import_stopped">Импортыг зогсоосон: амжилттай %1$d, амжилтгүй %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d файл импортлож байна…</item>
+        <item quantity="other">%1$d файл импортлож байна…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Импорт хийж байна %1$d/%2$d…</string>
+    <string name="main_status_stopping">Зогсоож байна… (одоогийн файлыг дуусгасны дараа зогсоно)</string>
+    <string name="main_status_stopping_import">Импортыг зогсоож байна…</string>
+    <string name="main_status_removed">%1$s-г хаслаа</string>
+    <string name="main_status_cleared">Цэвэрлэсэн</string>
+    <string name="main_status_nothing_to_convert">Хөрвүүлэх файл байхгүй</string>
+    <string name="main_status_folder_unreadable">Сонгосон хавтсыг унших боломжгүй</string>
+    <string name="main_status_scanning_folder">Хавтсыг скан хийж байна…</string>
+    <string name="main_status_no_images">Сонгосон хавтаснаас зураг олдсонгүй</string>
+    <string name="main_status_batch_importing">Багц импорт хийж байна %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Багц импортыг зогсоосон: нийт %1$d хөдөлгөөнт зураг импортлогдсон</item>
+        <item quantity="other">Багц импортыг зогсоосон: нийт %1$d хөдөлгөөнт зураг импортлогдсон</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Багц импортыг зогсоосон: нийт %1$d хөдөлгөөнт зураг импортлогдсон, %2$d хөдөлгөөнгүй файл алгассан</item>
+        <item quantity="other">Багц импортыг зогсоосон: нийт %1$d хөдөлгөөнт зураг импортлогдсон, %2$d хөдөлгөөнгүй файл алгассан</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Багц импорт дууссан: нийт %1$d хөдөлгөөнт зураг импортлогдсон</item>
+        <item quantity="other">Багц импорт дууссан: нийт %1$d хөдөлгөөнт зураг импортлогдсон</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Багц импорт дууссан: нийт %1$d хөдөлгөөнт зураг импортлогдсон, %2$d хөдөлгөөнгүй файл алгассан</item>
+        <item quantity="other">Багц импорт дууссан: нийт %1$d хөдөлгөөнт зураг импортлогдсон, %2$d хөдөлгөөнгүй файл алгассан</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Зогсоосон: %1$d файлаас %2$d-г боловсруулж, %3$d эх файлыг сольсон</string>
+    <string name="main_status_stopped_export">Зогсоосон: %1$d файлаас %2$d-г боловсруулж, %3$d-г цомог руу экспортолсон</string>
+    <string name="main_status_done_replace_reason">Дууссан: %1$d файл боловсруулагдсан, %2$d эх файл солигдсон (шалтгаан: %3$s)</string>
+    <string name="main_status_done_export_reason">Дууссан: %1$d файл боловсруулагдсан, %2$d цомог руу экспортлогдсон (шалтгаан: %3$s)</string>
+    <string name="main_status_done_replace">Дууссан: %1$d файл боловсруулагдсан, %2$d эх файл солигдсон</string>
+    <string name="main_status_done_export">Дууссан: %1$d файл боловсруулагдсан, %2$d цомог руу экспортлогдсон</string>
+    <string name="main_status_keep_originals">%1$s; «Бүрэн хадгалах сан руу хандах» зөвшөөрөл аваагүй тул эх зургийг хадгалсан</string>
+    <string name="main_info_detecting">Илрүүлж байна…</string>
+    <string name="main_info_unrecognized">Танигдаагүй хөдөлгөөнт зургийн формат</string>
+    <string name="main_info_converting">Хөрвүүлж байна…</string>
+    <string name="main_info_compose_task">Нэгтгэх ажил («Хөрвүүлэх эхлэх» дээр дарж гүйцэтгэнэ)</string>
+    <string name="main_info_done_replaced">Дууссан (%1$d эх файл солигдсон)</string>
+    <string name="main_info_done_skipped">Дууссан (алгассан: ижил нэр зөрчилдсөн)</string>
+    <string name="main_info_done_exported">Дууссан (%1$d экспортлогдсон)</string>
+    <string name="main_info_failed">Амжилтгүй: %1$s</string>
+    <string name="main_progress_added">Нэмсэн %1$d/%2$d</string>
+    <string name="main_progress_processed">Боловсруулсан %1$d/%2$d</string>
+    <string name="main_progress_imported">Импортлосон %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Зураг болон видео унших зөвшөөрөл шаардлагатай</string>
+    <string name="main_dialog_permission_message">Энэ програм таны төхөөрөмж дээрх зураг болон видеог унших шаардлагатай:
+
+• Зургийн зөвшөөрөл: төхөөрөмжийн цомгийг скан хийж, хөдөлгөөнт зургийг илрүүлнэ
+• Видеоны зөвшөөрөл: хос файлт хөдөлгөөнт зургийн дагалдах видеог олно
+• Байршлын зөвшөөрөл: зураг дахь GPS байршлын мета өгөгдлийг хадгална (байхгүй бол хөрвүүлсний дараа байршил алдагдана)
+
+Татгалзвал суурилуулсан сонгогчийг ашиглах боломжгүй; дараа нь «Файл нэмэх» дээр дахин дарж зөвшөөрөл авах боломжтой.</string>
+    <string name="main_dialog_settings_title">Зураг болон видео унших зөвшөөрлийг гараар өгөх шаардлагатай</string>
+    <string name="main_dialog_settings_message">Та өмнө нь «Дахин асуухгүй»-г сонгосон тул систем зөвшөөрлийн цонх харуулахгүй.
+
+Аппын дэлгэрэнгүй хуудас → Зөвшөөрөл → Зураг болон видео руу орж, гараар зөвшөөрөл өгөөд энэ апп руу буцна уу.
+
+Анхаар: «Зураг» болон «Видео» зөвшөөрлийг хоёуланг нь өгөх ёстой, эс тэгвээс хос файлт хөдөлгөөнт зургийн дагалдах видеог олох боломжгүй.</string>
+    <string name="main_dialog_allfiles_title_delete">Эх зургийг автоматаар устгахад «Бүх файлд хандах» шаардлагатай</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Энэ төхөөрөмж эх зургийг автоматаар устгахыг дэмжихгүй</string>
+    <string name="main_dialog_allfiles_title_replace">Солих горимд «Бүх файлд хандах» шаардлагатай</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Энэ төхөөрөмж солих горимыг дэмжихгүй</string>
+    <string name="main_dialog_allfiles_title_location">«Бүх файлд хандах» зөвшөөрөл өгөхийг зөвлөж байна</string>
+    <string name="main_dialog_allfiles_delete_message">«Боловсруулсны дараа эх зургийг устгах» нь диск дээрх эх файлыг (зураг болон түүний дагалдах видео) шууд устгана; энэ үйлдлийг буцаах боломжгүй тул эхлээд «Бүх файлд хандах» зөвшөөрөл өгөх шаардлагатай.
+
+Зөвшөөрсний дараа л унтраалга идэвхжинэ, тэр үед өөрөө асаах боломжтой.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Одоогийн систем (Android 10 болон түүнээс доош) «Бүх файлд хандах» зөвшөөрөл олгодоггүй тул диск дээрх эх файлыг шууд устгах боломжгүй; иймд энэ төхөөрөмж «Боловсруулсны дараа эх зургийг устгах»-ыг дэмжихгүй.
+
+Хөрвүүлсний дараа системийн цомгоос эх зургийг гараар устгаж болно.</string>
+    <string name="main_dialog_allfiles_replace_message">«Солих горим» нь хөрвүүлсэн үр дүнг диск дээрх эх файл руу шууд бичнэ (эх агуулгыг дарж бичнэ); энэ үйлдлийг буцаах боломжгүй тул эхлээд «Бүх файлд хандах» зөвшөөрөл өгөх шаардлагатай.
+
+Зөвшөөрсний дараа л унтраалга идэвхжинэ, тэр үед өөрөө асаах боломжтой.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Одоогийн систем (Android 10 болон түүнээс доош) «Бүх файлд хандах» зөвшөөрөл олгодоггүй тул диск дээрх эх файлыг шууд дарж бичих боломжгүй; иймд энэ төхөөрөмж «Солих горим»-ыг дэмжихгүй.
+
+Анхдагч аргаар үргэлжлүүлэн хөрвүүлж болно; үр дүн цомгийн хавтас руу гарна.</string>
+    <string name="main_dialog_allfiles_location_message">Зарим загвар (жишээ нь Meizu) системийн цомгийн интерфэйсээр бичихдээ GPS байршлын мэдээллийг арилгадаг тул хөрвүүлсний дараа зураг байршлаа алддаг.
+
+«Бүх файлд хандах» зөвшөөрөл өгсний дараа энэ програм цомгийн хавтас руу шууд бичиж, байршлын мета өгөгдлийг бүрэн хадгална.
+
+Өгөхгүй ч хэвийн хөрвүүлж болно; зарим загварт байршлын мэдээлэл алдагдаж болно.</string>
+    <string name="main_dialog_conflict_title">Гаралтын файлын нэр зөрчилдсөн</string>
+    <string name="main_dialog_conflict_message">Гаралтын хавтасд ижил нэртэй файл байна:
+%1$s
+
+Хэрхэн шийдвэрлэхээ сонгоно уу.</string>
+    <string name="main_label_conflict_always">Дараагийн зөрчилд энэ аргыг ашиглах</string>
+    <string name="main_btn_grant">Зөвшөөрөх</string>
+    <string name="main_btn_deny">Татгалзах</string>
+    <string name="main_btn_go_settings">Тохиргоо руу</string>
+    <string name="main_btn_cancel">Цуцлах</string>
+    <string name="main_btn_grant_access">Зөвшөөрөл өгөх</string>
+    <string name="main_btn_got_it">Ойлголоо</string>
+    <string name="main_btn_not_now">Одоо биш</string>
+    <string name="main_btn_skip">Алгасах</string>
+    <string name="main_btn_overwrite">Дарж бичих</string>
+    <string name="main_btn_auto_rename">Автоматаар нэр солих</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d эх файл устгагдсан</item>
+        <item quantity="other">%1$d эх файл устгагдсан</item>
+    </plurals>
+    <string name="main_delete_nothing">Устгах эх зураг байхгүй</string>
+    <string name="main_delete_partial">%1$d эх файл устгагдсан (%2$d устгаж чадсангүй, хадгалсан)</string>
+    <string name="main_delete_failed">Эх зураг устгах амжилтгүй (файл ашиглагдаж байгаа эсвэл бичих эрхгүй), хадгалсан</string>
+    <string name="main_export_missing_output">Хөрвүүлсэн үр дүн дутуу эсвэл хоосон: %1$s</string>
+    <string name="main_export_missing_output_bare">Хөрвүүлсэн үр дүн дутуу эсвэл хоосон</string>
+    <string name="main_export_insert_null">MediaStore insert null буцаасан</string>
+    <string name="main_export_output_stream">MediaStore гаралтын урсгал боломжгүй</string>
+    <string name="main_export_write_failed">MediaStore руу бичих амжилтгүй: %1$s</string>
+    <string name="main_export_mkdir_failed">Цомгийн хавтас %1$s үүсгэх боломжгүй</string>
+    <string name="main_export_dir_write_failed">Цомгийн хавтас руу бичих амжилтгүй: %1$s</string>
+    <string name="main_export_no_source">Эх файлыг олох боломжгүй, солихыг алгассан</string>
+    <string name="main_export_companion_failed">Дагалдах файл руу буцааж бичих амжилтгүй: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Эх файлын хавтас бичих боломжгүй, дагалдах файлыг буцааж бичиж чадсангүй</string>
+    <string name="main_export_source_dir_unavailable">Эх файлын хавтас боломжгүй: %1$s</string>
+    <string name="main_export_replace_failed">Эх файлыг солих амжилтгүй: %1$s</string>
+    <string name="main_export_replace_failed_bare">Эх файлыг солих амжилтгүй</string>
+</resources>

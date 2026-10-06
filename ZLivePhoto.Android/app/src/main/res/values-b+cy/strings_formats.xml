@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Cymraeg (cy) — enwau fformat y ategion a negeseuon gwall.
+  Cyfieithwyd o res/values/strings_formats.xml (Tsieinëeg syml, y locale wrth gefn).
+  Ansawdd: B.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Echdynnu</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo ffeil sengl</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Ni chanfuwyd ffeil fideo .mov gyda\'r un enw</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Mae\'r ffeil MOV yn colli\'r blwch ftyp</string>
+    <string name="fmt_err_extract_read">Fformat allbwn yw Echdynnu ac ni ellir ei ddarllen fel fformat mewnbwn</string>
+    <string name="fmt_err_no_primary_jpeg">Ni chanfuwyd delwedd JPEG gynradd</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Ni chanfuwyd fideo MP4 dilys ar ôl y JPEG (mae\'r blwch ftyp ar goll)</string>
+    <string name="fmt_err_mp4_parse_failed">Methwyd â dadansoddi\'r ffrwd fideo MP4</string>
+    <string name="fmt_err_nubia_too_short">Mae\'r ffeil yn rhy fyr i fod yn Live Photo Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Mae rhif hud nubiaVpfile ar y diwedd ar goll</string>
+    <string name="fmt_err_nubia_jpeg_len">Hyd JPEG a gofnodwyd ar y diwedd yn annilys: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Mae\'r bytes padin 0x00 rhwng y JPEG a\'r fideo ar goll</string>
+    <string name="fmt_err_nubia_empty_video">Hyd y fideo mewnosodedig yw 0</string>
+    <string name="fmt_err_vivo_no_marker">Ni chanfuwyd marc vivo livephoto ar ddiwedd y JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Mae\'r ffeil fideo ategol ar goll: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Methwyd â dadansoddi corff y JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">Mae\'r MP4 ategol yn annilys (mae\'r blwch ftyp ar goll)</string>
+</resources>

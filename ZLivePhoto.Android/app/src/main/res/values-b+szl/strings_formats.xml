@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Poziom C: překład uosprawiany modelem na ślůnski; możliwe feler, poprawki mile widźane. -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Wyciōngniyńcie</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Dynamiczne foto Honor</string>
+    <string name="fmt_meizu">Dynamiczne foto Meizu</string>
+    <string name="fmt_nubia">Dynamiczne foto Nubia</string>
+    <string name="fmt_oppo">Dynamiczne foto OPPO</string>
+    <string name="fmt_vivo">Dynamiczne foto vivo</string>
+    <string name="fmt_vivo_single">vivo Live Photo w jednym zbiōrze</string>
+    <string name="fmt_xiaomi">Dynamiczne foto Xiaomi</string>
+    <string name="fmt_err_apple_mov_missing">Niy ma zbiōru wideo .mov ô takij samyj mianie</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Zbiōr MOV niy mo boxu ftyp</string>
+    <string name="fmt_err_extract_read">Wyciōngniyńcie to je wyjściowy format, niy idzie go czytać jako wchodowy</string>
+    <string name="fmt_err_no_primary_jpeg">Niy ma głōwnego ôbrazu JPEG</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Po JPEG niy ma dobrygo wideo MP4 (niy ma boxu ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">Niy idzie przeczytać strumiyńa wideo MP4</string>
+    <string name="fmt_err_nubia_too_short">Zbiōr je za krōtki, niy wyglōndo na dynamiczne foto Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Na kōńcu niy ma magic number nubiaVpfile</string>
+    <string name="fmt_err_nubia_jpeg_len">Dugość JPEG zapisano na kōńcu je zło: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Miydzy JPEG a wideo niy ma bajtōw wypełniynia 0x00</string>
+    <string name="fmt_err_nubia_empty_video">Dugość wkludzonego wideo wynosi 0</string>
+    <string name="fmt_err_vivo_no_marker">Na kōńcu JPG niy ma markera vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Niy ma towarzyszącego zbiōru wideo: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Niy idzie przeczytać ciała JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">Towarzyszący MP4 niy je dobry (niy ma boxu ftyp)</string>
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · नेपाली (Nepali) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Nepali (Devanagari); technical terms follow the English loanword where common.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">लाइभ फोटो ढाँचा रूपान्तरण</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d फाइल</item>
+        <item quantity="other">%1$d फाइल</item>
+    </plurals>
+    <string name="screen_settings">सेटिङ</string>
+    <string name="screen_select_output_format">आउटपुट ढाँचा चयन गर्नुहोस्</string>
+    <string name="screen_selected">चयनित</string>
+    <string name="screen_vivo_single_warning">⚠ पुराना यन्त्रले यो ढाँचा चिन्न सक्दैनन्</string>
+    <string name="screen_extract_blocked">⚠ कतारमा कम्पोज कार्य छ, एक्सट्र्याक्ट चयन गर्न मिल्दैन</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (एक फाइल)</string>
+    <string name="screen_format_vivo">vivo (दुई फाइल)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">एक्सट्र्याक्ट</string>
+    <string name="screen_toolbox">औजार बाकस</string>
+    <string name="screen_batch_import">ब्याच आयात</string>
+    <string name="screen_batch_import_desc">सम्पूर्ण ग्यालरी स्क्यान गरी लाइभ फोटो पहिचान गर्नुहोस्</string>
+    <string name="screen_compose">लाइभ फोटो बनाउनुहोस्</string>
+    <string name="screen_compose_desc">एउटा फोटो र एउटा भिडियो छानी जोडी मिलाउनुहोस्</string>
+    <string name="screen_replace_mode">प्रतिस्थापन मोड</string>
+    <string name="screen_replace_mode_desc">नतिजा सिधै मूल फाइलमा लेखिन्छ, नयाँ फाइल बन्दैन</string>
+    <string name="screen_need_all_files_access_hint">सबै फाइल पहुँच अनुमति चाहिन्छ, अनुमति दिन यहाँ थिच्नुहोस्</string>
+    <string name="screen_agree_and_enable">सहमति र सक्षम गर्नुहोस्</string>
+    <string name="screen_empty_no_files">अझै कुनै फाइल थपिएको छैन</string>
+    <string name="screen_view_detail">विवरण हेर्नुहोस्</string>
+    <string name="screen_add_files">फाइल थप्नुहोस्</string>
+    <string name="screen_output_format">आउटपुट ढाँचा: %1$s</string>
+    <string name="screen_delete_original">प्रशोधन पछि मूल फोटो हटाउनुहोस्</string>
+    <string name="screen_need_all_files_access_view">सबै फाइल पहुँच अनुमति चाहिन्छ, हेर्न थिच्नुहोस्</string>
+    <string name="screen_clear">खाली गर्नुहोस्</string>
+    <string name="screen_stop">प्रशोधन रोक्नुहोस्</string>
+    <string name="screen_start_convert">रूपान्तरण सुरु गर्नुहोस्</string>
+    <string name="screen_status_detail">स्थिति विवरण</string>
+    <string name="screen_long_press_copy">पाठ छानी प्रतिलिपि गर्न लामो समय थिच्नुहोस्</string>
+    <string name="screen_copy">प्रतिलिपि गर्नुहोस्</string>
+    <string name="screen_close">बन्द गर्नुहोस्</string>
+    <string name="screen_back">फर्कनुहोस्</string>
+    <string name="screen_picker_title_select">लाइभ फोटो चयन गर्नुहोस्</string>
+    <string name="screen_album_count">एल्बम %1$d</string>
+    <string name="screen_album_collapse_cover">एल्बम कभर संकुचित गर्नुहोस्</string>
+    <string name="screen_album_expand_cover">एल्बम कभर विस्तार गर्नुहोस्</string>
+    <string name="screen_scanning_progress">स्क्यान हुँदै %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d फोटो</item>
+        <item quantity="other">%1$d फोटो</item>
+    </plurals>
+    <string name="screen_select_all">सबै चयन गर्नुहोस्</string>
+    <string name="screen_no_albums">कुनै उपलब्ध एल्बम छैन</string>
+    <string name="screen_no_media">कुनै लाइभ फोटो फेला परेन</string>
+    <string name="screen_no_media_compose">कुनै फोटो वा भिडियो फेला परेन</string>
+    <string name="screen_import">आयात</string>
+    <string name="screen_import_count">आयात %1$d</string>
+    <string name="screen_import_mixed">आयात तस्बिर %1$d · भिडियो %2$d</string>
+    <string name="screen_search">खोज्नुहोस्</string>
+    <string name="screen_search_collapse">खोज संकुचित गर्नुहोस्</string>
+    <string name="screen_search_hint">नामले खोज्नुहोस्</string>
+    <string name="screen_search_clear">खोज खाली गर्नुहोस्</string>
+    <string name="screen_sort_date">मिति</string>
+    <string name="screen_sort_size">आकार</string>
+    <string name="screen_sort_name">नाम</string>
+    <string name="screen_sort_asc">बढ्दो</string>
+    <string name="screen_sort_desc">घट्दो</string>
+    <string name="screen_date_today">आज</string>
+    <string name="screen_date_yesterday">हिजो</string>
+    <string name="screen_date_this_year">%1$d-%2$d</string>
+    <string name="screen_date_other_year">%1$d-%2$d-%3$d</string>
+</resources>

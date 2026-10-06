@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+
+    <!-- אַלגעמיין -->
+    <string name="settings_title">איינשטעלונגען</string>
+    <string name="settings_cd_back">צוריק</string>
+    <string name="settings_btn_apply">אָנווענדן</string>
+    <string name="settings_btn_cancel">אַנולירן</string>
+    <string name="settings_btn_close">פֿאַרמאַכן</string>
+    <string name="settings_btn_ok">אָק</string>
+    <string name="settings_btn_sponsor">שטיצן</string>
+
+    <!-- אָפטיילונגען -->
+    <string name="settings_section_general">אַלגעמיין</string>
+    <string name="settings_section_appearance">אויסזען</string>
+    <string name="settings_section_language">שפּראַך</string>
+    <string name="settings_section_defaults">סטאַנדאַרט אָפּציעס</string>
+    <string name="settings_section_output">אויסגאַנג</string>
+    <string name="settings_section_transcode">ווידעאָ איבערקאָדירונג</string>
+    <string name="settings_section_about">וועגן דער אַפּ</string>
+    <string name="settings_section_app">אַפּליקאַציע</string>
+    <string name="settings_section_credits">דאַנק און שטיצע</string>
+    <string name="settings_section_opensource">אָפֿענער קאָד און ליצענץ</string>
+
+    <!-- אַלגעמיין -->
+    <string name="settings_startup_check_title">בודק זיין דערהיינטיקונגען ביים אָנהייב</string>
+    <string name="settings_startup_check_subtitle">ביים אָנהייב זוכט עס אַ נייע ווערסיע פֿון GitHub און פֿאָרשטעלט אַן אינסטאַלאַציע</string>
+    <string name="settings_haptics_title">וויבראַציע אָפּענטפער</string>
+    <string name="settings_haptics_subtitle">אָפּענטפער ווען מען דריקט קנעפּלעך און ווען דער סטאַטוס ענדערט זיך</string>
+    <string name="settings_bounce_title">עלאַסטישע קנעפּל אַנימאַציע</string>
+    <string name="settings_bounce_subtitle">קליין און צוריקשפּרינג אַנימאַציע ביים דריקן אויף אַ קנעפּל</string>
+
+    <!-- אויסזען -->
+    <string name="settings_theme_system">לויט דעם סיסטעם</string>
+    <string name="settings_theme_dark">פֿינצטער</string>
+    <string name="settings_theme_light">ליכטיק</string>
+    <string name="settings_dynamic_theme_title">דינאַמישע פֿאַרבן (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">נאָכפֿאָלגט די סיסטעם פֿאַרבן (Android 12+); ווען עס איז אויסגעשלאָסן ניצט מען די פֿאַרטיקע פֿאַרבן אונטן</string>
+    <string name="settings_preset_colors_title">פֿאַרטיקע טעמע פֿאַרבן</string>
+    <string name="settings_preset_current">איצטיקע: %1$s</string>
+    <string name="settings_preset_disabled_hint">צוגענגלעך נאָך אויסשאַלטן „דינאַמישע פֿאַרבן (Material You)“</string>
+    <string name="settings_custom">אייגענע</string>
+    <string name="settings_custom_color_title">אייגענע טעמע פֿאַרב</string>
+    <string name="settings_cd_custom_palette">אייגענע פּאַליטרע</string>
+    <string name="settings_hue_value">פֿאַרב טאָן %1$d°</string>
+
+    <!-- אַפּ שפּראַך -->
+    <string name="settings_language_dialog_title">אויסקלײַבן אַפּ שפּראַך</string>
+    <string name="settings_language_count">סה״כ %1$d שפּראַכן</string>
+
+    <!-- סטאַנדאַרט אָפּציעס -->
+    <string name="settings_reminder_dialogs_title">„מער נישט ווייזן“ דיאַלאָגן</string>
+    <string name="settings_reminder_dialogs_subtitle">פֿאַרוואַלטן אַלע „מער נישט ווייזן“ שיבער</string>
+    <string name="settings_reminder_hint">אַן אָנגעצונדענער שיבער מיינט „מער נישט ווייזן“; ווען עס איז אויסגעשלאָסן, ווייזט מען ווידער דעם פֿאָרשלאָג ווען עס פּאַסירט.</string>
+
+    <!-- אויסגאַנג -->
+    <string name="settings_preserve_folders_title">אָפּהיטן די סטרוקטור פֿון די מקור פּאַפּקעס</string>
+    <string name="settings_preserve_folders_subtitle">רעזולטאַטן ווערן אָפּגעהיט אין אונטער־פּאַפּקעס מיט דעם נאָמען פֿון דעם מקור־אַלבום; ווען עס איז אויסגעשלאָסן, ווערן אַלע אַרײַן אין איין פּאַפּקע</string>
+
+    <!-- וועגן דער אַפּ -->
+    <string name="settings_about_title">וועגן דער אַפּ</string>
+    <string name="settings_about_subtitle">ווערסיע · דערהיינטיקונגען · דאַנק און שטיצע</string>
+    <string name="settings_check_update_title">בודק זיין דערהיינטיקונגען</string>
+    <string name="settings_check_update_subtitle">אַראָפּלאָדן די נייעסטע ווערסיע פֿון GitHub Releases</string>
+    <string name="settings_checking">בודק…</string>
+    <string name="settings_update_available">v%1$s פֿאַראַן</string>
+    <string name="settings_up_to_date">שוין די נייעסטע ווערסיע</string>
+    <string name="settings_network_error">נעצווערק פֿעלער, פּרוּווט שפּעטער נאָך אַ מאָל</string>
+    <string name="settings_reinstall_title">נאָך אַ מאָל אינסטאַלירן די ווערסיע</string>
+    <string name="settings_reinstall_subtitle">אַראָפּלאָדן און אינסטאַלירן די איצטיקע נייעסטע ווערסיע (צו פּרובירן דערהיינטיקונגען)</string>
+    <string name="settings_reinstall_newer_hint">דערהיינטיקונג צו v%1$s איז פֿאַראַן, קודם קליקט „בודק זיין דערהיינטיקונגען“</string>
+    <string name="settings_version_title">ווערסיע</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">שטיצן מיט Alipay</string>
+    <string name="settings_alipay_subtitle">שטיצן די אַנטוויקלונג</string>
+    <string name="settings_coolapk_subtitle">Coolapk באַניצער · אַ דאַנק פֿאַר דער שטיצע</string>
+    <string name="settings_ai_credits_subtitle">אַ דאַנק די AI אַנטוויקלונג סבֿיבות און AI מאָדעלן פֿאַר זייער הילף</string>
+    <string name="settings_github_title">מקור קאָד אויף GitHub</string>
+    <string name="settings_license_title">אָפֿענער קאָד ליצענץ</string>
+    <string name="settings_sponsor_dialog_title">אַ דאַנק פֿאַר אײַער שטיצע</string>
+    <string name="settings_sponsor_dialog_text">אַ גרויסן דאַנק פֿאַר ווילן שטיצן די אַפּ!\n\nאויב איר זענט נאָך אַ סטודענט אָדער נאָך נישט זעלבסט־שטענדיק פֿינאַנציעל, ביטע גיט נישט קיין געלט —\nהאַלט דעם גוטן געדאַנק אין האַרצן און ניצט ווײַטער די אַפּ; דאָס איז פֿאַר מיר די בעסטע שטיצע.\n\nאָבער אויב איר ווילט שטיצן, אַפֿילו אַ קליינער בײַשטײַער איז וויכטיק — איך וועל עס לײַגן אין אַ בעסער אויסזען און אין נײַע פֿונקציעס :)</string>
+    <string name="settings_alipay_missing_title">Alipay נישט אינסטאַלירט</string>
+    <string name="settings_alipay_missing_text">Alipay האָט זיך נישט געעפֿנט, דערפֿאַר איז שטיצן איצט נישט מעגלעך.\n\nעס מאַכט גאָרנישט אויס — אַ גרויסן דאַנק פֿאַר אײַער גוטער ווילן, אַנדערש נישט!</string>
+
+    <!-- ווידעאָ איבערקאָדירונג -->
+    <string name="settings_transcoder_title">אינגעבויטער איבערקאָדירער</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">נאָך אַ מאָל קאָדירן</string>
+    <string name="settings_transcode_mode_remux">נאָר טוישן דעם קאָנטיינער (רעקאָמענדירט)</string>
+    <string name="settings_transcode_mode_off">אויסשאַלטן דעם איבערקאָדירער אין אַלגעמיין</string>
+    <string name="settings_transcode_params_title">איבערקאָדירונג פּאַראַמעטערס</string>
+    <string name="settings_transcode_params_subtitle">קוואַליטעט און קאָמפּרעסיע פּאַראַמעטערס ביים נאָך אַ מאָל קאָדירן</string>
+    <string name="settings_transcode_params_disabled">ווירקט נאָר ווען „נאָך אַ מאָל קאָדירן“ איז אויסגעקליבן אין „ווידעאָ איבערקאָדירונג“</string>
+    <string name="settings_crf_value">CRF קוואַליטעט: %1$d</string>
+    <string name="settings_crf_hint">קלענערער ווערט מיינט העכערע קוואַליטעט און גרעסערער אַרומנעם (סטאַנדאַרט 18)</string>
+    <string name="settings_encoder_title">קאָדירער</string>
+    <string name="settings_compress_preset_title">קאָמפּרעסיע פּראָפֿיל</string>
+
+</resources>

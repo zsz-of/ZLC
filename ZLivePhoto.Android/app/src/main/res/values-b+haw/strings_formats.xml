@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Wehe</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (hoʻokahi waihona)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">ʻAʻole i loaʻa kahi waihona .mov me ka inoa like</string>
+    <string name="fmt_err_apple_mov_no_ftyp">ʻAʻohe ftyp box o ka waihona MOV</string>
+    <string name="fmt_err_extract_read">He ʻano puka ʻo Wehe; ʻaʻole hiki ke heluhelu ʻia ma ke ʻano he puka komo</string>
+    <string name="fmt_err_no_primary_jpeg">ʻAʻole i loaʻa kahi kiʻi JPEG nui</string>
+    <string name="fmt_err_no_mp4_after_jpeg">ʻAʻole i loaʻa kahi wikiō MP4 kūpono ma hope o JPEG (ʻaʻohe ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Ua hāʻule ka nānā ʻana i ke kahe wikiō MP4</string>
+    <string name="fmt_err_nubia_too_short">He pōkole loa ka waihona no Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">ʻAʻole ka helu kilokilo nubiaVpfile ma ka hope o ka waihona</string>
+    <string name="fmt_err_nubia_jpeg_len">ʻAʻole kūpono ka lōʻihi JPEG ma ka hope o ka waihona: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">ʻAʻole nā byte hoʻopiha 0x00 ma waena o JPEG a me ka wikiō</string>
+    <string name="fmt_err_nubia_empty_video">He 0 ka lōʻihi o ka wikiō i hoʻokomo ʻia</string>
+    <string name="fmt_err_vivo_no_marker">ʻAʻole i loaʻa ka hōʻailona vivo livephoto ma ka hope o JPG</string>
+    <string name="fmt_err_vivo_companion_missing">ʻAʻole ka waihona wikiō pili: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Ua hāʻule ka nānā ʻana i ke kino JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">ʻAʻole kūpono ka MP4 pili (ʻaʻohe ftyp box)</string>
+</resources>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Euskara (eu) — Ezarpenak pantaila.
+  Itzulia res/values/strings_settings.xml (txinera sinplifikatua, erreserba-localea) oinarritzat hartuta.
+  Kalitatea: A. Markatzaileak zenbakidun forman (%1$s / %1$d), jatorrizkoan bezala.
+-->
+<resources>
+
+    <!-- Orokorra -->
+    <string name="settings_title">Ezarpenak</string>
+    <string name="settings_cd_back">Atzera</string>
+    <string name="settings_btn_apply">Aplikatu</string>
+    <string name="settings_btn_cancel">Utzi</string>
+    <string name="settings_btn_close">Itxi</string>
+    <string name="settings_btn_ok">Ados</string>
+    <string name="settings_btn_sponsor">Babestu</string>
+
+    <!-- Atal-izenburuak -->
+    <string name="settings_section_general">Orokorra</string>
+    <string name="settings_section_appearance">Itxura</string>
+    <string name="settings_section_language">Hizkuntza</string>
+    <string name="settings_section_defaults">Lehenetsitako aukerak</string>
+    <string name="settings_section_output">Irteera</string>
+    <string name="settings_section_transcode">Bideo-transkodetzea</string>
+    <string name="settings_section_about">Honi buruz</string>
+    <string name="settings_section_app">Aplikazioa</string>
+    <string name="settings_section_credits">Esker onak eta babesa</string>
+    <string name="settings_section_opensource">Kode irekia eta lizentzia</string>
+
+    <!-- Orokorra -->
+    <string name="settings_startup_check_title">Egiaztatu eguneraketak abiaraztean</string>
+    <string name="settings_startup_check_subtitle">Abiaraztean GitHubetik bertsio berriak automatikoki eskuratu eta horiek daudenean deskargatzeko abisua ematen du</string>
+    <string name="settings_haptics_title">Bibrazioa</string>
+    <string name="settings_haptics_subtitle">Ukimen-erantzuna botoiak sakatzean eta egoera aldatzean</string>
+    <string name="settings_bounce_title">Botoien animazio elastikoa</string>
+    <string name="settings_bounce_subtitle">Zooma eta errebotea botoiak sakatzean</string>
+
+    <!-- Itxura -->
+    <string name="settings_theme_system">Jarraitu sistemari</string>
+    <string name="settings_theme_dark">Iluna</string>
+    <string name="settings_theme_light">Argia</string>
+    <string name="settings_dynamic_theme_title">Material You kolore dinamikoak</string>
+    <string name="settings_dynamic_theme_subtitle">Sistemaren horma-paperaren kolorea jarraitzen du (Android 12+); desaktibatuta, beheko kolore lehenetsiak erabiltzen dira</string>
+    <string name="settings_preset_colors_title">Kolore lehenetsiak</string>
+    <string name="settings_preset_current">Unekoa: %1$s</string>
+    <string name="settings_preset_disabled_hint">«Material You kolore dinamikoak» desaktibatu ondoren aukera daiteke</string>
+    <string name="settings_custom">Pertsonalizatua</string>
+    <string name="settings_custom_color_title">Gai-kolore pertsonalizatua</string>
+    <string name="settings_cd_custom_palette">Paleta pertsonalizatua</string>
+    <string name="settings_hue_value">Tonua %1$d°</string>
+
+    <!-- Aplikazioaren hizkuntza -->
+    <string name="settings_language_dialog_title">Aukeratu aplikazioaren hizkuntza</string>
+    <string name="settings_language_count">Guztira %1$d hizkuntza</string>
+
+    <!-- Lehenetsitako aukerak -->
+    <string name="settings_reminder_dialogs_title">Ez erakutsi abisu gehiago</string>
+    <string name="settings_reminder_dialogs_subtitle">Kudeatu «ez erakutsi gehiago» abisu guztiak</string>
+    <string name="settings_reminder_hint">Etengailua piztuta badago «ez erakutsi gehiago» esan nahi du; itzalita, hurrengo aldian egoera hori gertatzen denean abisua berriro agertuko da.</string>
+
+    <!-- Irteera -->
+    <string name="settings_preserve_folders_title">Irteera iturburuko karpeta-egiturari jarraituz</string>
+    <string name="settings_preserve_folders_subtitle">Emaitzak jatorrizko albumaren izena duten azpikarpetetan gordetzen dira; desaktibatuta, guztia karpeta bakarrean gelditzen da</string>
+
+    <!-- Honi buruz -->
+    <string name="settings_about_title">Honi buruz</string>
+    <string name="settings_about_subtitle">Bertsioa · Eguneraketen egiaztapena · Esker onak eta babesa</string>
+    <string name="settings_check_update_title">Egiaztatu eguneraketak</string>
+    <string name="settings_check_update_subtitle">Eskuratu azken bertsioa GitHub Releasesetik</string>
+    <string name="settings_checking">Egiaztatzen…</string>
+    <string name="settings_update_available">v%1$s erabilgarri</string>
+    <string name="settings_up_to_date">Azken bertsioa duzu jada</string>
+    <string name="settings_network_error">Sare-errorea; saiatu berriro geroago</string>
+    <string name="settings_reinstall_title">Berrinstalatu bertsio hau</string>
+    <string name="settings_reinstall_subtitle">Deskargatu azken bertsioa eta instalatu gainean (eguneraketak probatzeko)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s bertsiora egunera dezakezu; erabili lehenago «Egiaztatu eguneraketak»</string>
+    <string name="settings_version_title">Bertsioa</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay bidezko babesa</string>
+    <string name="settings_alipay_subtitle">Lagundu garapena</string>
+    <string name="settings_coolapk_subtitle">Coolapk erabiltzailea · Eskerrik asko zure laguntzagatik</string>
+    <string name="settings_ai_credits_subtitle">Eskerrik asko garapenean lagundu duten AI IDE eta AI modeloei</string>
+    <string name="settings_github_title">GitHubeko proiektuaren helbidea</string>
+    <string name="settings_license_title">Kode irekiko lizentzia</string>
+    <string name="settings_sponsor_dialog_title">Eskerrik asko zure laguntzagatik</string>
+    <string name="settings_sponsor_dialog_text">Benetan eskerrik asko aplikazio hau babesteko prest egoteagatik!\n\nOraindik ikasten ari bazara edo diru-independentziarik ez baduzu, ez ezazu dirurik gastatu inola ere:\ngorde asmo hau eta jarraitu aplikazioa erabiltzen; hori da eman diezazkidakezun laguntzarik onena.\n\nBabestu nahi baduzu, edozein laguntza, txikia izan arren, opari bat da, eta hobeto mantentzera eta hobetzera bideratuko dut:)</string>
+    <string name="settings_alipay_missing_title">Oraindik ez duzu Alipay instalatuta</string>
+    <string name="settings_alipay_missing_text">Ez da Alipay detektatu, beraz oraintxe ezin da babesa osatu.\n\nEz da ezer gertatzen: nolanahi ere, mila esker zure borondate onagatik!</string>
+
+    <!-- Bideo-transkodetzea -->
+    <string name="settings_transcoder_title">Transkodetzaile integratua</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Berriz kodetu</string>
+    <string name="settings_transcode_mode_remux">Edukiontzia soilik aldatu (gomendatua)</string>
+    <string name="settings_transcode_mode_off">Ez erabili transkodetzailea inoiz</string>
+    <string name="settings_transcode_params_title">Transkodetze-parametroak</string>
+    <string name="settings_transcode_params_subtitle">Berriz kodetzean erabiltzen diren kalitatea eta konpresioa</string>
+    <string name="settings_transcode_params_disabled">«Transkodetze-modua» «Berriz kodetu» denean soilik aplikatzen da</string>
+    <string name="settings_crf_value">Kalitatea CRF: %1$d</string>
+    <string name="settings_crf_hint">Zenbat eta balio txikiagoa, orduan eta kalitate eta tamaina handiagoa (lehenetsia 18)</string>
+    <string name="settings_encoder_title">Kodetzailea</string>
+    <string name="settings_compress_preset_title">Konpresio-aurrezarpena</string>
+
+</resources>

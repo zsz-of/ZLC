@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Монгол (Mongolian) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Mongolian (Cyrillic); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">Хөдөлгөөнт зургийн форматыг хөрвүүлэх</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d файл</item>
+        <item quantity="other">%1$d файл</item>
+    </plurals>
+    <string name="screen_settings">Тохиргоо</string>
+    <string name="screen_select_output_format">Гаралтын форматыг сонгох</string>
+    <string name="screen_selected">Сонгосон</string>
+    <string name="screen_vivo_single_warning">⚠ Хуучин төхөөрөмж энэ форматыг танихгүй байж магадгүй</string>
+    <string name="screen_extract_blocked">⚠ Дараалалд нэгтгэх ажил байна, задлах сонгох боломжгүй</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (нэг файл)</string>
+    <string name="screen_format_vivo">vivo (хоёр файл)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Задлах</string>
+    <string name="screen_toolbox">Хэрэгслийн хайрцаг</string>
+    <string name="screen_batch_import">Багц импорт</string>
+    <string name="screen_batch_import_desc">Бүх галерейг скан хийж хөдөлгөөнт зургийг багцаар таних</string>
+    <string name="screen_compose">Хөдөлгөөнт зураг нэгтгэх</string>
+    <string name="screen_compose_desc">Нэг зураг, нэг видеог сонгон хослуулах</string>
+    <string name="screen_replace_mode">Солих горим</string>
+    <string name="screen_replace_mode_desc">Үр дүн шууд эх файлд бичигдэнэ, шинэ файл үүсэхгүй</string>
+    <string name="screen_need_all_files_access_hint">Бүх файлд хандах зөвшөөрөл шаардлагатай, зөвшөөрөх бол энд дарна уу</string>
+    <string name="screen_agree_and_enable">Зөвшөөрч нээх</string>
+    <string name="screen_empty_no_files">Одоогоор файл нэмээгүй</string>
+    <string name="screen_view_detail">Дэлгэрэнгүй харах</string>
+    <string name="screen_add_files">Файл нэмэх</string>
+    <string name="screen_output_format">Гаралтын формат: %1$s</string>
+    <string name="screen_delete_original">Боловсруулсны дараа эх зургийг устгах</string>
+    <string name="screen_need_all_files_access_view">Бүх файлд хандах зөвшөөрөл шаардлагатай, харах бол дарна уу</string>
+    <string name="screen_clear">Цэвэрлэх</string>
+    <string name="screen_stop">Боловсруулалтыг зогсоох</string>
+    <string name="screen_start_convert">Хөрвүүлэлтийг эхлүүлэх</string>
+    <string name="screen_status_detail">Төлөвийн дэлгэрэнгүй</string>
+    <string name="screen_long_press_copy">Текстийг сонгож хуулахын тулд удаан дарна уу</string>
+    <string name="screen_copy">Хуулах</string>
+    <string name="screen_close">Хаах</string>
+    <string name="screen_back">Буцах</string>
+    <string name="screen_picker_title_select">Хөдөлгөөнт зураг сонгох</string>
+    <string name="screen_album_count">Цомог %1$d</string>
+    <string name="screen_album_collapse_cover">Цомгийн коверыг хураах</string>
+    <string name="screen_album_expand_cover">Цомгийн коверыг дэлгэх</string>
+    <string name="screen_scanning_progress">Скан хийж байна %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d зураг</item>
+        <item quantity="other">%1$d зураг</item>
+    </plurals>
+    <string name="screen_select_all">Бүгдийг сонгох</string>
+    <string name="screen_no_albums">Ашиглах боломжтой цомог байхгүй</string>
+    <string name="screen_no_media">Хөдөлгөөнт зураг олдсонгүй</string>
+    <string name="screen_no_media_compose">Зураг эсвэл видео олдсонгүй</string>
+    <string name="screen_import">Импортлох</string>
+    <string name="screen_import_count">Импортлох %1$d</string>
+    <string name="screen_import_mixed">Импортлох зураг %1$d · видео %2$d</string>
+    <string name="screen_search">Хайх</string>
+    <string name="screen_search_collapse">Хайлтыг хураах</string>
+    <string name="screen_search_hint">Нэрээр хайх</string>
+    <string name="screen_search_clear">Хайлтыг цэвэрлэх</string>
+    <string name="screen_sort_date">Огноо</string>
+    <string name="screen_sort_size">Хэмжээ</string>
+    <string name="screen_sort_name">Нэр</string>
+    <string name="screen_sort_asc">Өсөх</string>
+    <string name="screen_sort_desc">Буурах</string>
+    <string name="screen_date_today">Өнөөдөр</string>
+    <string name="screen_date_yesterday">Өчигдөр</string>
+    <string name="screen_date_this_year">%1$d-%2$d</string>
+    <string name="screen_date_other_year">%1$d-%2$d-%3$d</string>
+</resources>

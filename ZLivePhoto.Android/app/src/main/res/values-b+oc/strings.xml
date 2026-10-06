@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Occitan (oc).
+  Traduch de res/values/strings_*.xml (chinés simplificat, la locale de remplaçament).
+  Qualitat: B (occitan classica / lengadociana; cal una relectura per un locutor natiu).
+  Totes las claus, los marcaires (%1$s / %1$d) e las sequéncias d'escapament son servadas talas coma son.
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

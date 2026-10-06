@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Occitan (oc) — tèxtes al nivèl de l'aplicacion.
+  Traduch de res/values/strings_app.xml (chinés simplificat, la locale de remplaçament).
+  Qualitat: B.
+-->
+<resources>
+    <!-- L'element del selector «Lenga de l'aplicacion» que seguís lo sistèma -->
+    <string name="app_language_follow_system">Seguir lo sistèma</string>
+    <!-- Títol del selector de lenga -->
+    <string name="app_language_title">Lenga de l\'aplicacion</string>
+</resources>

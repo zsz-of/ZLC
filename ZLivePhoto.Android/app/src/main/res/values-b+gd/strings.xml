@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Gàidhlig (gd).
+  Air eadar-theangachadh o res/values/strings_*.xml (Sìnis shìmplidh, an locale cùl-taic).
+  Càileachd: B (Gàidhlig chaighdeánach; feumar sùil dheireannach bho luchd-labhairt dhùthchasach air na teirmean teicnigeach).
+  Glèidhear gach iuchair, gach gleus-àite (%1$s / %1$d) agus gach sreath-teichidh mar a tha iad.
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

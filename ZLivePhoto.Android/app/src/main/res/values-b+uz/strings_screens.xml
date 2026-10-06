@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · O'zbekcha (Uzbek) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Uzbek (Latin); recommended for a native review pass.
+  Untranslated keys are intentionally absent so they fall back to the baseline;
+  placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="screen_app_subtitle">Jonli foto formatini konvertatsiya qilish</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d fayl</item>
+        <item quantity="other">%1$d fayl</item>
+    </plurals>
+    <string name="screen_settings">Sozlamalar</string>
+    <string name="screen_select_output_format">Chiqish formatini tanlash</string>
+    <string name="screen_selected">Tanlandi</string>
+    <string name="screen_vivo_single_warning">⚠ Eski qurilmalar bu formatni tanimasligi mumkin</string>
+    <string name="screen_extract_blocked">⚠ Navbatda birlashtirish vazifasi bor, ajratishni tanlab boʻlmaydi</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (bitta fayl)</string>
+    <string name="screen_format_vivo">vivo (ikki fayl)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Ajratish</string>
+    <string name="screen_toolbox">Asboblar qutisi</string>
+    <string name="screen_batch_import">Ommaviy import</string>
+    <string name="screen_batch_import_desc">Butun galereyani skanerlab, jonli fotolarni ommaviy aniqlash</string>
+    <string name="screen_compose">Jonli foto birlashtirish</string>
+    <string name="screen_compose_desc">Bitta foto va bitta videoni tanlab juftlashtirish</string>
+    <string name="screen_replace_mode">Almashtirish rejimi</string>
+    <string name="screen_replace_mode_desc">Natija toʻgʻridan-toʻgʻri asl faylga yoziladi, yangi fayl yaratilmaydi</string>
+    <string name="screen_need_all_files_access_hint">Barcha fayllarga kirish ruxsati kerak, ruxsat berish uchun shu yerni bosing</string>
+    <string name="screen_agree_and_enable">Rozilik berib yoqish</string>
+    <string name="screen_empty_no_files">Hozircha fayl qoʻshilmagan</string>
+    <string name="screen_view_detail">Batafsil koʻrish</string>
+    <string name="screen_add_files">Fayl qoʻshish</string>
+    <string name="screen_output_format">Chiqish formati: %1$s</string>
+    <string name="screen_delete_original">Qayta ishlashdan keyin asl fotoni oʻchirish</string>
+    <string name="screen_need_all_files_access_view">Barcha fayllarga kirish ruxsati kerak, koʻrish uchun bosing</string>
+    <string name="screen_clear">Tozalash</string>
+    <string name="screen_stop">Qayta ishlashni toʻxtatish</string>
+    <string name="screen_start_convert">Konvertatsiyani boshlash</string>
+    <string name="screen_status_detail">Holat tafsilotlari</string>
+    <string name="screen_long_press_copy">Matnni tanlab nusxalash uchun uzoq bosing</string>
+    <string name="screen_copy">Nusxalash</string>
+    <string name="screen_close">Yopish</string>
+    <string name="screen_back">Orqaga</string>
+    <string name="screen_picker_title_select">Jonli foto tanlash</string>
+    <string name="screen_album_count">Albom %1$d</string>
+    <string name="screen_album_collapse_cover">Albom muqovasini yigʻish</string>
+    <string name="screen_album_expand_cover">Albom muqovasini yoyish</string>
+    <string name="screen_scanning_progress">Skanerlanmoqda %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d foto</item>
+    </plurals>
+    <string name="screen_select_all">Hammasini tanlash</string>
+    <string name="screen_no_albums">Foydalanish mumkin boʻlgan albom yoʻq</string>
+    <string name="screen_no_media">Jonli foto topilmadi</string>
+    <string name="screen_no_media_compose">Foto yoki video topilmadi</string>
+    <string name="screen_import">Import</string>
+    <string name="screen_import_count">Import %1$d</string>
+    <string name="screen_import_mixed">Import foto %1$d · video %2$d</string>
+    <string name="screen_search">Qidirish</string>
+    <string name="screen_search_collapse">Qidiruvni yigʻish</string>
+    <string name="screen_search_hint">Nom boʻyicha qidirish</string>
+    <string name="screen_search_clear">Qidiruvni tozalash</string>
+    <string name="screen_sort_date">Sana</string>
+    <string name="screen_sort_size">Hajm</string>
+    <string name="screen_sort_name">Nom</string>
+    <string name="screen_sort_asc">Oʻsish</string>
+    <string name="screen_sort_desc">Kamayish</string>
+    <string name="screen_date_today">Bugun</string>
+    <string name="screen_date_yesterday">Kecha</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%2$d.%1$d.%3$d</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Estratt</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (fajl wieħed)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Ma nstab l-ebda fajl tal-vidjo .mov bl-istess isem</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Il-fajl MOV m\&#39;għandux ftyp box</string>
+    <string name="fmt_err_extract_read">Estratt huwa format tal-output, ma jistax jinqara bħala format tal-input</string>
+    <string name="fmt_err_no_primary_jpeg">Ma nstabet l-ebda immaġni JPEG prinċipali</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Ma nstab l-ebda vidjo MP4 validu wara l-JPEG (m\&#39;hemmx ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">L-analiżi tal-fluss tal-vidjo MP4 falliet</string>
+    <string name="fmt_err_nubia_too_short">Il-fajl huwa qasir wisq għal Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">In-numru maġiku nubiaVpfile nieqes fit-tmiem tal-fajl</string>
+    <string name="fmt_err_nubia_jpeg_len">Tul JPEG invalidu fit-tmiem tal-fajl: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">M\&#39;hemmx bytes ta\&#39; padding 0x00 bejn il-JPEG u l-vidjo</string>
+    <string name="fmt_err_nubia_empty_video">It-tul tal-vidjo inkluż huwa 0</string>
+    <string name="fmt_err_vivo_no_marker">Ma nstab l-ebda marka vivo livephoto fit-tmiem tal-JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Il-fajl tal-vidjo kumpann nieqes: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">L-analiżi tal-korp JPG falliet</string>
+    <string name="fmt_err_vivo_companion_invalid">Il-MP4 kumpann mhuwiex validu (m\&#39;hemmx ftyp box)</string>
+</resources>

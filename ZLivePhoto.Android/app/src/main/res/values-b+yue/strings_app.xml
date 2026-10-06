@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 分級 B：粵語（模型輔助）翻譯，或有措辭瑕疵，歡迎社群修正。 -->
+<resources>
+    <string name="app_language_follow_system">跟隨系統</string>
+    <string name="app_language_title">應用程式語言</string>
+</resources>

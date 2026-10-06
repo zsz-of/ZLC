@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Brezhoneg (br) — ar skramm Arventennoù.
+  Troet diwar res/values/strings_settings.xml (sinaeg simplaet, al locale dre ziouer).
+  Perzhded: B. Miret e vez ar verkoù er stumm niverennet (%1$s / %1$d), evel er mammenn.
+-->
+<resources>
+
+    <!-- Hollek -->
+    <string name="settings_title">Arventennoù</string>
+    <string name="settings_cd_back">Distreiñ</string>
+    <string name="settings_btn_apply">Lakaat da dalvezout</string>
+    <string name="settings_btn_cancel">Nullañ</string>
+    <string name="settings_btn_close">Serriñ</string>
+    <string name="settings_btn_ok">Mat eo</string>
+    <string name="settings_btn_sponsor">Skoazellañ</string>
+
+    <!-- Titloù ar rannoù -->
+    <string name="settings_section_general">Hollek</string>
+    <string name="settings_section_appearance">Neuz</string>
+    <string name="settings_section_language">Yezh</string>
+    <string name="settings_section_defaults">Dibaboù dre ziouer</string>
+    <string name="settings_section_output">Ezc\'hour</string>
+    <string name="settings_section_transcode">Treuzkodañ video</string>
+    <string name="settings_section_about">Diwar-benn</string>
+    <string name="settings_section_app">Arload</string>
+    <string name="settings_section_credits">Trugarekaat ha skoazell</string>
+    <string name="settings_section_opensource">Mammennoù digor hag aotre</string>
+
+    <!-- Hollek -->
+    <string name="settings_startup_check_title">Gwiriañ an hizivadurioù pa loc\'her</string>
+    <string name="settings_startup_check_subtitle">Tapout a ra ent emgefreek an handelvoù nevez eus GitHub pa loc\'her an arload, hag aliañ a ra o fellgargañ pa vezont hegerz</string>
+    <string name="settings_haptics_title">Dasklask dre grenadenn</string>
+    <string name="settings_haptics_subtitle">Dasklask dre stekiñ pa bouzer war ar boutonoù ha pa cheñch an stad</string>
+    <string name="settings_bounce_title">Bevatadenn elastik ar boutonoù</string>
+    <string name="settings_bounce_subtitle">Bevatadenn zoum ha lamm-dre-gil pa vez pouzet war ar boutonoù</string>
+
+    <!-- Neuz -->
+    <string name="settings_theme_system">Heuliañ ar reizhiad</string>
+    <string name="settings_theme_dark">Teñval</string>
+    <string name="settings_theme_light">Skarzh</string>
+    <string name="settings_dynamic_theme_title">Livioù dinamek Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Heuliañ liv speurenn ar reizhiad (Android 12+); goude e ziwerediñ, e vo implijet al livioù rakkefluniet dindan</string>
+    <string name="settings_preset_colors_title">Livioù rakkefluniet</string>
+    <string name="settings_preset_current">Bremañ: %1$s</string>
+    <string name="settings_preset_disabled_hint">Hegerz goude diwerediñ «Livioù dinamek Material You»</string>
+    <string name="settings_custom">Personelaet</string>
+    <string name="settings_custom_color_title">Liv an tem personelaet</string>
+    <string name="settings_cd_custom_palette">Paletez personelaet</string>
+    <string name="settings_hue_value">Ton %1$d°</string>
+
+    <!-- Yezh an arload -->
+    <string name="settings_language_dialog_title">Dibab yezh an arload</string>
+    <string name="settings_language_count">%1$d yezh en holl</string>
+
+    <!-- Dibaboù dre ziouer -->
+    <string name="settings_reminder_dialogs_title">Chom hep diskouez ar c\'hemennoù adarre</string>
+    <string name="settings_reminder_dialogs_subtitle">Merañ an holl gemennoù «chom hep diskouez adarre»</string>
+    <string name="settings_reminder_hint">Pa vez enaouet ar bouton e talvez «chom hep diskouez adarre»; pa vez diweredekaet, e tiskouezo ar c\'hemenn adarre ar wech a zeu.</string>
+
+    <!-- Ezc'hour -->
+    <string name="settings_preserve_folders_title">Ezc\'hour hervez framm ar renkelloù mammenn</string>
+    <string name="settings_preserve_folders_subtitle">Enrollet e vez an disoc\'hoù en isrenkelloù anvet diwar an albom orin; pa vez diweredekaet, e chom pep tra en ur renkell hepken</string>
+
+    <!-- Diwar-benn -->
+    <string name="settings_about_title">Diwar-benn</string>
+    <string name="settings_about_subtitle">Handelv · Gwiriañ an hizivadurioù · Trugarekaat ha skoazell</string>
+    <string name="settings_check_update_title">Gwiriañ an hizivadurioù</string>
+    <string name="settings_check_update_subtitle">Tapout an handelv diwezhañ eus GitHub Releases</string>
+    <string name="settings_checking">O wiriañ…</string>
+    <string name="settings_update_available">v%1$s hegerz</string>
+    <string name="settings_up_to_date">An handelv diwezhañ hoc\'h eus dija</string>
+    <string name="settings_network_error">Fazi rouedad; klaskit adarre diwezhatoc\'h</string>
+    <string name="settings_reinstall_title">Adstaliañ an handelv-mañ</string>
+    <string name="settings_reinstall_subtitle">Pellgargañ an handelv diwezhañ hag e staliañ warnañ (evit arnodiñ an hizivadurioù)</string>
+    <string name="settings_reinstall_newer_hint">Gallout a rit hizivaat da v%1$s; implijit «Gwiriañ an hizivadurioù» da gentañ</string>
+    <string name="settings_version_title">Handelv</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Skoazell dre Alipay</string>
+    <string name="settings_alipay_subtitle">Skoazellañ an diorren</string>
+    <string name="settings_coolapk_subtitle">Implijer Coolapk · Trugarez dezhañ evit e skoazell</string>
+    <string name="settings_ai_credits_subtitle">Trugarez d\'an IDEoù IA ha d\'ar patromoù IA evit o skoazell war-dro an diorren</string>
+    <string name="settings_github_title">Chomlec\'h GitHub ar raktres</string>
+    <string name="settings_license_title">Aotre mammennoù digor</string>
+    <string name="settings_sponsor_dialog_title">Trugarez evit ho skoazell</string>
+    <string name="settings_sponsor_dialog_text">Trugarez kalonek da vezañ prest skoazellañ an arload-mañ!\n\nMa \'z oc\'h c\'hoazh studier, pe hep dizalc\'hted arc\'hant, na gasit arc\'hant ebet:\nmirit ar soñj-se en ho kalon ha kendalc\'hit da implijout an arload — se eo ar skoazell wellañ a c\'hallit reiñ din.\n\nMa fell deoc\'h skoazellañ, ur prof eo pep rann, pegen bihan bennak e vefe, hag e lakaio da viroùdañ ha da wellaat anezhañ gwelloc\'h:)</string>
+    <string name="settings_alipay_missing_title">N\'eo ket staliet Alipay ganeoc\'h c\'hoazh</string>
+    <string name="settings_alipay_missing_text">N\'eus bet kavet Alipay ebet, neuze ne c\'haller ket seveniñ ar skoazell bremañ.\n\nNe vern: daoust da se, trugarez vras evit ho youl vat!</string>
+
+    <!-- Treuzkodañ video -->
+    <string name="settings_transcoder_title">Treuzkoder enbarzhet</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Adkodañ</string>
+    <string name="settings_transcode_mode_remux">Cheñch ar c\'houder hepken (aliet)</string>
+    <string name="settings_transcode_mode_off">Chom hep implijout an treuzkoder tamm ebet</string>
+    <string name="settings_transcode_params_title">Arventennoù treuzkodañ</string>
+    <string name="settings_transcode_params_subtitle">Perzhded hag gwaskadur implijet pa adkoder</string>
+    <string name="settings_transcode_params_disabled">Talvezout a ra hepken pa vez «Adkodañ» dibabet e-barzh «Doare treuzkodañ»</string>
+    <string name="settings_crf_value">Perzhded CRF: %1$d</string>
+    <string name="settings_crf_hint">Seul vihanoc\'h an talvoud, seul uheloc\'h ar perzhded hag ar vent (dre ziouer 18)</string>
+    <string name="settings_encoder_title">Koder</string>
+    <string name="settings_compress_preset_title">Rakstal gwaskadur</string>
+
+</resources>

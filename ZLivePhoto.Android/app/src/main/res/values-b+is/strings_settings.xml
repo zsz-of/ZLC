@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · íslenska (is).
+  ZLC · Icelandic strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Stillingar</string>
+    <string name="settings_cd_back">Til baka</string>
+    <string name="settings_btn_apply">Nota</string>
+    <string name="settings_btn_cancel">Hætta við</string>
+    <string name="settings_btn_close">Loka</string>
+    <string name="settings_btn_ok">Í lagi</string>
+    <string name="settings_btn_sponsor">Styrkja</string>
+    <string name="settings_section_general">Almennt</string>
+    <string name="settings_section_appearance">Útlit</string>
+    <string name="settings_section_language">Tungumál</string>
+    <string name="settings_section_defaults">Sjálfgefið</string>
+    <string name="settings_section_output">Úttak</string>
+    <string name="settings_section_transcode">Myndbandsumkóðun</string>
+    <string name="settings_section_about">Um</string>
+    <string name="settings_section_app">Forrit</string>
+    <string name="settings_section_credits">Þakkir &amp; framlög</string>
+    <string name="settings_section_opensource">Opinn hugbúnaður &amp; leyfi</string>
+    <string name="settings_startup_check_title">Athuga með uppfærslur við ræsingu</string>
+    <string name="settings_startup_check_subtitle">Sækja nýjar útgáfur sjálfkrafa frá GitHub við ræsingu og biðja um niðurhal þegar ein er í boði</string>
+    <string name="settings_haptics_title">Snertiviðbragð</string>
+    <string name="settings_haptics_subtitle">Snertiviðbragð við hnappapressu og stöðubreytingar</string>
+    <string name="settings_bounce_title">Stökkhreyfing hnappa</string>
+    <string name="settings_bounce_subtitle">Stækkunar- og stökkhreyfing þegar ýtt er á hnapp</string>
+    <string name="settings_theme_system">Fylgja kerfinu</string>
+    <string name="settings_theme_dark">Dökkt</string>
+    <string name="settings_theme_light">Ljóst</string>
+    <string name="settings_dynamic_theme_title">Kviklitir Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Fylgja lit bakgrunnsmyndar kerfisins (Android 12+); þegar slökkt er nota forstilltu þemalitina hér fyrir neðan</string>
+    <string name="settings_preset_colors_title">Forstilltir þemalitir</string>
+    <string name="settings_preset_current">Núverandi: %1$s</string>
+    <string name="settings_preset_disabled_hint">Slökktu á “Kviklitum Material You” til að velja</string>
+    <string name="settings_custom">Sérsniðið</string>
+    <string name="settings_custom_color_title">Sérsniðinn þemalitur</string>
+    <string name="settings_cd_custom_palette">Sérsniðið litaspjald</string>
+    <string name="settings_hue_value">Litblær %1$d°</string>
+    <string name="settings_language_dialog_title">Veldu tungumál forritsins</string>
+    <string name="settings_language_count">%1$d tungumál í boði</string>
+    <string name="settings_reminder_dialogs_title">“Ekki sýna aftur”-gluggar</string>
+    <string name="settings_reminder_dialogs_subtitle">Stjórna rofunum fyrir alla “Ekki sýna aftur”-glugga</string>
+    <string name="settings_reminder_hint">Þegar rofi er kveiktur birtist sú beiðni ekki aftur; þegar hann er slökktur birtist beiðnin aftur næst þegar viðeigandi aðstæður koma upp.</string>
+    <string name="settings_preserve_folders_title">Úttak með möppuskipulagi upprunans</string>
+    <string name="settings_preserve_folders_subtitle">Niðurstöður eru geymdar í undirmöppum sem heita eftir upprunalegu albúmunum; þegar slökkt er er öllu raðað flatt í eina möppu</string>
+    <string name="settings_about_title">Um</string>
+    <string name="settings_about_subtitle">Útgáfa · Athuga með uppfærslur · Þakkir &amp; framlög</string>
+    <string name="settings_check_update_title">Athuga með uppfærslur</string>
+    <string name="settings_check_update_subtitle">Sækja nýjustu útgáfu frá GitHub Releases</string>
+    <string name="settings_checking">Athuga…</string>
+    <string name="settings_update_available">v%1$s í boði</string>
+    <string name="settings_up_to_date">Þú ert með nýjustu útgáfuna</string>
+    <string name="settings_network_error">Netvilla; reyndu aftur síðar</string>
+    <string name="settings_reinstall_title">Setja þessa útgáfu upp aftur</string>
+    <string name="settings_reinstall_subtitle">Sækja nýjustu smíðina og setja hana upp ofan á þessa (til að prófa uppfærslur)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s er í boði; notaðu “Athuga með uppfærslur” til að uppfæra fyrst</string>
+    <string name="settings_version_title">Útgáfa</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Styrkja með Alipay</string>
+    <string name="settings_alipay_subtitle">Styðja þróunina</string>
+    <string name="settings_coolapk_subtitle">Coolapk-notandi · takk fyrir stuðninginn</string>
+    <string name="settings_ai_credits_subtitle">Þökk til AI-forritunarumhverfa og AI-líkana sem aðstoðuðu við þróunina</string>
+    <string name="settings_github_title">GitHub-geymsla</string>
+    <string name="settings_license_title">Leyfi opins hugbúnaðar</string>
+    <string name="settings_sponsor_dialog_title">Takk fyrir stuðninginn</string>
+    <string name="settings_sponsor_dialog_text">Ég met virkilega að þú viljir styðja þetta forrit!\n\nEf þú ert enn námsmaður eða ekki enn fjárhagslega sjálfstæður, vinsamlegast ekki eyða peningum í þetta — að bera þá góðvild í hjarta sér og halda áfram að nota forritið er besti stuðningurinn sem ég gæti beðið um.\n\nEf þú vilt samt styðja, þá hjálpar jafnvel smá, og ég mun setja það í betra viðhald og eiginleika:)</string>
+    <string name="settings_alipay_missing_title">Alipay er ekki uppsett</string>
+    <string name="settings_alipay_missing_text">Alipay fannst ekki, svo ekki er hægt að klára framlagið núna.\n\nÞað er allt í lagi — takk kærlega fyrir góðvildina hvort sem er!</string>
+    <string name="settings_transcoder_title">Innbyggður umkóðari</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Endurkóða</string>
+    <string name="settings_transcode_mode_remux">Einungis remux á gámi (mælt með)</string>
+    <string name="settings_transcode_mode_off">Aldrei nota umkóðarann</string>
+    <string name="settings_transcode_params_title">Umkóðunarfæribreytur</string>
+    <string name="settings_transcode_params_subtitle">Gæða- og þjöppunarfæribreytur sem notaðar eru við endurkóðun</string>
+    <string name="settings_transcode_params_disabled">Tekur aðeins gildi þegar “Umkóðunarhamur” er stilltur á “Endurkóða”</string>
+    <string name="settings_crf_value">Gæði CRF: %1$d</string>
+    <string name="settings_crf_hint">Lægri gildi þýða meiri gæði og stærri skrár (sjálfgefið 18)</string>
+    <string name="settings_encoder_title">Kóðari</string>
+    <string name="settings_compress_preset_title">Þjöppunarforsetning</string>
+</resources>

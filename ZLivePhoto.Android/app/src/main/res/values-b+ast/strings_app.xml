@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Asturianu (ast) — testos de nivel d'aplicación.
+  Traducíu de res/values/strings_app.xml (chinu simplificáu, la llocalización de repléu).
+  Calidá: B.
+-->
+<resources>
+    <!-- L'elementu del selector «Llingua de l'aplicación» que sigue'l sistema -->
+    <string name="app_language_follow_system">Siguir el sistema</string>
+    <!-- Títulu del selector de llingua -->
+    <string name="app_language_title">Llingua de l\'aplicación</string>
+</resources>

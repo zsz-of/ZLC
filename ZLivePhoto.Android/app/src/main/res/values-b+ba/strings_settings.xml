@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Дөйөм -->
+    <string name="settings_title">Көйләүҙәр</string>
+    <string name="settings_cd_back">Кире</string>
+    <string name="settings_btn_apply">Ҡулланыу</string>
+    <string name="settings_btn_cancel">Кире ҡағыу</string>
+    <string name="settings_btn_close">Ябыу</string>
+    <string name="settings_btn_ok">Ярай</string>
+    <string name="settings_btn_sponsor">Яҡлау</string>
+
+    <!-- Бүлектәр -->
+    <string name="settings_section_general">Дөйөм</string>
+    <string name="settings_section_appearance">Күренеш</string>
+    <string name="settings_section_language">Тел</string>
+    <string name="settings_section_defaults">Ғәҙәттәге һайлауҙар</string>
+    <string name="settings_section_output">Сығыу</string>
+    <string name="settings_section_transcode">Видеоны транскодлау</string>
+    <string name="settings_section_about">Ҡушымта тураһында</string>
+    <string name="settings_section_app">Ҡушымта</string>
+    <string name="settings_section_credits">Рәхмәт һәм ярҙам</string>
+    <string name="settings_section_opensource">Асыҡ код һәм лицензия</string>
+
+    <!-- Дөйөм -->
+    <string name="settings_startup_check_title">Эшләгәндә яңыртыуҙарҙы тикшереү</string>
+    <string name="settings_startup_check_subtitle">Башланғанда GitHub-тан яңы версияны табып, ҡуйыу тәҡдимен бирә</string>
+    <string name="settings_haptics_title">Тибеүле яуап</string>
+    <string name="settings_haptics_subtitle">Төймәләргә баҫҡанда һәм торош үҙгәргәндә яуап</string>
+    <string name="settings_bounce_title">Төймәләрҙең һығылмалы анимацияһы</string>
+    <string name="settings_bounce_subtitle">Төймәгә баҫҡанда бәләкәйләнеү һәм кире ҡайтыу анимацияһы</string>
+
+    <!-- Күренеш -->
+    <string name="settings_theme_system">Система буйынса</string>
+    <string name="settings_theme_dark">Ҡараңғы</string>
+    <string name="settings_theme_light">Яҡты</string>
+    <string name="settings_dynamic_theme_title">Динамик төҫтәр (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">Система төҫтәренә эйәрә (Android 12+); һүндерелһә, аҫта бирелгән әҙер төҫтәр ҡулланыла</string>
+    <string name="settings_preset_colors_title">Әҙер тема төҫтәре</string>
+    <string name="settings_preset_current">Хәҙерге: %1$s</string>
+    <string name="settings_preset_disabled_hint">«Динамик төҫтәр (Material You)» һүндерелгәндән һуң асыла</string>
+    <string name="settings_custom">Үҙеңдеке</string>
+    <string name="settings_custom_color_title">Үҙ тема төҫө</string>
+    <string name="settings_cd_custom_palette">Үҙ палитраң</string>
+    <string name="settings_hue_value">Төҫ тоны %1$d°</string>
+
+    <!-- Ҡушымта теле -->
+    <string name="settings_language_dialog_title">Ҡушымта телен һайлау</string>
+    <string name="settings_language_count">Бөтәһе %1$d тел</string>
+
+    <!-- Ғәҙәттәге һайлауҙар -->
+    <string name="settings_reminder_dialogs_title">«Башҡа күрһәтмәү» диалогтары</string>
+    <string name="settings_reminder_dialogs_subtitle">Бөтә «Башҡа күрһәтмәү» күсергестәрен идара итеү</string>
+    <string name="settings_reminder_hint">Ҡабыҙылған күсергес «башҡа күрһәтмәү» тигәнде аңлата; һүндерелһә, тейешле хәлдә иҫкәртеү кире күрһәтелә.</string>
+
+    <!-- Сығыу -->
+    <string name="settings_preserve_folders_title">Сығанаҡ папкаларҙың төҙөлөшөн һаҡлау</string>
+    <string name="settings_preserve_folders_subtitle">Һөҙөмтәләр сығанаҡ альбом исемендәге эске папкаларға һаҡлана; һүндерелһә, барыһы ла бер папкаға һалына</string>
+
+    <!-- Ҡушымта тураһында -->
+    <string name="settings_about_title">Ҡушымта тураһында</string>
+    <string name="settings_about_subtitle">Версия · Яңыртыуҙар · Рәхмәт һәм ярҙам</string>
+    <string name="settings_check_update_title">Яңыртыуҙарҙы тикшереү</string>
+    <string name="settings_check_update_subtitle">GitHub Releases-тан иң яңы версияны алыу</string>
+    <string name="settings_checking">Тикшерелә…</string>
+    <string name="settings_update_available">v%1$s бар</string>
+    <string name="settings_up_to_date">Инде иң яңы версия</string>
+    <string name="settings_network_error">Селтәр хатаһы, һуңыраҡ ҡабатлағыҙ</string>
+    <string name="settings_reinstall_title">Был версияны яңынан ҡуйыу</string>
+    <string name="settings_reinstall_subtitle">Хәҙерге иң яңы версияны күсереп алып ҡуйыу (яңыртыуҙарҙы һынау өсөн)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s-ҡа яңыртыу бар, тәүҙә «Яңыртыуҙарҙы тикшереү» һайлағыҙ</string>
+    <string name="settings_version_title">Версия</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay аша яҡлау</string>
+    <string name="settings_alipay_subtitle">Эшләүҙе яҡлау</string>
+    <string name="settings_coolapk_subtitle">Coolapk ҡулланыусыһы · ярҙамығыҙ өсөн рәхмәт</string>
+    <string name="settings_ai_credits_subtitle">Эшләүҙә ярҙам иткән AI мөхиттәренә һәм AI моделдәренә рәхмәт</string>
+    <string name="settings_github_title">GitHub-та сығанаҡ код</string>
+    <string name="settings_license_title">Асыҡ код лицензияһы</string>
+    <string name="settings_sponsor_dialog_title">Ярҙамығыҙ өсөн рәхмәт</string>
+    <string name="settings_sponsor_dialog_text">Был ҡушымтаны яҡларға теләгәнегеҙ өсөн бик ҙур рәхмәт!\n\nӘгәр һеҙ әле уҡыусы йәки финанс яҡтан бойһонмаған булһағыҙ, зинһар, аҡса бирмәгеҙ —\nул яҡшы уйҙы йөрәгегеҙҙә һаҡлағыҙ һәм ҡушымтаны ҡулланыуҙы дауам итегеҙ; был минең өсөн иң яҡшы ярҙам.\n\nӘммә яҡларға теләһәгеҙ, бәләкәй генә өлөш тә мөһим — уны күренеште яҡшыртыуға һәм яңы мөмкинлектәргә тотонам :)</string>
+    <string name="settings_alipay_missing_title">Alipay ҡуйылмаған</string>
+    <string name="settings_alipay_missing_text">Alipay асылманы, шуға күрә хәҙер яҡлау мөмкин түгел.\n\nБыл бер ни ҙә үҙгәртмәй — яҡшы ниәтегеҙ өсөн бик ҙур рәхмәт!</string>
+
+    <!-- Видеоны транскодлау -->
+    <string name="settings_transcoder_title">Эске транскодер</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Яңынан кодлау</string>
+    <string name="settings_transcode_mode_remux">Тик контейнерҙы алмаштырыу (тәҡдим ителә)</string>
+    <string name="settings_transcode_mode_off">Транскодерҙы бөтөнләй һүндереү</string>
+    <string name="settings_transcode_params_title">Транскодлау параметрҙары</string>
+    <string name="settings_transcode_params_subtitle">Яңынан кодлағандағы сифат һәм ҡыҫыу параметрҙары</string>
+    <string name="settings_transcode_params_disabled">«Видеоны транскодлау» бүлегендә «Яңынан кодлау» һайланғанда ғына эшләй</string>
+    <string name="settings_crf_value">CRF сифаты: %1$d</string>
+    <string name="settings_crf_hint">Бәләкәйерәк ҡиммәт — юғарыраҡ сифат һәм ҙурыраҡ күләм (ғәҙәттә 18)</string>
+    <string name="settings_encoder_title">Кодлаусы</string>
+    <string name="settings_compress_preset_title">Ҡыҫыу профиле</string>
+
+</resources>

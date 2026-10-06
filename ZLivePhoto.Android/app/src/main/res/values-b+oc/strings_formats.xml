@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Occitan (oc) — noms de format dels plugins e messatges d'error.
+  Traduch de res/values/strings_formats.xml (chinés simplificat, la locale de remplaçament).
+  Qualitat: B.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Extraire</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo en fichièr unic</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Fichièr vidèo .mov del meteis nom pas trobat</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Lo fichièr MOV a pas la bóstia ftyp</string>
+    <string name="fmt_err_extract_read">«Extraire» es un format de sortida e se pòt pas legir coma format d\'entrada</string>
+    <string name="fmt_err_no_primary_jpeg">Imatge JPEG principal pas trobat</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Cap de vidèo MP4 valida pas trobada aprèp lo JPEG (bóstia ftyp mancanta)</string>
+    <string name="fmt_err_mp4_parse_failed">L\'analisi del flus vidèo MP4 a fracassat</string>
+    <string name="fmt_err_nubia_too_short">Fichièr tròp cort per èsser un Live Photo Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Lo nombre magic nubiaVpfile final manca</string>
+    <string name="fmt_err_nubia_jpeg_len">Longor JPEG enregistrada dins la coa invalida: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Los octets de remplenatge 0x00 entre lo JPEG e la vidèo mancan</string>
+    <string name="fmt_err_nubia_empty_video">Longor de la vidèo incrustada: 0</string>
+    <string name="fmt_err_vivo_no_marker">Marca vivo livephoto pas trobada a la fin del JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Fichièr vidèo associat mancant: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">L\'analisi del còs del JPG a fracassat</string>
+    <string name="fmt_err_vivo_companion_invalid">Lo MP4 associat es invalid (bóstia ftyp mancanta)</string>
+</resources>

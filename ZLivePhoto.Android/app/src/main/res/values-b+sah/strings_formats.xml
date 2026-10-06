@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Араарыы</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (биир билэ)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Биир ааттаах .mov видео билэтэ булуллубата</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV билэтигэр ftyp box суох</string>
+    <string name="fmt_err_extract_read">Араарыы — таһаарыы формата, киирэр формат быһыытынан ааҕыллыбат</string>
+    <string name="fmt_err_no_primary_jpeg">Сүрүн JPEG ойуу булуллубата</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG кэнниттэн сөптөөх MP4 видео булуллубата (ftyp box суох)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 видеоток аналиһа табыллыбата</string>
+    <string name="fmt_err_nubia_too_short">Билэ Nubia Live Photo буоларга наһаа кылгас</string>
+    <string name="fmt_err_nubia_no_magic">Билэ бүтүүтүгэр nubiaVpfile магическай нүөмэрэ суох</string>
+    <string name="fmt_err_nubia_jpeg_len">Билэ бүтүүтүгэр сөптөөҕө суох JPEG уһуна: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG уонна видео ыккардыгар 0x00 толорор байттар суохтар</string>
+    <string name="fmt_err_nubia_empty_video">Киирбит видео уһуна 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG бүтүүтүгэр vivo livephoto бэлиэтэ булуллубата</string>
+    <string name="fmt_err_vivo_companion_missing">Холбуур видео билэтэ суох: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG этин аналиһа табыллыбата</string>
+    <string name="fmt_err_vivo_companion_invalid">Холбуур MP4 сөптөөҕө суох (ftyp box суох)</string>
+</resources>

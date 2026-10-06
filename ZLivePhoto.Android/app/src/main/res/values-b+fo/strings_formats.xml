@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · føroyskt (fo).
+  ZLC · Faroese strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Tak út</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo við einari fílu</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">Ongin .mov videofíla við sama navni varð funnin</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV-fílan manglar ftyp-boxið</string>
+    <string name="fmt_err_extract_read">Úttak er eitt úttaksformat og kann ikki lesast sum inntaksformat</string>
+    <string name="fmt_err_no_primary_jpeg">Eingin høvuðs JPEG-mynd varð funnin</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Eingin gild MP4-video varð funnin eftir JPEG-myndina (ftyp-box manglar)</string>
+    <string name="fmt_err_mp4_parse_failed">Eydnaðist ikki at greina MP4-videostraumin</string>
+    <string name="fmt_err_nubia_too_short">Fílan er ov stutt at vera eitt Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Tað seinasta nubiaVpfile-magitalið manglar</string>
+    <string name="fmt_err_nubia_jpeg_len">Ógildugt JPEG-longd skrásett í trailer: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">0x00-fyllibyte millum JPEG-myndina og videoina mangla</string>
+    <string name="fmt_err_nubia_empty_video">Longdin á innbygdum video er 0</string>
+    <string name="fmt_err_vivo_no_marker">Eingin vivo livephoto-markør varð funnin í endanum á JPG-fíluni</string>
+    <string name="fmt_err_vivo_companion_missing">Fylgjandi videofíla manglar: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Eydnaðist ikki at greina JPG-innihaldið</string>
+    <string name="fmt_err_vivo_companion_invalid">Fylgjandi MP4 er ógildugt (ftyp-box manglar)</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Айырыу</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (бер файл)</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <string name="fmt_err_apple_mov_missing">Шул уҡ исемдәге .mov видео файлы табылманы</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV файлында ftyp box юҡ</string>
+    <string name="fmt_err_extract_read">Айырыу — сығыу форматы, индереү форматы булараҡ уҡылмай</string>
+    <string name="fmt_err_no_primary_jpeg">Төп JPEG һүрәте табылманы</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG-тан һуң яраҡлы MP4 видео табылманы (ftyp box юҡ)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 видео ағымын анализлау уңышһыҙ булды</string>
+    <string name="fmt_err_nubia_too_short">Файл Nubia Live Photo өсөн бик ҡыҫҡа</string>
+    <string name="fmt_err_nubia_no_magic">Файл аҙағында nubiaVpfile магик һаны юҡ</string>
+    <string name="fmt_err_nubia_jpeg_len">Файл аҙағында яраҡһыҙ JPEG оҙонлоғо: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG менән видео араһында 0x00 тултырыу байттары юҡ</string>
+    <string name="fmt_err_nubia_empty_video">Индерелгән видеоның оҙонлоғо 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG аҙағында vivo livephoto билдәһе табылманы</string>
+    <string name="fmt_err_vivo_companion_missing">Парлы видео файлы юҡ: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG кәүҙәһен анализлау уңышһыҙ булды</string>
+    <string name="fmt_err_vivo_companion_invalid">Парлы MP4 яраҡһыҙ (ftyp box юҡ)</string>
+</resources>

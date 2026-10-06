@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Nivell C: tradüziun assistida da model in lumbard; currezzion benvegüde. -->
+<resources>
+    <string name="app_language_follow_system">Compagn del sistema</string>
+    <string name="app_language_title">Lengua de l\'aplicazion</string>
+</resources>

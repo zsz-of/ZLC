@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Afrikaans (af).
+  ZLC · Afrikaans strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Onttrek</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo met een lêer</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">Geen .mov-videolêer met dieselfde naam is gevind nie</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV-lêer kort die ftyp-boks</string>
+    <string name="fmt_err_extract_read">Onttrek is \'n uitsetformaat en kan nie as \'n insetformaat gelees word nie</string>
+    <string name="fmt_err_no_primary_jpeg">Geen primêre JPEG-beeld gevind nie</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Geen geldige MP4-video na die JPEG gevind nie (ftyp-boks kort)</string>
+    <string name="fmt_err_mp4_parse_failed">Kon nie die MP4-videostroom ontleed nie</string>
+    <string name="fmt_err_nubia_too_short">Lêer is te kort om \'n Nubia Live Photo te wees</string>
+    <string name="fmt_err_nubia_no_magic">Die nubiaVpfile-eindmagiese nommer kort</string>
+    <string name="fmt_err_nubia_jpeg_len">Ongeldige JPEG-lengte in die sleepwa aangeteken: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">0x00-opvulbytes tussen die JPEG en die video kort</string>
+    <string name="fmt_err_nubia_empty_video">Lengte van ingebedde video is 0</string>
+    <string name="fmt_err_vivo_no_marker">Geen vivo livephoto-merker aan die einde van die JPG gevind nie</string>
+    <string name="fmt_err_vivo_companion_missing">Mede-videolêer kort: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Kon nie die JPG-inhoud ontleed nie</string>
+    <string name="fmt_err_vivo_companion_invalid">Mede-MP4 is ongeldig (ftyp-boks kort)</string>
+</resources>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+
+    <!-- Уопсай -->
+    <string name="settings_title">Туруоруулар</string>
+    <string name="settings_cd_back">Кэнники</string>
+    <string name="settings_btn_apply">Туһаныы</string>
+    <string name="settings_btn_cancel">Тохтотуу</string>
+    <string name="settings_btn_close">Сабыы</string>
+    <string name="settings_btn_ok">Сөп</string>
+    <string name="settings_btn_sponsor">Көмөлөһүү</string>
+
+    <!-- Бөлөхтөр -->
+    <string name="settings_section_general">Уопсай</string>
+    <string name="settings_section_appearance">Көрүҥ</string>
+    <string name="settings_section_language">Тыл</string>
+    <string name="settings_section_defaults">Стандарт туруоруулар</string>
+    <string name="settings_section_output">Таһаарыы</string>
+    <string name="settings_section_transcode">Видеоны кодировкалааһын</string>
+    <string name="settings_section_about">Аппликация туһунан</string>
+    <string name="settings_section_app">Аппликация</string>
+    <string name="settings_section_credits">Махтал уонна көмө</string>
+    <string name="settings_section_opensource">Аһаҕас код уонна лицензия</string>
+
+    <!-- Уопсай -->
+    <string name="settings_startup_check_title">Салалтаҕа саҥардыылары бэрэбиэркэлээһин</string>
+    <string name="settings_startup_check_subtitle">Салалтаҕа GitHub-тан саҥа версияны бэйэтэ булар уонна холбонорго этии таһаарар</string>
+    <string name="settings_haptics_title">Вибрация эппиэтэ</string>
+    <string name="settings_haptics_subtitle">Кыымнары уонна статус уларыйыытын тиийии эппиэтэ</string>
+    <string name="settings_bounce_title">Кыымнар эластичнай анимациялара</string>
+    <string name="settings_bounce_subtitle">Кыымы баттаабыт кэмҥэ кыччыыр уонна тилинэр анимация</string>
+
+    <!-- Көрүҥ -->
+    <string name="settings_theme_system">Системаны батыһар</string>
+    <string name="settings_theme_dark">Хараҥа</string>
+    <string name="settings_theme_light">Сырдык</string>
+    <string name="settings_dynamic_theme_title">Динамическай өҥнөр (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">Система өҥнөрүн батыһар (Android 12+); араарыллар буоллаҕына аллараа бэлэм өҥнөр туттуллаллар</string>
+    <string name="settings_preset_colors_title">Бэлэм тиэмэ өҥнөрө</string>
+    <string name="settings_preset_current">Билиҥҥи: %1$s</string>
+    <string name="settings_preset_disabled_hint">«Динамическай өҥнөр (Material You)» араарыллыбытын кэнниттэн көстөр</string>
+    <string name="settings_custom">Бэйэ</string>
+    <string name="settings_custom_color_title">Бэйэ тиэмэ өҥө</string>
+    <string name="settings_cd_custom_palette">Бэйэ палитрата</string>
+    <string name="settings_hue_value">Өҥ туона %1$d°</string>
+
+    <!-- Аппликация тыла -->
+    <string name="settings_language_dialog_title">Аппликация тылын талыы</string>
+    <string name="settings_language_count">Бүтүн %1$d тыл</string>
+
+    <!-- Стандарт туруоруулар -->
+    <string name="settings_reminder_dialogs_title">«Сатаан көрдөрүмэ» диалогтар</string>
+    <string name="settings_reminder_dialogs_subtitle">Бары «Сатаан көрдөрүмэ» быһаҕастарын салайыы</string>
+    <string name="settings_reminder_hint">Холбуллубут быһаҕас «сатаан көрдөрүмэ» диэни бэлиэтиир; араарыллар буоллаҕына сөптөөх кэмҥэ сэрэтиини хат көрдөрөр.</string>
+
+    <!-- Таһаарыы -->
+    <string name="settings_preserve_folders_title">Төрүт паапкалар тутулларын харыстааһын</string>
+    <string name="settings_preserve_folders_subtitle">Түмүктэр төрүт альбом аатынан эрэһиэккэ ууруллаллар; араарыллар буоллаҕына бары биир эрэһиэккэ ууруллаллар</string>
+
+    <!-- Аппликация туһунан -->
+    <string name="settings_about_title">Аппликация туһунан</string>
+    <string name="settings_about_subtitle">Версия · Саҥардыылар · Махтал уонна көмө</string>
+    <string name="settings_check_update_title">Саҥардыылары бэрэбиэркэлээһин</string>
+    <string name="settings_check_update_subtitle">GitHub Releases-тан саамай саҥа версияны ылыы</string>
+    <string name="settings_checking">Бэрэбиэркэлэнэр…</string>
+    <string name="settings_update_available">v%1$s баар</string>
+    <string name="settings_up_to_date">Саамай саҥа версия</string>
+    <string name="settings_network_error">Ситим алҕаһа, кэлин хат көр</string>
+    <string name="settings_reinstall_title">Бу версияны хат туруоруу</string>
+    <string name="settings_reinstall_subtitle">Билиҥҥи саамай саҥа версияны хачайдаан туруоруу (саҥардыылары тургутан көрүүгэ)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s саҥардыыта баар, аан бастаан «Саҥардыылары бэрэбиэркэлээһин» тал</string>
+    <string name="settings_version_title">Версия</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay нөҥүө көмөлөһүү</string>
+    <string name="settings_alipay_subtitle">Айыыны өйөөһүн</string>
+    <string name="settings_coolapk_subtitle">Coolapk туттааччы · өйөөбүккэр махтал</string>
+    <string name="settings_ai_credits_subtitle">Айыыга көмөлөспүт AI-дуоналарга уонна AI-моделларга махтал</string>
+    <string name="settings_github_title">GitHub-ка аһаҕас код</string>
+    <string name="settings_license_title">Аһаҕас код лицензията</string>
+    <string name="settings_sponsor_dialog_title">Өйөөбүккэр махтал</string>
+    <string name="settings_sponsor_dialog_text">Бу аппликацияны өйүүр санаалааххыттан улахан махтал!\n\nӨскөтүн эн өссө үөрэнээччи эбэтэр бэйэҥ үбүлээбэт буоллаххына, харчы кыбыппат буол —\nбу үтүө санааны сүрэххэр илдьэ сырыт уонна аппликацияны салҕаа; ол миэхэ саамай улахан өйөбүл.\n\nӨскөтүн өйүөххүн баҕардаххына, кыра кылаатыҥ да суолталаах — ону көстүүнү тупсарыыга уонна саҥа функцияларга туттуом :)</string>
+    <string name="settings_alipay_missing_title">Alipay туруорула илик</string>
+    <string name="settings_alipay_missing_text">Alipay аһыллыбата, онон билигин көмөлөһүү кыаллыбат.\n\nОл тугу да уларыппат — үтүө санааҕар улахан махтал, атына суох!</string>
+
+    <!-- Видеоны кодировкалааһын -->
+    <string name="settings_transcoder_title">Ис өттүгэр сытар кодировкалааччы</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Хат кодировкалааһын</string>
+    <string name="settings_transcode_mode_remux">Контейнери эрэ уларытыы (сүбэлэнэр)</string>
+    <string name="settings_transcode_mode_off">Кодировкалааччыны бүтүннүү араарыы</string>
+    <string name="settings_transcode_params_title">Кодировкалааһын параметрдара</string>
+    <string name="settings_transcode_params_subtitle">Хат кодировкалааһын хаачыстыбатын уонна хамсааһын параметрдара</string>
+    <string name="settings_transcode_params_disabled">«Кодировкалааһын» салалтатыгар «Хат кодировкалааһын» талыллыбыт буоллаҕына эрэ үлэлиир</string>
+    <string name="settings_crf_value">CRF хаачыстыба: %1$d</string>
+    <string name="settings_crf_hint">Кыра суолта — үрдүк хаачыстыба уонна улахан кээмэй (стандарт 18)</string>
+    <string name="settings_encoder_title">Кодировкалааччы</string>
+    <string name="settings_compress_preset_title">Компрессия бэлиэтэ</string>
+
+</resources>

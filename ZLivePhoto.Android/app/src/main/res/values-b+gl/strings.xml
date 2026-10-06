@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Galego (gl).
+  Traducido do chinés simplificado de res/values/strings_*.xml (locale de reserva).
+  Calidade: A (lingua ben dotada; terminoloxía revisada, pendente unha lectura nativa final).
+  Consérvanse todas as claves, os marcadores (%1$s / %1$d) e as secuencias de escape.
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

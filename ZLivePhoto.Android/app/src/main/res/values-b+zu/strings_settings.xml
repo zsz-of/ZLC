@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Okujwayelekile -->
+    <string name="settings_title">Izilungiselelo</string>
+    <string name="settings_cd_back">Emuva</string>
+    <string name="settings_btn_apply">Sebenzisa</string>
+    <string name="settings_btn_cancel">Khansela</string>
+    <string name="settings_btn_close">Vala</string>
+    <string name="settings_btn_ok">Kulungile</string>
+    <string name="settings_btn_sponsor">Sekela</string>
+
+    <!-- Izigaba -->
+    <string name="settings_section_general">Okujwayelekile</string>
+    <string name="settings_section_appearance">Ukubukeka</string>
+    <string name="settings_section_language">Ulimi</string>
+    <string name="settings_section_defaults">Izinketho ezizenzakalelayo</string>
+    <string name="settings_section_output">Okukhishwayo</string>
+    <string name="settings_section_transcode">Ukushintsha ividiyo</string>
+    <string name="settings_section_about">Mayelana nohlelo</string>
+    <string name="settings_section_app">Uhlelo</string>
+    <string name="settings_section_credits">Ukubonga nokusekela</string>
+    <string name="settings_section_opensource">Ikhodi evulekile nelayisense</string>
+
+    <!-- Okujwayelekile -->
+    <string name="settings_startup_check_title">Hlola izibuyekezo lapho kuqala</string>
+    <string name="settings_startup_check_subtitle">Lapho kuqala, ilanda inguqulo entsha ku-GitHub futhi inikeze ukufaka</string>
+    <string name="settings_haptics_title">Ukuphendula ngokudlidliza</string>
+    <string name="settings_haptics_subtitle">Ukuphendula lapho kucindezelwa izinkinobho noma kushintsha isimo</string>
+    <string name="settings_bounce_title">Ukugquma kwezinkinobho</string>
+    <string name="settings_bounce_subtitle">Ukuncipha nokugquma lapho kucindezelwa inkinobho</string>
+
+    <!-- Ukubukeka -->
+    <string name="settings_theme_system">Landela isistimu</string>
+    <string name="settings_theme_dark">Kumnyama</string>
+    <string name="settings_theme_light">Kukhanyile</string>
+    <string name="settings_dynamic_theme_title">Imibala yesistimu (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">Ilandela imibala yesistimu (Android 12+); uma ivaliwe, kusetshenziswa imibala elungiselelwe ngezansi</string>
+    <string name="settings_preset_colors_title">Imibala yetimu elungiselelwe</string>
+    <string name="settings_preset_current">Okwamanje: %1$s</string>
+    <string name="settings_preset_disabled_hint">Kuyatholakala ngemva kokucisha “Imibala yesistimu (Material You)”</string>
+    <string name="settings_custom">Okwezifiso</string>
+    <string name="settings_custom_color_title">Umbala wetimu wezifiso</string>
+    <string name="settings_cd_custom_palette">Iphalethi yezifiso</string>
+    <string name="settings_hue_value">Ithoni yombala %1$d°</string>
+
+    <!-- Ulimi lohlelo -->
+    <string name="settings_language_dialog_title">Khetha ulimi lohlelo</string>
+    <string name="settings_language_count">Izilimi ezingu-%1$d</string>
+
+    <!-- Izinketho ezizenzakalelayo -->
+    <string name="settings_reminder_dialogs_title">Amabhokisi “Ungaphindi ukhombise”</string>
+    <string name="settings_reminder_dialogs_subtitle">Phatha zonke izinkinobho “Ungaphindi ukhombise”</string>
+    <string name="settings_reminder_hint">Inkinobho evuliwe isho ukuthi “ungaphindi ukhombise”; uma ivaliwe, isixwayiso siyavela futhi lapho kwenzeka isimo esifanele.</string>
+
+    <!-- Okukhishwayo -->
+    <string name="settings_preserve_folders_title">Gcina ukwakheka kwamafolda omsuka</string>
+    <string name="settings_preserve_folders_subtitle">Imiphumela igcinwa kumafolda angaphansi anegama le-albhamu yomsuka; uma ivaliwe, konke kufakwa kufolda elilodwa</string>
+
+    <!-- Mayelana nohlelo -->
+    <string name="settings_about_title">Mayelana nohlelo</string>
+    <string name="settings_about_subtitle">Inguqulo · Izibuyekezo · Ukubonga nokusekela</string>
+    <string name="settings_check_update_title">Hlola izibuyekezo</string>
+    <string name="settings_check_update_subtitle">Thola inguqulo yakamuva ku-GitHub Releases</string>
+    <string name="settings_checking">Iyahlola…</string>
+    <string name="settings_update_available">v%1$s iyatholakala</string>
+    <string name="settings_up_to_date">Isenguqulo yakamuva</string>
+    <string name="settings_network_error">Iphutha lenethiweki, zama futhi kamuva</string>
+    <string name="settings_reinstall_title">Faka le nguqulo futhi</string>
+    <string name="settings_reinstall_subtitle">Landa futhi ufake inguqulo yakamuva yamanje (ukuhlola izibuyekezo)</string>
+    <string name="settings_reinstall_newer_hint">Isibuyekezo siku-v%1$s siyatholakala, khetha kuqala “Hlola izibuyekezo”</string>
+    <string name="settings_version_title">Inguqulo</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Sekela nge-Alipay</string>
+    <string name="settings_alipay_subtitle">Sekela ukuthuthukiswa</string>
+    <string name="settings_coolapk_subtitle">Umsebenzisi we-Coolapk · siyabonga ngokusekela</string>
+    <string name="settings_ai_credits_subtitle">Siyabonga imiphakathi ye-AI namamodeli e-AI ngosizo ekuthuthukiseni</string>
+    <string name="settings_github_title">Ikhodi yomthombo ku-GitHub</string>
+    <string name="settings_license_title">Ilayisense yekhodi evulekile</string>
+    <string name="settings_sponsor_dialog_title">Siyabonga ngokusekela kwakho</string>
+    <string name="settings_sponsor_dialog_text">Siyabonga kakhulu ngokufuna ukusekela lolu hlelo!\n\nUma usafunda noma ungakazimela ngokwezimali, sicela unganikeli imali —\ngcina lo mqondo omuhle enhliziyweni yakho futhi uqhubeke usebenzisa uhlelo; lokho kungukusekela okuhle kakhulu kimi.\n\nKodwa uma ufuna ukusekela, ngisho nomnikelo omncane ubalulekile — ngizowusebenzisa ekuthuthukiseni ukubukeka nemisebenzi emisha :)</string>
+    <string name="settings_alipay_missing_title">I-Alipay ayifakiwe</string>
+    <string name="settings_alipay_missing_text">I-Alipay ayivulwanga, ngakho ukusekela akwenzeki okwamanje.\n\nAkusho lutho — siyabonga kakhulu ngomqondo wakho omuhle, okunye cha!</string>
+
+    <!-- Ukushintsha ividiyo -->
+    <string name="settings_transcoder_title">Isishintshi sevidiyo esakhelwe ngaphakathi</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Phinda ukhode</string>
+    <string name="settings_transcode_mode_remux">Shintsha kuphela isiqukathi (kunconywa)</string>
+    <string name="settings_transcode_mode_off">Cisha isishintshi sevidiyo ngokuphelele</string>
+    <string name="settings_transcode_params_title">Amapharamitha okushintsha</string>
+    <string name="settings_transcode_params_subtitle">Amapharamitha ekhwalithi nokucindezela ekukhodweni kabusha</string>
+    <string name="settings_transcode_params_disabled">Kusebenza kuphela uma “Phinda ukhode” kukhethiwe kokuthi “Ukushintsha ividiyo”</string>
+    <string name="settings_crf_value">Ikhwalithi ye-CRF: %1$d</string>
+    <string name="settings_crf_hint">Inani eliphansi lisho ikhwalithi ephezulu nosayizi omkhulu (okujwayelekile 18)</string>
+    <string name="settings_encoder_title">Isikhodi</string>
+    <string name="settings_compress_preset_title">Iphrofayela yokucindezela</string>
+
+</resources>

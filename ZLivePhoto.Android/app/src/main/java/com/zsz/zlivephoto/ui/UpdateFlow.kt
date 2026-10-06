@@ -3,6 +3,8 @@ package com.zsz.zlivephoto.ui
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -89,6 +91,27 @@ internal class UpdateFlowController(
     /** Go 运行在 Android 10+ 且本机已安装正常版：不可关闭，必须打开正常版才能继续使用 */
     var requireNormalOpen by mutableStateOf(false)
         private set
+
+    /**
+     * 对应的 GitHub 链接：优先 Release 页面（浏览器里可自行挑选对应架构/渠道的包），
+     * 其次才是 APK 直链。
+     */
+    private fun githubBrowserUrl(): String? =
+        info?.releaseUrl?.takeIf { it.isNotBlank() } ?: githubApkUrl()
+
+    /**
+     * 兜底渠道：用外置浏览器打开对应的 GitHub 链接。
+     * 与应用内下载互不依赖——应用内解析失败、国内网络访问 GitHub API/资产异常，
+     * 或系统限制应用内安装时，用户仍可从浏览器页面自行下载安装包。
+     */
+    fun openGithubInBrowser() {
+        val url = githubBrowserUrl()
+        if (url.isNullOrEmpty()) {
+            message = "未获取到 GitHub 下载地址，请稍后重试。"
+            return
+        }
+        openInBrowser(context, url)
+    }
 
     private var downloadJob: Job? = null
 
@@ -593,6 +616,15 @@ internal fun UpdateFlowHosts(
                         },
                         modifier = Modifier.fillMaxWidth().height(44.dp)
                     ) { Text("从 GitHub 下载") }
+                    // 兜底渠道：用外置浏览器打开对应的 GitHub 链接自行下载
+                    Spacer(Modifier.height(6.dp))
+                    OutlinedButton(
+                        onClick = {
+                            vibrate()
+                            flow.openGithubInBrowser()
+                        },
+                        modifier = Modifier.fillMaxWidth().height(44.dp)
+                    ) { Text("从浏览器下载") }
                     Spacer(Modifier.height(2.dp))
                     when {
                         // 强制切换：不提供任何关闭/跳过入口，必须更新后才能继续使用
@@ -631,5 +663,19 @@ internal fun UpdateFlowHosts(
             confirmButton = {},
             dismissButton = {}
         )
+    }
+}
+
+/**
+ * 用外置浏览器打开 URL。
+ * 找不到可处理的浏览器/系统限制时静默忽略（更新弹窗本身已提供应用内下载渠道）。
+ */
+private fun openInBrowser(context: Context, url: String) {
+    try {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        context.startActivity(intent)
+    } catch (_: Exception) {
     }
 }

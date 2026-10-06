@@ -64,84 +64,180 @@ internal object AppUpdater {
 
     // ---------- 蓝奏云直链解析（原生 HTTP，替代内置浏览器） ----------
 
+    /** 分享页「已被取消 / 文件不存在」的页面标记（此时 HTTP 仍是 200） */
+    private val LANZOU_GONE_MARKERS =
+        listOf("文件取消分享", "文件不存在", "分享已被取消", "文件已经被取消")
+
+    /**
+     * 蓝奏官方别名域名（分享页换域名重试用）。
+     * 同一 `<fileID>` 在所有别名域名下都能打开同一个文件页，因此换域名是安全回退；
+     * 实测 lanzoue/lanzoub/lanzoup/lanzouo 已不再返回有效文件页，故不列入。
+     */
+    private val LANZOU_ALT_DOMAINS =
+        listOf("lanzout.com", "lanzouw.com", "lanzoui.com", "lanzoux.com", "lanzouv.com", "lanzoul.com")
+
+    /** 分享页「已被取消」标志：不换域名重试（换域名结果同样），直接给出可读原因 */
+    private class LanzouShareGone(message: String) : Exception(message)
+
+    /**
+     * 生成分享页的域名回退序列（纯函数）。
+     *
+     * 例：`https://wwapb.lanzout.com/irBhz489iv5g` →
+     * `[原地址, https://wwapb.lanzouw.com/…, …, https://wwapb.lanzoul.com/…, https://www.lanzoui.com/…]`
+     */
+    internal fun lanzouShareHosts(shareUrl: String): List<String> {
+        val trimmed = shareUrl.trim()
+        val url = try { URL(trimmed) } catch (_: Exception) { return listOf(trimmed) }
+        val host = url.host ?: return listOf(trimmed)
+        val sub = host.substringBefore('.')
+        val rest = trimmed.substringAfter(host, "")
+        val out = LinkedHashSet<String>()
+        out += trimmed
+        if (sub.isNotEmpty() && sub != "www") {
+            LANZOU_ALT_DOMAINS.forEach { out += "${url.protocol}://$sub.$it$rest" }
+        }
+        out += "${url.protocol}://www.lanzoui.com$rest"
+        return out.toList()
+    }
+
+    /**
+     * 分享页是否表示「分享已被取消 / 文件不存在」（HTTP 200 但内容已变）。
+     * @return 命中时返回面向用户的说明，否则 null
+     */
+    internal fun lanzouGoneReason(html: String): String? =
+        if (LANZOU_GONE_MARKERS.any { html.contains(it) })
+            "蓝奏云分享已被取消或文件不存在，请改用 GitHub 下载"
+        else null
+
+    /**
+     * 从 `/fn` 帧页解析 `ajaxfile.php` 接口地址列表（纯函数）。
+     *
+     * 蓝奏现已在帧页里声明 `var domain1/domain2 = 'https://apifile.woozooo.com/ajaxfile.php?file=…'`
+     * （另有 `apifile.lanzouw.com`）；而「分享页域名 + /ajaxfile.php」这条旧链路实测返回
+     * **HTTP 407 空响应**，只能作为最后兜底。
+     */
+    internal fun lanzouAjaxEndpoints(frameHtml: String, fileId: String, shareUrl: String): List<String> {
+        val declared = Regex("""var\s+domain\d+\s*=\s*['"]([^'"]+)['"]""")
+            .findAll(frameHtml)
+            .map { it.groupValues[1] }
+            .filter { it.contains("ajaxfile.php") }
+            .toList()
+        val legacy = "https://${hostOf(shareUrl)}/ajaxfile.php?file=$fileId"
+        return (declared + listOf(legacy)).distinct()
+    }
+
+    /** 从 `/fn` 帧页解析 `var kdns`（POST 的 kd 参数，缺失时按 1） */
+    internal fun lanzouKd(frameHtml: String): String =
+        Regex("""var\s+kdns\s*=\s*(\d+)""").find(frameHtml)?.groupValues?.get(1) ?: "1"
+
     /**
      * 解析蓝奏云分享页得到最终可下载的 CDN 直链。
      *
      * 完整链路（已命令行实测还原，与开源解析器 WhY15w/lanzou 一致）：
+     *   0. 分享页按 [lanzouShareHosts] 依次尝试（蓝奏官方域名会轮换）；
      *   1. 首次 GET 分享页可能触发 acw_sc__v2 反爬（返回含 `arg1='...'` 的挑战页），
-     *      用 [acwScV2] 解出 cookie 后重试；
+     *      用 [acwScV2] 解出 cookie 后重试；页面若为「文件取消分享」直接给出可读原因；
      *   2. 从分享页 HTML 提取 `<iframe src="/fn?..."` 下载帧地址；
-     *   3. GET `/fn` 帧页，提取 `ajaxfile.php?file=<id>`、`ajaxdata`、`wp_sign`；
-     *   4. POST `ajaxfile.php`（action=downprocess 等）得到 `dom` + `url`；
+     *   3. GET `/fn` 帧页，提取 `ajaxfile.php?file=<id>`、`ajaxdata`、`wp_sign`、`kdns`；
+     *   4. POST `/ajaxfile.php`（action=downprocess 等）得到 `dom` + `url`——
+     *      接口地址取帧页声明的 `domain1/domain2`（`apifile.woozooo.com` /
+     *      `apifile.lanzouw.com`）并**依次回退**，最后才是分享页域名的旧链路；
      *   5. GET `dom + "/file/" + url`，**Referer 必须是 `/fn` 帧页地址**（而非分享页），
      *      并附带随机 X-FORWARDED-FOR/CLIENT-IP 头规避「网络异常需验证」页 → 302 到最终直链。
      *
      * @return 最终 CDN 直链（带 sg/e 签名的 .zip/.apk 地址）
-     * @throws UpdaterException 解析失败（链接失效 / 需密码 / 验证页）
+     * @throws UpdaterException 解析失败（分享已取消 / 需密码 / 验证页 / 全部接口不可用）
      *
      * 注：仅支持**无提取码**的分享页（转码器已改为随包内置，不再需要下载）。
      */
     suspend fun resolveLanzouDirectLink(shareUrl: String): String = withContext(Dispatchers.IO) {
         val client = LanzouHttpClient()
         try {
-            val share = shareUrl.trim()
-            // 1. 首次访问，自动处理 acw_sc__v2 反爬
-            var shareHtml = client.get(share, referer = "https://${hostOf(share)}/")
-            if (shareHtml.isAcwChallenge()) {
-                val arg1 = shareHtml.acwArg1() ?: throw UpdaterException("蓝奏云反爬校验失败")
-                client.setCookie("acw_sc__v2", acwScV2(arg1))
-                shareHtml = client.get(share, referer = "https://${hostOf(share)}/")
+            var lastError: String? = null
+            for (share in lanzouShareHosts(shareUrl)) {
+                try {
+                    return@withContext resolveOnHost(client, share)
+                } catch (e: LanzouShareGone) {
+                    // 分享被取消：换域名是同样结果，直接把原因抛给 UI
+                    throw UpdaterException(e.message ?: "蓝奏云分享已被取消，请改用 GitHub 下载")
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    lastError = "${e.message ?: "解析失败"}（${hostOf(share)}）"
+                }
             }
+            throw UpdaterException(lastError ?: "蓝奏云下载链接解析失败")
+        } finally {
+            client.close()
+        }
+    }
 
-            // 2. 提取 iframe 下载帧
-            val iframeSrc = Regex("""<iframe[^>]+src=["']([^"']+)["']""", RegexOption.IGNORE_CASE)
-                .find(shareHtml)?.groupValues?.get(1)
-                ?: throw UpdaterException("无法解析蓝奏云下载页（未找到下载帧）")
-            val fnUrl = if (iframeSrc.startsWith("http")) iframeSrc
-            else "https://${hostOf(share)}$iframeSrc"
+    /** 在单个分享域名上走完「分享页 → 帧页 → ajaxfile 接口 → 最终直链」全流程 */
+    private fun resolveOnHost(client: LanzouHttpClient, share: String): String {
+        // 1. 首次访问，自动处理 acw_sc__v2 反爬
+        var shareHtml = client.get(share, referer = "https://${hostOf(share)}/")
+        if (shareHtml.isAcwChallenge()) {
+            val arg1 = shareHtml.acwArg1() ?: throw UpdaterException("蓝奏云反爬校验失败")
+            client.setCookie("acw_sc__v2", acwScV2(arg1))
+            shareHtml = client.get(share, referer = "https://${hostOf(share)}/")
+        }
+        // 分享被取消 / 文件不存在：HTTP 200 但页面内容已变
+        lanzouGoneReason(shareHtml)?.let { throw LanzouShareGone(it) }
 
-            // 3. GET /fn 帧页，提取 ajax 参数
-            val fnHtml = client.get(fnUrl, referer = share)
-            val fileId = Regex("""ajaxfile\.php\?file=(\d+)""").find(fnHtml)?.groupValues?.get(1)
-                ?: throw UpdaterException("无法解析蓝奏云文件标识")
-            val ajaxdata = Regex("""var\s+ajaxdata\s*=\s*'([^']*)'""").find(fnHtml)?.groupValues?.get(1)
-                ?: throw UpdaterException("无法解析蓝奏云签名")
-            val wpSign = Regex("""var\s+wp_sign\s*=\s*'([^']*)'""").find(fnHtml)?.groupValues?.get(1)
-                ?: throw UpdaterException("无法解析蓝奏云签名")
+        // 2. 提取 iframe 下载帧
+        val iframeSrc = Regex("""<iframe[^>]+src=["']([^"']+)["']""", RegexOption.IGNORE_CASE)
+            .find(shareHtml)?.groupValues?.get(1)
+            ?: throw UpdaterException("无法解析蓝奏云下载页（未找到下载帧）")
+        val fnUrl = if (iframeSrc.startsWith("http")) iframeSrc
+        else "https://${hostOf(share)}$iframeSrc"
 
-            // 4. POST ajaxfile.php
-            val form = mapOf(
-                "action" to "downprocess",
-                "websignkey" to ajaxdata,
-                "signs" to ajaxdata,
-                "sign" to wpSign,
-                "websign" to "",
-                "kd" to "1",
-                "ves" to "1",
-            )
-            val ajaxResp = client.post(
-                "https://${hostOf(share)}/ajaxfile.php?file=$fileId",
-                form = form,
-                referer = fnUrl
-            )
-            val json = JSONObject(ajaxResp)
+        // 3. GET /fn 帧页，提取 ajax 参数
+        val fnHtml = client.get(fnUrl, referer = share)
+        val fileId = Regex("""ajaxfile\.php\?file=(\d+)""").find(fnHtml)?.groupValues?.get(1)
+            ?: throw UpdaterException("无法解析蓝奏云文件标识")
+        val ajaxdata = Regex("""var\s+ajaxdata\s*=\s*'([^']*)'""").find(fnHtml)?.groupValues?.get(1)
+            ?: throw UpdaterException("无法解析蓝奏云签名")
+        val wpSign = Regex("""var\s+wp_sign\s*=\s*'([^']*)'""").find(fnHtml)?.groupValues?.get(1)
+            ?: throw UpdaterException("无法解析蓝奏云签名")
+
+        // 4. POST ajaxfile.php：依次尝试帧页声明的接口，失败再回退旧链路
+        val form = mapOf(
+            "action" to "downprocess",
+            "websignkey" to ajaxdata,
+            "signs" to ajaxdata,
+            "sign" to wpSign,
+            "websign" to "",
+            "kd" to lanzouKd(fnHtml),
+            "ves" to "1",
+        )
+        var lastAjaxError: String? = null
+        for (endpoint in lanzouAjaxEndpoints(fnHtml, fileId, share)) {
+            val json = try {
+                JSONObject(client.post(endpoint, form = form, referer = fnUrl))
+            } catch (e: Exception) {
+                lastAjaxError = e.message ?: "接口请求失败"
+                continue
+            }
             if (json.optInt("zt", 0) != 1) {
-                throw UpdaterException(json.optString("inf", "蓝奏云下载链接解析失败"))
+                lastAjaxError = json.optString("inf", "蓝奏云下载链接解析失败")
+                continue
             }
             val dom = json.optString("dom")
             val token = json.optString("url")
             if (dom.isEmpty() || token.isEmpty()) {
-                throw UpdaterException("蓝奏云返回空下载地址")
+                lastAjaxError = "蓝奏云返回空下载地址"
+                continue
             }
-            val dispatchUrl = "$dom/file/$token"
 
             // 5. 请求分发链接拿最终直链：Referer 必须是 /fn 帧页，并附带随机 IP 头
-            val direct = client.location(dispatchUrl, referer = fnUrl)
-                ?: throw UpdaterException("蓝奏云下载地址已失效，请重新获取")
-            direct
-        } finally {
-            client.close()
+            val direct = client.location("$dom/file/$token", referer = fnUrl)
+            if (direct.isNullOrEmpty()) {
+                lastAjaxError = "蓝奏云下载地址已失效，请重新获取"
+                continue
+            }
+            return direct
         }
+        throw UpdaterException(lastAjaxError ?: "蓝奏云下载链接解析失败")
     }
 
     /** 蓝奏云 acw_sc__v2 反爬 cookie 解密（对 arg1 做定序重排 + 与固定掩码异或） */

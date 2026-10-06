@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  应用语言清单（Android 13+ 每应用语言 / 系统「应用语言」入口读取）。
+  按「我的世界 Java 版 119 种语言」的量级声明；默认资源（values/）是简体中文，
+  设备语言不在本清单内时回落中文。
+
+  资源目录命名规则（BCP-47 带 b+ 前缀）：
+    zh-Hans -> values-b+zh+Hans      zh-Hant -> values-b+zh+Hant
+    zh-HK   -> values-b+zh+Hant+HK   zh-TW   -> values-b+zh+Hant+TW
+    pt-BR   -> values-b+pt+BR        bo(藏)  -> values-b+bo      khb(傣泐) -> values-b+khb
+-->
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="af" />
+    <locale android:name="ar" />
+    <locale android:name="ast" />
+    <locale android:name="az" />
+    <locale android:name="ba" />
+    <locale android:name="be" />
+    <locale android:name="bg" />
+    <locale android:name="bn" />
+    <locale android:name="bo" />
+    <locale android:name="br" />
+    <locale android:name="bs" />
+    <locale android:name="ca" />
+    <locale android:name="cs" />
+    <locale android:name="cy" />
+    <locale android:name="da" />
+    <locale android:name="de" />
+    <locale android:name="dsb" />
+    <locale android:name="el" />
+    <locale android:name="en" />
+    <locale android:name="en-AU" />
+    <locale android:name="en-CA" />
+    <locale android:name="en-GB" />
+    <locale android:name="eo" />
+    <locale android:name="es" />
+    <locale android:name="es-AR" />
+    <locale android:name="es-ES" />
+    <locale android:name="es-MX" />
+    <locale android:name="et" />
+    <locale android:name="eu" />
+    <locale android:name="fa" />
+    <locale android:name="fi" />
+    <locale android:name="fil" />
+    <locale android:name="fo" />
+    <locale android:name="fr" />
+    <locale android:name="fr-CA" />
+    <locale android:name="fy" />
+    <locale android:name="ga" />
+    <locale android:name="gd" />
+    <locale android:name="gl" />
+    <locale android:name="haw" />
+    <locale android:name="he" />
+    <locale android:name="hi" />
+    <locale android:name="hr" />
+    <locale android:name="hsb" />
+    <locale android:name="hu" />
+    <locale android:name="hy" />
+    <locale android:name="id" />
+    <locale android:name="ii" />
+    <locale android:name="is" />
+    <locale android:name="it" />
+    <locale android:name="ja" />
+    <locale android:name="ka" />
+    <locale android:name="kab" />
+    <locale android:name="khb" />
+    <locale android:name="kk" />
+    <locale android:name="kn" />
+    <locale android:name="ko" />
+    <locale android:name="kw" />
+    <locale android:name="ky" />
+    <locale android:name="la" />
+    <locale android:name="lb" />
+    <locale android:name="lmo" />
+    <locale android:name="lo" />
+    <locale android:name="lt" />
+    <locale android:name="lv" />
+    <locale android:name="lzh" />
+    <locale android:name="mk" />
+    <locale android:name="ml" />
+    <locale android:name="mn" />
+    <locale android:name="mr" />
+    <locale android:name="ms" />
+    <locale android:name="mt" />
+    <locale android:name="nan" />
+    <locale android:name="nb" />
+    <locale android:name="nds" />
+    <locale android:name="ne" />
+    <locale android:name="nl" />
+    <locale android:name="nl-BE" />
+    <locale android:name="nn" />
+    <locale android:name="no" />
+    <locale android:name="oc" />
+    <locale android:name="pl" />
+    <locale android:name="pt-BR" />
+    <locale android:name="pt-PT" />
+    <locale android:name="ro" />
+    <locale android:name="ru" />
+    <locale android:name="ry" />
+    <locale android:name="sah" />
+    <locale android:name="sc" />
+    <locale android:name="sco" />
+    <locale android:name="sk" />
+    <locale android:name="sl" />
+    <locale android:name="sq" />
+    <locale android:name="sr" />
+    <locale android:name="sv" />
+    <locale android:name="sw" />
+    <locale android:name="szl" />
+    <locale android:name="ta" />
+    <locale android:name="te" />
+    <locale android:name="th" />
+    <locale android:name="tl" />
+    <locale android:name="tok" />
+    <locale android:name="tr" />
+    <locale android:name="tt" />
+    <locale android:name="ug" />
+    <locale android:name="uk" />
+    <locale android:name="ur" />
+    <locale android:name="uz" />
+    <locale android:name="val" />
+    <locale android:name="vec" />
+    <locale android:name="vi" />
+    <locale android:name="yi" />
+    <locale android:name="yue" />
+    <locale android:name="zh-Hans" />
+    <locale android:name="zh-Hant" />
+    <locale android:name="zh-HK" />
+    <locale android:name="zh-MO" />
+    <locale android:name="zh-TW" />
+    <locale android:name="zu" />
+</locale-config>

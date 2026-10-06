@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · he strings — Hebrew (עברית, RTL)
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Hebrew. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">מוכן</string>
+    <string name="main_status_location_granted">אושרה הרשאת מיקום; לאחר ההמרה יישמרו נתוני GPS</string>
+    <string name="main_status_location_denied">הרשאת המיקום לא אושרה: בתמונות שהומרו יאבד מידע מיקום ה-GPS</string>
+    <string name="main_status_all_files_granted">אושרה הרשאת «גישה לכל הקבצים»; ההמרה תכתוב ישירות לתיקיית האלבום ותשמור על מידע המיקום במלואו</string>
+    <string name="main_status_all_files_denied">הרשאת «גישה לכל הקבצים» לא אושרה: בדגמים מסוימים מידע המיקום עלול ללכת לאיבוד לאחר ההמרה</string>
+    <string name="main_status_read_granted">אושרה הרשאה לקריאת תמונות וסרטונים</string>
+    <string name="main_status_video_missing">ההרשאה אושרה, אך חסרה הרשאת וידאו: לא ניתן לאתר את סרטון הלוואי של תמונות חיות בנות שני קבצים</string>
+    <string name="main_status_permission_denied">ההרשאות לא אושרו; ניתן להקיש שוב על «הוספת קבצים»</string>
+    <string name="main_status_folder_not_selected">לא נבחרה תיקייה</string>
+    <string name="main_status_folder_unavailable">אין גישה לתיקייה שנבחרה (נתמך אחסון מקומי בלבד)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">הפעלה קודמת שוחזרה — מספר קבצים: %1$d</item>
+        <item quantity="two">הפעלה קודמת שוחזרה — מספר קבצים: %1$d</item>
+        <item quantity="many">הפעלה קודמת שוחזרה (%1$d קבצים)</item>
+        <item quantity="other">הפעלה קודמת שוחזרה (%1$d קבצים)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">זוהתה יציאה לא תקינה בפעם הקודמת; הרשימה שלא הושלמה נוקתה</string>
+    <string name="main_status_compose_blocks_extract">התור מכיל משימות הרכבה, לכן לא ניתן לעבור למצב חילוץ</string>
+    <string name="main_status_replace_off_mutex">מצב ההחלפה כובה (סותר את «מחיקת המקור לאחר סיום העיבוד»)</string>
+    <string name="main_status_delete_needs_all_files">מחיקה אוטומטית של המקור דורשת הרשאת «גישה לכל הקבצים», יש לאשר אותה תחילה</string>
+    <string name="main_status_replace_off">מצב ההחלפה כובה; תוצאות ההמרה ייכתבו לתיקיית האלבום</string>
+    <string name="main_status_replace_needs_all_files">מצב ההחלפה דורש הרשאת «גישה לכל הקבצים», יש לאשר אותה תחילה</string>
+    <string name="main_status_delete_off_mutex">«מחיקת המקור לאחר סיום העיבוד» כובתה (סותרת את מצב ההחלפה)</string>
+    <string name="main_status_loading_albums">קורא אלבומים…</string>
+    <string name="main_status_no_albums">לא נמצאו אלבומים</string>
+    <string name="main_status_compose_no_photo">לא נבחרו תמונות, לא ניתן להרכיב</string>
+    <string name="main_status_compose_no_video">לא נבחר סרטון, לא ניתן להרכיב</string>
+    <string name="main_status_compose_all_added">כל התמונות שנבחרו כבר נמצאות ברשימה</string>
+    <string name="main_status_compose_paired">%1$d תמונות ו-%2$d סרטונים; נוספו %3$d משימות הרכבה לפי הצד הקטן יותר</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">נוספה משימת הרכבה אחת — הקש «התחל המרה» לביצוע (מספר משימות: %1$d)</item>
+        <item quantity="two">נוספו שתי משימות הרכבה — הקש «התחל המרה» לביצוע (מספר משימות: %1$d)</item>
+        <item quantity="many">נוספו %1$d משימות הרכבה — הקש «התחל המרה» לביצוע</item>
+        <item quantity="other">נוספו %1$d משימות הרכבה — הקש «התחל המרה» לביצוע</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (תבנית הפלט הוחלפה אוטומטית ל-Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">מייבא תמונה משותפת אחת (מספר תמונות: %1$d)…</item>
+        <item quantity="two">מייבא שתי תמונות משותפות (מספר תמונות: %1$d)…</item>
+        <item quantity="many">מייבא %1$d תמונות משותפות…</item>
+        <item quantity="other">מייבא %1$d תמונות משותפות…</item>
+    </plurals>
+    <string name="main_status_import_failed">הייבוא נכשל: %1$s</string>
+    <string name="main_status_import_done_partial">הייבוא הושלם: %1$d הצליחו, %2$d נכשלו</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">הייבוא הושלם — יובא קובץ אחד (מספר קבצים: %1$d)</item>
+        <item quantity="two">הייבוא הושלם — יובאו שני קבצים (מספר קבצים: %1$d)</item>
+        <item quantity="many">הייבוא הושלם: יובאו %1$d קבצים</item>
+        <item quantity="other">הייבוא הושלם: יובאו %1$d קבצים</item>
+    </plurals>
+    <string name="main_status_import_stopped">הייבוא הופסק: %1$d הצליחו, %2$d נכשלו</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">מייבא קובץ אחד (מספר קבצים: %1$d)…</item>
+        <item quantity="two">מייבא שני קבצים (מספר קבצים: %1$d)…</item>
+        <item quantity="many">מייבא %1$d קבצים…</item>
+        <item quantity="other">מייבא %1$d קבצים…</item>
+    </plurals>
+    <string name="main_status_importing_progress">מייבא %1$d/%2$d…</string>
+    <string name="main_status_stopping">עוצר… (יעצור לאחר סיום הקובץ הנוכחי)</string>
+    <string name="main_status_stopping_import">עוצר את הייבוא…</string>
+    <string name="main_status_removed">הוסר: %1$s</string>
+    <string name="main_status_cleared">נוקה</string>
+    <string name="main_status_nothing_to_convert">אין קבצים להמרה</string>
+    <string name="main_status_folder_unreadable">לא ניתן לקרוא את התיקייה שנבחרה</string>
+    <string name="main_status_scanning_folder">סורק את התיקייה…</string>
+    <string name="main_status_no_images">לא נמצאו תמונות בתיקייה שנבחרה</string>
+    <string name="main_status_batch_importing">מייבא באצווה %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">הייבוא באצווה הופסק — יובאה תמונה חיה אחת (מספר תמונות: %1$d)</item>
+        <item quantity="two">הייבוא באצווה הופסק — יובאו שתי תמונות חיות (מספר תמונות: %1$d)</item>
+        <item quantity="many">הייבוא באצווה הופסק: יובאו %1$d תמונות חיות</item>
+        <item quantity="other">הייבוא באצווה הופסק: יובאו %1$d תמונות חיות</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">הייבוא באצווה הופסק — יובאה תמונה חיה אחת ודולגו %2$d קבצים לא חיים (מספר תמונות: %1$d)</item>
+        <item quantity="two">הייבוא באצווה הופסק — יובאו שתי תמונות חיות ודולגו %2$d קבצים לא חיים (מספר תמונות: %1$d)</item>
+        <item quantity="many">הייבוא באצווה הופסק: יובאו %1$d תמונות חיות ודולגו %2$d קבצים לא חיים</item>
+        <item quantity="other">הייבוא באצווה הופסק: יובאו %1$d תמונות חיות ודולגו %2$d קבצים לא חיים</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">הייבוא באצווה הושלם — יובאה תמונה חיה אחת (מספר תמונות: %1$d)</item>
+        <item quantity="two">הייבוא באצווה הושלם — יובאו שתי תמונות חיות (מספר תמונות: %1$d)</item>
+        <item quantity="many">הייבוא באצווה הושלם: יובאו %1$d תמונות חיות</item>
+        <item quantity="other">הייבוא באצווה הושלם: יובאו %1$d תמונות חיות</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">הייבוא באצווה הושלם — יובאה תמונה חיה אחת ודולגו %2$d קבצים לא חיים (מספר תמונות: %1$d)</item>
+        <item quantity="two">הייבוא באצווה הושלם — יובאו שתי תמונות חיות ודולגו %2$d קבצים לא חיים (מספר תמונות: %1$d)</item>
+        <item quantity="many">הייבוא באצווה הושלם: יובאו %1$d תמונות חיות ודולגו %2$d קבצים לא חיים</item>
+        <item quantity="other">הייבוא באצווה הושלם: יובאו %1$d תמונות חיות ודולגו %2$d קבצים לא חיים</item>
+    </plurals>
+    <string name="main_status_stopped_replace">הופסק: מתוך %1$d קבצים עובדו %2$d והוחלפו %3$d מקבצי המקור</string>
+    <string name="main_status_stopped_export">הופסק: מתוך %1$d קבצים עובדו %2$d ויוצאו %3$d לאלבום</string>
+    <string name="main_status_done_replace_reason">הושלם: עובדו %1$d קבצים והוחלפו %2$d מקבצי המקור (סיבה: %3$s)</string>
+    <string name="main_status_done_export_reason">הושלם: עובדו %1$d קבצים ויוצאו %2$d לאלבום (סיבה: %3$s)</string>
+    <string name="main_status_done_replace">הושלם: עובדו %1$d קבצים והוחלפו %2$d מקבצי המקור</string>
+    <string name="main_status_done_export">הושלם: עובדו %1$d קבצים ויוצאו %2$d לאלבום</string>
+    <string name="main_status_keep_originals">%1$s; הרשאת «גישה מלאה לאחסון» לא אושרה, המקור נשמר</string>
+    <string name="main_info_detecting">מזהה…</string>
+    <string name="main_info_unrecognized">תבנית תמונה חיה לא מזוהה</string>
+    <string name="main_info_converting">ממיר…</string>
+    <string name="main_info_compose_task">משימת הרכבה (הקש «התחל המרה» לביצוע)</string>
+    <string name="main_info_done_replaced">הושלם (הוחלפו %1$d מקבצי המקור)</string>
+    <string name="main_info_done_skipped">הושלם (דולג: התנגשות שמות)</string>
+    <string name="main_info_done_exported">הושלם (יוצאו %1$d)</string>
+    <string name="main_info_failed">נכשל: %1$s</string>
+    <string name="main_progress_added">נוספו %1$d/%2$d</string>
+    <string name="main_progress_processed">עובדו %1$d/%2$d</string>
+    <string name="main_progress_imported">יובאו %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">נדרשת הרשאה לקריאת תמונות וסרטונים</string>
+    <string name="main_dialog_permission_message">אפליקציה זו זקוקה לקריאת תמונות וסרטונים במכשיר:\n\n• הרשאת תמונות: סריקת אלבומי המכשיר ואיתור תמונות חיות בהם\n• הרשאת וידאו: איתור סרטון הלוואי של תמונות חיות בנות שני קבצים\n• הרשאת מיקום: שמירת נתוני מיקום GPS בתמונות (ללא מידע המיקום יאבד לאחר ההמרה)\n\nאם תסרב, לא תוכל להשתמש בבורר המובנה; ניתן להקיש שוב על «הוספת קבצים» כדי לאשר מחדש.</string>
+    <string name="main_dialog_settings_title">יש לאשר ידנית הרשאה לתמונות ולסרטונים</string>
+    <string name="main_dialog_settings_message">בחרת בעבר «לא לשאול שוב», ולכן המערכת לא תציג יותר את חלון ההרשאות.\n\nעבור לעמוד פרטי האפליקציה ← הרשאות ← תמונות וסרטונים, אשר את הגישה ידנית ואז חזור לאפליקציה.\n\nשים לב: יש לאשר גם את הרשאת «תמונות» וגם את הרשאת «וידאו», אחרת תמונות חיות בנות שני קבצים לא ימצאו את סרטון הלוואי.</string>
+    <string name="main_dialog_allfiles_title_delete">מחיקה אוטומטית של המקור דורשת «גישה לכל הקבצים»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">מכשיר זה אינו תומך במחיקה אוטומטית של המקור</string>
+    <string name="main_dialog_allfiles_title_replace">מצב החלפה דורש «גישה לכל הקבצים»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">מכשיר זה אינו תומך במצב החלפה</string>
+    <string name="main_dialog_allfiles_title_location">מומלץ לאשר הרשאת «גישה לכל הקבצים»</string>
+    <string name="main_dialog_allfiles_delete_message">«מחיקת המקור לאחר סיום העיבוד» תמחק ישירות מהדיסק את קבצי המקור (התמונה וסרטון הלוואי). פעולה זו אינה ניתנת לביטול, ולכן יש לאשר תחילה הרשאת «גישה לכל הקבצים».\n\nהמתג יהפוך לזמין רק לאחר האישור, ואז תוכל להפעיל אותו בעצמך.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">המערכת הנוכחית (Android 10 ומטה) אינה מספקת הרשאת «גישה לכל הקבצים», ולכן לא ניתן למחוק ישירות מהדיסק קבצי מקור, ומכשיר זה אינו תומך ב«מחיקת המקור לאחר סיום העיבוד».\n\nתוכל למחוק את קבצי המקור ידנית מאלבום המערכת לאחר השלמת ההמרה.</string>
+    <string name="main_dialog_allfiles_replace_message">«מצב החלפה» יכתוב את תוצאות ההמרה ישירות על קבצי המקור בדיסק (דריסת התוכן המקורי). פעולה זו אינה ניתנת לביטול, ולכן יש לאשר תחילה הרשאת «גישה לכל הקבצים».\n\nהמתג יהפוך לזמין רק לאחר האישור, ואז תוכל להפעיל אותו בעצמך.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">המערכת הנוכחית (Android 10 ומטה) אינה מספקת הרשאת «גישה לכל הקבצים», ולכן לא ניתן לכתוב מחדש ישירות על קבצי המקור בדיסק, ומכשיר זה אינו תומך ב«מצב החלפה».\n\nתוכל להמשיך להמיר בדרך הרגילה, והתוצאות ייכתבו לתיקיית האלבום.</string>
+    <string name="main_dialog_allfiles_location_message">בדגמים מסוימים (למשל Meizu) כתיבה דרך ממשק אלבום המערכת מטשטשת את מיקום ה-GPS, ובעקבות זאת התמונות שהומרו מאבדות את המיקום.\n\nלאחר אישור «גישה לכל הקבצים» האפליקציה תכתוב ישירות לתיקיית האלבום ותשמור על נתוני המיקום במלואם.\n\nניתן להמיר גם בלי לאשר, אך בדגמים מסוימים מידע המיקום עלול ללכת לאיבוד.</string>
+    <string name="main_dialog_conflict_title">התנגשות בשם קובץ הפלט</string>
+    <string name="main_dialog_conflict_message">קובץ בשם זהה כבר קיים בתיקיית הפלט:\n%1$s\n\nיש לבחור דרך טיפול.</string>
+    <string name="main_label_conflict_always">השתמש בדרך טיפול זו גם בהתנגשויות הבאות</string>
+    <string name="main_btn_grant">אשר</string>
+    <string name="main_btn_deny">סרב</string>
+    <string name="main_btn_go_settings">להגדרות</string>
+    <string name="main_btn_cancel">ביטול</string>
+    <string name="main_btn_grant_access">אשר גישה</string>
+    <string name="main_btn_got_it">הבנתי</string>
+    <string name="main_btn_not_now">לא עכשיו</string>
+    <string name="main_btn_skip">דלג</string>
+    <string name="main_btn_overwrite">דרוס</string>
+    <string name="main_btn_auto_rename">שינוי שם אוטומטי</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">נמחק קובץ מקור אחד (מספר קבצים: %1$d)</item>
+        <item quantity="two">נמחקו שני קבצי מקור (מספר קבצים: %1$d)</item>
+        <item quantity="many">נמחקו %1$d קבצי מקור</item>
+        <item quantity="other">נמחקו %1$d קבצי מקור</item>
+    </plurals>
+    <string name="main_delete_nothing">אין צורך למחוק את המקור</string>
+    <string name="main_delete_partial">נמחקו %1$d קבצי מקור (%2$d מחיקות נכשלו ונשמרו)</string>
+    <string name="main_delete_failed">מחיקת המקור נכשלה (הקובץ תפוס או שאין הרשאת כתיבה), והוא נשמר</string>
+    <string name="main_export_missing_output">תוצר ההמרה חסר או ריק: %1$s</string>
+    <string name="main_export_missing_output_bare">תוצר ההמרה חסר או ריק</string>
+    <string name="main_export_insert_null">MediaStore insert החזיר null</string>
+    <string name="main_export_output_stream">זרם הפלט של MediaStore אינו זמין</string>
+    <string name="main_export_write_failed">הכתיבה ל-MediaStore נכשלה: %1$s</string>
+    <string name="main_export_mkdir_failed">לא ניתן ליצור את תיקיית האלבום %1$s</string>
+    <string name="main_export_dir_write_failed">הכתיבה לתיקיית האלבום נכשלה: %1$s</string>
+    <string name="main_export_no_source">לא ניתן לאתר את קובץ המקור; ההחלפה דולגה</string>
+    <string name="main_export_companion_failed">כתיבת קובץ הלוואי בחזרה נכשלה: %1$s</string>
+    <string name="main_export_source_dir_unwritable">תיקיית קובץ המקור אינה ניתנת לכתיבה, וקובץ הלוואי לא נכתב בחזרה</string>
+    <string name="main_export_source_dir_unavailable">תיקיית קובץ המקור אינה זמינה: %1$s</string>
+    <string name="main_export_replace_failed">החלפת קובץ המקור נכשלה: %1$s</string>
+    <string name="main_export_replace_failed_bare">החלפת קובץ המקור נכשלה</string>
+</resources>

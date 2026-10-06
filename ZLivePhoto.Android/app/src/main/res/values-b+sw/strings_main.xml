@@ -20,7 +20,7 @@
         <item quantity="one">Kikao kilichopita kimerejeshwa (faili %1$d)</item>
         <item quantity="other">Kikao kilichopita kimerejeshwa (faili %1$d)</item>
     </plurals>
-    <string name="main_status_abnormal_exit">Kutoka kwa hitilafu kunakugundulika kutoka awali; orodha isiyokamilika imefutwa</string>
+    <string name="main_status_abnormal_exit">Kutoka isivyo kawaida kwa awali kumegunduliwa; orodha isiyokamilika imefutwa</string>
     <string name="main_status_compose_blocks_extract">Foleni ina kazi za utungaji; hauwezi kubadilisha kwenda hali ya kutoa</string>
     <string name="main_status_replace_off_mutex">Hali ya kubadilisha imezimwa (haiwezi kutumika pamoja na “Futa faili za awali baada ya kuchakata”)</string>
     <string name="main_status_delete_needs_all_files">Kufuta faili za awali kiotomatiki kunahitaji “Ufikiaji wa faili zote”; tafadhali itoe kwanza</string>
@@ -93,7 +93,7 @@
     <string name="main_info_done_replaced">Imekamilika (faili %1$d za chanzo zilibadilishwa)</string>
     <string name="main_info_done_skipped">Imekamilika (imerukwa: mgongano wa jina)</string>
     <string name="main_info_done_exported">Imekamilika (%1$d zilihamishwa)</string>
-    <string name="main_info_failed">Imeshinduikana: %1$s</string>
+    <string name="main_info_failed">Imeshindikana: %1$s</string>
     <string name="main_progress_added">Zimeongezwa %1$d/%2$d</string>
     <string name="main_progress_processed">Zimechakatwa %1$d/%2$d</string>
     <string name="main_progress_imported">Zimeingizwa %1$d/%2$d</string>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ไทย (th) — ข้อความหน้าจอหลักและกระบวนการเบื้องหลัง (โมดูล MainActivity)
+  คีย์มีคำนำหน้า main_ และตรงกับ res/values/ (ข้อความจีนตัวย่อสำรอง)
+  ตัวแทนค่าใช้รูปแบบ %1$s / %1$d; คำบอกจำนวนใช้ <plurals>
+  เอกสารนี้เป็นการแปลโดยใช้โมเดลช่วย อาจมีความไม่ถูกต้อง ยินดีรับการแก้ไขจากชุมชน
+-->
+<resources>
+    <!-- ── แถบสถานะ / ข้อความแจ้ง (ในเมธอด Activity ใช้ getString) ── -->
+    <string name="main_status_ready">พร้อม</string>
+    <string name="main_status_location_granted">ได้รับสิทธิ์ตำแหน่งแล้ว หลังแปลงจะยังคงข้อมูลเมตา GPS ไว้</string>
+    <string name="main_status_location_denied">ยังไม่ได้ให้สิทธิ์ตำแหน่ง: ภาพหลังแปลงจะสูญเสียข้อมูลตำแหน่ง GPS</string>
+    <string name="main_status_all_files_granted">ได้รับสิทธิ์ “เข้าถึงไฟล์ทั้งหมด” การแปลงจะเขียนลงในโฟลเดอร์แกลเลอรีโดยตรงและเก็บข้อมูลตำแหน่งไว้ครบถ้วน</string>
+    <string name="main_status_all_files_denied">ยังไม่ได้ให้สิทธิ์ “เข้าถึงไฟล์ทั้งหมด”: บางรุ่นอาจสูญเสียข้อมูลตำแหน่งหลังแปลง</string>
+    <string name="main_status_read_granted">ได้รับสิทธิ์อ่านภาพและวิดีโอแล้ว</string>
+    <string name="main_status_video_missing">ได้รับสิทธิ์แล้วแต่ยังขาดสิทธิ์วิดีโอ: ไม่สามารถค้นหาวิดีโอที่มาคู่กับภาพเคลื่อนไหวแบบสองไฟล์</string>
+    <string name="main_status_permission_denied">ยังไม่ได้ให้สิทธิ์ สามารถแตะ “เพิ่มไฟล์” อีกครั้ง</string>
+    <string name="main_status_folder_not_selected">ยังไม่ได้เลือกโฟลเดอร์</string>
+    <string name="main_status_folder_unavailable">ไม่สามารถเข้าถึงโฟลเดอร์ที่เลือกได้ (รองรับเฉพาะโฟลเดอร์ในที่จัดเก็บภายใน)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">กู้คืนเซสชันก่อนหน้าแล้ว (%1$d ไฟล์)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">ตรวจพบว่าครั้งก่อนปิดแอปผิดปกติ จึงล้างรายการที่ยังไม่เสร็จแล้ว</string>
+    <string name="main_status_compose_blocks_extract">คิวมีงานรวมภาพ จึงสลับเป็นโหมดแยกไม่ได้</string>
+    <string name="main_status_replace_off_mutex">ปิดโหมดแทนที่แล้ว (ใช้ร่วมกับ “ลบไฟล์ต้นฉบับหลังประมวลผล” ไม่ได้)</string>
+    <string name="main_status_delete_needs_all_files">การลบไฟล์ต้นฉบับอัตโนมัติต้องใช้สิทธิ์ “เข้าถึงไฟล์ทั้งหมด” กรุณาให้สิทธิ์ก่อน</string>
+    <string name="main_status_replace_off">ปิดโหมดแทนที่แล้ว ผลลัพธ์การแปลงจะเขียนกลับไปยังโฟลเดอร์แกลเลอรี</string>
+    <string name="main_status_replace_needs_all_files">โหมดแทนที่ต้องใช้สิทธิ์ “เข้าถึงไฟล์ทั้งหมด” กรุณาให้สิทธิ์ก่อน</string>
+    <string name="main_status_delete_off_mutex">ปิด “ลบไฟล์ต้นฉบับหลังประมวลผล” แล้ว (ใช้ร่วมกับโหมดแทนที่ไม่ได้)</string>
+    <string name="main_status_loading_albums">กำลังอ่านอัลบั้ม…</string>
+    <string name="main_status_no_albums">ไม่พบอัลบั้ม</string>
+    <string name="main_status_compose_no_photo">ยังไม่ได้เลือกภาพ จึงรวมไม่ได้</string>
+    <string name="main_status_compose_no_video">ยังไม่ได้เลือกวิดีโอ จึงรวมไม่ได้</string>
+    <string name="main_status_compose_all_added">ภาพที่เลือกทั้งหมดอยู่ในรายการแล้ว</string>
+    <string name="main_status_compose_paired">ภาพ %1$d วิดีโอ %2$d เพิ่มงานรวม %3$d คู่ตามจำนวนที่น้อยกว่า</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">เพิ่มงานรวม %1$d งานแล้ว แตะ “เริ่มแปลง” เพื่อดำเนินการรวม</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (สลับรูปแบบผลลัพธ์เป็น Google โดยอัตโนมัติ)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">กำลังนำเข้า %1$d ภาพที่แชร์…</item>
+    </plurals>
+    <string name="main_status_import_failed">นำเข้าล้มเหลว: %1$s</string>
+    <string name="main_status_import_done_partial">นำเข้าเสร็จสิ้น: สำเร็จ %1$d ล้มเหลว %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">นำเข้าเสร็จสิ้น: นำเข้าทั้งหมด %1$d ไฟล์</item>
+    </plurals>
+    <string name="main_status_import_stopped">หยุดการนำเข้าแล้ว: สำเร็จ %1$d ล้มเหลว %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">กำลังนำเข้า %1$d ไฟล์…</item>
+    </plurals>
+    <string name="main_status_importing_progress">กำลังนำเข้า %1$d/%2$d…</string>
+    <string name="main_status_stopping">กำลังหยุด… (จะหยุดหลังจากไฟล์ปัจจุบันเสร็จ)</string>
+    <string name="main_status_stopping_import">กำลังหยุดการนำเข้า…</string>
+    <string name="main_status_removed">นำออกแล้ว %1$s</string>
+    <string name="main_status_cleared">ล้างแล้ว</string>
+    <string name="main_status_nothing_to_convert">ไม่มีไฟล์ให้แปลง</string>
+    <string name="main_status_folder_unreadable">ไม่สามารถอ่านโฟลเดอร์ที่เลือกได้</string>
+    <string name="main_status_scanning_folder">กำลังสแกนโฟลเดอร์…</string>
+    <string name="main_status_no_images">ไม่พบภาพในโฟลเดอร์ที่เลือก</string>
+    <string name="main_status_batch_importing">กำลังนำเข้าเป็นชุด %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">หยุดการนำเข้าเป็นชุดแล้ว: นำเข้าภาพเคลื่อนไหวทั้งหมด %1$d ภาพ</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">หยุดการนำเข้าเป็นชุดแล้ว: นำเข้าภาพเคลื่อนไหวทั้งหมด %1$d ภาพ ข้ามไฟล์ที่ไม่ใช่ภาพเคลื่อนไหว %2$d ไฟล์</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">นำเข้าเป็นชุดเสร็จสิ้น: นำเข้าภาพเคลื่อนไหวทั้งหมด %1$d ภาพ</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">นำเข้าเป็นชุดเสร็จสิ้น: นำเข้าภาพเคลื่อนไหวทั้งหมด %1$d ภาพ ข้ามไฟล์ที่ไม่ใช่ภาพเคลื่อนไหว %2$d ไฟล์</item>
+    </plurals>
+    <string name="main_status_stopped_replace">หยุดแล้ว: ประมวลผล %2$d จาก %1$d ไฟล์ แทนที่ไฟล์ต้นฉบับ %3$d ไฟล์</string>
+    <string name="main_status_stopped_export">หยุดแล้ว: ประมวลผล %2$d จาก %1$d ไฟล์ ส่งออก %3$d ไปยังแกลเลอรี</string>
+    <string name="main_status_done_replace_reason">เสร็จสิ้น: ประมวลผล %1$d ไฟล์ แทนที่ไฟล์ต้นฉบับ %2$d ไฟล์ (เหตุผล: %3$s)</string>
+    <string name="main_status_done_export_reason">เสร็จสิ้น: ประมวลผล %1$d ไฟล์ ส่งออก %2$d ไปยังแกลเลอรี (เหตุผล: %3$s)</string>
+    <string name="main_status_done_replace">เสร็จสิ้น: ประมวลผล %1$d ไฟล์ แทนที่ไฟล์ต้นฉบับ %2$d ไฟล์</string>
+    <string name="main_status_done_export">เสร็จสิ้น: ประมวลผล %1$d ไฟล์ ส่งออก %2$d ไปยังแกลเลอรี</string>
+    <string name="main_status_keep_originals">%1$s; ยังไม่ได้รับสิทธิ์ “เข้าถึงที่จัดเก็บทั้งหมด” ไฟล์ต้นฉบับถูกเก็บไว้</string>
+
+    <!-- ── ข้อมูลรายการ (FileItem.info) ── -->
+    <string name="main_info_detecting">กำลังตรวจจับ…</string>
+    <string name="main_info_unrecognized">รูปแบบภาพเคลื่อนไหวที่ไม่สามารถระบุได้</string>
+    <string name="main_info_converting">กำลังแปลง…</string>
+    <string name="main_info_compose_task">งานรวมภาพ (แตะ “เริ่มแปลง” เพื่อดำเนินการ)</string>
+    <string name="main_info_done_replaced">เสร็จสิ้น (แทนที่ไฟล์ต้นฉบับ %1$d ไฟล์)</string>
+    <string name="main_info_done_skipped">เสร็จสิ้น (ข้าม: ชื่อซ้ำ)</string>
+    <string name="main_info_done_exported">เสร็จสิ้น (ส่งออก %1$d)</string>
+    <string name="main_info_failed">ล้มเหลว: %1$s</string>
+
+    <!-- ── รายละเอียดความคืบหน้า (progressDetail) ── -->
+    <string name="main_progress_added">เพิ่มแล้ว %1$d/%2$d</string>
+    <string name="main_progress_processed">ประมวลผลแล้ว %1$d/%2$d</string>
+    <string name="main_progress_imported">นำเข้าแล้ว %1$d/%2$d</string>
+
+    <!-- ── หน้าต่างขอสิทธิ์ ── -->
+    <string name="main_dialog_permission_title">ต้องใช้สิทธิ์อ่านภาพและวิดีโอ</string>
+    <string name="main_dialog_permission_message">แอปนี้ต้องอ่านภาพและวิดีโอในอุปกรณ์ของคุณ:\n\n• สิทธิ์ภาพ: สแกนแกลเลอรีของอุปกรณ์และตรวจจับภาพเคลื่อนไหวในนั้น\n• สิทธิ์วิดีโอ: ค้นหาวิดีโอที่มาคู่กับภาพเคลื่อนไหวแบบสองไฟล์\n• สิทธิ์ตำแหน่ง: เก็บข้อมูลเมตาตำแหน่ง GPS ในภาพ (หากไม่มี หลังแปลงจะสูญเสียข้อมูลตำแหน่ง)\n\nหากปฏิเสธ จะใช้ตัวเลือกในตัวไม่ได้ สามารถแตะ “เพิ่มไฟล์” อีกครั้งเพื่อให้สิทธิ์ใหม่ได้</string>
+    <string name="main_dialog_settings_title">ต้องให้สิทธิ์ภาพและวิดีโอด้วยตนเอง</string>
+    <string name="main_dialog_settings_message">ก่อนหน้านี้คุณเลือก “ไม่ต้องถามอีก” ระบบจึงไม่แสดงหน้าต่างขอสิทธิ์อีก\n\nกรุณาไปที่หน้ารายละเอียดแอป → สิทธิ์ → ภาพและวิดีโอ ให้สิทธิ์ด้วยตนเองแล้วกลับเข้าสู่แอป\n\nหมายเหตุ: ต้องให้สิทธิ์ “ภาพ” และ “วิดีโอ” พร้อมกัน มิฉะนั้นจะไม่พบวิดีโอที่มาคู่กับภาพเคลื่อนไหวแบบสองไฟล์</string>
+
+    <!-- ── หน้าต่างอธิบายสิทธิ์ “เข้าถึงไฟล์ทั้งหมด” ── -->
+    <string name="main_dialog_allfiles_title_delete">การลบไฟล์ต้นฉบับอัตโนมัติต้องใช้ “เข้าถึงไฟล์ทั้งหมด”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">อุปกรณ์นี้ไม่รองรับการลบไฟล์ต้นฉบับอัตโนมัติ</string>
+    <string name="main_dialog_allfiles_title_replace">โหมดแทนที่ต้องใช้ “เข้าถึงไฟล์ทั้งหมด”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">อุปกรณ์นี้ไม่รองรับโหมดแทนที่</string>
+    <string name="main_dialog_allfiles_title_location">แนะนำให้ให้สิทธิ์ “เข้าถึงไฟล์ทั้งหมด”</string>
+    <string name="main_dialog_allfiles_delete_message">“ลบไฟล์ต้นฉบับหลังประมวลผล” จะลบไฟล์ต้นฉบับบนที่จัดเก็บโดยตรง (ภาพและวิดีโอที่มาคู่กัน) การกระทำนี้เพิกถอนไม่ได้ จึงต้องให้สิทธิ์ “เข้าถึงไฟล์ทั้งหมด” ก่อน\n\nสวิตช์จะใช้งานได้หลังให้สิทธิ์แล้ว จึงจะเปิดเองได้</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">ระบบปัจจุบัน (Android 10 ลงมา) ไม่มีสิทธิ์ “เข้าถึงไฟล์ทั้งหมด” จึงลบไฟล์ต้นฉบับบนที่จัดเก็บโดยตรงไม่ได้ อุปกรณ์นี้จึงไม่รองรับ “ลบไฟล์ต้นฉบับหลังประมวลผล”\n\nหลังแปลงเสร็จ คุณสามารถลบไฟล์ต้นฉบับด้วยตนเองผ่านแกลเลอรีของระบบ</string>
+    <string name="main_dialog_allfiles_replace_message">“โหมดแทนที่” จะเขียนผลลัพธ์การแปลงกลับไปยังไฟล์ต้นฉบับบนที่จัดเก็บโดยตรง (ทับเนื้อหาเดิม) การกระทำนี้เพิกถอนไม่ได้ จึงต้องให้สิทธิ์ “เข้าถึงไฟล์ทั้งหมด” ก่อน\n\nสวิตช์จะใช้งานได้หลังให้สิทธิ์แล้ว จึงจะเปิดเองได้</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">ระบบปัจจุบัน (Android 10 ลงมา) ไม่มีสิทธิ์ “เข้าถึงไฟล์ทั้งหมด” จึงเขียนทับไฟล์ต้นฉบับบนที่จัดเก็บโดยตรงไม่ได้ อุปกรณ์นี้จึงไม่รองรับ “โหมดแทนที่”\n\nคุณสามารถแปลงด้วยวิธีปกติต่อไปได้ ผลลัพธ์จะถูกส่งออกไปยังโฟลเดอร์แกลเลอรี</string>
+    <string name="main_dialog_allfiles_location_message">บางรุ่น (เช่น Meizu) การเขียนผ่านอินเทอร์เฟซแกลเลอรีของระบบจะปิดบังข้อมูลตำแหน่ง GPS ทำให้ภาพหลังแปลงสูญเสียตำแหน่ง\n\nเมื่อให้สิทธิ์ “เข้าถึงไฟล์ทั้งหมด” แอปจะเขียนลงโฟลเดอร์แกลเลอรีโดยตรงและเก็บข้อมูลเมตาตำแหน่งไว้ครบถ้วน\n\nหากไม่ให้สิทธิ์ก็แปลงได้ตามปกติ แต่บางรุ่นอาจสูญเสียข้อมูลตำแหน่ง</string>
+
+    <!-- ── หน้าต่างชื่อไฟล์ผลลัพธ์ซ้ำ ── -->
+    <string name="main_dialog_conflict_title">ชื่อไฟล์ผลลัพธ์ซ้ำกัน</string>
+    <string name="main_dialog_conflict_message">ในโฟลเดอร์ผลลัพธ์มีไฟล์ชื่อซ้ำอยู่แล้ว:\n%1$s\n\nกรุณาเลือกวิธีจัดการ</string>
+    <string name="main_label_conflict_always">ใช้วิธีนี้กับชื่อซ้ำครั้งต่อไป</string>
+
+    <!-- ── ปุ่มในหน้าต่าง ── -->
+    <string name="main_btn_grant">ให้สิทธิ์</string>
+    <string name="main_btn_deny">ปฏิเสธ</string>
+    <string name="main_btn_go_settings">ไปที่การตั้งค่า</string>
+    <string name="main_btn_cancel">ยกเลิก</string>
+    <string name="main_btn_grant_access">ไปให้สิทธิ์</string>
+    <string name="main_btn_got_it">รับทราบ</string>
+    <string name="main_btn_not_now">ไว้ก่อน</string>
+    <string name="main_btn_skip">ข้าม</string>
+    <string name="main_btn_overwrite">เขียนทับ</string>
+    <string name="main_btn_auto_rename">เปลี่ยนชื่ออัตโนมัติ</string>
+
+    <!-- ── ผลลัพธ์การแปลง / เหตุผลที่ส่งออกล้มเหลว (แสดงร่วมกับ “เหตุผล: %3$s”) ── -->
+    <plurals name="main_delete_done">
+        <item quantity="other">ลบไฟล์ต้นฉบับแล้ว %1$d ไฟล์</item>
+    </plurals>
+    <string name="main_delete_nothing">ไม่จำเป็นต้องลบไฟล์ต้นฉบับ</string>
+    <string name="main_delete_partial">ลบไฟล์ต้นฉบับแล้ว %1$d ไฟล์ (%2$d ลบไม่สำเร็จ เก็บไว้)</string>
+    <string name="main_delete_failed">ลบไฟล์ต้นฉบับไม่สำเร็จ (ไฟล์ถูกใช้งานอยู่หรือไม่มีสิทธิ์เขียน) เก็บไว้</string>
+    <string name="main_export_missing_output">ผลลัพธ์การแปลงหายไปหรือว่างเปล่า: %1$s</string>
+    <string name="main_export_missing_output_bare">ผลลัพธ์การแปลงหายไปหรือว่างเปล่า</string>
+    <string name="main_export_insert_null">MediaStore insert คืนค่า null</string>
+    <string name="main_export_output_stream">สตรีมผลลัพธ์ MediaStore ใช้งานไม่ได้</string>
+    <string name="main_export_write_failed">เขียน MediaStore ล้มเหลว: %1$s</string>
+    <string name="main_export_mkdir_failed">สร้างโฟลเดอร์แกลเลอรี %1$s ไม่ได้</string>
+    <string name="main_export_dir_write_failed">เขียนโฟลเดอร์แกลเลอรีล้มเหลว: %1$s</string>
+    <string name="main_export_no_source">ไม่สามารถระบุไฟล์ต้นฉบับได้ ข้ามการแทนที่</string>
+    <string name="main_export_companion_failed">เขียนไฟล์ที่มาคู่กันล้มเหลว: %1$s</string>
+    <string name="main_export_source_dir_unwritable">โฟลเดอร์ไฟล์ต้นฉบับเขียนไม่ได้ จึงเขียนไฟล์ที่มาคู่กันไม่สำเร็จ</string>
+    <string name="main_export_source_dir_unavailable">โฟลเดอร์ไฟล์ต้นฉบับใช้งานไม่ได้: %1$s</string>
+    <string name="main_export_replace_failed">แทนที่ไฟล์ต้นฉบับล้มเหลว: %1$s</string>
+    <string name="main_export_replace_failed_bare">แทนที่ไฟล์ต้นฉบับล้มเหลว</string>
+</resources>

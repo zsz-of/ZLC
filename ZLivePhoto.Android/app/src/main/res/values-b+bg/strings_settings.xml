@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Български (bg) — екран с настройки (ui/SettingsScreen.kt, ключове settings_*).
+  База: res/values/strings_settings.xml (опростен китайски).
+  Заместители: %1$s / %1$d. Не се превеждат: "@毛血旺o", "GPL-3.0", "H.264"/"H.265", URL адресът на GitHub.
+-->
+<resources>
+
+    <!-- Общи -->
+    <string name="settings_title">Настройки</string>
+    <string name="settings_cd_back">Назад</string>
+    <string name="settings_btn_apply">Приложи</string>
+    <string name="settings_btn_cancel">Отказ</string>
+    <string name="settings_btn_close">Затвори</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Подкрепа</string>
+
+    <!-- Заглавия на групи -->
+    <string name="settings_section_general">Общи</string>
+    <string name="settings_section_appearance">Външен вид</string>
+    <string name="settings_section_language">Език</string>
+    <string name="settings_section_defaults">Настройки по подразбиране</string>
+    <string name="settings_section_output">Изход</string>
+    <string name="settings_section_transcode">Видео прекодиране</string>
+    <string name="settings_section_about">Относно</string>
+    <string name="settings_section_app">Приложение</string>
+    <string name="settings_section_credits">Благодарности и подкрепа</string>
+    <string name="settings_section_opensource">Отворен код и лиценз</string>
+
+    <!-- Общи -->
+    <string name="settings_startup_check_title">Проверка за актуализации при стартиране</string>
+    <string name="settings_startup_check_subtitle">Автоматично проверява GitHub за нова версия при стартиране и предлага изтегляне</string>
+    <string name="settings_haptics_title">Вибрационна обратна връзка</string>
+    <string name="settings_haptics_subtitle">Тактилна обратна връзка при натискане на бутони и промяна на състояние</string>
+    <string name="settings_bounce_title">Еластична анимация на бутоните</string>
+    <string name="settings_bounce_subtitle">Анимация на свиване и отскачане при натискане на бутон</string>
+
+    <!-- Външен вид -->
+    <string name="settings_theme_system">Според системата</string>
+    <string name="settings_theme_dark">Тъмна</string>
+    <string name="settings_theme_light">Светла</string>
+    <string name="settings_dynamic_theme_title">Динамични цветове (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">Следва цветовете на системния тапет (Android 12+); когато е изключено, се използват готовите цветове по-долу</string>
+    <string name="settings_preset_colors_title">Готови цветови теми</string>
+    <string name="settings_preset_current">Текуща: %1$s</string>
+    <string name="settings_preset_disabled_hint">Достъпно след изключване на „Динамични цветове (Material You)“</string>
+    <string name="settings_custom">Персонализирана</string>
+    <string name="settings_custom_color_title">Персонализиран цвят на темата</string>
+    <string name="settings_cd_custom_palette">Персонализирана палитра</string>
+    <string name="settings_hue_value">Оттенък %1$d°</string>
+
+    <!-- Език на приложението -->
+    <string name="settings_language_dialog_title">Избор на език на приложението</string>
+    <string name="settings_language_count">Общо %1$d езика</string>
+
+    <!-- Настройки по подразбиране -->
+    <string name="settings_reminder_dialogs_title">Диалози „Не показвай повече“</string>
+    <string name="settings_reminder_dialogs_subtitle">Управление на всички превключватели „Не показвай повече“</string>
+    <string name="settings_reminder_hint">Включен превключвател означава „Не показвай повече“; след изключване подсказката ще се появи отново при следващото задействане на съответната ситуация.</string>
+
+    <!-- Изход -->
+    <string name="settings_preserve_folders_title">Запазване на структурата на папките от източника</string>
+    <string name="settings_preserve_folders_subtitle">Резултатите се поставят в подпапки с името на оригиналния албум; когато е изключено, всичко се събира в една папка</string>
+
+    <!-- Относно -->
+    <string name="settings_about_title">Относно</string>
+    <string name="settings_about_subtitle">Версия · Проверка за актуализации · Благодарности и подкрепа</string>
+    <string name="settings_check_update_title">Проверка за актуализации</string>
+    <string name="settings_check_update_subtitle">Изтегляне на най-новата версия от GitHub Releases</string>
+    <string name="settings_checking">Проверка…</string>
+    <string name="settings_update_available">Налична е v%1$s</string>
+    <string name="settings_up_to_date">Вече имате най-новата версия</string>
+    <string name="settings_network_error">Мрежова грешка. Опитайте отново по-късно</string>
+    <string name="settings_reinstall_title">Преинсталиране на тази версия</string>
+    <string name="settings_reinstall_subtitle">Изтегляне на най-новата версия и инсталиране на мястото на текущата (за тестване на актуализации)</string>
+    <string name="settings_reinstall_newer_hint">Налична е актуализация до v%1$s — първо използвайте „Проверка за актуализации“</string>
+    <string name="settings_version_title">Версия</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Подкрепа чрез Alipay</string>
+    <string name="settings_alipay_subtitle">Подкрепете разработката</string>
+    <string name="settings_coolapk_subtitle">Потребител на Coolapk · благодарим за подкрепата</string>
+    <string name="settings_ai_credits_subtitle">Благодарим на средите за AI разработка и на AI моделите за помощта при разработката</string>
+    <string name="settings_github_title">Изходен код в GitHub</string>
+    <string name="settings_license_title">Лиценз за отворен код</string>
+    <string name="settings_sponsor_dialog_title">Благодарим за подкрепата</string>
+    <string name="settings_sponsor_dialog_text">Наистина много благодаря, че искате да подкрепите това приложение!\n\nАко все още учите или още не сте финансово независими, моля, не харчете пари —\nзапазете това добро чувство в сърцето си и просто продължете да използвате приложението; това е най-добрата подкрепа за мен.\n\nАко все пак желаете да подкрепите, и най-малката сума е от значение — ще я вложа в по-добра поддръжка и нови функции :)</string>
+    <string name="settings_alipay_missing_title">Alipay не е инсталиран</string>
+    <string name="settings_alipay_missing_text">Alipay не е открит, затова в момента подкрепата е невъзможна.\n\nНяма нищо — много ви благодаря за доброто отношение, независимо от всичко!</string>
+
+    <!-- Видео прекодиране -->
+    <string name="settings_transcoder_title">Вграден транскодер</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Прекодиране</string>
+    <string name="settings_transcode_mode_remux">Само преопаковане на контейнера (препоръчително)</string>
+    <string name="settings_transcode_mode_off">Без използване на транскодер</string>
+    <string name="settings_transcode_params_title">Параметри на прекодирането</string>
+    <string name="settings_transcode_params_subtitle">Параметри за качество и компресия при прекодиране</string>
+    <string name="settings_transcode_params_disabled">Валидно само когато в „Начин на прекодиране“ е избрано „Прекодиране“</string>
+    <string name="settings_crf_value">Качество CRF: %1$d</string>
+    <string name="settings_crf_hint">Колкото по-малка е стойността, толкова по-високо е качеството и по-голям обемът (по подразбиране 18)</string>
+    <string name="settings_encoder_title">Енкодер</string>
+    <string name="settings_compress_preset_title">Профил за компресия</string>
+
+</resources>

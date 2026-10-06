@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Български (bg) — главен екран / избор на албум (ключове screen_*).
+  База: res/values/strings_screens.xml (опростен китайски).
+  Заместителите запазват номерацията %1$s / %1$d и могат да се пренареждат.
+-->
+<resources>
+    <string name="screen_app_subtitle">Конвертиране между формати Live Photo</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d файл</item>
+        <item quantity="other">%1$d файла</item>
+    </plurals>
+    <string name="screen_settings">Настройки</string>
+
+    <string name="screen_select_output_format">Избор на изходен формат</string>
+    <string name="screen_selected">Избрано</string>
+    <string name="screen_vivo_single_warning">⚠ По-стари устройства може да не разпознаят този формат</string>
+    <string name="screen_extract_blocked">⚠ Опашката съдържа задачи за създаване — не може да се избере извличане</string>
+
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (един файл)</string>
+    <string name="screen_format_vivo">vivo (два файла)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Извличане</string>
+
+    <string name="screen_toolbox">Инструменти</string>
+    <string name="screen_batch_import">Групов импорт</string>
+    <string name="screen_batch_import_desc">Сканира цялата галерия и открива Live Photo наведнъж</string>
+    <string name="screen_compose">Създаване на Live Photo</string>
+    <string name="screen_compose_desc">Изберете снимка и видео и ги комбинирайте в Live Photo</string>
+    <string name="screen_replace_mode">Режим на замяна</string>
+    <string name="screen_replace_mode_desc">Резултатът се записва директно върху оригиналния файл, без да се създава нов</string>
+    <string name="screen_need_all_files_access_hint">Изисква „Достъп до всички файлове“ — натиснете, за да го дадете</string>
+    <string name="screen_agree_and_enable">Съгласяване и включване</string>
+
+    <string name="screen_empty_no_files">Още няма добавени файлове</string>
+    <string name="screen_view_detail">Виж подробности</string>
+    <string name="screen_add_files">Добавяне на файлове</string>
+    <string name="screen_output_format">Изходен формат: %1$s</string>
+    <string name="screen_delete_original">Изтриване на оригинала след обработката</string>
+    <string name="screen_need_all_files_access_view">Изисква „Достъп до всички файлове“ — натиснете, за да видите</string>
+    <string name="screen_clear">Изчистване</string>
+    <string name="screen_stop">Спиране на обработката</string>
+    <string name="screen_start_convert">Начало на конвертирането</string>
+
+    <string name="screen_status_detail">Подробности за състоянието</string>
+    <string name="screen_long_press_copy">Задръжте текста, за да го изберете и копирате</string>
+    <string name="screen_copy">Копиране</string>
+    <string name="screen_close">Затваряне</string>
+
+    <string name="screen_back">Назад</string>
+    <string name="screen_picker_title_select">Избор на Live Photo</string>
+    <string name="screen_album_count">Албум %1$d</string>
+    <string name="screen_album_collapse_cover">Свиване на корицата на албума</string>
+    <string name="screen_album_expand_cover">Разгъване на корицата на албума</string>
+    <string name="screen_scanning_progress">Сканиране %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d снимка</item>
+        <item quantity="other">%1$d снимки</item>
+    </plurals>
+    <string name="screen_select_all">Избиране на всички</string>
+    <string name="screen_no_albums">Няма налични албуми</string>
+    <string name="screen_no_media">Не са намерени Live Photo</string>
+    <string name="screen_no_media_compose">Не са намерени снимки или видеа</string>
+    <string name="screen_import">Импортиране</string>
+    <string name="screen_import_count">Импортиране %1$d</string>
+    <string name="screen_import_mixed">Импортиране снимки %1$d · видеа %2$d</string>
+    <string name="screen_search">Търсене</string>
+    <string name="screen_search_collapse">Затваряне на търсенето</string>
+    <string name="screen_search_hint">Търсене по име</string>
+    <string name="screen_search_clear">Изчистване на търсенето</string>
+    <string name="screen_sort_date">Дата</string>
+    <string name="screen_sort_size">Размер</string>
+    <string name="screen_sort_name">Име</string>
+    <string name="screen_sort_asc">Възходящо</string>
+    <string name="screen_sort_desc">Низходящо</string>
+
+    <string name="screen_date_today">Днес</string>
+    <string name="screen_date_yesterday">Вчера</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

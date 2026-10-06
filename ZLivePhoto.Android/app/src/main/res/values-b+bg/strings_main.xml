@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Български (bg) — главен екран и фонови процеси (MainActivity, ключове main_*).
+  База: res/values/strings_main.xml (опростен китайски).
+  Заместители: %1$s / %1$d. Броимите фрази използват <plurals>.
+-->
+<resources>
+    <!-- ── Лента за състояние / подсказки ── -->
+    <string name="main_status_ready">Готово</string>
+    <string name="main_status_location_granted">Разрешението за местоположение е дадено — GPS метаданните ще бъдат запазени след конвертирането</string>
+    <string name="main_status_location_denied">Разрешението за местоположение не е дадено: след конвертирането снимките ще загубят GPS информацията</string>
+    <string name="main_status_all_files_granted">Разрешението „Достъп до всички файлове“ е дадено — записът е директно в папката на галерията и информацията за местоположението се запазва напълно</string>
+    <string name="main_status_all_files_denied">Разрешението „Достъп до всички файлове“ не е дадено: на отделни устройства след конвертиране информацията за местоположението може да се загуби</string>
+    <string name="main_status_read_granted">Разрешението за четене на снимки и видеа е дадено</string>
+    <string name="main_status_video_missing">Разрешението е дадено, но липсва достъп до видеата: не може да се намери придружаващото видео на Live Photo с два файла</string>
+    <string name="main_status_permission_denied">Разрешението не е дадено; можете отново да натиснете „Добавяне на файлове“</string>
+    <string name="main_status_folder_not_selected">Не е избрана папка</string>
+    <string name="main_status_folder_unavailable">Избраната папка е недостъпна (поддържат се само папки в локалното хранилище)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Възстановена е предишната сесия (%1$d файл)</item>
+        <item quantity="other">Възстановена е предишната сесия (%1$d файла)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Открито е аварийно затваряне; незавършеният списък е изчистен</string>
+    <string name="main_status_compose_blocks_extract">Опашката съдържа задачи за създаване — не може да се премине в режим на извличане</string>
+    <string name="main_status_replace_off_mutex">Режимът на замяна е изключен (несъвместим с „Изтриване на оригинала след обработката“)</string>
+    <string name="main_status_delete_needs_all_files">Автоматичното изтриване на оригиналите изисква разрешението „Достъп до всички файлове“ — първо го дайте</string>
+    <string name="main_status_replace_off">Режимът на замяна е изключен; резултатите отново се записват в папката на галерията</string>
+    <string name="main_status_replace_needs_all_files">Режимът на замяна изисква разрешението „Достъп до всички файлове“ — първо го дайте</string>
+    <string name="main_status_delete_off_mutex">„Изтриване на оригинала след обработката“ е изключено (несъвместимо с режима на замяна)</string>
+    <string name="main_status_loading_albums">Зареждане на галерията…</string>
+    <string name="main_status_no_albums">Не са намерени албуми</string>
+    <string name="main_status_compose_no_photo">Не е избрана снимка — създаването е невъзможно</string>
+    <string name="main_status_compose_no_video">Не е избрано видео — създаването е невъзможно</string>
+    <string name="main_status_compose_all_added">Всички избрани снимки вече са в списъка</string>
+    <string name="main_status_compose_paired">Снимки: %1$d, видеа: %2$d; добавени са %3$d двойки задачи за създаване според по-малкия брой</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Добавена е %1$d задача за създаване — натиснете „Начало на конвертирането“, за да я изпълните</item>
+        <item quantity="other">Добавени са %1$d задачи за създаване — натиснете „Начало на конвертирането“, за да ги изпълните</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (изходният формат е превключен автоматично на Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Импортиране на %1$d споделена снимка…</item>
+        <item quantity="other">Импортиране на %1$d споделени снимки…</item>
+    </plurals>
+    <string name="main_status_import_failed">Неуспешен импорт: %1$s</string>
+    <string name="main_status_import_done_partial">Импортът завърши: успешни %1$d, неуспешни %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Импортът завърши: общо %1$d файл</item>
+        <item quantity="other">Импортът завърши: общо %1$d файла</item>
+    </plurals>
+    <string name="main_status_import_stopped">Импортът е спрян: успешни %1$d, неуспешни %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Импортиране на %1$d файл…</item>
+        <item quantity="other">Импортиране на %1$d файла…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Импортиране %1$d/%2$d…</string>
+    <string name="main_status_stopping">Спиране… (след приключване на текущия файл)</string>
+    <string name="main_status_stopping_import">Спиране на импортирането…</string>
+    <string name="main_status_removed">%1$s е премахнат</string>
+    <string name="main_status_cleared">Изчистено</string>
+    <string name="main_status_nothing_to_convert">Няма файлове за конвертиране</string>
+    <string name="main_status_folder_unreadable">Избраната папка не може да бъде прочетена</string>
+    <string name="main_status_scanning_folder">Сканиране на папката…</string>
+    <string name="main_status_no_images">В избраната папка не са намерени изображения</string>
+    <string name="main_status_batch_importing">Групово импортиране %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Груповото импортиране е спряно: общо %1$d Live Photo</item>
+        <item quantity="other">Груповото импортиране е спряно: общо %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Груповото импортиране е спряно: общо %1$d Live Photo, пропуснати %2$d файла без динамично съдържание</item>
+        <item quantity="other">Груповото импортиране е спряно: общо %1$d Live Photo, пропуснати %2$d файла без динамично съдържание</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Груповото импортиране завърши: общо %1$d Live Photo</item>
+        <item quantity="other">Груповото импортиране завърши: общо %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Груповото импортиране завърши: общо %1$d Live Photo, пропуснати %2$d файла без динамично съдържание</item>
+        <item quantity="other">Груповото импортиране завърши: общо %1$d Live Photo, пропуснати %2$d файла без динамично съдържание</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Спряно: обработени %2$d от %1$d файла, заменени %3$d изходни файла</string>
+    <string name="main_status_stopped_export">Спряно: обработени %2$d от %1$d файла, експортирани %3$d в галерията</string>
+    <string name="main_status_done_replace_reason">Готово: обработени %1$d файла, заменени %2$d изходни файла (причина: %3$s)</string>
+    <string name="main_status_done_export_reason">Готово: обработени %1$d файла, експортирани %2$d в галерията (причина: %3$s)</string>
+    <string name="main_status_done_replace">Готово: обработени %1$d файла, заменени %2$d изходни файла</string>
+    <string name="main_status_done_export">Готово: обработени %1$d файла, експортирани %2$d в галерията</string>
+    <string name="main_status_keep_originals">%1$s; разрешението „Достъп до всички файлове“ не е дадено — оригиналите са запазени</string>
+
+    <!-- ── Информация за елемент от списъка ── -->
+    <string name="main_info_detecting">Откриване…</string>
+    <string name="main_info_unrecognized">Непознат формат на Live Photo</string>
+    <string name="main_info_converting">Конвертиране…</string>
+    <string name="main_info_compose_task">Задача за създаване (натиснете „Начало на конвертирането“ за изпълнение)</string>
+    <string name="main_info_done_replaced">Готово (заменени %1$d изходни файла)</string>
+    <string name="main_info_done_skipped">Готово (пропуснато: съвпадащо име)</string>
+    <string name="main_info_done_exported">Готово (експортирани %1$d)</string>
+    <string name="main_info_failed">Неуспешно: %1$s</string>
+
+    <!-- ── Подробности за напредъка ── -->
+    <string name="main_progress_added">Добавени %1$d/%2$d</string>
+    <string name="main_progress_processed">Обработени %1$d/%2$d</string>
+    <string name="main_progress_imported">Импортирани %1$d/%2$d</string>
+
+    <!-- ── Диалог за разрешения ── -->
+    <string name="main_dialog_permission_title">Необходимо е разрешение за достъп до снимки и видеа</string>
+    <string name="main_dialog_permission_message">Приложението се нуждае от достъп до снимките и видеата на устройството:\n\n• Разрешение за снимки: сканиране на системната галерия и откриване на Live Photo в нея\n• Разрешение за видеа: намиране на придружаващото видео на Live Photo с два файла\n• Разрешение за местоположение: запазване на GPS метаданните в снимките (без него след конвертиране информацията за местоположението се губи)\n\nПри отказ вграденият избор е недостъпен; по-късно можете отново да натиснете „Добавяне на файлове“, за да дадете разрешението.</string>
+    <string name="main_dialog_settings_title">Разрешенията за снимки и видеа трябва да се дадат ръчно</string>
+    <string name="main_dialog_settings_message">Преди сте избрали „Не питай повече“, затова системата вече не показва диалога за разрешения.\n\nОтворете страницата на приложението → Разрешения → Снимки и видеа, дайте достъп ръчно и се върнете в приложението.\n\nЗабележка: трябва да дадете едновременно разрешенията „Снимки“ и „Видеа“, иначе придружаващото видео на Live Photo с два файла няма да бъде намерено.</string>
+
+    <!-- ── Диалози за разрешението „Достъп до всички файлове“ ── -->
+    <string name="main_dialog_allfiles_title_delete">Автоматичното изтриване на оригиналите изисква „Достъп до всички файлове“</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Това устройство не поддържа автоматично изтриване на оригиналите</string>
+    <string name="main_dialog_allfiles_title_replace">Режимът на замяна изисква „Достъп до всички файлове“</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Това устройство не поддържа режим на замяна</string>
+    <string name="main_dialog_allfiles_title_location">Препоръчително е да дадете „Достъп до всички файлове“</string>
+    <string name="main_dialog_allfiles_delete_message">„Изтриване на оригинала след обработката“ изтрива директно файловете от диска (снимката и придружаващото ѝ видео); действието е необратимо, затова първо трябва да дадете разрешението „Достъп до всички файлове“.\n\nПревключвателят ще стане достъпен едва след разрешението и тогава можете да го включите.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Текущата система (Android 10 и по-стари) не предлага разрешението „Достъп до всички файлове“, затова файловете не могат да се изтриват директно от диска и автоматичното изтриване на оригиналите не се поддържа.\n\nСлед конвертирането можете да изчистите оригиналите ръчно през системната галерия.</string>
+    <string name="main_dialog_allfiles_replace_message">„Режимът на замяна“ записва резултата от конвертирането директно върху оригиналния файл на диска (с презаписване на съдържанието); действието е необратимо, затова първо трябва да дадете разрешението „Достъп до всички файлове“.\n\nПревключвателят ще стане достъпен едва след разрешението и тогава можете да го включите.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Текущата система (Android 10 и по-стари) не предлага разрешението „Достъп до всички файлове“, затова оригиналните файлове не могат да се презаписват директно на диска и режимът на замяна не се поддържа.\n\nМожете да продължите да конвертирате по стандартния начин — резултатът се записва в папката на галерията.</string>
+    <string name="main_dialog_allfiles_location_message">На някои устройства (например Meizu) записът през системния интерфейс на галерията премахва GPS информацията и след конвертиране снимките губят местоположението си.\n\nСлед като дадете „Достъп до всички файлове“, приложението записва директно в папката на галерията и запазва метаданните за местоположението изцяло.\n\nБез това разрешение конвертирането също работи, но на отделни устройства информацията за местоположението може да се загуби.</string>
+
+    <!-- ── Диалог за конфликт в името на изходния файл ── -->
+    <string name="main_dialog_conflict_title">Конфликт в името на изходния файл</string>
+    <string name="main_dialog_conflict_message">В изходната папка вече има файл със същото име:\n%1$s\n\nИзберете как да продължите.</string>
+    <string name="main_label_conflict_always">Използвай този избор за всички следващи конфликти</string>
+
+    <!-- ── Бутони на диалозите ── -->
+    <string name="main_btn_grant">Разреши</string>
+    <string name="main_btn_deny">Откажи</string>
+    <string name="main_btn_go_settings">Към настройките</string>
+    <string name="main_btn_cancel">Отказ</string>
+    <string name="main_btn_grant_access">Разреши</string>
+    <string name="main_btn_got_it">Разбрах</string>
+    <string name="main_btn_not_now">Не сега</string>
+    <string name="main_btn_skip">Пропусни</string>
+    <string name="main_btn_overwrite">Презапиши</string>
+    <string name="main_btn_auto_rename">Автоматично преименуване</string>
+
+    <!-- ── Резултат от конвертирането / причини за неуспешен експорт ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Изтрит е %1$d оригинален файл</item>
+        <item quantity="other">Изтрити са %1$d оригинални файла</item>
+    </plurals>
+    <string name="main_delete_nothing">Няма оригинали за изтриване</string>
+    <string name="main_delete_partial">Изтрити са %1$d оригинални файла (%2$d не можаха да се изтрият и са запазени)</string>
+    <string name="main_delete_failed">Изтриването на оригиналите е неуспешно (файлът се използва или няма права за запис) — запазени са</string>
+    <string name="main_export_missing_output">Резултатът от конвертирането липсва или е празен: %1$s</string>
+    <string name="main_export_missing_output_bare">Резултатът от конвертирането липсва или е празен</string>
+    <string name="main_export_insert_null">MediaStore insert върна null</string>
+    <string name="main_export_output_stream">Изходният поток на MediaStore е недостъпен</string>
+    <string name="main_export_write_failed">Неуспешен запис в MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">Папката на галерията %1$s не може да бъде създадена</string>
+    <string name="main_export_dir_write_failed">Неуспешен запис в папката на галерията: %1$s</string>
+    <string name="main_export_no_source">Изходният файл не може да бъде намерен — замяната е пропусната</string>
+    <string name="main_export_companion_failed">Неуспешен запис на придружаващия файл: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Папката на изходния файл не е достъпна за запис; придружаващият файл не е записан</string>
+    <string name="main_export_source_dir_unavailable">Папката на изходния файл е недостъпна: %1$s</string>
+    <string name="main_export_replace_failed">Неуспешна замяна на изходния файл: %1$s</string>
+    <string name="main_export_replace_failed_bare">Неуспешна замяна на изходния файл</string>
+</resources>

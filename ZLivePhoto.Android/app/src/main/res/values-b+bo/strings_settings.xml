@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（藏语 bo，C 级：低资源语种，术语多为新造词，仅供理解），可能存在不准确之处，欢迎社区修正。
+     ཡིག་ཆ་འདི་དཔེ་རྒྱུད་ཨང་རྟགས་ཀྱིས་བསྒྱུར་བ་ཡིན། ཡང་དག་མིན་པ་ཡོད་སྲིད།
+     品牌名（Material You / Alipay / Coolapk / GitHub / ffmpeg / CRF）与 %1$s / %1$d 占位符保持原样。 -->
+<resources>
+
+    <!-- སྤྱི -->
+    <string name="settings_title">སྒྲིག་བཀོད</string>
+    <string name="settings_cd_back">ཕྱིར་ལོག</string>
+    <string name="settings_btn_apply">ལག་བསྟར</string>
+    <string name="settings_btn_cancel">རྩིས་མེད</string>
+    <string name="settings_btn_close">ཁ་རྒྱག</string>
+    <string name="settings_btn_ok">ལེགས</string>
+    <string name="settings_btn_sponsor">རྒྱབ་སྐྱོར</string>
+
+    <!-- ཚོགས་ཀྱི་མགོ་བརྗོད -->
+    <string name="settings_section_general">སྤྱི</string>
+    <string name="settings_section_appearance">ཕྱི་ཚུལ</string>
+    <string name="settings_section_language">སྐད་ཡིག</string>
+    <string name="settings_section_defaults">སྔོན་སྒྲིག་གདམ་ཀ</string>
+    <string name="settings_section_output">ཕྱིར་བཏོན</string>
+    <string name="settings_section_transcode">བརྙན་ཨང་རྟགས་བསྒྱུར</string>
+    <string name="settings_section_about">སྐོར</string>
+    <string name="settings_section_app">མཉེན་ཆས</string>
+    <string name="settings_section_credits">ཐུགས་རྗེ་ཞུ་དང་རྒྱབ་སྐྱོར</string>
+    <string name="settings_section_opensource">ཁུངས་ཁ་ཕྱེ་དང་ཆོག་མཆན</string>
+
+    <!-- སྤྱི -->
+    <string name="settings_startup_check_title">འགོ་འཛུགས་སྐབས་གསར་སྒྱུར་ཞིབ་བཤེར</string>
+    <string name="settings_startup_check_subtitle">འགོ་འཛུགས་སྐབས་རང་འགུལ་ངང་ GitHub ནས་པར་གཞི་གསར་པ་ལེན་ཅིང་། གསར་སྒྱུར་ཡོད་ན་ཕབ་ལེན་གྱི་དྲན་སྐུལ་བྱེད</string>
+    <string name="settings_haptics_title">འཁྲུག་ཕྱིར་ལན</string>
+    <string name="settings_haptics_subtitle">མཐེབ་གནོན་དང་གནས་ཚུལ་འགྱུར་སྐབས་ཀྱི་རེག་བྱ་ཕྱིར་ལན</string>
+    <string name="settings_bounce_title">མཐེབ་གནོན་གྱི་སྤོ་འགུལ་རིས</string>
+    <string name="settings_bounce_subtitle">མཐེབ་གནོན་མནན་སྐབས་ཀྱི་བསྡུ་སྤེལ་ལོག་རིས</string>
+
+    <!-- ཕྱི་ཚུལ -->
+    <string name="settings_theme_system">མ་ལག་གི་རྗེས་སུ་འབྲང</string>
+    <string name="settings_theme_dark">ནག་མདོག</string>
+    <string name="settings_theme_light">དཀར་མདོག</string>
+    <string name="settings_dynamic_theme_title">Material You གི་རང་འགུལ་ཚོས་ལེན</string>
+    <string name="settings_dynamic_theme_subtitle">མ་ལག་གི་རྒྱབ་པར་གྱི་ཚོས་ལ་རྗེས་སུ་འབྲང (Android 12+)། ཁ་རྒྱག་ན་འོག་གི་སྔོན་སྒྲིག་བརྗོད་གཞིའི་ཚོས་བེད་སྤྱོད་བྱེད</string>
+    <string name="settings_preset_colors_title">སྔོན་སྒྲིག་བརྗོད་གཞིའི་ཚོས</string>
+    <string name="settings_preset_current">ད་ལྟ: %1$s</string>
+    <string name="settings_preset_disabled_hint">«Material You གི་རང་འགུལ་ཚོས་ལེན» ཁ་རྒྱག་རྗེས་འདེམས་ཆོག</string>
+    <string name="settings_custom">རང་ཉིད་ཀྱི་འདེམས</string>
+    <string name="settings_custom_color_title">རང་ཉིད་ཀྱི་བརྗོད་གཞིའི་ཚོས</string>
+    <string name="settings_cd_custom_palette">རང་ཉིད་ཀྱི་ཚོས་སྒྲོམ</string>
+    <string name="settings_hue_value">ཚོས་རྣམ་ %1$d°</string>
+
+    <string name="settings_language_dialog_title">མཉེན་ཆས་ཀྱི་སྐད་ཡིག་འདེམས</string>
+    <string name="settings_language_count">སྐད་ཡིག་བསྡོམས་ %1$d</string>
+
+    <!-- སྔོན་སྒྲིག་གདམ་ཀ -->
+    <string name="settings_reminder_dialogs_title">ད་ནས་དྲན་སྐུལ་མི་བྱེད་པའི་སྒྲོམ་ཁ</string>
+    <string name="settings_reminder_dialogs_subtitle">«ད་ནས་དྲན་སྐུལ་མི་བྱེད» སྒྲོམ་ཁ་ཚང་མའི་སྒོ་སྒྲིག་དོ་དམ</string>
+    <string name="settings_reminder_hint">སྒོ་སྒྲིག་ཁ་ཕྱེ་ན་ «ད་ནས་དྲན་སྐུལ་མི་བྱེད» ཟེར་བ་ཡིན། ཁ་རྒྱག་ན་ཕྱི་ཐེངས་དེ་འབྲེལ་གྱི་གནས་སྟངས་བྱུང་སྐབས་དྲན་སྐུལ་ཡང་བསྐྱར་ཐོན་ངེས</string>
+
+    <!-- ཕྱིར་བཏོན -->
+    <string name="settings_preserve_folders_title">ཁུངས་སྣོད་ཡིག་གི་རིམ་པ་ལྟར་ཕྱིར་བཏོན</string>
+    <string name="settings_preserve_folders_subtitle">བསྒྱུར་བའི་གྲུབ་འབྲས་ཐོག་མའི་པར་སྣོད་མིང་ལྟར་སྣོད་ཡིག་ཆུང་བར་བཞག། ཁ་རྒྱག་ན་ཚང་མ་སྣོད་ཡིག་གཅིག་པར་ཁྱབ་པར་བཞག</string>
+
+    <!-- སྐོར -->
+    <string name="settings_about_title">སྐོར</string>
+    <string name="settings_about_subtitle">པར་གཞི · གསར་སྒྱུར་ཞིབ་བཤེར · ཐུགས་རྗེ་ཞུ་དང་རྒྱབ་སྐྱོར</string>
+    <string name="settings_check_update_title">གསར་སྒྱུར་ཞིབ་བཤེར</string>
+    <string name="settings_check_update_subtitle">GitHub Releases ནས་པར་གཞི་གསར་ཤོས་ལེན</string>
+    <string name="settings_checking">ཞིབ་བཤེར་བྱེད་བཞིན་ཡོད…</string>
+    <string name="settings_update_available">v%1$s ལག་ལེན་ཆོག</string>
+    <string name="settings_up_to_date">པར་གཞི་གསར་ཤོས་ཡིན་ཟིན</string>
+    <string name="settings_network_error">དྲ་བའི་ནོར་འཁྲུལ། ཏོག་ཙམ་ནས་ཡང་བསྐྱར་ཚོད་ལྟ་བྱོས</string>
+    <string name="settings_reinstall_title">པར་གཞི་འདི་ཡང་བསྐྱར་སྒྲིག་འཛུགས</string>
+    <string name="settings_reinstall_subtitle">ད་ལྟའི་པར་གཞི་གསར་ཤོས་ཕབ་ལེན་བྱས་ནས་བཀབ་སྒྲིག་བྱེད (གསར་སྒྱུར་ཚོད་ལྟ་བྱེད་པར་ཡིན)</string>
+    <string name="settings_reinstall_newer_hint">ད་ལྟ་ v%1$s བར་ཡར་སྤར་ཆོག་པས། སྔོན་ལ་ «གསར་སྒྱུར་ཞིབ་བཤེར» བེད་སྤྱོད་བྱས་ནས་ཡར་སྤར་བྱོས</string>
+    <string name="settings_version_title">པར་གཞི</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay གིས་རྒྱབ་སྐྱོར</string>
+    <string name="settings_alipay_subtitle">འཕེལ་རྒྱས་ལ་རྒྱབ་སྐྱོར</string>
+    <string name="settings_coolapk_subtitle">Coolapk བེད་སྤྱོད་པ · རྒྱབ་སྐྱོར་སྤྲད་པར་ཐུགས་རྗེ་ཞུ</string>
+    <string name="settings_ai_credits_subtitle">འཕེལ་རྒྱས་ནང་ AI IDE དང་ AI དཔེ་རྒྱུད་ཀྱིས་རོགས་རམ་སྤྲད་པར་ཐུགས་རྗེ་ཞུ</string>
+    <string name="settings_github_title">GitHub ཁུངས་ཁ་ཕྱེའི་ཁ་བྱང</string>
+    <string name="settings_license_title">ཁུངས་ཁ་ཕྱེའི་ཆོག་མཆན</string>
+    <string name="settings_sponsor_dialog_title">ཁྱེད་ཀྱི་རྒྱབ་སྐྱོར་ལ་ཐུགས་རྗེ་ཆེ</string>
+    <string name="settings_sponsor_dialog_text">མཉེན་ཆས་འདི་ལ་རྒྱབ་སྐྱོར་གནང་བར་ཐུགས་རྗེ་ཧ་ཅང་ཆེ།\n\nགལ་སྲིད་ཁྱེད་ད་དུང་སློབ་མ་ཡིན་ནམ་དཔལ་འབྱོར་རང་དབང་མེད་ན། གཏན་ནས་དངུལ་མི་གཏོང་། སེམས་ཀྱི་དགོངས་པ་འདི་སྙིང་ནང་བཞག་ནས་མུ་མཐུད་བེད་སྤྱོད་གནང་ན། དེ་ནི་ང་ལ་རྒྱབ་སྐྱོར་ཆེ་ཤོས་ཡིན།\n\nརྒྱབ་སྐྱོར་གནང་འདོད་ཡོད་ན། དངུལ་ཆུང་ཆུང་ཞིག་ཀྱང་བརྩེ་བ་ཡིན། ངས་དེ་དག་སྲུང་སྐྱོང་དང་བྱེད་ནུས་ལེགས་པོར་བེད་སྤྱོད་བྱེད་ངེས:）</string>
+    <string name="settings_alipay_missing_title">Alipay ད་དུང་མ་སྒྲིག</string>
+    <string name="settings_alipay_missing_text">Alipay མ་རྙེད་པས་ད་ལྟ་རྒྱབ་སྐྱོར་མཇུག་སྒྲིལ་མི་ཐུབ།\n\nསེམས་ཁྲལ་མི་བྱེད། ཇི་ལྟར་ཡིན་རུང་ཁྱེད་ཀྱི་བཟང་སེམས་ལ་ཐུགས་རྗེ་ཆེ་ཞུ་གི་ཡོད།</string>
+
+    <!-- བརྙན་ཨང་རྟགས་བསྒྱུར -->
+    <string name="settings_transcoder_title">ནང་སྦྲགས་ཨང་རྟགས་བསྒྱུར་ཆས</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར</string>
+    <string name="settings_transcode_mode_remux">སྣོད་ཆས་ཁོ་ན་ཡང་བསྐྱར་སྦྲེལ (འོས་སྦྱོར)</string>
+    <string name="settings_transcode_mode_off">ཨང་རྟགས་བསྒྱུར་ཆས་གཏན་ནས་མི་བཀོལ</string>
+    <string name="settings_transcode_params_title">ཨང་རྟགས་བསྒྱུར་གྱི་ཚད་ཡིག</string>
+    <string name="settings_transcode_params_subtitle">ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར་སྐབས་བེད་སྤྱོད་བྱེད་པའི་སྤུས་ཚད་དང་གནོན་བསྡུས་ཀྱི་ཚད་ཡིག</string>
+    <string name="settings_transcode_params_disabled">«ཨང་རྟགས་བསྒྱུར་ཐབས»ནང་ «ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར» འདེམས་སྐབས་ཁོ་ན་ལག་ལེན་བྱེད</string>
+    <string name="settings_crf_value">སྤུས་ཚད CRF: %1$d</string>
+    <string name="settings_crf_hint">ཨང་ཆུང་ན་པར་གྱི་སྤུས་ཚད་མཐོ་ཞིང་ཆེ་ཆུང་ཆེ་རུ་འགྲོ (སྔོན་སྒྲིག 18)</string>
+    <string name="settings_encoder_title">ཨང་རྟགས་བཟོ་ཆས</string>
+    <string name="settings_compress_preset_title">གནོན་བསྡུས་ཀྱི་སྔོན་སྒྲིག</string>
+
+</resources>

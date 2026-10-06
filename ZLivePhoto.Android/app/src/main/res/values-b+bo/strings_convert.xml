@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（藏语 bo，C 级：低资源语种，术语多为新造词，仅供理解），可能存在不准确之处，欢迎社区修正。
+     ཡིག་ཆ་འདི་དཔེ་རྒྱུད་ཨང་རྟགས་ཀྱིས་བསྒྱུར་བ་ཡིན། ཡང་དག་མིན་པ་ཡོད་སྲིད།
+     占位符 %1$s / %1$d / %2$d 原样保留；`\n` 为换行。
+     新造词：转码 → ཨང་རྟགས་བསྒྱུར；重新编码 → ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར；重封装 → སྣོད་ཆས་ཡང་བསྐྱར་སྦྲེལ。 -->
+<resources>
+
+    <!-- ========== 参数与素材校验 ========== -->
+    <string name="conv_unknown_target">མི་ཤེས་པའི་དམིགས་ཡུལ་རྣམ་གཞི: %1$s</string>
+    <string name="conv_unrecognized_live_photo">ངོས་འཛིན་མ་ཐུབ་པའི་འགུལ་པར་གྱི་རྣམ་གཞི (Google/OPPO/vivo/Xiaomi/Apple གི་འགུལ་པར་མིན)</string>
+    <string name="conv_cover_photo_missing">ཁ་གཡོག་པར་མེད་པའམ་སྟོང་པ་རེད</string>
+    <string name="conv_video_missing">བརྙན་མེད་པའམ་སྟོང་པ་རེད</string>
+    <string name="conv_video_too_large">བརྙན་ཆེ་དྲགས་པས་ (%1$dMB) འགུལ་པར་མཉམ་སྦྲེལ་བྱེད་མི་ཐུབ། ཐུང་བའི་བརྙན་འདེམས</string>
+    <string name="conv_transcoded_too_large">ཨང་རྟགས་བསྒྱུར་རྗེས་བརྙན་ཆེ་དྲགས (%1$dMB)། འགུལ་པར་མཉམ་སྦྲེལ་བྱེད་མི་ཐུབ</string>
+    <string name="conv_video_too_large_compose">བརྙན་ཆེ་དྲགས (%1$dMB)། འགུལ་པར་མཉམ་སྦྲེལ་བྱེད་མི་ཐུབ</string>
+
+    <!-- 封面（HEIC / 非 JPEG） -->
+    <string name="conv_cover_heic_go">ཁ་གཡོག་པར་ HEIC ཡིན། (ཡང་པའི་པར་གཞིར་ཨང་རྟགས་བསྒྱུར་མི་རུང་བས། iPhone ནས་ JPEG ཕྱིར་འདྲེན་བྱས་རྗེས་བསྒྱུར)</string>
+    <string name="conv_cover_invalid_heic">ཁ་གཡོག་པར་ཕན་ཐོགས་པའི་པར་མིན། (HEIC ལ་མ་ལག་གིས་ HEIF ཁ་གདེང་རྒྱབ་སྐྱོར་བྱེད་དགོས)</string>
+    <string name="conv_cover_not_jpeg_go">ཁ་གཡོག་པར་ JPEG པར་མིན། (ཡང་པའི་པར་གཞིར་ཨང་རྟགས་བསྒྱུར་མི་རུང་བས། JPEG པར་བེད་སྤྱོད་བྱོས)</string>
+    <string name="conv_cover_invalid_image">ཁ་གཡོག་པར་ཕན་ཐོགས་པའི་པར་མིན། (JPEG/WebP/PNG ཁོ་ན་རྒྱབ་སྐྱོར་བྱེད)</string>
+
+    <!-- 转码 / 重封装失败与提示 -->
+    <string name="conv_reencode_failed">བརྙན་ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར་བ་མ་གྲུབ: %1$s</string>
+    <string name="conv_remux_failed">སྣོད་ཆས་ཡང་བསྐྱར་སྦྲེལ་བ་མ་གྲུབ: %1$s</string>
+    <string name="conv_codec_unknown">ངོས་འཛིན་བྱེད་ཐུབ་པའི་ H.264/H.265 བརྙན་མིན</string>
+    <string name="conv_codec_is">ཨང་རྟགས་ནི་ %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">བརྙན་ «%1$s» ནི་ %2$s། སྣོད་ཆས་བརྗེ་བ་ (ཡང་བསྐྱར་སྦྲེལ་བ) ཁོ་ནས་ཨང་རྟགས་བསྒྱུར་མི་ཐུབ་པས་འགུལ་པར་མཉམ་སྦྲེལ་བྱེད་མི་ཐུབ།\n\n«སྒྲིག་བཀོད → བརྙན་ཨང་རྟགས་བསྒྱུར → ཨང་རྟགས་བསྒྱུར་ཐབས»ནང་ «ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར» འདེམས་པའམ། ཡང་ན་ཆས་གཞན་གྱིས་ H.264/H.265 ཨང་རྟགས་ཀྱི་ MP4 ཞིག་ཏུ་བསྒྱུར</string>
+    <string name="conv_hint_no_encoder">བརྙན་འདི་ཚད་ལྡན་ MP4 སྣོད་ཆས་མིན། (MOV / MKV / WebM / AVI ལ་སོགས) ད་ལྟའི་ «ཨང་རྟགས་བསྒྱུར་ཐབས» ཀྱིས་ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར་མི་བྱེད་པས་འགུལ་པར་མཉམ་སྦྲེལ་བྱེད་མི་ཐུབ།\n\n«སྒྲིག་བཀོད → བརྙན་ཨང་རྟགས་བསྒྱུར → ཨང་རྟགས་བསྒྱུར་ཐབས»ནང་ «ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར» འདེམས། (རྒྱུན་ལྡན་པར་གཞིར་ ffmpeg ཨང་རྟགས་བསྒྱུར་ཆས་ཡོད། Go ཡང་པའི་པར་གཞིར་ཨང་རྟགས་བསྒྱུར་ཆས་མེད་པས་རྒྱུན་ལྡན་པར་གཞི་བེད་སྤྱོད་བྱོས) ཡང་ན་སྔོན་ལ་བརྙན་དེ་ཚད་ལྡན་ MP4 (H.264/H.265) ཞིག་ཏུ་བསྒྱུར</string>
+
+    <!-- ========== 转换日志 ========== -->
+    <string name="conv_log_detected">%1$s དུ་ངོས་འཛིན་བྱས</string>
+    <string name="conv_log_same_format_copied">ཁུངས་དང་དམིགས་ཡུལ་གྱི་རྣམ་གཞི་གཅིག་པས་ཇི་མ་ཇི་བཞིན་འདྲ་བཤུས་བྱས (ཤོར་བ་མེད)</string>
+    <string name="conv_log_extra_tracks_bypass">ཁུངས་བརྙན་ནང་བརྙན་སྒྲ་མིན་པའི་ལམ་ཡོད་པས་ (%1$s) རྣམ་གཞི་གཅིག་པའི་ཐད་ཀར་བརྒྱུད་ལམ་མཆོང་ནས། གཙང་སྦྲ་བྱེད་པར་ཡོངས་རྫོགས་བྲིས་པའི་རིམ་པ་བརྒྱུད</string>
+    <string name="conv_log_ts_fallback">ཁུངས་ལ་ཁ་གཡོག་པར་གྱི་དུས་ཚོད་རྟགས་མེད་པས་གཞི་རྩའི་ལྟར་བརྙན་གྱི་དཀྱིལ་དུ་ལོག</string>
+    <string name="conv_log_brand_normalized">བརྙན་སྣོད་ཆས་ཀྱི་མིང་རྟགས་རྒྱུན་ལྡན་བཟོས (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">བརྙན་ནང་ཁ་སྐོང་གི་ལམ་ཡོད་པས་ (%1$s) གཙང་སྦྲ་བྱེད་མ་ཐུབ། ཇི་མ་ཇི་བཞིན་ཕྱིར་བཏོན (ཁ་པར་ལ་རྐྱེན་པས་ཡུན་རིང་མནན་ནས་འཁྲོལ་མི་ཐུབ་སྲིད)</string>
+    <string name="conv_log_extra_tracks_removed">བརྙན་གྱི་ཁ་སྐོང་ལམ་བསུབ་ཟིན (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">ཁུངས་བརྙན་ %1$s། སྣོད་ཆས་ཡང་བསྐྱར་སྦྲེལ་ཁོ་ནས་ཐག་གཅོད་མི་ཐུབ (%2$s)། གལ་སྲིད་ཕྱིར་བཏོན་དེ་ད་དུང་ཡུན་རིང་མནན་ནས་འཁྲོལ་མི་ཐུབ་ན། «སྒྲིག་བཀོད → བརྙན་ཨང་རྟགས་བསྒྱུར → ཨང་རྟགས་བསྒྱུར་ཐབས»ནང་ «ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར» འདེམས</string>
+    <string name="conv_log_reencoding">ཁུངས་བརྙན་ %1$s། པར་སྣོད་ཀྱི་མཐུན་སྒྲིག་ཆེ་རུ་གཏོང་བར་སྒྲིག་བཀོད་ལྟར་ 8bit + AAC ཏུ་ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར</string>
+    <string name="conv_log_reencode_result_unusable">ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར་བའི་གྲུབ་འབྲས་ལག་ལེན་མི་རུང་བས་ཇི་མ་ཇི་བཞིན་ཕྱིར་བཏོན (ཁ་པར་ལ་རྐྱེན་པས་ཡུན་རིང་མནན་ནས་འཁྲོལ་མི་ཐུབ་སྲིད)</string>
+    <string name="conv_log_reencode_still_risky">ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར་རྗེས་ཀྱང་ཉེན་ཁའི་རྣམ་པ་ཡོད (%1$s)</string>
+    <string name="conv_log_reencode_failed">ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར་བ་མ་གྲུབ (%1$s)། ཇི་མ་ཇི་བཞིན་ཕྱིར་བཏོན (ཁ་པར་ལ་རྐྱེན་པས་ཡུན་རིང་མནན་ནས་འཁྲོལ་མི་ཐུབ་སྲིད)</string>
+    <string name="conv_log_cover_heic_converted">ཁ་གཡོག་པར་ HEIC ཡིན་པས་ (JPEG མིན) ཚད་ལྡན་ JPEG ཏུ་བསྒྱུར་རྗེས་ཡང་བསྐྱར་སྦྲེལ</string>
+    <string name="conv_log_compose_sizes">མཉམ་སྦྲེལ: པར་ %1$dB + བརྙན་ %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ཨང་རྟགས་བསྒྱུར་ཆས་མ་བཀོལ། སྣོད་ཆས་ཀྱི་མིང་རྟགས་ཁོ་ན་བསྒྱུར (MOV → MP4)། ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར་མི་བྱེད</string>
+
+    <string name="conv_tag_convert">བསྒྱུར་བ</string>
+    <string name="conv_tag_transcode">ཨང་རྟགས་བསྒྱུར</string>
+    <string name="conv_tag_compose">མཉམ་སྦྲེལ</string>
+
+    <string name="conv_blocker_no_encoder">ནང་སྦྲགས་ཨང་རྟགས་བསྒྱུར་ཆས་ལག་ལེན་མི་ཐུབ</string>
+    <string name="conv_blocker_mode_no_encode">ད་ལྟའི་ «ཨང་རྟགས་བསྒྱུར་ཐབས» ཀྱིས་ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར་མི་བྱེད</string>
+
+    <!-- ========== 内置 ffmpeg ========== -->
+    <string name="conv_addon_unavailable">ནང་སྦྲགས་ཨང་རྟགས་བསྒྱུར་ཆས་ལག་ལེན་མི་ཐུབ</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ཡིས་ཨང་རྟགས་བསྒྱུར་བ་མ་གྲུབ: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg ཡིས་སྣོད་ཆས་ཡང་བསྐྱར་སྦྲེལ་བ་མ་གྲུབ: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg ཡིས་བརྙན་ཚད་ལྡན་ MP4 ཏུ་ཨང་རྟགས་བསྒྱུར་བཞིན་ཡོད (%1$s / crf %2$d / %3$s)། བརྙན་དང་སྒྲའི་ལམ་ཁོ་ན་བཞག</string>
+    <string name="conv_log_transcode_done">བརྙན་ཨང་རྟགས་བསྒྱུར་བ་རྫོགས་སོང (%1$dKB)</string>
+    <string name="conv_log_remuxing">བརྙན་སྣོད་ཆས་ཚད་ལྡན་ MP4 ཏུ་ཡང་བསྐྱར་སྦྲེལ་བཞིན་ཡོད (སྣོད་ཆས་ཁོ་ན་བརྗེ། ཡང་བསྐྱར་ཨང་རྟགས་བསྒྱུར་མི་བྱེད)</string>
+    <string name="conv_log_remux_done">སྣོད་ཆས་ཡང་བསྐྱར་སྦྲེལ་བ་རྫོགས་སོང (%1$dKB)</string>
+
+    <!-- ========== 「不再提示」弹窗 ========== -->
+    <string name="conv_reminder_cat_compose">མཉམ་སྦྲེལ</string>
+    <string name="conv_reminder_cat_convert">བསྒྱུར་བ</string>
+    <string name="conv_reminder_cat_update">གསར་སྒྱུར</string>
+    <string name="conv_reminder_video_over3s_title">བརྙན་སྐར་ཆ་ 3 ལས་རིང་</string>
+    <string name="conv_reminder_video_over3s_message">འདེམས་པའི་བརྙན་གྱི་རིང་ཚད་སྐར་ཆ་ 3 ལས་བརྒལ་བས། མཉམ་སྦྲེལ་བའི་འགུལ་པར་ལ་མཐུན་སྒྲིག་གི་གནད་དོན་ཡོད་སྲིད:\n\n• རྒྱུན་ལྡན་དུ་འཁྲོལ་མི་ཐུབ་སྲིད\n• མ་ལག་གི་པར་སྣོད་ཀྱིས་ངོས་འཛིན་མི་ཐུབ་སྲིད\n• ཁ་པར་འགའ་ཞིག་གིས་འགུལ་པར་འདི་ངོས་འཛིན་མི་ཐུབ་སྲིད</string>
+    <string name="conv_reminder_legacy_go_title">པར་གཞི་རྙིང་པ་ཤེས་སོང</string>
+    <string name="conv_reminder_legacy_go_message">ཐབས་ཆས་འདིར་ད་དུང་པར་གཞི་རྙིང་པ་ (Go པར་གཞི) སྒྲིག་འཛུགས་ཡོད། པར་གཞི་རྙིང་པ་དེ་ཐབས་ཆས་འདིར་ལག་ལེན་མི་ཐུབ་པས་བསུབ་ནས་བར་སྟོང་ཕྱིར་ལེན་ཆོག</string>
+    <string name="conv_reminder_replace_risk_title">བརྗེ་ལེན་ཐབས་ལ་སྐྱོན་ཉེན་ཡོད</string>
+    <!-- formatted="false"：正文里有一个只作字面量的全角 ％（100％），该串永远不带实参取用。 -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">བརྗེ་ལེན་ཐབས་ཀྱིས་བསྒྱུར་བའི་གྲུབ་འབྲས་ཐད་ཀར་ཐོག་མའི་ཡིག་ཆར་བྲིས་པས། ཐོག་མའི་ཡིག་ཆ་བཀབ་བརྗེ་བྱས་རྗེས་ཡང་བསྐྱར་རྙེད་མི་ཐུབ།\n\n• བྲིས་བཞིན་པའི་སྐབས་སུ་མཉེན་ཆས་བཅད་ན་ ཡང་ན་གསོག་ཆས་ཀྱི་བར་སྟོང་མི་འདང་ན་ ཡང་ན་དབང་ཆ་བཀག་ན། ཁུངས་ཡིག་ཆར་སྐྱོན་ཡོང་སྲིད\n• བསྒྱུར་བ་རང་ཉིད་ 100％ གྲུབ་པའི་ཁས་ལེན་མེད་པས་མ་གྲུབ་ན་ཁུངས་ཡིག་ཆ་ད་ལྟ་ལག་ལེན་མི་རུང་བ་ཡོད་སྲིད\n• ཐོག་མར་ཡིག་ཆ་གཅིག་གམ་གཉིས་ཀྱིས་ཚོད་ལྟ་བྱས་ནས་གནད་དོན་མེད་པ་གཏན་འབེབས་བྱས་རྗེས་ཚོགས་སུ་ལག་བསྟར་བྱོས\n• གལ་ཆེའི་པར་རྣམས་སྔོན་ལ་རང་ཉིད་ཀྱིས་ཉར་ཚགས་བྱོས\n\nབྱེད་ནུས་འདི་ «ད་ལྟའི་གནས་སྟངས» ལྟར་སྤྲོད་པ་ཡིན། ལག་ལེན་གྱི་ཉེན་ཁ་རང་ཉིད་ཀྱིས་འཁུར་དགོས། རྩོམ་པ་པོས་ཡིག་ཆ་སྐྱོན་ཡོང་བའམ་ཤོར་བའི་འགན་མི་འཁུར།</string>
+    <string name="conv_reminder_dont_remind">ད་ནས་དྲན་སྐུལ་མི་བྱེད</string>
+    <string name="conv_reminder_confirm_ok">ཤེས་སོང</string>
+    <string name="conv_reminder_uninstall">བསུབ</string>
+
+</resources>

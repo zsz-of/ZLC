@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tiếng Việt (vi) — văn bản màn hình chính và luồng chạy nền (mô-đun MainActivity).
+  Khóa có tiền tố main_ và tương ứng res/values/ (văn bản tiếng Trung giản thể dự phòng).
+  Placeholder luôn ở dạng %1$s / %1$d; cụm danh từ đếm được dùng <plurals>.
+-->
+<resources>
+    <!-- ── Thanh trạng thái / thông báo (trong phương thức Activity, getString) ── -->
+    <string name="main_status_ready">Sẵn sàng</string>
+    <string name="main_status_location_granted">Đã cấp quyền vị trí, sau khi chuyển đổi sẽ giữ siêu dữ liệu GPS</string>
+    <string name="main_status_location_denied">Chưa cấp quyền vị trí: ảnh sau khi chuyển đổi sẽ mất thông tin vị trí GPS</string>
+    <string name="main_status_all_files_granted">Đã cấp quyền “Truy cập tất cả tệp”, quá trình chuyển đổi ghi trực tiếp vào thư mục thư viện ảnh và giữ đầy đủ thông tin vị trí</string>
+    <string name="main_status_all_files_denied">Chưa cấp quyền “Truy cập tất cả tệp”: một số máy có thể mất thông tin vị trí sau khi chuyển đổi</string>
+    <string name="main_status_read_granted">Đã cấp quyền đọc ảnh và video</string>
+    <string name="main_status_video_missing">Đã cấp quyền nhưng thiếu quyền video: không thể tìm video đi kèm của ảnh động hai tệp</string>
+    <string name="main_status_permission_denied">Chưa cấp quyền, có thể nhấn “Thêm tệp” lần nữa</string>
+    <string name="main_status_folder_not_selected">Chưa chọn thư mục</string>
+    <string name="main_status_folder_unavailable">Không thể truy cập thư mục đã chọn (chỉ hỗ trợ thư mục lưu trữ cục bộ)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">Đã khôi phục phiên trước (%1$d tệp)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Phát hiện lần trước ứng dụng thoát bất thường, đã xóa danh sách chưa hoàn tất</string>
+    <string name="main_status_compose_blocks_extract">Hàng đợi có tác vụ ghép, không thể chuyển sang chế độ tách</string>
+    <string name="main_status_replace_off_mutex">Đã tắt chế độ thay thế (loại trừ với “Xóa ảnh gốc sau khi xử lý”)</string>
+    <string name="main_status_delete_needs_all_files">Tự động xóa ảnh gốc cần quyền “Truy cập tất cả tệp”, hãy cấp quyền trước</string>
+    <string name="main_status_replace_off">Đã tắt chế độ thay thế, kết quả chuyển đổi ghi lại vào thư mục thư viện ảnh</string>
+    <string name="main_status_replace_needs_all_files">Chế độ thay thế cần quyền “Truy cập tất cả tệp”, hãy cấp quyền trước</string>
+    <string name="main_status_delete_off_mutex">Đã tắt “Xóa ảnh gốc sau khi xử lý” (loại trừ với chế độ thay thế)</string>
+    <string name="main_status_loading_albums">Đang đọc album…</string>
+    <string name="main_status_no_albums">Không tìm thấy album</string>
+    <string name="main_status_compose_no_photo">Chưa chọn ảnh, không thể ghép</string>
+    <string name="main_status_compose_no_video">Chưa chọn video, không thể ghép</string>
+    <string name="main_status_compose_all_added">Tất cả ảnh đã chọn đều có trong danh sách</string>
+    <string name="main_status_compose_paired">Ảnh %1$d, video %2$d, đã thêm %3$d cặp tác vụ ghép theo số lượng ít hơn</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">Đã thêm %1$d tác vụ ghép, nhấn “Bắt đầu chuyển đổi” để thực hiện ghép</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (đã tự động chuyển định dạng đầu ra sang Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">Đang nhập %1$d ảnh được chia sẻ…</item>
+    </plurals>
+    <string name="main_status_import_failed">Nhập thất bại: %1$s</string>
+    <string name="main_status_import_done_partial">Nhập hoàn tất: thành công %1$d, thất bại %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">Nhập hoàn tất: đã nhập tổng %1$d tệp</item>
+    </plurals>
+    <string name="main_status_import_stopped">Đã dừng nhập: thành công %1$d, thất bại %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">Đang nhập %1$d tệp…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Đang nhập %1$d/%2$d…</string>
+    <string name="main_status_stopping">Đang dừng… (sẽ dừng sau khi hoàn tất tệp hiện tại)</string>
+    <string name="main_status_stopping_import">Đang dừng nhập…</string>
+    <string name="main_status_removed">Đã xóa %1$s</string>
+    <string name="main_status_cleared">Đã xóa hết</string>
+    <string name="main_status_nothing_to_convert">Không có tệp để chuyển đổi</string>
+    <string name="main_status_folder_unreadable">Không thể đọc thư mục đã chọn</string>
+    <string name="main_status_scanning_folder">Đang quét thư mục…</string>
+    <string name="main_status_no_images">Không tìm thấy ảnh trong thư mục đã chọn</string>
+    <string name="main_status_batch_importing">Đang nhập hàng loạt %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">Đã dừng nhập hàng loạt: đã nhập tổng %1$d ảnh động</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">Đã dừng nhập hàng loạt: đã nhập tổng %1$d ảnh động, bỏ qua %2$d tệp không phải ảnh động</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">Nhập hàng loạt hoàn tất: đã nhập tổng %1$d ảnh động</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">Nhập hàng loạt hoàn tất: đã nhập tổng %1$d ảnh động, bỏ qua %2$d tệp không phải ảnh động</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Đã dừng: xử lý %2$d trong %1$d tệp, thay thế %3$d tệp gốc</string>
+    <string name="main_status_stopped_export">Đã dừng: xử lý %2$d trong %1$d tệp, xuất %3$d vào thư viện ảnh</string>
+    <string name="main_status_done_replace_reason">Hoàn tất: xử lý %1$d tệp, thay thế %2$d tệp gốc (lý do: %3$s)</string>
+    <string name="main_status_done_export_reason">Hoàn tất: xử lý %1$d tệp, xuất %2$d vào thư viện ảnh (lý do: %3$s)</string>
+    <string name="main_status_done_replace">Hoàn tất: xử lý %1$d tệp, thay thế %2$d tệp gốc</string>
+    <string name="main_status_done_export">Hoàn tất: xử lý %1$d tệp, xuất %2$d vào thư viện ảnh</string>
+    <string name="main_status_keep_originals">%1$s; chưa có quyền “Truy cập toàn bộ bộ nhớ”, ảnh gốc đã được giữ lại</string>
+
+    <!-- ── Thông tin mục danh sách (FileItem.info) ── -->
+    <string name="main_info_detecting">Đang nhận dạng…</string>
+    <string name="main_info_unrecognized">Định dạng ảnh động không nhận dạng được</string>
+    <string name="main_info_converting">Đang chuyển đổi…</string>
+    <string name="main_info_compose_task">Tác vụ ghép (nhấn “Bắt đầu chuyển đổi” để thực hiện)</string>
+    <string name="main_info_done_replaced">Hoàn tất (đã thay thế %1$d tệp gốc)</string>
+    <string name="main_info_done_skipped">Hoàn tất (bỏ qua: trùng tên)</string>
+    <string name="main_info_done_exported">Hoàn tất (đã xuất %1$d)</string>
+    <string name="main_info_failed">Thất bại: %1$s</string>
+
+    <!-- ── Chi tiết tiến trình (progressDetail) ── -->
+    <string name="main_progress_added">Đã thêm %1$d/%2$d</string>
+    <string name="main_progress_processed">Đã xử lý %1$d/%2$d</string>
+    <string name="main_progress_imported">Đã nhập %1$d/%2$d</string>
+
+    <!-- ── Hộp thoại quyền ── -->
+    <string name="main_dialog_permission_title">Cần quyền đọc ảnh và video</string>
+    <string name="main_dialog_permission_message">Ứng dụng này cần đọc ảnh và video trên thiết bị của bạn:\n\n• Quyền ảnh: quét thư viện ảnh của thiết bị và nhận dạng ảnh động trong đó\n• Quyền video: tìm video đi kèm của ảnh động hai tệp\n• Quyền vị trí: giữ siêu dữ liệu vị trí GPS trong ảnh (nếu thiếu, sau khi chuyển đổi sẽ mất thông tin vị trí)\n\nNếu từ chối, trình chọn tích hợp sẽ không dùng được; bạn có thể nhấn “Thêm tệp” lần nữa để cấp lại quyền.</string>
+    <string name="main_dialog_settings_title">Cần cấp thủ công quyền ảnh và video</string>
+    <string name="main_dialog_settings_message">Trước đó bạn đã chọn “Không hỏi lại”, nên hệ thống không hiện hộp thoại quyền nữa.\n\nHãy vào trang chi tiết ứng dụng → Quyền → Ảnh và video, cấp quyền thủ công rồi quay lại ứng dụng.\n\nLưu ý: phải cấp đồng thời quyền “Ảnh” và “Video”, nếu không sẽ không tìm được video đi kèm của ảnh động hai tệp.</string>
+
+    <!-- ── Hộp thoại giải thích quyền “Truy cập tất cả tệp” ── -->
+    <string name="main_dialog_allfiles_title_delete">Tự động xóa ảnh gốc cần “Truy cập tất cả tệp”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Thiết bị này không hỗ trợ tự động xóa ảnh gốc</string>
+    <string name="main_dialog_allfiles_title_replace">Chế độ thay thế cần “Truy cập tất cả tệp”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Thiết bị này không hỗ trợ chế độ thay thế</string>
+    <string name="main_dialog_allfiles_title_location">Nên cấp quyền “Truy cập tất cả tệp”</string>
+    <string name="main_dialog_allfiles_delete_message">“Xóa ảnh gốc sau khi xử lý” sẽ xóa trực tiếp tệp gốc trên bộ nhớ (ảnh và video đi kèm), thao tác này không thể hoàn tác, nên phải cấp quyền “Truy cập tất cả tệp” trước.\n\nCông tắc chỉ khả dụng sau khi cấp quyền, khi đó bạn có thể tự bật.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Hệ thống hiện tại (Android 10 trở xuống) không cung cấp quyền “Truy cập tất cả tệp”, không thể xóa trực tiếp tệp gốc trên bộ nhớ, nên thiết bị này không hỗ trợ “Xóa ảnh gốc sau khi xử lý”.\n\nSau khi chuyển đổi xong, bạn có thể dọn ảnh gốc thủ công qua thư viện ảnh hệ thống.</string>
+    <string name="main_dialog_allfiles_replace_message">“Chế độ thay thế” ghi trực tiếp kết quả chuyển đổi vào tệp gốc trên bộ nhớ (ghi đè nội dung cũ), thao tác này không thể hoàn tác, nên phải cấp quyền “Truy cập tất cả tệp” trước.\n\nCông tắc chỉ khả dụng sau khi cấp quyền, khi đó bạn có thể tự bật.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Hệ thống hiện tại (Android 10 trở xuống) không cung cấp quyền “Truy cập tất cả tệp”, không thể ghi đè trực tiếp tệp gốc trên bộ nhớ, nên thiết bị này không hỗ trợ “Chế độ thay thế”.\n\nBạn có thể tiếp tục chuyển đổi theo cách mặc định, kết quả sẽ được xuất vào thư mục thư viện ảnh.</string>
+    <string name="main_dialog_allfiles_location_message">Một số máy (như Meizu) khi ghi qua giao diện thư viện ảnh hệ thống sẽ ẩn thông tin vị trí GPS, khiến ảnh sau khi chuyển đổi mất vị trí.\n\nSau khi cấp “Truy cập tất cả tệp”, ứng dụng sẽ ghi trực tiếp vào thư mục thư viện ảnh và giữ đầy đủ siêu dữ liệu vị trí.\n\nKhông cấp quyền vẫn chuyển đổi được, nhưng một số máy có thể mất thông tin vị trí.</string>
+
+    <!-- ── Hộp thoại trùng tên tệp đầu ra ── -->
+    <string name="main_dialog_conflict_title">Trùng tên tệp đầu ra</string>
+    <string name="main_dialog_conflict_message">Trong thư mục đầu ra đã có tệp cùng tên:\n%1$s\n\nHãy chọn cách xử lý.</string>
+    <string name="main_label_conflict_always">Dùng cách xử lý này cho các trùng tên tiếp theo</string>
+
+    <!-- ── Nút trong hộp thoại ── -->
+    <string name="main_btn_grant">Cấp quyền</string>
+    <string name="main_btn_deny">Từ chối</string>
+    <string name="main_btn_go_settings">Tới cài đặt</string>
+    <string name="main_btn_cancel">Hủy</string>
+    <string name="main_btn_grant_access">Cấp quyền</string>
+    <string name="main_btn_got_it">Đã hiểu</string>
+    <string name="main_btn_not_now">Chưa phải lúc</string>
+    <string name="main_btn_skip">Bỏ qua</string>
+    <string name="main_btn_overwrite">Ghi đè</string>
+    <string name="main_btn_auto_rename">Tự động đổi tên</string>
+
+    <!-- ── Kết quả chuyển đổi / lý do xuất thất bại (hiển thị cùng “lý do: %3$s”) ── -->
+    <plurals name="main_delete_done">
+        <item quantity="other">Đã xóa %1$d tệp gốc</item>
+    </plurals>
+    <string name="main_delete_nothing">Không cần xóa ảnh gốc</string>
+    <string name="main_delete_partial">Đã xóa %1$d tệp gốc (%2$d tệp xóa thất bại, đã giữ lại)</string>
+    <string name="main_delete_failed">Xóa ảnh gốc thất bại (tệp đang được dùng hoặc không có quyền ghi), đã giữ lại</string>
+    <string name="main_export_missing_output">Sản phẩm chuyển đổi bị thiếu hoặc trống: %1$s</string>
+    <string name="main_export_missing_output_bare">Sản phẩm chuyển đổi bị thiếu hoặc trống</string>
+    <string name="main_export_insert_null">MediaStore insert trả về null</string>
+    <string name="main_export_output_stream">Luồng đầu ra MediaStore không khả dụng</string>
+    <string name="main_export_write_failed">Ghi MediaStore thất bại: %1$s</string>
+    <string name="main_export_mkdir_failed">Không thể tạo thư mục thư viện ảnh %1$s</string>
+    <string name="main_export_dir_write_failed">Ghi vào thư mục thư viện ảnh thất bại: %1$s</string>
+    <string name="main_export_no_source">Không xác định được tệp nguồn, đã bỏ qua thay thế</string>
+    <string name="main_export_companion_failed">Ghi tệp đi kèm thất bại: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Thư mục tệp nguồn không ghi được, không thể ghi tệp đi kèm</string>
+    <string name="main_export_source_dir_unavailable">Thư mục tệp nguồn không khả dụng: %1$s</string>
+    <string name="main_export_replace_failed">Thay thế tệp nguồn thất bại: %1$s</string>
+    <string name="main_export_replace_failed_bare">Thay thế tệp nguồn thất bại</string>
+</resources>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ar strings — Arabic (العربية, RTL)
+  Translated from res/values/strings_main.xml (Simplified Chinese baseline, the fallback locale).
+  Modern Standard Arabic. RTL: direction words use 'previous/next' phrasing instead of physical left/right.
+  Model-assisted translation - community corrections welcome.
+  Quality: B+. Every key mirrors the baseline; placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">جاهز</string>
+    <string name="main_status_location_granted">تم منح إذن الموقع؛ سيتم الاحتفاظ ببيانات GPS الوصفية بعد التحويل</string>
+    <string name="main_status_location_denied">لم يُمنح إذن الموقع: ستفقد الصور المحوَّلة معلومات موقع GPS</string>
+    <string name="main_status_all_files_granted">تم منح إذن «الوصول إلى جميع الملفات»؛ سيتم الكتابة مباشرة في مجلد الألبوم مع الاحتفاظ الكامل بمعلومات الموقع</string>
+    <string name="main_status_all_files_denied">لم يُمنح إذن «الوصول إلى جميع الملفات»: قد تفقد بعض الطُرز معلومات الموقع بعد التحويل</string>
+    <string name="main_status_read_granted">تم منح إذن قراءة الصور ومقاطع الفيديو</string>
+    <string name="main_status_video_missing">تم المنح، لكن إذن الفيديو مفقود: لا يمكن العثور على الفيديو المرافق للصور الحية المكوّنة من ملفين</string>
+    <string name="main_status_permission_denied">لم تُمنح الأذونات؛ يمكنك الضغط على «إضافة ملفات» مرة أخرى</string>
+    <string name="main_status_folder_not_selected">لم يتم اختيار أي مجلد</string>
+    <string name="main_status_folder_unavailable">تعذّر الوصول إلى المجلد المحدد (التخزين المحلي فقط مدعوم)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="zero">لا توجد جلسة سابقة لاستعادتها — عدد الملفات: %1$d</item>
+        <item quantity="one">تمت استعادة الجلسة السابقة — عدد الملفات: %1$d</item>
+        <item quantity="two">تمت استعادة الجلسة السابقة — عدد الملفات: %1$d</item>
+        <item quantity="few">تمت استعادة الجلسة السابقة (%1$d ملفات)</item>
+        <item quantity="many">تمت استعادة الجلسة السابقة (%1$d ملفًا)</item>
+        <item quantity="other">تمت استعادة الجلسة السابقة (%1$d ملف)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">تم اكتشاف خروج غير طبيعي في المرة السابقة، وتم إفراغ القائمة غير المكتملة</string>
+    <string name="main_status_compose_blocks_extract">تحتوي قائمة الانتظار على مهام دمج، لذا لا يمكن التبديل إلى وضع الاستخراج</string>
+    <string name="main_status_replace_off_mutex">تم إيقاف وضع الاستبدال (يتعارض مع «حذف الصورة الأصلية بعد اكتمال المعالجة»)</string>
+    <string name="main_status_delete_needs_all_files">الحذف التلقائي للصورة الأصلية يتطلب إذن «الوصول إلى جميع الملفات»، يُرجى منحه أولًا</string>
+    <string name="main_status_replace_off">تم إيقاف وضع الاستبدال؛ ستُكتب نتائج التحويل في مجلد الألبوم</string>
+    <string name="main_status_replace_needs_all_files">يتطلب وضع الاستبدال إذن «الوصول إلى جميع الملفات»، يُرجى منحه أولًا</string>
+    <string name="main_status_delete_off_mutex">تم إيقاف «حذف الصورة الأصلية بعد اكتمال المعالجة» (يتعارض مع وضع الاستبدال)</string>
+    <string name="main_status_loading_albums">جارٍ قراءة الألبومات…</string>
+    <string name="main_status_no_albums">لم يتم العثور على ألبومات</string>
+    <string name="main_status_compose_no_photo">لم يتم اختيار صور، تعذّر الدمج</string>
+    <string name="main_status_compose_no_video">لم يتم اختيار فيديو، تعذّر الدمج</string>
+    <string name="main_status_compose_all_added">جميع الصور المختارة موجودة بالفعل في القائمة</string>
+    <string name="main_status_compose_paired">%1$d صورة و%2$d فيديو؛ تمت إضافة %3$d مهمة دمج حسب الجانب الأقل</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="zero">لم تُضف أي مهمة دمج — اضغط «بدء التحويل» للتنفيذ (عدد المهام: %1$d)</item>
+        <item quantity="one">تمت إضافة مهمة دمج واحدة — اضغط «بدء التحويل» للتنفيذ (عدد المهام: %1$d)</item>
+        <item quantity="two">تمت إضافة مهمتي دمج — اضغط «بدء التحويل» للتنفيذ (عدد المهام: %1$d)</item>
+        <item quantity="few">تمت إضافة %1$d مهام دمج — اضغط «بدء التحويل» للتنفيذ</item>
+        <item quantity="many">تمت إضافة %1$d مهمة دمج — اضغط «بدء التحويل» للتنفيذ</item>
+        <item quantity="other">تمت إضافة %1$d مهمة دمج — اضغط «بدء التحويل» للتنفيذ</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (تم التبديل تلقائيًا إلى تنسيق الإخراج Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="zero">جارٍ استيراد الصور المشاركة (عدد الصور: %1$d)…</item>
+        <item quantity="one">جارٍ استيراد صورة مشاركة واحدة (عدد الصور: %1$d)…</item>
+        <item quantity="two">جارٍ استيراد صورتين مشاركتين (عدد الصور: %1$d)…</item>
+        <item quantity="few">جارٍ استيراد %1$d صور مشاركة…</item>
+        <item quantity="many">جارٍ استيراد %1$d صورة مشاركة…</item>
+        <item quantity="other">جارٍ استيراد %1$d صورة مشاركة…</item>
+    </plurals>
+    <string name="main_status_import_failed">فشل الاستيراد: %1$s</string>
+    <string name="main_status_import_done_partial">اكتمل الاستيراد: نجح %1$d وفشل %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="zero">اكتمل الاستيراد — عدد الملفات المستوردة: %1$d</item>
+        <item quantity="one">اكتمل الاستيراد — تم استيراد ملف واحد (عدد الملفات: %1$d)</item>
+        <item quantity="two">اكتمل الاستيراد — تم استيراد ملفين (عدد الملفات: %1$d)</item>
+        <item quantity="few">اكتمل الاستيراد: تم استيراد %1$d ملفات</item>
+        <item quantity="many">اكتمل الاستيراد: تم استيراد %1$d ملفًا</item>
+        <item quantity="other">اكتمل الاستيراد: تم استيراد %1$d ملف</item>
+    </plurals>
+    <string name="main_status_import_stopped">تم إيقاف الاستيراد: نجح %1$d وفشل %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="zero">جارٍ استيراد الملفات (عدد الملفات: %1$d)…</item>
+        <item quantity="one">جارٍ استيراد ملف واحد (عدد الملفات: %1$d)…</item>
+        <item quantity="two">جارٍ استيراد ملفين (عدد الملفات: %1$d)…</item>
+        <item quantity="few">جارٍ استيراد %1$d ملفات…</item>
+        <item quantity="many">جارٍ استيراد %1$d ملفًا…</item>
+        <item quantity="other">جارٍ استيراد %1$d ملف…</item>
+    </plurals>
+    <string name="main_status_importing_progress">جارٍ الاستيراد %1$d/%2$d…</string>
+    <string name="main_status_stopping">جارٍ الإيقاف… (سيتوقف بعد اكتمال الملف الحالي)</string>
+    <string name="main_status_stopping_import">جارٍ إيقاف الاستيراد…</string>
+    <string name="main_status_removed">تمت الإزالة: %1$s</string>
+    <string name="main_status_cleared">تم الإفراغ</string>
+    <string name="main_status_nothing_to_convert">لا توجد ملفات قابلة للتحويل</string>
+    <string name="main_status_folder_unreadable">تعذّرت قراءة المجلد المحدد</string>
+    <string name="main_status_scanning_folder">جارٍ فحص المجلد…</string>
+    <string name="main_status_no_images">لم يتم العثور على صور داخل المجلد المحدد</string>
+    <string name="main_status_batch_importing">جارٍ الاستيراد الدفعي %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="zero">تم إيقاف الاستيراد الدفعي — عدد الصور الحية المستوردة: %1$d</item>
+        <item quantity="one">تم إيقاف الاستيراد الدفعي — تم استيراد صورة حية واحدة (عدد الصور: %1$d)</item>
+        <item quantity="two">تم إيقاف الاستيراد الدفعي — تم استيراد صورتين حيتين (عدد الصور: %1$d)</item>
+        <item quantity="few">تم إيقاف الاستيراد الدفعي: تم استيراد %1$d صور حية</item>
+        <item quantity="many">تم إيقاف الاستيراد الدفعي: تم استيراد %1$d صورة حية</item>
+        <item quantity="other">تم إيقاف الاستيراد الدفعي: تم استيراد %1$d صورة حية</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="zero">تم إيقاف الاستيراد الدفعي — لم تُستورد أي صورة حية، وتم تخطي %2$d ملفًا غير حي (عدد الصور: %1$d)</item>
+        <item quantity="one">تم إيقاف الاستيراد الدفعي — استُوردت صورة حية واحدة وتم تخطي %2$d ملفًا غير حي (عدد الصور: %1$d)</item>
+        <item quantity="two">تم إيقاف الاستيراد الدفعي — استُوردت صورتان حيتان وتم تخطي %2$d ملفًا غير حي (عدد الصور: %1$d)</item>
+        <item quantity="few">تم إيقاف الاستيراد الدفعي: تم استيراد %1$d صور حية وتخطي %2$d ملفات غير حية</item>
+        <item quantity="many">تم إيقاف الاستيراد الدفعي: تم استيراد %1$d صورة حية وتخطي %2$d ملفًا غير حي</item>
+        <item quantity="other">تم إيقاف الاستيراد الدفعي: تم استيراد %1$d صورة حية وتخطي %2$d ملف غير حي</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="zero">اكتمل الاستيراد الدفعي — عدد الصور الحية المستوردة: %1$d</item>
+        <item quantity="one">اكتمل الاستيراد الدفعي — تم استيراد صورة حية واحدة (عدد الصور: %1$d)</item>
+        <item quantity="two">اكتمل الاستيراد الدفعي — تم استيراد صورتين حيتين (عدد الصور: %1$d)</item>
+        <item quantity="few">اكتمل الاستيراد الدفعي: تم استيراد %1$d صور حية</item>
+        <item quantity="many">اكتمل الاستيراد الدفعي: تم استيراد %1$d صورة حية</item>
+        <item quantity="other">اكتمل الاستيراد الدفعي: تم استيراد %1$d صورة حية</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="zero">اكتمل الاستيراد الدفعي — لم تُستورد أي صورة حية، وتم تخطي %2$d ملفًا غير حي (عدد الصور: %1$d)</item>
+        <item quantity="one">اكتمل الاستيراد الدفعي — استُوردت صورة حية واحدة وتم تخطي %2$d ملفًا غير حي (عدد الصور: %1$d)</item>
+        <item quantity="two">اكتمل الاستيراد الدفعي — استُوردت صورتان حيتان وتم تخطي %2$d ملفًا غير حي (عدد الصور: %1$d)</item>
+        <item quantity="few">اكتمل الاستيراد الدفعي: تم استيراد %1$d صور حية وتخطي %2$d ملفات غير حية</item>
+        <item quantity="many">اكتمل الاستيراد الدفعي: تم استيراد %1$d صورة حية وتخطي %2$d ملفًا غير حي</item>
+        <item quantity="other">اكتمل الاستيراد الدفعي: تم استيراد %1$d صورة حية وتخطي %2$d ملف غير حي</item>
+    </plurals>
+    <string name="main_status_stopped_replace">تم الإيقاف: من أصل %1$d ملف تمت معالجة %2$d واستبدال %3$d من الملفات الأصلية</string>
+    <string name="main_status_stopped_export">تم الإيقاف: من أصل %1$d ملف تمت معالجة %2$d وتصدير %3$d إلى الألبوم</string>
+    <string name="main_status_done_replace_reason">اكتمل: تمت معالجة %1$d ملف واستبدال %2$d من الملفات الأصلية (السبب: %3$s)</string>
+    <string name="main_status_done_export_reason">اكتمل: تمت معالجة %1$d ملف وتصدير %2$d إلى الألبوم (السبب: %3$s)</string>
+    <string name="main_status_done_replace">اكتمل: تمت معالجة %1$d ملف واستبدال %2$d من الملفات الأصلية</string>
+    <string name="main_status_done_export">اكتمل: تمت معالجة %1$d ملف وتصدير %2$d إلى الألبوم</string>
+    <string name="main_status_keep_originals">%1$s؛ لم يتم منح إذن «الوصول الكامل إلى التخزين»، وتم الاحتفاظ بالصورة الأصلية</string>
+    <string name="main_info_detecting">جارٍ الفحص…</string>
+    <string name="main_info_unrecognized">تنسيق صورة حية غير معروف</string>
+    <string name="main_info_converting">جارٍ التحويل…</string>
+    <string name="main_info_compose_task">مهمة دمج (اضغط «بدء التحويل» للتنفيذ)</string>
+    <string name="main_info_done_replaced">اكتمل (تم استبدال %1$d من الملفات الأصلية)</string>
+    <string name="main_info_done_skipped">اكتمل (تم التخطي: تعارض في الاسم)</string>
+    <string name="main_info_done_exported">اكتمل (تم تصدير %1$d)</string>
+    <string name="main_info_failed">فشل: %1$s</string>
+    <string name="main_progress_added">تمت الإضافة %1$d/%2$d</string>
+    <string name="main_progress_processed">تمت المعالجة %1$d/%2$d</string>
+    <string name="main_progress_imported">تم الاستيراد %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">يلزم إذن قراءة الصور ومقاطع الفيديو</string>
+    <string name="main_dialog_permission_message">يحتاج هذا التطبيق إلى قراءة الصور ومقاطع الفيديو على جهازك:\n\n• إذن الصور: فحص ألبومات الجهاز والتعرف على الصور الحية داخلها\n• إذن الفيديو: العثور على الفيديو المرافق للصور الحية المكوّنة من ملفين\n• إذن الموقع: الاحتفاظ ببيانات موقع GPS الوصفية في الصور (بدونها تُفقد معلومات الموقع بعد التحويل)\n\nإذا رفضت فلن تتمكن من استخدام أداة الاختيار المدمجة، ويمكنك الضغط على «إضافة ملفات» لاحقًا لمنح الإذن مرة أخرى.</string>
+    <string name="main_dialog_settings_title">يلزم منح إذن الصور ومقاطع الفيديو يدويًا</string>
+    <string name="main_dialog_settings_message">اخترت سابقًا «عدم السؤال مجددًا»، لذلك لن يعرض النظام نافذة الأذونات مرة أخرى.\n\nانتقل إلى صفحة تفاصيل التطبيق ← الأذونات ← الصور ومقاطع الفيديو، وامنح الإذن يدويًا ثم ارجع إلى التطبيق.\n\nملاحظة: يجب منح إذني «الصور» و«الفيديو» معًا، وإلا لن تتمكن الصور الحية المكوّنة من ملفين من العثور على الفيديو المرافق.</string>
+    <string name="main_dialog_allfiles_title_delete">حذف الصورة الأصلية تلقائيًا يتطلب «الوصول إلى جميع الملفات»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">هذا الجهاز لا يدعم الحذف التلقائي للصورة الأصلية</string>
+    <string name="main_dialog_allfiles_title_replace">يتطلب وضع الاستبدال «الوصول إلى جميع الملفات»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">هذا الجهاز لا يدعم وضع الاستبدال</string>
+    <string name="main_dialog_allfiles_title_location">يُنصح بمنح إذن «الوصول إلى جميع الملفات»</string>
+    <string name="main_dialog_allfiles_delete_message">يقوم «حذف الصورة الأصلية بعد اكتمال المعالجة» بحذف الملفات الأصلية من القرص مباشرة (الصورة والفيديو المرافق)، وهذا الإجراء لا يمكن التراجع عنه، لذلك يجب أولًا منح إذن «الوصول إلى جميع الملفات».\n\nلن يصبح المفتاح متاحًا إلا بعد المنح، ويمكنك تشغيله حينها بنفسك.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">لا يوفر النظام الحالي (Android 10 أو أقدم) إذن «الوصول إلى جميع الملفات»، لذا لا يمكن حذف الملفات الأصلية من القرص مباشرة، وبالتالي لا يدعم هذا الجهاز «حذف الصورة الأصلية بعد اكتمال المعالجة».\n\nيمكنك حذف الصور الأصلية يدويًا من ألبوم النظام بعد اكتمال التحويل.</string>
+    <string name="main_dialog_allfiles_replace_message">يكتب «وضع الاستبدال» نتائج التحويل مباشرة على الملفات الأصلية في القرص (استبدال المحتوى الأصلي)، وهذا الإجراء لا يمكن التراجع عنه، لذلك يجب أولًا منح إذن «الوصول إلى جميع الملفات».\n\nلن يصبح المفتاح متاحًا إلا بعد المنح، ويمكنك تشغيله حينها بنفسك.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">لا يوفر النظام الحالي (Android 10 أو أقدم) إذن «الوصول إلى جميع الملفات»، لذا لا يمكن إعادة كتابة الملفات الأصلية على القرص مباشرة، وبالتالي لا يدعم هذا الجهاز «وضع الاستبدال».\n\nيمكنك متابعة التحويل بالطريقة الافتراضية، وستُكتب النتائج في مجلد الألبوم.</string>
+    <string name="main_dialog_allfiles_location_message">تكتب بعض الطُرز (مثل Meizu) معلومات موقع GPS بشكل مقنّع عبر واجهة ألبوم النظام، مما يؤدي إلى فقدان الموقع في الصور المحوَّلة.\n\nبعد منح «الوصول إلى جميع الملفات» سيكتب التطبيق مباشرة في مجلد الألبوم مع الاحتفاظ الكامل ببيانات الموقع الوصفية.\n\nيمكنك التحويل دون منحه أيضًا، لكن بعض الطُرز قد تفقد معلومات الموقع.</string>
+    <string name="main_dialog_conflict_title">تعارض في اسم ملف الإخراج</string>
+    <string name="main_dialog_conflict_message">يوجد ملف بالاسم نفسه في مجلد الإخراج:\n%1$s\n\nيُرجى اختيار طريقة المعالجة.</string>
+    <string name="main_label_conflict_always">استخدام طريقة المعالجة هذه للتعارضات اللاحقة</string>
+    <string name="main_btn_grant">منح</string>
+    <string name="main_btn_deny">رفض</string>
+    <string name="main_btn_go_settings">الإعدادات</string>
+    <string name="main_btn_cancel">إلغاء</string>
+    <string name="main_btn_grant_access">منح الإذن</string>
+    <string name="main_btn_got_it">فهمت</string>
+    <string name="main_btn_not_now">ليس الآن</string>
+    <string name="main_btn_skip">تخطٍ</string>
+    <string name="main_btn_overwrite">استبدال</string>
+    <string name="main_btn_auto_rename">إعادة تسمية تلقائية</string>
+    <plurals name="main_delete_done">
+        <item quantity="zero">لم تُحذف أي ملفات أصلية (عدد الملفات: %1$d)</item>
+        <item quantity="one">تم حذف ملف أصلي واحد (عدد الملفات: %1$d)</item>
+        <item quantity="two">تم حذف ملفين أصليين (عدد الملفات: %1$d)</item>
+        <item quantity="few">تم حذف %1$d ملفات أصلية</item>
+        <item quantity="many">تم حذف %1$d ملفًا أصليًا</item>
+        <item quantity="other">تم حذف %1$d ملف أصلي</item>
+    </plurals>
+    <string name="main_delete_nothing">لا حاجة لحذف الصورة الأصلية</string>
+    <string name="main_delete_partial">تم حذف %1$d ملف أصلي (تعذّر حذف %2$d وتم الاحتفاظ بها)</string>
+    <string name="main_delete_failed">فشل حذف الصورة الأصلية (الملف قيد الاستخدام أو لا توجد صلاحية كتابة)، وتم الاحتفاظ بها</string>
+    <string name="main_export_missing_output">ناتج التحويل مفقود أو فارغ: %1$s</string>
+    <string name="main_export_missing_output_bare">ناتج التحويل مفقود أو فارغ</string>
+    <string name="main_export_insert_null">أعاد MediaStore insert القيمة null</string>
+    <string name="main_export_output_stream">تيار إخراج MediaStore غير متاح</string>
+    <string name="main_export_write_failed">فشلت الكتابة في MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">تعذّر إنشاء مجلد الألبوم %1$s</string>
+    <string name="main_export_dir_write_failed">فشلت الكتابة في مجلد الألبوم: %1$s</string>
+    <string name="main_export_no_source">تعذّر تحديد موقع الملف المصدر، وتم تخطي الاستبدال</string>
+    <string name="main_export_companion_failed">فشلت إعادة كتابة الملف المرافق: %1$s</string>
+    <string name="main_export_source_dir_unwritable">مجلد الملف المصدر غير قابل للكتابة، وتعذّرت إعادة كتابة الملف المرافق</string>
+    <string name="main_export_source_dir_unavailable">مجلد الملف المصدر غير متاح: %1$s</string>
+    <string name="main_export_replace_failed">فشل استبدال الملف المصدر: %1$s</string>
+    <string name="main_export_replace_failed_bare">فشل استبدال الملف المصدر</string>
+</resources>

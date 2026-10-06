@@ -62,7 +62,7 @@
     <string name="settings_version_title">Toleo</string>
     <string name="settings_version_value">v%1$s</string>
     <string name="settings_alipay_title">Changia kupitia Alipay</string>
-    <string name="settings_alipay_subtitle">Suporta maendeleo</string>
+    <string name="settings_alipay_subtitle">Saidia maendeleo</string>
     <string name="settings_coolapk_subtitle">Mtumiaji wa Coolapk · asante kwa msaada</string>
     <string name="settings_ai_credits_subtitle">Asante kwa IDE za AI na modeli za AI zilizosaidia maendeleo</string>
     <string name="settings_github_title">Hazina ya GitHub</string>

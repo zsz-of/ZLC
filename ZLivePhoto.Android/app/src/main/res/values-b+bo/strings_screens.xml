@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文件为模型辅助翻译（藏语 bo，C 级：低资源语种，术语多为新造词，仅供理解），可能存在不准确之处，欢迎社区修正。
+     ཡིག་ཆ་འདི་དཔེ་རྒྱུད་ཨང་རྟགས་ཀྱིས་བསྒྱུར་བ་ཡིན། ཡང་དག་མིན་པ་ཡོད་སྲིད།
+     品牌短名（Google / Apple / OPPO / vivo / Xiaomi / Honor / Meizu）保留原文。 -->
+<resources>
+    <string name="screen_app_subtitle">འགུལ་པར་གྱི་རྣམ་གཞི་ཕན་ཚུན་བསྒྱུར་བ</string>
+    <plurals name="screen_file_count">
+        <item quantity="other">ཡིག་ཆ་ %1$d</item>
+    </plurals>
+    <string name="screen_settings">སྒྲིག་བཀོད</string>
+
+    <string name="screen_select_output_format">ཕྱིར་བཏོན་གྱི་རྣམ་གཞི་འདེམས</string>
+    <string name="screen_selected">འདེམས་ཟིན</string>
+    <string name="screen_vivo_single_warning">⚠ ཧ་ཅང་རྙིང་པའི་ཁ་པར་ལ་རྣམ་གཞི་འདི་ངོས་འཛིན་མི་ཐུབ་སྲིད</string>
+    <string name="screen_extract_blocked">⚠ རེས་རིམ་ནང་མཉམ་སྦྲེལ་གྱི་ལས་འགན་ཡོད་པས་ཁ་བཤེར་འདེམས་མི་ཆོག</string>
+
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (ཡིག་ཆ་གཅིག)</string>
+    <string name="screen_format_vivo">vivo (ཡིག་ཆ་གཉིས)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">ཁ་བཤེར</string>
+
+    <string name="screen_toolbox">ལག་ཆའི་སྒྲོམ</string>
+    <string name="screen_batch_import">ཚོགས་ནང་འདྲེན</string>
+    <string name="screen_batch_import_desc">པར་སྣོད་ཧྲིལ་བོ་བཤེར་ཞིབ་བྱས་ནས་འགུལ་པར་ཚོགས་སུ་ངོས་འཛིན</string>
+    <string name="screen_compose">འགུལ་པར་མཉམ་སྦྲེལ</string>
+    <string name="screen_compose_desc">པར་གཅིག་དང་བརྙན་ཅིག་འདེམས་ནས་ཟུང་སྦྲེལ་བྱས་ཏེ་མཉམ་སྦྲེལ</string>
+    <string name="screen_replace_mode">བརྗེ་ལེན་ཐབས</string>
+    <string name="screen_replace_mode_desc">བསྒྱུར་བའི་གྲུབ་འབྲས་ཐད་ཀར་ཐོག་མའི་ཡིག་ཆར་བྲིས་ཏེ་ཡིག་ཆ་གསར་པ་མི་བཟོ</string>
+    <string name="screen_need_all_files_access_hint">«ཡིག་ཆ་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་དགོས། དབང་ཆ་སྤྲོད་པར་འདིར་མནན</string>
+    <string name="screen_agree_and_enable">མོས་མཐུན་བྱས་ནས་ཁ་ཕྱེ</string>
+
+    <string name="screen_empty_no_files">ད་དུང་ཡིག་ཆ་མ་བཀོད</string>
+    <string name="screen_view_detail">ཞིབ་ཕྲ་ལྟ</string>
+    <string name="screen_add_files">ཡིག་ཆ་བཀོད</string>
+    <string name="screen_output_format">ཕྱིར་བཏོན་གྱི་རྣམ་གཞི: %1$s</string>
+    <string name="screen_delete_original">ལག་བསྟར་རྫོགས་རྗེས་ཐོག་མའི་པར་བསུབ</string>
+    <string name="screen_need_all_files_access_view">«ཡིག་ཆ་ཚང་མར་འཛུལ་བ»ཀྱི་དབང་ཆ་དགོས། ལྟ་བར་མནན</string>
+    <string name="screen_clear">སྟོང་པར་བཟོ</string>
+    <string name="screen_stop">ལག་བསྟར་མཚམས་འཇོག</string>
+    <string name="screen_start_convert">བསྒྱུར་བ་འགོ་འཛུགས</string>
+
+    <string name="screen_status_detail">གནས་ཚུལ་ཞིབ་ཕྲ</string>
+    <string name="screen_long_press_copy">ཡིག་ཚིགས་ཡུན་རིང་མནན་ནས་འདེམས་ཏེ་འདྲ་བཤུས་བྱོས</string>
+    <string name="screen_copy">འདྲ་བཤུས</string>
+    <string name="screen_close">ཁ་རྒྱག</string>
+
+    <string name="screen_back">ཕྱིར་ལོག</string>
+    <string name="screen_picker_title_select">འགུལ་པར་འདེམས</string>
+    <string name="screen_album_count">པར་སྣོད་ %1$d</string>
+    <string name="screen_album_collapse_cover">པར་སྣོད་ཀྱི་ཁ་གཡོག་བསྡུ</string>
+    <string name="screen_album_expand_cover">པར་སྣོད་ཀྱི་ཁ་གཡོག་ཁ་ཕྱེ</string>
+    <string name="screen_scanning_progress">བཤེར་ཞིབ་བྱེད་བཞིན་ཡོད %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">པར་ %1$d</item>
+    </plurals>
+    <string name="screen_select_all">ཚང་མ་འདེམས</string>
+    <string name="screen_no_albums">ལག་ལེན་བྱེད་ཆོག་པའི་པར་སྣོད་མེད</string>
+    <string name="screen_no_media">འགུལ་པར་མ་རྙེད</string>
+    <string name="screen_no_media_compose">པར་སམ་བརྙན་མ་རྙེད</string>
+    <string name="screen_import">ནང་འདྲེན</string>
+    <string name="screen_import_count">%1$d ནང་འདྲེན</string>
+    <string name="screen_import_mixed">ནང་འདྲེན: པར་ %1$d · བརྙན་ %2$d</string>
+    <string name="screen_search">འཚོལ</string>
+    <string name="screen_search_collapse">འཚོལ་བ་བསྡུ</string>
+    <string name="screen_search_hint">མིང་ལྟར་འཚོལ</string>
+    <string name="screen_search_clear">འཚོལ་བ་སྟོང་པར་བཟོ</string>
+    <string name="screen_sort_date">ཚེས་གྲངས</string>
+    <string name="screen_sort_size">ཆེ་ཆུང</string>
+    <string name="screen_sort_name">མིང</string>
+    <string name="screen_sort_asc">རིམ་པ</string>
+    <string name="screen_sort_desc">ལོག་རིམ</string>
+
+    <string name="screen_date_today">དེ་རིང</string>
+    <string name="screen_date_yesterday">ཁ་སང</string>
+    <string name="screen_date_this_year">ཟླ་བ %1$d ཚེས %2$d</string>
+    <string name="screen_date_other_year">ལོ %1$d ཟླ་བ %2$d ཚེས %3$d</string>
+</resources>

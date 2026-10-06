@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · বাংলা স্ট্রিং (bn)।
+  ZLC · Bengali strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">অজানা টার্গেট ফরম্যাট: %1$s</string>
+    <string name="conv_unrecognized_live_photo">অচেনা লাইভ ফটো ফরম্যাট (Google/OPPO/vivo/Xiaomi/Apple লাইভ ফটো নয়)</string>
+    <string name="conv_cover_photo_missing">কভার ছবি নেই বা খালি</string>
+    <string name="conv_video_missing">ভিডিও নেই বা খালি</string>
+    <string name="conv_video_too_large">ভিডিওটি অনেক বড় (%1$d MB), লাইভ ফটো তৈরি করা যাবে না; অনুগ্রহ করে ছোট একটি ভিডিও বেছে নিন</string>
+    <string name="conv_transcoded_too_large">ট্রান্সকোড করার পরেও ভিডিওটি অনেক বড় (%1$d MB); লাইভ ফটো তৈরি করা যাবে না</string>
+    <string name="conv_video_too_large_compose">ভিডিওটি অনেক বড় (%1$d MB); লাইভ ফটো তৈরি করা যাবে না</string>
+    <string name="conv_cover_heic_go">কভারটি একটি HEIC ছবি (লাইটওয়েট সংস্করণে ট্রান্সকোড করা যায় না; iPhone-এ JPEG হিসেবে এক্সপোর্ট করে আবার রূপান্তর করুন)</string>
+    <string name="conv_cover_invalid_heic">কভারটি বৈধ ছবি নয় (HEIC-এর জন্য সিস্টেমের HEIF ডিকোডিং সমর্থন দরকার)</string>
+    <string name="conv_cover_not_jpeg_go">কভারটি JPEG ছবি নয় (লাইটওয়েট সংস্করণে ট্রান্সকোড করা যায় না; অনুগ্রহ করে একটি JPEG ছবি ব্যবহার করুন)</string>
+    <string name="conv_cover_invalid_image">কভারটি বৈধ ছবি নয় (শুধু JPEG/WebP/PNG সমর্থিত)</string>
+    <string name="conv_reencode_failed">ভিডিও পুনরায় এনকোড করা যায়নি: %1$s</string>
+    <string name="conv_remux_failed">কনটেইনার রিমাক্স করা যায়নি: %1$s</string>
+    <string name="conv_codec_unknown">স্বীকৃত H.264/H.265 ভিডিও নয়</string>
+    <string name="conv_codec_is">কোডেক: %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">ভিডিওটি “%1$s” %2$s; শুধু কনটেইনার বদলালে (রিমাক্স) কোডেক বদলায় না, তাই লাইভ ফটো তৈরি করা যাবে না।\n\n“সেটিংস → ভিডিও ট্রান্সকোডিং → ট্রান্সকোডিং মোড”-এ “পুনরায় এনকোড” বেছে নিন, অথবা অন্য কোনো টুল দিয়ে ভিডিওটি H.264/H.265 MP4-তে রূপান্তর করে নিন।</string>
+    <string name="conv_hint_no_encoder">ভিডিওটি স্ট্যান্ডার্ড MP4 কনটেইনারে নেই (MOV / MKV / WebM / AVI ইত্যাদি), আর বর্তমান “ট্রান্সকোডিং মোড” পুনরায় এনকোড করে না, তাই লাইভ ফটো তৈরি করা যাবে না।\n\n“সেটিংস → ভিডিও ট্রান্সকোডিং → ট্রান্সকোডিং মোড”-এ “পুনরায় এনকোড” বেছে নিন (স্ট্যান্ডার্ড সংস্করণে ffmpeg এনকোডার অন্তর্ভুক্ত; Go লাইটওয়েট সংস্করণে ট্রান্সকোডার নেই, তাই স্ট্যান্ডার্ড সংস্করণ ব্যবহার করুন), অথবা আগে ভিডিওটি স্ট্যান্ডার্ড MP4-তে (H.264/H.265) রূপান্তর করুন।</string>
+    <string name="conv_log_detected">%1$s হিসেবে শনাক্ত হয়েছে</string>
+    <string name="conv_log_same_format_copied">সোর্স ও টার্গেট ফরম্যাট একই; হুবহু কপি করা হয়েছে (শূন্য ক্ষতি)</string>
+    <string name="conv_log_extra_tracks_bypass">সোর্স ভিডিওতে অডিও/ভিডিও ছাড়া অন্য ট্র্যাক আছে (%1$s); সরাসরি কপি বাদ দিয়ে পরিচ্ছন্ন করার পূর্ণ লেখার পথ ব্যবহার করা হচ্ছে</string>
+    <string name="conv_log_ts_fallback">সোর্সে কভার-ফ্রেম টাইমস্ট্যাম্প নেই; স্পেসিফিকেশন অনুযায়ী ভিডিওর মধ্যবিন্দু ব্যবহার করা হচ্ছে</string>
+    <string name="conv_log_brand_normalized">ভিডিও কনটেইনারের ব্র্যান্ড স্বাভাবিক করা হয়েছে (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">ভিডিওতে অতিরিক্ত ট্র্যাক আছে (%1$s) যা পরিষ্কার করা যায়নি; যেমন আছে তেমনই আউটপুট দেওয়া হয়েছে (কিছু ডিভাইসে চেপে ধরে চালানো নাও যেতে পারে)</string>
+    <string name="conv_log_extra_tracks_removed">ভিডিওর অতিরিক্ত ট্র্যাক সরানো হয়েছে (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">সোর্স ভিডিও %1$s; শুধু কনটেইনার রিমাক্স করলে ঠিক হয় না (%2$s)। ফলাফল চেপে ধরে চালানো না গেলে “সেটিংস → ভিডিও ট্রান্সকোডিং → ট্রান্সকোডিং মোড”-এ “পুনরায় এনকোড” বেছে নিন।</string>
+    <string name="conv_log_reencoding">সোর্স ভিডিও %1$s; গ্যালারি সামঞ্জস্য বাড়াতে সেটিং অনুযায়ী 8-বিট + AAC-তে পুনরায় এনকোড করা হচ্ছে</string>
+    <string name="conv_log_reencode_result_unusable">পুনরায় এনকোডের ফলাফল ব্যবহারযোগ্য নয়; যেমন আছে তেমনই আউটপুট দেওয়া হয়েছে (কিছু ডিভাইসে চেপে ধরে চালানো নাও যেতে পারে)</string>
+    <string name="conv_log_reencode_still_risky">পুনরায় এনকোড করার পরেও ঝুঁকি আছে (%1$s)</string>
+    <string name="conv_log_reencode_failed">পুনরায় এনকোড ব্যর্থ (%1$s); যেমন আছে তেমনই আউটপুট দেওয়া হয়েছে (কিছু ডিভাইসে চেপে ধরে চালানো নাও যেতে পারে)</string>
+    <string name="conv_log_cover_heic_converted">কভারটি HEIC ছিল (JPEG নয়); প্যাক করার আগে স্ট্যান্ডার্ড JPEG-এ ট্রান্সকোড করা হয়েছে</string>
+    <string name="conv_log_compose_sizes">কম্পোজ: ছবি %1$d B + ভিডিও %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ট্রান্সকোডার চালু নেই: শুধু কনটেইনার ব্র্যান্ড লেখা হচ্ছে (MOV → MP4), পুনরায় এনকোড নয়</string>
+    <string name="conv_tag_convert">রূপান্তর</string>
+    <string name="conv_tag_transcode">ট্রান্সকোড</string>
+    <string name="conv_tag_compose">কম্পোজ</string>
+    <string name="conv_blocker_no_encoder">অন্তর্নির্মিত ট্রান্সকোডার পাওয়া যাচ্ছে না</string>
+    <string name="conv_blocker_mode_no_encode">বর্তমান “ট্রান্সকোডিং মোড” পুনরায় এনকোড করে না</string>
+    <string name="conv_addon_unavailable">অন্তর্নির্মিত ট্রান্সকোডার পাওয়া যাচ্ছে না</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ট্রান্সকোড ব্যর্থ: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg কনটেইনার রিমাক্স ব্যর্থ: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg দিয়ে ভিডিওকে স্ট্যান্ডার্ড MP4-তে ট্রান্সকোড করা হচ্ছে (%1$s / crf %2$d / %3$s; শুধু ভিডিও ও অডিও ট্র্যাক রাখা হচ্ছে)</string>
+    <string name="conv_log_transcode_done">ভিডিও ট্রান্সকোড সম্পন্ন (%1$d KB)</string>
+    <string name="conv_log_remuxing">ভিডিও কনটেইনারকে স্ট্যান্ডার্ড MP4-তে রিমাক্স করা হচ্ছে (শুধু কনটেইনার, পুনরায় এনকোড নয়)</string>
+    <string name="conv_log_remux_done">কনটেইনার রিমাক্স সম্পন্ন (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">কম্পোজ</string>
+    <string name="conv_reminder_cat_convert">রূপান্তর</string>
+    <string name="conv_reminder_cat_update">আপডেট</string>
+    <string name="conv_reminder_video_over3s_title">ভিডিও 3 সেকেন্ডের বেশি</string>
+    <string name="conv_reminder_video_over3s_message">নির্বাচিত ভিডিওটি 3 সেকেন্ডের বেশি, তাই তৈরি হওয়া লাইভ ফটোতে সামঞ্জস্যের সমস্যা থাকতে পারে:\n\n• ঠিকভাবে চালানো নাও যেতে পারে\n• সিস্টেম গ্যালারি চিনতে নাও পারে\n• কিছু ডিভাইস এই লাইভ ফটো চিনতে নাও পারে</string>
+    <string name="conv_reminder_legacy_go_title">পুরোনো সংস্করণ পাওয়া গেছে</string>
+    <string name="conv_reminder_legacy_go_message">এই ডিভাইসে অ্যাপটির পুরোনো (Go) সংস্করণ এখনও ইনস্টল আছে। সেই সংস্করণ আর কাজ করে না; জায়গা খালি করতে চাইলে আনইনস্টল করতে পারেন।</string>
+    <string name="conv_reminder_replace_risk_title">রিপ্লেস মোডে ফাইল নষ্ট হওয়ার ঝুঁকি আছে</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">রিপ্লেস মোড রূপান্তরের ফলাফল সরাসরি মূল ফাইলে লেখে; একবার ওভাররাইট হলে মূল ফাইল ফেরানো যায় না।\n\n• লেখার সময় অ্যাপ বন্ধ হয়ে গেলে, স্টোরেজ শেষ হলে বা অনুমতি প্রত্যাহার হলে সোর্স ফাইল নষ্ট হতে পারে\n• কোনো রূপান্তরই সফল হওয়ার নিশ্চয়তা নেই; ব্যর্থ হলে সোর্স ফাইল আগেই অচল হয়ে যেতে পারে\n• আগে এক-দুটি ফাইলে দেখে নিন সব ঠিক আছে কি না, তারপর একসাথে অনেক ফাইল প্রক্রিয়া করুন\n• গুরুত্বপূর্ণ ছবির ব্যাকআপ নিজে রাখুন\n\nএই সুবিধাটি “যেমন আছে তেমনই” দেওয়া; ব্যবহারের ঝুঁকি আপনার, ফাইল নষ্ট বা হারানোর জন্য লেখক দায়ী নন।</string>
+    <string name="conv_reminder_dont_remind">আর দেখাবেন না</string>
+    <string name="conv_reminder_confirm_ok">বুঝেছি</string>
+    <string name="conv_reminder_uninstall">আনইনস্টল</string>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · বাংলা স্ট্রিং (bn)।
+  ZLC · Bengali strings.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the Simplified Chinese baseline (res/values/strings_*.xml); placeholders (%1$s / %1$d) are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">Lanzou Cloud শেয়ারটি বাতিল হয়েছে বা ফাইলটি নেই; অনুগ্রহ করে GitHub থেকে ডাউনলোড করুন</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud শেয়ারটি বাতিল হয়েছে; অনুগ্রহ করে GitHub থেকে ডাউনলোড করুন</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud ডাউনলোড লিংক পাওয়া যায়নি</string>
+    <string name="update_lanzou_need_passwd">এই Lanzou Cloud শেয়ারে একটি অ্যাক্সেস কোড দরকার; অনুগ্রহ করে GitHub থেকে ডাউনলোড করুন (অথবা রিলিজ নোটে কোডটি দেখুন)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud অ্যাক্সেস কোড ভুল</string>
+    <string name="update_err_resolve_failed">সমাধান করা যায়নি</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud অ্যান্টি-ক্রলার যাচাই ব্যর্থ</string>
+    <string name="update_err_no_frame">Lanzou Cloud ডাউনলোড পেজ বিশ্লেষণ করা যায়নি (ডাউনলোড ফ্রেম পাওয়া যায়নি)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud ফাইল আইডেন্টিফায়ার বিশ্লেষণ করা যায়নি</string>
+    <string name="update_err_no_sign">Lanzou Cloud সিগনেচার বিশ্লেষণ করা যায়নি</string>
+    <string name="update_err_ajax_request">API অনুরোধ ব্যর্থ</string>
+    <string name="update_err_api_request">Lanzou Cloud API অনুরোধ ব্যর্থ</string>
+    <string name="update_err_empty_direct">Lanzou Cloud খালি ডাউনলোড URL ফেরত দিয়েছে</string>
+    <string name="update_err_direct_expired">Lanzou Cloud ডাউনলোড URL-এর মেয়াদ শেষ; অনুগ্রহ করে আবার নিন</string>
+    <string name="update_err_http_request">অনুরোধ ব্যর্থ (HTTP %1$d)</string>
+    <string name="update_err_connect">ডাউনলোড সার্ভারে সংযোগ করা যায়নি: %1$s</string>
+    <string name="update_err_http">ডাউনলোড ব্যর্থ (HTTP %1$d)</string>
+    <string name="update_err_no_connection">ডাউনলোড সংযোগ স্থাপন করা যায়নি</string>
+    <string name="update_err_empty">ডাউনলোড করা বিষয়বস্তু খালি</string>
+    <string name="update_err_incomplete">ডাউনলোড অসম্পূর্ণ (%2$d বাইটের মধ্যে %1$d পাওয়া গেছে); অনুগ্রহ করে আবার ডাউনলোড করুন</string>
+    <string name="update_err_interrupted">ডাউনলোড বাধাগ্রস্ত: %1$s</string>
+    <string name="update_err_not_apk">ডাউনলোড করা ফাইলটি বৈধ প্যাকেজ নয় (এটি একটি ওয়েব পেজ হতে পারে, বা ডাউনলোড লিংকের মেয়াদ শেষ); অনুগ্রহ করে আবার ডাউনলোড করুন বা GitHub ব্যবহার করুন।</string>
+    <string name="update_err_apk_incomplete">প্যাকেজের বিষয়বস্তু অসম্পূর্ণ; অনুগ্রহ করে আবার ডাউনলোড করুন বা GitHub ব্যবহার করুন।</string>
+    <string name="update_err_apk_unparsable">প্যাকেজ বিশ্লেষণ করা যায় না (ডাউনলোড অসম্পূর্ণ হতে পারে); অনুগ্রহ করে আবার ডাউনলোড করুন বা GitHub ব্যবহার করুন।</string>
+    <string name="update_err_no_install_permission">“অজানা অ্যাপ ইনস্টল করার” অনুমতি দেওয়া হয়নি</string>
+    <string name="update_err_installer_failed">সিস্টেম ইনস্টলার চালু করা যায়নি (%1$s); অনুগ্রহ করে ফাইল ম্যানেজার থেকে প্যাকেজটি খুলে নিজে ইনস্টল করুন</string>
+</resources>

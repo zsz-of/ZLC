@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Polski (pl) — teksty ekranu głównego i procesów w tle (moduł MainActivity).
+  Klucze mają prefiks main_ i odpowiadają res/values/ (chiński tekst zapasowy).
+  Symbole zastępcze zawsze w formie %1$s / %1$d; frazy policzalne używają <plurals>.
+-->
+<resources>
+    <!-- ── Pasek stanu / komunikaty (metody Activity, getString) ── -->
+    <string name="main_status_ready">Gotowe</string>
+    <string name="main_status_location_granted">Przyznano uprawnienie do lokalizacji — po konwersji metadane GPS zostaną zachowane</string>
+    <string name="main_status_location_denied">Nie przyznano uprawnienia do lokalizacji: przekonwertowane zdjęcia utracą informacje o położeniu GPS</string>
+    <string name="main_status_all_files_granted">Przyznano uprawnienie „Dostęp do wszystkich plików” — konwersja zapisuje bezpośrednio w katalogu galerii i w pełni zachowuje informacje o położeniu</string>
+    <string name="main_status_all_files_denied">Nie przyznano uprawnienia „Dostęp do wszystkich plików”: na niektórych urządzeniach po konwersji może zniknąć informacja o położeniu</string>
+    <string name="main_status_read_granted">Przyznano uprawnienie do odczytu zdjęć i filmów</string>
+    <string name="main_status_video_missing">Uprawnienie przyznane, ale brakuje uprawnienia do filmów: nie można odnaleźć filmów towarzyszących zdjęciom ruchomym dwuplikowym</string>
+    <string name="main_status_permission_denied">Nie przyznano uprawnień — możesz ponownie dotknąć „Dodaj pliki”</string>
+    <string name="main_status_folder_not_selected">Nie wybrano folderu</string>
+    <string name="main_status_folder_unavailable">Brak dostępu do wybranego folderu (obsługiwane są tylko katalogi pamięci lokalnej)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Przywrócono poprzednią sesję (%1$d plik)</item>
+        <item quantity="few">Przywrócono poprzednią sesję (%1$d pliki)</item>
+        <item quantity="many">Przywrócono poprzednią sesję (%1$d plików)</item>
+        <item quantity="other">Przywrócono poprzednią sesję (%1$d plików)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Wykryto nieprawidłowe zakończenie poprzedniej sesji — nieukończona lista została wyczyszczona</string>
+    <string name="main_status_compose_blocks_extract">Kolejka zawiera zadania kompozycji — nie można przełączyć na tryb rozdzielania</string>
+    <string name="main_status_replace_off_mutex">Wyłączono tryb zastępowania (wyklucza się z „Usuń oryginały po przetworzeniu”)</string>
+    <string name="main_status_delete_needs_all_files">Automatyczne usuwanie oryginałów wymaga uprawnienia „Dostęp do wszystkich plików” — najpierw je przyznaj</string>
+    <string name="main_status_replace_off">Wyłączono tryb zastępowania — wyniki konwersji znów trafiają do katalogu galerii</string>
+    <string name="main_status_replace_needs_all_files">Tryb zastępowania wymaga uprawnienia „Dostęp do wszystkich plików” — najpierw je przyznaj</string>
+    <string name="main_status_delete_off_mutex">Wyłączono „Usuń oryginały po przetworzeniu” (wyklucza się z trybem zastępowania)</string>
+    <string name="main_status_loading_albums">Wczytywanie albumów…</string>
+    <string name="main_status_no_albums">Nie znaleziono albumów</string>
+    <string name="main_status_compose_no_photo">Nie wybrano zdjęcia — nie można połączyć</string>
+    <string name="main_status_compose_no_video">Nie wybrano filmu — nie można połączyć</string>
+    <string name="main_status_compose_all_added">Wszystkie wybrane zdjęcia są już na liście</string>
+    <string name="main_status_compose_paired">Zdjęcia: %1$d, filmy: %2$d — dodano %3$d par zadań kompozycji (według mniejszej liczby)</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Dodano %1$d zadanie kompozycji — dotknij „Rozpocznij konwersję”, aby je wykonać</item>
+        <item quantity="few">Dodano %1$d zadania kompozycji — dotknij „Rozpocznij konwersję”, aby je wykonać</item>
+        <item quantity="many">Dodano %1$d zadań kompozycji — dotknij „Rozpocznij konwersję”, aby je wykonać</item>
+        <item quantity="other">Dodano %1$d zadań kompozycji — dotknij „Rozpocznij konwersję”, aby je wykonać</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (automatycznie przełączono format wyjściowy na Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Trwa importowanie %1$d udostępnionego zdjęcia…</item>
+        <item quantity="few">Trwa importowanie %1$d udostępnionych zdjęć…</item>
+        <item quantity="many">Trwa importowanie %1$d udostępnionych zdjęć…</item>
+        <item quantity="other">Trwa importowanie %1$d udostępnionych zdjęć…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import nie powiódł się: %1$s</string>
+    <string name="main_status_import_done_partial">Import zakończony: %1$d udanych, %2$d nieudanych</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import zakończony: zaimportowano łącznie %1$d plik</item>
+        <item quantity="few">Import zakończony: zaimportowano łącznie %1$d pliki</item>
+        <item quantity="many">Import zakończony: zaimportowano łącznie %1$d plików</item>
+        <item quantity="other">Import zakończony: zaimportowano łącznie %1$d plików</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import zatrzymany: %1$d udanych, %2$d nieudanych</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Trwa importowanie %1$d pliku…</item>
+        <item quantity="few">Trwa importowanie %1$d plików…</item>
+        <item quantity="many">Trwa importowanie %1$d plików…</item>
+        <item quantity="other">Trwa importowanie %1$d plików…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importowanie %1$d/%2$d…</string>
+    <string name="main_status_stopping">Zatrzymywanie… (zatrzyma się po ukończeniu bieżącego pliku)</string>
+    <string name="main_status_stopping_import">Zatrzymywanie importu…</string>
+    <string name="main_status_removed">Usunięto %1$s</string>
+    <string name="main_status_cleared">Wyczyszczono</string>
+    <string name="main_status_nothing_to_convert">Brak plików do konwersji</string>
+    <string name="main_status_folder_unreadable">Nie można odczytać wybranego folderu</string>
+    <string name="main_status_scanning_folder">Skanowanie folderu…</string>
+    <string name="main_status_no_images">W wybranym folderze nie znaleziono obrazów</string>
+    <string name="main_status_batch_importing">Import wsadowy %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Zatrzymano import wsadowy: zaimportowano %1$d zdjęcie ruchome</item>
+        <item quantity="few">Zatrzymano import wsadowy: zaimportowano %1$d zdjęcia ruchome</item>
+        <item quantity="many">Zatrzymano import wsadowy: zaimportowano %1$d zdjęć ruchomych</item>
+        <item quantity="other">Zatrzymano import wsadowy: zaimportowano %1$d zdjęć ruchomych</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Zatrzymano import wsadowy: zaimportowano %1$d zdjęcie ruchome, pominięto %2$d plików innych niż zdjęcia ruchome</item>
+        <item quantity="few">Zatrzymano import wsadowy: zaimportowano %1$d zdjęcia ruchome, pominięto %2$d plików innych niż zdjęcia ruchome</item>
+        <item quantity="many">Zatrzymano import wsadowy: zaimportowano %1$d zdjęć ruchomych, pominięto %2$d plików innych niż zdjęcia ruchome</item>
+        <item quantity="other">Zatrzymano import wsadowy: zaimportowano %1$d zdjęć ruchomych, pominięto %2$d plików innych niż zdjęcia ruchome</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Import wsadowy zakończony: zaimportowano %1$d zdjęcie ruchome</item>
+        <item quantity="few">Import wsadowy zakończony: zaimportowano %1$d zdjęcia ruchome</item>
+        <item quantity="many">Import wsadowy zakończony: zaimportowano %1$d zdjęć ruchomych</item>
+        <item quantity="other">Import wsadowy zakończony: zaimportowano %1$d zdjęć ruchomych</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Import wsadowy zakończony: zaimportowano %1$d zdjęcie ruchome, pominięto %2$d plików innych niż zdjęcia ruchome</item>
+        <item quantity="few">Import wsadowy zakończony: zaimportowano %1$d zdjęcia ruchome, pominięto %2$d plików innych niż zdjęcia ruchome</item>
+        <item quantity="many">Import wsadowy zakończony: zaimportowano %1$d zdjęć ruchomych, pominięto %2$d plików innych niż zdjęcia ruchome</item>
+        <item quantity="other">Import wsadowy zakończony: zaimportowano %1$d zdjęć ruchomych, pominięto %2$d plików innych niż zdjęcia ruchome</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Zatrzymano: przetworzono %2$d z %1$d plików, zastąpiono %3$d plików źródłowych</string>
+    <string name="main_status_stopped_export">Zatrzymano: przetworzono %2$d z %1$d plików, wyeksportowano %3$d do galerii</string>
+    <string name="main_status_done_replace_reason">Ukończono: przetworzono %1$d plików, zastąpiono %2$d plików źródłowych (powód: %3$s)</string>
+    <string name="main_status_done_export_reason">Ukończono: przetworzono %1$d plików, wyeksportowano %2$d do galerii (powód: %3$s)</string>
+    <string name="main_status_done_replace">Ukończono: przetworzono %1$d plików, zastąpiono %2$d plików źródłowych</string>
+    <string name="main_status_done_export">Ukończono: przetworzono %1$d plików, wyeksportowano %2$d do galerii</string>
+    <string name="main_status_keep_originals">%1$s; brak uprawnienia „Pełny dostęp do pamięci” — oryginały zostały zachowane</string>
+
+    <!-- ── Informacje o elemencie listy (FileItem.info) ── -->
+    <string name="main_info_detecting">Wykrywanie…</string>
+    <string name="main_info_unrecognized">Nierozpoznany format zdjęcia ruchomego</string>
+    <string name="main_info_converting">Konwersja…</string>
+    <string name="main_info_compose_task">Zadanie kompozycji (dotknij „Rozpocznij konwersję”, aby je wykonać)</string>
+    <string name="main_info_done_replaced">Ukończono (zastąpiono %1$d plików źródłowych)</string>
+    <string name="main_info_done_skipped">Ukończono (pominięto: konflikt nazw)</string>
+    <string name="main_info_done_exported">Ukończono (wyeksportowano %1$d)</string>
+    <string name="main_info_failed">Niepowodzenie: %1$s</string>
+
+    <!-- ── Szczegóły postępu (progressDetail) ── -->
+    <string name="main_progress_added">Dodano %1$d/%2$d</string>
+    <string name="main_progress_processed">Przetworzono %1$d/%2$d</string>
+    <string name="main_progress_imported">Zaimportowano %1$d/%2$d</string>
+
+    <!-- ── Okno uprawnień ── -->
+    <string name="main_dialog_permission_title">Wymagane uprawnienie do odczytu zdjęć i filmów</string>
+    <string name="main_dialog_permission_message">Ten program potrzebuje dostępu do zdjęć i filmów na Twoim urządzeniu:\n\n• Uprawnienie do zdjęć: skanowanie galerii urządzenia i rozpoznawanie zdjęć ruchomych\n• Uprawnienie do filmów: odnajdywanie filmów towarzyszących zdjęciom ruchomym dwuplikowym\n• Uprawnienie do lokalizacji: zachowanie metadanych GPS w zdjęciach (bez niego po konwersji informacja o położeniu zostanie utracona)\n\nPo odmowie wbudowany wybór plików będzie niedostępny; możesz później ponownie dotknąć „Dodaj pliki”, aby przyznać uprawnienia.</string>
+    <string name="main_dialog_settings_title">Trzeba ręcznie przyznać uprawnienia do zdjęć i filmów</string>
+    <string name="main_dialog_settings_message">Wybrałeś wcześniej „Nie pytaj ponownie”, więc system nie pokazuje już okna uprawnień.\n\nPrzejdź do strony szczegółów aplikacji → Uprawnienia → Zdjęcia i filmy, przyznaj dostęp ręcznie i wróć do aplikacji.\n\nUwaga: trzeba przyznać jednocześnie uprawnienia „Zdjęcia” i „Filmy”, inaczej nie uda się odnaleźć filmów towarzyszących zdjęciom ruchomym dwuplikowym.</string>
+
+    <!-- ── Okno wyjaśniające uprawnienie „Dostęp do wszystkich plików” ── -->
+    <string name="main_dialog_allfiles_title_delete">Automatyczne usuwanie oryginałów wymaga „Dostępu do wszystkich plików”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">To urządzenie nie obsługuje automatycznego usuwania oryginałów</string>
+    <string name="main_dialog_allfiles_title_replace">Tryb zastępowania wymaga „Dostępu do wszystkich plików”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">To urządzenie nie obsługuje trybu zastępowania</string>
+    <string name="main_dialog_allfiles_title_location">Zalecane przyznanie uprawnienia „Dostęp do wszystkich plików”</string>
+    <string name="main_dialog_allfiles_delete_message">„Usuń oryginały po przetworzeniu” usuwa bezpośrednio pliki z dysku (zdjęcie i towarzyszący mu film); tej operacji nie można cofnąć, dlatego najpierw trzeba przyznać uprawnienie „Dostęp do wszystkich plików”.\n\nPrzełącznik stanie się dostępny dopiero po przyznaniu uprawnienia — wtedy możesz go włączyć.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Bieżący system (Android 10 i starsze) nie udostępnia uprawnienia „Dostęp do wszystkich plików”, więc nie można usuwać plików bezpośrednio z dysku; to urządzenie nie obsługuje „Usuń oryginały po przetworzeniu”.\n\nOryginały możesz usunąć ręcznie w galerii systemowej po zakończeniu konwersji.</string>
+    <string name="main_dialog_allfiles_replace_message">„Tryb zastępowania” zapisuje wynik konwersji bezpośrednio do oryginalnego pliku na dysku (nadpisując jego zawartość); tej operacji nie można cofnąć, dlatego najpierw trzeba przyznać uprawnienie „Dostęp do wszystkich plików”.\n\nPrzełącznik stanie się dostępny dopiero po przyznaniu uprawnienia — wtedy możesz go włączyć.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Bieżący system (Android 10 i starsze) nie udostępnia uprawnienia „Dostęp do wszystkich plików”, więc nie można bezpośrednio zmieniać plików na dysku; to urządzenie nie obsługuje „Trybu zastępowania”.\n\nMożesz dalej konwertować w domyślny sposób — wyniki trafią do katalogu galerii.</string>
+    <string name="main_dialog_allfiles_location_message">Na niektórych urządzeniach (np. Meizu) zapis przez systemowy interfejs galerii usuwa dane o położeniu GPS, przez co przekonwertowane zdjęcia tracą lokalizację.\n\nPo przyznaniu „Dostępu do wszystkich plików” program zapisuje bezpośrednio w katalogu galerii i zachowuje pełne metadane położenia.\n\nBez tego uprawnienia konwersja też działa, ale na niektórych urządzeniach informacja o położeniu może zniknąć.</string>
+
+    <!-- ── Okno konfliktu nazw plików wyjściowych ── -->
+    <string name="main_dialog_conflict_title">Konflikt nazw plików wyjściowych</string>
+    <string name="main_dialog_conflict_message">W katalogu wyjściowym istnieje już plik o tej nazwie:\n%1$s\n\nWybierz sposób postępowania.</string>
+    <string name="main_label_conflict_always">Zastosuj ten sposób do kolejnych konfliktów</string>
+
+    <!-- ── Przyciski okien dialogowych ── -->
+    <string name="main_btn_grant">Przyznaj</string>
+    <string name="main_btn_deny">Odmów</string>
+    <string name="main_btn_go_settings">Przejdź do ustawień</string>
+    <string name="main_btn_cancel">Anuluj</string>
+    <string name="main_btn_grant_access">Przyznaj dostęp</string>
+    <string name="main_btn_got_it">Rozumiem</string>
+    <string name="main_btn_not_now">Nie teraz</string>
+    <string name="main_btn_skip">Pomiń</string>
+    <string name="main_btn_overwrite">Nadpisz</string>
+    <string name="main_btn_auto_rename">Automatycznie zmień nazwę</string>
+
+    <!-- ── Wynik konwersji / powody niepowodzenia eksportu (pokazywane po „powód: %3$s”) ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Usunięto %1$d plik źródłowy</item>
+        <item quantity="few">Usunięto %1$d pliki źródłowe</item>
+        <item quantity="many">Usunięto %1$d plików źródłowych</item>
+        <item quantity="other">Usunięto %1$d plików źródłowych</item>
+    </plurals>
+    <string name="main_delete_nothing">Nie ma oryginałów do usunięcia</string>
+    <string name="main_delete_partial">Usunięto %1$d plików źródłowych (%2$d nie udało się usunąć — zachowano)</string>
+    <string name="main_delete_failed">Nie udało się usunąć oryginałów (plik zajęty lub brak uprawnień do zapisu) — zachowano</string>
+    <string name="main_export_missing_output">Brakuje produktu konwersji lub jest pusty: %1$s</string>
+    <string name="main_export_missing_output_bare">Brakuje produktu konwersji lub jest pusty</string>
+    <string name="main_export_insert_null">MediaStore insert zwróciło null</string>
+    <string name="main_export_output_stream">Strumień wyjściowy MediaStore jest niedostępny</string>
+    <string name="main_export_write_failed">Zapis do MediaStore nie powiódł się: %1$s</string>
+    <string name="main_export_mkdir_failed">Nie można utworzyć katalogu galerii %1$s</string>
+    <string name="main_export_dir_write_failed">Zapis do katalogu galerii nie powiódł się: %1$s</string>
+    <string name="main_export_no_source">Nie można zlokalizować pliku źródłowego — pominięto zastępowanie</string>
+    <string name="main_export_companion_failed">Zapis pliku towarzyszącego nie powiódł się: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Katalog pliku źródłowego nie jest zapisywalny — nie udało się zapisać pliku towarzyszącego</string>
+    <string name="main_export_source_dir_unavailable">Katalog pliku źródłowego jest niedostępny: %1$s</string>
+    <string name="main_export_replace_failed">Zastąpienie pliku źródłowego nie powiodło się: %1$s</string>
+    <string name="main_export_replace_failed_bare">Zastąpienie pliku źródłowego nie powiodło się</string>
+</resources>

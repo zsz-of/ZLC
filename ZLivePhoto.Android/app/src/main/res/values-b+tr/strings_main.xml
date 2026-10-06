@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Türkçe (tr) — ana ekran ve arka plan akışı metinleri (MainActivity modülü).
+  Anahtarlar main_ önekini taşır ve res/values/ (Basitleştirilmiş Çince yedek metin) ile aynıdır.
+  Yer tutucular %1$s / %1$d biçimindedir; sayılabilir ad öbekleri <plurals> kullanır.
+-->
+<resources>
+    <!-- ── Durum çubuğu / iletiler (Activity metotları, getString) ── -->
+    <string name="main_status_ready">Hazır</string>
+    <string name="main_status_location_granted">Konum izni verildi; dönüştürmeden sonra GPS meta verileri korunacak</string>
+    <string name="main_status_location_denied">Konum izni verilmedi: dönüştürülen fotoğraflarda GPS konum bilgisi kaybolacak</string>
+    <string name="main_status_all_files_granted">„Tüm dosyalara erişim” izni verildi; dönüştürme doğrudan galeri klasörüne yazar ve konum bilgilerini tam olarak korur</string>
+    <string name="main_status_all_files_denied">„Tüm dosyalara erişim” izni verilmedi: bazı cihazlarda dönüştürmeden sonra konum bilgisi kaybolabilir</string>
+    <string name="main_status_read_granted">Fotoğraf ve video okuma izni verildi</string>
+    <string name="main_status_video_missing">İzin verildi ancak video izni yok: iki dosyalı hareketli fotoğrafların eşlik eden videoları bulunamıyor</string>
+    <string name="main_status_permission_denied">İzin verilmedi; „Dosya ekle” düğmesine tekrar dokunabilirsiniz</string>
+    <string name="main_status_folder_not_selected">Klasör seçilmedi</string>
+    <string name="main_status_folder_unavailable">Seçilen klasöre erişilemiyor (yalnızca yerel depolama klasörleri desteklenir)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">Önceki oturum geri yüklendi (%1$d dosya)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Önceki oturumun beklenmedik şekilde kapandığı algılandı; tamamlanmamış liste temizlendi</string>
+    <string name="main_status_compose_blocks_extract">Kuyrukta birleştirme görevi var, ayırma moduna geçilemez</string>
+    <string name="main_status_replace_off_mutex">Değiştirme modu kapatıldı („İşlemden sonra özgün dosyaları sil” ile birlikte kullanılamaz)</string>
+    <string name="main_status_delete_needs_all_files">Özgün dosyaları otomatik silme „Tüm dosyalara erişim” izni gerektirir; lütfen önce izin verin</string>
+    <string name="main_status_replace_off">Değiştirme modu kapatıldı; dönüştürme sonuçları yeniden galeri klasörüne yazılıyor</string>
+    <string name="main_status_replace_needs_all_files">Değiştirme modu „Tüm dosyalara erişim” izni gerektirir; lütfen önce izin verin</string>
+    <string name="main_status_delete_off_mutex">„İşlemden sonra özgün dosyaları sil” kapatıldı (değiştirme moduyla birlikte kullanılamaz)</string>
+    <string name="main_status_loading_albums">Albümler okunuyor…</string>
+    <string name="main_status_no_albums">Albüm bulunamadı</string>
+    <string name="main_status_compose_no_photo">Fotoğraf seçilmedi, birleştirilemiyor</string>
+    <string name="main_status_compose_no_video">Video seçilmedi, birleştirilemiyor</string>
+    <string name="main_status_compose_all_added">Seçilen fotoğrafların tümü listede</string>
+    <string name="main_status_compose_paired">Fotoğraf: %1$d, video: %2$d; az olana göre %3$d birleştirme görevi eklendi</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">%1$d birleştirme görevi eklendi; birleştirmeyi çalıştırmak için „Dönüştürmeyi başlat” düğmesine dokunun</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (çıktı biçimi otomatik olarak Google\'a geçirildi)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">Paylaşılan %1$d görsel içe aktarılıyor…</item>
+    </plurals>
+    <string name="main_status_import_failed">İçe aktarma başarısız: %1$s</string>
+    <string name="main_status_import_done_partial">İçe aktarma tamamlandı: %1$d başarılı, %2$d başarısız</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">İçe aktarma tamamlandı: toplam %1$d dosya içe aktarıldı</item>
+    </plurals>
+    <string name="main_status_import_stopped">İçe aktarma durduruldu: %1$d başarılı, %2$d başarısız</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">%1$d dosya içe aktarılıyor…</item>
+    </plurals>
+    <string name="main_status_importing_progress">İçe aktarılıyor %1$d/%2$d…</string>
+    <string name="main_status_stopping">Durduruluyor… (geçerli dosya bitince durur)</string>
+    <string name="main_status_stopping_import">İçe aktarma durduruluyor…</string>
+    <string name="main_status_removed">%1$s kaldırıldı</string>
+    <string name="main_status_cleared">Temizlendi</string>
+    <string name="main_status_nothing_to_convert">Dönüştürülecek dosya yok</string>
+    <string name="main_status_folder_unreadable">Seçilen klasör okunamıyor</string>
+    <string name="main_status_scanning_folder">Klasör taranıyor…</string>
+    <string name="main_status_no_images">Seçilen klasörde görsel bulunamadı</string>
+    <string name="main_status_batch_importing">Toplu içe aktarma %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">Toplu içe aktarma durduruldu: toplam %1$d hareketli fotoğraf içe aktarıldı</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">Toplu içe aktarma durduruldu: toplam %1$d hareketli fotoğraf içe aktarıldı, %2$d hareketli olmayan dosya atlandı</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">Toplu içe aktarma tamamlandı: toplam %1$d hareketli fotoğraf içe aktarıldı</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">Toplu içe aktarma tamamlandı: toplam %1$d hareketli fotoğraf içe aktarıldı, %2$d hareketli olmayan dosya atlandı</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Durduruldu: %1$d dosyadan %2$d tanesi işlendi, %3$d kaynak dosya değiştirildi</string>
+    <string name="main_status_stopped_export">Durduruldu: %1$d dosyadan %2$d tanesi işlendi, %3$d tanesi galeriye aktarıldı</string>
+    <string name="main_status_done_replace_reason">Tamamlandı: %1$d dosya işlendi, %2$d kaynak dosya değiştirildi (neden: %3$s)</string>
+    <string name="main_status_done_export_reason">Tamamlandı: %1$d dosya işlendi, %2$d tanesi galeriye aktarıldı (neden: %3$s)</string>
+    <string name="main_status_done_replace">Tamamlandı: %1$d dosya işlendi, %2$d kaynak dosya değiştirildi</string>
+    <string name="main_status_done_export">Tamamlandı: %1$d dosya işlendi, %2$d tanesi galeriye aktarıldı</string>
+    <string name="main_status_keep_originals">%1$s; „Tam depolama erişimi” izni yok, özgün dosyalar korundu</string>
+
+    <!-- ── Liste öğesi bilgisi (FileItem.info) ── -->
+    <string name="main_info_detecting">Algılanıyor…</string>
+    <string name="main_info_unrecognized">Tanınamayan hareketli fotoğraf biçimi</string>
+    <string name="main_info_converting">Dönüştürülüyor…</string>
+    <string name="main_info_compose_task">Birleştirme görevi (çalıştırmak için „Dönüştürmeyi başlat” düğmesine dokunun)</string>
+    <string name="main_info_done_replaced">Tamamlandı (%1$d kaynak dosya değiştirildi)</string>
+    <string name="main_info_done_skipped">Tamamlandı (atlandı: aynı ad çakışması)</string>
+    <string name="main_info_done_exported">Tamamlandı (%1$d aktarıldı)</string>
+    <string name="main_info_failed">Başarısız: %1$s</string>
+
+    <!-- ── İlerleme ayrıntısı (progressDetail) ── -->
+    <string name="main_progress_added">Eklendi %1$d/%2$d</string>
+    <string name="main_progress_processed">İşlendi %1$d/%2$d</string>
+    <string name="main_progress_imported">İçe aktarıldı %1$d/%2$d</string>
+
+    <!-- ── İzin penceresi ── -->
+    <string name="main_dialog_permission_title">Fotoğraf ve video okuma izni gerekli</string>
+    <string name="main_dialog_permission_message">Bu uygulama cihazınızdaki fotoğraf ve videolara erişmek ister:\n\n• Fotoğraf izni: cihaz galerisini tarayıp hareketli fotoğrafları tanımak\n• Video izni: iki dosyalı hareketli fotoğrafların eşlik eden videolarını bulmak\n• Konum izni: fotoğraflardaki GPS konum meta verilerini korumak (yoksa dönüştürmeden sonra konum bilgisi kaybolur)\n\nReddederseniz dahili seçici kullanılamaz; daha sonra „Dosya ekle” düğmesine tekrar dokunarak izin verebilirsiniz.</string>
+    <string name="main_dialog_settings_title">Fotoğraf ve video izinlerini elle vermeniz gerekiyor</string>
+    <string name="main_dialog_settings_message">Daha önce „Bir daha sorma” seçeneğini seçtiniz; sistem artık izin penceresini göstermiyor.\n\nUygulama ayrıntıları sayfası → İzinler → Fotoğraflar ve videolar yolundan erişimi elle verip uygulamaya dönün.\n\nNot: „Fotoğraflar” ve „Videolar” izinleri birlikte verilmelidir; aksi hâlde iki dosyalı hareketli fotoğrafların eşlik eden videoları bulunamaz.</string>
+
+    <!-- ── „Tüm dosyalara erişim” iznini açıklayan pencere ── -->
+    <string name="main_dialog_allfiles_title_delete">Özgün dosyaları otomatik silme „Tüm dosyalara erişim” gerektirir</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Bu cihaz özgün dosyaları otomatik silmeyi desteklemiyor</string>
+    <string name="main_dialog_allfiles_title_replace">Değiştirme modu „Tüm dosyalara erişim” gerektirir</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Bu cihaz değiştirme modunu desteklemiyor</string>
+    <string name="main_dialog_allfiles_title_location">„Tüm dosyalara erişim” izni verilmesi önerilir</string>
+    <string name="main_dialog_allfiles_delete_message">„İşlemden sonra özgün dosyaları sil” diskteki özgün dosyaları (fotoğraf ve eşlik eden video) doğrudan siler; bu işlem geri alınamaz, bu nedenle önce „Tüm dosyalara erişim” izni verilmelidir.\n\nAnahtar ancak izin verildikten sonra kullanılabilir olur; o zaman açabilirsiniz.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Geçerli sistem (Android 10 ve altı) „Tüm dosyalara erişim” iznini sunmuyor; diskteki özgün dosyalar doğrudan silinemez, bu nedenle bu cihaz „İşlemden sonra özgün dosyaları sil” özelliğini desteklemiyor.\n\nDönüştürme bittikten sonra özgün dosyaları sistem galerisinden elle temizleyebilirsiniz.</string>
+    <string name="main_dialog_allfiles_replace_message">„Değiştirme modu” dönüştürme sonucunu doğrudan diskteki özgün dosyaya yazar (içeriğin üzerine); bu işlem geri alınamaz, bu nedenle önce „Tüm dosyalara erişim” izni verilmelidir.\n\nAnahtar ancak izin verildikten sonra kullanılabilir olur; o zaman açabilirsiniz.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Geçerli sistem (Android 10 ve altı) „Tüm dosyalara erişim” iznini sunmuyor; diskteki özgün dosyalar doğrudan değiştirilemez, bu nedenle bu cihaz „Değiştirme modu”nu desteklemiyor.\n\nVarsayılan yöntemle dönüştürmeye devam edebilirsiniz; sonuçlar galeri klasörüne yazılır.</string>
+    <string name="main_dialog_allfiles_location_message">Bazı cihazlarda (örn. Meizu) sistem galerisi arayüzüyle yazmak GPS konum bilgisini gizler ve dönüştürülen fotoğraflar konumunu kaybeder.\n\n„Tüm dosyalara erişim” verildiğinde program doğrudan galeri klasörüne yazar ve konum meta verilerini tam olarak korur.\n\nİzin verilmeden de dönüştürme çalışır; bazı cihazlarda konum bilgisi kaybolabilir.</string>
+
+    <!-- ── Çıktı dosya adı çakışması penceresi ── -->
+    <string name="main_dialog_conflict_title">Çıktı dosya adı çakışması</string>
+    <string name="main_dialog_conflict_message">Çıktı klasöründe aynı ada sahip bir dosya zaten var:\n%1$s\n\nLütfen nasıl işleneceğini seçin.</string>
+    <string name="main_label_conflict_always">Sonraki çakışmalar için bu yöntemi kullan</string>
+
+    <!-- ── Pencere düğmeleri ── -->
+    <string name="main_btn_grant">İzin ver</string>
+    <string name="main_btn_deny">Reddet</string>
+    <string name="main_btn_go_settings">Ayarlara git</string>
+    <string name="main_btn_cancel">İptal</string>
+    <string name="main_btn_grant_access">İzin ver</string>
+    <string name="main_btn_got_it">Anladım</string>
+    <string name="main_btn_not_now">Şimdi değil</string>
+    <string name="main_btn_skip">Atla</string>
+    <string name="main_btn_overwrite">Üzerine yaz</string>
+    <string name="main_btn_auto_rename">Otomatik yeniden adlandır</string>
+
+    <!-- ── Dönüştürme sonucu / dışa aktarma hata nedenleri („neden: %3$s” ile gösterilir) ── -->
+    <plurals name="main_delete_done">
+        <item quantity="other">%1$d kaynak dosya silindi</item>
+    </plurals>
+    <string name="main_delete_nothing">Silinecek özgün dosya yok</string>
+    <string name="main_delete_partial">%1$d kaynak dosya silindi (%2$d silinemedi, korundu)</string>
+    <string name="main_delete_failed">Özgün dosyalar silinemedi (dosya kullanımda veya yazma izni yok), korundu</string>
+    <string name="main_export_missing_output">Dönüştürme çıktısı yok veya boş: %1$s</string>
+    <string name="main_export_missing_output_bare">Dönüştürme çıktısı yok veya boş</string>
+    <string name="main_export_insert_null">MediaStore insert null döndürdü</string>
+    <string name="main_export_output_stream">MediaStore çıktı akışı kullanılamıyor</string>
+    <string name="main_export_write_failed">MediaStore yazma başarısız: %1$s</string>
+    <string name="main_export_mkdir_failed">Galeri klasörü oluşturulamadı: %1$s</string>
+    <string name="main_export_dir_write_failed">Galeri klasörüne yazma başarısız: %1$s</string>
+    <string name="main_export_no_source">Kaynak dosya bulunamadı, değiştirme atlandı</string>
+    <string name="main_export_companion_failed">Eşlik eden dosya yazılamadı: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Kaynak dosya klasörü yazılabilir değil; eşlik eden dosya yazılamadı</string>
+    <string name="main_export_source_dir_unavailable">Kaynak dosya klasörü kullanılamıyor: %1$s</string>
+    <string name="main_export_replace_failed">Kaynak dosya değiştirilemedi: %1$s</string>
+    <string name="main_export_replace_failed_bare">Kaynak dosya değiştirilemedi</string>
+</resources>

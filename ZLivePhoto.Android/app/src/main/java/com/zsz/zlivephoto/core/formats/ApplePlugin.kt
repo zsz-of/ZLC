@@ -1,6 +1,7 @@
 package com.zsz.zlivephoto.core.formats
 
 import com.zsz.zlivephoto.core.BinaryUtils
+import com.zsz.zlivephoto.core.ExifUtil
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
 import com.zsz.zlivephoto.core.Mp4Util
@@ -16,6 +17,11 @@ import java.util.UUID
 internal class ApplePlugin : FormatPlugin() {
     override val name: String = "apple"
     override val display: String = "Apple Live Photo"
+
+    companion object {
+        /** Apple MakerNote 里的配对标识键（exiftool Apple.pm：0x0011 ContentIdentifier，ASCII 字符串）。 */
+        private const val TAG_CONTENT_IDENTIFIER = 0x0011
+    }
 
     private val appleXmpNs: String = "xmlns:apple-fi=\"http://ns.apple.com/finalcut/1.0/\""
 
@@ -100,7 +106,16 @@ internal class ApplePlugin : FormatPlugin() {
             videoMp4 = videoMp4,
             sourceFormat = name,
         )
-        asset.presentationTsUs = 0 // Apple StillImageTime=0
+        // 静帧时刻：真实 Apple MOV 由 `mebx` timed metadata 轨（elst 空 edit）承载。
+        // 此前硬编码 0，会让 Apple → 小米/Google/OPPO/vivo 的
+        // MotionPhotoPresentationTimestampUs 恒为 0、封面被定位到视频第 0 帧。
+        val stillUs = Mp4Util.appleStillImageTimeUs(movData)
+        asset.presentationTsUs = stillUs
+        if (stillUs >= 0L) {
+            log("info", "解析到 Apple 静帧时刻 ${stillUs / 1000} ms（mebx/elst）", "Apple")
+        } else {
+            log("warning", "未解析到 Apple 静帧时刻（无 mebx/elst 空 edit），转出时按视频中点兜底", "Apple")
+        }
         asset.videoInfo = Mp4Util.getTrackInfo(movData) ?: mutableMapOf()
         return asset
     }
@@ -118,15 +133,39 @@ internal class ApplePlugin : FormatPlugin() {
         val isJpeg = asset.primaryJpeg.size >= 2 &&
             asset.primaryJpeg[0] == 0xFF.toByte() && asset.primaryJpeg[1] == 0xD8.toByte()
         val primary = if (isJpeg) {
-            JpegUtil.replaceOrInsertXmp(asset.primaryJpeg, xmp)
+            // ① XMP（保持既有兼容性）；② Apple 真正用来配对的标识：
+            //    EXIF MakerNote（0x927C）内部 IFD 的 0x0011 = ContentIdentifier（ASCII UUID）。
+            //    官方 AVCapturePhotoSettings.livePhotoMovieMetadata 文档指向
+            //    kCGImagePropertyExifMakerNote；exiftool Apple.pm 给出键号 0x0011。
+            ExifUtil.upsertMakerNoteAsciiTag(
+                JpegUtil.replaceOrInsertXmp(asset.primaryJpeg, xmp),
+                TAG_CONTENT_IDENTIFIER,
+                contentId
+            )
         } else {
-            log("warning", "封面为 HEIC，跳过 XMP 写入（配对标识写在 MOV 的 ContentIdentifier）", "Apple")
+            log(
+                "warning",
+                "封面为 HEIC：暂不写配对标识（HEIC 的 EXIF 在 Exif item 里，需另行实现），" +
+                    "仅 MOV 侧写入 ContentIdentifier",
+                "Apple"
+            )
             asset.primaryJpeg
         }
         val ext = if (isJpeg) "jpg" else "heic"
         val jpgPath = File(outDir, "$stem.$ext").path
         writeBytes(jpgPath, primary)
 
+        val ptsUs = asset.effectivePtsUs()
+        if (ptsUs >= 0L) {
+            // 真实 Apple 用 mebx timed metadata 轨记录静帧时刻；本工具暂不合成该轨，
+            // MOV 里的 still-image-time 按 Apple 约定写 -1（见 Mp4Util.addAppleMetadata）。
+            log(
+                "warning",
+                "静帧时刻 ${ptsUs / 1000} ms 暂无载体：真实 Apple 用 mebx timed metadata 轨，" +
+                    "本工具暂不合成（MOV 的 still-image-time 写 -1）",
+                "Apple"
+            )
+        }
         var movData = Mp4Util.mp4ToMov(asset.videoMp4)
         movData = Mp4Util.addAppleMetadata(movData, contentId)
         val movPath = File(outDir, "$stem.mov").path

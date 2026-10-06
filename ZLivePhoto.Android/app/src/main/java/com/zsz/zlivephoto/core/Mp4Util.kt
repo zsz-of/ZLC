@@ -360,9 +360,90 @@ internal object Mp4Util {
     }
 
     /**
+     * 解析 Apple MOV 的「静帧时刻」（still-image-time），单位微秒；无法判定返回 -1。
+     *
+     * 真实 Apple Live Photo 的 MOV 里除音视频轨外还有一条 sample entry 为 `mebx`
+     * 的 timed metadata 轨：该轨样本的**值**恒为 -1，真正的静帧时刻由样本在影片时间轴上的
+     * 呈现时间决定 —— 即 `edts/elst` 的空 edit（`media_time == -1` 的段）位移。
+     * 实测 iPhone 15 Pro / iOS 18.5：movie timescale 600、空 edit duration 740
+     * → 740 / 600 = 1.2333 s（TIKA-4777）。
+     *
+     * 背景：该轨此前被 [pruneNonAvTracks] 当垃圾轨删除，调用方又硬编码 `presentationTsUs = 0`，
+     * 于是 Apple → 其它品牌时 `MotionPhotoPresentationTimestampUs` 恒为 0，封面被定位到第 0 帧。
+     */
+    fun appleStillImageTimeUs(data: ByteArray): Long {
+        if (!hasFtyp(data)) return -1L
+        val moov = iterateBoxes(data, 0, data.size).firstOrNull { it.type == "moov" } ?: return -1L
+        val moovEnd = moov.offset + moov.size
+        val children = iterateBoxes(data, moov.offset + moov.headerLen, moovEnd).toList()
+        val movieTimescale = children.firstOrNull { it.type == "mvhd" }?.let { fullBoxTimescale(data, it) } ?: return -1L
+        if (movieTimescale <= 0L) return -1L
+
+        // Apple 用 mebx；Google 规范用 mett；个别实现用 meta
+        val metaEntryTypes = setOf("mebx", "mett", "meta")
+        for (trak in children) {
+            if (trak.type != "trak") continue
+            val entryType = sampleEntryType(data, trak) ?: continue
+            if (entryType !in metaEntryTypes) continue
+            val elst = walkInto(data, trak.offset, trak.size, trak.headerLen, setOf("edts", "mdia"))
+                .firstOrNull { it.type == "elst" } ?: continue
+            val us = emptyEditDurationUs(data, elst, movieTimescale)
+            if (us >= 0L) return us
+        }
+        return -1L
+    }
+
+    /** 读取 FullBox 的 timescale：mvhd/mdhd 的 version 0 在 body+12、version 1 在 body+20。 */
+    private fun fullBoxTimescale(data: ByteArray, box: Box): Long {
+        val body = box.offset + box.headerLen
+        if (body + 24 > data.size) return -1L
+        val version = data[body].toInt() and 0xFF
+        return BinaryUtils.readU32BE(data, body + if (version == 1) 20 else 12)
+    }
+
+    /** trak 的 `stsd` 第一项 sample entry 类型（如 `mebx` / `avc1`）。 */
+    private fun sampleEntryType(data: ByteArray, trak: Box): String? {
+        val stsd = walkInto(data, trak.offset, trak.size, trak.headerLen,
+            setOf("mdia", "minf", "stbl")).firstOrNull { it.type == "stsd" } ?: return null
+        val body = stsd.offset + stsd.headerLen
+        // FullBox(4) + entry_count(4) + 第一项 [size 4][type 4]
+        if (body + 16 > data.size) return null
+        return String(data, body + 12, 4, Charsets.ISO_8859_1)
+    }
+
+    /** `elst` 里第一个空 edit（`media_time == -1`）的 segment_duration（影片时基）换算成微秒。 */
+    private fun emptyEditDurationUs(data: ByteArray, elst: Box, movieTimescale: Long): Long {
+        val body = elst.offset + elst.headerLen
+        if (body + 8 > data.size) return -1L
+        val version = data[body].toInt() and 0xFF
+        val count = BinaryUtils.readU32BE(data, body + 4).toInt()
+        var p = body + 8
+        for (i in 0 until count) {
+            if (version == 1) {
+                if (p + 20 > data.size) return -1L
+                val duration = BinaryUtils.readU64BE(data, p)
+                val mediaTime = BinaryUtils.readU64BE(data, p + 8)
+                p += 20
+                if (mediaTime == -1L && duration > 0L) return duration * 1_000_000L / movieTimescale
+            } else {
+                if (p + 12 > data.size) return -1L
+                val duration = BinaryUtils.readU32BE(data, p)
+                val mediaTime = BinaryUtils.readU32BE(data, p + 4).toInt().toLong() // -1 => 0xFFFFFFFF
+                p += 12
+                if (mediaTime == -1L && duration > 0L) return duration * 1_000_000L / movieTimescale
+            }
+        }
+        return -1L
+    }
+
+    /**
      * 在 MP4/MOV 的 moov/udta 中添加 Apple QuickTime metadata。
-     * 写入 com.apple.quicktime.content.identifier 和 com.apple.quicktime.still-image-time。
+     * 写入 com.apple.quicktime.content.identifier 与 com.apple.quicktime.still-image-time。
      * 如果 udta 不存在则创建。
+     *
+     * 注意 `still-image-time` 写 **-1**：真实 Apple 文件里该键恒为 -1，真正的静帧时刻由
+     * `mebx` timed metadata 轨承载（见 [appleStillImageTimeUs]）。本工具暂不合成该轨，
+     * 因此这里按 Apple 约定写 -1（而不是此前写死的 0，0 会被读成「静帧在第 0 帧」）。
      */
     fun addAppleMetadata(data: ByteArray, contentId: String): ByteArray {
         val cidBytes = contentId.toByteArray(Charsets.UTF_8)
@@ -377,10 +458,12 @@ internal object Mp4Util {
         ))
         val keysBox = packBox("keys", concat(listOf(ByteArray(4), keysPayload)))
 
-        // ilst box：item1 = content.identifier（UTF-8），item2 = still-image-time（int32 0）
+        // ilst box：item1 = content.identifier（UTF-8），item2 = still-image-time
+        // 值按真实 Apple 文件写 -1（0xFFFFFFFF）：真正的静帧时刻由 mebx timed metadata 轨承载，
+        // 写 0 会被读成「静帧在第 0 帧」，属于错误信息。
         val data1 = packBox("data", concat(listOf(be32(1L), be32(0L), cidBytes)))
         val item1Box = packBox("item", concat(listOf(be32(1L), data1)))
-        val data2 = packBox("data", concat(listOf(be32(22L), be32(0L), be32(0L))))
+        val data2 = packBox("data", concat(listOf(be32(22L), be32(0L), be32(-1L))))
         val item2Box = packBox("item", concat(listOf(be32(2L), data2)))
         val ilstBox = packBox("ilst", concat(listOf(item1Box, item2Box)))
 

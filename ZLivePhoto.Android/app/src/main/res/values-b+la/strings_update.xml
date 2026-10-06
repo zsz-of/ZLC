@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · lingua Latina.
+  Textus renovationis / descensionis (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Praefixum clavis update_; omnis clavis basem sequitur, locorum notae (%1$s / %1$d) immutata servantur.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== Pagina communicationis Lanzou Cloud et resolutio nexus directi ========== -->
+    <string name="update_lanzou_gone">Communicatio Lanzou Cloud abolita est aut fasciculus non exstat; quaeso de GitHub descende</string>
+    <string name="update_lanzou_gone_short">Communicatio Lanzou Cloud abolita est; quaeso de GitHub descende</string>
+    <string name="update_lanzou_resolve_failed">Resolutio nexus descensionis Lanzou Cloud defecit</string>
+    <string name="update_lanzou_need_passwd">Haec communicatio Lanzou Cloud codicem accessus requirit; quaeso de GitHub descende (aut codicem accessus in notis editionis quaere)</string>
+    <string name="update_lanzou_wrong_passwd">Codex accessus Lanzou Cloud falsus</string>
+    <string name="update_err_resolve_failed">Resolutio defecit</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Inspectio anti-crawler Lanzou Cloud defecit</string>
+    <string name="update_err_no_frame">Pagina descensionis Lanzou Cloud analysari non potest (tabula descensionis non inventa)</string>
+    <string name="update_err_no_file_id">Signum fasciculi Lanzou Cloud analysari non potest</string>
+    <string name="update_err_no_sign">Signatura Lanzou Cloud analysari non potest</string>
+    <string name="update_err_ajax_request">Petitio interfaciei defecit</string>
+    <string name="update_err_api_request">Petitio interfaciei Lanzou Cloud defecit</string>
+    <string name="update_err_empty_direct">Lanzou Cloud locum descensionis vacuum reddidit</string>
+    <string name="update_err_direct_expired">Locus descensionis Lanzou Cloud exspiravit; quaeso rursus pete</string>
+    <string name="update_err_http_request">Petitio defecit (HTTP %1$d)</string>
+
+    <!-- ========== Descensio ========== -->
+    <string name="update_err_connect">Servitori descensionis coniungi non potest: %1$s</string>
+    <string name="update_err_http">Descensio defecit (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Connexus descensionis institui non potest</string>
+    <string name="update_err_empty">Contentum descensum vacuum est</string>
+    <string name="update_err_incomplete">Descensio imperfecta (%1$d ex %2$d octetis accepta); quaeso rursus descende</string>
+    <string name="update_err_interrupted">Descensio interrupta: %1$s</string>
+
+    <!-- ========== Inspectio fasciculi installationis et installatio ========== -->
+    <string name="update_err_not_apk">Fasciculus descensus non est fasciculus installationis validus (fortasse pagina interretialis est aut nexus descensionis exspiravit); quaeso rursus descende aut GitHub adhibe.</string>
+    <string name="update_err_apk_incomplete">Contentum fasciculi installationis imperfectum est; quaeso rursus descende aut GitHub adhibe.</string>
+    <string name="update_err_apk_unparsable">Fasciculus installationis analysari non potest (descensio fortasse imperfecta est); quaeso rursus descende aut GitHub adhibe.</string>
+    <string name="update_err_no_install_permission">Permissio „installationis applicationum ignotarum“ non concessa est</string>
+    <string name="update_err_installer_failed">Installer systematis excitari non potest (%1$s); quaeso fasciculum installationis in administro fasciculorum aperi et manu installa</string>
+
+</resources>

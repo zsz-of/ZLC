@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Macedonian (mk) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="screen_app_subtitle">Конверзија на Live Photo формати</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d датотека</item>
+        <item quantity="other">%1$d датотеки</item>
+    </plurals>
+    <string name="screen_settings">Поставки</string>
+    <string name="screen_select_output_format">Избор на излезен формат</string>
+    <string name="screen_selected">Избрано</string>
+    <string name="screen_vivo_single_warning">⚠ Премногу стари уреди можеби нема да го препознаат овој формат</string>
+    <string name="screen_extract_blocked">⚠ Редот содржи задачи за составување, не може да се избере раздвојување</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (една датотека)</string>
+    <string name="screen_format_vivo">vivo (две датотеки)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Раздвојување</string>
+    <string name="screen_toolbox">Алатник</string>
+    <string name="screen_batch_import">Масовно внесување</string>
+    <string name="screen_batch_import_desc">Скенирање на целиот албум и масовно препознавање на Live Photos</string>
+    <string name="screen_compose">Состави Live Photo</string>
+    <string name="screen_compose_desc">Изберете фотографија и видео за состав во пар</string>
+    <string name="screen_replace_mode">Режим на замена</string>
+    <string name="screen_replace_mode_desc">Резултатот од конвертирањето се запишува директно во оригиналот, без нови датотеки</string>
+    <string name="screen_need_all_files_access_hint">Бара дозвола „Пристап до сите датотеки“, кликнете тука за дозвола</string>
+    <string name="screen_agree_and_enable">Прифати и овозможи</string>
+    <string name="screen_empty_no_files">Сè уште нема додадени датотеки</string>
+    <string name="screen_view_detail">Погледни детали</string>
+    <string name="screen_add_files">Додај датотеки</string>
+    <string name="screen_output_format">Излезен формат: %1$s</string>
+    <string name="screen_delete_original">Избриши оригинали по обработката</string>
+    <string name="screen_need_all_files_access_view">Бара дозвола „Пристап до сите датотеки“, кликнете за детали</string>
+    <string name="screen_clear">Испразни</string>
+    <string name="screen_stop">Запри обработка</string>
+    <string name="screen_start_convert">Почни конверзија</string>
+    <string name="screen_status_detail">Детали за статусот</string>
+    <string name="screen_long_press_copy">Долг притисок на текстот за селектирање и копирање</string>
+    <string name="screen_copy">Копирај</string>
+    <string name="screen_close">Затвори</string>
+    <string name="screen_back">Назад</string>
+    <string name="screen_picker_title_select">Избери Live Photo</string>
+    <string name="screen_album_count">Албум %1$d</string>
+    <string name="screen_album_collapse_cover">Склопи насловна на албум</string>
+    <string name="screen_album_expand_cover">Прошири насловна на албум</string>
+    <string name="screen_scanning_progress">Скенирање %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d фотографија</item>
+        <item quantity="other">%1$d фотографии</item>
+    </plurals>
+    <string name="screen_select_all">Избери сè</string>
+    <string name="screen_no_albums">Нема достапни албуми</string>
+    <string name="screen_no_media">Нема пронајдени Live Photos</string>
+    <string name="screen_no_media_compose">Нема пронајдени фотографи или видеа</string>
+    <string name="screen_import">Внеси</string>
+    <string name="screen_import_count">Внеси %1$d</string>
+    <string name="screen_import_mixed">Внеси фото%1$d·видео%2$d</string>
+    <string name="screen_search">Барај</string>
+    <string name="screen_search_collapse">Склопи барање</string>
+    <string name="screen_search_hint">Барај по име</string>
+    <string name="screen_search_clear">Испразни барање</string>
+    <string name="screen_sort_date">Датум</string>
+    <string name="screen_sort_size">Големина</string>
+    <string name="screen_sort_name">Име</string>
+    <string name="screen_sort_asc">Растечки</string>
+    <string name="screen_sort_desc">Опаѓачки</string>
+    <string name="screen_date_today">Денес</string>
+    <string name="screen_date_yesterday">Вчера</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

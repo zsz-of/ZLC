@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  toki pona (tok) — nimi nasin (nimi open: fmt_).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Quality level: C (low-resource language, best-effort translation).
+  Base: res/values/strings_formats.xml (toki Sonko).
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">kama tu</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Live Photo Honor</string>
+    <string name="fmt_meizu">Live Photo Meizu</string>
+    <string name="fmt_nubia">Live Photo Nubia</string>
+    <string name="fmt_oppo">Live Photo OPPO</string>
+    <string name="fmt_vivo">Live Photo vivo</string>
+    <string name="fmt_vivo_single">vivo Live Photo (ijo wan)</string>
+    <string name="fmt_xiaomi">Live Photo Xiaomi</string>
+
+    <!-- pakala pi ilo insa, jan li ken lukin -->
+    <string name="fmt_err_apple_mov_missing">ijo .mov sama nimi li lon ala</string>
+    <string name="fmt_err_apple_mov_no_ftyp">ijo MOV li jo ala e poki ftyp</string>
+    <string name="fmt_err_extract_read">kama tu li nasin weka; ken ala lukin e ona</string>
+    <string name="fmt_err_no_primary_jpeg">sitelen JPEG suli li lon ala</string>
+    <string name="fmt_err_no_mp4_after_jpeg">sitelen tawa MP4 pona li lon ala lon monsi JPEG (poki ftyp li lon ala)</string>
+    <string name="fmt_err_mp4_parse_failed">sona pi sitelen tawa MP4 li pakala</string>
+    <string name="fmt_err_nubia_too_short">ijo ni li lili ike; ona li sama ala Live Photo Nubia</string>
+    <string name="fmt_err_nubia_no_magic">nimi nubiaVpfile li lon ala lon pini ijo</string>
+    <string name="fmt_err_nubia_jpeg_len">suli JPEG lon pini li ike: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">ijo 0x00 li lon ala insa JPEG en sitelen tawa</string>
+    <string name="fmt_err_nubia_empty_video">suli pi sitelen tawa insa li 0</string>
+    <string name="fmt_err_vivo_no_marker">sitelen vivo livephoto li lon ala lon pini JPG</string>
+    <string name="fmt_err_vivo_companion_missing">ijo sitelen tawa poka li lon ala: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">sona pi sijelo JPG li pakala</string>
+    <string name="fmt_err_vivo_companion_invalid">MP4 poka li pona ala (poki ftyp li lon ala)</string>
+</resources>

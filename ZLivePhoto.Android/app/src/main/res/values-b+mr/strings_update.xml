@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Marathi (mr) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou शेअर रद्द झाले किंवा फाइल अस्तित्वात नाही; कृपया GitHub वरून डाउनलोड करा</string>
+    <string name="update_lanzou_gone_short">Lanzou शेअर रद्द झाले; कृपया GitHub वरून डाउनलोड करा</string>
+    <string name="update_lanzou_resolve_failed">Lanzou डाउनलोड लिंक सोडवता आली नाही</string>
+    <string name="update_lanzou_need_passwd">या Lanzou शेअरसाठी अ‍ॅक्सेस कोड आवश्यक; कृपया GitHub वरून डाउनलोड करा (किंवा Release टिप्पणीत अ‍ॅक्सेस कोड शोधा)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou अ‍ॅक्सेस कोड चुकीचा</string>
+    <string name="update_err_resolve_failed">सोडवणे अयशस्वी</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou अँटी-क्रॉल तपासणी अयशस्वी</string>
+    <string name="update_err_no_frame">Lanzou डाउनलोड पृष्ठ सोडवता येत नाही (डाउनलोड फ्रेम आढळली नाही)</string>
+    <string name="update_err_no_file_id">Lanzou फाइल ओळख सोडवता आली नाही</string>
+    <string name="update_err_no_sign">Lanzou स्वाक्षरी सोडवता आली नाही</string>
+    <string name="update_err_ajax_request">इंटरफेस विनंती अयशस्वी</string>
+    <string name="update_err_api_request">Lanzou इंटरफेस विनंती अयशस्वी</string>
+    <string name="update_err_empty_direct">Lanzou ने रिकामा डाउनलोड पत्ता दिला</string>
+    <string name="update_err_direct_expired">Lanzou डाउनलोड पत्ता कालबाह्य झाला; पुन्हा मिळवा</string>
+    <string name="update_err_http_request">विनंती अयशस्वी (HTTP %1$d)</string>
+    <string name="update_err_connect">डाउनलोड सर्व्हरशी जोडता येत नाही: %1$s</string>
+    <string name="update_err_http">डाउनलोड अयशस्वी (HTTP %1$d)</string>
+    <string name="update_err_no_connection">डाउनलोड कनेक्शन तयार करता येत नाही</string>
+    <string name="update_err_empty">डाउनलोड केलेला मजकूर रिकामा आहे</string>
+    <string name="update_err_incomplete">डाउनलोड अपूर्ण (%1$d / एकूण %2$d बाइट मिळाले); कृपया पुन्हा डाउनलोड करा</string>
+    <string name="update_err_interrupted">डाउनलोड व्यत्ययित: %1$s</string>
+    <string name="update_err_not_apk">डाउनलोड केलेले वैध इन्स्टॉल पॅकेज नाही (वेबपृष्ठ असू शकते किंवा डाउनलोड लिंक कालबाह्य झाली असेल); कृपया पुन्हा डाउनलोड करा किंवा GitHub वरून डाउनलोड करा.</string>
+    <string name="update_err_apk_incomplete">इन्स्टॉल पॅकेजचा मजकूर अपूर्ण आहे; कृपया पुन्हा डाउनलोड करा किंवा GitHub वरून डाउनलोड करा.</string>
+    <string name="update_err_apk_unparsable">इन्स्टॉल पॅकेज पार्स करता येत नाही (डाउनलोड अपूर्ण असू शकते); कृपया पुन्हा डाउनलोड करा किंवा GitHub वरून डाउनलोड करा.</string>
+    <string name="update_err_no_install_permission">“अज्ञात अ‍ॅप्स इन्स्टॉल करा” परवानगी अजून मिळाली नाही</string>
+    <string name="update_err_installer_failed">प्रणाली इन्स्टॉलर उघडता येत नाही (%1$s); कृपया फाइल मॅनेजरमधून इन्स्टॉल पॅकेज स्वतः उघडून इन्स्टॉल करा</string>
+</resources>

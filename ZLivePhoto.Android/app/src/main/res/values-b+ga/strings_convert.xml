@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Irish (ga) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Formáid sprioc anaithnid: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Formáid Live Photo anaithnid (ní Live Photo Google/OPPO/vivo/Xiaomi/Apple í)</string>
+    <string name="conv_cover_photo_missing">Tá an grianghraf clúdaigh ar iarraidh nó folamh</string>
+    <string name="conv_video_missing">Tá an físeán ar iarraidh nó folamh</string>
+    <string name="conv_video_too_large">Tá an físeán ró-mhór (%1$dMB); ní féidir Live Photo a chumasc as, roghnaigh físeán níos giorra</string>
+    <string name="conv_transcoded_too_large">Tar éis traschódaithe tá an físeán ró-mhór (%1$dMB); ní féidir Live Photo a chumasc</string>
+    <string name="conv_video_too_large_compose">Tá an físeán ró-mhór (%1$dMB); ní féidir Live Photo a chumasc</string>
+    <string name="conv_cover_heic_go">Is íomhá HEIC é an clúdach (ní thacaíonn an leagan éadrom le traschódú; easpórtáil í mar JPEG ar an iPhone ar dtús)</string>
+    <string name="conv_cover_invalid_heic">Ní íomhá bhailí é an clúdach (teastaíonn tacaíocht díchódaithe HEIF ón gcóras)</string>
+    <string name="conv_cover_not_jpeg_go">Ní íomhá JPEG é an clúdach (ní thacaíonn an leagan éadrom le traschódú; úsáid grianghraf JPEG ina ionad)</string>
+    <string name="conv_cover_invalid_image">Ní íomhá bhailí é an clúdach (ní thacaítear le haon rud ach JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Theip ar athchódú an fhíseáin: %1$s</string>
+    <string name="conv_remux_failed">Theip ar athphacáil an choimeádáin: %1$s</string>
+    <string name="conv_codec_unknown">Ní físeán H.264/H.265 aitheanta é</string>
+    <string name="conv_codec_is">Is é %1$s an códú</string>
+    <string name="conv_hint_remux_cannot_fix">Físeán «%1$s»: %2$s; ní athraíonn an coimeádán a athrú amháin (athphacáil) an códú agus ní féidir Live Photo a chumasc.\n\nI «Socruithe → Traschódú físe → Modh traschódaithe», athraigh go «Athchódaigh», nó úsáid uirlis eile ar dtús chun é a thiontú ina MP4 le códú H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Níl an físeán i gcoimeádán MP4 caighdeánach (MOV / MKV / WebM / AVI srl.), agus ní dhéanann «Modh traschódaithe» reatha athchódú; ní féidir Live Photo a chumasc.\n\nI «Socruithe → Traschódú físe → Modh traschódaithe», athraigh go «Athchódaigh» (tá códóir ffmpeg ionsuite sa leagan gnáth; níl traschódóir sa leagan éadrom Go, úsáid an leagan gnáth ina ionad), nó tiontaigh an físeán ina MP4 caighdeánach (H.264/H.265) ar dtús.</string>
+    <string name="conv_log_detected">Aithníodh mar %1$s</string>
+    <string name="conv_log_same_format_copied">Is ionann formáid na foinse agus formáid an sprioc; cóipeáladh mar atá (caillteanas náid)</string>
+    <string name="conv_log_extra_tracks_bypass">Tá rianta eile seachas físe agus fuaime san fhíseán foinse (%1$s); ní dhéantar pasdhíreach leis an bhformáid chéanna — úsáidtear an próiseas scríofa iomlán ina ionad chun iad a ghlanadh</string>
+    <string name="conv_log_ts_fallback">Tá an stampa ama ón bhfráma clúdaigh ar iarraidh san fhoinse; de réir an chaighdeáin, úsáideadh lár an fhíseáin ina ionad</string>
+    <string name="conv_log_brand_normalized">Normalaíodh branda coimeádáin an fhíseáin (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Tá rianta breise san fhíseán (%1$s) agus ní féidir iad a ghlanadh; d\'eisíodh mar atá (seans nach mbeidh an toradh seo in ann seinm trí theagmháil fhada ar roinnt gléasanna)</string>
+    <string name="conv_log_extra_tracks_removed">Baineadh rianta breise den fhíseán (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Físeán foinse: %1$s; ní réitíonn athphacáil an choimeádáin amháin é (%2$s). Mura n-imíonn an fhadhb agus mura n-seinfear an toradh fós trí theagmháil fhada, athraigh go «Athchódaigh» i «Socruithe → Traschódú físe → Modh traschódaithe»</string>
+    <string name="conv_log_reencoding">Físeán foinse: %1$s; de réir na socruithe, athchódaítear é ina 8bit + AAC chun comhoiriúnacht an albaim a fheabhsú</string>
+    <string name="conv_log_reencode_result_unusable">Níl toradh an athchódaithe inúsáidte; d\'eisíodh mar atá (seans nach mbeidh an toradh seo in ann seinm trí theagmháil fhada ar roinnt gléasanna)</string>
+    <string name="conv_log_reencode_still_risky">Tar éis athchódaithe fós tá míreanna riosca ann (%1$s)</string>
+    <string name="conv_log_reencode_failed">Theip ar an athchódú (%1$s); d\'eisíodh mar atá (seans nach mbeidh an toradh seo in ann seinm trí theagmháil fhada ar roinnt gléasanna)</string>
+    <string name="conv_log_cover_heic_converted">Tá an clúdach i HEIC (ní JPEG); traschódaíodh é go JPEG caighdeánach roimh athphacáil</string>
+    <string name="conv_log_compose_sizes">Cumasc: grianghraf %1$dB + físeán %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Níl an traschódóir cumasaithe: athscríobhtar branda an choimeádáin amháin (MOV → MP4), gan athchódú</string>
+    <string name="conv_tag_convert">Tiontú</string>
+    <string name="conv_tag_transcode">Traschódú</string>
+    <string name="conv_tag_compose">Cumasc</string>
+    <string name="conv_blocker_no_encoder">Níl an traschódóir ionsuite ar fáil</string>
+    <string name="conv_blocker_mode_no_encode">Ní dhéanann «Modh traschódaithe» reatha athchódú</string>
+    <string name="conv_addon_unavailable">Níl an traschódóir ionsuite ar fáil</string>
+    <string name="conv_addon_transcode_failed">Theip ar traschódú ffmpeg: %1$s</string>
+    <string name="conv_addon_remux_failed">Theip ar athphacáil an choimeádáin le ffmpeg: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Traschódú an fhíseáin go MP4 caighdeánach le ffmpeg (%1$s / crf %2$d / %3$s; ní choinnítear ach na rianta físe agus fuaime)</string>
+    <string name="conv_log_transcode_done">Críochnaíodh traschódú an fhíseáin (%1$dKB)</string>
+    <string name="conv_log_remuxing">Coimeádán an fhíseáin á athphacáil go MP4 caighdeánach (an coimeádán amháin a athraítear, gan athchódú)</string>
+    <string name="conv_log_remux_done">Críochnaíodh athphacáil an choimeádáin (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Cumasc</string>
+    <string name="conv_reminder_cat_convert">Tiontú</string>
+    <string name="conv_reminder_cat_update">Nuashonrú</string>
+    <string name="conv_reminder_video_over3s_title">Físeán os cionn 3 shoicind</string>
+    <string name="conv_reminder_video_over3s_message">Tá fad an fhíseáin a roghnaíodh os cionn 3 shoicind; seans go mbeidh fadhbanna comhoiriúnachta leis an Live Photo a chumascfar:\n\n• Seans nach seinmfear é i gceart\n• Seans nach n-aithneoidh albam an chórais é\n• Seans nach n-aithneoidh roinnt gléasanna an Live Photo seo</string>
+    <string name="conv_reminder_legacy_go_title">Aimsíodh leagan níos sine</string>
+    <string name="conv_reminder_legacy_go_message">Tá leagan níos sine den aip (leagan Go) suiteáilte ar an ngléas seo fós; níl an leagan sin úsáideach ar an ngléas seo a thuilleadh agus is féidir é a dhíshuiteáil chun spás a shaoradh.</string>
+    <string name="conv_reminder_replace_risk_title">Tá riosca damáiste i modh athsholáthair</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Scríobhfaidh modh athsholáthair torthaí an tiontaithe díreach thar an gcomhad bunaidh; tar éis do bhunchomhad a bheith forscríofa, ní féidir é a fháil ar ais.\n\n• Má stoptar an aip go tobann le linn scríobh, má tá spás stórála tiubhte nó má tharraingtear ceadanna siar, seans go ndéanfar damáiste don chomhad foinse\n• Ní ráthaíonn an t-iontú féin rath i gcónaí; má theipeann air, seans nach mbeidh an comhad foinse inúsáidte a thuilleadh\n• Moltar triail a bhaint as comhad amháin nó dhó ar dtús agus, má oibríonn sé i gceart, déan próiseáil bhaisce ina dhiaidh sin\n• Déan cúltaca de do ghrianghraif thábhachtacha tú féin ar dtús\n\nCuirtear an ngné seo ar fáil «mar atá sí»; glacann tú an riosca leat féin, agus ní ghlacann an t-údar freagracht as damáiste ná caillteanas comhad.</string>
+    <string name="conv_reminder_dont_remind">Ná taispeáin arís</string>
+    <string name="conv_reminder_confirm_ok">Ceart go leor</string>
+    <string name="conv_reminder_uninstall">Díshuiteáil</string>
+</resources>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Esperanto (eo).
+  Tradukita el res/values/strings_*.xml (simpligita ĉina baza dosiero, la rezerva lingvo).
+  La ŝlosiloj spegulas la bazan dosieron; anstataŭigiloj (%1$s / %1$d) kaj eskaposekvencoj restas senŝanĝaj.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- ── Statobreto / mesaĝoj ── -->
+    <string name="main_status_ready">Preta</string>
+    <string name="main_status_location_granted">Loka permeso donita; GPS-metadatenoj konserviĝos post konvertado</string>
+    <string name="main_status_location_denied">Loka permeso ne donita: konvertitaj fotoj perdos GPS-lokinformojn</string>
+    <string name="main_status_all_files_granted">«Aliro al ĉiuj dosieroj» donita; konvertado skribos rekte en la galerian dosierujon kaj plene konservos lokinformojn</string>
+    <string name="main_status_all_files_denied">«Aliro al ĉiuj dosieroj» ne donita: iuj aparatoj eble perdos lokinformojn post konvertado</string>
+    <string name="main_status_read_granted">Permeso legi fotojn kaj videojn donita</string>
+    <string name="main_status_video_missing">Donita, sed la videa permeso mankas: ne eblas trovi la akompanajn videojn de du-dosieraj Live Photo</string>
+    <string name="main_status_permission_denied">Permeso ne donita; vi povas denove alklaki «Aldoni dosierojn»</string>
+    <string name="main_status_folder_not_selected">Neniu dosierujo elektita</string>
+    <string name="main_status_folder_unavailable">Ne eblas aliri la elektitan dosierujon (nur lokaj konservejaj dosierujoj subtenataj)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Restarigis la lastan seancon (%1$d dosiero)</item>
+        <item quantity="other">Restarigis la lastan seancon (%1$d dosieroj)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Detektis lastan nenormalan eliron; la nefinita listo estis malplenigita</string>
+    <string name="main_status_compose_blocks_extract">La vico enhavas kunmetajn taskojn; ne eblas ŝalti al eltira reĝimo</string>
+    <string name="main_status_replace_off_mutex">Anstataŭiga reĝimo malŝaltita (reciproke ekskluziva kun «Forigi originalojn post prilaboro»)</string>
+    <string name="main_status_delete_needs_all_files">Aŭtomata forigo de originaloj postulas «aliron al ĉiuj dosieroj»; bonvolu unue doni permeson</string>
+    <string name="main_status_replace_off">Anstataŭiga reĝimo malŝaltita; konvertaj rezultoj denove skribiĝas en la galerian dosierujon</string>
+    <string name="main_status_replace_needs_all_files">Anstataŭiga reĝimo postulas «aliron al ĉiuj dosieroj»; bonvolu unue doni permeson</string>
+    <string name="main_status_delete_off_mutex">«Forigi originalojn post prilaboro» malŝaltita (reciproke ekskluziva kun anstataŭiga reĝimo)</string>
+    <string name="main_status_loading_albums">Legas albumojn…</string>
+    <string name="main_status_no_albums">Neniu albumo trovita</string>
+    <string name="main_status_compose_no_photo">Neniu foto elektita; ne eblas kunmeti</string>
+    <string name="main_status_compose_no_video">Neniu video elektita; ne eblas kunmeti</string>
+    <string name="main_status_compose_all_added">Ĉiuj elektitaj fotoj jam estas en la listo</string>
+    <string name="main_status_compose_paired">Fotoj %1$d, videoj %2$d; laŭ la pli malgranda nombro aldoniĝis %3$d kunmetaj taskoj</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Aldonis %1$d kunmetan taskon; alklaku «Komenci konvertadon» por kunmeti</item>
+        <item quantity="other">Aldonis %1$d kunmetajn taskojn; alklaku «Komenci konvertadon» por kunmeti</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (eliga formato aŭtomate ŝanĝita al Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Importas %1$d kundividitan bildon…</item>
+        <item quantity="other">Importas %1$d kundividitajn bildojn…</item>
+    </plurals>
+    <string name="main_status_import_failed">Importado malsukcesis: %1$s</string>
+    <string name="main_status_import_done_partial">Importado finita: %1$d sukcesis, %2$d malsukcesis</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importado finita: entute importis %1$d dosieron</item>
+        <item quantity="other">Importado finita: entute importis %1$d dosierojn</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importado haltigita: %1$d sukcesis, %2$d malsukcesis</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Importas %1$d dosieron…</item>
+        <item quantity="other">Importas %1$d dosierojn…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importas %1$d/%2$d…</string>
+    <string name="main_status_stopping">Haltigas… (haltos post fino de la nuna dosiero)</string>
+    <string name="main_status_stopping_import">Haltigas importadon…</string>
+    <string name="main_status_removed">Forigis %1$s</string>
+    <string name="main_status_cleared">Malplenigita</string>
+    <string name="main_status_nothing_to_convert">Neniu konvertebla dosiero</string>
+    <string name="main_status_folder_unreadable">Ne eblas legi la elektitan dosierujon</string>
+    <string name="main_status_scanning_folder">Skanas dosierujon…</string>
+    <string name="main_status_no_images">Neniu bildo trovita en la elektita dosierujo</string>
+    <string name="main_status_batch_importing">Amase importas %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Amasa importado haltigita: entute importis %1$d Live Photo</item>
+        <item quantity="other">Amasa importado haltigita: entute importis %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Amasa importado haltigita: entute importis %1$d Live Photo, preterlasis %2$d ne-Live-Photo dosierojn</item>
+        <item quantity="other">Amasa importado haltigita: entute importis %1$d Live Photo, preterlasis %2$d ne-Live-Photo dosierojn</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Amasa importado finita: entute importis %1$d Live Photo</item>
+        <item quantity="other">Amasa importado finita: entute importis %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Amasa importado finita: entute importis %1$d Live Photo, preterlasis %2$d ne-Live-Photo dosierojn</item>
+        <item quantity="other">Amasa importado finita: entute importis %1$d Live Photo, preterlasis %2$d ne-Live-Photo dosierojn</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Haltigita: el %1$d dosieroj, %2$d prilaboritaj kaj %3$d fontaj dosieroj anstataŭigitaj</string>
+    <string name="main_status_stopped_export">Haltigita: el %1$d dosieroj, %2$d prilaboritaj kaj %3$d eksportitaj al la galerio</string>
+    <string name="main_status_done_replace_reason">Finita: %1$d dosieroj prilaboritaj, %2$d fontaj dosieroj anstataŭigitaj (kialo: %3$s)</string>
+    <string name="main_status_done_export_reason">Finita: %1$d dosieroj prilaboritaj, %2$d eksportitaj al la galerio (kialo: %3$s)</string>
+    <string name="main_status_done_replace">Finita: %1$d dosieroj prilaboritaj, %2$d fontaj dosieroj anstataŭigitaj</string>
+    <string name="main_status_done_export">Finita: %1$d dosieroj prilaboritaj, %2$d eksportitaj al la galerio</string>
+    <string name="main_status_keep_originals">%1$s; «Plena konserveja aliro» ne donita, do la originaloj konserviĝis</string>
+
+    <!-- ── Informoj de listaj eroj ── -->
+    <string name="main_info_detecting">Detektas…</string>
+    <string name="main_info_unrecognized">Nekonata Live Photo-formato</string>
+    <string name="main_info_converting">Konvertas…</string>
+    <string name="main_info_compose_task">Kunmeta tasko (alklaku Komenci konvertadon por kunmeti)</string>
+    <string name="main_info_done_replaced">Finita (%1$d fontaj dosieroj anstataŭigitaj)</string>
+    <string name="main_info_done_skipped">Finita (preterlasita: samnoma konflikto)</string>
+    <string name="main_info_done_exported">Finita (%1$d eksportitaj)</string>
+    <string name="main_info_failed">Malsukcesis: %1$s</string>
+
+    <!-- ── Progresdetaloj ── -->
+    <string name="main_progress_added">Aldonis %1$d/%2$d</string>
+    <string name="main_progress_processed">Prilaboris %1$d/%2$d</string>
+    <string name="main_progress_imported">Importis %1$d/%2$d</string>
+
+    <!-- ── Permesaj dialogoj ── -->
+    <string name="main_dialog_permission_title">Necesas permeso legi fotojn kaj videojn</string>
+    <string name="main_dialog_permission_message">Ĉi tiu programo bezonas legi fotojn kaj videojn sur via aparato:\n\n• Fota permeso: skani la aparatan galerion kaj rekoni la Live Photo-ojn en ĝi\n• Videa permeso: trovi la akompanajn videojn de du-dosieraj Live Photo\n• Loka permeso: konservi la GPS-lokmetadatenojn en la fotoj (se mankas, konvertitaj fotoj perdos lokinformojn)\n\nSe vi rifuzos, la enkonstruita elektilo ne uzeblos; vi povas poste denove alklaki «Aldoni dosierojn» por regi permeson.</string>
+    <string name="main_dialog_settings_title">Permesoj por fotoj kaj videoj devas esti donitaj permane</string>
+    <string name="main_dialog_settings_message">Vi antaŭe elektis «Ne demandu denove», do la sistemo ne plu montras la permesan dialogon.\n\nBonvolu iri al la apa detalpaĝo → Permesoj → Fotoj kaj videoj, doni aliron permane, kaj poste reveni al ĉi tiu apo.\n\nNoto: vi devas doni ambaŭ permesojn «Fotoj» kaj «Videoj», alie du-dosieraj Live Photo-oj ne povos trovi siajn akompanajn videojn.</string>
+
+    <!-- ── Dialogo pri la permeso «Aliro al ĉiuj dosieroj» ── -->
+    <string name="main_dialog_allfiles_title_delete">Aŭtomata forigo de originaloj postulas «aliron al ĉiuj dosieroj»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Ĉi tiu aparato ne subtenas aŭtomatan forigon de originaloj</string>
+    <string name="main_dialog_allfiles_title_replace">Anstataŭiga reĝimo postulas «aliron al ĉiuj dosieroj»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Ĉi tiu aparato ne subtenas anstataŭigan reĝimon</string>
+    <string name="main_dialog_allfiles_title_location">Rekomendatas doni «aliron al ĉiuj dosieroj»</string>
+    <string name="main_dialog_allfiles_delete_message">«Forigi originalojn post prilaboro» rekte forigos la originalajn dosierojn en la disko (la foton kaj ĝian akompanan videon). Tio ne povas esti malfarita, do «aliro al ĉiuj dosieroj» devas esti donita unue.\n\nLa ŝaltilo disponeblos post kiam vi donos ĝin; vi povos mem aktivigi ĝin tiam.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">La nuna sistemo (Android 10 aŭ pli malnova) ne disponigas «aliron al ĉiuj dosieroj», do originalaj dosieroj en la disko ne povas esti rekte forigitaj; ĉi tiu aparato do ne subtenas «Forigi originalojn post prilaboro».\n\nVi povas mane purigi la originalojn per la sistema galerio post konvertado.</string>
+    <string name="main_dialog_allfiles_replace_message">«Anstataŭiga reĝimo» skribos la konvertan rezulton rekte reen al la originalaj dosieroj en la disko (anstataŭigante ilian enhavon). Tio ne povas esti malfarita, do «aliro al ĉiuj dosieroj» devas esti donita unue.\n\nLa ŝaltilo disponeblos post kiam vi donos ĝin; vi povos mem aktivigi ĝin tiam.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">La nuna sistemo (Android 10 aŭ pli malnova) ne disponigas «aliron al ĉiuj dosieroj», do originalaj dosieroj en la disko ne povas esti rekte reverkitaj; ĉi tiu aparato do ne subtenas «Anstataŭigan reĝimon».\n\nVi povas daŭre konverti per la norma maniero; la rezultoj skribiĝos en la galerian dosierujon.</string>
+    <string name="main_dialog_allfiles_location_message">Sur iuj aparatoj (ekz. Meizu), skribado per la sistema galeria interfaco forigas GPS-lokinformojn, do konvertitaj fotoj perdas lokon.\n\nPost kiam vi donos «aliron al ĉiuj dosieroj», ĉi tiu programo skribos rekte en la galerian dosierujon kaj plene konservos la lokmetadatenojn.\n\nKonvertado funkcias ankaŭ sen ĝi, sed iuj aparatoj eble perdos lokinformojn.</string>
+
+    <!-- ── Dialogo pri konflikto de eliga dosiernomo ── -->
+    <string name="main_dialog_conflict_title">Konflikto de eliga dosiernomo</string>
+    <string name="main_dialog_conflict_message">Dosiero kun la sama nomo jam ekzistas en la eliga dosierujo:\n%1$s\n\nBonvolu elekti kiel trakti ĝin.</string>
+    <string name="main_label_conflict_always">Uzi ĉi tion por ĉiuj postaj konfliktoj</string>
+
+    <!-- ── Butonoj de dialogoj ── -->
+    <string name="main_btn_grant">Doni</string>
+    <string name="main_btn_deny">Rifuzi</string>
+    <string name="main_btn_go_settings">Malfermi agordojn</string>
+    <string name="main_btn_cancel">Nuligi</string>
+    <string name="main_btn_grant_access">Doni aliron</string>
+    <string name="main_btn_got_it">Komprenite</string>
+    <string name="main_btn_not_now">Ne nun</string>
+    <string name="main_btn_skip">Preterlasi</string>
+    <string name="main_btn_overwrite">Anstataŭigi</string>
+    <string name="main_btn_auto_rename">Aŭtomate renomi</string>
+
+    <!-- ── Konvertaj rezultoj / kialoj de eksporta malsukceso ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Forigis %1$d originalan dosieron</item>
+        <item quantity="other">Forigis %1$d originalajn dosierojn</item>
+    </plurals>
+    <string name="main_delete_nothing">Neniu originalo forigenda</string>
+    <string name="main_delete_partial">Forigis %1$d originalajn dosierojn (%2$d ne povis esti forigitaj kaj konserviĝis)</string>
+    <string name="main_delete_failed">Forigo de originaloj malsukcesis (dosieroj uzataj aŭ sen skriba permeso); ili konserviĝis</string>
+    <string name="main_export_missing_output">Konverta rezulto mankas aŭ estas malplena: %1$s</string>
+    <string name="main_export_missing_output_bare">Konverta rezulto mankas aŭ estas malplena</string>
+    <string name="main_export_insert_null">MediaStore insert redonis null</string>
+    <string name="main_export_output_stream">MediaStore-eliga fluo ne disponeblas</string>
+    <string name="main_export_write_failed">MediaStore-skribado malsukcesis: %1$s</string>
+    <string name="main_export_mkdir_failed">Ne eblas krei la galerian dosierujon %1$s</string>
+    <string name="main_export_dir_write_failed">Skribado al la galeria dosierujo malsukcesis: %1$s</string>
+    <string name="main_export_no_source">Ne eblas lokalizi la fontan dosieron; anstataŭigo preterlasita</string>
+    <string name="main_export_companion_failed">Skribado reen de la akompana dosiero malsukcesis: %1$s</string>
+    <string name="main_export_source_dir_unwritable">La fonta dosierujo ne estas skribebla, do la akompana dosiero ne povis esti reskribita</string>
+    <string name="main_export_source_dir_unavailable">Fonta dosierujo ne disponeblas: %1$s</string>
+    <string name="main_export_replace_failed">Anstataŭigo de la fonta dosiero malsukcesis: %1$s</string>
+    <string name="main_export_replace_failed_bare">Anstataŭigo de la fonta dosiero malsukcesis</string>
+</resources>

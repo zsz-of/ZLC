@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Frisian (Western) (fy) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">Klear</string>
+    <string name="main_status_location_granted">Lokaasjetastimming krigen; GPS-metadata wurdt nei konverzje bewarre</string>
+    <string name="main_status_location_denied">Lokaasjetastimming net jûn: konvertearde foto\'s ferlieze GPS-lokaasje-ynformaasje</string>
+    <string name="main_status_all_files_granted">Tastimming "Tagong ta alle bestannen" krigen; konverzje skriuwt rjochtstreeks nei de albummap en hâldt lokaasje-ynformaasje folslein by</string>
+    <string name="main_status_all_files_denied">Tastimming "Tagong ta alle bestannen" net jûn: op guon apparaten kin lokaasje-ynformaasje nei konverzje ferlern gean</string>
+    <string name="main_status_read_granted">Tastimming om foto\'s en fideo\'s te lêzen krigen</string>
+    <string name="main_status_video_missing">Tastimming jûn, mar fideotastimming ûntbrekt: kin it byhearrende fideo fan in twa-bestâns-Live Photo net fine</string>
+    <string name="main_status_permission_denied">Tastimming net jûn; tik wer op "Bestannen tafoegje"</string>
+    <string name="main_status_folder_not_selected">Gjin map keazen</string>
+    <string name="main_status_folder_unavailable">Kin de keazen map net iepenje (allinnich lokale opslagmappen stipe)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Foarige sesje wersteld (%1$d bestân)</item>
+        <item quantity="other">Foarige sesje wersteld (%1$d bestannen)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Foarige abnormale ôfslúten werken; ûnfolsleine list leechmakke</string>
+    <string name="main_status_compose_blocks_extract">Wachtrij hat gearstallingstaken; kin net nei opsplitsmodus wikselje</string>
+    <string name="main_status_replace_off_mutex">Ferfangingmodus útskeakele (net tagelyk mei "Nei it ferwurkjen it orizjinele fuorthelje")</string>
+    <string name="main_status_delete_needs_all_files">Automatysk fuortheljen fan it orizjinele freget tastimming "Tagong ta alle bestannen"; jou earst tastimming</string>
+    <string name="main_status_replace_off">Ferfangingmodus útskeakele; konverzjeresultaat wurdt wer skreaun nei de albummap</string>
+    <string name="main_status_replace_needs_all_files">Ferfangingmodus freget tastimming "Tagong ta alle bestannen"; jou earst tastimming</string>
+    <string name="main_status_delete_off_mutex">"Nei it ferwurkjen it orizjinele fuorthelje" útskeakele (net tagelyk mei ferfangingmodus)</string>
+    <string name="main_status_loading_albums">Albums lêze…</string>
+    <string name="main_status_no_albums">Gjin album fûn</string>
+    <string name="main_status_compose_no_photo">Gjin foto keazen; kin net gearstald wurde</string>
+    <string name="main_status_compose_no_video">Gjin fideo keazen; kin net gearstald wurde</string>
+    <string name="main_status_compose_all_added">Keazen foto\'s stean allegear al yn de list</string>
+    <string name="main_status_compose_paired">Foto\'s %1$d, fideo\'s %2$d — neffens de lytste kant binne %3$d gearstallingstaak-pearen tafoege</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d gearstallingstaak tafoege; tik "Begjin te konvertearjen" om te gearstallen</item>
+        <item quantity="other">%1$d gearstallingstaken tafoege; tik "Begjin te konvertearjen" om te gearstallen</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (útfierformaat automatysk nei Google feroare)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Dielde ôfbylding %1$d ymportearje…</item>
+        <item quantity="other">Dielde ôfbyldings %1$d ymportearje…</item>
+    </plurals>
+    <string name="main_status_import_failed">Ymport mislearre: %1$s</string>
+    <string name="main_status_import_done_partial">Ymport dien: %1$d slagge, %2$d mislearre</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Ymport dien: yn totaal %1$d bestân ymportearre</item>
+        <item quantity="other">Ymport dien: yn totaal %1$d bestannen ymportearre</item>
+    </plurals>
+    <string name="main_status_import_stopped">Ymport stoppe: %1$d slagge, %2$d mislearre</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d bestân ymportearje…</item>
+        <item quantity="other">%1$d bestannen ymportearje…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Ymportearje %1$d/%2$d…</string>
+    <string name="main_status_stopping">Stopje… (stop nei it hjoeddeiske bestân)</string>
+    <string name="main_status_stopping_import">Ymport stopje…</string>
+    <string name="main_status_removed">%1$s fuorthelle</string>
+    <string name="main_status_cleared">Leechmakke</string>
+    <string name="main_status_nothing_to_convert">Gjin bestannen om te konvertearjen</string>
+    <string name="main_status_folder_unreadable">Kin de keazen map net lêze</string>
+    <string name="main_status_scanning_folder">Map trochsykje…</string>
+    <string name="main_status_no_images">Gjin ôfbyldings fûn yn de keazen map</string>
+    <string name="main_status_batch_importing">Bondelymport %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Bondelymport stoppe: yn totaal %1$d Live Photo ymportearre</item>
+        <item quantity="other">Bondelymport stoppe: yn totaal %1$d Live Photo\'s ymportearre</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Bondelymport stoppe: yn totaal %1$d Live Photo ymportearre, %2$d net-Live-Photo-bestân oersloegen</item>
+        <item quantity="other">Bondelymport stoppe: yn totaal %1$d Live Photo\'s ymportearre, %2$d net-Live-Photo-bestannen oersloegen</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Bondelymport dien: yn totaal %1$d Live Photo ymportearre</item>
+        <item quantity="other">Bondelymport dien: yn totaal %1$d Live Photo\'s ymportearre</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Bondelymport dien: yn totaal %1$d Live Photo ymportearre, %2$d net-Live-Photo-bestân oersloegen</item>
+        <item quantity="other">Bondelymport dien: yn totaal %1$d Live Photo\'s ymportearre, %2$d net-Live-Photo-bestannen oersloegen</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Stoppe: fan %1$d bestannen binne %2$d ferwurke, %3$d boarnebestannen ferfongen</string>
+    <string name="main_status_stopped_export">Stoppe: fan %1$d bestannen binne %2$d ferwurke, %3$d nei it album eksportearre</string>
+    <string name="main_status_done_replace_reason">Dien: %1$d bestannen ferwurke, %2$d boarnebestannen ferfongen (reden: %3$s)</string>
+    <string name="main_status_done_export_reason">Dien: %1$d bestannen ferwurke, %2$d nei it album eksportearre (reden: %3$s)</string>
+    <string name="main_status_done_replace">Dien: %1$d bestannen ferwurke, %2$d boarnebestannen ferfongen</string>
+    <string name="main_status_done_export">Dien: %1$d bestannen ferwurke, %2$d nei it album eksportearre</string>
+    <string name="main_status_keep_originals">%1$s; tastimming "Folsleine opslachtagong" net krigen, orizjinele bewarre</string>
+    <string name="main_info_detecting">Werken…</string>
+    <string name="main_info_unrecognized">Net werken Live Photo-formaat</string>
+    <string name="main_info_converting">Konvertearje…</string>
+    <string name="main_info_compose_task">Gearstallingstaak (tik "Begjin te konvertearjen" om te gearstallen)</string>
+    <string name="main_info_done_replaced">Dien (%1$d boarnebestannen ferfongen)</string>
+    <string name="main_info_done_skipped">Dien (oersloegen: namme-konflikt)</string>
+    <string name="main_info_done_exported">Dien (%1$d eksportearre)</string>
+    <string name="main_info_failed">Mislearre: %1$s</string>
+    <string name="main_progress_added">%1$d/%2$d tafoege</string>
+    <string name="main_progress_processed">%1$d/%2$d ferwurke</string>
+    <string name="main_progress_imported">%1$d/%2$d ymportearre</string>
+    <string name="main_dialog_permission_title">Tastimming om foto\'s en fideo\'s te lêzen nedich</string>
+    <string name="main_dialog_permission_message">Dit programma moat foto\'s en fideo\'s op jo apparaat lêze:\n\n• Fototastimming: it album fan it apparaat trochsykje en Live Photo\'s werken\n• Fideotastimming: it byhearrende fideo fan in twa-bestâns-Live Photo fine\n• Lokaasjetastimming: GPS-lokaasje-metadata yn foto\'s bewarje (as it ûntbrekt, ferliest de foto nei konverzje syn lokaasje)\n\nNei wegering kin de ynboude kiezer net brûkt wurde; tik letter wer op "Bestannen tafoegje" om opnij tastimming te jaan.</string>
+    <string name="main_dialog_settings_title">Fototastimming en fideotastimming moatte hânliedend jûn wurde</string>
+    <string name="main_dialog_settings_message">Do hiest earder "Net freget" keazen, it systeem toant gjin tastimming-dialog mear.\n\nGean nei Appynformaasje → Tastimmingen → Foto\'s en fideo\'s, jou de tagong hânliedend en kom werom nei de app.\n\nTink derom: sawol "Foto\'s" as "Fideo\'s" moatte jûn wurde; oars kin in twa-bestâns-Live Photo it byhearrende fideo net fine.</string>
+    <string name="main_dialog_allfiles_title_delete">"Nei it ferwurkjen it orizjinele fuorthelje" freget "Tagong ta alle bestannen"</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Dit apparaat stipet automatysk fuortheljen fan it orizjinele net</string>
+    <string name="main_dialog_allfiles_title_replace">Ferfangingmodus freget "Tagong ta alle bestannen"</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Dit apparaat stipet ferfangingmodus net</string>
+    <string name="main_dialog_allfiles_title_location">Tastimming "Tagong ta alle bestannen" jûn wurde oanrikkemandearre</string>
+    <string name="main_dialog_allfiles_delete_message">"Nei it ferwurkjen it orizjinele fuorthelje" hellet de orizjinele bestannen op skiif (foto\'s en har byhearrende fideo\'s) rjochtstreeks fuort; dizze aksje kin net ûngedien makke wurde, dus earst moat de tastimming "Tagong ta alle bestannen" jûn wurde.\n\nNei it jaan fan de tastimming wurdt de skeakel pas brûkber, dan kinsto dy sels ynskeakelje.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">It hjoeddeiske systeem (Android 10 en âlder) jout gjin tastimming "Tagong ta alle bestannen" en orizjinele bestannen op skiif kinne net rjochtstreeks fuorthelle wurde; dêrom stipet dit apparaat "Nei it ferwurkjen it orizjinele fuorthelje" net.\n\nNei de konverzje kinsto de orizjinele fia it systeemalbum hânliedend opromje.</string>
+    <string name="main_dialog_allfiles_replace_message">"Ferfangingmodus" skriuwt it konverzjeresultaat rjochtstreeks werom yn it orizjinele bestân op skiif (oerskriuwt de orizjinele ynhâld); dizze aksje kin net ûngedien makke wurde, dus earst moat de tastimming "Tagong ta alle bestannen" jûn wurde.\n\nNei it jaan fan de tastimming wurdt de skeakel pas brûkber, dan kinsto dy sels ynskeakelje.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">It hjoeddeiske systeem (Android 10 en âlder) jout gjin tastimming "Tagong ta alle bestannen" en orizjinele bestannen op skiif kinne net rjochtstreeks feroare wurde; dêrom stipet dit apparaat ferfangingmodus net.\n\nKinsto de konverzje op de standertwize fierder sette; it resultaat wurdt nei de albummap skreaun.</string>
+    <string name="main_dialog_allfiles_location_message">Op guon apparaten (bgl. Meizu) ferberget skriuwen fia de systeemalbum-ynterface de GPS-lokaasje-ynformaasje, de foto ferliest syn lokaasje nei konverzje.\n\nNei "Tagong ta alle bestannen" skriuwt it programma rjochtstreeks nei de albummap en hâldt lokaasje-metadata folslein by.\n\nSûnder de tastimming wurket de konverzje ek goed; op guon apparaten kin de lokaasje ferlern gean.</string>
+    <string name="main_dialog_conflict_title">Konflikt yn útfierbestânsnamme</string>
+    <string name="main_dialog_conflict_message">Yn de útfiermap bestiet al in bestân mei deselde namme:\n%1$s\n\nKies hoe\'t dit behannele wurde moat.</string>
+    <string name="main_label_conflict_always">Brûk dizze metoade foar takomstige konflikten</string>
+    <string name="main_btn_grant">Tastimming jaan</string>
+    <string name="main_btn_deny">Wegerje</string>
+    <string name="main_btn_go_settings">Nei ynstellings</string>
+    <string name="main_btn_cancel">Annulearje</string>
+    <string name="main_btn_grant_access">Tastimming jaan</string>
+    <string name="main_btn_got_it">Begrepen</string>
+    <string name="main_btn_not_now">No net</string>
+    <string name="main_btn_skip">Oerslaan</string>
+    <string name="main_btn_overwrite">Oerskriuwe</string>
+    <string name="main_btn_auto_rename">Automatysk omneame</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d orizjineel bestân fuorthelle</item>
+        <item quantity="other">%1$d orizjinele bestannen fuorthelle</item>
+    </plurals>
+    <string name="main_delete_nothing">Gjin orizjinele om fuort te heljen</string>
+    <string name="main_delete_partial">%1$d orizjinele bestannen fuorthelle (%2$d fuortheljen mislearre, bewarre)</string>
+    <string name="main_delete_failed">Fuortheljen fan orizjinele mislearre (bestân is yn gebrûk of gjin skriuwtastimming); bewarre</string>
+    <string name="main_export_missing_output">Konverzjeprodukt ûntbrekt of is leech: %1$s</string>
+    <string name="main_export_missing_output_bare">Konverzjeprodukt ûntbrekt of is leech</string>
+    <string name="main_export_insert_null">MediaStore insert jout null werom</string>
+    <string name="main_export_output_stream">MediaStore-útfierstream net beskikber</string>
+    <string name="main_export_write_failed">MediaStore skriuwen mislearre: %1$s</string>
+    <string name="main_export_mkdir_failed">Kin albummap %1$s net oanmeitsje</string>
+    <string name="main_export_dir_write_failed">Skriuwen nei de albummap mislearre: %1$s</string>
+    <string name="main_export_no_source">Boarnebestân net fûn; ferfanging oersloegen</string>
+    <string name="main_export_companion_failed">Weromskriuwen nei it byhearrende bestân mislearre: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Boarnebestânsmap is net skriuwber; byhearrend bestân koe net weromskreaun wurde</string>
+    <string name="main_export_source_dir_unavailable">Boarnebestânsmap net beskikber: %1$s</string>
+    <string name="main_export_replace_failed">Boarnebestân ferfangen mislearre: %1$s</string>
+    <string name="main_export_replace_failed_bare">Boarnebestân ferfangen mislearre</string>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<!--
+  Ślōnsko godka — aktualizacyje / ściōngniyńcie (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Zdrzōdłowy tekst je po chińsku (res/values/strings_update.xml).
+  Kożdy kluc ôdpadŏ bazowemu; placeholdery (%1$s / %1$d) i sekwencyje \n sōm zachowane.
+-->
+<resources>
+
+    <!-- ========== Zajta udostympnianio Lanzou Cloud i czytanie prostego linku ========== -->
+    <string name="update_lanzou_gone">Udostympnienie Lanzou Cloud ôstało cofniynte abo zbiōr niy istnieje; użyj GitHub, coby ściōngnōńć</string>
+    <string name="update_lanzou_gone_short">Udostympnienie Lanzou Cloud ôstało cofniynte; użyj GitHub, coby ściōngnōńć</string>
+    <string name="update_lanzou_resolve_failed">Niy idzie przeczytać linku ściōngniyńcio z Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">To udostympnienie Lanzou Cloud potrzebuje kodu dōstympu; użyj GitHub (abo poszukaj kodu w ôpisie wersyje)</string>
+    <string name="update_lanzou_wrong_passwd">Zły kod dōstympu Lanzou Cloud</string>
+    <string name="update_err_resolve_failed">Niy idzie przeczytać</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Kōntrola przeciw robotōm Lanzou Cloud niy podarziła sie</string>
+    <string name="update_err_no_frame">Niy idzie przeczytać zajty ściōngniyńcio Lanzou Cloud (niy znodziono ramy ściōngniyńcio)</string>
+    <string name="update_err_no_file_id">Niy idzie przeczytać identyfikatora zbiōru Lanzou Cloud</string>
+    <string name="update_err_no_sign">Niy idzie przeczytać podpisu Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Zapytanie API niy podarziło sie</string>
+    <string name="update_err_api_request">Zapytanie API Lanzou Cloud niy podarziło sie</string>
+    <string name="update_err_empty_direct">Lanzou Cloud wrōciōł pusty adres ściōngniyńcio</string>
+    <string name="update_err_direct_expired">Adres ściōngniyńcio Lanzou Cloud już niy funguje; pobierz go znōw</string>
+    <string name="update_err_http_request">Zapytanie niy podarziło sie (HTTP %1$d)</string>
+
+    <!-- ========== Ściōngniyńcie ========== -->
+    <string name="update_err_connect">Niy idzie sie połōnczyć ze serwerym ściōngniyńcio: %1$s</string>
+    <string name="update_err_http">Ściōngniyńcie niy podarziło sie (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Niy idzie utworzić połączynia ściōngniyńcio</string>
+    <string name="update_err_empty">Ściōngniynto zawartość je pusto</string>
+    <string name="update_err_incomplete">Ściōngniyńcie niy je cołke (dostōno %1$d z %2$d bajtōw); ściōngnij znōw</string>
+    <string name="update_err_interrupted">Ściōngniyńcie przerwane: %1$s</string>
+
+    <!-- ========== Kōntrola i instalowanie paketu ========== -->
+    <string name="update_err_not_apk">Ściōngniynty zbiōr niy je dobrym paketym (to może być zajta abo link już niy funguje); ściōngnij znōw abo użyj GitHub.</string>
+    <string name="update_err_apk_incomplete">Zawartość paketu niy je cołko; ściōngnij znōw abo użyj GitHub.</string>
+    <string name="update_err_apk_unparsable">Niy idzie przeczytać paketu (może ściōngniyńcie niy je cołke); ściōngnij znōw abo użyj GitHub.</string>
+    <string name="update_err_no_install_permission">Uprawniynie „instalowanie niyznōmych aplikacyji” jeszcze niy przizwolōne</string>
+    <string name="update_err_installer_failed">Niy idzie zawołać systymowego instalatora (%1$s); ôtwōrz paket ryncznie w zorzōndzŏczu zbiōrōw</string>
+
+</resources>

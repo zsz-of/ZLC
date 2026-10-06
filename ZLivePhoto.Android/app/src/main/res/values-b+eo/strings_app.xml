@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Esperanto (eo).
+  Tradukita el res/values/strings_*.xml (simpligita ĉina baza dosiero, la rezerva lingvo).
+  La ŝlosiloj spegulas la bazan dosieron; anstataŭigiloj (%1$s / %1$d) kaj eskaposekvencoj restas senŝanĝaj.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- La ero “sekvi la sistemon” en la elekto de lingvo de la apo -->
+    <string name="app_language_follow_system">Sekvi la sistemon</string>
+    <!-- Titolo de la lingva elekto (la agorda modulo povas havi sian propran ŝlosilon) -->
+    <string name="app_language_title">Lingvo de la apo</string>
+</resources>

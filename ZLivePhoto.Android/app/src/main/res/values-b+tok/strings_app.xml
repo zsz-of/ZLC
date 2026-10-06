@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  toki pona (tok) — toki pi ilo ali (nimi open: app_).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Quality level: C (low-resource language, best-effort translation).
+  Base: res/values/strings_app.xml (toki Sonko). %1$s / %1$d li awen. apostrophe: \'
+-->
+<resources>
+    <!-- nasin toki: kepeken toki pi ilo nanpa -->
+    <string name="app_language_follow_system">toki pi ilo nanpa</string>
+    <!-- nimi open pi nasin toki -->
+    <string name="app_language_title">toki ilo</string>
+</resources>

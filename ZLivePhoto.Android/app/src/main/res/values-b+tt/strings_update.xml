@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Татарча (Tatar) strings.
+  Update / download (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Tatar (Cyrillic); best-effort translation, a native review pass is recommended.
+  Искәрмә: төп катламдагы UpdaterException / AddonException текстлары MainActivity statusText аша
+  турыдан-туры исемлек юлларында һәм журнал панелендә күрсәтелә, шуңа күрә барысы да ресурс аша уза.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud уртаклашу бите һәм туры сылтаманы ачыклау ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud уртаклашуы туктатылган яки файл юк; GitHub аша йөкләп алыгыз</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud уртаклашуы туктатылган; GitHub аша йөкләп алыгыз</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud йөкләү сылтамасын ачыклау уңышсыз булды</string>
+    <string name="update_lanzou_need_passwd">Бу Lanzou Cloud уртаклашуына алу коды кирәк; GitHub аша йөкләп алыгыз (яки алу кодын Release аңлатмасыннан эзләгез)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud алу коды дөрес түгел</string>
+    <string name="update_err_resolve_failed">Ачыклау уңышсыз</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud анти-краулер тикшерүе уңышсыз</string>
+    <string name="update_err_no_frame">Lanzou Cloud йөкләү битен анализлап булмый (йөкләү фреймы табылмады)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud файл идентификаторын анализлап булмый</string>
+    <string name="update_err_no_sign">Lanzou Cloud имзасын анализлап булмый</string>
+    <string name="update_err_ajax_request">Интерфейс соравы уңышсыз булды</string>
+    <string name="update_err_api_request">Lanzou Cloud интерфейс соравы уңышсыз булды</string>
+    <string name="update_err_empty_direct">Lanzou Cloud буш йөкләү адресы кайтарды</string>
+    <string name="update_err_direct_expired">Lanzou Cloud йөкләү адресы искергән; яңадан алыгыз</string>
+    <string name="update_err_http_request">Сорав уңышсыз (HTTP %1$d)</string>
+
+    <!-- ========== Йөкләү ========== -->
+    <string name="update_err_connect">Йөкләү серверына тоташып булмый: %1$s</string>
+    <string name="update_err_http">Йөкләү уңышсыз (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Йөкләү тоташуын урнаштырып булмый</string>
+    <string name="update_err_empty">Йөкләнгән эчтәлек буш</string>
+    <string name="update_err_incomplete">Йөкләү тулы түгел (%1$d / %2$d байт алынды), яңадан йөкләгез</string>
+    <string name="update_err_interrupted">Йөкләү өзелде: %1$s</string>
+
+    <!-- ========== Урнаштыру пакетын тикшерү һәм урнаштыру ========== -->
+    <string name="update_err_not_apk">Йөкләнгән файл дөрес урнаштыру пакеты түгел (бәлки веб-бит яки йөкләү сылтамасы искергән); яңадан йөкләгез яки GitHub аша алыгыз.</string>
+    <string name="update_err_apk_incomplete">Урнаштыру пакетының эчтәлеге тулы түгел; яңадан йөкләгез яки GitHub аша алыгыз.</string>
+    <string name="update_err_apk_unparsable">Урнаштыру пакетын анализлап булмый (бәлки йөкләү тулы түгел); яңадан йөкләгез яки GitHub аша алыгыз.</string>
+    <string name="update_err_no_install_permission">«Билгесез кушымталарны урнаштыру» рөхсәте әле бирелмәгән</string>
+    <string name="update_err_installer_failed">Система урнаштыручысын чакырып булмый (%1$s); файл менеджеры аша пакетны кулдан ачып урнаштырыгыз</string>
+
+</resources>

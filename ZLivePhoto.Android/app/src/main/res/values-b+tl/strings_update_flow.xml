@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Tagalog strings.
+  Update flow (ui/UpdateFlow.kt).
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Tagalog/Filipino; English tech loanwords are kept where customary.
+  Note: UpdateFlowController (non-Composable) uses context.getString(...); dialogs use stringResource(...).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <!-- Controller-side messages (outside Composables with no Context, all go through context.getString) -->
+    <string name="update_github_url_missing">Walang nakuha na GitHub download URL; subukan muli mamaya.</string>
+    <string name="update_flavor_standard">Standard na edisyon</string>
+    <string name="update_flavor_go">Go na edisyon</string>
+    <string name="update_lanzou_url_missing">Walang Lanzou Cloud download link ang bersyong ito; puwede kang gumamit ng GitHub.</string>
+    <string name="update_apk_direct_missing">Walang direktang link ng package na tugma sa edisyon mo ang bersyong ito; pumili ng tamang APK sa GitHub releases page.</string>
+    <string name="update_install_permission_missing">Wala ang “install unknown apps” na pahintulot, kaya hindi awtomatikong mai-install. Payagan ito sa system settings at subukan muli.</string>
+    <string name="update_error_unknown">Hindi kilalang error</string>
+    <string name="update_fail_lanzou">Nabigo ang download mula sa Lanzou Cloud</string>
+    <string name="update_fail_github">Nabigo ang download mula sa GitHub</string>
+    <string name="update_lanzou_resolving">Nagre-resolve ng Lanzou Cloud download link…</string>
+    <string name="update_lanzou_downloading">Nagda-download mula sa Lanzou Cloud…</string>
+    <string name="update_github_downloading">Nagda-download mula sa GitHub…</string>
+    <string name="update_unzipping">Nag-a-unzip ng package…</string>
+    <string name="update_notes_empty">Walang release notes ang bersyong ito.</string>
+
+    <!-- Go-edition dialogs -->
+    <string name="update_use_normal_title">Gamitin ang standard na edisyon</string>
+    <string name="update_use_normal_body">Android 10 o mas bago ang device na ito, at hindi na sinusuportahan ang Go lightweight na edisyon; hindi na magagamit ang lumang bersyon.\n\nMay naka-install nang standard na edisyon (ZLC) sa device na ito — buksan ito at magpatuloy (hindi na nagbibigay ng Go-compatible na build ang mga bagong release; puwede mong i-uninstall ang lumang bersyon para makapagbakante ng espasyo).</string>
+    <string name="update_open_normal">Buksan ang standard na edisyon</string>
+    <string name="update_must_update_title">Kailangang mag-update bago magpatuloy</string>
+    <string name="update_forced_body">Android 10 o mas bago ang device na ito, at hindi na sinusuportahan ang Go lightweight na edisyon; hindi na magagamit ang lumang bersyon, at hindi na rin nagbibigay ng Go-compatible na build ang mga bagong release.\n\nKumonekta sa internet at i-tap ang “Subukan muli” para makuha ang standard na edisyon.</string>
+    <string name="update_retry">Subukan muli</string>
+    <string name="update_switch_normal_body">Android 10 o mas bago ang device na ito, at hindi na sinusuportahan ang Go lightweight na edisyon; hindi na magagamit ang lumang bersyon.\nI-download at i-install ang standard na edisyon para magpatuloy (hindi na nagbibigay ng Go-compatible na build ang mga bagong release).</string>
+
+    <!-- Download / install permission / result messages -->
+    <string name="update_downloading_title">I-download ang update</string>
+    <string name="update_cancel">Kanselahin</string>
+    <string name="update_need_permission_title">Kailangan ang pahintulot sa pag-install</string>
+    <string name="update_need_permission_body">Kailangan ng system na “install unknown apps” na pahintulot para mai-install ang bagong bersyon.\n\nI-tap ang “Bigyan ng pahintulot”, payagan ito sa settings at bumalik sa app; awtomatikong magpapatuloy ang pag-install (hindi na kailangang mag-download muli).</string>
+    <string name="update_grant">Bigyan ng pahintulot</string>
+    <string name="update_notice_title">Paalala</string>
+    <string name="update_got_it">Naiintindihan ko</string>
+
+    <!-- Main dialog / release notes -->
+    <string name="update_notes_title">v%1$s · Release notes</string>
+    <string name="update_back">Bumalik</string>
+    <string name="update_title_switch_normal">Lumipat sa standard na edisyon</string>
+    <string name="update_title_reinstall">I-install muli ang bersyong ito</string>
+    <string name="update_title_new_version">May bagong bersyon</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Ida-download at i-install muli ang bersyong ito (papalitan ang kasalukuyang app).\nGinagamit ang feature na ito para i-regression test ang update mechanism.</string>
+    <string name="update_view_notes">Tingnan ang release notes</string>
+    <string name="update_lanzou_unavailable">Pansamantalang hindi available ang Lanzou Cloud</string>
+    <string name="update_download_lanzou">Mag-download mula sa Lanzou Cloud</string>
+    <string name="update_download_github">Mag-download mula sa GitHub</string>
+    <string name="update_download_browser">Mag-download mula sa browser</string>
+    <string name="update_later">Mag-update mamaya</string>
+    <string name="update_later_switch">Lumipat mamaya</string>
+    <string name="update_skip_version">Laktawan ang bersyong ito</string>
+</resources>

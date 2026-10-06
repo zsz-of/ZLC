@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Low German (nds) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">De Lanzou-Deelen warr afbroken oder de Datei gifft dat nich, bruuk GitHub to daalladen</string>
+    <string name="update_lanzou_gone_short">De Lanzou-Deelen warr afbroken, bruuk GitHub to daalladen</string>
+    <string name="update_lanzou_resolve_failed">De Lanzou-Download-Link lett sik nich analyseren</string>
+    <string name="update_lanzou_need_passwd">Dit Lanzou-Deelen bruukt en Togangskood, bruuk GitHub to daalladen (oder söök den Kood in de Release-Anmarken)</string>
+    <string name="update_lanzou_wrong_passwd">Falschen Lanzou-Togangskood</string>
+    <string name="update_err_resolve_failed">Analyseren hett fehlslahn</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">De Lanzou-Anti-Kruup-Prief hett fehlslahn</string>
+    <string name="update_err_no_frame">De Lanzou-Download-Siet lett sik nich analyseren (keen Download-Ramm funnen)</string>
+    <string name="update_err_no_file_id">De Lanzou-Datei-Kennteken lett sik nich analyseren</string>
+    <string name="update_err_no_sign">De Lanzou-Ünnerschrift lett sik nich analyseren</string>
+    <string name="update_err_ajax_request">De Interface-Anfraag hett fehlslahn</string>
+    <string name="update_err_api_request">De Lanzou-Interface-Anfraag hett fehlslahn</string>
+    <string name="update_err_empty_direct">Lanzou hett en leddig Download-Adress trüchgeven</string>
+    <string name="update_err_direct_expired">De Lanzou-Download-Adress is aflopen, haal se nie</string>
+    <string name="update_err_http_request">Anfraag hett fehlslahn (HTTP %1$d)</string>
+    <string name="update_err_connect">Kunn nich mit den Download-Server verbinnt warrn: %1$s</string>
+    <string name="update_err_http">Daalladen hett fehlslahn (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Kunn kene Download-Verbinnen opbouen</string>
+    <string name="update_err_empty">De Download-Inholt is leddig</string>
+    <string name="update_err_incomplete">Dat Daalladen is nich kumplett (%1$d / %2$d Byte kregen), laad nie daal</string>
+    <string name="update_err_interrupted">Daalladen ünnerbraken: %1$s</string>
+    <string name="update_err_not_apk">Wat daalladen wurr, is keen gellen Installatschoonspaket (villicht en Nettsiet oder de Download-Link is aflopen), laad nie daal oder bruuk GitHub.</string>
+    <string name="update_err_apk_incomplete">De Inholt vun dat Installatschoonspaket is nich kumplett, laad nie daal oder bruuk GitHub.</string>
+    <string name="update_err_apk_unparsable">Dat Installatschoonspaket lett sik nich analyseren (villicht is dat Daalladen nich kumplett), laad nie daal oder bruuk GitHub.</string>
+    <string name="update_err_no_install_permission">Dat Verlööfnis „Unbekannte Apps installeren“ is noch nich kregen</string>
+    <string name="update_err_installer_failed">De System-Installateur lett sik nich opropen (%1$s), maak dat Installatschoonspaket handmatig in den Datei-Manager op</string>
+</resources>

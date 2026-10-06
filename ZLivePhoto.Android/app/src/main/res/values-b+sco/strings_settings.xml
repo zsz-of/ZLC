@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Scots strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Scots is a law-resource leid; this is a best-effort, model-assisted translation.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: C.
+-->
+<resources>
+
+    <!-- General -->
+    <string name="settings_title">Settins</string>
+    <string name="settings_cd_back">Back</string>
+    <string name="settings_btn_apply">Applee</string>
+    <string name="settings_btn_cancel">Cancel</string>
+    <string name="settings_btn_close">Close</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Sponsor</string>
+
+    <!-- Section titles -->
+    <string name="settings_section_general">General</string>
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_section_language">Leid</string>
+    <string name="settings_section_defaults">Defaut options</string>
+    <string name="settings_section_output">Ootput</string>
+    <string name="settings_section_transcode">Video transcodin</string>
+    <string name="settings_section_about">Aboot</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Credits an support</string>
+    <string name="settings_section_opensource">Open soorce an licence</string>
+
+    <!-- General -->
+    <string name="settings_startup_check_title">Chack fur updates on stairtup</string>
+    <string name="settings_startup_check_subtitle">Fetches new versions fae GitHub on stairtup an tells ye when there is an update</string>
+    <string name="settings_haptics_title">Vibration feedback</string>
+    <string name="settings_haptics_subtitle">Haptic feedback when tappin buttons an when the status chynges</string>
+    <string name="settings_bounce_title">Bouncy button animation</string>
+    <string name="settings_bounce_subtitle">Animation whaur buttons shrink an spring back when pressed</string>
+
+    <!-- Appearance -->
+    <string name="settings_theme_system">Follae the seestem</string>
+    <string name="settings_theme_dark">Dairk</string>
+    <string name="settings_theme_light">Licht</string>
+    <string name="settings_dynamic_theme_title">Material You dynamic colours</string>
+    <string name="settings_dynamic_theme_subtitle">Follaes the seestem wawpaper colours (Android 12+); when turnt aff, the preset theme colours ablow is uised</string>
+    <string name="settings_preset_colors_title">Preset theme colours</string>
+    <string name="settings_preset_current">Current: %1$s</string>
+    <string name="settings_preset_disabled_hint">Available efter ye turn aff "Material You dynamic colours"</string>
+    <string name="settings_custom">Custom</string>
+    <string name="settings_custom_color_title">Custom theme colour</string>
+    <string name="settings_cd_custom_palette">Custom palette</string>
+    <string name="settings_hue_value">Hue %1$d°</string>
+
+    <!-- App leid: the title an "Follae the seestem" reuse strings_app.xml, mainteened bi Lead
+         (R.string.app_language_title / R.string.app_language_follow_system); no repeated here -->
+    <string name="settings_language_dialog_title">Select the app leid</string>
+    <string name="settings_language_count">%1$d leids</string>
+
+    <!-- Defaut options -->
+    <string name="settings_reminder_dialogs_title">Dinnae show dialogs again</string>
+    <string name="settings_reminder_dialogs_subtitle">Manage the "dinnae show again" toggles o aw the dialogs</string>
+    <string name="settings_reminder_hint">On means "dinnae show again"; when turnt aff, the dialog appears again the neist time.</string>
+
+    <!-- Ootput -->
+    <string name="settings_preserve_folders_title">Keep the soorce folder hierarchy</string>
+    <string name="settings_preserve_folders_subtitle">Results is stored in subfolders namit efter the oreeginal album; when turnt aff, awthing gangs intae the same folder</string>
+
+    <!-- Aboot -->
+    <string name="settings_about_title">Aboot</string>
+    <string name="settings_about_subtitle">Version · Chack fur updates · Credits an support</string>
+    <string name="settings_check_update_title">Chack fur updates</string>
+    <string name="settings_check_update_subtitle">Fetches the latest version fae the GitHub releases</string>
+    <string name="settings_checking">Chackin…</string>
+    <string name="settings_update_available">v%1$s available</string>
+    <string name="settings_up_to_date">Ye hae the latest version already</string>
+    <string name="settings_network_error">Netwark error. Try agane later</string>
+    <string name="settings_reinstall_title">Instaw this version agane</string>
+    <string name="settings_reinstall_subtitle">Dounload the latest version an instaw it ower the tap (tae test updates)</string>
+    <string name="settings_reinstall_newer_hint">Ye can update tae v%1$s; uise "Chack fur updates" first</string>
+    <string name="settings_version_title">Version</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Support throu Alipay</string>
+    <string name="settings_alipay_subtitle">Support the development</string>
+    <string name="settings_coolapk_subtitle">Coolapk uiser · thanks fur the support</string>
+    <string name="settings_ai_credits_subtitle">Thanks tae AI IDEs an AI models fur their help wi the development</string>
+    <string name="settings_github_title">GitHub open soorce address</string>
+    <string name="settings_license_title">Open soorce licence</string>
+    <string name="settings_sponsor_dialog_title">Thanks fur yer support</string>
+    <string name="settings_sponsor_dialog_text">Awfy thanks fur wantin tae support this app!\n\nGin ye are still a student or no financially independent yet, dinnae spend onything — keep that kindness in yer hert an keep uisin the app: that is the best support I can get.\n\nGin ye dae want tae gie something, ony amoont is welcome; I will pit it intae better maintenance an new features:)</string>
+    <string name="settings_alipay_missing_title">Alipay is no instawed</string>
+    <string name="settings_alipay_missing_text">We fund nae Alipay, sae the contribution cannae be completed the noo.\n\nNae bother — thanks awfy muckle fur yer guid will onywey!</string>
+
+    <!-- Video transcodin -->
+    <string name="settings_transcoder_title">Built-in transcoder</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Re-encode</string>
+    <string name="settings_transcode_mode_remux">Remux the container only (recommendit)</string>
+    <string name="settings_transcode_mode_off">Dinnae uise the transcoder at aw</string>
+    <string name="settings_transcode_params_title">Transcodin parameters</string>
+    <string name="settings_transcode_params_subtitle">Quality an compression parameters uised when re-encodin</string>
+    <string name="settings_transcode_params_disabled">Only applies when "Transcodin mode" is set tae "Re-encode"</string>
+    <string name="settings_crf_value">Quality CRF: %1$d</string>
+    <string name="settings_crf_hint">The lawer the value, the heicher the quality an the muckler the file (defaut 18)</string>
+    <string name="settings_encoder_title">Encoder</string>
+    <string name="settings_compress_preset_title">Compression preset</string>
+
+</resources>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · eesti keel.
+  Põhiliidese ja taustaprotsessi tekstid (MainActivity moodul). Võtmed on main_ eesliitega, neid ei muudeta.
+  Kohatäitjad ühtselt %1$s / %1$d; üksikarvulised loendatavad nimisõnafraasid kasutavad <plurals>.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- ── Olekuriba / teated (Activity meetodites, getString) ── -->
+    <string name="main_status_ready">Valmis</string>
+    <string name="main_status_location_granted">Asukohaõigus antud; GPS-metadata säilitatakse pärast teisendamist</string>
+    <string name="main_status_location_denied">Asukohaõigust ei ole antud: teisendatud fotod kaotavad GPS-asukohateabe</string>
+    <string name="main_status_all_files_granted">„Juurdepääs kõikidele failidele“ on antud; teisendamine kirjutab otse galerii kausta ja säilitab asukohateabe täielikult</string>
+    <string name="main_status_all_files_denied">„Juurdepääs kõikidele failidele“ ei ole antud: mõned seadmed võivad pärast teisendamist kaotada asukohateabe</string>
+    <string name="main_status_read_granted">Fotode ja videote lugemise õigus on antud</string>
+    <string name="main_status_video_missing">Antud, kuid videoõigus puudub: kahefaililiste Live Photode kaasas olevaid videoid ei leita</string>
+    <string name="main_status_permission_denied">Õigust ei ole antud; võite uuesti vajutada „Lisa faile“</string>
+    <string name="main_status_folder_not_selected">Kausta ei ole valitud</string>
+    <string name="main_status_folder_unavailable">Valitud kaustale ei pääse juurde (toetatud on ainult kohaliku salvestusruumi kaustad)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Taastati viimane seanss (%1$d fail)</item>
+        <item quantity="other">Taastati viimane seanss (%1$d faili)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Tuvastati eelmine ebanormaalne sulgemine; lõpetamata loend on tühjendatud</string>
+    <string name="main_status_compose_blocks_extract">Järjekord sisaldab sünteesitoiminguid; eraldusrežiimile ei saa lülituda</string>
+    <string name="main_status_replace_off_mutex">Asendusrežiim on välja lülitatud (üksteist välistav valikuga „Kustuta originaalid pärast töötlemist“)</string>
+    <string name="main_status_delete_needs_all_files">Originaalide automaatne kustutamine nõuab „juurdepääsu kõikidele failidele“; palun andke kõigepealt õigus</string>
+    <string name="main_status_replace_off">Asendusrežiim on välja lülitatud; teisenduse tulemused kirjutatakse uuesti galerii kausta</string>
+    <string name="main_status_replace_needs_all_files">Asendusrežiim nõuab „juurdepääsu kõikidele failidele“; palun andke kõigepealt õigus</string>
+    <string name="main_status_delete_off_mutex">„Kustuta originaalid pärast töötlemist“ on välja lülitatud (üksteist välistav asendusrežiimiga)</string>
+    <string name="main_status_loading_albums">Albumite laadimine…</string>
+    <string name="main_status_no_albums">Albumeid ei leitud</string>
+    <string name="main_status_compose_no_photo">Fotot ei ole valitud, sünteesida ei saa</string>
+    <string name="main_status_compose_no_video">Videot ei ole valitud, sünteesida ei saa</string>
+    <string name="main_status_compose_all_added">Kõik valitud fotod on juba loendis</string>
+    <string name="main_status_compose_paired">Fotosid %1$d, videoid %2$d; väiksema arvu järgi lisati %3$d sünteesipaari</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Lisati %1$d sünteesitoiming; sünteesimiseks vajutage „Alusta teisendamist“</item>
+        <item quantity="other">Lisati %1$d sünteesitoimingut; sünteesimiseks vajutage „Alusta teisendamist“</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (väljundvorming lülitati automaatselt vormingule Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Imporditakse %1$d jagatud pilti…</item>
+        <item quantity="other">Imporditakse %1$d jagatud pilti…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import ebaõnnestus: %1$s</string>
+    <string name="main_status_import_done_partial">Import lõpetatud: %1$d õnnestus, %2$d ebaõnnestus</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import lõpetatud: kokku imporditi %1$d fail</item>
+        <item quantity="other">Import lõpetatud: kokku imporditi %1$d faili</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import peatatud: %1$d õnnestus, %2$d ebaõnnestus</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Imporditakse %1$d faili…</item>
+        <item quantity="other">Imporditakse %1$d faili…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Imporditakse %1$d/%2$d…</string>
+    <string name="main_status_stopping">Peatamine… (peatub, kui praegune fail on lõpetatud)</string>
+    <string name="main_status_stopping_import">Impordi peatamine…</string>
+    <string name="main_status_removed">Eemaldatud %1$s</string>
+    <string name="main_status_cleared">Tühjendatud</string>
+    <string name="main_status_nothing_to_convert">Teisendatavaid faile ei ole</string>
+    <string name="main_status_folder_unreadable">Valitud kausta ei saa lugeda</string>
+    <string name="main_status_scanning_folder">Kausta skaneerimine…</string>
+    <string name="main_status_no_images">Valitud kaustast ei leitud pilte</string>
+    <string name="main_status_batch_importing">Hulgiimport %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Hulgiimport peatatud: kokku imporditi %1$d Live Photo</item>
+        <item quantity="other">Hulgiimport peatatud: kokku imporditi %1$d Live Photot</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Hulgiimport peatatud: kokku imporditi %1$d Live Photo, vahele jäeti %2$d mitte-Live-Photo faili</item>
+        <item quantity="other">Hulgiimport peatatud: kokku imporditi %1$d Live Photot, vahele jäeti %2$d mitte-Live-Photo faili</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Hulgiimport lõpetatud: kokku imporditi %1$d Live Photo</item>
+        <item quantity="other">Hulgiimport lõpetatud: kokku imporditi %1$d Live Photot</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Hulgiimport lõpetatud: kokku imporditi %1$d Live Photo, vahele jäeti %2$d mitte-Live-Photo faili</item>
+        <item quantity="other">Hulgiimport lõpetatud: kokku imporditi %1$d Live Photot, vahele jäeti %2$d mitte-Live-Photo faili</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Peatatud: %1$d failist töödeldi %2$d, asendati %3$d lähtefaili</string>
+    <string name="main_status_stopped_export">Peatatud: %1$d failist töödeldi %2$d, eksporditi %3$d galeriisse</string>
+    <string name="main_status_done_replace_reason">Valmis: %1$d faili töödeldud, %2$d lähtefaili asendatud (põhjus: %3$s)</string>
+    <string name="main_status_done_export_reason">Valmis: %1$d faili töödeldud, %2$d galeriisse eksporditud (põhjus: %3$s)</string>
+    <string name="main_status_done_replace">Valmis: %1$d faili töödeldud, %2$d lähtefaili asendatud</string>
+    <string name="main_status_done_export">Valmis: %1$d faili töödeldud, %2$d galeriisse eksporditud</string>
+    <string name="main_status_keep_originals">%1$s; „Täielikku salvestusruumi juurdepääsu“ ei antud, originaalid on säilitatud</string>
+
+    <!-- ── Loendiüksuse info (FileItem.info) ── -->
+    <string name="main_info_detecting">Tuvastamine…</string>
+    <string name="main_info_unrecognized">Tuvastamata Live Photo vorming</string>
+    <string name="main_info_converting">Teisendamine…</string>
+    <string name="main_info_compose_task">Sünteesitoiming (alustamiseks vajutage Alusta teisendamist)</string>
+    <string name="main_info_done_replaced">Valmis (%1$d lähtefaili asendatud)</string>
+    <string name="main_info_done_skipped">Valmis (vahele jäetud: nimekonflikt)</string>
+    <string name="main_info_done_exported">Valmis (%1$d eksporditud)</string>
+    <string name="main_info_failed">Ebaõnnestus: %1$s</string>
+
+    <!-- ── Edenemise üksikasjad (progressDetail) ── -->
+    <string name="main_progress_added">Lisatud %1$d/%2$d</string>
+    <string name="main_progress_processed">Töödeldud %1$d/%2$d</string>
+    <string name="main_progress_imported">Imporditud %1$d/%2$d</string>
+
+    <!-- ── Õiguste dialoog ── -->
+    <string name="main_dialog_permission_title">Vaja on fotode ja videote lugemise õigust</string>
+    <string name="main_dialog_permission_message">See rakendus vajab juurdepääsu teie seadme fotodele ja videotele:\n\n• Fotoõigus: skaneerida seadme galeriid ja tuvastada selles olevad Live Photod\n• Videoõigus: leida kahefaililiste Live Photode juurde kuuluvad kaasas olevad videod\n• Asukohaõigus: säilitada fotode GPS-asukoha metaandmed (ilma selleta kaotavad teisendatud fotod asukohateabe)\n\nKui keeldute, ei saa sisseehitatud valijat kasutada; võite hiljem uuesti vajutada „Lisa faile“, et õigus uuesti anda.</string>
+    <string name="main_dialog_settings_title">Fotode ja videote õigused tuleb anda käsitsi</string>
+    <string name="main_dialog_settings_message">Valisite varem „Ära küsi uuesti“, seega süsteem ei näita enam õiguste dialoogi.\n\nMinge rakenduse üksikasjade lehele → Õigused → Fotod ja videod, andke juurdepääs käsitsi ja pöörduge tagasi sellesse rakendusse.\n\nMärkus: andma peab nii „Fotod“ kui ka „Videod“ õiguse, muidu ei leia kahefaililised Live Photod nende juurde kuuluvaid kaasas olevaid videoid.</string>
+
+    <!-- ── Dialoog „Juurdepääs kõikidele failidele“ selgituseks ── -->
+    <string name="main_dialog_allfiles_title_delete">Originaalide automaatne kustutamine nõuab „juurdepääsu kõikidele failidele“</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">See seade ei toeta originaalide automaatset kustutamist</string>
+    <string name="main_dialog_allfiles_title_replace">Asendusrežiim nõuab „juurdepääsu kõikidele failidele“</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">See seade ei toeta asendusrežiimi</string>
+    <string name="main_dialog_allfiles_title_location">Soovitatav on anda „juurdepääs kõikidele failidele“</string>
+    <string name="main_dialog_allfiles_delete_message">„Kustuta originaalid pärast töötlemist“ kustutab otse kettal olevad originaalfailid (foto ja selle kaasas oleva video). Seda ei saa tagasi võtta, seega tuleb kõigepealt anda „juurdepääs kõikidele failidele“.\n\nLüliti muutub kättesaadavaks pärast õiguse andmist; siis saate selle ise sisse lülitada.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Praegune süsteem (Android 10 või vanem) ei paku „juurdepääsu kõikidele failidele“, seega ei saa kettal olevaid originaalfaile otse kustutada; see seade ei toeta funktsiooni „Kustuta originaalid pärast töötlemist“.\n\nPärast teisendamist saate originaalid käsitsi süsteemi galeriis koristada.</string>
+    <string name="main_dialog_allfiles_replace_message">„Asendusrežiim“ kirjutab teisenduse tulemuse otse kettal olevatesse originaalfailidesse (kirjutab nende sisu üle). Seda ei saa tagasi võtta, seega tuleb kõigepealt anda „juurdepääs kõikidele failidele“.\n\nLüliti muutub kättesaadavaks pärast õiguse andmist; siis saate selle ise sisse lülitada.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Praegune süsteem (Android 10 või vanem) ei paku „juurdepääsu kõikidele failidele“, seega ei saa kettal olevaid originaalfaile otse ümber kirjutada; see seade ei toeta „asendusrežiimi“.\n\nVõite jätkata teisendamist vaikimisi viisil; tulemused kirjutatakse galerii kausta.</string>
+    <string name="main_dialog_allfiles_location_message">Mõned seadmed (nt Meizu) eemaldavad süsteemi galerii liidese kaudu kirjutamisel GPS-asukohateabe, mistõttu teisendatud fotod kaotavad asukoha.\n\nPärast „juurdepääsu kõikidele failidele“ andmist kirjutab see rakendus otse galerii kausta ja säilitab asukoha metaandmed täielikult.\n\nIlma selleta töötab teisendamine endiselt, kuid mõned seadmed võivad asukohateabe kaotada.</string>
+
+    <!-- ── Väljundfaili nimekonflikti dialoog ── -->
+    <string name="main_dialog_conflict_title">Väljundfaili nimekonflikt</string>
+    <string name="main_dialog_conflict_message">Väljundkaustas on juba samanimeline fail:\n%1$s\n\nPalun valige, kuidas toimida.</string>
+    <string name="main_label_conflict_always">Kasuta seda lahendust kõigi edasiste konfliktide puhul</string>
+
+    <!-- ── Dialoogi nupud ── -->
+    <string name="main_btn_grant">Anna õigus</string>
+    <string name="main_btn_deny">Keeldu</string>
+    <string name="main_btn_go_settings">Ava seaded</string>
+    <string name="main_btn_cancel">Tühista</string>
+    <string name="main_btn_grant_access">Anna õigus</string>
+    <string name="main_btn_got_it">Selge</string>
+    <string name="main_btn_not_now">Mitte praegu</string>
+    <string name="main_btn_skip">Jäta vahele</string>
+    <string name="main_btn_overwrite">Kirjuta üle</string>
+    <string name="main_btn_auto_rename">Automaatne ümbernimetamine</string>
+
+    <!-- ── Teisenduse tulemus / ekspordi ebaõnnestumise põhjus (kuvatakse koos „põhjus: %3$s“) ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Kustutati %1$d originaalfail</item>
+        <item quantity="other">Kustutati %1$d originaalfaili</item>
+    </plurals>
+    <string name="main_delete_nothing">Originaale ei ole vaja kustutada</string>
+    <string name="main_delete_partial">Kustutati %1$d originaalfaili (%2$d kustutamine ebaõnnestus, need on säilitatud)</string>
+    <string name="main_delete_failed">Originaalide kustutamine ebaõnnestus (failid on kasutusel või kirjutamisõigus puudub), need on säilitatud</string>
+    <string name="main_export_missing_output">Teisenduse väljund puudub või on tühi: %1$s</string>
+    <string name="main_export_missing_output_bare">Teisenduse väljund puudub või on tühi</string>
+    <string name="main_export_insert_null">MediaStore insert tagastas null</string>
+    <string name="main_export_output_stream">MediaStore väljundvoog ei ole saadaval</string>
+    <string name="main_export_write_failed">MediaStore kirjutamine ebaõnnestus: %1$s</string>
+    <string name="main_export_mkdir_failed">Galerii kausta %1$s ei saa luua</string>
+    <string name="main_export_dir_write_failed">Galerii kausta kirjutamine ebaõnnestus: %1$s</string>
+    <string name="main_export_no_source">Lähtefaili ei leita, asendamine jäeti vahele</string>
+    <string name="main_export_companion_failed">Kaasas oleva faili tagasikirjutamine ebaõnnestus: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Lähtefaili kaust ei ole kirjutatav, kaasas olevat faili ei saanud tagasi kirjutada</string>
+    <string name="main_export_source_dir_unavailable">Lähtefaili kaust ei ole saadaval: %1$s</string>
+    <string name="main_export_replace_failed">Lähtefaili asendamine ebaõnnestus: %1$s</string>
+    <string name="main_export_replace_failed_bare">Lähtefaili asendamine ebaõnnestus</string>
+</resources>

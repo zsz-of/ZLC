@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Catalan (ca) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Format de destinació desconegut: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Format de Live Photo no reconegut (no és una Live Photo de Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">La foto de portada no existeix o és buida</string>
+    <string name="conv_video_missing">El vídeo no existeix o és buit</string>
+    <string name="conv_video_too_large">El vídeo és massa gran (%1$d MB) per compondre una Live Photo; tria un vídeo més curt</string>
+    <string name="conv_transcoded_too_large">Després de la transcodificació el vídeo encara és massa gran (%1$d MB); no es pot compondre la Live Photo</string>
+    <string name="conv_video_too_large_compose">El vídeo és massa gran (%1$d MB); no es pot compondre la Live Photo</string>
+    <string name="conv_cover_heic_go">La portada és una imatge HEIC (l\'edició lleugera no admet transcodificar; exporta-la a JPEG des de l\'iPhone i torna-la a convertir)</string>
+    <string name="conv_cover_invalid_heic">La portada no és una imatge vàlida (HEIC requereix que el sistema admeti la descodificació HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">La portada no és una imatge JPEG (l\'edició lleugera no admet transcodificar; fes servir una foto JPEG)</string>
+    <string name="conv_cover_invalid_image">La portada no és una imatge vàlida (només s\'admeten JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">No s\'ha pogut recodificar el vídeo: %1$s</string>
+    <string name="conv_remux_failed">No s\'ha pogut tornar a empaquetar el contenidor: %1$s</string>
+    <string name="conv_codec_unknown">No és un vídeo H.264/H.265 reconeixible</string>
+    <string name="conv_codec_is">El còdec és %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">El vídeo «%1$s» %2$s; canviar només el contenidor (reempaquetar-lo) no canvia el còdec, de manera que no es pot compondre la Live Photo.\n\nA «Configuració → Transcodificació de vídeo → Mètode de transcodificació» canvia-ho a «Recodifica», o converteix-lo primer a un MP4 amb còdec H.264/H.265 amb una altra eina.</string>
+    <string name="conv_hint_no_encoder">El vídeo no és en un contenidor MP4 estàndard (MOV / MKV / WebM / AVI, etc.) i el «Mètode de transcodificació» actual no recodifica, de manera que no es pot compondre la Live Photo.\n\nA «Configuració → Transcodificació de vídeo → Mètode de transcodificació» canvia-ho a «Recodifica» (l\'edició estàndard incorpora un codificador ffmpeg; l\'edició lleugera Go no inclou transcodificador, així que fes servir l\'edició estàndard), o converteix primer el vídeo a MP4 estàndard (H.264/H.265).</string>
+    <string name="conv_log_detected">S\'ha detectat com a %1$s</string>
+    <string name="conv_log_same_format_copied">L\'origen i la destinació tenen el mateix format; s\'ha copiat tal com és (sense pèrdues)</string>
+    <string name="conv_log_extra_tracks_bypass">El vídeo d\'origen conté pistes que no són d\'àudio/vídeo (%1$s); s\'omet el pas directe amb el mateix format i s\'empra el procés d\'escriptura complet per netejar-les</string>
+    <string name="conv_log_ts_fallback">L\'origen no té marca de temps del fotograma de portada; per especificació s\'usa el punt mitjà del vídeo</string>
+    <string name="conv_log_brand_normalized">S\'ha normalitzat la marca del contenidor de vídeo (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">El vídeo conté pistes addicionals (%1$s) que no es poden netejar; s\'ha generat tal com és (en alguns models el resultat podria no reproduir-se en mantenir-lo premut)</string>
+    <string name="conv_log_extra_tracks_removed">S\'han eliminat les pistes addicionals del vídeo (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">El vídeo d\'origen %1$s; tornar a empaquetar només el contenidor no ho resol (%2$s). Si el resultat encara no es reprodueix en mantenir-lo premut, a «Configuració → Transcodificació de vídeo → Mètode de transcodificació» tria «Recodifica»</string>
+    <string name="conv_log_reencoding">El vídeo d\'origen %1$s; segons la configuració es recodifica a 8 bits + AAC per millorar la compatibilitat amb la galeria</string>
+    <string name="conv_log_reencode_result_unusable">El resultat de la recodificació no és utilitzable; s\'ha generat tal com és (en alguns models el resultat podria no reproduir-se en mantenir-lo premut)</string>
+    <string name="conv_log_reencode_still_risky">Després de la recodificació encara hi ha elements de risc (%1$s)</string>
+    <string name="conv_log_reencode_failed">La recodificació ha fallat (%1$s); s\'ha generat tal com és (en alguns models el resultat podria no reproduir-se en mantenir-lo premut)</string>
+    <string name="conv_log_cover_heic_converted">La portada era HEIC (no JPEG); s\'ha transcodificat a JPEG estàndard abans d\'empaquetar</string>
+    <string name="conv_log_compose_sizes">Composició: foto %1$d B + vídeo %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transcodificador no activat: només es reescriu la marca del contenidor (MOV → MP4), sense recodificar</string>
+    <string name="conv_tag_convert">Conversió</string>
+    <string name="conv_tag_transcode">Transcodificació</string>
+    <string name="conv_tag_compose">Composició</string>
+    <string name="conv_blocker_no_encoder">El transcodificador integrat no està disponible</string>
+    <string name="conv_blocker_mode_no_encode">El «Mètode de transcodificació» actual no recodifica</string>
+    <string name="conv_addon_unavailable">El transcodificador integrat no està disponible</string>
+    <string name="conv_addon_transcode_failed">La transcodificació amb ffmpeg ha fallat: %1$s</string>
+    <string name="conv_addon_remux_failed">El reempaquetatge del contenidor amb ffmpeg ha fallat: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">S\'està transcodificant el vídeo a MP4 estàndard amb ffmpeg (%1$s / crf %2$d / %3$s; només es conserven les pistes de vídeo i d\'àudio)</string>
+    <string name="conv_log_transcode_done">Transcodificació del vídeo completada (%1$d KB)</string>
+    <string name="conv_log_remuxing">S\'està tornant a empaquetar el contenidor de vídeo a MP4 estàndard (només es canvia el contenidor, sense recodificar)</string>
+    <string name="conv_log_remux_done">Reempaquetatge del contenidor completat (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Composició</string>
+    <string name="conv_reminder_cat_convert">Conversió</string>
+    <string name="conv_reminder_cat_update">Actualització</string>
+    <string name="conv_reminder_video_over3s_title">El vídeo dura més de 3 segons</string>
+    <string name="conv_reminder_video_over3s_message">El vídeo seleccionat dura més de 3 segons, de manera que la Live Photo resultant pot tenir problemes de compatibilitat:\n\n• Pot ser que no es reprodueixi correctament\n• Pot ser que la galeria del sistema no la reconegui\n• Alguns models podrien no reconèixer aquesta Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">S\'ha detectat una versió antiga</string>
+    <string name="conv_reminder_legacy_go_message">En aquest dispositiu encara hi ha instal·lada una versió antiga (edició Go) de l\'aplicació. Aquesta versió ja no funciona en aquest dispositiu; la pots desinstal·lar per alliberar espai.</string>
+    <string name="conv_reminder_replace_risk_title">El mode de substitució comporta risc de danys</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">El mode de substitució escriu el resultat de la conversió directament als fitxers originals; un cop sobreescrits, els originals no es poden recuperar.\n\n• Si l\'aplicació s\'interromp, l\'emmagatzematge s\'omple o el permís es revoca durant l\'escriptura, els fitxers d\'origen poden danyar-se\n• La conversió no garanteix l\'èxit en tots els casos; si falla, els fitxers d\'origen poden haver quedat inservibles\n• Prova-ho primer amb un o dos fitxers i, si tot va bé, fes el processament per lots\n• Fes còpies de seguretat de les fotos importants\n\nAquesta funció es subministra «tal com és»; la fas servir sota la teva responsabilitat, i l\'autor no es fa responsable dels fitxers danyats o perduts.</string>
+    <string name="conv_reminder_dont_remind">No ho tornis a mostrar</string>
+    <string name="conv_reminder_confirm_ok">D\'acord</string>
+    <string name="conv_reminder_uninstall">Desinstal·la</string>
+</resources>

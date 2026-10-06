@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Татарча (Tatar) strings.
+  Update flow (ui/UpdateFlow.kt).
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Tatar (Cyrillic); best-effort translation, a native review pass is recommended.
+  Искәрмә: UpdateFlowController (Composable түгел) context.getString(...) куллана; тәрәзәләрдә stringResource(...).
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <!-- Контроллер ягындагы искәртүләр (Context юк Комposable тышында барысы да context.getString аша) -->
+    <string name="update_github_url_missing">GitHub йөкләү адресы алынмады, бераздан кабатлап карагыз.</string>
+    <string name="update_flavor_standard">Стандарт версия</string>
+    <string name="update_flavor_go">Go версиясе</string>
+    <string name="update_lanzou_url_missing">Бу версиядә Lanzou Cloud йөкләү сылтамасы юк, GitHub аша йөкләп алырга мөмкин.</string>
+    <string name="update_apk_direct_missing">Бу версиядә сезнең версиягә туры килгән урнаштыру пакетының туры сылтамасы юк; GitHub Release битендә тиешле APK сайлагыз.</string>
+    <string name="update_install_permission_missing">«Билгесез кушымталарны урнаштыру» рөхсәте юк, автоматик урнаштырып булмый. Система көйләүләрендә рөхсәт биреп, кабатлап карагыз.</string>
+    <string name="update_error_unknown">Билгесез хата</string>
+    <string name="update_fail_lanzou">Lanzou Cloud йөкләү уңышсыз булды</string>
+    <string name="update_fail_github">GitHub йөкләү уңышсыз булды</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud йөкләү сылтамасы ачыклана…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud аша йөкләнә…</string>
+    <string name="update_github_downloading">GitHub аша йөкләнә…</string>
+    <string name="update_unzipping">Урнаштыру пакеты ачыла…</string>
+    <string name="update_notes_empty">Бу версиядә яңарту аңлатмасы юк.</string>
+
+    <!-- Go версиясе белән бәйле тәрәзәләр -->
+    <string name="update_use_normal_title">Гади версияне кулланыгыз</string>
+    <string name="update_use_normal_body">Бу җайланма Android 10 яки аннан югары, Go җиңел версиясе инде яраклы түгел, иске версияне кулланып булмый.\n\nБу җайланмада гади версия (ZLC) урнаштырылган, аны ачып куллануны дәвам итегез (яңа версиядә Go яраклы версиясе юк, иске версияне урын бушату өчен бетереп ташларга мөмкин).</string>
+    <string name="update_open_normal">Гади версияне ачу</string>
+    <string name="update_must_update_title">Дәвам итү өчен яңарту мәҗбүри</string>
+    <string name="update_forced_body">Бу җайланма Android 10 яки аннан югары, Go җиңел версиясе инде яраклы түгел, иске версияне кулланып булмый; яңа версиядә дә Go яраклы версиясе юк.\n\nИнтернетка тоташып, «Кабатлау» төймәсен басып гади версия урнаштыру пакетын алыгыз.</string>
+    <string name="update_retry">Кабатлау</string>
+    <string name="update_switch_normal_body">Бу җайланма Android 10 яки аннан югары, Go җиңел версиясе инде яраклы түгел, иске версияне кулланып булмый.\nГади версияне йөкләп урнаштырып, куллануны дәвам итегез (яңа версиядә Go яраклы версиясе юк).</string>
+
+    <!-- Йөкләү / урнаштыру рөхсәте / нәтиҗә искәртүләре -->
+    <string name="update_downloading_title">Яңартуны йөкләү</string>
+    <string name="update_cancel">Баш тарту</string>
+    <string name="update_need_permission_title">Урнаштыру рөхсәте кирәк</string>
+    <string name="update_need_permission_body">Яңа версияне урнаштыру өчен системаның «Билгесез кушымталарны урнаштыру» рөхсәте кирәк.\n\n«Рөхсәт бирү»не басыгыз, көйләүләрдә рөхсәт биреп кушымтага кайтыгыз, урнаштыру автоматик дәвам итәчәк (яңадан йөкләргә кирәкми).</string>
+    <string name="update_grant">Рөхсәт бирү</string>
+    <string name="update_notice_title">Искәртү</string>
+    <string name="update_got_it">Аңлашылды</string>
+
+    <!-- Төп тәрәзә / яңарту аңлатмасы -->
+    <string name="update_notes_title">v%1$s · Яңарту аңлатмасы</string>
+    <string name="update_back">Кире</string>
+    <string name="update_title_switch_normal">Гади версиягә күчү</string>
+    <string name="update_title_reinstall">Бу версияне яңадан урнаштыру</string>
+    <string name="update_title_new_version">Яңа версия табылды</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Бу версияне йөкләп яңадан урнаштырабыз (агымдагы кушымтаны өстенә яза).\nБу мөмкинлек яңарту механизмын регрессион тикшерү өчен кулланыла.</string>
+    <string name="update_view_notes">Яңарту аңлатмасын карау</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud вакытлыча эшләми</string>
+    <string name="update_download_lanzou">Lanzou Cloud аша йөкләү</string>
+    <string name="update_download_github">GitHub аша йөкләү</string>
+    <string name="update_download_browser">Браузер аша йөкләү</string>
+    <string name="update_later">Соңрак яңарту</string>
+    <string name="update_later_switch">Соңрак күчү</string>
+    <string name="update_skip_version">Бу версияне үткәреп җибәрү</string>
+</resources>

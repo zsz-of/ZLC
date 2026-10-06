@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Galician (gl) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="screen_app_subtitle">Converter entre formatos de Live Photo</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d ficheiro</item>
+        <item quantity="other">%1$d ficheiros</item>
+    </plurals>
+    <string name="screen_settings">Configuración</string>
+    <string name="screen_select_output_format">Escolle o formato de saída</string>
+    <string name="screen_selected">Seleccionados</string>
+    <string name="screen_vivo_single_warning">⚠ Os modelos demasiado antigos poderían non recoñecer este formato</string>
+    <string name="screen_extract_blocked">⚠ A cola contén tarefas de composición; non se pode escolher a extracción</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (un ficheiro)</string>
+    <string name="screen_format_vivo">vivo (dous ficheiros)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Extraer</string>
+    <string name="screen_toolbox">Caixa de ferramentas</string>
+    <string name="screen_batch_import">Importar por lotes</string>
+    <string name="screen_batch_import_desc">Escanexa toda a galería e identifica Live Photos por lotes</string>
+    <string name="screen_compose">Compoñer unha Live Photo</string>
+    <string name="screen_compose_desc">Escolle unha foto e un vídeo e emparéllaos para compoñer unha Live Photo</string>
+    <string name="screen_replace_mode">Modo de substitución</string>
+    <string name="screen_replace_mode_desc">Escribe o resultado da conversión directamente nos ficheiros orixinais, sen crear ficheiros novos</string>
+    <string name="screen_need_all_files_access_hint">Require o permiso de «Acceso a todos os ficheiros»; preme aquí para concedelo</string>
+    <string name="screen_agree_and_enable">Aceptar e activar</string>
+    <string name="screen_empty_no_files">Aínda non engadiches ningún ficheiro</string>
+    <string name="screen_view_detail">Ver os detalles</string>
+    <string name="screen_add_files">Engadir ficheiros</string>
+    <string name="screen_output_format">Formato de saída: %1$s</string>
+    <string name="screen_delete_original">Eliminar os ficheiros orixinais ao rematar</string>
+    <string name="screen_need_all_files_access_view">Require o permiso de «Acceso a todos os ficheiros»; preme para velo</string>
+    <string name="screen_clear">Baleirar</string>
+    <string name="screen_stop">Deter o procesamento</string>
+    <string name="screen_start_convert">Iniciar a conversión</string>
+    <string name="screen_status_detail">Detalles do estado</string>
+    <string name="screen_long_press_copy">Mantén premido o texto para seleccionalo e copialo</string>
+    <string name="screen_copy">Copiar</string>
+    <string name="screen_close">Pechar</string>
+    <string name="screen_back">Atrás</string>
+    <string name="screen_picker_title_select">Escolle as Live Photos</string>
+    <string name="screen_album_count">Álbum %1$d</string>
+    <string name="screen_album_collapse_cover">Pregar a portada do álbum</string>
+    <string name="screen_album_expand_cover">Despregar a portada do álbum</string>
+    <string name="screen_scanning_progress">Estase a escanexar %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d fotos</item>
+    </plurals>
+    <string name="screen_select_all">Seleccionar todo</string>
+    <string name="screen_no_albums">Non hai álbums dispoñibles</string>
+    <string name="screen_no_media">Non se atoparon Live Photos</string>
+    <string name="screen_no_media_compose">Non se atoparon fotos nin vídeos</string>
+    <string name="screen_import">Importar</string>
+    <string name="screen_import_count">Importar %1$d</string>
+    <string name="screen_import_mixed">Importar %1$d imaxes · %2$d vídeos</string>
+    <string name="screen_search">Buscar</string>
+    <string name="screen_search_collapse">Pregar a busca</string>
+    <string name="screen_search_hint">Buscar polo nome</string>
+    <string name="screen_search_clear">Limpar a busca</string>
+    <string name="screen_sort_date">Data</string>
+    <string name="screen_sort_size">Tamaño</string>
+    <string name="screen_sort_name">Nome</string>
+    <string name="screen_sort_asc">Ascendente</string>
+    <string name="screen_sort_desc">Descendente</string>
+    <string name="screen_date_today">Hoxe</string>
+    <string name="screen_date_yesterday">Onte</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

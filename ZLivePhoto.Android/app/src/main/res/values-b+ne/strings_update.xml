@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · नेपाली (Nepali) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Nepali (Devanagari); technical terms follow the English loanword where common.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud साझेदारी पृष्ठ र सिधा लिङ्क विश्लेषण ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud साझेदारी रद्द भइसक्यो वा फाइल अवस्थित छैन; कृपया GitHub बाट डाउनलोड गर्नुहोस्</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud साझेदारी रद्द भइसक्यो; कृपया GitHub बाट डाउनलोड गर्नुहोस्</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud डाउनलोड लिङ्क विश्लेषण असफल भयो</string>
+    <string name="update_lanzou_need_passwd">यो Lanzou Cloud साझेदारीका लागि एक्सेस कोड चाहिन्छ; कृपया GitHub बाट डाउनलोड गर्नुहोस् (वा Release विवरणमा कोड खोज्नुहोस्)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud एक्सेस कोड गलत छ</string>
+    <string name="update_err_resolve_failed">विश्लेषण असफल भयो</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud एन्टि-क्रल जाँच असफल भयो</string>
+    <string name="update_err_no_frame">Lanzou Cloud डाउनलोड पृष्ठ विश्लेषण गर्न सकिएन (डाउनलोड फ्रेम भेटिएन)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud फाइल पहिचानकर्ता विश्लेषण गर्न सकिएन</string>
+    <string name="update_err_no_sign">Lanzou Cloud हस्ताक्षर विश्लेषण गर्न सकिएन</string>
+    <string name="update_err_ajax_request">API अनुरोध असफल भयो</string>
+    <string name="update_err_api_request">Lanzou Cloud API अनुरोध असफल भयो</string>
+    <string name="update_err_empty_direct">Lanzou Cloud ले खाली डाउनलोड ठेगाना फर्कायो</string>
+    <string name="update_err_direct_expired">Lanzou Cloud डाउनलोड ठेगानाको म्याद सकियो; कृपया फेरि प्राप्त गर्नुहोस्</string>
+    <string name="update_err_http_request">अनुरोध असफल भयो (HTTP %1$d)</string>
+
+    <!-- ========== डाउनलोड ========== -->
+    <string name="update_err_connect">डाउनलोड सर्भरमा जडान गर्न सकिएन: %1$s</string>
+    <string name="update_err_http">डाउनलोड असफल भयो (HTTP %1$d)</string>
+    <string name="update_err_no_connection">डाउनलोड जडान स्थापना गर्न सकिएन</string>
+    <string name="update_err_empty">डाउनलोड सामग्री खाली छ</string>
+    <string name="update_err_incomplete">डाउनलोड अपूर्ण (%1$d / %2$d बाइट प्राप्त); कृपया फेरि डाउनलोड गर्नुहोस्</string>
+    <string name="update_err_interrupted">डाउनलोड अवरुद्ध भयो: %1$s</string>
+
+    <!-- ========== स्थापना प्याकेज प्रमाणीकरण र इन्स्टल ========== -->
+    <string name="update_err_not_apk">डाउनलोड गरिएको फाइल मान्य स्थापना प्याकेज होइन (वेबपेज हुन सक्छ, वा डाउनलोड लिङ्कको म्याद सकिएको छ); कृपया फेरि डाउनलोड गर्नुहोस् वा GitHub प्रयोग गर्नुहोस्।</string>
+    <string name="update_err_apk_incomplete">स्थापना प्याकेजको सामग्री अपूर्ण छ; कृपया फेरि डाउनलोड गर्नुहोस् वा GitHub प्रयोग गर्नुहोस्।</string>
+    <string name="update_err_apk_unparsable">स्थापना प्याकेज विश्लेषण गर्न सकिएन (डाउनलोड अपूर्ण हुन सक्छ); कृपया फेरि डाउनलोड गर्नुहोस् वा GitHub प्रयोग गर्नुहोस्।</string>
+    <string name="update_err_no_install_permission">«अज्ञात एप इन्स्टल गर्ने» अनुमति अझै प्राप्त भएको छैन</string>
+    <string name="update_err_installer_failed">प्रणाली इन्स्टलर सुरु गर्न सकिएन (%1$s); कृपया फाइल म्यानेजरबाट प्याकेज खोलेर म्यानुअल रूपमा इन्स्टल गर्नुहोस्</string>
+
+</resources>

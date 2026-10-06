@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Albanian (sq) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Ndarja në Lanzou është anuluar ose skedari nuk ekziston më; shkarko nga GitHub</string>
+    <string name="update_lanzou_gone_short">Ndarja në Lanzou është anuluar; shkarko nga GitHub</string>
+    <string name="update_lanzou_resolve_failed">Analiza e linkut të shkarkimit të Lanzou dështoi</string>
+    <string name="update_lanzou_need_passwd">Kjo ndarje në Lanzou kërkon kodin e aksesit; shkarko nga GitHub (ose kërko kodin e aksesit te shënimet e versionit)</string>
+    <string name="update_lanzou_wrong_passwd">Kodi i aksesit i Lanzou është i gabuar</string>
+    <string name="update_err_resolve_failed">Analiza dështoi</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Verifikimi kundër crawler-ave i Lanzou dështoi</string>
+    <string name="update_err_no_frame">Faqja e shkarkimit të Lanzou nuk mund të analizohet (nuk u gjet korniza e shkarkimit)</string>
+    <string name="update_err_no_file_id">ID-ja e skedarit të Lanzou nuk mund të analizohet</string>
+    <string name="update_err_no_sign">Firma e Lanzou nuk mund të analizohet</string>
+    <string name="update_err_ajax_request">Kërkesa te ndërfaqja dështoi</string>
+    <string name="update_err_api_request">Kërkesa te ndërfaqja e Lanzou dështoi</string>
+    <string name="update_err_empty_direct">Lanzou ka kthyer një link bosh shkarkimi</string>
+    <string name="update_err_direct_expired">Linku i shkarkimit të Lanzou ka skaduar; merre përsëri</string>
+    <string name="update_err_http_request">Kërkesa dështoi (HTTP %1$d)</string>
+    <string name="update_err_connect">Nuk lidhet me serverin e shkarkimit: %1$s</string>
+    <string name="update_err_http">Shkarkimi dështoi (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Nuk mund të krijohet lidhja e shkarkimit</string>
+    <string name="update_err_empty">Përmbajtja e shkarkuar është bosh</string>
+    <string name="update_err_incomplete">Shkarkim i paplotë (u morën %1$d nga %2$d bajt); shkarkoje përsëri</string>
+    <string name="update_err_interrupted">Shkarkim i ndërprerë: %1$s</string>
+    <string name="update_err_not_apk">Ajo që u shkarkua nuk është një paketë instalimi e vlefshme (mund të jetë një faqe web ose linku i shkarkimit ka skaduar); shkarkoje përsëri ose përdor GitHub.</string>
+    <string name="update_err_apk_incomplete">Përmbajtja e paketës së instalimit është e paplotë; shkarkoje përsëri ose përdor GitHub.</string>
+    <string name="update_err_apk_unparsable">Paketa e instalimit nuk mund të analizohet (shkarkimi mund të jetë i paplotë); shkarkoje përsëri ose përdor GitHub.</string>
+    <string name="update_err_no_install_permission">Leja „instalim aplikacionesh të panjohura” nuk është dhënë ende</string>
+    <string name="update_err_installer_failed">Instaluesi i sistemit nuk mund të hapet (%1$s); hape paketën dorazi nga një menaxher skedarësh për ta instaluar</string>
+</resources>

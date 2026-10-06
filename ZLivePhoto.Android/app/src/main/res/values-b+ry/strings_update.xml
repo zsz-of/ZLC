@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Rusyn (ry) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Одказка Lanzou была скасована або файл не існує; беріте з GitHub</string>
+    <string name="update_lanzou_gone_short">Одказка Lanzou была скасована; беріте з GitHub</string>
+    <string name="update_lanzou_resolve_failed">Не ся удало розчленити одказку на стягнутя з Lanzou</string>
+    <string name="update_lanzou_need_passwd">Тота одказка Lanzou потребує код приступу; беріте з GitHub (або найсть код в пописї Release)</string>
+    <string name="update_lanzou_wrong_passwd">Хыбный код приступу Lanzou</string>
+    <string name="update_err_resolve_failed">Розчленїня ся не удало</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Анті-краул перевірка Lanzou ся не удала</string>
+    <string name="update_err_no_frame">Не ся удало розчленити сторінку стягнутя Lanzou (не найденый фрейм стягнутя)</string>
+    <string name="update_err_no_file_id">Не ся удало розчленити ідентифікатор файла Lanzou</string>
+    <string name="update_err_no_sign">Не ся удало розчленити підпис Lanzou</string>
+    <string name="update_err_ajax_request">Жадостка до інтерфейсу ся не удала</string>
+    <string name="update_err_api_request">Жадостка до інтерфейсу Lanzou ся не удала</string>
+    <string name="update_err_empty_direct">Lanzou вернула пусту адресу стягнутя</string>
+    <string name="update_err_direct_expired">Адреса стягнутя Lanzou выпрошла; здобудьте нову</string>
+    <string name="update_err_http_request">Жадостка ся не удала (HTTP %1$d)</string>
+    <string name="update_err_connect">Не годен ся злучити з сервером стягнутя: %1$s</string>
+    <string name="update_err_http">Стягнутя ся не удало (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Не годен створити злучіня про стягнутя</string>
+    <string name="update_err_empty">Стягнутый обсяг є пустый</string>
+    <string name="update_err_incomplete">Стягнутя не є повне (здобыто %1$d з %2$d байтів); стягните знову</string>
+    <string name="update_err_interrupted">Стягнутя было перерване: %1$s</string>
+    <string name="update_err_not_apk">Стягнутый файл не є валидный інсталацыйный пакет (може быти вебсторінка або одказка выпрошла); стягните знову або беріте з GitHub.</string>
+    <string name="update_err_apk_incomplete">Обсяг інсталацыйного пакета не є повный; стягните знову або беріте з GitHub.</string>
+    <string name="update_err_apk_unparsable">Інсталацыйный пакет не годен розчленити (можливо, стягнутя не є повне); стягните знову або беріте з GitHub.</string>
+    <string name="update_err_no_install_permission">Дозвіл «Інсталовати незнаны аплікації» іщі не є удїленый</string>
+    <string name="update_err_installer_failed">Не годен зачати системный інсталатор (%1$s); одкрийте інсталацыйный пакет ручно в манаджерови файлів</string>
+</resources>

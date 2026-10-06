@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Classical Chinese (lzh) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">未得 GitHub 下載之址，請緩而復試。</string>
+    <string name="update_flavor_standard">標準版</string>
+    <string name="update_flavor_go">Go 版</string>
+    <string name="update_lanzou_url_missing">此版未與藍奏雲下載之鏈，可改由 GitHub 下之。</string>
+    <string name="update_apk_direct_missing">此版未與本版相配之安裝包直鏈，請往 GitHub 發布之頁擇對應之 APK。</string>
+    <string name="update_install_permission_missing">未得「安裝未知程式」之權，不能自裝。請於系統設定許之而復試。</string>
+    <string name="update_error_unknown">未識之誤</string>
+    <string name="update_fail_lanzou">藍奏雲下載不成</string>
+    <string name="update_fail_github">GitHub 下載不成</string>
+    <string name="update_lanzou_resolving">方解析藍奏雲下載之鏈…</string>
+    <string name="update_lanzou_downloading">方自藍奏雲下載…</string>
+    <string name="update_github_downloading">方自 GitHub 下載…</string>
+    <string name="update_unzipping">方解安裝包…</string>
+    <string name="update_notes_empty">此版暫無更新之說。</string>
+    <string name="update_use_normal_title">請用常版</string>
+    <string name="update_use_normal_body">此機之系統為 Android 10 及以上，Go 輕量版已不復宜，舊版不能續用。
+
+覺此機已裝常版（ZLC），請徑開常版以續用（新版不復與 Go 相容之版，舊版可卸以釋空）。</string>
+    <string name="update_open_normal">開常版</string>
+    <string name="update_must_update_title">必更新乃可續用</string>
+    <string name="update_forced_body">此機之系統為 Android 10 及以上，Go 輕量版已不復宜，舊版不能續用；新版亦不復與 Go 相容之版。
+
+請連網而按「復試」以取常版安裝包。</string>
+    <string name="update_retry">復試</string>
+    <string name="update_switch_normal_body">此機之系統為 Android 10 及以上，Go 輕量版已不復宜，舊版不能續用。
+請下而裝常版以續用（新版不復與 Go 相容之版）。</string>
+    <string name="update_downloading_title">下載更新</string>
+    <string name="update_cancel">取消</string>
+    <string name="update_need_permission_title">需安裝之權</string>
+    <string name="update_need_permission_body">裝新版需系統「安裝未知程式」之權。
+
+按「往授」，於設定許之而返程式，則自續裝（不必復下）。</string>
+    <string name="update_grant">往授</string>
+    <string name="update_notice_title">示</string>
+    <string name="update_got_it">知之矣</string>
+    <string name="update_notes_title">v%1$s · 更新之說</string>
+    <string name="update_back">返回</string>
+    <string name="update_title_switch_normal">易為常版</string>
+    <string name="update_title_reinstall">重裝此版</string>
+    <string name="update_title_new_version">覺有新版</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">將下而重裝此版（覆今之程式）。
+此功能以試更新之機。</string>
+    <string name="update_view_notes">觀更新之說</string>
+    <string name="update_lanzou_unavailable">藍奏雲暫不可用</string>
+    <string name="update_download_lanzou">自藍奏雲下載</string>
+    <string name="update_download_github">自 GitHub 下載</string>
+    <string name="update_download_browser">自瀏覽器下載</string>
+    <string name="update_later">暫不更新</string>
+    <string name="update_later_switch">暫不易</string>
+    <string name="update_skip_version">略此版</string>
+</resources>

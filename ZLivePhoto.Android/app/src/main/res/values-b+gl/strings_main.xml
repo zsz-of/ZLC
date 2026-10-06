@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Galician (gl) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="main_status_ready">A punto</string>
+    <string name="main_status_location_granted">Permiso de localización concedido; os metadatos GPS conservaranse despois da conversión</string>
+    <string name="main_status_location_denied">Permiso de localización non concedido: as fotos convertidas perderán a información de localización GPS</string>
+    <string name="main_status_all_files_granted">Permiso de «Acceso a todos os ficheiros» concedido; as conversións escribiranse directamente no cartafol da galería e conservarase toda a información de localización</string>
+    <string name="main_status_all_files_denied">Permiso de «Acceso a todos os ficheiros» non concedido: nalgúns modelos as conversións poden perder a información de localización</string>
+    <string name="main_status_read_granted">Permiso para ler fotos e vídeos concedido</string>
+    <string name="main_status_video_missing">Permiso concedido, pero falta o de vídeo: non se poden atopar os vídeos asociados das Live Photo de dous ficheiros</string>
+    <string name="main_status_permission_denied">Permiso non concedido; podes volver premer «Engadir ficheiros»</string>
+    <string name="main_status_folder_not_selected">Ningún cartafol seleccionado</string>
+    <string name="main_status_folder_unavailable">Non se pode acceder ao cartafol seleccionado (só se admiten cartafoles de almacenamento local)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Restaurouse a sesión anterior (%1$d ficheiro)</item>
+        <item quantity="other">Restaurouse a sesión anterior (%1$d ficheiros)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Detectouse unha saída anómala anterior; baleirouse a lista que non rematara</string>
+    <string name="main_status_compose_blocks_extract">A cola contén tarefas de composición; non se pode cambiar ao modo de extracción</string>
+    <string name="main_status_replace_off_mutex">Desactivouse o modo de substitución (é mutuamente exclusivo con «Eliminar os ficheiros orixinais ao rematar»)</string>
+    <string name="main_status_delete_needs_all_files">Eliminar automaticamente os ficheiros orixinais require o permiso de «Acceso a todos os ficheiros»; concede primeiro o permiso</string>
+    <string name="main_status_replace_off">Desactivouse o modo de substitución; o resultado da conversión volve escribirse no cartafol da galería</string>
+    <string name="main_status_replace_needs_all_files">O modo de substitución require o permiso de «Acceso a todos os ficheiros»; concede primeiro o permiso</string>
+    <string name="main_status_delete_off_mutex">Desactivouse «Eliminar os ficheiros orixinais ao rematar» (é mutuamente exclusivo co modo de substitución)</string>
+    <string name="main_status_loading_albums">Estanse a cargar os álbums…</string>
+    <string name="main_status_no_albums">Non se atopou ningún álbum</string>
+    <string name="main_status_compose_no_photo">Non hai ningunha foto seleccionada; non se pode compoñer</string>
+    <string name="main_status_compose_no_video">Non hai ningún vídeo seleccionado; non se pode compoñer</string>
+    <string name="main_status_compose_all_added">Todas as fotos seleccionadas xa están na lista</string>
+    <string name="main_status_compose_paired">%1$d fotos e %2$d vídeos; engadíronse %3$d parellas de composición segundo o número máis baixo</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Engadiuse %1$d tarefa de composición; preme «Iniciar a conversión» para compoñer</item>
+        <item quantity="other">Engadíronse %1$d tarefas de composición; preme «Iniciar a conversión» para compoñer</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (o formato de saída cambiouse automaticamente a Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Estase a importar %1$d imaxe compartida…</item>
+        <item quantity="other">Estanse a importar %1$d imaxes compartidas…</item>
+    </plurals>
+    <string name="main_status_import_failed">Erro de importación: %1$s</string>
+    <string name="main_status_import_done_partial">Importación completada: %1$d correctas, %2$d fallidas</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importación completada: importouse %1$d ficheiro en total</item>
+        <item quantity="other">Importación completada: importáronse %1$d ficheiros en total</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importación detida: %1$d correctas, %2$d fallidas</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Estase a importar %1$d ficheiro…</item>
+        <item quantity="other">Estanse a importar %1$d ficheiros…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Estase a importar %1$d/%2$d…</string>
+    <string name="main_status_stopping">Estase a deter… (deterase cando remate o ficheiro actual)</string>
+    <string name="main_status_stopping_import">Estase a deter a importación…</string>
+    <string name="main_status_removed">Eliminouse %1$s</string>
+    <string name="main_status_cleared">Baleirouse</string>
+    <string name="main_status_nothing_to_convert">Non hai ficheiros para converter</string>
+    <string name="main_status_folder_unreadable">Non se pode ler o cartafol seleccionado</string>
+    <string name="main_status_no_images">Non se atopou ningunha imaxe no cartafol seleccionado</string>
+    <string name="main_status_scanning_folder">Estase a escanexar o cartafol…</string>
+    <string name="main_status_batch_importing">Estase a importar por lotes %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Importación por lotes detida: importouse %1$d Live Photo en total</item>
+        <item quantity="other">Importación por lotes detida: importáronse %1$d Live Photos en total</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Importación por lotes detida: importouse %1$d Live Photo en total, omitíronse %2$d ficheiros que non son Live Photo</item>
+        <item quantity="other">Importación por lotes detida: importáronse %1$d Live Photos en total, omitíronse %2$d ficheiros que non son Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Importación por lotes completada: importouse %1$d Live Photo en total</item>
+        <item quantity="other">Importación por lotes completada: importáronse %1$d Live Photos en total</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Importación por lotes completada: importouse %1$d Live Photo en total, omitíronse %2$d ficheiros que non son Live Photo</item>
+        <item quantity="other">Importación por lotes completada: importáronse %1$d Live Photos en total, omitíronse %2$d ficheiros que non son Live Photo</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Detívose: de %1$d ficheiros, procesáronse %2$d e substituíronse %3$d ficheiros orixinais</string>
+    <string name="main_status_stopped_export">Detívose: de %1$d ficheiros, procesáronse %2$d e exportáronse %3$d á galería</string>
+    <string name="main_status_done_replace_reason">Completado: procesáronse %1$d ficheiros e substituíronse %2$d ficheiros orixinais (motivo: %3$s)</string>
+    <string name="main_status_done_export_reason">Completado: procesáronse %1$d ficheiros e exportáronse %2$d á galería (motivo: %3$s)</string>
+    <string name="main_status_done_replace">Completado: procesáronse %1$d ficheiros e substituíronse %2$d ficheiros orixinais</string>
+    <string name="main_status_done_export">Completado: procesáronse %1$d ficheiros e exportáronse %2$d á galería</string>
+    <string name="main_status_keep_originals">%1$s; non se concedeu o «Acceso completo ao almacenamento», polo que se conservaron os ficheiros orixinais</string>
+    <string name="main_info_detecting">Estase a detectar…</string>
+    <string name="main_info_unrecognized">Formato de Live Photo non recoñecido</string>
+    <string name="main_info_converting">Estase a converter…</string>
+    <string name="main_info_compose_task">Tarefa de composición (preme «Iniciar a conversión» para compoñer)</string>
+    <string name="main_info_done_replaced">Completado (%1$d ficheiros orixinais substituídos)</string>
+    <string name="main_info_done_skipped">Completado (omitiuse: conflito de nome)</string>
+    <string name="main_info_done_exported">Completado (%1$d exportados)</string>
+    <string name="main_info_failed">Erro: %1$s</string>
+    <string name="main_progress_added">Engadíronse %1$d/%2$d</string>
+    <string name="main_progress_processed">Procesáronse %1$d/%2$d</string>
+    <string name="main_progress_imported">Importáronse %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Require o permiso para ler fotos e vídeos</string>
+    <string name="main_dialog_permission_message">Esta aplicación necesita ler as fotos e os vídeos do teu dispositivo:\n\n• Permiso de fotos: escanexa a galería do dispositivo e identifica as Live Photos que contén\n• Permiso de vídeos: atopa os vídeos asociados das Live Photo de dous ficheiros\n• Permiso de localización: conserva os metadatos de localización GPS das fotos (se faltan, as fotos convertidas perden a información de localización)\n\nSe o denegas, non se poderá usar o selector integrado; máis adiante podes volver premer «Engadir ficheiros» para conceder o permiso.</string>
+    <string name="main_dialog_settings_title">Hai que conceder manualmente os permisos de fotos e vídeos</string>
+    <string name="main_dialog_settings_message">Antes escolleches «Non preguntar de novo», así que o sistema xa non mostra o diálogo de permisos.\n\nVai á páxina de detalles da aplicación → Permisos → Fotos e vídeos, concede aí o acceso manualmente e volve a esta aplicación.\n\nNota: hai que conceder á vez os permisos de «Fotos» e de «Vídeos»; se non, as Live Photo de dous ficheiros non atoparán os vídeos asociados.</string>
+    <string name="main_dialog_allfiles_title_delete">Eliminar os ficheiros orixinais require «Acceso a todos os ficheiros»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Este dispositivo non admite eliminar automaticamente os ficheiros orixinais</string>
+    <string name="main_dialog_allfiles_title_replace">O modo de substitución require «Acceso a todos os ficheiros»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Este dispositivo non admite o modo de substitución</string>
+    <string name="main_dialog_allfiles_title_location">Recoméndase conceder o permiso de «Acceso a todos os ficheiros»</string>
+    <string name="main_dialog_allfiles_delete_message">«Eliminar os ficheiros orixinais ao rematar» elimina directamente os ficheiros orixinais do disco (a foto e o vídeo asociado); a operación é irreversíbel, polo que hai que conceder antes o permiso de «Acceso a todos os ficheiros».\n\nO interruptor quedará dispoñible unha vez concedido o permiso; nese momento poderás activalo ti mesmo.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">O sistema actual (Android 10 ou anterior) non ofrece o permiso de «Acceso a todos os ficheiros», polo que non se poden eliminar directamente os ficheiros orixinais do disco; por iso este dispositivo non admite «Eliminar os ficheiros orixinais ao rematar».\n\nDespois de completar a conversión podes limpar manualmente os orixinais desde a galería do sistema.</string>
+    <string name="main_dialog_allfiles_replace_message">O «modo de substitución» escribe directamente o resultado da conversión nos ficheiros orixinais do disco (sobrescribe o seu contido); a operación é irreversíbel, polo que hai que conceder antes o permiso de «Acceso a todos os ficheiros».\n\nO interruptor quedará dispoñible unha vez concedido o permiso; nese momento poderás activalo ti mesmo.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">O sistema actual (Android 10 ou anterior) non ofrece o permiso de «Acceso a todos os ficheiros», polo que non se poden reescribir directamente os ficheiros orixinais do disco; por iso este dispositivo non admite o «modo de substitución».\n\nPodes seguir convertindo do xeito predeterminado; os resultados escribiranse no cartafol da galería.</string>
+    <string name="main_dialog_allfiles_location_message">Nalgúns modelos (como Meizu), escribir a través da interface da galería do sistema elimina a información de localización GPS, e as fotos convertidas perden a localización.\n\nUnha vez concedido o «Acceso a todos os ficheiros», esta aplicación escribirá directamente no cartafol da galería e conservaránse íntegramente os metadatos de localización.\n\nSen o permiso tamén se pode converter con normalidade, pero nalgúns modelos pode perderse a información de localización.</string>
+    <string name="main_dialog_conflict_title">Conflito de nome de ficheiro de saída</string>
+    <string name="main_dialog_conflict_message">No cartafol de saída xa existe un ficheiro co mesmo nome:\n%1$s\n\nEscolle como xestionalo.</string>
+    <string name="main_label_conflict_always">Aplicar este método aos seguintes conflitos</string>
+    <string name="main_btn_grant">Conceder</string>
+    <string name="main_btn_deny">Denegar</string>
+    <string name="main_btn_go_settings">Abrir a configuración</string>
+    <string name="main_btn_cancel">Cancelar</string>
+    <string name="main_btn_grant_access">Conceder o acceso</string>
+    <string name="main_btn_got_it">Aceptar</string>
+    <string name="main_btn_not_now">Agora non</string>
+    <string name="main_btn_skip">Omitir</string>
+    <string name="main_btn_overwrite">Sobrescribir</string>
+    <string name="main_btn_auto_rename">Renomear automaticamente</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Eliminouse %1$d ficheiro orixinal</item>
+        <item quantity="other">Elimináronse %1$d ficheiros orixinais</item>
+    </plurals>
+    <string name="main_delete_nothing">Non hai que eliminar ningún ficheiro orixinal</string>
+    <string name="main_delete_partial">Elimináronse %1$d ficheiros orixinais (%2$d non se puideron eliminar e conserváronse)</string>
+    <string name="main_delete_failed">Non se puideron eliminar os ficheiros orixinais (ficheiros en uso ou sen permiso de escritura); conserváronse</string>
+    <string name="main_export_missing_output">Falta o resultado da conversión ou está baleiro: %1$s</string>
+    <string name="main_export_missing_output_bare">Falta o resultado da conversión ou está baleiro</string>
+    <string name="main_export_insert_null">MediaStore insert devolveu null</string>
+    <string name="main_export_output_stream">O fluxo de saída de MediaStore non está dispoñible</string>
+    <string name="main_export_write_failed">Erro de escritura en MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">Non se pode crear o cartafol da galería %1$s</string>
+    <string name="main_export_dir_write_failed">Non se puido escribir no cartafol da galería: %1$s</string>
+    <string name="main_export_no_source">Non se puido localizar o ficheiro de orixe; omitiuse a substitución</string>
+    <string name="main_export_companion_failed">Non se puido volver escribir o ficheiro asociado: %1$s</string>
+    <string name="main_export_source_dir_unwritable">O cartafol do ficheiro de orixe non é escribíbel; o ficheiro asociado non se puido volver escribir</string>
+    <string name="main_export_source_dir_unavailable">O cartafol do ficheiro de orixe non está dispoñible: %1$s</string>
+    <string name="main_export_replace_failed">Non se puido substituír o ficheiro de orixe: %1$s</string>
+    <string name="main_export_replace_failed_bare">Non se puido substituír o ficheiro de orixe</string>
+</resources>

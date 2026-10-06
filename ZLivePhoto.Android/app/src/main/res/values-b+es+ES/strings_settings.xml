@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC — cadenas en español de España (es-ES).
+  Pantalla de ajustes (ui/SettingsScreen.kt). El prefijo de clave settings_ no debe cambiarse nunca.
+  Los recursos predeterminados (values/) están en chino simplificado; otros idiomas van en
+  values-b+<lang>/strings_settings.xml.
+  Los marcadores usan siempre la forma numerada %1$s / %1$d.
+  No se traducen los nombres propios ni los identificadores ("@毛血旺o", "Trae · GML · DeepSeek · Kimi",
+  "GPL-3.0", "H.265"/"H.264", la URL de GitHub): permanecen incrustados en el código.
+-->
+<resources>
+
+    <!-- Generales -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_cd_back">Atrás</string>
+    <string name="settings_btn_apply">Aplicar</string>
+    <string name="settings_btn_cancel">Cancelar</string>
+    <string name="settings_btn_close">Cerrar</string>
+    <string name="settings_btn_ok">Aceptar</string>
+    <string name="settings_btn_sponsor">Patrocinar</string>
+
+    <!-- Títulos de sección -->
+    <string name="settings_section_general">General</string>
+    <string name="settings_section_appearance">Apariencia</string>
+    <string name="settings_section_language">Idioma</string>
+    <string name="settings_section_defaults">Opciones predeterminadas</string>
+    <string name="settings_section_output">Salida</string>
+    <string name="settings_section_transcode">Transcodificación de vídeo</string>
+    <string name="settings_section_about">Acerca de</string>
+    <string name="settings_section_app">Aplicación</string>
+    <string name="settings_section_credits">Créditos y patrocinio</string>
+    <string name="settings_section_opensource">Código abierto y licencia</string>
+
+    <!-- Generales -->
+    <string name="settings_startup_check_title">Buscar actualizaciones al iniciar</string>
+    <string name="settings_startup_check_subtitle">Obtiene automáticamente las versiones nuevas de GitHub al iniciar y avisa cuando hay una actualización</string>
+    <string name="settings_haptics_title">Vibración</string>
+    <string name="settings_haptics_subtitle">Respuesta háptica al pulsar los botones y al cambiar de estado</string>
+    <string name="settings_bounce_title">Animación elástica de los botones</string>
+    <string name="settings_bounce_subtitle">Animación de escala y rebote al pulsar los botones</string>
+
+    <!-- Apariencia -->
+    <string name="settings_theme_system">Seguir el sistema</string>
+    <string name="settings_theme_dark">Oscuro</string>
+    <string name="settings_theme_light">Claro</string>
+    <string name="settings_dynamic_theme_title">Color dinámico de Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Sigue el color del fondo de pantalla del sistema (Android 12+); si lo desactivas, se usan los colores predefinidos de abajo</string>
+    <string name="settings_preset_colors_title">Colores predefinidos</string>
+    <string name="settings_preset_current">Actual: %1$s</string>
+    <string name="settings_preset_disabled_hint">Disponible al desactivar «Color dinámico de Material You»</string>
+    <string name="settings_custom">Personalizado</string>
+    <string name="settings_custom_color_title">Color de tema personalizado</string>
+    <string name="settings_cd_custom_palette">Paleta personalizada</string>
+    <string name="settings_hue_value">Tono %1$d°</string>
+
+    <!-- Idioma de la aplicación: el título y la opción «seguir el sistema» reutilizan
+         strings_app.xml (R.string.app_language_title / R.string.app_language_follow_system);
+         aquí no se vuelven a definir -->
+    <string name="settings_language_dialog_title">Elegir el idioma de la aplicación</string>
+    <string name="settings_language_count">%1$d idiomas en total</string>
+
+    <!-- Opciones predeterminadas -->
+    <string name="settings_reminder_dialogs_title">Diálogos de «No volver a mostrar»</string>
+    <string name="settings_reminder_dialogs_subtitle">Gestiona los interruptores de todos los diálogos de «No volver a mostrar»</string>
+    <string name="settings_reminder_hint">El interruptor activado significa «No volver a mostrar»; si lo desactivas, el aviso volverá a aparecer la próxima vez que se dé la situación.</string>
+
+    <!-- Salida -->
+    <string name="settings_preserve_folders_title">Mantener la estructura de carpetas de origen</string>
+    <string name="settings_preserve_folders_subtitle">Los resultados se guardan en subcarpetas con el nombre del álbum original; si lo desactivas, todo queda en una misma carpeta</string>
+
+    <!-- Acerca de -->
+    <string name="settings_about_title">Acerca de</string>
+    <string name="settings_about_subtitle">Versión · Buscar actualizaciones · Créditos y patrocinio</string>
+    <string name="settings_check_update_title">Buscar actualizaciones</string>
+    <string name="settings_check_update_subtitle">Obtener la última versión desde GitHub Releases</string>
+    <string name="settings_checking">Comprobando…</string>
+    <string name="settings_update_available">v%1$s disponible</string>
+    <string name="settings_up_to_date">Ya tienes la última versión</string>
+    <string name="settings_network_error">Error de red; inténtalo de nuevo más tarde</string>
+    <string name="settings_reinstall_title">Reinstalar esta versión</string>
+    <string name="settings_reinstall_subtitle">Descargar la última versión y sobrescribir la instalación (para probar las actualizaciones)</string>
+    <string name="settings_reinstall_newer_hint">Puedes actualizar a v%1$s; usa antes «Buscar actualizaciones»</string>
+    <string name="settings_version_title">Versión</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Patrocinio con Alipay</string>
+    <string name="settings_alipay_subtitle">Apoyar el desarrollo</string>
+    <string name="settings_coolapk_subtitle">Usuario de Coolapk · gracias por su apoyo</string>
+    <string name="settings_ai_credits_subtitle">Gracias a los IDE de IA y a los modelos de IA por su ayuda en el desarrollo</string>
+    <string name="settings_github_title">Repositorio de GitHub</string>
+    <string name="settings_license_title">Licencia de código abierto</string>
+    <string name="settings_sponsor_dialog_title">Gracias por tu apoyo</string>
+    <string name="settings_sponsor_dialog_text">¡De verdad, muchas gracias por querer apoyar esta aplicación!\n\nSi aún eres estudiante o todavía no eres económicamente independiente, no gastes dinero por favor:\nquédatelo en el corazón y sigue usando la aplicación; eso ya es el mejor apoyo para mí.\n\nSi quieres patrocinar, un euro también es cariño, y lo invertiré en mantenerla y mejorarla:)</string>
+    <string name="settings_alipay_missing_title">Alipay no está instalado</string>
+    <string name="settings_alipay_missing_text">No se ha detectado Alipay; por ahora no se puede completar el patrocinio.\n\nNo pasa nada: en cualquier caso, ¡muchas gracias por tu buena intención!</string>
+
+    <!-- Transcodificación de vídeo -->
+    <string name="settings_transcoder_title">Transcodificador integrado</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Recodificar</string>
+    <string name="settings_transcode_mode_remux">Solo reempaquetar el contenedor (recomendado)</string>
+    <string name="settings_transcode_mode_off">No usar el transcodificador</string>
+    <string name="settings_transcode_params_title">Parámetros de transcodificación</string>
+    <string name="settings_transcode_params_subtitle">Parámetros de calidad y compresión usados al recodificar</string>
+    <string name="settings_transcode_params_disabled">Solo se aplica cuando «Modo de transcodificación» está en «Recodificar»</string>
+    <string name="settings_crf_value">Calidad CRF: %1$d</string>
+    <string name="settings_crf_hint">Cuanto menor sea el valor, mayor calidad y tamaño (predeterminado: 18)</string>
+    <string name="settings_encoder_title">Codificador</string>
+    <string name="settings_compress_preset_title">Preajuste de compresión</string>
+
+</resources>

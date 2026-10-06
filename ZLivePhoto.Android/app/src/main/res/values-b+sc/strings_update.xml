@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Sardinian (sc) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Sa cumpartzidura de Lanzou Cloud est istada annullada o su file no esistit; iscarriga dae GitHub</string>
+    <string name="update_lanzou_gone_short">Sa cumpartzidura de Lanzou Cloud est istada annullada; iscarriga dae GitHub</string>
+    <string name="update_lanzou_resolve_failed">S’anàlisi de su ligàmene de iscarrigamentu de Lanzou Cloud est fallida</string>
+    <string name="update_lanzou_need_passwd">Custa cumpartzidura de Lanzou Cloud rechedet su còdighe de atzessu; iscarriga dae GitHub (o chirca su còdighe de atzessu in is notas de sa versione)</string>
+    <string name="update_lanzou_wrong_passwd">Su còdighe de atzessu de Lanzou Cloud est isballiadu</string>
+    <string name="update_err_resolve_failed">S’anàlisi est fallida</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Sa verìfica contra is rastregadores de Lanzou Cloud est fallida</string>
+    <string name="update_err_no_frame">Non si podet analizare sa pàgina de iscarrigamentu de Lanzou Cloud (no s’at agatadu su quadru de iscarrigamentu)</string>
+    <string name="update_err_no_file_id">Non si podet analizare s’identificadore de su file de Lanzou Cloud</string>
+    <string name="update_err_no_sign">Non si podet analizare sa firma de Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Sa rechesta a s’interfàtzia est fallida</string>
+    <string name="update_err_api_request">Sa rechesta a s’interfàtzia de Lanzou Cloud est fallida</string>
+    <string name="update_err_empty_direct">Lanzou Cloud at torradu un’indiritzu de iscarrigamentu bòidu</string>
+    <string name="update_err_direct_expired">S’indiritzu de iscarrigamentu de Lanzou Cloud non balit prus; otenne·ddu de nou</string>
+    <string name="update_err_http_request">Sa rechesta est fallida (HTTP %1$d)</string>
+    <string name="update_err_connect">Non si podet connettere cun su serbidore de iscarrigamentu: %1$s</string>
+    <string name="update_err_http">S’iscarrigamentu est fallidu (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Non si podet istabilire sa connessione de iscarrigamentu</string>
+    <string name="update_err_empty">Su cuntenutu iscarrigadu est bòidu</string>
+    <string name="update_err_incomplete">Iscarrigamentu incompletu (otennidos %1$d de %2$d byte); torra a dd’iscarrigare</string>
+    <string name="update_err_interrupted">Iscarrigamentu interrottu: %1$s</string>
+    <string name="update_err_not_apk">Cuddu chi s’est iscarrigadu no est unu pachetu de installatzione vàlidu (diat pòdere èssere una pàgina web o su ligàmene de iscarrigamentu non balit prus); torra·ddu a iscarrigare o imprea GitHub.</string>
+    <string name="update_err_apk_incomplete">Su cuntenutu de su pachetu de installatzione est incompletu; torra·ddu a iscarrigare o imprea GitHub.</string>
+    <string name="update_err_apk_unparsable">Su pachetu de installatzione non si podet analizare (diat pòdere èssere chi s’iscarrigamentu siat incompletu); torra·ddu a iscarrigare o imprea GitHub.</string>
+    <string name="update_err_no_install_permission">Su permissu «installatzione de aplicatziones disconnotas» ancora no est istadu dadu</string>
+    <string name="update_err_installer_failed">Non si podet abèrrere s’installadore de su sistema (%1$s); abèrri su pachetu a manu dae unu gestore de files pro dd’installare</string>
+</resources>

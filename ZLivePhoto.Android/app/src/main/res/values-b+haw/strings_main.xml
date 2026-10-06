@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Hawaiian (haw) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">Mākaukau</string>
+    <string name="main_status_location_granted">Loaʻa ka ʻae kahi; e koe nā ʻikepili kahi GPS ma hope o ka hoʻololi ʻana</string>
+    <string name="main_status_location_denied">ʻAʻole i ʻae ʻia ka ʻae kahi: lilo nā ʻikepili kahi GPS o nā kiʻi ma hope o ka hoʻololi ʻana</string>
+    <string name="main_status_all_files_granted">Loaʻa ka ʻae „Komo i nā waihona a pau“; e kākau pololei ka hoʻololi ʻana i ka papa kuhikuhi albamu, koe piha nā ʻikepili kahi</string>
+    <string name="main_status_all_files_denied">ʻAʻole i ʻae ʻia ka ʻae „Komo i nā waihona a pau“: ma kekahi mea hana, hiki ke lilo nā ʻikepili kahi ma hope o ka hoʻololi ʻana</string>
+    <string name="main_status_read_granted">Loaʻa ka ʻae heluhelu nā kiʻi a me nā wikiō</string>
+    <string name="main_status_video_missing">Ua ʻae ʻia, akā ʻaʻole ka ʻae wikiō: ʻaʻole hiki ke ʻimi i ka wikiō pili o Live Photo nā waihona ʻelua</string>
+    <string name="main_status_permission_denied">ʻAʻole i ʻae ʻia ka ʻae; hiki ke kaomi hou i „Hoʻohui waihona“</string>
+    <string name="main_status_folder_not_selected">ʻAʻole i koho ʻia ka papa kuhikuhi</string>
+    <string name="main_status_folder_unavailable">ʻAʻole hiki ke komo i ka papa kuhikuhi i koho ʻia (nā papa kuhikuhi mālama kahi wale nō)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Ua hoʻihoʻi ʻia ka hālāwai mamua (%1$d waihona)</item>
+        <item quantity="other">Ua hoʻihoʻi ʻia ka hālāwai mamua (%1$d waihona)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Ua ʻike ʻia ka hoʻi ʻino o ka manawa mamua; ua holoi ʻia ka papa inoa ʻaʻole pau</string>
+    <string name="main_status_compose_blocks_extract">Aia nā hana hui pū ma ka papa inoa; ʻaʻole hiki ke hoʻololi i ke ʻano wāwahi</string>
+    <string name="main_status_replace_off_mutex">Ua pani ʻia ke ʻano hoʻololi (kū ʻē me „Holoi nā kiʻi kumu ma hope o ka hana ʻana“)</string>
+    <string name="main_status_delete_needs_all_files">Pono ka ʻae „Komo i nā waihona a pau“ no ka holoi ʻakaku ʻana i nā kiʻi kumu; e ʻae mua</string>
+    <string name="main_status_replace_off">Ua pani ʻia ke ʻano hoʻololi; e kākau hou ʻia ka hua hoʻololi i ka papa kuhikuhi albamu</string>
+    <string name="main_status_replace_needs_all_files">Pono ka ʻae „Komo i nā waihona a pau“ no ke ʻano hoʻololi; e ʻae mua</string>
+    <string name="main_status_delete_off_mutex">Ua pani ʻia „Holoi nā kiʻi kumu ma hope o ka hana ʻana“ (kū ʻē me ke ʻano hoʻololi)</string>
+    <string name="main_status_loading_albums">Ke heluhelu nei i nā albamu…</string>
+    <string name="main_status_no_albums">ʻAʻole i loaʻa albamu</string>
+    <string name="main_status_compose_no_photo">ʻAʻole i koho ʻia kiʻi; ʻaʻole hiki ke hui pū</string>
+    <string name="main_status_compose_no_video">ʻAʻole i koho ʻia wikiō; ʻaʻole hiki ke hui pū</string>
+    <string name="main_status_compose_all_added">Aia nā kiʻi a pau i koho ʻia ma ka papa inoa</string>
+    <string name="main_status_compose_paired">Nā kiʻi %1$d, nā wikiō %2$d; ua hoʻohui ʻia %3$d hui hana hui pū e like me ka ʻaoʻao emi loa</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Ua hoʻohui ʻia %1$d hana hui pū; kaomi i „Hoʻomaka hoʻololi“ e hui pū ai</item>
+        <item quantity="other">Ua hoʻohui ʻia %1$d hana hui pū; kaomi i „Hoʻomaka hoʻololi“ e hui pū ai</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (ua hoʻololi ʻakaku ʻia ke ʻano pahu hope i Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Ke hoʻokomo nei i kiʻi kaʻana like %1$d…</item>
+        <item quantity="other">Ke hoʻokomo nei i nā kiʻi kaʻana like %1$d…</item>
+    </plurals>
+    <string name="main_status_import_failed">Hewa ka hoʻokomo ʻana: %1$s</string>
+    <string name="main_status_import_done_partial">Pau ka hoʻokomo ʻana: lanakila %1$d, hewa %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Pau ka hoʻokomo ʻana: hoʻokomo ʻia %1$d waihona</item>
+        <item quantity="other">Pau ka hoʻokomo ʻana: hoʻokomo ʻia %1$d waihona</item>
+    </plurals>
+    <string name="main_status_import_stopped">Ua hoʻōki ʻia ka hoʻokomo ʻana: lanakila %1$d, hewa %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Ke hoʻokomo nei i waihona %1$d…</item>
+        <item quantity="other">Ke hoʻokomo nei i nā waihona %1$d…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Ke hoʻokomo nei %1$d/%2$d…</string>
+    <string name="main_status_stopping">Ke hoʻōki nei… (hoʻōki ma hope o ka pau ʻana o ka waihona kēia manawa)</string>
+    <string name="main_status_stopping_import">Ke hoʻōki nei i ka hoʻokomo ʻana…</string>
+    <string name="main_status_removed">Ua wehe aku ʻia %1$s</string>
+    <string name="main_status_cleared">Ua holoi ʻia a pau</string>
+    <string name="main_status_nothing_to_convert">ʻAʻohe waihona e hoʻololi ai</string>
+    <string name="main_status_folder_unreadable">ʻAʻole hiki ke heluhelu i ka papa kuhikuhi i koho ʻia</string>
+    <string name="main_status_scanning_folder">Ke ʻimi nei i ka papa kuhikuhi…</string>
+    <string name="main_status_no_images">ʻAʻole i loaʻa kiʻi ma loko o ka papa kuhikuhi i koho ʻia</string>
+    <string name="main_status_batch_importing">Ke hoʻokomo pūʻulu nei %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Ua hoʻōki ʻia ka hoʻokomo pūʻulu: hoʻokomo ʻia %1$d Live Photo</item>
+        <item quantity="other">Ua hoʻōki ʻia ka hoʻokomo pūʻulu: hoʻokomo ʻia %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Ua hoʻōki ʻia ka hoʻokomo pūʻulu: hoʻokomo ʻia %1$d Live Photo, kuʻu ʻia %2$d waihona ʻaʻole live</item>
+        <item quantity="other">Ua hoʻōki ʻia ka hoʻokomo pūʻulu: hoʻokomo ʻia %1$d Live Photo, kuʻu ʻia %2$d waihona ʻaʻole live</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Pau ka hoʻokomo pūʻulu: hoʻokomo ʻia %1$d Live Photo</item>
+        <item quantity="other">Pau ka hoʻokomo pūʻulu: hoʻokomo ʻia %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Pau ka hoʻokomo pūʻulu: hoʻokomo ʻia %1$d Live Photo, kuʻu ʻia %2$d waihona ʻaʻole live</item>
+        <item quantity="other">Pau ka hoʻokomo pūʻulu: hoʻokomo ʻia %1$d Live Photo, kuʻu ʻia %2$d waihona ʻaʻole live</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Ua hoʻōki ʻia: hana ʻia %2$d o %1$d waihona, hoʻololi ʻia %3$d waihona kumu</string>
+    <string name="main_status_stopped_export">Ua hoʻōki ʻia: hana ʻia %2$d o %1$d waihona, hoʻopuka ʻia %3$d i ka albamu</string>
+    <string name="main_status_done_replace_reason">Pau: hana piha ʻia %1$d waihona, hoʻololi ʻia %2$d waihona kumu (kumu: %3$s)</string>
+    <string name="main_status_done_export_reason">Pau: hana piha ʻia %1$d waihona, hoʻopuka ʻia %2$d i ka albamu (kumu: %3$s)</string>
+    <string name="main_status_done_replace">Pau: hana piha ʻia %1$d waihona, hoʻololi ʻia %2$d waihona kumu</string>
+    <string name="main_status_done_export">Pau: hana piha ʻia %1$d waihona, hoʻopuka ʻia %2$d i ka albamu</string>
+    <string name="main_status_keep_originals">%1$s; ʻaʻole i loaʻa ka ʻae „komo piha i kahua mālama“, koe nā kiʻi kumu</string>
+    <string name="main_info_detecting">Ke ʻike nei…</string>
+    <string name="main_info_unrecognized">ʻAno Live Photo ʻike ʻole ʻia</string>
+    <string name="main_info_converting">Ke hoʻololi nei…</string>
+    <string name="main_info_compose_task">Hana hui pū (kaomi i „Hoʻomaka hoʻololi“ e hui pū ai)</string>
+    <string name="main_info_done_replaced">Pau (hoʻololi ʻia %1$d waihona kumu)</string>
+    <string name="main_info_done_skipped">Pau (kuʻu ʻia: paʻa pū inoa like)</string>
+    <string name="main_info_done_exported">Pau (hoʻopuka ʻia %1$d)</string>
+    <string name="main_info_failed">Hewa: %1$s</string>
+    <string name="main_progress_added">Ua hoʻohui ʻia %1$d/%2$d</string>
+    <string name="main_progress_processed">Ua hana ʻia %1$d/%2$d</string>
+    <string name="main_progress_imported">Ua hoʻokomo ʻia %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Pono ka ʻae heluhelu nā kiʻi a me nā wikiō</string>
+    <string name="main_dialog_permission_message">Pono i kēia polokalamu ka heluhelu ʻana i nā kiʻi a me nā wikiō o kāu mea hana:
+
+• ʻae kiʻi: ʻimi i ka albamu mea hana, ʻike i nā Live Photo ma laila
+• ʻae wikiō: ʻimi i ka wikiō pili o Live Photo nā waihona ʻelua
+• ʻae kahi: mālama i nā ʻikepili kahi GPS o nā kiʻi (inā ʻaʻole, lilo nā ʻikepili kahi ma hope o ka hoʻololi ʻana)
+
+Ma hope o ka hōʻole ʻana, ʻaʻole hiki ke hoʻohana i ka mea koho o loko; hiki ka ʻae hou ma o ke kaomi ʻana i „Hoʻohui waihona“ ma hope aku.</string>
+    <string name="main_dialog_settings_title">Pono ka ʻae lima no nā kiʻi a me nā wikiō</string>
+    <string name="main_dialog_settings_message">Ua koho ʻoe i „Mai noi hou“ ma mamua; ʻaʻole e hōʻike hou ka ʻōnaehana i ka puka aniani ʻae.
+
+E hele i ka ʻaoʻao kikoʻī polokalamu → Nā ʻae → Kiʻi a me wikiō, e ʻae lima, a laila e hoʻi mai i kēia polokalamu.
+
+Hoʻomanaʻo: pono e ʻae i ka „Kiʻi“ a me ka „Wikiō“ ʻelua, inā hiki ʻaʻole ke ʻimi i ka wikiō pili o Live Photo nā waihona ʻelua.</string>
+    <string name="main_dialog_allfiles_title_delete">Pono „Komo i nā waihona a pau“ no ka holoi ʻakaku ʻana i nā kiʻi kumu</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">ʻAʻole kākoʻo ʻia ka holoi ʻakaku ʻana i nā kiʻi kumu ma kēia mea hana</string>
+    <string name="main_dialog_allfiles_title_replace">Pono „Komo i nā waihona a pau“ no ke ʻano hoʻololi</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">ʻAʻole kākoʻo ʻia ke ʻano hoʻololi ma kēia mea hana</string>
+    <string name="main_dialog_allfiles_title_location">Noʻonoʻo e ʻae i ka ʻae „Komo i nā waihona a pau“</string>
+    <string name="main_dialog_allfiles_delete_message">E holoi pololei ka „Holoi nā kiʻi kumu ma hope o ka hana ʻana“ i nā waihona kumu ma ka disk (ka kiʻi a me kāna wikiō pili); ʻaʻole hiki ke hoʻihoʻi i kēia hana, no laila pono e ʻae mua i ka ʻae „Komo i nā waihona a pau“.
+
+Ma hope o ka ʻae ʻana, hiki ke hoʻohana ka hiʻohiʻona; i kēlā manawa hiki iā ʻoe ke wehe ma kāu makemake.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">ʻAʻole hāʻawi mai ka ʻōnaehana kēia manawa (Android 10 a ma lalo) i ka ʻae „Komo i nā waihona a pau“; ʻaʻole hiki ke holoi pololei i nā waihona kumu ma ka disk, no laila ʻaʻole kākoʻo ʻia ka „Holoi nā kiʻi kumu ma hope o ka hana ʻana“ ma kēia mea hana.
+
+Ma hope o ka pau ʻana o ka hoʻololi, hiki iā ʻoe ke holoi lima i nā kiʻi kumu ma o ka albamu ʻōnaehana.</string>
+    <string name="main_dialog_allfiles_replace_message">E kākau pololei ke ʻano hoʻololi i ka hua hoʻololi i ka waihona kumu ma ka disk (paʻi ma luna o ka ʻike kumu); ʻaʻole hiki ke hoʻihoʻi i kēia hana, no laila pono e ʻae mua i ka ʻae „Komo i nā waihona a pau“.
+
+Ma hope o ka ʻae ʻana, hiki ke hoʻohana ka hiʻohiʻona; i kēlā manawa hiki iā ʻoe ke wehe ma kāu makemake.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">ʻAʻole hāʻawi mai ka ʻōnaehana kēia manawa (Android 10 a ma lalo) i ka ʻae „Komo i nā waihona a pau“; ʻaʻole hiki ke kākau hou pololei i nā waihona kumu ma ka disk, no laila ʻaʻole kākoʻo ʻia ke ʻano hoʻololi ma kēia mea hana.
+
+Hiki iā ʻoe ke hoʻomau i ka hoʻololi ʻana me ke ʻano paʻamau; e hoʻopuka ʻia ka hua i ka papa kuhikuhi albamu.</string>
+    <string name="main_dialog_allfiles_location_message">Ma kekahi mea hana (e like me Meizu), i ka wā kākau ʻana ma o ke kāhea albamu ʻōnaehana, e holoi ʻia nā ʻikepili kahi GPS, e lilo ai ke kahi o nā kiʻi ma hope o ka hoʻololi ʻana.
+
+Ma hope o ka ʻae ʻana i „Komo i nā waihona a pau“, e kākau pololei kēia polokalamu i ka papa kuhikuhi albamu, koe piha nā ʻikepili kahi.
+
+Hiki ke hoʻololi maʻa mau inā ʻaʻole ʻae ʻia; ma kekahi mea hana hiki ke lilo nā ʻikepili kahi.</string>
+    <string name="main_dialog_conflict_title">Paʻa pū inoa waihona pahu hope</string>
+    <string name="main_dialog_conflict_message">Aia waihona inoa like ma ka papa kuhikuhi pahu hope:
+%1$s
+
+E koho i ke ʻano hana.</string>
+    <string name="main_label_conflict_always">Hoʻohana i kēia ʻano hana no nā paʻa pū e hiki mai ana</string>
+    <string name="main_btn_grant">ʻAe</string>
+    <string name="main_btn_deny">Hōʻole</string>
+    <string name="main_btn_go_settings">E hele i nā hoʻonohonoho</string>
+    <string name="main_btn_cancel">Hoʻōki</string>
+    <string name="main_btn_grant_access">E ʻae aku</string>
+    <string name="main_btn_got_it">Maopopo</string>
+    <string name="main_btn_not_now">ʻAʻole i kēia manawa</string>
+    <string name="main_btn_skip">Kuʻu aku</string>
+    <string name="main_btn_overwrite">Kākau ma luna</string>
+    <string name="main_btn_auto_rename">Hoʻololi inoa hou</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Ua holoi ʻia %1$d waihona kumu</item>
+        <item quantity="other">Ua holoi ʻia %1$d waihona kumu</item>
+    </plurals>
+    <string name="main_delete_nothing">ʻAʻole pono ke holoi i nā kiʻi kumu</string>
+    <string name="main_delete_partial">Ua holoi ʻia %1$d waihona kumu (hewa ka holoi ʻana o %2$d, koe)</string>
+    <string name="main_delete_failed">Hewa ka holoi ʻana i nā kiʻi kumu (paʻa ka waihona a ʻaʻole paha ka ʻae kākau), koe</string>
+    <string name="main_export_missing_output">ʻAʻole a hakahaka paha ka huahana hoʻololi: %1$s</string>
+    <string name="main_export_missing_output_bare">ʻAʻole a hakahaka paha ka huahana hoʻololi</string>
+    <string name="main_export_insert_null">Ua hoʻi mai MediaStore insert me null</string>
+    <string name="main_export_output_stream">ʻAʻole loaʻa ka kahe hoʻopuka MediaStore</string>
+    <string name="main_export_write_failed">Hewa ka kākau MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">ʻAʻole hiki ke hana i ka papa kuhikuhi albamu %1$s</string>
+    <string name="main_export_dir_write_failed">Hewa ka kākau i ka papa kuhikuhi albamu: %1$s</string>
+    <string name="main_export_no_source">ʻAʻole hiki ke ʻimi i ka waihona kumu; kuʻu ʻia ka hoʻololi</string>
+    <string name="main_export_companion_failed">Hewa ka kākau hou ʻana i ka waihona pili: %1$s</string>
+    <string name="main_export_source_dir_unwritable">ʻAʻole hiki ke kākau i ka papa kuhikuhi waihona kumu; ʻaʻole i kākau hou ʻia ka waihona pili</string>
+    <string name="main_export_source_dir_unavailable">ʻAʻole loaʻa ka papa kuhikuhi waihona kumu: %1$s</string>
+    <string name="main_export_replace_failed">Hewa ka hoʻololi ʻana i ka waihona kumu: %1$s</string>
+    <string name="main_export_replace_failed_bare">Hewa ka hoʻololi ʻana i ka waihona kumu</string>
+</resources>

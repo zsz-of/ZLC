@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Scots strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Scots is a law-resource leid; this is a best-effort, model-assisted translation.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: C.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Extract</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo in a single file</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <!--
+      Failures the plug-ins shaw the uiser (IOException texts): throu e.message o
+      MainActivity/Converter they reach the status bar an the status details,
+      sae they are uiser-visible an kept as resources tae.
+      The plug-ins hae nae Context an gang throu CoreText.of(...) (core/FfmpegAddon.kt);
+      that matches the existing arrangement wi Converter/AppUpdater.
+    -->
+    <string name="fmt_err_apple_mov_missing">Nae .mov video file wi the same name wis fund</string>
+    <string name="fmt_err_apple_mov_no_ftyp">The MOV file is missin the ftyp box</string>
+    <string name="fmt_err_extract_read">Extract is an ootput format an cannae be read as an input format</string>
+    <string name="fmt_err_no_primary_jpeg">Nae primar JPEG image fund</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Nae valid MP4 video fund efter the JPEG (ftyp box missin)</string>
+    <string name="fmt_err_mp4_parse_failed">Failed tae parse the MP4 video stream</string>
+    <string name="fmt_err_nubia_too_short">The file is ower short tae be a Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">The nubiaVpfile magic nummer at the tail o the file is missin</string>
+    <string name="fmt_err_nubia_jpeg_len">Invalid JPEG lenth recordit in the tail: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">The 0x00 puddin bytes atween the JPEG an the video is missin</string>
+    <string name="fmt_err_nubia_empty_video">The lenth o the embedded video is 0</string>
+    <string name="fmt_err_vivo_no_marker">Nae vivo livephoto merker fund at the end o the JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Companion video file missin: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Failed tae parse the JPG body</string>
+    <string name="fmt_err_vivo_companion_invalid">The companion MP4 is invalid (ftyp box missin)</string>
+</resources>

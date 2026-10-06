@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Galician (gl) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Formato de destino descoñecido: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Formato de Live Photo non recoñecido (non é unha Live Photo de Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">A foto de portada non existe ou está baleira</string>
+    <string name="conv_video_missing">O vídeo non existe ou está baleiro</string>
+    <string name="conv_video_too_large">O vídeo é demasiado grande (%1$d MB) para compor unha Live Photo; escolle un vídeo máis curto</string>
+    <string name="conv_transcoded_too_large">Despois da transcodificación o vídeo aínda é demasiado grande (%1$d MB); non se pode compor a Live Photo</string>
+    <string name="conv_video_too_large_compose">O vídeo é demasiado grande (%1$d MB); non se pode compor a Live Photo</string>
+    <string name="conv_cover_heic_go">A portada é unha imaxe HEIC (a edición lixeira non admite transcodificar; expórtala a JPEG desde o iPhone e volve convertila)</string>
+    <string name="conv_cover_invalid_heic">A portada non é unha imaxe válida (HEIC require que o sistema admita a descodificación HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">A portada non é unha imaxe JPEG (a edición lixeira non admite transcodificar; usa unha foto JPEG)</string>
+    <string name="conv_cover_invalid_image">A portada non é unha imaxe válida (só se admiten JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Non se puido recodificar o vídeo: %1$s</string>
+    <string name="conv_remux_failed">Non se puido volver empaquetar o contedor: %1$s</string>
+    <string name="conv_codec_unknown">Non é un vídeo H.264/H.265 recoñecible</string>
+    <string name="conv_codec_is">O códec é %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">O vídeo «%1$s» %2$s; cambiar só o contedor (reempaquetalo) non cambia o códec, polo que non se pode compor a Live Photo.\n\nEn «Configuración → Transcodificación de vídeo → Método de transcodificación» escolle «Recodificar», ou converte antes o vídeo a un MP4 con códec H.264/H.265 con outra ferramenta.</string>
+    <string name="conv_hint_no_encoder">O vídeo non está nun contedor MP4 estándar (MOV / MKV / WebM / AVI etc.) e o «Método de transcodificación» actual non recodifica, polo que non se pode compor a Live Photo.\n\nEn «Configuración → Transcodificación de vídeo → Método de transcodificación» escolle «Recodificar» (a edición estándar incorpora un codificador ffmpeg; a edición lixeira Go non inclúe transcodificador, así que usa a edición estándar), ou converte antes o vídeo a MP4 estándar (H.264/H.265).</string>
+    <string name="conv_log_detected">Detectado como %1$s</string>
+    <string name="conv_log_same_format_copied">A orixe e o destino teñen o mesmo formato; copiouse tal cal (sen perdas)</string>
+    <string name="conv_log_extra_tracks_bypass">O vídeo de orixe contén pistas que non son de audio/vídeo (%1$s); o paso directo co mesmo formato queda descartado e aplícase o proceso de escritura completo para limpalas</string>
+    <string name="conv_log_ts_fallback">A orixe non ten marca de tempo do fotograma de portada; por especificación úsase o punto medio do vídeo</string>
+    <string name="conv_log_brand_normalized">Normalizouse a marca do contedor de vídeo (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">O vídeo contén pistas adicionais (%1$s) que non se poden limpar; consérvase tal cal (nalgúns modelos o resultado podería non reproducirse manténdoo premido)</string>
+    <string name="conv_log_extra_tracks_removed">Elimináronse as pistas adicionais do vídeo (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">O vídeo de orixe %1$s; volver empaquetar só o contedor non o resolve (%2$s). Se o resultado aínda non se reproduce manténdoo premido, en «Configuración → Transcodificación de vídeo → Método de transcodificación» escolle «Recodificar»</string>
+    <string name="conv_log_reencoding">O vídeo de orixe %1$s; segundo a configuración recodifícase a 8 bits + AAC para mellorar a compatibilidade coa galería</string>
+    <string name="conv_log_reencode_result_unusable">O resultado da recodificación non é utilizábel; consérvase tal cal (nalgúns modelos o resultado podería non reproducirse manténdoo premido)</string>
+    <string name="conv_log_reencode_still_risky">Despois da recodificación aínda hai elementos de risco (%1$s)</string>
+    <string name="conv_log_reencode_failed">A recodificación fallou (%1$s); consérvase tal cal (nalgúns modelos o resultado podería non reproducirse manténdoo premido)</string>
+    <string name="conv_log_cover_heic_converted">A portada era HEIC (non JPEG); transcodificouse a JPEG estándar antes de empaquetar</string>
+    <string name="conv_log_compose_sizes">Composición: foto %1$d B + vídeo %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transcodificador non activado: só se reescribe a marca do contedor (MOV → MP4), sen recodificar</string>
+    <string name="conv_tag_convert">Conversión</string>
+    <string name="conv_tag_transcode">Transcodificación</string>
+    <string name="conv_tag_compose">Composición</string>
+    <string name="conv_blocker_no_encoder">O transcodificador integrado non está dispoñible</string>
+    <string name="conv_blocker_mode_no_encode">O «Método de transcodificación» actual non recodifica</string>
+    <string name="conv_addon_unavailable">O transcodificador integrado non está dispoñible</string>
+    <string name="conv_addon_transcode_failed">A transcodificación con ffmpeg fallou: %1$s</string>
+    <string name="conv_addon_remux_failed">O reempaquetado do contedor con ffmpeg fallou: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Estase a transcodificar o vídeo a MP4 estándar con ffmpeg (%1$s / crf %2$d / %3$s; só se conservan as pistas de vídeo e de audio)</string>
+    <string name="conv_log_transcode_done">Transcodificación do vídeo completada (%1$d KB)</string>
+    <string name="conv_log_remuxing">Estase a volver empaquetar o contedor de vídeo a MP4 estándar (só se cambia o contedor, sen recodificar)</string>
+    <string name="conv_log_remux_done">Reempaquetado do contedor completado (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Composición</string>
+    <string name="conv_reminder_cat_convert">Conversión</string>
+    <string name="conv_reminder_cat_update">Actualización</string>
+    <string name="conv_reminder_video_over3s_title">O vídeo dura máis de 3 segundos</string>
+    <string name="conv_reminder_video_over3s_message">O vídeo escollido dura máis de 3 segundos, polo que a Live Photo resultante pode ter problemas de compatibilidade:\n\n• Pode que non se reproduza correctamente\n• Pode que a galería do sistema non a recoñeza\n• Nalgúns modelos poderían non recoñecer esta Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">Detectouse unha versión antiga</string>
+    <string name="conv_reminder_legacy_go_message">Neste dispositivo aínda está instalada unha versión antiga (edición Go) da aplicación. Esa versión xa non funciona neste dispositivo; podes desinstalala para liberar espazo.</string>
+    <string name="conv_reminder_replace_risk_title">O modo de substitución ten risco de danos</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">O modo de substitución escribe o resultado da conversión directamente nos ficheiros orixinais; unha vez sobrescritos, os orixinais non se poden recuperar.\n\n• Se a aplicación se interrompe, o almacenamento se enche ou o permiso se revoga durante a escritura, os ficheiros de orixe poden danarse\n• A conversión non garante o éxito en todos os casos; se falla, os ficheiros de orixe poden quedar inservibles\n• Fai unha proba con un ou dous ficheiros e, se todo vai ben, fai o procesamento por lotes\n• Fai copias de seguranza das fotos importantes\n\nEsta función ofrécese «tal cal»; úsaa baixo a túa responsabilidade e o autor non se fai responsable dos ficheiros danados ou perdidos.</string>
+    <string name="conv_reminder_dont_remind">Non o volvas mostrar</string>
+    <string name="conv_reminder_confirm_ok">Aceptar</string>
+    <string name="conv_reminder_uninstall">Desinstalar</string>
+</resources>

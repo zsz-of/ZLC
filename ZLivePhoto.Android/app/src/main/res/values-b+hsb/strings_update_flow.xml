@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <!-- Pokiwy na stronje kontrolera (zwonka Composablea bjez konteksta so context.getString wužiwa) -->
+    <string name="update_github_url_missing">Žana wotkazowa adresa z GitHub zdobyta; prošu pozdźišo znowa.</string>
+    <string name="update_flavor_standard">Normalna wersija</string>
+    <string name="update_flavor_go">Go-wersija</string>
+    <string name="update_lanzou_url_missing">Tuta wersija wotkazowu adresu Lanzou Cloud njenudi; móžeće GitHub wužiwać.</string>
+    <string name="update_apk_direct_missing">Tuta wersija njenudi direktny wotkaz instalaciskeho pakowanja, kotryž wašej wersiji wotpowěduje; prošu wubjerće wotpowědny APK na wudawanskej stronje GitHub.</string>
+    <string name="update_install_permission_missing">Prawo «instalować njeznate aplikacije» njepodate, awtomatiske instalowanje tohodla móžno njeje. Prošu dowolće jo w systemowych nastajenjach a spytajće znowa.</string>
+    <string name="update_error_unknown">Njeznata zmylka</string>
+    <string name="update_fail_lanzou">Wzaće z Lanzou Cloud zwrěšćiło</string>
+    <string name="update_fail_github">Wzaće z GitHub zwrěšćiło</string>
+    <string name="update_lanzou_resolving">Wotkazowa adresa Lanzou Cloud so analyzuje…</string>
+    <string name="update_lanzou_downloading">Z Lanzou Cloud so wzaće…</string>
+    <string name="update_github_downloading">Z GitHub so wzaće…</string>
+    <string name="update_unzipping">Instalaciske pakowanje so wupakuje…</string>
+    <string name="update_notes_empty">Tuta wersija žane přispomnjenje wudaća nima.</string>
+
+    <!-- Dialogy zwjazane z Go-wersiju -->
+    <string name="update_use_normal_title">Prošu wužijće normalnu wersiju</string>
+    <string name="update_use_normal_body">Tutón grat běži z Android 10 abo nowšim, a Go-lajchta wersija so hižo njepodpěruje; stara wersija njeda so dale wužiwać.\n\nNa graće je hižo normalna wersija (ZLC) instalowana; prošu wočińće ju a wužiwajće dale (nowe wudaća Go-kompatibelnu wersiju hižo njeposkićuja, staru wersiju móžeće wotinstalować, zo byšće městno wuswobodźił).</string>
+    <string name="update_open_normal">Normalnu wersiju wočinić</string>
+    <string name="update_must_update_title">Dyrbiće aktualizować, prjedy hač móžeće dale wužiwać</string>
+    <string name="update_forced_body">Tutón grat běži z Android 10 abo nowšim, a Go-lajchta wersija so hižo njepodpěruje; stara wersija njeda so dale wužiwać, a nowe wudaća Go-kompatibelnu wersiju hižo njeposkićuja.\n\nProšu zwjazajće so z internetom a klikńće na «Znowa spytać» za instalaciske pakowanje normalneje wersije.</string>
+    <string name="update_retry">Znowa spytać</string>
+    <string name="update_switch_normal_body">Tutón grat běži z Android 10 abo nowšim, a Go-lajchta wersija so hižo njepodpěruje; stara wersija njeda so dale wužiwać.\nProšu wzać a instalować normalnu wersiju a dale wužiwać (nowe wudaća Go-kompatibelnu wersiju hižo njeposkićuja).</string>
+
+    <!-- Wzaće / instalaciske prawo / wuslědkowe pokiwy -->
+    <string name="update_downloading_title">Aktualizaciju wzać</string>
+    <string name="update_cancel">Přetorhnyć</string>
+    <string name="update_need_permission_title">Trjeba so instalaciske prawo</string>
+    <string name="update_need_permission_body">Instalowanje noweje wersije trjeba systemowe prawo «instalować njeznate aplikacije».\n\nKlikńće na «Dowolić», dowolće jo w nastajenjach a wróćće so do aplikacije; instalowanje so awtomatisce pokročuje (žane znowa-wzaće trjeba).</string>
+    <string name="update_grant">Dowolić</string>
+    <string name="update_notice_title">Pokiw</string>
+    <string name="update_got_it">Zrozumjene</string>
+
+    <!-- Hłowny dialog / přispomnjenja wudaća -->
+    <string name="update_notes_title">v%1$s · přispomnjenja wudaća</string>
+    <string name="update_back">Wróćo</string>
+    <string name="update_title_switch_normal">Na normalnu wersiju přepinyć</string>
+    <string name="update_title_reinstall">Tutu wersiju znowa instalować</string>
+    <string name="update_title_new_version">Nowa wersija k dispoziciji</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Tuta wersija so wzać a znowa instalować (aktualna aplikacija so přepisuje).\nTuta funkcija so za regresijne testowanje aktualizaciskeho mechanizma wužiwa.</string>
+    <string name="update_view_notes">Přispomnjenja wudaća pokazać</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud tuchwilu njesteji k dispoziciji</string>
+    <string name="update_download_lanzou">Z Lanzou Cloud wzać</string>
+    <string name="update_download_github">Z GitHub wzać</string>
+    <string name="update_download_browser">Z wobhladowaka wzać</string>
+    <string name="update_later">Po tym aktualizować</string>
+    <string name="update_later_switch">Po tym přepinyć</string>
+    <string name="update_skip_version">Tutu wersiju přeskočić</string>
+</resources>

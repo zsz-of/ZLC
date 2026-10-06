@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<!--
+  Ślōnsko godka — głōwny interfejs / wybiyracz albumu.
+  Zdrzōdłowy tekst je po chińsku (res/values/strings_screens.xml).
+  Kożdy kluc ôdpadŏ bazowemu; placeholdery (%1$s / %1$d) i sekwencyje \n sōm zachowane.
+  Liczbowe wroty używajōm <plurals>.
+-->
+<resources>
+    <!-- Podtytuł w nagōwku -->
+    <string name="screen_app_subtitle">Przekonwertowanie formatōw dynamicznych fotek</string>
+    <!-- Liczba wybranych zbiōrōw w nagōwku (liczbowe, używo plurals) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d zbiōr</item>
+        <item quantity="few">%1$d zbiōry</item>
+        <item quantity="many">%1$d zbiōrōw</item>
+        <item quantity="other">%1$d zbiōru</item>
+    </plurals>
+    <!-- Wejście do sztalōnkōw w nagōwku (ino do ôdczytu bez barierōw) -->
+    <string name="screen_settings">Sztalōnki</string>
+
+    <!-- Dialog wyboru wyjściowego formatu -->
+    <string name="screen_select_output_format">Wybier wyjściowy format</string>
+    <string name="screen_selected">Wybrane</string>
+    <string name="screen_vivo_single_warning">⚠ Starsze maszyny mogōm niy rozpoznać tego formatu</string>
+    <string name="screen_extract_blocked">⚠ W kolejce sōm roboty składańa, niy idzie wybrać wyciōngniyńcia</string>
+
+    <!-- Krōtkie miana ôpcyji formatu (długie miana ôbocz w strings_formats.xml, fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (jeden zbiōr)</string>
+    <string name="screen_format_vivo">vivo (dwa zbiōry)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Wyciōngniyńcie</string>
+
+    <!-- Skrzinka noczyniōw (BottomSheet) -->
+    <string name="screen_toolbox">Skrzinka noczyniōw</string>
+    <string name="screen_batch_import">Import zbiōrowy</string>
+    <string name="screen_batch_import_desc">Skanuj cołko galeryjo i zbiorowo szukaj dynamicznych fotek</string>
+    <string name="screen_compose">Skłodej dynamiczno fotka</string>
+    <string name="screen_compose_desc">Wybier jedna fotka i jedno wideo a skłodej z nich dynamiczno fotka</string>
+    <string name="screen_replace_mode">Tryb zastympstwa</string>
+    <string name="screen_replace_mode_desc">Wyniki przekonwertowania idzie wprost na ôryginalne zbiōry, nowe zbiōry sie niy tworzōm</string>
+    <string name="screen_need_all_files_access_hint">Potrzebne uprawniynie „Dostymp do wszyjskich zbiōrōw”; kliknij, coby je przizwolić</string>
+    <string name="screen_agree_and_enable">Zgoda i włōncz</string>
+
+    <!-- Puste sztany / dolny panel sterowania -->
+    <string name="screen_empty_no_files">Jeszcze niy ma żōdnych zbiōrōw</string>
+    <string name="screen_view_detail">Pokaż detale</string>
+    <string name="screen_add_files">Przidej zbiōry</string>
+    <string name="screen_output_format">Wyjściowy format: %1$s</string>
+    <string name="screen_delete_original">Po skōńczyniu skasuj ôryginoły</string>
+    <string name="screen_need_all_files_access_view">Potrzebne uprawniynie „Dostymp do wszyjskich zbiōrōw”; kliknij, coby ôboczyć</string>
+    <string name="screen_clear">Wyczość</string>
+    <string name="screen_stop">Zatrzimij przetwŏrzanie</string>
+    <string name="screen_start_convert">Sztartuj przekonwertowanie</string>
+
+    <!-- Dialog detali sztanu -->
+    <string name="screen_status_detail">Detale sztanu</string>
+    <string name="screen_long_press_copy">Przitrzim tekst, coby go wybrać i skopiować</string>
+    <string name="screen_copy">Kopiuj</string>
+    <string name="screen_close">Zawrzij</string>
+
+    <!-- Wybiyracz albumu -->
+    <string name="screen_back">Nazōd</string>
+    <string name="screen_picker_title_select">Wybier dynamiczne fotki</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Schowaj titelowy ôbraz albumu</string>
+    <string name="screen_album_expand_cover">Pokazuj titelowy ôbraz albumu</string>
+    <string name="screen_scanning_progress">Skanujym %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d fotka</item>
+        <item quantity="few">%1$d fotki</item>
+        <item quantity="many">%1$d fotek</item>
+        <item quantity="other">%1$d fotki</item>
+    </plurals>
+    <string name="screen_select_all">Wybier cołko</string>
+    <string name="screen_no_albums">Niy ma żōdnych albumōw</string>
+    <string name="screen_no_media">Niy znodziono żōdnych dynamicznych fotek</string>
+    <string name="screen_no_media_compose">Niy znodziono żōdnych fotek abo wideo</string>
+    <string name="screen_import">Import</string>
+    <string name="screen_import_count">Import %1$d</string>
+    <string name="screen_import_mixed">Import: fotka %1$d · wideo %2$d</string>
+    <string name="screen_search">Szukaj</string>
+    <string name="screen_search_collapse">Schowaj szukanie</string>
+    <string name="screen_search_hint">Szukaj podug miana</string>
+    <string name="screen_search_clear">Wyczość szukanie</string>
+    <string name="screen_sort_date">Data</string>
+    <string name="screen_sort_size">Wielkość</string>
+    <string name="screen_sort_name">Miano</string>
+    <string name="screen_sort_asc">Rosnōnco</string>
+    <string name="screen_sort_desc">Malejōnco</string>
+
+    <!-- Datowe marki skupin albumu (placeholdery %1$d itd. to liczby; przi przekładzie idzie przestawić poryndek) -->
+    <string name="screen_date_today">Dzisio</string>
+    <string name="screen_date_yesterday">Wczora</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

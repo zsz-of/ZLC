@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Қазақша жолдар.
+  res/values/strings_*.xml (қарапайым қытай тілі — негізгі/қосалқы тіл) файлдарынан аударылды.
+  Барлық кілт базалық нұсқамен сәйкес; %1$s / %1$d толтырғыштары мен escape тізбектері өзгеріссіз қалдырылды.
+-->
+<resources>
+    <string name="update_github_url_missing">GitHub жүктеу мекенжайы алынбады, кейінірек қайталап көріңіз.</string>
+    <string name="update_flavor_standard">Стандартты нұсқа</string>
+    <string name="update_flavor_go">Go нұсқасы</string>
+    <string name="update_lanzou_url_missing">Бұл нұсқада Lanzou Cloud жүктеу сілтемесі жоқ, GitHub-ты пайдалануға болады.</string>
+    <string name="update_apk_direct_missing">Бұл нұсқаға сәйкес орнату пакетінің тікелей сілтемесі жоқ, GitHub релиз бетінен тиісті APK-ны таңдаңыз.</string>
+    <string name="update_install_permission_missing">«Белгісіз қолданбаларды орнату» рұқсаты берілмеді, автоматты орнату мүмкін емес. Жүйе параметрлерінен рұқсат беріп, қайталап көріңіз.</string>
+    <string name="update_error_unknown">Белгісіз қате</string>
+    <string name="update_fail_lanzou">Lanzou Cloud жүктеуі сәтсіз</string>
+    <string name="update_fail_github">GitHub жүктеуі сәтсіз</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud жүктеу сілтемесі талдануда…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud-тан жүктелуде…</string>
+    <string name="update_github_downloading">GitHub-тан жүктелуде…</string>
+    <string name="update_unzipping">Орнату пакеті ашылуда…</string>
+    <string name="update_notes_empty">Бұл нұсқада жаңарту жазбасы жоқ.</string>
+    <string name="update_use_normal_title">Қалыпты нұсқаны пайдаланыңыз</string>
+    <string name="update_use_normal_body">Бұл құрылғыда Android 10 немесе одан жоғары, Go жеңіл нұсқасы енді қолданылмайды, ескі нұсқаны әрі қарай пайдалану мүмкін емес.\n\nБұл құрылғыда қалыпты нұсқа (ZLC) орнатылғаны анықталды, оны ашып, әрі қарай пайдаланыңыз (жаңа нұсқаларда Go үйлесімді нұсқасы берілмейді, орын босату үшін ескі нұсқаны жоюға болады).</string>
+    <string name="update_open_normal">Қалыпты нұсқаны ашу</string>
+    <string name="update_must_update_title">Жалғастыру үшін жаңарту қажет</string>
+    <string name="update_forced_body">Бұл құрылғыда Android 10 немесе одан жоғары, Go жеңіл нұсқасы енді қолданылмайды, ескі нұсқаны әрі қарай пайдалану мүмкін емес; жаңа нұсқаларда да Go үйлесімді нұсқасы берілмейді.\n\nЖеліге қосылып, қалыпты нұсқаның орнату пакетін алу үшін «Қайталау» түймесін басыңыз.</string>
+    <string name="update_retry">Қайталау</string>
+    <string name="update_switch_normal_body">Бұл құрылғыда Android 10 немесе одан жоғары, Go жеңіл нұсқасы енді қолданылмайды, ескі нұсқаны әрі қарай пайдалану мүмкін емес.\nҚалыпты нұсқаны жүктеп, орнатып, әрі қарай пайдаланыңыз (жаңа нұсқаларда Go үйлесімді нұсқасы берілмейді).</string>
+    <string name="update_downloading_title">Жаңартуды жүктеу</string>
+    <string name="update_cancel">Болдырмау</string>
+    <string name="update_need_permission_title">Орнату рұқсаты қажет</string>
+    <string name="update_need_permission_body">Жаңа нұсқаны орнату үшін жүйенің «Белгісіз қолданбаларды орнату» рұқсаты қажет.\n\n«Рұқсат беру» түймесін басып, параметрлерден рұқсат беріп, қолданбаға қайта оралыңыз, орнату автоматты жалғасады (қайта жүктеудің қажеті жоқ).</string>
+    <string name="update_grant">Рұқсат беру</string>
+    <string name="update_notice_title">Ескерту</string>
+    <string name="update_got_it">Түсіндім</string>
+    <string name="update_notes_title">v%1$s · Жаңарту жазбасы</string>
+    <string name="update_back">Артқа</string>
+    <string name="update_title_switch_normal">Қалыпты нұсқаға ауысу</string>
+    <string name="update_title_reinstall">Осы нұсқаны қайта орнату</string>
+    <string name="update_title_new_version">Жаңа нұсқа табылды</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Осы нұсқаны жүктеп, қайта орнатады (ағымдағы қолданбаның үстінен).\nБұл функция жаңарту механизмін регрессиялық тексеруге арналған.</string>
+    <string name="update_view_notes">Жаңарту жазбасын көру</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud уақытша қолжетімсіз</string>
+    <string name="update_download_lanzou">Lanzou Cloud-тан жүктеу</string>
+    <string name="update_download_github">GitHub-тан жүктеу</string>
+    <string name="update_download_browser">Браузерден жүктеу</string>
+    <string name="update_later">Кейін жаңарту</string>
+    <string name="update_later_switch">Кейін ауысу</string>
+    <string name="update_skip_version">Бұл нұсқаны өткізіп жіберу</string>
+</resources>

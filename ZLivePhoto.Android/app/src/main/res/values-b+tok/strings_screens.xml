@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  toki pona (tok) — sitelen suli en ilo pi poki sitelen (nimi open: screen_).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Quality level: C (low-resource language, best-effort translation).
+  Base: res/values/strings_screens.xml (toki Sonko). %1$s / %1$d li awen. plurals: other taso.
+-->
+<resources>
+    <!-- nimi anpa pi sewi -->
+    <string name="screen_app_subtitle">ante insa pi nasin Live Photo</string>
+    <!-- nanpa ijo (plurals: other) -->
+    <plurals name="screen_file_count">
+        <item quantity="other">ijo %1$d</item>
+    </plurals>
+    <!-- tawa nasin (toki lukin taso) -->
+    <string name="screen_settings">nasin</string>
+
+    <!-- poki toki pi nasin weka -->
+    <string name="screen_select_output_format">o wile e nasin weka</string>
+    <string name="screen_selected">kama</string>
+    <string name="screen_vivo_single_warning">⚠ ilo pini mute ken sona ala e nasin ni</string>
+    <string name="screen_extract_blocked">⚠ linja li jo e pali; ken ala wile e kama tu</string>
+
+    <!-- nimi lili pi nasin (nimi suli: fmt_* lon strings_formats.xml) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (ijo wan)</string>
+    <string name="screen_format_vivo">vivo (ijo tu)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">kama tu</string>
+
+    <!-- poki pali anpa -->
+    <string name="screen_toolbox">poki pali</string>
+    <string name="screen_batch_import">kama insa kulupu</string>
+    <string name="screen_batch_import_desc">lukin e poki sitelen ali, sona e Live Photo mute</string>
+    <string name="screen_compose">pali Live Photo</string>
+    <string name="screen_compose_desc">o wile e sitelen wan e sitelen tawa wan, o wan e ona</string>
+    <string name="screen_replace_mode">nasin ante</string>
+    <string name="screen_replace_mode_desc">ijo ante li tawa ijo open; ijo sin ala</string>
+    <string name="screen_need_all_files_access_hint">wile: ken «ijo ali»; o luka</string>
+    <string name="screen_agree_and_enable">o toki pona, o open</string>
+
+    <!-- ijo ala / poki anpa -->
+    <string name="screen_empty_no_files">ijo li kama ala</string>
+    <string name="screen_view_detail">lukin e sona</string>
+    <string name="screen_add_files">pana e ijo</string>
+    <string name="screen_output_format">nasin weka: %1$s</string>
+    <string name="screen_delete_original">weka e ijo open pini pali</string>
+    <string name="screen_need_all_files_access_view">wile: ken «ijo ali»; o luka</string>
+    <string name="screen_clear">weka ali</string>
+    <string name="screen_stop">pini pali</string>
+    <string name="screen_start_convert">open ante</string>
+
+    <!-- poki toki pi sona nasin -->
+    <string name="screen_status_detail">sona nasin</string>
+    <string name="screen_long_press_copy">o luka suli e sitelen; sina ken kama jo li pali sama</string>
+    <string name="screen_copy">pali sama</string>
+    <string name="screen_close">pini</string>
+
+    <!-- ilo pi poki sitelen -->
+    <string name="screen_back">tawa monsi</string>
+    <string name="screen_picker_title_select">o wile e Live Photo</string>
+    <string name="screen_album_count">kulupu sitelen %1$d</string>
+    <string name="screen_album_collapse_cover">pini e sitelen open</string>
+    <string name="screen_album_expand_cover">open e sitelen open</string>
+    <string name="screen_scanning_progress">lukin %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">sitelen %1$d</item>
+    </plurals>
+    <string name="screen_select_all">wile e ali</string>
+    <string name="screen_no_albums">kulupu sitelen ala</string>
+    <string name="screen_no_media">Live Photo ala</string>
+    <string name="screen_no_media_compose">sitelen anu sitelen tawa ala</string>
+    <string name="screen_import">kama insa</string>
+    <string name="screen_import_count">kama insa %1$d</string>
+    <string name="screen_import_mixed">kama insa: sitelen %1$d · sitelen tawa %2$d</string>
+    <string name="screen_search">alasa</string>
+    <string name="screen_search_collapse">pini alasa</string>
+    <string name="screen_search_hint">alasa kepeken nimi</string>
+    <string name="screen_search_clear">weka alasa</string>
+    <string name="screen_sort_date">tenpo</string>
+    <string name="screen_sort_size">suli</string>
+    <string name="screen_sort_name">nimi</string>
+    <string name="screen_sort_asc">lili tawa suli</string>
+    <string name="screen_sort_desc">suli tawa lili</string>
+
+    <!-- nimi tenpo pi kulupu sitelen -->
+    <string name="screen_date_today">tenpo suno ni</string>
+    <string name="screen_date_yesterday">tenpo suno pini</string>
+    <string name="screen_date_this_year">%1$d-%2$d</string>
+    <string name="screen_date_other_year">%1$d-%2$d-%3$d</string>
+</resources>

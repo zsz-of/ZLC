@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  toki pona (tok) — sitelen nasin (ui/SettingsScreen.kt, nimi open: settings_).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Quality level: C (low-resource language, best-effort translation).
+  Base: res/values/strings_settings.xml (toki Sonko). %1$s / %1$d li awen.
+  ijo ni li ante ala li awen lon code: "@毛血旺o", "Trae · GML · DeepSeek · Kimi",
+  "GPL-3.0", "H.265"/"H.264", linja GitHub.
+-->
+<resources>
+
+    <!-- ali -->
+    <string name="settings_title">nasin</string>
+    <string name="settings_cd_back">tawa monsi</string>
+    <string name="settings_btn_apply">pali</string>
+    <string name="settings_btn_cancel">pini</string>
+    <string name="settings_btn_close">pini</string>
+    <string name="settings_btn_ok">pona</string>
+    <string name="settings_btn_sponsor">pana</string>
+
+    <!-- nimi kulupu -->
+    <string name="settings_section_general">ali</string>
+    <string name="settings_section_appearance">lukin</string>
+    <string name="settings_section_language">toki</string>
+    <string name="settings_section_defaults">nasin open</string>
+    <string name="settings_section_output">weka</string>
+    <string name="settings_section_transcode">ante sitelen tawa</string>
+    <string name="settings_section_about">sona</string>
+    <string name="settings_section_app">ilo</string>
+    <string name="settings_section_credits">pona en pana</string>
+    <string name="settings_section_opensource">lipu open</string>
+
+    <!-- ali -->
+    <string name="settings_startup_check_title">lukin e sin lon open</string>
+    <string name="settings_startup_check_subtitle">open la, o alasa e nasin sin lon GitHub, o pana e sona</string>
+    <string name="settings_haptics_title">tawa luka</string>
+    <string name="settings_haptics_subtitle">luka e nena anu ante nasin la, tawa</string>
+    <string name="settings_bounce_title">tawa nena</string>
+    <string name="settings_bounce_subtitle">luka e nena la, tawa lili</string>
+
+    <!-- lukin -->
+    <string name="settings_theme_system">nasin ilo nanpa</string>
+    <string name="settings_theme_dark">pimeja</string>
+    <string name="settings_theme_light">walo</string>
+    <string name="settings_dynamic_theme_title">kule tawa (Material You)</string>
+    <string name="settings_dynamic_theme_subtitle">kule pi sitelen monsi ilo (Android 12+); pini la, kule anpa li pali</string>
+    <string name="settings_preset_colors_title">kule nasin</string>
+    <string name="settings_preset_current">ni: %1$s</string>
+    <string name="settings_preset_disabled_hint">pini e «kule tawa (Material You)» la, ken</string>
+    <string name="settings_custom">nasin sina</string>
+    <string name="settings_custom_color_title">kule sina</string>
+    <string name="settings_cd_custom_palette">kulupu kule sina</string>
+    <string name="settings_hue_value">kule %1$d°</string>
+
+    <!-- toki ilo -->
+    <string name="settings_language_dialog_title">o wile e toki ilo</string>
+    <string name="settings_language_count">toki %1$d</string>
+
+    <!-- nasin open -->
+    <string name="settings_reminder_dialogs_title">poki toki «o pana ala sin»</string>
+    <string name="settings_reminder_dialogs_subtitle">nasin ali «o pana ala sin»</string>
+    <string name="settings_reminder_hint">open la «o pana ala sin»; pini la, sona li kama sin lon tenpo kama.</string>
+
+    <!-- weka -->
+    <string name="settings_preserve_folders_title">awen e nasin poki</string>
+    <string name="settings_preserve_folders_subtitle">ijo sin li tawa poki lili pi nimi poki open; pini la, ali li tawa poki wan</string>
+
+    <!-- sona -->
+    <string name="settings_about_title">sona</string>
+    <string name="settings_about_subtitle">nasin · lukin sin · pona en pana</string>
+    <string name="settings_check_update_title">lukin e sin</string>
+    <string name="settings_check_update_subtitle">kama jo e nasin sin tan GitHub Releases</string>
+    <string name="settings_checking">lukin…</string>
+    <string name="settings_update_available">v%1$s li lon</string>
+    <string name="settings_up_to_date">nasin sin li lon ala</string>
+    <string name="settings_network_error">linja li pakala; o sin</string>
+    <string name="settings_reinstall_title">pali sin e nasin ni</string>
+    <string name="settings_reinstall_subtitle">kama jo e nasin sin, pali sin (tawa lukin e sin)</string>
+    <string name="settings_reinstall_newer_hint">ken tawa v%1$s; o kepeken «lukin e sin» nanpa wan</string>
+    <string name="settings_version_title">nasin</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">pana kepeken Alipay</string>
+    <string name="settings_alipay_subtitle">pana tawa pali</string>
+    <string name="settings_coolapk_subtitle">jan Coolapk · pona tawa pana ona</string>
+    <string name="settings_ai_credits_subtitle">pona tawa ilo AI en sona AI tan pana ona</string>
+    <string name="settings_github_title">lipu open GitHub</string>
+    <string name="settings_license_title">lipu ken</string>
+    <string name="settings_sponsor_dialog_title">pona tawa pana sina</string>
+    <string name="settings_sponsor_dialog_text">pona mute tan wile pana sina!\n\nsina jan sona anu jo ala e mani la, o pana ala e mani:\no awen e pilin ni, o kepeken ilo; ni li pana suli tawa mi.\n\nsina wile pana la, mani lili li pona; mi pana e ona tawa pali pona en ijo sin :)</string>
+    <string name="settings_alipay_missing_title">Alipay li lon ala</string>
+    <string name="settings_alipay_missing_text">mi sona ala e Alipay; tan ni, pana li ken ala.\n\npona mute tawa pilin sina!</string>
+
+    <!-- ante sitelen tawa -->
+    <string name="settings_transcoder_title">ilo ante insa</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">ante sin</string>
+    <string name="settings_transcode_mode_remux">ante poki taso (pona)</string>
+    <string name="settings_transcode_mode_off">kepeken ala e ilo ante</string>
+    <string name="settings_transcode_params_title">nasin ante</string>
+    <string name="settings_transcode_params_subtitle">nasin pona en lili tawa ante sin</string>
+    <string name="settings_transcode_params_disabled">pali taso lon «ante sin»</string>
+    <string name="settings_crf_value">pona CRF: %1$d</string>
+    <string name="settings_crf_hint">nanpa lili la, pona suli, ijo suli (18 nasin)</string>
+    <string name="settings_encoder_title">ilo ante</string>
+    <string name="settings_compress_preset_title">nasin lili</string>
+
+</resources>

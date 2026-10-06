@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ລາວ (Lao) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Lao has no grammatical plural; only the 'other' quantity is emitted.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">ຮູບແບບເປົ້າໝາຍທີ່ບໍ່ຮູ້ຈັກ: %1$s</string>
+    <string name="conv_unrecognized_live_photo">ຮູບແບບຮູບຖ່າຍເຄື່ອນໄຫວທີ່ບໍ່ສາມາດຮັບຮູ້ໄດ້ (ບໍ່ແມ່ນຮູບຖ່າຍເຄື່ອນໄຫວ Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">ຮູບປົກບໍ່ມີ ຫຼື ຫວ່າງເປົ່າ</string>
+    <string name="conv_video_missing">ວິດີໂອບໍ່ມີ ຫຼື ຫວ່າງເປົ່າ</string>
+    <string name="conv_video_too_large">ວິດີໂອໃຫຍ່ເກີນໄປ (%1$dMB), ບໍ່ສາມາດສ້າງເປັນຮູບຖ່າຍເຄື່ອນໄຫວໄດ້, ກະລຸນາເລືອກວິດີໂອທີ່ສັ້ນກວ່າ</string>
+    <string name="conv_transcoded_too_large">ຫຼັງຈາກແປງລະຫັດ ວິດີໂອໃຫຍ່ເກີນໄປ (%1$dMB), ບໍ່ສາມາດສ້າງຮູບຖ່າຍເຄື່ອນໄຫວໄດ້</string>
+    <string name="conv_video_too_large_compose">ວິດີໂອໃຫຍ່ເກີນໄປ (%1$dMB), ບໍ່ສາມາດສ້າງຮູບຖ່າຍເຄື່ອນໄຫວໄດ້</string>
+    <string name="conv_cover_heic_go">ຮູບປົກເປັນຮູບ HEIC (ສະບັບເບົາບໍ່ຮອງຮັບການແປງລະຫັດ, ກະລຸນາສົ່ງອອກເປັນ JPEG ໃນ iPhone ກ່ອນແລ້ວຈຶ່ງແປງ)</string>
+    <string name="conv_cover_invalid_heic">ຮູບປົກບໍ່ແມ່ນຮູບທີ່ຖືກຕ້ອງ (HEIC ຕ້ອງການການຮອງຮັບຖອດລະຫັດ HEIF ຈາກລະບົບ)</string>
+    <string name="conv_cover_not_jpeg_go">ຮູບປົກບໍ່ແມ່ນຮູບ JPEG (ສະບັບເບົາບໍ່ຮອງຮັບການແປງລະຫັດ, ກະລຸນາໃຊ້ຮູບ JPEG)</string>
+    <string name="conv_cover_invalid_image">ຮູບປົກບໍ່ແມ່ນຮູບທີ່ຖືກຕ້ອງ (ຮອງຮັບພຽງ JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">ການເຂົ້າລະຫັດວິດີໂອຄືນໃໝ່ລົ້ມເຫຼວ: %1$s</string>
+    <string name="conv_remux_failed">ການ remux ຄອນເທນເນີລົ້ມເຫຼວ: %1$s</string>
+    <string name="conv_codec_unknown">ບໍ່ແມ່ນວິດີໂອ H.264/H.265 ທີ່ສາມາດຮັບຮູ້ໄດ້</string>
+    <string name="conv_codec_is">ລະຫັດແມ່ນ %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">ວິດີໂອ “%1$s” %2$s, ການປ່ຽນພຽງຄອນເທນເນີ (remux) ບໍ່ສາມາດປ່ຽນລະຫັດໄດ້, ຈຶ່ງສ້າງຮູບຖ່າຍເຄື່ອນໄຫວບໍ່ໄດ້.\n\nກະລຸນາປ່ຽນເປັນ “ເຂົ້າລະຫັດຄືນໃໝ່” ໃນ “ການຕັ້ງຄ່າ → ການແປງວິດີໂອ → ວິທີແປງລະຫັດ”, ຫຼື ໃຊ້ເຄື່ອງມືອື່ນແປງມັນເປັນ MP4 ລະຫັດ H.264/H.265 ກ່ອນ.</string>
+    <string name="conv_hint_no_encoder">ວິດີໂອບໍ່ແມ່ນຄອນເທນເນີ MP4 ມາດຕະຖານ (MOV / MKV / WebM / AVI ແລະ ອື່ນໆ), ແລະ “ວິທີແປງລະຫັດ” ປັດຈຸບັນບໍ່ເຂົ້າລະຫັດຄືນໃໝ່, ຈຶ່ງສ້າງຮູບຖ່າຍເຄື່ອນໄຫວບໍ່ໄດ້.\n\nກະລຸນາປ່ຽນເປັນ “ເຂົ້າລະຫັດຄືນໃໝ່” ໃນ “ການຕັ້ງຄ່າ → ການແປງວິດີໂອ → ວິທີແປງລະຫັດ” (ສະບັບມາດຕະຖານມີ ffmpeg ຢູ່ໃນຕົວ; ສະບັບ Go ເບົາບໍ່ມີຕົວແປງລະຫັດ, ກະລຸນາໃຊ້ສະບັບມາດຕະຖານ), ຫຼື ແປງວິດີໂອເປັນ MP4 ມາດຕະຖານ (H.264/H.265) ກ່ອນ.</string>
+    <string name="conv_log_detected">ຮັບຮູ້ເປັນ %1$s</string>
+    <string name="conv_log_same_format_copied">ຮູບແບບຕົ້ນທາງ ແລະ ປາຍທາງຄືກັນ, ສຳເນົາຕາມເດີມ (ບໍ່ສູນເສຍ)</string>
+    <string name="conv_log_extra_tracks_bypass">ວິດີໂອຕົ້ນທາງມີແທຣັກທີ່ບໍ່ແມ່ນສຽງ/ວິດີໂອ (%1$s), ຂ້າມການສົ່ງຜ່ານຮູບແບບດຽວກັນ, ໃຊ້ຂະບວນການຂຽນເຕັມຮູບແບບເພື່ອຊຳລະ</string>
+    <string name="conv_log_ts_fallback">ຕົ້ນທາງຂາດ timestamp ຂອງເຟຣມຮູບປົກ, ຈຶ່ງຖອຍກັບໄປໃຊ້ຈຸດກາງວິດີໂອຕາມຂໍ້ກຳນົດ</string>
+    <string name="conv_log_brand_normalized">ໄດ້ປັບໃຫ້ເປັນມາດຕະຖານ ຍີ່ຫໍ້ຄອນເທນເນີວິດີໂອ (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">ວິດີໂອມີແທຣັກເພີ່ມເຕີມ (%1$s), ບໍ່ສາມາດຊຳລະໄດ້, ສົ່ງອອກຕາມເດີມ (ຜົນອອກນີ້ອາດບໍ່ສາມາດກົດຍາວເພື່ອຫຼິ້ນໄດ້ໃນບາງອຸປະກອນ)</string>
+    <string name="conv_log_extra_tracks_removed">ໄດ້ລຶບແທຣັກເພີ່ມເຕີມຂອງວິດີໂອອອກແລ້ວ (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">ວິດີໂອຕົ້ນທາງ%1$s; ການ remux ຄອນເທນເນີພຽງຢ່າງດຽວແກ້ບໍ່ໄດ້ (%2$s), ຖ້າຜົນອອກຍັງກົດຍາວຫຼິ້ນບໍ່ໄດ້, ກະລຸນາເລືອກ “ເຂົ້າລະຫັດຄືນໃໝ່” ໃນ “ການຕັ້ງຄ່າ → ການແປງວິດີໂອ → ວິທີແປງລະຫັດ”</string>
+    <string name="conv_log_reencoding">ວິດີໂອຕົ້ນທາງ%1$s, ເຂົ້າລະຫັດຄືນໃໝ່ເປັນ 8bit + AAC ຕາມການຕັ້ງຄ່າ ເພື່ອເພີ່ມຄວາມເຂົ້າກັນໄດ້ກັບຄັງຮູບ</string>
+    <string name="conv_log_reencode_result_unusable">ຜົນຂອງການເຂົ້າລະຫັດຄືນໃໝ່ໃຊ້ບໍ່ໄດ້, ສົ່ງອອກຕາມເດີມ (ຜົນອອກນີ້ອາດບໍ່ສາມາດກົດຍາວເພື່ອຫຼິ້ນໄດ້ໃນບາງອຸປະກອນ)</string>
+    <string name="conv_log_reencode_still_risky">ຫຼັງຈາກເຂົ້າລະຫັດຄືນໃໝ່ ຍັງມີຄວາມສ່ຽງຫຼົງເຫຼືອ (%1$s)</string>
+    <string name="conv_log_reencode_failed">ການເຂົ້າລະຫັດຄືນໃໝ່ລົ້ມເຫຼວ (%1$s), ສົ່ງອອກຕາມເດີມ (ຜົນອອກນີ້ອາດບໍ່ສາມາດກົດຍາວເພື່ອຫຼິ້ນໄດ້ໃນບາງອຸປະກອນ)</string>
+    <string name="conv_log_cover_heic_converted">ຮູບປົກເປັນ HEIC (ບໍ່ແມ່ນ JPEG), ໄດ້ແປງລະຫັດເປັນ JPEG ມາດຕະຖານແລ້ວຈຶ່ງຫຸ້ມ</string>
+    <string name="conv_log_compose_sizes">ສ້າງ: ຮູບ %1$dB + ວິດີໂອ %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ບໍ່ໄດ້ເປີດຕົວແປງລະຫັດ: ຽງແຕ່ຂຽນຍີ່ຫໍ້ຄອນເທນເນີຄືນ (MOV → MP4), ບໍ່ເຂົ້າລະຫັດຄືນໃໝ່</string>
+    <string name="conv_tag_convert">ແປງ</string>
+    <string name="conv_tag_transcode">ແປງລະຫັດ</string>
+    <string name="conv_tag_compose">ສ້າງ</string>
+    <string name="conv_blocker_no_encoder">ຕົວແປງລະຫັດໃນຕົວໃຊ້ບໍ່ໄດ້</string>
+    <string name="conv_blocker_mode_no_encode">“ວິທີແປງລະຫັດ” ປັດຈຸບັນບໍ່ເຂົ້າລະຫັດຄືນໃໝ່</string>
+    <string name="conv_addon_unavailable">ຕົວແປງລະຫັດໃນຕົວໃຊ້ບໍ່ໄດ້</string>
+    <string name="conv_addon_transcode_failed">ການແປງລະຫັດດ້ວຍ ffmpeg ລົ້ມເຫຼວ: %1$s</string>
+    <string name="conv_addon_remux_failed">ການ remux ຄອນເທນເນີດ້ວຍ ffmpeg ລົ້ມເຫຼວ: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ກຳລັງແປງລະຫັດວິດີໂອເປັນ MP4 ມາດຕະຖານດ້ວຍ ffmpeg (%1$s / crf %2$d / %3$s, ເກັບໄວ້ພຽງແທຣັກວິດີໂອ ແລະ ສຽງ)</string>
+    <string name="conv_log_transcode_done">ແປງລະຫັດວິດີໂອສຳເລັດ (%1$dKB)</string>
+    <string name="conv_log_remuxing">ກຳລັງ remux ຄອນເທນເນີວິດີໂອເປັນ MP4 ມາດຕະຖານ (ປ່ຽນພຽງຄອນເທນເນີ, ບໍ່ເຂົ້າລະຫັດຄືນໃໝ່)</string>
+    <string name="conv_log_remux_done">remux ຄອນເທນເນີສຳເລັດ (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">ສ້າງ</string>
+    <string name="conv_reminder_cat_convert">ແປງ</string>
+    <string name="conv_reminder_cat_update">ອັບເດດ</string>
+    <string name="conv_reminder_video_over3s_title">ວິດີໂອຍາວກວ່າ 3 ວິນາທີ</string>
+    <string name="conv_reminder_video_over3s_message">ວິດີໂອທີ່ເລືອກຍາວກວ່າ 3 ວິນາທີ, ຮູບຖ່າຍເຄື່ອນໄຫວທີ່ສ້າງອາດມີບັນຫາຄວາມເຂົ້າກັນໄດ້:\n\n• ອາດຫຼິ້ນບໍ່ໄດ້ປົກກະຕິ\n• ອາດບໍ່ຖືກຮັບຮູ້ໂດຍຄັງຮູບຂອງລະບົບ\n• ບາງອຸປະກອນອາດບໍ່ຮັບຮູ້ຮູບຖ່າຍເຄື່ອນໄຫວນີ້</string>
+    <string name="conv_reminder_legacy_go_title">ກວດພົບເວີຊັນເກົ່າ</string>
+    <string name="conv_reminder_legacy_go_message">ອຸປະກອນນີ້ຍັງມີແອັບເວີຊັນເກົ່າ (ສະບັບ Go) ຕິດຕັ້ງຢູ່, ເວີຊັນເກົ່ານັ້ນໃຊ້ບໍ່ໄດ້ແລ້ວໃນອຸປະກອນນີ້, ສາມາດຖອນຕິດຕັ້ງເພື່ອປົດພື້ນທີ່.</string>
+    <string name="conv_reminder_replace_risk_title">ໂໝດແທນທີ່ມີຄວາມສ່ຽງຕໍ່ຄວາມເສຍຫາຍ</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">ໂໝດແທນທີ່ຈະຂຽນຜົນການແປງກັບຄືນໄປໃນໄຟລ໌ເດີມໂດຍກົງ, ເມື່ອໄຟລ໌ເດີມຖືກຂຽນທັບແລ້ວຈະກູ້ຄືນບໍ່ໄດ້.\n\n• ຖ້າແອັບຖືກຂັດຈັງຫວະ, ພື້ນທີ່ເກັບຂໍ້ມູນບໍ່ພຽງພໍ ຫຼື ສິດຖືກຖອນໃນຂະນະຂຽນ, ໄຟລ໌ຕົ້ນທາງອາດເສຍຫາຍ\n• ການແປງເອງບໍ່ສາມາດຮັບປະກັນຄວາມສຳເລັດໄດ້, ເມື່ອລົ້ມເຫຼວໄຟລ໌ຕົ້ນທາງອາດໃຊ້ບໍ່ໄດ້ແລ້ວ\n• ແນະນຳໃຫ້ລອງໜຶ່ງ ຫຼື ສອງໄຟລ໌ກ່ອນ, ຢືນຢັນວ່າບໍ່ມີບັນຫາແລ້ວຈຶ່ງຈັດການແບບກຸ່ມ\n• ຮູບສຳຄັນກະລຸນາສຳຮອງຂໍ້ມູນດ້ວຍຕົນເອງກ່ອນ\n\nຄຸນສົມບັດນີ້ສະໜອງ “ຕາມສະພາບທີ່ເປັນຢູ່”, ຄວາມສ່ຽງໃນການໃຊ້ເປັນຄວາມຮັບຜິດຊອບຂອງທ່ານເອງ, ຜູ້ຂຽນບໍ່ຮັບຜິດຊອບຕໍ່ການເສຍຫາຍ ຫຼື ການສູນຫາຍຂອງໄຟລ໌.</string>
+    <string name="conv_reminder_dont_remind">ບໍ່ສະແດງອີກ</string>
+    <string name="conv_reminder_confirm_ok">ເຂົ້າໃຈແລ້ວ</string>
+    <string name="conv_reminder_uninstall">ຖອນຕິດຕັ້ງ</string>
+</resources>

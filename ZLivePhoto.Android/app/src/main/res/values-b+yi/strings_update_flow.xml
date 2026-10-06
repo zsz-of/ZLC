@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Yiddish (yi) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">קיין GitHub אַראָפּלאָד־אַדרעס נישט באַקומען; פּרובירט שפּעטער נאָך אַמאָל.</string>
+    <string name="update_flavor_standard">נאָרמאַלע ווערסיע</string>
+    <string name="update_flavor_go">Go ווערסיע</string>
+    <string name="update_lanzou_url_missing">די ווערסיע שטעלט נישט צו קיין Lanzou אַראָפּלאָד־לינק; איר קענט ניצן GitHub.</string>
+    <string name="update_apk_direct_missing">די ווערסיע שטעלט נישט צו קיין דירעקטן לינק צו אַן אינסטאַלאַציע־פּאַקעט וואָס פּאַסט צו דער דאָזיקער ווערסיע; גייט צו דער GitHub אַרויסגאַב־זײַט און קלייבט אויס דאָס פּאַסיקע APK.</string>
+    <string name="update_install_permission_missing">די הרשאה „אינסטאַלירן אומבאַקאַנטע אַפּס“ איז נישט באַקומען געוואָרן; מען קען נישט אויטאָמאַטיש אינסטאַלירן. גיט די הרשאה אין די סיסטעם־באַשטימונגען און פּרובירט נאָך אַמאָל.</string>
+    <string name="update_error_unknown">אומבאַקאַנטער פֿעלער</string>
+    <string name="update_fail_lanzou">Lanzou אַראָפּלאָדן איז דורכגעפֿאַלן</string>
+    <string name="update_fail_github">GitHub אַראָפּלאָדן איז דורכגעפֿאַלן</string>
+    <string name="update_lanzou_resolving">לײזט אויף איצט דעם Lanzou אַראָפּלאָד־לינק…</string>
+    <string name="update_lanzou_downloading">לאָדט איצט אַראָפּ פֿון Lanzou…</string>
+    <string name="update_github_downloading">לאָדט איצט אַראָפּ פֿון GitHub…</string>
+    <string name="update_unzipping">ציט אויס איצט די אינסטאַלאַציע־פּאַקעט…</string>
+    <string name="update_notes_empty">די ווערסיע האָט נאָך קיין דערהײַנט־באַשרײַבונג.</string>
+    <string name="update_use_normal_title">ניצט ביטע די נאָרמאַלע ווערסיע</string>
+    <string name="update_use_normal_body">דער סיסטעם פֿון דעם געצייג איז Android 10 און העכער; די Go לייכטע ווערסיע פּאַסט שוין נישט, און די אַלטע ווערסיע קען נישט ווייטער אַרבעטן.\n\nעס איז דערקענט געוואָרן אַז אויף דעם געצייג איז שוין אינסטאַלירט די נאָרמאַלע ווערסיע (ZLC); עפֿנט גלײַך די נאָרמאַלע ווערסיע און באַניצט זי ווייטער (די נײַע ווערסיע שטעלט שוין נישט צו קיין Go קאָמפּאַטיבילע ווערסיע; די אַלטע ווערסיע קען מען דערינסטאַלירן צו באַפֿרײַען אָרט).</string>
+    <string name="update_open_normal">עפֿענען די נאָרמאַלע ווערסיע</string>
+    <string name="update_must_update_title">מען מוז זיך דערהײַנטיקן כּדי ווייטער צו באַניצן</string>
+    <string name="update_forced_body">דער סיסטעם פֿון דעם געצייג איז Android 10 און העכער; די Go לייכטע ווערסיע פּאַסט שוין נישט, און די אַלטע ווערסיע קען נישט ווייטער אַרבעטן; אויך די נײַע ווערסיע שטעלט שוין נישט צו קיין Go קאָמפּאַטיבילע ווערסיע.\n\nפֿאַרבינדט זיך מיט׳ן נעץ און דרוקט „נאָך אַמאָל פּרובירן“ כּדי צו באַקומען די אינסטאַלאַציע־פּאַקעט פֿון דער נאָרמאַלער ווערסיע.</string>
+    <string name="update_retry">נאָך אַמאָל פּרובירן</string>
+    <string name="update_switch_normal_body">דער סיסטעם פֿון דעם געצייג איז Android 10 און העכער; די Go לייכטע ווערסיע פּאַסט שוין נישט, און די אַלטע ווערסיע קען נישט ווייטער אַרבעטן.\nלאָדט אַראָפּ און אינסטאַלירט די נאָרמאַלע ווערסיע און באַניצט זי ווייטער (די נײַע ווערסיע שטעלט שוין נישט צו קיין Go קאָמפּאַטיבילע ווערסיע).</string>
+    <string name="update_downloading_title">אַראָפּלאָדן די דערהײַנט</string>
+    <string name="update_cancel">באַטלען</string>
+    <string name="update_need_permission_title">עס דאַרף אינסטאַלאַציע־הרשאה</string>
+    <string name="update_need_permission_body">צו אינסטאַלירן די נײַע ווערסיע דאַרף מען די סיסטעם־הרשאה „אינסטאַלירן אומבאַקאַנטע אַפּס“.\n\nדרוקט „גיין הרשאה געבן“, גיט די הרשאה אין די באַשטימונגען און קומט צוריק צו דער אַפּ; די אינסטאַלאַציע וועט זיך אויטאָמאַטיש פֿאָרזעצן (מען דאַרף נישט נאָך אַמאָל אַראָפּלאָדן).</string>
+    <string name="update_grant">גיין הרשאה געבן</string>
+    <string name="update_notice_title">מיטונג</string>
+    <string name="update_got_it">פֿאַרשטאַנען</string>
+    <string name="update_notes_title">v%1$s · דערהײַנט־באַשרײַבונג</string>
+    <string name="update_back">צוריק</string>
+    <string name="update_title_switch_normal">איבערשטעלן אויף די נאָרמאַלע ווערסיע</string>
+    <string name="update_title_reinstall">נײַ־אינסטאַלירן די דאָזיקע ווערסיע</string>
+    <string name="update_title_new_version">אַ נײַע ווערסיע געפֿונען</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">עס וועט אַראָפּגעלאָדן און נײַ־אינסטאַלירט ווערן די דאָזיקע ווערסיע (עס שרײַבט איבער דער לויפֿיקער אַפּ).\nדי פֿונקציע דינט צו פּרובירן דעם דערהײַנט־מעכאַניזם.</string>
+    <string name="update_view_notes">זען די דערהײַנט־באַשרײַבונג</string>
+    <string name="update_lanzou_unavailable">Lanzou איז פֿאַר דער ווײַל נישט פֿאַרפֿיגבאַר</string>
+    <string name="update_download_lanzou">אַראָפּלאָדן פֿון Lanzou</string>
+    <string name="update_download_github">אַראָפּלאָדן פֿון GitHub</string>
+    <string name="update_download_browser">אַראָפּלאָדן פֿון בלײַערער</string>
+    <string name="update_later">נישט דערהײַנטיקן איצט</string>
+    <string name="update_later_switch">נישט איבערשטעלן איצט</string>
+    <string name="update_skip_version">איבערשפּרינגן די דאָזיקע ווערסיע</string>
+</resources>

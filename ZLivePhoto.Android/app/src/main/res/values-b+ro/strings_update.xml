@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Romanian (ro) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Partajarea Lanzou a fost anulată sau fișierul nu există; descarcă de pe GitHub</string>
+    <string name="update_lanzou_gone_short">Partajarea Lanzou a fost anulată; descarcă de pe GitHub</string>
+    <string name="update_lanzou_resolve_failed">Rezolvarea linkului de descărcare Lanzou a eșuat</string>
+    <string name="update_lanzou_need_passwd">Partajarea Lanzou necesită codul de acces; descarcă de pe GitHub (sau caută codul în notele versiunii Release)</string>
+    <string name="update_lanzou_wrong_passwd">Cod de acces Lanzou greșit</string>
+    <string name="update_err_resolve_failed">Rezolvarea a eșuat</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Verificarea anti-crawl Lanzou a eșuat</string>
+    <string name="update_err_no_frame">Pagina de descărcare Lanzou nu poate fi analizată (cadru de descărcare negăsit)</string>
+    <string name="update_err_no_file_id">Identificatorul fișierului Lanzou nu poate fi analizat</string>
+    <string name="update_err_no_sign">Semnătura Lanzou nu poate fi analizată</string>
+    <string name="update_err_ajax_request">Cererea către interfață a eșuat</string>
+    <string name="update_err_api_request">Cererea către interfața Lanzou a eșuat</string>
+    <string name="update_err_empty_direct">Lanzou a returnat o adresă de descărcare goală</string>
+    <string name="update_err_direct_expired">Adresa de descărcare Lanzou a expirat; obține una nouă</string>
+    <string name="update_err_http_request">Cererea a eșuat (HTTP %1$d)</string>
+    <string name="update_err_connect">Nu se poate conecta la serverul de descărcare: %1$s</string>
+    <string name="update_err_http">Descărcarea a eșuat (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Nu se poate stabili conexiunea de descărcare</string>
+    <string name="update_err_empty">Conținutul descărcat este gol</string>
+    <string name="update_err_incomplete">Descărcare incompletă (s-au primit %1$d din %2$d octeți); descarcă din nou</string>
+    <string name="update_err_interrupted">Descărcare întreruptă: %1$s</string>
+    <string name="update_err_not_apk">Fișierul descărcat nu este un pachet de instalare valid (poate fi o pagină web sau linkul de descărcare a expirat); descarcă din nou sau folosește GitHub.</string>
+    <string name="update_err_apk_incomplete">Conținutul pachetului de instalare este incomplet; descarcă din nou sau folosește GitHub.</string>
+    <string name="update_err_apk_unparsable">Pachetul de instalare nu poate fi analizat (posibil descărcare incompletă); descarcă din nou sau folosește GitHub.</string>
+    <string name="update_err_no_install_permission">Permisiunea „Instalare aplicații necunoscute” nu a fost încă acordată</string>
+    <string name="update_err_installer_failed">Nu se poate deschide programul de instalare al sistemului (%1$s); deschide manual pachetul de instalare din gestionarul de fișiere pentru a instala</string>
+</resources>

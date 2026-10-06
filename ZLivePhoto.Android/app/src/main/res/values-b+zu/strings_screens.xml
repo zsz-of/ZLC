@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Zulu (zu) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="screen_app_subtitle">Ukuguqulana kwefomethi yezithombe ezinyakazayo</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">ifayela elingu-%1$d</item>
+        <item quantity="other">amafayela angu-%1$d</item>
+    </plurals>
+    <string name="screen_settings">Izilungiselelo</string>
+    <string name="screen_select_output_format">Khetha ifomethi yokukhishwa</string>
+    <string name="screen_selected">Kukhethiwe</string>
+    <string name="screen_vivo_single_warning">⚠ Kumadivayisi amdala kakhulu kungenzeka le fomethi ingabonwa</string>
+    <string name="screen_extract_blocked">⚠ Ulayini luqukethe imisebenzi yokuhlanganisa; awukwazi ukukhetha ukukhipha</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (ifayela elilodwa)</string>
+    <string name="screen_format_vivo">vivo (amafayela amabili)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Khipha</string>
+    <string name="screen_toolbox">Ibhokisi lamathuluzi</string>
+    <string name="screen_batch_import">Ukulayisha ngobuningi</string>
+    <string name="screen_batch_import_desc">Skenja ialbamu lonke bese ubona izithombe ezinyakazayo ngobuningi</string>
+    <string name="screen_compose">Hlanganisa isithombe esinyakazayo</string>
+    <string name="screen_compose_desc">Khetha isithombe esisodwa nevidiyo eyodwa bese uzihlanganisa ndawonye</string>
+    <string name="screen_replace_mode">Imodi yokubuyisela</string>
+    <string name="screen_replace_mode_desc">Impumela yokuguqula ibhalwa ngqo kufayela lokuqala, amafayela amasha awadaliwe</string>
+    <string name="screen_need_all_files_access_hint">Kudinga imvume yokuthi “Ukufinyelela kuwo wonke amafayela”; uchofoze lapha ukuze unikeze</string>
+    <string name="screen_agree_and_enable">Vuma bese uvula</string>
+    <string name="screen_empty_no_files">Awukamangezanga amafayela</string>
+    <string name="screen_view_detail">Buka imininingwane</string>
+    <string name="screen_add_files">Engeza amafayela</string>
+    <string name="screen_output_format">Ifomethi yokukhishwa: %1$s</string>
+    <string name="screen_delete_original">Susa isithombe sokuqala emva kokucubungula</string>
+    <string name="screen_need_all_files_access_view">Kudinga imvume yokuthi “Ukufinyelela kuwo wonke amafayela”; uchofoze ubuke</string>
+    <string name="screen_clear">Susa konke</string>
+    <string name="screen_stop">Misa ukucubungula</string>
+    <string name="screen_start_convert">Qala ukuguqula</string>
+    <string name="screen_status_detail">Imininingwane yesimo</string>
+    <string name="screen_long_press_copy">Uma ucindezela isikhathi eside umbhalo, ungawukhetha nokukopisha</string>
+    <string name="screen_copy">Kopisha</string>
+    <string name="screen_close">Vala</string>
+    <string name="screen_back">Emuva</string>
+    <string name="screen_picker_title_select">Khetha isithombe esinyakazayo</string>
+    <string name="screen_album_count">Ama-albamu angu-%1$d</string>
+    <string name="screen_album_collapse_cover">Fihla isithombe se-albamu</string>
+    <string name="screen_album_expand_cover">Khombisa isithombe se-albamu</string>
+    <string name="screen_scanning_progress">Kuskenjwa %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">isithombe esingu-%1$d</item>
+        <item quantity="other">izithombe ezingama-%1$d</item>
+    </plurals>
+    <string name="screen_select_all">Khetha konke</string>
+    <string name="screen_no_albums">Akukho ialbamu elitholakalayo</string>
+    <string name="screen_no_media">Azitholakali izithombe ezinyakazayo</string>
+    <string name="screen_no_media_compose">Azitholakali izithombe noma amavidiyo</string>
+    <string name="screen_import">Layisha</string>
+    <string name="screen_import_count">Layisha okungu-%1$d</string>
+    <string name="screen_import_mixed">Layisha: izithombe %1$d · amavidiyo %2$d</string>
+    <string name="screen_search">Sesha</string>
+    <string name="screen_search_collapse">Fihla ukusesha</string>
+    <string name="screen_search_hint">Sesha ngegama</string>
+    <string name="screen_search_clear">Cisha ukusesha</string>
+    <string name="screen_sort_date">Usuku</string>
+    <string name="screen_sort_size">Usayizi</string>
+    <string name="screen_sort_name">Igama</string>
+    <string name="screen_sort_asc">Ngokwanda</string>
+    <string name="screen_sort_desc">Ngokwehla</string>
+    <string name="screen_date_today">Namuhla</string>
+    <string name="screen_date_yesterday">Izolo</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

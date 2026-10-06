@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · eesti keel.
+  Tõlgitud baasfailist res/values/strings_*.xml (lihtsustatud hiina keel, varukeel).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- Rakenduse keele valijas tähistab seda valikut, mis järgib süsteemi -->
+    <string name="app_language_follow_system">Süsteemi järgi</string>
+    <!-- Rakenduse keele valija pealkirja varuvariant (ka settings-moodul võib kasutada oma võtit) -->
+    <string name="app_language_title">Rakenduse keel</string>
+</resources>

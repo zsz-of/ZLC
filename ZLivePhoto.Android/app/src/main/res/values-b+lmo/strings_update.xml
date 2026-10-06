@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Lombard (lmo) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">La condivission de Lanzou l’è stada tirada via opur el file el sa troeuva pussee: descarga de GitHub</string>
+    <string name="update_lanzou_gone_short">La condivission de Lanzou l’è stada tirada via: descarga de GitHub</string>
+    <string name="update_lanzou_resolve_failed">El s’è nò podud lensg el leam de descarga de Lanzou</string>
+    <string name="update_lanzou_need_passwd">Questa condivission de Lanzou la voeur el cod de estrazion: descarga de GitHub (opur serca el cod in di note del Release)</string>
+    <string name="update_lanzou_wrong_passwd">Cod de estrazion de Lanzou sbajad</string>
+    <string name="update_err_resolve_failed">El s’è nò podud lensg</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">El controll anti-bot de Lanzou l’è falid</string>
+    <string name="update_err_no_frame">El sa pò nò lensg la pagina de descarga de Lanzou (gnula frame de descarga trovada)</string>
+    <string name="update_err_no_file_id">El sa pò nò lensg l’identifegad del file de Lanzou</string>
+    <string name="update_err_no_sign">El sa pò nò lensg la firma de Lanzou</string>
+    <string name="update_err_ajax_request">Richiesta a l’interfaccia falida</string>
+    <string name="update_err_api_request">Richiesta a l’interfaccia de Lanzou falida</string>
+    <string name="update_err_empty_direct">Lanzou l’ha dà indree on indirizz de descarga voeuj</string>
+    <string name="update_err_direct_expired">L’indirizz de descarga de Lanzou l’è pussee valid; prœuva ancamò per gnì nnanz on noeuv</string>
+    <string name="update_err_http_request">Richiesta falida (HTTP %1$d)</string>
+    <string name="update_err_connect">Sa pò nò colegass al server de descarga: %1$s</string>
+    <string name="update_err_http">Descarga falida (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Sa pò nò dervì la connesson de descarga</string>
+    <string name="update_err_empty">El contegnud de la descarga l’è voeuj</string>
+    <string name="update_err_incomplete">Descarga minga completa (ciapad %1$d / %2$d byte in total); descarga ancamò</string>
+    <string name="update_err_interrupted">Descarga fermada: %1$s</string>
+    <string name="update_err_not_apk">Quell che l’è staa descargad l’è nò on pachet de installazion valid (l’è forsi ona pagina web opur el leam l’è pussee valid); descarga ancamò opur dòpra GitHub.</string>
+    <string name="update_err_apk_incomplete">El pachet de installazion l’è minga complet; descarga ancamò opur dòpra GitHub.</string>
+    <string name="update_err_apk_unparsable">El pachet de installazion el sa pò nò lensg (l’è forsi staa descargad minga complet); descarga ancamò opur dòpra GitHub.</string>
+    <string name="update_err_no_install_permission">El permess «Installa app sconossude» l’è ancamò nò staa concedud</string>
+    <string name="update_err_installer_failed">Sa pò nò dàll via al installer del sistema (%1$s): dervì deperlù el pachet de installazion dal gestor di file e installall a man</string>
+</resources>

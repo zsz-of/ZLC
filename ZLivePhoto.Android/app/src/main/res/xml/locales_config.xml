@@ -65,6 +65,7 @@
     <locale android:name="kab" />
     <locale android:name="khb" />
     <locale android:name="kk" />
+    <locale android:name="km" />
     <locale android:name="kn" />
     <locale android:name="ko" />
     <locale android:name="kw" />
@@ -100,6 +101,7 @@
     <locale android:name="sah" />
     <locale android:name="sc" />
     <locale android:name="sco" />
+    <locale android:name="si" />
     <locale android:name="sk" />
     <locale android:name="sl" />
     <locale android:name="sq" />

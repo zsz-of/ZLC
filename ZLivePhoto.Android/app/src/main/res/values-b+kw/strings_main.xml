@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Kernewek (Cornish) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="main_status_ready">Parys</string>
+    <string name="main_status_location_granted">Kummyas leelys grontys; wosa trelya, metarolyon GPS a vydh gwithys</string>
+    <string name="main_status_location_denied">Kummyas leelys na veu grontys: wosa trelya, an skeusen a goll derivadow leelys GPS</string>
+    <string name="main_status_all_files_granted">Kummyas «Kummyas dhe bub fylen» grontys; an trelyans a skrif yn tien dhe gallery an album hag a with derivadow leelys yn tien</string>
+    <string name="main_status_all_files_denied">Kummyas «Kummyas dhe bub fylen» na veu grontys: war nebes devisyow derivadow leelys a allsa bos kellys wosa trelya</string>
+    <string name="main_status_read_granted">Kummyas dhe redya skeusennow ha videos grontys</string>
+    <string name="main_status_video_missing">Kummyas grontys, mes kummyas video a fyll: ny yllir kavoes an video kescoweth a Live Photo dew-fylen</string>
+    <string name="main_status_permission_denied">Kummyas na veu grontys; yllir gwaska «Keworra fylennow» arta</string>
+    <string name="main_status_folder_not_selected">Fylenva na veu dewisys</string>
+    <string name="main_status_folder_unavailable">Ny yllir drehedhes an fylenva dewisys (fylenvaow skoedhyans leel yn unnik a gynner)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Sesyon kyns daskwrys (%1$d fylen)</item>
+        <item quantity="two">Sesyon kyns daskwrys (%1$d fylen)</item>
+        <item quantity="few">Sesyon kyns daskwrys (%1$d fylen)</item>
+        <item quantity="many">Sesyon kyns daskwrys (%1$d fylen)</item>
+        <item quantity="other">Sesyon kyns daskwrys (%1$d fylennow)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Kevys dianken kyns anwonn; an rol anwonn a veu klerhys</string>
+    <string name="main_status_compose_blocks_extract">Yma oberennow kesya yn an lost; ny yllir chanjya dhe vodh Tenna</string>
+    <string name="main_status_replace_off_mutex">Modh repla dhe-ves (ow kesstrifa gans «Dilea an gwreydhek wosa dyghtya»)</string>
+    <string name="main_status_delete_needs_all_files">Dilea awtomatek an gwreydhek a gynner kummyas «Kummyas dhe bub fylen»; gront kummyas kynsa</string>
+    <string name="main_status_replace_off">Modh repla dhe-ves; mesyansow an trelyans a vydh skrifys arta dhe gallery an album</string>
+    <string name="main_status_replace_needs_all_files">Modh repla a gynner kummyas «Kummyas dhe bub fylen»; gront kummyas kynsa</string>
+    <string name="main_status_delete_off_mutex">«Dilea an gwreydhek wosa dyghtya» dhe-ves (ow kesstrifa gans modh repla)</string>
+    <string name="main_status_loading_albums">Ow redya an gallery…</string>
+    <string name="main_status_no_albums">Ny veu kevys gallery</string>
+    <string name="main_status_compose_no_photo">Skeusen na veu dewisys; ny yllir kesya</string>
+    <string name="main_status_compose_no_video">Video na veu dewisys; ny yllir kesya</string>
+    <string name="main_status_compose_all_added">An skeusennow dewisys oll yma yn an rol</string>
+    <string name="main_status_compose_paired">Skeusennow %1$d, videos %2$d; %3$d oberen kesya keworrys herwydh an tu leha</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d oberen kesya keworrys; gwaska «Dalleth trelya» rag aga gul</item>
+        <item quantity="two">%1$d oberen kesya keworrys; gwaska «Dalleth trelya» rag aga gul</item>
+        <item quantity="few">%1$d oberen kesya keworrys; gwaska «Dalleth trelya» rag aga gul</item>
+        <item quantity="many">%1$d oberen kesya keworrys; gwaska «Dalleth trelya» rag aga gul</item>
+        <item quantity="other">%1$d oberennow kesya keworrys; gwaska «Dalleth trelya» rag aga gul</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (format mesys awtomatik chanjys dhe Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Owth imporya %1$d skeusen rannys…</item>
+        <item quantity="two">Owth imporya %1$d skeusen rannys…</item>
+        <item quantity="few">Owth imporya %1$d skeusen rannys…</item>
+        <item quantity="many">Owth imporya %1$d skeusen rannys…</item>
+        <item quantity="other">Owth imporya %1$d skeusennow rannys…</item>
+    </plurals>
+    <string name="main_status_import_failed">Imporya a fyllyas: %1$s</string>
+    <string name="main_status_import_done_partial">Imporya kowlwrys: %1$d sewena, %2$d fyllys</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Imporya kowlwrys: %1$d fylen imporys oll</item>
+        <item quantity="two">Imporya kowlwrys: %1$d fylen imporys oll</item>
+        <item quantity="few">Imporya kowlwrys: %1$d fylen imporys oll</item>
+        <item quantity="many">Imporya kowlwrys: %1$d fylen imporys oll</item>
+        <item quantity="other">Imporya kowlwrys: %1$d fylennow imporys oll</item>
+    </plurals>
+    <string name="main_status_import_stopped">Imporya hedhys: %1$d sewena, %2$d fyllys</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Owth imporya %1$d fylen…</item>
+        <item quantity="two">Owth imporya %1$d fylen…</item>
+        <item quantity="few">Owth imporya %1$d fylen…</item>
+        <item quantity="many">Owth imporya %1$d fylen…</item>
+        <item quantity="other">Owth imporya %1$d fylennow…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Owth imporya %1$d/%2$d…</string>
+    <string name="main_status_stopping">Ow hedhi… (ow hedhi wosa gorfenna an fylen a-lemmyn)</string>
+    <string name="main_status_stopping_import">Ow hedhi an imporya…</string>
+    <string name="main_status_removed">%1$s removys</string>
+    <string name="main_status_cleared">Klerhys</string>
+    <string name="main_status_nothing_to_convert">Nyns eus fylennow dhe drelya</string>
+    <string name="main_status_folder_unreadable">Ny yllir redya an fylenva dewisys</string>
+    <string name="main_status_scanning_folder">Ow skannya an fylenva…</string>
+    <string name="main_status_no_images">Ny veu kevys skeusennow yn an fylenva dewisys</string>
+    <string name="main_status_batch_importing">Owth imporya yn routh %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Imporya yn routh hedhys: %1$d Live Photo imporys</item>
+        <item quantity="two">Imporya yn routh hedhys: %1$d Live Photo imporys</item>
+        <item quantity="few">Imporya yn routh hedhys: %1$d Live Photo imporys</item>
+        <item quantity="many">Imporya yn routh hedhys: %1$d Live Photo imporys</item>
+        <item quantity="other">Imporya yn routh hedhys: %1$d Live Photo imporys</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Imporya yn routh hedhys: %1$d Live Photo imporys, %2$d fylen nag yw Live Photo gwarnys dres</item>
+        <item quantity="two">Imporya yn routh hedhys: %1$d Live Photo imporys, %2$d fylen nag yw Live Photo gwarnys dres</item>
+        <item quantity="few">Imporya yn routh hedhys: %1$d Live Photo imporys, %2$d fylen nag yw Live Photo gwarnys dres</item>
+        <item quantity="many">Imporya yn routh hedhys: %1$d Live Photo imporys, %2$d fylen nag yw Live Photo gwarnys dres</item>
+        <item quantity="other">Imporya yn routh hedhys: %1$d Live Photo imporys, %2$d fylennow nag yw Live Photo gwarnys dres</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Imporya yn routh kowlwrys: %1$d Live Photo imporys</item>
+        <item quantity="two">Imporya yn routh kowlwrys: %1$d Live Photo imporys</item>
+        <item quantity="few">Imporya yn routh kowlwrys: %1$d Live Photo imporys</item>
+        <item quantity="many">Imporya yn routh kowlwrys: %1$d Live Photo imporys</item>
+        <item quantity="other">Imporya yn routh kowlwrys: %1$d Live Photo imporys</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Imporya yn routh kowlwrys: %1$d Live Photo imporys, %2$d fylen nag yw Live Photo gwarnys dres</item>
+        <item quantity="two">Imporya yn routh kowlwrys: %1$d Live Photo imporys, %2$d fylen nag yw Live Photo gwarnys dres</item>
+        <item quantity="few">Imporya yn routh kowlwrys: %1$d Live Photo imporys, %2$d fylen nag yw Live Photo gwarnys dres</item>
+        <item quantity="many">Imporya yn routh kowlwrys: %1$d Live Photo imporys, %2$d fylen nag yw Live Photo gwarnys dres</item>
+        <item quantity="other">Imporya yn routh kowlwrys: %1$d Live Photo imporys, %2$d fylennow nag yw Live Photo gwarnys dres</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Hedhys: %1$d fylen, %2$d dyghtys, %3$d fylen fenten replas</string>
+    <string name="main_status_stopped_export">Hedhys: %1$d fylen, %2$d dyghtys, %3$d eksportys dhe an gallery</string>
+    <string name="main_status_done_replace_reason">Kowlwrys: %1$d fylen dyghtys, %2$d fylen fenten replas (skila: %3$s)</string>
+    <string name="main_status_done_export_reason">Kowlwrys: %1$d fylen dyghtys, %2$d eksportys dhe an gallery (skila: %3$s)</string>
+    <string name="main_status_done_replace">Kowlwrys: %1$d fylen dyghtys, %2$d fylen fenten replas</string>
+    <string name="main_status_done_export">Kowlwrys: %1$d fylen dyghtys, %2$d eksportys dhe an gallery</string>
+    <string name="main_status_keep_originals">%1$s; kummyas «Kummyas leun dhe skoedhyans» na veu grontys; an re wreydhek a veu gwithys</string>
+    <string name="main_info_detecting">Owth aswon…</string>
+    <string name="main_info_unrecognized">Format Live Photo anaswon</string>
+    <string name="main_info_converting">Ow trelya…</string>
+    <string name="main_info_compose_task">Oberen kesya (gwra trelya rag y gonis)</string>
+    <string name="main_info_done_replaced">Kowlwrys (%1$d fylen fenten replas)</string>
+    <string name="main_info_done_skipped">Kowlwrys (gwarnys dres: bresel keth-hanow)</string>
+    <string name="main_info_done_exported">Kowlwrys (%1$d eksportys)</string>
+    <string name="main_info_failed">Fyllys: %1$s</string>
+    <string name="main_progress_added">%1$d/%2$d keworrys</string>
+    <string name="main_progress_processed">%1$d/%2$d dyghtys</string>
+    <string name="main_progress_imported">%1$d/%2$d imporys</string>
+    <string name="main_dialog_permission_title">Kummyas dhe redya skeusennow ha videos a gynner</string>
+    <string name="main_dialog_permission_message">An kentres ma a gynner kummyas dhe redya skeusennow ha videos war dha devis:\n\n• Kummyas skeusennow: skannya gallery an devis ha aswon Live Photos ynno\n• Kummyas videos: kavoes an video kescoweth a Live Photo dew-fylen\n• Kummyas leelys: kwitha metarolyon leelys GPS yn an skeusennow (mans na, derivadow leelys a vydh kellys wosa trelya)\n\nMar nahyll, ny yllir devnydhya an dewisydh yn-berth; yllir gwaska «Keworra fylennow» arta diwettha dhe grontya arta.</string>
+    <string name="main_dialog_settings_title">Res yw grontya kummyas skeusennow ha videos dre la</string>
+    <string name="main_dialog_settings_message">Dewisys genes «Na wovyn arta» kyns; ny wra an system diskwedhes an kestav kummyas namoy.\n\nKewgh dhe folen manylyon an app → Kummyasow → Skeusennow ha videos, gront kummyas dre la, ha dehweles dhe an app ma.\n\nNota: res yw grontya «Skeusennow» ha «Videos» war-barth, poken ny vydh an video kescoweth a Live Photo dew-fylen kevys.</string>
+    <string name="main_dialog_allfiles_title_delete">Dilea awtomatek an gwreydhek a gynner «Kummyas dhe bub fylen»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">An devis ma ny skoodh dilea awtomatek an gwreydhek</string>
+    <string name="main_dialog_allfiles_title_replace">Modh repla a gynner «Kummyas dhe bub fylen»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">An devis ma ny skoodh modh repla</string>
+    <string name="main_dialog_allfiles_title_location">Profys yw grontya kummyas «Kummyas dhe bub fylen»</string>
+    <string name="main_dialog_allfiles_delete_message">«Dilea an gwreydhek wosa dyghtya» a dhilea yn tien an fylennow gwreydhek war an dhisken (an skeusen ha hy video kescoweth); ny yllir daskweri an oberen na, ytho res yw grontya kummyas «Kummyas dhe bub fylen» kynsa.\n\nWosa grontya, an skwych a vydh kavadow, ha ty a yll y enabla dha honan.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">An system a-lemmyn (Android 10 ha le) ny brov kummyas «Kummyas dhe bub fylen»; ny yllir dilea an fylennow gwreydhek war an dhisken, ytho an devis ma ny skoodh «Dilea an gwreydhek wosa dyghtya».\n\nWosa gorfenna an trelyans, yllir klerhe an re wreydhek dre la dre gallery an system.</string>
+    <string name="main_dialog_allfiles_replace_message">«Modh repla» a skrif mesyans an trelyans war an fylennow gwreydhek war an dhisken (ow gorwul an dal gwreydhek); ny yllir daskweri an oberen na, ytho res yw grontya kummyas «Kummyas dhe bub fylen» kynsa.\n\nWosa grontya, an skwych a vydh kavadow, ha ty a yll y enabla dha honan.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">An system a-lemmyn (Android 10 ha le) ny brov kummyas «Kummyas dhe bub fylen»; ny yllir skrifa-arta an fylennow gwreydhek war an dhisken, ytho an devis ma ny skoodh «Modh repla».\n\nYllir pesya trelya gans an fordh dhefowt; an mesyansow a vydh mesys dhe gallery an album.</string>
+    <string name="main_dialog_allfiles_location_message">Nebes devisyow (kepar Meizu) pan skrifons dre ynterfas gallery an system a gudh derivadow leelys GPS, ow kawsya an skeusen dhe goll hy leelys wosa trelya.\n\nWosa grontya «Kummyas dhe bub fylen», an kentres ma a skrif yn tien dhe gallery an album, ow kwitha an metarolyon leelys yn tien.\n\nHeb y grontya y hyllir trelya yn fas hwath; war nebes devisyow derivadow leelys a allsa bos kellys.</string>
+    <string name="main_dialog_conflict_title">Bresel hanow fylen mesys</string>
+    <string name="main_dialog_conflict_message">Yma fylen a an keth hanow yn an fylenva mesys:\n%1$s\n\nDewis fordh dyghtya.</string>
+    <string name="main_label_conflict_always">Devnydhya an fordh dyghtya ma rag breselyow a syw</string>
+    <string name="main_btn_grant">Grontya</string>
+    <string name="main_btn_deny">Nagh</string>
+    <string name="main_btn_go_settings">Kewgh dhe settyansow</string>
+    <string name="main_btn_cancel">Hedhi</string>
+    <string name="main_btn_grant_access">Grontya</string>
+    <string name="main_btn_got_it">Konvedhys</string>
+    <string name="main_btn_not_now">Na lemmyn</string>
+    <string name="main_btn_skip">Gwarn dres</string>
+    <string name="main_btn_overwrite">Gorwul</string>
+    <string name="main_btn_auto_rename">Dashenwel awtomatik</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d fylen gwreydhek dileys</item>
+        <item quantity="two">%1$d fylen gwreydhek dileys</item>
+        <item quantity="few">%1$d fylen gwreydhek dileys</item>
+        <item quantity="many">%1$d fylen gwreydhek dileys</item>
+        <item quantity="other">%1$d fylennow gwreydhek dileys</item>
+    </plurals>
+    <string name="main_delete_nothing">Nyns eus gwreydhek dhe dhilea</string>
+    <string name="main_delete_partial">%1$d fylen gwreydhek dileys (%2$d a fyllyas dhe dhilea, gwithys)</string>
+    <string name="main_delete_failed">Dilea an gwreydhek a fyllyas (fylen dalys po heb kummyas skrifa); gwithys</string>
+    <string name="main_export_missing_output">Mesyans an trelyans a fyll po yw gwag: %1$s</string>
+    <string name="main_export_missing_output_bare">Mesyans an trelyans a fyll po yw gwag</string>
+    <string name="main_export_insert_null">MediaStore insert a dhehwelis null</string>
+    <string name="main_export_output_stream">Fros mesys MediaStore anhedhys</string>
+    <string name="main_export_write_failed">Skrifa MediaStore a fyllyas: %1$s</string>
+    <string name="main_export_mkdir_failed">Ny yllir gwruthyl fylenva gallery %1$s</string>
+    <string name="main_export_dir_write_failed">Skrifa dhe fylenva gallery a fyllyas: %1$s</string>
+    <string name="main_export_no_source">Ny yllir trovya an fylen fenten; an repla a veu gwarnys dres</string>
+    <string name="main_export_companion_failed">Skrifa-arta an fylen kescoweth a fyllyas: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Fylenva an fylen fenten nag yw skrifadow; an fylen kescoweth na veu skrifys arta</string>
+    <string name="main_export_source_dir_unavailable">Fylenva an fylen fenten anhedhys: %1$s</string>
+    <string name="main_export_replace_failed">Repla an fylen fenten a fyllyas: %1$s</string>
+    <string name="main_export_replace_failed_bare">Repla an fylen fenten a fyllyas</string>
+</resources>

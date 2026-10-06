@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Greek (el) strings — update/download related.
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!--lanzou cloud share page and direct link parser-->
+    <string name="update_lanzou_gone">Η λίστα κοινής χρήσης Lanzou έχει ακυρωθεί ή το αρχείο δεν υπάρχει, χρησιμοποιήστε τη λήψη GitHub</string>
+    <string name="update_lanzou_gone_short">Η λίστα διαμοιρασμού Lanzou έχει ακυρωθεί, χρησιμοποιήστε τη λήψη GitHub</string>
+    <string name="update_lanzou_resolve_failed">Αποτυχία ανάλυσης του συνδέσμου λήψης Lanzou</string>
+    <string name="update_lanzou_need_passwd">Αυτή η λίστα διαμοιρασμού Lanzou απαιτεί κωδικό πρόσβασης, χρησιμοποιήστε τη λήψη GitHub (ή βρείτε κωδικό στις οδηγίες Release)</string>
+    <string name="update_lanzou_wrong_passwd">Λανθασμένος κωδικός πρόσβασης Lanzou</string>
+    <string name="update_err_resolve_failed">Αποτυχία ανάλυσης</string>
+    <string name="update_err_resolve_with_host">%1$s(%2$s)</string>
+    <string name="update_err_anticrawl">Αποτυχία επαλήθευσης anti-crawlLanzou</string>
+    <string name="update_err_no_frame">Δεν είναι δυνατή η ανάλυση της σελίδας λήψης Lanzou (δεν βρέθηκε πλαίσιο λήψης)</string>
+    <string name="update_err_no_file_id">Δεν είναι δυνατή η ανάλυση της αναγνώρισης αρχείου Lanzou</string>
+    <string name="update_err_no_sign">Δεν είναι δυνατή η ανάλυση της υπογραφής Lanzou</string>
+    <string name="update_err_ajax_request">Αποτυχία αιτήματος διακομιστή</string>
+    <string name="update_err_api_request">Αποτυχία αιτήματος διακομιστή Lanzou</string>
+    <string name="update_err_empty_direct">Το Lanzou επιστρέφει κενό σύνδεσμο λήψης</string>
+    <string name="update_err_direct_expired">Ο σύνδεσμος λήψης Lanzou έχει λήξει, δείτε ξανά</string>
+    <string name="update_err_http_request">Αποτυχία αιτήματος (HTTP %1$d)</string>
+
+    <!-- ========== Download ========== -->
+    <string name="update_err_connect">Δεν είναι δυνατή η σύνδεση με τον διακομιστή λήψης:%1$s</string>
+    <string name="update_err_http">Αποτυχία λήψης(HTTP %1$d)</string>
+    <string name="update_err_no_connection">Δεν είναι δυνατή η δημιουργία σύνδεσης λήψης</string>
+    <string name="update_err_empty">Το περιεχόμενο λήψης είναι κενό</string>
+    <string name="update_err_incomplete">Η λήψη δεν είναι πλήρης (έχετε αποκτήσει %1$d / συνολικά %2$d bytes), δοκιμάστε ξανά τη λήψη</string>
+    <string name="update_err_interrupted">Η λήψη διακόπηκε:%1$s</string>
+
+    <!-- ========== Installer verification and installation ========== -->
+    <string name="update_err_not_apk">Το κατεβασμένο δεν είναι έγκυρο πακέτο εγκατάστασης (ίσως website ή σύνδεσμος λήψης έχει λήξει), δοκιμάστε ξανά τη λήψη ή χρησιμοποιήστε τη λήψη GitHub.</string>
+    <string name="update_err_apk_incomplete">Το περιεχόμενο πακέτου δεν είναι πλήρες, δοκιμάστε ξανά τη λήψη ή χρησιμοποιήστε τη λήψη GitHub.</string>
+    <string name="update_err_apk_unparsable">Το πακέτο δεν μπορούσε να αναλυθεί (πιθανόν η λήψη δεν είναι πλήρης), δοκιμάστε ξανά τη λήψη ή χρησιμοποιήστε τη λήψη GitHub.</string>
+    <string name="update_err_no_install_permission">Δεν έχετε ακόμη άδεια «Εγκατάσταση αγνώστων εφαρμογών</string>
+    <string name="update_err_installer_failed">Δεν ήταν δυνατή η κλήση του συστήματος εγκατάστασης (%1$s), ανοίξτε το πακέτο εγκατάστασης χειροκίνητα από τον διαχειριστή αρχείων για εγκατάσταση</string>
+
+</resources>

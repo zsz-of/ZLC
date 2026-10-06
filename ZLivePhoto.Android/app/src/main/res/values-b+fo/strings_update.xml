@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Faroese (fo) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou-deilingin er blivin afturkallað ella fílan finst ikki; brúka GitHub-niðurtøku í staðin</string>
+    <string name="update_lanzou_gone_short">Lanzou-deilingin er blivin afturkallað; brúka GitHub-niðurtøku í staðin</string>
+    <string name="update_lanzou_resolve_failed">Ikki møguligt at greina niðurtakartengilin frá Lanzou</string>
+    <string name="update_lanzou_need_passwd">Hesin Lanzou-deilingin krevur útdrættarkoda; brúka GitHub-niðurtøku í staðin (ella leita eftir kodanum í útgávuupplýsingunum)</string>
+    <string name="update_lanzou_wrong_passwd">Vrangur útdrættarkodi Lanzou</string>
+    <string name="update_err_resolve_failed">Ikki møguligt at greina</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Vørn Lanzou móti vefsøkjun mistókst</string>
+    <string name="update_err_no_frame">Ikki møguligt at greina Lanzou-niðurtakarsíðuna (ongin niðurtakarráma fannst)</string>
+    <string name="update_err_no_file_id">Ikki møguligt at greina fílukennteikið hjá Lanzou</string>
+    <string name="update_err_no_sign">Ikki møguligt at greina undirskrift Lanzou</string>
+    <string name="update_err_ajax_request">Umbøn um markamót mislukkaðist</string>
+    <string name="update_err_api_request">Umbøn um Lanzou-markamót mislukkaðist</string>
+    <string name="update_err_empty_direct">Lanzou skildi tóman niðurtakartengil</string>
+    <string name="update_err_direct_expired">Lanzou-niðurtakartengilin er útrunnin; hala hann niður aftur</string>
+    <string name="update_err_http_request">Umbøn mislukkaðist (HTTP %1$d)</string>
+    <string name="update_err_connect">Ikki møguligt at knýta samband við niðurtakartænara: %1$s</string>
+    <string name="update_err_http">Niðurtøka mislukkaðist (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ikki møguligt at koma á niðurtakarsamband</string>
+    <string name="update_err_empty">Niðurtikna innihaldið er tómt</string>
+    <string name="update_err_incomplete">Niðurtøkan er ófullkomin (%1$d av %2$d býtum tikin niður); tak niður aftur</string>
+    <string name="update_err_interrupted">Niðurtøkan var avbrotin: %1$s</string>
+    <string name="update_err_not_apk">Tikna fílan er ikki gildur uppsetingarpakki (kann vera vefsíða ella tengilin er útrunnin); tak niður aftur ella brúka GitHub</string>
+    <string name="update_err_apk_incomplete">Innihald uppsetingarpakkans er ófullkomið; tak niður aftur ella brúka GitHub</string>
+    <string name="update_err_apk_unparsable">Ikki møguligt at greina uppsetingarpakkann (møguliga ófullkomin niðurtøka); tak niður aftur ella brúka GitHub</string>
+    <string name="update_err_no_install_permission">Lóvin „Installera ókend forrit“ er ikki blivin latin</string>
+    <string name="update_err_installer_failed">Ikki møguligt at røsa kerfisuppsetaran (%1$s); upna uppsetingarpakkann fyri hond í fílastýranum</string>
+</resources>

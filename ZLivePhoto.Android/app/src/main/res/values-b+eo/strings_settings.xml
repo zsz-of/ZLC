@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Esperanto (eo).
+  Tradukita el res/values/strings_*.xml (simpligita ĉina baza dosiero, la rezerva lingvo).
+  La ŝlosiloj spegulas la bazan dosieron; anstataŭigiloj (%1$s / %1$d) kaj eskaposekvencoj restas senŝanĝaj.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- Ĝenerala -->
+    <string name="settings_title">Agordoj</string>
+    <string name="settings_cd_back">Reen</string>
+    <string name="settings_btn_apply">Apliki</string>
+    <string name="settings_btn_cancel">Nuligi</string>
+    <string name="settings_btn_close">Fermi</string>
+    <string name="settings_btn_ok">Bone</string>
+    <string name="settings_btn_sponsor">Donaci</string>
+
+    <!-- Grupaj titoloj -->
+    <string name="settings_section_general">Ĝenerala</string>
+    <string name="settings_section_appearance">Aspekto</string>
+    <string name="settings_section_language">Lingvo</string>
+    <string name="settings_section_defaults">Defaŭltoj</string>
+    <string name="settings_section_output">Eligo</string>
+    <string name="settings_section_transcode">Videa transkodado</string>
+    <string name="settings_section_about">Pri</string>
+    <string name="settings_section_app">Apo</string>
+    <string name="settings_section_credits">Dankoj kaj donacoj</string>
+    <string name="settings_section_opensource">Malfermita fontkodo kaj permesiloj</string>
+
+    <!-- Ĝenerala -->
+    <string name="settings_startup_check_title">Kontroli ĝisdatigojn ĉe lanĉo</string>
+    <string name="settings_startup_check_subtitle">Aŭtomate preni novajn versiojn de GitHub ĉe lanĉo, kaj instigi elŝuti kiam ĝisdatigo disponeblas</string>
+    <string name="settings_haptics_title">Hapta resonado</string>
+    <string name="settings_haptics_subtitle">Hapta resonado ĉe butonaj alklakoj kaj statŝanĝoj</string>
+    <string name="settings_bounce_title">Resalta butonanimo</string>
+    <string name="settings_bounce_subtitle">Zoma kaj resalta animo kiam butono estas premata</string>
+
+    <!-- Aspekto -->
+    <string name="settings_theme_system">Sekvi la sistemon</string>
+    <string name="settings_theme_dark">Malhela</string>
+    <string name="settings_theme_light">Hela</string>
+    <string name="settings_dynamic_theme_title">Material You dinamika koloro</string>
+    <string name="settings_dynamic_theme_subtitle">Sekvi la sisteman tapetkoloron (Android 12+); kiam malŝaltita, la antaŭagorditaj etosaj koloroj sube estas uzataj</string>
+    <string name="settings_preset_colors_title">Antaŭagorditaj etosaj koloroj</string>
+    <string name="settings_preset_current">Nuna: %1$s</string>
+    <string name="settings_preset_disabled_hint">Malŝaltu «Material You dinamikan koloron» por elekti</string>
+    <string name="settings_custom">Propra</string>
+    <string name="settings_custom_color_title">Propra etosa koloro</string>
+    <string name="settings_cd_custom_palette">Propra kolortabulo</string>
+    <string name="settings_hue_value">Nuanco %1$d°</string>
+
+    <!-- Lingvo de la apo: la titolo kaj «Sekvi la sistemon» estas reuzataj el strings_app.xml -->
+    <string name="settings_language_dialog_title">Elekti lingvon de la apo</string>
+    <string name="settings_language_count">%1$d lingvoj disponeblaj</string>
+
+    <!-- Defaŭltoj -->
+    <string name="settings_reminder_dialogs_title">«Ne plu montri» dialogoj</string>
+    <string name="settings_reminder_dialogs_subtitle">Administri la ŝaltilojn de ĉiuj «Ne plu montri» dialogoj</string>
+    <string name="settings_reminder_hint">Kiam ŝaltilo estas ŝaltita, tiu prompto ne plu montriĝas; kiam malŝaltita, la prompto reaperas la sekvan fojon, kiam la koncerna situacio okazas.</string>
+
+    <!-- Eligo -->
+    <string name="settings_preserve_folders_title">Eligi laŭ la fonta dosieruja hierarkio</string>
+    <string name="settings_preserve_folders_subtitle">Rezultoj konserviĝas en subdosierujoj nomitaj laŭ la originaj albumoj; kiam malŝaltita, ĉio estas metita ebene en unu dosierujon</string>
+
+    <!-- Pri -->
+    <string name="settings_about_title">Pri</string>
+    <string name="settings_about_subtitle">Versio · Kontroli ĝisdatigojn · Dankoj kaj donacoj</string>
+    <string name="settings_check_update_title">Kontroli ĝisdatigojn</string>
+    <string name="settings_check_update_subtitle">Preni la plej novan version de GitHub Releases</string>
+    <string name="settings_checking">Kontrolas…</string>
+    <string name="settings_update_available">v%1$s disponebla</string>
+    <string name="settings_up_to_date">Vi havas la plej novan version</string>
+    <string name="settings_network_error">Reta eraro; bonvolu reprovi poste</string>
+    <string name="settings_reinstall_title">Reinstali ĉi tiun version</string>
+    <string name="settings_reinstall_subtitle">Elŝuti la nunan plej novan konstruon kaj instali ĝin super ĉi tiu (por testi ĝisdatigojn)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s estas disponebla; bonvolu unue uzi «Kontroli ĝisdatigojn» por ĝisdatigi</string>
+    <string name="settings_version_title">Versio</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Donaci per Alipay</string>
+    <string name="settings_alipay_subtitle">Subteni evoluigon</string>
+    <string name="settings_coolapk_subtitle">Coolapk-uzanto · dankon pro la subteno</string>
+    <string name="settings_ai_credits_subtitle">Dankon al la AI-IDE-oj kaj AI-modeloj, kiuj helpis en la evoluigo</string>
+    <string name="settings_github_title">GitHub-deponejo</string>
+    <string name="settings_license_title">Malfermitkoda permesilo</string>
+    <string name="settings_sponsor_dialog_title">Dankon pro via subteno</string>
+    <string name="settings_sponsor_dialog_text">Mi vere dankas vian volontecon subteni ĉi tiun apon!\n\nSe vi ankoraŭ estas studento, aŭ ankoraŭ ne estas finance sendependa, bonvolu ne elspezi monon por tio — konservi tiun afablecon en via koro kaj daŭre uzi la apon estas la plej bona subteno, kiun mi povus peti.\n\nSe vi tamen volas donaci, eĉ malmulte helpas, kaj mi investos ĝin en pli bonan prizorgadon kaj funkciojn:)</string>
+    <string name="settings_alipay_missing_title">Alipay ne estas instalita</string>
+    <string name="settings_alipay_missing_text">Alipay ne estis detektita, do la donaco ne povas esti finita nun.\n\nTio estas tute en ordo — tre dankon pro via afableco ĉiukaze!</string>
+
+    <!-- Videa transkodado -->
+    <string name="settings_transcoder_title">Enkonstruita transkodilo</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Rekodigi</string>
+    <string name="settings_transcode_mode_remux">Nur remuksi ujon (rekomendata)</string>
+    <string name="settings_transcode_mode_off">Neniam uzi la transkodilon</string>
+    <string name="settings_transcode_params_title">Transkodaj parametroj</string>
+    <string name="settings_transcode_params_subtitle">Kvalitaj kaj kunpremaj parametroj uzataj ĉe rekodigo</string>
+    <string name="settings_transcode_params_disabled">Efikas nur kiam «Transkodada maniero» estas «Rekodigi»</string>
+    <string name="settings_crf_value">Kvalito CRF: %1$d</string>
+    <string name="settings_crf_hint">Pli malgrandaj valoroj signifas pli altan kvaliton kaj pli grandajn dosierojn (defaŭlte 18)</string>
+    <string name="settings_encoder_title">Kodigilo</string>
+    <string name="settings_compress_preset_title">Kunprema antaŭagordo</string>
+
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Esperanto (eo).
+  Tradukita el res/values/strings_*.xml (simpligita ĉina baza dosiero, la rezerva lingvo).
+  La ŝlosiloj spegulas la bazan dosieron; anstataŭigiloj (%1$s / %1$d) kaj eskaposekvencoj restas senŝanĝaj.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud-kundivida paĝo kaj rekta ligilo ========== -->
+    <string name="update_lanzou_gone">La Lanzou Cloud-kundivido estis nuligita aŭ la dosiero ne ekzistas; bonvolu elŝuti de GitHub anstataŭe</string>
+    <string name="update_lanzou_gone_short">La Lanzou Cloud-kundivido estis nuligita; bonvolu elŝuti de GitHub anstataŭe</string>
+    <string name="update_lanzou_resolve_failed">Analizo de la Lanzou Cloud-elŝutligilo malsukcesis</string>
+    <string name="update_lanzou_need_passwd">Ĉi tiu Lanzou Cloud-kundivido postulas eltirkodon; bonvolu elŝuti de GitHub anstataŭe (aŭ serĉu la eltirkodon en la eldonaj notoj)</string>
+    <string name="update_lanzou_wrong_passwd">Malĝusta Lanzou Cloud-eltirkodo</string>
+    <string name="update_err_resolve_failed">Analizo malsukcesis</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Kontraŭ-rampa kontrolo de Lanzou Cloud malsukcesis</string>
+    <string name="update_err_no_frame">Ne eblas analizi la Lanzou Cloud-elŝutpaĝon (elŝutkadro ne trovita)</string>
+    <string name="update_err_no_file_id">Ne eblas analizi la Lanzou Cloud-dosieridentigilon</string>
+    <string name="update_err_no_sign">Ne eblas analizi la Lanzou Cloud-subskribon</string>
+    <string name="update_err_ajax_request">Interfaca peto malsukcesis</string>
+    <string name="update_err_api_request">Lanzou Cloud-interfaca peto malsukcesis</string>
+    <string name="update_err_empty_direct">Lanzou Cloud redonis malplenan elŝutadreson</string>
+    <string name="update_err_direct_expired">La Lanzou Cloud-elŝutadreso eksvalidiĝis; bonvolu akiri ĝin denove</string>
+    <string name="update_err_http_request">Peto malsukcesis (HTTP %1$d)</string>
+
+    <!-- ========== Elŝutado ========== -->
+    <string name="update_err_connect">Ne eblas konekti al la elŝuta servilo: %1$s</string>
+    <string name="update_err_http">Elŝutado malsukcesis (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ne eblas establi elŝutan konekton</string>
+    <string name="update_err_empty">La elŝutita enhavo estas malplena</string>
+    <string name="update_err_incomplete">Elŝutado nekompleta (%1$d el %2$d bajtoj ricevitaj); bonvolu elŝuti denove</string>
+    <string name="update_err_interrupted">Elŝutado interrompita: %1$s</string>
+
+    <!-- ========== Kontrolo kaj instalado de la pakaĵo ========== -->
+    <string name="update_err_not_apk">La elŝutita dosiero ne estas valida pakaĵo (ĝi eble estas retpaĝo, aŭ la elŝutligilo eksvalidiĝis); bonvolu elŝuti denove aŭ uzi GitHub.</string>
+    <string name="update_err_apk_incomplete">La enhavo de la pakaĵo estas nekompleta; bonvolu elŝuti denove aŭ uzi GitHub.</string>
+    <string name="update_err_apk_unparsable">La pakaĵo ne povas esti analizita (la elŝutado eble estis nekompleta); bonvolu elŝuti denove aŭ uzi GitHub.</string>
+    <string name="update_err_no_install_permission">Permeso «instali nekonatajn aplikaĵojn» ne estis donita</string>
+    <string name="update_err_installer_failed">Ne eblas lanĉi la sisteman instalilon (%1$s); bonvolu malfermi la pakaĵon per dosieradministrilo kaj instali permane</string>
+
+</resources>

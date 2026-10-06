@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Bashkir (ba) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="screen_app_subtitle">Live Photo форматтарын үҙ-ара үҙгәртеү</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d файл</item>
+        <item quantity="other">%1$d файл</item>
+    </plurals>
+    <string name="screen_settings">Көйләүҙәр</string>
+    <string name="screen_select_output_format">Сығарыу форматын һайлау</string>
+    <string name="screen_selected">Һайланды</string>
+    <string name="screen_vivo_single_warning">⚠ Бигерәк иҫке ҡорамалдар был форматты танымаҫҡа мөмкин</string>
+    <string name="screen_extract_blocked">⚠ Сиратта төҙөү бурыстары бар, айырыуҙы һайлап булмай</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (бер файл)</string>
+    <string name="screen_format_vivo">vivo (ике файл)</string>
+    <string name="screen_format_xiaomi">Сяоми</string>
+    <string name="screen_format_honor">Хонор</string>
+    <string name="screen_format_meizu">Мэйзу</string>
+    <string name="screen_format_extract">Айырыу</string>
+    <string name="screen_toolbox">Ҡоралдар түшкәһе</string>
+    <string name="screen_batch_import">Туплап импортлау</string>
+    <string name="screen_batch_import_desc">Бөтә альбомды тикшереп, Live Photo-ны туплап таныу</string>
+    <string name="screen_compose">Live Photo төҙөү</string>
+    <string name="screen_compose_desc">Бер фото һәм бер видеоны парлаштырып төҙөү</string>
+    <string name="screen_replace_mode">Алмаштырыу режимы</string>
+    <string name="screen_replace_mode_desc">Үҙгәртеү һөҙөмтәһе туранан-тура тәүге файлға яҙыла, яңы файл булдырылмай</string>
+    <string name="screen_need_all_files_access_hint">«Бөтә файлдарға инеү» рөхсәте кәрәк, рөхсәт бирергә бында баҫығыҙ</string>
+    <string name="screen_agree_and_enable">Ризалашып ҡабыҙырға</string>
+    <string name="screen_empty_no_files">Файл әле өҫтәлмәгән</string>
+    <string name="screen_view_detail">Ентекләп ҡарығыҙ</string>
+    <string name="screen_add_files">Файл өҫтәү</string>
+    <string name="screen_output_format">Сығарыу форматы: %1$s</string>
+    <string name="screen_delete_original">Эшкәртеүҙән һуң төп фотоны бөтөрөү</string>
+    <string name="screen_need_all_files_access_view">«Бөтә файлдарға инеү» рөхсәте кәрәк, ҡарыр өсөн баҫығыҙ</string>
+    <string name="screen_clear">Бушатыу</string>
+    <string name="screen_stop">Эшкәртеүҙе туҡтатыу</string>
+    <string name="screen_start_convert">Үҙгәртеүҙе башлау</string>
+    <string name="screen_status_detail">Торошо ентекләүе</string>
+    <string name="screen_long_press_copy">Тексты оҙон баҫып һайлап күсерергә мөмкин</string>
+    <string name="screen_copy">Күсереп алыу</string>
+    <string name="screen_close">Ябыу</string>
+    <string name="screen_back">Ҡайтыу</string>
+    <string name="screen_picker_title_select">Live Photo һайлау</string>
+    <string name="screen_album_count">Альбом %1$d</string>
+    <string name="screen_album_collapse_cover">Альбом обложкаһын йыйыу</string>
+    <string name="screen_album_expand_cover">Альбом обложкаһын асыу</string>
+    <string name="screen_scanning_progress">Тикшерелеү %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d фото</item>
+        <item quantity="other">%1$d фото</item>
+    </plurals>
+    <string name="screen_select_all">Барыһын һайлау</string>
+    <string name="screen_no_albums">Яраҡлы альбом юҡ</string>
+    <string name="screen_no_media">Live Photo табылманы</string>
+    <string name="screen_no_media_compose">Фото йәки видео табылманы</string>
+    <string name="screen_import">Импортлау</string>
+    <string name="screen_import_count">Импорт %1$d</string>
+    <string name="screen_import_mixed">Импорт фото %1$d · видео %2$d</string>
+    <string name="screen_search">Эҙләү</string>
+    <string name="screen_search_collapse">Эҙләүҙе йыйыу</string>
+    <string name="screen_search_hint">Ат буйынса эҙләү</string>
+    <string name="screen_search_clear">Эҙләүҙе бушатыу</string>
+    <string name="screen_sort_date">Дата</string>
+    <string name="screen_sort_size">Ҙурлыҡ</string>
+    <string name="screen_sort_name">Ат</string>
+    <string name="screen_sort_asc">Тура тәртип</string>
+    <string name="screen_sort_desc">Кире тәртип</string>
+    <string name="screen_date_today">Бөгөн</string>
+    <string name="screen_date_yesterday">Кисә</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

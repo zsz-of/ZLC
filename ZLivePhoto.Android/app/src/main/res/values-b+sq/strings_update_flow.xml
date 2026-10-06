@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Albanian (sq) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">Nuk u mor link shkarkimi nga GitHub; provo përsëri më vonë.</string>
+    <string name="update_flavor_standard">Botimi standard</string>
+    <string name="update_flavor_go">Botimi Go</string>
+    <string name="update_lanzou_url_missing">Ky version nuk ofron link shkarkimi nga Lanzou; mund të përdorësh GitHub.</string>
+    <string name="update_apk_direct_missing">Ky version nuk ofron linkun e drejtpërdrejtë të paketës përkatëse të instalimit; në faqen e publikimeve të GitHub zgjidh APK-në e duhur.</string>
+    <string name="update_install_permission_missing">Leja „instalim aplikacionesh të panjohura” nuk është dhënë, ndaj nuk mund të instalohet automatikisht. Ajoje te cilësimet e sistemit dhe provo përsëri.</string>
+    <string name="update_error_unknown">Gabim i panjohur</string>
+    <string name="update_fail_lanzou">Shkarkimi nga Lanzou dështoi</string>
+    <string name="update_fail_github">Shkarkimi nga GitHub dështoi</string>
+    <string name="update_lanzou_resolving">Po analizohet linku i shkarkimit të Lanzou…</string>
+    <string name="update_lanzou_downloading">Po shkarkohet nga Lanzou…</string>
+    <string name="update_github_downloading">Po shkarkohet nga GitHub…</string>
+    <string name="update_unzipping">Po çpaketohet paketa e instalimit…</string>
+    <string name="update_notes_empty">Ky version nuk ka ende shënime.</string>
+    <string name="update_use_normal_title">Përdor versionin normal</string>
+    <string name="update_use_normal_body">Sistemi i kësaj pajisjeje është Android 10 ose më i ri dhe versioni i lehtë Go nuk përputhet më; versioni i vjetër nuk mund të përdoret më.\n\nU gjet se në këtë pajisje është instaluar tashmë versioni normal (ZLC): hape drejtpërdrejt për të vazhduar përdorimin (versionet e reja nuk ofrojnë më version të përputhshëm me Go; versionin e vjetër mund ta çinstalosh për të liruar hapësirë).</string>
+    <string name="update_open_normal">Hap versionin normal</string>
+    <string name="update_must_update_title">Duhet të përditësosh përpara se të vazhdosh</string>
+    <string name="update_forced_body">Sistemi i kësaj pajisjeje është Android 10 ose më i ri dhe versioni i lehtë Go nuk përputhet më; versioni i vjetër nuk mund të përdoret më, dhe versionet e reja nuk ofrojnë më version të përputhshëm me Go.\n\nLidhu me rrjetin dhe shtyp „Provo përsëri” për të marrë paketën e instalimit të versionit normal.</string>
+    <string name="update_retry">Provo përsëri</string>
+    <string name="update_switch_normal_body">Sistemi i kësaj pajisjeje është Android 10 ose më i ri dhe versioni i lehtë Go nuk përputhet më; versioni i vjetër nuk mund të përdoret më.\nShkarko dhe instalo versionin normal për të vazhduar përdorimin (versionet e reja nuk ofrojnë më version të përputhshëm me Go).</string>
+    <string name="update_downloading_title">Shkarko përditësimin</string>
+    <string name="update_cancel">Anulo</string>
+    <string name="update_need_permission_title">Kërkohet leja e instalimit</string>
+    <string name="update_need_permission_body">Për të instaluar versionin e re duhet leja e sistemit „instalim aplikacionesh të panjohura”.\n\nShtyp „Jep lejen”, ajoje te cilësimet dhe kthehu te aplikacioni; instalimi do të vazhdojë automatikisht (nuk duhet shkarkim i ri).</string>
+    <string name="update_grant">Jep lejen</string>
+    <string name="update_notice_title">Njoftim</string>
+    <string name="update_got_it">E kuptova</string>
+    <string name="update_notes_title">v%1$s · Shënimet e versionit</string>
+    <string name="update_back">Kthehu</string>
+    <string name="update_title_switch_normal">Kalo në versionin normal</string>
+    <string name="update_title_reinstall">Riinstalo këtë version</string>
+    <string name="update_title_new_version">U gjet version i ri</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Do të shkarkohet dhe riinstalohet ky version (mbi aplikacionin aktual).\nKjo funksion shërben për të provuar mekanizmin e përditësimit.</string>
+    <string name="update_view_notes">Shiko shënimet e versionit</string>
+    <string name="update_lanzou_unavailable">Lanzou aktualisht nuk është i disponueshëm</string>
+    <string name="update_download_lanzou">Shkarko nga Lanzou</string>
+    <string name="update_download_github">Shkarko nga GitHub</string>
+    <string name="update_download_browser">Shkarko nga shfletuesi</string>
+    <string name="update_later">Përditëso më vonë</string>
+    <string name="update_later_switch">Kalo më vonë</string>
+    <string name="update_skip_version">Anashkalo këtë version</string>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Norwegian Bokmål (nb) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">Fikk ikke hentet GitHub-nedlastingsadresse; prøv igjen senere.</string>
+    <string name="update_flavor_standard">Standardversjon</string>
+    <string name="update_flavor_go">Go-versjon</string>
+    <string name="update_lanzou_url_missing">Denne versjonen tilbyr ingen Lanzou Cloud-nedlastingslenke; du kan bruke GitHub i stedet.</string>
+    <string name="update_apk_direct_missing">Denne versjonen tilbyr ingen direkte lenke til en samsvarende installasjonspakke; velg riktig APK på GitHub-utgivelsessiden.</string>
+    <string name="update_install_permission_missing">Tillatelsen “Installer ukjente apper” er ikke gitt, så automatisk installering er ikke mulig. Gi tillatelsen i systeminnstillingene, og prøv igjen.</string>
+    <string name="update_error_unknown">Ukjent feil</string>
+    <string name="update_fail_lanzou">Lanzou Cloud-nedlasting mislyktes</string>
+    <string name="update_fail_github">GitHub-nedlasting mislyktes</string>
+    <string name="update_lanzou_resolving">Tolker Lanzou Cloud-nedlastingslenke…</string>
+    <string name="update_lanzou_downloading">Laster ned fra Lanzou Cloud…</string>
+    <string name="update_github_downloading">Laster ned fra GitHub…</string>
+    <string name="update_unzipping">Pakker ut installasjonspakken…</string>
+    <string name="update_notes_empty">Denne versjonen har foreløpig ingen oppdateringsnotater.</string>
+    <string name="update_use_normal_title">Bruk standardversjonen</string>
+    <string name="update_use_normal_body">Denne enheten kjører Android 10 eller nyere; Go-versjonen støttes ikke lenger, og den eldre versjonen kan ikke fortsette.\n\nStandardversjonen (ZLC) er allerede installert på enheten — åpne den, og fortsett der (den nye versjonen tilbyr ikke lenger en Go-kompatibel versjon; den eldre versjonen kan avinstalleres for å frigjøre plass).</string>
+    <string name="update_open_normal">Åpne standardversjonen</string>
+    <string name="update_must_update_title">Du må oppdatere før du kan fortsette</string>
+    <string name="update_forced_body">Denne enheten kjører Android 10 eller nyere; Go-versjonen støttes ikke lenger, og den eldre versjonen kan ikke fortsette. Den nye versjonen tilbyr heller ikke en Go-kompatibel versjon.\n\nKoble til nettverket, og trykk “Prøv igjen” for å hente standardversjonens installasjonspakke.</string>
+    <string name="update_retry">Prøv igjen</string>
+    <string name="update_switch_normal_body">Denne enheten kjører Android 10 eller nyere; Go-versjonen støttes ikke lenger, og den eldre versjonen kan ikke fortsette.\nLast ned og installer standardversjonen for å fortsette (den nye versjonen tilbyr ikke lenger en Go-kompatibel versjon).</string>
+    <string name="update_downloading_title">Laster ned oppdatering</string>
+    <string name="update_cancel">Avbryt</string>
+    <string name="update_need_permission_title">Installasjonstillatelsen er nødvendig</string>
+    <string name="update_need_permission_body">Installasjon av den nye versjonen krever systemtillatelsen “Installer ukjente apper”.\n\nTrykk “Gi tillatelse”, godkjenn i innstillingene, og gå tilbake til appen — installasjonen fortsetter automatisk (ingen ny nedlasting er nødvendig).</string>
+    <string name="update_grant">Gi tillatelse</string>
+    <string name="update_notice_title">Merk</string>
+    <string name="update_got_it">Forstått</string>
+    <string name="update_notes_title">v%1$s · oppdateringsnotater</string>
+    <string name="update_back">Tilbake</string>
+    <string name="update_title_switch_normal">Bytt til standardversjonen</string>
+    <string name="update_title_reinstall">Reinstaller denne versjonen</string>
+    <string name="update_title_new_version">Ny versjon funnet</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Denne versjonen lastes ned og installeres på nytt (overskriver den gjeldende appen).\nFunksjonen brukes til regresjonstesting av oppdateringsmekanismen.</string>
+    <string name="update_view_notes">Se oppdateringsnotater</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud er utilgjengelig akkurat nå</string>
+    <string name="update_download_lanzou">Last ned fra Lanzou Cloud</string>
+    <string name="update_download_github">Last ned fra GitHub</string>
+    <string name="update_download_browser">Last ned fra nettleseren</string>
+    <string name="update_later">Ikke nå</string>
+    <string name="update_later_switch">Ikke nå</string>
+    <string name="update_skip_version">Hopp over denne versjonen</string>
+</resources>

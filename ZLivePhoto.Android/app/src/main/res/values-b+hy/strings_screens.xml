@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Armenian (hy) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="screen_app_subtitle">Live Photo ձևաչափերի փոխակերպում</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d ֆայլ</item>
+        <item quantity="other">%1$d ֆայլ</item>
+    </plurals>
+    <string name="screen_settings">Կարգավորումներ</string>
+    <string name="screen_select_output_format">Ընտրեք ելքի ձևաչափը</string>
+    <string name="screen_selected">Ընտրված է</string>
+    <string name="screen_vivo_single_warning">⚠ Շատ հին սարքերը կարող են չճանաչել այս ձևաչափը</string>
+    <string name="screen_extract_blocked">⚠ Հերթում կան միավորման առաջադրանքներ, տրոհումն ընտրել հնարավոր չէ</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (մեկ ֆայլ)</string>
+    <string name="screen_format_vivo">vivo (երկու ֆայլ)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Տրոհում</string>
+    <string name="screen_toolbox">Գործիքների տուփ</string>
+    <string name="screen_batch_import">Զանգվածային ներմուծում</string>
+    <string name="screen_batch_import_desc">Սկանավորել ամբողջ ալբոմը և զանգվածաբար ճանաչել Live Photo-ները</string>
+    <string name="screen_compose">Միավորել Live Photo</string>
+    <string name="screen_compose_desc">Ընտրեք մեկ լուսանկար և մեկ տեսանյութ՝ զուգավորելու և միավորելու համար</string>
+    <string name="screen_replace_mode">Փոխարինման ռեժիմ</string>
+    <string name="screen_replace_mode_desc">Փոխակերպման արդյունքը գրվում է ուղղակիորեն բնօրինակ ֆայլում, նոր ֆայլ չի ստեղծվում</string>
+    <string name="screen_need_all_files_access_hint">Պահանջվում է «Բոլոր ֆայլերի հասանելիություն» թույլտվություն, սեղմեք այստեղ թույլատրելու համար</string>
+    <string name="screen_agree_and_enable">Համաձայնվել և միացնել</string>
+    <string name="screen_empty_no_files">Դեռ ֆայլեր ավելացված չեն</string>
+    <string name="screen_view_detail">Դիտել մանրամասները</string>
+    <string name="screen_add_files">Ավելացնել ֆայլեր</string>
+    <string name="screen_output_format">Ելքի ձևաչափ․ %1$s</string>
+    <string name="screen_delete_original">Բնօրինակ լուսանկարների ջնջում մշակումից հետո</string>
+    <string name="screen_need_all_files_access_view">Պահանջվում է «Բոլոր ֆայլերի հասանելիություն» թույլտվություն, սեղմեք դիտելու համար</string>
+    <string name="screen_clear">Մաքրել</string>
+    <string name="screen_stop">Կանգնեցնել մշակումը</string>
+    <string name="screen_start_convert">Սկսել փոխակերպումը</string>
+    <string name="screen_status_detail">Կարգավիճակի մանրամասներ</string>
+    <string name="screen_long_press_copy">Երկար սեղմեք տեքստին՝ ընտրելու և պատճենելու համար</string>
+    <string name="screen_copy">Պատճենել</string>
+    <string name="screen_close">Փակել</string>
+    <string name="screen_back">Հետ</string>
+    <string name="screen_picker_title_select">Ընտրեք Live Photo</string>
+    <string name="screen_album_count">Ալբոմ %1$d</string>
+    <string name="screen_album_collapse_cover">Ծալել ալբոմի շապիկը</string>
+    <string name="screen_album_expand_cover">Բացել ալբոմի շապիկը</string>
+    <string name="screen_scanning_progress">Սկանավորում %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d</item>
+        <item quantity="other">%1$d</item>
+    </plurals>
+    <string name="screen_select_all">Ընտրել բոլորը</string>
+    <string name="screen_no_albums">Հասանելի ալբոմ չկա</string>
+    <string name="screen_no_media">Live Photo չգտնվեց</string>
+    <string name="screen_no_media_compose">Լուսանկար կամ տեսանյութ չգտնվեց</string>
+    <string name="screen_import">Ներմուծում</string>
+    <string name="screen_import_count">Ներմուծել %1$d</string>
+    <string name="screen_import_mixed">Ներմուծում․ լուսանկար %1$d · տեսանյութ %2$d</string>
+    <string name="screen_search">Որոնում</string>
+    <string name="screen_search_collapse">Ծալել որոնումը</string>
+    <string name="screen_search_hint">Որոնել ըստ անվան</string>
+    <string name="screen_search_clear">Մաքրել որոնումը</string>
+    <string name="screen_sort_date">Ամսաթիվ</string>
+    <string name="screen_sort_size">Չափ</string>
+    <string name="screen_sort_name">Անուն</string>
+    <string name="screen_sort_asc">Ուղիղ հերթականություն</string>
+    <string name="screen_sort_desc">Հակադարձ հերթականություն</string>
+    <string name="screen_date_today">Այսօր</string>
+    <string name="screen_date_yesterday">Երեկ</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

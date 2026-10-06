@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Yiddish (yi) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">גרייט</string>
+    <string name="main_status_location_granted">לאַקאַציע־הרשאה באַקומען; נאָך דער קאָנווערטירונג בלײַבן די GPS מעטאַדאַטע פֿאַרבליבן</string>
+    <string name="main_status_location_denied">לאַקאַציע־הרשאה נישט געגעבן: נאָך דער קאָנווערטירונג וועלן די פאָטאָס פֿאַרלירן די GPS לאַקאַציע־אינפֿאָרמאַציע</string>
+    <string name="main_status_all_files_granted">„צוטריט צו אַלע טעקעס“ הרשאה באַקומען; די קאָנווערטירונג וועט שרײַבן גלײַך אין דעם אַלבום־אָרדער און פֿול באַוואַרן די לאַקאַציע־אינפֿאָרמאַציע</string>
+    <string name="main_status_all_files_denied">„צוטריט צו אַלע טעקעס“ הרשאה נישט געגעבן: אויף געוויסע טעלעפֿאָנען קען נאָך der קאָנווערטירונג פֿאַרלירן ווערן די לאַקאַציע־אינפֿאָרמאַציע</string>
+    <string name="main_status_read_granted">הרשאה צו ליינען פאָטאָס און ווידעאס באַקומען</string>
+    <string name="main_status_video_missing">הרשאה געגעבן, אָבער די ווידעא־הרשאה פֿעלט: מען קען נישט זוכן דעם באַגלייט־ווידעא פֿון אַ צוויי־טעקע Live Photo</string>
+    <string name="main_status_permission_denied">הרשאה נישט געגעבן; איר קענט ווידער אַמאָל דרוקן „צולייג טעקעס“</string>
+    <string name="main_status_folder_not_selected">קיין אָרדער נישט אויסגעקליבן</string>
+    <string name="main_status_folder_unavailable">מען קען נישט צוטרעטן צום אויסגעקליבענעם אָרדער (נאָר לאָקאַלע ספּייכער־אָרדערס ווערן געשטיצט)</string>
+    <string name="main_status_abnormal_exit">אַן אַבנאָרמאַלער אויסגאַנג פֿון לעצטן מאָל דערקענט; די נישט־פֿאַרטיקע ליסטע איז געליידיקט געוואָרן</string>
+    <string name="main_status_compose_blocks_extract">די וואַרטע־שורה האָט צוזאַמענשטעלונג־אויפֿגאַבן; מען קען נישט איבערשטעלן אויף צעמאָנטעלן־מאָדוס</string>
+    <string name="main_status_replace_off_mutex">טוישן־מאָדוס איז אויסגעשטעלט געוואָרן (מוטואַל אויסשליסנדיק מיט „אָריגינאַלן אַוועקנעמען נאָך פּראָצעסירונג“)</string>
+    <string name="main_status_delete_needs_all_files">אויטאָמאַטיש אַוועקנעמען אָריגינאַלן דאַרף „צוטריט צו אַלע טעקעס“ הרשאה; גיט ערשט די הרשאה</string>
+    <string name="main_status_replace_off">טוישן־מאָדוס איז אויסגעשטעלט געוואָרן; דער קאָנווערטירונג־רעזולטאַט ווערט ווידער געשריבן אין דעם אַלבום־אָרדער</string>
+    <string name="main_status_replace_needs_all_files">טוישן־מאָדוס דאַרף „צוטריט צו אַלע טעקעס“ הרשאה; גיט ערשט די הרשאה</string>
+    <string name="main_status_delete_off_mutex">„אָריגינאַלן אַוועקנעמען נאָך פּראָצעסירונג“ איז אויסגעשטעלט געוואָרן (מוטואַל אויסשליסנדיק מיט טוישן־מאָדוס)</string>
+    <string name="main_status_loading_albums">ליינט איצט אַלבומען…</string>
+    <string name="main_status_no_albums">קיין אַלבומען נישט געפֿונען</string>
+    <string name="main_status_compose_no_photo">קיין פאָטאָ נישט אויסגעקליבן; מען קען נישט צוזאַמענשטעלן</string>
+    <string name="main_status_compose_no_video">קיין ווידעא נישט אויסגעקליבן; מען קען נישט צוזאַמענשטעלן</string>
+    <string name="main_status_compose_all_added">אַלע אויסגעקליבענע פאָטאָס זענען שוין אין דער ליסטע</string>
+    <string name="main_status_compose_paired">פאָטאָס %1$d, ווידעאס %2$d; לויט דער קלענערער זײַט זענען %3$d פּאָרלעך צוזאַמענשטעלונג־אויפֿגאַבן צוגעלייגט געוואָרן</string>
+    <string name="main_status_auto_google">%1$s (דער אַרויסגאַב־פֿאָרמאַט איז אויטאָמאַטיש איבערגעשטעלט צו Google)</string>
+    <string name="main_status_import_failed">אַרײַנפֿירונג דורכגעפֿאַלן: %1$s</string>
+    <string name="main_status_import_done_partial">אַרײַנפֿירונג פֿאַרטיק: %1$d מיט הצלחה, %2$d דורכגעפֿאַלן</string>
+    <string name="main_status_import_stopped">אַרײַנפֿירונג אָפּגעשטעלט: %1$d מיט הצלחה, %2$d דורכגעפֿאַלן</string>
+    <string name="main_status_importing_progress">אַרײַנפֿירט איצט %1$d/%2$d…</string>
+    <string name="main_status_stopping">שטעלט איצט אָפּ… (עס וועט זיך אָפּשטעלן נאָך דעם לויפֿיקן טעקע)</string>
+    <string name="main_status_stopping_import">שטעלט איצט אָפּ די אַרײַנפֿירונג…</string>
+    <string name="main_status_removed">%1$s אַוועקגענומען</string>
+    <string name="main_status_cleared">געליידיקט</string>
+    <string name="main_status_nothing_to_convert">קיין טעקעס צו קאָנווערטירן נישט פֿאַראַן</string>
+    <string name="main_status_folder_unreadable">מען קען נישט ליינען דעם אויסגעקליבענעם אָרדער</string>
+    <string name="main_status_scanning_folder">סקאַנירט איצט דעם אָרדער…</string>
+    <string name="main_status_no_images">אין דעם אויסגעקליבענעם אָרדער זענען קיין בילדער נישט געפֿונען געוואָרן</string>
+    <string name="main_status_batch_importing">אַרײַנפֿירט איצט אין מאַסן %1$d/%2$d…</string>
+    <string name="main_status_stopped_replace">אָפּגעשטעלט: פֿון %1$d טעקעס זענען %2$d פּראָצעסירט געוואָרן, %3$d מקור־טעקעס געטוישט</string>
+    <string name="main_status_stopped_export">אָפּגעשטעלט: פֿון %1$d טעקעס זענען %2$d פּראָצעסירט געוואָרן, %3$d עקספּאָרטירט צום אַלבום</string>
+    <string name="main_status_done_replace_reason">פֿאַרטיק: %1$d טעקעס פּראָצעסירט, %2$d מקור־טעקעס געטוישט (סיבה: %3$s)</string>
+    <string name="main_status_done_export_reason">פֿאַרטיק: %1$d טעקעס פּראָצעסירט, %2$d עקספּאָרטירט צום אַלבום (סיבה: %3$s)</string>
+    <string name="main_status_done_replace">פֿאַרטיק: %1$d טעקעס פּראָצעסירט, %2$d מקור־טעקעס געטוישט</string>
+    <string name="main_status_done_export">פֿאַרטיק: %1$d טעקעס פּראָצעסירט, %2$d עקספּאָרטירט צום אַלבום</string>
+    <string name="main_status_keep_originals">%1$s; „פֿול צוטריט צום ספּייכער“ הרשאה נישט באַקומען, די אָריגינאַלן זענען באַוואַרט געוואָרן</string>
+    <string name="main_info_detecting">דעטעקטירט איצט…</string>
+    <string name="main_info_unrecognized">אומערקענטער Live Photo פֿאָרמאַט</string>
+    <string name="main_info_converting">קאָנווערטירט איצט…</string>
+    <string name="main_info_compose_task">צוזאַמענשטעלונג־אויפֿגאַב (דרוקט „אָנהייב קאָנווערטירן“ צו צוזאַמענשטעלן)</string>
+    <string name="main_info_done_replaced">פֿאַרטיק (%1$d מקור־טעקע געטוישט)</string>
+    <string name="main_info_done_skipped">פֿאַרטיק (איבערגעהיפּערט: זעלבער נאָמען קאָנפֿליקט)</string>
+    <string name="main_info_done_exported">פֿאַרטיק (%1$d עקספּאָרטירט)</string>
+    <string name="main_info_failed">דורכגעפֿאַלן: %1$s</string>
+    <string name="main_progress_added">צוגעלייגט %1$d/%2$d</string>
+    <string name="main_progress_processed">פּראָצעסירט %1$d/%2$d</string>
+    <string name="main_progress_imported">אַרײַנגעפֿירט %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">עס דאַרף הרשאה צו ליינען פאָטאָס און ווידעאס</string>
+    <string name="main_dialog_permission_message">דאָס פּראָגראַם דאַרף ליינען די פאָטאָס און ווידעאס אויף אייער געצייג:\n\n• פאָטאָ־הרשאה: סקאַנירן די אַלבומען פֿון געצייג און דערקענען די Live Photo דערין\n• ווידעא־הרשאה: זוכן דעם באַגלייט־ווידעא פֿון אַ צוויי־טעקע Live Photo\n• לאַקאַציע־הרשאה: באַוואַרן די GPS לאַקאַציע־מעטאַדאַטע אין די פאָטאָס (ווען זי פֿעלט, ווערט די לאַקאַציע־אינפֿאָרמאַציע פֿאַרלוירן נאָך der קאָנווערטירונג)\n\nנאָך אַן אָפּזאָג קען מען נישט ניצן דעם אַריינגעבויטען קלייער; איר קענט שפּעטער ווידער אַמאָל דרוקן „צולייג טעקעס“ און נאָכאַמאָל געבן די הרשאה.</string>
+    <string name="main_dialog_settings_title">עס דאַרף אַ מאַנועלע הרשאה פֿאַר פאָטאָס און ווידעאס</string>
+    <string name="main_dialog_settings_message">איר האָט פֿריער אויסגעקליבן „נישט מער פֿרעגן“; דער סיסטעם ווײַזט שוין נישט קיין הרשאה־דיאַלאָג.\n\nגייט צום אַפּ־דעטאַלן בלאַט → הרשאות → פאָטאָס און ווידעאס, גיט מאַנועל די צוטריט־הרשאה און קומט צוריק צו דער אַפּ.\n\nאַכטונג: איר מוזט גלײַך געבן סיי די „פאָטאָס“ סיי די „ווידעאס“ הרשאה, אַנדערש וועט אַ צוויי־טעקע Live Photo נישט קענען געפֿינען איר באַגלייט־ווידעא.</string>
+    <string name="main_dialog_allfiles_title_delete">אויטאָמאַטיש אַוועקנעמען אָריגינאַלן דאַרף „צוטריט צו אַלע טעקעס“</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">דער געצייג אונטערשטיצט נישט קיין אויטאָמאַטיש אַוועקנעמען פֿון אָריגינאַלן</string>
+    <string name="main_dialog_allfiles_title_replace">טוישן־מאָדוס דאַרף „צוטריט צו אַלע טעקעס“</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">דער געצייג אונטערשטיצט נישט קיין טוישן־מאָדוס</string>
+    <string name="main_dialog_allfiles_title_location">עס איז רעקאָמענדירט צו געבן „צוטריט צו אַלע טעקעס“ הרשאה</string>
+    <string name="main_dialog_allfiles_delete_message">„אָריגינאַלן אַוועקנעמען נאָך פּראָצעסירונג“ מעקט גלײַך אויס די אָריגינעלע טעקעס אויף דעם ספּייכער (דעם פאָטאָ מיט זײַן באַגלייט־ווידעא); די אַקציע קען נישט צוריקגעמאַכט ווערן, דעריבער מוז מען ערשט געבן די „צוטריט צו אַלע טעקעס“ הרשאה.\n\nנאָר נאָך der הרשאה וועט דער שאַלטער ווערן פֿאַרפֿיגבאַר; דעמאָלט קענט איר אים אליין אַקטיווירן.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">דער דאָזיקער סיסטעם (Android 10 און נידעריקער) גיט נישט קיין „צוטריט צו אַלע טעקעס“ הרשאה; מען קען נישט גלײַך אויסמעקן די אָריגינעלע טעקעס אויף דעם ספּייכער, דעריבער אונטערשטיצט דער געצייג נישט „אָריגינאַלן אַוועקנעמען נאָך פּראָצעסירונג“.\n\nאיר קענט נאָך der קאָנווערטירונג אליין אויפֿרוימען די אָריגינאַלן דורך דעם סיסטעם־אַלבום.</string>
+    <string name="main_dialog_allfiles_replace_message">„טוישן־מאָדוס“ שרײַבט גלײַך דעם קאָנווערטירונג־רעזולטאַט צוריק אין די אָריגינעלע טעקעס אויף דעם ספּייכער (ער שרײַבט איבער דעם אָריגינעלן אינהאַלט); די אַקציע קען נישט צוריקגעמאַכט ווערן, דעריבער מוז מען ערשט געבן די „צוטריט צו אַלע טעקעס“ הרשאה.\n\nנאָר נאָך der הרשאה וועט דער שאַלטער ווערן פֿאַרפֿיגבאַר; דעמאָלט קענט איר אים אליין אַקטיווירן.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">דער דאָזיקער סיסטעם (Android 10 און נידעריקער) גיט נישט קיין „צוטריט צו אַלע טעקעס“ הרשאה; מען קען נישט גלײַך איבערשרײַבן די אָריגינעלע טעקעס אויף דעם ספּייכער, דעריבער אונטערשטיצט דער געצייג נישט „טוישן־מאָדוס“.\n\nאיר קענט ווייטער קאָנווערטירן אויף דעם פֿאַרגיכטן אופֿן; דער רעזולטאַט ווערט אַרויסגעגעבן אין דעם אַלבום־אָרדער.</string>
+    <string name="main_dialog_allfiles_location_message">אויף געוויסע טעלעפֿאָנען (למשל Meizu) ווערט בײַם שרײַבן דורך דעם סיסטעם־אַלבום־אינטערפֿייס די GPS לאַקאַציע־אינפֿאָרמאַציע אָפּגעשניטן, און די פאָטאָס פֿאַרלירן נאָך der קאָנווערטירונג די לאַקאַציע.\n\nנאָך דעם געבן פֿון „צוטריט צו אַלע טעקעס“ שרײַבט דאָס פּראָגראַם גלײַך אין דעם אַלבום־אָרדער און באַוואַרט פֿול די לאַקאַציע־מעטאַדאַטע.\n\nאָן der הרשאה קען מען אויך נאָרמאַל קאָנווערטירן; אויף געוויסע טעלעפֿאָנען קען די לאַקאַציע־אינפֿאָרמאַציע פֿאַרלירן ווערן.</string>
+    <string name="main_dialog_conflict_title">קאָנפֿליקט פֿון אַרויסגאַב־טעקע נאָמען</string>
+    <string name="main_dialog_conflict_message">אין דעם אַרויסגאַב־אָרדער עקזיסטירט שוין אַ טעקע מיט דעם זעלבן נאָמען:\n%1$s\n\nקלייבט ביטע אויס אַ באַהאַנדלונג־אופֿן.</string>
+    <string name="main_label_conflict_always">ניצט דעם באַהאַנדלונג־אופֿן פֿאַר ווייטערע קאָנפֿליקטן</string>
+    <string name="main_btn_grant">הרשאה געבן</string>
+    <string name="main_btn_deny">אָפּזאָגן</string>
+    <string name="main_btn_go_settings">גיין צו באַשטימונגען</string>
+    <string name="main_btn_cancel">באַטלען</string>
+    <string name="main_btn_grant_access">גיין הרשאה געבן</string>
+    <string name="main_btn_got_it">פֿאַרשטאַנען</string>
+    <string name="main_btn_not_now">נישט איצט</string>
+    <string name="main_btn_skip">איבערשפּרינגן</string>
+    <string name="main_btn_overwrite">איבערשרײַבן</string>
+    <string name="main_btn_auto_rename">אויטאָמאַטיש אומבענעמען</string>
+    <string name="main_delete_nothing">עס דאַרפֿן נישט ווערן אַוועקגענומען קיין אָריגינאַלן</string>
+    <string name="main_delete_partial">%1$d אָריגינעלע טעקעס אַוועקגענומען (%2$d זענען דורכגעפֿאַלן בײַם אויסמעקן און זענען באַוואַרט געוואָרן)</string>
+    <string name="main_delete_failed">אויסמעקן פֿון אָריגינאַלן איז דורכגעפֿאַלן (די טעקע איז פֿאַרנומען אדער עס פֿעלט אַ שרײַב־הרשאה); זיי זענען באַוואַרט געוואָרן</string>
+    <string name="main_export_missing_output">דער קאָנווערטירונג־פּראָדוקט פֿעלט אדער איז ליידיק: %1$s</string>
+    <string name="main_export_missing_output_bare">דער קאָנווערטירונג־פּראָדוקט פֿעלט אדער איז ליידיק</string>
+    <string name="main_export_insert_null">MediaStore insert האָט צוריקגעגעבן null</string>
+    <string name="main_export_output_stream">MediaStore אַרויסגאַב־שטראָם איז נישט פֿאַרפֿיגבאַר</string>
+    <string name="main_export_write_failed">MediaStore שרײַבן איז דורכגעפֿאַלן: %1$s</string>
+    <string name="main_export_mkdir_failed">מען קען נישט באַשאַפֿן דעם אַלבום־אָרדער %1$s</string>
+    <string name="main_export_dir_write_failed">שרײַבן אין דעם אַלבום־אָרדער איז דורכגעפֿאַלן: %1$s</string>
+    <string name="main_export_no_source">מען קען נישט לאָקאַליזירן דעם מקור־טעקע; דער טויש איז איבערגעהיפּערט געוואָרן</string>
+    <string name="main_export_companion_failed">צוריקשרײַבן פֿון דער באַגלייט־טעקע איז דורכגעפֿאַלן: %1$s</string>
+    <string name="main_export_source_dir_unwritable">דער מקור־טעקע אָרדער איז נישט שרײַבבאַר; די באַגלייט־טעקע האָט נישט געקענט ווערן צוריקגעשריבן</string>
+    <string name="main_export_source_dir_unavailable">דער מקור־טעקע אָרדער איז נישט פֿאַרפֿיגבאַר: %1$s</string>
+    <string name="main_export_replace_failed">טוישן פֿון דער מקור־טעקע איז דורכגעפֿאַלן: %1$s</string>
+    <string name="main_export_replace_failed_bare">טוישן פֿון דער מקור־טעקע איז דורכגעפֿאַלן</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">די פֿריכער סעסיע איז ווידערגעשטעלט געוואָרן (%1$d טעקע)</item>
+        <item quantity="other">די פֿריכער סעסיע איז ווידערגעשטעלט געוואָרן (%1$d טעקעס)</item>
+    </plurals>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d צוזאַמענשטעלונג־אויפֿגאַב צוגעלייגט; דרוקט „אָנהייב קאָנווערטירן“ צו דורכפֿירן די צוזאַמענשטעלונג</item>
+        <item quantity="other">%1$d צוזאַמענשטעלונג־אויפֿגאַבן צוגעלייגט; דרוקט „אָנהייב קאָנווערטירן“ צו דורכפֿירן די צוזאַמענשטעלונג</item>
+    </plurals>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">אַרײַנפֿירט איצט %1$d געשטיילט בילד…</item>
+        <item quantity="other">אַרײַנפֿירט איצט %1$d געשטיילטע בילדער…</item>
+    </plurals>
+    <plurals name="main_status_import_done">
+        <item quantity="one">אַרײַנפֿירונג פֿאַרטיק: אינגאַנצן אַרײַנגעפֿירט %1$d טעקע</item>
+        <item quantity="other">אַרײַנפֿירונג פֿאַרטיק: אינגאַנצן אַרײַנגעפֿירט %1$d טעקעס</item>
+    </plurals>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">אַרײַנפֿירט איצט %1$d טעקע…</item>
+        <item quantity="other">אַרײַנפֿירט איצט %1$d טעקעס…</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">מאַסן־אַרײַנפֿירונג אָפּגעשטעלט: אינגאַנצן איז %1$d Live Photo אַרײַנגעפֿירט געוואָרן</item>
+        <item quantity="other">מאַסן־אַרײַנפֿירונג אָפּגעשטעלט: אינגאַנצן זענען %1$d Live Photo אַרײַנגעפֿירט געוואָרן</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">מאַסן־אַרײַנפֿירונג אָפּגעשטעלט: אינגאַנצן איז %1$d Live Photo אַרײַנגעפֿירט געוואָרן, %2$d נישט־Live Photo טעקע איבערגעהיפּערט</item>
+        <item quantity="other">מאַסן־אַרײַנפֿירונג אָפּגעשטעלט: אינגאַנצן זענען %1$d Live Photo אַרײַנגעפֿירט געוואָרן, %2$d נישט־Live Photo טעקעס איבערגעהיפּערט</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">מאַסן־אַרײַנפֿירונג פֿאַרטיק: אינגאַנצן איז %1$d Live Photo אַרײַנגעפֿירט געוואָרן</item>
+        <item quantity="other">מאַסן־אַרײַנפֿירונג פֿאַרטיק: אינגאַנצן זענען %1$d Live Photo אַרײַנגעפֿירט געוואָרן</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">מאַסן־אַרײַנפֿירונג פֿאַרטיק: אינגאַנצן איז %1$d Live Photo אַרײַנגעפֿירט געוואָרן, %2$d נישט־Live Photo טעקע איבערגעהיפּערט</item>
+        <item quantity="other">מאַסן־אַרײַנפֿירונג פֿאַרטיק: אינגאַנצן זענען %1$d Live Photo אַרײַנגעפֿירט געוואָרן, %2$d נישט־Live Photo טעקעס איבערגעהיפּערט</item>
+    </plurals>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d אָריגינעלער טעקע אַוועקגענומען</item>
+        <item quantity="other">%1$d אָריגינעלע טעקעס אַוועקגענומען</item>
+    </plurals>
+</resources>

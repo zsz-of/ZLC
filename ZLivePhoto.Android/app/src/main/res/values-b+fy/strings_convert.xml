@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Frisian (Western) (fy) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Unbekende doelformaat: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Live Photo-formaat is net werkenber (gjin Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Omslachfoto bestiet net of is leech</string>
+    <string name="conv_video_missing">Fideo bestiet net of is leech</string>
+    <string name="conv_video_too_large">Fideo is te grut (%1$d MB), kin net gearstald wurde ta in Live Photo; kies in koarter fideo</string>
+    <string name="conv_transcoded_too_large">Fideo is nei transkodearring te grut (%1$d MB), kin net gearstald wurde ta in Live Photo</string>
+    <string name="conv_video_too_large_compose">Fideo is te grut (%1$d MB), kin net gearstald wurde ta in Live Photo</string>
+    <string name="conv_cover_heic_go">Omslach is in HEIC-ôfbylding (ljochtfertsjende ferzje stipet transkodearring net; eksportearje earst as JPEG op in iPhone en konvertearje dan)</string>
+    <string name="conv_cover_invalid_heic">Omslach is gjin jildich ôfbylding (HEIC freget dat it systeem HEIF-dekoadearring stipet)</string>
+    <string name="conv_cover_not_jpeg_go">Omslach is gjin JPEG-ôfbylding (ljochtfertsjende ferzje stipet transkodearring net; brûk in JPEG-foto)</string>
+    <string name="conv_cover_invalid_image">Omslach is gjin jildich ôfbylding (allinnich JPEG/WebP/PNG stipe)</string>
+    <string name="conv_reencode_failed">Opnij kodearjen fan de fideo is mislearre: %1$s</string>
+    <string name="conv_remux_failed">Opnij pakken fan de container is mislearre: %1$s</string>
+    <string name="conv_codec_unknown">Gjin werkenbere H.264/H.265-fideo</string>
+    <string name="conv_codec_is">Kodearring is %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Fideo "%1$s" %2$s; allinnich de container (opnij pakken) feroarje kin de kodearring net feroarje, kin net gearstald wurde ta in Live Photo.
+
+Feroarje yn "Ynstellings → Fideo transkodearring → Transkodearwize" nei "Opnij kodearje", of konvertearje it earst mei in oar ark nei in MP4 mei H.264/H.265-kodearring.</string>
+    <string name="conv_hint_no_encoder">Fideo is gjin standert MP4-container (MOV / MKV / WebM / AVI ensfh.), en de hjoeddeiske "Transkodearwize" kodearret net opnij, kin net gearstald wurde ta in Live Photo.
+
+Feroarje yn "Ynstellings → Fideo transkodearring → Transkodearwize" nei "Opnij kodearje" (de gewoane ferzje hat in ffmpeg-koader ynboud; de lichte Go-ferzje hat gjin transkoader, brûk de gewoane ferzje), of konvertearje it fideo earst nei in standert MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">Werken as %1$s</string>
+    <string name="conv_log_same_format_copied">Boarne en doelformaat binne itselde; sûnder feroaring kopiëarre (ferliesfrije)</string>
+    <string name="conv_log_extra_tracks_bypass">Boarnefideo hat net-audio/net-fideo-spoaren (%1$s); sammeformaat-trochgong oersloegen, folsleine skriuwproses brûkt om te suverjen</string>
+    <string name="conv_log_ts_fallback">Boarne hat gjin tiidstimpel foar it omslachfotogram; neffens de standert weromfallen nei it midden fan de fideo</string>
+    <string name="conv_log_brand_normalized">Fideo-containermerk normalisearre (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Fideo hat ekstra spoaren (%1$s), kin net suvere wurde; sûnder feroaring útfierd (dit produkt kin op guon apparaten mooglik net mei lange yndruk ôfspiele wurde)</string>
+    <string name="conv_log_extra_tracks_removed">Ekstra fideo-spoaren fuorthelle (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Boarnefideo%1$s; allinnich de container opnij pakke kin it net oplosse (%2$s); as it produkt noch altyd net mei lange yndruk ôfspile wurde kin, kies "Opnij kodearje" yn "Ynstellings → Fideo transkodearring → Transkodearwize"</string>
+    <string name="conv_log_reencoding">Boarnefideo%1$s; neffens ynstellings opnij kodearre as 8bit + AAC om de albumkompatibiliteit te ferheegjen</string>
+    <string name="conv_log_reencode_result_unusable">Resultaat fan opnij kodearjen is net brûkber; sûnder feroaring útfierd (dit produkt kin op guon apparaten mooglik net mei lange yndruk ôfspiele wurde)</string>
+    <string name="conv_log_reencode_still_risky">Nei opnij kodearjen binne der noch risiko-punten (%1$s)</string>
+    <string name="conv_log_reencode_failed">Opnij kodearjen mislearre (%1$s); sûnder feroaring útfierd (dit produkt kin op guon apparaten mooglik net mei lange yndruk ôfspiele wurde)</string>
+    <string name="conv_log_cover_heic_converted">Omslach is HEIC (gjin JPEG); nei standert JPEG transkodearre en doe ynpakke</string>
+    <string name="conv_log_compose_sizes">Gearstalling: foto %1$d B + fideo %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkoader net ynskeakele: allinnich containermerk feroare (MOV → MP4), net opnij kodearre</string>
+    <string name="conv_tag_convert">Konvertearje</string>
+    <string name="conv_tag_transcode">Transkodearring</string>
+    <string name="conv_tag_compose">Gearstalling</string>
+    <string name="conv_blocker_no_encoder">Ynboude transkoader net beskikber</string>
+    <string name="conv_blocker_mode_no_encode">Hjoeddeiske "Transkodearwize" kodearret net opnij</string>
+    <string name="conv_addon_unavailable">Ynboude transkoader net beskikber</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-transkodearring mislearre: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-container opnij pakken mislearre: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Mei ffmpeg de fideo nei standert MP4 transkodearre (%1$s / crf %2$d / %3$s; allinnich fideo- en audiospoaren hâlde)</string>
+    <string name="conv_log_transcode_done">Fideo-transkodearring dien (%1$d KB)</string>
+    <string name="conv_log_remuxing">Fideo-container nei standert MP4 opnij pakke (allinnich container feroarje, net opnij kodearje)</string>
+    <string name="conv_log_remux_done">Container opnij pakken dien (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Gearstalling</string>
+    <string name="conv_reminder_cat_convert">Konvertearje</string>
+    <string name="conv_reminder_cat_update">Bywurkje</string>
+    <string name="conv_reminder_video_over3s_title">Fideo langer as 3 sekonden</string>
+    <string name="conv_reminder_video_over3s_message">Duur fan it keazen fideo is langer as 3 sekonden; de gearstalde Live Photo kin kompatibiliteitsproblemen hawwe:
+
+• Kin mooglik net normaal ôfspiele wurde
+• Kin mooglik net werken wurde troch it systeemalbum
+• Guats apparaten kinne dizze Live Photo mooglik net werken</string>
+    <string name="conv_reminder_legacy_go_title">Alde ferzje werken</string>
+    <string name="conv_reminder_legacy_go_message">Op dit apparaat is noch altyd de alde ferzje (Go-ferzje) ynstalleare; dy alde ferzje wurket op dit apparaat net mear, kin deynstallearre wurde om romte frij te meitsjen.</string>
+    <string name="conv_reminder_replace_risk_title">Ferfangingmodus hat skearrisiko</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Yn ferfangingmodus wurdt it konverzjeresultaat rjochtstreeks werom skreaun yn it orizjinele bestân; as it orizjinele bestân oerskreaun is, kin it net weromhelle wurde.
+
+• As de app ûnderbrekke wurdt tidens it skriuwen, de opslachromte oprekt of tastimmingen weromhelle wurde, kin it boarnebestân skansearre reitsje
+• De konverzje sels kin yn alle gefallen sukses net garandearje; by mislukken kin it boarnebestân al net mear brûkber wêze
+• Riedseld wurdt earst mei ien of twa bestannen te probearjen en pas yn massa fierder te gean as alles wurket
+· Meitsje foarôf sels in reservekopy fan wichtige foto\'s
+
+Dizze funksje wurdt "sa\'t er is" levere; it risiko fan gebrûk draachsto sels, en de skriuwer is net ferantwurdlik foar skea of ferlies fan bestannen.</string>
+    <string name="conv_reminder_dont_remind">Net mear oantinken</string>
+    <string name="conv_reminder_confirm_ok">Begrepen</string>
+    <string name="conv_reminder_uninstall">Deynstallearje</string>
+</resources>

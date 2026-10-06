@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Nederlands (België) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Belgisch-Nederlandse variant met eigen woordkeuze ("toestemming", "Klaar", "Leegmaken").
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  De datumnotaties zijn herordend naar de lokale dag-maand-jaar-vorm.
+  Quality: A.
+-->
+<resources>
+    <!-- Ondertitel van de bovenbalk -->
+    <string name="screen_app_subtitle">Live Photo-formaten omzetten</string>
+    <!-- Aantal geselecteerde bestanden in de bovenbalk (aantalafhankelijk, dus plurals) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d bestand</item>
+        <item quantity="other">%1$d bestanden</item>
+    </plurals>
+    <!-- Ingang naar de instellingen (alleen voor schermlezers) -->
+    <string name="screen_settings">Instellingen</string>
+
+    <!-- Dialoog voor het kiezen van het uitvoerformaat -->
+    <string name="screen_select_output_format">Uitvoerformaat kiezen</string>
+    <string name="screen_selected">Geselecteerd</string>
+    <string name="screen_vivo_single_warning">⚠ Zeer oude toestellen herkennen dit formaat mogelijk niet</string>
+    <string name="screen_extract_blocked">⚠ De wachtrij bevat samenstellingstaken; Uitpakken kan niet worden gekozen</string>
+
+    <!-- Korte formatnamen (lange namen in strings_formats.xml, fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (één bestand)</string>
+    <string name="screen_format_vivo">vivo (twee bestanden)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Uitpakken</string>
+
+    <!-- Gereedschapsbalk (BottomSheet) -->
+    <string name="screen_toolbox">Hulpmiddelen</string>
+    <string name="screen_batch_import">Batchimport</string>
+    <string name="screen_batch_import_desc">Scant de hele galerij en herkent Live Photo\'s in bulk</string>
+    <string name="screen_compose">Live Photo samenstellen</string>
+    <string name="screen_compose_desc">Kies een foto en een video om te combineren</string>
+    <string name="screen_replace_mode">Vervangmodus</string>
+    <string name="screen_replace_mode_desc">Het resultaat wordt rechtstreeks in het oorspronkelijke bestand geschreven, zonder nieuwe bestanden</string>
+    <string name="screen_need_all_files_access_hint">Vereist de toestemming "toegang tot alle bestanden"; tik om te autoriseren</string>
+    <string name="screen_agree_and_enable">Akkoord en inschakelen</string>
+
+    <!-- Lege status / onderpaneel -->
+    <string name="screen_empty_no_files">Nog geen bestanden toegevoegd</string>
+    <string name="screen_view_detail">Details bekijken</string>
+    <string name="screen_add_files">Bestanden toevoegen</string>
+    <string name="screen_output_format">Uitvoerformaat: %1$s</string>
+    <string name="screen_delete_original">Originelen verwijderen na verwerking</string>
+    <string name="screen_need_all_files_access_view">Vereist de toestemming "toegang tot alle bestanden"; tik om te bekijken</string>
+    <string name="screen_clear">Leegmaken</string>
+    <string name="screen_stop">Verwerking stoppen</string>
+    <string name="screen_start_convert">Conversie starten</string>
+
+    <!-- Dialoog met statusdetails -->
+    <string name="screen_status_detail">Statusdetails</string>
+    <string name="screen_long_press_copy">Houd de tekst ingedrukt om te selecteren en te kopiëren</string>
+    <string name="screen_copy">Kopiëren</string>
+    <string name="screen_close">Sluiten</string>
+
+    <!-- Albumkiezer -->
+    <string name="screen_back">Terug</string>
+    <string name="screen_picker_title_select">Live Photo\'s kiezen</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Albumomslag invouwen</string>
+    <string name="screen_album_expand_cover">Albumomslag uitvouwen</string>
+    <string name="screen_scanning_progress">Scannen %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d foto\'s</item>
+    </plurals>
+    <string name="screen_select_all">Alles selecteren</string>
+    <string name="screen_no_albums">Geen albums beschikbaar</string>
+    <string name="screen_no_media">Geen Live Photo\'s gevonden</string>
+    <string name="screen_no_media_compose">Geen foto\'s of video\'s gevonden</string>
+    <string name="screen_import">Importeren</string>
+    <string name="screen_import_count">%1$d importeren</string>
+    <string name="screen_import_mixed">Importeer foto %1$d · video %2$d</string>
+    <string name="screen_search">Zoeken</string>
+    <string name="screen_search_collapse">Zoeken sluiten</string>
+    <string name="screen_search_hint">Zoeken op naam</string>
+    <string name="screen_search_clear">Zoekopdracht leegmaken</string>
+    <string name="screen_sort_date">Datum</string>
+    <string name="screen_sort_size">Grootte</string>
+    <string name="screen_sort_name">Naam</string>
+    <string name="screen_sort_asc">Oplopend</string>
+    <string name="screen_sort_desc">Aflopend</string>
+
+    <!-- Datumlabels van de albumgroepen (%1$d enz. zijn getallen; mogen worden herordend) -->
+    <string name="screen_date_today">Vandaag</string>
+    <string name="screen_date_yesterday">Gisteren</string>
+    <string name="screen_date_this_year">%2$d-%1$d</string>
+    <string name="screen_date_other_year">%3$d-%2$d-%1$d</string>
+</resources>

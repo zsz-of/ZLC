@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Suomenkieliset merkkijonot (fi).
+  Käännetty tiedostoista res/values/strings_*.xml (yksinkertaistettu kiina, varakieliasetus).
+  Jokainen avain vastaa perustiedostoa; paikkamerkit (%1$s / %1$d) ja koodaussekvenssit on säilytetty ennallaan.
+-->
+<resources>
+    <!-- Yläpalkin alaotsikko -->
+    <string name="screen_app_subtitle">Live Photo -muotojen muunnos</string>
+    <!-- Yläpalkin oikealla näkyvä valittujen tiedostojen määrä (määrästä riippuva, plurals) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d tiedosto</item>
+        <item quantity="other">%1$d tiedostoa</item>
+    </plurals>
+    <!-- Yläpalkin asetusten kohta (vain esteettömyyslukua varten) -->
+    <string name="screen_settings">Asetukset</string>
+
+    <!-- Tulostemuodon valintavalintaikkuna -->
+    <string name="screen_select_output_format">Valitse tulostemuoto</string>
+    <string name="screen_selected">Valittu</string>
+    <string name="screen_vivo_single_warning">⚠ Vanhemmat laitteet eivät ehkä tunnista tätä muotoa</string>
+    <string name="screen_extract_blocked">⚠ Jonossa on yhdistämistehtäviä, joten Pura ei ole valittavissa</string>
+
+    <!-- Muotovaihtoehtojen lyhytnimet (pitkät nimet: strings_formats.xml, fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (yksi tiedosto)</string>
+    <string name="screen_format_vivo">vivo (kaksi tiedostoa)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Pura</string>
+
+    <!-- Työkalupakin alapaneeli -->
+    <string name="screen_toolbox">Työkalupakki</string>
+    <string name="screen_batch_import">Erän tuonti</string>
+    <string name="screen_batch_import_desc">Skannaa koko galleria ja tunnista Live Photot eränä</string>
+    <string name="screen_compose">Yhdistä Live Photo</string>
+    <string name="screen_compose_desc">Valitse yksi valokuva ja yksi video ja yhdistä ne pariksi</string>
+    <string name="screen_replace_mode">Korvaustila</string>
+    <string name="screen_replace_mode_desc">Muunnoksen tulos kirjoitetaan suoraan alkuperäisiin tiedostoihin uusien luomisen sijaan</string>
+    <string name="screen_need_all_files_access_hint">Vaatii ”kaikkien tiedostojen käytön”; napauta myöntääksesi</string>
+    <string name="screen_agree_and_enable">Hyväksy ja ota käyttöön</string>
+
+    <!-- Tyhjä tila / alaosan ohjauspaneeli -->
+    <string name="screen_empty_no_files">Tiedostoja ei ole vielä lisätty</string>
+    <string name="screen_view_detail">Näytä tiedot</string>
+    <string name="screen_add_files">Lisää tiedostoja</string>
+    <string name="screen_output_format">Tulostemuoto: %1$s</string>
+    <string name="screen_delete_original">Poista alkuperäiset käsittelyn jälkeen</string>
+    <string name="screen_need_all_files_access_view">Vaatii ”kaikkien tiedostojen käytön”; napauta nähdäksesi</string>
+    <string name="screen_clear">Tyhjennä</string>
+    <string name="screen_stop">Lopeta käsittely</string>
+    <string name="screen_start_convert">Aloita muunnos</string>
+
+    <!-- Tilan tietojen valintaikkuna -->
+    <string name="screen_status_detail">Tilan tiedot</string>
+    <string name="screen_long_press_copy">Valitse ja kopioi teksti pitkällä painalluksella</string>
+    <string name="screen_copy">Kopioi</string>
+    <string name="screen_close">Sulje</string>
+
+    <!-- Galleriavalitsin -->
+    <string name="screen_back">Takaisin</string>
+    <string name="screen_picker_title_select">Valitse Live Photot</string>
+    <string name="screen_album_count">Albumi %1$d</string>
+    <string name="screen_album_collapse_cover">Pienennä albumin kansi</string>
+    <string name="screen_album_expand_cover">Laajenna albumin kansi</string>
+    <string name="screen_scanning_progress">Skannataan %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d kuva</item>
+        <item quantity="other">%1$d kuvaa</item>
+    </plurals>
+    <string name="screen_select_all">Valitse kaikki</string>
+    <string name="screen_no_albums">Ei albumeja saatavilla</string>
+    <string name="screen_no_media">Live Photoja ei löytynyt</string>
+    <string name="screen_no_media_compose">Valokuvia tai videoita ei löytynyt</string>
+    <string name="screen_import">Tuo</string>
+    <string name="screen_import_count">Tuo %1$d</string>
+    <string name="screen_import_mixed">Tuo %1$d kuvaa · %2$d videota</string>
+    <string name="screen_search">Haku</string>
+    <string name="screen_search_collapse">Pienennä haku</string>
+    <string name="screen_search_hint">Hae nimen mukaan</string>
+    <string name="screen_search_clear">Tyhjennä haku</string>
+    <string name="screen_sort_date">Päivämäärä</string>
+    <string name="screen_sort_size">Koko</string>
+    <string name="screen_sort_name">Nimi</string>
+    <string name="screen_sort_asc">Nouseva</string>
+    <string name="screen_sort_desc">Laskeva</string>
+
+    <!-- Albumiryhmien päivämäärätunnisteet (%1$d jne. ovat numeropaikkamerkkejä, järjestyksen voi vaihtaa) -->
+    <string name="screen_date_today">Tänään</string>
+    <string name="screen_date_yesterday">Eilen</string>
+    <string name="screen_date_this_year">%2$d.%1$d.</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Icelandic (is) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="screen_app_subtitle">Umbreyting milli Live Photo-sniða</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d skrá</item>
+        <item quantity="other">%1$d skrár</item>
+    </plurals>
+    <string name="screen_settings">Stillingar</string>
+    <string name="screen_select_output_format">Veldu úttakssnið</string>
+    <string name="screen_selected">Valið</string>
+    <string name="screen_vivo_single_warning">⚠ Of gamlar gerðir geta mögulega ekki viðurkennt þetta snið</string>
+    <string name="screen_extract_blocked">⚠ Biðröðin inniheldur samsetningarverk; ekki er hægt að velja sundurliðun</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (ein skrá)</string>
+    <string name="screen_format_vivo">vivo (tvær skrár)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Sundurliðun</string>
+    <string name="screen_toolbox">Verkfærakista</string>
+    <string name="screen_batch_import">Runuinnflutningur</string>
+    <string name="screen_batch_import_desc">Skanna allt albúmið og greina Live Photo í lotum</string>
+    <string name="screen_compose">Setja saman Live Photo</string>
+    <string name="screen_compose_desc">Veldu ljósmynd og myndband til að para saman</string>
+    <string name="screen_replace_mode">Útskiptingahamur</string>
+    <string name="screen_replace_mode_desc">Niðurstaðan skrifast beint í upprunalegu skrána; engin ný skrá er búin til</string>
+    <string name="screen_need_all_files_access_hint">Krefst heimildarinnar „Aðgangur að öllum skrám“; ýttu hér til að heimila</string>
+    <string name="screen_agree_and_enable">Samþykkja og virkja</string>
+    <string name="screen_empty_no_files">Engar skrár bætt við enn</string>
+    <string name="screen_view_detail">Skoða nánar</string>
+    <string name="screen_add_files">Bæta við skrám</string>
+    <string name="screen_output_format">Úttakssnið: %1$s</string>
+    <string name="screen_delete_original">Eyða frumskrám eftir vinnslu</string>
+    <string name="screen_need_all_files_access_view">Krefst heimildarinnar „Aðgangur að öllum skrám“; ýttu til að skoða</string>
+    <string name="screen_clear">Hreinsa</string>
+    <string name="screen_stop">Stöðva vinnslu</string>
+    <string name="screen_start_convert">Hefja umbreytingu</string>
+    <string name="screen_status_detail">Nánar um stöðu</string>
+    <string name="screen_long_press_copy">Haltu niðri á textanum til að velja og afrita</string>
+    <string name="screen_copy">Afrita</string>
+    <string name="screen_close">Loka</string>
+    <string name="screen_back">Til baka</string>
+    <string name="screen_picker_title_select">Veldu Live Photo</string>
+    <string name="screen_album_count">Albúm %1$d</string>
+    <string name="screen_album_collapse_cover">Fella forsíðu albúms saman</string>
+    <string name="screen_album_expand_cover">Fella forsíðu albúms út</string>
+    <string name="screen_scanning_progress">Skanna %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d mynd</item>
+        <item quantity="other">%1$d myndir</item>
+    </plurals>
+    <string name="screen_select_all">Velja allt</string>
+    <string name="screen_no_albums">Engin nothæf albúm</string>
+    <string name="screen_no_media">Engin Live Photo fundust</string>
+    <string name="screen_no_media_compose">Engar ljósmyndir eða myndbönd fundust</string>
+    <string name="screen_import">Flytja inn</string>
+    <string name="screen_import_count">Flytja inn %1$d</string>
+    <string name="screen_import_mixed">Flytja inn %1$d myndir · %2$d myndbönd</string>
+    <string name="screen_search">Leita</string>
+    <string name="screen_search_collapse">Fella leit saman</string>
+    <string name="screen_search_hint">Leitaðu eftir nafni</string>
+    <string name="screen_search_clear">Hreinsa leit</string>
+    <string name="screen_sort_date">Dagsetning</string>
+    <string name="screen_sort_size">Stærð</string>
+    <string name="screen_sort_name">Nafn</string>
+    <string name="screen_sort_asc">Vaxandi</string>
+    <string name="screen_sort_desc">Lækkandi</string>
+    <string name="screen_date_today">Í dag</string>
+    <string name="screen_date_yesterday">Í gær</string>
+    <string name="screen_date_this_year">%2$d. %1$d.</string>
+    <string name="screen_date_other_year">%3$d. %2$d. %1$d</string>
+</resources>

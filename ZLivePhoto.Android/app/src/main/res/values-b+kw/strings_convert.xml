@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Kernewek (Cornish) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">Format costenn anaswon: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Format Live Photo anaswon (nyns yw Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Skeusen gudhlen a fyll po yw gwag</string>
+    <string name="conv_video_missing">Video a fyll po yw gwag</string>
+    <string name="conv_video_too_large">An video yw re vras (%1$dMB); ny yllir gul Live Photo, dewis video berra</string>
+    <string name="conv_transcoded_too_large">Wosa transkodya, an video yw hwath re vras (%1$dMB); ny yllir gul Live Photo</string>
+    <string name="conv_video_too_large_compose">An video yw re vras (%1$dMB); ny yllir gul Live Photo</string>
+    <string name="conv_cover_heic_go">An gudhlen yw skeusen HEIC (an versyon skav ny yll transkodya; eksportya dhe JPEG war iPhone kynsa, ena trelya)</string>
+    <string name="conv_cover_invalid_heic">An gudhlen nyns yw skeusen gwiw (HEIC a gynner skoodhyans HEIF an system)</string>
+    <string name="conv_cover_not_jpeg_go">An gudhlen nyns yw skeusen JPEG (an versyon skav ny yll transkodya; devnydhya skeusen JPEG)</string>
+    <string name="conv_cover_invalid_image">An gudhlen nyns yw skeusen gwiw (JPEG/WebP/PNG yn unnik a gynner)</string>
+    <string name="conv_reencode_failed">Kodheans-arta an video a fyllyas: %1$s</string>
+    <string name="conv_remux_failed">Remuxya an contayner a fyllyas: %1$s</string>
+    <string name="conv_codec_unknown">Nyns yw video H.264/H.265 aswonys</string>
+    <string name="conv_codec_is">An kodek yw %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">An video «%1$s» %2$s; chanjya an contayner yn unnik (remuxya) ny yll chanjya an kodek, ytho ny yllir gul Live Photo.\n\nGorra «Settyansow → Transkodya video → Modh transkodya» dhe «Kodheans-arta», po trelya an video dhe MP4 gans kodek H.264/H.265 gans toul arall kynsa.</string>
+    <string name="conv_hint_no_encoder">An video nyns yw yn contayner MP4 standart (MOV / MKV / WebM / AVI, hag erell), ha an «Modh transkodya» a-lemmyn ny wra kodheans-arta, ytho ny yllir gul Live Photo.\n\nGorra «Settyansow → Transkodya video → Modh transkodya» dhe «Kodheans-arta» (an versyon standart a bew kodher ffmpeg; an versyon skav Go a fyll transkoder; devnydhya an versyon standart), po trelya an video dhe MP4 standart (H.264/H.265) kynsa.</string>
+    <string name="conv_log_detected">Aswonys avel %1$s</string>
+    <string name="conv_log_same_format_copied">An format fenten ha costenn yw keth; kopys kepar dell yw (koll mann)</string>
+    <string name="conv_log_extra_tracks_bypass">An video fenten a bew treusyow nag yw son/video (%1$s); ow kwarnya dres an modh keth-format ha devnydhya an fordh skrifa leun rag glanhe</string>
+    <string name="conv_log_ts_fallback">Nyns eus tempus-skeusen gudhlen yn an fenten; ow tyski dhe gres an video herwydh an spec</string>
+    <string name="conv_log_brand_normalized">Brand contayner an video a veu normlys (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">An video a bew treusyow moy (%1$s) na yllir aga glanhe; yn-mes kepar dell yw (an mesyans a allsa na yll gwari gans gwaskadow hir war nebes devisyow)</string>
+    <string name="conv_log_extra_tracks_removed">Treusyow moy an video a veu removys (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Video fenten %1$s; remuxya an contayner yn unnik ny yll y fastya (%2$s). Mar ny yll an mesyans hwath gwari gans gwaskadow hir, gorra «Settyansow → Transkodya video → Modh transkodya» dhe «Kodheans-arta»</string>
+    <string name="conv_log_reencoding">Video fenten %1$s; ow kodheans-arta dhe 8bit + AAC herwydh an settyansow rag gwellhe kesklottyans an gallery</string>
+    <string name="conv_log_reencode_result_unusable">Mesyans an kodheans-arta yw direwl; yn-mes kepar dell yw (an mesyans a allsa na yll gwari gans gwaskadow hir war nebes devisyow)</string>
+    <string name="conv_log_reencode_still_risky">Hwath yma riskys wosa kodheans-arta (%1$s)</string>
+    <string name="conv_log_reencode_failed">Kodheans-arta a fyllyas (%1$s); yn-mes kepar dell yw (an mesyans a allsa na yll gwari gans gwaskadow hir war nebes devisyow)</string>
+    <string name="conv_log_cover_heic_converted">An gudhlen o HEIC (nag yw JPEG); transkodys dhe JPEG standart kyns bos gwrappys</string>
+    <string name="conv_log_compose_sizes">Kesya: skeusen %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkoder na veu enablys: ow skrifa-arta brand an contayner yn unnik (MOV → MP4), heb kodheans-arta</string>
+    <string name="conv_tag_convert">Trelya</string>
+    <string name="conv_tag_transcode">Transkodya</string>
+    <string name="conv_tag_compose">Kesya</string>
+    <string name="conv_blocker_no_encoder">An transkoder yn-berth yw anhedhys</string>
+    <string name="conv_blocker_mode_no_encode">An «Modh transkodya» a-lemmyn ny wra kodheans-arta</string>
+    <string name="conv_addon_unavailable">An transkoder yn-berth yw anhedhys</string>
+    <string name="conv_addon_transcode_failed">Transkodyans ffmpeg a fyllyas: %1$s</string>
+    <string name="conv_addon_remux_failed">Remuxyans contayner ffmpeg a fyllyas: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Ow transkodya an video dhe MP4 standart gans ffmpeg (%1$s / crf %2$d / %3$s, ow kwitha an treusyow video ha son yn unnik)</string>
+    <string name="conv_log_transcode_done">Transkodyans an video a veu kowlwrys (%1$dKB)</string>
+    <string name="conv_log_remuxing">Ow remuxya contayner an video dhe MP4 standart (contayner yn unnik, heb kodheans-arta)</string>
+    <string name="conv_log_remux_done">Remuxyans an contayner a veu kowlwrys (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Kesya</string>
+    <string name="conv_reminder_cat_convert">Trelya</string>
+    <string name="conv_reminder_cat_update">Nowedhi</string>
+    <string name="conv_reminder_video_over3s_title">An video yw hirra ages 3 eylenn</string>
+    <string name="conv_reminder_video_over3s_message">An video dewisys yw hirra ages 3 eylenn, ytho an Live Photo gwrys a allsa kavoes kudynnow kesklottyans:\n\n• Martesen ny wra gwari yn fas\n• Martesen ny vydh aswonys gans gallery an system\n• Nebes devisyow a allsa na aswon an Live Photo ma</string>
+    <string name="conv_reminder_legacy_go_title">Versyon koth kevys</string>
+    <string name="conv_reminder_legacy_go_message">Yma hwath versyon koth (versyon Go) a an app ma ynstallys war an devis ma. Ny ober an versyon koth na war an devis ma namoy; yllir y dhyarnhe rag livra spas.</string>
+    <string name="conv_reminder_replace_risk_title">An modh repla a bew risk a dreylyans</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">An modh repla a skrif mesyansow an trelyans war an fylennow gwreydhek; wosa bos gorwrys, ny yllir kavoes an re wreydhek arta.\n\n• Mar pydh an app hedhys, mar fyll spas, po mar pydh kummyas kemerys dhe-ves pan skrifir, an fylennow fenten a allsa bos terrys\n• Ny yllir gwarnya sewena an trelyans, ha war fyllell an fylennow fenten a allsa bos seulabrys direwl\n• Assay unn po dew fylen kynsa dhe wul sur bos pup-tra yn fas kyns dyghtya yn routh\n• Gwra skoedhyans dha honan a skeusennow a bris kyns\n\nAn kentres ma a vydh provisys «kepar dell yw»; ty a dhevnydh hi orth dha risk dha honan, ha ny vydh an awtour kiryek a fylennow terrys po kellys.</string>
+    <string name="conv_reminder_dont_remind">Na dhiskwedh arta</string>
+    <string name="conv_reminder_confirm_ok">Konvedhys</string>
+    <string name="conv_reminder_uninstall">Dhyarnhe</string>
+</resources>

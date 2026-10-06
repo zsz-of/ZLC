@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Afrikaans (af) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="main_status_ready">Gereed</string>
+    <string name="main_status_location_granted">Liggingtoestemming toegeken; GPS-metadata word ná omskakeling bewaar</string>
+    <string name="main_status_location_denied">Liggingtoestemming nie toegeken nie: foto\'s verloor hul GPS-liggingsinligting ná omskakeling</string>
+    <string name="main_status_all_files_granted">Toestemming "Toegang tot alle lêers" is toegeken; omskakeling skryf direk na die albumgids en bewaar liggingsinligting ten volle</string>
+    <string name="main_status_all_files_denied">Toestemming "Toegang tot alle lêers" is nie toegeken nie: op sommige toestelle kan liggingsinligting ná omskakeling verlore gaan</string>
+    <string name="main_status_read_granted">Toestemming om foto\'s en video\'s te lees is toegeken</string>
+    <string name="main_status_video_missing">Toegestaan, maar videot oestemming ontbreek: kan nie die samhorende video van \'n twee-lêer Live Photo vind nie</string>
+    <string name="main_status_permission_denied">Toestemming nie toegeken nie; tik weer op "Voeg lêers by"</string>
+    <string name="main_status_folder_not_selected">Geen vouer gekies nie</string>
+    <string name="main_status_folder_unavailable">Kan nie die gekose vouer oopmaak nie (slegs plaaslike bergingsvouers word ondersteun)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Vorige sessie is herstel (%1$d lêer)</item>
+        <item quantity="other">Vorige sessie is herstel (%1$d lêers)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Die toepassing het die vorige keer abnormaal gesluit; die onvolledige lys is uitgevee</string>
+    <string name="main_status_compose_blocks_extract">Die waglys bevat saamsteltake; kan nie na opbrekmodus oorskakel nie</string>
+    <string name="main_status_replace_off_mutex">Vervangingsmodus is afgeskakel (uitsluitend met "Vee oorspronklike foto\'s uit ná verwerking")</string>
+    <string name="main_status_delete_needs_all_files">Outomatiese uitvee van oorspronklike foto\'s benodig die toestemming "Toegang tot alle lêers"; gee dit eers</string>
+    <string name="main_status_replace_off">Vervangingsmodus is afgeskakel; die omskakelresultaat word na die albumgids geskryf</string>
+    <string name="main_status_replace_needs_all_files">Vervangingsmodus benodig die toestemming "Toegang tot alle lêers"; gee dit eers</string>
+    <string name="main_status_delete_off_mutex">"Vee oorspronklike foto\'s uit ná verwerking" is afgeskakel (uitsluitend met vervangingsmodus)</string>
+    <string name="main_status_loading_albums">Lees albums…</string>
+    <string name="main_status_no_albums">Geen albums gevind nie</string>
+    <string name="main_status_compose_no_photo">Geen foto gekies nie; kan nie saamstel nie</string>
+    <string name="main_status_compose_no_video">Geen video gekies nie; kan nie saamstel nie</string>
+    <string name="main_status_compose_all_added">Die gekose foto\'s is reeds in die lys</string>
+    <string name="main_status_compose_paired">Foto\'s: %1$d, video\'s: %2$d — volgens die kleiner kant is %3$d pare saamsteltake bygevoeg</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d saamsteltaak bygevoeg; tik "Begin omskakeling" om saam te stel</item>
+        <item quantity="other">%1$d saamsteltake bygevoeg; tik "Begin omskakeling" om saam te stel</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (die uitvoerformaat is outomaties na Google verander)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Voer tans %1$d gedeelde prent in…</item>
+        <item quantity="other">Voer tans %1$d gedeelde prente in…</item>
+    </plurals>
+    <string name="main_status_import_failed">Invoer het misluk: %1$s</string>
+    <string name="main_status_import_done_partial">Invoer voltooi: %1$d suksesvol, %2$d misluk</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Invoer voltooi: altesaam %1$d lêer ingevoer</item>
+        <item quantity="other">Invoer voltooi: altesaam %1$d lêers ingevoer</item>
+    </plurals>
+    <string name="main_status_import_stopped">Invoer gestop: %1$d suksesvol, %2$d misluk</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Voer tans %1$d lêer in…</item>
+        <item quantity="other">Voer tans %1$d lêers in…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Voer tans in %1$d/%2$d…</string>
+    <string name="main_status_stopping">Stop tans… (stop ná die huidige lêer)</string>
+    <string name="main_status_stopping_import">Stop tans invoer…</string>
+    <string name="main_status_removed">%1$s verwyder</string>
+    <string name="main_status_cleared">Uitgevee</string>
+    <string name="main_status_nothing_to_convert">Geen lêers om om te skakel nie</string>
+    <string name="main_status_folder_unreadable">Kan die gekose vouer nie lees nie</string>
+    <string name="main_status_scanning_folder">Skandeer tans vouer…</string>
+    <string name="main_status_no_images">Geen prente in die gekose vouer gevind nie</string>
+    <string name="main_status_batch_importing">Bondelinvoer tans %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Bondelinvoer gestop: altesaam %1$d Live Photo ingevoer</item>
+        <item quantity="other">Bondelinvoer gestop: altesaam %1$d Live Photo ingevoer</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Bondelinvoer gestop: altesaam %1$d Live Photo ingevoer, %2$d lêer wat nie Live Photo is nie oorgeslaan</item>
+        <item quantity="other">Bondelinvoer gestop: altesaam %1$d Live Photo ingevoer, %2$d lêers wat nie Live Photo is nie oorgeslaan</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Bondelinvoer voltooi: altesaam %1$d Live Photo ingevoer</item>
+        <item quantity="other">Bondelinvoer voltooi: altesaam %1$d Live Photo ingevoer</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Bondelinvoer voltooi: altesaam %1$d Live Photo ingevoer, %2$d lêer wat nie Live Photo is nie oorgeslaan</item>
+        <item quantity="other">Bondelinvoer voltooi: altesaam %1$d Live Photo ingevoer, %2$d lêers wat nie Live Photo is nie oorgeslaan</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Van %1$d lêers is %2$d verwerk, %3$d bronlêers vervang</string>
+    <string name="main_status_stopped_export">Van %1$d lêers is %2$d verwerk, %3$d na die album uitgevoer</string>
+    <string name="main_status_done_replace_reason">Voltooi: %1$d lêers verwerk, %2$d bronlêers vervang (rede: %3$s)</string>
+    <string name="main_status_done_export_reason">Voltooi: %1$d lêers verwerk, %2$d na die album uitgevoer (rede: %3$s)</string>
+    <string name="main_status_done_replace">Voltooi: %1$d lêers verwerk, %2$d bronlêers vervang</string>
+    <string name="main_status_done_export">Voltooi: %1$d lêers verwerk, %2$d na die album uitgevoer</string>
+    <string name="main_status_keep_originals">%1$s; toestemming "Volledige bergingstoegang" nie toegeken nie, oorspronklikes is bewaar</string>
+    <string name="main_info_detecting">Ondersoek tans…</string>
+    <string name="main_info_unrecognized">Onherkenbare Live Photo-formaat</string>
+    <string name="main_info_converting">Skakel tans om…</string>
+    <string name="main_info_compose_task">Saamsteltaak (tik "Begin omskakeling" om saam te stel)</string>
+    <string name="main_info_done_replaced">Voltooi (%1$d bronlêers vervang)</string>
+    <string name="main_info_done_skipped">Voltooi (oorgeslaan: naamkonflik)</string>
+    <string name="main_info_done_exported">Voltooi (%1$d uitgevoer)</string>
+    <string name="main_info_failed">Misluk: %1$s</string>
+    <string name="main_progress_added">%1$d/%2$d bygevoeg</string>
+    <string name="main_progress_processed">%1$d/%2$d verwerk</string>
+    <string name="main_progress_imported">%1$d/%2$d ingevoer</string>
+    <string name="main_dialog_permission_title">Toestemming om foto\'s en video\'s te lees word benodig</string>
+    <string name="main_dialog_permission_message">Die toepassing moet foto\'s en video\'s op u toestel lees:\n\n• Fototoestemming: skandeer die album van die toestel en identifiseer Live Photo\n• Videotoestemming: vind die samhorende video van \'n twee-lêer Live Photo\n• Liggingtoestemming: bewaar GPS-liggingsmetadata in foto\'s (as dit ontbreek, verloor die foto sy ligging ná omskakeling)\n\nNa weiering kan die ingeboude kieser nie gebruik word nie; tik later weer op "Voeg lêers by" om weer toestemming te gee.</string>
+    <string name="main_dialog_settings_title">Fototoestemming en videot oestemming moet handmatig toegeken word</string>
+    <string name="main_dialog_settings_message">U het voorheen "Moenie weer vra nie" gekies, so die stelsel toon nie meer die toestemmingsdialoog nie.\n\nGaan na Toepassingsinligting → Toestemmings → Foto\'s en video\'s, gee die toegang handmatig en keer na die toepassing terug.\n\nLet wel: beide toestemmings "Foto\'s" en "Video\'s" moet toegeken word; anders kan die twee-lêer Live Photo die samhorende video nie vind nie.</string>
+    <string name="main_dialog_allfiles_title_delete">"Vee oorspronklike foto\'s uit ná verwerking" benodig "Toegang tot alle lêers"</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Hierdie toestel ondersteun nie outomatiese uitvee van oorspronklike foto\'s nie</string>
+    <string name="main_dialog_allfiles_title_replace">Vervangingsmodus benodig "Toegang tot alle lêers"</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Hierdie toestel ondersteun nie vervangingsmodus nie</string>
+    <string name="main_dialog_allfiles_title_location">"Toegang tot alle lêers" word aanbeveel</string>
+    <string name="main_dialog_allfiles_delete_message">"Vee oorspronklike foto\'s uit ná verwerking" vee die oorspronklike lêers op die skyf direk uit (foto\'s en hul samhorende video\'s); hierdie aksie kan nie ongedaan gemaak word nie, dus moet eers die toestemming "Toegang tot alle lêers" toegeken word.\n\nNa toekenning word die skakelaar bruikbaar en kan u dit self aktiveer.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Die huidige stelsel (Android 10 en ouer) bied nie "Toegang tot alle lêers" nie en oorspronklike lêers op die skyf kan nie direk uitgevee word nie; daarom ondersteun hierdie toestel "Vee oorspronklike foto\'s uit ná verwerking" nie.\n\nNa omskakeling kan u die oorspronklikes handmatig via die stelselalbum skoonmaak.</string>
+    <string name="main_dialog_allfiles_replace_message">"Vervangingsmodus" skryf die omskakelresultaat direk terug na die oorspronklike lêer op die skyf (oorskryf die oorspronklike inhoud); hierdie aksie kan nie ongedaan gemaak word nie, dus moet eers die toestemming "Toegang tot alle lêers" toegeken word.\n\nNa toekenning word die skakelaar bruikbaar en kan u dit self aktiveer.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Die huidige stelsel (Android 10 en ouer) bied nie "Toegang tot alle lêers" nie en oorspronklike lêers op die skyf kan nie direk gewysig word nie; daarom ondersteun hierdie toestel vervangingsmodus nie.\n\nU kan voortgaan met omskakeling op die verstekwyse; die resultaat sal na die albumgids geskryf word.</string>
+    <string name="main_dialog_allfiles_location_message">Op sommige toestelle (bv. Meizu) verberg skryf via die stelselalbum-koppelvlak die GPS-liggingsinligting, sodat die foto sy ligging ná omskakeling verloor.\n\nNa "Toegang tot alle lêers" skryf die toepassing direk na die albumgids en bewaar liggingsmetadata ten volle.\n\nOmskakeling werk ook sonder die toestemming; op sommige toestelle kan die ligging verlore gaan.</string>
+    <string name="main_dialog_conflict_title">Naamkonflik in uitvoerlêernaam</string>
+    <string name="main_dialog_conflict_message">Daar bestaan reeds \'n lêer met dieselfde naam in die uitvoergids:\n%1$s\n\nKies hoe dit hanteer moet word.</string>
+    <string name="main_label_conflict_always">Gebruik hierdie metode vir toekomstige konflikte</string>
+    <string name="main_btn_grant">Toestaan</string>
+    <string name="main_btn_deny">Weier</string>
+    <string name="main_btn_go_settings">Na instellings</string>
+    <string name="main_btn_cancel">Kanselleer</string>
+    <string name="main_btn_grant_access">Gee toestemming</string>
+    <string name="main_btn_got_it">Verstaan</string>
+    <string name="main_btn_not_now">Nie nou nie</string>
+    <string name="main_btn_skip">Slaan oor</string>
+    <string name="main_btn_overwrite">Oorskryf</string>
+    <string name="main_btn_auto_rename">Hernoem outomaties</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d oorspronklike lêer uitgevee</item>
+        <item quantity="other">%1$d oorspronklike lêers uitgevee</item>
+    </plurals>
+    <string name="main_delete_nothing">Geen oorspronklikes om uit te vee nie</string>
+    <string name="main_delete_partial">%1$d oorspronklike lêers uitgevee (%2$d het misluk, is bewaar)</string>
+    <string name="main_delete_failed">Uitvee van oorspronklike lêers het misluk (lêer is in gebruik of geen skryftoestemming nie); is bewaar</string>
+    <string name="main_export_missing_output">Die omskakelproduk ontbreek of is leeg: %1$s</string>
+    <string name="main_export_missing_output_bare">Die omskakelproduk ontbreek of is leeg</string>
+    <string name="main_export_insert_null">MediaStore-invoeging het null teruggegee</string>
+    <string name="main_export_output_stream">MediaStore-uitvoerstroom is nie beskikbaar nie</string>
+    <string name="main_export_write_failed">MediaStore-skrywing het misluk: %1$s</string>
+    <string name="main_export_mkdir_failed">Kon nie albumgids %1$s skep nie</string>
+    <string name="main_export_dir_write_failed">Skryf na die albumgids het misluk: %1$s</string>
+    <string name="main_export_no_source">Bronlêer nie gevind nie; vervanging is oorgeslaan</string>
+    <string name="main_export_companion_failed">Terugskryf van die samhorende lêer het misluk: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Die bronlêergids is nie skryfbaar nie; die samhorende lêer kon nie teruggeskryf word nie</string>
+    <string name="main_export_source_dir_unavailable">Die bronlêergids is nie beskikbaar nie: %1$s</string>
+    <string name="main_export_replace_failed">Vervanging van die bronlêer het misluk: %1$s</string>
+    <string name="main_export_replace_failed_bare">Vervanging van die bronlêer het misluk</string>
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Albanian (sq) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Format i panjohur i destinacionit: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Format Live Photo i panjohur (nuk është Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Kryefotoja nuk ekziston ose është bosh</string>
+    <string name="conv_video_missing">Videoja nuk ekziston ose është bosh</string>
+    <string name="conv_video_too_large">Videoja është shumë e madhe (%1$d MB) dhe nuk mund të përbëhet një Live Photo; zgjidh një video më të shkurtër</string>
+    <string name="conv_transcoded_too_large">Pas transkodimit videoja është ende shumë e madhe (%1$d MB); nuk mund të përbëhet Live Photo</string>
+    <string name="conv_video_too_large_compose">Videoja është shumë e madhe (%1$d MB); nuk mund të përbëhet Live Photo</string>
+    <string name="conv_cover_heic_go">Kryefotoja është një imazh HEIC (versioni i lehtë nuk mbështet transkodimin; eksportoje në JPEG nga iPhone dhe konvertoje përsëri)</string>
+    <string name="conv_cover_invalid_heic">Kryefotoja nuk është imazh i vlefshëm (HEIC kërkon që sistemi të mbështesë dekodimin HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">Kryefotoja nuk është imazh JPEG (versioni i lehtë nuk mbështet transkodimin; përdor një foto JPEG)</string>
+    <string name="conv_cover_invalid_image">Kryefotoja nuk është imazh i vlefshëm (mbështeten vetëm JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Rikodimi i videos dështoi: %1$s</string>
+    <string name="conv_remux_failed">Rikontejnerizimi dështoi: %1$s</string>
+    <string name="conv_codec_unknown">Nuk njihet si video H.264/H.265</string>
+    <string name="conv_codec_is">Kodimi është %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Videoja „%1$s” %2$s; rikontejnerizimi (ndryshimi vetëm i kontejnerit) nuk e ndryshon kodimin, ndaj nuk mund të përbëhet Live Photo.\n\nTe „Cilësimet → Transkodimi i videos → Mënyra e transkodimit” ndryshoje në „Rikodim”, ose më parë konvertoje me një mjet tjetër në një MP4 me kodim H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Videoja nuk është në një kontejner MP4 standard (MOV / MKV / WebM / AVI etj.), dhe „Mënyra e transkodimit” aktuale nuk rikodon, ndaj nuk mund të përbëhet Live Photo.\n\nTe „Cilësimet → Transkodimi i videos → Mënyra e transkodimit” ndryshoje në „Rikodim” (versioni normal ka një enkoder ffmpeg të integruar; versioni i lehtë Go nuk ka transkodues, përdor versionin normal), ose më parë kthe videon në një MP4 standard (H.264/H.265).</string>
+    <string name="conv_log_detected">U identifikua si %1$s</string>
+    <string name="conv_log_same_format_copied">Formati burimor dhe ai i destinacionit janë të njëjtë, u kopjua siç është (pa humbje)</string>
+    <string name="conv_log_extra_tracks_bypass">Videoja burimore ka rrugë që nuk janë audio/video (%1$s); kapërcimi i drejtpërdrejtë me të njëjtin format anashkalohet dhe përdoret procesi i plotë i shkrimit për t’i pastruar</string>
+    <string name="conv_log_ts_fallback">Videoja burimore nuk ka vulën kohore të kornizës së kryefotos; sipas standardit kthehet në qendër të videos</string>
+    <string name="conv_log_brand_normalized">Marka e kontejnerit të videos u normalizua (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Videoja ka rrugë shtesë (%1$s) që nuk mund të pastrohen; doli siç është (në disa modele rezultati mund të mos riprodhohet)</string>
+    <string name="conv_log_extra_tracks_removed">U hoqën rrugët shtesë të videos (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Videoja burimore %1$s; vetëm rikontejnerizimi nuk e zgjidh (%2$s); nëse rezultati ende nuk riprodhohet, te „Cilësimet → Transkodimi i videos → Mënyra e transkodimit” zgjidh „Rikodim”</string>
+    <string name="conv_log_reencoding">Videoja burimore %1$s; sipas cilësimeve rikodohet në 8bit + AAC për të përmirësuar përputhshmërinë me albumin</string>
+    <string name="conv_log_reencode_result_unusable">Rezultati i rikodimit nuk është i përdorshëm; doli siç është (në disa modele rezultati mund të mos riprodhohet)</string>
+    <string name="conv_log_reencode_still_risky">Pas rikodimit ka ende elemente me rrezik (%1$s)</string>
+    <string name="conv_log_reencode_failed">Rikodimi dështoi (%1$s); doli siç është (në disa modele rezultati mund të mos riprodhohet)</string>
+    <string name="conv_log_cover_heic_converted">Kryefotoja ishte HEIC (jo JPEG); u transkodua në JPEG standard përpara montimit</string>
+    <string name="conv_log_compose_sizes">Kompozimi: foto %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkoduesi joaktiv: rishkruhet vetëm marka e kontejnerit (MOV → MP4), pa rikodim</string>
+    <string name="conv_tag_convert">Konvertim</string>
+    <string name="conv_tag_transcode">Transkodim</string>
+    <string name="conv_tag_compose">Kompozim</string>
+    <string name="conv_blocker_no_encoder">Transkoduesi i integruar nuk është i disponueshëm</string>
+    <string name="conv_blocker_mode_no_encode">„Mënyra e transkodimit” aktuale nuk rikodon</string>
+    <string name="conv_addon_unavailable">Transkoduesi i integruar nuk është i disponueshëm</string>
+    <string name="conv_addon_transcode_failed">Transkodimi me ffmpeg dështoi: %1$s</string>
+    <string name="conv_addon_remux_failed">Rikontejnerizimi me ffmpeg dështoi: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Po transkodohet videoja në MP4 standard me ffmpeg (%1$s / crf %2$d / %3$s; mbahen vetëm rrugët e videos dhe të audios)</string>
+    <string name="conv_log_transcode_done">Transkodimi i videos u përfundua (%1$d KB)</string>
+    <string name="conv_log_remuxing">Po rikontejnerizohet videoja në MP4 standard (ndryshohet vetëm kontejneri, pa rikodim)</string>
+    <string name="conv_log_remux_done">Rikontejnerizimi u përfundua (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Kompozim</string>
+    <string name="conv_reminder_cat_convert">Konvertim</string>
+    <string name="conv_reminder_cat_update">Përditësim</string>
+    <string name="conv_reminder_video_over3s_title">Videoja zgjat më shumë se 3 sekonda</string>
+    <string name="conv_reminder_video_over3s_message">Videoja e zgjedhur zgjat më shumë se 3 sekonda, ndaj Live Photo e përbërë mund të ketë probleme përputhshmërie:\n\n• Mund të mos riprodhohet si duhet\n• Albumi i sistemit mund të mos e njohë\n• Disa modele mund të mos e njohin këtë Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">U gjet version i vjetër</string>
+    <string name="conv_reminder_legacy_go_message">Në këtë pajisje është instaluar ende një version i vjetër (botimi Go) i aplikacionit; versioni i vjetër nuk funksionon më në këtë pajisje, mund ta çinstalosh për të liruar hapësirë.</string>
+    <string name="conv_reminder_replace_risk_title">Modaliteti i zëvendësimit ka rrezik dëmtimi</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Modaliteti i zëvendësimit shkruan rezultatin e konvertimit drejtpërdrejt në skedarët burimorë; pas mbishkrimit, origjinalet nuk mund të rikthehen më.\n\n• Gjatë shkrimit, nëse aplikacioni ndalet befas, hapësira mbaron ose leja hiqet, skedarët burimorë mund të dëmtohen\n• Vetë konvertimi nuk garanton sukses të plotë në të gjitha rastet; nëse dështon, skedarët burimorë mund të jenë tashmë të papërdorshëm\n• Këshillë: provo fillimisht me një ose dy skedarë dhe, nëse gjithçka shkon mirë, vazhdo me përpunimin në masë\n• Bëj kopje rezervë të fotove të rëndësishme më parë\n\nKjo funksion ofrohet „ashtu siç është”; rreziku është yt, dhe autori nuk përgjigjet për skedarë të dëmtuar ose të humbur.</string>
+    <string name="conv_reminder_dont_remind">Mos e shfaq më</string>
+    <string name="conv_reminder_confirm_ok">Në rregull</string>
+    <string name="conv_reminder_uninstall">Çinstalo</string>
+</resources>

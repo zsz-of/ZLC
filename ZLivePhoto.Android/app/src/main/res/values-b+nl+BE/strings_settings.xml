@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Nederlands (België) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Belgisch-Nederlandse variant met eigen woordkeuze ("toestemming", "Klaar", "Leegmaken").
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+
+    <!-- Algemeen -->
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_cd_back">Terug</string>
+    <string name="settings_btn_apply">Toepassen</string>
+    <string name="settings_btn_cancel">Annuleren</string>
+    <string name="settings_btn_close">Sluiten</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Steunen</string>
+
+    <!-- Sectietitels -->
+    <string name="settings_section_general">Algemeen</string>
+    <string name="settings_section_appearance">Weergave</string>
+    <string name="settings_section_language">Taal</string>
+    <string name="settings_section_defaults">Standaardopties</string>
+    <string name="settings_section_output">Uitvoer</string>
+    <string name="settings_section_transcode">Videotranscodering</string>
+    <string name="settings_section_about">Over</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Bedankjes en steun</string>
+    <string name="settings_section_opensource">Open source en licentie</string>
+
+    <!-- Algemeen -->
+    <string name="settings_startup_check_title">Bij het opstarten op updates controleren</string>
+    <string name="settings_startup_check_subtitle">Zoekt bij het opstarten automatisch naar nieuwe versies op GitHub en meldt het wanneer er een update is</string>
+    <string name="settings_haptics_title">Trilfeedback</string>
+    <string name="settings_haptics_subtitle">Haptische feedback bij het tikken op knoppen en bij statuswijzigingen</string>
+    <string name="settings_bounce_title">Elastische knopanimatie</string>
+    <string name="settings_bounce_subtitle">Animatie waarbij knoppen krimpen en terugveren bij het indrukken</string>
+
+    <!-- Weergave -->
+    <string name="settings_theme_system">Systeem volgen</string>
+    <string name="settings_theme_dark">Donker</string>
+    <string name="settings_theme_light">Licht</string>
+    <string name="settings_dynamic_theme_title">Dynamische kleuren van Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Volgt de kleuren van de systeemachtergrond (Android 12+); als dit uit staat, worden de voorgedefinieerde themakleuren hieronder gebruikt</string>
+    <string name="settings_preset_colors_title">Voorgedefinieerde themakleuren</string>
+    <string name="settings_preset_current">Huidig: %1$s</string>
+    <string name="settings_preset_disabled_hint">Beschikbaar nadat je "Dynamische kleuren van Material You" uitzet</string>
+    <string name="settings_custom">Aangepast</string>
+    <string name="settings_custom_color_title">Aangepaste themakleur</string>
+    <string name="settings_cd_custom_palette">Aangepast palet</string>
+    <string name="settings_hue_value">Tint %1$d°</string>
+
+    <!-- App-taal: titel en "Systeem volgen" hergebruiken strings_app.xml dat door Lead wordt beheerd
+         (R.string.app_language_title / R.string.app_language_follow_system); hier niet opnieuw gedefinieerd -->
+    <string name="settings_language_dialog_title">App-taal kiezen</string>
+    <string name="settings_language_count">%1$d talen</string>
+
+    <!-- Standaardopties -->
+    <string name="settings_reminder_dialogs_title">Meldingen niet meer tonen</string>
+    <string name="settings_reminder_dialogs_subtitle">Beheer de schakelaars "niet meer tonen" van alle meldingen</string>
+    <string name="settings_reminder_hint">Aan betekent "niet meer tonen"; als je het uitzet, verschijnt de melding de volgende keer weer.</string>
+
+    <!-- Uitvoer -->
+    <string name="settings_preserve_folders_title">Mappenstructuur van de bron behouden</string>
+    <string name="settings_preserve_folders_subtitle">Resultaten worden opgeslagen in submapjes met de oorspronkelijke albumnaam; als dit uit staat, komt alles in dezelfde map</string>
+
+    <!-- Over -->
+    <string name="settings_about_title">Over</string>
+    <string name="settings_about_subtitle">Versie · Op updates controleren · Bedankjes en steun</string>
+    <string name="settings_check_update_title">Op updates controleren</string>
+    <string name="settings_check_update_subtitle">Haal de nieuwste versie op uit de GitHub-releases</string>
+    <string name="settings_checking">Controleren…</string>
+    <string name="settings_update_available">v%1$s beschikbaar</string>
+    <string name="settings_up_to_date">Je hebt al de nieuwste versie</string>
+    <string name="settings_network_error">Netwerkfout. Probeer het later opnieuw</string>
+    <string name="settings_reinstall_title">Deze versie opnieuw installeren</string>
+    <string name="settings_reinstall_subtitle">Download de nieuwste versie en installeer deze eroverheen (om updates te testen)</string>
+    <string name="settings_reinstall_newer_hint">Er is een update naar v%1$s; gebruik eerst "Op updates controleren"</string>
+    <string name="settings_version_title">Versie</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Steunen via Alipay</string>
+    <string name="settings_alipay_subtitle">Steun de ontwikkeling</string>
+    <string name="settings_coolapk_subtitle">Coolapk-gebruiker · bedankt voor de steun</string>
+    <string name="settings_ai_credits_subtitle">Met dank aan AI-IDE\'s en AI-modellen voor hun hulp bij de ontwikkeling</string>
+    <string name="settings_github_title">Open-sourceadres op GitHub</string>
+    <string name="settings_license_title">Open-sourcelicentie</string>
+    <string name="settings_sponsor_dialog_title">Bedankt voor je steun</string>
+    <string name="settings_sponsor_dialog_text">Hartelijk dank dat je deze app wilt steunen!\n\nBen je nog student of financieel nog niet zelfstandig, geef dan vooral niets uit — koester dat gebaar en blijf de app gebruiken: dat is al de beste steun die ik kan krijgen.\n\nWil je toch iets bijdragen, dan is elk bedrag welkom; ik stop het in beter onderhoud en nieuwe functies:)</string>
+    <string name="settings_alipay_missing_title">Alipay is niet geïnstalleerd</string>
+    <string name="settings_alipay_missing_text">We hebben Alipay niet gevonden, dus op dit moment kan de bijdrage niet worden afgerond.\n\nGeeft niets — in ieder geval heel erg bedankt voor je goede bedoeling!</string>
+
+    <!-- Videotranscodering -->
+    <string name="settings_transcoder_title">Ingebouwde transcoder</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Opnieuw coderen</string>
+    <string name="settings_transcode_mode_remux">Alleen de container remuxen (aanbevolen)</string>
+    <string name="settings_transcode_mode_off">De transcoder helemaal niet gebruiken</string>
+    <string name="settings_transcode_params_title">Transcoderingsparameters</string>
+    <string name="settings_transcode_params_subtitle">Kwaliteits- en compressieparameters voor het opnieuw coderen</string>
+    <string name="settings_transcode_params_disabled">Alleen van toepassing als "Transcoderingsmodus" op "Opnieuw coderen" staat</string>
+    <string name="settings_crf_value">Kwaliteit CRF: %1$d</string>
+    <string name="settings_crf_hint">Hoe lager de waarde, hoe hoger de kwaliteit en hoe groter het bestand (standaard 18)</string>
+    <string name="settings_encoder_title">Encoder</string>
+    <string name="settings_compress_preset_title">Compressiepreset</string>
+
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Frisian (Western) (fy) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou-dieling is annulearre of it bestân bestiet net; downloade oer GitHub</string>
+    <string name="update_lanzou_gone_short">Lanzou-dieling is annulearre; downloade oer GitHub</string>
+    <string name="update_lanzou_resolve_failed">Lanzou-downloade-keppeling analysearjen mislearre</string>
+    <string name="update_lanzou_need_passwd">Dizze Lanzou-dieling freget in ophelkoade; downloade oer GitHub (of sykje de ophelkoade yn de Release-notysjes)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou-ophelkoade fout</string>
+    <string name="update_err_resolve_failed">Analysearjen mislearre</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou-anti-crawlerkontrôle mislearre</string>
+    <string name="update_err_no_frame">Lanzou-downloadeside kin net analysearre wurde (gjin downloadeframe fûn)</string>
+    <string name="update_err_no_file_id">Lanzou-bestânsidentifikaasje kin net analysearre wurde</string>
+    <string name="update_err_no_sign">Lanzou-ûndertekening kin net analysearre wurde</string>
+    <string name="update_err_ajax_request">Ynterface-oanfraach mislearre</string>
+    <string name="update_err_api_request">Lanzou-ynterface-oanfraach mislearre</string>
+    <string name="update_err_empty_direct">Lanzou jout in lege downloade-adres werom</string>
+    <string name="update_err_direct_expired">Lanzou-downloade-adres is ferfallen; helje it opnij op</string>
+    <string name="update_err_http_request">Oanfraach mislearre (HTTP %1$d)</string>
+    <string name="update_err_connect">Kin net ferbine mei de downloadeserver: %1$s</string>
+    <string name="update_err_http">Downloade mislearre (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Kin gjin downloadeferbining meitsje</string>
+    <string name="update_err_empty">Downloadede ynhâld is leech</string>
+    <string name="update_err_incomplete">Downloadede is ûnfolslein (%1$d / yn totaal %2$d bytes); downloade opnij</string>
+    <string name="update_err_interrupted">Download ûnderbrutsen: %1$s</string>
+    <string name="update_err_not_apk">Wat downloade is, is gjin jildich ynstallaasjepakket (miskien in webside of de downloadkeppeling is ferfallen); downloade opnij of brûk GitHub.</string>
+    <string name="update_err_apk_incomplete">Ynhâld fan it ynstallaasjepakket is ûnfolslein; downloade opnij of brûk GitHub.</string>
+    <string name="update_err_apk_unparsable">Ynstallaasjepakket kin net analysearre wurde (miskien is de download ûnfolslein); downloade opnij of brûk GitHub.</string>
+    <string name="update_err_no_install_permission">Tastimming "Unbekende apps ynstallearje" noch net krigen</string>
+    <string name="update_err_installer_failed">Kin it systeemynstallearder net oprope (%1$s); iepenje it ynstallaasjepakket hânliedend yn de bestânsbehearder</string>
+</resources>

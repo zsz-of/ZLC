@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  toki pona (tok) — ante / ante sitelen / sona sin (nimi open: conv_).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Quality level: C (low-resource language, best-effort translation).
+  Base: res/values/strings_convert.xml (toki Sonko). %1$s / %1$d li awen; `\n` li linja sin.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: lukin e nasin en ijo ========== -->
+    <string name="conv_unknown_target">nasin weka sona ala: %1$s</string>
+    <string name="conv_unrecognized_live_photo">nasin Live Photo ni li sona ala (Google/OPPO/vivo/Xiaomi/Apple ala)</string>
+    <string name="conv_cover_photo_missing">sitelen open li lon ala anu jo ala</string>
+    <string name="conv_video_missing">sitelen tawa li lon ala anu jo ala</string>
+    <string name="conv_video_too_large">sitelen tawa li suli ike (%1$dMB); ken ala pali e Live Photo. o kepeken sitelen tawa lili</string>
+    <string name="conv_transcoded_too_large">pini ante sitelen: sitelen tawa li suli ike (%1$dMB); ken ala pali e Live Photo</string>
+    <string name="conv_video_too_large_compose">sitelen tawa li suli ike (%1$dMB); ken ala pali e Live Photo</string>
+
+    <!-- Converter.kt: sitelen open (HEIC / JPEG ala) -->
+    <string name="conv_cover_heic_go">sitelen open li HEIC (nasin lili li ken ala ante; o pana e JPEG tan iPhone, o sin)</string>
+    <string name="conv_cover_invalid_heic">sitelen open li sitelen pona ala (HEIC li wile e ken HEIF pi ilo nanpa)</string>
+    <string name="conv_cover_not_jpeg_go">sitelen open li JPEG ala (nasin lili li ken ala ante; o kepeken sitelen JPEG)</string>
+    <string name="conv_cover_invalid_image">sitelen open li sitelen pona ala (JPEG/WebP/PNG taso li ken)</string>
+
+    <!-- Converter.kt: pakala ante sin / ante poki en sona pona -->
+    <string name="conv_reencode_failed">ante sin pi sitelen tawa li pakala: %1$s</string>
+    <string name="conv_remux_failed">ante poki li pakala: %1$s</string>
+    <string name="conv_codec_unknown">ni li sitelen tawa H.264/H.265 sona ala</string>
+    <string name="conv_codec_is">nasin sitelen li %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">sitelen tawa «%1$s» %2$s. ante poki taso li ken ala ante e nasin sitelen; ken ala pali e Live Photo.\n\no ante e nasin tawa «ante sin» lon «nasin → ante sitelen tawa → nasin», anu o ante e sitelen tawa tawa MP4 H.264/H.265 kepeken ilo ante.</string>
+    <string name="conv_hint_no_encoder">sitelen tawa li lon poki MP4 ala (MOV / MKV / WebM / AVI...) li nasin ni li ante ala e sitelen; ken ala pali e Live Photo.\n\no ante e nasin tawa «ante sin» lon «nasin → ante sitelen tawa → nasin» (nasin suli li jo e ilo ffmpeg; nasin lili Go li jo ala, o kepeken nasin suli), anu o ante e sitelen tawa tawa MP4 (H.264/H.265).</string>
+
+    <!-- ========== lipu ante ========== -->
+    <string name="conv_log_detected">sona e ni: %1$s</string>
+    <string name="conv_log_same_format_copied">nasin open en nasin weka li sama; ijo li kama sama (pakala ala)</string>
+    <string name="conv_log_extra_tracks_bypass">sitelen tawa li jo e linja ante (%1$s); nasin sama li pini, li pali e nasin suli ali</string>
+    <string name="conv_log_ts_fallback">tenpo pi sitelen open li lon ala; jan li kepeken insa pi sitelen tawa</string>
+    <string name="conv_log_brand_normalized">nimi poki sitelen tawa li kama pona (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">sitelen tawa li jo e linja ante (%1$s); ken ala weka. ijo li kama sama (lon ilo mute, ken ala tawa kepeken luka suli)</string>
+    <string name="conv_log_extra_tracks_removed">linja ante pi sitelen tawa li weka (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">sitelen tawa %1$s; ante poki taso li ken ala pona (%2$s). sina ken ala tawa kepeken luka suli la, o ante e nasin tawa «ante sin» lon «nasin → ante sitelen tawa → nasin»</string>
+    <string name="conv_log_reencoding">sitelen tawa %1$s; ante sin tawa 8bit + AAC tan nasin, tawa pona pi poki sitelen</string>
+    <string name="conv_log_reencode_result_unusable">ante sin li pona ala; ijo li kama sama (lon ilo mute, ken ala tawa kepeken luka suli)</string>
+    <string name="conv_log_reencode_still_risky">ante sin pini la, ike li awen (%1$s)</string>
+    <string name="conv_log_reencode_failed">ante sin li pakala (%1$s); ijo li kama sama (lon ilo mute, ken ala tawa kepeken luka suli)</string>
+    <string name="conv_log_cover_heic_converted">sitelen open li HEIC (JPEG ala); ona li ante tawa JPEG pona, tan pini pali</string>
+    <string name="conv_log_compose_sizes">pali: sitelen %1$dB + sitelen tawa %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ilo ante li pali ala; nimi poki taso li ante (MOV → MP4), ante sin ala</string>
+
+    <!-- nimi lipu (「[nimi] toki」) -->
+    <string name="conv_tag_convert">ante</string>
+    <string name="conv_tag_transcode">ante sitelen</string>
+    <string name="conv_tag_compose">pali</string>
+
+    <!-- tan pi nasin ante -->
+    <string name="conv_blocker_no_encoder">ilo ante insa li lon ala</string>
+    <string name="conv_blocker_mode_no_encode">nasin ni li ante ala e sitelen</string>
+
+    <!-- ========== FfmpegAddon.kt: ilo ffmpeg ========== -->
+    <string name="conv_addon_unavailable">ilo ante insa li lon ala</string>
+    <string name="conv_addon_transcode_failed">ante ffmpeg li pakala: %1$s</string>
+    <string name="conv_addon_remux_failed">ante poki ffmpeg li pakala: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ilo ffmpeg li ante e sitelen tawa tawa MP4 pona (%1$s / crf %2$d / %3$s, linja sitelen en linja kalama taso)</string>
+    <string name="conv_log_transcode_done">ante sitelen tawa li pini (%1$dKB)</string>
+    <string name="conv_log_remuxing">ante poki sitelen tawa tawa MP4 pona (ante poki taso, ante sin ala)</string>
+    <string name="conv_log_remux_done">ante poki li pini (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: poki toki 「o pana ala sin」 ========== -->
+    <string name="conv_reminder_cat_compose">pali</string>
+    <string name="conv_reminder_cat_convert">ante</string>
+    <string name="conv_reminder_cat_update">sin</string>
+    <string name="conv_reminder_video_over3s_title">sitelen tawa li suli tawa tenpo 3</string>
+    <string name="conv_reminder_video_over3s_message">sitelen tawa ni li suli tawa tenpo 3; Live Photo sin ken pakala:\n\n• ken ala tawa pona\n• ilo pi poki sitelen ken sona ala e ona\n• lon ilo mute, ona li ken sona ala</string>
+    <string name="conv_reminder_legacy_go_title">nasin pini li lon</string>
+    <string name="conv_reminder_legacy_go_message">ilo ni li jo e nasin pini (Go); nasin ni li pali ala lon ilo ni. o weka e ona tawa ma suli.</string>
+    <string name="conv_reminder_replace_risk_title">nasin ante li ken pakala e ijo</string>
+    <!-- formatted="false": ijo ni li jo ala e nanpa ante -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">nasin ante li pana e ijo sin tawa ijo open; ijo open li weka la, ken ala kama jo sin.\n\n• tenpo pali la, ilo li pini anu ma jo li lili anu ken li weka la, ijo open ken pakala\n• ante li ken pakala lon tenpo ale; pakala la, ijo open ken jo ala\n• o pali e ijo wan anu tu nanpa wan; pini la, o pali e ijo ale\n• o awen e sitelen suli kepeken sina\n\nilo ni li pana e ni lon nasin ona; pakala li kama tawa sina, jan pali li jo ala e pakala.</string>
+    <string name="conv_reminder_dont_remind">o pana ala sin e sona</string>
+    <string name="conv_reminder_confirm_ok">pona</string>
+    <string name="conv_reminder_uninstall">weka e ilo</string>
+
+</resources>

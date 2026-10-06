@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Nederlands (België) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Belgisch-Nederlandse variant met eigen woordkeuze ("toestemming", "Klaar", "Leegmaken").
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: parameters en validatie van media (fout geeft de reden op het scherm) ========== -->
+    <string name="conv_unknown_target">Onbekend doelformaat: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Onbekend Live Photo-formaat (geen Google-/OPPO-/vivo-/Xiaomi-/Apple-Live Photo)</string>
+    <string name="conv_cover_photo_missing">De omslagfoto bestaat niet of is leeg</string>
+    <string name="conv_video_missing">De video bestaat niet of is leeg</string>
+    <string name="conv_video_too_large">Video is te groot (%1$dMB); er kan geen Live Photo worden samengesteld. Kies een kortere video</string>
+    <string name="conv_transcoded_too_large">De getranscodeerde video is te groot (%1$dMB); er kan geen Live Photo worden samengesteld</string>
+    <string name="conv_video_too_large_compose">Video is te groot (%1$dMB); er kan geen Live Photo worden samengesteld</string>
+
+    <!-- Converter.kt: omslag (HEIC / geen JPEG) -->
+    <string name="conv_cover_heic_go">De omslag is een HEIC-afbeelding (de lichte versie transcodet niet; exporteer op de iPhone als JPEG en converteer daarna)</string>
+    <string name="conv_cover_invalid_heic">De omslag is geen geldige afbeelding (HEIC vereist HEIF-decodering door het systeem)</string>
+    <string name="conv_cover_not_jpeg_go">De omslag is geen JPEG-afbeelding (de lichte versie transcodet niet; gebruik een JPEG-foto)</string>
+    <string name="conv_cover_invalid_image">De omslag is geen geldige afbeelding (alleen JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: fouten bij opnieuw coderen / remuxen en de waarschuwing dat een andere container de codering niet oplost -->
+    <string name="conv_reencode_failed">Opnieuw coderen van de video mislukt: %1$s</string>
+    <string name="conv_remux_failed">Remuxen van de container mislukt: %1$s</string>
+    <string name="conv_codec_unknown">Geen herkenbare H.264/H.265-video</string>
+    <string name="conv_codec_is">De codering is %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">De video «%1$s» %2$s; alleen de container vervangen (remuxen) verandert de codering niet en maakt het samenstellen van een Live Photo niet mogelijk.\n\nKies in "Instellingen → Videotranscodering → Transcoderingsmodus" voor "Opnieuw coderen", of converteer de video eerst met een ander programma naar een MP4 met H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">De video zit niet in een standaard MP4-container (MOV / MKV / WebM / AVI enz.) en de huidige "Transcoderingsmodus" codeert niet opnieuw, dus er kan geen Live Photo worden samengesteld.\n\nKies in "Instellingen → Videotranscodering → Transcoderingsmodus" voor "Opnieuw coderen" (de normale versie bevat de ingebouwde ffmpeg-encoder; de lichte Go-versie heeft geen transcoder, gebruik dus de normale versie), of converteer de video eerst naar standaard MP4 (H.264/H.265).</string>
+
+    <!-- ========== Conversielogboek (verschijnt in de statusbalk van lijstitems en in het logpaneel) ========== -->
+    <string name="conv_log_detected">Herkend als %1$s</string>
+    <string name="conv_log_same_format_copied">Bron- en doelformaat zijn gelijk; ongewijzigd gekopieerd (zonder kwaliteitsverlies)</string>
+    <string name="conv_log_extra_tracks_bypass">De bronvideo bevat niet-audio-/videosporen (%1$s); het direct kopiëren is overgeslagen en het volledige schrijfproces is gebruikt om op te schonen</string>
+    <string name="conv_log_ts_fallback">De bron mist de tijdcode van het omslagframe; volgens de specificatie is het midden van de video gebruikt</string>
+    <string name="conv_log_brand_normalized">Containermerk genormaliseerd (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">De video bevat extra sporen (%1$s) en kon niet worden opgeschoond; de uitvoer is ongewijzigd gelaten (op sommige toestellen wordt het resultaat mogelijk niet afgespeeld bij lang indrukken)</string>
+    <string name="conv_log_extra_tracks_removed">Extra videosporen verwijderd (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Bronvideo %1$s; alleen de container remuxen lost het niet op (%2$s). Als het resultaat nog steeds niet afspeelt bij lang indrukken, kies dan "Opnieuw coderen" in "Instellingen → Videotranscodering → Transcoderingsmodus"</string>
+    <string name="conv_log_reencoding">Bronvideo %1$s; wordt volgens de instellingen opnieuw gecodeerd naar 8-bit + AAC voor een betere galerijcompatibiliteit</string>
+    <string name="conv_log_reencode_result_unusable">Het resultaat van het opnieuw coderen is onbruikbaar; de uitvoer is ongewijzigd gelaten (op sommige toestellen wordt het resultaat mogelijk niet afgespeeld bij lang indrukken)</string>
+    <string name="conv_log_reencode_still_risky">Na het opnieuw coderen zijn er nog steeds risicopunten (%1$s)</string>
+    <string name="conv_log_reencode_failed">Opnieuw coderen mislukt (%1$s); de uitvoer is ongewijzigd gelaten (op sommige toestellen wordt het resultaat mogelijk niet afgespeeld bij lang indrukken)</string>
+    <string name="conv_log_cover_heic_converted">De omslag is HEIC (geen JPEG); deze is naar standaard-JPEG getranscodeerd voordat het bestand opnieuw werd opgebouwd</string>
+    <string name="conv_log_compose_sizes">Samenstellen: foto %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transcoder niet ingeschakeld: alleen het containermerk is herschreven (MOV → MP4), zonder opnieuw te coderen</string>
+
+    <!-- Loglabels (weergegeven als «[label] tekst») -->
+    <string name="conv_tag_convert">Conversie</string>
+    <string name="conv_tag_transcode">Transcodering</string>
+    <string name="conv_tag_compose">Samenstellen</string>
+
+    <!-- Redenen waarom de transcoderingsmodus blokkeert (aan de waarschuwing hierboven geplakt) -->
+    <string name="conv_blocker_no_encoder">Ingebouwde transcoder niet beschikbaar</string>
+    <string name="conv_blocker_mode_no_encode">De huidige "Transcoderingsmodus" codeert niet opnieuw</string>
+
+    <!-- ========== FfmpegAddon.kt: ingebouwde ffmpeg-transcodering / remuxen ========== -->
+    <string name="conv_addon_unavailable">Ingebouwde transcoder niet beschikbaar</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-transcodering mislukt: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-remux van de container mislukt: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">De video wordt met ffmpeg getranscodeerd naar standaard-MP4 (%1$s / crf %2$d / %3$s, alleen video- en audiosporen blijven behouden)</string>
+    <string name="conv_log_transcode_done">Transcodering voltooid (%1$dKB)</string>
+    <string name="conv_log_remuxing">De videocontainer wordt geremuxd naar standaard-MP4 (alleen containerwissel, geen nieuwe codering)</string>
+    <string name="conv_log_remux_done">Remuxen van de container voltooid (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: het venster "niet meer tonen" ========== -->
+    <string name="conv_reminder_cat_compose">Samenstellen</string>
+    <string name="conv_reminder_cat_convert">Conversie</string>
+    <string name="conv_reminder_cat_update">Update</string>
+    <string name="conv_reminder_video_over3s_title">Video langer dan 3 seconden</string>
+    <string name="conv_reminder_video_over3s_message">De gekozen video duurt langer dan 3 seconden; de samengestelde Live Photo kan compatibiliteitsproblemen hebben:\n\n• wordt mogelijk niet correct afgespeeld\n• wordt mogelijk niet herkend door de systeemgalerij\n• sommige toestellen herkennen deze Live Photo mogelijk niet</string>
+    <string name="conv_reminder_legacy_go_title">Oude versie gedetecteerd</string>
+    <string name="conv_reminder_legacy_go_message">Op dit toestel is nog de oude versie (Go) van de app geïnstalleerd. Die versie werkt niet meer op dit toestel; je kunt ze verwijderen om ruimte vrij te maken.</string>
+    <string name="conv_reminder_replace_risk_title">De vervangmodus kan bestanden beschadigen</string>
+    <!-- formatted="false": de tekst bevat een percentage dat als gewone tekst wordt gelezen
+         en de reeks wordt nooit met argumenten gebruikt; als niet-opmaakreeks vermijdt dit
+         een aapt2/lint-controle volgens String.format. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">De vervangmodus schrijft het resultaat rechtstreeks naar het oorspronkelijke bestand; zodra dat is overschreven, is het niet meer terug te halen.\n\n• Als de app tijdens het schrijven wordt onderbroken, als er te weinig ruimte is of als de toestemming wordt ingetrokken, kan het bronbestand beschadigd raken\n• De conversie lukt niet altijd; bij een fout is het bronbestand mogelijk al niet meer bruikbaar\n• Probeer het eerst met een of twee bestanden voordat je alles in bulk verwerkt\n• Maak van belangrijke foto\'s eerst zelf een back-up\n\nDeze functie wordt geleverd "zoals ze is"; gebruik is op eigen risico en de auteur is niet aansprakelijk voor beschadigde of verloren bestanden.</string>
+    <string name="conv_reminder_dont_remind">Niet meer tonen</string>
+    <string name="conv_reminder_confirm_ok">Begrepen</string>
+    <string name="conv_reminder_uninstall">Verwijderen</string>
+
+</resources>

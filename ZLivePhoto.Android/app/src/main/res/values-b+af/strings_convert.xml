@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Afrikaans (af) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Onbekende teikenformaat: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Onherkenbare Live Photo-formaat (nie Google/OPPO/vivo/Xiaomi/Apple nie)</string>
+    <string name="conv_cover_photo_missing">Voorbladfoto bestaan nie of is leeg</string>
+    <string name="conv_video_missing">Video bestaan nie of is leeg</string>
+    <string name="conv_video_too_large">Video is te groot (%1$d MB) om as Live Photo saam te stel; kies \'n korter video</string>
+    <string name="conv_transcoded_too_large">Video is na transkodering te groot (%1$d MB) om as Live Photo saam te stel</string>
+    <string name="conv_video_too_large_compose">Video is te groot (%1$d MB) om as Live Photo saam te stel</string>
+    <string name="conv_cover_heic_go">Voorblad is \'n HEIC-prent (die ligte weergawe ondersteun nie transkodering nie; voer dit op \'n iPhone as JPEG uit en probeer weer)</string>
+    <string name="conv_cover_invalid_heic">Voorblad is nie \'n geldige prent nie (HEIC benodig stelselondersteuning vir HEIF-dekodering)</string>
+    <string name="conv_cover_not_jpeg_go">Voorblad is nie \'n JPEG-prent nie (die ligte weergawe ondersteun nie transkodering nie; gebruik eerder \'n JPEG-foto)</string>
+    <string name="conv_cover_invalid_image">Voorblad is nie \'n geldige prent nie (slegs JPEG/WebP/PNG word ondersteun)</string>
+    <string name="conv_reencode_failed">Herkodering van video het misluk: %1$s</string>
+    <string name="conv_remux_failed">Herverpakking van die houer het misluk: %1$s</string>
+    <string name="conv_codec_unknown">Nie \'n herkenbare H.264/H.265-video nie</string>
+    <string name="conv_codec_is">Die kodering is %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Die video "%1$s" %2$s; om net die houer te verander (herverpakking) verander nie die kodering nie, dus kan die Live Photo nie saamgestel word nie.\n\nVerander na "Herkodering" onder "Instellings → Videotranskodering → Transkoderingsmodus", of skakel die video eers met \'n ander hulpmiddel om na MP4 met H.264/H.265-kodering.</string>
+    <string name="conv_hint_no_encoder">Die video is nie in \'n standaard MP4-houer nie (MOV / MKV / WebM / AVI ens.), en die huidige "Transkoderingsmodus" herkodeer nie, dus kan die Live Photo nie saamgestel word nie.\n\nVerander na "Herkodering" onder "Instellings → Videotranskodering → Transkoderingsmodus" (die normale weergawe het \'n ingeboude ffmpeg-koder; die ligte weergawe het geen transkodeerder nie — gebruik die normale weergawe), of skakel die video eers om na standaard MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">Geïdentifiseer as %1$s</string>
+    <string name="conv_log_same_format_copied">Bron- en teikenformaat is dieselfde; onveranderd gekopieer (geen verlies)</string>
+    <string name="conv_log_extra_tracks_bypass">Die bronvideo bevat snitte wat nie klank of beeld is nie (%1$s); direkte kopie in dieselfde formaat is oorgeslaan en die volledige skryfproses volg vir skoonmaak</string>
+    <string name="conv_log_ts_fallback">Tydstempel van die voorbladraam ontbreek; volgens spesifikasie teruggeval na die middelpunt van die video</string>
+    <string name="conv_log_brand_normalized">Handelsmerk van die videohouer is genormaliseer (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Die video bevat bykomende snitte (%1$s); skoonmaak is onmoontlik, onveranderd uitgevoer (die produk speel moontlik nie met lang druk op sommige toestelle nie)</string>
+    <string name="conv_log_extra_tracks_removed">Bykomende snitte is uit die video verwyder (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Die bronvideo %1$s; blote herverpakking van die houer los dit nie op (%2$s). As die produk steeds nie met lang druk speel nie, kies "Herkodering" onder "Instellings → Videotranskodering → Transkoderingsmodus"</string>
+    <string name="conv_log_reencoding">Die bronvideo %1$s; volgens instellings herkodeer na 8bit + AAC om versoenbaarheid met die album te verbeter</string>
+    <string name="conv_log_reencode_result_unusable">Die resultaat van herkodering is onbruikbaar; onveranderd uitgevoer (die produk speel moontlik nie met lang druk op sommige toestelle nie)</string>
+    <string name="conv_log_reencode_still_risky">Na herkodering bestaan daar steeds risikopunte (%1$s)</string>
+    <string name="conv_log_reencode_failed">Herkodering het misluk (%1$s); onveranderd uitgevoer (die produk speel moontlik nie met lang druk op sommige toestelle nie)</string>
+    <string name="conv_log_cover_heic_converted">Die voorblad is HEIC (nie JPEG); na standaard JPEG omgeskakel voordat dit saamgepak is</string>
+    <string name="conv_log_compose_sizes">Saamstel: foto %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkodeerder nie geaktiveer nie: slegs die handelsmerk van die houer is geskryf (MOV → MP4), geen herkodering nie</string>
+    <string name="conv_tag_convert">Omskakeling</string>
+    <string name="conv_tag_transcode">Transkodering</string>
+    <string name="conv_tag_compose">Saamstel</string>
+    <string name="conv_blocker_no_encoder">Die ingeboude transkodeerder is nie beskikbaar nie</string>
+    <string name="conv_blocker_mode_no_encode">Die huidige "Transkoderingsmodus" herkodeer nie</string>
+    <string name="conv_addon_unavailable">Die ingeboude transkodeerder is nie beskikbaar nie</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-transkodering het misluk: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-houverpakking het misluk: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Skakel die video met ffmpeg om na standaard MP4 (%1$s / crf %2$d / %3$s; slegs video- en klanksnitte word behou)</string>
+    <string name="conv_log_transcode_done">Videotranskodering voltooi (%1$d KB)</string>
+    <string name="conv_log_remuxing">Verpak die videohouer oor na standaard MP4 (slegs die houer word verander, geen herkodering nie)</string>
+    <string name="conv_log_remux_done">Houverpakking voltooi (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Saamstel</string>
+    <string name="conv_reminder_cat_convert">Omskakeling</string>
+    <string name="conv_reminder_cat_update">Opdatering</string>
+    <string name="conv_reminder_video_over3s_title">Die video is langer as 3 sekondes</string>
+    <string name="conv_reminder_video_over3s_message">Die gekose video is langer as 3 sekondes; die Live Photo wat daaruit saamgestel word kan versoenbaarheidsprobleme hê:\n\n• Speel moontlik nie normaal nie\n• Word moontlik nie deur die stelselalbum herken nie\n• Sommige toestelle kan die Live Photo moontlik nie herken nie</string>
+    <string name="conv_reminder_legacy_go_title">Ou weergawe opgespoor</string>
+    <string name="conv_reminder_legacy_go_message">Die ou weergawe van die toepassing (Go-weergawe) is nog op die toestel geïnstalleer. Dit werk nie meer op hierdie toestel nie; u kan dit deïnstalleer om spasie vry te maak.</string>
+    <string name="conv_reminder_replace_risk_title">Vervangingsmodus het skaderisiko</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">In vervangingsmodus word die omskakelresultaat direk terug na die oorspronklike lêer geskryf; sodra die oorspronklike lêer oorskryf is, kan dit nie teruggestaan word nie.\n\n• As die toepassing tydens skryf onderbreek word, die bergingspasie vol raak of toestemmings ingetrek word, kan die bronlêer beskadig word\n• Die omskakeling self kan nie volle sukses waarborg nie; by mislukking kan die bronlêer reeds onbruikbaar wees\n• Dit word aanbeveel om eers met een of twee lêers te toets en eers bondelgewys voort te gaan as alles werk\n• Maak vooraf u eie rugsteunkopieë van belangrike foto\'s\n\nHierdie funksie word "soos dit is" verskaf; die risiko van gebruik dra u self, en die outeur is nie verantwoordelik vir lêerskade of -verlies nie.</string>
+    <string name="conv_reminder_dont_remind">Moenie weer wys nie</string>
+    <string name="conv_reminder_confirm_ok">Verstaan</string>
+    <string name="conv_reminder_uninstall">Deïnstalleer</string>
+</resources>

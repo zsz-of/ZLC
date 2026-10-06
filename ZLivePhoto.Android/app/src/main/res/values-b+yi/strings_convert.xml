@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Yiddish (yi) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">אומבאַקאַנטער ציל־פֿאָרמאַט: %1$s</string>
+    <string name="conv_unrecognized_live_photo">אומערקענטער Live Photo פֿאָרמאַט (נישט קיין Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">דער קאַווער־פאָטאָ עקזיסטירט נישט אדער איז ליידיק</string>
+    <string name="conv_video_missing">דאָס ווידעא עקזיסטירט נישט אדער איז ליידיק</string>
+    <string name="conv_video_too_large">דאָס ווידעא איז צו גרויס (%1$dMB); מען קען עס נישט צוזאַמענשטעלן אין אַ Live Photo, קלייבט אויס אַ קירצערן ווידעא</string>
+    <string name="conv_transcoded_too_large">נאָך דער טראַנסקאָדירונג איז דאָס ווידעא צו גרויס (%1$dMB); מען קען נישט צוזאַמענשטעלן קיין Live Photo</string>
+    <string name="conv_video_too_large_compose">דאָס ווידעא איז צו גרויס (%1$dMB); מען קען נישט צוזאַמענשטעלן קיין Live Photo</string>
+    <string name="conv_cover_heic_go">דער קאַווער איז אַ HEIC בילד (די לייכטע ווערסיע אונטערשטיצט נישט קיין טראַנסקאָדירונג; עקספּאָרטירט אויף iPhone ווי JPEG און דערנאָך קאָנווערטירט)</string>
+    <string name="conv_cover_invalid_heic">דער קאַווער איז נישט קיין גילטיק בילד (HEIC דאַרף אַז דער סיסטעם אונטערשטיצט HEIF דעקאָדירונג)</string>
+    <string name="conv_cover_not_jpeg_go">דער קאַווער איז נישט קיין JPEG בילד (די לייכטע ווערסיע אונטערשטיצט נישט קיין טראַנסקאָדירונג; ניצט אַנשטאָט אַ JPEG פאָטאָ)</string>
+    <string name="conv_cover_invalid_image">דער קאַווער איז נישט קיין גילטיק בילד (נאָר JPEG/WebP/PNG ווערן געשטיצט)</string>
+    <string name="conv_reencode_failed">ווידעא נײַ־ענקאָדירונג איז דורכגעפֿאַלן: %1$s</string>
+    <string name="conv_remux_failed">קאָנטיינער איבערפּאַקונג איז דורכגעפֿאַלן: %1$s</string>
+    <string name="conv_codec_unknown">איז נישט קיין ווידעא וואָס מען קען דערקענען ווי H.264/H.265</string>
+    <string name="conv_codec_is">דער קאָדעק איז %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">דאָס ווידעא „%1$s“ %2$s; נאָר צו טוישן דעם קאָנטיינער (איבערפּאַקונג) קען נישט טוישן דעם קאָדעק, און מען קען נישט צוזאַמענשטעלן קיין Live Photo.\n\nגייט אין „באַשטימונגען → ווידעא טראַנסקאָדירונג → טראַנסקאָדירונג־אופֿן“ און שטעלט אויף „נײַ־ענקאָדירונג“, אדער מאַכט עס ערשט מיט אַן אַנדער געצייג צו אַן MP4 מיט H.264/H.265 קאָדעק.</string>
+    <string name="conv_hint_no_encoder">דאָס ווידעא איז נישט קיין סטאַנדאַרט MP4 קאָנטיינער (MOV / MKV / WebM / AVI און אַזוי ווייטער), און דער דאָזיקער „טראַנסקאָדירונג־אופֿן“ מאַכט נישט קיין נײַ־ענקאָדירונג; מען קען נישט צוזאַמענשטעלן קיין Live Photo.\n\nגייט אין „באַשטימונגען → ווידעא טראַנסקאָדירונג → טראַנסקאָדירונג־אופֿן“ און שטעלט אויף „נײַ־ענקאָדירונג“ (די נאָרמאַלע ווערסיע האָט אַריינגעבויט ffmpeg; די Go לייכטע ווערסיע האָט נישט קיין טראַנסקאָודער, ניצט דעריבער די נאָרמאַלע ווערסיע), אדער מאַכט ערשט דאָס ווידעא צו אַ סטאַנדאַרט MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">דערקענט ווי %1$s</string>
+    <string name="conv_log_same_format_copied">מקור און ציל זענען אין דעם זעלבן פֿאָרמאַט; אָפּגעקאָפּירט ווי אָריגינעל (אָן פֿאַרלוסט)</string>
+    <string name="conv_log_extra_tracks_bypass">דאָס מקור־ווידעא האָט נישט־אודיא/ווידעא טראַקן (%1$s); די גלייך־פֿאָרמאַט דורכקאָפּי איז איבערגעהיפּערט, עס גייט איצט דורך דעם פֿולן אַרויסשרײַב־פּראָצעס צו רייניקן</string>
+    <string name="conv_log_ts_fallback">דעם מקור פֿעלט דער קאַווער־פריים צײַטשטעמפּל; לויט דער ספּעציפֿיקאַציע איז עס צוריקגעפֿאַלן צום ווידעא־מיטלפּונקט</string>
+    <string name="conv_log_brand_normalized">ווידעא־קאָנטיינער בראַנד נאָרמאַליזירט (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">דאָס ווידעא האָט צוזאַץ־טראַקן (%1$s); מען קען עס נישט רייניקן, עס איז אַרויסגעגעבן געוואָרן ווי אָריגינעל (דער פּראָדוקט קען אויף געוויסע טעלעפֿאָנען נישט שפּילן דורך לאַנגן דרוק)</string>
+    <string name="conv_log_extra_tracks_removed">ווידעא־צוזאַץ־טראַקן אַוועקגענומען (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">דאָס מקור־ווידעא %1$s; נאָר איבערפּאַקן דעם קאָנטיינער קען דאָס נישט לייזן (%2$s); אויב דער פּראָדוקט קען ווייטער נישט שפּילן דורך לאַנגן דרוק, גייט אין „באַשטימונגען → ווידעא טראַנסקאָדירונג → טראַנסקאָדירונג־אופֿן“ און קלייבט אויס „נײַ־ענקאָדירונג“</string>
+    <string name="conv_log_reencoding">דאָס מקור־ווידעא %1$s; לויט די באַשטימונגען ווערט עס נײַ־ענקאָדירט ווי 8bit + AAC צו פֿאַרבעסערן די אַלבום־קאָמפּאַטיביליטעט</string>
+    <string name="conv_log_reencode_result_unusable">דער נײַ־ענקאָדירונג רעזולטאַט איז אומברויקבאַר; אַרויסגעגעבן ווי אָריגינעל (דער פּראָדוקט קען אויף געוויסע טעלעפֿאָנען נישט שפּילן דורך לאַנגן דרוק)</string>
+    <string name="conv_log_reencode_still_risky">נאָך דער נײַ־ענקאָדירונג זענען נאָך פֿאַראַן ריזיקע־פּונקטן (%1$s)</string>
+    <string name="conv_log_reencode_failed">נײַ־ענקאָדירונג איז דורכגעפֿאַלן (%1$s); אַרויסגעגעבן ווי אָריגינעל (דער פּראָדוקט קען אויף געוויסע טעלעפֿאָנען נישט שפּילן דורך לאַנגן דרוק)</string>
+    <string name="conv_log_cover_heic_converted">דער קאַווער איז HEIC (נישט JPEG); טראַנסקאָדירט צו סטאַנדאַרט JPEG און דערנאָך איבערגעפּאַקט</string>
+    <string name="conv_log_compose_sizes">צוזאַמענשטעלונג: פאָטאָ %1$dB + ווידעא %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">טראַנסקאָודער נישט אַקטיווירט: נאָר דער קאָנטיינער בראַנד ווערט אומגעשריבן (MOV → MP4), אָן נײַ־ענקאָדירונג</string>
+    <string name="conv_tag_convert">קאָנווערטירונג</string>
+    <string name="conv_tag_transcode">טראַנסקאָדירונג</string>
+    <string name="conv_tag_compose">צוזאַמענשטעלונג</string>
+    <string name="conv_blocker_no_encoder">אַריינגעבויטער טראַנסקאָודער איז נישט פֿאַרפֿיגבאַר</string>
+    <string name="conv_blocker_mode_no_encode">דער דאָזיקער „טראַנסקאָדירונג־אופֿן“ מאַכט נישט קיין נײַ־ענקאָדירונג</string>
+    <string name="conv_addon_unavailable">אַריינגעבויטער טראַנסקאָודער איז נישט פֿאַרפֿיגבאַר</string>
+    <string name="conv_addon_transcode_failed">ffmpeg טראַנסקאָדירונג איז דורכגעפֿאַלן: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg קאָנטיינער איבערפּאַקונג איז דורכגעפֿאַלן: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">מיט ffmpeg ווערט דאָס ווידעא טראַנסקאָדירט צו אַ סטאַנדאַרט MP4 (%1$s / crf %2$d / %3$s; נאָר ווידעא און אודיא טראַקן בלײַבן פֿאַרבליבן)</string>
+    <string name="conv_log_transcode_done">ווידעא טראַנסקאָדירונג פֿאַרטיק (%1$dKB)</string>
+    <string name="conv_log_remuxing">דער ווידעא־קאָנטיינער ווערט איצט איבערגעפּאַקט צו אַ סטאַנדאַרט MP4 (נאָר קאָנטיינער טויש, אָן נײַ־ענקאָדירונג)</string>
+    <string name="conv_log_remux_done">קאָנטיינער איבערפּאַקונג פֿאַרטיק (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">צוזאַמענשטעלונג</string>
+    <string name="conv_reminder_cat_convert">קאָנווערטירונג</string>
+    <string name="conv_reminder_cat_update">דערהײַנט</string>
+    <string name="conv_reminder_video_over3s_title">דאָס ווידעא איז איבער 3 סעקונדעס</string>
+    <string name="conv_reminder_video_over3s_message">דער דויער פֿון דעם אויסגעקליבענעם ווידעא איז איבער 3 סעקונדעס; די צוזאַמענגעשטעלטע Live Photo קען האָבן קאָמפּאַטיביליטעט־פּראָבלעמען:\n\n• קען זיין נישט אַ נאָרמאַלער שפּילבאַר\n• קען זיין אַז דער סיסטעם אַלבום וועט זי נישט דערקענען\n• אויף געוויסע טעלעפֿאָנען קען די Live Photo נישט ווערן דערקענט</string>
+    <string name="conv_reminder_legacy_go_title">אַ פֿאַרגאַנגענע ווערסיע געפֿונען</string>
+    <string name="conv_reminder_legacy_go_message">אויף דעם געצייג איז נאָך אינסטאַלירט אַ פֿאַרגאַנגענע ווערסיע (Go ווערסיע) פֿון דער אַפּ; די פֿאַרגאַנגענע ווערסיע אַרבעט שוין נישט אויף דעם געצייג, מען קען זי דערינסטאַלירן צו באַפֿרײַען אָרט.</string>
+    <string name="conv_reminder_replace_risk_title">דער טוישן־מאָדוס האָט אַ שעדיקונג־ריזיקע</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">דער טוישן־מאָדוס שרײַבט דעם קאָנווערטירונג־רעזולטאַט גלײַך צוריק אין דעם אָריגינעלן טעקע; נאָך דעם איבערשרײַבן קען מען דעם אָריגינעלן טעקע נישט צוריקבאַקומען.\n\n• אויב די אַפּ ווערט איבערגעריסן, דער ספּייכער איז פֿול אדער די הרשאה ווערט אַוועקגענומען בשעת דעם שרײַבן, קען דער מקור־טעקע ווערן שעדיקט\n• קאָנווערטירונג קען נישט גאַראַנטירן אַ פֿולע הצלחה; בײַם דורכפֿאַל קען דער מקור־טעקע שוין זיין נישט בנימצא\n• עס איז בעסער ערשט צו פּרובירן מיט איין אדער צוויי טעקעס, און נאָך וואָס אַלץ איז אין סדר — פּראָצעסירן אין מאַסן\n• פֿאַר וויכטיקע פאָטאָס מאַכט ערשט אליין אַ באַקאַפּ\n\nדי פֿונקציע ווערט געגעבן „ווי זי איז“; די ריזיקע פֿון באַניץ טראָגט איר אליין; דער מחבר נעמט נישט קיין פֿאַראַנטוואָרטלעכקייט פֿאַר טעקע־שעדיקונג אדער פֿאַרלוסט.</string>
+    <string name="conv_reminder_dont_remind">נישט מער ווײַזן</string>
+    <string name="conv_reminder_confirm_ok">פֿאַרשטאַנען</string>
+    <string name="conv_reminder_uninstall">דערינסטאַלירן</string>
+</resources>

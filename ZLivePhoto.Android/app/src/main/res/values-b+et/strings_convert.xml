@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · eesti keel.
+  Teisendamise / ümberkodeerimise / meeldetuletuste tekstid (core/Converter.kt, core/FfmpegAddon.kt, ui/Reminders.kt).
+  Võtme eesliide conv_; iga võti järgib baasi, kohatäitjad (%1$s / %1$d) ja paomärgid on muutmata kujul.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== Converter.kt: parameetrite ja materjali valideerimine (erand → liides näitab ebaõnnestumise põhjust) ========== -->
+    <string name="conv_unknown_target">Tundmatu sihtvorming: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Tuvastamatu Live Photo vorming (ei ole Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Kaanefoto puudub või on tühi</string>
+    <string name="conv_video_missing">Video puudub või on tühi</string>
+    <string name="conv_video_too_large">Video on liiga suur (%1$d MB) Live Photo loomiseks; palun valige lühem video</string>
+    <string name="conv_transcoded_too_large">Pärast ümberkodeerimist on video endiselt liiga suur (%1$d MB); Live Photot ei saa luua</string>
+    <string name="conv_video_too_large_compose">Video on liiga suur (%1$d MB); Live Photot ei saa luua</string>
+
+    <!-- Converter.kt: kaanefoto (HEIC / mitte-JPEG) -->
+    <string name="conv_cover_heic_go">Kaanefoto on HEIC-pilt (kergeversioon ei toeta ümberkodeerimist; eksportige see iPhone\'is JPEG-ina ja seejärel teisendage)</string>
+    <string name="conv_cover_invalid_heic">Kaanefoto ei ole kehtiv pilt (HEIC nõuab süsteemi HEIF-dekodeerimise tuge)</string>
+    <string name="conv_cover_not_jpeg_go">Kaanefoto ei ole JPEG-pilt (kergeversioon ei toeta ümberkodeerimist; kasutage JPEG-fotot)</string>
+    <string name="conv_cover_invalid_image">Kaanefoto ei ole kehtiv pilt (toetatud on ainult JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: ümberkodeerimise / ümberpakendamise ebaõnnestumine ja vihje, et „ainult konteineri vahetus ei aita“ -->
+    <string name="conv_reencode_failed">Video ümberkodeerimine ebaõnnestus: %1$s</string>
+    <string name="conv_remux_failed">Konteineri ümberpakendamine ebaõnnestus: %1$s</string>
+    <string name="conv_codec_unknown">Ei ole tuvastatav H.264/H.265 video</string>
+    <string name="conv_codec_is">Koodek on %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Video „%1$s“ %2$s; ainult konteineri vahetamine (ümberpakendamine) ei muuda koodekit, seega ei saa Live Photot luua.\n\nPalun muutke jaotises „Seaded → Video ümberkodeerimine → Ümberkodeerimise režiim“ valikuks „Ümberkodeeri“ või teisendage see mõne muu tööriistaga H.264/H.265 MP4-ks.</string>
+    <string name="conv_hint_no_encoder">Video ei ole standardses MP4-konteineris (MOV / MKV / WebM / AVI jne) ja praegune „Ümberkodeerimise režiim“ ei kodeeri ümber, seega ei saa Live Photot luua.\n\nPalun muutke jaotises „Seaded → Video ümberkodeerimine → Ümberkodeerimise režiim“ valikuks „Ümberkodeeri“ (tavaversioon sisaldab ffmpeg-kooderit; Go kergeversioonis ei ole ümberkodeerijat, palun kasutage tavaversiooni) või teisendage video esmalt standardseks MP4-ks (H.264/H.265).</string>
+
+    <!-- ========== Teisenduslogi (kuvatakse loendiüksuse olekuribal ja logipaneelis) ========== -->
+    <string name="conv_log_detected">Tuvastatud kui %1$s</string>
+    <string name="conv_log_same_format_copied">Lähte- ja sihtvorming on samad; kopeeritud muutmata kujul (kadudeta)</string>
+    <string name="conv_log_extra_tracks_bypass">Lähdevideo sisaldab mitte-audio/video radu (%1$s); sama vormingu otseülekanne jäetakse vahele ja kasutatakse puhastamiseks täielikku kirjutusteed</string>
+    <string name="conv_log_ts_fallback">Lähtel puudub kaanekaadri ajatempel; vastavalt spetsifikatsioonile taandutakse video keskpunktile</string>
+    <string name="conv_log_brand_normalized">Video konteineri bränd normaliseeritud (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Video sisaldab lisaradu (%1$s), mida ei saa puhastada; väljund on muutmata kujul (tulemus ei pruugi mõnes seadmes pika vajutusega esitada)</string>
+    <string name="conv_log_extra_tracks_removed">Eemaldati video lisaradu (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Lähdevideo %1$s; ainult konteineri ümberpakendamine ei aita (%2$s). Kui tulemus ei esita endiselt pika vajutusega, valige jaotises „Seaded → Video ümberkodeerimine → Ümberkodeerimise režiim“ suvand „Ümberkodeeri“</string>
+    <string name="conv_log_reencoding">Lähdevideo %1$s; kodeeritakse seadete kohaselt ümber 8-bit + AAC-ks, et parandada galerii ühilduvust</string>
+    <string name="conv_log_reencode_result_unusable">Ümberkodeerimise tulemus ei ole kasutatav; väljund on muutmata kujul (tulemus ei pruugi mõnes seadmes pika vajutusega esitada)</string>
+    <string name="conv_log_reencode_still_risky">Pärast ümberkodeerimist esineb endiselt riskitegureid (%1$s)</string>
+    <string name="conv_log_reencode_failed">Ümberkodeerimine ebaõnnestus (%1$s); väljund on muutmata kujul (tulemus ei pruugi mõnes seadmes pika vajutusega esitada)</string>
+    <string name="conv_log_cover_heic_converted">Kaanefoto oli HEIC (mitte JPEG); kodeeriti enne pakendamist standardseks JPEG-ks</string>
+    <string name="conv_log_compose_sizes">Süntees: foto %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Ümberkodeerija ei ole lubatud: muudetakse ainult konteineri brändi (MOV → MP4), ümber ei kodeerita</string>
+
+    <!-- Logi sildid (liides kuvab kujul „[Silt] tekst“) -->
+    <string name="conv_tag_convert">Teisendamine</string>
+    <string name="conv_tag_transcode">Ümberkodeerimine</string>
+    <string name="conv_tag_compose">Süntees</string>
+
+    <!-- Ümberkodeerimisviisi blokeerimise põhjus (liidetakse ülalolevasse hoiatusteksti) -->
+    <string name="conv_blocker_no_encoder">Sisseehitatud ümberkodeerija pole saadaval</string>
+    <string name="conv_blocker_mode_no_encode">Praegune „Ümberkodeerimise režiim“ ei kodeeri ümber</string>
+
+    <!-- ========== FfmpegAddon.kt: sisseehitatud ffmpeg ümberkodeerimine / ümberpakendamine ========== -->
+    <string name="conv_addon_unavailable">Sisseehitatud ümberkodeerija pole saadaval</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ümberkodeerimine ebaõnnestus: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg konteineri ümberpakendamine ebaõnnestus: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Video ümberkodeerimine ffmpeg-iga standardsesse MP4-vormingusse (%1$s / crf %2$d / %3$s; säilitatakse ainult video- ja audiorajad)</string>
+    <string name="conv_log_transcode_done">Video ümberkodeerimine lõpetatud (%1$d KB)</string>
+    <string name="conv_log_remuxing">Video konteineri ümberpakendamine standardsesse MP4-vormingusse (ainult konteiner, ilma ümberkodeerimiseta)</string>
+    <string name="conv_log_remux_done">Konteineri ümberpakendamine lõpetatud (%1$d KB)</string>
+
+    <!-- ========== Reminders.kt: „Ära näita uuesti“ dialoog ========== -->
+    <string name="conv_reminder_cat_compose">Süntees</string>
+    <string name="conv_reminder_cat_convert">Teisendamine</string>
+    <string name="conv_reminder_cat_update">Värskendamine</string>
+    <string name="conv_reminder_video_over3s_title">Video on üle 3 sekundi</string>
+    <string name="conv_reminder_video_over3s_message">Valitud video pikkus ületab 3 sekundit, seega võib loodud Live Photol esineda ühilduvusprobleeme:\n\n• see ei pruugi korralikult esitada\n• süsteemi galerii ei pruugi seda tuvastada\n• mõned seadmed ei pruugi seda Live Photot tuvastada</string>
+    <string name="conv_reminder_legacy_go_title">Tuvastati vanem versioon</string>
+    <string name="conv_reminder_legacy_go_message">Sellele seadmele on endiselt installitud rakenduse vanem versioon (Go versioon). See vanem versioon ei ole selles seadmes enam kasutatav; võite selle ruumi vabastamiseks desinstallida.</string>
+    <string name="conv_reminder_replace_risk_title">Asendusrežiimil on rikkumise oht</string>
+    <!-- formatted="false": tekstis esineb ainult literaalne % (100%) ja seda ei kasutata kunagi argumentidega;
+         mitteformaatstringi deklareerimine hoiab ära aapt2/lint'i String.format kontrolli. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Asendusrežiim kirjutab teisenduse tulemuse otse algsetesse failidesse; pärast ülekirjutamist ei saa algseid faile taastada.\n\n• Kui rakendus katkestatakse, salvestusruum saab otsa või õigus tühistatakse kirjutamise ajal, võivad lähtefailid rikkuda\n• Ükski teisendus ei ole tagatud, ja ebaõnnestumise korral võivad lähtefailid olla juba kasutuskõlbmatud\n• Proovige esmalt ühte või kahte faili, veendumaks, et kõik on korras, enne hulgitöötlust\n• Tehke olulistest fotodest eelnevalt varukoopia\n\nSee funktsioon on pakutud „nii nagu on“; kasutate seda omal riisikol ega vastuta autor rikutud või kadunud failide eest.</string>
+    <string name="conv_reminder_dont_remind">Ära näita uuesti</string>
+    <string name="conv_reminder_confirm_ok">Selge</string>
+    <string name="conv_reminder_uninstall">Desinstalli</string>
+
+</resources>

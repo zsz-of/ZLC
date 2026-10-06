@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Scottish Gaelic (gd) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">Deiseil</string>
+    <string name="main_status_location_granted">Fhuaradh cead an ionaid; bidh metadata GPS gan glèidheadh às dèidh an tionndaidh</string>
+    <string name="main_status_location_denied">Cha deach cead an ionaid a thoirt seachad: caillidh na dealbhan às dèidh an tionndaidh am fiosrachadh ionad GPS</string>
+    <string name="main_status_all_files_granted">Fhuaradh cead "Inntrigeadh do gach faidhle"; sgrìobhaidh an tionndadh dìreach gu pasgan an albaim agus glèidhidh e am fiosrachadh ionaid gu làn</string>
+    <string name="main_status_all_files_denied">Cha deach cead "Inntrigeadh do gach faidhle" a thoirt seachad: air cuid de ghoireasan dh\'fhaoidte gum bi am fiosrachadh ionaid air chall às dèidh an tionndaidh</string>
+    <string name="main_status_read_granted">Fhuaradh cead leughadh dhealbhan agus bhidiothan</string>
+    <string name="main_status_video_missing">Chaidh an cead a thoirt seachad, ach tha cead bhidiothan a dhìth: chan urrainn an video co-fhreagarrach aig a\' photo bheò le dà fhaidhle a lorg</string>
+    <string name="main_status_permission_denied">Cha deach cead a thoirt seachad; faodar briogadh ath-uair air "Cuir faidhlichean ris"</string>
+    <string name="main_status_folder_not_selected">Cha deach pasgan a thaghadh</string>
+    <string name="main_status_folder_unavailable">Cha ghabh am pasgan a thagh thu inntrigeadh (chan eil ach pasganan stòrais ionadail a tha taiceil)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Chaidh an seisein mu dheireadh ath-aisig (%1$d fhaidhle)</item>
+        <item quantity="two">Chaidh an seisein mu dheireadh ath-aisig (%1$d fhaidhle)</item>
+        <item quantity="few">Chaidh an seisein mu dheireadh ath-aisig (%1$d faidhlichean)</item>
+        <item quantity="other">Chaidh an seisein mu dheireadh ath-aisig (%1$d faidhle)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Chaidh fàgail neo-àbhaisteach mu dheireadh a lorg; chaidh an liosta neo-chrìochnaichte fhalamhachadh</string>
+    <string name="main_status_compose_blocks_extract">Tha ghnìomhan co-chur anns an t-siostam; cha ghabh seachad gu modh sgaraidh</string>
+    <string name="main_status_replace_off_mutex">Chaidh am modh ion-mhalairt a dhùnadh (eadar-thoirt le "Sguab às an dealbh thùsail às dèidh pròiseasadh")</string>
+    <string name="main_status_delete_needs_all_files">Bidh sguabadh às gu fèin-ghluasadach de na faidhlichean tùsail feumach air cead "Inntrigeadh do gach faidhle"; thoir seachad an cead an-toiseach</string>
+    <string name="main_status_replace_off">Chaidh am modh ion-mhalairt a dhùnadh; thèid toradh an tionndaidh air ais a sgrìobhadh gu pasgan an albaim</string>
+    <string name="main_status_replace_needs_all_files">Bidh am modh ion-mhalairt feumach air cead "Inntrigeadh do gach faidhle"; thoir seachad an cead an-toiseach</string>
+    <string name="main_status_delete_off_mutex">Chaidh "Sguab às an dealbh thùsail às dèidh pròiseasadh" a dhùnadh (eadar-thoirt leis a\' mhodh ion-mhalairt)</string>
+    <string name="main_status_loading_albums">A\' leughadh nan albaman…</string>
+    <string name="main_status_no_albums">Cha deach albam a lorg</string>
+    <string name="main_status_compose_no_photo">Cha deach dealbh a thaghadh; chan ghabh co-chur</string>
+    <string name="main_status_compose_no_video">Cha deach video a thaghadh; chan ghabh co-chur</string>
+    <string name="main_status_compose_all_added">Tha gach dealbh a thagh thu anns an liosta mu thràth</string>
+    <string name="main_status_compose_paired">Dealbhan %1$d, bhidiothan %2$d; chaidh %3$d pàr de ghnìomhan co-chur a chur ris a rèir an àireamh as lugha</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Chaidh %1$d ghnìomh co-chur a chur ris; brù "Tòisich tionndadh" airson co-chur a dhèanamh</item>
+        <item quantity="two">Chaidh %1$d ghnìomh co-chur a chur ris; brù "Tòisich tionndadh" airson co-chur a dhèanamh</item>
+        <item quantity="few">Chaidh %1$d gnìomhan co-chur a chur ris; brù "Tòisich tionndadh" airson co-chur a dhèanamh</item>
+        <item quantity="other">Chaidh %1$d ghnìomh co-chur a chur ris; brù "Tòisich tionndadh" airson co-chur a dhèanamh</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (air fòrmat às-chuir atharrachadh gu Google gu fèin-ghluasadach)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Tha %1$d dhealbh a chaidh a roinn gan ion-phortadh…</item>
+        <item quantity="two">Tha %1$d dhealbh a chaidh a roinn gan ion-phortadh…</item>
+        <item quantity="few">Tha %1$d dealbhan a chaidh a roinn gan ion-phortadh…</item>
+        <item quantity="other">Tha %1$d dealbh a chaidh a roinn gan ion-phortadh…</item>
+    </plurals>
+    <string name="main_status_import_failed">Dh\'fhàillig ion-phortadh: %1$s</string>
+    <string name="main_status_import_done_partial">Ion-phortadh crìochnaichte: %1$d soirbheachail, %2$d fàilligeadh</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Ion-phortadh crìochnaichte: gu h-iomalan %1$d fhaidhle</item>
+        <item quantity="two">Ion-phortadh crìochnaichte: gu h-iomalan %1$d fhaidhle</item>
+        <item quantity="few">Ion-phortadh crìochnaichte: gu h-iomalan %1$d faidhlichean</item>
+        <item quantity="other">Ion-phortadh crìochnaichte: gu h-iomalan %1$d faidhle</item>
+    </plurals>
+    <string name="main_status_import_stopped">Chaidh an ion-phortadh a stad: %1$d soirbheachail, %2$d fàilligeadh</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Tha %1$d fhaidhle gan ion-phortadh…</item>
+        <item quantity="two">Tha %1$d fhaidhle gan ion-phortadh…</item>
+        <item quantity="few">Tha %1$d faidhlichean gan ion-phortadh…</item>
+        <item quantity="other">Tha %1$d faidhle gan ion-phortadh…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Gan ion-phortadh %1$d/%2$d…</string>
+    <string name="main_status_stopping">Gan stad… (stad às dèidh an fhaidhle làithreach a chrìochnachadh)</string>
+    <string name="main_status_stopping_import">Gan an ion-phortadh stad…</string>
+    <string name="main_status_removed">Chaidh %1$s a thoirt air falbh</string>
+    <string name="main_status_cleared">Air fhalamhachadh</string>
+    <string name="main_status_nothing_to_convert">Chan eil faidhle sam bith freagarrach airson tionndadh</string>
+    <string name="main_status_folder_unreadable">Chan ghabh am pasgan a thagh thu a leughadh</string>
+    <string name="main_status_scanning_folder">A\' sganadh am pasgan…</string>
+    <string name="main_status_no_images">Cha deach dealbh a lorg am broinn a\' phasgain a thagh thu</string>
+    <string name="main_status_batch_importing">Gan ion-phortadh ann am poca %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Chaidh ion-phortadh ann am poca a stad: gu h-iomalan %1$d Live Photo</item>
+        <item quantity="two">Chaidh ion-phortadh ann am poca a stad: gu h-iomalan %1$d Live Photo</item>
+        <item quantity="few">Chaidh ion-phortadh ann am poca a stad: gu h-iomalan %1$d Live Photo</item>
+        <item quantity="other">Chaidh ion-phortadh ann am poca a stad: gu h-iomalan %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Chaidh ion-phortadh ann am poca a stad: gu h-iomalan %1$d Live Photo, %2$d faidhle neo-bheò air an leum thairis</item>
+        <item quantity="two">Chaidh ion-phortadh ann am poca a stad: gu h-iomalan %1$d Live Photo, %2$d faidhle neo-bheò air an leum thairis</item>
+        <item quantity="few">Chaidh ion-phortadh ann am poca a stad: gu h-iomalan %1$d Live Photo, %2$d faidhle neo-bheò air an leum thairis</item>
+        <item quantity="other">Chaidh ion-phortadh ann am poca a stad: gu h-iomalan %1$d Live Photo, %2$d faidhle neo-bheò air an leum thairis</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Ion-phortadh ann am poca crìochnaichte: gu h-iomalan %1$d Live Photo</item>
+        <item quantity="two">Ion-phortadh ann am poca crìochnaichte: gu h-iomalan %1$d Live Photo</item>
+        <item quantity="few">Ion-phortadh ann am poca crìochnaichte: gu h-iomalan %1$d Live Photo</item>
+        <item quantity="other">Ion-phortadh ann am poca crìochnaichte: gu h-iomalan %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Ion-phortadh ann am poca crìochnaichte: gu h-iomalan %1$d Live Photo, %2$d faidhle neo-bheò air an leum thairis</item>
+        <item quantity="two">Ion-phortadh ann am poca crìochnaichte: gu h-iomalan %1$d Live Photo, %2$d faidhle neo-bheò air an leum thairis</item>
+        <item quantity="few">Ion-phortadh ann am poca crìochnaichte: gu h-iomalan %1$d Live Photo, %2$d faidhle neo-bheò air an leum thairis</item>
+        <item quantity="other">Ion-phortadh ann am poca crìochnaichte: gu h-iomalan %1$d Live Photo, %2$d faidhle neo-bheò air an leum thairis</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Chaidh a stad: %2$d de %1$d faidhle air an pròiseasadh, %3$d faidhle tùsail air an ion-mhalairt</string>
+    <string name="main_status_stopped_export">Chaidh a stad: %2$d de %1$d faidhle air an pròiseasadh, %3$d air an às-chur dhan albam</string>
+    <string name="main_status_done_replace_reason">Crìochnaichte: %1$d faidhle air an pròiseasadh, %2$d faidhle tùsail air an ion-mhalairt (adhbhar: %3$s)</string>
+    <string name="main_status_done_export_reason">Crìochnaichte: %1$d faidhle air an pròiseasadh, %2$d air an às-chur dhan albam (adhbhar: %3$s)</string>
+    <string name="main_status_done_replace">Crìochnaichte: %1$d faidhle air an pròiseasadh, %2$d faidhle tùsail air an ion-mhalairt</string>
+    <string name="main_status_done_export">Crìochnaichte: %1$d faidhle air an pròiseasadh, %2$d air an às-chur dhan albam</string>
+    <string name="main_status_keep_originals">%1$s; cha deach cead "Inntrigeadh shlàn dhan stòras" fhaighinn, chaidh na faidhlichean tùsail glèidheadh</string>
+    <string name="main_info_detecting">A\' breithneachadh…</string>
+    <string name="main_info_unrecognized">Fòrmat Live Photo neo-aithnichte</string>
+    <string name="main_info_converting">Gan tionndadh…</string>
+    <string name="main_info_compose_task">Gnìomh co-chur (brù "Tòisich tionndadh" airson a dhèanamh)</string>
+    <string name="main_info_done_replaced">Crìochnaichte (%1$d faidhle tùsail air an ion-mhalairt)</string>
+    <string name="main_info_done_skipped">Crìochnaichte (leum thairis: co-dhùnadh ainm co-ionann)</string>
+    <string name="main_info_done_exported">Crìochnaichte (%1$d air an às-chur)</string>
+    <string name="main_info_failed">Fàilligeadh: %1$s</string>
+    <string name="main_progress_added">Air a chur ris %1$d/%2$d</string>
+    <string name="main_progress_processed">Air a phròiseasadh %1$d/%2$d</string>
+    <string name="main_progress_imported">Air an ion-phortadh %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Tha cead leughadh dhealbhan agus bhidiothan a dhìth</string>
+    <string name="main_dialog_permission_message">Bidh an aplacaid seo feumach air leughadh dhealbhan agus bhidiothan air an uidheam agad:
+
+• Cead dealbhan: sganadh albam an uidheim agus aithneachadh nam photo beò nam broinn
+• Cead bhidiothan: lorg an video co-fhreagarrach aig photo beò le dà fhaidhle
+• Cead ionaid: glèidheadh metadata ionad GPS nam broinn nan dealbhan (ma tha e a dhìth, caillidh na dealbhan am fiosrachadh ionaid às dèidh an tionndaidh)
+
+Às dèidh dhiùltadh, cha ghabh an roghnaichear na bhroinn a chleachdadh; faodar cead ath-thoirt le briogadh ath-uair air "Cuir faidhlichean ris".</string>
+    <string name="main_dialog_settings_title">Feumaidh cead leughadh dhealbhan agus bhidiothan air a thoirt seachad le làimh</string>
+    <string name="main_dialog_settings_message">Thagh tu "Na faighnich tuilleadh" roimhe; cha nochd còmhracaidh cead bhon t-siostam tuilleadh.
+
+Tagh ionad na h-aplacaide → Cead → Dealbhan agus bhidiothan, thoir seachad an cead le làimh agus till dhan aplacaid seo.
+
+Cum an aire: feumaidh cead "Dealbhan" agus cead "Bhidiothan" an dà chuid air an toirt seachad, oir cha ghabh photo bheò le dà fhaidhle an video co-fhreagarrach a lorg eile.</string>
+    <string name="main_dialog_allfiles_title_delete">Tha sguabadh às gu fèin-ghluasadach de na faidhlichean tùsail feumach air "Inntrigeadh do gach faidhle"</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Chan eil an t-uidheam seo a\' taic sguabadh às gu fèin-ghluasadach de na faidhlichean tùsail</string>
+    <string name="main_dialog_allfiles_title_replace">Tha am modh ion-mhalairt feumach air "Inntrigeadh do gach faidhle"</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Chan eil an t-uidheam seo a\' taic am modh ion-mhalairt</string>
+    <string name="main_dialog_allfiles_title_location">Mholaidh sinn cead "Inntrigeadh do gach faidhle" a thoirt seachad</string>
+    <string name="main_dialog_allfiles_delete_message">Sguabaidh "Sguab às an dealbh thùsail às dèidh pròiseasadh" às dìreach na faidhlichean tùsail air an diosc (an dealbh agus a video co-fhreagarrach); chan ghabh an gnìomh seo a thilleadh, agus mar sin feumaidh cead "Inntrigeadh do gach faidhle" a bhith air a thoirt seachad an-toiseach.
+
+Às dèidh cead a thoirt seachad, bidh an roghainn seo ri làimh airson a chur air.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Chan eil an t-siostam làithreach (Android 10 agus nas òige) a\' tabhann cead "Inntrigeadh do gach faidhle", agus cha ghabh faidhlichean tùsail air an diosc sguabadh às gu dìreach; mar sin chan eil an t-uidheam seo a\' taic "Sguab às an dealbh thùsail às dèidh pròiseasadh".
+
+Às dèidh an tionndaidh, faodar na faidhlichean tùsail a ghlanadh le làimh tro albam an t-siostaim.</string>
+    <string name="main_dialog_allfiles_replace_message">Sgrìobhaidh am "modh ion-mhalairt" toradh an tionndaidh gu dìreach air ais dhan fhaidhle thùsail air an diosc (a\' cur thairis an t-susbaint thùsail); chan ghabh an gnìomh seo a thilleadh, agus mar sin feumaidh cead "Inntrigeadh do gach faidhle" a bhith air a thoirt seachad an-toiseach.
+
+Às dèidh cead a thoirt seachad, bidh an roghainn seo ri làimh airson a chur air.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Chan eil an t-siostam làithreach (Android 10 agus nas òige) a\' tabhann cead "Inntrigeadh do gach faidhle", agus cha ghabh faidhlichean tùsail air an diosc ath-sgrìobhadh gu dìreach; mar sin chan eil an t-uidheam seo a\' taic am "modh ion-mhalairt".
+
+Faodar an tionndadh a chumail air adhart leis an dòigh bhunaiteach; thèid an toradh a chur gu pasgan an albaim.</string>
+    <string name="main_dialog_allfiles_location_message">Air cuid de ghoireasan (me Meizu), thèid am fiosrachadh ionad GPS dhubhadh às nuair a thèid sgrìobhadh tro eadar-aghaidh albam an t-siostaim, gus an caill na dealbhan an ionad às dèidh an tionndaidh.
+
+Às dèidh cead "Inntrigeadh do gach faidhle" a thoirt seachad, sgrìobhaidh an aplacaid seo dìreach gu pasgan an albaim agus glèidhidh e metadata an ionaid gu làn.
+
+Gun cead gabhaidh an tionndadh air adhart fhathast; air cuid de ghoireasan dh\'fhaoidte gum bi am fiosrachadh ionaid air chall.</string>
+    <string name="main_dialog_conflict_title">Co-rèiteach ainm faidhle às-chuir</string>
+    <string name="main_dialog_conflict_message">Tha faidhle leis an ainm co-ionann am broinn phasgan às-chuir mu thràth:
+%1$s
+
+Tagh dòigh giùlain.</string>
+    <string name="main_label_conflict_always">Cleachd an dòigh giùlain seo airson co-rèiteachan ri teachd</string>
+    <string name="main_btn_grant">Thoir cead</string>
+    <string name="main_btn_deny">Diùlt</string>
+    <string name="main_btn_go_settings">Rach dhan roghainnean</string>
+    <string name="main_btn_cancel">Sguir dheth</string>
+    <string name="main_btn_grant_access">Rach a thoir cead</string>
+    <string name="main_btn_got_it">Ceart gu leòr</string>
+    <string name="main_btn_not_now">Chan ann an-dràsta</string>
+    <string name="main_btn_skip">Leum thairis</string>
+    <string name="main_btn_overwrite">Cur thairis</string>
+    <string name="main_btn_auto_rename">Ath-ainmich gu fèin-ghluasadach</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Chaidh %1$d fhaidhle thùsail a sguabadh às</item>
+        <item quantity="two">Chaidh %1$d fhaidhle thùsail a sguabadh às</item>
+        <item quantity="few">Chaidh %1$d faidhlichean tùsail a sguabadh às</item>
+        <item quantity="other">Chaidh %1$d faidhle thùsail a sguabadh às</item>
+    </plurals>
+    <string name="main_delete_nothing">Chan eil sguabadh às de fhaidhlichean tùsail a dhìth</string>
+    <string name="main_delete_partial">Chaidh %1$d fhaidhle thùsail a sguabadh às (%2$d fàilligeadh sguabaidh às, air an glèidheadh)</string>
+    <string name="main_delete_failed">Dh\'fhàillig sguabadh às nan faidhlichean tùsail (tha am faidhle fo chleachdadh no cha ghabh sgrìobhadh); air an glèidheadh</string>
+    <string name="main_export_missing_output">Tha toradh an tionndaidh a dhìth no falamh: %1$s</string>
+    <string name="main_export_missing_output_bare">Tha toradh an tionndaidh a dhìth no falamh</string>
+    <string name="main_export_insert_null">Thill MediaStore insert null</string>
+    <string name="main_export_output_stream">Chan eil sruth às-chuir MediaStore ri làimh</string>
+    <string name="main_export_write_failed">Dh\'fhàillig sgrìobhadh MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">Cha ghabh pasgan albm %1$s a chruthachadh</string>
+    <string name="main_export_dir_write_failed">Dh\'fhàillig sgrìobhadh gu pasgan albm: %1$s</string>
+    <string name="main_export_no_source">Cha ghabh am faidhle tùsail a lorg; chaidh an ion-mhalairt leum thairis</string>
+    <string name="main_export_companion_failed">Dh\'fhàillig sgrìobhadh air ais dhan fhaidhle co-fhreagarrach: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Chan ghabh pasgan an fhaidhle thùsail sgrìobhadh; cha deach am faidhle co-fhreagarrach air ais sgrìobhadh</string>
+    <string name="main_export_source_dir_unavailable">Chan eil pasgan an fhaidhle thùsail ri làimh: %1$s</string>
+    <string name="main_export_replace_failed">Dh\'fhàillig ion-mhalairt an fhaidhle thùsail: %1$s</string>
+    <string name="main_export_replace_failed_bare">Dh\'fhàillig ion-mhalairt an fhaidhle thùsail</string>
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ລາວ (Lao) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Lao has no grammatical plural; only the 'other' quantity is emitted.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">ບໍ່ໄດ້ຮັບທີ່ຢູ່ດາວໂຫລດ GitHub, ກະລຸນາລອງໃໝ່ພາຍຫຼັງ.</string>
+    <string name="update_flavor_standard">ສະບັບມາດຕະຖານ</string>
+    <string name="update_flavor_go">ສະບັບ Go</string>
+    <string name="update_lanzou_url_missing">ເວີຊັນນີ້ບໍ່ມີລິ້ງດາວໂຫລດ Lanzou Cloud, ສາມາດໃຊ້ GitHub ແທນໄດ້.</string>
+    <string name="update_apk_direct_missing">ເວີຊັນນີ້ບໍ່ມີລິ້ງຊື່ຂອງຊຸດຕິດຕັ້ງທີ່ກົງກັບເວີຊັນນີ້, ກະລຸນາໄປທີ່ໜ້າ Release ຂອງ GitHub ເພື່ອເລືອກ APK ທີ່ຖືກຕ້ອງ.</string>
+    <string name="update_install_permission_missing">ຍັງບໍ່ໄດ້ຮັບສິດ “ຕິດຕັ້ງແອັບທີ່ບໍ່ຮູ້ຈັກ”, ຈຶ່ງຕິດຕັ້ງອັດຕະໂນມັດບໍ່ໄດ້. ກະລຸນາໄປອະນຸຍາດໃນການຕັ້ງຄ່າລະບົບແລ້ວລອງໃໝ່.</string>
+    <string name="update_error_unknown">ຂໍ້ຜິດພາດທີ່ບໍ່ຮູ້ຈັກ</string>
+    <string name="update_fail_lanzou">ການດາວໂຫລດຈາກ Lanzou Cloud ລົ້ມເຫຼວ</string>
+    <string name="update_fail_github">ການດາວໂຫລດຈາກ GitHub ລົ້ມເຫຼວ</string>
+    <string name="update_lanzou_resolving">ກຳລັງແຍກວິເຄາະລິ້ງດາວໂຫລດ Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">ກຳລັງດາວໂຫລດຈາກ Lanzou Cloud…</string>
+    <string name="update_github_downloading">ກຳລັງດາວໂຫລດຈາກ GitHub…</string>
+    <string name="update_unzipping">ກຳລັງແຍກຊຸດຕິດຕັ້ງ…</string>
+    <string name="update_notes_empty">ເວີຊັນນີ້ຍັງບໍ່ມີຄຳອະທິບາຍການອັບເດດ.</string>
+    <string name="update_use_normal_title">ກະລຸນາໃຊ້ສະບັບມາດຕະຖານ</string>
+    <string name="update_use_normal_body">ລະບົບຂອງອຸປະກອນນີ້ເປັນ Android 10 ຫຼື ສູງກວ່າ, ສະບັບ Go ເບົາບໍ່ຮອງຮັບແລ້ວ, ເວີຊັນເກົ່າໃຊ້ຕໍ່ບໍ່ໄດ້.\n\nກວດພົບວ່າອຸປະກອນນີ້ຕິດຕັ້ງສະບັບມາດຕະຖານ (ZLC) ຢູ່ແລ້ວ, ກະລຸນາເປີດສະບັບມາດຕະຖານເພື່ອໃຊ້ຕໍ່ (ເວີຊັນໃໝ່ບໍ່ມີສະບັບທີ່ເຂົ້າກັນກັບ Go ແລ້ວ, ເວີຊັນເກົ່າສາມາດຖອນຕິດຕັ້ງເພື່ອປົດພື້ນທີ່).</string>
+    <string name="update_open_normal">ເປີດສະບັບມາດຕະຖານ</string>
+    <string name="update_must_update_title">ຕ້ອງອັບເດດກ່ອນຈຶ່ງຈະໃຊ້ຕໍ່ໄດ້</string>
+    <string name="update_forced_body">ລະບົບຂອງອຸປະກອນນີ້ເປັນ Android 10 ຫຼື ສູງກວ່າ, ສະບັບ Go ເບົາບໍ່ຮອງຮັບແລ້ວ, ເວີຊັນເກົ່າໃຊ້ຕໍ່ບໍ່ໄດ້; ເວີຊັນໃໝ່ກໍ່ບໍ່ມີສະບັບທີ່ເຂົ້າກັນກັບ Go ແລ້ວ.\n\nກະລຸນາເຊື່ອມຕໍ່ເຄືອຂ່າຍແລ້ວກົດ “ລອງໃໝ່” ເພື່ອຮັບຊຸດຕິດຕັ້ງສະບັບມາດຕະຖານ.</string>
+    <string name="update_retry">ລອງໃໝ່</string>
+    <string name="update_switch_normal_body">ລະບົບຂອງອຸປະກອນນີ້ເປັນ Android 10 ຫຼື ສູງກວ່າ, ສະບັບ Go ເບົາບໍ່ຮອງຮັບແລ້ວ, ເວີຊັນເກົ່າໃຊ້ຕໍ່ບໍ່ໄດ້.\nກະລຸນາດາວໂຫລດ ແລະ ຕິດຕັ້ງສະບັບມາດຕະຖານແລ້ວຈຶ່ງໃຊ້ຕໍ່ (ເວີຊັນໃໝ່ບໍ່ມີສະບັບທີ່ເຂົ້າກັນກັບ Go ແລ້ວ).</string>
+    <string name="update_downloading_title">ດາວໂຫລດການອັບເດດ</string>
+    <string name="update_cancel">ຍົກເລີກ</string>
+    <string name="update_need_permission_title">ຕ້ອງການສິດຕິດຕັ້ງ</string>
+    <string name="update_need_permission_body">ການຕິດຕັ້ງເວີຊັນໃໝ່ຕ້ອງການສິດ “ຕິດຕັ້ງແອັບທີ່ບໍ່ຮູ້ຈັກ” ຂອງລະບົບ.\n\nກົດ “ໄປອະນຸຍາດ”, ອະນຸຍາດໃນການຕັ້ງຄ່າແລ້ວກັບມາທີ່ແອັບ, ຈະສືບຕໍ່ຕິດຕັ້ງອັດຕະໂນມັດ (ບໍ່ຕ້ອງດາວໂຫລດຄືນໃໝ່).</string>
+    <string name="update_grant">ໄປອະນຸຍາດ</string>
+    <string name="update_notice_title">ແຈ້ງເຕືອນ</string>
+    <string name="update_got_it">ເຂົ້າໃຈແລ້ວ</string>
+    <string name="update_notes_title">v%1$s · ຄຳອະທິບາຍການອັບເດດ</string>
+    <string name="update_back">ກັບຄືນ</string>
+    <string name="update_title_switch_normal">ປ່ຽນໄປສະບັບມາດຕະຖານ</string>
+    <string name="update_title_reinstall">ຕິດຕັ້ງເວີຊັນນີ້ຄືນໃໝ່</string>
+    <string name="update_title_new_version">ພົບເວີຊັນໃໝ່</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">ຈະດາວໂຫລດ ແລະ ຕິດຕັ້ງເວີຊັນນີ້ຄືນໃໝ່ (ຂຽນທັບແອັບປັດຈຸບັນ).\nຄຸນສົມບັດນີ້ໃຊ້ສຳລັບທົດສອບການອັບເດດແບບຍ້ອນກັບ.</string>
+    <string name="update_view_notes">ເບິ່ງຄຳອະທິບາຍການອັບເດດ</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud ໃຊ້ບໍ່ໄດ້ຊົ່ວຄາວ</string>
+    <string name="update_download_lanzou">ດາວໂຫລດຈາກ Lanzou Cloud</string>
+    <string name="update_download_github">ດາວໂຫລດຈາກ GitHub</string>
+    <string name="update_download_browser">ດາວໂຫລດຈາກບຣາວເຊີ</string>
+    <string name="update_later">ອັບເດດພາຍຫຼັງ</string>
+    <string name="update_later_switch">ປ່ຽນພາຍຫຼັງ</string>
+    <string name="update_skip_version">ຂ້າມເວີຊັນນີ້</string>
+</resources>

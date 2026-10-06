@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Татарча (Tatar) strings.
+  Convert / transcode / reminders (core/Converter.kt, core/FfmpegAddon.kt, ui/Reminders.kt).
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline, the fallback locale).
+  Tatar (Cyrillic); best-effort translation, a native review pass is recommended.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: параметрлар һәм материалларны тикшерү (хата → интерфейста сәбәп күрсәтелә) ========== -->
+    <string name="conv_unknown_target">Билгесез максат форматы: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Танылмаган хәрәкәтле фото форматы (Google/OPPO/vivo/Xiaomi/Apple хәрәкәтле фотосы түгел)</string>
+    <string name="conv_cover_photo_missing">Капкач фотосы юк яки буш</string>
+    <string name="conv_video_missing">Видео юк яки буш</string>
+    <string name="conv_video_too_large">Видео бик зур (%1$d МБ), хәрәкәтле фото ясап булмый; кыскарак видео сайлагыз</string>
+    <string name="conv_transcoded_too_large">Транскодлаганнан соң видео бик зур (%1$d МБ), хәрәкәтле фото ясап булмый</string>
+    <string name="conv_video_too_large_compose">Видео бик зур (%1$d МБ), хәрәкәтле фото ясап булмый</string>
+
+    <!-- Converter.kt: капкач (HEIC / JPEG түгел) -->
+    <string name="conv_cover_heic_go">Капкач HEIC рәсеме (җиңел версия транскодлауны кулламый; iPhone җайланмасында башта JPEG итеп чыгарыгыз, аннан соң әверелдерегез)</string>
+    <string name="conv_cover_invalid_heic">Капкач — дөрес рәсем түгел (HEIC өчен системаның HEIF декодлавы кирәк)</string>
+    <string name="conv_cover_not_jpeg_go">Капкач — JPEG рәсеме түгел (җиңел версия транскодлауны кулламый; JPEG фото кулланыгыз)</string>
+    <string name="conv_cover_invalid_image">Капкач — дөрес рәсем түгел (JPEG/WebP/PNG гына кулланыла)</string>
+
+    <!-- Converter.kt: транскодлау / яңадан төрү хаталары һәм «контейнерны гына алыштыру кодекны төзәтми» искәртүе -->
+    <string name="conv_reencode_failed">Видеоны яңадан кодлау уңышсыз булды: %1$s</string>
+    <string name="conv_remux_failed">Контейнерны яңадан төрү уңышсыз булды: %1$s</string>
+    <string name="conv_codec_unknown">Таныла торган H.264/H.265 видео түгел</string>
+    <string name="conv_codec_is">Кодек — %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">«%1$s» видеосы %2$s; контейнерны гына алыштыру (яңадан төрү) кодекны үзгәртә алмый, шуңа күрә хәрәкәтле фото ясап булмый.\n\n«Көйләүләр → Видео транскодлау → Транскод ысулы»нда «Яңадан кодлау»ны сайлагыз, яки башка корал белән аны H.264/H.265 MP4 итеп әверелдерегез.</string>
+    <string name="conv_hint_no_encoder">Видео стандарт MP4 контейнерында түгел (MOV / MKV / WebM / AVI һ.б.), ә агымдагы «Транскод ысулы» яңадан кодламый, шуңа күрә хәрәкәтле фото ясап булмый.\n\n«Көйләүләр → Видео транскодлау → Транскод ысулы»нда «Яңадан кодлау»ны сайлагыз (гади версиядә эчке ffmpeg кодлаучысы бар; Go җиңел версиясендә транскодер юк, гади версияне кулланыгыз), яки видеоны башта стандарт MP4 (H.264/H.265) итеп әверелдерегез.</string>
+
+    <!-- ========== Әверелдерү журналы (исемлек юлы халәтендә һәм журнал панелендә күрсәтелә) ========== -->
+    <string name="conv_log_detected">%1$s итеп танылды</string>
+    <string name="conv_log_same_format_copied">Чыганак һәм максат форматлары бер үк; үзгәртмичә күчерелде (югалтусыз)</string>
+    <string name="conv_log_extra_tracks_bypass">Чыганак видеода видео/аудио булмаган юл бар (%1$s); бер үк форматлы туры күчерүне үткәреп җибәреп, чистарту өчен тулы язу юлы кулланылды</string>
+    <string name="conv_log_ts_fallback">Чыганакта капкач кадрының вакыт билгесе юк; стандарт буенча видео уртасына күчелде</string>
+    <string name="conv_log_brand_normalized">Видео контейнеры бренды нормальләштерелде (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Видеода өстәмә юллар бар (%1$s), аларны чистартып булмый; нәтиҗә үзгәртмичә чыгарылды (кайбер модельләрдә бу нәтиҗәне озак басып уйнатып булмаска мөмкин)</string>
+    <string name="conv_log_extra_tracks_removed">Видеоның өстәмә юллары бетерылде (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Чыганак видео %1$s; контейнерны гына яңадан төрү аны төзәтә алмый (%2$s). Нәтиҗәне озак басып уйнатып булмаса, «Көйләүләр → Видео транскодлау → Транскод ысулы»нда «Яңадан кодлау»ны сайлагыз</string>
+    <string name="conv_log_reencoding">Чыганак видео %1$s; альбом белән ярашуны яхшырту өчен көйләү буенча 8bit + AAC итеп яңадан кодлана</string>
+    <string name="conv_log_reencode_result_unusable">Яңадан кодлау нәтиҗәсе яраксыз; үзгәртмичә чыгарылды (кайбер модельләрдә бу нәтиҗәне озак басып уйнатып булмаска мөмкин)</string>
+    <string name="conv_log_reencode_still_risky">Яңадан кодлаганнан соң да куркыныч факторлар калды (%1$s)</string>
+    <string name="conv_log_reencode_failed">Яңадан кодлау уңышсыз (%1$s); үзгәртмичә чыгарылды (кайбер модельләрдә бу нәтиҗәне озак басып уйнатып булмаска мөмкин)</string>
+    <string name="conv_log_cover_heic_converted">Капкач HEIC иде (JPEG түгел), эшкәртү алдыннан стандарт JPEG итеп транскодланды</string>
+    <string name="conv_log_compose_sizes">Берләштерү: фото %1$d Б + видео %2$d Б → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Транскодер кушылмаган: контейнер бренды гына үзгәртелә (MOV → MP4), яңадан кодламый</string>
+
+    <!-- Журнал билгеләре (интерфейста «[билге] текст» рәвешендә күрсәтелә) -->
+    <string name="conv_tag_convert">Әверелдерү</string>
+    <string name="conv_tag_transcode">Транскодлау</string>
+    <string name="conv_tag_compose">Берләштерү</string>
+
+    <!-- Транскод ысулының тоткарлау сәбәпләре (өстәге кисәтүләргә өстәлә) -->
+    <string name="conv_blocker_no_encoder">Эчке транскодер эшләми</string>
+    <string name="conv_blocker_mode_no_encode">Агымдагы «Транскод ысулы» яңадан кодламый</string>
+
+    <!-- ========== FfmpegAddon.kt: эчке ffmpeg транскодлавы / яңадан төрү ========== -->
+    <string name="conv_addon_unavailable">Эчке транскодер эшләми</string>
+    <string name="conv_addon_transcode_failed">ffmpeg транскодлавы уңышсыз булды: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg контейнерны яңадан төрү уңышсыз булды: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Видео ffmpeg белән стандарт MP4 итеп транскодлана (%1$s / crf %2$d / %3$s, видео һәм аудио юллары гына саклана)</string>
+    <string name="conv_log_transcode_done">Видео транскодлау тәмамланды (%1$d КБ)</string>
+    <string name="conv_log_remuxing">Видео контейнеры стандарт MP4 итеп яңадан төрәлә (контейнер гына, яңадан кодламый)</string>
+    <string name="conv_log_remux_done">Контейнерны яңадан төрү тәмамланды (%1$d КБ)</string>
+
+    <!-- ========== Reminders.kt: «Инде күрсәтмәү» тәрәзәләре ========== -->
+    <string name="conv_reminder_cat_compose">Берләштерү</string>
+    <string name="conv_reminder_cat_convert">Әверелдерү</string>
+    <string name="conv_reminder_cat_update">Яңарту</string>
+    <string name="conv_reminder_video_over3s_title">Видео 3 секундтан артык</string>
+    <string name="conv_reminder_video_over3s_message">Сайланган видео 3 секундтан артык, шуңа күрә берләштерелгән хәрәкәтле фото белән ярашу проблемалары булырга мөмкин:\n\n• Нормаль уйнамаска мөмкин\n• Система альбомы танымый мөмкин\n• Кайбер модельләр бу хәрәкәтле фотоны танымый мөмкин</string>
+    <string name="conv_reminder_legacy_go_title">Иске версия табылды</string>
+    <string name="conv_reminder_legacy_go_message">Бу җайланмада кушымтаның иске версиясе (Go версиясе) әле дә урнаштырылган; ул бу җайланмада эшләми, урын бушату өчен бетереп ташларга мөмкин.</string>
+    <string name="conv_reminder_replace_risk_title">Алыштыру режимында бозу куркынычы бар</string>
+    <!-- formatted="false": эчтәлегендә бары тик әдәби процент билгесе (100%) бар һәм ул формат аргументлары белән кулланылмый,
+         шуңа күрә аны формат булмаган юл итеп белдерү aapt2/lint ның String.format буенча тикшерүен булдырмый. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Алыштыру режимы әверелдерү нәтиҗәсен турыдан-туры иске файлга яза; иске файл өстенә язылганнан соң аны кире кайтарып булмый.\n\n• Язу вакытында кушымта өзелсә, саклау урыны җитмәсә яки рөхсәт кире алынса, чыганак файл бозылырга мөмкин\n• Бернинди дә әверелдерү һәрвакыт уңышлы була дип гарантияләнми; уңышсыз булганда чыганак файл инде яраксыз булырга мөмкин\n• Башта бер-ике файлда сынап карагыз, яраклы булгач кына төркемләп эшкәртегез\n• Мөһим фотоларны алдан үзегез саклагыз\n\nБу мөмкинлек «ничек бар» килеш бирелә; куллану куркынычын үзегез күтәрегез, автор файл бозылуы яки югалуы өчен җавап бирми.</string>
+    <string name="conv_reminder_dont_remind">Инде күрсәтмәү</string>
+    <string name="conv_reminder_confirm_ok">Аңлашылды</string>
+    <string name="conv_reminder_uninstall">Бетерү</string>
+
+</resources>

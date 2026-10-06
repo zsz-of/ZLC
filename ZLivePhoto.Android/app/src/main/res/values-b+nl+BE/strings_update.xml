@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Nederlands (België) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Belgisch-Nederlandse variant met eigen woordkeuze ("toestemming", "Klaar", "Leegmaken").
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+
+    <!-- ========== Lanzou-deellink en omzetten van de directe link ========== -->
+    <string name="update_lanzou_gone">De Lanzou-deellink is ingetrokken of het bestand bestaat niet. Gebruik GitHub om te downloaden</string>
+    <string name="update_lanzou_gone_short">De Lanzou-deellink is ingetrokken. Gebruik GitHub om te downloaden</string>
+    <string name="update_lanzou_resolve_failed">Kan de downloadlink van Lanzou niet verwerken</string>
+    <string name="update_lanzou_need_passwd">Deze Lanzou-deellink vereist een toegangscode. Gebruik GitHub om te downloaden (of zoek de toegangscode in de release-opmerkingen)</string>
+    <string name="update_lanzou_wrong_passwd">Onjuiste toegangscode voor Lanzou</string>
+    <string name="update_err_resolve_failed">Verwerken mislukt</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Anti-scrapingcontrole van Lanzou mislukt</string>
+    <string name="update_err_no_frame">Kan de downloadpagina van Lanzou niet verwerken (geen downloadframe gevonden)</string>
+    <string name="update_err_no_file_id">Kan de bestandsidentificatie van Lanzou niet verwerken</string>
+    <string name="update_err_no_sign">Kan de handtekening van Lanzou niet verwerken</string>
+    <string name="update_err_ajax_request">Verzoek aan de interface mislukt</string>
+    <string name="update_err_api_request">Verzoek aan de Lanzou-API mislukt</string>
+    <string name="update_err_empty_direct">Lanzou gaf een leeg downloadadres terug</string>
+    <string name="update_err_direct_expired">Het downloadadres van Lanzou is verlopen. Vraag een nieuw adres aan</string>
+    <string name="update_err_http_request">Verzoek mislukt (HTTP %1$d)</string>
+
+    <!-- ========== Downloaden ========== -->
+    <string name="update_err_connect">Kan geen verbinding maken met de downloadserver: %1$s</string>
+    <string name="update_err_http">Downloaden mislukt (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Kan geen downloadverbinding tot stand brengen</string>
+    <string name="update_err_empty">De gedownloade inhoud is leeg</string>
+    <string name="update_err_incomplete">Download onvolledig (%1$d van %2$d bytes ontvangen). Download opnieuw</string>
+    <string name="update_err_interrupted">Download onderbroken: %1$s</string>
+
+    <!-- ========== Controle en installatie van het pakket ========== -->
+    <string name="update_err_not_apk">Het gedownloade bestand is geen geldig installatiepakket (misschien een webpagina of de link is verlopen). Download opnieuw of gebruik GitHub.</string>
+    <string name="update_err_apk_incomplete">De inhoud van het installatiepakket is onvolledig. Download opnieuw of gebruik GitHub.</string>
+    <string name="update_err_apk_unparsable">Kan het installatiepakket niet verwerken (download waarschijnlijk onvolledig). Download opnieuw of gebruik GitHub.</string>
+    <string name="update_err_no_install_permission">De toestemming "onbekende apps installeren" is nog niet gegeven</string>
+    <string name="update_err_installer_failed">Kan de systeeminstallatie niet starten (%1$s). Open het pakket handmatig via de bestandsbeheerder</string>
+
+</resources>

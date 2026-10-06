@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Sardinian (sc) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Formatu de destinatzione disconnotu: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Formatu de Live Photo disconnotu (non est una Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Sa foto de coberidora non esistit o est bòida</string>
+    <string name="conv_video_missing">Su vìdeo non esistit o est bòidu</string>
+    <string name="conv_video_too_large">Su vìdeo est tropu mannu (%1$d MB), non si podet cumponere una Live Photo; sebera unu vìdeo prus curtzu</string>
+    <string name="conv_transcoded_too_large">A pustis de sa transcodìfica su vìdeo est ancora tropu mannu (%1$d MB); non si podet cumponere sa Live Photo</string>
+    <string name="conv_video_too_large_compose">Su vìdeo est tropu mannu (%1$d MB); non si podet cumponere sa Live Photo</string>
+    <string name="conv_cover_heic_go">Sa coberidora est un’immàgine HEIC (sa versione lèbia non suportat sa transcodìfica; esporta·lla in JPEG dae s’iPhone e torra·lla a convertire)</string>
+    <string name="conv_cover_invalid_heic">Sa coberidora no est un’immàgine vàlida (su HEIC rechedet chi su sistema suportet sa descodificatzione HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">Sa coberidora no est un’immàgine JPEG (sa versione lèbia non suportat sa transcodìfica; imprea una foto JPEG)</string>
+    <string name="conv_cover_invalid_image">Sa coberidora no est un’immàgine vàlida (suportadas petzi JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Sa torrada a codificare de su vìdeo est fallida: %1$s</string>
+    <string name="conv_remux_failed">Sa torrada a ammuntu de su contenidore est fallida: %1$s</string>
+    <string name="conv_codec_unknown">No est unu vìdeo H.264/H.265 reconnoschìbile</string>
+    <string name="conv_codec_is">Sa codificatzione est %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Su vìdeo «%1$s» %2$s; cambiare petzi su contenidore (torrare a ammuntare) non cambiat sa codificatzione, duncas non si podet cumponere sa Live Photo.\n\nIn «Cunfiguratzione → Transcodìfica de vìdeo → Modu de transcodìfica» càmbia·ddu a «Torrare a codificare», o a primu cunverti·ddu cun un’àteru massàrgiu in unu MP4 cun codificatzione H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Su vìdeo no est in unu contenidore MP4 istandard (MOV / MKV / WebM / AVI etc.), e su «Modu de transcodìfica» atuale no torrat a codificare, duncas non si podet cumponere sa Live Photo.\n\nIn «Cunfiguratzione → Transcodìfica de vìdeo → Modu de transcodìfica» càmbia·ddu a «Torrare a codificare» (sa versione normale tenet unu codificadore ffmpeg integradu; sa versione lèbia Go non tenet transcodificadore, imprea sa versione normale), o a primu cunverti su vìdeo in unu MP4 istandard (H.264/H.265).</string>
+    <string name="conv_log_detected">Reconnoschidu comente %1$s</string>
+    <string name="conv_log_same_format_copied">Formadu de orìgine e de destinatzione idènticos, copiadu comente est (chene pèrdidas)</string>
+    <string name="conv_log_extra_tracks_bypass">Su vìdeo de orìgine tenet tresas chi no sunt àudio/vìdeo (%1$s); si brinchit su passadzu diretu cun su matessi formadu e si impreat su protzessu cumpleu de iscritura pro los netzare</string>
+    <string name="conv_log_ts_fallback">Su vìdeo de orìgine non tenet sa marca de tempus de su quadru de coberidora; segundu sa norma si torrat a su tzentru de su vìdeo</string>
+    <string name="conv_log_brand_normalized">S’at normalizadu sa marca de su contenidore de vìdeo (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Su vìdeo tenet tresas agiuntas (%1$s), non si podent netzare; est bessidu comente est (in tzertos modellos diat pòdere èssere chi su resurtadu no si riproduit pretzende·ddu)</string>
+    <string name="conv_log_extra_tracks_removed">S’ant bogadu is tresas agiuntas de su vìdeo (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Su vìdeo de orìgine %1$s; sa torrada a ammuntu ebbia de su contenidore non ddu risolvet (%2$s); si su resurtadu ancora no si riproduit pretzende·ddu, in «Cunfiguratzione → Transcodìfica de vìdeo → Modu de transcodìfica» sebera «Torrare a codificare»</string>
+    <string name="conv_log_reencoding">Su vìdeo de orìgine %1$s; a segunda de sa cunfiguratzione si torrat a codificare a 8bit + AAC pro megiorare sa cumpatibilidade cun s’album</string>
+    <string name="conv_log_reencode_result_unusable">Su resurtadu de sa torrada a codificare no est impreàbile; est bessidu comente est (in tzertos modellos diat pòdere èssere chi su resurtadu no si riproduit pretzende·ddu)</string>
+    <string name="conv_log_reencode_still_risky">A pustis de sa torrada a codificare ancora bi sunt elementos de arriscu (%1$s)</string>
+    <string name="conv_log_reencode_failed">Sa torrada a codificare est fallida (%1$s); est bessidu comente est (in tzertos modellos diat pòdere èssere chi su resurtadu no si riproduit pretzende·ddu)</string>
+    <string name="conv_log_cover_heic_converted">Sa coberidora era HEIC (no JPEG); s’est transcodificada in JPEG istandard in antis de l’ammuntare</string>
+    <string name="conv_log_compose_sizes">Cumponidura: foto %1$d B + vìdeo %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Su transcodificadore no est ativu: si reiscrit petzi sa marca de su contenidore (MOV → MP4), chene torrare a codificare</string>
+    <string name="conv_tag_convert">Cunversione</string>
+    <string name="conv_tag_transcode">Transcodìfica</string>
+    <string name="conv_tag_compose">Cumponidura</string>
+    <string name="conv_blocker_no_encoder">Su transcodificadore integradu no est disponìbile</string>
+    <string name="conv_blocker_mode_no_encode">Su «Modu de transcodìfica» atuale no torrat a codificare</string>
+    <string name="conv_addon_unavailable">Su transcodificadore integradu no est disponìbile</string>
+    <string name="conv_addon_transcode_failed">Sa transcodìfica cun ffmpeg est fallida: %1$s</string>
+    <string name="conv_addon_remux_failed">Sa torrada a ammuntu de su contenidore cun ffmpeg est fallida: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">S’est transcodificande su vìdeo a MP4 istandard cun ffmpeg (%1$s / crf %2$d / %3$s; si mantenent petzi is tresas de vìdeo e àudio)</string>
+    <string name="conv_log_transcode_done">Transcodìfica de su vìdeo cumplitada (%1$d KB)</string>
+    <string name="conv_log_remuxing">S’est torrende a ammuntare su contenidore de su vìdeo a MP4 istandard (si cambi petzi su contenidore, chene torrare a codificare)</string>
+    <string name="conv_log_remux_done">Torrada a ammuntu de su contenidore cumplitada (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Cumponidura</string>
+    <string name="conv_reminder_cat_convert">Cunversione</string>
+    <string name="conv_reminder_cat_update">Atualizatzione</string>
+    <string name="conv_reminder_video_over3s_title">Su vìdeo durat prus de 3 segundos</string>
+    <string name="conv_reminder_video_over3s_message">Su vìdeo seberadu durat prus de 3 segundos, duncas sa Live Photo cumponida diat pòdere tèner problemas de cumpatibilidade:\n\n• Diat pòdere non si riprodùire comente si depet\n• Diat pòdere èssere chi s’album de su sistema non dda reconnoschat\n• Tzertos modellos diant pòdere non reconnòschere custa Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">Rilevada una versione betza</string>
+    <string name="conv_reminder_legacy_go_message">In custu dispositivu ancora b’est installada una versione betza (editzione Go) de s’aplicatzione; sa versione betza como non funtzionat prus in custu dispositivu, dda podes disinstallare pro alliberare ispàtziu.</string>
+    <string name="conv_reminder_replace_risk_title">Su modu de sostitutziune tenet arriscu de dannu</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Su modu de sostitutziune iscrit su resurtadu de sa cunversione derettamente in is files orìginales; a pustis de s’iscritura superiore, is orìginales non si podent torrare a agatare.\n\n• Durante s’iscritura, si s’aplicatzione si firmat a s’improvìsu, s’ispàtziu de archiviatzione acabat o su permissu si bogat, is files de orìgine diant pòdere dannare·si\n• Sa cunversione matessi no garantit sa sartzida totale in totu is casos; si fallit, is files de orìgine diant pòdere èssere giai inservìbiles\n• Cussìgiu: prova a primu cun unu o duos files e, si totu b’at andadu bene, sighi cun s’elaboratzione in massa\n• Faghe copias de seguresa de is fotos importantes in antis\n\nCusta funtzione s’ofrit «comente est»; s’arriscu est tuo, e s’autore no est responsàbile de is files dannados o pèrdidos.</string>
+    <string name="conv_reminder_dont_remind">Non ddu mustrare prus</string>
+    <string name="conv_reminder_confirm_ok">Bene</string>
+    <string name="conv_reminder_uninstall">Disinstalla</string>
+</resources>

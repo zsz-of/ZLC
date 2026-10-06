@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Lombard (lmo) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="screen_app_subtitle">Conversion tra i formad de foto dinamica</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d file</item>
+        <item quantity="other">%1$d file</item>
+    </plurals>
+    <string name="screen_settings">Impostazion</string>
+    <string name="screen_select_output_format">Serniss el formad de sortida</string>
+    <string name="screen_selected">Selinzionad</string>
+    <string name="screen_vivo_single_warning">⚠ I model trop vegg i pòden nò recognoss quest formad</string>
+    <string name="screen_extract_blocked">⚠ In de la cova el gh’è di lavor de compòn: sa pò nò sernì el mod estrazion</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (on file)</string>
+    <string name="screen_format_vivo">vivo (duu file)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Estrazion</string>
+    <string name="screen_toolbox">Cassetta di istrument</string>
+    <string name="screen_batch_import">Importa in bloch</string>
+    <string name="screen_batch_import_desc">Scansiona tuta la galeria e reconoss i foto dinamich in bloch</string>
+    <string name="screen_compose">Compòn i foto dinamich</string>
+    <string name="screen_compose_desc">Serna ona foto e on video e compònnij insema</string>
+    <string name="screen_replace_mode">Mod sostituzion</string>
+    <string name="screen_replace_mode_desc">El risultad de la conversion el vegn scrivud de dritt sora el file original, senza creà di file noeuv</string>
+    <string name="screen_need_all_files_access_hint">El voeur el permess «Access a tucc i file»: struca chì per concedel</string>
+    <string name="screen_agree_and_enable">Acetti e attiva</string>
+    <string name="screen_empty_no_files">Ancamò nissun file giuntad</string>
+    <string name="screen_view_detail">Varda i detaj</string>
+    <string name="screen_add_files">Giunta file</string>
+    <string name="screen_output_format">Formad de sortida: %1$s</string>
+    <string name="screen_delete_original">Scancella l’original quand che l’è finid</string>
+    <string name="screen_need_all_files_access_view">El voeur el permess «Access a tucc i file»: struca per vardà</string>
+    <string name="screen_clear">Neta</string>
+    <string name="screen_stop">Ferma la lavorazion</string>
+    <string name="screen_start_convert">Scomincia la conversion</string>
+    <string name="screen_status_detail">Detaj del stat</string>
+    <string name="screen_long_press_copy">Pressa a long el test par selessionà e copià</string>
+    <string name="screen_copy">Copia</string>
+    <string name="screen_close">Sara</string>
+    <string name="screen_back">Indree</string>
+    <string name="screen_picker_title_select">Serna i foto dinamich</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Scond la copertina de l’album</string>
+    <string name="screen_album_expand_cover">Mostra la copertina de l’album</string>
+    <string name="screen_scanning_progress">Dree a scansionà %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d foto</item>
+    </plurals>
+    <string name="screen_select_all">Selinziona tucc</string>
+    <string name="screen_no_albums">Nissun album disponibil</string>
+    <string name="screen_no_media">El sa troeuva nò foto dinamich</string>
+    <string name="screen_no_media_compose">El sa troeuva nò foto opur video</string>
+    <string name="screen_import">Importa</string>
+    <string name="screen_import_count">Importa %1$d</string>
+    <string name="screen_import_mixed">Importa foto %1$d · video %2$d</string>
+    <string name="screen_search">Serca</string>
+    <string name="screen_search_collapse">Scond la serca</string>
+    <string name="screen_search_hint">Serca per nom</string>
+    <string name="screen_search_clear">Neta la serca</string>
+    <string name="screen_sort_date">Data</string>
+    <string name="screen_sort_size">Dimension</string>
+    <string name="screen_sort_name">Nom</string>
+    <string name="screen_sort_asc">Cresedent</string>
+    <string name="screen_sort_desc">Descredent</string>
+    <string name="screen_date_today">Ancheu</string>
+    <string name="screen_date_yesterday">Ier</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Zulu (zu) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">Kulungile</string>
+    <string name="main_status_location_granted">Imvume yendawo inikeziwe; emva kokuguqula imininingwane ye-GPS yendawo iyagcinwa</string>
+    <string name="main_status_location_denied">Imvume yendawo ayinikezwanga: emva kokuguqula izithombe zolahlekelwa yimininingwane yendawo ye-GPS</string>
+    <string name="main_status_all_files_granted">Imvume yokuthi “Ukufinyelela kuwo wonke amafayela” inikeziwe; ukuguqula kuzobhala ngqo kifolda le-albamu, kugcinwa ngokuphelele imininingwane yendawo</string>
+    <string name="main_status_all_files_denied">Imvume yokuthi “Ukufinyelela kuwo wonke amafayela” ayinikezwanga: kwezinye izinhlobo zamadivayisi kungenzeka imininingwane yendawo ilahleke emva kokuguqula</string>
+    <string name="main_status_read_granted">Imvume yokufunda izithombe namavidiyo inikeziwe</string>
+    <string name="main_status_video_missing">Imvume inikeziwe, kodwa imvume yevidiyo ayikho: ividiyo elihambisanayo lesithombe esinyakazayo samafayela amabili alitholakali</string>
+    <string name="main_status_permission_denied">Imvume ayinikezwanga; ungaphinda uchofoze “Engeza amafayela”</string>
+    <string name="main_status_folder_not_selected">Ifolda ayikhethwanga</string>
+    <string name="main_status_folder_unavailable">Ifolda elikhethiwe ayivuleki (kusekelwa kuphela izindawo zesitoreji zendawo)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Kubuyiswe iseshini edlule (ifayela elingu-%1$d)</item>
+        <item quantity="other">Kubuyiswe iseshini edlule (amafayela angu-%1$d)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Kutholakele ukuthi isikhathi esedlule uhlelo luphume ngokungajwayelekile; uhlu olungaqediwe luhlanjiwe</string>
+    <string name="main_status_compose_blocks_extract">Ulayini luqukethe imisebenzi yokuhlanganisa; awukwazi ukutshintsha ibe yimodi yokukhipha</string>
+    <string name="main_status_replace_off_mutex">Imodi yokubuyisela ivaliwe (azivumelani ne-“Susa isithombe sokuqala emva kokucubungula”)</string>
+    <string name="main_status_delete_needs_all_files">Ukususa ngokuzenzakalela izithombe zokuqala kudinga imvume yokuthi “Ukufinyelela kuwo wonke amafayela”; unike imvume kuqala</string>
+    <string name="main_status_replace_off">Imodi yokubuyisela ivaliwe; impumela yokuguqula ibhalwa kabusha kifolda le-albamu</string>
+    <string name="main_status_replace_needs_all_files">Imodi yokubuyisela idinga imvume yokuthi “Ukufinyelela kuwo wonke amafayela”; unike imvume kuqala</string>
+    <string name="main_status_delete_off_mutex">“Susa isithombe sokuqala emva kokucubungula” kuvaliwe (azivumelani nemodi yokubuyisela)</string>
+    <string name="main_status_loading_albums">Iyalayisha ama-albamu…</string>
+    <string name="main_status_no_albums">Kutholakalanga ialbamu</string>
+    <string name="main_status_compose_no_photo">Isithombe asikhethwanga; ukuhlanganisa akwenzeki</string>
+    <string name="main_status_compose_no_video">Ividiyo alikhethwanga; ukuhlanganisa akwenzeki</string>
+    <string name="main_status_compose_all_added">Izithombe ozikhethe sezisesohlwini</string>
+    <string name="main_status_compose_paired">Izithombe ezingu-%1$d namavidiyo angu-%2$d; ngokwecala elincane kungezwe amapheyi angu-%3$d emisebenzini yokuhlanganisa</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Kungezwe umsebenzi wokuhlanganisa angu-%1$d; uchofoze “Qala ukuguqula” ukuze kuhlanganiswe</item>
+        <item quantity="other">Kungezwe imisebenzi yokuhlanganisa engu-%1$d; uchofoze “Qala ukuguqula” ukuze kuhlanganiswe</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (ifomethi yokukhishwa itshintshiwe ngokuzenzakalela ibe yi-Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Kulayishwa isithombe esabelweyo esingu-%1$d…</item>
+        <item quantity="other">Kulayishwa izithombe ezabelweyo ezingama-%1$d…</item>
+    </plurals>
+    <string name="main_status_import_failed">Ukulayisha kwehlulekile: %1$s</string>
+    <string name="main_status_import_done_partial">Ukulayisha kuqediwe: kuphumelele okungu-%1$d, kwehlule okungu-%2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Ukulayisha kuqediwe: kulayishiwe ifayela elingu-%1$d</item>
+        <item quantity="other">Ukulayisha kuqediwe: kulayishiwe amafayela angu-%1$d</item>
+    </plurals>
+    <string name="main_status_import_stopped">Ukulayisha kumisiwe: kuphumelele okungu-%1$d, kwehlule okungu-%2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Kulayishwa ifayela elingu-%1$d…</item>
+        <item quantity="other">Kulayishwa amafayela angu-%1$d…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Kulayishwa %1$d/%2$d…</string>
+    <string name="main_status_stopping">Kumiswa… (kuyomisa emva kokuphetha ifayela lamanje)</string>
+    <string name="main_status_stopping_import">Ukulayisha kuyamiswa…</string>
+    <string name="main_status_removed">Kususiwe %1$s</string>
+    <string name="main_status_cleared">Kuhlanjiwe</string>
+    <string name="main_status_nothing_to_convert">Akukho ifayela eliguqulwayo</string>
+    <string name="main_status_folder_unreadable">Ifolda elikhethiwe ayifundeki</string>
+    <string name="main_status_scanning_folder">Kuskenjwa ifolda…</string>
+    <string name="main_status_no_images">Kufolda elikhethiwe azitholakali izithombe</string>
+    <string name="main_status_batch_importing">Kulayishwa ngobuningi %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Ukulayisha ngobuningi kumisiwe: kulayishiwe isithombe esinyakazayo esingu-%1$d</item>
+        <item quantity="other">Ukulayisha ngobuningi kumisiwe: kulayishiwe izithombe ezinyakazayo ezingama-%1$d</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Ukulayisha ngobuningi kumisiwe: kulayishiwe isithombe esinyakazayo esingu-%1$d, kweqiwe ifayela elivamile elingu-%2$d</item>
+        <item quantity="other">Ukulayisha ngobuningi kumisiwe: kulayishiwe izithombe ezinyakazayo ezingama-%1$d, kweqiwe amafayela avamile angu-%2$d</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Ukulayisha ngobuningi kuqediwe: kulayishiwe isithombe esinyakazayo esingu-%1$d</item>
+        <item quantity="other">Ukulayisha ngobuningi kuqediwe: kulayishiwe izithombe ezinyakazayo ezingama-%1$d</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Ukulayisha ngobuningi kuqediwe: kulayishiwe isithombe esinyakazayo esingu-%1$d, kweqiwe ifayela elivamile elingu-%2$d</item>
+        <item quantity="other">Ukulayisha ngobuningi kuqediwe: kulayishiwe izithombe ezinyakazayo ezingama-%1$d, kweqiwe amafayela avamile angu-%2$d</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Kumisiwe: kwacubungulwa okungu-%2$d kwamafayela angu-%1$d, kubuyisiwe amafayela omthombo angu-%3$d</string>
+    <string name="main_status_stopped_export">Kumisiwe: kwacubungulwa okungu-%2$d kwamafayela angu-%1$d, kukhishwe kwi-albamu okungu-%3$d</string>
+    <string name="main_status_done_replace_reason">Kuqediwe: kwacubungulwa amafayela angu-%1$d, kubuyisiwe amafayela omthombo angu-%2$d (isizathu: %3$s)</string>
+    <string name="main_status_done_export_reason">Kuqediwe: kwacubungulwa amafayela angu-%1$d, kukhishwe kwi-albamu okungu-%2$d (isizathu: %3$s)</string>
+    <string name="main_status_done_replace">Kuqediwe: kwacubungulwa amafayela angu-%1$d, kubuyisiwe amafayela omthombo angu-%2$d</string>
+    <string name="main_status_done_export">Kuqediwe: kwacubungulwa amafayela angu-%1$d, kukhishwe kwi-albamu okungu-%2$d</string>
+    <string name="main_status_keep_originals">%1$s; imvume yokuthi “Ukufinyelela ngokuphelele kwisitoreji” ayinikezwanga, izithombe zokuqala zigcinwe</string>
+    <string name="main_info_detecting">Kuhlaziywa…</string>
+    <string name="main_info_unrecognized">Ifomethi yesithombe esinyakazayo ayaziwa</string>
+    <string name="main_info_converting">Kuyaguqulwa…</string>
+    <string name="main_info_compose_task">Umsebenzi wokuhlanganisa (uchofoze “Qala ukuguqula” ukuze kuhlanganiswe)</string>
+    <string name="main_info_done_replaced">Kuqediwe (kubuyisiwe amafayela omthombo angu-%1$d)</string>
+    <string name="main_info_done_skipped">Kuqediwe (kweqiwe: ukungqubuzana kwamagama afanayo)</string>
+    <string name="main_info_done_exported">Kuqediwe (kukhishiwe okungu-%1$d)</string>
+    <string name="main_info_failed">Kwehlulekile: %1$s</string>
+    <string name="main_progress_added">Kungezwe %1$d/%2$d</string>
+    <string name="main_progress_processed">Kucubungulwe %1$d/%2$d</string>
+    <string name="main_progress_imported">Kulayishiwe %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Kudinga imvume yokufunda izithombe namavidiyo</string>
+    <string name="main_dialog_permission_message">Lolu hlelo ludinga ukufunda izithombe namavidiyo kudivayisi yakho:\n\n• Imvume yezithombe: iskenja ialbamu ledivayisi, ibona izithombe ezinyakazayo kuyo\n• Imvume yevidiyo: ithola ividiyo elihambisanayo lesithombe esinyakazayo samafayela amabili\n• Imvume yendawo: igcina imetadata ye-GPS yendawo esithombeni (uma ingekho, imininingwane yendawo ilahleka emva kokuguqula)\n\nUma wenqaba, isikhethi esakhelwe ngaphakathi asisebenzi; ungaphinda uchofoze “Engeza amafayela” kamuva ukuze uphinde unikeze imvume.</string>
+    <string name="main_dialog_settings_title">Kudinga imvume yezithombe namavidiyo enikezwe ngesandla</string>
+    <string name="main_dialog_settings_message">Ngaphambilini wakhetha “Ungabuzi futhi”, ngakho isistimu ayiphindi ivule ibhokisi lemvume.\n\nHamba ku-“Ulwazi lohlelo” → Imvume → Izithombe namavidiyo, unikeze ngesandla imvume yokufinyelela bese ubuyela kulolu hlelo.\n\nQaphela: kufanele unikezwe ngesikhathi esisodwa imvume “Izithombe” ne-“Ividiyo”, uma kungenjalo, isithombe esinyakazayo samafayela amabili ngeke sithole ividiyo elihambisanayo salo.</string>
+    <string name="main_dialog_allfiles_title_delete">Ukususa izithombe zokuqala kudinga “Ukufinyelela kuwo wonke amafayela”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Le divayisi ayisekeli ukususa ngokuzenzakalela izithombe zokuqala</string>
+    <string name="main_dialog_allfiles_title_replace">Imodi yokubuyisela idinga “Ukufinyelela kuwo wonke amafayela”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Le divayisi ayisekeli imodi yokubuyisela</string>
+    <string name="main_dialog_allfiles_title_location">Kundunyazwa ukuthi unikeze imvume yokuthi “Ukufinyelela kuwo wonke amafayela”</string>
+    <string name="main_dialog_allfiles_delete_message">“Susa isithombe sokuqala emva kokucubungula” kususa ngqo amafayela okuqala kudiski (isithombe nevidiyo elihambisanayo salo); le nto ayibuyiseleki emuva, ngakho kuqala kufanele unikeze imvume yokuthi “Ukufinyelela kuwo wonke amafayela”.\n\nNgemva kokunikezwa imvume kuphela ishintshi esitholakala, ngesikhathi esizayo uyakwazi ukusivula ngokwezakho.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Isistimu yamanje (Android 10 nangaphansi) ayinikezi imvume yokuthi “Ukufinyelela kuwo wonke amafayela”, ngeke kususwe ngqo amafayela okuqala kudiski, ngakho le divayisi ayisekeli “Susa isithombe sokuqala emva kokucubungula”.\n\nEmva kokuguqula, ungahlanza izithombe zokuqala ngokwenza nge-albamu lesistimu.</string>
+    <string name="main_dialog_allfiles_replace_message">Imodi yokubuyisela ibhala impumela yokuguqula ngqo phezu kwamafayela okuqala kudiski (ibhala phezu kokuqukethwe kokuqala); le nto ayibuyiseleki emuva, ngakho kuqala kufanele unikeze imvume yokuthi “Ukufinyelela kuwo wonke amafayela”.\n\nNgemva kokunikezwa imvume kuphela ishintshi esitholakala, ngesikhathi esizayo uyakwazi ukusivula ngokwezakho.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Isistimu yamanje (Android 10 nangaphansi) ayinikezi imvume yokuthi “Ukufinyelela kuwo wonke amafayela”, ngeke kubhalwa ngqo phezu kwamafayela okuqala kudiski, ngakho le divayisi ayisekeli imodi yokubuyisela.\n\nUngaqhubeka nokuguqula ngendlela ezenzakalelayo; impumela izokhishwa kifolda le-albamu.</string>
+    <string name="main_dialog_allfiles_location_message">Kwezinye izinhlobo zamadivayisi (njengeMeizu), ukubhala nge-API ye-albamu lesistimu kukhipha imininingwane yendawo ye-GPS, okudala ukuthi emva kokuguqula izithombe zilahlekelwe yindawo.\n\nNgemva kokunikezwa “Ukufinyelela kuwo wonke amafayela”, lolu hlelo luzobhala ngqo kifolda le-albamu, lugcine ngokuphelele imetadata yendawo.\n\nNoma inganikezwanga, ukuguqula kusebenza kahle; kwezinye izinhlobo zamadivayisi imininingwane yendawo ingalahleka.</string>
+    <string name="main_dialog_conflict_title">Ukungqubuzana kwamagama amafayela okukhishwa</string>
+    <string name="main_dialog_conflict_message">Kufolda yokukhishwa kunamafayela anamagama afanayo esekhona:\n%1$s\n\nKhetha indlela yokuphatha.</string>
+    <string name="main_label_conflict_always">Sebenzisa le ndlela yokuphatha ekungqubuzeni okuzayo</string>
+    <string name="main_btn_grant">Nika imvume</string>
+    <string name="main_btn_deny">Yala</string>
+    <string name="main_btn_go_settings">Hamba ezilungiselelweni</string>
+    <string name="main_btn_cancel">Khansela</string>
+    <string name="main_btn_grant_access">Hamba unike imvume</string>
+    <string name="main_btn_got_it">Kulungile</string>
+    <string name="main_btn_not_now">Hhayi manje</string>
+    <string name="main_btn_skip">Yeqa</string>
+    <string name="main_btn_overwrite">Bhala phezu kwayo</string>
+    <string name="main_btn_auto_rename">Shintsha igama ngokuzenzakalela</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Kususiwe ifayela lokuqala elingu-%1$d</item>
+        <item quantity="other">Kususiwe amafayela okuqala angu-%1$d</item>
+    </plurals>
+    <string name="main_delete_nothing">Akudingeki ukususa izithombe zokuqala</string>
+    <string name="main_delete_partial">Kususiwe amafayela okuqala angu-%1$d (okungu-%2$d ukususa kwehlulekile, kugciniwe)</string>
+    <string name="main_delete_failed">Ukususa izithombe zokuqala kwehlulekile (ifayela lisetshenziswa noma alinamvume yokubhala); kugciniwe</string>
+    <string name="main_export_missing_output">Impumela yokuguqula ingekho noma ingenalutho: %1$s</string>
+    <string name="main_export_missing_output_bare">Impumela yokuguqula ingekho noma ingenalutho</string>
+    <string name="main_export_insert_null">MediaStore insert ibuyise i-null</string>
+    <string name="main_export_output_stream">Isitriyimu sokukhishwa se-MediaStore asitholakali</string>
+    <string name="main_export_write_failed">Ukubhala ku-MediaStore kwehlulekile: %1$s</string>
+    <string name="main_export_mkdir_failed">Akukwazi ukudala ifolda le-albamu %1$s</string>
+    <string name="main_export_dir_write_failed">Ukubhala kifolda le-albamu kwehlulekile: %1$s</string>
+    <string name="main_export_no_source">Ifayela lomthombo alitholakali; ukubuyisela kweqiwe</string>
+    <string name="main_export_companion_failed">Ukubhala ifayela elihambisanayo kwehlulekile: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Ifolda yefayela lomthombo alibhaleki; ifayela elihambisanayo alibhalelwanga emuva</string>
+    <string name="main_export_source_dir_unavailable">Ifolda yefayela lomthombo alitholakali: %1$s</string>
+    <string name="main_export_replace_failed">Ukubuyisela ifayela lomthombo kwehlulekile: %1$s</string>
+    <string name="main_export_replace_failed_bare">Ukubuyisela ifayela lomthombo kwehlulekile</string>
+</resources>

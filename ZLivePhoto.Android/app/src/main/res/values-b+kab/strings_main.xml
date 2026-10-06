@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Tutlayt taqbaylit (kab).
+  Yettwasuqel seg res/values/strings_*.xml (asnulfu s usebter n tsusnawt, tutlayt n umagrad).
+  Iswiyen ttwamṣadan d umagrad; imetteg (%1$s / %1$d) d yimeslayen n uɣtu qqimen am akken.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- ── Afeggag n waddad / izuwag ── -->
+    <string name="main_status_ready">Yewjed</string>
+    <string name="main_status_location_granted">Tasiragt n wadig tettwaf; isefka n GPS ad ḥerzen mbaɛd asefli</string>
+    <string name="main_status_location_denied">Tasiragt n wadig ur tettwaf ara: tiwlafin yettwaseflen ad ṣṣfent isefka n wadig GPS</string>
+    <string name="main_status_all_files_granted">«Anekcum ɣer akk ifula» yettwaf; asefli ad yaru srid ɣer ukaram n tgalri syen ad yeḥrez akk isefka n wadig</string>
+    <string name="main_status_all_files_denied">«Anekcum ɣer akk ifula» ur yettwaf ara: kra n yilugan zemren ad ṣṣfent isefka n wadig mbaɛd asefli</string>
+    <string name="main_status_read_granted">Tasiragt n tɣuri n tiwlafin d tividyutin tettwaf</string>
+    <string name="main_status_video_missing">Tettwaf, maca tasiragt n tvidyut tekkes: ur nezmir ara ad nafeɣ tividyutin yeddan n Live Photo s sin ifula</string>
+    <string name="main_status_permission_denied">Tasiragt ur tettwaf ara; tzemreḍ ad tsitteḍ ɣef «Rnu ifula» tikelt-nniḍen</string>
+    <string name="main_status_folder_not_selected">Ulac akaram yettwafren</string>
+    <string name="main_status_folder_unavailable">Ur yezmir ara ad yekcem ɣer wakaram yettwafren (ikaramen n uselkim kan i yettwaqbalen)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Yettwales tɣimit taneggarut (%1$d afaylu)</item>
+        <item quantity="other">Yettwales tɣimit taneggarut (%1$d ifula)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Yettwaf tuffɣa tucḍa n tikkelt-nniḍen; tabdart ur tekmiẓ ara tettwasfeḍ</string>
+    <string name="main_status_compose_blocks_extract">Tandint tesεa tixḍarin n usnulfu; ur yezmir ara ad yettwabeddel ɣer wudem n usuffeɣ</string>
+    <string name="main_status_replace_off_mutex">Amezruy n ubeddel yettwasefsex (yemgarad d «Kkes tiwlafin tigejdanin mbaɛd asluɣu»)</string>
+    <string name="main_status_delete_needs_all_files">Tukksa tawurmant n tiwlafin tigejdanin tesra «anekcum ɣer akk ifula»; sireg-it zdat</string>
+    <string name="main_status_replace_off">Amezruy n ubeddel yettwasefsex; igmaḍ n usefli ad ttwarun ɣer ukaram n tgalri tikelt-nniḍen</string>
+    <string name="main_status_replace_needs_all_files">Amezruy n ubeddel yesra «anekcum ɣer akk ifula»; sireg-it zdat</string>
+    <string name="main_status_delete_off_mutex">«Kkes tiwlafin tigejdanin mbaɛd asluɣu» yettwasefsex (yemgarad d umezruy n ubeddel)</string>
+    <string name="main_status_loading_albums">Asali n yalbumen…</string>
+    <string name="main_status_no_albums">Ulac album yettwafen</string>
+    <string name="main_status_compose_no_photo">Ulac tawlaft yettwafren; ur yezmir ara ad yettwasnulfu</string>
+    <string name="main_status_compose_no_video">Ulac tavidyut tettwafren; ur yezmir ara ad yettwasnulfu</string>
+    <string name="main_status_compose_all_added">Akk tiwlafin yettwafren llant yakan deg tabdart</string>
+    <string name="main_status_compose_paired">%1$d tiwlafin, %2$d tividyutin; ɣef wammas ameẓẓi tettwarna %3$d tixḍarin n usnulfu</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Yettwarna %1$d taxḍart n usnulfu; sit ɣef «Bdu asefli» akken ad tesnulfu</item>
+        <item quantity="other">Yettwarna %1$d tixḍarin n usnulfu; sit ɣef «Bdu asefli» akken ad tesnulfu</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (format n usuffeɣ yettwabeddel awurman ɣer Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Import n %1$d tugna yettwabḍan…</item>
+        <item quantity="other">Import n %1$d tugniwin yettwabḍan…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import ur yeddi ara: %1$s</string>
+    <string name="main_status_import_done_partial">Import yekfa: %1$d yedda, %2$d ur yeddi ara</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import yekfa: yettwimporti %1$d afaylu</item>
+        <item quantity="other">Import yekfa: yettwimporti %1$d ifula</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import yettwaḥbes: %1$d yedda, %2$d ur yeddi ara</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Yettwimporti %1$d afaylu…</item>
+        <item quantity="other">Yettwimporti %1$d ifula…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Yettwimporti %1$d/%2$d…</string>
+    <string name="main_status_stopping">Yettwaḥbes… (ad yeḥbes mbaɛd ma yekfa ufaylu n tura)</string>
+    <string name="main_status_stopping_import">Yettwaḥbes uimport…</string>
+    <string name="main_status_removed">Yettwakkes %1$s</string>
+    <string name="main_status_cleared">Yettwasfeḍ</string>
+    <string name="main_status_nothing_to_convert">Ulac afaylu yezmer ad yettwasefli</string>
+    <string name="main_status_folder_unreadable">Ur yezmir ara ad iɣer akaram yettwafren</string>
+    <string name="main_status_scanning_folder">Yettwasakan ukaram…</string>
+    <string name="main_status_no_images">Ulac tugna yettwafen deg ukaram yettwafren</string>
+    <string name="main_status_batch_importing">Import s ugeraw %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Import s ugeraw yettwaḥbes: yettwimporti %1$d Live Photo</item>
+        <item quantity="other">Import s ugeraw yettwaḥbes: yettwimporti %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Import s ugeraw yettwaḥbes: yettwimporti %1$d Live Photo, yettwazgel %2$d ifula mačči d Live Photo</item>
+        <item quantity="other">Import s ugeraw yettwaḥbes: yettwimporti %1$d Live Photo, yettwazgel %2$d ifula mačči d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Import s ugeraw yekfa: yettwimporti %1$d Live Photo</item>
+        <item quantity="other">Import s ugeraw yekfa: yettwimporti %1$d Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Import s ugeraw yekfa: yettwimporti %1$d Live Photo, yettwazgel %2$d ifula mačči d Live Photo</item>
+        <item quantity="other">Import s ugeraw yekfa: yettwimporti %1$d Live Photo, yettwazgel %2$d ifula mačči d Live Photo</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Yettwaḥbes: seg %1$d ifula, %2$d ttwaseɣlin syen %3$d ifula n tɣawsa ttwabeddlen</string>
+    <string name="main_status_stopped_export">Yettwaḥbes: seg %1$d ifula, %2$d ttwaseɣlin syen %3$d ttwaffɣen ɣer tgalri</string>
+    <string name="main_status_done_replace_reason">Yekfa: %1$d ifula ttwaseɣlin, %2$d ifula n tɣawsa ttwabeddlen (ssebba: %3$s)</string>
+    <string name="main_status_done_export_reason">Yekfa: %1$d ifula ttwaseɣlin, %2$d ttwaffɣen ɣer tgalri (ssebba: %3$s)</string>
+    <string name="main_status_done_replace">Yekfa: %1$d ifula ttwaseɣlin, %2$d ifula n tɣawsa ttwabeddlen</string>
+    <string name="main_status_done_export">Yekfa: %1$d ifula ttwaseɣlin, %2$d ttwaffɣen ɣer tgalri</string>
+    <string name="main_status_keep_originals">%1$s; «Anekcum aččuran n tkatut» ur yettwaf ara, ihi tiwlafin tigejdanin ḥerzent</string>
+
+    <!-- ── Talqayt n ifula n tabdart ── -->
+    <string name="main_info_detecting">Yettwasnirem…</string>
+    <string name="main_info_unrecognized">Format n Live Photo arussin</string>
+    <string name="main_info_converting">Asefli…</string>
+    <string name="main_info_compose_task">Taxḍart n usnulfu (sit ɣef Bdu asefli akken ad tesnulfu)</string>
+    <string name="main_info_done_replaced">Yekfa (%1$d ifula n tɣawsa ttwabeddlen)</string>
+    <string name="main_info_done_skipped">Yekfa (yettwazgel: amgarad n yisem)</string>
+    <string name="main_info_done_exported">Yekfa (%1$d ttwaffɣen)</string>
+    <string name="main_info_failed">Yecceḍ: %1$s</string>
+
+    <!-- ── Talqayt n uslallu ── -->
+    <string name="main_progress_added">Yettwarna %1$d/%2$d</string>
+    <string name="main_progress_processed">Yettwaseɣli %1$d/%2$d</string>
+    <string name="main_progress_imported">Yettwimporti %1$d/%2$d</string>
+
+    <!-- ── Isfuyla n tsiregt ── -->
+    <string name="main_dialog_permission_title">Tesra tasiragt n tɣuri n tiwlafin d tividyutin</string>
+    <string name="main_dialog_permission_message">Asnas-a yesra ad iɣer tiwlafin d tividyutin deg yalugan-ik:\n\n• Tasiragt n tiwlafin: sakan tgalri n yalugan syen ssan Live Photo yellan deg-s\n• Tasiragt n tividyutin: nadi tividyutin yeddan n Live Photo s sin ifula\n• Tasiragt n wadig: ḥrez isefka n GPS deg tiwlafin (ma tsent, tiwlafin yettwaseflen ad ṣṣfent isefka n wadig)\n\nMa tagiḍ, amsuffeɣ agejdan ur yettwasqdec ara; tzemreḍ ad tsitteḍ ɣef «Rnu ifula» tikelt-nniḍen i usireg.</string>
+    <string name="main_dialog_settings_title">Tasiragt n tiwlafin d tividyutin yessefk ad tettwaf s ufus</string>
+    <string name="main_dialog_settings_message">Textriḍ zdat «Ur steqsi ara tikelt-nniḍen», ihi anagraw ur d-yessufɣ ara asfaylu n tsiregt.\n\nDdu ɣer usebter n usnas → Tisiragin → Tiwlafin d tividyutin, sireg s ufus syen uɣal ɣer usnas-a.\n\nTamawt: yessefk ad tsiregeḍ ula d «Tiwlafin» ula d «Tividyutin», aneɣni Live Photo s sin ifula ur yezmir ara ad yafe tividyutin yeddan.</string>
+
+    <!-- ── Asfaylu n tsiregt «Anekcum ɣer akk ifula» ── -->
+    <string name="main_dialog_allfiles_title_delete">Tukksa tawurmant n tiwlafin tigejdanin tesra «anekcum ɣer akk ifula»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Alugan-a ur yettwaqbal ara tukksa tawurmant n tiwlafin tigejdanin</string>
+    <string name="main_dialog_allfiles_title_replace">Amezruy n ubeddel yesra «anekcum ɣer akk ifula»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Alugan-a ur yettwaqbal ara amezruy n ubeddel</string>
+    <string name="main_dialog_allfiles_title_location">Yettwasyar ad tsiregeḍ «anekcum ɣer akk ifula»</string>
+    <string name="main_dialog_allfiles_delete_message">«Kkes tiwlafin tigejdanin mbaɛd asluɣu» ad yekkes srid ifula n tɣawsa deg uḍebsi (tawlaft d tavidyut-is yeddan). Ayagi ur yezmir ara ad yettwales, ihi «anekcum ɣer akk ifula» yessefk ad yettwaf zdat.\n\nAmsedday ad yeddu kan mbaɛd ma tsiregeḍ; tzemreḍ ad tessedday-it s ufus.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Anagraw n tura (Android 10 neɣ ddaw) ur yefk ara «anekcum ɣer akk ifula», ihi ifula n tɣawsa deg uḍebsi ur zmiren ara ad ttwakkesen srid; alugan-a ihi ur yettwaqbal ara «Kkes tiwlafin tigejdanin mbaɛd asluɣu».\n\nTzemreḍ ad tesfeḍeḍ tiwlafin tigejdanin s ufus deg tgalri n unagraw mbaɛd asefli.</string>
+    <string name="main_dialog_allfiles_replace_message">«Amezruy n ubeddel» ad yaru agmuḍ n usefli srid ɣer ifula n tɣawsa deg uḍebsi (ad yefsex agbur-nsen). Ayagi ur yezmir ara ad yettwales, ihi «anekcum ɣer akk ifula» yessefk ad yettwaf zdat.\n\nAmsedday ad yeddu kan mbaɛd ma tsiregeḍ; tzemreḍ ad tessedday-it s ufus.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Anagraw n tura (Android 10 neɣ ddaw) ur yefk ara «anekcum ɣer akk ifula», ihi ifula n tɣawsa deg uḍebsi ur zmiren ara ad ttwaredsen srid; alugan-a ihi ur yettwaqbal ara «Amezruy n ubeddel».\n\nTzemreḍ ad tkemmleḍ asefli s wudem n tazwara; igmaḍ ad ttwarun ɣer ukaram n tgalri.</string>
+    <string name="main_dialog_allfiles_location_message">Deg kra n yilugan (amedya Meizu), tira s unekcum n tgalri n unagraw ad tekkes isefka n wadig GPS, ihi tiwlafin yettwaseflen ad ṣṣfent adig-nsent.\n\nMbaɛd ma tsiregeḍ «anekcum ɣer akk ifula», asnas-a ad yaru srid ɣer ukaram n tgalri syen ad yeḥrez akk isefka n wadig.\n\nAsefli yetteddu ula ma tesriḍ-t, maca kra n yilugan zemren ad ṣṣfent isefka n wadig.</string>
+
+    <!-- ── Asfaylu n umgarad n yisem n ufaylu n usuffeɣ ── -->
+    <string name="main_dialog_conflict_title">Amgarad n yisem n ufaylu n usuffeɣ</string>
+    <string name="main_dialog_conflict_message">Yella yakan ufaylu s yisem-nni deg ukaram n usuffeɣ:\n%1$s\n\nFren amek ad t-tesleḍ.</string>
+    <string name="main_label_conflict_always">Seqdec ayagi i akk imagraden i d-iteddun</string>
+
+    <!-- ── Ibtnaten n yisfuyla ── -->
+    <string name="main_btn_grant">Sireg</string>
+    <string name="main_btn_deny">Agi</string>
+    <string name="main_btn_go_settings">Ldi iɣewwaren</string>
+    <string name="main_btn_cancel">Sefsex</string>
+    <string name="main_btn_grant_access">Sireg anekcum</string>
+    <string name="main_btn_got_it">Fhimeɣ</string>
+    <string name="main_btn_not_now">Mačči tura</string>
+    <string name="main_btn_skip">Zgel</string>
+    <string name="main_btn_overwrite">Ɛawed aru</string>
+    <string name="main_btn_auto_rename">Beddel isem awurman</string>
+
+    <!-- ── Iigmaḍ n usefli / tisgilin n usenqed n usuffeɣ ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Yettwakkes %1$d afaylu n tɣawsa</item>
+        <item quantity="other">Yettwakkas %1$d ifula n tɣawsa</item>
+    </plurals>
+    <string name="main_delete_nothing">Ulac tawlaft taɣbalut yessefk ad tettwakkes</string>
+    <string name="main_delete_partial">Yettwakkas %1$d ifula n tɣawsa (%2$d ur zmiren ara ad ttwakkesen syen ḥerzen)</string>
+    <string name="main_delete_failed">Tukksa n yifula n tɣawsa ur teddi ara (ifula ttwasqedcen neɣ ulac tasiragt n tira); ḥerzen</string>
+    <string name="main_export_missing_output">Agmuḍ n usefli ulac-itt neɣ d ilem: %1$s</string>
+    <string name="main_export_missing_output_bare">Agmuḍ n usefli ulac-itt neɣ d ilem</string>
+    <string name="main_export_insert_null">MediaStore insert yerra null</string>
+    <string name="main_export_output_stream">Amazrar n usuffeɣ n MediaStore ur yella ara</string>
+    <string name="main_export_write_failed">Tira n MediaStore ur teddi ara: %1$s</string>
+    <string name="main_export_mkdir_failed">Ur yezmir ara ad yernu akaram n tgalri %1$s</string>
+    <string name="main_export_dir_write_failed">Tira ɣer ukaram n tgalri ur teddi ara: %1$s</string>
+    <string name="main_export_no_source">Ur yezmir ara ad yafe afaylu aɣbalu; ubeddel yettwazgel</string>
+    <string name="main_export_companion_failed">Tira n ufaylu yeddan ur teddi ara: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Akaram n ufaylu aɣbalu ur yezmir ara ad yettwaru, ihi afaylu yeddan ur yezmir ara ad yettwaru ɣer deffir</string>
+    <string name="main_export_source_dir_unavailable">Akaram n ufaylu aɣbalu ur yella ara: %1$s</string>
+    <string name="main_export_replace_failed">Ubeddel n ufaylu aɣbalu ur yeddi ara: %1$s</string>
+    <string name="main_export_replace_failed_bare">Ubeddel n ufaylu aɣbalu ur yeddi ara</string>
+</resources>

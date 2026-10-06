@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Afrikaans (af) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">Geen GitHub-aflaaiadres gekry nie; probeer later weer.</string>
+    <string name="update_flavor_standard">Standaardweergawe</string>
+    <string name="update_flavor_go">Go-weergawe</string>
+    <string name="update_lanzou_url_missing">Hierdie weergawe bied geen Lanzou-aflaaiskakel nie; gebruik GitHub om af te laai.</string>
+    <string name="update_apk_direct_missing">Hierdie weergawe bied geen direkte skakel na \'n passende installatiepakket nie; kies die regte APK op die GitHub-vrystellingsblad.</string>
+    <string name="update_install_permission_missing">Toestemming "Onbekende apps installeer" is nie toegestaan nie; kan nie outomaties installeer nie. Laat dit in stelselinstellings toe en probeer weer.</string>
+    <string name="update_error_unknown">Onbekende fout</string>
+    <string name="update_fail_lanzou">Aflaai van Lanzou het misluk</string>
+    <string name="update_fail_github">Aflaai van GitHub het misluk</string>
+    <string name="update_lanzou_resolving">Ontleed tans die Lanzou-aflaaiskakel…</string>
+    <string name="update_lanzou_downloading">Laai tans van Lanzou af…</string>
+    <string name="update_github_downloading">Laai tans van GitHub af…</string>
+    <string name="update_unzipping">Ontpak tans die installatiepakket…</string>
+    <string name="update_notes_empty">Hierdie weergawe het nog geen vrystellingsnotas nie.</string>
+    <string name="update_use_normal_title">Gebruik asseblief die normale weergawe</string>
+    <string name="update_use_normal_body">Die stelsel van hierdie toestel is Android 10 of nuwer; die liggewig Go-weergawe word nie meer ondersteun nie en die ou weergawe kan nie verder gebruik word nie.
+
+Daar is gevind dat die normale weergawe (ZLC) reeds op hierdie toestel geïnstalleer is; maak direk die normale weergawe oom voort te gaan (die nuwe weergawe bied nie meer \'n Go-versoenbare weergawe nie; die ou weergawe kan gedeïnstalleer word om spasie vry te maak).</string>
+    <string name="update_open_normal">Maak normale weergawe oop</string>
+    <string name="update_must_update_title">Eers opdateer, dan kan u verder gaan</string>
+    <string name="update_forced_body">Die stelsel van hierdie toestel is Android 10 of nuwer; die liggewig Go-weergawe word nie meer ondersteun nie en die ou weergawe kan nie verder gebruik word nie; die nuwe weergawe bied ook nie \'n Go-versoenbare weergawe nie.
+
+Maak aan die netwerk verbind en tik "Probeer weer" om die installatiepakket van die normale weergawe te kry.</string>
+    <string name="update_retry">Probeer weer</string>
+    <string name="update_switch_normal_body">Die stelsel van hierdie toestel is Android 10 of nuwer; die liggewig Go-weergawe word nie meer ondersteun nie en die ou weergawe kan nie verder gebruik word nie.
+Laai asseblief die normale weergawe af en installeer dit om voort te gaan (die nuwe weergawe bied nie meer \'n Go-versoenbare weergawe nie).</string>
+    <string name="update_downloading_title">Laai opdatering af</string>
+    <string name="update_cancel">Kanselleer</string>
+    <string name="update_need_permission_title">Installeertoestemming benodig</string>
+    <string name="update_need_permission_body">Om die nuwe weergawe te installeer, benodig die stelseltoestemming "Onbekende apps installeer".
+
+Tik "Ken toe", laat dit in instellings toe en keer na die toepassing terug; die installasie gaan outomaties voort (geen herlaai nie).</string>
+    <string name="update_grant">Ken toe</string>
+    <string name="update_notice_title">Kennisgewing</string>
+    <string name="update_got_it">Verstaan</string>
+    <string name="update_notes_title">v%1$s · Vrystellingsnotas</string>
+    <string name="update_back">Terug</string>
+    <string name="update_title_switch_normal">Skakel oor na die normale weergawe</string>
+    <string name="update_title_reinstall">Installeer hierdie weergawe weer</string>
+    <string name="update_title_new_version">Nuwe weergawe gevind</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Hierdie weergawe sal afgelaai en weer geïnstalleer word (skryf oor die huidige toepassing).
+Hierdie funksie is vir regresietesting van die opdateringsmeganisme.</string>
+    <string name="update_view_notes">Bekyk vrystellingsnotas</string>
+    <string name="update_lanzou_unavailable">Lanzou is tans nie beskikbaar nie</string>
+    <string name="update_download_lanzou">Laai af van Lanzou</string>
+    <string name="update_download_github">Laai af van GitHub</string>
+    <string name="update_download_browser">Laai af in die blaaier</string>
+    <string name="update_later">Laat voorlopig</string>
+    <string name="update_later_switch">Skakel voorlopig nie oor nie</string>
+    <string name="update_skip_version">Slaan hierdie weergawe oor</string>
+</resources>

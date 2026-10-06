@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Sakha (Yakut) (sah) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Биллибэт таһаарыы формата: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Биллибэт динамическай ойуу формата (Google/OPPO/vivo/Xiaomi/Apple динамическай ойуута буолбатах)</string>
+    <string name="conv_cover_photo_missing">Сүрүн ойуу суох эбээт кураанах</string>
+    <string name="conv_video_missing">Видео суох эбээт кураанах</string>
+    <string name="conv_video_too_large">Видео наһаа улахан (%1$d МБ); динамическай ойуу холорор кыаммат, кылгас видео тал</string>
+    <string name="conv_transcoded_too_large">Кодировкалааһын кэнниттэн видео наһаа улахан (%1$d МБ); динамическай ойуу холорор кыаммат</string>
+    <string name="conv_video_too_large_compose">Видео наһаа улахан (%1$d МБ); динамическай ойуу холорор кыаммат</string>
+    <string name="conv_cover_heic_go">Сүрүн ойуу HEIC ойуу (Go кылгас версия кодировкалааһыны өйөөбөт; iPhone-га JPEG-ка таһааран баран конверттаа)</string>
+    <string name="conv_cover_invalid_heic">Сүрүн ойуу сөптөөх ойуу буолбатах (HEIC — систем HEIF форматы аныыр кыахтаах буоллаҕына эрэ)</string>
+    <string name="conv_cover_not_jpeg_go">Сүрүн ойуу JPEG ойуу буолбатах (Go кылгас версия кодировкалааһыны өйөөбөт; JPEG ойууну тут)</string>
+    <string name="conv_cover_invalid_image">Сүрүн ойуу сөптөөх ойуу буолбатах (JPEG/WebP/PNG эрэ өйөнөллөр)</string>
+    <string name="conv_reencode_failed">Видео хат кодировкалааһына табыллыбата: %1$s</string>
+    <string name="conv_remux_failed">Контейнер уларытыыта табыллыбата: %1$s</string>
+    <string name="conv_codec_unknown">Биллиэр H.264/H.265 видео буолбатах</string>
+    <string name="conv_codec_is">Кодировка: %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">„%1$s“ видео %2$s; контейнери эрэ уларытыы кодировкаланы уларытыа суоҕа, онон динамическай ойуу холорор кыаммат.
+
+„Туруоруулар → Видеоны кодировкалааһын → Кодировкалааһын салалтата“ салалтаҕа „Хат кодировкалааһын“ тал, эбээт атын тэрилэнэн H.264/H.265 кодировкалаах MP4-ҥа конверттаан көр.</string>
+    <string name="conv_hint_no_encoder">Видео стандарт MP4 контейнерыгар суох (MOV / MKV / WebM / AVI, эҥ.), билиҥҥи «Кодировкалааһын» салалтата хат кодировкалаабат, онон динамическай ойуу холорор кыаммат.
+
+„Туруоруулар → Видеоны кодировкалааһын → Кодировкалааһын салалтата“ салалтаҕа „Хат кодировкалааһын“ тал (стандарт версия ис өттүгэр сытар ffmpeg кодировкалааччылаах; Go кылгас версия кодировкалааччылаах суох, онон стандарт версияны тут), эбээт бастаан видеоны стандарт MP4-ҥа (H.264/H.265) конверттаа.</string>
+    <string name="conv_log_detected">%1$s диэн билиннэ</string>
+    <string name="conv_log_same_format_copied">Киирэр уонна таһаарыы форматтара биир: билэ бэйэтин курдук копияланна (сүтэрэйии суох)</string>
+    <string name="conv_log_extra_tracks_bypass">Киирэр видеога аудио/видео буолбатах туорайдар (%1$s) бааллар; биир форматтаах быһа түһэриини бырахан, толору суруйуу көмөтүнэн чуолкайдыыр</string>
+    <string name="conv_log_ts_fallback">Киирэр видео сүрүн ойуу кадрын кэм бэлиэтэ суох; быраабыланан видео ортотунан туһанабыт</string>
+    <string name="conv_log_brand_normalized">Видео контейнер брэндэ хат тэриннэ (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Видеога эбии туорайдар (%1$s) бааллар; чуолкайдыыр кыаммата, онон бэйэтин курдук таһаарылланна (бу түмүк сорох модельдарга уһуннук баттаан көрдөрөргө кыаммата сөп)</string>
+    <string name="conv_log_extra_tracks_removed">Видео эбии туорайдара (%1$s) сүтэриллэннэ</string>
+    <string name="conv_log_remux_cannot_fix">Киирэр видео %1$s; контейнери эрэ уларытыыннан булгуччуламмат (%2$s). Түмүгү уһуннук баттаан көрдөрөр кыаммат буола турдаҕына, „Туруоруулар → Видеоны кодировкалааһын → Кодировкалааһын салалтата“ салалтаҕа „Хат кодировкалааһын“ тал</string>
+    <string name="conv_log_reencoding">Киирэр видео %1$s; туруоруунан 8bit + AAC-ҥа хат кодировкаланна, альбомҥа сөптөөҕүн үрдэтиэр</string>
+    <string name="conv_log_reencode_result_unusable">Хат кодировкалааһын түмүгэ туттуллубат; бэйэтин курдук таһаарылланна (бу түмүк сорох модельдарга уһуннук баттаан көрдөрөргө кыаммата сөп)</string>
+    <string name="conv_log_reencode_still_risky">Хат кодировкалааһын кэнниттэн эмиэ эҥэр бэлиэлэрэ бааллар (%1$s)</string>
+    <string name="conv_log_reencode_failed">Хат кодировкалааһын табыллыбата (%1$s); бэйэтин курдук таһаарылланна (бу түмүк сорох модельдарга уһуннук баттаан көрдөрөргө кыаммата сөп)</string>
+    <string name="conv_log_cover_heic_converted">Сүрүн ойуу HEIC буолбут (JPEG буолбатах); стандарт JPEG-ҥа кодировкаланан баран контейнергэ угуллубут</string>
+    <string name="conv_log_compose_sizes">Холоруу: ойуу %1$d Б + видео %2$d Б → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Кодировкалааччы үлэлээбэт: контейнер брэндэ эрэ уларытылланна (MOV → MP4), хат кодировкалааһын суох</string>
+    <string name="conv_tag_convert">Конверттааһын</string>
+    <string name="conv_tag_transcode">Кодировкалааһын</string>
+    <string name="conv_tag_compose">Холоруу</string>
+    <string name="conv_blocker_no_encoder">Ис өттүгэр сытар кодировкалааччы туттуллубат</string>
+    <string name="conv_blocker_mode_no_encode">Билиҥҥи «Кодировкалааһын» салалтата хат кодировкалаабат</string>
+    <string name="conv_addon_unavailable">Ис өттүгэр сытар кодировкалааччы туттуллубат</string>
+    <string name="conv_addon_transcode_failed">ffmpeg кодировкалааһына табыллыбата: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg контейнер уларытыыта табыллыбата: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg-нан видеоны стандарт MP4-ҥа кодировкалаан эрэр (%1$s / crf %2$d / %3$s; видео уонна аудио туорайдара эрэ хааллараллар)</string>
+    <string name="conv_log_transcode_done">Видео кодировкалааһына бүттэ (%1$d КБ)</string>
+    <string name="conv_log_remuxing">Видео контейнера стандарт MP4-ҥа уларытыллан эрэр (контейнер эрэ уларыйар, кодировкалааһын суох)</string>
+    <string name="conv_log_remux_done">Контейнер уларытыыта бүттэ (%1$d КБ)</string>
+    <string name="conv_reminder_cat_compose">Холоруу</string>
+    <string name="conv_reminder_cat_convert">Конверттааһын</string>
+    <string name="conv_reminder_cat_update">Саҥардыы</string>
+    <string name="conv_reminder_video_over3s_title">Видео 3 сөкүүндэни ааһар</string>
+    <string name="conv_reminder_video_over3s_message">Талыллыбыт видео уһуна 3 сөкүүндэни ааһар; холоруу кэнниттэн динамическай ойууга сөптөспөт боппуруостар баар буолуохтара:
+
+• Чуолкай көстүбөт буолуон сөп
+• Система альбома билбэт буолуон сөп
+• Сорох модельдар бу динамическай ойууну билбэттэрэ сөп</string>
+    <string name="conv_reminder_legacy_go_title">Былыргы версия булулунна</string>
+    <string name="conv_reminder_legacy_go_message">Бу тэрилгэ былыргы (Go) версия туруорулаах хаалбыт; бу версия билигин бу тэрилгэ үлэлээбэт, онон паамыньньыгы босхолуурга сүтэрэрииһин</string>
+    <string name="conv_reminder_replace_risk_title">Солбуйуу режима билэни алҕастыыр эҥэрдээх</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Солбуйуу режима конверттааһын түмүгүн төрүт билэлэргэ түһэрэн суруйар; төрүт билэ үрдүнэн суруллан бүтээбитин кэннэ төннөрөр кыаммат.
+
+• Суруйуу кэмигэр аппликация тохтотуллан, паамыньньык киэҥэ суох буоллан эбээт көҥүл төннөрүллэн бүтээбитин кэмҥэ төрүт билэлэр алҕастыахтарын сөп
+• Конверттааһын бэйэтэ толору кыайыыны хааччыйбат; табыллыбатаҕына төрүт билэ туттуллубат буолуон сөп
+• Бастаан биир-икки билэни тургутан көр, чуолкай үлэлээбитин кэннэ массыынанан үлэлээ
+• Сүрдээх ойуулары бастаан бэйэҥ харыстаа
+
+Бу функция билиҥҥи курдук эрэ биэриллэр; туттуу эҥэрин бэйэҥ сүгээһинҥэ, ааптар билэ алҕастаныытыгар эбээт сүтүүтүгэр эппиэттиэбэт.</string>
+    <string name="conv_reminder_dont_remind">Сатаан көрдөрүмэ</string>
+    <string name="conv_reminder_confirm_ok">Өйдөттүм</string>
+    <string name="conv_reminder_uninstall">Сүтэр</string>
+</resources>

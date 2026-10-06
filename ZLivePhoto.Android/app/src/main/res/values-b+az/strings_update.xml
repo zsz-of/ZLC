@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Azerbaijani (az) strings — update / download texts.
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud paylaşım səhifəsi və birbaşa linkin təhlili ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud paylaşımı ləğv edilib və ya fayl mövcud deyil; GitHub-dan endirin</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud paylaşımı ləğv edilib; GitHub-dan endirin</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud endirmə linki təhlil edilə bilmədi</string>
+    <string name="update_lanzou_need_passwd">Bu Lanzou Cloud paylaşımı üçün çıxarış kodu tələb olunur; GitHub-dan endirin (və ya buraxılış qeydlərində kodu axtarın)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud çıxarış kodu yanlışdır</string>
+    <string name="update_err_resolve_failed">Təhlil alınmadı</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud anti-crawler yoxlaması alınmadı</string>
+    <string name="update_err_no_frame">Lanzou Cloud endirmə səhifəsi təhlil edilə bilmir (endirmə çərçivəsi tapılmadı)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud fayl identifikatoru təhlil edilə bilmir</string>
+    <string name="update_err_no_sign">Lanzou Cloud imzası təhlil edilə bilmir</string>
+    <string name="update_err_ajax_request">Sorğu alınmadı</string>
+    <string name="update_err_api_request">Lanzou Cloud API sorğusu alınmadı</string>
+    <string name="update_err_empty_direct">Lanzou Cloud boş endirmə ünvanı qaytardı</string>
+    <string name="update_err_direct_expired">Lanzou Cloud endirmə ünvanının vaxtı bitib; yenidən əldə edin</string>
+    <string name="update_err_http_request">Sorğu alınmadı (HTTP %1$d)</string>
+
+    <!-- ========== Endirmə ========== -->
+    <string name="update_err_connect">Endirmə serverinə qoşulmaq mümkün deyil: %1$s</string>
+    <string name="update_err_http">Endirmə alınmadı (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Endirmə bağlantısı qurula bilmir</string>
+    <string name="update_err_empty">Endirilən məzmun boşdur</string>
+    <string name="update_err_incomplete">Endirmə tamamlanmadı (%1$d / %2$d bayt alındı); yenidən endirin</string>
+    <string name="update_err_interrupted">Endirmə kəsildi: %1$s</string>
+
+    <!-- ========== Quraşdırma paketinin yoxlanması və quraşdırma ========== -->
+    <string name="update_err_not_apk">Endirilən fayl etibarlı quraşdırma paketi deyil (veb səhifə ola bilər və ya endirmə linkinin vaxtı bitib); yenidən endirin və ya GitHub-dan istifadə edin.</string>
+    <string name="update_err_apk_incomplete">Quraşdırma paketinin məzmunu natamamdır; yenidən endirin və ya GitHub-dan istifadə edin.</string>
+    <string name="update_err_apk_unparsable">Quraşdırma paketi təhlil edilə bilmir (endirmə natamam ola bilər); yenidən endirin və ya GitHub-dan istifadə edin.</string>
+    <string name="update_err_no_install_permission">„Naməlum tətbiqləri quraşdırma“ icazəsi hələ verilməyib</string>
+    <string name="update_err_installer_failed">Sistem quraşdırıcısı işə salına bilmir (%1$s); quraşdırma paketini fayl menecerindən əl ilə açıb quraşdırın</string>
+
+</resources>

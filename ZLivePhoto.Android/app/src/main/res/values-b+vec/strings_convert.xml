@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Venetian (vec) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Formato de destinasion no riconosùo: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Formato de foto dinamica no riconosùo (no Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Ła copertina ła manca opure ła xe voda</string>
+    <string name="conv_video_missing">El video el manca opure el xe vodo</string>
+    <string name="conv_video_too_large">El video el xe masa grando (%1$dMB): no se pol conponer ła foto dinamica, serne un video pì curto</string>
+    <string name="conv_transcoded_too_large">Dopo ła transcodìfega el video el xe masa grando (%1$dMB): no se pol conponer ła foto dinamica</string>
+    <string name="conv_video_too_large_compose">El video el xe masa grando (%1$dMB): no se pol conponer ła foto dinamica</string>
+    <string name="conv_cover_heic_go">Ła copertina ła xe na imàjine HEIC (ła version lejera no ła sostien ła transcodìfega: esportàla in JPEG so l’iPhone prima de convertir)</string>
+    <string name="conv_cover_invalid_heic">Ła copertina no ła xe na imàjine valida (i file HEIC i ga bisogno del suporto HEIF del sistema)</string>
+    <string name="conv_cover_not_jpeg_go">Ła copertina no ła xe na imàjine JPEG (ła version lejera no ła sostien ła transcodìfega; dòpara na foto JPEG)</string>
+    <string name="conv_cover_invalid_image">Ła copertina no ła xe na imàjine valida (solo JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Recodìfega del video fałia: %1$s</string>
+    <string name="conv_remux_failed">No se ga podesto canbiar el contenidor: %1$s</string>
+    <string name="conv_codec_unknown">No el xe un video H.264/H.265 riconosìbiłe</string>
+    <string name="conv_codec_is">El codec el xe %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">El video «%1$s» %2$s: canbiar sol el contenidor no el canbia mìa el codìfega, donca no se pol conponer ła foto dinamica.
+
+Và in «Inpostassion → Transcodìfega video → Modo de transcodìfega» e méti «Recodìfega», opure converti prima el video in un MP4 H.264/H.265 co un altro strumento.</string>
+    <string name="conv_hint_no_encoder">El video no el xe in un contenidor MP4 standard (MOV / MKV / WebM / AVI ecc.), e el «Modo de transcodìfega» de deso no el recodìfega: no se pol conponer ła foto dinamica.
+
+Và in «Inpostassion → Transcodìfega video → Modo de transcodìfega» e méti «Recodìfega» (ła version normałe ła ga l’encoder ffmpeg integrà; ła version lejera Go no ła ga el transcoder, donca dòpara ła version normałe), opure converti prima el video in un MP4 standard (H.264/H.265).</string>
+    <string name="conv_log_detected">Riconosùo come %1$s</string>
+    <string name="conv_log_same_format_copied">El formato de ła fonte e de ła destinasion l’è el steso: copià tał e qual (zero perdie)</string>
+    <string name="conv_log_extra_tracks_bypass">El video fonte el ga trasse no audio/video (%1$s): se salta el pasagio direto col steso formato e se dòpara ła scritura conpleta par netar el risultato</string>
+    <string name="conv_log_ts_fallback">Ła fonte no ła ga el timestamp del fotograma de ła copertina: par specìfega se torna al punto de mexo del video</string>
+    <string name="conv_log_brand_normalized">Brand del contenidor video normałizà (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">El video el ga trasse xontive (%1$s), no se pol nétarle: l’è stà scrivùo tał e qual (sto risultato su alguni modèi el se pol miga riprodùr co ła pression longa)</string>
+    <string name="conv_log_extra_tracks_removed">Cavàe łe trasse xontive del video (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">El video fonte %1$s; canbiar sol el contenidor no el resolve (%2$s). Se el risultato el se pol ancora miga riprodùr co ła pression longa, và in «Inpostassion → Transcodìfega video → Modo de transcodìfega» e serne «Recodìfega»</string>
+    <string name="conv_log_reencoding">El video fonte %1$s: recodifegà in 8bit + AAC segondo łe inpostassion par mejorar ła conpatibilità de ła galeria</string>
+    <string name="conv_log_reencode_result_unusable">El risultato de ła recodìfega no el xe doparabiłe: l’è stà scrivùo tał e qual (sto risultato su alguni modèi el se pol miga riprodùr co ła pression longa)</string>
+    <string name="conv_log_reencode_still_risky">Dopo ła recodìfega ghe xe ancora ponti a rìcio (%1$s)</string>
+    <string name="conv_log_reencode_failed">Recodìfega fałia (%1$s): l’è stà scrivùo tał e qual (sto risultato su alguni modèi el se pol miga riprodùr co ła pression longa)</string>
+    <string name="conv_log_cover_heic_converted">Ła copertina ła xe HEIC (no JPEG): l’è stà transcodifegà in JPEG standard prima del canbio del contenidor</string>
+    <string name="conv_log_compose_sizes">Conposission: foto %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transcoder no ativà: se scrive sol el brand del contenidor (MOV → MP4), sensa recodìfega</string>
+    <string name="conv_tag_convert">Conversion</string>
+    <string name="conv_tag_transcode">Transcodìfega</string>
+    <string name="conv_tag_compose">Conposission</string>
+    <string name="conv_blocker_no_encoder">El transcoder integrà no el xe disponibile</string>
+    <string name="conv_blocker_mode_no_encode">El «Modo de transcodìfega» de deso no el recodìfega</string>
+    <string name="conv_addon_unavailable">El transcoder integrà no el xe disponibile</string>
+    <string name="conv_addon_transcode_failed">ffmpeg: transcodìfega fałia: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg: no se ga podesto canbiar el contenidor: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">So drio transcodifegar el video in MP4 standard co ffmpeg (%1$s / crf %2$d / %3$s; resta solo el video e l’audio)</string>
+    <string name="conv_log_transcode_done">Transcodìfega del video finia (%1$dKB)</string>
+    <string name="conv_log_remuxing">So drio canbiar el contenidor del video in MP4 standard (sol el contenidor, sensa recodìfega)</string>
+    <string name="conv_log_remux_done">Canbio del contenidor finìo (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Conposission</string>
+    <string name="conv_reminder_cat_convert">Conversion</string>
+    <string name="conv_reminder_cat_update">Ajornamento</string>
+    <string name="conv_reminder_video_over3s_title">El video el pasa i 3 secondi</string>
+    <string name="conv_reminder_video_over3s_message">El video selessionà el dura pì de 3 secondi: ła foto dinamica conponesta ła podevar vèr problemi de conpatibilità:
+
+• Ła se pol miga riprodùr come che se speta
+• ła galeria del sistema ła podevar miga riconóserla
+• su alguni modèi no i riconose sta foto dinamica</string>
+    <string name="conv_reminder_legacy_go_title">Rilevà na version vecia</string>
+    <string name="conv_reminder_legacy_go_message">Sul dispositivo ghè ancora instalà ła version vecia (Go) de l’app: sta version vecia no ła funsiona pì qua; te pol desinstalarla par libarar spasio.</string>
+    <string name="conv_reminder_replace_risk_title">El modo sostituission el pol danjar i file</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">El modo sostituission el scrive el risultato de ła conversion diretamente so el file orixinale; dopo ła sorascritura l’orixinale no se pol pì recuperarlo.
+
+• Se durando ła scritura l’app ła vien interota, el spasio el finisse o el parmesso el vien cavà, el file fonte el podevar danjar-se
+• Ła conversion par se no ła garasisse el suceso completo: se ła fała, el file fonte el podevar restar danjà
+• Se consèja proar prima co un par de file e vardar che tuto el va ben prima de ndar in bloco
+• Par łe foto inportanti, fà na copia de seguro prima
+
+Sta funsion ła vien dada «tał e qual»: el rìcio de l’uso el xe to, e l’autor no el risponde de dani o pèrdie de file.</string>
+    <string name="conv_reminder_dont_remind">No stà mostrar pì</string>
+    <string name="conv_reminder_confirm_ok">Go capio</string>
+    <string name="conv_reminder_uninstall">Desinstala</string>
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Greek (el) strings — update flow.
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <!-- Controller side prompts (no Context dependent Composable outside, all go context.getString) -->
+    <string name="update_github_url_missing">Δεν ήταν δυνατή η λήψη του συνδέσμου λήψης GitHub, δοκιμάστε ξανά αργότερα.</string>
+    <string name="update_flavor_standard">Τυπική έκδοση</string>
+    <string name="update_flavor_go">Εκδοση Go</string>
+    <string name="update_lanzou_url_missing">Αυτή η έκδοση δεν παρέχει σύνδεσμο λήψης Lanzou, μπορείτε να χρησιμοποιήσετε τη λήψη GitHub.</string>
+    <string name="update_apk_direct_missing">Αυτή η έκδοση δεν παρέχει απευθείας σύνδεσμο πακέτου εγκατάστασης που ταιριάζει με την τρέχουσα έκδοση, πηγαίνετε στη σελίδα GitHub Release για να επιλέξετε το αντίστοιχο APK.</string>
+    <string name="update_install_permission_missing">Δεν έχετε άδεια «Εγκατάσταση αγνώστων εφαρμογών», δεν είναι δυνατή η αυτόματη εγκατάσταση. Πηγαίνετε στις ρυθμίσεις συστήματος για να επιτρέψετε και μετά δοκιμάστε ξανά.</string>
+    <string name="update_error_unknown">Ανώνυμο σφάλμα</string>
+    <string name="update_fail_lanzou">Αποτυχία λήψης Lanzou</string>
+    <string name="update_fail_github">Αποτυχία λήψης GitHub</string>
+    <string name="update_lanzou_resolving">Γίνεται ανάλυση του συνδέσμου λήψης Lanzou…</string>
+    <string name="update_lanzou_downloading">Γίνεται λήψη από Lanzou…</string>
+    <string name="update_github_downloading">Γίνεται λήψη από GitHub…</string>
+    <string name="update_unzipping">Γίνεται εξαγωγή του πακέτου εγκατάστασης…</string>
+    <string name="update_notes_empty">Δεν υπάρχουν σημειώσεις έκδοσης για αυτή την έκδοση.</string>
+
+    <!-- Go edition related dialogs -->
+    <string name="update_use_normal_title">Παρακαλώ χρησιμοποιήστε την κανονική έκδοση</string>
+    <string name="update_use_normal_body">Το σύστημα αυτής της συσκευής είναι Android 10 ή νεότερο, η Go Lite έκδοση δεν θα προσαρμοστεί πλέον, οι παλιές εκδόσεις δεν μπορούν να συνεχίσουν να χρησιμοποιηθούν.\n\nΈχει ανιχνευτεί ότι η κανονική έκδοση (ZLC) έχει εγκατασταθεί σε αυτή τη συσκευή, ανοίξτε απευθείας την κανονική έκδοση για να συνέχισε (η νέα έκδοση δεν παρέχει πλέον Go συμβατή έκδοση, η παλιά έκδοση μπορεί να αποεγκατασταθεί για ελευθέρωση χώρου).</string>
+    <string name="update_open_normal">Άνοιγμα κανονικής έκδοσης</string>
+    <string name="update_must_update_title">Πρέπει να ενημερωθείτε για να συνεχιστεί η χρήση</string>
+    <string name="update_forced_body">Το σύστημα αυτής της συσκευής είναι Android 10 ή νεότερο, η Go Lite έκδοση δεν θα προσαρμοστεί πλέον, οι παλιές εκδόσεις δεν μπορούν να συνεχίσουν να χρησιμοποιηθούν· η νέα έκδοση δεν θα παρέχει πλέον Go συμβατή έκδοση.\n\nΣυνδέστε στο δίκτυο και πατήστε «Επανάληψη» για να αποκτήσετε το πακέτο εγκατάστασης της κανονικής έκδοσης.</string>
+    <string name="update_retry">Επανάληψη</string>
+    <string name="update_switch_normal_body">Το σύστημα αυτής της συσκευής είναι Android 10 ή νεότερο, η Go Lite έκδοση δεν θα προσαρμοστεί πλέον, οι παλιές εκδόσεις δεν μπορούν να συνεχίσουν να χρησιμοποιηθούν.\n\nΠαρακαλώ κατεβάστε και εγκαταστήστε την κανονική έκδοση για να συνεχίσετε να χρησιμοποιείτε (η νέα έκδοση δεν παρέχει πλέον Go συμβατή έκδοση).</string>
+
+    <!-- Download / installation permission / result prompts -->
+    <string name="update_downloading_title">Λήψη ενημέρωσης</string>
+    <string name="update_cancel">Ακύρωση</string>
+    <string name="update_need_permission_title">Απαιτείται άδεια εγκατάστασης</string>
+    <string name="update_need_permission_body">Για την εγκατάσταση νέας έκδοσης απαιτείται άδεια συστήματος «Εγκατάσταση αγνώστων εφαρμογών».\n\nΠατήστε «Πηγαίνετε για χορήγηση», επιτρέψτε στις ρυθμίσεις και επιστρέψτε στην εφαρμογή, η εγκατάσταση θα συνεχιστεί αυτόματα (δεν απαιτείται επαναφορά της λήψης).</string>
+    <string name="update_grant">Πηγαίνω για χορήγηση</string>
+    <string name="update_notice_title">Ειδοποίηση</string>
+    <string name="update_got_it">Κατανοητό</string>
+
+    <!-- Main dialog / update notes -->
+    <string name="update_notes_title">v%1$s · Σημειώσεις έκδοσης</string>
+    <string name="update_back">Επιστροφή</string>
+    <string name="update_title_switch_normal">Εναλλαγή σε κανονική έκδοση</string>
+    <string name="update_title_reinstall">Επανεγκατάσταση αυτής της έκδοσης</string>
+    <string name="update_title_new_version">Βρέθηκε νέα έκδοση</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Θα κατεβάσετε και θα επανεγκαταστήσετε αυτή την έκδοση (επικάλυψη της τρέχουσας εφαρμογής).\nΑυτή η λειτουργία χρησιμοποιείται γιαregression testing του μηχανισμού ενημέρωσης.</string>
+    <string name="update_view_notes">Προβολή σημειώσεων ενημέρωσης</string>
+    <string name="update_lanzou_unavailable">Το Lanzou είναι προσωρινά μη διαθέσιμη</string>
+    <string name="update_download_lanzou">Λήψη από Lanzou</string>
+    <string name="update_download_github">Λήψη από GitHub</string>
+    <string name="update_download_browser">Λήψη από browser</string>
+    <string name="update_later">Χωρίς ενημέρωση τώρα</string>
+    <string name="update_later_switch">Χωρίς αλλαγή τώρα</string>
+    <string name="update_skip_version">Παράλειψη αυτής της έκδοσης</string>
+</resources>

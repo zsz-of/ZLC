@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Marathi (mr) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">GitHub डाउनलोड पत्ता मिळाला नाही; कृपया थोड्या वेळाने पुन्हा प्रयत्न करा.</string>
+    <string name="update_flavor_standard">स्टँडर्ड आवृत्ती</string>
+    <string name="update_flavor_go">Go आवृत्ती</string>
+    <string name="update_lanzou_url_missing">या आवृत्तीसाठी Lanzou डाउनलोड लिंक दिलेली नाही; GitHub वरून डाउनलोड करू शकता.</string>
+    <string name="update_apk_direct_missing">या आवृत्तीशी जुळणाऱ्या इन्स्टॉल पॅकेजची थेट लिंक दिलेली नाही; कृपया GitHub Release पृष्ठावरून योग्य APK निवडा.</string>
+    <string name="update_install_permission_missing">“अज्ञात अ‍ॅप्स इन्स्टॉल करा” परवानगी मिळाली नाही, स्वयंचलित इन्स्टॉल करता येत नाही. कृपया प्रणाली सेटिंग्जमध्ये परवानगी देऊन पुन्हा प्रयत्न करा.</string>
+    <string name="update_error_unknown">अज्ञात त्रुटी</string>
+    <string name="update_fail_lanzou">Lanzou डाउनलोड अयशस्वी</string>
+    <string name="update_fail_github">GitHub डाउनलोड अयशस्वी</string>
+    <string name="update_lanzou_resolving">Lanzou डाउनलोड लिंक सोडवत आहे…</string>
+    <string name="update_lanzou_downloading">Lanzou वरून डाउनलोड करत आहे…</string>
+    <string name="update_github_downloading">GitHub वरून डाउनलोड करत आहे…</string>
+    <string name="update_unzipping">इन्स्टॉल पॅकेज अनझिप करत आहे…</string>
+    <string name="update_notes_empty">या आवृत्तीसाठी अपडेट टिप्पणी नाही.</string>
+    <string name="update_use_normal_title">कृपया सामान्य आवृत्ती वापरा</string>
+    <string name="update_use_normal_body">या उपकरणाची प्रणाली Android 10 किंवा त्याहून नवीन आहे; Go लाइट आवृत्ती यापुढे समर्थित नाही, जुनी आवृत्ती वापरता येणार नाही.\n\nया उपकरणावर सामान्य आवृत्ती (ZLC) आधीच इन्स्टॉल असल्याचे आढळले; कृपया थेट सामान्य आवृत्ती उघडून वापरत राहा (नव्या आवृत्तीत Go सुसंगत आवृत्ती दिली जात नाही; जागा मोकळी करण्यासाठी जुनी आवृत्ती अनइन्स्टॉल करू शकता).</string>
+    <string name="update_open_normal">सामान्य आवृत्ती उघडा</string>
+    <string name="update_must_update_title">वापरत राहण्यासाठी अपडेट आवश्यक</string>
+    <string name="update_forced_body">या उपकरणाची प्रणाली Android 10 किंवा त्याहून नवीन आहे; Go लाइट आवृत्ती यापुढे समर्थित नाही, जुनी आवृत्ती वापरता येणार नाही; नव्या आवृत्तीतही Go सुसंगत आवृत्ती दिली जात नाही.\n\nकृपया नेटवर्कशी जोडल्यावर “पुन्हा प्रयत्न करा” क्लिक करून सामान्य आवृत्तीचे इन्स्टॉल पॅकेज मिळवा.</string>
+    <string name="update_retry">पुन्हा प्रयत्न करा</string>
+    <string name="update_switch_normal_body">या उपकरणाची प्रणाली Android 10 किंवा त्याहून नवीन आहे; Go लाइट आवृत्ती यापुढे समर्थित नाही, जुनी आवृत्ती वापरता येणार नाही.\nकृपया सामान्य आवृत्ती डाउनलोड व इन्स्टॉल करून वापरत राहा (नव्या आवृत्तीत Go सुसंगत आवृत्ती दिली जात नाही).</string>
+    <string name="update_downloading_title">अपडेट डाउनलोड करत आहे</string>
+    <string name="update_cancel">रद्द करा</string>
+    <string name="update_need_permission_title">इन्स्टॉल परवानगी आवश्यक</string>
+    <string name="update_need_permission_body">नवीन आवृत्ती इन्स्टॉल करण्यासाठी प्रणालीची “अज्ञात अ‍ॅप्स इन्स्टॉल करा” परवानगी आवश्यक आहे.\n\n“परवानगीसाठी जा” क्लिक करा, सेटिंग्जमध्ये परवानगी देऊन ॲपमध्ये परत या; इन्स्टॉलेशन स्वयंचलितपणे पुढे चालेल (पुन्हा डाउनलोड करण्याची गरज नाही).</string>
+    <string name="update_grant">परवानगीसाठी जा</string>
+    <string name="update_notice_title">सूचना</string>
+    <string name="update_got_it">समजले</string>
+    <string name="update_notes_title">v%1$s · अपडेट टिप्पणी</string>
+    <string name="update_back">मागे</string>
+    <string name="update_title_switch_normal">सामान्य आवृत्तीवर जा</string>
+    <string name="update_title_reinstall">ही आवृत्ती पुन्हा इन्स्टॉल करा</string>
+    <string name="update_title_new_version">नवीन आवृत्ती आढळली</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">ही आवृत्ती डाउनलोड करून पुन्हा इन्स्टॉल केली जाईल (सध्याचे ॲप ओव्हरराइट होईल).\nहे वैशिष्ट्य अपडेट यंत्रणेच्या रिग्रेशन चाचणीसाठी आहे.</string>
+    <string name="update_view_notes">अपडेट टिप्पणी पहा</string>
+    <string name="update_lanzou_unavailable">Lanzou सध्या उपलब्ध नाही</string>
+    <string name="update_download_lanzou">Lanzou वरून डाउनलोड करा</string>
+    <string name="update_download_github">GitHub वरून डाउनलोड करा</string>
+    <string name="update_download_browser">ब्राउझरवरून डाउनलोड करा</string>
+    <string name="update_later">आत्ता अपडेट नको</string>
+    <string name="update_later_switch">आत्ता बदलू नका</string>
+    <string name="update_skip_version">ही आवृत्ती वगळा</string>
+</resources>

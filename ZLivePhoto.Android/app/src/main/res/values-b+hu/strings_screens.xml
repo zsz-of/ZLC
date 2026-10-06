@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Főfelület / Galéria választó szövegek (task-4, videolen-analyst karbantartja). Kulcs screen_ prefixszel.
+  res/values/ a hagyományos egyszerűsített kínai (az eredeti hardkódolt szövegeket jelenti); másik nyelvek
+  values-<locale>/strings_screens.xml fájlban. Helyőrzők %1$s / %1$d; fordításnál átrendezhető; számszerű
+  szövegekhez <plurals> használata kötelező.
+-->
+<resources>
+    <!-- Fejléc alcíme -->
+    <string name="screen_app_subtitle">Élőfotó formátumok konvertálása</string>
+    <!-- Fejléc jobb oldali kiválasztott fájlok száma (számszerű, plurals) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d fájl</item>
+        <item quantity="other">%1$d fájl</item>
+    </plurals>
+    <!-- Fejléc Beállítások belépő (csak akadályossági olvasáshoz) -->
+    <string name="screen_settings">Beállítások</string>
+
+    <!-- Kimeneti formátum választó párbeszéd -->
+    <string name="screen_select_output_format">Kimeneti formátum kiválasztása</string>
+    <string name="screen_selected">Kiválasztva</string>
+    <string name="screen_vivo_single_warning">⚠ Túl régi eszközök nem érzékelhetik ezt a formátumot</string>
+    <string name="screen_extract_blocked">⚠ A sor tartalmaz csatolási feladatot; csak kibontás választható</string>
+
+    <!-- Formátum opciók rövid nevei (hosszabb nevei strings_formats.xml-ben fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (egyetlen fájl)</string>
+    <string name="screen_format_vivo">vivo (két fájl)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Kibontás</string>
+
+    <!-- Eszköztár BottomSheet -->
+    <string name="screen_toolbox">Eszköztár</string>
+    <string name="screen_batch_import">Tömeges importálás</string>
+    <string name="screen_batch_import_desc">Egész galéria átvizsgálása élőfotók tömeges felismeréséhez</string>
+    <string name="screen_compose">Élőfotó csatolása</string>
+    <string name="screen_compose_desc">Válasszon ki egy képet és egy videót a csatoláshoz</string>
+    <string name="screen_replace_mode">Csere mód</string>
+    <string name="screen_replace_mode_desc">A konvertálási eredmény közvetlenül az eredeti fájlon íródik; új fájl nem keletkezik</string>
+    <string name="screen_need_all_files_access_hint">\"Minden fájl hozzáférés\" jogosultság szükséges; kattintson a jogosultsághoz</string>
+    <string name="screen_agree_and_enable">Elfogadom és engedélyezem</string>
+
+    <!-- Üres állapot / Alsó vezérlőpanel -->
+    <string name="screen_empty_no_files">Még nincs fájl hozzáadva</string>
+    <string name="screen_view_detail">Részletek megtekintése</string>
+    <string name="screen_add_files">Fájlok hozzáadása</string>
+    <string name="screen_output_format">Kimeneti formátum: %1$s</string>
+    <string name="screen_delete_original">A feldolgozás után törli az eredeti képet</string>
+    <string name="screen_need_all_files_access_view">\"Minden fájl hozzáférés\" jogosultság szükséges; kattintson a részletekhez</string>
+    <string name="screen_clear">Törlés</string>
+    <string name="screen_stop">Feldolgozás leállítása</string>
+    <string name="screen_start_convert">Konvertálás indítása</string>
+
+    <!-- Státusz részlet párbeszéd -->
+    <string name="screen_status_detail">Státusz részlet</string>
+    <string name="screen_long_press_copy">Hosszan nyomva szöveg kiválasztható és másolható</string>
+    <string name="screen_copy">Másolás</string>
+    <string name="screen_close">Bezárás</string>
+
+    <!-- Galéria választó -->
+    <string name="screen_back">Vissza</string>
+    <string name="screen_picker_title_select">Válasszon élőfotókat</string>
+    <string name="screen_album_count">%1$d album</string>
+    <string name="screen_album_collapse_cover">Album borító összecsukása</string>
+    <string name="screen_album_expand_cover">Album borító kibontása</string>
+    <string name="screen_scanning_progress">Átvizsgálás %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d kép</item>
+        <item quantity="other">%1$d kép</item>
+    </plurals>
+    <string name="screen_select_all">Összes kijelölése</string>
+    <string name="screen_no_albums">Nincs elérhető album</string>
+    <string name="screen_no_media">Nem talált élőfotó</string>
+    <string name="screen_no_media_compose">Nem talált képet vagy videót</string>
+    <string name="screen_import">Importálás</string>
+    <string name="screen_import_count">%1$d importálva</string>
+    <string name="screen_import_mixed">Importálás kép%1$d·víde%2$d</string>
+    <string name="screen_search">Keresés</string>
+    <string name="screen_search_collapse">Keresés összecsukása</string>
+    <string name="screen_search_hint">Keressen név szerint</string>
+    <string name="screen_search_clear">Keresés törlése</string>
+    <string name="screen_sort_date">Dátum</string>
+    <string name="screen_sort_size">Méret</string>
+    <string name="screen_sort_name">Név</string>
+    <string name="screen_sort_asc">Növekvő</string>
+    <string name="screen_sort_desc">Csökkenő</string>
+
+    <!-- Album csoportok dátum címkék (%1$d, %2$d, %3$d numericus helyőrzők; fordításnál átrendezhető) -->
+    <string name="screen_date_today">Ma</string>
+    <string name="screen_date_yesterday">Tegnap</string>
+    <string name="screen_date_this_year">%1$d. %2$d.</string>
+    <string name="screen_date_other_year">%1$d. %2$d. %3$d.</string>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Scots strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Scots is a law-resource leid; this is a best-effort, model-assisted translation.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: C.
+-->
+<resources>
+
+    <!-- ========== Lanzou share page an resolvin the direct link ========== -->
+    <string name="update_lanzou_gone">The Lanzou share wis cancelled or the file disnae exist. Uise GitHub tae dounload</string>
+    <string name="update_lanzou_gone_short">The Lanzou share wis cancelled. Uise GitHub tae dounload</string>
+    <string name="update_lanzou_resolve_failed">Cannae resolve the Lanzou dounload link</string>
+    <string name="update_lanzou_need_passwd">This Lanzou share needs an access code. Uise GitHub tae dounload (or find the access code in the release notes)</string>
+    <string name="update_lanzou_wrong_passwd">Wrang access code fur Lanzou</string>
+    <string name="update_err_resolve_failed">Resolvin failed</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou anti-scrapin chack failed</string>
+    <string name="update_err_no_frame">Cannae resolve the Lanzou dounload page (nae dounload frame fund)</string>
+    <string name="update_err_no_file_id">Cannae resolve the Lanzou file identifier</string>
+    <string name="update_err_no_sign">Cannae resolve the Lanzou signature</string>
+    <string name="update_err_ajax_request">Request tae the interface failed</string>
+    <string name="update_err_api_request">Request tae the Lanzou API failed</string>
+    <string name="update_err_empty_direct">Lanzou returned an tuim dounload address</string>
+    <string name="update_err_direct_expired">The Lanzou dounload address haes expired. Fetch a new ane</string>
+    <string name="update_err_http_request">Request failed (HTTP %1$d)</string>
+
+    <!-- ========== Dounloadin ========== -->
+    <string name="update_err_connect">Cannae connect tae the dounload server: %1$s</string>
+    <string name="update_err_http">Dounload failed (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Cannae establish a dounload connection</string>
+    <string name="update_err_empty">The dounloaded content is tuim</string>
+    <string name="update_err_incomplete">Dounload incomplete (%1$d o %2$d bytes received). Dounload agane</string>
+    <string name="update_err_interrupted">Dounload interruptit: %1$s</string>
+
+    <!-- ========== Package chack an installation ========== -->
+    <string name="update_err_not_apk">The dounloaded file is no a valid instaw package (maybe a wab page or the link haes expired). Dounload agane or uise GitHub.</string>
+    <string name="update_err_apk_incomplete">The instaw package content is incomplete. Dounload agane or uise GitHub.</string>
+    <string name="update_err_apk_unparsable">Cannae parse the instaw package (the dounload is likely incomplete). Dounload agane or uise GitHub.</string>
+    <string name="update_err_no_install_permission">The "instaw unkent apps" permeession haes no been gien yet</string>
+    <string name="update_err_installer_failed">Cannae stairt the seestem installer (%1$s). Open the package bi haund in the file manager</string>
+
+</resources>

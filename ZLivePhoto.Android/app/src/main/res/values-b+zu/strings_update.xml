@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Zulu (zu) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Ukwabelana kwe-Lanzou kukhanselwe noma ifayela alikho; landa esikhundleni salo ku-GitHub</string>
+    <string name="update_lanzou_gone_short">Ukwabelana kwe-Lanzou kukhanselwe; landa esikhundleni salo ku-GitHub</string>
+    <string name="update_lanzou_resolve_failed">Ukuhlaziywa kwekheli lokulanda le-Lanzou kwehlulekile</string>
+    <string name="update_lanzou_need_passwd">Ukwabelana kwe-Lanzou kudinga iphasiwedi yokuthola; landa esikhundleni salo ku-GitHub (noma thola iphasiwedi kumanothi e-Release)</string>
+    <string name="update_lanzou_wrong_passwd">Iphasewedi yokuthola ye-Lanzou ayilungile</string>
+    <string name="update_err_resolve_failed">Ukuhlaziya kwehlulekile</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Ukuhlolwa kwe-Lanzou okumelana nama-bot kwehlulekile</string>
+    <string name="update_err_no_frame">Ikhasi lokulanda le-Lanzou alikwazi ukuhlaziywa (ifreyimu yokulanda ayitholakali)</string>
+    <string name="update_err_no_file_id">Isaziso sefayela se-Lanzou asikwazi ukuhlaziywa</string>
+    <string name="update_err_no_sign">Isiginesha ye-Lanzou ayikwazi ukuhlaziywa</string>
+    <string name="update_err_ajax_request">Isicelo se-API sihlulekile</string>
+    <string name="update_err_api_request">Isicelo se-API ye-Lanzou sihlulekile</string>
+    <string name="update_err_empty_direct">I-Lanzou ibuyise ikheli lokulanda elingenalutho</string>
+    <string name="update_err_direct_expired">Ikheli lokulanda le-Lanzou luphelelwe yisikhathi; uyilande kabusha</string>
+    <string name="update_err_http_request">Isicelo sihlulekile (HTTP %1$d)</string>
+    <string name="update_err_connect">Akukwazi ukuxhumana neseva yokulanda: %1$s</string>
+    <string name="update_err_http">Ukulanda kwehlulekile (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Akukwazi ukwenziwa uxhumaniso lokulanda</string>
+    <string name="update_err_empty">Okulandiwe akunalutho</string>
+    <string name="update_err_incomplete">Ukulanda akuphelele (kutholakele okungu-%1$d kwamabhayithi angu-%2$d); landa kabusha</string>
+    <string name="update_err_interrupted">Ukulanda kuphazamisekile: %1$s</string>
+    <string name="update_err_not_apk">Okulandiwe asilo i-APK evumelekile (kungenzeka ikhasi le-web noma ikheli liphelile); landa kabusha noma usebenzise i-GitHub.</string>
+    <string name="update_err_apk_incomplete">Okuqukethwe kwephakheji yokufaka akuphelele; landa kabusha noma usebenzise i-GitHub.</string>
+    <string name="update_err_apk_unparsable">I-APK ayikwazi ukuhlaziywa (kungenzeka ukulanda akuphelelanga); landa kabusha noma usebenzise i-GitHub.</string>
+    <string name="update_err_no_install_permission">Imvume “Faka izinhlelo zokusebenza ezingaziwayo” ayitholakali</string>
+    <string name="update_err_installer_failed">Akukwazi ukuqalisa isifaki sesistimu (%1$s); vula ngokwenza iphakheji yokufaka kumphathi wamafayela ukuze uyifake</string>
+</resources>

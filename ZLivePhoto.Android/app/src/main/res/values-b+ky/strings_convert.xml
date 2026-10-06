@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Кыргызча (Kyrgyz) strings — айландыруу / транскод билдирүүлөрү (strings_convert.xml).
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline, the fallback locale).
+  Кыргыз тилинде (кирилл); эне тилдеги текшерүү сунушталат.
+  Бардык key базалык файлга дал келет; %1$s / %1$d орун толтургучтар жана \n сакталган.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: параметрлерди жана материалдарды текшерүү (ката → интерфейсте ийгиликсиздиктин себеби көрсөтүлөт) ========== -->
+    <string name="conv_unknown_target">Белгисиз максаттуу формат: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Таанылбаган кыймылдуу сүрөт форматы (Google/OPPO/vivo/Xiaomi/Apple кыймылдуу сүрөтү эмес)</string>
+    <string name="conv_cover_photo_missing">Мукаба сүрөтү жок же бош</string>
+    <string name="conv_video_missing">Видео жок же бош</string>
+    <string name="conv_video_too_large">Видео өтө чоң (%1$d МБ), кыймылдуу сүрөткө кураштыруу мүмкүн эмес, кыскараак видео тандаңыз</string>
+    <string name="conv_transcoded_too_large">Транскоддон кийин видео өтө чоң (%1$d МБ), кыймылдуу сүрөткө кураштыруу мүмкүн эмес</string>
+    <string name="conv_video_too_large_compose">Видео өтө чоң (%1$d МБ), кыймылдуу сүрөткө кураштыруу мүмкүн эмес</string>
+
+    <!-- Converter.kt: мукаба (HEIC / JPEG эмес) -->
+    <string name="conv_cover_heic_go">Мукаба HEIC сүрөтү (жеңил версия транскодду колдобойт, iPhone телефонунда JPEG кылып экспорттоп, анан айландырыңыз)</string>
+    <string name="conv_cover_invalid_heic">Мукаба жарактуу сүрөт эмес (HEIC үчүн система HEIF декоддоосун колдошу керек)</string>
+    <string name="conv_cover_not_jpeg_go">Мукаба JPEG сүрөтү эмес (жеңил версия транскодду колдобойт, JPEG сүрөт колдонуңуз)</string>
+    <string name="conv_cover_invalid_image">Мукаба жарактуу сүрөт эмес (JPEG/WebP/PNG гана колдоого алынат)</string>
+
+    <!-- Converter.kt: транскод / кайра таңуу ийгиликсиздиги жана «контейнерди гана алмаштыруу коддоону оңдобойт» деген эскертүү -->
+    <string name="conv_reencode_failed">Видеону кайра коддоо ишке ашкан жок: %1$s</string>
+    <string name="conv_remux_failed">Контейнерди кайра таңуу ишке ашкан жок: %1$s</string>
+    <string name="conv_codec_unknown">Тааныла турган H.264/H.265 видео эмес</string>
+    <string name="conv_codec_is">Коддоо түрү: %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">«%1$s» видеосу %2$s; контейнерди гана алмаштыруу (кайра таңуу) коддоону өзгөртпөйт, кыймылдуу сүрөт кураштыруу мүмкүн эмес.\n\n«Жөндөөлөр → Видео транскоддоо → Транскод ыкмасы» бөлүмүндө «Кайра коддоо» деп өзгөртүңүз же адегенде башка курал менен H.264/H.265 коддоосу бар MP4 кылып айландырыңыз.</string>
+    <string name="conv_hint_no_encoder">Видео стандарттуу MP4 контейнеринде эмес (MOV / MKV / WebM / AVI ж.б.), ал эми учурдагы «Транскод ыкмасы» кайра коддобойт, ошондуктан кыймылдуу сүрөт кураштыруу мүмкүн эмес.\n\n«Жөндөөлөр → Видео транскоддоо → Транскод ыкмасы» бөлүмүндө «Кайра коддоо» деп өзгөртүңүз (кадимки версияда ffmpeg коддоочусу бар; Go жеңил версиясында транскодер жок, кадимки версияны колдонуңуз), же адегенде видеону стандарттуу MP4 (H.264/H.265) кылып айландырыңыз.</string>
+
+    <!-- ========== Айландыруу журналы (тизмедеги абал тилкесинде жана журнал панелинде көрсөтүлөт) ========== -->
+    <string name="conv_log_detected">%1$s деп таанылды</string>
+    <string name="conv_log_same_format_copied">Булак жана максаттуу формат бирдей, өзгөртүлбөй көчүрүлдү (нөл жоготуу)</string>
+    <string name="conv_log_extra_tracks_bypass">Булак видеодо аудио/видео эмес тректер бар (%1$s), ошондуктан бир форматтуу түз өткөрүүнү өткөрүп жиберип, тазалоо үчүн толук жазуу агымы колдонулду</string>
+    <string name="conv_log_ts_fallback">Булакта мукаба кадрынын убакыт белгиси жок, стандарт боюнча видеонун ортосуна кайтарылды</string>
+    <string name="conv_log_brand_normalized">Видео контейнеринин бренди нормалдаштырылды (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Видеодо кошумча тректер бар (%1$s), тазалоо мүмкүн эмес, өзгөртүлбөй чыгарылды (бул натыйжа айрым моделдерде узак басууда ойнолбошу мүмкүн)</string>
+    <string name="conv_log_extra_tracks_removed">Видеонун кошумча тректери алынып салынды (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Булак видео %1$s; контейнерди кайра таңуу гана чечпейт (%2$s), натыйжа дагы эле узак басууда ойнолбосо, «Жөндөөлөр → Видео транскоддоо → Транскод ыкмасы» бөлүмүндө «Кайра коддоо» деп тандаңыз</string>
+    <string name="conv_log_reencoding">Булак видео %1$s, альбом шайкештигин жогорулатуу үчүн жөндөө боюнча 8bit + AAC кылып кайра коддолууда</string>
+    <string name="conv_log_reencode_result_unusable">Кайра коддоо натыйжасы жараксыз, өзгөртүлбөй чыгарылды (бул натыйжа айрым моделдерде узак басууда ойнолбошу мүмкүн)</string>
+    <string name="conv_log_reencode_still_risky">Кайра коддодон кийин дагы тобокелдиктер бар (%1$s)</string>
+    <string name="conv_log_reencode_failed">Кайра коддоо ишке ашкан жок (%1$s), өзгөртүлбөй чыгарылды (бул натыйжа айрым моделдерде узак басууда ойнолбошу мүмкүн)</string>
+    <string name="conv_log_cover_heic_converted">Мукаба HEIC (JPEG эмес), таңуудан мурун стандарттуу JPEG кылып транскоддолду</string>
+    <string name="conv_log_compose_sizes">Кураштыруу: сүрөт %1$d Б + видео %2$d Б → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Транскодер иштетилген жок: контейнердин бренди гана өзгөртүлөт (MOV → MP4), кайра коддолбойт</string>
+
+    <!-- Журнал тегдери (интерфейсте «[тег] текст» түрүндө көрсөтүлөт) -->
+    <string name="conv_tag_convert">Айландыруу</string>
+    <string name="conv_tag_transcode">Транскод</string>
+    <string name="conv_tag_compose">Кураштыруу</string>
+
+    <!-- Транскод ыкмасынын тоскоолдук себеби (жогорку эскертүү текстине кошулат) -->
+    <string name="conv_blocker_no_encoder">Ички транскодер жеткиликсиз</string>
+    <string name="conv_blocker_mode_no_encode">Учурдагы «Транскод ыкмасы» кайра коддобойт</string>
+
+    <!-- ========== FfmpegAddon.kt: ички ffmpeg транскоддоо / кайра таңуу ========== -->
+    <string name="conv_addon_unavailable">Ички транскодер жеткиликсиз</string>
+    <string name="conv_addon_transcode_failed">ffmpeg транскоддоо ишке ашкан жок: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg контейнерди кайра таңуу ишке ашкан жок: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg менен видео стандарттуу MP4 кылып транскоддолууда (%1$s / crf %2$d / %3$s, видео жана аудио тректер гана сакталат)</string>
+    <string name="conv_log_transcode_done">Видео транскоддоо бүттү (%1$d КБ)</string>
+    <string name="conv_log_remuxing">Видео контейнери стандарттуу MP4 кылып кайра таңууда (контейнер гана алмашат, кайра коддолбойт)</string>
+    <string name="conv_log_remux_done">Контейнерди кайра таңуу бүттү (%1$d КБ)</string>
+
+    <!-- ========== Reminders.kt: «Эми көрсөтпөө» терезеси ========== -->
+    <string name="conv_reminder_cat_compose">Кураштыруу</string>
+    <string name="conv_reminder_cat_convert">Айландыруу</string>
+    <string name="conv_reminder_cat_update">Жаңыртуу</string>
+    <string name="conv_reminder_video_over3s_title">Видео 3 секунддан узун</string>
+    <string name="conv_reminder_video_over3s_message">Тандалган видеонун узундугу 3 секунддан ашат, кураштырылган кыймылдуу сүрөттө шайкештик көйгөйлөрү болушу мүмкүн:\n\n• Кадимкидей ойнолбошу мүмкүн\n• Системалык альбом тааныбашы мүмкүн\n• Айрым моделдер бул кыймылдуу сүрөттү тааныбашы мүмкүн</string>
+    <string name="conv_reminder_legacy_go_title">Эски версия аныкталды</string>
+    <string name="conv_reminder_legacy_go_message">Бул түзмөктө эски версиядагы (Go) колдонмо орнотулган бойдон турат; ал эски версия бул түзмөктө иштебейт, орун бошотуу үчүн орнотуудан чыгарсаңыз болот.</string>
+    <string name="conv_reminder_replace_risk_title">Алмаштыруу режиминде бузулуу тобокелдиги бар</string>
+    <!-- formatted="false"（базалык файлдагыдай эле сакталды）：aapt2/lint аны String.format боюнча текшербеши үчүн. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Алмаштыруу режими айландыруу натыйжасын түз эле мурунку файлга жазат, түпнуска файл үстүнөн жазылгандан кийин кайтарылбайт.\n\n• Жазуу учурунда колдонмо токтоп калса, сактоо орду жетпесе же уруксат алынып салынса, түпнуска файл бузулушу мүмкүн\n• Айландыруунун ийгиликтүү болушуна кепилдик жок, ийгиликсиз болгондо түпнуска файл колдонулбай калышы мүмкүн\n• Адегенде бир-эки файлда сынап көрүп, көйгөй жок болсо гана топтомо иштетиңиз\n• Маанилүү сүрөттөрдү алдын ала өзүңүз камдыкка сактаңыз\n\nБул функция «болгон абалында» берилет, колдонуу тобокелдигин өзүңүз тартасыз, автор файлдын бузулушу же жоголушу үчүн жоопкерчилик тартпайт.</string>
+    <string name="conv_reminder_dont_remind">Эми көрсөтпөө</string>
+    <string name="conv_reminder_confirm_ok">Түшүндүм</string>
+    <string name="conv_reminder_uninstall">Орнотуудан чыгаруу</string>
+
+</resources>

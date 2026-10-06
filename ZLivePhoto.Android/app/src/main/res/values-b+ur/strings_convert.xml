@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · اردو (Urdu, RTL) strings — تبدیلی / ٹرانس کوڈنگ / یاد دہانی (key prefix: conv_).
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline, the fallback locale).
+  Urdu is right-to-left; no physical left/right direction is hard-coded and placeholders stay LTR.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Model-assisted translation — community corrections welcome.
+  Recommended for a native review pass.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: پیرامیٹر اور ماخذ کی جانچ (خرابی → انٹرفیس پر ناکامی کی وجہ دکھائی جاتی ہے) ========== -->
+    <string name="conv_unknown_target">نامعلوم ہدف فارمیٹ: %1$s</string>
+    <string name="conv_unrecognized_live_photo">نامعلوم لائیو فوٹو فارمیٹ (Google/OPPO/vivo/Xiaomi/Apple لائیو فوٹو نہیں)</string>
+    <string name="conv_cover_photo_missing">کور تصویر موجود نہیں یا خالی ہے</string>
+    <string name="conv_video_missing">ویڈیو موجود نہیں یا خالی ہے</string>
+    <string name="conv_video_too_large">ویڈیو بہت بڑی ہے (%1$dMB)، لائیو فوٹو نہیں بنایا جا سکتا؛ براہ کرم مختصر ویڈیو منتخب کریں</string>
+    <string name="conv_transcoded_too_large">ٹرانس کوڈنگ کے بعد ویڈیو بہت بڑی ہے (%1$dMB)، لائیو فوٹو نہیں بنایا جا سکتا</string>
+    <string name="conv_video_too_large_compose">ویڈیو بہت بڑی ہے (%1$dMB)، لائیو فوٹو نہیں بنایا جا سکتا</string>
+
+    <!-- Converter.kt: کور (HEIC / JPEG کے علاوہ) -->
+    <string name="conv_cover_heic_go">کور HEIC تصویر ہے (لائٹ ورژن ٹرانس کوڈنگ کی حمایت نہیں کرتا؛ پہلے iPhone پر اسے JPEG میں ایکسپورٹ کریں، پھر تبدیل کریں)</string>
+    <string name="conv_cover_invalid_heic">کور درست تصویر نہیں ہے (HEIC کے لیے سسٹم کا HEIF ڈیکوڈنگ سپورٹ درکار ہے)</string>
+    <string name="conv_cover_not_jpeg_go">کور JPEG تصویر نہیں ہے (لائٹ ورژن ٹرانس کوڈنگ کی حمایت نہیں کرتا؛ براہ کرم JPEG تصویر استعمال کریں)</string>
+    <string name="conv_cover_invalid_image">کور درست تصویر نہیں ہے (صرف JPEG/WebP/PNG کی حمایت ہے)</string>
+
+    <!-- Converter.kt: ٹرانس کوڈنگ / دوبارہ پیکنگ کی ناکامی اور “صرف کنٹینر بدلنے سے انکوڈنگ حل نہیں ہوتی” کی تنبیہ -->
+    <string name="conv_reencode_failed">ویڈیو کی دوبارہ انکوڈنگ ناکام: %1$s</string>
+    <string name="conv_remux_failed">کنٹینر دوبارہ پیک کرنا ناکام: %1$s</string>
+    <string name="conv_codec_unknown">یہ پہچانی جانے والی H.264/H.265 ویڈیو نہیں ہے</string>
+    <string name="conv_codec_is">انکوڈنگ %1$s ہے</string>
+    <string name="conv_hint_remux_cannot_fix">ویڈیو “%1$s” %2$s؛ صرف کنٹینر بدلنے (دوبارہ پیکنگ) سے انکوڈنگ نہیں بدلتی، اس لیے لائیو فوٹو نہیں بنایا جا سکتا۔\n\nبراہ کرم “ترتیبات → ویڈیو ٹرانس کوڈنگ → ٹرانس کوڈ کا طریقہ” میں “دوبارہ انکوڈنگ” منتخب کریں، یا پہلے کسی اور ٹول سے اسے H.264/H.265 انکوڈنگ والی MP4 میں تبدیل کریں۔</string>
+    <string name="conv_hint_no_encoder">ویڈیو معیاری MP4 کنٹینر میں نہیں ہے (MOV / MKV / WebM / AVI وغیرہ)، اور موجودہ “ٹرانس کوڈ کا طریقہ” دوبارہ انکوڈنگ نہیں کرتا، اس لیے لائیو فوٹو نہیں بنایا جا سکتا۔\n\nبراہ کرم “ترتیبات → ویڈیو ٹرانس کوڈنگ → ٹرانس کوڈ کا طریقہ” میں “دوبارہ انکوڈنگ” منتخب کریں (عام ورژن میں ffmpeg انکوڈر شامل ہے؛ Go لائٹ ورژن میں ٹرانس کوڈر نہیں، براہ کرم عام ورژن استعمال کریں)، یا پہلے ویڈیو کو معیاری MP4 (H.264/H.265) میں تبدیل کریں۔</string>
+
+    <!-- ========== تبدیلی لاگ (فہرست کے آئٹم کی اسٹیٹس بار اور لاگ پینل پر دکھایا جاتا ہے) ========== -->
+    <string name="conv_log_detected">بطور %1$s شناخت ہوا</string>
+    <string name="conv_log_same_format_copied">ماخذ اور ہدف فارمیٹ ایک جیسے ہیں، اصل کے مطابق کاپی کیا گیا (بغیر نقصان)</string>
+    <string name="conv_log_extra_tracks_bypass">ماخذ ویڈیو میں غیر آڈیو/ویڈیو ٹریکس ہیں (%1$s)؛ ہم فارمیٹ پاس تھرو چھوڑ کر مکمل تحریری عمل استعمال کر رہے ہیں تاکہ صاف کیا جائے</string>
+    <string name="conv_log_ts_fallback">ماخذ میں کور فریم کا ٹائم اسٹیمپ نہیں ہے؛ معمول کے مطابق ویڈیو کے درمیانی نقطے پر واپس جایا گیا</string>
+    <string name="conv_log_brand_normalized">ویڈیو کنٹینر برانڈ معمول کے مطابق کیا گیا (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">ویڈیو میں اضافی ٹریکس ہیں (%1$s) جو صاف نہیں ہو سکے؛ اصل کے مطابق آؤٹ پٹ کیا گیا (یہ نتیجہ کچھ ماڈلز پر دیر تک دبانے سے نہیں چل سکتا)</string>
+    <string name="conv_log_extra_tracks_removed">ویڈیو کے اضافی ٹریکس ہٹا دیے گئے (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">ماخذ ویڈیو%1$s؛ صرف کنٹینر دوبارہ پیک کرنے سے مسئلہ حل نہیں ہوتا (%2$s)؛ اگر نتیجہ پھر بھی دیر تک دبانے سے نہ چلے تو “ترتیبات → ویڈیو ٹرانس کوڈنگ → ٹرانس کوڈ کا طریقہ” میں “دوبارہ انکوڈنگ” منتخب کریں</string>
+    <string name="conv_log_reencoding">ماخذ ویڈیو%1$s؛ ترتیبات کے مطابق 8bit + AAC میں دوبارہ انکوڈ کیا جا رہا ہے تاکہ البم کی مطابقت بہتر ہو</string>
+    <string name="conv_log_reencode_result_unusable">دوبارہ انکوڈنگ کا نتیجہ قابلِ استعمال نہیں، اصل کے مطابق آؤٹ پٹ کیا گیا (یہ نتیجہ کچھ ماڈلز پر دیر تک دبانے سے نہیں چل سکتا)</string>
+    <string name="conv_log_reencode_still_risky">دوبارہ انکوڈنگ کے بعد بھی خطرات موجود ہیں (%1$s)</string>
+    <string name="conv_log_reencode_failed">دوبارہ انکوڈنگ ناکام (%1$s)، اصل کے مطابق آؤٹ پٹ کیا گیا (یہ نتیجہ کچھ ماڈلز پر دیر تک دبانے سے نہیں چل سکتا)</string>
+    <string name="conv_log_cover_heic_converted">کور HEIC (JPEG نہیں) تھا، پیکنگ سے پہلے معیاری JPEG میں ٹرانس کوڈ کیا گیا</string>
+    <string name="conv_log_compose_sizes">کمپوز: تصویر %1$dB + ویڈیو %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ٹرانس کوڈر فعال نہیں: صرف کنٹینر برانڈ لکھا جا رہا ہے (MOV → MP4)، دوبارہ انکوڈنگ نہیں</string>
+
+    <!-- لاگ ٹیگ (انٹرفیس پر “[ٹیگ] متن” کے طور پر دکھایا جاتا ہے) -->
+    <string name="conv_tag_convert">تبدیلی</string>
+    <string name="conv_tag_transcode">ٹرانس کوڈنگ</string>
+    <string name="conv_tag_compose">کمپوز</string>
+
+    <!-- ٹرانس کوڈ کے طریقے کی رکاوٹ کی وجہ (اوپر کی تنبیہ کے متن میں شامل ہوتی ہے) -->
+    <string name="conv_blocker_no_encoder">بلٹ اِن ٹرانس کوڈر دستیاب نہیں</string>
+    <string name="conv_blocker_mode_no_encode">موجودہ “ٹرانس کوڈ کا طریقہ” دوبارہ انکوڈنگ نہیں کرتا</string>
+
+    <!-- ========== FfmpegAddon.kt: بلٹ اِن ffmpeg ٹرانس کوڈنگ / دوبارہ پیکنگ ========== -->
+    <string name="conv_addon_unavailable">بلٹ اِن ٹرانس کوڈر دستیاب نہیں</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ٹرانس کوڈنگ ناکام: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg کنٹینر دوبارہ پیک کرنا ناکام: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg سے ویڈیو کو معیاری MP4 میں ٹرانس کوڈ کیا جا رہا ہے (%1$s / crf %2$d / %3$s، صرف ویڈیو اور آڈیو ٹریکس برقرار رکھے گئے)</string>
+    <string name="conv_log_transcode_done">ویڈیو ٹرانس کوڈنگ مکمل (%1$dKB)</string>
+    <string name="conv_log_remuxing">ویڈیو کنٹینر کو معیاری MP4 میں دوبارہ پیک کیا جا رہا ہے (صرف کنٹینر، دوبارہ انکوڈنگ نہیں)</string>
+    <string name="conv_log_remux_done">کنٹینر دوبارہ پیکنگ مکمل (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: “مزید نہ دکھائیں” پاپ اپ ========== -->
+    <string name="conv_reminder_cat_compose">کمپوز</string>
+    <string name="conv_reminder_cat_convert">تبدیلی</string>
+    <string name="conv_reminder_cat_update">اپ ڈیٹ</string>
+    <string name="conv_reminder_video_over3s_title">ویڈیو 3 سیکنڈ سے زیادہ لمبی ہے</string>
+    <string name="conv_reminder_video_over3s_message">منتخب ویڈیو 3 سیکنڈ سے زیادہ لمبی ہے، اس لیے بننے والی لائیو فوٹو میں مطابقت کے مسائل ہو سکتے ہیں:\n\n• شاید ٹھیک سے نہ چلے\n• شاید سسٹم البم اسے نہ پہچانے\n• کچھ ماڈلز اس لائیو فوٹو کو نہ پہچان سکیں</string>
+    <string name="conv_reminder_legacy_go_title">پرانا ورژن ملا</string>
+    <string name="conv_reminder_legacy_go_message">اس ڈیوائس پر اب بھی ایپ کا پرانا ورژن (Go ورژن) نصب ہے، جو اس ڈیوائس پر مزید کام نہیں کرتا؛ جگہ خالی کرنے کے لیے اسے ان انسٹال کر سکتے ہیں۔</string>
+    <string name="conv_reminder_replace_risk_title">ریپلیس موڈ میں خرابی کا خطرہ ہے</string>
+    <!-- formatted="false": اصل متن میں ایک لفظی % (100%) تھا؛ ترجمے میں اسے الفاظ میں لکھا گیا تاکہ کوئی برہنہ % نہ رہے۔
+         یہ سٹرنگ کبھی پیرامیٹر کے ساتھ استعمال نہیں ہوتی، اسے غیر فارمیٹ سٹرنگ قرار دینے سے aapt2/lint اسے String.format کے مطابق جانچنے سے بچ جاتا ہے۔ -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">ریپلیس موڈ تبدیلی کا نتیجہ براہ راست اصل فائلوں پر واپس لکھ دیتا ہے؛ ایک بار اوور رائٹ ہونے کے بعد اصل فائلیں واپس نہیں مل سکتیں۔\n\n• لکھتے وقت اگر ایپ بند ہو جائے، اسٹوریج کم پڑ جائے یا اجازت واپس لے لی جائے تو ماخذ فائلیں خراب ہو سکتی ہیں\n• تبدیلی کی کامیابی کی ہر بار ضمانت نہیں دی جا سکتی، اور ناکامی پر ماخذ فائلیں پہلے ہی ناقابلِ استعمال ہو چکی ہو سکتی ہیں\n• پہلے ایک یا دو فائلوں پر آزما کر تسلی کر لیں، پھر بلک پروسیسنگ کریں\n• اہم تصاویر کی پہلے خود بیک اپ لے لیں\n\nیہ خصوصیت “جوں کی توں” فراہم کی گئی ہے؛ استعمال کا خطرہ آپ کے ذمے ہے، اور مصنف فائلوں کے خراب ہونے یا گم ہونے کا ذمہ دار نہیں۔</string>
+    <string name="conv_reminder_dont_remind">مزید نہ دکھائیں</string>
+    <string name="conv_reminder_confirm_ok">سمجھ گیا</string>
+    <string name="conv_reminder_uninstall">ان انسٹال کریں</string>
+
+</resources>

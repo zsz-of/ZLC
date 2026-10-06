@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Scots strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Scots is a law-resource leid; this is a best-effort, model-assisted translation.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: C.
+-->
+<resources>
+    <!-- The option in the leid picker that follaes the seestem -->
+    <string name="app_language_follow_system">Follae the seestem</string>
+    <!-- Fallback title o the leid picker (the Settins module can uise its ain key) -->
+    <string name="app_language_title">App leid</string>
+</resources>

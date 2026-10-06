@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Hawaiian (haw) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">ʻAʻole i loaʻa ka loulou hoʻoiho GitHub; e hoʻāʻo hou ma hope aku.</string>
+    <string name="update_flavor_standard">Ka mana maʻa mau</string>
+    <string name="update_flavor_go">Ka mana Go</string>
+    <string name="update_lanzou_url_missing">ʻAʻole hāʻawi mai kēia mana i ka loulou hoʻoiho Lanzou; hiki ke hoʻoiho mai GitHub.</string>
+    <string name="update_apk_direct_missing">ʻAʻole hāʻawi mai kēia mana i ka loulou pololei o ka pāhu hoʻouka like; e koho i ka APK kūpono ma ka ʻaoʻao Release GitHub.</string>
+    <string name="update_install_permission_missing">ʻAʻole i loaʻa ka ʻae „Hoʻouka polokalamu ʻike ʻole ʻia“; ʻaʻole hiki ke hoʻouka ʻakaku. E ʻae ma nā hoʻonohonoho ʻōnaehana a hoʻāʻo hou.</string>
+    <string name="update_error_unknown">Hewa ʻike ʻole ʻia</string>
+    <string name="update_fail_lanzou">Hewa ka hoʻoiho mai Lanzou</string>
+    <string name="update_fail_github">Hewa ka hoʻoiho mai GitHub</string>
+    <string name="update_lanzou_resolving">Ke hoʻonohonoho nei i ka loulou hoʻoiho Lanzou…</string>
+    <string name="update_lanzou_downloading">Ke hoʻoiho nei mai Lanzou…</string>
+    <string name="update_github_downloading">Ke hoʻoiho nei mai GitHub…</string>
+    <string name="update_unzipping">Ke wehe nei i ka pāhu hoʻouka…</string>
+    <string name="update_notes_empty">ʻAʻohe manaʻo hou o kēia mana.</string>
+    <string name="update_use_normal_title">E hoʻohana i ka mana maʻa mau</string>
+    <string name="update_use_normal_body">ʻO Android 10 a ma luna ka ʻōnaehana o kēia mea hana; ʻaʻole kākoʻo hou ʻia ka mana Go, ʻaʻole hiki ke hoʻohana hou i ka mana kahiko.
+
+Ua ʻike ʻia ua hoʻouka ʻia ka mana maʻa mau (ZLC) ma kēia mea hana; e wehe pololei i ka mana maʻa mau e hoʻomau ai (ʻaʻole hāʻawi hou ka mana hou i ka mana Go; hiki ke holoi hoʻouka i ka mana kahiko e haʻahaʻa i ka wahi).</string>
+    <string name="update_open_normal">Wehe i ka mana maʻa mau</string>
+    <string name="update_must_update_title">Pono e hoʻohou ma mua o ka hoʻomau ʻana</string>
+    <string name="update_forced_body">ʻO Android 10 a ma luna ka ʻōnaehana o kēia mea hana; ʻaʻole kākoʻo hou ʻia ka mana Go, ʻaʻole hiki ke hoʻohana hou i ka mana kahiko; ʻaʻole hāʻawi hou ka mana hou i ka mana Go.
+
+E pili i ka pūnaewele a kaomi i „Hoʻāʻo hou“ e loaʻa ai ka pāhu hoʻouka o ka mana maʻa mau.</string>
+    <string name="update_retry">Hoʻāʻo hou</string>
+    <string name="update_switch_normal_body">ʻO Android 10 a ma luna ka ʻōnaehana o kēia mea hana; ʻaʻole kākoʻo hou ʻia ka mana Go, ʻaʻole hiki ke hoʻohana hou i ka mana kahiko.
+E hoʻoiho a hoʻouka i ka mana maʻa mau e hoʻomau ai (ʻaʻole hāʻawi hou ka mana hou i ka mana Go).</string>
+    <string name="update_downloading_title">Ke hoʻoiho nei i ka hoʻohou ʻana</string>
+    <string name="update_cancel">Hoʻōki</string>
+    <string name="update_need_permission_title">Pono ka ʻae hoʻouka</string>
+    <string name="update_need_permission_body">Pono ka ʻae ʻōnaehana „Hoʻouka polokalamu ʻike ʻole ʻia“ no ka hoʻouka ʻana i ka mana hou.
+
+Kaomi i „E ʻae aku“, e ʻae ma nā hoʻonohonoho, a laila e hoʻi mai i ka polokalamu; e hoʻomau ʻakaku ka hoʻouka ʻana (ʻaʻole pono ke hoʻoiho hou).</string>
+    <string name="update_grant">E ʻae aku</string>
+    <string name="update_notice_title">Hōʻike</string>
+    <string name="update_got_it">Maopopo</string>
+    <string name="update_notes_title">v%1$s · Nā manaʻo hou</string>
+    <string name="update_back">Hoʻi hou</string>
+    <string name="update_title_switch_normal">Hoʻololi i ka mana maʻa mau</string>
+    <string name="update_title_reinstall">Hoʻouka hou i kēia mana</string>
+    <string name="update_title_new_version">Loaʻa ka mana hou</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">E hoʻoiho a hoʻouka hou ʻia kēia mana (paʻi ma luna o ka polokalamu kēia manawa).
+No ka hoʻāʻo hou ʻana i ka ʻōnaehana hoʻohou kēia hana.</string>
+    <string name="update_view_notes">Nānā i nā manaʻo hou</string>
+    <string name="update_lanzou_unavailable">ʻAʻole loaʻa Lanzou i kēia manawa</string>
+    <string name="update_download_lanzou">Hoʻoiho mai Lanzou</string>
+    <string name="update_download_github">Hoʻoiho mai GitHub</string>
+    <string name="update_download_browser">Hoʻoiho ma ka polokalamu kele</string>
+    <string name="update_later">ʻAʻole i kēia manawa</string>
+    <string name="update_later_switch">ʻAʻole hoʻololi i kēia manawa</string>
+    <string name="update_skip_version">Kuʻu aku i kēia mana</string>
+</resources>

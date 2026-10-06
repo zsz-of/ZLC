@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Southern Min (nan) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">認無的目標格式：%1$s</string>
+    <string name="conv_unrecognized_live_photo">認無的動態相片格式（毋是 Google/OPPO/vivo/Xiaomi/Apple 的動態相片）</string>
+    <string name="conv_cover_photo_missing">封面相片無去抑是空的</string>
+    <string name="conv_video_missing">影片無去抑是空的</string>
+    <string name="conv_video_too_large">影片傷大（%1$dMB），無法度合成動態相片，請揀較短一寡的影片</string>
+    <string name="conv_transcoded_too_large">轉碼了後影片傷大（%1$dMB），無法度合成動態相片</string>
+    <string name="conv_video_too_large_compose">影片傷大（%1$dMB），無法度合成動態相片</string>
+    <string name="conv_cover_heic_go">封面是 HEIC 圖（輕量版無支持轉碼，請佇 iPhone 匯出做 JPEG 閣轉換）</string>
+    <string name="conv_cover_invalid_heic">封面毋是有效的圖（HEIC 愛系統支持 HEIF 解碼）</string>
+    <string name="conv_cover_not_jpeg_go">封面毋是 JPEG 圖（輕量版無支持轉碼，請改用 JPEG 相片）</string>
+    <string name="conv_cover_invalid_image">封面毋是有效的圖（干焦支持 JPEG/WebP/PNG）</string>
+    <string name="conv_reencode_failed">影片重新編碼失敗：%1$s</string>
+    <string name="conv_remux_failed">容器重封裝失敗：%1$s</string>
+    <string name="conv_codec_unknown">無法度認的 H.264/H.265 影片</string>
+    <string name="conv_codec_is">編碼是 %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">影片「%1$s」%2$s，干焦換容器（重封裝）無法度改編碼，無法度合成動態相片。
+
+請佇「設定 → 影片轉碼 → 轉碼模式」改做「重新編碼」，抑是先用別的工具共伊轉做 H.264/H.265 編碼的 MP4。</string>
+    <string name="conv_hint_no_encoder">影片毋是標準 MP4 容器（MOV / MKV / WebM / AVI 等等），這馬的「轉碼模式」閣無重新編碼，無法度合成動態相片。
+
+請佇「設定 → 影片轉碼 → 轉碼模式」改做「重新編碼」（正常版內建有 ffmpeg 編碼器；Go 輕量版無轉碼器，請改用正常版），抑是先把影片轉做標準 MP4（H.264/H.265）。</string>
+    <string name="conv_log_detected">認做 %1$s</string>
+    <string name="conv_log_same_format_copied">來源佮目標格式相仝，已經原樣複製（無損耗）</string>
+    <string name="conv_log_extra_tracks_bypass">來源影片有音訊影片以外的軌（%1$s），跳過同格式直通，改行完整寫出的流程來清掉</string>
+    <string name="conv_log_ts_fallback">來源無封面的時間戳，照規範改做影片中點</string>
+    <string name="conv_log_brand_normalized">已經共影片容器的品牌歸一化（QuickTime → isom）</string>
+    <string name="conv_log_sanitize_failed">影片有附加軌（%1$s），無法度清，已經照原樣輸出（這个結果佇一寡機型可能袂當長按播放）</string>
+    <string name="conv_log_extra_tracks_removed">已經提掉影片的附加軌（%1$s）</string>
+    <string name="conv_log_remux_cannot_fix">來源影片%1$s；干焦重封裝容器無法度解決（%2$s），若講結果猶是無法度長按播放，請佇「設定 → 影片轉碼 → 轉碼模式」改揀「重新編碼」</string>
+    <string name="conv_log_reencoding">來源影片%1$s，照設定重新編碼做 8bit + AAC 來增加相簿的相容性</string>
+    <string name="conv_log_reencode_result_unusable">重新編碼的結果袂使得，已經照原樣輸出（這个結果佇一寡機型可能袂當長按播放）</string>
+    <string name="conv_log_reencode_still_risky">重新編碼了後猶有風險的項目（%1$s）</string>
+    <string name="conv_log_reencode_failed">重新編碼失敗（%1$s），已經照原樣輸出（這个結果佇一寡機型可能袂當長按播放）</string>
+    <string name="conv_log_cover_heic_converted">封面是 HEIC（毋是 JPEG），已經轉碼做標準 JPEG 閣封裝</string>
+    <string name="conv_log_compose_sizes">合成：相片 %1$dB + 影片 %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">無開轉碼器：干焦共容器的品牌改掉（MOV → MP4），無重新編碼</string>
+    <string name="conv_tag_convert">轉換</string>
+    <string name="conv_tag_transcode">轉碼</string>
+    <string name="conv_tag_compose">合成</string>
+    <string name="conv_blocker_no_encoder">內建的轉碼器無法度用</string>
+    <string name="conv_blocker_mode_no_encode">這馬「轉碼模式」無重新編碼</string>
+    <string name="conv_addon_unavailable">內建的轉碼器無法度用</string>
+    <string name="conv_addon_transcode_failed">ffmpeg 轉碼失敗：%1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg 重封裝容器失敗：%1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">咧用 ffmpeg 共影片轉碼做標準 MP4（%1$s / crf %2$d / %3$s，干焦保留影片佮音訊的軌）</string>
+    <string name="conv_log_transcode_done">影片轉碼完成（%1$dKB）</string>
+    <string name="conv_log_remuxing">咧共影片容器重封裝做標準 MP4（干焦換容器、無重新編碼）</string>
+    <string name="conv_log_remux_done">容器重封裝完成（%1$dKB）</string>
+    <string name="conv_reminder_cat_compose">合成</string>
+    <string name="conv_reminder_cat_convert">轉換</string>
+    <string name="conv_reminder_cat_update">更新</string>
+    <string name="conv_reminder_video_over3s_title">影片超過 3 秒</string>
+    <string name="conv_reminder_video_over3s_message">揀的影片長度超過 3 秒，合成了後的動態相片可能有相容的問題：
+
+• 可能袂當正常播放
+• 可能系統相簿認無
+• 一寡機型可能認無這个動態相片</string>
+    <string name="conv_reminder_legacy_go_title">揣著舊版本</string>
+    <string name="conv_reminder_legacy_go_message">這台裝置猶有裝舊版本（Go 版）的程式，舊版本佇這台裝置已經袂使得，會當移除來省空間。</string>
+    <string name="conv_reminder_replace_risk_title">取代模式有弄壞檔案的風險</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">取代模式會共轉換的結果直接寫轉原本的檔案，原檔案一經覆蓋就揣無矣。
+
+• 寫入的過程中，若講程式斷去、儲存空間無夠抑是權限予人收轉去，原檔案有可能弄壞
+• 轉換本身無法度保講完全會成功，失敗的時原檔案有可能已經袂使得
+• 建議先提一兩个檔案來試，確認無問題閣來批量處理
+• 重要的相片請先家己備份
+
+這个功能是「照現狀」提供的，用的風險你家己負擔，檔案若弄壞抑是無去，作者毋負責。</string>
+    <string name="conv_reminder_dont_remind">莫閣顯示</string>
+    <string name="conv_reminder_confirm_ok">知影矣</string>
+    <string name="conv_reminder_uninstall">移除</string>
+</resources>

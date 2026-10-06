@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · اردو (Urdu, RTL) strings — اپ ڈیٹ کے عمل کا متن (ui/UpdateFlow.kt, key prefix: update_).
+  Separate file per the “one strings_*.xml per module” plan (name kept distinct to avoid clashing with other tasks).
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Urdu is right-to-left; no physical left/right direction is hard-coded and placeholders stay LTR.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Model-assisted translation — community corrections welcome.
+  Recommended for a native review pass.
+-->
+<resources>
+    <!-- کنٹرولر کی طرف سے پیغامات (Context سے آزاد Composable کے علاوہ، سب context.getString سے آتے ہیں) -->
+    <string name="update_github_url_missing">GitHub ڈاؤن لوڈ پتہ حاصل نہیں ہوا، براہ کرم تھوڑی دیر بعد دوبارہ کوشش کریں۔</string>
+    <string name="update_flavor_standard">معیاری ورژن</string>
+    <string name="update_flavor_go">Go ورژن</string>
+    <string name="update_lanzou_url_missing">یہ ورژن Lanzou Cloud ڈاؤن لوڈ لنک فراہم نہیں کرتا؛ GitHub سے ڈاؤن لوڈ کر سکتے ہیں۔</string>
+    <string name="update_apk_direct_missing">یہ ورژن اس ورژن سے مطابق انسٹالر کا ڈائریکٹ لنک فراہم نہیں کرتا؛ براہ کرم GitHub کے ریلیز صفحے پر متعلقہ APK منتخب کریں۔</string>
+    <string name="update_install_permission_missing">“نامعلوم ایپس انسٹال کرنے” کی اجازت نہیں ملی، اس لیے خودکار انسٹالیشن ممکن نہیں۔ براہ کرم سسٹم کی ترتیبات میں اجازت دے کر دوبارہ کوشش کریں۔</string>
+    <string name="update_error_unknown">نامعلوم خرابی</string>
+    <string name="update_fail_lanzou">Lanzou Cloud ڈاؤن لوڈ ناکام</string>
+    <string name="update_fail_github">GitHub ڈاؤن لوڈ ناکام</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud ڈاؤن لوڈ لنک کی تجزیہ کاری ہو رہی ہے…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud سے ڈاؤن لوڈ ہو رہا ہے…</string>
+    <string name="update_github_downloading">GitHub سے ڈاؤن لوڈ ہو رہا ہے…</string>
+    <string name="update_unzipping">انسٹالر کو ان زپ کیا جا رہا ہے…</string>
+    <string name="update_notes_empty">اس ورژن کے لیے کوئی اپ ڈیٹ نوٹس نہیں۔</string>
+
+    <!-- Go ورژن سے متعلق پاپ اپ -->
+    <string name="update_use_normal_title">براہ کرم معیاری ورژن استعمال کریں</string>
+    <string name="update_use_normal_body">اس ڈیوائس کا سسٹم Android 10 یا اس سے اوپر ہے، Go لائٹ ورژن اب مطابقت نہیں رکھتا، اور پرانا ورژن مزید استعمال نہیں ہو سکتا۔\n\nاس ڈیوائس پر معیاری ورژن (ZLC) نصب پایا گیا، براہ کرم براہ راست معیاری ورژن کھول کر استعمال جاری رکھیں (نئے ورژن اب Go مطابق ورژن فراہم نہیں کرتے، جگہ خالی کرنے کے لیے پرانا ورژن ان انسٹال کر سکتے ہیں)۔</string>
+    <string name="update_open_normal">معیاری ورژن کھولیں</string>
+    <string name="update_must_update_title">جاری رکھنے کے لیے اپ ڈیٹ لازمی ہے</string>
+    <string name="update_forced_body">اس ڈیوائس کا سسٹم Android 10 یا اس سے اوپر ہے، Go لائٹ ورژن اب مطابقت نہیں رکھتا، اور پرانا ورژن مزید استعمال نہیں ہو سکتا؛ نئے ورژن بھی Go مطابق ورژن فراہم نہیں کرتے۔\n\nبراہ کرم نیٹ ورک سے جڑ کر “دوبارہ کوشش کریں” پر ٹیپ کریں تاکہ معیاری ورژن کا انسٹالر مل سکے۔</string>
+    <string name="update_retry">دوبارہ کوشش کریں</string>
+    <string name="update_switch_normal_body">اس ڈیوائس کا سسٹم Android 10 یا اس سے اوپر ہے، Go لائٹ ورژن اب مطابقت نہیں رکھتا، اور پرانا ورژن مزید استعمال نہیں ہو سکتا۔\nبراہ کرم معیاری ورژن ڈاؤن لوڈ اور انسٹال کر کے استعمال جاری رکھیں (نئے ورژن اب Go مطابق ورژن فراہم نہیں کرتے)۔</string>
+
+    <!-- ڈاؤن لوڈ / انسٹالیشن کی اجازت / نتیجے کا پیغام -->
+    <string name="update_downloading_title">اپ ڈیٹ ڈاؤن لوڈ کریں</string>
+    <string name="update_cancel">منسوخ کریں</string>
+    <string name="update_need_permission_title">انسٹالیشن کی اجازت درکار ہے</string>
+    <string name="update_need_permission_body">نئے ورژن کی انسٹالیشن کے لیے سسٹم کی “نامعلوم ایپس انسٹال کرنے” کی اجازت درکار ہے۔\n\n“اجازت دیں” پر ٹیپ کریں، ترتیبات میں اجازت دے کر ایپ پر واپس آئیں؛ انسٹالیشن خودکار طور پر جاری رہے گی (دوبارہ ڈاؤن لوڈ کی ضرورت نہیں)۔</string>
+    <string name="update_grant">اجازت دیں</string>
+    <string name="update_notice_title">اطلاع</string>
+    <string name="update_got_it">سمجھ گیا</string>
+
+    <!-- مرکزی پاپ اپ / اپ ڈیٹ نوٹس -->
+    <string name="update_notes_title">v%1$s · اپ ڈیٹ نوٹس</string>
+    <string name="update_back">واپس</string>
+    <string name="update_title_switch_normal">معیاری ورژن پر سوئچ کریں</string>
+    <string name="update_title_reinstall">یہ ورژن دوبارہ انسٹال کریں</string>
+    <string name="update_title_new_version">نیا ورژن ملا</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">یہ ورژن ڈاؤن لوڈ کر کے دوبارہ انسٹال کیا جائے گا (موجودہ ایپ کو اوور رائٹ کرے گا)۔\nیہ خصوصیت اپ ڈیٹ کے طریقہ کار کی جانچ کے لیے ہے۔</string>
+    <string name="update_view_notes">اپ ڈیٹ نوٹس دیکھیں</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud اس وقت دستیاب نہیں</string>
+    <string name="update_download_lanzou">Lanzou Cloud سے ڈاؤن لوڈ کریں</string>
+    <string name="update_download_github">GitHub سے ڈاؤن لوڈ کریں</string>
+    <string name="update_download_browser">براؤزر سے ڈاؤن لوڈ کریں</string>
+    <string name="update_later">ابھی اپ ڈیٹ نہ کریں</string>
+    <string name="update_later_switch">ابھی سوئچ نہ کریں</string>
+    <string name="update_skip_version">یہ ورژن چھوڑ دیں</string>
+</resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Oʻzbekcha (Uzbek) strings — yangilanish jarayoni matni (ui/UpdateFlow.kt, key prefix: update_).
+  Separate file per the “one strings_*.xml per module” plan (name kept distinct to avoid clashing with other tasks).
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Uzbek (Latin); model-assisted translation — community corrections welcome.
+  Recommended for a native review pass.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <!-- Kontroller tomonidagi xabarlar (Context ga bogʻliq boʻlmagan Composable dan tashqari, barchasi context.getString orqali) -->
+    <string name="update_github_url_missing">GitHub yuklab olish manzili olinmadi, iltimos keyinroq qayta urinib koʻring.</string>
+    <string name="update_flavor_standard">Standart versiya</string>
+    <string name="update_flavor_go">Go versiyasi</string>
+    <string name="update_lanzou_url_missing">Bu versiya Lanzou Cloud yuklab olish havolasini taqdim etmaydi; GitHubdan foydalanishingiz mumkin.</string>
+    <string name="update_apk_direct_missing">Bu versiya shu versiyaga mos oʻrnatuvchining toʻgʻridan-toʻgʻri havolasini taqdim etmaydi; iltimos GitHub relizlar sahifasidan tegishli APK ni tanlang.</string>
+    <string name="update_install_permission_missing">“Nomaʼlum ilovalarni oʻrnatish” ruxsati berilmagan, shuning uchun avtomatik oʻrnatib boʻlmaydi. Iltimos tizim sozlamalarida ruxsat berib qayta urinib koʻring.</string>
+    <string name="update_error_unknown">Nomaʼlum xato</string>
+    <string name="update_fail_lanzou">Lanzou Cloud yuklab olish muvaffaqiyatsiz</string>
+    <string name="update_fail_github">GitHub yuklab olish muvaffaqiyatsiz</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud yuklab olish havolasi tahlil qilinmoqda…</string>
+    <string name="update_lanzou_downloading">Lanzou Clouddan yuklab olinmoqda…</string>
+    <string name="update_github_downloading">GitHubdan yuklab olinmoqda…</string>
+    <string name="update_unzipping">Oʻrnatuvchi arxivdan chiqarilmoqda…</string>
+    <string name="update_notes_empty">Bu versiya uchun yangilanish izohlari yoʻq.</string>
+
+    <!-- Go versiyasiga oid oynalar -->
+    <string name="update_use_normal_title">Iltimos, standart versiyadan foydalaning</string>
+    <string name="update_use_normal_body">Bu qurilma tizimi Android 10 yoki undan yuqori, Go yengil versiya endi mos kelmaydi va eski versiyadan foydalanib boʻlmaydi.\n\nBu qurilmada standart versiya (ZLC) oʻrnatilgani aniqlandi, iltimos toʻgʻridan-toʻgʻri standart versiyani ochib foydalanishda davom eting (yangi versiyalar endi Go mos versiyasini taqdim etmaydi; joy boʻshatish uchun eski versiyani oʻchirib tashlashingiz mumkin).</string>
+    <string name="update_open_normal">Standart versiyani ochish</string>
+    <string name="update_must_update_title">Davom etish uchun yangilash shart</string>
+    <string name="update_forced_body">Bu qurilma tizimi Android 10 yoki undan yuqori, Go yengil versiya endi mos kelmaydi va eski versiyadan foydalanib boʻlmaydi; yangi versiyalar ham Go mos versiyasini taqdim etmaydi.\n\nIltimos, internetga ulanib “Qayta urinish” tugmasini bosing va standart versiya oʻrnatuvchisini oling.</string>
+    <string name="update_retry">Qayta urinish</string>
+    <string name="update_switch_normal_body">Bu qurilma tizimi Android 10 yoki undan yuqori, Go yengil versiya endi mos kelmaydi va eski versiyadan foydalanib boʻlmaydi.\nIltimos, standart versiyani yuklab oʻrnatib foydalanishda davom eting (yangi versiyalar endi Go mos versiyasini taqdim etmaydi).</string>
+
+    <!-- Yuklab olish / oʻrnatish ruxsati / natija xabarlari -->
+    <string name="update_downloading_title">Yangilanishni yuklab olish</string>
+    <string name="update_cancel">Bekor qilish</string>
+    <string name="update_need_permission_title">Oʻrnatish ruxsati kerak</string>
+    <string name="update_need_permission_body">Yangi versiyani oʻrnatish uchun tizimning “nomaʼlum ilovalarni oʻrnatish” ruxsati kerak.\n\n“Ruxsat berish” tugmasini bosing, sozlamalarda ruxsat berib ilovaga qayting; oʻrnatish avtomatik davom etadi (qaytadan yuklab olish shart emas).</string>
+    <string name="update_grant">Ruxsat berish</string>
+    <string name="update_notice_title">Eslatma</string>
+    <string name="update_got_it">Tushundim</string>
+
+    <!-- Asosiy oyna / yangilanish izohlari -->
+    <string name="update_notes_title">v%1$s · Yangilanish izohlari</string>
+    <string name="update_back">Orqaga</string>
+    <string name="update_title_switch_normal">Standart versiyaga oʻtish</string>
+    <string name="update_title_reinstall">Bu versiyani qayta oʻrnatish</string>
+    <string name="update_title_new_version">Yangi versiya topildi</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Bu versiya yuklab olinib qayta oʻrnatiladi (joriy ilova ustiga yoziladi).\nBu funksiya yangilanish mexanizmini sinash uchun.</string>
+    <string name="update_view_notes">Yangilanish izohlarini koʻrish</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud hozircha mavjud emas</string>
+    <string name="update_download_lanzou">Lanzou Clouddan yuklab olish</string>
+    <string name="update_download_github">GitHubdan yuklab olish</string>
+    <string name="update_download_browser">Brauzerdan yuklab olish</string>
+    <string name="update_later">Hozircha yangilamaslik</string>
+    <string name="update_later_switch">Hozircha oʻtmaslik</string>
+    <string name="update_skip_version">Bu versiyani oʻtkazib yuborish</string>
+</resources>

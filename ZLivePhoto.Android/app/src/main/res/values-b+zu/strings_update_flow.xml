@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Zulu (zu) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">Ikheli lokulanda le-GitHub alitholakalanga; zama futhi kamuva.</string>
+    <string name="update_flavor_standard">Inguqulo evamile</string>
+    <string name="update_flavor_go">Inguqulo ye-Go</string>
+    <string name="update_lanzou_url_missing">Le nguqulo ayinikezi ikheli lokulanda le-Lanzou; ungasebenzisa i-GitHub.</string>
+    <string name="update_apk_direct_missing">Le nguqulo ayinikezi ikheli eliqondile le-APK efanele yile nguqulo; hamba ekhasini le-Release le-GitHub ukhethe i-APK efanele.</string>
+    <string name="update_install_permission_missing">Imvume yokuthi “Faka izinhlelo zokusebenza ezingaziwayo” ayinikezwanga, ayikwazi ukufaka ngokuzenzakalela. Hamba ezilungiselelweni zesistimu, vumela, bese uzama futhi.</string>
+    <string name="update_error_unknown">Iphutha elingaziwa</string>
+    <string name="update_fail_lanzou">Ukulanda kwe-Lanzou kwehlulekile</string>
+    <string name="update_fail_github">Ukulanda ku-GitHub kwehlulekile</string>
+    <string name="update_lanzou_resolving">Kuhlaziywa ikheli lokulanda le-Lanzou…</string>
+    <string name="update_lanzou_downloading">Kulandwa kwe-Lanzou…</string>
+    <string name="update_github_downloading">Kulandwa ku-GitHub…</string>
+    <string name="update_unzipping">Okuqukethwe kwephakheji yokufaka kukhishwa…</string>
+    <string name="update_notes_empty">Le nguqulo ayinamanothi okubuyekeza okwamanje.</string>
+    <string name="update_use_normal_title">Sebenzisa inguqulo evamile</string>
+    <string name="update_use_normal_body">Isistimu yale divayisi yi-Android 10 nangaphezulu; inguqulo encane ye-Go ayisahambelani, inguqulo endala ayisasebenzi.\n\nKutholakele ukuthi kule divayisi kufakiwe inguqulo evamile (ZLC); yivule ngqo ukuze uqhubeke uyisebenzisa (inguqulo entsha ayisahlinzeki inguqulo ehambelanayo ye-Go; ungayisusa inguqulo endala ukuze ukhulule isikhala).</string>
+    <string name="update_open_normal">Vula inguqulo evamile</string>
+    <string name="update_must_update_title">Kufanele ubuyekeze kuqala ukuze uqhubeke usebenzisa</string>
+    <string name="update_forced_body">Isistimu yale divayisi yi-Android 10 nangaphezulu; inguqulo encane ye-Go ayisahambelani, inguqulo endala ayisasebenzi; futhi inguqulo entsha ayisahlinzeki inguqulo ehambelanayo ye-Go.\n\nXhumana nethiwekhi bese uchofoza “Zama futhi” ukuthola iphakheji yokufaka yenguqulo evamile.</string>
+    <string name="update_retry">Zama futhi</string>
+    <string name="update_switch_normal_body">Isistimu yale divayisi yi-Android 10 nangaphezulu; inguqulo encane ye-Go ayisahambelani, inguqulo endala ayisasebenzi.\nLanda bese ufaka inguqulo evamile ukuze uqhubeke usebenzisa (inguqulo entsha ayisahlinzeki inguqulo ehambelanayo ye-Go).</string>
+    <string name="update_downloading_title">Ukulanda isibuyekezo</string>
+    <string name="update_cancel">Khansela</string>
+    <string name="update_need_permission_title">Kudinga imvume yokufaka</string>
+    <string name="update_need_permission_body">Ukufaka inguqulo entsha kudinga imvume yesistimu yokuthi “Faka izinhlelo zokusebenza ezingaziwayo”.\n\nUchofoze “Hamba unike imvume”, vumela ezilungiselelweni bese ubuyela ohlelweni; ukufaka kuzoqhubeka ngokuzenzakalela (akudingeki kulandiwe kabusha).</string>
+    <string name="update_grant">Hamba unike imvume</string>
+    <string name="update_notice_title">Isaziso</string>
+    <string name="update_got_it">Kulungile</string>
+    <string name="update_notes_title">v%1$s · Amanothi okubuyekeza</string>
+    <string name="update_back">Emuva</string>
+    <string name="update_title_switch_normal">Shintshela kunguqulo evamile</string>
+    <string name="update_title_reinstall">Faka le nguqulo futhi</string>
+    <string name="update_title_new_version">Kutholakele inguqulo entsha</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Kuzolandwa bese kufakwa futhi le nguqulo (ibhala phezu kohlelo lamanje).\nLo msebenzi usetshenziswa ukuhlola kabusha indlela yokubuyekeza.</string>
+    <string name="update_view_notes">Buka amanothi okubuyekeza</string>
+    <string name="update_lanzou_unavailable">I-Lanzou ayitholakali okwamanje</string>
+    <string name="update_download_lanzou">Landa ku-Lanzou</string>
+    <string name="update_download_github">Landa ku-GitHub</string>
+    <string name="update_download_browser">Landa ngesiphequluli</string>
+    <string name="update_later">Hhayi manje</string>
+    <string name="update_later_switch">Ungashintshi okwamanje</string>
+    <string name="update_skip_version">Yeqa le nguqulo</string>
+</resources>

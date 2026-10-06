@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Visningsnamn för formatplugins (task-4, underhålls av videolen-analyst). Nyckelprefix fmt_.
+  res/values/ är förenklad kinesiska som reserv; andra språk ligger i values-<locale>/strings_formats.xml.
+  Obs: FormatPlugin.display är fortfarande en gammal anropsplats (MainActivity/AlbumScanner/Converter)
+  som ger en kinesisk reserv; tabellen LEGACY_ZH_NAMES motsvarar den här filen post för post.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Extrahera</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo i en fil</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <!--
+      Användarsynliga felmeddelanden från plugin-sidan (IOException-text): de når statusfältet och
+      ”statusinformationen” via MainActivity/Converters e.message och är därför användarsynliga, så de
+      har också brutits ut till resurser.
+      Pluginen har ingen Context och använder alltid CoreText.of(...) (core/FfmpegAddon.kt, returnerar
+      en tom sträng när den inte är initierad; rena JVM-enhetstester rör inte Android-API:t).
+    -->
+    <string name="fmt_err_apple_mov_missing">Ingen .mov-videofil med samma namn hittades</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV-filen saknar ftyp-box</string>
+    <string name="fmt_err_extract_read">Extrahera är ett utdataformat och kan inte läsas som indataformat</string>
+    <string name="fmt_err_no_primary_jpeg">Ingen primär JPEG-bild hittades</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Ingen giltig MP4-video hittades efter JPEG:en (saknar ftyp-box)</string>
+    <string name="fmt_err_mp4_parse_failed">Det gick inte att tolka MP4-videoströmmen</string>
+    <string name="fmt_err_nubia_too_short">Filen är för kort för att vara en Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Saknar nubiaVpfile-maginumret i slutet</string>
+    <string name="fmt_err_nubia_jpeg_len">Ogiltig JPEG-längd i slutet: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Saknar 0x00-utfyllnadsbyte mellan JPEG:en och videon</string>
+    <string name="fmt_err_nubia_empty_video">Den inbäddade videons längd är 0</string>
+    <string name="fmt_err_vivo_no_marker">Ingen vivo livephoto-markering hittades i slutet av JPG:en</string>
+    <string name="fmt_err_vivo_companion_missing">Kompletterande videofil saknas: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Det gick inte att tolka JPG-huvuddelens innehåll</string>
+    <string name="fmt_err_vivo_companion_invalid">Den kompletterande MP4-filen är ogiltig (saknar ftyp-box)</string>
+</resources>

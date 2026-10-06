@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Macedonian (mk) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou споделувањето е откажано или датотеката не постои, користете GitHub за преземање</string>
+    <string name="update_lanzou_gone_short">Lanzou споделувањето е откажано, користете GitHub за преземање</string>
+    <string name="update_lanzou_resolve_failed">Lanzou линкот за преземање не може да се анализира</string>
+    <string name="update_lanzou_need_passwd">Ова Lanzou споделување бара код за извлекување, користете GitHub за преземање (или побарајте го кодот во Release забелешките)</string>
+    <string name="update_lanzou_wrong_passwd">Погрешен Lanzou код за извлекување</string>
+    <string name="update_err_resolve_failed">Анализата не успеа</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou анти-пајачка проверката не успеа</string>
+    <string name="update_err_no_frame">Lanzou страницата за преземање не може да се анализира (не е пронајдена рамка за преземање)</string>
+    <string name="update_err_no_file_id">Lanzou идентификацијата на датотеката не може да се анализира</string>
+    <string name="update_err_no_sign">Lanzou потписот не може да се анализира</string>
+    <string name="update_err_ajax_request">Барањето до интерфејсот не успеа</string>
+    <string name="update_err_api_request">Барањето до Lanzou интерфејсот не успеа</string>
+    <string name="update_err_empty_direct">Lanzou врати празна адреса за преземање</string>
+    <string name="update_err_direct_expired">Lanzou адресата за преземање е истечена, преземете ја повторно</string>
+    <string name="update_err_http_request">Барањето не успеа (HTTP %1$d)</string>
+    <string name="update_err_connect">Не може да се поврзе со серверот за преземање: %1$s</string>
+    <string name="update_err_http">Преземањето не успеа (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Не може да се воспостави врска за преземање</string>
+    <string name="update_err_empty">Содржината за преземање е празна</string>
+    <string name="update_err_incomplete">Преземањето е нецелосно (%1$d / %2$d бајти примено), преземете повторно</string>
+    <string name="update_err_interrupted">Преземањето е прекинато: %1$s</string>
+    <string name="update_err_not_apk">Преземеното не е валиден инсталациски пакет (можеби е веб-страница или линкот истече), преземете повторно или користете GitHub.</string>
+    <string name="update_err_apk_incomplete">Содржината на инсталацискиот пакет е нецелосна, преземете повторно или користете GitHub.</string>
+    <string name="update_err_apk_unparsable">Инсталацискиот пакет не може да се анализира (можеби преземањето е нецелосно), преземете повторно или користете GitHub.</string>
+    <string name="update_err_no_install_permission">Дозволата „инсталирање непознати апликации“ сè уште не е добиена</string>
+    <string name="update_err_installer_failed">Системскиот инсталатор не може да се повика (%1$s), отворете го инсталацискиот пакет рачно во менаџерот на датотеки</string>
+</resources>

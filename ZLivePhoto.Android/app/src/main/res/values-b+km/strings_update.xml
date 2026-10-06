@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ខ្មែរ (Khmer) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Khmer has no grammatical plural; only the 'other' quantity is emitted.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== ទំព័រចែករំលែក Lanzou Cloud និងការវិភាគតំណផ្ទាល់ ========== -->
+    <string name="update_lanzou_gone">ការចែករំលែក Lanzou Cloud ត្រូវបានបោះបង់ ឬឯកសារមិនមាន សូមប្រើ GitHub ដើម្បីទាញយកជំនួស</string>
+    <string name="update_lanzou_gone_short">ការចែករំលែក Lanzou Cloud ត្រូវបានបោះបង់ សូមប្រើ GitHub ដើម្បីទាញយកជំនួស</string>
+    <string name="update_lanzou_resolve_failed">ការវិភាគតំណទាញយក Lanzou Cloud បានបរាជ័យ</string>
+    <string name="update_lanzou_need_passwd">ការចែករំលែក Lanzou Cloud នេះត្រូវការលេខកូដ សូមប្រើ GitHub ដើម្បីទាញយកជំនួស (ឬរកលេខកូដក្នុងកំណត់ចំណាំ Release)</string>
+    <string name="update_lanzou_wrong_passwd">លេខកូដ Lanzou Cloud មិនត្រឹមត្រូវ</string>
+    <string name="update_err_resolve_failed">ការវិភាគបរាជ័យ</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">ការផ្ទៀងផ្ទាត់ប្រឆាំងការចាប់ទាញរបស់ Lanzou Cloud បានបរាជ័យ</string>
+    <string name="update_err_no_frame">មិនអាចវិភាគទំព័រទាញយក Lanzou Cloud បានទេ (រកមិនឃើញស៊ុមទាញយក)</string>
+    <string name="update_err_no_file_id">មិនអាចវិភាគលេខសម្គាល់ឯកសារ Lanzou Cloud បានទេ</string>
+    <string name="update_err_no_sign">មិនអាចវិភាគហត្ថលេខា Lanzou Cloud បានទេ</string>
+    <string name="update_err_ajax_request">សំណើ API បានបរាជ័យ</string>
+    <string name="update_err_api_request">សំណើ API របស់ Lanzou Cloud បានបរាជ័យ</string>
+    <string name="update_err_empty_direct">Lanzou Cloud បានត្រឡប់អាសយដ្ឋានទាញយកទទេ</string>
+    <string name="update_err_direct_expired">អាសយដ្ឋានទាញយក Lanzou Cloud បានផុតកំណត់ សូមទាញយកឡើងវិញ</string>
+    <string name="update_err_http_request">សំណើបានបរាជ័យ (HTTP %1$d)</string>
+
+    <!-- ========== ការទាញយក ========== -->
+    <string name="update_err_connect">មិនអាចភ្ជាប់ទៅម៉ាស៊ីនបម្រើទាញយក៖ %1$s</string>
+    <string name="update_err_http">ការទាញយកបានបរាជ័យ (HTTP %1$d)</string>
+    <string name="update_err_no_connection">មិនអាចបង្កើតការតភ្ជាប់ទាញយក</string>
+    <string name="update_err_empty">ខ្លឹមសារទាញយកទទេ</string>
+    <string name="update_err_incomplete">ការទាញយកមិនពេញលេញ (បានទទួល %1$d / សរុប %2$d បៃ) សូមទាញយកឡើងវិញ</string>
+    <string name="update_err_interrupted">ការទាញយកត្រូវបានផ្អាក៖ %1$s</string>
+
+    <!-- ========== ការផ្ទៀងផ្ទាត់កញ្ចប់ដំឡើង និងការដំឡើង ========== -->
+    <string name="update_err_not_apk">ឯកសារដែលបានទាញយកមិនមែនជាកញ្ចប់ដំឡើងត្រឹមត្រូវទេ (អាចជាគេហទំព័រ ឬតំណទាញយកផុតកំណត់) សូមទាញយកឡើងវិញ ឬប្រើ GitHub ជំនួស។</string>
+    <string name="update_err_apk_incomplete">ខ្លឹមសារកញ្ចប់ដំឡើងមិនពេញលេញ សូមទាញយកឡើងវិញ ឬប្រើ GitHub ជំនួស។</string>
+    <string name="update_err_apk_unparsable">មិនអាចវិភាគកញ្ចប់ដំឡើងបានទេ (អាចទាញយកមិនពេញលេញ) សូមទាញយកឡើងវិញ ឬប្រើ GitHub ជំនួស។</string>
+    <string name="update_err_no_install_permission">មិនទាន់ទទួលបានការអនុញ្ញាត «ដំឡើងកម្មវិធីមិនស្គាល់»</string>
+    <string name="update_err_installer_failed">មិនអាចហៅកម្មវិធីដំឡើងប្រព័ន្ធបានទេ (%1$s) សូមបើកកញ្ចប់ដំឡើងដោយដៃតាមកម្មវិធីគ្រប់គ្រងឯកសារ</string>
+
+</resources>

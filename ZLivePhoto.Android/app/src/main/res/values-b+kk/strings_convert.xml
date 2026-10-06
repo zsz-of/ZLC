@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Қазақша жолдар.
+  res/values/strings_*.xml (қарапайым қытай тілі — негізгі/қосалқы тіл) файлдарынан аударылды.
+  Барлық кілт базалық нұсқамен сәйкес; %1$s / %1$d толтырғыштары мен escape тізбектері өзгеріссіз қалдырылды.
+-->
+<resources>
+    <string name="conv_unknown_target">Белгісіз мақсатты формат: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Танылмайтын Live Photo форматы (Google/OPPO/vivo/Xiaomi/Apple Live Photo емес)</string>
+    <string name="conv_cover_photo_missing">Мұқаба фотосы жоқ немесе бос</string>
+    <string name="conv_video_missing">Видео жоқ немесе бос</string>
+    <string name="conv_video_too_large">Видео тым үлкен (%1$dMB), Live Photo құрастыру мүмкін емес, қысқарақ видео таңдаңыз</string>
+    <string name="conv_transcoded_too_large">Транскодтаудан кейін видео тым үлкен (%1$dMB), Live Photo құрастыру мүмкін емес</string>
+    <string name="conv_video_too_large_compose">Видео тым үлкен (%1$dMB), Live Photo құрастыру мүмкін емес</string>
+    <string name="conv_cover_heic_go">Мұқаба — HEIC кескіні (жеңіл нұсқа транскодтауды қолдамайды; iPhone-да JPEG етіп экспорттап, содан кейін түрлендіріңіз)</string>
+    <string name="conv_cover_invalid_heic">Мұқаба жарамды кескін емес (HEIC үшін жүйенің HEIF декодтауын қолдауы керек)</string>
+    <string name="conv_cover_not_jpeg_go">Мұқаба JPEG кескіні емес (жеңіл нұсқа транскодтауды қолдамайды, JPEG фотоны пайдаланыңыз)</string>
+    <string name="conv_cover_invalid_image">Мұқаба жарамды кескін емес (тек JPEG/WebP/PNG қолданылады)</string>
+    <string name="conv_reencode_failed">Видеоны қайта кодтау сәтсіз аяқталды: %1$s</string>
+    <string name="conv_remux_failed">Контейнерді қайта қаптау сәтсіз аяқталды: %1$s</string>
+    <string name="conv_codec_unknown">Танылатын H.264/H.265 видео емес</string>
+    <string name="conv_codec_is">Кодек: %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">«%1$s» видеосы %2$s; тек контейнерді ауыстыру (қайта қаптау) кодекті өзгерте алмайды, Live Photo құрастыру мүмкін емес.\n\n«Параметрлер → Видеоны транскодтау → Транскодтау режимі» бөлімінде «Қайта кодтау» етіп таңдаңыз немесе оны басқа құралмен H.264/H.265 кодты MP4 етіп түрлендіріңіз.</string>
+    <string name="conv_hint_no_encoder">Видео стандартты MP4 контейнерінде емес (MOV / MKV / WebM / AVI және т.б.), ал қазіргі «Транскодтау режимі» қайта кодтамайды, сондықтан Live Photo құрастыру мүмкін емес.\n\n«Параметрлер → Видеоны транскодтау → Транскодтау режимі» бөлімінде «Қайта кодтау» етіп таңдаңыз (қалыпты нұсқада ffmpeg кодтаушысы бар; Go жеңіл нұсқасында транскодер жоқ, қалыпты нұсқаны пайдаланыңыз) немесе алдымен видеоны стандартты MP4 (H.264/H.265) етіп түрлендіріңіз.</string>
+    <string name="conv_log_detected">%1$s деп анықталды</string>
+    <string name="conv_log_same_format_copied">Көз бен мақсат форматтары бірдей, сол қалпында көшірілді (нөлдік шығын)</string>
+    <string name="conv_log_extra_tracks_bypass">Көз видеосында бейне/аудиодан басқа тректер бар (%1$s); бір форматты тура өткізуді өткізіп, тазарту үшін толық жазу жолына көшті</string>
+    <string name="conv_log_ts_fallback">Көзде мұқаба кадрының уақыт белгісі жоқ, ережеге сай видеоның ортасына ауыстырылды</string>
+    <string name="conv_log_brand_normalized">Видео контейнерінің бренді қалыпқа келтірілді (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Видеода қосымша тректер бар (%1$s), тазарту мүмкін емес, сол қалпында шығарылды (бұл өнім кейбір құрылғыларда ұзақ басу арқылы ойнамауы мүмкін)</string>
+    <string name="conv_log_extra_tracks_removed">Видеоның қосымша тректері жойылды (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Көз видео %1$s; тек контейнерді қайта қаптау мәселені шешпейді (%2$s). Егер өнім әлі де ұзақ басу арқылы ойнамаса, «Параметрлер → Видеоны транскодтау → Транскодтау режимі» бөлімінде «Қайта кодтау» таңдаңыз</string>
+    <string name="conv_log_reencoding">Көз видео %1$s, галерея үйлесімділігін арттыру үшін параметрлерге сай 8bit + AAC етіп қайта кодталуда</string>
+    <string name="conv_log_reencode_result_unusable">Қайта кодтау нәтижесі жарамсыз, сол қалпында шығарылды (бұл өнім кейбір құрылғыларда ұзақ басу арқылы ойнамауы мүмкін)</string>
+    <string name="conv_log_reencode_still_risky">Қайта кодтаудан кейін де тәуекелдер бар (%1$s)</string>
+    <string name="conv_log_reencode_failed">Қайта кодтау сәтсіз (%1$s), сол қалпында шығарылды (бұл өнім кейбір құрылғыларда ұзақ басу арқылы ойнамауы мүмкін)</string>
+    <string name="conv_log_cover_heic_converted">Мұқаба HEIC (JPEG емес), стандартты JPEG етіп транскодталды, содан кейін қапталды</string>
+    <string name="conv_log_compose_sizes">Құрастыру: фото %1$dB + видео %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Транскодер қосылмаған: тек контейнер бренді өзгертілді (MOV → MP4), қайта кодтау жоқ</string>
+    <string name="conv_tag_convert">Түрлендіру</string>
+    <string name="conv_tag_transcode">Транскодтау</string>
+    <string name="conv_tag_compose">Құрастыру</string>
+    <string name="conv_blocker_no_encoder">Кірістірілген транскодер қолжетімсіз</string>
+    <string name="conv_blocker_mode_no_encode">Қазіргі «Транскодтау режимі» қайта кодтамайды</string>
+    <string name="conv_addon_unavailable">Кірістірілген транскодер қолжетімсіз</string>
+    <string name="conv_addon_transcode_failed">ffmpeg транскодтауы сәтсіз: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg контейнерді қайта қаптауы сәтсіз: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg арқылы видео стандартты MP4 етіп транскодталуда (%1$s / crf %2$d / %3$s, тек видео мен аудио тректері сақталады)</string>
+    <string name="conv_log_transcode_done">Видео транскодтауы аяқталды (%1$dKB)</string>
+    <string name="conv_log_remuxing">Видео контейнері стандартты MP4 етіп қайта қапталуда (тек контейнер, қайта кодтаусыз)</string>
+    <string name="conv_log_remux_done">Контейнерді қайта қаптау аяқталды (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Құрастыру</string>
+    <string name="conv_reminder_cat_convert">Түрлендіру</string>
+    <string name="conv_reminder_cat_update">Жаңарту</string>
+    <string name="conv_reminder_video_over3s_title">Видео 3 секундтан ұзын</string>
+    <string name="conv_reminder_video_over3s_message">Таңдалған видео 3 секундтан ұзын, сондықтан құрастырылған Live Photo үйлесімділік мәселелеріне тап болуы мүмкін:\n\n• Дұрыс ойналмауы мүмкін\n• Жүйе галереясы танымауы мүмкін\n• Кейбір құрылғылар бұл Live Photo-ны танымауы мүмкін</string>
+    <string name="conv_reminder_legacy_go_title">Ескі нұсқа анықталды</string>
+    <string name="conv_reminder_legacy_go_message">Бұл құрылғыда қолданбаның ескі нұсқасы (Go нұсқасы) әлі орнатылған. Бұл ескі нұсқа бұл құрылғыда жұмыс істемейді, орын босату үшін оны жоюға болады.</string>
+    <string name="conv_reminder_replace_risk_title">Ауыстыру режимінде бүліну тәуекелі бар</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Ауыстыру режимі түрлендіру нәтижесін тікелей бастапқы файлдарға қайта жазады; үстінен жазылған соң бастапқы файлдарды қалпына келтіру мүмкін емес.\n\n• Жазу кезінде қолданба үзілсе, сақтау орны жетпесе немесе рұқсат жойылса, бастапқы файлдар бүлінуі мүмкін\n• Түрлендірудің сәтті болуына кепілдік жоқ, сәтсіздік кезінде бастапқы файлдар жарамсыз болып қалуы мүмкін\n• Алдымен бір-екі файлмен сынап көріп, бәрі дұрыс болған соң топтап өңдеуге көшіңіз\n• Маңызды фотоларды алдын ала өзіңіз сақтап қойыңыз\n\nБұл функция «қазіргі күйінде» ұсынылады, пайдалану тәуекелін өзіңіз көтересіз, автор файлдардың бүлінуіне немесе жоғалуына жауапты емес.</string>
+    <string name="conv_reminder_dont_remind">Қайта көрсетпеу</string>
+    <string name="conv_reminder_confirm_ok">Түсіндім</string>
+    <string name="conv_reminder_uninstall">Жою</string>
+</resources>

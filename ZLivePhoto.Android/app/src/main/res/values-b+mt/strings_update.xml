@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Maltese (mt) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Il-qsim ta’ Lanzou ġie ikkanċellat jew il-fajl ma jeżistix; niżżel minflok minn GitHub</string>
+    <string name="update_lanzou_gone_short">Il-qsim ta’ Lanzou ġie ikkanċellat; niżżel minflok minn GitHub</string>
+    <string name="update_lanzou_resolve_failed">Ir-riżoluzzjoni tal-ħolqa tat-tniżżel ta’ Lanzou falliet</string>
+    <string name="update_lanzou_need_passwd">Dan il-qsim ta’ Lanzou jeħtieġ kodiċi ta’ estrazzjoni; niżżel minflok minn GitHub (jew sib il-kodiċi fl-istruzzjonijiet tar-Release)</string>
+    <string name="update_lanzou_wrong_passwd">Il-kodiċi ta’ estrazzjoni ta’ Lanzou hu żbaljat</string>
+    <string name="update_err_resolve_failed">Ir-riżoluzzjoni falliet</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Il-verifika anti-crawl ta’ Lanzou falliet</string>
+    <string name="update_err_no_frame">Ma jistax jiġi pparsejjat il-paġna tat-tniżżel ta’ Lanzou (ma nstabx il-frame tat-tniżżel)</string>
+    <string name="update_err_no_file_id">Ma jistax jiġi pparsejjat l-identifikatur tal-fajl ta’ Lanzou</string>
+    <string name="update_err_no_sign">Ma jistax jiġi pparsejjat is-sinjatura ta’ Lanzou</string>
+    <string name="update_err_ajax_request">It-talba għall-API falliet</string>
+    <string name="update_err_api_request">It-talba għall-API ta’ Lanzou falliet</string>
+    <string name="update_err_empty_direct">Lanzou remmet ħolqa ta’ tniżżel vojta</string>
+    <string name="update_err_direct_expired">Il-ħolqa tat-tniżżel ta’ Lanzou skadiet; ġibha mill-ġdid</string>
+    <string name="update_err_http_request">It-talba falliet (HTTP %1$d)</string>
+    <string name="update_err_connect">Ma jistax jgħaqqad mas-server tat-tniżżel: %1$s</string>
+    <string name="update_err_http">It-tniżżel falla (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ma setgħet tinħoloq il-konnessjoni tat-tniżżel</string>
+    <string name="update_err_empty">Il-kontenut miżżel hu vojt</string>
+    <string name="update_err_incomplete">It-tniżżel mhux komplett (inkiseb %1$d minn %2$d byte); erġa’ niżżel</string>
+    <string name="update_err_interrupted">It-tniżżel tqatta’: %1$s</string>
+    <string name="update_err_not_apk">Dak li tnizzel mhuwiex APK validu (jista’ jkun paġna web jew il-ħolqa skadiet); erġa’ niżżel jew uża GitHub.</string>
+    <string name="update_err_apk_incomplete">Il-kontenut tal-APK mhux komplett; erġa’ niżżel jew uża GitHub.</string>
+    <string name="update_err_apk_unparsable">L-APK ma jistax jiġi pparsejjat (jista’ jkun li t-tniżżel ma komplietx); erġa’ niżżel jew uża GitHub.</string>
+    <string name="update_err_no_install_permission">Il-permess “Installa applikazzjonijiet mhux magħrufa” għadu m’ingħatax</string>
+    <string name="update_err_installer_failed">Ma setax jinfetaħ l-installatur tas-sistema (%1$s); iftaħ l-APK manwalment mill-manager tal-fajls biex tinstallah</string>
+</resources>

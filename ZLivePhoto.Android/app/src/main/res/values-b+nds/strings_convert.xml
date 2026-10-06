@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Low German (nds) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Unbekanntes Zielformat: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Nich erkennt Live-Photo-Format (keen Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">De Cover-Foto gifft dat nich oder is leddig</string>
+    <string name="conv_video_missing">Dat Video gifft dat nich oder is leddig</string>
+    <string name="conv_video_too_large">Dat Video is to groot (%1$dMB), dat lett sik keen Live Photo tosamensetten, söök en korter Video ut</string>
+    <string name="conv_transcoded_too_large">Dat Video is na dat Transkodeeren to groot (%1$dMB), dat lett sik keen Live Photo tosamensetten</string>
+    <string name="conv_video_too_large_compose">Dat Video is to groot (%1$dMB), dat lett sik keen Live Photo tosamensetten</string>
+    <string name="conv_cover_heic_go">De Cover is en HEIC-Bild (de Go-Verschoon ünnerstütt keen Transkodeeren, exporteer em up dat iPhone as JPEG un konverteer denn)</string>
+    <string name="conv_cover_invalid_heic">De Cover is keen gellen Bild (HEIC bruukt Systemünnerstütten för HEIF-Dekodeeren)</string>
+    <string name="conv_cover_not_jpeg_go">De Cover is keen JPEG-Bild (de Go-Verschoon ünnerstütt keen Transkodeeren, bruuk en JPEG-Foto)</string>
+    <string name="conv_cover_invalid_image">De Cover is keen gellen Bild (blots JPEG/WebP/PNG ünnerstütt)</string>
+    <string name="conv_reencode_failed">Wedderkodeeren vun dat Video hett fehlslahn: %1$s</string>
+    <string name="conv_remux_failed">Wedderinpacken vun den Container hett fehlslahn: %1$s</string>
+    <string name="conv_codec_unknown">Is keen erkennen H.264/H.265-Video</string>
+    <string name="conv_codec_is">De Kodek is %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Dat Video „%1$s“ %2$s, blots den Container uttowesseln (wedderinpacken) ännert den Kodek nich, dat lett sik keen Live Photo tosamensetten.
+
+Ännern in „Instellungen → Video-Transkodeeren → Transkodeerart“ op „Wedder kodeeren“, oder konverteer em toeerst mit en anner Warktüüch in en MP4 mit H.264/H.265-Kodek.</string>
+    <string name="conv_hint_no_encoder">Dat Video is keen Standard-MP4-Container (MOV / MKV / WebM / AVI usw.), un de aktuelle „Transkodeerart“ kodeert nich wedder, dat lett sik keen Live Photo tosamensetten.
+
+Ännern in „Instellungen → Video-Transkodeeren → Transkodeerart“ op „Wedder kodeeren“ (de normale Verschoon hett en inbunnen ffmpeg-Encoder; de Go-Verschoon hett keen Transcoder, bruuk de normale Verschoon), oder konverteer dat Video toeerst in en Standard-MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">Erkennt as %1$s</string>
+    <string name="conv_log_same_format_copied">Born- un Zielformat sünd liek, ahn Ännern kopeert (keen Qualitätsverlust)</string>
+    <string name="conv_log_extra_tracks_bypass">Dat Bornvideo hett annere Sporen as Audio un Video (%1$s), dat Direktdörlaten in dat sülve Format warrt översprungen, för dat Reinigen warrt dat kumplette Schrievverfohren brukt</string>
+    <string name="conv_log_ts_fallback">De Born hett kien Tietstempel för de Cover-Ramm, fallt na de Specifikatschoon up de Midden vun dat Video trügg</string>
+    <string name="conv_log_brand_normalized">De Marke vun den Video-Container is normaliseert wurrn (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Dat Video hett tosätzliche Sporen (%1$s), lett sik nich reinigen, ahn Ännern utgeven (dat Produkt lett sik up en poor Reedschappen ünner Ümstänn nich mit langen Klick afspeelen)</string>
+    <string name="conv_log_extra_tracks_removed">Tosätzliche Video-Sporen sünd rutnahmen wurrn (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Dat Bornvideo %1$s; blots den Container wedder inpacken lööst dat nich (%2$s), wenn dat Produkt wiederhen nich mit langen Klick afspeelen lett, wählt in „Instellungen → Video-Transkodeeren → Transkodeerart“ „Wedder kodeeren“</string>
+    <string name="conv_log_reencoding">Dat Bornvideo %1$s, warrt na de Instellungen wedder kodeert as 8bit + AAC, um de Album-Kompatibilität to verbetern</string>
+    <string name="conv_log_reencode_result_unusable">Dat Resultat vun dat Wedderkodeeren is nich bruukbar, ahn Ännern utgeven (dat Produkt lett sik up en poor Reedschappen ünner Ümstänn nich mit langen Klick afspeelen)</string>
+    <string name="conv_log_reencode_still_risky">Na dat Wedderkodeeren gifft dat wiederhen Riskopunkten (%1$s)</string>
+    <string name="conv_log_reencode_failed">Wedderkodeeren hett fehlslahn (%1$s), ahn Ännern utgeven (dat Produkt lett sik up en poor Reedschappen ünner Ümstänn nich mit langen Klick afspeelen)</string>
+    <string name="conv_log_cover_heic_converted">De Cover is HEIC (nich JPEG), is in en Standard-JPEG transkodeert un denn wedder inpackt wurrn</string>
+    <string name="conv_log_compose_sizes">Tosamensetten: Foto %1$dB + Video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Keen Transcoder aktiveert: blots de Container-Marke warrt överschreven (MOV → MP4), keen Wedderkodeeren</string>
+    <string name="conv_tag_convert">Konverteeren</string>
+    <string name="conv_tag_transcode">Transkodeeren</string>
+    <string name="conv_tag_compose">Tosamensetten</string>
+    <string name="conv_blocker_no_encoder">De inbunnen Transcoder is nich verföögbar</string>
+    <string name="conv_blocker_mode_no_encode">De aktuelle „Transkodeerart“ kodeert nich wedder</string>
+    <string name="conv_addon_unavailable">De inbunnen Transcoder is nich verföögbar</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-Transkodeeren hett fehlslahn: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-Wedderinpacken vun den Container hett fehlslahn: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Dat Video warrt mit ffmpeg in en Standard-MP4 transkodeert (%1$s / crf %2$d / %3$s, blots Video- un Audio-Sporen blievt erhollen)</string>
+    <string name="conv_log_transcode_done">Video-Transkodeeren fardig (%1$dKB)</string>
+    <string name="conv_log_remuxing">De Video-Container warrt in en Standard-MP4 wedder inpackt (blots de Container wesselt, keen Wedderkodeeren)</string>
+    <string name="conv_log_remux_done">Container-Wedderinpacken fardig (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Tosamensetten</string>
+    <string name="conv_reminder_cat_convert">Konverteeren</string>
+    <string name="conv_reminder_cat_update">Updaten</string>
+    <string name="conv_reminder_video_over3s_title">Video länger as 3 Sekunnen</string>
+    <string name="conv_reminder_video_over3s_message">Dat utsöchte Video is länger as 3 Sekunnen, dat Live Photo kann Kompatibilitätsproblemen hebben:
+
+• Künnt villicht nich normaal afspeelt warrn
+• Künnt villicht nich vun de Systemgalerie erkennt warrn
+• En poor Reedschappen künnt dat Live Photo villicht nich erkennen</string>
+    <string name="conv_reminder_legacy_go_title">Ole Verschoon opdeckt</string>
+    <string name="conv_reminder_legacy_go_message">Up dit Reedschop is noch de ole Verschoon (Go-Verschoon) vun de App installeert, de hier nich mehr funkschooneert; deinstalleer se, um Platz free to maken.</string>
+    <string name="conv_reminder_replace_risk_title">De Utwesselmodus hett en Beschädigen-Risiko</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">De Utwesselmodus schrifft dat Konverteerresultat direct trügg in de originaal Dateien, na dat Överschrieven laat sik de Originalen nich wedder herstellen.
+
+• Wenn de App bi dat Schrieven ünnerbraken warrt, de Spieker to wenig is oder dat Verlööfnis trücknahmen warrt, könen Born-Dateien beschädigt warrn
+• Dat Konverteeren sülvs garantert keen vullstännigen Spood, bi en Fehler könen de Born-Dateien al nich mehr bruukbar wesen
+• Dat warrt anraadt, toeerst mit en oder twee Dateien to proberen un na de Prüef in Massen to arbeiden
+• Maak sülvst en Sekern vun wichtige Fotos
+
+Dit Funkschoon warrt „as se is“ bedreven, dat Risiko dregst du sülvst; de Autor övernimt kene Verantwortung för beschädigte oder verluren Dateien.</string>
+    <string name="conv_reminder_dont_remind">Nich mehr wiesen</string>
+    <string name="conv_reminder_confirm_ok">Verstahn</string>
+    <string name="conv_reminder_uninstall">Deinstalleren</string>
+</resources>

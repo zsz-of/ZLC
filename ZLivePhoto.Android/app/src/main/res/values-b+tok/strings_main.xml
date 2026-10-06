@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  toki pona (tok) — sitelen suli en pali monsi (MainActivity, nimi open: main_).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Quality level: C (low-resource language, best-effort translation).
+  Base: res/values/strings_main.xml (toki Sonko). %1$s / %1$d li awen. plurals: other taso.
+-->
+<resources>
+    <!-- ── nasin sona / toki ── -->
+    <string name="main_status_ready">pona</string>
+    <string name="main_status_location_granted">ken ma li lon: pini ante la, sona GPS li awen</string>
+    <string name="main_status_location_denied">ken ma li lon ala: pini ante la, sona ma GPS li weka</string>
+    <string name="main_status_all_files_granted">ken «ijo ali» li lon: ijo sin li tawa poki sitelen, sona ma ali li awen</string>
+    <string name="main_status_all_files_denied">ken «ijo ali» li lon ala: lon ilo mute, sona ma li ken weka</string>
+    <string name="main_status_read_granted">ken lukin e sitelen e sitelen tawa li lon</string>
+    <string name="main_status_video_missing">ken li lon, taso ken sitelen-tawa li lon ala: ken ala alasa e sitelen tawa poka pi Live Photo ijo tu</string>
+    <string name="main_status_permission_denied">ken li lon ala; o luka sin e «pana e ijo»</string>
+    <string name="main_status_folder_not_selected">poki li kama ala</string>
+    <string name="main_status_folder_unavailable">ken ala tawa poki ni (poki ma taso li ken)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">tenpo pini li kama sin (%1$d ijo)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">pini ike pini li lon; kulupu pali ala li weka</string>
+    <string name="main_status_compose_blocks_extract">linja li jo e pali; ken ala ante tawa nasin kama tu</string>
+    <string name="main_status_replace_off_mutex">nasin ante li pini (ona en «weka e ijo open pini pali» li sama ala)</string>
+    <string name="main_status_delete_needs_all_files">weka awen pi ijo open li wile e ken «ijo ali»; o pana e ken</string>
+    <string name="main_status_replace_off">nasin ante li pini; ijo sin li tawa poki sitelen</string>
+    <string name="main_status_replace_needs_all_files">nasin ante li wile e ken «ijo ali»; o pana e ken</string>
+    <string name="main_status_delete_off_mutex">«weka e ijo open pini pali» li pini (ona en nasin ante li sama ala)</string>
+    <string name="main_status_loading_albums">lukin e poki sitelen…</string>
+    <string name="main_status_no_albums">poki sitelen ala</string>
+    <string name="main_status_compose_no_photo">sitelen ala; ken ala pali</string>
+    <string name="main_status_compose_no_video">sitelen tawa ala; ken ala pali</string>
+    <string name="main_status_compose_all_added">sitelen ali ni li lon kulupu</string>
+    <string name="main_status_compose_paired">sitelen %1$d, sitelen tawa %2$d; pali %3$d li kama tan nanpa lili</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">pali %1$d li kama; o luka «open ante»</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (nasin weka li ante tawa Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">kama insa sitelen %1$d…</item>
+    </plurals>
+    <string name="main_status_import_failed">kama insa li pakala: %1$s</string>
+    <string name="main_status_import_done_partial">kama insa li pini: pona %1$d, pakala %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">kama insa li pini: ijo %1$d</item>
+    </plurals>
+    <string name="main_status_import_stopped">kama insa li pini: pona %1$d, pakala %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">kama insa ijo %1$d…</item>
+    </plurals>
+    <string name="main_status_importing_progress">kama insa %1$d/%2$d…</string>
+    <string name="main_status_stopping">pini… (pini ijo ni la, pini)</string>
+    <string name="main_status_stopping_import">pini kama insa…</string>
+    <string name="main_status_removed">%1$s li weka</string>
+    <string name="main_status_cleared">ali li weka</string>
+    <string name="main_status_nothing_to_convert">ijo ante ala</string>
+    <string name="main_status_folder_unreadable">ken ala lukin e poki ni</string>
+    <string name="main_status_scanning_folder">lukin e poki…</string>
+    <string name="main_status_no_images">sitelen li lon ala lon poki ni</string>
+    <string name="main_status_batch_importing">kama insa kulupu %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">kama insa kulupu li pini: Live Photo %1$d</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">kama insa kulupu li pini: Live Photo %1$d, ijo ante %2$d li weka</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">kama insa kulupu li pini: Live Photo %1$d</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">kama insa kulupu li pini: Live Photo %1$d, ijo ante %2$d li weka</item>
+    </plurals>
+    <string name="main_status_stopped_replace">pini: ijo %1$d la, pali %2$d, ante ijo open %3$d</string>
+    <string name="main_status_stopped_export">pini: ijo %1$d la, pali %2$d, pana %3$d tawa poki sitelen</string>
+    <string name="main_status_done_replace_reason">pini: ijo %1$d li pali, ante ijo open %2$d (tan: %3$s)</string>
+    <string name="main_status_done_export_reason">pini: ijo %1$d li pali, pana %2$d tawa poki sitelen (tan: %3$s)</string>
+    <string name="main_status_done_replace">pini: ijo %1$d li pali, ante ijo open %2$d</string>
+    <string name="main_status_done_export">pini: ijo %1$d li pali, pana %2$d tawa poki sitelen</string>
+    <string name="main_status_keep_originals">%1$s; ken «ijo ali» li lon ala, ijo open li awen</string>
+
+    <!-- ── sona pi ijo kulupu ── -->
+    <string name="main_info_detecting">sona…</string>
+    <string name="main_info_unrecognized">nasin Live Photo ni li sona ala</string>
+    <string name="main_info_converting">ante…</string>
+    <string name="main_info_compose_task">pali Live Photo (o luka «open ante»)</string>
+    <string name="main_info_done_replaced">pini (ante ijo open %1$d)</string>
+    <string name="main_info_done_skipped">pini (weka: nimi sama)</string>
+    <string name="main_info_done_exported">pini (pana %1$d)</string>
+    <string name="main_info_failed">pakala: %1$s</string>
+
+    <!-- ── sona pali ── -->
+    <string name="main_progress_added">kama %1$d/%2$d</string>
+    <string name="main_progress_processed">pali %1$d/%2$d</string>
+    <string name="main_progress_imported">kama insa %1$d/%2$d</string>
+
+    <!-- ── poki toki pi ken ── -->
+    <string name="main_dialog_permission_title">wile: ken lukin e sitelen e sitelen tawa</string>
+    <string name="main_dialog_permission_message">ilo ni li wile lukin e sitelen e sitelen tawa sina:\n\n• ken sitelen: lukin e poki sitelen, sona e Live Photo\n• ken sitelen-tawa: alasa e sitelen tawa poka pi Live Photo ijo tu\n• ken ma: awen e sona ma GPS (lon ala la, sona ma li weka)\n\nsina weka la, ken ala kepeken ilo insa; o luka «pana e ijo» sin.</string>
+    <string name="main_dialog_settings_title">o pana e ken sitelen en ken sitelen-tawa kepeken luka</string>
+    <string name="main_dialog_settings_message">tenpo pini la sina toki «o pana ala sin e sona», ilo nanpa li pana ala e poki toki.\n\no tawa lipu ilo → ken → sitelen en sitelen tawa, o pana e ken, o kama sin.\n\nsona: o pana e ken «sitelen» e ken «sitelen tawa»; lon ala la, sitelen tawa poka li lon ala.</string>
+
+    <!-- ── poki toki pi ken «ijo ali» ── -->
+    <string name="main_dialog_allfiles_title_delete">weka awen pi ijo open li wile e ken «ijo ali»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">ilo ni li ken ala weka awen e ijo open</string>
+    <string name="main_dialog_allfiles_title_replace">nasin ante li wile e ken «ijo ali»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">ilo ni li ken ala nasin ante</string>
+    <string name="main_dialog_allfiles_title_location">o pana e ken «ijo ali»</string>
+    <string name="main_dialog_allfiles_delete_message">«weka e ijo open pini pali» li weka e ijo open (sitelen en sitelen tawa poka); ken ala kama jo sin. tan ni, o pana e ken «ijo ali» nanpa wan.\n\npini pana ken la, nasin li open; sina ken open e ona.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">ilo nanpa ni (Android 10 anu pini) li jo ala e ken «ijo ali»; ken ala weka e ijo open. tan ni, ilo ni li ken ala «weka e ijo open pini pali».\n\nsina ken weka e ijo open kepeken poki sitelen.</string>
+    <string name="main_dialog_allfiles_replace_message">«nasin ante» li pana e ijo sin tawa ijo open (ante e jo ona); ken ala kama jo sin. tan ni, o pana e ken «ijo ali» nanpa wan.\n\npini pana ken la, nasin li open; sina ken open e ona.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">ilo nanpa ni (Android 10 anu pini) li jo ala e ken «ijo ali»; ken ala ante e ijo open. tan ni, ilo ni li ken ala «nasin ante».\n\nsina ken ante kepeken nasin pona; ijo sin li tawa poki sitelen.</string>
+    <string name="main_dialog_allfiles_location_message">lon ilo mute (sama Meizu), pana kepeken poki sitelen pi ilo nanpa li weka e sona ma GPS; pini ante la, sitelen li jo ala e ma.\n\npini pana ken «ijo ali» la, ilo ni li pana tawa poki sitelen, li awen e sona ma ali.\n\nsina pana ala e ken la, ante li ken; taso ilo mute ken weka e sona ma.</string>
+
+    <!-- ── poki toki pi nimi sama ── -->
+    <string name="main_dialog_conflict_title">nimi ijo weka li sama</string>
+    <string name="main_dialog_conflict_message">ijo nimi sama li lon poki weka:\n%1$s\n\no wile e nasin.</string>
+    <string name="main_label_conflict_always">o kepeken nasin ni tawa sama ali</string>
+
+    <!-- ── nena pi poki toki ── -->
+    <string name="main_btn_grant">pana e ken</string>
+    <string name="main_btn_deny">weka e ken</string>
+    <string name="main_btn_go_settings">tawa nasin</string>
+    <string name="main_btn_cancel">pini</string>
+    <string name="main_btn_grant_access">pana e ken</string>
+    <string name="main_btn_got_it">pona</string>
+    <string name="main_btn_not_now">tenpo ante</string>
+    <string name="main_btn_skip">weka</string>
+    <string name="main_btn_overwrite">ante e jo</string>
+    <string name="main_btn_auto_rename">nimi sin tan ilo</string>
+
+    <!-- ── ijo ante / tan pakala pi pana weka ── -->
+    <plurals name="main_delete_done">
+        <item quantity="other">ijo open %1$d li weka</item>
+    </plurals>
+    <string name="main_delete_nothing">ijo open weka ala</string>
+    <string name="main_delete_partial">ijo open %1$d li weka (%2$d li weka ala, li awen)</string>
+    <string name="main_delete_failed">weka ijo open li pakala (ijo li pali anu ken pali li lon ala); ona li awen</string>
+    <string name="main_export_missing_output">ijo ante li lon ala anu jo ala: %1$s</string>
+    <string name="main_export_missing_output_bare">ijo ante li lon ala anu jo ala</string>
+    <string name="main_export_insert_null">MediaStore insert li pana e null</string>
+    <string name="main_export_output_stream">linja pana MediaStore li lon ala</string>
+    <string name="main_export_write_failed">pana MediaStore li pakala: %1$s</string>
+    <string name="main_export_mkdir_failed">ken ala pali e poki sitelen %1$s</string>
+    <string name="main_export_dir_write_failed">pana tawa poki sitelen li pakala: %1$s</string>
+    <string name="main_export_no_source">ken ala sona e ijo tan; ante li weka</string>
+    <string name="main_export_companion_failed">pana ijo poka li pakala: %1$s</string>
+    <string name="main_export_source_dir_unwritable">poki ijo tan li ken ala pana; ijo poka li kama ala sin</string>
+    <string name="main_export_source_dir_unavailable">poki ijo tan li lon ala: %1$s</string>
+    <string name="main_export_replace_failed">ante ijo tan li pakala: %1$s</string>
+    <string name="main_export_replace_failed_bare">ante ijo tan li pakala</string>
+</resources>

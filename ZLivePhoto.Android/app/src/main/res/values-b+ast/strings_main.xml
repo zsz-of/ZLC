@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Asturian (ast) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">Preparáu</string>
+    <string name="main_status_location_granted">El permisu de llocalización ta concedíu; les imáxenes convertíes van caltener la información GPS</string>
+    <string name="main_status_location_denied">El permisu de llocalización nun ta concedíu: les imáxenes convertíes van perder la información de llocalización GPS</string>
+    <string name="main_status_all_files_granted">El permisu «Accesu a tolos ficheros» ta concedíu; la conversión escribirá direutamente na carpeta del álbum y va caltener tola información de llocalización</string>
+    <string name="main_status_all_files_denied">El permisu «Accesu a tolos ficheros» nun ta concedíu: en dellos aparatos la conversión pue perder la información de llocalización</string>
+    <string name="main_status_read_granted">El permisu de llectura d\'imáxenes y vídeos ta concedíu</string>
+    <string name="main_status_video_missing">Los permisos tán concedíos, mas falta\'l de videu: nun se puen atopar los vídeos acompañaos de les Live Photos de dos ficheros</string>
+    <string name="main_status_permission_denied">Permisu non concedíu; pues calcar «Amestar ficheros» otra vegada</string>
+    <string name="main_status_folder_not_selected">Nun s\'escoyó nenguna carpeta</string>
+    <string name="main_status_folder_unavailable">Nun se pue acceder a la carpeta escoyida (namás se sofiten carpetes d\'almacenamientu llocal)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Restauróse la sesión anterior (%1$d ficheru)</item>
+        <item quantity="other">Restauróse la sesión anterior (%1$d ficheros)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Detectóse una salida anormal na cabera vegada; baleróse la llista incompleta</string>
+    <string name="main_status_compose_blocks_extract">La cola contién xeres de composición; nun se pue pasar al mou Estrayer</string>
+    <string name="main_status_replace_off_mutex">El mou de sustitución desactivóse (incompatible con «Desaniciar los orixinales tres de procesalos»)</string>
+    <string name="main_status_delete_needs_all_files">Desaniciar automáticamente los orixinales precisa\'l permisu «Accesu a tolos ficheros»; concedelu primero</string>
+    <string name="main_status_replace_off">El mou de sustitución desactivóse; el resultáu de la conversión va escribise otra vegada na carpeta del álbum</string>
+    <string name="main_status_replace_needs_all_files">El mou de sustitución precisa\'l permisu «Accesu a tolos ficheros»; concedelu primero</string>
+    <string name="main_status_delete_off_mutex">«Desaniciar los orixinales tres de procesalos» desactivóse (incompatible col mou de sustitución)</string>
+    <string name="main_status_loading_albums">Cargando los álbumes…</string>
+    <string name="main_status_no_albums">Nun s\'atoparon álbumes</string>
+    <string name="main_status_compose_no_photo">Nun s\'escoyó nenguna imaxe; nun se pue componer</string>
+    <string name="main_status_compose_no_video">Nun s\'escoyó nengún videu; nun se pue componer</string>
+    <string name="main_status_compose_all_added">Les imáxenes escoyíes yá tán toes na llista</string>
+    <string name="main_status_compose_paired">%1$d imáxenes y %2$d vídeos; amestáronse %3$d pares de xeres de composición según el llau que tenga menos</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Amestóse %1$d xera de composición; calca «Aniciar la conversión» pa executala</item>
+        <item quantity="other">Amestáronse %1$d xeres de composición; calca «Aniciar la conversión» pa executales</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (el format de salida camudóse automáticamente a Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Importando %1$d imaxe compartida…</item>
+        <item quantity="other">Importando %1$d imáxenes compartíes…</item>
+    </plurals>
+    <string name="main_status_import_failed">Falló la importación: %1$s</string>
+    <string name="main_status_import_done_partial">Importación completada: %1$d con ésitu, %2$d con fallu</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importación completada: %1$d ficheru importáu</item>
+        <item quantity="other">Importación completada: %1$d ficheros importaos</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importación detenida: %1$d con ésitu, %2$d con fallu</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Importando %1$d ficheru…</item>
+        <item quantity="other">Importando %1$d ficheros…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importación %1$d/%2$d…</string>
+    <string name="main_status_stopping">Deteniendo… (detenerse tres del ficheru actual)</string>
+    <string name="main_status_stopping_import">Deteniendo la importación…</string>
+    <string name="main_status_removed">Desaniciáu: %1$s</string>
+    <string name="main_status_cleared">Baleróse</string>
+    <string name="main_status_nothing_to_convert">Nun hai ficheros que convertir</string>
+    <string name="main_status_folder_unreadable">La carpeta escoyida nun se pue lleer</string>
+    <string name="main_status_scanning_folder">Escandiendo la carpeta…</string>
+    <string name="main_status_no_images">Nun s\'atoparon imáxenes na carpeta escoyida</string>
+    <string name="main_status_batch_importing">Importación masiva %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Importación masiva detenida: %1$d Live Photo importada</item>
+        <item quantity="other">Importación masiva detenida: %1$d Live Photos importaes</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Importación masiva detenida: %1$d Live Photo importada, %2$d ficheros non Live saltaos</item>
+        <item quantity="other">Importación masiva detenida: %1$d Live Photos importaes, %2$d ficheros non Live saltaos</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Importación masiva completada: %1$d Live Photo importada</item>
+        <item quantity="other">Importación masiva completada: %1$d Live Photos importaes</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Importación masiva completada: %1$d Live Photo importada, %2$d ficheros non Live saltaos</item>
+        <item quantity="other">Importación masiva completada: %1$d Live Photos importaes, %2$d ficheros non Live saltaos</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Detenida: procesáronse %2$d de %1$d ficheros, sobroscribiéronse %3$d ficheros orixinales</string>
+    <string name="main_status_stopped_export">Detenida: procesáronse %2$d de %1$d ficheros, esportáronse %3$d al álbum</string>
+    <string name="main_status_done_replace_reason">Completada: procesáronse %1$d ficheros, sobroscribiéronse %2$d ficheros orixinales (motivu: %3$s)</string>
+    <string name="main_status_done_export_reason">Completada: procesáronse %1$d ficheros, esportáronse %2$d al álbum (motivu: %3$s)</string>
+    <string name="main_status_done_replace">Completada: procesáronse %1$d ficheros, sobroscribiéronse %2$d ficheros orixinales</string>
+    <string name="main_status_done_export">Completada: procesáronse %1$d ficheros, esportáronse %2$d al álbum</string>
+    <string name="main_status_keep_originals">%1$s; ensin el permisu «Accesu a tolos ficheros», caltuviéronse los orixinales</string>
+    <string name="main_info_detecting">Detectando…</string>
+    <string name="main_info_unrecognized">Format de Live Photo non reconocible</string>
+    <string name="main_info_converting">Convirtiendo…</string>
+    <string name="main_info_compose_task">Xera de composición (calca «Aniciar la conversión» pa executala)</string>
+    <string name="main_info_done_replaced">Completada (%1$d ficheros orixinales sobroscribíos)</string>
+    <string name="main_info_done_skipped">Completada (saltóse: conflictu de nome)</string>
+    <string name="main_info_done_exported">Completada (%1$d esportaos)</string>
+    <string name="main_info_failed">Fallu: %1$s</string>
+    <string name="main_progress_added">Amestaos %1$d/%2$d</string>
+    <string name="main_progress_processed">Procesaos %1$d/%2$d</string>
+    <string name="main_progress_imported">Importaos %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Precisa\'l permisu de llectura d\'imáxenes y vídeos</string>
+    <string name="main_dialog_permission_message">L\'aplicación precisa lleer les imáxenes y vídeos del to preséu:\n\n• permisu d\'imáxenes: escandir l\'álbum del preséu y reconocer les Live Photos qu\'hai nél\n• permisu de videu: atopar los vídeos acompañaos de les Live Photos de dos ficheros\n• permisu de llocalización: caltener los datos GPS de les imáxenes (si falta, la información de llocalización piérdese na conversión)\n\nSi los refugas, nun se pue usar el selector integráu; pues calcar «Amestar ficheros» más tarde pa concedelos otra vegada.</string>
+    <string name="main_dialog_settings_title">Precisa concedese a mano el permisu d\'imáxenes y vídeos</string>
+    <string name="main_dialog_settings_message">Escoyisti «Nun volver preguntar»; el sistema yá nun amuesa\'l diálogu de permisos.\n\nVete a la pantalla de detallu de l\'aplicación → Permisos → Imáxenes y vídeos, concede\'l permisu d\'accesu a mano y torna a l\'aplicación.\n\nAtención: hai de conceder xuntos los permisos «Imáxenes» y «Videu»; si non, les Live Photos de dos ficheros nun puen atopar el so videu acompañante.</string>
+    <string name="main_dialog_allfiles_title_delete">Desaniciar automáticamente los orixinales precisa «Accesu a tolos ficheros»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Esti preséu nun sofita desaniciar automáticamente los orixinales</string>
+    <string name="main_dialog_allfiles_title_replace">El mou de sustitución precisa «Accesu a tolos ficheros»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Esti preséu nun sofita\'l mou de sustitución</string>
+    <string name="main_dialog_allfiles_title_location">Encamiéntase conceder el permisu «Accesu a tolos ficheros»</string>
+    <string name="main_dialog_allfiles_delete_message">«Desaniciar los orixinales tres de procesalos» desanicia direutamente del discu los ficheros orixinales (la imaxe y el so videu acompañante); la operación ye irreversible, polo que primero hai de concedese\'l permisu «Accesu a tolos ficheros».\n\nNamás dempués de conceder el permisu va tar disponible\'l interruptor; entós podrás activalu.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">El sistema actual (Android 10 o anterior) nun ufre\'l permisu «Accesu a tolos ficheros»; ye imposible desaniciar direutamente del discu los ficheros orixinales, polo qu\'esti preséu nun sofita «Desaniciar los orixinales tres de procesalos».\n\nTres de la conversión pues llimpiar los orixinales a mano nel álbum del sistema.</string>
+    <string name="main_dialog_allfiles_replace_message">El «Mou de sustitución» escribe\'l resultáu de la conversión direutamente nos ficheros orixinales del discu (sobroscribiendo\'l conteníu); la operación ye irreversible, polo que primero hai de concedese\'l permisu «Accesu a tolos ficheros».\n\nNamás dempués de conceder el permisu va tar disponible\'l interruptor; entós podrás activalu.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">El sistema actual (Android 10 o anterior) nun ufre\'l permisu «Accesu a tolos ficheros»; ye imposible sobroscribir direutamente los ficheros orixinales del discu, polo qu\'esti preséu nun sofita\'l «Mou de sustitución».\n\nPues siguir convirtiendo col mou por defeutu; los resultaos van escribise na carpeta del álbum.</string>
+    <string name="main_dialog_allfiles_location_message">En dellos aparatos (p. ex. Meizu), escribir per la interfaz del álbum del sistema esborra la información de llocalización GPS, polo que les imáxenes convertíes pierden la llocalización.\n\nUna vegada concedíu «Accesu a tolos ficheros», l\'aplicación escribirá direutamente na carpeta del álbum y va caltener tola información de llocalización.\n\nTamién pues convertir ensin concedelu; en dellos aparatos la información de llocalización pue perdese.</string>
+    <string name="main_dialog_conflict_title">Conflictu de nome del ficheru de salida</string>
+    <string name="main_dialog_conflict_message">Yá esiste un ficheru col mesmu nome na carpeta de salida:\n%1$s\n\nEscueyi cómo siguir.</string>
+    <string name="main_label_conflict_always">Usar esti métodu pa los conflictos siguientes</string>
+    <string name="main_btn_grant">Conceder</string>
+    <string name="main_btn_deny">Refugar</string>
+    <string name="main_btn_go_settings">Dir a los axustes</string>
+    <string name="main_btn_cancel">Encaboxar</string>
+    <string name="main_btn_grant_access">Conceder</string>
+    <string name="main_btn_got_it">Entendío</string>
+    <string name="main_btn_not_now">Agora non</string>
+    <string name="main_btn_skip">Saltar</string>
+    <string name="main_btn_overwrite">Sobroscribir</string>
+    <string name="main_btn_auto_rename">Renomar automáticamente</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Desanicióse %1$d ficheru orixinal</item>
+        <item quantity="other">Desaniciáronse %1$d ficheros orixinales</item>
+    </plurals>
+    <string name="main_delete_nothing">Nun hai orixinales que desaniciar</string>
+    <string name="main_delete_partial">Desaniciáronse %1$d ficheros orixinales (%2$d desanicios fallaron y caltuviéronse)</string>
+    <string name="main_delete_failed">Nun se pudieron desaniciar los orixinales (ficheros n\'usu o ensin permisu d\'escritura); caltuviéronse</string>
+    <string name="main_export_missing_output">El resultáu de la conversión falta o ta baleru: %1$s</string>
+    <string name="main_export_missing_output_bare">El resultáu de la conversión falta o ta baleru</string>
+    <string name="main_export_insert_null">MediaStore devolvió null na inserción</string>
+    <string name="main_export_output_stream">El fluxu de salida de MediaStore nun ta disponible</string>
+    <string name="main_export_write_failed">Falló la escritura en MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">Nun se pudo crear la carpeta del álbum %1$s</string>
+    <string name="main_export_dir_write_failed">Falló la escritura na carpeta del álbum: %1$s</string>
+    <string name="main_export_no_source">Nun se pudo atopar el ficheru orixe; saltóse la sustitución</string>
+    <string name="main_export_companion_failed">Falló la escritura del ficheru acompañante: %1$s</string>
+    <string name="main_export_source_dir_unwritable">La carpeta del ficheru orixe nun ye escribible; nun se pudo escribir el ficheru acompañante</string>
+    <string name="main_export_source_dir_unavailable">La carpeta del ficheru orixe nun ta disponible: %1$s</string>
+    <string name="main_export_replace_failed">Falló la sustitución del ficheru orixe: %1$s</string>
+    <string name="main_export_replace_failed_bare">Falló la sustitución del ficheru orixe</string>
+</resources>

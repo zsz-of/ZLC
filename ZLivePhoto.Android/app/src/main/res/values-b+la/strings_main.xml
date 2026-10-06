@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · lingua Latina.
+  Textus interfaciei principalis et processus postici (modulus MainActivity). Claves praefixum main_ habent, non mutantur.
+  Locorum notae uniformiter %1$s / %1$d; locutiones numerales singulares <plurals> adhibent.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- ── Clipeus status / nuntia (in methodis Activity, getString) ── -->
+    <string name="main_status_ready">Paratus</string>
+    <string name="main_status_location_granted">Permissio loci concessa; metadata GPS post conversionem servabuntur</string>
+    <string name="main_status_location_denied">Permissio loci non concessa: photographa conversa informationem loci GPS amittent</string>
+    <string name="main_status_all_files_granted">„Accessus omnium fasciculorum“ concessus; conversiones directe in plicam galeriae scribunt et informationem loci plene servant</string>
+    <string name="main_status_all_files_denied">„Accessus omnium fasciculorum“ non concessus: quaedam machinae post conversionem informationem loci amittere possunt</string>
+    <string name="main_status_read_granted">Permissio legendi photographa et video concessa</string>
+    <string name="main_status_video_missing">Concessa, sed permissio videndi deest: video comites qui cum Live Photo duorum fasciculorum veniunt inveniri non possunt</string>
+    <string name="main_status_permission_denied">Permissio non concessa; „Adde fasciculos“ iterum premere potes</string>
+    <string name="main_status_folder_not_selected">Nulla plica selecta</string>
+    <string name="main_status_folder_unavailable">Plicae selectae accedi non potest (solum plicae memoriae localis sustinentur)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Sessio prior restituta (%1$d fasciculus)</item>
+        <item quantity="other">Sessio prior restituta (%1$d fasciculi)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Exitus abnormis prior detectus; index imperfectus purgatus est</string>
+    <string name="main_status_compose_blocks_extract">Ordo munera compositionis continet; ad modum extractionis transiri non potest</string>
+    <string name="main_status_replace_off_mutex">Modus substitutionis clausus (mutuo exclusivus cum „Dele originalia post tractationem“)</string>
+    <string name="main_status_delete_needs_all_files">Deletio automatica originalium „accessum omnium fasciculorum“ requirit; quaeso primum permitte</string>
+    <string name="main_status_replace_off">Modus substitutionis clausus; effectus conversionis rursus in plicam galeriae scribuntur</string>
+    <string name="main_status_replace_needs_all_files">Modus substitutionis „accessum omnium fasciculorum“ requirit; quaeso primum permitte</string>
+    <string name="main_status_delete_off_mutex">„Dele originalia post tractationem“ clausum (mutuo exclusivum cum modo substitutionis)</string>
+    <string name="main_status_loading_albums">Alba photographica leguntur…</string>
+    <string name="main_status_no_albums">Nulla alba inventa</string>
+    <string name="main_status_compose_no_photo">Nullum photographum selectum; componi non potest</string>
+    <string name="main_status_compose_no_video">Nullum video selectum; componi non potest</string>
+    <string name="main_status_compose_all_added">Omnia photographa selecta iam in indice sunt</string>
+    <string name="main_status_compose_paired">%1$d photographa et %2$d video; secundum numerum minorem %3$d paria compositionis addita sunt</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d munus compositionis additum; preme „Incipe conversionem“ ad componendum</item>
+        <item quantity="other">%1$d munera compositionis addita; preme „Incipe conversionem“ ad componendum</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (forma destinationis ad Google automatice mutata)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Importatur %1$d imago communicata…</item>
+        <item quantity="other">Importantur %1$d imagines communicatae…</item>
+    </plurals>
+    <string name="main_status_import_failed">Importatio defecit: %1$s</string>
+    <string name="main_status_import_done_partial">Importatio completa: %1$d successerunt, %2$d defecerunt</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importatio completa: in toto %1$d fasciculus importatus</item>
+        <item quantity="other">Importatio completa: in toto %1$d fasciculi importati</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importatio sistita: %1$d successerunt, %2$d defecerunt</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Importatur %1$d fasciculus…</item>
+        <item quantity="other">Importantur %1$d fasciculi…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importatur %1$d/%2$d…</string>
+    <string name="main_status_stopping">Sistitur… (sistet postquam fasciculus praesens finitus erit)</string>
+    <string name="main_status_stopping_import">Importatio sistitur…</string>
+    <string name="main_status_removed">Remotum est %1$s</string>
+    <string name="main_status_cleared">Purgatum</string>
+    <string name="main_status_nothing_to_convert">Nulli fasciculi convertendi</string>
+    <string name="main_status_folder_unreadable">Plica selecta legi non potest</string>
+    <string name="main_status_scanning_folder">Plica scrutatur…</string>
+    <string name="main_status_no_images">In plica selecta nullae imagines inventae</string>
+    <string name="main_status_batch_importing">Importatio multitudinis %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Importatio multitudinis sistita: in toto %1$d Live Photo importatum</item>
+        <item quantity="other">Importatio multitudinis sistita: in toto %1$d Live Photo importata</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Importatio multitudinis sistita: in toto %1$d Live Photo importatum, %2$d fasciculi non-Live-Photo omissi</item>
+        <item quantity="other">Importatio multitudinis sistita: in toto %1$d Live Photo importata, %2$d fasciculi non-Live-Photo omissi</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Importatio multitudinis completa: in toto %1$d Live Photo importatum</item>
+        <item quantity="other">Importatio multitudinis completa: in toto %1$d Live Photo importata</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Importatio multitudinis completa: in toto %1$d Live Photo importatum, %2$d fasciculi non-Live-Photo omissi</item>
+        <item quantity="other">Importatio multitudinis completa: in toto %1$d Live Photo importata, %2$d fasciculi non-Live-Photo omissi</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Sistitum: ex %1$d fasciculis %2$d tractati, %3$d fasciculi fontis substituti</string>
+    <string name="main_status_stopped_export">Sistitum: ex %1$d fasciculis %2$d tractati, %3$d in galeriam exportati</string>
+    <string name="main_status_done_replace_reason">Perfectum: %1$d fasciculi tractati, %2$d fasciculi fontis substituti (causa: %3$s)</string>
+    <string name="main_status_done_export_reason">Perfectum: %1$d fasciculi tractati, %2$d in galeriam exportati (causa: %3$s)</string>
+    <string name="main_status_done_replace">Perfectum: %1$d fasciculi tractati, %2$d fasciculi fontis substituti</string>
+    <string name="main_status_done_export">Perfectum: %1$d fasciculi tractati, %2$d in galeriam exportati</string>
+    <string name="main_status_keep_originals">%1$s; „Accessus plenus memoriae“ non concessus, originalia servata sunt</string>
+
+    <!-- ── Informatio unitatis indicis (FileItem.info) ── -->
+    <string name="main_info_detecting">Detegitur…</string>
+    <string name="main_info_unrecognized">Forma Live Photo non agnita</string>
+    <string name="main_info_converting">Convertitur…</string>
+    <string name="main_info_compose_task">Munus compositionis (preme Incipe conversionem ad componendum)</string>
+    <string name="main_info_done_replaced">Perfectum (%1$d fasciculi fontis substituti)</string>
+    <string name="main_info_done_skipped">Perfectum (omissum: conflictus nominis)</string>
+    <string name="main_info_done_exported">Perfectum (%1$d exportati)</string>
+    <string name="main_info_failed">Defecit: %1$s</string>
+
+    <!-- ── Detalia progressionis (progressDetail) ── -->
+    <string name="main_progress_added">Addita %1$d/%2$d</string>
+    <string name="main_progress_processed">Tractata %1$d/%2$d</string>
+    <string name="main_progress_imported">Importata %1$d/%2$d</string>
+
+    <!-- ── Dialogus permissionum ── -->
+    <string name="main_dialog_permission_title">Permissio legendi photographa et video necessaria est</string>
+    <string name="main_dialog_permission_message">Haec applicatio photographa et video in machina tua legere debet:\n\n• Permissio photographorum: alba machinae scrutari et Live Photo in eis agnoscere\n• Permissio videndi: video comites qui cum Live Photo duorum fasciculorum veniunt invenire\n• Permissio loci: metadata loci GPS in photographis servare (sine qua photographa conversa informationem loci amittunt)\n\nSi negas, selector internus adhiberi non potest; postea „Adde fasciculos“ premere potes ut rursus permittas.</string>
+    <string name="main_dialog_settings_title">Permissiones photographorum et videndi manu concedendae sunt</string>
+    <string name="main_dialog_settings_message">Antea „Noli rursus quaerere“ elegisti, itaque systema dialogum permissionis non iam ostendit.\n\nQuaeso ad paginam detaliarum applicationis → Permissiones → Photographa et video, accessum manu concede, deinde ad hanc applicationem revertere.\n\nNota: ambae permissiones „Photographa“ et „Video“ concedendae sunt, alioquin Live Photo duorum fasciculorum video comites suos invenire non poterunt.</string>
+
+    <!-- ── Dialogus explicationis „Accessus omnium fasciculorum“ ── -->
+    <string name="main_dialog_allfiles_title_delete">Deletio automatica originalium „accessum omnium fasciculorum“ requirit</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Haec machina deletionem automaticam originalium non sustinet</string>
+    <string name="main_dialog_allfiles_title_replace">Modus substitutionis „accessum omnium fasciculorum“ requirit</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Haec machina modum substitutionis non sustinet</string>
+    <string name="main_dialog_allfiles_title_location">„Accessum omnium fasciculorum“ concedere commendatur</string>
+    <string name="main_dialog_allfiles_delete_message">„Dele originalia post tractationem“ fasciculos originales in disco directe delet (photographum et video comitem eius). Hoc revocari non potest, ergo primum „accessus omnium fasciculorum“ concedendus est.\n\nIctus praesto fit postquam permiseris; tum eum ipse accendere potes.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Systema praesens (Android 10 vel inferius) „accessum omnium fasciculorum“ non praebet, ergo fasciculi originales in disco directe deleri non possunt; haec machina igitur „Dele originalia post tractationem“ non sustinet.\n\nPost conversionem originalia manu in galeria systematis purgare potes.</string>
+    <string name="main_dialog_allfiles_replace_message">„Modus substitutionis“ effectum conversionis directe in fasciculos originales in disco scribit (contenia eorum superscribens). Hoc revocari non potest, ergo primum „accessus omnium fasciculorum“ concedendus est.\n\nIctus praesto fit postquam permiseris; tum eum ipse accendere potes.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Systema praesens (Android 10 vel inferius) „accessum omnium fasciculorum“ non praebet, ergo fasciculi originales in disco directe rescribi non possunt; haec machina igitur „modum substitutionis“ non sustinet.\n\nConvertendo more solito pergere potes; effectus in plicam galeriae scribuntur.</string>
+    <string name="main_dialog_allfiles_location_message">Quaedam machinae (ut Meizu), cum per interfaciem galeriae systematis scribunt, informationem loci GPS detrahunt, itaque photographa conversa locum amittunt.\n\nPostquam „accessum omnium fasciculorum“ concesseris, haec applicatio directe in plicam galeriae scribet et metadata loci plene servabit.\n\nSine eo conversio etiam fungitur, sed quaedam machinae informationem loci amittere possunt.</string>
+
+    <!-- ── Dialogus conflictus nominis fasciculi destinationis ── -->
+    <string name="main_dialog_conflict_title">Conflictus nominis fasciculi destinationis</string>
+    <string name="main_dialog_conflict_message">In plica destinationis iam exstat fasciculus eiusdem nominis:\n%1$s\n\nQuaeso elige quomodo agere.</string>
+    <string name="main_label_conflict_always">Hoc utere pro omnibus conflictibus posterioribus</string>
+
+    <!-- ── Bullae dialogi ── -->
+    <string name="main_btn_grant">Concede</string>
+    <string name="main_btn_deny">Nega</string>
+    <string name="main_btn_go_settings">Aperi optiones</string>
+    <string name="main_btn_cancel">Abroga</string>
+    <string name="main_btn_grant_access">Concede accessum</string>
+    <string name="main_btn_got_it">Intellexi</string>
+    <string name="main_btn_not_now">Non nunc</string>
+    <string name="main_btn_skip">Omitte</string>
+    <string name="main_btn_overwrite">Superscribe</string>
+    <string name="main_btn_auto_rename">Renomina automatice</string>
+
+    <!-- ── Effectus conversionis / causa defectus exportationis (monstratur cum „causa: %3$s“) ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d fasciculus originalis deletus</item>
+        <item quantity="other">%1$d fasciculi originales deleti</item>
+    </plurals>
+    <string name="main_delete_nothing">Nulla originalia delenda</string>
+    <string name="main_delete_partial">%1$d fasciculi originales deleti (%2$d deleri non potuerunt et servati sunt)</string>
+    <string name="main_delete_failed">Deletio originalium defecit (fasciculi in usu aut permissio scribendi deest); servati sunt</string>
+    <string name="main_export_missing_output">Effectus conversionis deest aut vacuus est: %1$s</string>
+    <string name="main_export_missing_output_bare">Effectus conversionis deest aut vacuus est</string>
+    <string name="main_export_insert_null">MediaStore insert null reddidit</string>
+    <string name="main_export_output_stream">Fluxus destinationis MediaStore non praesto est</string>
+    <string name="main_export_write_failed">Scriptura MediaStore defecit: %1$s</string>
+    <string name="main_export_mkdir_failed">Plica galeriae %1$s creari non potest</string>
+    <string name="main_export_dir_write_failed">Scriptura in plicam galeriae defecit: %1$s</string>
+    <string name="main_export_no_source">Fasciculus fontis inveniri non potest; substitutio omissa</string>
+    <string name="main_export_companion_failed">Rescriptura fasciculi comitis defecit: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Plica fasciculi fontis scribi non potest, fasciculus comes rescribi non potuit</string>
+    <string name="main_export_source_dir_unavailable">Plica fasciculi fontis non praesto est: %1$s</string>
+    <string name="main_export_replace_failed">Substitutio fasciculi fontis defecit: %1$s</string>
+    <string name="main_export_replace_failed_bare">Substitutio fasciculi fontis defecit</string>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Қазақша жолдар.
+  res/values/strings_*.xml (қарапайым қытай тілі — негізгі/қосалқы тіл) файлдарынан аударылды.
+  Барлық кілт базалық нұсқамен сәйкес; %1$s / %1$d толтырғыштары мен escape тізбектері өзгеріссіз қалдырылды.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Бөлшектеу</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo бірфайлдық Live Photo</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+    <string name="fmt_err_apple_mov_missing">Сол аттас .mov видео файлы табылмады</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV файлында ftyp box жоқ</string>
+    <string name="fmt_err_extract_read">Бөлшектеу — шығыс форматы, оны кіріс форматы ретінде оқуға болмайды</string>
+    <string name="fmt_err_no_primary_jpeg">Негізгі JPEG кескіні табылмады</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG-тен кейін жарамды MP4 видео табылмады (ftyp box жоқ)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 видео ағынын талдау сәтсіз аяқталды</string>
+    <string name="fmt_err_nubia_too_short">Файл тым қысқа, Nubia Live Photo-ға ұқсамайды</string>
+    <string name="fmt_err_nubia_no_magic">nubiaVpfile соңғы magic саны жоқ</string>
+    <string name="fmt_err_nubia_jpeg_len">Соңында жазылған JPEG ұзындығы жарамсыз: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG мен видео арасында 0x00 толтыру байттары жоқ</string>
+    <string name="fmt_err_nubia_empty_video">Кірістірілген видео ұзындығы 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG соңында vivo livephoto белгісі табылмады</string>
+    <string name="fmt_err_vivo_companion_missing">Ілеспе видео файлы жоқ: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG негізгі бөлігін талдау сәтсіз аяқталды</string>
+    <string name="fmt_err_vivo_companion_invalid">Ілеспе MP4 жарамсыз (ftyp box жоқ)</string>
+</resources>

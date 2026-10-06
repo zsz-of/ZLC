@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Bashkir (ba) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="main_status_ready">Әҙер</string>
+    <string name="main_status_location_granted">Урын рөхсәте алынды, үҙгәртеүҙән һуң GPS метадатаһы һаҡлана</string>
+    <string name="main_status_location_denied">Урын рөхсәте бирелмәгән: үҙгәртелгән фотолар GPS урын мәғлүмәтен юғалтар</string>
+    <string name="main_status_all_files_granted">«Бөтә файлдарға инеү» рөхсәте алынды, үҙгәртеү туранан-тура альбом папкаһына яҙа һәм урын мәғлүмәтен тулыһынса һаҡлай</string>
+    <string name="main_status_all_files_denied">«Бөтә файлдарға инеү» рөхсәте бирелмәгән: айырым ҡорамалдарҙа үҙгәртеүҙән һуң урын мәғлүмәте юғалыуы мөмкин</string>
+    <string name="main_status_read_granted">Фото һәм видео уҡыу рөхсәте алынды</string>
+    <string name="main_status_video_missing">Рөхсәт бирелгән, ләкин видео рөхсәте етмәй: ике файллы Live Photo-ның оҙатыусы видеоһын табып булмай</string>
+    <string name="main_status_permission_denied">Рөхсәт бирелмәгән, «Файл өҫтәү»ҙе тағы бер тапҡыр баҫығыҙ</string>
+    <string name="main_status_folder_not_selected">Папка һайланмаған</string>
+    <string name="main_status_folder_unavailable">Һайланған папкаға инеп булмай (тәү сиратта урындағы һаҡлау папкалары)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Алдағы сессия тергеҙелде (%1$d файл)</item>
+        <item quantity="other">Алдағы сессия тергеҙелде (%1$d файл)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Алдағы тапҡыр ихтимал булмаған сығыу асыҡланды, тулы булмаған исемлек бушатылды</string>
+    <string name="main_status_compose_blocks_extract">Сиратта төҙөү бурыстары бар, айырыу режимына күсеп булмай</string>
+    <string name="main_status_replace_off_mutex">Алмаштырыу режимы һүндерелде («Эшкәртеүҙән һуң төп фотоны бөтөрөү» менән бергә ҡушып булмай)</string>
+    <string name="main_status_delete_needs_all_files">Төп фотоларҙы автоматик бөтөрөү «Бөтә файлдарға инеү» рөхсәтен кәрәк итә, тәүҙә рөхсәт бирегеҙ</string>
+    <string name="main_status_replace_off">Алмаштырыу режимы һүндерелде, үҙгәртеү һөҙөмтәһе тағы альбом папкаһына яҙыла</string>
+    <string name="main_status_replace_needs_all_files">Алмаштырыу режимы «Бөтә файлдарға инеү» рөхсәтен кәрәк итә, тәүҙә рөхсәт бирегеҙ</string>
+    <string name="main_status_delete_off_mutex">«Эшкәртеүҙән һуң төп фотоны бөтөрөү» һүндерелде (алмаштырыу режимы менән бергә ҡушып булмай)</string>
+    <string name="main_status_loading_albums">Альбомдар уҡыла…</string>
+    <string name="main_status_no_albums">Альбом табылманы</string>
+    <string name="main_status_compose_no_photo">Фото һайланмаған, төҙөп булмай</string>
+    <string name="main_status_compose_no_video">Видео һайланмаған, төҙөп булмай</string>
+    <string name="main_status_compose_all_added">Һайланған фотолар барыһы ла инемлектә</string>
+    <string name="main_status_compose_paired">Фото %1$d, видео %2$d — аҙыраҡ яҡ буйынса %3$d пар төҙөү бурысы өҫтәлде</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d төҙөү бурысы өҫтәлде, төҙөү өсөн «Үҙгәртеүҙе башлау»ҙы баҫығыҙ</item>
+        <item quantity="other">%1$d төҙөү бурысы өҫтәлде, төҙөү өсөн «Үҙгәртеүҙе башлау»ҙы баҫығыҙ</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (сығарыу форматы автоматик рәүештә Google-ға алмаштырылды)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Бүлеүҙән %1$d һүрәт импортлана…</item>
+        <item quantity="other">Бүлеүҙән %1$d һүрәт импортлана…</item>
+    </plurals>
+    <string name="main_status_import_failed">Импорт уңышһыҙ: %1$s</string>
+    <string name="main_status_import_done_partial">Импорт тамамланды: уңышлы %1$d, уңышһыҙ %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Импорт тамамланды: барыһы %1$d файл импортланды</item>
+        <item quantity="other">Импорт тамамланды: барыһы %1$d файл импортланды</item>
+    </plurals>
+    <string name="main_status_import_stopped">Импорт туҡтатылды: уңышлы %1$d, уңышһыҙ %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d файл импортлана…</item>
+        <item quantity="other">%1$d файл импортлана…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Импорт %1$d/%2$d…</string>
+    <string name="main_status_stopping">Туҡтатыла… (хәҙерге файл тамамланғас туҡтай)</string>
+    <string name="main_status_stopping_import">Импорт туҡтатыла…</string>
+    <string name="main_status_removed">%1$s алып ташланды</string>
+    <string name="main_status_cleared">Бушатылды</string>
+    <string name="main_status_nothing_to_convert">Үҙгәртерлек файл юҡ</string>
+    <string name="main_status_folder_unreadable">Һайланған папканы уҡыپ булмай</string>
+    <string name="main_status_scanning_folder">Папка тикшерелә…</string>
+    <string name="main_status_no_images">Һайланған папкала һүрәт табылманы</string>
+    <string name="main_status_batch_importing">Туплап импорт %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Туплап импорт туҡтатылды: барыһы %1$d Live Photo импортланды</item>
+        <item quantity="other">Туплап импорт туҡтатылды: барыһы %1$d Live Photo импортланды</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Туплап импорт туҡтатылды: барыһы %1$d Live Photo импортланды, %2$d Live Photo булмаған файл төшөрөлдө</item>
+        <item quantity="other">Туплап импорт туҡтатылды: барыһы %1$d Live Photo импортланды, %2$d Live Photo булмаған файл төшөрөлдө</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Туплап импорт тамамланды: барыһы %1$d Live Photo импортланды</item>
+        <item quantity="other">Туплап импорт тамамланды: барыһы %1$d Live Photo импортланды</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Туплап импорт тамамланды: барыһы %1$d Live Photo импортланды, %2$d Live Photo булмаған файл төшөрөлдө</item>
+        <item quantity="other">Туплап импорт тамамланды: барыһы %1$d Live Photo импортланды, %2$d Live Photo булмаған файл төшөрөлдө</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Туҡтатылды: %1$d файлдан %2$d эшкәртелде, %3$d сығанаҡ файл алмаштырылды</string>
+    <string name="main_status_stopped_export">Туҡтатылды: %1$d файлдан %2$d эшкәртелде, %3$d альбомға сығарылды</string>
+    <string name="main_status_done_replace_reason">Тамамланды: %1$d файл эшкәртелде, %2$d сығанаҡ файл алмаштырылды (сәбәп: %3$s)</string>
+    <string name="main_status_done_export_reason">Тамамланды: %1$d файл эшкәртелде, %2$d альбомға сығарылды (сәбәп: %3$s)</string>
+    <string name="main_status_done_replace">Тамамланды: %1$d файл эшкәртелде, %2$d сығанаҡ файл алмаштырылды</string>
+    <string name="main_status_done_export">Тамамланды: %1$d файл эшкәртелде, %2$d альбомға сығарылды</string>
+    <string name="main_status_keep_originals">%1$s; «Тулы һаҡлау инеүе» рөхсәте алынмаған, төп фотолар һаҡланды</string>
+    <string name="main_info_detecting">Асыҡлана…</string>
+    <string name="main_info_unrecognized">Танылмаған Live Photo форматы</string>
+    <string name="main_info_converting">Үҙгәртелә…</string>
+    <string name="main_info_compose_task">Төҙөү бурысы (төҙөү өсөн «Үҙгәртеүҙе башлау»ҙы баҫығыҙ)</string>
+    <string name="main_info_done_replaced">Тамамланды (%1$d сығанаҡ файл алмаштырылды)</string>
+    <string name="main_info_done_skipped">Тамамланды (төшөрөлдө: ат бер үк)</string>
+    <string name="main_info_done_exported">Тамамланды (%1$d сығарылды)</string>
+    <string name="main_info_failed">Уңышһыҙ: %1$s</string>
+    <string name="main_progress_added">%1$d/%2$d өҫтәлде</string>
+    <string name="main_progress_processed">%1$d/%2$d эшкәртелде</string>
+    <string name="main_progress_imported">%1$d/%2$d импортланды</string>
+    <string name="main_dialog_permission_title">Фото һәм видео уҡыу рөхсәте кәрәк</string>
+    <string name="main_dialog_permission_message">Был программа ҡорамалдағы фото һәм видео уҡырға тейеш:
+
+• Фото рөхсәте: ҡорамал альбомын тикшереп, ундағы Live Photo-ны танырға
+• Видео рөхсәте: ике файллы Live Photo-ның оҙатыусы видеоһын табырға
+• Урын рөхсәте: фотолағы GPS урын метадатаһын һаҡларға (етмәһә, үҙгәртеүҙән һуң урын мәғлүмәте юғала)
+
+Баш тартҡандан һуң төҙөлгән һайлағысты ҡулланып булмай, арыраҡ «Файл өҫтәү»ҙе тағы баҫып, рөхсәтте ҡабат бирегеҙ.</string>
+    <string name="main_dialog_settings_title">Фото һәм видео рөхсәтен ҡулдан бирергә кәрәк</string>
+    <string name="main_dialog_settings_message">Һеҙ алда «Башҡа һорама» тәҡдим итегеҙ, система рөхсәт диалогын тағы күрһәтмәй.
+
+Ҡушымта ентекле битеһенә → Рөхсәттәр → Фото һәм видео бүлегенә барығыҙ, инеү рөхсәтен ҡулдан биреп, был ҡушымтаға ҡайтығыҙ.
+
+Иғтибар: «Фото» һәм «Видео» рөхсәттәре бергә бирелергә тейеш, юғиһә ике файллы Live Photo оҙатыусы видеоһын таба алмай.</string>
+    <string name="main_dialog_allfiles_title_delete">Төп фотоларҙы автоматик бөтөрөү «Бөтә файлдарға инеү»ҙе кәрәк итә</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Был ҡорамал төп фотоларҙы автоматик бөтөрөүҙе хупламай</string>
+    <string name="main_dialog_allfiles_title_replace">Алмаштырыу режимы «Бөтә файлдарға инеү»ҙе кәрәк итә</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Был ҡорамал алмаштырыу режимын хупламай</string>
+    <string name="main_dialog_allfiles_title_location">«Бөтә файлдарға инеү» рөхсәтен бирергә тәҡдим ителә</string>
+    <string name="main_dialog_allfiles_delete_message">«Эшкәртеүҙән һуң төп фотоны бөтөрөү» дисктағы тәүге файлдарҙы (фото һәм уларҙың оҙатыусы видеоһын) туранан-тура бөтөрә, был ғәмәлде кире алып булмай, шуға күрә тәүҙә «Бөтә файлдарға инеү» рөхсәтен бирергә тейеш.
+
+Рөхсәт бирелгәндән һуң ғына ҡушыусы ҡулланыла ала, уны үҙегеҙ ҡабыҙырға мөмкин.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Хәҙерге система (Android 10 һәм унан түбән) «Бөтә файлдарға инеү» рөхсәтен бирмәй, дисктағы тәүге файлдарҙы туранан-тура бөтөрөп булмай, шуға күрә был ҡорамал «Эшкәртеүҙән һуң төп фотоны бөтөрөү»ҙө хупламай.
+
+Үҙгәртеү тамамланғандан һуң система альбомы аша төп фотоларҙы ҡулдан таҙартырға мөмкин.</string>
+    <string name="main_dialog_allfiles_replace_message">«Алмаштырыу режимы» үҙгәртеү һөҙөмтәһен дисктағы тәүге файлға туранан-тура яҙа (тәүге эстәлеген өҫтәп яҙа), был ғәмәлде кире алып булмай, шуға күрә тәүҙә «Бөтә файлдарға инеү» рөхсәтен бирергә тейеш.
+
+Рөхсәт бирелгәндән һуң ғына ҡушыусы ҡулланыла ала, уны үҙегеҙ ҡабыҙырға мөмкин.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Хәҙерге система (Android 10 һәм унан түбән) «Бөтә файлдарға инеү» рөхсәтен бирмәй, дисктағы тәүге файлдарҙы туранан-тура үҙгәртеп булмай, шуға күрә был ҡорамал алмаштырыу режимын хупламай.
+
+Килешкән ысул менән үҙгәртеүҙе дауам итә алаһығыҙ, һөҙөмтә альбом папкаһына сығарыла.</string>
+    <string name="main_dialog_allfiles_location_message">Айырым ҡорамалдарҙа (мәҫәлән, Мэйзу) система альбомы интерфейсы аша яҙыу GPS урын мәғлүмәтен йәшерә, үҙгәртеүҙән һуң фото урынын юғалта.
+
+«Бөтә файлдарға инеү» бирелгәндән һуң программа туранан-тура альбом папкаһына яҙа һәм урын метадатаһын тулыһынса һаҡлай.
+
+Рөхсәт бирмәһәгеҙ ҙә үҙгәртеү тейешле эшләй, айырым ҡорамалдарҙа урын мәғлүмәте юғалыуы мөмкин.</string>
+    <string name="main_dialog_conflict_title">Сығарыу файл исеме ҡапма-ҡаршылығы</string>
+    <string name="main_dialog_conflict_message">Сығарыу папкаһында ат бер үк файл бар:
+%1$s
+
+Эшкәртеү ысулын һайлағыҙ.</string>
+    <string name="main_label_conflict_always">Артабанғы ҡапма-ҡаршылыҡтар өсөн был ысулды ҡулланырға</string>
+    <string name="main_btn_grant">Рөхсәт биреү</string>
+    <string name="main_btn_deny">Баш тартыу</string>
+    <string name="main_btn_go_settings">Көйләүҙәргә</string>
+    <string name="main_btn_cancel">Бөтөрөү</string>
+    <string name="main_btn_grant_access">Рөхсәт бирергә</string>
+    <string name="main_btn_got_it">Аңланым</string>
+    <string name="main_btn_not_now">Әлегә юҡ</string>
+    <string name="main_btn_skip">Төшөрөп үтеү</string>
+    <string name="main_btn_overwrite">Өҫтәп яҙыу</string>
+    <string name="main_btn_auto_rename">Автоматик ат үҙгәртеү</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d тәүге файл бөтөрөлдө</item>
+        <item quantity="other">%1$d тәүге файл бөтөрөлдө</item>
+    </plurals>
+    <string name="main_delete_nothing">Төп фото бөтөрөргә кәрәкмәй</string>
+    <string name="main_delete_partial">%1$d тәүге файл бөтөрөлдө (%2$d бөтөрөү уңышһыҙ, һаҡланды)</string>
+    <string name="main_delete_failed">Төп фото бөтөрөү уңышһыҙ (файл шөғөлләндерелгән йәки яҙыу рөхсәте юҡ), һаҡланды</string>
+    <string name="main_export_missing_output">Үҙгәртеү продукты етмәй йәки буш: %1$s</string>
+    <string name="main_export_missing_output_bare">Үҙгәртеү продукты етмәй йәки буш</string>
+    <string name="main_export_insert_null">MediaStore insert null ҡайтарҙы</string>
+    <string name="main_export_output_stream">MediaStore сығарыу ағымы юҡ</string>
+    <string name="main_export_write_failed">MediaStore яҙыуы уңышһыҙ: %1$s</string>
+    <string name="main_export_mkdir_failed">Альбом папкаһы %1$s булдырып булманы</string>
+    <string name="main_export_dir_write_failed">Альбом папкаһына яҙыу уңышһыҙ: %1$s</string>
+    <string name="main_export_no_source">Сығанаҡ файл табылманы, алмаштырыу төшөрөлдө</string>
+    <string name="main_export_companion_failed">Оҙатыусы файлға кире яҙыу уңышһыҙ: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Сығанаҡ файл папкаһы яҙыуға яраҡһыҙ, оҙатыусы файл кире яҙылманы</string>
+    <string name="main_export_source_dir_unavailable">Сығанаҡ файл папкаһы юҡ: %1$s</string>
+    <string name="main_export_replace_failed">Сығанаҡ файлды алмаштырыу уңышһыҙ: %1$s</string>
+    <string name="main_export_replace_failed_bare">Сығанаҡ файлды алмаштырыу уңышһыҙ</string>
+</resources>

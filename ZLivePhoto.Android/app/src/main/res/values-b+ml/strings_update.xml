@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Malayalam (ml) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou പങ്കിടൽ റദ്ദാക്കപ്പെട്ടു, ഫയൽ നിലവിലില്ല; ദയവായി GitHub-ൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക</string>
+    <string name="update_lanzou_gone_short">Lanzou പങ്കിടൽ റദ്ദാക്കപ്പെട്ടു; ദയവായി GitHub-ൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക</string>
+    <string name="update_lanzou_resolve_failed">Lanzou ഡൗൺലോഡ് ലിങ്ക് പരിഹരിക്കാനാകില്ല</string>
+    <string name="update_lanzou_need_passwd">ഈ Lanzou പങ്കിടലിന് ആക്സസ് കോഡ് വേണം; ദയവായി GitHub-ൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക (അല്ലെങ്കിൽ Release വിവരണത്തിൽ ആക്സസ് കോഡ് കണ്ടെത്തുക)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou ആക്സസ് കോഡ് തെറ്റാണ്</string>
+    <string name="update_err_resolve_failed">പരിഹരിക്കൽ പരാജയപ്പെട്ടു</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou ആൻറി-ക്രോളിംഗ് പരിശോധന പരാജയപ്പെട്ടു</string>
+    <string name="update_err_no_frame">Lanzou ഡൗൺലോഡ് പേജ് പരിഹരിക്കാനാകില്ല (ഡൗൺലോഡ് ഫ്രെയിം കണ്ടെത്തിയില്ല)</string>
+    <string name="update_err_no_file_id">Lanzou ഫയൽ ഐഡന്റിഫയർ പരിഹരിക്കാനാകില്ല</string>
+    <string name="update_err_no_sign">Lanzou സൈൻ പരിഹരിക്കാനാകില്ല</string>
+    <string name="update_err_ajax_request">ഇന്റർഫേസ് അഭ്യർഥന പരാജയപ്പെട്ടു</string>
+    <string name="update_err_api_request">Lanzou ഇന്റർഫേസ് അഭ്യർഥന പരാജയപ്പെട്ടു</string>
+    <string name="update_err_empty_direct">Lanzou ശൂന്യമായ ഡൗൺലോഡ് വിലാസം നൽകി</string>
+    <string name="update_err_direct_expired">Lanzou ഡൗൺലോഡ് വിലാസം കാലഹരണപ്പെട്ടു; വീണ്ടും നേടുക</string>
+    <string name="update_err_http_request">അഭ്യർഥന പരാജയപ്പെട്ടു (HTTP %1$d)</string>
+    <string name="update_err_connect">ഡൗൺലോഡ് സെർവറുമായി ബന്ധപ്പെടാനാകില്ല: %1$s</string>
+    <string name="update_err_http">ഡൗൺലോഡ് പരാജയപ്പെട്ടു (HTTP %1$d)</string>
+    <string name="update_err_no_connection">ഡൗൺലോഡ് കണക്ഷൻ സ്ഥാപിക്കാനാകില്ല</string>
+    <string name="update_err_empty">ഡൗൺലോഡ് ചെയ്ത ഉള്ളടക്കം ശൂന്യമാണ്</string>
+    <string name="update_err_incomplete">ഡൗൺലോഡ് അപൂർണമാണ് (ലഭിച്ചത് %1$d / ആകെ %2$d ബൈറ്റ്); ദയവായി വീണ്ടും ഡൗൺലോഡ് ചെയ്യുക</string>
+    <string name="update_err_interrupted">ഡൗൺലോഡ് തടസ്സപ്പെട്ടു: %1$s</string>
+    <string name="update_err_not_apk">ഡൗൺലോഡ് ചെയ്തത് സാധുവായ ഇൻസ്റ്റാൾ പാക്കേജല്ല (വെബ്പേജാകാം അല്ലെങ്കിൽ ഡൗൺലോഡ് ലിങ്ക് കാലഹരണപ്പെട്ടതാകാം); ദയവായി വീണ്ടും ഡൗൺലോഡ് ചെയ്യുക അല്ലെങ്കിൽ GitHub-ൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക.</string>
+    <string name="update_err_apk_incomplete">ഇൻസ്റ്റാൾ പാക്കേജ് ഉള്ളടക്കം അപൂർണമാണ്; ദയവായി വീണ്ടും ഡൗൺലോഡ് ചെയ്യുക അല്ലെങ്കിൽ GitHub-ൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക.</string>
+    <string name="update_err_apk_unparsable">ഇൻസ്റ്റാൾ പാക്കേജ് പാഴ്സ് ചെയ്യാനാകില്ല (ഡൗൺലോഡ് അപൂർണമാകാം); ദയവായി വീണ്ടും ഡൗൺലോഡ് ചെയ്യുക അല്ലെങ്കിൽ GitHub-ൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക.</string>
+    <string name="update_err_no_install_permission">“അജ്ഞാത ആപ്പുകൾ ഇൻസ്റ്റാൾ ചെയ്യുക” അനുമതി ഇതുവരെ ലഭിച്ചിട്ടില്ല</string>
+    <string name="update_err_installer_failed">സിസ്റ്റം ഇൻസ്റ്റാളർ തുറക്കാനാകില്ല (%1$s); ഫയൽ മാനേജറിൽ നിന്ന് ഇൻസ്റ്റാൾ പാക്കേജ് സ്വയം തുറന്ന് ഇൻസ്റ്റാൾ ചെയ്യുക</string>
+</resources>

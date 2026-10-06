@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Danish (da) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Ukendt målformat: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Ugenkendeligt Live Photo-format (ikke et Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Coverbilledet findes ikke eller er tomt</string>
+    <string name="conv_video_missing">Videoen findes ikke eller er tom</string>
+    <string name="conv_video_too_large">Videoen er for stor (%1$dMB) til at kunne sammensættes til et Live Photo; vælg en kortere video</string>
+    <string name="conv_transcoded_too_large">Videoen er for stor efter transkodning (%1$dMB) og kan ikke sammensættes til et Live Photo</string>
+    <string name="conv_video_too_large_compose">Videoen er for stor (%1$dMB) og kan ikke sammensættes til et Live Photo</string>
+    <string name="conv_cover_heic_go">Coverbilledet er en HEIC-fil (Go-versionen understøtter ikke transkodning; eksportér den som JPEG på iPhone, og konvertér derefter)</string>
+    <string name="conv_cover_invalid_heic">Coverbilledet er ikke et gyldigt billede (HEIC kræver, at systemet understøtter HEIF-afkodning)</string>
+    <string name="conv_cover_not_jpeg_go">Coverbilledet er ikke et JPEG-billede (Go-versionen understøtter ikke transkodning; brug et JPEG-foto i stedet)</string>
+    <string name="conv_cover_invalid_image">Coverbilledet er ikke et gyldigt billede (kun JPEG/WebP/PNG understøttes)</string>
+    <string name="conv_reencode_failed">Genkodning af videoen mislykkedes: %1$s</string>
+    <string name="conv_remux_failed">Remux af containeren mislykkedes: %1$s</string>
+    <string name="conv_codec_unknown">Ikke en genkendelig H.264/H.265-video</string>
+    <string name="conv_codec_is">Kodningen er %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Videoen “%1$s”: %2$s. Det hjælper ikke kun at skifte container (remux) — kodningen ændres ikke, og videoen kan derfor ikke sammensættes til et Live Photo.\n\nSkift “Transkodningstilstand” til “Genkod” under “Indstillinger → Videotranskodning”, eller konvertér først videoen til en MP4 med H.264/H.265-kodning med et andet værktøj.</string>
+    <string name="conv_hint_no_encoder">Videoen er ikke i en standard-MP4-container (MOV / MKV / WebM / AVI osv.), og den aktuelle “Transkodningstilstand” genkoder ikke, så den kan ikke sammensættes til et Live Photo.\n\nSkift “Transkodningstilstand” til “Genkod” under “Indstillinger → Videotranskodning” (standardversionen har en indbygget ffmpeg-encoder; Go-versionen har ingen transkoder, så brug i stedet standardversionen), eller konvertér først videoen til en standard-MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">Genkendt som %1$s</string>
+    <string name="conv_log_same_format_copied">Kilde- og målformat er det samme; filen er kopieret uændret (uden kvalitetstab)</string>
+    <string name="conv_log_extra_tracks_bypass">Kildevideoen indeholder spor, der hverken er lyd eller video (%1$s); direkte videreførsel i samme format springes over, og hele skriveforløbet gennemføres i stedet for at rense filen</string>
+    <string name="conv_log_ts_fallback">Kilden mangler tidsstempel for coverbilledet; i henhold til specifikationen bruges videoens midtpunkt som reserve</string>
+    <string name="conv_log_brand_normalized">Videocontainerens brand er blevet normaliseret (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Videoen indeholder ekstra spor (%1$s) og kan ikke renses; den er skrevet ud uændret (på visse enheder kan resultatet muligvis ikke afspilles med langt tryk)</string>
+    <string name="conv_log_extra_tracks_removed">Videoens ekstra spor er fjernet (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Kildevideoen: %1$s; det kan ikke løses med kun at remuxe containeren (%2$s). Hvis resultatet stadig ikke kan afspilles med langt tryk, så vælg “Genkod” under “Indstillinger → Videotranskodning → Transkodningstilstand”.</string>
+    <string name="conv_log_reencoding">Kildevideoen: %1$s. Den genkodes til 8bit + AAC i henhold til indstillingerne for at forbedre kompatibiliteten i galleriet</string>
+    <string name="conv_log_reencode_result_unusable">Resultatet af genkodningen kan ikke bruges; filen er skrevet ud uændret (på visse enheder kan resultatet muligvis ikke afspilles med langt tryk)</string>
+    <string name="conv_log_reencode_still_risky">Der er stadig risikopunkter efter genkodningen (%1$s)</string>
+    <string name="conv_log_reencode_failed">Genkodningen mislykkedes (%1$s); filen er skrevet ud uændret (på visse enheder kan resultatet muligvis ikke afspilles med langt tryk)</string>
+    <string name="conv_log_cover_heic_converted">Coverbilledet er HEIC (ikke JPEG) og er transkodet til standard JPEG, før containeren blev remuxet</string>
+    <string name="conv_log_compose_sizes">Sammensætning: billede %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkoderen er ikke aktiveret: kun containerens brand omskrives (MOV → MP4); der genkodes ikke</string>
+    <string name="conv_tag_convert">Konvertering</string>
+    <string name="conv_tag_transcode">Transkodning</string>
+    <string name="conv_tag_compose">Sammensætning</string>
+    <string name="conv_blocker_no_encoder">den indbyggede transkoder er ikke tilgængelig</string>
+    <string name="conv_blocker_mode_no_encode">den aktuelle “Transkodningstilstand” genkoder ikke</string>
+    <string name="conv_addon_unavailable">Den indbyggede transkoder er ikke tilgængelig</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-transkodning mislykkedes: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-remux af containeren mislykkedes: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Transkoder videoen til standard-MP4 med ffmpeg (%1$s / crf %2$d / %3$s; kun video- og lydsporene bevares)</string>
+    <string name="conv_log_transcode_done">Videotranskodning fuldført (%1$dKB)</string>
+    <string name="conv_log_remuxing">Remuxer videocontaineren til standard-MP4 (kun containeren skiftes; der genkodes ikke)</string>
+    <string name="conv_log_remux_done">Remux af containeren fuldført (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Sammensætning</string>
+    <string name="conv_reminder_cat_convert">Konvertering</string>
+    <string name="conv_reminder_cat_update">Opdatering</string>
+    <string name="conv_reminder_video_over3s_title">Videoen er længere end 3 sekunder</string>
+    <string name="conv_reminder_video_over3s_message">Den valgte video er længere end 3 sekunder; der kan være kompatibilitetsproblemer med det sammensatte Live Photo:\n\n• Det afspilles muligvis ikke korrekt\n• Systemgalleriet genkender det muligvis ikke\n• Visse enheder kan muligvis ikke genkende filen</string>
+    <string name="conv_reminder_legacy_go_title">Ældre version fundet</string>
+    <string name="conv_reminder_legacy_go_message">Der er stadig installeret en ældre version (Go-versionen) af appen på denne enhed. Den virker ikke længere på denne enhed og kan afinstalleres for at frigøre plads.</string>
+    <string name="conv_reminder_replace_risk_title">Erstatningstilstand risikerer at beskadige filer</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Erstatningstilstand skriver konverteringsresultatet direkte tilbage til den oprindelige fil; når originalen først er overskrevet, kan den ikke genskabes.\n\n• Hvis appen afbrydes under skrivningen, hvis lagerpladsen løber ud, eller hvis tilladelser bliver trukket tilbage, kan kildefilen blive beskadiget\n• Selve konverteringen kan ikke garanteres at lykkes i alle tilfælde, og hvis den fejler, kan kildefilen allerede være ubrugelig\n• Prøv funktionen med én eller to filer først, og fortsæt først massebehandlingen, når alt fungerer\n• Tag selv sikkerhedskopi af vigtige billeder på forhånd\n\nFunktionen leveres “som den er”, og du bruger den på eget ansvar; ophavsmanden påtager sig intet ansvar for beskadigede eller mistede filer.</string>
+    <string name="conv_reminder_dont_remind">Vis ikke igen</string>
+    <string name="conv_reminder_confirm_ok">Forstået</string>
+    <string name="conv_reminder_uninstall">Afinstallér</string>
+</resources>

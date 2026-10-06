@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · lingua Latina.
+  E fontibus basi res/values/strings_*.xml conversum (Sinisis lingua, lingua subsidiaria).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- In selectore linguae applicationis hanc optionem, quae systema sequitur, significat -->
+    <string name="app_language_follow_system">Systema sequi</string>
+    <!-- Titulus subsidiarius selectoris linguae applicationis (etiam modulus settings suo clave uti potest) -->
+    <string name="app_language_title">Lingua applicationis</string>
+</resources>

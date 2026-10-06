@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · eesti keel.
+  Värskendusprotsessi tekstid (task-4) — vastavad failile ui/UpdateFlow.kt.
+  Eraldi fail; võtme eesliide update_. res/values/ on lihtsustatud hiina varukeel.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- Kontrolleri poole teated (väljaspool Contextita Composable'eid, kõik läbi context.getString) -->
+    <string name="update_github_url_missing">GitHubi allalaadimisaadressi ei saadud; proovige hiljem uuesti.</string>
+    <string name="update_flavor_standard">Tavaversioon</string>
+    <string name="update_flavor_go">Go versioon</string>
+    <string name="update_lanzou_url_missing">See versioon ei paku Lanzou Cloudi allalaadimislinki; võite kasutada GitHubi.</string>
+    <string name="update_apk_direct_missing">See versioon ei paku selle versiooniga sobivat installipaketi otseviidet; valige GitHubi väljalaskelehel vastav APK.</string>
+    <string name="update_install_permission_missing">„Tundmatute rakenduste installimise“ õigust ei ole antud, automaatne installimine ei ole võimalik. Lubage see süsteemi seadetes ja proovige uuesti.</string>
+    <string name="update_error_unknown">Tundmatu viga</string>
+    <string name="update_fail_lanzou">Lanzou Cloudi allalaadimine ebaõnnestus</string>
+    <string name="update_fail_github">GitHubi allalaadimine ebaõnnestus</string>
+    <string name="update_lanzou_resolving">Lanzou Cloudi allalaadimislingi lahendamine…</string>
+    <string name="update_lanzou_downloading">Allalaadimine Lanzou Cloudist…</string>
+    <string name="update_github_downloading">Allalaadimine GitHubist…</string>
+    <string name="update_unzipping">Installipaketi lahtipakkimine…</string>
+    <string name="update_notes_empty">Sellel versioonil puuduvad värskendusmärkmed.</string>
+
+    <!-- Go versiooniga seotud dialoogid -->
+    <string name="update_use_normal_title">Palun kasutage tavaversiooni</string>
+    <string name="update_use_normal_body">Selle seadme süsteem on Android 10 või uuem, Go kergeversiooni enam ei toetata ja vanemat versiooni ei saa enam kasutada.\n\nSellele seadmele on juba installitud tavaversioon (ZLC); avage see ja jätkake selle kasutamist (uus versioon ei paku enam Go-ga ühilduvat versiooni; vana versiooni võite ruumi vabastamiseks desinstallida).</string>
+    <string name="update_open_normal">Ava tavaversioon</string>
+    <string name="update_must_update_title">Jätkamiseks tuleb värskendada</string>
+    <string name="update_forced_body">Selle seadme süsteem on Android 10 või uuem, Go kergeversiooni enam ei toetata ja vanemat versiooni ei saa enam kasutada; uus versioon ei paku ka enam Go-ga ühilduvat versiooni.\n\nÜhendage internetiga ja vajutage „Proovi uuesti“, et hankida tavaversiooni installipakett.</string>
+    <string name="update_retry">Proovi uuesti</string>
+    <string name="update_switch_normal_body">Selle seadme süsteem on Android 10 või uuem, Go kergeversiooni enam ei toetata ja vanemat versiooni ei saa enam kasutada.\nLaadige alla ja installige tavaversioon, et jätkata (uus versioon ei paku enam Go-ga ühilduvat versiooni).</string>
+
+    <!-- Allalaadimise / installimisõiguse / tulemuse teated -->
+    <string name="update_downloading_title">Laadi värskendus alla</string>
+    <string name="update_cancel">Tühista</string>
+    <string name="update_need_permission_title">Vaja on installimisõigust</string>
+    <string name="update_need_permission_body">Uue versiooni installimine nõuab süsteemi „tundmatute rakenduste installimise“ õigust.\n\nPuudutage „Anna õigus“, lubage see seadetes ja pöörduge rakendusse tagasi; installimine jätkub automaatselt (uuesti allalaadimist pole vaja).</string>
+    <string name="update_grant">Anna õigus</string>
+    <string name="update_notice_title">Teade</string>
+    <string name="update_got_it">Selge</string>
+
+    <!-- Põhidialoog / värskendusmärkmed -->
+    <string name="update_notes_title">v%1$s · Värskendusmärkmed</string>
+    <string name="update_back">Tagasi</string>
+    <string name="update_title_switch_normal">Lülitu tavaversioonile</string>
+    <string name="update_title_reinstall">Installige see versioon uuesti</string>
+    <string name="update_title_new_version">Leitud on uus versioon</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">See laadib alla ja installib selle versiooni uuesti (kirjutab praeguse rakenduse üle).\nSee funktsioon on mõeldud värskendusmehhanismi regressioonitestimiseks.</string>
+    <string name="update_view_notes">Vaata värskendusmärkmeid</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud pole ajutiselt saadaval</string>
+    <string name="update_download_lanzou">Laadi alla Lanzou Cloudist</string>
+    <string name="update_download_github">Laadi alla GitHubist</string>
+    <string name="update_download_browser">Laadi alla brauserist</string>
+    <string name="update_later">Värskenda hiljem</string>
+    <string name="update_later_switch">Lülitu hiljem</string>
+    <string name="update_skip_version">Jäta see versioon vahele</string>
+</resources>

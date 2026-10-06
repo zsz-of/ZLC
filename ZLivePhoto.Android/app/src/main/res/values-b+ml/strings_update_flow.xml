@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Malayalam (ml) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">GitHub ഡൗൺലോഡ് വിലാസം ലഭിച്ചില്ല; കുറച്ച് കഴിഞ്ഞ് വീണ്ടും ശ്രമിക്കുക.</string>
+    <string name="update_flavor_standard">സ്റ്റാൻഡേർഡ് പതിപ്പ്</string>
+    <string name="update_flavor_go">Go പതിപ്പ്</string>
+    <string name="update_lanzou_url_missing">ഈ പതിപ്പിൽ Lanzou ഡൗൺലോഡ് ലിങ്ക് ഇല്ല; GitHub-ൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യാം.</string>
+    <string name="update_apk_direct_missing">ഈ പതിപ്പിന് അനുയോജ്യമായ ഇൻസ്റ്റാൾ പാക്കേജിന്റെ നേരിട്ടുള്ള ലിങ്ക് ഇല്ല; ദയവായി GitHub Release പേജിൽ നിന്ന് ബന്ധപ്പെട്ട APK തിരഞ്ഞെടുക്കുക.</string>
+    <string name="update_install_permission_missing">“അജ്ഞാത ആപ്പുകൾ ഇൻസ്റ്റാൾ ചെയ്യുക” അനുമതി ലഭിച്ചിട്ടില്ല; സ്വയമേവ ഇൻസ്റ്റാൾ ചെയ്യാനാകില്ല. സിസ്റ്റം ക്രമീകരണങ്ങളിൽ അനുവദിച്ച ശേഷം വീണ്ടും ശ്രമിക്കുക.</string>
+    <string name="update_error_unknown">അജ്ഞാത പിശക്</string>
+    <string name="update_fail_lanzou">Lanzou ഡൗൺലോഡ് പരാജയപ്പെട്ടു</string>
+    <string name="update_fail_github">GitHub ഡൗൺലോഡ് പരാജയപ്പെട്ടു</string>
+    <string name="update_lanzou_resolving">Lanzou ഡൗൺലോഡ് ലിങ്ക് പരിഹരിക്കുന്നു…</string>
+    <string name="update_lanzou_downloading">Lanzou-ൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുന്നു…</string>
+    <string name="update_github_downloading">GitHub-ൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുന്നു…</string>
+    <string name="update_unzipping">ഇൻസ്റ്റാൾ പാക്കേജ് അൺസിപ്പ് ചെയ്യുന്നു…</string>
+    <string name="update_notes_empty">ഈ പതിപ്പിന് അപ്ഡേറ്റ് വിവരണം ഇല്ല.</string>
+    <string name="update_use_normal_title">ദയവായി സാധാരണ പതിപ്പ് ഉപയോഗിക്കുക</string>
+    <string name="update_use_normal_body">ഈ ഉപകരണത്തിന്റെ സിസ്റ്റം Android 10 അല്ലെങ്കിൽ അതിൽ കൂടുതലാണ്; Go ലൈറ്റ് പതിപ്പ് ഇനി പിന്തുണയ്ക്കുന്നില്ല, പഴയ പതിപ്പ് തുടർന്ന് ഉപയോഗിക്കാനാകില്ല.\n\nഈ ഉപകരണത്തിൽ സാധാരണ പതിപ്പ് (ZLC) ഇതിനകം ഇൻസ്റ്റാൾ ചെയ്തിട്ടുണ്ടെന്ന് കണ്ടെത്തി; ദയവായി നേരിട്ട് സാധാരണ പതിപ്പ് തുറന്ന് തുടരുക (പുതിയ പതിപ്പിൽ Go അനുയോജ്യ പതിപ്പ് നൽകുന്നില്ല; സ്ഥലം ഒഴിവാക്കാൻ പഴയ പതിപ്പ് അൺഇൻസ്റ്റാൾ ചെയ്യാം).</string>
+    <string name="update_open_normal">സാധാരണ പതിപ്പ് തുറക്കുക</string>
+    <string name="update_must_update_title">തുടരാൻ അപ്ഡേറ്റ് ചെയ്യേണ്ടതുണ്ട്</string>
+    <string name="update_forced_body">ഈ ഉപകരണത്തിന്റെ സിസ്റ്റം Android 10 അല്ലെങ്കിൽ അതിൽ കൂടുതലാണ്; Go ലൈറ്റ് പതിപ്പ് ഇനി പിന്തുണയ്ക്കുന്നില്ല, പഴയ പതിപ്പ് തുടർന്ന് ഉപയോഗിക്കാനാകില്ല; പുതിയ പതിപ്പിൽ Go അനുയോജ്യ പതിപ്പും ഇല്ല.\n\nനെറ്റ്വർക്കിലേക്ക് ബന്ധിപ്പിച്ച ശേഷം “വീണ്ടും ശ്രമിക്കുക” ക്ലിക്ക് ചെയ്ത് സാധാരണ പതിപ്പിന്റെ ഇൻസ്റ്റാൾ പാക്കേജ് നേടുക.</string>
+    <string name="update_retry">വീണ്ടും ശ്രമിക്കുക</string>
+    <string name="update_switch_normal_body">ഈ ഉപകരണത്തിന്റെ സിസ്റ്റം Android 10 അല്ലെങ്കിൽ അതിൽ കൂടുതലാണ്; Go ലൈറ്റ് പതിപ്പ് ഇനി പിന്തുണയ്ക്കുന്നില്ല, പഴയ പതിപ്പ് തുടർന്ന് ഉപയോഗിക്കാനാകില്ല.\nസാധാരണ പതിപ്പ് ഡൗൺലോഡ് ചെയ്ത് ഇൻസ്റ്റാൾ ചെയ്ത ശേഷം തുടരുക (പുതിയ പതിപ്പിൽ Go അനുയോജ്യ പതിപ്പ് നൽകുന്നില്ല).</string>
+    <string name="update_downloading_title">അപ്ഡേറ്റ് ഡൗൺലോഡ് ചെയ്യുന്നു</string>
+    <string name="update_cancel">റദ്ദാക്കുക</string>
+    <string name="update_need_permission_title">ഇൻസ്റ്റാൾ അനുമതി വേണം</string>
+    <string name="update_need_permission_body">പുതിയ പതിപ്പ് ഇൻസ്റ്റാൾ ചെയ്യാൻ സിസ്റ്റത്തിന്റെ “അജ്ഞാത ആപ്പുകൾ ഇൻസ്റ്റാൾ ചെയ്യുക” അനുമതി വേണം.\n\n“അനുമതിക്ക് പോകുക” ക്ലിക്ക് ചെയ്ത് ക്രമീകരണങ്ങളിൽ അനുവദിച്ച ശേഷം ആപ്പിലേക്ക് തിരിച്ചുവരിക; ഇൻസ്റ്റാളേഷൻ സ്വയമേവ തുടരും (വീണ്ടും ഡൗൺലോഡ് ചെയ്യേണ്ടതില്ല).</string>
+    <string name="update_grant">അനുമതിക്ക് പോകുക</string>
+    <string name="update_notice_title">അറിയിപ്പ്</string>
+    <string name="update_got_it">മനസ്സിലായി</string>
+    <string name="update_notes_title">v%1$s · അപ്ഡേറ്റ് വിവരണം</string>
+    <string name="update_back">പിന്നോട്ട്</string>
+    <string name="update_title_switch_normal">സാധാരണ പതിപ്പിലേക്ക് മാറുക</string>
+    <string name="update_title_reinstall">ഈ പതിപ്പ് വീണ്ടും ഇൻസ്റ്റാൾ ചെയ്യുക</string>
+    <string name="update_title_new_version">പുതിയ പതിപ്പ് കണ്ടെത്തി</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">ഈ പതിപ്പ് ഡൗൺലോഡ് ചെയ്ത് വീണ്ടും ഇൻസ്റ്റാൾ ചെയ്യും (നിലവിലെ ആപ്പ് ഓവർറൈറ്റ് ചെയ്യും).\nഈ ഫീച്ചർ അപ്ഡേറ്റ് സംവിധാനത്തിന്റെ റിഗ്രഷൻ ടെസ്റ്റിംഗിനാണ്.</string>
+    <string name="update_view_notes">അപ്ഡേറ്റ് വിവരണം കാണുക</string>
+    <string name="update_lanzou_unavailable">Lanzou ഇപ്പോൾ ലഭ്യമല്ല</string>
+    <string name="update_download_lanzou">Lanzou-ൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക</string>
+    <string name="update_download_github">GitHub-ൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക</string>
+    <string name="update_download_browser">ബ്രൗസറിൽ നിന്ന് ഡൗൺലോഡ് ചെയ്യുക</string>
+    <string name="update_later">ഇപ്പോൾ അപ്ഡേറ്റ് വേണ്ട</string>
+    <string name="update_later_switch">ഇപ്പോൾ മാറ്റേണ്ട</string>
+    <string name="update_skip_version">ഈ പതിപ്പ് ഒഴിവാക്കുക</string>
+</resources>

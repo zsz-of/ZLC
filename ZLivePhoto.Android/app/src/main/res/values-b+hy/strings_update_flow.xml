@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Armenian (hy) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">GitHub ներբեռնման հասցեն չստացվեց, փորձեք ավելի ուշ։</string>
+    <string name="update_flavor_standard">Ստանդարտ տարբերակ</string>
+    <string name="update_flavor_go">Go տարբերակ</string>
+    <string name="update_lanzou_url_missing">Այս տարբերակը Lanzou ներբեռնման հղում չի տրամադրում, կարող եք ներբեռնել GitHub-ից։</string>
+    <string name="update_apk_direct_missing">Այս տարբերակը չի տրամադրում համապատասխան տեղադրման փաթեթի ուղիղ հղում, ընտրեք համապատասխան APK-ն GitHub Release էջում։</string>
+    <string name="update_install_permission_missing">«Անհայտ հավելվածների տեղադրում» թույլտվությունը ստացված չէ, ավտոմատ տեղադրումն անհնար է։ Թույլատրեք համակարգի կարգավորումներում և փորձեք նորից։</string>
+    <string name="update_error_unknown">Անհայտ սխալ</string>
+    <string name="update_fail_lanzou">Lanzou-ից ներբեռնումը ձախողվեց</string>
+    <string name="update_fail_github">GitHub-ից ներբեռնումը ձախողվեց</string>
+    <string name="update_lanzou_resolving">Վերլուծվում է Lanzou ներբեռնման հղումը…</string>
+    <string name="update_lanzou_downloading">Ներբեռնվում է Lanzou-ից…</string>
+    <string name="update_github_downloading">Ներբեռնվում է GitHub-ից…</string>
+    <string name="update_unzipping">Ապակողպվում է տեղադրման փաթեթը…</string>
+    <string name="update_notes_empty">Այս տարբերակը դեռ թարմացման նկարագրություն չունի։</string>
+    <string name="update_use_normal_title">Օգտագործեք ստանդարտ տարբերակը</string>
+    <string name="update_use_normal_body">Այս սարքի համակարգը Android 10 և բարձր է, Go թեթև տարբերակն այլևս հարմարեցված չէ, հին տարբերակը չի կարող շարունակվել։
+
+Հայտնաբերվեց, որ այս սարքում տեղադրված է ստանդարտ տարբերակը (ZLC), բացեք ստանդարտ տարբերակը ուղղակի՝ շարունակելու համար (նոր տարբերակն այլևս Go համատեղելի տարբերակ չի տրամադրում, հին տարբերակը կարող եք հեռացնել՝ տեղ ազատելու համար)։</string>
+    <string name="update_open_normal">Բացել ստանդարտ տարբերակը</string>
+    <string name="update_must_update_title">Շարունակելու համար պետք է թարմացնել</string>
+    <string name="update_forced_body">Այս սարքի համակարգը Android 10 և բարձր է, Go թեթև տարբերակն այլևս հարմարեցված չէ, հին տարբերակը չի կարող շարունակվել, նոր տարբերակն էլ Go համատեղելի տարբերակ չի տրամադրում։
+
+Միացեք ցանցին և սեղմեք «Նորից փորձել»՝ ստանդարտ տարբերակի տեղադրման փաթեթը ստանալու համար։</string>
+    <string name="update_retry">Նորից փորձել</string>
+    <string name="update_switch_normal_body">Այս սարքի համակարգը Android 10 և բարձր է, Go թեթև տարբերակն այլևս հարմարեցված չէ, հին տարբերակը չի կարող շարունակվել։
+Ներբեռնեք և տեղադրեք ստանդարտ տարբերակը՝ շարունակելու համար (նոր տարբերակն այլևս Go համատեղելի տարբերակ չի տրամադրում)։</string>
+    <string name="update_downloading_title">Թարմացման ներբեռնում</string>
+    <string name="update_cancel">Չեղարկել</string>
+    <string name="update_need_permission_title">Պահանջվում է տեղադրման թույլտվություն</string>
+    <string name="update_need_permission_body">Նոր տարբերակի տեղադրման համար պահանջվում է համակարգի «Անհայտ հավելվածների տեղադրում» թույլտվությունը։
+
+Սեղմեք «Թույլատրել», թույլատրեք կարգավորումներում և վերադարձեք հավելված, տեղադրումը շարունակվելու է ավտոմատ (վերաներբեռնում պետք չէ)։</string>
+    <string name="update_grant">Թույլատրել</string>
+    <string name="update_notice_title">Ծանուցում</string>
+    <string name="update_got_it">Հասկացա</string>
+    <string name="update_notes_title">v%1$s · Թարմացման նկարագրություն</string>
+    <string name="update_back">Հետ</string>
+    <string name="update_title_switch_normal">Անցում ստանդարտ տարբերակին</string>
+    <string name="update_title_reinstall">Վերատեղադրել այս տարբերակը</string>
+    <string name="update_title_new_version">Գտնվեց նոր տարբերակ</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Այս տարբերակը կներբեռնվի և կվերատեղադրվի (գերագրելով ընթացիկ հավելվածը)։
+Այս գործառույթը թարմացման մեխանիզմի ռեգրես թեստի համար է։</string>
+    <string name="update_view_notes">Դիտել թարմացման նկարագրությունը</string>
+    <string name="update_lanzou_unavailable">Lanzou-ն ժամանակավորապես անհասանելի է</string>
+    <string name="update_download_lanzou">Ներբեռնել Lanzou-ից</string>
+    <string name="update_download_github">Ներբեռնել GitHub-ից</string>
+    <string name="update_download_browser">Ներբեռնել բրաուզերով</string>
+    <string name="update_later">Դեռ չթարմացնել</string>
+    <string name="update_later_switch">Դեռ չանցնել</string>
+    <string name="update_skip_version">Բաց թողնել այս տարբերակը</string>
+</resources>

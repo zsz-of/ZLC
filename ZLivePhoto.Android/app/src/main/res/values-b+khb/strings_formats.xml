@@ -1,8 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 本文件为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-     khb（傣泐 / 新傣仂文）属低资源语种：本文件未做实质性翻译（无可靠词表，拒绝臆造傣仂文），
-     仅保留品牌/产品专名（按规范不翻译），其余 key 缺失将回落中文。 -->
+<!--
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  khb（傣泐 / 新傣仂文）为低资源语种：暂无可靠的新傣仂文词表，为避免臆造民族语言文字，
+  本文件正文沿用简体中文基准（即本应用对 khb 的兜底文案）；key 与元素类型与基准完全一致。
+  欢迎母语者逐条替换为傣泐语译文。
+  格式插件展示名（task-4，videolen-analyst 维护）。key 前缀 fmt_。
+  res/values/ 是简体中文兜底；其它语种放 values-<locale>/strings_formats.xml。
+  注意：FormatPlugin.display 仍为旧调用点（MainActivity/AlbumScanner/Converter）提供中文兜底，
+  其 LEGACY_ZH_NAMES 表与本文件一一对应；改这里的文案时要同步该表，直到旧调用点迁移到 displayRes。
+-->
 <resources>
     <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">拆解</string>
     <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">荣耀动态照片</string>
+    <string name="fmt_meizu">魅族动态照片</string>
+    <string name="fmt_nubia">努比亚动态照片</string>
+    <string name="fmt_oppo">OPPO 动态照片</string>
+    <string name="fmt_vivo">vivo 动态照片</string>
+    <string name="fmt_vivo_single">vivo 单文件实况</string>
+    <string name="fmt_xiaomi">小米动态照片</string>
+
+    <!--
+      插件侧用户可见的失败提示（IOException 文案）：经 MainActivity/Converter 的 e.message
+      进入状态栏与「状态详情」，属用户可见文案，故同样抽成资源。
+      插件没有 Context，统一走 CoreText.of(...)（core/FfmpegAddon.kt，未初始化时返回空串，
+      纯 JVM 单测不触碰 Android API）；与 Converter/AppUpdater 的既有约定一致。
+    -->
+    <string name="fmt_err_apple_mov_missing">未找到同名 .mov 视频文件</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV 文件缺少 ftyp box</string>
+    <string name="fmt_err_extract_read">拆解是输出格式，不应作为输入格式读取</string>
+    <string name="fmt_err_no_primary_jpeg">未找到主 JPEG 图像</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG 之后未找到有效的 MP4 视频（缺少 ftyp box）</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 视频流解析失败</string>
+    <string name="fmt_err_nubia_too_short">文件过短，不像努比亚动态照片</string>
+    <string name="fmt_err_nubia_no_magic">缺少 nubiaVpfile 尾部魔数</string>
+    <string name="fmt_err_nubia_jpeg_len">尾部记录的 JPEG 长度非法：%1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG 与视频之间缺少 0x00 填充字节</string>
+    <string name="fmt_err_nubia_empty_video">内嵌视频长度为 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG 尾部未找到 vivo livephoto 标记</string>
+    <string name="fmt_err_vivo_companion_missing">缺少伴生视频文件：%1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG 主体解析失败</string>
+    <string name="fmt_err_vivo_companion_invalid">伴生 MP4 无效（缺少 ftyp box）</string>
 </resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Icelandic (is) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Óþekkt úttakssnið: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Óþekkt Live Photo-snið (ekki Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Forsíðumynd vantar eða er tóm</string>
+    <string name="conv_video_missing">Myndband vantar eða er tómt</string>
+    <string name="conv_video_too_large">Myndbandið er of stórt (%1$d MB) til að setja saman sem Live Photo; veldu styttra myndband</string>
+    <string name="conv_transcoded_too_large">Myndbandið er of stórt eftir umkóðun (%1$d MB) til að setja saman Live Photo</string>
+    <string name="conv_video_too_large_compose">Myndbandið er of stórt (%1$d MB) til að setja saman Live Photo</string>
+    <string name="conv_cover_heic_go">Forsíðan er HEIC-mynd (Go-útgáfan styður ekki umkóðun; flyttu hana út sem JPEG á iPhone og reyndu aftur)</string>
+    <string name="conv_cover_invalid_heic">Forsíðan er ekki gild mynd (HEIC krefst þess að kerfið styðni HEIF-afkóðun)</string>
+    <string name="conv_cover_not_jpeg_go">Forsíðan er ekki JPEG-mynd (Go-útgáfan styður ekki umkóðun; notaðu JPEG-mynd í staðinn)</string>
+    <string name="conv_cover_invalid_image">Forsíðan er ekki gild mynd (aðeins JPEG/WebP/PNG eru studd)</string>
+    <string name="conv_reencode_failed">Endurkóðun myndbands mistókst: %1$s</string>
+    <string name="conv_remux_failed">Endurpökkun gáms mistókst: %1$s</string>
+    <string name="conv_codec_unknown">Ekki viðurkennd H.264/H.265-myndband</string>
+    <string name="conv_codec_is">Kóðunin er %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Myndbandið „%1$s“ %2$s; aðeins að skipta um gám (endurpakka) breytir ekki kóðuninni, svo ekki er hægt að setja saman Live Photo.\n\nVeldu „Endurkóðun“ undir „Stillingar → Myndbandsumkóðun → Umkóðunaraðferð“, eða umbreyttu myndbandinu fyrst með öðrum tæki í MP4 með H.264/H.265-kóðun.</string>
+    <string name="conv_hint_no_encoder">Myndbandið er ekki í staðlaðri MP4-gámi (MOV / MKV / WebM / AVI o.fl.), og núverandi „umkóðunaraðferð“ endurkóðar ekki, svo ekki er hægt að setja saman Live Photo.\n\nVeldu „Endurkóðun“ undir „Stillingar → Myndbandsumkóðun → Umkóðunaraðferð“ (staðlaða útgáfan er með innbyggðum ffmpeg-kóðara; Go-útgáfan er ekki með umkóðara — notaðu staðlaða útgáfu í staðinn), eða umbreyttu myndbandinu fyrst í staðlaða MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">Greint sem %1$s</string>
+    <string name="conv_log_same_format_copied">Sama snið í uppruna og áfangi, afritað óbreytt (án taps)</string>
+    <string name="conv_log_extra_tracks_bypass">Upprunamyndbandið inniheldur spor sem eru hvorki hljóð né mynd (%1$s); sleppt beinu afriti á sama sniði og farið í fulla útskrifun til hreinsunar</string>
+    <string name="conv_log_ts_fallback">Tímastimpill forsíðurams vantar; fellt aftur á miðju myndbandsins samkvæmt forskrift</string>
+    <string name="conv_log_brand_normalized">Merki myndbandsgámsins er staðlað (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Myndbandið inniheldur aukaspör (%1$s); ekki tókst að hreinsa, skrifað óbreytt (niðurstaðan verður mögulega ekki spilanleg með langþrýstingu á sumum tækjum)</string>
+    <string name="conv_log_extra_tracks_removed">Aukaspörum myndbandsins hefur verið eytt (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Upprunamyndbandið %1$s; endurpökkun gáms leysir það ekki (%2$s). Ef niðurstaðan getur samt ekki spilast með langþrýstingu skaltu velja „Endurkóðun“ undir „Stillingar → Myndbandsumkóðun → Umkóðunaraðferð“</string>
+    <string name="conv_log_reencoding">Upprunamyndbandið %1$s; endurkóðað samkvæmt stillingum í 8bit + AAC til að bæta samhæfni við albúm</string>
+    <string name="conv_log_reencode_result_unusable">Niðurstaða endurkóðunar er ónothæf; skrifað óbreytt (niðurstaðan verður mögulega ekki spilanleg með langþrýstingu á sumum tækjum)</string>
+    <string name="conv_log_reencode_still_risky">Eftir endurkóðun eru enn áhættuatriði (%1$s)</string>
+    <string name="conv_log_reencode_failed">Endurkóðun mistókst (%1$s); skrifað óbreytt (niðurstaðan verður mögulega ekki spilanleg með langþrýstingu á sumum tækjum)</string>
+    <string name="conv_log_cover_heic_converted">Forsíðan er HEIC (ekki JPEG); umkóðað í staðlaða JPEG áður en pakkað var saman</string>
+    <string name="conv_log_compose_sizes">Samsetning: mynd %1$d B + myndband %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Umkóðari ekki virkjaður: aðeins gámsmerki er skrifað (MOV → MP4), engin endurkóðun</string>
+    <string name="conv_tag_convert">Umbreyta</string>
+    <string name="conv_tag_transcode">Umkóða</string>
+    <string name="conv_tag_compose">Samsetning</string>
+    <string name="conv_blocker_no_encoder">Innbyggður umkóðari er ekki tiltækur</string>
+    <string name="conv_blocker_mode_no_encode">Núverandi „umkóðunaraðferð“ endurkóðar ekki</string>
+    <string name="conv_addon_unavailable">Innbyggður umkóðari er ekki tiltækur</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-umkóðun mistókst: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-endurpökkun gáms mistókst: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Umkóða myndband með ffmpeg í staðlaða MP4 (%1$s / crf %2$d / %3$s; aðeins mynd- og hljóðspör eru höfð)</string>
+    <string name="conv_log_transcode_done">Umkóðun myndbands lokið (%1$d KB)</string>
+    <string name="conv_log_remuxing">Endurpakka myndbandsgámi í staðlaða MP4 (aðeins gámnum er skipt, engin endurkóðun)</string>
+    <string name="conv_log_remux_done">Endurpökkun gáms lokið (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Samsetning</string>
+    <string name="conv_reminder_cat_convert">Umbreyting</string>
+    <string name="conv_reminder_cat_update">Uppfærsla</string>
+    <string name="conv_reminder_video_over3s_title">Myndbandið er lengra en 3 sekúndur</string>
+    <string name="conv_reminder_video_over3s_message">Valið myndband er lengra en 3 sekúndur; Live Photo sem sett er saman úr því getur átt við samhæfnivanda að stríða:\n\n• Getur mögulega ekki spilast eðlilega\n• Getur mögulega ekki verið viðurkennt af kerfisalbúminu\n• Sum tæki geta mögulega ekki viðurkennt Live Photo-ið</string>
+    <string name="conv_reminder_legacy_go_title">Eldri útgáfa fannst</string>
+    <string name="conv_reminder_legacy_go_message">Á tækinu er enn uppsett eldri útgáfa forritsins (Go-útgáfan). Hún virkar ekki lengur á þessu tæki; hægt er að fjarlægja hana til að losa pláss.</string>
+    <string name="conv_reminder_replace_risk_title">Útskiptingahamur hefur hættu á skemmdum</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Í útskiptingaham er niðurstaða umbreytingarinnar skrifað beint aftur í upprunalegu skránna; þegar upprunaskránni er yfirskrifað er ekki hægt að sækja hana aftur.\n\n• Ef forritið er stöðvað meðan á skrif stendur, geymslupláss er ekki nægt eða heimildir eru afturkallaðar getur upprunaskráin skemmst\n• Umbreytingin sjálf tryggir ekki árangur í öllum tilfellum; ef hún mistekst getur upprunaskráin þegar orðið ónothæf\n• Ráðlagt er að prófa fyrst með einni eða tveimur skrám og halda svo áfram í lotu þegar allt virkar\n• Taktu öryggisafrit af mikilvægum ljósmyndum áður\n\nÞessi eiginleiki er gefinn út „eins og hann er“; áhættan af notkun berðu þú, og höfundur ber enga ábyrgð á skemmdum eða tapi skráa.</string>
+    <string name="conv_reminder_dont_remind">Ekki sýna aftur</string>
+    <string name="conv_reminder_confirm_ok">Í lagi</string>
+    <string name="conv_reminder_uninstall">Fjarlægja</string>
+</resources>

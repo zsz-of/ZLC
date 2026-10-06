@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Hawaiian (haw) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="screen_app_subtitle">Hoʻololi ʻano Live Photo kekahi i kekahi</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d waihona</item>
+        <item quantity="other">%1$d waihona</item>
+    </plurals>
+    <string name="screen_settings">Nā hoʻonohonoho</string>
+    <string name="screen_select_output_format">Koho i ke ʻano pahu hope</string>
+    <string name="screen_selected">Ua koho ʻia</string>
+    <string name="screen_vivo_single_warning">⚠ Hiki i nā mea hana kahiko loa ʻaʻole ke ʻike i kēia ʻano</string>
+    <string name="screen_extract_blocked">⚠ Aia nā hana hui pū ma ka papa inoa; ʻaʻole hiki ke koho i ka wāwahi</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (hoʻokahi waihona)</string>
+    <string name="screen_format_vivo">vivo (ʻelua waihona)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Wāwahi</string>
+    <string name="screen_toolbox">Pākaukau mea hana</string>
+    <string name="screen_batch_import">Hoʻokomo pūʻulu</string>
+    <string name="screen_batch_import_desc">ʻimi i ka albamu holoʻokoʻa a ʻike pūʻulu i nā Live Photo</string>
+    <string name="screen_compose">Hui pū i Live Photo</string>
+    <string name="screen_compose_desc">Koho i hoʻokahi kiʻi a me hoʻokahi wikiō e paʻa pū a hui ai</string>
+    <string name="screen_replace_mode">ʻAno hoʻololi</string>
+    <string name="screen_replace_mode_desc">E kākau pololei ka hua hoʻololi i ka waihona kumu; ʻaʻole e hana waihona hou</string>
+    <string name="screen_need_all_files_access_hint">Pono ka ʻae „Komo i nā waihona a pau“; kaomi ma ʻaneʻi e ʻae ai</string>
+    <string name="screen_agree_and_enable">ʻAe a wehe</string>
+    <string name="screen_empty_no_files">ʻAʻole i hoʻohui ʻia waihona</string>
+    <string name="screen_view_detail">Nānā i nā kikoʻī</string>
+    <string name="screen_add_files">Hoʻohui waihona</string>
+    <string name="screen_output_format">ʻAno pahu hope: %1$s</string>
+    <string name="screen_delete_original">Holoi nā kiʻi kumu ma hope o ka hana ʻana</string>
+    <string name="screen_need_all_files_access_view">Pono ka ʻae „Komo i nā waihona a pau“; kaomi e nānā ai</string>
+    <string name="screen_clear">Holoi a pau</string>
+    <string name="screen_stop">Hoʻōki ka hana</string>
+    <string name="screen_start_convert">Hoʻomaka hoʻololi</string>
+    <string name="screen_status_detail">Nā kikoʻī o ke kūlana</string>
+    <string name="screen_long_press_copy">Kaomi lōʻihi i ka kikokikona e koho a kope ai</string>
+    <string name="screen_copy">Kope</string>
+    <string name="screen_close">Pani</string>
+    <string name="screen_back">Hoʻi hou</string>
+    <string name="screen_picker_title_select">Koho i Live Photo</string>
+    <string name="screen_album_count">Albamu %1$d</string>
+    <string name="screen_album_collapse_cover">Hoʻopiʻi i ke kiʻi ʻaoʻao mua o ka albamu</string>
+    <string name="screen_album_expand_cover">Hoʻolōʻihi i ke kiʻi ʻaoʻao mua o ka albamu</string>
+    <string name="screen_scanning_progress">Ke ʻimi nei %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d</item>
+        <item quantity="other">%1$d</item>
+    </plurals>
+    <string name="screen_select_all">Koho a pau</string>
+    <string name="screen_no_albums">ʻAʻohe albamu loaʻa</string>
+    <string name="screen_no_media">ʻAʻole i loaʻa Live Photo</string>
+    <string name="screen_no_media_compose">ʻAʻole i loaʻa kiʻi a wikiō paha</string>
+    <string name="screen_import">Hoʻokomo</string>
+    <string name="screen_import_count">Hoʻokomo %1$d</string>
+    <string name="screen_import_mixed">Hoʻokomo kiʻi %1$d · wikiō %2$d</string>
+    <string name="screen_search">ʻImi</string>
+    <string name="screen_search_collapse">Hoʻopiʻi i ka ʻimi ʻana</string>
+    <string name="screen_search_hint">ʻimi ma ka inoa</string>
+    <string name="screen_search_clear">Holoi i ka ʻimi ʻana</string>
+    <string name="screen_sort_date">Lā</string>
+    <string name="screen_sort_size">Nui</string>
+    <string name="screen_sort_name">Inoa</string>
+    <string name="screen_sort_asc">Mai mua a i hope</string>
+    <string name="screen_sort_desc">Mai hope a i mua</string>
+    <string name="screen_date_today">Kēia lā</string>
+    <string name="screen_date_yesterday">Ka lā i hala</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

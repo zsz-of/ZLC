@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Sakha (Yakut) (sah) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou үллэстиитэ тохтотуллубут эбээт билэ суох; GitHub-тан хачайдаа</string>
+    <string name="update_lanzou_gone_short">Lanzou үллэстиитэ тохтотуллубут; GitHub-тан хачайдаа</string>
+    <string name="update_lanzou_resolve_failed">Lanzou хачайданар сылканы ылыы табыллыбата</string>
+    <string name="update_lanzou_need_passwd">Бу Lanzou үллэстиитэ коду ирдээр; GitHub-тан хачайдаа (эбээт Release быһаарытыгар коду көр)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou кода алҕастаах</string>
+    <string name="update_err_resolve_failed">Сылканы ылыы табыллыбата</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou боттары утарар бэрэбиэркэтэ табыллыбата</string>
+    <string name="update_err_no_frame">Lanzou хачайданар сирэйин аныыр кыаммата (хачайдааһын кадра булуллубата)</string>
+    <string name="update_err_no_file_id">Lanzou билэ бэлиэтин булуу кыаммата</string>
+    <string name="update_err_no_sign">Lanzou сигнататын аныыр кыаммата</string>
+    <string name="update_err_ajax_request">Интерфейскэ көрдөһүү табыллыбата</string>
+    <string name="update_err_api_request">Lanzou интерфейсигэр көрдөһүү табыллыбата</string>
+    <string name="update_err_empty_direct">Lanzou кураанах хачайданар аадырыһы биэрбит</string>
+    <string name="update_err_direct_expired">Lanzou хачайданар аадырыса үлэлээбэт буолбут; хат ыл</string>
+    <string name="update_err_http_request">Көрдөһүү табыллыбата (HTTP %1$d)</string>
+    <string name="update_err_connect">Хачайданар аадырыска холбонон кыаммата: %1$s</string>
+    <string name="update_err_http">Хачайдааһын табыллыбата (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Хачайдааһын ситимэ оҥоһуллубата</string>
+    <string name="update_err_empty">Хачайдаммыт ис хоһооно кураанах</string>
+    <string name="update_err_incomplete">Хачайдааһын толору буолбатах (%1$d / %2$d байт ылынылла); хат хачайдаа</string>
+    <string name="update_err_interrupted">Хачайдааһын тохтообута: %1$s</string>
+    <string name="update_err_not_apk">Хачайдаммыт сөптөөх туруоруу паакета буолбатах (сирэй буолуон эбээт сылка үлэлээбэт буолуон сөп); хат хачайдаа эбээт GitHub-тан хачайдаа.</string>
+    <string name="update_err_apk_incomplete">Туруоруу паакетын ис хоһооно толору суох; хат хачайдаа эбээт GitHub-тан хачайдаа.</string>
+    <string name="update_err_apk_unparsable">Туруоруу паакеты аныыр кыаммата (хачайдааһын толору суоҕун сөп); хат хачайдаа эбээт GitHub-тан хачайдаа.</string>
+    <string name="update_err_no_install_permission">„Биллибэт программалары туруоруу“ көҥүлэ ылылла илик</string>
+    <string name="update_err_installer_failed">Системнай туруорар тэрили аччыктаан кыаммата (%1$s); билэлэри салайар программаҕа бары, туруоруу паакеты бэйэҥ арыйан туруор</string>
+</resources>

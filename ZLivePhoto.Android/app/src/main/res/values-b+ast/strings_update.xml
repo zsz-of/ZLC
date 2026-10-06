@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Asturian (ast) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">La compartición de Lanzou Cloud anulóse o\'l ficheru nun esiste; usa la descarga de GitHub</string>
+    <string name="update_lanzou_gone_short">La compartición de Lanzou Cloud anulóse; usa la descarga de GitHub</string>
+    <string name="update_lanzou_resolve_failed">Nun se pudo analizar l\'enllaz de descarga de Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Esta compartición de Lanzou Cloud precisa un códigu d\'accesu; usa la descarga de GitHub (o busca\'l códigu nes notes de la Release)</string>
+    <string name="update_lanzou_wrong_passwd">El códigu d\'accesu de Lanzou Cloud ye incorreutu</string>
+    <string name="update_err_resolve_failed">Falló l\'analís</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Falló la comprobación antibot de Lanzou Cloud</string>
+    <string name="update_err_no_frame">Nun se pudo analizar la páxina de descarga de Lanzou Cloud (nun s\'atopó\'l marcu de descarga)</string>
+    <string name="update_err_no_file_id">Nun se pudo analizar l\'identificador del ficheru en Lanzou Cloud</string>
+    <string name="update_err_no_sign">Nun se pudo analizar la robla de Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Falló la solicitú a la interface</string>
+    <string name="update_err_api_request">Falló la solicitú a la API de Lanzou Cloud</string>
+    <string name="update_err_empty_direct">Lanzou Cloud devolvió una direición de descarga balera</string>
+    <string name="update_err_direct_expired">La direición de descarga de Lanzou Cloud caducó; consíguela de nueves</string>
+    <string name="update_err_http_request">Falló la solicitú (HTTP %1$d)</string>
+    <string name="update_err_connect">Nun se pudo coneutar col sirvidor de descarga: %1$s</string>
+    <string name="update_err_http">Falló la descarga (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Nun se pudo establecer la conexón de descarga</string>
+    <string name="update_err_empty">El conteníu descargáu ta baleru</string>
+    <string name="update_err_incomplete">La descarga ta incompleta (%1$d de %2$d bytes); descarga de nueves</string>
+    <string name="update_err_interrupted">Descarga interrumpida: %1$s</string>
+    <string name="update_err_not_apk">Lo descargáu nun ye un paquete d\'instalación válidu (pue ser una páxina web o l\'enllaz caducó); descarga de nueves o usa GitHub.</string>
+    <string name="update_err_apk_incomplete">El conteníu del paquete d\'instalación ta incompletu; descarga de nueves o usa GitHub.</string>
+    <string name="update_err_apk_unparsable">El paquete d\'instalación nun se pue analizar (pue ser una descarga incompleta); descarga de nueves o usa GitHub.</string>
+    <string name="update_err_no_install_permission">Entá nun se concedió\'l permisu «Instalar aplicaciones desconocíes»</string>
+    <string name="update_err_installer_failed">Nun se pudo abrir l\'instalador del sistema (%1$s); abre\'l paquete a mano dende\'l xestor de ficheros pa instalalu</string>
+</resources>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Sardinian (sc) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">Prontu</string>
+    <string name="main_status_location_granted">Permissu de positzione otentu: a pustis de sa cunversione is metadatos GPS s’ant a mantènnere</string>
+    <string name="main_status_location_denied">Permissu de positzione non dadu: is fotos cunvertidas ant a pèrdere s’informatzione de positzione GPS</string>
+    <string name="main_status_all_files_granted">Permissu «Atzessu a totu is files» otentu: sa cunversione at a iscrìvere derettamente in sa cartella de s’album e at a mantènnere a pare s’informatzione de positzione</string>
+    <string name="main_status_all_files_denied">Permissu «Atzessu a totu is files» non dadu: in tzertos modellos a pustis de sa cunversione diat pòdere pèrdere s’informatzione de positzione</string>
+    <string name="main_status_read_granted">Permissu de lèghere fotos e vìdeos otentu</string>
+    <string name="main_status_video_missing">Autorizatzione otenta, ma mancat su permissu de vìdeu: no si podet agatare su vìdeu cumpàngiu de is Live Photo a duos files</string>
+    <string name="main_status_permission_denied">Permissu non dadu; podes torrare a primi «Agiunghe files»</string>
+    <string name="main_status_folder_not_selected">Peruna cartella seletzionada</string>
+    <string name="main_status_folder_unavailable">Non si podet atzèdere a sa cartella seletzionada (si suportant petzi directories de archiviatzione locales)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Torradu a carrigare s’ùrtima sessione (%1$d file)</item>
+        <item quantity="many">Torradu a carrigare s’ùrtima sessione (%1$d files)</item>
+        <item quantity="other">Torradu a carrigare s’ùrtima sessione (%1$d files)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Rilevada una essida anormale de sa sessione colada; sa lista non cumplitada est istada isboidada</string>
+    <string name="main_status_compose_blocks_extract">Sa fila tenet fàigas de cumponidura; non si podet colare a sa modalidade de estraghidura</string>
+    <string name="main_status_replace_off_mutex">Modu de sostitutziune disativadu (est in mutu-esclusione cun «Cantzella is files orìginales a pustis de s’elaboratzione»)</string>
+    <string name="main_status_delete_needs_all_files">Sa cantzelladura automàtica de is orìginales rechedet su permissu «Atzessu a totu is files»; dae·ddu a primu</string>
+    <string name="main_status_replace_off">Modu de sostitutziune disativadu; su resurtadu de sa cunversione torrat a èssere iscritu in sa cartella de s’album</string>
+    <string name="main_status_replace_needs_all_files">Su modu de sostitutziune rechedet su permissu «Atzessu a totu is files»; dae·ddu a primu</string>
+    <string name="main_status_delete_off_mutex">«Cantzella is files orìginales a pustis de s’elaboratzione» disativadu (est in mutu-esclusione cun su modu de sostitutziune)</string>
+    <string name="main_status_loading_albums">Carrighende is albums…</string>
+    <string name="main_status_no_albums">Perunu album agatadu</string>
+    <string name="main_status_compose_no_photo">Peruna foto seletzionada; no si podet cumponere</string>
+    <string name="main_status_compose_no_video">Perunu vìdeu seletzionadu; no si podet cumponere</string>
+    <string name="main_status_compose_all_added">Is fotos seletzionadas sunt giai totu in sa lista</string>
+    <string name="main_status_compose_paired">Fotos %1$d, vìdeos %2$d; a segunda de su nùmeru prus bassu s’ant agiuntu %3$d fàigas de cumponidura</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Agiunta %1$d fàiga de cumponidura; primi «Incumintza sa cunversione» pro esecutare sa cumponidura</item>
+        <item quantity="many">Agiuntas %1$d fàigas de cumponidura; primi «Incumintza sa cunversione» pro esecutare sa cumponidura</item>
+        <item quantity="other">Agiuntas %1$d fàigas de cumponidura; primi «Incumintza sa cunversione» pro esecutare sa cumponidura</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (formatu de essida cambiadu automaticamente in Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Importende %1$d immàgine cumpartzida…</item>
+        <item quantity="many">Importende %1$d immàgines cumpartzidas…</item>
+        <item quantity="other">Importende %1$d immàgines cumpartzidas…</item>
+    </plurals>
+    <string name="main_status_import_failed">Importatzione fallida: %1$s</string>
+    <string name="main_status_import_done_partial">Importatzione cumplitada: %1$d a su bène, %2$d fallidas</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importatzione cumplitada: importadu %1$d file in totu</item>
+        <item quantity="many">Importatzione cumplitada: importados %1$d files in totu</item>
+        <item quantity="other">Importatzione cumplitada: importados %1$d files in totu</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importatzione firmada: %1$d a su bène, %2$d fallidas</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Importende %1$d file…</item>
+        <item quantity="many">Importende %1$d files…</item>
+        <item quantity="other">Importende %1$d files…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importende %1$d/%2$d…</string>
+    <string name="main_status_stopping">Si firmat… (at a si firmare a pustis de su file atuale)</string>
+    <string name="main_status_stopping_import">Si firmat s’importatzione…</string>
+    <string name="main_status_removed">Est istadu bogadu %1$s</string>
+    <string name="main_status_cleared">Est istadu isboidadu</string>
+    <string name="main_status_nothing_to_convert">Perunu file de cunvertire</string>
+    <string name="main_status_folder_unreadable">Non si podet lèghere sa cartella seletzionada</string>
+    <string name="main_status_scanning_folder">Iscanende sa cartella…</string>
+    <string name="main_status_no_images">Peruna immàgine agatada in sa cartella seletzionada</string>
+    <string name="main_status_batch_importing">Importatzione in massa %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Importatzione in massa firmada: importada %1$d Live Photo in totu</item>
+        <item quantity="many">Importatzione in massa firmada: importadas %1$d Live Photo in totu</item>
+        <item quantity="other">Importatzione in massa firmada: importadas %1$d Live Photo in totu</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Importatzione in massa firmada: importada %1$d Live Photo, brinchadu %2$d file non dinàmicu</item>
+        <item quantity="many">Importatzione in massa firmada: importadas %1$d Live Photo, brinchados %2$d files non dinàmicos</item>
+        <item quantity="other">Importatzione in massa firmada: importadas %1$d Live Photo, brinchados %2$d files non dinàmicos</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Importatzione in massa cumplitada: importada %1$d Live Photo in totu</item>
+        <item quantity="many">Importatzione in massa cumplitada: importadas %1$d Live Photo in totu</item>
+        <item quantity="other">Importatzione in massa cumplitada: importadas %1$d Live Photo in totu</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Importatzione in massa cumplitada: importada %1$d Live Photo, brinchadu %2$d file non dinàmicu</item>
+        <item quantity="many">Importatzione in massa cumplitada: importadas %1$d Live Photo, brinchados %2$d files non dinàmicos</item>
+        <item quantity="other">Importatzione in massa cumplitada: importadas %1$d Live Photo, brinchados %2$d files non dinàmicos</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Firmadu: elaborados %2$d de %1$d files, sostituidos %3$d files de orìgine</string>
+    <string name="main_status_stopped_export">Firmadu: elaborados %2$d de %1$d files, esportados %3$d a s’album</string>
+    <string name="main_status_done_replace_reason">Cumplitadu: %1$d files elaborados, sostituidos %2$d files de orìgine (motive: %3$s)</string>
+    <string name="main_status_done_export_reason">Cumplitadu: %1$d files elaborados, esportados %2$d a s’album (motive: %3$s)</string>
+    <string name="main_status_done_replace">Cumplitadu: %1$d files elaborados, sostituidos %2$d files de orìgine</string>
+    <string name="main_status_done_export">Cumplitadu: %1$d files elaborados, esportados %2$d a s’album</string>
+    <string name="main_status_keep_originals">%1$s; su permissu «Atzessu totale a s’archiviatzione» no est istadu otentu, is orìginales sunt abarrados</string>
+    <string name="main_info_detecting">Reconnoschende…</string>
+    <string name="main_info_unrecognized">Formatu de Live Photo non reconnoschidu</string>
+    <string name="main_info_converting">Cunvertende…</string>
+    <string name="main_info_compose_task">Fàiga de cumponidura (primi «Incumintza sa cunversione» pro esecutare sa cumponidura)</string>
+    <string name="main_info_done_replaced">Cumplitadu (sostituidos %1$d files de orìgine)</string>
+    <string name="main_info_done_skipped">Cumplitadu (brinchadu: cunflitu de nùmene idènticu)</string>
+    <string name="main_info_done_exported">Cumplitadu (esportados %1$d)</string>
+    <string name="main_info_failed">Fallidu: %1$s</string>
+    <string name="main_progress_added">Agiuntos %1$d/%2$d</string>
+    <string name="main_progress_processed">Elaborados %1$d/%2$d</string>
+    <string name="main_progress_imported">Importados %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Serbit su permissu de lèghere fotos e vìdeos</string>
+    <string name="main_dialog_permission_message">Custu programma serbit a lèghere is fotos e is vìdeos de su dispositivu tuo:\n\n• Permissu de fotos: pro iscanare s’album de su dispositivu e reconnòschere is Live Photo chi bi sunt\n• Permissu de vìdeos: pro agatare su vìdeu cumpàngiu de is Live Photo a duos files\n• Permissu de positzione: pro mantènnere is metadatos GPS de is fotos (si mancant, a pustis de sa cunversione s’at a pèrdere s’informatzione de positzione)\n\nSi lu negas, no si podet impreare su seletzionadore integradu; podes torrare a primi «Agiunghe files» prus a tardu pro torrare a dare su permissu.</string>
+    <string name="main_dialog_settings_title">Serbit dare a manu su permissu de fotos e vìdeos</string>
+    <string name="main_dialog_settings_message">Anteriormente as seberadu «Non ddu preguntare prus»: su sistema no at a ammustrare prus su dilegu de permissu.\n\nBae a sa pàgina de detàllios de s’aplicatzione → Permissos → Fotos e vìdeos, dae a manu su permissu de atzessu e torra a custa aplicatzione.\n\nAtentzione: depes dare annotamanu su permissu «Fotos» e cussu de «Vìdeos»; si nono, is Live Photo a duos files non ant a pòdere agatare su vìdeu cumpàngiu.</string>
+    <string name="main_dialog_allfiles_title_delete">Sa cantzelladura automàtica de is orìginales rechedet «Atzessu a totu is files»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Custu dispositivu non suportat sa cantzelladura automàtica de is orìginales</string>
+    <string name="main_dialog_allfiles_title_replace">Su modu de sostitutziune rechedet «Atzessu a totu is files»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Custu dispositivu non suportat su modu de sostitutziune</string>
+    <string name="main_dialog_allfiles_title_location">Cussìgiu: dae su permissu «Atzessu a totu is files»</string>
+    <string name="main_dialog_allfiles_delete_message">«Cantzella is files orìginales a pustis de s’elaboratzione» cantzellat derettamente dae su discu is files orìginales (sa foto e su vìdeu cumpàngiu suo); s’atzione no si podet annullare, duncas est obligatòriu dare a primu su permissu «Atzessu a totu is files».\n\nA pustis de s’autorizatzione s’interrutore at a si ativare; tando lu podes ativare a manu.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Su sistema atuale (Android 10 o inferiore) non frunit su permissu «Atzessu a totu is files», duncas no si podent cantzellare derettamente is files orìginales de su discu; pro custu, custu dispositivu non suportat «Cantzella is files orìginales a pustis de s’elaboratzione».\n\nA pustis de sa cunversione podes nèttere a manu is orìginales dae s’album de su sistema.</string>
+    <string name="main_dialog_allfiles_replace_message">Su «modu de sostitutziune» iscrit derettamente su resurtadu de sa cunversione in is files orìginales de su discu (subra de su cuntenutu orìginale); s’atzione no si podet annullare, duncas est obligatòriu dare a primu su permissu «Atzessu a totu is files».\n\nA pustis de s’autorizatzione s’interrutore at a si ativare; tando lu podes ativare a manu.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Su sistema atuale (Android 10 o inferiore) non frunit su permissu «Atzessu a totu is files», duncas no si podent riscrìere derettamente is files orìginales de su discu; pro custu, custu dispositivu non suportat su «modu de sostitutziune».\n\nPodes sighire a cunvertire cun sa manera predefinida: su resurtadu s’at a iscrìere in sa cartella de s’album.</string>
+    <string name="main_dialog_allfiles_location_message">In tzertos modellos (pro esempru Meizu), iscrìere tràmite s’interfàtzia de s’album de su sistema podet isbujare s’informatzione de positzione GPS, e is fotos a pustis de sa cunversione pèrdent sa positzione.\n\nA pustis de aer dadu «Atzessu a totu is files», custu programa at a iscrìere derettamente in sa cartella de s’album, mantennende a pare is metadatos de positzione.\n\nSi non lu das, sa cunversione funtzionat su matessi; in tzertos modellos diat pòdere pèrdere s’informatzione de positzione.</string>
+    <string name="main_dialog_conflict_title">Cunflitu de nùmene de su file de essida</string>
+    <string name="main_dialog_conflict_message">In sa cartella de essida bi est giai unu file cun su matessi nùmene:\n%1$s\n\nSebera comente sighire.</string>
+    <string name="main_label_conflict_always">Imprea custa manera pro is cunflitos imbenientes</string>
+    <string name="main_btn_grant">Autoriza</string>
+    <string name="main_btn_deny">Nega</string>
+    <string name="main_btn_go_settings">Bae a is cunfiguratziones</string>
+    <string name="main_btn_cancel">Annulla</string>
+    <string name="main_btn_grant_access">Bae a s’autorizatzione</string>
+    <string name="main_btn_got_it">Bene</string>
+    <string name="main_btn_not_now">Non como</string>
+    <string name="main_btn_skip">Brinca</string>
+    <string name="main_btn_overwrite">Subraiscride</string>
+    <string name="main_btn_auto_rename">Torra a numenare automaticamente</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Cantzelladu %1$d file orìginale</item>
+        <item quantity="many">Cantzellados %1$d files orìginales</item>
+        <item quantity="other">Cantzellados %1$d files orìginales</item>
+    </plurals>
+    <string name="main_delete_nothing">Non serbit cantzellare is orìginales</string>
+    <string name="main_delete_partial">Cantzellados %1$d files orìginales (%2$d cantzelladuras fallidas; abarrados)</string>
+    <string name="main_delete_failed">Cantzelladura de is orìginales fallida (su file est ocupadu o mancat su permissu de iscritura); sunt abarrados</string>
+    <string name="main_export_missing_output">Su produtu de sa cunversione mancat o est bòidu: %1$s</string>
+    <string name="main_export_missing_output_bare">Su produtu de sa cunversione mancat o est bòidu</string>
+    <string name="main_export_insert_null">MediaStore insert at torradu null</string>
+    <string name="main_export_output_stream">Su flussu de essida de MediaStore no est disponìbile</string>
+    <string name="main_export_write_failed">Iscritura in MediaStore fallida: %1$s</string>
+    <string name="main_export_mkdir_failed">Non si podet creare sa cartella de s’album %1$s</string>
+    <string name="main_export_dir_write_failed">Iscritura in sa cartella de s’album fallida: %1$s</string>
+    <string name="main_export_no_source">No si podet agatare su file de orìgine; sostitutziune brinchada</string>
+    <string name="main_export_companion_failed">Torrada de iscritura de su file cumpàngiu fallida: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Sa cartella de su file de orìgine no est iscrìbile; su file cumpàngiu no est istadu torradu a iscrìere</string>
+    <string name="main_export_source_dir_unavailable">Sa cartella de su file de orìgine no est disponìbile: %1$s</string>
+    <string name="main_export_replace_failed">Sostitutziune de su file de orìgine fallida: %1$s</string>
+    <string name="main_export_replace_failed_bare">Sostitutziune de su file de orìgine fallida</string>
+</resources>

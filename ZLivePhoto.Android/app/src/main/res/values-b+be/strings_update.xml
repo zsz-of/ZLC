@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Belarusian (be) strings — update / download texts.
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- ========== Старонка сумеснага доступу Lanzou Cloud і разбор прамой спасылкі ========== -->
+    <string name="update_lanzou_gone">Сумесны доступ Lanzou Cloud скасаваны або файл не існуе; спампуйце з GitHub</string>
+    <string name="update_lanzou_gone_short">Сумесны доступ Lanzou Cloud скасаваны; спампуйце з GitHub</string>
+    <string name="update_lanzou_resolve_failed">Не ўдалося разабраць спасылку для спампоўкі з Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Гэты сумесны доступ Lanzou Cloud патрабуе код доступу; спампуйце з GitHub (або знайдзіце код у апісанні выпуску)</string>
+    <string name="update_lanzou_wrong_passwd">Няслушны код доступу Lanzou Cloud</string>
+    <string name="update_err_resolve_failed">Не ўдалося разабраць</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Праверка абароны ад аўтаматычнага збору Lanzou Cloud не пройдзена</string>
+    <string name="update_err_no_frame">Не ўдалося разабраць старонку спампоўкі Lanzou Cloud (не знойдзены фрэйм спампоўкі)</string>
+    <string name="update_err_no_file_id">Не ўдалося разабраць ідэнтыфікатар файла Lanzou Cloud</string>
+    <string name="update_err_no_sign">Не ўдалося разабраць подпіс Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Запыт не выкананы</string>
+    <string name="update_err_api_request">Запыт да API Lanzou Cloud не выкананы</string>
+    <string name="update_err_empty_direct">Lanzou Cloud вярнуў пусты адрас спампоўкі</string>
+    <string name="update_err_direct_expired">Адрас спампоўкі Lanzou Cloud састарэў; атрымайце яго зноў</string>
+    <string name="update_err_http_request">Запыт не выкананы (HTTP %1$d)</string>
+
+    <!-- ========== Спампоўка ========== -->
+    <string name="update_err_connect">Не ўдалося падключыцца да сервера спампоўкі: %1$s</string>
+    <string name="update_err_http">Спампоўка не ўдалася (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Не ўдалося ўсталяваць злучэнне для спампоўкі</string>
+    <string name="update_err_empty">Спампаваны змест пусты</string>
+    <string name="update_err_incomplete">Спампоўка няпоўная (атрымана %1$d з %2$d байт); спампуйце зноў</string>
+    <string name="update_err_interrupted">Спампоўка перарвана: %1$s</string>
+
+    <!-- ========== Праверка пакета ўсталявання і ўсталяванне ========== -->
+    <string name="update_err_not_apk">Спампаваны файл не з’яўляецца слушным пакетам усталявання (магчыма, гэта вэб-старонка або спасылка састарэла); спампуйце зноў або скарыстайцеся GitHub.</string>
+    <string name="update_err_apk_incomplete">Змест пакета ўсталявання няпоўны; спампуйце зноў або скарыстайцеся GitHub.</string>
+    <string name="update_err_apk_unparsable">Пакет усталявання не ўдалося разабраць (магчыма, спампоўка няпоўная); спампуйце зноў або скарыстайцеся GitHub.</string>
+    <string name="update_err_no_install_permission">Дазвол «Усталяванне невядомых праграм» яшчэ не атрыманы</string>
+    <string name="update_err_installer_failed">Не ўдалося запусціць сістэмны ўсталёўшчык (%1$s); адкрыйце пакет у файлавым менеджэры і ўсталюйце ўручную</string>
+
+</resources>

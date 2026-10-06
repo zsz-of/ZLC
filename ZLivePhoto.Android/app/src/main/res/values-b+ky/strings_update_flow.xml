@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Кыргызча (Kyrgyz) strings — жаңыртуу процессинин билдирүүлөрү (strings_update_flow.xml).
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Кыргыз тилинде (кирилл); эне тилдеги текшерүү сунушталат.
+  Бардык key базалык файлга дал келет; %1$s / %1$d / %2$s орун толтургучтар жана \n сакталган.
+-->
+<resources>
+    <!-- Контроллер тараптагы эскертүүлөр (Composable сыртында context.getString аркылуу берилет) -->
+    <string name="update_github_url_missing">GitHub жүктөө дареги алынган жок, кийинчерээк кайра аракет кылыңыз.</string>
+    <string name="update_flavor_standard">Стандарттык версия</string>
+    <string name="update_flavor_go">Go версиясы</string>
+    <string name="update_lanzou_url_missing">Бул версияда Lanzou Cloud жүктөө шилтемеси жок, GitHub аркылуу жүктөсөңүз болот.</string>
+    <string name="update_apk_direct_missing">Бул версияда ушул версияга ылайыктуу орнотуу топтомунун түз шилтемеси жок, GitHub чыгарылыш барагынан тиешелүү APKни тандаңыз.</string>
+    <string name="update_install_permission_missing">«Белгисиз колдонмолорду орнотуу» уруксаты алынган жок, автоматтык орнотуу мүмкүн эмес. Системалык жөндөөлөрдөн уруксат берип, кайра аракет кылыңыз.</string>
+    <string name="update_error_unknown">Белгисиз ката</string>
+    <string name="update_fail_lanzou">Lanzou Cloud жүктөө ишке ашкан жок</string>
+    <string name="update_fail_github">GitHub жүктөө ишке ашкан жок</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud жүктөө шилтемеси талданып жатат…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud аркылуу жүктөлүүдө…</string>
+    <string name="update_github_downloading">GitHub аркылуу жүктөлүүдө…</string>
+    <string name="update_unzipping">Орнотуу топтому ачылып жатат…</string>
+    <string name="update_notes_empty">Бул версияда азырынча жаңыртуу эскертүүсү жок.</string>
+
+    <!-- Go версиясына тиешелүү терезелер -->
+    <string name="update_use_normal_title">Кадимки версияны колдонуңуз</string>
+    <string name="update_use_normal_body">Бул түзмөктүн системасы Android 10 же андан жогору, Go жеңил версиясы мындан ары ылайыкталбайт, эски версияны колдонууну улантуу мүмкүн эмес.\n\nБул түзмөктө кадимки версия (ZLC) орнотулганы аныкталды, түз эле кадимки версияны ачып колдонууну улантыңыз (жаңы версиялар Go шайкеш версиясын бербейт, эски версияны орун бошотуу үчүн орнотуудан чыгарсаңыз болот).</string>
+    <string name="update_open_normal">Кадимки версияны ачуу</string>
+    <string name="update_must_update_title">Колдонууну улантуу үчүн жаңыртуу милдеттүү</string>
+    <string name="update_forced_body">Бул түзмөктүн системасы Android 10 же андан жогору, Go жеңил версиясы мындан ары ылайыкталбайт, эски версияны колдонууну улантуу мүмкүн эмес; жаңы версиялар да Go шайкеш версиясын бербейт.\n\nТармакка туташып, «Кайра аракет кылуу» баскычын басып кадимки версиянын орнотуу топтомун алыңыз.</string>
+    <string name="update_retry">Кайра аракет кылуу</string>
+    <string name="update_switch_normal_body">Бул түзмөктүн системасы Android 10 же андан жогору, Go жеңил версиясы мындан ары ылайыкталбайт, эски версияны колдонууну улантуу мүмкүн эмес.\nКадимки версияны жүктөп орнотуп, колдонууну улантыңыз (жаңы версиялар Go шайкеш версиясын бербейт).</string>
+
+    <!-- Жүктөө / орнотуу уруксаты / натыйжа эскертүүлөрү -->
+    <string name="update_downloading_title">Жаңыртууну жүктөө</string>
+    <string name="update_cancel">Жокко чыгаруу</string>
+    <string name="update_need_permission_title">Орнотуу уруксаты талап кылынат</string>
+    <string name="update_need_permission_body">Жаңы версияны орнотуу үчүн системанын «Белгисиз колдонмолорду орнотуу» уруксаты керек.\n\n«Уруксат берүү» баскычын басып, жөндөөлөрдөн уруксат берип, колдонмого кайтыңыз — орнотуу автоматтык уланат (кайра жүктөөнүн кереги жок).</string>
+    <string name="update_grant">Уруксат берүү</string>
+    <string name="update_notice_title">Эскертүү</string>
+    <string name="update_got_it">Түшүндүм</string>
+
+    <!-- Негизги терезе / жаңыртуу эскертүүсү -->
+    <string name="update_notes_title">v%1$s · жаңыртуу эскертүүсү</string>
+    <string name="update_back">Артка</string>
+    <string name="update_title_switch_normal">Кадимки версияга өтүү</string>
+    <string name="update_title_reinstall">Бул версияны кайра орнотуу</string>
+    <string name="update_title_new_version">Жаңы версия табылды</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Бул версия жүктөлүп кайра орнотулат (учурдагы колдонмонун үстүнөн жазылат).\nБул функция жаңыртуу механизмин регрессиялык сыноо үчүн колдонулат.</string>
+    <string name="update_view_notes">Жаңыртуу эскертүүсүн көрүү</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud убактылуу жеткиликсиз</string>
+    <string name="update_download_lanzou">Lanzou Cloud аркылуу жүктөө</string>
+    <string name="update_download_github">GitHub аркылуу жүктөө</string>
+    <string name="update_download_browser">Браузер аркылуу жүктөө</string>
+    <string name="update_later">Кийинчерээк жаңыртуу</string>
+    <string name="update_later_switch">Кийинчерээк өтүү</string>
+    <string name="update_skip_version">Бул версияны өткөрүп жиберүү</string>
+</resources>

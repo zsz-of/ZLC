@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Welsh (cy) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Fformat targed anhysbys: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Fformat Live Photo anhysbys (dim Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Mae\'r llun clawr ar goll neu\'n wag</string>
+    <string name="conv_video_missing">Mae\'r fideo ar goll neu\'n wag</string>
+    <string name="conv_video_too_large">Mae\'r fideo\'n rhy fawr (%1$dMB); ni ellir ei gyfansoddi\'n Live Photo. Dewiswch fideo byrrach</string>
+    <string name="conv_transcoded_too_large">Ar ôl trawsgodio mae\'r fideo\'n rhy fawr (%1$dMB); ni ellir cyfansoddi Live Photo</string>
+    <string name="conv_video_too_large_compose">Mae\'r fideo\'n rhy fawr (%1$dMB); ni ellir cyfansoddi Live Photo</string>
+    <string name="conv_cover_heic_go">Mae\'r clawr yn ddelwedd HEIC (nid yw\'r fersiwn ysgafn yn cynnal trawsgodio; allforiwch hi\'n JPEG ar yr iPhone cyn trosi)</string>
+    <string name="conv_cover_invalid_heic">Nid yw\'r clawr yn ddelwedd ddilys (mae HEIC angen cefnogaeth datgodio HEIF gan y system)</string>
+    <string name="conv_cover_not_jpeg_go">Nid yw\'r clawr yn ddelwedd JPEG (nid yw\'r fersiwn ysgafn yn cynnal trawsgodio; defnyddiwch lun JPEG yn ei le)</string>
+    <string name="conv_cover_invalid_image">Nid yw\'r clawr yn ddelwedd ddilys (dim ond JPEG/WebP/PNG a gynhelir)</string>
+    <string name="conv_reencode_failed">Wedi methu ail-godio\'r fideo: %1$s</string>
+    <string name="conv_remux_failed">Wedi methu ail-becynnu\'r cynhwysydd: %1$s</string>
+    <string name="conv_codec_unknown">Nid yw\'n fideo H.264/H.265 adnabyddus</string>
+    <string name="conv_codec_is">Y codiad yw %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Fideo «%1$s»: %2$s — nid yw newid y cynhwysydd yn unig (ail-becynnu) yn newid y codiad, felly ni ellir cyfansoddi Live Photo.\n\nYn «Gosodiadau → Trawsgodio fideo → Modd trawsgodio», dewiswch «Ail-godio», neu defnyddiwch offeryn arall yn gyntaf i\'w drosi\'n MP4 gyda chodiad H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Nid yw\'r fideo mewn cynhwysydd MP4 safonol (MOV / MKV / WebM / AVI ac ati), a nid yw «Modd trawsgodio» cyfredol yn ail-godio, felly ni ellir cyfansoddi Live Photo.\n\nYn «Gosodiadau → Trawsgodio fideo → Modd trawsgodio», dewiswch «Ail-godio» (mae gan y fersiwn arferol godwr ffmpeg adeiledig; nid oes gan y fersiwn ysgafn Go drawsgodwr, defnyddiwch y fersiwn arferol yn ei le), neu drosiwch y fideo\'n MP4 safonol (H.264/H.265) yn gyntaf.</string>
+    <string name="conv_log_detected">Adnabuwyd fel %1$s</string>
+    <string name="conv_log_same_format_copied">Fformat y ffynhonnell a\'r targed yw\'r un fath; copïwyd fel y mae (colled sero)</string>
+    <string name="conv_log_extra_tracks_bypass">Mae\'r fideo ffynhonnell yn cynnwys traciau nad ydynt yn sain na fideo (%1$s); anwybyddwyd y pasio uniongyrchol â\'r un fformat a defnyddiwyd y broses ysgrifennu llawn yn ei le er mwyn ei glanhau</string>
+    <string name="conv_log_ts_fallback">Mae stamp amser ffrâm y clawr ar goll yn y ffynhonnell; yn ôl y fanyleb, defnyddiwyd canol y fideo yn ei le</string>
+    <string name="conv_log_brand_normalized">Normalwyd brand y cynhwysydd fideo (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Mae\'r fideo\'n cynnwys traciau ychwanegol (%1$s) ac ni ellir ei lanhau; allbwnwyd fel y mae (efallai na fydd y cynnyrch hwn yn chwarae trwy wasgu\'n hir arno ar rai dyfeisiau)</string>
+    <string name="conv_log_extra_tracks_removed">Tynnwyd traciau ychwanegol y fideo (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Mae\'r fideo ffynhonnell yn %1$s; nid yw ail-becynnu\'r cynhwysydd yn unig yn datrys hyn (%2$s). Os nad yw\'r cynnyrch yn chwarae trwy wasgu\'n hir arno eto, dewiswch «Ail-godio» yn «Gosodiadau → Trawsgodio fideo → Modd trawsgodio»</string>
+    <string name="conv_log_reencoding">Mae\'r fideo ffynhonnell yn %1$s; yn ôl y gosodiadau, ailgodwyd hi\'n 8bit + AAC i wella cydnawsedd yr albwm</string>
+    <string name="conv_log_reencode_result_unusable">Nid yw canlyniad yr ail-godio yn ddefnyddiadwy; allbwnwyd fel y mae (efallai na fydd y cynnyrch hwn yn chwarae trwy wasgu\'n hir arno ar rai dyfeisiau)</string>
+    <string name="conv_log_reencode_still_risky">Ar ôl ail-godio mae eitemau perygl yn dal i fodoli (%1$s)</string>
+    <string name="conv_log_reencode_failed">Wedi methu ail-godio (%1$s); allbwnwyd fel y mae (efallai na fydd y cynnyrch hwn yn chwarae trwy wasgu\'n hir arno ar rai dyfeisiau)</string>
+    <string name="conv_log_cover_heic_converted">Mae\'r clawr yn HEIC (dim JPEG); trawsgodwyd hi\'n JPEG safonol cyn ei becynnu</string>
+    <string name="conv_log_compose_sizes">Cyfansoddi: llun %1$dB + fideo %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Heb alluogi\'r trawsgodwr: dim ond brand y cynhwysydd sy\'n cael ei ailysgrifennu (MOV → MP4), heb ail-godio</string>
+    <string name="conv_tag_convert">Trosi</string>
+    <string name="conv_tag_transcode">Trawsgodio</string>
+    <string name="conv_tag_compose">Cyfansoddi</string>
+    <string name="conv_blocker_no_encoder">Nid yw\'r trawsgodwr adeiledig ar gael</string>
+    <string name="conv_blocker_mode_no_encode">Nid yw «Modd trawsgodio» cyfredol yn ail-godio</string>
+    <string name="conv_addon_unavailable">Nid yw\'r trawsgodwr adeiledig ar gael</string>
+    <string name="conv_addon_transcode_failed">Wedi methu trawsgodio ffmpeg: %1$s</string>
+    <string name="conv_addon_remux_failed">Wedi methu ail-becynnu\'r cynhwysydd gyda ffmpeg: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Trawsgodio\'r fideo\'n MP4 safonol gyda ffmpeg (%1$s / crf %2$d / %3$s; dim ond y traciau fideo a sain sy\'n cael eu cadw)</string>
+    <string name="conv_log_transcode_done">Trawsgodwyd y fideo (%1$dKB)</string>
+    <string name="conv_log_remuxing">Ail-becynnu cynhwysydd y fideo\'n MP4 safonol (dim ond y cynhwysydd sy\'n newid, heb ail-godio)</string>
+    <string name="conv_log_remux_done">Ail-becynnwyd y cynhwysydd (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Cyfansoddi</string>
+    <string name="conv_reminder_cat_convert">Trosi</string>
+    <string name="conv_reminder_cat_update">Diweddaru</string>
+    <string name="conv_reminder_video_over3s_title">Mae\'r fideo\'n fwy na 3 eiliad</string>
+    <string name="conv_reminder_video_over3s_message">Mae hyd y fideo a ddewiswyd yn fwy na 3 eiliad; gall y Live Photo a gyfansoddwyd wynebu problemau cydnawsedd:\n\n• Efallai na fydd yn chwarae\'n iawn\n• Efallai na fydd system yr albwm yn ei adnabod\n• Efallai na fydd rhai dyfeisiau\'n adnabod y Live Photo hwn</string>
+    <string name="conv_reminder_legacy_go_title">Canfuwyd fersiwn hŷn</string>
+    <string name="conv_reminder_legacy_go_message">Mae fersiwn hŷn o\'r ap (fersiwn Go) wedi\'i osod ar y ddyfais hon o hyd; nid yw\'n gweithio ar y ddyfais hon mwyach, a gellir ei ddadosod i ryddhau lle.</string>
+    <string name="conv_reminder_replace_risk_title">Mae modd disodli â risg o niweidio ffeiliau</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Bydd modd disodli yn ysgrifennu canlyniadau\'r trosi\'n uniongyrchol dros y ffeil wreiddiol; unwaith y caiff y ffeil wreiddiol ei throsysgrifennu, ni ellir ei hadfer.\n\n• Os caiff yr ap ei darfu wrth ysgrifennu, os bydd gofod storio yn brin, neu os caiff caniatâd ei dynnu\'n ôl, efallai y bydd y ffeil ffynhonnell yn cael ei niweidio\n• Nid yw\'r trosi ei hun yn gwarantu canlyniad cyflawn; os yw\'n methu, efallai fod y ffeil ffynhonnell wedi mynd ar goll\n• Cynghorir i roi cynnig ar un neu ddwy ffeil yn gyntaf, a phrosesu mewn swp ar ôl gwneud yn siŵr bod popeth yn iawn\n• Gwnewch gopi wrth gefn eich hun o luniau pwysig yn gyntaf\n\nDarperir y swyddogaeth hon «fel y mae»; mae\'r risg yn un eich hun, ac nid yw\'r awdur yn gyfrifol am niweidio na cholli ffeiliau.</string>
+    <string name="conv_reminder_dont_remind">Peidio â dangos eto</string>
+    <string name="conv_reminder_confirm_ok">Iawn</string>
+    <string name="conv_reminder_uninstall">Dadosod</string>
+</resources>

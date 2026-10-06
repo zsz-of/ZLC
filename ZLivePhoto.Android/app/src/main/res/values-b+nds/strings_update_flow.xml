@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Low German (nds) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">Kene GitHub-Download-Adress kregen, versöök dat later noch eenmaal.</string>
+    <string name="update_flavor_standard">Normale Verschoon</string>
+    <string name="update_flavor_go">Go-Verschoon</string>
+    <string name="update_lanzou_url_missing">Düt Verschoon bedt kene Lanzou-Download-Link, du kannst över GitHub daalladen.</string>
+    <string name="update_apk_direct_missing">Düt Verschoon bedt kene direkte Installatschoonspaket-Link, wat to dit Verschoon passt; söök up de GitHub-Release-Siet dat tohören APK ut.</string>
+    <string name="update_install_permission_missing">Dat Verlööfnis „Unbekannte Apps installeren“ is nich kregen, automatsch Installeren is nich möglich. Verlööv dat in de Systeminstellungen un versöök dat nie.</string>
+    <string name="update_error_unknown">Unbekannten Fehler</string>
+    <string name="update_fail_lanzou">Lanzou-Daalladen hett fehlslahn</string>
+    <string name="update_fail_github">GitHub-Daalladen hett fehlslahn</string>
+    <string name="update_lanzou_resolving">Lanzou-Download-Link warrt analyseret…</string>
+    <string name="update_lanzou_downloading">Warrt von Lanzou daalladen…</string>
+    <string name="update_github_downloading">Warrt von GitHub daalladen…</string>
+    <string name="update_unzipping">Installatschoonspaket warrt utpackt…</string>
+    <string name="update_notes_empty">Düt Verschoon hett opstunns kene Update-Anmarken.</string>
+    <string name="update_use_normal_title">Bruuk bitte de normale Verschoon</string>
+    <string name="update_use_normal_body">Dat System vun dat Reedschop is Android 10 oder nieger, de Go-Lichtverschoon warrt nich mehr ünnerstütt, de ole Verschoon lett sik nich wieder bruken.
+
+Up dat Reedschop is al de normale Verschoon (ZLC) installeert, maak de normale Verschoon direktemang op um wieder tomaken (de niege Verschoon bedt kene Go-Kompatibilitätsverschoon mehr, de ole Verschoon lett sik deinstalleren um Platz free tomaken).</string>
+    <string name="update_open_normal">Normale Verschoon opmaken</string>
+    <string name="update_must_update_title">Eerst updaten, denn wieterbruken</string>
+    <string name="update_forced_body">Dat System vun dat Reedschop is Android 10 oder nieger, de Go-Lichtverschoon warrt nich mehr ünnerstütt, de ole Verschoon lett sik nich wieder bruken; de niege Verschoon bedt ok kene Go-Kompatibilitätsverschoon mehr.
+
+Verbinnt di mit dat Internet un klick up „Wedder versöken“ um dat Installatschoonspaket vun de normalen Verschoon to halen.</string>
+    <string name="update_retry">Wedder versöken</string>
+    <string name="update_switch_normal_body">Dat System vun dat Reedschop is Android 10 oder nieger, de Go-Lichtverschoon warrt nich mehr ünnerstütt, de ole Verschoon lett sik nich wieder bruken.
+Laad de normale Verschoon daal un installeer se, um wieder tomaken (de niege Verschoon bedt kene Go-Kompatibilitätsverschoon mehr).</string>
+    <string name="update_downloading_title">Update daalladen</string>
+    <string name="update_cancel">Avbreken</string>
+    <string name="update_need_permission_title">Installverlööfnis nödig</string>
+    <string name="update_need_permission_body">För dat Installeren vun de niegen Verschoon warrt dat Systemverlööfnis „Unbekannte Apps installeren“ brukt.
+
+Klick up „Autoriseren gahn“, verlööv dat in de Instellungen un kumm trügg in de App; de Installatschoon geiht automatsch wieder (kien nieg Daalladen nödig).</string>
+    <string name="update_grant">Autoriseren gahn</string>
+    <string name="update_notice_title">Henwies</string>
+    <string name="update_got_it">Verstahn</string>
+    <string name="update_notes_title">v%1$s · Update-Anmarken</string>
+    <string name="update_back">Trügg</string>
+    <string name="update_title_switch_normal">Wesseln to de normalen Verschoon</string>
+    <string name="update_title_reinstall">Düt Verschoon nie installeren</string>
+    <string name="update_title_new_version">Nieg Verschoon funnen</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Düt Verschoon warrt daalladen un nie installeert (överschrifft de aktuelle App).
+Disse Funkschoon dient för dat Regressionstesten vun den Update-Mechanismus.</string>
+    <string name="update_view_notes">Update-Anmarken ankieken</string>
+    <string name="update_lanzou_unavailable">Lanzou is opstunns nich verföögbar</string>
+    <string name="update_download_lanzou">Von Lanzou daalladen</string>
+    <string name="update_download_github">Von GitHub daalladen</string>
+    <string name="update_download_browser">Von den Browser daalladen</string>
+    <string name="update_later">Later updaten</string>
+    <string name="update_later_switch">Later wesseln</string>
+    <string name="update_skip_version">Düt Verschoon överspringen</string>
+</resources>

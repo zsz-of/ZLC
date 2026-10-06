@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Asturian (ast) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Format de destinación desconocíu: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Format de Live Photo non reconocible (nun ye una Live Photo de Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">La imaxe de portada nun esiste o ta balera</string>
+    <string name="conv_video_missing">El videu nun esiste o ta baleru</string>
+    <string name="conv_video_too_large">El videu ye mui grande (%1$d MB); nun se pue componer la Live Photo, escueyi un videu más curtiu</string>
+    <string name="conv_transcoded_too_large">Tres de la trescodificación el videu sigue mui grande (%1$d MB); nun se pue componer la Live Photo</string>
+    <string name="conv_video_too_large_compose">El videu ye mui grande (%1$d MB); nun se pue componer la Live Photo</string>
+    <string name="conv_cover_heic_go">La portada ye una imaxe HEIC (la versión Go nun sofita la trescodificación; esporta en JPEG dende l\'iPhone y convierte dempués)</string>
+    <string name="conv_cover_invalid_heic">La portada nun ye una imaxe válida (HEIC precisa que\'l sistema sofite la decodificación HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">La portada nun ye una imaxe JPEG (la versión Go nun sofita la trescodificación; usa una imaxe JPEG)</string>
+    <string name="conv_cover_invalid_image">La portada nun ye una imaxe válida (namás se sofiten JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Falló la recodificación del videu: %1$s</string>
+    <string name="conv_remux_failed">Falló\'l remuxáu del contenedor: %1$s</string>
+    <string name="conv_codec_unknown">El videu nun ye un H.264/H.265 reconocible</string>
+    <string name="conv_codec_is">La codificación ye %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">El videu «%1$s» %2$s: camudar namás el contenedor (remuxar) nun camuda la codificación, nun se pue componer la Live Photo.\n\nNa pantalla «Axustes → Trescodificación de videu → Mou de trescodificación» cambia a «Recodificar», o convierte antes el videu a MP4 con codificación H.264/H.265 con otra ferramienta.</string>
+    <string name="conv_hint_no_encoder">El videu nun ta nun contenedor MP4 estándar (MOV / MKV / WebM / AVI, etc.) y el «Mou de trescodificación» actual nun recodifica; nun se pue componer la Live Photo.\n\nNa pantalla «Axustes → Trescodificación de videu → Mou de trescodificación» cambia a «Recodificar» (la versión normal lleva un trescodificador ffmpeg integráu; la versión Go llixera nun lleva, usa la versión normal), o convierte primero el videu a un MP4 estándar (H.264/H.265).</string>
+    <string name="conv_log_detected">Reconocíu como %1$s</string>
+    <string name="conv_log_same_format_copied">El format orixe y el de destinación son iguales; copióse tal cual (ensin perdes)</string>
+    <string name="conv_log_extra_tracks_bypass">El videu orixe contién pistes que nun son audiu/videu (%1$s); s\'omite la copia direuta del mesmu format y úsase\'l procesu d\'escritura completu pa llimpialu</string>
+    <string name="conv_log_ts_fallback">El orixe nun tien marca de tiempu del fotograma de portada; úsase\'l puntu mediu del videu según la norma</string>
+    <string name="conv_log_brand_normalized">Normalizóse la marca del contenedor de videu (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">El videu contién pistes adicionales (%1$s); nun se pudo llimpiar y escribióse tal cual (esti resultáu pue nun reproducise al caltenelu primíu en dellos aparatos)</string>
+    <string name="conv_log_extra_tracks_removed">Desaniciáronse les pistes adicionales del videu (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">El videu orixe %1$s; namás remuxar el contenedor nun lo arregla (%2$s). Si\'l resultáu sigue ensin reproducise al caltenelu primíu, escueyi «Recodificar» en «Axustes → Trescodificación de videu → Mou de trescodificación»</string>
+    <string name="conv_log_reencoding">El videu orixe %1$s; recodifícase según los axustes a 8bit + AAC pa ameyorar la compatibilidá col álbum</string>
+    <string name="conv_log_reencode_result_unusable">El resultáu de la recodificación nun sirve; escribióse tal cual (esti resultáu pue nun reproducise al caltenelu primíu en dellos aparatos)</string>
+    <string name="conv_log_reencode_still_risky">Dempués de recodificar queden aspeutos de riesgu (%1$s)</string>
+    <string name="conv_log_reencode_failed">Falló la recodificación (%1$s); escribióse tal cual (esti resultáu pue nun reproducise al caltenelu primíu en dellos aparatos)</string>
+    <string name="conv_log_cover_heic_converted">La portada ye HEIC (non JPEG); trescodificóse a JPEG estándar antes del remuxáu</string>
+    <string name="conv_log_compose_sizes">Composición: imaxe %1$d B + videu %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Trescodificador non activáu: namás se camuda la marca del contenedor (MOV → MP4), ensin recodificar</string>
+    <string name="conv_tag_convert">Conversión</string>
+    <string name="conv_tag_transcode">Trescodificación</string>
+    <string name="conv_tag_compose">Composición</string>
+    <string name="conv_blocker_no_encoder">El trescodificador integráu nun ta disponible</string>
+    <string name="conv_blocker_mode_no_encode">El «Mou de trescodificación» actual nun recodifica</string>
+    <string name="conv_addon_unavailable">El trescodificador integráu nun ta disponible</string>
+    <string name="conv_addon_transcode_failed">Falló la trescodificación con ffmpeg: %1$s</string>
+    <string name="conv_addon_remux_failed">Falló\'l remuxáu del contenedor con ffmpeg: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Trescodificando el videu a MP4 estándar con ffmpeg (%1$s / crf %2$d / %3$s; namás se caltién la pista de videu y la d\'audiu)</string>
+    <string name="conv_log_transcode_done">Trescodificación del videu completada (%1$d KB)</string>
+    <string name="conv_log_remuxing">Remuxando el contenedor del videu a MP4 estándar (namás se camuda el contenedor, ensin recodificar)</string>
+    <string name="conv_log_remux_done">Remuxáu del contenedor completáu (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Composición</string>
+    <string name="conv_reminder_cat_convert">Conversión</string>
+    <string name="conv_reminder_cat_update">Anovamientu</string>
+    <string name="conv_reminder_video_over3s_title">El videu dura más de 3 segundos</string>
+    <string name="conv_reminder_video_over3s_message">El videu escoyíu dura más de 3 segundos y la Live Photo compuesta pue tener problemes de compatibilidá:\n\n• Pue nun reproducise bien\n• Pue que l\'álbum del sistema nun la reconoza\n• Dellos aparatos puen nun reconocer esta Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">Detectóse una versión antigua</string>
+    <string name="conv_reminder_legacy_go_message">Nel preséu entá ta instalada la versión antigua (Go) de l\'aplicación; esa versión yá nun funciona nesti preséu, pues desinstalala pa lliberar espaciu.</string>
+    <string name="conv_reminder_replace_risk_title">El mou de sustitución tien riesgu de corrupción</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">El mou de sustitución escribe\'l resultáu de la conversión direutamente nel ficheru orixinal; una vegada sobroscribíu, el ficheru orixinal nun se pue recuperar.\n\n• Si l\'aplicación interrúmpese, falta espaciu d\'almacenamientu o revóquense los permisos mentes s\'escribe, el ficheru orixe pue facese dañu\n• La conversión por sigo sola nunca garante un ésitu completu; si falla, el ficheru orixe pue yá nun valir\n• Encamiéntase probar primero con un ficheru o dos y, si too va bien, siguir col restu\n• Fai una copia de seguranza de les imáxenes importantes\n\nEsta función ufrezse «tal cual»; el riesgu del usu ye to, y l\'autor nun se fai cargu de los ficheros dañaos o perdíos.</string>
+    <string name="conv_reminder_dont_remind">Nun volver amosar</string>
+    <string name="conv_reminder_confirm_ok">Entendío</string>
+    <string name="conv_reminder_uninstall">Desinstalar</string>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Venetian (vec) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">No se ga ciapà l’indirisso de descarga de GitHub; proa de novo pì tardi.</string>
+    <string name="update_flavor_standard">Version normałe</string>
+    <string name="update_flavor_go">Version Go</string>
+    <string name="update_lanzou_url_missing">Sta version no ła ofrise un link de descarga su Lanzou; te pol descargare da GitHub.</string>
+    <string name="update_apk_direct_missing">Sta version no ła ofrise el link direto del pacheto de instalassion conpatìbiłe; và so ła pàjina de łe Release de GitHub e serne l’APK giusto.</string>
+    <string name="update_install_permission_missing">El parmesso «Instalar app sconosùe» no l’è concèdesto: no se pol instalare in modo automatico. Va inte łe inpostassion del sistema, concèdelo e dopo proa de novo.</string>
+    <string name="update_error_unknown">Eror sconosùo</string>
+    <string name="update_fail_lanzou">Descarga da Lanzou fałia</string>
+    <string name="update_fail_github">Descarga da GitHub fałia</string>
+    <string name="update_lanzou_resolving">So drio lézer el link de descarga de Lanzou…</string>
+    <string name="update_lanzou_downloading">So drio descargare da Lanzou…</string>
+    <string name="update_github_downloading">So drio descargare da GitHub…</string>
+    <string name="update_unzipping">So drio scompatar el pacheto de instalassion…</string>
+    <string name="update_notes_empty">Sta version no ła ga note de ajornamento par el momento.</string>
+    <string name="update_use_normal_title">Dòpara ła version normałe</string>
+    <string name="update_use_normal_body">El sistema de sto dispositivo el xe Android 10 o pì novo, donca ła version lejera Go no ła funsiona pì e ła version vecia no se pol pì dopararla.
+
+Ła version normałe (ZLC) ła xe xà instalà so sto dispositivo: verziela e contùa a dopararla (ła version nova no ła darà pì na version conpatìbiłe Go; ła vecia ła se pol desinstalar par libarar spasio).</string>
+    <string name="update_open_normal">Verzi ła version normałe</string>
+    <string name="update_must_update_title">Te ghè da ajornar prima de poder seguir a doparlo</string>
+    <string name="update_forced_body">El sistema de sto dispositivo el xe Android 10 o pì novo, donca ła version lejera Go no ła funsiona pì e ła version vecia no se pol pì dopararla; gnancora ła version nova no ła darà na version conpatìbiłe Go.
+
+Cołègati a ła rete e struca «Proa de novo» par ciapar el pacheto de instalassion de ła version normałe.</string>
+    <string name="update_retry">Proa de novo</string>
+    <string name="update_switch_normal_body">El sistema de sto dispositivo el xe Android 10 o pì novo, donca ła version lejera Go no ła funsiona pì: ła version vecia no se pol pì dopararla.
+Descarga e installa ła version normałe e dopo contùa a dopararla (ła version nova no ła darà pì na version conpatìbiłe Go).</string>
+    <string name="update_downloading_title">Descarga de l’ajornamento</string>
+    <string name="update_cancel">Anùla</string>
+    <string name="update_need_permission_title">El ghe vol el parmesso par instalare</string>
+    <string name="update_need_permission_body">Par instalare ła version nova ghe vol el parmesso del sistema «Instalar app sconosùe».
+
+Struca «Va a concèderlo», permetilo inte łe inpostassion e torna inte l’app: ła instalassion ła continua da soła (sensa tornar a descargare).</string>
+    <string name="update_grant">Va a concèderlo</string>
+    <string name="update_notice_title">Avixo</string>
+    <string name="update_got_it">Go capio</string>
+    <string name="update_notes_title">v%1$s · Note de ajornamento</string>
+    <string name="update_back">Indrìo</string>
+    <string name="update_title_switch_normal">Pasa a ła version normałe</string>
+    <string name="update_title_reinstall">Reinstala sta version</string>
+    <string name="update_title_new_version">Catà na version nova</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Sta version ła vegnarà descargada e reinstalada (ła sorascrivi l’app de deso).
+Sta funsion ła serve par i test de regresion del mecanizmo de ajornamento.</string>
+    <string name="update_view_notes">Varda łe note de ajornamento</string>
+    <string name="update_lanzou_unavailable">Lanzou par el momento no l’è disponibile</string>
+    <string name="update_download_lanzou">Descarga da Lanzou</string>
+    <string name="update_download_github">Descarga da GitHub</string>
+    <string name="update_download_browser">Descarga dal navegadór</string>
+    <string name="update_later">No ajornar deso</string>
+    <string name="update_later_switch">No pasare deso</string>
+    <string name="update_skip_version">Salta sta version</string>
+</resources>

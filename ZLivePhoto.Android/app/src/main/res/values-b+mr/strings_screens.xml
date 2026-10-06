@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Marathi (mr) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="screen_app_subtitle">लाइव्ह फोटो स्वरूप रूपांतरण</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d फाइल</item>
+        <item quantity="other">%1$d फाइल</item>
+    </plurals>
+    <string name="screen_settings">सेटिंग्ज</string>
+    <string name="screen_select_output_format">आउटपुट स्वरूप निवडा</string>
+    <string name="screen_selected">निवडले</string>
+    <string name="screen_vivo_single_warning">⚠ खूप जुनी उपकरणे हे स्वरूप ओळखू शकणार नाहीत</string>
+    <string name="screen_extract_blocked">⚠ रांगेत संयोजन कामे असल्याने वेगळे करा निवडता येत नाही</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (एकच फाइल)</string>
+    <string name="screen_format_vivo">vivo (दोन फाइल)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">वेगळे करा</string>
+    <string name="screen_toolbox">टूलबॉक्स</string>
+    <string name="screen_batch_import">बॅच इम्पोर्ट</string>
+    <string name="screen_batch_import_desc">संपूर्ण अल्बम स्कॅन करून लाइव्ह फोटो बॅचमध्ये ओळखा</string>
+    <string name="screen_compose">लाइव्ह फोटो संयोजित करा</string>
+    <string name="screen_compose_desc">एक फोटो व एक व्हिडिओ जोडी करून संयोजित करा</string>
+    <string name="screen_replace_mode">रिप्लेस मोड</string>
+    <string name="screen_replace_mode_desc">रूपांतरणाचा निकाल थेट मूळ फाइलमध्ये लिहिला जातो; नवीन फाइल तयार होत नाही</string>
+    <string name="screen_need_all_files_access_hint">“सर्व फाइलंवर प्रवेश” परवानगी आवश्यक; परवानगीसाठी येथे क्लिक करा</string>
+    <string name="screen_agree_and_enable">संमती देऊन चालू करा</string>
+    <string name="screen_empty_no_files">अजून फाइल जोडलेली नाही</string>
+    <string name="screen_view_detail">तपशील पहा</string>
+    <string name="screen_add_files">फाइल जोडा</string>
+    <string name="screen_output_format">आउटपुट स्वरूप: %1$s</string>
+    <string name="screen_delete_original">प्रोसेसिंग पूर्ण झाल्यावर मूळ फोटो काढून टाका</string>
+    <string name="screen_need_all_files_access_view">“सर्व फाइलंवर प्रवेश” परवानगी आवश्यक; पाहण्यासाठी क्लिक करा</string>
+    <string name="screen_clear">रिकामे करा</string>
+    <string name="screen_stop">प्रोसेसिंग थांबवा</string>
+    <string name="screen_start_convert">रूपांतरण सुरू करा</string>
+    <string name="screen_status_detail">स्थिती तपशील</string>
+    <string name="screen_long_press_copy">मजकूर लांब दाबून निवडून कॉपी करा</string>
+    <string name="screen_copy">कॉपी</string>
+    <string name="screen_close">बंद करा</string>
+    <string name="screen_back">मागे</string>
+    <string name="screen_picker_title_select">लाइव्ह फोटो निवडा</string>
+    <string name="screen_album_count">अल्बम %1$d</string>
+    <string name="screen_album_collapse_cover">अल्बम कव्हर आकुंचित करा</string>
+    <string name="screen_album_expand_cover">अल्बम कव्हर विस्तृत करा</string>
+    <string name="screen_scanning_progress">स्कॅन करत आहे %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d फोटो</item>
+        <item quantity="other">%1$d फोटो</item>
+    </plurals>
+    <string name="screen_select_all">सर्व निवडा</string>
+    <string name="screen_no_albums">अल्बम उपलब्ध नाहीत</string>
+    <string name="screen_no_media">लाइव्ह फोटो आढळले नाहीत</string>
+    <string name="screen_no_media_compose">फोटो किंवा व्हिडिओ आढळला नाही</string>
+    <string name="screen_import">इम्पोर्ट</string>
+    <string name="screen_import_count">इम्पोर्ट %1$d</string>
+    <string name="screen_import_mixed">इम्पोर्ट फोटो%1$d·व्हिडिओ%2$d</string>
+    <string name="screen_search">शोधा</string>
+    <string name="screen_search_collapse">शोध आकुंचित करा</string>
+    <string name="screen_search_hint">नावानुसार शोधा</string>
+    <string name="screen_search_clear">शोध रिकामा करा</string>
+    <string name="screen_sort_date">दिनांक</string>
+    <string name="screen_sort_size">आकार</string>
+    <string name="screen_sort_name">नाव</string>
+    <string name="screen_sort_asc">चढत्या क्रमाने</string>
+    <string name="screen_sort_desc">उतरत्या क्रमाने</string>
+    <string name="screen_date_today">आज</string>
+    <string name="screen_date_yesterday">काल</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

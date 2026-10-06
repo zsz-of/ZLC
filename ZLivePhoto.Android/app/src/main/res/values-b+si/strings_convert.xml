@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · සිංහල (Sinhala) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Sinhala; technical terms follow the English loanword where common.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="conv_unknown_target">නොදන්නා ඉලක්ක ආකෘතිය: %1$s</string>
+    <string name="conv_unrecognized_live_photo">හඳුනා නොගත් ලයිව් ෆෝටෝ ආකෘතියකි (Google/OPPO/vivo/Xiaomi/Apple ලයිව් ෆෝටෝවක් නොවේ)</string>
+    <string name="conv_cover_photo_missing">ආවරණ ඡායාරූපය නොමැත හෝ හිස්ය</string>
+    <string name="conv_video_missing">වීඩියෝව නොමැත හෝ හිස්ය</string>
+    <string name="conv_video_too_large">වීඩියෝව විශාල වැඩිය (%1$dMB), ලයිව් ෆෝටෝවක් සෑදිය නොහැක, කෙටි වීඩියෝවක් තෝරන්න</string>
+    <string name="conv_transcoded_too_large">ට්‍රාන්ස්කෝඩ් කිරීමෙන් පසු වීඩියෝව විශාල වැඩිය (%1$dMB), ලයිව් ෆෝටෝවක් සෑදිය නොහැක</string>
+    <string name="conv_video_too_large_compose">වීඩියෝව විශාල වැඩිය (%1$dMB), ලයිව් ෆෝටෝවක් සෑදිය නොහැක</string>
+    <string name="conv_cover_heic_go">ආවරණය HEIC රූපයකි (සැහැල්ලු සංස්කරණය ට්‍රාන්ස්කෝඩ් නොකරයි, කරුණාකර iPhone හි JPEG ලෙස නිර්යාත කර පසුව පරිවර්තනය කරන්න)</string>
+    <string name="conv_cover_invalid_heic">ආවරණය වලංගු රූපයක් නොවේ (HEIC සඳහා පද්ධතියේ HEIF විකේතන සහාය අවශ්‍යයි)</string>
+    <string name="conv_cover_not_jpeg_go">ආවරණය JPEG රූපයක් නොවේ (සැහැල්ලු සංස්කරණය ට්‍රාන්ස්කෝඩ් නොකරයි, කරුණාකර JPEG ඡායාරූපයක් භාවිත කරන්න)</string>
+    <string name="conv_cover_invalid_image">ආවරණය වලංගු රූපයක් නොවේ (JPEG/WebP/PNG පමණක් සහාය දක්වයි)</string>
+    <string name="conv_reencode_failed">වීඩියෝව නැවත සංකේතනය කිරීම අසාර්ථක විය: %1$s</string>
+    <string name="conv_remux_failed">කන්ටේනරය remux කිරීම අසාර්ථක විය: %1$s</string>
+    <string name="conv_codec_unknown">හඳුනාගත හැකි H.264/H.265 වීඩියෝවක් නොවේ</string>
+    <string name="conv_codec_is">කෝඩෙක් වන්නේ %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">වීඩියෝව “%1$s” %2$s, කන්ටේනරය පමණක් මාරු කිරීමෙන් (remux) කෝඩෙක් වෙනස් කළ නොහැක, එබැවින් ලයිව් ෆෝටෝවක් සෑදිය නොහැක.\n\nකරුණාකර “සැකසුම් → වීඩියෝ ට්‍රාන්ස්කෝඩිං → ට්‍රාන්ස්කෝඩ් ක්‍රමය” තුළ “නැවත සංකේතනය” ලෙස වෙනස් කරන්න, නැතහොත් වෙනත් මෙවලමකින් එය H.264/H.265 කෝඩෙක් සහිත MP4 බවට පරිවර්තනය කරන්න.</string>
+    <string name="conv_hint_no_encoder">වීඩියෝව සම්මත MP4 කන්ටේනරයක් නොවේ (MOV / MKV / WebM / AVI ආදිය), සහ වර්තමාන “ට්‍රාන්ස්කෝඩ් ක්‍රමය” නැවත සංකේතනය නොකරයි, එබැවින් ලයිව් ෆෝටෝවක් සෑදිය නොහැක.\n\nකරුණාකර “සැකසුම් → වීඩියෝ ට්‍රාන්ස්කෝඩිං → ට්‍රාන්ස්කෝඩ් ක්‍රමය” තුළ “නැවත සංකේතනය” ලෙස වෙනස් කරන්න (සම්මත සංස්කරණයේ ffmpeg සංකේතකය අන්තර්ගතයි; Go සැහැල්ලු සංස්කරණයේ ට්‍රාන්ස්කෝඩරයක් නොමැත, කරුණාකර සම්මත සංස්කරණය භාවිත කරන්න), නැතහොත් පළමුව වීඩියෝව සම්මත MP4 (H.264/H.265) බවට පරිවර්තනය කරන්න.</string>
+    <string name="conv_log_detected">හඳුනාගත්තේ %1$s</string>
+    <string name="conv_log_same_format_copied">මූලාශ්‍ර සහ ඉලක්ක ආකෘති සමානයි, එලෙසම පිටපත් කරන ලදී (ශුන්‍ය අලාභය)</string>
+    <string name="conv_log_extra_tracks_bypass">මූලාශ්‍ර වීඩියෝවේ ශ්‍රව්‍ය/වීඩියෝ නොවන ට්‍රැක් ඇත (%1$s), එකම ආකෘති පසුකිරීම මඟ හැර, පිරිසිදු කිරීම සඳහා සම්පූර්ණ ලේඛන ක්‍රියාවලිය භාවිත කරයි</string>
+    <string name="conv_log_ts_fallback">මූලාශ්‍රයේ ආවරණ රාමු කාලමුද්‍රාව නොමැත, පිරිවිතර අනුව වීඩියෝ මධ්‍ය ලක්ෂ්‍යයට පසුබසී</string>
+    <string name="conv_log_brand_normalized">වීඩියෝ කන්ටේනර වෙළඳ නාමය සාමාන්‍යකරණය කරන ලදී (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">වීඩියෝවේ අමතර ට්‍රැක් ඇත (%1$s), පිරිසිදු කළ නොහැක, එලෙසම ප්‍රතිදානය කරන ලදී (මෙම ප්‍රතිදානය සමහර උපාංගවල දීර්ඝ-එබීමෙන් වාදනය නොවිය හැක)</string>
+    <string name="conv_log_extra_tracks_removed">වීඩියෝවේ අමතර ට්‍රැක් ඉවත් කරන ලදී (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">මූලාශ්‍ර වීඩියෝව%1$s; කන්ටේනරය පමණක් remux කිරීමෙන් විසඳිය නොහැක (%2$s), ප්‍රතිදානය තවමත් දීර්ඝ-එබීමෙන් වාදනය නොවන්නේ නම්, කරුණාකර “සැකසුම් → වීඩියෝ ට්‍රාන්ස්කෝඩිං → ට්‍රාන්ස්කෝඩ් ක්‍රමය” තුළ “නැවත සංකේතනය” තෝරන්න</string>
+    <string name="conv_log_reencoding">මූලාශ්‍ර වීඩියෝව%1$s, ගැලරි ගැළපුම වැඩි කිරීම සඳහා සැකසුම් අනුව 8bit + AAC ලෙස නැවත සංකේතනය කරයි</string>
+    <string name="conv_log_reencode_result_unusable">නැවත සංකේතන ප්‍රතිඵලය භාවිතයට නොගත හැක, එලෙසම ප්‍රතිදානය කරන ලදී (මෙම ප්‍රතිදානය සමහර උපාංගවල දීර්ඝ-එබීමෙන් වාදනය නොවිය හැක)</string>
+    <string name="conv_log_reencode_still_risky">නැවත සංකේතනයෙන් පසුවත් අවදානම් අයිතම ඇත (%1$s)</string>
+    <string name="conv_log_reencode_failed">නැවත සංකේතනය අසාර්ථක විය (%1$s), එලෙසම ප්‍රතිදානය කරන ලදී (මෙම ප්‍රතිදානය සමහර උපාංගවල දීර්ඝ-එබීමෙන් වාදනය නොවිය හැක)</string>
+    <string name="conv_log_cover_heic_converted">ආවරණය HEIC විය (JPEG නොවේ), පැකේජ කිරීමට පෙර සම්මත JPEG බවට ට්‍රාන්ස්කෝඩ් කරන ලදී</string>
+    <string name="conv_log_compose_sizes">සම්පාදනය: ඡායාරූපය %1$dB + වීඩියෝව %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ට්‍රාන්ස්කෝඩරය සක්‍රීය නැත: කන්ටේනර වෙළඳ නාමය පමණක් නැවත ලියයි (MOV → MP4), නැවත සංකේතනය නොකරයි</string>
+    <string name="conv_tag_convert">පරිවර්තනය</string>
+    <string name="conv_tag_transcode">ට්‍රාන්ස්කෝඩ්</string>
+    <string name="conv_tag_compose">සම්පාදනය</string>
+    <string name="conv_blocker_no_encoder">අන්තර්ගත ට්‍රාන්ස්කෝඩරය භාවිතයට නොගත හැක</string>
+    <string name="conv_blocker_mode_no_encode">වර්තමාන “ට්‍රාන්ස්කෝඩ් ක්‍රමය” නැවත සංකේතනය නොකරයි</string>
+    <string name="conv_addon_unavailable">අන්තර්ගත ට්‍රාන්ස්කෝඩරය භාවිතයට නොගත හැක</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ට්‍රාන්ස්කෝඩ් කිරීම අසාර්ථක විය: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg කන්ටේනර remux කිරීම අසාර්ථක විය: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg මගින් වීඩියෝව සම්මත MP4 බවට ට්‍රාන්ස්කෝඩ් කරමින් (%1$s / crf %2$d / %3$s, වීඩියෝ සහ ශ්‍රව්‍ය ට්‍රැක් පමණක් තබා ගනී)</string>
+    <string name="conv_log_transcode_done">වීඩියෝ ට්‍රාන්ස්කෝඩ් කිරීම සම්පූර්ණයි (%1$dKB)</string>
+    <string name="conv_log_remuxing">වීඩියෝ කන්ටේනරය සම්මත MP4 බවට remux කරමින් (කන්ටේනරය පමණක්, නැවත සංකේතනය නොකරයි)</string>
+    <string name="conv_log_remux_done">කන්ටේනර remux කිරීම සම්පූර්ණයි (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">සම්පාදනය</string>
+    <string name="conv_reminder_cat_convert">පරිවර්තනය</string>
+    <string name="conv_reminder_cat_update">යාවත්කාලීනය</string>
+    <string name="conv_reminder_video_over3s_title">වීඩියෝව තත්පර 3 ට වඩා දිගයි</string>
+    <string name="conv_reminder_video_over3s_message">තෝරාගත් වීඩියෝව තත්පර 3 ට වඩා දිගයි, එබැවින් සාදන ලයිව් ෆෝටෝවේ ගැළපුම් ගැටලු ඇති විය හැක:\n\n• නිසියාකාරව වාදනය නොවිය හැක\n• පද්ධති ගැලරියට හඳුනා නොගත හැක\n• සමහර උපාංග මෙම ලයිව් ෆෝටෝව හඳුනා නොගත හැක</string>
+    <string name="conv_reminder_legacy_go_title">පැරණි අනුවාදයක් හඳුනා ගන්නා ලදී</string>
+    <string name="conv_reminder_legacy_go_message">මෙම උපාංගයේ තවමත් පැරණි අනුවාදයක් (Go සංස්කරණය) ස්ථාපනය කර ඇත; එම අනුවාදය මෙම උපාංගයේ තවදුරටත් ක්‍රියා නොකරයි. ඉඩ නිදහස් කිරීමට එය අස්ථාපනය කළ හැක.</string>
+    <string name="conv_reminder_replace_risk_title">ප්‍රතිස්ථාපන ප්‍රකාරයට හානි වීමේ අවදානමක් ඇත</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">ප්‍රතිස්ථාපන ප්‍රකාරය පරිවර්තන ප්‍රතිඵල මුල් ගොනු වෙත කෙලින්ම නැවත ලියයි; මුල් ගොනු උඩින් ලියූ පසු ඒවා නැවත ලබාගත නොහැක.\n\n• ලියන අතරතුර යෙදුම බාධා වුවහොත්, ගබඩා ඉඩ ප්‍රමාණවත් නොවුවහොත් හෝ අවසරය ඉවත් කළහොත්, මූලාශ්‍ර ගොනු හානි විය හැක\n• පරිවර්තනය සාර්ථක වන බවට සහතිකයක් නොමැත, අසාර්ථක වූ විට මූලාශ්‍ර ගොනු දැනටමත් භාවිතයට නොගත හැකි තත්ත්වයේ තිබිය හැක\n• ගොනු එකක් හෝ දෙකක් පළමුව උත්සාහ කර, ගැටලුවක් නොමැති බව තහවුරු කර පසුව කණ්ඩායම් ලෙස සකසන්න\n• වැදගත් ඡායාරූප කලින්ම ඔබම උපස්ථ කරන්න\n\nමෙම විශේෂාංගය “තිබෙන තත්ත්වයට” අනුව සපයනු ලැබේ; භාවිතයේ අවදානම ඔබ විසින්ම දරනු ලැබේ, ගොනු හානි වීමට හෝ නැති වීමට කර්තෘ වගකීමක් දරන්නේ නැත.</string>
+    <string name="conv_reminder_dont_remind">නැවත නොපෙන්වන්න</string>
+    <string name="conv_reminder_confirm_ok">තේරුණා</string>
+    <string name="conv_reminder_uninstall">අස්ථාපනය කරන්න</string>
+</resources>

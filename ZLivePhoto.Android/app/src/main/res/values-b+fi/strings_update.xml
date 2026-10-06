@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Suomenkieliset merkkijonot (fi).
+  Käännetty tiedostoista res/values/strings_*.xml (yksinkertaistettu kiina, varakieliasetus).
+  Jokainen avain vastaa perustiedostoa; paikkamerkit (%1$s / %1$d) ja koodaussekvenssit on säilytetty ennallaan.
+-->
+<resources>
+
+    <!-- ========== Lanzoun jakosivu ja suoralinkin jäsennys ========== -->
+    <string name="update_lanzou_gone">Lanzoun jako on peruutettu tai tiedostoa ei ole; käytä GitHub-latausta</string>
+    <string name="update_lanzou_gone_short">Lanzoun jako on peruutettu; käytä GitHub-latausta</string>
+    <string name="update_lanzou_resolve_failed">Lanzoun latauslinkin jäsennys epäonnistui</string>
+    <string name="update_lanzou_need_passwd">Tämä Lanzou-jako vaatii poimintakoodin; käytä GitHub-latausta (tai etsi poimintakoodi julkaisun kuvauksesta)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzoun poimintakoodi on virheellinen</string>
+    <string name="update_err_resolve_failed">Jäsennys epäonnistui</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzoun ryömintäsuojauksen tarkistus epäonnistui</string>
+    <string name="update_err_no_frame">Lanzoun lataussivua ei voi jäsentää (latauskehystä ei löytynyt)</string>
+    <string name="update_err_no_file_id">Lanzoun tiedostotunnistetta ei voi jäsentää</string>
+    <string name="update_err_no_sign">Lanzoun allekirjoitusta ei voi jäsentää</string>
+    <string name="update_err_ajax_request">Rajapintapyyntö epäonnistui</string>
+    <string name="update_err_api_request">Lanzoun rajapintapyyntö epäonnistui</string>
+    <string name="update_err_empty_direct">Lanzou palautti tyhjän latausosoitteen</string>
+    <string name="update_err_direct_expired">Lanzoun latausosoite on vanhentunut; hanki se uudelleen</string>
+    <string name="update_err_http_request">Pyyntö epäonnistui (HTTP %1$d)</string>
+
+    <!-- ========== Lataus ========== -->
+    <string name="update_err_connect">Latauspalvelimeen ei saada yhteyttä: %1$s</string>
+    <string name="update_err_http">Lataus epäonnistui (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Latausyhteyttä ei voi muodostaa</string>
+    <string name="update_err_empty">Ladattava sisältö on tyhjä</string>
+    <string name="update_err_incomplete">Lataus on kesken (saatu %1$d / yhteensä %2$d tavua); lataa uudelleen</string>
+    <string name="update_err_interrupted">Lataus keskeytyi: %1$s</string>
+
+    <!-- ========== Asennuspaketin tarkistus ja asennus ========== -->
+    <string name="update_err_not_apk">Ladattu tiedosto ei ole kelvollinen asennuspaketti (se voi olla verkkosivu tai latauslinkki on vanhentunut). Lataa uudelleen tai käytä GitHub-latausta.</string>
+    <string name="update_err_apk_incomplete">Asennuspaketin sisältö on puutteellinen. Lataa uudelleen tai käytä GitHub-latausta.</string>
+    <string name="update_err_apk_unparsable">Asennuspakettia ei voi jäsentää (lataus voi olla kesken). Lataa uudelleen tai käytä GitHub-latausta.</string>
+    <string name="update_err_no_install_permission">Käyttöoikeutta ”tuntemattomien sovellusten asentaminen” ei ole myönnetty</string>
+    <string name="update_err_installer_failed">Järjestelmän asennusohjelmaa ei voi avata (%1$s); avaa asennuspaketti tiedostonhallinnasta ja asenna se manuaalisesti</string>
+
+</resources>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Esperanto (eo).
+  Tradukita el res/values/strings_*.xml (simpligita ĉina baza dosiero, la rezerva lingvo).
+  La ŝlosiloj spegulas la bazan dosieron; anstataŭigiloj (%1$s / %1$d) kaj eskaposekvencoj restas senŝanĝaj.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- Subtitolo de la supra breto -->
+    <string name="screen_app_subtitle">Konverti inter Live Photo-formatoj</string>
+    <!-- Nombro de elektitaj dosieroj (plurals) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d dosiero</item>
+        <item quantity="other">%1$d dosieroj</item>
+    </plurals>
+    <!-- Agorda enirejo de la supra breto (nur por alirebleca legado) -->
+    <string name="screen_settings">Agordoj</string>
+
+    <!-- Dialogo por elekti eligformaton -->
+    <string name="screen_select_output_format">Elekti eligformaton</string>
+    <string name="screen_selected">Elektita</string>
+    <string name="screen_vivo_single_warning">⚠ Tro malnovaj aparatoj eble ne rekonas ĉi tiun formaton</string>
+    <string name="screen_extract_blocked">⚠ La vico enhavas kunmetajn taskojn; Eltiri ne povas esti elektita</string>
+
+    <!-- Mallongaj nomoj de formatopcioj -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (unudosiera)</string>
+    <string name="screen_format_vivo">vivo (du-dosiera)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Eltiri</string>
+
+    <!-- Ilaro BottomSheet -->
+    <string name="screen_toolbox">Ilaro</string>
+    <string name="screen_batch_import">Amasa importo</string>
+    <string name="screen_batch_import_desc">Skani la tutan galerion kaj amase rekoni Live Photo-ojn</string>
+    <string name="screen_compose">Kunmeti Live Photo</string>
+    <string name="screen_compose_desc">Elekti unu foton kaj unu videon kaj parigi ilin en Live Photo</string>
+    <string name="screen_replace_mode">Anstataŭiga reĝimo</string>
+    <string name="screen_replace_mode_desc">Skribi konvertajn rezultojn rekte reen al la originalaj dosieroj anstataŭ krei novajn</string>
+    <string name="screen_need_all_files_access_hint">Postulas «aliron al ĉiuj dosieroj»; alklaku por doni ĝin</string>
+    <string name="screen_agree_and_enable">Konsenti kaj ŝalti</string>
+
+    <!-- Malplena stato / malsupra kontrola panelo -->
+    <string name="screen_empty_no_files">Ankoraŭ neniuj dosieroj aldonitaj</string>
+    <string name="screen_view_detail">Vidi detalojn</string>
+    <string name="screen_add_files">Aldoni dosierojn</string>
+    <string name="screen_output_format">Eliga formato: %1$s</string>
+    <string name="screen_delete_original">Forigi originalojn post prilaboro</string>
+    <string name="screen_need_all_files_access_view">Postulas «aliron al ĉiuj dosieroj»; alklaku por vidi</string>
+    <string name="screen_clear">Malplenigi</string>
+    <string name="screen_stop">Haltigi prilaboron</string>
+    <string name="screen_start_convert">Komenci konvertadon</string>
+
+    <!-- Dialogo pri stataj detaloj -->
+    <string name="screen_status_detail">Stataj detaloj</string>
+    <string name="screen_long_press_copy">Longe premu la tekston por elekti kaj kopii</string>
+    <string name="screen_copy">Kopii</string>
+    <string name="screen_close">Fermi</string>
+
+    <!-- Galeria elektilo -->
+    <string name="screen_back">Reen</string>
+    <string name="screen_picker_title_select">Elekti Live Photo-ojn</string>
+    <string name="screen_album_count">Albumo %1$d</string>
+    <string name="screen_album_collapse_cover">Faldi albumkovrilon</string>
+    <string name="screen_album_expand_cover">Malfaldi albumkovrilon</string>
+    <string name="screen_scanning_progress">Skanas %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d fotoj</item>
+    </plurals>
+    <string name="screen_select_all">Elekti ĉiujn</string>
+    <string name="screen_no_albums">Neniu disponebla albumo</string>
+    <string name="screen_no_media">Neniu Live Photo trovita</string>
+    <string name="screen_no_media_compose">Neniu foto aŭ video trovita</string>
+    <string name="screen_import">Importi</string>
+    <string name="screen_import_count">Importi %1$d</string>
+    <string name="screen_import_mixed">Importi: foto %1$d · video %2$d</string>
+    <string name="screen_search">Serĉi</string>
+    <string name="screen_search_collapse">Faldi serĉon</string>
+    <string name="screen_search_hint">Serĉi laŭ nomo</string>
+    <string name="screen_search_clear">Malplenigi serĉon</string>
+    <string name="screen_sort_date">Dato</string>
+    <string name="screen_sort_size">Grando</string>
+    <string name="screen_sort_name">Nomo</string>
+    <string name="screen_sort_asc">Kreskanta</string>
+    <string name="screen_sort_desc">Malkreskanta</string>
+
+    <!-- Datumaj etikedoj de albumgrupoj -->
+    <string name="screen_date_today">Hodiaŭ</string>
+    <string name="screen_date_yesterday">Hieraŭ</string>
+    <string name="screen_date_this_year">%1$d/%2$d</string>
+    <string name="screen_date_other_year">%1$d-%2$d-%3$d</string>
+</resources>

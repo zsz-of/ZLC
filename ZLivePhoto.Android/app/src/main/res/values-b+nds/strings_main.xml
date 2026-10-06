@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Low German (nds) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">Bereit</string>
+    <string name="main_status_location_granted">Standort-Verlööfnis kregen; de GPS-Metadaten blieven na de Konverteeren erhollen</string>
+    <string name="main_status_location_denied">Keen Standort-Verlööfnis: de Fotos verlüürt na de Konverteeren de GPS-Positschoonsinformatie</string>
+    <string name="main_status_all_files_granted">„Togriep op alle Dateien“-Verlööfnis kregen; de Konverteeren schrifft direkt in den Galerie-Orner un behollt de Positschoonsinformatie kumplett</string>
+    <string name="main_status_all_files_denied">Keen „Togriep op alle Dateien“-Verlööfnis: up en poor Reedschappen kann de Positschoonsinformatie na de Konverteeren verlüürt gahn</string>
+    <string name="main_status_read_granted">Verlööfnis to Lesen vun Fotos un Videos kregen</string>
+    <string name="main_status_video_missing">Verlöövt, man dat Video-Verlööfnis fehlt: de Begleedvideo vun Twee-Datei-Live-Photos lett sik nich finnen</string>
+    <string name="main_status_permission_denied">Keen Verlööfnis, du kannst noch eenmaal up „Dateien tofögen“ klicken</string>
+    <string name="main_status_folder_not_selected">Keen Orner utsöcht</string>
+    <string name="main_status_folder_unavailable">De utsöchte Orner lett sik nich opropen (blots lokale Spieker-Ornern sünd ünnerstütt)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Verleden Sitten wedderherstellt (%1$d Datei)</item>
+        <item quantity="other">Verleden Sitten wedderherstellt (%1$d Dateien)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">En afnormaal Been’n vum verleden Mo is opdeckt wurrn, de nich fardige List is leddig maakt wurrn</string>
+    <string name="main_status_compose_blocks_extract">De Reeg enthollt Tosamensett-Opgaven, dat lett sik nich in den Uteneennehnmen-Modus wesseln</string>
+    <string name="main_status_replace_off_mutex">De Utwesselmodus is utmaakt wurrn (unverenbar mit „Originaal-Fotos na de Veraarbeiten läschen“)</string>
+    <string name="main_status_delete_needs_all_files">Dat automatische Löschen vun de Originaal-Fotos bruukt dat „Togriep op alle Dateien“-Verlööfnis, verlööv toeerst</string>
+    <string name="main_status_replace_off">De Utwesselmodus is utmaakt wurrn, de Konverteerresultate warrt nie in den Galerie-Orner schreven</string>
+    <string name="main_status_replace_needs_all_files">De Utwesselmodus bruukt dat „Togriep op alle Dateien“-Verlööfnis, verlööv toeerst</string>
+    <string name="main_status_delete_off_mutex">„Originaal-Fotos na de Veraarbeiten läschen“ is utmaakt wurrn (unverenbar mit den Utwesselmodus)</string>
+    <string name="main_status_loading_albums">De Galerie warrt leesen…</string>
+    <string name="main_status_no_albums">Keen Galerie funnen</string>
+    <string name="main_status_compose_no_photo">Keen Foto utsöcht, Tosamensetten nich möglich</string>
+    <string name="main_status_compose_no_video">Keen Video utsöcht, Tosamensetten nich möglich</string>
+    <string name="main_status_compose_all_added">Alle utsöchten Fotos al in de List</string>
+    <string name="main_status_compose_paired">%1$d Fotos, %2$d Videos; na de lütttere Sied sünd %3$d Tosamensett-Opgaven tofögt wurrn</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d Tosamensett-Opgaav tofögt, klick up „Konverteeren starten“ um to tosamensetten</item>
+        <item quantity="other">%1$d Tosamensett-Opgaven tofögt, klick up „Konverteeren starten“ um to tosamensetten</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (dat Utgaavformat is automatsch op Google wesselt wurrn)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Deelt %1$d Bild warrt importeert…</item>
+        <item quantity="other">Deelt %1$d Biller warrt importeert…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import hett fehlslahn: %1$s</string>
+    <string name="main_status_import_done_partial">Import fardig: %1$d erfolgriek, %2$d fehlslahn</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import fardig: tosamen %1$d Datei importeert</item>
+        <item quantity="other">Import fardig: tosamen %1$d Dateien importeert</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import stoppt: %1$d erfolgriek, %2$d fehlslahn</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d Datei warrt importeert…</item>
+        <item quantity="other">%1$d Dateien warrt importeert…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importeeren %1$d/%2$d…</string>
+    <string name="main_status_stopping">Warrt stoppt… (stoppt, nadem de aktuelle Datei fardig is)</string>
+    <string name="main_status_stopping_import">Import warrt stoppt…</string>
+    <string name="main_status_removed">%1$s is rutnahmen wurrn</string>
+    <string name="main_status_cleared">Leddig maakt</string>
+    <string name="main_status_nothing_to_convert">Dat gifft kene Dateien to konverteeren</string>
+    <string name="main_status_folder_unreadable">De utsöchte Orner lett sik nich lesen</string>
+    <string name="main_status_scanning_folder">Orner warrt scannt…</string>
+    <string name="main_status_no_images">Keen Biller in den utsöchten Orner funnen</string>
+    <string name="main_status_batch_importing">Massenimport %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Massenimport stoppt: tosamen %1$d Live Photo importeert</item>
+        <item quantity="other">Massenimport stoppt: tosamen %1$d Live Photos importeert</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Massenimport stoppt: tosamen %1$d Live Photo importeert, %2$d Keen-Live-Datei översprungen</item>
+        <item quantity="other">Massenimport stoppt: tosamen %1$d Live Photos importeert, %2$d Keen-Live-Dateien översprungen</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Massenimport fardig: tosamen %1$d Live Photo importeert</item>
+        <item quantity="other">Massenimport fardig: tosamen %1$d Live Photos importeert</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Massenimport fardig: tosamen %1$d Live Photo importeert, %2$d Keen-Live-Datei översprungen</item>
+        <item quantity="other">Massenimport fardig: tosamen %1$d Live Photos importeert, %2$d Keen-Live-Dateien översprungen</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Stoppt: %2$d vun %1$d Dateien veraarbecht, %3$d Born-Dateien utwesselt</string>
+    <string name="main_status_stopped_export">Stoppt: %2$d vun %1$d Dateien veraarbecht, %3$d in de Galerie exporteert</string>
+    <string name="main_status_done_replace_reason">Fardig: %1$d Dateien veraarbecht, %2$d Born-Dateien utwesselt (Grund: %3$s)</string>
+    <string name="main_status_done_export_reason">Fardig: %1$d Dateien veraarbecht, %2$d in de Galerie exporteert (Grund: %3$s)</string>
+    <string name="main_status_done_replace">Fardig: %1$d Dateien veraarbecht, %2$d Born-Dateien utwesselt</string>
+    <string name="main_status_done_export">Fardig: %1$d Dateien veraarbecht, %2$d in de Galerie exporteert</string>
+    <string name="main_status_keep_originals">%1$s; keen „Vullstännigen Togriep op den Spieker“-Verlööfnis, de Originaal-Fotos blieven erhollen</string>
+    <string name="main_info_detecting">Warrt erkennt…</string>
+    <string name="main_info_unrecognized">Nich erkennt Live-Photo-Format</string>
+    <string name="main_info_converting">Warrt konverteert…</string>
+    <string name="main_info_compose_task">Tosamensett-Opgaav (klick up Konverteeren starten um to tosamensetten)</string>
+    <string name="main_info_done_replaced">Fardig (%1$d Born-Dateien utwesselt)</string>
+    <string name="main_info_done_skipped">Fardig (översprungen: Konflikt mit den sülven Naam)</string>
+    <string name="main_info_done_exported">Fardig (%1$d exporteert)</string>
+    <string name="main_info_failed">Fehlslahn: %1$s</string>
+    <string name="main_progress_added">Tofögt %1$d/%2$d</string>
+    <string name="main_progress_processed">Veraarbecht %1$d/%2$d</string>
+    <string name="main_progress_imported">Importeert %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Verlööfnis to Lesen vun Fotos un Videos warrt bruukt</string>
+    <string name="main_dialog_permission_message">Dit App bruukt Fotos un Videos up dien Reedschop to lesen:
+
+• Foto-Verlööfnis: de Galerie vun dat Reedschop scannen un de Live Photos dorünner erkennen
+• Video-Verlööfnis: de Begleedvideo vun Twee-Datei-Live-Photos söken
+• Standort-Verlööfnis: de GPS-Positschoonsmetadaten in de Fotos erhollen (wann se fehlt, geiht de Positschoonsinformatie na de Konverteeren verlüürt)
+
+Na dat Aflehnen lett sik de inbunnen Utwähler nich bruken; du kannst later noch eenmaal up „Dateien tofögen“ klicken um nie to verlööven.</string>
+    <string name="main_dialog_settings_title">Dat Foto- un Video-Verlööfnis mutt handmatig geven warrn</string>
+    <string name="main_dialog_settings_message">Du hest vörher „Nich mehr fragen“ wählt, dat System wiest kene Verlööfnis-Dialogen mehr.
+
+Gang to de App-Detailsiet → Verlööfnisse → Fotos un Videos, geven handmatig dat Togriepsverlööfnis un kumm denn trügg in dit App.
+
+Bemarken: Dat „Foto“- un dat „Video“-Verlööfnis mütt toglieker Tied geven warrn, sünst könen Twee-Datei-Live-Photos ehren Begleedvideo nich finnen.</string>
+    <string name="main_dialog_allfiles_title_delete">Dat automatische Löschen vun Originaal-Fotos bruukt „Togriep op alle Dateien“</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Dit Reedschop ünnerstütt dat automatische Löschen vun Originaal-Fotos nich</string>
+    <string name="main_dialog_allfiles_title_replace">De Utwesselmodus bruukt „Togriep op alle Dateien“</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Dit Reedschop ünnerstütt den Utwesselmodus nich</string>
+    <string name="main_dialog_allfiles_title_location">Dat warrt anraadt, dat „Togriep op alle Dateien“-Verlööfnis to geven</string>
+    <string name="main_dialog_allfiles_delete_message">„Originaal-Fotos na de Veraarbeiten läschen“ läscht direkt de Originalen up den Spieker (Fotos un ehre Begleedvideos); disse Aktioon lett sik nich trüggrollen, dorüm mutt dat „Togriep op alle Dateien“-Verlööfnis toeerst geven warrn.
+
+Erst na de Verlööfnis warrt de Schalter bruukbar; du kannst em denn sülvst aktiveren.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Dat aktuelle System (Android 10 un öller) bedt kene „Togriep op alle Dateien“-Verlööfnis; Originalen up den Spieker könen nich direkt löscht warrn, dorüm ünnerstütt dit Reedschop „Originaal-Fotos na de Veraarbeiten läschen“ nich.
+
+Du kannst na de Konverteeren över de Systemgalerie de Originalen handmatig reinigen.</string>
+    <string name="main_dialog_allfiles_replace_message">De „Utwesselmodus“ schrifft de Konverteerresultate direkt trügg in de Originalen up den Spieker (överschrifft den originaalen Inholt); disse Aktioon lett sik nich trüggrollen, dorüm mutt dat „Togriep op alle Dateien“-Verlööfnis toeerst geven warrn.
+
+Erst na de Verlööfnis warrt de Schalter bruukbar; du kannst em denn sülvst aktiveren.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Dat aktuelle System (Android 10 un öller) bedt kene „Togriep op alle Dateien“-Verlööfnis; Originalen up den Spieker könen nich direkt överschreven warrn, dorüm ünnerstütt dit Reedschop den „Utwesselmodus“ nich.
+
+Du kannst wieder mit de Standardmethood konverteeren, de Resultate gaht in den Galerie-Orner.</string>
+    <string name="main_dialog_allfiles_location_message">Up en poor Reedschappen (as Meizu) warrt de GPS-Positschoonsinformatie bi dat Schrieven över de Systemgalerie-Interface desensibiliseert, dorüm verlüürt de Fotos na de Konverteeren ehre Positschoon.
+
+Na de „Togriep op alle Dateien“-Verlööfnis schrifft dit App direkt in den Galerie-Orner un behollt de Positschoonsmetadaten kumplett.
+
+Ahne Verlööfnis funkschooneert de Konverteeren ok normaal; up en poor Reedschappen kann de Positschoonsinformatie verlüürt gahn.</string>
+    <string name="main_dialog_conflict_title">Utgaavdatei-Naam-Konflikt</string>
+    <string name="main_dialog_conflict_message">En Datei mit den sülven Naam gifft dat al in den Utgaavorner:
+%1$s
+
+Wähl de Behannelnsmethood.</string>
+    <string name="main_label_conflict_always">Disse Behanneln för later Konflikten bruken</string>
+    <string name="main_btn_grant">Verlööven</string>
+    <string name="main_btn_deny">Aflehnen</string>
+    <string name="main_btn_go_settings">To de Instellungen</string>
+    <string name="main_btn_cancel">Avbreken</string>
+    <string name="main_btn_grant_access">To de Verlööfnis</string>
+    <string name="main_btn_got_it">Verstahn</string>
+    <string name="main_btn_not_now">Nu nich</string>
+    <string name="main_btn_skip">Överspringen</string>
+    <string name="main_btn_overwrite">Överschrieven</string>
+    <string name="main_btn_auto_rename">Automatsch umnennen</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d Originaal-Datei is löscht wurrn</item>
+        <item quantity="other">%1$d Originaal-Dateien sünd löscht wurrn</item>
+    </plurals>
+    <string name="main_delete_nothing">Keen Originaal-Foto mutt löscht warrn</string>
+    <string name="main_delete_partial">%1$d Originaal-Dateien sünd löscht wurrn (%2$d Lööschen hett fehlslahn, blieven erhollen)</string>
+    <string name="main_delete_failed">Löschen vun de Originaal-Fotos hett fehlslahn (de Datei is beleet oder keen Schrievverlööfnis), blieven erhollen</string>
+    <string name="main_export_missing_output">Dat Konverteerprodukt fehlt oder is leddig: %1$s</string>
+    <string name="main_export_missing_output_bare">Dat Konverteerprodukt fehlt oder is leddig</string>
+    <string name="main_export_insert_null">MediaStore insert hett null trüchgeven</string>
+    <string name="main_export_output_stream">MediaStore-Utgaavstroom nich verföögbar</string>
+    <string name="main_export_write_failed">MediaStore-Schrieven hett fehlslahn: %1$s</string>
+    <string name="main_export_mkdir_failed">De Galerie-Orner %1$s kunn nich anleggt warrn</string>
+    <string name="main_export_dir_write_failed">Schrieven in den Galerie-Orner hett fehlslahn: %1$s</string>
+    <string name="main_export_no_source">De Born-Datei kunn nich lokaliseert warrn, Utwesseln översprungen</string>
+    <string name="main_export_companion_failed">Trückschrieven vun de Begleeddatei hett fehlslahn: %1$s</string>
+    <string name="main_export_source_dir_unwritable">De Born-Datei-Orner is nich schrievbar, de Begleeddatei kunn nich trüchschreven warrn</string>
+    <string name="main_export_source_dir_unavailable">Born-Datei-Orner nich verföögbar: %1$s</string>
+    <string name="main_export_replace_failed">Utwesseln vun de Born-Datei hett fehlslahn: %1$s</string>
+    <string name="main_export_replace_failed_bare">Utwesseln vun de Born-Datei hett fehlslahn</string>
+</resources>

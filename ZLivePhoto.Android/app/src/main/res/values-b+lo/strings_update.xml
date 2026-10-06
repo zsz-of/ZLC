@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ລາວ (Lao) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Lao has no grammatical plural; only the 'other' quantity is emitted.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">ການແບ່ງປັນ Lanzou Cloud ຖືກຍົກເລີກ ຫຼື ໄຟລ໌ບໍ່ມີ, ກະລຸນາດາວໂຫລດຈາກ GitHub ແທນ</string>
+    <string name="update_lanzou_gone_short">ການແບ່ງປັນ Lanzou Cloud ຖືກຍົກເລີກແລ້ວ, ກະລຸນາດາວໂຫລດຈາກ GitHub ແທນ</string>
+    <string name="update_lanzou_resolve_failed">ການແຍກວິເຄາະລິ້ງດາວໂຫລດ Lanzou Cloud ລົ້ມເຫຼວ</string>
+    <string name="update_lanzou_need_passwd">ການແບ່ງປັນ Lanzou Cloud ນີ້ຕ້ອງການລະຫັດດຶງ, ກະລຸນາດາວໂຫລດຈາກ GitHub ແທນ (ຫຼື ຫາລະຫັດດຶງໃນຄຳອະທິບາຍ Release)</string>
+    <string name="update_lanzou_wrong_passwd">ລະຫັດດຶງຂອງ Lanzou Cloud ຜິດ</string>
+    <string name="update_err_resolve_failed">ການແຍກວິເຄາະລົ້ມເຫຼວ</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">ການກວດສອບຕ້ານການຄຣາວຂອງ Lanzou Cloud ລົ້ມເຫຼວ</string>
+    <string name="update_err_no_frame">ບໍ່ສາມາດແຍກວິເຄາະໜ້າດາວໂຫລດ Lanzou Cloud ໄດ້ (ບໍ່ພົບ frame ດາວໂຫລດ)</string>
+    <string name="update_err_no_file_id">ບໍ່ສາມາດແຍກວິເຄາະຕົວະະບຸໄຟລ໌ຂອງ Lanzou Cloud ໄດ້</string>
+    <string name="update_err_no_sign">ບໍ່ສາມາດແຍກວິເຄາະລາຍເຊັນຂອງ Lanzou Cloud ໄດ້</string>
+    <string name="update_err_ajax_request">ການຮ້ອງຂໍ API ລົ້ມເຫຼວ</string>
+    <string name="update_err_api_request">ການຮ້ອງຂໍ API ຂອງ Lanzou Cloud ລົ້ມເຫຼວ</string>
+    <string name="update_err_empty_direct">Lanzou Cloud ສົ່ງກັບທີ່ຢູ່ດາວໂຫລດຫວ່າງເປົ່າ</string>
+    <string name="update_err_direct_expired">ທີ່ຢູ່ດາວໂຫລດຂອງ Lanzou Cloud ໝົດອາຍຸແລ້ວ, ກະລຸນາຂໍໃໝ່</string>
+    <string name="update_err_http_request">ການຮ້ອງຂໍລົ້ມເຫຼວ (HTTP %1$d)</string>
+    <string name="update_err_connect">ບໍ່ສາມາດເຊື່ອມຕໍ່ເຊີເວີດາວໂຫລດ: %1$s</string>
+    <string name="update_err_http">ການດາວໂຫລດລົ້ມເຫຼວ (HTTP %1$d)</string>
+    <string name="update_err_no_connection">ບໍ່ສາມາດສ້າງການເຊື່ອມຕໍ່ດາວໂຫລດໄດ້</string>
+    <string name="update_err_empty">ເນື້ອຫາທີ່ດາວໂຫລດຫວ່າງເປົ່າ</string>
+    <string name="update_err_incomplete">ການດາວໂຫລດບໍ່ຄົບຖ້ວນ (ໄດ້ຮັບ %1$d / ທັງໝົດ %2$d byte), ກະລຸນາດາວໂຫລດຄືນໃໝ່</string>
+    <string name="update_err_interrupted">ການດາວໂຫລດຖືກຂັດຈັງຫວະ: %1$s</string>
+    <string name="update_err_not_apk">ໄຟລ໌ທີ່ດາວໂຫລດມາບໍ່ແມ່ນຊຸດຕິດຕັ້ງທີ່ຖືກຕ້ອງ (ອາດເປັນໜ້າເວັບ ຫຼື ລິ້ງດາວໂຫລດໝົດອາຍຸແລ້ວ), ກະລຸນາດາວໂຫລດຄືນໃໝ່ ຫຼື ໃຊ້ GitHub.</string>
+    <string name="update_err_apk_incomplete">ເນື້ອຫາຂອງຊຸດຕິດຕັ້ງບໍ່ຄົບຖ້ວນ, ກະລຸນາດາວໂຫລດຄືນໃໝ່ ຫຼື ໃຊ້ GitHub.</string>
+    <string name="update_err_apk_unparsable">ບໍ່ສາມາດແຍກວິເຄາະຊຸດຕິດຕັ້ງໄດ້ (ອາດດາວໂຫລດບໍ່ຄົບ), ກະລຸນາດາວໂຫລດຄືນໃໝ່ ຫຼື ໃຊ້ GitHub.</string>
+    <string name="update_err_no_install_permission">ຍັງບໍ່ໄດ້ຮັບສິດ “ຕິດຕັ້ງແອັບທີ່ບໍ່ຮູ້ຈັກ”</string>
+    <string name="update_err_installer_failed">ບໍ່ສາມາດເອີ້ນຕົວຕິດຕັ້ງຂອງລະບົບໄດ້ (%1$s), ກະລຸນາໄປທີ່ຕົວຈັດການໄຟລ໌ເພື່ອເປີດຊຸດຕິດຕັ້ງ ແລ້ວຕິດຕັ້ງດ້ວຍຕົນເອງ</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Nederlands (België) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Belgisch-Nederlandse variant met eigen woordkeuze ("toestemming", "Klaar", "Leegmaken").
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+    <!-- Optie in de taalkiezer die het systeem volgt -->
+    <string name="app_language_follow_system">Systeem volgen</string>
+    <!-- Terugvaltitel van de taalkiezer (de module Instellingen kan een eigen key gebruiken) -->
+    <string name="app_language_title">App-taal</string>
+</resources>

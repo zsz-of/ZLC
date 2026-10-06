@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Maltese (mt) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Format ta’ destinazzjoni mhux magħruf: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Il-format tal-foto animata ma jinqarax (mhux foto animata Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Il-foto tal-kopertura ma teżistix jew hija vojta</string>
+    <string name="conv_video_missing">Il-vidjo ma jeżistix jew hu vojt</string>
+    <string name="conv_video_too_large">Il-vidjo hu kbir wisq (%1$dMB) biex isir foto animata; agħżel vidjo iqsar</string>
+    <string name="conv_transcoded_too_large">Wara t-transkodifikazzjoni l-vidjo hu kbir wisq (%1$dMB) biex isir foto animata</string>
+    <string name="conv_video_too_large_compose">Il-vidjo hu kbir wisq (%1$dMB) biex isir foto animata</string>
+    <string name="conv_cover_heic_go">Il-kopertura hija immaġni HEIC (il-verżjoni ħafifa ma tappoġġjax it-transkodifikazzjoni; esporta bħala JPEG fuq l-iPhone qabel ma tikkonverti)</string>
+    <string name="conv_cover_invalid_heic">Il-kopertura mhix immaġni valida (HEIC jeħtieġ li s-sistema tappoġġja d-dekodifikazzjoni ta’ HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">Il-kopertura mhix immaġni JPEG (il-verżjoni ħafifa ma tappoġġjax it-transkodifikazzjoni; uża minflok foto JPEG)</string>
+    <string name="conv_cover_invalid_image">Il-kopertura mhix immaġni valida (jiġu appoġġjati biss JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">It-terġa’ tenkodja tal-vidjo falliet: %1$s</string>
+    <string name="conv_remux_failed">Ir-remux tal-kontenitur falla: %1$s</string>
+    <string name="conv_codec_unknown">Dan mhux vidjo H.264/H.265 li jista’ jiġi rrikonoxxut</string>
+    <string name="conv_codec_is">Il-kodiċi huwa %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Il-vidjo “%1$s” %2$s; il-bidla tal-kontenitur biss (remux) ma tibdilx il-kodiċi, u ma tistax tinħoloq foto animata.\n\nFil-“Impostazzjonijiet → Transkodifikazzjoni tal-vidjo → Mod tat-transkodifikazzjoni” agħżel “Erġa’ enkodja”, jew l-ewwel uża għodda oħra biex tbiddlu f’MP4 b’kodiċi H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Il-vidjo mhux f’kontenitur MP4 standard (MOV / MKV / WebM / AVI eċċ.), u l-“Mod tat-transkodifikazzjoni” attwali ma jinkludix terġa’ tenkodja, għalhekk ma tistax tinħoloq foto animata.\n\nFil-“Impostazzjonijiet → Transkodifikazzjoni tal-vidjo → Mod tat-transkodifikazzjoni” agħżel “Erġa’ enkodja” (il-verżjoni normali fiha enkodatur ffmpeg integrat; il-verżjoni ħafifa Go ma fihiex transkodifikatur, għalhekk uża l-verżjoni normali), jew l-ewwel ibiddel il-vidjo għal MP4 standard (H.264/H.265).</string>
+    <string name="conv_log_detected">Irrikonoxxut bħala %1$s</string>
+    <string name="conv_log_same_format_copied">Is-sors u d-destinazzjoni għandhom l-istess format; ikkupjat kif inhu (bla telf)</string>
+    <string name="conv_log_extra_tracks_bypass">Il-vidjo tas-sors fih tracks oħra minn awdjo/vidjo (%1$s); ma ntuzatx il-passaġġ diretta bl-istess format, minflok miexi l-proċess sħiħ ta’ kitba biex jinneħħew</string>
+    <string name="conv_log_ts_fallback">Is-sors nieqes mit-timestamp tal-frame tal-kopertura; skont l-istandard tqiegħed fin-nofs tal-vidjo</string>
+    <string name="conv_log_brand_normalized">Il-brand tal-kontenitur tal-vidjo ġie normalizzat (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Il-vidjo fih tracks żejda (%1$s), ma setax jiġi mnaddaf u ħareġ kif inhu (dan ir-riżultat jista’ ma jindaqx b’pressa twila fuq xi mudelli)</string>
+    <string name="conv_log_extra_tracks_removed">It-tracks żejda tal-vidjo tneħħew (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Il-vidjo tas-sors %1$s; ir-remux tal-kontenitur biss ma jsolvix il-problema (%2$s). Jekk ir-riżultat xorta ma jindaqx b’pressa twila, fil-“Impostazzjonijiet → Transkodifikazzjoni tal-vidjo → Mod tat-transkodifikazzjoni” agħżel minflok “Erġa’ enkodja”</string>
+    <string name="conv_log_reencoding">Il-vidjo tas-sors %1$s; skont l-impostazzjonijiet qed terġa’ tenkodja għal 8bit + AAC biex titjieb il-kompatibbiltà mal-album</string>
+    <string name="conv_log_reencode_result_unusable">Ir-riżultat tat-terġa’ tenkodja ma jistax jintuża; ħareġ kif inhu (dan ir-riżultat jista’ ma jindaqx b’pressa twila fuq xi mudelli)</string>
+    <string name="conv_log_reencode_still_risky">Wara t-terġa’ tenkodja għad hemm punti ta’ riskju (%1$s)</string>
+    <string name="conv_log_reencode_failed">It-terġa’ tenkodja falliet (%1$s); ħareġ kif inhu (dan ir-riżultat jista’ ma jindaqx b’pressa twila fuq xi mudelli)</string>
+    <string name="conv_log_cover_heic_converted">Il-kopertura kienet HEIC (mhux JPEG); ġiet transkodjata għal JPEG standard qabel ir-remux</string>
+    <string name="conv_log_compose_sizes">Kompożizzjoni: foto %1$dB + vidjo %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">It-transkodifikatur mhux mixgħul: biss il-brand tal-kontenitur jinbidel (MOV → MP4), bla terġa’ tenkodja</string>
+    <string name="conv_tag_convert">Konverżjoni</string>
+    <string name="conv_tag_transcode">Transkodifikazzjoni</string>
+    <string name="conv_tag_compose">Kompożizzjoni</string>
+    <string name="conv_blocker_no_encoder">It-transkodifikatur integrat mhux disponibbli</string>
+    <string name="conv_blocker_mode_no_encode">L-“Mod tat-transkodifikazzjoni” attwali ma jinkludix terġa’ tenkodja</string>
+    <string name="conv_addon_unavailable">It-transkodifikatur integrat mhux disponibbli</string>
+    <string name="conv_addon_transcode_failed">It-transkodifikazzjoni b’ffmpeg falliet: %1$s</string>
+    <string name="conv_addon_remux_failed">Ir-remux tal-kontenitur b’ffmpeg falla: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Il-vidjo qed titranskodja b’ffmpeg għal MP4 standard (%1$s / crf %2$d / %3$s; jiġu miżmuma biss it-tracks tal-vidjo u tal-awdjo)</string>
+    <string name="conv_log_transcode_done">It-transkodifikazzjoni tal-vidjo lestet (%1$dKB)</string>
+    <string name="conv_log_remuxing">Qed isir ir-remux tal-kontenitur tal-vidjo għal MP4 standard (biss il-kontenitur jinbidel, bla terġa’ tenkodja)</string>
+    <string name="conv_log_remux_done">Ir-remux tal-kontenitur lesta (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Kompożizzjoni</string>
+    <string name="conv_reminder_cat_convert">Konverżjoni</string>
+    <string name="conv_reminder_cat_update">Aġġornament</string>
+    <string name="conv_reminder_video_over3s_title">Il-vidjo jaqbżet it-3 sekondi</string>
+    <string name="conv_reminder_video_over3s_message">Il-vidjo magħżul idum iktar minn 3 sekondi; il-foto animata li tinħoloq jista’ jkollha problemi ta’ kompatibbiltà:\n\n• Jista’ ma jindaqx b’mod normali\n• Jista’ ma jiġix rrikonoxxut mill-album tas-sistema\n• Fuq xi mudelli jista’ ma jiġix rrikonoxxut din il-foto animata</string>
+    <string name="conv_reminder_legacy_go_title">Instab verżjoni qadima</string>
+    <string name="conv_reminder_legacy_go_message">Fuq dan l-apparat għadha installata verżjoni qadima (verżjoni Go) tal-app; din il-verżjoni qadima ma taqdimx iktar fuq dan l-apparat. Tista’ tdiżinstallaha biex jeħles l-ispazju.</string>
+    <string name="conv_reminder_replace_risk_title">Il-modalità ta’ sostituzzjoni għandha riskju ta’ ħsara</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Il-modalità ta’ sostituzzjoni tikteb ir-riżultat tal-konverżjoni direttament fuq il-fajl oriġinali; darba l-fajl oriġinali jiġi mkitub fuqu, ma jistax jinstab lura.\n\n• Matul il-kitba, jekk l-app tiġi interrotta, jekk l-ispazju tal-ħażna ma jkunx biżżejjed jew jekk il-permess jiġi revokat, il-fajl tas-sors jista’ jisfa mkissar\n• Il-konverżjoni ma tistax tiżgura suċċess sħiħ; meta tonqos, jista’ jkun li l-fajl tas-sors ma jibqax jista’ jintuża\n• Aħjar tagħmel prova b’fajl wieħed jew tnejn l-ewwel; meta tkun żgur li kollox sew, kompli bil-bulk\n• Għall-foti importanti agħmel backup waħdek qabel\n\nDin il-funzjoni tingħata “kif inhi”; ir-riskju tal-użu jbqa’ għalik, u l-awtur ma jassumix responsabbiltà għall-ħsara jew it-telf ta’ fajls.</string>
+    <string name="conv_reminder_dont_remind">Ma turix aktar</string>
+    <string name="conv_reminder_confirm_ok">Mifhum</string>
+    <string name="conv_reminder_uninstall">Diżinstalla</string>
+</resources>

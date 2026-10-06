@@ -8,6 +8,7 @@
 <resources>
     <string name="screen_app_subtitle">Mag-convert sa pagitan ng mga format ng Live Photo</string>
     <plurals name="screen_file_count">
+        <item quantity="one">%1$d file</item>
         <item quantity="other">%1$d file</item>
     </plurals>
     <string name="screen_settings">Mga setting</string>
@@ -53,6 +54,7 @@
     <string name="screen_album_expand_cover">I-expand ang cover ng album</string>
     <string name="screen_scanning_progress">Nag-scan %1$d/%2$d</string>
     <plurals name="screen_photo_count">
+        <item quantity="one">%1$d larawan</item>
         <item quantity="other">%1$d larawan</item>
     </plurals>
     <string name="screen_select_all">Piliin lahat</string>

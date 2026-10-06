@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Occitan (oc) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Format de destinacion desconegut: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Format de Live Photo pas reconegut (es pas una Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">L\'imatge de cobèrta existís pas o es voida</string>
+    <string name="conv_video_missing">La vidèo existís pas o es voida</string>
+    <string name="conv_video_too_large">La vidèo es tròp gròssa (%1$d MB) ; se pòt pas compausar la Live Photo, causissètz una vidèo mai corta</string>
+    <string name="conv_transcoded_too_large">Aprèp lo transcodatge la vidèo demòra tròp gròssa (%1$d MB) ; se pòt pas compausar la Live Photo</string>
+    <string name="conv_video_too_large_compose">La vidèo es tròp gròssa (%1$d MB) ; se pòt pas compausar la Live Photo</string>
+    <string name="conv_cover_heic_go">La cobèrta es un imatge HEIC (la version Go gerís pas lo transcodatge ; exportatz en JPEG dempuèi l\'iPhone puèi convertissètz)</string>
+    <string name="conv_cover_invalid_heic">La cobèrta es pas un imatge valid (l\'HEIC demanda que lo sistèma prenga en carga la descodificacion HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">La cobèrta es pas un imatge JPEG (la version Go gerís pas lo transcodatge ; utilizatz un imatge JPEG)</string>
+    <string name="conv_cover_invalid_image">La cobèrta es pas un imatge valid (son suportats solament JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Fracàs del reencodatge de la vidèo: %1$s</string>
+    <string name="conv_remux_failed">Fracàs del remuxatge del contenedor: %1$s</string>
+    <string name="conv_codec_unknown">Es pas una vidèo H.264/H.265 reconeguda</string>
+    <string name="conv_codec_is">La codificacion es %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">La vidèo «%1$s» %2$s : cambiar solament lo contenedor (remuxar) cambia pas la codificacion, se pòt pas compausar la Live Photo.\n\nDins «Paramètres → Transcodatge vidèo → Mòde de transcodatge», causissètz «Reencodar», o transformatz d\'abord la vidèo en MP4 amb codificacion H.264/H.265 amb una autra aisina.</string>
+    <string name="conv_hint_no_encoder">La vidèo es pas dins un contenedor MP4 estandàrd (MOV / MKV / WebM / AVI, etc.) e lo «Mòde de transcodatge» actual reencoda pas ; se pòt pas compausar la Live Photo.\n\nDins «Paramètres → Transcodatge vidèo → Mòde de transcodatge», causissètz «Reencodar» (la version normala a un transcodaire ffmpeg integrat ; la version Go lègèra n\'a pas, utilizatz la version normala), o transformatz d\'abord la vidèo en MP4 estandàrd (H.264/H.265).</string>
+    <string name="conv_log_detected">Detectat coma %1$s</string>
+    <string name="conv_log_same_format_copied">Lo format d\'origina e lo de destinacion son los meteisses ; copiat tal coma es (cap de pèrda)</string>
+    <string name="conv_log_extra_tracks_bypass">La vidèo d\'origina conten de pistas que son pas ni àudio ni vidèo (%1$s) ; se passa la còpia dirècta del meteis format e s\'utiliza lo procediment d\'escritura complet per la netejar</string>
+    <string name="conv_log_ts_fallback">L\'origina a pas l\'ora del fotograma de cobèrta ; segon la nòrma, se pren lo punt mièg de la vidèo</string>
+    <string name="conv_log_brand_normalized">La marca del contenedor vidèo es estada normalizada (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">La vidèo conten de pistas suplementàrias (%1$s) ; impossible de la netejar, es estada restituida tal coma es (sus qualques aparelhs, aqueste resultat se pòt pas aviar en mantenent lo dètz premut)</string>
+    <string name="conv_log_extra_tracks_removed">Las pistas suplementàrias de la vidèo son estadas suprimidas (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">La vidèo d\'origina %1$s ; lo remuxatge del contenedor solet pòt pas l\'arreglar (%2$s) ; se lo resultat se pòt totjorn pas aviar en mantenent lo dètz premut, causissètz «Reencodar» dins «Paramètres → Transcodatge vidèo → Mòde de transcodatge»</string>
+    <string name="conv_log_reencoding">La vidèo d\'origina %1$s ; es reencodada en 8bit + AAC segon los paramètres per melhorar la compatibilitat amb l\'album</string>
+    <string name="conv_log_reencode_result_unusable">Lo resultat del reencodatge es pas utilizable ; es estat restituit tal coma es (sus qualques aparelhs, se pòt pas aviar en mantenent lo dètz premut)</string>
+    <string name="conv_log_reencode_still_risky">Aprèp lo reencodatge demòran de punts de risc (%1$s)</string>
+    <string name="conv_log_reencode_failed">Lo reencodatge a fracassat (%1$s) ; es estat restituit tal coma es (sus qualques aparelhs, se pòt pas aviar en mantenent lo dètz premut)</string>
+    <string name="conv_log_cover_heic_converted">La cobèrta es HEIC (non JPEG) ; es estada transcodada en JPEG estandàrd abans lo remuxatge</string>
+    <string name="conv_log_compose_sizes">Composicion : imatge %1$d octets + vidèo %2$d octets → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transcodaire pas activat : se cambia solament la marca del contenedor (MOV → MP4), sens reencodar</string>
+    <string name="conv_tag_convert">Conversion</string>
+    <string name="conv_tag_transcode">Transcodatge</string>
+    <string name="conv_tag_compose">Composicion</string>
+    <string name="conv_blocker_no_encoder">Lo transcodaire integrat es pas disponible</string>
+    <string name="conv_blocker_mode_no_encode">Lo «Mòde de transcodatge» actual reencoda pas</string>
+    <string name="conv_addon_unavailable">Lo transcodaire integrat es pas disponible</string>
+    <string name="conv_addon_transcode_failed">Fracàs del transcodatge ffmpeg: %1$s</string>
+    <string name="conv_addon_remux_failed">Fracàs del remuxatge del contenedor amb ffmpeg: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Transcodatge de la vidèo en MP4 estandàrd amb ffmpeg (%1$s / crf %2$d / %3$s ; se gardan solament las pistas vidèo e àudio)</string>
+    <string name="conv_log_transcode_done">Transcodatge de la vidèo acabat (%1$d Ko)</string>
+    <string name="conv_log_remuxing">Remuxatge del contenedor de la vidèo en MP4 estandàrd (se cambia solament lo contenedor, sens reencodar)</string>
+    <string name="conv_log_remux_done">Remuxatge del contenedor acabat (%1$d Ko)</string>
+    <string name="conv_reminder_cat_compose">Composicion</string>
+    <string name="conv_reminder_cat_convert">Conversion</string>
+    <string name="conv_reminder_cat_update">Messa a jorn</string>
+    <string name="conv_reminder_video_over3s_title">La vidèo dura mai de 3 segondas</string>
+    <string name="conv_reminder_video_over3s_message">La vidèo causida dura mai de 3 segondas e la Live Photo compausada pòt aver de problèmas de compatibilitat :\n\n• se pòt pas legir corrèctament\n• l\'album del sistèma pòt pas la reconéisser\n• sus qualques aparelhs, aquesta Live Photo pòt pas èsser reconeguda</string>
+    <string name="conv_reminder_legacy_go_title">Version anciana detectada</string>
+    <string name="conv_reminder_legacy_go_message">Sus aqueste aparelh es encara installada l\'anciana version (Go) de l\'aplicacion ; aquesta version fonciona pas mai sus aqueste aparelh, la podètz desinstallar per liberar d\'espaci.</string>
+    <string name="conv_reminder_replace_risk_title">Lo mòde de remplaçament a un risc de corrupcion</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Lo mòde de remplaçament escriu lo resultat de la conversion dirèctament dins lo fichièr original ; un còp espotit, lo fichièr original se pòt pas retrobar.\n\n• Se l\'aplicacion es interrompuda, se l\'espaci d\'estocatge manca o se las permissions son revocadas pendent l\'escritura, lo fichièr font se pòt damatjar\n• La conversion garante jamai un succès total ; en cas d\'escac, lo fichièr font pòt ja èsser inutilizable\n• Es conselhat de far primièr un ensag amb un o dos fichièrs e, se tot va ben, de contunhar amb la seria\n• Fasètz una còpia de salvament de las imatges importantas\n\nAquesta foncion es provesida «tal coma es» ; lo risc d\'utilizacion es per vos, e l\'autor respond pas dels fichièrs damatjats o perduts.</string>
+    <string name="conv_reminder_dont_remind">Mostrar pas mai</string>
+    <string name="conv_reminder_confirm_ok">D\'acòrdi</string>
+    <string name="conv_reminder_uninstall">Desinstallar</string>
+</resources>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Scots strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Scots is a law-resource leid; this is a best-effort, model-assisted translation.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: C.
+-->
+<resources>
+
+    <!-- ── Status bar / notices (inside Activity methods, via getString) ── -->
+    <string name="main_status_ready">Ready</string>
+    <string name="main_status_location_granted">Location permeession gien; the GPS metadata is keepit efter the conversion</string>
+    <string name="main_status_location_denied">Nae location permeession gien: convertit photos will loss the GPS information</string>
+    <string name="main_status_all_files_granted">The "aw files access" permeession wis gien; the conversion writes straucht tae the gallerie an keeps the location data hale</string>
+    <string name="main_status_all_files_denied">The "aw files access" permeession wis no gien: on some devices the location data may be lost efter the conversion</string>
+    <string name="main_status_read_granted">Permeession tae read photos an videos gien</string>
+    <string name="main_status_video_missing">Allooed, but the video permeession is missin: the companion video o twa-file Live Photos cannae be fund</string>
+    <string name="main_status_permission_denied">Nae permeession gien; ye can tap "Eik files" agane</string>
+    <string name="main_status_folder_not_selected">Nae folder selectit</string>
+    <string name="main_status_folder_unavailable">Cannae access the selectit folder (local storage folders only)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Last session restored (%1$d file)</item>
+        <item quantity="other">Last session restored (%1$d files)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">An earlier unexpectit exit wis detected; the unfinished list wis cleared</string>
+    <string name="main_status_compose_blocks_extract">The queue haes compose tasks; ye cannae switch tae Extract mode</string>
+    <string name="main_status_replace_off_mutex">Replace mode turnt aff (it cannae be combined wi "Delete the oreeginals efter processin")</string>
+    <string name="main_status_delete_needs_all_files">Deletin oreeginals awtomatic needs the "aw files access" permeession. Gie it first</string>
+    <string name="main_status_replace_off">Replace mode turnt aff; results is written tae the gallerie agane</string>
+    <string name="main_status_replace_needs_all_files">Replace mode needs the "aw files access" permeession. Gie it first</string>
+    <string name="main_status_delete_off_mutex">"Delete the oreeginals efter processin" turnt aff (it cannae be combined wi replace mode)</string>
+    <string name="main_status_loading_albums">Readin albums…</string>
+    <string name="main_status_no_albums">Nae albums fund</string>
+    <string name="main_status_compose_no_photo">Nae photo selectit; cannae compose</string>
+    <string name="main_status_compose_no_video">Nae video selectit; cannae compose</string>
+    <string name="main_status_compose_all_added">Aw the selectit photos is already in the list</string>
+    <string name="main_status_compose_paired">%1$d photos an %2$d videos; %3$d compose pairs eikit (based on the smawer group)</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d compose task eikit; tap "Stairt convertin" tae compose</item>
+        <item quantity="other">%1$d compose tasks eikit; tap "Stairt convertin" tae compose</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (ootput format chynged awtomatic tae Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Importin %1$d shared image…</item>
+        <item quantity="other">Importin %1$d shared images…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import failed: %1$s</string>
+    <string name="main_status_import_done_partial">Import complete: %1$d succeedit, %2$d failed</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import complete: %1$d file importit</item>
+        <item quantity="other">Import complete: %1$d files importit</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import stappit: %1$d succeedit, %2$d failed</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Importin %1$d file…</item>
+        <item quantity="other">Importin %1$d files…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importin %1$d/%2$d…</string>
+    <string name="main_status_stopping">Stoppin… (staps efter the current file)</string>
+    <string name="main_status_stopping_import">Stoppin the import…</string>
+    <string name="main_status_removed">%1$s remuived</string>
+    <string name="main_status_cleared">List cleared</string>
+    <string name="main_status_nothing_to_convert">Nae files tae convert</string>
+    <string name="main_status_folder_unreadable">Cannae read the selectit folder</string>
+    <string name="main_status_scanning_folder">Scanin the folder…</string>
+    <string name="main_status_no_images">Nae images fund in the selectit folder</string>
+    <string name="main_status_batch_importing">Bulk import %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Bulk import stappit: %1$d Live Photo importit</item>
+        <item quantity="other">Bulk import stappit: %1$d Live Photos importit</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Bulk import stappit: %1$d Live Photo importit, %2$d non-dynamic files skipped</item>
+        <item quantity="other">Bulk import stappit: %1$d Live Photos importit, %2$d non-dynamic files skipped</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Bulk import complete: %1$d Live Photo importit</item>
+        <item quantity="other">Bulk import complete: %1$d Live Photos importit</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Bulk import complete: %1$d Live Photo importit, %2$d non-dynamic files skipped</item>
+        <item quantity="other">Bulk import complete: %1$d Live Photos importit, %2$d non-dynamic files skipped</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Stappit: o %1$d files, %2$d wis processit an %3$d soorce files replaced</string>
+    <string name="main_status_stopped_export">Stappit: o %1$d files, %2$d wis processit an %3$d exportit tae the gallerie</string>
+    <string name="main_status_done_replace_reason">Duin: %1$d files processit, %2$d soorce files replaced (reason: %3$s)</string>
+    <string name="main_status_done_export_reason">Duin: %1$d files processit, %2$d exportit tae the gallerie (reason: %3$s)</string>
+    <string name="main_status_done_replace">Duin: %1$d files processit, %2$d soorce files replaced</string>
+    <string name="main_status_done_export">Duin: %1$d files processit, %2$d exportit tae the gallerie</string>
+    <string name="main_status_keep_originals">%1$s; withoot the "hail storage access" permeession the oreeginals is keepit</string>
+
+    <!-- ── Info per list item (FileItem.info) ── -->
+    <string name="main_info_detecting">Detectin…</string>
+    <string name="main_info_unrecognized">Unkent Live Photo format</string>
+    <string name="main_info_converting">Convertin…</string>
+    <string name="main_info_compose_task">Compose task (tap Stairt convertin tae compose)</string>
+    <string name="main_info_done_replaced">Duin (%1$d soorce files replaced)</string>
+    <string name="main_info_done_skipped">Duin (skipped: name clash)</string>
+    <string name="main_info_done_exported">Duin (%1$d exportit)</string>
+    <string name="main_info_failed">Failed: %1$s</string>
+
+    <!-- ── Progress details (progressDetail) ── -->
+    <string name="main_progress_added">%1$d/%2$d eikit</string>
+    <string name="main_progress_processed">%1$d/%2$d processit</string>
+    <string name="main_progress_imported">%1$d/%2$d importit</string>
+
+    <!-- ── Permeession dialog ── -->
+    <string name="main_dialog_permission_title">Permeession needed tae read photos an videos</string>
+    <string name="main_dialog_permission_message">This app needs tae read the photos an videos on yer device:\n\n• Photo access: scan the gallerie an recogness Live Photos\n• Video access: find the companion video o twa-file Live Photos\n• Location access: keep the GPS metadata o the photo (withoot it the location is lost efter the conversion)\n\nGin ye refuse, the built-in picker will nae wark; tap "Eik files" agane later tae gie permeession.</string>
+    <string name="main_dialog_settings_title">Ye maun gie the photo an video permeessions bi haund</string>
+    <string name="main_dialog_settings_message">Ye chose "dinnae ask agane", sae the seestem nae langer shaws the permeession dialog.\n\nGang tae App details → Permeessions → Photos an videos, gie the access bi haund an come back tae the app.\n\nMind: ye maun alloo baith "Photos" an "Videos", else twa-file Live Photos cannae find the companion video.</string>
+
+    <!-- ── Dialogs aboot "aw files access" ── -->
+    <string name="main_dialog_allfiles_title_delete">Deletin oreeginals awtomatic needs "aw files access"</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">This device disnae support deletin oreeginals awtomatic</string>
+    <string name="main_dialog_allfiles_title_replace">Replace mode needs "aw files access"</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">This device disnae support replace mode</string>
+    <string name="main_dialog_allfiles_title_location">We recommend giein the "aw files access" permeession</string>
+    <string name="main_dialog_allfiles_delete_message">"Delete the oreeginals efter processin" deletes the files straucht fae the disk (the photo an its companion video). This cannae be unduin, sae ye maun first gie the "aw files access" permeession.\n\nOnly efter authorisation daes the toggle become available, an then ye can turn it on.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">The current seestem (Android 10 or lawer) haes nae "aw files access" permeession an cannae delete files fae the disk, sae this device disnae support "Delete the oreeginals efter processin".\n\nYe can clean up the oreeginals bi haund throu the seestem gallerie efter the conversion.</string>
+    <string name="main_dialog_allfiles_replace_message">"Replace mode" writes the result straucht tae the files on the disk (the oreeginal is owerwritten). This cannae be unduin, sae ye maun first gie the "aw files access" permeession.\n\nOnly efter authorisation daes the toggle become available, an then ye can turn it on.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">The current seestem (Android 10 or lawer) haes nae "aw files access" permeession an cannae rewrite files on the disk, sae this device disnae support "replace mode".\n\nYe can keep convertin the staunart wey; the result gangs tae the gallerie folder.</string>
+    <string name="main_dialog_allfiles_location_message">On some devices (like Meizu), writin throu the seestem gallerie API strips the GPS metadata, sae the photo losses its location efter the conversion.\n\nWi the "aw files access" permeession the app writes straucht tae the gallerie folder an keeps the location metadata hale.\n\nConvertin warks withoot it tae, but on some devices the location may be lost.</string>
+
+    <!-- ── Ootput file name clash dialog ── -->
+    <string name="main_dialog_conflict_title">Ootput file name clash</string>
+    <string name="main_dialog_conflict_message">A file wi the same name already exists in the ootput folder:\n%1$s\n\nPick hou tae gang on.</string>
+    <string name="main_label_conflict_always">Uise this choice fur later clashes tae</string>
+
+    <!-- ── Buttons in the dialogs ── -->
+    <string name="main_btn_grant">Authorise</string>
+    <string name="main_btn_deny">Refuse</string>
+    <string name="main_btn_go_settings">Gang tae settins</string>
+    <string name="main_btn_cancel">Cancel</string>
+    <string name="main_btn_grant_access">Authorise</string>
+    <string name="main_btn_got_it">Got it</string>
+    <string name="main_btn_not_now">No the noo</string>
+    <string name="main_btn_skip">Skip</string>
+    <string name="main_btn_overwrite">Owerwrite</string>
+    <string name="main_btn_auto_rename">Rename awtomatic</string>
+
+    <!-- ── Conversion result / reasons fur a failed export (shawan wi "reason: %3$s") ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d soorce file deletit</item>
+        <item quantity="other">%1$d soorce files deletit</item>
+    </plurals>
+    <string name="main_delete_nothing">Nae oreeginals tae delete</string>
+    <string name="main_delete_partial">%1$d soorce files deletit (%2$d failed an keepit)</string>
+    <string name="main_delete_failed">Deletin oreeginals failed (file in uise or nae write permeession); they is keepit</string>
+    <string name="main_export_missing_output">Conversion result missin or tuim: %1$s</string>
+    <string name="main_export_missing_output_bare">Conversion result missin or tuim</string>
+    <string name="main_export_insert_null">MediaStore insert returned null</string>
+    <string name="main_export_output_stream">MediaStore ootput stream no available</string>
+    <string name="main_export_write_failed">Writin throu MediaStore failed: %1$s</string>
+    <string name="main_export_mkdir_failed">Cannae mak the gallerie folder %1$s</string>
+    <string name="main_export_dir_write_failed">Writin tae the gallerie folder failed: %1$s</string>
+    <string name="main_export_no_source">Cannae locate the soorce file; replace skipped</string>
+    <string name="main_export_companion_failed">Writin the companion file failed: %1$s</string>
+    <string name="main_export_source_dir_unwritable">The soorce file folder is no writable; the companion file couldnae be written back</string>
+    <string name="main_export_source_dir_unavailable">Soorce file folder no available: %1$s</string>
+    <string name="main_export_replace_failed">Replacin the soorce file failed: %1$s</string>
+    <string name="main_export_replace_failed_bare">Replacin the soorce file failed</string>
+</resources>

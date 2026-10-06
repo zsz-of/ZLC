@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Luxembourgish (lb) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Onbekannten Zilformat: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Net erkannt Live-Photo-Format (kee Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">D’Cover-Foto existéiert net oder ass eidel</string>
+    <string name="conv_video_missing">De Video existéiert net oder ass eidel</string>
+    <string name="conv_video_too_large">De Video ass ze grouss (%1$dMB), et kann kee Live Photo zesummegesat ginn, w.e.g. e kierzere Video auswielen</string>
+    <string name="conv_transcoded_too_large">De Video ass nom Transkodéieren ze grouss (%1$dMB), et kann kee Live Photo zesummegesat ginn</string>
+    <string name="conv_video_too_large_compose">De Video ass ze grouss (%1$dMB), et kann kee Live Photo zesummegesat ginn</string>
+    <string name="conv_cover_heic_go">D’Cover ass e HEIC-Bild (d’Go-Versioun ënnerstëtzt keng Transkodéierung, exportéiert w.e.g. um iPhone als JPEG a konvertéiert dann)</string>
+    <string name="conv_cover_invalid_heic">D’Cover ass kee gëltegt Bild (HEIC brauch d’Systemënnerstëtzung fir HEIF-Dekodéierung)</string>
+    <string name="conv_cover_not_jpeg_go">D’Cover ass kee JPEG-Bild (d’Go-Versioun ënnerstëtzt keng Transkodéierung, benotzt w.e.g. e JPEG-Foto)</string>
+    <string name="conv_cover_invalid_image">D’Cover ass kee gëltegt Bild (nëmme JPEG/WebP/PNG ënnerstëtzt)</string>
+    <string name="conv_reencode_failed">Nei Kodéierung vum Video huet feelgeschloen: %1$s</string>
+    <string name="conv_remux_failed">D’Neiverpakung vum Container huet feelgeschloen: %1$s</string>
+    <string name="conv_codec_unknown">Ass kee erkennbaren H.264/H.265-Video</string>
+    <string name="conv_codec_is">De Codec ass %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">De Video «%1$s» %2$s, nëmmen de Container z’änneren (Neiverpakung) ännert de Codec net, et kann kee Live Photo zesummegesat ginn.
+
+Ännert w.e.g. an «Astellungen → Video-Transkodéierung → Transkodéierungsmodus» op «Nei kodéieren», oder konvertéiert en z’éischt mat engem aneren Tool an e MP4 mam H.264/H.265-Codec.</string>
+    <string name="conv_hint_no_encoder">De Video ass kee Standard-MP4-Container (MOV / MKV / WebM / AVI asw.), an den aktuelle «Transkodéierungsmodus» kodéiert net nei, et kann kee Live Photo zesummegesat ginn.
+
+Ännert w.e.g. an «Astellungen → Video-Transkodéierung → Transkodéierungsmodus» op «Nei kodéieren» (d’Normalversioun huet een agebauten ffmpeg-Encoder; d’Go-Versioun huet keen Transcoder, benotzt w.e.g. d’Normalversioun), oder konvertéiert de Video z’éischt an e Standard-MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">Erkannt als %1$s</string>
+    <string name="conv_log_same_format_copied">Quell- a Zilformat sinn identesch, ouni Ännerung kopéiert (keng Qualitéitsverloscht)</string>
+    <string name="conv_log_extra_tracks_bypass">De Quellvideo huet Net-Audio-/Video-Spuren (%1$s), d’selwecht Format-Direktiwwergaang gëtt iwwersprongen, de komplette Schreifprozess gëtt benotzt fir ze botzen</string>
+    <string name="conv_log_ts_fallback">D’Quell huet keen Zäitstempel fir d’Cover-Bild, fallt wéi spezifizéiert op d’Mëtt vum Video zréck</string>
+    <string name="conv_log_brand_normalized">D’Video-Container-Mark gouf normaliséiert (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">De Video huet zousätzlech Spuren (%1$s), konnt net gebotzt ginn, ouni Ännerung ausgeginn (dëst Produkt kann op e puer Geräter eventuell net duerch laange Klick ofgespillt ginn)</string>
+    <string name="conv_log_extra_tracks_removed">Zousätzlech Video-Spuren goufen erausgeholl (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">De Quellvideo %1$s; nëmmen de Container nei ze verpakken léist et net (%2$s), wann d’Produkt ëmmer nach net duerch laange Klick ofgespillt ka ginn, wielt an «Astellungen → Video-Transkodéierung → Transkodéierungsmodus» «Nei kodéieren»</string>
+    <string name="conv_log_reencoding">De Quellvideo %1$s, gëtt wéi an den Astellungen nei kodéiert als 8bit + AAC fir d’Album-Kompatibilitéit ze verbesseren</string>
+    <string name="conv_log_reencode_result_unusable">D’Resultat vun der Neikodéierung ass net benotzbar, ouni Ännerung ausgeginn (dëst Produkt kann op e puer Geräter eventuell net duerch laange Klick ofgespillt ginn)</string>
+    <string name="conv_log_reencode_still_risky">Nom Neikodéieren gëtt et ëmmer nach Risiko-Punkten (%1$s)</string>
+    <string name="conv_log_reencode_failed">Neikodéierung feelgeschloen (%1$s), ouni Ännerung ausgeginn (dëst Produkt kann op e puer Geräter eventuell net duerch laange Klick ofgespillt ginn)</string>
+    <string name="conv_log_cover_heic_converted">D’Cover ass HEIC (net JPEG), gouf an e Standard-JPEG transkodéiert a dann nei verpaakt</string>
+    <string name="conv_log_compose_sizes">Zesummesetze: Foto %1$dB + Video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Kee Transcoder aktivéiert: nëmmen d’Container-Mark ëmschreiwen (MOV → MP4), keng Neikodéierung</string>
+    <string name="conv_tag_convert">Konvertéieren</string>
+    <string name="conv_tag_transcode">Transkodéieren</string>
+    <string name="conv_tag_compose">Zesummesetze</string>
+    <string name="conv_blocker_no_encoder">Den agebauten Transcoder ass net verfügbar</string>
+    <string name="conv_blocker_mode_no_encode">Den aktuelle «Transkodéierungsmodus» kodéiert net nei</string>
+    <string name="conv_addon_unavailable">Den agebauten Transcoder ass net verfügbar</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-Transkodéierung feelgeschloen: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-Neiverpakung vum Container feelgeschloen: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">De Video gëtt mat ffmpeg an e Standard-MP4 transkodéiert (%1$s / crf %2$d / %3$s, nëmmen Video- an Audio-Spuren ginn erhale)</string>
+    <string name="conv_log_transcode_done">Video-Transkodéierung fäerdeg (%1$dKB)</string>
+    <string name="conv_log_remuxing">De Video-Container gëtt an e Standard-MP4 nei verpaakt (nëmmen de Container gëtt gewiesselt, keng Neikodéierung)</string>
+    <string name="conv_log_remux_done">Container-Neiverpakung fäerdeg (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Zesummesetze</string>
+    <string name="conv_reminder_cat_convert">Konvertéieren</string>
+    <string name="conv_reminder_cat_update">Update</string>
+    <string name="conv_reminder_video_over3s_title">Video méi laang wéi 3 Sekonnen</string>
+    <string name="conv_reminder_video_over3s_message">Den ausgewielte Video ass méi laang wéi 3 Sekonnen, de Live Photo kann Kompatibilitéitsproblemer hunn:
+
+• Méint eventuell net normal ofgespillt ginn
+• Méint eventuell net vun der Systemgalerie erkannt ginn
+• E puer Geräter kënnen de Live Photo eventuell net erkennen</string>
+    <string name="conv_reminder_legacy_go_title">Al Versioun entdeckt</string>
+    <string name="conv_reminder_legacy_go_message">Op dësem Apparat ass nach déi al Versioun (Go-Versioun) vun der App installéiert, déi hei net méi funktionnéiert; deinstalléiert se fir Plaz fräizemaachen.</string>
+    <string name="conv_reminder_replace_risk_title">Den Ersetzungsmodus huet e Beschädegungsrisiko</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Den Ersetzungsmodus schreift d’Konvertéierungsresultat direkt zréck an déi original Fichieren, nom Iwwerschreiwe kënnen d’Originaler net méi hiergestallt ginn.
+
+• Wann d’App beim Schreiwen ënnerbrach gëtt, de Späicher ze wéineg ass oder d’Autorisatioun zréckgezunn gëtt, kënnen Quellfichiere beschiedegt ginn
+• D’Konvertéierung selwer garantéiert keng vollstänneg Erfolleg, bei engem Feeler kënnen d’Quellfichieren scho net méi benotzbar sinn
+• Et gëtt recommandéiert z’éischt mat engem oder zwee Fichieren ze probéieren, an no der Kontroll a Mass ze verschaffen
+• Maacht w.e.g. selwer e Backup vu wichtege Fotoen
+
+Dës Funktioun gëtt «wéi se ass» ubueden, d’Benotzungsrisiko dréit Dir selwer; den Auteur hëlt keng Verantwortung fir beschiedegt oder verluer Fichieren.</string>
+    <string name="conv_reminder_dont_remind">Net méi uweisen</string>
+    <string name="conv_reminder_confirm_ok">Verstanen</string>
+    <string name="conv_reminder_uninstall">Deinstalléieren</string>
+</resources>

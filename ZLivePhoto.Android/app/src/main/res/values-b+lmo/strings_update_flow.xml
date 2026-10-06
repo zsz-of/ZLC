@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Lombard (lmo) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">El sa pò nò ciapà l’indirizz de descarga de GitHub; prœuva ancamò pussee tard.</string>
+    <string name="update_flavor_standard">Version normal</string>
+    <string name="update_flavor_go">Version Go</string>
+    <string name="update_lanzou_url_missing">Questa version la gh’ha nò on leam de descarga su Lanzou; te pòdet descargà de GitHub.</string>
+    <string name="update_apk_direct_missing">Questa version la gh’ha nò el leam dirett del pachet de installazion che la ghe corrispond; và su la pagina di Release de GitHub e serna l’APK giust.</string>
+    <string name="update_install_permission_missing">El permess «Installa app sconossude» l’è nò concedud: sa pò nò installà deperlù. Và in di impostazion del sistema, concedel e poeu prœuva ancamò.</string>
+    <string name="update_error_unknown">Eror sconossud</string>
+    <string name="update_fail_lanzou">Descarga de Lanzou falida</string>
+    <string name="update_fail_github">Descarga de GitHub falida</string>
+    <string name="update_lanzou_resolving">Dree a lensg el leam de descarga de Lanzou…</string>
+    <string name="update_lanzou_downloading">Dree a descargà de Lanzou…</string>
+    <string name="update_github_downloading">Dree a descargà de GitHub…</string>
+    <string name="update_unzipping">Dree a dezipà el pachet de installazion…</string>
+    <string name="update_notes_empty">Questa version la gh’ha ancamò nò di note de l’agiornament.</string>
+    <string name="update_use_normal_title">Dòpra la version normal</string>
+    <string name="update_use_normal_body">El sistema de quest dispositiv l’è Android 10 opur pussee noeuv, donca la version lejera Go la funssiona pussee nò e la veggia version la sa pò pussee nò doperà.
+
+Gh’è giamò la version normal (ZLC) installada chì: dèlla dervida e seguita cont quella (la version noeuva la darà pussee nò ona version Go; la veggia la pò vess disinstallada per liberà spazzi).</string>
+    <string name="update_open_normal">Dèrv la version normal</string>
+    <string name="update_must_update_title">Te gh’hee de aggiornà prima de seguità a doperà l’app</string>
+    <string name="update_forced_body">El sistema de quest dispositiv l’è Android 10 opur pussee noeuv, donca la version lejera Go la funssiona pussee nò e la veggia version la sa pò pussee nò doperà; gnancora la version noeuva la darà ona version Go.
+
+Conettet a la red e struca «Prœuva ancamò» per ciapà el pachet de installazion de la version normal.</string>
+    <string name="update_retry">Prœuva ancamò</string>
+    <string name="update_switch_normal_body">El sistema de quest dispositiv l’è Android 10 opur pussee noeuv, donca la version lejera Go la funssiona pussee nò: la veggia version la sa pò pussee nò doperà.
+Descarga e installa la version normal e poeu seguita cont quella (la version noeuva la darà pussee nò ona version Go).</string>
+    <string name="update_downloading_title">Descarga de l’agiornament</string>
+    <string name="update_cancel">Anulla</string>
+    <string name="update_need_permission_title">El voeur el permess de installazion</string>
+    <string name="update_need_permission_body">Per installà la version noeuva el serv el permess del sistema «Installa app sconossude».
+
+Struca «Và a concedel», dà el permess in di impostazion e poeu torna in de l’app: l’installazion la seguitarà deperlù (senza descargà ancamò).</string>
+    <string name="update_grant">Và a concedel</string>
+    <string name="update_notice_title">Avii</string>
+    <string name="update_got_it">Ho capid</string>
+    <string name="update_notes_title">v%1$s · Note de l’agiornament</string>
+    <string name="update_back">Indree</string>
+    <string name="update_title_switch_normal">Pasa a la version normal</string>
+    <string name="update_title_reinstall">Reinstalla questa version</string>
+    <string name="update_title_new_version">Trovada ona version noeuva</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Questa la vegn descargada e reinstallada (la sovrascriv l’app de adess).
+Questa funssion la serv per i test de regression del sistema d’agiornament.</string>
+    <string name="update_view_notes">Varda i note de l’agiornament</string>
+    <string name="update_lanzou_unavailable">Lanzou al moment l’è nò disponibil</string>
+    <string name="update_download_lanzou">Descarga de Lanzou</string>
+    <string name="update_download_github">Descarga de GitHub</string>
+    <string name="update_download_browser">Descarga dal navegador</string>
+    <string name="update_later">Agiorna nò adess</string>
+    <string name="update_later_switch">Pasa nò adess</string>
+    <string name="update_skip_version">Salta questa version</string>
+</resources>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Texter för konvertering / omkodning / påminnelser (core/Converter.kt, core/FfmpegAddon.kt, ui/Reminders.kt).
+  Nyckelprefix conv_; får inte bytas namn när det väl är bestämt (alla språkfilerna använder samma nyckeluppsättning).
+  Platshållare använder %1$s / %1$d; `\n` är radbrytning.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: parameter- och materialvalidering (undantag → gränssnittet visar felets orsak) ========== -->
+    <string name="conv_unknown_target">Okänt målformat: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Okänt Live Photo-format (inte ett Google-/OPPO-/vivo-/Xiaomi-/Apple-Live Photo)</string>
+    <string name="conv_cover_photo_missing">Omslagsbilden saknas eller är tom</string>
+    <string name="conv_video_missing">Videon saknas eller är tom</string>
+    <string name="conv_video_too_large">Videon är för stor (%1$d MB) för att kunna skapa en Live Photo; välj en kortare video</string>
+    <string name="conv_transcoded_too_large">Videon är fortfarande för stor efter omkodning (%1$d MB); kan inte skapa en Live Photo</string>
+    <string name="conv_video_too_large_compose">Videon är för stor (%1$d MB); kan inte skapa en Live Photo</string>
+
+    <!-- Converter.kt: omslag (HEIC / ej JPEG) -->
+    <string name="conv_cover_heic_go">Omslaget är en HEIC-bild (lättviktsversionen kan inte omkoda; exportera den som JPEG på iPhone och konvertera sedan)</string>
+    <string name="conv_cover_invalid_heic">Omslaget är inte en giltig bild (HEIC kräver systemstöd för HEIF-avkodning)</string>
+    <string name="conv_cover_not_jpeg_go">Omslaget är inte en JPEG-bild (lättviktsversionen kan inte omkoda; använd ett JPEG-foto i stället)</string>
+    <string name="conv_cover_invalid_image">Omslaget är inte en giltig bild (endast JPEG/WebP/PNG stöds)</string>
+
+    <!-- Converter.kt: omkodnings-/ompaketeringsfel och tipset ”att bara byta behållare räddar inte kodeken” -->
+    <string name="conv_reencode_failed">Omkodning av videon misslyckades: %1$s</string>
+    <string name="conv_remux_failed">Ompaketering av behållaren misslyckades: %1$s</string>
+    <string name="conv_codec_unknown">Inte en igenkännbar H.264-/H.265-video</string>
+    <string name="conv_codec_is">Kodeken är %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Videon ”%1$s” %2$s; att bara byta behållare (ompaketering) ändrar inte kodeken, så ingen Live Photo kan skapas.\n\nStäll in ”Inställningar → Videoomkodning → Omkodningsläge” på ”Omkoda”, eller konvertera den till en H.264-/H.265-kodad MP4 med ett annat verktyg först.</string>
+    <string name="conv_hint_no_encoder">Videon är inte i en standard-MP4-behållare (MOV / MKV / WebM / AVI m.fl.) och det aktuella ”Omkodningsläget” kodar inte om, så ingen Live Photo kan skapas.\n\nStäll in ”Inställningar → Videoomkodning → Omkodningsläge” på ”Omkoda” (standardversionen har en inbyggd ffmpeg-omkodare; Go-lättviktsversionen saknar omkodare, använd standardversionen), eller konvertera videon till en standard-MP4 (H.264/H.265) först.</string>
+
+    <!-- ========== Konverteringslogg (visas i listobjektets statusfält och i loggpanelen) ========== -->
+    <string name="conv_log_detected">Identifierad som %1$s</string>
+    <string name="conv_log_same_format_copied">Käll- och målformatet är identiska; kopierades oförändrat (förlustfritt)</string>
+    <string name="conv_log_extra_tracks_bypass">Källvideon innehåller spår som inte är ljud/video (%1$s); hoppar över direktoverföring för samma format och använder hela skrivflödet för rensning</string>
+    <string name="conv_log_ts_fallback">Källan saknar tidsstämpel för omslagsbildrutan; faller tillbaka till videons mittpunkt enligt specifikationen</string>
+    <string name="conv_log_brand_normalized">Normaliserade videobehållarens varumärke (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Videon innehåller extra spår (%1$s) som inte kan rensas; matades ut oförändrad (resultatet kan på vissa enheter inte spelas upp vid långtryck)</string>
+    <string name="conv_log_extra_tracks_removed">Tog bort videons extra spår (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Källvideo %1$s; att bara ompaketera behållaren kan inte lösa det (%2$s). Om resultatet fortfarande inte kan spelas upp vid långtryck, ställ in ”Inställningar → Videoomkodning → Omkodningsläge” på ”Omkoda”</string>
+    <string name="conv_log_reencoding">Källvideo %1$s; omkodas enligt inställningarna till 8 bit + AAC för bättre gallerikompatibilitet</string>
+    <string name="conv_log_reencode_result_unusable">Omkodningsresultatet är oanvändbart; matades ut oförändrat (resultatet kan på vissa enheter inte spelas upp vid långtryck)</string>
+    <string name="conv_log_reencode_still_risky">Risker kvarstår efter omkodning (%1$s)</string>
+    <string name="conv_log_reencode_failed">Omkodningen misslyckades (%1$s); matades ut oförändrat (resultatet kan på vissa enheter inte spelas upp vid långtryck)</string>
+    <string name="conv_log_cover_heic_converted">Omslaget var HEIC (inte JPEG); omkodades till standard-JPEG före paketering</string>
+    <string name="conv_log_compose_sizes">Sammansättning: foto %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Omkodaren är inte aktiverad: skriver bara om behållarens varumärke (MOV → MP4), ingen omkodning</string>
+
+    <!-- Loggetiketter (visas i gränssnittet som ”[etikett] text”) -->
+    <string name="conv_tag_convert">Konvertering</string>
+    <string name="conv_tag_transcode">Omkodning</string>
+    <string name="conv_tag_compose">Sammansättning</string>
+
+    <!-- Orsaker till att omkodningsläget blockerar (läggs till i varningstexten ovan) -->
+    <string name="conv_blocker_no_encoder">Den inbyggda omkodaren är inte tillgänglig</string>
+    <string name="conv_blocker_mode_no_encode">Det aktuella ”Omkodningsläget” kodar inte om</string>
+
+    <!-- ========== FfmpegAddon.kt: inbyggd ffmpeg-omkodning / ompaketering ========== -->
+    <string name="conv_addon_unavailable">Den inbyggda omkodaren är inte tillgänglig</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-omkodning misslyckades: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-ompaketering av behållaren misslyckades: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Omkodar videon till standard-MP4 med ffmpeg (%1$s / crf %2$d / %3$s, behåller endast video- och ljudspår)</string>
+    <string name="conv_log_transcode_done">Videoomkodning klar (%1$d kB)</string>
+    <string name="conv_log_remuxing">Ompaketerar videobehållaren till standard-MP4 (endast behållare, ingen omkodning)</string>
+    <string name="conv_log_remux_done">Ompaketering av behållaren klar (%1$d kB)</string>
+
+    <!-- ========== Reminders.kt: dialogrutan ”Visa inte igen” ========== -->
+    <string name="conv_reminder_cat_compose">Sammansättning</string>
+    <string name="conv_reminder_cat_convert">Konvertering</string>
+    <string name="conv_reminder_cat_update">Uppdatering</string>
+    <string name="conv_reminder_video_over3s_title">Videon är längre än 3 sekunder</string>
+    <string name="conv_reminder_video_over3s_message">Den valda videon är längre än 3 sekunder, vilket kan ge kompatibilitetsproblem med den sammansatta Live Photo-bilden:\n\n• Den kanske inte spelas upp korrekt\n• Den kanske inte känns igen av systemgalleriet\n• Vissa enheter kanske inte känner igen denna Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">Äldre version hittades</string>
+    <string name="conv_reminder_legacy_go_message">En äldre version (Go-versionen) av appen finns fortfarande installerad på den här enheten. Den versionen fungerar inte längre här; du kan avinstallera den för att frigöra utrymme.</string>
+    <string name="conv_reminder_replace_risk_title">Ersättningsläget har risk för skador</string>
+    <!-- formatted="false": texten innehåller ett % som bara är en literal (100 %), och strängen
+         används aldrig med argument; att deklarera den som icke-formatsträng hindrar aapt2/lint
+         från att validera den enligt String.format. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Ersättningsläget skriver konverteringsresultatet direkt tillbaka till originalfilerna; när originalen har skrivits över kan de inte återställas.\n\n• Om appen avbryts, lagringsutrymmet tar slut eller behörigheten återkallas under skrivningen kan källfilerna skadas\n• Ingen konvertering kan garanteras lyckas, och vid ett misslyckande kan källfilerna redan vara oanvändbara\n• Prova först med en eller två filer och kontrollera att allt fungerar innan du bearbetar i bulk\n• Säkerhetskopiera viktiga foton själv först\n\nDen här funktionen tillhandahålls i befintligt skick; du använder den på egen risk, och författaren ansvarar inte för skadade eller förlorade filer.</string>
+    <string name="conv_reminder_dont_remind">Visa inte igen</string>
+    <string name="conv_reminder_confirm_ok">Uppfattat</string>
+    <string name="conv_reminder_uninstall">Avinstallera</string>
+
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Кыргызча (Kyrgyz) strings — жаңыртуу / жүктөө билдирүүлөрү (strings_update.xml).
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Кыргыз тилинде (кирилл); эне тилдеги текшерүү сунушталат.
+  Бардык key базалык файлга дал келет; %1$s / %1$d орун толтургучтар сакталган.
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud бөлүшүү барагы жана түз шилтемени талдоо ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud бөлүшүүсү жокко чыгарылды же файл жок, GitHub аркылуу жүктөңүз</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud бөлүшүүсү жокко чыгарылды, GitHub аркылуу жүктөңүз</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud жүктөө шилтемесин талдоо ишке ашкан жок</string>
+    <string name="update_lanzou_need_passwd">Бул Lanzou Cloud бөлүшүүсү кирүү кодун талап кылат, GitHub аркылуу жүктөңүз (же Release жазуусунан кирүү кодун издеңиз)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud кирүү коду туура эмес</string>
+    <string name="update_err_resolve_failed">Талдоо ишке ашкан жок</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud анти-краулер текшерүүсү ишке ашкан жок</string>
+    <string name="update_err_no_frame">Lanzou Cloud жүктөө барагын талдоо мүмкүн эмес (жүктөө фрейми табылган жок)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud файл идентификаторун талдоо мүмкүн эмес</string>
+    <string name="update_err_no_sign">Lanzou Cloud кол тамгасын талдоо мүмкүн эмес</string>
+    <string name="update_err_ajax_request">API сурамжылоосу ишке ашкан жок</string>
+    <string name="update_err_api_request">Lanzou Cloud API сурамжылоосу ишке ашкан жок</string>
+    <string name="update_err_empty_direct">Lanzou Cloud бош жүктөө дарегин кайтарды</string>
+    <string name="update_err_direct_expired">Lanzou Cloud жүктөө дарегинин мөөнөтү бүттү, кайра алыңыз</string>
+    <string name="update_err_http_request">Сурамжылоо ишке ашкан жок (HTTP %1$d)</string>
+
+    <!-- ========== Жүктөө ========== -->
+    <string name="update_err_connect">Жүктөө серверине туташуу мүмкүн эмес: %1$s</string>
+    <string name="update_err_http">Жүктөө ишке ашкан жок (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Жүктөө байланышын орнотуу мүмкүн эмес</string>
+    <string name="update_err_empty">Жүктөлгөн мазмун бош</string>
+    <string name="update_err_incomplete">Жүктөө толук эмес (%1$d / %2$d байт алынды), кайра жүктөңүз</string>
+    <string name="update_err_interrupted">Жүктөө үзгүлтүккө учурады: %1$s</string>
+
+    <!-- ========== Орнотуу топтомун текшерүү жана орнотуу ========== -->
+    <string name="update_err_not_apk">Жүктөлгөн файл жарактуу орнотуу топтому эмес (веб-барак болушу же шилтеме мөөнөтү бүткөн болушу мүмкүн), кайра жүктөңүз же GitHub аркылуу жүктөңүз.</string>
+    <string name="update_err_apk_incomplete">Орнотуу топтомунун мазмуну толук эмес, кайра жүктөңүз же GitHub аркылуу жүктөңүз.</string>
+    <string name="update_err_apk_unparsable">Орнотуу топтомун талдоо мүмкүн эмес (жүктөө толук эмес болушу мүмкүн), кайра жүктөңүз же GitHub аркылуу жүктөңүз.</string>
+    <string name="update_err_no_install_permission">«Белгисиз колдонмолорду орнотуу» уруксаты азырынча алынган жок</string>
+    <string name="update_err_installer_failed">Системалык орнотуучуну чакыруу мүмкүн эмес (%1$s), файл менеджеринен орнотуу топтомун кол менен ачып орнотуңуз</string>
+
+</resources>

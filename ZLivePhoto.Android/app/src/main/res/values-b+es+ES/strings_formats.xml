@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC — cadenas en español de España (es-ES).
+  Nombres de formato que muestran los complementos y avisos de fallo visibles para el usuario.
+  El prefijo de clave fmt_ no debe cambiarse nunca.
+  res/values/ es chino simplificado (reserva); otros idiomas van en values-<locale>/strings_formats.xml.
+  Nota: FormatPlugin.display sigue ofreciendo sus nombres en chino para los puntos de llamada antiguos
+  (MainActivity/AlbumScanner/Converter); su tabla LEGACY_ZH_NAMES se corresponde con este archivo y hay que
+  sincronizarla al cambiar estos textos, hasta que esos puntos de llamada migren a displayRes.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Extracción</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Live Photo de Honor</string>
+    <string name="fmt_meizu">Live Photo de Meizu</string>
+    <string name="fmt_nubia">Live Photo de Nubia</string>
+    <string name="fmt_oppo">Live Photo de OPPO</string>
+    <string name="fmt_vivo">Live Photo de vivo</string>
+    <string name="fmt_vivo_single">Live Photo de vivo (archivo único)</string>
+    <string name="fmt_xiaomi">Live Photo de Xiaomi</string>
+
+    <!--
+      Avisos de fallo visibles que lanzan los complementos (texto de IOException): llegan a la barra
+      de estado y a «Detalles del estado» a través de e.message, por lo que también son texto visible.
+      Los complementos no tienen Context, así que usan CoreText.of(...) (core/FfmpegAddon.kt); sin
+      inicializar devuelve cadena vacía para no tocar la API de Android en pruebas unitarias de JVM.
+    -->
+    <string name="fmt_err_apple_mov_missing">No se encontró el archivo de vídeo .mov con el mismo nombre</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Al archivo MOV le falta el box ftyp</string>
+    <string name="fmt_err_extract_read">Extracción es un formato de salida y no debe leerse como formato de entrada</string>
+    <string name="fmt_err_no_primary_jpeg">No se encontró la imagen JPEG principal</string>
+    <string name="fmt_err_no_mp4_after_jpeg">No se encontró un vídeo MP4 válido después del JPEG (falta el box ftyp)</string>
+    <string name="fmt_err_mp4_parse_failed">No se pudo analizar el flujo de vídeo MP4</string>
+    <string name="fmt_err_nubia_too_short">El archivo es demasiado corto; no parece una Live Photo de Nubia</string>
+    <string name="fmt_err_nubia_no_magic">Falta el número mágico nubiaVpfile al final</string>
+    <string name="fmt_err_nubia_jpeg_len">Longitud de JPEG no válida registrada al final: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Faltan los bytes de relleno 0x00 entre el JPEG y el vídeo</string>
+    <string name="fmt_err_nubia_empty_video">La longitud del vídeo incrustado es 0</string>
+    <string name="fmt_err_vivo_no_marker">No se encontró la marca vivo livephoto al final del JPG</string>
+    <string name="fmt_err_vivo_companion_missing">Falta el archivo de vídeo asociado: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">No se pudo analizar el cuerpo del JPG</string>
+    <string name="fmt_err_vivo_companion_invalid">El MP4 asociado no es válido (falta el box ftyp)</string>
+</resources>

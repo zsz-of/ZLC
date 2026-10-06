@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Azerbaijani (az) strings — main screen / gallery picker.
+  Translated from res/values/strings_screens.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Plural quantities follow CLDR for Azerbaijani: one / other.
+-->
+<resources>
+    <!-- Üst sətrin altbaşlığı -->
+    <string name="screen_app_subtitle">Live Photo formatları arasında çevrilmə</string>
+    <!-- Üst sətrin sağında seçilmiş fayl sayı (say ilə bağlıdır, plurals istifadə olunur) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d fayl</item>
+        <item quantity="other">%1$d fayl</item>
+    </plurals>
+    <!-- Üst sətrin ayarlar girişi (yalnız əlçatanlıq oxunuşu) -->
+    <string name="screen_settings">Ayarlar</string>
+
+    <!-- Çıxış formatı seçim dialoqu -->
+    <string name="screen_select_output_format">Çıxış formatını seçin</string>
+    <string name="screen_selected">Seçildi</string>
+    <string name="screen_vivo_single_warning">⚠ Çox köhnə modellər bu formatı tanımaya bilər</string>
+    <string name="screen_extract_blocked">⚠ Növbədə sintez tapşırıqları var; çıxarma seçilə bilməz</string>
+
+    <!-- Format seçimlərinin qısa adları (uzun adlar üçün strings_formats.xml → fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (tək fayl)</string>
+    <string name="screen_format_vivo">vivo (iki fayl)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Çıxarma</string>
+
+    <!-- Alət qutusu BottomSheet -->
+    <string name="screen_toolbox">Alət qutusu</string>
+    <string name="screen_batch_import">Toplu idxal</string>
+    <string name="screen_batch_import_desc">Bütün albomu skan edir və Live Photo-ları toplu tanıyır</string>
+    <string name="screen_compose">Live Photo yarat</string>
+    <string name="screen_compose_desc">Bir fotoşəkil və bir video seçib cütləşdirərək sintez edin</string>
+    <string name="screen_replace_mode">Əvəzetmə rejimi</string>
+    <string name="screen_replace_mode_desc">Çevrilmə nəticələri yeni fayl yaratmadan birbaşa orijinal fayllara yazılır</string>
+    <string name="screen_need_all_files_access_hint">„Bütün fayllara giriş“ icazəsi tələb olunur; vermək üçün buraya toxunun</string>
+    <string name="screen_agree_and_enable">Razıyam və aktivləşdir</string>
+
+    <!-- Boş vəziyyət / alt idarəetmə paneli -->
+    <string name="screen_empty_no_files">Hələ fayl əlavə edilməyib</string>
+    <string name="screen_view_detail">Ətraflı bax</string>
+    <string name="screen_add_files">Fayl əlavə et</string>
+    <string name="screen_output_format">Çıxış formatı: %1$s</string>
+    <string name="screen_delete_original">Emaldan sonra orijinalları sil</string>
+    <string name="screen_need_all_files_access_view">„Bütün fayllara giriş“ icazəsi tələb olunur; baxmaq üçün toxunun</string>
+    <string name="screen_clear">Təmizlə</string>
+    <string name="screen_stop">Emalı dayandır</string>
+    <string name="screen_start_convert">Çevrilməyə başla</string>
+
+    <!-- Vəziyyət təfərrüatları dialoqu -->
+    <string name="screen_status_detail">Vəziyyət təfərrüatları</string>
+    <string name="screen_long_press_copy">Mətni seçib kopyalamaq üçün uzun basın</string>
+    <string name="screen_copy">Kopyala</string>
+    <string name="screen_close">Bağla</string>
+
+    <!-- Albom seçicisi -->
+    <string name="screen_back">Geri</string>
+    <string name="screen_picker_title_select">Live Photo seçin</string>
+    <string name="screen_album_count">Albom %1$d</string>
+    <string name="screen_album_collapse_cover">Albom örtüyünü yığ</string>
+    <string name="screen_album_expand_cover">Albom örtüyünü aç</string>
+    <string name="screen_scanning_progress">Skan edilir %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d foto</item>
+    </plurals>
+    <string name="screen_select_all">Hamısını seç</string>
+    <string name="screen_no_albums">Əlçatan albom yoxdur</string>
+    <string name="screen_no_media">Live Photo tapılmadı</string>
+    <string name="screen_no_media_compose">Fotoşəkil və ya video tapılmadı</string>
+    <string name="screen_import">İdxal</string>
+    <string name="screen_import_count">İdxal: %1$d</string>
+    <string name="screen_import_mixed">İdxal: %1$d foto · %2$d video</string>
+    <string name="screen_search">Axtar</string>
+    <string name="screen_search_collapse">Axtarışı yığ</string>
+    <string name="screen_search_hint">Ada görə axtar</string>
+    <string name="screen_search_clear">Axtarışı təmizlə</string>
+    <string name="screen_sort_date">Tarix</string>
+    <string name="screen_sort_size">Ölçü</string>
+    <string name="screen_sort_name">Ad</string>
+    <string name="screen_sort_asc">Artan</string>
+    <string name="screen_sort_desc">Azalan</string>
+
+    <!-- Albom qruplarının tarix etiketləri (%1$d və s. rəqəm doldurucularıdır, tərcümədə sıra dəyişdirilə bilər) -->
+    <string name="screen_date_today">Bu gün</string>
+    <string name="screen_date_yesterday">Dünən</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Suomenkieliset merkkijonot (fi).
+  Käännetty tiedostoista res/values/strings_*.xml (yksinkertaistettu kiina, varakieliasetus).
+  Jokainen avain vastaa perustiedostoa; paikkamerkit (%1$s / %1$d) ja koodaussekvenssit on säilytetty ennallaan.
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Pura</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honorin Live Photo</string>
+    <string name="fmt_meizu">Meizun Live Photo</string>
+    <string name="fmt_nubia">Nubian Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivon Live Photo</string>
+    <string name="fmt_vivo_single">vivon yksitiedostoinen Live Photo</string>
+    <string name="fmt_xiaomi">Xiaomin Live Photo</string>
+
+    <!--
+      Liitännäisen käyttäjälle näkyvät virheilmoitukset (IOException-tekstit): ne päätyvät
+      MainActivityn/Converterin e.message-kentän kautta tilapalkkiin ja tilan tietoihin,
+      joten ne ovat käyttäjälle näkyvää tekstiä ja siksi myös resursseina.
+    -->
+    <string name="fmt_err_apple_mov_missing">Samannimistä .mov-videotiedostoa ei löytynyt</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV-tiedostosta puuttuu ftyp-box</string>
+    <string name="fmt_err_extract_read">Pura on tulostemuoto, eikä sitä voi lukea syöttömuotona</string>
+    <string name="fmt_err_no_primary_jpeg">Ensisijaista JPEG-kuvaa ei löytynyt</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG:n jälkeen ei löytynyt kelvollista MP4-videota (ftyp-box puuttuu)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4-videovirran jäsennys epäonnistui</string>
+    <string name="fmt_err_nubia_too_short">Tiedosto on liian lyhyt ollakseen Nubian Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">nubiaVpfile-perän taikanumero puuttuu</string>
+    <string name="fmt_err_nubia_jpeg_len">Perään tallennettu JPEG-pituus on virheellinen: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG:n ja videon välistä puuttuvat 0x00-täytetavut</string>
+    <string name="fmt_err_nubia_empty_video">Upotetun videon pituus on 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG:n perästä ei löytynyt vivo livephoto -merkintää</string>
+    <string name="fmt_err_vivo_companion_missing">Rinnakkaisvideotiedosto puuttuu: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG:n rungon jäsennys epäonnistui</string>
+    <string name="fmt_err_vivo_companion_invalid">Rinnakkainen MP4 ei ole kelvollinen (ftyp-box puuttuu)</string>
+</resources>

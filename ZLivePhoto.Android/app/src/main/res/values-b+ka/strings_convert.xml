@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Georgian (ka) strings (conversion/transcoding/reminders).
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline).
+-->
+<resources>
+
+    <!-- Converter.kt: parameter & material validation (errors displayed in UI) -->
+    <string name="conv_unknown_target">უცნობი სატარგეტო ფორმატი: %1$s</string>
+    <string name="conv_unrecognized_live_photo">არაშემდგარი დინამიური ფოტოს ფორმატი (არ არის Google/OPPO/vivo/Xiaomi/Apple დინამიური ფოტო)</string>
+    <string name="conv_cover_photo_missing">საცურაო ფოტო არ არსებობს ან ცარიელია</string>
+    <string name="conv_video_missing">ვიდეო არ არსებობს ან ცარიელია</string>
+    <string name="conv_video_too_large">ვიდეო ზედმეტად დიდია (%1$dმბ), შეუძლებელია დინამიურ ფოტოსთან კომპოზიცია, აირჩიეთ უფრო კompactური ვიდეო</string>
+    <string name="conv_transcoded_too_large">რეკოდირების შემდეგ ვიდეო ზედმეტად დიდია (%1$dმბ), შეუძლებელია დინამიურ ფოტოსთან კომპოზიცია</string>
+    <string name="conv_video_too_large_compose">ვიდეო ზედმეტად დიდია (%1$dმბ), შეუძლებელია დინამიურ ფოტოსთან კომპოზიცია</string>
+
+    <!-- Converter.kt: cover (HEIC/Non-JPEG) -->
+    <string name="conv_cover_heic_go">საცურაო HEIC ფოტოა (მიკროფორმატის ვერსია არ უჭერს მხარს ექსპორტს, გთხოვთ მიიღოთ JPEG-შე iPhone-ზე შეცვლაში)</string>
+    <string name="conv_cover_invalid_heic">საცურაო არ არის მოქმედი ფოტო (HEIC მეორდება სისტემური HEIF დეკოდერი)</string>
+    <string name="conv_cover_not_jpeg_go">საცურაო არ არის JPEG ფოტო (მიკროფორმატის ვერსია არ უჭერს მხარს, გთხოვთ გამოიყენოთ JPEG-ფოტო)</string>
+    <string name="conv_cover_invalid_image">საცურაო არ არის მოქმედი ფოტო (მხოლოდ JPEG/WebP/PNG--ის მხარდაჭერა)</string>
+
+    <!-- Converter.kt: transcoding/re-encapsulation failure & "only changing container can't fix codec" hint -->
+    <string name="conv_reencode_failed">ვიდეო რეკოდირება წარუმატბლად: %1$s</string>
+    <string name="conv_remux_failed">კონტეინერის რეიწყება წარუმატბლად: %1$s</string>
+    <string name="conv_codec_unknown">არ არის გამოსადეგი H.264/H.265 ვიდეო</string>
+    <string name="conv_codec_is">კოდეკია %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">ვიდეო „%1$s" %2$s, მხოლოდ კონტეინერის შეცვლა (რეიწყება) ვერ შეიცვამს კოდეკს, შეუძლებელია დინამიურ ფოტოსთან კომპოზიცია.\n\nგთხოვთ „პარამეტრები → ვიდეო რეკოდირება → რეკოდირების დანახვა" შეცვალოთ „რეკოდირება", ან წინასწარ სხვა ინსტრუმენტებით შეცვალოთ H.264/H.265 კოდირების MP4.</string>
+    <string name="conv_hint_no_encoder">ვიდეო არ არის სტანდარტი MP4 კონტეინერი (MOV/MKV/WebM/AVI და ა.შ.), რადგან მიმდინარე „რეკოდირების მოდი" არ იწვევს რეკოდირებას, შეუძლებელია დინამიურ ფოტოსთან კომპოზიცია.\n\nგთხოვთ „პარამეტრები → ვიდეო რეკოდირება → რეკოდირების დანახვა" შეცვალოთ „რეკოდირება" (ნორმალური ვერსია შემოწირულია ffmpeg კოდირებით; მოკლე ვერსია არ შეიცავს კოდირების მოდულს, გთხოვთ გამოიყენოთ ნორმალური ვერსია), ან წინასწარ ვიდეო სტანდარტად MP4 (H.264/H.265)-მდე შეცვალოთ.</string>
+
+    <!-- ========== Conversion logs (displayed in list item status bar and log panel) ========== -->
+    <string name="conv_log_detected">განსაზღვრულია როგორც %1$s</string>
+    <string name="conv_log_same_format_copied">წყარო და სატარგეტო ფორმატი ერთნაირია, ორიგინალური ასლი (ნულოვანი დანაკარგი)</string>
+    <string name="conv_log_extra_tracks_bypass">წყაროს ვიდეო შეიცავს არა-ავტო/არაავტო ტრეკებს (%1$s), გადატვირთული ტრეკის სწრაფელად, გამოსატანი სრული პროცესით სწორდება</string>
+    <string name="conv_log_ts_fallback">წყარო ცალ წუთის ვიდეოს დროშულს, სტანდარტის მიხედვით უკან - შუაში ვიდევ</string>
+    <string name="conv_log_brand_normalized">ვიდეო კონტეინერის ბრენდი გათანაბრდა (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">ვიდეო შეიცავს დამატებით ტრეკებს (%1$s), შეუძლებელია სწორება, გამოსატანი ორიგინალურად (გამოსახულება არ შეიძლება ჩაითვალოს ზოგიერთ მოდელზე ზედიზედ დაკვრის შემდეგ)</string>
+    <string name="conv_log_extra_tracks_removed">დამატებითი ტრეკები ამოღებულია (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">წყაროს ვიდეო%1$s; მხოლოდ კონტეინერის რეიწყება ვერ გადაჭრის პრობლემას (%2$s), თუ გალმობები შეიძლება ჩაითვალოს ზედიზედ დაკვრის შემდეგ, „პარამეტრები → ვიდეო რეკოდირება → რეკოდირების დანახვა" შეცვალეთ „რეკოდირება"</string>
+    <string name="conv_log_reencoding">წყაროს ვიდეო%1$s, დაყენებით 8bit + AAC-ში გამოსახულების საცავისთვის განზავება</string>
+    <string name="conv_log_reencode_result_unusable">რეკოდირების შედეგი გამოუსადეგარია, გამოსატანი ორიგინალურად (გამოსახულება არ შეიძლება ჩაითვალოს ზოგიერთ მოდელზე ზედიზედ დაკვრის შემდეგ)</string>
+    <string name="conv_log_reencode_still_risky">რეკოდირების შემდეგაც მაინც სიფრთხილის პუნქტი (%1$s)</string>
+    <string name="conv_log_reencode_failed">რეკოდირება წარუმატბლად (%1$s), გამოსატანი ორიგინალურად (გამოსახულება არ შეიძლება ჩაითვალოს ზოგიერთ მოდელზე ზედიზედ დაკვრის შემდეგ)</string>
+    <string name="conv_log_cover_heic_converted">საცურაო HEIC (არა JPEG), სტანდარტად JPEG-მდე გადაყვანილი, შემდეგ გამოსატანი</string>
+    <string name="conv_log_compose_sizes">კომპოზიცია: ფოტო %1$dB + ვიდეო %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">კოდირების მოდული ჩართული არ არის: მხოლოდ კონტეინერის ბრენდი შეცვლილი (MOV → MP4), რეკოდირება არ ხდება</string>
+
+    <!-- Log labels (displayed as "[label] text") -->
+    <string name="conv_tag_convert">შეცვლა</string>
+    <string name="conv_tag_transcode">რეკოდირება</string>
+    <string name="conv_tag_compose">სინთეზი</string>
+
+    <!-- Transcoding mode blockers (combined into above warning text) -->
+    <string name="conv_blocker_no_encoder">შემოწირული კოდირების მოდული ხელმისაწვდომი არ არის</string>
+    <string name="conv_blocker_mode_no_encode">მიმდინარე „რეკოდირების დანახვა" არ იწვევს რეკოდირებას</string>
+
+    <!-- ========== FfmpegAddon.kt: built-in ffmpeg transcoding/re-encapsulation ========== -->
+    <string name="conv_addon_unavailable">შემოწირული კოდირების მოდული ხელმისაწვდომი არ არის</string>
+    <string name="conv_addon_transcode_failed">ffmpeg რეკოდირების წარუმატბლად: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg კონტეინერის რეიწყება წარუმატბლად: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg გამოიყენება ვიდეოს სტანდარტად MP4-მდე გადასართავად (%1$s / crf %2$d / %3$s, მხოლოდ ვიდეო და ავტო ტრეკები შეინარჩუნება)</string>
+    <string name="conv_log_transcode_done">ვიდეოს ტრანესკოდირება დასრულდა (%1$dKB)</string>
+    <string name="conv_log_remuxing">ვიდეო კონტეინერის რეიწყება სტანდარტად MP4-მდე (მხოლოდ კონტეინერის შეცვლა, რეკოდირება არ ხდება)</string>
+    <string name="conv_log_remux_done">კონტეინერის რეიწყება დასრულდა (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: "Don't remind again" dialog ========== -->
+    <string name="conv_reminder_cat_compose">კომპოზიცია</string>
+    <string name="conv_reminder_cat_convert">შეცვლა</string>
+    <string name="conv_reminder_cat_update"> განახლება</string>
+    <string name="conv_reminder_video_over3s_title">ვიდეო 3 წამზე მეტი</string>
+    <string name="conv_reminder_video_over3s_message">შეირჩეული ვიდეოს ხანგრძლივობა 3 წამზე მეტია, სინთეზირებული დინამიური ფოტო შეიძლება ჰქონდეს შესაბამისობის პრობლემები:\n\n• შეიძლება ჩვეულებრივად არ ასრულდეს დაკვრა\n• შეიძლება სისტემის ალბომმა არ ჩათვალოს\n• ზოგიერთ მოდელზე შეიძლება არ ჩაითვალოს ეს დინამიური ფოტო</string>
+    <string name="conv_reminder_legacy_go_title">მოცემულია ძველი ვერსია</string>
+    <string name="conv_reminder_legacy_go_message">ამიერიან შეყვანილია ძველი ვერსია (მოკლე ვერსია) პროგრამის, რომელიც ამ მოწყობილობაზე უკვე არ არის ხელმისაწვდომი, შეგიძლიათ ამოიშალოთ ფართობისთვის.</string>
+    <string name="conv_reminder_replace_risk_title">შემცვლელობითი დ ნაზიანის დამუხრკვლევა</string>
+    <!-- formatted="false": within the body there is a literal % (100%), which never takes parameters,
+         declared as non-formatted to avoid aapt2/lint String.format validation. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">შემცვლელობითი დ ნაზიანის დამუხრკვლელი პირდაპირ წერს შეცვლილ შედეგს თავდაპირველ ფაილში, თავდაპირველი ფაილი ფარულად ჰყავს, აღსადგენად შეუძლებელი.\n\n• წერის დროს თუ პროგრამა შეწყვეტინდება, ან ფართობი არ აღმოჩნდება, ან ნებართვა გადადგინდება, თავდაპირველი ფაილი შეიძლება დაიზიანოს\n• შეცვლა სრულად წარმატებას არ გარანტირებს, წარუმატებლობის დროს თავდაპირველი ფაილი შეიძლება უკვე არ იყოს ხელმისაწვდომი\n• მირჩევნია ან აიღოთ ორი ფაილი და ან შეამოწმოთ, დარწმუნდეთ, რომ პრობლემა არ არის, შემდეგ კი მასშტაბური სამუშაო\n• მნიშვნელოვანი ფოტოები წინასწარ დაიცავით\n\nეს მომსახურება „როგორც არის" მოწოდებულია, გამოყენების რისკი თქვენი პასუხისმგებლობაა, ავტორი არ ატარებს პასუხისმგებლობას ფაილის დაზიანებაზე ან დაკარგვაზე.</string>
+    <string name="conv_reminder_dont_remind">უკეთ აღარ გავაჩვენოთ</string>
+    <string name="conv_reminder_confirm_ok">ვიცოდი</string>
+    <string name="conv_reminder_uninstall">აღარგრძელებით</string>
+
+</resources>

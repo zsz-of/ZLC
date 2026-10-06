@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Southern Min (nan) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">揣無 GitHub 下載位址，請等一下閣試。</string>
+    <string name="update_flavor_standard">標準版</string>
+    <string name="update_flavor_go">Go 版</string>
+    <string name="update_lanzou_url_missing">這个版本無提供藍奏雲下載連結，會當改用 GitHub 下載。</string>
+    <string name="update_apk_direct_missing">這个版本無提供相配的安裝包直鏈，請去 GitHub 發布頁揀對應的 APK。</string>
+    <string name="update_install_permission_missing">無允准「安裝未知應用程式」的權限，無法度自動安裝。請去系統設定允准了閣試。</string>
+    <string name="update_error_unknown">未知錯誤</string>
+    <string name="update_fail_lanzou">藍奏雲下載失敗</string>
+    <string name="update_fail_github">GitHub 下載失敗</string>
+    <string name="update_lanzou_resolving">咧解析藍奏雲下載連結…</string>
+    <string name="update_lanzou_downloading">咧對藍奏雲下載…</string>
+    <string name="update_github_downloading">咧對 GitHub 下載…</string>
+    <string name="update_unzipping">咧解壓縮安裝包…</string>
+    <string name="update_notes_empty">這个版本這馬無更新說明。</string>
+    <string name="update_use_normal_title">請使用正常版</string>
+    <string name="update_use_normal_body">這台裝置的系統是 Android 10 以上，Go 輕量版已經無閣支持，舊版本袂當繼續用。
+
+揣著這台裝置已經有裝正常版（ZLC），請直接拍開正常版繼續用（新版無閣提供 Go 相容版，舊版本會當移除來省空間）。</string>
+    <string name="update_open_normal">拍開正常版</string>
+    <string name="update_must_update_title">愛更新了才會當繼續用</string>
+    <string name="update_forced_body">這台裝置的系統是 Android 10 以上，Go 輕量版已經無閣支持，舊版本袂當繼續用；新版嘛無閣提供 Go 相容版。
+
+請連網路了揤「閣試」來掠正常版的安裝包。</string>
+    <string name="update_retry">閣試</string>
+    <string name="update_switch_normal_body">這台裝置的系統是 Android 10 以上，Go 輕量版已經無閣支持，舊版本袂當繼續用。
+請下載閣安裝正常版了繼續用（新版無閣提供 Go 相容版）。</string>
+    <string name="update_downloading_title">下載更新</string>
+    <string name="update_cancel">取消</string>
+    <string name="update_need_permission_title">愛安裝的權限</string>
+    <string name="update_need_permission_body">安裝新版本愛系統「安裝未知應用程式」的權限。
+
+揤「去允准」，佇設定允准了轉來程式，就會自動繼續安裝（免閣下載）。</string>
+    <string name="update_grant">去允准</string>
+    <string name="update_notice_title">提醒</string>
+    <string name="update_got_it">知影矣</string>
+    <string name="update_notes_title">v%1$s · 更新說明</string>
+    <string name="update_back">轉去</string>
+    <string name="update_title_switch_normal">切去正常版</string>
+    <string name="update_title_reinstall">閣重裝這个版本</string>
+    <string name="update_title_new_version">有揣著新版本</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">會下載閣重裝這个版本（共這馬的程式覆蓋掉）。
+這个功能是欲測試更新機制的。</string>
+    <string name="update_view_notes">看更新說明</string>
+    <string name="update_lanzou_unavailable">藍奏雲這馬袂通</string>
+    <string name="update_download_lanzou">對藍奏雲下載</string>
+    <string name="update_download_github">對 GitHub 下載</string>
+    <string name="update_download_browser">對瀏覽器下載</string>
+    <string name="update_later">這馬毋更新</string>
+    <string name="update_later_switch">這馬毋切換</string>
+    <string name="update_skip_version">跳過這个版本</string>
+</resources>

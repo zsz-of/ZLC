@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Belarusian (be) strings — conversion / transcoding / reminder texts.
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: параметры і праверка матэрыялаў (выключэнне → прычына збою ў інтэрфейсе) ========== -->
+    <string name="conv_unknown_target">Невядомы мэтавы фармат: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Непазнаны фармат Live Photo (гэта не Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Фота вокладкі адсутнічае або пустое</string>
+    <string name="conv_video_missing">Відэа адсутнічае або пустое</string>
+    <string name="conv_video_too_large">Відэа занадта вялікае (%1$d МБ), стварыць Live Photo немагчыма; выберыце карацейшае відэа</string>
+    <string name="conv_transcoded_too_large">Пасля перакадзіравання відэа ўсё яшчэ занадта вялікае (%1$d МБ); стварыць Live Photo немагчыма</string>
+    <string name="conv_video_too_large_compose">Відэа занадта вялікае (%1$d МБ); стварыць Live Photo немагчыма</string>
+
+    <!-- Converter.kt: вокладка (HEIC / не JPEG) -->
+    <string name="conv_cover_heic_go">Вокладка — выява HEIC (лёгкая версія не падтрымлівае перакадзіраванне; спачатку экспартуйце яе як JPEG на iPhone, потым канвертуйце)</string>
+    <string name="conv_cover_invalid_heic">Вокладка не з’яўляецца слушнай выявай (для HEIC патрэбна падтрымка дэкадавання HEIF у сістэме)</string>
+    <string name="conv_cover_not_jpeg_go">Вокладка не з’яўляецца выявай JPEG (лёгкая версія не падтрымлівае перакадзіраванне; выкарыстайце фота JPEG)</string>
+    <string name="conv_cover_invalid_image">Вокладка не з’яўляецца слушнай выявай (падтрымліваюцца толькі JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: збой перакадзіравання / перапакавання і падказка «змена кантэйнера не ратуе кодэк» -->
+    <string name="conv_reencode_failed">Не ўдалося перакадзіраваць відэа: %1$s</string>
+    <string name="conv_remux_failed">Не ўдалося перапакаваць кантэйнер: %1$s</string>
+    <string name="conv_codec_unknown">Гэта не пазнавальнае відэа H.264/H.265</string>
+    <string name="conv_codec_is">Кодэк: %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Відэа «%1$s» %2$s; змена толькі кантэйнера (перапакаванне) не змяняе кодэк, таму стварыць Live Photo немагчыма.\n\nУ раздзеле «Налады → Перакадзіраванне відэа → Рэжым перакадзіравання» выберыце «Перакадзіраваць» або спачатку пераўтварыце відэа ў MP4 з кодэкам H.264/H.265 іншай праграмай.</string>
+    <string name="conv_hint_no_encoder">Відэа не ў стандартным кантэйнеры MP4 (MOV / MKV / WebM / AVI і інш.), а бягучы «Рэжым перакадзіравання» не выконвае перакадзіравання, таму стварыць Live Photo немагчыма.\n\nУ раздзеле «Налады → Перакадзіраванне відэа → Рэжым перакадзіравання» выберыце «Перакадзіраваць» (у звычайнай версіі ўбудаваны кадавальнік ffmpeg; у лёгкай версіі Go кадавальніка няма, таму выкарыстайце звычайную версію) або спачатку пераўтварыце відэа ў стандартны MP4 (H.264/H.265).</string>
+
+    <!-- ========== Журнал канвертацыі (паказваецца ў радку стану элемента спісу і на панэлі журнала) ========== -->
+    <string name="conv_log_detected">Пазначана як %1$s</string>
+    <string name="conv_log_same_format_copied">Фарматы крыніцы і мэты супадаюць; скапіявана без змен (без страт)</string>
+    <string name="conv_log_extra_tracks_bypass">Відэа-крыніца змяшчае дарожкі, не звязаныя з аўдыё/відэа (%1$s); прамы праход аднаго фармату прапушчаны, выкарыстоўваецца поўны запіс для ачысткі</string>
+    <string name="conv_log_ts_fallback">У крыніцы няма адмеціны часу кадра вокладкі; паводле спецыфікацыі выкарыстоўваецца сярэдзіна відэа</string>
+    <string name="conv_log_brand_normalized">Брэнд кантэйнера відэа нармалізаваны (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Відэа змяшчае дадатковыя дарожкі (%1$s), ачысціць іх немагчыма; вывад без змен (на некаторых мадэлях гэты файл можа не прайгравацца пры доўгім націску)</string>
+    <string name="conv_log_extra_tracks_removed">Дадатковыя дарожкі відэа выдалены (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Відэа-крыніца %1$s; перапакаванне аднаго кантэйнера не вырашае праблему (%2$s). Калі вынік усё яшчэ не прайграваецца пры доўгім націску, у раздзеле «Налады → Перакадзіраванне відэа → Рэжым перакадзіравання» выберыце «Перакадзіраваць».</string>
+    <string name="conv_log_reencoding">Відэа-крыніца %1$s; паводле налад перакадзіроўваецца ў 8bit + AAC для лепшай сумяшчальнасці з альбомам</string>
+    <string name="conv_log_reencode_result_unusable">Вынік перакадзіравання непрыдатны; вывад без змен (на некаторых мадэлях гэты файл можа не прайгравацца пры доўгім націску)</string>
+    <string name="conv_log_reencode_still_risky">Пасля перакадзіравання застаюцца рызыкі (%1$s)</string>
+    <string name="conv_log_reencode_failed">Перакадзіраванне не ўдалося (%1$s); вывад без змен (на некаторых мадэлях гэты файл можа не прайгравацца пры доўгім націску)</string>
+    <string name="conv_log_cover_heic_converted">Вокладка была HEIC (не JPEG); перад упакоўкай перакадзіравана ў стандартны JPEG</string>
+    <string name="conv_log_compose_sizes">Сінтэз: фота %1$d Б + відэа %2$d Б → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Кадавальнік не ўключаны: змяняецца толькі брэнд кантэйнера (MOV → MP4), без перакадзіравання</string>
+
+    <!-- Тэгі журнала (у інтэрфейсе паказваюцца як «[тэг] тэкст») -->
+    <string name="conv_tag_convert">Канвертацыя</string>
+    <string name="conv_tag_transcode">Перакадзіраванне</string>
+    <string name="conv_tag_compose">Сінтэз</string>
+
+    <!-- Прычына блакавання рэжыму перакадзіравання (далучаецца да папярэдняга папярэджання) -->
+    <string name="conv_blocker_no_encoder">Убудаваны кадавальнік недаступны</string>
+    <string name="conv_blocker_mode_no_encode">Бягучы «Рэжым перакадзіравання» не выконвае перакадзіравання</string>
+
+    <!-- ========== FfmpegAddon.kt: убудаванае перакадзіраванне / перапакаванне ffmpeg ========== -->
+    <string name="conv_addon_unavailable">Убудаваны кадавальнік недаступны</string>
+    <string name="conv_addon_transcode_failed">Перакадзіраванне ffmpeg не ўдалося: %1$s</string>
+    <string name="conv_addon_remux_failed">Перапакаванне кантэйнера ffmpeg не ўдалося: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Відэа перакадзіроўваецца з ffmpeg у стандартны MP4 (%1$s / crf %2$d / %3$s; захоўваюцца толькі відэа- і аўдыёдарожкі)</string>
+    <string name="conv_log_transcode_done">Перакадзіраванне відэа завершана (%1$d КБ)</string>
+    <string name="conv_log_remuxing">Кантэйнер відэа перапакоўваецца ў стандартны MP4 (толькі кантэйнер, без перакадзіравання)</string>
+    <string name="conv_log_remux_done">Перапакаванне кантэйнера завершана (%1$d КБ)</string>
+
+    <!-- ========== Reminders.kt: дыялогі «больш не паказваць» ========== -->
+    <string name="conv_reminder_cat_compose">Сінтэз</string>
+    <string name="conv_reminder_cat_convert">Канвертацыя</string>
+    <string name="conv_reminder_cat_update">Абнаўленне</string>
+    <string name="conv_reminder_video_over3s_title">Відэа даўжэй за 3 секунды</string>
+    <string name="conv_reminder_video_over3s_message">Выбранае відэа даўжэй за 3 секунды, таму створаны Live Photo можа мець праблемы з сумяшчальнасцю:\n\n• Можа не прайгравацца належным чынам\n• Можа не распазнавацца сістэмным альбомам\n• На некаторых мадэлях гэты Live Photo можа не распазнавацца</string>
+    <string name="conv_reminder_legacy_go_title">Выяўлена старая версія</string>
+    <string name="conv_reminder_legacy_go_message">На гэтай прыладзе ўсё яшчэ ўсталявана старая версія (выпуск Go). Яна больш не працуе на гэтай прыладзе; яе можна выдаліць, каб вызваліць месца.</string>
+    <string name="conv_reminder_replace_risk_title">Рэжым замены нясе рызыку пашкоджання</string>
+    <!-- formatted="false": у тэксце ёсць знак працэнта, які ўжываецца толькі як літаральны, і гэты радок ніколі не выклікаецца з аргументамі;
+         аб’ява не як фармат-радка пазбаўляе aapt2/lint ад праверкі праз String.format. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Рэжым замены запісвае вынікі канвертацыі напрамкі ў арыгінальныя файлы; пасля перазапісу арыгіналы нельга вярнуць.\n\n• Калі падчас запісу праграма спыніцца, скончыцца месца або будзе адабраны дазвол, файлы-крыніцы могуць быць пашкоджаны\n• Ні адна канвертацыя не гарантуе поспеху, і ў выпадку збою файлы-крыніцы могуць стаць непрыдатнымі\n• Спачатку паспрабуйце адзін-два файлы, каб пераканацца, што ўсё добра, і толькі потым апрацоўвайце масава\n• Важныя фота зрабіце рэзервовую копію загадзя\n\nГэта функцыя прадастаўляецца «як ёсць»; рызыку выкарыстання вы бярэце на сябе, аўтар не нясе адказнасці за пашкоджанне або страту файлаў.</string>
+    <string name="conv_reminder_dont_remind">Больш не паказваць</string>
+    <string name="conv_reminder_confirm_ok">Зразумела</string>
+    <string name="conv_reminder_uninstall">Выдаліць</string>
+
+</resources>

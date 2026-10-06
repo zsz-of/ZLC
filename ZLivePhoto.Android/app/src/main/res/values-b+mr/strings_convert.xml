@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Marathi (mr) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">अज्ञात लक्ष्य स्वरूप: %1$s</string>
+    <string name="conv_unrecognized_live_photo">ओळखता न येणारे लाइव्ह फोटो स्वरूप (Google/OPPO/vivo/Xiaomi/Apple लाइव्ह फोटो नाही)</string>
+    <string name="conv_cover_photo_missing">कव्हर फोटो नाही किंवा रिकामा आहे</string>
+    <string name="conv_video_missing">व्हिडिओ नाही किंवा रिकामा आहे</string>
+    <string name="conv_video_too_large">व्हिडिओ खूप मोठा आहे (%1$dMB); लाइव्ह फोटो म्हणून संयोजित करता येत नाही, कृपया लहान व्हिडिओ निवडा</string>
+    <string name="conv_transcoded_too_large">ट्रान्सकोड केल्यानंतर व्हिडिओ खूप मोठा आहे (%1$dMB); लाइव्ह फोटो संयोजित करता येत नाही</string>
+    <string name="conv_video_too_large_compose">व्हिडिओ खूप मोठा आहे (%1$dMB); लाइव्ह फोटो संयोजित करता येत नाही</string>
+    <string name="conv_cover_heic_go">कव्हर HEIC प्रतिमा आहे (लाइट आवृत्तीत ट्रान्सकोडिंगला समर्थन नाही; कृपया iPhone वर JPEG म्हणून निर्यात करून नंतर रूपांतरित करा)</string>
+    <string name="conv_cover_invalid_heic">कव्हर वैध प्रतिमा नाही (HEIC साठी प्रणालीचे HEIF डीकोडिंग समर्थन आवश्यक)</string>
+    <string name="conv_cover_not_jpeg_go">कव्हर JPEG प्रतिमा नाही (लाइट आवृत्तीत ट्रान्सकोडिंगला समर्थन नाही; कृपया JPEG फोटो वापरा)</string>
+    <string name="conv_cover_invalid_image">कव्हर वैध प्रतिमा नाही (फक्त JPEG/WebP/PNG समर्थित)</string>
+    <string name="conv_reencode_failed">व्हिडिओ पुन्हा एन्कोड करणे अयशस्वी: %1$s</string>
+    <string name="conv_remux_failed">कंटेनर रीमक्स अयशस्वी: %1$s</string>
+    <string name="conv_codec_unknown">ओळखता येणारा H.264/H.265 व्हिडिओ नाही</string>
+    <string name="conv_codec_is">एन्कोडिंग %1$s आहे</string>
+    <string name="conv_hint_remux_cannot_fix">“%1$s” व्हिडिओ (%2$s); फक्त कंटेनर बदलल्याने (रीमक्स) एन्कोडिंग बदलत नाही, लाइव्ह फोटो संयोजित करता येत नाही.\n\nकृपया “सेटिंग्ज → व्हिडिओ ट्रान्सकोडिंग → ट्रान्सकोड पद्धत” मध्ये “पुन्हा एन्कोड करा” निवडा, किंवा दुसऱ्या उपकरणावर तो H.264/H.265 एन्कोडिंगचा MP4 करा.</string>
+    <string name="conv_hint_no_encoder">व्हिडिओ मानक MP4 कंटेनरमध्ये नाही (MOV / MKV / WebM / AVI इ.); सध्याची “ट्रान्सकोड पद्धत” पुन्हा एन्कोड करत नाही, लाइव्ह फोटो संयोजित करता येत नाही.\n\nकृपया “सेटिंग्ज → व्हिडिओ ट्रान्सकोडिंग → ट्रान्सकोड पद्धत” मध्ये “पुन्हा एन्कोड करा” निवडा (सामान्य आवृत्तीत ffmpeg एन्कोडर समाविष्ट आहे; Go लाइट आवृत्तीत ट्रान्सकोडर नाही, कृपया सामान्य आवृत्ती वापरा), किंवा आधी व्हिडिओ मानक MP4 (H.264/H.265) मध्ये रूपांतरित करा.</string>
+    <string name="conv_log_detected">%1$s म्हणून ओळखले</string>
+    <string name="conv_log_same_format_copied">स्रोत आणि लक्ष्याचे स्वरूप समान आहे; तसेच कॉपी केले (गुणवत्ता कमी होत नाही)</string>
+    <string name="conv_log_extra_tracks_bypass">स्रोत व्हिडिओत ऑडिओ/व्हिडिओ-इतर ट्रॅक आहेत (%1$s); समान स्वरूपाची थेट कॉपी टाळून स्वच्छतेसाठी पूर्ण लेखन प्रक्रिया वापरत आहे</string>
+    <string name="conv_log_ts_fallback">स्रोतात कव्हर फ्रेम टाइमस्टॅम्प नाही; मानकानुसार व्हिडिओचा मध्यबिंदू वापरत आहे</string>
+    <string name="conv_log_brand_normalized">व्हिडिओ कंटेनर ब्रँड सामान्य केला (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">व्हिडिओत अतिरिक्त ट्रॅक आहेत (%1$s); स्वच्छ करता आले नाही, तसेच निर्यात केले (काही उपकरणांवर हा निकाल लांब दाबून चालवता येणार नाही)</string>
+    <string name="conv_log_extra_tracks_removed">व्हिडिओतील अतिरिक्त ट्रॅक काढले (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">स्रोत व्हिडिओ %1$s; फक्त कंटेनर रीमक्सने हे सुटत नाही (%2$s); निकाल अजूनही लांब दाबून चालत नसेल, तर “सेटिंग्ज → व्हिडिओ ट्रान्सकोडिंग → ट्रान्सकोड पद्धत” मध्ये “पुन्हा एन्कोड करा” निवडा</string>
+    <string name="conv_log_reencoding">स्रोत व्हिडिओ %1$s; अल्बम सुसंगतता सुधारण्यासाठी सेटिंगनुसार 8bit + AAC मध्ये पुन्हा एन्कोड करत आहे</string>
+    <string name="conv_log_reencode_result_unusable">पुन्हा एन्कोड केलेला निकाल वापरण्यायोग्य नाही; तसेच निर्यात केले (काही उपकरणांवर हा निकाल लांब दाबून चालवता येणार नाही)</string>
+    <string name="conv_log_reencode_still_risky">पुन्हा एन्कोड केल्यावरही धोकादायक घटक शिल्लक आहेत (%1$s)</string>
+    <string name="conv_log_reencode_failed">पुन्हा एन्कोड करणे अयशस्वी (%1$s); तसेच निर्यात केले (काही उपकरणांवर हा निकाल लांब दाबून चालवता येणार नाही)</string>
+    <string name="conv_log_cover_heic_converted">कव्हर HEIC आहे (JPEG नाही); मानक JPEG मध्ये ट्रान्सकोड करून पुन्हा पॅक केले</string>
+    <string name="conv_log_compose_sizes">संयोजन: फोटो %1$dB + व्हिडिओ %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ट्रान्सकोडर सक्रिय नाही: फक्त कंटेनर ब्रँड बदलत आहे (MOV → MP4), पुन्हा एन्कोड करत नाही</string>
+    <string name="conv_tag_convert">रूपांतरण</string>
+    <string name="conv_tag_transcode">ट्रान्सकोड</string>
+    <string name="conv_tag_compose">संयोजन</string>
+    <string name="conv_blocker_no_encoder">अंतर्गत ट्रान्सकोडर उपलब्ध नाही</string>
+    <string name="conv_blocker_mode_no_encode">सध्याची “ट्रान्सकोड पद्धत” पुन्हा एन्कोड करत नाही</string>
+    <string name="conv_addon_unavailable">अंतर्गत ट्रान्सकोडर उपलब्ध नाही</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ट्रान्सकोडिंग अयशस्वी: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg कंटेनर रीमक्स अयशस्वी: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg ने व्हिडिओ मानक MP4 मध्ये ट्रान्सकोड करत आहे (%1$s / crf %2$d / %3$s; फक्त व्हिडिओ व ऑडिओ ट्रॅक ठेवत आहे)</string>
+    <string name="conv_log_transcode_done">व्हिडिओ ट्रान्सकोडिंग पूर्ण (%1$dKB)</string>
+    <string name="conv_log_remuxing">व्हिडिओ कंटेनर मानक MP4 मध्ये रीमक्स करत आहे (फक्त कंटेनर बदलतो, पुन्हा एन्कोड करत नाही)</string>
+    <string name="conv_log_remux_done">कंटेनर रीमक्स पूर्ण (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">संयोजन</string>
+    <string name="conv_reminder_cat_convert">रूपांतरण</string>
+    <string name="conv_reminder_cat_update">अपडेट</string>
+    <string name="conv_reminder_video_over3s_title">व्हिडिओ 3 सेकंदांपेक्षा मोठा आहे</string>
+    <string name="conv_reminder_video_over3s_message">निवडलेल्या व्हिडिओचा कालावधी 3 सेकंदांपेक्षा मोठा आहे; संयोजित लाइव्ह फोटोमध्ये सुसंगतता समस्या येऊ शकतात:\n\n• नेहमीप्रमाणे चालवता येणार नाही\n• प्रणाली अल्बम ओळखू शकणार नाही\n• काही उपकरणांवर हा लाइव्ह फोटो ओळखता येणार नाही</string>
+    <string name="conv_reminder_legacy_go_title">जुनी आवृत्ती आढळली</string>
+    <string name="conv_reminder_legacy_go_message">या उपकरणावर अजूनही जुनी आवृत्ती (Go आवृत्ती) ॲप इन्स्टॉल आहे; ती जुनी आवृत्ती या उपकरणावर यापुढे चालणार नाही, जागा मोकळी करण्यासाठी अनइन्स्टॉल करू शकता.</string>
+    <string name="conv_reminder_replace_risk_title">रिप्लेस मोडमध्ये नुकसानीचा धोका आहे</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">रिप्लेस मोड रूपांतरणाचा निकाल थेट मूळ फाइलमध्ये लिहितो; मूळ फाइलवर पुन्हा लिहिल्यावर ती परत मिळत नाही.\n\n• लिहित असताना ॲप थांबला, स्टोरेज जागा संपली किंवा परवानगी काढली गेली, तर मूळ फाइल बिघडू शकते\n• रूपांतरण नेहमी पूर्ण यशाची हमी देत नाही; अयशस्वी झाल्यास मूळ फाइल आधीच निरुपयोगी असू शकते\n• आधी एक-दोन फाइलांवर प्रयोग करून अडचण नाही हे निश्चित केल्यावरच मोठ्या प्रमाणात करा\n• महत्त्वाचे फोटो आधी स्वतःच बॅकअप घ्या\n\nहे वैशिष्ट्य “जसे आहे तसे” दिले आहे; वापराचा धोका तुमचा आहे, फाइल बिघडल्यास किंवा हरवल्यास लेखक जबाबदार नाही.</string>
+    <string name="conv_reminder_dont_remind">पुन्हा दाखवू नका</string>
+    <string name="conv_reminder_confirm_ok">समजले</string>
+    <string name="conv_reminder_uninstall">अनइन्स्टॉल</string>
+</resources>

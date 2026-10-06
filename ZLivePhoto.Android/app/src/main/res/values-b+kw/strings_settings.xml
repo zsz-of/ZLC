@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Kernewek (Cornish) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="settings_title">Settyansow</string>
+    <string name="settings_cd_back">A-dhelergh</string>
+    <string name="settings_btn_apply">Gweytha</string>
+    <string name="settings_btn_cancel">Hedhi</string>
+    <string name="settings_btn_close">Degea</string>
+    <string name="settings_btn_ok">Da lowr</string>
+    <string name="settings_btn_sponsor">Rova</string>
+    <string name="settings_section_general">Ollgemmyn</string>
+    <string name="settings_section_appearance">Gwel</string>
+    <string name="settings_section_language">Yeth</string>
+    <string name="settings_section_defaults">Dell-dhydh</string>
+    <string name="settings_section_output">Mes</string>
+    <string name="settings_section_transcode">Transkodya video</string>
+    <string name="settings_section_about">A-dro dhe</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Kresennow ha rovannow</string>
+    <string name="settings_section_opensource">Pennfenten ygor ha lisensa</string>
+    <string name="settings_startup_check_title">Checkya nowedhyans orth dalleth</string>
+    <string name="settings_startup_check_subtitle">Kavoes yn awtomatik versyons nowyth dhyworth GitHub orth dalleth ha profya iskarga pan vo onan kavadow</string>
+    <string name="settings_haptics_title">Dasliv dornel</string>
+    <string name="settings_haptics_subtitle">Dasliv dornel orth gwaskyans boton ha chanj studh</string>
+    <string name="settings_bounce_title">Animasyon bonk boton</string>
+    <string name="settings_bounce_subtitle">Animasyon skeul-ha-bonk pan woskyer boton</string>
+    <string name="settings_theme_system">Holya an system</string>
+    <string name="settings_theme_dark">Tewal</string>
+    <string name="settings_theme_light">Golow</string>
+    <string name="settings_dynamic_theme_title">Liw dynamik Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Holya liw paper-fos an system (Android 12+); pan vo dhe-ves, an liwyow tem dewisys a-woles a vydh devnydhys</string>
+    <string name="settings_preset_colors_title">Liwyow tem dewisys</string>
+    <string name="settings_preset_current">A-lemmyn: %1$s</string>
+    <string name="settings_preset_disabled_hint">Gorra dhe-ves «Liw dynamik Material You» dhe dhewis</string>
+    <string name="settings_custom">Dell-dhydh</string>
+    <string name="settings_custom_color_title">Liw tem dell-dhydh</string>
+    <string name="settings_cd_custom_palette">Palet dell-dhydh</string>
+    <string name="settings_hue_value">Liw %1$d°</string>
+    <string name="settings_language_dialog_title">Dewis yeth an app</string>
+    <string name="settings_language_count">%1$d yeth kavadow</string>
+    <string name="settings_reminder_dialogs_title">Kestavow «Na dhiskwedh arta»</string>
+    <string name="settings_reminder_dialogs_subtitle">Dystya an skwyches rag oll an kestavow «Na dhiskwedh arta»</string>
+    <string name="settings_reminder_hint">Pan vo skwych yn fyw, ny dhiskwedh an kestav na arta; pan vo dhe-ves, an kestav a omdhiskwedh arta an nessa tro yn an studh degynnys.</string>
+    <string name="settings_preserve_folders_title">Mes gans an ughordhen fylenva fenten</string>
+    <string name="settings_preserve_folders_subtitle">An mesyansow a vydh gwithys yn isfylenvaow henwys war lergh an albums gwreydhek; pan vo dhe-ves, pup-tra a vydh gorrys plat yn unn fylenva</string>
+    <string name="settings_about_title">A-dro dhe</string>
+    <string name="settings_about_subtitle">Versyon · Checkya nowedhyans · Kresennow ha rovannow</string>
+    <string name="settings_check_update_title">Checkya nowedhyans</string>
+    <string name="settings_check_update_subtitle">Kavoes an versyon diwettha dhyworth GitHub Releases</string>
+    <string name="settings_checking">Ow checkya…</string>
+    <string name="settings_update_available">v%1$s kavadow</string>
+    <string name="settings_up_to_date">Yma genes an versyon diwettha</string>
+    <string name="settings_network_error">Gwall rosweyth; assay arta diwettha</string>
+    <string name="settings_reinstall_title">Installya arta an versyon ma</string>
+    <string name="settings_reinstall_subtitle">Iskarga an versyon diwettha a-lemmyn ha y installya dres an huni ma (rag previ nowedhyansow)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s yw kavadow; devnydh «Checkya nowedhyans» dhe ughgrado kynsa</string>
+    <string name="settings_version_title">Versyon</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Rova dre Alipay</string>
+    <string name="settings_alipay_subtitle">Skoodhya an displegyans</string>
+    <string name="settings_coolapk_subtitle">Devnydhyer Coolapk · meur ras a-barth an skoodhyans</string>
+    <string name="settings_ai_credits_subtitle">Meur ras dhe an AI IDEs ha an modelys AI a weresas gans an displegyans</string>
+    <string name="settings_github_title">Lec pennfenten GitHub</string>
+    <string name="settings_license_title">Lisensa pennfenten ygor</string>
+    <string name="settings_sponsor_dialog_title">Meur ras a-barth dha skoodhyans</string>
+    <string name="settings_sponsor_dialog_text">Meur ras dhis yn gwiryon a-barth dha vodh dhe skoodhya an app ma!\n\nMar pydh ty hwath studhyer, po heb fians arghansek hwath, na wra despensa arghans war an dra ma — gwitha an vodelneth na yn dha golonn ha pesya y dhevnydhya yw an skoodhyans gwella a allav kavoes.\n\nMar mynnydh rova, yll hogen boghes gweres, ha my a wra y worra dhe well dyghtyans ha nodangow:)</string>
+    <string name="settings_alipay_missing_title">Alipay nag yw installs</string>
+    <string name="settings_alipay_missing_text">Ny veu Alipay kevys, ytho ny yllir kowlwul an rovan lemmyn.\n\nNy vern — meur ras dhis yn gwiryon a-barth dha garedneth hogen!</string>
+    <string name="settings_transcoder_title">Transkoder yn-berth</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Kodheans-arta</string>
+    <string name="settings_transcode_mode_remux">Remuxya an contayner yn unnik (profys)</string>
+    <string name="settings_transcode_mode_off">Na dhevnydh an transkoder bythkweth</string>
+    <string name="settings_transcode_params_title">Parametrow transkodya</string>
+    <string name="settings_transcode_params_subtitle">Parametrow gwalas ha kompressya devnydhys orth kodheans-arta</string>
+    <string name="settings_transcode_params_disabled">Oberi yn unnik pan vo «Modh transkodya» gorrys dhe «Kodheans-arta»</string>
+    <string name="settings_crf_value">Gwalas CRF: %1$d</string>
+    <string name="settings_crf_hint">Gwerthow le a styr gwalas ughella ha fylennow brasa (dhefowt 18)</string>
+    <string name="settings_encoder_title">Kodher</string>
+    <string name="settings_compress_preset_title">Preset kompressya</string>
+</resources>

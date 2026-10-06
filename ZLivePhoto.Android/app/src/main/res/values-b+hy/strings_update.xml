@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Armenian (hy) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou հղումը չեղարկված է կամ ֆայլը գոյություն չունի, ներբեռնեք GitHub-ից</string>
+    <string name="update_lanzou_gone_short">Lanzou հղումը չեղարկված է, ներբեռնեք GitHub-ից</string>
+    <string name="update_lanzou_resolve_failed">Lanzou ներբեռնման հղման վերլուծումը ձախողվեց</string>
+    <string name="update_lanzou_need_passwd">Այս Lanzou հղումը պահանջում է մուտքի կոդ, ներբեռնեք GitHub-ից (կամ գտեք կոդը Release նկարագրությունում)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou մուտքի կոդը սխալ է</string>
+    <string name="update_err_resolve_failed">Վերլուծումը ձախողվեց</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou-ի բոտերի դեմ ստուգումը ձախողվեց</string>
+    <string name="update_err_no_frame">Չհաջողվեց վերլուծել Lanzou ներբեռնման էջը (ներբեռնման շրջանակը չգտնվեց)</string>
+    <string name="update_err_no_file_id">Չհաջողվեց վերլուծել Lanzou ֆայլի նույնականացուցիչը</string>
+    <string name="update_err_no_sign">Չհաջողվեց վերլուծել Lanzou ստորագրությունը</string>
+    <string name="update_err_ajax_request">Հարցման ձախողում</string>
+    <string name="update_err_api_request">Lanzou API հարցման ձախողում</string>
+    <string name="update_err_empty_direct">Lanzou-ն վերադարձրեց դատարկ ներբեռնման հասցե</string>
+    <string name="update_err_direct_expired">Lanzou ներբեռնման հասցեն այլևս վավեր չէ, նորից ստացեք</string>
+    <string name="update_err_http_request">Հարցման ձախողում (HTTP %1$d)</string>
+    <string name="update_err_connect">Հնարավոր չէ միանալ ներբեռնման սերվերին․ %1$s</string>
+    <string name="update_err_http">Ներբեռնումը ձախողվեց (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Հնարավոր չէ ստեղծել ներբեռնման միացում</string>
+    <string name="update_err_empty">Ներբեռնված բովանդակությունը դատարկ է</string>
+    <string name="update_err_incomplete">Ներբեռնումն անավարտ է (ստացվեց %1$d / ընդհանուր %2$d բայթ), ներբեռնեք նորից</string>
+    <string name="update_err_interrupted">Ներբեռնումն ընդհատվեց․ %1$s</string>
+    <string name="update_err_not_apk">Ներբեռնվածը վավեր տեղադրման փաթեթ չէ (հնարավոր է վեբ էջ է կամ հղումն այլևս վավեր չէ), ներբեռնեք նորից կամ GitHub-ից։</string>
+    <string name="update_err_apk_incomplete">Տեղադրման փաթեթի բովանդակությունն անավարտ է, ներբեռնեք նորից կամ GitHub-ից։</string>
+    <string name="update_err_apk_unparsable">Տեղադրման փաթեթը հնարավոր չէ վերլուծել (հնարավոր է ներբեռնումն անավարտ է), ներբեռնեք նորից կամ GitHub-ից։</string>
+    <string name="update_err_no_install_permission">«Անհայտ հավելվածների տեղադրում» թույլտվությունը դեռ ստացված չէ</string>
+    <string name="update_err_installer_failed">Հնարավոր չէ գործարկել համակարգային տեղադրիչը (%1$s), ֆայլերի կառավարիչով ձեռքով բացեք տեղադրման փաթեթը</string>
+</resources>

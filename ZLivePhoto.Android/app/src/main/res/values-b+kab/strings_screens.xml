@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Tutlayt taqbaylit (kab).
+  Yettwasuqel seg res/values/strings_*.xml (asnulfu s usebter n tsusnawt, tutlayt n umagrad).
+  Iswiyen ttwamṣadan d umagrad; imetteg (%1$s / %1$d) d yimeslayen n uɣtu qqimen am akken.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- Azwel amezzay n ufeggag amezzay -->
+    <string name="screen_app_subtitle">Sefli gar yiformaten n Live Photo</string>
+    <!-- Amḍan n yifula yettwafren (plurals) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d afaylu</item>
+        <item quantity="other">%1$d ifula</item>
+    </plurals>
+    <!-- Anekcum ɣer yiɣewwaren deg ufeggag amezzay -->
+    <string name="screen_settings">Iɣewwaren</string>
+
+    <!-- Asfaylu n ufran n format n usuffeɣ -->
+    <string name="screen_select_output_format">Fren format n usuffeɣ</string>
+    <string name="screen_selected">Yettwafren</string>
+    <string name="screen_vivo_single_warning">⚠ Kra n yilugan aqdim aṭas zemren ur snen ara format-a</string>
+    <string name="screen_extract_blocked">⚠ Tandint tesεa tixḍarin n usnulfu; Suffeɣ ur yezmir ara ad yettwafren</string>
+
+    <!-- Ismawen iqeṣṣiṛen n tseftiyin n format -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (yiwen ufaylu)</string>
+    <string name="screen_format_vivo">vivo (sin ifula)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Suffeɣ</string>
+
+    <!-- Tɣawsa n ifecka BottomSheet -->
+    <string name="screen_toolbox">Tɣawsa n ifecka</string>
+    <string name="screen_batch_import">Import s ugeraw</string>
+    <string name="screen_batch_import_desc">Sakan tgalri meṛṛa syen ssan tiwlafin Live Photo s ugeraw</string>
+    <string name="screen_compose">Snulfu Live Photo</string>
+    <string name="screen_compose_desc">Fren tawlaft d tavidyut syen tismi (snulfu) tayugt</string>
+    <string name="screen_replace_mode">Amezruy n ubeddel</string>
+    <string name="screen_replace_mode_desc">Iigmaḍ n usefli ttwarun srid ɣer ifula n tɣawsa, war asnulfu n yifula imaynuten</string>
+    <string name="screen_need_all_files_access_hint">Yesra «anekcum ɣer akk ifula»; sit akken ad t-tesregeḍ</string>
+    <string name="screen_agree_and_enable">Qbel syen ssedday</string>
+
+    <!-- Addad n ilem / tafelwit n uselmed n wadda -->
+    <string name="screen_empty_no_files">Mazal ulac ifula yettwarnan</string>
+    <string name="screen_view_detail">Wali talqayt</string>
+    <string name="screen_add_files">Rnu ifula</string>
+    <string name="screen_output_format">Format n usuffeɣ: %1$s</string>
+    <string name="screen_delete_original">Kkes tiwlafin tigejdanin mbaɛd asluɣu</string>
+    <string name="screen_need_all_files_access_view">Yesra «anekcum ɣer akk ifula»; sit akken ad twaliḍ</string>
+    <string name="screen_clear">Sfeḍ</string>
+    <string name="screen_stop">Ḥbes asluɣu</string>
+    <string name="screen_start_convert">Bdu asefli</string>
+
+    <!-- Asfaylu n talqayt n waddad -->
+    <string name="screen_status_detail">Talqayt n waddad</string>
+    <string name="screen_long_press_copy">Ṭṭef aɣezzfan ɣef uḍris akken ad tferneḍ syen ad tneɣleḍ</string>
+    <string name="screen_copy">Nɣel</string>
+    <string name="screen_close">Mdel</string>
+
+    <!-- Amsuffeɣ n tgalri -->
+    <string name="screen_back">Uɣal</string>
+    <string name="screen_picker_title_select">Fren tiwlafin Live Photo</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Sneḍ akuver n album</string>
+    <string name="screen_album_expand_cover">Ssemɣer akuver n album</string>
+    <string name="screen_scanning_progress">Yettwasakan %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d tawlaft</item>
+        <item quantity="other">%1$d tiwlafin</item>
+    </plurals>
+    <string name="screen_select_all">Fren akk</string>
+    <string name="screen_no_albums">Ulac album yella</string>
+    <string name="screen_no_media">Ulac Live Photo yettwafen</string>
+    <string name="screen_no_media_compose">Ulac tiwlafin neɣ tividyutin yettwafen</string>
+    <string name="screen_import">Importi</string>
+    <string name="screen_import_count">Importi %1$d</string>
+    <string name="screen_import_mixed">Importi: tugna %1$d · tavidyut %2$d</string>
+    <string name="screen_search">Nadi</string>
+    <string name="screen_search_collapse">Sneḍ anadi</string>
+    <string name="screen_search_hint">Nadi s yisem</string>
+    <string name="screen_search_clear">Sfeḍ anadi</string>
+    <string name="screen_sort_date">Azemz</string>
+    <string name="screen_sort_size">Tiddi</string>
+    <string name="screen_sort_name">Isem</string>
+    <string name="screen_sort_asc">Seg zdat ɣer deffir</string>
+    <string name="screen_sort_desc">Seg deffir ɣer zdat</string>
+
+    <!-- Tisekkarin n uzemz n ugraw n yalbumen -->
+    <string name="screen_date_today">Ass-a</string>
+    <string name="screen_date_yesterday">Iḍelli</string>
+    <string name="screen_date_this_year">%1$d/%2$d</string>
+    <string name="screen_date_other_year">%1$d/%2$d/%3$d</string>
+</resources>

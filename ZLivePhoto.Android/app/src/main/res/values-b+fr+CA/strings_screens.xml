@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Français canadien (fr-CA) — écran principal et sélecteur de galerie (préfixe de clé : screen_).
+  Base : res/values/strings_screens.xml (chinois simplifié).
+  L\'ordre des espaces réservés peut être modifié ; dates au format canadien (AAAA-MM-JJ).
+-->
+<resources>
+    <!-- Sous-titre de la barre supérieure -->
+    <string name="screen_app_subtitle">Convertir les photos animées</string>
+    <!-- Nombre de fichiers sélectionnés (plurals : one / other) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d fichier</item>
+        <item quantity="other">%1$d fichiers</item>
+    </plurals>
+    <!-- Accès aux paramètres (lecture d\'écran uniquement) -->
+    <string name="screen_settings">Paramètres</string>
+
+    <!-- Boîte de dialogue de choix du format de sortie -->
+    <string name="screen_select_output_format">Choisir le format de sortie</string>
+    <string name="screen_selected">Sélectionné</string>
+    <string name="screen_vivo_single_warning">⚠ Les appareils trop anciens peuvent ne pas reconnaître ce format</string>
+    <string name="screen_extract_blocked">⚠ La file d\'attente contient des tâches d\'assemblage : impossible de choisir l\'extraction</string>
+
+    <!-- Noms courts des formats (noms longs : fmt_* dans strings_formats.xml) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (fichier unique)</string>
+    <string name="screen_format_vivo">vivo (deux fichiers)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Extraction</string>
+
+    <!-- Feuille inférieure « Boîte à outils » -->
+    <string name="screen_toolbox">Boîte à outils</string>
+    <string name="screen_batch_import">Import par lots</string>
+    <string name="screen_batch_import_desc">Analyser toute la galerie et reconnaître les photos animées par lots</string>
+    <string name="screen_compose">Assembler une photo animée</string>
+    <string name="screen_compose_desc">Choisir une photo et une vidéo pour les associer</string>
+    <string name="screen_replace_mode">Mode remplacement</string>
+    <string name="screen_replace_mode_desc">Le résultat est écrit directement dans le fichier d\'origine, sans créer de nouveau fichier</string>
+    <string name="screen_need_all_files_access_hint">Autorisation « Accès à tous les fichiers » requise, appuyez pour l\'accorder</string>
+    <string name="screen_agree_and_enable">Accepter et activer</string>
+
+    <!-- État vide / panneau de commande inférieur -->
+    <string name="screen_empty_no_files">Aucun fichier ajouté pour l\'instant</string>
+    <string name="screen_view_detail">Voir les détails</string>
+    <string name="screen_add_files">Ajouter des fichiers</string>
+    <string name="screen_output_format">Format de sortie : %1$s</string>
+    <string name="screen_delete_original">Supprimer les originaux après le traitement</string>
+    <string name="screen_need_all_files_access_view">Autorisation « Accès à tous les fichiers » requise, appuyez pour voir</string>
+    <string name="screen_clear">Vider</string>
+    <string name="screen_stop">Arrêter le traitement</string>
+    <string name="screen_start_convert">Démarrer la conversion</string>
+
+    <!-- Boîte de dialogue des détails d\'état -->
+    <string name="screen_status_detail">Détails de l\'état</string>
+    <string name="screen_long_press_copy">Appui long sur le texte pour le sélectionner et le copier</string>
+    <string name="screen_copy">Copier</string>
+    <string name="screen_close">Fermer</string>
+
+    <!-- Sélecteur de galerie -->
+    <string name="screen_back">Retour</string>
+    <string name="screen_picker_title_select">Choisir une photo animée</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Réduire la couverture de l\'album</string>
+    <string name="screen_album_expand_cover">Développer la couverture de l\'album</string>
+    <string name="screen_scanning_progress">Analyse %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d photo</item>
+        <item quantity="other">%1$d photos</item>
+    </plurals>
+    <string name="screen_select_all">Tout sélectionner</string>
+    <string name="screen_no_albums">Aucun album disponible</string>
+    <string name="screen_no_media">Aucune photo animée trouvée</string>
+    <string name="screen_no_media_compose">Aucune photo ni vidéo trouvée</string>
+    <string name="screen_import">Importer</string>
+    <string name="screen_import_count">Importer %1$d</string>
+    <string name="screen_import_mixed">Import : photos %1$d · vidéos %2$d</string>
+    <string name="screen_search">Rechercher</string>
+    <string name="screen_search_collapse">Réduire la recherche</string>
+    <string name="screen_search_hint">Rechercher par nom</string>
+    <string name="screen_search_clear">Effacer la recherche</string>
+    <string name="screen_sort_date">Date</string>
+    <string name="screen_sort_size">Taille</string>
+    <string name="screen_sort_name">Nom</string>
+    <string name="screen_sort_asc">Croissant</string>
+    <string name="screen_sort_desc">Décroissant</string>
+
+    <!-- Étiquettes de date du regroupement de la galerie -->
+    <string name="screen_date_today">Aujourd\'hui</string>
+    <string name="screen_date_yesterday">Hier</string>
+    <string name="screen_date_this_year">%1$d-%2$d</string>
+    <string name="screen_date_other_year">%1$d-%2$d-%3$d</string>
+</resources>

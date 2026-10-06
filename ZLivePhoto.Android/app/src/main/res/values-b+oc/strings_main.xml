@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Occitan (oc) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">Prèst</string>
+    <string name="main_status_location_granted">La permission de localizacion es concedida ; los metadonatas GPS se gardaràn aprèp la conversion</string>
+    <string name="main_status_location_denied">La permission de localizacion es pas concedida : las imatges convertidas perdràn l\'informacion de localizacion GPS</string>
+    <string name="main_status_all_files_granted">La permission «Accès a totes los fichièrs» es concedida ; la conversion escriurà dirèctament dins lo dorsièr de l\'album e gardarà tota l\'informacion de localizacion</string>
+    <string name="main_status_all_files_denied">La permission «Accès a totes los fichièrs» es pas concedida : sus qualques aparelhs la conversion pòt perdre l\'informacion de localizacion</string>
+    <string name="main_status_read_granted">La permission de lectura de las imatges e de las vidèos es concedida</string>
+    <string name="main_status_video_missing">Las permissions son concedidas, mas manca la permission vidèo : se pòt pas trobar las vidèos associadas de las Live Photos de dos fichièrs</string>
+    <string name="main_status_permission_denied">Permission pas concedida ; podètz tocar «Apondre de fichièrs» tornamai</string>
+    <string name="main_status_folder_not_selected">Cap de dorsièr pas causit</string>
+    <string name="main_status_folder_unavailable">Impossible d\'accedir al dorsièr causit (solament los dorsièrs d\'estocatge local son suportats)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Sesion precedenta restablida (%1$d fichièr)</item>
+        <item quantity="other">Sesion precedenta restablida (%1$d fichièrs)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Una sortida anormala es estada detectada al darrièr lancament ; la lista incompleta es estada voidada</string>
+    <string name="main_status_compose_blocks_extract">La fila conten de prètzfaches de composicion ; se pòt pas passar al mòde Extraire</string>
+    <string name="main_status_replace_off_mutex">Lo mòde de remplaçament es desactivat (incompatible amb «Suprimir los originals aprèp lo tractament»)</string>
+    <string name="main_status_delete_needs_all_files">La supression automatica dels originals demanda la permission «Accès a totes los fichièrs» ; concedissètz-la d\'abord</string>
+    <string name="main_status_replace_off">Lo mòde de remplaçament es desactivat ; lo resultat de la conversion es de nòu escrit dins lo dorsièr de l\'album</string>
+    <string name="main_status_replace_needs_all_files">Lo mòde de remplaçament demanda la permission «Accès a totes los fichièrs» ; concedissètz-la d\'abord</string>
+    <string name="main_status_delete_off_mutex">«Suprimir los originals aprèp lo tractament» es desactivat (incompatible amb lo mòde de remplaçament)</string>
+    <string name="main_status_loading_albums">Lectura dels albums…</string>
+    <string name="main_status_no_albums">Cap d\'album pas trobat</string>
+    <string name="main_status_compose_no_photo">Cap d\'imatge pas causit ; impossible de compausar</string>
+    <string name="main_status_compose_no_video">Cap de vidèo pas causida ; impossible de compausar</string>
+    <string name="main_status_compose_all_added">Las imatges causidas son totas ja dins la lista</string>
+    <string name="main_status_compose_paired">%1$d imatges e %2$d vidèos ; %3$d parelhs de prètzfaches de composicion son estats aponduts segon lo costat mens nombrós</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d prètzfach de composicion apondut ; tocatz «Aviar la conversion» per l\'executar</item>
+        <item quantity="other">%1$d prètzfaches de composicion aponduts ; tocatz «Aviar la conversion» per los executar</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (lo format de sortida es estat cambiat automaticament en Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Importacion de %1$d imatge partejada…</item>
+        <item quantity="other">Importacion de %1$d imatges partejadas…</item>
+    </plurals>
+    <string name="main_status_import_failed">Fracàs de l\'importacion: %1$s</string>
+    <string name="main_status_import_done_partial">Importacion acabada : %1$d capidas, %2$d fracassadas</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importacion acabada : %1$d fichièr importat</item>
+        <item quantity="other">Importacion acabada : %1$d fichièrs importats</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importacion arrestada : %1$d capidas, %2$d fracassadas</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Importacion de %1$d fichièr…</item>
+        <item quantity="other">Importacion de %1$d fichièrs…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importacion %1$d/%2$d…</string>
+    <string name="main_status_stopping">Arrèst en cors… (s\'arrestarà aprèp lo fichièr actual)</string>
+    <string name="main_status_stopping_import">Arrèst de l\'importacion…</string>
+    <string name="main_status_removed">Retirat : %1$s</string>
+    <string name="main_status_cleared">Voidat</string>
+    <string name="main_status_nothing_to_convert">Cap de fichièr de convertir</string>
+    <string name="main_status_folder_unreadable">Lo dorsièr causit se pòt pas legir</string>
+    <string name="main_status_scanning_folder">Analisi del dorsièr…</string>
+    <string name="main_status_no_images">Cap d\'imatge pas trobat dins lo dorsièr causit</string>
+    <string name="main_status_batch_importing">Importacion en massa %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Importacion en massa arrestada : %1$d Live Photo importada</item>
+        <item quantity="other">Importacion en massa arrestada : %1$d Live Photos importadas</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Importacion en massa arrestada : %1$d Live Photo importada, %2$d fichièrs pas Live sautats</item>
+        <item quantity="other">Importacion en massa arrestada : %1$d Live Photos importadas, %2$d fichièrs pas Live sautats</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Importacion en massa acabada : %1$d Live Photo importada</item>
+        <item quantity="other">Importacion en massa acabada : %1$d Live Photos importadas</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Importacion en massa acabada : %1$d Live Photo importada, %2$d fichièrs pas Live sautats</item>
+        <item quantity="other">Importacion en massa acabada : %1$d Live Photos importadas, %2$d fichièrs pas Live sautats</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Arrestat : tractats %2$d sus %1$d fichièrs, %3$d fichièrs originals espotits</string>
+    <string name="main_status_stopped_export">Arrestat : tractats %2$d sus %1$d fichièrs, %3$d exportats dins l\'album</string>
+    <string name="main_status_done_replace_reason">Acabat : tractament de %1$d fichièrs acabat, %2$d fichièrs originals espotits (rason : %3$s)</string>
+    <string name="main_status_done_export_reason">Acabat : tractament de %1$d fichièrs acabat, %2$d exportats dins l\'album (rason : %3$s)</string>
+    <string name="main_status_done_replace">Acabat : tractament de %1$d fichièrs acabat, %2$d fichièrs originals espotits</string>
+    <string name="main_status_done_export">Acabat : tractament de %1$d fichièrs acabat, %2$d exportats dins l\'album</string>
+    <string name="main_status_keep_originals">%1$s ; sens la permission «Accès complet a l\'estocatge», los originals son estats gardats</string>
+    <string name="main_info_detecting">Deteccion…</string>
+    <string name="main_info_unrecognized">Format de Live Photo pas reconegut</string>
+    <string name="main_info_converting">Conversion en cors…</string>
+    <string name="main_info_compose_task">Prètzfach de composicion (tocatz «Aviar la conversion» per l\'executar)</string>
+    <string name="main_info_done_replaced">Acabat (%1$d fichièrs originals espotits)</string>
+    <string name="main_info_done_skipped">Acabat (sautat : conflicte de nom)</string>
+    <string name="main_info_done_exported">Acabat (%1$d exportats)</string>
+    <string name="main_info_failed">Fracàs : %1$s</string>
+    <string name="main_progress_added">Aponduts %1$d/%2$d</string>
+    <string name="main_progress_processed">Tractats %1$d/%2$d</string>
+    <string name="main_progress_imported">Importats %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Cal la permission de lectura de las imatges e de las vidèos</string>
+    <string name="main_dialog_permission_message">Aqueste programa a besonh de legir las imatges e las vidèos de vòstre aparelh :\n\n• permission imatges : analisar l\'album de l\'aparelh e reconéisser las Live Photos qu\'i son\n• permission vidèo : trobar las vidèos associadas de las Live Photos de dos fichièrs\n• permission localizacion : gardar los metadonatas GPS de las imatges (se mancan, l\'informacion de localizacion se pèrd a la conversion)\n\nSe las refusatz, lo selector integrat se pòt pas utilizar ; podètz tocar «Apondre de fichièrs» mai tard per las concedir tornamai.</string>
+    <string name="main_dialog_settings_title">Cal concedir manualament la permission d\'imatges e de vidèos</string>
+    <string name="main_dialog_settings_message">Avètz causit «Demandar pas mai» ; lo sistèma aficha pas mai la bóstia de permissions.\n\nAnatz a la pagina de detalhs de l\'aplicacion → Permissions → Imatges e vidèos, concedissètz manualament la permission d\'accès puèi tornatz a l\'aplicacion.\n\nAtencion : cal concedir ensems las permissions «Imatges» e «Vidèo», sinon las Live Photos de dos fichièrs pòdon pas trobar lor vidèo associada.</string>
+    <string name="main_dialog_allfiles_title_delete">La supression automatica dels originals demanda «Accès a totes los fichièrs»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Aqueste aparelh gerís pas la supression automatica dels originals</string>
+    <string name="main_dialog_allfiles_title_replace">Lo mòde de remplaçament demanda «Accès a totes los fichièrs»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Aqueste aparelh gerís pas lo mòde de remplaçament</string>
+    <string name="main_dialog_allfiles_title_location">Es conselhat de concedir la permission «Accès a totes los fichièrs»</string>
+    <string name="main_dialog_allfiles_delete_message">«Suprimir los originals aprèp lo tractament» suprimís dirèctament del disc los fichièrs originals (l\'imatge e sa vidèo associada) ; l\'operacion es irreversibla, cal donc concedir d\'abord la permission «Accès a totes los fichièrs».\n\nSolament un còp concedida la permission, l\'interruptor se pòt activar.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Lo sistèma actual (Android 10 o mens) ofrís pas la permission «Accès a totes los fichièrs» ; es impossible de suprimir dirèctament del disc los fichièrs originals, per quò aqueste aparelh gerís pas «Suprimir los originals aprèp lo tractament».\n\nPodètz netejar manualament los originals dins l\'album del sistèma aprèp la conversion.</string>
+    <string name="main_dialog_allfiles_replace_message">Lo «Mòde de remplaçament» escriu lo resultat de la conversion dirèctament dins los fichièrs originals del disc (espotís lo contengut) ; l\'operacion es irreversibla, cal donc concedir d\'abord la permission «Accès a totes los fichièrs».\n\nSolament un còp concedida la permission, l\'interruptor se pòt activar.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Lo sistèma actual (Android 10 o mens) ofrís pas la permission «Accès a totes los fichièrs» ; es impossible d\'espotir dirèctament los fichièrs originals del disc, per quò aqueste aparelh gerís pas lo «Mòde de remplaçament».\n\nPodètz contunhar de convertir del mòde per defaut ; los resultats seràn escriches dins lo dorsièr de l\'album.</string>
+    <string name="main_dialog_allfiles_location_message">Sus qualques aparelhs (p. ex. Meizu), l\'escritura via l\'interfàcia de l\'album del sistèma esfaça l\'informacion de localizacion GPS, çò que fa que las imatges convertidas pèrdon la posicion.\n\nUn còp «Accès a totes los fichièrs» concedit, aqueste programa escriurà dirèctament dins lo dorsièr de l\'album e gardarà totes los metadonatas de localizacion.\n\nPodètz tanben convertir sens la concedir ; sus qualques aparelhs, l\'informacion de localizacion se pòt perdre.</string>
+    <string name="main_dialog_conflict_title">Conflicte de nom de fichièr de sortida</string>
+    <string name="main_dialog_conflict_message">Un fichièr del meteis nom existís ja dins lo dorsièr de sortida :\n%1$s\n\nCausissètz cossí procedir.</string>
+    <string name="main_label_conflict_always">Utilizar aqueste metòde pels conflictes seguents</string>
+    <string name="main_btn_grant">Autorizar</string>
+    <string name="main_btn_deny">Refusar</string>
+    <string name="main_btn_go_settings">Anar als paramètres</string>
+    <string name="main_btn_cancel">Anullar</string>
+    <string name="main_btn_grant_access">Concedir</string>
+    <string name="main_btn_got_it">D\'acòrdi</string>
+    <string name="main_btn_not_now">Pas ara</string>
+    <string name="main_btn_skip">Sautar</string>
+    <string name="main_btn_overwrite">Espotir</string>
+    <string name="main_btn_auto_rename">Renomenar automaticament</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d fichièr original suprimit</item>
+        <item quantity="other">%1$d fichièrs originals suprimits</item>
+    </plurals>
+    <string name="main_delete_nothing">Cap de besonh de suprimir los originals</string>
+    <string name="main_delete_partial">%1$d fichièrs originals suprimits (%2$d supressions an fracassat, son estats gardats)</string>
+    <string name="main_delete_failed">Supression dels originals impossibla (fichièrs ocupats o sens permission d\'escritura) ; son estats gardats</string>
+    <string name="main_export_missing_output">Lo resultat de la conversion manca o es void: %1$s</string>
+    <string name="main_export_missing_output_bare">Lo resultat de la conversion manca o es void</string>
+    <string name="main_export_insert_null">L\'insercion MediaStore a restituit null</string>
+    <string name="main_export_output_stream">Lo flux de sortida MediaStore es pas disponible</string>
+    <string name="main_export_write_failed">Fracàs de l\'escritura dins MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">Impossible de crear lo dorsièr d\'album %1$s</string>
+    <string name="main_export_dir_write_failed">Fracàs de l\'escritura dins lo dorsièr d\'album: %1$s</string>
+    <string name="main_export_no_source">Lo fichièr font es introbable ; lo remplaçament es estat sautat</string>
+    <string name="main_export_companion_failed">Fracàs de l\'escritura del fichièr associat: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Lo dorsièr del fichièr font es pas inscribible ; lo fichièr associat a pas pogut èsser escrit</string>
+    <string name="main_export_source_dir_unavailable">Lo dorsièr del fichièr font es pas disponible: %1$s</string>
+    <string name="main_export_replace_failed">Fracàs del remplaçament del fichièr font: %1$s</string>
+    <string name="main_export_replace_failed_bare">Fracàs del remplaçament del fichièr font</string>
+</resources>

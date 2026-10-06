@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Tagalog strings.
+  Update / download (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Tagalog/Filipino; English tech loanwords are kept where customary.
+  Note: UpdaterException / AddonException messages from the core layer are shown directly on
+  list items and in the log panel via MainActivity statusText, so they all go through resources.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud share page and direct-link resolution ========== -->
+    <string name="update_lanzou_gone">Kinansela na ang Lanzou Cloud share o wala ang file; mag-download na lang mula sa GitHub</string>
+    <string name="update_lanzou_gone_short">Kinansela na ang Lanzou Cloud share; mag-download na lang mula sa GitHub</string>
+    <string name="update_lanzou_resolve_failed">Nabigo ang pag-resolve ng Lanzou Cloud download link</string>
+    <string name="update_lanzou_need_passwd">Kailangan ng access code ang Lanzou Cloud share na ito; mag-download na lang mula sa GitHub (o hanapin ang access code sa release notes)</string>
+    <string name="update_lanzou_wrong_passwd">Mali ang Lanzou Cloud access code</string>
+    <string name="update_err_resolve_failed">Nabigo ang pag-resolve</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Nabigo ang anti-crawler check ng Lanzou Cloud</string>
+    <string name="update_err_no_frame">Hindi ma-parse ang Lanzou Cloud download page (walang nakitang download frame)</string>
+    <string name="update_err_no_file_id">Hindi ma-parse ang Lanzou Cloud file identifier</string>
+    <string name="update_err_no_sign">Hindi ma-parse ang Lanzou Cloud signature</string>
+    <string name="update_err_ajax_request">Nabigo ang API request</string>
+    <string name="update_err_api_request">Nabigo ang Lanzou Cloud API request</string>
+    <string name="update_err_empty_direct">Walang laman na download URL ang ibinalik ng Lanzou Cloud</string>
+    <string name="update_err_direct_expired">Nag-expire na ang Lanzou Cloud download URL; kunin muli</string>
+    <string name="update_err_http_request">Nabigo ang request (HTTP %1$d)</string>
+
+    <!-- ========== Download ========== -->
+    <string name="update_err_connect">Hindi makakonekta sa download server: %1$s</string>
+    <string name="update_err_http">Nabigo ang download (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Hindi makabuo ng koneksyon sa download</string>
+    <string name="update_err_empty">Walang laman ang na-download</string>
+    <string name="update_err_incomplete">Hindi kumpleto ang download (%1$d / %2$d byte ang nakuha); mag-download muli</string>
+    <string name="update_err_interrupted">Naputol ang download: %1$s</string>
+
+    <!-- ========== Package verification and installation ========== -->
+    <string name="update_err_not_apk">Hindi valid na package ang na-download (maaaring web page ito o nag-expire na ang download link); mag-download muli o gumamit ng GitHub.</string>
+    <string name="update_err_apk_incomplete">Hindi kumpleto ang nilalaman ng package; mag-download muli o gumamit ng GitHub.</string>
+    <string name="update_err_apk_unparsable">Hindi ma-parse ang package (maaaring hindi kumpleto ang download); mag-download muli o gumamit ng GitHub.</string>
+    <string name="update_err_no_install_permission">Wala pang “install unknown apps” na pahintulot</string>
+    <string name="update_err_installer_failed">Hindi ma-launch ang system installer (%1$s); buksan ang package sa file manager at i-install nang manu-mano</string>
+
+</resources>

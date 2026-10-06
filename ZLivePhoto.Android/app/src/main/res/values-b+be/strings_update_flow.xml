@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Belarusian (be) strings — update flow (ui/UpdateFlow.kt).
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <!-- Падказкі з боку кантролера (па-за Composable, якія не залежаць ад Context, выкарыстоўваецца context.getString) -->
+    <string name="update_github_url_missing">Адрас спампоўкі з GitHub не атрыманы; паспрабуйце пазней.</string>
+    <string name="update_flavor_standard">Стандартная версія</string>
+    <string name="update_flavor_go">Версія Go</string>
+    <string name="update_lanzou_url_missing">Гэта версія не прапануе спасылку для спампоўкі з Lanzou Cloud; можна скарыстацца GitHub.</string>
+    <string name="update_apk_direct_missing">Гэта версія не прапануе прямой спасылкі на пакет, які адпавядае вашай версіі; выберыце адпаведны APK на старонцы выпускаў GitHub.</string>
+    <string name="update_install_permission_missing">Дазвол «Усталяванне невядомых праграм» не атрыманы, аўтаматычнае ўсталяванне немагчымае. Дазвольце яго ў сістэмных наладах і паспрабуйце зноў.</string>
+    <string name="update_error_unknown">Невядомая памылка</string>
+    <string name="update_fail_lanzou">Спампоўка з Lanzou Cloud не ўдалася</string>
+    <string name="update_fail_github">Спампоўка з GitHub не ўдалася</string>
+    <string name="update_lanzou_resolving">Разбор спасылкі для спампоўкі з Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Спампоўка з Lanzou Cloud…</string>
+    <string name="update_github_downloading">Спампоўка з GitHub…</string>
+    <string name="update_unzipping">Распакоўка пакета ўсталявання…</string>
+    <string name="update_notes_empty">Для гэтай версіі няма апісання абнаўлення.</string>
+
+    <!-- Дыялогі, звязаныя з версіяй Go -->
+    <string name="update_use_normal_title">Карыстайцеся стандартнай версіяй</string>
+    <string name="update_use_normal_body">Сістэма гэтай прылады — Android 10 або навейшая, лёгкая версія Go больш не падтрымліваецца, і старая версія не можа выкарыстоўвацца.\n\nВыяўлена, што на гэтай прыладзе ўсталявана стандартная версія (ZLC); адкрыйце яе і працягвайце карыстацца (у новых выпусках няма версіі, сумяшчальнай з Go; старую версію можна выдаліць, каб вызваліць месца).</string>
+    <string name="update_open_normal">Адкрыць стандартную версію</string>
+    <string name="update_must_update_title">Каб працягнуць, трэба абнавіцца</string>
+    <string name="update_forced_body">Сістэма гэтай прылады — Android 10 або навейшая, лёгкая версія Go больш не падтрымліваецца, старая версія не можа выкарыстоўвацца; у новых выпусках таксама няма версіі, сумяшчальнай з Go.\n\nПадключыцеся да сеткі і націсніце «Паўтарыць», каб атрымаць пакет стандартнай версіі.</string>
+    <string name="update_retry">Паўтарыць</string>
+    <string name="update_switch_normal_body">Сістэма гэтай прылады — Android 10 або навейшая, лёгкая версія Go больш не падтрымліваецца, старая версія не можа выкарыстоўвацца.\nСпампуйце і ўсталюйце стандартную версію, каб працягнуць (у новых выпусках няма версіі, сумяшчальнай з Go).</string>
+
+    <!-- Спампоўка / дазвол на ўсталяванне / вынікі -->
+    <string name="update_downloading_title">Спампаваць абнаўленне</string>
+    <string name="update_cancel">Скасаваць</string>
+    <string name="update_need_permission_title">Патрабуецца дазвол на ўсталяванне</string>
+    <string name="update_need_permission_body">Для ўсталявання новай версіі патрабуецца сістэмны дазвол «Усталяванне невядомых праграм».\n\nНацісніце «Дазволіць», дазвольце ў наладах і вярніцеся ў праграму; усталяванне працягнецца аўтаматычна (спампоўваць зноў не трэба).</string>
+    <string name="update_grant">Дазволіць</string>
+    <string name="update_notice_title">Заўвага</string>
+    <string name="update_got_it">Зразумела</string>
+
+    <!-- Асноўны дыялог / апісанне абнаўлення -->
+    <string name="update_notes_title">v%1$s · Абнаўленні</string>
+    <string name="update_back">Назад</string>
+    <string name="update_title_switch_normal">Пераключыцца на стандартную версію</string>
+    <string name="update_title_reinstall">Пераўсталяваць гэту версію</string>
+    <string name="update_title_new_version">Знойдзена новая версія</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Гэта версія будзе спампавана і ўсталявана зноў (з перазапісам бягучай праграмы).\nГэта функцыя выкарыстоўваецца для рэгрэсійнай праверкі механізму абнаўлення.</string>
+    <string name="update_view_notes">Паглядзець апісанне абнаўлення</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud часова недаступны</string>
+    <string name="update_download_lanzou">Спампаваць з Lanzou Cloud</string>
+    <string name="update_download_github">Спампаваць з GitHub</string>
+    <string name="update_download_browser">Спампаваць з браўзера</string>
+    <string name="update_later">Абнавіць пазней</string>
+    <string name="update_later_switch">Пераключыць пазней</string>
+    <string name="update_skip_version">Прапусціць гэту версію</string>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Faroese (fo) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">Ongin GitHub-niðurtakartengil fingin; royn aftur seinni.</string>
+    <string name="update_flavor_standard">vanliga útgáfan</string>
+    <string name="update_flavor_go">Go-útgáfan</string>
+    <string name="update_lanzou_url_missing">Henda útgávan býður ikki upp á Lanzou-niðurtakartengil; brúka GitHub-niðurtøku í staðin.</string>
+    <string name="update_apk_direct_missing">Henda útgávan hevur ongan beinan tengil til uppsetingarpakka, ið samsvarar hesi útgávu; far til GitHub-útgávusíðuna og vel tilsvarandi APK.</string>
+    <string name="update_install_permission_missing">Lóvin „Installera ókend forrit“ er ikki fingin; kann ikki installera sjálvvirkandi. Loyv í kerfisstillingunum og royn aftur.</string>
+    <string name="update_error_unknown">Ókendur feilur</string>
+    <string name="update_fail_lanzou">Niðurtøka frá Lanzou miseydnaðist</string>
+    <string name="update_fail_github">Niðurtøka frá GitHub miseydnaðist</string>
+    <string name="update_lanzou_resolving">Greinir Lanzou-niðurtakartengil…</string>
+    <string name="update_lanzou_downloading">Tekur niður frá Lanzou…</string>
+    <string name="update_github_downloading">Tekur niður frá GitHub…</string>
+    <string name="update_unzipping">Pakkar uppsetingarpakka út…</string>
+    <string name="update_notes_empty">Henda útgávan hevur ongar dagføringsupplýsingar enn.</string>
+    <string name="update_use_normal_title">Brúka vanligu útgávuna</string>
+    <string name="update_use_normal_body">Kerfið á tækinum er Android 10 ella nýggjari; Go-lætt útgávan er ikki longurður ápassað, og gomla útgávan kann ikki nýtast longur.\n\nVanliga útgávan (ZLC) er longu uppsett á tækinum; upna hana beinleiðis og halda fram (nýggja útgávan býður ikki longur upp á Go-samhaldsútgávu; gomla útgávan kann avinstallerast fyri at fría pláss).</string>
+    <string name="update_open_normal">Upna vanligu útgávuna</string>
+    <string name="update_must_update_title">Dagføring er kravd áðrenn framhald</string>
+    <string name="update_forced_body">Kerfið á tækinum er Android 10 ella nýggjari; Go-lætt útgávan er ikki longur ápassað, og gomla útgávan kann ikki nýtast longur; nýggja útgávan býður heldur ikki upp á Go-samhaldsútgávu.\n\nKnýt netið á og trýst á „Royn aftur“ fyri at fáa uppsetingarpakkann til vanligu útgávuna.</string>
+    <string name="update_retry">Royn aftur</string>
+    <string name="update_switch_normal_body">Kerfið á tækinum er Android 10 ella nýggjari; Go-lætt útgávan er ikki longur ápassað, og gomla útgávan kann ikki nýtast longur.\nTak niður og installera vanligu útgávuna og halda so fram (nýggja útgávan býður ikki longur upp á Go-samhaldsútgávu).</string>
+    <string name="update_downloading_title">Tekur dagføring niður</string>
+    <string name="update_cancel">Angra</string>
+    <string name="update_need_permission_title">Installeralóvi er kravdur</string>
+    <string name="update_need_permission_body">At installera nýggju útgávuna krevur kerfishimildina „Installera ókend forrit“.\n\nTrýst á „Til heimildir“, loyv í stillingunum og kom aftur til appina; installeringin heldur sjálvvirkandi fram (tað er ikki neyðugt at taka niður umaftur).</string>
+    <string name="update_grant">Til heimildir</string>
+    <string name="update_notice_title">Fráboðan</string>
+    <string name="update_got_it">Skilt</string>
+    <string name="update_notes_title">v%1$s · Dagføringsupplýsingar</string>
+    <string name="update_back">Aftur</string>
+    <string name="update_title_switch_normal">Skift til vanligu útgávuna</string>
+    <string name="update_title_reinstall">Installera hesa útgávuna umaftur</string>
+    <string name="update_title_new_version">Nýggj útgáva funnin</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Tekur niður og installera hesa útgávuna umaftur (yvurskrivar núverandi app).\nHesin eginleikin er til endurkoyringarroyndir av dagføringarmekanikkinum.</string>
+    <string name="update_view_notes">Sí dagføringsupplýsingar</string>
+    <string name="update_lanzou_unavailable">Lanzou er ikki tøkt í løtuni</string>
+    <string name="update_download_lanzou">Tak niður frá Lanzou</string>
+    <string name="update_download_github">Tak niður frá GitHub</string>
+    <string name="update_download_browser">Tak niður í kaganum</string>
+    <string name="update_later">Ikki dagføra nú</string>
+    <string name="update_later_switch">Ikki skifta nú</string>
+    <string name="update_skip_version">Leyp hesa útgávu um</string>
+</resources>

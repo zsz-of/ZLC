@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Oʻzbekcha (Uzbek) strings — yangilanish / yuklab olish (key prefix: update_).
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Uzbek (Latin); model-assisted translation — community corrections welcome.
+  Recommended for a native review pass.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud ulashish sahifasi va toʻgʻridan-toʻgʻri havolani tahlil qilish ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud ulashuvi bekor qilingan yoki fayl mavjud emas; iltimos, GitHubdan yuklab oling</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud ulashuvi bekor qilingan; iltimos, GitHubdan yuklab oling</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud yuklab olish havolasini tahlil qilib boʻlmadi</string>
+    <string name="update_lanzou_need_passwd">Bu Lanzou Cloud ulashuvi uchun ajratish kodi kerak; iltimos, GitHubdan yuklab oling (yoki Release izohlaridan kodni toping)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud ajratish kodi xato</string>
+    <string name="update_err_resolve_failed">Tahlil qilib boʻlmadi</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud anti-crawl tekshiruvi muvaffaqiyatsiz</string>
+    <string name="update_err_no_frame">Lanzou Cloud yuklab olish sahifasini tahlil qilib boʻlmadi (yuklab olish freymi topilmadi)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud fayl identifikatorini tahlil qilib boʻlmadi</string>
+    <string name="update_err_no_sign">Lanzou Cloud imzosini tahlil qilib boʻlmadi</string>
+    <string name="update_err_ajax_request">Interfeys soʻrovi muvaffaqiyatsiz</string>
+    <string name="update_err_api_request">Lanzou Cloud API soʻrovi muvaffaqiyatsiz</string>
+    <string name="update_err_empty_direct">Lanzou Cloud boʻsh yuklab olish manzilini qaytardi</string>
+    <string name="update_err_direct_expired">Lanzou Cloud yuklab olish manzilining muddati tugagan, iltimos qaytadan oling</string>
+    <string name="update_err_http_request">Soʻrov muvaffaqiyatsiz (HTTP %1$d)</string>
+
+    <!-- ========== Yuklab olish ========== -->
+    <string name="update_err_connect">Yuklab olish serveriga ulanib boʻlmadi: %1$s</string>
+    <string name="update_err_http">Yuklab olish muvaffaqiyatsiz (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Yuklab olish ulanishi oʻrnatilmadi</string>
+    <string name="update_err_empty">Yuklab olingan mazmun boʻsh</string>
+    <string name="update_err_incomplete">Yuklab olish tugallanmadi (%1$d / jami %2$d bayt olindi), iltimos qaytadan yuklab oling</string>
+    <string name="update_err_interrupted">Yuklab olish uzildi: %1$s</string>
+
+    <!-- ========== Oʻrnatuvchini tekshirish va oʻrnatish ========== -->
+    <string name="update_err_not_apk">Yuklab olingan fayl yaroqli oʻrnatuvchi emas (ehtimol veb-sahifa, yoki yuklab olish havolasining muddati tugagan); iltimos qaytadan yuklab oling yoki GitHubdan foydalaning.</string>
+    <string name="update_err_apk_incomplete">Oʻrnatuvchi mazmuni toʻliq emas; iltimos qaytadan yuklab oling yoki GitHubdan foydalaning.</string>
+    <string name="update_err_apk_unparsable">Oʻrnatuvchini tahlil qilib boʻlmadi (yuklab olish toʻliq boʻlmagan boʻlishi mumkin); iltimos qaytadan yuklab oling yoki GitHubdan foydalaning.</string>
+    <string name="update_err_no_install_permission">“Nomaʼlum ilovalarni oʻrnatish” ruxsati hali berilmagan</string>
+    <string name="update_err_installer_failed">Tizim oʻrnatuvchisini chaqirib boʻlmadi (%1$s), iltimos fayl menejeridan oʻrnatuvchini qoʻlda ochib oʻrnating</string>
+
+</resources>

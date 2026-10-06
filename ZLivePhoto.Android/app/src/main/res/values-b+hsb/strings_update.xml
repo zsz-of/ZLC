@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+
+    <!-- ========== Dźělenje Lanzou Cloud a analyza direktneho wotkaza ========== -->
+    <string name="update_lanzou_gone">Dźělenje Lanzou Cloud je wotprajene abo dataja njeeksistuje; prošu wzać z GitHub</string>
+    <string name="update_lanzou_gone_short">Dźělenje Lanzou Cloud je wotprajene; prošu wzać z GitHub</string>
+    <string name="update_lanzou_resolve_failed">Analiza Lanzou-Cloud-wotkaza za wzaće zwrěšćiła</string>
+    <string name="update_lanzou_need_passwd">Tute dźělenje Lanzou Cloud potrjebuje přistupny kod; prošu wzać z GitHub (abo namakajće přistupny kod w přispomnjenjach wudaća)</string>
+    <string name="update_lanzou_wrong_passwd">Wopačny přistupny kod Lanzou Cloud</string>
+    <string name="update_err_resolve_failed">Analiza zwrěšćiła</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Kontrola přećiwo crawleram pola Lanzou Cloud zwrěšćiła</string>
+    <string name="update_err_no_frame">Lanzou-Cloud-wotkazowa strona njeda so analyzować (frame za wzaće njenamakany)</string>
+    <string name="update_err_no_file_id">Identifikator Lanzou-Cloud-dataje njeda so analyzować</string>
+    <string name="update_err_no_sign">Signatura Lanzou Cloud njeda so analyzować</string>
+    <string name="update_err_ajax_request">Naprašowanje na interfejs zwrěšćiło</string>
+    <string name="update_err_api_request">Naprašowanje na interfejs Lanzou Cloud zwrěšćiło</string>
+    <string name="update_err_empty_direct">Lanzou Cloud je prózdnu wotkazowu adresu wróćił</string>
+    <string name="update_err_direct_expired">Wotkazowa adresa Lanzou Cloud je spadnyła; prošu znowa wzać</string>
+    <string name="update_err_http_request">Naprašowanje zwrěšćiło (HTTP %1$d)</string>
+
+    <!-- ========== Wzaće ========== -->
+    <string name="update_err_connect">Zwisk z serwerom za wzaće njemóžny: %1$s</string>
+    <string name="update_err_http">Wzaće zwrěšćiło (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Zwisk za wzaće njeda so wutworić</string>
+    <string name="update_err_empty">Wzaty wobsah je prózdny</string>
+    <string name="update_err_incomplete">Wzaće njedospołne (dóstane %1$d / cyłkownje %2$d bajtow); prošu znowa wzać</string>
+    <string name="update_err_interrupted">Wzaće přetorhnjene: %1$s</string>
+
+    <!-- ========== Přepruwowanje a instalowanje instalaciskeho pakowanja ========== -->
+    <string name="update_err_not_apk">Wzata dataja płaćiwe instalaciske pakowanje njeje (snano je webstrona abo wotkaz je spadnył); prošu znowa wzać abo wužijće GitHub.</string>
+    <string name="update_err_apk_incomplete">Wobsah instalaciskeho pakowanja njedospołny; prošu znowa wzać abo wužijće GitHub.</string>
+    <string name="update_err_apk_unparsable">Instalaciske pakowanje njeda so analyzować (wzaće snano njedospołne); prošu znowa wzać abo wužijće GitHub.</string>
+    <string name="update_err_no_install_permission">Prawo «instalować njeznate aplikacije» hišće njepodate</string>
+    <string name="update_err_installer_failed">Systemowy instalaciski program njeda so startować (%1$s); prošu wočińće instalaciske pakowanje ručnje w datajowym rjadowaku</string>
+
+</resources>

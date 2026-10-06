@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Faroese (fo) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">Klárt</string>
+    <string name="main_status_location_granted">Støðuheimild veitt; GPS-metadata verður varðveitt eftir broyting</string>
+    <string name="main_status_location_denied">Støðuheimild ikki veitt: myndir missa GPS-støðuupplýsingar eftir broyting</string>
+    <string name="main_status_all_files_granted">Heimildin „Atgongd til allar fílur“ er veitt; broyting skrivar beinleiðis í albummappuna og varðveitir støðuupplýsingar fullkomiliga</string>
+    <string name="main_status_all_files_denied">Heimildin „Atgongd til allar fílur“ er ikki veitt: á summum tókum kann støðan missast eftir broyting</string>
+    <string name="main_status_read_granted">Heimild til at lesa myndir og video er veitt</string>
+    <string name="main_status_video_missing">Heimilað, men videoheimild manglar: finnur ikki fylgjandi video hjá tveggja fíla Live Photo</string>
+    <string name="main_status_permission_denied">Heimild ikki veitt; trýst aftur á „Legg fílur aftrat“</string>
+    <string name="main_status_folder_not_selected">Ongin mappa vald</string>
+    <string name="main_status_folder_unavailable">Ikki møguligt at koma á valdu mappuna (bert lokalar minnistøkumappur eru stuðlaðar)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Seinasta setan endurstovnað (%1$d fíla)</item>
+        <item quantity="other">Seinasta setan endurstovnað (%1$d fílur)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Appin endaði óvanligt síðast; óliðugur listi er tømdur</string>
+    <string name="main_status_compose_blocks_extract">Biðirøðin inniheldur samsetanaruppgávur; kann ikki skifta til sundurliðan</string>
+    <string name="main_status_replace_off_mutex">Útskiftingarhamur er sløktur (útslúkktur við „Strika upprunafílur eftir vinnslu“)</string>
+    <string name="main_status_delete_needs_all_files">Sjálvvirkandi striking av upprunafílum krevur „Atgongd til allar fílur“; heimlad fyrst</string>
+    <string name="main_status_replace_off">Útskiftingarhamur er sløktur; úrsliðið verður skrivað í albummappuna</string>
+    <string name="main_status_replace_needs_all_files">Útskiftingarhamur krevur „Atgongd til allar fílur“; heimlad fyrst</string>
+    <string name="main_status_delete_off_mutex">„Strika upprunafílur eftir vinnslu“ er sløkt (útslúkkt við útskiftingarham)</string>
+    <string name="main_status_loading_albums">Lesur albúm…</string>
+    <string name="main_status_no_albums">Ongin albúm funnin</string>
+    <string name="main_status_compose_no_photo">Ongin mynd vald; kann ikki seta saman</string>
+    <string name="main_status_compose_no_video">Ongin video valdur; kann ikki seta saman</string>
+    <string name="main_status_compose_all_added">Valdar myndir eru longu á listanum</string>
+    <string name="main_status_compose_paired">Myndir: %1$d, video: %2$d — eftir minsta parti eru %3$d pór samsetanaruppgávur lagdar aftrat</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d samsetanaruppgáva lögð aftrat; trýst á „Byrja broyting“ fyri at seta saman</item>
+        <item quantity="other">%1$d samsetanaruppgávur lagdar aftrat; trýst á „Byrja broyting“ fyri at seta saman</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (úttaksformatið er sjálvvirkandi skift til Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Innflytur %1$d deilda mynd…</item>
+        <item quantity="other">Innflytur %1$d deildar myndir…</item>
+    </plurals>
+    <string name="main_status_import_failed">Innflytjan miseydnaðist: %1$s</string>
+    <string name="main_status_import_done_partial">Innflytjan liðug: %1$d eydnaðu, %2$d miseydnaðust</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Innflytjan liðug: tilsamans %1$d fíla innflutt</item>
+        <item quantity="other">Innflytjan liðug: tilsamans %1$d fílur innfluttar</item>
+    </plurals>
+    <string name="main_status_import_stopped">Innflytjan støðgað: %1$d eydnaðu, %2$d miseydnaðust</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Innflytur %1$d fílu…</item>
+        <item quantity="other">Innflytur %1$d fílur…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Innflytur %1$d/%2$d…</string>
+    <string name="main_status_stopping">Støðgar… (stovnar eftir núverandi fílu)</string>
+    <string name="main_status_stopping_import">Støðgar innflytjan…</string>
+    <string name="main_status_removed">%1$s tikin burtur</string>
+    <string name="main_status_cleared">Tømt</string>
+    <string name="main_status_nothing_to_convert">Ongar fílur at broyta</string>
+    <string name="main_status_folder_unreadable">Ikki møguligt at lesa valda mappuna</string>
+    <string name="main_status_scanning_folder">Skannar mappu…</string>
+    <string name="main_status_no_images">Ongar myndir funnar í valdu mappuni</string>
+    <string name="main_status_batch_importing">Innflytur í bundti %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Bundtinnsending stoppað: tilsamans %1$d Live Photo innflutt</item>
+        <item quantity="other">Bundtinnsending stoppað: tilsamans %1$d Live Photo innflutt</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Bundtinnsending stoppað: tilsamans %1$d Live Photo innflutt, %2$d fíla ið ikki er Live Photo slept um</item>
+        <item quantity="other">Bundtinnsending stoppað: tilsamans %1$d Live Photo innflutt, %2$d fílur ið ikki eru Live Photo slept um</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Bundtinnsending liðug: tilsamans %1$d Live Photo innflutt</item>
+        <item quantity="other">Bundtinnsending liðug: tilsamans %1$d Live Photo innflutt</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Bundtinnsending liðug: tilsamans %1$d Live Photo innflutt, %2$d fíla ið ikki er Live Photo slept um</item>
+        <item quantity="other">Bundtinnsending liðug: tilsamans %1$d Live Photo innflutt, %2$d fílur ið ikki eru Live Photo slept um</item>
+    </plurals>
+    <string name="main_status_stopped_replace">%1$d fílur: %2$d viðgongdar, %3$d keldufílur skift út</string>
+    <string name="main_status_stopped_export">%1$d fílur: %2$d viðgongdar, %3$d útskrivaðar til albúmið</string>
+    <string name="main_status_done_replace_reason">Liðugt: %1$d fílur viðgongdar, %2$d keldufílur skift út (orsak: %3$s)</string>
+    <string name="main_status_done_export_reason">Liðugt: %1$d fílur viðgongdar, %2$d útskrivaðar til albúmið (orsak: %3$s)</string>
+    <string name="main_status_done_replace">Liðugt: %1$d fílur viðgongdar, %2$d keldufílur skift út</string>
+    <string name="main_status_done_export">Liðugt: %1$d fílur viðgongdar, %2$d útskrivaðar til albúmið</string>
+    <string name="main_status_keep_originals">%1$s; „Full komulig minnistøkuatgongd“ ikki heimlað, upprunafílur eru varðveittar</string>
+    <string name="main_info_detecting">Kannar…</string>
+    <string name="main_info_unrecognized">Ókent Live Photo-format</string>
+    <string name="main_info_converting">Broytir…</string>
+    <string name="main_info_compose_task">Samsetanaruppgáva (trýst á „Byrja broyting“ fyri at seta saman)</string>
+    <string name="main_info_done_replaced">Liðug (%1$d keldufíla skift út)</string>
+    <string name="main_info_done_skipped">Liðug (slept um: navn árbardagi)</string>
+    <string name="main_info_done_exported">Liðug (%1$d útskrivað)</string>
+    <string name="main_info_failed">Miseydnað: %1$s</string>
+    <string name="main_progress_added">Lagdar aftrat %1$d/%2$d</string>
+    <string name="main_progress_processed">Viðgongdar %1$d/%2$d</string>
+    <string name="main_progress_imported">Innfluttar %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Heimild til at lesa myndir og video er kravd</string>
+    <string name="main_dialog_permission_message">Appin nýtist at lesa myndir og video á tínum tæki:\n\n• Myndaheimild: skanna albúmið á tækinum og kenna Live Photo\n• Videoheimild: finna fylgjandi video hjá tveggja fíla Live Photo\n• Støðuheimild: varðveita GPS-støðumetadata í myndum (manglar hon, missir myndin støðu eftir broyting)\n\nEftir avslátt er innbyggda valið ikki brúkbart; trýst seinni aftur á „Legg fílur aftrat“ fyri at heimla umaftur.</string>
+    <string name="main_dialog_settings_title">Mynda- og videoheimild má heimlast manuelt</string>
+    <string name="main_dialog_settings_message">Tú valdi áður „Ikki spyr aftur“, so kerfið vísur ikki longur heimildspurningin.\n\nFar til appupplýsingar → Heimildir → Myndir og video, heimlad atgongd manuelt og kom aftur til appina.\n\nGer um: „Myndir“ og „Video“ mugu bæði verða heimlað; um ikki, finnur tveggja fíla Live Photo ikki fylgjandi video.</string>
+    <string name="main_dialog_allfiles_title_delete">„Strika upprunafílur eftir vinnslu“ krevur „Atgongd til allar fílur“</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Hesin tóki styður ikki sjálvvirkandi striking av upprunafílum</string>
+    <string name="main_dialog_allfiles_title_replace">Útskiftingarhamur krevur „Atgongd til allar fílur“</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Hesin tóki styður ikki útskiftingarham</string>
+    <string name="main_dialog_allfiles_title_location">„Atgongd til allar fílur“ er mælt til</string>
+    <string name="main_dialog_allfiles_delete_message">„Strika upprunafílur eftir vinnslu“ strikar beinleiðis upprunafílurnar á disknum (myndir og fylgjandi video); hendan gerð ber ikki at angra, so „Atgongd til allar fílur“ má heimlast fyrst.\n\nEftir heimild verður knappurin virkjanligur, og so kanst tú gera hann virkjan sjálv/v.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Núverandi kerfi (Android 10 og niðri) býður ikki upp á „Atgongd til allar fílur“, og upprunafílur á disknum kunnu ikki strikast beinleiðis; tí styður hesin tóki ikki „Strika upprunafílur eftir vinnslu“.\n\nEftir broyting kanst tú reinsa upprunafílur manuelt gjøgnum kerfisalbúmið.</string>
+    <string name="main_dialog_allfiles_replace_message">„Útskiftingarhamur“ skrivar úrsliðið av broytingini beinleiðis aftur í upprunafíluna á disknum (yvurskrivar upprunainnihaldið); hendan gerð ber ikki at angra, so „Atgongd til allar fílur“ má heimlast fyrst.\n\nEftir heimild verður knappurin virkjanligur, og so kanst tú gera hann virkjan sjálv/v.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Núverandi kerfi (Android 10 og niðri) býður ikki upp á „Atgongd til allar fílur“, og upprunafílur á disknum kunnu ikki broytast beinleiðis; tí styður hesin tóki ikki „Útskiftingarham“.\n\nTú kanst halda fram við broyting við sjálvvirkna háttin; úrsliðið verður skrivað í albummappuna.</string>
+    <string name="main_dialog_allfiles_location_message">Á summum tókum (t.d. Meizu) strikar skriving gjøgnum kerfisalbúmsmarkamótið GPS-støðuupplýsingar, so at myndin missir støðu eftir broyting.\n\nEftir „Atgongd til allar fílur“ skrivar appin beinleiðis í albummappuna og varðveitir støðumetadata fullkomiliga.\n\nBroytingin virkar eisini uttan heimild; á summum tókum kann støðan missast.</string>
+    <string name="main_dialog_conflict_title">Navn árbardagi í úttaksnavnum</string>
+    <string name="main_dialog_conflict_message">Fíla við sama navni finst longu í úttaksmappuni:\n%1$s\n\nVel hvussu hon skal takast á.</string>
+    <string name="main_label_conflict_always">Brúka hesa viðgerðina fyri komandi árbardagar</string>
+    <string name="main_btn_grant">Heimlad</string>
+    <string name="main_btn_deny">Avslá</string>
+    <string name="main_btn_go_settings">Til stillingar</string>
+    <string name="main_btn_cancel">Angra</string>
+    <string name="main_btn_grant_access">Til heimildir</string>
+    <string name="main_btn_got_it">Skilt</string>
+    <string name="main_btn_not_now">Ikki nú</string>
+    <string name="main_btn_skip">Slep</string>
+    <string name="main_btn_overwrite">Yvurskriva</string>
+    <string name="main_btn_auto_rename">Endurnevn sjálvvirkandi</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Strikaði %1$d upprunafílu</item>
+        <item quantity="other">Strikaði %1$d upprunafílur</item>
+    </plurals>
+    <string name="main_delete_nothing">Ongar upprunafílur at strika</string>
+    <string name="main_delete_partial">Strikaði %1$d upprunafílur (%2$d miseydnaðust, eru varðveittar)</string>
+    <string name="main_delete_failed">Striking av upprunafílum miseydnaðist (fíla upptikin ella ongi skrivilóvi); varðveittar</string>
+    <string name="main_export_missing_output">Úrsliðið av broytingini manglar ella er tómt: %1$s</string>
+    <string name="main_export_missing_output_bare">Úrsliðið av broytingini manglar ella er tómt</string>
+    <string name="main_export_insert_null">MediaStore insert svaraði null</string>
+    <string name="main_export_output_stream">MediaStore útskrivingarstraumur er ikki tøkur</string>
+    <string name="main_export_write_failed">MediaStore skriving miseydnaðist: %1$s</string>
+    <string name="main_export_mkdir_failed">Ikki møguligt at stovna albúmmappu %1$s</string>
+    <string name="main_export_dir_write_failed">Skriving í albúmmappuna miseydnaðist: %1$s</string>
+    <string name="main_export_no_source">Keldufíla ikki funnin; útskifting slept um</string>
+    <string name="main_export_companion_failed">Skriving av fylgjandi fílu miseydnaðist: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Keldumappan er ikki skrivbar; fylgjandi fíla varð ikki skrivað aftur</string>
+    <string name="main_export_source_dir_unavailable">Keldumappan er ikki tøk: %1$s</string>
+    <string name="main_export_replace_failed">Útskifting av keldufílu miseydnaðist: %1$s</string>
+    <string name="main_export_replace_failed_bare">Útskifting av keldufílu miseydnaðist</string>
+</resources>

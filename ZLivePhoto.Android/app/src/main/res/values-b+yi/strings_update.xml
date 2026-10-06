@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Yiddish (yi) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">דער Lanzou טיילן־לינק איז אַנולירט געוואָרן אדער די טעקע עקזיסטירט נישט; ניצט אַנשטאָט GitHub צום אַראָפּלאָדן</string>
+    <string name="update_lanzou_gone_short">דער Lanzou טיילן־לינק איז אַנולירט געוואָרן; ניצט אַנשטאָט GitHub צום אַראָפּלאָדן</string>
+    <string name="update_lanzou_resolve_failed">דער Lanzou אַראָפּלאָד־לינק האָט זיך נישט געקענט אויפֿלײזן</string>
+    <string name="update_lanzou_need_passwd">דער Lanzou טיילן־לינק דאַרף אַן אַרויסנעם־קאָד; ניצט אַנשטאָט GitHub צום אַראָפּלאָדן (אדער זוכט דעם קאָד אין די Release באַשרײַבונג)</string>
+    <string name="update_lanzou_wrong_passwd">דער Lanzou אַרויסנעם־קאָד איז פֿאַלש</string>
+    <string name="update_err_resolve_failed">אויפֿלײזן איז דורכגעפֿאַלן</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou אַנטי־קראָלינג פּרופֿונג איז דורכגעפֿאַלן</string>
+    <string name="update_err_no_frame">מען קען נישט אויפֿלײזן דעם Lanzou אַראָפּלאָד־בלאַט (קיין אַראָפּלאָד־פֿרייַם נישט געפֿונען)</string>
+    <string name="update_err_no_file_id">מען קען נישט אויפֿלײזן דעם Lanzou טעקע־אידענטיפֿיקאַטאָר</string>
+    <string name="update_err_no_sign">מען קען נישט אויפֿלײזן די Lanzou סיגנאַטור</string>
+    <string name="update_err_ajax_request">די אינטערפֿייס־אָנפֿרעג איז דורכגעפֿאַלן</string>
+    <string name="update_err_api_request">די Lanzou אינטערפֿייס־אָנפֿרעג איז דורכגעפֿאַלן</string>
+    <string name="update_err_empty_direct">Lanzou האָט צוריקגעגעבן אַן ליידיקע אַראָפּלאָד־אַדרעס</string>
+    <string name="update_err_direct_expired">די Lanzou אַראָפּלאָד־אַדרעס איז שוין פֿאַרלױפֿן; באַקומט זי פֿון נײַ</string>
+    <string name="update_err_http_request">די אָנפֿרעג איז דורכגעפֿאַלן (HTTP %1$d)</string>
+    <string name="update_err_connect">מען קען זיך נישט פֿאַרבינדן מיט דעם אַראָפּלאָד־סערווער: %1$s</string>
+    <string name="update_err_http">אַראָפּלאָדן איז דורכגעפֿאַלן (HTTP %1$d)</string>
+    <string name="update_err_no_connection">מען קען נישט אויפֿשטעלן קיין אַראָפּלאָד־פֿאַרבינדונג</string>
+    <string name="update_err_empty">דער אַראָפּלאָד־אינהאַלט איז ליידיק</string>
+    <string name="update_err_incomplete">דער אַראָפּלאָד איז נישט פֿולשטענדיק (%1$d פֿון %2$d ביטעס באַקומען); לאָדט נאָך אַמאָל אַראָפּ</string>
+    <string name="update_err_interrupted">דער אַראָפּלאָד איז איבערגעריסן געוואָרן: %1$s</string>
+    <string name="update_err_not_apk">וואָס עס איז אַראָפּגעלאָדן געוואָרן איז נישט קיין גילטיק אינסטאַלאַציע־פּאַקעט (עס קען זיין אַ וועב־בלאַט אדער דער אַראָפּלאָד־לינק איז שוין פֿאַרלױפֿן); לאָדט נאָך אַמאָל אַראָפּ אדער ניצט GitHub.</string>
+    <string name="update_err_apk_incomplete">דער אינהאַלט פֿון דער אינסטאַלאַציע־פּאַקעט איז נישט פֿולשטענדיק; לאָדט נאָך אַמאָל אַראָפּ אדער ניצט GitHub.</string>
+    <string name="update_err_apk_unparsable">די אינסטאַלאַציע־פּאַקעט קען זיך נישט אויפֿלײזן (מעגלעך אַז דער אַראָפּלאָד איז נישט פֿולשטענדיק); לאָדט נאָך אַמאָל אַראָפּ אדער ניצט GitHub.</string>
+    <string name="update_err_no_install_permission">די הרשאה „אינסטאַלירן אומבאַקאַנטע אַפּס“ איז נאָך נישט באַקומען געוואָרן</string>
+    <string name="update_err_installer_failed">מען קען נישט אויסרופֿן דעם סיסטעם־אינסטאַלירער (%1$s); עפֿנט די אינסטאַלאַציע־פּאַקעט מאַנועל אין אַ טעקע־פֿירער און אינסטאַלירט</string>
+</resources>

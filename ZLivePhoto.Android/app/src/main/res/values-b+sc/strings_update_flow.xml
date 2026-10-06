@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Sardinian (sc) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">No s’at otentu indiritzu de iscarrigamentu dae GitHub; torra a proare prus a tardu.</string>
+    <string name="update_flavor_standard">Editzione istandard</string>
+    <string name="update_flavor_go">Editzione Go</string>
+    <string name="update_lanzou_url_missing">Custa versione non frunit ligàmene de iscarrigamentu dae Lanzou Cloud; podes impreare GitHub.</string>
+    <string name="update_apk_direct_missing">Custa versione non frunit su ligàmene diretu de su pachetu de installatzione chi li currispondet; in sa pàgina de is publicatziones de GitHub sebera s’APK adatu.</string>
+    <string name="update_install_permission_missing">Su permissu «installatzione de aplicatziones disconnotas» no est istadu dadu, duncas non si podet installare in automàticu. Permette·ddu in sa cunfiguratzione de su sistema e torra a proare.</string>
+    <string name="update_error_unknown">Errore disconnotu</string>
+    <string name="update_fail_lanzou">S’iscarrigamentu dae Lanzou Cloud est fallidu</string>
+    <string name="update_fail_github">S’iscarrigamentu dae GitHub est fallidu</string>
+    <string name="update_lanzou_resolving">S’est analizande su ligàmene de iscarrigamentu de Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">S’est iscarrighende dae Lanzou Cloud…</string>
+    <string name="update_github_downloading">S’est iscarrighende dae GitHub…</string>
+    <string name="update_unzipping">S’est destrinchende su pachetu de installatzione…</string>
+    <string name="update_notes_empty">Custa versione ancora non tenet notas.</string>
+    <string name="update_use_normal_title">Imprea sa versione normale</string>
+    <string name="update_use_normal_body">Su sistema de custu dispositivu est Android 10 o prus artu e sa versione lèbia Go no est prus adatada; sa versione betza non si podet prus impreare.\n\nS’at rilevadu chi in custu dispositivu b’est giai installada sa versione normale (ZLC): aberi·lla derettamente pro sighire a l’impreare (is versiones noas no frunint prus versiones cumpatìbiles cun Go; sa versione betza dda podes disinstallare pro alliberare ispàtziu).</string>
+    <string name="update_open_normal">Aberi sa versione normale</string>
+    <string name="update_must_update_title">Depes atualizare in antis de sighire</string>
+    <string name="update_forced_body">Su sistema de custu dispositivu est Android 10 o prus artu e sa versione lèbia Go no est prus adatada; sa versione betza non si podet prus impreare, e is versiones noas no frunint prus versiones cumpatìbiles cun Go.\n\nCollega·tie a sa rete e primi «Torra a proare» pro otenner su pachetu de installatzione de sa versione normale.</string>
+    <string name="update_retry">Torra a proare</string>
+    <string name="update_switch_normal_body">Su sistema de custu dispositivu est Android 10 o prus artu e sa versione lèbia Go no est prus adatada; sa versione betza non si podet prus impreare.\nIscarriga e installa sa versione normale pro sighire a l’impreare (is versiones noas no frunint prus versiones cumpatìbiles cun Go).</string>
+    <string name="update_downloading_title">Iscarriga s’atualizatzione</string>
+    <string name="update_cancel">Annulla</string>
+    <string name="update_need_permission_title">Rechedet su permissu de installatzione</string>
+    <string name="update_need_permission_body">Pro installare sa versione noa serbit su permissu de su sistema «installatzione de aplicatziones disconnotas».\n\nPrimi «Dae su permissu», permete·ddu in sa cunfiguratzione e torra a s’aplicatzione; s’installatzione at a sighire in automàticu (non serbit torrare a iscarrigare).</string>
+    <string name="update_grant">Dae su permissu</string>
+    <string name="update_notice_title">Avisu</string>
+    <string name="update_got_it">Bene</string>
+    <string name="update_notes_title">v%1$s · Notas de sa versione</string>
+    <string name="update_back">Torrare</string>
+    <string name="update_title_switch_normal">Cola a sa versione normale</string>
+    <string name="update_title_reinstall">Torra a installare custa versione</string>
+    <string name="update_title_new_version">B’est agatada una versione noa</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">At a èssere iscarrigada e torrada a installare custa versione (subra de s’aplicatzione atuale).\nCusta funtzione serbit pro proare su mecanismu de atualizatzione.</string>
+    <string name="update_view_notes">Mustra is notas de sa versione</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud como no est disponìbile</string>
+    <string name="update_download_lanzou">Iscarriga dae Lanzou Cloud</string>
+    <string name="update_download_github">Iscarriga dae GitHub</string>
+    <string name="update_download_browser">Iscarriga dae su navigadore</string>
+    <string name="update_later">Atualiza prus a tardu</string>
+    <string name="update_later_switch">Cola prus a tardu</string>
+    <string name="update_skip_version">Brinca custa versione</string>
+</resources>

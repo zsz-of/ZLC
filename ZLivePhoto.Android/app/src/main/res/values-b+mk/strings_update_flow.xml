@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Macedonian (mk) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">Нема добиено GitHub адреса за преземање, обидете се повторно подоцна.</string>
+    <string name="update_flavor_standard">Стандардна верзија</string>
+    <string name="update_flavor_go">Go верзија</string>
+    <string name="update_lanzou_url_missing">Оваа верзија не нуди Lanzou линк за преземање, користете GitHub.</string>
+    <string name="update_apk_direct_missing">Оваа верзија не нуди директен линк за инсталациски пакет што одговара; изберете соодветен APK на GitHub Release страницата.</string>
+    <string name="update_install_permission_missing">Дозволата „инсталирање непознати апликации“ не е добиена, автоматското инсталирање не е можно. Дозволете ја во системските поставки и обидете се повторно.</string>
+    <string name="update_error_unknown">Непозната грешка</string>
+    <string name="update_fail_lanzou">Lanzou преземањето не успеа</string>
+    <string name="update_fail_github">GitHub преземањето не успеа</string>
+    <string name="update_lanzou_resolving">Lanzou линкот за преземање се анализира…</string>
+    <string name="update_lanzou_downloading">Преземање од Lanzou…</string>
+    <string name="update_github_downloading">Преземање од GitHub…</string>
+    <string name="update_unzipping">Инсталацискиот пакет се распакува…</string>
+    <string name="update_notes_empty">Оваа верзија сè уште нема забелешки за ажурирање.</string>
+    <string name="update_use_normal_title">Користете стандардна верзија</string>
+    <string name="update_use_normal_body">Системот на уредот е Android 10 или понов; Go лесната верзија повеќе не се поддржува, старата верзија не може да се користи.
+
+Пронајдено е дека стандардната верзија (ZLC) е веќе инсталирана; отворете ја директно за да продолжите (новата верзија не нуди Go компатибилна верзија; старата може да се деинсталира за да се ослободи простор).</string>
+    <string name="update_open_normal">Отвори стандардна верзија</string>
+    <string name="update_must_update_title">Мора да се ажурира пред да се користи</string>
+    <string name="update_forced_body">Системот на уредот е Android 10 или понов; Go лесната верзија повеќе не се поддржува, старата верзија не може да се користи; новата верзија исто така не нуди Go компатибилна верзија.
+
+Поврзете се на интернет и кликнете „Повторно“ за да го добиете инсталацискиот пакет на стандардната верзија.</string>
+    <string name="update_retry">Повторно</string>
+    <string name="update_switch_normal_body">Системот на уредот е Android 10 или понов; Go лесната верзија повеќе не се поддржува, старата верзија не може да се користи.
+Преземете и инсталирајте ја стандардната верзија за да продолжите (новата верзија не нуди Go компатибилна верзија).</string>
+    <string name="update_downloading_title">Преземање на ажурирање</string>
+    <string name="update_cancel">Откажи</string>
+    <string name="update_need_permission_title">Потребна е дозвола за инсталирање</string>
+    <string name="update_need_permission_body">За инсталирање на новата верзија системот бара дозвола „инсталирање непознати апликации“.
+
+Кликнете „На дозвола“, дозволете во поставките и вратете се во апликацијата; инсталацијата продолжува автоматски (без повторно преземање).</string>
+    <string name="update_grant">На дозвола</string>
+    <string name="update_notice_title">Известување</string>
+    <string name="update_got_it">Разбрав</string>
+    <string name="update_notes_title">v%1$s · Забелешки за ажурирање</string>
+    <string name="update_back">Назад</string>
+    <string name="update_title_switch_normal">Префрли на стандардна верзија</string>
+    <string name="update_title_reinstall">Преинсталирај ја оваа верзија</string>
+    <string name="update_title_new_version">Пронајдена е нова верзија</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Оваа верзија ќе се преземе и преинсталира (ги премотува тековната апликација).
+Оваа функција е за регресионото тестирање на механизмот за ажурирање.</string>
+    <string name="update_view_notes">Погледни забелешки за ажурирање</string>
+    <string name="update_lanzou_unavailable">Lanzou моментално не е достапен</string>
+    <string name="update_download_lanzou">Преземи од Lanzou</string>
+    <string name="update_download_github">Преземи од GitHub</string>
+    <string name="update_download_browser">Преземи од прелистувач</string>
+    <string name="update_later">Подоцна</string>
+    <string name="update_later_switch">Не сега</string>
+    <string name="update_skip_version">Прескокни ја оваа верзија</string>
+</resources>

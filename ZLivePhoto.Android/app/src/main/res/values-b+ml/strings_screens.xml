@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Malayalam (ml) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="screen_app_subtitle">ലൈവ് ഫോട്ടോ ഫോർമാറ്റ് പരിവർത്തനം</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d ഫയൽ</item>
+        <item quantity="other">%1$d ഫയൽ</item>
+    </plurals>
+    <string name="screen_settings">ക്രമീകരണങ്ങൾ</string>
+    <string name="screen_select_output_format">ഔട്ട്പുട്ട് ഫോർമാറ്റ് തിരഞ്ഞെടുക്കുക</string>
+    <string name="screen_selected">തിരഞ്ഞെടുത്തു</string>
+    <string name="screen_vivo_single_warning">⚠ വളരെ പഴയ ഉപകരണങ്ങൾക്ക് ഈ ഫോർമാറ്റ് തിരിച്ചറിയാനാകില്ല</string>
+    <string name="screen_extract_blocked">⚠ ക്യൂവിൽ സംയോജന ജോലികൾ ഉള്ളതിനാൽ വേർതിരിക്കുക തിരഞ്ഞെടുക്കാനാകില്ല</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (ഒറ്റ ഫയൽ)</string>
+    <string name="screen_format_vivo">vivo (രണ്ട് ഫയൽ)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">വേർതിരിക്കുക</string>
+    <string name="screen_toolbox">ടൂൾബോക്സ്</string>
+    <string name="screen_batch_import">ബാച്ച് ഇമ്പോർട്ട്</string>
+    <string name="screen_batch_import_desc">മുഴുവൻ ആൽബം സ്കാൻ ചെയ്ത് ലൈവ് ഫോട്ടോകൾ ബാച്ചായി തിരിച്ചറിയുക</string>
+    <string name="screen_compose">ലൈവ് ഫോട്ടോ സംയോജിപ്പിക്കുക</string>
+    <string name="screen_compose_desc">ഒരു ഫോട്ടോയും ഒരു വീഡിയോയും ജോടിയാക്കി സംയോജിപ്പിക്കുക</string>
+    <string name="screen_replace_mode">റീപ്ലേസ് മോഡ്</string>
+    <string name="screen_replace_mode_desc">പരിവർത്തന ഫലം നേരിട്ട് ഒറിജിനൽ ഫയലിൽ തിരികെ എഴുതും; പുതിയ ഫയൽ സൃഷ്ടിക്കില്ല</string>
+    <string name="screen_need_all_files_access_hint">“എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” അനുമതി വേണം; അനുമതിക്ക് ഇവിടെ ക്ലിക്ക് ചെയ്യുക</string>
+    <string name="screen_agree_and_enable">സമ്മതിച്ച് പ്രവർത്തനക്ഷമമാക്കുക</string>
+    <string name="screen_empty_no_files">ഇതുവരെ ഫയലുകൾ ചേർത്തിട്ടില്ല</string>
+    <string name="screen_view_detail">വിവരങ്ങൾ കാണുക</string>
+    <string name="screen_add_files">ഫയലുകൾ ചേർക്കുക</string>
+    <string name="screen_output_format">ഔട്ട്പുട്ട് ഫോർമാറ്റ്: %1$s</string>
+    <string name="screen_delete_original">പ്രോസസിംഗ് പൂർത്തിയായാൽ ഒറിജിനൽ ഫോട്ടോ ഇല്ലാതാക്കുക</string>
+    <string name="screen_need_all_files_access_view">“എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” അനുമതി വേണം; വിവരങ്ങൾക്ക് ക്ലിക്ക് ചെയ്യുക</string>
+    <string name="screen_clear">മായ്ക്കുക</string>
+    <string name="screen_stop">പ്രോസസിംഗ് നിർത്തുക</string>
+    <string name="screen_start_convert">പരിവർത്തനം ആരംഭിക്കുക</string>
+    <string name="screen_status_detail">സ്റ്റാറ്റസ് വിവരങ്ങൾ</string>
+    <string name="screen_long_press_copy">ടെക്സ്റ്റ് ദീർഘനേരം അമർത്തി തിരഞ്ഞെടുത്ത് കോപ്പി ചെയ്യാം</string>
+    <string name="screen_copy">കോപ്പി</string>
+    <string name="screen_close">അടയ്ക്കുക</string>
+    <string name="screen_back">പിന്നോട്ട്</string>
+    <string name="screen_picker_title_select">ലൈവ് ഫോട്ടോ തിരഞ്ഞെടുക്കുക</string>
+    <string name="screen_album_count">ആൽബം %1$d</string>
+    <string name="screen_album_collapse_cover">ആൽബം കവർ ചുരുക്കുക</string>
+    <string name="screen_album_expand_cover">ആൽബം കവർ വികസിപ്പിക്കുക</string>
+    <string name="screen_scanning_progress">സ്കാൻ ചെയ്യുന്നു %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d എണ്ണം</item>
+        <item quantity="other">%1$d എണ്ണം</item>
+    </plurals>
+    <string name="screen_select_all">എല്ലാം തിരഞ്ഞെടുക്കുക</string>
+    <string name="screen_no_albums">ലഭ്യമായ ആൽബങ്ങളില്ല</string>
+    <string name="screen_no_media">ലൈവ് ഫോട്ടോകൾ കണ്ടെത്തിയില്ല</string>
+    <string name="screen_no_media_compose">ഫോട്ടോയോ വീഡിയോയോ കണ്ടെത്തിയില്ല</string>
+    <string name="screen_import">ഇമ്പോർട്ട്</string>
+    <string name="screen_import_count">ഇമ്പോർട്ട് %1$d</string>
+    <string name="screen_import_mixed">ഇമ്പോർട്ട് ഫോട്ടോ%1$d·വീഡിയോ%2$d</string>
+    <string name="screen_search">തിരയുക</string>
+    <string name="screen_search_collapse">തിരച്ചിൽ ചുരുക്കുക</string>
+    <string name="screen_search_hint">പേര് അടിസ്ഥാനമാക്കി തിരയുക</string>
+    <string name="screen_search_clear">തിരച്ചിൽ മായ്ക്കുക</string>
+    <string name="screen_sort_date">തീയതി</string>
+    <string name="screen_sort_size">വലുപ്പം</string>
+    <string name="screen_sort_name">പേര്</string>
+    <string name="screen_sort_asc">ആരോഹണ ക്രമം</string>
+    <string name="screen_sort_desc">അവരോഹണ ക്രമം</string>
+    <string name="screen_date_today">ഇന്ന്</string>
+    <string name="screen_date_yesterday">ഇന്നലെ</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

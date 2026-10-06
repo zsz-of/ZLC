@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ខ្មែរ (Khmer) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Khmer has no grammatical plural; only the 'other' quantity is emitted.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- សេចក្តីជូនដំណឹងខាងឧបករណ៍បញ្ជា (ក្រៅពី Composable ដែលគ្មាន Context ទាំងអស់ប្រើ context.getString) -->
+    <string name="update_github_url_missing">មិនបានទទួលអាសយដ្ឋានទាញយក GitHub សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។</string>
+    <string name="update_flavor_standard">កំណែស្តង់ដារ</string>
+    <string name="update_flavor_go">កំណែ Go</string>
+    <string name="update_lanzou_url_missing">កំណែនេះមិនផ្តល់តំណទាញយក Lanzou Cloud ទេ អ្នកអាចប្រើ GitHub ជំនួស។</string>
+    <string name="update_apk_direct_missing">កំណែនេះមិនផ្តល់តំណផ្ទាល់នៃកញ្ចប់ដំឡើងដែលត្រូវនឹងកំណែនេះទេ សូមទៅទំព័របញ្ចេញផ្សាយ GitHub ដើម្បីជ្រើស APK ដែលត្រូវគ្នា។</string>
+    <string name="update_install_permission_missing">មិនបានទទួលការអនុញ្ញាត «ដំឡើងកម្មវិធីមិនស្គាល់» មិនអាចដំឡើងដោយស្វ័យប្រវត្តិបានទេ។ សូមអនុញ្ញាតក្នុងការកំណត់ប្រព័ន្ធ រួចព្យាយាមម្តងទៀត។</string>
+    <string name="update_error_unknown">កំហុសមិនស្គាល់</string>
+    <string name="update_fail_lanzou">ការទាញយកពី Lanzou Cloud បានបរាជ័យ</string>
+    <string name="update_fail_github">ការទាញយកពី GitHub បានបរាជ័យ</string>
+    <string name="update_lanzou_resolving">កំពុងវិភាគតំណទាញយក Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">កំពុងទាញយកពី Lanzou Cloud…</string>
+    <string name="update_github_downloading">កំពុងទាញយកពី GitHub…</string>
+    <string name="update_unzipping">កំពុងពន្លាកញ្ចប់ដំឡើង…</string>
+    <string name="update_notes_empty">កំណែនេះគ្មានកំណត់ចំណាំធ្វើបច្ចុប្បន្នភាពទេ។</string>
+
+    <!-- ប្រអប់ពាក់ព័ន្ធនឹងកំណែ Go -->
+    <string name="update_use_normal_title">សូមប្រើកំណែធម្មតា</string>
+    <string name="update_use_normal_body">ប្រព័ន្ធឧបករណ៍នេះជា Android 10 ឡើងទៅ កំណែស្រាល Go លែងត្រូវបានគាំទ្រទៀតទេ កំណែចាស់មិនអាចបន្តប្រើបាន។\n\nរកឃើញថាឧបករណ៍នេះបានដំឡើងកំណែធម្មតា (ZLC) សូមបើកកំណែធម្មតាដើម្បីបន្តប្រើ (កំណែថ្មីលែងផ្តល់កំណែដែលត្រូវគ្នានឹង Go កំណែចាស់អាចលុបចោលដើម្បីបង្កើនទំហំទំនេរ)។</string>
+    <string name="update_open_normal">បើកកំណែធម្មតា</string>
+    <string name="update_must_update_title">ត្រូវធ្វើបច្ចុប្បន្នភាពសិនទើបបន្តប្រើបាន</string>
+    <string name="update_forced_body">ប្រព័ន្ធឧបករណ៍នេះជា Android 10 ឡើងទៅ កំណែស្រាល Go លែងត្រូវបានគាំទ្រទៀតទេ កំណែចាស់មិនអាចបន្តប្រើបាន; កំណែថ្មីក៏លែងផ្តល់កំណែដែលត្រូវគ្នានឹង Go ដែរ។\n\nសូមភ្ជាប់អ៊ីនធឺណិត រួចចុច «ព្យាយាមម្តងទៀត» ដើម្បីទទួលកញ្ចប់ដំឡើងកំណែធម្មតា។</string>
+    <string name="update_retry">ព្យាយាមម្តងទៀត</string>
+    <string name="update_switch_normal_body">ប្រព័ន្ធឧបករណ៍នេះជា Android 10 ឡើងទៅ កំណែស្រាល Go លែងត្រូវបានគាំទ្រទៀតទេ កំណែចាស់មិនអាចបន្តប្រើបាន។\nសូមទាញយក និងដំឡើងកំណែធម្មតារួចបន្តប្រើ (កំណែថ្មីលែងផ្តល់កំណែដែលត្រូវគ្នានឹង Go)។</string>
+
+    <!-- ការទាញយក / ការអនុញ្ញាតដំឡើង / សេចក្តីជូនដំណឹងលទ្ធផល -->
+    <string name="update_downloading_title">ទាញយកបច្ចុប្បន្នភាព</string>
+    <string name="update_cancel">បោះបង់</string>
+    <string name="update_need_permission_title">ត្រូវការការអនុញ្ញាតដំឡើង</string>
+    <string name="update_need_permission_body">ការដំឡើងកំណែថ្មីត្រូវការការអនុញ្ញាត «ដំឡើងកម្មវិធីមិនស្គាល់» របស់ប្រព័ន្ធ។\n\nចុច «ផ្តល់សិទ្ធិ» អនុញ្ញាតក្នុងការកំណត់ រួចត្រឡប់មកកម្មវិធីវិញ នោះនឹងបន្តដំឡើងដោយស្វ័យប្រវត្តិ (មិនត្រូវទាញយកឡើងវិញ)។</string>
+    <string name="update_grant">ផ្តល់សិទ្ធិ</string>
+    <string name="update_notice_title">ជូនដំណឹង</string>
+    <string name="update_got_it">បានដឹងហើយ</string>
+
+    <!-- ប្រអប់ចម្បង / កំណត់ចំណាំធ្វើបច្ចុប្បន្នភាព -->
+    <string name="update_notes_title">v%1$s · កំណត់ចំណាំធ្វើបច្ចុប្បន្នភាព</string>
+    <string name="update_back">ត្រឡប់</string>
+    <string name="update_title_switch_normal">ប្តូរទៅកំណែធម្មតា</string>
+    <string name="update_title_reinstall">ដំឡើងកំណែនេះឡើងវិញ</string>
+    <string name="update_title_new_version">រកឃើញកំណែថ្មី</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">នឹងទាញយក និងដំឡើងកំណែនេះឡើងវិញ (សរសេរជាន់លើកម្មវិធីបច្ចុប្បន្ន)។\nមុខងារនេះប្រើសម្រាប់សាកល្បងមេកានិចធ្វើបច្ចុប្បន្នភាពឡើងវិញ។</string>
+    <string name="update_view_notes">មើលកំណត់ចំណាំធ្វើបច្ចុប្បន្នភាព</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud មិនអាចប្រើបានបណ្តោះអាសន្ន</string>
+    <string name="update_download_lanzou">ទាញយកពី Lanzou Cloud</string>
+    <string name="update_download_github">ទាញយកពី GitHub</string>
+    <string name="update_download_browser">ទាញយកតាមកម្មវិធីរុករក</string>
+    <string name="update_later">ធ្វើបច្ចុប្បន្នភាពនៅពេលក្រោយ</string>
+    <string name="update_later_switch">ប្តូរនៅពេលក្រោយ</string>
+    <string name="update_skip_version">រំលងកំណែនេះ</string>
+</resources>

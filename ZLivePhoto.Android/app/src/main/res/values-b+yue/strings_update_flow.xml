@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Cantonese (yue) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">攞唔到 GitHub 下載地址，請遲啲再試。</string>
+    <string name="update_flavor_standard">標準版</string>
+    <string name="update_flavor_go">Go 版</string>
+    <string name="update_lanzou_url_missing">呢個版本冇提供藍奏雲下載連結，可以改用 GitHub 下載。</string>
+    <string name="update_apk_direct_missing">呢個版本冇提供同本版本對應嘅安裝包直鏈，請去 GitHub 發布頁揀對應嘅 APK。</string>
+    <string name="update_install_permission_missing">未取得「安裝未知應用程式」權限，自動安裝唔到。請去系統設定允許之後再試。</string>
+    <string name="update_error_unknown">未知錯誤</string>
+    <string name="update_fail_lanzou">藍奏雲下載失敗</string>
+    <string name="update_fail_github">GitHub 下載失敗</string>
+    <string name="update_lanzou_resolving">正喺度解析藍奏雲下載連結…</string>
+    <string name="update_lanzou_downloading">正喺度由藍奏雲下載…</string>
+    <string name="update_github_downloading">正喺度由 GitHub 下載…</string>
+    <string name="update_unzipping">正喺度解壓安裝包…</string>
+    <string name="update_notes_empty">呢個版本暫時冇更新說明。</string>
+    <string name="update_use_normal_title">請使用正常版本</string>
+    <string name="update_use_normal_body">呢部機嘅系統係 Android 10 或者以上，Go 輕量版已經唔再支援，舊版本用唔落去。
+
+偵測到呢部機已經裝咗正常版本（ZLC），請直接打開正常版本繼續用（新版唔再提供 Go 相容版本，舊版本可以解除安裝嚟釋放空間）。</string>
+    <string name="update_open_normal">打開正常版</string>
+    <string name="update_must_update_title">一定要更新咗先可以繼續用</string>
+    <string name="update_forced_body">呢部機嘅系統係 Android 10 或者以上，Go 輕量版已經唔再支援，舊版本用唔落去；新版亦都唔再提供 Go 相容版本。
+
+請連上網絡之後撳「重試」攞正常版本安裝包。</string>
+    <string name="update_retry">重試</string>
+    <string name="update_switch_normal_body">呢部機嘅系統係 Android 10 或者以上，Go 輕量版已經唔再支援，舊版本用唔落去。
+請下載同安裝正常版本之後繼續用（新版唔再提供 Go 相容版本）。</string>
+    <string name="update_downloading_title">下載更新</string>
+    <string name="update_cancel">取消</string>
+    <string name="update_need_permission_title">需要安裝權限</string>
+    <string name="update_need_permission_body">安裝新版本需要系統「安裝未知應用程式」權限。
+
+撳「去授權」，喺設定允許之後返返嚟應用程式，就會自動繼續安裝（唔使重新下載）。</string>
+    <string name="update_grant">去授權</string>
+    <string name="update_notice_title">提示</string>
+    <string name="update_got_it">知道喇</string>
+    <string name="update_notes_title">v%1$s · 更新說明</string>
+    <string name="update_back">返回</string>
+    <string name="update_title_switch_normal">切換去正常版本</string>
+    <string name="update_title_reinstall">重新安裝呢個版本</string>
+    <string name="update_title_new_version">發現新版本</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">會下載並重新安裝呢個版本（覆蓋目前應用程式）。
+此功能用嚟做回歸測試更新機制。</string>
+    <string name="update_view_notes">睇更新說明</string>
+    <string name="update_lanzou_unavailable">藍奏雲暫時用唔到</string>
+    <string name="update_download_lanzou">由藍奏雲下載</string>
+    <string name="update_download_github">由 GitHub 下載</string>
+    <string name="update_download_browser">由瀏覽器下載</string>
+    <string name="update_later">暫時唔更新</string>
+    <string name="update_later_switch">暫時唔切換</string>
+    <string name="update_skip_version">略過呢個版本</string>
+</resources>

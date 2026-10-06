@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Suomenkieliset merkkijonot (fi).
+  Käännetty tiedostoista res/values/strings_*.xml (yksinkertaistettu kiina, varakieliasetus).
+  Jokainen avain vastaa perustiedostoa; paikkamerkit (%1$s / %1$d) ja koodaussekvenssit on säilytetty ennallaan.
+-->
+<resources>
+    <!-- ── Tilapalkki / ilmoitukset (Activityn metodeissa, getString) ── -->
+    <string name="main_status_ready">Valmis</string>
+    <string name="main_status_location_granted">Sijaintilupa myönnetty; GPS-metatiedot säilytetään muunnoksen jälkeen</string>
+    <string name="main_status_location_denied">Sijaintilupaa ei myönnetty: muunnetut valokuvat menettävät GPS-sijaintitiedot</string>
+    <string name="main_status_all_files_granted">”Kaikkien tiedostojen käyttö” myönnetty; muunnokset kirjoitetaan suoraan galleriakansioon ja sijaintitiedot säilyvät täysin</string>
+    <string name="main_status_all_files_denied">”Kaikkien tiedostojen käyttöä” ei myönnetty: jotkin laitteet voivat menettää sijaintitiedot muunnoksen jälkeen</string>
+    <string name="main_status_read_granted">Lupa lukea valokuvia ja videoita myönnetty</string>
+    <string name="main_status_video_missing">Myönnetty, mutta videolupa puuttuu: kaksitiedostoisten Live Photoiden rinnakkaisvideoita ei löydy</string>
+    <string name="main_status_permission_denied">Lupaa ei myönnetty; voit napauttaa ”Lisää tiedostoja” uudelleen</string>
+    <string name="main_status_folder_not_selected">Kansiota ei ole valittu</string>
+    <string name="main_status_folder_unavailable">Valittuun kansioon ei pääse (vain paikallisen tallennustilan kansiot tuetaan)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Edellinen istunto palautettu (%1$d tiedosto)</item>
+        <item quantity="other">Edellinen istunto palautettu (%1$d tiedostoa)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Edellinen poikkeava sulkeutuminen havaittu; keskeneräinen luettelo on tyhjennetty</string>
+    <string name="main_status_compose_blocks_extract">Jonossa on yhdistämistehtäviä, joten purkutilaan ei voi vaihtaa</string>
+    <string name="main_status_replace_off_mutex">Korvaustila poistettu käytöstä (ristiriidassa ”Poista alkuperäiset käsittelyn jälkeen” -asetuksen kanssa)</string>
+    <string name="main_status_delete_needs_all_files">Alkuperäisten automaattinen poistaminen vaatii ”kaikkien tiedostojen käytön”; myönnä se ensin</string>
+    <string name="main_status_replace_off">Korvaustila poistettu käytöstä; muunnoksen tulokset kirjoitetaan taas galleriakansioon</string>
+    <string name="main_status_replace_needs_all_files">Korvaustila vaatii ”kaikkien tiedostojen käytön”; myönnä se ensin</string>
+    <string name="main_status_delete_off_mutex">”Poista alkuperäiset käsittelyn jälkeen” poistettu käytöstä (ristiriidassa korvaustilan kanssa)</string>
+    <string name="main_status_loading_albums">Ladataan albumeja…</string>
+    <string name="main_status_no_albums">Albumeja ei löytynyt</string>
+    <string name="main_status_compose_no_photo">Valokuvaa ei ole valittu; yhdistäminen ei onnistu</string>
+    <string name="main_status_compose_no_video">Videota ei ole valittu; yhdistäminen ei onnistu</string>
+    <string name="main_status_compose_all_added">Kaikki valitut valokuvat ovat jo luettelossa</string>
+    <string name="main_status_compose_paired">%1$d valokuvaa ja %2$d videota; lisätty %3$d yhdistämisparia pienemmän määrän mukaan</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Lisätty %1$d yhdistämistehtävä; aloita yhdistäminen napauttamalla ”Aloita muunnos”</item>
+        <item quantity="other">Lisätty %1$d yhdistämistehtävää; aloita yhdistäminen napauttamalla ”Aloita muunnos”</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (tulostemuoto vaihdettiin automaattisesti Googleksi)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Tuodaan jaettua %1$d kuvaa…</item>
+        <item quantity="other">Tuodaan jaettuja %1$d kuvaa…</item>
+    </plurals>
+    <string name="main_status_import_failed">Tuonti epäonnistui: %1$s</string>
+    <string name="main_status_import_done_partial">Tuonti valmis: %1$d onnistui, %2$d epäonnistui</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Tuonti valmis: yhteensä %1$d tiedosto tuotu</item>
+        <item quantity="other">Tuonti valmis: yhteensä %1$d tiedostoa tuotu</item>
+    </plurals>
+    <string name="main_status_import_stopped">Tuonti pysäytetty: %1$d onnistui, %2$d epäonnistui</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Tuodaan %1$d tiedostoa…</item>
+        <item quantity="other">Tuodaan %1$d tiedostoa…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Tuodaan %1$d/%2$d…</string>
+    <string name="main_status_stopping">Pysäytetään… (pysähtyy, kun nykyinen tiedosto on valmis)</string>
+    <string name="main_status_stopping_import">Pysäytetään tuontia…</string>
+    <string name="main_status_removed">Poistettu %1$s</string>
+    <string name="main_status_cleared">Tyhjennetty</string>
+    <string name="main_status_nothing_to_convert">Ei muunnettavia tiedostoja</string>
+    <string name="main_status_folder_unreadable">Valittua kansiota ei voi lukea</string>
+    <string name="main_status_scanning_folder">Skannataan kansiota…</string>
+    <string name="main_status_no_images">Valitusta kansiosta ei löytynyt kuvia</string>
+    <string name="main_status_batch_importing">Tuodaan eränä %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Erän tuonti pysäytetty: yhteensä %1$d Live Photo tuotu</item>
+        <item quantity="other">Erän tuonti pysäytetty: yhteensä %1$d Live Photoa tuotu</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Erän tuonti pysäytetty: yhteensä %1$d Live Photo tuotu, %2$d muuta kuin Live Photo -tiedostoa ohitettu</item>
+        <item quantity="other">Erän tuonti pysäytetty: yhteensä %1$d Live Photoa tuotu, %2$d muuta kuin Live Photo -tiedostoa ohitettu</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Erän tuonti valmis: yhteensä %1$d Live Photo tuotu</item>
+        <item quantity="other">Erän tuonti valmis: yhteensä %1$d Live Photoa tuotu</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Erän tuonti valmis: yhteensä %1$d Live Photo tuotu, %2$d muuta kuin Live Photo -tiedostoa ohitettu</item>
+        <item quantity="other">Erän tuonti valmis: yhteensä %1$d Live Photoa tuotu, %2$d muuta kuin Live Photo -tiedostoa ohitettu</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Pysäytetty: %1$d tiedostosta käsiteltiin %2$d ja korvattiin %3$d lähdetiedostoa</string>
+    <string name="main_status_stopped_export">Pysäytetty: %1$d tiedostosta käsiteltiin %2$d ja vietiin galleriaan %3$d</string>
+    <string name="main_status_done_replace_reason">Valmis: %1$d tiedostoa käsitelty, %2$d lähdetiedostoa korvattu (syy: %3$s)</string>
+    <string name="main_status_done_export_reason">Valmis: %1$d tiedostoa käsitelty, %2$d viety galleriaan (syy: %3$s)</string>
+    <string name="main_status_done_replace">Valmis: %1$d tiedostoa käsitelty, %2$d lähdetiedostoa korvattu</string>
+    <string name="main_status_done_export">Valmis: %1$d tiedostoa käsitelty, %2$d viety galleriaan</string>
+    <string name="main_status_keep_originals">%1$s; ”täyttä tallennustilan käyttöä” ei myönnetty, joten alkuperäiset on säilytetty</string>
+
+    <!-- ── Luettelorivin tiedot (FileItem.info) ── -->
+    <string name="main_info_detecting">Tunnistetaan…</string>
+    <string name="main_info_unrecognized">Tunnistamaton Live Photo -muoto</string>
+    <string name="main_info_converting">Muunnetaan…</string>
+    <string name="main_info_compose_task">Yhdistämistehtävä (aloita yhdistäminen napauttamalla Aloita muunnos)</string>
+    <string name="main_info_done_replaced">Valmis (%1$d lähdetiedostoa korvattu)</string>
+    <string name="main_info_done_skipped">Valmis (ohitettu: samanniminen tiedosto)</string>
+    <string name="main_info_done_exported">Valmis (%1$d viety)</string>
+    <string name="main_info_failed">Epäonnistui: %1$s</string>
+
+    <!-- ── Edistymisen tiedot (progressDetail) ── -->
+    <string name="main_progress_added">Lisätty %1$d/%2$d</string>
+    <string name="main_progress_processed">Käsitelty %1$d/%2$d</string>
+    <string name="main_progress_imported">Tuotu %1$d/%2$d</string>
+
+    <!-- ── Lupavalintaikkuna ── -->
+    <string name="main_dialog_permission_title">Lupa lukea valokuvia ja videoita tarvitaan</string>
+    <string name="main_dialog_permission_message">Tämä sovellus tarvitsee luvan lukea laitteesi valokuvia ja videoita:\n\n• Valokuvalupa: skannaa laitteen galleria ja tunnista siinä olevat Live Photot\n• Videolupa: etsi kaksitiedostoisten Live Photoiden rinnakkaisvideot\n• Sijaintilupa: säilytä valokuvien GPS-sijaintimetatiedot (ilman sitä muunnetut valokuvat menettävät sijaintitiedot)\n\nJos hylkäät luvan, sisäänrakennettua valitsinta ei voi käyttää; voit napauttaa ”Lisää tiedostoja” myöhemmin ja myöntää luvan uudelleen.</string>
+    <string name="main_dialog_settings_title">Valokuvien ja videoiden luvat on myönnettävä manuaalisesti</string>
+    <string name="main_dialog_settings_message">Valitsit aiemmin ”Älä kysy uudelleen”, joten järjestelmä ei enää näytä lupavalintaikkunaa.\n\nSiirry sovelluksen tietosivulle → Käyttöoikeudet → Valokuvat ja videot, myönnä käyttöoikeus manuaalisesti ja palaa sitten tähän sovellukseen.\n\nHuomautus: sekä ”Valokuvat”- että ”Videot”-lupa on myönnettävä, muuten kaksitiedostoisten Live Photoiden rinnakkaisvideoita ei löydy.</string>
+
+    <!-- ── ”Kaikkien tiedostojen käyttö” -luvan selitysvalintaikkuna ── -->
+    <string name="main_dialog_allfiles_title_delete">Alkuperäisten automaattinen poistaminen vaatii ”kaikkien tiedostojen käytön”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Tämä laite ei tue alkuperäisten automaattista poistamista</string>
+    <string name="main_dialog_allfiles_title_replace">Korvaustila vaatii ”kaikkien tiedostojen käytön”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Tämä laite ei tue korvaustilaa</string>
+    <string name="main_dialog_allfiles_title_location">”Kaikkien tiedostojen käytön” myöntämistä suositellaan</string>
+    <string name="main_dialog_allfiles_delete_message">”Poista alkuperäiset käsittelyn jälkeen” poistaa levyltä suoraan alkuperäiset tiedostot (valokuvan ja sen rinnakkaisvideon). Tätä ei voi peruuttaa, joten ”kaikkien tiedostojen käyttö” on myönnettävä ensin.\n\nKytkin tulee käyttöön vasta myöntämisen jälkeen; voit ottaa sen silloin itse käyttöön.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Nykyinen järjestelmä (Android 10 tai vanhempi) ei tarjoa ”kaikkien tiedostojen käyttöä”, joten levyn alkuperäisiä tiedostoja ei voi poistaa suoraan; siksi tämä laite ei tue ”Poista alkuperäiset käsittelyn jälkeen” -toimintoa.\n\nVoit siivota alkuperäiset manuaalisesti järjestelmän galleriasta muunnoksen jälkeen.</string>
+    <string name="main_dialog_allfiles_replace_message">”Korvaustila” kirjoittaa muunnoksen tuloksen suoraan levyn alkuperäisiin tiedostoihin (korvaten niiden sisällön). Tätä ei voi peruuttaa, joten ”kaikkien tiedostojen käyttö” on myönnettävä ensin.\n\nKytkin tulee käyttöön vasta myöntämisen jälkeen; voit ottaa sen silloin itse käyttöön.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Nykyinen järjestelmä (Android 10 tai vanhempi) ei tarjoa ”kaikkien tiedostojen käyttöä”, joten levyn alkuperäisiä tiedostoja ei voi kirjoittaa suoraan uudelleen; siksi tämä laite ei tue ”korvaustilaa”.\n\nVoit jatkaa muuntamista oletustavalla; tulokset kirjoitetaan galleriakansioon.</string>
+    <string name="main_dialog_allfiles_location_message">Joillakin laitteilla (kuten Meizu) järjestelmän galleriarajapinnan kautta kirjoittaminen poistaa GPS-sijaintitiedot, joten muunnetut valokuvat menettävät sijainnin.\n\nKun myönnät ”kaikkien tiedostojen käytön”, sovellus kirjoittaa suoraan galleriakansioon ja säilyttää sijaintimetatiedot täysin.\n\nMuuntaminen onnistuu ilmankin, mutta jotkin laitteet voivat menettää sijaintitiedot.</string>
+
+    <!-- ── Tulostetiedoston nimiristiriidan valintaikkuna ── -->
+    <string name="main_dialog_conflict_title">Tulostetiedoston nimiristiriita</string>
+    <string name="main_dialog_conflict_message">Tulostekansiossa on jo samanniminen tiedosto:\n%1$s\n\nValitse, miten se käsitellään.</string>
+    <string name="main_label_conflict_always">Käytä tätä menettelyä kaikkiin myöhempiin ristiriitoihin</string>
+
+    <!-- ── Valintaikkunan painikkeet ── -->
+    <string name="main_btn_grant">Myönnä</string>
+    <string name="main_btn_deny">Hylkää</string>
+    <string name="main_btn_go_settings">Avaa asetukset</string>
+    <string name="main_btn_cancel">Peruuta</string>
+    <string name="main_btn_grant_access">Myönnä käyttöoikeus</string>
+    <string name="main_btn_got_it">Selvä</string>
+    <string name="main_btn_not_now">Ei nyt</string>
+    <string name="main_btn_skip">Ohita</string>
+    <string name="main_btn_overwrite">Korvaa</string>
+    <string name="main_btn_auto_rename">Nimeä automaattisesti uudelleen</string>
+
+    <!-- ── Muunnoksen tuloksen / viennin epäonnistumisen syyt (näytetään muodossa ”syy: %3$s”) ── -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Poistettu %1$d alkuperäinen tiedosto</item>
+        <item quantity="other">Poistettu %1$d alkuperäistä tiedostoa</item>
+    </plurals>
+    <string name="main_delete_nothing">Alkuperäisiä ei tarvitse poistaa</string>
+    <string name="main_delete_partial">Poistettu %1$d alkuperäistä tiedostoa (%2$d poisto epäonnistui, säilytetty)</string>
+    <string name="main_delete_failed">Alkuperäisten poistaminen epäonnistui (tiedostot ovat käytössä tai kirjoitusoikeutta ei ole); ne on säilytetty</string>
+    <string name="main_export_missing_output">Muunnoksen tulos puuttuu tai on tyhjä: %1$s</string>
+    <string name="main_export_missing_output_bare">Muunnoksen tulos puuttuu tai on tyhjä</string>
+    <string name="main_export_insert_null">MediaStore insert palautti null</string>
+    <string name="main_export_output_stream">MediaStore-tulostevirta ei ole käytettävissä</string>
+    <string name="main_export_write_failed">MediaStore-kirjoitus epäonnistui: %1$s</string>
+    <string name="main_export_mkdir_failed">Galleriakansiota %1$s ei voi luoda</string>
+    <string name="main_export_dir_write_failed">Galleriakansioon kirjoittaminen epäonnistui: %1$s</string>
+    <string name="main_export_no_source">Lähdetiedostoa ei löydy; korvaus ohitettu</string>
+    <string name="main_export_companion_failed">Rinnakkaistiedoston takaisinkirjoitus epäonnistui: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Lähdetiedoston kansio ei ole kirjoitettavissa, joten rinnakkaistiedostoa ei voitu kirjoittaa takaisin</string>
+    <string name="main_export_source_dir_unavailable">Lähdetiedoston kansio ei ole käytettävissä: %1$s</string>
+    <string name="main_export_replace_failed">Lähdetiedoston korvaus epäonnistui: %1$s</string>
+    <string name="main_export_replace_failed_bare">Lähdetiedoston korvaus epäonnistui</string>
+</resources>

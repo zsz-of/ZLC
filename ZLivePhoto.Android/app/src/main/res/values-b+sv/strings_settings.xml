@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Texter för inställningssidan (ui/SettingsScreen.kt). Nyckelprefix settings_.
+  Standardresursen (values/) är förenklad kinesiska; andra språk ligger i values-b+<lang>/strings_settings.xml.
+  Platshållare använder alltid numrerad form: %1$s / %1$d.
+  Ej utbrutet innehåll: rena egennamn och koder (”@毛血旺o”, ”Trae · GML · DeepSeek · Kimi”,
+  ”GPL-3.0”, ”H.265”/”H.264”, GitHub-URL) ligger kvar hårdkodade i koden och översätts inte.
+-->
+<resources>
+
+    <!-- Allmänt -->
+    <string name="settings_title">Inställningar</string>
+    <string name="settings_cd_back">Tillbaka</string>
+    <string name="settings_btn_apply">Verkställ</string>
+    <string name="settings_btn_cancel">Avbryt</string>
+    <string name="settings_btn_close">Stäng</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Donera</string>
+
+    <!-- Grupprubriker -->
+    <string name="settings_section_general">Allmänt</string>
+    <string name="settings_section_appearance">Utseende</string>
+    <string name="settings_section_language">Språk</string>
+    <string name="settings_section_defaults">Standardval</string>
+    <string name="settings_section_output">Utdata</string>
+    <string name="settings_section_transcode">Videoomkodning</string>
+    <string name="settings_section_about">Om</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_section_credits">Tack och donationer</string>
+    <string name="settings_section_opensource">Öppen källkod och licenser</string>
+
+    <!-- Allmänt -->
+    <string name="settings_startup_check_title">Sök efter uppdateringar vid start</string>
+    <string name="settings_startup_check_subtitle">Hämta automatiskt nya versioner från GitHub vid start och fråga om nedladdning när en finns</string>
+    <string name="settings_haptics_title">Haptisk återkoppling</string>
+    <string name="settings_haptics_subtitle">Haptisk återkoppling vid knapptryck och tillståndsändringar</string>
+    <string name="settings_bounce_title">Studsande knappanimation</string>
+    <string name="settings_bounce_subtitle">Skala-och-studs-animation när en knapp trycks ned</string>
+
+    <!-- Utseende -->
+    <string name="settings_theme_system">Följ systemet</string>
+    <string name="settings_theme_dark">Mörkt</string>
+    <string name="settings_theme_light">Ljust</string>
+    <string name="settings_dynamic_theme_title">Material You dynamisk färg</string>
+    <string name="settings_dynamic_theme_subtitle">Följ systemets bakgrundsfärg (Android 12+); när av används de förinställda temafärgerna nedan</string>
+    <string name="settings_preset_colors_title">Förinställda temafärger</string>
+    <string name="settings_preset_current">Aktuell: %1$s</string>
+    <string name="settings_preset_disabled_hint">Stäng av ”Material You dynamisk färg” för att kunna välja</string>
+    <string name="settings_custom">Anpassad</string>
+    <string name="settings_custom_color_title">Anpassad temafärg</string>
+    <string name="settings_cd_custom_palette">Anpassad palett</string>
+    <string name="settings_hue_value">Nyans %1$d°</string>
+
+    <!-- Appens språk: rubriken och posten ”Följ systemet” återanvänder strings_app.xml som underhålls
+         av Lead (R.string.app_language_title / R.string.app_language_follow_system) och definieras inte här -->
+    <string name="settings_language_dialog_title">Välj appens språk</string>
+    <string name="settings_language_count">%1$d språk tillgängliga</string>
+
+    <!-- Standardval -->
+    <string name="settings_reminder_dialogs_title">Dialogrutor för ”Visa inte igen”</string>
+    <string name="settings_reminder_dialogs_subtitle">Hantera reglagen för alla dialogrutor med ”Visa inte igen”</string>
+    <string name="settings_reminder_hint">När reglaget är på visas uppmaningen inte igen; när det är av visas uppmaningen på nytt nästa gång motsvarande situation inträffar.</string>
+
+    <!-- Utdata -->
+    <string name="settings_preserve_folders_title">Utdata enligt källmappens hierarki</string>
+    <string name="settings_preserve_folders_subtitle">Resultaten lagras i undermappar namngivna efter originalalbumen; när av placeras allt platt i en enda mapp</string>
+
+    <!-- Om -->
+    <string name="settings_about_title">Om</string>
+    <string name="settings_about_subtitle">Version · Sök efter uppdateringar · Tack och donationer</string>
+    <string name="settings_check_update_title">Sök efter uppdateringar</string>
+    <string name="settings_check_update_subtitle">Hämta den senaste versionen från GitHub Releases</string>
+    <string name="settings_checking">Söker…</string>
+    <string name="settings_update_available">v%1$s tillgänglig</string>
+    <string name="settings_up_to_date">Du har den senaste versionen</string>
+    <string name="settings_network_error">Nätverksfel; försök igen senare</string>
+    <string name="settings_reinstall_title">Installera om den här versionen</string>
+    <string name="settings_reinstall_subtitle">Ladda ned aktuell senaste version och installera över denna (för att testa uppdateringar)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s är tillgänglig; använd ”Sök efter uppdateringar” för att uppgradera först</string>
+    <string name="settings_version_title">Version</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Donera via Alipay</string>
+    <string name="settings_alipay_subtitle">Stöd utvecklingen</string>
+    <string name="settings_coolapk_subtitle">Coolapk-användare · tack för stödet</string>
+    <string name="settings_ai_credits_subtitle">Tack till de AI-IDE:er och AI-modeller som bidragit i utvecklingen</string>
+    <string name="settings_github_title">GitHub-arkiv</string>
+    <string name="settings_license_title">Licens för öppen källkod</string>
+    <string name="settings_sponsor_dialog_title">Tack för ditt stöd</string>
+    <string name="settings_sponsor_dialog_text">Jag är verkligen tacksam för att du vill stödja den här appen!\n\nOm du fortfarande är student, eller ännu inte är ekonomiskt oberoende, snälla lägg inga pengar på detta – behåll omtanken i hjärtat och fortsätt använda appen; det är det bästa stödet jag kan få.\n\nOm du vill donera räcker det med en liten summa, och jag lägger den på bättre underhåll och fler funktioner:)</string>
+    <string name="settings_alipay_missing_title">Alipay är inte installerat</string>
+    <string name="settings_alipay_missing_text">Alipay hittades inte, så donationen kan inte slutföras just nu.\n\nDet gör inget – tack så mycket för din omtanke ändå!</string>
+
+    <!-- Videoomkodning -->
+    <string name="settings_transcoder_title">Inbyggd omkodare</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Omkoda</string>
+    <string name="settings_transcode_mode_remux">Endast ompaketera behållaren (rekommenderas)</string>
+    <string name="settings_transcode_mode_off">Använd aldrig omkodaren</string>
+    <string name="settings_transcode_params_title">Omkodningsparametrar</string>
+    <string name="settings_transcode_params_subtitle">Kvalitets- och komprimeringsparametrar som används vid omkodning</string>
+    <string name="settings_transcode_params_disabled">Tillämpas endast när ”Omkodningsläge” är inställt på ”Omkoda”</string>
+    <string name="settings_crf_value">Kvalitet CRF: %1$d</string>
+    <string name="settings_crf_hint">Lägre värden ger högre kvalitet och större filer (standard 18)</string>
+    <string name="settings_encoder_title">Kodare</string>
+    <string name="settings_compress_preset_title">Komprimeringsförval</string>
+
+</resources>

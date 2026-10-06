@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Texter för huvudgränssnittet och bakgrundsflöden (MainActivity-modulen). Finns i samma katalog som
+  values/strings.xml, strings_app.xml, strings_settings.xml m.fl. och slås samman vid bygge;
+  nycklarna har alltid prefixet main_ och får inte bytas namn.
+  Platshållare använder %1$s / %1$d; räknebara fraser i singular använder <plurals>.
+-->
+<resources>
+    <!-- == Statusfält / meddelanden (i Activity-metoder, getString) == -->
+    <string name="main_status_ready">Klar</string>
+    <string name="main_status_location_granted">Platsbehörighet beviljad; GPS-metadata bevaras efter konvertering</string>
+    <string name="main_status_location_denied">Platsbehörighet inte beviljad: konverterade foton förlorar GPS-platsinformation</string>
+    <string name="main_status_all_files_granted">Behörigheten ”Åtkomst till alla filer” beviljad; konverteringar skriver direkt till gallerimappen och bevarar platsinformationen fullt ut</string>
+    <string name="main_status_all_files_denied">Behörigheten ”Åtkomst till alla filer” inte beviljad: vissa enheter kan förlora platsinformation efter konvertering</string>
+    <string name="main_status_read_granted">Behörighet att läsa foton och videor beviljad</string>
+    <string name="main_status_video_missing">Beviljad, men videobehörigheten saknas: kan inte hitta de kompletterande videor som hör till tvåfiliga Live Photos</string>
+    <string name="main_status_permission_denied">Behörighet inte beviljad; du kan trycka på ”Lägg till filer” igen</string>
+    <string name="main_status_folder_not_selected">Ingen mapp vald</string>
+    <string name="main_status_folder_unavailable">Det går inte att komma åt den valda mappen (endast lokala lagringsmappar stöds)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Återställde föregående session (%1$d fil)</item>
+        <item quantity="other">Återställde föregående session (%1$d filer)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Tidigare onormalt avslut upptäcktes; den oavslutade listan har tömts</string>
+    <string name="main_status_compose_blocks_extract">Kön innehåller sammansättningsuppgifter; kan inte växla till extraheringsläget</string>
+    <string name="main_status_replace_off_mutex">Ersättningsläget avstängt (ömsesidigt uteslutande med ”Ta bort original efter bearbetning”)</string>
+    <string name="main_status_delete_needs_all_files">Automatisk borttagning av original kräver ”Åtkomst till alla filer”; bevilja den först</string>
+    <string name="main_status_replace_off">Ersättningsläget avstängt; konverteringsresultaten skrivs till gallerimappen igen</string>
+    <string name="main_status_replace_needs_all_files">Ersättningsläget kräver ”Åtkomst till alla filer”; bevilja den först</string>
+    <string name="main_status_delete_off_mutex">”Ta bort original efter bearbetning” avstängt (ömsesidigt uteslutande med ersättningsläget)</string>
+    <string name="main_status_loading_albums">Läser in album…</string>
+    <string name="main_status_no_albums">Inga album hittades</string>
+    <string name="main_status_compose_no_photo">Inget foto valt; kan inte sammansätta</string>
+    <string name="main_status_compose_no_video">Ingen video vald; kan inte sammansätta</string>
+    <string name="main_status_compose_all_added">Alla valda foton finns redan i listan</string>
+    <string name="main_status_compose_paired">%1$d foton och %2$d videor; lade till %3$d sammansättningspar utifrån det mindre antalet</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Lade till %1$d sammansättningsuppgift; tryck på ”Starta konvertering” för att sammansätta</item>
+        <item quantity="other">Lade till %1$d sammansättningsuppgifter; tryck på ”Starta konvertering” för att sammansätta</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (utdataformatet växlades automatiskt till Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Importerar %1$d delad bild…</item>
+        <item quantity="other">Importerar %1$d delade bilder…</item>
+    </plurals>
+    <string name="main_status_import_failed">Importen misslyckades: %1$s</string>
+    <string name="main_status_import_done_partial">Importen klar: %1$d lyckades, %2$d misslyckades</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importen klar: %1$d fil importerades totalt</item>
+        <item quantity="other">Importen klar: %1$d filer importerades totalt</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importen stoppades: %1$d lyckades, %2$d misslyckades</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Importerar %1$d fil…</item>
+        <item quantity="other">Importerar %1$d filer…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importerar %1$d/%2$d…</string>
+    <string name="main_status_stopping">Stoppar… (stoppar när den aktuella filen är klar)</string>
+    <string name="main_status_stopping_import">Stoppar importen…</string>
+    <string name="main_status_removed">Tog bort %1$s</string>
+    <string name="main_status_cleared">Tömt</string>
+    <string name="main_status_nothing_to_convert">Inga filer att konvertera</string>
+    <string name="main_status_folder_unreadable">Det går inte att läsa den valda mappen</string>
+    <string name="main_status_scanning_folder">Skannar mappen…</string>
+    <string name="main_status_no_images">Inga bilder hittades i den valda mappen</string>
+    <string name="main_status_batch_importing">Massimporterar %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Massimporten stoppades: %1$d Live Photo importerades totalt</item>
+        <item quantity="other">Massimporten stoppades: %1$d Live Photos importerades totalt</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Massimporten stoppades: %1$d Live Photo importerades totalt, %2$d filer som inte är Live Photos hoppades över</item>
+        <item quantity="other">Massimporten stoppades: %1$d Live Photos importerades totalt, %2$d filer som inte är Live Photos hoppades över</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Massimporten klar: %1$d Live Photo importerades totalt</item>
+        <item quantity="other">Massimporten klar: %1$d Live Photos importerades totalt</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Massimporten klar: %1$d Live Photo importerades totalt, %2$d filer som inte är Live Photos hoppades över</item>
+        <item quantity="other">Massimporten klar: %1$d Live Photos importerades totalt, %2$d filer som inte är Live Photos hoppades över</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Stoppades: av %1$d filer bearbetades %2$d och %3$d källfiler ersattes</string>
+    <string name="main_status_stopped_export">Stoppades: av %1$d filer bearbetades %2$d och %3$d exporterades till galleriet</string>
+    <string name="main_status_done_replace_reason">Klart: %1$d filer bearbetade, %2$d källfiler ersatta (orsak: %3$s)</string>
+    <string name="main_status_done_export_reason">Klart: %1$d filer bearbetade, %2$d exporterade till galleriet (orsak: %3$s)</string>
+    <string name="main_status_done_replace">Klart: %1$d filer bearbetade, %2$d källfiler ersatta</string>
+    <string name="main_status_done_export">Klart: %1$d filer bearbetade, %2$d exporterade till galleriet</string>
+    <string name="main_status_keep_originals">%1$s; ”Full lagringsåtkomst” beviljades inte, så originalen har behållits</string>
+
+    <!-- == Information i listobjekt (FileItem.info) == -->
+    <string name="main_info_detecting">Identifierar…</string>
+    <string name="main_info_unrecognized">Okänt Live Photo-format</string>
+    <string name="main_info_converting">Konverterar…</string>
+    <string name="main_info_compose_task">Sammansättningsuppgift (tryck på Starta konvertering för att sammansätta)</string>
+    <string name="main_info_done_replaced">Klart (%1$d källfiler ersatta)</string>
+    <string name="main_info_done_skipped">Klart (hoppades över: namnkrock)</string>
+    <string name="main_info_done_exported">Klart (%1$d exporterade)</string>
+    <string name="main_info_failed">Misslyckades: %1$s</string>
+
+    <!-- == Förloppsdetaljer (progressDetail) == -->
+    <string name="main_progress_added">Tillagda %1$d/%2$d</string>
+    <string name="main_progress_processed">Bearbetade %1$d/%2$d</string>
+    <string name="main_progress_imported">Importerade %1$d/%2$d</string>
+
+    <!-- == Behörighetsdialogrutor == -->
+    <string name="main_dialog_permission_title">Behörighet att läsa foton och videor krävs</string>
+    <string name="main_dialog_permission_message">Den här appen behöver läsa foton och videor på din enhet:\n\n• Fotobehörighet: skanna enhetens galleri och identifiera Live Photos i det\n• Videobehörighet: hitta de kompletterande videor som hör till tvåfiliga Live Photos\n• Platsbehörighet: bevara GPS-platsmetadata i foton (utan den förlorar konverterade foton sin platsinformation)\n\nOm du nekar kan den inbyggda väljaren inte användas; du kan trycka på ”Lägg till filer” senare för att bevilja behörigheten igen.</string>
+    <string name="main_dialog_settings_title">Behörigheterna för foton och videor måste beviljas manuellt</string>
+    <string name="main_dialog_settings_message">Du valde tidigare ”Fråga inte igen”, så systemet visar inte behörighetsdialogrutan längre.\n\nGå till appens informationssida → Behörigheter → Foton och videor, bevilja åtkomst manuellt och återvänd sedan till appen.\n\nObs: både behörigheten ”Foton” och ”Videor” måste beviljas, annars kan tvåfiliga Live Photos inte hitta sina kompletterande videor.</string>
+
+    <!-- == Informationsdialogruta för behörigheten ”Åtkomst till alla filer” == -->
+    <string name="main_dialog_allfiles_title_delete">Automatisk borttagning av original kräver ”Åtkomst till alla filer”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Den här enheten stöder inte automatisk borttagning av original</string>
+    <string name="main_dialog_allfiles_title_replace">Ersättningsläget kräver ”Åtkomst till alla filer”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Den här enheten stöder inte ersättningsläget</string>
+    <string name="main_dialog_allfiles_title_location">Det rekommenderas att bevilja ”Åtkomst till alla filer”</string>
+    <string name="main_dialog_allfiles_delete_message">”Ta bort original efter bearbetning” tar bort originalfilerna direkt från disken (fotot och dess kompletterande video). Åtgärden kan inte ångras, så ”Åtkomst till alla filer” måste beviljas först.\n\nReglaget blir tillgängligt när du har beviljat det; du kan sedan slå på det själv.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Det aktuella systemet (Android 10 eller lägre) erbjuder inte ”Åtkomst till alla filer”, så originalfiler på disken kan inte tas bort direkt; därför stöds inte ”Ta bort original efter bearbetning” på den här enheten.\n\nDu kan rensa originalen manuellt i systemgalleriet efter konverteringen.</string>
+    <string name="main_dialog_allfiles_replace_message">”Ersättningsläget” skriver konverteringsresultatet direkt tillbaka till originalfilerna på disken (skriver över deras innehåll). Åtgärden kan inte ångras, så ”Åtkomst till alla filer” måste beviljas först.\n\nReglaget blir tillgängligt när du har beviljat det; du kan sedan slå på det själv.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Det aktuella systemet (Android 10 eller lägre) erbjuder inte ”Åtkomst till alla filer”, så originalfiler på disken kan inte skrivas över direkt; därför stöds inte ”Ersättningsläget” på den här enheten.\n\nDu kan fortsätta konvertera på standardvis; resultaten skrivs till gallerimappen.</string>
+    <string name="main_dialog_allfiles_location_message">På vissa enheter (som Meizu) tar skrivning via systemgalleriets API bort GPS-platsinformation, så konverterade foton förlorar sin plats.\n\nNär du beviljar ”Åtkomst till alla filer” skriver appen direkt till gallerimappen och bevarar platsmetadata fullt ut.\n\nKonvertering fungerar även utan, men vissa enheter kan förlora platsinformation.</string>
+
+    <!-- == Dialogruta för namnkonflikt på utdatafil == -->
+    <string name="main_dialog_conflict_title">Namnkonflikt för utdatafil</string>
+    <string name="main_dialog_conflict_message">En fil med samma namn finns redan i utdatamappen:\n%1$s\n\nVälj hur den ska hanteras.</string>
+    <string name="main_label_conflict_always">Använd detta för alla senare konflikter</string>
+
+    <!-- == Dialogrutans knappar == -->
+    <string name="main_btn_grant">Bevilja</string>
+    <string name="main_btn_deny">Neka</string>
+    <string name="main_btn_go_settings">Öppna inställningar</string>
+    <string name="main_btn_cancel">Avbryt</string>
+    <string name="main_btn_grant_access">Bevilja åtkomst</string>
+    <string name="main_btn_got_it">Uppfattat</string>
+    <string name="main_btn_not_now">Inte nu</string>
+    <string name="main_btn_skip">Hoppa över</string>
+    <string name="main_btn_overwrite">Skriv över</string>
+    <string name="main_btn_auto_rename">Byt namn automatiskt</string>
+
+    <!-- == Konverteringsresultat / orsaker till exportfel (visas för användaren med ”orsak: %3$s”) == -->
+    <plurals name="main_delete_done">
+        <item quantity="one">Tog bort %1$d originalfil</item>
+        <item quantity="other">Tog bort %1$d originalfiler</item>
+    </plurals>
+    <string name="main_delete_nothing">Inga original behöver tas bort</string>
+    <string name="main_delete_partial">Tog bort %1$d originalfiler (%2$d kunde inte tas bort och behölls)</string>
+    <string name="main_delete_failed">Det gick inte att ta bort originalen (filerna används eller så saknas skrivbehörighet); de har behållits</string>
+    <string name="main_export_missing_output">Konverteringsresultatet saknas eller är tomt: %1$s</string>
+    <string name="main_export_missing_output_bare">Konverteringsresultatet saknas eller är tomt</string>
+    <string name="main_export_insert_null">MediaStore insert returnerade null</string>
+    <string name="main_export_output_stream">MediaStore-utdataströmmen är inte tillgänglig</string>
+    <string name="main_export_write_failed">MediaStore-skrivning misslyckades: %1$s</string>
+    <string name="main_export_mkdir_failed">Det gick inte att skapa gallerimappen %1$s</string>
+    <string name="main_export_dir_write_failed">Det gick inte att skriva till gallerimappen: %1$s</string>
+    <string name="main_export_no_source">Det gick inte att hitta källfilen; ersättningen hoppades över</string>
+    <string name="main_export_companion_failed">Det gick inte att skriva tillbaka den kompletterande filen: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Källmappen är inte skrivbar, så den kompletterande filen kunde inte skrivas tillbaka</string>
+    <string name="main_export_source_dir_unavailable">Källmappen är inte tillgänglig: %1$s</string>
+    <string name="main_export_replace_failed">Det gick inte att ersätta källfilen: %1$s</string>
+    <string name="main_export_replace_failed_bare">Det gick inte att ersätta källfilen</string>
+</resources>

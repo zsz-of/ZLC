@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Georgian (ka) strings (update/download-related).
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline).
+-->
+<resources>
+
+    <!-- ========== Lanzou cloud share page & direct link parsing ========== -->
+    <string name="update_lanzou_gone">Lanzou cloud shared content was cancelled or file does not exist, please switch to GitHub download</string>
+    <string name="update_lanzou_gone_short">Lanzou cloud sharing was cancelled, please switch to GitHub download</string>
+    <string name="update_lanzou_resolve_failed">Lanzou cloud download link parsing failed</string>
+    <string name="update_lanzou_need_passwd">The Lanzou cloud share requires an extraction code, please switch to GitHub download (or find extraction code in release notes)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou cloud extraction code is incorrect</string>
+    <string name="update_err_resolve_failed">პარსირება წარუმატბლად</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou cloud anti-crawl validation failed</string>
+    <string name="update_err_no_frame">Lanzou cloud download page cannot be parsed (download frame not found)</string>
+    <string name="update_err_no_file_id">Lanzou cloud file identifier cannot be parsed</string>
+    <string name="update_err_no_sign">Lanzou cloud signature cannot be parsed</string>
+    <string name="update_err_ajax_request">API request failed</string>
+    <string name="update_err_api_request">Lanzou cloud API request failed</string>
+    <string name="update_err_empty_direct">Lanzou cloud returns empty download address</string>
+    <string name="update_err_direct_expired">Lanzou cloud download address has expired, please re-obtain</string>
+    <string name="update_err_http_request">Request failed (HTTP %1$d)</string>
+
+    <!-- ========== Download ========== -->
+    <string name="update_err_connect">Cannot connect to download server: %1$s</string>
+    <string name="update_err_http">Download failed (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Cannot establish download connection</string>
+    <string name="update_err_empty">Download content is empty</string>
+    <string name="update_err_incomplete">Do not download incompletely (%1$d / total %2$d bytes), please download again</string>
+    <string name="update_err_interrupted">Download interrupted: %1$s</string>
+
+    <!-- ========== APK validation & installation ========== -->
+    <string name="update_err_not_apk">Downloaded content is not a valid installation package (may be webpage or download link has expired), please download again or switch to GitHub download.</string>
+    <string name="update_err_apk_incomplete">Installation package content is incomplete, please download again or switch to GitHub download.</string>
+    <string name="update_err_apk_unparsable">Installation package cannot be parsed (may be incomplete download), please download again or switch to GitHub download.</string>
+    <string name="update_err_no_install_permission">Do not have permission to install unknown applications</string>
+    <string name="update_err_installer_failed">Cannot launch system installer (%1$s), please manually open installation package in file manager</string>
+
+</resources>

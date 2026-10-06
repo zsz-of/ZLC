@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · नेपाली (Nepali) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Nepali (Devanagari); technical terms follow the English loanword where common.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- कन्ट्रोलरतर्फका सङ्केत (Context निर्भरता नभएका Composable बाहेक सबैले context.getString प्रयोग गर्छन्) -->
+    <string name="update_github_url_missing">GitHub डाउनलोड ठेगाना प्राप्त भएन; कृपया पछि फेरि प्रयास गर्नुहोस्।</string>
+    <string name="update_flavor_standard">मानक संस्करण</string>
+    <string name="update_flavor_go">Go संस्करण</string>
+    <string name="update_lanzou_url_missing">यो संस्करणले Lanzou Cloud डाउनलोड लिङ्क दिँदैन; तपाईं GitHub प्रयोग गर्न सक्नुहुन्छ।</string>
+    <string name="update_apk_direct_missing">यो संस्करणले यो संस्करणसँग मेल खाने स्थापना प्याकेजको सिधा लिङ्क दिँदैन; कृपया GitHub रिलिज पृष्ठमा गएर उपयुक्त APK छान्नुहोस्।</string>
+    <string name="update_install_permission_missing">«अज्ञात एप इन्स्टल गर्ने» अनुमति प्राप्त भएको छैन, स्वचालित रूपमा इन्स्टल गर्न सकिँदैन। कृपया प्रणाली सेटिङमा अनुमति दिएर फेरि प्रयास गर्नुहोस्।</string>
+    <string name="update_error_unknown">अज्ञात त्रुटि</string>
+    <string name="update_fail_lanzou">Lanzou Cloud डाउनलोड असफल भयो</string>
+    <string name="update_fail_github">GitHub डाउनलोड असफल भयो</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud डाउनलोड लिङ्क विश्लेषण गरिँदै…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud बाट डाउनलोड गरिँदै…</string>
+    <string name="update_github_downloading">GitHub बाट डाउनलोड गरिँदै…</string>
+    <string name="update_unzipping">स्थापना प्याकेज खोलिँदै…</string>
+    <string name="update_notes_empty">यो संस्करणमा कुनै अपडेट विवरण छैन।</string>
+
+    <!-- Go संस्करणसम्बन्धी डायलग -->
+    <string name="update_use_normal_title">कृपया सामान्य संस्करण प्रयोग गर्नुहोस्</string>
+    <string name="update_use_normal_body">यो यन्त्रको प्रणाली Android 10 वा माथि छ, Go हल्का संस्करण अब समर्थित छैन, पुरानो संस्करण प्रयोग गर्न सकिँदैन।\n\nयो यन्त्रमा सामान्य संस्करण (ZLC) इन्स्टल भएको भेटियो; कृपया सामान्य संस्करण सिधै खोलेर प्रयोग जारी राख्नुहोस् (नयाँ संस्करणले Go-संगत बिल्ड दिँदैन, पुरानो संस्करण स्थान खाली गर्न अनइन्स्टल गर्न सकिन्छ)।</string>
+    <string name="update_open_normal">सामान्य संस्करण खोल्नुहोस्</string>
+    <string name="update_must_update_title">जारी राख्न पहिले अपडेट गर्नैपर्छ</string>
+    <string name="update_forced_body">यो यन्त्रको प्रणाली Android 10 वा माथि छ, Go हल्का संस्करण अब समर्थित छैन, पुरानो संस्करण प्रयोग गर्न सकिँदैन; नयाँ संस्करणले पनि Go-संगत बिल्ड दिँदैन।\n\nकृपया इन्टरनेटमा जडान गरेर «पुनः प्रयास» थिच्नुहोस् र सामान्य संस्करणको स्थापना प्याकेज प्राप्त गर्नुहोस्।</string>
+    <string name="update_retry">पुनः प्रयास</string>
+    <string name="update_switch_normal_body">यो यन्त्रको प्रणाली Android 10 वा माथि छ, Go हल्का संस्करण अब समर्थित छैन, पुरानो संस्करण प्रयोग गर्न सकिँदैन।\nकृपया सामान्य संस्करण डाउनलोड र इन्स्टल गरेर प्रयोग जारी राख्नुहोस् (नयाँ संस्करणले Go-संगत बिल्ड दिँदैन)।</string>
+
+    <!-- डाउनलोड / इन्स्टल अनुमति / नतिजा सूचना -->
+    <string name="update_downloading_title">अपडेट डाउनलोड गर्नुहोस्</string>
+    <string name="update_cancel">रद्द गर्नुहोस्</string>
+    <string name="update_need_permission_title">इन्स्टल अनुमति चाहिन्छ</string>
+    <string name="update_need_permission_body">नयाँ संस्करण इन्स्टल गर्न प्रणालीको «अज्ञात एप इन्स्टल गर्ने» अनुमति चाहिन्छ।\n\n«अनुमति दिनुहोस्» थिच्नुहोस्, सेटिङमा अनुमति दिएर एपमा फर्कनुहोस्, त्यसपछि इन्स्टल स्वतः जारी हुनेछ (फेरि डाउनलोड गर्नु पर्दैन)।</string>
+    <string name="update_grant">अनुमति दिनुहोस्</string>
+    <string name="update_notice_title">सूचना</string>
+    <string name="update_got_it">थाहा भयो</string>
+
+    <!-- मुख्य डायलग / अपडेट विवरण -->
+    <string name="update_notes_title">v%1$s · अपडेट विवरण</string>
+    <string name="update_back">फर्कनुहोस्</string>
+    <string name="update_title_switch_normal">सामान्य संस्करणमा स्विच गर्नुहोस्</string>
+    <string name="update_title_reinstall">यो संस्करण पुनः इन्स्टल गर्नुहोस्</string>
+    <string name="update_title_new_version">नयाँ संस्करण भेटियो</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">यो संस्करण डाउनलोड र पुनः इन्स्टल गरिनेछ (हालको एप अधिलेखन गर्दै)।\nयो सुविधा अपडेट संयन्त्रको रिग्रेसन परीक्षणका लागि हो।</string>
+    <string name="update_view_notes">अपडेट विवरण हेर्नुहोस्</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud अस्थायी रूपमा उपलब्ध छैन</string>
+    <string name="update_download_lanzou">Lanzou Cloud बाट डाउनलोड गर्नुहोस्</string>
+    <string name="update_download_github">GitHub बाट डाउनलोड गर्नुहोस्</string>
+    <string name="update_download_browser">ब्राउजरबाट डाउनलोड गर्नुहोस्</string>
+    <string name="update_later">पछि अपडेट गर्नुहोस्</string>
+    <string name="update_later_switch">पछि स्विच गर्नुहोस्</string>
+    <string name="update_skip_version">यो संस्करण छोड्नुहोस्</string>
+</resources>

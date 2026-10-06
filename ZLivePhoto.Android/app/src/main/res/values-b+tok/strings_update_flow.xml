@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  toki pona (tok) — nasin sin (ui/UpdateFlow.kt, nimi open: update_).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Quality level: C (low-resource language, best-effort translation).
+  Base: res/values/strings_update_flow.xml (toki Sonko). %1$s / %1$d li awen.
+-->
+<resources>
+    <string name="update_github_url_missing">linja kama jo GitHub li lon ala; o sin lon tenpo kama.</string>
+    <string name="update_flavor_standard">nasin suli</string>
+    <string name="update_flavor_go">nasin Go</string>
+    <string name="update_lanzou_url_missing">nasin ni li jo ala e linja Lanzouyun; o kepeken GitHub.</string>
+    <string name="update_apk_direct_missing">nasin ni li jo ala e linja APK sama; o wile e APK lon lipu GitHub.</string>
+    <string name="update_install_permission_missing">ken «pali e ilo sin» li lon ala; ken ala pali awen. o pana e ken lon nasin, o sin.</string>
+    <string name="update_error_unknown">pakala sona ala</string>
+    <string name="update_fail_lanzou">kama jo Lanzouyun li pakala</string>
+    <string name="update_fail_github">kama jo GitHub li pakala</string>
+    <string name="update_lanzou_resolving">sona e linja Lanzouyun…</string>
+    <string name="update_lanzou_downloading">kama jo tan Lanzouyun…</string>
+    <string name="update_github_downloading">kama jo tan GitHub…</string>
+    <string name="update_unzipping">open e poki ilo…</string>
+    <string name="update_notes_empty">nasin ni li jo ala e lipu sin.</string>
+
+    <!-- poki toki pi nasin Go -->
+    <string name="update_use_normal_title">o kepeken nasin suli</string>
+    <string name="update_use_normal_body">ilo ni li kepeken Android 10 anu sin; nasin lili Go li pini, nasin pini li pali ala.\n\nnasin suli (ZLC) li lon ilo ni; o open e ona (nasin Go li lon ala; o weka e nasin pini tawa ma suli).</string>
+    <string name="update_open_normal">open e nasin suli</string>
+    <string name="update_must_update_title">o sin nanpa wan, o pali</string>
+    <string name="update_forced_body">ilo ni li kepeken Android 10 anu sin; nasin lili Go li pini, nasin pini li pali ala; nasin Go sin li lon ala.\n\no pali e linja, o luka «sin» tawa kama jo e nasin suli.</string>
+    <string name="update_retry">sin</string>
+    <string name="update_switch_normal_body">ilo ni li kepeken Android 10 anu sin; nasin lili Go li pini, nasin pini li pali ala.\no kama jo e nasin suli, o pali (nasin Go sin li lon ala).</string>
+
+    <!-- kama jo / ken pali / ijo pini -->
+    <string name="update_downloading_title">kama jo e sin</string>
+    <string name="update_cancel">pini</string>
+    <string name="update_need_permission_title">wile: ken pali</string>
+    <string name="update_need_permission_body">pali e nasin sin li wile e ken «pali e ilo sin».\n\no luka «pana e ken», o pana e ken lon nasin, o kama sin; pali li awen (kama jo sin ala).</string>
+    <string name="update_grant">pana e ken</string>
+    <string name="update_notice_title">sona</string>
+    <string name="update_got_it">pona</string>
+
+    <!-- poki toki suli en lipu sin -->
+    <string name="update_notes_title">v%1$s · lipu sin</string>
+    <string name="update_back">tawa monsi</string>
+    <string name="update_title_switch_normal">ante tawa nasin suli</string>
+    <string name="update_title_reinstall">pali sin e nasin ni</string>
+    <string name="update_title_new_version">nasin sin li lon</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">nasin ni li kama jo sin, li pali sin (ante e ilo ni).\nnasin ni li tawa lukin e sin.</string>
+    <string name="update_view_notes">lukin e lipu sin</string>
+    <string name="update_lanzou_unavailable">Lanzouyun li lon ala tenpo ni</string>
+    <string name="update_download_lanzou">kama jo tan Lanzouyun</string>
+    <string name="update_download_github">kama jo tan GitHub</string>
+    <string name="update_download_browser">kama jo kepeken ilo lipu</string>
+    <string name="update_later">o sin ala tenpo ni</string>
+    <string name="update_later_switch">o ante ala</string>
+    <string name="update_skip_version">weka e nasin ni</string>
+</resources>

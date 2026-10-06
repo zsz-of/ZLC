@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Монгол (Mongolian) strings — хөрвүүлэлт / транскод мэдэгдлүүд (strings_convert.xml).
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline, the fallback locale).
+  Монгол хэл (кирилл); уугуул хэлний хяналт хийхийг зөвлөж байна.
+  Бүх key нь суурь файлтай ижил; %1$s / %1$d орлуулагч болон \n хэвээр хадгалагдсан.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: параметр болон материалыг шалгах (алдаа → интерфэйсэд бүтэлгүйтлийн шалтгааныг харуулна) ========== -->
+    <string name="conv_unknown_target">Тодорхойгүй зорилтот формат: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Танигдаагүй хөдөлгөөнт зургийн формат (Google/OPPO/vivo/Xiaomi/Apple хөдөлгөөнт зураг биш)</string>
+    <string name="conv_cover_photo_missing">Ковер зураг байхгүй эсвэл хоосон</string>
+    <string name="conv_video_missing">Видео байхгүй эсвэл хоосон</string>
+    <string name="conv_video_too_large">Видео хэт том (%1$d МБ), хөдөлгөөнт зураг нэгтгэх боломжгүй, богино видео сонгоно уу</string>
+    <string name="conv_transcoded_too_large">Транскод хийсний дараа видео хэт том (%1$d МБ), хөдөлгөөнт зураг нэгтгэх боломжгүй</string>
+    <string name="conv_video_too_large_compose">Видео хэт том (%1$d МБ), хөдөлгөөнт зураг нэгтгэх боломжгүй</string>
+
+    <!-- Converter.kt: ковер (HEIC / JPEG бус) -->
+    <string name="conv_cover_heic_go">Ковер нь HEIC зураг (хөнгөн хувилбар транскод хийхгүй, iPhone дээр JPEG болгон экспортолсны дараа хөрвүүлнэ үү)</string>
+    <string name="conv_cover_invalid_heic">Ковер нь хүчинтэй зураг биш (HEIC-д системийн HEIF декод дэмжлэг шаардлагатай)</string>
+    <string name="conv_cover_not_jpeg_go">Ковер нь JPEG зураг биш (хөнгөн хувилбар транскод хийхгүй, JPEG зураг ашиглана уу)</string>
+    <string name="conv_cover_invalid_image">Ковер нь хүчинтэй зураг биш (зөвхөн JPEG/WebP/PNG дэмжигдэнэ)</string>
+
+    <!-- Converter.kt: транскод / дахин савлах бүтэлгүйтэл болон «зөвхөн контейнер солих нь кодлолыг засахгүй» гэсэн сануулга -->
+    <string name="conv_reencode_failed">Видеог дахин кодлох бүтэлгүйтлээ: %1$s</string>
+    <string name="conv_remux_failed">Контейнерийг дахин савлах бүтэлгүйтлээ: %1$s</string>
+    <string name="conv_codec_unknown">Танигдах H.264/H.265 видео биш</string>
+    <string name="conv_codec_is">Кодлолын төрөл: %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">«%1$s» видео %2$s; зөвхөн контейнерийг солих (дахин савлах) нь кодлолыг өөрчлөхгүй тул хөдөлгөөнт зураг нэгтгэх боломжгүй.\n\n«Тохиргоо → Видео транскод → Транскодын арга» хэсэгт «Дахин кодлох» болгож өөрчлөнө үү, эсвэл эхлээд өөр хэрэгслээр H.264/H.265 кодлолтой MP4 болгон хөрвүүлнэ үү.</string>
+    <string name="conv_hint_no_encoder">Видео нь стандарт MP4 контейнер биш (MOV / MKV / WebM / AVI гэх мэт), харин одоогийн «Транскодын арга» дахин кодлохгүй тул хөдөлгөөнт зураг нэгтгэх боломжгүй.\n\n«Тохиргоо → Видео транскод → Транскодын арга» хэсэгт «Дахин кодлох» болгож өөрчлөнө үү (ердийн хувилбарт ffmpeg кодлогч багтсан; Go хөнгөн хувилбарт транскодер байхгүй тул ердийн хувилбарыг ашиглана уу), эсвэл эхлээд видеог стандарт MP4 (H.264/H.265) болгон хөрвүүлнэ үү.</string>
+
+    <!-- ========== Хөрвүүлэлтийн лог (жагсаалтын мөрийн төлөв болон лог самбарт харагдана) ========== -->
+    <string name="conv_log_detected">%1$s гэж танигдсан</string>
+    <string name="conv_log_same_format_copied">Эх болон зорилтот формат ижил, өөрчлөлтгүй хуулагдсан (тэг алдагдал)</string>
+    <string name="conv_log_extra_tracks_bypass">Эх видеод аудио/видео бус зам байна (%1$s), ижил форматтай шууд дамжуулалтыг алгасаж, цэвэрлэх үүднээс бүрэн бичих урсгалаар гүйцэтгэв</string>
+    <string name="conv_log_ts_fallback">Эхэд ковер кадрын цагийн тэмдэг байхгүй тул стандартын дагуу видеоны дунд цэг рүү буцаав</string>
+    <string name="conv_log_brand_normalized">Видео контейнерийн брэндийг хэвийн болгов (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Видеод нэмэлт зам байна (%1$s), цэвэрлэх боломжгүй тул өөрчлөлтгүй гаргав (энэ бүтээгдэхүүн зарим загварт удаан дарахад тоглохгүй байж болно)</string>
+    <string name="conv_log_extra_tracks_removed">Видеоны нэмэлт замуудыг хасав (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Эх видео %1$s; зөвхөн контейнерийг дахин савлах нь шийдэхгүй (%2$s), бүтээгдэхүүн удаан дарахад тоглохгүй хэвээр бол «Тохиргоо → Видео транскод → Транскодын арга» хэсэгт «Дахин кодлох»-ыг сонгоно уу</string>
+    <string name="conv_log_reencoding">Эх видео %1$s, цомгийн нийцтэй байдлыг сайжруулахын тулд тохиргооны дагуу 8bit + AAC болгон дахин кодлож байна</string>
+    <string name="conv_log_reencode_result_unusable">Дахин кодлолын үр дүн ашиглах боломжгүй тул өөрчлөлтгүй гаргав (энэ бүтээгдэхүүн зарим загварт удаан дарахад тоглохгүй байж болно)</string>
+    <string name="conv_log_reencode_still_risky">Дахин кодлосны дараа ч эрсдэлтэй зүйл байна (%1$s)</string>
+    <string name="conv_log_reencode_failed">Дахин кодлол бүтэлгүйтэв (%1$s), өөрчлөлтгүй гаргав (энэ бүтээгдэхүүн зарим загварт удаан дарахад тоглохгүй байж болно)</string>
+    <string name="conv_log_cover_heic_converted">Ковер нь HEIC (JPEG бус) байсан тул савлахаас өмнө стандарт JPEG болгон транскод хийв</string>
+    <string name="conv_log_compose_sizes">Нэгтгэлт: зураг %1$d Б + видео %2$d Б → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Транскодер идэвхгүй: зөвхөн контейнерийн брэндийг дахин бичнэ (MOV → MP4), дахин кодлохгүй</string>
+
+    <!-- Логийн шошго (интерфэйсэд «[шошго] текст» хэлбэрээр харагдана) -->
+    <string name="conv_tag_convert">Хөрвүүлэлт</string>
+    <string name="conv_tag_transcode">Транскод</string>
+    <string name="conv_tag_compose">Нэгтгэлт</string>
+
+    <!-- Транскодын аргын саатлын шалтгаан (дээрх сануулгын текстэд залгагдана) -->
+    <string name="conv_blocker_no_encoder">Суулгасан транскодер боломжгүй</string>
+    <string name="conv_blocker_mode_no_encode">Одоогийн «Транскодын арга» дахин кодлохгүй</string>
+
+    <!-- ========== FfmpegAddon.kt: суулгасан ffmpeg транскод / дахин савлах ========== -->
+    <string name="conv_addon_unavailable">Суулгасан транскодер боломжгүй</string>
+    <string name="conv_addon_transcode_failed">ffmpeg транскод бүтэлгүйтлээ: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg контейнерийг дахин савлах бүтэлгүйтлээ: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg ашиглан видеог стандарт MP4 болгон транскод хийж байна (%1$s / crf %2$d / %3$s, зөвхөн видео болон аудио замыг үлдээнэ)</string>
+    <string name="conv_log_transcode_done">Видео транскод дууссан (%1$d КБ)</string>
+    <string name="conv_log_remuxing">Видео контейнерийг стандарт MP4 болгон дахин савлаж байна (зөвхөн контейнер, дахин кодлолгүй)</string>
+    <string name="conv_log_remux_done">Контейнерийг дахин савлах дууссан (%1$d КБ)</string>
+
+    <!-- ========== Reminders.kt: «Дахин харуулахгүй» цонх ========== -->
+    <string name="conv_reminder_cat_compose">Нэгтгэлт</string>
+    <string name="conv_reminder_cat_convert">Хөрвүүлэлт</string>
+    <string name="conv_reminder_cat_update">Шинэчлэлт</string>
+    <string name="conv_reminder_video_over3s_title">Видео 3 секундээс урт</string>
+    <string name="conv_reminder_video_over3s_message">Сонгосон видео 3 секундээс урт тул нэгтгэсэн хөдөлгөөнт зурагт нийцтэй байдлын асуудал гарч болзошгүй:\n\n• Хэвийн тоглохгүй байж болно\n• Системийн цомог танихгүй байж болно\n• Зарим загвар энэ хөдөлгөөнт зургийг танихгүй байж болно</string>
+    <string name="conv_reminder_legacy_go_title">Хуучин хувилбар илэрлээ</string>
+    <string name="conv_reminder_legacy_go_message">Энэ төхөөрөмжид хуучин хувилбарын (Go) апп суусан хэвээр байна. Тэр хуучин хувилбар энэ төхөөрөмжид ажиллахгүй тул зай чөлөөлөхийн тулд устгаж болно.</string>
+    <string name="conv_reminder_replace_risk_title">Солих горимд гэмтэх эрсдэлтэй</string>
+    <!-- formatted="false"（суурь файлтай ижил хадгалагдсан）：aapt2/lint үүнийг String.format-аар шалгахгүй байхын тулд. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Солих горим нь хөрвүүлэлтийн үр дүнг эх файл руу шууд бичнэ; эх файлыг дарж бичсэний дараа буцаан олгох боломжгүй.\n\n• Бичих явцад апп тасалдвал, хадгалах зай хүрэлцэхгүй эсвэл зөвшөөрөл цуцлагдвал эх файл гэмтэж болзошгүй\n• Хөрвүүлэлт амжилттай болох баталгаа байхгүй, бүтэлгүйтвэл эх файл ашиглах боломжгүй болсон байж болно\n• Эхлээд нэг хоёр файл дээр туршиж, асуудалгүй эсэхийг баталсны дараа багцаар боловсруулна уу\n• Чухал зургаа урьдчилан нөөцөлнө үү\n\nЭнэ функц «байгаа байдлаараа» үзүүлэгдэнэ; ашиглах эрсдэлийг та өөрөө хүлээнэ, зохиогч файлын гэмтэл эсвэл алдагдлын хариуцлага хүлээхгүй.</string>
+    <string name="conv_reminder_dont_remind">Дахин харуулахгүй</string>
+    <string name="conv_reminder_confirm_ok">Ойлголоо</string>
+    <string name="conv_reminder_uninstall">Устгах</string>
+
+</resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Sardinian (sc) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="screen_app_subtitle">Cunversione intre formatos de Live Photo</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d file</item>
+        <item quantity="many">%1$d files</item>
+        <item quantity="other">%1$d files</item>
+    </plurals>
+    <string name="screen_settings">Cunfiguratzione</string>
+    <string name="screen_select_output_format">Sebera su formatu de essida</string>
+    <string name="screen_selected">Seletzionados</string>
+    <string name="screen_vivo_single_warning">⚠ Modellos tropu betzos diant pòdere non reconnòschere custu formatu</string>
+    <string name="screen_extract_blocked">⚠ Sa fila tenet fàigas de cumponidura; non si podet seberare s’estraghidura</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (unu file ebbia)</string>
+    <string name="screen_format_vivo">vivo (duos files)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Estraghere</string>
+    <string name="screen_toolbox">Cassa de is utiles</string>
+    <string name="screen_batch_import">Importatzione in massa</string>
+    <string name="screen_batch_import_desc">Iscanare totu s’album e identifigare Live Photo in massa</string>
+    <string name="screen_compose">Cumponere una Live Photo</string>
+    <string name="screen_compose_desc">Sebera una foto e unu vìdeo e aparegia·los pro los cumponere</string>
+    <string name="screen_replace_mode">Modu de sostitutziune</string>
+    <string name="screen_replace_mode_desc">Su resurtadu de sa cunversione si iscrit derettamente in is files orìginales, chene creare files noos</string>
+    <string name="screen_need_all_files_access_hint">Rechedet su permissu «Atzessu a totu is files»; primi inoghe pro ddu dare</string>
+    <string name="screen_agree_and_enable">Acorda·tie e ativa·ddu</string>
+    <string name="screen_empty_no_files">No est ancora agiuntu perunu file</string>
+    <string name="screen_view_detail">Mustra is detàllios</string>
+    <string name="screen_add_files">Agiunghe files</string>
+    <string name="screen_output_format">Formatu de essida: %1$s</string>
+    <string name="screen_delete_original">Cantzella is files orìginales a pustis de s’elaboratzione</string>
+    <string name="screen_need_all_files_access_view">Rechedet su permissu «Atzessu a totu is files»; primi pro mustrare</string>
+    <string name="screen_clear">Isboida</string>
+    <string name="screen_stop">Firma s’elaboratzione</string>
+    <string name="screen_start_convert">Incumintza sa cunversione</string>
+    <string name="screen_status_detail">Detàllios de s’istadu</string>
+    <string name="screen_long_press_copy">Pretzende a longu su testu ddu podes seletzionare e copiare</string>
+    <string name="screen_copy">Còpia</string>
+    <string name="screen_close">Serra</string>
+    <string name="screen_back">Torrare</string>
+    <string name="screen_picker_title_select">Seletziona is Live Photo</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Arrìtraga sa coberidora de s’album</string>
+    <string name="screen_album_expand_cover">Allarga sa coberidora de s’album</string>
+    <string name="screen_scanning_progress">Iscanende %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="many">%1$d fotos</item>
+        <item quantity="other">%1$d fotos</item>
+    </plurals>
+    <string name="screen_select_all">Seletziona totu</string>
+    <string name="screen_no_albums">Non b’at albums disponìbiles</string>
+    <string name="screen_no_media">Non s’at agatadu peruna Live Photo</string>
+    <string name="screen_no_media_compose">Non s’ant agatadu fotos ni vìdeos</string>
+    <string name="screen_import">Importa</string>
+    <string name="screen_import_count">Importa %1$d</string>
+    <string name="screen_import_mixed">Importa %1$d immàgines · %2$d vìdeos</string>
+    <string name="screen_search">Chirca</string>
+    <string name="screen_search_collapse">Arrìtraga sa chirca</string>
+    <string name="screen_search_hint">Chirca pro nùmene</string>
+    <string name="screen_search_clear">Isboida sa chirca</string>
+    <string name="screen_sort_date">Data</string>
+    <string name="screen_sort_size">Mannària</string>
+    <string name="screen_sort_name">Nùmene</string>
+    <string name="screen_sort_asc">Crèschende</string>
+    <string name="screen_sort_desc">Calende</string>
+    <string name="screen_date_today">Oe</string>
+    <string name="screen_date_yesterday">Eris</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

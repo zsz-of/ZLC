@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bosnian (bs) strings — update flow (task-4, videolen-analyst) — ui/UpdateFlow.kt.
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Key prefix update_. UpdateFlowController (non-Composable) uses context.getString(...); dialogs use stringResource(...).
+-->
+<resources>
+    <!-- Poruke na strani kontrolera (izvan Composablea bez konteksta koristi se context.getString) -->
+    <string name="update_github_url_missing">GitHub adresa za preuzimanje nije dobivena; pokušajte ponovo kasnije.</string>
+    <string name="update_flavor_standard">Standardna verzija</string>
+    <string name="update_flavor_go">Go verzija</string>
+    <string name="update_lanzou_url_missing">Ova verzija ne nudi Lanzou Cloud link za preuzimanje; možete upotrijebiti GitHub.</string>
+    <string name="update_apk_direct_missing">Ova verzija ne nudi izravni link instalacijskog paketa koji odgovara vašoj verziji; odaberite odgovarajući APK na GitHub stranici izdanja.</string>
+    <string name="update_install_permission_missing">Dozvola „instalacija nepoznatih aplikacija“ nije odobrena, pa automatska instalacija nije moguća. Odobrite je u sistemskim postavkama i pokušajte ponovo.</string>
+    <string name="update_error_unknown">Nepoznata greška</string>
+    <string name="update_fail_lanzou">Lanzou Cloud preuzimanje nije uspjelo</string>
+    <string name="update_fail_github">GitHub preuzimanje nije uspjelo</string>
+    <string name="update_lanzou_resolving">Raščlanjivanje Lanzou Cloud linka za preuzimanje…</string>
+    <string name="update_lanzou_downloading">Preuzimanje s Lanzou Clouda…</string>
+    <string name="update_github_downloading">Preuzimanje s GitHuba…</string>
+    <string name="update_unzipping">Raspakiravanje instalacijskog paketa…</string>
+    <string name="update_notes_empty">Ova verzija nema opis izdanja.</string>
+
+    <!-- Dijalozi vezani uz Go verziju -->
+    <string name="update_use_normal_title">Upotrijebite standardnu verziju</string>
+    <string name="update_use_normal_body">Ovaj uređaj radi na Androidu 10 ili novijem, a Go lite verzija više nije podržana; stara verzija se ne može dalje koristiti.\n\nNa uređaju je već instalirana standardna verzija (ZLC); jednostavno je otvorite i nastavite je koristiti (nova izdanja više ne nude Go kompatibilnu verziju, a staru možete deinstalirati da oslobodite prostor).</string>
+    <string name="update_open_normal">Otvori standardnu verziju</string>
+    <string name="update_must_update_title">Morate ažurirati prije nastavka</string>
+    <string name="update_forced_body">Ovaj uređaj radi na Androidu 10 ili novijem, a Go lite verzija više nije podržana; stara verzija se ne može dalje koristiti, a nova izdanja više ne nude Go kompatibilnu verziju.\n\nPovežite se na internet i dodirnite „Pokušaj ponovo“ za preuzimanje standardne verzije.</string>
+    <string name="update_retry">Pokušaj ponovo</string>
+    <string name="update_switch_normal_body">Ovaj uređaj radi na Androidu 10 ili novijem, a Go lite verzija više nije podržana; stara verzija se ne može dalje koristiti.\nPreuzmite i instalirajte standardnu verziju za nastavak (nova izdanja više ne nude Go kompatibilnu verziju).</string>
+
+    <!-- Preuzimanje / dozvola za instalaciju / poruke o rezultatu -->
+    <string name="update_downloading_title">Preuzmi ažuriranje</string>
+    <string name="update_cancel">Otkaži</string>
+    <string name="update_need_permission_title">Potrebna je dozvola za instalaciju</string>
+    <string name="update_need_permission_body">Instalacija nove verzije zahtijeva sistemsku dozvolu „instalacija nepoznatih aplikacija“.\n\nDodirnite „Odobri“, odobrite je u postavkama i vratite se u aplikaciju; instalacija će se automatski nastaviti (nije potrebno ponovno preuzimanje).</string>
+    <string name="update_grant">Odobri</string>
+    <string name="update_notice_title">Napomena</string>
+    <string name="update_got_it">Razumijem</string>
+
+    <!-- Glavni dijalog / opis izdanja -->
+    <string name="update_notes_title">v%1$s · opis izdanja</string>
+    <string name="update_back">Nazad</string>
+    <string name="update_title_switch_normal">Prebaci na standardnu verziju</string>
+    <string name="update_title_reinstall">Ponovo instaliraj ovu verziju</string>
+    <string name="update_title_new_version">Dostupna nova verzija</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Preuzet će i ponovo instalirati ovu verziju (prepisuje trenutnu aplikaciju).\nOva funkcija služi za regresijsko testiranje mehanizma ažuriranja.</string>
+    <string name="update_view_notes">Prikaži opis izdanja</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud trenutno nije dostupan</string>
+    <string name="update_download_lanzou">Preuzmi s Lanzou Clouda</string>
+    <string name="update_download_github">Preuzmi s GitHuba</string>
+    <string name="update_download_browser">Preuzmi iz preglednika</string>
+    <string name="update_later">Ažuriraj kasnije</string>
+    <string name="update_later_switch">Prebaci kasnije</string>
+    <string name="update_skip_version">Preskoči ovu verziju</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Tutlayt taqbaylit (kab).
+  Yettwasuqel seg res/values/strings_*.xml (asnulfu s usebter n tsusnawt, tutlayt n umagrad).
+  Iswiyen ttwamṣadan d umagrad; imetteg (%1$s / %1$d) d yimeslayen n uɣtu qqimen am akken.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- Ismawen n uskan n tseftiyin n format; asɣi iswi fmt_ -->
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Suffeɣ</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo s yiwen ufaylu</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <!-- Izuwag n usenqed i ttwabanen i useqdac -->
+    <string name="fmt_err_apple_mov_missing">Ulac afaylu n tvidyut .mov s yisem-nni</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Afaylu MOV ulac-it ftyp box</string>
+    <string name="fmt_err_extract_read">Suffeɣ d format n usuffeɣ, ur yessefk ara ad yettwaɣer am format n unekcum</string>
+    <string name="fmt_err_no_primary_jpeg">Ulac tugna tagejdant JPEG</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Mbaɛd JPEG ulac tvidyut MP4 tamezduɣt (ulac ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Tafrara n usala n tvidyut MP4 ur teddi ara</string>
+    <string name="fmt_err_nubia_too_short">Afaylu d aqeṣṣiṛ aṭas, ur yettban ara d Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Ulac azmul magic n nubiaVpfile deg tgara</string>
+    <string name="fmt_err_nubia_jpeg_len">Tiddi n JPEG yettwarǧet deg tgara mačči d tamezduɣt: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Ulac ibiten n ussefsi 0x00 gar JPEG d tvidyut</string>
+    <string name="fmt_err_nubia_empty_video">Tiddi n tvidyut yettwaqqlen d 0</string>
+    <string name="fmt_err_vivo_no_marker">Deg tgara n JPG ulac azmul vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Ulac afaylu n tvidyut yeddan: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Tafrara n yixef n JPG ur teddi ara</string>
+    <string name="fmt_err_vivo_companion_invalid">MP4 yeddan d arussin (ulac ftyp box)</string>
+</resources>

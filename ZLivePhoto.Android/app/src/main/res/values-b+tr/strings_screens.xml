@@ -9,6 +9,7 @@
     <string name="screen_app_subtitle">Hareketli fotoğraf biçimleri arasında dönüştürme</string>
     <!-- Üst çubuğun sağında seçili dosya sayısı -->
     <plurals name="screen_file_count">
+        <item quantity="one">%1$d dosya</item>
         <item quantity="other">%1$d dosya</item>
     </plurals>
     <!-- Üst çubuktaki ayarlar girişi (yalnızca ekran okuyucu) -->
@@ -67,6 +68,7 @@
     <string name="screen_album_expand_cover">Albüm kapağını genişlet</string>
     <string name="screen_scanning_progress">Taranıyor %1$d/%2$d</string>
     <plurals name="screen_photo_count">
+        <item quantity="one">%1$d fotoğraf</item>
         <item quantity="other">%1$d fotoğraf</item>
     </plurals>
     <string name="screen_select_all">Tümünü seç</string>

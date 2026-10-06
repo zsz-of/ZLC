@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Esperanto (eo).
+  Tradukita el res/values/strings_*.xml (simpligita ĉina baza dosiero, la rezerva lingvo).
+  La ŝlosiloj spegulas la bazan dosieron; anstataŭigiloj (%1$s / %1$d) kaj eskaposekvencoj restas senŝanĝaj.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- Montraj nomoj de formataj kromprogramoj; ŝlosila prefikso fmt_ -->
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Eltiri</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo unudosiera Live Photo</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <!-- Uzanto-videblaj malsukcesaj mesaĝoj de la kromprogramoj -->
+    <string name="fmt_err_apple_mov_missing">Ne trovis samnoman .mov videodosieron</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV-dosiero mankas la ftyp-skatolon</string>
+    <string name="fmt_err_extract_read">Eltiri estas eliga formato, kaj ne devus esti legata kiel eniga formato</string>
+    <string name="fmt_err_no_primary_jpeg">Ne trovis la ĉefan JPEG-bildon</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Post la JPEG ne trovis validan MP4-videon (mankas ftyp-skatolo)</string>
+    <string name="fmt_err_mp4_parse_failed">Analizo de la MP4-videfluo malsukcesis</string>
+    <string name="fmt_err_nubia_too_short">La dosiero estas tro mallonga por esti Nubia Live Photo</string>
+    <string name="fmt_err_nubia_no_magic">Mankas la fina magianombro nubiaVpfile</string>
+    <string name="fmt_err_nubia_jpeg_len">Nevalida JPEG-longo registrita ĉe la fino: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Mankas la 0x00-plenigaj bajtoj inter la JPEG kaj la video</string>
+    <string name="fmt_err_nubia_empty_video">La longo de la enkorpigita video estas 0</string>
+    <string name="fmt_err_vivo_no_marker">Ĉe la fino de la JPG ne trovis la markilon vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">Mankas la akompana videodosiero: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Analizo de la JPG-korpo malsukcesis</string>
+    <string name="fmt_err_vivo_companion_invalid">La akompana MP4 ne validas (mankas ftyp-skatolo)</string>
+</resources>

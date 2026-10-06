@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Southern Min (nan) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">藍奏雲的分享已經取消抑是檔案無去，請改用 GitHub 下載</string>
+    <string name="update_lanzou_gone_short">藍奏雲的分享已經取消，請改用 GitHub 下載</string>
+    <string name="update_lanzou_resolve_failed">藍奏雲下載連結解析失敗</string>
+    <string name="update_lanzou_need_passwd">這个藍奏雲分享愛提取碼，請改用 GitHub 下載（抑是去 Release 說明揣提取碼）</string>
+    <string name="update_lanzou_wrong_passwd">藍奏雲提取碼毋著</string>
+    <string name="update_err_resolve_failed">解析失敗</string>
+    <string name="update_err_resolve_with_host">%1$s（%2$s）</string>
+    <string name="update_err_anticrawl">藍奏雲防爬蟲的檢查失敗</string>
+    <string name="update_err_no_frame">無法度解析藍奏雲的下載頁（揣無下載框）</string>
+    <string name="update_err_no_file_id">無法度解析藍奏雲的檔案標記</string>
+    <string name="update_err_no_sign">無法度解析藍奏雲的簽名</string>
+    <string name="update_err_ajax_request">接口的要求失敗</string>
+    <string name="update_err_api_request">藍奏雲接口的要求失敗</string>
+    <string name="update_err_empty_direct">藍奏雲回傳空的下載位址</string>
+    <string name="update_err_direct_expired">藍奏雲的下載位址已經失效，請重新揣</string>
+    <string name="update_err_http_request">要求失敗（HTTP %1$d）</string>
+    <string name="update_err_connect">無法度連到下載伺服器：%1$s</string>
+    <string name="update_err_http">下載失敗（HTTP %1$d）</string>
+    <string name="update_err_no_connection">無法度建立下載的連線</string>
+    <string name="update_err_empty">下載的內容是空的</string>
+    <string name="update_err_incomplete">下載無完整（已經提著 %1$d / 攏總 %2$d 位元組），請閣下載一擺</string>
+    <string name="update_err_interrupted">下載斷去：%1$s</string>
+    <string name="update_err_not_apk">下載著的毋是有效的安裝包（可能是網頁抑是下載連結已經失效），請閣下載一擺抑是改用 GitHub 下載。</string>
+    <string name="update_err_apk_incomplete">安裝包的內容無完整，請閣下載一擺抑是改用 GitHub 下載。</string>
+    <string name="update_err_apk_unparsable">安裝包無法度解析（可能下載無完整），請閣下載一擺抑是改用 GitHub 下載。</string>
+    <string name="update_err_no_install_permission">猶未允准「安裝未知應用程式」的權限</string>
+    <string name="update_err_installer_failed">無法度叫起系統的安裝器（%1$s），請去檔案管理程式手動開安裝包來安裝</string>
+</resources>

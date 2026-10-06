@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<!--
+  Dolnoserbska rěc — głowny interfejs / wuběrač albuma.
+  Žrědłowy tekst jo chinski (res/values/strings_screens.xml).
+  Kóždy kluc wótpowědujo bazowemu; placeholderje (%1$s / %1$d) a sekwence \n se zachowaju.
+  Licbowe wuraze wužywaju <plurals>.
+-->
+<resources>
+    <!-- Zagłowkowa pódnasłow -->
+    <string name="screen_app_subtitle">Formaty Live Photo mjazsobu konwertěrowaś</string>
+    <!-- Licba wubranych datajow w zagłowku (licbowa, wužywa plurals) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d dataja</item>
+        <item quantity="two">%1$d dataji</item>
+        <item quantity="few">%1$d dataje</item>
+        <item quantity="other">%1$d datajow</item>
+    </plurals>
+    <!-- Zastup do nastajenjow w zagłowku (jano za cytanje bez barierow) -->
+    <string name="screen_settings">Nastajenja</string>
+
+    <!-- Dialog za wuběranje wudawańskego formata -->
+    <string name="screen_select_output_format">Wudawański format wubraś</string>
+    <string name="screen_selected">Wubrane</string>
+    <string name="screen_vivo_single_warning">⚠ Stare rědy snaź toś ten format njespóznaju</string>
+    <string name="screen_extract_blocked">⚠ Rěd wopśimujo syntezowe nadawki, rozłoženje njedajo se wubraś</string>
+
+    <!-- Krotke mjena formatowych opcijow (dłujke mjena glědaj w strings_formats.xml, fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (jadna dataja)</string>
+    <string name="screen_format_vivo">vivo (dwě dataji)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Wupakowaś</string>
+
+    <!-- Kašćik z rědami (BottomSheet) -->
+    <string name="screen_toolbox">Kašćik z rědami</string>
+    <string name="screen_batch_import">Masowy import</string>
+    <string name="screen_batch_import_desc">Pśepytajśo dopołny album a masowo spóznajśo Live Photos</string>
+    <string name="screen_compose">Live Photo syntezěrowaś</string>
+    <string name="screen_compose_desc">Wubjeŕśo jaden wobraz a jadno wideo a zjadnośo je do Live Photo</string>
+    <string name="screen_replace_mode">Modus wuměny</string>
+    <string name="screen_replace_mode_desc">Konwertěrowane wuslědki se direktnje do originalnych datajow pisaju, nowe dataje se njewudawaju</string>
+    <string name="screen_need_all_files_access_hint">Trjeba pšawo „pśistup k wšym datajam”, klikniśo, aby jo dał</string>
+    <string name="screen_agree_and_enable">Zgódnyś a zapinyś</string>
+
+    <!-- Prozne stawy / dólny wóźeński panel -->
+    <string name="screen_empty_no_files">Hyšći žedne dataje pśidane</string>
+    <string name="screen_view_detail">Podrobnosći pokazaś</string>
+    <string name="screen_add_files">Dataje pśidaś</string>
+    <string name="screen_output_format">Wudawański format: %1$s</string>
+    <string name="screen_delete_original">Žrědłowe wobraze pó wobźěłanju wulašowaś</string>
+    <string name="screen_need_all_files_access_view">Trjeba pšawo „pśistup k wšym datajam”, klikniśo za podrobnosći</string>
+    <string name="screen_clear">Wuprazniś</string>
+    <string name="screen_stop">Wobźěłanje zastajiś</string>
+    <string name="screen_start_convert">Konwertěrowanje startowaś</string>
+
+    <!-- Dialog podrobnosćow statusa -->
+    <string name="screen_status_detail">Podrobnosći statusa</string>
+    <string name="screen_long_press_copy">Dłujke tłocenje na tekst, aby se wubrał a kopěrował</string>
+    <string name="screen_copy">Kopěrowaś</string>
+    <string name="screen_close">Zacyniś</string>
+
+    <!-- Wuběrač albuma -->
+    <string name="screen_back">Slědk</string>
+    <string name="screen_picker_title_select">Live Photos wubraś</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Titulny wobraz albuma schowaś</string>
+    <string name="screen_album_expand_cover">Titulny wobraz albuma wótekšywiś</string>
+    <string name="screen_scanning_progress">Pśepytujo se %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d wobraz</item>
+        <item quantity="two">%1$d wobraza</item>
+        <item quantity="few">%1$d wobraze</item>
+        <item quantity="other">%1$d wobrazow</item>
+    </plurals>
+    <string name="screen_select_all">Wšykne wubraś</string>
+    <string name="screen_no_albums">Žedne albume k dispoziciji</string>
+    <string name="screen_no_media">Žedne Live Photos namakane</string>
+    <string name="screen_no_media_compose">Žedne wobraze abo widea namakane</string>
+    <string name="screen_import">Import</string>
+    <string name="screen_import_count">Import %1$d</string>
+    <string name="screen_import_mixed">Import: wobraz %1$d · wideo %2$d</string>
+    <string name="screen_search">Pytaś</string>
+    <string name="screen_search_collapse">Pytańske pólo schowaś</string>
+    <string name="screen_search_hint">Pó mjenju pytaś</string>
+    <string name="screen_search_clear">Pytańske pólo wuprazniś</string>
+    <string name="screen_sort_date">Datum</string>
+    <string name="screen_sort_size">Wjelikosć</string>
+    <string name="screen_sort_name">Mě</string>
+    <string name="screen_sort_asc">Stupajucy</string>
+    <string name="screen_sort_desc">Spadajucy</string>
+
+    <!-- Datumowe marki za albumowe kupki (placeholderje %1$d atd. su licby, pśi pśełožku móžo se pórěd změniś) -->
+    <string name="screen_date_today">Źinsa</string>
+    <string name="screen_date_yesterday">Cora</string>
+    <string name="screen_date_this_year">%2$d.%1$d.</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

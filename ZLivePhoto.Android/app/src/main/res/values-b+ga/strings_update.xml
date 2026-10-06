@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Irish (ga) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Cuireadh deireadh leis an gcomhroinnt Lanzou Cloud nó níl an comhad ann; bain úsáid as GitHub lena íoslódáil ina ionad</string>
+    <string name="update_lanzou_gone_short">Cuireadh deireadh leis an gcomhroinnt Lanzou Cloud; bain úsáid as GitHub lena íoslódáil ina ionad</string>
+    <string name="update_lanzou_resolve_failed">Theip ar anailís a dhéanamh ar nasc íoslódála Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Teastaíonn cód rochtana ón gcomhroinnt Lanzou Cloud seo; bain úsáid as GitHub lena íoslódáil ina ionad (nó faigh an cód rochtana i nótaí an Release)</string>
+    <string name="update_lanzou_wrong_passwd">Cód rochtana Lanzou Cloud mícheart</string>
+    <string name="update_err_resolve_failed">Theip ar anailís</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Theip ar fhíorú frith-chrapach Lanzou Cloud</string>
+    <string name="update_err_no_frame">Ní féidir leathanach íoslódála Lanzou Cloud a pharsáil (níor aimsíodh an fráma íoslódála)</string>
+    <string name="update_err_no_file_id">Ní féidir aitheantóir comhaid Lanzou Cloud a pharsáil</string>
+    <string name="update_err_no_sign">Ní féidir síniú Lanzou Cloud a pharsáil</string>
+    <string name="update_err_ajax_request">Theip ar iarratas comhéadain</string>
+    <string name="update_err_api_request">Theip ar iarratas comhéadain Lanzou Cloud</string>
+    <string name="update_err_empty_direct">D\'aisfhill Lanzou Cloud seoladh íoslódála folamh</string>
+    <string name="update_err_direct_expired">Tá seoladh íoslódála Lanzou Cloud imithe in éag; faigh é arís</string>
+    <string name="update_err_http_request">Theip ar an iarratas (HTTP %1$d)</string>
+    <string name="update_err_connect">Ní féidir ceangal leis an bhfreastalaí íoslódála: %1$s</string>
+    <string name="update_err_http">Theip ar íoslódáil (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ní féidir nasc íoslódála a bhunú</string>
+    <string name="update_err_empty">Tá ábhar na híoslódála folamh</string>
+    <string name="update_err_incomplete">Íoslódáil neamhiomlán (fuarthas %1$d as %2$d beart san iomlán); íoslódáil arís</string>
+    <string name="update_err_interrupted">Stopadh an íoslódáil go tobann: %1$s</string>
+    <string name="update_err_not_apk">Ní pacáiste suiteála bailí é a fuarthas (b\'fhéidir gur leathanach gréasáin é nó go bhfuil an nasc íoslódála imithe in éag); íoslódáil arís nó bain úsáid as GitHub ina ionad.</string>
+    <string name="update_err_apk_incomplete">Tá ábhar an phacáiste suiteála neamhiomlán; íoslódáil arís nó bain úsáid as GitHub ina ionad.</string>
+    <string name="update_err_apk_unparsable">Ní féidir an pacáiste suiteála a pharsáil (b\'fhéidir gur íoslódáil neamhiomlán í); íoslódáil arís nó bain úsáid as GitHub ina ionad.</string>
+    <string name="update_err_no_install_permission">Níl cead «Suiteáil aipeanna anaithnideacha» faighte fós</string>
+    <string name="update_err_installer_failed">Ní féidir suiteálaí an chórais a thosú (%1$s); oscail an pacáiste suiteála de láimh i mbainisteoir na gcomhad chun é a shuiteáil</string>
+</resources>

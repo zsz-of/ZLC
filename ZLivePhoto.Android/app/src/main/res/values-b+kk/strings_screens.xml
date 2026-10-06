@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Қазақша жолдар.
+  res/values/strings_*.xml (қарапайым қытай тілі — негізгі/қосалқы тіл) файлдарынан аударылды.
+  Барлық кілт базалық нұсқамен сәйкес; %1$s / %1$d толтырғыштары мен escape тізбектері өзгеріссіз қалдырылды.
+-->
+<resources>
+    <string name="screen_app_subtitle">Live Photo форматтарын өзара түрлендіру</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d файл</item>
+        <item quantity="other">%1$d файл</item>
+    </plurals>
+    <string name="screen_settings">Параметрлер</string>
+    <string name="screen_select_output_format">Шығыс форматын таңдау</string>
+    <string name="screen_selected">Таңдалды</string>
+    <string name="screen_vivo_single_warning">⚠ Тым ескі құрылғылар бұл форматты танымауы мүмкін</string>
+    <string name="screen_extract_blocked">⚠ Кезекте құрастыру тапсырмалары бар, бөлшектеуді таңдау мүмкін емес</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (бір файл)</string>
+    <string name="screen_format_vivo">vivo (қос файл)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Бөлшектеу</string>
+    <string name="screen_toolbox">Құралдар жәшігі</string>
+    <string name="screen_batch_import">Топтап импорттау</string>
+    <string name="screen_batch_import_desc">Бүкіл галереяны сканерлеп, Live Photo-ларды топтап анықтау</string>
+    <string name="screen_compose">Live Photo құрастыру</string>
+    <string name="screen_compose_desc">Бір фото мен бір видеоны таңдап, жұптап құрастыру</string>
+    <string name="screen_replace_mode">Ауыстыру режимі</string>
+    <string name="screen_replace_mode_desc">Түрлендіру нәтижесі тікелей бастапқы файлға жазылады, жаңа файл жасалмайды</string>
+    <string name="screen_need_all_files_access_hint">«Барлық файлдарға қатынау» рұқсаты қажет, рұқсат беру үшін басыңыз</string>
+    <string name="screen_agree_and_enable">Келісіп, қосу</string>
+    <string name="screen_empty_no_files">Әзірге файл қосылмаған</string>
+    <string name="screen_view_detail">Мәліметтерді көру</string>
+    <string name="screen_add_files">Файл қосу</string>
+    <string name="screen_output_format">Шығыс форматы: %1$s</string>
+    <string name="screen_delete_original">Өңдеуден кейін түпнұсқаны жою</string>
+    <string name="screen_need_all_files_access_view">«Барлық файлдарға қатынау» рұқсаты қажет, көру үшін басыңыз</string>
+    <string name="screen_clear">Тазалау</string>
+    <string name="screen_stop">Өңдеуді тоқтату</string>
+    <string name="screen_start_convert">Түрлендіруді бастау</string>
+    <string name="screen_status_detail">Күй мәліметтері</string>
+    <string name="screen_long_press_copy">Мәтінді ұзақ басып таңдап, көшіруге болады</string>
+    <string name="screen_copy">Көшіру</string>
+    <string name="screen_close">Жабу</string>
+    <string name="screen_back">Артқа</string>
+    <string name="screen_picker_title_select">Live Photo таңдау</string>
+    <string name="screen_album_count">Галерея %1$d</string>
+    <string name="screen_album_collapse_cover">Галерея мұқабасын жинау</string>
+    <string name="screen_album_expand_cover">Галерея мұқабасын жаю</string>
+    <string name="screen_scanning_progress">Сканерленуде %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d дана</item>
+        <item quantity="other">%1$d дана</item>
+    </plurals>
+    <string name="screen_select_all">Барлығын таңдау</string>
+    <string name="screen_no_albums">Қолжетімді галерея жоқ</string>
+    <string name="screen_no_media">Live Photo табылмады</string>
+    <string name="screen_no_media_compose">Фото немесе видео табылмады</string>
+    <string name="screen_import">Импорттау</string>
+    <string name="screen_import_count">Импорт %1$d</string>
+    <string name="screen_import_mixed">Импорт фото%1$d·видео%2$d</string>
+    <string name="screen_search">Іздеу</string>
+    <string name="screen_search_collapse">Іздеуді жасыру</string>
+    <string name="screen_search_hint">Атауы бойынша іздеу</string>
+    <string name="screen_search_clear">Іздеуді тазалау</string>
+    <string name="screen_sort_date">Күні</string>
+    <string name="screen_sort_size">Өлшемі</string>
+    <string name="screen_sort_name">Атауы</string>
+    <string name="screen_sort_asc">Өсу ретімен</string>
+    <string name="screen_sort_desc">Кему ретімен</string>
+    <string name="screen_date_today">Бүгін</string>
+    <string name="screen_date_yesterday">Кеше</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

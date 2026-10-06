@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Malayalam (ml) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">അജ്ഞാത ടാർഗറ്റ് ഫോർമാറ്റ്: %1$s</string>
+    <string name="conv_unrecognized_live_photo">തിരിച്ചറിയാനാകാത്ത ലൈവ് ഫോട്ടോ ഫോർമാറ്റ് (Google/OPPO/vivo/Xiaomi/Apple ലൈവ് ഫോട്ടോ അല്ല)</string>
+    <string name="conv_cover_photo_missing">കവർ ഫോട്ടോ ഇല്ല അല്ലെങ്കിൽ ശൂന്യമാണ്</string>
+    <string name="conv_video_missing">വീഡിയോ ഇല്ല അല്ലെങ്കിൽ ശൂന്യമാണ്</string>
+    <string name="conv_video_too_large">വീഡിയോ വളരെ വലുതാണ് (%1$dMB); ലൈവ് ഫോട്ടോ ആക്കി സംയോജിപ്പിക്കാനാകില്ല, ദയവായി കൂടുതൽ ചെറിയ വീഡിയോ തിരഞ്ഞെടുക്കുക</string>
+    <string name="conv_transcoded_too_large">ട്രാൻസ്കോഡ് ചെയ്ത ശേഷം വീഡിയോ വളരെ വലുതാണ് (%1$dMB); ലൈവ് ഫോട്ടോ സംയോജിപ്പിക്കാനാകില്ല</string>
+    <string name="conv_video_too_large_compose">വീഡിയോ വളരെ വലുതാണ് (%1$dMB); ലൈവ് ഫോട്ടോ സംയോജിപ്പിക്കാനാകില്ല</string>
+    <string name="conv_cover_heic_go">കവർ ഒരു HEIC ചിത്രമാണ് (ലൈറ്റ് പതിപ്പിൽ ട്രാൻസ്കോഡിംഗ് പിന്തുണയ്ക്കുന്നില്ല; ദയവായി iPhone-ൽ JPEG ആയി എക്സ്പോർട്ട് ചെയ്ത് പിന്നെ പരിവർത്തിക്കുക)</string>
+    <string name="conv_cover_invalid_heic">കവർ സാധുവായ ചിത്രമല്ല (HEIC-ന് സിസ്റ്റത്തിന്റെ HEIF ഡീകോഡിംഗ് പിന്തുണ വേണം)</string>
+    <string name="conv_cover_not_jpeg_go">കവർ JPEG ചിത്രമല്ല (ലൈറ്റ് പതിപ്പിൽ ട്രാൻസ്കോഡിംഗ് പിന്തുണയ്ക്കുന്നില്ല; ദയവായി JPEG ഫോട്ടോ ഉപയോഗിക്കുക)</string>
+    <string name="conv_cover_invalid_image">കവർ സാധുവായ ചിത്രമല്ല (JPEG/WebP/PNG മാത്രം പിന്തുണയ്ക്കുന്നു)</string>
+    <string name="conv_reencode_failed">വീഡിയോ വീണ്ടും എൻകോഡ് ചെയ്യൽ പരാജയപ്പെട്ടു: %1$s</string>
+    <string name="conv_remux_failed">കണ്ടെയ്നർ റീമക്സ് പരാജയപ്പെട്ടു: %1$s</string>
+    <string name="conv_codec_unknown">തിരിച്ചറിയാവുന്ന H.264/H.265 വീഡിയോ അല്ല</string>
+    <string name="conv_codec_is">എൻകോഡിംഗ് %1$s ആണ്</string>
+    <string name="conv_hint_remux_cannot_fix">“%1$s” വീഡിയോ (%2$s); കണ്ടെയ്നർ മാത്രം മാറ്റുന്നത് (റീമക്സ്) എൻകോഡിംഗ് മാറ്റില്ല, ലൈവ് ഫോട്ടോ സംയോജിപ്പിക്കാനാകില്ല.\n\nദയവായി “ക്രമീകരണങ്ങൾ → വീഡിയോ ട്രാൻസ്കോഡിംഗ് → ട്രാൻസ്കോഡ് രീതി”-യിൽ “വീണ്ടും എൻകോഡ് ചെയ്യുക” ആക്കുക, അല്ലെങ്കിൽ മറ്റൊരു ഉപകരണം ഉപയോഗിച്ച് അതിനെ H.264/H.265 എൻകോഡിംഗുള്ള MP4 ആക്കി മാറ്റുക.</string>
+    <string name="conv_hint_no_encoder">വീഡിയോ സ്റ്റാൻഡേർഡ് MP4 കണ്ടെയ്നറല്ല (MOV / MKV / WebM / AVI തുടങ്ങിയവ); നിലവിലെ “ട്രാൻസ്കോഡ് രീതി” വീണ്ടും എൻകോഡ് ചെയ്യുന്നില്ല, ലൈവ് ഫോട്ടോ സംയോജിപ്പിക്കാനാകില്ല.\n\nദയവായി “ക്രമീകരണങ്ങൾ → വീഡിയോ ട്രാൻസ്കോഡിംഗ് → ട്രാൻസ്കോഡ് രീതി”-യിൽ “വീണ്ടും എൻകോഡ് ചെയ്യുക” ആക്കുക (സാധാരണ പതിപ്പിൽ ffmpeg എൻകോഡർ ഉൾപ്പെടുന്നു; Go ലൈറ്റ് പതിപ്പിൽ ട്രാൻസ്കോഡർ ഇല്ല, ദയവായി സാധാരണ പതിപ്പ് ഉപയോഗിക്കുക), അല്ലെങ്കിൽ ആദ്യം വീഡിയോയെ സ്റ്റാൻഡേർഡ് MP4 (H.264/H.265) ആക്കി മാറ്റുക.</string>
+    <string name="conv_log_detected">%1$s ആയി തിരിച്ചറിഞ്ഞു</string>
+    <string name="conv_log_same_format_copied">സ്രോതസ്സിന്റെയും ടാർഗറ്റിന്റെയും ഫോർമാറ്റ് ഒന്നാണ്; അതേപടി കോപ്പി ചെയ്തു (ഗുണനിലവാര നഷ്ടമില്ല)</string>
+    <string name="conv_log_extra_tracks_bypass">സ്രോതസ്സ് വീഡിയോയിൽ ഓഡിയോ/വീഡിയോ ഇതര ട്രാക്കുകൾ ഉണ്ട് (%1$s); അതേ ഫോർമാറ്റ് നേരിട്ടുള്ള പകർത്തൽ ഒഴിവാക്കി, വൃത്തിയാക്കാൻ പൂർണ എഴുത്ത് പ്രക്രിയ ഉപയോഗിക്കുന്നു</string>
+    <string name="conv_log_ts_fallback">സ്രോതസ്സിൽ കവർ ഫ്രെയിം ടൈംസ്റ്റാമ്പ് ഇല്ല; മാനദണ്ഡപ്രകാരം വീഡിയോയുടെ മധ്യബിന്ദു ഉപയോഗിക്കുന്നു</string>
+    <string name="conv_log_brand_normalized">വീഡിയോ കണ്ടെയ്നർ ബ്രാൻഡ് നോർമലൈസ് ചെയ്തു (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">വീഡിയോയിൽ അധിക ട്രാക്കുകൾ ഉണ്ട് (%1$s); ശുദ്ധീകരിക്കാനാകില്ല, അതേപടി ഔട്ട്പുട്ട് ചെയ്തു (ചില ഉപകരണങ്ങളിൽ ഈ ഫലം ദീർഘനേരം അമർത്തി പ്ലേ ചെയ്യാൻ കഴിഞ്ഞേക്കില്ല)</string>
+    <string name="conv_log_extra_tracks_removed">വീഡിയോയിലെ അധിക ട്രാക്കുകൾ നീക്കം ചെയ്തു (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">സ്രോതസ്സ് വീഡിയോ %1$s; കണ്ടെയ്നർ റീമക്സ് മാത്രം കൊണ്ട് ഇത് പരിഹരിക്കാനാകില്ല (%2$s); ഫലം ഇപ്പോഴും ദീർഘനേരം അമർത്തി പ്ലേ ചെയ്യാൻ കഴിയുന്നില്ലെങ്കിൽ, “ക്രമീകരണങ്ങൾ → വീഡിയോ ട്രാൻസ്കോഡിംഗ് → ട്രാൻസ്കോഡ് രീതി”-യിൽ “വീണ്ടും എൻകോഡ് ചെയ്യുക” തിരഞ്ഞെടുക്കുക</string>
+    <string name="conv_log_reencoding">സ്രോതസ്സ് വീഡിയോ %1$s; ആൽബം അനുകൂലത മെച്ചപ്പെടുത്താൻ ക്രമീകരണപ്രകാരം 8bit + AAC ആയി വീണ്ടും എൻകോഡ് ചെയ്യുന്നു</string>
+    <string name="conv_log_reencode_result_unusable">വീണ്ടും എൻകോഡ് ചെയ്ത ഫലം ഉപയോഗയോഗ്യമല്ല; അതേപടി ഔട്ട്പുട്ട് ചെയ്തു (ചില ഉപകരണങ്ങളിൽ ഈ ഫലം ദീർഘനേരം അമർത്തി പ്ലേ ചെയ്യാൻ കഴിഞ്ഞേക്കില്ല)</string>
+    <string name="conv_log_reencode_still_risky">വീണ്ടും എൻകോഡ് ചെയ്ത ശേഷവും അപകടസാധ്യതയുള്ള ഘടകങ്ങൾ നിലനിൽക്കുന്നു (%1$s)</string>
+    <string name="conv_log_reencode_failed">വീണ്ടും എൻകോഡ് ചെയ്യൽ പരാജയപ്പെട്ടു (%1$s); അതേപടി ഔട്ട്പുട്ട് ചെയ്തു (ചില ഉപകരണങ്ങളിൽ ഈ ഫലം ദീർഘനേരം അമർത്തി പ്ലേ ചെയ്യാൻ കഴിഞ്ഞേക്കില്ല)</string>
+    <string name="conv_log_cover_heic_converted">കവർ HEIC ആണ് (JPEG അല്ല); സ്റ്റാൻഡേർഡ് JPEG ആക്കി ട്രാൻസ്കോഡ് ചെയ്ത ശേഷം വീണ്ടും പാക്ക് ചെയ്തു</string>
+    <string name="conv_log_compose_sizes">സംയോജനം: ഫോട്ടോ %1$dB + വീഡിയോ %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ട്രാൻസ്കോഡർ പ്രവർത്തനക്ഷമമാക്കിയിട്ടില്ല: കണ്ടെയ്നർ ബ്രാൻഡ് മാത്രം മാറ്റുന്നു (MOV → MP4), വീണ്ടും എൻകോഡ് ചെയ്യുന്നില്ല</string>
+    <string name="conv_tag_convert">പരിവർത്തനം</string>
+    <string name="conv_tag_transcode">ട്രാൻസ്കോഡ്</string>
+    <string name="conv_tag_compose">സംയോജനം</string>
+    <string name="conv_blocker_no_encoder">അന്തർനിർമിത ട്രാൻസ്കോഡർ ലഭ്യമല്ല</string>
+    <string name="conv_blocker_mode_no_encode">നിലവിലെ “ട്രാൻസ്കോഡ് രീതി” വീണ്ടും എൻകോഡ് ചെയ്യുന്നില്ല</string>
+    <string name="conv_addon_unavailable">അന്തർനിർമിത ട്രാൻസ്കോഡർ ലഭ്യമല്ല</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ട്രാൻസ്കോഡിംഗ് പരാജയപ്പെട്ടു: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg കണ്ടെയ്നർ റീമക്സ് പരാജയപ്പെട്ടു: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg ഉപയോഗിച്ച് വീഡിയോ സ്റ്റാൻഡേർഡ് MP4 ആക്കി ട്രാൻസ്കോഡ് ചെയ്യുന്നു (%1$s / crf %2$d / %3$s; വീഡിയോ, ഓഡിയോ ട്രാക്കുകൾ മാത്രം നിലനിർത്തുന്നു)</string>
+    <string name="conv_log_transcode_done">വീഡിയോ ട്രാൻസ്കോഡിംഗ് പൂർത്തിയായി (%1$dKB)</string>
+    <string name="conv_log_remuxing">വീഡിയോ കണ്ടെയ്നർ സ്റ്റാൻഡേർഡ് MP4 ആക്കി റീമക്സ് ചെയ്യുന്നു (കണ്ടെയ്നർ മാത്രം മാറ്റുന്നു, വീണ്ടും എൻകോഡ് ചെയ്യുന്നില്ല)</string>
+    <string name="conv_log_remux_done">കണ്ടെയ്നർ റീമക്സ് പൂർത്തിയായി (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">സംയോജനം</string>
+    <string name="conv_reminder_cat_convert">പരിവർത്തനം</string>
+    <string name="conv_reminder_cat_update">അപ്ഡേറ്റ്</string>
+    <string name="conv_reminder_video_over3s_title">വീഡിയോ 3 സെക്കൻഡിൽ കൂടുതലാണ്</string>
+    <string name="conv_reminder_video_over3s_message">തിരഞ്ഞെടുത്ത വീഡിയോയുടെ ദൈർഘ്യം 3 സെക്കൻഡിൽ കൂടുതലാണ്; സംയോജിപ്പിച്ച ലൈവ് ഫോട്ടോയിൽ അനുകൂലത പ്രശ്നങ്ങൾ ഉണ്ടാകാം:\n\n• സാധാരണ പോലെ പ്ലേ ചെയ്യാൻ കഴിഞ്ഞേക്കില്ല\n• സിസ്റ്റം ആൽബത്തിന് തിരിച്ചറിയാൻ കഴിഞ്ഞേക്കില്ല\n• ചില ഉപകരണങ്ങളിൽ ഈ ലൈവ് ഫോട്ടോ തിരിച്ചറിയാൻ കഴിഞ്ഞേക്കില്ല</string>
+    <string name="conv_reminder_legacy_go_title">പഴയ പതിപ്പ് കണ്ടെത്തി</string>
+    <string name="conv_reminder_legacy_go_message">ഈ ഉപകരണത്തിൽ ഇപ്പോഴും പഴയ പതിപ്പ് (Go പതിപ്പ്) ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്തിട്ടുണ്ട്; ആ പഴയ പതിപ്പ് ഈ ഉപകരണത്തിൽ ഇനി പ്രവർത്തിക്കില്ല, സ്ഥലം ഒഴിവാക്കാൻ അൺഇൻസ്റ്റാൾ ചെയ്യാം.</string>
+    <string name="conv_reminder_replace_risk_title">റീപ്ലേസ് മോഡിന് കേടുപാട് അപകടസാധ്യതയുണ്ട്</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">റീപ്ലേസ് മോഡ് പരിവർത്തന ഫലം നേരിട്ട് ഒറിജിനൽ ഫയലിൽ എഴുതുന്നു; ഒറിജിനൽ ഫയൽ ഓവർറൈറ്റ് ചെയ്താൽ അത് തിരികെ കിട്ടില്ല.\n\n• എഴുതുന്ന സമയത്ത് ആപ്പ് നിർത്തിവയ്ക്കപ്പെട്ടാലോ സ്റ്റോറേജ് സ്ഥലം കുറഞ്ഞാലോ അനുമതി പിൻവലിക്കപ്പെട്ടാലോ സ്രോതസ്സ് ഫയൽ കേടാകാം\n• പരിവർത്തനം എപ്പോഴും പൂർണ വിജയം ഉറപ്പ് നൽകുന്നില്ല; പരാജയപ്പെട്ടാൽ സ്രോതസ്സ് ഫയൽ ഇതിനകം ഉപയോഗശൂന്യമായിരിക്കാം\n• ആദ്യം ഒന്നോ രണ്ടോ ഫയൽ ഉപയോഗിച്ച് പരീക്ഷിച്ച്, പ്രശ്നമില്ലെന്ന് ഉറപ്പാക്കിയ ശേഷം മാത്രം ബാച്ച് ആയി ചെയ്യുക എന്നതാണ് നിർദ്ദേശം\n• പ്രധാന ഫോട്ടോകൾ ആദ്യം സ്വയം ബാക്കപ്പ് ചെയ്യുക\n\nഈ ഫീച്ചർ “അതുള്ളതുപോലെ” ആണ് നൽകിയിരിക്കുന്നത്; ഉപയോഗത്തിലെ അപകടസാധ്യത നിങ്ങൾ തന്നെ വഹിക്കുന്നു, ഫയൽ കേടാകുന്നതിനോ നഷ്ടപ്പെടുന്നതിനോ രചയിതാവ് ഉത്തരവാദിയല്ല.</string>
+    <string name="conv_reminder_dont_remind">വീണ്ടും കാണിക്കരുത്</string>
+    <string name="conv_reminder_confirm_ok">മനസ്സിലായി</string>
+    <string name="conv_reminder_uninstall">അൺഇൻസ്റ്റാൾ</string>
+</resources>

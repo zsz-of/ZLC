@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Breton (br) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Nullet eo bet rannañ Lanzou pe n\'eus ket ar restr; implijit GitHub evit pellgargañ</string>
+    <string name="update_lanzou_gone_short">Nullet eo bet rannañ Lanzou; implijit GitHub evit pellgargañ</string>
+    <string name="update_lanzou_resolve_failed">C\'hwitet eo dielfennañ al liamm pellgargañ Lanzou</string>
+    <string name="update_lanzou_need_passwd">Ezhomm a zo d\'ar rann Lanzou-mañ eus ur c\'hod tennañ; implijit GitHub evit pellgargañ (pe klaskit ar c\'hod tennañ e notennoù ar Release)</string>
+    <string name="update_lanzou_wrong_passwd">Kod tennañ Lanzou fall</string>
+    <string name="update_err_resolve_failed">C\'hwitet an dielfennañ</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">C\'hwitet gwiriadur-enep-loeier Lanzou</string>
+    <string name="update_err_no_frame">Ne c\'haller ket dielfennañ pajenn bellgargañ Lanzou (framm bellgargañ ebet kavet)</string>
+    <string name="update_err_no_file_id">Ne c\'haller ket dielfennañ anaouder-restr Lanzou</string>
+    <string name="update_err_no_sign">Ne c\'haller ket dielfennañ sinaadur Lanzou</string>
+    <string name="update_err_ajax_request">C\'hwitet ar goulenn etrefas</string>
+    <string name="update_err_api_request">C\'hwitet goulenn etrefas Lanzou</string>
+    <string name="update_err_empty_direct">Distroet ez eus gant Lanzou ur liamm bellgargañ goullo</string>
+    <string name="update_err_direct_expired">Ket talvoudek ken eo liamm bellgargañ Lanzou, adtapit anezhañ</string>
+    <string name="update_err_http_request">C\'hwitet ar goulenn (HTTP %1$d)</string>
+    <string name="update_err_connect">Ne c\'haller ket kevreañ gant ar servijer bellgargañ: %1$s</string>
+    <string name="update_err_http">C\'hwitet ar bellgargañ (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ne c\'haller ket sevel ur c\'hevre bellgargañ</string>
+    <string name="update_err_empty">Goullo eo endalc\'had ar bellgargañ</string>
+    <string name="update_err_incomplete">Diechu eo ar bellgargañ (%1$d / %2$d bit bennaket), adbellgargit</string>
+    <string name="update_err_interrupted">Paouezet eo bet ar bellgargañ: %1$s</string>
+    <string name="update_err_not_apk">N\'eo ket ur pakad staliañ talvoudek ar pezh zo pellgarget (marteze ur bajenn web pe eo koll talvoudegezh al liamm bellgargañ), adbellgargit pe implijit GitHub.</string>
+    <string name="update_err_apk_incomplete">Diechu eo endalc\'had ar pakad staliañ; adbellgargit pe implijit GitHub.</string>
+    <string name="update_err_apk_unparsable">Ne c\'haller ket dielfennañ ar pakad staliañ (marteze ez eo diechu ar bellgargañ); adbellgargit pe implijit GitHub.</string>
+    <string name="update_err_no_install_permission">N\'eo ket bet tapet an aotre «Staliañ arloadoù dianav» c\'hoazh</string>
+    <string name="update_err_installer_failed">Ne c\'haller ket galv staliour ar reizhiad (%1$s); digorit ar pakad staliañ gant an dorn e merour ar restroù evit e staliañ</string>
+</resources>

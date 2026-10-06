@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Basque (eu) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou partekatzea bertan behera utzi da edo fitxategia ez da existitzen; deskargatu GitHub-etik</string>
+    <string name="update_lanzou_gone_short">Lanzou partekatzea bertan behera utzi da; deskargatu GitHub-etik</string>
+    <string name="update_lanzou_resolve_failed">Ezin izan da Lanzou deskarga-esteka analizatu</string>
+    <string name="update_lanzou_need_passwd">Lanzou partekatze honek eskuratzeko kodea behar du; deskargatu GitHub-etik (edo bilatu eskuratzeko kodea Release oharretan)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou eskuratzeko kodea okerra da</string>
+    <string name="update_err_resolve_failed">Ezin izan da analizatu</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou anti-crawler egiaztapenak huts egin du</string>
+    <string name="update_err_no_frame">Ezin izan da Lanzou deskarga-orria analizatu (ez da deskarga-fotogramarik aurkitu)</string>
+    <string name="update_err_no_file_id">Ezin izan da Lanzou fitxategi-identifikatzailea analizatu</string>
+    <string name="update_err_no_sign">Ezin izan da Lanzou sinadura analizatu</string>
+    <string name="update_err_ajax_request">Interfaze-eskaerak huts egin du</string>
+    <string name="update_err_api_request">Lanzou interfaze-eskaerak huts egin du</string>
+    <string name="update_err_empty_direct">Lanzou-k deskarga-helbide hutsa itzuli du</string>
+    <string name="update_err_direct_expired">Lanzou deskarga-helbidea iraungi da; eskuratu berriro</string>
+    <string name="update_err_http_request">Eskaerak huts egin du (HTTP %1$d)</string>
+    <string name="update_err_connect">Ezin izan da deskarga-zerbitzariarekin konektatu: %1$s</string>
+    <string name="update_err_http">Deskargak huts egin du (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ezin izan da deskarga-konexioa ezarri</string>
+    <string name="update_err_empty">Deskargatutako edukia hutsik dago</string>
+    <string name="update_err_incomplete">Deskarga osatu gabe dago (%1$d / guztira %2$d byte); deskargatu berriro</string>
+    <string name="update_err_interrupted">Deskarga etenda: %1$s</string>
+    <string name="update_err_not_apk">Deskargatutakoa ez da baliozko instalazio-pakete bat (agian web orri bat da edo deskarga-estekak iraungi du); deskargatu berriro edo erabili GitHub.</string>
+    <string name="update_err_apk_incomplete">Instalazio-paketearen edukia osatu gabe dago; deskargatu berriro edo erabili GitHub.</string>
+    <string name="update_err_apk_unparsable">Ezin izan da instalazio-paketea analizatu (agian deskarga osatu gabe dago); deskargatu berriro edo erabili GitHub.</string>
+    <string name="update_err_no_install_permission">"Aplikazio ezezagunak instalatzea" baimena oraindik ez da lortu</string>
+    <string name="update_err_installer_failed">Ezin izan da sistema-instalatzailea deitu (%1$s); ireki eskuz instalazio-paketea fitxategi-kudeatzailean</string>
+</resources>

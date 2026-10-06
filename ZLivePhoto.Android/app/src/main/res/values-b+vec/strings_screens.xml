@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Venetian (vec) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="screen_app_subtitle">Conversion intra i formati de foto dinamiche</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d file</item>
+        <item quantity="other">%1$d file</item>
+    </plurals>
+    <string name="screen_settings">Inpostassion</string>
+    <string name="screen_select_output_format">Serne el formato de uscita</string>
+    <string name="screen_selected">Selessionà</string>
+    <string name="screen_vivo_single_warning">⚠ Su modèi masa veci sto formato el se pol miga riconóser</string>
+    <string name="screen_extract_blocked">⚠ In coa ghe xe robe da conponer: no se pol serne el modo estrazion</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (un file)</string>
+    <string name="screen_format_vivo">vivo (do file)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Estrazion</string>
+    <string name="screen_toolbox">Caixa dei strumenti</string>
+    <string name="screen_batch_import">Importa in bloco</string>
+    <string name="screen_batch_import_desc">Scansiona tuta ła galeria e riconose łe foto dinamiche in bloco</string>
+    <string name="screen_compose">Conponer łe foto dinamiche</string>
+    <string name="screen_compose_desc">Serne na foto e un video e conponili insieme</string>
+    <string name="screen_replace_mode">Modo sostituission</string>
+    <string name="screen_replace_mode_desc">El risultato de ła conversion el vien scrivùo diretamente so el file orixinale, sensa crear file novi</string>
+    <string name="screen_need_all_files_access_hint">El ghe vol el parmesso «Aceso a tuti i file»: struca chì par concèderlo</string>
+    <string name="screen_agree_and_enable">Aceto e ativa</string>
+    <string name="screen_empty_no_files">Ancora nissun file xontà</string>
+    <string name="screen_view_detail">Varda i detaji</string>
+    <string name="screen_add_files">Zonta file</string>
+    <string name="screen_output_format">Formato de uscita: %1$s</string>
+    <string name="screen_delete_original">Descançela l’orixinale quando che l’è finìo</string>
+    <string name="screen_need_all_files_access_view">El ghe vol el parmesso «Aceso a tuti i file»: struca par vardare</string>
+    <string name="screen_clear">Neta</string>
+    <string name="screen_stop">Ferma ła laorasion</string>
+    <string name="screen_start_convert">Scumissia ła conversion</string>
+    <string name="screen_status_detail">Detaji del stato</string>
+    <string name="screen_long_press_copy">Struca a longh so el testo par selessionarlo e copiarlo</string>
+    <string name="screen_copy">Copia</string>
+    <string name="screen_close">Sara</string>
+    <string name="screen_back">Indrìo</string>
+    <string name="screen_picker_title_select">Serne łe foto dinamiche</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Scondi ła copertina de l’album</string>
+    <string name="screen_album_expand_cover">Mostra ła copertina de l’album</string>
+    <string name="screen_scanning_progress">So drio scansionar %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d foto</item>
+    </plurals>
+    <string name="screen_select_all">Selessiona tuti</string>
+    <string name="screen_no_albums">Nissun album disponibile</string>
+    <string name="screen_no_media">No se ga catà foto dinamiche</string>
+    <string name="screen_no_media_compose">No se ga catà foto o video</string>
+    <string name="screen_import">Importa</string>
+    <string name="screen_import_count">Importa %1$d</string>
+    <string name="screen_import_mixed">Importa foto %1$d · video %2$d</string>
+    <string name="screen_search">Serca</string>
+    <string name="screen_search_collapse">Scondi ła serca</string>
+    <string name="screen_search_hint">Serca par nome</string>
+    <string name="screen_search_clear">Neta ła serca</string>
+    <string name="screen_sort_date">Data</string>
+    <string name="screen_sort_size">Dimension</string>
+    <string name="screen_sort_name">Nome</string>
+    <string name="screen_sort_asc">Cresente</string>
+    <string name="screen_sort_desc">Descrecente</string>
+    <string name="screen_date_today">Ancuò</string>
+    <string name="screen_date_yesterday">Gheri</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

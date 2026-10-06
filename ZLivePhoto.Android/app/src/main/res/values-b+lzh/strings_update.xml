@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Classical Chinese (lzh) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">藍奏雲分享已罷或檔不在，請改由 GitHub 下載</string>
+    <string name="update_lanzou_gone_short">藍奏雲分享已罷，請改由 GitHub 下載</string>
+    <string name="update_lanzou_resolve_failed">藍奏雲下載之鏈解析不成</string>
+    <string name="update_lanzou_need_passwd">此藍奏雲分享需提取碼，請改由 GitHub 下載（或於 Release 之說覓提取碼）</string>
+    <string name="update_lanzou_wrong_passwd">藍奏雲提取碼誤</string>
+    <string name="update_err_resolve_failed">解析不成</string>
+    <string name="update_err_resolve_with_host">%1$s（%2$s）</string>
+    <string name="update_err_anticrawl">藍奏雲防爬之驗不成</string>
+    <string name="update_err_no_frame">不能解析藍奏雲下載之頁（未見下載之幀）</string>
+    <string name="update_err_no_file_id">不能解析藍奏雲檔之標識</string>
+    <string name="update_err_no_sign">不能解析藍奏雲之簽</string>
+    <string name="update_err_ajax_request">介面之請不成</string>
+    <string name="update_err_api_request">藍奏雲介面之請不成</string>
+    <string name="update_err_empty_direct">藍奏雲所返下載之址為空</string>
+    <string name="update_err_direct_expired">藍奏雲下載之址已失效，請復取</string>
+    <string name="update_err_http_request">請不成（HTTP %1$d）</string>
+    <string name="update_err_connect">不能連下載之伺服器：%1$s</string>
+    <string name="update_err_http">下載不成（HTTP %1$d）</string>
+    <string name="update_err_no_connection">不能立下載之連</string>
+    <string name="update_err_empty">所下者空</string>
+    <string name="update_err_incomplete">下載未全（已得 %1$d / 共 %2$d 位元組），請復下</string>
+    <string name="update_err_interrupted">下載中輟：%1$s</string>
+    <string name="update_err_not_apk">所下者非有效之安裝包（或為網頁，或鏈已失效），請復下或改由 GitHub 下之。</string>
+    <string name="update_err_apk_incomplete">安裝包之內未全，請復下或改由 GitHub 下之。</string>
+    <string name="update_err_apk_unparsable">安裝包不能解析（或下載未全），請復下或改由 GitHub 下之。</string>
+    <string name="update_err_no_install_permission">尚未得「安裝未知程式」之權</string>
+    <string name="update_err_installer_failed">不能起系統安裝器（%1$s），請於檔案管理器手開安裝包以裝</string>
+</resources>

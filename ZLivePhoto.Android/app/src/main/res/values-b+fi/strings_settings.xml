@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Suomenkieliset merkkijonot (fi).
+  Käännetty tiedostoista res/values/strings_*.xml (yksinkertaistettu kiina, varakieliasetus).
+  Jokainen avain vastaa perustiedostoa; paikkamerkit (%1$s / %1$d) ja koodaussekvenssit on säilytetty ennallaan.
+-->
+<resources>
+
+    <!-- Yleiset -->
+    <string name="settings_title">Asetukset</string>
+    <string name="settings_cd_back">Takaisin</string>
+    <string name="settings_btn_apply">Käytä</string>
+    <string name="settings_btn_cancel">Peruuta</string>
+    <string name="settings_btn_close">Sulje</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Tue</string>
+
+    <!-- Osioiden otsikot -->
+    <string name="settings_section_general">Yleiset</string>
+    <string name="settings_section_appearance">Ulkoasu</string>
+    <string name="settings_section_language">Kieli</string>
+    <string name="settings_section_defaults">Oletusasetukset</string>
+    <string name="settings_section_output">Tuloste</string>
+    <string name="settings_section_transcode">Videon transkoodaus</string>
+    <string name="settings_section_about">Tietoja</string>
+    <string name="settings_section_app">Sovellus</string>
+    <string name="settings_section_credits">Kiitokset ja tuki</string>
+    <string name="settings_section_opensource">Avoin lähdekoodi ja lisenssit</string>
+
+    <!-- Yleiset -->
+    <string name="settings_startup_check_title">Tarkista päivitykset käynnistyksessä</string>
+    <string name="settings_startup_check_subtitle">Hae uudet versiot automaattisesti GitHubista käynnistyksen yhteydessä ja ehdota latausta, kun päivitys on saatavilla</string>
+    <string name="settings_haptics_title">Värinäpalaute</string>
+    <string name="settings_haptics_subtitle">Tuntopalaute painikkeiden painalluksista ja tilan muutoksista</string>
+    <string name="settings_bounce_title">Painikkeiden ponnahdusanimointi</string>
+    <string name="settings_bounce_subtitle">Painikkeen skaalautuva ponnahdusanimointi painettaessa</string>
+
+    <!-- Ulkoasu -->
+    <string name="settings_theme_system">Noudata järjestelmää</string>
+    <string name="settings_theme_dark">Tumma</string>
+    <string name="settings_theme_light">Vaalea</string>
+    <string name="settings_dynamic_theme_title">Material You -dynaamiset värit</string>
+    <string name="settings_dynamic_theme_subtitle">Noudata järjestelmän taustakuvan väriä (Android 12+); kun pois päältä, käytetään alla olevia valmiita teemavärejä</string>
+    <string name="settings_preset_colors_title">Valmiit teemavärit</string>
+    <string name="settings_preset_current">Nykyinen: %1$s</string>
+    <string name="settings_preset_disabled_hint">Valittavissa, kun ”Material You -dynaamiset värit” on pois päältä</string>
+    <string name="settings_custom">Mukautettu</string>
+    <string name="settings_custom_color_title">Mukautettu teemaväri</string>
+    <string name="settings_cd_custom_palette">Mukautettu väripaletti</string>
+    <string name="settings_hue_value">Sävy %1$d°</string>
+
+    <!-- Sovelluksen kieli: otsikko ja ”Noudata järjestelmää” käyttävät Leadin ylläpitämiä strings_app.xml-avaimia
+         (R.string.app_language_title / R.string.app_language_follow_system), joten niitä ei määritetä tässä uudelleen -->
+    <string name="settings_language_dialog_title">Valitse sovelluksen kieli</string>
+    <string name="settings_language_count">%1$d kieltä yhteensä</string>
+
+    <!-- Oletusasetukset -->
+    <string name="settings_reminder_dialogs_title">”Älä näytä uudelleen” -valintaikkunat</string>
+    <string name="settings_reminder_dialogs_subtitle">Hallitse kaikkien ”Älä näytä uudelleen” -valintaikkunoiden kytkimiä</string>
+    <string name="settings_reminder_hint">Kun kytkin on päällä, kehotetta ei näytetä uudelleen; kun se on pois päältä, kehote näytetään taas, kun vastaava tilanne tulee seuraavan kerran.</string>
+
+    <!-- Tuloste -->
+    <string name="settings_preserve_folders_title">Tulosta lähdekansion rakenteen mukaan</string>
+    <string name="settings_preserve_folders_subtitle">Tulokset tallennetaan alkuperäisten albumien nimisiin alikansioihin; kun pois päältä, kaikki laitetaan samaan kansioon</string>
+
+    <!-- Tietoja -->
+    <string name="settings_about_title">Tietoja</string>
+    <string name="settings_about_subtitle">Versio · Tarkista päivitykset · Kiitokset ja tuki</string>
+    <string name="settings_check_update_title">Tarkista päivitykset</string>
+    <string name="settings_check_update_subtitle">Hae uusin versio GitHub Releases -sivulta</string>
+    <string name="settings_checking">Tarkistetaan…</string>
+    <string name="settings_update_available">v%1$s saatavilla</string>
+    <string name="settings_up_to_date">Käytössäsi on uusin versio</string>
+    <string name="settings_network_error">Verkkovirhe; yritä myöhemmin uudelleen</string>
+    <string name="settings_reinstall_title">Asenna tämä versio uudelleen</string>
+    <string name="settings_reinstall_subtitle">Lataa nykyinen uusin versio ja asenna se tämän päälle (päivitysten testausta varten)</string>
+    <string name="settings_reinstall_newer_hint">Päivitys versioon v%1$s on saatavilla; päivitä ensin ”Tarkista päivitykset” -toiminnolla</string>
+    <string name="settings_version_title">Versio</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Tue Alipaylla</string>
+    <string name="settings_alipay_subtitle">Tue kehitystä</string>
+    <string name="settings_coolapk_subtitle">Coolapk-käyttäjä · kiitos tuesta</string>
+    <string name="settings_ai_credits_subtitle">Kiitos AI-kehitysympäristöille ja AI-malleille avusta kehityksessä</string>
+    <string name="settings_github_title">GitHub-varasto</string>
+    <string name="settings_license_title">Avoimen lähdekoodin lisenssi</string>
+    <string name="settings_sponsor_dialog_title">Kiitos tuestasi</string>
+    <string name="settings_sponsor_dialog_text">Kiitos todella paljon siitä, että olet valmis tukemaan tätä sovellusta!\n\nJos olet vielä opiskelija tai taloutesi ei ole vielä itsenäinen, älä ihmeessä tuhlaa rahaa — pidä tämä hyvä aikomus sydämessäsi ja jatka sovelluksen käyttöä; se on minulle paras tuki.\n\nJos haluat tukea, pienikin summa on tärkeä, ja käytän sen sovelluksen parempaan ylläpitoon ja ominaisuuksiin:)</string>
+    <string name="settings_alipay_missing_title">Alipayta ei ole asennettu</string>
+    <string name="settings_alipay_missing_text">Alipayta ei havaittu, joten tukea ei voi juuri nyt viimeistellä.\n\nEi se mitään — kiitos joka tapauksessa hyvästä aikomuksestasi!</string>
+
+    <!-- Videon transkoodaus -->
+    <string name="settings_transcoder_title">Sisäänrakennettu transkooderi</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Uudelleenkoodaus</string>
+    <string name="settings_transcode_mode_remux">Vain säiliön uudelleenpakkaaminen (suositeltu)</string>
+    <string name="settings_transcode_mode_off">Älä käytä transkooderia lainkaan</string>
+    <string name="settings_transcode_params_title">Transkoodausparametrit</string>
+    <string name="settings_transcode_params_subtitle">Uudelleenkoodauksessa käytettävät laatu- ja pakkausparametrit</string>
+    <string name="settings_transcode_params_disabled">Vaikuttaa vain, kun ”Transkoodaustapa” on ”Uudelleenkoodaus”</string>
+    <string name="settings_crf_value">Laatu CRF: %1$d</string>
+    <string name="settings_crf_hint">Pienempi arvo tarkoittaa parempaa laatua ja suurempaa kokoa (oletus 18)</string>
+    <string name="settings_encoder_title">Kooderi</string>
+    <string name="settings_compress_preset_title">Pakkausprofiili</string>
+
+</resources>

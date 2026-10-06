@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Tutlayt taqbaylit (kab).
+  Yettwasuqel seg res/values/strings_*.xml (asnulfu s usebter n tsusnawt, tutlayt n umagrad).
+  Iswiyen ttwamṣadan d umagrad; imetteg (%1$s / %1$d) d yimeslayen n uɣtu qqimen am akken.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- Aferdis “ḍfer anagraw” deg ufran n tutlayt n usnas -->
+    <string name="app_language_follow_system">Ḍfer anagraw</string>
+    <!-- Azwel n ufran n tutlayt -->
+    <string name="app_language_title">Tutlayt n usnas</string>
+</resources>

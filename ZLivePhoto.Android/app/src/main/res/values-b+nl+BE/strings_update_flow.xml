@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Nederlands (België) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Belgisch-Nederlandse variant met eigen woordkeuze ("toestemming", "Klaar", "Leegmaken").
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: A.
+-->
+<resources>
+    <!-- Meldingen van de controller (buiten de Composable zonder Context, via context.getString) -->
+    <string name="update_github_url_missing">Kon het downloadadres van GitHub niet ophalen. Probeer het later opnieuw.</string>
+    <string name="update_flavor_standard">Standaardversie</string>
+    <string name="update_flavor_go">Go-versie</string>
+    <string name="update_lanzou_url_missing">Deze versie biedt geen Lanzou-downloadlink. Je kunt GitHub gebruiken.</string>
+    <string name="update_apk_direct_missing">Deze versie biedt geen directe link naar het bijpassende pakket. Kies het juiste APK op de releasepagina van GitHub.</string>
+    <string name="update_install_permission_missing">Zonder de toestemming "onbekende apps installeren" kan niet automatisch worden geïnstalleerd. Sta dit toe in de systeeminstellingen en probeer het opnieuw.</string>
+    <string name="update_error_unknown">Onbekende fout</string>
+    <string name="update_fail_lanzou">Downloaden via Lanzou mislukt</string>
+    <string name="update_fail_github">Downloaden via GitHub mislukt</string>
+    <string name="update_lanzou_resolving">Lanzou-downloadlink wordt verwerkt…</string>
+    <string name="update_lanzou_downloading">Downloaden via Lanzou…</string>
+    <string name="update_github_downloading">Downloaden via GitHub…</string>
+    <string name="update_unzipping">Installatiepakket wordt uitgepakt…</string>
+    <string name="update_notes_empty">Deze versie heeft geen updatenotities.</string>
+
+    <!-- Dialoogvensters voor de Go-versie -->
+    <string name="update_use_normal_title">Gebruik de normale versie</string>
+    <string name="update_use_normal_body">Dit toestel draait Android 10 of hoger; de lichte Go-versie wordt niet meer ondersteund en de oude versie kan niet meer worden gebruikt.\n\nWe hebben gedetecteerd dat de normale versie (ZLC) al is geïnstalleerd. Open de normale versie om verder te gaan (nieuwe versies bieden de compatibele Go-versie niet meer aan; je kunt de oude versie verwijderen om ruimte vrij te maken).</string>
+    <string name="update_open_normal">Normale versie openen</string>
+    <string name="update_must_update_title">Je moet bijwerken om verder te gaan</string>
+    <string name="update_forced_body">Dit toestel draait Android 10 of hoger; de lichte Go-versie wordt niet meer ondersteund en de oude versie kan niet meer worden gebruikt; nieuwe versies bieden de compatibele Go-versie ook niet meer aan.\n\nMaak verbinding met internet en tik op "Opnieuw proberen" om het pakket van de normale versie op te halen.</string>
+    <string name="update_retry">Opnieuw proberen</string>
+    <string name="update_switch_normal_body">Dit toestel draait Android 10 of hoger; de lichte Go-versie wordt niet meer ondersteund en de oude versie kan niet meer worden gebruikt.\nDownload en installeer de normale versie om verder te gaan (nieuwe versies bieden de compatibele Go-versie niet meer aan).</string>
+
+    <!-- Downloaden / installatietoestemming / resultaatmeldingen -->
+    <string name="update_downloading_title">Update downloaden</string>
+    <string name="update_cancel">Annuleren</string>
+    <string name="update_need_permission_title">Installatietoestemming nodig</string>
+    <string name="update_need_permission_body">Voor het installeren van de nieuwe versie is de systeemtoestemming "onbekende apps installeren" nodig.\n\nTik op "Autoriseren", sta het toe in de instellingen en keer terug naar de app: de installatie gaat automatisch verder (zonder opnieuw te downloaden).</string>
+    <string name="update_grant">Autoriseren</string>
+    <string name="update_notice_title">Melding</string>
+    <string name="update_got_it">Begrepen</string>
+
+    <!-- Hoofddialoog / updatenotities -->
+    <string name="update_notes_title">v%1$s · Updatenotities</string>
+    <string name="update_back">Terug</string>
+    <string name="update_title_switch_normal">Overschakelen naar de normale versie</string>
+    <string name="update_title_reinstall">Deze versie opnieuw installeren</string>
+    <string name="update_title_new_version">Nieuwe versie beschikbaar</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">We downloaden en installeren deze versie opnieuw (ter vervanging van de huidige app).\nDeze functie dient om het updatemechanisme te testen.</string>
+    <string name="update_view_notes">Updatenotities bekijken</string>
+    <string name="update_lanzou_unavailable">Lanzou is momenteel niet beschikbaar</string>
+    <string name="update_download_lanzou">Downloaden via Lanzou</string>
+    <string name="update_download_github">Downloaden via GitHub</string>
+    <string name="update_download_browser">Downloaden via de browser</string>
+    <string name="update_later">Later bijwerken</string>
+    <string name="update_later_switch">Later overschakelen</string>
+    <string name="update_skip_version">Deze versie overslaan</string>
+</resources>

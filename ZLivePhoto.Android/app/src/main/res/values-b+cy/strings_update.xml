@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Welsh (cy) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Mae\'r rhaniad Lanzou Cloud wedi\'i ddiddymu neu nid yw\'r ffeil yn bodoli; defnyddiwch GitHub i lawrlwytho yn ei le</string>
+    <string name="update_lanzou_gone_short">Mae\'r rhaniad Lanzou Cloud wedi\'i ddiddymu; defnyddiwch GitHub i lawrlwytho yn ei le</string>
+    <string name="update_lanzou_resolve_failed">Wedi methu dadansoddi dolen lawrlwytho Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Mae angen cod mynediad ar y rhaniad Lanzou Cloud hwn; defnyddiwch GitHub i lawrlwytho yn ei le (neu chwiliwch am y cod mynediad yn nodiadau\'r Release)</string>
+    <string name="update_lanzou_wrong_passwd">Cod mynediad Lanzou Cloud anghywir</string>
+    <string name="update_err_resolve_failed">Wedi methu dadansoddi</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Wedi methu gwirio gwrth-gribo Lanzou Cloud</string>
+    <string name="update_err_no_frame">Ni ellir dadansoddi tudalen lawrlwytho Lanzou Cloud (ni chanfuwyd y ffrâm lawrlwytho)</string>
+    <string name="update_err_no_file_id">Ni ellir dadansoddi dynodwr ffeil Lanzou Cloud</string>
+    <string name="update_err_no_sign">Ni ellir dadansoddi llofnod Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Wedi methu cais rhyngwyneb</string>
+    <string name="update_err_api_request">Wedi methu cais rhyngwyneb Lanzou Cloud</string>
+    <string name="update_err_empty_direct">Dychwelodd Lanzou Cloud gyfeiriad lawrlwytho gwag</string>
+    <string name="update_err_direct_expired">Mae\'r cyfeiriad lawrlwytho Lanzou Cloud wedi dod i ben; ceisiwch amdano eto</string>
+    <string name="update_err_http_request">Wedi methu cais (HTTP %1$d)</string>
+    <string name="update_err_connect">Ni ellir cysylltu â\'r gweinydd lawrlwytho: %1$s</string>
+    <string name="update_err_http">Wedi methu lawrlwytho (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ni ellir sefydlu cysylltiad lawrlwytho</string>
+    <string name="update_err_empty">Mae\'r cynnwys lawrlwytho yn wag</string>
+    <string name="update_err_incomplete">Lawrlwytho anghyflawn (derbynwyd %1$d o\'r %2$d beit i gyd); lawrlwythwch eto</string>
+    <string name="update_err_interrupted">Torrodd y lawrlwytho: %1$s</string>
+    <string name="update_err_not_apk">Nid yw\'r hyn a lawrlwythwyd yn becyn gosod dilys (efallai mai tudalen we yw hi, neu mae\'r ddolen lawrlwytho wedi dod i ben); lawrlwythwch eto neu defnyddiwch GitHub yn ei le.</string>
+    <string name="update_err_apk_incomplete">Mae cynnwys y becyn gosod yn anghyflawn; lawrlwythwch eto neu defnyddiwch GitHub yn ei le.</string>
+    <string name="update_err_apk_unparsable">Ni ellir dadansoddi\'r becyn gosod (efallai bod y lawrlwytho\'n anghyflawn); lawrlwythwch eto neu defnyddiwch GitHub yn ei le.</string>
+    <string name="update_err_no_install_permission">Nid yw caniatâd «Gosod apiau anhysbys» wedi\'i gael eto</string>
+    <string name="update_err_installer_failed">Ni ellir cychwyn gosodydd y system (%1$s); agorwch y becyn gosod â llaw yn y rheolwr ffeiliau i\'w osod</string>
+</resources>

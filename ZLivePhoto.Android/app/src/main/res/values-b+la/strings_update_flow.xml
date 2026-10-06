@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · lingua Latina.
+  Textus processus renovationis (task-4) — respondent ui/UpdateFlow.kt.
+  Fasciculus separatus; praefixum clavis update_. res/values/ est lingua Sinica subsidiaria.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- Nuntia lateris moderatoris (extra Composable'ia sine Context, omnia per context.getString) -->
+    <string name="update_github_url_missing">Locus descensionis GitHub non obtentus est; quaeso postea rursus tenta.</string>
+    <string name="update_flavor_standard">Editio normalis</string>
+    <string name="update_flavor_go">Editio Go</string>
+    <string name="update_lanzou_url_missing">Haec versio nexum descensionis Lanzou Cloud non praebet; GitHub adhibere potes.</string>
+    <string name="update_apk_direct_missing">Haec versio nexum directum fasciculi installationis cum hac versione congruentem non praebet; quaeso in pagina editionum GitHub APK respondens elige.</string>
+    <string name="update_install_permission_missing">Permissio „installationis applicationum ignotarum“ non concessa est, ergo installatio automatica fieri non potest. Quaeso in optionibus systematis permitte et rursus tenta.</string>
+    <string name="update_error_unknown">Error ignotus</string>
+    <string name="update_fail_lanzou">Descensio Lanzou Cloud defecit</string>
+    <string name="update_fail_github">Descensio GitHub defecit</string>
+    <string name="update_lanzou_resolving">Nexus descensionis Lanzou Cloud resolvitur…</string>
+    <string name="update_lanzou_downloading">De Lanzou Cloud descenditur…</string>
+    <string name="update_github_downloading">De GitHub descenditur…</string>
+    <string name="update_unzipping">Fasciculus installationis explicatur…</string>
+    <string name="update_notes_empty">Haec versio notas renovationis non habet.</string>
+
+    <!-- Dialogi ad editionem Go pertinentes -->
+    <string name="update_use_normal_title">Quaeso utere editione normali</string>
+    <string name="update_use_normal_body">Systema huius machinae est Android 10 vel superius, editio levis Go iam non sustinetur, et versio vetus iam adhiberi non potest.\n\nEditio normalis (ZLC) in hac machina iam installata est; quaeso eam aperi et perge (nova editio versionem cum Go congruentem iam non praebet; versio vetus deleri potest ut spatium liberes).</string>
+    <string name="update_open_normal">Aperi editionem normalem</string>
+    <string name="update_must_update_title">Renovare debes ut pergere possis</string>
+    <string name="update_forced_body">Systema huius machinae est Android 10 vel superius, editio levis Go iam non sustinetur, et versio vetus iam adhiberi non potest; nova editio etiam versionem cum Go congruentem non praebet.\n\nQuaeso reti coniunge et preme „Rursus tenta“ ut fasciculum installationis editionis normalis petas.</string>
+    <string name="update_retry">Rursus tenta</string>
+    <string name="update_switch_normal_body">Systema huius machinae est Android 10 vel superius, editio levis Go iam non sustinetur, et versio vetus iam adhiberi non potest.\nQuaeso editionem normalem descende et installa ut pergas (nova editio versionem cum Go congruentem iam non praebet).</string>
+
+    <!-- Nuntia descensionis / permissionis installationis / eventus -->
+    <string name="update_downloading_title">Descende renovationem</string>
+    <string name="update_cancel">Abroga</string>
+    <string name="update_need_permission_title">Permissio installationis necessaria est</string>
+    <string name="update_need_permission_body">Installatio novae versionis permissionem systematis „installationis applicationum ignotarum“ requirit.\n\nPreme „Concede“, in optionibus permitte et ad applicationem revertere; installatio tum automatice perget (nec rursus descendere necesse est).</string>
+    <string name="update_grant">Concede</string>
+    <string name="update_notice_title">Monitum</string>
+    <string name="update_got_it">Intellexi</string>
+
+    <!-- Dialogus principalis / notae renovationis -->
+    <string name="update_notes_title">v%1$s · Notae renovationis</string>
+    <string name="update_back">Revertere</string>
+    <string name="update_title_switch_normal">Transi ad editionem normalem</string>
+    <string name="update_title_reinstall">Hanc versionem rursus installa</string>
+    <string name="update_title_new_version">Nova versio inventa</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Hoc versionem hanc descendet et rursus installabit (applicationem praesentem superscribens).\nHoc munus ad mechanismum renovationis probandum adhibetur.</string>
+    <string name="update_view_notes">Vide notas renovationis</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud ad tempus non praesto est</string>
+    <string name="update_download_lanzou">Descende de Lanzou Cloud</string>
+    <string name="update_download_github">Descende de GitHub</string>
+    <string name="update_download_browser">Descende de navigatro</string>
+    <string name="update_later">Renova postea</string>
+    <string name="update_later_switch">Transi postea</string>
+    <string name="update_skip_version">Omitte hanc versionem</string>
+</resources>

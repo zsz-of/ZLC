@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Valencian (val) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">No s’ha obtingut cap adreça de baixada de GitHub; torna-ho a provar més tard.</string>
+    <string name="update_flavor_standard">Edició estàndard</string>
+    <string name="update_flavor_go">Edició Go</string>
+    <string name="update_lanzou_url_missing">Esta versió no oferix cap enllaç de baixada de Lanzou; pots fer servir GitHub.</string>
+    <string name="update_apk_direct_missing">Esta versió no oferix cap enllaç directe de baixada del paquet d’instal·lació corresponent; tria l’APK adequat a la pàgina de Releases de GitHub.</string>
+    <string name="update_install_permission_missing">No s’ha concedit el permís d’«instal·lació d’aplicacions desconegudes» i no es pot instal·lar automàticament. Permet-ho a la configuració del sistema i torna-ho a provar.</string>
+    <string name="update_error_unknown">Error desconegut</string>
+    <string name="update_fail_lanzou">La baixada de Lanzou ha fallat</string>
+    <string name="update_fail_github">La baixada de GitHub ha fallat</string>
+    <string name="update_lanzou_resolving">S’està resolent l’enllaç de baixada de Lanzou…</string>
+    <string name="update_lanzou_downloading">S’està baixant des de Lanzou…</string>
+    <string name="update_github_downloading">S’està baixant des de GitHub…</string>
+    <string name="update_unzipping">S’està descomprimint el paquet d’instal·lació…</string>
+    <string name="update_notes_empty">Esta versió encara no té notes.</string>
+    <string name="update_use_normal_title">Fes servir l’edició estàndard</string>
+    <string name="update_use_normal_body">Este dispositiu té Android 10 o superior i l’edició lleugera Go ja no està adaptada; la versió antiga no es pot seguir fent servir.
+
+S’ha detectat que este dispositiu ja té instal·lada l’edició estàndard (ZLC): obr-la directament per a continuar (les versions noves ja no inclouen cap versió compatible amb Go; la versió antiga es pot desinstal·lar per a alliberar espai).</string>
+    <string name="update_open_normal">Obrir l’edició estàndard</string>
+    <string name="update_must_update_title">Cal actualitzar abans de continuar</string>
+    <string name="update_forced_body">Este dispositiu té Android 10 o superior i l’edició lleugera Go ja no està adaptada; la versió antiga no es pot seguir fent servir, i les versions noves ja no inclouen cap versió compatible amb Go.
+
+Connecta’t a la xarxa i prem «Tornar-ho a provar» per a obtindre el paquet d’instal·lació de l’edició estàndard.</string>
+    <string name="update_retry">Tornar-ho a provar</string>
+    <string name="update_switch_normal_body">Este dispositiu té Android 10 o superior i l’edició lleugera Go ja no està adaptada; la versió antiga no es pot seguir fent servir.
+Baixa i instal·la l’edició estàndard per a continuar (les versions noves ja no inclouen cap versió compatible amb Go).</string>
+    <string name="update_downloading_title">Baixada de l’actualització</string>
+    <string name="update_cancel">Cancel·lar</string>
+    <string name="update_need_permission_title">Cal permís d’instal·lació</string>
+    <string name="update_need_permission_body">Per a instal·lar la versió nova cal el permís del sistema d’«instal·lació d’aplicacions desconegudes».
+
+Prem «Concedir accés», permet-ho a la configuració i torna a l’aplicació; la instal·lació continuarà automàticament (no cal tornar a baixar).</string>
+    <string name="update_grant">Concedir accés</string>
+    <string name="update_notice_title">Avís</string>
+    <string name="update_got_it">Entés</string>
+    <string name="update_notes_title">v%1$s · Notes de la versió</string>
+    <string name="update_back">Tornar</string>
+    <string name="update_title_switch_normal">Canviar a l’edició estàndard</string>
+    <string name="update_title_reinstall">Reinstal·lar esta versió</string>
+    <string name="update_title_new_version">Hi ha una versió nova</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Es baixarà i reinstal·larà esta versió (a sobre de l’aplicació actual).
+Esta funció serveix per a provar el mecanisme d’actualització.</string>
+    <string name="update_view_notes">Mostra les notes de la versió</string>
+    <string name="update_lanzou_unavailable">Lanzou no està disponible ara mateix</string>
+    <string name="update_download_lanzou">Baixar des de Lanzou</string>
+    <string name="update_download_github">Baixar des de GitHub</string>
+    <string name="update_download_browser">Baixar des del navegador</string>
+    <string name="update_later">Actualitzar més tard</string>
+    <string name="update_later_switch">Canviar més tard</string>
+    <string name="update_skip_version">Omet esta versió</string>
+</resources>

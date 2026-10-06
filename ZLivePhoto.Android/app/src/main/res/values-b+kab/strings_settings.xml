@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Tutlayt taqbaylit (kab).
+  Yettwasuqel seg res/values/strings_*.xml (asnulfu s usebter n tsusnawt, tutlayt n umagrad).
+  Iswiyen ttwamṣadan d umagrad; imetteg (%1$s / %1$d) d yimeslayen n uɣtu qqimen am akken.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- Amatu -->
+    <string name="settings_title">Iɣewwaren</string>
+    <string name="settings_cd_back">Uɣal</string>
+    <string name="settings_btn_apply">Apliki</string>
+    <string name="settings_btn_cancel">Sefsex</string>
+    <string name="settings_btn_close">Mdel</string>
+    <string name="settings_btn_ok">Waxxa</string>
+    <string name="settings_btn_sponsor">Mudd</string>
+
+    <!-- Izwilen n igrawen -->
+    <string name="settings_section_general">Amussnaw</string>
+    <string name="settings_section_appearance">Tmuɣli</string>
+    <string name="settings_section_language">Tutlayt</string>
+    <string name="settings_section_defaults">Tixtiṛiyin tizwarin</string>
+    <string name="settings_section_output">Asuffeɣ</string>
+    <string name="settings_section_transcode">Atranskud n tividyutin</string>
+    <string name="settings_section_about">Ɣef</string>
+    <string name="settings_section_app">Asnas</string>
+    <string name="settings_section_credits">Tanemmirt d tallelt</string>
+    <string name="settings_section_opensource">Aɣbalu yeldin d lisans</string>
+
+    <!-- Amatu -->
+    <string name="settings_startup_check_title">Senqed ileqman ɣef tazwara</string>
+    <string name="settings_startup_check_subtitle">Awi ileqman imaynuten seg GitHub ɣef tazwara, syen sseqsi asider mi yella uleqqem</string>
+    <string name="settings_haptics_title">Arjij n tqeffalin</string>
+    <string name="settings_haptics_subtitle">Arjij ɣef usiti n tqeffalin d ubeddel n waddad</string>
+    <string name="settings_bounce_title">Tanila n buns n tqeffalin</string>
+    <string name="settings_bounce_subtitle">Tanila n usemẓi d ubuns mi tettwasit tqeffalt</string>
+
+    <!-- Tmuɣli -->
+    <string name="settings_theme_system">Ḍfer anagraw</string>
+    <string name="settings_theme_dark">Aberkan</string>
+    <string name="settings_theme_light">Amellal</string>
+    <string name="settings_dynamic_theme_title">Ini udyinamik n Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Ḍfer ini n ugilal n unagraw (Android 12+); mi yettwasefsex, ttwasqedcen initen n tema yettwasersen deg wadda</string>
+    <string name="settings_preset_colors_title">Initen n tema yettwasersen</string>
+    <string name="settings_preset_current">Tura: %1$s</string>
+    <string name="settings_preset_disabled_hint">Sefsex «Ini udyinamik n Material You» akken ad tferneḍ</string>
+    <string name="settings_custom">Kustum</string>
+    <string name="settings_custom_color_title">Ini n tema kustum</string>
+    <string name="settings_cd_custom_palette">Tafelwit n initen kustum</string>
+    <string name="settings_hue_value">Ini %1$d°</string>
+
+    <!-- Tutlayt n usnas: azwel d «Ḍfer anagraw» ttwasqedcen seg strings_app.xml -->
+    <string name="settings_language_dialog_title">Fren tutlayt n usnas</string>
+    <string name="settings_language_count">%1$d tutlayin</string>
+
+    <!-- Tixtiṛiyin tizwarin -->
+    <string name="settings_reminder_dialogs_title">Isfuyla «Ur mmal ara tikelt-nniḍen»</string>
+    <string name="settings_reminder_dialogs_subtitle">Sefrek imseddayen n meṛṛa isfuyla «Ur mmal ara tikelt-nniḍen»</string>
+    <string name="settings_reminder_hint">Mi yeddu umsedday, asfaylu-nni ur d-yettban ara tikelt-nniḍen; mi yettwasefsex, asfaylu ad d-yeffeɣ tikelt-nniḍen mi d-yekka waddad-nni.</string>
+
+    <!-- Asuffeɣ -->
+    <string name="settings_preserve_folders_title">Suffeɣ ɣef wudem n yikaramen n tɣawsa</string>
+    <string name="settings_preserve_folders_subtitle">Iigmaḍ ttwaḥerzen deg yikaramen s yisem n yalbumen n tazwara; mi yettwasefsex, akk ttwasersen deg yiwen ukaram</string>
+
+    <!-- Ɣef -->
+    <string name="settings_about_title">Ɣef</string>
+    <string name="settings_about_subtitle">Lqem · Senqed ileqman · Tanemmirt d tallelt</string>
+    <string name="settings_check_update_title">Senqed ileqman</string>
+    <string name="settings_check_update_subtitle">Awi lqem aneggaru seg GitHub Releases</string>
+    <string name="settings_checking">Yettwasenqad…</string>
+    <string name="settings_update_available">v%1$s yella</string>
+    <string name="settings_up_to_date">Aql-ek ɣef lqem aneggaru</string>
+    <string name="settings_network_error">Tuccḍa n uẓeṭṭa; ɛreḍ tikelt-nniḍen</string>
+    <string name="settings_reinstall_title">Sers tikelt-nniḍen lqem-a</string>
+    <string name="settings_reinstall_subtitle">Sider asnulfu aneggaru n tura syen sers-it ɣef uwa (i usenqed n yileqman)</string>
+    <string name="settings_reinstall_newer_hint">v%1$s yella; seqdec «Senqed ileqman» zdat i uleqqem</string>
+    <string name="settings_version_title">Lqem</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Mudd s Alipay</string>
+    <string name="settings_alipay_subtitle">Mudd tallelt i tneflit</string>
+    <string name="settings_coolapk_subtitle">Aseqdac n Coolapk · tanemmirt ɣef tallelt</string>
+    <string name="settings_ai_credits_subtitle">Tanemmirt i AI IDE d yimudaren AI i d-yefkan tallelt deg tneflit</string>
+    <string name="settings_github_title">Aɣbalu n GitHub</string>
+    <string name="settings_license_title">Lisans n uɣbalu yeldin</string>
+    <string name="settings_sponsor_dialog_title">Tanemmirt ɣef tallelt-ik</string>
+    <string name="settings_sponsor_dialog_text">Tanemmirt-ik aṭas ɣef lebɣi-ik ad tɛiwneḍ asnas-a!\n\nMa mazal-ik d anelmad, neɣ ma mazal ur tesεiḍ ara tudert n yidrimen, ma tɛjjed ur tesexṣeḍ ara idrimen — ḥrez lebɣi-a deg wul-ik, syen kemmel aseqdec n usnas-a, d netta i d tallelt tameqqrant aṭas i yi.\n\nMa tebɣiḍ ad tmuddeḍ, ula d cwiṭ yessaweḍ, syen ad t-tesqedceɣ i uḥraz ɣer zdat d tmahilin:)</string>
+    <string name="settings_alipay_missing_title">Alipay ur yers ara</string>
+    <string name="settings_alipay_missing_text">Alipay ur yettwaf ara, ihi tallelt ur tezmir ara ad tettwaka tura.\n\nIhi — ɣas akken, tanemmirt-ik aṭas ɣef lebɣi-ik amiḍan!</string>
+
+    <!-- Atranskud n tividyutin -->
+    <string name="settings_transcoder_title">Atranskudar agejdan</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Rekudi</string>
+    <string name="settings_transcode_mode_remux">Remuks n wakaram kan (yettwafren)</string>
+    <string name="settings_transcode_mode_off">Ur sseqdec ara atranskudar</string>
+    <string name="settings_transcode_params_title">Isekkilen n utranskud</string>
+    <string name="settings_transcode_params_subtitle">Isekkilen n taɣara d ukumpresyun i yettwasqedcen deg urekudi</string>
+    <string name="settings_transcode_params_disabled">Yetteddu kan mi «Amezruy n utranskud» yettwafren «Rekudi»</string>
+    <string name="settings_crf_value">Taɣara CRF: %1$d</string>
+    <string name="settings_crf_hint">Tiqmat tmeẓẓiyen d taɣara tameqqrant d ifula imeqqranen (tazwara 18)</string>
+    <string name="settings_encoder_title">Akudik</string>
+    <string name="settings_compress_preset_title">Preset n ukumpresyun</string>
+
+</resources>

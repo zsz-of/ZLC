@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Hawaiian (haw) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Ua hoʻōki ʻia ka kaʻana Lanzou a ʻaʻole paha ka waihona; e hoʻoiho mai GitHub</string>
+    <string name="update_lanzou_gone_short">Ua hoʻōki ʻia ka kaʻana Lanzou; e hoʻoiho mai GitHub</string>
+    <string name="update_lanzou_resolve_failed">Hewa ka hoʻonohonoho ʻana i ka loulou hoʻoiho Lanzou</string>
+    <string name="update_lanzou_need_passwd">Pono ka huaʻōlelo hūnā no kēia kaʻana Lanzou; e hoʻoiho mai GitHub (a i ʻole ʻimi i ka huaʻōlelo hūnā ma nā manaʻo hou o Release)</string>
+    <string name="update_lanzou_wrong_passwd">Hewa ka huaʻōlelo hūnā Lanzou</string>
+    <string name="update_err_resolve_failed">Hewa ka hoʻonohonoho ʻana</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Hewa ka hoʻāʻo ʻana i ka pale ʻimi Lanzou</string>
+    <string name="update_err_no_frame">ʻAʻole hiki ke hoʻonohonoho i ka ʻaoʻao hoʻoiho Lanzou (ʻaʻole loaʻa ka frame hoʻoiho)</string>
+    <string name="update_err_no_file_id">ʻAʻole hiki ke hoʻonohonoho i ka inoa waihona Lanzou</string>
+    <string name="update_err_no_sign">ʻAʻole hiki ke hoʻonohonoho i ka hōʻailona Lanzou</string>
+    <string name="update_err_ajax_request">Hewa ke kāhea API</string>
+    <string name="update_err_api_request">Hewa ke kāhea API Lanzou</string>
+    <string name="update_err_empty_direct">Ua hoʻi mai ka Lanzou me ka loulou hoʻoiho hakahaka</string>
+    <string name="update_err_direct_expired">Ua pau ka manawa o ka loulou hoʻoiho Lanzou; e loaʻa hou</string>
+    <string name="update_err_http_request">Hewa ke kāhea (HTTP %1$d)</string>
+    <string name="update_err_connect">ʻAʻole hiki ke pili i ka kikowaena hoʻoiho: %1$s</string>
+    <string name="update_err_http">Hewa ka hoʻoiho ʻana (HTTP %1$d)</string>
+    <string name="update_err_no_connection">ʻAʻole hiki ke hoʻomaka i ka pili hoʻoiho</string>
+    <string name="update_err_empty">Hakahaka ka mea i hoʻoiho ʻia</string>
+    <string name="update_err_incomplete">ʻAʻole piha ka hoʻoiho ʻana (loaʻa %1$d / holoʻokoʻa %2$d byte); e hoʻoiho hou</string>
+    <string name="update_err_interrupted">Hoʻōki ʻia ka hoʻoiho ʻana: %1$s</string>
+    <string name="update_err_not_apk">ʻAʻole pāhu hoʻouka kūpono ka mea i hoʻoiho ʻia (hiki he ʻaoʻao pūnaewele a ua make paha ka loulou hoʻoiho); e hoʻoiho hou a i ʻole e hoʻoiho mai GitHub.</string>
+    <string name="update_err_apk_incomplete">ʻAʻole piha ka ʻike o loko o ka pāhu hoʻouka; e hoʻoiho hou a i ʻole e hoʻoiho mai GitHub.</string>
+    <string name="update_err_apk_unparsable">ʻAʻole hiki ke hoʻonohonoho i ka pāhu hoʻouka (hiki ʻaʻole piha ka hoʻoiho ʻana); e hoʻoiho hou a i ʻole e hoʻoiho mai GitHub.</string>
+    <string name="update_err_no_install_permission">ʻAʻole i loaʻa ka ʻae „Hoʻouka polokalamu ʻike ʻole ʻia“</string>
+    <string name="update_err_installer_failed">ʻAʻole hiki ke hoʻomaka i ka mea hoʻouka ʻōnaehana (%1$s); e wehe lima i ka pāhu hoʻouka ma ka mea hoʻokele waihona</string>
+</resources>

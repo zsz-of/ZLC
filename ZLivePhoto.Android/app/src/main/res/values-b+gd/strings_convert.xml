@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Scottish Gaelic (gd) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Fòrmat-cèin neo-aithnichte: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Fòrmat Live Photo neo-aithnichte (chan e Live Photo Google/OPPO/vivo/Xiaomi/Apple a th\' ann)</string>
+    <string name="conv_cover_photo_missing">Chan eil an dealbh-còmhdach ann no tha e falamh</string>
+    <string name="conv_video_missing">Chan eil an video ann no tha e falamh</string>
+    <string name="conv_video_too_large">Tha an video ro mhòr (%1$d MB), chan urrainn a chòmhdach mar Live Photo; tagh video nas giorra</string>
+    <string name="conv_transcoded_too_large">Às dèidh tionndadh-còd tha an video ro mhòr (%1$d MB), chan urrainn a chòmhdach mar Live Photo</string>
+    <string name="conv_video_too_large_compose">Tha an video ro mhòr (%1$d MB), chan urrainn a chòmhdach mar Live Photo</string>
+    <string name="conv_cover_heic_go">Is e dealbh HEIC a th\' anns a\' chòmhdach (chan eil an tionndadh aotrom a\' tionndadh-còd a chur an gnìomh; às-dèidh aon phasgan dhen iPhone, tionndaidh e thairis air sin airson a thionndadh)</string>
+    <string name="conv_cover_invalid_heic">Chan e dealbh dligheach a th\' anns a\' chòmhdach (bidh HEIC feumach air taic HEIF-deocachaidh bhon t-siostam)</string>
+    <string name="conv_cover_not_jpeg_go">Chan e dealbh JPEG a th\' anns a\' chòmhdach (chan eil an tionndadh aotrom a\' tionndadh-còd a chur an gnìomh; cleachd dealbh JPEG)</string>
+    <string name="conv_cover_invalid_image">Chan e dealbh dligheach a th\' anns a\' chòmhdach (a-mhàin JPEG/WebP/PNG a chuir air dòigh)</string>
+    <string name="conv_reencode_failed">Dh\'fhàillig ath-chòdachadh a\' video: %1$s</string>
+    <string name="conv_remux_failed">Dh\'fhàillig ath-phacadh a\' shoithich: %1$s</string>
+    <string name="conv_codec_unknown">Chan e video H.264/H.265 a ghabhas aithneachadh</string>
+    <string name="conv_codec_is">Is e %1$s a th\' anns a\' chòdachadh</string>
+    <string name="conv_hint_remux_cannot_fix">Tha video "%1$s" %2$s; chan atharraich atharrachadh a\' shoithich (ath-phacadh) aonar an còdachadh, cha ghabh a chòmhdach mar Live Photo.
+
+Atharraich gu "Ath-chòdachadh" ann an "Roghainnean → Tionndadh-còd video → Dòigh tionndaidh-còd", no tionndaidh an-toiseach le inneal eile gu MP4 le còdachadh H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Chan e soithich MP4 àbhaisteach a th\' anns a\' video (MOV / MKV / WebM / AVI msaa.), agus chan ath-chòdaich an "Dòigh tionndaidh-còd" làithreach, cha ghabh a chòmhdach mar Live Photo.
+
+Atharraich gu "Ath-chòdachadh" ann an "Roghainnean → Tionndadh-còd video → Dòigh tionndaidh-còd" (tha inneal-còdaidh ffmpeg na bhroinn an tionndadh àbhaistich; chan eil inneal-tionndaidh-còd anns an tionndadh aotrom Go, cleachd an tionndadh àbhaistich), no tionndaidh a\' video an-toiseach gu MP4 àbhaisteach (H.264/H.265).</string>
+    <string name="conv_log_detected">Air aithneachadh mar %1$s</string>
+    <string name="conv_log_same_format_copied">Tha fòrmat an tùis agus an chrìche co-ionann; chaidh a leth-bhreac gun atharrachadh (gun chaill)</string>
+    <string name="conv_log_extra_tracks_bypass">Tha tracaichean anns a\' video thùsail nach eil audio/video (%1$s); chaidh dol thairis air an dòigh dhireach leis an aon fhòrmat, chaidh an dòigh sgrìobhaidh shlàn a chleachdadh airson glanadh</string>
+    <string name="conv_log_ts_fallback">Chan eil stamp-ama a\' fhotofrèim còmhdach anns an tùs; air a thilleadh gu meadhan a\' video a rèir riaghailt</string>
+    <string name="conv_log_brand_normalized">Air branda a\' shoithich video àbhaisteachadh (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Tha tracaichean a bharrachd anns a\' video (%1$s), cha ghabh glanadh; air a chur a-mach gun atharrachadh (dh\'fhaoidte nach gabh am bathar-bog seo a chluich le brùthadh fada air cuid de ghoireasan)</string>
+    <string name="conv_log_extra_tracks_removed">Chaidh tracaichean a bharrachd a\' video a thoirt air falbh (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Video thùsail%1$s; chan urrainn ath-phacadh a\' shoithich aonar a rèiteachadh (%2$s), ma dh\'fhaoidte nach gabh am bathar a chluich le brùthadh fada, tagh "Ath-chòdachadh" ann an "Roghainnean → Tionndadh-còd video → Dòigh tionndaidh-còd"</string>
+    <string name="conv_log_reencoding">Video thùsail%1$s; air ath-chòdachadh mar 8bit + AAC a rèir roghainnean airson co-chòrdadh an albaim adhartachadh</string>
+    <string name="conv_log_reencode_result_unusable">Chan eil toradh an ath-chòdachaidh freagarrach; air a chur a-mach gun atharrachadh (dh\'fhaoidte nach gabh a chluich le brùthadh fada air cuid de ghoireasan)</string>
+    <string name="conv_log_reencode_still_risky">Às dèidh ath-chòdachaidh tha nithean cunnartach fhathast ann (%1$s)</string>
+    <string name="conv_log_reencode_failed">Dh\'fhàillig ath-chòdachadh (%1$s); air a chur a-mach gun atharrachadh (dh\'fhaoidte nach gabh a chluich le brùthadh fada air cuid de ghoireasan)</string>
+    <string name="conv_log_cover_heic_converted">Is e HEIC a th\' anns a\' chòmhdach (chan e JPEG); air tionndadh gu JPEG àbhaisteach an uair sin air a phacadh</string>
+    <string name="conv_log_compose_sizes">Co-chur: dealbh %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Chan eil an inneal-tionndaidh-còd air a chur an gnìomh: chan eil ach branda a\' shoithich air atharrachadh (MOV → MP4), gun ath-chòdachadh</string>
+    <string name="conv_tag_convert">Tionndadh</string>
+    <string name="conv_tag_transcode">Tionndadh-còd</string>
+    <string name="conv_tag_compose">Co-chur</string>
+    <string name="conv_blocker_no_encoder">Chan eil an inneal-tionndaidh-còd na bhroinn ri làimh</string>
+    <string name="conv_blocker_mode_no_encode">Chan ath-chòdaich an "Dòigh tionndaidh-còd" làithreach</string>
+    <string name="conv_addon_unavailable">Chan eil an inneal-tionndaidh-còd na bhroinn ri làimh</string>
+    <string name="conv_addon_transcode_failed">Dh\'fhàillig tionndadh-còd ffmpeg: %1$s</string>
+    <string name="conv_addon_remux_failed">Dh\'fhàillig ath-phacadh a\' shoithich le ffmpeg: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">A\' tionndadh-còd a\' video gu MP4 àbhaisteach le ffmpeg (%1$s / crf %2$d / %3$s; a-mhàin tracaichean video agus audio a chumail)</string>
+    <string name="conv_log_transcode_done">Thionndadh-còd a\' video crìochnaichte (%1$d KB)</string>
+    <string name="conv_log_remuxing">A\' ath-phacadh soithich a\' video gu MP4 àbhaisteach (a-mhàin an soithich atharrachadh, gun ath-chòdachadh)</string>
+    <string name="conv_log_remux_done">Ath-phacadh a\' shoithich crìochnaichte (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Co-chur</string>
+    <string name="conv_reminder_cat_convert">Tionndadh</string>
+    <string name="conv_reminder_cat_update">Ùrachadh</string>
+    <string name="conv_reminder_video_over3s_title">Video nas fhaide na 3 diogan</string>
+    <string name="conv_reminder_video_over3s_message">Tha fad a\' video a thagh thu nas fhaide na 3 diogan; dh\'fhaoidte gum bi duilgheadasan co-chòrdachd air a\' Live Photo air a chòmhdach:
+
+• Dh\'fhaoidte nach gabh a chluich mar bu chòir
+• Dh\'fhaoidte nach aithnich an t-albam siostam e
+• Air cuid de ghoireasan dh\'fhaoidte nach aithnich iad an Live Photo seo</string>
+    <string name="conv_reminder_legacy_go_title">Tionndadh seann-nós air a lorg</string>
+    <string name="conv_reminder_legacy_go_message">Tha an tionndadh às ùr (Go) air a stàladh fhathast air an uidheam seo; chan urrainn an tionndadh seo a chleachdadh air an uidheam seo tuilleadh, gabh e air falbh airson àite a shaoradh.</string>
+    <string name="conv_reminder_replace_risk_title">Cunnart millidh anns a\' mhodh ion-mhalairt</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Sgrìobhaidh am modh ion-mhalairt toradh an tionndaidh gu dìreach air ais dhan fhaidhle thùsail; às dèidh a bhith air a sgrìobhadh thairis, cha ghabh an fhaidhle thùsail ath-fhàighinn.
+
+• Ma thèid an aplacaid a stad rè sgrìobhaidh, ma bhios an t-àite stòraidh gairbreach no ma thèid cead air a tharraing air ais, dh\'fhaoidte gum bi an fhaidhle thùsail crioptaichte
+• Chan urrainn dhan tionndadh fhèin soirbheachas a bharrachadh anns gach càs; ma dh\'fhàillig e, dh\'fhaoidte gum bi an fhaidhle thùsail mu thràth neo-ghnàthach
+• Mholar feuchainn an-toiseach le aon no dhà fhaidhle, agus leantainn ann am poca àrda a-mhàin nuair a bhiothas a h-uile càil ag obair
+· Dèan glèidheadh fhèin de dhealbhan cudromach an-toiseach
+
+Thèid am bun-glèus seo a tabhann "mar a tha e"; tha an cunnart a tha thu a\' gabhail ort fhèin, agus chan eil an ùghdar bu chòir dha son millidh no caill fhaidhlichean.</string>
+    <string name="conv_reminder_dont_remind">Na cuir an cèill tuilleadh</string>
+    <string name="conv_reminder_confirm_ok">Ceart gu leòr</string>
+    <string name="conv_reminder_uninstall">Dhì-stàlaich</string>
+</resources>

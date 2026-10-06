@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Kernewek (Cornish) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">Ny veu URL iskarga GitHub kevys; assay arta diwettha.</string>
+    <string name="update_flavor_standard">Versyon standart</string>
+    <string name="update_flavor_go">Versyon Go</string>
+    <string name="update_lanzou_url_missing">An versyon ma ny brov gevren iskarga Lanzou Cloud; yllir devnydhya GitHub yn y le.</string>
+    <string name="update_apk_direct_missing">An versyon ma ny brov gevren fardel dhe-ystynn yw keskoweth dha versyon; dewis an APK gwiw war folen dyllansow GitHub.</string>
+    <string name="update_install_permission_missing">Kummyas «installya appow anaswon» na veu grontys, ytho ny yllir installya yn awtomatik. Gront y yn settyansow an system ha assay arta.</string>
+    <string name="update_error_unknown">Gwall anaswon</string>
+    <string name="update_fail_lanzou">Iskarga Lanzou Cloud a fyllyas</string>
+    <string name="update_fail_github">Iskarga GitHub a fyllyas</string>
+    <string name="update_lanzou_resolving">Ow dielvenna gevren iskarga Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Owth iskarga dhyworth Lanzou Cloud…</string>
+    <string name="update_github_downloading">Owth iskarga dhyworth GitHub…</string>
+    <string name="update_unzipping">Owth ygori an fardel…</string>
+    <string name="update_notes_empty">An versyon ma ny brov notyansow dyllans.</string>
+    <string name="update_use_normal_title">Devnydh an versyon standart</string>
+    <string name="update_use_normal_body">An devis ma a brov Android 10 po diwettha, ha ny yllir skoodhya an versyon skav Go namoy; ny yllir devnydhya an versyon koth namoy.\n\nAn versyon standart (ZLC) yw seulabrys installs war an devis ma — y ygori ha pesya ena (ny wra dyllansow nowyth komprehendya drehevyans kescoweth Go namoy; yllir dhyarnhe an versyon koth dhe livra spas).</string>
+    <string name="update_open_normal">Ygori an versyon standart</string>
+    <string name="update_must_update_title">Res yw nowedhi kyns bos pesys</string>
+    <string name="update_forced_body">An devis ma a brov Android 10 po diwettha, ha ny yllir skoodhya an versyon skav Go namoy; ny yllir devnydhya an versyon koth namoy, ha ny wra dyllansow nowyth komprehendya drehevyans kescoweth Go naneyl.\n\nJunya dhe an kesrosweyth ha gwaska «Assay arta» dhe gavoes fardel an versyon standart.</string>
+    <string name="update_retry">Assay arta</string>
+    <string name="update_switch_normal_body">An devis ma a brov Android 10 po diwettha, ha ny yllir skoodhya an versyon skav Go namoy; ny yllir devnydhya an versyon koth namoy.\nIskarga ha installya an versyon standart dhe besya (ny wra dyllansow nowyth komprehendya drehevyans kescoweth Go namoy).</string>
+    <string name="update_downloading_title">Iskarga nowedhyans</string>
+    <string name="update_cancel">Hedhi</string>
+    <string name="update_need_permission_title">Kummyas installya a gynner</string>
+    <string name="update_need_permission_body">Installya an versyon nowyth a gynner kummyas «installya appow anaswon» a an system.\n\nGwaska «Grontya», gront y yn settyansow ha dehweles dhe an app; ena an iskarga a wra pesya yn awtomatik (ny res iskarga arta).</string>
+    <string name="update_grant">Grontya</string>
+    <string name="update_notice_title">Avishyans</string>
+    <string name="update_got_it">Konvedhys</string>
+    <string name="update_notes_title">v%1$s · Notyansow dyllans</string>
+    <string name="update_back">A-dhelergh</string>
+    <string name="update_title_switch_normal">Chanjya dhe an versyon standart</string>
+    <string name="update_title_reinstall">Installya arta an versyon ma</string>
+    <string name="update_title_new_version">Versyon nowyth kavadow</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Hemm a wra iskarga ha dasinstallya an versyon ma (ow gorwul an app a-lemmyn).\nAn kentres ma a vydh devnydhys dhe brevi an jynn-nowedhi dre regressyans.</string>
+    <string name="update_view_notes">Gweles notyansow dyllans</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud anhedhys dres-termyn</string>
+    <string name="update_download_lanzou">Iskarga dhyworth Lanzou Cloud</string>
+    <string name="update_download_github">Iskarga dhyworth GitHub</string>
+    <string name="update_download_browser">Iskarga dhyworth an peurel</string>
+    <string name="update_later">Nowedhi diwettha</string>
+    <string name="update_later_switch">Chanjya diwettha</string>
+    <string name="update_skip_version">Gwarn dres an versyon ma</string>
+</resources>

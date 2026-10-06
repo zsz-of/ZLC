@@ -1,8 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 本文件为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-     ii（彝语 / 凉山彝文）属低资源语种：本文件未做实质性翻译（无可靠词表，拒绝臆造彝文），
-     仅保留品牌/产品专名（按规范不翻译），其余 key 缺失将回落中文。 -->
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+     ii（彝语 / 凉山彝文 / Nuosu）属低资源语种（分级 C）：本轮无可靠彝文词表，为避免臆造彝文，
+     暂以简体中文基准文本作为兜底值填充全部 key，保证 404/404 覆盖；品牌专名与纯格式串保持原样。
+     待母语者审校后再替换为彝文正文。 -->
 <resources>
     <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">拆解</string>
     <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">荣耀动态照片</string>
+    <string name="fmt_meizu">魅族动态照片</string>
+    <string name="fmt_nubia">努比亚动态照片</string>
+    <string name="fmt_oppo">OPPO 动态照片</string>
+    <string name="fmt_vivo">vivo 动态照片</string>
+    <string name="fmt_vivo_single">vivo 单文件实况</string>
+    <string name="fmt_xiaomi">小米动态照片</string>
+
+    <string name="fmt_err_apple_mov_missing">未找到同名 .mov 视频文件</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV 文件缺少 ftyp box</string>
+    <string name="fmt_err_extract_read">拆解是输出格式，不应作为输入格式读取</string>
+    <string name="fmt_err_no_primary_jpeg">未找到主 JPEG 图像</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG 之后未找到有效的 MP4 视频（缺少 ftyp box）</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 视频流解析失败</string>
+    <string name="fmt_err_nubia_too_short">文件过短，不像努比亚动态照片</string>
+    <string name="fmt_err_nubia_no_magic">缺少 nubiaVpfile 尾部魔数</string>
+    <string name="fmt_err_nubia_jpeg_len">尾部记录的 JPEG 长度非法：%1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG 与视频之间缺少 0x00 填充字节</string>
+    <string name="fmt_err_nubia_empty_video">内嵌视频长度为 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG 尾部未找到 vivo livephoto 标记</string>
+    <string name="fmt_err_vivo_companion_missing">缺少伴生视频文件：%1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG 主体解析失败</string>
+    <string name="fmt_err_vivo_companion_invalid">伴生 MP4 无效（缺少 ftyp box）</string>
 </resources>

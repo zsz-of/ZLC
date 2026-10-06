@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Esperanto (eo).
+  Tradukita el res/values/strings_*.xml (simpligita ĉina baza dosiero, la rezerva lingvo).
+  La ŝlosiloj spegulas la bazan dosieron; anstataŭigiloj (%1$s / %1$d) kaj eskaposekvencoj restas senŝanĝaj.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== Converter.kt: kontrolo de parametroj kaj materialoj ========== -->
+    <string name="conv_unknown_target">Nekonata cela formato: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Nekonata Live Photo-formato (ne Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">La kovra foto mankas aŭ estas malplena</string>
+    <string name="conv_video_missing">La video mankas aŭ estas malplena</string>
+    <string name="conv_video_too_large">La video estas tro granda (%1$d MB); ne eblas kunmeti Live Photo, bonvolu elekti pli mallongan videon</string>
+    <string name="conv_transcoded_too_large">La video estas ankoraŭ tro granda post transkodado (%1$d MB); ne eblas kunmeti Live Photo</string>
+    <string name="conv_video_too_large_compose">La video estas tro granda (%1$d MB); ne eblas kunmeti Live Photo</string>
+
+    <!-- Converter.kt: kovra bildo (HEIC / ne-JPEG) -->
+    <string name="conv_cover_heic_go">La kovra bildo estas HEIC-bildo (la malpeza eldono ne subtenas transkodadon; bonvolu eksporti ĝin kiel JPEG sur iPhone antaŭ konvertado)</string>
+    <string name="conv_cover_invalid_heic">La kovra bildo ne estas valida bildo (HEIC postulas sisteman HEIF-malkodadon)</string>
+    <string name="conv_cover_not_jpeg_go">La kovra bildo ne estas JPEG-bildo (la malpeza eldono ne subtenas transkodadon; bonvolu uzi JPEG-foton)</string>
+    <string name="conv_cover_invalid_image">La kovra bildo ne estas valida bildo (nur JPEG/WebP/PNG subtenataj)</string>
+
+    <!-- Converter.kt: transkodado / remuksado malsukcesis kaj konsilo “ŝanĝi nur la ujon ne sufiĉas” -->
+    <string name="conv_reencode_failed">Rekodigo de la video malsukcesis: %1$s</string>
+    <string name="conv_remux_failed">Remuksado de la ujo malsukcesis: %1$s</string>
+    <string name="conv_codec_unknown">Ne estas rekonebla H.264/H.265-video</string>
+    <string name="conv_codec_is">La kodero estas %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">La video “%1$s” %2$s; ŝanĝi nur la ujon (remuksi) ne povas ŝanĝi la koderon, do ne eblas kunmeti Live Photo.\n\nBonvolu ŝanĝi en «Agordoj → Videa transkodado → Transkodada maniero» al «Rekodigi», aŭ unue konverti ĝin al H.264/H.265 MP4 per alia ilo.</string>
+    <string name="conv_hint_no_encoder">La video ne estas en norma MP4-ujo (MOV / MKV / WebM / AVI ktp), kaj la nuna «Transkodada maniero» ne rekodigas, do ne eblas kunmeti Live Photo.\n\nBonvolu ŝanĝi en «Agordoj → Videa transkodado → Transkodada maniero» al «Rekodigi» (la norma eldono enhavas ffmpeg-kodigilon; la Go-malpeza eldono ne havas transkodilon, bonvolu uzi la norman eldonon), aŭ unue konverti la videon al norma MP4 (H.264/H.265).</string>
+
+    <!-- ========== Konvertaj protokoloj ========== -->
+    <string name="conv_log_detected">Rekonita kiel %1$s</string>
+    <string name="conv_log_same_format_copied">Fonta kaj cela formatoj samas; kopiita senŝanĝe (sen perdo)</string>
+    <string name="conv_log_extra_tracks_bypass">La fonta video enhavas ne-aŭdvidajn trakojn (%1$s); preterlasas la samformatan rektan kopion kaj uzas la plenan skriban procezon por purigi</string>
+    <string name="conv_log_ts_fallback">La fonto mankas kovroframo-tempomarkon; laŭ la normo malantaŭeniras al la mezpunkto de la video</string>
+    <string name="conv_log_brand_normalized">Normigis la ujan markon de la video (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">La video enhavas kromajn trakojn (%1$s), kiuj ne povas esti purigitaj; eligita senŝanĝe (la rezulto eble ne ludas per longa premo sur iuj aparatoj)</string>
+    <string name="conv_log_extra_tracks_removed">Forigis kromajn videotrakojn (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Fonta video %1$s; remuksi nur la ujon ne solvas ĝin (%2$s). Se la rezulto ankoraŭ ne ludas per longa premo, ŝanĝu «Agordoj → Videa transkodado → Transkodada maniero» al «Rekodigi»</string>
+    <string name="conv_log_reencoding">Fonta video %1$s; rekodigata laŭ la agordoj al 8-bit + AAC por plibonigi galerian kongruecon</string>
+    <string name="conv_log_reencode_result_unusable">La rekodiga rezulto ne estas uzebla; eligita senŝanĝe (la rezulto eble ne ludas per longa premo sur iuj aparatoj)</string>
+    <string name="conv_log_reencode_still_risky">Post rekodigo ankoraŭ restas riskoj (%1$s)</string>
+    <string name="conv_log_reencode_failed">Rekodigo malsukcesis (%1$s); eligita senŝanĝe (la rezulto eble ne ludas per longa premo sur iuj aparatoj)</string>
+    <string name="conv_log_cover_heic_converted">La kovra bildo estis HEIC (ne JPEG); transkodita al norma JPEG antaŭ enpakado</string>
+    <string name="conv_log_compose_sizes">Kunmeto: foto %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkodilo ne aktivigita: nur reverkas la ujan markon (MOV → MP4), sen rekodigo</string>
+
+    <!-- Protokolaj etikedoj (montrataj kiel «[etikedoj] teksto») -->
+    <string name="conv_tag_convert">Konverti</string>
+    <string name="conv_tag_transcode">Transkodi</string>
+    <string name="conv_tag_compose">Kunmeti</string>
+
+    <!-- Kialoj de blokado de la transkodada maniero -->
+    <string name="conv_blocker_no_encoder">La enkonstruita transkodilo ne disponeblas</string>
+    <string name="conv_blocker_mode_no_encode">La nuna «Transkodada maniero» ne rekodigas</string>
+
+    <!-- ========== FfmpegAddon.kt: enkonstruita ffmpeg-transkodado / remuksado ========== -->
+    <string name="conv_addon_unavailable">La enkonstruita transkodilo ne disponeblas</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-transkodado malsukcesis: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-remuksado de la ujo malsukcesis: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Transkodigas la videon al norma MP4 per ffmpeg (%1$s / crf %2$d / %3$s; konservante nur la vid- kaj aŭdotrakojn)</string>
+    <string name="conv_log_transcode_done">Videa transkodado finita (%1$d KB)</string>
+    <string name="conv_log_remuxing">Remuksas la videan ujon al norma MP4 (nur ujon, sen rekodigo)</string>
+    <string name="conv_log_remux_done">Uja remuksado finita (%1$d KB)</string>
+
+    <!-- ========== Reminders.kt: «Ne plu montri» dialogoj ========== -->
+    <string name="conv_reminder_cat_compose">Kunmeti</string>
+    <string name="conv_reminder_cat_convert">Konverti</string>
+    <string name="conv_reminder_cat_update">Ĝisdatigi</string>
+    <string name="conv_reminder_video_over3s_title">La video superas 3 sekundojn</string>
+    <string name="conv_reminder_video_over3s_message">La elektita video daŭras pli ol 3 sekundojn, do la kunmetita Live Photo eble havos kongruecproblemojn:\n\n• Ĝi eble ne ludos ĝuste\n• Ĝi eble ne estos rekonebla de la sistema galerio\n• Iuj aparatoj eble ne rekonos ĉi tiun Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">Malnova versio detektita</string>
+    <string name="conv_reminder_legacy_go_message">Sur ĉi tiu aparato ankoraŭ estas instalita malnova versio (Go-eldono) de la apo. Tiu malnova versio ne plu funkcias sur ĉi tiu aparato; vi povas malinstali ĝin por liberigi spacon.</string>
+    <string name="conv_reminder_replace_risk_title">Anstataŭiga reĝimo portas riskon de difekto</string>
+    <!-- formatted="false": la teksto ne enhavas realan %-lokokupilon kaj neniam estas uzata kun argumentoj. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Anstataŭiga reĝimo skribas la konvertan rezulton rekte reen al la originalaj dosieroj; post anstataŭigo la originaloj ne povas esti rekuperitaj.\n\n• Se la apo estas interrompita, la konservejo pleniĝas aŭ la permeso estas revokita dum skribado, la fontaj dosieroj povas difektiĝi\n• Neniu konvertado garantie sukcesas, kaj post malsukceso la fontaj dosieroj eble jam ne estas uzeblaj\n• Provu unue kun unu aŭ du dosieroj, por certiĝi, antaŭ ol prilabori amase\n• Bonvolu antaŭe mem sekurkopii gravajn fotojn\n\nĈi tiu funkcio estas provizata «tia, kia ĝi estas»; vi uzas ĝin laŭ via propra risko, kaj la aŭtoro ne respondecas pri difektitaj aŭ perditaj dosieroj.</string>
+    <string name="conv_reminder_dont_remind">Ne plu montri</string>
+    <string name="conv_reminder_confirm_ok">Komprenite</string>
+    <string name="conv_reminder_uninstall">Malinstali</string>
+
+</resources>

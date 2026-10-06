@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · lingua Latina.
+  Nomina monstrationis pluginarum formarum (task-4). Praefixum clavis fmt_.
+  res/values/ est lingua Sinica subsidiaria; aliae linguae in values-<locale>/strings_formats.xml.
+  Omnis clavis basem sequitur; locorum nota (%1$s / %1$d) immutata servantur.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Extractio</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo Live Photo unius fasciculi</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <!--
+      Nuntia erroris pluginae usori visibilia (IOException): per MainActivity/Converter e.message ad
+      clipeum status et „Detalia status“ perveniunt, ergo usori visibilia sunt atque in res conversa.
+      Locorum notae eaedem manent.
+    -->
+    <string name="fmt_err_apple_mov_missing">Fasciculus .mov eiusdem nominis non inventus est</string>
+    <string name="fmt_err_apple_mov_no_ftyp">Fasciculo MOV deest ftyp box</string>
+    <string name="fmt_err_extract_read">Extractio est forma destinationis, non debet ut forma fontis legi</string>
+    <string name="fmt_err_no_primary_jpeg">Imago JPEG principalis non inventa est</string>
+    <string name="fmt_err_no_mp4_after_jpeg">Post JPEG video MP4 validum non inventum est (deest ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">Analysis fluxus videndi MP4 defecit</string>
+    <string name="fmt_err_nubia_too_short">Fasciculus nimis brevis est, Live Photo Nubia non videtur</string>
+    <string name="fmt_err_nubia_no_magic">Deest numerus magicus nubiaVpfile finalis</string>
+    <string name="fmt_err_nubia_jpeg_len">Longitudo JPEG in fine conscripta invalida est: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">Inter JPEG et video desunt bytes farcturae 0x00</string>
+    <string name="fmt_err_nubia_empty_video">Longitudo videndi inserti est 0</string>
+    <string name="fmt_err_vivo_no_marker">In fine JPG signum vivo livephoto non inventum est</string>
+    <string name="fmt_err_vivo_companion_missing">Deest fasciculus videndi comes: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">Analysis corporis JPG defecit</string>
+    <string name="fmt_err_vivo_companion_invalid">MP4 comes invalidum est (deest ftyp box)</string>
+</resources>

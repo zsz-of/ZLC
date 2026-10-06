@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Bashkir (ba) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">GitHub тейҙәреү адресы алынманы, һуңыраҡ ҡабат һынағыҙ.</string>
+    <string name="update_flavor_standard">Ғәҙәти версия</string>
+    <string name="update_flavor_go">Go версияһы</string>
+    <string name="update_lanzou_url_missing">Был версия Ланцзоу тейҙәреү һылтанмаһын бирмәй, GitHub-ҙан тейҙәреп бул ала.</string>
+    <string name="update_apk_direct_missing">Был версия был версияға тура килгән ҡуйыу төҙөмәһе туры һылтанмаһын бирмәй, GitHub баҫма битеһенән тейешле APK-ны һайлағыҙ.</string>
+    <string name="update_install_permission_missing">«Билдәһеҙ ҡушымталарҙы урынлаштырыу» рөхсәте алынмаған, автоматик урынлаштырып булмай. Система көйләүҙәрендә рөхсәт итеп, ҡабат һынағыҙ.</string>
+    <string name="update_error_unknown">Билдәһеҙ хата</string>
+    <string name="update_fail_lanzou">Ланцзоуҙан тейҙәреү уңышһыҙ</string>
+    <string name="update_fail_github">GitHub-ҙан тейҙәреү уңышһыҙ</string>
+    <string name="update_lanzou_resolving">Ланцзоу тейҙәреү һылтанмаһы тәржемәләнә…</string>
+    <string name="update_lanzou_downloading">Ланцзоуҙан тейҙәрелә…</string>
+    <string name="update_github_downloading">GitHub-ҙан тейҙәрелә…</string>
+    <string name="update_unzipping">Ҡуйыу төҙөмәһе асыла…</string>
+    <string name="update_notes_empty">Был версияла әлегә яңыртыу аңлатмаһы юҡ.</string>
+    <string name="update_use_normal_title">Ғәҙәти версияны ҡулланығыҙ</string>
+    <string name="update_use_normal_body">Был ҡорамал системаһы Android 10 һәм унан юғары, Go Еңел версияһы артыҡ яраҡлаштырылманы, иҫке версия дауам итә алмай.
+
+Был ҡорамалда ғәҙәти версия (ZLC) ҡуйылғаны асыҡланды, дауам итеү өсөн тура ғәҙәти версияны асығыҙ (яңы версия Go яраштырылған версияны бирмәй, урынды бушатыу өсөн иҫке версияны алып ташларға мөмкин).</string>
+    <string name="update_open_normal">Ғәҙәти версияны асыу</string>
+    <string name="update_must_update_title">Яңыртыуҙан һуң ғына дауам итеп буласаҡ</string>
+    <string name="update_forced_body">Был ҡорамал системаһы Android 10 һәм унан юғары, Go Еңел версияһы артыҡ яраҡлаштырылманы, иҫке версия дауам итә алмай; яңы версия ла Go яраштырылған версияны бирмәй.
+
+Селтәргә тоташып, «Ҡабат һынау»ҙы баҫып, ғәҙәти версия ҡуйыу төҙөмәһен алығыҙ.</string>
+    <string name="update_retry">Ҡабат һынау</string>
+    <string name="update_switch_normal_body">Был ҡорамал системаһы Android 10 һәм унан юғары, Go Еңел версияһы артыҡ яраҡлаштырылманы, иҫке версия дауам итә алмай.
+Ғәҙәти версияны тейҙәреп урынлаштырғандан һуң дауам итегеҙ (яңы версия Go яраштырылған версияны бирмәй).</string>
+    <string name="update_downloading_title">Яңыртыу тейҙәреү</string>
+    <string name="update_cancel">Бөтөрөү</string>
+    <string name="update_need_permission_title">Урынлаштырыу рөхсәте кәрәк</string>
+    <string name="update_need_permission_body">Яңы версияны урынлаштырыу өсөн система «Билдәһеҙ ҡушымталарҙы урынлаштырыу» рөхсәте кәрәк.
+
+«Рөхсәт бирергә»ҙе баҫып, көйләүҙәрҙә рөхсәт итеп ҡушымтаға ҡайтығыҙ, урынлаштырыу автоматик дауам итәсәк (яңынан тейҙәреү кәрәкмәй).</string>
+    <string name="update_grant">Рөхсәт бирергә</string>
+    <string name="update_notice_title">Иҫкәртеү</string>
+    <string name="update_got_it">Аңланым</string>
+    <string name="update_notes_title">v%1$s · Яңыртыу аңлатмаһы</string>
+    <string name="update_back">Ҡайтыу</string>
+    <string name="update_title_switch_normal">Ғәҙәти версияға күсеү</string>
+    <string name="update_title_reinstall">Был версияны яңынан урынлаштырыу</string>
+    <string name="update_title_new_version">Яңы версия табылды</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Был версия тейҙәрелеп, яңынан урынлаштырасаҡ (хәҙерге ҡушымтаны өҫтәп яҙа).
+Был функция яңыртыу механизмын кире тикшереү өсөн.</string>
+    <string name="update_view_notes">Яңыртыу аңлатмаһын ҡарығыҙ</string>
+    <string name="update_lanzou_unavailable">Ланцзоу әлегә ҡулланыла алмай</string>
+    <string name="update_download_lanzou">Ланцзоуҙан тейҙәреү</string>
+    <string name="update_download_github">GitHub-ҙан тейҙәреү</string>
+    <string name="update_download_browser">Браузерҙан тейҙәреү</string>
+    <string name="update_later">Әлегә яңыртмау</string>
+    <string name="update_later_switch">Әлегә күсмәү</string>
+    <string name="update_skip_version">Был версияны төшөрөп үтеү</string>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Occitan (oc) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">L\'adreça de descarga GitHub es pas estada obtenguda ; tornatz ensajar mai tard.</string>
+    <string name="update_flavor_standard">Version normala</string>
+    <string name="update_flavor_go">Version Go</string>
+    <string name="update_lanzou_url_missing">Aquesta version ofrís pas de ligam de descarga Lanzou Cloud ; podètz utilizar GitHub.</string>
+    <string name="update_apk_direct_missing">Aquesta version ofrís pas de ligam dirècte cap al paquet d\'installacion correspondent ; causissètz l\'APK adeqüat sus la pagina GitHub Releases.</string>
+    <string name="update_install_permission_missing">La permission «Installar d\'aplicacions desconegudas» es pas concedida ; l\'installacion automatica es impossibla. Autorizatz-la dins los paramètres del sistèma puèi tornatz ensajar.</string>
+    <string name="update_error_unknown">Error desconeguda</string>
+    <string name="update_fail_lanzou">Fracàs de la descarga de Lanzou Cloud</string>
+    <string name="update_fail_github">Fracàs de la descarga GitHub</string>
+    <string name="update_lanzou_resolving">Analisi del ligam de descarga de Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Telecargament dempuèi Lanzou Cloud…</string>
+    <string name="update_github_downloading">Telecargament dempuèi GitHub…</string>
+    <string name="update_unzipping">Descompression del paquet d\'installacion…</string>
+    <string name="update_notes_empty">Aquesta version a pas encara de nòtas de mesa a jorn.</string>
+    <string name="update_use_normal_title">Utilizatz la version normala</string>
+    <string name="update_use_normal_body">Aqueste aparelh a Android 10 o mai ; la version Go lègèra es pas mai adaptada e l\'anciana version se pòt pas mai utilizar.\n\nLa version normala (ZLC) es estada detectada sus aqueste aparelh ; dobrissètz-la dirèctament per contunhar (las versions novèlas ofrissan pas mai de version compatibla Go ; l\'anciana se pòt desinstallar per liberar d\'espaci).</string>
+    <string name="update_open_normal">Dobrir la version normala</string>
+    <string name="update_must_update_title">Cal metre a jorn abans de contunhar d\'utilizar</string>
+    <string name="update_forced_body">Aqueste aparelh a Android 10 o mai ; la version Go lègèra es pas mai adaptada, l\'anciana version se pòt pas mai utilizar e las versions novèlas ofrissan pas mai de version compatibla Go.\n\nConnectatz-vos a la ret puèi tocatz «Tornar ensajar» per obténer lo paquet d\'installacion de la version normala.</string>
+    <string name="update_retry">Tornar ensajar</string>
+    <string name="update_switch_normal_body">Aqueste aparelh a Android 10 o mai ; la version Go lègèra es pas mai adaptada e l\'anciana version se pòt pas mai utilizar.\nTelecargatz e installatz la version normala per contunhar (las versions novèlas ofrissan pas mai de version compatibla Go).</string>
+    <string name="update_downloading_title">Telecargament de la mesa a jorn</string>
+    <string name="update_cancel">Anullar</string>
+    <string name="update_need_permission_title">Cal la permission d\'installacion</string>
+    <string name="update_need_permission_body">L\'installacion de la version novèla demanda la permission sistèma «Installar d\'aplicacions desconegudas».\n\nTocatz «Concedir», autorizatz dins los paramètres puèi tornatz a l\'aplicacion ; l\'installacion contunharà automaticament (inutil de tornar telecargar).</string>
+    <string name="update_grant">Concedir</string>
+    <string name="update_notice_title">Avís</string>
+    <string name="update_got_it">D\'acòrdi</string>
+    <string name="update_notes_title">v%1$s · Nòtas de la mesa a jorn</string>
+    <string name="update_back">Retorn</string>
+    <string name="update_title_switch_normal">Passar a la version normala</string>
+    <string name="update_title_reinstall">Tornar installar aquesta version</string>
+    <string name="update_title_new_version">Novèla version trobada</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Aquesta version serà telecargada e reinstallada (espotís l\'aplicacion actuala).\nAquesta foncion servís per tornar testar lo mecanisme de mesa a jorn.</string>
+    <string name="update_view_notes">Veire las nòtas de la mesa a jorn</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud es pas disponibla pel moment</string>
+    <string name="update_download_lanzou">Telecargar dempuèi Lanzou Cloud</string>
+    <string name="update_download_github">Telecargar dempuèi GitHub</string>
+    <string name="update_download_browser">Telecargar amb lo navigador</string>
+    <string name="update_later">Meter a jorn pas ara</string>
+    <string name="update_later_switch">Cambiar pas ara</string>
+    <string name="update_skip_version">Passar aquesta version</string>
+</resources>

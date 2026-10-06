@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Oʻzbekcha (Uzbek) strings — konvertatsiya / transkodlash / eslatmalar (key prefix: conv_).
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline, the fallback locale).
+  Uzbek (Latin); model-assisted translation — community corrections welcome.
+  Recommended for a native review pass.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: parametr va manba tekshiruvi (xato → interfeysda sabab koʻrsatiladi) ========== -->
+    <string name="conv_unknown_target">Nomaʼlum maqsad formati: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Tanilmagan jonli foto formati (Google/OPPO/vivo/Xiaomi/Apple jonli fotosi emas)</string>
+    <string name="conv_cover_photo_missing">Muqova foto mavjud emas yoki boʻsh</string>
+    <string name="conv_video_missing">Video mavjud emas yoki boʻsh</string>
+    <string name="conv_video_too_large">Video juda katta (%1$dMB), jonli foto yaratib boʻlmaydi; iltimos, qisqaroq video tanlang</string>
+    <string name="conv_transcoded_too_large">Transkodlashdan keyin ham video juda katta (%1$dMB), jonli foto yaratib boʻlmaydi</string>
+    <string name="conv_video_too_large_compose">Video juda katta (%1$dMB), jonli foto yaratib boʻlmaydi</string>
+
+    <!-- Converter.kt: muqova (HEIC / JPEG emas) -->
+    <string name="conv_cover_heic_go">Muqova HEIC tasvir (yengil versiya transkodlashni qoʻllab-quvvatlamaydi; avval iPhone orqali uni JPEG qilib eksport qiling, soʻngra konvertatsiya qiling)</string>
+    <string name="conv_cover_invalid_heic">Muqova yaroqli tasvir emas (HEIC uchun tizimning HEIF dekodlash yordami kerak)</string>
+    <string name="conv_cover_not_jpeg_go">Muqova JPEG tasvir emas (yengil versiya transkodlashni qoʻllab-quvvatlamaydi; iltimos, JPEG foto ishlating)</string>
+    <string name="conv_cover_invalid_image">Muqova yaroqli tasvir emas (faqat JPEG/WebP/PNG qoʻllab-quvvatlanadi)</string>
+
+    <!-- Converter.kt: qayta kodlash / qayta qadoqlash xatolari va “faqat konteynerni almashtirish kodlashni tuzatmaydi” ogohlantirishi -->
+    <string name="conv_reencode_failed">Videoni qayta kodlash muvaffaqiyatsiz: %1$s</string>
+    <string name="conv_remux_failed">Konteynerni qayta qadoqlash muvaffaqiyatsiz: %1$s</string>
+    <string name="conv_codec_unknown">Bu tanib olinadigan H.264/H.265 video emas</string>
+    <string name="conv_codec_is">Kodlash %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">“%1$s” videosi %2$s; faqat konteynerni almashtirish (qayta qadoqlash) kodlashni oʻzgartirmaydi, shuning uchun jonli foto yaratib boʻlmaydi.\n\nIltimos, “Sozlamalar → Video transkodlash → Transkod usuli” boʻlimida “Qayta kodlash”ni tanlang yoki avval boshqa vosita bilan uni H.264/H.265 kodlashli MP4 ga aylantiring.</string>
+    <string name="conv_hint_no_encoder">Video standart MP4 konteynerida emas (MOV / MKV / WebM / AVI va boshqalar) va joriy “Transkod usuli” qayta kodlamaydi, shuning uchun jonli foto yaratib boʻlmaydi.\n\nIltimos, “Sozlamalar → Video transkodlash → Transkod usuli” boʻlimida “Qayta kodlash”ni tanlang (oddiy versiyada ffmpeg kodlovchi bor; Go yengil versiyada transkoder yoʻq, iltimos oddiy versiyadan foydalaning) yoki avval videoni standart MP4 (H.264/H.265) ga aylantiring.</string>
+
+    <!-- ========== Konvertatsiya jurnali (roʻyxat elementi holat qatorida va jurnal panelida koʻrsatiladi) ========== -->
+    <string name="conv_log_detected">%1$s deb aniqlandi</string>
+    <string name="conv_log_same_format_copied">Manba va maqsad formatlari bir xil, hech qanday yoʻqotishsiz aslidagidek nusxalandi</string>
+    <string name="conv_log_extra_tracks_bypass">Manba videoda audio/video boʻlmagan treklar bor (%1$s); bir xil formatli toʻgʻridan-toʻgʻri oʻtkazishdan voz kechib, tozalash uchun toʻliq yozish yoʻlidan foydalanilmoqda</string>
+    <string name="conv_log_ts_fallback">Manbada muqova kadri vaqt belgisi yoʻq; standart boʻyicha videoning oʻrtasiga qaytildi</string>
+    <string name="conv_log_brand_normalized">Video konteyner brendi normallashtirildi (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Videoda tozalab boʻlmaydigan qoʻshimcha treklar bor (%1$s), aslidagidek chiqarildi (natija ayrim modellarda uzoq bosib ochilmasligi mumkin)</string>
+    <string name="conv_log_extra_tracks_removed">Videoning qoʻshimcha treklari olib tashlandi (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Manba video%1$s; faqat konteynerni qayta qadoqlash muammoni hal qilmaydi (%2$s); natija hamon uzoq bosib ochilmasa, “Sozlamalar → Video transkodlash → Transkod usuli”da “Qayta kodlash”ni tanlang</string>
+    <string name="conv_log_reencoding">Manba video%1$s; albom mosligini yaxshilash uchun sozlamalarga koʻra 8bit + AAC ga qayta kodlanmoqda</string>
+    <string name="conv_log_reencode_result_unusable">Qayta kodlash natijasi yaroqsiz, aslidagidek chiqarildi (natija ayrim modellarda uzoq bosib ochilmasligi mumkin)</string>
+    <string name="conv_log_reencode_still_risky">Qayta kodlashdan keyin ham xavfli jihatlar bor (%1$s)</string>
+    <string name="conv_log_reencode_failed">Qayta kodlash muvaffaqiyatsiz (%1$s), aslidagidek chiqarildi (natija ayrim modellarda uzoq bosib ochilmasligi mumkin)</string>
+    <string name="conv_log_cover_heic_converted">Muqova HEIC (JPEG emas) edi, qadoqlashdan oldin standart JPEG ga transkod qilindi</string>
+    <string name="conv_log_compose_sizes">Birlashtirish: foto %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkoder yoqilmagan: faqat konteyner brendi oʻzgartirilmoqda (MOV → MP4), qayta kodlash yoʻq</string>
+
+    <!-- Jurnal teglari (interfeysda “[teg] matn” koʻrinishida koʻrsatiladi) -->
+    <string name="conv_tag_convert">Konvertatsiya</string>
+    <string name="conv_tag_transcode">Transkodlash</string>
+    <string name="conv_tag_compose">Birlashtirish</string>
+
+    <!-- Transkod usulini toʻsib qoʻyish sababi (yuqoridagi ogohlantirish matniga qoʻshiladi) -->
+    <string name="conv_blocker_no_encoder">Ichki transkoder mavjud emas</string>
+    <string name="conv_blocker_mode_no_encode">Joriy “Transkod usuli” qayta kodlamaydi</string>
+
+    <!-- ========== FfmpegAddon.kt: ichki ffmpeg transkodlash / qayta qadoqlash ========== -->
+    <string name="conv_addon_unavailable">Ichki transkoder mavjud emas</string>
+    <string name="conv_addon_transcode_failed">ffmpeg transkodlash muvaffaqiyatsiz: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg konteynerni qayta qadoqlash muvaffaqiyatsiz: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg bilan video standart MP4 ga transkod qilinmoqda (%1$s / crf %2$d / %3$s, faqat video va audio treklar saqlanadi)</string>
+    <string name="conv_log_transcode_done">Video transkodlash tugadi (%1$dKB)</string>
+    <string name="conv_log_remuxing">Video konteyneri standart MP4 ga qayta qadoqlanmoqda (faqat konteyner, qayta kodlashsiz)</string>
+    <string name="conv_log_remux_done">Konteynerni qayta qadoqlash tugadi (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: “Endi koʻrsatmaslik” oynasi ========== -->
+    <string name="conv_reminder_cat_compose">Birlashtirish</string>
+    <string name="conv_reminder_cat_convert">Konvertatsiya</string>
+    <string name="conv_reminder_cat_update">Yangilanish</string>
+    <string name="conv_reminder_video_over3s_title">Video 3 soniyadan uzun</string>
+    <string name="conv_reminder_video_over3s_message">Tanlangan video 3 soniyadan uzun, shuning uchun yaratilgan jonli foto moslik muammolariga olib kelishi mumkin:\n\n• Toʻgʻri oʻynamasligi mumkin\n• Tizim albomi uni tanimasligi mumkin\n• Ayrim modellar bu jonli fotoni tanimasligi mumkin</string>
+    <string name="conv_reminder_legacy_go_title">Eski versiya aniqlandi</string>
+    <string name="conv_reminder_legacy_go_message">Bu qurilmada ilovaning eski versiyasi (Go versiyasi) hali ham oʻrnatilgan, u bu qurilmada endi ishlamaydi; joy boʻshatish uchun uni oʻchirib tashlashingiz mumkin.</string>
+    <string name="conv_reminder_replace_risk_title">Almashtirish rejimida buzilish xavfi bor</string>
+    <!-- formatted="false": asl matnda bitta harfiy % (100%) bor edi; tarjimada u soʻz bilan yozildi, shunda yalang % qolmaydi.
+         Bu satr hech qachon parametr bilan ishlatilmaydi; uni formatlanmaydigan satr deb belgilash aapt2/lint ning uni String.format boʻyicha tekshirishining oldini oladi. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Almashtirish rejimi konvertatsiya natijasini toʻgʻridan-toʻgʻri asl fayllarga qayta yozadi; bir marta ustiga yozilgach, asl fayllarni qaytarib boʻlmaydi.\n\n• Yozish paytida ilova toʻxtatilsa, xotira yetmasa yoki ruxsat bekor qilinsa, manba fayllar buzilishi mumkin\n• Konvertatsiya muvaffaqiyatiga har doim kafolat berilmaydi va muvaffaqiyatsizlikda manba fayllar allaqachon yaroqsiz boʻlishi mumkin\n• Avval bir-ikki faylda sinab koʻring, ishonch hosil qilgach ommaviy qayta ishlang\n• Muhim fotolarni oldindan oʻzingiz zaxiralab oling\n\nBu funksiya “bor holicha” taqdim etiladi; foydalanish xavfi sizning zimmangizda, muallif fayllarning buzilishi yoki yoʻqolishi uchun javobgar emas.</string>
+    <string name="conv_reminder_dont_remind">Endi koʻrsatmaslik</string>
+    <string name="conv_reminder_confirm_ok">Tushundim</string>
+    <string name="conv_reminder_uninstall">Oʻchirib tashlash</string>
+
+</resources>

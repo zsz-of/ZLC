@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Esperanto (eo).
+  Tradukita el res/values/strings_*.xml (simpligita ĉina baza dosiero, la rezerva lingvo).
+  La ŝlosiloj spegulas la bazan dosieron; anstataŭigiloj (%1$s / %1$d) kaj eskaposekvencoj restas senŝanĝaj.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- Mesaĝoj flanke de la regilo -->
+    <string name="update_github_url_missing">Neniu GitHub-elŝutadreso akirita; bonvolu reprovi poste.</string>
+    <string name="update_flavor_standard">Norma eldono</string>
+    <string name="update_flavor_go">Go-eldono</string>
+    <string name="update_lanzou_url_missing">Ĉi tiu versio ne disponigas Lanzou Cloud-elŝutligilon; vi povas uzi GitHub anstataŭe.</string>
+    <string name="update_apk_direct_missing">Ĉi tiu versio ne disponigas rektan pakaĵan ligilon kongruan kun via eldono; bonvolu elekti la taŭgan APK sur la GitHub-eldonpaĝo.</string>
+    <string name="update_install_permission_missing">Permeso «instali nekonatajn aplikaĵojn» ne estis donita, do aŭtomata instalado ne eblas. Bonvolu permesi ĝin en la sistemaj agordoj kaj reprovi.</string>
+    <string name="update_error_unknown">Nekonata eraro</string>
+    <string name="update_fail_lanzou">Lanzou Cloud-elŝutado malsukcesis</string>
+    <string name="update_fail_github">GitHub-elŝutado malsukcesis</string>
+    <string name="update_lanzou_resolving">Analizas la Lanzou Cloud-elŝutligilon…</string>
+    <string name="update_lanzou_downloading">Elŝutas de Lanzou Cloud…</string>
+    <string name="update_github_downloading">Elŝutas de GitHub…</string>
+    <string name="update_unzipping">Malfaldas la pakaĵon…</string>
+    <string name="update_notes_empty">Ĉi tiu versio ne havas eldonajn notojn.</string>
+
+    <!-- Dialogoj rilataj al la Go-eldono -->
+    <string name="update_use_normal_title">Bonvolu uzi la norman eldonon</string>
+    <string name="update_use_normal_body">Ĉi tiu aparato funkciigas Android 10 aŭ pli novan, kaj la Go-malpeza eldono ne plu estas subtenata; la malnova versio ne plu uzeblas.\n\nLa norma eldono (ZLC) jam estas instalita sur ĉi tiu aparato — bonvolu malfermi ĝin kaj daŭrigi tie (novaj eldonoj ne plu inkluzivas Go-kongruan konstruon; la malnova versio povas esti malinstalita por liberigi spacon).</string>
+    <string name="update_open_normal">Malfermi la norman eldonon</string>
+    <string name="update_must_update_title">Vi devas ĝisdatigi antaŭ ol daŭrigi</string>
+    <string name="update_forced_body">Ĉi tiu aparato funkciigas Android 10 aŭ pli novan, kaj la Go-malpeza eldono ne plu estas subtenata; la malnova versio ne plu uzeblas, kaj novaj eldonoj ne plu inkluzivas Go-kongruan konstruon.\n\nBonvolu konektiĝi al la interreto kaj alklaki «Reprovi» por akiri la norman eldonpakaĵon.</string>
+    <string name="update_retry">Reprovi</string>
+    <string name="update_switch_normal_body">Ĉi tiu aparato funkciigas Android 10 aŭ pli novan, kaj la Go-malpeza eldono ne plu estas subtenata; la malnova versio ne plu uzeblas.\nBonvolu elŝuti kaj instali la norman eldonon por daŭrigi (novaj eldonoj ne plu inkluzivas Go-kongruan konstruon).</string>
+
+    <!-- Elŝutado / permesoj / rezultaj mesaĝoj -->
+    <string name="update_downloading_title">Elŝuti ĝisdatigon</string>
+    <string name="update_cancel">Nuligi</string>
+    <string name="update_need_permission_title">Instala permeso necesa</string>
+    <string name="update_need_permission_body">Instali la novan version postulas la sisteman permeson «instali nekonatajn aplikaĵojn».\n\nAlklaku «Doni», permesu ĝin en la agordoj kaj revenu al la apo; instalado tiam daŭros aŭtomate (ne necesas elŝuti denove).</string>
+    <string name="update_grant">Doni</string>
+    <string name="update_notice_title">Avizo</string>
+    <string name="update_got_it">Komprenite</string>
+
+    <!-- Ĉefa dialogo / eldonaj notoj -->
+    <string name="update_notes_title">v%1$s · Eldonaj notoj</string>
+    <string name="update_back">Reen</string>
+    <string name="update_title_switch_normal">Ŝalti al la norma eldono</string>
+    <string name="update_title_reinstall">Reinstali ĉi tiun version</string>
+    <string name="update_title_new_version">Nova versio disponeblas</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Ĉi tio elŝutos kaj reinstalos ĉi tiun version (anstataŭigante la nunan apon).\nĈi tiu funkcio estas uzata por regresa testado de la ĝisdatiga mekanismo.</string>
+    <string name="update_view_notes">Vidi eldonajn notojn</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud provizore ne disponeblas</string>
+    <string name="update_download_lanzou">Elŝuti de Lanzou Cloud</string>
+    <string name="update_download_github">Elŝuti de GitHub</string>
+    <string name="update_download_browser">Elŝuti per retumilo</string>
+    <string name="update_later">Ĝisdatigi poste</string>
+    <string name="update_later_switch">Ŝalti poste</string>
+    <string name="update_skip_version">Preterlasi ĉi tiun version</string>
+</resources>

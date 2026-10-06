@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · eesti keel.
+  Seadete lehe tekstid (ui/SettingsScreen.kt). Võtme eesliide settings_.
+  res/values/ on lihtsustatud hiina varukeel; teised keeled on kaustas values-b+<lang>/strings_settings.xml.
+  Kohatäitjad on alati nummerdatud kujul: %1$s / %1$d.
+  Ekstraktimata sisu: puhtad pärisnimed ja koodid („@毛血旺o“, „Trae · GML · DeepSeek · Kimi“,
+  „GPL-3.0“, „H.265“/„H.264“, GitHubi URL) jäävad koodi kõvakodeerituks ega osale tõlkimises.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- Üldine -->
+    <string name="settings_title">Seaded</string>
+    <string name="settings_cd_back">Tagasi</string>
+    <string name="settings_btn_apply">Rakenda</string>
+    <string name="settings_btn_cancel">Tühista</string>
+    <string name="settings_btn_close">Sulge</string>
+    <string name="settings_btn_ok">OK</string>
+    <string name="settings_btn_sponsor">Toeta</string>
+
+    <!-- Grupitööde pealkirjad -->
+    <string name="settings_section_general">Üldine</string>
+    <string name="settings_section_appearance">Välimus</string>
+    <string name="settings_section_language">Keel</string>
+    <string name="settings_section_defaults">Vaikevalikud</string>
+    <string name="settings_section_output">Väljund</string>
+    <string name="settings_section_transcode">Video ümberkodeerimine</string>
+    <string name="settings_section_about">Teave</string>
+    <string name="settings_section_app">Rakendus</string>
+    <string name="settings_section_credits">Tänuavaldused ja toetus</string>
+    <string name="settings_section_opensource">Avatud lähtekood ja litsents</string>
+
+    <!-- Üldine -->
+    <string name="settings_startup_check_title">Kontrolli käivitamisel värskendusi</string>
+    <string name="settings_startup_check_subtitle">Hangi käivitamisel automaatselt GitHubist uusi versioone ja küsi allalaadimist, kui värskendus on saadaval</string>
+    <string name="settings_haptics_title">Vibratsioonitagasiside</string>
+    <string name="settings_haptics_subtitle">Puutetagasiside nupuvajutustel ja olekumuutustel</string>
+    <string name="settings_bounce_title">Nupu vetruv animatsioon</string>
+    <string name="settings_bounce_subtitle">Nupu vajutamisel suumimise ja tagasipõrkumise animatsioon</string>
+
+    <!-- Välimus -->
+    <string name="settings_theme_system">Järgi süsteemi</string>
+    <string name="settings_theme_dark">Tume</string>
+    <string name="settings_theme_light">Hele</string>
+    <string name="settings_dynamic_theme_title">Material You dünaamiline värv</string>
+    <string name="settings_dynamic_theme_subtitle">Järgi süsteemi taustapildi värvi (Android 12+); väljalülitamisel kasutatakse allpool olevaid eelseadistatud teemavärve</string>
+    <string name="settings_preset_colors_title">Eelseadistatud teemavärvid</string>
+    <string name="settings_preset_current">Praegune: %1$s</string>
+    <string name="settings_preset_disabled_hint">Valimiseks lülitage välja „Material You dünaamiline värv“</string>
+    <string name="settings_custom">Kohandatud</string>
+    <string name="settings_custom_color_title">Kohandatud teemavärv</string>
+    <string name="settings_cd_custom_palette">Kohandatud palett</string>
+    <string name="settings_hue_value">Toon %1$d°</string>
+
+    <!-- Rakenduse keel: pealkiri ja „Järgi süsteemi“ kasutavad Leadi hallatavat strings_app.xml-i
+         (R.string.app_language_title / R.string.app_language_follow_system), neid siin uuesti ei määratleta -->
+    <string name="settings_language_dialog_title">Valige rakenduse keel</string>
+    <string name="settings_language_count">Kokku %1$d keelt</string>
+
+    <!-- Vaikevalikud -->
+    <string name="settings_reminder_dialogs_title">„Ära näita uuesti“ dialoogid</string>
+    <string name="settings_reminder_dialogs_subtitle">Halda kõigi „Ära näita uuesti“ dialoogide lüliteid</string>
+    <string name="settings_reminder_hint">Sisselülitatud lüliti tähendab „ära näita uuesti“; väljalülitamisel kuvatakse vastava olukorra järgmisel korral hoiatus uuesti.</string>
+
+    <!-- Väljund -->
+    <string name="settings_preserve_folders_title">Väljund lähtekausta hierarhia järgi</string>
+    <string name="settings_preserve_folders_subtitle">Tulemused salvestatakse algsete albumite nimelistesse alamkaustadesse; väljalülitamisel pannakse kõik ühte kausta</string>
+
+    <!-- Teave -->
+    <string name="settings_about_title">Teave</string>
+    <string name="settings_about_subtitle">Versioon · Värskenduste kontroll · Tänuavaldused ja toetus</string>
+    <string name="settings_check_update_title">Kontrolli värskendusi</string>
+    <string name="settings_check_update_subtitle">Hangi uusim versioon GitHub Releasesist</string>
+    <string name="settings_checking">Kontrollimine…</string>
+    <string name="settings_update_available">v%1$s on saadaval</string>
+    <string name="settings_up_to_date">Kasutusel on uusim versioon</string>
+    <string name="settings_network_error">Võrguviga, proovige hiljem uuesti</string>
+    <string name="settings_reinstall_title">Installige see versioon uuesti</string>
+    <string name="settings_reinstall_subtitle">Laadige alla praegune uusim versioon ja installige see peale (värskenduste testimiseks)</string>
+    <string name="settings_reinstall_newer_hint">Saadaval on värskendus versioonile v%1$s; kasutage esmalt funktsiooni „Kontrolli värskendusi“</string>
+    <string name="settings_version_title">Versioon</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Toetus Alipay kaudu</string>
+    <string name="settings_alipay_subtitle">Toeta arendust</string>
+    <string name="settings_coolapk_subtitle">Coolapki kasutaja · täname toetuse eest</string>
+    <string name="settings_ai_credits_subtitle">Täname AI IDE-sid ja AI mudeleid arendusabi eest</string>
+    <string name="settings_github_title">GitHubi hoidla</string>
+    <string name="settings_license_title">Avatud lähtekoodi litsents</string>
+    <string name="settings_sponsor_dialog_title">Täname toetuse eest</string>
+    <string name="settings_sponsor_dialog_text">Olen tõesti tänulik, et soovite seda rakendust toetada!\n\nKui olete veel üliõpilane või ei ole veel majanduslikult iseseisev, palun ärge raisake raha — hoidke see südamlikkus endas ja jätkake rakenduse kasutamist; see on minu jaoks parim toetus.\n\nKui soovite siiski annetada, on isegi väike summa armastus, ja ma suunan selle paremasse hooldusse ja funktsioonidesse:)</string>
+    <string name="settings_alipay_missing_title">Alipay ei ole installitud</string>
+    <string name="settings_alipay_missing_text">Alipayd ei tuvastatud, nii et annetust praegu lõpule viia ei saa.\n\nSee on okei — igatahes täname teid väga teie heasoovlikkuse eest!</string>
+
+    <!-- Video ümberkodeerimine -->
+    <string name="settings_transcoder_title">Sisseehitatud ümberkodeerija</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Ümberkodeeri</string>
+    <string name="settings_transcode_mode_remux">Ainult konteineri ümberpakendamine (soovitatav)</string>
+    <string name="settings_transcode_mode_off">Ümberkodeerijat üldse mitte kasutada</string>
+    <string name="settings_transcode_params_title">Ümberkodeerimise parameetrid</string>
+    <string name="settings_transcode_params_subtitle">Ümberkodeerimisel kasutatavad kvaliteedi- ja tihendusparameetrid</string>
+    <string name="settings_transcode_params_disabled">Toimib ainult siis, kui „Ümberkodeerimise režiim“ on seatud valikule „Ümberkodeeri“</string>
+    <string name="settings_crf_value">Kvaliteet CRF: %1$d</string>
+    <string name="settings_crf_hint">Väiksem väärtus tähendab kõrgemat kvaliteeti ja suuremat faili (vaikeväärtus 18)</string>
+    <string name="settings_encoder_title">Kooder</string>
+    <string name="settings_compress_preset_title">Tihenduse eelseade</string>
+
+</resources>

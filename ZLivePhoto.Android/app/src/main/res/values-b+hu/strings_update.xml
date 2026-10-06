@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Frissítés / letöltés szövegek (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Kulcsok update_ prefixszel; a neveket egy确定en nem módosíthatjuk (minden nyelv ugyanazt a halmazt hivatkozza).
+  Helyőrzők: %1$s / %1$d.
+  Megjegyzés: a core réteg UpdaterException / AddonException szövegei a MainActivity
+  statusText-en keresztül jelennek meg a lista elemekben és a naplópanelen; így mindent erőforrásra kell helyezni.
+-->
+<resources>
+
+    <!-- ========== LanChou cloud megosztó oldal és közvetlen link elemzés ========== -->
+    <string name="update_lanzou_gone">A LanChou cloud megosztás megszűnt vagy a fájl nem létezik; használja a GitHub letöltést</string>
+    <string name="update_lanzou_gone_short">A LanChou cloud megosztás megszűnt; használja a GitHub letöltést</string>
+    <string name="update_lanzou_resolve_failed">LanChou cloud letöltési link elemzése sikertelen</string>
+    <string name="update_lanzou_need_passwd">Ez a LanChou cloud megosztás kimeneti kódot igényel; használja a GitHub letöltést (vagy keresse a kimeneti kódot a Kiadás ismertetésben)</string>
+    <string name="update_lanzou_wrong_passwd">LanChou cloud kimeneti kód hiba</string>
+    <string name="update_err_resolve_failed">Elemzés sikertelen</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">LanChou cloud anticrawl ellenőrzés sikertelen</string>
+    <string name="update_err_no_frame">Nem lehet elemezni LanChou cloud letöltési oldalt (letöltési keret nem található)</string>
+    <string name="update_err_no_file_id">Nem lehet elemezni LanChou cloud fájl azonosítót</string>
+    <string name="update_err_no_sign">Nem lehet elemezni LanChou cloud aláírást</string>
+    <string name="update_err_ajax_request">Interfaz kérés sikertelen</string>
+    <string name="update_err_api_request">LanChou cloud interfész kérés sikertelen</string>
+    <string name="update_err_empty_direct">LanChou cloud üres letöltési URL-t vissza</string>
+    <string name="update_err_direct_expired">LanChou cloud letöltési URL lejárt; szerezzen be újra</string>
+    <string name="update_err_http_request">Kérés sikertelen (HTTP %1$d)</string>
+
+    <!-- ========== Letöltés ========== -->
+    <string name="update_err_connect">Nem lehet csatlakozni a letöltési szerverhez: %1$s</string>
+    <string name="update_err_http">Letöltés sikertelen (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Nem lehet letöltési kapcsolatot létrehozni</string>
+    <string name="update_err_empty">A letöltés tartalma üres</string>
+    <string name="update_err_incomplete">A letöltés nem teljes (%1$d / összesen %2$d bájt); töltsön újra</string>
+    <string name="update_err_interrupted">Letöltés megszakadt: %1$s</string>
+
+    <!-- ========== Telepített fájlok ellenőrzése és telepítése ========== -->
+    <string name="update_err_not_apk">Az letöltött fájl nem érvényes telepítőfájl (lehet weboldal vagy letöltési link lejárt); töltsön újra vagy használja a GitHub letöltést.</string>
+    <string name="update_err_apk_incomplete">Az telepítőfájl tartalma nem teljes; töltsön újra vagy használja a GitHub letöltést.</string>
+    <string name="update_err_apk_unparsable">Az telepítőfájl nem bontható (lehet, hogy a letöltés nem teljes); töltsön újra vagy használja a GitHub letöltést.</string>
+    <string name="update_err_no_install_permission">Még nem kapta meg a \"Ismeretlen alkalmazások telepítése\" jogosultságot</string>
+    <string name="update_err_installer_failed">Nem lehet meghívni a rendszer telepítőt (%1$s); nyissa meg manuálisan a fájlkezelőben a telepítőfájlt</string>
+
+</resources>

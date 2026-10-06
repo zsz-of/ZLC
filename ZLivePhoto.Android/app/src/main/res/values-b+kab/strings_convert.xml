@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Tutlayt taqbaylit (kab).
+  Yettwasuqel seg res/values/strings_*.xml (asnulfu s usebter n tsusnawt, tutlayt n umagrad).
+  Iswiyen ttwamṣadan d umagrad; imetteg (%1$s / %1$d) d yimeslayen n uɣtu qqimen am akken.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== Converter.kt: asenqed n yisekkilen d yifecka ========== -->
+    <string name="conv_unknown_target">Format n usuffeɣ arussin: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Format n Live Photo arussin (mačči d Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Akuver n tawlaft ulac-itt neɣ d ilem</string>
+    <string name="conv_video_missing">Tavidyut ulac-itt neɣ d tilemt</string>
+    <string name="conv_video_too_large">Tavidyut d tameqqrant aṭas (%1$d MB); ur yezmir ara ad yettwasnulfu Live Photo, fren tavidyut tmeẓẓiyet</string>
+    <string name="conv_transcoded_too_large">Tavidyut d tameqqrant aṭas mbaɛd utranskud (%1$d MB); ur yezmir ara ad yettwasnulfu Live Photo</string>
+    <string name="conv_video_too_large_compose">Tavidyut d tameqqrant aṭas (%1$d MB); ur yezmir ara ad yettwasnulfu Live Photo</string>
+
+    <!-- Converter.kt: akuver (HEIC / mačči JPEG) -->
+    <string name="conv_cover_heic_go">Akuver d tugna HEIC (lqem afessus ur yettwaqbal ara atranskud; eksporti-t d JPEG deg iPhone syen sefli-t)</string>
+    <string name="conv_cover_invalid_heic">Akuver mačči d tugna tamezduɣt (HEIC yesra tafrara HEIF n unagraw)</string>
+    <string name="conv_cover_not_jpeg_go">Akuver mačči d tugna JPEG (lqem afessus ur yettwaqbal ara atranskud; seqdec tawlaft JPEG)</string>
+    <string name="conv_cover_invalid_image">Akuver mačči d tugna tamezduɣt (JPEG/WebP/PNG kan i yettwaqbalen)</string>
+
+    <!-- Converter.kt: utranskud / uremuks ur yeddi ara d uwag “beddel akaram kan ur yefru ara” -->
+    <string name="conv_reencode_failed">Arekudi n tvidyut ur yeddi ara: %1$s</string>
+    <string name="conv_remux_failed">Uremuks n wakaram ur yeddi ara: %1$s</string>
+    <string name="conv_codec_unknown">Mačči d tvidyut H.264/H.265 yettwasnen</string>
+    <string name="conv_codec_is">Akudik d %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Tavidyut “%1$s” %2$s; abeddel n wakaram kan (aremuks) ur yezmir ara ad yebeddel akudik, ihi ur yezmir ara ad yettwasnulfu Live Photo.\n\nBeddel deg «Iɣewwaren → Atranskud n tividyutin → Amezruy n utranskud» ɣer «Rekudi», neɣ sefli-t zdat ɣer MP4 H.264/H.265 s wayeḍ n umahi.</string>
+    <string name="conv_hint_no_encoder">Tavidyut mačči deg wakaram MP4 amezduɣ (MOV / MKV / WebM / AVI atg.), syen «Amezruy n utranskud» n tura ur yekkis ara akudik, ihi ur yezmir ara ad yettwasnulfu Live Photo.\n\nBeddel deg «Iɣewwaren → Atranskud n tividyutin → Amezruy n utranskud» ɣer «Rekudi» (lqem amezduɣ yesεa akudik ffmpeg; lqem Go afessus ur yesεi ara atranskudar, seqdec lqem amezduɣ), neɣ sefli tavidyut zdat ɣer MP4 amezduɣ (H.264/H.265).</string>
+
+    <!-- ========== Isfuyla n usefli ========== -->
+    <string name="conv_log_detected">Yettwasnen am %1$s</string>
+    <string name="conv_log_same_format_copied">Format n tɣawsa d win usuffeɣ d yiwet; yettwanɣel am akken (war lexṣara)</string>
+    <string name="conv_log_extra_tracks_bypass">Tavidyut n tɣawsa tesεa tiraren mačči d taɣect/tugna (%1$s); yezgel anekcum s yiwet n format syen seqdec wudem aččuran n tira i usfeḍ</string>
+    <string name="conv_log_ts_fallback">Tɣawsa ulac-itt timir n ukafu n tvidyut; ɣef wudem amezduɣ yuɣal ɣer wammas n tvidyut</string>
+    <string name="conv_log_brand_normalized">Yessemqen azmul n wakaram n tvidyut (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Tavidyut tesεa tiraren izegzaɣen (%1$s) ur zmiren ara ad ttwasefḍen; yettwasuffeɣ am akken (agmuḍ yezmer ur yetturar ara s uṭṭef aɣezzfan deg kra n yilugan)</string>
+    <string name="conv_log_extra_tracks_removed">Yekkes tiraren izegzaɣen n tvidyut (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Tavidyut n tɣawsa %1$s; aremuks n wakaram kan ur t-yefru ara (%2$s). Ma agmuḍ ur yetturar ara s uṭṭef aɣezzfan, beddel «Iɣewwaren → Atranskud n tividyutin → Amezruy n utranskud» ɣer «Rekudi»</string>
+    <string name="conv_log_reencoding">Tavidyut n tɣawsa %1$s; tettwarekudi ɣef yisekkilen ɣer 8-bit + AAC i usnerni n umṣada n tgalri</string>
+    <string name="conv_log_reencode_result_unusable">Agmuḍ n urekudi ur yettwasqdec ara; yettwasuffeɣ am akken (agmuḍ yezmer ur yetturar ara s uṭṭef aɣezzfan deg kra n yilugan)</string>
+    <string name="conv_log_reencode_still_risky">Mbaɛd urekudi mazal llant tilufa (%1$s)</string>
+    <string name="conv_log_reencode_failed">Arekudi ur yeddi ara (%1$s); yettwasuffeɣ am akken (agmuḍ yezmer ur yetturar ara s uṭṭef aɣezzfan deg kra n yilugan)</string>
+    <string name="conv_log_cover_heic_converted">Akuver d HEIC (mačči JPEG); yettwatranskud ɣer JPEG amezduɣ zdat upakkej</string>
+    <string name="conv_log_compose_sizes">Asnulfu: tawlaft %1$dB + tavidyut %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Atranskudar ur yeddu ara: yettwaru azmul n wakaram kan (MOV → MP4), war arekudi</string>
+
+    <!-- Tisekkarin n isfuyla -->
+    <string name="conv_tag_convert">Sefli</string>
+    <string name="conv_tag_transcode">Transkudi</string>
+    <string name="conv_tag_compose">Snulfu</string>
+
+    <!-- Tisgilin n usseḥbes n umezruy n utranskud -->
+    <string name="conv_blocker_no_encoder">Atranskudar agejdan ur yella ara</string>
+    <string name="conv_blocker_mode_no_encode">«Amezruy n utranskud» n tura ur yekkis ara akudik</string>
+
+    <!-- ========== FfmpegAddon.kt: atranskud / aremuks ffmpeg agejdan ========== -->
+    <string name="conv_addon_unavailable">Atranskudar agejdan ur yella ara</string>
+    <string name="conv_addon_transcode_failed">Atranskud ffmpeg ur yeddi ara: %1$s</string>
+    <string name="conv_addon_remux_failed">Uremuks n wakaram ffmpeg ur yeddi ara: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Yettwatranskud tavidyut ɣer MP4 amezduɣ s ffmpeg (%1$s / crf %2$d / %3$s; tiraren n tugna d taɣect kan i yeqqimen)</string>
+    <string name="conv_log_transcode_done">Atranskud n tvidyut yekfa (%1$d KB)</string>
+    <string name="conv_log_remuxing">Yettwaremuks wakaram n tvidyut ɣer MP4 amezduɣ (akaram kan, war arekudi)</string>
+    <string name="conv_log_remux_done">Uremuks n wakaram yekfa (%1$d KB)</string>
+
+    <!-- ========== Reminders.kt: isfuyla «Ur mmal ara tikelt-nniḍen» ========== -->
+    <string name="conv_reminder_cat_compose">Asnulfu</string>
+    <string name="conv_reminder_cat_convert">Sefli</string>
+    <string name="conv_reminder_cat_update">Leqqem</string>
+    <string name="conv_reminder_video_over3s_title">Tavidyut tezger 3 tesdiyin</string>
+    <string name="conv_reminder_video_over3s_message">Tavidyut yettwafren tezger 3 tesdiyin, ihi Live Photo yettwasnulfen yezmer ad yesεu uguren n umṣada:\n\n• Yezmer ur yetturar ara akken ilaq\n• Yezmer ur yettwasnen ara s tgalri n unagraw\n• Kra n yilugan zemren ur snen ara Live Photo-a</string>
+    <string name="conv_reminder_legacy_go_title">Yettwaf lqem aqdim</string>
+    <string name="conv_reminder_legacy_go_message">Mazal yers lqem aqdim (lqem Go) n usnas-a deg yalugan-a. Lqem aqdim-nni ur yezmir ara ad yettwasqdec deg yalugan-a; tzemreḍ ad t-tkekseḍ i ufran n wammud.</string>
+    <string name="conv_reminder_replace_risk_title">Amezruy n ubeddel yesεa tilufa n lexṣara</string>
+    <!-- formatted="false": agbur-a ur yesεi ara imetteg n % n tidet, ur yettwasqdec ara d amagrad n umetteg. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Amezruy n ubeddel ad yaru agmuḍ n usefli srid ɣer ifula n tɣawsa; mbaɛd ubeddel ifula n tɣawsa ur zmiren ara ad ttwafrun.\n\n• Ma yettwaḥbes usnas, neɣ tettwacceṛ tkatut, neɣ tettwakkes tsiregt deg tira, ifula n tɣawsa zemren ad xesren\n• Ulac asefli yettwaḍamnen ad yeddu, syen deg usenqed ifula n tɣawsa zemren ad ilin ur zmiren ara ad ttwaseqdecen\n• Ɛreḍ s yiwen neɣ sin ifula zdat, i ussenqed, send asluɣu s ugeraw\n• Ḥrez tiwlafin tixatarin s ufus zdat\n\nTamahilt-a tettwaf am «akken tella»; tesqedceḍ-itt s tilufa-ik, syen ameskar ur yesεi ara tamast i yifula yexsen neɣ yettwaṣṣfen.</string>
+    <string name="conv_reminder_dont_remind">Ur mmal ara tikelt-nniḍen</string>
+    <string name="conv_reminder_confirm_ok">Fhimeɣ</string>
+    <string name="conv_reminder_uninstall">Kkes asnas</string>
+
+</resources>

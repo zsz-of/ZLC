@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Қазақша жолдар.
+  res/values/strings_*.xml (қарапайым қытай тілі — негізгі/қосалқы тіл) файлдарынан аударылды.
+  Барлық кілт базалық нұсқамен сәйкес; %1$s / %1$d толтырғыштары мен escape тізбектері өзгеріссіз қалдырылды.
+-->
+<resources>
+    <string name="update_lanzou_gone">Lanzou Cloud бөлісі жойылған немесе файл жоқ, оның орнына GitHub-тан жүктеңіз</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud бөлісі жойылды, оның орнына GitHub-тан жүктеңіз</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud жүктеу сілтемесін талдау сәтсіз</string>
+    <string name="update_lanzou_need_passwd">Бұл Lanzou Cloud бөлісі үшін қатынау коды қажет, оның орнына GitHub-тан жүктеңіз (немесе Release жазбасынан қатынау кодын табыңыз)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud қатынау коды қате</string>
+    <string name="update_err_resolve_failed">Талдау сәтсіз</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud анти-краулинг тексеруі сәтсіз</string>
+    <string name="update_err_no_frame">Lanzou Cloud жүктеу бетін талдау мүмкін емес (жүктеу кадры табылмады)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud файл идентификаторын талдау мүмкін емес</string>
+    <string name="update_err_no_sign">Lanzou Cloud қолтаңбасын талдау мүмкін емес</string>
+    <string name="update_err_ajax_request">API сұранысы сәтсіз</string>
+    <string name="update_err_api_request">Lanzou Cloud API сұранысы сәтсіз</string>
+    <string name="update_err_empty_direct">Lanzou Cloud бос жүктеу мекенжайын қайтарды</string>
+    <string name="update_err_direct_expired">Lanzou Cloud жүктеу мекенжайының мерзімі бітті, қайта алыңыз</string>
+    <string name="update_err_http_request">Сұраныс сәтсіз (HTTP %1$d)</string>
+    <string name="update_err_connect">Жүктеу серверіне қосылу мүмкін емес: %1$s</string>
+    <string name="update_err_http">Жүктеу сәтсіз (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Жүктеу қосылымын орнату мүмкін емес</string>
+    <string name="update_err_empty">Жүктелген мазмұн бос</string>
+    <string name="update_err_incomplete">Жүктеу толық емес (%1$d / барлығы %2$d байт алынды), қайта жүктеңіз</string>
+    <string name="update_err_interrupted">Жүктеу үзілді: %1$s</string>
+    <string name="update_err_not_apk">Жүктелген файл жарамды орнату пакеті емес (веб-бет болуы немесе сілтеменің мерзімі бітуі мүмкін), қайта жүктеңіз немесе GitHub-ты пайдаланыңыз.</string>
+    <string name="update_err_apk_incomplete">Орнату пакетінің мазмұны толық емес, қайта жүктеңіз немесе GitHub-ты пайдаланыңыз.</string>
+    <string name="update_err_apk_unparsable">Орнату пакетін талдау мүмкін емес (жүктеу толық болмауы мүмкін), қайта жүктеңіз немесе GitHub-ты пайдаланыңыз.</string>
+    <string name="update_err_no_install_permission">«Белгісіз қолданбаларды орнату» рұқсаты әлі берілмеді</string>
+    <string name="update_err_installer_failed">Жүйелік орнатушыны шақыру мүмкін емес (%1$s), файл менеджерінен орнату пакетін қолмен ашып орнатыңыз</string>
+</resources>

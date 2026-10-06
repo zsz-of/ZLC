@@ -1,9 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 本文件为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-     khb（傣泐 / 新傣仂文）属低资源语种：本文件未做实质性翻译（无可靠词表，拒绝臆造傣仂文），
-     仅保留品牌专名（按规范不翻译），其余 key 缺失将回落中文。 -->
+<!--
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  khb（傣泐 / 新傣仂文）为低资源语种：暂无可靠的新傣仂文词表，为避免臆造民族语言文字，
+  本文件正文沿用简体中文基准（即本应用对 khb 的兜底文案）；key 与元素类型与基准完全一致。
+  欢迎母语者逐条替换为傣泐语译文。
+  主界面 / 相册选择器文案（task-4，videolen-analyst 维护）。key 前缀 screen_。
+  res/values/ 是简体中文兜底（即原硬编码文案）；其它语种放 values-<locale>/strings_screens.xml。
+  占位符保持 %1$s / %1$d 编号形式，翻译时可重排顺序；数量相关文案用 <plurals>。
+  khb 的 CLDR 复数类别仅 other，故各 plurals 只保留 quantity="other"。
+-->
 <resources>
+    <!-- 顶栏副标题 -->
+    <string name="screen_app_subtitle">动态照片格式互转</string>
+    <!-- 顶栏右侧已选文件数（数量相关，用 plurals） -->
+    <plurals name="screen_file_count">
+        <item quantity="other">%1$d 个文件</item>
+    </plurals>
+    <!-- 顶栏设置入口（仅无障碍朗读） -->
+    <string name="screen_settings">设置</string>
+
+    <!-- 输出格式选择弹窗 -->
+    <string name="screen_select_output_format">选择输出格式</string>
+    <string name="screen_selected">已选择</string>
+    <string name="screen_vivo_single_warning">⚠ 过老的机型可能无法识别此格式</string>
+    <string name="screen_extract_blocked">⚠ 队列含合成任务，不能选择拆解</string>
+
+    <!-- 格式选项短名（长名见 strings_formats.xml 的 fmt_*） -->
     <string name="screen_format_google">Google</string>
     <string name="screen_format_apple">Apple</string>
     <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo（单文件）</string>
+    <string name="screen_format_vivo">vivo（双文件）</string>
+    <string name="screen_format_xiaomi">小米</string>
+    <string name="screen_format_honor">荣耀</string>
+    <string name="screen_format_meizu">魅族</string>
+    <string name="screen_format_extract">拆解</string>
+
+    <!-- 工具箱 BottomSheet -->
+    <string name="screen_toolbox">工具箱</string>
+    <string name="screen_batch_import">批量导入</string>
+    <string name="screen_batch_import_desc">扫描整个相册并批量识别动态照片</string>
+    <string name="screen_compose">合成动态照片</string>
+    <string name="screen_compose_desc">选择一张照片和一段视频配对合成</string>
+    <string name="screen_replace_mode">替换模式</string>
+    <string name="screen_replace_mode_desc">转换结果直接写回原文件，不再生成新文件</string>
+    <string name="screen_need_all_files_access_hint">需「所有文件访问」权限，点此去授权</string>
+    <string name="screen_agree_and_enable">同意并开启</string>
+
+    <!-- 空状态 / 底部控制面板 -->
+    <string name="screen_empty_no_files">还没有添加文件</string>
+    <string name="screen_view_detail">查看详情</string>
+    <string name="screen_add_files">添加文件</string>
+    <string name="screen_output_format">输出格式：%1$s</string>
+    <string name="screen_delete_original">处理完成后删除原图</string>
+    <string name="screen_need_all_files_access_view">需「所有文件访问」权限，点击查看</string>
+    <string name="screen_clear">清空</string>
+    <string name="screen_stop">停止处理</string>
+    <string name="screen_start_convert">开始转换</string>
+
+    <!-- 状态详情对话框 -->
+    <string name="screen_status_detail">状态详情</string>
+    <string name="screen_long_press_copy">长按文本可选中复制</string>
+    <string name="screen_copy">复制</string>
+    <string name="screen_close">关闭</string>
+
+    <!-- 相册选择器 -->
+    <string name="screen_back">返回</string>
+    <string name="screen_picker_title_select">选择动态照片</string>
+    <string name="screen_album_count">相册 %1$d</string>
+    <string name="screen_album_collapse_cover">收起相册封面</string>
+    <string name="screen_album_expand_cover">展开相册封面</string>
+    <string name="screen_scanning_progress">扫描中 %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">%1$d 张</item>
+    </plurals>
+    <string name="screen_select_all">全选</string>
+    <string name="screen_no_albums">没有可用相册</string>
+    <string name="screen_no_media">没有找到动态照片</string>
+    <string name="screen_no_media_compose">没有找到照片或视频</string>
+    <string name="screen_import">导入</string>
+    <string name="screen_import_count">导入 %1$d</string>
+    <string name="screen_import_mixed">导入 图%1$d·视%2$d</string>
+    <string name="screen_search">搜索</string>
+    <string name="screen_search_collapse">收起搜索</string>
+    <string name="screen_search_hint">按名称搜索</string>
+    <string name="screen_search_clear">清空搜索</string>
+    <string name="screen_sort_date">日期</string>
+    <string name="screen_sort_size">大小</string>
+    <string name="screen_sort_name">名称</string>
+    <string name="screen_sort_asc">正序</string>
+    <string name="screen_sort_desc">倒序</string>
+
+    <!-- 相册分组的日期标签（%1$d 等为数字占位符，翻译时可重排） -->
+    <string name="screen_date_today">今天</string>
+    <string name="screen_date_yesterday">昨天</string>
+    <string name="screen_date_this_year">%1$d月%2$d日</string>
+    <string name="screen_date_other_year">%1$d年%2$d月%3$d日</string>
 </resources>

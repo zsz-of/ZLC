@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Kernewek (Cornish) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">Rann Lanzou Cloud a veu hedhys po ny yllir kavoes an fylen; iskarga dhyworth GitHub yn y le</string>
+    <string name="update_lanzou_gone_short">Rann Lanzou Cloud a veu hedhys; iskarga dhyworth GitHub yn y le</string>
+    <string name="update_lanzou_resolve_failed">Dielvenna an gevren iskarga Lanzou Cloud a fyllyas</string>
+    <string name="update_lanzou_need_passwd">An rann Lanzou Cloud ma a gynner kod hedhes; iskarga dhyworth GitHub yn y le (po hwila an kod hedhes yn notyansow an dyllans)</string>
+    <string name="update_lanzou_wrong_passwd">Kod hedhes Lanzou Cloud kamm</string>
+    <string name="update_err_resolve_failed">Dielvenna a fyllyas</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Check anti-krawlya Lanzou Cloud a fyllyas</string>
+    <string name="update_err_no_frame">Ny yllir dielvenna folen iskarga Lanzou Cloud (frem iskarga na veu kevys)</string>
+    <string name="update_err_no_file_id">Ny yllir dielvenna aswonydh fylen Lanzou Cloud</string>
+    <string name="update_err_no_sign">Ny yllir dielvenna sinyans Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Govyn API a fyllyas</string>
+    <string name="update_err_api_request">Govyn API Lanzou Cloud a fyllyas</string>
+    <string name="update_err_empty_direct">Lanzou Cloud a dhehwelis URL iskarga gwag</string>
+    <string name="update_err_direct_expired">URL iskarga Lanzou Cloud a dheu dhe benn; y gavoes arta</string>
+    <string name="update_err_http_request">Govyn a fyllyas (HTTP %1$d)</string>
+    <string name="update_err_connect">Ny yllir junya dhe an servyor iskarga: %1$s</string>
+    <string name="update_err_http">Iskarga a fyllyas (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ny yllir gwruthyl junyans iskarga</string>
+    <string name="update_err_empty">An dal iskargys yw gwag</string>
+    <string name="update_err_incomplete">Iskarga anworfen (%1$d a %2$d bytys degemmerys); iskarga arta</string>
+    <string name="update_err_interrupted">Iskarga terrys: %1$s</string>
+    <string name="update_err_not_apk">An fylen iskargys nyns yw fardel gwiw (martesen folen wern po an gevren iskarga a dheu dhe benn); iskarga arta po devnydh GitHub.</string>
+    <string name="update_err_apk_incomplete">Dal an fardel yw anworfen; iskarga arta po devnydh GitHub.</string>
+    <string name="update_err_apk_unparsable">Ny yllir dielvenna an fardel (martesen an iskarga yw anworfen); iskarga arta po devnydh GitHub.</string>
+    <string name="update_err_no_install_permission">Kummyas «installya appow anaswon» na veu grontys hwath</string>
+    <string name="update_err_installer_failed">Ny yllir lonchya an installer system (%1$s); ygor an fardel dhyworth menedzher fylennow ha y installya dre la</string>
+</resources>

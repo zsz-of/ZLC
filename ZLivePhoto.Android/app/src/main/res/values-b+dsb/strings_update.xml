@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<!--
+  Dolnoserbska rěc — aktualizacije / ześěgnjenje (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Žrědłowy tekst jo chinski (res/values/strings_update.xml).
+  Kóždy kluc wótpowědujo bazowemu; placeholderje (%1$s / %1$d) se zachowaju.
+-->
+<resources>
+
+    <!-- ========== Žěleński bok Lanzou Cloud a analyza direktnego wótkaza ========== -->
+    <string name="update_lanzou_gone">Žělenje Lanzou Cloud jo se wótpórało abo dataja njeeksistěrujo, wužyjśo za ześěgnjenje GitHub</string>
+    <string name="update_lanzou_gone_short">Žělenje Lanzou Cloud jo se wótpórało, wužyjśo za ześěgnjenje GitHub</string>
+    <string name="update_lanzou_resolve_failed">Analiza ześěgnjeńskego wótkaza Lanzou Cloud jo se njeraźiła</string>
+    <string name="update_lanzou_need_passwd">Toś to žělenje Lanzou Cloud trjeba wupisowański kod, wužyjśo GitHub (abo pytajśo kod w pśipiskach wudaśa)</string>
+    <string name="update_lanzou_wrong_passwd">Njepšawy wupisowański kod Lanzou Cloud</string>
+    <string name="update_err_resolve_failed">Analiza jo se njeraźiła</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Pśekontrola pśeśiwo crawleram Lanzou Cloud jo se njeraźiła</string>
+    <string name="update_err_no_frame">Ześěgnjeński bok Lanzou Cloud njedajo se analyzěrowaś (ześěgnjeńska rama njenamakana)</string>
+    <string name="update_err_no_file_id">Identifikator dataje Lanzou Cloud njedajo se analyzěrowaś</string>
+    <string name="update_err_no_sign">Signatura Lanzou Cloud njedajo se analyzěrowaś</string>
+    <string name="update_err_ajax_request">Napšašowanje na interfejs jo se njeraźiło</string>
+    <string name="update_err_api_request">Napšašowanje na interfejs Lanzou Cloud jo se njeraźiło</string>
+    <string name="update_err_empty_direct">Lanzou Cloud wrośa prozny ześěgnjeński wótkaz</string>
+    <string name="update_err_direct_expired">Ześěgnjeński wótkaz Lanzou Cloud jo pśepadnjony, wześo jogo znowa</string>
+    <string name="update_err_http_request">Napšašowanje jo se njeraźiło (HTTP %1$d)</string>
+
+    <!-- ========== Ześěgnjenje ========== -->
+    <string name="update_err_connect">Zwisk ze ześěgnjeńskim serwerom njejo móžny: %1$s</string>
+    <string name="update_err_http">Ześěgnjenje jo se njeraźiło (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ześěgnjeński zwisk njedajo se natwariś</string>
+    <string name="update_err_empty">Ześěgnjone wopśimjeśe jo prozne</string>
+    <string name="update_err_incomplete">Ześěgnjenje njejo dopołne (dostane %1$d z %2$d bajtow), ześěgniśo znowa</string>
+    <string name="update_err_interrupted">Ześěgnjenje pśetergnjone: %1$s</string>
+
+    <!-- ========== Kontrola a instalěrowanje instalaciskeje dataje ========== -->
+    <string name="update_err_not_apk">Ześěgnjone njejo płaśiwa instalaciska dataja (snaź bok abo pśepadnjony wótkaz), ześěgniśo znowa abo wužyjśo GitHub.</string>
+    <string name="update_err_apk_incomplete">Wopśimjeśe instalaciskeje dataje njejo dopołne, ześěgniśo znowa abo wužyjśo GitHub.</string>
+    <string name="update_err_apk_unparsable">Instalaciska dataja njedajo se analyzěrowaś (snaź jo ześěgnjenje njedopołne), ześěgniśo znowa abo wužyjśo GitHub.</string>
+    <string name="update_err_no_install_permission">Pšawo „instalěrowanje njeznatych aplikacijow” hyšći njedane</string>
+    <string name="update_err_installer_failed">Systemowy instalěrowak njedajo se zawołaś (%1$s), wócyńśo instalacisku dataju manuelnje w datajowem rědniku</string>
+
+</resources>

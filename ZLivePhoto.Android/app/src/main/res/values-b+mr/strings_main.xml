@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Marathi (mr) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">तयार</string>
+    <string name="main_status_location_granted">स्थान परवानगी मिळाली; रूपांतरणानंतर GPS मेटाडेटा टिकवला जाईल</string>
+    <string name="main_status_location_denied">स्थान परवानगी दिली नाही: रूपांतरणानंतर फोटोतील GPS स्थान माहिती निघून जाईल</string>
+    <string name="main_status_all_files_granted">“सर्व फाइलंवर प्रवेश” परवानगी मिळाली; रूपांतरण थेट अल्बम डिरेक्टरीत लिहिले जाईल आणि स्थान माहिती पूर्णपणे टिकवली जाईल</string>
+    <string name="main_status_all_files_denied">“सर्व फाइलंवर प्रवेश” परवानगी दिली नाही: काही उपकरणांवर रूपांतरणानंतर स्थान माहिती निघून जाऊ शकते</string>
+    <string name="main_status_read_granted">फोटो व व्हिडिओ वाचण्याची परवानगी मिळाली</string>
+    <string name="main_status_video_missing">परवानगी मिळाली, पण व्हिडिओ परवानगी नाही: दोन-फाइल लाइव्ह फोटोचा सोबतचा व्हिडिओ शोधता येत नाही</string>
+    <string name="main_status_permission_denied">परवानगी दिली नाही; “फाइल जोडा” पुन्हा क्लिक करू शकता</string>
+    <string name="main_status_folder_not_selected">फोल्डर निवडले नाही</string>
+    <string name="main_status_folder_unavailable">निवडलेल्या फोल्डरमध्ये प्रवेश करता येत नाही (फक्त स्थानिक स्टोरेज डिरेक्टरींना समर्थन)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">मागील सत्र पुन्हा लोड केले (%1$d फाइल)</item>
+        <item quantity="other">मागील सत्र पुन्हा लोड केले (%1$d फाइल)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">मागील वेळी असामान्य बंद पडल्याचे आढळले; अपूर्ण यादी रिकामी केली</string>
+    <string name="main_status_compose_blocks_extract">रांगेत संयोजन कामे असल्याने वेगळे करणी मोडमध्ये बदलता येत नाही</string>
+    <string name="main_status_replace_off_mutex">रिप्लेस मोड बंद केला (प्रोसेसिंग पूर्ण झाल्यावर मूळ फोटो काढून टाका याशी परस्परविरोधी)</string>
+    <string name="main_status_delete_needs_all_files">मूळ फोटो स्वयंचलितपणे काढण्यासाठी “सर्व फाइलंवर प्रवेश” परवानगी आवश्यक; आधी परवानगी द्या</string>
+    <string name="main_status_replace_off">रिप्लेस मोड बंद केला; रूपांतरणाचा निकाल पुन्हा अल्बम डिरेक्टरीत लिहिला जाईल</string>
+    <string name="main_status_replace_needs_all_files">रिप्लेस मोडसाठी “सर्व फाइलंवर प्रवेश” परवानगी आवश्यक; आधी परवानगी द्या</string>
+    <string name="main_status_delete_off_mutex">“प्रोसेसिंग पूर्ण झाल्यावर मूळ फोटो काढून टाका” बंद केले (रिप्लेस मोडशी परस्परविरोधी)</string>
+    <string name="main_status_loading_albums">अल्बम वाचत आहे…</string>
+    <string name="main_status_no_albums">कोणताही अल्बम आढळला नाही</string>
+    <string name="main_status_compose_no_photo">फोटो निवडला नाही, संयोजन करता येत नाही</string>
+    <string name="main_status_compose_no_video">व्हिडिओ निवडला नाही, संयोजन करता येत नाही</string>
+    <string name="main_status_compose_all_added">निवडलेले सर्व फोटो यादीत आधीच आहेत</string>
+    <string name="main_status_compose_paired">फोटो %1$d, व्हिडिओ %2$d; कमी असलेल्या बाजूप्रमाणे %3$d संयोजन कामे जोडली</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d संयोजन काम जोडले; संयोजनासाठी “रूपांतरण सुरू करा” क्लिक करा</item>
+        <item quantity="other">%1$d संयोजन कामे जोडली; संयोजनासाठी “रूपांतरण सुरू करा” क्लिक करा</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (आउटपुट स्वरूप स्वयंचलितपणे Google केले)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">शेअर केलेली %1$d प्रतिमा इम्पोर्ट करत आहे…</item>
+        <item quantity="other">शेअर केलेल्या %1$d प्रतिमा इम्पोर्ट करत आहे…</item>
+    </plurals>
+    <string name="main_status_import_failed">इम्पोर्ट अयशस्वी: %1$s</string>
+    <string name="main_status_import_done_partial">इम्पोर्ट पूर्ण: यशस्वी %1$d, अयशस्वी %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">इम्पोर्ट पूर्ण: एकूण %1$d फाइल इम्पोर्ट केली</item>
+        <item quantity="other">इम्पोर्ट पूर्ण: एकूण %1$d फाइल इम्पोर्ट केली</item>
+    </plurals>
+    <string name="main_status_import_stopped">इम्पोर्ट थांबवले: यशस्वी %1$d, अयशस्वी %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d फाइल इम्पोर्ट करत आहे…</item>
+        <item quantity="other">%1$d फाइलं इम्पोर्ट करत आहे…</item>
+    </plurals>
+    <string name="main_status_importing_progress">इम्पोर्ट करत आहे %1$d/%2$d…</string>
+    <string name="main_status_stopping">थांबवत आहे… (सध्याची फाइल पूर्ण झाल्यावर थांबेल)</string>
+    <string name="main_status_stopping_import">इम्पोर्ट थांबवत आहे…</string>
+    <string name="main_status_removed">%1$s काढले</string>
+    <string name="main_status_cleared">रिकामे केले</string>
+    <string name="main_status_nothing_to_convert">रूपांतरित करण्यासारखी फाइल नाही</string>
+    <string name="main_status_folder_unreadable">निवडलेले फोल्डर वाचता येत नाही</string>
+    <string name="main_status_scanning_folder">फोल्डर स्कॅन करत आहे…</string>
+    <string name="main_status_no_images">निवडलेल्या फोल्डरमध्ये प्रतिमा आढळल्या नाहीत</string>
+    <string name="main_status_batch_importing">बॅच इम्पोर्ट करत आहे %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">बॅच इम्पोर्ट थांबवले: एकूण %1$d लाइव्ह फोटो इम्पोर्ट केले</item>
+        <item quantity="other">बॅच इम्पोर्ट थांबवले: एकूण %1$d लाइव्ह फोटो इम्पोर्ट केले</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">बॅच इम्पोर्ट थांबवले: एकूण %1$d लाइव्ह फोटो इम्पोर्ट केले, लाइव्ह नसलेल्या %2$d फाइल वगळल्या</item>
+        <item quantity="other">बॅच इम्पोर्ट थांबवले: एकूण %1$d लाइव्ह फोटो इम्पोर्ट केले, लाइव्ह नसलेल्या %2$d फाइल वगळल्या</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">बॅच इम्पोर्ट पूर्ण: एकूण %1$d लाइव्ह फोटो इम्पोर्ट केले</item>
+        <item quantity="other">बॅच इम्पोर्ट पूर्ण: एकूण %1$d लाइव्ह फोटो इम्पोर्ट केले</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">बॅच इम्पोर्ट पूर्ण: एकूण %1$d लाइव्ह फोटो इम्पोर्ट केले, लाइव्ह नसलेल्या %2$d फाइल वगळल्या</item>
+        <item quantity="other">बॅच इम्पोर्ट पूर्ण: एकूण %1$d लाइव्ह फोटो इम्पोर्ट केले, लाइव्ह नसलेल्या %2$d फाइल वगळल्या</item>
+    </plurals>
+    <string name="main_status_stopped_replace">थांबवले: %1$d फाइलांपैकी %2$d प्रोसेस केल्या, %3$d स्रोत फाइल बदलल्या</string>
+    <string name="main_status_stopped_export">थांबवले: %1$d फाइलांपैकी %2$d प्रोसेस केल्या, %3$d अल्बममध्ये निर्यात केल्या</string>
+    <string name="main_status_done_replace_reason">पूर्ण: %1$d फाइल प्रोसेस झाल्या, %2$d स्रोत फाइल बदलल्या (कारण: %3$s)</string>
+    <string name="main_status_done_export_reason">पूर्ण: %1$d फाइल प्रोसेस झाल्या, %2$d अल्बममध्ये निर्यात केल्या (कारण: %3$s)</string>
+    <string name="main_status_done_replace">पूर्ण: %1$d फाइल प्रोसेस झाल्या, %2$d स्रोत फाइल बदलल्या</string>
+    <string name="main_status_done_export">पूर्ण: %1$d फाइल प्रोसेस झाल्या, %2$d अल्बममध्ये निर्यात केल्या</string>
+    <string name="main_status_keep_originals">%1$s; “संपूर्ण स्टोरेज प्रवेश” परवानगी न मिळाल्याने मूळ फोटो ठेवले</string>
+    <string name="main_info_detecting">तपासत आहे…</string>
+    <string name="main_info_unrecognized">ओळखता न येणारे लाइव्ह फोटो स्वरूप</string>
+    <string name="main_info_converting">रूपांतरित करत आहे…</string>
+    <string name="main_info_compose_task">संयोजन काम (संयोजनासाठी “रूपांतरण सुरू करा” क्लिक करा)</string>
+    <string name="main_info_done_replaced">पूर्ण (%1$d स्रोत फाइल बदलल्या)</string>
+    <string name="main_info_done_skipped">पूर्ण (वगळले: त्याच नावाची फाइल)</string>
+    <string name="main_info_done_exported">पूर्ण (%1$d निर्यात केल्या)</string>
+    <string name="main_info_failed">अयशस्वी: %1$s</string>
+    <string name="main_progress_added">जोडले %1$d/%2$d</string>
+    <string name="main_progress_processed">प्रोसेस केले %1$d/%2$d</string>
+    <string name="main_progress_imported">इम्पोर्ट केले %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">फोटो व व्हिडिओ वाचण्याची परवानगी आवश्यक</string>
+    <string name="main_dialog_permission_message">तुमच्या उपकरणातील फोटो व व्हिडिओ वाचण्यासाठी या ॲपला परवानगी आवश्यक आहे:\n\n• फोटो परवानगी: उपकरणातील अल्बम स्कॅन करून त्यातील लाइव्ह फोटो ओळखणे\n• व्हिडिओ परवानगी: दोन-फाइल लाइव्ह फोटोचा सोबतचा व्हिडिओ शोधणे\n• स्थान परवानगी: फोटोतील GPS स्थान मेटाडेटा टिकवणे (नाही तर रूपांतरणानंतर स्थान माहिती निघून जाईल)\n\nनकार दिल्यास अंतर्गत निवडक वापरता येणार नाही; “फाइल जोडा” पुन्हा क्लिक करून नंतर परवानगी देऊ शकता.</string>
+    <string name="main_dialog_settings_title">फोटो व व्हिडिओची परवानगी स्वतः देणे आवश्यक</string>
+    <string name="main_dialog_settings_message">तुम्ही यापूर्वी “पुन्हा विचारू नका” निवडले होते; प्रणाली यापुढे परवानगी संवाद दाखवणार नाही.\n\nॲप माहिती पृष्ठ → परवानग्या → फोटो व व्हिडिओ येथे जाऊन स्वतः परवानगी द्या आणि नंतर या ॲपमध्ये परत या.\n\nलक्षात घ्या: “फोटो” व “व्हिडिओ” दोन्ही परवानग्या एकत्र द्याव्या लागतात; नाही तर दोन-फाइल लाइव्ह फोटोचा सोबतचा व्हिडिओ सापडणार नाही.</string>
+    <string name="main_dialog_allfiles_title_delete">मूळ फोटो स्वयंचलितपणे काढण्यासाठी “सर्व फाइलंवर प्रवेश” आवश्यक</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">या उपकरणावर मूळ फोटो स्वयंचलितपणे काढता येत नाही</string>
+    <string name="main_dialog_allfiles_title_replace">रिप्लेस मोडसाठी “सर्व फाइलंवर प्रवेश” आवश्यक</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">या उपकरणावर रिप्लेस मोडला समर्थन नाही</string>
+    <string name="main_dialog_allfiles_title_location">“सर्व फाइलंवर प्रवेश” परवानगी देण्याची शिफारस</string>
+    <string name="main_dialog_allfiles_delete_message">“प्रोसेसिंग पूर्ण झाल्यावर मूळ फोटो काढून टाका” डिस्कवरील मूळ फाइल (फोटो व त्याचा सोबतचा व्हिडिओ) थेट काढून टाकते; ही क्रिया पूर्वपदावर आणता येत नाही, म्हणून आधी “सर्व फाइलंवर प्रवेश” परवानगी द्यावी.\n\nपरवानगी दिल्यावरच हा स्विच वापरण्यायोग्य होईल; तेव्हा तुम्ही स्वतः चालू करू शकता.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">सध्याची प्रणाली (Android 10 व त्याखालील) “सर्व फाइलंवर प्रवेश” परवानगी देत नाही; डिस्कवरील मूळ फाइल थेट काढता येत नाही, म्हणून या उपकरणावर “प्रोसेसिंग पूर्ण झाल्यावर मूळ फोटो काढून टाका” समर्थित नाही.\n\nरूपांतरण पूर्ण झाल्यावर प्रणाली अल्बममधून मूळ फोटो स्वतः हटवू शकता.</string>
+    <string name="main_dialog_allfiles_replace_message">“रिप्लेस मोड” रूपांतरणाचा निकाल थेट डिस्कवरील मूळ फाइलमध्ये लिहितो (मूळ मजकूर बदलतो); ही क्रिया पूर्वपदावर आणता येत नाही, म्हणून आधी “सर्व फाइलंवर प्रवेश” परवानगी द्यावी.\n\nपरवानगी दिल्यावरच हा स्विच वापरण्यायोग्य होईल; तेव्हा तुम्ही स्वतः चालू करू शकता.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">सध्याची प्रणाली (Android 10 व त्याखालील) “सर्व फाइलंवर प्रवेश” परवानगी देत नाही; डिस्कवरील मूळ फाइल थेट बदलता येत नाही, म्हणून या उपकरणावर “रिप्लेस मोड” समर्थित नाही.\n\nनेहमीच्या पद्धतीने रूपांतरण करू शकता; निकाल अल्बम डिरेक्टरीत निर्यात होईल.</string>
+    <string name="main_dialog_allfiles_location_message">काही उपकरणांवर (उदा. Meizu) प्रणाली अल्बम इंटरफेसद्वारे लिहिल्यास GPS स्थान माहिती काढून टाकली जाते, त्यामुळे रूपांतरणानंतर फोटोत स्थान निघून जाते.\n\n“सर्व फाइलंवर प्रवेश” दिल्यास हे ॲप थेट अल्बम डिरेक्टरीत लिहील आणि स्थान मेटाडेटा पूर्णपणे टिकवेल.\n\nपरवानगी न दिल्यासही रूपांतरण नेहमीप्रमाणे चालेल; काही उपकरणांवर स्थान माहिती निघून जाऊ शकते.</string>
+    <string name="main_dialog_conflict_title">आउटपुट फाइलनाव संघर्ष</string>
+    <string name="main_dialog_conflict_message">आउटपुट डिरेक्टरीत त्याच नावाची फाइल आधीच आहे:\n%1$s\n\nकृपया कसे हाताळायचे ते निवडा.</string>
+    <string name="main_label_conflict_always">पुढील संघर्षांसाठी हीच पद्धत वापरा</string>
+    <string name="main_btn_grant">परवानगी द्या</string>
+    <string name="main_btn_deny">नकार द्या</string>
+    <string name="main_btn_go_settings">सेटिंग्जमध्ये जा</string>
+    <string name="main_btn_cancel">रद्द करा</string>
+    <string name="main_btn_grant_access">परवानगीसाठी जा</string>
+    <string name="main_btn_got_it">समजले</string>
+    <string name="main_btn_not_now">आत्ता नको</string>
+    <string name="main_btn_skip">वगळा</string>
+    <string name="main_btn_overwrite">पुन्हा लिहा</string>
+    <string name="main_btn_auto_rename">स्वयंचलितपणे नाव बदला</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d मूळ फाइल काढली</item>
+        <item quantity="other">%1$d मूळ फाइल काढल्या</item>
+    </plurals>
+    <string name="main_delete_nothing">मूळ फोटो काढण्याची गरज नाही</string>
+    <string name="main_delete_partial">%1$d मूळ फाइल काढली (%2$d काढता आल्या नाहीत, ठेवल्या)</string>
+    <string name="main_delete_failed">मूळ फोटो काढणे अयशस्वी (फाइल वापरात आहे किंवा लेखन परवानगी नाही), ठेवले</string>
+    <string name="main_export_missing_output">रूपांतरणाचा निकाल नाही किंवा रिकामा आहे: %1$s</string>
+    <string name="main_export_missing_output_bare">रूपांतरणाचा निकाल नाही किंवा रिकामा आहे</string>
+    <string name="main_export_insert_null">MediaStore insert ने null दिले</string>
+    <string name="main_export_output_stream">MediaStore आउटपुट स्ट्रीम उपलब्ध नाही</string>
+    <string name="main_export_write_failed">MediaStore लेखन अयशस्वी: %1$s</string>
+    <string name="main_export_mkdir_failed">अल्बम डिरेक्टरी %1$s तयार करता येत नाही</string>
+    <string name="main_export_dir_write_failed">अल्बम डिरेक्टरीत लेखन अयशस्वी: %1$s</string>
+    <string name="main_export_no_source">स्रोत फाइल सापडत नाही, बदलणे वगळले</string>
+    <string name="main_export_companion_failed">सोबतची फाइल परत लिहिणे अयशस्वी: %1$s</string>
+    <string name="main_export_source_dir_unwritable">स्रोत फाइल डिरेक्टरीत लिहिता येत नाही, सोबतची फाइल परत लिहिता आली नाही</string>
+    <string name="main_export_source_dir_unavailable">स्रोत फाइल डिरेक्टरी उपलब्ध नाही: %1$s</string>
+    <string name="main_export_replace_failed">स्रोत फाइल बदलणे अयशस्वी: %1$s</string>
+    <string name="main_export_replace_failed_bare">स्रोत फाइल बदलणे अयशस्वी</string>
+</resources>

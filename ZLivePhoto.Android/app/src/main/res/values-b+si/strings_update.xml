@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · සිංහල (Sinhala) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Sinhala; technical terms follow the English loanword where common.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_lanzou_gone">Lanzou Cloud බෙදාගැනීම අවලංගු කර ඇත හෝ ගොනුව නොපවතී; කරුණාකර GitHub වෙතින් බාගන්න</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud බෙදාගැනීම අවලංගු කර ඇත; කරුණාකර GitHub වෙතින් බාගන්න</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud බාගැනීම් සබැඳිය විග්‍රහ කිරීම අසාර්ථක විය</string>
+    <string name="update_lanzou_need_passwd">මෙම Lanzou Cloud බෙදාගැනීමට ප්‍රවේශ කේතයක් අවශ්‍යයි; කරුණාකර GitHub වෙතින් බාගන්න (නැතහොත් Release සටහන්වල ප්‍රවේශ කේතය සොයන්න)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud ප්‍රවේශ කේතය වැරදිය</string>
+    <string name="update_err_resolve_failed">විග්‍රහ කිරීම අසාර්ථක විය</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud ප්‍රති-ක්‍රෝලර් පරීක්ෂාව අසාර්ථක විය</string>
+    <string name="update_err_no_frame">Lanzou Cloud බාගැනීම් පිටුව විග්‍රහ කළ නොහැක (බාගැනීම් රාමුව හමු නොවිණි)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud ගොනු හඳුනා ලකුණ විග්‍රහ කළ නොහැක</string>
+    <string name="update_err_no_sign">Lanzou Cloud අත්සන විග්‍රහ කළ නොහැක</string>
+    <string name="update_err_ajax_request">API ඉල්ලීම අසාර්ථක විය</string>
+    <string name="update_err_api_request">Lanzou Cloud API ඉල්ලීම අසාර්ථක විය</string>
+    <string name="update_err_empty_direct">Lanzou Cloud හිස් බාගැනීම් ලිපිනයක් ලබා දුන්නේය</string>
+    <string name="update_err_direct_expired">Lanzou Cloud බාගැනීම් ලිපිනය කල් ඉකුත් වී ඇත; කරුණාකර නැවත ලබාගන්න</string>
+    <string name="update_err_http_request">ඉල්ලීම අසාර්ථක විය (HTTP %1$d)</string>
+    <string name="update_err_connect">බාගැනීම් සේවාදායකයට සම්බන්ධ විය නොහැක: %1$s</string>
+    <string name="update_err_http">බාගැනීම අසාර්ථක විය (HTTP %1$d)</string>
+    <string name="update_err_no_connection">බාගැනීම් සම්බන්ධතාවක් ඇති කළ නොහැක</string>
+    <string name="update_err_empty">බාගත කළ අන්තර්ගතය හිස්ය</string>
+    <string name="update_err_incomplete">බාගැනීම අසම්පූර්ණයි (ලැබුණි %1$d / මුළු %2$d බයිට්), කරුණාකර නැවත බාගන්න</string>
+    <string name="update_err_interrupted">බාගැනීම බාධා විය: %1$s</string>
+    <string name="update_err_not_apk">බාගත කළ ගොනුව වලංගු පැකේජයක් නොවේ (එය වෙබ් පිටුවක් විය හැක, නැතහොත් බාගැනීම් සබැඳිය කල් ඉකුත් වී ඇත); කරුණාකර නැවත බාගන්න හෝ GitHub භාවිත කරන්න.</string>
+    <string name="update_err_apk_incomplete">පැකේජයේ අන්තර්ගතය අසම්පූර්ණයි; කරුණාකර නැවත බාගන්න හෝ GitHub භාවිත කරන්න.</string>
+    <string name="update_err_apk_unparsable">පැකේජය විග්‍රහ කළ නොහැක (බාගැනීම අසම්පූර්ණ විය හැක); කරුණාකර නැවත බාගන්න හෝ GitHub භාවිත කරන්න.</string>
+    <string name="update_err_no_install_permission">“නොදන්නා යෙදුම් ස්ථාපනය කිරීම” අවසරය තවම ලබා දී නැත</string>
+    <string name="update_err_installer_failed">පද්ධති ස්ථාපකය ආරම්භ කළ නොහැක (%1$s); කරුණාකර ගොනු කළමනාකරු වෙත ගොස් පැකේජය අතින් විවෘත කර ස්ථාපනය කරන්න</string>
+</resources>

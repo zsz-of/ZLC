@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  toki pona (tok) — nimi ilo.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Quality level: C (low-resource language, best-effort translation).
+  nimi ZLC li ante ala.
+-->
+<resources>
+    <string name="app_name">ZLC</string>
+</resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Frissítési folyamat szövegek (task-4, videolen-analyst karbantartja) — ui/UpdateFlow.kt-nek felel meg.
+  Külön fájl: a feladat csak strings_screens.xml / strings_formats.xml-t említette,
+  de az UpdateFlow a frissítési modult képezi; az i18n-terv \"minden modul egy strings_*.xml\"-szerint
+  a fájlneve update_flow, hogy ne ütközzen más feladatokkal.
+  Kulcsok update_ prefixszel; res/values/ a hagyományos egyszerűsített kínai bufer.
+  UpdateFlowController (nem Composable) context.getString(...)-ot használ; párbeszédek stringResource(...)-ot.
+-->
+<resources>
+    <!-- Kontroller oldalú figyelmeztetések (Context nélkül Composable-on kívül, mind context.getString-t használ) -->
+    <string name="update_github_url_missing">GitHub letöltési URL-t nem kaptuk meg; próbálja újra később.</string>
+    <string name="update_flavor_standard">Standard verzió</string>
+    <string name="update_flavor_go">Go verzió</string>
+    <string name="update_lanzou_url_missing">Ez a verzió nem kínál LanChou cloud letöltési linket; használja a GitHub letöltést.</string>
+    <string name="update_apk_direct_missing">Ez a verzió nem kínál telepítőfájl közvetlen linket az aktuális verzióval; lépjen a GitHub kiadás oldalára, és válasszon megfelelő APK-t.</string>
+    <string name="update_install_permission_missing">Nincs meg \"Ismeretlen alkalmazások telepítése\" jogosultság; nem érhető el automatikus telepítés. Kérem a rendszer beállításaiban engedélyezze, majd próbálja újra.</string>
+    <string name="update_error_unknown">Ismeretlen hiba</string>
+    <string name="update_fail_lanzou">LanChou cloud letöltés sikertelen</string>
+    <string name="update_fail_github">GitHub letöltés sikertelen</string>
+    <string name="update_lanzou_resolving">LanChou cloud letöltési link elemzése folyamatban…</string>
+    <string name="update_lanzou_downloading">Letöltés LanChou cloud-ból…</string>
+    <string name="update_github_downloading">Letöltés GitHub-ból…</string>
+    <string name="update_unzipping">Telepítőfájl kinyerése folyamatban…</string>
+    <string name="update_notes_empty">Ennél a verziónál nincs frissítési ismertetés.</string>
+
+    <!-- Go verzióhoz kapcsolódó párbeszédek -->
+    <string name="update_use_normal_title">Használja a normál verziót</string>
+    <string name="update_use_normal_body">Ez az eszköz Android 10 vagy magasabb verzióval rendelkezik; a Go könnyített verzió már nem tárgyal; régi verzió nem használható tovább.\n\nÉszleltük, hogy a normál verzió (ZLC) telepítve van; nyissa meg a normál verziót a folytatáshoz (új verzió nem kínál Gothic kompatibilis verziót; régi verzió eltávolítható hely felszabadításához).</string>
+    <string name="update_open_normal">Normál verzió megnyitása</string>
+    <string name="update_must_update_title">A folytatáshoz frissíteni kell</string>
+    <string name="update_forced_body">Ez az eszköz Android 10 vagy magasabb verzióval rendelkezik; a Go könnyített verzió már nem tárgyal; régi verzió nem használható tovább; új verzió nem kínál Gothic kompatibilis verziót.\n\nCsatolja a hálózatot, és kattintson a \"Próbálja újra\" a normál verzió telepítőfájljának megszerzéséhez.</string>
+    <string name="update_retry">Próbálja újra</string>
+    <string name="update_switch_normal_body">Ez az eszköz Android 10 vagy magasabb verzióval rendelkezik; a Go könnyített verzió már nem tárgyal; régi verzió nem használható tovább.\n\nTöltse le és telepítse a normál verziót a folytatáshoz (új verzió nem kínál Gothic kompatibilis verziót).</string>
+
+    <!-- Letöltés / Telepítés jogosultság / Eredmény figyelmeztetések -->
+    <string name="update_downloading_title">Frissítés letöltése</string>
+    <string name="update_cancel">Mégse</string>
+    <string name="update_need_permission_title">Telepítési jogosultság szükséges</string>
+    <string name="update_need_permission_body">Az új verzió telepítéséhez \"Ismeretlen alkalmazások telepítése\" jogosultság szükséges.\n\nKattintson a \"Tovább a jogosultságokhoz\", engedélyezze a beállításokban, és térjen vissza az alkalmazáshoz; a telepítés automatikusan folytatódik (új letöltés nem szükséges).</string>
+    <string name="update_grant">Tovább a jogosultságokhoz</string>
+    <string name="update_notice_title">Figyelem</string>
+    <string name="update_got_it">Értem</string>
+
+    <!-- Fő párbeszéd / Frissítési ismertetés -->
+    <string name="update_notes_title">v%1$s · Frissítési ismertetés</string>
+    <string name="update_back">Vissza</string>
+    <string name="update_title_switch_normal">Váltás normál verzióra</string>
+    <string name="update_title_reinstall">Ezen verzió új telepítése</string>
+    <string name="update_title_new_version">Új verzió észlelve</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Ebben a verzióban letölti és telepíti újra (fölfede a jelenlegi alkalmazást).\nEz a funkció a frissítési mechanizmus visszafelé tesztelésére szolgál.</string>
+    <string name="update_view_notes">Frissítési ismertetés megtekintése</string>
+    <string name="update_lanzou_unavailable">LanChou cloud nem elérhető</string>
+    <string name="update_download_lanzou">Letöltés LanChou cloud-ból</string>
+    <string name="update_download_github">Letöltés GitHub-ból</string>
+    <string name="update_download_browser">Letöltés böngészőből</string>
+    <string name="update_later">Frissítés később</string>
+    <string name="update_later_switch">Váltás később</string>
+    <string name="update_skip_version">Ezen verzió kihagyása</string>
+</resources>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+
+    <!-- ========== Converter.kt: přepruwowanje parametrow a materialow (wuwzaće → pokazanje přičiny zwrěšćenja) ========== -->
+    <string name="conv_unknown_target">Njeznaty cilowy format: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Njespóznaty format Live Photo (nje je Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Titulne foto njeeksistuje abo je prózdne</string>
+    <string name="conv_video_missing">Widejo njeeksistuje abo je prózdne</string>
+    <string name="conv_video_too_large">Widejo je přewulke (%1$d MB) za syntezu Live Photo; prošu wubjerće krótše widejo</string>
+    <string name="conv_transcoded_too_large">Widejo je tež po překoděrowanju přewulke (%1$d MB); Live Photo njeda so syntezować</string>
+    <string name="conv_video_too_large_compose">Widejo je přewulke (%1$d MB); Live Photo njeda so syntezować</string>
+
+    <!-- Converter.kt: titulne foto (HEIC / nic JPEG) -->
+    <string name="conv_cover_heic_go">Titulne foto je HEIC-wobraz (lajchta wersija překoděrowanje njepodpěruje; prošu eksportujće jo na iPhone jako JPEG a potom konwertujće)</string>
+    <string name="conv_cover_invalid_heic">Titulne foto płaćiwe foto njeje (HEIC trjeba systemowu podpěru za HEIF-dekoděrowanje)</string>
+    <string name="conv_cover_not_jpeg_go">Titulne foto JPEG njeje (lajchta wersija překoděrowanje njepodpěruje; prošu wužijće JPEG-foto)</string>
+    <string name="conv_cover_invalid_image">Titulne foto płaćiwe foto njeje (podpěruja so jenož JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: zwrěšćenje překoděrowanja / přepakowanja a pokiw «jenož přeměna kontejnera koděrowanje njerozrisuje» -->
+    <string name="conv_reencode_failed">Znowa-koděrowanje widea zwrěšćiło: %1$s</string>
+    <string name="conv_remux_failed">Přepakowanje kontejnera zwrěšćiło: %1$s</string>
+    <string name="conv_codec_unknown">Njeje spóznajomne H.264/H.265 widejo</string>
+    <string name="conv_codec_is">Koděrowanje je %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Widejo «%1$s» %2$s; jenož přeměna kontejnera (přepakowanje) koděrowanje změnić njemóže, tohodla Live Photo njeda so syntezować.\n\nProšu přestajće w «Nastajenja → Překoděrowanje widea → Překoděrowanski modus» na «Znowa koděrować» abo konwertujće jo najprjedy z druhimi nastrojemi do MP4 z H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Widejo njeje w standardnym MP4-kontejnerje (MOV / MKV / WebM / AVI atd.), a aktualny «Překoděrowanski modus» znowa njekoděruje, tohodla Live Photo njeda so syntezować.\n\nProšu přestajće w «Nastajenja → Překoděrowanje widea → Překoděrowanski modus» na «Znowa koděrować» (normalna wersija wobsahuje zabudowany ffmpeg-koděrowak; Go-lajchta wersija překoděrowak nima, prošu wužijće normalnu wersiju) abo konwertujće widejo najprjedy do standardneho MP4 (H.264/H.265).</string>
+
+    <!-- ========== Protokol konwertowanja (pokazuje so w statusowej lajsće zapiska a w panelu protokola) ========== -->
+    <string name="conv_log_detected">Spóznate jako %1$s</string>
+    <string name="conv_log_same_format_copied">Žórłowy a cilowy format stej samsne; kopěrowane bjez přeměny (bjez zhuby)</string>
+    <string name="conv_log_extra_tracks_bypass">Žórłowe widejo wobsahuje njeawdio-/njewideostaze (%1$s); přeskakuje so direktne přenošowanje samsneho formata a wužiwa so dospołny postup zapisanja za wučisćenje</string>
+    <string name="conv_log_ts_fallback">Žórło časowy značk titulneho kadra nima; po specifikaciji so srjedźina widea wužiwa</string>
+    <string name="conv_log_brand_normalized">Značka wideokontejnera normalizowana (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Widejo wobsahuje přidatne staze (%1$s), wučisćenje njeje móžne; wudaće je bjez přeměny (wuslědk snano pola jednotliwych typow přez dołhe tłóčenje njewotraje)</string>
+    <string name="conv_log_extra_tracks_removed">Přidatne wideostaze wotstronjene (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Žórłowe widejo %1$s; jenož přepakowanje kontejnera to rozrisać njemóže (%2$s); jeli wuslědk přez dołhe tłóčenje dale njewotraje, přestajće w «Nastajenja → Překoděrowanje widea → Překoděrowanski modus» na «Znowa koděrować»</string>
+    <string name="conv_log_reencoding">Žórłowe widejo %1$s; po nastajenjach so znowa do 8-bit + AAC koděruje, zo by so kompatibilita z galeriju polěpšiła</string>
+    <string name="conv_log_reencode_result_unusable">Wuslědk znowa-koděrowanja njewužitajomny; wudaće je bjez přeměny (wuslědk snano pola jednotliwych typow přez dołhe tłóčenje njewotraje)</string>
+    <string name="conv_log_reencode_still_risky">Tež po znowa-koděrowanju su hišće rizikowe pozicije (%1$s)</string>
+    <string name="conv_log_reencode_failed">Znowa-koděrowanje zwrěšćiło (%1$s); wudaće je bjez přeměny (wuslědk snano pola jednotliwych typow přez dołhe tłóčenje njewotraje)</string>
+    <string name="conv_log_cover_heic_converted">Titulne foto bě HEIC (nic JPEG); je so před zapakowanjom do standardneho JPEG překoděrowało</string>
+    <string name="conv_log_compose_sizes">Synteza: foto %1$dB + widejo %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Překoděrowak njepowrěty: jenož značka kontejnera so přeměnja (MOV → MP4), znowa so njekoděruje</string>
+
+    <!-- Znački protokola (pokazuja so jako «[značka] tekst») -->
+    <string name="conv_tag_convert">Konwertowanje</string>
+    <string name="conv_tag_transcode">Překoděrowanje</string>
+    <string name="conv_tag_compose">Synteza</string>
+
+    <!-- Přičiny blokowanja překoděrowanskeho modusa (so k hornim warnowanjam přidaja) -->
+    <string name="conv_blocker_no_encoder">Zabudowany překoděrowak njesteji k dispoziciji</string>
+    <string name="conv_blocker_mode_no_encode">Aktualny «Překoděrowanski modus» znowa njekoděruje</string>
+
+    <!-- ========== FfmpegAddon.kt: zabudowane ffmpeg-překoděrowanje / přepakowanje ========== -->
+    <string name="conv_addon_unavailable">Zabudowany překoděrowak njesteji k dispoziciji</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-překoděrowanje zwrěšćiło: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-přepakowanje kontejnera zwrěšćiło: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Widejo so z ffmpeg do standardneho MP4 překoděruje (%1$s / crf %2$d / %3$s; jenož wideo- a awdiostaze so zachowaja)</string>
+    <string name="conv_log_transcode_done">Překoděrowanje widea dokónčene (%1$d KB)</string>
+    <string name="conv_log_remuxing">Wideokontejner so do standardneho MP4 přepakuje (jenož kontejner, znowa so njekoděruje)</string>
+    <string name="conv_log_remux_done">Přepakowanje kontejnera dokónčene (%1$d KB)</string>
+
+    <!-- ========== Reminders.kt: dialog «Hižo njepokazać» ========== -->
+    <string name="conv_reminder_cat_compose">Synteza</string>
+    <string name="conv_reminder_cat_convert">Konwertowanje</string>
+    <string name="conv_reminder_cat_update">Aktualizacija</string>
+    <string name="conv_reminder_video_over3s_title">Widejo je dlěše hač 3 sekundy</string>
+    <string name="conv_reminder_video_over3s_message">Wubrane widejo je dlěše hač 3 sekundy, tohodla móže syntezowana Live Photo problemy z kompatibilitu měć:\n\n• Snano so prawje njewotraje\n• Snano so w systemowej galeriji njespóznaje\n• Pola jednotliwych typow snano tutón Live Photo njespóznaja</string>
+    <string name="conv_reminder_legacy_go_title">Stara wersija spóznata</string>
+    <string name="conv_reminder_legacy_go_message">Na tutym graće je hišće stara wersija (Go-wersija) aplikacije instalowana; tuta stara wersija na tutym graće wjace njefunguje a móžeće ju wotinstalować, zo byšće městno wuswobodźił.</string>
+    <string name="conv_reminder_replace_risk_title">Modus wuměny riziko wobškodźenja njesa</string>
+    <!-- formatted="false": w tekstu je jenož literalny % (100%), a tutón zynk so ženje z argumentami njewužiwa;
+         deklarowanje jako njeformatowy zynk zadźěwa aapt2/lint, zo by jón přez String.format přepruwował. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Modus wuměny pisa konwertowany wuslědk direktnje do žórłowych datajow; po přepisanju žórłowe dataje wróćo dóstać njedadźa.\n\n• Jeli so aplikacija při pisanju přetorhny, składowanske městno so wuprózdni abo prawa so wotstronja, móža so žórłowe dataje wobškodźić\n• Žane konwertowanje njeje z garantiju wuspěšne, a při zwrěšćenju móža žórłowe dataje hižo njewužitajomne być\n• Wuspytajće najprjedy z jednej abo dwěmaj datajomaj a potom předźěłajće masowo\n• Wuznamne fota najprjedy sami zawarće\n\nTuta funkcija so «tak kaž je» poskići; riziko nošiće sami a awtor za wobškodźene abo zhubjene dataje njewotpowěduje.</string>
+    <string name="conv_reminder_dont_remind">Hižo njepokazać</string>
+    <string name="conv_reminder_confirm_ok">Zrozumjene</string>
+    <string name="conv_reminder_uninstall">Wotinstalować</string>
+
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Luxembourgish (lb) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">Keng GitHub-Download-Adress kritt, probéiert w.e.g. méi spéit nees.</string>
+    <string name="update_flavor_standard">Standardversioun</string>
+    <string name="update_flavor_go">Go-Versioun</string>
+    <string name="update_lanzou_url_missing">Dës Versioun bitt kee Lanzou-Download-Link, benotzt w.e.g. GitHub fir erofzelueden.</string>
+    <string name="update_apk_direct_missing">Dës Versioun bitt keen direkten Installatiounspak-Link deen zu dëser Versioun passt; wielt w.e.g. déi entspriechend APK op der GitHub-Release-Säit.</string>
+    <string name="update_install_permission_missing">D’«Onbekannten Apps installéieren»-Autorisatioun gouf net kritt, automatesch Installatioun net méiglech. Erlaabt se an de Systemastellungen a probéiert dann nees.</string>
+    <string name="update_error_unknown">Onbekannte Feeler</string>
+    <string name="update_fail_lanzou">Lanzou-Download huet feelgeschloen</string>
+    <string name="update_fail_github">GitHub-Download huet feelgeschloen</string>
+    <string name="update_lanzou_resolving">D’Lanzou-Download-Link gëtt analyséiert…</string>
+    <string name="update_lanzou_downloading">Gëtt vu Lanzou erofgelueden…</string>
+    <string name="update_github_downloading">Gëtt vu GitHub erofgelueden…</string>
+    <string name="update_unzipping">Den Installatiounspak gëtt entpaakt…</string>
+    <string name="update_notes_empty">Dës Versioun huet nach keng Update-Notizen.</string>
+    <string name="update_use_normal_title">Benotzt w.e.g. d’Normalversioun</string>
+    <string name="update_use_normal_body">D’System vun dësem Apparat ass Android 10 oder méi nei; d’Go-Versioun gëtt net méi ënnerstëtzt, d’al Versioun kann net weider benotzt ginn.
+
+Et gouf erkannt, datt d’Normalversioun (ZLC) schonn installéiert ass; maacht w.e.g. d’Normalversioun direkt op fir weider ze benotzen (déi nei Versioun bitt keng Go-kompatibel Versioun méi; d’al Versioun kann deinstalléiert ginn fir Plaz fräizemaachen).</string>
+    <string name="update_open_normal">Normalversioun opmaachen</string>
+    <string name="update_must_update_title">Muss éischt aktualiséiert ginn, ier et weider benotzt ka ginn</string>
+    <string name="update_forced_body">D’System vun dësem Apparat ass Android 10 oder méi nei; d’Go-Versioun gëtt net méi ënnerstëtzt, d’al Versioun kann net weider benotzt ginn; déi nei Versioun bitt och keng Go-kompatibel Versioun méi.
+
+Verbindt Iech mam Internet a klickt op «Nach emol» fir den Installatiounspak vun der Normalversioun ze kréien.</string>
+    <string name="update_retry">Nach emol</string>
+    <string name="update_switch_normal_body">D’System vun dësem Apparat ass Android 10 oder méi nei; d’Go-Versioun gëtt net méi ënnerstëtzt, d’al Versioun kann net weider benotzt ginn.
+Eroflueden a installéiert w.e.g. d’Normalversioun fir weider ze benotzen (déi nei Versioun bitt keng Go-kompatibel Versioun méi).</string>
+    <string name="update_downloading_title">Update eroflueden</string>
+    <string name="update_cancel">Ofbriechen</string>
+    <string name="update_need_permission_title">Installatiounsautorisatioun gëtt gebraucht</string>
+    <string name="update_need_permission_body">Fir déi nei Versioun ze installéieren brauch d’System d’«Onbekannten Apps installéieren»-Autorisatioun.
+
+Klickt op «Op d’Autorisatioun», erlaabt se an den Astellungen a kënnt zréck an d’App; d’Installatioun gëtt automatesch weidergefouert (keng nei Erofluedung néideg).</string>
+    <string name="update_grant">Op d’Autorisatioun</string>
+    <string name="update_notice_title">Hiweis</string>
+    <string name="update_got_it">Verstanen</string>
+    <string name="update_notes_title">v%1$s · Update-Notizen</string>
+    <string name="update_back">Zréck</string>
+    <string name="update_title_switch_normal">Op d’Normalversioun wiesselen</string>
+    <string name="update_title_reinstall">Dës Versioun nei installéieren</string>
+    <string name="update_title_new_version">Nei Versioun entdeckt</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Dës Versioun gëtt erofgelueden an nei installéiert (iwwerschreift déi aktuell App).
+Dës Funktioun ass fir d’Regressionstest vum Update-Mechanismus.</string>
+    <string name="update_view_notes">Update-Notizen uweisen</string>
+    <string name="update_lanzou_unavailable">Lanzou ass elo net verfügbar</string>
+    <string name="update_download_lanzou">Vu Lanzou eroflueden</string>
+    <string name="update_download_github">Vu GitHub eroflueden</string>
+    <string name="update_download_browser">Vum Browser eroflueden</string>
+    <string name="update_later">Spéiter aktualiséieren</string>
+    <string name="update_later_switch">Elo net wiesselen</string>
+    <string name="update_skip_version">Dës Versioun iwwersprangen</string>
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<!--
+  Dolnoserbska rěc — aktualizaciski proces (ui/UpdateFlow.kt).
+  Žrědłowy tekst jo chinski (res/values/strings_update_flow.xml).
+  Kóždy kluc wótpowědujo bazowemu; placeholderje (%1$s / %1$d) a sekwence \n se zachowaju.
+-->
+<resources>
+    <!-- Pokazy z kontrolera (zwenka Composable se wužywa context.getString) -->
+    <string name="update_github_url_missing">Žeden GitHub-ześěgnjeński wótkaz dostany, pšosym pózdźej znowa.</string>
+    <string name="update_flavor_standard">Normalna wersija</string>
+    <string name="update_flavor_go">Go-wersija</string>
+    <string name="update_lanzou_url_missing">Toś ta wersija njepóda wótkaz Lanzou Cloud, móžośo wužywaś GitHub.</string>
+    <string name="update_apk_direct_missing">Toś ta wersija njepóda direktny wótkaz k instalaciskej dataji, kótaraž pasujo k toś tej wersiji; wubjeŕśo wótpowědny APK na GitHub-wudańskem boku.</string>
+    <string name="update_install_permission_missing">Pšawo „instalěrowanje njeznatych aplikacijow” njedane, awtomatiske instalěrowanje njejo móžne. Pšosym dowólśo jo w systemowych nastajenjach a wospjetujśo.</string>
+    <string name="update_error_unknown">Njeznata zmólka</string>
+    <string name="update_fail_lanzou">Ześěgnjenje z Lanzou Cloud jo se njeraźiło</string>
+    <string name="update_fail_github">Ześěgnjenje z GitHub jo se njeraźiło</string>
+    <string name="update_lanzou_resolving">Ześěgnjeński wótkaz Lanzou Cloud se analyzěrujo…</string>
+    <string name="update_lanzou_downloading">Z Lanzou Cloud se ześěgujo…</string>
+    <string name="update_github_downloading">Z GitHub se ześěgujo…</string>
+    <string name="update_unzipping">Instalaciska dataja se wupakujo…</string>
+    <string name="update_notes_empty">Toś ta wersija njama žedne wudańske pśipiski.</string>
+
+    <!-- Dialogi wó Go-wersiji -->
+    <string name="update_use_normal_title">Pšosym wužyjśo normalnu wersiju</string>
+    <string name="update_use_normal_body">Toś ten rěd ma Android 10 abo nowšy, Go-wótergła wersija se wěcej njepódpěrujo, stara wersija wěcej njedajo se wužywaś.\n\nNa toś tom rěźe jo južo normalna wersija (ZLC) zainstalěrowana, wócyńśo ju a wužywajśo dalej (nowe wudaśa wěcej Go-kompatibelnu wersiju njepódawaju, staru wersiju móžośo wótwónoźeś, aby spórił skład).</string>
+    <string name="update_open_normal">Normalnu wersiju wócyniś</string>
+    <string name="update_must_update_title">Musyśo aktualizěrowaś, aby dalej wužywał</string>
+    <string name="update_forced_body">Toś ten rěd ma Android 10 abo nowšy, Go-wótergła wersija se wěcej njepódpěrujo, stara wersija wěcej njedajo se wužywaś; nowe wudaśa teke wěcej Go-kompatibelneje wersije njepódawaju.\n\nPšosym zwězajśo se z seśu a klikniśo na „Znowa wopytowaś”, aby dostali instalacisku dataju normalneje wersije.</string>
+    <string name="update_retry">Znowa wopytowaś</string>
+    <string name="update_switch_normal_body">Toś ten rěd ma Android 10 abo nowšy, Go-wótergła wersija se wěcej njepódpěrujo, stara wersija wěcej njedajo se wužywaś.\nZeśěgniśo a instalěrujśo normalnu wersiju, aby dalej wužywał (nowe wudaśa wěcej Go-kompatibelneje wersije njepódawaju).</string>
+
+    <!-- Ześěgnjenje / instalaciske pšawo / wuslědki -->
+    <string name="update_downloading_title">Aktualizaciju ześěgnuś</string>
+    <string name="update_cancel">Pśetergnuś</string>
+    <string name="update_need_permission_title">Instalaciske pšawo trjeba</string>
+    <string name="update_need_permission_body">Instalěrowanje noweje wersije trjeba systemowe pšawo „instalěrowanje njeznatych aplikacijow”.\n\nKlikniśo na „Pšawo daś”, dowólśo jo w nastajenjach a wrośćo se do aplikacije, instalěrowanje pókšacujo se awtomatiski (bźez nowego ześěgnjenja).</string>
+    <string name="update_grant">Pšawo daś</string>
+    <string name="update_notice_title">Powěźeńka</string>
+    <string name="update_got_it">Zrozměł</string>
+
+    <!-- Głowny dialog / wudańske pśipiski -->
+    <string name="update_notes_title">v%1$s · Wudańske pśipiski</string>
+    <string name="update_back">Slědk</string>
+    <string name="update_title_switch_normal">K normalnej wersiji pśepinuś</string>
+    <string name="update_title_reinstall">Toś tu wersiju znowa instalěrowaś</string>
+    <string name="update_title_new_version">Nowa wersija namakana</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Toś ta wersija se ześěgnjo a znowa instalěrujo (pśepisujo aktualnu aplikaciju).\nToś ta funkcija jo za regresijowe testowanje aktualizaciskego mechanizma.</string>
+    <string name="update_view_notes">Wudańske pśipiski pokazaś</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud tuchylu njestoj k dispoziciji</string>
+    <string name="update_download_lanzou">Z Lanzou Cloud ześěgnuś</string>
+    <string name="update_download_github">Z GitHub ześěgnuś</string>
+    <string name="update_download_browser">Z wobglědowaka ześěgnuś</string>
+    <string name="update_later">Aktualizěrowaś pózdźej</string>
+    <string name="update_later_switch">Pśepinanje pózdźej</string>
+    <string name="update_skip_version">Toś tu wersiju pśeskócyś</string>
+</resources>

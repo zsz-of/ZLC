@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · اردو (Urdu, RTL) strings — اپ ڈیٹ / ڈاؤن لوڈ (key prefix: update_).
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Urdu is right-to-left; no physical left/right direction is hard-coded and placeholders stay LTR.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Model-assisted translation — community corrections welcome.
+  Recommended for a native review pass.
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud شیئر صفحہ اور ڈائریکٹ لنک کی تجزیہ کاری ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud شیئر منسوخ ہو گئی یا فائل موجود نہیں؛ براہ کرم GitHub سے ڈاؤن لوڈ کریں</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud شیئر منسوخ ہو گئی؛ براہ کرم GitHub سے ڈاؤن لوڈ کریں</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud ڈاؤن لوڈ لنک کی تجزیہ کاری ناکام</string>
+    <string name="update_lanzou_need_passwd">اس Lanzou Cloud شیئر کے لیے ایکسٹریکشن کوڈ درکار ہے؛ براہ کرم GitHub سے ڈاؤن لوڈ کریں (یا Release کے نوٹس میں کوڈ تلاش کریں)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud ایکسٹریکشن کوڈ غلط ہے</string>
+    <string name="update_err_resolve_failed">تجزیہ کاری ناکام</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud اینٹی کرال چیک ناکام</string>
+    <string name="update_err_no_frame">Lanzou Cloud ڈاؤن لوڈ صفحہ کی تجزیہ کاری نہیں ہو سکی (ڈاؤن لوڈ فریم نہیں ملا)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud فائل شناخت کی تجزیہ کاری نہیں ہو سکی</string>
+    <string name="update_err_no_sign">Lanzou Cloud دستخط کی تجزیہ کاری نہیں ہو سکی</string>
+    <string name="update_err_ajax_request">انٹرفیس کی درخواست ناکام</string>
+    <string name="update_err_api_request">Lanzou Cloud API درخواست ناکام</string>
+    <string name="update_err_empty_direct">Lanzou Cloud نے خالی ڈاؤن لوڈ پتہ واپس کیا</string>
+    <string name="update_err_direct_expired">Lanzou Cloud ڈاؤن لوڈ پتہ میعاد گزر گیا، براہ کرم دوبارہ حاصل کریں</string>
+    <string name="update_err_http_request">درخواست ناکام (HTTP %1$d)</string>
+
+    <!-- ========== ڈاؤن لوڈ ========== -->
+    <string name="update_err_connect">ڈاؤن لوڈ سرور سے رابطہ نہیں ہو سکا: %1$s</string>
+    <string name="update_err_http">ڈاؤن لوڈ ناکام (HTTP %1$d)</string>
+    <string name="update_err_no_connection">ڈاؤن لوڈ کنکشن قائم نہیں ہو سکا</string>
+    <string name="update_err_empty">ڈاؤن لوڈ شدہ مواد خالی ہے</string>
+    <string name="update_err_incomplete">ڈاؤن لوڈ نامکمل (%1$d / کل %2$d بائٹس حاصل ہوئے)، براہ کرم دوبارہ ڈاؤن لوڈ کریں</string>
+    <string name="update_err_interrupted">ڈاؤن لوڈ میں خلل: %1$s</string>
+
+    <!-- ========== انسٹالر کی جانچ اور انسٹالیشن ========== -->
+    <string name="update_err_not_apk">ڈاؤن لوڈ شدہ فائل درست انسٹالر نہیں ہے (شاید کوئی ویب صفحہ ہے، یا ڈاؤن لوڈ لنک میعاد گزر گیا)؛ براہ کرم دوبارہ ڈاؤن لوڈ کریں یا GitHub استعمال کریں۔</string>
+    <string name="update_err_apk_incomplete">انسٹالر کا مواد نامکمل ہے؛ براہ کرم دوبارہ ڈاؤن لوڈ کریں یا GitHub استعمال کریں۔</string>
+    <string name="update_err_apk_unparsable">انسٹالر کی تجزیہ کاری نہیں ہو سکی (ڈاؤن لوڈ نامکمل ہو سکتا ہے)؛ براہ کرم دوبارہ ڈاؤن لوڈ کریں یا GitHub استعمال کریں۔</string>
+    <string name="update_err_no_install_permission">“نامعلوم ایپس انسٹال کرنے” کی اجازت ابھی نہیں ملی</string>
+    <string name="update_err_installer_failed">سسٹم انسٹالر نہیں کھولا جا سکا (%1$s)، براہ کرم فائل مینیجر سے انسٹالر دستی طور پر کھول کر انسٹال کریں</string>
+
+</resources>

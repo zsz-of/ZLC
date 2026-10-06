@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Zulu (zu) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Ifomethi eqondiwe ayaziwa: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Ifomethi yesithombe esinyakazayo ayaziwa (hhayi izithombe ezinyakazayo ze-Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Isithombe esingaphambili asikho noma asinalutho</string>
+    <string name="conv_video_missing">Ividiyo alikho noma alinalutho</string>
+    <string name="conv_video_too_large">Ividiyo ilinkulu kakhulu (%1$dMB); akunakwenzeka ukuhlanganiswa ibe yisithombe esinyakazayo; khetha ividiyo emfushane</string>
+    <string name="conv_transcoded_too_large">Emva kokushintsha, ividiyo ilinkulu kakhulu (%1$dMB); akunakwenzeka ukuhlanganiswa ibe yisithombe esinyakazayo</string>
+    <string name="conv_video_too_large_compose">Ividiyo ilinkulu kakhulu (%1$dMB); akunakwenzeka ukuhlanganiswa ibe yisithombe esinyakazayo</string>
+    <string name="conv_cover_heic_go">Isithombe esingaphambili siyisithombe se-HEIC (inguqulo encane ayisekeli ukushintsha; khipha njengo-JPEG ku-iPhone bese uguqula)</string>
+    <string name="conv_cover_invalid_heic">Isithombe esingaphambili asisona isithombe esivumelekile (i-HEIC idinga ukuthi isistimu isekele ukufundwa kwe-HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">Isithombe esingaphambili asisona isithombe se-JPEG (inguqulo encane ayisekeli ukushintsha; sebenzisa esikhundleni salo isithombe se-JPEG)</string>
+    <string name="conv_cover_invalid_image">Isithombe esingaphambili asisona isithombe esivumelekile (kusekelwa kuphela i-JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Ukukhoda kabusha kwevidiyo kwehlulekile: %1$s</string>
+    <string name="conv_remux_failed">Ukupakisha kabusha isiqukathi kwehlulekile: %1$s</string>
+    <string name="conv_codec_unknown">Ayiwo ividiyo ye-H.264/H.265 engaziwa</string>
+    <string name="conv_codec_is">Ukukhoda ngu-%1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Ividiyo “%1$s” %2$s; ukushintsha kuphela isiqukathi (ukupakisha kabusha) akushintshi ukukhoda, ngeke kwakheke isithombe esinyakazayo.\n\nKu-“Izilungiselelo → Ukushintsha ividiyo → Indlela yokushintsha” khetha “Phinda ukhode”, noma kuqala uguqule ngethuluzi elinye ibe yi-MP4 enokukhoda kwe-H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Ividiyo ayikho esiqukathini se-MP4 esivamile (MOV / MKV / WebM / AVI nokunye), futhi “Indlela yokushintsha” yamanje ayikhodi kabusha, ngeke kwakheke isithombe esinyakazayo.\n\nKu-“Izilungiselelo → Ukushintsha ividiyo → Indlela yokushintsha” khetha “Phinda ukhode” (inguqulo evamile inesikhodi se-ffmpeg esakhelwe ngaphakathi; inguqulo encane ye-Go ayinawo isishintshi sevidiyo, sebenzisa inguqulo evamile), noma kuqala uguqule ividiyo ibe yi-MP4 esivamile (H.264/H.265).</string>
+    <string name="conv_log_detected">Kutholakele: %1$s</string>
+    <string name="conv_log_same_format_copied">Ifomethi yomthombo nefomethi yokukhishwa iyafana; ikhopiwe njengoba kunjalo (akulahleki lutho)</string>
+    <string name="conv_log_extra_tracks_bypass">Ividiyo yomthombo inezitraki ezahlukile kumsindo nevidiyo (%1$s); kweqiwe ukudlulisa ngqo ngefomethi efanayo, kwalandelwa inqubo ephelele yokubhala ukuze kuhlanjwe</string>
+    <string name="conv_log_ts_fallback">Umthombo awunalo uphawu lwesikhathi lwefreymu yesithombe esingaphambili; ngokomgomo kubuyiselwa endaweni esemaphakathi yevidiyo</string>
+    <string name="conv_log_brand_normalized">Ibhrendi yesiqukathi sevidiyo ilungisiwe (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Ividiyo inezitraki ezengeziwe (%1$s), alikwazi ukuhlanjwa, ikhishwe njengoba kunjalo (le mpumela ingase ingadlali ngokuchofoza okude kwezinye izinhlobo zamadivayisi)</string>
+    <string name="conv_log_extra_tracks_removed">Izitraki ezengeziwe zevidiyo zisusiwe (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Ividiyo yomthombo %1$s; ukupakisha kabusha isiqukathi kuphela akusonjululi (%2$s); uma le mpumela isingadlali ngokuchofoza okude, ku-“Izilungiselelo → Ukushintsha ividiyo → Indlela yokushintsha” khetha “Phinda ukhode”</string>
+    <string name="conv_log_reencoding">Ividiyo yomthombo %1$s; ngokwezilungiselelo ikhodiwa kabusha ibe yi-8bit + AAC ukuze kuthuthukiswe ukuvumelana ne-ialbamu</string>
+    <string name="conv_log_reencode_result_unusable">Impumela yokukhoda kabusha ayisebenzi, ikhishwe njengoba kunjalo (le mpumela ingase ingadlali ngokuchofoza okude kwezinye izinhlobo zamadivayisi)</string>
+    <string name="conv_log_reencode_still_risky">Emva kokukhoda kabusha kusenengozi (%1$s)</string>
+    <string name="conv_log_reencode_failed">Ukukhoda kabusha kwehlulekile (%1$s), ikhishwe njengoba kunjalo (le mpumela ingase ingadlali ngokuchofoza okude kwezinye izinhlobo zamadivayisi)</string>
+    <string name="conv_log_cover_heic_converted">Isithombe esingaphambili siyi-HEIC (hhayi i-JPEG); saguqulwa ibe yi-JPEG esivamile bese sipakishwa kabusha</string>
+    <string name="conv_log_compose_sizes">Ukuhlanganisa: isithombe %1$dB + ividiyo %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Isishintshi sevidiyo asivuliwe: kushintshwa kuphela ibhrendi yesiqukathi (MOV → MP4), akukhodiwa kabusha</string>
+    <string name="conv_tag_convert">Ukuguqula</string>
+    <string name="conv_tag_transcode">Ukushintsha</string>
+    <string name="conv_tag_compose">Ukuhlanganisa</string>
+    <string name="conv_blocker_no_encoder">Isishintshi sevidiyo esakhelwe ngaphakathi asitholakali</string>
+    <string name="conv_blocker_mode_no_encode">“Indlela yokushintsha” yamanje ayikhodi kabusha</string>
+    <string name="conv_addon_unavailable">Isishintshi sevidiyo esakhelwe ngaphakathi asitholakali</string>
+    <string name="conv_addon_transcode_failed">Ukushintsha nge-ffmpeg kwehlulekile: %1$s</string>
+    <string name="conv_addon_remux_failed">Ukupakisha kabusha isiqukathi nge-ffmpeg kwehlulekile: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Ividiyo iyashintshwa nge-ffmpeg ibe yi-MP4 esivamile (%1$s / crf %2$d / %3$s; kugcinwa kuphela izitraki zevidiyo nomsindo)</string>
+    <string name="conv_log_transcode_done">Ukushintsha kwevidiyo kuqediwe (%1$dKB)</string>
+    <string name="conv_log_remuxing">Isiqukathi sevidiyo siyapakishwa kabusha ibe yi-MP4 esivamile (kushintshwa kuphela isiqukathi, akukhodiwa kabusha)</string>
+    <string name="conv_log_remux_done">Ukupakisha kabusha isiqukathi kuqediwe (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Ukuhlanganisa</string>
+    <string name="conv_reminder_cat_convert">Ukuguqula</string>
+    <string name="conv_reminder_cat_update">Isibuyekezo</string>
+    <string name="conv_reminder_video_over3s_title">Ividiyo lidlula masekhondi angu-3</string>
+    <string name="conv_reminder_video_over3s_message">Ividiyo elikhethiwe lidlula masekhondi angu-3; isithombe esinyakazayo esenziwe ngayo kungenzeka sinazo izinkinga zokuvumelana:\n\n• Kungenzeka lingadlali kahle\n• Kungenzeka i-ialbamu lesistimu ingasiboni\n• Kwezinye izinhlobo zamadivayisi kungenzeka lingabonwa lesi sithombe esinyakazayo</string>
+    <string name="conv_reminder_legacy_go_title">Kutholakele inguqulo endala</string>
+    <string name="conv_reminder_legacy_go_message">Kule divayisi kusafakwe inguqulo endala (inguqulo ye-Go) yohlelo; le nguqulo endala ayisasebenzi kule divayisi, ungayisusa ukuze ukhulule isikhala.</string>
+    <string name="conv_reminder_replace_risk_title">Imodi yokubuyisela inengozi yokonakala</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Imodi yokubuyisela ibhala impumela yokuguqula ngqo kufayela lokuqala; uma ifayela lokuqala selibhalwe phezu kwayo, alitholakali kabusha.\n\n• Ngesikhathi sokubhala, uma uhlelo luphazamiseka, uma isitoreji seliphelelwe yisikhala noma uma imvume ikhishiwe, ifayela lomthombo lingonakala\n• Ukuguqula ngokwakho akukwazi ukuqinisekisa impumelelo ngokuphelele; uma kwehluleka, ifayela lomthombo kungenzeka selingasasebenzi\n• Kwelulekwa ukuthi uqale uzame ngofayela owodwa noma amabili; uma uqinisekise ukuthi akunankinga, uqhubeke ngobuningi\n• Izithombe ezibalulekile, wena wenzekela ikhophi yokugcina kuqala\n\nLo msebenzi unikezwa “njengoba kunjalo”; ingozi yokusetshenziswa ihlala kuwe, futhi umbhali akanasibopho ekonakaleni nasekalahlekeni kwamafayela.</string>
+    <string name="conv_reminder_dont_remind">Ungaphindi ukhombise</string>
+    <string name="conv_reminder_confirm_ok">Kulungile</string>
+    <string name="conv_reminder_uninstall">Susa</string>
+</resources>

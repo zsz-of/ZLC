@@ -17,6 +17,7 @@
     <string name="main_status_folder_not_selected">Walang piniling folder</string>
     <string name="main_status_folder_unavailable">Hindi ma-access ang piniling folder (mga local storage folder lang ang sinusuportahan)</string>
     <plurals name="main_status_session_restored">
+        <item quantity="one">Naisauli ang nakaraang session (%1$d file)</item>
         <item quantity="other">Naisauli ang nakaraang session (%1$d file)</item>
     </plurals>
     <string name="main_status_abnormal_exit">May nakitang abnormal na pag-exit dati; na-clear na ang hindi natapos na listahan</string>
@@ -33,19 +34,23 @@
     <string name="main_status_compose_all_added">Nasa listahan na ang lahat ng piniling larawan</string>
     <string name="main_status_compose_paired">%1$d larawan at %2$d video; nagdagdag ng %3$d compose pair base sa mas maliit na bilang</string>
     <plurals name="main_status_compose_added">
+        <item quantity="one">Nagdagdag ng %1$d compose task; i-tap ang “Simulan ang conversion” para mag-compose</item>
         <item quantity="other">Nagdagdag ng %1$d compose task; i-tap ang “Simulan ang conversion” para mag-compose</item>
     </plurals>
     <string name="main_status_auto_google">%1$s (automatikong inilipat sa Google ang output format)</string>
     <plurals name="main_status_importing_shared">
+        <item quantity="one">Nag-a-import ng %1$d shared na larawan…</item>
         <item quantity="other">Nag-a-import ng %1$d shared na larawan…</item>
     </plurals>
     <string name="main_status_import_failed">Nabigo ang pag-import: %1$s</string>
     <string name="main_status_import_done_partial">Tapos ang pag-import: %1$d ang nagtagumpay, %2$d ang nabigo</string>
     <plurals name="main_status_import_done">
+        <item quantity="one">Tapos ang pag-import: %1$d file ang na-import sa kabuuan</item>
         <item quantity="other">Tapos ang pag-import: %1$d file ang na-import sa kabuuan</item>
     </plurals>
     <string name="main_status_import_stopped">Itinigil ang pag-import: %1$d ang nagtagumpay, %2$d ang nabigo</string>
     <plurals name="main_status_importing_files">
+        <item quantity="one">Nag-a-import ng %1$d file…</item>
         <item quantity="other">Nag-a-import ng %1$d file…</item>
     </plurals>
     <string name="main_status_importing_progress">Nag-a-import %1$d/%2$d…</string>
@@ -59,15 +64,19 @@
     <string name="main_status_no_images">Walang nakitang larawan sa piniling folder</string>
     <string name="main_status_batch_importing">Nagba-batch import %1$d/%2$d…</string>
     <plurals name="main_status_batch_stopped">
+        <item quantity="one">Itinigil ang batch import: %1$d Live Photo ang na-import sa kabuuan</item>
         <item quantity="other">Itinigil ang batch import: %1$d Live Photo ang na-import sa kabuuan</item>
     </plurals>
     <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Itinigil ang batch import: %1$d Live Photo ang na-import sa kabuuan, %2$d file na hindi Live Photo ang nilaktawan</item>
         <item quantity="other">Itinigil ang batch import: %1$d Live Photo ang na-import sa kabuuan, %2$d file na hindi Live Photo ang nilaktawan</item>
     </plurals>
     <plurals name="main_status_batch_done">
+        <item quantity="one">Tapos ang batch import: %1$d Live Photo ang na-import sa kabuuan</item>
         <item quantity="other">Tapos ang batch import: %1$d Live Photo ang na-import sa kabuuan</item>
     </plurals>
     <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Tapos ang batch import: %1$d Live Photo ang na-import sa kabuuan, %2$d file na hindi Live Photo ang nilaktawan</item>
         <item quantity="other">Tapos ang batch import: %1$d Live Photo ang na-import sa kabuuan, %2$d file na hindi Live Photo ang nilaktawan</item>
     </plurals>
     <string name="main_status_stopped_replace">Itinigil: sa %1$d file, %2$d ang naproseso at %3$d source file ang napalitan</string>
@@ -116,6 +125,7 @@
     <string name="main_btn_overwrite">I-overwrite</string>
     <string name="main_btn_auto_rename">Auto-rename</string>
     <plurals name="main_delete_done">
+        <item quantity="one">Tinanggal ang %1$d orihinal na file</item>
         <item quantity="other">Tinanggal ang %1$d orihinal na file</item>
     </plurals>
     <string name="main_delete_nothing">Walang orihinal na kailangang tanggalin</string>

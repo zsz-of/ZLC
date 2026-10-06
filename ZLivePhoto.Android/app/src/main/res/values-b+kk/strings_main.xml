@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Қазақша жолдар.
+  res/values/strings_*.xml (қарапайым қытай тілі — негізгі/қосалқы тіл) файлдарынан аударылды.
+  Барлық кілт базалық нұсқамен сәйкес; %1$s / %1$d толтырғыштары мен escape тізбектері өзгеріссіз қалдырылды.
+-->
+<resources>
+    <string name="main_status_ready">Дайын</string>
+    <string name="main_status_location_granted">Орналасу рұқсаты берілді, түрлендіруден кейін GPS метадеректері сақталады</string>
+    <string name="main_status_location_denied">Орналасу рұқсаты берілмеді: түрлендіруден кейін фото GPS орналасу ақпаратынан айырылады</string>
+    <string name="main_status_all_files_granted">«Барлық файлдарға қатынау» рұқсаты берілді, түрлендіру галерея қалтасына тікелей жазып, орналасу ақпаратын толық сақтайды</string>
+    <string name="main_status_all_files_denied">«Барлық файлдарға қатынау» рұқсаты берілмеді: кейбір құрылғыларда түрлендіруден кейін орналасу ақпараты жоғалуы мүмкін</string>
+    <string name="main_status_read_granted">Фото мен видеоны оқу рұқсаты берілді</string>
+    <string name="main_status_video_missing">Рұқсат берілді, бірақ видео рұқсаты жоқ: қос файлды Live Photo-ның ілеспе видеосын табу мүмкін емес</string>
+    <string name="main_status_permission_denied">Рұқсат берілмеді, «Файл қосу» түймесін қайта басуға болады</string>
+    <string name="main_status_folder_not_selected">Қалта таңдалмады</string>
+    <string name="main_status_folder_unavailable">Таңдалған қалтаға қатынау мүмкін емес (тек жергілікті сақтау қалталары қолданылады)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Алдыңғы сессия қалпына келтірілді (%1$d файл)</item>
+        <item quantity="other">Алдыңғы сессия қалпына келтірілді (%1$d файл)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Алдыңғы аяқталмаған шығу анықталды, аяқталмаған тізім тазаланды</string>
+    <string name="main_status_compose_blocks_extract">Кезекте құрастыру тапсырмалары бар, бөлшектеу режиміне ауысу мүмкін емес</string>
+    <string name="main_status_replace_off_mutex">Ауыстыру режимі өшірілді («Өңдеуден кейін түпнұсқаны жою»-мен өзара жоққа шығарылады)</string>
+    <string name="main_status_delete_needs_all_files">Түпнұсқаны автоматты жою үшін «Барлық файлдарға қатынау» рұқсаты қажет, алдымен рұқсат беріңіз</string>
+    <string name="main_status_replace_off">Ауыстыру режимі өшірілді, түрлендіру нәтижелері галерея қалтасына қайта жазылады</string>
+    <string name="main_status_replace_needs_all_files">Ауыстыру режимі үшін «Барлық файлдарға қатынау» рұқсаты қажет, алдымен рұқсат беріңіз</string>
+    <string name="main_status_delete_off_mutex">«Өңдеуден кейін түпнұсқаны жою» өшірілді (ауыстыру режимімен өзара жоққа шығарылады)</string>
+    <string name="main_status_loading_albums">Галерея оқылуда…</string>
+    <string name="main_status_no_albums">Галерея табылмады</string>
+    <string name="main_status_compose_no_photo">Фото таңдалмады, құрастыру мүмкін емес</string>
+    <string name="main_status_compose_no_video">Видео таңдалмады, құрастыру мүмкін емес</string>
+    <string name="main_status_compose_all_added">Таңдалған фотолардың барлығы тізімде бар</string>
+    <string name="main_status_compose_paired">Фото %1$d дана, видео %2$d дана, азырақ жағы бойынша %3$d жұп құрастыру тапсырмасы қосылды</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d құрастыру тапсырмасы қосылды, орындау үшін «Түрлендіруді бастау» түймесін басыңыз</item>
+        <item quantity="other">%1$d құрастыру тапсырмасы қосылды, орындау үшін «Түрлендіруді бастау» түймесін басыңыз</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (шығыс форматы автоматты түрде Google етіп ауыстырылды)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Бөлісілген %1$d кескін импортталуда…</item>
+        <item quantity="other">Бөлісілген %1$d кескін импортталуда…</item>
+    </plurals>
+    <string name="main_status_import_failed">Импорт сәтсіз: %1$s</string>
+    <string name="main_status_import_done_partial">Импорт аяқталды: %1$d сәтті, %2$d сәтсіз</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Импорт аяқталды: барлығы %1$d файл импортталды</item>
+        <item quantity="other">Импорт аяқталды: барлығы %1$d файл импортталды</item>
+    </plurals>
+    <string name="main_status_import_stopped">Импорт тоқтатылды: %1$d сәтті, %2$d сәтсіз</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d файл импортталуда…</item>
+        <item quantity="other">%1$d файл импортталуда…</item>
+    </plurals>
+    <string name="main_status_importing_progress">%1$d/%2$d импортталуда…</string>
+    <string name="main_status_stopping">Тоқтатылуда… (ағымдағы файл аяқталған соң тоқтайды)</string>
+    <string name="main_status_stopping_import">Импорт тоқтатылуда…</string>
+    <string name="main_status_removed">%1$s жойылды</string>
+    <string name="main_status_cleared">Тазаланды</string>
+    <string name="main_status_nothing_to_convert">Түрлендіретін файл жоқ</string>
+    <string name="main_status_folder_unreadable">Таңдалған қалтаны оқу мүмкін емес</string>
+    <string name="main_status_scanning_folder">Қалта сканерленуде…</string>
+    <string name="main_status_no_images">Таңдалған қалтада кескін табылмады</string>
+    <string name="main_status_batch_importing">%1$d/%2$d топтап импортталуда…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Топтап импорттау тоқтатылды: барлығы %1$d Live Photo импортталды</item>
+        <item quantity="other">Топтап импорттау тоқтатылды: барлығы %1$d Live Photo импортталды</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Топтап импорттау тоқтатылды: барлығы %1$d Live Photo импортталды, %2$d Live Photo емес файл өткізілді</item>
+        <item quantity="other">Топтап импорттау тоқтатылды: барлығы %1$d Live Photo импортталды, %2$d Live Photo емес файл өткізілді</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Топтап импорттау аяқталды: барлығы %1$d Live Photo импортталды</item>
+        <item quantity="other">Топтап импорттау аяқталды: барлығы %1$d Live Photo импортталды</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Топтап импорттау аяқталды: барлығы %1$d Live Photo импортталды, %2$d Live Photo емес файл өткізілді</item>
+        <item quantity="other">Топтап импорттау аяқталды: барлығы %1$d Live Photo импортталды, %2$d Live Photo емес файл өткізілді</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Тоқтатылды: %1$d файлдың %2$d өңделді, %3$d бастапқы файл ауыстырылды</string>
+    <string name="main_status_stopped_export">Тоқтатылды: %1$d файлдың %2$d өңделді, %3$d галереяға экспортталды</string>
+    <string name="main_status_done_replace_reason">Аяқталды: %1$d файл өңделді, %2$d бастапқы файл ауыстырылды (себебі: %3$s)</string>
+    <string name="main_status_done_export_reason">Аяқталды: %1$d файл өңделді, %2$d галереяға экспортталды (себебі: %3$s)</string>
+    <string name="main_status_done_replace">Аяқталды: %1$d файл өңделді, %2$d бастапқы файл ауыстырылды</string>
+    <string name="main_status_done_export">Аяқталды: %1$d файл өңделді, %2$d галереяға экспортталды</string>
+    <string name="main_status_keep_originals">%1$s; «Толық сақтауға қатынау» рұқсаты берілмеді, түпнұсқалар сақталды</string>
+    <string name="main_info_detecting">Анықталуда…</string>
+    <string name="main_info_unrecognized">Танылмаған Live Photo форматы</string>
+    <string name="main_info_converting">Түрлендірілуде…</string>
+    <string name="main_info_compose_task">Құрастыру тапсырмасы (түрлендіруді бастау арқылы орындалады)</string>
+    <string name="main_info_done_replaced">Аяқталды (%1$d бастапқы файл ауыстырылды)</string>
+    <string name="main_info_done_skipped">Аяқталды (өткізілді: аттас қақтығыс)</string>
+    <string name="main_info_done_exported">Аяқталды (%1$d экспортталды)</string>
+    <string name="main_info_failed">Сәтсіз: %1$s</string>
+    <string name="main_progress_added">%1$d/%2$d қосылды</string>
+    <string name="main_progress_processed">%1$d/%2$d өңделді</string>
+    <string name="main_progress_imported">%1$d/%2$d импортталды</string>
+    <string name="main_dialog_permission_title">Фото мен видеоны оқу рұқсаты қажет</string>
+    <string name="main_dialog_permission_message">Бұл қолданба құрылғыңыздағы фото мен видеоны оқуға рұқсат қажет етеді:\n\n• Фото рұқсаты: құрылғы галереясын сканерлеп, ондағы Live Photo-ларды анықтайды\n• Видео рұқсаты: қос файлды Live Photo-ның ілеспе видеосын табады\n• Орналасу рұқсаты: фотодағы GPS орналасу метадеректерін сақтайды (болмаса түрлендіруден кейін орналасу ақпараты жоғалады)\n\nБас тартсаңыз, кірістірілген таңдаушыны пайдалану мүмкін болмайды; кейінірек «Файл қосу» түймесін қайта басып рұқсат бере аласыз.</string>
+    <string name="main_dialog_settings_title">Фото мен видео рұқсатын қолмен беру қажет</string>
+    <string name="main_dialog_settings_message">Сіз бұрын «Қайта сұрамау» таңдадыңыз, жүйе енді рұқсат терезесін көрсетпейді.\n\nҚолданба мәліметтері бетіне өтіп → Рұқсаттар → Фото және видео бөлімінде қатынау рұқсатын қолмен беріп, осы қолданбаға қайта оралыңыз.\n\nЕскерту: «Фото» мен «Видео» рұқсаттарын бірге беру керек, әйтпесе қос файлды Live Photo-ның ілеспе видеосы табылмайды.</string>
+    <string name="main_dialog_allfiles_title_delete">Түпнұсқаны автоматты жою үшін «Барлық файлдарға қатынау» қажет</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Бұл құрылғы түпнұсқаны автоматты жоюды қолдамайды</string>
+    <string name="main_dialog_allfiles_title_replace">Ауыстыру режимі үшін «Барлық файлдарға қатынау» қажет</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Бұл құрылғы ауыстыру режимін қолдамайды</string>
+    <string name="main_dialog_allfiles_title_location">«Барлық файлдарға қатынау» рұқсатын беру ұсынылады</string>
+    <string name="main_dialog_allfiles_delete_message">«Өңдеуден кейін түпнұсқаны жою» дискідегі бастапқы файлдарды (фото және оның ілеспе видеосын) тікелей жояды, бұл әрекетті қайтару мүмкін емес, сондықтан алдымен «Барлық файлдарға қатынау» рұқсатын беру керек.\n\nРұқсат берілген соң қосқыш қолжетімді болады, сонда өзіңіз қоса аласыз.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Қазіргі жүйе (Android 10 және одан төмен) «Барлық файлдарға қатынау» рұқсатын ұсынбайды, дискідегі бастапқы файлдарды тікелей жою мүмкін емес, сондықтан бұл құрылғы «Өңдеуден кейін түпнұсқаны жоюды» қолдамайды.\n\nТүрлендіру аяқталған соң жүйе галереясы арқылы түпнұсқаларды қолмен тазалай аласыз.</string>
+    <string name="main_dialog_allfiles_replace_message">«Ауыстыру режимі» түрлендіру нәтижесін дискідегі бастапқы файлдарға тікелей жазады (бастапқы мазмұнның үстінен), бұл әрекетті қайтару мүмкін емес, сондықтан алдымен «Барлық файлдарға қатынау» рұқсатын беру керек.\n\nРұқсат берілген соң қосқыш қолжетімді болады, сонда өзіңіз қоса аласыз.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Қазіргі жүйе (Android 10 және одан төмен) «Барлық файлдарға қатынау» рұқсатын ұсынбайды, дискідегі бастапқы файлдарды тікелей қайта жазу мүмкін емес, сондықтан бұл құрылғы «Ауыстыру режимін» қолдамайды.\n\nӘдепкі әдіспен түрлендіруді жалғастыра аласыз, нәтижелер галерея қалтасына шығарылады.</string>
+    <string name="main_dialog_allfiles_location_message">Кейбір құрылғылар (мысалы, Meizu) жүйе галереясының интерфейсі арқылы жазғанда GPS орналасу ақпаратын жасырады, нәтижесінде түрлендіруден кейін фото орналасуын жоғалтады.\n\n«Барлық файлдарға қатынау» берілген соң, бұл қолданба галерея қалтасына тікелей жазып, орналасу метадеректерін толық сақтайды.\n\nБермесеңіз де түрлендіру қалыпты жұмыс істейді, кейбір құрылғыларда орналасу ақпараты жоғалуы мүмкін.</string>
+    <string name="main_dialog_conflict_title">Шығыс файл атауының қақтығысы</string>
+    <string name="main_dialog_conflict_message">Шығыс қалтасында аттас файл бар:\n%1$s\n\nӨңдеу әдісін таңдаңыз.</string>
+    <string name="main_label_conflict_always">Келесі қақтығыстар үшін осы әдісті қолдану</string>
+    <string name="main_btn_grant">Рұқсат беру</string>
+    <string name="main_btn_deny">Бас тарту</string>
+    <string name="main_btn_go_settings">Параметрлерге өту</string>
+    <string name="main_btn_cancel">Болдырмау</string>
+    <string name="main_btn_grant_access">Рұқсат беру</string>
+    <string name="main_btn_got_it">Түсіндім</string>
+    <string name="main_btn_not_now">Кейінірек</string>
+    <string name="main_btn_skip">Өткізіп жіберу</string>
+    <string name="main_btn_overwrite">Үстінен жазу</string>
+    <string name="main_btn_auto_rename">Автоматты қайта атау</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d бастапқы файл жойылды</item>
+        <item quantity="other">%1$d бастапқы файл жойылды</item>
+    </plurals>
+    <string name="main_delete_nothing">Түпнұсқаны жою қажет емес</string>
+    <string name="main_delete_partial">%1$d бастапқы файл жойылды (%2$d жою сәтсіз, сақталды)</string>
+    <string name="main_delete_failed">Түпнұсқаны жою сәтсіз (файл бос емес немесе жазу рұқсаты жоқ), сақталды</string>
+    <string name="main_export_missing_output">Түрлендіру өнімі жоқ немесе бос: %1$s</string>
+    <string name="main_export_missing_output_bare">Түрлендіру өнімі жоқ немесе бос</string>
+    <string name="main_export_insert_null">MediaStore insert null қайтарды</string>
+    <string name="main_export_output_stream">MediaStore шығыс ағыны қолжетімсіз</string>
+    <string name="main_export_write_failed">MediaStore жазу сәтсіз: %1$s</string>
+    <string name="main_export_mkdir_failed">Галерея қалтасын жасау мүмкін емес %1$s</string>
+    <string name="main_export_dir_write_failed">Галерея қалтасына жазу сәтсіз: %1$s</string>
+    <string name="main_export_no_source">Бастапқы файлды табу мүмкін емес, ауыстыру өткізілді</string>
+    <string name="main_export_companion_failed">Ілеспе файлды қайта жазу сәтсіз: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Бастапқы файл қалтасына жазу мүмкін емес, ілеспе файл қайта жазылмады</string>
+    <string name="main_export_source_dir_unavailable">Бастапқы файл қалтасы қолжетімсіз: %1$s</string>
+    <string name="main_export_replace_failed">Бастапқы файлды ауыстыру сәтсіз: %1$s</string>
+    <string name="main_export_replace_failed_bare">Бастапқы файлды ауыстыру сәтсіз</string>
+</resources>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Belarusian (be) strings — main screen / gallery picker.
+  Translated from res/values/strings_screens.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Plural quantities follow CLDR for Belarusian: one / few / many / other.
+-->
+<resources>
+    <!-- Падзагаловак верхняга радка -->
+    <string name="screen_app_subtitle">Канвертацыя паміж фарматамі Live Photo</string>
+    <!-- Колькасць выбраных файлаў справа ў верхнім радку (залежыць ад колькасці, выкарыстоўваюцца plurals) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d файл</item>
+        <item quantity="few">%1$d файлы</item>
+        <item quantity="many">%1$d файлаў</item>
+        <item quantity="other">%1$d файла</item>
+    </plurals>
+    <!-- Уваход у налады ў верхнім радку (толькі для чытання з дапамогай спецыяльных магчымасцей) -->
+    <string name="screen_settings">Налады</string>
+
+    <!-- Дыялог выбару фармату вываду -->
+    <string name="screen_select_output_format">Выберыце фармат вываду</string>
+    <string name="screen_selected">Выбрана</string>
+    <string name="screen_vivo_single_warning">⚠ Занадта старыя мадэлі могуць не распазнаць гэты фармат</string>
+    <string name="screen_extract_blocked">⚠ У чарзе ёсць задачы сінтэзу; выбраць выманне нельга</string>
+
+    <!-- Кароткія назвы фарматаў (поўныя назвы — у strings_formats.xml, ключы fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (адзін файл)</string>
+    <string name="screen_format_vivo">vivo (два файлы)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Выманне</string>
+
+    <!-- Ніжняя панэль «Прылады» -->
+    <string name="screen_toolbox">Прылады</string>
+    <string name="screen_batch_import">Масавы імпарт</string>
+    <string name="screen_batch_import_desc">Скануе ўвесь альбом і масава распазнае Live Photo</string>
+    <string name="screen_compose">Стварыць Live Photo</string>
+    <string name="screen_compose_desc">Выберыце адно фота і адно відэа, каб аб’яднаць іх у Live Photo</string>
+    <string name="screen_replace_mode">Рэжым замены</string>
+    <string name="screen_replace_mode_desc">Вынікі канвертацыі запісваюцца напрамкі ў арыгінальныя файлы без стварэння новых</string>
+    <string name="screen_need_all_files_access_hint">Патрабуецца дазвол «Доступ да ўсіх файлаў»; націсніце, каб даць яго</string>
+    <string name="screen_agree_and_enable">Згаджаюся і ўключыць</string>
+
+    <!-- Пусты стан / ніжняя панэль кіравання -->
+    <string name="screen_empty_no_files">Файлы яшчэ не дададзены</string>
+    <string name="screen_view_detail">Падрабязнасці</string>
+    <string name="screen_add_files">Дадаць файлы</string>
+    <string name="screen_output_format">Фармат вываду: %1$s</string>
+    <string name="screen_delete_original">Выдаляць арыгіналы пасля апрацоўкі</string>
+    <string name="screen_need_all_files_access_view">Патрабуецца дазвол «Доступ да ўсіх файлаў»; націсніце, каб паглядзець</string>
+    <string name="screen_clear">Ачысціць</string>
+    <string name="screen_stop">Спыніць апрацоўку</string>
+    <string name="screen_start_convert">Пачаць канвертацыю</string>
+
+    <!-- Дыялог падрабязнасцей стану -->
+    <string name="screen_status_detail">Падрабязнасці стану</string>
+    <string name="screen_long_press_copy">Націсніце і ўтрымлівайце тэкст, каб вылучыць і скапіяваць</string>
+    <string name="screen_copy">Капіяваць</string>
+    <string name="screen_close">Закрыць</string>
+
+    <!-- Выбар альбома -->
+    <string name="screen_back">Назад</string>
+    <string name="screen_picker_title_select">Выберыце Live Photo</string>
+    <string name="screen_album_count">Альбом %1$d</string>
+    <string name="screen_album_collapse_cover">Згарнуць вокладку альбома</string>
+    <string name="screen_album_expand_cover">Разгарнуць вокладку альбома</string>
+    <string name="screen_scanning_progress">Сканаванне %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d фота</item>
+        <item quantity="few">%1$d фота</item>
+        <item quantity="many">%1$d фота</item>
+        <item quantity="other">%1$d фота</item>
+    </plurals>
+    <string name="screen_select_all">Выбраць усё</string>
+    <string name="screen_no_albums">Няма даступных альбомаў</string>
+    <string name="screen_no_media">Live Photo не знойдзены</string>
+    <string name="screen_no_media_compose">Фота або відэа не знойдзены</string>
+    <string name="screen_import">Імпарт</string>
+    <string name="screen_import_count">Імпарт: %1$d</string>
+    <string name="screen_import_mixed">Імпарт: %1$d фота · %2$d відэа</string>
+    <string name="screen_search">Пошук</string>
+    <string name="screen_search_collapse">Згарнуць пошук</string>
+    <string name="screen_search_hint">Пошук па назве</string>
+    <string name="screen_search_clear">Ачысціць пошук</string>
+    <string name="screen_sort_date">Дата</string>
+    <string name="screen_sort_size">Памер</string>
+    <string name="screen_sort_name">Назва</string>
+    <string name="screen_sort_asc">Па ўзрастанні</string>
+    <string name="screen_sort_desc">Па змяншэнні</string>
+
+    <!-- Меткі дат для груп альбомаў (%1$d і інш. — лікавыя запаўняльнікі, пры перакладзе парадак можна змяняць) -->
+    <string name="screen_date_today">Сёння</string>
+    <string name="screen_date_yesterday">Учора</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

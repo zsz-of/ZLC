@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · नेपाली (Nepali) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Nepali (Devanagari); technical terms follow the English loanword where common.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== Converter.kt: प्यारामिटर र सामग्री प्रमाणीकरण (अपवाद → इन्टरफेसमा असफलताको कारण देखाइन्छ) ========== -->
+    <string name="conv_unknown_target">अज्ञात लक्ष्य ढाँचा: %1$s</string>
+    <string name="conv_unrecognized_live_photo">अपरिचित लाइभ फोटो ढाँचा (Google/OPPO/vivo/Xiaomi/Apple लाइभ फोटो होइन)</string>
+    <string name="conv_cover_photo_missing">कभर तस्बिर छैन वा खाली छ</string>
+    <string name="conv_video_missing">भिडियो छैन वा खाली छ</string>
+    <string name="conv_video_too_large">भिडियो धेरै ठूलो छ (%1$dMB), लाइभ फोटो बनाउन सकिँदैन; कृपया छोटो भिडियो छान्नुहोस्</string>
+    <string name="conv_transcoded_too_large">ट्रान्सकोडपछि पनि भिडियो धेरै ठूलो छ (%1$dMB); लाइभ फोटो बनाउन सकिँदैन</string>
+    <string name="conv_video_too_large_compose">भिडियो धेरै ठूलो छ (%1$dMB); लाइभ फोटो बनाउन सकिँदैन</string>
+
+    <!-- Converter.kt: कभर (HEIC / JPEG होइन) -->
+    <string name="conv_cover_heic_go">कभर HEIC तस्बिर हो (हल्का संस्करणले ट्रान्सकोड समर्थन गर्दैन; पहिले iPhone मा JPEG मा निर्यात गर्नुहोस्, त्यसपछि रूपान्तरण गर्नुहोस्)</string>
+    <string name="conv_cover_invalid_heic">कभर मान्य तस्बिर होइन (HEIC का लागि प्रणालीको HEIF डिकोड समर्थन चाहिन्छ)</string>
+    <string name="conv_cover_not_jpeg_go">कभर JPEG तस्बिर होइन (हल्का संस्करणले ट्रान्सकोड समर्थन गर्दैन; कृपया JPEG तस्बिर प्रयोग गर्नुहोस्)</string>
+    <string name="conv_cover_invalid_image">कभर मान्य तस्बिर होइन (JPEG/WebP/PNG मात्र समर्थित छन्)</string>
+
+    <!-- Converter.kt: ट्रान्सकोड / कन्टेनर पुनः प्याक असफल, र «कन्टेनर मात्र फेरेर कोडेक ठीक हुँदैन» को सङ्केत -->
+    <string name="conv_reencode_failed">भिडियो पुनः इन्कोडिङ असफल भयो: %1$s</string>
+    <string name="conv_remux_failed">कन्टेनर पुनः प्याक असफल भयो: %1$s</string>
+    <string name="conv_codec_unknown">चिनिने H.264/H.265 भिडियो होइन</string>
+    <string name="conv_codec_is">कोडेक %1$s हो</string>
+    <string name="conv_hint_remux_cannot_fix">भिडियो «%1$s» %2$s; कन्टेनर मात्र फेर्ने (पुनः प्याक) कार्यले कोडेक परिवर्तन गर्न सक्दैन, त्यसैले लाइभ फोटो बनाउन सकिँदैन।\n\nकृपया «सेटिङ → भिडियो ट्रान्सकोडिङ → ट्रान्सकोड विधि» मा «पुनः इन्कोडिङ» छान्नुहोस्, वा अन्य उपकरणले यसलाई पहिले H.264/H.265 MP4 मा बदल्नुहोस्।</string>
+    <string name="conv_hint_no_encoder">भिडियो मानक MP4 कन्टेनरमा छैन (MOV / MKV / WebM / AVI आदि), र हालको «ट्रान्सकोड विधि» ले पुनः इन्कोडिङ गर्दैन, त्यसैले लाइभ फोटो बनाउन सकिँदैन।\n\nकृपया «सेटिङ → भिडियो ट्रान्सकोडिङ → ट्रान्सकोड विधि» मा «पुनः इन्कोडिङ» छान्नुहोस् (सामान्य संस्करणमा आन्तरिक ffmpeg इन्कोडर छ; Go हल्का संस्करणमा ट्रान्सकोडर छैन, कृपया सामान्य संस्करण प्रयोग गर्नुहोस्), वा पहिले भिडियोलाई मानक MP4 (H.264/H.265) मा बदल्नुहोस्।</string>
+
+    <!-- ========== रूपान्तरण लग (सूची वस्तुको स्ट्याटसबार र लग प्यानलमा देखाइन्छ) ========== -->
+    <string name="conv_log_detected">%1$s का रूपमा पहिचान भयो</string>
+    <string name="conv_log_same_format_copied">स्रोत र लक्ष्य ढाँचा एउटै छ; जस्ताको तस्तै प्रतिलिपि गरियो (शून्य हानि)</string>
+    <string name="conv_log_extra_tracks_bypass">स्रोत भिडियोमा गैर-अडियो/भिडियो ट्र्याकहरू छन् (%1$s); एउटै ढाँचाको पासथ्रु छोडेर सफा गर्न पूर्ण लेखन प्रक्रिया प्रयोग गरिँदैछ</string>
+    <string name="conv_log_ts_fallback">स्रोतमा कभर फ्रेम टाइमस्ट्याम्प छैन; मानकअनुसार भिडियोको मध्यबिन्दुमा फर्काइयो</string>
+    <string name="conv_log_brand_normalized">भिडियो कन्टेनर ब्रान्ड सामान्यीकृत गरियो (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">भिडियोमा अतिरिक्त ट्र्याकहरू छन् (%1$s) जसलाई सफा गर्न सकिँदैन; जस्ताको तस्तै निर्यात गरियो (केही यन्त्रमा यो नतिजा लामो थिचेर चलाउन नसकिन सक्छ)</string>
+    <string name="conv_log_extra_tracks_removed">भिडियोका अतिरिक्त ट्र्याकहरू हटाइयो (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">स्रोत भिडियो %1$s; कन्टेनर मात्र पुनः प्याक गर्दा समाधान हुँदैन (%2$s)। नतिजा अझै लामो थिचेर नचल्ने भए «सेटिङ → भिडियो ट्रान्सकोडिङ → ट्रान्सकोड विधि» मा «पुनः इन्कोडिङ» छान्नुहोस्</string>
+    <string name="conv_log_reencoding">स्रोत भिडियो %1$s; ग्यालरी अनुकूलता सुधार्न सेटिङअनुसार 8bit + AAC मा पुनः इन्कोड गरिँदैछ</string>
+    <string name="conv_log_reencode_result_unusable">पुनः इन्कोडिङको नतिजा प्रयोगयोग्य छैन; जस्ताको तस्तै निर्यात गरियो (केही यन्त्रमा यो नतिजा लामो थिचेर चलाउन नसकिन सक्छ)</string>
+    <string name="conv_log_reencode_still_risky">पुनः इन्कोडिङपछि पनि जोखिम रहन्छ (%1$s)</string>
+    <string name="conv_log_reencode_failed">पुनः इन्कोडिङ असफल भयो (%1$s); जस्ताको तस्तै निर्यात गरियो (केही यन्त्रमा यो नतिजा लामो थिचेर चलाउन नसकिन सक्छ)</string>
+    <string name="conv_log_cover_heic_converted">कभर HEIC (JPEG होइन) थियो; प्याकेजिङअघि मानक JPEG मा ट्रान्सकोड गरियो</string>
+    <string name="conv_log_compose_sizes">कम्पोज: तस्बिर %1$dB + भिडियो %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ट्रान्सकोडर सक्रिय छैन: कन्टेनर ब्रान्ड मात्र पुनः लेखिँदै (MOV → MP4), पुनः इन्कोडिङ छैन</string>
+
+    <!-- लग ट्याग (इन्टरफेसमा «[ट्याग] पाठ» का रूपमा देखाइन्छ) -->
+    <string name="conv_tag_convert">रूपान्तरण</string>
+    <string name="conv_tag_transcode">ट्रान्सकोड</string>
+    <string name="conv_tag_compose">कम्पोज</string>
+
+    <!-- ट्रान्सकोड विधि अवरुद्ध हुनुको कारण (माथिको चेतावनी पाठमा जोडिन्छ) -->
+    <string name="conv_blocker_no_encoder">आन्तरिक ट्रान्सकोडर उपलब्ध छैन</string>
+    <string name="conv_blocker_mode_no_encode">हालको «ट्रान्सकोड विधि» ले पुनः इन्कोडिङ गर्दैन</string>
+
+    <!-- ========== FfmpegAddon.kt: आन्तरिक ffmpeg ट्रान्सकोड / कन्टेनर पुनः प्याक ========== -->
+    <string name="conv_addon_unavailable">आन्तरिक ट्रान्सकोडर उपलब्ध छैन</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ट्रान्सकोड असफल भयो: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg कन्टेनर पुनः प्याक असफल भयो: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg द्वारा भिडियोलाई मानक MP4 मा ट्रान्सकोड गरिँदै (%1$s / crf %2$d / %3$s; भिडियो र अडियो ट्र्याक मात्र राखिँदै)</string>
+    <string name="conv_log_transcode_done">भिडियो ट्रान्सकोड सम्पन्न (%1$dKB)</string>
+    <string name="conv_log_remuxing">भिडियो कन्टेनर मानक MP4 मा पुनः प्याक गरिँदै (कन्टेनर मात्र, पुनः इन्कोडिङ छैन)</string>
+    <string name="conv_log_remux_done">कन्टेनर पुनः प्याक सम्पन्न (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: «फेरि नदेखाउनुहोस्» डायलग ========== -->
+    <string name="conv_reminder_cat_compose">कम्पोज</string>
+    <string name="conv_reminder_cat_convert">रूपान्तरण</string>
+    <string name="conv_reminder_cat_update">अपडेट</string>
+    <string name="conv_reminder_video_over3s_title">भिडियो 3 सेकेन्डभन्दा लामो</string>
+    <string name="conv_reminder_video_over3s_message">चयन गरिएको भिडियो 3 सेकेन्डभन्दा लामो छ, त्यसैले बनेको लाइभ फोटोमा अनुकूलता समस्या हुन सक्छ:\n\n• राम्ररी चल्न नसक्न सक्छ\n• प्रणाली एल्बमले चिन्न नसक्न सक्छ\n• केही यन्त्रले यो लाइभ फोटो नचिन्न सक्छन्</string>
+    <string name="conv_reminder_legacy_go_title">पुरानो संस्करण भेटियो</string>
+    <string name="conv_reminder_legacy_go_message">यो यन्त्रमा अझै पुरानो संस्करण (Go संस्करण) को एप इन्स्टल छ। त्यो पुरानो संस्करण यो यन्त्रमा अब चल्दैन; स्थान खाली गर्न तपाईं यसलाई अनइन्स्टल गर्न सक्नुहुन्छ।</string>
+    <string name="conv_reminder_replace_risk_title">प्रतिस्थापन मोडमा बिग्रने जोखिम छ</string>
+    <!-- formatted="false": यो स्ट्रिङ फर्म्याटिङ आर्गुमेन्टबिना प्रयोग गरिन्छ
+         यसलाई गैर-फर्म्याट स्ट्रिङ घोषणा गर्दा aapt2/lint ले String.format अनुसार जाँच गर्दैन। -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">प्रतिस्थापन मोडले रूपान्तरणको नतिजा सिधै मूल फाइलमा लेख्छ; एकपटक अधिलेखन भएपछि मूल फाइल फेला पार्न सकिँदैन।\n\n• लेख्ने क्रममा एप अवरुद्ध भयो, भण्डारण ठाउँ अपुग भयो वा अनुमति खोसियो भने मूल फाइल बिग्रन सक्छ\n• रूपान्तरण सधैं सफल हुन्छ भन्ने ग्यारेन्टी छैन; असफल हुँदा मूल फाइल पहिले नै अप्रयोगयोग्य हुन सक्छ\n• पहिले एक-दुई फाइलमा परीक्षण गरेर समस्या छैन भन्ने पुष्टि गर्नुहोस्, त्यसपछि मात्र ब्याचमा प्रशोधन गर्नुहोस्\n• महत्त्वपूर्ण तस्बिर आफैं पहिले ब्याकअप गर्नुहोस्\n\nयो सुविधा «जस्तो छ त्यस्तै» उपलब्ध गराइएको हो; प्रयोगको जोखिम तपाईंकै हो, फाइल बिग्रिए वा हराएमा लेखक जिम्मेवार हुने छैन।</string>
+    <string name="conv_reminder_dont_remind">फेरि नदेखाउनुहोस्</string>
+    <string name="conv_reminder_confirm_ok">थाहा भयो</string>
+    <string name="conv_reminder_uninstall">अनइन्स्टल गर्नुहोस्</string>
+
+</resources>

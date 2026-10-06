@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Classical Chinese (lzh) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">未識之目標式：%1$s</string>
+    <string name="conv_unrecognized_live_photo">未識之動態相片式（非 Google/OPPO/vivo/小米/Apple 動態相片）</string>
+    <string name="conv_cover_photo_missing">封面相片未見或空</string>
+    <string name="conv_video_missing">影片未見或空</string>
+    <string name="conv_video_too_large">影片過大（%1$dMB），不可合成動態相片，請擇其短者</string>
+    <string name="conv_transcoded_too_large">轉碼後影片過大（%1$dMB），不可合成動態相片</string>
+    <string name="conv_video_too_large_compose">影片過大（%1$dMB），不可合成動態相片</string>
+    <string name="conv_cover_heic_go">封面乃 HEIC 之圖（輕量版不支轉碼，請於 iPhone 導出 JPEG 後再轉換）</string>
+    <string name="conv_cover_invalid_heic">封面非有效之圖（HEIC 需系統支 HEIF 解碼）</string>
+    <string name="conv_cover_not_jpeg_go">封面非 JPEG 之圖（輕量版不支轉碼，請改用 JPEG 相片）</string>
+    <string name="conv_cover_invalid_image">封面非有效之圖（僅支 JPEG/WebP/PNG）</string>
+    <string name="conv_reencode_failed">影片重編碼不成：%1$s</string>
+    <string name="conv_remux_failed">容器重封裝不成：%1$s</string>
+    <string name="conv_codec_unknown">非 H.264/H.265 可識之影片</string>
+    <string name="conv_codec_is">編碼乃 %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">影片「%1$s」%2$s，僅換容器（重封裝）不能易其編碼，不可合成動態相片。
+
+請於「設定 → 影片轉碼 → 轉碼方式」改為「重編碼」，或先以他器轉為 H.264/H.265 編碼之 MP4。</string>
+    <string name="conv_hint_no_encoder">影片非標準 MP4 容器（MOV / MKV / WebM / AVI 等），今「轉碼方式」不重編碼，不可合成動態相片。
+
+請於「設定 → 影片轉碼 → 轉碼方式」改為「重編碼」（常版內置 ffmpeg 編碼器；Go 輕量版無轉碼器，請改用常版），或先轉影片為標準 MP4（H.264/H.265）。</string>
+    <string name="conv_log_detected">識為 %1$s</string>
+    <string name="conv_log_same_format_copied">源與目標同式，已原樣複之（無所損）</string>
+    <string name="conv_log_extra_tracks_bypass">源影片有音影片外之軌（%1$s），略同式直通，改由全出之程以淨之</string>
+    <string name="conv_log_ts_fallback">源無封面幀之時戳，依範回退為影片中點</string>
+    <string name="conv_log_brand_normalized">已歸一影片容器之品牌（QuickTime → isom）</string>
+    <string name="conv_log_sanitize_failed">影片有附加軌（%1$s），不能淨之，已原樣出之（此產於部分機型或不可長按而播）</string>
+    <string name="conv_log_extra_tracks_removed">已去影片之附加軌（%1$s）</string>
+    <string name="conv_log_remux_cannot_fix">源影片%1$s；僅重封裝容器不能解之（%2$s），若產仍不可長按而播，請於「設定 → 影片轉碼 → 轉碼方式」改擇「重編碼」</string>
+    <string name="conv_log_reencoding">源影片%1$s，依設定重編碼為 8bit + AAC 以增相簿之相容</string>
+    <string name="conv_log_reencode_result_unusable">重編碼之果不可用，已原樣出之（此產於部分機型或不可長按而播）</string>
+    <string name="conv_log_reencode_still_risky">重編碼後仍有險項（%1$s）</string>
+    <string name="conv_log_reencode_failed">重編碼不成（%1$s），已原樣出之（此產於部分機型或不可長按而播）</string>
+    <string name="conv_log_cover_heic_converted">封面乃 HEIC（非 JPEG），已轉碼為標準 JPEG 後再封裝</string>
+    <string name="conv_log_compose_sizes">合成：相 %1$dB + 影片 %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">未啟轉碼器：僅改容器之品牌（MOV → MP4），不重編碼</string>
+    <string name="conv_tag_convert">轉換</string>
+    <string name="conv_tag_transcode">轉碼</string>
+    <string name="conv_tag_compose">合成</string>
+    <string name="conv_blocker_no_encoder">內置轉碼器不可用</string>
+    <string name="conv_blocker_mode_no_encode">今「轉碼方式」不重編碼</string>
+    <string name="conv_addon_unavailable">內置轉碼器不可用</string>
+    <string name="conv_addon_transcode_failed">ffmpeg 轉碼不成：%1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg 重封裝容器不成：%1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">正以 ffmpeg 轉影片為標準 MP4（%1$s / crf %2$d / %3$s，僅存影片與音之軌）</string>
+    <string name="conv_log_transcode_done">影片轉碼畢（%1$dKB）</string>
+    <string name="conv_log_remuxing">正重封裝影片容器為標準 MP4（僅換容器、不重編碼）</string>
+    <string name="conv_log_remux_done">容器重封裝畢（%1$dKB）</string>
+    <string name="conv_reminder_cat_compose">合成</string>
+    <string name="conv_reminder_cat_convert">轉換</string>
+    <string name="conv_reminder_cat_update">更新</string>
+    <string name="conv_reminder_video_over3s_title">影片逾 3 秒</string>
+    <string name="conv_reminder_video_over3s_message">所擇影片長逾 3 秒，合成之動態相片或有不兼容之虞：
+
+• 或不可常播
+• 或不為系統相簿所識
+• 部分機型或不能識此動態相片</string>
+    <string name="conv_reminder_legacy_go_title">覺有舊版</string>
+    <string name="conv_reminder_legacy_go_message">此機尚裝舊版（Go 版），舊版於此機已不可用，可卸之以釋空。</string>
+    <string name="conv_reminder_replace_risk_title">替換之式有損之險</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">替換之式以轉換之果直書原檔，原檔既覆，不可復尋。
+
+• 書之際若程式中斷、儲存不足或權被撤，源檔或損
+• 轉換本不能保必成，敗時源檔或已不可用
+• 宜先取一檔試之，無虞再批量行之
+• 要緊之相請先自備之
+
+此功能以「現狀」予之，用之之險君自當之，作者不任檔損或失之責。</string>
+    <string name="conv_reminder_dont_remind">不再示</string>
+    <string name="conv_reminder_confirm_ok">知之矣</string>
+    <string name="conv_reminder_uninstall">卸之</string>
+</resources>

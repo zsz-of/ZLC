@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Icelandic (is) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou-deilingin hefur verið afturkölluð eða skráin er ekki til; notaðu GitHub-niðurhal í staðinn</string>
+    <string name="update_lanzou_gone_short">Lanzou-deilingin hefur verið afturkölluð; notaðu GitHub-niðurhal í staðinn</string>
+    <string name="update_lanzou_resolve_failed">Ekki tókst að greina niðurhalstengilinn frá Lanzou</string>
+    <string name="update_lanzou_need_passwd">Þessi Lanzou-deiling krefst útdráttarkóða; notaðu GitHub-niðurhal í staðinn (eða leitaðu að kóðanum í útgáfuupplýsingunum)</string>
+    <string name="update_lanzou_wrong_passwd">Rangur útdráttarkóði Lanzou</string>
+    <string name="update_err_resolve_failed">Ekki tókst að greina</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Vörn Lanzou gegn vefkönnun mistókst</string>
+    <string name="update_err_no_frame">Ekki tókst að greina Lanzou-niðurhalssíðuna (enginn niðurhalarammi fannst)</string>
+    <string name="update_err_no_file_id">Ekki tókst að greina skráarkenni Lanzou</string>
+    <string name="update_err_no_sign">Ekki tókst að greina undirskrift Lanzou</string>
+    <string name="update_err_ajax_request">Beiðni um viðmót mistókst</string>
+    <string name="update_err_api_request">Beiðni um Lanzou-viðmót mistókst</string>
+    <string name="update_err_empty_direct">Lanzou skilaði tómum niðurhalstengli</string>
+    <string name="update_err_direct_expired">Lanzou-niðurhalstengillinn er útrunninn; sæktu hann aftur</string>
+    <string name="update_err_http_request">Beiðni mistókst (HTTP %1$d)</string>
+    <string name="update_err_connect">Ekki tókst að tengjast niðurhalsmiðlara: %1$s</string>
+    <string name="update_err_http">Niðurhal mistókst (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ekki tókst að koma á niðurhalstengingu</string>
+    <string name="update_err_empty">Niðurhaldið efni er tómt</string>
+    <string name="update_err_incomplete">Niðurhalið er ófullkomið (%1$d af %2$d bætum sótt); halaðu niður aftur</string>
+    <string name="update_err_interrupted">Niðurhal rofnaði: %1$s</string>
+    <string name="update_err_not_apk">Sótt skrá er ekki gildur uppsetningarpakki (getur verið vefsíða eða tengillinn er útrunninn); halaðu niður aftur eða notaðu GitHub</string>
+    <string name="update_err_apk_incomplete">Innihald uppsetningarpakkans er ófullkomið; halaðu niður aftur eða notaðu GitHub</string>
+    <string name="update_err_apk_unparsable">Ekki tókst að greina uppsetningarpakkann (mögulega ófullkomið niðurhal); halaðu niður aftur eða notaðu GitHub</string>
+    <string name="update_err_no_install_permission">Heimildin „Setja upp óþekkt forrit“ hefur ekki verið veitt</string>
+    <string name="update_err_installer_failed">Ekki tókst að ræsa kerfisuppsetjarann (%1$s); opnaðu uppsetningarpakkann handvirkt í skráastjóranum</string>
+</resources>

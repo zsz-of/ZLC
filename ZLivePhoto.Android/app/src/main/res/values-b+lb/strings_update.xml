@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Luxembourgish (lb) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">D’Lanzou-Deelung gouf annuléiert oder de Fichier existéiert net, benotzt w.e.g. GitHub fir erofzelueden</string>
+    <string name="update_lanzou_gone_short">D’Lanzou-Deelung gouf annuléiert, benotzt w.e.g. GitHub fir erofzelueden</string>
+    <string name="update_lanzou_resolve_failed">D’Lanzou-Download-Link konnt net analyséiert ginn</string>
+    <string name="update_lanzou_need_passwd">Dës Lanzou-Deelung brauch en Extraktiounscode, benotzt w.e.g. GitHub fir erofzelueden (oder sicht den Extraktiounscode an de Release-Notizen)</string>
+    <string name="update_lanzou_wrong_passwd">Falschen Lanzou-Extraktiounscode</string>
+    <string name="update_err_resolve_failed">Analys feelgeschloen</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">D’Lanzou-Anti-Crawl-Kontroll huet feelgeschloen</string>
+    <string name="update_err_no_frame">D’Lanzou-Download-Säit konnt net analyséiert ginn (kee Download-Frame fonnt)</string>
+    <string name="update_err_no_file_id">D’Lanzou-Fichier-Kennung konnt net analyséiert ginn</string>
+    <string name="update_err_no_sign">D’Lanzou-Signatur konnt net analyséiert ginn</string>
+    <string name="update_err_ajax_request">D’Interface-Ufro huet feelgeschloen</string>
+    <string name="update_err_api_request">D’Lanzou-Interface-Ufro huet feelgeschloen</string>
+    <string name="update_err_empty_direct">Lanzou huet eng eidel Download-Adress zréckginn</string>
+    <string name="update_err_direct_expired">D’Lanzou-Download-Adress ass ofgelaf, uerdert se w.e.g. nei un</string>
+    <string name="update_err_http_request">Ufro feelgeschloen (HTTP %1$d)</string>
+    <string name="update_err_connect">Konnt net mam Download-Server verbanne ginn: %1$s</string>
+    <string name="update_err_http">Download feelgeschloen (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Konnt keng Download-Verbindung opbauen</string>
+    <string name="update_err_empty">Den Download-Inhalt ass eidel</string>
+    <string name="update_err_incomplete">Den Download ass net komplett (%1$d / %2$d Byte emfangen), lued w.e.g. nei erof</string>
+    <string name="update_err_interrupted">Download ënnerbrach: %1$s</string>
+    <string name="update_err_not_apk">Wat erofgeluede gouf, ass kee gëltegt Installatiounspak (méint eng Websäit sinn oder de Download-Link ass ofgelaf), lued w.e.g. nei erof oder benotzt GitHub.</string>
+    <string name="update_err_apk_incomplete">Den Installatiounspak-Inhalt ass net komplett, lued w.e.g. nei erof oder benotzt GitHub.</string>
+    <string name="update_err_apk_unparsable">Den Installatiounspak konnt net analyséiert ginn (méint den Download ass net komplett), lued w.e.g. nei erof oder benotzt GitHub.</string>
+    <string name="update_err_no_install_permission">D’Autorisatioun «Onbekannten Apps installéieren» gouf nach net kritt</string>
+    <string name="update_err_installer_failed">Konnt den System-Installateur net opuffroen (%1$s), maacht w.e.g. den Installatiounspak manuell am Fichier-Manager op</string>
+</resources>

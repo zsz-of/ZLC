@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Asturian (ast) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="screen_app_subtitle">Conversión ente formatos de Live Photo</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d ficheru</item>
+        <item quantity="other">%1$d ficheros</item>
+    </plurals>
+    <string name="screen_settings">Axustes</string>
+    <string name="screen_select_output_format">Escoyer el format de salida</string>
+    <string name="screen_selected">Escoyío</string>
+    <string name="screen_vivo_single_warning">⚠ Los aparatos mui antiguos puen nun reconocer esti format</string>
+    <string name="screen_extract_blocked">⚠ La cola contién xeres de composición, nun se pue escoyer Estrayer</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (ficheru únicu)</string>
+    <string name="screen_format_vivo">vivo (ficheru doble)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Estrayer</string>
+    <string name="screen_toolbox">Caxa de ferramientes</string>
+    <string name="screen_batch_import">Importación masiva</string>
+    <string name="screen_batch_import_desc">Escandir l\'álbum enteru y identificar Live Photos en masa</string>
+    <string name="screen_compose">Componer una Live Photo</string>
+    <string name="screen_compose_desc">Escoyer una imaxe y un videu pa componelos en pareya</string>
+    <string name="screen_replace_mode">Mou de sustitución</string>
+    <string name="screen_replace_mode_desc">El resultáu de la conversión escribe\'se direutamente nel ficheru orixinal, ensin crear un ficheru nuevu</string>
+    <string name="screen_need_all_files_access_hint">Precisa\'l permisu «Accesu a tolos ficheros»; calca equí pa concedelu</string>
+    <string name="screen_agree_and_enable">Aceutar y activar</string>
+    <string name="screen_empty_no_files">Entá nun amestasti nengún ficheru</string>
+    <string name="screen_view_detail">Ver el detallu</string>
+    <string name="screen_add_files">Amestar ficheros</string>
+    <string name="screen_output_format">Format de salida: %1$s</string>
+    <string name="screen_delete_original">Desaniciar los orixinales tres de procesalos</string>
+    <string name="screen_need_all_files_access_view">Precisa\'l permisu «Accesu a tolos ficheros»; calca pa ver</string>
+    <string name="screen_clear">Balerar</string>
+    <string name="screen_stop">Detener el procesu</string>
+    <string name="screen_start_convert">Aniciar la conversión</string>
+    <string name="screen_status_detail">Detallu del estáu</string>
+    <string name="screen_long_press_copy">Calten primíu\'l testu pa seleicionalu y copialu</string>
+    <string name="screen_copy">Copiar</string>
+    <string name="screen_close">Zarrar</string>
+    <string name="screen_back">Volver</string>
+    <string name="screen_picker_title_select">Escoyer Live Photos</string>
+    <string name="screen_album_count">Álbum %1$d</string>
+    <string name="screen_album_collapse_cover">Replegar la portada del álbum</string>
+    <string name="screen_album_expand_cover">Esplegar la portada del álbum</string>
+    <string name="screen_scanning_progress">Escandiendo %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d imaxe</item>
+        <item quantity="other">%1$d imáxenes</item>
+    </plurals>
+    <string name="screen_select_all">Seleicionar too</string>
+    <string name="screen_no_albums">Nun hai álbumes disponibles</string>
+    <string name="screen_no_media">Nun s\'atoparon Live Photos</string>
+    <string name="screen_no_media_compose">Nun s\'atoparon imáxenes nin vídeos</string>
+    <string name="screen_import">Importar</string>
+    <string name="screen_import_count">Importar %1$d</string>
+    <string name="screen_import_mixed">Importar: %1$d imáxenes · %2$d vídeos</string>
+    <string name="screen_search">Buscar</string>
+    <string name="screen_search_collapse">Replegar la gueta</string>
+    <string name="screen_search_hint">Buscar pol nome</string>
+    <string name="screen_search_clear">Balerar la gueta</string>
+    <string name="screen_sort_date">Data</string>
+    <string name="screen_sort_size">Tamañu</string>
+    <string name="screen_sort_name">Nome</string>
+    <string name="screen_sort_asc">Ascendente</string>
+    <string name="screen_sort_desc">Descendente</string>
+    <string name="screen_date_today">Güei</string>
+    <string name="screen_date_yesterday">Ayer</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

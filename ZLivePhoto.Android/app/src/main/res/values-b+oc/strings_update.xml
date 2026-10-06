@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Occitan (oc) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Lo partatge de Lanzou Cloud es estat anulat o lo fichièr existís pas ; utilizatz la descarga dempuèi GitHub</string>
+    <string name="update_lanzou_gone_short">Lo partatge de Lanzou Cloud es estat anulat ; utilizatz la descarga dempuèi GitHub</string>
+    <string name="update_lanzou_resolve_failed">Fracàs de l\'analisi del ligam de descarga de Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Aqueste partatge de Lanzou Cloud demanda un còdi d\'accès ; utilizatz la descarga dempuèi GitHub (o trobatz lo còdi d\'accès dins las nòtas de la Release)</string>
+    <string name="update_lanzou_wrong_passwd">Lo còdi d\'accès de Lanzou Cloud es incorrècte</string>
+    <string name="update_err_resolve_failed">Fracàs de l\'analisi</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Fracàs de la verificacion antiròbot de Lanzou Cloud</string>
+    <string name="update_err_no_frame">Se pòt pas analisar la pagina de descarga de Lanzou Cloud (cap de quadre de descarga pas trobat)</string>
+    <string name="update_err_no_file_id">Se pòt pas analisar l\'identificant del fichièr Lanzou Cloud</string>
+    <string name="update_err_no_sign">Se pòt pas analisar la signatura de Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Fracàs de la requèsta a l\'interfàcia</string>
+    <string name="update_err_api_request">Fracàs de la requèsta a l\'API de Lanzou Cloud</string>
+    <string name="update_err_empty_direct">Lanzou Cloud a restituit una adreça de descarga voida</string>
+    <string name="update_err_direct_expired">L\'adreça de descarga de Lanzou Cloud a expirat ; tornatz l\'obténer</string>
+    <string name="update_err_http_request">Fracàs de la requèsta (HTTP %1$d)</string>
+    <string name="update_err_connect">Connexion impossibla al servidor de descarga: %1$s</string>
+    <string name="update_err_http">Fracàs de la descarga (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Impossible d\'establir la connexion de descarga</string>
+    <string name="update_err_empty">Lo contengut descargat es void</string>
+    <string name="update_err_incomplete">Descarga incompleta (%1$d/%2$d octets obtenguts) ; tornatz telecargar</string>
+    <string name="update_err_interrupted">Descarga interrompuda: %1$s</string>
+    <string name="update_err_not_apk">Çò qu\'es estat telecargat es pas un paquet d\'installacion valid (pòt èsser una pagina web o lo ligam a expirat) ; tornatz telecargar o utilizatz GitHub.</string>
+    <string name="update_err_apk_incomplete">Lo contengut del paquet d\'installacion es incomplèt ; tornatz telecargar o utilizatz GitHub.</string>
+    <string name="update_err_apk_unparsable">Lo paquet d\'installacion se pòt pas analisar (la descarga es pòt èsser incompleta) ; tornatz telecargar o utilizatz GitHub.</string>
+    <string name="update_err_no_install_permission">La permission «Installar d\'aplicacions desconegudas» es pas encara concedida</string>
+    <string name="update_err_installer_failed">Impossible d\'aviar l\'installador del sistèma (%1$s) ; dobètz lo paquet a la man dins lo gestionari de fichièrs per l\'installar</string>
+</resources>

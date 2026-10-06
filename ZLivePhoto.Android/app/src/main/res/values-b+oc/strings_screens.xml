@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Occitan (oc) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="screen_app_subtitle">Conversion entre formats de Live Photo</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d fichièr</item>
+        <item quantity="other">%1$d fichièrs</item>
+    </plurals>
+    <string name="screen_settings">Paramètres</string>
+    <string name="screen_select_output_format">Causir lo format de sortida</string>
+    <string name="screen_selected">Seleccionat</string>
+    <string name="screen_vivo_single_warning">⚠ Los aparelhs tròp ancians pòdon mal reconéisser aqueste format</string>
+    <string name="screen_extract_blocked">⚠ La fila conten de prètzfaches de composicion, se pòt pas causir Extraire</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (fichièr unic)</string>
+    <string name="screen_format_vivo">vivo (dos fichièrs)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Extraire</string>
+    <string name="screen_toolbox">Caisa d\'aisinas</string>
+    <string name="screen_batch_import">Importacion en massa</string>
+    <string name="screen_batch_import_desc">Analisa l\'album entièr e detecta en massa las Live Photos</string>
+    <string name="screen_compose">Compausar una Live Photo</string>
+    <string name="screen_compose_desc">Causissètz un imatge e una vidèo per los compausar en parelh</string>
+    <string name="screen_replace_mode">Mòde de remplaçament</string>
+    <string name="screen_replace_mode_desc">Lo resultat de la conversion es escrit dirèctament dins lo fichièr original, sens crear un fichièr novèl</string>
+    <string name="screen_need_all_files_access_hint">Demanda la permission «Accès a totes los fichièrs» ; tocatz aquí per la concedir</string>
+    <string name="screen_agree_and_enable">Acordar e activar</string>
+    <string name="screen_empty_no_files">Cap de fichièr pas encara apondut</string>
+    <string name="screen_view_detail">Veire los detalhs</string>
+    <string name="screen_add_files">Apondre de fichièrs</string>
+    <string name="screen_output_format">Format de sortida : %1$s</string>
+    <string name="screen_delete_original">Suprimir los originals aprèp lo tractament</string>
+    <string name="screen_need_all_files_access_view">Demanda la permission «Accès a totes los fichièrs» ; tocatz per veire</string>
+    <string name="screen_clear">Voidar</string>
+    <string name="screen_stop">Arrestar lo tractament</string>
+    <string name="screen_start_convert">Aviar la conversion</string>
+    <string name="screen_status_detail">Detalhs de l\'estat</string>
+    <string name="screen_long_press_copy">Maintenètz lo dètz premut sul tèxte per lo seleccionar e lo copiar</string>
+    <string name="screen_copy">Copiar</string>
+    <string name="screen_close">Tampar</string>
+    <string name="screen_back">Retorn</string>
+    <string name="screen_picker_title_select">Causir de Live Photos</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Repliar la cobèrta de l\'album</string>
+    <string name="screen_album_expand_cover">Desplegar la cobèrta de l\'album</string>
+    <string name="screen_scanning_progress">Analisi %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d imatge</item>
+        <item quantity="other">%1$d imatges</item>
+    </plurals>
+    <string name="screen_select_all">Tot seleccionar</string>
+    <string name="screen_no_albums">Cap d\'album pas disponible</string>
+    <string name="screen_no_media">Cap de Live Photo pas trobada</string>
+    <string name="screen_no_media_compose">Cap d\'imatge ni de vidèo pas trobats</string>
+    <string name="screen_import">Importar</string>
+    <string name="screen_import_count">Importar %1$d</string>
+    <string name="screen_import_mixed">Importar %1$d imatges · %2$d vidèos</string>
+    <string name="screen_search">Cercar</string>
+    <string name="screen_search_collapse">Repliar la recèrca</string>
+    <string name="screen_search_hint">Cercar per nom</string>
+    <string name="screen_search_clear">Voidar la recèrca</string>
+    <string name="screen_sort_date">Data</string>
+    <string name="screen_sort_size">Talha</string>
+    <string name="screen_sort_name">Nom</string>
+    <string name="screen_sort_asc">Ascendent</string>
+    <string name="screen_sort_desc">Descendent</string>
+    <string name="screen_date_today">Uèi</string>
+    <string name="screen_date_yesterday">Ièr</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

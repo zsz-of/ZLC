@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Catalan (ca) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="screen_app_subtitle">Converteix entre formats de Live Photo</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d fitxer</item>
+        <item quantity="other">%1$d fitxers</item>
+    </plurals>
+    <string name="screen_settings">Configuració</string>
+    <string name="screen_select_output_format">Tria el format de sortida</string>
+    <string name="screen_selected">Seleccionats</string>
+    <string name="screen_vivo_single_warning">⚠ Els models massa antics podrien no reconèixer aquest format</string>
+    <string name="screen_extract_blocked">⚠ La cua conté tasques de composició; no es pot seleccionar l\'extracció</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (un fitxer)</string>
+    <string name="screen_format_vivo">vivo (dos fitxers)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Extreu</string>
+    <string name="screen_toolbox">Caixa d\'eines</string>
+    <string name="screen_batch_import">Importa per lots</string>
+    <string name="screen_batch_import_desc">Escaneja tota la galeria i identifica Live Photos per lots</string>
+    <string name="screen_compose">Composa una Live Photo</string>
+    <string name="screen_compose_desc">Tria una foto i un vídeo i aparella-los per composar una Live Photo</string>
+    <string name="screen_replace_mode">Mode de substitució</string>
+    <string name="screen_replace_mode_desc">Escriu el resultat de la conversió directament als fitxers originals, sense crear fitxers nous</string>
+    <string name="screen_need_all_files_access_hint">Cal el permís d\'«Accés a tots els fitxers»; toca aquí per concedir-lo</string>
+    <string name="screen_agree_and_enable">Accepta i activa</string>
+    <string name="screen_empty_no_files">Encara no has afegit cap fitxer</string>
+    <string name="screen_view_detail">Mostra els detalls</string>
+    <string name="screen_add_files">Afegeix fitxers</string>
+    <string name="screen_output_format">Format de sortida: %1$s</string>
+    <string name="screen_delete_original">Suprimeix els fitxers originals en acabar</string>
+    <string name="screen_need_all_files_access_view">Cal el permís d\'«Accés a tots els fitxers»; toca per veure-ho</string>
+    <string name="screen_clear">Buida</string>
+    <string name="screen_stop">Atura el processament</string>
+    <string name="screen_start_convert">Inicia la conversió</string>
+    <string name="screen_status_detail">Detalls de l\'estat</string>
+    <string name="screen_long_press_copy">Mantén premut el text per seleccionar-lo i copiar-lo</string>
+    <string name="screen_copy">Copia</string>
+    <string name="screen_close">Tanca</string>
+    <string name="screen_back">Enrere</string>
+    <string name="screen_picker_title_select">Tria les Live Photos</string>
+    <string name="screen_album_count">Àlbum %1$d</string>
+    <string name="screen_album_collapse_cover">Redueix la portada de l\'àlbum</string>
+    <string name="screen_album_expand_cover">Amplia la portada de l\'àlbum</string>
+    <string name="screen_scanning_progress">S\'està escanejant %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d fotos</item>
+    </plurals>
+    <string name="screen_select_all">Selecciona-ho tot</string>
+    <string name="screen_no_albums">Cap àlbum disponible</string>
+    <string name="screen_no_media">No s\'ha trobat cap Live Photo</string>
+    <string name="screen_no_media_compose">No s\'ha trobat cap foto ni vídeo</string>
+    <string name="screen_import">Importa</string>
+    <string name="screen_import_count">Importa %1$d</string>
+    <string name="screen_import_mixed">Importa %1$d imatges · %2$d vídeos</string>
+    <string name="screen_search">Cerca</string>
+    <string name="screen_search_collapse">Replega la cerca</string>
+    <string name="screen_search_hint">Cerca per nom</string>
+    <string name="screen_search_clear">Buida la cerca</string>
+    <string name="screen_sort_date">Data</string>
+    <string name="screen_sort_size">Mida</string>
+    <string name="screen_sort_name">Nom</string>
+    <string name="screen_sort_asc">Ascendent</string>
+    <string name="screen_sort_desc">Descendent</string>
+    <string name="screen_date_today">Avui</string>
+    <string name="screen_date_yesterday">Ahir</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

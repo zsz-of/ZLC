@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Icelandic (is) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="main_status_ready">Tilbúið</string>
+    <string name="main_status_location_granted">Staðsetningarheimild veitt; GPS-lýsigögn verða varðveitt eftir umbreytingu</string>
+    <string name="main_status_location_denied">Staðsetningarheimild ekki veitt: ljósmyndir eftir umbreytingu missa GPS-staðsetningarupplýsingar</string>
+    <string name="main_status_all_files_granted">Heimildin „Aðgangur að öllum skrám“ veitt; umbreytingar skrifa beint í albúmsmöppuna og varðveita staðsetningarupplýsingar að fullu</string>
+    <string name="main_status_all_files_denied">Heimildin „Aðgangur að öllum skrám“ ekki veitt: á sumum tækjum geta umbreyttar ljósmyndir misstaðsetningarupplýsingar</string>
+    <string name="main_status_read_granted">Heimild til að lesa ljósmyndir og myndbönd veitt</string>
+    <string name="main_status_video_missing">Heimild veitt en myndbandsheimild vantar: getur ekki leitað að meðfylgjandi myndbandi tveggja skráa Live Photo</string>
+    <string name="main_status_permission_denied">Heimild ekki veitt; hægt er að ýta á „Bæta við skrám“ aftur</string>
+    <string name="main_status_folder_not_selected">Engin mappa valin</string>
+    <string name="main_status_folder_unavailable">Ekki hægt að opna valda möppu (aðeins staðbundnar geymslur eru studdar)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Síðasta lota endurheimt (%1$d skrá)</item>
+        <item quantity="other">Síðasta lota endurheimt (%1$d skrár)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Óeðlileg lokun fyrri lotu fannst; ókláruðum lista hreinsað</string>
+    <string name="main_status_compose_blocks_extract">Biðröðin inniheldur samsetningarverk; ekki er hægt að skipta í sundurliðunarham</string>
+    <string name="main_status_replace_off_mutex">Útskiptingahamur slökktur (gagnkvæmt útlokað við „Eyða frumskrám eftir vinnslu“)</string>
+    <string name="main_status_delete_needs_all_files">Sjálfvirk eyðing frumskráa krefst heimildarinnar „Aðgangur að öllum skrám“; veittu heimild fyrst</string>
+    <string name="main_status_replace_off">Útskiptingahamur slökktur; niðurstöður umbreytinga skrifast aftur í albúmsmöppuna</string>
+    <string name="main_status_replace_needs_all_files">Útskiptingahamur krefst heimildarinnar „Aðgangur að öllum skrám“; veittu heimild fyrst</string>
+    <string name="main_status_delete_off_mutex">„Eyða frumskrám eftir vinnslu“ slökkt (gagnkvæmt útlokað við útskiptingaham)</string>
+    <string name="main_status_loading_albums">Les albúm…</string>
+    <string name="main_status_no_albums">Engin albúm fundust</string>
+    <string name="main_status_compose_no_photo">Engin ljósmynd valin; ekki hægt að setja saman</string>
+    <string name="main_status_compose_no_video">Ekkert myndband valið; ekki hægt að setja saman</string>
+    <string name="main_status_compose_all_added">Allar valdar ljósmyndir eru þegar á listanum</string>
+    <string name="main_status_compose_paired">%1$d ljósmyndir og %2$d myndbönd; %3$d pörum af samsetningarverkum bætt við eftir hina minni fjöldann</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d samsetningarverki bætt við; ýttu á „Hefja umbreytingu“ til að framkvæma samsetninguna</item>
+        <item quantity="other">%1$d samsetningarverkum bætt við; ýttu á „Hefja umbreytingu“ til að framkvæma samsetninguna</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (úttakssnið skipt sjálfkrafa í Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Flyt inn %1$d deilda mynd…</item>
+        <item quantity="other">Flyt inn %1$d deildar myndir…</item>
+    </plurals>
+    <string name="main_status_import_failed">Innflutningur mistókst: %1$s</string>
+    <string name="main_status_import_done_partial">Innflutningi lokið: %1$d tókst, %2$d mistókst</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Innflutningi lokið: %1$d skrá flutt inn</item>
+        <item quantity="other">Innflutningi lokið: %1$d skrár fluttar inn</item>
+    </plurals>
+    <string name="main_status_import_stopped">Innflutningi hætt: %1$d tókst, %2$d mistókst</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Flyt inn %1$d skrá…</item>
+        <item quantity="other">Flyt inn %1$d skrár…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Flyt inn %1$d/%2$d…</string>
+    <string name="main_status_stopping">Stöðva… (stöðva eftir núverandi skrá)</string>
+    <string name="main_status_stopping_import">Stöðva innflutning…</string>
+    <string name="main_status_removed">%1$s fjarlægt</string>
+    <string name="main_status_cleared">Hreinsað</string>
+    <string name="main_status_nothing_to_convert">Engar skrár til að umbreyta</string>
+    <string name="main_status_folder_unreadable">Ekki tókst að lesa valda möppu</string>
+    <string name="main_status_scanning_folder">Skanna möppu…</string>
+    <string name="main_status_no_images">Engar myndir fundust í valdri möppu</string>
+    <string name="main_status_batch_importing">Runuinnflutningur %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Runuinnflutningi hætt: %1$d Live Photo flutt inn</item>
+        <item quantity="other">Runuinnflutningi hætt: %1$d Live Photo flutt inn</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Runuinnflutningi hætt: %1$d Live Photo flutt inn, %2$d óvirkum skrám sleppt</item>
+        <item quantity="other">Runuinnflutningi hætt: %1$d Live Photo flutt inn, %2$d óvirkum skrám sleppt</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Runuinnflutningi lokið: %1$d Live Photo flutt inn</item>
+        <item quantity="other">Runuinnflutningi lokið: %1$d Live Photo flutt inn</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Runuinnflutningi lokið: %1$d Live Photo flutt inn, %2$d óvirkum skrám sleppt</item>
+        <item quantity="other">Runuinnflutningi lokið: %1$d Live Photo flutt inn, %2$d óvirkum skrám sleppt</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Stöðvað: %1$d af %2$d skrám unnin, %3$d upprunaskrám skipt út</string>
+    <string name="main_status_stopped_export">Stöðvað: %1$d af %2$d skrám unnin, %3$d flutt út í albúm</string>
+    <string name="main_status_done_replace_reason">Lokið: %1$d skrám unnið, %2$d upprunaskrám skipt út (ástæða: %3$s)</string>
+    <string name="main_status_done_export_reason">Lokið: %1$d skrám unnið, %2$d flutt út í albúm (ástæða: %3$s)</string>
+    <string name="main_status_done_replace">Lokið: %1$d skrám unnið, %2$d upprunaskrám skipt út</string>
+    <string name="main_status_done_export">Lokið: %1$d skrám unnið, %2$d flutt út í albúm</string>
+    <string name="main_status_keep_originals">%1$s; heimildin „Fullur geymsluaðgangur“ ekki veitt, frumskrám varðveitt</string>
+    <string name="main_info_detecting">Greini…</string>
+    <string name="main_info_unrecognized">Óþekkt Live Photo-snið</string>
+    <string name="main_info_converting">Umbreyti…</string>
+    <string name="main_info_compose_task">Samsetningarverk (ýttu á „Hefja umbreytingu“ til að framkvæma samsetninguna)</string>
+    <string name="main_info_done_replaced">Lokið (skipti út %1$d upprunaskrá)</string>
+    <string name="main_info_done_skipped">Lokið (sleppt: nafnárekstur)</string>
+    <string name="main_info_done_exported">Lokið (flutti út %1$d)</string>
+    <string name="main_info_failed">Mistókst: %1$s</string>
+    <string name="main_progress_added">%1$d/%2$d bætt við</string>
+    <string name="main_progress_processed">%1$d/%2$d unnið</string>
+    <string name="main_progress_imported">%1$d/%2$d flutt inn</string>
+    <string name="main_dialog_permission_title">Þarf heimild til að lesa ljósmyndir og myndbönd</string>
+    <string name="main_dialog_permission_message">Þetta forrit þarf að lesa ljósmyndir og myndbönd á tækinu þínu:\n\n• Ljósmyndaheimild: skanna tækisalbúm og greina Live Photo þar\n• Myndbandsheimild: leita að meðfylgjandi myndbandi tveggja skráa Live Photo\n• Staðsetningarheimild: varðveita GPS-staðsetningarlýsigögn ljósmynda (þau tapast ef hún vantar)\n\nEf þú hafnar er ekki hægt að nota innbyggða valinn; ýttu aftur á „Bæta við skrám“ síðar til að heimila aftur.</string>
+    <string name="main_dialog_settings_title">Þarf að veita ljósmynda- og myndbandsheimild handvirkt</string>
+    <string name="main_dialog_settings_message">Þú valdir áður „Ekki spyrja aftur“ og kerfið sýnir ekki lengur heimildarglugga.\n\nFarðu í upplýsingasíðu forritsins → Heimildir → Ljósmyndir og myndbönd, veittu aðganginn handvirkt og farðu svo aftur í forritið.\n\nAthugið: verður að veita bæði heimildirnar „Ljósmyndir“ og „Myndbönd“, annars finnst meðfylgjandi myndband tveggja skráa Live Photo ekki.</string>
+    <string name="main_dialog_allfiles_title_delete">Sjálfvirk eyðing frumskráa krefst „Aðgangs að öllum skrám“</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Þetta tæki styður ekki sjálfa eyðingu frumskráa</string>
+    <string name="main_dialog_allfiles_title_replace">Útskiptingahamur krefst „Aðgangs að öllum skrám“</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Þetta tæki styður ekki útskiptingaham</string>
+    <string name="main_dialog_allfiles_title_location">Mælt er með að veita heimildina „Aðgangur að öllum skrám“</string>
+    <string name="main_dialog_allfiles_delete_message">„Eyða frumskrám eftir vinnslu“ eyðir beint upprunalegum skrám á disknum (ljósmyndum og meðfylgjandi myndböndum þeirra); aðgerðin er óafturkræf, svo heimildina „Aðgangur að öllum skrám“ þarf að veita fyrst.\n\nEftir heimild verður rofinn virkjaður, og þú getur kveikt á honum sjálf/ur.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Núverandi kerfi (Android 10 og eldra) býður ekki upp á heimildina „Aðgangur að öllum skrám“ og getur því ekki eytt upprunalegum skrám beint af disknum; því styður þetta tæki ekki „Eyða frumskrám eftir vinnslu“.\n\nÞú getur hreinsað frumskrárnar handvirkt í kerfisalbúminu eftir umbreytingu.</string>
+    <string name="main_dialog_allfiles_replace_message">Útskiptingahamur skrifar niðurstöðu umbreytingarinnar beint í upprunalegu skránna á disknum (yfirskrifar innihaldið); aðgerðin er óafturkræf, svo heimildina „Aðgangur að öllum skrám“ þarf að veita fyrst.\n\nEftir heimild verður rofinn virkjaður, og þú getur kveikt á honum sjálf/ur.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Núverandi kerfi (Android 10 og eldra) býður ekki upp á heimildina „Aðgangur að öllum skrám“ og getur því ekki skrifað í upprunalegar skrár beint á disknum; því styður þetta tæki ekki útskiptingaham.\n\nÞú getur haldið áfram að umbreyta á sjálfgefin hátt; niðurstöðurnar skrifast í albúmsmöppuna.</string>
+    <string name="main_dialog_allfiles_location_message">Á sumum tækjum (s.s. Meizu) felur skrif í gegnum kerfisalbúmsviðmótið GPS-staðsetningarupplýsingar, svo umbreyttar ljósmyndir tapa staðsetningu.\n\nEftir að hafa veitt „Aðgang að öllum skrám“ skrifar forritið beint í albúmsmöppuna og varðveitir staðsetningarlýsigögn að fullu.\n\nUmbreyting virkar líka án heimildar, en á sumum tækjum getur staðsetningarupplýsing tapast.</string>
+    <string name="main_dialog_conflict_title">Nafnárekstur úttaksskrár</string>
+    <string name="main_dialog_conflict_message">Skrá með sama nafni er þegar í úttaksmöppunni:\n%1$s\n\nVeldu hvernig eigi að haga því.</string>
+    <string name="main_label_conflict_always">Nota þessa aðferð fyrir síðari árekstra</string>
+    <string name="main_btn_grant">Heimila</string>
+    <string name="main_btn_deny">Hafna</string>
+    <string name="main_btn_go_settings">Í stillingar</string>
+    <string name="main_btn_cancel">Hætta við</string>
+    <string name="main_btn_grant_access">Veita heimild</string>
+    <string name="main_btn_got_it">Í lagi</string>
+    <string name="main_btn_not_now">Ekki núna</string>
+    <string name="main_btn_skip">Sleppa</string>
+    <string name="main_btn_overwrite">Yfirskrifa</string>
+    <string name="main_btn_auto_rename">Endurnefna sjálfkrafa</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Eyddi %1$d frumskrá</item>
+        <item quantity="other">Eyddi %1$d frumskrám</item>
+    </plurals>
+    <string name="main_delete_nothing">Engar frumskrár þarf að eyða</string>
+    <string name="main_delete_partial">Eyddi %1$d frumskrám (%2$d eyddust ekki, varðveittar)</string>
+    <string name="main_delete_failed">Ekki tókst að eyða frumskrám (skráin í notkun eða engar skrifheimildir), varðveittar</string>
+    <string name="main_export_missing_output">Úttakið vantar eða er tómt: %1$s</string>
+    <string name="main_export_missing_output_bare">Úttakið vantar eða er tómt</string>
+    <string name="main_export_insert_null">MediaStore insert skilaði null</string>
+    <string name="main_export_output_stream">MediaStore úttaksstraumur ekki tiltækur</string>
+    <string name="main_export_write_failed">MediaStore skrifun mistókst: %1$s</string>
+    <string name="main_export_mkdir_failed">Ekki tókst að búa til albúmsmöppu %1$s</string>
+    <string name="main_export_dir_write_failed">Skrifun í albúmsmöppu mistókst: %1$s</string>
+    <string name="main_export_no_source">Fann ekki upprunaskrána; sleppt útskiptingu</string>
+    <string name="main_export_companion_failed">Skrifun meðfylgjandi skrár mistókst: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Mappa upprunaskrár er ekki skrifanleg; meðfylgjandi skrá fær ekki skrifað aftur</string>
+    <string name="main_export_source_dir_unavailable">Mappa upprunaskrár ekki tiltæk: %1$s</string>
+    <string name="main_export_replace_failed">Ekki tókst að skipta út upprunaskrá: %1$s</string>
+    <string name="main_export_replace_failed_bare">Ekki tókst að skipta út upprunaskrá</string>
+</resources>

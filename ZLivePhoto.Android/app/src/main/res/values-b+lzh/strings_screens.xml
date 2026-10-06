@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Classical Chinese (lzh) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="screen_app_subtitle">動態相片式之互轉</string>
+    <plurals name="screen_file_count">
+        <item quantity="other">%1$d 檔</item>
+    </plurals>
+    <string name="screen_settings">設定</string>
+    <string name="screen_select_output_format">擇輸出之式</string>
+    <string name="screen_selected">已擇</string>
+    <string name="screen_vivo_single_warning">⚠ 機過舊者或不能識此式</string>
+    <string name="screen_extract_blocked">⚠ 列中有合成之事，不可擇拆解</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo（單檔）</string>
+    <string name="screen_format_vivo">vivo（雙檔）</string>
+    <string name="screen_format_xiaomi">小米</string>
+    <string name="screen_format_honor">榮耀</string>
+    <string name="screen_format_meizu">魅族</string>
+    <string name="screen_format_extract">拆解</string>
+    <string name="screen_toolbox">工具匣</string>
+    <string name="screen_batch_import">批量導入</string>
+    <string name="screen_batch_import_desc">遍察相簿，批量識動態相片</string>
+    <string name="screen_compose">合成動態相片</string>
+    <string name="screen_compose_desc">擇一相與一影片配而合之</string>
+    <string name="screen_replace_mode">替換之式</string>
+    <string name="screen_replace_mode_desc">轉換之果直書原檔，不別生新檔</string>
+    <string name="screen_need_all_files_access_hint">需「盡覽諸檔」之權，按此往授</string>
+    <string name="screen_agree_and_enable">諾而啟之</string>
+    <string name="screen_empty_no_files">尚未加檔</string>
+    <string name="screen_view_detail">觀其詳</string>
+    <string name="screen_add_files">加檔</string>
+    <string name="screen_output_format">輸出之式：%1$s</string>
+    <string name="screen_delete_original">成後刪原圖</string>
+    <string name="screen_need_all_files_access_view">需「盡覽諸檔」之權，按之而觀</string>
+    <string name="screen_clear">清空</string>
+    <string name="screen_stop">止之</string>
+    <string name="screen_start_convert">始轉換</string>
+    <string name="screen_status_detail">狀態之詳</string>
+    <string name="screen_long_press_copy">長按其文可擇而複之</string>
+    <string name="screen_copy">複製</string>
+    <string name="screen_close">關閉</string>
+    <string name="screen_back">返回</string>
+    <string name="screen_picker_title_select">擇動態相片</string>
+    <string name="screen_album_count">相簿 %1$d</string>
+    <string name="screen_album_collapse_cover">收相簿之封面</string>
+    <string name="screen_album_expand_cover">展相簿之封面</string>
+    <string name="screen_scanning_progress">正察 %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="other">%1$d 張</item>
+    </plurals>
+    <string name="screen_select_all">皆擇</string>
+    <string name="screen_no_albums">無可用之相簿</string>
+    <string name="screen_no_media">未見動態相片</string>
+    <string name="screen_no_media_compose">未見相或影片</string>
+    <string name="screen_import">導入</string>
+    <string name="screen_import_count">導入 %1$d</string>
+    <string name="screen_import_mixed">導入 圖%1$d·影%2$d</string>
+    <string name="screen_search">尋</string>
+    <string name="screen_search_collapse">收尋</string>
+    <string name="screen_search_hint">依名而尋</string>
+    <string name="screen_search_clear">清所尋</string>
+    <string name="screen_sort_date">日期</string>
+    <string name="screen_sort_size">大小</string>
+    <string name="screen_sort_name">名</string>
+    <string name="screen_sort_asc">順</string>
+    <string name="screen_sort_desc">逆</string>
+    <string name="screen_date_today">今日</string>
+    <string name="screen_date_yesterday">昨日</string>
+    <string name="screen_date_this_year">%1$d月%2$d日</string>
+    <string name="screen_date_other_year">%1$d年%2$d月%3$d日</string>
+</resources>

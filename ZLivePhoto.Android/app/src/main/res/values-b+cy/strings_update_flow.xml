@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Welsh (cy) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">Ni dderbyniwyd cyfeiriad lawrlwytho GitHub; rhowch gynnig arall arni\'n nes ymlaen.</string>
+    <string name="update_flavor_standard">Fersiwn arferol</string>
+    <string name="update_flavor_go">Fersiwn Go</string>
+    <string name="update_lanzou_url_missing">Nid yw\'r fersiwn hon yn cynnig dolen lawrlwytho Lanzou Cloud; gallwch ddefnyddio GitHub yn ei le.</string>
+    <string name="update_apk_direct_missing">Nid oes gan y fersiwn hon ddolen uniongyrchol i becyn gosod sy\'n cyfateb; ewch i dudalen ryddhadau GitHub i ddewis yr APK cyfatebol.</string>
+    <string name="update_install_permission_missing">Heb gael caniatâd «Gosod apiau anhysbys»; ni ellir gosod yn awtomatig. Ewch i osodiadau\'r system i\'w caniatáu, yna rhowch gynnig arall arni.</string>
+    <string name="update_error_unknown">Gwall anhysbys</string>
+    <string name="update_fail_lanzou">Wedi methu lawrlwytho o Lanzou Cloud</string>
+    <string name="update_fail_github">Wedi methu lawrlwytho o GitHub</string>
+    <string name="update_lanzou_resolving">Yn dadansoddi dolen lawrlwytho Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Yn lawrlwytho o Lanzou Cloud…</string>
+    <string name="update_github_downloading">Yn lawrlwytho o GitHub…</string>
+    <string name="update_unzipping">Yn dad-racio\'r becyn gosod…</string>
+    <string name="update_notes_empty">Does dim nodiadau diweddaru ar gyfer y fersiwn hon eto.</string>
+    <string name="update_use_normal_title">Defnyddiwch y fersiwn arferol</string>
+    <string name="update_use_normal_body">Mae system y ddyfais hon yn Android 10 neu\'n ddiweddarach; nid yw\'r fersiwn ysgafn Go bellach yn addas, a does dim modd defnyddio\'r fersiwn hŷn yn barhau.\n\nCanfuwyd bod y fersiwn arferol (ZLC) eisoes wedi\'i gosod ar y ddyfais hon: agorwch y fersiwn arferol yn uniongyrchol i barhau (nid yw\'r fersiwn newydd yn cynnig fersiwn gydnaws Go mwyach, gellir dadosod y fersiwn hŷn i ryddhau lle).</string>
+    <string name="update_open_normal">Agor y fersiwn arferol</string>
+    <string name="update_must_update_title">Rhaid diweddaru cyn parhau i ddefnyddio</string>
+    <string name="update_forced_body">Mae system y ddyfais hon yn Android 10 neu\'n ddiweddarach; nid yw\'r fersiwn ysgafn Go bellach yn addas a does dim modd defnyddio\'r fersiwn hŷn yn barhau; nid yw\'r fersiwn newydd yn cynnig fersiwn gydnaws Go chwaith.\n\nCysylltwch â\'r rhwydwaith, yna tapïwch «Rhoi cynnig arall» i gael pecyn gosod y fersiwn arferol.</string>
+    <string name="update_retry">Rhoi cynnig arall</string>
+    <string name="update_switch_normal_body">Mae system y ddyfais hon yn Android 10 neu\'n ddiweddarach; nid yw\'r fersiwn ysgafn Go bellach yn addas a does dim modd defnyddio\'r fersiwn hŷn yn barhau.\nLawrlwythwch a gosodwch y fersiwn arferol i barhau (nid yw\'r fersiwn newydd yn cynnig fersiwn gydnaws Go mwyach).</string>
+    <string name="update_downloading_title">Lawrlwytho diweddariad</string>
+    <string name="update_cancel">Canslo</string>
+    <string name="update_need_permission_title">Mae angen caniatâd gosod</string>
+    <string name="update_need_permission_body">Mae gosod y fersiwn newydd angen caniatâd system «Gosod apiau anhysbys».\n\nTapïwch «Ymlaen i awdurdodi», caniatewch yn y gosodiadau, yna dychwelwch i\'r ap a bydd y gosod yn parhau\'n awtomatig (nid oes angen lawrlwytho eto).</string>
+    <string name="update_grant">Ymlaen i awdurdodi</string>
+    <string name="update_notice_title">Hysbysiad</string>
+    <string name="update_got_it">Iawn</string>
+    <string name="update_notes_title">v%1$s · Nodiadau diweddaru</string>
+    <string name="update_back">Yn ôl</string>
+    <string name="update_title_switch_normal">Newid i\'r fersiwn arferol</string>
+    <string name="update_title_reinstall">Ailosod y fersiwn hon</string>
+    <string name="update_title_new_version">Fersiwn newydd wedi\'i chanfod</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Bydd hyn yn lawrlwytho ac yn ailosod y fersiwn hon (gan drosysgrifennu\'r ap presennol).\nMae\'r swyddogaeth hon ar gyfer prawf mynd yn ôl ar y mecanwaith diweddaru.</string>
+    <string name="update_view_notes">Gweld y nodiadau diweddaru</string>
+    <string name="update_lanzou_unavailable">Nid yw Lanzou Cloud ar gael am y tro</string>
+    <string name="update_download_lanzou">Lawrlwytho o Lanzou Cloud</string>
+    <string name="update_download_github">Lawrlwytho o GitHub</string>
+    <string name="update_download_browser">Lawrlwytho trwy\'r porwr</string>
+    <string name="update_later">Peidio diweddaru am y tro</string>
+    <string name="update_later_switch">Peidio newid am y tro</string>
+    <string name="update_skip_version">Neidio\'r fersiwn hon</string>
+</resources>

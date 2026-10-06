@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Afrikaans (af) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Die Lanzou-deelskakel is ingetrek of die lêer bestaan nie; gebruik GitHub-aflaai in plaas daarvan</string>
+    <string name="update_lanzou_gone_short">Die Lanzou-deelskakel is ingetrek; gebruik GitHub-aflaai in plaas daarvan</string>
+    <string name="update_lanzou_resolve_failed">Kon die Lanzou-aflaaiskakel nie ontleed nie</string>
+    <string name="update_lanzou_need_passwd">Hierdie Lanzou-deelskakel benodig \'n uittrekkingskode; gebruik GitHub-aflaai in plaas daarvan (of soek die kode in die weergawe-inligting)</string>
+    <string name="update_lanzou_wrong_passwd">Verkeerde Lanzou-uittrekkingskode</string>
+    <string name="update_err_resolve_failed">Kon nie ontleed nie</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Kon die Lanzou-teenkruiperbeskerming nie omseil nie</string>
+    <string name="update_err_no_frame">Kon die Lanzou-aflaaisbladsy nie ontleed nie (geen aflaairaam gevind nie)</string>
+    <string name="update_err_no_file_id">Kon die Lanzou-lêer-ID nie lees nie</string>
+    <string name="update_err_no_sign">Kon die Lanzou-handtekening nie lees nie</string>
+    <string name="update_err_ajax_request">Aanvraag na die koppelvlak het misluk</string>
+    <string name="update_err_api_request">Aanvraag na die Lanzou-koppelvlak het misluk</string>
+    <string name="update_err_empty_direct">Lanzou het \'n leë aflaaiskakel teruggegee</string>
+    <string name="update_err_direct_expired">Die Lanzou-aflaaiskakel het verval; laai dit weer af</string>
+    <string name="update_err_http_request">Die aanvraag het misluk (HTTP %1$d)</string>
+    <string name="update_err_connect">Kon nie aan die aflaai-bediener koppel nie: %1$s</string>
+    <string name="update_err_http">Aflaai het misluk (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Kon nie by die aflaai-verbinding uitkom nie</string>
+    <string name="update_err_empty">Die afgelaaide inhoud is leeg</string>
+    <string name="update_err_incomplete">Die aflaai is onvolledig (%1$d van %2$d grepe afgelaai); laai weer af</string>
+    <string name="update_err_interrupted">Die aflaai is onderbreek: %1$s</string>
+    <string name="update_err_not_apk">Die afgelaaide lêer is nie \'n geldige installasiepakket nie (kan \'n webbladsy wees of die skakel het verval); laai weer af of gebruik GitHub</string>
+    <string name="update_err_apk_incomplete">Die inhoud van die installasiepakket is onvolledig; laai weer af of gebruik GitHub</string>
+    <string name="update_err_apk_unparsable">Kon die installasiepakket nie lees nie (moontlik onvolledige aflaai); laai weer af of gebruik GitHub</string>
+    <string name="update_err_no_install_permission">Die toestemming "Installeer onbekende programme" is nie toegeken nie</string>
+    <string name="update_err_installer_failed">Kon die stelselinstalleerder nie begin nie (%1$s); maak die installasiepakket handmatig oop in die lêerbestuurder</string>
+</resources>

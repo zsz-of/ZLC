@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Texter för uppdateringsflödet (task-4, underhålls av videolen-analyst) – motsvarar ui/UpdateFlow.kt.
+  Egen fil: uppgiften angav bara strings_screens.xml / strings_formats.xml, men UpdateFlow tillhör
+  uppdateringsmodulen och delas upp enligt i18n-planen som ”en strings_*.xml per modul”, med
+  filnamnet update_flow för att undvika namnkonflikt med andra uppgifter.
+  Nyckelprefix update_; res/values/ är förenklad kinesiska som reserv.
+  UpdateFlowController (icke-Composable) använder context.getString(...), dialogrutor använder stringResource(...).
+-->
+<resources>
+    <!-- Meddelanden från kontrollern (utanför Composable utan Context används context.getString) -->
+    <string name="update_github_url_missing">Ingen GitHub-nedladdningsadress hämtades; försök igen senare.</string>
+    <string name="update_flavor_standard">Standardversion</string>
+    <string name="update_flavor_go">Go-version</string>
+    <string name="update_lanzou_url_missing">Den här versionen har ingen Lanzou-nedladdningslänk; du kan använda GitHub i stället.</string>
+    <string name="update_apk_direct_missing">Den här versionen har ingen direktlänk till ett installationspaket som matchar din version; välj rätt APK på GitHubs releasesida.</string>
+    <string name="update_install_permission_missing">Behörigheten ”Installera okända appar” har inte beviljats, så automatisk installation är inte möjlig. Tillåt den i systeminställningarna och försök igen.</string>
+    <string name="update_error_unknown">Okänt fel</string>
+    <string name="update_fail_lanzou">Nedladdning från Lanzou misslyckades</string>
+    <string name="update_fail_github">Nedladdning från GitHub misslyckades</string>
+    <string name="update_lanzou_resolving">Tolkar Lanzous nedladdningslänk…</string>
+    <string name="update_lanzou_downloading">Laddar ned från Lanzou…</string>
+    <string name="update_github_downloading">Laddar ned från GitHub…</string>
+    <string name="update_unzipping">Packar upp installationspaketet…</string>
+    <string name="update_notes_empty">Den här versionen har inga versionsanteckningar.</string>
+
+    <!-- Dialogrutor som rör Go-versionen -->
+    <string name="update_use_normal_title">Använd standardversionen</string>
+    <string name="update_use_normal_body">Den här enheten kör Android 10 eller senare, och Go-lättviktsversionen stöds inte längre; den äldre versionen kan inte användas längre.\n\nStandardversionen (ZLC) är redan installerad på enheten – öppna den och fortsätt där (nya utgåvor innehåller inte längre någon Go-kompatibel version; den gamla versionen kan avinstalleras för att frigöra utrymme).</string>
+    <string name="update_open_normal">Öppna standardversionen</string>
+    <string name="update_must_update_title">Du måste uppdatera innan du kan fortsätta</string>
+    <string name="update_forced_body">Den här enheten kör Android 10 eller senare, och Go-lättviktsversionen stöds inte längre; den äldre versionen kan inte användas längre, och nya utgåvor innehåller inte längre någon Go-kompatibel version.\n\nAnslut till internet och tryck på ”Försök igen” för att hämta standardversionens installationspaket.</string>
+    <string name="update_retry">Försök igen</string>
+    <string name="update_switch_normal_body">Den här enheten kör Android 10 eller senare, och Go-lättviktsversionen stöds inte längre; den äldre versionen kan inte användas längre.\nLadda ned och installera standardversionen för att fortsätta (nya utgåvor innehåller inte längre någon Go-kompatibel version).</string>
+
+    <!-- Nedladdning / installationsbehörighet / resultatmeddelanden -->
+    <string name="update_downloading_title">Ladda ned uppdatering</string>
+    <string name="update_cancel">Avbryt</string>
+    <string name="update_need_permission_title">Installationsbehörighet krävs</string>
+    <string name="update_need_permission_body">Installation av den nya versionen kräver systembehörigheten ”Installera okända appar”.\n\nTryck på ”Bevilja”, tillåt det i inställningarna och återvänd till appen; installationen fortsätter då automatiskt (ingen ny nedladdning behövs).</string>
+    <string name="update_grant">Bevilja</string>
+    <string name="update_notice_title">Information</string>
+    <string name="update_got_it">Uppfattat</string>
+
+    <!-- Huvuddialogruta / versionsanteckningar -->
+    <string name="update_notes_title">v%1$s · Versionsanteckningar</string>
+    <string name="update_back">Tillbaka</string>
+    <string name="update_title_switch_normal">Byt till standardversionen</string>
+    <string name="update_title_reinstall">Installera om den här versionen</string>
+    <string name="update_title_new_version">Ny version tillgänglig</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Detta laddar ned och installerar om den här versionen (skriver över den aktuella appen).\nDen här funktionen används för att regressionstesta uppdateringsmekanismen.</string>
+    <string name="update_view_notes">Visa versionsanteckningar</string>
+    <string name="update_lanzou_unavailable">Lanzou är tillfälligt otillgängligt</string>
+    <string name="update_download_lanzou">Ladda ned från Lanzou</string>
+    <string name="update_download_github">Ladda ned från GitHub</string>
+    <string name="update_download_browser">Ladda ned från webbläsaren</string>
+    <string name="update_later">Uppdatera senare</string>
+    <string name="update_later_switch">Byt senare</string>
+    <string name="update_skip_version">Hoppa över den här versionen</string>
+</resources>

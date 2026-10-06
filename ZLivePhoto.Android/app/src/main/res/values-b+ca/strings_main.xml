@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Catalan (ca) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="main_status_ready">A punt</string>
+    <string name="main_status_location_granted">Permís d\'ubicació concedit; les metadades GPS es conservaran després de la conversió</string>
+    <string name="main_status_location_denied">Permís d\'ubicació no concedit: les fotos convertides perdran la informació d\'ubicació GPS</string>
+    <string name="main_status_all_files_granted">Permís d\'«Accés a tots els fitxers» concedit; les conversions s\'escriuran directament a la carpeta de la galeria i es conservarà tota la informació d\'ubicació</string>
+    <string name="main_status_all_files_denied">Permís d\'«Accés a tots els fitxers» no concedit: en alguns models les conversions poden perdre la informació d\'ubicació</string>
+    <string name="main_status_read_granted">Permís per llegir fotos i vídeos concedit</string>
+    <string name="main_status_video_missing">Permís concedit, però falta el de vídeo: no es poden trobar els vídeos associats de les Live Photo de dos fitxers</string>
+    <string name="main_status_permission_denied">Permís no concedit; pots tornar a tocar «Afegeix fitxers»</string>
+    <string name="main_status_folder_not_selected">Cap carpeta seleccionada</string>
+    <string name="main_status_folder_unavailable">No es pot accedir a la carpeta seleccionada (només s\'admeten carpetes d\'emmagatzematge local)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">S\'ha restaurat la sessió anterior (%1$d fitxer)</item>
+        <item quantity="other">S\'ha restaurat la sessió anterior (%1$d fitxers)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">S\'ha detectat una sortida anormal anterior; s\'ha buidat la llista que no s\'havia acabat</string>
+    <string name="main_status_compose_blocks_extract">La cua conté tasques de composició; no es pot canviar al mode d\'extracció</string>
+    <string name="main_status_replace_off_mutex">S\'ha desactivat el mode de substitució (és excloent amb «Suprimeix els fitxers originals en acabar»)</string>
+    <string name="main_status_delete_needs_all_files">Suprimir automàticament els fitxers originals requereix el permís d\'«Accés a tots els fitxers»; concedeix-lo primer</string>
+    <string name="main_status_replace_off">S\'ha desactivat el mode de substitució; els resultats de la conversió tornen a escriure\'s a la carpeta de la galeria</string>
+    <string name="main_status_replace_needs_all_files">El mode de substitució requereix el permís d\'«Accés a tots els fitxers»; concedeix-lo primer</string>
+    <string name="main_status_delete_off_mutex">S\'ha desactivat «Suprimeix els fitxers originals en acabar» (és excloent amb el mode de substitució)</string>
+    <string name="main_status_loading_albums">S\'estan carregant els àlbums…</string>
+    <string name="main_status_no_albums">No s\'ha trobat cap àlbum</string>
+    <string name="main_status_compose_no_photo">No hi ha cap foto seleccionada; no es pot compondre</string>
+    <string name="main_status_compose_no_video">No hi ha cap vídeo seleccionat; no es pot compondre</string>
+    <string name="main_status_compose_all_added">Totes les fotos seleccionades ja són a la llista</string>
+    <string name="main_status_compose_paired">%1$d fotos i %2$d vídeos; s\'han afegit %3$d parelles de composició segons el nombre més petit</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">S\'ha afegit %1$d tasca de composició; toca «Inicia la conversió» per compondre</item>
+        <item quantity="other">S\'han afegit %1$d tasques de composició; toca «Inicia la conversió» per compondre</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (el format de sortida s\'ha canviat automàticament a Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">S\'està important %1$d imatge compartida…</item>
+        <item quantity="other">S\'estan important %1$d imatges compartides…</item>
+    </plurals>
+    <string name="main_status_import_failed">Error d\'importació: %1$s</string>
+    <string name="main_status_import_done_partial">Importació completada: %1$d correctes, %2$d fallades</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Importació completada: s\'ha importat %1$d fitxer en total</item>
+        <item quantity="other">Importació completada: s\'han importat %1$d fitxers en total</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importació aturada: %1$d correctes, %2$d fallades</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">S\'està important %1$d fitxer…</item>
+        <item quantity="other">S\'estan important %1$d fitxers…</item>
+    </plurals>
+    <string name="main_status_importing_progress">S\'està important %1$d/%2$d…</string>
+    <string name="main_status_stopping">S\'està aturant… (s\'aturarà quan acabi el fitxer actual)</string>
+    <string name="main_status_stopping_import">S\'està aturant la importació…</string>
+    <string name="main_status_removed">S\'ha eliminat %1$s</string>
+    <string name="main_status_cleared">S\'ha buidat</string>
+    <string name="main_status_nothing_to_convert">No hi ha fitxers per convertir</string>
+    <string name="main_status_folder_unreadable">No es pot llegir la carpeta seleccionada</string>
+    <string name="main_status_no_images">No s\'ha trobat cap imatge a la carpeta seleccionada</string>
+    <string name="main_status_scanning_folder">S\'està escanejant la carpeta…</string>
+    <string name="main_status_batch_importing">S\'està important per lots %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Importació per lots aturada: s\'ha importat %1$d Live Photo en total</item>
+        <item quantity="other">Importació per lots aturada: s\'han importat %1$d Live Photos en total</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Importació per lots aturada: s\'ha importat %1$d Live Photo en total, s\'han omès %2$d fitxers que no són Live Photo</item>
+        <item quantity="other">Importació per lots aturada: s\'han importat %1$d Live Photos en total, s\'han omès %2$d fitxers que no són Live Photo</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Importació per lots completada: s\'ha importat %1$d Live Photo en total</item>
+        <item quantity="other">Importació per lots completada: s\'han importat %1$d Live Photos en total</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Importació per lots completada: s\'ha importat %1$d Live Photo en total, s\'han omès %2$d fitxers que no són Live Photo</item>
+        <item quantity="other">Importació per lots completada: s\'han importat %1$d Live Photos en total, s\'han omès %2$d fitxers que no són Live Photo</item>
+    </plurals>
+    <string name="main_status_stopped_replace">S\'ha aturat: de %1$d fitxers, s\'han processat %2$d i s\'han substituït %3$d fitxers originals</string>
+    <string name="main_status_stopped_export">S\'ha aturat: de %1$d fitxers, s\'han processat %2$d i s\'han exportat %3$d a la galeria</string>
+    <string name="main_status_done_replace_reason">Completat: s\'han processat %1$d fitxers i s\'han substituït %2$d fitxers originals (motiu: %3$s)</string>
+    <string name="main_status_done_export_reason">Completat: s\'han processat %1$d fitxers i s\'han exportat %2$d a la galeria (motiu: %3$s)</string>
+    <string name="main_status_done_replace">Completat: s\'han processat %1$d fitxers i s\'han substituït %2$d fitxers originals</string>
+    <string name="main_status_done_export">Completat: s\'han processat %1$d fitxers i s\'han exportat %2$d a la galeria</string>
+    <string name="main_status_keep_originals">%1$s; no s\'ha concedit l\'«Accés complet a l\'emmagatzematge», de manera que els fitxers originals s\'han conservat</string>
+    <string name="main_info_detecting">S\'està detectant…</string>
+    <string name="main_info_unrecognized">Format de Live Photo no reconegut</string>
+    <string name="main_info_converting">S\'està convertint…</string>
+    <string name="main_info_compose_task">Tasca de composició (toca «Inicia la conversió» per compondre)</string>
+    <string name="main_info_done_replaced">Completat (%1$d fitxers originals substituïts)</string>
+    <string name="main_info_done_skipped">Completat (s\'ha omès: conflicte de nom)</string>
+    <string name="main_info_done_exported">Completat (%1$d exportats)</string>
+    <string name="main_info_failed">Error: %1$s</string>
+    <string name="main_progress_added">S\'han afegit %1$d/%2$d</string>
+    <string name="main_progress_processed">S\'han processat %1$d/%2$d</string>
+    <string name="main_progress_imported">S\'han importat %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Cal el permís per llegir fotos i vídeos</string>
+    <string name="main_dialog_permission_message">Aquesta aplicació necessita llegir les fotos i els vídeos del teu dispositiu:\n\n• Permís de fotos: escaneja la galeria del dispositiu i identifica les Live Photos que hi ha\n• Permís de vídeos: troba els vídeos associats de les Live Photo de dos fitxers\n• Permís d\'ubicació: conserva les metadades d\'ubicació GPS de les fotos (si falten, les fotos convertides perden la informació d\'ubicació)\n\nSi el denegues, no es podrà fer servir el selector integrat; més endavant podràs tornar a tocar «Afegeix fitxers» per concedir el permís.</string>
+    <string name="main_dialog_settings_title">Cal concedir manualment els permisos de fotos i vídeos</string>
+    <string name="main_dialog_settings_message">Abans has triat «No ho tornis a preguntar», de manera que el sistema ja no mostra el diàleg de permisos.\n\nVes a la pàgina de detalls de l\'aplicació → Permisos → Fotos i vídeos, concedeix-hi l\'accés manualment i torna a aquesta aplicació.\n\nNota: cal concedir alhora els permisos de «Fotos» i de «Vídeos»; si no, les Live Photo de dos fitxers no trobaran els vídeos associats.</string>
+    <string name="main_dialog_allfiles_title_delete">Suprimir els fitxers originals requereix «Accés a tots els fitxers»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Aquest dispositiu no admet suprimir automàticament els fitxers originals</string>
+    <string name="main_dialog_allfiles_title_replace">El mode de substitució requereix «Accés a tots els fitxers»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Aquest dispositiu no admet el mode de substitució</string>
+    <string name="main_dialog_allfiles_title_location">Es recomana concedir el permís d\'«Accés a tots els fitxers»</string>
+    <string name="main_dialog_allfiles_delete_message">«Suprimeix els fitxers originals en acabar» suprimeix directament els fitxers originals del disc (la foto i el vídeo associat); l\'operació és irreversible, de manera que cal concedir primer el permís d\'«Accés a tots els fitxers».\n\nL\'interruptor estarà disponible un cop concedit el permís; aleshores el podràs activar tu mateix.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">El sistema actual (Android 10 o anterior) no ofereix el permís d\'«Accés a tots els fitxers», de manera que no es poden suprimir directament els fitxers originals del disc; per això aquest dispositiu no admet «Suprimeix els fitxers originals en acabar».\n\nUn cop acabada la conversió, pots netejar manualment els originals des de la galeria del sistema.</string>
+    <string name="main_dialog_allfiles_replace_message">El «mode de substitució» escriu directament el resultat de la conversió als fitxers originals del disc (en sobreescriu el contingut); l\'operació és irreversible, de manera que cal concedir primer el permís d\'«Accés a tots els fitxers».\n\nL\'interruptor estarà disponible un cop concedit el permís; aleshores el podràs activar tu mateix.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">El sistema actual (Android 10 o anterior) no ofereix el permís d\'«Accés a tots els fitxers», de manera que no es poden reescriure directament els fitxers originals del disc; per això aquest dispositiu no admet el «mode de substitució».\n\nPots continuar convertint de la manera per defecte; els resultats s\'escriuran a la carpeta de la galeria.</string>
+    <string name="main_dialog_allfiles_location_message">En alguns models (com Meizu), escriure a través de la interfície de la galeria del sistema elimina la informació d\'ubicació GPS, i les fotos convertides perden l\'ubicació.\n\nUn cop concedit l\'«Accés a tots els fitxers», aquesta aplicació escriurà directament a la carpeta de la galeria i es conservaran íntegrament les metadades d\'ubicació.\n\nSense el permís també es pot convertir amb normalitat, però alguns models poden perdre la informació d\'ubicació.</string>
+    <string name="main_dialog_conflict_title">Conflicte de nom de fitxer de sortida</string>
+    <string name="main_dialog_conflict_message">A la carpeta de sortida ja hi ha un fitxer amb el mateix nom:\n%1$s\n\nTria com gestionar-ho.</string>
+    <string name="main_label_conflict_always">Aplica aquest criteri als propers conflictes</string>
+    <string name="main_btn_grant">Concedeix</string>
+    <string name="main_btn_deny">Denega</string>
+    <string name="main_btn_go_settings">Obre la configuració</string>
+    <string name="main_btn_cancel">Cancel·la</string>
+    <string name="main_btn_grant_access">Concedeix l\'accés</string>
+    <string name="main_btn_got_it">D\'acord</string>
+    <string name="main_btn_not_now">Ara no</string>
+    <string name="main_btn_skip">Omet</string>
+    <string name="main_btn_overwrite">Sobreescriu</string>
+    <string name="main_btn_auto_rename">Canvia el nom automàticament</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">S\'ha suprimit %1$d fitxer original</item>
+        <item quantity="other">S\'han suprimit %1$d fitxers originals</item>
+    </plurals>
+    <string name="main_delete_nothing">No cal suprimir cap fitxer original</string>
+    <string name="main_delete_partial">S\'han suprimit %1$d fitxers originals (%2$d no s\'han pogut suprimir i s\'han conservat)</string>
+    <string name="main_delete_failed">No s\'han pogut suprimir els fitxers originals (fitxers en ús o sense permís d\'escriptura); s\'han conservat</string>
+    <string name="main_export_missing_output">Falta el resultat de la conversió o és buit: %1$s</string>
+    <string name="main_export_missing_output_bare">Falta el resultat de la conversió o és buit</string>
+    <string name="main_export_insert_null">MediaStore insert ha retornat null</string>
+    <string name="main_export_output_stream">El flux de sortida de MediaStore no està disponible</string>
+    <string name="main_export_write_failed">Error d\'escriptura a MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">No es pot crear la carpeta de la galeria %1$s</string>
+    <string name="main_export_dir_write_failed">No s\'ha pogut escriure a la carpeta de la galeria: %1$s</string>
+    <string name="main_export_no_source">No s\'ha pogut ubicar el fitxer d\'origen; s\'ha omès la substitució</string>
+    <string name="main_export_companion_failed">No s\'ha pogut tornar a escriure el fitxer associat: %1$s</string>
+    <string name="main_export_source_dir_unwritable">La carpeta del fitxer d\'origen no és escrivible; el fitxer associat no s\'ha pogut tornar a escriure</string>
+    <string name="main_export_source_dir_unavailable">La carpeta del fitxer d\'origen no està disponible: %1$s</string>
+    <string name="main_export_replace_failed">No s\'ha pogut substituir el fitxer d\'origen: %1$s</string>
+    <string name="main_export_replace_failed_bare">No s\'ha pogut substituir el fitxer d\'origen</string>
+</resources>

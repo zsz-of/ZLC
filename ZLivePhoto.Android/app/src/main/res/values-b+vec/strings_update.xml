@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Venetian (vec) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Ła condivixion su Lanzou ła xe stada cansełà o el file no l’esiste pì: dòpara GitHub par descargare</string>
+    <string name="update_lanzou_gone_short">Ła condivixion su Lanzou ła xe stada cansełà: dòpara GitHub par descargare</string>
+    <string name="update_lanzou_resolve_failed">No se ga podesto lézer el link de descarga de Lanzou</string>
+    <string name="update_lanzou_need_passwd">Sta condivixion de Lanzou ła vol el còdexe de estrasion: descarga da GitHub (o serca el còdexe inte łe note del Release)</string>
+    <string name="update_lanzou_wrong_passwd">Còdexe de estrasion de Lanzou sbajà</string>
+    <string name="update_err_resolve_failed">No se ga podesto lézer</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">El controło anti-bot de Lanzou l’è fałìo</string>
+    <string name="update_err_no_frame">No se pol lézer ła pàjina de descarga de Lanzou (gnente frame de descarga catà)</string>
+    <string name="update_err_no_file_id">No se pol lézer l’identifegador del file de Lanzou</string>
+    <string name="update_err_no_sign">No se pol lézer ła firma de Lanzou</string>
+    <string name="update_err_ajax_request">Richiesta a l’interfasa fałia</string>
+    <string name="update_err_api_request">Richiesta a l’interfasa de Lanzou fałia</string>
+    <string name="update_err_empty_direct">Lanzou el ga dà indrìo un indirisso de descarga vodo</string>
+    <string name="update_err_direct_expired">L’indirisso de descarga de Lanzou no l’è pì valido: ciàpalo de novo</string>
+    <string name="update_err_http_request">Richiesta fałia (HTTP %1$d)</string>
+    <string name="update_err_connect">No se pol collegarse al server de descarga: %1$s</string>
+    <string name="update_err_http">Descarga fałia (HTTP %1$d)</string>
+    <string name="update_err_no_connection">No se pol stabilir ła conesion de descarga</string>
+    <string name="update_err_empty">El contegnùo de ła descarga el xe vodo</string>
+    <string name="update_err_incomplete">Descarga mia conpleta (ciapà %1$d / %2$d byte in tuto); descarga de novo</string>
+    <string name="update_err_interrupted">Descarga interota: %1$s</string>
+    <string name="update_err_not_apk">Chel che l’è stà descargà no l’è un pacheto de instalassion valido (el podevar esar na pàjina web o el link no l’è pì valido); descarga de novo o dòpara GitHub.</string>
+    <string name="update_err_apk_incomplete">El pacheto de instalassion el xe mia conpleto; descarga de novo o dòpara GitHub.</string>
+    <string name="update_err_apk_unparsable">No se pol lézer el pacheto de instalassion (forse ła descarga ła xe mia conpleta); descarga de novo o dòpara GitHub.</string>
+    <string name="update_err_no_install_permission">No te ghè ancóra el parmesso «Instalar app sconosùe»</string>
+    <string name="update_err_installer_failed">No se pol far partir l’instalador del sistema (%1$s): verzi el pacheto de instalassion a man dal jestor de file e instalalo</string>
+</resources>

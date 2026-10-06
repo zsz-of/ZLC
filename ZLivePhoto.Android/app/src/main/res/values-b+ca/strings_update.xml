@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Catalan (ca) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">La compartició de Lanzou Cloud s\'ha cancel·lat o el fitxer no existeix; baixa\'l des de GitHub</string>
+    <string name="update_lanzou_gone_short">La compartició de Lanzou Cloud s\'ha cancel·lat; baixa\'l des de GitHub</string>
+    <string name="update_lanzou_resolve_failed">No s\'ha pogut resoldre l\'enllaç de baixada de Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Aquesta compartició de Lanzou Cloud requereix un codi d\'accés; baixa\'l des de GitHub (o busca el codi d\'accés a les notes de la versió)</string>
+    <string name="update_lanzou_wrong_passwd">El codi d\'accés de Lanzou Cloud és incorrecte</string>
+    <string name="update_err_resolve_failed">No s\'ha pogut resoldre</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">La verificació contra rastrejadors de Lanzou Cloud ha fallat</string>
+    <string name="update_err_no_frame">No es pot analitzar la pàgina de baixada de Lanzou Cloud (no s\'ha trobat el marc de baixada)</string>
+    <string name="update_err_no_file_id">No es pot analitzar l\'identificador del fitxer de Lanzou Cloud</string>
+    <string name="update_err_no_sign">No es pot analitzar la signatura de Lanzou Cloud</string>
+    <string name="update_err_ajax_request">La sol·licitud a la interfície ha fallat</string>
+    <string name="update_err_api_request">La sol·licitud a la interfície de Lanzou Cloud ha fallat</string>
+    <string name="update_err_empty_direct">Lanzou Cloud ha retornat una adreça de baixada buida</string>
+    <string name="update_err_direct_expired">L\'adreça de baixada de Lanzou Cloud ha caducat; obten-la de nou</string>
+    <string name="update_err_http_request">La sol·licitud ha fallat (HTTP %1$d)</string>
+    <string name="update_err_connect">No es pot connectar amb el servidor de baixada: %1$s</string>
+    <string name="update_err_http">La baixada ha fallat (HTTP %1$d)</string>
+    <string name="update_err_no_connection">No s\'ha pogut establir la connexió de baixada</string>
+    <string name="update_err_empty">El contingut baixat és buit</string>
+    <string name="update_err_incomplete">Baixada incompleta (s\'han rebut %1$d de %2$d bytes); torna-la a baixar</string>
+    <string name="update_err_interrupted">Baixada interrompuda: %1$s</string>
+    <string name="update_err_not_apk">El fitxer baixat no és un paquet d\'instal·lació vàlid (pot ser una pàgina web o l\'enllaç de baixada ha caducat); torna\'l a baixar o baixa\'l des de GitHub.</string>
+    <string name="update_err_apk_incomplete">El contingut del paquet d\'instal·lació és incomplet; torna\'l a baixar o baixa\'l des de GitHub.</string>
+    <string name="update_err_apk_unparsable">No es pot analitzar el paquet d\'instal·lació (pot ser que la baixada sigui incompleta); torna\'l a baixar o baixa\'l des de GitHub.</string>
+    <string name="update_err_no_install_permission">Encara no s\'ha concedit el permís d\'«instal·lació d\'aplicacions desconegudes»</string>
+    <string name="update_err_installer_failed">No es pot obrir l\'instal·lador del sistema (%1$s); obre el paquet manualment des d\'un gestor de fitxers per instal·lar-lo</string>
+</resources>

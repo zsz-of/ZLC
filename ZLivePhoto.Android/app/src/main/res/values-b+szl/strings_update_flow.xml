@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<!--
+  Ślōnsko godka — proces aktualizacyje (ui/UpdateFlow.kt).
+  Zdrzōdłowy tekst je po chińsku (res/values/strings_update_flow.xml).
+  Kożdy kluc ôdpadŏ bazowemu; placeholdery (%1$s / %1$d) i sekwencyje \n sōm zachowane.
+-->
+<resources>
+    <!-- Kōmunikaty ôd kōntrolera (zanka Composable używo context.getString) -->
+    <string name="update_github_url_missing">Niy dostōno adresu ściōngniyńcio z GitHuba; sprōbuj poźnij.</string>
+    <string name="update_flavor_standard">Normalno wersyjo</string>
+    <string name="update_flavor_go">Wersyjo Go</string>
+    <string name="update_lanzou_url_missing">Ta wersyjo niy dŏwŏ linku Lanzou Cloud; idzie użyć GitHuba.</string>
+    <string name="update_apk_direct_missing">Ta wersyjo niy dŏwŏ prostego linku do paketu, co pasuje do tyj wersyje; wybier ôdpedni APK na zajcie wersyji na GitHubie.</string>
+    <string name="update_install_permission_missing">Niy ma uprawniynia „instalowanie niyznōmych aplikacyji”, toż autōmatyczne instalowanie niy je możliwe. Przizwōl je w sztalōnkach systymu i sprōbuj znōw.</string>
+    <string name="update_error_unknown">Niyznōmy feler</string>
+    <string name="update_fail_lanzou">Ściōngniyńcie z Lanzou Cloud niy podarziło sie</string>
+    <string name="update_fail_github">Ściōngniyńcie z GitHuba niy podarziło sie</string>
+    <string name="update_lanzou_resolving">Czytōm linku ściōngniyńcio z Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Ściōngōm z Lanzou Cloud…</string>
+    <string name="update_github_downloading">Ściōngōm z GitHuba…</string>
+    <string name="update_unzipping">Rozpakowujym paket…</string>
+    <string name="update_notes_empty">Ta wersyjo niy mŏ ôpisu zmiyniōw.</string>
+
+    <!-- Dialogi ô wersyji Go -->
+    <string name="update_use_normal_title">Użyj normalnyj wersyje</string>
+    <string name="update_use_normal_body">Ta maszyna mŏ Android 10 abo nowszy; Go-lekko wersyjo już niy je spiyrano, a starszo wersyjo już niy dŏ sie użyć.\n\nNa tyj maszynie już je zainstalowano normalno wersyjo (ZLC) — ôtwōrz jōm i dalij używej (nowe wersyje już niy dŏwajōm wersyje spōłpracujōncyj z Go; starszōm wersyjōm idzie ôdinstalować, coby ôswobodzić plac).</string>
+    <string name="update_open_normal">Ôtwōrz normalno wersyjo</string>
+    <string name="update_must_update_title">Musisz zaktualizować, coby dalij używać</string>
+    <string name="update_forced_body">Ta maszyna mŏ Android 10 abo nowszy; Go-lekko wersyjo już niy je spiyrano, a starszo wersyjo już niy dŏ sie użyć; nowe wersyje tyż już niy dŏwajōm wersyje spōłpracujōncyj z Go.\n\nPołōncz sie z sieciōm i kliknij „Sprōbuj znōw”, coby pobrać paket normalnyj wersyje.</string>
+    <string name="update_retry">Sprōbuj znōw</string>
+    <string name="update_switch_normal_body">Ta maszyna mŏ Android 10 abo nowszy; Go-lekko wersyjo już niy je spiyrano, a starszo wersyjo już niy dŏ sie użyć.\nŚciōngnij i zainstaluj normalno wersyjo, coby dalij używać (nowe wersyje już niy dŏwajōm wersyje spōłpracujōncyj z Go).</string>
+
+    <!-- Ściōngniyńcie / uprawniynie / wyniki -->
+    <string name="update_downloading_title">Ściōngnij aktualizacyjo</string>
+    <string name="update_cancel">Ôdciep</string>
+    <string name="update_need_permission_title">Potrzebne uprawniynie do instalowania</string>
+    <string name="update_need_permission_body">Instalowanie nowyj wersyje potrzebuje systymowego uprawniynia „instalowanie niyznōmych aplikacyji”.\n\nKliknij „Przizwōl”, przizwōl je w sztalōnkach i wrōć do aplikacyje; instalowanie samo bydzie dalij (bez nowego ściōngniyńcio).</string>
+    <string name="update_grant">Przizwōl</string>
+    <string name="update_notice_title">Informacyjo</string>
+    <string name="update_got_it">Rozmiym</string>
+
+    <!-- Głōwny dialog / ôpis zmiyniōw -->
+    <string name="update_notes_title">v%1$s · Ôpis zmiyniōw</string>
+    <string name="update_back">Nazōd</string>
+    <string name="update_title_switch_normal">Przełōncz na normalno wersyjo</string>
+    <string name="update_title_reinstall">Przeinstaluj ta wersyjo</string>
+    <string name="update_title_new_version">Nowo wersyjo dostympno</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Ta wersyjo ôstanie ściōngniynto i przeinstalowano (nadpisze teroźno aplikacyjo).\nTa funkcyjo je do testowania mechanizmu aktualizacyji.</string>
+    <string name="update_view_notes">Ôbocz ôpis zmiyniōw</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud teroz niy je dostympny</string>
+    <string name="update_download_lanzou">Ściōngnij z Lanzou Cloud</string>
+    <string name="update_download_github">Ściōngnij z GitHuba</string>
+    <string name="update_download_browser">Ściōngnij bez przeglōndarka</string>
+    <string name="update_later">Aktualizuj poźnij</string>
+    <string name="update_later_switch">Przełōncz poźnij</string>
+    <string name="update_skip_version">Ôpuszcz ta wersyjo</string>
+</resources>

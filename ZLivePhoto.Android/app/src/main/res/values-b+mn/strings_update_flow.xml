@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Монгол (Mongolian) strings — шинэчлэлтийн урсгалын мэдэгдлүүд (strings_update_flow.xml).
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Монгол хэл (кирилл); уугуул хэлний хяналт хийхийг зөвлөж байна.
+  Бүх key нь суурь файлтай ижил; %1$s / %2$s / %1$d орлуулагч болон \n хэвээр хадгалагдсан.
+-->
+<resources>
+    <!-- Контроллерын зүгээс өгөх сануулга (Composable-оос гадна context.getString-ээр) -->
+    <string name="update_github_url_missing">GitHub татах хаяг авч чадсангүй, дараа дахин оролдоно уу.</string>
+    <string name="update_flavor_standard">Стандарт хувилбар</string>
+    <string name="update_flavor_go">Go хувилбар</string>
+    <string name="update_lanzou_url_missing">Энэ хувилбарт Lanzou Cloud татах холбоос байхгүй, GitHub-аас татаж болно.</string>
+    <string name="update_apk_direct_missing">Энэ хувилбарт тохирох суулгацын багцын шууд холбоос байхгүй, GitHub-ийн хувилбарын хуудаснаас тохирох APK-г сонгоно уу.</string>
+    <string name="update_install_permission_missing">«Үл мэдэгдэх апп суулгах» зөвшөөрөл аваагүй тул автоматаар суулгах боломжгүй. Системийн тохиргооноос зөвшөөрсний дараа дахин оролдоно уу.</string>
+    <string name="update_error_unknown">Тодорхойгүй алдаа</string>
+    <string name="update_fail_lanzou">Lanzou Cloud таталт бүтэлгүйтлээ</string>
+    <string name="update_fail_github">GitHub таталт бүтэлгүйтлээ</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud татах холбоосыг задлан шинжилж байна…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud-аас татаж байна…</string>
+    <string name="update_github_downloading">GitHub-аас татаж байна…</string>
+    <string name="update_unzipping">Суулгацын багцыг задалж байна…</string>
+    <string name="update_notes_empty">Энэ хувилбарт одоогоор шинэчлэлтийн тэмдэглэл байхгүй.</string>
+
+    <!-- Go хувилбартай холбоотой цонхнууд -->
+    <string name="update_use_normal_title">Ердийн хувилбарыг ашиглана уу</string>
+    <string name="update_use_normal_body">Энэ төхөөрөмжийн систем Android 10 ба түүнээс дээш тул Go хөнгөн хувилбар цаашид тохирохгүй, хуучин хувилбарыг үргэлжлүүлэн ашиглах боломжгүй.\n\nЭнэ төхөөрөмжид ердийн хувилбар (ZLC) суусан байгаа тул ердийн хувилбарыг шууд нээж үргэлжлүүлэн ашиглана уу (шинэ хувилбарууд Go нийцтэй хувилбарыг өгөхгүй, хуучин хувилбарыг зай чөлөөлөхийн тулд устгаж болно).</string>
+    <string name="update_open_normal">Ердийн хувилбарыг нээх</string>
+    <string name="update_must_update_title">Үргэлжлүүлэн ашиглахын тулд заавал шинэчлэх шаардлагатай</string>
+    <string name="update_forced_body">Энэ төхөөрөмжийн систем Android 10 ба түүнээс дээш тул Go хөнгөн хувилбар цаашид тохирохгүй, хуучин хувилбарыг үргэлжлүүлэн ашиглах боломжгүй; шинэ хувилбарууд ч Go нийцтэй хувилбарыг өгөхгүй.\n\nСүлжээнд холбогдсоны дараа «Дахин оролдох»-ыг дарж ердийн хувилбарын суулгацын багцыг авна уу.</string>
+    <string name="update_retry">Дахин оролдох</string>
+    <string name="update_switch_normal_body">Энэ төхөөрөмжийн систем Android 10 ба түүнээс дээш тул Go хөнгөн хувилбар цаашид тохирохгүй, хуучин хувилбарыг үргэлжлүүлэн ашиглах боломжгүй.\nЕрдийн хувилбарыг татаж суулгасны дараа үргэлжлүүлэн ашиглана уу (шинэ хувилбарууд Go нийцтэй хувилбарыг өгөхгүй).</string>
+
+    <!-- Татах / суулгах зөвшөөрөл / үр дүнгийн сануулга -->
+    <string name="update_downloading_title">Шинэчлэлтийг татах</string>
+    <string name="update_cancel">Цуцлах</string>
+    <string name="update_need_permission_title">Суулгах зөвшөөрөл шаардлагатай</string>
+    <string name="update_need_permission_body">Шинэ хувилбарыг суулгахад системийн «үл мэдэгдэх апп суулгах» зөвшөөрөл шаардлагатай.\n\n«Зөвшөөрөх»-ыг дарж, тохиргооноос зөвшөөрсний дараа апп руу буцаж ирвэл суулгалт автоматаар үргэлжилнэ (дахин татах шаардлагагүй).</string>
+    <string name="update_grant">Зөвшөөрөх</string>
+    <string name="update_notice_title">Мэдэгдэл</string>
+    <string name="update_got_it">Ойлголоо</string>
+
+    <!-- Үндсэн цонх / шинэчлэлтийн тэмдэглэл -->
+    <string name="update_notes_title">v%1$s · шинэчлэлтийн тэмдэглэл</string>
+    <string name="update_back">Буцах</string>
+    <string name="update_title_switch_normal">Ердийн хувилбар руу шилжих</string>
+    <string name="update_title_reinstall">Энэ хувилбарыг дахин суулгах</string>
+    <string name="update_title_new_version">Шинэ хувилбар гарлаа</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Энэ хувилбарыг татаж дахин суулгана (одоогийн апп дээр дарж бичнэ).\nЭнэ функцийг шинэчлэлтийн механизмыг регрессийн тестэд ашиглана.</string>
+    <string name="update_view_notes">Шинэчлэлтийн тэмдэглэлийг харах</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud түр боломжгүй</string>
+    <string name="update_download_lanzou">Lanzou Cloud-аас татах</string>
+    <string name="update_download_github">GitHub-аас татах</string>
+    <string name="update_download_browser">Хөтчөөс татах</string>
+    <string name="update_later">Дараа шинэчлэх</string>
+    <string name="update_later_switch">Дараа шилжих</string>
+    <string name="update_skip_version">Энэ хувилбарыг алгасах</string>
+</resources>

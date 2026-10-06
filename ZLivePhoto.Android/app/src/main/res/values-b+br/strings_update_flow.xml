@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Breton (br) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">N\'eo ket bet tapet ar liamm pellgargañ GitHub; klaskit adarre diwezhatoc\'h.</string>
+    <string name="update_flavor_standard">An handelv reolius</string>
+    <string name="update_flavor_go">An handelv Go</string>
+    <string name="update_lanzou_url_missing">An handelv-mañ ne bourvez ket liamm pellgargañ Lanzou; gallout a ra GitHub bezañ implijet evit pellgargañ.</string>
+    <string name="update_apk_direct_missing">An handelv-mañ ne bourvez ket liamm eeun d\'ur pakad staliañ klun gant an handelv-mañ; dibabit an APK dereat war bajenn embann GitHub.</string>
+    <string name="update_install_permission_missing">N\'eo ket bet tapet an aotre «Staliañ arloadoù dianav»; ne c\'haller ket staliañ ent-emgefreek. Aotrenit en arventennoù ar reizhiad ha klaskit adarre.</string>
+    <string name="update_error_unknown">Fazi dianav</string>
+    <string name="update_fail_lanzou">C\'hwitet pellgargañ adalek Lanzou</string>
+    <string name="update_fail_github">C\'hwitet pellgargañ adalek GitHub</string>
+    <string name="update_lanzou_resolving">Emañ o dielfennañ al liamm pellgargañ Lanzou…</string>
+    <string name="update_lanzou_downloading">Emañ o pellgargañ adalek Lanzou…</string>
+    <string name="update_github_downloading">Emañ o pellgargañ adalek GitHub…</string>
+    <string name="update_unzipping">Emañ o zidigeriñ ar pakad staliañ…</string>
+    <string name="update_notes_empty">N\'eus notennoù handelv ebet gant an handelv-mañ c\'hoazh.</string>
+    <string name="update_use_normal_title">Implijit an handelv reolius</string>
+    <string name="update_use_normal_body">Reizhiad an trevnad-mañ zo Android 10 pe pelloc\'h; an handelv skañv Go n\'eo ket a-du ken ha ne c\'hall an handelv kozh bezañ implijet ken.
+
+Detektet eo bet eo staliet an handelv reolius (ZLC) war an trevnad-mañ; digorit an handelv reolius war-eeun evit kenderc\'hel (an handelv nevez ne bourvez handelv kever Go ken; gallout a rer distaliañ an handelv kozh da ac\'hubiñ spas).</string>
+    <string name="update_open_normal">Digor an handelv reolius</string>
+    <string name="update_must_update_title">Ret eo hizivaat a-raok kenderc\'hel</string>
+    <string name="update_forced_body">Reizhiad an trevnad-mañ zo Android 10 pe pelloc\'h; an handelv skañv Go n\'eo ket a-du ken ha ne c\'hall an handelv kozh bezañ implijet ken; an handelv nevez ne bourvez handelv kever Go ken.
+
+Kevreit gant ar rouedad ha briatait «Klask adarre» evit tapout pakad staliañ an handelv reolius.</string>
+    <string name="update_retry">Klask adarre</string>
+    <string name="update_switch_normal_body">Reizhiad an trevnad-mañ zo Android 10 pe pelloc\'h; an handelv skañv Go n\'eo ket a-du ken ha ne c\'hall an handelv kozh bezañ implijet ken.
+Pellgargit ha stailhit an handelv reolius evit kenderc\'hel (an handelv nevez ne bourvez handelv kever Go ken).</string>
+    <string name="update_downloading_title">Pellgargañ an hizivadur</string>
+    <string name="update_cancel">Nullañ</string>
+    <string name="update_need_permission_title">Ezhomm a zo eus an aotre staliañ</string>
+    <string name="update_need_permission_body">Staliañ an handelv nevez a c\'houlenn an aotre reizhiad «Staliañ arloadoù dianav».
+
+Briatait «Mont da reiñ an aotre», aotrenit en arventennoù ha distroit d\'an arload; kenderc\'hel a raio ar staliañ ent-emgefreek (n\'eo ket ret pellgargañ en-dro).</string>
+    <string name="update_grant">Mont da reiñ an aotre</string>
+    <string name="update_notice_title">Kemenadenn</string>
+    <string name="update_got_it">Mat eo</string>
+    <string name="update_notes_title">v%1$s · Notennoù handelv</string>
+    <string name="update_back">Distreiñ</string>
+    <string name="update_title_switch_normal">Trec\'hiñ d\'an handelv reolius</string>
+    <string name="update_title_reinstall">Adstaliañ an handelv-mañ</string>
+    <string name="update_title_new_version">Handelv nevez kavet</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Pellgarget ha adstaliet e vo an handelv-mañ (o welañ an arload vremañ).
+Ar arc\'hwel-mañ zo da amprouiñ an dannvez hizivadur.</string>
+    <string name="update_view_notes">Gwelet notennoù an handelv</string>
+    <string name="update_lanzou_unavailable">N\'eo ket Lanzou a-vremañ</string>
+    <string name="update_download_lanzou">Pellgargañ adalek Lanzou</string>
+    <string name="update_download_github">Pellgargañ adalek GitHub</string>
+    <string name="update_download_browser">Pellgargañ e-barzh ar merdeer</string>
+    <string name="update_later">Chom hep hizivaat evit ar poent</string>
+    <string name="update_later_switch">Chom hep trec\'hiñ evit ar poent</string>
+    <string name="update_skip_version">Lammat an handelv-mañ</string>
+</resources>

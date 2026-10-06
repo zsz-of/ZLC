@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Basque (eu) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Helburu-formatu ezezaguna: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Live Photo formatu ezagutzen ez dena (ez Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Azaleko argazkia falta da edo hutsik dago</string>
+    <string name="conv_video_missing">Bideoa falta da edo hutsik dago</string>
+    <string name="conv_video_too_large">Bideoa handiegia da (%1$d MB), ezin da Live Photo batean konposatu; aukeratu bideo laburrago bat</string>
+    <string name="conv_transcoded_too_large">Transkodifikazioaren ondoren bideoa handiegia da (%1$d MB), ezin da Live Photo batean konposatu</string>
+    <string name="conv_video_too_large_compose">Bideoa handiegia da (%1$d MB), ezin da Live Photo batean konposatu</string>
+    <string name="conv_cover_heic_go">Azala HEIC irudia da (Go bertsio arinak ez du transkodifikazioa onartzen; esportatu JPEG gisa iPhone batean lehenik, eta gero bihurtu)</string>
+    <string name="conv_cover_invalid_heic">Azala ez da baliozko irudia (HEIC-ek sistemak HEIF deskodifikazioa onartzea eskatzen du)</string>
+    <string name="conv_cover_not_jpeg_go">Azala ez da JPEG irudia (Go bertsio arinak ez du transkodifikazioa onartzen; erabili JPEG argazki bat)</string>
+    <string name="conv_cover_invalid_image">Azala ez da baliozko irudia (JPEG/WebP/PNG soilik onartzen dira)</string>
+    <string name="conv_reencode_failed">Bideoa berriro kodetzeak huts egin du: %1$s</string>
+    <string name="conv_remux_failed">Ontzia birpaketatzeak huts egin du: %1$s</string>
+    <string name="conv_codec_unknown">Ez da ezagun den H.264/H.265 bideo bat</string>
+    <string name="conv_codec_is">Kodetzea %1$s da</string>
+    <string name="conv_hint_remux_cannot_fix">"%1$s" bideoa %2$s; ontzia aldatzeak (birpaketatzeak) bakarrik ez du kodetzea aldatzen, eta ezin da Live Photo batean konposatu.
+
+Aldatu "Birgain kodetzea"ra "Ezarpenak → Bideo transkodifikazioa → Transkodifikazio modua" atalean, edo lehenik beste tresna batekin H.264/H.265 kodetzea duen MP4 batera bihurtu.</string>
+    <string name="conv_hint_no_encoder">Bideoa ez da MP4 ontzi estandar bat (MOV / MKV / WebM / AVI etab.), eta uneko "Transkodifikazio moduak" ez du berriro kodetzen; ezin da Live Photo batean konposatu.
+
+Aldatu "Birgain kodetzea"ra "Ezarpenak → Bideo transkodifikazioa → Transkodifikazio modua" atalean (bertsio normalak ffmpeg kodetzailea du barneratuta; Go bertsio arinak ez du transkodifikatzailerik, erabili bertsio normala), edo lehenik bideoa MP4 estandarrera bihurtu (H.264/H.265).</string>
+    <string name="conv_log_detected">%1$s gisa antzeman da</string>
+    <string name="conv_log_same_format_copied">Iturburu- eta helburu-formatuak berdinak dira; aldatu gabe kopiatu da (galerarik gabe)</string>
+    <string name="conv_log_extra_tracks_bypass">Iturburu bideoak audio/bideo ez diren pistak ditu (%1$s); formatu bereko zuzeneko igarotzea saltatu da, garbitzeko idazketa-prozesu osoa erabili da</string>
+    <string name="conv_log_ts_fallback">Iturburuak ez du azaleko fotogramaren denbora-zigilurik; arauaren arabera bideoaren erdira itzuli da</string>
+    <string name="conv_log_brand_normalized">Bideo ontziaren marka normalizatu da (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Bideoak pistak gehigarri ditu (%1$s), ezin izan da garbitu; aldatu gabe idatzi da (produktu hau gailu batzuetan agian ezin da luze sakatuta erreproduzitu)</string>
+    <string name="conv_log_extra_tracks_removed">Bideoaren pistak gehigarriak kendu dira (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Iturburu bideoa%1$s; ontzia birpaketatzeak bakarrik ez du konpontzen (%2$s); produktuak luze sakatuta erreproduzitzeari utzi ez badio, aukeratu "Birgain kodetzea" "Ezarpenak → Bideo transkodifikazioa → Transkodifikazio modua" atalean</string>
+    <string name="conv_log_reencoding">Iturburu bideoa%1$s; ezarpenen arabera 8bit + AAC gisa berriro kodetzen da albumaren bateragarritasuna hobetzeko</string>
+    <string name="conv_log_reencode_result_unusable">Birgain kodetzearen emaitza erabilgarria ez da; aldatu gabe idatzi da (produktu hau gailu batzuetan agian ezin da luze sakatuta erreproduzitu)</string>
+    <string name="conv_log_reencode_still_risky">Birgain kodetzearen ondoren arrisku-zerrendak oraindik daude (%1$s)</string>
+    <string name="conv_log_reencode_failed">Birgain kodetzeak huts egin du (%1$s); aldatu gabe idatzi da (produktu hau gailu batzuetan agian ezin da luze sakatuta erreproduzitu)</string>
+    <string name="conv_log_cover_heic_converted">Azala HEIC da (JPEG ez); JPEG estandarrera transkodifikatu eta gero paketatu da</string>
+    <string name="conv_log_compose_sizes">Konposizioa: argazkia %1$d B + bideoa %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkodifikatzailea gaitu gabe: ontzi-marka aldatzen da soilik (MOV → MP4), berriro kodetu gabe</string>
+    <string name="conv_tag_convert">Bihurketa</string>
+    <string name="conv_tag_transcode">Transkodifikazioa</string>
+    <string name="conv_tag_compose">Konposizioa</string>
+    <string name="conv_blocker_no_encoder">Barne-transkodifikatzailea ez dago erabilgarri</string>
+    <string name="conv_blocker_mode_no_encode">Uneko "Transkodifikazio moduak" ez du berriro kodetzen</string>
+    <string name="conv_addon_unavailable">Barne-transkodifikatzailea ez dago erabilgarri</string>
+    <string name="conv_addon_transcode_failed">ffmpeg transkodifikazioak huts egin du: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg ontzia birpaketatzeak huts egin du: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg erabiliz bideoa MP4 estandarrera transkodifikatzen (%1$s / crf %2$d / %3$s; bideo- eta audio-pistak bakarrik mantentzen dira)</string>
+    <string name="conv_log_transcode_done">Bideo transkodifikazioa amaitu da (%1$d KB)</string>
+    <string name="conv_log_remuxing">Bideo ontzia MP4 estandarrera birpaketatzen (ontzia soilik aldatzen da, berriro kodetu gabe)</string>
+    <string name="conv_log_remux_done">Ontzia birpaketatzea amaitu da (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Konposizioa</string>
+    <string name="conv_reminder_cat_convert">Bihurketa</string>
+    <string name="conv_reminder_cat_update">Eguneratzea</string>
+    <string name="conv_reminder_video_over3s_title">Bideoak 3 segundo baino gehiago ditu</string>
+    <string name="conv_reminder_video_over3s_message">Hautatutako bideoaren iraupenak 3 segundo baino gehiago ditu; konposatutako Live Photo-ak bateragarritasun-arazoak izan ditzake:
+
+• Agian ezin da behar bezala erreproduzitu
+• Agian sistema-albumak ez du ezagutzen
+• Gailu batzuek agian ez dute Live Photo hau ezagutuko</string>
+    <string name="conv_reminder_legacy_go_title">Bertsio zaharra antzeman da</string>
+    <string name="conv_reminder_legacy_go_message">Gailu honetan oraindik bertsio zaharra (Go bertsioa) instalatuta dago; bertsio zahar hori ezin da gehiago erabili gailu honetan, desinstala daiteke lekua askatzeko.</string>
+    <string name="conv_reminder_replace_risk_title">Ordezkatze moduak hondatzeko arriskua du</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Ordezkatze moduak bihurketaren emaitza zuzenean jatorrizko fitxategian idazten du; jatorrizko fitxategia gainidatzi ondoren ezin da berreskuratu.
+
+• Idazketan zehar aplikazioa eteten bada, biltegiratze-lekua galtzen bada edo baimena baliogabetzen bada, iturburu-fitxategia hondatu daiteke
+• Bihurketak berak ez du arrakasta bermatzen kasu guztietan; huts egiten badu, iturburu-fitxategia jada erabilgaitezin egon daiteke
+• Gomendatzen da lehenik fitxategi batekin edo bitan probatzea, eta guztia ondo dagoenean bakarrik babes masiboan prozesatzea
+• Argazki garrantzitsuen babeskopia egin ezazu aldez aurretik
+
+Funtzio hau "dagoen bezala" eskaintzen da; erabiltzeko arriskua zeuk dakarkigu, eta egileak ez du erantzukizunik fitxategien hondamendi edo galderengatik.</string>
+    <string name="conv_reminder_dont_remind">Ez gogoratu gehiago</string>
+    <string name="conv_reminder_confirm_ok">Ulertu dut</string>
+    <string name="conv_reminder_uninstall">Desinstalatu</string>
+</resources>

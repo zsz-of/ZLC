@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Luxembourgish (lb) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="main_status_ready">Bereet</string>
+    <string name="main_status_location_granted">Standort-Autorisatioun kritt; d’GPS-Metadaten bleiwen no der Konvertéierung erhale</string>
+    <string name="main_status_location_denied">Keng Standort-Autorisatioun: d’Fotoe verléieren no der Konvertéierung d’GPS-Positiounsinformatioun</string>
+    <string name="main_status_all_files_granted">«Zougrëff op all Fichieren»-Autorisatioun kritt; d’Konvertéierung schreift direkt an de Galerie-Dossier a behält d’Positiounsinformatioun komplett</string>
+    <string name="main_status_all_files_denied">Keng «Zougrëff op all Fichieren»-Autorisatioun: op e puer Geräter kann d’Positiounsinformatioun no der Konvertéierung verluer ginn</string>
+    <string name="main_status_read_granted">Autorisatioun fir Fotoen a Videoen ze liese kritt</string>
+    <string name="main_status_video_missing">Autoriséiert, awer d’Video-Autorisatioun feelt: de begleete Video vun Zweet-Fichier-Live-Photos kann net fonnt ginn</string>
+    <string name="main_status_permission_denied">Keng Autorisatioun, Dir kënnt nach eng Kéier op «Fichieren derbäisetzen» klicken</string>
+    <string name="main_status_folder_not_selected">Keen Dossier ausgewielt</string>
+    <string name="main_status_folder_unavailable">Den ausgewielten Dossier kann net opgeruff ginn (nëmmen lokal Späicher-Dossiere ginn ënnerstëtzt)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Lescht Sessioun restauréiert (%1$d Fichier)</item>
+        <item quantity="other">Lescht Sessioun restauréiert (%1$d Fichieren)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Eng ofnormal Beenung vum leschte Mo gouf erkannt, d’net fäerdeg Lëscht gouf eidel gemaach</string>
+    <string name="main_status_compose_blocks_extract">D’Warteschläng enthält Zesummesetz-Aufgaben, et kann net an den Zerleeën-Modus gewiesselt ginn</string>
+    <string name="main_status_replace_off_mutex">Den Ersetzungsmodus gouf ausgeschalt (onveränbar mat «Original-Fotoen no der Veraarbechtung läschen»)</string>
+    <string name="main_status_delete_needs_all_files">D’automatescht Läsche vun den Original-Fotoe brauch d’«Zougrëff op all Fichieren»-Autorisatioun, autoriséiert w.e.g. z’éischt</string>
+    <string name="main_status_replace_off">Den Ersetzungsmodus gouf ausgeschalt, d’Konvertéierungsresultate ginn nei an de Galerie-Dossier geschriwwen</string>
+    <string name="main_status_replace_needs_all_files">Den Ersetzungsmodus brauch d’«Zougrëff op all Fichieren»-Autorisatioun, autoriséiert w.e.g. z’éischt</string>
+    <string name="main_status_delete_off_mutex">«Original-Fotoen no der Veraarbechtung läschen» gouf ausgeschalt (onveränbar mam Ersetzungsmodus)</string>
+    <string name="main_status_loading_albums">D’Galerie gëtt gelies…</string>
+    <string name="main_status_no_albums">Keng Galerie fonnt</string>
+    <string name="main_status_compose_no_photo">Keng Foto ausgewielt, Zesummesetze net méiglech</string>
+    <string name="main_status_compose_no_video">Kee Video ausgewielt, Zesummesetze net méiglech</string>
+    <string name="main_status_compose_all_added">All ausgewielte Fotoe schonn an der Lëscht</string>
+    <string name="main_status_compose_paired">%1$d Fotoen, %2$d Videoen; no der méi klenger Säit goufe %3$d Zesummesetz-Aufgaben derbäigesat</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d Zesummesetz-Aufgabe derbäigesat, klickt op «Konvertéieren starten» fir ze zesummesetzen</item>
+        <item quantity="other">%1$d Zesummesetz-Aufgaben derbäigesat, klickt op «Konvertéieren starten» fir ze zesummesetzen</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (d’Ausgabsformat gouf automatesch op Google gewiesselt)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Gedeelt %1$d Bild gëtt importéiert…</item>
+        <item quantity="other">Gedeelt %1$d Biler ginn importéiert…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import feelgeschloen: %1$s</string>
+    <string name="main_status_import_done_partial">Import fäerdeg: %1$d erfollegräich, %2$d feelgeschloen</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import fäerdeg: am Ganzen %1$d Fichier importéiert</item>
+        <item quantity="other">Import fäerdeg: am Ganzen %1$d Fichiere importéiert</item>
+    </plurals>
+    <string name="main_status_import_stopped">Import gestoppt: %1$d erfollegräich, %2$d feelgeschloen</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d Fichier gëtt importéiert…</item>
+        <item quantity="other">%1$d Fichiere ginn importéiert…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importéieren %1$d/%2$d…</string>
+    <string name="main_status_stopping">Gëtt gestoppt… (stoppt nodeem den aktuelle Fichier fäerdeg ass)</string>
+    <string name="main_status_stopping_import">Import gëtt gestoppt…</string>
+    <string name="main_status_removed">%1$s gouf ewechgeholl</string>
+    <string name="main_status_cleared">Eidel gemaach</string>
+    <string name="main_status_nothing_to_convert">Et gëtt keng Fichiere fir ze konvertéieren</string>
+    <string name="main_status_folder_unreadable">Den ausgewielten Dossier kann net gelies ginn</string>
+    <string name="main_status_scanning_folder">Dossier gëtt gescannt…</string>
+    <string name="main_status_no_images">Keng Biler am ausgewielten Dossier fonnt</string>
+    <string name="main_status_batch_importing">Massenimport %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Massenimport gestoppt: am Ganzen %1$d Live Photo importéiert</item>
+        <item quantity="other">Massenimport gestoppt: am Ganzen %1$d Live Photos importéiert</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Massenimport gestoppt: am Ganzen %1$d Live Photo importéiert, %2$d Net-Live-Fichier iwwersprongen</item>
+        <item quantity="other">Massenimport gestoppt: am Ganzen %1$d Live Photos importéiert, %2$d Net-Live-Fichieren iwwersprongen</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Massenimport fäerdeg: am Ganzen %1$d Live Photo importéiert</item>
+        <item quantity="other">Massenimport fäerdeg: am Ganzen %1$d Live Photos importéiert</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Massenimport fäerdeg: am Ganzen %1$d Live Photo importéiert, %2$d Net-Live-Fichier iwwersprongen</item>
+        <item quantity="other">Massenimport fäerdeg: am Ganzen %1$d Live Photos importéiert, %2$d Net-Live-Fichieren iwwersprongen</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Gestoppt: %2$d vun %1$d Fichiere veraarbecht, %3$d Quellfichieren ersat</string>
+    <string name="main_status_stopped_export">Gestoppt: %2$d vun %1$d Fichiere veraarbecht, %3$d an d’Galerie exportéiert</string>
+    <string name="main_status_done_replace_reason">Fäerdeg: %1$d Fichiere veraarbecht, %2$d Quellfichieren ersat (Grond: %3$s)</string>
+    <string name="main_status_done_export_reason">Fäerdeg: %1$d Fichiere veraarbecht, %2$d an d’Galerie exportéiert (Grond: %3$s)</string>
+    <string name="main_status_done_replace">Fäerdeg: %1$d Fichiere veraarbecht, %2$d Quellfichieren ersat</string>
+    <string name="main_status_done_export">Fäerdeg: %1$d Fichiere veraarbecht, %2$d an d’Galerie exportéiert</string>
+    <string name="main_status_keep_originals">%1$s; keng «Komplett Zougrëff op de Späicher»-Autorisatioun, d’Original-Fotoe bleiwen erhale</string>
+    <string name="main_info_detecting">Gëtt erkannt…</string>
+    <string name="main_info_unrecognized">Net erkannt Live-Photo-Format</string>
+    <string name="main_info_converting">Gëtt konvertéiert…</string>
+    <string name="main_info_compose_task">Zesummesetz-Aufgabe (klickt op Konvertéieren starten fir ze zesummesetzen)</string>
+    <string name="main_info_done_replaced">Fäerdeg (%1$d Quellfichieren ersat)</string>
+    <string name="main_info_done_skipped">Fäerdeg (iwwersprongen: Konflikt mam selwechten Numm)</string>
+    <string name="main_info_done_exported">Fäerdeg (%1$d exportéiert)</string>
+    <string name="main_info_failed">Feelgeschloen: %1$s</string>
+    <string name="main_progress_added">Derbäigesat %1$d/%2$d</string>
+    <string name="main_progress_processed">Veraarbecht %1$d/%2$d</string>
+    <string name="main_progress_imported">Importéiert %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Autorisatioun fir Fotoen a Videoen ze liese gëtt gebraucht</string>
+    <string name="main_dialog_permission_message">Dës App brauch Fotoen a Videoen op Ärem Apparat ze liesen:
+
+• Foto-Autorisatioun: d’Galerie vum Apparat scannen an d’Live Photos dorënner erkennen
+• Video-Autorisatioun: de begleete Video vun Zweet-Fichier-Live-Photos sichen
+• Standort-Autorisatioun: d’GPS-Positiounsmetadaten an de Fotoen erhale (wann se feelen, gëtt d’Positiounsinformatioun no der Konvertéierung verluer)
+
+Nom Refuséiere kann den agebauten Auswieler net benotzt ginn; Dir kënnt méi spéit nach eng Kéier op «Fichieren derbäisetzen» klicken fir nei ze autoriséieren.</string>
+    <string name="main_dialog_settings_title">D’Foto- a Video-Autorisatioun muss manuell vergi ginn</string>
+    <string name="main_dialog_settings_message">Dir hutt virdru «Net méi frot» gewielt, d’System weist keng Autorisatiouns-Dialoger méi.
+
+Gitt w.e.g. op d’App-Detailsäit → Autorisatiounen → Fotoen a Videoen, vergitt manuell d’Zougrëffsautorisatioun a kënnt dann zréck an dës App.
+
+Bemierkung: D’«Foto»- an d’«Video»-Autorisatioun mussen gläichzäiteg vergi ginn, soss kënnen Zweet-Fichier-Live-Photos hire begleete Video net fannen.</string>
+    <string name="main_dialog_allfiles_title_delete">D’automatescht Läsche vun Original-Fotoe brauch «Zougrëff op all Fichieren»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Dësen Apparat ënnerstëtzt d’automatescht Läsche vun Original-Fotoen net</string>
+    <string name="main_dialog_allfiles_title_replace">Den Ersetzungsmodus brauch «Zougrëff op all Fichieren»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Dësen Apparat ënnerstëtzt den Ersetzungsmodus net</string>
+    <string name="main_dialog_allfiles_title_location">Et gëtt recommandéiert d’«Zougrëff op all Fichieren»-Autorisatioun ze verginn</string>
+    <string name="main_dialog_allfiles_delete_message">«Original-Fotoen no der Veraarbechtung läschen» läscht direkt d’Originaler um Späicher (Fotoen an hir begleet Videoen); dës Aktioun kann net réckgängeg gemaach ginn, dofir muss d’«Zougrëff op all Fichieren»-Autorisatioun z’éischt vergi ginn.
+
+Erst no der Autorisatioun gëtt de Schalter disponibel; Dir kënnt en dann selwer aktivéieren.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Dat aktuell System (Android 10 an méi al) bitt keng «Zougrëff op all Fichieren»-Autorisatioun; Originaler um Späicher kënnen net direkt geläscht ginn, dofir ënnerstëtzt dësen Apparat «Original-Fotoen no der Veraarbechtung läschen» net.
+
+Dir kënnt no der Konvertéierung iwwer d’Systemgalerie d’Originaler manuell botzen.</string>
+    <string name="main_dialog_allfiles_replace_message">Den «Ersetzungsmodus» schreift d’Konvertéierungsresultater direkt zréck an d’Originaler um Späicher (iwwerschreift den original Inhalt); dës Aktioun kann net réckgängeg gemaach ginn, dofir muss d’«Zougrëff op all Fichieren»-Autorisatioun z’éischt vergi ginn.
+
+Erst no der Autorisatioun gëtt de Schalter disponibel; Dir kënnt en dann selwer aktivéieren.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Dat aktuell System (Android 10 an méi al) bitt keng «Zougrëff op all Fichieren»-Autorisatioun; Originaler um Späicher kënnen net direkt ëmgeschriwwe ginn, dofir ënnerstëtzt dësen Apparat den «Ersetzungsmodus» net.
+
+Dir kënnt weider mat der Standardmethod konvertéieren, d’Resultater ginn an de Galerie-Dossier ausgeginn.</string>
+    <string name="main_dialog_allfiles_location_message">Op e puer Geräter (wéi Meizu) gëtt d’GPS-Positiounsinformatioun beim Schreiwen iwwer d’Systemgalerie-Interface desensibiliséiert, dofir verléieren d’Fotoen no der Konvertéierung hir Positioun.
+
+No der «Zougrëff op all Fichieren»-Autorisatioun schreift dës App direkt an de Galerie-Dossier a behält d’Positiounsmetadaten komplett.
+
+Ouni Autorisatioun funktionnéiert d’Konvertéierung och normal; op e puer Geräter kann d’Positiounsinformatioun verluer ginn.</string>
+    <string name="main_dialog_conflict_title">Ausgabsfichier-Numm-Konflikt</string>
+    <string name="main_dialog_conflict_message">E Fichier mam selwechten Numm existéiert schonn am Ausgabsdossier:
+%1$s
+
+Wielt w.e.g. d’Behandlungsmethod.</string>
+    <string name="main_label_conflict_always">Dës Behandlung fir spéider Konflikter benotzen</string>
+    <string name="main_btn_grant">Autoriséieren</string>
+    <string name="main_btn_deny">Refuséieren</string>
+    <string name="main_btn_go_settings">Zu den Astellungen</string>
+    <string name="main_btn_cancel">Ofbriechen</string>
+    <string name="main_btn_grant_access">Op d’Autorisatioun</string>
+    <string name="main_btn_got_it">Verstanen</string>
+    <string name="main_btn_not_now">Elo net</string>
+    <string name="main_btn_skip">Iwwersprangen</string>
+    <string name="main_btn_overwrite">Iwwerschreiwen</string>
+    <string name="main_btn_auto_rename">Automatesch ëmbenennen</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d Original-Fichier gouf geläscht</item>
+        <item quantity="other">%1$d Original-Fichiere goufe geläscht</item>
+    </plurals>
+    <string name="main_delete_nothing">Kee Original-Foto muss geläscht ginn</string>
+    <string name="main_delete_partial">%1$d Original-Fichiere goufe geläscht (%2$d Läschen hunn feelgeschloen, bliwwen erhale)</string>
+    <string name="main_delete_failed">Läsche vun den Original-Fotoen huet feelgeschloen (de Fichier ass beleet oder keng Schreifautorisatioun), bliwwen erhale</string>
+    <string name="main_export_missing_output">D’Konvertéierungsprodukt feelt oder ass eidel: %1$s</string>
+    <string name="main_export_missing_output_bare">D’Konvertéierungsprodukt feelt oder ass eidel</string>
+    <string name="main_export_insert_null">MediaStore insert huet null zréckginn</string>
+    <string name="main_export_output_stream">MediaStore-Ausgabestroum net verfügbar</string>
+    <string name="main_export_write_failed">MediaStore-Schreiwen huet feelgeschloen: %1$s</string>
+    <string name="main_export_mkdir_failed">De Galerie-Dossier %1$s konnt net ugeluecht ginn</string>
+    <string name="main_export_dir_write_failed">Schreiwen an de Galerie-Dossier huet feelgeschloen: %1$s</string>
+    <string name="main_export_no_source">De Quellfichier konnt net lokaliséiert ginn, Ersetzung iwwersprongen</string>
+    <string name="main_export_companion_failed">Zréckschreiwe vum begleeëte Fichier huet feelgeschloen: %1$s</string>
+    <string name="main_export_source_dir_unwritable">De Quellfichier-Dossier ass net schreifbar, de begleeëte Fichier konnt net zréckgeschriwwe ginn</string>
+    <string name="main_export_source_dir_unavailable">Quellfichier-Dossier net verfügbar: %1$s</string>
+    <string name="main_export_replace_failed">Ersetzung vum Quellfichier huet feelgeschloen: %1$s</string>
+    <string name="main_export_replace_failed_bare">Ersetzung vum Quellfichier huet feelgeschloen</string>
+</resources>

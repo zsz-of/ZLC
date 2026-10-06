@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<!--
+  Ślōnsko godka — przekonwertowanie / przekodowanie / informacyje.
+  Zdrzōdłowy tekst je po chińsku (res/values/strings_convert.xml).
+  Kożdy kluc ôdpadŏ bazowemu; placeholdery (%1$s / %1$d) i sekwencyje \n sōm zachowane.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: parametry i kōntrola materiału (wyjōntek → przyczyna felera) ========== -->
+    <string name="conv_unknown_target">Niyznōmy celowy format: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Niyrozpoznany format dynamicznyj fotki (to niy Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Titelowy ôbraz niy ma abo je pusty</string>
+    <string name="conv_video_missing">Wideo niy ma abo je puste</string>
+    <string name="conv_video_too_large">Wideo je za duże (%1$dMB); niy idzie skłodać dynamicznyj fotki, wybier krōtsze wideo</string>
+    <string name="conv_transcoded_too_large">Po przekodowaniu wideo dalij je za duże (%1$dMB); niy idzie skłodać dynamicznyj fotki</string>
+    <string name="conv_video_too_large_compose">Wideo je za duże (%1$dMB); niy idzie skłodać dynamicznyj fotki</string>
+
+    <!-- Converter.kt: titelowy ôbraz (HEIC / niy JPEG) -->
+    <string name="conv_cover_heic_go">Titelowy ôbraz to HEIC (lekko wersyjo niy przekoduje; wyeksportuj go na iPhone jako JPEG i potym przekonwertuj)</string>
+    <string name="conv_cover_invalid_heic">Titelowy ôbraz niy je dobrym ôbrazym (HEIC potrzebuje systymowego dekodera HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">Titelowy ôbraz niy je JPEG (lekko wersyjo niy przekoduje; użyj fotki JPEG)</string>
+    <string name="conv_cover_invalid_image">Titelowy ôbraz niy je dobrym ôbrazym (ino JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: przekodowanie / przepakowanie niy podarziło sie a informacyjo "ino pojemnik tego niy naprawi" -->
+    <string name="conv_reencode_failed">Przekodowanie wideo niy podarziło sie: %1$s</string>
+    <string name="conv_remux_failed">Przepakowanie pojemnika niy podarziło sie: %1$s</string>
+    <string name="conv_codec_unknown">To niy je rozpoznane wideo H.264/H.265</string>
+    <string name="conv_codec_is">Koder to %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Wideo „%1$s” %2$s; ino zmiyna pojemnika (przepakowanie) niy zmiyni kodera, toż niy idzie skłodać dynamicznyj fotki.\n\nWe sztalōnkach zmień „Sztalōnki → Przekodowanie wideo → Tryb przekodowania” na „Przekoduj” abo nojprzōd przekonwertuj wideo inkszym noczyniym na MP4 z koderem H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Wideo niy je w sztandardowym pojemniku MP4 (MOV / MKV / WebM / AVI itd.), a teroźny „Tryb przekodowania” niy przekoduje, toż niy idzie skłodać dynamicznyj fotki.\n\nWe sztalōnkach zmień „Sztalōnki → Przekodowanie wideo → Tryb przekodowania” na „Przekoduj” (normalno wersyjo mŏ wkludzony koder ffmpeg; Go-lekko wersyjo niy mŏ przekodera, użyj normalnyj wersyje) abo nojprzōd przekonwertuj wideo na sztandardowy MP4 (H.264/H.265).</string>
+
+    <!-- ========== Logi przekonwertowania (pokazujōm sie w sztanie pozycyje i w panelu logōw) ========== -->
+    <string name="conv_log_detected">Rozpoznane jako %1$s</string>
+    <string name="conv_log_same_format_copied">Zdrzōdłowy i celowy format sōm takie same; zbiōr ôstoł skopiowany bez zmiyniōw (bez straty)</string>
+    <string name="conv_log_extra_tracks_bypass">Zdrzōdłowe wideo mŏ niywideo/niyaudio ścieżki (%1$s); pōmijōm kopiowanie takigo samego formatu i idym bez cołke zapisowanie, coby to wyczyścić</string>
+    <string name="conv_log_ts_fallback">Zdrzōdłu niy mŏ znaczōnka czasu titelowego ôbrazka; podug sztandardu wracōm na strzodek wideo</string>
+    <string name="conv_log_brand_normalized">Znormalizowano markã pojemnika wideo (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Wideo mŏ przidane ścieżki (%1$s) i niy idzie tego wyczyścić; zapisujym tak jak je (na niykerych maszynach taki wynik może niy dōć sie ôdtworzić przitrzimaniym)</string>
+    <string name="conv_log_extra_tracks_removed">Wyciepano przidane ścieżki wideo (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Zdrzōdłowe wideo %1$s; ino przepakowanie pojemnika tego niy naprawi (%2$s); jak wynik dalij niy dŏ sie ôdtworzić przitrzimaniym, zmień we sztalōnkach „Tryb przekodowania” na „Przekoduj”</string>
+    <string name="conv_log_reencoding">Zdrzōdłowe wideo %1$s; podug sztalōnkōw przekodowujym na 8bit + AAC, coby poprawić spōłpraca z galeryjōm</string>
+    <string name="conv_log_reencode_result_unusable">Wynik przekodowania niy dŏ sie użyć; zapisujym tak jak je (na niykerych maszynach taki wynik może niy dōć sie ôdtworzić przitrzimaniym)</string>
+    <string name="conv_log_reencode_still_risky">Po przekodowaniu dalij sōm ryzyka (%1$s)</string>
+    <string name="conv_log_reencode_failed">Przekodowanie niy podarziło sie (%1$s); zapisujym tak jak je (na niykerych maszynach taki wynik może niy dōć sie ôdtworzić przitrzimaniym)</string>
+    <string name="conv_log_cover_heic_converted">Titelowy ôbraz to HEIC (niy JPEG); przekodowano go na sztandardowy JPEG i potym zapakowano</string>
+    <string name="conv_log_compose_sizes">Składańe: fotka %1$dB + wideo %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Przekoder niy je włōnczony: ino zmiyniōm markã pojemnika (MOV → MP4), bez przekodowania</string>
+
+    <!-- Marki logōw (pokazujōm sie jako "[marka] tekst") -->
+    <string name="conv_tag_convert">Przekonwertowanie</string>
+    <string name="conv_tag_transcode">Przekodowanie</string>
+    <string name="conv_tag_compose">Składańe</string>
+
+    <!-- Przyczyny zablokowania trybu przekodowania (dokłŏdajōm sie do informacyji wyżyj) -->
+    <string name="conv_blocker_no_encoder">Wkludzony przekoder niy je dostympny</string>
+    <string name="conv_blocker_mode_no_encode">Teroźny „Tryb przekodowania” niy przekoduje</string>
+
+    <!-- ========== FfmpegAddon.kt: wkludzony ffmpeg-przekoder / przepakowanie ========== -->
+    <string name="conv_addon_unavailable">Wkludzony przekoder niy je dostympny</string>
+    <string name="conv_addon_transcode_failed">Przekodowanie ffmpeg niy podarziło sie: %1$s</string>
+    <string name="conv_addon_remux_failed">Przepakowanie pojemnika ffmpeg niy podarziło sie: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Przekodowujym wideo ffmpegiym na sztandardowy MP4 (%1$s / crf %2$d / %3$s; ôstajōm ino ścieżki wideo i audio)</string>
+    <string name="conv_log_transcode_done">Przekodowanie wideo skōńczone (%1$dKB)</string>
+    <string name="conv_log_remuxing">Przepakowujym pojemnik wideo na sztandardowy MP4 (ino pojemnik, bez przekodowania)</string>
+    <string name="conv_log_remux_done">Przepakowanie pojemnika skōńczone (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: dialog "niy pokazuj wiyncyj" ========== -->
+    <string name="conv_reminder_cat_compose">Składańe</string>
+    <string name="conv_reminder_cat_convert">Przekonwertowanie</string>
+    <string name="conv_reminder_cat_update">Aktualizacyjo</string>
+    <string name="conv_reminder_video_over3s_title">Wideo je dugsze jak 3 sekundy</string>
+    <string name="conv_reminder_video_over3s_message">Wybrane wideo je dugsze jak 3 sekundy, toż skłōdane dynamiczno fotka może mieć problemy ze spōłpracōm:\n\n• może sie niy dōć dobrze ôdtworzić\n• może niy być rozpoznane przez systymowo galeryjo\n• niykere maszyny mogōm niy rozpoznać tyj dynamicznyj fotki</string>
+    <string name="conv_reminder_legacy_go_title">Wykryto starszo wersyjo</string>
+    <string name="conv_reminder_legacy_go_message">Na tyj maszynie dalij je zainstalowano starszo wersyjo (Go) tyj aplikacyje. Ta starszo wersyjo już sam niy funguje; idzie jōm ôdinstalować, coby ôswobodzić plac.</string>
+    <string name="conv_reminder_replace_risk_title">Tryb zastympstwa grozi zepsuciym</string>
+    <!-- Chinski zdrzōdłowy tekst mŏ literarne "100 %"; sam je to ôbrane słowami, coby niy było gołego %.
+         formatted="false" je zachowane podug bazowego kluca. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Tryb zastympstwa zapisuje wyniki przekonwertowania wprost na ôryginalne zbiōry; po nadpisaniu ôryginołōw już niy idzie wrōcić.\n\n• Jak aplikacyjo ôstanie zatrzimana, braknie placu abo uprawniynie ôstanie ôdebrane, zdrzōdłowe zbiōry mogōm sie zepsuć\n• Żodne przekonwertowanie niy gwarantuje sukcesu, a jak sie niy podarzi, zdrzōdłowe zbiōry mogōm już być niy do użycio\n• Nojprzōd sprōbuj na jednym abo dwōch zbiōrach, a jak je dobrze, potym przerōb wiyncyj\n• Ważne fotki nojprzōd sam zabezpiecz\n\nTa funkcyjo je dana „jak je”; ryzyko użycio nosisz sam, autōr niy ôdpiywŏ za zepsute abo stracone zbiōry.</string>
+    <string name="conv_reminder_dont_remind">Niy pokazuj wiyncyj</string>
+    <string name="conv_reminder_confirm_ok">Rozmiym</string>
+    <string name="conv_reminder_uninstall">Ôdinstaluj</string>
+
+</resources>

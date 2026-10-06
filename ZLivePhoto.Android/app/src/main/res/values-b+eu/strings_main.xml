@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Basque (eu) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="main_status_ready">Prest</string>
+    <string name="main_status_location_granted">Kokapen-baimena lortu da; GPS metadatuak gordeko dira bihurketaren ondoren</string>
+    <string name="main_status_location_denied">Kokapen-baimena eman gabe: bihurtutako argazkiek GPS kokapen-informazioa galduko dute</string>
+    <string name="main_status_all_files_granted">"Fitxategi guztietarako sarbidea" baimena lortu da; bihurketak albumaren karpetara idazten du zuzenean eta kokapen-informazioa erabat gordetzen du</string>
+    <string name="main_status_all_files_denied">"Fitxategi guztietarako sarbidea" baimena eman gabe: gailu batzuetan kokapen-informazioa gal daiteke bihurketaren ondoren</string>
+    <string name="main_status_read_granted">Argazkiak eta bideoak irakurtzeko baimena lortu da</string>
+    <string name="main_status_video_missing">Baimena eman da, baina bideo-baimena falta da: ezin da bi fitxategiko Live Photo baten osagarri bideoa aurkitu</string>
+    <string name="main_status_permission_denied">Baimena eman gabe; sakatu berriro "Gehitu fitxategiak"</string>
+    <string name="main_status_folder_not_selected">Karpeta hautatu gabe</string>
+    <string name="main_status_folder_unavailable">Ezin da hautatutako karpeta ireki (biltegiratze lokaleko karpetak soilik onartzen dira)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Aurreko saioa berreskuratu da (%1$d fitxategi)</item>
+        <item quantity="other">Aurreko saioa berreskuratu da (%1$d fitxategi)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Aurreko irteera anormala antzeman da; osatu gabeko zerrenda hustu da</string>
+    <string name="main_status_compose_blocks_extract">Ilaran konposizio-lanak daude; ezin da bereizte modura aldatu</string>
+    <string name="main_status_replace_off_mutex">Ordezkatze modua itzali da (ezin da "Prozesatu ostean jatorrizko argazkia ezabatu"rekin aldi berean erabili)</string>
+    <string name="main_status_delete_needs_all_files">Jatorrizko argazkiak automatikoki ezabatzeko "Fitxategi guztietarako sarbidea" baimena behar da; eman baimena lehenik</string>
+    <string name="main_status_replace_off">Ordezkatze modua itzali da; bihurketaren emaitza albumaren karpetara idatziko da berriro</string>
+    <string name="main_status_replace_needs_all_files">Ordezkatze moduak "Fitxategi guztietarako sarbidea" baimena behar du; eman baimena lehenik</string>
+    <string name="main_status_delete_off_mutex">"Prozesatu ostean jatorrizko argazkia ezabatu" itzali da (ezin da ordezkatze moduarekin aldi berean erabili)</string>
+    <string name="main_status_loading_albums">Albumak kargatzen…</string>
+    <string name="main_status_no_albums">Ez da albumik aurkitu</string>
+    <string name="main_status_compose_no_photo">Argazkirik hautatu gabe; ezin da konposatu</string>
+    <string name="main_status_compose_no_video">Bideorik hautatu gabe; ezin da konposatu</string>
+    <string name="main_status_compose_all_added">Hautatutako argazki guztiak jada zerrendan daude</string>
+    <string name="main_status_compose_paired">Argazkiak: %1$d, bideoak: %2$d — alde txikienaren arabera, %3$d konposizio-lan-bikote gehitu dira</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Konposizio-lan %1$d gehitu da; sakatu "Hasi bihurketa" konposatzeko</item>
+        <item quantity="other">%1$d konposizio-lan gehitu dira; sakatu "Hasi bihurketa" konposatzeko</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (irteera-formatua automatikoki Google-ra aldatu da)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Partekatutako irudi %1$d inportatzen…</item>
+        <item quantity="other">Partekatutako %1$d irudi inportatzen…</item>
+    </plurals>
+    <string name="main_status_import_failed">Inportazioak huts egin du: %1$s</string>
+    <string name="main_status_import_done_partial">Inportazioa amaitu da: %1$d ondo, %2$d huts</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Inportazioa amaitu da: guztira fitxategi %1$d inportatu da</item>
+        <item quantity="other">Inportazioa amaitu da: guztira %1$d fitxategi inportatu dira</item>
+    </plurals>
+    <string name="main_status_import_stopped">Inportazioa gelditu da: %1$d ondo, %2$d huts</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Fitxategi %1$d inportatzen…</item>
+        <item quantity="other">%1$d fitxategi inportatzen…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Inportatzen %1$d/%2$d…</string>
+    <string name="main_status_stopping">Gelditzen… (uneko fitxategia amaitu ondoren geldituko da)</string>
+    <string name="main_status_stopping_import">Inportazioa gelditzen…</string>
+    <string name="main_status_removed">%1$s kendu da</string>
+    <string name="main_status_cleared">Hustu da</string>
+    <string name="main_status_nothing_to_convert">Bihurtzeko fitxategirik ez</string>
+    <string name="main_status_folder_unreadable">Ezin da hautatutako karpeta irakurri</string>
+    <string name="main_status_scanning_folder">Karpeta aztertzen…</string>
+    <string name="main_status_no_images">Ez da irudirik aurkitu hautatutako karpetan</string>
+    <string name="main_status_batch_importing">Inportazio masiboa %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Inportazio masiboa gelditu da: guztira Live Photo %1$d inportatu da</item>
+        <item quantity="other">Inportazio masiboa gelditu da: guztira %1$d Live Photo inportatu dira</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Inportazio masiboa gelditu da: guztira Live Photo %1$d inportatu da, Live Photo ez den fitxategi %2$d saltatu da</item>
+        <item quantity="other">Inportazio masiboa gelditu da: guztira %1$d Live Photo inportatu dira, Live Photo ez diren %2$d fitxategi saltatu dira</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Inportazio masiboa amaitu da: guztira Live Photo %1$d inportatu da</item>
+        <item quantity="other">Inportazio masiboa amaitu da: guztira %1$d Live Photo inportatu dira</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Inportazio masiboa amaitu da: guztira Live Photo %1$d inportatu da, Live Photo ez den fitxategi %2$d saltatu da</item>
+        <item quantity="other">Inportazio masiboa amaitu da: guztira %1$d Live Photo inportatu dira, Live Photo ez diren %2$d fitxategi saltatu dira</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Geldituta: %1$d fitxategitatik %2$d prozesatu dira, %3$d jatorrizko fitxategi ordezkatu dira</string>
+    <string name="main_status_stopped_export">Geldituta: %1$d fitxategitatik %2$d prozesatu dira, %3$d albumera esportatu dira</string>
+    <string name="main_status_done_replace_reason">Amaituta: %1$d fitxategi prozesatu dira, %2$d jatorrizko fitxategi ordezkatu dira (arrazoia: %3$s)</string>
+    <string name="main_status_done_export_reason">Amaituta: %1$d fitxategi prozesatu dira, %2$d albumera esportatu dira (arrazoia: %3$s)</string>
+    <string name="main_status_done_replace">Amaituta: %1$d fitxategi prozesatu dira, %2$d jatorrizko fitxategi ordezkatu dira</string>
+    <string name="main_status_done_export">Amaituta: %1$d fitxategi prozesatu dira, %2$d albumera esportatu dira</string>
+    <string name="main_status_keep_originals">%1$s; "Biltegiratze sarbide osoa" baimena lortu gabe, jatorrizkoak gorde dira</string>
+    <string name="main_info_detecting">Antzematen…</string>
+    <string name="main_info_unrecognized">Live Photo formatu ezezaguna</string>
+    <string name="main_info_converting">Bihurtzen…</string>
+    <string name="main_info_compose_task">Konposizio-lana (sakatu "Hasi bihurketa" konposatzeko)</string>
+    <string name="main_info_done_replaced">Amaituta (%1$d jatorrizko fitxategi ordezkatu dira)</string>
+    <string name="main_info_done_skipped">Amaituta (saltatuta: izen-gatazka)</string>
+    <string name="main_info_done_exported">Amaituta (%1$d esportatu dira)</string>
+    <string name="main_info_failed">Huts egin du: %1$s</string>
+    <string name="main_progress_added">%1$d/%2$d gehituta</string>
+    <string name="main_progress_processed">%1$d/%2$d prozesatuta</string>
+    <string name="main_progress_imported">%1$d/%2$d inportatuta</string>
+    <string name="main_dialog_permission_title">Argazkiak eta bideoak irakurtzeko baimena behar da</string>
+    <string name="main_dialog_permission_message">Programa honek zure gailuko argazkiak eta bideoak irakurri behar ditu:\n\n• Argazki-baimena: gailuaren albuma aztertu eta bertako Live Photo-ak antzeman\n• Bideo-baimena: bi fitxategiko Live Photo baten osagarri bideoa aurkitu\n• Kokapen-baimena: argazkietako GPS kokapen-metadatuak gorde (falta bada, kokapen-informazioa galduko da bihurketaren ondoren)\n\nUkatu ondoren ezin da barne-hautatzailea erabili; geroago berriro sakatu "Gehitu fitxategiak" baimena berriz emateko.</string>
+    <string name="main_dialog_settings_title">Argazki eta bideo baimenak eskuz eman behar dira</string>
+    <string name="main_dialog_settings_message">Aurretik "Ez galdetu berriro" hautatu duzu, sistemak ez du baimen-elkarrizketa gehiago erakutsiko.\n\nJoan aplikazioaren xehetasunetara → Baimenak → Argazkiak eta bideoak, eman sarbide-baimena eskuz eta itzuli aplikaziora.\n\nOharra: "Argazkiak" eta "Bideoak" baimenak biak eman behar dira; bestela bi fitxategiko Live Photo batek ez du bere osagarri bideoa aurkituko.</string>
+    <string name="main_dialog_allfiles_title_delete">Jatorrizko argazkiak automatikoki ezabatzeko "Fitxategi guztietarako sarbidea" behar da</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Gailu honek ez du onartzen jatorrizko argazkiak automatikoki ezabatzea</string>
+    <string name="main_dialog_allfiles_title_replace">Ordezkatze moduak "Fitxategi guztietarako sarbidea" behar du</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Gailu honek ez du onartzen ordezkatze modua</string>
+    <string name="main_dialog_allfiles_title_location">"Fitxategi guztietarako sarbidea" baimena ematea gomendatzen da</string>
+    <string name="main_dialog_allfiles_delete_message">"Prozesatu ostean jatorrizko argazkia ezabatu" aukerak diskoan dauden jatorrizko fitxategiak (argazkiak eta haien osagarri bideoak) zuzenean ezabatzen ditu; ekintza hau ezin da desegin, beraz lehenik "Fitxategi guztietarako sarbidea" baimena eman behar da.\n\nBaimena eman ondoren bakarrik bihurtuko da etengailua erabilgarri, orduan zeuk aktiba dezakezu.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Uneko sistemak (Android 10 eta zaharragoak) ez du "Fitxategi guztietarako sarbidea" baimenik eskaintzen eta ezin daitezke diskoan dauden jatorrizko fitxategiak zuzenean ezabatu; beraz, gailu honek ez du onartzen "Prozesatu ostean jatorrizko argazkia ezabatu".\n\nBihurketa amatu ondoren sistema-albumaren bidez garbi ditzakezu jatorrizkoak eskuz.</string>
+    <string name="main_dialog_allfiles_replace_message">"Ordezkatze moduak" bihurketaren emaitza zuzenean diskoan dagoen jatorrizko fitxategian idazten du (jatorrizko edukia gainidazten du); ekintza hau ezin da desegin, beraz lehenik "Fitxategi guztietarako sarbidea" baimena eman behar da.\n\nBaimena eman ondoren bakarrik bihurtuko da etengailua erabilgarri, orduan zeuk aktiba dezakezu.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Uneko sistemak (Android 10 eta zaharragoak) ez du "Fitxategi guztietarako sarbidea" baimenik eskaintzen eta ezin daitezke diskoan dauden jatorrizko fitxategiak zuzenean aldatu; beraz, gailu honek ez du onartzen ordezkatze modua.\n\nBihurketarekin jarraitu dezakezu modu lehenetsian; emaitza albumaren karpetara idatziko da.</string>
+    <string name="main_dialog_allfiles_location_message">Gailu batzuetan (adib. Meizu) sistema-albumaren interfazearen bidez idazteak GPS kokapen-informazioa ezkutatzen du, eta argazkiak kokapena galtzen du bihurketaren ondoren.\n\n"Fitxategi guztietarako sarbidea" eman ondoren, programa zuzenean albumaren karpetara idazten du eta kokapen-metadatuak erabat gordetzen ditu.\n\nBaimenik eman gabe ere bihurketa ondo funtzionatzen du; gailu batzuetan kokapen-informazioa gal daiteke.</string>
+    <string name="main_dialog_conflict_title">Irteera-fitxategiaren izen-gatazka</string>
+    <string name="main_dialog_conflict_message">Irteera-karpetan izen bereko fitxategi bat dagoeneko badago:\n%1$s\n\nAukeratu nola kudeatu.</string>
+    <string name="main_label_conflict_always">Erabili metodo hau etorkizuneko gatazketarako</string>
+    <string name="main_btn_grant">Eman baimena</string>
+    <string name="main_btn_deny">Ukatu</string>
+    <string name="main_btn_go_settings">Joan ezarpenetara</string>
+    <string name="main_btn_cancel">Utzi</string>
+    <string name="main_btn_grant_access">Eman baimena</string>
+    <string name="main_btn_got_it">Ulertu dut</string>
+    <string name="main_btn_not_now">Oraintxe ez</string>
+    <string name="main_btn_skip">Saltatu</string>
+    <string name="main_btn_overwrite">Gainidatzi</string>
+    <string name="main_btn_auto_rename">Berrizendatu automatikoki</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Jatorrizko fitxategi %1$d ezabatu da</item>
+        <item quantity="other">%1$d jatorrizko fitxategi ezabatu dira</item>
+    </plurals>
+    <string name="main_delete_nothing">Ez dago jatorrizko argazkirik ezabatzeko</string>
+    <string name="main_delete_partial">%1$d jatorrizko fitxategi ezabatu dira (%2$dek huts egin du, gordeta)</string>
+    <string name="main_delete_failed">Jatorrizko argazkiak ezabatzeak huts egin du (fitxategia erabiltzen ari da edo idazketa-baimenik ez); gordeta</string>
+    <string name="main_export_missing_output">Bihurketaren emaitza falta da edo hutsik dago: %1$s</string>
+    <string name="main_export_missing_output_bare">Bihurketaren emaitza falta da edo hutsik dago</string>
+    <string name="main_export_insert_null">MediaStore insert-ek null itzuli du</string>
+    <string name="main_export_output_stream">MediaStore irteera-korronterik ez erabilgarri</string>
+    <string name="main_export_write_failed">MediaStore idazketak huts egin du: %1$s</string>
+    <string name="main_export_mkdir_failed">Ezin izan da albumaren karpeta sortu: %1$s</string>
+    <string name="main_export_dir_write_failed">Albumaren karpetan idazteak huts egin du: %1$s</string>
+    <string name="main_export_no_source">Jatorrizko fitxategia ez da aurkitu; ordezkatzea saltatu da</string>
+    <string name="main_export_companion_failed">Osagarri fitxategian berriro idazteak huts egin du: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Jatorrizko fitxategiaren karpeta ez da idazgarria; osagarri fitxategia ezin izan da berriro idatzi</string>
+    <string name="main_export_source_dir_unavailable">Jatorrizko fitxategiaren karpeta ez dago erabilgarri: %1$s</string>
+    <string name="main_export_replace_failed">Jatorrizko fitxategia ordezkatzeak huts egin du: %1$s</string>
+    <string name="main_export_replace_failed_bare">Jatorrizko fitxategia ordezkatzeak huts egin du</string>
+</resources>

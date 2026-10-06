@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Azerbaijani (az) strings — update flow (ui/UpdateFlow.kt).
+  Translated from res/values/strings_update_flow.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <!-- Nəzarətçi tərəfindən verilən bildirişlər (Context-dən asılı olmayan Composable-lərdən kənarda context.getString istifadə olunur) -->
+    <string name="update_github_url_missing">GitHub endirmə ünvanı alınmadı; bir az sonra yenidən cəhd edin.</string>
+    <string name="update_flavor_standard">Standart versiya</string>
+    <string name="update_flavor_go">Go versiyası</string>
+    <string name="update_lanzou_url_missing">Bu versiya Lanzou Cloud endirmə linki təqdim etmir; GitHub-dan istifadə edə bilərsiniz.</string>
+    <string name="update_apk_direct_missing">Bu versiya üçün uyğun birbaşa quraşdırma paketi linki yoxdur; GitHub buraxılış səhifəsindən uyğun APK-nı seçin.</string>
+    <string name="update_install_permission_missing">„Naməlum tətbiqləri quraşdırma“ icazəsi verilməyib, avtomatik quraşdırma mümkün deyil. Sistem ayarlarında icazə verin və yenidən cəhd edin.</string>
+    <string name="update_error_unknown">Naməlum xəta</string>
+    <string name="update_fail_lanzou">Lanzou Cloud endirməsi alınmadı</string>
+    <string name="update_fail_github">GitHub endirməsi alınmadı</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud endirmə linki təhlil edilir…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud-dan endirilir…</string>
+    <string name="update_github_downloading">GitHub-dan endirilir…</string>
+    <string name="update_unzipping">Quraşdırma paketi açılır…</string>
+    <string name="update_notes_empty">Bu versiya üçün yeniləmə qeydləri yoxdur.</string>
+
+    <!-- Go versiyası ilə bağlı dialoqlar -->
+    <string name="update_use_normal_title">Normal versiyadan istifadə edin</string>
+    <string name="update_use_normal_body">Bu cihazın sistemi Android 10 və ya daha yenidir; Go yüngül versiyası artıq dəstəklənmir və köhnə versiya işlədilə bilməz.\n\nBu cihazda normal versiyanın (ZLC) quraşdırıldığı aşkarlandı; davam etmək üçün birbaşa normal versiyanı açın (yeni buraxılışlarda Go uyğun versiya yoxdur, yeri boşaltmaq üçün köhnə versiyanı silə bilərsiniz).</string>
+    <string name="update_open_normal">Normal versiyanı aç</string>
+    <string name="update_must_update_title">Davam etmək üçün yeniləmək tələb olunur</string>
+    <string name="update_forced_body">Bu cihazın sistemi Android 10 və ya daha yenidir; Go yüngül versiyası artıq dəstəklənmir, köhnə versiya işlədilə bilməz və yeni buraxılışlarda Go uyğun versiya da yoxdur.\n\nŞəbəkəyə qoşulun və normal versiya quraşdırma paketini almaq üçün „Yenidən cəhd et“ düyməsinə toxunun.</string>
+    <string name="update_retry">Yenidən cəhd et</string>
+    <string name="update_switch_normal_body">Bu cihazın sistemi Android 10 və ya daha yenidir; Go yüngül versiyası artıq dəstəklənmir, köhnə versiya işlədilə bilməz.\nDavam etmək üçün normal versiyanı endirib quraşdırın (yeni buraxılışlarda Go uyğun versiya yoxdur).</string>
+
+    <!-- Endirmə / quraşdırma icazəsi / nəticə bildirişləri -->
+    <string name="update_downloading_title">Yeniləməni endir</string>
+    <string name="update_cancel">Ləğv et</string>
+    <string name="update_need_permission_title">Quraşdırma icazəsi tələb olunur</string>
+    <string name="update_need_permission_body">Yeni versiyanı quraşdırmaq üçün sistemin „naməlum tətbiqləri quraşdırma“ icazəsi tələb olunur.\n\n„İcazə ver“ düyməsinə toxunun, ayarlarda icazə verib tətbiqə qayıdın; quraşdırma avtomatik davam edəcək (yenidən endirmək lazım deyil).</string>
+    <string name="update_grant">İcazə ver</string>
+    <string name="update_notice_title">Bildiriş</string>
+    <string name="update_got_it">Anladım</string>
+
+    <!-- Əsas dialoq / yeniləmə qeydləri -->
+    <string name="update_notes_title">v%1$s · Yeniləmə qeydləri</string>
+    <string name="update_back">Geri</string>
+    <string name="update_title_switch_normal">Normal versiyaya keç</string>
+    <string name="update_title_reinstall">Bu versiyanı yenidən quraşdır</string>
+    <string name="update_title_new_version">Yeni versiya tapıldı</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Bu versiya endiriləcək və yenidən quraşdırılacaq (cari tətbiqin üzərinə yazılır).\nBu funksiya yeniləmə mexanizmini yoxlamaq üçündür.</string>
+    <string name="update_view_notes">Yeniləmə qeydlərinə bax</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud hazırda əlçatan deyil</string>
+    <string name="update_download_lanzou">Lanzou Cloud-dan endir</string>
+    <string name="update_download_github">GitHub-dan endir</string>
+    <string name="update_download_browser">Brauzerdən endir</string>
+    <string name="update_later">Sonra yenilə</string>
+    <string name="update_later_switch">Sonra keç</string>
+    <string name="update_skip_version">Bu versiyanı ötür</string>
+</resources>

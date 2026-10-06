@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · eesti keel.
+  Põhiliidese / albumivalija tekstid (task-4). Võtme eesliide screen_.
+  res/values/ on lihtsustatud hiina varukeel; teised keeled on kaustas values-<locale>/strings_screens.xml.
+  Kohatäitjad säilitavad kuju %1$s / %1$d, tõlkimisel võib järjekorda muuta; kogusega seotud tekstid kasutavad <plurals>.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- Ülariba alapealkiri -->
+    <string name="screen_app_subtitle">Live Photo vormingute vaheline teisendamine</string>
+    <!-- Ülariba paremal valitud failide arv (kogusega seotud, kasutab plurals) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d fail</item>
+        <item quantity="other">%1$d faili</item>
+    </plurals>
+    <!-- Ülariba seadete sissepääs (ainult ekraanilugeja jaoks) -->
+    <string name="screen_settings">Seaded</string>
+
+    <!-- Väljundvormingu valikuaken -->
+    <string name="screen_select_output_format">Valige väljundvorming</string>
+    <string name="screen_selected">Valitud</string>
+    <string name="screen_vivo_single_warning">⚠ Väga vanad seadmed ei pruugi seda vormingut tuvastada</string>
+    <string name="screen_extract_blocked">⚠ Järjekord sisaldab sünteesitoiminguid, eraldamist ei saa valida</string>
+
+    <!-- Vorminguvalikute lühinimetused (pikad nimed vt strings_formats.xml fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (üks fail)</string>
+    <string name="screen_format_vivo">vivo (kaks faili)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Eraldamine</string>
+
+    <!-- Tööriistakasti BottomSheet -->
+    <string name="screen_toolbox">Tööriistakast</string>
+    <string name="screen_batch_import">Hulgiimport</string>
+    <string name="screen_batch_import_desc">Skaneerige kogu galerii ja tuvastage Live Photod hulgi</string>
+    <string name="screen_compose">Loo Live Photo</string>
+    <string name="screen_compose_desc">Valige üks foto ja üks video ning siduge need Live Photoks</string>
+    <string name="screen_replace_mode">Asendusrežiim</string>
+    <string name="screen_replace_mode_desc">Teisenduse tulemus kirjutatakse otse algsetesse failidesse, uusi faile ei looda</string>
+    <string name="screen_need_all_files_access_hint">Nõuab „juurdepääsu kõikidele failidele“, puudutage õiguse andmiseks</string>
+    <string name="screen_agree_and_enable">Nõustu ja luba</string>
+
+    <!-- Tühiolek / alumine juhtpaneel -->
+    <string name="screen_empty_no_files">Faile ei ole veel lisatud</string>
+    <string name="screen_view_detail">Vaata üksikasju</string>
+    <string name="screen_add_files">Lisa faile</string>
+    <string name="screen_output_format">Väljundvorming: %1$s</string>
+    <string name="screen_delete_original">Kustuta originaalid pärast töötlemist</string>
+    <string name="screen_need_all_files_access_view">Nõuab „juurdepääsu kõikidele failidele“, puudutage vaatamiseks</string>
+    <string name="screen_clear">Tühjenda</string>
+    <string name="screen_stop">Peata töötlemine</string>
+    <string name="screen_start_convert">Alusta teisendamist</string>
+
+    <!-- Oleku üksikasjade dialoog -->
+    <string name="screen_status_detail">Oleku üksikasjad</string>
+    <string name="screen_long_press_copy">Pika vajutusega saab teksti valida ja kopeerida</string>
+    <string name="screen_copy">Kopeeri</string>
+    <string name="screen_close">Sulge</string>
+
+    <!-- Albumivalija -->
+    <string name="screen_back">Tagasi</string>
+    <string name="screen_picker_title_select">Valige Live Photod</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Ahenda albumi kaas</string>
+    <string name="screen_album_expand_cover">Laienda albumi kaas</string>
+    <string name="screen_scanning_progress">Skaneerimine %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d fotot</item>
+    </plurals>
+    <string name="screen_select_all">Vali kõik</string>
+    <string name="screen_no_albums">Ühtegi albumit pole saadaval</string>
+    <string name="screen_no_media">Live Photot ei leitud</string>
+    <string name="screen_no_media_compose">Fotosid ega videoid ei leitud</string>
+    <string name="screen_import">Impordi</string>
+    <string name="screen_import_count">Impordi %1$d</string>
+    <string name="screen_import_mixed">Impordi foto %1$d · video %2$d</string>
+    <string name="screen_search">Otsi</string>
+    <string name="screen_search_collapse">Ahenda otsing</string>
+    <string name="screen_search_hint">Otsi nime järgi</string>
+    <string name="screen_search_clear">Tühjenda otsing</string>
+    <string name="screen_sort_date">Kuupäev</string>
+    <string name="screen_sort_size">Suurus</string>
+    <string name="screen_sort_name">Nimi</string>
+    <string name="screen_sort_asc">Kasvav</string>
+    <string name="screen_sort_desc">Kahanev</string>
+
+    <!-- Albumirühmade kuupäevasildid (%1$d jne on numbrilised kohatäitjad, tõlkimisel võib järjekorda muuta) -->
+    <string name="screen_date_today">Täna</string>
+    <string name="screen_date_yesterday">Eile</string>
+    <string name="screen_date_this_year">%1$d.%2$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

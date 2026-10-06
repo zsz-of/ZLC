@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Danish (da) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="screen_app_subtitle">Konvertering mellem Live Photo-formater</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d fil</item>
+        <item quantity="other">%1$d filer</item>
+    </plurals>
+    <string name="screen_settings">Indstillinger</string>
+    <string name="screen_select_output_format">Vælg outputformat</string>
+    <string name="screen_selected">Valgt</string>
+    <string name="screen_vivo_single_warning">⚠ Meget gamle enheder kan muligvis ikke genkende dette format</string>
+    <string name="screen_extract_blocked">⚠ Køen indeholder sammensætningsopgaver; Udpak kan ikke vælges</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (én fil)</string>
+    <string name="screen_format_vivo">vivo (to filer)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Udpak</string>
+    <string name="screen_toolbox">Værktøjskasse</string>
+    <string name="screen_batch_import">Masseimport</string>
+    <string name="screen_batch_import_desc">Scanner hele galleriet og genkender Live Photos i massevis</string>
+    <string name="screen_compose">Sammensæt Live Photo</string>
+    <string name="screen_compose_desc">Vælg et billede og en video, og sammensæt dem som par</string>
+    <string name="screen_replace_mode">Erstatningstilstand</string>
+    <string name="screen_replace_mode_desc">Konverteringsresultatet skrives direkte tilbage til originalfilerne; der oprettes ikke nye filer</string>
+    <string name="screen_need_all_files_access_hint">Kræver tilladelsen “Adgang til alle filer” — tryk her for at give den</string>
+    <string name="screen_agree_and_enable">Acceptér og aktivér</string>
+    <string name="screen_empty_no_files">Ingen filer tilføjet endnu</string>
+    <string name="screen_view_detail">Se detaljer</string>
+    <string name="screen_add_files">Tilføj filer</string>
+    <string name="screen_output_format">Outputformat: %1$s</string>
+    <string name="screen_delete_original">Slet originaler efter behandling</string>
+    <string name="screen_need_all_files_access_view">Kræver tilladelsen “Adgang til alle filer” — tryk for at se detaljer</string>
+    <string name="screen_clear">Ryd</string>
+    <string name="screen_stop">Stop behandling</string>
+    <string name="screen_start_convert">Start konvertering</string>
+    <string name="screen_status_detail">Statusdetaljer</string>
+    <string name="screen_long_press_copy">Hold teksten nede for at markere og kopiere den</string>
+    <string name="screen_copy">Kopiér</string>
+    <string name="screen_close">Luk</string>
+    <string name="screen_back">Tilbage</string>
+    <string name="screen_picker_title_select">Vælg Live Photos</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Skjul albumcoveret</string>
+    <string name="screen_album_expand_cover">Vis albumcoveret</string>
+    <string name="screen_scanning_progress">Scanner %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d billede</item>
+        <item quantity="other">%1$d billeder</item>
+    </plurals>
+    <string name="screen_select_all">Vælg alle</string>
+    <string name="screen_no_albums">Ingen tilgængelige albummer</string>
+    <string name="screen_no_media">Ingen Live Photos fundet</string>
+    <string name="screen_no_media_compose">Ingen billeder eller videoer fundet</string>
+    <string name="screen_import">Importér</string>
+    <string name="screen_import_count">Importér %1$d</string>
+    <string name="screen_import_mixed">Importér %1$d billeder · %2$d videoer</string>
+    <string name="screen_search">Søg</string>
+    <string name="screen_search_collapse">Skjul søgning</string>
+    <string name="screen_search_hint">Søg efter navn</string>
+    <string name="screen_search_clear">Ryd søgning</string>
+    <string name="screen_sort_date">Dato</string>
+    <string name="screen_sort_size">Størrelse</string>
+    <string name="screen_sort_name">Navn</string>
+    <string name="screen_sort_asc">Stigende</string>
+    <string name="screen_sort_desc">Faldende</string>
+    <string name="screen_date_today">I dag</string>
+    <string name="screen_date_yesterday">I går</string>
+    <string name="screen_date_this_year">%2$d/%1$d</string>
+    <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+</resources>

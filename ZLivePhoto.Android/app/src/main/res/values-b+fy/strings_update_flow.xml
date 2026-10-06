@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Frisian (Western) (fy) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">Gjin GitHub-downloade-adres krigen; besykje letter opnij.</string>
+    <string name="update_flavor_standard">Standertferzje</string>
+    <string name="update_flavor_go">Go-ferzje</string>
+    <string name="update_lanzou_url_missing">Dizze ferzje jout gjin Lanzou-downloade-keppeling; brûk GitHub om te downloaden.</string>
+    <string name="update_apk_direct_missing">Dizze ferzje jout gjin direkte keppeling nei in passend ynstallaasjepakket; kies de krekte APK op de GitHub-release-side.</string>
+    <string name="update_install_permission_missing">Tastimming "Unbekende apps ynstallearje" net krigen; kin net automatysk ynstallearre wurde. Jou tastimming yn de systeemynstellings en besykje opnij.</string>
+    <string name="update_error_unknown">Unbekende fout</string>
+    <string name="update_fail_lanzou">Downloade fan Lanzou mislearre</string>
+    <string name="update_fail_github">Downloade fan GitHub mislearre</string>
+    <string name="update_lanzou_resolving">Lanzou-downloade-keppeling analysearje…</string>
+    <string name="update_lanzou_downloading">Downloade fan Lanzou…</string>
+    <string name="update_github_downloading">Downloade fan GitHub…</string>
+    <string name="update_unzipping">Ynstallaasjepakket útpakke…</string>
+    <string name="update_notes_empty">Dizze ferzje hat noch gjin release-notysjes.</string>
+    <string name="update_use_normal_title">Brûk de gewoane ferzje</string>
+    <string name="update_use_normal_body">It systeem fan dit apparaat is Android 10 of nijer; de lichte Go-ferzje is net mear oanpast en de alde ferzje kin net mear brûkt wurde.\n\nWerken is dat de gewoane ferzje (ZLC) al ynstallearre is op dit apparaat; iepenje rjochtstreeks de gewoane ferzje om fierder te gean (de nije ferzje jout gjin Go-kompatibele ferzje mear; de alde ferzje kin deynstallearre wurde om romte frij te meitsjen).</string>
+    <string name="update_open_normal">Iepenje gewoane ferzje</string>
+    <string name="update_must_update_title">Earst bywurkje, dan fierder</string>
+    <string name="update_forced_body">It systeem fan dit apparaat is Android 10 of nijer; de lichte Go-ferzje is net mear oanpast, de alde ferzje kin net mear brûkt wurde; de nije ferzje jout ek gjin Go-kompatibele ferzje mear.\n\nFerbine mei it netwurk en tik "Opnij besykje" om it ynstallaasjepakket fan de gewoane ferzje te heljen.</string>
+    <string name="update_retry">Opnij besykje</string>
+    <string name="update_switch_normal_body">It systeem fan dit apparaat is Android 10 of nijer; de lichte Go-ferzje is net mear oanpast en de alde ferzje kin net mear brûkt wurde.\nDownload en ynstallear de gewoane ferzje om fierder te gean (de nije ferzje jout gjin Go-kompatibele ferzje mear).</string>
+    <string name="update_downloading_title">Bywurkje downloade</string>
+    <string name="update_cancel">Annulearje</string>
+    <string name="update_need_permission_title">Ynstallaasjetastimming nedich</string>
+    <string name="update_need_permission_body">Om de nije ferzje te ynstallearjen is de systeemtastimming "Unbekende apps ynstallearje" nedich.\n\nTik "Tastimming jaan", jou tastimming yn de ynstellings en kom werom nei de app; de ynstallaasje giet automatysk fierder (net opnij downloade).</string>
+    <string name="update_grant">Tastimming jaan</string>
+    <string name="update_notice_title">Tsjinheakje</string>
+    <string name="update_got_it">Begrepen</string>
+    <string name="update_notes_title">v%1$s · Release-notysjes</string>
+    <string name="update_back">Werom</string>
+    <string name="update_title_switch_normal">Wikselje nei de gewoane ferzje</string>
+    <string name="update_title_reinstall">Dizze ferzje opnij ynstallearje</string>
+    <string name="update_title_new_version">Nije ferzje fûn</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Dizze ferzje wurdt downloade en opnij ynstallearre (oerskriuwt de hjoeddeiske app).\nDizze funksje is foar regresjetesting fan it bywurkmechanisme.</string>
+    <string name="update_view_notes">Besjoch release-notysjes</string>
+    <string name="update_lanzou_unavailable">Lanzou is op dit stuit net beskikber</string>
+    <string name="update_download_lanzou">Downloade fan Lanzou</string>
+    <string name="update_download_github">Downloade fan GitHub</string>
+    <string name="update_download_browser">Downloade yn de browser</string>
+    <string name="update_later">No net bywurkje</string>
+    <string name="update_later_switch">No net wikselje</string>
+    <string name="update_skip_version">Dizze ferzje oerslaan</string>
+</resources>

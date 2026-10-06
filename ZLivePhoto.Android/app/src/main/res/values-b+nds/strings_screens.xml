@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Low German (nds) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="screen_app_subtitle">Live-Photo-Formaten ünnerenanner konverteeren</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d Datei</item>
+        <item quantity="other">%1$d Dateien</item>
+    </plurals>
+    <string name="screen_settings">Instellungen</string>
+    <string name="screen_select_output_format">Utgaavformat wählen</string>
+    <string name="screen_selected">utsöcht</string>
+    <string name="screen_vivo_single_warning">⚠ Öller Geräten könen dit Format villicht nich erkennen</string>
+    <string name="screen_extract_blocked">⚠ In de List sünd Tosamensett-Opgaven, Utlösen lett sik nich utsöken</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (een Datei)</string>
+    <string name="screen_format_vivo">vivo (twee Dateien)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Utlösen</string>
+    <string name="screen_toolbox">Warktüüchkasten</string>
+    <string name="screen_batch_import">Massenimport</string>
+    <string name="screen_batch_import_desc">Heel de Galerie scannen un Live Photos in Masse erkennen</string>
+    <string name="screen_compose">Live Photo tosamensetten</string>
+    <string name="screen_compose_desc">En Foto un en Video utwählen un tosamensetten</string>
+    <string name="screen_replace_mode">Utwesselmodus</string>
+    <string name="screen_replace_mode_desc">Dat Konverteerresultat warrt direkt trügg in de Original-Dateien schreven, kene niege Dateien warrt maakt</string>
+    <string name="screen_need_all_files_access_hint">Bruukt dat Verlööfnis „Togriep op alle Dateien“, hier klicken to autoriseren</string>
+    <string name="screen_agree_and_enable">Tostimmen un inschalten</string>
+    <string name="screen_empty_no_files">Nog kene Dateien tofögt</string>
+    <string name="screen_view_detail">Details ankieken</string>
+    <string name="screen_add_files">Dateien tofögen</string>
+    <string name="screen_output_format">Utgaavformat: %1$s</string>
+    <string name="screen_delete_original">Originaal-Fotos na de Veraarbeiten läschen</string>
+    <string name="screen_need_all_files_access_view">Bruukt dat Verlööfnis „Togriep op alle Dateien“, klicken för Details</string>
+    <string name="screen_clear">Leddig maken</string>
+    <string name="screen_stop">Veraarbeiten stoppen</string>
+    <string name="screen_start_convert">Konverteeren starten</string>
+    <string name="screen_status_detail">Statusdetails</string>
+    <string name="screen_long_press_copy">Lang drücken um den Text uttowählen un to koperen</string>
+    <string name="screen_copy">Koperen</string>
+    <string name="screen_close">Dichtmaken</string>
+    <string name="screen_back">Trügg</string>
+    <string name="screen_picker_title_select">Live Photos utsöken</string>
+    <string name="screen_album_count">Galerie %1$d</string>
+    <string name="screen_album_collapse_cover">Galerie-Cover toklappen</string>
+    <string name="screen_album_expand_cover">Galerie-Cover utklappen</string>
+    <string name="screen_scanning_progress">Scannen %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d Stück</item>
+        <item quantity="other">%1$d Stück</item>
+    </plurals>
+    <string name="screen_select_all">All utwählen</string>
+    <string name="screen_no_albums">Kene verföögbaren Galerien</string>
+    <string name="screen_no_media">Kene Live Photos funnen</string>
+    <string name="screen_no_media_compose">Kene Fotos oder Videos funnen</string>
+    <string name="screen_import">Importeren</string>
+    <string name="screen_import_count">Importeren %1$d</string>
+    <string name="screen_import_mixed">Importeren Bild %1$d·Video %2$d</string>
+    <string name="screen_search">Söken</string>
+    <string name="screen_search_collapse">Söken toklappen</string>
+    <string name="screen_search_hint">Na Naam söken</string>
+    <string name="screen_search_clear">Söök ledig maken</string>
+    <string name="screen_sort_date">Datum</string>
+    <string name="screen_sort_size">Grött</string>
+    <string name="screen_sort_name">Naam</string>
+    <string name="screen_sort_asc">Opstiegen</string>
+    <string name="screen_sort_desc">Afstiegen</string>
+    <string name="screen_date_today">Vundaag</string>
+    <string name="screen_date_yesterday">Güstern</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

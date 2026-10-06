@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Galician (gl) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">A compartición de Lanzou Cloud foi cancelada ou o ficheiro non existe; descarga desde GitHub</string>
+    <string name="update_lanzou_gone_short">A compartición de Lanzou Cloud foi cancelada; descarga desde GitHub</string>
+    <string name="update_lanzou_resolve_failed">Non se puido resolver a ligazón de descarga de Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Esta compartición de Lanzou Cloud require un código de acceso; descarga desde GitHub (ou busca o código de acceso nas notas da versión)</string>
+    <string name="update_lanzou_wrong_passwd">O código de acceso de Lanzou Cloud é incorrecto</string>
+    <string name="update_err_resolve_failed">Non se puido resolver</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">A comprobación contra rastrexadores de Lanzou Cloud fallou</string>
+    <string name="update_err_no_frame">Non se pode analizar a páxina de descarga de Lanzou Cloud (non se atopou o marco de descarga)</string>
+    <string name="update_err_no_file_id">Non se pode analizar o identificador do ficheiro de Lanzou Cloud</string>
+    <string name="update_err_no_sign">Non se pode analizar a sinatura de Lanzou Cloud</string>
+    <string name="update_err_ajax_request">A solicitude á interface fallou</string>
+    <string name="update_err_api_request">A solicitude á interface de Lanzou Cloud fallou</string>
+    <string name="update_err_empty_direct">Lanzou Cloud devolveu un enderezo de descarga baleiro</string>
+    <string name="update_err_direct_expired">O enderezo de descarga de Lanzou Cloud caducou; obtén de novo a ligazón</string>
+    <string name="update_err_http_request">A solicitude fallou (HTTP %1$d)</string>
+    <string name="update_err_connect">Non se pode conectar co servidor de descarga: %1$s</string>
+    <string name="update_err_http">A descarga fallou (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Non se puido establecer a conexión de descarga</string>
+    <string name="update_err_empty">O contido descargado está baleiro</string>
+    <string name="update_err_incomplete">Descarga incompleta (recibíronse %1$d de %2$d bytes); volve descargala</string>
+    <string name="update_err_interrupted">Descarga interrompida: %1$s</string>
+    <string name="update_err_not_apk">O ficheiro descargado non é un paquete de instalación válido (pode ser unha páxina web ou a ligazón de descarga caducou); volve descargalo ou descarga desde GitHub.</string>
+    <string name="update_err_apk_incomplete">O contido do paquete de instalación está incompleto; volve descargalo ou descarga desde GitHub.</string>
+    <string name="update_err_apk_unparsable">Non se pode analizar o paquete de instalación (pode que a descarga estea incompleta); volve descargalo ou descarga desde GitHub.</string>
+    <string name="update_err_no_install_permission">Aínda non se concedeu o permiso de «instalación de aplicacións descoñecidas»</string>
+    <string name="update_err_installer_failed">Non se pode abrir o instalador do sistema (%1$s); abre o paquete manualmente desde un xestor de ficheiros para instalalo</string>
+</resources>

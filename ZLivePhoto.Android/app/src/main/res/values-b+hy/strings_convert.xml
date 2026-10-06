@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Armenian (hy) strings — conversion/transcoding/reminders.
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- Converter.kt: Parameter and source validation -->
+    <string name="conv_unknown_target">Անհայտ նշանակի ձևաչափ՝ %1$s</string>
+    <string name="conv_unrecognized_live_photo">Աջակցվող Live Photo ձևաչափ չի ճանաչվում (ոչ Գուգլի/OPPO/vivo/Խաոմի/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Պատկերող ֆոտո չկա կամ դատարկ է</string>
+    <string name="conv_video_missing">Վիդեոյի տեսանյութ չկա կամ դատարկ է</string>
+    <string name="conv_video_too_large">Վիդեոն չափազանց մեծ է (%1$d ՄԲ), չի կարող միավորվել որպես Live Photo, խնդրում ենք ընտրել ավելի կարճ վիդեո</string>
+    <string name="conv_transcoded_too_large">Վերակոդավորումից հետո վիդեոն չափազանց մեծ է (%1$d ՄԲ), չի կարող միավորվել որպես Live Photo</string>
+    <string name="conv_video_too_large_compose">Վիդեոն չափազանց մեծ է (%1$d ՄԲ), չի կարող միավորվել որպես Live Photo</string>
+
+    <!-- Converter.kt: Cover (HEIC / not JPEG) -->
+    <string name="conv_cover_heic_go">Պատկերողը HEIC պատկեր է (թեթև տարբերակը չի աջակցում վերակոդավորում, խնդրում ենք, ել կտրել որպես JPEG ֆոտո iPhone-ում և ապա փոխակերպել)</string>
+    <string name="conv_cover_invalid_heic">Պատկերողը վավեր պատկեր չէ (HEIC-ը պահանջում է HEIF դեկոդավորումը համակարգում)</string>
+    <string name="conv_cover_not_jpeg_go">Պատկերողը JPEG պատկեր չէ (թեթև տարբերակը չի աջակցում վերակոդավորում, խնդրում ենք օգտագործել JPEG ֆոտո)</string>
+    <string name="conv_cover_invalid_image">Պատկերողը վավեր պատկեր չէ (աջակցվում են միայն JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: Transcoding/remux failure and “just changing container doesn’t fix codec” hints -->
+    <string name="conv_reencode_failed">Վիդեոյի վերակոդավորումը ձախողվեց՝ %1$s</string>
+    <string name="conv_remux_failed">Կոնտեյների վերափաթեթավորը ձախողվեց՝ %1$s</string>
+    <string name="conv_codec_unknown">Չի ճանաչվում որպես H.264/H.265 վիդեո</string>
+    <string name="conv_codec_is">Կոդավորիչը՝ %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Վիդեոն «%1$s» %2$s է, կոնտեյների փոփոխություն (վերափաթեթավորում) չի փոխել կոդավորիչը և չի կարող միավորվել որպես Live Photo։\n\nԽնդրում ենք «Կարգավորումներ → Վիդեոյի վերակոդավորում → Վերակոդավորման եղանակ» բաժնում ընտրել «Վերակոդավորել» կամ նախ այլ գործիքով վերածել H.264/H.265 կոդավորիչով MP4 կոնտեյներում։</string>
+    <string name="conv_hint_no_encoder">Վիդեոն ստանդարտ MP4 կոնտեյներ չէ (MOV/MKV/WebM/AVI և այլն), իսկ ներկայիս «Վերակոդավորման եղանակը» չի վերակոդավորում, դրա համար չի կարող միավորվել որպես Live Photo։\n\nԽնդրում ենք «Կարգավորումներ → Վիդեոյի վերակոդավորում → Վերակոդավորման եղանակ» բաժնում ընտրել «Վերակոդավորել» (սովորական տարբերակում ներկառուցված է ffmpeg կոդավորիչ, Go թեթև տարբերակը չունի կոդավորիչ, օգտագործեք սովորական տարբերակը), կամ նախ վերածել վիդեոն ստանդարտ MP4 (H.264/H.265)։</string>
+
+    <!-- Conversion logs (displayed in list item status bar and log panel) -->
+    <string name="conv_log_detected">Ճանաչվել է որպես %1$s</string>
+    <string name="conv_log_same_format_copied">Աղբյուր և նշանակի ձևաչափերը նույնն են, պատճենվել է անփոփոխ (առանց կորուստների)</string>
+    <string name="conv_log_extra_tracks_bypass">Աղբյուր վիդեոն պարունակում է ոչ ձայնային/տեսանյութային հետքեր (%1$s), նույն ձևաչափով անցում կատարելու փոխարեն անցել է ամբողջական գրառման հոսք, մաքրելու համար</string>
+    <string name="conv_log_ts_fallback">Աղբյուրում չկա պատկերող կադրերի ժամանակի մատը, ըստ կանոնի՝ անցում է վիդեոյի կեսին</string>
+    <string name="conv_log_brand_normalized">Վիդեոյի կոնտեյների բրենդը նորմալացվել է (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Վիդեոն պարունակում է լրացուցիչ հետքեր (%1$s), մաքրել հնարավոր չէ, դուրս է գրվել ինչ-ինչ (այս արդյունքը որոշ հեռախոսներում հնարավոր չի լինել երկար սեղմած դիտել)</string>
+    <string name="conv_log_extra_tracks_removed">Հեռացվել են վիդեոյի լրացուցիչ հետքերը (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Աղբյուր վիդեոն %1$s, միայն կոնտեյները փոփոխելը չի կարողանում լուծել (%2$s), եթե արդյունքը դեռ չի կարող երկար սեղմած դիտվել, «Կարգավորումներ → Վիդեոյի վերակոդավորում → Վերակոդավորման եղանակ» բաժնում ընտրեք «Վերակոդավորել»</string>
+    <string name="conv_log_reencoding">Աղբյուր վիդեոն %1$s, ըստ կարգավորումների վերակոդավորվում է 8-bit + AAC՝ ալբոմի համատեղելիությունը բարելավելու համար</string>
+    <string name="conv_log_reencode_result_unusable">Վերակոդավորման արդյունքը անօգտագործելի է, դուրս է գրվել ինչ-ինչ (այս արդյունքը որոշ հեռախոսներում հնարավոր չի լինել երկար սեղմած դիտել)</string>
+    <string name="conv_log_reencode_still_risky">Վերակոդավորումից հետո դեռ կան ռիսկային տարրեր (%1$s)</string>
+    <string name="conv_log_reencode_failed">Վերակոդավորումը ձախողվեց (%1$s), դուրս է գրվել ինչ-ինչ (այս արդյունքը որոշ հեռախոսներում հնարավոր չի լինել երկար սեղմած դիտել)</string>
+    <string name="conv_log_cover_heic_converted">Պատկերողը HEIC (ոչ JPEG) է, նախ վերակոդավորվել է ստանդարտ JPEG, ապա փաթեթավորվել</string>
+    <string name="conv_log_compose_sizes">Միավորում՝ %1$d Բ լուսանկար + %2$d Բ վիդեո → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Վերակոդավորիչը չի ակտիվացվել, միայն վերագրանցվում է կոնտեյների բրենդը (MOV → MP4), վերակոդավորում չկա</string>
+
+    <!-- Log tags (displayed as “[tag] text”) -->
+    <string name="conv_tag_convert">Փոխակերպել</string>
+    <string name="conv_tag_transcode">Վերակոդավորել</string>
+    <string name="conv_tag_compose">Միավորել</string>
+
+    <!-- Transcoding mode blocker reasons (appended to warning texts) -->
+    <string name="conv_blocker_no_encoder">Ներկառուցված վերակոդավորիչը դրսևորված չէ</string>
+    <string name="conv_blocker_mode_no_encode">Ներկայիս «Վերակոդավորման եղանակը» չի վերակոդավորում</string>
+
+    <!-- FfmpegAddon.kt: Built-in ffmpeg transcoding/remuxing -->
+    <string name="conv_addon_unavailable">Ներկառուցված վերակոդավորիչը դրսևորված չէ</string>
+    <string name="conv_addon_transcode_failed">ffmpeg վերակոդավորումը ձախողվեց՝ %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg կոնտեյների վերափաթեթավորումը ձախողվեց՝ %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Ֆլյուֆքավորվում է ffmpeg-ով ստանդարտ MP4 վիդեոյի վերակոդավորումը (%1$s / crf %2$d / %3$s, միայն վիդեո և ձայնային հետքեր են պահպանվում)</string>
+    <string name="conv_log_transcode_done">Վիդեոյի վերակոդավորման ավարտ (%1$d ԿԲ)</string>
+    <string name="conv_log_remuxing">Վիդեոյի կոնտեյների վերափաթեթավորումը ստանդարտ MP4 (միայն կոնտեյնի փոփոխություն, վերակոդավորում չկա)</string>
+    <string name="conv_log_remux_done">Կոնտեյների վերափաթեթավորումն ավարտված է (%1$d ԿԲ)</string>
+
+    <!-- Reminders.kt: “Don’t remind again” dialogs -->
+    <string name="conv_reminder_cat_compose">Միավորում</string>
+    <string name="conv_reminder_cat_convert">Փոխակերպում</string>
+    <string name="conv_reminder_cat_update">Թարմացում</string>
+    <string name="conv_reminder_video_over3s_title">Վիդեոն 3 վայրկյանից երկար է</string>
+    <string name="conv_reminder_video_over3s_message">Ընտրված վիդեոն 3 վայրկյանից ավելի է, միավորումից հետո Live Photo-ն կարող է լինել բարդ համատեղելիություն. \n\n• Կարող է չստանալով նորմալ դիտվել\n• Կարող է չստանալ հասկանալ համակարգի ալբոմներինով\n• Որոշ հեռախոսներում կարող է չճանաչի պաշտպանիչ իրավիճակը</string>
+    <string name="conv_reminder_legacy_go_title">Ստուգվել է հին տարբերակ</string>
+    <string name="conv_reminder_legacy_go_message">Այս սարքում տեղադրված է հին տարբերակ (Go տարբերակ) հավելված, որը այս սարքում այլևս դրսևորության չի կարող, կարող եք անջատել տարածք ազատելու համար։</string>
+    <string name="conv_reminder_replace_risk_title">Փոխարինման ռեժիմը վնասվածքի ռիսկ ունի</string>
+    <!-- formatted="false" — has a literal % that is not formatted -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Փոխարինման ռեժիմը կգրի փոխակերպման արդյունքը ուղղակիորեն բնօրինակ ֆայլերի մեջ, որոնց հետո անվերադարձ կորչեն։\n\n• Գրումի ընթացքում եթե հավելվածը ընդհատվի, տարածքի պակաս կամ իրավունքի լուծում, աղբյուր ֆայլը կարող է վնասվել\n• Փոխակերպումը չի կարող երաշխավորել լիակատար հաջողություն, սխալի դեպքում աղբյուր ֆայլը կարող է արդեն անհասանելի լինել\n• Խորհուրդ է տրվում նախ փորձել մեկ քանի ֆայլով, համոզվելուց հետո շարունակել խմբային առաջադրանքներով\n• Կարևոր ֆոտո նախ կարող եք պահպանել բեռնագրեք\n\nԱյս ֆունկցիան «ինչ-ինչ» ներկայացված է, կրում եք ձեր ռիսկերը, հեղինակը պատասխանատու չէ ֆայլերի վնասման կամ կորստի համար։</string>
+    <string name="conv_reminder_dont_remind">Ավելի չհարցնել</string>
+    <string name="conv_reminder_confirm_ok">Հասկանալի է</string>
+    <string name="conv_reminder_uninstall">Անջատել</string>
+
+</resources>

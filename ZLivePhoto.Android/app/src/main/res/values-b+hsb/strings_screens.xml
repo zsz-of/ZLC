@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。 -->
+<resources>
+    <!-- Podnasłow w hornjej lajsće -->
+    <string name="screen_app_subtitle">Konwertowanje mjez formatami Live Photo</string>
+    <!-- Ličba wubranych datajow naprawo w hornjej lajsće (plurals) -->
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d dataja</item>
+        <item quantity="two">%1$d dataji</item>
+        <item quantity="few">%1$d dataje</item>
+        <item quantity="other">%1$d datajow</item>
+    </plurals>
+    <!-- Zastup do nastajenjow w hornjej lajsće (jenož za čitak wobraza) -->
+    <string name="screen_settings">Nastajenja</string>
+
+    <!-- Dialog za wuběr wudawanskeho formata -->
+    <string name="screen_select_output_format">Wudawanski format wubrać</string>
+    <string name="screen_selected">Wubrane</string>
+    <string name="screen_vivo_single_warning">⚠ Starše typy snano tutón format njespóznaja</string>
+    <string name="screen_extract_blocked">⚠ Začak wobsahuje syntezowe nadawki; wupakowanje njeda so wubrać</string>
+
+    <!-- Krótke mjena formatowych opcijow (dołhe mjena w strings_formats.xml, fmt_*) -->
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (jedna dataja)</string>
+    <string name="screen_format_vivo">vivo (dwě dataji)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Wupakować</string>
+
+    <!-- BottomSheet nastrojoweho kašćika -->
+    <string name="screen_toolbox">Nastrojowy kašćik</string>
+    <string name="screen_batch_import">Masowy import</string>
+    <string name="screen_batch_import_desc">Cyły album přepytać a Live Photos masowo spóznać</string>
+    <string name="screen_compose">Live Photo syntezować</string>
+    <string name="screen_compose_desc">Wubjerće jedne foto a jedne widejo a syntezujće je do pary</string>
+    <string name="screen_replace_mode">Modus wuměny</string>
+    <string name="screen_replace_mode_desc">Konwertowany wuslědk so direktnje do žórłowych datajow pisa, nowe dataje so njezasadźa</string>
+    <string name="screen_need_all_files_access_hint">Trjeba so prawo «přistup k wšěm datajam»; klikńće tu za dowolenje</string>
+    <string name="screen_agree_and_enable">Přihłosować a zapinyć</string>
+
+    <!-- Prózdny status / delni wobdźěłanski panel -->
+    <string name="screen_empty_no_files">Hišće žane dataje přidate</string>
+    <string name="screen_view_detail">Podrobnosće pokazać</string>
+    <string name="screen_add_files">Dataje přidać</string>
+    <string name="screen_output_format">Wudawanski format: %1$s</string>
+    <string name="screen_delete_original">Po předźěłanju žórłowe fota wumazać</string>
+    <string name="screen_need_all_files_access_view">Trjeba so prawo «přistup k wšěm datajam»; klikńće za pohlad</string>
+    <string name="screen_clear">Wuprazdnić</string>
+    <string name="screen_stop">Předźěłanje zastajić</string>
+    <string name="screen_start_convert">Konwertowanje startować</string>
+
+    <!-- Dialog podrobnosćow statusa -->
+    <string name="screen_status_detail">Podrobnosće statusa</string>
+    <string name="screen_long_press_copy">Dołhe tłóčenje za wuběr a kopěrowanje teksta</string>
+    <string name="screen_copy">Kopěrować</string>
+    <string name="screen_close">Zaćisnyć</string>
+
+    <!-- Albumowy wuběrač -->
+    <string name="screen_back">Wróćo</string>
+    <string name="screen_picker_title_select">Live Photos wubrać</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Albumowy wobalku schować</string>
+    <string name="screen_album_expand_cover">Albumowy wobalku pokazać</string>
+    <string name="screen_scanning_progress">Přepytuje so %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="two">%1$d foće</item>
+        <item quantity="few">%1$d fota</item>
+        <item quantity="other">%1$d fotow</item>
+    </plurals>
+    <string name="screen_select_all">Wšě wubrać</string>
+    <string name="screen_no_albums">Žane alby k dispoziciji</string>
+    <string name="screen_no_media">Žane Live Photos namakane</string>
+    <string name="screen_no_media_compose">Žane fota abo wideja namakane</string>
+    <string name="screen_import">Importować</string>
+    <string name="screen_import_count">Importować %1$d</string>
+    <string name="screen_import_mixed">Importować foto %1$d · widejo %2$d</string>
+    <string name="screen_search">Pytać</string>
+    <string name="screen_search_collapse">Pytanje schować</string>
+    <string name="screen_search_hint">Po mjenje pytać</string>
+    <string name="screen_search_clear">Pytanje wuprazdnić</string>
+    <string name="screen_sort_date">Datum</string>
+    <string name="screen_sort_size">Wulkosć</string>
+    <string name="screen_sort_name">Mjeno</string>
+    <string name="screen_sort_asc">Postupowacy</string>
+    <string name="screen_sort_desc">Spadowacy</string>
+
+    <!-- Datumowe znački w albumowych skupinach (%1$d atd. su numeriske placeholdery, dadźa so přerjadować) -->
+    <string name="screen_date_today">Dźensa</string>
+    <string name="screen_date_yesterday">Wčera</string>
+    <string name="screen_date_this_year">%2$d.%1$d.</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d.</string>
+</resources>

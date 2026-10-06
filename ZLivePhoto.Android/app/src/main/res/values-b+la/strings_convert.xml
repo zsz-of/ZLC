@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · lingua Latina.
+  Textus conversionis / transcodificationis / admonitionum (core/Converter.kt, core/FfmpegAddon.kt, ui/Reminders.kt).
+  Praefixum clavis conv_; omnis clavis basem sequitur, locorum notae (%1$s / %1$d) immutata servantur.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== Converter.kt: validatio parametrorum et materiae (exceptio → interfacies causam defectus monstrat) ========== -->
+    <string name="conv_unknown_target">Forma destinationis ignota: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Forma Live Photo non agnita (non est Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Photographum operculi deest aut vacuum est</string>
+    <string name="conv_video_missing">Video deest aut vacuum est</string>
+    <string name="conv_video_too_large">Video nimis magnum est (%1$d MB) ad Live Photo creandum; quaeso elige brevius video</string>
+    <string name="conv_transcoded_too_large">Video post transcodificationem adhuc nimis magnum est (%1$d MB); Live Photo creari non potest</string>
+    <string name="conv_video_too_large_compose">Video nimis magnum est (%1$d MB); Live Photo creari non potest</string>
+
+    <!-- Converter.kt: operculum (HEIC / non JPEG) -->
+    <string name="conv_cover_heic_go">Operculum est imago HEIC (editio levis transcodificationem non sustinet; prius in iPhone ut JPEG exporta, deinde converte)</string>
+    <string name="conv_cover_invalid_heic">Operculum non est imago valida (HEIC sustentationem decodificationis HEIF systematis requirit)</string>
+    <string name="conv_cover_not_jpeg_go">Operculum non est imago JPEG (editio levis transcodificationem non sustinet; quaeso utere photographo JPEG)</string>
+    <string name="conv_cover_invalid_image">Operculum non est imago valida (solum JPEG/WebP/PNG sustinentur)</string>
+
+    <!-- Converter.kt: defectus transcodificationis / remux et admonitio „sola mutatio continentis non iuvat“ -->
+    <string name="conv_reencode_failed">Recodificatio videndi defecit: %1$s</string>
+    <string name="conv_remux_failed">Remux continentis defecit: %1$s</string>
+    <string name="conv_codec_unknown">Non est video H.264/H.265 agnitum</string>
+    <string name="conv_codec_is">Codec est %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Video „%1$s“ %2$s; mutare solum continens (remux) codec mutare non potest, ergo Live Photo creari non potest.\n\nQuaeso in „Optiones → Transcodificatio videndi → Modus transcodificationis“ elige „Recodifica“, vel id instrumento alio in MP4 H.264/H.265 converte.</string>
+    <string name="conv_hint_no_encoder">Video non est in continente MP4 standardi (MOV / MKV / WebM / AVI etc.), et modus transcodificationis praesens non recodificat, ergo Live Photo creari non potest.\n\nQuaeso in „Optiones → Transcodificatio videndi → Modus transcodificationis“ elige „Recodifica“ (editio normalis codificatorem ffmpeg includit; editio levis Go transcodificatorem non habet, quaeso utere editione normali), vel video prius in MP4 standardum (H.264/H.265) converte.</string>
+
+    <!-- ========== Index conversionis (in clipeo status unitatum indicis et in tabula log monstratur) ========== -->
+    <string name="conv_log_detected">Agnitum ut %1$s</string>
+    <string name="conv_log_same_format_copied">Forma fontis et destinationis eadem est; exemplatum ut est (sine damno)</string>
+    <string name="conv_log_extra_tracks_bypass">Video fontis tramites non audio/video continet (%1$s); transitus eiusdem formae omittitur et via plena scribendi ad purgandum adhibetur</string>
+    <string name="conv_log_ts_fallback">Fonti deest tempus tabulae operculi; secundum normam ad medium videndi reditur</string>
+    <string name="conv_log_brand_normalized">Nota continentis videndi normalizata (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Video tramites extra continet (%1$s) qui purgari non possunt; output ut est (effectum in quibusdam machinis pressione longa ludere non potest)</string>
+    <string name="conv_log_extra_tracks_removed">Tramites extra videndi remoti sunt (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Video fontis %1$s; solum remux continentis non solvit (%2$s); si effectum adhuc pressione longa ludere non potest, in „Optiones → Transcodificatio videndi → Modus transcodificationis“ elige „Recodifica“</string>
+    <string name="conv_log_reencoding">Video fontis %1$s; secundum optiones recodificatur in 8-bit + AAC ad compatibilitatem galeriae meliorem reddendam</string>
+    <string name="conv_log_reencode_result_unusable">Effectum recodificationis inutile est; output ut est (effectum in quibusdam machinis pressione longa ludere non potest)</string>
+    <string name="conv_log_reencode_still_risky">Post recodificationem adhuc pericula manent (%1$s)</string>
+    <string name="conv_log_reencode_failed">Recodificatio defecit (%1$s); output ut est (effectum in quibusdam machinis pressione longa ludere non potest)</string>
+    <string name="conv_log_cover_heic_converted">Operculum erat HEIC (non JPEG); ante fasciculationem in JPEG standardum transcodificatum est</string>
+    <string name="conv_log_compose_sizes">Compositio: photographum %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transcodificator non adhibetur: solum nota continentis mutatur (MOV → MP4), non recodificatur</string>
+
+    <!-- Notae log (interfacies forma „[Nota] textus“ monstrat) -->
+    <string name="conv_tag_convert">Conversio</string>
+    <string name="conv_tag_transcode">Transcodificatio</string>
+    <string name="conv_tag_compose">Compositio</string>
+
+    <!-- Causa obstructionis modi transcodificationis (admonitioni supra adicitur) -->
+    <string name="conv_blocker_no_encoder">Transcodificator internus non praesto est</string>
+    <string name="conv_blocker_mode_no_encode">Modus transcodificationis praesens non recodificat</string>
+
+    <!-- ========== FfmpegAddon.kt: transcodificatio / remux ffmpeg internus ========== -->
+    <string name="conv_addon_unavailable">Transcodificator internus non praesto est</string>
+    <string name="conv_addon_transcode_failed">Transcodificatio ffmpeg defecit: %1$s</string>
+    <string name="conv_addon_remux_failed">Remux continentis ffmpeg defecit: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Video transcodificatur cum ffmpeg in MP4 standardum (%1$s / crf %2$d / %3$s; solum tramites video et audio servantur)</string>
+    <string name="conv_log_transcode_done">Transcodificatio videndi completa (%1$d KB)</string>
+    <string name="conv_log_remuxing">Contines videndi remux in MP4 standardum (solum continens, sine recodificatione)</string>
+    <string name="conv_log_remux_done">Remux continentis completus (%1$d KB)</string>
+
+    <!-- ========== Reminders.kt: dialogus „Noli rursus monstrare“ ========== -->
+    <string name="conv_reminder_cat_compose">Compositio</string>
+    <string name="conv_reminder_cat_convert">Conversio</string>
+    <string name="conv_reminder_cat_update">Renovatio</string>
+    <string name="conv_reminder_video_over3s_title">Video plus quam 3 secundis longum est</string>
+    <string name="conv_reminder_video_over3s_message">Video electum plus quam 3 secundis longum est, ergo Live Photo effectum problemata compatibilitatis habere potest:\n\n• fortasse non recte ludet\n• fortasse a galeria systematis non agnoscetur\n• quaedam machinae hoc Live Photo agnoscere non poterunt</string>
+    <string name="conv_reminder_legacy_go_title">Versio vetus detecta</string>
+    <string name="conv_reminder_legacy_go_message">Versio vetus (editio Go) huius applicationis in hac machina adhuc installata est. Illa versio hic iam non fungitur; eam delere potes ut spatium liberes.</string>
+    <string name="conv_reminder_replace_risk_title">Modus substitutionis periculum corruptionis habet</string>
+    <!-- formatted="false": in textu est unum % mere litterale (100%) et hic textus numquam cum argumentis adhibetur;
+         ut chorda non formata declarare vitat validationem aapt2/lint secundum String.format. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Modus substitutionis eventum conversionis directe in fasciculos originales scribit; postquam originales superscripti sunt, recuperari non possunt.\n\n• Si applicatio interrumpitur, spatium deest, aut permissio revocatur dum scribitur, fasciculi fontis corrumpi possunt\n• Nulla conversio certo succedit, et si deficit, fasciculi fontis iam inutiles esse possunt\n• Primum unum vel duos fasciculos tenta ut confirmes omnia bene esse, deinde multitudinem tracta\n• Photographa gravia ipse antea serva\n\nHoc munus „ut est“ praebetur; periculo tuo eo uteris, et auctor fasciculis corruptis vel amissis non respondet.</string>
+    <string name="conv_reminder_dont_remind">Noli rursus monstrare</string>
+    <string name="conv_reminder_confirm_ok">Intellexi</string>
+    <string name="conv_reminder_uninstall">Dele</string>
+
+</resources>

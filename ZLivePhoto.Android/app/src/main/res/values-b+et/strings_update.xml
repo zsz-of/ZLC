@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · eesti keel.
+  Värskendamise / allalaadimise tekstid (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Võtme eesliide update_; iga võti järgib baasi, kohatäitjad (%1$s / %1$d) on muutmata kujul.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloudi jagamisleht ja otseviite lahendamine ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloudi jagamine on tühistatud või fail puudub; laadige alla GitHubi kaudu</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloudi jagamine on tühistatud; laadige alla GitHubi kaudu</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloudi allalaadimislingi lahendamine ebaõnnestus</string>
+    <string name="update_lanzou_need_passwd">See Lanzou Cloudi jagamine nõuab juurdepääsukoodi; laadige alla GitHubi kaudu (või leidke juurdepääsukood väljalaske märkmetest)</string>
+    <string name="update_lanzou_wrong_passwd">Vale Lanzou Cloudi juurdepääsukood</string>
+    <string name="update_err_resolve_failed">Lahendamine ebaõnnestus</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloudi kaabitsatõrje kontroll ebaõnnestus</string>
+    <string name="update_err_no_frame">Lanzou Cloudi allalaadimislehte ei saa sõeluda (allalaadimiskaadrit ei leitud)</string>
+    <string name="update_err_no_file_id">Lanzou Cloudi failitunnust ei saa sõeluda</string>
+    <string name="update_err_no_sign">Lanzou Cloudi allkirja ei saa sõeluda</string>
+    <string name="update_err_ajax_request">Liidese päring ebaõnnestus</string>
+    <string name="update_err_api_request">Lanzou Cloudi liidese päring ebaõnnestus</string>
+    <string name="update_err_empty_direct">Lanzou Cloud tagastas tühja allalaadimisaadressi</string>
+    <string name="update_err_direct_expired">Lanzou Cloudi allalaadimisaadress on aegunud; hankige see uuesti</string>
+    <string name="update_err_http_request">Päring ebaõnnestus (HTTP %1$d)</string>
+
+    <!-- ========== Allalaadimine ========== -->
+    <string name="update_err_connect">Allalaadimisserveriga ei saa ühendust: %1$s</string>
+    <string name="update_err_http">Allalaadimine ebaõnnestus (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Allalaadimisühendust ei saa luua</string>
+    <string name="update_err_empty">Allalaaditud sisu on tühi</string>
+    <string name="update_err_incomplete">Allalaadimine on puudulik (saadud %1$d / kokku %2$d baiti); laadige uuesti alla</string>
+    <string name="update_err_interrupted">Allalaadimine katkes: %1$s</string>
+
+    <!-- ========== Installipaketi kontroll ja installimine ========== -->
+    <string name="update_err_not_apk">Allalaaditud fail ei ole kehtiv installipakett (see võib olla veebileht või allalaadimislink on aegunud); laadige uuesti alla või kasutage GitHubi.</string>
+    <string name="update_err_apk_incomplete">Installipaketi sisu on puudulik; laadige uuesti alla või kasutage GitHubi.</string>
+    <string name="update_err_apk_unparsable">Installipaketti ei saa sõeluda (allalaadimine võib olla puudulik); laadige uuesti alla või kasutage GitHubi.</string>
+    <string name="update_err_no_install_permission">„Tundmatute rakenduste installimise“ õigust ei ole antud</string>
+    <string name="update_err_installer_failed">Süsteemi installerit ei saa käivitada (%1$s); avage installipakett failihalduris ja installige käsitsi</string>
+
+</resources>

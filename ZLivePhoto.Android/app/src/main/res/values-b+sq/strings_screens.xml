@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Albanian (sq) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="screen_app_subtitle">Konvertim i Live Photo ndërmjet formateve</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d skedar</item>
+        <item quantity="other">%1$d skedarë</item>
+    </plurals>
+    <string name="screen_settings">Cilësimet</string>
+    <string name="screen_select_output_format">Zgjidh formatin e daljes</string>
+    <string name="screen_selected">Të përzgjedhura</string>
+    <string name="screen_vivo_single_warning">⚠ Modelet shumë të vjetra mund të mos e njohin këtë format</string>
+    <string name="screen_extract_blocked">⚠ Rradha përmban detyra kompozimi; nuk mund të përzgjidhet nxjerrja</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (një skedar)</string>
+    <string name="screen_format_vivo">vivo (dy skedarë)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Nxjerrje</string>
+    <string name="screen_toolbox">Kuti mjetesh</string>
+    <string name="screen_batch_import">Importim në masë</string>
+    <string name="screen_batch_import_desc">Skano gjithë albumin dhe identifiko Live Photo në masë</string>
+    <string name="screen_compose">Kompozim Live Photo</string>
+    <string name="screen_compose_desc">Zgjidh një foto dhe një video dhe bashkoji për t’i kompozuar</string>
+    <string name="screen_replace_mode">Modaliteti i zëvendësimit</string>
+    <string name="screen_replace_mode_desc">Rezultati i konvertimit shkruhet drejtpërdrejt në skedarët burimorë, pa krijuar skedarë të rinj</string>
+    <string name="screen_need_all_files_access_hint">Kërkon lejen „Akses në të gjithë skedarët”; prek këtu për ta dhënë</string>
+    <string name="screen_agree_and_enable">Prano dhe aktivizo</string>
+    <string name="screen_empty_no_files">Nuk është shtuar ende asnjë skedar</string>
+    <string name="screen_view_detail">Shiko detajet</string>
+    <string name="screen_add_files">Shto skedarë</string>
+    <string name="screen_output_format">Formati i daljes: %1$s</string>
+    <string name="screen_delete_original">Fshi origjinalet pas përpunimit</string>
+    <string name="screen_need_all_files_access_view">Kërkon lejen „Akses në të gjithë skedarët”; prek për ta parë</string>
+    <string name="screen_clear">Pastro</string>
+    <string name="screen_stop">Ndalo përpunimin</string>
+    <string name="screen_start_convert">Fillo konvertimin</string>
+    <string name="screen_status_detail">Detajet e statusit</string>
+    <string name="screen_long_press_copy">Mbaj shtypur tekstin për ta përzgjedhur dhe kopjuar</string>
+    <string name="screen_copy">Kopjo</string>
+    <string name="screen_close">Mbyll</string>
+    <string name="screen_back">Kthehu</string>
+    <string name="screen_picker_title_select">Përzgjidh Live Photo</string>
+    <string name="screen_album_count">Albumi %1$d</string>
+    <string name="screen_album_collapse_cover">Tkurr kopertinën e albumit</string>
+    <string name="screen_album_expand_cover">Zgjero kopertinën e albumit</string>
+    <string name="screen_scanning_progress">Po skanohet %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d foto</item>
+        <item quantity="other">%1$d foto</item>
+    </plurals>
+    <string name="screen_select_all">Përzgjidh të gjitha</string>
+    <string name="screen_no_albums">Nuk ka albume të disponueshme</string>
+    <string name="screen_no_media">Nuk u gjet asnjë Live Photo</string>
+    <string name="screen_no_media_compose">Nuk u gjetën as foto as video</string>
+    <string name="screen_import">Importo</string>
+    <string name="screen_import_count">Importo %1$d</string>
+    <string name="screen_import_mixed">Importo %1$d imazhe · %2$d video</string>
+    <string name="screen_search">Kërko</string>
+    <string name="screen_search_collapse">Tkurr kërkimin</string>
+    <string name="screen_search_hint">Kërko sipas emrit</string>
+    <string name="screen_search_clear">Pastro kërkimin</string>
+    <string name="screen_sort_date">Data</string>
+    <string name="screen_sort_size">Madhësia</string>
+    <string name="screen_sort_name">Emri</string>
+    <string name="screen_sort_asc">Në rritje</string>
+    <string name="screen_sort_desc">Në zbritje</string>
+    <string name="screen_date_today">Sot</string>
+    <string name="screen_date_yesterday">Dje</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

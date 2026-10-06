@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Romanian (ro) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">Nu s-a obținut adresa de descărcare de pe GitHub; încearcă din nou mai târziu.</string>
+    <string name="update_flavor_standard">Versiunea standard</string>
+    <string name="update_flavor_go">Versiunea Go</string>
+    <string name="update_lanzou_url_missing">Această versiune nu oferă un link de descărcare Lanzou; poți descărca de pe GitHub.</string>
+    <string name="update_apk_direct_missing">Această versiune nu oferă un link direct către pachetul de instalare potrivit; alege APK-ul corespunzător pe pagina de Release GitHub.</string>
+    <string name="update_install_permission_missing">Permisiunea „Instalare aplicații necunoscute” nu a fost acordată, deci instalarea automată nu este posibilă. Acord-o în setările sistemului, apoi încearcă din nou.</string>
+    <string name="update_error_unknown">Eroare necunoscută</string>
+    <string name="update_fail_lanzou">Descărcarea de pe Lanzou a eșuat</string>
+    <string name="update_fail_github">Descărcarea de pe GitHub a eșuat</string>
+    <string name="update_lanzou_resolving">Se rezolvă linkul de descărcare Lanzou…</string>
+    <string name="update_lanzou_downloading">Se descarcă de pe Lanzou…</string>
+    <string name="update_github_downloading">Se descarcă de pe GitHub…</string>
+    <string name="update_unzipping">Se dezarhivează pachetul de instalare…</string>
+    <string name="update_notes_empty">Această versiune nu are deocamdată note de actualizare.</string>
+    <string name="update_use_normal_title">Folosește versiunea normală</string>
+    <string name="update_use_normal_body">Sistemul acestui dispozitiv este Android 10 sau mai nou; versiunea Go nu mai este adaptată, iar versiunea veche nu mai poate fi folosită.
+
+S-a detectat că versiunea normală (ZLC) este deja instalată; deschide direct versiunea normală pentru a continua (versiunile noi nu mai oferă o variantă compatibilă Go, iar versiunea veche poate fi dezinstalată pentru a elibera spațiu).</string>
+    <string name="update_open_normal">Deschide versiunea normală</string>
+    <string name="update_must_update_title">Trebuie să actualizezi pentru a continua</string>
+    <string name="update_forced_body">Sistemul acestui dispozitiv este Android 10 sau mai nou; versiunea Go nu mai este adaptată, iar versiunea veche nu mai poate fi folosită; versiunile noi nu mai oferă o variantă compatibilă Go.
+
+Conectează-te la internet și apasă „Reîncearcă” pentru a obține pachetul de instalare al versiunii normale.</string>
+    <string name="update_retry">Reîncearcă</string>
+    <string name="update_switch_normal_body">Sistemul acestui dispozitiv este Android 10 sau mai nou; versiunea Go nu mai este adaptată, iar versiunea veche nu mai poate fi folosită.
+Descarcă și instalează versiunea normală pentru a continua (versiunile noi nu mai oferă o variantă compatibilă Go).</string>
+    <string name="update_downloading_title">Se descarcă actualizarea</string>
+    <string name="update_cancel">Anulează</string>
+    <string name="update_need_permission_title">Este nevoie de permisiunea de instalare</string>
+    <string name="update_need_permission_body">Instalarea versiunii noi necesită permisiunea de sistem „Instalare aplicații necunoscute”.
+
+Apasă „Acordă permisiunea”, permite în setări și revino în aplicație; instalarea va continua automat (nu este nevoie să descarci din nou).</string>
+    <string name="update_grant">Acordă permisiunea</string>
+    <string name="update_notice_title">Atenție</string>
+    <string name="update_got_it">Am înțeles</string>
+    <string name="update_notes_title">v%1$s · Note de actualizare</string>
+    <string name="update_back">Înapoi</string>
+    <string name="update_title_switch_normal">Treci la versiunea normală</string>
+    <string name="update_title_reinstall">Reinstalează această versiune</string>
+    <string name="update_title_new_version">S-a găsit o versiune nouă</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Această versiune va fi descărcată și reinstalată (se instalează peste aplicația actuală).
+Funcția este destinată testării de regresie a mecanismului de actualizare.</string>
+    <string name="update_view_notes">Vezi notele de actualizare</string>
+    <string name="update_lanzou_unavailable">Lanzou este temporar indisponibil</string>
+    <string name="update_download_lanzou">Descarcă de pe Lanzou</string>
+    <string name="update_download_github">Descarcă de pe GitHub</string>
+    <string name="update_download_browser">Descarcă prin browser</string>
+    <string name="update_later">Nu acum</string>
+    <string name="update_later_switch">Mai târziu</string>
+    <string name="update_skip_version">Omite această versiune</string>
+</resources>

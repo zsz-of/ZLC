@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Scottish Gaelic (gd) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">Cha deach seòladh luchdachadh sìos GitHub fhaighinn; feuch ath-uair an dèidh greis.</string>
+    <string name="update_flavor_standard">An tionndadh àbhaisteach</string>
+    <string name="update_flavor_go">An tionndadh Go</string>
+    <string name="update_lanzou_url_missing">Chan eil ceangal luchdachadh sìos Lanzou a\' tabhann an tionndadh seo; gabhaidh GitHub a chleachdadh airson luchdachadh sìos.</string>
+    <string name="update_apk_direct_missing">Chan eil ceangal dìreach gu pasgan stàlaidh freagarrach ri an tionndadh seo; tagh an APK iomchaidh air duilleag foillseachaidh GitHub.</string>
+    <string name="update_install_permission_missing">Cha deach cead "Stàladh aplacaidean neo-aithnichte" fhaighinn; chan ghabh a stàladh gu fèin-ghluasadach. Thoir cead ann an roghainnean an t-siostaim agus feuch ath-uair.</string>
+    <string name="update_error_unknown">Mearachd neo-aithnichte</string>
+    <string name="update_fail_lanzou">Dh\'fhàillig luchdachadh sìos à Lanzou</string>
+    <string name="update_fail_github">Dh\'fhàillig luchdachadh sìos à GitHub</string>
+    <string name="update_lanzou_resolving">A\' mion-sgàradh ceangal luchdachadh sìos Lanzou…</string>
+    <string name="update_lanzou_downloading">Gan luchdachadh sìos à Lanzou…</string>
+    <string name="update_github_downloading">Gan luchdachadh sìos à GitHub…</string>
+    <string name="update_unzipping">A\' fosgladh am pasgan stàlaidh…</string>
+    <string name="update_notes_empty">Chan eil notaichean ùrachaidh aig an tionndadh seo fhathast.</string>
+    <string name="update_use_normal_title">Cleachd an tionndadh àbhaisteach</string>
+    <string name="update_use_normal_body">Tha siostam an uidheim seo Android 10 no nas ùire; chan eil an tionndadh aotream Go air atharrachadh tuilleadh agus cha ghabh an tionndadh seann-nós a chleachdadh tuilleadh.
+
+Chaidh lorg gu bheil an tionndadh àbhaisteach (ZLC) air a stàladh air an uidheam seo; fosgail an tionndadh àbhaisteach gu dìreach airson a chumail air adhart (cha tabhann an tionndadh ùr tionndadh Go-chòrdail tuilleadh; gabhaidh an tionndadh seann-nós dhì-stàladh airson àite a shaoradh).</string>
+    <string name="update_open_normal">Fosgail an tionndadh àbhaisteach</string>
+    <string name="update_must_update_title">Feumaidh ùrachadh mus gabh a chleachdadh</string>
+    <string name="update_forced_body">Tha siostam an uidheim seo Android 10 no nas ùire; chan eil an tionndadh aotream Go air atharrachadh tuilleadh agus cha ghabh an tionndadh seann-nós a chleachdadh; chan tabhann an tionndadh ùr tionndadh Go-chòrdail a bharrachd.
+
+Ceangail ris an lìonra agus brù "Feuch ath-uair" gus am pasgan stàlaidh dhan tionndadh àbhaisteach fhaighinn.</string>
+    <string name="update_retry">Feuch ath-uair</string>
+    <string name="update_switch_normal_body">Tha siostam an uidheim seo Android 10 no nas ùire; chan eil an tionndadh aotream Go air atharrachadh tuilleadh agus cha ghabh an tionndadh seann-nós a chleachdadh tuilleadh.
+Luchdaich sìos agus stàlaich an tionndadh àbhaisteach mus lean thu air adhart (chan tabhann an tionndadh ùr tionndadh Go-chòrdail tuilleadh).</string>
+    <string name="update_downloading_title">Luchdachadh sìos an ùrachadh</string>
+    <string name="update_cancel">Sguir dheth</string>
+    <string name="update_need_permission_title">Tha cead stàlaidh a dhìth</string>
+    <string name="update_need_permission_body">Bidh stàladh an tionndaidh ùir feumach air cead siostaim "Stàladh aplacaidean neo-aithnichte".
+
+Brù "Rach a thoir cead", thoir cead anns an roghainnean agus till dhan aplacaid; leanaidh an stàladh air adhart gu fèin-ghluasadach (chan eil feum air ath-luchdachadh).</string>
+    <string name="update_grant">Rach a thoir cead</string>
+    <string name="update_notice_title">Fios</string>
+    <string name="update_got_it">Ceart gu leòr</string>
+    <string name="update_notes_title">v%1$s · Notaichean ùrachaidh</string>
+    <string name="update_back">Air ais</string>
+    <string name="update_title_switch_normal">Gearr leum dhan tionndadh àbhaisteach</string>
+    <string name="update_title_reinstall">Stàlaich an tionndadh seo ath-uair</string>
+    <string name="update_title_new_version">Chaidh tionndadh ùr a lorg</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Thèid an tionndadh seo luchdachadh sìos agus ath-stàladh (a\' cur thairis an aplacaid làithreach).
+Airson tusrasadh a\' mhodh ùrachaidh a dhèanamh air an gleus seo.</string>
+    <string name="update_view_notes">Seall notaichean ùrachaidh</string>
+    <string name="update_lanzou_unavailable">Chan eil Lanzou ri làimh aig an àm seo</string>
+    <string name="update_download_lanzou">Luchdaich sìos à Lanzou</string>
+    <string name="update_download_github">Luchdaich sìos à GitHub</string>
+    <string name="update_download_browser">Luchdaich sìos am broinn a\' bhrabhsair</string>
+    <string name="update_later">Na h-ùraich fhathast</string>
+    <string name="update_later_switch">Na gearr leum fhathast</string>
+    <string name="update_skip_version">Leum thairis air an tionndadh seo</string>
+</resources>

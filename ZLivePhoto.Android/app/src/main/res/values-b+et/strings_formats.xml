@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · eesti keel.
+  Vormingupluginade kuvanimetused (task-4). Võtme eesliide fmt_.
+  res/values/ on lihtsustatud hiina varukeel; teised keeled on kaustas values-<locale>/strings_formats.xml.
+  Iga võti järgib baasi; kohatäitjad (%1$s / %1$d) ja paomärgid on muutmata kujul.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <string name="fmt_apple">Apple Live Photo</string>
+    <string name="fmt_extract">Eraldamine</string>
+    <string name="fmt_google">Google Motion Photo</string>
+    <string name="fmt_honor">Honor Live Photo</string>
+    <string name="fmt_meizu">Meizu Live Photo</string>
+    <string name="fmt_nubia">Nubia Live Photo</string>
+    <string name="fmt_oppo">OPPO Live Photo</string>
+    <string name="fmt_vivo">vivo Live Photo</string>
+    <string name="fmt_vivo_single">vivo ühe faili Live Photo</string>
+    <string name="fmt_xiaomi">Xiaomi Live Photo</string>
+
+    <!--
+      Plugina poolel kasutajale nähtavad veateated (IOException): need jõuavad läbi MainActivity/Converter
+      e.message olekuribale ja „Oleku üksikasjadesse“, seega on need kasutajale nähtavad ja sama moodi
+      tõstetud ressursiks. Kohatäitjad jäävad samaks.
+    -->
+    <string name="fmt_err_apple_mov_missing">Samanimelist .mov videofaili ei leitud</string>
+    <string name="fmt_err_apple_mov_no_ftyp">MOV-failil puudub ftyp box</string>
+    <string name="fmt_err_extract_read">Eraldamine on väljundvorming, seda ei tohiks sisendvorminguna lugeda</string>
+    <string name="fmt_err_no_primary_jpeg">Peamist JPEG-pilti ei leitud</string>
+    <string name="fmt_err_no_mp4_after_jpeg">JPEG-i järel ei leitud kehtivat MP4-videot (puudub ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">MP4 videovoo sõelumine ebaõnnestus</string>
+    <string name="fmt_err_nubia_too_short">Fail on liiga lühike, ei sarnane Nubia Live Photoga</string>
+    <string name="fmt_err_nubia_no_magic">Puudub nubiaVpfile lõpu maagianumber</string>
+    <string name="fmt_err_nubia_jpeg_len">Lõpus kirjendatud JPEG pikkus on kehtetu: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">JPEG-i ja video vahel puuduvad 0x00 täitebaitid</string>
+    <string name="fmt_err_nubia_empty_video">Manustatud video pikkus on 0</string>
+    <string name="fmt_err_vivo_no_marker">JPG lõpus ei leitud vivo livephoto markerit</string>
+    <string name="fmt_err_vivo_companion_missing">Puudub kaasas olev videofail: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">JPG põhiosa sõelumine ebaõnnestus</string>
+    <string name="fmt_err_vivo_companion_invalid">Kaasas olev MP4 on kehtetu (puudub ftyp box)</string>
+</resources>

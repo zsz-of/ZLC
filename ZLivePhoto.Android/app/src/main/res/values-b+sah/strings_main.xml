@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Sakha (Yakut) (sah) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">Бэлэм</string>
+    <string name="main_status_location_granted">Миэстэ көҥүлэ ылыллынна; конверттааһын кэнниттэн GPS метаданнайата хаалыаҕа</string>
+    <string name="main_status_location_denied">Миэстэ көҥүлэ биэриллибэтэх: конверттааһын кэннинээҕи ойуулар GPS миэстэлэрин сүтэрэллэрэ сөп</string>
+    <string name="main_status_all_files_granted">„Бары билэлэргэ киирии“ көҥүлэ ылыллынна; конверттааһын альбом паапкатыгар түһэрэн суруйар, миэстэ метаданнайата толору хаалар</string>
+    <string name="main_status_all_files_denied">„Бары билэлэргэ киирии“ көҥүлэ суох: сорох модельдарга конверттааһын кэнниттэн миэстэ сүтүөн сөп</string>
+    <string name="main_status_read_granted">Ойуулары уонна видеолары ааҕыы көҥүлэ ылыллынна</string>
+    <string name="main_status_video_missing">Көҥүл биэриллибит, ол гынан баран видео көҥүлэ суох: икки билэлээх динамическай ойуу холбуур видеотын булуу кыаммат</string>
+    <string name="main_status_permission_denied">Көҥүл биэриллибэтэх; „Билэлэри эбии“ баттаан хат көрдөһүөххүн сөп</string>
+    <string name="main_status_folder_not_selected">Паапка талыллыбатах</string>
+    <string name="main_status_folder_unavailable">Талыллыбыт паапканы көрүү кыаммат (бэйэ паамыньньык паапката эрэ өйөнөр)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">Инники сессия төннөрүллэннэ (%1$d билэ)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Инники алҕастаах тахсыы булулунна; бүтэрэ илик эрэһиэк хомулланна</string>
+    <string name="main_status_compose_blocks_extract">Кэтэһиинҥэ холоруу үлэлэрэ бааллар: «Араарыы» режимҥа көһөр кыаммат</string>
+    <string name="main_status_replace_off_mutex">Солбуйуу режима араарылланна („Үлэ бүтэрин кэннэ төрүт ойууну сүтэрии“ кытта биир кэмҥэ аһыллыбат)</string>
+    <string name="main_status_delete_needs_all_files">Төрүт ойуулары автоматическай сүтэриигэ „Бары билэлэргэ киирии“ көҥүлэ наада; бастаан көҥүлү биэр</string>
+    <string name="main_status_replace_off">Солбуйуу режима араарылланна; конверттааһын түмүгэ альбом паапкатыгар хат суруллуоҕа</string>
+    <string name="main_status_replace_needs_all_files">Солбуйуу режимигэр „Бары билэлэргэ киирии“ көҥүлэ наада; бастаан көҥүлү биэр</string>
+    <string name="main_status_delete_off_mutex">„Үлэ бүтэрин кэннэ төрүт ойууну сүтэрии“ араарылланна (Солбуйуу режимин кытта биир кэмҥэ аһыллыбат)</string>
+    <string name="main_status_loading_albums">Альбомнар ааҕыллан эрэллэр…</string>
+    <string name="main_status_no_albums">Альбомнар булуллубатылар</string>
+    <string name="main_status_compose_no_photo">Ойуу талыллыбатах; холоруу кыаммат</string>
+    <string name="main_status_compose_no_video">Видео талыллыбатах; холоруу кыаммат</string>
+    <string name="main_status_compose_all_added">Талыллыбыт ойуулар бары эрэһиэккэ бааллар</string>
+    <string name="main_status_compose_paired">Ойуу %1$d, видео %2$d; аҕыйах өттүнэн %3$d холоруу үлэтэ эбиллэннэ</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">%1$d холоруу үлэтэ эбиллэннэ; „Конверттааһыны саҕалаа“ баттаан холор</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (таһаарыы формата автоматическай Google-га көһөннө)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">Үллэстибит %1$d ойууну импордаан эрэр…</item>
+    </plurals>
+    <string name="main_status_import_failed">Импордааһын табыллыбата: %1$s</string>
+    <string name="main_status_import_done_partial">Импордааһын бүттэ: табыллыбыта %1$d, табыллыбатаҕа %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">Импордааһын бүттэ: барыта %1$d билэ импордаанна</item>
+    </plurals>
+    <string name="main_status_import_stopped">Импордааһын тохтотулунна: табыллыбыта %1$d, табыллыбатаҕа %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">%1$d билэни импордаан эрэр…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Импордаан эрэр %1$d/%2$d…</string>
+    <string name="main_status_stopping">Тохтотуллан эрэр… (билиҥҥи билэ бүтэрин кэннэ тохтуоҕа)</string>
+    <string name="main_status_stopping_import">Импордааһын тохтотуллан эрэр…</string>
+    <string name="main_status_removed">%1$s хомулланна</string>
+    <string name="main_status_cleared">Хомулланна</string>
+    <string name="main_status_nothing_to_convert">Конверттанар билэ суох</string>
+    <string name="main_status_folder_unreadable">Талыллыбыт паапканы ааҕыы кыаммат</string>
+    <string name="main_status_scanning_folder">Паапка сканерданан эрэр…</string>
+    <string name="main_status_no_images">Талыллыбыт паапкаҕа ойуу булуллубата</string>
+    <string name="main_status_batch_importing">Масса импордааһын %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">Масса импордааһын тохтотулунна: барыта %1$d динамическай ойуу импордаанна</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">Масса импордааһын тохтотулунна: %1$d динамическай ойуу импордаанна, динамическай буолбатах %2$d билэ бырахылланна</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">Масса импордааһын бүттэ: барыта %1$d динамическай ойуу импордаанна</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">Масса импордааһын бүттэ: %1$d динамическай ойуу импордаанна, динамическай буолбатах %2$d билэ бырахылланна</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Тохтотулунна: %1$d билэттэн %2$d үлэлэннэ, %3$d төрүт билэ солбулунна</string>
+    <string name="main_status_stopped_export">Тохтотулунна: %1$d билэттэн %2$d үлэлэннэ, %3$d билэ альбомҥа таһаарылланна</string>
+    <string name="main_status_done_replace_reason">Бүттэ: %1$d билэ үлэлэннэ, %2$d төрүт билэ солбулунна (төрүөтэ: %3$s)</string>
+    <string name="main_status_done_export_reason">Бүттэ: %1$d билэ үлэлэннэ, %2$d билэ альбомҥа таһаарылланна (төрүөтэ: %3$s)</string>
+    <string name="main_status_done_replace">Бүттэ: %1$d билэ үлэлэннэ, %2$d төрүт билэ солбулунна</string>
+    <string name="main_status_done_export">Бүттэ: %1$d билэ үлэлэннэ, %2$d билэ альбомҥа таһаарылланна</string>
+    <string name="main_status_keep_originals">%1$s; „Паамыньньыкка бүтүннүү киирии“ көҥүлэ суох буолан, төрүт ойуулар хаалбыттар</string>
+    <string name="main_info_detecting">Бэрэбиэркэлэнэр…</string>
+    <string name="main_info_unrecognized">Биллибэт динамическай ойуу формата</string>
+    <string name="main_info_converting">Конверттаан эрэр…</string>
+    <string name="main_info_compose_task">Холоруу үлэтэ („Конверттааһыны саҕалаа“ баттаан холор)</string>
+    <string name="main_info_done_replaced">Бүттэ (%1$d төрүт билэ солбулунна)</string>
+    <string name="main_info_done_skipped">Бүттэ (бырахылланна: биир ааттаах билэ баар)</string>
+    <string name="main_info_done_exported">Бүттэ (%1$d билэ альбомҥа таһаарылланна)</string>
+    <string name="main_info_failed">Табыллыбата: %1$s</string>
+    <string name="main_progress_added">Эбиллэннэ %1$d/%2$d</string>
+    <string name="main_progress_processed">Үлэлэннэ %1$d/%2$d</string>
+    <string name="main_progress_imported">Импордаанна %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Ойуулары уонна видеолары ааҕыы көҥүлэ наада</string>
+    <string name="main_dialog_permission_message">Бу программа тэрилгэр баар ойуулары уонна видеолары ааҕар наада:
+
+• Ойуу көҥүлэ: тэрил альбомнарын сканердаан, иһигэр баар динамическай ойуулары булар
+• Видео көҥүлэ: икки билэлээх динамическай ойуу холбуур видеотын булар
+• Миэстэ көҥүлэ: ойуу иһигэр баар GPS миэстэ метаданнайатын харыстыыр (суох буоллаҕына конверттааһын кэнниттэн миэстэ сүтэр)
+
+Аккаастааххына ис талыы туттуллубат; кэлин „Билэлэри эбии“ баттаан көҥүлү хат көрдөһүөххүн сөп.</string>
+    <string name="main_dialog_settings_title">Ойуулары уонна видеолары ааҕыы көҥүлүн бэйэҥ биэриэхтээх</string>
+    <string name="main_dialog_settings_message">Эн инникэ „Хат көрдөспө“ диэни талаабыткын, онон система көҥүл диалогун хат таһаарбат.
+
+Аппликация сиэрэччитигэр барыҥ → Көҥүл → Ойуу уонна видео, киирии көҥүлүн бэйэҥ биэрэн баран бу аппликацияҕа төннөн кэл.
+
+Бэлиэ: „Ойуу“ уонна „Видео“ көҥүллэри иккиэн биэриэхтээххин, ол суох буоллаҕына икки билэлээх динамическай ойуу холбуур видеотын булбатыан сөп.</string>
+    <string name="main_dialog_allfiles_title_delete">Төрүт ойуулары автоматическай сүтэриигэ „Бары билэлэргэ киирии“ наада</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Бу тэрил төрүт ойуулары автоматическай сүтэриини өйөөбөт</string>
+    <string name="main_dialog_allfiles_title_replace">Солбуйуу режима „Бары билэлэргэ киирии“ көҥүлү ирдээр</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Бу тэрил Солбуйуу режимин өйөөбөт</string>
+    <string name="main_dialog_allfiles_title_location">„Бары билэлэргэ киирии“ көҥүлү биэриҥ диэн сүбэлиибит</string>
+    <string name="main_dialog_allfiles_delete_message">„Үлэ бүтэрин кэннэ төрүт ойууну сүтэрии“ паамыньньыкка баар төрүт билэлэри (ойууну уонна холбуур видеотын) түһэрэн сүтэрэр; бу дьайыыны төннөрөр кыаммат, онон бастаан „Бары билэлэргэ киирии“ көҥүлү биэриэхтээххин.
+
+Көҥүлү биэрээт, переключатель туттулар буолуоҕа; ону бэйэҥ астаан көрүөххүн сөп.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Билиҥҥи система (Android 10 уонна аллара) „Бары билэлэргэ киирии“ көҥүлү биэрбэт, онон паамыньньыкка баар төрүт билэлэри түһэрэн сүтэрэр кыаммат; бу тэрил „Үлэ бүтэрин кэннэ төрүт ойууну сүтэриини“ өйөөбөт.
+
+Конверттааһын бүтээбитин кэннэ система альбомунан бэйэҥ төрүт ойуулары хомуйуон сөпкүн.</string>
+    <string name="main_dialog_allfiles_replace_message">„Солбуйуу режима“ конверттааһын түмүгүн паамыньньыкка баар төрүт билэлэргэ түһэрэн суруйар (төрүт ис хоһоонун солбуйар); бу дьайыыны төннөрөр кыаммат, онон бастаан „Бары билэлэргэ киирии“ көҥүлү биэриэхтээххин.
+
+Көҥүлү биэрээт, переключатель туттулар буолуоҕа; ону бэйэҥ астаан көрүөххүн сөп.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Билиҥҥи система (Android 10 уонна аллара) „Бары билэлэргэ киирии“ көҥүлү биэрбэт, онон паамыньньыкка баар төрүт билэлэри түһэрэн уларытыы кыаммат; бу тэрил „Солбуйуу режимин“ өйөөбөт.
+
+Стандарт ньыманан конверттааһыны салҕаан барыан сөпкүн; түмүк альбом паапкатыгар таһаарыллыаҕа.</string>
+    <string name="main_dialog_allfiles_location_message">Сорох модельдар (холобур, Meizu) система альбомун интерфейһынан суруйар кэмҥэ GPS миэстэ метаданнайатын сүтэрэллэр, онон конверттааһын кэнниттэн ойуу миэстэтэ сүтэрэр.
+
+„Бары билэлэргэ киирии“ көҥүлү биэрээт, бу программа альбом паапкатыгар түһэрэн суруйар, миэстэ метаданнайата толору хаалар.
+
+Көҥүл биэрбэтэҕиҥ да конверттааһын үлэлиир; сорох модельдарга миэстэ сүтүөн сөп.</string>
+    <string name="main_dialog_conflict_title">Таһаарыы билэ аата утарсар</string>
+    <string name="main_dialog_conflict_message">Таһаарыы паапкатыгар биир ааттаах билэ баар буолла:
+%1$s
+
+Хайдах тупсарыаххын тал.</string>
+    <string name="main_label_conflict_always">Аныгыскы утарсыыларга бу ньыманы тут</string>
+    <string name="main_btn_grant">Көҥүл биэр</string>
+    <string name="main_btn_deny">Аккаастан</string>
+    <string name="main_btn_go_settings">Туруорууларга</string>
+    <string name="main_btn_cancel">Тохтотуу</string>
+    <string name="main_btn_grant_access">Көҥүлү биэриигэ</string>
+    <string name="main_btn_got_it">Өйдөттүм</string>
+    <string name="main_btn_not_now">Билигин суох</string>
+    <string name="main_btn_skip">Бырах</string>
+    <string name="main_btn_overwrite">Үрдүнэн суруй</string>
+    <string name="main_btn_auto_rename">Автоматическай саҥа ааттааһын</string>
+    <plurals name="main_delete_done">
+        <item quantity="other">%1$d төрүт билэ сүтэриллэннэ</item>
+    </plurals>
+    <string name="main_delete_nothing">Төрүт ойууну сүтэрэр наадата суох</string>
+    <string name="main_delete_partial">%1$d төрүт билэ сүтэриллэннэ (%2$d сүтэрии табыллыбата, хаалбыттар)</string>
+    <string name="main_delete_failed">Төрүт ойууну сүтэрии табыллыбата (билэ туттуллар эбээт суруйар көҥүлэ суох), хаалбыттар</string>
+    <string name="main_export_missing_output">Конверттааһын түмүгэ суох эбээт кураанах: %1$s</string>
+    <string name="main_export_missing_output_bare">Конверттааһын түмүгэ суох эбээт кураанах</string>
+    <string name="main_export_insert_null">MediaStore insert null төннөрбүтэ</string>
+    <string name="main_export_output_stream">MediaStore таһаарыы сүүрүгэ туттуллубат</string>
+    <string name="main_export_write_failed">MediaStore суруйуута табыллыбата: %1$s</string>
+    <string name="main_export_mkdir_failed">Альбом паапкатын %1$s оҥорор кыаммата</string>
+    <string name="main_export_dir_write_failed">Альбом паапкатыгар суруйуу табыллыбата: %1$s</string>
+    <string name="main_export_no_source">Төрүт билэни булуу кыаммат; солбуйуу бырахылланна</string>
+    <string name="main_export_companion_failed">Холбуур билэни төннөрөн суруйуу табыллыбата: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Төрүт билэ паапкатыгар суруйуу кыаммат; холбуур билэ төннөрүллэн илик</string>
+    <string name="main_export_source_dir_unavailable">Төрүт билэ паапката туттуллубат: %1$s</string>
+    <string name="main_export_replace_failed">Төрүт билэни солбуйуу табыллыбата: %1$s</string>
+    <string name="main_export_replace_failed_bare">Төрүт билэни солбуйуу табыллыбата</string>
+</resources>

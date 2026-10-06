@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  toki pona (tok) — sin / kama jo (nimi open: update_).
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Quality level: C (low-resource language, best-effort translation).
+  Base: res/values/strings_update.xml (toki Sonko). %1$s / %1$d li awen.
+-->
+<resources>
+
+    <!-- ========== lipu Lanzouyun en linja kama jo ========== -->
+    <string name="update_lanzou_gone">poki Lanzouyun li pini anu ijo li lon ala; o kepeken GitHub</string>
+    <string name="update_lanzou_gone_short">poki Lanzouyun li pini; o kepeken GitHub</string>
+    <string name="update_lanzou_resolve_failed">ken ala sona e linja kama jo Lanzouyun</string>
+    <string name="update_lanzou_need_passwd">poki Lanzouyun ni li wile e nimi open; o kepeken GitHub (anu o alasa e nimi lon lipu sin)</string>
+    <string name="update_lanzou_wrong_passwd">nimi open Lanzouyun li ike</string>
+    <string name="update_err_resolve_failed">sona li pakala</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">ken anti-robot Lanzouyun li pakala</string>
+    <string name="update_err_no_frame">ken ala sona e lipu kama jo Lanzouyun (poki kama jo li lon ala)</string>
+    <string name="update_err_no_file_id">ken ala sona e nimi ijo Lanzouyun</string>
+    <string name="update_err_no_sign">ken ala sona e sitelen Lanzouyun</string>
+    <string name="update_err_ajax_request">wile API li pakala</string>
+    <string name="update_err_api_request">wile API Lanzouyun li pakala</string>
+    <string name="update_err_empty_direct">Lanzouyun li pana e linja kama jo pi ijo ala</string>
+    <string name="update_err_direct_expired">linja kama jo Lanzouyun li pini; o kama jo sin</string>
+    <string name="update_err_http_request">wile li pakala (HTTP %1$d)</string>
+
+    <!-- ========== kama jo ========== -->
+    <string name="update_err_connect">ken ala tawa ilo kama jo: %1$s</string>
+    <string name="update_err_http">kama jo li pakala (HTTP %1$d)</string>
+    <string name="update_err_no_connection">ken ala pali e linja kama jo</string>
+    <string name="update_err_empty">ijo kama jo li jo ala</string>
+    <string name="update_err_incomplete">kama jo li pini ala (%1$d / %2$d byte), o kama jo sin</string>
+    <string name="update_err_interrupted">kama jo li pini lon insa: %1$s</string>
+
+    <!-- ========== lukin ilo en pali ========== -->
+    <string name="update_err_not_apk">ijo kama jo li ilo pali sin pona ala (ken lipu linja anu linja pini); o kama jo sin anu o kepeken GitHub.</string>
+    <string name="update_err_apk_incomplete">ilo pali sin li jo ala e ali; o kama jo sin anu o kepeken GitHub.</string>
+    <string name="update_err_apk_unparsable">ken ala sona e ilo pali sin (ken kama jo li pini ala); o kama jo sin anu o kepeken GitHub.</string>
+    <string name="update_err_no_install_permission">ken «pali e ilo sin» li lon ala</string>
+    <string name="update_err_installer_failed">ken ala open e ilo pali sin (%1$s); o open e ona kepeken ilo lipu</string>
+
+</resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Scots strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Scots is a law-resource leid; this is a best-effort, model-assisted translation.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: C.
+-->
+<resources>
+    <!-- Notices on the controller side (outside the Composable withoot Context, via context.getString) -->
+    <string name="update_github_url_missing">Could nae fetch the GitHub dounload address. Try agane later.</string>
+    <string name="update_flavor_standard">Staunart version</string>
+    <string name="update_flavor_go">Go version</string>
+    <string name="update_lanzou_url_missing">This version haes nae Lanzou dounload link. Ye can uise GitHub.</string>
+    <string name="update_apk_direct_missing">This version haes nae direct link tae the matchin package. Pick the richt APK on the GitHub release page.</string>
+    <string name="update_install_permission_missing">Withoot the "instaw unkent apps" permeession it cannae instaw awtomatic. Alloo it in the seestem settins an try agane.</string>
+    <string name="update_error_unknown">Unkent error</string>
+    <string name="update_fail_lanzou">Dounload throu Lanzou failed</string>
+    <string name="update_fail_github">Dounload throu GitHub failed</string>
+    <string name="update_lanzou_resolving">Resolvin the Lanzou dounload link…</string>
+    <string name="update_lanzou_downloading">Dounloadin fae Lanzou…</string>
+    <string name="update_github_downloading">Dounloadin fae GitHub…</string>
+    <string name="update_unzipping">Unpackin the instaw package…</string>
+    <string name="update_notes_empty">This version haes nae update notes.</string>
+
+    <!-- Dialogs fur the Go version -->
+    <string name="update_use_normal_title">Uise the staunart version</string>
+    <string name="update_use_normal_body">This device rins Android 10 or heicher; the licht Go version is nae langer supportit an the auld version cannae be uised ony mair.\n\nWe detected that the staunart version (ZLC) is already instawed. Open the staunart version tae cairry on (new versions dae nae provide the compatible Go version ony mair; ye can uninstall the auld version tae free up space).</string>
+    <string name="update_open_normal">Open the staunart version</string>
+    <string name="update_must_update_title">Ye maun update tae cairry on</string>
+    <string name="update_forced_body">This device rins Android 10 or heicher; the licht Go version is nae langer supportit an the auld version cannae be uised ony mair; new versions dae nae provide the compatible Go version aither.\n\nConnect tae the netwark an tap "Try agane" tae fetch the staunart version package.</string>
+    <string name="update_retry">Try agane</string>
+    <string name="update_switch_normal_body">This device rins Android 10 or heicher; the licht Go version is nae langer supportit an the auld version cannae be uised ony mair.\nDounload an instaw the staunart version tae cairry on (new versions dae nae provide the compatible Go version ony mair).</string>
+
+    <!-- Dounloadin / instaw permeession / result notices -->
+    <string name="update_downloading_title">Dounload the update</string>
+    <string name="update_cancel">Cancel</string>
+    <string name="update_need_permission_title">Instaw permeession needed</string>
+    <string name="update_need_permission_body">Instawin the new version needs the seestem "instaw unkent apps" permeession.\n\nTap "Authorise", alloo it in the settins an come back tae the app: the instaw will cairry on awtomatic (withoot dounloadin agane).</string>
+    <string name="update_grant">Authorise</string>
+    <string name="update_notice_title">Notice</string>
+    <string name="update_got_it">Got it</string>
+
+    <!-- Main dialog / update notes -->
+    <string name="update_notes_title">v%1$s · Update notes</string>
+    <string name="update_back">Back</string>
+    <string name="update_title_switch_normal">Switch tae the staunart version</string>
+    <string name="update_title_reinstall">Instaw this version agane</string>
+    <string name="update_title_new_version">New version fund</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">We will dounload an instaw this version agane (ower the current app).\nThis feature is fur testin the update mechanism.</string>
+    <string name="update_view_notes">View the update notes</string>
+    <string name="update_lanzou_unavailable">Lanzou is no available the noo</string>
+    <string name="update_download_lanzou">Dounload fae Lanzou</string>
+    <string name="update_download_github">Dounload fae GitHub</string>
+    <string name="update_download_browser">Dounload fae the browser</string>
+    <string name="update_later">Update later</string>
+    <string name="update_later_switch">Switch later</string>
+    <string name="update_skip_version">Skip this version</string>
+</resources>

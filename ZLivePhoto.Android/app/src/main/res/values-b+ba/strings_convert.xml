@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Bashkir (ba) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Билдәһеҙ маҡсат формат: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Танылмаған Live Photo форматы (Google/OPPO/vivo/Сяоми/Apple Live Photo түгел)</string>
+    <string name="conv_cover_photo_missing">Обложка фотоһы юҡ йәки буш</string>
+    <string name="conv_video_missing">Видео юҡ йәки буш</string>
+    <string name="conv_video_too_large">Видео бигерәк ҙур (%1$d МБ), Live Photoға төҙөп булмай, ҡыҫҡараҡ видео һайлағыҙ</string>
+    <string name="conv_transcoded_too_large">Транскодировкаланғандан һуң видео бигерәк ҙур (%1$d МБ), Live Photoға төҙөп булмай</string>
+    <string name="conv_video_too_large_compose">Видео бигерәк ҙур (%1$d МБ), Live Photoға төҙөп булмай</string>
+    <string name="conv_cover_heic_go">Обложка — HEIC һүрәте (Еңел версия транскодировкалауҙы хупламай, тәүҙә iPhone-та JPEG итеп сығарығыҙ, шунан һуң үҙгәртегеҙ)</string>
+    <string name="conv_cover_invalid_heic">Обложка дөрөҫ һүрәт түгел (HEIC өсөн система HEIF декодировкаһын хупларға тейеш)</string>
+    <string name="conv_cover_not_jpeg_go">Обложка JPEG һүрәте түгел (Еңел версия транскодировкалауҙы хупламай, JPEG фото ҡулланығыҙ)</string>
+    <string name="conv_cover_invalid_image">Обложка дөрөҫ һүрәт түгел (тәү сиратта JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Видеоға яңынан кодлаштырыу уңышһыҙ: %1$s</string>
+    <string name="conv_remux_failed">Контейнерҙы яңынан упаковкалау уңышһыҙ: %1$s</string>
+    <string name="conv_codec_unknown">Таныла ала торған H.264/H.265 видео түгел</string>
+    <string name="conv_codec_is">Кодлау — %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">«%1$s» видеоһы %2$s, тик контейнерҙы (яңынан упаковкалауҙы) алмаштырыу кодлауҙы үҙгәртә алмай, Live Photoға төҙөп булмай.
+
+«Көйләүҙәр → Видео транскодировкаһы → Транскодировка ысулы» бүлегендә «Яңынан кодлаштырыу»ға күсерегеҙ, йәки тәүҙә башҡа ҡорал менән уны H.264/H.265 кодлауылы MP4-ҡа әйләндерегеҙ.</string>
+    <string name="conv_hint_no_encoder">Видео стандарт MP4 контейнер түгел (MOV / MKV / WebM / AVI һ.б.), ә хәҙерге «Транскодировка ысулы» яңынан кодлаштырмай, Live Photoға төҙөп булмай.
+
+«Көйләүҙәр → Видео транскодировкаһы → Транскодировка ысулы» бүлегендә «Яңынан кодлаштырыу»ға күсерегеҙ (Ғәҙәти версияла ffmpeg кодлағысы төҙөлгән; Go Еңел версияһында транскодировкалағыс юҡ, Ғәҙәти версияны ҡулланығыҙ), йәки тәүҙә видеоны стандарт MP4-ҡа (H.264/H.265) әйләндерегеҙ.</string>
+    <string name="conv_log_detected">%1$s итеп танылды</string>
+    <string name="conv_log_same_format_copied">Сығанаҡ һәм маҡсат форматтары бер төрлө, үҙгәрешһеҙ күсерелде (юғалтыуһыҙ)</string>
+    <string name="conv_log_extra_tracks_bypass">Сығанаҡ видеола аудио/видео булмаған юлдар бар (%1$s), бер форматлы туры үтеү төшөрөлдө, таҙартыу өсөн тулы яҙыу процесына күсте</string>
+    <string name="conv_log_ts_fallback">Сығанаҡта обложка кадры ваҡыт тамғаһы юҡ, норма буйынса видео уртаһына ҡайтарылды</string>
+    <string name="conv_log_brand_normalized">Видео контейнер маркаһы нормалаштырылды (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Видеола өҫтәмә юлдар бар (%1$s), таҙартып булманы, үҙгәрешһеҙ сығарылды (был продукт ҡайһы бер ҡорамалдарҙа оҙон баҫып уйнатыла алмаҫҡа мөмкин)</string>
+    <string name="conv_log_extra_tracks_removed">Видео өҫтәмә юлдары алып ташланды (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Сығанаҡ видео%1$s; тик контейнерҙы яңынан упаковкалау хәл итә алмай (%2$s), әгәр продукт оҙон баҫып уйнатыла алмаһа, «Көйләүҙәр → Видео транскодировкаһы → Транскодировка ысулы» бүлегендә «Яңынан кодлаштырыу»ҙы һайлағыҙ</string>
+    <string name="conv_log_reencoding">Сығанаҡ видео%1$s, көйләүҙәр буйынса альбомтың тәьмин итеүселеген күтәреү өсөн 8bit + AAC итеп яңынан кодлаштырыла</string>
+    <string name="conv_log_reencode_result_unusable">Яңынан кодлаштырыу һөҙөмтәһе яраҡһыҙ, үҙгәрешһеҙ сығарылды (был продукт ҡайһы бер ҡорамалдарҙа оҙон баҫып уйнатыла алмаҫҡа мөмкин)</string>
+    <string name="conv_log_reencode_still_risky">Яңынан кодлаштырыуҙан һуң һаман хәүфле урындар бар (%1$s)</string>
+    <string name="conv_log_reencode_failed">Яңынан кодлаштырыу уңышһыҙ (%1$s), үҙгәрешһеҙ сығарылды (был продукт ҡайһы бер ҡорамалдарҙа оҙон баҫып уйнатыла алмаҫҡа мөмкин)</string>
+    <string name="conv_log_cover_heic_converted">Обложка — HEIC (JPEG түгел), стандарт JPEG-ҡа транскодировкаланып, шунан һуң упаковкаланды</string>
+    <string name="conv_log_compose_sizes">Төҙөү: фото %1$d Б + видео %2$d Б → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Транскодировкалағыс ҡушылмаған: тик контейнер маркаһы үҙгәртелә (MOV → MP4), яңынан кодлаштырылмай</string>
+    <string name="conv_tag_convert">Үҙгәртеү</string>
+    <string name="conv_tag_transcode">Транскодировка</string>
+    <string name="conv_tag_compose">Төҙөү</string>
+    <string name="conv_blocker_no_encoder">Төҙөлгән транскодировкалағыс юҡ</string>
+    <string name="conv_blocker_mode_no_encode">Хәҙерге «Транскодировка ысулы» яңынан кодлаштырмай</string>
+    <string name="conv_addon_unavailable">Төҙөлгән транскодировкалағыс юҡ</string>
+    <string name="conv_addon_transcode_failed">ffmpeg транскодировкалауы уңышһыҙ: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg контейнерҙы яңынан упаковкалауы уңышһыҙ: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ffmpeg менән видео стандарт MP4-ҡа транскодировкалана (%1$s / crf %2$d / %3$s, тик видео һәм аудио юлдары ҡалдырыла)</string>
+    <string name="conv_log_transcode_done">Видео транскодировкалау тамамланды (%1$d КБ)</string>
+    <string name="conv_log_remuxing">Видео контейнер стандарт MP4-ҡа яңынан упаковкалана (тик контейнер алмаша, яңынан кодлаштырылмай)</string>
+    <string name="conv_log_remux_done">Контейнерҙы яңынан упаковкалау тамамланды (%1$d КБ)</string>
+    <string name="conv_reminder_cat_compose">Төҙөү</string>
+    <string name="conv_reminder_cat_convert">Үҙгәртеү</string>
+    <string name="conv_reminder_cat_update">Яңыртыу</string>
+    <string name="conv_reminder_video_over3s_title">Видео 3 секуннан оҙон</string>
+    <string name="conv_reminder_video_over3s_message">Һайланған видео оҙонлоғо 3 секундтан ашыу, төҙөлгәндән һуңғы Live Photo-ла тәьмин итеүселек проблемалары булыуы мөмкин:
+
+• Тейешле уйнатыла алмауы мөмкин
+• Система альбомы танымауы мөмкин
+• Ҡайһы бер ҡорамалдар был Live Photo-ны танымауы мөмкин</string>
+    <string name="conv_reminder_legacy_go_title">Иҫке версия табылды</string>
+    <string name="conv_reminder_legacy_go_message">Был ҡорамалда әле иҫке версия (Go версияһы) ҡуйылған, был иҫке версия был ҡорамалда ҡулланыла алмай, урынды бушатыу өсөн алып ташларға мөмкин.</string>
+    <string name="conv_reminder_replace_risk_title">Алмаштырыу режимы боҙолоу хәүефе бар</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Алмаштырыу режимы үҙгәртеү һөҙөмтәһен туранан-тура тәүге файлға яҙа, тәүге файл өҫтәлгәндән һуң уны кире алып булмай.
+
+• Яҙыу барышында ҡушымта өҙөлһә, урын етмәһә йәки рөхсәт алынһа, сығанаҡ файл боҙолоуы мөмкин
+• Үҙгәртеүҙең үҙе һәр осраҡта уңышты тәьмин итә алмай, уңышһыҙлыҡта сығанаҡ файл һаман яраҡһыҙ булыуы мөмкин
+• Тәүҙә бер ике файл менән һынап ҡарығыҙ, проблемалар булмағас ҡына туплап эшкәртегеҙ
+• Мөһим фотоларҙы тәүҙә үҙегеҙ һаҡлап ҡуйығыҙ
+
+Был функция «бар булған торошонда» бирелә, ҡулланыу хәүефен үҙегеҙ өҫтәгеҙ, автор файлдарҙың боҙолоуы йәки юғалыуы өсөн яуаплы түгел.</string>
+    <string name="conv_reminder_dont_remind">Башҡа иҫкәртмәү</string>
+    <string name="conv_reminder_confirm_ok">Аңланым</string>
+    <string name="conv_reminder_uninstall">Алып ташлау</string>
+</resources>

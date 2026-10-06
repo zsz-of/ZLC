@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Sakha (Yakut) (sah) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">GitHub хачайданар аадырыса ылыллыбата; кэлин хат көр.</string>
+    <string name="update_flavor_standard">Стандарт версия</string>
+    <string name="update_flavor_go">Go версия</string>
+    <string name="update_lanzou_url_missing">Бу версия Lanzou хачайданар сылкатын биэрбэт; GitHub-тан хачайдаан көр.</string>
+    <string name="update_apk_direct_missing">Бу версия сөптөөх туруоруу паакетын түһэрэн сылкатын биэрбэт; GitHub Releases сирэйигэр бар, сөптөөх APK-ны тал.</string>
+    <string name="update_install_permission_missing">„Биллибэт программалары туруоруу“ көҥүлэ суох, автоматическай туруоруу кыаммат. Система туруорууларыттан көҥүл биэрэн, хат көр.</string>
+    <string name="update_error_unknown">Биллибэт алҕас</string>
+    <string name="update_fail_lanzou">Lanzou-тан хачайдааһын табыллыбата</string>
+    <string name="update_fail_github">GitHub-тан хачайдааһын табыллыбата</string>
+    <string name="update_lanzou_resolving">Lanzou хачайданар сылканы ылар…</string>
+    <string name="update_lanzou_downloading">Lanzou-тан хачайдаан эрэр…</string>
+    <string name="update_github_downloading">GitHub-тан хачайдаан эрэр…</string>
+    <string name="update_unzipping">Туруоруу паакетын аһаан эрэр…</string>
+    <string name="update_notes_empty">Бу версия саҥардыытын быһаарыыта өссө суох.</string>
+    <string name="update_use_normal_title">Стандарт версияны тут</string>
+    <string name="update_use_normal_body">Бу тэрил системата Android 10 уонна үрдүк; Go кылгас версия өйөммөт буолбут, былыргы версияны салгыы туттуу кыаммат.
+
+Бу тэрилгэ стандарт версия (ZLC) туруорулаах эбит: стандарт версияны аһаан салҕаа (саҥа версиялар Go-ка сөптөөх варианттары биэрбэттэр; былыргы версияны сүтэрэн паамыньньыгы босхолуон сөпкүн).</string>
+    <string name="update_open_normal">Стандарт версияны аһаа</string>
+    <string name="update_must_update_title">Салгыы туттуоҥ иннинэ саҥардыы наада</string>
+    <string name="update_forced_body">Бу тэрил системата Android 10 уонна үрдүк; Go кылгас версия өйөммөт буолбут, былыргы версияны салгыы туттуу кыаммат; саҥа версиялар Go-ка сөптөөх варианттары биэрбэттэр.
+
+Ситимҥэ холбоон «Хат көр» баттаа, стандарт версия туруоруу паакетын ыларга.</string>
+    <string name="update_retry">Хат көр</string>
+    <string name="update_switch_normal_body">Бу тэрил системата Android 10 уонна үрдүк; Go кылгас версия өйөммөт буолбут, былыргы версияны салгыы туттуу кыаммат.
+Стандарт версияны хачайдаан туруорон салҕаа (саҥа версиялар Go-ка сөптөөх варианттары биэрбэттэр).</string>
+    <string name="update_downloading_title">Саҥардыыны хачайдааһын</string>
+    <string name="update_cancel">Тохтотуу</string>
+    <string name="update_need_permission_title">Туруоруу көҥүлэ наада</string>
+    <string name="update_need_permission_body">Саҥа версияны туруорууга система „Биллибэт программалары туруоруу“ көҥүлэ наада.
+
+«Көҥүлү биэриигэ» баттаа, туруорууларга көҥүлү биэрэн баран аппликацияҕа төннөн кэл; туруоруу автоматическай салҕанар (хат хачайдаабаккын).</string>
+    <string name="update_grant">Көҥүлү биэриигэ</string>
+    <string name="update_notice_title">Сэрэтии</string>
+    <string name="update_got_it">Өйдөттүм</string>
+    <string name="update_notes_title">v%1$s · Саҥардыы быһаарыыта</string>
+    <string name="update_back">Кэнники</string>
+    <string name="update_title_switch_normal">Стандарт версияҕа көһүү</string>
+    <string name="update_title_reinstall">Бу версияны хат туруоруу</string>
+    <string name="update_title_new_version">Саҥа версия көстүттэ</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Бу версия хачайданан хат туруоруоҕа (билиҥҥи аппликация үрдүнэн).
+Бу функция саҥардыы механизмын тургутарга ананар.</string>
+    <string name="update_view_notes">Саҥардыы быһаарытын көр</string>
+    <string name="update_lanzou_unavailable">Lanzou билигин үлэлээбэт</string>
+    <string name="update_download_lanzou">Lanzou-тан хачайдаа</string>
+    <string name="update_download_github">GitHub-тан хачайдаа</string>
+    <string name="update_download_browser">Браузертан хачайдаа</string>
+    <string name="update_later">Кэлин саҥардаа</string>
+    <string name="update_later_switch">Кэлин көс</string>
+    <string name="update_skip_version">Бу версияны бырах</string>
+</resources>

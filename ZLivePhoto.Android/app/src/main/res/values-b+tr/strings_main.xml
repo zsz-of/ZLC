@@ -17,6 +17,7 @@
     <string name="main_status_folder_not_selected">Klasör seçilmedi</string>
     <string name="main_status_folder_unavailable">Seçilen klasöre erişilemiyor (yalnızca yerel depolama klasörleri desteklenir)</string>
     <plurals name="main_status_session_restored">
+        <item quantity="one">Önceki oturum geri yüklendi (%1$d dosya)</item>
         <item quantity="other">Önceki oturum geri yüklendi (%1$d dosya)</item>
     </plurals>
     <string name="main_status_abnormal_exit">Önceki oturumun beklenmedik şekilde kapandığı algılandı; tamamlanmamış liste temizlendi</string>
@@ -33,19 +34,23 @@
     <string name="main_status_compose_all_added">Seçilen fotoğrafların tümü listede</string>
     <string name="main_status_compose_paired">Fotoğraf: %1$d, video: %2$d; az olana göre %3$d birleştirme görevi eklendi</string>
     <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d birleştirme görevi eklendi; birleştirmeyi çalıştırmak için „Dönüştürmeyi başlat” düğmesine dokunun</item>
         <item quantity="other">%1$d birleştirme görevi eklendi; birleştirmeyi çalıştırmak için „Dönüştürmeyi başlat” düğmesine dokunun</item>
     </plurals>
     <string name="main_status_auto_google">%1$s (çıktı biçimi otomatik olarak Google\'a geçirildi)</string>
     <plurals name="main_status_importing_shared">
+        <item quantity="one">Paylaşılan %1$d görsel içe aktarılıyor…</item>
         <item quantity="other">Paylaşılan %1$d görsel içe aktarılıyor…</item>
     </plurals>
     <string name="main_status_import_failed">İçe aktarma başarısız: %1$s</string>
     <string name="main_status_import_done_partial">İçe aktarma tamamlandı: %1$d başarılı, %2$d başarısız</string>
     <plurals name="main_status_import_done">
+        <item quantity="one">İçe aktarma tamamlandı: toplam %1$d dosya içe aktarıldı</item>
         <item quantity="other">İçe aktarma tamamlandı: toplam %1$d dosya içe aktarıldı</item>
     </plurals>
     <string name="main_status_import_stopped">İçe aktarma durduruldu: %1$d başarılı, %2$d başarısız</string>
     <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d dosya içe aktarılıyor…</item>
         <item quantity="other">%1$d dosya içe aktarılıyor…</item>
     </plurals>
     <string name="main_status_importing_progress">İçe aktarılıyor %1$d/%2$d…</string>
@@ -59,15 +64,19 @@
     <string name="main_status_no_images">Seçilen klasörde görsel bulunamadı</string>
     <string name="main_status_batch_importing">Toplu içe aktarma %1$d/%2$d…</string>
     <plurals name="main_status_batch_stopped">
+        <item quantity="one">Toplu içe aktarma durduruldu: toplam %1$d hareketli fotoğraf içe aktarıldı</item>
         <item quantity="other">Toplu içe aktarma durduruldu: toplam %1$d hareketli fotoğraf içe aktarıldı</item>
     </plurals>
     <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Toplu içe aktarma durduruldu: toplam %1$d hareketli fotoğraf içe aktarıldı, %2$d hareketli olmayan dosya atlandı</item>
         <item quantity="other">Toplu içe aktarma durduruldu: toplam %1$d hareketli fotoğraf içe aktarıldı, %2$d hareketli olmayan dosya atlandı</item>
     </plurals>
     <plurals name="main_status_batch_done">
+        <item quantity="one">Toplu içe aktarma tamamlandı: toplam %1$d hareketli fotoğraf içe aktarıldı</item>
         <item quantity="other">Toplu içe aktarma tamamlandı: toplam %1$d hareketli fotoğraf içe aktarıldı</item>
     </plurals>
     <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Toplu içe aktarma tamamlandı: toplam %1$d hareketli fotoğraf içe aktarıldı, %2$d hareketli olmayan dosya atlandı</item>
         <item quantity="other">Toplu içe aktarma tamamlandı: toplam %1$d hareketli fotoğraf içe aktarıldı, %2$d hareketli olmayan dosya atlandı</item>
     </plurals>
     <string name="main_status_stopped_replace">Durduruldu: %1$d dosyadan %2$d tanesi işlendi, %3$d kaynak dosya değiştirildi</string>
@@ -130,6 +139,7 @@
 
     <!-- ── Dönüştürme sonucu / dışa aktarma hata nedenleri („neden: %3$s” ile gösterilir) ── -->
     <plurals name="main_delete_done">
+        <item quantity="one">%1$d kaynak dosya silindi</item>
         <item quantity="other">%1$d kaynak dosya silindi</item>
     </plurals>
     <string name="main_delete_nothing">Silinecek özgün dosya yok</string>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Tutlayt taqbaylit (kab).
+  Yettwasuqel seg res/values/strings_*.xml (asnulfu s usebter n tsusnawt, tutlayt n umagrad).
+  Iswiyen ttwamṣadan d umagrad; imetteg (%1$s / %1$d) d yimeslayen n uɣtu qqimen am akken.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== Asebter n ubeḍḍu n Lanzou Cloud d useɣwen usrid ========== -->
+    <string name="update_lanzou_gone">Abeḍḍu n Lanzou Cloud yettwasefsex neɣ afaylu ulac-itt; sider-t-id seg GitHub</string>
+    <string name="update_lanzou_gone_short">Abeḍḍu n Lanzou Cloud yettwasefsex; sider-t-id seg GitHub</string>
+    <string name="update_lanzou_resolve_failed">Tafrura n useɣwen n usider n Lanzou Cloud ur teddi ara</string>
+    <string name="update_lanzou_need_passwd">Abeḍḍu-a n Lanzou Cloud yesra tangalt n usuffeɣ; sider seg GitHub (neɣ nadi tangalt deg tezrawin n lqem)</string>
+    <string name="update_lanzou_wrong_passwd">Tangalt n usuffeɣ n Lanzou Cloud tucḍa</string>
+    <string name="update_err_resolve_failed">Tafrura ur teddi ara</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Asenqed anticrawl n Lanzou Cloud ur yeddi ara</string>
+    <string name="update_err_no_frame">Ur yezmir ara ad yefru asebter n usider n Lanzou Cloud (ulac ankad n usider)</string>
+    <string name="update_err_no_file_id">Ur yezmir ara ad yefru asulaf n ufaylu n Lanzou Cloud</string>
+    <string name="update_err_no_sign">Ur yezmir ara ad yefru azmul n Lanzou Cloud</string>
+    <string name="update_err_ajax_request">Tuttra n API ur teddi ara</string>
+    <string name="update_err_api_request">Tuttra n API n Lanzou Cloud ur teddi ara</string>
+    <string name="update_err_empty_direct">Lanzou Cloud yerra tansa n usider d tilemt</string>
+    <string name="update_err_direct_expired">Tansa n usider n Lanzou Cloud tfukk; aɣ-itt tikelt-nniḍen</string>
+    <string name="update_err_http_request">Tuttra tucḍa (HTTP %1$d)</string>
+
+    <!-- ========== Asider ========== -->
+    <string name="update_err_connect">Ur yezmir ara ad yeqqen ɣer usebga n usider: %1$s</string>
+    <string name="update_err_http">Asider ur yeddi ara (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Ur yezmir ara ad yebnu aseqqen n usider</string>
+    <string name="update_err_empty">Agbur yettwasider d ilem</string>
+    <string name="update_err_incomplete">Asider ur yekmil ara (%1$d seg %2$d ibiten); sider tikelt-nniḍen</string>
+    <string name="update_err_interrupted">Asider yettwaḥbes: %1$s</string>
+
+    <!-- ========== Asenqed d users n upakkej ========== -->
+    <string name="update_err_not_apk">Afaylu yettwasider mačči d apakkej amezduɣ (yezmer d asebter web, neɣ aseɣwen yefukk); sider tikelt-nniḍen neɣ seqdec GitHub.</string>
+    <string name="update_err_apk_incomplete">Agbur n upakkej ur yekmil ara; sider tikelt-nniḍen neɣ seqdec GitHub.</string>
+    <string name="update_err_apk_unparsable">Apakkej ur yezmir ara ad yettwafru (asider ur yekmil ara); sider tikelt-nniḍen neɣ seqdec GitHub.</string>
+    <string name="update_err_no_install_permission">Tasiragt «sers isnasen war issin» ur tettwaf ara</string>
+    <string name="update_err_installer_failed">Ur yezmir ara ad yessekker amsers n unagraw (%1$s); ldi apakkej seg umsefrak n ifula syen sers-it s ufus</string>
+
+</resources>

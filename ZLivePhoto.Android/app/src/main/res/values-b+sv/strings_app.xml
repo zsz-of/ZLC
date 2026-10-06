@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Appnivåtexter (underhålls av Lead). Finns i samma katalog som values/strings.xml, strings_main.xml,
+  strings_settings.xml m.fl. och slås samman vid bygge; lägg inte nycklar från andra moduler i den här filen.
+-->
+<resources>
+    <!-- Posten i väljaren för ”Appens språk” som betyder följ systemet -->
+    <string name="app_language_follow_system">Följ systemet</string>
+    <!-- Rubrikreserv för väljaren för appens språk (settings-modulen kan ha en egen nyckel) -->
+    <string name="app_language_title">Appens språk</string>
+</resources>

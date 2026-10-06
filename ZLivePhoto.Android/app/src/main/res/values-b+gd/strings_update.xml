@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Scottish Gaelic (gd) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_lanzou_gone">Chaidh an roinn-seòrsa Lanzou a chuir dheth no chan eil am faidhle ann; luchdaich sìos à GitHub</string>
+    <string name="update_lanzou_gone_short">Chaidh an roinn-seòrsa Lanzou a chuir dheth; luchdaich sìos à GitHub</string>
+    <string name="update_lanzou_resolve_failed">Dh\'fhàillig mion-sgàradh ceangal luchdachadh sìos Lanzou</string>
+    <string name="update_lanzou_need_passwd">Bidh an roinn Lanzou seo feumach air còd-pasgaidh; luchdaich sìos à GitHub (no lorg an còd-pasgaidh ann an notaichean Release)</string>
+    <string name="update_lanzou_wrong_passwd">Còd-pasgaidh Lanzou cearr</string>
+    <string name="update_err_resolve_failed">Dh\'fhàillig mion-sgàradh</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Dh\'fhàillig sgrùdadh an aghaidh bhonachan Lanzou</string>
+    <string name="update_err_no_frame">Cha ghabh duilleag luchdachadh sìos Lanzou mion-sgàradh (cha deach frèim luchdachaidh a lorg)</string>
+    <string name="update_err_no_file_id">Cha ghabh aithnichear-faidhle Lanzou mion-sgàradh</string>
+    <string name="update_err_no_sign">Cha ghabh ainm-sgrìobhaidh Lanzou mion-sgàradh</string>
+    <string name="update_err_ajax_request">Dh\'fhàillig iarrtas eadar-aghaidh</string>
+    <string name="update_err_api_request">Dh\'fhàillig iarrtas eadar-aghaidh Lanzou</string>
+    <string name="update_err_empty_direct">Thill Lanzou seòladh luchdachaidh falamh</string>
+    <string name="update_err_direct_expired">Tha seòladh luchdachadh sìos Lanzou air a bhith cearr, faigh e ùr</string>
+    <string name="update_err_http_request">Dh\'fhàillig an iarrtas (HTTP %1$d)</string>
+    <string name="update_err_connect">Cha ghabh ceangal le frithealaiche luchdachaidh: %1$s</string>
+    <string name="update_err_http">Dh\'fhàillig luchdachadh sìos (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Cha ghabh ceangal luchdachaidh a stèidheachadh</string>
+    <string name="update_err_empty">Tha susbaint luchdachaidh falamh</string>
+    <string name="update_err_incomplete">Chan eil an luchdachadh slàn (%1$d / gu h-iomlan %2$d byte), luchdaich sìos ath-uair</string>
+    <string name="update_err_interrupted">Chaidh an luchdachadh a stad: %1$s</string>
+    <string name="update_err_not_apk">Chan e pasgan stàlaidh dligheach a chaidh a luchdachadh sìos (dh\'fhaoidte gu bheil duilleag-lìn no tha ceangal luchdachaidh cearr); luchdaich sìos ath-uair no cleachd GitHub.</string>
+    <string name="update_err_apk_incomplete">Chan eil susbaint a\' phasgain stàlaidh slàn; luchdaich sìos ath-uair no cleachd GitHub.</string>
+    <string name="update_err_apk_unparsable">Cha ghabh am pasgan stàlaidh mion-sgàradh (dh\'fhaoidte nach eil an luchdachadh slàn); luchdaich sìos ath-uair no cleachd GitHub.</string>
+    <string name="update_err_no_install_permission">Chan eil cead "Stàladh aplacaidean neo-aithnichte" air fhaighinn fhathast</string>
+    <string name="update_err_installer_failed">Cha ghabh stàlaichear an t-siostam a ghairm (%1$s); fosgail am pasgan stàlaidh le làimh anns an neach-stiùiridh faidhlichean</string>
+</resources>

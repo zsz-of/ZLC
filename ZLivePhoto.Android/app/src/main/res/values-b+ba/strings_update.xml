@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Bashkir (ba) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Ланцзоу болешеүе бөтөрөлгән йәки файл юҡ, GitHub-ҙан тейҙәрегеҙ</string>
+    <string name="update_lanzou_gone_short">Ланцзоу болешеүе бөтөрөлгән, GitHub-ҙан тейҙәрегеҙ</string>
+    <string name="update_lanzou_resolve_failed">Ланцзоу тейҙәреү һылтанмаһын тәржемәләп булманы</string>
+    <string name="update_lanzou_need_passwd">Был Ланцзоу болешеүе өсөн алыу коды кәрәк, GitHub-ҙан тейҙәрегеҙ (йәки Release аңлатмаһынан алыу кодын эҙләгеҙ)</string>
+    <string name="update_lanzou_wrong_passwd">Ланцзоу алыу коды хата</string>
+    <string name="update_err_resolve_failed">Тәржемәләп булманы</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Ланцзоуға ҡаршы бөжөк тикшереүе уңышһыҙ</string>
+    <string name="update_err_no_frame">Ланцзоу тейҙәреү битеһен тәржемәләп булманы (тейҙәреү кадры табылманы)</string>
+    <string name="update_err_no_file_id">Ланцзоу файл билдәһен тәржемәләп булманы</string>
+    <string name="update_err_no_sign">Ланцзоу имзанын тәржемәләп булманы</string>
+    <string name="update_err_ajax_request">Интерфейс һоратыуы уңышһыҙ</string>
+    <string name="update_err_api_request">Ланцзоу интерфейс һоратыуы уңышһыҙ</string>
+    <string name="update_err_empty_direct">Ланцзоу буш тейҙәреү адресын ҡайтарҙы</string>
+    <string name="update_err_direct_expired">Ланцзоу тейҙәреү адресы иҫкергән, яңынан алығыҙ</string>
+    <string name="update_err_http_request">Һоратыу уңышһыҙ (HTTP %1$d)</string>
+    <string name="update_err_connect">Тейҙәреү серверына тоташып булманы: %1$s</string>
+    <string name="update_err_http">Тейҙәреү уңышһыҙ (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Тейҙәреү тоташыуын булдырып булманы</string>
+    <string name="update_err_empty">Тейҙәреү эсһе буш</string>
+    <string name="update_err_incomplete">Тейҙәреү тулы түгел (%1$d / барыһы %2$d байт), яңынан тейҙәрегеҙ</string>
+    <string name="update_err_interrupted">Тейҙәреү өҙөлдө: %1$s</string>
+    <string name="update_err_not_apk">Тейҙәрелгәне дөрөҫ ҡуйыу төҙөмәһе түгел (бәлки, бит йәки тейҙәреү һылтанмаһы иҫкергән), яңынан тейҙәрегеҙ йәки GitHub-ҙан тейҙәрегеҙ.</string>
+    <string name="update_err_apk_incomplete">Ҡуйыу төҙөмәһе эсһе тулы түгел, яңынан тейҙәрегеҙ йәки GitHub-ҙан тейҙәрегеҙ.</string>
+    <string name="update_err_apk_unparsable">Ҡуйыу төҙөмәһен тәржемәләп булманы (бәлки, тейҙәреү тулы түгел), яңынан тейҙәрегеҙ йәки GitHub-ҙан тейҙәрегеҙ.</string>
+    <string name="update_err_no_install_permission">«Билдәһеҙ ҡушымталарҙы урынлаштырыу» рөхсәте әле алынмаған</string>
+    <string name="update_err_installer_failed">Система ҡуйыусыһын саҡырып булманы (%1$s), файл идарасыһында ҡуйыу төҙөмәһен ҡулдан асып урынлаштырығыҙ</string>
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Tutlayt taqbaylit (kab).
+  Yettwasuqel seg res/values/strings_*.xml (asnulfu s usebter n tsusnawt, tutlayt n umagrad).
+  Iswiyen ttwamṣadan d umagrad; imetteg (%1$s / %1$d) d yimeslayen n uɣtu qqimen am akken.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+    <!-- Izuwag n wedrim -->
+    <string name="update_github_url_missing">Ulac tansa n usider n GitHub; ɛreḍ tikelt-nniḍen.</string>
+    <string name="update_flavor_standard">Lqem standard</string>
+    <string name="update_flavor_go">Lqem Go</string>
+    <string name="update_lanzou_url_missing">Lqem-a ur yefk ara aseɣwen n usider n Lanzou Cloud; tzemreḍ ad tesqedceḍ GitHub.</string>
+    <string name="update_apk_direct_missing">Lqem-a ur yefk ara aseɣwen n upakkej yemsawa d lqem-ik; fren APK amsawa deg usebter n GitHub.</string>
+    <string name="update_install_permission_missing">Tasiragt «sers isnasen war issin» ur tettwaf ara, ihi asers awurman ur yezmir ara. Sireg-it deg iɣewwaren n unagraw syen ɛreḍ tikelt-nniḍen.</string>
+    <string name="update_error_unknown">Tuccḍa tarussint</string>
+    <string name="update_fail_lanzou">Asider seg Lanzou Cloud ur yeddi ara</string>
+    <string name="update_fail_github">Asider seg GitHub ur yeddi ara</string>
+    <string name="update_lanzou_resolving">Yettwafru useɣwen n usider n Lanzou Cloud…</string>
+    <string name="update_lanzou_downloading">Yettwasider seg Lanzou Cloud…</string>
+    <string name="update_github_downloading">Yettwasider seg GitHub…</string>
+    <string name="update_unzipping">Yettwafsex upakkej…</string>
+    <string name="update_notes_empty">Lqem-a ur yesεi ara tizmilin n lqem.</string>
+
+    <!-- Isfuyla n lqem Go -->
+    <string name="update_use_normal_title">Sseqdec lqem standard</string>
+    <string name="update_use_normal_body">Anagraw n yalugan-a d Android 10 neɣ ugar, lqem Go afessus ur yettwaqbal ara; lqem aqdim ur yezmir ara ad yettwasqdec.\n\nLqem standard (ZLC) yers yakan deg yalugan-a — ldi-t syen kemmel (ileqman imaynuten ur sεin ara lqem Go; lqem aqdim yezmer ad yettwakkes i ufran n wammud).</string>
+    <string name="update_open_normal">Ldi lqem standard</string>
+    <string name="update_must_update_title">Yessefk ad tleqqem send ad tkemmleḍ</string>
+    <string name="update_forced_body">Anagraw n yalugan-a d Android 10 neɣ ugar, lqem Go afessus ur yettwaqbal ara; lqem aqdim ur yezmir ara ad yettwasqdec, ileqman imaynuten ur sεin ara lqem Go.\n\nQqen ɣer uẓeṭṭa syen sit ɣef «Ɛawed» akken ad tawiḍ apakkej n lqem standard.</string>
+    <string name="update_retry">Ɛawed</string>
+    <string name="update_switch_normal_body">Anagraw n yalugan-a d Android 10 neɣ ugar, lqem Go afessus ur yettwaqbal ara; lqem aqdim ur yezmir ara ad yettwasqdec.\nSider syen sers lqem standard akken ad tkemmleḍ (ileqman imaynuten ur sεin ara lqem Go).</string>
+
+    <!-- Asider / tisiregt / izuwag n ugmuḍ -->
+    <string name="update_downloading_title">Sider alqem</string>
+    <string name="update_cancel">Sefsex</string>
+    <string name="update_need_permission_title">Tasiragt n users tesra</string>
+    <string name="update_need_permission_body">Asers n lqem amaynut yesra tasiragt n unagraw «sers isnasen war issin».\n\nSit ɣef «Sireg», sireg-it deg iɣewwaren syen uɣal ɣer usnas; asers ad ikemmel awurman (ulac ḥaja ad tsidreḍ tikelt-nniḍen).</string>
+    <string name="update_grant">Sireg</string>
+    <string name="update_notice_title">Alɣu</string>
+    <string name="update_got_it">Fhimeɣ</string>
+
+    <!-- Asfaylu ameqqran / tizmilin n lqem -->
+    <string name="update_notes_title">v%1$s · Tizmilin n lqem</string>
+    <string name="update_back">Uɣal</string>
+    <string name="update_title_switch_normal">Beddel ɣer lqem standard</string>
+    <string name="update_title_reinstall">Sers tikelt-nniḍen lqem-a</string>
+    <string name="update_title_new_version">Yella lqem amaynut</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Ad yessider syen ad yers lqem-a tikelt-nniḍen (ad yefsex asnas n tura).\nAyi yettwasqdec i usenqed n wudem n uleqqem.</string>
+    <string name="update_view_notes">Wali tizmilin n lqem</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud ur yella ara tura</string>
+    <string name="update_download_lanzou">Sider seg Lanzou Cloud</string>
+    <string name="update_download_github">Sider seg GitHub</string>
+    <string name="update_download_browser">Sider seg iminig</string>
+    <string name="update_later">Leqqem ɣer zdat</string>
+    <string name="update_later_switch">Beddel ɣer zdat</string>
+    <string name="update_skip_version">Zgel lqem-a</string>
+</resources>

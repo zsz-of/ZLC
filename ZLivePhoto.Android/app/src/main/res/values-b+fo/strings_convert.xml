@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Faroese (fo) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Ókent úttaksformat: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Ókent Live Photo-format (ikki Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Forsíðumynd manglar ella er tóm</string>
+    <string name="conv_video_missing">Video manglar ella er tómt</string>
+    <string name="conv_video_too_large">Videoið er ov stórt (%1$d MB) til at seta saman sum Live Photo; vel styttra video</string>
+    <string name="conv_transcoded_too_large">Videoið er ov stórt eftir umkóðan (%1$d MB) til at seta saman Live Photo</string>
+    <string name="conv_video_too_large_compose">Videoið er ov stórt (%1$d MB) til at seta saman Live Photo</string>
+    <string name="conv_cover_heic_go">Forsíðan er ein HEIC-mynd (Go-útgáfan stuðlar ikki umkóðan; flyt hana út sum JPEG á iPhone og royn aftur)</string>
+    <string name="conv_cover_invalid_heic">Forsíðan er ikki gild mynd (HEIC krevur at kerfið stuðlar HEIF-avkóðan)</string>
+    <string name="conv_cover_not_jpeg_go">Forsíðan er ikki JPEG-mynd (Go-útgáfan stuðlar ikki umkóðan; brúka JPEG-mynd í staðin)</string>
+    <string name="conv_cover_invalid_image">Forsíðan er ikki gild mynd (bert JPEG/WebP/PNG eru stuðlað)</string>
+    <string name="conv_reencode_failed">Endurkóðan av video mislukkaðist: %1$s</string>
+    <string name="conv_remux_failed">Endurpakkan av konteinari mislukkaðist: %1$s</string>
+    <string name="conv_codec_unknown">Ikki kendur H.264/H.265-video</string>
+    <string name="conv_codec_is">Kóðanin er %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Videoið „%1$s“ %2$s; bert at skifta konteinar (endurpakka) broytir ikki kóðanina, so tað er ikki møguligt at seta saman Live Photo.\n\nVel „Endurkóðan“ undir „Stillingar → Videoumkóðan → Umkóðanaháttur“, ella broyt videoið fyrst við øðrum tóli til MP4 við H.264/H.265-kóðan.</string>
+    <string name="conv_hint_no_encoder">Videoið er ikki í vanligum MP4-konteinari (MOV / MKV / WebM / AVI o.s.fr.), og núverandi „umkóðanaháttur“ endurkóðar ikki, so tað er ikki møguligt at seta saman Live Photo.\n\nVel „Endurkóðan“ undir „Stillingar → Videoumkóðan → Umkóðanaháttur“ (vanliga útgáfan hevur innbyggdan ffmpeg-kóðara; Go-útgáfan hevur ikki umkóðara — brúka vanliga útgáfu í staðin), ella broyt videoið fyrst til vanliga MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">Greitt sum %1$s</string>
+    <string name="conv_log_same_format_copied">Sama format í keldu og máli, avritað óbroytt (után tapi)</string>
+    <string name="conv_log_extra_tracks_bypass">Kelduvideoið inniheldur spør, ið hvørki eru ljóð ella mynd (%1$s); sleppt beinum avriti á sama formati og farið í fulla útskriving til reinsan</string>
+    <string name="conv_log_ts_fallback">Tíðarstimpill forsíðurammunnar manglar; felltur aftur á miðjuna av videoinum sambært forskrift</string>
+    <string name="conv_log_brand_normalized">Merkið á videokonteinaranum er normað (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Videoið inniheldur aukaspør (%1$s); ikki møguligt at reinsa, skrivað óbroytt (úrsliðið verður møguliga ikki spilandi við langtrýstingi á sumum tækjum)</string>
+    <string name="conv_log_extra_tracks_removed">Aukaspørum úr videoinum er strikað (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Kelduvideoið %1$s; endurpakkan av konteinari loysir tað ikki (%2$s). Um úrsliðið tó ikki kann spilast við langtrýstingi, vel „Endurkóðan“ undir „Stillingar → Videoumkóðan → Umkóðanaháttur“</string>
+    <string name="conv_log_reencoding">Kelduvideoið %1$s; endurkóðað sambært stillingum til 8bit + AAC fyri at betra samhald við album</string>
+    <string name="conv_log_reencode_result_unusable">Úrsliðið av endurkóðan er ónýtbært; skrivað óbroytt (úrsliðið verður møguliga ikki spilandi við langtrýstingi á sumum tækjum)</string>
+    <string name="conv_log_reencode_still_risky">Eftir endurkóðan eru enn áhættuatkvøðir (%1$s)</string>
+    <string name="conv_log_reencode_failed">Endurkóðan mislukkaðist (%1$s); skrivað óbroytt (úrsliðið verður møguliga ikki spilandi við langtrýstingi á sumum tækjum)</string>
+    <string name="conv_log_cover_heic_converted">Forsíðan er HEIC (ikki JPEG); umkóðað til vanliga JPEG áðrenn pakkað var saman</string>
+    <string name="conv_log_compose_sizes">Samsetan: mynd %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Umkóðari ikki virkjaður: bert konteinarmerkið verður skrivað (MOV → MP4), ongin endurkóðan</string>
+    <string name="conv_tag_convert">Broyting</string>
+    <string name="conv_tag_transcode">Umkóðan</string>
+    <string name="conv_tag_compose">Samsetan</string>
+    <string name="conv_blocker_no_encoder">Innbyggdur umkóðari er ikki tøkur</string>
+    <string name="conv_blocker_mode_no_encode">Núverandi „umkóðanaháttur“ endurkóðar ikki</string>
+    <string name="conv_addon_unavailable">Innbyggdur umkóðari er ikki tøkur</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-umkóðan mislukkaðist: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-endurpakkan av konteinari mislukkaðist: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Umkóða video við ffmpeg til vanliga MP4 (%1$s / crf %2$d / %3$s; bert mynd- og ljóðspør eru høgd)</string>
+    <string name="conv_log_transcode_done">Umkóðan av video liðug (%1$d KB)</string>
+    <string name="conv_log_remuxing">Endurpakka videokonteinaran til vanliga MP4 (bert konteinarin verður skiftur, ongin endurkóðan)</string>
+    <string name="conv_log_remux_done">Endurpakkan av konteinari liðug (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Samsetan</string>
+    <string name="conv_reminder_cat_convert">Broyting</string>
+    <string name="conv_reminder_cat_update">Dagføring</string>
+    <string name="conv_reminder_video_over3s_title">Videoið er longri enn 3 sekund</string>
+    <string name="conv_reminder_video_over3s_message">Valda videoið er longri enn 3 sekund; Live Photo sett saman úr tí kann hava samhaldstruplugar:\n\n• Kann møguliga ikki spilast óvanliga\n• Kann møguliga ikki verða viðurkent av kerfisalbuminum\n• Sum tæki kunnu møguliga ikki viðurkenna Live Photo-ið</string>
+    <string name="conv_reminder_legacy_go_title">Eldri útgáva funnin</string>
+    <string name="conv_reminder_legacy_go_message">Á tækinum er enn uppsett eldri útgáva av forritinum (Go-útgáfan). Hon virkar ikki longur á hesum tæki; tak hana burtur fyri at fría pláss.</string>
+    <string name="conv_reminder_replace_risk_title">Útskiftingarhamur hevur vátlu um skemdir</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Í útskiftingarhami verður úrsliðið av broytingini skrivað beint aftur í upprunaligu fíluna; tá upprunafílan verður yvurskrivað, er ikki møguligt at fáa hana aftur.\n\n• Um forritið verður avbrotið, meðan skriving stendur á, pláss er ikki nóg ella lóvir eru afturkallað, kann upprunafílan skemmast\n• Broytingin sjálv tryggjar ikki árangur í øllum førum; um hon mislukkast, kann upprunafílan longu hava verið ónýtbær\n• Íleggjast verður at royna fyrst við einari ella tveimur fílum og halda so áfram í bundti, tá alt virkar\n• Tak trygdaravrit av týdningarmiklum ljósmyndum áðrenn\n\nHesin eginleikin verður latin út „sum hann er“; vátlanin av nýtsluni ber tú, og höfundurin ber onga ábyrgd av skemddum ella missi av fílum.</string>
+    <string name="conv_reminder_dont_remind">Vís ikki aftur</string>
+    <string name="conv_reminder_confirm_ok">Í lagi</string>
+    <string name="conv_reminder_uninstall">Avinstallera</string>
+</resources>

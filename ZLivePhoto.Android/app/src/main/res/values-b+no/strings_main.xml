@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Norwegian (no) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="main_status_ready">Klar</string>
+    <string name="main_status_location_granted">Posisjonstillatelsen er gitt; GPS-metadataene beholdes etter konvertering</string>
+    <string name="main_status_location_denied">Posisjonstillatelsen er ikke gitt: de konverterte bildene mister GPS-posisjonsinformasjon</string>
+    <string name="main_status_all_files_granted">Tillatelsen “Tilgang til alle filer” er gitt; konverteringen skriver direkte til gallerimappen og beholder all posisjonsinformasjon</string>
+    <string name="main_status_all_files_denied">Tillatelsen “Tilgang til alle filer” er ikke gitt: på enkelte enheter kan posisjonsinformasjon gå tapt etter konvertering</string>
+    <string name="main_status_read_granted">Tillatelsen til å lese bilder og videoer er gitt</string>
+    <string name="main_status_video_missing">Tillatelsen er gitt, men videotillatelsen mangler: den tilhørende videoen til Live Photos med to filer kan ikke finnes</string>
+    <string name="main_status_permission_denied">Tillatelsen er ikke gitt; du kan trykke “Legg til filer” igjen</string>
+    <string name="main_status_folder_not_selected">Ingen mappe valgt</string>
+    <string name="main_status_folder_unavailable">Den valgte mappen kan ikke åpnes (bare lokale lagringsmapper støttes)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Forrige økt gjenopprettet (%1$d fil)</item>
+        <item quantity="other">Forrige økt gjenopprettet (%1$d filer)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Forrige avslutning var unormal; den ufullstendige listen er tømt</string>
+    <string name="main_status_compose_blocks_extract">Køen inneholder sammensetningsoppgaver; det er ikke mulig å bytte til utpakking</string>
+    <string name="main_status_replace_off_mutex">Erstattingsmodus er slått av (kan ikke kombineres med “Slett originalene etter behandling”)</string>
+    <string name="main_status_delete_needs_all_files">Automatisk sletting av originalene krever tillatelsen “Tilgang til alle filer”; gi den først</string>
+    <string name="main_status_replace_off">Erstattingsmodus er slått av; konverteringsresultatene skrives igjen til gallerimappen</string>
+    <string name="main_status_replace_needs_all_files">Erstattingsmodus krever tillatelsen “Tilgang til alle filer”; gi den først</string>
+    <string name="main_status_delete_off_mutex">“Slett originalene etter behandling” er slått av (kan ikke kombineres med Erstattingsmodus)</string>
+    <string name="main_status_loading_albums">Laster album…</string>
+    <string name="main_status_no_albums">Ingen album funnet</string>
+    <string name="main_status_compose_no_photo">Ingen bilder valgt; kan ikke settes sammen</string>
+    <string name="main_status_compose_no_video">Ingen videoer valgt; kan ikke settes sammen</string>
+    <string name="main_status_compose_all_added">Alle valgte bilder er allerede i listen</string>
+    <string name="main_status_compose_paired">%1$d bilder og %2$d videoer — %3$d sammensetningsoppgaver er lagt til (basert på det minste antallet)</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d sammensetningsoppgave lagt til — trykk “Start konvertering” for å sette sammen</item>
+        <item quantity="other">%1$d sammensetningsoppgaver lagt til — trykk “Start konvertering” for å sette sammen</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (utdataformatet er automatisk byttet til Google)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Importerer %1$d delt bilde…</item>
+        <item quantity="other">Importerer %1$d delte bilder…</item>
+    </plurals>
+    <string name="main_status_import_failed">Import mislyktes: %1$s</string>
+    <string name="main_status_import_done_partial">Import fullført: %1$d lyktes, %2$d mislyktes</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Import fullført: totalt %1$d fil importert</item>
+        <item quantity="other">Import fullført: totalt %1$d filer importert</item>
+    </plurals>
+    <string name="main_status_import_stopped">Importen er stoppet: %1$d lyktes, %2$d mislyktes</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Importerer %1$d fil…</item>
+        <item quantity="other">Importerer %1$d filer…</item>
+    </plurals>
+    <string name="main_status_importing_progress">Importerer %1$d/%2$d…</string>
+    <string name="main_status_stopping">Stopper… (stopper når den gjeldende filen er ferdig)</string>
+    <string name="main_status_stopping_import">Stopper importen…</string>
+    <string name="main_status_removed">%1$s fjernet</string>
+    <string name="main_status_cleared">Tømt</string>
+    <string name="main_status_nothing_to_convert">Ingen filer å konvertere</string>
+    <string name="main_status_folder_unreadable">Den valgte mappen kan ikke leses</string>
+    <string name="main_status_scanning_folder">Skanner mappen…</string>
+    <string name="main_status_no_images">Ingen bilder funnet i den valgte mappen</string>
+    <string name="main_status_batch_importing">Masseimporterer %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Masseimporten er stoppet: totalt %1$d Live Photo importert</item>
+        <item quantity="other">Masseimporten er stoppet: totalt %1$d Live Photos importert</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Masseimporten er stoppet: totalt %1$d Live Photo importert, %2$d ikke-Live-fil hoppet over</item>
+        <item quantity="other">Masseimporten er stoppet: totalt %1$d Live Photos importert, %2$d ikke-Live-filer hoppet over</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Masseimport fullført: totalt %1$d Live Photo importert</item>
+        <item quantity="other">Masseimport fullført: totalt %1$d Live Photos importert</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Masseimport fullført: totalt %1$d Live Photo importert, %2$d ikke-Live-fil hoppet over</item>
+        <item quantity="other">Masseimport fullført: totalt %1$d Live Photos importert, %2$d ikke-Live-filer hoppet over</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Stoppet: %2$d av %1$d filer behandlet; %3$d kildefiler erstattet</string>
+    <string name="main_status_stopped_export">Stoppet: %2$d av %1$d filer behandlet; %3$d eksportert til galleriet</string>
+    <string name="main_status_done_replace_reason">Ferdig: %1$d filer behandlet; %2$d kildefiler erstattet (årsak: %3$s)</string>
+    <string name="main_status_done_export_reason">Ferdig: %1$d filer behandlet; %2$d eksportert til galleriet (årsak: %3$s)</string>
+    <string name="main_status_done_replace">Ferdig: %1$d filer behandlet; %2$d kildefiler erstattet</string>
+    <string name="main_status_done_export">Ferdig: %1$d filer behandlet; %2$d eksportert til galleriet</string>
+    <string name="main_status_keep_originals">%1$s; tillatelsen “Full lagringstilgang” er ikke gitt, så originalene er beholdt</string>
+    <string name="main_info_detecting">Analyserer…</string>
+    <string name="main_info_unrecognized">Ugjenkjennelig Live Photo-format</string>
+    <string name="main_info_converting">Konverterer…</string>
+    <string name="main_info_compose_task">Sammensetningsoppgave (trykk “Start konvertering” for å sette sammen)</string>
+    <string name="main_info_done_replaced">Ferdig (%1$d kildefiler erstattet)</string>
+    <string name="main_info_done_skipped">Ferdig (hoppet over: navnekonflikt)</string>
+    <string name="main_info_done_exported">Ferdig (%1$d eksportert)</string>
+    <string name="main_info_failed">Mislyktes: %1$s</string>
+    <string name="main_progress_added">Lagt til %1$d/%2$d</string>
+    <string name="main_progress_processed">Behandlet %1$d/%2$d</string>
+    <string name="main_progress_imported">Importert %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Tillatelsen til å lese bilder og videoer er nødvendig</string>
+    <string name="main_dialog_permission_message">Appen må lese bildene og videoene på enheten din:\n\n• Bildetillatelse: skanner enhetens album og gjenkjenner Live Photos i dem\n• Videotillatelse: finner den tilhørende videoen til Live Photos med to filer\n• Posisjonstillatelse: beholder bildenes GPS-metadata (mangler den, går posisjonsinformasjonen tapt ved konvertering)\n\nEtter et avslag kan den innebygde velgeren ikke brukes; du kan senere trykke “Legg til filer” igjen og gi tillatelsen.</string>
+    <string name="main_dialog_settings_title">Bilde- og videotillatelsen må gis manuelt</string>
+    <string name="main_dialog_settings_message">Du valgte tidligere “Ikke spør igjen”, så systemet viser ikke lenger tillatelsesdialogen.\n\nGå til appens detaljeside → Tillatelser → Bilder og videoer, gi tilgangstillatelsen manuelt, og gå tilbake til appen.\n\nMerk: både tillatelsen “Bilder” og tillatelsen “Videoer” må gis — ellers kan ikke Live Photos med to filer finne den tilhørende videoen.</string>
+    <string name="main_dialog_allfiles_title_delete">Automatisk sletting av originalene krever “Tilgang til alle filer”</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">Automatisk sletting av originalene støttes ikke på denne enheten</string>
+    <string name="main_dialog_allfiles_title_replace">Erstattingsmodus krever “Tilgang til alle filer”</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">Erstattingsmodus støttes ikke på denne enheten</string>
+    <string name="main_dialog_allfiles_title_location">Det anbefales å gi tillatelsen “Tilgang til alle filer”</string>
+    <string name="main_dialog_allfiles_delete_message">“Slett originalene etter behandling” sletter originalfilene på disken direkte (bildene og deres tilhørende videoer). Handlingen kan ikke angres, så tillatelsen “Tilgang til alle filer” må gis først.\n\nFørst etter godkjenningen blir bryteren tilgjengelig; deretter kan du slå den på selv.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">Det gjeldende systemet (Android 10 og eldre) tilbyr ikke tillatelsen “Tilgang til alle filer”, så originalfilene på disken kan ikke slettes direkte. Derfor støttes ikke “Slett originalene etter behandling” på denne enheten.\n\nDu kan etter konverteringen selv rydde originalene via systemgalleriet.</string>
+    <string name="main_dialog_allfiles_replace_message">“Erstattingsmodus” skriver konverteringsresultatet direkte tilbake til originalfilene på disken (originalinnholdet overskrives). Handlingen kan ikke angres, så tillatelsen “Tilgang til alle filer” må gis først.\n\nFørst etter godkjenningen blir bryteren tilgjengelig; deretter kan du slå den på selv.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">Det gjeldende systemet (Android 10 og eldre) tilbyr ikke tillatelsen “Tilgang til alle filer”, så originalfilene på disken kan ikke skrives om direkte. Derfor støttes ikke Erstattingsmodus på denne enheten.\n\nDu kan fortsette å konvertere på standardmåten; resultatene skrives til gallerimappen.</string>
+    <string name="main_dialog_allfiles_location_message">På enkelte enheter (f.eks. Meizu) fjerner skriving via systemgalleriets grensesnitt GPS-posisjonsinformasjonen, slik at de konverterte bildene mister posisjonsdata.\n\nNår “Tilgang til alle filer” er gitt, skriver appen direkte til gallerimappen og beholder all posisjonsmetadata.\n\nUten tillatelsen fungerer konverteringen fortsatt, men på enkelte enheter kan posisjonsinformasjonen gå tapt.</string>
+    <string name="main_dialog_conflict_title">Konflikt i utdatafilnavn</string>
+    <string name="main_dialog_conflict_message">Det finnes allerede en fil med samme navn i utdatamappen:\n%1$s\n\nVelg hvordan den skal behandles.</string>
+    <string name="main_label_conflict_always">Bruk denne metoden for senere konflikter</string>
+    <string name="main_btn_grant">Tillat</string>
+    <string name="main_btn_deny">Avslå</string>
+    <string name="main_btn_go_settings">Gå til innstillinger</string>
+    <string name="main_btn_cancel">Avbryt</string>
+    <string name="main_btn_grant_access">Gi tillatelse</string>
+    <string name="main_btn_got_it">Forstått</string>
+    <string name="main_btn_not_now">Ikke nå</string>
+    <string name="main_btn_skip">Hopp over</string>
+    <string name="main_btn_overwrite">Overskriv</string>
+    <string name="main_btn_auto_rename">Gi nytt navn automatisk</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d originalfil slettet</item>
+        <item quantity="other">%1$d originalfiler slettet</item>
+    </plurals>
+    <string name="main_delete_nothing">Ingen originaler å slette</string>
+    <string name="main_delete_partial">%1$d originalfiler slettet (%2$d kunne ikke slettes og er beholdt)</string>
+    <string name="main_delete_failed">Originalene kunne ikke slettes (filen er i bruk, eller det mangler skrivetillatelse); de er beholdt</string>
+    <string name="main_export_missing_output">Konverteringsresultatet mangler eller er tomt: %1$s</string>
+    <string name="main_export_missing_output_bare">Konverteringsresultatet mangler eller er tomt</string>
+    <string name="main_export_insert_null">MediaStore insert returnerte null</string>
+    <string name="main_export_output_stream">MediaStore-utdatastrømmen er ikke tilgjengelig</string>
+    <string name="main_export_write_failed">MediaStore-skriving mislyktes: %1$s</string>
+    <string name="main_export_mkdir_failed">Kunne ikke opprette gallerimappen %1$s</string>
+    <string name="main_export_dir_write_failed">Skriving til gallerimappen mislyktes: %1$s</string>
+    <string name="main_export_no_source">Kildefilen kunne ikke finnes; originalen ble ikke erstattet</string>
+    <string name="main_export_companion_failed">Kunne ikke skrive den tilhørende filen tilbake: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Kildefilens mappe er ikke skrivbar; den tilhørende filen kunne ikke skrives tilbake</string>
+    <string name="main_export_source_dir_unavailable">Kildefilens mappe er utilgjengelig: %1$s</string>
+    <string name="main_export_replace_failed">Kunne ikke erstatte kildefilen: %1$s</string>
+    <string name="main_export_replace_failed_bare">Kunne ikke erstatte kildefilen</string>
+</resources>

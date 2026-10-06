@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Malayalam (ml) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">തയ്യാർ</string>
+    <string name="main_status_location_granted">ലൊക്കേഷൻ അനുമതി ലഭിച്ചു; പരിവർത്തനത്തിന് ശേഷം GPS മെറ്റാഡാറ്റ നിലനിർത്തും</string>
+    <string name="main_status_location_denied">ലൊക്കേഷൻ അനുമതി നൽകിയിട്ടില്ല: പരിവർത്തനത്തിന് ശേഷമുള്ള ഫോട്ടോയിൽ GPS ലൊക്കേഷൻ വിവരം നഷ്ടപ്പെടും</string>
+    <string name="main_status_all_files_granted">“എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” അനുമതി ലഭിച്ചു; പരിവർത്തനം നേരിട്ട് ആൽബം ഡയറക്ടറിയിൽ എഴുതും, ലൊക്കേഷൻ വിവരം പൂർണമായി നിലനിർത്തും</string>
+    <string name="main_status_all_files_denied">“എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” അനുമതി നൽകിയിട്ടില്ല: ചില ഉപകരണങ്ങളിൽ പരിവർത്തനത്തിന് ശേഷം ലൊക്കേഷൻ വിവരം നഷ്ടപ്പെടാം</string>
+    <string name="main_status_read_granted">ഫോട്ടോയും വീഡിയോയും വായിക്കാനുള്ള അനുമതി ലഭിച്ചു</string>
+    <string name="main_status_video_missing">അനുമതി ലഭിച്ചെങ്കിലും വീഡിയോ അനുമതി ഇല്ല: രണ്ട്-ഫയൽ ലൈവ് ഫോട്ടോയുടെ അനുബന്ധ വീഡിയോ കണ്ടെത്താനാകില്ല</string>
+    <string name="main_status_permission_denied">അനുമതി നൽകിയിട്ടില്ല; “ഫയലുകൾ ചേർക്കുക” വീണ്ടും ക്ലിക്ക് ചെയ്യാം</string>
+    <string name="main_status_folder_not_selected">ഫോൾഡർ തിരഞ്ഞെടുത്തിട്ടില്ല</string>
+    <string name="main_status_folder_unavailable">തിരഞ്ഞെടുത്ത ഫോൾഡർ ആക്സസ് ചെയ്യാനാകില്ല (ലോക്കൽ സ്റ്റോറേജ് ഡയറക്ടറികൾ മാത്രം പിന്തുണയ്ക്കുന്നു)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">അവസാന സെഷൻ പുനഃസ്ഥാപിച്ചു (%1$d ഫയൽ)</item>
+        <item quantity="other">അവസാന സെഷൻ പുനഃസ്ഥാപിച്ചു (%1$d ഫയൽ)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">അവസാനമായി അസാധാരണമായി പുറത്തുകടന്നത് കണ്ടെത്തി; പൂർത്തിയാകാത്ത ലിസ്റ്റ് മായ്ച്ചു</string>
+    <string name="main_status_compose_blocks_extract">ക്യൂവിൽ സംയോജന ജോലികൾ ഉള്ളതിനാൽ വേർതിരിക്കൽ മോഡിലേക്ക് മാറ്റാനാകില്ല</string>
+    <string name="main_status_replace_off_mutex">റീപ്ലേസ് മോഡ് ഓഫാക്കി (പ്രോസസിംഗ് പൂർത്തിയായാൽ ഒറിജിനൽ ഫോട്ടോ ഇല്ലാതാക്കുകയുമായി പരസ്പരം ഒഴിവാക്കുന്നു)</string>
+    <string name="main_status_delete_needs_all_files">ഒറിജിനൽ ഫോട്ടോ സ്വയമേവ ഇല്ലാതാക്കാൻ “എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” അനുമതി വേണം; ആദ്യം അനുമതി നൽകുക</string>
+    <string name="main_status_replace_off">റീപ്ലേസ് മോഡ് ഓഫാക്കി; പരിവർത്തന ഫലം വീണ്ടും ആൽബം ഡയറക്ടറിയിൽ എഴുതും</string>
+    <string name="main_status_replace_needs_all_files">റീപ്ലേസ് മോഡിന് “എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” അനുമതി വേണം; ആദ്യം അനുമതി നൽകുക</string>
+    <string name="main_status_delete_off_mutex">പ്രോസസിംഗ് പൂർത്തിയായാൽ ഒറിജിനൽ ഫോട്ടോ ഇല്ലാതാക്കുക ഓഫാക്കി (റീപ്ലേസ് മോഡുമായി പരസ്പരം ഒഴിവാക്കുന്നു)</string>
+    <string name="main_status_loading_albums">ആൽബങ്ങൾ വായിക്കുന്നു…</string>
+    <string name="main_status_no_albums">ആൽബങ്ങളൊന്നും കണ്ടെത്തിയില്ല</string>
+    <string name="main_status_compose_no_photo">ഫോട്ടോ തിരഞ്ഞെടുത്തിട്ടില്ല; സംയോജിപ്പിക്കാനാകില്ല</string>
+    <string name="main_status_compose_no_video">വീഡിയോ തിരഞ്ഞെടുത്തിട്ടില്ല; സംയോജിപ്പിക്കാനാകില്ല</string>
+    <string name="main_status_compose_all_added">തിരഞ്ഞെടുത്ത എല്ലാ ഫോട്ടോകളും ലിസ്റ്റിൽ ഇതിനകം ഉണ്ട്</string>
+    <string name="main_status_compose_paired">ഫോട്ടോ %1$d, വീഡിയോ %2$d; കുറവുള്ള ഭാഗം അടിസ്ഥാനമാക്കി %3$d സംയോജന ജോലികൾ ചേർത്തു</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">%1$d സംയോജന ജോലി ചേർത്തു; സംയോജിപ്പിക്കാൻ “പരിവർത്തനം ആരംഭിക്കുക” ക്ലിക്ക് ചെയ്യുക</item>
+        <item quantity="other">%1$d സംയോജന ജോലികൾ ചേർത്തു; സംയോജിപ്പിക്കാൻ “പരിവർത്തനം ആരംഭിക്കുക” ക്ലിക്ക് ചെയ്യുക</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (ഔട്ട്പുട്ട് ഫോർമാറ്റ് സ്വയമേവ Google ആക്കി മാറ്റി)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">പങ്കിട്ട %1$d ചിത്രം ഇമ്പോർട്ട് ചെയ്യുന്നു…</item>
+        <item quantity="other">പങ്കിട്ട %1$d ചിത്രങ്ങൾ ഇമ്പോർട്ട് ചെയ്യുന്നു…</item>
+    </plurals>
+    <string name="main_status_import_failed">ഇമ്പോർട്ട് പരാജയപ്പെട്ടു: %1$s</string>
+    <string name="main_status_import_done_partial">ഇമ്പോർട്ട് പൂർത്തിയായി: വിജയിച്ചത് %1$d, പരാജയപ്പെട്ടത് %2$d</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">ഇമ്പോർട്ട് പൂർത്തിയായി: ആകെ %1$d ഫയൽ ഇമ്പോർട്ട് ചെയ്തു</item>
+        <item quantity="other">ഇമ്പോർട്ട് പൂർത്തിയായി: ആകെ %1$d ഫയൽ ഇമ്പോർട്ട് ചെയ്തു</item>
+    </plurals>
+    <string name="main_status_import_stopped">ഇമ്പോർട്ട് നിർത്തി: വിജയിച്ചത് %1$d, പരാജയപ്പെട്ടത് %2$d</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">%1$d ഫയൽ ഇമ്പോർട്ട് ചെയ്യുന്നു…</item>
+        <item quantity="other">%1$d ഫയലുകൾ ഇമ്പോർട്ട് ചെയ്യുന്നു…</item>
+    </plurals>
+    <string name="main_status_importing_progress">ഇമ്പോർട്ട് ചെയ്യുന്നു %1$d/%2$d…</string>
+    <string name="main_status_stopping">നിർത്തുന്നു… (നിലവിലെ ഫയൽ പൂർത്തിയാക്കിയ ശേഷം നിർത്തും)</string>
+    <string name="main_status_stopping_import">ഇമ്പോർട്ട് നിർത്തുന്നു…</string>
+    <string name="main_status_removed">%1$s നീക്കം ചെയ്തു</string>
+    <string name="main_status_cleared">മായ്ച്ചു</string>
+    <string name="main_status_nothing_to_convert">പരിവർത്തിക്കാവുന്ന ഫയലുകളില്ല</string>
+    <string name="main_status_folder_unreadable">തിരഞ്ഞെടുത്ത ഫോൾഡർ വായിക്കാനാകില്ല</string>
+    <string name="main_status_scanning_folder">ഫോൾഡർ സ്കാൻ ചെയ്യുന്നു…</string>
+    <string name="main_status_no_images">തിരഞ്ഞെടുത്ത ഫോൾഡറിൽ ചിത്രങ്ങളൊന്നും കണ്ടെത്തിയില്ല</string>
+    <string name="main_status_batch_importing">ബാച്ച് ഇമ്പോർട്ട് ചെയ്യുന്നു %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">ബാച്ച് ഇമ്പോർട്ട് നിർത്തി: ആകെ %1$d ലൈവ് ഫോട്ടോ ഇമ്പോർട്ട് ചെയ്തു</item>
+        <item quantity="other">ബാച്ച് ഇമ്പോർട്ട് നിർത്തി: ആകെ %1$d ലൈവ് ഫോട്ടോ ഇമ്പോർട്ട് ചെയ്തു</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">ബാച്ച് ഇമ്പോർട്ട് നിർത്തി: ആകെ %1$d ലൈവ് ഫോട്ടോ ഇമ്പോർട്ട് ചെയ്തു, ലൈവ് ഫോട്ടോ അല്ലാത്ത %2$d ഫയൽ ഒഴിവാക്കി</item>
+        <item quantity="other">ബാച്ച് ഇമ്പോർട്ട് നിർത്തി: ആകെ %1$d ലൈവ് ഫോട്ടോ ഇമ്പോർട്ട് ചെയ്തു, ലൈവ് ഫോട്ടോ അല്ലാത്ത %2$d ഫയൽ ഒഴിവാക്കി</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">ബാച്ച് ഇമ്പോർട്ട് പൂർത്തിയായി: ആകെ %1$d ലൈവ് ഫോട്ടോ ഇമ്പോർട്ട് ചെയ്തു</item>
+        <item quantity="other">ബാച്ച് ഇമ്പോർട്ട് പൂർത്തിയായി: ആകെ %1$d ലൈവ് ഫോട്ടോ ഇമ്പോർട്ട് ചെയ്തു</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">ബാച്ച് ഇമ്പോർട്ട് പൂർത്തിയായി: ആകെ %1$d ലൈവ് ഫോട്ടോ ഇമ്പോർട്ട് ചെയ്തു, ലൈവ് ഫോട്ടോ അല്ലാത്ത %2$d ഫയൽ ഒഴിവാക്കി</item>
+        <item quantity="other">ബാച്ച് ഇമ്പോർട്ട് പൂർത്തിയായി: ആകെ %1$d ലൈവ് ഫോട്ടോ ഇമ്പോർട്ട് ചെയ്തു, ലൈവ് ഫോട്ടോ അല്ലാത്ത %2$d ഫയൽ ഒഴിവാക്കി</item>
+    </plurals>
+    <string name="main_status_stopped_replace">നിർത്തി: %1$d ഫയലിൽ %2$d പ്രോസസ് ചെയ്തു, %3$d സ്രോതസ്സ് ഫയൽ മാറ്റി</string>
+    <string name="main_status_stopped_export">നിർത്തി: %1$d ഫയലിൽ %2$d പ്രോസസ് ചെയ്തു, %3$d ആൽബത്തിലേക്ക് എക്സ്പോർട്ട് ചെയ്തു</string>
+    <string name="main_status_done_replace_reason">പൂർത്തിയായി: %1$d ഫയൽ പ്രോസസ് ചെയ്തു, %2$d സ്രോതസ്സ് ഫയൽ മാറ്റി (കാരണം: %3$s)</string>
+    <string name="main_status_done_export_reason">പൂർത്തിയായി: %1$d ഫയൽ പ്രോസസ് ചെയ്തു, %2$d ആൽബത്തിലേക്ക് എക്സ്പോർട്ട് ചെയ്തു (കാരണം: %3$s)</string>
+    <string name="main_status_done_replace">പൂർത്തിയായി: %1$d ഫയൽ പ്രോസസ് ചെയ്തു, %2$d സ്രോതസ്സ് ഫയൽ മാറ്റി</string>
+    <string name="main_status_done_export">പൂർത്തിയായി: %1$d ഫയൽ പ്രോസസ് ചെയ്തു, %2$d ആൽബത്തിലേക്ക് എക്സ്പോർട്ട് ചെയ്തു</string>
+    <string name="main_status_keep_originals">%1$s; “പൂർണ സ്റ്റോറേജ് ആക്സസ്” അനുമതി ലഭിച്ചിട്ടില്ലാത്തതിനാൽ ഒറിജിനൽ ഫോട്ടോകൾ നിലനിർത്തി</string>
+    <string name="main_info_detecting">കണ്ടെത്തുന്നു…</string>
+    <string name="main_info_unrecognized">തിരിച്ചറിയാനാകാത്ത ലൈവ് ഫോട്ടോ ഫോർമാറ്റ്</string>
+    <string name="main_info_converting">പരിവർത്തിക്കുന്നു…</string>
+    <string name="main_info_compose_task">സംയോജന ജോലി (സംയോജിപ്പിക്കാൻ “പരിവർത്തനം ആരംഭിക്കുക” ക്ലിക്ക് ചെയ്യുക)</string>
+    <string name="main_info_done_replaced">പൂർത്തിയായി (%1$d സ്രോതസ്സ് ഫയൽ മാറ്റി)</string>
+    <string name="main_info_done_skipped">പൂർത്തിയായി (ഒഴിവാക്കി: അതേ പേരുള്ള ഫയൽ)</string>
+    <string name="main_info_done_exported">പൂർത്തിയായി (%1$d എക്സ്പോർട്ട് ചെയ്തു)</string>
+    <string name="main_info_failed">പരാജയം: %1$s</string>
+    <string name="main_progress_added">ചേർത്തു %1$d/%2$d</string>
+    <string name="main_progress_processed">പ്രോസസ് ചെയ്തു %1$d/%2$d</string>
+    <string name="main_progress_imported">ഇമ്പോർട്ട് ചെയ്തു %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">ഫോട്ടോയും വീഡിയോയും വായിക്കാനുള്ള അനുമതി വേണം</string>
+    <string name="main_dialog_permission_message">നിങ്ങളുടെ ഉപകരണത്തിലെ ഫോട്ടോകളും വീഡിയോകളും വായിക്കാൻ ഈ ആപ്പിന് അനുമതി വേണം:\n\n• ഫോട്ടോ അനുമതി: ഉപകരണ ആൽബം സ്കാൻ ചെയ്ത് അതിലെ ലൈവ് ഫോട്ടോകൾ തിരിച്ചറിയുക\n• വീഡിയോ അനുമതി: രണ്ട്-ഫയൽ ലൈവ് ഫോട്ടോയുടെ അനുബന്ധ വീഡിയോ കണ്ടെത്തുക\n• ലൊക്കേഷൻ അനുമതി: ഫോട്ടോയിലെ GPS ലൊക്കേഷൻ മെറ്റാഡാറ്റ നിലനിർത്തുക (ഇല്ലെങ്കിൽ പരിവർത്തനത്തിന് ശേഷം ലൊക്കേഷൻ വിവരം നഷ്ടപ്പെടും)\n\nനിരസിച്ചാൽ അന്തർനിർമിത സെലക്ടർ ഉപയോഗിക്കാനാകില്ല; “ഫയലുകൾ ചേർക്കുക” വീണ്ടും ക്ലിക്ക് ചെയ്ത് പിന്നീട് അനുമതി നൽകാം.</string>
+    <string name="main_dialog_settings_title">ഫോട്ടോയും വീഡിയോയും വായിക്കാനുള്ള അനുമതി സ്വയം നൽകേണ്ടതുണ്ട്</string>
+    <string name="main_dialog_settings_message">നിങ്ങൾ മുമ്പ് “വീണ്ടും ചോദിക്കരുത്” തിരഞ്ഞെടുത്തു; സിസ്റ്റം ഇനി അനുമതി ഡയലോഗ് കാണിക്കില്ല.\n\nആപ്പ് വിവര പേജ് → അനുമതികൾ → ഫോട്ടോയും വീഡിയോയും എന്നതിലേക്ക് പോയി സ്വയം അനുമതി നൽകിയ ശേഷം ഈ ആപ്പിലേക്ക് തിരിച്ചുവരിക.\n\nശ്രദ്ധിക്കുക: “ഫോട്ടോ”, “വീഡിയോ” അനുമതികൾ രണ്ടും ഒരുമിച്ച് നൽകണം; അല്ലെങ്കിൽ രണ്ട്-ഫയൽ ലൈവ് ഫോട്ടോയുടെ അനുബന്ധ വീഡിയോ കണ്ടെത്താനാകില്ല.</string>
+    <string name="main_dialog_allfiles_title_delete">ഒറിജിനൽ ഫോട്ടോ സ്വയമേവ ഇല്ലാതാക്കാൻ “എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” വേണം</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">ഈ ഉപകരണത്തിൽ ഒറിജിനൽ ഫോട്ടോ സ്വയമേവ ഇല്ലാതാക്കാനാകില്ല</string>
+    <string name="main_dialog_allfiles_title_replace">റീപ്ലേസ് മോഡിന് “എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” വേണം</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">ഈ ഉപകരണത്തിൽ റീപ്ലേസ് മോഡ് പിന്തുണയ്ക്കുന്നില്ല</string>
+    <string name="main_dialog_allfiles_title_location">“എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” അനുമതി നൽകാൻ ശുപാർശ ചെയ്യുന്നു</string>
+    <string name="main_dialog_allfiles_delete_message">“പ്രോസസിംഗ് പൂർത്തിയായാൽ ഒറിജിനൽ ഫോട്ടോ ഇല്ലാതാക്കുക” ഡിസ്കിലെ ഒറിജിനൽ ഫയലുകൾ (ഫോട്ടോയും അതിന്റെ അനുബന്ധ വീഡിയോയും) നേരിട്ട് ഇല്ലാതാക്കും; ഈ പ്രവർത്തനം പഴയപടിയാക്കാനാകില്ല, അതിനാൽ ആദ്യം “എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” അനുമതി നൽകണം.\n\nഅനുമതി നൽകിയ ശേഷം മാത്രമേ സ്വിച്ച് പ്രവർത്തനക്ഷമമാകൂ; അപ്പോൾ നിങ്ങൾക്ക് സ്വയം ഓൺ ചെയ്യാം.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">നിലവിലെ സിസ്റ്റം (Android 10 അല്ലെങ്കിൽ അതിൽ താഴെ) “എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” അനുമതി നൽകുന്നില്ല; ഡിസ്കിലെ ഒറിജിനൽ ഫയലുകൾ നേരിട്ട് ഇല്ലാതാക്കാനാകില്ല, അതിനാൽ ഈ ഉപകരണത്തിൽ “പ്രോസസിംഗ് പൂർത്തിയായാൽ ഒറിജിനൽ ഫോട്ടോ ഇല്ലാതാക്കുക” പിന്തുണയ്ക്കുന്നില്ല.\n\nപരിവർത്തനം പൂർത്തിയായ ശേഷം സിസ്റ്റം ആൽബം വഴി ഒറിജിനൽ ഫോട്ടോകൾ സ്വയം വൃത്തിയാക്കാം.</string>
+    <string name="main_dialog_allfiles_replace_message">“റീപ്ലേസ് മോഡ്” പരിവർത്തന ഫലം നേരിട്ട് ഡിസ്കിലെ ഒറിജിനൽ ഫയലിൽ തിരികെ എഴുതും (ഒറിജിനൽ ഉള്ളടക്കം മാറ്റും); ഈ പ്രവർത്തനം പഴയപടിയാക്കാനാകില്ല, അതിനാൽ ആദ്യം “എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” അനുമതി നൽകണം.\n\nഅനുമതി നൽകിയ ശേഷം മാത്രമേ സ്വിച്ച് പ്രവർത്തനക്ഷമമാകൂ; അപ്പോൾ നിങ്ങൾക്ക് സ്വയം ഓൺ ചെയ്യാം.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">നിലവിലെ സിസ്റ്റം (Android 10 അല്ലെങ്കിൽ അതിൽ താഴെ) “എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” അനുമതി നൽകുന്നില്ല; ഡിസ്കിലെ ഒറിജിനൽ ഫയലുകൾ നേരിട്ട് മാറ്റാനാകില്ല, അതിനാൽ ഈ ഉപകരണത്തിൽ “റീപ്ലേസ് മോഡ്” പിന്തുണയ്ക്കുന്നില്ല.\n\nസ്ഥിര രീതിയിൽ പരിവർത്തിക്കാം; ഫലം ആൽബം ഡയറക്ടറിയിൽ ഔട്ട്പുട്ട് ചെയ്യും.</string>
+    <string name="main_dialog_allfiles_location_message">ചില ഉപകരണങ്ങളിൽ (ഉദാ: Meizu) സിസ്റ്റം ആൽബം ഇന്റർഫേസ് വഴി എഴുതുമ്പോൾ GPS ലൊക്കേഷൻ വിവരം നീക്കം ചെയ്യപ്പെടും; പരിവർത്തനത്തിന് ശേഷം ഫോട്ടോയിൽ ലൊക്കേഷൻ നഷ്ടപ്പെടും.\n\n“എല്ലാ ഫയലുകളിലേക്കും ആക്സസ്” നൽകിയാൽ ഈ ആപ്പ് നേരിട്ട് ആൽബം ഡയറക്ടറിയിൽ എഴുതും, ലൊക്കേഷൻ മെറ്റാഡാറ്റ പൂർണമായി നിലനിർത്തും.\n\nഅനുമതി നൽകിയില്ലെങ്കിലും പരിവർത്തനം സാധാരണ പോലെ പ്രവർത്തിക്കും; ചില ഉപകരണങ്ങളിൽ ലൊക്കേഷൻ വിവരം നഷ്ടപ്പെടാം.</string>
+    <string name="main_dialog_conflict_title">ഔട്ട്പുട്ട് ഫയൽനാമ സംഘർഷം</string>
+    <string name="main_dialog_conflict_message">ഔട്ട്പുട്ട് ഡയറക്ടറിയിൽ അതേ പേരുള്ള ഫയൽ ഇതിനകം ഉണ്ട്:\n%1$s\n\nദയവായി എങ്ങനെ കൈകാര്യം ചെയ്യണമെന്ന് തിരഞ്ഞെടുക്കുക.</string>
+    <string name="main_label_conflict_always">തുടർന്നുള്ള സംഘർഷങ്ങൾക്ക് ഈ രീതി ഉപയോഗിക്കുക</string>
+    <string name="main_btn_grant">അനുമതി നൽകുക</string>
+    <string name="main_btn_deny">നിരസിക്കുക</string>
+    <string name="main_btn_go_settings">ക്രമീകരണങ്ങളിലേക്ക്</string>
+    <string name="main_btn_cancel">റദ്ദാക്കുക</string>
+    <string name="main_btn_grant_access">അനുമതിക്ക് പോകുക</string>
+    <string name="main_btn_got_it">മനസ്സിലായി</string>
+    <string name="main_btn_not_now">ഇപ്പോൾ വേണ്ട</string>
+    <string name="main_btn_skip">ഒഴിവാക്കുക</string>
+    <string name="main_btn_overwrite">ഓവർറൈറ്റ്</string>
+    <string name="main_btn_auto_rename">സ്വയമേവ പേരുമാറ്റുക</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">%1$d ഒറിജിനൽ ഫയൽ ഇല്ലാതാക്കി</item>
+        <item quantity="other">%1$d ഒറിജിനൽ ഫയൽ ഇല്ലാതാക്കി</item>
+    </plurals>
+    <string name="main_delete_nothing">ഒറിജിനൽ ഫോട്ടോ ഇല്ലാതാക്കേണ്ടതില്ല</string>
+    <string name="main_delete_partial">%1$d ഒറിജിനൽ ഫയൽ ഇല്ലാതാക്കി (%2$d ഇല്ലാതാക്കൽ പരാജയപ്പെട്ടു, നിലനിർത്തി)</string>
+    <string name="main_delete_failed">ഒറിജിനൽ ഫോട്ടോ ഇല്ലാതാക്കൽ പരാജയപ്പെട്ടു (ഫയൽ ഉപയോഗത്തിലാണോ അല്ലെങ്കിൽ എഴുത്ത് അനുമതിയില്ലോ), നിലനിർത്തി</string>
+    <string name="main_export_missing_output">പരിവർത്തന ഫലം ഇല്ല അല്ലെങ്കിൽ ശൂന്യമാണ്: %1$s</string>
+    <string name="main_export_missing_output_bare">പരിവർത്തന ഫലം ഇല്ല അല്ലെങ്കിൽ ശൂന്യമാണ്</string>
+    <string name="main_export_insert_null">MediaStore insert null ആയി തിരിച്ചു</string>
+    <string name="main_export_output_stream">MediaStore ഔട്ട്പുട്ട് സ്ട്രീം ലഭ്യമല്ല</string>
+    <string name="main_export_write_failed">MediaStore എഴുതൽ പരാജയപ്പെട്ടു: %1$s</string>
+    <string name="main_export_mkdir_failed">ആൽബം ഡയറക്ടറി %1$s സൃഷ്ടിക്കാനാകില്ല</string>
+    <string name="main_export_dir_write_failed">ആൽബം ഡയറക്ടറിയിൽ എഴുതൽ പരാജയപ്പെട്ടു: %1$s</string>
+    <string name="main_export_no_source">സ്രോതസ്സ് ഫയൽ കണ്ടെത്താനാകില്ല; മാറ്റൽ ഒഴിവാക്കി</string>
+    <string name="main_export_companion_failed">അനുബന്ധ ഫയൽ തിരികെ എഴുതൽ പരാജയപ്പെട്ടു: %1$s</string>
+    <string name="main_export_source_dir_unwritable">സ്രോതസ്സ് ഫയൽ ഡയറക്ടറി എഴുതാനാകാത്തതിനാൽ അനുബന്ധ ഫയൽ തിരികെ എഴുതിയില്ല</string>
+    <string name="main_export_source_dir_unavailable">സ്രോതസ്സ് ഫയൽ ഡയറക്ടറി ലഭ്യമല്ല: %1$s</string>
+    <string name="main_export_replace_failed">സ്രോതസ്സ് ഫയൽ മാറ്റൽ പരാജയപ്പെട്ടു: %1$s</string>
+    <string name="main_export_replace_failed_bare">സ്രോതസ്സ് ഫയൽ മാറ്റൽ പരാജയപ്പെട്ടു</string>
+</resources>

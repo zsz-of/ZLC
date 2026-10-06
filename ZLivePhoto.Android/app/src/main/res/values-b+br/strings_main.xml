@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Breton (br) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="main_status_ready">Prest</string>
+    <string name="main_status_location_granted">Tapet eo bet an aotre lec\'hiadur; ar metadata GPS a chomo gwardeet goude an treiñ</string>
+    <string name="main_status_location_denied">N\'eo ket bet roet an aotre lec\'hiadur: ar fotoioù a gollo an titouroù lec\'hiadur GPS goude an treiñ</string>
+    <string name="main_status_all_files_granted">Tapet eo bet an aotre «Moned d\'an holl restroù»; ar treiñ a skrivo war-eeun e kavlec\'h an albom hag ar titouroù lec\'hiadur a chomo gwardeet penn-da-benn</string>
+    <string name="main_status_all_files_denied">N\'eo ket bet roet an aotre «Moned d\'an holl restroù»: war loariadoù zo gallout a ra an titouroù lec\'hiadur bezañ kolloù goude an treiñ</string>
+    <string name="main_status_read_granted">Tapet eo bet an aotre lenn ar fotoioù hag ar videoioù</string>
+    <string name="main_status_video_missing">Roet eo bet an aotre, met an aotre video a vank: ne c\'haller ket klask ar video kenstur a ya gant al Live Photo e div restr</string>
+    <string name="main_status_permission_denied">N\'eo ket bet roet an aotre; gallout a rer briata «Ouzhpennañ restroù» adarre</string>
+    <string name="main_status_folder_not_selected">N\'eo ket bet dibabet ur c\'havlec\'h</string>
+    <string name="main_status_folder_unavailable">Ne c\'haller ket mont e kavlec\'h dibabet (kavlec\'hioù stokañ lec\'hel hepken a zo skoret)</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="one">Adsavet eo bet an dalc\'h diwezhañ (%1$d restr)</item>
+        <item quantity="two">Adsavet eo bet an dalc\'h diwezhañ (%1$d restr)</item>
+        <item quantity="few">Adsavet eo bet an dalc\'h diwezhañ (%1$d restr)</item>
+        <item quantity="many">Adsavet eo bet an dalc\'h diwezhañ (%1$d restr)</item>
+        <item quantity="other">Adsavet eo bet an dalc\'h diwezhañ (%1$d restr)</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">Detektet ez eus bet ur guitaat dibarelezh diwezhañ; goullonderet eo bet ar roll diechu</string>
+    <string name="main_status_compose_blocks_extract">Trevelloù genaozañ a zo en dibun; ne c\'haller ket tremen d\'ar mod disrannañ</string>
+    <string name="main_status_replace_off_mutex">Diwared eo bet ar mod erlec\'hiañ (enep-tal gant «Dilemel ar fotoioù orin goude keweriañ»)</string>
+    <string name="main_status_delete_needs_all_files">Ar dilemel ent-emgefreek eus ar restroù orin a c\'houlenn an aotre «Moned d\'an holl restroù»; roit an aotre a-raok</string>
+    <string name="main_status_replace_off">Diwared eo bet ar mod erlec\'hiañ; disoc\'h an treiñ a vo skrivet en-dro e kavlec\'h an albom</string>
+    <string name="main_status_replace_needs_all_files">Ar mod erlec\'hiañ a c\'houlenn an aotre «Moned d\'an holl restroù»; roit an aotre a-raok</string>
+    <string name="main_status_delete_off_mutex">Diwared eo bet «Dilemel ar fotoioù orin goude keweriañ» (enep-tal gant ar mod erlec\'hiañ)</string>
+    <string name="main_status_loading_albums">Emañ o lenn an albomoù…</string>
+    <string name="main_status_no_albums">N\'eus ket bet kavet albom ebet</string>
+    <string name="main_status_compose_no_photo">N\'eus ket bet dibabet foto ebet, ne c\'haller ket genaozañ</string>
+    <string name="main_status_compose_no_video">N\'eus ket bet dibabet video ebet, ne c\'haller ket genaozañ</string>
+    <string name="main_status_compose_all_added">An holl fotoioù dibabet a zo er roll dija</string>
+    <string name="main_status_compose_paired">Fotoioù %1$d, videoioù %2$d; ouzhpennet eo bet %3$d read trevelloù genaozañ hervez an niver bihanañ</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="one">Ouzhpennet eo bet %1$d trevell genaozañ; briatait «Kregiñ da dreiñ» evit genaozañ</item>
+        <item quantity="two">Ouzhpennet eo bet %1$d drevell genaozañ; briatait «Kregiñ da dreiñ» evit genaozañ</item>
+        <item quantity="few">Ouzhpennet eo bet %1$d trevell genaozañ; briatait «Kregiñ da dreiñ» evit genaozañ</item>
+        <item quantity="many">Ouzhpennet eo bet %1$d trevell genaozañ; briatait «Kregiñ da dreiñ» evit genaozañ</item>
+        <item quantity="other">Ouzhpennet eo bet %1$d trevell genaozañ; briatait «Kregiñ da dreiñ» evit genaozañ</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s (cheñchet eo bet ar fomat ezporzh da Google ent-emgefreek)</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="one">Emañ foto %1$d rannet o vezañ enporzhiet…</item>
+        <item quantity="two">Emañ foto %1$d rannet o vezañ enporzhiet…</item>
+        <item quantity="few">Emañ %1$d foto rannet o vezañ enporzhiet…</item>
+        <item quantity="many">Emañ %1$d foto rannet o vezañ enporzhiet…</item>
+        <item quantity="other">Emañ %1$d foto rannet o vezañ enporzhiet…</item>
+    </plurals>
+    <string name="main_status_import_failed">C\'hwitet an enporzhiañ: %1$s</string>
+    <string name="main_status_import_done_partial">Enporzhiañ echu: %1$d berzh, %2$d c\'hwitadenn</string>
+    <plurals name="main_status_import_done">
+        <item quantity="one">Enporzhiañ echu: %1$d restr enporzhiet</item>
+        <item quantity="two">Enporzhiañ echu: %1$d drestr enporzhiet</item>
+        <item quantity="few">Enporzhiañ echu: %1$d restr enporzhiet</item>
+        <item quantity="many">Enporzhiañ echu: %1$d restr enporzhiet</item>
+        <item quantity="other">Enporzhiañ echu: %1$d restr enporzhiet</item>
+    </plurals>
+    <string name="main_status_import_stopped">Paouezet eo bet an enporzhiañ: %1$d berzh, %2$d c\'hwitadenn</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="one">Emañ restr %1$d o vezañ enporzhiet…</item>
+        <item quantity="two">Emañ drestr %1$d o vezañ enporzhiet…</item>
+        <item quantity="few">Emañ %1$d restr o vezañ enporzhiet…</item>
+        <item quantity="many">Emañ %1$d restr o vezañ enporzhiet…</item>
+        <item quantity="other">Emañ %1$d restr o vezañ enporzhiet…</item>
+    </plurals>
+    <string name="main_status_importing_progress">O vezañ enporzhiet %1$d/%2$d…</string>
+    <string name="main_status_stopping">O paouez… (arrest goude echu ar restr vremañ)</string>
+    <string name="main_status_stopping_import">Emañ an enporzhiañ o paouez…</string>
+    <string name="main_status_removed">Dilemet eo bet %1$s</string>
+    <string name="main_status_cleared">Goullonderet</string>
+    <string name="main_status_nothing_to_convert">N\'eus restr ebet da dreiñ</string>
+    <string name="main_status_folder_unreadable">Ne c\'haller ket lenn ar c\'havlec\'h dibabet</string>
+    <string name="main_status_scanning_folder">Emañ o skannañ ar c\'havlec\'h…</string>
+    <string name="main_status_no_images">N\'eus ket bet kavet foto ebet e kavlec\'h dibabet</string>
+    <string name="main_status_batch_importing">Emañ an enporzhiañ a-vras o loc\'hañ %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="one">Paouezet eo bet an enporzhiañ a-vras: %1$d Live Photo enporzhiet</item>
+        <item quantity="two">Paouezet eo bet an enporzhiañ a-vras: %1$d Live Photo enporzhiet</item>
+        <item quantity="few">Paouezet eo bet an enporzhiañ a-vras: %1$d Live Photo enporzhiet</item>
+        <item quantity="many">Paouezet eo bet an enporzhiañ a-vras: %1$d Live Photo enporzhiet</item>
+        <item quantity="other">Paouezet eo bet an enporzhiañ a-vras: %1$d Live Photo enporzhiet</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="one">Paouezet eo bet an enporzhiañ a-vras: %1$d Live Photo enporzhiet, %2$d restr zianv-tre lammet</item>
+        <item quantity="two">Paouezet eo bet an enporzhiañ a-vras: %1$d Live Photo enporzhiet, %2$d restr zianv-tre lammet</item>
+        <item quantity="few">Paouezet eo bet an enporzhiañ a-vras: %1$d Live Photo enporzhiet, %2$d restr zianv-tre lammet</item>
+        <item quantity="many">Paouezet eo bet an enporzhiañ a-vras: %1$d Live Photo enporzhiet, %2$d restr zianv-tre lammet</item>
+        <item quantity="other">Paouezet eo bet an enporzhiañ a-vras: %1$d Live Photo enporzhiet, %2$d restr zianv-tre lammet</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="one">Enporzhiañ a-vras echu: %1$d Live Photo enporzhiet</item>
+        <item quantity="two">Enporzhiañ a-vras echu: %1$d Live Photo enporzhiet</item>
+        <item quantity="few">Enporzhiañ a-vras echu: %1$d Live Photo enporzhiet</item>
+        <item quantity="many">Enporzhiañ a-vras echu: %1$d Live Photo enporzhiet</item>
+        <item quantity="other">Enporzhiañ a-vras echu: %1$d Live Photo enporzhiet</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="one">Enporzhiañ a-vras echu: %1$d Live Photo enporzhiet, %2$d restr zianv-tre lammet</item>
+        <item quantity="two">Enporzhiañ a-vras echu: %1$d Live Photo enporzhiet, %2$d restr zianv-tre lammet</item>
+        <item quantity="few">Enporzhiañ a-vras echu: %1$d Live Photo enporzhiet, %2$d restr zianv-tre lammet</item>
+        <item quantity="many">Enporzhiañ a-vras echu: %1$d Live Photo enporzhiet, %2$d restr zianv-tre lammet</item>
+        <item quantity="other">Enporzhiañ a-vras echu: %1$d Live Photo enporzhiet, %2$d restr zianv-tre lammet</item>
+    </plurals>
+    <string name="main_status_stopped_replace">Paouezet: keweriet %2$d diwar %1$d restr, erlec\'hiet %3$d restr tarzh</string>
+    <string name="main_status_stopped_export">Paouezet: keweriet %2$d diwar %1$d restr, ezporzhiet %3$d d\'an albom</string>
+    <string name="main_status_done_replace_reason">Echu: keweriet %1$d restr, erlec\'hiet %2$d restr tarzh (abeg: %3$s)</string>
+    <string name="main_status_done_export_reason">Echu: keweriet %1$d restr, ezporzhiet %2$d d\'an albom (abeg: %3$s)</string>
+    <string name="main_status_done_replace">Echu: keweriet %1$d restr, erlec\'hiet %2$d restr tarzh</string>
+    <string name="main_status_done_export">Echu: keweriet %1$d restr, ezporzhiet %2$d d\'an albom</string>
+    <string name="main_status_keep_originals">%1$s; n\'eo ket bet tapet an aotre «moned klok d\'ar stokañ», gwardeet eo bet ar restroù orin</string>
+    <string name="main_info_detecting">Emañ o detektiñ…</string>
+    <string name="main_info_unrecognized">Fomat Live Photo dianav</string>
+    <string name="main_info_converting">Emañ o dreiñ…</string>
+    <string name="main_info_compose_task">Trevell genaozañ (briatait «Kregiñ da dreiñ» evit he seveniñ)</string>
+    <string name="main_info_done_replaced">Echu (erlec\'hiet %1$d restr tarzh)</string>
+    <string name="main_info_done_skipped">Echu (lammet: kengej anv heñvel)</string>
+    <string name="main_info_done_exported">Echu (ezporzhiet %1$d)</string>
+    <string name="main_info_failed">C\'hwitadenn: %1$s</string>
+    <string name="main_progress_added">Ouzhpennet %1$d/%2$d</string>
+    <string name="main_progress_processed">Keweriet %1$d/%2$d</string>
+    <string name="main_progress_imported">Enporzhiet %1$d/%2$d</string>
+    <string name="main_dialog_permission_title">Ezhomm a zo eus an aotre lenn ar fotoioù hag ar videoioù</string>
+    <string name="main_dialog_permission_message">An arload-mañ a c\'houlenn lenn fotoioù ha videoioù ho trevnad:
+
+• Aotre fotoioù: skannañ albom an trevnad hag anavezout al Live Photo a zo ennañ
+• Aotre videoioù: klask ar video kenstur a ya gant al Live Photo e div restr
+• Aotre lec\'hiadur: gwareziñ metadata lec\'hiadur GPS ar fotoioù (mankout a ra, ar fotoioù a gollo an titouroù lec\'hiadur goude an treiñ)
+
+Goude nac\'hañ ne c\'haller ket implij ar diuzer enbarzhiet; gallout a rer roet an aotre en-dro dre briata «Ouzhpennañ restroù» diwezhatoc\'h.</string>
+    <string name="main_dialog_settings_title">Ret eo reiñ an aotre lenn ar fotoioù hag ar videoioù gant an dorn</string>
+    <string name="main_dialog_settings_message">Dibabet ho peus «Na goulenn ken» a-raok; ne vo ket goulennet aotreoù gant ar reizhiad ken.
+
+Kit da bajenn munudoù an arload → Aotreoù → Fotoioù ha videoioù, roit ar moned gant an dorn ha distroit d\'an arload-mañ.
+
+Mar skriv: ret eo reiñ an aotre «Fotoioù» hag an hini «Videoioù» an daou, rak al Live Photo e div restr ne c\'hall ket kavout ar video kenstur all.</string>
+    <string name="main_dialog_allfiles_title_delete">An dilemel ent-emgefreek eus ar restroù orin a c\'houlenn «Moned d\'an holl restroù»</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">An trevnad-mañ ne skor ket an dilemel ent-emgefreek eus ar restroù orin</string>
+    <string name="main_dialog_allfiles_title_replace">Ar mod erlec\'hiañ a c\'houlenn «Moned d\'an holl restroù»</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">An trevnad-mañ ne skor ket ar mod erlec\'hiañ</string>
+    <string name="main_dialog_allfiles_title_location">Goulennet e vez reiñ an aotre «Moned d\'an holl restroù»</string>
+    <string name="main_dialog_allfiles_delete_message">«Dilemel ar fotoioù orin goude keweriañ» a dilemo war-eeun ar restroù orin war an disk (ar foto hag e video kenstur); ne c\'haller ket distreiñ gant ar gweziadenn-se, ha setu perak ret eo reiñ an aotre «Moned d\'an holl restroù» a-raok.
+
+Goude roet an aotre e vo laoskel an taoler da vezañ implijus, ha gallout a rer e lakaat war en-dro neuze.</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">N\'eo ket an arventennoù-reizhiad (Android 10 ha kent) o pourvezañ an aotre «Moned d\'an holl restroù», hag ne c\'haller ket dilemel war-eeun ar restroù orin war an disk; setu perak an trevnad-mañ ne skor ket «Dilemel ar fotoioù orin goude keweriañ».
+
+Goude an treiñ gallout a rer naetaat ar restroù orin gant an dorn dre albom ar reizhiad.</string>
+    <string name="main_dialog_allfiles_replace_message">Ar «mod erlec\'hiañ» a skrivo disoc\'h an treiñ war-eeun d\'ar restr orin war an disk (o welañ an endalc\'had orin); ne c\'haller ket distreiñ gant ar gweziadenn-se, ha setu perak ret eo reiñ an aotre «Moned d\'an holl restroù» a-raok.
+
+Goude roet an aotre e vo laoskel an taoler da vezañ implijus, ha gallout a rer e lakaat war en-dro neuze.</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">N\'eo ket an arventennoù-reizhiad (Android 10 ha kent) o pourvezañ an aotre «Moned d\'an holl restroù», hag ne c\'haller ket skrivañ en-dro war-eeun ar restroù orin war an disk; setu perak an trevnad-mañ ne skor ket ar «mod erlec\'hiañ».
+
+Gallout a rer kenderc\'hel an treiñ gant an doare dre ziouer; ezporzhiet e vo an disoc\'h da gavlec\'h an albom.</string>
+    <string name="main_dialog_allfiles_location_message">War loariadoù zo (da skouer Meizu), pa vez skrivet dre etrefas albom ar reizhiad e vez dilamet an titouroù lec\'hiadur GPS, o lakaat ar fotoioù da goll o lec\'hiadur goude an treiñ.
+
+Goude reiñ an aotre «Moned d\'an holl restroù», ar arload-mañ a skrivo war-eeun e kavlec\'h an albom hag ar metadata lec\'hiadur a chomo gwardeet penn-da-benn.
+
+Hep an aotre e c\'hall an treiñ mont war-raok evelato; war loariadoù zo gallout a ra an titouroù lec\'hiadur bezañ kolloù.</string>
+    <string name="main_dialog_conflict_title">Kengej anv restr ezporzh</string>
+    <string name="main_dialog_conflict_message">Ur restr gant an heñvel anv a zo e kavlec\'h an ezporzh dija:
+%1$s
+
+Dibabit penaos ober.</string>
+    <string name="main_label_conflict_always">Implij an doare-mañ evit ar c\'hengejoù da zont</string>
+    <string name="main_btn_grant">Reiñ an aotre</string>
+    <string name="main_btn_deny">Nac\'hañ</string>
+    <string name="main_btn_go_settings">Mont d\'an arventennoù</string>
+    <string name="main_btn_cancel">Nullañ</string>
+    <string name="main_btn_grant_access">Mont da reiñ an aotre</string>
+    <string name="main_btn_got_it">Mat eo</string>
+    <string name="main_btn_not_now">Ket bremañ</string>
+    <string name="main_btn_skip">Lammat</string>
+    <string name="main_btn_overwrite">Skrivañ war</string>
+    <string name="main_btn_auto_rename">Adenvel ent-emgefreek</string>
+    <plurals name="main_delete_done">
+        <item quantity="one">Dilemet eo bet %1$d restr orin</item>
+        <item quantity="two">Dilemet eo bet %1$d drestr orin</item>
+        <item quantity="few">Dilemet eo bet %1$d restr orin</item>
+        <item quantity="many">Dilemet eo bet %1$d restr orin</item>
+        <item quantity="other">Dilemet eo bet %1$d restr orin</item>
+    </plurals>
+    <string name="main_delete_nothing">Dilemel ar restroù orin ne dalv ket ar boan</string>
+    <string name="main_delete_partial">Dilemet eo bet %1$d restr orin (%2$d c\'hwitadenn dilemel, gwardeet)</string>
+    <string name="main_delete_failed">C\'hwitet dilemel ar restroù orin (restr araezet pe moned-skrivañ ebet), gwardeet</string>
+    <string name="main_export_missing_output">Mankout a ra produ an treiñ pe goullo eo: %1$s</string>
+    <string name="main_export_missing_output_bare">Mankout a ra produ an treiñ pe goullo eo</string>
+    <string name="main_export_insert_null">Distroet eo bet null gant MediaStore insert</string>
+    <string name="main_export_output_stream">Ne c\'haller ket implij frient ezporzh MediaStore</string>
+    <string name="main_export_write_failed">C\'hwitet skrivañ MediaStore: %1$s</string>
+    <string name="main_export_mkdir_failed">Ne c\'haller ket krouiñ kavlec\'h albom %1$s</string>
+    <string name="main_export_dir_write_failed">C\'hwitet skrivañ e kavlec\'h an albom: %1$s</string>
+    <string name="main_export_no_source">Ne c\'haller ket lec\'hiañ ar restr tarzh; lammet eo bet an erlec\'hiañ</string>
+    <string name="main_export_companion_failed">C\'hwitet skrivañ en-dro d\'ar restr genstur: %1$s</string>
+    <string name="main_export_source_dir_unwritable">Ne c\'haller ket skrivañ e kavlec\'h ar restr tarzh; ar restr genstur n\'eo ket bet skrivet en-dro</string>
+    <string name="main_export_source_dir_unavailable">Ket araezet eo kavlec\'h ar restr tarzh: %1$s</string>
+    <string name="main_export_replace_failed">C\'hwitet erlec\'hiañ ar restr tarzh: %1$s</string>
+    <string name="main_export_replace_failed_bare">C\'hwitet erlec\'hiañ ar restr tarzh</string>
+</resources>

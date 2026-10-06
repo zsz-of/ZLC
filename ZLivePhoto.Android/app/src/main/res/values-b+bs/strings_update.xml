@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bosnian (bs) strings — update / download (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Key prefix update_; keys must not be renamed. Placeholders use %1$s / %1$d.
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud stranica za dijeljenje i raščlanjivanje izravnog linka ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud dijeljenje je otkazano ili datoteka ne postoji; preuzmite s GitHuba</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud dijeljenje je otkazano; preuzmite s GitHuba</string>
+    <string name="update_lanzou_resolve_failed">Raščlanjivanje Lanzou Cloud linka za preuzimanje nije uspjelo</string>
+    <string name="update_lanzou_need_passwd">Ovo Lanzou Cloud dijeljenje zahtijeva pristupni kod; preuzmite s GitHuba (ili pronađite pristupni kod u opisu izdanja)</string>
+    <string name="update_lanzou_wrong_passwd">Pogrešan Lanzou Cloud pristupni kod</string>
+    <string name="update_err_resolve_failed">Raščlanjivanje nije uspjelo</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud provjera protiv automatskog prikupljanja nije uspjela</string>
+    <string name="update_err_no_frame">Nije moguće raščlaniti Lanzou Cloud stranicu za preuzimanje (okvir za preuzimanje nije pronađen)</string>
+    <string name="update_err_no_file_id">Nije moguće raščlaniti identifikator Lanzou Cloud datoteke</string>
+    <string name="update_err_no_sign">Nije moguće raščlaniti Lanzou Cloud potpis</string>
+    <string name="update_err_ajax_request">Zahtjev prema sučelju nije uspio</string>
+    <string name="update_err_api_request">Lanzou Cloud zahtjev prema sučelju nije uspio</string>
+    <string name="update_err_empty_direct">Lanzou Cloud je vratio praznu adresu za preuzimanje</string>
+    <string name="update_err_direct_expired">Lanzou Cloud adresa za preuzimanje je istekla; zatražite je ponovo</string>
+    <string name="update_err_http_request">Zahtjev nije uspio (HTTP %1$d)</string>
+
+    <!-- ========== Preuzimanje ========== -->
+    <string name="update_err_connect">Nije moguće povezati se s poslužiteljem za preuzimanje: %1$s</string>
+    <string name="update_err_http">Preuzimanje nije uspjelo (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Nije moguće uspostaviti vezu za preuzimanje</string>
+    <string name="update_err_empty">Preuzeti sadržaj je prazan</string>
+    <string name="update_err_incomplete">Preuzimanje je nepotpuno (primljeno %1$d / %2$d bajtova); preuzmite ponovo</string>
+    <string name="update_err_interrupted">Preuzimanje prekinuto: %1$s</string>
+
+    <!-- ========== Provjera i instalacija instalacijskog paketa ========== -->
+    <string name="update_err_not_apk">Preuzeta datoteka nije ispravan instalacijski paket (možda je web stranica ili je link istekao); preuzmite ponovo ili upotrijebite GitHub.</string>
+    <string name="update_err_apk_incomplete">Sadržaj instalacijskog paketa je nepotpun; preuzmite ponovo ili upotrijebite GitHub.</string>
+    <string name="update_err_apk_unparsable">Instalacijski paket nije moguće raščlaniti (preuzimanje je možda nepotpuno); preuzmite ponovo ili upotrijebite GitHub.</string>
+    <string name="update_err_no_install_permission">Dozvola „instalacija nepoznatih aplikacija“ još nije odobrena</string>
+    <string name="update_err_installer_failed">Nije moguće pokrenuti sistemski instalacijski program (%1$s); ručno otvorite instalacijski paket u upravitelju datoteka</string>
+
+</resources>

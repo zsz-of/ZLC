@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Danish (da) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">Ingen GitHub-downloadadresse blev hentet; prøv igen senere.</string>
+    <string name="update_flavor_standard">Standardversion</string>
+    <string name="update_flavor_go">Go-version</string>
+    <string name="update_lanzou_url_missing">Denne version tilbyder ikke et Lanzou Cloud-downloadlink; du kan bruge GitHub-download i stedet.</string>
+    <string name="update_apk_direct_missing">Denne version tilbyder ikke et direkte link til en matchende installationspakke; vælg den rigtige APK på GitHub-udgivelsessiden.</string>
+    <string name="update_install_permission_missing">Tilladelsen “Installer ukendte apps” er ikke givet, så der kan ikke installeres automatisk. Giv tilladelsen i systemindstillingerne, og prøv igen.</string>
+    <string name="update_error_unknown">Ukendt fejl</string>
+    <string name="update_fail_lanzou">Lanzou Cloud-download mislykkedes</string>
+    <string name="update_fail_github">GitHub-download mislykkedes</string>
+    <string name="update_lanzou_resolving">Fortolker Lanzou Cloud-downloadlink…</string>
+    <string name="update_lanzou_downloading">Downloader fra Lanzou Cloud…</string>
+    <string name="update_github_downloading">Downloader fra GitHub…</string>
+    <string name="update_unzipping">Udpakker installationspakken…</string>
+    <string name="update_notes_empty">Denne version har endnu ingen opdateringsnoter.</string>
+    <string name="update_use_normal_title">Brug venligst standardversionen</string>
+    <string name="update_use_normal_body">Denne enheds system er Android 10 eller nyere; Go-versionen understøttes ikke længere, og den ældre version kan ikke fortsætte.\n\nStandardversionen (ZLC) er allerede installeret på enheden — åbn den, og fortsæt dér (den nye version tilbyder ikke længere en Go-kompatibel version; den ældre version kan afinstalleres for at frigøre plads).</string>
+    <string name="update_open_normal">Åbn standardversionen</string>
+    <string name="update_must_update_title">Du skal opdatere, før du kan fortsætte</string>
+    <string name="update_forced_body">Denne enheds system er Android 10 eller nyere; Go-versionen understøttes ikke længere, og den ældre version kan ikke fortsætte. Den nye version tilbyder heller ikke en Go-kompatibel version.\n\nForbind til netværket, og tryk på “Prøv igen” for at hente standardversionens installationspakke.</string>
+    <string name="update_retry">Prøv igen</string>
+    <string name="update_switch_normal_body">Denne enheds system er Android 10 eller nyere; Go-versionen understøttes ikke længere, og den ældre version kan ikke fortsætte.\nDownload og installér standardversionen for at fortsætte (den nye version tilbyder ikke længere en Go-kompatibel version).</string>
+    <string name="update_downloading_title">Downloader opdatering</string>
+    <string name="update_cancel">Annuller</string>
+    <string name="update_need_permission_title">Installationstilladelsen er nødvendig</string>
+    <string name="update_need_permission_body">Installation af den nye version kræver systemtilladelsen “Installer ukendte apps”.\n\nTryk på “Giv tilladelse”, acceptér i indstillingerne, og vend tilbage til appen — installationen fortsætter automatisk (ingen grund til at downloade igen).</string>
+    <string name="update_grant">Giv tilladelse</string>
+    <string name="update_notice_title">Bemærk</string>
+    <string name="update_got_it">Forstået</string>
+    <string name="update_notes_title">v%1$s · opdateringsnoter</string>
+    <string name="update_back">Tilbage</string>
+    <string name="update_title_switch_normal">Skift til standardversionen</string>
+    <string name="update_title_reinstall">Geninstallér denne version</string>
+    <string name="update_title_new_version">Ny version fundet</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Denne version downloades og geninstalleres (overskriver den aktuelle app).\nFunktionen bruges til regresionstest af opdateringsmekanismen.</string>
+    <string name="update_view_notes">Se opdateringsnoter</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud er ikke tilgængelig lige nu</string>
+    <string name="update_download_lanzou">Download fra Lanzou Cloud</string>
+    <string name="update_download_github">Download fra GitHub</string>
+    <string name="update_download_browser">Download fra browseren</string>
+    <string name="update_later">Ikke nu</string>
+    <string name="update_later_switch">Ikke nu</string>
+    <string name="update_skip_version">Spring denne version over</string>
+</resources>

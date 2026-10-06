@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Norwegian Nynorsk (nn) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou Cloud-delinga er avbrote, eller fila finst ikkje; bruk GitHub-nedlasting i staden</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud-delinga er avbrote; bruk GitHub-nedlasting i staden</string>
+    <string name="update_lanzou_resolve_failed">Klarte ikkje tolke nedlastingslenkja frå Lanzou Cloud</string>
+    <string name="update_lanzou_need_passwd">Denne Lanzou Cloud-delinga krev ein hentekode; bruk GitHub-nedlasting i staden (eller finn hentekoden i utgivingsnotata)</string>
+    <string name="update_lanzou_wrong_passwd">Feil hentekode for Lanzou Cloud</string>
+    <string name="update_err_resolve_failed">Tolkinga mislykkast</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Anti-crawler-kontrollen til Lanzou Cloud mislykkast</string>
+    <string name="update_err_no_frame">Klarte ikkje tolke nedlastingssida til Lanzou Cloud (fann ikkje nedlastingsramma)</string>
+    <string name="update_err_no_file_id">Klarte ikkje tolke fil-ID-en til Lanzou Cloud</string>
+    <string name="update_err_no_sign">Klarte ikkje tolke signaturen til Lanzou Cloud</string>
+    <string name="update_err_ajax_request">API-førespurnaden mislykkast</string>
+    <string name="update_err_api_request">API-førespurnaden til Lanzou Cloud mislykkast</string>
+    <string name="update_err_empty_direct">Lanzou Cloud returnerte ei tom nedlastingsadresse</string>
+    <string name="update_err_direct_expired">Nedlastingsadressa frå Lanzou Cloud er utløpt; hent ho på nytt</string>
+    <string name="update_err_http_request">Førespurnaden mislykkast (HTTP %1$d)</string>
+    <string name="update_err_connect">Klarte ikkje kople til nedlastingsserveren: %1$s</string>
+    <string name="update_err_http">Nedlastinga mislykkast (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Klarte ikkje opprette nedlastingskoplinga</string>
+    <string name="update_err_empty">Det nedlasta innhaldet er tomt</string>
+    <string name="update_err_incomplete">Nedlastinga er ufullstendig (%1$d av %2$d byte henta); last ned på nytt</string>
+    <string name="update_err_interrupted">Nedlastinga vart avbroten: %1$s</string>
+    <string name="update_err_not_apk">Det som vart lasta ned, er ikkje ein gyldig installasjonspakke (kanskje ei nettside, eller nedlastingslenkja er utløpt). Last ned på nytt, eller bruk GitHub i staden.</string>
+    <string name="update_err_apk_incomplete">Innhaldet i installasjonspakka er ufullstendig. Last ned på nytt, eller bruk GitHub i staden.</string>
+    <string name="update_err_apk_unparsable">Installasjonspakka kan ikkje tolkast (nedlastinga er kanskje ufullstendig). Last ned på nytt, eller bruk GitHub i staden.</string>
+    <string name="update_err_no_install_permission">Løyvet “Installer ukjende apper” er ikkje gitt enno</string>
+    <string name="update_err_installer_failed">Klarte ikkje starte systeminstallasjonsprogrammet (%1$s); opna installasjonspakka manuelt i filhandsamaren for å installere</string>
+</resources>

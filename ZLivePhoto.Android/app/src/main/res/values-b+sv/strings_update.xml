@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Texter för uppdatering / nedladdning (core/AppUpdater.kt, core/UpdateChecker.kt).
+  Nyckelprefix update_; får inte bytas namn när det väl är bestämt (alla språkfilerna använder samma nyckeluppsättning).
+  Platshållare använder %1$s / %1$d.
+  Obs: texterna från UpdaterException / AddonException i core-lagret visas direkt i listobjekten och
+  loggpanelen via MainActivitys statusText, och går därför alltid via resurser.
+-->
+<resources>
+
+    <!-- ========== Lanzous delningssida och uppslagning av direktlänk ========== -->
+    <string name="update_lanzou_gone">Lanzou-delningen har avbrutits eller filen finns inte; ladda ned från GitHub i stället</string>
+    <string name="update_lanzou_gone_short">Lanzou-delningen har avbrutits; ladda ned från GitHub i stället</string>
+    <string name="update_lanzou_resolve_failed">Det gick inte att tolka Lanzous nedladdningslänk</string>
+    <string name="update_lanzou_need_passwd">Den här Lanzou-delningen kräver en åtkomstkod; ladda ned från GitHub i stället (eller leta upp åtkomstkoden i versionsinformationen)</string>
+    <string name="update_lanzou_wrong_passwd">Felaktig åtkomstkod för Lanzou</string>
+    <string name="update_err_resolve_failed">Tolkningen misslyckades</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzous anti-crawler-kontroll misslyckades</string>
+    <string name="update_err_no_frame">Det gick inte att tolka Lanzous nedladdningssida (nedladdningsramen hittades inte)</string>
+    <string name="update_err_no_file_id">Det gick inte att tolka Lanzous filidentifierare</string>
+    <string name="update_err_no_sign">Det gick inte att tolka Lanzous signatur</string>
+    <string name="update_err_ajax_request">API-begäran misslyckades</string>
+    <string name="update_err_api_request">Lanzous API-begäran misslyckades</string>
+    <string name="update_err_empty_direct">Lanzou returnerade en tom nedladdningsadress</string>
+    <string name="update_err_direct_expired">Lanzous nedladdningsadress har upphört; hämta den igen</string>
+    <string name="update_err_http_request">Begäran misslyckades (HTTP %1$d)</string>
+
+    <!-- ========== Nedladdning ========== -->
+    <string name="update_err_connect">Det gick inte att ansluta till nedladdningsservern: %1$s</string>
+    <string name="update_err_http">Nedladdningen misslyckades (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Det gick inte att upprätta en nedladdningsanslutning</string>
+    <string name="update_err_empty">Det nedladdade innehållet är tomt</string>
+    <string name="update_err_incomplete">Nedladdningen är ofullständig (%1$d av %2$d byte mottagna); ladda ned igen</string>
+    <string name="update_err_interrupted">Nedladdningen avbröts: %1$s</string>
+
+    <!-- ========== Kontroll och installation av installationspaket ========== -->
+    <string name="update_err_not_apk">Den nedladdade filen är inte ett giltigt installationspaket (det kan vara en webbsida, eller så har nedladdningslänken upphört); ladda ned igen eller använd GitHub.</string>
+    <string name="update_err_apk_incomplete">Installationspaketets innehåll är ofullständigt; ladda ned igen eller använd GitHub.</string>
+    <string name="update_err_apk_unparsable">Installationspaketet kan inte tolkas (nedladdningen kan vara ofullständig); ladda ned igen eller använd GitHub.</string>
+    <string name="update_err_no_install_permission">Behörigheten ”Installera okända appar” har inte beviljats</string>
+    <string name="update_err_installer_failed">Det gick inte att starta systeminstallationsprogrammet (%1$s); öppna paketet från en filhanterare och installera det manuellt</string>
+
+</resources>

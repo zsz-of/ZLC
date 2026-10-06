@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Breton (br) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Fomat sived dianav: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Fomat Live Photo dianav (ket Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">N\'eus ket ar foto golo pe goullo eo</string>
+    <string name="conv_video_missing">N\'eus ket ar video pe goullo eo</string>
+    <string name="conv_video_too_large">Re vras eo ar video (%1$d MB), n\'haller ket e genaozañ evel Live Photo; dibabit ur video berroc\'h</string>
+    <string name="conv_transcoded_too_large">Goude an treuzkodenniñ eo re vras ar video (%1$d MB), n\'haller ket e genaozañ evel Live Photo</string>
+    <string name="conv_video_too_large_compose">Re vras eo ar video (%1$d MB), n\'haller ket e genaozañ evel Live Photo</string>
+    <string name="conv_cover_heic_go">Skeudenn HEIC eo ar golo (an handelv skañv ne gemer ket perzh en treuzkodenniñ; ezporzhit evel JPEG war un iPhone a-raok an treiñ)</string>
+    <string name="conv_cover_invalid_heic">N\'eo ket ur skeudenn talvoudek ar golo (evit HEIC e rank ar reizhiad skoazellañ digodiñ HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">N\'eo ket ur skeudenn JPEG ar golo (an handelv skañv ne gemer ket perzh en treuzkodenniñ; implijit ur foto JPEG)</string>
+    <string name="conv_cover_invalid_image">N\'eo ket ur skeudenn talvoudek ar golo (JPEG/WebP/PNG hepken a zo skoret)</string>
+    <string name="conv_reencode_failed">C\'hwitet eo adkodenniñ ar video: %1$s</string>
+    <string name="conv_remux_failed">C\'hwitet eo adveskañ an endalc\'her: %1$s</string>
+    <string name="conv_codec_unknown">N\'eo ket ur video H.264/H.265 anavezed</string>
+    <string name="conv_codec_is">Ar c\'hodadur eo %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Ar video «%1$s» %2$s; cheñch an endalc\'her hepken (adveskañ) ne cheñch ket ar c\'hodadur ha n\'haller ket e genaozañ evel Live Photo.
+
+E «Arventennoù → Treuzkodenniñ video → Doare treuzkodenniñ», kemmit da «Adkodenniñ», pe treuzfurmit ar video gentañ gant un ostilh all da MP4 gant ur c\'hodadur H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">N\'eo ket endalc\'her MP4 reolius ar video (MOV / MKV / WebM / AVI hag all), hag an «Doare treuzkodenniñ» a-vremañ ne adkodennd ket, n\'haller ket e genaozañ evel Live Photo.
+
+E «Arventennoù → Treuzkodenniñ video → Doare treuzkodenniñ», kemmit da «Adkodenniñ» (en handelv reolius emañ kodeller ffmpeg enbarzhiet; an handelv skañv Go n\'en deus kodeller ebet, implijit an handelv reolius), pe treuzfurmit ar video gentañ da MP4 reolius (H.264/H.265).</string>
+    <string name="conv_log_detected">Anavezet evel %1$s</string>
+    <string name="conv_log_same_format_copied">Heñvel eo fomat an tarzh hag ar sived; eilet eo bet evel m\'emañ (hag a-gostez)</string>
+    <string name="conv_log_extra_tracks_bypass">Pistennoù all eget klevet/gwelet a zo er video tarzh (%1$s); tremenet eo dre an doare eeun gant ar memes fomat, ha loc\'het eo ar gwelout skrivañ klok evit yenaat</string>
+    <string name="conv_log_ts_fallback">Mankout a ra hoc\'han-amzer framm ar golo d\'an tarzh; distroet eo bet da greizenn ar video hervez ar reolenn</string>
+    <string name="conv_log_brand_normalized">Merkoù endalc\'her ar video bet kempennet (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Pistennoù ouzhpenn a zo er video (%1$s), ne c\'haller ket yenaat; ezporzhiet evel m\'emañ (gallout a ra ar produ-mañ chom hep lenn war loariadoù zo)</string>
+    <string name="conv_log_extra_tracks_removed">Dilemet eo bet pistennoù ouzhpenn ar video (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Video tarzh%1$s; an adveskañ hepken ne c\'hall ket diskoulmañ (%2$s), ma c\'hall ar produ chom hep lenn, e «Arventennoù → Treuzkodenniñ video → Doare treuzkodenniñ» e dibabit «Adkodenniñ»</string>
+    <string name="conv_log_reencoding">Video tarzh%1$s; adkodenndet evel 8bit + AAC hervez an arventennoù evit gwellañ kenderezh an albom</string>
+    <string name="conv_log_reencode_result_unusable">An torr-adkodenniñ ne dalvez ket; ezporzhiet evel m\'emañ (gallout a ra ar produ-mañ chom hep lenn war loariadoù zo)</string>
+    <string name="conv_log_reencode_still_risky">Goude an adkodenniñ e chom danvezioù riskl (%1$s)</string>
+    <string name="conv_log_reencode_failed">C\'hwitet eo an adkodenniñ (%1$s); ezporzhiet evel m\'emañ (gallout a ra ar produ-mañ chom hep lenn war loariadoù zo)</string>
+    <string name="conv_log_cover_heic_converted">HEIC eo ar golo (ket JPEG); troet da JPEG reolius a-raok bezañ paket en-dro</string>
+    <string name="conv_log_compose_sizes">Kenaozañ: foto %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Ar c\'hopeller treuzkodennoù n\'eo ket lakaet en-dro: merkoù an endalc\'her hepken a zo cheñchet (MOV → MP4), hep adkodenniñ</string>
+    <string name="conv_tag_convert">Treiñ</string>
+    <string name="conv_tag_transcode">Treuzkodenniñ</string>
+    <string name="conv_tag_compose">Kenaozañ</string>
+    <string name="conv_blocker_no_encoder">N\'eo ket ar c\'hopeller treuzkodennoù enbarzhiet implijus</string>
+    <string name="conv_blocker_mode_no_encode">An «Doare treuzkodenniñ» a-vremañ ne adkodennd ket</string>
+    <string name="conv_addon_unavailable">N\'eo ket ar c\'hopeller treuzkodennoù enbarzhiet implijus</string>
+    <string name="conv_addon_transcode_failed">C\'hwitet eo treuzkodenniñ ffmpeg: %1$s</string>
+    <string name="conv_addon_remux_failed">C\'hwitet eo adveskañ an endalc\'her gant ffmpeg: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">E ma treuzkodennd ffmpeg ar video da MP4 reolius (%1$s / crf %2$d / %3$s; pistennoù video ha klevet hepken a chom)</string>
+    <string name="conv_log_transcode_done">Echuet eo treuzkodenniñ ar video (%1$d KB)</string>
+    <string name="conv_log_remuxing">E ma advesk an endalc\'her video da MP4 reolius (cheñch an endalc\'her hepken, hep adkodenniñ)</string>
+    <string name="conv_log_remux_done">Echuet eo adveskañ an endalc\'her (%1$d KB)</string>
+    <string name="conv_reminder_cat_compose">Kenaozañ</string>
+    <string name="conv_reminder_cat_convert">Treiñ</string>
+    <string name="conv_reminder_cat_update">Hizivaat</string>
+    <string name="conv_reminder_video_over3s_title">Video hiroc\'h eget 3 eilenn</string>
+    <string name="conv_reminder_video_over3s_message">Ar video dibabet a vez hiroc\'h eget 3 eilenn; gallout a ra ar Live Photo genaozet bezañ gant kudennoù kenderezh:
+
+• Gallout a ra chom hep lenn mat
+• Gallout a ra albom ar reizhiad chom hep anavezout anezhañ
+• War loariadoù zo gallout a ra chom hep anavezout ar Live Photo-mañ</string>
+    <string name="conv_reminder_legacy_go_title">Anavezet eo un handelv kozh</string>
+    <string name="conv_reminder_legacy_go_message">An handelv kozh (handelv Go) zo staliet c\'hoazh war an trevnad-mañ; ne c\'hall ket ar handelv kozh bezañ implijet warnañ ken, distalit anezhañ da ac\'hubiñ spas.</string>
+    <string name="conv_reminder_replace_risk_title">Ar mod erlec\'hiañ zo riskloù distruj gantañ</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Ar mod erlec\'hiañ a skrivo disoc\'h an treiñ war-eeun d\'ar restr orin; goude bezañ bet gweladennet, ne c\'haller ket kavout ar restr orin ken.
+
+• Padal m\'emañ ar skrivañ o c\'hoarvezout, ma vez arload paouezet, ma vez spaouezadeg stokañ a vank pe ma vez an aotre diskaret, gallout a ra ar restr tarzh bezañ gwallaozet
+• Ne c\'hall an treiñ ket posuplaat berzh en holl degouezhioù; c\'hwitadenn e c\'hall ar restr tarzh bezañ diimplijus a-raok
+• Goulennet e vez amprouiñ da gentañ gant ur restr pe div, ha kenderc\'hel e pakadoù bras pa vez pep tra o vont mat
+· Graet ho gwared-pell deoc\'h e-unan eus ar fotoioù pouezus a-raok
+
+An arc\'hwel-se zo kinniget «evel m\'emañ»; an riskl a vez taolet ganeoc\'h e-unan, ha ne vo ket an aozer kirriek evit gwalladur pe koll restroù.</string>
+    <string name="conv_reminder_dont_remind">Na c\'hounit ken</string>
+    <string name="conv_reminder_confirm_ok">Mat eo</string>
+    <string name="conv_reminder_uninstall">Distaliañ</string>
+</resources>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · ខ្មែរ (Khmer) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Khmer has no grammatical plural; only the 'other' quantity is emitted.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- ========== Converter.kt៖ ការផ្ទៀងផ្ទាត់ប៉ារ៉ាម៉ែត្រ និងវត្ថុធាតុ (ករណីលើកលែង → ចំណុចប្រទាក់បង្ហាញមូលហេតុបរាជ័យ) ========== -->
+    <string name="conv_unknown_target">ទម្រង់គោលដៅមិនស្គាល់៖ %1$s</string>
+    <string name="conv_unrecognized_live_photo">ទម្រង់រូបថតចលនាមិនស្គាល់ (មិនមែនជារូបថតចលនា Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">រូបថតគម្របមិនមាន ឬទទេ</string>
+    <string name="conv_video_missing">វីដេអូមិនមាន ឬទទេ</string>
+    <string name="conv_video_too_large">វីដេអូធំពេក (%1$dMB) មិនអាចផ្គុំជារូបថតចលនាបានទេ សូមជ្រើសវីដេអូខ្លីជាងនេះ</string>
+    <string name="conv_transcoded_too_large">បន្ទាប់ពីបំប្លែង វីដេអូនៅតែធំពេក (%1$dMB) មិនអាចផ្គុំជារូបថតចលនាបានទេ</string>
+    <string name="conv_video_too_large_compose">វីដេអូធំពេក (%1$dMB) មិនអាចផ្គុំជារូបថតចលនាបានទេ</string>
+
+    <!-- Converter.kt៖ គម្រប (HEIC / មិនមែន JPEG) -->
+    <string name="conv_cover_heic_go">គម្របជារូបភាព HEIC (កំណែស្រាលមិនគាំទ្រការបំប្លែងទេ សូមនាំចេញជា JPEG នៅលើ iPhone សិន រួចទើបបំលែង)</string>
+    <string name="conv_cover_invalid_heic">គម្របមិនមែនជារូបភាពត្រឹមត្រូវ (HEIC ត្រូវការការគាំទ្រឌិកូដ HEIF ពីប្រព័ន្ធ)</string>
+    <string name="conv_cover_not_jpeg_go">គម្របមិនមែនជារូបភាព JPEG (កំណែស្រាលមិនគាំទ្រការបំប្លែងទេ សូមប្រើរូបថត JPEG ជំនួស)</string>
+    <string name="conv_cover_invalid_image">គម្របមិនមែនជារូបភាពត្រឹមត្រូវ (គាំទ្រតែ JPEG/WebP/PNG ប៉ុណ្ណោះ)</string>
+
+    <!-- Converter.kt៖ ការបំប្លែង / ខ្ចប់ធុងឡើងវិញបរាជ័យ និងការណែនាំ «ប្តូរធុងតែប៉ុណ្ណោះមិនអាចសង្គ្រោះកូដេកបានទេ» -->
+    <string name="conv_reencode_failed">ការអ៊ិនកូដវីដេអូឡើងវិញបានបរាជ័យ៖ %1$s</string>
+    <string name="conv_remux_failed">ការខ្ចប់ធុងឡើងវិញបានបរាជ័យ៖ %1$s</string>
+    <string name="conv_codec_unknown">មិនមែនជាវីដេអូ H.264/H.265 ដែលអាចស្គាល់បានទេ</string>
+    <string name="conv_codec_is">កូដេកគឺ %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">វីដេអូ «%1$s» %2$s ការប្តូរធុងតែប៉ុណ្ណោះ (ខ្ចប់ធុងឡើងវិញ) មិនអាចផ្លាស់ប្តូរកូដេកបានទេ ដូច្នេះមិនអាចផ្គុំជារូបថតចលនាបានទេ។\n\nសូមប្តូរទៅ «អ៊ិនកូដឡើងវិញ» ក្នុង «ការកំណត់ → ការបំប្លែងវីដេអូ → វិធីបំប្លែង» ឬប្រើឧបករណ៍ផ្សេងបំលែងវាទៅជា MP4 កូដេក H.264/H.265 ជាមុនសិន។</string>
+    <string name="conv_hint_no_encoder">វីដេអូមិនមែនជាធុង MP4 ស្តង់ដារ (MOV / MKV / WebM / AVI ។ល។) ហើយ «វិធីបំប្លែង» បច្ចុប្បន្នមិនអ៊ិនកូដឡើងវិញ ដូច្នេះមិនអាចផ្គុំជារូបថតចលនាបានទេ។\n\nសូមប្តូរ «វិធីបំប្លែង» ក្នុង «ការកំណត់ → ការបំប្លែងវីដេអូ → វិធីបំប្លែង» ទៅ «អ៊ិនកូដឡើងវិញ» (កំណែធម្មតាមានឧបករណ៍អ៊ិនកូដ ffmpeg ក្នុងកម្មវិធី; កំណែស្រាល Go គ្មានឧបករណ៍បំប្លែង សូមប្រើកំណែធម្មតា) ឬបំលែងវីដេអូទៅជា MP4 ស្តង់ដារ (H.264/H.265) ជាមុនសិន។</string>
+
+    <!-- ========== កំណត់ហេតុបំលែង (បង្ហាញក្នុងរបារស្ថានភាពធាតុបញ្ជី និងផ្ទាំងកំណត់ហេតុ) ========== -->
+    <string name="conv_log_detected">ស្គាល់ឃើញជា %1$s</string>
+    <string name="conv_log_same_format_copied">ទម្រង់ដើម និងទម្រង់គោលដៅដូចគ្នា បានចម្លងដូចដើម (គ្មានការបាត់បង់)</string>
+    <string name="conv_log_extra_tracks_bypass">វីដេអូដើមមានផ្លូវមិនមែនសំឡេង/រូបភាព (%1$s) រំលងការឆ្លងកាត់ទម្រង់ដូចគ្នា ហើយប្រើដំណើរការសរសេរពេញលេញដើម្បីសម្អាត</string>
+    <string name="conv_log_ts_fallback">វីដេអូដើមគ្មានត្រាពេលវេលាស៊ុមគម្រប បានត្រឡប់ទៅចំណុចកណ្តាលនៃវីដេអូតាមលក្ខណៈបច្ចេកទេស</string>
+    <string name="conv_log_brand_normalized">បានធ្វើឱ្យម៉ាកធុងវីដេអូជាបទដ្ឋាន (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">វីដេអូមានផ្លូវបន្ថែម (%1$s) មិនអាចសម្អាតបានទេ បានបញ្ចេញដូចដើម (លទ្ធផលនេះអាចមិនអាចចុចយូរដើម្បីលេងនៅលើម៉ាស៊ីនមួយចំនួន)</string>
+    <string name="conv_log_extra_tracks_removed">បានដកផ្លូវបន្ថែមរបស់វីដេអូ (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">វីដេអូដើម %1$s; ការខ្ចប់ធុងឡើងវិញតែប៉ុណ្ណោះមិនអាចដោះស្រាយបានទេ (%2$s) បើលទ្ធផលនៅតែមិនអាចចុចយូរដើម្បីលេង សូមជ្រើស «អ៊ិនកូដឡើងវិញ» ក្នុង «ការកំណត់ → ការបំប្លែងវីដេអូ → វិធីបំប្លែង»</string>
+    <string name="conv_log_reencoding">វីដេអូដើម %1$s អ៊ិនកូដឡើងវិញតាមការកំណត់ទៅជា 8bit + AAC ដើម្បីបង្កើនភាពត្រូវគ្នាជាមួយអាល់ប៊ុម</string>
+    <string name="conv_log_reencode_result_unusable">លទ្ធផលអ៊ិនកូដឡើងវិញមិនអាចប្រើបាន បានបញ្ចេញដូចដើម (លទ្ធផលនេះអាចមិនអាចចុចយូរដើម្បីលេងនៅលើម៉ាស៊ីនមួយចំនួន)</string>
+    <string name="conv_log_reencode_still_risky">បន្ទាប់ពីអ៊ិនកូដឡើងវិញនៅតែមានចំណុចប្រឈម (%1$s)</string>
+    <string name="conv_log_reencode_failed">ការអ៊ិនកូដឡើងវិញបានបរាជ័យ (%1$s) បានបញ្ចេញដូចដើម (លទ្ធផលនេះអាចមិនអាចចុចយូរដើម្បីលេងនៅលើម៉ាស៊ីនមួយចំនួន)</string>
+    <string name="conv_log_cover_heic_converted">គម្របជា HEIC (មិនមែន JPEG) បានបំប្លែងទៅជា JPEG ស្តង់ដាររួចទើបខ្ចប់</string>
+    <string name="conv_log_compose_sizes">ផ្គុំ៖ រូបថត %1$dB + វីដេអូ %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">មិនបានបើកឧបករណ៍បំប្លែង៖ សរសេរឡើងវិញតែម៉ាកធុង (MOV → MP4) មិនអ៊ិនកូដឡើងវិញ</string>
+
+    <!-- ស្លាកកំណត់ហេតុ (ចំណុចប្រទាក់បង្ហាញជា «[ស្លាក] អត្ថបទ») -->
+    <string name="conv_tag_convert">បំលែង</string>
+    <string name="conv_tag_transcode">បំប្លែង</string>
+    <string name="conv_tag_compose">ផ្គុំ</string>
+
+    <!-- មូលហេតុស្ទះនៃវិធីបំប្លែង (បញ្ចូលក្នុងអត្ថបទព្រមានខាងលើ) -->
+    <string name="conv_blocker_no_encoder">ឧបករណ៍បំប្លែងក្នុងកម្មវិធីមិនអាចប្រើបាន</string>
+    <string name="conv_blocker_mode_no_encode">«វិធីបំប្លែង» បច្ចុប្បន្នមិនអ៊ិនកូដឡើងវិញ</string>
+
+    <!-- ========== FfmpegAddon.kt៖ ការបំប្លែង / ខ្ចប់ធុងឡើងវិញដោយ ffmpeg ក្នុងកម្មវិធី ========== -->
+    <string name="conv_addon_unavailable">ឧបករណ៍បំប្លែងក្នុងកម្មវិធីមិនអាចប្រើបាន</string>
+    <string name="conv_addon_transcode_failed">ការបំប្លែងដោយ ffmpeg បានបរាជ័យ៖ %1$s</string>
+    <string name="conv_addon_remux_failed">ការខ្ចប់ធុងឡើងវិញដោយ ffmpeg បានបរាជ័យ៖ %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">កំពុងបំប្លែងវីដេអូទៅជា MP4 ស្តង់ដារដោយ ffmpeg (%1$s / crf %2$d / %3$s រក្សាទុកតែផ្លូវវីដេអូ និងសំឡេង)</string>
+    <string name="conv_log_transcode_done">ការបំប្លែងវីដេអូបានសម្រេច (%1$dKB)</string>
+    <string name="conv_log_remuxing">កំពុងខ្ចប់ធុងវីដេអូឡើងវិញទៅជា MP4 ស្តង់ដារ (ប្តូរតែធុង មិនអ៊ិនកូដឡើងវិញ)</string>
+    <string name="conv_log_remux_done">ការខ្ចប់ធុងឡើងវិញបានសម្រេច (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt៖ ប្រអប់ «មិនបង្ហាញម្តងទៀត» ========== -->
+    <string name="conv_reminder_cat_compose">ផ្គុំ</string>
+    <string name="conv_reminder_cat_convert">បំលែង</string>
+    <string name="conv_reminder_cat_update">ធ្វើបច្ចុប្បន្នភាព</string>
+    <string name="conv_reminder_video_over3s_title">វីដេអូលើស 3 វិនាទី</string>
+    <string name="conv_reminder_video_over3s_message">វីដេអូដែលបានជ្រើសមានរយៈពេលលើស 3 វិនាទី រូបថតចលនាដែលផ្គុំរួចអាចមានបញ្ហាត្រូវគ្នា៖\n\n• អាចមិនអាចលេងបានធម្មតា\n• អាចមិនត្រូវបានស្គាល់ដោយអាល់ប៊ុមប្រព័ន្ធ\n• ម៉ាស៊ីនមួយចំនួនអាចមិនស្គាល់រូបថតចលនានេះ</string>
+    <string name="conv_reminder_legacy_go_title">រកឃើញកំណែចាស់</string>
+    <string name="conv_reminder_legacy_go_message">ឧបករណ៍នេះនៅតែមានកម្មវិធីកំណែចាស់ (កំណែ Go) ដំឡើង ដែលកំណែចាស់នោះលែងអាចប្រើបាននៅលើឧបករណ៍នេះទេ អ្នកអាចលុបវាចោលដើម្បីបង្កើនទំហំទំនេរ។</string>
+    <string name="conv_reminder_replace_risk_title">របៀបជំនួសមានហានិភ័យខូចទិន្នន័យ</string>
+    <!-- formatted="false"៖ ខ្សែអក្សរនេះត្រូវបានប្រើដោយគ្មានអាគុយម៉ង់ធ្វើទ្រង់ទ្រាយ
+         ការប្រកាសថាមិនមែនជាខ្សែអក្សរទ្រង់ទ្រាយ ជួយឱ្យ aapt2/lint មិនផ្ទៀងផ្ទាត់វាតាម String.format។ -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">របៀបជំនួសនឹងសរសេរលទ្ធផលបំលែងត្រឡប់ទៅឯកសារដើមផ្ទាល់ បន្ទាប់ពីឯកសារដើមត្រូវសរសេរជាន់លើ នោះមិនអាចរកមកវិញបានទេ។\n\n• បើកម្មវិធីត្រូវបានរំខាន ទំហំផ្ទុកមិនគ្រប់ ឬការអនុញ្ញាតត្រូវបានដក ពេលកំពុងសរសេរ ឯកសារដើមអាចខូច\n• ការបំលែងខ្លួនឯងមិនអាចធានាជោគជ័យគ្រប់ករណីបានទេ ពេលបរាជ័យ ឯកសារដើមអាចលែងអាចប្រើបាន\n• សូមសាកល្បងជាមួយឯកសារមួយឬពីរសិន បញ្ជាក់ថាគ្មានបញ្ហា រួចទើបដំណើរការជាក្រុម\n• រូបថតសំខាន់ សូមបម្រុងទុកដោយខ្លួនឯងជាមុន\n\nមុខងារនេះផ្តល់ជូនតាម «ស្ថានភាពដើម» ហានិភ័យប្រើប្រាស់ស្ថិតលើអ្នក អ្នកនិពន្ធមិនទទួលខុសត្រូវចំពោះការខូច ឬបាត់បង់ឯកសារទេ។</string>
+    <string name="conv_reminder_dont_remind">មិនបង្ហាញម្តងទៀត</string>
+    <string name="conv_reminder_confirm_ok">បានដឹងហើយ</string>
+    <string name="conv_reminder_uninstall">លុបចោល</string>
+
+</resources>

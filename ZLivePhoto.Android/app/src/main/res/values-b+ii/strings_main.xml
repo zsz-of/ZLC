@@ -1,6 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 本文件为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-     ii（彝语 / 凉山彝文）属低资源语种：本文件未做实质性翻译（无可靠词表，拒绝臆造彝文），
-     本文件暂无语言中立条目，全部 key 缺失将回落中文。 -->
+<!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+     ii（彝语 / 凉山彝文 / Nuosu）属低资源语种（分级 C）：本轮无可靠彝文词表，为避免臆造彝文，
+     暂以简体中文基准文本作为兜底值填充全部 key，保证 404/404 覆盖；品牌专名与纯格式串保持原样。
+     复数类别按 CLDR ii 仅给 other。待母语者审校后再替换为彝文正文。 -->
 <resources>
+    <!-- ── 状态栏 / 提示（Activity 方法内，getString） ── -->
+    <string name="main_status_ready">就绪</string>
+    <string name="main_status_location_granted">已获得位置权限，转换后将保留 GPS 元数据</string>
+    <string name="main_status_location_denied">未授予位置权限：转换后的照片将丢失 GPS 位置信息</string>
+    <string name="main_status_all_files_granted">已获得「所有文件访问」权限，转换将直写相册目录完整保留位置信息</string>
+    <string name="main_status_all_files_denied">未授予「所有文件访问」权限：个别机型转换后可能丢失位置信息</string>
+    <string name="main_status_read_granted">已获得读取照片和视频权限</string>
+    <string name="main_status_video_missing">已授权，但视频权限缺失：无法查找双文件动态照片附带的伴生视频</string>
+    <string name="main_status_permission_denied">未授予权限，可再次点击「添加文件」</string>
+    <string name="main_status_folder_not_selected">未选择文件夹</string>
+    <string name="main_status_folder_unavailable">无法访问所选文件夹（仅支持本地存储目录）</string>
+    <plurals name="main_status_session_restored">
+        <item quantity="other">已恢复上次会话（%1$d 个文件）</item>
+    </plurals>
+    <string name="main_status_abnormal_exit">检测到上次异常退出，已清空未完成的列表</string>
+    <string name="main_status_compose_blocks_extract">队列含合成任务，不能切换为拆解模式</string>
+    <string name="main_status_replace_off_mutex">已关闭替换模式（与「处理完成后删除原图」互斥）</string>
+    <string name="main_status_delete_needs_all_files">自动删除原图需要「所有文件访问」权限，请先授权</string>
+    <string name="main_status_replace_off">已关闭替换模式，转换结果重新写入相册目录</string>
+    <string name="main_status_replace_needs_all_files">替换模式需要「所有文件访问」权限，请先授权</string>
+    <string name="main_status_delete_off_mutex">已关闭「处理完成后删除原图」（与替换模式互斥）</string>
+    <string name="main_status_loading_albums">正在读取相册…</string>
+    <string name="main_status_no_albums">未找到相册</string>
+    <string name="main_status_compose_no_photo">未选择照片，无法合成</string>
+    <string name="main_status_compose_no_video">未选择视频，无法合成</string>
+    <string name="main_status_compose_all_added">所选照片均已在列表中</string>
+    <string name="main_status_compose_paired">照片 %1$d 张、视频 %2$d 个，按较少方已添加 %3$d 对合成任务</string>
+    <plurals name="main_status_compose_added">
+        <item quantity="other">已添加 %1$d 个合成任务，点击「开始转换」执行合成</item>
+    </plurals>
+    <string name="main_status_auto_google">%1$s（已自动切换输出格式为 Google）</string>
+    <plurals name="main_status_importing_shared">
+        <item quantity="other">正在导入分享的 %1$d 张图片…</item>
+    </plurals>
+    <string name="main_status_import_failed">导入失败：%1$s</string>
+    <string name="main_status_import_done_partial">导入完成：成功 %1$d 个，失败 %2$d 个</string>
+    <plurals name="main_status_import_done">
+        <item quantity="other">导入完成：共导入 %1$d 个文件</item>
+    </plurals>
+    <string name="main_status_import_stopped">已停止导入：成功 %1$d 个，失败 %2$d 个</string>
+    <plurals name="main_status_importing_files">
+        <item quantity="other">正在导入 %1$d 个文件…</item>
+    </plurals>
+    <string name="main_status_importing_progress">正在导入 %1$d/%2$d…</string>
+    <string name="main_status_stopping">正在停止…（完成当前文件后停止）</string>
+    <string name="main_status_stopping_import">正在停止导入…</string>
+    <string name="main_status_removed">已移除 %1$s</string>
+    <string name="main_status_cleared">已清空</string>
+    <string name="main_status_nothing_to_convert">没有可转换的文件</string>
+    <string name="main_status_folder_unreadable">无法读取所选文件夹</string>
+    <string name="main_status_scanning_folder">正在扫描文件夹…</string>
+    <string name="main_status_no_images">所选文件夹内未找到图片</string>
+    <string name="main_status_batch_importing">正在批量导入 %1$d/%2$d…</string>
+    <plurals name="main_status_batch_stopped">
+        <item quantity="other">已停止批量导入：共导入 %1$d 个动态照片</item>
+    </plurals>
+    <plurals name="main_status_batch_stopped_skipped">
+        <item quantity="other">已停止批量导入：共导入 %1$d 个动态照片，跳过 %2$d 个非动态文件</item>
+    </plurals>
+    <plurals name="main_status_batch_done">
+        <item quantity="other">批量导入完成：共导入 %1$d 个动态照片</item>
+    </plurals>
+    <plurals name="main_status_batch_done_skipped">
+        <item quantity="other">批量导入完成：共导入 %1$d 个动态照片，跳过 %2$d 个非动态文件</item>
+    </plurals>
+    <string name="main_status_stopped_replace">已停止：%1$d 个文件中处理了 %2$d 个，替换 %3$d 个源文件</string>
+    <string name="main_status_stopped_export">已停止：%1$d 个文件中处理了 %2$d 个，导出 %3$d 个到相册</string>
+    <string name="main_status_done_replace_reason">完成：%1$d 个文件处理完毕，替换 %2$d 个源文件（原因：%3$s）</string>
+    <string name="main_status_done_export_reason">完成：%1$d 个文件处理完毕，导出 %2$d 个到相册（原因：%3$s）</string>
+    <string name="main_status_done_replace">完成：%1$d 个文件处理完毕，替换 %2$d 个源文件</string>
+    <string name="main_status_done_export">完成：%1$d 个文件处理完毕，导出 %2$d 个到相册</string>
+    <string name="main_status_keep_originals">%1$s；未获得「完全存储访问」权限，原图已保留</string>
+
+    <!-- ── 列表项信息（FileItem.info） ── -->
+    <string name="main_info_detecting">检测中…</string>
+    <string name="main_info_unrecognized">未识别的动态照片格式</string>
+    <string name="main_info_converting">转换中…</string>
+    <string name="main_info_compose_task">合成任务（点击开始转换执行合成）</string>
+    <string name="main_info_done_replaced">完成（替换 %1$d 个源文件）</string>
+    <string name="main_info_done_skipped">完成（跳过：同名冲突）</string>
+    <string name="main_info_done_exported">完成（导出 %1$d 个）</string>
+    <string name="main_info_failed">失败：%1$s</string>
+
+    <!-- ── 进度明细（progressDetail） ── -->
+    <string name="main_progress_added">已添加 %1$d/%2$d</string>
+    <string name="main_progress_processed">已处理 %1$d/%2$d</string>
+    <string name="main_progress_imported">已导入 %1$d/%2$d</string>
+
+    <!-- ── 权限对话框 ── -->
+    <string name="main_dialog_permission_title">需要读取照片和视频权限</string>
+    <string name="main_dialog_permission_message">本程序需要读取您设备上的照片和视频：\n\n• 照片权限：扫描设备相册，识别其中的动态照片\n• 视频权限：查找双文件动态照片附带的伴生视频\n• 位置权限：保留照片中的 GPS 位置元数据（缺失则转换后丢失位置信息）\n\n拒绝后无法使用内置选择器，可稍后再次点击「添加文件」重新授权。</string>
+    <string name="main_dialog_settings_title">需要手动授予照片和视频权限</string>
+    <string name="main_dialog_settings_message">您之前选择了「不再询问」，系统不再弹出权限对话框。\n\n请前往应用详情页 → 权限 → 照片和视频，手动授予访问权限后返回本应用。\n\n注意：必须同时授予「照片」和「视频」权限，否则双文件动态照片将无法找到附带的伴生视频。</string>
+
+    <!-- ── 「所有文件访问」权限说明对话框 ── -->
+    <string name="main_dialog_allfiles_title_delete">自动删除原图需要「所有文件访问」</string>
+    <string name="main_dialog_allfiles_title_delete_unsupported">本机不支持自动删除原图</string>
+    <string name="main_dialog_allfiles_title_replace">替换模式需要「所有文件访问」</string>
+    <string name="main_dialog_allfiles_title_replace_unsupported">本机不支持替换模式</string>
+    <string name="main_dialog_allfiles_title_location">建议授予「所有文件访问」权限</string>
+    <string name="main_dialog_allfiles_delete_message">「处理完成后删除原图」会直接删除磁盘上的原文件（照片及其伴生视频），该操作不可撤销，因此必须先授予「所有文件访问」权限。\n\n授权后开关才会变为可用，届时可自行开启。</string>
+    <string name="main_dialog_allfiles_delete_unsupported_message">当前系统（Android 10 及以下）不提供「所有文件访问」权限，无法直接删除磁盘上的原文件，因此本机不支持「处理完成后删除原图」。\n\n您可以在转换完成后通过系统相册手动清理原图。</string>
+    <string name="main_dialog_allfiles_replace_message">「替换模式」会直接把转换结果写回磁盘上的原文件（覆盖原内容），该操作不可撤销，因此必须先授予「所有文件访问」权限。\n\n授权后开关才会变为可用，届时可自行开启。</string>
+    <string name="main_dialog_allfiles_replace_unsupported_message">当前系统（Android 10 及以下）不提供「所有文件访问」权限，无法直接改写磁盘上的原文件，因此本机不支持「替换模式」。\n\n您可以继续用默认方式转换，结果会输出到相册目录。</string>
+    <string name="main_dialog_allfiles_location_message">部分机型（如魅族）通过系统相册接口写入会脱敏 GPS 位置信息，导致转换后照片丢失位置。\n\n授予「所有文件访问」后，本程序将直接写入相册目录，完整保留位置元数据。\n\n不授予也能正常转换，个别机型可能丢失位置信息。</string>
+
+    <!-- ── 输出文件名冲突对话框 ── -->
+    <string name="main_dialog_conflict_title">输出文件名冲突</string>
+    <string name="main_dialog_conflict_message">输出目录中已存在同名文件：\n%1$s\n\n请选择处理方式。</string>
+    <string name="main_label_conflict_always">为后续冲突使用此处理方法</string>
+
+    <!-- ── 对话框按钮 ── -->
+    <string name="main_btn_grant">授权</string>
+    <string name="main_btn_deny">拒绝</string>
+    <string name="main_btn_go_settings">去设置</string>
+    <string name="main_btn_cancel">取消</string>
+    <string name="main_btn_grant_access">去授权</string>
+    <string name="main_btn_got_it">知道了</string>
+    <string name="main_btn_not_now">暂不</string>
+    <string name="main_btn_skip">跳过</string>
+    <string name="main_btn_overwrite">覆盖</string>
+    <string name="main_btn_auto_rename">自动重命名</string>
+
+    <!-- ── 转换结果 / 导出失败原因（随「原因：%3$s」展示给用户） ── -->
+    <plurals name="main_delete_done">
+        <item quantity="other">已删除 %1$d 个原文件</item>
+    </plurals>
+    <string name="main_delete_nothing">无需删除原图</string>
+    <string name="main_delete_partial">已删除 %1$d 个原文件（%2$d 个删除失败，已保留）</string>
+    <string name="main_delete_failed">原图删除失败（文件被占用或无写入权限），已保留</string>
+    <string name="main_export_missing_output">转换产物缺失或为空：%1$s</string>
+    <string name="main_export_missing_output_bare">转换产物缺失或为空</string>
+    <string name="main_export_insert_null">MediaStore insert 返回 null</string>
+    <string name="main_export_output_stream">MediaStore 输出流不可用</string>
+    <string name="main_export_write_failed">MediaStore 写入失败：%1$s</string>
+    <string name="main_export_mkdir_failed">无法创建相册目录 %1$s</string>
+    <string name="main_export_dir_write_failed">写相册目录失败：%1$s</string>
+    <string name="main_export_no_source">无法定位源文件，已跳过替换</string>
+    <string name="main_export_companion_failed">写回伴生文件失败：%1$s</string>
+    <string name="main_export_source_dir_unwritable">源文件目录不可写，伴生文件未能写回</string>
+    <string name="main_export_source_dir_unavailable">源文件目录不可用：%1$s</string>
+    <string name="main_export_replace_failed">替换源文件失败：%1$s</string>
+    <string name="main_export_replace_failed_bare">替换源文件失败</string>
 </resources>

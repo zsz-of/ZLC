@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Danish (da) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_lanzou_gone">Lanzou Cloud-delingen er blevet annulleret, eller filen findes ikke; brug GitHub-download i stedet</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud-delingen er blevet annulleret; brug GitHub-download i stedet</string>
+    <string name="update_lanzou_resolve_failed">Kunne ikke fortolke Lanzou Cloud-downloadlinket</string>
+    <string name="update_lanzou_need_passwd">Denne Lanzou Cloud-deling kræver en adgangskode; brug GitHub-download i stedet (eller find adgangskoden i udgivelsesnoterne)</string>
+    <string name="update_lanzou_wrong_passwd">Forkert Lanzou Cloud-adgangskode</string>
+    <string name="update_err_resolve_failed">Fortolkning mislykkedes</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Clouds anti-crawler-kontrol mislykkedes</string>
+    <string name="update_err_no_frame">Kunne ikke fortolke Lanzou Clouds downloadside (downloadrammen blev ikke fundet)</string>
+    <string name="update_err_no_file_id">Kunne ikke fortolke Lanzou Clouds fil-id</string>
+    <string name="update_err_no_sign">Kunne ikke fortolke Lanzou Clouds signatur</string>
+    <string name="update_err_ajax_request">API-anmodningen mislykkedes</string>
+    <string name="update_err_api_request">Lanzou Clouds API-anmodning mislykkedes</string>
+    <string name="update_err_empty_direct">Lanzou Cloud returnerede en tom downloadadresse</string>
+    <string name="update_err_direct_expired">Lanzou Clouds downloadadresse er udløbet; hent den igen</string>
+    <string name="update_err_http_request">Anmodningen mislykkedes (HTTP %1$d)</string>
+    <string name="update_err_connect">Kunne ikke forbinde til downloadserveren: %1$s</string>
+    <string name="update_err_http">Downloaden mislykkedes (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Kunne ikke etablere downloadforbindelsen</string>
+    <string name="update_err_empty">Det downloadede indhold er tomt</string>
+    <string name="update_err_incomplete">Downloaden er ufuldstændig (%1$d / %2$d bytes hentet); download igen</string>
+    <string name="update_err_interrupted">Downloaden blev afbrudt: %1$s</string>
+    <string name="update_err_not_apk">Det downloadede er ikke en gyldig installationspakke (muligvis en webside, eller downloadlinket er udløbet). Download igen, eller brug GitHub-download i stedet.</string>
+    <string name="update_err_apk_incomplete">Indholdet af installationspakken er ufuldstændigt. Download igen, eller brug GitHub-download i stedet.</string>
+    <string name="update_err_apk_unparsable">Installationspakken kan ikke fortolkes (downloaden er muligvis ufuldstændig). Download igen, eller brug GitHub-download i stedet.</string>
+    <string name="update_err_no_install_permission">Tilladelsen “Installer ukendte apps” er endnu ikke givet</string>
+    <string name="update_err_installer_failed">Systeminstallationsprogrammet kunne ikke startes (%1$s); åbn installationspakken manuelt i filhåndteringen for at installere</string>
+</resources>

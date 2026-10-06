@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Norwegian Nynorsk (nn) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="screen_app_subtitle">Konvertering mellom Live Photo-format</string>
+    <plurals name="screen_file_count">
+        <item quantity="one">%1$d fil</item>
+        <item quantity="other">%1$d filer</item>
+    </plurals>
+    <string name="screen_settings">Innstillingar</string>
+    <string name="screen_select_output_format">Vel utdataformat</string>
+    <string name="screen_selected">Vald</string>
+    <string name="screen_vivo_single_warning">⚠ Svært gamle einingar kjenner kanskje ikkje att dette formatet</string>
+    <string name="screen_extract_blocked">⚠ Køen inneheld samansetjingsoppgåver; Pakk ut kan ikkje veljast</string>
+    <string name="screen_format_google">Google</string>
+    <string name="screen_format_apple">Apple</string>
+    <string name="screen_format_oppo">OPPO</string>
+    <string name="screen_format_vivo_single">vivo (éi fil)</string>
+    <string name="screen_format_vivo">vivo (to filer)</string>
+    <string name="screen_format_xiaomi">Xiaomi</string>
+    <string name="screen_format_honor">Honor</string>
+    <string name="screen_format_meizu">Meizu</string>
+    <string name="screen_format_extract">Pakk ut</string>
+    <string name="screen_toolbox">Verktøykasse</string>
+    <string name="screen_batch_import">Masseimport</string>
+    <string name="screen_batch_import_desc">Skannar heile galleriet og finn Live Photo i store mengder</string>
+    <string name="screen_compose">Set saman Live Photo</string>
+    <string name="screen_compose_desc">Vel eitt bilete og éi video, og set dei saman som par</string>
+    <string name="screen_replace_mode">Erstattingsmodus</string>
+    <string name="screen_replace_mode_desc">Konverteringsresultatet blir skrive direkte tilbake til originalfilene; det blir ikkje laga nye filer</string>
+    <string name="screen_need_all_files_access_hint">Krev løyvet “Tilgang til alle filer” — trykk her for å gje det</string>
+    <string name="screen_agree_and_enable">Godta og aktiver</string>
+    <string name="screen_empty_no_files">Ingen filer lagt til enno</string>
+    <string name="screen_view_detail">Sjå detaljar</string>
+    <string name="screen_add_files">Legg til filer</string>
+    <string name="screen_output_format">Utdataformat: %1$s</string>
+    <string name="screen_delete_original">Slett originalane etter behandling</string>
+    <string name="screen_need_all_files_access_view">Krev løyvet “Tilgang til alle filer” — trykk for å sjå detaljar</string>
+    <string name="screen_clear">Tøm</string>
+    <string name="screen_stop">Stopp behandlinga</string>
+    <string name="screen_start_convert">Start konverteringa</string>
+    <string name="screen_status_detail">Statusdetaljar</string>
+    <string name="screen_long_press_copy">Hald inne teksten for å markere og kopiere han</string>
+    <string name="screen_copy">Kopier</string>
+    <string name="screen_close">Lukk</string>
+    <string name="screen_back">Tilbake</string>
+    <string name="screen_picker_title_select">Vel Live Photo</string>
+    <string name="screen_album_count">Album %1$d</string>
+    <string name="screen_album_collapse_cover">Skjul albumcoveret</string>
+    <string name="screen_album_expand_cover">Vis albumcoveret</string>
+    <string name="screen_scanning_progress">Skannar %1$d/%2$d</string>
+    <plurals name="screen_photo_count">
+        <item quantity="one">%1$d bilete</item>
+        <item quantity="other">%1$d bilete</item>
+    </plurals>
+    <string name="screen_select_all">Vel alle</string>
+    <string name="screen_no_albums">Ingen tilgjengelege album</string>
+    <string name="screen_no_media">Fann ingen Live Photo</string>
+    <string name="screen_no_media_compose">Fann ingen bilete eller videoar</string>
+    <string name="screen_import">Importer</string>
+    <string name="screen_import_count">Importer %1$d</string>
+    <string name="screen_import_mixed">Importer %1$d bilete · %2$d videoar</string>
+    <string name="screen_search">Søk</string>
+    <string name="screen_search_collapse">Skjul søket</string>
+    <string name="screen_search_hint">Søk etter namn</string>
+    <string name="screen_search_clear">Tøm søket</string>
+    <string name="screen_sort_date">Dato</string>
+    <string name="screen_sort_size">Storleik</string>
+    <string name="screen_sort_name">Namn</string>
+    <string name="screen_sort_asc">Stigande</string>
+    <string name="screen_sort_desc">Synkande</string>
+    <string name="screen_date_today">I dag</string>
+    <string name="screen_date_yesterday">I går</string>
+    <string name="screen_date_this_year">%2$d.%1$d</string>
+    <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+</resources>

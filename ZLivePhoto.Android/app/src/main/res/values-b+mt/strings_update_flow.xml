@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Maltese (mt) strings. Grade B: model-assisted translation, may contain wording flaws; corrections welcome. -->
+<resources>
+    <string name="update_github_url_missing">Ma nkisebx il-ħolqa tat-tniżżel ta’ GitHub; erġa’ pprova aktar tard.</string>
+    <string name="update_flavor_standard">Verżjoni standard</string>
+    <string name="update_flavor_go">Verżjoni Go</string>
+    <string name="update_lanzou_url_missing">Din il-verżjoni ma tipprovdix ħolqa ta’ tniżżel ta’ Lanzou; tista’ tuża GitHub.</string>
+    <string name="update_apk_direct_missing">Din il-verżjoni ma tipprovdix ħolqa diretta għall-APK li taqbel magħha; mur fil-paġna tar-Release ta’ GitHub u agħżel l-APK xieraq.</string>
+    <string name="update_install_permission_missing">Il-permess “Installa applikazzjonijiet mhux magħrufa” ma ngħatax, għalhekk l-installazzjoni awtomatika ma tistax sseħħ. Mur fl-impostazzjonijiet tas-sistema, ħalli l-permess u erġa’ pprova.</string>
+    <string name="update_error_unknown">Żball mhux magħruf</string>
+    <string name="update_fail_lanzou">It-tniżżel minn Lanzou falla</string>
+    <string name="update_fail_github">It-tniżżel minn GitHub falla</string>
+    <string name="update_lanzou_resolving">Qed tirriżolva l-ħolqa tat-tniżżel ta’ Lanzou…</string>
+    <string name="update_lanzou_downloading">Qed tinżżel minn Lanzou…</string>
+    <string name="update_github_downloading">Qed tinżżel minn GitHub…</string>
+    <string name="update_unzipping">Qed tinstaqqar il-pakkett tal-installazzjoni…</string>
+    <string name="update_notes_empty">Din il-verżjoni m’għandhiex in-noti tal-aġġornament.</string>
+    <string name="update_use_normal_title">Uża l-verżjoni normali</string>
+    <string name="update_use_normal_body">Is-sistema fuq dan l-apparat hija Android 10 jew aktar; il-verżjoni ħafifa Go m’għadhiex adattata, u l-verżjoni qadima ma tistax tkompli tintuża.\n\nFuq dan l-apparat nstabet l-verżjoni normali (ZLC) installata; iftha direttament biex tkompli tużaha (il-verżjoni ġdida ma tipprovdix verżjoni kompatibbli Go; tista’ tdiżinstalla l-verżjoni qadima biex jeħles l-ispazju).</string>
+    <string name="update_open_normal">Iftaħ il-verżjoni normali</string>
+    <string name="update_must_update_title">Trid taġġorna qabel ma tkompli tuża</string>
+    <string name="update_forced_body">Is-sistema fuq dan l-apparat hija Android 10 jew aktar; il-verżjoni ħafifa Go m’għadhiex adattata, u l-verżjoni qadima ma tistax tkompli tintuża; il-verżjoni ġdida wkoll ma tipprovdix verżjoni kompatibbli Go.\n\nQabbad in-netwerk u agħfas “Erġa’ pprova” biex tikseb il-pakkett tal-installazzjoni tal-verżjoni normali.</string>
+    <string name="update_retry">Erġa’ pprova</string>
+    <string name="update_switch_normal_body">Is-sistema fuq dan l-apparat hija Android 10 jew aktar; il-verżjoni ħafifa Go m’għadhiex adattata, u l-verżjoni qadima ma tistax tkompli tintuża.\nNiżżel u installa l-verżjoni normali biex tkompli tuża (il-verżjoni ġdida ma tipprovdix verżjoni kompatibbli Go).</string>
+    <string name="update_downloading_title">Tniżżel l-aġġornament</string>
+    <string name="update_cancel">Ikkanċella</string>
+    <string name="update_need_permission_title">Hu meħtieġ il-permess ta’ installazzjoni</string>
+    <string name="update_need_permission_body">L-installazzjoni tal-verżjoni ġdida teħtieġ il-permess tas-sistema “Installa applikazzjonijiet mhux magħrufa”.\n\nAgħfas “Mur agħti l-permess”, ħalli l-permess fl-impostazzjonijiet u erġa’ lura għall-app; l-installazzjoni tkompli waħedha (mhux meħtieġ li terġa’ tniżżel).</string>
+    <string name="update_grant">Mur agħti l-permess</string>
+    <string name="update_notice_title">Avviż</string>
+    <string name="update_got_it">Mifhum</string>
+    <string name="update_notes_title">v%1$s · In-noti tal-aġġornament</string>
+    <string name="update_back">Lura</string>
+    <string name="update_title_switch_normal">Ibdel għall-verżjoni normali</string>
+    <string name="update_title_reinstall">Installa mill-ġdid din il-verżjoni</string>
+    <string name="update_title_new_version">Instabet verżjoni ġdida</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Se jitniżżel u jiġi installat mill-ġdid din il-verżjoni (tikteb fuq l-app kurrenti).\nDin il-funzjoni tintuża biex tittestja l-mekkaniżmu tal-aġġornament.</string>
+    <string name="update_view_notes">Ara n-noti tal-aġġornament</string>
+    <string name="update_lanzou_unavailable">Lanzou mhux disponibbli bħalissa</string>
+    <string name="update_download_lanzou">Niżżel minn Lanzou</string>
+    <string name="update_download_github">Niżżel minn GitHub</string>
+    <string name="update_download_browser">Niżżel mill-browser</string>
+    <string name="update_later">Mhux issa</string>
+    <string name="update_later_switch">Tibdelx issa</string>
+    <string name="update_skip_version">Aqbeż din il-verżjoni</string>
+</resources>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Romanian (ro) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="conv_unknown_target">Format țintă necunoscut: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Format Live Photo nerecunoscut (nu este un Live Photo Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Fotografia de copertă nu există sau este goală</string>
+    <string name="conv_video_missing">Videoclipul nu există sau este gol</string>
+    <string name="conv_video_too_large">Videoclipul este prea mare (%1$dMB); nu poate fi compus într-un Live Photo, alege un videoclip mai scurt</string>
+    <string name="conv_transcoded_too_large">După transcodare videoclipul este prea mare (%1$dMB); nu poate fi compus într-un Live Photo</string>
+    <string name="conv_video_too_large_compose">Videoclipul este prea mare (%1$dMB); nu poate fi compus într-un Live Photo</string>
+    <string name="conv_cover_heic_go">Coperta este o imagine HEIC (versiunea Go nu acceptă transcodarea; exportă-o ca JPEG pe iPhone, apoi convertește)</string>
+    <string name="conv_cover_invalid_heic">Coperta nu este o imagine validă (HEIC necesită ca sistemul să suporte decodarea HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">Coperta nu este o imagine JPEG (versiunea Go nu acceptă transcodarea; folosește o fotografie JPEG)</string>
+    <string name="conv_cover_invalid_image">Coperta nu este o imagine validă (sunt acceptate doar JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Recodificarea videoclipului a eșuat: %1$s</string>
+    <string name="conv_remux_failed">Remuxarea containerului a eșuat: %1$s</string>
+    <string name="conv_codec_unknown">Nu este un videoclip H.264/H.265 recunoscut</string>
+    <string name="conv_codec_is">Codarea este %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Videoclipul „%1$s”: %2$s; simpla schimbare a containerului (remuxarea) nu modifică codarea, deci nu poate fi compus într-un Live Photo.
+
+Schimbă în „Recodificare” la „Setări → Transcodare video → Modul de transcodare” sau convertește mai întâi videoclipul în MP4 cu codare H.264/H.265 folosind alt instrument.</string>
+    <string name="conv_hint_no_encoder">Videoclipul nu are un container MP4 standard (MOV / MKV / WebM / AVI etc.), iar „Modul de transcodare” actual nu recodifică, deci nu poate fi compus într-un Live Photo.
+
+Schimbă în „Recodificare” la „Setări → Transcodare video → Modul de transcodare” (versiunea normală are codificatorul ffmpeg integrat; versiunea Go nu include transcodificator, folosește versiunea normală) sau convertește mai întâi videoclipul în MP4 standard (H.264/H.265).</string>
+    <string name="conv_log_detected">Recunoscut ca %1$s</string>
+    <string name="conv_log_same_format_copied">Formatul sursă și cel destinație sunt identice; fișierul a fost copiat ca atare (fără pierderi)</string>
+    <string name="conv_log_extra_tracks_bypass">Videoclipul sursă conține piste non-audio/video (%1$s); pasul direct în același format este omis și se folosește fluxul complet de scriere pentru curățare</string>
+    <string name="conv_log_ts_fallback">Sursa nu are marcajul de timp al cadrului de copertă; conform specificației se revine la mijlocul videoclipului</string>
+    <string name="conv_log_brand_normalized">Marca containerului video a fost normalizată (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Videoclipul conține piste suplimentare (%1$s); curățarea nu este posibilă, rezultatul a fost scris ca atare (pe unele modele este posibil să nu poată fi redat prin apăsare lungă)</string>
+    <string name="conv_log_extra_tracks_removed">Pistele suplimentare ale videoclipului au fost eliminate (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Videoclipul sursă: %1$s; simpla remuxare a containerului nu rezolvă problema (%2$s); dacă rezultatul tot nu poate fi redat prin apăsare lungă, alege „Recodificare” la „Setări → Transcodare video → Modul de transcodare”</string>
+    <string name="conv_log_reencoding">Videoclipul sursă: %1$s; conform setărilor se recodifică în 8bit + AAC pentru o compatibilitate sporită cu albumul</string>
+    <string name="conv_log_reencode_result_unusable">Rezultatul recodificării nu este utilizabil; a fost scris ca atare (pe unele modele este posibil să nu poată fi redat prin apăsare lungă)</string>
+    <string name="conv_log_reencode_still_risky">După recodificare există încă elemente cu risc (%1$s)</string>
+    <string name="conv_log_reencode_failed">Recodificarea a eșuat (%1$s); a fost scris ca atare (pe unele modele este posibil să nu poată fi redat prin apăsare lungă)</string>
+    <string name="conv_log_cover_heic_converted">Coperta este HEIC (nu JPEG); a fost transcodată în JPEG standard înainte de remuxare</string>
+    <string name="conv_log_compose_sizes">Compunere: fotografie %1$dB + videoclip %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transcodificatorul nu este activat: se rescrie doar marca containerului (MOV → MP4), fără recodificare</string>
+    <string name="conv_tag_convert">Conversie</string>
+    <string name="conv_tag_transcode">Transcodare</string>
+    <string name="conv_tag_compose">Compunere</string>
+    <string name="conv_blocker_no_encoder">Transcodificatorul integrat nu este disponibil</string>
+    <string name="conv_blocker_mode_no_encode">„Modul de transcodare” actual nu recodifică</string>
+    <string name="conv_addon_unavailable">Transcodificatorul integrat nu este disponibil</string>
+    <string name="conv_addon_transcode_failed">Transcodarea ffmpeg a eșuat: %1$s</string>
+    <string name="conv_addon_remux_failed">Remuxarea containerului cu ffmpeg a eșuat: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Se transcodifică videoclipul cu ffmpeg în MP4 standard (%1$s / crf %2$d / %3$s; se păstrează doar pistele video și audio)</string>
+    <string name="conv_log_transcode_done">Transcodarea videoclipului s-a încheiat (%1$dKB)</string>
+    <string name="conv_log_remuxing">Se remuxează containerul videoclipului în MP4 standard (doar containerul se schimbă, fără recodificare)</string>
+    <string name="conv_log_remux_done">Remuxarea containerului s-a încheiat (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Compunere</string>
+    <string name="conv_reminder_cat_convert">Conversie</string>
+    <string name="conv_reminder_cat_update">Actualizare</string>
+    <string name="conv_reminder_video_over3s_title">Videoclipul depășește 3 secunde</string>
+    <string name="conv_reminder_video_over3s_message">Videoclipul selectat durează mai mult de 3 secunde, iar Live Photo rezultat poate avea probleme de compatibilitate:
+
+• este posibil să nu se redea corect
+• este posibil să nu fie recunoscut de albumul sistemului
+• pe unele modele este posibil să nu fie recunoscut</string>
+    <string name="conv_reminder_legacy_go_title">S-a detectat o versiune veche</string>
+    <string name="conv_reminder_legacy_go_message">Pe acest dispozitiv este încă instalată vechea versiune (Go) a aplicației; aceasta nu mai este disponibilă pe acest dispozitiv și poate fi dezinstalată pentru a elibera spațiu.</string>
+    <string name="conv_reminder_replace_risk_title">Modul de înlocuire implică riscul de deteriorare</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Modul de înlocuire scrie rezultatul conversiei direct peste fișierul original; după suprascriere, fișierul original nu mai poate fi recuperat.
+
+• Dacă aplicația este întreruptă în timpul scrierii, spațiul de stocare este insuficient sau permisiunea este revocată, fișierul sursă poate fi deteriorat
+• Conversia nu poate garanta succes deplin; în caz de eșec, fișierul sursă poate deveni deja inutilizabil
+• Se recomandă să încerci mai întâi cu unul sau două fișiere și să procesezi în lot doar după ce te-ai convins că totul funcționează
+• Fă mai întâi singur o copie de rezervă pentru fotografiile importante
+
+Funcția este oferită „ca atare”; riscul utilizării îți aparține în întregime, iar autorul nu răspunde pentru deteriorarea sau pierderea fișierelor.</string>
+    <string name="conv_reminder_dont_remind">Nu mai afișa</string>
+    <string name="conv_reminder_confirm_ok">Am înțeles</string>
+    <string name="conv_reminder_uninstall">Dezinstalează</string>
+</resources>

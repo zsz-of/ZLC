@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · සිංහල (Sinhala) strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Sinhala; technical terms follow the English loanword where common.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+    <string name="update_github_url_missing">GitHub බාගැනීම් ලිපිනය ලබාගත නොහැකි විය; කරුණාකර පසුව නැවත උත්සාහ කරන්න.</string>
+    <string name="update_flavor_standard">සම්මත සංස්කරණය</string>
+    <string name="update_flavor_go">Go සංස්කරණය</string>
+    <string name="update_lanzou_url_missing">මෙම අනුවාදයට Lanzou Cloud බාගැනීම් සබැඳියක් නොමැත; GitHub භාවිත කළ හැක.</string>
+    <string name="update_apk_direct_missing">මෙම අනුවාදයට ගැළපෙන පැකේජයේ සෘජු සබැඳියක් නොමැත; කරුණාකර GitHub Release පිටුවට ගොස් අදාළ APK තෝරන්න.</string>
+    <string name="update_install_permission_missing">“නොදන්නා යෙදුම් ස්ථාපනය කිරීම” අවසරය ලබා දී නැත, එබැවින් ස්වයංක්‍රීයව ස්ථාපනය කළ නොහැක. කරුණාකර පද්ධති සැකසුම්වල අවසර දී නැවත උත්සාහ කරන්න.</string>
+    <string name="update_error_unknown">නොදන්නා දෝෂයකි</string>
+    <string name="update_fail_lanzou">Lanzou Cloud බාගැනීම අසාර්ථක විය</string>
+    <string name="update_fail_github">GitHub බාගැනීම අසාර්ථක විය</string>
+    <string name="update_lanzou_resolving">Lanzou Cloud බාගැනීම් සබැඳිය විග්‍රහ කරමින්…</string>
+    <string name="update_lanzou_downloading">Lanzou Cloud වෙතින් බාගනිමින්…</string>
+    <string name="update_github_downloading">GitHub වෙතින් බාගනිමින්…</string>
+    <string name="update_unzipping">පැකේජය විස්තාරණය කරමින්…</string>
+    <string name="update_notes_empty">මෙම අනුවාදයට තවම යාවත්කාලීන සටහන් නොමැත.</string>
+    <string name="update_use_normal_title">කරුණාකර සම්මත සංස්කරණය භාවිත කරන්න</string>
+    <string name="update_use_normal_body">මෙම උපාංගයේ පද්ධතිය Android 10 හෝ ඊට වැඩි වේ; Go සැහැල්ලු සංස්කරණය තවදුරටත් ගැළපෙන්නේ නැත, පැරණි අනුවාදය දිගටම භාවිත කළ නොහැක.\n\nමෙම උපාංගයේ සම්මත සංස්කරණය (ZLC) දැනටමත් ස්ථාපනය කර ඇති බව හඳුනා ගන්නා ලදී; කරුණාකර සම්මත සංස්කරණය කෙලින්ම විවෘත කර භාවිත කරන්න (නව නිකුතුවල Go ගැළපුම් අනුවාදයක් තවදුරටත් නොමැත; ඉඩ නිදහස් කිරීමට පැරණි අනුවාදය අස්ථාපනය කළ හැක).</string>
+    <string name="update_open_normal">සම්මත සංස්කරණය විවෘත කරන්න</string>
+    <string name="update_must_update_title">දිගටම භාවිත කිරීමට පෙර යාවත්කාලීන කළ යුතුය</string>
+    <string name="update_forced_body">මෙම උපාංගයේ පද්ධතිය Android 10 හෝ ඊට වැඩි වේ; Go සැහැල්ලු සංස්කරණය තවදුරටත් ගැළපෙන්නේ නැත, පැරණි අනුවාදය දිගටම භාවිත කළ නොහැක; නව නිකුතුවල Go ගැළපුම් අනුවාදයක් ද නොමැත.\n\nකරුණාකර අන්තර්ජාලයට සම්බන්ධ වී “නැවත උත්සාහ කරන්න” ක්ලික් කර සම්මත සංස්කරණ පැකේජය ලබා ගන්න.</string>
+    <string name="update_retry">නැවත උත්සාහ කරන්න</string>
+    <string name="update_switch_normal_body">මෙම උපාංගයේ පද්ධතිය Android 10 හෝ ඊට වැඩි වේ; Go සැහැල්ලු සංස්කරණය තවදුරටත් ගැළපෙන්නේ නැත, පැරණි අනුවාදය දිගටම භාවිත කළ නොහැක.\nකරුණාකර සම්මත සංස්කරණය බාගෙන ස්ථාපනය කර පසුව භාවිත කරන්න (නව නිකුතුවල Go ගැළපුම් අනුවාදයක් තවදුරටත් නොමැත).</string>
+    <string name="update_downloading_title">යාවත්කාලීනය බාගන්න</string>
+    <string name="update_cancel">අවලංගු කරන්න</string>
+    <string name="update_need_permission_title">ස්ථාපන අවසරය අවශ්‍යයි</string>
+    <string name="update_need_permission_body">නව අනුවාදය ස්ථාපනය කිරීමට පද්ධතියේ “නොදන්නා යෙදුම් ස්ථාපනය කිරීම” අවසරය අවශ්‍යයි.\n\n“අවසර දෙන්න” ක්ලික් කර, සැකසුම්වල අවසර දී නැවත යෙදුමට පැමිණෙන්න; එවිට ස්ථාපනය ස්වයංක්‍රීයව දිගටම සිදුවේ (නැවත බාගැනීම අවශ්‍ය නැත).</string>
+    <string name="update_grant">අවසර දෙන්න</string>
+    <string name="update_notice_title">දැනුම්දීම</string>
+    <string name="update_got_it">තේරුණා</string>
+    <string name="update_notes_title">v%1$s · යාවත්කාලීන සටහන්</string>
+    <string name="update_back">ආපසු</string>
+    <string name="update_title_switch_normal">සම්මත සංස්කරණයට මාරු වන්න</string>
+    <string name="update_title_reinstall">මෙම අනුවාදය නැවත ස්ථාපනය කරන්න</string>
+    <string name="update_title_new_version">නව අනුවාදයක් හමු විය</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">මෙම අනුවාදය බාගෙන නැවත ස්ථාපනය කරයි (වර්තමාන යෙදුම උඩින් ලියයි).\nමෙම විශේෂාංගය යාවත්කාලීන යාන්ත්‍රණය ප්‍රතිගාමී පරීක්ෂාවට භාවිත වේ.</string>
+    <string name="update_view_notes">යාවත්කාලීන සටහන් බලන්න</string>
+    <string name="update_lanzou_unavailable">Lanzou Cloud තාවකාලිකව භාවිතයට නොගත හැක</string>
+    <string name="update_download_lanzou">Lanzou Cloud වෙතින් බාගන්න</string>
+    <string name="update_download_github">GitHub වෙතින් බාගන්න</string>
+    <string name="update_download_browser">බ්‍රව්සරයෙන් බාගන්න</string>
+    <string name="update_later">පසුව යාවත්කාලීන කරන්න</string>
+    <string name="update_later_switch">පසුව මාරු වන්න</string>
+    <string name="update_skip_version">මෙම අනුවාදය මඟ හරින්න</string>
+</resources>

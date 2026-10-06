@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Irish (ga) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">Ní bhfaightear seoladh íoslódála GitHub; bain triail eile as ar ball.</string>
+    <string name="update_flavor_standard">Leagan gnáth</string>
+    <string name="update_flavor_go">Leagan Go</string>
+    <string name="update_lanzou_url_missing">Ní thugann an leagan seo nasc íoslódála Lanzou Cloud; is féidir GitHub a úsáid ina ionad.</string>
+    <string name="update_apk_direct_missing">Ní thugann an leagan seo nasc díreach chuig pacáiste suiteála comhoiriúnach; téigh go leathanach eisiúna GitHub chun an APK cuí a roghnú.</string>
+    <string name="update_install_permission_missing">Níl cead «Suiteáil aipeanna anaithnideacha» faighte; ní féidir suiteáil uathoibríoch a dhéanamh. Ceadaigh é sna socruithe córais agus bain triail eile as ina dhiaidh sin.</string>
+    <string name="update_error_unknown">Earráid anaithnid</string>
+    <string name="update_fail_lanzou">Theip ar íoslódáil ó Lanzou Cloud</string>
+    <string name="update_fail_github">Theip ar íoslódáil ó GitHub</string>
+    <string name="update_lanzou_resolving">Nasc íoslódála Lanzou Cloud á pharsáil…</string>
+    <string name="update_lanzou_downloading">Á íoslódáil ó Lanzou Cloud…</string>
+    <string name="update_github_downloading">Á íoslódáil ó GitHub…</string>
+    <string name="update_unzipping">An pacáiste suiteála á dhí-chomhbhrú…</string>
+    <string name="update_notes_empty">Níl aon nótaí nuashonraithe don leagan seo faoi láthair.</string>
+    <string name="update_use_normal_title">Úsáid an leagan gnáth</string>
+    <string name="update_use_normal_body">Tá córas an ghléis seo in Android 10 nó níos déanaí; ní oireann an leagan éadrom Go a thuilleadh agus ní féidir an leagan níos sine a úsáid go leanúnach.\n\nAimsíodh an leagan gnáth (ZLC) suiteáilte ar an ngléas seo cheana féin: oscail an leagan gnáth díreach chun leanúint ar aghaidh (ní thugann an leagan nua leagan comhoiriúnach Go a thuilleadh, agus is féidir an leagan níos sine a dhíshuiteáil chun spás a shaoradh).</string>
+    <string name="update_open_normal">Oscail an leagan gnáth</string>
+    <string name="update_must_update_title">Ní mór nuashonrú sular féidir leanúint ar aghaidh</string>
+    <string name="update_forced_body">Tá córas an ghléis seo in Android 10 nó níos déanaí; ní oireann an leagan éadrom Go a thuilleadh agus ní féidir an leagan níos sine a úsáid go leanúnach; ní thugann an leagan nua leagan comhoiriúnach Go ach oiread.\n\nCeangail leis an líonra agus cliceáil «Bain triail eile» chun pacáiste suiteála an leagain ghnáth a fháil.</string>
+    <string name="update_retry">Bain triail eile</string>
+    <string name="update_switch_normal_body">Tá córas an ghléis seo in Android 10 nó níos déanaí; ní oireann an leagan éadrom Go a thuilleadh agus ní féidir an leagan níos sine a úsáid go leanúnach.\nÍoslódáil agus suiteáil an leagan gnáth chun leanúint ar aghaidh (ní thugann an leagan nua leagan comhoiriúnach Go a thuilleadh).</string>
+    <string name="update_downloading_title">Nuashonrú á íoslódáil</string>
+    <string name="update_cancel">Cealaigh</string>
+    <string name="update_need_permission_title">Teastaíonn cead suiteála</string>
+    <string name="update_need_permission_body">Teastaíonn cead córais «Suiteáil aipeanna anaithnideacha» chun an leagan nua a shuiteáil.\n\nCliceáil «Téigh le cead a thabhairt», ceadaigh sna socruithe agus fill ar ais ar an aip; leanfaidh an tsuiteáil ar aghaidh go huathoibríoch (ní gá íoslódáil arís).</string>
+    <string name="update_grant">Téigh le cead a thabhairt</string>
+    <string name="update_notice_title">Fógra</string>
+    <string name="update_got_it">Ceart go leor</string>
+    <string name="update_notes_title">v%1$s · Nótaí nuashonraithe</string>
+    <string name="update_back">Ar ais</string>
+    <string name="update_title_switch_normal">Athrú go dtí an leagan gnáth</string>
+    <string name="update_title_reinstall">Athshuiteáil an leagan seo</string>
+    <string name="update_title_new_version">Leagan nua aimsithe</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Íoslódfar agus athshuiteálfar an leagan seo (forscríobhfaidh sé an aip reatha).\nÚsáidtear an ngné seo chun meicníocht an nuashonraithe a thástáil.</string>
+    <string name="update_view_notes">Féach ar nótaí nuashonraithe</string>
+    <string name="update_lanzou_unavailable">Níl Lanzou Cloud ar fáil faoi láthair</string>
+    <string name="update_download_lanzou">Íoslódáil ó Lanzou Cloud</string>
+    <string name="update_download_github">Íoslódáil ó GitHub</string>
+    <string name="update_download_browser">Íoslódáil tríd an mbrabhsálaí</string>
+    <string name="update_later">Ná nuashonraigh faoi láthair</string>
+    <string name="update_later_switch">Ná hathraigh faoi láthair</string>
+    <string name="update_skip_version">Léim thar an leagan seo</string>
+</resources>

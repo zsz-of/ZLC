@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Rusyn (ry) strings. Grade C: best-effort model-assisted translation, for comprehension only; corrections welcome. -->
+<resources>
+    <string name="conv_unknown_target">Неспознаный цїловый формат: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Неспознаный формат дінамічной фоткы (не є дінамічна фотка Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">Обкладынкова фотка не існує або є пуста</string>
+    <string name="conv_video_missing">Відео не існує або є пусте</string>
+    <string name="conv_video_too_large">Відео є бівше (%1$dMB); не можна скласти дінамічну фотку, выберїте куртше відео</string>
+    <string name="conv_transcoded_too_large">По транскодованю відео є бівше (%1$dMB); не можна скласти дінамічну фотку</string>
+    <string name="conv_video_too_large_compose">Відео є бівше (%1$dMB); не можна скласти дінамічну фотку</string>
+    <string name="conv_cover_heic_go">Обкладынкова фотка є HEIC (верзія Go не підпорує транскодованя; експортуйте єй як JPEG на iPhone і потім перетворьте)</string>
+    <string name="conv_cover_invalid_heic">Обкладынкова фотка не є валидный образ (про HEIC система мусить підпорёвати декодованя HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">Обкладынкова фотка не є JPEG (верзія Go не підпорує транскодованя; хоснуйте фотку JPEG)</string>
+    <string name="conv_cover_invalid_image">Обкладынкова фотка не є валидный образ (підпораны ся лем JPEG/WebP/PNG)</string>
+    <string name="conv_reencode_failed">Перекодованя відеа ся не удало: %1$s</string>
+    <string name="conv_remux_failed">Зміна контейнера ся не удала: %1$s</string>
+    <string name="conv_codec_unknown">Не є відео з спознаным кодованям H.264/H.265</string>
+    <string name="conv_codec_is">Кодованя є %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Відео «%1$s»: %2$s; лем зміна контейнера не змінить кодованя, не можна скласти дінамічну фотку.
+
+Зміньте «Спосіб транскодованя» (Наставлїня → Транскодованя відеа) на «Перекодовати», або спершу перетворьте відео іншым тулом на MP4 з кодованям H.264/H.265.</string>
+    <string name="conv_hint_no_encoder">Відео не є у стандартнім контейнерові MP4 (MOV / MKV / WebM / AVI і т.д.), а теперішній «Спосіб транскодованя» не перекодує; не можна скласти дінамічну фотку.
+
+Зміньте «Спосіб транскодованя» (Наставлїня → Транскодованя відеа) на «Перекодовати» (стандартна верзія має вложеный кодер ffmpeg; верзія Go транскодер не має, хоснуйте стандартну верзію), або спершу перетворьте відео на стандартный MP4 (H.264/H.265).</string>
+    <string name="conv_log_detected">Розпознано %1$s</string>
+    <string name="conv_log_same_format_copied">Входный і выходный формат суть тоты самы; файл ся скопировав без змін (нулёва страта)</string>
+    <string name="conv_log_extra_tracks_bypass">Вхідне відео містить трекы крім звука і відеа (%1$s); прямый проход у тым самом форматї буде оминутый і хоснує ся повный процес писаня про вычістіня</string>
+    <string name="conv_log_ts_fallback">Вхідне відео не має часової міткы кадра обкладынкы; за стандартом ся переходить на середину відеа</string>
+    <string name="conv_log_brand_normalized">Марка контейнера відеа ся нормалізовала (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Відео містить додатковы трекы (%1$s); вычістити ся не годен, виведено як є (резултат на дакотрых моделах може не іти пустити довгым стиском)</string>
+    <string name="conv_log_extra_tracks_removed">Додатковы трекы відеа были выдїлены (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Вхідне відео: %1$s; лем зміна контейнера не рїшіть проблему (%2$s); кідь резултат і далше не годен пустити довгым стиском, зміньте «Спосіб транскодованя» (Наставлїня → Транскодованя відеа) на «Перекодовати»</string>
+    <string name="conv_log_reencoding">Вхідне відео: %1$s; подля наставлїня ся перекодовує на 8bit + AAC про лїпшу компатібілность з галереёв</string>
+    <string name="conv_log_reencode_result_unusable">Резултат перекодованя не є хоснователный; виведено як є (резултат на дакотрых моделах може не іти пустити довгым стиском)</string>
+    <string name="conv_log_reencode_still_risky">По перекодованю іщі суть ризіковы пункты (%1$s)</string>
+    <string name="conv_log_reencode_failed">Перекодованя ся не удало (%1$s); виведено як є (резултат на дакотрых моделах може не іти пустити довгым стиском)</string>
+    <string name="conv_log_cover_heic_converted">Обкладинка є HEIC (не JPEG); ся перекодовала на стандартный JPEG перед змінов контейнера</string>
+    <string name="conv_log_compose_sizes">Складаня: фотка %1$dB + відео %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Транскодер не включеный: ся лем перемінять марка контейнера (MOV → MP4), без перекодованя</string>
+    <string name="conv_tag_convert">Перетворїня</string>
+    <string name="conv_tag_transcode">Транскодованя</string>
+    <string name="conv_tag_compose">Складаня</string>
+    <string name="conv_blocker_no_encoder">Вложеный транскодер недоступный</string>
+    <string name="conv_blocker_mode_no_encode">Теперішній «Спосіб транскодованя» не перекодує</string>
+    <string name="conv_addon_unavailable">Вложеный транскодер недоступный</string>
+    <string name="conv_addon_transcode_failed">Транскодованя через ffmpeg ся не удало: %1$s</string>
+    <string name="conv_addon_remux_failed">Зміна контейнера через ffmpeg ся не удала: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Транскодую відео через ffmpeg на стандартный MP4 (%1$s / crf %2$d / %3$s; заховують ся лем відео і звук)</string>
+    <string name="conv_log_transcode_done">Транскодованя відеа докінчене (%1$dKB)</string>
+    <string name="conv_log_remuxing">Змінюю контейнер відеа на стандартный MP4 (лем зміна контейнера, без перекодованя)</string>
+    <string name="conv_log_remux_done">Зміна контейнера докінчена (%1$dKB)</string>
+    <string name="conv_reminder_cat_compose">Складаня</string>
+    <string name="conv_reminder_cat_convert">Перетворїня</string>
+    <string name="conv_reminder_cat_update">Обновліня</string>
+    <string name="conv_reminder_video_over3s_title">Відео є довше як 3 секунды</string>
+    <string name="conv_reminder_video_over3s_message">Выбране відео є довше як 3 секунды; дінамічна фотка по складаню може мать проблеми з компатібілностьов:
+
+• може не іти нормально пустити
+• може не быти розпознана системнов галереёв
+• на дакотрых моделах може не быти розпознана</string>
+    <string name="conv_reminder_legacy_go_title">Выявлена стара верзія</string>
+    <string name="conv_reminder_legacy_go_message">На тому пристрої іщі є інсталована стара верзія (верзія Go) аплікації; на тому пристрої уж не функціонує, можете єй деінсталовати про вызволїня місця.</string>
+    <string name="conv_reminder_replace_risk_title">Режим заміны мать ризіко пошкоджіня</string>
+    <string name="conv_reminder_replace_risk_message" formatted="false">Режим заміны пише резултат перетворїня прямо до оріґіналного файла; по переписаню оріґінал уже не годен добыти назад.
+
+• Кідь ся аплікація перервише при письмі, усхованя не буде досить або дозвіл буде однятый, вхідный файл може ся пошкодити
+• Само перетворїня не годен гарантирати повный успїх; при хыбї вхідный файл може быти уж пошкодженый
+• Рекомендуєме спершу пробовати з їдным або двома файлами і масово обробляти аж потім, кідь є вшытко в порядку
+• Важны фоткы собі спершу зробіть на резервну копію
+
+Тота функція ся даває «як є»; ризіко хоснованя несте сами, автор не одповідат за пошкоджіня або страту файлів.</string>
+    <string name="conv_reminder_dont_remind">Не показовати знову</string>
+    <string name="conv_reminder_confirm_ok">Розумію</string>
+    <string name="conv_reminder_uninstall">Деінсталовати</string>
+</resources>

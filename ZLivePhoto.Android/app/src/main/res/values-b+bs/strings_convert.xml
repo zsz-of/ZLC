@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Bosnian (bs) strings — conversion / transcoding / reminders
+  (core/Converter.kt, core/FfmpegAddon.kt, ui/Reminders.kt).
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Key prefix conv_; keys must not be renamed (all locales reference the same key set).
+  Placeholders use %1$s / %1$d; `\n` is a newline.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: provjera parametara i materijala (izuzetak → prikaz razloga neuspjeha) ========== -->
+    <string name="conv_unknown_target">Nepoznat ciljni format: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Neprepoznat format Live Photo (nije Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Naslovna fotografija ne postoji ili je prazna</string>
+    <string name="conv_video_missing">Video ne postoji ili je prazan</string>
+    <string name="conv_video_too_large">Video je prevelik (%1$d MB) za sastavljanje Live Photo; odaberite kraći video</string>
+    <string name="conv_transcoded_too_large">Video je i nakon transkodiranja prevelik (%1$d MB); nije moguće sastaviti Live Photo</string>
+    <string name="conv_video_too_large_compose">Video je prevelik (%1$d MB); nije moguće sastaviti Live Photo</string>
+
+    <!-- Converter.kt: naslovna fotografija (HEIC / nije JPEG) -->
+    <string name="conv_cover_heic_go">Naslovna fotografija je HEIC slika (lite verzija ne podržava transkodiranje; najprije je na iPhoneu izvezite kao JPEG, pa konvertirajte)</string>
+    <string name="conv_cover_invalid_heic">Naslovna fotografija nije ispravna slika (HEIC zahtijeva sistemsku podršku za HEIF dekodiranje)</string>
+    <string name="conv_cover_not_jpeg_go">Naslovna fotografija nije JPEG (lite verzija ne podržava transkodiranje; upotrijebite JPEG fotografiju)</string>
+    <string name="conv_cover_invalid_image">Naslovna fotografija nije ispravna slika (podržani su samo JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: neuspjeh transkodiranja / remuksavanja i savjet „samo promjena kontejnera ne rješava kodiranje“ -->
+    <string name="conv_reencode_failed">Ponovno kodiranje videa nije uspjelo: %1$s</string>
+    <string name="conv_remux_failed">Remuksavanje kontejnera nije uspjelo: %1$s</string>
+    <string name="conv_codec_unknown">Nije prepoznatljiv H.264/H.265 video</string>
+    <string name="conv_codec_is">Kodiranje je %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Video „%1$s“ %2$s; samo promjena kontejnera (remuksavanje) ne može promijeniti kodiranje, pa Live Photo nije moguće sastaviti.\n\nPostavite „Postavke → Transkodiranje videa → Način transkodiranja“ na „Ponovno kodiranje“ ili ga najprije drugim alatom pretvorite u MP4 s H.264/H.265 kodiranjem.</string>
+    <string name="conv_hint_no_encoder">Video nije u standardnom MP4 kontejneru (MOV / MKV / WebM / AVI itd.), a trenutni „Način transkodiranja“ ne kodira ponovo, pa Live Photo nije moguće sastaviti.\n\nPostavite „Postavke → Transkodiranje videa → Način transkodiranja“ na „Ponovno kodiranje“ (standardna verzija sadrži ugrađeni ffmpeg koder; Go lite verzija nema transkoder, pa upotrijebite standardnu verziju) ili video najprije pretvorite u standardni MP4 (H.264/H.265).</string>
+
+    <!-- ========== Dnevnik konverzije (prikazuje se u traci statusa stavke i panelu dnevnika) ========== -->
+    <string name="conv_log_detected">Prepoznato kao %1$s</string>
+    <string name="conv_log_same_format_copied">Izvorni i ciljni format su isti; kopirano nepromijenjeno (bez gubitaka)</string>
+    <string name="conv_log_extra_tracks_bypass">Izvorni video sadrži staze koje nisu audio/video (%1$s); preskače se izravni prijenos istog formata i koristi potpuni postupak zapisivanja radi čišćenja</string>
+    <string name="conv_log_ts_fallback">Izvor nema vremensku oznaku kadra naslovne fotografije; prema specifikaciji se koristi sredina videa</string>
+    <string name="conv_log_brand_normalized">Normaliziran brend video kontejnera (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Video sadrži dodatne staze (%1$s) koje nije moguće očistiti; izlaz je nepromijenjen (na pojedinim modelima rezultat se možda neće reproducirati dugim pritiskom)</string>
+    <string name="conv_log_extra_tracks_removed">Uklonjene dodatne video staze (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Izvorni video %1$s; samo remuksavanje kontejnera ne može to riješiti (%2$s); ako se rezultat i dalje ne reproducira dugim pritiskom, postavite „Postavke → Transkodiranje videa → Način transkodiranja“ na „Ponovno kodiranje“</string>
+    <string name="conv_log_reencoding">Izvorni video %1$s, prema postavkama se ponovno kodira u 8-bit + AAC radi bolje kompatibilnosti s galerijom</string>
+    <string name="conv_log_reencode_result_unusable">Rezultat ponovnog kodiranja nije upotrebljiv; izlaz je nepromijenjen (na pojedinim modelima rezultat se možda neće reproducirati dugim pritiskom)</string>
+    <string name="conv_log_reencode_still_risky">Nakon ponovnog kodiranja i dalje postoje rizične stavke (%1$s)</string>
+    <string name="conv_log_reencode_failed">Ponovno kodiranje nije uspjelo (%1$s); izlaz je nepromijenjen (na pojedinim modelima rezultat se možda neće reproducirati dugim pritiskom)</string>
+    <string name="conv_log_cover_heic_converted">Naslovna fotografija je HEIC (nije JPEG); transkodirana je u standardni JPEG prije pakiranja</string>
+    <string name="conv_log_compose_sizes">Sastavljanje: fotografija %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkoder nije omogućen: mijenja se samo brend kontejnera (MOV → MP4), bez ponovnog kodiranja</string>
+
+    <!-- Oznake dnevnika (prikazuju se kao „[oznaka] tekst“) -->
+    <string name="conv_tag_convert">Konverzija</string>
+    <string name="conv_tag_transcode">Transkodiranje</string>
+    <string name="conv_tag_compose">Sastavljanje</string>
+
+    <!-- Razlozi blokiranja načina transkodiranja (dodaju se gornjim upozorenjima) -->
+    <string name="conv_blocker_no_encoder">Ugrađeni transkoder nije dostupan</string>
+    <string name="conv_blocker_mode_no_encode">Trenutni „Način transkodiranja“ ne kodira ponovo</string>
+
+    <!-- ========== FfmpegAddon.kt: ugrađeno ffmpeg transkodiranje / remuksavanje ========== -->
+    <string name="conv_addon_unavailable">Ugrađeni transkoder nije dostupan</string>
+    <string name="conv_addon_transcode_failed">ffmpeg transkodiranje nije uspjelo: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg remuksavanje kontejnera nije uspjelo: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Transkodiranje videa u standardni MP4 pomoću ffmpeg-a (%1$s / crf %2$d / %3$s; čuvaju se samo video i audio staze)</string>
+    <string name="conv_log_transcode_done">Transkodiranje videa završeno (%1$d KB)</string>
+    <string name="conv_log_remuxing">Remuksavanje video kontejnera u standardni MP4 (samo kontejner, bez ponovnog kodiranja)</string>
+    <string name="conv_log_remux_done">Remuksavanje kontejnera završeno (%1$d KB)</string>
+
+    <!-- ========== Reminders.kt: dijalog „ne prikazuj više“ ========== -->
+    <string name="conv_reminder_cat_compose">Sastavljanje</string>
+    <string name="conv_reminder_cat_convert">Konverzija</string>
+    <string name="conv_reminder_cat_update">Ažuriranje</string>
+    <string name="conv_reminder_video_over3s_title">Video je duži od 3 sekunde</string>
+    <string name="conv_reminder_video_over3s_message">Odabrani video je duži od 3 sekunde, pa sastavljena Live Photo može imati problema s kompatibilnošću:\n\n• Možda se neće ispravno reproducirati\n• Možda ga sistemska galerija neće prepoznati\n• Pojedini modeli možda neće prepoznati ovu Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">Otkrivena stara verzija</string>
+    <string name="conv_reminder_legacy_go_message">Na ovom uređaju je još instalirana stara verzija (Go verzija) aplikacije; ta verzija na ovom uređaju više ne radi i možete je deinstalirati da oslobodite prostor.</string>
+    <string name="conv_reminder_replace_risk_title">Način zamjene nosi rizik od oštećenja</string>
+    <!-- formatted="false": tijelo sadrži samo doslovni % (100%) i nikada se ne koristi s argumentima;
+         deklariranje kao neformatirani string sprječava aapt2/lint da ga provjerava preko String.format. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Način zamjene zapisuje rezultat konverzije izravno u izvorne datoteke; nakon prepisivanja izvorne datoteke nije moguće vratiti.\n\n• Ako se aplikacija prekine tijekom pisanja, ako ponestane prostora ili se prava ukinu, izvorne datoteke mogu se oštetiti\n• Nijedna konverzija nije garantirano uspješna, a u slučaju neuspjeha izvorne datoteke mogu već biti neupotrebljive\n• Najprije isprobajte na jednoj ili dvije datoteke, pa tek onda obradite skupno\n• Prije toga sami napravite sigurnosnu kopiju važnih fotografija\n\nOva funkcija se pruža „takva kakva jest“; rizik upotrebe snosite sami i autor ne odgovara za oštećene ili izgubljene datoteke.</string>
+    <string name="conv_reminder_dont_remind">Ne prikazuj više</string>
+    <string name="conv_reminder_confirm_ok">Razumijem</string>
+    <string name="conv_reminder_uninstall">Deinstaliraj</string>
+
+</resources>

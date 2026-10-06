@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ZLC · Icelandic (is) strings. Model-assisted translation; reviewed against the Simplified Chinese baseline. -->
+<resources>
+    <string name="update_github_url_missing">Fann engan GitHub-niðurhalstengil; reyndu aftur síðar.</string>
+    <string name="update_flavor_standard">Staðlaða útgáfan</string>
+    <string name="update_flavor_go">Go-útgáfan</string>
+    <string name="update_lanzou_url_missing">Þessi útgáfa býður ekki upp á Lanzou-niðurhalstengil; notaðu GitHub-niðurhal.</string>
+    <string name="update_apk_direct_missing">Þessi útgáfa býður ekki upp á beinan tengil á samhæfðan uppsetningarpakka; veldu viðeigandi APK á GitHub-útgáfusíðunni.</string>
+    <string name="update_install_permission_missing">Heimildin „Setja upp óþekkt forrit“ hefur ekki verið veitt; ekki er hægt að setja upp sjálfkrafa. Leyfðu hana í kerfisstillingum og reyndu aftur.</string>
+    <string name="update_error_unknown">Óþekkt villa</string>
+    <string name="update_fail_lanzou">Niðurhal frá Lanzou mistókst</string>
+    <string name="update_fail_github">Niðurhal frá GitHub mistókst</string>
+    <string name="update_lanzou_resolving">Greini Lanzou-niðurhalstengil…</string>
+    <string name="update_lanzou_downloading">Sæki frá Lanzou…</string>
+    <string name="update_github_downloading">Sæki frá GitHub…</string>
+    <string name="update_unzipping">Þykkni uppsetningarpakkans…</string>
+    <string name="update_notes_empty">Þessi útgáfa er ekki með útgáfuupplýsingar.</string>
+    <string name="update_use_normal_title">Notaðu staðlaða útgáfuna</string>
+    <string name="update_use_normal_body">Kerfi tækisins er Android 10 eða nýrra; Go-fartýnda útgáfan er ekki lengur studd og eldri útgáfan virkar ekki lengur.\n\nStaðlaða útgáfan (ZLC) er þegar uppsett á tækinu — opnaðu hana beint (nýja útgáfan býður ekki lengur upp á Go-samhæfða útgáfu; hægt er að fjarlægja eldri útgáfu til að losa pláss).</string>
+    <string name="update_open_normal">Opna staðlaða útgáfu</string>
+    <string name="update_must_update_title">Uppfærsla er nauðsynleg til að halda áfram</string>
+    <string name="update_forced_body">Kerfi tækisins er Android 10 eða nýrra; Go-fartýnda útgáfan er ekki lengur studd og eldri útgáfan virkar ekki lengur; nýja útgáfan býður ekki lengur upp á Go-samhæfða útgáfu.\n\nTengstu netinu og ýttu á „Reyna aftur“ til að sækja uppsetningarpakka staðlaðu útgáfunnar.</string>
+    <string name="update_retry">Reyna aftur</string>
+    <string name="update_switch_normal_body">Kerfi tækisins er Android 10 eða nýrra; Go-fartýnda útgáfan er ekki lengur studd og eldri útgáfan virkar ekki lengur.\nSæktu og settu upp staðlaða útgáfuna til að halda áfram (nýja útgáfan býður ekki lengur upp á Go-samhæfða útgáfu).</string>
+    <string name="update_downloading_title">Sæki uppfærslu</string>
+    <string name="update_cancel">Hætta við</string>
+    <string name="update_need_permission_title">Uppsetningarheimild vantar</string>
+    <string name="update_need_permission_body">Uppsetning nýju útgáfunnar krefst kerfisheimildarinnar „Setja upp óþekkt forrit“.\n\nÝttu á „Veita heimild“, leyfðu hana í stillingum og farðu aftur í forritið; uppsetningin heldur sjálfkrafa áfram (ekki þarf að sækja aftur).</string>
+    <string name="update_grant">Veita heimild</string>
+    <string name="update_notice_title">Tilkynning</string>
+    <string name="update_got_it">Í lagi</string>
+    <string name="update_notes_title">v%1$s · Útgáfuupplýsingar</string>
+    <string name="update_back">Til baka</string>
+    <string name="update_title_switch_normal">Skipta í staðlaða útgáfu</string>
+    <string name="update_title_reinstall">Setja þessa útgáfu aftur upp</string>
+    <string name="update_title_new_version">Ný útgáfa fannst</string>
+    <string name="update_version_flavor">v%1$s · %2$s</string>
+    <string name="update_reinstall_body">Sótt og uppsett aftur verður (yfirskrifar núverandi forrit).\nÞetta er notað til að prófa uppfærslukerfið aftur.</string>
+    <string name="update_view_notes">Skoða útgáfuupplýsingar</string>
+    <string name="update_lanzou_unavailable">Lanzou er ekki tiltækt í augnablikinu</string>
+    <string name="update_download_lanzou">Sækja frá Lanzou</string>
+    <string name="update_download_github">Sækja frá GitHub</string>
+    <string name="update_download_browser">Sækja í vafra</string>
+    <string name="update_later">Uppfæra ekki núna</string>
+    <string name="update_later_switch">Skipta ekki núna</string>
+    <string name="update_skip_version">Sleppa þessari útgáfu</string>
+</resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Scots strings.
+  Translated from res/values/strings_*.xml (Simplified Chinese baseline, the fallback locale).
+  Scots is a law-resource leid; this is a best-effort, model-assisted translation.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+  Quality: C.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: media parameters an validation (a failure shaws the reason on screen) ========== -->
+    <string name="conv_unknown_target">Unkent target format: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Unkent Live Photo format (no a Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">The cover photo is missin or tuim</string>
+    <string name="conv_video_missing">The video is missin or tuim</string>
+    <string name="conv_video_too_large">The video is ower muckle (%1$dMB); a Live Photo cannae be composed. Pick a shorter video</string>
+    <string name="conv_transcoded_too_large">The transcoded video is ower muckle (%1$dMB); a Live Photo cannae be composed</string>
+    <string name="conv_video_too_large_compose">The video is ower muckle (%1$dMB); a Live Photo cannae be composed</string>
+
+    <!-- Converter.kt: cover (HEIC / no JPEG) -->
+    <string name="conv_cover_heic_go">The cover is a HEIC image (the licht version disnae transcode; export it as JPEG on the iPhone, then convert)</string>
+    <string name="conv_cover_invalid_heic">The cover is no a valid image (HEIC needs HEIF decodin bi the seestem)</string>
+    <string name="conv_cover_not_jpeg_go">The cover is no a JPEG image (the licht version disnae transcode; uise a JPEG photo)</string>
+    <string name="conv_cover_invalid_image">The cover is no a valid image (only JPEG/WebP/PNG)</string>
+
+    <!-- Converter.kt: re-encodin / remuxin failures an the warnin that anither container cannae fix the codec -->
+    <string name="conv_reencode_failed">Re-encodin the video failed: %1$s</string>
+    <string name="conv_remux_failed">Remuxin the container failed: %1$s</string>
+    <string name="conv_codec_unknown">No a recognessed H.264/H.265 video</string>
+    <string name="conv_codec_is">The codec is %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">The video «%1$s» %2$s; chyngin only the container (remuxin) cannae chynge the codec, sae a Live Photo cannae be composed.\n\nIn "Settins → Video transcodin → Transcodin mode" pick "Re-encode", or convert it tae an H.264/H.265 MP4 wi anither tool first.</string>
+    <string name="conv_hint_no_encoder">The video is no in a staunart MP4 container (MOV / MKV / WebM / AVI etc.), an the current "Transcodin mode" disnae re-encode, sae a Live Photo cannae be composed.\n\nIn "Settins → Video transcodin → Transcodin mode" pick "Re-encode" (the staunart version bundles an ffmpeg encoder; the licht Go version haes nae transcoder, sae uise the staunart version), or convert the video tae a staunart MP4 (H.264/H.265) first.</string>
+
+    <!-- ========== Conversion log (shaws in the status bar o the list items an in the log panel) ========== -->
+    <string name="conv_log_detected">Recognessed as %1$s</string>
+    <string name="conv_log_same_format_copied">The soorce an target formats is the same; copied as-is (nae loss)</string>
+    <string name="conv_log_extra_tracks_bypass">The soorce video haes non-audio/video tracks (%1$s); same-format passthrou wis skipped an the full write path wis uised tae sanitise</string>
+    <string name="conv_log_ts_fallback">The soorce haes nae cover-frame timestamp; per the spec the midpoint o the video wis uised</string>
+    <string name="conv_log_brand_normalized">Container brand normalised (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">The video haes extra tracks (%1$s) that cannae be sanitised; ootput as-is (on some devices the result may no play on a lang press)</string>
+    <string name="conv_log_extra_tracks_removed">Extra video tracks remuived (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Soorce video %1$s; remuxin the container alane cannae fix it (%2$s). Gin the result still disnae play on a lang press, pick "Re-encode" in "Settins → Video transcodin → Transcodin mode"</string>
+    <string name="conv_log_reencoding">Soorce video %1$s; re-encoded tae 8-bit + AAC as set tae improve gallerie compatibility</string>
+    <string name="conv_log_reencode_result_unusable">The re-encode result is nae mair uiseable; ootput as-is (on some devices the result may no play on a lang press)</string>
+    <string name="conv_log_reencode_still_risky">Risks remain efter re-encodin (%1$s)</string>
+    <string name="conv_log_reencode_failed">Re-encodin failed (%1$s); ootput as-is (on some devices the result may no play on a lang press)</string>
+    <string name="conv_log_cover_heic_converted">The cover wis HEIC (no JPEG); transcoded tae a staunart JPEG afore packagin</string>
+    <string name="conv_log_compose_sizes">Compose: photo %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transcoder no enabled: only the container brand is rewritten (MOV → MP4), wi nae re-encodin</string>
+
+    <!-- Log labels (shawan as «[label] text») -->
+    <string name="conv_tag_convert">Convert</string>
+    <string name="conv_tag_transcode">Transcode</string>
+    <string name="conv_tag_compose">Compose</string>
+
+    <!-- Reasons why the transcodin mode blocks (eikit tae the warnin abuin) -->
+    <string name="conv_blocker_no_encoder">Built-in transcoder no available</string>
+    <string name="conv_blocker_mode_no_encode">The current "Transcodin mode" disnae re-encode</string>
+
+    <!-- ========== FfmpegAddon.kt: built-in ffmpeg transcodin / remuxin ========== -->
+    <string name="conv_addon_unavailable">Built-in transcoder no available</string>
+    <string name="conv_addon_transcode_failed">ffmpeg transcode failed: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg container remux failed: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Transcodin the video tae staunart MP4 wi ffmpeg (%1$s / crf %2$d / %3$s; keepin only the video an audio tracks)</string>
+    <string name="conv_log_transcode_done">Video transcodin complete (%1$dKB)</string>
+    <string name="conv_log_remuxing">Remuxin the video container tae staunart MP4 (container only, nae re-encodin)</string>
+    <string name="conv_log_remux_done">Container remux complete (%1$dKB)</string>
+
+    <!-- ========== Reminders.kt: the "dinnae show again" dialog ========== -->
+    <string name="conv_reminder_cat_compose">Compose</string>
+    <string name="conv_reminder_cat_convert">Convert</string>
+    <string name="conv_reminder_cat_update">Update</string>
+    <string name="conv_reminder_video_over3s_title">Video langer nor 3 seconds</string>
+    <string name="conv_reminder_video_over3s_message">The selectit video is langer nor 3 seconds, sae the composed Live Photo may hae compatibility problems:\n\n• it may no play richt\n• it may no be recognessed bi the seestem gallerie\n• some devices may no recogness this Live Photo</string>
+    <string name="conv_reminder_legacy_go_title">Auld version detected</string>
+    <string name="conv_reminder_legacy_go_message">An auld version (Go) o the app is still instawed on this device. That version nae langer warks here; ye can uninstall it tae free up space.</string>
+    <string name="conv_reminder_replace_risk_title">Replace mode can corrupt files</string>
+    <!-- formatted="false": the text haes a percentage read as ordinary text, an the
+         string is nivver uised wi arguments; as a non-format string this avoids an
+         aapt2/lint chack accordin tae String.format. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Replace mode writes the conversion result straucht back tae the oreeginal files; ance owerwritten, the oreeginals cannae be fund again.\n\n• Gin the app is interruptit, the storage rins oot, or the permeession is taen back while writin, the soorce files may be corruptit\n• Nae conversion is guaranteed tae succeed, an on failure the soorce files may already be uiseable nae mair\n• Try ane or twae files first tae mak shuir awthing is fine afore processin in bulk\n• Mak yer ain backup o important photos first\n\nThis feature is gien "as is"; ye uise it at yer ain risk, an the author is no liable fur corruptit or tint files.</string>
+    <string name="conv_reminder_dont_remind">Dinnae show again</string>
+    <string name="conv_reminder_confirm_ok">Got it</string>
+    <string name="conv_reminder_uninstall">Uninstall</string>
+
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Suomenkieliset merkkijonot (fi).
+  Käännetty tiedostoista res/values/strings_*.xml (yksinkertaistettu kiina, varakieliasetus).
+  Jokainen avain vastaa perustiedostoa; paikkamerkit (%1$s / %1$d) ja koodaussekvenssit on säilytetty ennallaan.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: parametrien ja materiaalin tarkistus (poikkeus → käyttöliittymä näyttää syyn) ========== -->
+    <string name="conv_unknown_target">Tuntematon kohdemuoto: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Tunnistamaton Live Photo -muoto (ei Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
+    <string name="conv_cover_photo_missing">Kansikuva puuttuu tai on tyhjä</string>
+    <string name="conv_video_missing">Video puuttuu tai on tyhjä</string>
+    <string name="conv_video_too_large">Video on liian suuri (%1$d Mt) Live Photon luomiseksi; valitse lyhyempi video</string>
+    <string name="conv_transcoded_too_large">Video on transkoodauksen jälkeenkin liian suuri (%1$d Mt); Live Photoa ei voi luoda</string>
+    <string name="conv_video_too_large_compose">Video on liian suuri (%1$d Mt); Live Photoa ei voi luoda</string>
+
+    <!-- Converter.kt: kansikuva (HEIC / ei JPEG) -->
+    <string name="conv_cover_heic_go">Kansikuva on HEIC-kuva (kevytversio ei tue transkoodausta; vie se iPhonessa JPEG-muotoon ja muunna sitten)</string>
+    <string name="conv_cover_invalid_heic">Kansikuva ei ole kelvollinen kuva (HEIC vaatii järjestelmän HEIF-dekoodauksen)</string>
+    <string name="conv_cover_not_jpeg_go">Kansikuva ei ole JPEG-kuva (kevytversio ei tue transkoodausta; käytä JPEG-valokuvaa)</string>
+    <string name="conv_cover_invalid_image">Kansikuva ei ole kelvollinen kuva (vain JPEG/WebP/PNG tuetaan)</string>
+
+    <!-- Converter.kt: transkoodauksen / uudelleenpakkaamisen epäonnistuminen ja ”pelkkä säiliön vaihto ei korjaa koodekkia” -vihje -->
+    <string name="conv_reencode_failed">Videon uudelleenkoodaus epäonnistui: %1$s</string>
+    <string name="conv_remux_failed">Säiliön uudelleenpakkaaminen epäonnistui: %1$s</string>
+    <string name="conv_codec_unknown">Ei tunnistettava H.264/H.265-video</string>
+    <string name="conv_codec_is">Koodekki on %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">Video ”%1$s” %2$s; pelkän säiliön vaihto (uudelleenpakkaaminen) ei muuta koodekkia, joten Live Photoa ei voi luoda.\n\nVaihda kohdassa ”Asetukset → Videon transkoodaus → Transkoodaustapa” asetukseksi ”Uudelleenkoodaus” tai muunna video ensin toisella työkalulla H.264/H.265-muotoiseksi MP4:ksi.</string>
+    <string name="conv_hint_no_encoder">Video ei ole tavallisessa MP4-säiliössä (MOV / MKV / WebM / AVI jne.), eikä nykyinen ”Transkoodaustapa” uudelleenkoodaa, joten Live Photoa ei voi luoda.\n\nVaihda kohdassa ”Asetukset → Videon transkoodaus → Transkoodaustapa” asetukseksi ”Uudelleenkoodaus” (tavallisessa versiossa on sisäänrakennettu ffmpeg-kooderi; Go-kevytversiossa ei ole transkooderia, joten käytä tavallista versiota) tai muunna video ensin tavalliseksi MP4:ksi (H.264/H.265).</string>
+
+    <!-- ========== Muunnosloki (näkyy luettelorivin tilapalkissa ja lokipaneelissa) ========== -->
+    <string name="conv_log_detected">Tunnistettu muodoksi %1$s</string>
+    <string name="conv_log_same_format_copied">Lähde- ja kohdemuoto ovat samat; kopioitu sellaisenaan (ei häviötä)</string>
+    <string name="conv_log_extra_tracks_bypass">Lähdevideo sisältää muita kuin audio- ja videoraitoja (%1$s); saman muodon läpivienti ohitetaan ja käytetään täyttä kirjoituspolkua puhdistukseen</string>
+    <string name="conv_log_ts_fallback">Lähteestä puuttuu kansikuvan aikaleima; palataan määrityksen mukaan videon keskipisteeseen</string>
+    <string name="conv_log_brand_normalized">Videosäiliön brändi normalisoitu (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Video sisältää lisäraitoja (%1$s), joita ei voi puhdistaa; tulostettu sellaisenaan (tulos ei ehkä toistu pitkällä painalluksella joillakin laitteilla)</string>
+    <string name="conv_log_extra_tracks_removed">Videon lisäraidat poistettu (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Lähdevideo %1$s; pelkkä säiliön uudelleenpakkaaminen ei ratkaise ongelmaa (%2$s). Jos tulos ei edelleenkään toistu pitkällä painalluksella, vaihda kohdassa ”Asetukset → Videon transkoodaus → Transkoodaustapa” asetukseksi ”Uudelleenkoodaus”.</string>
+    <string name="conv_log_reencoding">Lähdevideo %1$s; koodataan asetusten mukaan uudelleen 8-bittiseksi + AAC:ksi galleriayhteensopivuuden parantamiseksi</string>
+    <string name="conv_log_reencode_result_unusable">Uudelleenkoodauksen tulos ei ole käyttökelpoinen; tulostettu sellaisenaan (tulos ei ehkä toistu pitkällä painalluksella joillakin laitteilla)</string>
+    <string name="conv_log_reencode_still_risky">Uudelleenkoodauksen jälkeen on edelleen riskejä (%1$s)</string>
+    <string name="conv_log_reencode_failed">Uudelleenkoodaus epäonnistui (%1$s); tulostettu sellaisenaan (tulos ei ehkä toistu pitkällä painalluksella joillakin laitteilla)</string>
+    <string name="conv_log_cover_heic_converted">Kansikuva oli HEIC (ei JPEG); transkoodattu tavalliseksi JPEG:ksi ennen pakkausta</string>
+    <string name="conv_log_compose_sizes">Yhdistäminen: valokuva %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkooderi ei ole käytössä: vain säiliön brändi kirjoitetaan uudelleen (MOV → MP4), ei uudelleenkoodata</string>
+
+    <!-- Lokitunnisteet (käyttöliittymässä muodossa ”[tunniste] teksti”) -->
+    <string name="conv_tag_convert">Muunnos</string>
+    <string name="conv_tag_transcode">Transkoodaus</string>
+    <string name="conv_tag_compose">Yhdistäminen</string>
+
+    <!-- Transkoodaustavan eston syy (liitetään yllä olevaan varoitustekstiin) -->
+    <string name="conv_blocker_no_encoder">Sisäänrakennettu transkooderi ei ole käytettävissä</string>
+    <string name="conv_blocker_mode_no_encode">Nykyinen ”Transkoodaustapa” ei uudelleenkoodaa</string>
+
+    <!-- ========== FfmpegAddon.kt: sisäänrakennettu ffmpeg-transkoodaus / uudelleenpakkaaminen ========== -->
+    <string name="conv_addon_unavailable">Sisäänrakennettu transkooderi ei ole käytettävissä</string>
+    <string name="conv_addon_transcode_failed">ffmpeg-transkoodaus epäonnistui: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg-säiliön uudelleenpakkaaminen epäonnistui: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Transkoodataan videota ffmpegillä tavalliseksi MP4:ksi (%1$s / crf %2$d / %3$s; vain video- ja audioraidat säilytetään)</string>
+    <string name="conv_log_transcode_done">Videon transkoodaus valmis (%1$d KB)</string>
+    <string name="conv_log_remuxing">Pakataan videosäiliötä uudelleen tavalliseksi MP4:ksi (vain säiliö, ei uudelleenkoodausta)</string>
+    <string name="conv_log_remux_done">Säiliön uudelleenpakkaaminen valmis (%1$d KB)</string>
+
+    <!-- ========== Reminders.kt: ”Älä näytä uudelleen” -valintaikkuna ========== -->
+    <string name="conv_reminder_cat_compose">Yhdistäminen</string>
+    <string name="conv_reminder_cat_convert">Muunnos</string>
+    <string name="conv_reminder_cat_update">Päivitys</string>
+    <string name="conv_reminder_video_over3s_title">Video on yli 3 sekuntia</string>
+    <string name="conv_reminder_video_over3s_message">Valittu video on yli 3 sekuntia pitkä, joten syntyvässä Live Photossa voi olla yhteensopivuusongelmia:\n\n• Se ei ehkä toistu kunnolla\n• Järjestelmän galleria ei ehkä tunnista sitä\n• Jotkin laitteet eivät ehkä tunnista tätä Live Photoa</string>
+    <string name="conv_reminder_legacy_go_title">Vanha versio havaittu</string>
+    <string name="conv_reminder_legacy_go_message">Tähän laitteeseen on edelleen asennettu sovelluksen vanha versio (Go-versio). Se ei enää toimi tällä laitteella; voit poistaa sen asennuksen tilan vapauttamiseksi.</string>
+    <string name="conv_reminder_replace_risk_title">Korvaustilaan liittyy vaurioitumisriski</string>
+    <!-- formatted="false": tekstissä on yksi vain kirjaimellisena esiintyvä %-merkki, eikä merkkijonoa koskaan käytetä argumenttien kanssa,
+         joten sen ilmoittaminen ei-muotomerkkijonoksi estää aapt2/lint-tarkistuksen String.format-sääntöjen mukaan. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Korvaustila kirjoittaa muunnoksen tuloksen suoraan alkuperäisiin tiedostoihin; kun alkuperäiset on korvattu, niitä ei voi palauttaa.\n\n• Jos sovellus keskeytyy, tallennustila loppuu tai käyttöoikeus peruutetaan kirjoituksen aikana, lähdetiedostot voivat vaurioitua\n• Mikään muunnos ei onnistu taatusti 100-prosenttisesti, ja epäonnistuessa lähdetiedostot voivat olla jo käyttökelvottomia\n• Kokeile ensin yhtä tai kahta tiedostoa ja varmista toimivuus ennen eräkäsittelyä\n• Varmuuskopioi tärkeät valokuvat itse etukäteen\n\nTämä ominaisuus tarjotaan ”sellaisenaan”; käytät sitä omalla vastuullasi, eikä tekijä vastaa vaurioituneista tai kadonneista tiedostoista.</string>
+    <string name="conv_reminder_dont_remind">Älä näytä uudelleen</string>
+    <string name="conv_reminder_confirm_ok">Selvä</string>
+    <string name="conv_reminder_uninstall">Poista asennus</string>
+
+</resources>

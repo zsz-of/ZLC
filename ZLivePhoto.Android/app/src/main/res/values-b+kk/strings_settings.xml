@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Қазақша жолдар.
+  res/values/strings_*.xml (қарапайым қытай тілі — негізгі/қосалқы тіл) файлдарынан аударылды.
+  Барлық кілт базалық нұсқамен сәйкес; %1$s / %1$d толтырғыштары мен escape тізбектері өзгеріссіз қалдырылды.
+-->
+<resources>
+    <string name="settings_title">Параметрлер</string>
+    <string name="settings_cd_back">Артқа</string>
+    <string name="settings_btn_apply">Қолдану</string>
+    <string name="settings_btn_cancel">Болдырмау</string>
+    <string name="settings_btn_close">Жабу</string>
+    <string name="settings_btn_ok">Жарайды</string>
+    <string name="settings_btn_sponsor">Демеу</string>
+    <string name="settings_section_general">Жалпы</string>
+    <string name="settings_section_appearance">Көрініс</string>
+    <string name="settings_section_language">Тіл</string>
+    <string name="settings_section_defaults">Әдепкі опциялар</string>
+    <string name="settings_section_output">Шығыс</string>
+    <string name="settings_section_transcode">Видеоны транскодтау</string>
+    <string name="settings_section_about">Қолданба туралы</string>
+    <string name="settings_section_app">Қолданба</string>
+    <string name="settings_section_credits">Алғыс пен демеу</string>
+    <string name="settings_section_opensource">Ашық код және лицензия</string>
+    <string name="settings_startup_check_title">Іске қосылғанда жаңартуды тексеру</string>
+    <string name="settings_startup_check_subtitle">Іске қосылғанда GitHub-тан жаңа нұсқаны автоматты алып, жаңарту болса жүктеуді ұсынады</string>
+    <string name="settings_haptics_title">Діріл кері байланысы</string>
+    <string name="settings_haptics_subtitle">Түйме басылғанда және күй өзгергенде діріл кері байланысы</string>
+    <string name="settings_bounce_title">Түйме серпімді анимациясы</string>
+    <string name="settings_bounce_subtitle">Түйме басылғанда кішірейіп-үлкейетін анимация</string>
+    <string name="settings_theme_system">Жүйеге сәйкес</string>
+    <string name="settings_theme_dark">Қараңғы</string>
+    <string name="settings_theme_light">Жарық</string>
+    <string name="settings_dynamic_theme_title">Material You динамикалық түсі</string>
+    <string name="settings_dynamic_theme_subtitle">Жүйе тұсқағазының түсіне сәйкес (Android 12+); өшірілсе, төмендегі дайын тақырып түстері қолданылады</string>
+    <string name="settings_preset_colors_title">Дайын тақырып түстері</string>
+    <string name="settings_preset_current">Ағымдағы: %1$s</string>
+    <string name="settings_preset_disabled_hint">«Material You динамикалық түсін» өшірген соң таңдауға болады</string>
+    <string name="settings_custom">Теңшелетін</string>
+    <string name="settings_custom_color_title">Теңшелетін тақырып түсі</string>
+    <string name="settings_cd_custom_palette">Теңшелетін палитра</string>
+    <string name="settings_hue_value">Реңк %1$d°</string>
+    <string name="settings_language_dialog_title">Қолданба тілін таңдау</string>
+    <string name="settings_language_count">Барлығы %1$d тіл</string>
+    <string name="settings_reminder_dialogs_title">«Қайта көрсетпеу» терезелері</string>
+    <string name="settings_reminder_dialogs_subtitle">Барлық «Қайта көрсетпеу» терезелерінің қосқыштарын басқару</string>
+    <string name="settings_reminder_hint">Қосқыш қосулы болса, «Қайта көрсетпеу»; өшірілсе, келесі жолы сол жағдай туғанда ескерту қайта шығады.</string>
+    <string name="settings_preserve_folders_title">Бастапқы қалта иерархиясы бойынша шығару</string>
+    <string name="settings_preserve_folders_subtitle">Нәтижелер бастапқы галерея атауымен қосалқы қалталарға сақталады; өшірілсе, барлығы бір қалтаға тегіс орналастырылады</string>
+    <string name="settings_about_title">Қолданба туралы</string>
+    <string name="settings_about_subtitle">Нұсқа · Жаңартуды тексеру · Алғыс пен демеу</string>
+    <string name="settings_check_update_title">Жаңартуды тексеру</string>
+    <string name="settings_check_update_subtitle">GitHub Releases-тен соңғы нұсқаны алу</string>
+    <string name="settings_checking">Тексерілуде…</string>
+    <string name="settings_update_available">v%1$s қолжетімді</string>
+    <string name="settings_up_to_date">Ең соңғы нұсқа орнатылған</string>
+    <string name="settings_network_error">Желі қатесі, кейінірек қайталап көріңіз</string>
+    <string name="settings_reinstall_title">Осы нұсқаны қайта орнату</string>
+    <string name="settings_reinstall_subtitle">Ағымдағы соңғы нұсқаны жүктеп, үстінен орнату (жаңартуды сынау үшін)</string>
+    <string name="settings_reinstall_newer_hint">Қазір v%1$s нұсқасына жаңартуға болады, алдымен «Жаңартуды тексеру» арқылы жаңартыңыз</string>
+    <string name="settings_version_title">Нұсқа</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Alipay арқылы демеу</string>
+    <string name="settings_alipay_subtitle">Дамуды қолдау</string>
+    <string name="settings_coolapk_subtitle">Coolapk пайдаланушысы · қолдауы үшін рахмет</string>
+    <string name="settings_ai_credits_subtitle">Даму барысында көмектескен AI IDE мен AI модельдеріне рахмет</string>
+    <string name="settings_github_title">GitHub ашық код мекенжайы</string>
+    <string name="settings_license_title">Ашық код лицензиясы</string>
+    <string name="settings_sponsor_dialog_title">Қолдауыңызға рахмет</string>
+    <string name="settings_sponsor_dialog_text">Бұл қолданбаны қолдауға ниет білдіргеніңіз үшін шын жүректен рахмет!\n\nЕгер сіз әлі студент болсаңыз немесе қаржылық тәуелсіз болмасаңыз, ақша жұмсамаңыз — бұл ниетті жүректе сақтап, қолдануды жалғастыру — мен үшін ең үлкен қолдау.\n\nДемеуге дайын болсаңыз, бір тиын да көмек, мен оны жақсырақ қолдау мен функцияларға жұмсаймын:)</string>
+    <string name="settings_alipay_missing_title">Alipay орнатылмаған</string>
+    <string name="settings_alipay_missing_text">Alipay табылмады, қазір демеуді орындау мүмкін емес.\n\nТүк емес — қалай болса да, жақсы ниетіңізге көп рахмет!</string>
+    <string name="settings_transcoder_title">Кірістірілген транскодер</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Қайта кодтау</string>
+    <string name="settings_transcode_mode_remux">Тек контейнерді қайта қаптау (ұсынылады)</string>
+    <string name="settings_transcode_mode_off">Транскодерді мүлде пайдаланбау</string>
+    <string name="settings_transcode_params_title">Транскодтау параметрлері</string>
+    <string name="settings_transcode_params_subtitle">Қайта кодтау кезінде қолданылатын сапа мен сығу параметрлері</string>
+    <string name="settings_transcode_params_disabled">Тек «Транскодтау режимі» «Қайта кодтау» болғанда күшіне енеді</string>
+    <string name="settings_crf_value">Сапа CRF: %1$d</string>
+    <string name="settings_crf_hint">Сан неғұрлым кіші болса, сапа жоғары, өлшем үлкен (әдепкі 18)</string>
+    <string name="settings_encoder_title">Кодтаушы</string>
+    <string name="settings_compress_preset_title">Сығу пресеті</string>
+</resources>

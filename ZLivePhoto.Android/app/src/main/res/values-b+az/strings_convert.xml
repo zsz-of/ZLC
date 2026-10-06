@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Azerbaijani (az) strings — conversion / transcoding / reminder texts.
+  Translated from res/values/strings_convert.xml (Simplified Chinese baseline, the fallback locale).
+  Quality: B — best-effort, model-assisted; native review recommended before release.
+  Every key mirrors the baseline; placeholders (%1$s / %1$d) and escape sequences are kept as-is.
+-->
+<resources>
+
+    <!-- ========== Converter.kt: parametrlər və material yoxlaması (istisna → interfeysdə uğursuzluq səbəbi) ========== -->
+    <string name="conv_unknown_target">Naməlum hədəf formatı: %1$s</string>
+    <string name="conv_unrecognized_live_photo">Tanınmayan Live Photo formatı (Google/OPPO/vivo/Xiaomi/Apple Live Photo deyil)</string>
+    <string name="conv_cover_photo_missing">Örtük fotoşəkli mövcud deyil və ya boşdur</string>
+    <string name="conv_video_missing">Video mövcud deyil və ya boşdur</string>
+    <string name="conv_video_too_large">Video çox böyükdür (%1$d MB), Live Photo yaratmaq mümkün deyil; daha qısa video seçin</string>
+    <string name="conv_transcoded_too_large">Transkodlaşdırmadan sonra video hələ də çox böyükdür (%1$d MB); Live Photo yaratmaq mümkün deyil</string>
+    <string name="conv_video_too_large_compose">Video çox böyükdür (%1$d MB); Live Photo yaratmaq mümkün deyil</string>
+
+    <!-- Converter.kt: örtük (HEIC / JPEG olmayan) -->
+    <string name="conv_cover_heic_go">Örtük HEIC şəklidir (yüngül versiya transkodlaşdırmanı dəstəkləmir; əvvəlcə iPhone-da JPEG kimi eksport edin, sonra çevirin)</string>
+    <string name="conv_cover_invalid_heic">Örtük etibarlı şəkil deyil (HEIC üçün sistemin HEIF dekodlaşdırması tələb olunur)</string>
+    <string name="conv_cover_not_jpeg_go">Örtük JPEG şəkli deyil (yüngül versiya transkodlaşdırmanı dəstəkləmir; JPEG fotoşəkil istifadə edin)</string>
+    <string name="conv_cover_invalid_image">Örtük etibarlı şəkil deyil (yalnız JPEG/WebP/PNG dəstəklənir)</string>
+
+    <!-- Converter.kt: transkodlaşdırma / yenidən paketləmə uğursuzluğu və «yalnız konteyneri dəyişmək kodeki düzəltmir» xəbərdarlığı -->
+    <string name="conv_reencode_failed">Videonun yenidən kodlaşdırılması alınmadı: %1$s</string>
+    <string name="conv_remux_failed">Konteynerin yenidən paketlənməsi alınmadı: %1$s</string>
+    <string name="conv_codec_unknown">Tanınan H.264/H.265 videosu deyil</string>
+    <string name="conv_codec_is">Kodek: %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">„%1$s“ videosu %2$s; yalnız konteyneri dəyişmək (yenidən paketləmə) kodeki dəyişmir, ona görə Live Photo yaratmaq mümkün deyil.\n\nZəhmət olmasa „Ayarlar → Video transkodlaşdırma → Transkodlaşdırma rejimi“ bölməsində „Yenidən kodlaşdır“ seçin və ya əvvəlcə başqa alətlə onu H.264/H.265 MP4 formatına çevirin.</string>
+    <string name="conv_hint_no_encoder">Video standart MP4 konteynerində deyil (MOV / MKV / WebM / AVI və s.) və cari „Transkodlaşdırma rejimi“ yenidən kodlaşdırmır, ona görə Live Photo yaratmaq mümkün deyil.\n\nZəhmət olmasa „Ayarlar → Video transkodlaşdırma → Transkodlaşdırma rejimi“ bölməsində „Yenidən kodlaşdır“ seçin (normal versiyada ffmpeg kodekləyicisi var; Go yüngül versiyasında transkoder yoxdur, ona görə normal versiyadan istifadə edin) və ya videonu əvvəlcə standart MP4 (H.264/H.265) formatına çevirin.</string>
+
+    <!-- ========== Çevrilmə jurnalı (siyahı elementinin vəziyyət sətrində və jurnal panelində göstərilir) ========== -->
+    <string name="conv_log_detected">Tanındı: %1$s</string>
+    <string name="conv_log_same_format_copied">Mənbə və hədəf formatları eynidir; olduğu kimi kopyalandı (itkisiz)</string>
+    <string name="conv_log_extra_tracks_bypass">Mənbə videosunda audio/video olmayan yollar var (%1$s); eyni formatlı birbaşa ötürmə keçildi, təmizləmə üçün tam yazma axını istifadə olunur</string>
+    <string name="conv_log_ts_fallback">Mənbədə örtük kadrının vaxt möhürü yoxdur; spesifikasiyaya uyğun olaraq videonun orta nöqtəsinə keçilir</string>
+    <string name="conv_log_brand_normalized">Video konteyner brendi normallaşdırıldı (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">Videoda əlavə yollar var (%1$s), təmizləmək mümkün deyil; olduğu kimi çıxarıldı (bəzi modellərdə bu fayl uzun basmaqla oynatılmaya bilər)</string>
+    <string name="conv_log_extra_tracks_removed">Videonun əlavə yolları çıxarıldı (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">Mənbə videosu %1$s; yalnız konteynerin yenidən paketlənməsi problemi həll etmir (%2$s). Nəticə hələ də uzun basmaqla oynatılmırsa, „Ayarlar → Video transkodlaşdırma → Transkodlaşdırma rejimi“ bölməsində „Yenidən kodlaşdır“ seçin.</string>
+    <string name="conv_log_reencoding">Mənbə videosu %1$s; albom uyğunluğunu artırmaq üçün ayarlara uyğun olaraq 8bit + AAC formatına yenidən kodlanır</string>
+    <string name="conv_log_reencode_result_unusable">Yenidən kodlaşdırmanın nəticəsi yararsızdır; olduğu kimi çıxarıldı (bəzi modellərdə bu fayl uzun basmaqla oynatılmaya bilər)</string>
+    <string name="conv_log_reencode_still_risky">Yenidən kodlaşdırmadan sonra hələ də risklər var (%1$s)</string>
+    <string name="conv_log_reencode_failed">Yenidən kodlaşdırma alınmadı (%1$s); olduğu kimi çıxarıldı (bəzi modellərdə bu fayl uzun basmaqla oynatılmaya bilər)</string>
+    <string name="conv_log_cover_heic_converted">Örtük HEIC idi (JPEG deyil); paketləmədən əvvəl standart JPEG formatına çevrildi</string>
+    <string name="conv_log_compose_sizes">Sintez: foto %1$d B + video %2$d B → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">Transkoder aktiv deyil: yalnız konteyner brendi dəyişdirilir (MOV → MP4), yenidən kodlaşdırma yoxdur</string>
+
+    <!-- Jurnal teqləri (interfeysdə „[teq] mətn“ kimi göstərilir) -->
+    <string name="conv_tag_convert">Çevrilmə</string>
+    <string name="conv_tag_transcode">Transkodlaşdırma</string>
+    <string name="conv_tag_compose">Sintez</string>
+
+    <!-- Transkodlaşdırma rejiminin bloklama səbəbi (yuxarıdakı xəbərdarlıq mətninə əlavə olunur) -->
+    <string name="conv_blocker_no_encoder">Daxili transkoder əlçatan deyil</string>
+    <string name="conv_blocker_mode_no_encode">Cari „Transkodlaşdırma rejimi“ yenidən kodlaşdırmır</string>
+
+    <!-- ========== FfmpegAddon.kt: daxili ffmpeg transkodlaşdırması / yenidən paketləmə ========== -->
+    <string name="conv_addon_unavailable">Daxili transkoder əlçatan deyil</string>
+    <string name="conv_addon_transcode_failed">ffmpeg transkodlaşdırması alınmadı: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg konteynerinin yenidən paketlənməsi alınmadı: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">Video ffmpeg ilə standart MP4 formatına transkodlaşdırılır (%1$s / crf %2$d / %3$s; yalnız video və audio yolları saxlanılır)</string>
+    <string name="conv_log_transcode_done">Video transkodlaşdırması tamamlandı (%1$d KB)</string>
+    <string name="conv_log_remuxing">Video konteyneri standart MP4 kimi yenidən paketlənir (yalnız konteyner, yenidən kodlaşdırma yoxdur)</string>
+    <string name="conv_log_remux_done">Konteynerin yenidən paketlənməsi tamamlandı (%1$d KB)</string>
+
+    <!-- ========== Reminders.kt: „bir daha göstərmə“ dialoqları ========== -->
+    <string name="conv_reminder_cat_compose">Sintez</string>
+    <string name="conv_reminder_cat_convert">Çevrilmə</string>
+    <string name="conv_reminder_cat_update">Yeniləmə</string>
+    <string name="conv_reminder_video_over3s_title">Video 3 saniyədən uzundur</string>
+    <string name="conv_reminder_video_over3s_message">Seçilmiş video 3 saniyədən uzundur; yaradılan Live Photo uyğunluq problemləri yarada bilər:\n\n• Düzgün oynatılmaya bilər\n• Sistem albomu tərəfindən tanınmaya bilər\n• Bəzi modellər bu Live Photo-nu tanımaya bilər</string>
+    <string name="conv_reminder_legacy_go_title">Köhnə versiya aşkarlandı</string>
+    <string name="conv_reminder_legacy_go_message">Bu cihazda hələ də köhnə versiya (Go buraxılışı) quraşdırılıb. Həmin versiya bu cihazda artıq işləmir; yeri boşaltmaq üçün onu silə bilərsiniz.</string>
+    <string name="conv_reminder_replace_risk_title">Əvəzetmə rejimində zədələnmə riski var</string>
+    <!-- formatted="false": mətndə yalnız hərfi məna daşıyan faiz işarəsi var və bu sətir heç vaxt arqumentlə çağırılmır;
+         format sətri kimi elan edilməməsi aapt2/lint-in onu String.format ilə yoxlamasının qarşısını alır. -->
+    <string name="conv_reminder_replace_risk_message" formatted="false">Əvəzetmə rejimi çevrilmə nəticələrini birbaşa orijinal fayllara yazır; üzərinə yazıldıqdan sonra orijinalları geri qaytarmaq mümkün deyil.\n\n• Yazma zamanı tətbiq kəsilərsə, yaddaş azalarsa və ya icazə ləğv edilərsə, mənbə faylları zədələnə bilər\n• Heç bir çevrilmə uğurunu tam zəmanət vermir; uğursuzluq halında mənbə faylları artıq yararsız ola bilər\n• Kütləvi emaldan əvvəl bir-iki faylla sınayın ki, hər şey qaydasında olsun\n• Vacib fotoşəkilləri əvvəlcədən özünüz ehtiyatla saxlayın\n\nBu funksiya „olduğu kimi“ təqdim olunur; istifadə riskini özünüz daşıyırsınız, müəllif faylların zədələnməsinə və ya itirilməsinə görə məsuliyyət daşımır.</string>
+    <string name="conv_reminder_dont_remind">Bir daha göstərmə</string>
+    <string name="conv_reminder_confirm_ok">Anladım</string>
+    <string name="conv_reminder_uninstall">Sil</string>
+
+</resources>

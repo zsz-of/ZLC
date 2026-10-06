@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · lingua Latina.
+  Textus paginae optionum (ui/SettingsScreen.kt). Praefixum clavis settings_.
+  res/values/ est lingua Sinica subsidiaria; aliae linguae in values-b+<lang>/strings_settings.xml.
+  Locorum notae semper forma numerali: %1$s / %1$d.
+  Contenta non extracta: nomina propria et signa mera („@毛血旺o“, „Trae · GML · DeepSeek · Kimi“,
+  „GPL-3.0“, „H.265“/„H.264“, URL GitHub) in codice dure conscripta manent nec in conversione participant.
+  本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
+-->
+<resources>
+
+    <!-- Generale -->
+    <string name="settings_title">Optiones</string>
+    <string name="settings_cd_back">Revertere</string>
+    <string name="settings_btn_apply">Adhibe</string>
+    <string name="settings_btn_cancel">Abroga</string>
+    <string name="settings_btn_close">Claude</string>
+    <string name="settings_btn_ok">Bene</string>
+    <string name="settings_btn_sponsor">Sustenta</string>
+
+    <!-- Tituli gregum -->
+    <string name="settings_section_general">Generalia</string>
+    <string name="settings_section_appearance">Aspectus</string>
+    <string name="settings_section_language">Lingua</string>
+    <string name="settings_section_defaults">Praedefinita</string>
+    <string name="settings_section_output">Effectus</string>
+    <string name="settings_section_transcode">Transcodificatio videndi</string>
+    <string name="settings_section_about">De applicatione</string>
+    <string name="settings_section_app">Applicatio</string>
+    <string name="settings_section_credits">Gratiae et sustentatio</string>
+    <string name="settings_section_opensource">Fons apertus et licentia</string>
+
+    <!-- Generale -->
+    <string name="settings_startup_check_title">Renovationes initio inspicere</string>
+    <string name="settings_startup_check_subtitle">Initio versiones novas de GitHub automatice petere et, si renovatio praesto est, descensionem petere</string>
+    <string name="settings_haptics_title">Reactus hapticus</string>
+    <string name="settings_haptics_subtitle">Reactus tactilis in pressuris bullarum et mutationibus status</string>
+    <string name="settings_bounce_title">Animatio elastica bullae</string>
+    <string name="settings_bounce_subtitle">Compressio et resultatio bullae dum premitur</string>
+
+    <!-- Aspectus -->
+    <string name="settings_theme_system">Systema sequi</string>
+    <string name="settings_theme_dark">Obscura</string>
+    <string name="settings_theme_light">Clara</string>
+    <string name="settings_dynamic_theme_title">Color dynamicus Material You</string>
+    <string name="settings_dynamic_theme_subtitle">Colorem fundi systematis sequi (Android 12+); si clausum, colores praestituti thematis infra adhibentur</string>
+    <string name="settings_preset_colors_title">Colores praestituti thematis</string>
+    <string name="settings_preset_current">Praesens: %1$s</string>
+    <string name="settings_preset_disabled_hint">Claude „Colorem dynamicum Material You“ ut eligas</string>
+    <string name="settings_custom">Proprium</string>
+    <string name="settings_custom_color_title">Color thematis proprius</string>
+    <string name="settings_cd_custom_palette">Paletta propria</string>
+    <string name="settings_hue_value">Color %1$d°</string>
+
+    <!-- Lingua applicationis: titulus et „Systema sequi“ utuntur strings_app.xml (R.string.app_language_title /
+         R.string.app_language_follow_system), hic non iterum definiuntur -->
+    <string name="settings_language_dialog_title">Elige linguam applicationis</string>
+    <string name="settings_language_count">%1$d linguae in toto</string>
+
+    <!-- Praedefinita -->
+    <string name="settings_reminder_dialogs_title">Dialogi „Noli rursus monstrare“</string>
+    <string name="settings_reminder_dialogs_subtitle">Rege ictus omnium dialogorum „Noli rursus monstrare“</string>
+    <string name="settings_reminder_hint">Ictu accenso monitum illud rursus non ostenditur; icte clauso, monitum proxima vice, cum res respondens accidit, rursus apparet.</string>
+
+    <!-- Effectus -->
+    <string name="settings_preserve_folders_title">Effectus secundum hierarchiam plicarum fontis</string>
+    <string name="settings_preserve_folders_subtitle">Effectus in subplicis nominibus albium originalium servantur; si clausum, omnia in unam plicam ponuntur</string>
+
+    <!-- De applicatione -->
+    <string name="settings_about_title">De applicatione</string>
+    <string name="settings_about_subtitle">Versio · Inspectio renovationum · Gratiae et sustentatio</string>
+    <string name="settings_check_update_title">Inspice renovationes</string>
+    <string name="settings_check_update_subtitle">Versionem novissimam de GitHub Releases pete</string>
+    <string name="settings_checking">Inspicitur…</string>
+    <string name="settings_update_available">v%1$s praesto est</string>
+    <string name="settings_up_to_date">Versio novissima iam adhibetur</string>
+    <string name="settings_network_error">Error retis, quaeso postea rursus tenta</string>
+    <string name="settings_reinstall_title">Hanc versionem rursus installa</string>
+    <string name="settings_reinstall_subtitle">Versionem novissimam praesentem descende et super eam installa (ad renovationes probandas)</string>
+    <string name="settings_reinstall_newer_hint">Ad v%1$s upgradere potes; quaeso prius „Inspice renovationes“ adhibe</string>
+    <string name="settings_version_title">Versio</string>
+    <string name="settings_version_value">v%1$s</string>
+    <string name="settings_alipay_title">Sustenta per Alipay</string>
+    <string name="settings_alipay_subtitle">Sustine progressionem</string>
+    <string name="settings_coolapk_subtitle">Usor Coolapk · gratias pro sustentatione</string>
+    <string name="settings_ai_credits_subtitle">Gratias agimus IDEs AI et modelis AI pro auxilio progressionis</string>
+    <string name="settings_github_title">Repositorium GitHub</string>
+    <string name="settings_license_title">Licentia fontis aperti</string>
+    <string name="settings_sponsor_dialog_title">Gratias pro tuo auxilio</string>
+    <string name="settings_sponsor_dialog_text">Vere gratias ago quod hanc applicationem sustinere vis!\n\nSi adhuc discipulus es aut nondum oeconomice independens, quaeso noli pecuniam impendere — illam benignitatem in corde serva et applicationem perge uti; hoc mihi est optimum auxilium.\n\nSi tamen donare vis, etiam parva summa est caritas, et eam in meliorem sustentationem et functiones ponam:)</string>
+    <string name="settings_alipay_missing_title">Alipay non est installata</string>
+    <string name="settings_alipay_missing_text">Alipay non detecta est, itaque donatio nunc perfici non potest.\n\nNihil mali est — utcumque, valde gratias pro tua benignitate!</string>
+
+    <!-- Transcodificatio videndi -->
+    <string name="settings_transcoder_title">Transcodificator internus</string>
+    <string name="settings_transcoder_value">ffmpeg %1$s</string>
+    <string name="settings_transcode_mode_encode">Recodifica</string>
+    <string name="settings_transcode_mode_remux">Solum remux continentis (commendatur)</string>
+    <string name="settings_transcode_mode_off">Transcodificatorem numquam adhibere</string>
+    <string name="settings_transcode_params_title">Parametri transcodificationis</string>
+    <string name="settings_transcode_params_subtitle">Parametri qualitatis et compressionis cum recodificatur</string>
+    <string name="settings_transcode_params_disabled">Solum valet cum „Modus transcodificationis“ in „Recodifica“ positus est</string>
+    <string name="settings_crf_value">Qualitas CRF: %1$d</string>
+    <string name="settings_crf_hint">Valores minores qualitatem altiorem et fasciculos maiores significant (praedefinitum 18)</string>
+    <string name="settings_encoder_title">Codificator</string>
+    <string name="settings_compress_preset_title">Praestitutio compressionis</string>
+
+</resources>

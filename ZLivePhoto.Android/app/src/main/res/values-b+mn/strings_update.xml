@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Монгол (Mongolian) strings — шинэчлэлт / таталт мэдэгдлүүд (strings_update.xml).
+  Translated from res/values/strings_update.xml (Simplified Chinese baseline, the fallback locale).
+  Монгол хэл (кирилл); уугуул хэлний хяналт хийхийг зөвлөж байна.
+  Бүх key нь суурь файлтай ижил; %1$s / %1$d орлуулагч хэвээр хадгалагдсан.
+-->
+<resources>
+
+    <!-- ========== Lanzou Cloud хуваалцах хуудас болон шууд холбоос задлан шинжлэх ========== -->
+    <string name="update_lanzou_gone">Lanzou Cloud хуваалцалт цуцлагдсан эсвэл файл байхгүй, GitHub-аас татаж авна уу</string>
+    <string name="update_lanzou_gone_short">Lanzou Cloud хуваалцалт цуцлагдсан, GitHub-аас татаж авна уу</string>
+    <string name="update_lanzou_resolve_failed">Lanzou Cloud татах холбоосыг задлан шинжлэхэд бүтэлгүйтлээ</string>
+    <string name="update_lanzou_need_passwd">Энэ Lanzou Cloud хуваалцалт нэвтрэх код шаардана, GitHub-аас татаж авна уу (эсвэл Release тэмдэглэлээс нэвтрэх кодыг хайна уу)</string>
+    <string name="update_lanzou_wrong_passwd">Lanzou Cloud нэвтрэх код буруу</string>
+    <string name="update_err_resolve_failed">Задлан шинжлэхэд бүтэлгүйтлээ</string>
+    <string name="update_err_resolve_with_host">%1$s (%2$s)</string>
+    <string name="update_err_anticrawl">Lanzou Cloud-ийн анти-краулер шалгалт бүтэлгүйтлээ</string>
+    <string name="update_err_no_frame">Lanzou Cloud татах хуудсыг задлан шинжлэх боломжгүй (татах фрэйм олдсонгүй)</string>
+    <string name="update_err_no_file_id">Lanzou Cloud файлын танигчийг задлан шинжлэх боломжгүй</string>
+    <string name="update_err_no_sign">Lanzou Cloud гарын үсгийг задлан шинжлэх боломжгүй</string>
+    <string name="update_err_ajax_request">API хүсэлт бүтэлгүйтлээ</string>
+    <string name="update_err_api_request">Lanzou Cloud API хүсэлт бүтэлгүйтлээ</string>
+    <string name="update_err_empty_direct">Lanzou Cloud хоосон татах хаяг буцаав</string>
+    <string name="update_err_direct_expired">Lanzou Cloud татах хаяг хүчингүй болсон, дахин авна уу</string>
+    <string name="update_err_http_request">Хүсэлт бүтэлгүйтлээ (HTTP %1$d)</string>
+
+    <!-- ========== Татах ========== -->
+    <string name="update_err_connect">Татах серверт холбогдох боломжгүй: %1$s</string>
+    <string name="update_err_http">Татах бүтэлгүйтлээ (HTTP %1$d)</string>
+    <string name="update_err_no_connection">Татах холболт үүсгэх боломжгүй</string>
+    <string name="update_err_empty">Татаж авсан агуулга хоосон</string>
+    <string name="update_err_incomplete">Таталт дутуу (%1$d / %2$d байт авсан), дахин татана уу</string>
+    <string name="update_err_interrupted">Таталт тасарлаа: %1$s</string>
+
+    <!-- ========== Суулгацын багцыг шалгах ба суулгах ========== -->
+    <string name="update_err_not_apk">Татаж авсан файл хүчинтэй суулгацын багц биш (вэб хуудас эсвэл татах холбоос хүчингүй болсон байж болно), дахин татах эсвэл GitHub-аас татаж авна уу.</string>
+    <string name="update_err_apk_incomplete">Суулгацын багцын агуулга дутуу, дахин татах эсвэл GitHub-аас татаж авна уу.</string>
+    <string name="update_err_apk_unparsable">Суулгацын багцыг задлан шинжлэх боломжгүй (таталт дутуу байж болно), дахин татах эсвэл GitHub-аас татаж авна уу.</string>
+    <string name="update_err_no_install_permission">«Үл мэдэгдэх апп суулгах» зөвшөөрөл хараахан аваагүй байна</string>
+    <string name="update_err_installer_failed">Системийн суулгагчийг дуудах боломжгүй (%1$s), файлын менежерээс суулгацын багцыг гараар нээж суулгана уу</string>
+
+</resources>

@@ -4,6 +4,21 @@
 
 ---
 
+## [3.4.16] - 2026-10-06
+
+### ☁️ 蓝奏云下载链路修复 + 「从浏览器下载」兜底
+
+- **接口主机随蓝奏迁移（根因）**：蓝奏的 `/fn` 下载帧页现在会声明 `var domain1/domain2 = 'https://apifile.woozooo.com/ajaxfile.php?file=…'`（另有 `apifile.lanzouw.com`），而旧实现固定 POST「分享页域名 + `/ajaxfile.php`」——2026-10 实测该旧主机返回 **HTTP 407 空响应**，四种请求头组合（含/不含伪造国内 IP、`X-Requested-With`、`Origin`）**全部 407**，说明与请求头无关、就是主机地址已不可用。现在**先按帧页声明的接口依次尝试**，最后才回退旧链路。
+- **分享域名轮换回退**：蓝奏官方域名会轮换（`lanzout/lanzouw/lanzoui/lanzoux/lanzouv/lanzoul`…），实测同一 `<fileID>` 在所有别名域名下都指向同一个文件页，因此现在按「原地址 → 同前缀别名域名 → `www.lanzoui.com`」顺序重试（顺序去重，原地址优先）。实测 `lanzoue/lanzoub/lanzoup/lanzouo` 不再返回有效文件页，故不列入回退表。
+- **「分享已被取消」单独识别**：分享被取消 / 文件不存在时分享页仍是 **HTTP 200**，只能按页面文案判断。现在不再把它报成「请求失败（HTTP 407）」这类技术错误，而是提示「蓝奏云分享已被取消或文件不存在，请改用 GitHub 下载」。
+- **`kd` 参数改读帧页声明的 `kdns`**（此前硬编码 `1`）。
+- **新增「从浏览器下载」按钮**：更新弹窗里新增第三个渠道，用**外置浏览器**打开对应的 GitHub Release 页面（浏览器内自行下载）。应用内解析失败、国内网络访问 GitHub API/资产异常，或系统限制应用内安装时，用户仍有确定的获取途径。
+- **新增回归**：JVM 单测 `LanzouResolveTest`（7 例：域名回退序列与原地址优先/去重、`www` 主机不臆造子域、非法 URL 原样返回、取消分享文案识别、接口列表以帧页声明优先并以旧链路兜底、`kdns` 读取与默认值）。全量 **47 tests × 2 flavor 全绿**；转换链路冒烟 `smoke_run.py` 20/20 PASS（无回归）。
+- **证据与边界**：结论来自 4 个真实分享链接（2 个分享域名）的实测复现，工具与报告见 `.agents/tools/lanzou_probe.py`、`.agents/research/lanzou-link-issue.md`、`.agents/research/lanzou-policy.md`。**未做真机验证**（开发机无 Android 设备）；接口为蓝奏私有实现，对方再次迁移时仍可能失效，故保留 GitHub 与浏览器两条兜底渠道。
+
+---
+
+
 ## [3.4.15] - 2026-10-06
 
 ### 🍎 Apple 实况照片（MOV/HEIC）转换链路修复

@@ -13,8 +13,8 @@ android {
     defaultConfig {
         applicationId = "com.zsz.zlivephoto"
         targetSdk = 36
-        versionCode = 40
-        versionName = "3.4.15"
+        versionCode = 41
+        versionName = "3.4.16"
     }
 
     flavorDimensions += "edition"

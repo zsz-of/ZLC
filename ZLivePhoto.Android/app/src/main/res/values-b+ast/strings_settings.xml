@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Cuanto menor el valor, mayor la calidá y el tamañu (predetermináu 18)</string>
     <string name="settings_encoder_title">Codificador</string>
     <string name="settings_compress_preset_title">Predefinición de compresión</string>
-
+    <string name="settings_preset_amber">Ámbar</string>
+    <string name="settings_preset_forest">Verde monte</string>
+    <string name="settings_preset_ocean">Azul océanu</string>
+    <string name="settings_preset_olive">Oliva</string>
+    <string name="settings_preset_sunset">Naranxa de pueste de sol</string>
+    <string name="settings_preset_teal">Verdeazuláu</string>
+    <string name="settings_preset_violet">Violeta</string>
 </resources>

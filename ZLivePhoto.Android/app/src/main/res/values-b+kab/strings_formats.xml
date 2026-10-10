@@ -34,4 +34,35 @@
     <string name="fmt_err_vivo_companion_missing">Ulac afaylu n tvidyut yeddan: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Tafrara n yixef n JPG ur teddi ara</string>
     <string name="fmt_err_vivo_companion_invalid">MP4 yeddan d arussin (ulac ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">Akuver d HEIC: akka tura ulac amankad n umsas (EXIF n HEIC atan deg Exif item, yebɣa aselmed-nniḍen); ContentIdentifier yettwaru ɣer tama MOV w’id</string>
+    <string name="fmt_log_apple_still_found">Yettwaf amwur n tugna n Apple %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Amwur n tugna n Apple ur yettwaf ara (ulac edit ilem mebx/elst): deg tzuzzuṛt n tuffɣa yettwasexdem alemmas n tvidyut</string>
+    <string name="fmt_log_apple_still_no_carrier">Amwur n tugna %1$d ms ur yesεi ara amarrar: Apple n ṣṣeḥ yesseqdac tirare n metadane n wakud mebx, afecku-a ur tt-yessemγaw ara (still-image-time n MOV yettwaru -1)</string>
+    <string name="fmt_log_apple_write">Yettwaru umasal Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Agmuḍ n usuffeɣ: %1$s (tugna %2$dB, HDR=%3$s) + %4$s (tvidyut %5$dB)</string>
+    <string name="fmt_log_google_write">Yettwaru umasal Google: %1$s (tugna %2$dB + tvidyut %3$dB)</string>
+    <string name="fmt_log_honor_write">Yettwaru umasal Honor: %1$s (tugna %2$dB + tvidyut %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Asnulfu n lpex yecceḍ, yeɣli (ur yesεa Ara adrar ɣef tɣuri): %1$s</string>
+    <string name="fmt_log_lpex_ok">Yettwasnulfa ukaram lpex (LivePhotoExtension) yerna yettwarna ɣer moov</string>
+    <string name="fmt_log_meizu_write">Yettwaru umasal Meizu: %1$s (tugna %2$dB + tvidyut %3$dB)</string>
+    <string name="fmt_log_nubia_write">Yettwaru umasal Nubia: %1$s (JPEG %2$dB + ačči 1B + tvidyut %3$dB + tadfirt %4$dB, UserComment yesεa "%5$s")</string>
+    <string name="fmt_log_oppo_write">Yettwaru umasal OPPO: %1$s (tugna %2$dB + tvidyut %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Tasleḍt am Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Tasleḍt am Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Tasleḍt am Live Photo Honor (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Tasleḍt am Live Photo Meizu</string>
+    <string name="fmt_log_parse_nubia">Tasleḍt am Live Photo Nubia (tadfirt nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Tasleḍt am Live Photo OPPO</string>
+    <string name="fmt_log_parse_vivo">Tasleḍt am Live Photo vivo s sin ifuyla</string>
+    <string name="fmt_log_parse_vivo_single">Tasleḍt am Live Photo vivo s yiwen n ufaylu</string>
+    <string name="fmt_log_parse_xiaomi">Tasleḍt am Live Photo Xiaomi (amsebḍi Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">ID n livephoto n JPG d MP4 ur mwafaqen ara: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Yettwaru Live Photo vivo s yiwen n ufaylu: %1$s (tugna %2$dB + tvidyut %3$dB (s vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Yettwaru umasal vivo: %1$s.jpg + %1$s.mp4 (ID livephoto: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Yettwaru umasal Xiaomi: %1$s (tugna %2$dB + tvidyut %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Suffeɣ</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Mas mababang value ay mas mataas na kalidad at mas malaking file (default 18)</string>
     <string name="settings_encoder_title">Encoder</string>
     <string name="settings_compress_preset_title">Preset ng compression</string>
+    <string name="settings_preset_amber">Amber</string>
+    <string name="settings_preset_forest">Berde ng Kagubatan</string>
+    <string name="settings_preset_ocean">Asul ng Karagatan</string>
+    <string name="settings_preset_olive">Olive</string>
+    <string name="settings_preset_sunset">Oranye ng Paglubog ng Araw</string>
+    <string name="settings_preset_teal">Teal</string>
+    <string name="settings_preset_violet">Biyoleta</string>
 </resources>

@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">Die bronlêergids is nie beskikbaar nie: %1$s</string>
     <string name="main_export_replace_failed">Vervanging van die bronlêer het misluk: %1$s</string>
     <string name="main_export_replace_failed_bare">Vervanging van die bronlêer het misluk</string>
+    <string name="main_status_read_failed">Kan nie die gekose lêer lees nie</string>
+    <string name="main_status_source_missing">Die bronlêer bestaan nie of is onleesbaar</string>
 </resources>

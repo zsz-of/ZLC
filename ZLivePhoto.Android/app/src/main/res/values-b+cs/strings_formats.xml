@@ -26,4 +26,35 @@
     <string name="fmt_err_vivo_companion_missing">Chybí doprovodný video soubor: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Zpracování těla souboru JPG se nezdařilo</string>
     <string name="fmt_err_vivo_companion_invalid">Doprovodný soubor MP4 je neplatný (chybí ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">Úvodní snímek je HEIC: identifikátor párování se zatím nezapisuje (EXIF u HEIC je v prvku Exif a vyžaduje samostatnou implementaci), ContentIdentifier se zapisuje jen na straně MOV</string>
+    <string name="fmt_log_apple_still_found">Rozpoznán okamžik statického snímku Apple %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Okamžik statického snímku Apple nebyl rozpoznán (chybí prázdný edit mebx/elst) — při exportu se použije střed videa</string>
+    <string name="fmt_log_apple_still_no_carrier">Pro okamžik statického snímku %1$d ms zatím není nosič: skutečný Apple používá stopu timed metadata mebx, tento nástroj ji zatím nevytváří (v MOV se pro still-image-time zapisuje -1)</string>
+    <string name="fmt_log_apple_write">Zápis ve formátu Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Výstup extrakce: %1$s (fotografie %2$d B, HDR=%3$s) + %4$s (video %5$d B)</string>
+    <string name="fmt_log_google_write">Zápis ve formátu Google: %1$s (obraz %2$d B + video %3$d B)</string>
+    <string name="fmt_log_honor_write">Zápis ve formátu Honor: %1$s (obraz %2$d B + video %3$d B + EIS %4$d B, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Vytvoření lpex selhalo, přeskakuje se (na přehrávání nemá vliv): %1$s</string>
+    <string name="fmt_log_lpex_ok">Box lpex (LivePhotoExtension) byl vytvořen a vložen do moov</string>
+    <string name="fmt_log_meizu_write">Zápis ve formátu Meizu: %1$s (obraz %2$d B + video %3$d B)</string>
+    <string name="fmt_log_nubia_write">Zápis ve formátu Nubia: %1$s (JPEG %2$d B + výplň 1 B + video %3$d B + koncová část %4$d B, UserComment obsahuje „%5$s“)</string>
+    <string name="fmt_log_oppo_write">Zápis ve formátu OPPO: %1$s (obraz %2$d B + video %3$d B + trailer %4$d B)</string>
+    <string name="fmt_log_parse_apple">Rozpoznávání jako Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Rozpoznávání jako Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Rozpoznávání jako dynamická fotografie Honor (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Rozpoznávání jako dynamická fotografie Meizu</string>
+    <string name="fmt_log_parse_nubia">Rozpoznávání jako dynamická fotografie Nubia (koncová část nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Rozpoznávání jako dynamická fotografie OPPO</string>
+    <string name="fmt_log_parse_vivo">Rozpoznávání jako dvousouborová dynamická fotografie vivo</string>
+    <string name="fmt_log_parse_vivo_single">Rozpoznávání jako jednosouborová Live Photo vivo</string>
+    <string name="fmt_log_parse_xiaomi">Rozpoznávání jako dynamická fotografie Xiaomi (kompatibilní s Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">livephoto ID v JPG a MP4 se neshodují: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Zápis jednosouborové Live Photo vivo: %1$s (obraz %2$d B + video %3$d B (s vivoMediaEStream + lpex) + trailer %4$d B)</string>
+    <string name="fmt_log_vivo_write">Zápis ve formátu vivo: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Zápis ve formátu Xiaomi: %1$s (obraz %2$d B + video %3$d B, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Extrakce</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

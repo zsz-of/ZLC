@@ -144,4 +144,6 @@
     <string name="main_export_source_dir_unavailable">Folda ya chanzo haipatikani: %1$s</string>
     <string name="main_export_replace_failed">Kubadilisha faili la chanzo kumeshindikana: %1$s</string>
     <string name="main_export_replace_failed_bare">Kubadilisha faili la chanzo kumeshindikana</string>
+    <string name="main_status_read_failed">Haiwezi kusoma faili iliyochaguliwa</string>
+    <string name="main_status_source_missing">Faili chanzo haipo au haiwezi kusomwa</string>
 </resources>

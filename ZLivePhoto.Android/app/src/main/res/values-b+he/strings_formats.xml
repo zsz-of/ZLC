@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">קובץ הווידאו הנלווה חסר: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">ניתוח גוף ה-JPG נכשל</string>
     <string name="fmt_err_vivo_companion_invalid">קובץ ה-MP4 הנלווה אינו תקין (חסרה תיבת ftyp)</string>
+    <string name="fmt_log_apple_heic_no_pair">השער הוא HEIC: מזהה ההצמדה אינו נכתב בשלב זה (ה-EXIF של HEIC נמצא בתוך Exif item ודורש מימוש נפרד), ו-ContentIdentifier נכתב רק בצד ה-MOV</string>
+    <string name="fmt_log_apple_still_found">פוענח זמן הפריים הסטטי של Apple: %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">לא פוענח זמן הפריים הסטטי של Apple (אין mebx/elst edit ריק), ובעת הייצוא יילקח אמצע הווידאו</string>
+    <string name="fmt_log_apple_still_no_carrier">לזמן הפריים הסטטי %1$d ms אין עדיין נשא: Apple אמיתי משתמש במסלול mebx timed metadata, והכלי הזה אינו מרכיב אותו בשלב זה (still-image-time ב-MOV נכתב כמינוס 1)</string>
+    <string name="fmt_log_apple_write">נכתב בפורמט Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">פלט החילוץ: %1$s (תמונה %2$dB, HDR=%3$s) + %4$s (וידאו %5$dB)</string>
+    <string name="fmt_log_google_write">נכתב בפורמט Google: %1$s (תמונה %2$dB + וידאו %3$dB)</string>
+    <string name="fmt_log_honor_write">נכתב בפורמט HONOR: %1$s (תמונה %2$dB + וידאו %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">הרכבת lpex נכשלה ודולגה (אינה משפיעה על הניגון): %1$s</string>
+    <string name="fmt_log_lpex_ok">הורכב lpex box (LivePhotoExtension) והוחדר ל-moov</string>
+    <string name="fmt_log_meizu_write">נכתב בפורמט Meizu: %1$s (תמונה %2$dB + וידאו %3$dB)</string>
+    <string name="fmt_log_nubia_write">נכתב בפורמט Nubia: %1$s (JPEG %2$dB + ריפוד 1B + וידאו %3$dB + זנב %4$dB, UserComment מכיל ”%5$s“)</string>
+    <string name="fmt_log_oppo_write">נכתב בפורמט OPPO: %1$s (תמונה %2$dB + וידאו %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">ניתוח לפי Apple Live Photo</string>
+    <string name="fmt_log_parse_google">ניתוח לפי Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">ניתוח לפי HONOR Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">ניתוח לפי Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">ניתוח לפי Nubia Live Photo (זנב nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">ניתוח לפי OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">ניתוח לפי vivo Live Photo בשני קבצים</string>
+    <string name="fmt_log_parse_vivo_single">ניתוח לפי vivo Live Photo בקובץ בודד</string>
+    <string name="fmt_log_parse_xiaomi">ניתוח לפי Xiaomi Live Photo (תואם Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">מזהה ה-livephoto ב-JPG וב-MP4 אינו תואם: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">נכתב vivo Live Photo בקובץ בודד: %1$s (תמונה %2$dB + וידאו %3$dB (כולל vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">נכתב בפורמט vivo: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">נכתב בפורמט Xiaomi: %1$s (תמונה %2$dB + וידאו %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">חילוץ</string>
+    <string name="fmt_tag_honor">HONOR</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">שיאומי</string>
 </resources>

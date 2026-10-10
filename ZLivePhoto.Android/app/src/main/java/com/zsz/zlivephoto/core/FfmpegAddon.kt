@@ -10,6 +10,7 @@ import com.zsz.zlivephoto.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.util.Locale
 import kotlin.math.roundToLong
 
 /**
@@ -44,9 +45,16 @@ internal object CoreText {
     /** 取资源文案；无 Context 时为空串 */
     fun of(resId: Int, vararg args: Any?): String = ofOr(resId, "", *args)
 
-    /** 取资源文案；无 Context 时返回 [fallback]（JVM 单测依赖该兜底保持既有契约） */
+    /**
+     * 取资源文案；无 Context 时返回 [fallback]（JVM 单测依赖该兜底保持既有契约）。
+     *
+     * [fallback] 与资源一样可以带 `%1$s` / `%1$d` 之类的占位符：无 Context 时会用
+     * [args] 就地格式化，保证单测看到的兜底文案与真机上的资源文案结构一致。
+     * 只使用 `java.lang.String.format`，不触碰任何 android 框架 API。
+     */
     fun ofOr(resId: Int, fallback: String, vararg args: Any?): String {
-        val ctx = FfmpegAddon.cachedContext() ?: return fallback
+        val ctx = FfmpegAddon.cachedContext()
+            ?: return if (args.isEmpty()) fallback else String.format(Locale.ROOT, fallback, *args)
         return if (args.isEmpty()) ctx.getString(resId) else ctx.getString(resId, *args)
     }
 }

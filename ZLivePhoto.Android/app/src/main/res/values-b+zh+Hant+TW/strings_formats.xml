@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">缺少伴生影片檔案：%1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG 主體解析失敗</string>
     <string name="fmt_err_vivo_companion_invalid">伴生 MP4 無效（缺少 ftyp box）</string>
+    <string name="fmt_log_apple_heic_no_pair">封面為 HEIC：暫不寫入配對標識（HEIC 的 EXIF 位於 Exif item 中，需另行實作），僅於 MOV 側寫入 ContentIdentifier</string>
+    <string name="fmt_log_apple_still_found">解析到 Apple 靜態影格時刻 %1$d ms（mebx/elst）</string>
+    <string name="fmt_log_apple_still_missing">未解析到 Apple 靜態影格時刻（無 mebx/elst 空 edit），轉出時以影片中點回退</string>
+    <string name="fmt_log_apple_still_no_carrier">靜態影格時刻 %1$d ms 暫無載體：真實 Apple 使用 mebx timed metadata 軌，本工具暫不合成（MOV 的 still-image-time 寫入 -1）</string>
+    <string name="fmt_log_apple_write">寫出 Apple 格式：%1$s + %2$s（ContentIdentifier=%3$s...）</string>
+    <string name="fmt_log_extract_write">拆解輸出：%1$s（相片 %2$dB，HDR=%3$s）+ %4$s（影片 %5$dB）</string>
+    <string name="fmt_log_google_write">寫出 Google 格式：%1$s（圖像 %2$dB + 影片 %3$dB）</string>
+    <string name="fmt_log_honor_write">寫出榮耀格式：%1$s（圖像 %2$dB + 影片 %3$dB + EIS %4$dB，LIVE_%5$s）</string>
+    <string name="fmt_log_lpex_fail">lpex 合成失敗，已略過（不影響播放）：%1$s</string>
+    <string name="fmt_log_lpex_ok">已合成 lpex box（LivePhotoExtension）並插入 moov</string>
+    <string name="fmt_log_meizu_write">寫出魅族格式：%1$s（圖像 %2$dB + 影片 %3$dB）</string>
+    <string name="fmt_log_nubia_write">寫出努比亞格式：%1$s（JPEG %2$dB + 填充 1B + 影片 %3$dB + 尾部 %4$dB，UserComment 含 "%5$s"）</string>
+    <string name="fmt_log_oppo_write">寫出 OPPO 格式：%1$s（圖像 %2$dB + 影片 %3$dB + trailer %4$dB）</string>
+    <string name="fmt_log_parse_apple">按 Apple Live Photo 解析</string>
+    <string name="fmt_log_parse_google">按 Google Motion Photo 解析</string>
+    <string name="fmt_log_parse_honor">按榮耀動態相片解析（MP4 large size + uuid EIS matrix）</string>
+    <string name="fmt_log_parse_meizu">按魅族動態相片解析</string>
+    <string name="fmt_log_parse_nubia">按努比亞動態相片解析（nubiaVpfile 尾部）</string>
+    <string name="fmt_log_parse_oppo">按 OPPO 動態相片解析</string>
+    <string name="fmt_log_parse_vivo">按 vivo 雙檔案動態相片解析</string>
+    <string name="fmt_log_parse_vivo_single">按 vivo 單檔案實況解析</string>
+    <string name="fmt_log_parse_xiaomi">按小米動態相片解析（相容 Google）</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG 與 MP4 的 livephoto ID 不一致：%1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">寫出 vivo 單檔案實況：%1$s（圖像 %2$dB + 影片 %3$dB（含 vivoMediaEStream + lpex） + trailer %4$dB）</string>
+    <string name="fmt_log_vivo_write">寫出 vivo 格式：%1$s.jpg + %1$s.mp4（livephoto ID: %2$s）</string>
+    <string name="fmt_log_xiaomi_write">寫出小米格式：%1$s（圖像 %2$dB + 影片 %3$dB，EXIF 0x8897=1）</string>
+    <string name="fmt_tag_extract">拆解</string>
+    <string name="fmt_tag_honor">榮耀</string>
+    <string name="fmt_tag_meizu">魅族</string>
+    <string name="fmt_tag_nubia">努比亞</string>
+    <string name="fmt_tag_xiaomi">小米</string>
 </resources>

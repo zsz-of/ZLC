@@ -160,4 +160,6 @@
     <string name="main_export_source_dir_unavailable">ថតឯកសារដើមមិនអាចប្រើ៖ %1$s</string>
     <string name="main_export_replace_failed">ជំនួសឯកសារដើមបរាជ័យ៖ %1$s</string>
     <string name="main_export_replace_failed_bare">ជំនួសឯកសារដើមបរាជ័យ</string>
+    <string name="main_status_read_failed">មិនអាចអានឯកសារដែលបានជ្រើសបានទេ</string>
+    <string name="main_status_source_missing">ឯកសារដើមមិនមាន ឬមិនអាចអានបាន</string>
 </resources>

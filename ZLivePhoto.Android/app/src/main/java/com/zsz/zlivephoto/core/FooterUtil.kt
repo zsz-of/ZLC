@@ -1,5 +1,7 @@
 package com.zsz.zlivephoto.core
 
+import com.zsz.zlivephoto.R
+
 /**
  * vivo/OPPO 共用的 cameralbum! footer 编解码。
  */
@@ -211,7 +213,7 @@ internal object JsonMin {
                 }
                 sb.append(']')
             }
-            else -> throw FooterException("不支持的 JSON 值类型：${v?.javaClass?.simpleName}")
+            else -> throw FooterException(CoreText.of(R.string.conv_err_json_type, v?.javaClass?.simpleName))
         }
     }
 

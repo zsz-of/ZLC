@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">स्रोत फाइल डिरेक्टरी उपलब्ध नाही: %1$s</string>
     <string name="main_export_replace_failed">स्रोत फाइल बदलणे अयशस्वी: %1$s</string>
     <string name="main_export_replace_failed_bare">स्रोत फाइल बदलणे अयशस्वी</string>
+    <string name="main_status_read_failed">निवडलेली फाइल वाचता आली नाही</string>
+    <string name="main_status_source_missing">स्रोत फाइल अस्तित्वात नाही किंवा वाचता येत नाही</string>
 </resources>

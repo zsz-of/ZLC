@@ -96,5 +96,11 @@
     <string name="settings_crf_hint">Čim mniša hódnota, čim wyša kwalita a wjetši wobjim (standard 18)</string>
     <string name="settings_encoder_title">Koděrowak</string>
     <string name="settings_compress_preset_title">Kompresijowy profil</string>
-
+    <string name="settings_preset_amber">Jantrowa</string>
+    <string name="settings_preset_forest">Lěsna zelena</string>
+    <string name="settings_preset_ocean">Mórska módra</string>
+    <string name="settings_preset_olive">Oliwowa</string>
+    <string name="settings_preset_sunset">Zapadne orange</string>
+    <string name="settings_preset_teal">Módrozelena</string>
+    <string name="settings_preset_violet">Fiołkowa</string>
 </resources>

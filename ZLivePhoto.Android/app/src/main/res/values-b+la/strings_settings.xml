@@ -105,5 +105,11 @@
     <string name="settings_crf_hint">Valores minores qualitatem altiorem et fasciculos maiores significant (praedefinitum 18)</string>
     <string name="settings_encoder_title">Codificator</string>
     <string name="settings_compress_preset_title">Praestitutio compressionis</string>
-
+    <string name="settings_preset_amber">Electrum</string>
+    <string name="settings_preset_forest">Viride silvaticum</string>
+    <string name="settings_preset_ocean">Caeruleum oceanicum</string>
+    <string name="settings_preset_olive">Olivaceum</string>
+    <string name="settings_preset_sunset">Aurantiacum occasus</string>
+    <string name="settings_preset_teal">Viride aquaticum</string>
+    <string name="settings_preset_violet">Viola</string>
 </resources>

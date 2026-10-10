@@ -159,4 +159,6 @@
     <string name="main_export_source_dir_unavailable">Källmappen är inte tillgänglig: %1$s</string>
     <string name="main_export_replace_failed">Det gick inte att ersätta källfilen: %1$s</string>
     <string name="main_export_replace_failed_bare">Det gick inte att ersätta källfilen</string>
+    <string name="main_status_read_failed">Den valda filen kunde inte läsas</string>
+    <string name="main_status_source_missing">Källfilen finns inte eller kan inte läsas</string>
 </resources>

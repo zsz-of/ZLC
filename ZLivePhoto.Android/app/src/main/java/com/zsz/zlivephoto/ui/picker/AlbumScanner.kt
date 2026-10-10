@@ -2,6 +2,7 @@ package com.zsz.zlivephoto.ui.picker
 
 import androidx.compose.runtime.mutableStateListOf
 import com.zsz.zlivephoto.BuildConfig
+import com.zsz.zlivephoto.core.CoreText
 import com.zsz.zlivephoto.core.QuickClassify
 import com.zsz.zlivephoto.core.formats.FormatRegistry
 import kotlinx.coroutines.CoroutineScope
@@ -141,7 +142,7 @@ class AlbumScanner(private val repo: MediaRepo, private val composeMode: Boolean
                     if (plugin != null && score >= 50) {
                         val done = item.copy(
                             formatName = plugin.name,
-                            formatDisplay = plugin.display
+                            formatDisplay = CoreText.of(plugin.displayRes)
                         )
                         withContext(Dispatchers.Main) {
                             if (st.known.containsKey(done.key) &&

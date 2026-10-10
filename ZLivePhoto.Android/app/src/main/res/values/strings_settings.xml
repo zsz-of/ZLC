@@ -104,4 +104,13 @@
     <string name="settings_encoder_title">编码器</string>
     <string name="settings_compress_preset_title">压缩预设</string>
 
+    <!-- 预制主题色名称（ui/Theme.kt presetNameRes，设置页色块标签/无障碍描述） -->
+    <string name="settings_preset_violet">紫罗兰</string>
+    <string name="settings_preset_ocean">海洋蓝</string>
+    <string name="settings_preset_teal">青碧</string>
+    <string name="settings_preset_forest">森绿</string>
+    <string name="settings_preset_olive">橄榄</string>
+    <string name="settings_preset_amber">琥珀</string>
+    <string name="settings_preset_sunset">落日橙</string>
+
 </resources>

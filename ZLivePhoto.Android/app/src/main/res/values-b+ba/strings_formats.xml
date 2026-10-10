@@ -26,4 +26,35 @@
     <string name="fmt_err_vivo_companion_missing">Парлы видео файлы юҡ: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG кәүҙәһен анализлау уңышһыҙ булды</string>
     <string name="fmt_err_vivo_companion_invalid">Парлы MP4 яраҡһыҙ (ftyp box юҡ)</string>
+    <string name="fmt_log_apple_heic_no_pair">Ҡапҡас HEIC: пар билдәһе әлегә яҙылмай (HEIC EXIF-ы Exif item эсендә, айырым ғәмәлгә ашырыу кәрәк), ContentIdentifier бары тик MOV яғында яҙыла</string>
+    <string name="fmt_log_apple_still_found">Apple статик кадр ваҡыты %1$d ms асыҡланды (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple статик кадр ваҡыты асыҡланманы (mebx/elst буш edit юҡ), сығарыу ваҡытында видео уртаһы ҡулланыла</string>
+    <string name="fmt_log_apple_still_no_carrier">Статик кадрҙың %1$d ms ваҡыты өсөн йөрөтөүсе юҡ: ысын Apple mebx timed metadata юлын ҡуллана, был ҡорал әлегә ҡушмай (MOV-тың still-image-time -1 яҙыла)</string>
+    <string name="fmt_log_apple_write">Apple форматы яҙылды: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Айырыу сығышы: %1$s (фото %2$dB, HDR=%3$s) + %4$s (видео %5$dB)</string>
+    <string name="fmt_log_google_write">Google форматы яҙылды: %1$s (һүрәт %2$dB + видео %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor форматы яҙылды: %1$s (һүрәт %2$dB + видео %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex ҡушыу уңышһыҙ, ҡалдырылды (уйнатыуға йоғонто яһамай): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) ҡушылып moov эсенә ҡуйылды</string>
+    <string name="fmt_log_meizu_write">Meizu форматы яҙылды: %1$s (һүрәт %2$dB + видео %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia форматы яҙылды: %1$s (JPEG %2$dB + 1B тултырыу + видео %3$dB + ҡойроҡ %4$dB, UserComment эсендә «%5$s»)</string>
+    <string name="fmt_log_oppo_write">OPPO форматы яҙылды: %1$s (һүрәт %2$dB + видео %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo булараҡ анализланды</string>
+    <string name="fmt_log_parse_google">Google Motion Photo булараҡ анализланды</string>
+    <string name="fmt_log_parse_honor">Honor хәрәкәтле фотоһы булараҡ анализланды (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu хәрәкәтле фотоһы булараҡ анализланды</string>
+    <string name="fmt_log_parse_nubia">Nubia хәрәкәтле фотоһы булараҡ анализланды (nubiaVpfile ҡойроғо)</string>
+    <string name="fmt_log_parse_oppo">OPPO хәрәкәтле фотоһы булараҡ анализланды</string>
+    <string name="fmt_log_parse_vivo">vivo ике файллы хәрәкәтле фотоһы булараҡ анализланды</string>
+    <string name="fmt_log_parse_vivo_single">vivo бер файллы Live Photo булараҡ анализланды</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi хәрәкәтле фотоһы булараҡ анализланды (Google ярашлы)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG менән MP4-тың livephoto ID тап килмәй: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo бер файллы Live Photo яҙылды: %1$s (һүрәт %2$dB + видео %3$dB (vivoMediaEStream + lpex менән) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo форматы яҙылды: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi форматы яҙылды: %1$s (һүрәт %2$dB + видео %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Айырыу</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

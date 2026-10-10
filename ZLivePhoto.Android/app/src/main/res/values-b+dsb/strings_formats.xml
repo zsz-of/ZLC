@@ -27,4 +27,35 @@
     <string name="fmt_err_vivo_companion_missing">Pśidružona wideodataja falujo: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Analyza JPG-śěła jo se njeraźiła</string>
     <string name="fmt_err_vivo_companion_invalid">Pśidružone MP4 jo njepłaśiwe (ftyp box falujo)</string>
+    <string name="fmt_log_apple_heic_no_pair">Titulny wobraz jo HEIC: parowa marka se zaźěła njezapisa (HEIC składujo EXIF w Exif-itemje, kotaryž musy se separatnje wuwijaś), ContentIdentifier se jano na boku MOV zapisujo</string>
+    <string name="fmt_log_apple_still_found">Apple-stillframeowy cas %1$d ms wózpyty (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Žedne Apple-stillframeowe casy wózpyte (žedne prozne mebx/elst-edit), pśi wudawanju se srjejź wideo ako fallback wužywa</string>
+    <string name="fmt_log_apple_still_no_carrier">Za stillframeowy cas %1$d ms hyšći njejo nosyr: napšawdny Apple wužywa mebx timed-metadata-slěd, kotaryž toś ten rěd zaźěła njesyntetizěrujo (still-image-time se w MOV ako -1 zapisujo)</string>
+    <string name="fmt_log_apple_write">Apple-format se zapisujo: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Wudawk wupakowanja: %1$s (foto %2$dB, HDR=%3$s) + %4$s (wideo %5$dB)</string>
+    <string name="fmt_log_google_write">Google-format se zapisujo: %1$s (wobraz %2$dB + wideo %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor-format se zapisujo: %1$s (wobraz %2$dB + wideo %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex-synteza jo se njeraźiła, se wumóža (njewobwliwujo wótegranje): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex-box (LivePhotoExtension) syntetizěrowany a do moov zasajźony</string>
+    <string name="fmt_log_meizu_write">Meizu-format se zapisujo: %1$s (wobraz %2$dB + wideo %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia-format se zapisujo: %1$s (JPEG %2$dB + 1B wupołnjenje + wideo %3$dB + trailer %4$dB, UserComment wopśimujo "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO-format se zapisujo: %1$s (wobraz %2$dB + wideo %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Wózpyta se ako Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Wózpyta se ako Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Wózpyta se ako Honor Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Wózpyta se ako Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">Wózpyta se ako Nubia Live Photo (nubiaVpfile-trailer)</string>
+    <string name="fmt_log_parse_oppo">Wózpyta se ako OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">Wózpyta se ako vivo Live Photo z dwejoma datajoma</string>
+    <string name="fmt_log_parse_vivo_single">Wózpyta se ako vivo Live Photo z jadneju dataju</string>
+    <string name="fmt_log_parse_xiaomi">Wózpyta se ako Xiaomi Live Photo (Google-kompatibelny)</string>
+    <string name="fmt_log_vivo_id_mismatch">livephoto-ID JPG a MP4 njejstej jadnake: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo Live Photo z jadneju dataju se zapisujo: %1$s (wobraz %2$dB + wideo %3$dB (z vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo-format se zapisujo: %1$s.jpg + %1$s.mp4 (livephoto-ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi-format se zapisujo: %1$s (wobraz %2$dB + wideo %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Wupakowaś</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

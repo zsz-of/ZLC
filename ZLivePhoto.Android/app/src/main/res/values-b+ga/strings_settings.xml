@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Dá lú an luach, is ea is airde an cháilíocht agus an méid (réamhshocrú 18)</string>
     <string name="settings_encoder_title">Códóir</string>
     <string name="settings_compress_preset_title">Réamhshocruithe comhbhrúite</string>
-
+    <string name="settings_preset_amber">Ómra</string>
+    <string name="settings_preset_forest">Glas foraoise</string>
+    <string name="settings_preset_ocean">Gorm aigéin</string>
+    <string name="settings_preset_olive">Ológ</string>
+    <string name="settings_preset_sunset">Oráiste luí gréine</string>
+    <string name="settings_preset_teal">Glas uisce</string>
+    <string name="settings_preset_violet">Vialait</string>
 </resources>

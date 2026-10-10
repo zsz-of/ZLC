@@ -84,4 +84,11 @@
     <string name="settings_crf_hint">هرچه عدد کوچک‌تر باشد کیفیت بالاتر و حجم بیشتر است (پیش‌فرض 18)</string>
     <string name="settings_encoder_title">رمزگذار</string>
     <string name="settings_compress_preset_title">پیش‌تنظیم فشرده‌سازی</string>
+    <string name="settings_preset_amber">کهربایی</string>
+    <string name="settings_preset_forest">سبز جنگلی</string>
+    <string name="settings_preset_ocean">آبی اقیانوسی</string>
+    <string name="settings_preset_olive">زیتونی</string>
+    <string name="settings_preset_sunset">نارنجی غروب</string>
+    <string name="settings_preset_teal">فیروزه‌ای</string>
+    <string name="settings_preset_violet">بنفش</string>
 </resources>

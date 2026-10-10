@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">குறைந்த மதிப்புகள் அதிக தரத்தையும் பெரிய கோப்புகளையும் குறிக்கும் (இயல்புநிலை 18)</string>
     <string name="settings_encoder_title">குறியாக்கி</string>
     <string name="settings_compress_preset_title">சுருக்க முன்னமைவு</string>
+    <string name="settings_preset_amber">அம்பர்</string>
+    <string name="settings_preset_forest">வனப் பச்சை</string>
+    <string name="settings_preset_ocean">கடல் நீலம்</string>
+    <string name="settings_preset_olive">ஆலிவ்</string>
+    <string name="settings_preset_sunset">அஸ்தமன ஆரஞ்சு</string>
+    <string name="settings_preset_teal">நீலப் பச்சை</string>
+    <string name="settings_preset_violet">ஊதா</string>
 </resources>

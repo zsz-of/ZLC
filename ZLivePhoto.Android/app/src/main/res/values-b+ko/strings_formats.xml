@@ -34,4 +34,35 @@
     <string name="fmt_err_vivo_companion_missing">동반 동영상 파일이 없습니다: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG 본문 분석에 실패했습니다</string>
     <string name="fmt_err_vivo_companion_invalid">동반 MP4가 유효하지 않습니다(ftyp box 없음)</string>
+    <string name="fmt_log_apple_heic_no_pair">커버가 HEIC이므로 페어 식별자를 아직 쓰지 않습니다(HEIC의 EXIF는 Exif item 안에 있어 별도 구현이 필요합니다). MOV 쪽에만 ContentIdentifier를 씁니다</string>
+    <string name="fmt_log_apple_still_found">Apple 정지 시점 %1$d ms를 확인했습니다(mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple 정지 시점을 확인하지 못했습니다(mebx/elst 빈 edit 없음). 내보낼 때 동영상 중간 지점으로 대체합니다</string>
+    <string name="fmt_log_apple_still_no_carrier">정지 시점 %1$d ms를 담을 곳이 없습니다: 실제 Apple은 mebx timed metadata 트랙을 사용하지만 이 도구는 아직 합성하지 않습니다(MOV의 still-image-time은 -1을 씁니다)</string>
+    <string name="fmt_log_apple_write">Apple 형식으로 출력: %1$s + %2$s(ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">분해 출력: %1$s(사진 %2$dB, HDR=%3$s) + %4$s(동영상 %5$dB)</string>
+    <string name="fmt_log_google_write">Google 형식으로 출력: %1$s(이미지 %2$dB + 동영상 %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor 형식으로 출력: %1$s(이미지 %2$dB + 동영상 %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex 합성에 실패해 건너뜁니다(재생에는 영향 없음): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box(LivePhotoExtension)를 합성해 moov에 삽입했습니다</string>
+    <string name="fmt_log_meizu_write">Meizu 형식으로 출력: %1$s(이미지 %2$dB + 동영상 %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia 형식으로 출력: %1$s(JPEG %2$dB + 패딩 1B + 동영상 %3$dB + 끝부분 %4$dB, UserComment에 "%5$s" 포함)</string>
+    <string name="fmt_log_oppo_write">OPPO 형식으로 출력: %1$s(이미지 %2$dB + 동영상 %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo로 분석</string>
+    <string name="fmt_log_parse_google">Google Motion Photo로 분석</string>
+    <string name="fmt_log_parse_honor">Honor 라이브 포토로 분석(MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu 라이브 포토로 분석</string>
+    <string name="fmt_log_parse_nubia">Nubia 라이브 포토로 분석(nubiaVpfile 끝부분)</string>
+    <string name="fmt_log_parse_oppo">OPPO 라이브 포토로 분석</string>
+    <string name="fmt_log_parse_vivo">vivo 2파일 라이브 포토로 분석</string>
+    <string name="fmt_log_parse_vivo_single">vivo 단일 파일 라이브 포토로 분석</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi 라이브 포토로 분석(Google 호환)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG와 MP4의 livephoto ID가 일치하지 않습니다: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo 단일 파일 라이브 포토 출력: %1$s(이미지 %2$dB + 동영상 %3$dB(vivoMediaEStream + lpex 포함) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo 형식으로 출력: %1$s.jpg + %1$s.mp4(livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi 형식으로 출력: %1$s(이미지 %2$dB + 동영상 %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">분해</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

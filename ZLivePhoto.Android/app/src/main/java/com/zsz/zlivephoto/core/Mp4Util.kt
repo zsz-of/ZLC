@@ -1,5 +1,7 @@
 package com.zsz.zlivephoto.core
 
+import com.zsz.zlivephoto.R
+
 /**
  * MP4 (ISOBMFF) box 级工具：box 遍历、流边界定位、vivo uuid 处理、
  * lpex box 插入（含 stco/co64 偏移修复）、视频轨信息解析。
@@ -173,7 +175,7 @@ internal object Mp4Util {
     fun insertBoxIntoMoov(data: ByteArray, boxType: String, payload: ByteArray): ByteArray {
         val boxes = iterateBoxes(data, 0, data.size).toList()
         val moov = boxes.firstOrNull { it.type == "moov" }
-            ?: throw Mp4Exception("MP4 缺少 moov box")
+            ?: throw Mp4Exception(CoreText.of(R.string.conv_err_mp4_no_moov))
 
         val moovOff = moov.offset
         val moovSize = moov.size
@@ -208,9 +210,9 @@ internal object Mp4Util {
      * 改写等长（每个品牌 4 字节），**字节数不变**，无需修 stco。
      */
     fun mp4ToMov(data: ByteArray): ByteArray {
-        if (!hasFtyp(data)) throw Mp4Exception("缺少 ftyp box")
+        if (!hasFtyp(data)) throw Mp4Exception(CoreText.of(R.string.conv_err_mp4_no_ftyp))
         val ftypSize = BinaryUtils.readU32BE(data, 0).toInt()
-        if (ftypSize < 16 || ftypSize > data.size) throw Mp4Exception("ftyp box 尺寸非法")
+        if (ftypSize < 16 || ftypSize > data.size) throw Mp4Exception(CoreText.of(R.string.conv_err_mp4_ftyp_size))
         val buf = data.copyOf()
         // major_brand(8) 与 compatible_brands(16..ftypSize) 都写 qt  ；
         // minor_version 在 12，**必须跳过**（真机 Apple MOV 是 0，写上 "qt  " 会写坏版本字段）
@@ -478,7 +480,7 @@ internal object Mp4Util {
         // 检查是否已有 udta
         val boxes = iterateBoxes(data, 0, data.size).toList()
         val moov = boxes.firstOrNull { it.type == "moov" }
-            ?: throw Mp4Exception("MP4 缺少 moov box")
+            ?: throw Mp4Exception(CoreText.of(R.string.conv_err_mp4_no_moov))
 
         val moovOff = moov.offset
         val moovSize = moov.size
@@ -591,6 +593,9 @@ internal object Mp4Util {
     fun videoCompat(data: ByteArray): VideoCompat {
         var videoCodec = ""
         var audioCodec = ""
+        // 下面 7 条原因文案被纯 JVM 单测（VideoCompatTest）逐条断言，而单测没有 Android
+        // Context，CoreText.of 会返回空串、断言必然失败。故此处统一用 ofOr 配英文兜底：
+        // 正常运行（MainActivity.onCreate 已 init）一律走资源，兜底只在单测里可见。
         val reasons = ArrayList<String>()
         if (!hasFtyp(data)) return VideoCompat(videoCodec, audioCodec, reasons)
         val boxes = iterateBoxes(data, 0, data.size).toList()
@@ -616,10 +621,21 @@ internal object Mp4Util {
                 "vide" -> {
                     videoCodec = fourcc
                     if (fourcc !in commonVideoFourccs) {
-                        reasons.add("视频编码 $fourcc 不是安卓通用的 H.264/H.265")
+                        reasons.add(
+                            CoreText.ofOr(
+                                R.string.conv_reason_codec_unsupported,
+                                "video codec %1\$s is not the Android-universal H.264/H.265",
+                                fourcc
+                            )
+                        )
                     }
                     if (fourcc == "hev1") {
-                        reasons.add("H.265 标记为 hev1（部分机型只认 hvc1）")
+                        reasons.add(
+                            CoreText.ofOr(
+                                R.string.conv_reason_hev1,
+                                "H.265 is flagged hev1 (some devices only accept hvc1)"
+                            )
+                        )
                     }
                     val colr = childBox(data, entry, "colr", VISUAL_ENTRY_CHILD_OFFSET)
                     if (colr != null) {
@@ -631,14 +647,26 @@ internal object Mp4Util {
                                 (BinaryUtils.readU32BE(data, colr.offset + 8 + 6) ushr 16).toInt() and 0xFFFF
                             if (transfer == 16 || transfer == 18) {
                                 val name = if (transfer == 16) "PQ" else "HLG"
-                                reasons.add("视频为 HDR（$name 传输特性），部分机型相册会花屏或黑屏")
+                                reasons.add(
+                                    CoreText.ofOr(
+                                        R.string.conv_reason_hdr,
+                                        "video is HDR (%1\$s transfer characteristics); " +
+                                            "some galleries show glitches or a black frame",
+                                        name
+                                    )
+                                )
                             }
                         }
                     }
                     if (childBox(data, entry, "dvcC", VISUAL_ENTRY_CHILD_OFFSET) != null ||
                         childBox(data, entry, "dvvC", VISUAL_ENTRY_CHILD_OFFSET) != null
                     ) {
-                        reasons.add("视频为杜比视界（Dolby Vision），安卓相册普遍不支持")
+                        reasons.add(
+                            CoreText.ofOr(
+                                R.string.conv_reason_dolby_vision,
+                                "video is Dolby Vision, which Android galleries widely do not support"
+                            )
+                        )
                     }
                     val hvcC = childBox(data, entry, "hvcC", VISUAL_ENTRY_CHILD_OFFSET)
                     if (hvcC != null) {
@@ -648,19 +676,39 @@ internal object Mp4Util {
                         if (payload + 19 <= hvcC.offset + hvcC.size) {
                             val bitDepth = data[payload + 17].toInt() and 0x07
                             if (bitDepth > 0) {
-                                reasons.add("视频为 ${bitDepth + 8}bit H.265（HDR 实况），部分机型相册解码不了")
+                                reasons.add(
+                                    CoreText.ofOr(
+                                        R.string.conv_reason_10bit_h265,
+                                        "video is %1\$dbit H.265 (HDR Live Photo), " +
+                                            "which some devices cannot decode in the gallery",
+                                        bitDepth + 8
+                                    )
+                                )
                             }
                         }
                     }
                     val tkhd = trak.firstOrNull { it.type == "tkhd" }
                     if (tkhd != null && hasMirrorMatrix(data, tkhd)) {
-                        reasons.add("视频带镜像变换矩阵（MP4 旋转矩阵无法表达镜像）")
+                        reasons.add(
+                            CoreText.ofOr(
+                                R.string.conv_reason_mirror_matrix,
+                                "video carries a mirrored transform matrix " +
+                                    "(the MP4 rotation matrix cannot express mirroring)"
+                            )
+                        )
                     }
                 }
                 "soun" -> {
                     audioCodec = fourcc
                     if (fourcc != AAC_FOURCC) {
-                        reasons.add("音轨编码 $fourcc 不是 AAC（动态照片规范要求 AAC，Apple 常为 PCM）")
+                        reasons.add(
+                            CoreText.ofOr(
+                                R.string.conv_reason_audio_not_aac,
+                                "audio codec %1\$s is not AAC (Live Photo requires AAC; " +
+                                    "Apple usually stores PCM)",
+                                fourcc
+                            )
+                        )
                     }
                 }
             }

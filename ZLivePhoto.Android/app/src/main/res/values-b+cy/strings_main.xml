@@ -179,4 +179,6 @@
     <string name="main_export_source_dir_unavailable">Nid yw cyfeiriadur y ffeil ffynhonnell ar gael: %1$s</string>
     <string name="main_export_replace_failed">Wedi methu disodli\'r ffeil ffynhonnell: %1$s</string>
     <string name="main_export_replace_failed_bare">Wedi methu disodli\'r ffeil ffynhonnell</string>
+    <string name="main_status_read_failed">Ni ellir darllen y ffeil a ddewiswyd</string>
+    <string name="main_status_source_missing">Nid yw\'r ffeil ffynhonnell yn bodoli neu nid yw\'n ddarllenadwy</string>
 </resources>

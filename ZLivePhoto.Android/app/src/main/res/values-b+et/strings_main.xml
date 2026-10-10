@@ -159,4 +159,6 @@
     <string name="main_export_source_dir_unavailable">Lähtefaili kaust ei ole saadaval: %1$s</string>
     <string name="main_export_replace_failed">Lähtefaili asendamine ebaõnnestus: %1$s</string>
     <string name="main_export_replace_failed_bare">Lähtefaili asendamine ebaõnnestus</string>
+    <string name="main_status_read_failed">Valitud faili ei õnnestunud lugeda</string>
+    <string name="main_status_source_missing">Lähtefail puudub või pole loetav</string>
 </resources>

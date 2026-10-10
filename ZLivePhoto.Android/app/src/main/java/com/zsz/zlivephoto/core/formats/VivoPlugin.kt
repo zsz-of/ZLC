@@ -84,7 +84,7 @@ internal class VivoPlugin : FormatPlugin() {
     }
 
     override fun read(path: String, log: (String, String, String) -> Unit): LivePhotoAsset {
-        log("info", "按 vivo 双文件动态照片解析", "vivo")
+        log("info", CoreText.of(R.string.fmt_log_parse_vivo), "vivo")
         val data = readBytes(path)
         val footer = FooterUtil.parseFooter(data)
         if (footer?.livephotoId == null)
@@ -109,7 +109,7 @@ internal class VivoPlugin : FormatPlugin() {
             if (imageTime == null) imageTime = mp4Footer.imageTime
             val mp4Id = mp4Footer.livephotoId
             if (mp4Id != null && mp4Id != liveId) {
-                log("warning", "JPG 与 MP4 的 livephoto ID 不一致：$liveId / $mp4Id", "vivo")
+                log("warning", CoreText.of(R.string.fmt_log_vivo_id_mismatch, liveId, mp4Id), "vivo")
             }
         }
 
@@ -169,7 +169,7 @@ internal class VivoPlugin : FormatPlugin() {
         val mp4Path = File(outDir, "$stem.mp4").path
         writeBytes(jpgPath, jpgOut)
         writeBytes(mp4Path, mp4Out)
-        log("info", "写出 vivo 格式：$stem.jpg + $stem.mp4（livephoto ID: $liveId）", "vivo")
+        log("info", CoreText.of(R.string.fmt_log_vivo_write, stem, liveId), "vivo")
         return mutableListOf(jpgPath, mp4Path)
     }
 }

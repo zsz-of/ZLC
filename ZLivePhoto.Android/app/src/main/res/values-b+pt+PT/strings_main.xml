@@ -161,4 +161,6 @@
     <string name="main_export_source_dir_unavailable">Diretório do ficheiro de origem indisponível: %1$s</string>
     <string name="main_export_replace_failed">Falha ao substituir o ficheiro de origem: %1$s</string>
     <string name="main_export_replace_failed_bare">Falha ao substituir o ficheiro de origem</string>
+    <string name="main_status_read_failed">Não foi possível ler o ficheiro selecionado</string>
+    <string name="main_status_source_missing">O ficheiro de origem não existe ou não pode ser lido</string>
 </resources>

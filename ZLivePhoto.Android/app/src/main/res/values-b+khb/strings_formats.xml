@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-  khb（傣泐 / 新傣仂文）为低资源语种：暂无可靠的新傣仂文词表，为避免臆造民族语言文字，
-  本文件正文沿用简体中文基准（即本应用对 khb 的兜底文案）；key 与元素类型与基准完全一致。
-  欢迎母语者逐条替换为傣泐语译文。
+    khb（傣泐 / 新傣仂文 / New Tai Lue）为低资源语种：全文已按新傣仂文逐条本地化。
+  译文为**模型辅助的 C 级尽力翻译，未经母语者审校**，可能存在不通顺或用词偏差，欢迎社区修正；
+  品牌专名与技术名词保留拉丁字形。key 与元素类型与基准完全一致。
   格式插件展示名（task-4，videolen-analyst 维护）。key 前缀 fmt_。
   res/values/ 是简体中文兜底；其它语种放 values-<locale>/strings_formats.xml。
   注意：FormatPlugin.display 仍为旧调用点（MainActivity/AlbumScanner/Converter）提供中文兜底，
@@ -11,15 +11,15 @@
 -->
 <resources>
     <string name="fmt_apple">Apple Live Photo</string>
-    <string name="fmt_extract">拆解</string>
+    <string name="fmt_extract">ᦶᦎᧅᧈ ᦀᦸᧅᧈ</string>
     <string name="fmt_google">Google Motion Photo</string>
-    <string name="fmt_honor">荣耀动态照片</string>
-    <string name="fmt_meizu">魅族动态照片</string>
-    <string name="fmt_nubia">努比亚动态照片</string>
-    <string name="fmt_oppo">OPPO 动态照片</string>
-    <string name="fmt_vivo">vivo 动态照片</string>
-    <string name="fmt_vivo_single">vivo 单文件实况</string>
-    <string name="fmt_xiaomi">小米动态照片</string>
+    <string name="fmt_honor">ᦘᦱᧇ ᦋᦲᧃ Honor</string>
+    <string name="fmt_meizu">ᦘᦱᧇ ᦋᦲᧃ Meizu</string>
+    <string name="fmt_nubia">ᦘᦱᧇ ᦋᦲᧃ Nubia</string>
+    <string name="fmt_oppo">ᦘᦱᧇ ᦋᦲᧃ OPPO</string>
+    <string name="fmt_vivo">ᦘᦱᧇ ᦋᦲᧃ vivo</string>
+    <string name="fmt_vivo_single">vivo ᦺᦝ ᦵᦡᧁ</string>
+    <string name="fmt_xiaomi">ᦘᦱᧇ ᦋᦲᧃ Xiaomi</string>
 
     <!--
       插件侧用户可见的失败提示（IOException 文案）：经 MainActivity/Converter 的 e.message
@@ -27,19 +27,50 @@
       插件没有 Context，统一走 CoreText.of(...)（core/FfmpegAddon.kt，未初始化时返回空串，
       纯 JVM 单测不触碰 Android API）；与 Converter/AppUpdater 的既有约定一致。
     -->
-    <string name="fmt_err_apple_mov_missing">未找到同名 .mov 视频文件</string>
-    <string name="fmt_err_apple_mov_no_ftyp">MOV 文件缺少 ftyp box</string>
-    <string name="fmt_err_extract_read">拆解是输出格式，不应作为输入格式读取</string>
-    <string name="fmt_err_no_primary_jpeg">未找到主 JPEG 图像</string>
-    <string name="fmt_err_no_mp4_after_jpeg">JPEG 之后未找到有效的 MP4 视频（缺少 ftyp box）</string>
-    <string name="fmt_err_mp4_parse_failed">MP4 视频流解析失败</string>
-    <string name="fmt_err_nubia_too_short">文件过短，不像努比亚动态照片</string>
-    <string name="fmt_err_nubia_no_magic">缺少 nubiaVpfile 尾部魔数</string>
-    <string name="fmt_err_nubia_jpeg_len">尾部记录的 JPEG 长度非法：%1$d</string>
-    <string name="fmt_err_nubia_no_padding">JPEG 与视频之间缺少 0x00 填充字节</string>
-    <string name="fmt_err_nubia_empty_video">内嵌视频长度为 0</string>
-    <string name="fmt_err_vivo_no_marker">JPG 尾部未找到 vivo livephoto 标记</string>
-    <string name="fmt_err_vivo_companion_missing">缺少伴生视频文件：%1$s.mp4</string>
-    <string name="fmt_err_vivo_parse_failed">JPG 主体解析失败</string>
-    <string name="fmt_err_vivo_companion_invalid">伴生 MP4 无效（缺少 ftyp box）</string>
+    <string name="fmt_err_apple_mov_missing">ᦢᧁᧈ ᦠᦱ ᦺᦝ video .mov ᦋᦹᧈ ᦵᦙᦲᧃ</string>
+    <string name="fmt_err_apple_mov_no_ftyp">ᦺᦝ MOV ᦢᧁᧈ ᦙᦲ ftyp box</string>
+    <string name="fmt_err_extract_read">ᦶᦎᧅᧈ ᦀᦸᧅᧈ ᦔᦲᧃ ᦘᦲᧃ ᦀᦸᧅᧈ, ᦢᧁᧈ ᦈᧅ ᦀᦱᧃᧈ ᦔᦲᧃ ᦘᦲᧃ ᦃᧁᧉ</string>
+    <string name="fmt_err_no_primary_jpeg">ᦢᧁᧈ ᦠᦱ ᦘᦱᧇ JPEG ᦕᦲᧃ</string>
+    <string name="fmt_err_no_mp4_after_jpeg">ᦢᧁᧈ ᦠᦱ video MP4 ᦁᧃ ᦺᦋᧉ ᦺᦡᧉ ᦗᦻ ᦜᧂ JPEG (ᦢᧁᧈ ᦙᦲ ftyp box)</string>
+    <string name="fmt_err_mp4_parse_failed">ᦷᦎᧅ ᦷᦞᧂ video MP4 ᦢᧁᧈ ᦔᦲᧃ</string>
+    <string name="fmt_err_nubia_too_short">ᦺᦝ ᦐᦾᧈ ᦷᦜᧂ, ᦢᧁᧈ ᦔᦲᧃ ᦘᦱᧇ ᦋᦲᧃ Nubia</string>
+    <string name="fmt_err_nubia_no_magic">ᦢᧁᧈ ᦙᦲ magic ᦗᦻ ᦜᧂ nubiaVpfile</string>
+    <string name="fmt_err_nubia_jpeg_len">ᦷᦜᧂ JPEG ᦁᧃ ᦟᦲᧅ ᦺᦉᧈ ᦗᦻ ᦜᧂ ᦢᧁᧈ ᦅᦸᧂ: %1$d</string>
+    <string name="fmt_err_nubia_no_padding">ᦂᦱᧂ JPEG ᦂᧇ video ᦢᧁᧈ ᦙᦲ byte ᦉᦲᧈ 0x00</string>
+    <string name="fmt_err_nubia_empty_video">ᦷᦜᧂ video ᦗᦱᧃ ᦺᦓ ᦔᦲᧃ 0</string>
+    <string name="fmt_err_vivo_no_marker">ᦗᦻ ᦜᧂ JPG ᦢᧁᧈ ᦠᦱ ᦖᦻ vivo livephoto</string>
+    <string name="fmt_err_vivo_companion_missing">ᦢᧁᧈ ᦙᦲ ᦺᦝ video ᦗᦸᧄ: %1$s.mp4</string>
+    <string name="fmt_err_vivo_parse_failed">ᦷᦎᧅ ᦷᦞᧂ ᦷᦎ JPG ᦢᧁᧈ ᦔᦲᧃ</string>
+    <string name="fmt_err_vivo_companion_invalid">MP4 ᦗᦸᧄ ᦺᦋᧉ ᦢᧁᧈ ᦺᦡᧉ (ᦢᧁᧈ ᦙᦲ ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">cover ᦔᦲᧃ HEIC: ᦍᧂ ᦢᧁᧈ ᦃᦲᧃ pair ID (EXIF ᦺᦓ HEIC ᦊᦴᧈ ᦺᦓ Exif item, ᦈᧅ ᦵᦣᧆ ᦵᦟᦲᧅ), ᦃᦲᧃ ContentIdentifier ᦑᦲᧈ MOV</string>
+    <string name="fmt_log_apple_still_found">ᦶᦎᧅᧈ ᦀᦸᧅᧈ ᦵᦙᦲᧈ still frame Apple %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">ᦢᧁᧈ ᦠᦱ ᦵᦙᦲᧈ still frame Apple (ᦢᧁᧈ ᦙᦲ mebx/elst edit ᦞᦱᧂ), ᦵᦙᦲᧈ ᦃᦲᧃ ᦀᦸᧅᧈ ᦺᦋᧉ ᦂᦱᧂ video ᦶᦑᧃ</string>
+    <string name="fmt_log_apple_still_no_carrier">ᦵᦙᦲᧈ still frame %1$d ms ᦍᧂ ᦢᧁᧈ ᦙᦲ ᦵᦆᦲᧂᧈ ᦙᦸᧆ: Apple ᦓᧃᧉ ᦺᦋᧉ mebx timed metadata track, ᦆᦲᧂ ᦓᦲᦰ ᦍᧂ ᦢᧁᧈ ᦶᦎᧂᧈ (still-image-time ᦺᦓ MOV ᦃᦲᧃ ᦔᦲᧃ minus one)</string>
+    <string name="fmt_log_apple_write">ᦃᦲᧃ format Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">ᦀᦸᧅᧈ ᦶᦎᧅᧈ: %1$s (ᦘᦱᧇ %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">ᦃᦲᧃ format Google: %1$s (ᦘᦱᧇ %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">ᦃᦲᧃ format Honor: %1$s (ᦘᦱᧇ %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex ᦶᦎᧂᧈ ᦢᧁᧈ ᦔᦲᧃ, ᦃᦱᧄᧉ (ᦢᧁᧈ ᦕᦲᧆ ᦂᦱᧃ ᦵᦔᧁᧈ): %1$s</string>
+    <string name="fmt_log_lpex_ok">ᦶᦎᧂᧈ lpex box (LivePhotoExtension) ᦺᦉᧈ ᦺᦓ moov</string>
+    <string name="fmt_log_meizu_write">ᦃᦲᧃ format Meizu: %1$s (ᦘᦱᧇ %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">ᦃᦲᧃ format Nubia: %1$s (JPEG %2$dB + padding 1B + video %3$dB + trailer %4$dB, UserComment ᦙᦲ “%5$s”)</string>
+    <string name="fmt_log_oppo_write">ᦃᦲᧃ format OPPO: %1$s (ᦘᦱᧇ %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">ᦶᦎᧅᧈ ᦀᦸᧅᧈ ᦺᦋᧉ Apple Live Photo</string>
+    <string name="fmt_log_parse_google">ᦶᦎᧅᧈ ᦀᦸᧅᧈ ᦺᦋᧉ Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">ᦶᦎᧅᧈ ᦀᦸᧅᧈ ᦺᦋᧉ Honor Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">ᦶᦎᧅᧈ ᦀᦸᧅᧈ ᦺᦋᧉ Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">ᦶᦎᧅᧈ ᦀᦸᧅᧈ ᦺᦋᧉ Nubia Live Photo (nubiaVpfile trailer)</string>
+    <string name="fmt_log_parse_oppo">ᦶᦎᧅᧈ ᦀᦸᧅᧈ ᦺᦋᧉ OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">ᦶᦎᧅᧈ ᦀᦸᧅᧈ ᦺᦋᧉ vivo Live Photo 2 ᦺᦝ</string>
+    <string name="fmt_log_parse_vivo_single">ᦶᦎᧅᧈ ᦀᦸᧅᧈ ᦺᦋᧉ vivo Live Photo 1 ᦺᦝ</string>
+    <string name="fmt_log_parse_xiaomi">ᦶᦎᧅᧈ ᦀᦸᧅᧈ ᦺᦋᧉ Xiaomi Live Photo (Google ᦙᦳᧃ)</string>
+    <string name="fmt_log_vivo_id_mismatch">livephoto ID ᦺᦓ JPG ᦂᧇ MP4 ᦢᧁᧈ ᦙᦳᧃ: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">ᦃᦲᧃ vivo Live Photo 1 ᦺᦝ: %1$s (ᦘᦱᧇ %2$dB + video %3$dB (vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">ᦃᦲᧃ format vivo: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">ᦃᦲᧃ format Xiaomi: %1$s (ᦘᦱᧇ %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">ᦶᦎᧅᧈ ᦀᦸᧅᧈ</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

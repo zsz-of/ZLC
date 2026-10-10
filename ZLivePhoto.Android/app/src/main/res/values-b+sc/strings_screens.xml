@@ -4,7 +4,6 @@
     <string name="screen_app_subtitle">Cunversione intre formatos de Live Photo</string>
     <plurals name="screen_file_count">
         <item quantity="one">%1$d file</item>
-        <item quantity="many">%1$d files</item>
         <item quantity="other">%1$d files</item>
     </plurals>
     <string name="screen_settings">Cunfiguratzione</string>
@@ -51,7 +50,6 @@
     <string name="screen_scanning_progress">Iscanende %1$d/%2$d</string>
     <plurals name="screen_photo_count">
         <item quantity="one">%1$d foto</item>
-        <item quantity="many">%1$d fotos</item>
         <item quantity="other">%1$d fotos</item>
     </plurals>
     <string name="screen_select_all">Seletziona totu</string>
@@ -74,4 +72,11 @@
     <string name="screen_date_yesterday">Eris</string>
     <string name="screen_date_this_year">%2$d.%1$d</string>
     <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+    <string name="screen_album_unnamed">Sena nùmene</string>
+    <string name="screen_eta_minutes">%1$d min %2$s s</string>
+    <string name="screen_eta_seconds">%1$d s</string>
+    <string name="screen_transcode_eta">Acà %1$s chi abarrat</string>
+    <string name="screen_transcode_frames">%1$d/%2$d fotogrammas</string>
+    <string name="screen_transcode_in_progress">Transcodìfica in cursu · %1$d fotogrammas traballadas</string>
+    <string name="screen_transcode_progress">Transcodìfica %1$d%%</string>
 </resources>

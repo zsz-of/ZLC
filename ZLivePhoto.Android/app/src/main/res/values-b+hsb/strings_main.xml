@@ -177,4 +177,6 @@
     <string name="main_export_source_dir_unavailable">Žórłowy zapis njesteji k dispoziciji: %1$s</string>
     <string name="main_export_replace_failed">Wuměna žórłoweje dataje zwrěšćiła: %1$s</string>
     <string name="main_export_replace_failed_bare">Wuměna žórłoweje dataje zwrěšćiła</string>
+    <string name="main_status_read_failed">Wubrana dataja njeda so čitać</string>
+    <string name="main_status_source_missing">Žórłowa dataja njeeksistuje abo njeda so čitać</string>
 </resources>

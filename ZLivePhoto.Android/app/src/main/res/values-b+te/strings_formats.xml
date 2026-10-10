@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">తోడు వీడియో ఫైల్ లేదు: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG బాడీని విశ్లేషించడం విఫలమైంది</string>
     <string name="fmt_err_vivo_companion_invalid">తోడు MP4 చెల్లదు (ftyp బాక్స్ లేదు)</string>
+    <string name="fmt_log_apple_heic_no_pair">కవర్ HEIC: జత గుర్తింపు ప్రస్తుతం వ్రాయబడదు (HEIC యొక్క EXIF, Exif itemలో ఉంటుంది; విడిగా అమలు చేయాలి), MOV వైపు మాత్రమే ContentIdentifier వ్రాయబడుతుంది</string>
+    <string name="fmt_log_apple_still_found">Apple స్థిర ఫ్రేమ్ సమయం %1$d ms విశ్లేషించబడింది (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple స్థిర ఫ్రేమ్ సమయం విశ్లేషించబడలేదు (mebx/elst ఖాళీ edit లేదు); ఎగుమతి సమయంలో వీడియో మధ్య బిందువు వాడబడుతుంది</string>
+    <string name="fmt_log_apple_still_no_carrier">స్థిర ఫ్రేమ్ సమయం %1$d msకు ప్రస్తుతం వాహకం లేదు: నిజమైన Apple, mebx timed metadata ట్రాక్‌ను వాడుతుంది; ఈ సాధనం ప్రస్తుతం సంయోజించదు (MOV యొక్క still-image-time -1 వ్రాయబడుతుంది)</string>
+    <string name="fmt_log_apple_write">Apple ఫార్మాట్ వ్రాయబడింది: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">సంగ్రహణ అవుట్‌పుట్: %1$s (ఫోటో %2$dB, HDR=%3$s) + %4$s (వీడియో %5$dB)</string>
+    <string name="fmt_log_google_write">Google ఫార్మాట్ వ్రాయబడింది: %1$s (చిత్రం %2$dB + వీడియో %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor ఫార్మాట్ వ్రాయబడింది: %1$s (చిత్రం %2$dB + వీడియో %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex సంయోజనం విఫలమైంది, దాటవేయబడింది (ప్లేబ్యాక్‌కు భంగం లేదు): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) సంయోజించి moovలో చేర్చబడింది</string>
+    <string name="fmt_log_meizu_write">Meizu ఫార్మాట్ వ్రాయబడింది: %1$s (చిత్రం %2$dB + వీడియో %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia ఫార్మాట్ వ్రాయబడింది: %1$s (JPEG %2$dB + ప్యాడింగ్ 1B + వీడియో %3$dB + తోక %4$dB, UserCommentలో "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO ఫార్మాట్ వ్రాయబడింది: %1$s (చిత్రం %2$dB + వీడియో %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photoగా విశ్లేషించబడుతోంది</string>
+    <string name="fmt_log_parse_google">Google Motion Photoగా విశ్లేషించబడుతోంది</string>
+    <string name="fmt_log_parse_honor">Honor Live Photoగా విశ్లేషించబడుతోంది (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu Live Photoగా విశ్లేషించబడుతోంది</string>
+    <string name="fmt_log_parse_nubia">Nubia Live Photoగా విశ్లేషించబడుతోంది (nubiaVpfile తోక)</string>
+    <string name="fmt_log_parse_oppo">OPPO Live Photoగా విశ్లేషించబడుతోంది</string>
+    <string name="fmt_log_parse_vivo">vivo రెండు-ఫైల్ Live Photoగా విశ్లేషించబడుతోంది</string>
+    <string name="fmt_log_parse_vivo_single">vivo ఒక్క-ఫైల్ Live Photoగా విశ్లేషించబడుతోంది</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi Live Photoగా విశ్లేషించబడుతోంది (Google అనుకూలం)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG మరియు MP4 యొక్క livephoto ID సరిపోలలేదు: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo ఒక్క-ఫైల్ Live Photo వ్రాయబడింది: %1$s (చిత్రం %2$dB + వీడియో %3$dB (vivoMediaEStream + lpex తో) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo ఫార్మాట్ వ్రాయబడింది: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi ఫార్మాట్ వ్రాయబడింది: %1$s (చిత్రం %2$dB + వీడియో %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">సంగ్రహించు</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

@@ -72,4 +72,11 @@
     <string name="screen_date_yesterday">Güstern</string>
     <string name="screen_date_this_year">%2$d.%1$d</string>
     <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+    <string name="screen_album_unnamed">Ahn Naam</string>
+    <string name="screen_eta_minutes">%1$d min %2$s s</string>
+    <string name="screen_eta_seconds">%1$d s</string>
+    <string name="screen_transcode_eta">Üm un bi %1$s övern</string>
+    <string name="screen_transcode_frames">%1$d/%2$d Biller</string>
+    <string name="screen_transcode_in_progress">Transkodeert · %1$d Biller verarbeit</string>
+    <string name="screen_transcode_progress">Transkodeert %1$d%%</string>
 </resources>

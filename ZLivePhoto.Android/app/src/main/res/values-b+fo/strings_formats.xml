@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">Fylgjandi videofíla manglar: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Eydnaðist ikki at greina JPG-innihaldið</string>
     <string name="fmt_err_vivo_companion_invalid">Fylgjandi MP4 er ógildugt (ftyp-box manglar)</string>
+    <string name="fmt_log_apple_heic_no_pair">Forsíðan er HEIC: onki paringarmerki verður skrivað enn (EXIF í HEIC liggur í Exif item og krevur eina serstaka útgerð); ContentIdentifier verður bert skrivað á MOV-síðuna</string>
+    <string name="fmt_log_apple_still_found">Apple stillmyndarstund %1$d ms funnin (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Ongin Apple stillmyndarstund funnin (ongin tóm mebx/elst-edit); við útskriving verður miðjan í videoinum brúkt sum trygd</string>
+    <string name="fmt_log_apple_still_no_carrier">Stillmyndarstundin %1$d ms hevur enn ongan berara: verulig Apple-tæki brúka eitt mebx timed metadata-spór, sum hetta verkfærið enn ikki setur saman (MOV still-image-time verður skrivað sum -1)</string>
+    <string name="fmt_log_apple_write">Apple-format skrivað: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Útleggingarúrslit: %1$s (mynd %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Google-format skrivað: %1$s (mynd %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor-format skrivað: %1$s (mynd %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex-samsetanin miseydnaðist og verður slept (hevur ikki ávirkan á avspæling): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) varð sett saman og lagt inn í moov</string>
+    <string name="fmt_log_meizu_write">Meizu-format skrivað: %1$s (mynd %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia-format skrivað: %1$s (JPEG %2$dB + fylling 1B + video %3$dB + trailer %4$dB, UserComment inniheldur "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO-format skrivað: %1$s (mynd %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Greitt sum Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Greitt sum Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Greitt sum Honor-livandi mynd (MP4 large size + uuid EIS-matrisa)</string>
+    <string name="fmt_log_parse_meizu">Greitt sum Meizu-livandi mynd</string>
+    <string name="fmt_log_parse_nubia">Greitt sum Nubia-livandi mynd (nubiaVpfile-trailer)</string>
+    <string name="fmt_log_parse_oppo">Greitt sum OPPO-livandi mynd</string>
+    <string name="fmt_log_parse_vivo">Greitt sum vivo-livandi mynd við tveimum fílum</string>
+    <string name="fmt_log_parse_vivo_single">Greitt sum vivo-livandi mynd við eini fílu</string>
+    <string name="fmt_log_parse_xiaomi">Greitt sum Xiaomi-livandi mynd (Google-samsvarandi)</string>
+    <string name="fmt_log_vivo_id_mismatch">livephoto-ID fyri JPG og MP4 samsvarar ikki: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo-livandi mynd við eini fílu skrivað: %1$s (mynd %2$dB + video %3$dB (við vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo-format skrivað: %1$s.jpg + %1$s.mp4 (livephoto-ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi-format skrivað: %1$s (mynd %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Útlegging</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

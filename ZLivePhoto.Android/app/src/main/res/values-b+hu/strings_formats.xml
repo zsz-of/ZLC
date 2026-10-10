@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">Hiányzik a kísérő videófájl: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">A JPG törzsének elemzése sikertelen</string>
     <string name="fmt_err_vivo_companion_invalid">A kísérő MP4 érvénytelen (hiányzó ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">A borító HEIC: a párosítási jelölőt egyelőre nem írjuk ki (a HEIC EXIF-je Exif-elemben van, ezt külön kell megvalósítani), a ContentIdentifier csak a MOV oldalon íródik ki</string>
+    <string name="fmt_log_apple_still_found">Apple állókép-időpont beolvasva: %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Nem sikerült beolvasni az Apple állókép-időpontot (nincs üres mebx/elst edit), exportáláskor a videó közepe lesz a tartalék</string>
+    <string name="fmt_log_apple_still_no_carrier">A(z) %1$d ms állókép-időpontnak egyelőre nincs hordozója: az igazi Apple mebx timed metadata sávot használ, ez az eszköz egyelőre nem hozza létre (a MOV still-image-time értéke -1)</string>
+    <string name="fmt_log_apple_write">Apple formátum kiírása: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Kibontási kimenet: %1$s (fotó %2$dB, HDR=%3$s) + %4$s (videó %5$dB)</string>
+    <string name="fmt_log_google_write">Google formátum kiírása: %1$s (kép %2$dB + videó %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor formátum kiírása: %1$s (kép %2$dB + videó %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Az lpex összeállítása nem sikerült, kihagyjuk (a lejátszást nem érinti): %1$s</string>
+    <string name="fmt_log_lpex_ok">Az lpex box (LivePhotoExtension) elkészült és bekerült a moov-ba</string>
+    <string name="fmt_log_meizu_write">Meizu formátum kiírása: %1$s (kép %2$dB + videó %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia formátum kiírása: %1$s (JPEG %2$dB + 1B kitöltés + videó %3$dB + trailer %4$dB, a UserComment tartalmazza: "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO formátum kiírása: %1$s (kép %2$dB + videó %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Értelmezés Apple Live Photo-ként</string>
+    <string name="fmt_log_parse_google">Értelmezés Google Motion Photo-ként</string>
+    <string name="fmt_log_parse_honor">Értelmezés Honor Live Photo-ként (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Értelmezés Meizu Live Photo-ként</string>
+    <string name="fmt_log_parse_nubia">Értelmezés Nubia Live Photo-ként (nubiaVpfile trailer)</string>
+    <string name="fmt_log_parse_oppo">Értelmezés OPPO Live Photo-ként</string>
+    <string name="fmt_log_parse_vivo">Értelmezés kétfájlos vivo Live Photo-ként</string>
+    <string name="fmt_log_parse_vivo_single">Értelmezés egyfájlos vivo Live Photo-ként</string>
+    <string name="fmt_log_parse_xiaomi">Értelmezés Xiaomi Live Photo-ként (Google-kompatibilis)</string>
+    <string name="fmt_log_vivo_id_mismatch">A JPG és az MP4 livephoto ID-ja eltér: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Egyfájlos vivo Live Photo kiírása: %1$s (kép %2$dB + videó %3$dB (vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo formátum kiírása: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi formátum kiírása: %1$s (kép %2$dB + videó %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Kibontás</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

@@ -105,5 +105,11 @@
     <string name="settings_crf_hint">Väiksem väärtus tähendab kõrgemat kvaliteeti ja suuremat faili (vaikeväärtus 18)</string>
     <string name="settings_encoder_title">Kooder</string>
     <string name="settings_compress_preset_title">Tihenduse eelseade</string>
-
+    <string name="settings_preset_amber">Merevaik</string>
+    <string name="settings_preset_forest">Metsaroheline</string>
+    <string name="settings_preset_ocean">Ookeanisinine</string>
+    <string name="settings_preset_olive">Oliiv</string>
+    <string name="settings_preset_sunset">Loojanguoranž</string>
+    <string name="settings_preset_teal">Rohekassinine</string>
+    <string name="settings_preset_violet">Violetne</string>
 </resources>

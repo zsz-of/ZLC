@@ -148,4 +148,6 @@
     <string name="main_export_source_dir_unavailable">Thư mục tệp nguồn không khả dụng: %1$s</string>
     <string name="main_export_replace_failed">Thay thế tệp nguồn thất bại: %1$s</string>
     <string name="main_export_replace_failed_bare">Thay thế tệp nguồn thất bại</string>
+    <string name="main_status_read_failed">Không thể đọc tệp đã chọn</string>
+    <string name="main_status_source_missing">Tệp nguồn không tồn tại hoặc không đọc được</string>
 </resources>

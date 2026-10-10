@@ -2,6 +2,7 @@ package com.zsz.zlivephoto.core.formats
 
 import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.BinaryUtils
+import com.zsz.zlivephoto.core.CoreText
 import com.zsz.zlivephoto.core.ExifUtil
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
@@ -87,7 +88,7 @@ internal class XiaomiPlugin : FormatPlugin() {
     }
 
     override fun read(path: String, log: (String, String, String) -> Unit): LivePhotoAsset {
-        log("info", "按小米动态照片解析（Google 兼容）", "小米")
+        log("info", CoreText.of(R.string.fmt_log_parse_xiaomi), CoreText.of(R.string.fmt_tag_xiaomi))
         return EmbeddedReader.readEmbedded(path, name, log)
     }
 
@@ -114,8 +115,8 @@ internal class XiaomiPlugin : FormatPlugin() {
 
         val outPath = File(outDir, "$stem.jpg").path
         writeBytes(outPath, output)
-        log("info", "写出小米格式：${File(outPath).name}" +
-            "（图像 ${primary.size}B + 视频 ${video.size}B，EXIF 0x8897=1）", "小米")
+        log("info", CoreText.of(R.string.fmt_log_xiaomi_write, File(outPath).name, primary.size, video.size),
+            CoreText.of(R.string.fmt_tag_xiaomi))
         return mutableListOf(outPath)
     }
 }

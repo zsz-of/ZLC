@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">It byhearrende fideobestân mist: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Koe de JPG-ynhâld net ferwurkje</string>
     <string name="fmt_err_vivo_companion_invalid">Byhearrende MP4 is unjildich (ftyp-fak mist)</string>
+    <string name="fmt_log_apple_heic_no_pair">De omslach is HEIC: de pearkaarting wurdt foarearst net skreaun (HEIC bewarret EXIF yn in Exif-item, dat apart wêze moat); ContentIdentifier wurdt allinnich oan de MOV-kant skreaun</string>
+    <string name="fmt_log_apple_still_found">Apple-stilbyldtiid %1$d ms lêzen (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Gjin Apple-stilbyldtiid lêzen (gjin lege mebx/elst-edit); by útfier wurdt it midden fan de fideo as fallback brûkt</string>
+    <string name="fmt_log_apple_still_no_carrier">Foar de stilbyldtiid %1$d ms is der noch gjin drager: echte Apple brûkt in mebx timed-metadata-spoar, dat dit helpmiddel foarearst net syntetisearret (still-image-time wurdt yn de MOV as -1 skreaun)</string>
+    <string name="fmt_log_apple_write">Apple-formaat wurdt skreaun: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Útpakútfier: %1$s (foto %2$dB, HDR=%3$s) + %4$s (fideo %5$dB)</string>
+    <string name="fmt_log_google_write">Google-formaat wurdt skreaun: %1$s (ôfbylding %2$dB + fideo %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor-formaat wurdt skreaun: %1$s (ôfbylding %2$dB + fideo %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex-synteze mislearre, wurdt oerslein (hat gjin ynfloed op it ôfspyljen): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex-box (LivePhotoExtension) gearstald en yn moov ynfoege</string>
+    <string name="fmt_log_meizu_write">Meizu-formaat wurdt skreaun: %1$s (ôfbylding %2$dB + fideo %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia-formaat wurdt skreaun: %1$s (JPEG %2$dB + 1B opfoljen + fideo %3$dB + trailer %4$dB, UserComment befettet "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO-formaat wurdt skreaun: %1$s (ôfbylding %2$dB + fideo %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Wurdt lêzen as Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Wurdt lêzen as Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Wurdt lêzen as Honor Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Wurdt lêzen as Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">Wurdt lêzen as Nubia Live Photo (nubiaVpfile-trailer)</string>
+    <string name="fmt_log_parse_oppo">Wurdt lêzen as OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">Wurdt lêzen as vivo Live Photo mei twa bestannen</string>
+    <string name="fmt_log_parse_vivo_single">Wurdt lêzen as vivo Live Photo mei ien bestân</string>
+    <string name="fmt_log_parse_xiaomi">Wurdt lêzen as Xiaomi Live Photo (Google-kompatibel)</string>
+    <string name="fmt_log_vivo_id_mismatch">De livephoto-ID fan de JPG en de MP4 komme net oerien: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo Live Photo mei ien bestân wurdt skreaun: %1$s (ôfbylding %2$dB + fideo %3$dB (mei vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo-formaat wurdt skreaun: %1$s.jpg + %1$s.mp4 (livephoto-ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi-formaat wurdt skreaun: %1$s (ôfbylding %2$dB + fideo %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Útpakke</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

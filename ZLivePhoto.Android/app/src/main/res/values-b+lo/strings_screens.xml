@@ -76,4 +76,11 @@
     <string name="screen_date_yesterday">ມື້ວານນີ້</string>
     <string name="screen_date_this_year">%2$d/%1$d</string>
     <string name="screen_date_other_year">%2$d/%1$d/%3$d</string>
+    <string name="screen_album_unnamed">ບໍ່ມີຊື່</string>
+    <string name="screen_eta_minutes">%1$d ນາທີ %2$s ວິນາທີ</string>
+    <string name="screen_eta_seconds">%1$d ວິນາທີ</string>
+    <string name="screen_transcode_eta">ເວລາທີ່ຍັງເຫຼືອ %1$s</string>
+    <string name="screen_transcode_frames">%1$d/%2$d ເຟຣມ</string>
+    <string name="screen_transcode_in_progress">ກຳລັງແປງລະຫັດ · ດຳເນີນການແລ້ວ %1$d ເຟຣມ</string>
+    <string name="screen_transcode_progress">ແປງລະຫັດ %1$d%%</string>
 </resources>

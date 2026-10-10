@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Колкото по-малка е стойността, толкова по-високо е качеството и по-голям обемът (по подразбиране 18)</string>
     <string name="settings_encoder_title">Енкодер</string>
     <string name="settings_compress_preset_title">Профил за компресия</string>
-
+    <string name="settings_preset_amber">Кехлибарена</string>
+    <string name="settings_preset_forest">Горска зелена</string>
+    <string name="settings_preset_ocean">Океанско синя</string>
+    <string name="settings_preset_olive">Маслинена</string>
+    <string name="settings_preset_sunset">Оранжев залез</string>
+    <string name="settings_preset_teal">Тюркоазена</string>
+    <string name="settings_preset_violet">Виолетова</string>
 </resources>

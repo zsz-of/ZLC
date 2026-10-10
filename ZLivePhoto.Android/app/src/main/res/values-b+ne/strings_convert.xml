@@ -81,5 +81,29 @@
     <string name="conv_reminder_dont_remind">फेरि नदेखाउनुहोस्</string>
     <string name="conv_reminder_confirm_ok">थाहा भयो</string>
     <string name="conv_reminder_uninstall">अनइन्स्टल गर्नुहोस्</string>
-
+    <string name="conv_err_exif_bad_endian">TIFF बाइट क्रम मार्कर अवैध छ</string>
+    <string name="conv_err_exif_inline_type">इनलाइन प्रकार समर्थित छैन %1$d</string>
+    <string name="conv_err_exif_type">TIFF प्रकार समर्थित छैन %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI भेटिएन (फाइल बिग्रिएको हुन सक्छ)</string>
+    <string name="conv_err_jpeg_no_soi">मान्य JPEG होइन (SOI छैन)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG मा SOS खण्ड छैन</string>
+    <string name="conv_err_jpeg_seg_boundary">खण्ड सीमा मिलेन @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">खण्ड लम्बाइ अवैध @%1$d</string>
+    <string name="conv_err_json_type">JSON मान प्रकार समर्थित छैन: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box को आकार अवैध छ</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box छैन</string>
+    <string name="conv_err_mp4_no_moov">MP4 मा moov box छैन</string>
+    <string name="conv_log_sanitize_dropped_prefix">अतिरिक्त ट्र्याक हटाइयो (%1$s)</string>
+    <string name="conv_log_sanitize_exception">अतिरिक्त ट्र्याक सफा गर्न सकिएन (%1$s), जस्तो छ त्यस्तै निर्यात गरियो</string>
+    <string name="conv_log_sanitize_no_video_track">इनपुट भिडियोमा प्रयोगयोग्य भिडियो ट्र्याक छैन, अतिरिक्त ट्र्याक सफा गर्न छोडियो</string>
+    <string name="conv_log_sanitize_normalized">कन्टेनर ब्रान्ड बाइट तहमा सामान्यीकृत गरियो (जिरो-कपी, नमुना डेटा अपरिवर्तित)</string>
+    <string name="conv_log_sanitize_track_add_failed">भिडियो ट्र्याक पुनः प्याकरमा थप्न सकिएन (%1$s), अतिरिक्त ट्र्याक सफा गर्न छोडियो</string>
+    <string name="conv_reason_10bit_h265">भिडियो %1$dbit H.265 (HDR लाइभ) हो, केही यन्त्रको ग्यालरीले डिकोड गर्न सक्दैन</string>
+    <string name="conv_reason_audio_not_aac">अडियो ट्र्याक इन्कोडिङ %1$s हो, AAC होइन (लाइभ फोटो मापदण्डले AAC चाहन्छ, Apple सामान्यतया PCM राख्छ)</string>
+    <string name="conv_reason_codec_unsupported">भिडियो इन्कोडिङ %1$s हो, जुन Android मा सामान्य H.264/H.265 होइन</string>
+    <string name="conv_reason_dolby_vision">भिडियो Dolby Vision हो, जुन Android ग्यालरीले सामान्यतया समर्थन गर्दैनन्</string>
+    <string name="conv_reason_hdr">भिडियो HDR हो (%1$s स्थानान्तरण विशेषता), केही यन्त्रको ग्यालरीमा तस्बिर विकृत वा स्क्रिन कालो देखिन्छ</string>
+    <string name="conv_reason_hev1">H.265 लाई hev1 का रूपमा चिन्हित गरिएको छ (केही यन्त्रले hvc1 मात्र मान्छन्)</string>
+    <string name="conv_reason_mirror_matrix">भिडियोमा दर्पण रूपान्तरण म्याट्रिक्स छ (MP4 रोटेसन म्याट्रिक्सले दर्पण व्यक्त गर्न सक्दैन)</string>
+    <string name="conv_tag_sanitize">सफा</string>
 </resources>

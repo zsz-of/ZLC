@@ -144,4 +144,6 @@
     <string name="main_export_source_dir_unavailable">स्रोत फ़ाइल फ़ोल्डर उपलब्ध नहीं: %1$s</string>
     <string name="main_export_replace_failed">स्रोत फ़ाइल रिप्लेस करना विफल: %1$s</string>
     <string name="main_export_replace_failed_bare">स्रोत फ़ाइल रिप्लेस करना विफल</string>
+    <string name="main_status_read_failed">चुना गया फ़ाइल पढ़ा नहीं जा सका</string>
+    <string name="main_status_source_missing">स्रोत फ़ाइल मौजूद नहीं है या पढ़ी नहीं जा सकती</string>
 </resources>

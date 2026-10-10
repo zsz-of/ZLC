@@ -77,5 +77,29 @@
     <string name="conv_reminder_dont_remind">Daugiau nerodyti</string>
     <string name="conv_reminder_confirm_ok">Supratau</string>
     <string name="conv_reminder_uninstall">Pašalinti</string>
-
+    <string name="conv_err_exif_bad_endian">Netinkamas TIFF baitų eilės žymeklis</string>
+    <string name="conv_err_exif_inline_type">Nepalaikomas inline tipas %1$d</string>
+    <string name="conv_err_exif_type">Nepalaikomas TIFF tipas %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI nerastas (failas gali būti sugadintas)</string>
+    <string name="conv_err_jpeg_no_soi">Netinkamas JPEG (trūksta SOI)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG trūksta SOS segmento</string>
+    <string name="conv_err_jpeg_seg_boundary">Segmento riba pasislinkusi ties %1$d</string>
+    <string name="conv_err_jpeg_seg_length">Netinkamas segmento ilgis ties %1$d</string>
+    <string name="conv_err_json_type">Nepalaikomas JSON reikšmės tipas: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Netinkamas ftyp box dydis</string>
+    <string name="conv_err_mp4_no_ftyp">Trūksta ftyp box</string>
+    <string name="conv_err_mp4_no_moov">MP4 trūksta moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Pašalinti papildomi takeliai (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Papildomų takelių valymas nepavyko (%1$s), išvestis palikta tokia, kokia yra</string>
+    <string name="conv_log_sanitize_no_video_track">Įvesties vaizdo įrašas neturi tinkamo vaizdo takelio, papildomų takelių valymas praleistas</string>
+    <string name="conv_log_sanitize_normalized">Konteinerio prekės ženklas normalizuotas baitų lygiu (nulinė kopija, pavyzdžio duomenys nepakeisti)</string>
+    <string name="conv_log_sanitize_track_add_failed">Vaizdo takelio nepavyko pridėti prie perpakavimo įrankio (%1$s), papildomų takelių valymas praleistas</string>
+    <string name="conv_reason_10bit_h265">Vaizdo įrašas yra %1$d bitų H.265 (HDR Live Photo), kai kurių modelių galerijos jo neatkoduoja</string>
+    <string name="conv_reason_audio_not_aac">Garso takelio kodavimas %1$s nėra AAC (Motion Photo specifikacija reikalauja AAC, Apple dažnai naudoja PCM)</string>
+    <string name="conv_reason_codec_unsupported">Vaizdo kodavimas %1$s nėra Android platformoje įprastas H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Vaizdo įrašas yra Dolby Vision, kurio Android galerijos paprastai nepalaiko</string>
+    <string name="conv_reason_hdr">Vaizdo įrašas yra HDR (%1$s perdavimo charakteristika), kai kurių modelių galerijos rodo artefaktus arba juodą ekraną</string>
+    <string name="conv_reason_hev1">H.265 pažymėtas kaip hev1 (kai kurie modeliai pripažįsta tik hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Vaizdo įrašas turi veidrodžio transformacijos matricą (MP4 sukimosi matrica negali išreikšti veidrodinio atspindžio)</string>
+    <string name="conv_tag_sanitize">Valymas</string>
 </resources>

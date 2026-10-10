@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Prus minore su balore, prus manna sa calidade e sa mannària (predefinidu 18)</string>
     <string name="settings_encoder_title">Codificadore</string>
     <string name="settings_compress_preset_title">Predefinidu de cumpressione</string>
-
+    <string name="settings_preset_amber">Àmbara</string>
+    <string name="settings_preset_forest">Birde de padente</string>
+    <string name="settings_preset_ocean">Bia de mare</string>
+    <string name="settings_preset_olive">Oliva</string>
+    <string name="settings_preset_sunset">Aranzu de acabu</string>
+    <string name="settings_preset_teal">Birde de abba</string>
+    <string name="settings_preset_violet">Viola</string>
 </resources>

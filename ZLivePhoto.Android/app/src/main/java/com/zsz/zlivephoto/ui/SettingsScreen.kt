@@ -283,7 +283,7 @@ private fun SettingsMainContent(
                         stringResource(
                             R.string.settings_preset_current,
                             if (customActive) stringResource(R.string.settings_custom)
-                            else presetNames[AppSettings.presetColor]
+                            else stringResource(presetNameRes[AppSettings.presetColor])
                         )
                     } else {
                         stringResource(R.string.settings_preset_disabled_hint)
@@ -1423,7 +1423,7 @@ private fun PresetColorDot(
                 if (selected) {
                     Icon(
                         Icons.Default.Check,
-                        contentDescription = presetNames[index],
+                        contentDescription = stringResource(presetNameRes[index]),
                         tint = Color.White,
                         modifier = Modifier.size(16.dp)
                     )
@@ -1432,7 +1432,7 @@ private fun PresetColorDot(
         }
         Spacer(Modifier.height(4.dp))
         Text(
-            presetNames[index],
+            stringResource(presetNameRes[index]),
             style = MaterialTheme.typography.labelSmall,
             color = if (selected) MaterialTheme.colorScheme.primary
                     else MaterialTheme.colorScheme.onSurfaceVariant

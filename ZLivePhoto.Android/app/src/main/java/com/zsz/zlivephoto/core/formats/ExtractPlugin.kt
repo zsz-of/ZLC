@@ -49,8 +49,14 @@ internal class ExtractPlugin : FormatPlugin() {
         val videoPath = File(outDir, "$stem.mp4").path
         writeBytes(videoPath, asset.videoMp4)
 
-        log("info", "拆解输出：$stem.$photoExt（照片 ${photo.size}B，HDR=${asset.gainmapJpeg != null}）+ " +
-            "$stem.mp4（视频 ${asset.videoMp4.size}B）", "拆解")
+        log(
+            "info",
+            CoreText.of(
+                R.string.fmt_log_extract_write,
+                "$stem.$photoExt", photo.size, asset.gainmapJpeg != null, "$stem.mp4", asset.videoMp4.size
+            ),
+            CoreText.of(R.string.fmt_tag_extract)
+        )
         return mutableListOf(photoPath, videoPath)
     }
 }

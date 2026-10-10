@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">Ifolda yefayela lomthombo alitholakali: %1$s</string>
     <string name="main_export_replace_failed">Ukubuyisela ifayela lomthombo kwehlulekile: %1$s</string>
     <string name="main_export_replace_failed_bare">Ukubuyisela ifayela lomthombo kwehlulekile</string>
+    <string name="main_status_read_failed">Ayikwazi ukufunda ifayela elikhethiwe</string>
+    <string name="main_status_source_missing">Ifayela lomthombo alikho noma alifundeki</string>
 </resources>

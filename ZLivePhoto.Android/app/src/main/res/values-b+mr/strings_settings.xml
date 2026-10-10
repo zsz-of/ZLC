@@ -95,5 +95,11 @@
     <string name="settings_crf_hint">लहान मूल्य = जास्त गुणवत्ता आणि मोठा आकार (डीफॉल्ट 18)</string>
     <string name="settings_encoder_title">एन्कोडर</string>
     <string name="settings_compress_preset_title">संकुचन प्रोफाइल</string>
-
+    <string name="settings_preset_amber">अंबर</string>
+    <string name="settings_preset_forest">वनहिरवा</string>
+    <string name="settings_preset_ocean">सागरी निळा</string>
+    <string name="settings_preset_olive">ऑलिव्ह</string>
+    <string name="settings_preset_sunset">सूर्यास्त नारिंगी</string>
+    <string name="settings_preset_teal">टील</string>
+    <string name="settings_preset_violet">जांभळा</string>
 </resources>

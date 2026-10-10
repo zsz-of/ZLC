@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Mai pichon es lo valor, mai nauta es la qualitat e mai granda la talha (defaut 18)</string>
     <string name="settings_encoder_title">Encodaire</string>
     <string name="settings_compress_preset_title">Perfil de compression</string>
-
+    <string name="settings_preset_amber">Ambre</string>
+    <string name="settings_preset_forest">Verd bòsc</string>
+    <string name="settings_preset_ocean">Blau ocean</string>
+    <string name="settings_preset_olive">Oliva</string>
+    <string name="settings_preset_sunset">Irange soleu colcant</string>
+    <string name="settings_preset_teal">Blau canard</string>
+    <string name="settings_preset_violet">Violet</string>
 </resources>

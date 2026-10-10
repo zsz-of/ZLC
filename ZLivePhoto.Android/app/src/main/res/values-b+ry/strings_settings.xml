@@ -78,4 +78,11 @@
     <string name="settings_crf_hint">Чім менше число, тім лїпша якость і бівшый розмір (стандартно 18)</string>
     <string name="settings_encoder_title">Кодер</string>
     <string name="settings_compress_preset_title">Профіль компресії</string>
+    <string name="settings_preset_amber">Бурштын</string>
+    <string name="settings_preset_forest">Лїсна зелена</string>
+    <string name="settings_preset_ocean">Океанова синя</string>
+    <string name="settings_preset_olive">Оливкова</string>
+    <string name="settings_preset_sunset">Запад сонця оранжова</string>
+    <string name="settings_preset_teal">Морска зелена</string>
+    <string name="settings_preset_violet">Фіялкова</string>
 </resources>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-  khb（傣泐 / 新傣仂文）为低资源语种：暂无可靠的新傣仂文词表，为避免臆造民族语言文字，
-  本文件正文沿用简体中文基准（即本应用对 khb 的兜底文案）；key 与元素类型与基准完全一致。
-  欢迎母语者逐条替换为傣泐语译文。
+    khb（傣泐 / 新傣仂文 / New Tai Lue）为低资源语种：全文已按新傣仂文逐条本地化。
+  译文为**模型辅助的 C 级尽力翻译，未经母语者审校**，可能存在不通顺或用词偏差，欢迎社区修正；
+  品牌专名与技术名词保留拉丁字形。key 与元素类型与基准完全一致。
   更新 / 下载相关文案（core/AppUpdater.kt、core/UpdateChecker.kt）。
   key 前缀 update_，一旦确定不得改名（各语言文件引用同一 key 集）。
   占位符用 %1$s / %1$d。
@@ -13,36 +13,36 @@
 <resources>
 
     <!-- ========== 蓝奏云分享页与直链解析 ========== -->
-    <string name="update_lanzou_gone">蓝奏云分享已被取消或文件不存在，请改用 GitHub 下载</string>
-    <string name="update_lanzou_gone_short">蓝奏云分享已被取消，请改用 GitHub 下载</string>
-    <string name="update_lanzou_resolve_failed">蓝奏云下载链接解析失败</string>
-    <string name="update_lanzou_need_passwd">该蓝奏云分享需要提取码，请改用 GitHub 下载（或到 Release 说明里找提取码）</string>
-    <string name="update_lanzou_wrong_passwd">蓝奏云提取码错误</string>
-    <string name="update_err_resolve_failed">解析失败</string>
+    <string name="update_lanzou_gone">ᦞᦲᧉ ᦗᦲᧃ Lanzou ᦷᦓᧆ ᦵᦏᧄᧉ ᦢᧁᧈ ᦅᦸᧉ ᦺᦝ ᦢᧁᧈ ᦙᦲ, ᦈᧅ ᦺᦋᧉ GitHub ᦷᦜᧂ ᦀᧁ</string>
+    <string name="update_lanzou_gone_short">ᦞᦲᧉ ᦗᦲᧃ Lanzou ᦷᦓᧆ ᦵᦏᧄᧉ, ᦈᧅ ᦺᦋᧉ GitHub ᦷᦜᧂ ᦀᧁ</string>
+    <string name="update_lanzou_resolve_failed">ᦷᦎᧅ ᦷᦞᧂ ᦉᦻ ᦷᦜᧂ ᦀᧁ Lanzou ᦢᧁᧈ ᦔᦲᧃ</string>
+    <string name="update_lanzou_need_passwd">ᦞᦲᧉ ᦗᦲᧃ Lanzou ᦓᦲᦰ ᦈᧅ ᦙᦲ ᦷᦂᧆ ᦀᦸᧅᧈ, ᦈᧅ ᦺᦋᧉ GitHub ᦷᦜᧂ ᦀᧁ (ᦢᧁᧈ ᦅᦸᧉ ᦠᦱ ᦷᦂᧆ ᦀᦸᧅᧈ ᦺᦓ Release)</string>
+    <string name="update_lanzou_wrong_passwd">ᦷᦂᧆ ᦀᦸᧅᧈ Lanzou ᦕᦲᧆ</string>
+    <string name="update_err_resolve_failed">ᦷᦎᧅ ᦷᦞᧂ ᦢᧁᧈ ᦔᦲᧃ</string>
     <string name="update_err_resolve_with_host">%1$s（%2$s）</string>
-    <string name="update_err_anticrawl">蓝奏云反爬校验失败</string>
-    <string name="update_err_no_frame">无法解析蓝奏云下载页（未找到下载帧）</string>
-    <string name="update_err_no_file_id">无法解析蓝奏云文件标识</string>
-    <string name="update_err_no_sign">无法解析蓝奏云签名</string>
-    <string name="update_err_ajax_request">接口请求失败</string>
-    <string name="update_err_api_request">蓝奏云接口请求失败</string>
-    <string name="update_err_empty_direct">蓝奏云返回空下载地址</string>
-    <string name="update_err_direct_expired">蓝奏云下载地址已失效，请重新获取</string>
-    <string name="update_err_http_request">请求失败（HTTP %1$d）</string>
+    <string name="update_err_anticrawl">Lanzou ᦶᦆᧄ ᦎᦸᧈ ᦆᦱᧁ ᦢᧁᧈ ᦔᦲᧃ</string>
+    <string name="update_err_no_frame">ᦷᦎᧅ ᦷᦞᧂ ᦐᦱᧉ ᦷᦜᧂ ᦀᧁ Lanzou ᦢᧁᧈ ᦺᦡᦲ (ᦢᧁᧈ ᦠᦱ frame ᦷᦜᧂ ᦀᧁ)</string>
+    <string name="update_err_no_file_id">ᦷᦎᧅ ᦷᦞᧂ ᦖᦻ ᦺᦝ Lanzou ᦢᧁᧈ ᦺᦡᦲ</string>
+    <string name="update_err_no_sign">ᦷᦎᧅ ᦷᦞᧂ ᦟᦲᧅ ᦶᦌᧃ Lanzou ᦢᧁᧈ ᦺᦡᦲ</string>
+    <string name="update_err_ajax_request">ᦠᦱ ᦉᦻ ᦢᧁᧈ ᦔᦲᧃ</string>
+    <string name="update_err_api_request">ᦠᦱ ᦉᦻ Lanzou ᦢᧁᧈ ᦔᦲᧃ</string>
+    <string name="update_err_empty_direct">Lanzou ᦗᦸ ᦉᦻ ᦷᦜᧂ ᦀᧁ ᦞᦱᧂ</string>
+    <string name="update_err_direct_expired">ᦉᦻ ᦷᦜᧂ ᦀᧁ Lanzou ᦢᧁᧈ ᦺᦋᧉ, ᦈᧅ ᦀᧁ ᦗᦸ</string>
+    <string name="update_err_http_request">ᦠᦱ ᦢᧁᧈ ᦔᦲᧃ (HTTP %1$d)</string>
 
     <!-- ========== 下载 ========== -->
-    <string name="update_err_connect">无法连接下载服务器：%1$s</string>
-    <string name="update_err_http">下载失败（HTTP %1$d）</string>
-    <string name="update_err_no_connection">无法建立下载连接</string>
-    <string name="update_err_empty">下载内容为空</string>
-    <string name="update_err_incomplete">下载不完整（已获取 %1$d / 共 %2$d 字节），请重新下载</string>
-    <string name="update_err_interrupted">下载中断：%1$s</string>
+    <string name="update_err_connect">ᦈᦸᧆᧈ ᦠᦱ server ᦷᦜᧂ ᦀᧁ ᦢᧁᧈ ᦺᦡᦲ: %1$s</string>
+    <string name="update_err_http">ᦷᦜᧂ ᦀᧁ ᦢᧁᧈ ᦔᦲᧃ (HTTP %1$d)</string>
+    <string name="update_err_no_connection">ᦈᦸᧆᧈ ᦠᦱ ᦷᦜᧂ ᦀᧁ ᦢᧁᧈ ᦺᦡᦲ</string>
+    <string name="update_err_empty">ᦷᦜᧂ ᦀᧁ ᦔᦲᧃ ᦞᦱᧂ</string>
+    <string name="update_err_incomplete">ᦷᦜᧂ ᦀᧁ ᦢᧁᧈ ᦵᦏᧄᧉ (ᦣᧇ %1$d / ᦑᧂ ᦆᦱᧁᧈ %2$d byte), ᦈᧅ ᦷᦜᧂ ᦀᧁ ᦗᦸ</string>
+    <string name="update_err_interrupted">ᦷᦜᧂ ᦀᧁ ᦷᦓᧆ: %1$s</string>
 
     <!-- ========== 安装包校验与安装 ========== -->
-    <string name="update_err_not_apk">下载到的不是有效的安装包（可能是网页或下载链接已失效），请重新下载或改用 GitHub 下载。</string>
-    <string name="update_err_apk_incomplete">安装包内容不完整，请重新下载或改用 GitHub 下载。</string>
-    <string name="update_err_apk_unparsable">安装包无法解析（可能下载不完整），请重新下载或改用 GitHub 下载。</string>
-    <string name="update_err_no_install_permission">尚未获得「安装未知应用」权限</string>
-    <string name="update_err_installer_failed">无法调起系统安装器（%1$s），请到文件管理器手动打开安装包安装</string>
+    <string name="update_err_not_apk">ᦺᦝ ᦷᦜᧂ ᦀᧁ ᦢᧁᧈ ᦔᦲᧃ ᦺᦝ ᦎᦲᧆ ᦺᦉᧈ ᦁᧃ ᦺᦋᧉ ᦺᦡᧉ (ᦋᦱᧂᧈ ᦔᦲᧃ ᦐᦱᧉ ᦞᦲᧉ ᦢᧁᧈ ᦅᦸᧉ ᦉᦻ ᦷᦜᧂ ᦀᧁ ᦢᧁᧈ ᦺᦋᧉ), ᦈᧅ ᦷᦜᧂ ᦀᧁ ᦗᦸ ᦢᧁᧈ ᦅᦸᧉ ᦺᦋᧉ GitHub.</string>
+    <string name="update_err_apk_incomplete">ᦺᦝ ᦎᦲᧆ ᦺᦉᧈ ᦢᧁᧈ ᦵᦏᧄᧉ, ᦈᧅ ᦷᦜᧂ ᦀᧁ ᦗᦸ ᦢᧁᧈ ᦅᦸᧉ ᦺᦋᧉ GitHub.</string>
+    <string name="update_err_apk_unparsable">ᦷᦎᧅ ᦷᦞᧂ ᦺᦝ ᦎᦲᧆ ᦺᦉᧈ ᦢᧁᧈ ᦺᦡᦲ (ᦋᦱᧂᧈ ᦷᦜᧂ ᦀᧁ ᦢᧁᧈ ᦵᦏᧄᧉ), ᦈᧅ ᦷᦜᧂ ᦀᧁ ᦗᦸ ᦢᧁᧈ ᦅᦸᧉ ᦺᦋᧉ GitHub.</string>
+    <string name="update_err_no_install_permission">ᦍᧂ ᦢᧁᧈ ᦺᦡᧉ ᦉᦲᧆ「ᦎᦲᧆ ᦺᦉᧈ app ᦢᧁᧈ ᦣᦴᧉ」</string>
+    <string name="update_err_installer_failed">ᦣᦲᧆ ᦵᦆᦲᧂᧈ ᦎᦲᧆ ᦺᦉᧈ ᦂᦱᧂ ᦂᦱᧂ ᦢᧁᧈ ᦺᦡᦲ (%1$s), ᦈᧅ ᦺᦔ ᦺᦓ ᦵᦆᦲᧂᧈ ᦎᦲᧆ ᦺᦉᧈ ᦙᦹ ᦵᦟᦲᧅ ᦺᦔ.</string>
 
 </resources>

@@ -80,5 +80,29 @@
     <string name="conv_reminder_dont_remind">Noli rursus monstrare</string>
     <string name="conv_reminder_confirm_ok">Intellexi</string>
     <string name="conv_reminder_uninstall">Dele</string>
-
+    <string name="conv_err_exif_bad_endian">Nota ordinis byte TIFF invalida</string>
+    <string name="conv_err_exif_inline_type">Typus inline non sustentatus %1$d</string>
+    <string name="conv_err_exif_type">Typus TIFF non sustentatus %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI non inventum (fasciculus fortasse corruptus)</string>
+    <string name="conv_err_jpeg_no_soi">JPEG invalidum (SOI deest)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG segmento SOS caret</string>
+    <string name="conv_err_jpeg_seg_boundary">Fines segmentorum non congruunt @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Longitudo segmenti invalida @%1$d</string>
+    <string name="conv_err_json_type">Typus valoris JSON non sustentatus: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Magnitudo box ftyp invalida</string>
+    <string name="conv_err_mp4_no_ftyp">Box ftyp deest</string>
+    <string name="conv_err_mp4_no_moov">MP4 box moov caret</string>
+    <string name="conv_log_sanitize_dropped_prefix">Tramites extra deletae (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Purgatio tramitum extraum defecit (%1$s); output ut erat scriptum</string>
+    <string name="conv_log_sanitize_no_video_track">Video input tramites video utibiles non habet; purgatio tramitum extraum omissa</string>
+    <string name="conv_log_sanitize_normalized">Nota continentis ad libram byte normalizata (sine copia, data exempli immutata)</string>
+    <string name="conv_log_sanitize_track_add_failed">Trax video remuxatori addi non potuit (%1$s); purgatio tramitum extraum omissa</string>
+    <string name="conv_reason_10bit_h265">Video est H.265 %1$d bit (Live Photo HDR): in quibusdam machinis album decodificare non potest</string>
+    <string name="conv_reason_audio_not_aac">Trax audio in %1$s codificata est, non in AAC (normae Live Photo AAC postulant; apud Apple saepe PCM)</string>
+    <string name="conv_reason_codec_unsupported">Codificatio video %1$s non est H.264/H.265, quod Android vulgo accipit</string>
+    <string name="conv_reason_dolby_vision">Video in Dolby Vision est: pleraque alba Android id non sustinent</string>
+    <string name="conv_reason_hdr">Video HDR est (proprietates translationis %1$s): in quibusdam machinis album vitia vel atrum ostendit</string>
+    <string name="conv_reason_hev1">H.265 ut hev1 notatum (quaedam machinae solum hvc1 agnoscunt)</string>
+    <string name="conv_reason_mirror_matrix">Video matricem transformationis specularis habet (matrice rotandi MP4 speculum exprimere non potest)</string>
+    <string name="conv_tag_sanitize">Purgatio</string>
 </resources>

@@ -2,6 +2,7 @@ package com.zsz.zlivephoto.core.formats
 
 import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.BinaryUtils
+import com.zsz.zlivephoto.core.CoreText
 import com.zsz.zlivephoto.core.FooterUtil
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
@@ -41,7 +42,7 @@ internal class VivoSinglePlugin : FormatPlugin() {
     }
 
     override fun read(path: String, log: (String, String, String) -> Unit): LivePhotoAsset {
-        log("info", "按 vivo 单文件实况解析", "vivo")
+        log("info", CoreText.of(R.string.fmt_log_parse_vivo_single), "vivo")
         return EmbeddedReader.readEmbedded(path, name, log)
     }
 
@@ -69,9 +70,9 @@ internal class VivoSinglePlugin : FormatPlugin() {
             if (BinaryUtils.indexOf(video.copyOfRange(0, searchEnd), lpexMarker) < 0) {
                 try {
                     video = Mp4Util.insertBoxIntoMoov(video, "lpex", OppoPlugin.buildLpexPayload(asset))
-                    log("info", "已合成 lpex box（LivePhotoExtension）插入 moov", "vivo")
+                    log("info", CoreText.of(R.string.fmt_log_lpex_ok), "vivo")
                 } catch (ex: Exception) {
-                    log("warning", "lpex 合成失败，跳过（不影响播放）：${ex.message}", "vivo")
+                    log("warning", CoreText.of(R.string.fmt_log_lpex_fail, ex.message), "vivo")
                 }
             }
         }
@@ -108,9 +109,8 @@ internal class VivoSinglePlugin : FormatPlugin() {
         // vivo 相册自己的合并文件不带 _MP 后缀，保持一致
         val outPath = File(outDir, "$stem.jpg").path
         writeBytes(outPath, output)
-        log("info", "写出 vivo 单文件实况：${File(outPath).name}" +
-            "（图像 ${primary.size}B + 视频 ${video.size}B（含 vivoMediaEStream + lpex）" +
-            " + trailer ${trailer.size}B）", "vivo")
+        log("info", CoreText.of(R.string.fmt_log_vivo_single_write, File(outPath).name,
+            primary.size, video.size, trailer.size), "vivo")
         return mutableListOf(outPath)
     }
 }

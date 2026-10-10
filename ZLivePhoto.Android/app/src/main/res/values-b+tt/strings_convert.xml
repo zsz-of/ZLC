@@ -81,5 +81,29 @@
     <string name="conv_reminder_dont_remind">Инде күрсәтмәү</string>
     <string name="conv_reminder_confirm_ok">Аңлашылды</string>
     <string name="conv_reminder_uninstall">Бетерү</string>
-
+    <string name="conv_err_exif_bad_endian">TIFF байт тәртибе билгесе яраксыз</string>
+    <string name="conv_err_exif_inline_type">Күтәрелмәгән inline төре %1$d</string>
+    <string name="conv_err_exif_type">Күтәрелмәгән TIFF төре %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI табылмады (файл ватылган булырга мөмкин)</string>
+    <string name="conv_err_jpeg_no_soi">Дөрес JPEG түгел (SOI юк)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG-дә SOS сегменты юк</string>
+    <string name="conv_err_jpeg_seg_boundary">Сегмент чиге туры килми @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Сегмент озынлыгы яраксыз @%1$d</string>
+    <string name="conv_err_json_type">Күтәрелмәгән JSON кыйммәт төре: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box үлчәме яраксыз</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box юк</string>
+    <string name="conv_err_mp4_no_moov">MP4-дә moov box юк</string>
+    <string name="conv_log_sanitize_dropped_prefix">Өстәмә юллар алынды (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Өстәмә юлларны чистарту уңышсыз (%1$s), ничек бар шулай чыгарылды</string>
+    <string name="conv_log_sanitize_no_video_track">Керү видеосында файдаланырлык видео юл юк, өстәмә юлларны чистарту калдырылды</string>
+    <string name="conv_log_sanitize_normalized">Контейнер бренды байт дәрәҗәсендә нормальләштерелде (нуль күчерү, үрнәк мәгълүматлары үзгәртелмәде)</string>
+    <string name="conv_log_sanitize_track_add_failed">Видео юлны яңадан төрүчегә өстәп булмады (%1$s), өстәмә юлларны чистарту калдырылды</string>
+    <string name="conv_reason_10bit_h265">Видео %1$dbit H.265 (HDR Live Photo), кайбер җайланмалар альбомы ачкычлый алмый</string>
+    <string name="conv_reason_audio_not_aac">Аудио юл кодлавы %1$s, AAC түгел (хәрәкәтле фото стандарты AAC таләп итә, Apple еш PCM куллана)</string>
+    <string name="conv_reason_codec_unsupported">Видео кодлавы %1$s, Android өчен гадәти H.264/H.265 түгел</string>
+    <string name="conv_reason_dolby_vision">Видео Dolby Vision, Android альбомнары гадәттә кулламый</string>
+    <string name="conv_reason_hdr">Видео HDR (%1$s күчерү сыйфаты), кайбер җайланмалар альбомында сурәт бозылырга яки кара экран булырга мөмкин</string>
+    <string name="conv_reason_hev1">H.265 hev1 дип билгеләнгән (кайбер җайланмалар бары тик hvc1 таный)</string>
+    <string name="conv_reason_mirror_matrix">Видеода көзге үзгәртү матрицасы бар (MP4 әйләндерү матрицасы көзгене күрсәтә алмый)</string>
+    <string name="conv_tag_sanitize">Чистарту</string>
 </resources>

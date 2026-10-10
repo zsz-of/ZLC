@@ -38,4 +38,35 @@
     <string name="fmt_err_vivo_companion_missing">Puudub kaasas olev videofail: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG põhiosa sõelumine ebaõnnestus</string>
     <string name="fmt_err_vivo_companion_invalid">Kaasas olev MP4 on kehtetu (puudub ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">Kaanepilt on HEIC: sidumismärget praegu ei kirjutata (HEIC-i EXIF asub Exif-üksuses, see tuleb eraldi realiseerida), ContentIdentifier kirjutatakse ainult MOV-poolel</string>
+    <string name="fmt_log_apple_still_found">Loeti välja Apple’i seisva kaadri aeg %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple’i seisva kaadri aega ei loetud välja (puudub tühi mebx/elst edit), eksportimisel kasutatakse video keskkohta</string>
+    <string name="fmt_log_apple_still_no_carrier">Seisva kaadri ajal %1$d ms puudub praegu kandja: ehtne Apple kasutab mebx timed metadata rada, see tööriist seda praegu ei loo (MOV-i still-image-time kirjutatakse -1)</string>
+    <string name="fmt_log_apple_write">Kirjutatakse Apple’i vorming: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Eraldamise väljund: %1$s (foto %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Kirjutatakse Googlei vorming: %1$s (pilt %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Kirjutatakse Honori vorming: %1$s (pilt %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex süntees ebaõnnestus, jäetakse vahele (taasesitust ei mõjuta): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) sünteesitud ja moov-i lisatud</string>
+    <string name="fmt_log_meizu_write">Kirjutatakse Meizu vorming: %1$s (pilt %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Kirjutatakse Nubia vorming: %1$s (JPEG %2$dB + 1B täide + video %3$dB + trailer %4$dB, UserComment sisaldab "%5$s")</string>
+    <string name="fmt_log_oppo_write">Kirjutatakse OPPO vorming: %1$s (pilt %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Parsitakse Apple Live Photo formaadis</string>
+    <string name="fmt_log_parse_google">Parsitakse Google Motion Photo formaadis</string>
+    <string name="fmt_log_parse_honor">Parsitakse Honor Live Photo formaadis (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Parsitakse Meizu Live Photo formaadis</string>
+    <string name="fmt_log_parse_nubia">Parsitakse Nubia Live Photo formaadis (nubiaVpfile trailer)</string>
+    <string name="fmt_log_parse_oppo">Parsitakse OPPO Live Photo formaadis</string>
+    <string name="fmt_log_parse_vivo">Parsitakse vivo kahe faili Live Photo formaadis</string>
+    <string name="fmt_log_parse_vivo_single">Parsitakse vivo ühe faili Live Photo formaadis</string>
+    <string name="fmt_log_parse_xiaomi">Parsitakse Xiaomi Live Photo formaadis (Google-iga ühilduv)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG ja MP4 livephoto ID ei ühti: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Kirjutatakse vivo ühe faili Live Photo: %1$s (pilt %2$dB + video %3$dB (sisaldab vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Kirjutatakse vivo vorming: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Kirjutatakse Xiaomi vorming: %1$s (pilt %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Eraldamine</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

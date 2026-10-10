@@ -82,4 +82,11 @@
     <string name="settings_crf_hint">Сан неғұрлым кіші болса, сапа жоғары, өлшем үлкен (әдепкі 18)</string>
     <string name="settings_encoder_title">Кодтаушы</string>
     <string name="settings_compress_preset_title">Сығу пресеті</string>
+    <string name="settings_preset_amber">Кәріптас</string>
+    <string name="settings_preset_forest">Орман жасыл</string>
+    <string name="settings_preset_ocean">Мұхит көк</string>
+    <string name="settings_preset_olive">Зәйтүн</string>
+    <string name="settings_preset_sunset">Күн батысы қызғылт сары</string>
+    <string name="settings_preset_teal">Көгілдір жасыл</string>
+    <string name="settings_preset_violet">Күлгін</string>
 </resources>

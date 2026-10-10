@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Thamani ndogo humaanisha ubora wa juu na faili kubwa (chaguo-msingi 18)</string>
     <string name="settings_encoder_title">Encoder</string>
     <string name="settings_compress_preset_title">Mpangilio tayari wa mbano</string>
+    <string name="settings_preset_amber">Kaharabu</string>
+    <string name="settings_preset_forest">Kijani cha Msitu</string>
+    <string name="settings_preset_ocean">Bluu ya Bahari</string>
+    <string name="settings_preset_olive">Zaituni</string>
+    <string name="settings_preset_sunset">Machungwa ya Machweo</string>
+    <string name="settings_preset_teal">Bluu ya Kijani</string>
+    <string name="settings_preset_violet">Zambarau</string>
 </resources>

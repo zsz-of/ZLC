@@ -34,4 +34,35 @@
     <string name="fmt_err_vivo_companion_missing">ペアの動画ファイルがありません：%1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG 本体の解析に失敗しました</string>
     <string name="fmt_err_vivo_companion_invalid">ペアの MP4 が無効です（ftyp box がありません）</string>
+    <string name="fmt_log_apple_heic_no_pair">カバーが HEIC のためペア識別子は書き込みません（HEIC の EXIF は Exif item 内にあり、別途実装が必要です）。MOV 側にのみ ContentIdentifier を書き込みます</string>
+    <string name="fmt_log_apple_still_found">Apple の静止画時刻 %1$d ms を解析しました（mebx/elst）</string>
+    <string name="fmt_log_apple_still_missing">Apple の静止画時刻を解析できませんでした（mebx/elst の空 edit なし）。出力時は動画の中間点で代替します</string>
+    <string name="fmt_log_apple_still_no_carrier">静止画時刻 %1$d ms の格納先がありません：実際の Apple は mebx timed metadata トラックを使用しますが、本ツールはまだ合成しません（MOV の still-image-time は -1 を書き込みます）</string>
+    <string name="fmt_log_apple_write">Apple 形式で書き出し：%1$s + %2$s（ContentIdentifier=%3$s...）</string>
+    <string name="fmt_log_extract_write">分解出力：%1$s（写真 %2$dB、HDR=%3$s）+ %4$s（動画 %5$dB）</string>
+    <string name="fmt_log_google_write">Google 形式で書き出し：%1$s（画像 %2$dB + 動画 %3$dB）</string>
+    <string name="fmt_log_honor_write">Honor 形式で書き出し：%1$s（画像 %2$dB + 動画 %3$dB + EIS %4$dB、LIVE_%5$s）</string>
+    <string name="fmt_log_lpex_fail">lpex の合成に失敗したためスキップしました（再生には影響しません）：%1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box（LivePhotoExtension）を合成して moov に挿入しました</string>
+    <string name="fmt_log_meizu_write">Meizu 形式で書き出し：%1$s（画像 %2$dB + 動画 %3$dB）</string>
+    <string name="fmt_log_nubia_write">Nubia 形式で書き出し：%1$s（JPEG %2$dB + パディング 1B + 動画 %3$dB + 末尾 %4$dB、UserComment に "%5$s" を含む）</string>
+    <string name="fmt_log_oppo_write">OPPO 形式で書き出し：%1$s（画像 %2$dB + 動画 %3$dB + trailer %4$dB）</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo として解析</string>
+    <string name="fmt_log_parse_google">Google Motion Photo として解析</string>
+    <string name="fmt_log_parse_honor">Honor のライブフォトとして解析（MP4 large size + uuid EIS matrix）</string>
+    <string name="fmt_log_parse_meizu">Meizu のライブフォトとして解析</string>
+    <string name="fmt_log_parse_nubia">Nubia のライブフォトとして解析（nubiaVpfile の末尾）</string>
+    <string name="fmt_log_parse_oppo">OPPO のライブフォトとして解析</string>
+    <string name="fmt_log_parse_vivo">vivo の 2 ファイル構成ライブフォトとして解析</string>
+    <string name="fmt_log_parse_vivo_single">vivo の単一ファイルライブフォトとして解析</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi のライブフォトとして解析（Google 互換）</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG と MP4 の livephoto ID が一致しません：%1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo 単一ファイルライブフォトを書き出し：%1$s（画像 %2$dB + 動画 %3$dB（vivoMediaEStream + lpex を含む） + trailer %4$dB）</string>
+    <string name="fmt_log_vivo_write">vivo 形式で書き出し：%1$s.jpg + %1$s.mp4（livephoto ID: %2$s）</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi 形式で書き出し：%1$s（画像 %2$dB + 動画 %3$dB、EXIF 0x8897=1）</string>
+    <string name="fmt_tag_extract">分解</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

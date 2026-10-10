@@ -144,4 +144,6 @@
     <string name="main_export_source_dir_unavailable">మూల ఫోల్డర్ అందుబాటులో లేదు: %1$s</string>
     <string name="main_export_replace_failed">మూల ఫైల్ను భర్తీ చేయడం విఫలమైంది: %1$s</string>
     <string name="main_export_replace_failed_bare">మూల ఫైల్ను భర్తీ చేయడం విఫలమైంది</string>
+    <string name="main_status_read_failed">ఎంచుకున్న ఫైల్‌ను చదవడం సాధ్యం కాలేదు</string>
+    <string name="main_status_source_missing">మూల ఫైల్ లేదు లేదా చదవలేము</string>
 </resources>

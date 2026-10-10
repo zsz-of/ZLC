@@ -82,5 +82,29 @@
     <string name="conv_reminder_dont_remind">Niet meer tonen</string>
     <string name="conv_reminder_confirm_ok">Begrepen</string>
     <string name="conv_reminder_uninstall">Verwijderen</string>
-
+    <string name="conv_err_exif_bad_endian">Ongeldige TIFF-bytevolgorde</string>
+    <string name="conv_err_exif_inline_type">Niet-ondersteund inline-type %1$d</string>
+    <string name="conv_err_exif_type">Niet-ondersteund TIFF-type %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">Geen EOI gevonden (bestand is mogelijk beschadigd)</string>
+    <string name="conv_err_jpeg_no_soi">Geen geldige JPEG (SOI ontbreekt)</string>
+    <string name="conv_err_jpeg_no_sos">De JPEG mist het SOS-segment</string>
+    <string name="conv_err_jpeg_seg_boundary">Segmentgrens verschoven bij %1$d</string>
+    <string name="conv_err_jpeg_seg_length">Ongeldige segmentlengte bij %1$d</string>
+    <string name="conv_err_json_type">Niet-ondersteund JSON-waardetype: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Ongeldige grootte van de ftyp-box</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp-box ontbreekt</string>
+    <string name="conv_err_mp4_no_moov">De MP4 mist de moov-box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Extra sporen verwijderd (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Opschonen van extra sporen mislukt (%1$s); uitvoer blijft ongewijzigd</string>
+    <string name="conv_log_sanitize_no_video_track">De invoervideo heeft geen bruikbaar videospoor; het opschonen van extra sporen wordt overgeslagen</string>
+    <string name="conv_log_sanitize_normalized">Container-brand byte voor byte genormaliseerd (zero-copy, samplegegevens ongewijzigd)</string>
+    <string name="conv_log_sanitize_track_add_failed">Het videospoor kan niet in de remuxer worden opgenomen (%1$s); het opschonen van extra sporen wordt overgeslagen</string>
+    <string name="conv_reason_10bit_h265">De video is %1$dbit H.265 (een HDR Live Photo); galerijen op sommige toestellen kunnen die niet decoderen</string>
+    <string name="conv_reason_audio_not_aac">De audiocodec %1$s is geen AAC (de Motion Photo-specificatie vereist AAC; Apple gebruikt vaak PCM)</string>
+    <string name="conv_reason_codec_unsupported">De videocodec %1$s is niet de onder Android gangbare H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">De video is Dolby Vision, wat Android-galerijen doorgaans niet ondersteunen</string>
+    <string name="conv_reason_hdr">De video is HDR (%1$s-overdrachtskarakteristiek); galerijen op sommige toestellen tonen beeldstoringen of een zwart beeld</string>
+    <string name="conv_reason_hev1">H.265 is gemarkeerd als hev1 (sommige toestellen accepteren alleen hvc1)</string>
+    <string name="conv_reason_mirror_matrix">De video heeft een spiegelmatrix (een MP4-rotatiematrix kan spiegeling niet uitdrukken)</string>
+    <string name="conv_tag_sanitize">Opschonen</string>
 </resources>

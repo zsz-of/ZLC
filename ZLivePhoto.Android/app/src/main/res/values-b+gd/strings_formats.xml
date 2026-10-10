@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">Tha am faidhle bhidio co-phàirteach a dhìth: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Cha do shoirbhich le sgrùdadh corp an JPG</string>
     <string name="fmt_err_vivo_companion_invalid">Tha am MP4 co-phàirteach mì-dhligheach (tha am bogsa ftyp a dhìth)</string>
+    <string name="fmt_log_apple_heic_no_pair">Is HEIC an còmhdach: cha tèid a\' chomharra paidhreachaidh a sgrìobhadh an-dràsta (tha EXIF HEIC ann an Exif item, feumar a chur an gnìomh air leth); cha tèid ContentIdentifier a sgrìobhadh ach air taobh an MOV</string>
+    <string name="fmt_log_apple_still_found">Chaidh àm na dealbh Apple a sgrùdadh %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Cha deach àm na dealbh Apple a sgrùdadh (gun deasachadh falamh mebx/elst); cleachdar meadhan a\' bhidio aig àm às-chuir</string>
+    <string name="fmt_log_apple_still_no_carrier">Chan eil giùlanair aig àm na dealbh %1$d ms fhathast: cleachdaidh fìor Apple trac meitea-dàta ùine mebx, nach dèan an t-inneal seo a cho-chur an-dràsta (sgrìobhar still-image-time an MOV mar -1)</string>
+    <string name="fmt_log_apple_write">A\' sgrìobhadh fòrmat Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Toradh an sgaraidh: %1$s (dealbh %2$dB, HDR=%3$s) + %4$s (bhidio %5$dB)</string>
+    <string name="fmt_log_google_write">A\' sgrìobhadh fòrmat Google: %1$s (dealbh %2$dB + bhidio %3$dB)</string>
+    <string name="fmt_log_honor_write">A\' sgrìobhadh fòrmat Honor: %1$s (dealbh %2$dB + bhidio %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Dh\'fhàillig co-chur lpex, air a leum (chan eil e a\' toirt buaidh air cluich): %1$s</string>
+    <string name="fmt_log_lpex_ok">Chaidh bogsa lpex (LivePhotoExtension) a cho-chur agus a chur a-steach do moov</string>
+    <string name="fmt_log_meizu_write">A\' sgrìobhadh fòrmat Meizu: %1$s (dealbh %2$dB + bhidio %3$dB)</string>
+    <string name="fmt_log_nubia_write">A\' sgrìobhadh fòrmat Nubia: %1$s (JPEG %2$dB + lìonadh 1B + bhidio %3$dB + trailear %4$dB, UserComment a\' toirt a-steach "%5$s")</string>
+    <string name="fmt_log_oppo_write">A\' sgrìobhadh fòrmat OPPO: %1$s (dealbh %2$dB + bhidio %3$dB + trailear %4$dB)</string>
+    <string name="fmt_log_parse_apple">Ga sgrùdadh mar Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Ga sgrùdadh mar Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Ga sgrùdadh mar Honor Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Ga sgrùdadh mar Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">Ga sgrùdadh mar Nubia Live Photo (trailear nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Ga sgrùdadh mar OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">Ga sgrùdadh mar vivo Live Photo dà fhaidhle</string>
+    <string name="fmt_log_parse_vivo_single">Ga sgrùdadh mar vivo Live Photo aon fhaidhle</string>
+    <string name="fmt_log_parse_xiaomi">Ga sgrùdadh mar Xiaomi Live Photo (co-fhreagarrach ri Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">Chan eil ID livephoto an JPG agus an MP4 a\' tighinn còmhla: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">A\' sgrìobhadh vivo Live Photo aon fhaidhle: %1$s (dealbh %2$dB + bhidio %3$dB (le vivoMediaEStream + lpex) + trailear %4$dB)</string>
+    <string name="fmt_log_vivo_write">A\' sgrìobhadh fòrmat vivo: %1$s.jpg + %1$s.mp4 (ID livephoto: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">A\' sgrìobhadh fòrmat Xiaomi: %1$s (dealbh %2$dB + bhidio %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Thoir a-mach</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

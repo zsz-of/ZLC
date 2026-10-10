@@ -154,4 +154,6 @@
     <string name="main_export_source_dir_unavailable">Төрүт билэ паапката туттуллубат: %1$s</string>
     <string name="main_export_replace_failed">Төрүт билэни солбуйуу табыллыбата: %1$s</string>
     <string name="main_export_replace_failed_bare">Төрүт билэни солбуйуу табыллыбата</string>
+    <string name="main_status_read_failed">Талыллыбыт билэни ааҕыы кыаллыбата</string>
+    <string name="main_status_source_missing">Сүрүн билэ суох эбэтэр ааҕыллыбат</string>
 </resources>

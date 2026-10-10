@@ -90,4 +90,11 @@
     <string name="screen_date_yesterday">어제</string>
     <string name="screen_date_this_year">%1$d월 %2$d일</string>
     <string name="screen_date_other_year">%1$d년 %2$d월 %3$d일</string>
+    <string name="screen_album_unnamed">이름 없음</string>
+    <string name="screen_eta_minutes">%1$d분 %2$s초</string>
+    <string name="screen_eta_seconds">%1$d초</string>
+    <string name="screen_transcode_eta">약 %1$s 남음</string>
+    <string name="screen_transcode_frames">%1$d/%2$d 프레임</string>
+    <string name="screen_transcode_in_progress">트랜스코딩 중 · %1$d 프레임 처리됨</string>
+    <string name="screen_transcode_progress">트랜스코딩 %1$d%%</string>
 </resources>

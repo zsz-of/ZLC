@@ -84,4 +84,11 @@
     <string name="settings_crf_hint">كلما صغر الرقم ارتفعت الجودة وكبر الحجم (الافتراضي 18)</string>
     <string name="settings_encoder_title">المرمّز</string>
     <string name="settings_compress_preset_title">إعدادات ضغط جاهزة</string>
+    <string name="settings_preset_amber">عنبري</string>
+    <string name="settings_preset_forest">أخضر غابي</string>
+    <string name="settings_preset_ocean">أزرق محيطي</string>
+    <string name="settings_preset_olive">زيتوني</string>
+    <string name="settings_preset_sunset">برتقالي الغروب</string>
+    <string name="settings_preset_teal">فيروزي</string>
+    <string name="settings_preset_violet">بنفسجي</string>
 </resources>

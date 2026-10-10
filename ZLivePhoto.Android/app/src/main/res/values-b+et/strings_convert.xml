@@ -80,5 +80,29 @@
     <string name="conv_reminder_dont_remind">Ära näita uuesti</string>
     <string name="conv_reminder_confirm_ok">Selge</string>
     <string name="conv_reminder_uninstall">Desinstalli</string>
-
+    <string name="conv_err_exif_bad_endian">Vigane TIFF baitide järjekorra märk</string>
+    <string name="conv_err_exif_inline_type">Toetamata inline-tüüp %1$d</string>
+    <string name="conv_err_exif_type">Toetamata TIFF-tüüp %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI-d ei leitud (fail võib olla rikkis)</string>
+    <string name="conv_err_jpeg_no_soi">Ei ole korrektne JPEG (SOI puudub)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG-l puudub SOS-segment</string>
+    <string name="conv_err_jpeg_seg_boundary">Segmendi piir nihkes kohas %1$d</string>
+    <string name="conv_err_jpeg_seg_length">Vigane segmendi pikkus kohas %1$d</string>
+    <string name="conv_err_json_type">Toetamata JSON-väärtuse tüüp: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Vigane ftyp box suurus</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box puudub</string>
+    <string name="conv_err_mp4_no_moov">MP4-l puudub moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Lisarajad eemaldatud (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Lisaradade puhastamine ebaõnnestus (%1$s), väljund jäeti muutmata</string>
+    <string name="conv_log_sanitize_no_video_track">Sisendvideo jaoks pole kasutatavat videorada, lisaradade puhastamine jäetakse vahele</string>
+    <string name="conv_log_sanitize_normalized">Konteineri bränd normaliseeriti baittasandil (nullkopeerimine, näidisandmed muutmata)</string>
+    <string name="conv_log_sanitize_track_add_failed">Videorada ei saa ümberpakendajasse lisada (%1$s), lisaradade puhastamine jäetakse vahele</string>
+    <string name="conv_reason_10bit_h265">Video on %1$d-bitine H.265 (HDR Live Photo), osade mudelite galeriid ei suuda seda dekodeerida</string>
+    <string name="conv_reason_audio_not_aac">Heliraja kodeering %1$s ei ole AAC (Motion Photo spetsifikatsioon nõuab AAC-d, Apple kasutab sageli PCM-i)</string>
+    <string name="conv_reason_codec_unsupported">Videokodeering %1$s ei ole Androidis levinud H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Video on Dolby Vision, mida Androidi galeriid üldiselt ei toeta</string>
+    <string name="conv_reason_hdr">Video on HDR (%1$s ülekandeomadus), osade mudelite galeriid näitavad artefakte või musta ekraani</string>
+    <string name="conv_reason_hev1">H.265 on märgitud kui hev1 (osad mudelid tunnistavad ainult hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Videol on peegeldusmaatriks (MP4 pöördematriks ei suuda peegeldust väljendada)</string>
+    <string name="conv_tag_sanitize">Puhastamine</string>
 </resources>

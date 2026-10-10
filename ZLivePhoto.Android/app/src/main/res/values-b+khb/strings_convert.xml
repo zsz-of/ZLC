@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-  khb（傣泐 / 新傣仂文）为低资源语种：暂无可靠的新傣仂文词表，为避免臆造民族语言文字，
-  本文件正文沿用简体中文基准（即本应用对 khb 的兜底文案）；key 与元素类型与基准完全一致。
-  欢迎母语者逐条替换为傣泐语译文。
+    khb（傣泐 / 新傣仂文 / New Tai Lue）为低资源语种：全文已按新傣仂文逐条本地化。
+  译文为**模型辅助的 C 级尽力翻译，未经母语者审校**，可能存在不通顺或用词偏差，欢迎社区修正；
+  品牌专名与技术名词保留拉丁字形。key 与元素类型与基准完全一致。
   转换 / 转码 / 提醒相关文案（core/Converter.kt、core/FfmpegAddon.kt、ui/Reminders.kt）。
   key 前缀 conv_，一旦确定不得改名（各语言文件引用同一 key 集）。
   占位符用 %1$s / %1$d；`\n` 为换行。
@@ -11,77 +11,101 @@
 <resources>
 
     <!-- ========== Converter.kt：参数与素材校验（异常 → 界面显示失败原因） ========== -->
-    <string name="conv_unknown_target">未知目标格式：%1$s</string>
-    <string name="conv_unrecognized_live_photo">无法识别的动态照片格式（非 Google/OPPO/vivo/小米/Apple 动态照片）</string>
-    <string name="conv_cover_photo_missing">封面照片不存在或为空</string>
-    <string name="conv_video_missing">视频不存在或为空</string>
-    <string name="conv_video_too_large">视频过大（%1$dMB），无法合成为动态照片，请选择更短的视频</string>
-    <string name="conv_transcoded_too_large">转码后视频过大（%1$dMB），无法合成动态照片</string>
-    <string name="conv_video_too_large_compose">视频过大（%1$dMB），无法合成动态照片</string>
+    <string name="conv_unknown_target">ᦢᧁᧈ ᦣᦴᧉ ᦘᦲᧃ ᦔᦻ: %1$s</string>
+    <string name="conv_unrecognized_live_photo">ᦢᧁᧈ ᦣᦴᧉ ᦘᦲᧃ ᦘᦱᧇ ᦋᦲᧃ (ᦢᧁᧈ ᦔᦲᧃ ᦘᦱᧇ ᦋᦲᧃ Google/OPPO/vivo/Xiaomi/Apple)</string>
+    <string name="conv_cover_photo_missing">ᦘᦱᧇ ᦠᦳᧄᧉ ᦢᧁᧈ ᦙᦲ ᦢᧁᧈ ᦅᦸᧉ ᦔᦲᧃ ᦞᦱᧂ</string>
+    <string name="conv_video_missing">video ᦢᧁᧈ ᦙᦲ ᦢᧁᧈ ᦅᦸᧉ ᦔᦲᧃ ᦞᦱᧂ</string>
+    <string name="conv_video_too_large">video ᦺᦊᧈ ᦷᦜᧂ (%1$dMB), ᦵᦣᧆ ᦔᦲᧃ ᦘᦱᧇ ᦋᦲᧃ ᦢᧁᧈ ᦺᦡᦲ, ᦈᧅ ᦵᦟᦲᧅ video ᦁᧃ ᦐᦾᧈ ᦷᦜᧂ</string>
+    <string name="conv_transcoded_too_large">video ᦕᦱᧃ ᦵᦏᧄᧉ ᦺᦊᧈ ᦷᦜᧂ (%1$dMB), ᦵᦣᧆ ᦔᦲᧃ ᦘᦱᧇ ᦋᦲᧃ ᦢᧁᧈ ᦺᦡᦲ</string>
+    <string name="conv_video_too_large_compose">video ᦺᦊᧈ ᦷᦜᧂ (%1$dMB), ᦵᦣᧆ ᦔᦲᧃ ᦘᦱᧇ ᦋᦲᧃ ᦢᧁᧈ ᦺᦡᦲ</string>
 
     <!-- Converter.kt：封面（HEIC / 非 JPEG） -->
-    <string name="conv_cover_heic_go">封面是 HEIC 图片（轻量版不支持转码，请在 iPhone 上导出为 JPEG 后再转换）</string>
-    <string name="conv_cover_invalid_heic">封面不是有效的图片（HEIC 需要系统支持 HEIF 解码）</string>
-    <string name="conv_cover_not_jpeg_go">封面不是 JPEG 图片（轻量版不支持转码，请改用 JPEG 照片）</string>
-    <string name="conv_cover_invalid_image">封面不是有效的图片（仅支持 JPEG/WebP/PNG）</string>
+    <string name="conv_cover_heic_go">ᦠᦳᧄᧉ ᦔᦲᧃ ᦘᦱᧇ HEIC (ᦆᦱᧁᧈ ᦅᦸᧂ ᦢᧁᧈ ᦣᧇ ᦕᦱᧃ, ᦈᧅ ᦀᦸᧅᧈ ᦔᦲᧃ JPEG ᦺᦓ iPhone ᦵᦙᦲᧈ ᦂᦸᧃᧈ ᦈᦹ ᦟᦲᧅ ᦅᦱᧂ)</string>
+    <string name="conv_cover_invalid_heic">ᦠᦳᧄᧉ ᦢᧁᧈ ᦔᦲᧃ ᦘᦱᧇ ᦁᧃ ᦺᦋᧉ ᦺᦡᧉ (HEIC ᦈᧅ ᦙᦲ ᦵᦆᦲᧂᧈ ᦣᧇ HEIF)</string>
+    <string name="conv_cover_not_jpeg_go">ᦠᦳᧄᧉ ᦢᧁᧈ ᦔᦲᧃ ᦘᦱᧇ JPEG (ᦆᦱᧁᧈ ᦅᦸᧂ ᦢᧁᧈ ᦣᧇ ᦕᦱᧃ, ᦈᧅ ᦺᦋᧉ ᦘᦱᧇ JPEG)</string>
+    <string name="conv_cover_invalid_image">ᦠᦳᧄᧉ ᦢᧁᧈ ᦔᦲᧃ ᦘᦱᧇ ᦁᧃ ᦺᦋᧉ ᦺᦡᧉ (ᦣᧇ ᦗᦸ JPEG/WebP/PNG)</string>
 
     <!-- Converter.kt：转码 / 重封装失败与「只换容器救不了编码」提示 -->
-    <string name="conv_reencode_failed">视频重新编码失败：%1$s</string>
-    <string name="conv_remux_failed">容器重封装失败：%1$s</string>
-    <string name="conv_codec_unknown">不是能被识别的 H.264/H.265 视频</string>
-    <string name="conv_codec_is">编码是 %1$s</string>
-    <string name="conv_hint_remux_cannot_fix">视频「%1$s」%2$s，只换容器（重封装）改变不了编码，无法合成动态照片。\n\n请在「设置 → 视频转码 → 转码方式」中改为「重新编码」，或先用其它工具把它转成 H.264/H.265 编码的 MP4。</string>
-    <string name="conv_hint_no_encoder">视频不是标准 MP4 容器（MOV / MKV / WebM / AVI 等），而当前「转码方式」不重新编码，无法合成动态照片。\n\n请在「设置 → 视频转码 → 转码方式」中改为「重新编码」（正常版本内置 ffmpeg 编码器；Go 轻量版不含转码器，请改用正常版本），或先把视频转成标准 MP4（H.264/H.265）。</string>
+    <string name="conv_reencode_failed">ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ ᦢᧁᧈ ᦔᦲᧃ: %1$s</string>
+    <string name="conv_remux_failed">ᦕᦱᧃ ᦷᦞᧂ ᦏᦳᧂ ᦢᧁᧈ ᦔᦲᧃ: %1$s</string>
+    <string name="conv_codec_unknown">ᦢᧁᧈ ᦔᦲᧃ video H.264/H.265 ᦁᧃ ᦣᦴᧉ ᦺᦡᧉ</string>
+    <string name="conv_codec_is">encode ᦔᦲᧃ %1$s</string>
+    <string name="conv_hint_remux_cannot_fix">video「%1$s」%2$s, ᦗᦲᧈ ᦟᦲᧅ ᦷᦞᧂ ᦏᦳᧂ (ᦕᦱᧃ ᦷᦞᧂ) ᦶᦎᧂᧈ encode ᦢᧁᧈ ᦺᦡᦲ, ᦵᦣᧆ ᦔᦲᧃ ᦘᦱᧇ ᦋᦲᧃ ᦢᧁᧈ ᦺᦡᦲ.\n\nᦈᧅ ᦺᦔ ᦎᦲᧆ ᦺᦉᧈ「ᦶᦎᧂᧈ ᦎᧂᧉ → ᦕᦱᧃ video → ᦞᦲᧉ ᦕᦱᧃ」ᦂᦱᧂ ᦓᦲᦰ ᦶᦎᧂᧈ ᦔᦲᧃ「ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ」, ᦢᧁᧈ ᦅᦸᧉ ᦺᦋᧉ ᦵᦆᦲᧂᧈ ᦀᦲᧃᧈ ᦕᦱᧃ ᦔᦲᧃ MP4 ᦁᧃ encode H.264/H.265 ᦵᦙᦲᧈ ᦂᦸᧃᧈ.</string>
+    <string name="conv_hint_no_encoder">video ᦢᧁᧈ ᦔᦲᧃ ᦷᦞᧂ ᦏᦳᧂ MP4 ᦁᧃ ᦅᦸᧂ (MOV / MKV / WebM / AVI ᦎᦱᧄ ᦓᦲᦰ), ᦵᦙᦲᧈ ᦓᧃᧉ 「ᦞᦲᧉ ᦕᦱᧃ」ᦂᦱᧂ ᦓᦲᦰ ᦢᧁᧈ ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ, ᦵᦣᧆ ᦔᦲᧃ ᦘᦱᧇ ᦋᦲᧃ ᦢᧁᧈ ᦺᦡᦲ.\n\nᦈᧅ ᦺᦔ ᦎᦲᧆ ᦺᦉᧈ「ᦶᦎᧂᧈ ᦎᧂᧉ → ᦕᦱᧃ video → ᦞᦲᧉ ᦕᦱᧃ」ᦂᦱᧂ ᦓᦲᦰ ᦶᦎᧂᧈ ᦔᦲᧃ「ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ」(ᦆᦱᧁᧈ ᦅᦸᧂ ᦙᦲ ᦵᦆᦲᧂᧈ ᦕᦱᧃ ffmpeg; ᦆᦱᧁᧈ Go ᦢᦱᧂᧈ ᦢᧁᧈ ᦙᦲ ᦵᦆᦲᧂᧈ ᦕᦱᧃ, ᦈᧅ ᦺᦋᧉ ᦆᦱᧁᧈ ᦅᦸᧂ), ᦢᧁᧈ ᦅᦸᧉ ᦕᦱᧃ video ᦔᦲᧃ MP4 ᦅᦸᧂ (H.264/H.265) ᦵᦙᦲᧈ ᦂᦸᧃᧈ.</string>
 
     <!-- ========== 转换日志（会显示在列表项状态栏与日志面板） ========== -->
-    <string name="conv_log_detected">识别为 %1$s</string>
-    <string name="conv_log_same_format_copied">源与目标格式相同，已原样复制（零损耗）</string>
-    <string name="conv_log_extra_tracks_bypass">源视频含非音视频轨（%1$s），跳过同格式直通，改走完整写出流程以净化</string>
-    <string name="conv_log_ts_fallback">源缺少封面帧时间戳，按规范回退为视频中点</string>
-    <string name="conv_log_brand_normalized">已归一化视频容器品牌（QuickTime → isom）</string>
-    <string name="conv_log_sanitize_failed">视频含附加轨（%1$s），无法净化，已按原样输出（该产物在部分机型可能无法长按播放）</string>
-    <string name="conv_log_extra_tracks_removed">已剔除视频附加轨（%1$s）</string>
-    <string name="conv_log_remux_cannot_fix">源视频%1$s；仅重封装容器无法解决（%2$s），如产物仍无法长按播放，请在「设置 → 视频转码 → 转码方式」改选「重新编码」</string>
-    <string name="conv_log_reencoding">源视频%1$s，按设置重新编码为 8bit + AAC 以提升相册兼容性</string>
-    <string name="conv_log_reencode_result_unusable">重新编码结果不可用，已按原样输出（该产物在部分机型可能无法长按播放）</string>
-    <string name="conv_log_reencode_still_risky">重新编码后仍存在风险项（%1$s）</string>
-    <string name="conv_log_reencode_failed">重新编码失败（%1$s），已按原样输出（该产物在部分机型可能无法长按播放）</string>
-    <string name="conv_log_cover_heic_converted">封面为 HEIC（非 JPEG），已转码为标准 JPEG 后再封装</string>
-    <string name="conv_log_compose_sizes">合成：照片 %1$dB + 视频 %2$dB → %3$s</string>
-    <string name="conv_log_no_encoder_brand_only">未启用转码器：只改写容器品牌（MOV → MP4），不重新编码</string>
+    <string name="conv_log_detected">ᦣᦴᧉ ᦔᦲᧃ %1$s</string>
+    <string name="conv_log_same_format_copied">ᦣᦱᧅ ᦂᧇ ᦔᦻ ᦔᦲᧃ ᦘᦲᧃ ᦵᦙᦲᧃ, ᦅᦸᧇ ᦵᦙᦲᧈ ᦂᦸᧃᧈ (ᦢᧁᧈ ᦠᦻ ᦉᦲᧃ)</string>
+    <string name="conv_log_extra_tracks_bypass">video ᦣᦱᧅ ᦙᦲ track ᦁᧃ ᦢᧁᧈ ᦔᦲᧃ ᦶᦉᧂ video (%1$s), ᦃᦱᧄᧉ ᦗᦱᧃ ᦘᦲᧃ ᦵᦙᦲᧃ, ᦟᦲᧅ ᦷᦎᧅ ᦑᧂ ᦆᦱᧁᧈ ᦠᦹᧉ ᦟᦱᧂᧉ</string>
+    <string name="conv_log_ts_fallback">ᦣᦱᧅ ᦢᧁᧈ ᦙᦲ timestamp frame ᦠᦳᧄᧉ, ᦎᦱᧄ ᦅᦸᧂ ᦗᦸ ᦗᦱᧃ ᦂᦱᧂ video</string>
+    <string name="conv_log_brand_normalized">ᦶᦎᧂᧈ ᦋᦹᧈ ᦏᦳᧂ video ᦠᦹᧉ ᦔᦲᧃ ᦵᦙᦲᧈ ᦂᦸᧃᧈ (QuickTime → isom)</string>
+    <string name="conv_log_sanitize_failed">video ᦙᦲ track ᦜᦻ (%1$s), ᦟᦱᧂᧉ ᦢᧁᧈ ᦺᦡᧉ, ᦃᦲᧃ ᦀᦸᧅᧈ ᦵᦙᦲᧈ ᦂᦸᧃᧈ (ᦘᦲᧃ ᦀᦸᧅᧈ ᦓᦲᦰ ᦷᦎ ᦋᦱᧂᧈ ᦟᦲᧅ ᦅᦱᧂ ᦈᧅ ᦢᧁᧈ ᦉᦲᧃ ᦺᦡᧉ)</string>
+    <string name="conv_log_extra_tracks_removed">ᦟᦸᧅ ᦀᦸᧅᧈ track ᦜᦻ video (᧚ track) (%1$s)</string>
+    <string name="conv_log_remux_cannot_fix">video ᦣᦱᧅ%1$s; ᦗᦲᧈ ᦟᦲᧅ ᦷᦞᧂ ᦏᦳᧂ ᦅᦱᧈ ᦶᦎᧂᧈ ᦢᧁᧈ ᦺᦡᦲ (%2$s), ᦔᦱᧃᧈ ᦘᦲᧃ ᦀᦸᧅᧈ ᦍᧂ ᦟᦲᧅ ᦅᦱᧂ ᦢᧁᧈ ᦉᦲᧃ, ᦈᧅ ᦺᦔ ᦎᦲᧆ ᦺᦉᧈ「ᦶᦎᧂᧈ ᦎᧂᧉ → ᦕᦱᧃ video → ᦞᦲᧉ ᦕᦱᧃ」ᦂᦱᧂ ᦓᦲᦰ ᦶᦎᧂᧈ ᦔᦲᧃ「ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ」</string>
+    <string name="conv_log_reencoding">video ᦣᦱᧅ%1$s, ᦎᦱᧄ ᦶᦎᧂᧈ ᦎᧂᧉ ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ ᦔᦲᧃ 8bit + AAC ᦠᦹᧉ album ᦣᧇ ᦺᦡᧉ ᦡᦲ</string>
+    <string name="conv_log_reencode_result_unusable">ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ ᦺᦋᧉ ᦢᧁᧈ ᦺᦡᧉ, ᦃᦲᧃ ᦀᦸᧅᧈ ᦵᦙᦲᧈ ᦂᦸᧃᧈ (ᦘᦲᧃ ᦀᦸᧅᧈ ᦓᦲᦰ ᦷᦎ ᦋᦱᧂᧈ ᦟᦲᧅ ᦅᦱᧂ ᦈᧅ ᦢᧁᧈ ᦉᦲᧃ ᦺᦡᧉ)</string>
+    <string name="conv_log_reencode_still_risky">ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ ᦵᦏᧄᧉ ᦍᧂ ᦙᦲ ᦵᦟᦲᧅ ᦊᦱᧃ (%1$s)</string>
+    <string name="conv_log_reencode_failed">ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ ᦢᧁᧈ ᦔᦲᧃ (%1$s), ᦃᦲᧃ ᦀᦸᧅᧈ ᦵᦙᦲᧈ ᦂᦸᧃᧈ (ᦘᦲᧃ ᦀᦸᧅᧈ ᦓᦲᦰ ᦷᦎ ᦋᦱᧂᧈ ᦟᦲᧅ ᦅᦱᧂ ᦈᧅ ᦢᧁᧈ ᦉᦲᧃ ᦺᦡᧉ)</string>
+    <string name="conv_log_cover_heic_converted">ᦠᦳᧄᧉ ᦔᦲᧃ HEIC (ᦢᧁᧈ ᦔᦲᧃ JPEG), ᦕᦱᧃ ᦔᦲᧃ JPEG ᦅᦸᧂ ᦵᦙᦲᧈ ᦂᦸᧃᧈ ᦈᦹ ᦷᦞᧂ</string>
+    <string name="conv_log_compose_sizes">ᦵᦣᧆ ᦔᦲᧃ: ᦘᦱᧇ %1$dB + video %2$dB → %3$s</string>
+    <string name="conv_log_no_encoder_brand_only">ᦢᧁᧈ ᦺᦋᧉ ᦵᦆᦲᧂᧈ ᦕᦱᧃ: ᦅᦱᧈ ᦟᦲᧅ ᦅᦱᧂ ᦋᦹᧈ ᦏᦳᧂ (MOV → MP4), ᦢᧁᧈ ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ</string>
 
     <!-- 日志标签（界面显示为「[标签] 文案」） -->
-    <string name="conv_tag_convert">转换</string>
-    <string name="conv_tag_transcode">转码</string>
-    <string name="conv_tag_compose">合成</string>
+    <string name="conv_tag_convert">ᦟᦲᧅ ᦅᦱᧂ</string>
+    <string name="conv_tag_transcode">ᦕᦱᧃ</string>
+    <string name="conv_tag_compose">ᦵᦣᧆ ᦔᦲᧃ</string>
 
     <!-- 转码方式阻塞原因（拼进上面的警告文案） -->
-    <string name="conv_blocker_no_encoder">内置转码器不可用</string>
-    <string name="conv_blocker_mode_no_encode">当前「转码方式」不重新编码</string>
+    <string name="conv_blocker_no_encoder">ᦵᦆᦲᧂᧈ ᦕᦱᧃ ᦺᦓ ᦺᦋᧉ ᦢᧁᧈ ᦺᦡᧉ</string>
+    <string name="conv_blocker_mode_no_encode">「ᦞᦲᧉ ᦕᦱᧃ」ᦂᦱᧂ ᦓᦲᦰ ᦢᧁᧈ ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ</string>
 
     <!-- ========== FfmpegAddon.kt：内置 ffmpeg 转码 / 重封装 ========== -->
-    <string name="conv_addon_unavailable">内置转码器不可用</string>
-    <string name="conv_addon_transcode_failed">ffmpeg 转码失败：%1$s</string>
-    <string name="conv_addon_remux_failed">ffmpeg 重封装容器失败：%1$s</string>
-    <string name="conv_log_ffmpeg_transcoding">正在用 ffmpeg 转码视频为标准 MP4（%1$s / crf %2$d / %3$s，仅保留视频与音频轨道）</string>
-    <string name="conv_log_transcode_done">视频转码完成（%1$dKB）</string>
-    <string name="conv_log_remuxing">正在重封装视频容器为标准 MP4（只换容器、不重新编码）</string>
-    <string name="conv_log_remux_done">容器重封装完成（%1$dKB）</string>
+    <string name="conv_addon_unavailable">ᦵᦆᦲᧂᧈ ᦕᦱᧃ ᦺᦓ ᦺᦋᧉ ᦢᧁᧈ ᦺᦡᧉ</string>
+    <string name="conv_addon_transcode_failed">ffmpeg ᦕᦱᧃ ᦢᧁᧈ ᦔᦲᧃ: %1$s</string>
+    <string name="conv_addon_remux_failed">ffmpeg ᦕᦱᧃ ᦷᦞᧂ ᦏᦳᧂ ᦢᧁᧈ ᦔᦲᧃ: %1$s</string>
+    <string name="conv_log_ffmpeg_transcoding">ᦂᦱᧂ ᦓᦲᦰ ᦺᦋᧉ ffmpeg ᦕᦱᧃ video ᦔᦲᧃ MP4 ᦅᦸᧂ (%1$s / crf %2$d / %3$s, ᦣᧇ ᦗᦸ track video ᦂᧇ ᦶᦉᧂ)</string>
+    <string name="conv_log_transcode_done">ᦕᦱᧃ video ᦵᦏᧄᧉ ᦵᦙᦲᧈ ᦵᦏᧄᧉ (%1$dKB)</string>
+    <string name="conv_log_remuxing">ᦂᦱᧂ ᦓᦲᦰ ᦕᦱᧃ ᦷᦞᧂ ᦏᦳᧂ video ᦔᦲᧃ MP4 ᦅᦸᧂ (ᦅᦱᧈ ᦟᦲᧅ ᦷᦞᧂ, ᦢᧁᧈ ᦕᦱᧃ video ᦎᦲᧆ ᦺᦉᧈ)</string>
+    <string name="conv_log_remux_done">ᦕᦱᧃ ᦷᦞᧂ ᦏᦳᧂ ᦵᦏᧄᧉ ᦵᦙᦲᧈ ᦵᦏᧄᧉ (%1$dKB)</string>
 
     <!-- ========== Reminders.kt：「不再提示」弹窗 ========== -->
-    <string name="conv_reminder_cat_compose">合成</string>
-    <string name="conv_reminder_cat_convert">转换</string>
-    <string name="conv_reminder_cat_update">更新</string>
-    <string name="conv_reminder_video_over3s_title">视频超过 3 秒</string>
-    <string name="conv_reminder_video_over3s_message">所选视频时长超过 3 秒，合成后的动态照片可能存在兼容性问题：\n\n• 可能无法正常播放\n• 可能无法被系统相册识别\n• 部分机型可能无法识别该动态照片</string>
-    <string name="conv_reminder_legacy_go_title">检测到旧版本</string>
-    <string name="conv_reminder_legacy_go_message">本设备仍安装了旧版本（Go 版）应用，该旧版本在本设备上已不可用，可卸载以释放空间。</string>
-    <string name="conv_reminder_replace_risk_title">替换模式有损坏风险</string>
+    <string name="conv_reminder_cat_compose">ᦵᦣᧆ ᦔᦲᧃ</string>
+    <string name="conv_reminder_cat_convert">ᦟᦲᧅ ᦅᦱᧂ</string>
+    <string name="conv_reminder_cat_update">ᦺᦖᧈ</string>
+    <string name="conv_reminder_video_over3s_title">video ᦷᦜᧂ ᦂᦱᧃ 3 ᦞᦲᧃᦱᧆ</string>
+    <string name="conv_reminder_video_over3s_message">video ᦁᧃ ᦵᦟᦲᧅ ᦓᦱᧃ ᦷᦜᧂ ᦂᦱᧃ 3 ᦞᦲᧃᦱᧆ, ᦘᦱᧇ ᦋᦲᧃ ᦵᦙᦲᧈ ᦵᦣᧆ ᦵᦏᧄᧉ ᦋᦱᧂᧈ ᦙᦲ ᦔᧃ ᦠᦱ ᦂᦱᧃ ᦣᧇ:\n\n• ᦋᦱᧂᧈ ᦉᦲᧃ ᦢᧁᧈ ᦺᦡᦲ\n• ᦋᦱᧂᧈ ᦢᧁᧈ ᦣᦴᧉ ᦺᦓ album ᦘᦱᧇ\n• ᦷᦎ ᦋᦱᧂᧈ ᦢᧁᧈ ᦣᦴᧉ ᦘᦱᧇ ᦋᦲᧃ ᦓᦲᦰ</string>
+    <string name="conv_reminder_legacy_go_title">ᦠᦱ ᦺᦡᧉ ᦆᦱᧁᧈ ᦂᦸᧃᧈ</string>
+    <string name="conv_reminder_legacy_go_message">ᦵᦆᦲᧂᧈ ᦓᦲᦰ ᦍᧂ ᦎᦲᧆ ᦺᦉᧈ app ᦆᦱᧁᧈ ᦂᦸᧃᧈ (ᦆᦱᧁᧈ Go), ᦆᦱᧁᧈ ᦂᦸᧃᧈ ᦓᧃᧉ ᦺᦋᧉ ᦢᧁᧈ ᦺᦡᧉ ᦺᦓ ᦵᦆᦲᧂᧈ ᦓᦲᦰ, ᦋᦲᧆ ᦀᦸᧅᧈ ᦠᦹᧉ ᦞᦱᧂ ᦑᦲᧈ ᦡᦲ.</string>
+    <string name="conv_reminder_replace_risk_title">ᦞᦲᧉ ᦶᦎᧃᧈ ᦙᦲ ᦊᦱᧃ ᦆᦲᧃ</string>
     <!-- formatted="false"：正文里有一个只作字面量的百分号（100％），且该串永远不带实参取用，
          声明为非格式串可避免 aapt2/lint 按 String.format 校验它。为避免裸 %，此处用全角 ％ 表示字面百分号。 -->
-    <string name="conv_reminder_replace_risk_message" formatted="false">替换模式会把转换结果直接写回原来的文件，原文件被覆盖后无法找回。\n\n• 写入过程中若应用被中断、存储空间不足或权限被撤销，源文件可能损坏\n• 转换本身无法保证 100％ 成功，失败时源文件可能已经不可用\n• 建议先拿一两个文件试一次，确认没问题再批量处理\n• 重要照片请先自行备份\n\n本功能按「现状」提供，使用风险由你自行承担，作者不对文件损坏或丢失负责。</string>
-    <string name="conv_reminder_dont_remind">不再提示</string>
-    <string name="conv_reminder_confirm_ok">知道了</string>
-    <string name="conv_reminder_uninstall">卸载</string>
-
+    <string name="conv_reminder_replace_risk_message" formatted="false">ᦞᦲᧉ ᦶᦎᧃᧈ ᦈᧅ ᦃᦲᧃ ᦘᦲᧃ ᦀᦸᧅᧈ ᦟᦲᧅ ᦅᦱᧂ ᦗᦸ ᦺᦉᧈ ᦺᦝ ᦵᦂᧁᧈ, ᦺᦝ ᦵᦂᧁᧈ ᦵᦙᦲᧈ ᦗᦸ ᦺᦉᧈ ᦵᦏᧄᧉ ᦈᧅ ᦠᦱ ᦗᦸ ᦢᧁᧈ ᦺᦡᦲ.\n\n• ᦵᦙᦲᧈ ᦃᦲᧃ ᦺᦓ app ᦗᦸ ᦓᦱᧃ, ᦑᦲᧈ ᦞᦱᧂ ᦺᦝ ᦢᧁᧈ ᦗᦸ, ᦢᧁᧈ ᦅᦸᧉ ᦉᦲᧆ ᦗᦸ ᦀᦸᧅᧈ, ᦺᦝ ᦣᦱᧅ ᦋᦱᧂᧈ ᦆᦲᧃ\n• ᦟᦲᧅ ᦅᦱᧂ ᦢᧁᧈ ᦠᦹᧉ 100％ ᦔᦲᧃ, ᦵᦙᦲᧈ ᦢᧁᧈ ᦔᦲᧃ ᦺᦝ ᦣᦱᧅ ᦋᦱᧂᧈ ᦺᦋᧉ ᦢᧁᧈ ᦺᦡᦲ\n• ᦠᦹᧉ ᦺᦋᧉ ᦺᦝ 1-2 ᦺᦝ ᦜᦸᧂ ᦠᦹᧉ ᦠᧃ ᦡᦲ ᦵᦙᦲᧈ ᦈᦹ ᦵᦣᧆ ᦗᦱᧂᧈ ᦗᦸᧂᧈ\n• ᦘᦱᧇ ᦁᧃ ᦙᦲ ᦅᦱᧈ ᦠᦹᧉ ᦷᦎ ᦵᦔᧁᧈ ᦔᦲᧃ ᦔᦱᧂᧈ\n\nᦘᦲᧃ ᦓᦲᦰ ᦠᦹᧉ ᦎᦱᧄ「ᦵᦙᦲᧈ ᦙᦲ」, ᦊᦱᧃ ᦔᦲᧃ ᦷᦎ ᦺᦋᧉ, ᦕᦴᧉ ᦶᦎᧄᧉ ᦢᧁᧈ ᦣᧇ ᦔᦲᧃ ᦕᦲᧆ ᦺᦝ ᦅᦱᧂ ᦢᧁᧈ ᦅᦸᧉ ᦵᦠᦲᧃ.</string>
+    <string name="conv_reminder_dont_remind">ᦢᧁᧈ ᦠᦹᧉ ᦎᦲᧃᧈ</string>
+    <string name="conv_reminder_confirm_ok">ᦣᦴᧉ ᦵᦙᦲᧈ</string>
+    <string name="conv_reminder_uninstall">ᦋᦲᧆ ᦀᦸᧅᧈ</string>
+    <string name="conv_err_exif_bad_endian">TIFF byte order ᦢᧁᧈ ᦅᦸᧂ</string>
+    <string name="conv_err_exif_inline_type">inline ᦵᦋᦲᧉ %1$d ᦢᧁᧈ ᦏᦹ</string>
+    <string name="conv_err_exif_type">TIFF ᦵᦋᦲᧉ %1$d ᦢᧁᧈ ᦏᦹ</string>
+    <string name="conv_err_jpeg_no_eoi">EOI ᦢᧁᧈ ᦠᦱ (ᦺᦝ ᦕᦲᧆ ᦺᦡᧉ)</string>
+    <string name="conv_err_jpeg_no_soi">JPEG ᦢᧁᧈ ᦅᦸᧂ (SOI ᦢᧁᧈ ᦙᦲ)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG ᦢᧁᧈ ᦙᦲ SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">segment ᦑᦲᧈ ᦢᧁᧈ ᦅᦸᧂ @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">segment ᦆᦱᧁ ᦢᧁᧈ ᦅᦸᧂ @%1$d</string>
+    <string name="conv_err_json_type">JSON ᦵᦋᦲᧉ ᦢᧁᧈ ᦏᦹ: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box ᦆᦱᧁ ᦢᧁᧈ ᦅᦸᧂ</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box ᦢᧁᧈ ᦙᦲ</string>
+    <string name="conv_err_mp4_no_moov">MP4 ᦢᧁᧈ ᦙᦲ moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">ᦟᦸᧅ ᦀᦸᧅᧈ track ᦜᦻ (%1$s)</string>
+    <string name="conv_log_sanitize_exception">ᦟᦱᧂᧉ track ᦜᦻ ᦢᧁᧈ ᦔᦲᧃ (%1$s), ᦃᦲᧃ ᦀᦸᧅᧈ ᦵᦙᦲᧈ ᦂᦸᧃᧈ</string>
+    <string name="conv_log_sanitize_no_video_track">video ᦃᧁᧉ ᦢᧁᧈ ᦙᦲ track video ᦁᧃ ᦺᦋᧉ ᦺᦡᧉ, ᦃᦱᧄᧉ ᦟᦱᧂᧉ track ᦜᦻ</string>
+    <string name="conv_log_sanitize_normalized">ᦶᦎᧂᧈ ᦋᦹᧈ ᦏᦳᧂ ᦠᦹᧉ ᦔᦲᧃ ᦵᦙᦲᧈ ᦂᦸᧃᧈ ᦓᦲᦰ byte (zero-copy, sample ᦢᧁᧈ ᦔᦲᧃᧈ)</string>
+    <string name="conv_log_sanitize_track_add_failed">track video ᦢᧁᧈ ᦺᦉᧈ ᦺᦓ remuxer ᦺᦡᧉ (%1$s), ᦃᦱᧄᧉ ᦟᦱᧂᧉ track ᦜᦻ</string>
+    <string name="conv_reason_10bit_h265">video ᦔᦲᧃ %1$dbit H.265 (HDR Live Photo), ᦵᦆᦲᧂᧈ ᦷᦙᧆ album decode ᦢᧁᧈ ᦺᦡᧉ</string>
+    <string name="conv_reason_audio_not_aac">audio track encode ᦔᦲᧃ %1$s ᦢᧁᧈ ᦔᦲᧃ AAC (Live Photo ᦈᧅ ᦺᦋᧉ AAC, Apple ᦋᦸᧂᧈ ᦔᦲᧃ PCM)</string>
+    <string name="conv_reason_codec_unsupported">video encode ᦔᦲᧃ %1$s, ᦢᧁᧈ ᦔᦲᧃ H.264/H.265 ᦁᧃ Android ᦺᦋᧉ ᦷᦜᧂ ᦜᦻ</string>
+    <string name="conv_reason_dolby_vision">video ᦔᦲᧃ Dolby Vision, album Android ᦋᦸᧂᧈ ᦢᧁᧈ ᦏᦹ</string>
+    <string name="conv_reason_hdr">video ᦔᦲᧃ HDR (%1$s), album ᦵᦆᦲᧂᧈ ᦷᦙᧆ ᦘᦱᧇ ᦕᦲᧆ ᦢᧁᧈ ᦅᦸᧉ ᦶᦞᧃᧈ ᦆᦳᧄ</string>
+    <string name="conv_reason_hev1">H.265 ᦙᦲ ᦋᦹᧈ hev1 (ᦵᦆᦲᧂᧈ ᦷᦙᧆ ᦣᧇ ᦑᧂ hvc1)</string>
+    <string name="conv_reason_mirror_matrix">video ᦙᦲ mirror matrix (MP4 rotate matrix ᦢᧁᧈ ᦔᦲᧃ ᦺᦡᧉ mirror)</string>
+    <string name="conv_tag_sanitize">ᦟᦱᧂᧉ</string>
 </resources>

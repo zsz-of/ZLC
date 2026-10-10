@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">値が小さいほど高画質・大容量になります（既定 18）</string>
     <string name="settings_encoder_title">エンコーダー</string>
     <string name="settings_compress_preset_title">圧縮プリセット</string>
-
+    <string name="settings_preset_amber">アンバー</string>
+    <string name="settings_preset_forest">フォレストグリーン</string>
+    <string name="settings_preset_ocean">オーシャンブルー</string>
+    <string name="settings_preset_olive">オリーブ</string>
+    <string name="settings_preset_sunset">サンセットオレンジ</string>
+    <string name="settings_preset_teal">ティール</string>
+    <string name="settings_preset_violet">バイオレット</string>
 </resources>

@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">Keldumappan er ikki tøk: %1$s</string>
     <string name="main_export_replace_failed">Útskifting av keldufílu miseydnaðist: %1$s</string>
     <string name="main_export_replace_failed_bare">Útskifting av keldufílu miseydnaðist</string>
+    <string name="main_status_read_failed">Kundi ikki lesa valdu fíluna</string>
+    <string name="main_status_source_missing">Keldan er ikki til ella kann ikki lesast</string>
 </resources>

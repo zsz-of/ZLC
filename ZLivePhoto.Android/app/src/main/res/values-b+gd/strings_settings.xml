@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Mar as lugha an luach, \'s ann as àirde a bhios a\' chàileachd is am meud (ro-shuidhichte 18)</string>
     <string name="settings_encoder_title">Còdaire</string>
     <string name="settings_compress_preset_title">Ro-shuidheachadh teannachaidh</string>
-
+    <string name="settings_preset_amber">Òmar</string>
+    <string name="settings_preset_forest">Uaine coille</string>
+    <string name="settings_preset_ocean">Gorm cuain</string>
+    <string name="settings_preset_olive">Ola</string>
+    <string name="settings_preset_sunset">Orains laighe na grèine</string>
+    <string name="settings_preset_teal">Glas-ghorm</string>
+    <string name="settings_preset_violet">Fiolet</string>
 </resources>

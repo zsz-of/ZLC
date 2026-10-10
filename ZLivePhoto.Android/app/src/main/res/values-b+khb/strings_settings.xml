@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-  khb（傣泐 / 新傣仂文）为低资源语种：暂无可靠的新傣仂文词表，为避免臆造民族语言文字，
-  本文件正文沿用简体中文基准（即本应用对 khb 的兜底文案）；key 与元素类型与基准完全一致。
-  欢迎母语者逐条替换为傣泐语译文。
+    khb（傣泐 / 新傣仂文 / New Tai Lue）为低资源语种：全文已按新傣仂文逐条本地化。
+  译文为**模型辅助的 C 级尽力翻译，未经母语者审校**，可能存在不通顺或用词偏差，欢迎社区修正；
+  品牌专名与技术名词保留拉丁字形。key 与元素类型与基准完全一致。
   设置页（ui/SettingsScreen.kt）文案。key 前缀 settings_。
   默认资源（values/）为简体中文；其它语言放 values-b+<lang>/strings_settings.xml。
   占位符一律用带序号形式：%1$s / %1$d。
@@ -13,99 +13,105 @@
 <resources>
 
     <!-- 通用 -->
-    <string name="settings_title">设置</string>
-    <string name="settings_cd_back">返回</string>
-    <string name="settings_btn_apply">应用</string>
-    <string name="settings_btn_cancel">取消</string>
-    <string name="settings_btn_close">关闭</string>
-    <string name="settings_btn_ok">好</string>
-    <string name="settings_btn_sponsor">赞助</string>
+    <string name="settings_title">ᦶᦎᧂᧈ</string>
+    <string name="settings_cd_back">ᦗᦸᧅ</string>
+    <string name="settings_btn_apply">ᦺᦋᧉ</string>
+    <string name="settings_btn_cancel">ᦢᧁᧈ ᦵᦣᧆ</string>
+    <string name="settings_btn_close">ᦔᦲᧆ</string>
+    <string name="settings_btn_ok">ᦡᦲ</string>
+    <string name="settings_btn_sponsor">ᦋᦾᧈ ᦵᦎᦲᧄ</string>
 
     <!-- 分组标题 -->
-    <string name="settings_section_general">通用</string>
-    <string name="settings_section_appearance">外观</string>
-    <string name="settings_section_language">语言</string>
-    <string name="settings_section_defaults">默认选项</string>
-    <string name="settings_section_output">输出</string>
-    <string name="settings_section_transcode">视频转码</string>
-    <string name="settings_section_about">关于</string>
-    <string name="settings_section_app">应用</string>
-    <string name="settings_section_credits">鸣谢与赞助</string>
-    <string name="settings_section_opensource">开源与授权</string>
+    <string name="settings_section_general">ᦑᧂ ᦺᦔ</string>
+    <string name="settings_section_appearance">ᦷᦎ ᦓᦸᧅ</string>
+    <string name="settings_section_language">ᦘᦱᧉ ᦉᦱ</string>
+    <string name="settings_section_defaults">ᦃᦸᧉ ᦵᦙᦲᧈ ᦂᦸᧃᧈ</string>
+    <string name="settings_section_output">ᦃᦲᧃ ᦀᦸᧅᧈ</string>
+    <string name="settings_section_transcode">ᦔᦲᧃᧈ ᦟᦲᧅ video</string>
+    <string name="settings_section_about">ᦵᦂᧈ ᦙᦱ</string>
+    <string name="settings_section_app">app</string>
+    <string name="settings_section_credits">ᦃᦸᧇ ᦺᦈ ᦂᧇ ᦋᦾᧈ ᦵᦎᦲᧄ</string>
+    <string name="settings_section_opensource">ᦔᦾᧉ ᦣᦱᧅ ᦂᧇ ᦠᦹᧉ ᦉᦲᧆ</string>
 
     <!-- 通用 -->
-    <string name="settings_startup_check_title">启动时检查更新</string>
-    <string name="settings_startup_check_subtitle">启动时自动从 GitHub 获取新版本，有更新时提示下载</string>
-    <string name="settings_haptics_title">震动反馈</string>
-    <string name="settings_haptics_subtitle">按钮点击与状态变化时的触觉反馈</string>
-    <string name="settings_bounce_title">按钮弹性动画</string>
-    <string name="settings_bounce_subtitle">按钮按下时的缩放回弹动画</string>
+    <string name="settings_startup_check_title">ᦑᦸᧂᦰ ᦶᦎᧂᧈ ᦺᦖᧈ ᦵᦙᦲᧈ ᦎᧁᧈ</string>
+    <string name="settings_startup_check_subtitle">ᦵᦙᦲᧈ ᦎᧁᧈ ᦈᧅ ᦀᧁ ᦉᦰ ᦢᧇ ᦺᦖᧈ ᦙᦱ ᦈᦱᧅ GitHub ᦷᦎ ᦵᦀᧂ, ᦙᦲ ᦶᦎᧂᧈ ᦺᦖᧈ ᦅᦸᧉ ᦢᦸᧅᧈ ᦠᦹᧉ ᦀᧁ ᦙᦱ</string>
+    <string name="settings_haptics_title">ᦂᦱᧃ ᦉᧃᧈ</string>
+    <string name="settings_haptics_subtitle">ᦂᦱᧃ ᦉᧃᧈ ᦵᦙᦲᧈ ᦷᦅᧆ ᦔᦳᧄᧈ ᦂᧇ ᦵᦙᦲᧈ ᦶᦎᧂᧈ ᦉᦰ ᦓᦱᧃ</string>
+    <string name="settings_bounce_title">ᦔᦳᧄᧈ animation ᦷᦂᧃᧈ</string>
+    <string name="settings_bounce_subtitle">ᦂᦱᧃ animation ᦔᦳᧄᧈ ᦍᦸᧆ ᦗᦸᧅ ᦵᦙᦲᧈ ᦷᦅᧆ</string>
 
     <!-- 外观 -->
-    <string name="settings_theme_system">跟随系统</string>
-    <string name="settings_theme_dark">深色</string>
-    <string name="settings_theme_light">浅色</string>
-    <string name="settings_dynamic_theme_title">Material You 动态取色</string>
-    <string name="settings_dynamic_theme_subtitle">跟随系统壁纸颜色（Android 12+）；关闭后使用下方预制主题色</string>
-    <string name="settings_preset_colors_title">预制主题色</string>
-    <string name="settings_preset_current">当前：%1$s</string>
-    <string name="settings_preset_disabled_hint">关闭「Material You 动态取色」后可选择</string>
-    <string name="settings_custom">自定义</string>
-    <string name="settings_custom_color_title">自定义主题色</string>
-    <string name="settings_cd_custom_palette">自定义调色板</string>
-    <string name="settings_hue_value">色相 %1$d°</string>
+    <string name="settings_theme_system">ᦎᦱᧄ system</string>
+    <string name="settings_theme_dark">ᦉᦲ ᦙᦹᧆ</string>
+    <string name="settings_theme_light">ᦉᦲ ᦈᦱᧂ</string>
+    <string name="settings_dynamic_theme_title">Material You ᦀᧁ ᦉᦲ ᦎᦱᧄ ᦵᦙᦲᧈ</string>
+    <string name="settings_dynamic_theme_subtitle">ᦎᦱᧄ ᦉᦲ ᦘᦱᧇ ᦚᦱ ᦺᦓ system (Android 12+); ᦔᦲᧆ ᦵᦡᦲ ᦅᦸᧉ ᦺᦋᧉ ᦉᦲ ᦁᧃ ᦶᦎᧂᧈ ᦺᦞᧉ ᦵᦡᦲ ᦗᦻ ᦺᦎᧉ</string>
+    <string name="settings_preset_colors_title">ᦉᦲ ᦁᧃ ᦶᦎᧂᧈ ᦺᦞᧉ ᦵᦡᦲ</string>
+    <string name="settings_preset_current">ᦵᦙᦲᧈ ᦓᦲᦰ: %1$s</string>
+    <string name="settings_preset_disabled_hint">ᦔᦲᧆ Material You ᦀᧁ ᦉᦲ ᦎᦱᧄ ᦵᦙᦲᧈ ᦵᦡᦲ ᦈᦲᧂᧈ ᦵᦜᦲᧅ ᦺᦡᧉ</string>
+    <string name="settings_custom">ᦷᦎ ᦵᦀᧂ ᦶᦎᧂᧈ</string>
+    <string name="settings_custom_color_title">ᦷᦎ ᦵᦀᧂ ᦶᦎᧂᧈ ᦉᦲ</string>
+    <string name="settings_cd_custom_palette">ᦷᦎ ᦵᦀᧂ ᦶᦎᧂᧈ ᦶᦔᧃ ᦉᦲ</string>
+    <string name="settings_hue_value">ᦉᦲ %1$d°</string>
 
     <!-- 应用语言：标题与「跟随系统」两项复用 Lead 维护的 strings_app.xml
          （R.string.app_language_title / R.string.app_language_follow_system），此处不重复定义 -->
-    <string name="settings_language_dialog_title">选择应用语言</string>
-    <string name="settings_language_count">共 %1$d 种语言</string>
+    <string name="settings_language_dialog_title">ᦵᦜᦲᧅ ᦘᦱᧉ ᦉᦱ app</string>
+    <string name="settings_language_count">ᦑᧂ ᦷᦙᧆ %1$d ᦘᦱᧉ ᦉᦱ</string>
 
     <!-- 默认选项 -->
-    <string name="settings_reminder_dialogs_title">不再提示弹窗</string>
-    <string name="settings_reminder_dialogs_subtitle">管理所有「不再提示」弹窗的开关</string>
-    <string name="settings_reminder_hint">开关打开表示「不再提示」；关闭后，下次触发对应场景时会重新弹出提示。</string>
+    <string name="settings_reminder_dialogs_title">dialog ᦁᧃ ᦢᧁᧈ ᦢᦸᧅᧈ ᦎᦸᧈ</string>
+    <string name="settings_reminder_dialogs_subtitle">ᦂᦱᧄ ᦂᧇ ᦔᦳᧄᧈ ᦶᦎᧂᧈ ᦷᦙᧆ ᦺᦓ dialog ᦢᧁᧈ ᦢᦸᧅᧈ ᦎᦸᧈ</string>
+    <string name="settings_reminder_hint">ᦔᦳᧄᧈ ᦶᦎᧂᧈ ᦔᦾᧉ ᦊᦴᧈ ᦙᦱᧃᧈ ᦞᦱᧈ ᦢᧁᧈ ᦢᦸᧅᧈ ᦎᦸᧈ; ᦔᦲᧆ ᦵᦡᦲ, ᦎᦸᧃ ᦐᦱᧉ ᦙᦱ ᦏᦹᧂ ᦵᦠᧆᧈ ᦓᧃᧉ ᦅᦸᧉ ᦈᧅ ᦀᦸᧅᧈ dialog ᦎᦸᧈ.</string>
 
     <!-- 输出 -->
-    <string name="settings_preserve_folders_title">按源文件夹层级输出</string>
-    <string name="settings_preserve_folders_subtitle">转换结果按原相册名分子目录存放；关闭后全部平铺在同一个目录</string>
+    <string name="settings_preserve_folders_title">ᦃᦲᧃ ᦀᦸᧅᧈ ᦎᦱᧄ ᦏᦳᧂ ᦺᦝ ᦣᦱᧅ</string>
+    <string name="settings_preserve_folders_subtitle">ᦕᦸᧃ ᦔᦲᧃᧈ ᦈᧅ ᦺᦉᧈ ᦎᦱᧄ ᦋᦹᧈ album ᦵᦙᦲᧈ ᦂᦸᧃᧈ ᦔᦲᧃ ᦏᦳᧂ ᦺᦝ ᦓᦾᧉ; ᦔᦲᧆ ᦵᦡᦲ ᦅᦸᧉ ᦈᧅ ᦺᦉᧈ ᦷᦙᧆ ᦺᦓ ᦏᦳᧂ ᦺᦝ ᦵᦡᧁ ᦂᧃ</string>
 
     <!-- 关于 -->
-    <string name="settings_about_title">关于</string>
-    <string name="settings_about_subtitle">版本 · 检查更新 · 鸣谢与赞助</string>
-    <string name="settings_check_update_title">检查更新</string>
-    <string name="settings_check_update_subtitle">从 GitHub Releases 获取最新版本</string>
-    <string name="settings_checking">检查中…</string>
-    <string name="settings_update_available">v%1$s 可用</string>
-    <string name="settings_up_to_date">已是最新版本</string>
-    <string name="settings_network_error">网络错误，请稍后重试</string>
-    <string name="settings_reinstall_title">重新安装本版本</string>
-    <string name="settings_reinstall_subtitle">下载当前最新版覆盖安装（测试更新用）</string>
-    <string name="settings_reinstall_newer_hint">当前可升级到 v%1$s，请先用「检查更新」升级</string>
-    <string name="settings_version_title">版本</string>
+    <string name="settings_about_title">ᦵᦂᧈ ᦙᦱ</string>
+    <string name="settings_about_subtitle">ᦉᦰ ᦢᧇ · ᦑᦸᧂᦰ ᦶᦎᧂᧈ ᦺᦖᧈ · ᦃᦸᧇ ᦺᦈ ᦂᧇ ᦋᦾᧈ ᦵᦎᦲᧄ</string>
+    <string name="settings_check_update_title">ᦑᦸᧂᦰ ᦶᦎᧂᧈ ᦺᦖᧈ</string>
+    <string name="settings_check_update_subtitle">ᦀᧁ ᦉᦰ ᦢᧇ ᦺᦖᧈ ᦙᦱ ᦈᦱᧅ GitHub Releases</string>
+    <string name="settings_checking">ᦑᦸᧂᦰ ᦊᦴᧈ…</string>
+    <string name="settings_update_available">v%1$s ᦺᦋᧉ ᦺᦡᧉ</string>
+    <string name="settings_up_to_date">ᦔᦲᧃ ᦉᦰ ᦢᧇ ᦺᦖᧈ ᦵᦡᦲ</string>
+    <string name="settings_network_error">network ᦕᦲᧆ, ᦠᦹᧉ ᦟᦸᧂᧈ ᦎᦸᧈ ᦗᦻ ᦷᦟᧂ</string>
+    <string name="settings_reinstall_title">ᦺᦉᧈ ᦉᦰ ᦢᧇ ᦓᦲᦰ ᦎᦸᧈ</string>
+    <string name="settings_reinstall_subtitle">ᦀᧁ ᦉᦰ ᦢᧇ ᦺᦖᧈ ᦵᦙᦲᧈ ᦓᦲᦰ ᦙᦱ ᦺᦉᧈ ᦎᦲᧆ ᦗᦻ ᦵᦐᦲ (ᦺᦋᧉ ᦟᦸᧂᧈ ᦶᦎᧂᧈ ᦺᦖᧈ)</string>
+    <string name="settings_reinstall_newer_hint">ᦵᦙᦲᧈ ᦓᦲᦰ ᦃᦹᧃᧉ ᦏᦹᧂ v%1$s ᦺᦡᧉ, ᦠᦹᧉ ᦺᦋᧉ ᦑᦸᧂᦰ ᦶᦎᧂᧈ ᦺᦖᧈ ᦂᦸᧃᧈ</string>
+    <string name="settings_version_title">ᦉᦰ ᦢᧇ</string>
     <string name="settings_version_value">v%1$s</string>
-    <string name="settings_alipay_title">支付宝赞助</string>
-    <string name="settings_alipay_subtitle">支持开发</string>
-    <string name="settings_coolapk_subtitle">酷安用户 · 感谢他提供的支持</string>
-    <string name="settings_ai_credits_subtitle">感谢 AI IDE 与 AI 模型在开发中提供的协助</string>
-    <string name="settings_github_title">GitHub 开源地址</string>
-    <string name="settings_license_title">开源许可证</string>
-    <string name="settings_sponsor_dialog_title">感谢你的支持</string>
-    <string name="settings_sponsor_dialog_text">真的非常感谢你愿意支持这个应用！\n\n如果你还是学生、或经济还没有独立，请千万不要破费——\n把这份心意留在心里，继续使用下去，就是对我最好的支持。\n\n愿意赞助的话，一块也是爱，我会把它投入到更好的维护与功能上：）</string>
-    <string name="settings_alipay_missing_title">还没有安装支付宝</string>
-    <string name="settings_alipay_missing_text">没有检测到支付宝，暂时无法完成赞助。\n\n没关系——无论怎样，都非常感谢你的好意！</string>
+    <string name="settings_alipay_title">ᦋᦾᧈ ᦵᦎᦲᧄ Alipay</string>
+    <string name="settings_alipay_subtitle">ᦋᦾᧈ ᦂᦱᧃ ᦉᦱᧂᧉ</string>
+    <string name="settings_coolapk_subtitle">ᦅᦳᧃ ᦺᦋᧉ Coolapk · ᦃᦸᧇ ᦺᦈ ᦂᦱᧃ ᦋᦾᧈ ᦁᧃ ᦕᦱᧃ ᦙᦱ</string>
+    <string name="settings_ai_credits_subtitle">ᦃᦸᧇ ᦺᦈ AI IDE ᦂᧇ AI model ᦁᧃ ᦋᦾᧈ ᦺᦓ ᦂᦱᧃ ᦉᦱᧂᧉ</string>
+    <string name="settings_github_title">ᦑᦲᧈ ᦔᦾᧉ ᦣᦱᧅ GitHub</string>
+    <string name="settings_license_title">ᦘᦲᧄ ᦉᦲᧆ ᦔᦾᧉ ᦣᦱᧅ</string>
+    <string name="settings_sponsor_dialog_title">ᦃᦸᧇ ᦺᦈ ᦂᦱᧃ ᦋᦾᧈ ᦷᦎ ᦈᧁᧉ</string>
+    <string name="settings_sponsor_dialog_text">ᦃᦸᧇ ᦺᦈ ᦶᦑᧉ ᦶᦑᧉ ᦞᦱᧈ ᦈᧁᧉ ᦀᦱᧆ ᦋᦾᧈ ᦵᦎᦲᧄ app ᦓᦲᦰ!\n\nᦞᦱᧈ ᦈᧁᧉ ᦍᧂ ᦔᦲᧃ ᦟᦴᧅ ᦵᦣᧃ, ᦢᧁᧈ ᦅᦸᧉ ᦇᦹᧃ ᦍᧂ ᦢᧁᧈ ᦔᦲᧃ ᦷᦎ ᦵᦀᧂ, ᦊᦱᧈ ᦺᦋᧉ ᦇᦹᧃ——\nᦀᧁ ᦓᧄᧉ ᦺᦈ ᦓᦲᦰ ᦺᦞᧉ ᦺᦓ ᦺᦈ, ᦺᦋᧉ ᦺᦔ ᦎᦸᧈ, ᦓᧃᧉ ᦅᦸᧉ ᦔᦲᧃ ᦂᦱᧃ ᦋᦾᧈ ᦁᧃ ᦡᦲ ᦑᦲᧈ ᦉᦳᧆ ᦠᦹᧉ ᦃᦾᧉ.\n\nᦞᦱᧈ ᦀᦱᧆ ᦋᦾᧈ ᦵᦎᦲᧄ, ᦓᦹᧂᧈ ᦇᦹᧃ ᦅᦸᧉ ᦔᦲᧃ ᦩᦱᧄ ᦣᧅ, ᦃᦾᧉ ᦈᧅ ᦀᧁ ᦺᦔ ᦺᦉᧈ ᦺᦓ ᦂᦱᧃ ᦷᦔᧈ ᦶᦎᧂᧈ ᦂᧇ ᦂᦱᧃ ᦺᦋᧉ ᦁᧃ ᦡᦲ ᦉᦳᧂ :)</string>
+    <string name="settings_alipay_missing_title">ᦍᧂ ᦢᧁᧈ ᦺᦉᧈ Alipay</string>
+    <string name="settings_alipay_missing_text">ᦢᧁᧈ ᦠᧃ Alipay, ᦵᦙᦲᧈ ᦓᦲᦰ ᦋᦾᧈ ᦵᦎᦲᧄ ᦢᧁᧈ ᦺᦡᧉ.\n\nᦢᧁᧈ ᦔᦲᧃ ᦂᦱᧃ ᦉᧂ——ᦢᧁᧈ ᦞᦱᧈ ᦋᦱᧂᧈ ᦺᦡ, ᦃᦸᧇ ᦺᦈ ᦓᧄᧉ ᦺᦈ ᦷᦎ ᦈᧁᧉ ᦶᦑᧉ ᦶᦑᧉ!</string>
 
     <!-- 视频转码 -->
-    <string name="settings_transcoder_title">内置转码器</string>
+    <string name="settings_transcoder_title">ᦵᦆᦲᧂᧈ ᦔᦲᧃᧈ ᦟᦲᧅ ᦺᦓ</string>
     <string name="settings_transcoder_value">ffmpeg %1$s</string>
-    <string name="settings_transcode_mode_encode">重新编码</string>
-    <string name="settings_transcode_mode_remux">仅重封装容器（推荐）</string>
-    <string name="settings_transcode_mode_off">完全不使用转码器</string>
-    <string name="settings_transcode_params_title">转码参数</string>
-    <string name="settings_transcode_params_subtitle">重新编码时使用的质量与压缩参数</string>
-    <string name="settings_transcode_params_disabled">仅在「转码方式」选择「重新编码」时生效</string>
-    <string name="settings_crf_value">质量 CRF：%1$d</string>
-    <string name="settings_crf_hint">数值越小画质越高、体积越大（默认 18）</string>
-    <string name="settings_encoder_title">编码器</string>
-    <string name="settings_compress_preset_title">压缩预设</string>
-
+    <string name="settings_transcode_mode_encode">ᦶᦎᧂᧈ ᦟᦲᧅ</string>
+    <string name="settings_transcode_mode_remux">ᦶᦎᧂᧈ ᦏᦳᧂ ᦅᦱᧈ (ᦓᦰ ᦓᧄ)</string>
+    <string name="settings_transcode_mode_off">ᦢᧁᧈ ᦺᦋᧉ ᦵᦆᦲᧂᧈ ᦔᦲᧃᧈ ᦟᦲᧅ ᦷᦙᧆ</string>
+    <string name="settings_transcode_params_title">ᦃᦸᧉ ᦶᦎᧂᧈ ᦔᦲᧃᧈ ᦟᦲᧅ</string>
+    <string name="settings_transcode_params_subtitle">ᦃᦸᧉ ᦶᦎᧂᧈ ᦩᦱᧄ ᦡᦲ ᦂᧇ ᦂᦱᧃ ᦀᧆ ᦁᧃ ᦺᦋᧉ ᦵᦙᦲᧈ ᦶᦎᧂᧈ ᦟᦲᧅ</string>
+    <string name="settings_transcode_params_disabled">ᦈᦲᧂᧈ ᦺᦋᧉ ᦺᦡᧉ ᦵᦙᦲᧈ ᦵᦜᦲᧅ ᦶᦎᧂᧈ ᦟᦲᧅ ᦺᦓ ᦞᦲᧉ ᦔᦲᧃᧈ ᦟᦲᧅ</string>
+    <string name="settings_crf_value">CRF ᦩᦱᧄ ᦡᦲ: %1$d</string>
+    <string name="settings_crf_hint">ᦈᧄ ᦓᦳᧃ ᦓᦾᧉ ᦅᦸᧉ ᦩᦱᧄ ᦡᦲ ᦘᦱᧇ ᦉᦳᧂ, ᦃᦓᦱᧆ ᦺᦊᧈ (ᦵᦙᦲᧈ ᦂᦸᧃᧈ 18)</string>
+    <string name="settings_encoder_title">ᦵᦆᦲᧂᧈ ᦟᦲᧅ</string>
+    <string name="settings_compress_preset_title">ᦂᦱᧃ ᦀᧆ ᦁᧃ ᦶᦎᧂᧈ ᦺᦞᧉ ᦵᦡᦲ</string>
+    <string name="settings_preset_amber">ᦉᦲ ᦶᦀᧄᦗᦸ</string>
+    <string name="settings_preset_forest">ᦉᦲ ᦶᦃᧁ ᦔᦱᧈ</string>
+    <string name="settings_preset_ocean">ᦉᦲ ᦆᦱᧁ ᦉᦙᦳᧆ</string>
+    <string name="settings_preset_olive">ᦉᦲ ᦀᦸᦟᦲᧇ</string>
+    <string name="settings_preset_sunset">ᦉᦲ ᦶᦡᧂ ᦎᦱ ᦞᧃ ᦷᦎᧅ</string>
+    <string name="settings_preset_teal">ᦉᦲ ᦶᦃᧁ ᦓᧄᧉ</string>
+    <string name="settings_preset_violet">ᦉᦲ ᦷᦙᧂ</string>
 </resources>

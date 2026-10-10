@@ -144,4 +144,6 @@
     <string name="main_export_source_dir_unavailable">Hindi available ang source folder: %1$s</string>
     <string name="main_export_replace_failed">Nabigo ang pagpapalit sa source file: %1$s</string>
     <string name="main_export_replace_failed_bare">Nabigo ang pagpapalit sa source file</string>
+    <string name="main_status_read_failed">Hindi mabasa ang piniling file</string>
+    <string name="main_status_source_missing">Wala o hindi mabasa ang source file</string>
 </resources>

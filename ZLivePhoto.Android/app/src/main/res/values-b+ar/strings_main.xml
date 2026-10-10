@@ -185,4 +185,6 @@
     <string name="main_export_source_dir_unavailable">مجلد الملف المصدر غير متاح: %1$s</string>
     <string name="main_export_replace_failed">فشل استبدال الملف المصدر: %1$s</string>
     <string name="main_export_replace_failed_bare">فشل استبدال الملف المصدر</string>
+    <string name="main_status_read_failed">تعذّرت قراءة الملف المحدد</string>
+    <string name="main_status_source_missing">الملف المصدر غير موجود أو غير قابل للقراءة</string>
 </resources>

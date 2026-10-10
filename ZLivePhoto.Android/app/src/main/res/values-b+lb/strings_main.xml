@@ -164,4 +164,6 @@ Wielt w.e.g. d’Behandlungsmethod.</string>
     <string name="main_export_source_dir_unavailable">Quellfichier-Dossier net verfügbar: %1$s</string>
     <string name="main_export_replace_failed">Ersetzung vum Quellfichier huet feelgeschloen: %1$s</string>
     <string name="main_export_replace_failed_bare">Ersetzung vum Quellfichier huet feelgeschloen</string>
+    <string name="main_status_read_failed">Den ausgewielte Fichier konnt net gelies ginn</string>
+    <string name="main_status_source_missing">De Quellfichier existéiert net oder ass net liesbar</string>
 </resources>

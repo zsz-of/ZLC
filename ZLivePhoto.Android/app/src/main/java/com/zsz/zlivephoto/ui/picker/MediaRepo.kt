@@ -4,6 +4,8 @@ import android.content.ContentResolver
 import android.content.ContentUris
 import android.net.Uri
 import android.provider.MediaStore
+import com.zsz.zlivephoto.R
+import com.zsz.zlivephoto.core.CoreText
 
 /** 相册（按 MediaStore bucket 分组） */
 data class AlbumInfo(
@@ -82,7 +84,7 @@ class MediaRepo(private val resolver: ContentResolver) {
                     val modified = c.getLong(iModified)
                     val effTaken = if (taken > 0) taken else modified * 1000L
                     val b = albums.getOrPut(bucketId) {
-                        AlbumBuilder(bucketId, c.getString(iBucketName) ?: "未命名")
+                        AlbumBuilder(bucketId, c.getString(iBucketName) ?: CoreText.of(R.string.screen_album_unnamed))
                     }
                     b.count++
                     // 记录路径样本用于 DCIM/Camera 置顶判断
@@ -118,7 +120,7 @@ class MediaRepo(private val resolver: ContentResolver) {
                         val modified = c.getLong(iModified)
                         val effTaken = if (taken > 0) taken else modified * 1000L
                         val b = albums.getOrPut(bucketId) {
-                            AlbumBuilder(bucketId, c.getString(iBucketName) ?: "未命名")
+                            AlbumBuilder(bucketId, c.getString(iBucketName) ?: CoreText.of(R.string.screen_album_unnamed))
                         }
                         b.count++
                         if (b.coverId == 0L) {

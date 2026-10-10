@@ -159,4 +159,6 @@
     <string name="main_export_source_dir_unavailable">Složka zdrojového souboru není dostupná: %1$s</string>
     <string name="main_export_replace_failed">Nahrazení zdrojového souboru selhalo: %1$s</string>
     <string name="main_export_replace_failed_bare">Nahrazení zdrojového souboru selhalo</string>
+    <string name="main_status_read_failed">Vybraný soubor nelze přečíst</string>
+    <string name="main_status_source_missing">Zdrojový soubor neexistuje nebo jej nelze přečíst</string>
 </resources>

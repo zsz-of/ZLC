@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">Tilhørende videofil mangler: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Kunne ikke tolke JPG-innholdet</string>
     <string name="fmt_err_vivo_companion_invalid">Tilhørende MP4 er ugyldig (ftyp-boksen mangler)</string>
+    <string name="fmt_log_apple_heic_no_pair">Forsiden er HEIC: foreløpig skrives ingen parringsidentifikator (HEIC-EXIF ligger i Exif item og krever en egen implementering); ContentIdentifier skrives bare på MOV-siden</string>
+    <string name="fmt_log_apple_still_found">Apples stillbildetidspunkt %1$d ms funnet (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Fant ikke noe Apples stillbildetidspunkt (ingen tom mebx/elst-edit); ved utskrift brukes videoens midtpunkt som reserve</string>
+    <string name="fmt_log_apple_still_no_carrier">Stillbildetidspunktet %1$d ms har ennå ingen bærer: ekte Apple-enheter bruker et mebx timed metadata-spor, som dette verktøyet foreløpig ikke setter sammen (MOV still-image-time skrives som -1)</string>
+    <string name="fmt_log_apple_write">Apple-format skrevet: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Utpakkingsutdata: %1$s (foto %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Google-format skrevet: %1$s (bilde %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor-format skrevet: %1$s (bilde %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex-sammensetningen mislyktes og hoppes over (påvirker ikke avspillingen): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) er satt sammen og lagt inn i moov</string>
+    <string name="fmt_log_meizu_write">Meizu-format skrevet: %1$s (bilde %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia-format skrevet: %1$s (JPEG %2$dB + utfylling 1B + video %3$dB + trailer %4$dB, UserComment inneholder "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO-format skrevet: %1$s (bilde %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Tolkes som Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Tolkes som Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Tolkes som Honor-livebilde (MP4 large size + uuid EIS-matrise)</string>
+    <string name="fmt_log_parse_meizu">Tolkes som Meizu-livebilde</string>
+    <string name="fmt_log_parse_nubia">Tolkes som Nubia-livebilde (nubiaVpfile-trailer)</string>
+    <string name="fmt_log_parse_oppo">Tolkes som OPPO-livebilde</string>
+    <string name="fmt_log_parse_vivo">Tolkes som vivo-livebilde med to filer</string>
+    <string name="fmt_log_parse_vivo_single">Tolkes som vivo-livebilde med én fil</string>
+    <string name="fmt_log_parse_xiaomi">Tolkes som Xiaomi-livebilde (Google-kompatibelt)</string>
+    <string name="fmt_log_vivo_id_mismatch">livephoto-ID-en for JPG og MP4 stemmer ikke overens: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo-livebilde med én fil skrevet: %1$s (bilde %2$dB + video %3$dB (med vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo-format skrevet: %1$s.jpg + %1$s.mp4 (livephoto-ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi-format skrevet: %1$s (bilde %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Utpakking</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

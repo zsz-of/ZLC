@@ -160,4 +160,6 @@
     <string name="main_export_source_dir_unavailable">წყარო ფაილის საქაღალდე მიუწვდომელია: %1$s</string>
     <string name="main_export_replace_failed">წყარო ფაილის ჩანაცვლება ვერ მოხერხდა: %1$s</string>
     <string name="main_export_replace_failed_bare">წყარო ფაილის ჩანაცვლება ვერ მოხერხდა</string>
+    <string name="main_status_read_failed">არჩეული ფაილის წაკითხვა ვერ მოხერხდა</string>
+    <string name="main_status_source_missing">წყარო ფაილი არ არსებობს ან წაუკითხავია</string>
 </resources>

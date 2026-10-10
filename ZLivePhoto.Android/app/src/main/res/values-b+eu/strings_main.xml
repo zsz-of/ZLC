@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">Jatorrizko fitxategiaren karpeta ez dago erabilgarri: %1$s</string>
     <string name="main_export_replace_failed">Jatorrizko fitxategia ordezkatzeak huts egin du: %1$s</string>
     <string name="main_export_replace_failed_bare">Jatorrizko fitxategia ordezkatzeak huts egin du</string>
+    <string name="main_status_read_failed">Ezin da hautatutako fitxategia irakurri</string>
+    <string name="main_status_source_missing">Iturburu-fitxategia ez da existitzen edo ez da irakurgarria</string>
 </resources>

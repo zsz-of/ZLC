@@ -13,7 +13,6 @@
     <string name="main_status_folder_unavailable">Non si podet atzèdere a sa cartella seletzionada (si suportant petzi directories de archiviatzione locales)</string>
     <plurals name="main_status_session_restored">
         <item quantity="one">Torradu a carrigare s’ùrtima sessione (%1$d file)</item>
-        <item quantity="many">Torradu a carrigare s’ùrtima sessione (%1$d files)</item>
         <item quantity="other">Torradu a carrigare s’ùrtima sessione (%1$d files)</item>
     </plurals>
     <string name="main_status_abnormal_exit">Rilevada una essida anormale de sa sessione colada; sa lista non cumplitada est istada isboidada</string>
@@ -31,26 +30,22 @@
     <string name="main_status_compose_paired">Fotos %1$d, vìdeos %2$d; a segunda de su nùmeru prus bassu s’ant agiuntu %3$d fàigas de cumponidura</string>
     <plurals name="main_status_compose_added">
         <item quantity="one">Agiunta %1$d fàiga de cumponidura; primi «Incumintza sa cunversione» pro esecutare sa cumponidura</item>
-        <item quantity="many">Agiuntas %1$d fàigas de cumponidura; primi «Incumintza sa cunversione» pro esecutare sa cumponidura</item>
         <item quantity="other">Agiuntas %1$d fàigas de cumponidura; primi «Incumintza sa cunversione» pro esecutare sa cumponidura</item>
     </plurals>
     <string name="main_status_auto_google">%1$s (formatu de essida cambiadu automaticamente in Google)</string>
     <plurals name="main_status_importing_shared">
         <item quantity="one">Importende %1$d immàgine cumpartzida…</item>
-        <item quantity="many">Importende %1$d immàgines cumpartzidas…</item>
         <item quantity="other">Importende %1$d immàgines cumpartzidas…</item>
     </plurals>
     <string name="main_status_import_failed">Importatzione fallida: %1$s</string>
     <string name="main_status_import_done_partial">Importatzione cumplitada: %1$d a su bène, %2$d fallidas</string>
     <plurals name="main_status_import_done">
         <item quantity="one">Importatzione cumplitada: importadu %1$d file in totu</item>
-        <item quantity="many">Importatzione cumplitada: importados %1$d files in totu</item>
         <item quantity="other">Importatzione cumplitada: importados %1$d files in totu</item>
     </plurals>
     <string name="main_status_import_stopped">Importatzione firmada: %1$d a su bène, %2$d fallidas</string>
     <plurals name="main_status_importing_files">
         <item quantity="one">Importende %1$d file…</item>
-        <item quantity="many">Importende %1$d files…</item>
         <item quantity="other">Importende %1$d files…</item>
     </plurals>
     <string name="main_status_importing_progress">Importende %1$d/%2$d…</string>
@@ -65,22 +60,18 @@
     <string name="main_status_batch_importing">Importatzione in massa %1$d/%2$d…</string>
     <plurals name="main_status_batch_stopped">
         <item quantity="one">Importatzione in massa firmada: importada %1$d Live Photo in totu</item>
-        <item quantity="many">Importatzione in massa firmada: importadas %1$d Live Photo in totu</item>
         <item quantity="other">Importatzione in massa firmada: importadas %1$d Live Photo in totu</item>
     </plurals>
     <plurals name="main_status_batch_stopped_skipped">
         <item quantity="one">Importatzione in massa firmada: importada %1$d Live Photo, brinchadu %2$d file non dinàmicu</item>
-        <item quantity="many">Importatzione in massa firmada: importadas %1$d Live Photo, brinchados %2$d files non dinàmicos</item>
         <item quantity="other">Importatzione in massa firmada: importadas %1$d Live Photo, brinchados %2$d files non dinàmicos</item>
     </plurals>
     <plurals name="main_status_batch_done">
         <item quantity="one">Importatzione in massa cumplitada: importada %1$d Live Photo in totu</item>
-        <item quantity="many">Importatzione in massa cumplitada: importadas %1$d Live Photo in totu</item>
         <item quantity="other">Importatzione in massa cumplitada: importadas %1$d Live Photo in totu</item>
     </plurals>
     <plurals name="main_status_batch_done_skipped">
         <item quantity="one">Importatzione in massa cumplitada: importada %1$d Live Photo, brinchadu %2$d file non dinàmicu</item>
-        <item quantity="many">Importatzione in massa cumplitada: importadas %1$d Live Photo, brinchados %2$d files non dinàmicos</item>
         <item quantity="other">Importatzione in massa cumplitada: importadas %1$d Live Photo, brinchados %2$d files non dinàmicos</item>
     </plurals>
     <string name="main_status_stopped_replace">Firmadu: elaborados %2$d de %1$d files, sostituidos %3$d files de orìgine</string>
@@ -130,7 +121,6 @@
     <string name="main_btn_auto_rename">Torra a numenare automaticamente</string>
     <plurals name="main_delete_done">
         <item quantity="one">Cantzelladu %1$d file orìginale</item>
-        <item quantity="many">Cantzellados %1$d files orìginales</item>
         <item quantity="other">Cantzellados %1$d files orìginales</item>
     </plurals>
     <string name="main_delete_nothing">Non serbit cantzellare is orìginales</string>
@@ -149,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">Sa cartella de su file de orìgine no est disponìbile: %1$s</string>
     <string name="main_export_replace_failed">Sostitutziune de su file de orìgine fallida: %1$s</string>
     <string name="main_export_replace_failed_bare">Sostitutziune de su file de orìgine fallida</string>
+    <string name="main_status_read_failed">Non si podet lèghere su documentu seletzionadu</string>
+    <string name="main_status_source_missing">Su documentu orìgine non esistet o non si podet lèghere</string>
 </resources>

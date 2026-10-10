@@ -80,4 +80,11 @@
     <string name="screen_date_yesterday">Ddoe</string>
     <string name="screen_date_this_year">%2$d/%1$d</string>
     <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+    <string name="screen_album_unnamed">Di-enw</string>
+    <string name="screen_eta_minutes">%1$d mun %2$s eil</string>
+    <string name="screen_eta_seconds">%1$d eil</string>
+    <string name="screen_transcode_eta">%1$s ar ôl</string>
+    <string name="screen_transcode_frames">%1$d/%2$d ffrâm</string>
+    <string name="screen_transcode_in_progress">Yn trawsgodio · %1$d ffrâm wedi\'u prosesu</string>
+    <string name="screen_transcode_progress">Trawsgodio %1$d%%</string>
 </resources>

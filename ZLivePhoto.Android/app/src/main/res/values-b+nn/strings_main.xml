@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">Mappa til kildefila er utilgjengeleg: %1$s</string>
     <string name="main_export_replace_failed">Klarte ikkje erstatte kildefila: %1$s</string>
     <string name="main_export_replace_failed_bare">Klarte ikkje erstatte kildefila</string>
+    <string name="main_status_read_failed">Klarte ikkje lese den valde fila</string>
+    <string name="main_status_source_missing">Kildefila finst ikkje eller kan ikkje lesast</string>
 </resources>

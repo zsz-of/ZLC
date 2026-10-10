@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Seul vihanoc\'h an talvoud, seul uheloc\'h ar perzhded hag ar vent (dre ziouer 18)</string>
     <string name="settings_encoder_title">Koder</string>
     <string name="settings_compress_preset_title">Rakstal gwaskadur</string>
-
+    <string name="settings_preset_amber">Goularz</string>
+    <string name="settings_preset_forest">Gwer koadeg</string>
+    <string name="settings_preset_ocean">Glas meurvor</string>
+    <string name="settings_preset_olive">Olivenn</string>
+    <string name="settings_preset_sunset">Orañjez kuzh-heol</string>
+    <string name="settings_preset_teal">Gwerblas</string>
+    <string name="settings_preset_violet">Violet</string>
 </resources>

@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Legere wearden betsjutte hegere kwaliteit en gruttere bestannen (standert 18)</string>
     <string name="settings_encoder_title">Kodearrer</string>
     <string name="settings_compress_preset_title">Kompresjeprofyl</string>
+    <string name="settings_preset_amber">Barnstien</string>
+    <string name="settings_preset_forest">Boskgrien</string>
+    <string name="settings_preset_ocean">Oseaanblau</string>
+    <string name="settings_preset_olive">Olive</string>
+    <string name="settings_preset_sunset">Sinne-ûndergong</string>
+    <string name="settings_preset_teal">Blaugrien</string>
+    <string name="settings_preset_violet">Fiolet</string>
 </resources>

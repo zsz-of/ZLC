@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Որքան փոքր է արժեքը, այնքան բարձր է որակը և մեծ է ֆայլը (կանխադրված 18)</string>
     <string name="settings_encoder_title">Կոդավորիչ</string>
     <string name="settings_compress_preset_title">Սեղմման նախադրվածք</string>
-
+    <string name="settings_preset_amber">Սաթագույն</string>
+    <string name="settings_preset_forest">Անտառային կանաչ</string>
+    <string name="settings_preset_ocean">Օվկիանոսի կապույտ</string>
+    <string name="settings_preset_olive">Ձիթապտղագույն</string>
+    <string name="settings_preset_sunset">Մայրամուտի նարնջագույն</string>
+    <string name="settings_preset_teal">Փիրուզագույն</string>
+    <string name="settings_preset_violet">Մանուշակագույն</string>
 </resources>

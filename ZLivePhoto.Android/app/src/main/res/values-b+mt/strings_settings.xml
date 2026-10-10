@@ -95,5 +95,11 @@
     <string name="settings_crf_hint">Valur iżgħar ifisser kwalità ogħla u daqs akbar (default 18)</string>
     <string name="settings_encoder_title">Enkodatur</string>
     <string name="settings_compress_preset_title">Profil tal-kompressjoni</string>
-
+    <string name="settings_preset_amber">Ambra</string>
+    <string name="settings_preset_forest">Aħdar tal-foresta</string>
+    <string name="settings_preset_ocean">Blu tal-oċean</string>
+    <string name="settings_preset_olive">Żebbuġa</string>
+    <string name="settings_preset_sunset">Oranġjo tal-inżul tax-xemx</string>
+    <string name="settings_preset_teal">Aħdar ikħal</string>
+    <string name="settings_preset_violet">Vjola</string>
 </resources>

@@ -4,6 +4,7 @@ import android.media.MediaCodec
 import android.media.MediaExtractor
 import android.media.MediaFormat
 import android.media.MediaMuxer
+import com.zsz.zlivephoto.R
 import java.io.File
 import java.nio.ByteBuffer
 
@@ -49,9 +50,19 @@ internal object VideoTrackSanitizer {
         //    或品牌需要归一化时才走这条路。
         val normalized = Mp4Util.normalizeMovToMp4(mp4)
         if (!normalized.contentEquals(mp4)) {
+            val tag = CoreText.of(R.string.conv_tag_sanitize)
+            // 两条文案各自是完整独立的一句话，分两行输出：早期版本把「剔除附加轨（…）、」
+            // 塞进「已按字节级%1$s归一化…」的 %1$s，但各语言把 %1$s 放进了括号/介词后，
+            // 拼接结果在非中文下会读不通（「… by Dropped extra tracks (meta), (zero-copy …)」）。
             val dropped = nonAvHandlers(mp4)
-            val extra = if (dropped.isEmpty()) "" else "剔除附加轨（${dropped.joinToString("/")}）、"
-            log("info", "已按字节级${extra}归一化容器品牌（零拷贝，样本数据未改动）", "净化")
+            if (dropped.isNotEmpty()) {
+                log(
+                    "info",
+                    CoreText.of(R.string.conv_log_sanitize_dropped_prefix, dropped.joinToString("/")),
+                    tag
+                )
+            }
+            log("info", CoreText.of(R.string.conv_log_sanitize_normalized), tag)
             return normalized
         }
 
@@ -81,7 +92,7 @@ internal object VideoTrackSanitizer {
                 }
             }
             if (srcTracks.none { isVideo[it] == true }) {
-                log("warning", "输入视频没有可用的视频轨，跳过附加轨净化", "净化")
+                log("warning", CoreText.of(R.string.conv_log_sanitize_no_video_track), CoreText.of(R.string.conv_tag_sanitize))
                 return null
             }
 
@@ -100,7 +111,7 @@ internal object VideoTrackSanitizer {
                 } catch (e: Exception) {
                     if (isVideo[src] == true) {
                         // 视频轨加不进去就不能产出这样的产物：宁可放弃净化
-                        log("warning", "视频轨无法加入重封装器（${e.message}），跳过附加轨净化", "净化")
+                        log("warning", CoreText.of(R.string.conv_log_sanitize_track_add_failed, e.message), CoreText.of(R.string.conv_tag_sanitize))
                         return null
                     }
                 }
@@ -133,7 +144,7 @@ internal object VideoTrackSanitizer {
             val out = tmpOut.readBytes()
             if (out.isNotEmpty() && Mp4Util.hasFtyp(out)) out else null
         } catch (e: Exception) {
-            log("warning", "附加轨净化失败（${e.message}），按原样输出", "净化")
+            log("warning", CoreText.of(R.string.conv_log_sanitize_exception, e.message), CoreText.of(R.string.conv_tag_sanitize))
             null
         } finally {
             if (muxer != null) {

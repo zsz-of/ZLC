@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">Boarnebestânsmap net beskikber: %1$s</string>
     <string name="main_export_replace_failed">Boarnebestân ferfangen mislearre: %1$s</string>
     <string name="main_export_replace_failed_bare">Boarnebestân ferfangen mislearre</string>
+    <string name="main_status_read_failed">Kin it keazen bestân net lêze</string>
+    <string name="main_status_source_missing">It boarnebestân bestiet net of is net lêsber</string>
 </resources>

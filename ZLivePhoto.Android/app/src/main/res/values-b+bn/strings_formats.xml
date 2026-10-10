@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">সঙ্গী ভিডিও ফাইল নেই: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG বডি বিশ্লেষণ করা যায়নি</string>
     <string name="fmt_err_vivo_companion_invalid">সঙ্গী MP4 অবৈধ (ftyp box নেই)</string>
+    <string name="fmt_log_apple_heic_no_pair">কভার HEIC: পেয়ারিং শনাক্তকারী আপাতত লেখা হয় না (HEIC-এর EXIF, Exif item-এ থাকে ও আলাদা বাস্তবায়ন দরকার); ContentIdentifier শুধু MOV দিকে লেখা হয়</string>
+    <string name="fmt_log_apple_still_found">Apple স্থির ফ্রেম সময় %1$d ms বিশ্লেষণ করা হয়েছে (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple স্থির ফ্রেম সময় বিশ্লেষণ করা যায়নি (mebx/elst খালি edit নেই), রপ্তানির সময় ভিডিওর মধ্যবিন্দু ভিত্তি হবে</string>
+    <string name="fmt_log_apple_still_no_carrier">স্থির ফ্রেম সময় %1$d ms এর জন্য এখনো কোনো বাহক নেই: আসল Apple mebx timed metadata ট্র্যাক ব্যবহার করে, এই টুল আপাতত তা কম্পোজ করে না (MOV-এর still-image-time ঋণাত্মক এক লেখা হয়)</string>
+    <string name="fmt_log_apple_write">Apple ফরম্যাট লেখা হচ্ছে: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">এক্সট্র্যাক্ট আউটপুট: %1$s (ছবি %2$dB, HDR=%3$s) + %4$s (ভিডিও %5$dB)</string>
+    <string name="fmt_log_google_write">Google ফরম্যাট লেখা হচ্ছে: %1$s (ছবি %2$dB + ভিডিও %3$dB)</string>
+    <string name="fmt_log_honor_write">HONOR ফরম্যাট লেখা হচ্ছে: %1$s (ছবি %2$dB + ভিডিও %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex কম্পোজ ব্যর্থ, বাদ দেওয়া হয়েছে (চালনায় প্রভাব নেই): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) কম্পোজ করে moov-এ সন্নিবেশ করা হয়েছে</string>
+    <string name="fmt_log_meizu_write">Meizu ফরম্যাট লেখা হচ্ছে: %1$s (ছবি %2$dB + ভিডিও %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia ফরম্যাট লেখা হচ্ছে: %1$s (JPEG %2$dB + প্যাডিং 1B + ভিডিও %3$dB + ট্রেইলার %4$dB, UserComment-এ “%5$s”)</string>
+    <string name="fmt_log_oppo_write">OPPO ফরম্যাট লেখা হচ্ছে: %1$s (ছবি %2$dB + ভিডিও %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo অনুযায়ী বিশ্লেষণ</string>
+    <string name="fmt_log_parse_google">Google Motion Photo অনুযায়ী বিশ্লেষণ</string>
+    <string name="fmt_log_parse_honor">HONOR লাইভ ফটো অনুযায়ী বিশ্লেষণ (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu লাইভ ফটো অনুযায়ী বিশ্লেষণ</string>
+    <string name="fmt_log_parse_nubia">Nubia লাইভ ফটো অনুযায়ী বিশ্লেষণ (nubiaVpfile ট্রেইলার)</string>
+    <string name="fmt_log_parse_oppo">OPPO লাইভ ফটো অনুযায়ী বিশ্লেষণ</string>
+    <string name="fmt_log_parse_vivo">vivo দ্বি-ফাইল লাইভ ফটো অনুযায়ী বিশ্লেষণ</string>
+    <string name="fmt_log_parse_vivo_single">vivo একক-ফাইল লাইভ ফটো অনুযায়ী বিশ্লেষণ</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi লাইভ ফটো অনুযায়ী বিশ্লেষণ (Google সামঞ্জস্যপূর্ণ)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG ও MP4-এর livephoto ID মিলছে না: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo একক-ফাইল লাইভ ফটো লেখা হচ্ছে: %1$s (ছবি %2$dB + ভিডিও %3$dB (vivoMediaEStream + lpex সহ) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo ফরম্যাট লেখা হচ্ছে: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi ফরম্যাট লেখা হচ্ছে: %1$s (ছবি %2$dB + ভিডিও %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">এক্সট্র্যাক্ট</string>
+    <string name="fmt_tag_honor">HONOR</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

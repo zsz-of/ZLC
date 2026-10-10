@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import com.zsz.zlivephoto.BuildConfig
+import com.zsz.zlivephoto.R
 
 // ImageToolBox 风格的颜色方案
 private val LightColors = lightColorScheme(
@@ -98,7 +99,15 @@ internal val presetHues = floatArrayOf(
     25f   // 落日橙
 )
 
-internal val presetNames = listOf("紫罗兰", "海洋蓝", "青碧", "森绿", "橄榄", "琥珀", "落日橙")
+internal val presetNameRes = intArrayOf(
+    R.string.settings_preset_violet,
+    R.string.settings_preset_ocean,
+    R.string.settings_preset_teal,
+    R.string.settings_preset_forest,
+    R.string.settings_preset_olive,
+    R.string.settings_preset_amber,
+    R.string.settings_preset_sunset
+)
 
 /** 把颜色替换为指定色相（保留原饱和度/明度） */
 private fun shiftHue(c: Color, hue: Float): Color {

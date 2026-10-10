@@ -170,4 +170,6 @@
     <string name="main_export_source_dir_unavailable">Folderul fișierului sursă nu este disponibil: %1$s</string>
     <string name="main_export_replace_failed">Înlocuirea fișierului sursă a eșuat: %1$s</string>
     <string name="main_export_replace_failed_bare">Înlocuirea fișierului sursă a eșuat</string>
+    <string name="main_status_read_failed">Fișierul selectat nu poate fi citit</string>
+    <string name="main_status_source_missing">Fișierul sursă nu există sau nu poate fi citit</string>
 </resources>

@@ -34,4 +34,35 @@
     <string name="fmt_err_vivo_companion_missing">Mankas la akompana videodosiero: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Analizo de la JPG-korpo malsukcesis</string>
     <string name="fmt_err_vivo_companion_invalid">La akompana MP4 ne validas (mankas ftyp-skatolo)</string>
+    <string name="fmt_log_apple_heic_no_pair">La kovrilo estas HEIC: ankoraŭ ne skribiĝas kunigilo (la EXIF de HEIC troviĝas en Exif item kaj postulas apartan realigon); ContentIdentifier skribiĝas nur ĉe la MOV-flanko</string>
+    <string name="fmt_log_apple_still_found">Trovita la Apple-kadromomento %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">La Apple-kadromomento ne estis trovita (neniu malplena edit mebx/elst): ĉe elportado oni fallas al la mezpunkto de la video</string>
+    <string name="fmt_log_apple_still_no_carrier">La kadromomento %1$d ms ankoraŭ ne havas portanton: vera Apple uzas tempigitan metadatan trakon mebx; ĉi tiu ilo ankoraŭ ne kunmetas ĝin (still-image-time de MOV skribiĝas -1)</string>
+    <string name="fmt_log_apple_write">Skribita la formato Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Eligo de la eltiro: %1$s (foto %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Skribita la formato Google: %1$s (bildo %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Skribita la formato Honor: %1$s (bildo %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Kunmeto de lpex malsukcesis, preterlasita (ne influas ludadon): %1$s</string>
+    <string name="fmt_log_lpex_ok">Kunmetita la ujo lpex (LivePhotoExtension) kaj enŝovita en moov</string>
+    <string name="fmt_log_meizu_write">Skribita la formato Meizu: %1$s (bildo %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Skribita la formato Nubia: %1$s (JPEG %2$dB + plenigo 1B + video %3$dB + vosto %4$dB, UserComment enhavas "%5$s")</string>
+    <string name="fmt_log_oppo_write">Skribita la formato OPPO: %1$s (bildo %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Analizo kiel Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Analizo kiel Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Analizo kiel Live Photo Honor (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Analizo kiel Live Photo Meizu</string>
+    <string name="fmt_log_parse_nubia">Analizo kiel Live Photo Nubia (vosto nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Analizo kiel Live Photo OPPO</string>
+    <string name="fmt_log_parse_vivo">Analizo kiel Live Photo vivo kun du dosieroj</string>
+    <string name="fmt_log_parse_vivo_single">Analizo kiel Live Photo vivo kun unu dosiero</string>
+    <string name="fmt_log_parse_xiaomi">Analizo kiel Live Photo Xiaomi (Google-kompatibla)</string>
+    <string name="fmt_log_vivo_id_mismatch">La ID de livephoto de JPG kaj MP4 ne kongruas: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Skribita la Live Photo vivo kun unu dosiero: %1$s (bildo %2$dB + video %3$dB (kun vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Skribita la formato vivo: %1$s.jpg + %1$s.mp4 (ID de livephoto: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Skribita la formato Xiaomi: %1$s (bildo %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Eltiri</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

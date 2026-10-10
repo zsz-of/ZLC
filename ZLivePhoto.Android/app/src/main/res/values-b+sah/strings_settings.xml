@@ -96,5 +96,11 @@
     <string name="settings_crf_hint">Кыра суолта — үрдүк хаачыстыба уонна улахан кээмэй (стандарт 18)</string>
     <string name="settings_encoder_title">Кодировкалааччы</string>
     <string name="settings_compress_preset_title">Компрессия бэлиэтэ</string>
-
+    <string name="settings_preset_amber">Янтарь</string>
+    <string name="settings_preset_forest">Тыа күөҕэ</string>
+    <string name="settings_preset_ocean">Муора күөҕэ</string>
+    <string name="settings_preset_olive">Маслина өҥө</string>
+    <string name="settings_preset_sunset">Күн киириитин оранж</string>
+    <string name="settings_preset_teal">Күөгүрүйбүт</string>
+    <string name="settings_preset_violet">Фиолетовай</string>
 </resources>

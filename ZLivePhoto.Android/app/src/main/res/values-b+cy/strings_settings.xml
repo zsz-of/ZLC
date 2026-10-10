@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Po isaf y gwerth, po uchaf yr ansawdd a\'r maint (diofyn 18)</string>
     <string name="settings_encoder_title">Codwr</string>
     <string name="settings_compress_preset_title">Rhagosodiad cywasgu</string>
-
+    <string name="settings_preset_amber">Ambr</string>
+    <string name="settings_preset_forest">Gwyrddlas coedwig</string>
+    <string name="settings_preset_ocean">Glas cefnfor</string>
+    <string name="settings_preset_olive">Olewydd</string>
+    <string name="settings_preset_sunset">Oren machlud</string>
+    <string name="settings_preset_teal">Gwyrddlas</string>
+    <string name="settings_preset_violet">Fioled</string>
 </resources>

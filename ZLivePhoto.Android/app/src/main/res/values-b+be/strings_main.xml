@@ -180,4 +180,6 @@
     <string name="main_export_source_dir_unavailable">Папка зыходнага файла недаступная: %1$s</string>
     <string name="main_export_replace_failed">Не ўдалося замяніць зыходны файл: %1$s</string>
     <string name="main_export_replace_failed_bare">Не ўдалося замяніць зыходны файл</string>
+    <string name="main_status_read_failed">Не ўдалося прачытаць выбраны файл</string>
+    <string name="main_status_source_missing">Зыходны файл не існуе або недаступны для чытання</string>
 </resources>

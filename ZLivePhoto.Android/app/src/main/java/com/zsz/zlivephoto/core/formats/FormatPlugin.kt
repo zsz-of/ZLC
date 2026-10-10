@@ -19,14 +19,6 @@ internal abstract class FormatPlugin {
     @get:StringRes
     abstract val displayRes: Int
 
-    /**
-     * 兼容旧调用点的展示名（MainActivity.kt:1551 / ui/picker/AlbumScanner.kt:144 /
-     * core/Converter.kt:45,339 仍按 String 使用，本次 i18n 未覆盖这三个文件）。
-     * 中文兜底表与 res/values/strings_formats.xml 一一对应。
-     * TODO(i18n)：上述调用点改成 stringResource(displayRes) 后，删除本属性与 [LEGACY_ZH_NAMES]。
-     */
-    val display: String get() = LEGACY_ZH_NAMES[displayRes] ?: name
-
     /** 返回 0-100 的置信度；0 表示确定不是本格式。 */
     abstract fun detect(path: String): Int
 
@@ -49,16 +41,3 @@ internal abstract class FormatPlugin {
     }
 }
 
-/** 旧调用点（无 Context 场景）用的中文兜底表；正式文案在 res/values/strings_formats.xml */
-private val LEGACY_ZH_NAMES: Map<Int, String> = mapOf(
-    R.string.fmt_apple to "Apple Live Photo",
-    R.string.fmt_extract to "拆解",
-    R.string.fmt_google to "Google Motion Photo",
-    R.string.fmt_honor to "荣耀动态照片",
-    R.string.fmt_meizu to "魅族动态照片",
-    R.string.fmt_nubia to "努比亚动态照片",
-    R.string.fmt_oppo to "OPPO 动态照片",
-    R.string.fmt_vivo to "vivo 动态照片",
-    R.string.fmt_vivo_single to "vivo 单文件实况",
-    R.string.fmt_xiaomi to "小米动态照片",
-)

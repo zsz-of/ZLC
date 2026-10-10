@@ -160,4 +160,6 @@
     <string name="main_export_source_dir_unavailable">Dosja e skedarit burimor nuk është e disponueshme: %1$s</string>
     <string name="main_export_replace_failed">Zëvendësimi i skedarit burimor dështoi: %1$s</string>
     <string name="main_export_replace_failed_bare">Zëvendësimi i skedarit burimor dështoi</string>
+    <string name="main_status_read_failed">Leximi i skedarit të zgjedhur dështoi</string>
+    <string name="main_status_source_missing">Skedari burim mungon ose nuk lexohet</string>
 </resources>

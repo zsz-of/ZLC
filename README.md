@@ -2,7 +2,7 @@
 
 [English](#english) · [日本語](#日本語) · [한국어](#한국어) · [简体中文](#简体中文) · [繁體中文](#繁體中文) · [Русский](#русский) · [Français](#français) · [Latina](#latina)
 
-**Developer / 开发者**: zsz · **Version / 版本**: v3.6.1 · **License**: [GPL-3.0-or-later](LICENSE)
+**Developer / 开发者**: zsz · **Version / 版本**: v3.6.2 · **License**: [GPL-3.0-or-later](LICENSE)
 
 ---
 
@@ -63,6 +63,7 @@ Get the latest build from [Releases](https://github.com/zsz-of/ZLC/releases) —
 - **High refresh rate**: requests the highest supported display mode at launch
 - **List persistence**: the pending list is stored as local JSON and can be restored after a crash
 - **System share target**: receive photos shared from other apps
+- **Fully localized UI text**: the interface is available in 120 languages (follows the system or the in-app language setting)
 
 ### Build from source
 
@@ -144,6 +145,7 @@ Kotlin + Jetpack Compose で作られた Android アプリで、主要なライ�
 - **高リフレッシュレート**：起動時に端末の最大リフレッシュレートを要求
 - **リスト永続化**：待機リストをローカル JSON に保存し、異常終了後も復元
 - **共有受け取り**：他アプリからの共有写真を変換
+- **UI テキストの全言語対応**：アプリの UI テキストは 120 言語に対応（システムまたはアプリ内の言語設定に従います）
 
 ### ソースからのビルド
 
@@ -221,6 +223,7 @@ Kotlin + Jetpack Compose로 만든 Android 앱으로, 주요 라이브 포토 �
 - **고주사율**: 실행 시 기기가 지원하는 최대 주사율 요청
 - **목록 영속화**: 대기 목록을 로컬 JSON으로 저장하고 비정상 종료 후 복원
 - **공유 받기**: 다른 앱에서 공유한 사진 변환
+- **UI 텍스트 전면 현지화**: 앱 UI 텍스트는 120개 언어를 지원합니다(시스템 또는 앱 내 언어 설정을 따름)
 
 ### 소스에서 빌드
 
@@ -245,7 +248,7 @@ GNU General Public License v3.0 이상(GPL-3.0-or-later). Copyright (C) 2026 zsz
 
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / 魅族 / 努比亚 / Apple Live Photo 互转、拆解与合成。
 
-**开发者**: zsz · **版本**: v3.6.1 · **许可证**: GPL-3.0-or-later
+**开发者**: zsz · **版本**: v3.6.2 · **许可证**: GPL-3.0-or-later
 
 本程序实现了主流动态照片格式之间的字节级无损互转，并支持动态照片的拆解与合成。界面支持 **121 种语言**（含简繁中文各变体、藏/傣泐/彝/维吾尔等少数民族语言），**120 个语言目录全部 100% 翻译**（404/404 key），设置页可单独切换应用语言，并已适配 RTL（从右到左）语言。
 
@@ -310,6 +313,7 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 | 高刷新率 | 完整版启动时自动请求设备支持的最高刷新率档位，动画跑满屏幕帧率上限 |
 | 列表持久化 | Android 列表自动落盘本地 JSON，异常退出可检测并恢复 |
 | 系统分享 | Android 支持从系统分享接收照片转换 |
+| 界面文案全量本地化 | 应用界面文案已支持 120 种语言（跟随系统或应用内语言设置切换） |
 
 ### 从源码构建
 
@@ -349,7 +353,7 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 
 > 動態照片格式互轉工具：Google Motion Photo / OPPO / vivo / 小米 / 榮耀 / 魅族 / 努比亞 / Apple Live Photo 互轉、拆解與合成。
 
-**開發者**：zsz ・ **版本**：v3.6.1 ・ **授權條款**：GPL-3.0-or-later
+**開發者**：zsz ・ **版本**：v3.6.2 ・ **授權條款**：GPL-3.0-or-later
 
 本程式可在主流動態照片格式之間進行位元組級無損互轉，並支援動態照片的拆解與合成。介面支援 **121 種語言**（含簡繁中文各變體、藏／傣泐／彝／維吾爾等少數民族語言），**120 個語言目錄全部 100% 翻譯**（404/404 key），設定頁可單獨切換應用程式語言，並已支援 RTL（由右至左）語言。
 
@@ -404,6 +408,7 @@ Android 端無需額外執行環境。完整版內建 ffmpeg 轉碼器，僅提�
 - **高更新率**：啟動時要求裝置支援的最高更新率
 - **清單持久化**：待處理清單自動存為本機 JSON，異常結束後可恢復
 - **系統分享**：可接收其他應用程式分享的照片進行轉換
+- **介面文案全量在地化**：應用程式介面文案已支援 120 種語言（跟隨系統或應用程式內語言設定切換）
 
 ### 從原始碼建置
 
@@ -481,6 +486,7 @@ Android-приложение (Kotlin + Jetpack Compose) выполняет **п�
 - **Высокая частота обновления**: при запуске запрашивается максимальная поддерживаемая частота
 - **Сохранение списка**: очередь хранится в локальном JSON и восстанавливается после сбоя
 - **Приём из «Поделиться»**: преобразование фото, отправленных из других приложений
+- **Полная локализация интерфейса**: текст интерфейса доступен на 120 языках (в зависимости от системного или внутрипрограммного выбора языка)
 
 ### Сборка из исходников
 
@@ -558,6 +564,7 @@ La dernière version est disponible dans [Releases](https://github.com/zsz-of/ZL
 - **Taux de rafraîchissement élevé** : demande le taux maximal pris en charge au démarrage
 - **Persistance de la liste** : file d'attente enregistrée en JSON local et restaurée après un arrêt anormal
 - **Partage système** : conversion des photos partagées depuis d'autres applications
+- **Textes de l'interface entièrement localisés** : les textes de l'interface sont disponibles en 120 langues (selon la langue du système ou le réglage de langue de l'application)
 
 ### Compilation depuis les sources
 
@@ -635,6 +642,7 @@ Ultima versio in [Releases](https://github.com/zsz-of/ZLC/releases) praesto est 
 - **Celeritas renovationis alta**: in initio maxima dispositio sustentata petitur
 - **Persistentia indicis**: index pendentium in JSON locali servatur et post casum restituitur
 - **Communicatio systematis**: photogrammata ex aliis programmatibus accepta convertuntur
+- **Textus interfaciei plene localizatus**: textus interfaciei 120 linguis praesto est (systema vel optionem linguae in programmate sequitur)
 
 ### Compilatio e fonte
 

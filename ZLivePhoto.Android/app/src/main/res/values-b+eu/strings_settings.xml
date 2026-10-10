@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Zenbat eta balio txikiagoa, orduan eta kalitate eta tamaina handiagoa (lehenetsia 18)</string>
     <string name="settings_encoder_title">Kodetzailea</string>
     <string name="settings_compress_preset_title">Konpresio-aurrezarpena</string>
-
+    <string name="settings_preset_amber">Anbarra</string>
+    <string name="settings_preset_forest">Baso-berdea</string>
+    <string name="settings_preset_ocean">Ozeano-urdina</string>
+    <string name="settings_preset_olive">Oliba</string>
+    <string name="settings_preset_sunset">Eguzki-sarrera laranja</string>
+    <string name="settings_preset_teal">Urdin-berdea</string>
+    <string name="settings_preset_violet">Bioleta</string>
 </resources>

@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">აკლია თანმხვედრი ვიდეო ფაილი: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG-ის ძირითადი ნაწილის ანალიზი ვერ მოხერხდა</string>
     <string name="fmt_err_vivo_companion_invalid">თანმხვედრი MP4 არავალიდურია (აკლია ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">ყდა არის HEIC: წყვილის იდენტიფიკატორი ჯერ არ იწერება (HEIC-ის EXIF Exif item-შია, ცალკე რეალიზაცია საჭიროა), ContentIdentifier მხოლოდ MOV-ის მხარეს იწერება</string>
+    <string name="fmt_log_apple_still_found">Apple-ის სტატიკური კადრის დრო %1$d ms დადგინდა (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple-ის სტატიკური კადრის დრო ვერ დადგინდა (mebx/elst ცარიელი edit არ არის), გამოტანისას ვიდეოს შუა წერტილი გამოიყენება</string>
+    <string name="fmt_log_apple_still_no_carrier">სტატიკური კადრის დროისთვის %1$d ms მატარებელი არ არის: ნამდვილი Apple იყენებს mebx timed metadata ტრეკს, ეს ხელსაწყო ჯერ არ აერთიანებს (MOV-ის still-image-time იწერება -1)</string>
+    <string name="fmt_log_apple_write">Apple ფორმატი ჩაიწერა: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">ამოღების გამოსავალი: %1$s (ფოტო %2$dB, HDR=%3$s) + %4$s (ვიდეო %5$dB)</string>
+    <string name="fmt_log_google_write">Google ფორმატი ჩაიწერა: %1$s (სურათი %2$dB + ვიდეო %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor ფორმატი ჩაიწერა: %1$s (სურათი %2$dB + ვიდეო %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex-ის სინთეზი ვერ მოხერხდა, გამოტოვებულია (დაკვრაზე არ მოქმედებს): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) შედგა და ჩაემატა moov-ში</string>
+    <string name="fmt_log_meizu_write">Meizu ფორმატი ჩაიწერა: %1$s (სურათი %2$dB + ვიდეო %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia ფორმატი ჩაიწერა: %1$s (JPEG %2$dB + 1B შევსება + ვიდეო %3$dB + კუდი %4$dB, UserComment შეიცავს «%5$s»)</string>
+    <string name="fmt_log_oppo_write">OPPO ფორმატი ჩაიწერა: %1$s (სურათი %2$dB + ვიდეო %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">გაანალიზდა როგორც Apple Live Photo</string>
+    <string name="fmt_log_parse_google">გაანალიზდა როგორც Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">გაანალიზდა როგორც Honor-ის მოძრავი ფოტო (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">გაანალიზდა როგორც Meizu-ს მოძრავი ფოტო</string>
+    <string name="fmt_log_parse_nubia">გაანალიზდა როგორც Nubia-ს მოძრავი ფოტო (nubiaVpfile კუდი)</string>
+    <string name="fmt_log_parse_oppo">გაანალიზდა როგორც OPPO-ს მოძრავი ფოტო</string>
+    <string name="fmt_log_parse_vivo">გაანალიზდა როგორც vivo-ს ორფაილიანი მოძრავი ფოტო</string>
+    <string name="fmt_log_parse_vivo_single">გაანალიზდა როგორც vivo-ს ერთფაილიანი Live Photo</string>
+    <string name="fmt_log_parse_xiaomi">გაანალიზდა როგორც Xiaomi-ს მოძრავი ფოტო (Google-თან თავსებადი)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG-ისა და MP4-ის livephoto ID არ ემთხვევა: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo-ს ერთფაილიანი Live Photo ჩაიწერა: %1$s (სურათი %2$dB + ვიდეო %3$dB (vivoMediaEStream + lpex-ით) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo ფორმატი ჩაიწერა: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi ფორმატი ჩაიწერა: %1$s (სურათი %2$dB + ვიდეო %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">ამოღება</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

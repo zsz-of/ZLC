@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">Fálta\'l ficheru de videu compañeru: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Falló l\'analís del cuerpu del JPG</string>
     <string name="fmt_err_vivo_companion_invalid">El MP4 compañeru ye inválidu (fálta la caxa ftyp)</string>
+    <string name="fmt_log_apple_heic_no_pair">La portada ye HEIC: de mou provisional nun se va escribir la marca d\'empareyamientu (l\'EXIF de HEIC ta nun Exif item y hai qu\'implementalu aparte); el ContentIdentifier namás s\'escribe nel llau MOV</string>
+    <string name="fmt_log_apple_still_found">Analizóse la hora del fotograma Apple %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Nun s\'analizó la hora del fotograma Apple (ensin edición vacida mebx/elst); al esportar úsase\'l puntu mediu del videu</string>
+    <string name="fmt_log_apple_still_no_carrier">La hora del fotograma %1$d ms entá nun tien portador: l\'Apple real usa una pista de metadatos temporales mebx, qu\'esta ferramienta entá nun sintetiza (el still-image-time del MOV escríbese como -1)</string>
+    <string name="fmt_log_apple_write">Escribiendo formatu Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Salida d\'estrayimientu: %1$s (semeya %2$dB, HDR=%3$s) + %4$s (videu %5$dB)</string>
+    <string name="fmt_log_google_write">Escribiendo formatu Google: %1$s (imaxe %2$dB + videu %3$dB)</string>
+    <string name="fmt_log_honor_write">Escribiendo formatu Honor: %1$s (imaxe %2$dB + videu %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Falló la composición de lpex, sáltase (nun afecta a la reproducción): %1$s</string>
+    <string name="fmt_log_lpex_ok">Compúnxose la caxa lpex (LivePhotoExtension) y insertóse en moov</string>
+    <string name="fmt_log_meizu_write">Escribiendo formatu Meizu: %1$s (imaxe %2$dB + videu %3$dB)</string>
+    <string name="fmt_log_nubia_write">Escribiendo formatu Nubia: %1$s (JPEG %2$dB + rellenu 1B + videu %3$dB + caberu %4$dB, UserComment contién "%5$s")</string>
+    <string name="fmt_log_oppo_write">Escribiendo formatu OPPO: %1$s (imaxe %2$dB + videu %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Analizando como Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Analizando como Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Analizando como Honor Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Analizando como Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">Analizando como Nubia Live Photo (caberu nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Analizando como OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">Analizando como vivo Live Photo de dos ficheros</string>
+    <string name="fmt_log_parse_vivo_single">Analizando como vivo Live Photo d\'un ficheru</string>
+    <string name="fmt_log_parse_xiaomi">Analizando como Xiaomi Live Photo (compatible con Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">El ID livephoto del JPG y del MP4 nun concasen: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Escribiendo vivo Live Photo d\'un ficheru: %1$s (imaxe %2$dB + videu %3$dB (con vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Escribiendo formatu vivo: %1$s.jpg + %1$s.mp4 (ID livephoto: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Escribiendo formatu Xiaomi: %1$s (imaxe %2$dB + videu %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Estrayer</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

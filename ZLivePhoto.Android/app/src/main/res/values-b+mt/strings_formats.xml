@@ -26,4 +26,35 @@
     <string name="fmt_err_vivo_companion_missing">Il-fajl tal-vidjo kumpann nieqes: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">L-analiżi tal-korp JPG falliet</string>
     <string name="fmt_err_vivo_companion_invalid">Il-MP4 kumpann mhuwiex validu (m\&#39;hemmx ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">Il-kopertura hija HEIC: il-marka tal-paring bħalissa ma tinkitibx (l-EXIF tal-HEIC jinsab fl-element Exif u jeħtieġ implimentazzjoni separata), il-ContentIdentifier jinkiteb biss fin-naħa MOV</string>
+    <string name="fmt_log_apple_still_found">Inqrat il-ħin tal-istill image ta’ Apple: %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Il-ħin tal-istill image ta’ Apple ma nqratx (m’hemmx edit vojt mebx/elst), fl-esportazzjoni jintuża n-nofs tal-vidjow</string>
+    <string name="fmt_log_apple_still_no_carrier">Il-ħin %1$d ms tal-istill image għad m’għandux carrier: l-Apple oriġinali tuża track mebx timed metadata, dan l-għodda bħalissa ma toħloqx waħda (l-still-image-time tal-MOV jinkiteb bħala -1)</string>
+    <string name="fmt_log_apple_write">Qed jinkiteb il-format Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Ħruġ tal-estrazzjoni: %1$s (ritratt %2$dB, HDR=%3$s) + %4$s (vidjow %5$dB)</string>
+    <string name="fmt_log_google_write">Qed jinkiteb il-format Google: %1$s (immaġni %2$dB + vidjow %3$dB)</string>
+    <string name="fmt_log_honor_write">Qed jinkiteb il-format Honor: %1$s (immaġni %2$dB + vidjow %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Il-kompożizzjoni lpex falliet, inqabżet (ma taffettwax il-playback): %1$s</string>
+    <string name="fmt_log_lpex_ok">Il-lpex box (LivePhotoExtension) ġie kompost u miżjud mal-moov</string>
+    <string name="fmt_log_meizu_write">Qed jinkiteb il-format Meizu: %1$s (immaġni %2$dB + vidjow %3$dB)</string>
+    <string name="fmt_log_nubia_write">Qed jinkiteb il-format Nubia: %1$s (JPEG %2$dB + 1B mili + vidjow %3$dB + trailer %4$dB, il-UserComment fih "%5$s")</string>
+    <string name="fmt_log_oppo_write">Qed jinkiteb il-format OPPO: %1$s (immaġni %2$dB + vidjow %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Qed jiġi analizzat bħala Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Qed jiġi analizzat bħala Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Qed jiġi analizzat bħala Honor Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Qed jiġi analizzat bħala Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">Qed jiġi analizzat bħala Nubia Live Photo (nubiaVpfile trailer)</string>
+    <string name="fmt_log_parse_oppo">Qed jiġi analizzat bħala OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">Qed jiġi analizzat bħala vivo Live Photo b’żewġ fajls</string>
+    <string name="fmt_log_parse_vivo_single">Qed jiġi analizzat bħala vivo Live Photo b’fajl wieħed</string>
+    <string name="fmt_log_parse_xiaomi">Qed jiġi analizzat bħala Xiaomi Live Photo (kompatibbli mal-Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">L-livephoto ID tal-JPG u tal-MP4 ma jaqblux: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Qed jinkiteb vivo Live Photo b’fajl wieħed: %1$s (immaġni %2$dB + vidjow %3$dB (jinkludi vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Qed jinkiteb il-format vivo: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Qed jinkiteb il-format Xiaomi: %1$s (immaġni %2$dB + vidjow %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Estratt</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

@@ -79,5 +79,29 @@
     <string name="conv_reminder_dont_remind">Ավելի չհարցնել</string>
     <string name="conv_reminder_confirm_ok">Հասկանալի է</string>
     <string name="conv_reminder_uninstall">Անջատել</string>
-
+    <string name="conv_err_exif_bad_endian">TIFF բայթերի կարգի անվավեր նշիչ</string>
+    <string name="conv_err_exif_inline_type">Չաջակցվող inline տեսակ %1$d</string>
+    <string name="conv_err_exif_type">Չաջակցվող TIFF տեսակ %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI չի գտնվել (ֆայլը կարող է վնասված լինել)</string>
+    <string name="conv_err_jpeg_no_soi">Վավեր JPEG չէ (SOI բացակայում է)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG-ում բացակայում է SOS հատվածը</string>
+    <string name="conv_err_jpeg_seg_boundary">Հատվածի սահմանի շեղում @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Հատվածի երկարությունը անվավեր է @%1$d</string>
+    <string name="conv_err_json_type">Չաջակցվող JSON արժեքի տեսակ՝ %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box-ի չափը անվավեր է</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box բացակայում է</string>
+    <string name="conv_err_mp4_no_moov">MP4-ում բացակայում է moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Լրացուցիչ ուղիները հեռացված են (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Լրացուցիչ ուղիների մաքրումը ձախողվեց (%1$s), արտածվում է ինչպես կա</string>
+    <string name="conv_log_sanitize_no_video_track">Մուտքային վիդեոն չունի օգտագործելի վիդեո ուղի, լրացուցիչ ուղիների մաքրումը բաց է թողնվում</string>
+    <string name="conv_log_sanitize_normalized">Կոնտեյների բրենդը բայթային մակարդակով նորմալացված է (զրոյական պատճենում, նմուշի տվյալները չեն փոփոխվել)</string>
+    <string name="conv_log_sanitize_track_add_failed">Վիդեո ուղին չհաջողվեց ավելացնել վերափաթեթավորիչին (%1$s), լրացուցիչ ուղիների մաքրումը բաց է թողնվում</string>
+    <string name="conv_reason_10bit_h265">Վիդեոն %1$dbit H.265 է (HDR Live Photo), որոշ սարքերի ալբոմը չի կարող վերծանել</string>
+    <string name="conv_reason_audio_not_aac">Աուդիո ուղու կոդավորումը %1$s է, ոչ AAC (շարժական լուսանկարի ստանդարտը պահանջում է AAC, Apple-ը հաճախ օգտագործում է PCM)</string>
+    <string name="conv_reason_codec_unsupported">Վիդեոյի կոդավորումը %1$s է, ոչ Android-ի համար սովորական H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Վիդեոն Dolby Vision է, Android-ի ալբոմները սովորաբար չեն աջակցում</string>
+    <string name="conv_reason_hdr">Վիդեոն HDR է (%1$s փոխանցման հատկանիշ), որոշ սարքերի ալբոմներում պատկերը կարող է աղավաղվել կամ սև էկրան լինել</string>
+    <string name="conv_reason_hev1">H.265-ը նշված է որպես hev1 (որոշ սարքեր ճանաչում են միայն hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Վիդեոն ունի հայելային ձևափոխման մատրիցա (MP4-ի պտույտի մատրիցան չի կարող արտահայտել հայելին)</string>
+    <string name="conv_tag_sanitize">Մաքրում</string>
 </resources>

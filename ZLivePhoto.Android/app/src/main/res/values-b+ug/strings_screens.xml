@@ -81,4 +81,11 @@
     <string name="screen_date_yesterday">تۈنۈگۈن</string>
     <string name="screen_date_this_year">%1$d-ئاينىڭ %2$d-كۈنى</string>
     <string name="screen_date_other_year">%1$d-يىلى %2$d-ئاينىڭ %3$d-كۈنى</string>
+    <string name="screen_album_unnamed">نامسىز</string>
+    <string name="screen_eta_minutes">%1$d مىنۇت %2$s سېكۇنت</string>
+    <string name="screen_eta_seconds">%1$d سېكۇنت</string>
+    <string name="screen_transcode_eta">مۆلچەرلەنگەن قالدۇق %1$s</string>
+    <string name="screen_transcode_frames">%1$d/%2$d كادر</string>
+    <string name="screen_transcode_in_progress">كود ئايلاندۇرۇلۇۋاتىدۇ · %1$d كادر بىر تەرەپ قىلىندى</string>
+    <string name="screen_transcode_progress">كود ئايلاندۇرۇش %1$d%%</string>
 </resources>

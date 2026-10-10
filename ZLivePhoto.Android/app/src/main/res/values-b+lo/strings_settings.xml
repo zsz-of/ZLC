@@ -91,4 +91,11 @@
     <string name="settings_crf_hint">ຄ່າຍິ່ງນ້ອຍ ຄຸນນະພາບຍິ່ງສູງ ແລະ ຂະໜາດຍິ່ງໃຫຍ່ (ຄ່າເລີ່ມຕົ້ນ 18)</string>
     <string name="settings_encoder_title">ຕົວເອນໂຄດ</string>
     <string name="settings_compress_preset_title">ຄ່າຕັ້ງການບີບອັດສຳເລັດຮູບ</string>
+    <string name="settings_preset_amber">ສີອຳພັນ</string>
+    <string name="settings_preset_forest">ສີຂຽວປ່າ</string>
+    <string name="settings_preset_ocean">ສີຟ້າມະຫາສະໝຸດ</string>
+    <string name="settings_preset_olive">ສີອໍລິບ</string>
+    <string name="settings_preset_sunset">ສີສົ້ມຕາເວັນຕົກ</string>
+    <string name="settings_preset_teal">ສີຟ້າຂຽວ</string>
+    <string name="settings_preset_violet">ສີມ່ວງ</string>
 </resources>

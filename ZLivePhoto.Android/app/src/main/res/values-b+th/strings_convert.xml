@@ -82,5 +82,29 @@
     <string name="conv_reminder_dont_remind">ไม่ต้องแจ้งอีก</string>
     <string name="conv_reminder_confirm_ok">รับทราบ</string>
     <string name="conv_reminder_uninstall">ถอนการติดตั้ง</string>
-
+    <string name="conv_err_exif_bad_endian">เครื่องหมายลำดับไบต์ TIFF ไม่ถูกต้อง</string>
+    <string name="conv_err_exif_inline_type">ชนิด inline ไม่รองรับ %1$d</string>
+    <string name="conv_err_exif_type">ชนิด TIFF ไม่รองรับ %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">ไม่พบ EOI (ไฟล์อาจเสียหาย)</string>
+    <string name="conv_err_jpeg_no_soi">ไม่ใช่ JPEG ที่ถูกต้อง (ขาด SOI)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG ขาดส่วน SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">ขอบเขตส่วนไม่ตรงตำแหน่ง @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">ความยาวส่วนไม่ถูกต้อง @%1$d</string>
+    <string name="conv_err_json_type">ชนิดค่าของ JSON ไม่รองรับ: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ขนาด ftyp box ไม่ถูกต้อง</string>
+    <string name="conv_err_mp4_no_ftyp">ขาด ftyp box</string>
+    <string name="conv_err_mp4_no_moov">MP4 ขาด moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">นำแทร็กเพิ่มเติมออกแล้ว (%1$s),</string>
+    <string name="conv_log_sanitize_exception">ล้างแทร็กเพิ่มเติมไม่สำเร็จ (%1$s) ส่งออกตามเดิม</string>
+    <string name="conv_log_sanitize_no_video_track">วิดีโออินพุตไม่มีแทร็กวิดีโอที่ใช้ได้ ข้ามการล้างแทร็กเพิ่มเติม</string>
+    <string name="conv_log_sanitize_normalized">ปรับแบรนด์คอนเทนเนอร์เป็นมาตรฐานระดับไบต์ (คัดลอกศูนย์ ข้อมูลตัวอย่างไม่เปลี่ยนแปลง)</string>
+    <string name="conv_log_sanitize_track_add_failed">เพิ่มแทร็กวิดีโอลงในตัวบรรจุใหม่ไม่ได้ (%1$s) ข้ามการล้างแทร็กเพิ่มเติม</string>
+    <string name="conv_reason_10bit_h265">วิดีโอเป็น %1$dbit H.265 (HDR สด) อัลบั้มของบางรุ่นถอดรหัสไม่ได้</string>
+    <string name="conv_reason_audio_not_aac">การเข้ารหัสแทร็กเสียง %1$s ไม่ใช่ AAC (มาตรฐานภาพเคลื่อนไหวต้องการ AAC; Apple มักเป็น PCM)</string>
+    <string name="conv_reason_codec_unsupported">การเข้ารหัสวิดีโอ %1$s ไม่ใช่ H.264/H.265 ที่ใช้ทั่วไปบนแอนดรอยด์</string>
+    <string name="conv_reason_dolby_vision">วิดีโอเป็น Dolby Vision อัลบั้มบนแอนดรอยด์โดยทั่วไปไม่รองรับ</string>
+    <string name="conv_reason_hdr">วิดีโอเป็น HDR (คุณสมบัติการส่ง %1$s) อัลบั้มของบางรุ่นอาจภาพเพี้ยนหรือจอดำ</string>
+    <string name="conv_reason_hev1">H.265 ถูกทำเครื่องหมายเป็น hev1 (บางรุ่นรองรับเฉพาะ hvc1)</string>
+    <string name="conv_reason_mirror_matrix">วิดีโอมีเมทริกซ์แปลงแบบกระจก (เมทริกซ์หมุน MP4 แสดงภาพกระจกไม่ได้)</string>
+    <string name="conv_tag_sanitize">ล้าง</string>
 </resources>

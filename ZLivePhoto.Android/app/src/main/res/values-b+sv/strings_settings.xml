@@ -103,5 +103,11 @@
     <string name="settings_crf_hint">Lägre värden ger högre kvalitet och större filer (standard 18)</string>
     <string name="settings_encoder_title">Kodare</string>
     <string name="settings_compress_preset_title">Komprimeringsförval</string>
-
+    <string name="settings_preset_amber">Bärnsten</string>
+    <string name="settings_preset_forest">Skogsgrön</string>
+    <string name="settings_preset_ocean">Havsblå</string>
+    <string name="settings_preset_olive">Oliv</string>
+    <string name="settings_preset_sunset">Solnedgångsorange</string>
+    <string name="settings_preset_teal">Blågrön</string>
+    <string name="settings_preset_violet">Violett</string>
 </resources>

@@ -95,7 +95,7 @@ internal class NubiaPlugin : FormatPlugin() {
         val videoEnd = total - TAIL_LEN
         if (videoEnd <= videoStart) throw IOException(CoreText.of(R.string.fmt_err_nubia_empty_video))
 
-        log("info", "按努比亚动态照片解析（nubiaVpfile 尾部）", "努比亚")
+        log("info", CoreText.of(R.string.fmt_log_parse_nubia), CoreText.of(R.string.fmt_tag_nubia))
         return LivePhotoAsset(
             primaryJpeg = data.copyOfRange(0, l),
             gainmapJpeg = null,
@@ -124,10 +124,11 @@ internal class NubiaPlugin : FormatPlugin() {
         writeBytes(outPath, out)
         log(
             "info",
-            "写出努比亚格式：${File(outPath).name}" +
-                "（JPEG ${primary.size}B + 填充 1B + 视频 ${video.size}B + 尾部 ${TAIL_LEN}B，" +
-                "UserComment 含 \"$LIVE_MARK\"）",
-            "努比亚"
+            CoreText.of(
+                R.string.fmt_log_nubia_write,
+                File(outPath).name, primary.size, video.size, TAIL_LEN, LIVE_MARK
+            ),
+            CoreText.of(R.string.fmt_tag_nubia)
         )
         return mutableListOf(outPath)
     }

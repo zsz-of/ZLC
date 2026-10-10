@@ -72,4 +72,11 @@
     <string name="screen_date_yesterday">Í gjár</string>
     <string name="screen_date_this_year">%2$d/%1$d</string>
     <string name="screen_date_other_year">%3$d-%2$d-%1$d</string>
+    <string name="screen_album_unnamed">Navnleyst</string>
+    <string name="screen_eta_minutes">%1$d min %2$s sek</string>
+    <string name="screen_eta_seconds">%1$d sek</string>
+    <string name="screen_transcode_eta">Umleið %1$s eftir</string>
+    <string name="screen_transcode_frames">%1$d/%2$d myndbrot</string>
+    <string name="screen_transcode_in_progress">Umkóðar · %1$d myndbrot viðgjørd</string>
+    <string name="screen_transcode_progress">Umkóðar %1$d%%</string>
 </resources>

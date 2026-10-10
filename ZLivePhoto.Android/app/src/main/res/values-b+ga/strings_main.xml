@@ -169,4 +169,6 @@
     <string name="main_export_source_dir_unavailable">Níl eolaire an chomhaid foinse ar fáil: %1$s</string>
     <string name="main_export_replace_failed">Theip ar an gcomhad foinse a chur in ionad: %1$s</string>
     <string name="main_export_replace_failed_bare">Theip ar an gcomhad foinse a chur in ionad</string>
+    <string name="main_status_read_failed">Ní féidir an comhad roghnaithe a léamh</string>
+    <string name="main_status_source_missing">Níl an bunchomhad ann nó níl sé inléite</string>
 </resources>

@@ -91,4 +91,11 @@
     <string name="settings_crf_hint">Кыйммәт кечерәк булган саен сыйфат югарырак һәм күләме зуррак (килешүле 18)</string>
     <string name="settings_encoder_title">Кодлаучы</string>
     <string name="settings_compress_preset_title">Кысу көйләве</string>
+    <string name="settings_preset_amber">Гәрәбә</string>
+    <string name="settings_preset_forest">Урман яшеле</string>
+    <string name="settings_preset_ocean">Океан зәңгәр</string>
+    <string name="settings_preset_olive">Зәйтүн</string>
+    <string name="settings_preset_sunset">Кояш баешы әфлисун</string>
+    <string name="settings_preset_teal">Күксел яшел</string>
+    <string name="settings_preset_violet">Шәмәхә</string>
 </resources>

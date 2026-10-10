@@ -159,4 +159,6 @@
     <string name="main_export_source_dir_unavailable">Akaram n ufaylu aɣbalu ur yella ara: %1$s</string>
     <string name="main_export_replace_failed">Ubeddel n ufaylu aɣbalu ur yeddi ara: %1$s</string>
     <string name="main_export_replace_failed_bare">Ubeddel n ufaylu aɣbalu ur yeddi ara</string>
+    <string name="main_status_read_failed">Afaylu yettwafren ur yezmir ara ad yettwaɣra</string>
+    <string name="main_status_source_missing">Afaylu aɣbalu ulac neɣ ur yezmir ara ad yettwaɣra</string>
 </resources>

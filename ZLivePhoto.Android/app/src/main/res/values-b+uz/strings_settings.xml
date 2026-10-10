@@ -91,4 +91,11 @@ Hechqisi yoʻq——baribir, yaxshi niyatingiz uchun katta rahmat!</string>
     <string name="settings_crf_hint">Qiymat qanchalik kichik boʻlsa, sifat shunchalik yuqori va hajm katta (standart 18)</string>
     <string name="settings_encoder_title">Kodlovchi</string>
     <string name="settings_compress_preset_title">Siqish preseti</string>
+    <string name="settings_preset_amber">Qahrabo</string>
+    <string name="settings_preset_forest">Oʻrmon yashili</string>
+    <string name="settings_preset_ocean">Okean koʻk</string>
+    <string name="settings_preset_olive">Zaytun</string>
+    <string name="settings_preset_sunset">Quyosh botishi toʻq sariq</string>
+    <string name="settings_preset_teal">Feruza</string>
+    <string name="settings_preset_violet">Binafsha</string>
 </resources>

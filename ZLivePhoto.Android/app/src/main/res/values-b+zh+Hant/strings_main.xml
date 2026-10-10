@@ -157,4 +157,6 @@
     <string name="main_export_source_dir_unavailable">來源檔案目錄無法使用：%1$s</string>
     <string name="main_export_replace_failed">取代來源檔案失敗：%1$s</string>
     <string name="main_export_replace_failed_bare">取代來源檔案失敗</string>
+    <string name="main_status_read_failed">無法讀取所選檔案</string>
+    <string name="main_status_source_missing">來源檔案不存在或無法讀取</string>
 </resources>

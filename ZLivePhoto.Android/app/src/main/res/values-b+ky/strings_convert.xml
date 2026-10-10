@@ -79,5 +79,29 @@
     <string name="conv_reminder_dont_remind">Эми көрсөтпөө</string>
     <string name="conv_reminder_confirm_ok">Түшүндүм</string>
     <string name="conv_reminder_uninstall">Орнотуудан чыгаруу</string>
-
+    <string name="conv_err_exif_bad_endian">TIFF байт тартибинин белгиси жараксыз</string>
+    <string name="conv_err_exif_inline_type">Колдоого алынбаган inline түрү %1$d</string>
+    <string name="conv_err_exif_type">Колдоого алынбаган TIFF түрү %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI табылган жок (файл бузулган болушу мүмкүн)</string>
+    <string name="conv_err_jpeg_no_soi">Жарактуу JPEG эмес (SOI жок)</string>
+    <string name="conv_err_jpeg_no_sos">JPEGде SOS сегменти жок</string>
+    <string name="conv_err_jpeg_seg_boundary">Сегмент чеги туура келбейт @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Сегмент узундугу жараксыз @%1$d</string>
+    <string name="conv_err_json_type">Колдоого алынбаган JSON маани түрү: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box өлчөмү жараксыз</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box жок</string>
+    <string name="conv_err_mp4_no_moov">MP4дө moov box жок</string>
+    <string name="conv_log_sanitize_dropped_prefix">Кошумча жолдор алынды (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Кошумча жолдорду тазалоо ишке ашкан жок (%1$s), бар боюнча чыгарылды</string>
+    <string name="conv_log_sanitize_no_video_track">Кирүү видеосунда пайдаланууга жарактуу видео жолу жок, кошумча жолдорду тазалоо өткөрүлүп жиберилди</string>
+    <string name="conv_log_sanitize_normalized">Контейнер бренди байт деңгээлинде нормалдаштырылды (нөл көчүрүү, үлгү маалыматтары өзгөртүлгөн жок)</string>
+    <string name="conv_log_sanitize_track_add_failed">Видео жолду кайра таңуучуга кошуу мүмкүн болбоду (%1$s), кошумча жолдорду тазалоо өткөрүлүп жиберилди</string>
+    <string name="conv_reason_10bit_h265">Видео %1$dbit H.265 (HDR Live Photo), айрым түзмөктөрдүн альбому чече албайт</string>
+    <string name="conv_reason_audio_not_aac">Аудио жол коддоосу %1$s, AAC эмес (кыймылдуу сүрөт стандарты AAC талап кылат, Apple көбүнчө PCM колдонот)</string>
+    <string name="conv_reason_codec_unsupported">Видео коддоосу %1$s, Android үчүн кадимки H.264/H.265 эмес</string>
+    <string name="conv_reason_dolby_vision">Видео Dolby Vision, Android альбомдору адатта колдобойт</string>
+    <string name="conv_reason_hdr">Видео HDR (%1$s өткөрүү өзгөчөлүгү), айрым түзмөктөрдүн альбомунда сүрөт бузулушу же кара экран болушу мүмкүн</string>
+    <string name="conv_reason_hev1">H.265 hev1 деп белгиленген (айрым түзмөктөр гана hvc1 тааныйт)</string>
+    <string name="conv_reason_mirror_matrix">Видеодо күзгү өзгөртүү матрицасы бар (MP4 буруу матрицасы күзгүнү туюнта албайт)</string>
+    <string name="conv_tag_sanitize">Тазалоо</string>
 </resources>

@@ -145,4 +145,6 @@
     <string name="main_export_source_dir_unavailable">پوشه فایل مبدأ در دسترس نیست: %1$s</string>
     <string name="main_export_replace_failed">جایگزینی فایل مبدأ ناموفق بود: %1$s</string>
     <string name="main_export_replace_failed_bare">جایگزینی فایل مبدأ ناموفق بود</string>
+    <string name="main_status_read_failed">خواندن فایل انتخاب‌شده ممکن نیست</string>
+    <string name="main_status_source_missing">فایل مبدأ وجود ندارد یا خواندنی نیست</string>
 </resources>

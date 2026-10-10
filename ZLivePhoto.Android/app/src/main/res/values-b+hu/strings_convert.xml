@@ -79,5 +79,29 @@
     <string name="conv_reminder_dont_remind">Ne mutasd újra</string>
     <string name="conv_reminder_confirm_ok">Értem</string>
     <string name="conv_reminder_uninstall">Eltávolítás</string>
-
+    <string name="conv_err_exif_bad_endian">Érvénytelen TIFF bájtsorrend-jelölő</string>
+    <string name="conv_err_exif_inline_type">Nem támogatott inline típus: %1$d</string>
+    <string name="conv_err_exif_type">Nem támogatott TIFF-típus: %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">Nem található EOI (a fájl sérült lehet)</string>
+    <string name="conv_err_jpeg_no_soi">Nem érvényes JPEG (hiányzik az SOI)</string>
+    <string name="conv_err_jpeg_no_sos">A JPEG-ből hiányzik az SOS szegmens</string>
+    <string name="conv_err_jpeg_seg_boundary">Szegmenshatár elcsúszva itt: %1$d</string>
+    <string name="conv_err_jpeg_seg_length">Érvénytelen szegmenshossz itt: %1$d</string>
+    <string name="conv_err_json_type">Nem támogatott JSON-értéktípus: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Érvénytelen ftyp box méret</string>
+    <string name="conv_err_mp4_no_ftyp">Hiányzik az ftyp box</string>
+    <string name="conv_err_mp4_no_moov">Az MP4-ből hiányzik a moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Eltávolított kiegészítő sávok (%1$s),</string>
+    <string name="conv_log_sanitize_exception">A kiegészítő sávok tisztítása nem sikerült (%1$s), a kimenet változatlan maradt</string>
+    <string name="conv_log_sanitize_no_video_track">A bemeneti videóban nincs használható videósáv, a kiegészítő sávok tisztítása kimarad</string>
+    <string name="conv_log_sanitize_normalized">A konténer márkája bájtszinten normalizálva (nulla másolás, a mintapéldány adatai változatlanok)</string>
+    <string name="conv_log_sanitize_track_add_failed">A videósávot nem sikerült hozzáadni az újracsomagolóhoz (%1$s), a kiegészítő sávok tisztítása kimarad</string>
+    <string name="conv_reason_10bit_h265">A videó %1$d bites H.265 (HDR Live Photo), egyes készülékek képtára nem tudja dekódolni</string>
+    <string name="conv_reason_audio_not_aac">A hangsáv kodekje %1$s, nem AAC (a Motion Photo specifikáció AAC-t ír elő, az Apple gyakran PCM-et használ)</string>
+    <string name="conv_reason_codec_unsupported">A videókodek %1$s, nem az Androidon szokásos H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">A videó Dolby Vision, amelyet az Android képtárak általában nem támogatnak</string>
+    <string name="conv_reason_hdr">A videó HDR (%1$s átviteli karakterisztika), egyes készülékek képtára hibás képet vagy fekete képernyőt mutat</string>
+    <string name="conv_reason_hev1">A H.265 hev1-ként van megjelölve (egyes készülékek csak a hvc1-et ismerik fel)</string>
+    <string name="conv_reason_mirror_matrix">A videón tükrözési mátrix van (az MP4 forgatási mátrixa nem tudja kifejezni a tükrözést)</string>
+    <string name="conv_tag_sanitize">Tisztítás</string>
 </resources>

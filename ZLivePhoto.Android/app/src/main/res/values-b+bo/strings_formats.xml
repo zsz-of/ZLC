@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">ལྷན་ཐབས་ཀྱི་བརྙན་ཡིག་ཆ་མེད: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG གི་གཙོ་བོ་དབྱེ་ཞིབ་མ་གྲུབ</string>
     <string name="fmt_err_vivo_companion_invalid">ལྷན་ཐབས་ཀྱི་ MP4 ཕན་ཐོགས་མེད (ftyp box མེད)</string>
+    <string name="fmt_log_apple_heic_no_pair">ཁ་གཡོག་པར་ HEIC ཡིན: ཟུང་འབྲེལ་རྟགས་རེ་ཞིག་མི་འབྲི (HEIC ཀྱི་ EXIF ནི་ Exif item ནང་ཡོད་པས་ལོགས་སུ་ལག་བསྟར་དགོས)，ContentIdentifier ནི་ MOV ཕྱོགས་ཁོ་ནར་འབྲི</string>
+    <string name="fmt_log_apple_still_found">Apple གྱི་མི་འགུལ་པར་གྱི་དུས་ཚོད་ %1$d ms དབྱེ་ཞིབ་བྱས (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple གྱི་མི་འགུལ་པར་གྱི་དུས་ཚོད་དབྱེ་ཞིབ་མ་བྱས (mebx/elst སྟོང་པའི་ edit མེད)，ཕྱིར་བཏོན་སྐབས་བརྙན་གྱི་དཀྱིལ་ཚད་གཞིར་བཟུང་</string>
+    <string name="fmt_log_apple_still_no_carrier">མི་འགུལ་པར་གྱི་དུས་ཚོད་ %1$d ms ལ་འཛིན་མ་ད་དུང་མེད: དངོས་ཀྱི་ Apple ཡིས་ mebx timed metadata ལམ་བེད་སྤྱད་ཀྱི་ཡོད། ལག་ཆ་འདིས་ད་དུང་དེ་མཉམ་སྦྲེལ་མི་བྱེད (MOV ཀྱི་ still-image-time ལ་མེད་གྲངས་གཅིག་འབྲི)</string>
+    <string name="fmt_log_apple_write">Apple རྣམ་གཞི་འབྲི་བཞིན: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">ཁ་བཤེར་ཕྱིར་བཏོན: %1$s (པར་ %2$dB，HDR=%3$s) + %4$s (བརྙན་ %5$dB)</string>
+    <string name="fmt_log_google_write">Google རྣམ་གཞི་འབྲི་བཞིན: %1$s (པར་ %2$dB + བརྙན་ %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor རྣམ་གཞི་འབྲི་བཞིན: %1$s (པར་ %2$dB + བརྙན་ %3$dB + EIS %4$dB，LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex མཉམ་སྦྲེལ་མ་གྲུབ། མཆོང་བ (བསྐྱར་སྟོན་ལ་ཤུགས་རྐྱེན་མེད): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) མཉམ་སྦྲེལ་བྱས་ཏེ་ moov ནང་བཅུག</string>
+    <string name="fmt_log_meizu_write">Meizu རྣམ་གཞི་འབྲི་བཞིན: %1$s (པར་ %2$dB + བརྙན་ %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia རྣམ་གཞི་འབྲི་བཞིན: %1$s (JPEG %2$dB + ཁ་སྐོང་ 1B + བརྙན་ %3$dB + མཇུག་ %4$dB，UserComment ནང་ “%5$s”)</string>
+    <string name="fmt_log_oppo_write">OPPO རྣམ་གཞི་འབྲི་བཞིན: %1$s (པར་ %2$dB + བརྙན་ %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo ལྟར་དབྱེ་ཞིབ</string>
+    <string name="fmt_log_parse_google">Google Motion Photo ལྟར་དབྱེ་ཞིབ</string>
+    <string name="fmt_log_parse_honor">Honor འགུལ་པར་ལྟར་དབྱེ་ཞིབ (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu འགུལ་པར་ལྟར་དབྱེ་ཞིབ</string>
+    <string name="fmt_log_parse_nubia">Nubia འགུལ་པར་ལྟར་དབྱེ་ཞིབ (nubiaVpfile མཇུག)</string>
+    <string name="fmt_log_parse_oppo">OPPO འགུལ་པར་ལྟར་དབྱེ་ཞིབ</string>
+    <string name="fmt_log_parse_vivo">vivo ཡིག་ཆ་གཉིས་ཀྱི་འགུལ་པར་ལྟར་དབྱེ་ཞིབ</string>
+    <string name="fmt_log_parse_vivo_single">vivo ཡིག་ཆ་གཅིག་གི་འགུལ་པར་ལྟར་དབྱེ་ཞིབ</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi འགུལ་པར་ལྟར་དབྱེ་ཞིབ (Google མཐུན་སྒྲིག)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG དང་ MP4 ཀྱི་ livephoto ID མི་མཐུན: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo ཡིག་ཆ་གཅིག་གི་འགུལ་པར་འབྲི་བཞིན: %1$s (པར་ %2$dB + བརྙན་ %3$dB (vivoMediaEStream + lpex ཚུད) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo རྣམ་གཞི་འབྲི་བཞིན: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi རྣམ་གཞི་འབྲི་བཞིན: %1$s (པར་ %2$dB + བརྙན་ %3$dB，EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">ཁ་བཤེར</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

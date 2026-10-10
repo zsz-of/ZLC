@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">Berkas video pendamping tidak ditemukan: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Gagal mengurai isi JPG</string>
     <string name="fmt_err_vivo_companion_invalid">MP4 pendamping tidak valid (box ftyp tidak ada)</string>
+    <string name="fmt_log_apple_heic_no_pair">Sampul berupa HEIC: penanda pemasangan belum ditulis (EXIF HEIC berada di Exif item dan perlu implementasi terpisah); hanya sisi MOV yang menuliskan ContentIdentifier</string>
+    <string name="fmt_log_apple_still_found">Waktu bingkai diam Apple terurai: %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Waktu bingkai diam Apple tidak terurai (tidak ada mebx/elst edit kosong); saat ekspor dipakai titik tengah video sebagai cadangan</string>
+    <string name="fmt_log_apple_still_no_carrier">Waktu bingkai diam %1$d ms belum punya pembawa: Apple asli memakai trek mebx timed metadata, alat ini belum menyusunnya (still-image-time di MOV ditulis -1)</string>
+    <string name="fmt_log_apple_write">Menulis format Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Keluaran ekstraksi: %1$s (foto %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Menulis format Google: %1$s (gambar %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Menulis format Honor: %1$s (gambar %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Komposisi lpex gagal, dilewati (tidak memengaruhi pemutaran): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) sudah disusun dan disisipkan ke moov</string>
+    <string name="fmt_log_meizu_write">Menulis format Meizu: %1$s (gambar %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Menulis format Nubia: %1$s (JPEG %2$dB + padding 1B + video %3$dB + ekor %4$dB, UserComment berisi “%5$s”)</string>
+    <string name="fmt_log_oppo_write">Menulis format OPPO: %1$s (gambar %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Mengurai sebagai Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Mengurai sebagai Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Mengurai sebagai Honor Motion Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Mengurai sebagai Meizu Motion Photo</string>
+    <string name="fmt_log_parse_nubia">Mengurai sebagai Nubia Motion Photo (ekor nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Mengurai sebagai OPPO Motion Photo</string>
+    <string name="fmt_log_parse_vivo">Mengurai sebagai vivo Motion Photo dua berkas</string>
+    <string name="fmt_log_parse_vivo_single">Mengurai sebagai vivo Live Photo satu berkas</string>
+    <string name="fmt_log_parse_xiaomi">Mengurai sebagai Xiaomi Motion Photo (kompatibel Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">ID livephoto JPG dan MP4 tidak cocok: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Menulis vivo Live Photo satu berkas: %1$s (gambar %2$dB + video %3$dB (dengan vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Menulis format vivo: %1$s.jpg + %1$s.mp4 (ID livephoto: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Menulis format Xiaomi: %1$s (gambar %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Ekstrak</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

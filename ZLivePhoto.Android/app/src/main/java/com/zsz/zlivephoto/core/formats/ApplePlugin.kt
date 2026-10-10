@@ -85,7 +85,7 @@ internal class ApplePlugin : FormatPlugin() {
     }
 
     override fun read(path: String, log: (String, String, String) -> Unit): LivePhotoAsset {
-        log("info", "按 Apple Live Photo 解析", "Apple")
+        log("info", CoreText.of(R.string.fmt_log_parse_apple), "Apple")
         val movPath = findMovSibling(path)
             ?: throw IOException(CoreText.of(R.string.fmt_err_apple_mov_missing))
 
@@ -114,9 +114,9 @@ internal class ApplePlugin : FormatPlugin() {
         val stillUs = Mp4Util.appleStillImageTimeUs(movData)
         asset.presentationTsUs = stillUs
         if (stillUs >= 0L) {
-            log("info", "解析到 Apple 静帧时刻 ${stillUs / 1000} ms（mebx/elst）", "Apple")
+            log("info", CoreText.of(R.string.fmt_log_apple_still_found, stillUs / 1000), "Apple")
         } else {
-            log("warning", "未解析到 Apple 静帧时刻（无 mebx/elst 空 edit），转出时按视频中点兜底", "Apple")
+            log("warning", CoreText.of(R.string.fmt_log_apple_still_missing), "Apple")
         }
         asset.videoInfo = Mp4Util.getTrackInfo(movData) ?: mutableMapOf()
         return asset
@@ -147,8 +147,7 @@ internal class ApplePlugin : FormatPlugin() {
         } else {
             log(
                 "warning",
-                "封面为 HEIC：暂不写配对标识（HEIC 的 EXIF 在 Exif item 里，需另行实现），" +
-                    "仅 MOV 侧写入 ContentIdentifier",
+                CoreText.of(R.string.fmt_log_apple_heic_no_pair),
                 "Apple"
             )
             asset.primaryJpeg
@@ -163,8 +162,7 @@ internal class ApplePlugin : FormatPlugin() {
             // MOV 里的 still-image-time 按 Apple 约定写 -1（见 Mp4Util.addAppleMetadata）。
             log(
                 "warning",
-                "静帧时刻 ${ptsUs / 1000} ms 暂无载体：真实 Apple 用 mebx timed metadata 轨，" +
-                    "本工具暂不合成（MOV 的 still-image-time 写 -1）",
+                CoreText.of(R.string.fmt_log_apple_still_no_carrier, ptsUs / 1000),
                 "Apple"
             )
         }
@@ -173,8 +171,11 @@ internal class ApplePlugin : FormatPlugin() {
         val movPath = File(outDir, "$stem.mov").path
         writeBytes(movPath, movData)
 
-        log("info", "写出 Apple 格式：$stem.$ext + $stem.mov" +
-            "（ContentIdentifier=${contentId.substring(0, 8)}...）", "Apple")
+        log(
+            "info",
+            CoreText.of(R.string.fmt_log_apple_write, "$stem.$ext", "$stem.mov", contentId.substring(0, 8)),
+            "Apple"
+        )
         return mutableListOf(jpgPath, movPath)
     }
 }

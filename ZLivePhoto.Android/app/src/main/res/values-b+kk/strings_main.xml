@@ -143,4 +143,6 @@
     <string name="main_export_source_dir_unavailable">Бастапқы файл қалтасы қолжетімсіз: %1$s</string>
     <string name="main_export_replace_failed">Бастапқы файлды ауыстыру сәтсіз: %1$s</string>
     <string name="main_export_replace_failed_bare">Бастапқы файлды ауыстыру сәтсіз</string>
+    <string name="main_status_read_failed">Таңдалған файлды оқу мүмкін емес</string>
+    <string name="main_status_source_missing">Бастапқы файл жоқ немесе оқуға болмайды</string>
 </resources>

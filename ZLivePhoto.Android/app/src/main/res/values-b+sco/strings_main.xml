@@ -162,4 +162,6 @@
     <string name="main_export_source_dir_unavailable">Soorce file folder no available: %1$s</string>
     <string name="main_export_replace_failed">Replacin the soorce file failed: %1$s</string>
     <string name="main_export_replace_failed_bare">Replacin the soorce file failed</string>
+    <string name="main_status_read_failed">Cannae read the selected file</string>
+    <string name="main_status_source_missing">The soorce file disnae exist or cannae be read</string>
 </resources>

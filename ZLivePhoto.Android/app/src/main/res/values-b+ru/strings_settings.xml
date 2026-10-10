@@ -102,5 +102,11 @@
     <string name="settings_crf_hint">Чем меньше значение, тем выше качество и больше размер (по умолчанию 18)</string>
     <string name="settings_encoder_title">Кодировщик</string>
     <string name="settings_compress_preset_title">Профиль сжатия</string>
-
+    <string name="settings_preset_amber">Янтарный</string>
+    <string name="settings_preset_forest">Лесной зелёный</string>
+    <string name="settings_preset_ocean">Океанский синий</string>
+    <string name="settings_preset_olive">Оливковый</string>
+    <string name="settings_preset_sunset">Оранжевый закат</string>
+    <string name="settings_preset_teal">Бирюзовый</string>
+    <string name="settings_preset_violet">Фиолетовый</string>
 </resources>

@@ -76,4 +76,11 @@
     <string name="screen_date_yesterday">ម្សិលមិញ</string>
     <string name="screen_date_this_year">%2$d/%1$d</string>
     <string name="screen_date_other_year">%2$d/%1$d/%3$d</string>
+    <string name="screen_album_unnamed">គ្មានឈ្មោះ</string>
+    <string name="screen_eta_minutes">%1$d នាទី %2$s វិនាទី</string>
+    <string name="screen_eta_seconds">%1$d វិនាទី</string>
+    <string name="screen_transcode_eta">ពេលវេលានៅសល់ %1$s</string>
+    <string name="screen_transcode_frames">%1$d/%2$d ស៊ុម</string>
+    <string name="screen_transcode_in_progress">កំពុងបំប្លែង · បានដំណើរការ %1$d ស៊ុម</string>
+    <string name="screen_transcode_progress">បំប្លែង %1$d%%</string>
 </resources>

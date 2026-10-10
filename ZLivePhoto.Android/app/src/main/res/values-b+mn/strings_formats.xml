@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">Хавсаргасан видео файл байхгүй: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG-ийн үндсэн хэсгийг задлан шинжлэхэд алдаа гарлаа</string>
     <string name="fmt_err_vivo_companion_invalid">Хавсаргасан MP4 хүчингүй (ftyp box байхгүй)</string>
+    <string name="fmt_log_apple_heic_no_pair">Ковер нь HEIC: хосын тэмдэгтийг одоохондоо бичихгүй (HEIC-ийн EXIF нь Exif item дотор, тусдаа хэрэгжүүлэх шаардлагатай), ContentIdentifier зөвхөн MOV талд бичигдэнэ</string>
+    <string name="fmt_log_apple_still_found">Apple-ийн статик кадрын цаг %1$d ms илэрлээ (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple-ийн статик кадрын цаг илрээгүй (mebx/elst хоосон edit байхгүй), гаргахдаа видеоны дунд цэгийг ашиглана</string>
+    <string name="fmt_log_apple_still_no_carrier">Статик кадрын %1$d ms цагт тээгч байхгүй: жинхэнэ Apple нь mebx timed metadata замыг ашигладаг, энэ хэрэгсэл одоохондоо нэгтгэхгүй (MOV-ийн still-image-time-д -1 бичигдэнэ)</string>
+    <string name="fmt_log_apple_write">Apple форматыг бичлээ: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Задлах гаралт: %1$s (зураг %2$dB, HDR=%3$s) + %4$s (видео %5$dB)</string>
+    <string name="fmt_log_google_write">Google форматыг бичлээ: %1$s (дүрс %2$dB + видео %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor форматыг бичлээ: %1$s (дүрс %2$dB + видео %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex нэгтгэлт амжилтгүй, алгасав (тоглуулалтад нөлөөлөхгүй): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) нэгтгэгдэж moov дотор оруулагдсан</string>
+    <string name="fmt_log_meizu_write">Meizu форматыг бичлээ: %1$s (дүрс %2$dB + видео %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia форматыг бичлээ: %1$s (JPEG %2$dB + 1B дүүргэлт + видео %3$dB + сүүл %4$dB, UserComment-д «%5$s»)</string>
+    <string name="fmt_log_oppo_write">OPPO форматыг бичлээ: %1$s (дүрс %2$dB + видео %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo гэж задлан шинжилэв</string>
+    <string name="fmt_log_parse_google">Google Motion Photo гэж задлан шинжилэв</string>
+    <string name="fmt_log_parse_honor">Honor-ийн хөдөлгөөнт зураг гэж задлан шинжилэв (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu-ийн хөдөлгөөнт зураг гэж задлан шинжилэв</string>
+    <string name="fmt_log_parse_nubia">Nubia-ийн хөдөлгөөнт зураг гэж задлан шинжилэв (nubiaVpfile сүүл)</string>
+    <string name="fmt_log_parse_oppo">OPPO-ийн хөдөлгөөнт зураг гэж задлан шинжилэв</string>
+    <string name="fmt_log_parse_vivo">vivo-гийн хоёр файлт хөдөлгөөнт зураг гэж задлан шинжилэв</string>
+    <string name="fmt_log_parse_vivo_single">vivo-гийн нэг файлт Live Photo гэж задлан шинжилэв</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi-гийн хөдөлгөөнт зураг гэж задлан шинжилэв (Google нийцтэй)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG ба MP4-ийн livephoto ID тохирохгүй: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo-гийн нэг файлт Live Photo бичлээ: %1$s (дүрс %2$dB + видео %3$dB (vivoMediaEStream + lpex орсон) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo форматыг бичлээ: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi форматыг бичлээ: %1$s (дүрс %2$dB + видео %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Задлах</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

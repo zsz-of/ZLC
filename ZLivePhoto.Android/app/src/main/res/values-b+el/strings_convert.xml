@@ -80,5 +80,29 @@
     <string name="conv_reminder_dont_remind">Να μην ξανά εμφανιστεί</string>
     <string name="conv_reminder_confirm_ok">Εντάξει</string>
     <string name="conv_reminder_uninstall">Απεγκατάσταση</string>
-
+    <string name="conv_err_exif_bad_endian">Μη έγκυρο σημάδι σειράς byte του TIFF</string>
+    <string name="conv_err_exif_inline_type">Μη υποστηριζόμενος τύπος inline: %1$d</string>
+    <string name="conv_err_exif_type">Μη υποστηριζόμενος τύπος TIFF: %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">Δεν βρέθηκε EOI (το αρχείο μπορεί να είναι κατεστραμμένο)</string>
+    <string name="conv_err_jpeg_no_soi">Δεν είναι έγκυρο JPEG (λείπει το SOI)</string>
+    <string name="conv_err_jpeg_no_sos">Το JPEG δεν έχει τμήμα SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">Όριο τμήματος μετατοπισμένο στη θέση %1$d</string>
+    <string name="conv_err_jpeg_seg_length">Μη έγκυρο μήκος τμήματος στη θέση %1$d</string>
+    <string name="conv_err_json_type">Μη υποστηριζόμενος τύπος τιμής JSON: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Μη έγκυρο μέγεθος ftyp box</string>
+    <string name="conv_err_mp4_no_ftyp">Λείπει το ftyp box</string>
+    <string name="conv_err_mp4_no_moov">Το MP4 δεν έχει moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Αφαιρέθηκαν τα πρόσθετα streams (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Ο καθαρισμός των πρόσθετων streams απέτυχε (%1$s), η έξοδος έμεινε αμετάβλητη</string>
+    <string name="conv_log_sanitize_no_video_track">Το βίντεο εισόδου δεν έχει χρησιμοποιήσιμο stream βίντεο, ο καθαρισμός των πρόσθετων streams παραλείπεται</string>
+    <string name="conv_log_sanitize_normalized">Το brand του περιεχομένου κανονικοποιήθηκε σε επίπεδο byte (μηδενική αντιγραφή, τα δείγματα μένουν αμετάβλητα)</string>
+    <string name="conv_log_sanitize_track_add_failed">Δεν ήταν δυνατή η προσθήκη του stream βίντεο στο remuxer (%1$s), ο καθαρισμός των πρόσθετων streams παραλείπεται</string>
+    <string name="conv_reason_10bit_h265">Το βίντεο είναι %1$d-bit H.265 (HDR Live Photo), η γκαλερία ορισμένων μοντέλων δεν μπορεί να το αποκωδικοποιήσει</string>
+    <string name="conv_reason_audio_not_aac">Ο codec του stream ήχου είναι %1$s, όχι AAC (η προδιαγραφή Motion Photo απαιτεί AAC, η Apple χρησιμοποιεί συχνά PCM)</string>
+    <string name="conv_reason_codec_unsupported">Ο codec βίντεο %1$s δεν είναι ο συνηθισμένος σε Android H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Το βίντεο είναι Dolby Vision, το οποίο οι γκαλερί του Android συνήθως δεν υποστηρίζουν</string>
+    <string name="conv_reason_hdr">Το βίντεο είναι HDR (%1$s χαρακτηριστικό μεταφοράς), η γκαλερία ορισμένων μοντέλων εμφανίζει τεχνουργήματα ή μαύρη οθόνη</string>
+    <string name="conv_reason_hev1">Το H.265 έχει επισημανθεί ως hev1 (ορισμένα μοντέλα αναγνωρίζουν μόνο hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Το βίντεο έχει πίνακα κατοπτρισμού (ο πίνακας περιστροφής του MP4 δεν μπορεί να εκφράσει κατοπτρισμό)</string>
+    <string name="conv_tag_sanitize">Καθαρισμός</string>
 </resources>

@@ -40,4 +40,35 @@
     <string name="fmt_err_vivo_companion_missing">Thiếu tệp video đi kèm: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Không phân tích được phần chính của JPG</string>
     <string name="fmt_err_vivo_companion_invalid">MP4 đi kèm không hợp lệ (thiếu box ftyp)</string>
+    <string name="fmt_log_apple_heic_no_pair">Ảnh bìa là HEIC: tạm thời không ghi dấu ghép cặp (EXIF của HEIC nằm trong Exif item, cần triển khai riêng), chỉ ghi ContentIdentifier ở phía MOV</string>
+    <string name="fmt_log_apple_still_found">Phân tích được mốc khung tĩnh Apple %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Không phân tích được mốc khung tĩnh Apple (không có edit rỗng mebx/elst), khi xuất dùng điểm giữa video</string>
+    <string name="fmt_log_apple_still_no_carrier">Mốc khung tĩnh %1$d ms hiện chưa có vật mang: Apple thật dùng track mebx timed metadata, công cụ này chưa ghép (MOV ghi still-image-time là -1)</string>
+    <string name="fmt_log_apple_write">Đã ghi định dạng Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Kết quả tách: %1$s (ảnh %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Đã ghi định dạng Google: %1$s (ảnh %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Đã ghi định dạng Honor: %1$s (ảnh %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Ghép lpex thất bại, bỏ qua (không ảnh hưởng phát lại): %1$s</string>
+    <string name="fmt_log_lpex_ok">Đã ghép lpex box (LivePhotoExtension) chèn vào moov</string>
+    <string name="fmt_log_meizu_write">Đã ghi định dạng Meizu: %1$s (ảnh %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Đã ghi định dạng Nubia: %1$s (JPEG %2$dB + đệm 1B + video %3$dB + phần đuôi %4$dB, UserComment chứa "%5$s")</string>
+    <string name="fmt_log_oppo_write">Đã ghi định dạng OPPO: %1$s (ảnh %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Phân tích theo Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Phân tích theo Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Phân tích theo Live Photo Honor (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Phân tích theo Live Photo Meizu</string>
+    <string name="fmt_log_parse_nubia">Phân tích theo Live Photo Nubia (phần đuôi nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Phân tích theo Live Photo OPPO</string>
+    <string name="fmt_log_parse_vivo">Phân tích theo Live Photo vivo hai tệp</string>
+    <string name="fmt_log_parse_vivo_single">Phân tích theo Live Photo vivo tệp đơn</string>
+    <string name="fmt_log_parse_xiaomi">Phân tích theo Live Photo Xiaomi (tương thích Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">livephoto ID của JPG và MP4 không khớp: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Đã ghi Live Photo vivo tệp đơn: %1$s (ảnh %2$dB + video %3$dB (gồm vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Đã ghi định dạng vivo: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Đã ghi định dạng Xiaomi: %1$s (ảnh %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Tách</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

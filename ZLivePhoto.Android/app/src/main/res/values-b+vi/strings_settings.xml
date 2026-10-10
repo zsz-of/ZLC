@@ -103,5 +103,11 @@
     <string name="settings_crf_hint">Giá trị càng nhỏ thì chất lượng càng cao và dung lượng càng lớn (mặc định 18)</string>
     <string name="settings_encoder_title">Bộ mã hóa</string>
     <string name="settings_compress_preset_title">Cấu hình nén sẵn</string>
-
+    <string name="settings_preset_amber">Hổ phách</string>
+    <string name="settings_preset_forest">Xanh rừng</string>
+    <string name="settings_preset_ocean">Xanh đại dương</string>
+    <string name="settings_preset_olive">Ô liu</string>
+    <string name="settings_preset_sunset">Cam hoàng hôn</string>
+    <string name="settings_preset_teal">Xanh mòng két</string>
+    <string name="settings_preset_violet">Tím violet</string>
 </resources>

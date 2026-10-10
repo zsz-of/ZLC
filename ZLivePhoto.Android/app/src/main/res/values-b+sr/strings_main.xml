@@ -168,4 +168,6 @@
     <string name="main_export_source_dir_unavailable">Фасцикла изворне датотеке није доступна: %1$s</string>
     <string name="main_export_replace_failed">Замена изворне датотеке није успела: %1$s</string>
     <string name="main_export_replace_failed_bare">Замена изворне датотеке није успела</string>
+    <string name="main_status_read_failed">Изабрану датотеку није могуће прочитати</string>
+    <string name="main_status_source_missing">Изворна датотека не постоји или је није могуће прочитати</string>
 </resources>

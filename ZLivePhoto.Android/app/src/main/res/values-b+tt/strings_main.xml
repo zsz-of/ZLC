@@ -170,4 +170,6 @@
     <string name="main_export_source_dir_unavailable">Төп файл папкасы мөмкин түгел: %1$s</string>
     <string name="main_export_replace_failed">Төп файлны алыштыру уңышсыз: %1$s</string>
     <string name="main_export_replace_failed_bare">Төп файлны алыштыру уңышсыз</string>
+    <string name="main_status_read_failed">Сайланган файлны укып булмый</string>
+    <string name="main_status_source_missing">Чыганак файл юк яки укылмый</string>
 </resources>

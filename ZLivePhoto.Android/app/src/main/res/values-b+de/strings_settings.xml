@@ -102,5 +102,11 @@
     <string name="settings_crf_hint">Je kleiner der Wert, desto höher die Qualität und desto größer die Datei (Standard 18)</string>
     <string name="settings_encoder_title">Encoder</string>
     <string name="settings_compress_preset_title">Komprimierungsprofil</string>
-
+    <string name="settings_preset_amber">Bernstein</string>
+    <string name="settings_preset_forest">Waldgrün</string>
+    <string name="settings_preset_ocean">Ozeanblau</string>
+    <string name="settings_preset_olive">Oliv</string>
+    <string name="settings_preset_sunset">Abendsonne</string>
+    <string name="settings_preset_teal">Petrol</string>
+    <string name="settings_preset_violet">Violett</string>
 </resources>

@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">Mungon skedari video shoqërues: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Analizimi i trupit të JPG-së dështoi</string>
     <string name="fmt_err_vivo_companion_invalid">MP4 shoqërues është i pavlefshëm (mungon kutia ftyp)</string>
+    <string name="fmt_log_apple_heic_no_pair">Kopertina është HEIC: treguesi i çiftimit për momentin nuk shkruhet (EXIF-i i HEIC ndodhet në elementin Exif dhe kërkon zbatim të veçantë), ContentIdentifier shkruhet vetëm në anën MOV</string>
+    <string name="fmt_log_apple_still_found">U lexua koha e fotografisë statike Apple: %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Koha e fotografisë statike Apple nuk u lexua (nuk ka edit bosh mebx/elst), në eksport përdoret mesi i videos</string>
+    <string name="fmt_log_apple_still_no_carrier">Koha %1$d ms e fotografisë statike nuk ka ende bartës: Apple origjinal përdor rrugë mebx timed metadata, ky mjet nuk e krijon atë për momentin (still-image-time i MOV shkruhet si -1)</string>
+    <string name="fmt_log_apple_write">Shkruhet formati Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Dalja e nxjerrjes: %1$s (foto %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Shkruhet formati Google: %1$s (imazh %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Shkruhet formati Honor: %1$s (imazh %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Kompozimi lpex dështoi, anashkalohet (nuk ndikon në riprodhim): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) u kompozua dhe u shtua në moov</string>
+    <string name="fmt_log_meizu_write">Shkruhet formati Meizu: %1$s (imazh %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Shkruhet formati Nubia: %1$s (JPEG %2$dB + mbushje 1B + video %3$dB + trailer %4$dB, UserComment përmban "%5$s")</string>
+    <string name="fmt_log_oppo_write">Shkruhet formati OPPO: %1$s (imazh %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Analizohet si Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Analizohet si Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Analizohet si Honor Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Analizohet si Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">Analizohet si Nubia Live Photo (nubiaVpfile trailer)</string>
+    <string name="fmt_log_parse_oppo">Analizohet si OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">Analizohet si vivo Live Photo me dy skedarë</string>
+    <string name="fmt_log_parse_vivo_single">Analizohet si vivo Live Photo me një skedar</string>
+    <string name="fmt_log_parse_xiaomi">Analizohet si Xiaomi Live Photo (i përputhshëm me Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">ID-ja livephoto e JPG-së dhe MP4-së nuk përputhen: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Shkruhet vivo Live Photo me një skedar: %1$s (imazh %2$dB + video %3$dB (përfshin vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Shkruhet formati vivo: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Shkruhet formati Xiaomi: %1$s (imazh %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Nxjerrje</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

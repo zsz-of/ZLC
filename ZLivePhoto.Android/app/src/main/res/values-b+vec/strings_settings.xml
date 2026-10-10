@@ -78,4 +78,11 @@
     <string name="settings_crf_hint">Pì basso el numero, pì alta la qualità e pì grando el file (default 18)</string>
     <string name="settings_encoder_title">Encoder</string>
     <string name="settings_compress_preset_title">Profilo de compression</string>
+    <string name="settings_preset_amber">Anbra</string>
+    <string name="settings_preset_forest">Verde foresta</string>
+    <string name="settings_preset_ocean">Blu oseano</string>
+    <string name="settings_preset_olive">Ołiva</string>
+    <string name="settings_preset_sunset">Aranzo tramonto</string>
+    <string name="settings_preset_teal">Verde acua</string>
+    <string name="settings_preset_violet">Viola</string>
 </resources>

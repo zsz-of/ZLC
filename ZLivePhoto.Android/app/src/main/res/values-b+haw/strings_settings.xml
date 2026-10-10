@@ -96,5 +96,11 @@
     <string name="settings_crf_hint">ʻOi aku ka liʻiliʻi o ka helu, ʻoi aku ka maikaʻi a me ka nui (maʻamau 18)</string>
     <string name="settings_encoder_title">Mea hoʻololi</string>
     <string name="settings_compress_preset_title">Palena kaomi</string>
-
+    <string name="settings_preset_amber">ʻAmepa</string>
+    <string name="settings_preset_forest">Ululāʻau</string>
+    <string name="settings_preset_ocean">Moana uliuli</string>
+    <string name="settings_preset_olive">ʻOliva</string>
+    <string name="settings_preset_sunset">Napopo ʻalani</string>
+    <string name="settings_preset_teal">Pala ʻōmaʻomaʻo uliuli</string>
+    <string name="settings_preset_violet">Violeta</string>
 </resources>

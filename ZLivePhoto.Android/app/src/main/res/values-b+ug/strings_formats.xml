@@ -30,4 +30,35 @@
     <string name="fmt_err_vivo_companion_missing">ھەمراھ سىن ھۆججىتى يوق: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG ئاساسىي قىسمىنى تەھلىل قىلىش مەغلۇپ بولدى</string>
     <string name="fmt_err_vivo_companion_invalid">ھەمراھ MP4 ئىناۋەتسىز (ftyp box يوق)</string>
+    <string name="fmt_log_apple_heic_no_pair">مۇقاۋا HEIC: جۈپ بەلگىسى ھازىرچە يېزىلمايدۇ (HEIC نىڭ EXIF ى Exif item ئىچىدە، ئايرىم ئەمەلگە ئاشۇرۇش كېرەك)، ContentIdentifier پەقەت MOV تەرەپكە يېزىلىدۇ</string>
+    <string name="fmt_log_apple_still_found">Apple ھەرىكەتسىز كادر ۋاقتى %1$d ms تەھلىل قىلىندى (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple ھەرىكەتسىز كادر ۋاقتى تەھلىل قىلىنمىدى (mebx/elst قۇرۇق edit يوق)، چىقىرىشتا سىننىڭ ئوتتۇرا نۇقتىسى ئاساس قىلىنىدۇ</string>
+    <string name="fmt_log_apple_still_no_carrier">ھەرىكەتسىز كادر ۋاقتى %1$d ms نىڭ ھازىرچە تەشۈكچىسى يوق: ھەقىقىي Apple mebx timed metadata يولىنى ئىشلىتىدۇ، بۇ قورال ھازىرچە ئۇنى بىرلەشتۈرمەيدۇ (MOV نىڭ still-image-time ى مەنپىي بىر دەپ يېزىلىدۇ)</string>
+    <string name="fmt_log_apple_write">Apple فورماتى يېزىلىۋاتىدۇ: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">ئايرىش چىقىرىشى: %1$s (سۈرەت %2$dB، HDR=%3$s) + %4$s (سىن %5$dB)</string>
+    <string name="fmt_log_google_write">Google فورماتى يېزىلىۋاتىدۇ: %1$s (سۈرەت %2$dB + سىن %3$dB)</string>
+    <string name="fmt_log_honor_write">HONOR فورماتى يېزىلىۋاتىدۇ: %1$s (سۈرەت %2$dB + سىن %3$dB + EIS %4$dB، LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex بىرلەشتۈرۈش مەغلۇپ، ئاتلاندى (قويۇشقا تەسىرى يوق): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) بىرلەشتۈرۈلۈپ moov غا قىستۇرۇلدى</string>
+    <string name="fmt_log_meizu_write">Meizu فورماتى يېزىلىۋاتىدۇ: %1$s (سۈرەت %2$dB + سىن %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia فورماتى يېزىلىۋاتىدۇ: %1$s (JPEG %2$dB + تولدۇرۇش 1B + سىن %3$dB + ئاخىرلىق %4$dB، UserComment ئىچىدە “%5$s”)</string>
+    <string name="fmt_log_oppo_write">OPPO فورماتى يېزىلىۋاتىدۇ: %1$s (سۈرەت %2$dB + سىن %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo بويىچە تەھلىل</string>
+    <string name="fmt_log_parse_google">Google Motion Photo بويىچە تەھلىل</string>
+    <string name="fmt_log_parse_honor">HONOR لىۋې فوتو بويىچە تەھلىل (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu لىۋې فوتو بويىچە تەھلىل</string>
+    <string name="fmt_log_parse_nubia">Nubia لىۋې فوتو بويىچە تەھلىل (nubiaVpfile ئاخىرلىقى)</string>
+    <string name="fmt_log_parse_oppo">OPPO لىۋې فوتو بويىچە تەھلىل</string>
+    <string name="fmt_log_parse_vivo">vivo قوش ھۆججەتلىك لىۋې فوتو بويىچە تەھلىل</string>
+    <string name="fmt_log_parse_vivo_single">vivo بىر ھۆججەتلىك لىۋې فوتو بويىچە تەھلىل</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi لىۋې فوتو بويىچە تەھلىل (Google ماسلىشىشچان)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG بىلەن MP4 نىڭ livephoto ID سى ئوخشاش ئەمەس: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo بىر ھۆججەتلىك لىۋې فوتو يېزىلىۋاتىدۇ: %1$s (سۈرەت %2$dB + سىن %3$dB (vivoMediaEStream + lpex نى ئۆز ئىچىگە ئالىدۇ) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo فورماتى يېزىلىۋاتىدۇ: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi فورماتى يېزىلىۋاتىدۇ: %1$s (سۈرەت %2$dB + سىن %3$dB، EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">ئايرىش</string>
+    <string name="fmt_tag_honor">HONOR</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

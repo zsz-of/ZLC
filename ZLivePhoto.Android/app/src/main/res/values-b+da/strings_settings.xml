@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Lavere værdier betyder højere kvalitet og større filer (standard 18)</string>
     <string name="settings_encoder_title">Encoder</string>
     <string name="settings_compress_preset_title">Komprimeringsprofil</string>
+    <string name="settings_preset_amber">Rav</string>
+    <string name="settings_preset_forest">Skovgrøn</string>
+    <string name="settings_preset_ocean">Havblå</string>
+    <string name="settings_preset_olive">Olivengrøn</string>
+    <string name="settings_preset_sunset">Solnedgangsorange</string>
+    <string name="settings_preset_teal">Blågrøn</string>
+    <string name="settings_preset_violet">Violet</string>
 </resources>

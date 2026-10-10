@@ -91,4 +91,15 @@
     <string name="screen_date_yesterday">昨天</string>
     <string name="screen_date_this_year">%1$d月%2$d日</string>
     <string name="screen_date_other_year">%1$d年%2$d月%3$d日</string>
+
+    <!-- 转码进度条文案（SwipeCard.kt）。%1$d%% 里的 %% 是转义后的字面百分号 -->
+    <string name="screen_transcode_progress">转码 %1$d%%</string>
+    <string name="screen_transcode_frames">%1$d/%2$d 帧</string>
+    <string name="screen_transcode_eta">预计剩余 %1$s</string>
+    <string name="screen_transcode_in_progress">转码中 · 已处理 %1$d 帧</string>
+    <string name="screen_eta_seconds">%1$d 秒</string>
+    <string name="screen_eta_minutes">%1$d 分 %2$s 秒</string>
+
+    <!-- MediaStore 里相册名为空时的兜底名（MediaRepo.kt） -->
+    <string name="screen_album_unnamed">未命名</string>
 </resources>

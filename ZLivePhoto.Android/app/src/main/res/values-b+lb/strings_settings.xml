@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Méi niddereg Wäerter bedeiten méi héich Qualitéit a méi grouss Dateien (Standard 18)</string>
     <string name="settings_encoder_title">Codéierer</string>
     <string name="settings_compress_preset_title">Kompressiounsprofil</string>
+    <string name="settings_preset_amber">Amber</string>
+    <string name="settings_preset_forest">Bëschgréng</string>
+    <string name="settings_preset_ocean">Mierblo</string>
+    <string name="settings_preset_olive">Oliv</string>
+    <string name="settings_preset_sunset">Sonnenënnergang-Orange</string>
+    <string name="settings_preset_teal">Bläigréng</string>
+    <string name="settings_preset_violet">Violett</string>
 </resources>

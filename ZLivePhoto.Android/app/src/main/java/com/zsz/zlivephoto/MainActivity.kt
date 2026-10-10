@@ -492,7 +492,7 @@ class MainActivity : ComponentActivity() {
             val dst = File(incomingDir, name).path
             contentResolver.openInputStream(uri)?.use { input ->
                 File(dst).outputStream().use { input.copyTo(it) }
-            } ?: throw IOException("无法读取所选文件")
+            } ?: throw IOException(getString(R.string.main_status_read_failed))
             val dstFile = File(dst)
             importFromPath(
                 path = dst, sourceUri = uri.toString(),
@@ -1401,7 +1401,7 @@ class MainActivity : ComponentActivity() {
                 if (stopImportRequested) break // 停止导入：使用当前进度，不再继续
                 try {
                     val src = File(item.path)
-                    if (!src.exists() || !src.canRead()) throw IOException("源文件不存在或不可读")
+                    if (!src.exists() || !src.canRead()) throw IOException(getString(R.string.main_status_source_missing))
                     importFromPath(
                         path = item.path, sourceUri = item.uri.toString(),
                         sourceTime = item.dateModified * 1000L, sourceTaken = item.dateTaken
@@ -1542,7 +1542,7 @@ class MainActivity : ComponentActivity() {
                 val idx = files.indexOfFirst { it.path == path }
                 if (idx >= 0) {
                     files[idx] = files[idx].copy(
-                        info = if (recognized) plugin!!.display else getString(R.string.main_info_unrecognized),
+                        info = if (recognized) getString(plugin!!.displayRes) else getString(R.string.main_info_unrecognized),
                         isUnrecognized = !recognized,
                         formatKey = if (recognized) plugin!!.name else null
                     )

@@ -78,4 +78,11 @@
     <string name="settings_crf_hint">Pussee bass el numer, pussee alta la qualità e pussee grand el file (default 18)</string>
     <string name="settings_encoder_title">Encoder</string>
     <string name="settings_compress_preset_title">Profil de compression</string>
+    <string name="settings_preset_amber">Ambra</string>
+    <string name="settings_preset_forest">Verd forest</string>
+    <string name="settings_preset_ocean">Blu oceani</string>
+    <string name="settings_preset_olive">Oliva</string>
+    <string name="settings_preset_sunset">Aranz tramont</string>
+    <string name="settings_preset_teal">Verd acqua</string>
+    <string name="settings_preset_violet">Viola</string>
 </resources>

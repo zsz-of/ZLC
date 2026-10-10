@@ -159,4 +159,6 @@
     <string name="main_export_source_dir_unavailable">Plica fasciculi fontis non praesto est: %1$s</string>
     <string name="main_export_replace_failed">Substitutio fasciculi fontis defecit: %1$s</string>
     <string name="main_export_replace_failed_bare">Substitutio fasciculi fontis defecit</string>
+    <string name="main_status_read_failed">Fasciculus selectus legi non potest</string>
+    <string name="main_status_source_missing">Fasciculus fons non exstat aut legi non potest</string>
 </resources>

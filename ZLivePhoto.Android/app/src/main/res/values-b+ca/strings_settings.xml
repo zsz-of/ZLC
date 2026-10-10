@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Com més baix és el valor, més qualitat i més mida (per defecte 18)</string>
     <string name="settings_encoder_title">Codificador</string>
     <string name="settings_compress_preset_title">Preajust de compressió</string>
-
+    <string name="settings_preset_amber">Ambre</string>
+    <string name="settings_preset_forest">Verd bosc</string>
+    <string name="settings_preset_ocean">Blau oceà</string>
+    <string name="settings_preset_olive">Oliva</string>
+    <string name="settings_preset_sunset">Taronja posta de sol</string>
+    <string name="settings_preset_teal">Blau xarxet</string>
+    <string name="settings_preset_violet">Violeta</string>
 </resources>

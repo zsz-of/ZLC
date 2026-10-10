@@ -13,7 +13,6 @@
     <string name="main_status_folder_unavailable">Ma jistax jiġi aċċessat il-folder magħżul (biss direttorji ta’ ħażna lokali huma appoġġjati)</string>
     <plurals name="main_status_session_restored">
         <item quantity="one">Ġiet irrestawrata l-aħħar sessjoni (%1$d fajl)</item>
-        <item quantity="two">Ġiet irrestawrata l-aħħar sessjoni (%1$d fajls)</item>
         <item quantity="few">Ġiet irrestawrata l-aħħar sessjoni (%1$d fajls)</item>
         <item quantity="many">Ġiet irrestawrata l-aħħar sessjoni (%1$d-il fajl)</item>
         <item quantity="other">Ġiet irrestawrata l-aħħar sessjoni (%1$d fajl)</item>
@@ -33,7 +32,6 @@
     <string name="main_status_compose_paired">%1$d foti u %2$d vidjos; skont l-inqas naħa żdiedu %3$d pari ta’ kompiti ta’ kompożizzjoni</string>
     <plurals name="main_status_compose_added">
         <item quantity="one">Żdied %1$d kompitu ta’ kompożizzjoni; agħfas “Ibda l-konverżjoni” biex issir il-kompożizzjoni</item>
-        <item quantity="two">Żdiedu %1$d kompiti ta’ kompożizzjoni; agħfas “Ibda l-konverżjoni” biex issir il-kompożizzjoni</item>
         <item quantity="few">Żdiedu %1$d kompiti ta’ kompożizzjoni; agħfas “Ibda l-konverżjoni” biex issir il-kompożizzjoni</item>
         <item quantity="many">Żdiedu %1$d-il kompitu ta’ kompożizzjoni; agħfas “Ibda l-konverżjoni” biex issir il-kompożizzjoni</item>
         <item quantity="other">Żdiedu %1$d kompitu ta’ kompożizzjoni; agħfas “Ibda l-konverżjoni” biex issir il-kompożizzjoni</item>
@@ -41,7 +39,6 @@
     <string name="main_status_auto_google">%1$s (il-format tal-output inbidel awtomatikament għal Google)</string>
     <plurals name="main_status_importing_shared">
         <item quantity="one">Qed tintimporta %1$d immaġni mqassma…</item>
-        <item quantity="two">Qed tintimporta %1$d immaġnijiet mqassmin…</item>
         <item quantity="few">Qed tintimporta %1$d immaġnijiet mqassmin…</item>
         <item quantity="many">Qed tintimporta %1$d-il immaġni mqassma…</item>
         <item quantity="other">Qed tintimporta %1$d immaġni mqassma…</item>
@@ -50,7 +47,6 @@
     <string name="main_status_import_done_partial">Importazzjoni lesta: %1$d importati b’suċċess, %2$d ma rnexxewx</string>
     <plurals name="main_status_import_done">
         <item quantity="one">Importazzjoni lesta: ġie importat %1$d fajl</item>
-        <item quantity="two">Importazzjoni lesta: ġew importati %1$d fajls</item>
         <item quantity="few">Importazzjoni lesta: ġew importati %1$d fajls</item>
         <item quantity="many">Importazzjoni lesta: ġie importat %1$d-il fajl</item>
         <item quantity="other">Importazzjoni lesta: ġie importat %1$d fajl</item>
@@ -58,7 +54,6 @@
     <string name="main_status_import_stopped">Importazzjoni waqfet: %1$d importati b’suċċess, %2$d ma rnexxewx</string>
     <plurals name="main_status_importing_files">
         <item quantity="one">Qed tintimporta %1$d fajl…</item>
-        <item quantity="two">Qed tintimporta %1$d fajls…</item>
         <item quantity="few">Qed tintimporta %1$d fajls…</item>
         <item quantity="many">Qed tintimporta %1$d-il fajl…</item>
         <item quantity="other">Qed tintimporta %1$d fajl…</item>
@@ -75,28 +70,24 @@
     <string name="main_status_batch_importing">Qed tintimporta b’bulk %1$d/%2$d…</string>
     <plurals name="main_status_batch_stopped">
         <item quantity="one">Importazzjoni bulk waqfet: total ta’ %1$d foto animata importata</item>
-        <item quantity="two">Importazzjoni bulk waqfet: total ta’ %1$d foti animati importati</item>
         <item quantity="few">Importazzjoni bulk waqfet: total ta’ %1$d foti animati importati</item>
         <item quantity="many">Importazzjoni bulk waqfet: total ta’ %1$d-il foto animata importata</item>
         <item quantity="other">Importazzjoni bulk waqfet: total ta’ %1$d foto animata importata</item>
     </plurals>
     <plurals name="main_status_batch_stopped_skipped">
         <item quantity="one">Importazzjoni bulk waqfet: total ta’ %1$d foto animata importata, %2$d fajl mhux animat skippjat</item>
-        <item quantity="two">Importazzjoni bulk waqfet: total ta’ %1$d foti animati importati, %2$d fajls mhux animati skippjati</item>
         <item quantity="few">Importazzjoni bulk waqfet: total ta’ %1$d foti animati importati, %2$d fajls mhux animati skippjati</item>
         <item quantity="many">Importazzjoni bulk waqfet: total ta’ %1$d-il foto animata importata, %2$d-il fajl mhux animat skippjat</item>
         <item quantity="other">Importazzjoni bulk waqfet: total ta’ %1$d foto animata importata, %2$d fajl mhux animat skippjat</item>
     </plurals>
     <plurals name="main_status_batch_done">
         <item quantity="one">Importazzjoni bulk lesta: total ta’ %1$d foto animata importata</item>
-        <item quantity="two">Importazzjoni bulk lesta: total ta’ %1$d foti animati importati</item>
         <item quantity="few">Importazzjoni bulk lesta: total ta’ %1$d foti animati importati</item>
         <item quantity="many">Importazzjoni bulk lesta: total ta’ %1$d-il foto animata importata</item>
         <item quantity="other">Importazzjoni bulk lesta: total ta’ %1$d foto animata importata</item>
     </plurals>
     <plurals name="main_status_batch_done_skipped">
         <item quantity="one">Importazzjoni bulk lesta: total ta’ %1$d foto animata importata, %2$d fajl mhux animat skippjat</item>
-        <item quantity="two">Importazzjoni bulk lesta: total ta’ %1$d foti animati importati, %2$d fajls mhux animati skippjati</item>
         <item quantity="few">Importazzjoni bulk lesta: total ta’ %1$d foti animati importati, %2$d fajls mhux animati skippjati</item>
         <item quantity="many">Importazzjoni bulk lesta: total ta’ %1$d-il foto animata importata, %2$d-il fajl mhux animat skippjat</item>
         <item quantity="other">Importazzjoni bulk lesta: total ta’ %1$d foto animata importata, %2$d fajl mhux animat skippjat</item>
@@ -148,7 +139,6 @@
     <string name="main_btn_auto_rename">Isem ġdid awtomatiku</string>
     <plurals name="main_delete_done">
         <item quantity="one">Tħassar %1$d fajl oriġinali</item>
-        <item quantity="two">Tħassru %1$d fajls oriġinali</item>
         <item quantity="few">Tħassru %1$d fajls oriġinali</item>
         <item quantity="many">Tħassru %1$d-il fajl oriġinali</item>
         <item quantity="other">Tħassru %1$d fajl oriġinali</item>
@@ -169,4 +159,6 @@
     <string name="main_export_source_dir_unavailable">Id-direttorju tal-fajl tas-sors mhux disponibbli: %1$s</string>
     <string name="main_export_replace_failed">Is-sostituzzjoni tal-fajl tas-sors falliet: %1$s</string>
     <string name="main_export_replace_failed_bare">Is-sostituzzjoni tal-fajl tas-sors falliet</string>
+    <string name="main_status_read_failed">Il-qari tal-fajl magħżul falla</string>
+    <string name="main_status_source_missing">Il-fajl tas-sors nieqes jew ma jistax jinqara</string>
 </resources>

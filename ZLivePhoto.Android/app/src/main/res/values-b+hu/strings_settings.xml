@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Minél kisebb az érték, annál jobb a minőség és nagyobb a fájlméret (alapértelmezés: 18)</string>
     <string name="settings_encoder_title">Kódoló</string>
     <string name="settings_compress_preset_title">Tömörítési előbeállítás</string>
-
+    <string name="settings_preset_amber">Borostyán</string>
+    <string name="settings_preset_forest">Erdőzöld</string>
+    <string name="settings_preset_ocean">Óceánkék</string>
+    <string name="settings_preset_olive">Olíva</string>
+    <string name="settings_preset_sunset">Naplemente narancs</string>
+    <string name="settings_preset_teal">Kékeszöld</string>
+    <string name="settings_preset_violet">Ibolyakék</string>
 </resources>

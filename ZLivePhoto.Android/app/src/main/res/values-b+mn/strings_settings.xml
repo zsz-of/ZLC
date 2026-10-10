@@ -91,4 +91,11 @@
     <string name="settings_crf_hint">Утга бага байх тусам чанар өндөр, хэмжээ том (өгөгдмөл 18)</string>
     <string name="settings_encoder_title">Кодлогч</string>
     <string name="settings_compress_preset_title">Шахах урьдчилсан тохиргоо</string>
+    <string name="settings_preset_amber">Хув улаан</string>
+    <string name="settings_preset_forest">Ойн ногоон</string>
+    <string name="settings_preset_ocean">Далайн хөх</string>
+    <string name="settings_preset_olive">Олив</string>
+    <string name="settings_preset_sunset">Нар жаргах улбар шар</string>
+    <string name="settings_preset_teal">Ногоовтор цэнхэр</string>
+    <string name="settings_preset_violet">Нил ягаан</string>
 </resources>

@@ -158,4 +158,6 @@
     <string name="main_export_source_dir_unavailable">Der Ordner der Quelldatei ist nicht verfügbar: %1$s</string>
     <string name="main_export_replace_failed">Ersetzen der Quelldatei fehlgeschlagen: %1$s</string>
     <string name="main_export_replace_failed_bare">Ersetzen der Quelldatei fehlgeschlagen</string>
+    <string name="main_status_read_failed">Die gewählte Datei konnte nicht gelesen werden</string>
+    <string name="main_status_source_missing">Die Quelldatei ist nicht vorhanden oder nicht lesbar</string>
 </resources>

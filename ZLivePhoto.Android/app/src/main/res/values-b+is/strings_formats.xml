@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">Fylgiskjal myndbands vantar: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Tókst ekki að þátta JPG-innihaldið</string>
     <string name="fmt_err_vivo_companion_invalid">Fylgiskjal MP4 er ógilt (ftyp-box vantar)</string>
+    <string name="fmt_log_apple_heic_no_pair">Forsíðan er HEIC: engin paraauðkenni eru skrifuð í bili (EXIF í HEIC er í Exif item og krefst sérstakrar útfærslu); ContentIdentifier er aðeins skrifað á MOV-hliðina</string>
+    <string name="fmt_log_apple_still_found">Apple kyrrmyndarstund %1$d ms fannst (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Engin Apple kyrrmyndarstund fannst (engin tóm mebx/elst-edit); við útskrift er miðja myndbandsins notuð til öryggis</string>
+    <string name="fmt_log_apple_still_no_carrier">Kyrrmyndarstundin %1$d ms hefur enn engan burð: raunveruleg Apple-tæki nota mebx timed metadata-spór, sem þetta verkfæri setur ekki saman í bili (MOV still-image-time er skrifað sem -1)</string>
+    <string name="fmt_log_apple_write">Apple-snið skrifað: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Úttak uppskiptingar: %1$s (mynd %2$dB, HDR=%3$s) + %4$s (myndband %5$dB)</string>
+    <string name="fmt_log_google_write">Google-snið skrifað: %1$s (mynd %2$dB + myndband %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor-snið skrifað: %1$s (mynd %2$dB + myndband %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Samsetning lpex mistókst og er sleppt (hefur ekki áhrif á spilun): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) var sett saman og fellt inn í moov</string>
+    <string name="fmt_log_meizu_write">Meizu-snið skrifað: %1$s (mynd %2$dB + myndband %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia-snið skrifað: %1$s (JPEG %2$dB + fylling 1B + myndband %3$dB + trailer %4$dB, UserComment inniheldur "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO-snið skrifað: %1$s (mynd %2$dB + myndband %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Greint sem Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Greint sem Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Greint sem Honor-lifandi mynd (MP4 large size + uuid EIS-fylki)</string>
+    <string name="fmt_log_parse_meizu">Greint sem Meizu-lifandi mynd</string>
+    <string name="fmt_log_parse_nubia">Greint sem Nubia-lifandi mynd (nubiaVpfile-trailer)</string>
+    <string name="fmt_log_parse_oppo">Greint sem OPPO-lifandi mynd</string>
+    <string name="fmt_log_parse_vivo">Greint sem vivo-lifandi mynd með tveimur skrám</string>
+    <string name="fmt_log_parse_vivo_single">Greint sem vivo-lifandi mynd með einni skrá</string>
+    <string name="fmt_log_parse_xiaomi">Greint sem Xiaomi-lifandi mynd (Google-samhæfð)</string>
+    <string name="fmt_log_vivo_id_mismatch">livephoto-auðkenni JPG og MP4 stemma ekki: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo-lifandi mynd með einni skrá skrifuð: %1$s (mynd %2$dB + myndband %3$dB (með vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo-snið skrifað: %1$s.jpg + %1$s.mp4 (livephoto-auðkenni: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi-snið skrifað: %1$s (mynd %2$dB + myndband %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Uppskipting</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

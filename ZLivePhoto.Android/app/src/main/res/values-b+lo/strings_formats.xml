@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">ຂາດໄຟລ໌ວິດີໂອຄູ່ກັນ: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">ແຍກວິເຄາະເນື້ອໃນ JPG ລົ້ມເຫຼວ</string>
     <string name="fmt_err_vivo_companion_invalid">MP4 ຄູ່ກັນບໍ່ຖືກຕ້ອງ (ຂາດ ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">ຮູບປົກເປັນ HEIC: ຍັງບໍ່ຂຽນເຄື່ອງໝາຍຄູ່ (EXIF ຂອງ HEIC ຢູ່ໃນ Exif item, ຕ້ອງເຮັດແຍກຕ່າງຫາກ), ຂຽນ ContentIdentifier ສະເພາະຝັ່ງ MOV</string>
+    <string name="fmt_log_apple_still_found">ແຍກເວລາເຟຣມນິ້ງຂອງ Apple ໄດ້ %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">ບໍ່ແຍກເວລາເຟຣມນິ້ງຂອງ Apple ໄດ້ (ບໍ່ມີ edit ຫວ່າງ mebx/elst), ຕອນສົ່ງອອກໃຊ້ຈຸດກາງວິດີໂອ</string>
+    <string name="fmt_log_apple_still_no_carrier">ເວລາເຟຣມນິ້ງ %1$d ms ຍັງບໍ່ມີຕົວຮອງຮັບ: Apple ຕົວຈິງໃຊ້ແທຣັກ mebx timed metadata, ເຄື່ອງມືນີ້ຍັງບໍ່ສ້າງ (MOV ຂຽນ still-image-time ເປັນ -1)</string>
+    <string name="fmt_log_apple_write">ຂຽນຮູບແບບ Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">ຜົນອອກດຶງອອກ: %1$s (ຮູບ %2$dB, HDR=%3$s) + %4$s (ວິດີໂອ %5$dB)</string>
+    <string name="fmt_log_google_write">ຂຽນຮູບແບບ Google: %1$s (ຮູບພາບ %2$dB + ວິດີໂອ %3$dB)</string>
+    <string name="fmt_log_honor_write">ຂຽນຮູບແບບ Honor: %1$s (ຮູບພາບ %2$dB + ວິດີໂອ %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">ການສ້າງ lpex ລົ້ມເຫຼວ, ຂ້າມໄປ (ບໍ່ກະທົບການຫຼິ້ນ): %1$s</string>
+    <string name="fmt_log_lpex_ok">ສ້າງ lpex box (LivePhotoExtension) ແລ້ວໃສ່ເຂົ້າ moov</string>
+    <string name="fmt_log_meizu_write">ຂຽນຮູບແບບ Meizu: %1$s (ຮູບພາບ %2$dB + ວິດີໂອ %3$dB)</string>
+    <string name="fmt_log_nubia_write">ຂຽນຮູບແບບ Nubia: %1$s (JPEG %2$dB + ຕື່ມ 1B + ວິດີໂອ %3$dB + ຫາງ %4$dB, UserComment ມີ "%5$s")</string>
+    <string name="fmt_log_oppo_write">ຂຽນຮູບແບບ OPPO: %1$s (ຮູບພາບ %2$dB + ວິດີໂອ %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">ແຍກຕາມ Apple Live Photo</string>
+    <string name="fmt_log_parse_google">ແຍກຕາມ Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">ແຍກຕາມຮູບຖ່າຍເຄື່ອນໄຫວ Honor (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">ແຍກຕາມຮູບຖ່າຍເຄື່ອນໄຫວ Meizu</string>
+    <string name="fmt_log_parse_nubia">ແຍກຕາມຮູບຖ່າຍເຄື່ອນໄຫວ Nubia (ຫາງ nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">ແຍກຕາມຮູບຖ່າຍເຄື່ອນໄຫວ OPPO</string>
+    <string name="fmt_log_parse_vivo">ແຍກຕາມຮູບຖ່າຍເຄື່ອນໄຫວ vivo ສອງໄຟລ໌</string>
+    <string name="fmt_log_parse_vivo_single">ແຍກຕາມຮູບຖ່າຍເຄື່ອນໄຫວ vivo ໄຟລ໌ດຽວ</string>
+    <string name="fmt_log_parse_xiaomi">ແຍກຕາມຮູບຖ່າຍເຄື່ອນໄຫວ Xiaomi (ເຂົ້າກັນໄດ້ກັບ Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">livephoto ID ຂອງ JPG ແລະ MP4 ບໍ່ຕົງກັນ: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">ຂຽນຮູບຖ່າຍເຄື່ອນໄຫວ vivo ໄຟລ໌ດຽວ: %1$s (ຮູບພາບ %2$dB + ວິດີໂອ %3$dB (ລວມ vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">ຂຽນຮູບແບບ vivo: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">ຂຽນຮູບແບບ Xiaomi: %1$s (ຮູບພາບ %2$dB + ວິດີໂອ %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">ດຶງອອກ</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

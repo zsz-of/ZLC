@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-     ii（彝语 / 凉山彝文 / Nuosu）属低资源语种（分级 C）：本轮无可靠彝文词表，为避免臆造彝文，
-     暂以简体中文基准文本作为兜底值填充全部 key，保证 404/404 覆盖；品牌专名与纯格式串保持原样。
-     复数类别按 CLDR ii 仅给 other。待母语者审校后再替换为彝文正文。 -->
+     ii（彝语 / 凉山彝文 / Nuosu）属低资源语种（分级 C）。
+     本轮采用「有据则译、无据保留中文」：只使用可溯源词表（《凉山规范彝文词典》、
+     SIL Webonary 彝英词典、彝文圣经词汇表，见 .agents/tools/ii_glossary_merged.json）
+     中确实存在的词形；整条拼不出自然句子的，一律保留简体中文原文。
+     476 条 key 中约 96 条已本地化，其余保留中文；品牌专名与技术名词保持原样。
+     **不再使用任何无出处的拼凑音节**。译本未经母语者审校，欢迎社区修正。 -->
 <resources>
     <!-- 顶栏副标题 -->
     <string name="screen_app_subtitle">动态照片格式互转</string>
     <!-- 顶栏右侧已选文件数（数量相关，用 plurals） -->
     <plurals name="screen_file_count">
-        <item quantity="other">%1$d 个文件</item>
+        <item quantity="other">%1$d ꌤꃅꄯꒉ</item>
     </plurals>
     <!-- 顶栏设置入口（仅无障碍朗读） -->
-    <string name="screen_settings">设置</string>
+    <string name="screen_settings">ꄻꄉ</string>
 
     <!-- 输出格式选择弹窗 -->
     <string name="screen_select_output_format">选择输出格式</string>
-    <string name="screen_selected">已选择</string>
+    <string name="screen_selected">ꀐꇬꌋ</string>
     <string name="screen_vivo_single_warning">⚠ 过老的机型可能无法识别此格式</string>
     <string name="screen_extract_blocked">⚠ 队列含合成任务，不能选择拆解</string>
 
@@ -48,40 +51,40 @@
     <string name="screen_output_format">输出格式：%1$s</string>
     <string name="screen_delete_original">处理完成后删除原图</string>
     <string name="screen_need_all_files_access_view">需「所有文件访问」权限，点击查看</string>
-    <string name="screen_clear">清空</string>
+    <string name="screen_clear">ꌩꎳ</string>
     <string name="screen_stop">停止处理</string>
     <string name="screen_start_convert">开始转换</string>
 
     <!-- 状态详情对话框 -->
-    <string name="screen_status_detail">状态详情</string>
+    <string name="screen_status_detail">ꐛꄟꑭꃆꋧꂮ</string>
     <string name="screen_long_press_copy">长按文本可选中复制</string>
-    <string name="screen_copy">复制</string>
-    <string name="screen_close">关闭</string>
+    <string name="screen_copy">ꌡꄉꄻ</string>
+    <string name="screen_close">ꈢꇧꎭ</string>
 
     <!-- 相册选择器 -->
-    <string name="screen_back">返回</string>
+    <string name="screen_back">ꀱꇁ</string>
     <string name="screen_picker_title_select">选择动态照片</string>
-    <string name="screen_album_count">相册 %1$d</string>
+    <string name="screen_album_count">ꁰꒌꄀꋐ %1$d</string>
     <string name="screen_album_collapse_cover">收起相册封面</string>
     <string name="screen_album_expand_cover">展开相册封面</string>
     <string name="screen_scanning_progress">扫描中 %1$d/%2$d</string>
     <plurals name="screen_photo_count">
         <item quantity="other">%1$d 张</item>
     </plurals>
-    <string name="screen_select_all">全选</string>
+    <string name="screen_select_all">ꉬꇮꌋ</string>
     <string name="screen_no_albums">没有可用相册</string>
     <string name="screen_no_media">没有找到动态照片</string>
     <string name="screen_no_media_compose">没有找到照片或视频</string>
-    <string name="screen_import">导入</string>
-    <string name="screen_import_count">导入 %1$d</string>
+    <string name="screen_import">ꈏꃹ</string>
+    <string name="screen_import_count">ꈏꃹ %1$d</string>
     <string name="screen_import_mixed">导入 图%1$d·视%2$d</string>
-    <string name="screen_search">搜索</string>
+    <string name="screen_search">ꎹꈹ</string>
     <string name="screen_search_collapse">收起搜索</string>
     <string name="screen_search_hint">按名称搜索</string>
-    <string name="screen_search_clear">清空搜索</string>
-    <string name="screen_sort_date">日期</string>
-    <string name="screen_sort_size">大小</string>
-    <string name="screen_sort_name">名称</string>
+    <string name="screen_search_clear">ꎹꈹꌩꎳ</string>
+    <string name="screen_sort_date">ꄮꇬ</string>
+    <string name="screen_sort_size">ꀄꊭꀉꒉ</string>
+    <string name="screen_sort_name">ꂓ</string>
     <string name="screen_sort_asc">正序</string>
     <string name="screen_sort_desc">倒序</string>
 
@@ -90,4 +93,11 @@
     <string name="screen_date_yesterday">昨天</string>
     <string name="screen_date_this_year">%1$d月%2$d日</string>
     <string name="screen_date_other_year">%1$d年%2$d月%3$d日</string>
+    <string name="screen_album_unnamed">未命名</string>
+    <string name="screen_eta_minutes">%1$d 分 %2$s 秒</string>
+    <string name="screen_eta_seconds">%1$d ꇅ</string>
+    <string name="screen_transcode_eta">预计剩余 %1$s</string>
+    <string name="screen_transcode_frames">%1$d/%2$d 帧</string>
+    <string name="screen_transcode_in_progress">转码中 · 已处理 %1$d 帧</string>
+    <string name="screen_transcode_progress">转码 %1$d%%</string>
 </resources>

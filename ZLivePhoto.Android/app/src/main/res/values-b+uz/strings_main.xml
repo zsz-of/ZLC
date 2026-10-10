@@ -170,4 +170,6 @@ Qanday ishlashni tanlang.</string>
     <string name="main_export_source_dir_unavailable">Asl fayl jildi mavjud emas: %1$s</string>
     <string name="main_export_replace_failed">Asl faylni almashtirish muvaffaqiyatsiz: %1$s</string>
     <string name="main_export_replace_failed_bare">Asl faylni almashtirish muvaffaqiyatsiz</string>
+    <string name="main_status_read_failed">Tanlangan faylni oʻqib boʻlmaydi</string>
+    <string name="main_status_source_missing">Manba fayl mavjud emas yoki oʻqib boʻlmaydi</string>
 </resources>

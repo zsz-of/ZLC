@@ -78,5 +78,29 @@
     <string name="conv_reminder_dont_remind">Non mostrare più</string>
     <string name="conv_reminder_confirm_ok">Ho capito</string>
     <string name="conv_reminder_uninstall">Disinstalla</string>
-
+    <string name="conv_err_exif_bad_endian">Indicatore di ordine dei byte TIFF non valido</string>
+    <string name="conv_err_exif_inline_type">Tipo inline non supportato %1$d</string>
+    <string name="conv_err_exif_type">Tipo TIFF non supportato %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI non trovato (file forse danneggiato)</string>
+    <string name="conv_err_jpeg_no_soi">JPEG non valido (SOI mancante)</string>
+    <string name="conv_err_jpeg_no_sos">Al JPEG manca il segmento SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">Confini di segmento disallineati @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Lunghezza di segmento non valida @%1$d</string>
+    <string name="conv_err_json_type">Tipo di valore JSON non supportato: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Dimensione del box ftyp non valida</string>
+    <string name="conv_err_mp4_no_ftyp">Box ftyp mancante</string>
+    <string name="conv_err_mp4_no_moov">Al MP4 manca il box moov</string>
+    <string name="conv_log_sanitize_dropped_prefix">Rimosse le tracce in più (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Pulizia delle tracce in più non riuscita (%1$s); l’output è stato lasciato invariato</string>
+    <string name="conv_log_sanitize_no_video_track">Il video di input non ha tracce video utilizzabili: pulizia delle tracce in più saltata</string>
+    <string name="conv_log_sanitize_normalized">Marchio del contenitore normalizzato a livello di byte (zero-copia, dati campione invariati)</string>
+    <string name="conv_log_sanitize_track_add_failed">Impossibile aggiungere la traccia video al rimuxer (%1$s): pulizia delle tracce in più saltata</string>
+    <string name="conv_reason_10bit_h265">Il video è H.265 a %1$d bit (Live Photo HDR): su alcuni modelli la galleria non riesce a decodificarlo</string>
+    <string name="conv_reason_audio_not_aac">La traccia audio è codificata in %1$s, non AAC (le specifiche delle Live Photo richiedono AAC; su Apple è spesso PCM)</string>
+    <string name="conv_reason_codec_unsupported">La codifica video %1$s non è H.264/H.265, lo standard di Android</string>
+    <string name="conv_reason_dolby_vision">Il video è in Dolby Vision: la maggior parte delle gallerie Android non lo supporta</string>
+    <string name="conv_reason_hdr">Il video è HDR (caratteristiche di trasferimento %1$s): su alcuni modelli la galleria mostra artefatti o schermo nero</string>
+    <string name="conv_reason_hev1">H.265 contrassegnato come hev1 (alcuni modelli riconoscono solo hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Il video ha una matrice di trasformazione speculare (la matrice di rotazione MP4 non può esprimere uno specchio)</string>
+    <string name="conv_tag_sanitize">Pulizia</string>
 </resources>

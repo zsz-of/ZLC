@@ -159,4 +159,6 @@
     <string name="main_export_source_dir_unavailable">Ο φάκελος του αρχείου πηγής δεν είναι διαθέσιμος: %1$s</string>
     <string name="main_export_replace_failed">Αποτυχία αντικατάστασης του αρχείου πηγής: %1$s</string>
     <string name="main_export_replace_failed_bare">Αποτυχία αντικατάστασης του αρχείου πηγής</string>
+    <string name="main_status_read_failed">Η ανάγνωση του επιλεγμένου αρχείου απέτυχε</string>
+    <string name="main_status_source_missing">Το αρχείο προέλευσης δεν υπάρχει ή δεν είναι αναγνώσιμο</string>
 </resources>

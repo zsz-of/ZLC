@@ -77,5 +77,29 @@
     <string name="conv_reminder_dont_remind">Vairs nerādīt</string>
     <string name="conv_reminder_confirm_ok">Sapratu</string>
     <string name="conv_reminder_uninstall">Atinstalēt</string>
-
+    <string name="conv_err_exif_bad_endian">Nederīga TIFF baitu secības atzīme</string>
+    <string name="conv_err_exif_inline_type">Neatbalstīts inline tips %1$d</string>
+    <string name="conv_err_exif_type">Neatbalstīts TIFF tips %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI nav atrasts (fails, iespējams, bojāts)</string>
+    <string name="conv_err_jpeg_no_soi">Nav derīgs JPEG (trūkst SOI)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG trūkst SOS segmenta</string>
+    <string name="conv_err_jpeg_seg_boundary">Segmenta robeža nobīdīta pie %1$d</string>
+    <string name="conv_err_jpeg_seg_length">Nederīgs segmenta garums pie %1$d</string>
+    <string name="conv_err_json_type">Neatbalstīts JSON vērtības tips: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Nederīgs ftyp box izmērs</string>
+    <string name="conv_err_mp4_no_ftyp">Trūkst ftyp box</string>
+    <string name="conv_err_mp4_no_moov">MP4 trūkst moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Papildu sliedes izņemtas (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Papildu sliežu tīrīšana neizdevās (%1$s), izvade atstāta nemainīta</string>
+    <string name="conv_log_sanitize_no_video_track">Ievades video nav izmantojamas video sliedes, papildu sliežu tīrīšana tiek izlaista</string>
+    <string name="conv_log_sanitize_normalized">Konteineru zīmols normalizēts baitu līmenī (nulles kopēšana, parauga dati nav mainīti)</string>
+    <string name="conv_log_sanitize_track_add_failed">Video sliedi nevar pievienot pārpakotājam (%1$s), papildu sliežu tīrīšana tiek izlaista</string>
+    <string name="conv_reason_10bit_h265">Video ir %1$d bitu H.265 (HDR Live Photo), dažu modeļu galerijas to nespēj dekodēt</string>
+    <string name="conv_reason_audio_not_aac">Audio sliedes kodējums %1$s nav AAC (Motion Photo specifikācija prasa AAC, Apple bieži izmanto PCM)</string>
+    <string name="conv_reason_codec_unsupported">Video kodējums %1$s nav Android izplatītais H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Video ir Dolby Vision, ko Android galerijas parasti neatbalsta</string>
+    <string name="conv_reason_hdr">Video ir HDR (%1$s pārraides raksturlielums), dažu modeļu galerijas rāda artefaktus vai melnu ekrānu</string>
+    <string name="conv_reason_hev1">H.265 atzīmēts kā hev1 (daži modeļi atzīst tikai hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Video ir spoguļa transformācijas matrica (MP4 rotācijas matrica nevar izteikt spoguļojumu)</string>
+    <string name="conv_tag_sanitize">Tīrīšana</string>
 </resources>

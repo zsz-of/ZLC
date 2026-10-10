@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">O cartafol do ficheiro de orixe non está dispoñible: %1$s</string>
     <string name="main_export_replace_failed">Non se puido substituír o ficheiro de orixe: %1$s</string>
     <string name="main_export_replace_failed_bare">Non se puido substituír o ficheiro de orixe</string>
+    <string name="main_status_read_failed">Non se puido ler o ficheiro seleccionado</string>
+    <string name="main_status_source_missing">O ficheiro de orixe non existe ou non se pode ler</string>
 </resources>

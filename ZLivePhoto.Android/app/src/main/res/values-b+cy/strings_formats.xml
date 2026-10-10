@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">Mae\'r ffeil fideo ategol ar goll: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Methwyd â dadansoddi corff y JPG</string>
     <string name="fmt_err_vivo_companion_invalid">Mae\'r MP4 ategol yn annilys (mae\'r blwch ftyp ar goll)</string>
+    <string name="fmt_log_apple_heic_no_pair">Clawr HEIC: ni ysgrifennir y marc paru am y tro (mae EXIF HEIC mewn Exif item, rhaid ei weithredu ar wahân); ysgrifennir ContentIdentifier ar ochr y MOV yn unig</string>
+    <string name="fmt_log_apple_still_found">Dadansoddwyd amser llun llonydd Apple %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Ni ddadansoddwyd amser llun llonydd Apple (dim golygiad gwag mebx/elst); defnyddir canol y fideo wrth allbynnu</string>
+    <string name="fmt_log_apple_still_no_carrier">Nid oes cludydd ar gyfer amser llun llonydd %1$d ms eto: mae Apple go iawn yn defnyddio trac metadata amseredig mebx, ac nid yw\'r teclyn hwn yn ei gyfansoddi am y tro (ysgrifennir still-image-time y MOV fel -1)</string>
+    <string name="fmt_log_apple_write">Ysgrifennu fformat Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Allbwn echdynnu: %1$s (llun %2$dB, HDR=%3$s) + %4$s (fideo %5$dB)</string>
+    <string name="fmt_log_google_write">Ysgrifennu fformat Google: %1$s (delwedd %2$dB + fideo %3$dB)</string>
+    <string name="fmt_log_honor_write">Ysgrifennu fformat Honor: %1$s (delwedd %2$dB + fideo %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Methwyd cyfansoddi lpex, hepgorwyd (nid yw\'n effeithio ar chwarae): %1$s</string>
+    <string name="fmt_log_lpex_ok">Cyfansoddwyd blwch lpex (LivePhotoExtension) a\'i fewnosod yn moov</string>
+    <string name="fmt_log_meizu_write">Ysgrifennu fformat Meizu: %1$s (delwedd %2$dB + fideo %3$dB)</string>
+    <string name="fmt_log_nubia_write">Ysgrifennu fformat Nubia: %1$s (JPEG %2$dB + padin 1B + fideo %3$dB + trailiwr %4$dB, UserComment yn cynnwys "%5$s")</string>
+    <string name="fmt_log_oppo_write">Ysgrifennu fformat OPPO: %1$s (delwedd %2$dB + fideo %3$dB + trailiwr %4$dB)</string>
+    <string name="fmt_log_parse_apple">Dadansoddi fel Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Dadansoddi fel Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Dadansoddi fel Honor Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Dadansoddi fel Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">Dadansoddi fel Nubia Live Photo (trailiwr nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Dadansoddi fel OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">Dadansoddi fel vivo Live Photo dau ffeil</string>
+    <string name="fmt_log_parse_vivo_single">Dadansoddi fel vivo Live Photo un ffeil</string>
+    <string name="fmt_log_parse_xiaomi">Dadansoddi fel Xiaomi Live Photo (sy\'n gydnaws â Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">Nid yw ID livephoto y JPG a\'r MP4 yn cyfateb: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Ysgrifennu vivo Live Photo un ffeil: %1$s (delwedd %2$dB + fideo %3$dB (gyda vivoMediaEStream + lpex) + trailiwr %4$dB)</string>
+    <string name="fmt_log_vivo_write">Ysgrifennu fformat vivo: %1$s.jpg + %1$s.mp4 (ID livephoto: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Ysgrifennu fformat Xiaomi: %1$s (delwedd %2$dB + fideo %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Echdynnu</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

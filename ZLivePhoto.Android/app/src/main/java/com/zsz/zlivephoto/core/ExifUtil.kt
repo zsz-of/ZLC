@@ -1,5 +1,7 @@
 package com.zsz.zlivephoto.core
 
+import com.zsz.zlivephoto.R
+
 /**
  * EXIF APP1 段的字节级读写：在 JPEG 的 IFD0 中添加/检测标签。
  * 纯字节级操作，不影响图像数据。用于小米 0x8897 标签。
@@ -54,7 +56,7 @@ internal object ExifUtil {
     private fun isLittleEndian(jpeg: ByteArray, tiffStart: Int): Boolean {
         if (jpeg[tiffStart] == 'I'.code.toByte() && jpeg[tiffStart + 1] == 'I'.code.toByte()) return true
         if (jpeg[tiffStart] == 'M'.code.toByte() && jpeg[tiffStart + 1] == 'M'.code.toByte()) return false
-        throw ExifException("无效的 TIFF 字节序标记")
+        throw ExifException(CoreText.of(R.string.conv_err_exif_bad_endian))
     }
 
     /** 检测 JPEG 的 IFD0 / ExifIFD 中是否存在指定 EXIF 标签。
@@ -138,7 +140,7 @@ internal object ExifUtil {
      */
     fun addExifIfdTag(jpeg: ByteArray, tagId: Int, tagType: Int, value: Int): ByteArray {
         if (!typeSizes.containsKey(tagType)) {
-            throw ExifException("不支持的 TIFF 类型 $tagType")
+            throw ExifException(CoreText.of(R.string.conv_err_exif_type, tagType))
         }
 
         val found = findExifApp1(jpeg)
@@ -580,7 +582,7 @@ internal object ExifUtil {
             1 -> b[0] = value.toByte() // BYTE 恒为单字节值，与字节序无关（大端不可写 b[3]）
             3 -> if (le) BinaryUtils.writeU16LE(b, 0, value) else BinaryUtils.writeU16BE(b, 0, value)
             4 -> if (le) BinaryUtils.writeU32LE(b, 0, value.toLong()) else BinaryUtils.writeU32BE(b, 0, value.toLong())
-            else -> throw ExifException("不支持的 inline 类型 $tagType")
+            else -> throw ExifException(CoreText.of(R.string.conv_err_exif_inline_type, tagType))
         }
         return b
     }

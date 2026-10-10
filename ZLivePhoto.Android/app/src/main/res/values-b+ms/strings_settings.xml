@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Nilai lebih rendah bermaksud kualiti lebih tinggi dan fail lebih besar (lalai 18)</string>
     <string name="settings_encoder_title">Pengekod</string>
     <string name="settings_compress_preset_title">Praset mampatan</string>
+    <string name="settings_preset_amber">Amber</string>
+    <string name="settings_preset_forest">Hijau Rimba</string>
+    <string name="settings_preset_ocean">Biru Samudera</string>
+    <string name="settings_preset_olive">Hijau Zaitun</string>
+    <string name="settings_preset_sunset">Jingga Senja</string>
+    <string name="settings_preset_teal">Biru Teal</string>
+    <string name="settings_preset_violet">Ungu Violet</string>
 </resources>

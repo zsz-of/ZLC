@@ -91,4 +91,11 @@
     <string name="settings_crf_hint">قدر جتنی کم ہوگی معیار اتنا اونچا اور حجم اتنا بڑا ہوگا (ڈیفالٹ 18)</string>
     <string name="settings_encoder_title">انکوڈر</string>
     <string name="settings_compress_preset_title">کمپریشن پریسیٹ</string>
+    <string name="settings_preset_amber">عنبری</string>
+    <string name="settings_preset_forest">جنگلی سبز</string>
+    <string name="settings_preset_ocean">سمندری نیلا</string>
+    <string name="settings_preset_olive">زیتونی</string>
+    <string name="settings_preset_sunset">غروب نارنجی</string>
+    <string name="settings_preset_teal">فیروزی</string>
+    <string name="settings_preset_violet">بنفشی</string>
 </resources>

@@ -144,4 +144,6 @@
     <string name="main_export_source_dir_unavailable">সোর্স ফোল্ডার পাওয়া যাচ্ছে না: %1$s</string>
     <string name="main_export_replace_failed">সোর্স ফাইল প্রতিস্থাপন ব্যর্থ: %1$s</string>
     <string name="main_export_replace_failed_bare">সোর্স ফাইল প্রতিস্থাপন ব্যর্থ</string>
+    <string name="main_status_read_failed">নির্বাচিত ফাইল পড়া যাচ্ছে না</string>
+    <string name="main_status_source_missing">সোর্স ফাইল নেই বা পড়া যাচ্ছে না</string>
 </resources>

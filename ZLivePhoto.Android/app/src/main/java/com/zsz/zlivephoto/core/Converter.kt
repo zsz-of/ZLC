@@ -43,7 +43,7 @@ internal object Converter {
             throw ConvertException(CoreText.of(R.string.conv_unrecognized_live_photo))
         }
 
-        log("info", CoreText.of(R.string.conv_log_detected, plugin.display), CoreText.of(R.string.conv_tag_convert))
+        log("info", CoreText.of(R.string.conv_log_detected, CoreText.of(plugin.displayRes)), CoreText.of(R.string.conv_tag_convert))
 
         val stem = File(path).nameWithoutExtension
         File(outDir).mkdirs()
@@ -339,7 +339,7 @@ internal object Converter {
             asset.videoInfo = Mp4Util.getTrackInfo(mp4Bytes) ?: mutableMapOf()
             // 合成素材同样可能夹带附加轨（例如用户直接用带 mett 的 MP4 当素材）
             sanitizeAssetVideo(asset, log)
-            log("info", CoreText.of(R.string.conv_log_compose_sizes, jpeg.size, asset.videoMp4.size, targetPlugin.display), CoreText.of(R.string.conv_tag_compose))
+            log("info", CoreText.of(R.string.conv_log_compose_sizes, jpeg.size, asset.videoMp4.size, CoreText.of(targetPlugin.displayRes)), CoreText.of(R.string.conv_tag_compose))
 
             return targetPlugin.write(asset, outDir, stem, log, options)
         } finally {

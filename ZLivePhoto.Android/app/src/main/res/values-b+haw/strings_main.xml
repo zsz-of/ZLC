@@ -164,4 +164,6 @@ E koho i ke ʻano hana.</string>
     <string name="main_export_source_dir_unavailable">ʻAʻole loaʻa ka papa kuhikuhi waihona kumu: %1$s</string>
     <string name="main_export_replace_failed">Hewa ka hoʻololi ʻana i ka waihona kumu: %1$s</string>
     <string name="main_export_replace_failed_bare">Hewa ka hoʻololi ʻana i ka waihona kumu</string>
+    <string name="main_status_read_failed">ʻAʻole hiki ke heluhelu i ka waihona i koho ʻia</string>
+    <string name="main_status_source_missing">ʻAʻole i loaʻa a hiki ʻole paha ke heluhelu i ka waihona kumu</string>
 </resources>

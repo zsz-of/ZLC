@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Што је вредност мања, квалитет је виши, а датотека већа (подразумевано 18)</string>
     <string name="settings_encoder_title">Кодер</string>
     <string name="settings_compress_preset_title">Профил компресије</string>
-
+    <string name="settings_preset_amber">Ћилибарна</string>
+    <string name="settings_preset_forest">Шумска зелена</string>
+    <string name="settings_preset_ocean">Океанска плава</string>
+    <string name="settings_preset_olive">Маслинаста</string>
+    <string name="settings_preset_sunset">Наранџаста заласка сунца</string>
+    <string name="settings_preset_teal">Тиркизна</string>
+    <string name="settings_preset_violet">Љубичаста</string>
 </resources>

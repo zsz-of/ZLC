@@ -91,4 +91,11 @@
     <string name="settings_crf_hint">मान जति सानो हुन्छ गुणस्तर त्यति उच्च र आकार त्यति ठूलो हुन्छ (पूर्वनिर्धारित 18)</string>
     <string name="settings_encoder_title">इन्कोडर</string>
     <string name="settings_compress_preset_title">कम्प्रेसन प्रिसेट</string>
+    <string name="settings_preset_amber">एम्बर</string>
+    <string name="settings_preset_forest">वन हरियो</string>
+    <string name="settings_preset_ocean">समुद्री निलो</string>
+    <string name="settings_preset_olive">जैतुन</string>
+    <string name="settings_preset_sunset">सूर्यास्त सुन्तला</string>
+    <string name="settings_preset_teal">टिल</string>
+    <string name="settings_preset_violet">बैजनी</string>
 </resources>

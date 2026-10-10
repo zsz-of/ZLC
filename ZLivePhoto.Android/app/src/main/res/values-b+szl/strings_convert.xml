@@ -80,5 +80,29 @@
     <string name="conv_reminder_dont_remind">Niy pokazuj wiyncyj</string>
     <string name="conv_reminder_confirm_ok">Rozmiym</string>
     <string name="conv_reminder_uninstall">Ôdinstaluj</string>
-
+    <string name="conv_err_exif_bad_endian">Zły znak porzōnku bajtōw TIFF</string>
+    <string name="conv_err_exif_inline_type">Niyôbsugowany typ inline %1$d</string>
+    <string name="conv_err_exif_type">Niyôbsugowany typ TIFF %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">Niy idzie nojś markera EOI (zbiōr je poradziyniyszty abo zepsuty)</string>
+    <string name="conv_err_jpeg_no_soi">To niy je prawy JPEG (brakuje SOI)</string>
+    <string name="conv_err_jpeg_no_sos">W JPEG brakuje segmentu SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">Ôdchył na granicy segmentu @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Zło dugsza segmentu @%1$d</string>
+    <string name="conv_err_json_type">Niyôbsugowany typ wertōści JSON: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Zło wielkość boxu ftyp</string>
+    <string name="conv_err_mp4_no_ftyp">Brakuje boxu ftyp</string>
+    <string name="conv_err_mp4_no_moov">W MP4 brakuje boxu moov</string>
+    <string name="conv_log_sanitize_dropped_prefix">Wyciepano przidane ścieżki (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Niy idzie wyczyścić przidanych ścieżek (%1$s) — zbiōr zapisany tak jak je</string>
+    <string name="conv_log_sanitize_no_video_track">Zdrzōdłowe wideo niy mŏ żodnyj używalnyj ścieżki wideo, czyszczynie przidanych ścieżek je ôpuszczōne</string>
+    <string name="conv_log_sanitize_normalized">Markã pojemnika znormalizowano na poziōmie bajtōw (bez kopiowaniŏ, dane prōbek niy sōm zmieniōne)</string>
+    <string name="conv_log_sanitize_track_add_failed">Niy idzie dodać ścieżki wideo do remuksera (%1$s), czyszczynie przidanych ścieżek je ôpuszczōne</string>
+    <string name="conv_reason_10bit_h265">Wideo je %1$dbit H.265 (HDR Live Photo); galeryjŏ na niykerych maszynach niy poradzi go ôdkodować</string>
+    <string name="conv_reason_audio_not_aac">Koder ścieżki audio to %1$s, a niy AAC (sztandar dynamicznych zdjyńć wymŏgŏ AAC, Apple nŏjczyńścij używŏ PCM)</string>
+    <string name="conv_reason_codec_unsupported">Koder wideo to %1$s, a niy uniwersalny dlŏ Androida H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Wideo je w Dolby Vision, a galeryje Androida podug sztandardu tego niy ôbsugujōm</string>
+    <string name="conv_reason_hdr">Wideo je w HDR (charakterystyki przenoszyniŏ %1$s) — galeryjŏ na niykerych maszynach pokazujŏ artefakty abo czorny ekran</string>
+    <string name="conv_reason_hev1">H.265 je ôznaczōny jako hev1 (niyktōre maszyny znajō ino hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Wideo mŏ matricã zwiyrciadlanego przekształcyniŏ (matrica ôbrotu MP4 niy wyrażŏ zwiyrciadlynii)</string>
+    <string name="conv_tag_sanitize">Czyszczynie</string>
 </resources>

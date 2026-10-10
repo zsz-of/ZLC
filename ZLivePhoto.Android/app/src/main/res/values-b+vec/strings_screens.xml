@@ -72,4 +72,11 @@
     <string name="screen_date_yesterday">Gheri</string>
     <string name="screen_date_this_year">%2$d.%1$d</string>
     <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+    <string name="screen_album_unnamed">Sensa nome</string>
+    <string name="screen_eta_minutes">%1$d min %2$s s</string>
+    <string name="screen_eta_seconds">%1$d s</string>
+    <string name="screen_transcode_eta">Ancora %1$s</string>
+    <string name="screen_transcode_frames">%1$d/%2$d fotogrami</string>
+    <string name="screen_transcode_in_progress">Transcodìfega in corso · %1$d fotogrami laorài</string>
+    <string name="screen_transcode_progress">Transcodìfega %1$d%%</string>
 </resources>

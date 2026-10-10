@@ -78,4 +78,11 @@
     <string name="screen_date_yesterday">हिजो</string>
     <string name="screen_date_this_year">%1$d-%2$d</string>
     <string name="screen_date_other_year">%1$d-%2$d-%3$d</string>
+    <string name="screen_album_unnamed">नाम नभएको</string>
+    <string name="screen_eta_minutes">%1$d मिनेट %2$s सेकेन्ड</string>
+    <string name="screen_eta_seconds">%1$d सेकेन्ड</string>
+    <string name="screen_transcode_eta">अनुमानित बाँकी %1$s</string>
+    <string name="screen_transcode_frames">%1$d/%2$d फ्रेम</string>
+    <string name="screen_transcode_in_progress">ट्रान्सकोड हुँदैछ · %1$d फ्रेम प्रशोधित</string>
+    <string name="screen_transcode_progress">ट्रान्सकोड %1$d%%</string>
 </resources>

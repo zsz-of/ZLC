@@ -30,4 +30,35 @@
     <string name="fmt_err_vivo_companion_missing">Недостаје пратећа видео датотека: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Парсирање тела JPG-а није успело</string>
     <string name="fmt_err_vivo_companion_invalid">Пратећи MP4 није важећи (недостаје ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">Насловна фотографија је HEIC: идентификатор упаривања се засада не записује (EXIF је код HEIC-а у Exif елементу и захтева засебну имплементацију), ContentIdentifier се записује само на страни MOV-а</string>
+    <string name="fmt_log_apple_still_found">Препознат је тренутак статичне сличице Apple %1$d мс (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Тренутак статичне сличице Apple није препознат (нема празног edit mebx/elst) — при извозу се користи средина видеа</string>
+    <string name="fmt_log_apple_still_no_carrier">За тренутак статичне сличице %1$d мс још нема носиоца: прави Apple користи стазу timed metadata mebx, а овај алат је засада не ствара (у MOV-у се за still-image-time записује -1)</string>
+    <string name="fmt_log_apple_write">Запис у формату Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Излаз издвајања: %1$s (фотографија %2$d B, HDR=%3$s) + %4$s (видео %5$d B)</string>
+    <string name="fmt_log_google_write">Запис у формату Google: %1$s (слика %2$d B + видео %3$d B)</string>
+    <string name="fmt_log_honor_write">Запис у формату Honor: %1$s (слика %2$d B + видео %3$d B + EIS %4$d B, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Стварање lpex-а није успело, прескочено (не утиче на репродукцију): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) је створен и уметнут у moov</string>
+    <string name="fmt_log_meizu_write">Запис у формату Meizu: %1$s (слика %2$d B + видео %3$d B)</string>
+    <string name="fmt_log_nubia_write">Запис у формату Nubia: %1$s (JPEG %2$d B + испуна 1 B + видео %3$d B + реп %4$d B, UserComment садржи „%5$s“)</string>
+    <string name="fmt_log_oppo_write">Запис у формату OPPO: %1$s (слика %2$d B + видео %3$d B + trailer %4$d B)</string>
+    <string name="fmt_log_parse_apple">Рашчлањивање као Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Рашчлањивање као Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Рашчлањивање као Honor динамична фотографија (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Рашчлањивање као Meizu динамична фотографија</string>
+    <string name="fmt_log_parse_nubia">Рашчлањивање као Nubia динамична фотографија (реп nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Рашчлањивање као OPPO динамична фотографија</string>
+    <string name="fmt_log_parse_vivo">Рашчлањивање као дводатотечна vivo динамична фотографија</string>
+    <string name="fmt_log_parse_vivo_single">Рашчлањивање као једнадатотечна vivo Live Photo</string>
+    <string name="fmt_log_parse_xiaomi">Рашчлањивање као Xiaomi динамична фотографија (компатибилна са Google-ом)</string>
+    <string name="fmt_log_vivo_id_mismatch">livephoto ID у JPG-у и MP4-у се не поклапају: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Запис једнадатотечне vivo Live Photo: %1$s (слика %2$d B + видео %3$d B (са vivoMediaEStream + lpex) + trailer %4$d B)</string>
+    <string name="fmt_log_vivo_write">Запис у формату vivo: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Запис у формату Xiaomi: %1$s (слика %2$d B + видео %3$d B, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Издвајање</string>
+    <string name="fmt_tag_honor">Хонор</string>
+    <string name="fmt_tag_meizu">Меизу</string>
+    <string name="fmt_tag_nubia">Нубија</string>
+    <string name="fmt_tag_xiaomi">Сјаоми</string>
 </resources>

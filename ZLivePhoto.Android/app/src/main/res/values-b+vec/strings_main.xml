@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">Ła cartèła orixinale no ła xe disponibile: %1$s</string>
     <string name="main_export_replace_failed">No se ga podesto sostituir el file orixinale: %1$s</string>
     <string name="main_export_replace_failed_bare">No se ga podesto sostituir el file orixinale</string>
+    <string name="main_status_read_failed">No se pol leser el file selessionà</string>
+    <string name="main_status_source_missing">El file sorzente no l’esiste o no se pol leserlo</string>
 </resources>

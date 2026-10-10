@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Lægri gildi þýða meiri gæði og stærri skrár (sjálfgefið 18)</string>
     <string name="settings_encoder_title">Kóðari</string>
     <string name="settings_compress_preset_title">Þjöppunarforsetning</string>
+    <string name="settings_preset_amber">Rafgulur</string>
+    <string name="settings_preset_forest">Skógargrænn</string>
+    <string name="settings_preset_ocean">Hafblár</string>
+    <string name="settings_preset_olive">Ólífgulur</string>
+    <string name="settings_preset_sunset">Sólarlagsappelsínugulur</string>
+    <string name="settings_preset_teal">Blágrænn</string>
+    <string name="settings_preset_violet">Fjólublár</string>
 </resources>

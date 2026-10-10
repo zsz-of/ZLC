@@ -77,5 +77,29 @@
     <string name="conv_reminder_dont_remind">Не приказуј поново</string>
     <string name="conv_reminder_confirm_ok">Разумем</string>
     <string name="conv_reminder_uninstall">Деинсталирај</string>
-
+    <string name="conv_err_exif_bad_endian">Неважећа ознака редоследа бајтова TIFF</string>
+    <string name="conv_err_exif_inline_type">Неподржана врста inline %1$d</string>
+    <string name="conv_err_exif_type">Неподржана врста TIFF %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">Ознака EOI није пронађена (датотека је вероватно оштећена)</string>
+    <string name="conv_err_jpeg_no_soi">Ово није исправан JPEG (недостаје SOI)</string>
+    <string name="conv_err_jpeg_no_sos">У JPEG-у недостаје сегмент SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">Помак на граници сегмента @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Неважећа дужина сегмента @%1$d</string>
+    <string name="conv_err_json_type">Неподржана врста JSON вредности: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Неважећа величина ftyp box-а</string>
+    <string name="conv_err_mp4_no_ftyp">Недостаје ftyp box</string>
+    <string name="conv_err_mp4_no_moov">У MP4-у недостаје moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Уклоњене додатне стазе (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Чишћење додатних стаза није успело (%1$s) — датотека је записана онаква каква јесте</string>
+    <string name="conv_log_sanitize_no_video_track">Изворни видео нема употребљиву видео стазу, чишћење додатних стаза је прескочено</string>
+    <string name="conv_log_sanitize_normalized">Бренд контејнера је нормализован на нивоу бајтова (без копирања, подаци узорака нису измењени)</string>
+    <string name="conv_log_sanitize_track_add_failed">Видео стазу није било могуће додати у ремуксер (%1$s), чишћење додатних стаза је прескочено</string>
+    <string name="conv_reason_10bit_h265">Видео је %1$dbit H.265 (HDR Live Photo), галерија на неким уређајима не може да га декодира</string>
+    <string name="conv_reason_audio_not_aac">Кодек звучне стазе је %1$s, а не AAC (спецификација динамичних фотографија захтева AAC, Apple често користи PCM)</string>
+    <string name="conv_reason_codec_unsupported">Кодек видеа је %1$s, а не универзални за Android H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Видео је у Dolby Vision-у, а Android галерије га по правилу не подржавају</string>
+    <string name="conv_reason_hdr">Видео је у HDR-у (преносне карактеристике %1$s) — галерија на неким уређајима приказује артефакте или црн екран</string>
+    <string name="conv_reason_hev1">H.265 је означен као hev1 (неки уређаји познају само hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Видео садржи матрицу зрцалног пресликавања (ротациона матрица MP4 не изражава зрцаљење)</string>
+    <string name="conv_tag_sanitize">Чишћење</string>
 </resources>

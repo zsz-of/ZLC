@@ -158,4 +158,6 @@
     <string name="main_export_source_dir_unavailable">Le dossier du fichier source est indisponible : %1$s</string>
     <string name="main_export_replace_failed">Échec du remplacement du fichier source : %1$s</string>
     <string name="main_export_replace_failed_bare">Échec du remplacement du fichier source</string>
+    <string name="main_status_read_failed">Impossible de lire le fichier sélectionné</string>
+    <string name="main_status_source_missing">Le fichier source est absent ou illisible</string>
 </resources>

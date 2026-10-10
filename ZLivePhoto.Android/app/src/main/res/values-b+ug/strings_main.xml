@@ -156,4 +156,6 @@
     <string name="main_export_source_dir_unavailable">مەنبە ھۆججەت مۇندەرىجىسى ئىشلىمەيدۇ: %1$s</string>
     <string name="main_export_replace_failed">مەنبە ھۆججەتنى ئالماشتۇرۇش مەغلۇپ بولدى: %1$s</string>
     <string name="main_export_replace_failed_bare">مەنبە ھۆججەتنى ئالماشتۇرۇش مەغلۇپ بولدى</string>
+    <string name="main_status_read_failed">تاللانغان ھۆججەتنى ئوقۇغىلى بولمىدى</string>
+    <string name="main_status_source_missing">مەنبە ھۆججەت مەۋجۇت ئەمەس ياكى ئوقۇغىلى بولمايدۇ</string>
 </resources>

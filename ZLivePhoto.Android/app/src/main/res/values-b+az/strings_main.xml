@@ -160,4 +160,6 @@
     <string name="main_export_source_dir_unavailable">Mənbə fayl qovluğu əlçatan deyil: %1$s</string>
     <string name="main_export_replace_failed">Mənbə fayl əvəz edilə bilmədi: %1$s</string>
     <string name="main_export_replace_failed_bare">Mənbə fayl əvəz edilə bilmədi</string>
+    <string name="main_status_read_failed">Seçilmiş fayl oxuna bilmədi</string>
+    <string name="main_status_source_missing">Mənbə faylı yoxdur və ya oxunmur</string>
 </resources>

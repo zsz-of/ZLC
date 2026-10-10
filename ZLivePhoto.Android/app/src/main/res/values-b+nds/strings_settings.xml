@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Lüttere Weerten bedüüdt högere Qualität un gröttere Dateien (Standard 18)</string>
     <string name="settings_encoder_title">Kodierer</string>
     <string name="settings_compress_preset_title">Kompräschons-Profil</string>
+    <string name="settings_preset_amber">Amber</string>
+    <string name="settings_preset_forest">Wooldgröön</string>
+    <string name="settings_preset_ocean">Seeblau</string>
+    <string name="settings_preset_olive">Oliven</string>
+    <string name="settings_preset_sunset">Sünnünnergang-Orange</string>
+    <string name="settings_preset_teal">Blau gröön</string>
+    <string name="settings_preset_violet">Vigelett</string>
 </resources>

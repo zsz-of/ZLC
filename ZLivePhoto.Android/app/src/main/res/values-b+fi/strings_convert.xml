@@ -79,5 +79,29 @@
     <string name="conv_reminder_dont_remind">Älä näytä uudelleen</string>
     <string name="conv_reminder_confirm_ok">Selvä</string>
     <string name="conv_reminder_uninstall">Poista asennus</string>
-
+    <string name="conv_err_exif_bad_endian">Virheellinen TIFF-tavujärjestyksen merkki</string>
+    <string name="conv_err_exif_inline_type">Tukematon inline-tyyppi %1$d</string>
+    <string name="conv_err_exif_type">Tukematon TIFF-tyyppi %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI-tunnistetta ei löytynyt (tiedosto voi olla vioittunut)</string>
+    <string name="conv_err_jpeg_no_soi">Ei kelvollinen JPEG (SOI puuttuu)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG:stä puuttuu SOS-segmentti</string>
+    <string name="conv_err_jpeg_seg_boundary">Segmentin raja siirtynyt kohdassa %1$d</string>
+    <string name="conv_err_jpeg_seg_length">Virheellinen segmentin pituus kohdassa %1$d</string>
+    <string name="conv_err_json_type">Tukematon JSON-arvotyyppi: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Virheellinen ftyp box -koko</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box puuttuu</string>
+    <string name="conv_err_mp4_no_moov">MP4:stä puuttuu moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Ylimääräiset raidat poistettu (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Ylimääräisten raitojen puhdistus epäonnistui (%1$s), tuloste jätettiin ennalleen</string>
+    <string name="conv_log_sanitize_no_video_track">Lähdevideossa ei ole käyttökelpoista videoraitaa, ylimääräisten raitojen puhdistus ohitetaan</string>
+    <string name="conv_log_sanitize_normalized">Säiliön brändi normalisoitiin tavutasolla (nollakopio, näytetiedot ennallaan)</string>
+    <string name="conv_log_sanitize_track_add_failed">Videoraitaa ei voi lisätä uudelleenpakkaajaan (%1$s), ylimääräisten raitojen puhdistus ohitetaan</string>
+    <string name="conv_reason_10bit_h265">Video on %1$d-bittinen H.265 (HDR Live Photo); joidenkin mallien galleriat eivät pysty purkamaan sitä</string>
+    <string name="conv_reason_audio_not_aac">Ääniraidan koodekki %1$s ei ole AAC (Motion Photo -määrittely vaatii AAC:n, Apple käyttää usein PCM:ää)</string>
+    <string name="conv_reason_codec_unsupported">Videokoodekki %1$s ei ole Androidissa yleinen H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Video on Dolby Vision, jota Android-galleriat eivät yleensä tue</string>
+    <string name="conv_reason_hdr">Video on HDR (%1$s-siirtovaste); joidenkin mallien galleriat näyttävät virheitä tai mustan ruudun</string>
+    <string name="conv_reason_hev1">H.265 on merkitty muotoon hev1 (osa malleista hyväksyy vain hvc1:n)</string>
+    <string name="conv_reason_mirror_matrix">Videossa on peilausmatriisi (MP4:n kiertomatriisi ei voi ilmaista peilausta)</string>
+    <string name="conv_tag_sanitize">Puhdistus</string>
 </resources>

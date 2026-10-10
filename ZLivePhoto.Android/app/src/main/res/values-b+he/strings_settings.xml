@@ -84,4 +84,11 @@
     <string name="settings_crf_hint">ככל שהמספר קטן האיכות גבוהה יותר והנפח גדול יותר (ברירת מחדל 18)</string>
     <string name="settings_encoder_title">מקודד</string>
     <string name="settings_compress_preset_title">ערכת דחיסה מוכנה</string>
+    <string name="settings_preset_amber">ענבר</string>
+    <string name="settings_preset_forest">ירוק יער</string>
+    <string name="settings_preset_ocean">כחול ים</string>
+    <string name="settings_preset_olive">זית</string>
+    <string name="settings_preset_sunset">כתום שקיעה</string>
+    <string name="settings_preset_teal">טורקיז</string>
+    <string name="settings_preset_violet">סגול</string>
 </resources>

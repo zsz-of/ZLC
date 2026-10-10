@@ -178,4 +178,6 @@
     <string name="main_export_source_dir_unavailable">Папка вихідного файлу недоступна: %1$s</string>
     <string name="main_export_replace_failed">Не вдалося замінити вихідний файл: %1$s</string>
     <string name="main_export_replace_failed_bare">Не вдалося замінити вихідний файл</string>
+    <string name="main_status_read_failed">Не вдалося прочитати вибраний файл</string>
+    <string name="main_status_source_missing">Початковий файл не існує або недоступний для читання</string>
 </resources>

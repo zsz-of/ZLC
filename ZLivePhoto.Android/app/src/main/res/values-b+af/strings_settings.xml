@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Laer waardes beteken hoër kwaliteit en groter lêers (verstek 18)</string>
     <string name="settings_encoder_title">Enkodeerder</string>
     <string name="settings_compress_preset_title">Kompressieprofiel</string>
+    <string name="settings_preset_amber">Barnsteen</string>
+    <string name="settings_preset_forest">Bosgroen</string>
+    <string name="settings_preset_ocean">Oseaanblou</string>
+    <string name="settings_preset_olive">Olyf</string>
+    <string name="settings_preset_sunset">Sonsondergang</string>
+    <string name="settings_preset_teal">Blougroen</string>
+    <string name="settings_preset_violet">Violet</string>
 </resources>

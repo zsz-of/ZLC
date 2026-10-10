@@ -2,8 +2,7 @@
 <!--
   格式插件展示名（task-4，videolen-analyst 维护）。key 前缀 fmt_。
   res/values/ 是简体中文兜底；其它语种放 values-<locale>/strings_formats.xml。
-  注意：FormatPlugin.display 仍为旧调用点（MainActivity/AlbumScanner/Converter）提供中文兜底，
-  其 LEGACY_ZH_NAMES 表与本文件一一对应；改这里的文案时要同步该表，直到旧调用点迁移到 displayRes。
+  展示名统一由 FormatPlugin.displayRes 提供，经 stringResource / CoreText.of 取值。
 -->
 <resources>
     <string name="fmt_apple">Apple Live Photo</string>
@@ -38,4 +37,42 @@
     <string name="fmt_err_vivo_companion_missing">缺少伴生视频文件：%1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG 主体解析失败</string>
     <string name="fmt_err_vivo_companion_invalid">伴生 MP4 无效（缺少 ftyp box）</string>
+
+    <!--
+      日志标签短名（界面显示为「[标签] 文案」）。与上面的展示名分开：
+      Apple/Google/OPPO/vivo 等专名标签仍是代码里的字面量，只有中文标签才需要资源。
+    -->
+    <string name="fmt_tag_extract">拆解</string>
+    <string name="fmt_tag_honor">荣耀</string>
+    <string name="fmt_tag_meizu">魅族</string>
+    <string name="fmt_tag_nubia">努比亚</string>
+    <string name="fmt_tag_xiaomi">小米</string>
+
+    <!-- 插件日志：解析/写出（与 Converter.kt 的 conv_log_* 同一日志面板） -->
+    <string name="fmt_log_parse_apple">按 Apple Live Photo 解析</string>
+    <string name="fmt_log_parse_google">按 Google Motion Photo 解析</string>
+    <string name="fmt_log_parse_honor">按荣耀动态照片解析（MP4 large size + uuid EIS matrix）</string>
+    <string name="fmt_log_parse_meizu">按魅族动态照片解析</string>
+    <string name="fmt_log_parse_nubia">按努比亚动态照片解析（nubiaVpfile 尾部）</string>
+    <string name="fmt_log_parse_oppo">按 OPPO 动态照片解析</string>
+    <string name="fmt_log_parse_vivo">按 vivo 双文件动态照片解析</string>
+    <string name="fmt_log_parse_vivo_single">按 vivo 单文件实况解析</string>
+    <string name="fmt_log_parse_xiaomi">按小米动态照片解析（Google 兼容）</string>
+    <string name="fmt_log_apple_still_found">解析到 Apple 静帧时刻 %1$d ms（mebx/elst）</string>
+    <string name="fmt_log_apple_still_missing">未解析到 Apple 静帧时刻（无 mebx/elst 空 edit），转出时按视频中点兜底</string>
+    <string name="fmt_log_apple_heic_no_pair">封面为 HEIC：暂不写配对标识（HEIC 的 EXIF 在 Exif item 里，需另行实现），仅 MOV 侧写入 ContentIdentifier</string>
+    <string name="fmt_log_apple_still_no_carrier">静帧时刻 %1$d ms 暂无载体：真实 Apple 用 mebx timed metadata 轨，本工具暂不合成（MOV 的 still-image-time 写 -1）</string>
+    <string name="fmt_log_apple_write">写出 Apple 格式：%1$s + %2$s（ContentIdentifier=%3$s...）</string>
+    <string name="fmt_log_google_write">写出 Google 格式：%1$s（图像 %2$dB + 视频 %3$dB）</string>
+    <string name="fmt_log_extract_write">拆解输出：%1$s（照片 %2$dB，HDR=%3$s）+ %4$s（视频 %5$dB）</string>
+    <string name="fmt_log_honor_write">写出荣耀格式：%1$s（图像 %2$dB + 视频 %3$dB + EIS %4$dB，LIVE_%5$s）</string>
+    <string name="fmt_log_meizu_write">写出魅族格式：%1$s（图像 %2$dB + 视频 %3$dB）</string>
+    <string name="fmt_log_nubia_write">写出努比亚格式：%1$s（JPEG %2$dB + 填充 1B + 视频 %3$dB + 尾部 %4$dB，UserComment 含 "%5$s"）</string>
+    <string name="fmt_log_lpex_ok">已合成 lpex box（LivePhotoExtension）插入 moov</string>
+    <string name="fmt_log_lpex_fail">lpex 合成失败，跳过（不影响播放）：%1$s</string>
+    <string name="fmt_log_oppo_write">写出 OPPO 格式：%1$s（图像 %2$dB + 视频 %3$dB + trailer %4$dB）</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG 与 MP4 的 livephoto ID 不一致：%1$s / %2$s</string>
+    <string name="fmt_log_vivo_write">写出 vivo 格式：%1$s.jpg + %1$s.mp4（livephoto ID: %2$s）</string>
+    <string name="fmt_log_vivo_single_write">写出 vivo 单文件实况：%1$s（图像 %2$dB + 视频 %3$dB（含 vivoMediaEStream + lpex） + trailer %4$dB）</string>
+    <string name="fmt_log_xiaomi_write">写出小米格式：%1$s（图像 %2$dB + 视频 %3$dB，EXIF 0x8897=1）</string>
 </resources>

@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Cu cât valoarea este mai mică, cu atât calitatea este mai mare și fișierul mai mare (implicit 18)</string>
     <string name="settings_encoder_title">Codificator</string>
     <string name="settings_compress_preset_title">Presetare de compresie</string>
-
+    <string name="settings_preset_amber">Chihlimbar</string>
+    <string name="settings_preset_forest">Verde de pădure</string>
+    <string name="settings_preset_ocean">Albastru ocean</string>
+    <string name="settings_preset_olive">Oliv</string>
+    <string name="settings_preset_sunset">Portocaliu de apus</string>
+    <string name="settings_preset_teal">Turcoaz</string>
+    <string name="settings_preset_violet">Violet</string>
 </resources>

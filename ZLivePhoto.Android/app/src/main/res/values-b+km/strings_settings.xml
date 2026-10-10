@@ -91,4 +91,11 @@
     <string name="settings_crf_hint">តម្លៃកាន់តែតូច គុណភាពកាន់តែខ្ពស់ និងទំហំកាន់តែធំ (លំនាំដើម 18)</string>
     <string name="settings_encoder_title">អ៊ិនកូដឌ័រ</string>
     <string name="settings_compress_preset_title">ការកំណត់បង្ហាប់ស្រាប់</string>
+    <string name="settings_preset_amber">អាំប៊ើរ</string>
+    <string name="settings_preset_forest">បៃតងព្រៃ</string>
+    <string name="settings_preset_ocean">ខៀវសមុទ្រ</string>
+    <string name="settings_preset_olive">អូលីវ</string>
+    <string name="settings_preset_sunset">ទឹកក្រូចថ្ងៃលិច</string>
+    <string name="settings_preset_teal">ខៀវបៃតង</string>
+    <string name="settings_preset_violet">ស្វាយ</string>
 </resources>

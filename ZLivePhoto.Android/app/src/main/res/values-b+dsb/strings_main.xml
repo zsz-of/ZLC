@@ -177,4 +177,6 @@
     <string name="main_export_source_dir_unavailable">Žrědłowy zapis njestoj k dispoziciji: %1$s</string>
     <string name="main_export_replace_failed">Wuměna žrědłoweje dataje zwrěšyła: %1$s</string>
     <string name="main_export_replace_failed_bare">Wuměna žrědłoweje dataje zwrěšyła</string>
+    <string name="main_status_read_failed">Wubrana dataja njedajo se cytaś</string>
+    <string name="main_status_source_missing">Žrědłowa dataja njeeksistěrujo abo njedajo se cytaś</string>
 </resources>

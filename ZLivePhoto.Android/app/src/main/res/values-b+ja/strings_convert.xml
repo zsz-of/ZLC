@@ -79,5 +79,29 @@
     <string name="conv_reminder_dont_remind">今後表示しない</string>
     <string name="conv_reminder_confirm_ok">了解</string>
     <string name="conv_reminder_uninstall">アンインストール</string>
-
+    <string name="conv_err_exif_bad_endian">無効な TIFF バイトオーダーマーカー</string>
+    <string name="conv_err_exif_inline_type">未対応の inline 型 %1$d</string>
+    <string name="conv_err_exif_type">未対応の TIFF 型 %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI が見つかりません（ファイルが破損している可能性があります）</string>
+    <string name="conv_err_jpeg_no_soi">有効な JPEG ではありません（SOI がありません）</string>
+    <string name="conv_err_jpeg_no_sos">JPEG に SOS セグメントがありません</string>
+    <string name="conv_err_jpeg_seg_boundary">セグメント境界のずれ @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">セグメント長が不正 @%1$d</string>
+    <string name="conv_err_json_type">未対応の JSON 値型：%1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box のサイズが不正</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box がありません</string>
+    <string name="conv_err_mp4_no_moov">MP4 に moov box がありません</string>
+    <string name="conv_log_sanitize_dropped_prefix">追加トラック（%1$s）を削除</string>
+    <string name="conv_log_sanitize_exception">追加トラックのクリーンアップに失敗（%1$s）、そのまま出力しました</string>
+    <string name="conv_log_sanitize_no_video_track">入力動画に使用できる動画トラックがないため、追加トラックのクリーンアップをスキップしました</string>
+    <string name="conv_log_sanitize_normalized">バイトレベルでコンテナブランドを正規化しました（ゼロコピー、サンプルデータは未変更）</string>
+    <string name="conv_log_sanitize_track_add_failed">動画トラックをリマックス処理に追加できないため（%1$s）、追加トラックのクリーンアップをスキップしました</string>
+    <string name="conv_reason_10bit_h265">動画が %1$dbit H.265（HDR ライブフォト）のため、一部の機種のアルバムではデコードできません</string>
+    <string name="conv_reason_audio_not_aac">音声トラックのコーデック %1$s が AAC ではありません（ライブフォトの仕様では AAC が必要で、Apple は多くの場合 PCM です）</string>
+    <string name="conv_reason_codec_unsupported">動画コーデック %1$s は Android で一般的な H.264/H.265 ではありません</string>
+    <string name="conv_reason_dolby_vision">動画が Dolby Vision のため、Android のアルバムではほとんどサポートされていません</string>
+    <string name="conv_reason_hdr">動画が HDR（%1$s 転送特性）のため、一部の機種のアルバムでは映像が乱れたり黒画面になったりします</string>
+    <string name="conv_reason_hev1">H.265 が hev1 として指定されています（一部の機種は hvc1 のみ対応）</string>
+    <string name="conv_reason_mirror_matrix">動画にミラー変換行列が含まれています（MP4 の回転行列ではミラーを表現できません）</string>
+    <string name="conv_tag_sanitize">クリーンアップ</string>
 </resources>

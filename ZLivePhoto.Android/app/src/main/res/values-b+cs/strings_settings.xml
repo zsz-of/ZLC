@@ -78,4 +78,11 @@
     <string name="settings_crf_hint">Čím nižší hodnota, tím vyšší kvalita a větší velikost souboru (výchozí 18)</string>
     <string name="settings_encoder_title">Kodér</string>
     <string name="settings_compress_preset_title">Přednastavení komprese</string>
+    <string name="settings_preset_amber">Jantarová</string>
+    <string name="settings_preset_forest">Lesní zelená</string>
+    <string name="settings_preset_ocean">Oceánská modrá</string>
+    <string name="settings_preset_olive">Olivová</string>
+    <string name="settings_preset_sunset">Západová oranžová</string>
+    <string name="settings_preset_teal">Tyrkysová</string>
+    <string name="settings_preset_violet">Fialová</string>
 </resources>

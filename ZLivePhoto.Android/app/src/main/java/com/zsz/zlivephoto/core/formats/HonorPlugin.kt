@@ -1,6 +1,7 @@
 package com.zsz.zlivephoto.core.formats
 
 import com.zsz.zlivephoto.R
+import com.zsz.zlivephoto.core.CoreText
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
 import com.zsz.zlivephoto.core.Mp4Util
@@ -82,7 +83,7 @@ internal class HonorPlugin : FormatPlugin() {
     }
 
     override fun read(path: String, log: (String, String, String) -> Unit): LivePhotoAsset {
-        log("info", "按荣耀动态照片解析（MP4 large size + uuid EIS matrix）", "荣耀")
+        log("info", CoreText.of(R.string.fmt_log_parse_honor), CoreText.of(R.string.fmt_tag_honor))
         return EmbeddedReader.readEmbedded(path, name, log)
     }
 
@@ -117,9 +118,14 @@ internal class HonorPlugin : FormatPlugin() {
 
         val outPath = File(outDir, "$stem.jpg").path
         writeBytes(outPath, baos.toByteArray())
-        log("info", "写出荣耀格式：${File(outPath).name}" +
-            "（图像 ${primary.size}B + 视频 ${video.size}B + EIS ${uuidBox.size}B，" +
-            "LIVE_$liveLength）", "荣耀")
+        log(
+            "info",
+            CoreText.of(
+                R.string.fmt_log_honor_write,
+                File(outPath).name, primary.size, video.size, uuidBox.size, liveLength
+            ),
+            CoreText.of(R.string.fmt_tag_honor)
+        )
         return mutableListOf(outPath)
     }
 

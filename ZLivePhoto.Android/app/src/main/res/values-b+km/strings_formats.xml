@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">ខ្វះឯកសារវីដេអូដៃគូ៖ %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">បរាជ័យក្នុងការញែកខ្លួន JPG</string>
     <string name="fmt_err_vivo_companion_invalid">MP4 ដៃគូមិនត្រឹមត្រូវ (ខ្វះ ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">គម្របជា HEIC៖ មិនសរសេរសញ្ញាសម្គាល់គូនៅឡើយទេ (EXIF របស់ HEIC ស្ថិតក្នុង Exif item ត្រូវអនុវត្តដោយឡែក) សរសេរ ContentIdentifier តែផ្នែក MOV ប៉ុណ្ណោះ</string>
+    <string name="fmt_log_apple_still_found">បានញែកពេលវេលាស៊ុមគ្មានចលនារបស់ Apple %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">មិនបានញែកពេលវេលាស៊ុមគ្មានចលនារបស់ Apple (គ្មាន edit ទទេ mebx/elst) ពេលបញ្ចេញប្រើចំណុចកណ្តាលវីដេអូ</string>
+    <string name="fmt_log_apple_still_no_carrier">ពេលវេលាស៊ុមគ្មានចលនា %1$d ms មិនមានឧបករណ៍ផ្ទុកនៅឡើយ៖ Apple ពិតប្រាកដប្រើផ្លូវ mebx timed metadata ឧបករណ៍នេះមិនផ្គុំនៅឡើយ (សរសេរ still-image-time ជា -1 ក្នុង MOV)</string>
+    <string name="fmt_log_apple_write">បានសរសេរទម្រង់ Apple៖ %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">លទ្ធផលដកស្រង់៖ %1$s (រូបថត %2$dB, HDR=%3$s) + %4$s (វីដេអូ %5$dB)</string>
+    <string name="fmt_log_google_write">បានសរសេរទម្រង់ Google៖ %1$s (រូបភាព %2$dB + វីដេអូ %3$dB)</string>
+    <string name="fmt_log_honor_write">បានសរសេរទម្រង់ Honor៖ %1$s (រូបភាព %2$dB + វីដេអូ %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">ការផ្គុំ lpex បរាជ័យ បានរំលង (មិនប៉ះពាល់ការលេង)៖ %1$s</string>
+    <string name="fmt_log_lpex_ok">បានផ្គុំ lpex box (LivePhotoExtension) បញ្ចូលទៅក្នុង moov</string>
+    <string name="fmt_log_meizu_write">បានសរសេរទម្រង់ Meizu៖ %1$s (រូបភាព %2$dB + វីដេអូ %3$dB)</string>
+    <string name="fmt_log_nubia_write">បានសរសេរទម្រង់ Nubia៖ %1$s (JPEG %2$dB + បំពេញ 1B + វីដេអូ %3$dB + កន្ទុយ %4$dB, UserComment មាន "%5$s")</string>
+    <string name="fmt_log_oppo_write">បានសរសេរទម្រង់ OPPO៖ %1$s (រូបភាព %2$dB + វីដេអូ %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">ញែកតាម Apple Live Photo</string>
+    <string name="fmt_log_parse_google">ញែកតាម Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">ញែកតាមរូបថតចលនា Honor (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">ញែកតាមរូបថតចលនា Meizu</string>
+    <string name="fmt_log_parse_nubia">ញែកតាមរូបថតចលនា Nubia (កន្ទុយ nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">ញែកតាមរូបថតចលនា OPPO</string>
+    <string name="fmt_log_parse_vivo">ញែកតាមរូបថតចលនា vivo ពីរឯកសារ</string>
+    <string name="fmt_log_parse_vivo_single">ញែកតាមរូបថតចលនា vivo ឯកសារតែមួយ</string>
+    <string name="fmt_log_parse_xiaomi">ញែកតាមរូបថតចលនា Xiaomi (ត្រូវគ្នានឹង Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">livephoto ID របស់ JPG និង MP4 មិនត្រូវគ្នា៖ %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">បានសរសេររូបថតចលនា vivo ឯកសារតែមួយ៖ %1$s (រូបភាព %2$dB + វីដេអូ %3$dB (រួម vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">បានសរសេរទម្រង់ vivo៖ %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">បានសរសេរទម្រង់ Xiaomi៖ %1$s (រូបភាព %2$dB + វីដេអូ %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">ដកស្រង់</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

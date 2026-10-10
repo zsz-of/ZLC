@@ -96,5 +96,11 @@
     <string name="settings_crf_hint">קלענערער ווערט מיינט העכערע קוואַליטעט און גרעסערער אַרומנעם (סטאַנדאַרט 18)</string>
     <string name="settings_encoder_title">קאָדירער</string>
     <string name="settings_compress_preset_title">קאָמפּרעסיע פּראָפֿיל</string>
-
+    <string name="settings_preset_amber">ברענשטיין</string>
+    <string name="settings_preset_forest">וואַלדגרין</string>
+    <string name="settings_preset_ocean">ים־בלוי</string>
+    <string name="settings_preset_olive">אָליוו</string>
+    <string name="settings_preset_sunset">זונפֿאַרגאַנג־אָראַנזש</string>
+    <string name="settings_preset_teal">בלוי־גרין</string>
+    <string name="settings_preset_violet">וויאָלעט</string>
 </resources>

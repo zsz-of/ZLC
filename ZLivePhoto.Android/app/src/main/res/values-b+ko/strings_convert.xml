@@ -79,5 +79,29 @@
     <string name="conv_reminder_dont_remind">다시 표시하지 않기</string>
     <string name="conv_reminder_confirm_ok">확인</string>
     <string name="conv_reminder_uninstall">삭제</string>
-
+    <string name="conv_err_exif_bad_endian">잘못된 TIFF 바이트 순서 마커</string>
+    <string name="conv_err_exif_inline_type">지원하지 않는 inline 유형 %1$d</string>
+    <string name="conv_err_exif_type">지원하지 않는 TIFF 유형 %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI를 찾을 수 없습니다(파일이 손상되었을 수 있습니다)</string>
+    <string name="conv_err_jpeg_no_soi">유효한 JPEG가 아닙니다(SOI 없음)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG에 SOS 세그먼트가 없습니다</string>
+    <string name="conv_err_jpeg_seg_boundary">세그먼트 경계 어긋남 @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">세그먼트 길이가 잘못되었습니다 @%1$d</string>
+    <string name="conv_err_json_type">지원하지 않는 JSON 값 유형: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box 크기가 잘못되었습니다</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box가 없습니다</string>
+    <string name="conv_err_mp4_no_moov">MP4에 moov box가 없습니다</string>
+    <string name="conv_log_sanitize_dropped_prefix">추가 트랙(%1$s) 제거</string>
+    <string name="conv_log_sanitize_exception">추가 트랙 정리 실패(%1$s), 그대로 출력했습니다</string>
+    <string name="conv_log_sanitize_no_video_track">입력 동영상에 사용할 수 있는 동영상 트랙이 없어 추가 트랙 정리를 건너뛰었습니다</string>
+    <string name="conv_log_sanitize_normalized">바이트 단위로 컨테이너 브랜드를 정규화했습니다(제로 카피, 샘플 데이터는 변경되지 않음)</string>
+    <string name="conv_log_sanitize_track_add_failed">동영상 트랙을 리먹서에 추가할 수 없어(%1$s) 추가 트랙 정리를 건너뛰었습니다</string>
+    <string name="conv_reason_10bit_h265">동영상이 %1$dbit H.265(HDR 라이브 포토)라 일부 기기의 앨범에서 디코딩할 수 없습니다</string>
+    <string name="conv_reason_audio_not_aac">오디오 트랙 코덱이 %1$s로 AAC가 아닙니다(라이브 포토 규격에는 AAC가 필요하며 Apple은 대개 PCM입니다)</string>
+    <string name="conv_reason_codec_unsupported">동영상 코덱이 %1$s로 Android에서 범용적인 H.264/H.265가 아닙니다</string>
+    <string name="conv_reason_dolby_vision">동영상이 Dolby Vision이라 Android 앨범에서 일반적으로 지원되지 않습니다</string>
+    <string name="conv_reason_hdr">동영상이 HDR(%1$s 전송 특성)이라 일부 기기의 앨범에서 화면이 깨지거나 검게 나옵니다</string>
+    <string name="conv_reason_hev1">H.265가 hev1로 표시되어 있습니다(일부 기기는 hvc1만 인식합니다)</string>
+    <string name="conv_reason_mirror_matrix">동영상에 미러 변환 행렬이 있습니다(MP4 회전 행렬로는 미러를 표현할 수 없습니다)</string>
+    <string name="conv_tag_sanitize">정리</string>
 </resources>

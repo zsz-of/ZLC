@@ -75,5 +75,29 @@
     <string name="conv_reminder_dont_remind">ད་ནས་དྲན་སྐུལ་མི་བྱེད</string>
     <string name="conv_reminder_confirm_ok">ཤེས་སོང</string>
     <string name="conv_reminder_uninstall">བསུབ</string>
-
+    <string name="conv_err_exif_bad_endian">TIFF ཀྱི་བདུན་ཕྲག་གོ་རིམ་རྟགས་ནོར་འཁྲུལ</string>
+    <string name="conv_err_exif_inline_type">རྒྱབ་སྐྱོར་མེད་པའི་ inline རིགས་ %1$d</string>
+    <string name="conv_err_exif_type">རྒྱབ་སྐྱོར་མེད་པའི་ TIFF རིགས་ %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI མ་རྙེད (ཡིག་ཆ་སྐྱོན་ཡོད་སྲིད)</string>
+    <string name="conv_err_jpeg_no_soi">ཁུངས་ལྡན་ JPEG མིན (SOI མེད)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG ལ་ SOS དུམ་བུ་མེད</string>
+    <string name="conv_err_jpeg_seg_boundary">དུམ་བུའི་མཐའ་ས་མི་མཐུན @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">དུམ་བུའི་རིང་ཚད་ནོར་འཁྲུལ @%1$d</string>
+    <string name="conv_err_json_type">རྒྱབ་སྐྱོར་མེད་པའི་ JSON གོ་དོན་རིགས: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box གི་ཆེ་ཆུང་ནོར་འཁྲུལ</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box མེད</string>
+    <string name="conv_err_mp4_no_moov">MP4 ལ་ moov box མེད</string>
+    <string name="conv_log_sanitize_dropped_prefix">ཁ་སྐོང་ལམ་བསུབས (%1$s)</string>
+    <string name="conv_log_sanitize_exception">ཁ་སྐོང་ལམ་གཙང་སྦྲ་མ་གྲུབ (%1$s)，དེ་བཞིན་ཕྱིར་བཏོན</string>
+    <string name="conv_log_sanitize_no_video_track">ནང་འཇུག་བརྙན་ལ་ལག་ལེན་བྱེད་ཆོག་པའི་བརྙན་ལམ་མེད་པས་ཁ་སྐོང་ལམ་གཙང་སྦྲ་མཆོང་བ</string>
+    <string name="conv_log_sanitize_normalized">སྣོད་ཆས་ཀྱི་མིང་རྟགས་བདུན་ཕྲག་ཚད་ལ་རྒྱུན་ལྡན་བཟོས (འདྲ་བཤུས་མི་བྱེད། མ་དཔེའི་གྲངས་ཐོ་མ་བསྒྱུར)</string>
+    <string name="conv_log_sanitize_track_add_failed">བརྙན་ལམ་ཡང་བསྐྱར་སྦྲེལ་ཆས་ལ་འཇུག་མ་ཐུབ (%1$s)，ཁ་སྐོང་ལམ་གཙང་སྦྲ་མཆོང་བ</string>
+    <string name="conv_reason_10bit_h265">བརྙན་ནི་ %1$dbit H.265 (HDR འགུལ་པར)，ཁ་པར་འགའི་པར་སྣོད་ཀྱིས་ཁ་གདེང་མི་ཐུབ</string>
+    <string name="conv_reason_audio_not_aac">སྒྲ་ལམ་གྱི་ཨང་རྟགས་བསྒྱུར་ %1$s，AAC མིན (འགུལ་པར་གྱི་ཚད་གཞིར AAC དགོས་པ་དང་ Apple རྒྱུན་དུ PCM ཡིན)</string>
+    <string name="conv_reason_codec_unsupported">བརྙན་གྱི་ཨང་རྟགས་བསྒྱུར་ %1$s，Android ཐོག་ཁྱབ་བསྒྲགས་ཀྱི་ H.264/H.265 མིན</string>
+    <string name="conv_reason_dolby_vision">བརྙན་ནི་ Dolby Vision，Android པར་སྣོད་ཀྱིས་སྤྱིར་རྒྱབ་སྐྱོར་མི་བྱེད</string>
+    <string name="conv_reason_hdr">བརྙན་ནི་ HDR (%1$s སྤོ་ལུགས་ཁྱད་ཆོས)，ཁ་པར་འགའི་པར་སྣོད་ལ་དབྱིབས་འཁྲུག་ལམ་ནག་ཐིག་འབྱུང་</string>
+    <string name="conv_reason_hev1">H.265 ལ་ hev1 ཡི་རྟགས་བཀོད་ཡོད (ཁ་པར་འགས་ hvc1 ཁོ་ན་ངོས་ལེན་བྱེད)</string>
+    <string name="conv_reason_mirror_matrix">བརྙན་ལ་མེ་ལོང་བསྒྱུར་སྒྲོམ་ཡོད (MP4 ཀྱི་འཁོར་བསྒྱུར་སྒྲོམ་ཀྱིས་མེ་ལོང་བརྗོད་མི་ཐུབ)</string>
+    <string name="conv_tag_sanitize">གཙང་སྦྲ</string>
 </resources>

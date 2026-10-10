@@ -95,5 +95,11 @@
     <string name="settings_crf_hint">Inani eliphansi lisho ikhwalithi ephezulu nosayizi omkhulu (okujwayelekile 18)</string>
     <string name="settings_encoder_title">Isikhodi</string>
     <string name="settings_compress_preset_title">Iphrofayela yokucindezela</string>
-
+    <string name="settings_preset_amber">i-Amber</string>
+    <string name="settings_preset_forest">Ihlathi Eliluhlaza</string>
+    <string name="settings_preset_ocean">Ulwandle Oluluhlaza</string>
+    <string name="settings_preset_olive">i-Olive</string>
+    <string name="settings_preset_sunset">Ukushona Kwelanga</string>
+    <string name="settings_preset_teal">i-Teal</string>
+    <string name="settings_preset_violet">i-Violet</string>
 </resources>

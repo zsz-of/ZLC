@@ -159,4 +159,6 @@
     <string name="main_export_source_dir_unavailable">Fonta dosierujo ne disponeblas: %1$s</string>
     <string name="main_export_replace_failed">Anstataŭigo de la fonta dosiero malsukcesis: %1$s</string>
     <string name="main_export_replace_failed_bare">Anstataŭigo de la fonta dosiero malsukcesis</string>
+    <string name="main_status_read_failed">Ne eblas legi la elektitan dosieron</string>
+    <string name="main_status_source_missing">La fonta dosiero ne ekzistas aŭ ne estas legebla</string>
 </resources>

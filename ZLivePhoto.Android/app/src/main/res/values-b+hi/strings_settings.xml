@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">संख्या जितनी छोटी, गुणवत्ता उतनी ऊँची और आकार उतना बड़ा (डिफ़ॉल्ट 18)</string>
     <string name="settings_encoder_title">एनकोडर</string>
     <string name="settings_compress_preset_title">संपीड़न प्रीसेट</string>
+    <string name="settings_preset_amber">एम्बर</string>
+    <string name="settings_preset_forest">वन हरा</string>
+    <string name="settings_preset_ocean">समुद्री नीला</string>
+    <string name="settings_preset_olive">जैतून</string>
+    <string name="settings_preset_sunset">सूर्यास्त नारंगी</string>
+    <string name="settings_preset_teal">फ़िरोज़ी</string>
+    <string name="settings_preset_violet">बैंगनी</string>
 </resources>

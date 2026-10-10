@@ -78,5 +78,29 @@
     <string name="conv_reminder_dont_remind">Não mostrar novamente</string>
     <string name="conv_reminder_confirm_ok">Entendi</string>
     <string name="conv_reminder_uninstall">Desinstalar</string>
-
+    <string name="conv_err_exif_bad_endian">Marcador de ordem de bytes do TIFF inválido</string>
+    <string name="conv_err_exif_inline_type">Tipo em linha %1$d não suportado</string>
+    <string name="conv_err_exif_type">Tipo de TIFF %1$d não suportado</string>
+    <string name="conv_err_jpeg_no_eoi">EOI não encontrado (arquivo possivelmente corrompido)</string>
+    <string name="conv_err_jpeg_no_soi">Não é um JPEG válido (falta o SOI)</string>
+    <string name="conv_err_jpeg_no_sos">Falta o segmento SOS no JPEG</string>
+    <string name="conv_err_jpeg_seg_boundary">Fronteira de segmento desalinhada @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Comprimento de segmento ilegal @%1$d</string>
+    <string name="conv_err_json_type">Tipo de valor JSON não suportado: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Tamanho da caixa ftyp ilegal</string>
+    <string name="conv_err_mp4_no_ftyp">Falta a caixa ftyp</string>
+    <string name="conv_err_mp4_no_moov">Falta a caixa moov no MP4</string>
+    <string name="conv_log_sanitize_dropped_prefix">Faixas adicionais removidas (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Falha na limpeza das faixas adicionais (%1$s); o arquivo foi emitido como está</string>
+    <string name="conv_log_sanitize_no_video_track">O vídeo de entrada não tem nenhuma faixa de vídeo utilizável: a limpeza de faixas adicionais foi ignorada</string>
+    <string name="conv_log_sanitize_normalized">Marca do contêiner normalizada em nível de byte (sem cópia, dados de amostras intactos)</string>
+    <string name="conv_log_sanitize_track_add_failed">Não foi possível adicionar a faixa de vídeo ao remultiplexador (%1$s): a limpeza de faixas adicionais foi ignorada</string>
+    <string name="conv_reason_10bit_h265">Vídeo em H.265 de %1$d bits (Live Photo HDR): a galeria de alguns aparelhos não consegue descodificá-lo</string>
+    <string name="conv_reason_audio_not_aac">Faixa de áudio codificada em %1$s e não em AAC (a especificação das fotos animadas exige AAC; a Apple costuma usar PCM)</string>
+    <string name="conv_reason_codec_unsupported">O codec de vídeo %1$s não é um H.264/H.265 compatível com Android</string>
+    <string name="conv_reason_dolby_vision">Vídeo em Dolby Vision: a galeria do Android normalmente não o suporta</string>
+    <string name="conv_reason_hdr">Vídeo em HDR (característica de transferência %1$s): a galeria de alguns aparelhos mostra artefatos ou uma tela preta</string>
+    <string name="conv_reason_hev1">H.265 marcado como hev1 (alguns aparelhos só aceitam hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Vídeo com matriz de transformação espelhada (a matriz de rotação do MP4 não consegue expressar um espelho)</string>
+    <string name="conv_tag_sanitize">Sanitização</string>
 </resources>

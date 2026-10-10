@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-     ii（彝语 / 凉山彝文 / Nuosu）属低资源语种（分级 C）：本轮无可靠彝文词表，为避免臆造彝文，
-     暂以简体中文基准文本作为兜底值填充全部 key，保证 404/404 覆盖；品牌专名与纯格式串保持原样。
-     待母语者审校后再替换为彝文正文。 -->
+     ii（彝语 / 凉山彝文 / Nuosu）属低资源语种（分级 C）。
+     本轮采用「有据则译、无据保留中文」：只使用可溯源词表（《凉山规范彝文词典》、
+     SIL Webonary 彝英词典、彝文圣经词汇表，见 .agents/tools/ii_glossary_merged.json）
+     中确实存在的词形；整条拼不出自然句子的，一律保留简体中文原文。
+     476 条 key 中约 96 条已本地化，其余保留中文；品牌专名与技术名词保持原样。
+     **不再使用任何无出处的拼凑音节**。译本未经母语者审校，欢迎社区修正。 -->
 <resources>
 
     <!-- 通用 -->
-    <string name="settings_title">设置</string>
-    <string name="settings_cd_back">返回</string>
-    <string name="settings_btn_apply">应用</string>
-    <string name="settings_btn_cancel">取消</string>
-    <string name="settings_btn_close">关闭</string>
-    <string name="settings_btn_ok">好</string>
-    <string name="settings_btn_sponsor">赞助</string>
+    <string name="settings_title">ꄻꄉ</string>
+    <string name="settings_cd_back">ꀱꇁ</string>
+    <string name="settings_btn_apply">ꌬ</string>
+    <string name="settings_btn_cancel">ꇤꇧꎭ</string>
+    <string name="settings_btn_close">ꈢꇧꎭ</string>
+    <string name="settings_btn_ok">ꊨꄅ</string>
+    <string name="settings_btn_sponsor">ꇇꀨ</string>
 
     <!-- 分组标题 -->
     <string name="settings_section_general">通用</string>
     <string name="settings_section_appearance">外观</string>
-    <string name="settings_section_language">语言</string>
+    <string name="settings_section_language">ꅇꉙ</string>
     <string name="settings_section_defaults">默认选项</string>
-    <string name="settings_section_output">输出</string>
-    <string name="settings_section_transcode">视频转码</string>
-    <string name="settings_section_about">关于</string>
-    <string name="settings_section_app">应用</string>
+    <string name="settings_section_output">ꈻꅐ</string>
+    <string name="settings_section_transcode">ꒌꈜ ꄻꄉ</string>
+    <string name="settings_section_about">ꃆꂮ</string>
+    <string name="settings_section_app">ꌬ</string>
     <string name="settings_section_credits">鸣谢与赞助</string>
     <string name="settings_section_opensource">开源与授权</string>
 
     <!-- 通用 -->
-    <string name="settings_startup_check_title">启动时检查更新</string>
+    <string name="settings_startup_check_title">ꏀꅐ</string>
     <string name="settings_startup_check_subtitle">启动时自动从 GitHub 获取新版本，有更新时提示下载</string>
     <string name="settings_haptics_title">震动反馈</string>
     <string name="settings_haptics_subtitle">按钮点击与状态变化时的触觉反馈</string>
@@ -43,7 +46,7 @@
     <string name="settings_preset_colors_title">预制主题色</string>
     <string name="settings_preset_current">当前：%1$s</string>
     <string name="settings_preset_disabled_hint">关闭「Material You 动态取色」后可选择</string>
-    <string name="settings_custom">自定义</string>
+    <string name="settings_custom">ꄻꄉ</string>
     <string name="settings_custom_color_title">自定义主题色</string>
     <string name="settings_cd_custom_palette">自定义调色板</string>
     <string name="settings_hue_value">色相 %1$d°</string>
@@ -63,7 +66,7 @@
     <string name="settings_preserve_folders_subtitle">转换结果按原相册名分子目录存放；关闭后全部平铺在同一个目录</string>
 
     <!-- 关于 -->
-    <string name="settings_about_title">关于</string>
+    <string name="settings_about_title">ꃆꂮ</string>
     <string name="settings_about_subtitle">版本 · 检查更新 · 鸣谢与赞助</string>
     <string name="settings_check_update_title">检查更新</string>
     <string name="settings_check_update_subtitle">从 GitHub Releases 获取最新版本</string>
@@ -74,7 +77,7 @@
     <string name="settings_reinstall_title">重新安装本版本</string>
     <string name="settings_reinstall_subtitle">下载当前最新版覆盖安装（测试更新用）</string>
     <string name="settings_reinstall_newer_hint">当前可升级到 v%1$s，请先用「检查更新」升级</string>
-    <string name="settings_version_title">版本</string>
+    <string name="settings_version_title">ꍑꀨ</string>
     <string name="settings_version_value">v%1$s</string>
     <string name="settings_alipay_title">支付宝赞助</string>
     <string name="settings_alipay_subtitle">支持开发</string>
@@ -90,7 +93,7 @@
     <!-- 视频转码 -->
     <string name="settings_transcoder_title">内置转码器</string>
     <string name="settings_transcoder_value">ffmpeg %1$s</string>
-    <string name="settings_transcode_mode_encode">重新编码</string>
+    <string name="settings_transcode_mode_encode">ꌐꂷꄻ</string>
     <string name="settings_transcode_mode_remux">仅重封装容器（推荐）</string>
     <string name="settings_transcode_mode_off">完全不使用转码器</string>
     <string name="settings_transcode_params_title">转码参数</string>
@@ -100,5 +103,11 @@
     <string name="settings_crf_hint">数值越小画质越高、体积越大（默认 18）</string>
     <string name="settings_encoder_title">编码器</string>
     <string name="settings_compress_preset_title">压缩预设</string>
-
+    <string name="settings_preset_amber">琥珀</string>
+    <string name="settings_preset_forest">森绿</string>
+    <string name="settings_preset_ocean">海洋蓝</string>
+    <string name="settings_preset_olive">橄榄</string>
+    <string name="settings_preset_sunset">落日橙</string>
+    <string name="settings_preset_teal">青碧</string>
+    <string name="settings_preset_violet">紫罗兰</string>
 </resources>

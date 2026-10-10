@@ -83,4 +83,11 @@
     <string name="screen_date_yesterday">De</string>
     <string name="screen_date_this_year">%2$d/%1$d</string>
     <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+    <string name="screen_album_unnamed">Heb hanow</string>
+    <string name="screen_eta_minutes">%1$d myn %2$s seg</string>
+    <string name="screen_eta_seconds">%1$d seg</string>
+    <string name="screen_transcode_eta">%1$s a remayn</string>
+    <string name="screen_transcode_frames">%1$d/%2$d fram</string>
+    <string name="screen_transcode_in_progress">Ow transkodya · %1$d fram dyghtys</string>
+    <string name="screen_transcode_progress">Transkodya %1$d%%</string>
 </resources>

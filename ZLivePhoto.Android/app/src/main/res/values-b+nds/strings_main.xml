@@ -164,4 +164,6 @@ Wähl de Behannelnsmethood.</string>
     <string name="main_export_source_dir_unavailable">Born-Datei-Orner nich verföögbar: %1$s</string>
     <string name="main_export_replace_failed">Utwesseln vun de Born-Datei hett fehlslahn: %1$s</string>
     <string name="main_export_replace_failed_bare">Utwesseln vun de Born-Datei hett fehlslahn</string>
+    <string name="main_status_read_failed">De utsöchte Datei kunn nich leest warrn</string>
+    <string name="main_status_source_missing">De Borndatei gifft dat nich oder is nich leesbor</string>
 </resources>

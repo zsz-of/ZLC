@@ -104,5 +104,11 @@
     <string name="settings_crf_hint">The lawer the value, the heicher the quality an the muckler the file (defaut 18)</string>
     <string name="settings_encoder_title">Encoder</string>
     <string name="settings_compress_preset_title">Compression preset</string>
-
+    <string name="settings_preset_amber">Amber</string>
+    <string name="settings_preset_forest">Forest green</string>
+    <string name="settings_preset_ocean">Ocean blue</string>
+    <string name="settings_preset_olive">Olive</string>
+    <string name="settings_preset_sunset">Sunset orange</string>
+    <string name="settings_preset_teal">Teal</string>
+    <string name="settings_preset_violet">Violet</string>
 </resources>

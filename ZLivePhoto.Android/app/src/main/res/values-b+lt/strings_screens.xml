@@ -87,4 +87,11 @@
     <string name="screen_date_yesterday">Vakar</string>
     <string name="screen_date_this_year">%2$d.%1$d</string>
     <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+    <string name="screen_album_unnamed">Be pavadinimo</string>
+    <string name="screen_eta_minutes">%1$d min. %2$s sek.</string>
+    <string name="screen_eta_seconds">%1$d sek.</string>
+    <string name="screen_transcode_eta">Liko apie %1$s</string>
+    <string name="screen_transcode_frames">%1$d/%2$d kadrų</string>
+    <string name="screen_transcode_in_progress">Perkodavimas · apdorota %1$d kadrų</string>
+    <string name="screen_transcode_progress">Perkodavimas %1$d%%</string>
 </resources>

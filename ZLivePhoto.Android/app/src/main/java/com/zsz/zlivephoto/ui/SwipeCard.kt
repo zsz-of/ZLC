@@ -66,10 +66,12 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.zsz.zlivephoto.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -409,11 +411,11 @@ private fun TranscodeProgress(item: FileItem) {
     val eta = item.transcodeEtaSec
     val label = buildString {
         if (known) {
-            append("转码 ${(fraction * 100f).roundToInt()}%")
-            append(" · ${item.transcodeFrame}/$total 帧")
-            if (eta >= 0L) append(" · 预计剩余 ${formatEta(eta)}")
+            append(stringResource(R.string.screen_transcode_progress, (fraction * 100f).roundToInt()))
+            append(" · " + stringResource(R.string.screen_transcode_frames, item.transcodeFrame, total))
+            if (eta >= 0L) append(" · " + stringResource(R.string.screen_transcode_eta, formatEta(eta)))
         } else {
-            append("转码中 · 已处理 ${item.transcodeFrame} 帧")
+            append(stringResource(R.string.screen_transcode_in_progress, item.transcodeFrame))
         }
     }
     Column(modifier = Modifier.padding(top = 8.dp)) {
@@ -441,8 +443,13 @@ private fun TranscodeProgress(item: FileItem) {
 }
 
 /** 预计剩余秒数 → 「12 秒」/「1 分 05 秒」 */
+@Composable
 private fun formatEta(sec: Long): String =
-    if (sec < 60L) "${sec} 秒" else "${sec / 60} 分 ${(sec % 60).toString().padStart(2, '0')} 秒"
+    if (sec < 60L) {
+        stringResource(R.string.screen_eta_seconds, sec)
+    } else {
+        stringResource(R.string.screen_eta_minutes, sec / 60, (sec % 60).toString().padStart(2, '0'))
+    }
 
 /** 解码列表缩略图：按 2 的幂降采样至约 128px，并按 EXIF 方向旋转；失败返回 null。 */
 internal fun decodeThumbnail(path: String): Bitmap? {

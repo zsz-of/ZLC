@@ -78,5 +78,29 @@
     <string name="conv_reminder_dont_remind">Nicht mehr erinnern</string>
     <string name="conv_reminder_confirm_ok">Verstanden</string>
     <string name="conv_reminder_uninstall">Deinstallieren</string>
-
+    <string name="conv_err_exif_bad_endian">Ungültige TIFF-Byte-Reihenfolge</string>
+    <string name="conv_err_exif_inline_type">Nicht unterstützter Inline-Typ %1$d</string>
+    <string name="conv_err_exif_type">Nicht unterstützter TIFF-Typ %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">Kein EOI gefunden (Datei möglicherweise beschädigt)</string>
+    <string name="conv_err_jpeg_no_soi">Kein gültiges JPEG (SOI fehlt)</string>
+    <string name="conv_err_jpeg_no_sos">Im JPEG fehlt das SOS-Segment</string>
+    <string name="conv_err_jpeg_seg_boundary">Segmentgrenze verschoben bei %1$d</string>
+    <string name="conv_err_jpeg_seg_length">Ungültige Segmentlänge bei %1$d</string>
+    <string name="conv_err_json_type">Nicht unterstützter JSON-Werttyp: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Ungültige Größe der ftyp-Box</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp-Box fehlt</string>
+    <string name="conv_err_mp4_no_moov">Im MP4 fehlt die moov-Box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Zusätzliche Spuren entfernt (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Bereinigung der zusätzlichen Spuren fehlgeschlagen (%1$s), Ausgabe unverändert</string>
+    <string name="conv_log_sanitize_no_video_track">Das Eingabevideo hat keine nutzbare Videospur, die Bereinigung der zusätzlichen Spuren wird übersprungen</string>
+    <string name="conv_log_sanitize_normalized">Container-Brand byteweise normalisiert (Zero-Copy, Beispieldaten unverändert)</string>
+    <string name="conv_log_sanitize_track_add_failed">Die Videospur kann nicht in den Remuxer übernommen werden (%1$s), die Bereinigung der zusätzlichen Spuren wird übersprungen</string>
+    <string name="conv_reason_10bit_h265">Das Video ist %1$d-Bit-H.265 (HDR Live Photo); Galerien auf manchen Geräten können es nicht dekodieren</string>
+    <string name="conv_reason_audio_not_aac">Der Audiocodec %1$s ist kein AAC (die Motion-Photo-Spezifikation verlangt AAC; Apple verwendet oft PCM)</string>
+    <string name="conv_reason_codec_unsupported">Der Videocodec %1$s ist nicht das unter Android übliche H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Das Video ist Dolby Vision, was Android-Galerien meist nicht unterstützen</string>
+    <string name="conv_reason_hdr">Das Video ist HDR (%1$s-Übertragungscharakteristik); Galerien auf manchen Geräten zeigen Bildfehler oder ein schwarzes Bild</string>
+    <string name="conv_reason_hev1">H.265 ist als hev1 gekennzeichnet (manche Geräte akzeptieren nur hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Das Video hat eine Spiegelmatrix (eine MP4-Rotationsmatrix kann Spiegelung nicht ausdrücken)</string>
+    <string name="conv_tag_sanitize">Bereinigung</string>
 </resources>

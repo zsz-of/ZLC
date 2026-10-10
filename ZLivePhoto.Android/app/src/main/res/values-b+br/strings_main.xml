@@ -194,4 +194,6 @@ Dibabit penaos ober.</string>
     <string name="main_export_source_dir_unavailable">Ket araezet eo kavlec\'h ar restr tarzh: %1$s</string>
     <string name="main_export_replace_failed">C\'hwitet erlec\'hiañ ar restr tarzh: %1$s</string>
     <string name="main_export_replace_failed_bare">C\'hwitet erlec\'hiañ ar restr tarzh</string>
+    <string name="main_status_read_failed">Ne c\'haller ket lenn ar restr dibabet</string>
+    <string name="main_status_source_missing">Ar restr tarzh n\'eus ket anezhi pe n\'eo ket lennadus</string>
 </resources>

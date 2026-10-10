@@ -41,4 +41,35 @@
     <string name="fmt_err_vivo_companion_missing">ไม่มีไฟล์วิดีโอที่มาคู่กัน: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">แยกวิเคราะห์เนื้อหาหลักของ JPG ไม่สำเร็จ</string>
     <string name="fmt_err_vivo_companion_invalid">MP4 ที่มาคู่กันไม่ถูกต้อง (ไม่มี ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">ภาพหน้าปกเป็น HEIC: ยังไม่เขียนเครื่องหมายจับคู่ (EXIF ของ HEIC อยู่ใน Exif item ต้องทำแยกต่างหาก) เขียน ContentIdentifier เฉพาะฝั่ง MOV</string>
+    <string name="fmt_log_apple_still_found">แยกเวลาภาพนิ่งของ Apple ได้ %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">แยกเวลาภาพนิ่งของ Apple ไม่ได้ (ไม่มี edit ว่าง mebx/elst) ตอนส่งออกใช้จุดกึ่งกลางวิดีโอ</string>
+    <string name="fmt_log_apple_still_no_carrier">เวลาภาพนิ่ง %1$d ms ยังไม่มีตัวรองรับ: Apple ของจริงใช้แทร็ก mebx timed metadata เครื่องมือนี้ยังไม่รวมให้ (MOV เขียน still-image-time เป็น -1)</string>
+    <string name="fmt_log_apple_write">เขียนรูปแบบ Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">ผลลัพธ์การแยก: %1$s (ภาพ %2$dB, HDR=%3$s) + %4$s (วิดีโอ %5$dB)</string>
+    <string name="fmt_log_google_write">เขียนรูปแบบ Google: %1$s (ภาพ %2$dB + วิดีโอ %3$dB)</string>
+    <string name="fmt_log_honor_write">เขียนรูปแบบ Honor: %1$s (ภาพ %2$dB + วิดีโอ %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">รวม lpex ไม่สำเร็จ ข้ามไป (ไม่กระทบการเล่น): %1$s</string>
+    <string name="fmt_log_lpex_ok">รวม lpex box (LivePhotoExtension) แล้วแทรกเข้า moov</string>
+    <string name="fmt_log_meizu_write">เขียนรูปแบบ Meizu: %1$s (ภาพ %2$dB + วิดีโอ %3$dB)</string>
+    <string name="fmt_log_nubia_write">เขียนรูปแบบ Nubia: %1$s (JPEG %2$dB + เติม 1B + วิดีโอ %3$dB + ส่วนท้าย %4$dB, UserComment มี "%5$s")</string>
+    <string name="fmt_log_oppo_write">เขียนรูปแบบ OPPO: %1$s (ภาพ %2$dB + วิดีโอ %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">แยกตาม Apple Live Photo</string>
+    <string name="fmt_log_parse_google">แยกตาม Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">แยกตาม Live Photo Honor (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">แยกตาม Live Photo Meizu</string>
+    <string name="fmt_log_parse_nubia">แยกตาม Live Photo Nubia (ส่วนท้าย nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">แยกตาม Live Photo OPPO</string>
+    <string name="fmt_log_parse_vivo">แยกตาม Live Photo vivo สองไฟล์</string>
+    <string name="fmt_log_parse_vivo_single">แยกตาม Live Photo vivo ไฟล์เดียว</string>
+    <string name="fmt_log_parse_xiaomi">แยกตาม Live Photo Xiaomi (เข้ากันได้กับ Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">livephoto ID ของ JPG กับ MP4 ไม่ตรงกัน: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">เขียน Live Photo vivo ไฟล์เดียว: %1$s (ภาพ %2$dB + วิดีโอ %3$dB (รวม vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">เขียนรูปแบบ vivo: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">เขียนรูปแบบ Xiaomi: %1$s (ภาพ %2$dB + วิดีโอ %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">แยก</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

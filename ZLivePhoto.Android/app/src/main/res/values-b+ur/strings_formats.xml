@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">ساتھی ویڈیو فائل موجود نہیں: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG کے مرکزی حصے کی تجزیہ کاری ناکام ہوئی</string>
     <string name="fmt_err_vivo_companion_invalid">ساتھی MP4 درست نہیں (ftyp box موجود نہیں)</string>
+    <string name="fmt_log_apple_heic_no_pair">کور HEIC ہے: جوڑی شناخت کنندہ ابھی نہیں لکھا جاتا (HEIC کا EXIF، Exif item میں ہوتا ہے اور الگ عمل درکار ہے)، ContentIdentifier صرف MOV کی طرف لکھا جاتا ہے</string>
+    <string name="fmt_log_apple_still_found">Apple اسٹیل فریم وقت %1$d ms تجزیہ ہوا (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple اسٹیل فریم وقت تجزیہ نہیں ہو سکا (mebx/elst خالی edit موجود نہیں)، برآمد کے وقت ویڈیو کا درمیانی نقطہ بنیاد ہوگا</string>
+    <string name="fmt_log_apple_still_no_carrier">اسٹیل فریم وقت %1$d ms کے لیے ابھی کوئی حامل نہیں: اصل Apple mebx timed metadata ٹریک استعمال کرتا ہے، یہ ٹول ابھی اسے کمپوز نہیں کرتا (MOV کا still-image-time منفی ایک لکھا جاتا ہے)</string>
+    <string name="fmt_log_apple_write">Apple فارمیٹ لکھا جا رہا ہے: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">ایکسٹریکٹ آؤٹ پٹ: %1$s (تصویر %2$dB، HDR=%3$s) + %4$s (ویڈیو %5$dB)</string>
+    <string name="fmt_log_google_write">Google فارمیٹ لکھا جا رہا ہے: %1$s (تصویر %2$dB + ویڈیو %3$dB)</string>
+    <string name="fmt_log_honor_write">HONOR فارمیٹ لکھا جا رہا ہے: %1$s (تصویر %2$dB + ویڈیو %3$dB + EIS %4$dB، LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex کمپوز ناکام، چھوڑ دیا گیا (پلے بیک پر اثر نہیں): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) کمپوز کر کے moov میں شامل کیا گیا</string>
+    <string name="fmt_log_meizu_write">Meizu فارمیٹ لکھا جا رہا ہے: %1$s (تصویر %2$dB + ویڈیو %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia فارمیٹ لکھا جا رہا ہے: %1$s (JPEG %2$dB + پیڈنگ 1B + ویڈیو %3$dB + ٹریلر %4$dB، UserComment میں “%5$s”)</string>
+    <string name="fmt_log_oppo_write">OPPO فارمیٹ لکھا جا رہا ہے: %1$s (تصویر %2$dB + ویڈیو %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo کے مطابق تجزیہ</string>
+    <string name="fmt_log_parse_google">Google Motion Photo کے مطابق تجزیہ</string>
+    <string name="fmt_log_parse_honor">HONOR لائیو فوٹو کے مطابق تجزیہ (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu لائیو فوٹو کے مطابق تجزیہ</string>
+    <string name="fmt_log_parse_nubia">Nubia لائیو فوٹو کے مطابق تجزیہ (nubiaVpfile ٹریلر)</string>
+    <string name="fmt_log_parse_oppo">OPPO لائیو فوٹو کے مطابق تجزیہ</string>
+    <string name="fmt_log_parse_vivo">vivo دو فائلی لائیو فوٹو کے مطابق تجزیہ</string>
+    <string name="fmt_log_parse_vivo_single">vivo سنگل فائل لائیو فوٹو کے مطابق تجزیہ</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi لائیو فوٹو کے مطابق تجزیہ (Google ہم آہنگ)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG اور MP4 کی livephoto ID مختلف ہیں: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo سنگل فائل لائیو فوٹو لکھی جا رہی ہے: %1$s (تصویر %2$dB + ویڈیو %3$dB (بشمول vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo فارمیٹ لکھا جا رہا ہے: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi فارمیٹ لکھا جا رہا ہے: %1$s (تصویر %2$dB + ویڈیو %3$dB، EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">ایکسٹریکٹ</string>
+    <string name="fmt_tag_honor">HONOR</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

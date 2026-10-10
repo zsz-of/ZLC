@@ -170,4 +170,6 @@
     <string name="main_export_source_dir_unavailable">मूल फाइलको फोल्डर उपलब्ध छैन: %1$s</string>
     <string name="main_export_replace_failed">मूल फाइल प्रतिस्थापन असफल: %1$s</string>
     <string name="main_export_replace_failed_bare">मूल फाइल प्रतिस्थापन असफल</string>
+    <string name="main_status_read_failed">चयनित फाइल पढ्न सकिएन</string>
+    <string name="main_status_source_missing">स्रोत फाइल छैन वा पढ्न सकिँदैन</string>
 </resources>

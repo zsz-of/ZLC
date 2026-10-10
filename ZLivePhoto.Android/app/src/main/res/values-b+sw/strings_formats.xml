@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">Faili la video inayoandamana halipo: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Kuchanganua maudhui ya JPG kumeshindikana</string>
     <string name="fmt_err_vivo_companion_invalid">MP4 inayoandamana si sahihi (box ya ftyp haipo)</string>
+    <string name="fmt_log_apple_heic_no_pair">Jalada ni HEIC: alama ya uoanishaji haiandikwi bado (EXIF ya HEIC iko kwenye Exif item na inahitaji utekelezaji tofauti); upande wa MOV pekee unaandika ContentIdentifier</string>
+    <string name="fmt_log_apple_still_found">Muda wa fremu tuli wa Apple umechanganuliwa: %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Muda wa fremu tuli wa Apple haukuchanganuliwa (hakuna mebx/elst edit tupu); wakati wa kuhamisha hutumika sehemu ya kati ya video kama njia ya akiba</string>
+    <string name="fmt_log_apple_still_no_carrier">Muda wa fremu tuli wa %1$d ms hauna mbeba bado: Apple halisi hutumia njia ya mebx timed metadata, zana hii haitungi bado (still-image-time ya MOV inaandikwa -1)</string>
+    <string name="fmt_log_apple_write">Imeandikwa muundo wa Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Matokeo ya kutoa: %1$s (picha %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Imeandikwa muundo wa Google: %1$s (picha %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Imeandikwa muundo wa Honor: %1$s (picha %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Utungaji wa lpex umeshindikana, umeachwa (hauathiri uchezaji): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) imetungwa na kuingizwa kwenye moov</string>
+    <string name="fmt_log_meizu_write">Imeandikwa muundo wa Meizu: %1$s (picha %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Imeandikwa muundo wa Nubia: %1$s (JPEG %2$dB + padding 1B + video %3$dB + mkia %4$dB, UserComment ina “%5$s”)</string>
+    <string name="fmt_log_oppo_write">Imeandikwa muundo wa OPPO: %1$s (picha %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Inachanganuliwa kama Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Inachanganuliwa kama Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Inachanganuliwa kama Honor Motion Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Inachanganuliwa kama Meizu Motion Photo</string>
+    <string name="fmt_log_parse_nubia">Inachanganuliwa kama Nubia Motion Photo (mkia wa nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Inachanganuliwa kama OPPO Motion Photo</string>
+    <string name="fmt_log_parse_vivo">Inachanganuliwa kama vivo Motion Photo ya faili mbili</string>
+    <string name="fmt_log_parse_vivo_single">Inachanganuliwa kama vivo Live Photo ya faili moja</string>
+    <string name="fmt_log_parse_xiaomi">Inachanganuliwa kama Xiaomi Motion Photo (inaendana na Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">ID ya livephoto ya JPG na MP4 haipatani: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Imeandikwa vivo Live Photo ya faili moja: %1$s (picha %2$dB + video %3$dB (ikiwa na vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Imeandikwa muundo wa vivo: %1$s.jpg + %1$s.mp4 (ID ya livephoto: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Imeandikwa muundo wa Xiaomi: %1$s (picha %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Toa</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

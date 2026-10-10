@@ -83,5 +83,29 @@
     <string name="conv_reminder_dont_remind">Dinnae show again</string>
     <string name="conv_reminder_confirm_ok">Got it</string>
     <string name="conv_reminder_uninstall">Uninstall</string>
-
+    <string name="conv_err_exif_bad_endian">Ontaefu TIFF byte-order merker</string>
+    <string name="conv_err_exif_inline_type">Unsupportit inline type %1$d</string>
+    <string name="conv_err_exif_type">Unsupportit TIFF type %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">Nae EOI fund (the file micht be corruptit)</string>
+    <string name="conv_err_jpeg_no_soi">No a valid JPEG (SOI missin)</string>
+    <string name="conv_err_jpeg_no_sos">The SOS segment is missin fae the JPEG</string>
+    <string name="conv_err_jpeg_seg_boundary">Segment mairch misaligned @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Ontaefu segment lenth @%1$d</string>
+    <string name="conv_err_json_type">Unsupportit JSON value type: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Ontaeft ftyp box size</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box missin</string>
+    <string name="conv_err_mp4_no_moov">moov box missin fae the MP4</string>
+    <string name="conv_log_sanitize_dropped_prefix">Extra tracks drappit (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Sanitisation o the extra tracks failed (%1$s); ootput as-is</string>
+    <string name="conv_log_sanitize_no_video_track">The input video haes nae uisable video track; extra-track sanitisation is skipit</string>
+    <string name="conv_log_sanitize_normalized">Container brand normalised at byte level (zero copy, sample data unchynged)</string>
+    <string name="conv_log_sanitize_track_add_failed">The video track cannae be addit tae the remuxer (%1$s); extra-track sanitisation is skipit</string>
+    <string name="conv_reason_10bit_h265">The video is %1$dbit H.265 (HDR Live Photo); galleries on some devices cannae decode it</string>
+    <string name="conv_reason_audio_not_aac">The audio track codec %1$s is no AAC (the Motion Photo spec requires AAC; Apple is aften PCM)</string>
+    <string name="conv_reason_codec_unsupported">The video codec %1$s is no the H.264/H.265 common on Android</string>
+    <string name="conv_reason_dolby_vision">The video is Dolby Vision; Android galleries generally dinnae support it</string>
+    <string name="conv_reason_hdr">The video is HDR (%1$s transfer characteristic); galleries on some devices shaw glitches or a black screen</string>
+    <string name="conv_reason_hev1">H.265 is merk it as hev1 (some devices accept hvc1 anely)</string>
+    <string name="conv_reason_mirror_matrix">The video haes a mirror transform matrix (an MP4 rotation matrix cannae express a mirror)</string>
+    <string name="conv_tag_sanitize">Sanitisation</string>
 </resources>

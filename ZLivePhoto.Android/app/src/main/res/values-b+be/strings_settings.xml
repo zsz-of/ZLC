@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Чым менш значэнне, тым вышэйшая якасць і большы памер файла (прадвызначана 18)</string>
     <string name="settings_encoder_title">Кадзіроўшчык</string>
     <string name="settings_compress_preset_title">Профіль сціскання</string>
-
+    <string name="settings_preset_amber">Бурштынавы</string>
+    <string name="settings_preset_forest">Лясны зялёны</string>
+    <string name="settings_preset_ocean">Акіянскі сіні</string>
+    <string name="settings_preset_olive">Аліўкавы</string>
+    <string name="settings_preset_sunset">Аранжавы захад</string>
+    <string name="settings_preset_teal">Бірузовы</string>
+    <string name="settings_preset_violet">Фіялетавы</string>
 </resources>

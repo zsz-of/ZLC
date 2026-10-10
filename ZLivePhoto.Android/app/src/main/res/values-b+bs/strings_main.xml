@@ -170,4 +170,6 @@
     <string name="main_export_source_dir_unavailable">Folder izvorne datoteke nije dostupan: %1$s</string>
     <string name="main_export_replace_failed">Zamjena izvorne datoteke nije uspjela: %1$s</string>
     <string name="main_export_replace_failed_bare">Zamjena izvorne datoteke nije uspjela</string>
+    <string name="main_status_read_failed">Odabranu datoteku nije moguće pročitati</string>
+    <string name="main_status_source_missing">Izvorna datoteka ne postoji ili je nije moguće pročitati</string>
 </resources>

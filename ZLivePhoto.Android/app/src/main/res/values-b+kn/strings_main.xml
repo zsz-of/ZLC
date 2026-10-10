@@ -144,4 +144,6 @@
     <string name="main_export_source_dir_unavailable">ಮೂಲ ಫೋಲ್ಡರ್ ಲಭ್ಯವಿಲ್ಲ: %1$s</string>
     <string name="main_export_replace_failed">ಮೂಲ ಫೈಲ್ ಬದಲಾಯಿಸಲು ವಿಫಲವಾಯಿತು: %1$s</string>
     <string name="main_export_replace_failed_bare">ಮೂಲ ಫೈಲ್ ಬದಲಾಯಿಸಲು ವಿಫಲವಾಯಿತು</string>
+    <string name="main_status_read_failed">ಆಯ್ಕೆ ಮಾಡಿದ ಫೈಲ್ ಅನ್ನು ಓದಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
+    <string name="main_status_source_missing">ಮೂಲ ಫೈಲ್ ಇಲ್ಲ ಅಥವಾ ಓದಲು ಸಾಧ್ಯವಿಲ್ಲ</string>
 </resources>

@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Tiqmat tmeẓẓiyen d taɣara tameqqrant d ifula imeqqranen (tazwara 18)</string>
     <string name="settings_encoder_title">Akudik</string>
     <string name="settings_compress_preset_title">Preset n ukumpresyun</string>
-
+    <string name="settings_preset_amber">Qehwi</string>
+    <string name="settings_preset_forest">Azegzaw n tẓegwa</string>
+    <string name="settings_preset_ocean">Azegzaw n yill</string>
+    <string name="settings_preset_olive">Azitun</string>
+    <string name="settings_preset_sunset">Alaranj n tɣelli</string>
+    <string name="settings_preset_teal">Azegzaw</string>
+    <string name="settings_preset_violet">Aẓerfan</string>
 </resources>

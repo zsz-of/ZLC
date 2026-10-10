@@ -64,6 +64,42 @@
     <string name="conv_log_remuxing">正在重封装视频容器为标准 MP4（只换容器、不重新编码）</string>
     <string name="conv_log_remux_done">容器重封装完成（%1$dKB）</string>
 
+    <!-- ========== VideoTrackSanitizer.kt：视频轨净化（日志面板可见） ========== -->
+    <string name="conv_tag_sanitize">净化</string>
+    <!-- 这两条各自是完整独立的一句话，分别作为独立日志行输出：
+         `%1$s` 只出现在 conv_log_sanitize_dropped_prefix 里（被剔除的附加轨 handler 列表）。
+         conv_log_sanitize_normalized **不含任何占位符** —— 早期版本把前者嵌进后者的 %1$s，
+         但各语言把 %1$s 放进了括号/介词后，拼接结果会变成
+         「… normalised … by Dropped extra tracks (meta), (zero-copy …)」，故拆成两行。 -->
+    <string name="conv_log_sanitize_normalized">已按字节级归一化容器品牌（零拷贝，样本数据未改动）</string>
+    <string name="conv_log_sanitize_dropped_prefix">剔除附加轨（%1$s）</string>
+    <string name="conv_log_sanitize_no_video_track">输入视频没有可用的视频轨，跳过附加轨净化</string>
+    <string name="conv_log_sanitize_track_add_failed">视频轨无法加入重封装器（%1$s），跳过附加轨净化</string>
+    <string name="conv_log_sanitize_exception">附加轨净化失败（%1$s），按原样输出</string>
+
+    <!-- ========== Mp4Util.kt：仅重封装解决不了的问题清单（拼进 conv_log_* 文案） ========== -->
+    <string name="conv_reason_codec_unsupported">视频编码 %1$s 不是安卓通用的 H.264/H.265</string>
+    <string name="conv_reason_hev1">H.265 标记为 hev1（部分机型只认 hvc1）</string>
+    <string name="conv_reason_hdr">视频为 HDR（%1$s 传输特性），部分机型相册会花屏或黑屏</string>
+    <string name="conv_reason_dolby_vision">视频为杜比视界（Dolby Vision），安卓相册普遍不支持</string>
+    <string name="conv_reason_10bit_h265">视频为 %1$dbit H.265（HDR 实况），部分机型相册解码不了</string>
+    <string name="conv_reason_mirror_matrix">视频带镜像变换矩阵（MP4 旋转矩阵无法表达镜像）</string>
+    <string name="conv_reason_audio_not_aac">音轨编码 %1$s 不是 AAC（动态照片规范要求 AAC，Apple 常为 PCM）</string>
+
+    <!-- ========== 底层解析错误（异常文案 → 经 e.message 进入界面失败原因） ========== -->
+    <string name="conv_err_mp4_no_moov">MP4 缺少 moov box</string>
+    <string name="conv_err_mp4_no_ftyp">缺少 ftyp box</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box 尺寸非法</string>
+    <string name="conv_err_jpeg_no_soi">不是有效的 JPEG（缺少 SOI）</string>
+    <string name="conv_err_jpeg_seg_boundary">段边界错位 @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">段长度非法 @%1$d</string>
+    <string name="conv_err_jpeg_no_eoi">未找到 EOI（文件可能损坏）</string>
+    <string name="conv_err_jpeg_no_sos">JPEG 缺少 SOS 段</string>
+    <string name="conv_err_exif_bad_endian">无效的 TIFF 字节序标记</string>
+    <string name="conv_err_exif_type">不支持的 TIFF 类型 %1$d</string>
+    <string name="conv_err_exif_inline_type">不支持的 inline 类型 %1$d</string>
+    <string name="conv_err_json_type">不支持的 JSON 值类型：%1$s</string>
+
     <!-- ========== Reminders.kt：「不再提示」弹窗 ========== -->
     <string name="conv_reminder_cat_compose">合成</string>
     <string name="conv_reminder_cat_convert">转换</string>

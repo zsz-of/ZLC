@@ -161,4 +161,6 @@
     <string name="main_export_source_dir_unavailable">Map van het bronbestand niet beschikbaar: %1$s</string>
     <string name="main_export_replace_failed">Vervangen van het bronbestand mislukt: %1$s</string>
     <string name="main_export_replace_failed_bare">Vervangen van het bronbestand mislukt</string>
+    <string name="main_status_read_failed">Kan het geselecteerde bestand niet lezen</string>
+    <string name="main_status_source_missing">Het bronbestand bestaat niet of is niet leesbaar</string>
 </resources>

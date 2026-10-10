@@ -70,4 +70,11 @@
     <string name="screen_date_yesterday">Бэҕэһээ</string>
     <string name="screen_date_this_year">%2$d.%1$d</string>
     <string name="screen_date_other_year">%3$d.%2$d.%1$d</string>
+    <string name="screen_album_unnamed">Аата суох</string>
+    <string name="screen_eta_minutes">%1$d мүн %2$s сөк</string>
+    <string name="screen_eta_seconds">%1$d сөк</string>
+    <string name="screen_transcode_eta">Хааллар %1$s</string>
+    <string name="screen_transcode_frames">%1$d/%2$d кадр</string>
+    <string name="screen_transcode_in_progress">Кодировкалааһын · %1$d кадр ырытылынна</string>
+    <string name="screen_transcode_progress">Кодировкалааһын %1$d%%</string>
 </resources>

@@ -42,4 +42,35 @@
     <string name="fmt_err_vivo_companion_missing">Eşlik eden video dosyası eksik: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG gövdesi çözümlenemedi</string>
     <string name="fmt_err_vivo_companion_invalid">Eşlik eden MP4 geçersiz (ftyp box eksik)</string>
+    <string name="fmt_log_apple_heic_no_pair">Kapak HEIC: eşleştirme işareti şimdilik yazılmıyor (HEIC’in EXIF bilgisi Exif öğesinde, ayrıca uygulanması gerekiyor), ContentIdentifier yalnızca MOV tarafına yazılıyor</string>
+    <string name="fmt_log_apple_still_found">Apple sabit kare zamanı okundu: %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple sabit kare zamanı okunamadı (boş mebx/elst edit yok), dışa aktarımda videonun ortası kullanılıyor</string>
+    <string name="fmt_log_apple_still_no_carrier">%1$d ms sabit kare zamanının henüz taşıyıcısı yok: gerçek Apple mebx timed metadata parçası kullanıyor, bu araç şimdilik bunu oluşturmuyor (MOV still-image-time -1 olarak yazılıyor)</string>
+    <string name="fmt_log_apple_write">Apple biçimi yazılıyor: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Ayıklama çıktısı: %1$s (fotoğraf %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Google biçimi yazılıyor: %1$s (görsel %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor biçimi yazılıyor: %1$s (görsel %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex birleştirme başarısız, atlanıyor (oynatmayı etkilemez): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) oluşturuldu ve moov içine eklendi</string>
+    <string name="fmt_log_meizu_write">Meizu biçimi yazılıyor: %1$s (görsel %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia biçimi yazılıyor: %1$s (JPEG %2$dB + 1B dolgu + video %3$dB + trailer %4$dB, UserComment "%5$s" içeriyor)</string>
+    <string name="fmt_log_oppo_write">OPPO biçimi yazılıyor: %1$s (görsel %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo olarak ayrıştırılıyor</string>
+    <string name="fmt_log_parse_google">Google Motion Photo olarak ayrıştırılıyor</string>
+    <string name="fmt_log_parse_honor">Honor Live Photo olarak ayrıştırılıyor (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu Live Photo olarak ayrıştırılıyor</string>
+    <string name="fmt_log_parse_nubia">Nubia Live Photo olarak ayrıştırılıyor (nubiaVpfile trailer)</string>
+    <string name="fmt_log_parse_oppo">OPPO Live Photo olarak ayrıştırılıyor</string>
+    <string name="fmt_log_parse_vivo">İki dosyalı vivo Live Photo olarak ayrıştırılıyor</string>
+    <string name="fmt_log_parse_vivo_single">Tek dosyalı vivo Live Photo olarak ayrıştırılıyor</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi Live Photo olarak ayrıştırılıyor (Google uyumlu)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG ile MP4 livephoto ID eşleşmiyor: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Tek dosyalı vivo Live Photo yazılıyor: %1$s (görsel %2$dB + video %3$dB (vivoMediaEStream + lpex içerir) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo biçimi yazılıyor: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi biçimi yazılıyor: %1$s (görsel %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Ayıklama</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

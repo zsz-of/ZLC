@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Pli malgrandaj valoroj signifas pli altan kvaliton kaj pli grandajn dosierojn (defaŭlte 18)</string>
     <string name="settings_encoder_title">Kodigilo</string>
     <string name="settings_compress_preset_title">Kunprema antaŭagordo</string>
-
+    <string name="settings_preset_amber">Sukceno</string>
+    <string name="settings_preset_forest">Arbara verdo</string>
+    <string name="settings_preset_ocean">Oceana bluo</string>
+    <string name="settings_preset_olive">Olivo</string>
+    <string name="settings_preset_sunset">Vespera oranĝo</string>
+    <string name="settings_preset_teal">Tealo</string>
+    <string name="settings_preset_violet">Viola</string>
 </resources>

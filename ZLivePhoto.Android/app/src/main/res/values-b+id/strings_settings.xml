@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Nilai lebih rendah berarti kualitas lebih tinggi dan berkas lebih besar (bawaan 18)</string>
     <string name="settings_encoder_title">Encoder</string>
     <string name="settings_compress_preset_title">Prasetel kompresi</string>
+    <string name="settings_preset_amber">Ambar</string>
+    <string name="settings_preset_forest">Hijau Hutan</string>
+    <string name="settings_preset_ocean">Biru Laut</string>
+    <string name="settings_preset_olive">Zaitun</string>
+    <string name="settings_preset_sunset">Oranye Senja</string>
+    <string name="settings_preset_teal">Teal</string>
+    <string name="settings_preset_violet">Violet</string>
 </resources>

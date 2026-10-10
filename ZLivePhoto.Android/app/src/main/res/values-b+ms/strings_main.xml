@@ -134,4 +134,6 @@
     <string name="main_export_source_dir_unavailable">Folder sumber tidak tersedia: %1$s</string>
     <string name="main_export_replace_failed">Gagal menggantikan fail sumber: %1$s</string>
     <string name="main_export_replace_failed_bare">Gagal menggantikan fail sumber</string>
+    <string name="main_status_read_failed">Tidak dapat membaca fail yang dipilih</string>
+    <string name="main_status_source_missing">Fail sumber tidak wujud atau tidak boleh dibaca</string>
 </resources>

@@ -97,5 +97,11 @@
     <string name="settings_crf_hint">ཨང་ཆུང་ན་པར་གྱི་སྤུས་ཚད་མཐོ་ཞིང་ཆེ་ཆུང་ཆེ་རུ་འགྲོ (སྔོན་སྒྲིག 18)</string>
     <string name="settings_encoder_title">ཨང་རྟགས་བཟོ་ཆས</string>
     <string name="settings_compress_preset_title">གནོན་བསྡུས་ཀྱི་སྔོན་སྒྲིག</string>
-
+    <string name="settings_preset_amber">ཨམ་བེར</string>
+    <string name="settings_preset_forest">ནགས་ཚལ་ལྗང་ཁུ</string>
+    <string name="settings_preset_ocean">མཚོ་སྔོན</string>
+    <string name="settings_preset_olive">ཨོ་ལིབ</string>
+    <string name="settings_preset_sunset">ཉི་ནུབ་ལི་ཁྲི</string>
+    <string name="settings_preset_teal">སྔོ་ལྗང་</string>
+    <string name="settings_preset_violet">མུ་མེན</string>
 </resources>

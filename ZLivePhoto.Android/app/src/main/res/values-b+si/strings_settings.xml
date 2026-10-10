@@ -91,4 +91,11 @@
     <string name="settings_crf_hint">අගය කුඩා වන විට ගුණත්වය ඉහළත් ප්‍රමාණය විශාලත් වේ (පෙරනිමි 18)</string>
     <string name="settings_encoder_title">කේතකය</string>
     <string name="settings_compress_preset_title">සම්පීඩන පෙරසැකසුම</string>
+    <string name="settings_preset_amber">ඇම්බර්</string>
+    <string name="settings_preset_forest">වන හරිත</string>
+    <string name="settings_preset_ocean">සාගර නිල්</string>
+    <string name="settings_preset_olive">ඔලිව්</string>
+    <string name="settings_preset_sunset">හිරු බැසීමේ තැඹිලි</string>
+    <string name="settings_preset_teal">ටීල්</string>
+    <string name="settings_preset_violet">දම්</string>
 </resources>

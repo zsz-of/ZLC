@@ -159,4 +159,6 @@
     <string name="main_export_source_dir_unavailable">Mapa izvirne datoteke ni na voljo: %1$s</string>
     <string name="main_export_replace_failed">Zamenjava izvirne datoteke ni uspela: %1$s</string>
     <string name="main_export_replace_failed_bare">Zamenjava izvirne datoteke ni uspela</string>
+    <string name="main_status_read_failed">Izbrane datoteke ni mogoče prebrati</string>
+    <string name="main_status_source_missing">Izvorna datoteka ne obstaja ali je ni mogoče prebrati</string>
 </resources>

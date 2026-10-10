@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">Lipsește fișierul video asociat: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Analizarea corpului JPG a eșuat</string>
     <string name="fmt_err_vivo_companion_invalid">MP4-ul asociat este invalid (lipsește caseta ftyp)</string>
+    <string name="fmt_log_apple_heic_no_pair">Coperta este HEIC: deocamdată nu se scrie identificatorul de asociere (EXIF-ul HEIC stă în Exif item și necesită o implementare separată); ContentIdentifier se scrie doar pe partea MOV</string>
+    <string name="fmt_log_apple_still_found">S-a detectat momentul cadrului fix Apple %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Momentul cadrului fix Apple nu a fost detectat (niciun edit gol mebx/elst): la export se folosește mijlocul videoclipului</string>
+    <string name="fmt_log_apple_still_no_carrier">Momentul cadrului fix %1$d ms nu are încă suport: Apple real folosește o pistă de metadate temporizate mebx, acest instrument nu o compune încă (still-image-time din MOV se scrie -1)</string>
+    <string name="fmt_log_apple_write">S-a scris formatul Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Ieșirea extragerii: %1$s (fotografie %2$dB, HDR=%3$s) + %4$s (videoclip %5$dB)</string>
+    <string name="fmt_log_google_write">S-a scris formatul Google: %1$s (imagine %2$dB + videoclip %3$dB)</string>
+    <string name="fmt_log_honor_write">S-a scris formatul Honor: %1$s (imagine %2$dB + videoclip %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Compunerea lpex a eșuat, omisă (nu afectează redarea): %1$s</string>
+    <string name="fmt_log_lpex_ok">S-a compus caseta lpex (LivePhotoExtension) și s-a inserat în moov</string>
+    <string name="fmt_log_meizu_write">S-a scris formatul Meizu: %1$s (imagine %2$dB + videoclip %3$dB)</string>
+    <string name="fmt_log_nubia_write">S-a scris formatul Nubia: %1$s (JPEG %2$dB + umplere 1B + videoclip %3$dB + coadă %4$dB, UserComment conține "%5$s")</string>
+    <string name="fmt_log_oppo_write">S-a scris formatul OPPO: %1$s (imagine %2$dB + videoclip %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Analiză ca Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Analiză ca Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Analiză ca Live Photo Honor (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Analiză ca Live Photo Meizu</string>
+    <string name="fmt_log_parse_nubia">Analiză ca Live Photo Nubia (coada nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Analiză ca Live Photo OPPO</string>
+    <string name="fmt_log_parse_vivo">Analiză ca Live Photo vivo cu două fișiere</string>
+    <string name="fmt_log_parse_vivo_single">Analiză ca Live Photo vivo cu un singur fișier</string>
+    <string name="fmt_log_parse_xiaomi">Analiză ca Live Photo Xiaomi (compatibil Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">ID-urile livephoto ale JPG și MP4 nu coincid: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">S-a scris Live Photo vivo cu un singur fișier: %1$s (imagine %2$dB + videoclip %3$dB (cu vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">S-a scris formatul vivo: %1$s.jpg + %1$s.mp4 (ID livephoto: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">S-a scris formatul Xiaomi: %1$s (imagine %2$dB + videoclip %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Extragere</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

@@ -81,5 +81,29 @@
     <string name="conv_reminder_dont_remind">មិនបង្ហាញម្តងទៀត</string>
     <string name="conv_reminder_confirm_ok">បានដឹងហើយ</string>
     <string name="conv_reminder_uninstall">លុបចោល</string>
-
+    <string name="conv_err_exif_bad_endian">សញ្ញាលំដាប់បៃរបស់ TIFF មិនត្រឹមត្រូវ</string>
+    <string name="conv_err_exif_inline_type">ប្រភេទ inline មិនគាំទ្រ %1$d</string>
+    <string name="conv_err_exif_type">ប្រភេទ TIFF មិនគាំទ្រ %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">រកមិនឃើញ EOI (ឯកសារអាចខូច)</string>
+    <string name="conv_err_jpeg_no_soi">មិនមែនជា JPEG ត្រឹមត្រូវទេ (ខ្វះ SOI)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG ខ្វះផ្នែក SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">ព្រំដែនផ្នែកខុសទីតាំង @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">ប្រវែងផ្នែកមិនត្រឹមត្រូវ @%1$d</string>
+    <string name="conv_err_json_type">ប្រភេទតម្លៃ JSON មិនគាំទ្រ៖ %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ទំហំ ftyp box មិនត្រឹមត្រូវ</string>
+    <string name="conv_err_mp4_no_ftyp">ខ្វះ ftyp box</string>
+    <string name="conv_err_mp4_no_moov">MP4 ខ្វះ moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">បានដកផ្លូវបន្ថែម (%1$s),</string>
+    <string name="conv_log_sanitize_exception">ការសម្អាតផ្លូវបន្ថែមបរាជ័យ (%1$s) បានបញ្ចេញដូចដើម</string>
+    <string name="conv_log_sanitize_no_video_track">វីដេអូបញ្ចូលគ្មានផ្លូវវីដេអូដែលអាចប្រើបាន បានរំលងការសម្អាតផ្លូវបន្ថែម</string>
+    <string name="conv_log_sanitize_normalized">បានធ្វើឱ្យម៉ាកធុងជាបទដ្ឋានតាមកម្រិតបៃ (ចម្លងសូន្យ ទិន្នន័យគំរូមិនបានផ្លាស់ប្តូរ)</string>
+    <string name="conv_log_sanitize_track_add_failed">មិនអាចបន្ថែមផ្លូវវីដេអូទៅក្នុងកម្មវិធីខ្ចប់ឡើងវិញបានទេ (%1$s) បានរំលងការសម្អាតផ្លូវបន្ថែម</string>
+    <string name="conv_reason_10bit_h265">វីដេអូជា %1$dbit H.265 (HDR ផ្ទាល់) អាល់ប៊ុមរបស់ម៉ាស៊ីនមួយចំនួនមិនអាចឌិកូដបានទេ</string>
+    <string name="conv_reason_audio_not_aac">ការអ៊ិនកូដផ្លូវសំឡេង %1$s មិនមែន AAC ទេ (លក្ខណៈរូបថតចលនាត្រូវការ AAC; Apple ជាទូទៅ PCM)</string>
+    <string name="conv_reason_codec_unsupported">ការអ៊ិនកូដវីដេអូ %1$s មិនមែន H.264/H.265 ដែលអង់ដ្រូយដ៍ប្រើជាទូទៅទេ</string>
+    <string name="conv_reason_dolby_vision">វីដេអូជា Dolby Vision អាល់ប៊ុមអង់ដ្រូយដ៍ជាទូទៅមិនគាំទ្រទេ</string>
+    <string name="conv_reason_hdr">វីដេអូជា HDR (លក្ខណៈបញ្ជូន %1$s) អាល់ប៊ុមរបស់ម៉ាស៊ីនមួយចំនួនអាចមានពណ៌ខូច ឬអេក្រង់ខ្មៅ</string>
+    <string name="conv_reason_hev1">H.265 ត្រូវបានសម្គាល់ជា hev1 (ម៉ាស៊ីនមួយចំនួនស្គាល់តែ hvc1)</string>
+    <string name="conv_reason_mirror_matrix">វីដេអូមានម៉ាទ្រីសបំប្លែងកញ្ចក់ (ម៉ាទ្រីសបង្វិល MP4 មិនអាចបង្ហាញកញ្ចក់បានទេ)</string>
+    <string name="conv_tag_sanitize">សម្អាត</string>
 </resources>

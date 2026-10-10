@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">Walang kasamang video file: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Nabigo ang pag-parse sa nilalaman ng JPG</string>
     <string name="fmt_err_vivo_companion_invalid">Hindi valid ang kasamang MP4 (walang ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">HEIC ang cover: hindi pa isinusulat ang pairing marker (nasa Exif item ang EXIF ng HEIC at kailangan ng hiwalay na implementasyon); sa MOV side lang isinusulat ang ContentIdentifier</string>
+    <string name="fmt_log_apple_still_found">Na-parse ang Apple still-frame time na %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Hindi na-parse ang Apple still-frame time (walang mebx/elst empty edit); sa pag-export, gagamitin ang gitna ng video</string>
+    <string name="fmt_log_apple_still_no_carrier">Ang still-frame time na %1$d ms ay walang carrier: gumagamit ang tunay na Apple ng mebx timed metadata track, hindi pa ito kinokomposo ng tool na ito (isinusulat ang -1 sa still-image-time ng MOV)</string>
+    <string name="fmt_log_apple_write">Isinulat ang Apple format: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Output ng extract: %1$s (larawan %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Isinulat ang Google format: %1$s (larawan %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Isinulat ang Honor format: %1$s (larawan %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Nabigo ang pag-compose ng lpex, nilaktawan (hindi nakakaapekto sa playback): %1$s</string>
+    <string name="fmt_log_lpex_ok">Na-compose ang lpex box (LivePhotoExtension) at naisingit sa moov</string>
+    <string name="fmt_log_meizu_write">Isinulat ang Meizu format: %1$s (larawan %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Isinulat ang Nubia format: %1$s (JPEG %2$dB + padding 1B + video %3$dB + tail %4$dB, may “%5$s” sa UserComment)</string>
+    <string name="fmt_log_oppo_write">Isinulat ang OPPO format: %1$s (larawan %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Pag-parse bilang Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Pag-parse bilang Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Pag-parse bilang Honor Motion Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Pag-parse bilang Meizu Motion Photo</string>
+    <string name="fmt_log_parse_nubia">Pag-parse bilang Nubia Motion Photo (tail ng nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Pag-parse bilang OPPO Motion Photo</string>
+    <string name="fmt_log_parse_vivo">Pag-parse bilang vivo Motion Photo na dalawang file</string>
+    <string name="fmt_log_parse_vivo_single">Pag-parse bilang vivo Live Photo na isang file</string>
+    <string name="fmt_log_parse_xiaomi">Pag-parse bilang Xiaomi Motion Photo (Google compatible)</string>
+    <string name="fmt_log_vivo_id_mismatch">Hindi tugma ang livephoto ID ng JPG at MP4: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Isinulat ang vivo single-file Live Photo: %1$s (larawan %2$dB + video %3$dB (may vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Isinulat ang vivo format: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Isinulat ang Xiaomi format: %1$s (larawan %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">I-extract</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

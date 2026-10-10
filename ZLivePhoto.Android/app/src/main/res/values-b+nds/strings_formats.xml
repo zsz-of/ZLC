@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">De tohöörige Videodatei fehlt: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">De JPG-Inholt kunn nich utleest warrn</string>
     <string name="fmt_err_vivo_companion_invalid">De tohöörige MP4 is ungültig (ftyp-Box fehlt)</string>
+    <string name="fmt_log_apple_heic_no_pair">Dat Titelbild is HEIC: dor warrt noch keen Pairing-Teken schreven (de EXIF in HEIC liggt in Exif item un bruukt en egen Implementeren); de ContentIdentifier warrt blots op de MOV-Sied schreven</string>
+    <string name="fmt_log_apple_still_found">Apple-Stillbild-Tietpunkt %1$d ms funnen (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Keen Apple-Stillbild-Tietpunkt funnen (keen leddig mebx/elst-edit); bi’t Utgeven warrt de Midd vun dat Video as Nootfall bruukt</string>
+    <string name="fmt_log_apple_still_no_carrier">De Stillbild-Tietpunkt %1$d ms hett noch keen Dräger: echte Apple-Reedschappen bruukt en mebx timed metadata-Spoor, dat dit Warktüüch noch nich tosamensett (MOV still-image-time warrt as -1 schreven)</string>
+    <string name="fmt_log_apple_write">Apple-Format schreven: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Utgaav vun’t Ut’nannernehmen: %1$s (Foto %2$dB, HDR=%3$s) + %4$s (Video %5$dB)</string>
+    <string name="fmt_log_google_write">Google-Format schreven: %1$s (Bild %2$dB + Video %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor-Format schreven: %1$s (Bild %2$dB + Video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Dat lpex-Tosamensetten is fehlslahn un warrt översprungen (hett keen Influss op’t Afspelen): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) is tosamensett un in de moov insett worrn</string>
+    <string name="fmt_log_meizu_write">Meizu-Format schreven: %1$s (Bild %2$dB + Video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia-Format schreven: %1$s (JPEG %2$dB + Füllung 1B + Video %3$dB + trailer %4$dB, UserComment bargt "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO-Format schreven: %1$s (Bild %2$dB + Video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">As Apple Live Photo kennt</string>
+    <string name="fmt_log_parse_google">As Google Motion Photo kennt</string>
+    <string name="fmt_log_parse_honor">As Honor-Live-Foto kennt (MP4 large size + uuid EIS-Matrix)</string>
+    <string name="fmt_log_parse_meizu">As Meizu-Live-Foto kennt</string>
+    <string name="fmt_log_parse_nubia">As Nubia-Live-Foto kennt (nubiaVpfile-trailer)</string>
+    <string name="fmt_log_parse_oppo">As OPPO-Live-Foto kennt</string>
+    <string name="fmt_log_parse_vivo">As vivo-Live-Foto mit twee Dateien kennt</string>
+    <string name="fmt_log_parse_vivo_single">As vivo-Live-Foto mit een Datei kennt</string>
+    <string name="fmt_log_parse_xiaomi">As Xiaomi-Live-Foto kennt (Google-kompatibel)</string>
+    <string name="fmt_log_vivo_id_mismatch">De livephoto-ID vun JPG un MP4 passt nich tosamen: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo-Live-Foto mit een Datei schreven: %1$s (Bild %2$dB + Video %3$dB (mit vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo-Format schreven: %1$s.jpg + %1$s.mp4 (livephoto-ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi-Format schreven: %1$s (Bild %2$dB + Video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Ut’nannernehmen</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

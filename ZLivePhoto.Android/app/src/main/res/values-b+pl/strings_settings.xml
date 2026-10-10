@@ -103,5 +103,11 @@
     <string name="settings_crf_hint">Im mniejsza wartość, tym wyższa jakość i większy rozmiar (domyślnie 18)</string>
     <string name="settings_encoder_title">Koder</string>
     <string name="settings_compress_preset_title">Preset kompresji</string>
-
+    <string name="settings_preset_amber">Bursztynowy</string>
+    <string name="settings_preset_forest">Leśna zieleń</string>
+    <string name="settings_preset_ocean">Błękit oceanu</string>
+    <string name="settings_preset_olive">Oliwkowy</string>
+    <string name="settings_preset_sunset">Pomarańcz zachodu</string>
+    <string name="settings_preset_teal">Morski</string>
+    <string name="settings_preset_violet">Fioletowy</string>
 </resources>

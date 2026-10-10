@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">La cartella original l\'è nò disponibil: %1$s</string>
     <string name="main_export_replace_failed">El s\'è nò podud sostituì el file original: %1$s</string>
     <string name="main_export_replace_failed_bare">El s\'è nò podud sostituì el file original</string>
+    <string name="main_status_read_failed">El file selinzionad el se pò nò lensg</string>
+    <string name="main_status_source_missing">El file sorgent el gh’è nò o el se pò nò lensg</string>
 </resources>

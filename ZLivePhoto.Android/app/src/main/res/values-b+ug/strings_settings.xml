@@ -89,5 +89,11 @@
     <string name="settings_crf_hint">سان قانچە كىچىك بولسا سۈپەت شۇنچە يۇقىرى، ھەجىمى شۇنچە چوڭ (سۈكۈتتىكى 18)</string>
     <string name="settings_encoder_title">كودلىغۇچ</string>
     <string name="settings_compress_preset_title">پىرىسلاش ئالدىن بېكىتمىسى</string>
-
+    <string name="settings_preset_amber">كەھرىۋا</string>
+    <string name="settings_preset_forest">ئورمان يېشىل</string>
+    <string name="settings_preset_ocean">دېڭىز كۆك</string>
+    <string name="settings_preset_olive">زەيتۇن</string>
+    <string name="settings_preset_sunset">كۈن پېتىش ئاپېلسىن</string>
+    <string name="settings_preset_teal">پىرۇزە</string>
+    <string name="settings_preset_violet">بىنەپشە</string>
 </resources>

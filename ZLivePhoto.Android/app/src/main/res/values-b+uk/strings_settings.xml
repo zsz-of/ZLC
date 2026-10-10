@@ -102,5 +102,11 @@
     <string name="settings_crf_hint">Що менше значення, то вища якість і більший розмір (типово 18)</string>
     <string name="settings_encoder_title">Кодувальник</string>
     <string name="settings_compress_preset_title">Профіль стиснення</string>
-
+    <string name="settings_preset_amber">Бурштиновий</string>
+    <string name="settings_preset_forest">Лісовий зелений</string>
+    <string name="settings_preset_ocean">Океанський синій</string>
+    <string name="settings_preset_olive">Оливковий</string>
+    <string name="settings_preset_sunset">Помаранчевий захід</string>
+    <string name="settings_preset_teal">Бірюзовий</string>
+    <string name="settings_preset_violet">Фіолетовий</string>
 </resources>

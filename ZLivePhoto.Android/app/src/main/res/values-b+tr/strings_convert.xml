@@ -81,5 +81,29 @@
     <string name="conv_reminder_dont_remind">Bir daha gösterme</string>
     <string name="conv_reminder_confirm_ok">Anladım</string>
     <string name="conv_reminder_uninstall">Kaldır</string>
-
+    <string name="conv_err_exif_bad_endian">Geçersiz TIFF bayt sırası işareti</string>
+    <string name="conv_err_exif_inline_type">Desteklenmeyen satır içi tür: %1$d</string>
+    <string name="conv_err_exif_type">Desteklenmeyen TIFF türü: %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI bulunamadı (dosya bozuk olabilir)</string>
+    <string name="conv_err_jpeg_no_soi">Geçerli bir JPEG değil (SOI eksik)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG dosyasında SOS segmenti yok</string>
+    <string name="conv_err_jpeg_seg_boundary">Segment sınırı %1$d konumunda kaymış</string>
+    <string name="conv_err_jpeg_seg_length">%1$d konumunda geçersiz segment uzunluğu</string>
+    <string name="conv_err_json_type">Desteklenmeyen JSON değer türü: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Geçersiz ftyp box boyutu</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box eksik</string>
+    <string name="conv_err_mp4_no_moov">MP4 dosyasında moov box eksik</string>
+    <string name="conv_log_sanitize_dropped_prefix">Ek parçalar kaldırıldı (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Ek parça temizliği başarısız (%1$s), çıktı değiştirilmedi</string>
+    <string name="conv_log_sanitize_no_video_track">Giriş videosunda kullanılabilir video parçası yok, ek parça temizliği atlanıyor</string>
+    <string name="conv_log_sanitize_normalized">Kapsayıcı markası bayt düzeyinde normalleştirildi (sıfır kopyalama, örnek veriler değişmedi)</string>
+    <string name="conv_log_sanitize_track_add_failed">Video parçası yeniden paketleyiciye eklenemedi (%1$s), ek parça temizliği atlanıyor</string>
+    <string name="conv_reason_10bit_h265">Video %1$d bit H.265 (HDR Live Photo), bazı modellerin galerisi bunu çözemiyor</string>
+    <string name="conv_reason_audio_not_aac">Ses parçasının kodeği %1$s, AAC değil (Motion Photo belirtimi AAC gerektirir, Apple genellikle PCM kullanır)</string>
+    <string name="conv_reason_codec_unsupported">Video kodeği %1$s, Android’de yaygın olan H.264/H.265 değil</string>
+    <string name="conv_reason_dolby_vision">Video Dolby Vision, Android galerileri bunu genellikle desteklemez</string>
+    <string name="conv_reason_hdr">Video HDR (%1$s aktarım karakteristiği), bazı modellerin galerisi bozulma veya siyah ekran gösteriyor</string>
+    <string name="conv_reason_hev1">H.265, hev1 olarak işaretlenmiş (bazı modeller yalnızca hvc1 tanır)</string>
+    <string name="conv_reason_mirror_matrix">Videoda ayna matrisi var (MP4 döndürme matrisi aynayı ifade edemez)</string>
+    <string name="conv_tag_sanitize">Temizleme</string>
 </resources>

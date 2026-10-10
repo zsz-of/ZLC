@@ -170,4 +170,6 @@
     <string name="main_export_source_dir_unavailable">මුල් ගොනුවේ ෆෝල්ඩරය නොමැත: %1$s</string>
     <string name="main_export_replace_failed">මුල් ගොනුව ප්‍රතිස්ථාපනය අසාර්ථකයි: %1$s</string>
     <string name="main_export_replace_failed_bare">මුල් ගොනුව ප්‍රතිස්ථාපනය අසාර්ථකයි</string>
+    <string name="main_status_read_failed">තෝරාගත් ගොනුව කියවිය නොහැක</string>
+    <string name="main_status_source_missing">මූලාශ්‍ර ගොනුව නොපවතී හෝ කියවිය නොහැක</string>
 </resources>

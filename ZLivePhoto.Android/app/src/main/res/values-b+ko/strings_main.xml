@@ -148,4 +148,6 @@
     <string name="main_export_source_dir_unavailable">원본 파일 디렉터리를 사용할 수 없습니다: %1$s</string>
     <string name="main_export_replace_failed">원본 파일 대체 실패: %1$s</string>
     <string name="main_export_replace_failed_bare">원본 파일 대체에 실패했습니다</string>
+    <string name="main_status_read_failed">선택한 파일을 읽을 수 없습니다</string>
+    <string name="main_status_source_missing">원본 파일이 없거나 읽을 수 없습니다</string>
 </resources>

@@ -104,5 +104,11 @@
     <string name="settings_crf_hint">ค่ายิ่งน้อยคุณภาพยิ่งสูงและไฟล์ยิ่งใหญ่ (ค่าเริ่มต้น 18)</string>
     <string name="settings_encoder_title">ตัวเข้ารหัส</string>
     <string name="settings_compress_preset_title">พรีเซ็ตการบีบอัด</string>
-
+    <string name="settings_preset_amber">อำพัน</string>
+    <string name="settings_preset_forest">เขียวป่า</string>
+    <string name="settings_preset_ocean">น้ำเงินมหาสมุทร</string>
+    <string name="settings_preset_olive">มะกอก</string>
+    <string name="settings_preset_sunset">ส้มพระอาทิตย์ตก</string>
+    <string name="settings_preset_teal">เขียวน้ำเงิน</string>
+    <string name="settings_preset_violet">ม่วง</string>
 </resources>

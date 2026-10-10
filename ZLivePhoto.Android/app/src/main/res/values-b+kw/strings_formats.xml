@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">Fylen video kescoweth a fyll: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Dielvenna korf an JPG a fyllyas</string>
     <string name="fmt_err_vivo_companion_invalid">MP4 kescoweth yw direwl (ftyp box a fyll)</string>
+    <string name="fmt_log_apple_heic_no_pair">HEIC yw an gudhlen: ny skrifir an mark parans lemmyn (EXIF HEIC yma yn Exif item, res yw y wraplea a-dhihaval); ContentIdentifier a skrifir war du\'n MOV yn unnik</string>
+    <string name="fmt_log_apple_still_found">Parsys pols skeusen stag Apple %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Ny veu parsyes pols skeusen stag Apple (golyans gwag mebx/elst ebet); kres an video a vydh devnydhys pan eksportir</string>
+    <string name="fmt_log_apple_still_no_carrier">Nyns eus degemmeryas dhe\'n pols skeusen stag %1$d ms hwath: Apple gwir a dhevnydh treus metadhatys termyn mebx, nag wra an toul ma y gensya lemmyn (still-image-time an MOV a skrifir avel -1)</string>
+    <string name="fmt_log_apple_write">Ow skrifa format Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Mesyans tenna: %1$s (skeusen %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Ow skrifa format Google: %1$s (imaj %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Ow skrifa format Honor: %1$s (imaj %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Kesya lpex a fyllyas, lemmys (ny wra effeythya war wari): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) kesys ha gorres yn moov</string>
+    <string name="fmt_log_meizu_write">Ow skrifa format Meizu: %1$s (imaj %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Ow skrifa format Nubia: %1$s (JPEG %2$dB + lenwel 1B + video %3$dB + trayler %4$dB, UserComment ow komprehendya "%5$s")</string>
+    <string name="fmt_log_oppo_write">Ow skrifa format OPPO: %1$s (imaj %2$dB + video %3$dB + trayler %4$dB)</string>
+    <string name="fmt_log_parse_apple">Ow parser avel Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Ow parser avel Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Ow parser avel Honor Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Ow parser avel Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">Ow parser avel Nubia Live Photo (trayler nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Ow parser avel OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">Ow parser avel vivo Live Photo dew-fylen</string>
+    <string name="fmt_log_parse_vivo_single">Ow parser avel vivo Live Photo unn-fylen</string>
+    <string name="fmt_log_parse_xiaomi">Ow parser avel Xiaomi Live Photo (keskavadow gans Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">ID livephoto an JPG ha\'n MP4 yn ankeskavadow: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Ow skrifa vivo Live Photo unn-fylen: %1$s (imaj %2$dB + video %3$dB (gans vivoMediaEStream + lpex) + trayler %4$dB)</string>
+    <string name="fmt_log_vivo_write">Ow skrifa format vivo: %1$s.jpg + %1$s.mp4 (ID livephoto: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Ow skrifa format Xiaomi: %1$s (imaj %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Tenna</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">ಜೋಡಿ ವೀಡಿಯೊ ಫೈಲ್ ಇಲ್ಲ: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG ಬಾಡಿಯನ್ನು ವಿಶ್ಲೇಷಿಸಲು ವಿಫಲವಾಯಿತು</string>
     <string name="fmt_err_vivo_companion_invalid">ಜೋಡಿ MP4 ಅಮಾನ್ಯವಾಗಿದೆ (ftyp ಬಾಕ್ಸ್ ಇಲ್ಲ)</string>
+    <string name="fmt_log_apple_heic_no_pair">ಕವರ್ HEIC: ಜೋಡಿ ಗುರುತನ್ನು ಸದ್ಯಕ್ಕೆ ಬರೆಯಲಾಗುವುದಿಲ್ಲ (HEIC ನ EXIF, Exif item ನಲ್ಲಿದೆ; ಪ್ರತ್ಯೇಕವಾಗಿ ಜಾರಿಗೊಳಿಸಬೇಕು), MOV ಬದಿಯಲ್ಲಿ ಮಾತ್ರ ContentIdentifier ಬರೆಯಲಾಗುತ್ತದೆ</string>
+    <string name="fmt_log_apple_still_found">Apple ಸ್ಥಿರ ಫ್ರೇಮ್ ಸಮಯ %1$d ms ಅನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗಿದೆ (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple ಸ್ಥಿರ ಫ್ರೇಮ್ ಸಮಯ ವಿಶ್ಲೇಷಿಸಲಾಗಿಲ್ಲ (mebx/elst ಖಾಲಿ edit ಇಲ್ಲ); ರಫ್ತಿನಲ್ಲಿ ವೀಡಿಯೊ ಮಧ್ಯಬಿಂದು ಬಳಸಲಾಗುತ್ತದೆ</string>
+    <string name="fmt_log_apple_still_no_carrier">ಸ್ಥಿರ ಫ್ರೇಮ್ ಸಮಯ %1$d ms ಗೆ ಸದ್ಯಕ್ಕೆ ವಾಹಕವಿಲ್ಲ: ನಿಜವಾದ Apple, mebx timed metadata ಟ್ರ್ಯಾಕ್ ಬಳಸುತ್ತದೆ; ಈ ಉಪಕರಣ ಸದ್ಯಕ್ಕೆ ಸಂಯೋಜಿಸುವುದಿಲ್ಲ (MOV ನ still-image-time -1 ಎಂದು ಬರೆಯಲಾಗುತ್ತದೆ)</string>
+    <string name="fmt_log_apple_write">Apple ಸ್ವರೂಪ ಬರೆಯಲಾಗಿದೆ: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">ಹೊರತೆಗೆದ ಔಟ್‌ಪುಟ್: %1$s (ಫೋಟೋ %2$dB, HDR=%3$s) + %4$s (ವೀಡಿಯೊ %5$dB)</string>
+    <string name="fmt_log_google_write">Google ಸ್ವರೂಪ ಬರೆಯಲಾಗಿದೆ: %1$s (ಚಿತ್ರ %2$dB + ವೀಡಿಯೊ %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor ಸ್ವರೂಪ ಬರೆಯಲಾಗಿದೆ: %1$s (ಚಿತ್ರ %2$dB + ವೀಡಿಯೊ %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex ಸಂಯೋಜನೆ ವಿಫಲವಾಯಿತು, ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ (ಪ್ಲೇಬ್ಯಾಕ್‌ಗೆ ಪರಿಣಾಮವಿಲ್ಲ): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) ಸಂಯೋಜಿಸಿ moov ಗೆ ಸೇರಿಸಲಾಗಿದೆ</string>
+    <string name="fmt_log_meizu_write">Meizu ಸ್ವರೂಪ ಬರೆಯಲಾಗಿದೆ: %1$s (ಚಿತ್ರ %2$dB + ವೀಡಿಯೊ %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia ಸ್ವರೂಪ ಬರೆಯಲಾಗಿದೆ: %1$s (JPEG %2$dB + ಪ್ಯಾಡಿಂಗ್ 1B + ವೀಡಿಯೊ %3$dB + ಬಾಲ %4$dB, UserComment ನಲ್ಲಿ "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO ಸ್ವರೂಪ ಬರೆಯಲಾಗಿದೆ: %1$s (ಚಿತ್ರ %2$dB + ವೀಡಿಯೊ %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo ಆಗಿ ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="fmt_log_parse_google">Google Motion Photo ಆಗಿ ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="fmt_log_parse_honor">Honor Live Photo ಆಗಿ ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu Live Photo ಆಗಿ ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="fmt_log_parse_nubia">Nubia Live Photo ಆಗಿ ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ (nubiaVpfile ಬಾಲ)</string>
+    <string name="fmt_log_parse_oppo">OPPO Live Photo ಆಗಿ ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="fmt_log_parse_vivo">vivo ಎರಡು-ಫೈಲ್ Live Photo ಆಗಿ ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="fmt_log_parse_vivo_single">vivo ಏಕ-ಫೈಲ್ Live Photo ಆಗಿ ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi Live Photo ಆಗಿ ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ (Google ಹೊಂದಿಕೊಳ್ಳುವ)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG ಮತ್ತು MP4 ನ livephoto ID ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo ಏಕ-ಫೈಲ್ Live Photo ಬರೆಯಲಾಗಿದೆ: %1$s (ಚಿತ್ರ %2$dB + ವೀಡಿಯೊ %3$dB (vivoMediaEStream + lpex ಸೇರಿ) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo ಸ್ವರೂಪ ಬರೆಯಲಾಗಿದೆ: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi ಸ್ವರೂಪ ಬರೆಯಲಾಗಿದೆ: %1$s (ಚಿತ್ರ %2$dB + ವೀಡಿಯೊ %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">ಹೊರತೆಗೆ</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

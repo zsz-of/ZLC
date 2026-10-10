@@ -78,4 +78,11 @@
     <string name="settings_crf_hint">Czym myńszo liczba, tym lepszo jakość i wiynkszy zbiōr (sztandard 18)</string>
     <string name="settings_encoder_title">Koder</string>
     <string name="settings_compress_preset_title">Profil kōmprezyje</string>
+    <string name="settings_preset_amber">Bursztynowŏ</string>
+    <string name="settings_preset_forest">Leśnŏ zielōń</string>
+    <string name="settings_preset_ocean">Ôceanowŏ modrŏ</string>
+    <string name="settings_preset_olive">Ôliwkowŏ</string>
+    <string name="settings_preset_sunset">Pōmarańczowŏ ôd zachodu słońca</string>
+    <string name="settings_preset_teal">Turkusowŏ</string>
+    <string name="settings_preset_violet">Fiōłkowŏ</string>
 </resources>

@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Όσο μικρότερη η τιμή, τόσο υψηλότερη η ποιότητα και μεγαλύτερο το μέγεθος (προεπιλογή 18)</string>
     <string name="settings_encoder_title">Κωδικοποιητής</string>
     <string name="settings_compress_preset_title">Προεπιλογή συμπίεσης</string>
-
+    <string name="settings_preset_amber">Κεχριμπάρι</string>
+    <string name="settings_preset_forest">Δάσους πράσινο</string>
+    <string name="settings_preset_ocean">Μπλε του ωκεανού</string>
+    <string name="settings_preset_olive">Ελιά</string>
+    <string name="settings_preset_sunset">Πορτοκαλί του ηλιοβασιλέματος</string>
+    <string name="settings_preset_teal">Κυανό πράσινο</string>
+    <string name="settings_preset_violet">Βιολετί</string>
 </resources>

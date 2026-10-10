@@ -27,4 +27,35 @@
     <string name="fmt_err_vivo_companion_missing">די פֿאַרבונדענע ווידעאָ טעפּע פֿעלט: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">די אַנאַליז פֿון דעם JPG קערפּער איז דורכגעפֿאַלן</string>
     <string name="fmt_err_vivo_companion_invalid">די פֿאַרבונדענע MP4 איז נישט פּאַסיק (קיין ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">דאָס דעקל איז HEIC: דערווייל ווערט קיין פּאָרונג־אידענטיפֿיקאַטאָר נישט געשריבן (די EXIF אין HEIC ליגט אין Exif item און פֿאָדערט אַ באַזונדערע פֿאַרווירקלעכונג); דער ContentIdentifier ווערט נאָר געשריבן אויף דער MOV־זייט</string>
+    <string name="fmt_log_apple_still_found">Apple שטילבילד־צײַטפּונקט %1$d ms געפֿונען (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">קיין Apple שטילבילד־צײַטפּונקט נישט געפֿונען (קיין ליידיקער mebx/elst-edit); ביים אַרויסשרײַבן ווערט דער מיטל פֿון ווידעא געניצט ווי אַ רעזערוו</string>
+    <string name="fmt_log_apple_still_no_carrier">דער שטילבילד־צײַטפּונקט %1$d ms האָט נאָך קיין טרעגער: עכטע Apple־טעלעפֿאָנען ניצן אַ mebx timed metadata־טראַק, וואָס דאָס ווערקצייג שטעלט דערווייל נישט צוזאַמען (MOV still-image-time ווערט געשריבן ווי -1)</string>
+    <string name="fmt_log_apple_write">Apple פֿאָרמאַט געשריבן: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">אַרויסגאַב פֿון צענעמען: %1$s (פֿאָטאָ %2$dB, HDR=%3$s) + %4$s (ווידעא %5$dB)</string>
+    <string name="fmt_log_google_write">Google פֿאָרמאַט געשריבן: %1$s (בילד %2$dB + ווידעא %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor פֿאָרמאַט געשריבן: %1$s (בילד %2$dB + ווידעא %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">דאָס lpex צוזאַמענשטעלן איז דורכגעפֿאַלן און ווערט איבערגעהיפּערט (האָט נישט קיין השפּעה אויף שפּילן): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) איז צוזאַמענגעשטעלט און אַרײַנגעלייגט געוואָרן אין moov</string>
+    <string name="fmt_log_meizu_write">Meizu פֿאָרמאַט געשריבן: %1$s (בילד %2$dB + ווידעא %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia פֿאָרמאַט געשריבן: %1$s (JPEG %2$dB + פֿילונג 1B + ווידעא %3$dB + trailer %4$dB, UserComment אַנטהאַלט "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO פֿאָרמאַט געשריבן: %1$s (בילד %2$dB + ווידעא %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">דערקענט ווי Apple Live Photo</string>
+    <string name="fmt_log_parse_google">דערקענט ווי Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">דערקענט ווי Honor לעבעדיק בילד (MP4 large size + uuid EIS מאַטריקס)</string>
+    <string name="fmt_log_parse_meizu">דערקענט ווי Meizu לעבעדיק בילד</string>
+    <string name="fmt_log_parse_nubia">דערקענט ווי Nubia לעבעדיק בילד (nubiaVpfile trailer)</string>
+    <string name="fmt_log_parse_oppo">דערקענט ווי OPPO לעבעדיק בילד</string>
+    <string name="fmt_log_parse_vivo">דערקענט ווי vivo לעבעדיק בילד מיט צוויי טעקעס</string>
+    <string name="fmt_log_parse_vivo_single">דערקענט ווי vivo לעבעדיק בילד מיט איין טעקע</string>
+    <string name="fmt_log_parse_xiaomi">דערקענט ווי Xiaomi לעבעדיק בילד (Google־קאָמפּאַטיבל)</string>
+    <string name="fmt_log_vivo_id_mismatch">דער livephoto ID פֿון JPG און MP4 שטימען נישט איבער: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo לעבעדיק בילד מיט איין טעקע געשריבן: %1$s (בילד %2$dB + ווידעא %3$dB (מיט vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo פֿאָרמאַט געשריבן: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi פֿאָרמאַט געשריבן: %1$s (בילד %2$dB + ווידעא %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">צענעמען</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

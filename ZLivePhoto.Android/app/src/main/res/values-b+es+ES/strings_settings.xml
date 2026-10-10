@@ -106,5 +106,11 @@
     <string name="settings_crf_hint">Cuanto menor sea el valor, mayor calidad y tamaño (predeterminado: 18)</string>
     <string name="settings_encoder_title">Codificador</string>
     <string name="settings_compress_preset_title">Preajuste de compresión</string>
-
+    <string name="settings_preset_amber">Ámbar</string>
+    <string name="settings_preset_forest">Verde bosque</string>
+    <string name="settings_preset_ocean">Azul océano</string>
+    <string name="settings_preset_olive">Oliva</string>
+    <string name="settings_preset_sunset">Naranja atardecer</string>
+    <string name="settings_preset_teal">Azul turquesa</string>
+    <string name="settings_preset_violet">Violeta</string>
 </resources>

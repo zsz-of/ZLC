@@ -91,4 +91,11 @@
     <string name="settings_crf_hint">Маани канчалык кичине болсо, сапат ошончолук жогору жана көлөм чоң (демейки 18)</string>
     <string name="settings_encoder_title">Коддоочу</string>
     <string name="settings_compress_preset_title">Кысуу пресети</string>
+    <string name="settings_preset_amber">Янтарь</string>
+    <string name="settings_preset_forest">Токой жашылы</string>
+    <string name="settings_preset_ocean">Океан көк</string>
+    <string name="settings_preset_olive">Зайтун</string>
+    <string name="settings_preset_sunset">Күн батышы кызгылт сары</string>
+    <string name="settings_preset_teal">Көгүлтүр жашыл</string>
+    <string name="settings_preset_violet">Кызгылт көк</string>
 </resources>

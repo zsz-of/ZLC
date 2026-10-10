@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Gwerthow le a styr gwalas ughella ha fylennow brasa (dhefowt 18)</string>
     <string name="settings_encoder_title">Kodher</string>
     <string name="settings_compress_preset_title">Preset kompressya</string>
+    <string name="settings_preset_amber">Amber</string>
+    <string name="settings_preset_forest">Gwyrdh koes</string>
+    <string name="settings_preset_ocean">Glas mor</string>
+    <string name="settings_preset_olive">Oliven</string>
+    <string name="settings_preset_sunset">Oranj howlsedhes</string>
+    <string name="settings_preset_teal">Gwyrdhlas</string>
+    <string name="settings_preset_violet">Violet</string>
 </resources>

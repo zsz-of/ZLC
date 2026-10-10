@@ -27,4 +27,35 @@
     <string name="fmt_err_vivo_companion_missing">ʻAʻole ka waihona wikiō pili: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Ua hāʻule ka nānā ʻana i ke kino JPG</string>
     <string name="fmt_err_vivo_companion_invalid">ʻAʻole kūpono ka MP4 pili (ʻaʻohe ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">He HEIC ke kiʻi ʻaoʻao mua: ʻaʻole e kākau i ka hōʻailona hui i kēia manawa (aia ka EXIF o HEIC i loko o kahi Exif item, pono e hoʻokō ʻokoʻa), e kākau wale ʻia ka ContentIdentifier ma ka ʻaoʻao MOV</string>
+    <string name="fmt_log_apple_still_found">Ua nānā ʻia ka manawa kiʻi paʻa Apple %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">ʻAʻole i nānā ʻia ka manawa kiʻi paʻa Apple (ʻaʻohe hoʻoponopono mebx/elst hakahaka), e hoʻohana ʻia ke kiko waena o ka wikiō i ka hoʻopuka ʻana</string>
+    <string name="fmt_log_apple_still_no_carrier">ʻAʻohe mea lawe no ka manawa kiʻi paʻa %1$d ms: hoʻohana ʻo Apple maoli i kahi ala ʻikepili manawa mebx, ʻaʻole e hui pū ʻia e kēia mea hana i kēia manawa (kākau ʻia ka still-image-time o MOV ma -1)</string>
+    <string name="fmt_log_apple_write">Kākau ʻia ke ʻano Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Puka wehewehe: %1$s (kiʻi %2$dB, HDR=%3$s) + %4$s (wikiō %5$dB)</string>
+    <string name="fmt_log_google_write">Kākau ʻia ke ʻano Google: %1$s (kiʻi %2$dB + wikiō %3$dB)</string>
+    <string name="fmt_log_honor_write">Kākau ʻia ke ʻano Honor: %1$s (kiʻi %2$dB + wikiō %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Hāʻule ka hui pū ʻana i ka lpex, lele ʻia (ʻaʻole pili i ka pāʻani ʻana): %1$s</string>
+    <string name="fmt_log_lpex_ok">Ua hui pū ʻia ka pahu lpex (LivePhotoExtension) a hoʻokomo ʻia i loko o moov</string>
+    <string name="fmt_log_meizu_write">Kākau ʻia ke ʻano Meizu: %1$s (kiʻi %2$dB + wikiō %3$dB)</string>
+    <string name="fmt_log_nubia_write">Kākau ʻia ke ʻano Nubia: %1$s (JPEG %2$dB + hoʻopiha 1B + wikiō %3$dB + hope %4$dB, loaʻa "%5$s" i ka UserComment)</string>
+    <string name="fmt_log_oppo_write">Kākau ʻia ke ʻano OPPO: %1$s (kiʻi %2$dB + wikiō %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Nānā ʻia ma ke ʻano he Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Nānā ʻia ma ke ʻano he Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Nānā ʻia ma ke ʻano he Honor Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Nānā ʻia ma ke ʻano he Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">Nānā ʻia ma ke ʻano he Nubia Live Photo (hope nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Nānā ʻia ma ke ʻano he OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">Nānā ʻia ma ke ʻano he vivo Live Photo ʻelua waihona</string>
+    <string name="fmt_log_parse_vivo_single">Nānā ʻia ma ke ʻano he vivo Live Photo hoʻokahi waihona</string>
+    <string name="fmt_log_parse_xiaomi">Nānā ʻia ma ke ʻano he Xiaomi Live Photo (kūlike Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">ʻAʻole like ka livephoto ID o JPG a me MP4: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Kākau ʻia ka vivo Live Photo hoʻokahi waihona: %1$s (kiʻi %2$dB + wikiō %3$dB (me vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Kākau ʻia ke ʻano vivo: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Kākau ʻia ke ʻano Xiaomi: %1$s (kiʻi %2$dB + wikiō %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Wehe</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

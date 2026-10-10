@@ -94,4 +94,11 @@
     <string name="screen_date_yesterday">Hieraŭ</string>
     <string name="screen_date_this_year">%1$d/%2$d</string>
     <string name="screen_date_other_year">%1$d-%2$d-%3$d</string>
+    <string name="screen_album_unnamed">Sennoma</string>
+    <string name="screen_eta_minutes">%1$d min %2$s s</string>
+    <string name="screen_eta_seconds">%1$d s</string>
+    <string name="screen_transcode_eta">Proksimume %1$s restantaj</string>
+    <string name="screen_transcode_frames">%1$d/%2$d kadroj</string>
+    <string name="screen_transcode_in_progress">Transkodado · %1$d kadroj prilaboritaj</string>
+    <string name="screen_transcode_progress">Transkodado %1$d%%</string>
 </resources>

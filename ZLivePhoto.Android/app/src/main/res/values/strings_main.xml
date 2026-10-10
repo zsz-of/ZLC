@@ -158,4 +158,8 @@
     <string name="main_export_source_dir_unavailable">源文件目录不可用：%1$s</string>
     <string name="main_export_replace_failed">替换源文件失败：%1$s</string>
     <string name="main_export_replace_failed_bare">替换源文件失败</string>
+
+    <!-- MainActivity 里 IOException 文案（导入/批处理失败原因） -->
+    <string name="main_status_read_failed">无法读取所选文件</string>
+    <string name="main_status_source_missing">源文件不存在或不可读</string>
 </resources>

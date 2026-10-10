@@ -79,5 +79,29 @@
     <string name="conv_reminder_dont_remind">Ur mmal ara tikelt-nniḍen</string>
     <string name="conv_reminder_confirm_ok">Fhimeɣ</string>
     <string name="conv_reminder_uninstall">Kkes asnas</string>
-
+    <string name="conv_err_exif_bad_endian">Tamatarut n umuɣ n byte TIFF d tarameɣtut</string>
+    <string name="conv_err_exif_inline_type">Anaw inline ur yettwaseqbal ara %1$d</string>
+    <string name="conv_err_exif_type">Anaw TIFF ur yettwaseqbal ara %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI ur yettwafen ara (afaylu yezmer ad yexṣer)</string>
+    <string name="conv_err_jpeg_no_soi">JPEG d arameɣtu (SOI yuḍen)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG yuḍen-it usegzi SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">Iɣiriren n usegzi ur mwafaqen ara @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Teɣzi n usegzi d tarameɣtut @%1$d</string>
+    <string name="conv_err_json_type">Anaw n wazal JSON ur yettwaseqbal ara: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Tiddi n ukaram ftyp d tarameɣtut</string>
+    <string name="conv_err_mp4_no_ftyp">Akaram ftyp yuḍen</string>
+    <string name="conv_err_mp4_no_moov">MP4 yuḍen-it ukaram moov</string>
+    <string name="conv_log_sanitize_dropped_prefix">Tiraren izegzaɣen ttwakkes (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Asfaḍ n tiraren izegzaɣen yecceḍ (%1$s); agmuḍ yettwasuffeɣ am akken</string>
+    <string name="conv_log_sanitize_no_video_track">Tavidyut n unekcum ur tesεi ara tiraren n tvidyut yettwazemren; asfaḍ n tiraren izegzaɣen yeɣli</string>
+    <string name="conv_log_sanitize_normalized">Tamatarut n wakaram tettwanormalizat ɣer uẓayer n byte (war anɣal, isefka n telqem ur ttwabeddlen ara)</string>
+    <string name="conv_log_sanitize_track_add_failed">Tirare n tvidyut ur tezmir ara ad tettwarna ɣer remuxer (%1$s); asfaḍ n tiraren izegzaɣen yeɣli</string>
+    <string name="conv_reason_10bit_h265">Tavidyut d H.265 s %1$d bit (Live Photo HDR): deg kra n yilugan albaum ur yezmir ara ad tt-issufeɣ</string>
+    <string name="conv_reason_audio_not_aac">Tirare n ṣṣut tettwaked s %1$s, mačči s AAC (asatal n Live Photo yebɣa AAC; deg Apple tuget d PCM)</string>
+    <string name="conv_reason_codec_unsupported">Takudt n tvidyut %1$s mačči d H.264/H.265, anaw ameslay n Android</string>
+    <string name="conv_reason_dolby_vision">Tavidyut d Dolby Vision: tuget n yilbumen Android ur t-yesεin ara</string>
+    <string name="conv_reason_hdr">Tavidyut d HDR (tayulin n usiweḍ %1$s): deg kra n yilugan albaum yesskanay tibraḍ neɣ agdil aberkan</string>
+    <string name="conv_reason_hev1">H.265 yettwacreḍ am hev1 (kra n yilugan ssnen hvc1 w’id)</string>
+    <string name="conv_reason_mirror_matrix">Tavidyut tesεa tafurkit n ubeddel n tameẓẓi (tafurkit n tzewwagt MP4 ur tezmir ara ad d-tessken tameẓẓi)</string>
+    <string name="conv_tag_sanitize">Asfaḍ</string>
 </resources>

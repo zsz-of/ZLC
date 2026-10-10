@@ -26,4 +26,35 @@
     <string name="fmt_err_vivo_companion_missing">Ifayela levidiyo elihambisana nalo alikho: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Ukuhlaziya umzimba we-JPG kwehlulekile</string>
     <string name="fmt_err_vivo_companion_invalid">I-MP4 ehambisana nayo ayivumelekile (ayikho i-ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">Isithombe esingaphambili yi-HEIC: uphawu lokubhanqa alukabhalwa (i-EXIF ye-HEIC ise-Exif item futhi kudinga ukusebenza okwehlukile); uhlangothi lwe-MOV kuphela olubhala i-ContentIdentifier</string>
+    <string name="fmt_log_apple_still_found">Isikhathi sefreymu emile ye-Apple sihlaziyiwe: %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Isikhathi sefreymu emile ye-Apple asihlaziywanga (akukho mebx/elst edit engenalutho); lapho kukhishwa kusetshenziswa indawo emaphakathi yevidiyo njengendlela yokugcina</string>
+    <string name="fmt_log_apple_still_no_carrier">Isikhathi sefreymu emile esingu-%1$d ms asinamthwali okwamanje: i-Apple yangempela isebenzisa itraki le-mebx timed metadata, leli thuluzi alikakuhlanganisi (i-still-image-time ye-MOV ibhalwa ngu -1)</string>
+    <string name="fmt_log_apple_write">Kubhalwe ifomethi ye-Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Okukhishiwe: %1$s (isithombe %2$dB, HDR=%3$s) + %4$s (ividiyo %5$dB)</string>
+    <string name="fmt_log_google_write">Kubhalwe ifomethi ye-Google: %1$s (isithombe %2$dB + ividiyo %3$dB)</string>
+    <string name="fmt_log_honor_write">Kubhalwe ifomethi ye-Honor: %1$s (isithombe %2$dB + ividiyo %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Ukuhlanganisa i-lpex kwehlulekile, kweqiwe (akuthinti ukudlala): %1$s</string>
+    <string name="fmt_log_lpex_ok">i-lpex box (LivePhotoExtension) ihlanganisiwe yafakwa ku-moov</string>
+    <string name="fmt_log_meizu_write">Kubhalwe ifomethi ye-Meizu: %1$s (isithombe %2$dB + ividiyo %3$dB)</string>
+    <string name="fmt_log_nubia_write">Kubhalwe ifomethi ye-Nubia: %1$s (JPEG %2$dB + ukugcwalisa 1B + ividiyo %3$dB + umsila %4$dB, i-UserComment iqukethe “%5$s”)</string>
+    <string name="fmt_log_oppo_write">Kubhalwe ifomethi ye-OPPO: %1$s (isithombe %2$dB + ividiyo %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Kuhlaziywa njenge-Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Kuhlaziywa njenge-Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Kuhlaziywa njenge-Honor Motion Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Kuhlaziywa njenge-Meizu Motion Photo</string>
+    <string name="fmt_log_parse_nubia">Kuhlaziywa njenge-Nubia Motion Photo (umsila we-nubiaVpfile)</string>
+    <string name="fmt_log_parse_oppo">Kuhlaziywa njenge-OPPO Motion Photo</string>
+    <string name="fmt_log_parse_vivo">Kuhlaziywa njenge-vivo Motion Photo yamafayela amabili</string>
+    <string name="fmt_log_parse_vivo_single">Kuhlaziywa njenge-vivo Live Photo yefayela elilodwa</string>
+    <string name="fmt_log_parse_xiaomi">Kuhlaziywa njenge-Xiaomi Motion Photo (ihambisana ne-Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">I-ID ye-livephoto ye-JPG ne-MP4 ayifani: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Kubhalwe i-vivo Live Photo yefayela elilodwa: %1$s (isithombe %2$dB + ividiyo %3$dB (ene-vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Kubhalwe ifomethi ye-vivo: %1$s.jpg + %1$s.mp4 (ID ye-livephoto: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Kubhalwe ifomethi ye-Xiaomi: %1$s (isithombe %2$dB + ividiyo %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Khipha</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

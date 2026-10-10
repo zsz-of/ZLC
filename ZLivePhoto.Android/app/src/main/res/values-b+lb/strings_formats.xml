@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">D\'Begleedvideodatei feelt: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Den JPG-Inhalt konnt net analyséiert ginn</string>
     <string name="fmt_err_vivo_companion_invalid">De Begleed-MP4 ass ongülteg (d\'ftyp-Box feelt)</string>
+    <string name="fmt_log_apple_heic_no_pair">D’Titelbild ass HEIC: et gëtt nach keng Pairing-Kennung geschriwwen (d’EXIF an HEIC läit am Exif item a verlaangt eng eege Implementéierung); den ContentIdentifier gëtt nëmmen op der MOV-Säit geschriwwen</string>
+    <string name="fmt_log_apple_still_found">Apple-Stillbild-Zäitpunkt %1$d ms fonnt (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Keen Apple-Stillbild-Zäitpunkt fonnt (kee eidelen mebx/elst-edit); beim Ausginn gëtt d’Mëtt vum Video als Reserv benotzt</string>
+    <string name="fmt_log_apple_still_no_carrier">Den Stillbild-Zäitpunkt %1$d ms huet nach keen Dréier: richteg Apple-Apparater benotzen eng mebx timed metadata-Spur, déi dëst Instrument nach net zesummesetzt (MOV still-image-time gëtt als -1 geschriwwen)</string>
+    <string name="fmt_log_apple_write">Apple-Format geschriwwen: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Ausginn vum Ausenanerhuelen: %1$s (Foto %2$dB, HDR=%3$s) + %4$s (Video %5$dB)</string>
+    <string name="fmt_log_google_write">Google-Format geschriwwen: %1$s (Bild %2$dB + Video %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor-Format geschriwwen: %1$s (Bild %2$dB + Video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">D’lpex-Zesummesetze ass feelgeschloen a gëtt iwwersprongen (huet keen Afloss op d’Ofspillen): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) gouf zesummegesat an an d’moov agesat</string>
+    <string name="fmt_log_meizu_write">Meizu-Format geschriwwen: %1$s (Bild %2$dB + Video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia-Format geschriwwen: %1$s (JPEG %2$dB + Füllung 1B + Video %3$dB + trailer %4$dB, UserComment enthält "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO-Format geschriwwen: %1$s (Bild %2$dB + Video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Als Apple Live Photo erkannt</string>
+    <string name="fmt_log_parse_google">Als Google Motion Photo erkannt</string>
+    <string name="fmt_log_parse_honor">Als Honor-Live-Foto erkannt (MP4 large size + uuid EIS-Matrix)</string>
+    <string name="fmt_log_parse_meizu">Als Meizu-Live-Foto erkannt</string>
+    <string name="fmt_log_parse_nubia">Als Nubia-Live-Foto erkannt (nubiaVpfile-trailer)</string>
+    <string name="fmt_log_parse_oppo">Als OPPO-Live-Foto erkannt</string>
+    <string name="fmt_log_parse_vivo">Als vivo-Live-Foto mat zwou Fichieren erkannt</string>
+    <string name="fmt_log_parse_vivo_single">Als vivo-Live-Foto mat engem Fichier erkannt</string>
+    <string name="fmt_log_parse_xiaomi">Als Xiaomi-Live-Foto erkannt (Google-kompatibel)</string>
+    <string name="fmt_log_vivo_id_mismatch">D’livephoto-ID vum JPG an MP4 stëmmen net iwwereneen: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo-Live-Foto mat engem Fichier geschriwwen: %1$s (Bild %2$dB + Video %3$dB (mat vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo-Format geschriwwen: %1$s.jpg + %1$s.mp4 (livephoto-ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi-Format geschriwwen: %1$s (Bild %2$dB + Video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Ausenanerhuelen</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

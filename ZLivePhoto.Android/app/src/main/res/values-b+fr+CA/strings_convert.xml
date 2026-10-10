@@ -79,5 +79,29 @@
     <string name="conv_reminder_dont_remind">Ne plus afficher</string>
     <string name="conv_reminder_confirm_ok">Compris</string>
     <string name="conv_reminder_uninstall">Désinstaller</string>
-
+    <string name="conv_err_exif_bad_endian">Marqueur d’ordre d’octets TIFF non valide</string>
+    <string name="conv_err_exif_inline_type">Type intégré %1$d non pris en charge</string>
+    <string name="conv_err_exif_type">Type de TIFF %1$d non pris en charge</string>
+    <string name="conv_err_jpeg_no_eoi">EOI introuvable (fichier peut-être endommagé)</string>
+    <string name="conv_err_jpeg_no_soi">Ce n’est pas un JPEG valide (marqueur SOI manquant)</string>
+    <string name="conv_err_jpeg_no_sos">Segment SOS manquant dans le JPEG</string>
+    <string name="conv_err_jpeg_seg_boundary">Frontière de segment décalée @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Longueur de segment illégale @%1$d</string>
+    <string name="conv_err_json_type">Type de valeur JSON non pris en charge : %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Taille de la boîte ftyp illégale</string>
+    <string name="conv_err_mp4_no_ftyp">Boîte ftyp manquante</string>
+    <string name="conv_err_mp4_no_moov">Boîte moov manquante dans le MP4</string>
+    <string name="conv_log_sanitize_dropped_prefix">Pistes supplémentaires retirées (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Échec de l’assainissement des pistes supplémentaires (%1$s) ; fichier produit tel quel</string>
+    <string name="conv_log_sanitize_no_video_track">La vidéo d’entrée n’a aucune piste vidéo exploitable : assainissement des pistes supplémentaires ignoré</string>
+    <string name="conv_log_sanitize_normalized">Signature du conteneur normalisée au niveau de l’octet (sans recopie, données d’échantillons intactes)</string>
+    <string name="conv_log_sanitize_track_add_failed">Impossible d’ajouter la piste vidéo au remultiplexeur (%1$s) : assainissement des pistes supplémentaires ignoré</string>
+    <string name="conv_reason_10bit_h265">Vidéo en H.265 %1$d bits (Live Photo HDR) : la galerie de certains appareils ne peut pas la décoder</string>
+    <string name="conv_reason_audio_not_aac">Piste audio encodée en %1$s et non en AAC (la spécification des photos animées impose l’AAC ; Apple utilise souvent du PCM)</string>
+    <string name="conv_reason_codec_unsupported">Le codec vidéo %1$s n’est pas un H.264/H.265 compatible avec Android</string>
+    <string name="conv_reason_dolby_vision">Vidéo en Dolby Vision : la galerie Android ne la prend généralement pas en charge</string>
+    <string name="conv_reason_hdr">Vidéo en HDR (caractéristique de transfert %1$s) : la galerie de certains appareils affiche des artéfacts ou un écran noir</string>
+    <string name="conv_reason_hev1">H.265 marqué hev1 (certains appareils n’acceptent que hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Vidéo avec matrice de transformation miroir (la matrice de rotation MP4 ne peut pas exprimer un miroir)</string>
+    <string name="conv_tag_sanitize">Assainissement</string>
 </resources>

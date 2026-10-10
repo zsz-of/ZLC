@@ -78,4 +78,11 @@
     <string name="screen_date_yesterday">Кечээ</string>
     <string name="screen_date_this_year">%2$d.%1$d</string>
     <string name="screen_date_other_year">%2$d.%1$d.%3$d</string>
+    <string name="screen_album_unnamed">Аталышы жок</string>
+    <string name="screen_eta_minutes">%1$d мүн %2$s сек</string>
+    <string name="screen_eta_seconds">%1$d сек</string>
+    <string name="screen_transcode_eta">Болжол менен %1$s калды</string>
+    <string name="screen_transcode_frames">%1$d/%2$d кадр</string>
+    <string name="screen_transcode_in_progress">Транскод · %1$d кадр иштетилди</string>
+    <string name="screen_transcode_progress">Транскод %1$d%%</string>
 </resources>

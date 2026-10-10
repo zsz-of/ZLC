@@ -129,4 +129,6 @@
     <string name="main_export_source_dir_unavailable">源檔之夾不可用：%1$s</string>
     <string name="main_export_replace_failed">代源檔不成：%1$s</string>
     <string name="main_export_replace_failed_bare">代源檔不成</string>
+    <string name="main_status_read_failed">不能讀所選之檔</string>
+    <string name="main_status_source_missing">源檔不存或不可讀</string>
 </resources>

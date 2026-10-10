@@ -159,4 +159,6 @@
     <string name="main_export_source_dir_unavailable">Ôryginalny katalog niy je dostympny: %1$s</string>
     <string name="main_export_replace_failed">Niy idzie zastōmpić ôryginalnego zbiōru: %1$s</string>
     <string name="main_export_replace_failed_bare">Niy idzie zastōmpić ôryginalnego zbiōru</string>
+    <string name="main_status_read_failed">Niy idzie przeczytać wybranego zbioru</string>
+    <string name="main_status_source_missing">Zdrzōdłowy zbiōr niy istnieje abo niy idzie go przeczytać</string>
 </resources>

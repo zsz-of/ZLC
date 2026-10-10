@@ -82,5 +82,29 @@
     <string name="conv_reminder_dont_remind">مزید نہ دکھائیں</string>
     <string name="conv_reminder_confirm_ok">سمجھ گیا</string>
     <string name="conv_reminder_uninstall">ان انسٹال کریں</string>
-
+    <string name="conv_err_exif_bad_endian">TIFF بائٹ آرڈر مارکر غلط ہے</string>
+    <string name="conv_err_exif_inline_type">اِن لائن قسم تعاون یافتہ نہیں %1$d</string>
+    <string name="conv_err_exif_type">TIFF قسم تعاون یافتہ نہیں %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI نہیں ملا (فائل خراب ہو سکتی ہے)</string>
+    <string name="conv_err_jpeg_no_soi">درست JPEG نہیں (SOI موجود نہیں)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG میں SOS سیگمنٹ موجود نہیں</string>
+    <string name="conv_err_jpeg_seg_boundary">سیگمنٹ کی حد بے ترتیب @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">سیگمنٹ کی لمبائی غلط @%1$d</string>
+    <string name="conv_err_json_type">JSON ویلیو کی قسم تعاون یافتہ نہیں: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box کا سائز غلط ہے</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box موجود نہیں</string>
+    <string name="conv_err_mp4_no_moov">MP4 میں moov box موجود نہیں</string>
+    <string name="conv_log_sanitize_dropped_prefix">اضافی ٹریکس ہٹا دیے گئے (%1$s)</string>
+    <string name="conv_log_sanitize_exception">اضافی ٹریکس کی صفائی ناکام رہی (%1$s)، اصل شکل میں محفوظ کیا گیا</string>
+    <string name="conv_log_sanitize_no_video_track">اِن پٹ ویڈیو میں کوئی قابلِ استعمال ویڈیو ٹریک نہیں، اضافی ٹریکس کی صفائی چھوڑ دی گئی</string>
+    <string name="conv_log_sanitize_normalized">کنٹینر برانڈ بائٹ سطح پر معمول کے مطابق کیا گیا (زیرو کاپی، نمونہ ڈیٹا میں تبدیلی نہیں)</string>
+    <string name="conv_log_sanitize_track_add_failed">ویڈیو ٹریک دوبارہ پیکر میں شامل نہیں ہو سکا (%1$s)، اضافی ٹریکس کی صفائی چھوڑ دی گئی</string>
+    <string name="conv_reason_10bit_h265">ویڈیو %1$dbit H.265 ہے (HDR لائیو)، کچھ آلات کی گیلری ڈیکوڈ نہیں کر سکتی</string>
+    <string name="conv_reason_audio_not_aac">آڈیو ٹریک انکوڈنگ %1$s ہے، AAC نہیں (لائیو فوٹو معیار کے مطابق AAC ضروری ہے، Apple عموماً PCM رکھتا ہے)</string>
+    <string name="conv_reason_codec_unsupported">ویڈیو انکوڈنگ %1$s ہے، جو Android میں عام H.264/H.265 نہیں</string>
+    <string name="conv_reason_dolby_vision">ویڈیو Dolby Vision ہے، جسے Android گیلریاں عموماً تعاون نہیں کرتیں</string>
+    <string name="conv_reason_hdr">ویڈیو HDR ہے (%1$s ٹرانسفر خصوصیات)، کچھ آلات کی گیلری میں تصویر خراب یا اسکرین کالی دکھائی دیتی ہے</string>
+    <string name="conv_reason_hev1">H.265 کو hev1 کے طور پر نشان زد کیا گیا ہے (کچھ آلات صرف hvc1 قبول کرتے ہیں)</string>
+    <string name="conv_reason_mirror_matrix">ویڈیو میں آئینہ ٹرانسفارم میٹرکس موجود ہے (MP4 روٹیشن میٹرکس آئینہ ظاہر نہیں کر سکتا)</string>
+    <string name="conv_tag_sanitize">صفائی</string>
 </resources>

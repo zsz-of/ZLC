@@ -11,6 +11,11 @@ import org.junit.Test
  * 这些条件（10bit H.265、HDR PQ/HLG、杜比视界、`hev1`、PCM 音轨、镜像矩阵、非 H.264/H.265）
  * 是 `-c copy` 改不动的，必须靠「重新编码」；判定误报会让用户白白等一次重编码，
  * 漏报则会让产物继续在真机上「相册能识别、长按不播放」。
+ *
+ * 文案断言说明：`reasons` 已改为按系统语言取资源，本测试是**纯 JVM 单测**、没有 Android
+ * Context，`Mp4Util.videoCompat` 因此用 `CoreText.ofOr` 保留了英文兜底关键词 —— 断言只认
+ * 这些与语言无关的技术词（10bit / HLG / PQ / hev1 / Dolby Vision / mirror），
+ * 不要改成依赖某个具体语言的完整句子。
  */
 class VideoCompatTest {
 
@@ -121,7 +126,7 @@ class VideoCompatTest {
     @Test
     fun compat_flagsDolbyVision() {
         val compat = Mp4Util.videoCompat(mp4(videTrak("hvc1", arrayOf(hvcC(0), box("dvcC", ByteArray(24))))))
-        assertTrue("杜比视界必须判定为需要重新编码：${compat.reasons}", compat.reasons.any { it.contains("杜比视界") })
+        assertTrue("杜比视界必须判定为需要重新编码：${compat.reasons}", compat.reasons.any { it.contains("Dolby Vision") })
     }
 
     @Test
@@ -141,10 +146,10 @@ class VideoCompatTest {
     @Test
     fun compat_flagsMirrorMatrix() {
         val mirror = Mp4Util.videoCompat(mp4(videTrak("avc1", arrayOf(box("avcC", ByteArray(4))), mirror = true)))
-        assertTrue("镜像矩阵必须判定为需要重新编码：${mirror.reasons}", mirror.reasons.any { it.contains("镜像") })
+        assertTrue("镜像矩阵必须判定为需要重新编码：${mirror.reasons}", mirror.reasons.any { it.contains("mirror") })
         // 镜像 + 正常旋转矩阵（无镜像）不能误报
         val plain = Mp4Util.videoCompat(mp4(videTrak("avc1", arrayOf(box("avcC", ByteArray(4))), mirror = false)))
-        assertFalse("非镜像矩阵不应误报：${plain.reasons}", plain.reasons.any { it.contains("镜像") })
+        assertFalse("非镜像矩阵不应误报：${plain.reasons}", plain.reasons.any { it.contains("mirror") })
     }
 
     @Test

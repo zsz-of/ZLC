@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">Bideo-fitxategi lagungarria falta da: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Ezin izan da JPGaren gorputza aztertu</string>
     <string name="fmt_err_vivo_companion_invalid">Lagungarria den MP4a baliogabea da (ftyp kaxa falta da)</string>
+    <string name="fmt_log_apple_heic_no_pair">Azala HEIC da: oraingoz ez da parekatze-marka idatziko (HEIC-en EXIF-a Exif item batean dago, bereiz ezarri behar da); ContentIdentifier MOV aldean baino ez da idazten</string>
+    <string name="fmt_log_apple_still_found">Apple argazki geldiaren unea %1$d ms analizatu da (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Ez da Apple argazki geldiaren unerik analizatu (mebx/elst edizio hutsik gabe); esportatzean bideoaren erdia erabiltzen da</string>
+    <string name="fmt_log_apple_still_no_carrier">Apple argazki geldiaren %1$d ms uneak ez du oraindik euskarririk: Apple errealak mebx denbora-metadatuen pista bat erabiltzen du, eta tresna honek oraingoz ez du sintetizatzen (MOV-en still-image-time -1 gisa idazten da)</string>
+    <string name="fmt_log_apple_write">Apple formatua idazten: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Bereizte-irteera: %1$s (argazkia %2$dB, HDR=%3$s) + %4$s (bideoa %5$dB)</string>
+    <string name="fmt_log_google_write">Google formatua idazten: %1$s (irudia %2$dB + bideoa %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor formatua idazten: %1$s (irudia %2$dB + bideoa %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex sintesiak huts egin du, saltatu da (ez du erreprodukzioa eragozten): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) sintetizatu eta moov-era txertatu da</string>
+    <string name="fmt_log_meizu_write">Meizu formatua idazten: %1$s (irudia %2$dB + bideoa %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia formatua idazten: %1$s (JPEG %2$dB + 1B betegarri + bideoa %3$dB + traila %4$dB, UserComment-ek "%5$s" du)</string>
+    <string name="fmt_log_oppo_write">OPPO formatua idazten: %1$s (irudia %2$dB + bideoa %3$dB + traila %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo gisa analizatzen</string>
+    <string name="fmt_log_parse_google">Google Motion Photo gisa analizatzen</string>
+    <string name="fmt_log_parse_honor">Honor Live Photo gisa analizatzen (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu Live Photo gisa analizatzen</string>
+    <string name="fmt_log_parse_nubia">Nubia Live Photo gisa analizatzen (nubiaVpfile traila)</string>
+    <string name="fmt_log_parse_oppo">OPPO Live Photo gisa analizatzen</string>
+    <string name="fmt_log_parse_vivo">vivo Live Photo bi fitxategiko gisa analizatzen</string>
+    <string name="fmt_log_parse_vivo_single">vivo Live Photo fitxategi bakarreko gisa analizatzen</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi Live Photo gisa analizatzen (Google-rekin bateragarria)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG eta MP4ren livephoto IDa ez datoz bat: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo Live Photo fitxategi bakarrekoa idazten: %1$s (irudia %2$dB + bideoa %3$dB (vivoMediaEStream + lpex dituena) + traila %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo formatua idazten: %1$s.jpg + %1$s.mp4 (livephoto IDa: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi formatua idazten: %1$s (irudia %2$dB + bideoa %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Bereizi</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

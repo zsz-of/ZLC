@@ -1,6 +1,7 @@
 package com.zsz.zlivephoto.core.formats
 
 import com.zsz.zlivephoto.R
+import com.zsz.zlivephoto.core.CoreText
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
 import com.zsz.zlivephoto.core.XmpTemplate
@@ -22,7 +23,7 @@ internal class MeizuPlugin : FormatPlugin() {
     }
 
     override fun read(path: String, log: (String, String, String) -> Unit): LivePhotoAsset {
-        log("info", "按魅族动态照片解析", "魅族")
+        log("info", CoreText.of(R.string.fmt_log_parse_meizu), CoreText.of(R.string.fmt_tag_meizu))
         val asset = EmbeddedReader.readEmbedded(path, name, log)
 
         // 保留 MZCamera 私有字段（同格式转出时复用，避免丢失厂商元数据）
@@ -59,7 +60,11 @@ internal class MeizuPlugin : FormatPlugin() {
 
         val outPath = File(outDir, "$stem.jpg").path
         writeBytes(outPath, output)
-        log("info", "写出魅族格式：${File(outPath).name}（图像 ${primary.size}B + 视频 ${video.size}B）", "魅族")
+        log(
+            "info",
+            CoreText.of(R.string.fmt_log_meizu_write, File(outPath).name, primary.size, video.size),
+            CoreText.of(R.string.fmt_tag_meizu)
+        )
         return mutableListOf(outPath)
     }
 }

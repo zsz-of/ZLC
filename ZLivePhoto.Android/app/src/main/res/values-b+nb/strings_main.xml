@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">Kildefilens mappe er utilgjengelig: %1$s</string>
     <string name="main_export_replace_failed">Kunne ikke erstatte kildefilen: %1$s</string>
     <string name="main_export_replace_failed_bare">Kunne ikke erstatte kildefilen</string>
+    <string name="main_status_read_failed">Kunne ikke lese den valgte filen</string>
+    <string name="main_status_source_missing">Kildefilen finnes ikke eller kan ikke leses</string>
 </resources>

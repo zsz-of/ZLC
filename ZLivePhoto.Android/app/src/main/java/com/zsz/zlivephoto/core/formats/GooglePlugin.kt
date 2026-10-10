@@ -2,6 +2,7 @@ package com.zsz.zlivephoto.core.formats
 
 import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.BinaryUtils
+import com.zsz.zlivephoto.core.CoreText
 import com.zsz.zlivephoto.core.JpegUtil
 import com.zsz.zlivephoto.core.LivePhotoAsset
 import com.zsz.zlivephoto.core.XmpTemplate
@@ -57,7 +58,7 @@ internal class GooglePlugin : FormatPlugin() {
     }
 
     override fun read(path: String, log: (String, String, String) -> Unit): LivePhotoAsset {
-        log("info", "按 Google Motion Photo 解析", "Google")
+        log("info", CoreText.of(R.string.fmt_log_parse_google), "Google")
         return EmbeddedReader.readEmbedded(path, name, log)
     }
 
@@ -85,7 +86,7 @@ internal class GooglePlugin : FormatPlugin() {
 
         val outPath = File(outDir, "$stemFinal.jpg").path
         writeBytes(outPath, output)
-        log("info", "写出 Google 格式：${File(outPath).name}（图像 ${primary.size}B + 视频 ${video.size}B）", "Google")
+        log("info", CoreText.of(R.string.fmt_log_google_write, File(outPath).name, primary.size, video.size), "Google")
         return mutableListOf(outPath)
     }
 }

@@ -170,4 +170,6 @@
     <string name="main_export_source_dir_unavailable">اصل فائل کا فولڈر دستیاب نہیں: %1$s</string>
     <string name="main_export_replace_failed">اصل فائل تبدیل کرنا ناکام: %1$s</string>
     <string name="main_export_replace_failed_bare">اصل فائل تبدیل کرنا ناکام</string>
+    <string name="main_status_read_failed">منتخب فائل پڑھی نہیں جا سکتی</string>
+    <string name="main_status_source_missing">ماخذ فائل موجود نہیں یا پڑھی نہیں جا سکتی</string>
 </resources>

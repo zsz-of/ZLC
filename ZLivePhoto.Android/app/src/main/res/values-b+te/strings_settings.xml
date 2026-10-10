@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">తక్కువ విలువలు అధిక నాణ్యత మరియు పెద్ద ఫైళ్లు అని అర్థం (డిఫాల్ట్ 18)</string>
     <string name="settings_encoder_title">ఎన్కోడర్</string>
     <string name="settings_compress_preset_title">కుదింపు ప్రీసెట్</string>
+    <string name="settings_preset_amber">అంబర్</string>
+    <string name="settings_preset_forest">అడవి ఆకుపచ్చ</string>
+    <string name="settings_preset_ocean">సముద్ర నీలం</string>
+    <string name="settings_preset_olive">ఆలివ్</string>
+    <string name="settings_preset_sunset">సూర్యాస్తమయ నారింజ</string>
+    <string name="settings_preset_teal">టీల్</string>
+    <string name="settings_preset_violet">ఊదా</string>
 </resources>

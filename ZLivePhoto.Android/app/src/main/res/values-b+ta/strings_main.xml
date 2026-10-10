@@ -144,4 +144,6 @@
     <string name="main_export_source_dir_unavailable">மூலக் கோப்புறை கிடைக்கவில்லை: %1$s</string>
     <string name="main_export_replace_failed">மூலக் கோப்பை மாற்ற முடியவில்லை: %1$s</string>
     <string name="main_export_replace_failed_bare">மூலக் கோப்பை மாற்ற முடியவில்லை</string>
+    <string name="main_status_read_failed">தேர்ந்தெடுத்த கோப்பைப் படிக்க முடியவில்லை</string>
+    <string name="main_status_source_missing">மூலக் கோப்பு இல்லை அல்லது படிக்க முடியாது</string>
 </resources>

@@ -102,5 +102,11 @@
     <string name="settings_crf_hint">數值越小畫質越高、體積越大（預設 18）</string>
     <string name="settings_encoder_title">編碼器</string>
     <string name="settings_compress_preset_title">壓縮預設</string>
-
+    <string name="settings_preset_amber">琥珀</string>
+    <string name="settings_preset_forest">森綠</string>
+    <string name="settings_preset_ocean">海洋藍</string>
+    <string name="settings_preset_olive">橄欖</string>
+    <string name="settings_preset_sunset">落日橙</string>
+    <string name="settings_preset_teal">青碧</string>
+    <string name="settings_preset_violet">紫羅蘭</string>
 </resources>

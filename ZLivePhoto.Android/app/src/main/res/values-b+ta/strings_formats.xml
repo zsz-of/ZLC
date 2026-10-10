@@ -31,4 +31,35 @@
     <string name="fmt_err_vivo_companion_missing">இணைக் காணொளிக் கோப்பு இல்லை: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG உள்ளடக்கத்தைப் பாகுபடுத்த முடியவில்லை</string>
     <string name="fmt_err_vivo_companion_invalid">இணை MP4 செல்லுபடியாகாது (ftyp பாக்ஸ் இல்லை)</string>
+    <string name="fmt_log_apple_heic_no_pair">அட்டை HEIC: இணை அடையாளம் தற்காலிகமாக எழுதப்படவில்லை (HEIC-இன் EXIF, Exif item-இல் உள்ளது; தனியாகச் செயல்படுத்த வேண்டும்); MOV பக்கம் மட்டும் ContentIdentifier எழுதப்படுகிறது</string>
+    <string name="fmt_log_apple_still_found">Apple நிலைப்படச் சட்ட நேரம் %1$d ms எனப் பிரிக்கப்பட்டது (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple நிலைப்படச் சட்ட நேரம் பிரிக்கப்படவில்லை (mebx/elst காலி edit எதுவும் இல்லை); வெளியிடும்போது காணொளி நடுப்புள்ளி பயன்படுத்தப்படும்</string>
+    <string name="fmt_log_apple_still_no_carrier">நிலைப்படச் சட்ட நேரம் %1$d ms-க்கு தற்போது தாங்கி இல்லை: உண்மையான Apple, mebx timed metadata தடத்தைப் பயன்படுத்துகிறது; இந்தக் கருவி தற்காலிகமாக உருவாக்காது (MOV-இன் still-image-time -1 என எழுதப்படும்)</string>
+    <string name="fmt_log_apple_write">Apple வடிவம் எழுதப்பட்டது: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">பிரித்தெடுப்பு வெளியீடு: %1$s (புகைப்படம் %2$dB, HDR=%3$s) + %4$s (காணொளி %5$dB)</string>
+    <string name="fmt_log_google_write">Google வடிவம் எழுதப்பட்டது: %1$s (படம் %2$dB + காணொளி %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor வடிவம் எழுதப்பட்டது: %1$s (படம் %2$dB + காணொளி %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex உருவாக்கம் தோல்வி; தவிர்க்கப்படுகிறது (இயக்கத்தைப் பாதிக்காது): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) உருவாக்கப்பட்டு moov-இல் செருகப்பட்டது</string>
+    <string name="fmt_log_meizu_write">Meizu வடிவம் எழுதப்பட்டது: %1$s (படம் %2$dB + காணொளி %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia வடிவம் எழுதப்பட்டது: %1$s (JPEG %2$dB + நிரப்பல் 1B + காணொளி %3$dB + வால் %4$dB, UserComment உள்ளடக்கம் "%5$s")</string>
+    <string name="fmt_log_oppo_write">OPPO வடிவம் எழுதப்பட்டது: %1$s (படம் %2$dB + காணொளி %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo ஆகப் பாகுபடுத்தப்படுகிறது</string>
+    <string name="fmt_log_parse_google">Google Motion Photo ஆகப் பாகுபடுத்தப்படுகிறது</string>
+    <string name="fmt_log_parse_honor">Honor Live Photo ஆகப் பாகுபடுத்தப்படுகிறது (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu Live Photo ஆகப் பாகுபடுத்தப்படுகிறது</string>
+    <string name="fmt_log_parse_nubia">Nubia Live Photo ஆகப் பாகுபடுத்தப்படுகிறது (nubiaVpfile வால்)</string>
+    <string name="fmt_log_parse_oppo">OPPO Live Photo ஆகப் பாகுபடுத்தப்படுகிறது</string>
+    <string name="fmt_log_parse_vivo">vivo இரட்டைக் கோப்பு Live Photo ஆகப் பாகுபடுத்தப்படுகிறது</string>
+    <string name="fmt_log_parse_vivo_single">vivo ஒற்றைக் கோப்பு Live Photo ஆகப் பாகுபடுத்தப்படுகிறது</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi Live Photo ஆகப் பாகுபடுத்தப்படுகிறது (Google இணக்கம்)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG மற்றும் MP4-இன் livephoto ID ஒத்துப்போகவில்லை: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo ஒற்றைக் கோப்பு Live Photo எழுதப்பட்டது: %1$s (படம் %2$dB + காணொளி %3$dB (vivoMediaEStream + lpex உட்பட) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo வடிவம் எழுதப்பட்டது: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi வடிவம் எழுதப்பட்டது: %1$s (படம் %2$dB + காணொளி %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">பிரித்தெடு</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">Lægri virði merkja hægri góðsk og størri fílur (standard 18)</string>
     <string name="settings_encoder_title">Kodari</string>
     <string name="settings_compress_preset_title">Trýstiforseting</string>
+    <string name="settings_preset_amber">Ravgulur</string>
+    <string name="settings_preset_forest">Skógargrøn</string>
+    <string name="settings_preset_ocean">Havbláur</string>
+    <string name="settings_preset_olive">Olivengrøn</string>
+    <string name="settings_preset_sunset">Sólsetursappilsingulur</string>
+    <string name="settings_preset_teal">Blágrøn</string>
+    <string name="settings_preset_violet">Fjólubláur</string>
 </resources>

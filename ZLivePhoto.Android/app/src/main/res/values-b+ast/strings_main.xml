@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">La carpeta del ficheru orixe nun ta disponible: %1$s</string>
     <string name="main_export_replace_failed">Falló la sustitución del ficheru orixe: %1$s</string>
     <string name="main_export_replace_failed_bare">Falló la sustitución del ficheru orixe</string>
+    <string name="main_status_read_failed">Nun se pue lleer el ficheru escoyíu</string>
+    <string name="main_status_source_missing">El ficheru orixe nun esiste o nun se pue lleer</string>
 </resources>

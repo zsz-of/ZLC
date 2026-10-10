@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">Λείπει το συνοδευτικό αρχείο βίντεο: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">Αποτυχία ανάλυσης του σώματος του JPG</string>
     <string name="fmt_err_vivo_companion_invalid">Το συνοδευτικό MP4 δεν είναι έγκυρο (λείπει το ftyp box)</string>
+    <string name="fmt_log_apple_heic_no_pair">Το εξώφυλλο είναι HEIC: ο δείκτης σύζευξης δεν γράφεται προς το παρόν (το EXIF του HEIC βρίσκεται στο στοιχείο Exif και χρειάζεται ξεχωριστή υλοποίηση), το ContentIdentifier γράφεται μόνο στην πλευρά MOV</string>
+    <string name="fmt_log_apple_still_found">Διαβάστηκε η χρονική στιγμή της στατικής εικόνας Apple: %1$d ms (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Δεν διαβάστηκε η χρονική στιγμή της στατικής εικόνας Apple (δεν υπάρχει κενό edit mebx/elst), κατά την εξαγωγή χρησιμοποιείται το μέσο του βίντεο</string>
+    <string name="fmt_log_apple_still_no_carrier">Η χρονική στιγμή %1$d ms της στατικής εικόνας δεν έχει ακόμη φορέα: το γνήσιο Apple χρησιμοποιεί stream mebx timed metadata, αυτό το εργαλείο δεν το δημιουργεί προς το παρόν (το still-image-time του MOV γράφεται ως -1)</string>
+    <string name="fmt_log_apple_write">Γράφεται μορφή Apple: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Έξοδος εξαγωγής: %1$s (φωτογραφία %2$dB, HDR=%3$s) + %4$s (βίντεο %5$dB)</string>
+    <string name="fmt_log_google_write">Γράφεται μορφή Google: %1$s (εικόνα %2$dB + βίντεο %3$dB)</string>
+    <string name="fmt_log_honor_write">Γράφεται μορφή Honor: %1$s (εικόνα %2$dB + βίντεο %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">Η σύνθεση lpex απέτυχε, παραλείπεται (δεν επηρεάζει την αναπαραγωγή): %1$s</string>
+    <string name="fmt_log_lpex_ok">Το lpex box (LivePhotoExtension) συντέθηκε και προστέθηκε στο moov</string>
+    <string name="fmt_log_meizu_write">Γράφεται μορφή Meizu: %1$s (εικόνα %2$dB + βίντεο %3$dB)</string>
+    <string name="fmt_log_nubia_write">Γράφεται μορφή Nubia: %1$s (JPEG %2$dB + 1B συμπλήρωση + βίντεο %3$dB + trailer %4$dB, το UserComment περιέχει "%5$s")</string>
+    <string name="fmt_log_oppo_write">Γράφεται μορφή OPPO: %1$s (εικόνα %2$dB + βίντεο %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Γίνεται ανάλυση ως Apple Live Photo</string>
+    <string name="fmt_log_parse_google">Γίνεται ανάλυση ως Google Motion Photo</string>
+    <string name="fmt_log_parse_honor">Γίνεται ανάλυση ως Honor Live Photo (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Γίνεται ανάλυση ως Meizu Live Photo</string>
+    <string name="fmt_log_parse_nubia">Γίνεται ανάλυση ως Nubia Live Photo (nubiaVpfile trailer)</string>
+    <string name="fmt_log_parse_oppo">Γίνεται ανάλυση ως OPPO Live Photo</string>
+    <string name="fmt_log_parse_vivo">Γίνεται ανάλυση ως vivo Live Photo δύο αρχείων</string>
+    <string name="fmt_log_parse_vivo_single">Γίνεται ανάλυση ως vivo Live Photo ενός αρχείου</string>
+    <string name="fmt_log_parse_xiaomi">Γίνεται ανάλυση ως Xiaomi Live Photo (συμβατό με Google)</string>
+    <string name="fmt_log_vivo_id_mismatch">Το livephoto ID του JPG και του MP4 δεν ταιριάζουν: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Γράφεται vivo Live Photo ενός αρχείου: %1$s (εικόνα %2$dB + βίντεο %3$dB (περιλαμβάνει vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Γράφεται μορφή vivo: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Γράφεται μορφή Xiaomi: %1$s (εικόνα %2$dB + βίντεο %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Εξαγωγή</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

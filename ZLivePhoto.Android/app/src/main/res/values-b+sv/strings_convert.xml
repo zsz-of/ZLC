@@ -80,5 +80,29 @@
     <string name="conv_reminder_dont_remind">Visa inte igen</string>
     <string name="conv_reminder_confirm_ok">Uppfattat</string>
     <string name="conv_reminder_uninstall">Avinstallera</string>
-
+    <string name="conv_err_exif_bad_endian">Ogiltig byteordningsmarkering i TIFF</string>
+    <string name="conv_err_exif_inline_type">Inline-typen %1$d stöds inte</string>
+    <string name="conv_err_exif_type">TIFF-typen %1$d stöds inte</string>
+    <string name="conv_err_jpeg_no_eoi">Ingen EOI hittades (filen kan vara skadad)</string>
+    <string name="conv_err_jpeg_no_soi">Inte en giltig JPEG (SOI saknas)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG saknar SOS-segment</string>
+    <string name="conv_err_jpeg_seg_boundary">Segmentgränsen hamnar fel @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Ogiltig segmentlängd @%1$d</string>
+    <string name="conv_err_json_type">JSON-värdetypen stöds inte: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Ogiltig storlek på ftyp box</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box saknas</string>
+    <string name="conv_err_mp4_no_moov">MP4 saknar moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Extra spår togs bort (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Rensningen av extra spår misslyckades (%1$s); filen skrivs ut oförändrad</string>
+    <string name="conv_log_sanitize_no_video_track">Indatavideon har inget användbart videospår; rensningen av extra spår hoppas över</string>
+    <string name="conv_log_sanitize_normalized">Containerbrandet normaliserades byte för byte (nollkopiering, sampledata oförändrade)</string>
+    <string name="conv_log_sanitize_track_add_failed">Videospåret kan inte läggas till i remuxaren (%1$s); rensningen av extra spår hoppas över</string>
+    <string name="conv_reason_10bit_h265">Videon är %1$dbit H.265 (HDR-Live Photo); galleriet kan inte avkoda den på vissa enheter</string>
+    <string name="conv_reason_audio_not_aac">Ljudspåret är kodat som %1$s och inte AAC (Live Photo-standarden kräver AAC; Apple använder ofta PCM)</string>
+    <string name="conv_reason_codec_unsupported">Videokodningen %1$s är inte den Android-generella H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Videon är Dolby Vision, vilket Android-gallerier i allmänhet inte stöder</string>
+    <string name="conv_reason_hdr">Videon är HDR (%1$s-överföringskarakteristik); galleriet kan visa förvridna eller svarta bilder på vissa enheter</string>
+    <string name="conv_reason_hev1">H.265 är märkt som hev1 (vissa enheter accepterar bara hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Videon har en spegelvändningsmatris (MP4-rotationsmatriser kan inte uttrycka spegelvändning)</string>
+    <string name="conv_tag_sanitize">Rensning</string>
 </resources>

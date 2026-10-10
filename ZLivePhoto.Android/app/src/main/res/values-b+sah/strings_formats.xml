@@ -27,4 +27,35 @@
     <string name="fmt_err_vivo_companion_missing">Холбуур видео билэтэ суох: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG этин аналиһа табыллыбата</string>
     <string name="fmt_err_vivo_companion_invalid">Холбуур MP4 сөптөөҕө суох (ftyp box суох)</string>
+    <string name="fmt_log_apple_heic_no_pair">Сүрүн ойуу HEIC: паара бэлиэтин билигин суруйбаппыт (HEIC EXIF-а Exif item иһигэр, анал туспа оҥоһуу наада), ContentIdentifier MOV өттүгэр эрэ суруллар</string>
+    <string name="fmt_log_apple_still_found">Apple статическай кадр кэмэ %1$d ms быһаарылынна (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple статическай кадр кэмэ быһаарылынна (mebx/elst кураанах edit суох), таһаарыыга видео ортоку чобуо туттуллар</string>
+    <string name="fmt_log_apple_still_no_carrier">Статическай кадр %1$d ms кэмигэр таһаҕас суох: оҥоһуу Apple mebx timed metadata суолун туттар, бу сэбил билигин холорбок (MOV still-image-time -1 суруллар)</string>
+    <string name="fmt_log_apple_write">Apple формата сурулунна: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Араарыы таһаарыыта: %1$s (ойуу %2$dB, HDR=%3$s) + %4$s (видео %5$dB)</string>
+    <string name="fmt_log_google_write">Google формата сурулунна: %1$s (ойуу %2$dB + видео %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor формата сурулунна: %1$s (ойуу %2$dB + видео %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex холоруу табыллыбата, көтүтүлуннэ (ойнооһуҥҥа дьайбат): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) холорунна уонна moov иһигэр киирдэ</string>
+    <string name="fmt_log_meizu_write">Meizu формата сурулунна: %1$s (ойуу %2$dB + видео %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia формата сурулунна: %1$s (JPEG %2$dB + 1B толоруу + видео %3$dB + кырыыса %4$dB, UserComment иһигэр «%5$s»)</string>
+    <string name="fmt_log_oppo_write">OPPO формата сурулунна: %1$s (ойуу %2$dB + видео %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo курдук ырытылынна</string>
+    <string name="fmt_log_parse_google">Google Motion Photo курдук ырытылынна</string>
+    <string name="fmt_log_parse_honor">Honor динамическай ойуутун курдук ырытылынна (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu динамическай ойуутун курдук ырытылынна</string>
+    <string name="fmt_log_parse_nubia">Nubia динамическай ойуутун курдук ырытылынна (nubiaVpfile кырыысата)</string>
+    <string name="fmt_log_parse_oppo">OPPO динамическай ойуутун курдук ырытылынна</string>
+    <string name="fmt_log_parse_vivo">vivo икки билэлээх динамическай ойуутун курдук ырытылынна</string>
+    <string name="fmt_log_parse_vivo_single">vivo биир билэлээх Live Photo курдук ырытылынна</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi динамическай ойуутун курдук ырытылынна (Google сөпсөһүү)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG уонна MP4 livephoto ID сөп түбэспэт: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo биир билэлээх Live Photo сурулунна: %1$s (ойуу %2$dB + видео %3$dB (vivoMediaEStream + lpex кытта) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo формата сурулунна: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi формата сурулунна: %1$s (ойуу %2$dB + видео %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Араарыы</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

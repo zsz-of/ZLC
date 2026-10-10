@@ -103,5 +103,11 @@
     <string name="settings_crf_hint">Değer küçüldükçe kalite artar ve boyut büyür (varsayılan 18)</string>
     <string name="settings_encoder_title">Kodlayıcı</string>
     <string name="settings_compress_preset_title">Sıkıştırma ön ayarı</string>
-
+    <string name="settings_preset_amber">Kehribar</string>
+    <string name="settings_preset_forest">Orman yeşili</string>
+    <string name="settings_preset_ocean">Okyanus mavisi</string>
+    <string name="settings_preset_olive">Zeytin</string>
+    <string name="settings_preset_sunset">Gün batımı turuncusu</string>
+    <string name="settings_preset_teal">Deniz mavisi</string>
+    <string name="settings_preset_violet">Eflatun</string>
 </resources>

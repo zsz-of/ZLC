@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Jo mazāka vērtība, jo augstāka kvalitāte un lielāks apjoms (noklusējums 18)</string>
     <string name="settings_encoder_title">Kodētājs</string>
     <string name="settings_compress_preset_title">Saspiešanas profils</string>
-
+    <string name="settings_preset_amber">Dzintarkrāsa</string>
+    <string name="settings_preset_forest">Meža zaļš</string>
+    <string name="settings_preset_ocean">Okeāna zils</string>
+    <string name="settings_preset_olive">Olīvu</string>
+    <string name="settings_preset_sunset">Saulrieta oranžs</string>
+    <string name="settings_preset_teal">Zaļganzils</string>
+    <string name="settings_preset_violet">Violets</string>
 </resources>

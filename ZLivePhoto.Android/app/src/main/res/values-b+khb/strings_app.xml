@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-  khb（傣泐 / 新傣仂文）为低资源语种：暂无可靠的新傣仂文词表，为避免臆造民族语言文字，
-  本文件正文沿用简体中文基准（即本应用对 khb 的兜底文案）；key 与元素类型与基准完全一致。
-  欢迎母语者逐条替换为傣泐语译文。
+    khb（傣泐 / 新傣仂文 / New Tai Lue）为低资源语种：全文已按新傣仂文逐条本地化。
+  译文为**模型辅助的 C 级尽力翻译，未经母语者审校**，可能存在不通顺或用词偏差，欢迎社区修正；
+  品牌专名与技术名词保留拉丁字形。key 与元素类型与基准完全一致。
   应用级文案（Lead 维护）。与 values/strings.xml、strings_main.xml、strings_settings.xml 等
   同目录多文件并存，构建时合并；请勿在本文件放其它模块的 key。
 -->
 <resources>
     <!-- 「应用语言」选择器里表示跟随系统的那一项 -->
-    <string name="app_language_follow_system">跟随系统</string>
+    <string name="app_language_follow_system">ᦎᦱᧄ system</string>
     <!-- 应用语言选择器标题兜底（settings 模块也可用自己的 key） -->
-    <string name="app_language_title">应用语言</string>
+    <string name="app_language_title">ᦘᦱᧉ ᦉᦱ app</string>
 </resources>

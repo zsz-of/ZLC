@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Hoe lager de waarde, hoe hoger de kwaliteit en hoe groter het bestand (standaard 18)</string>
     <string name="settings_encoder_title">Encoder</string>
     <string name="settings_compress_preset_title">Compressiepreset</string>
-
+    <string name="settings_preset_amber">Barnsteen</string>
+    <string name="settings_preset_forest">Bosgroen</string>
+    <string name="settings_preset_ocean">Oceaanblauw</string>
+    <string name="settings_preset_olive">Olijfgroen</string>
+    <string name="settings_preset_sunset">Zonsondergang</string>
+    <string name="settings_preset_teal">Blauwgroen</string>
+    <string name="settings_preset_violet">Violet</string>
 </resources>

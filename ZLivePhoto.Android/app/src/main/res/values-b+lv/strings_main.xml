@@ -168,4 +168,6 @@
     <string name="main_export_source_dir_unavailable">Avota faila mape nav pieejama: %1$s</string>
     <string name="main_export_replace_failed">Avota faila aizstāšana neizdevās: %1$s</string>
     <string name="main_export_replace_failed_bare">Avota faila aizstāšana neizdevās</string>
+    <string name="main_status_read_failed">Neizdevās nolasīt atlasīto failu</string>
+    <string name="main_status_source_missing">Avota fails neeksistē vai nav nolasāms</string>
 </resources>

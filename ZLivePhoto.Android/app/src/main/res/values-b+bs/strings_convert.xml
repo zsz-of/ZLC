@@ -82,5 +82,29 @@
     <string name="conv_reminder_dont_remind">Ne prikazuj više</string>
     <string name="conv_reminder_confirm_ok">Razumijem</string>
     <string name="conv_reminder_uninstall">Deinstaliraj</string>
-
+    <string name="conv_err_exif_bad_endian">Nevažeća oznaka redoslijeda bajtova TIFF</string>
+    <string name="conv_err_exif_inline_type">Nepodržan tip inline %1$d</string>
+    <string name="conv_err_exif_type">Nepodržan tip TIFF %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">Oznaka EOI nije pronađena (datoteka je vjerovatno oštećena)</string>
+    <string name="conv_err_jpeg_no_soi">Ovo nije ispravan JPEG (nedostaje SOI)</string>
+    <string name="conv_err_jpeg_no_sos">U JPEG-u nedostaje segment SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">Pomak na granici segmenta @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Nevažeća dužina segmenta @%1$d</string>
+    <string name="conv_err_json_type">Nepodržan tip JSON vrijednosti: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Nevažeća veličina ftyp boxa</string>
+    <string name="conv_err_mp4_no_ftyp">Nedostaje ftyp box</string>
+    <string name="conv_err_mp4_no_moov">U MP4-u nedostaje moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Uklonjene dodatne staze (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Čišćenje dodatnih staza nije uspjelo (%1$s) — datoteka je zapisana onakva kakva jest</string>
+    <string name="conv_log_sanitize_no_video_track">Izvorni video nema upotrebljivu video stazu, čišćenje dodatnih staza je preskočeno</string>
+    <string name="conv_log_sanitize_normalized">Brend kontejnera je normaliziran na nivou bajtova (bez kopiranja, podaci uzoraka nisu promijenjeni)</string>
+    <string name="conv_log_sanitize_track_add_failed">Video stazu nije bilo moguće dodati u remukser (%1$s), čišćenje dodatnih staza je preskočeno</string>
+    <string name="conv_reason_10bit_h265">Video je %1$dbit H.265 (HDR Live Photo), galerija na nekim uređajima ga ne može dekodirati</string>
+    <string name="conv_reason_audio_not_aac">Kodek audio staze je %1$s, a ne AAC (specifikacija dinamičnih fotografija zahtijeva AAC, Apple često koristi PCM)</string>
+    <string name="conv_reason_codec_unsupported">Kodek videa je %1$s, a ne univerzalni za Android H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Video je u Dolby Visionu, a Android galerije ga u pravilu ne podržavaju</string>
+    <string name="conv_reason_hdr">Video je u HDR-u (prenosne karakteristike %1$s) — galerija na nekim uređajima prikazuje artefakte ili crni ekran</string>
+    <string name="conv_reason_hev1">H.265 je označen kao hev1 (neki uređaji poznaju samo hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Video sadrži matricu zrcalnog preslikavanja (rotaciona matrica MP4 ne izražava zrcaljenje)</string>
+    <string name="conv_tag_sanitize">Čišćenje</string>
 </resources>

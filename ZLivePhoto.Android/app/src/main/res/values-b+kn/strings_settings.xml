@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">ಕಡಿಮೆ ಮೌಲ್ಯಗಳು ಹೆಚ್ಚಿನ ಗುಣಮಟ್ಟ ಮತ್ತು ದೊಡ್ಡ ಫೈಲ್ಗಳು ಎಂದರ್ಥ (ಡೀಫಾಲ್ಟ್ 18)</string>
     <string name="settings_encoder_title">ಎನ್ಕೋಡರ್</string>
     <string name="settings_compress_preset_title">ಸಂಕೋಚನ ಪ್ರೀಸೆಟ್</string>
+    <string name="settings_preset_amber">ಆಂಬರ್</string>
+    <string name="settings_preset_forest">ಕಾಡು ಹಸಿರು</string>
+    <string name="settings_preset_ocean">ಸಾಗರ ನೀಲಿ</string>
+    <string name="settings_preset_olive">ಆಲಿವ್</string>
+    <string name="settings_preset_sunset">ಸೂರ್ಯಾಸ್ತ ಕಿತ್ತಳೆ</string>
+    <string name="settings_preset_teal">ಟೀಲ್</string>
+    <string name="settings_preset_violet">ನೇರಳೆ</string>
 </resources>

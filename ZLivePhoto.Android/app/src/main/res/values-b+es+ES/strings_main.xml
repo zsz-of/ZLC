@@ -161,4 +161,6 @@
     <string name="main_export_source_dir_unavailable">La carpeta de los archivos de origen no está disponible: %1$s</string>
     <string name="main_export_replace_failed">Error al reemplazar el archivo de origen: %1$s</string>
     <string name="main_export_replace_failed_bare">Error al reemplazar el archivo de origen</string>
+    <string name="main_status_read_failed">No se pudo leer el archivo seleccionado</string>
+    <string name="main_status_source_missing">El archivo de origen no existe o no se puede leer</string>
 </resources>

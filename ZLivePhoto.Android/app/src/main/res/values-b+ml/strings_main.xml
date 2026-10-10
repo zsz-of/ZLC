@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">സ്രോതസ്സ് ഫയൽ ഡയറക്ടറി ലഭ്യമല്ല: %1$s</string>
     <string name="main_export_replace_failed">സ്രോതസ്സ് ഫയൽ മാറ്റൽ പരാജയപ്പെട്ടു: %1$s</string>
     <string name="main_export_replace_failed_bare">സ്രോതസ്സ് ഫയൽ മാറ്റൽ പരാജയപ്പെട്ടു</string>
+    <string name="main_status_read_failed">തിരഞ്ഞെടുത്ത ഫയൽ വായിക്കാനായില്ല</string>
+    <string name="main_status_source_missing">സ്രോതസ്സ് ഫയൽ ഇല്ല അല്ലെങ്കിൽ വായിക്കാനാകില്ല</string>
 </resources>

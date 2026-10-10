@@ -75,5 +75,29 @@
     <string name="conv_reminder_dont_remind">Hižo njepokazać</string>
     <string name="conv_reminder_confirm_ok">Zrozumjene</string>
     <string name="conv_reminder_uninstall">Wotinstalować</string>
-
+    <string name="conv_err_exif_bad_endian">Njepłaćiwe znamjo byte-order rjadu TIFF</string>
+    <string name="conv_err_exif_inline_type">Njepodpěrowany inline-typ %1$d</string>
+    <string name="conv_err_exif_type">Njepodpěrowany TIFF-typ %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">Žane EOI namakane (dataja je snano wobškodźena)</string>
+    <string name="conv_err_jpeg_no_soi">Njeje płaćiwa JPEG (SOI faluje)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG faluje segment SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">Segmentowa mjeza přesunjena @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Njepłaćiwa dołhosć segmenta @%1$d</string>
+    <string name="conv_err_json_type">Njepodpěrowany JSON-hódnotowy typ: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Njepłaćiwa wulkosć ftyp-box</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp-box faluje</string>
+    <string name="conv_err_mp4_no_moov">MP4 faluje moov-box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Přidatne slědy wotstronjene (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Čišćenje přidatnych slědow je so nimokeměło (%1$s), wudawki kaž su</string>
+    <string name="conv_log_sanitize_no_video_track">Zapodałske widejo nima wužijomny wideoslěd, čišćenje přidatnych slědow so wopušći</string>
+    <string name="conv_log_sanitize_normalized">Kontejnerowy brand po byteach normalizowany (zero-copy, sampledaty njezměnjene)</string>
+    <string name="conv_log_sanitize_track_add_failed">Wideoslěd njeda so do remuxera přidać (%1$s), čišćenje přidatnych slědow so wopušći</string>
+    <string name="conv_reason_10bit_h265">Widejo je %1$dbit H.265 (HDR Live Photo), galerije na někotrych gratach njedadźa so to dekodować</string>
+    <string name="conv_reason_audio_not_aac">Awdiokodek %1$s njeje AAC (specifikacija Motion Photo žada sej AAC, Apple často wužiwa PCM)</string>
+    <string name="conv_reason_codec_unsupported">Wideokodek %1$s njeje za Android wšědny H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Widejo je Dolby Vision, kotrež Android-galerije zwjetša njepodpěruja</string>
+    <string name="conv_reason_hdr">Widejo je HDR (%1$s-transferna charakteristika), galerije na někotrych gratach pokazuja wobrazowe zmylki abo čorny wobraz</string>
+    <string name="conv_reason_hev1">H.265 je jako hev1 markěrowany (někotre graty akceptuja jenož hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Widejo ma špihelowu matrix (MP4-rotaciska matrix njeda so špihelowanje wurazować)</string>
+    <string name="conv_tag_sanitize">Čišćenje</string>
 </resources>

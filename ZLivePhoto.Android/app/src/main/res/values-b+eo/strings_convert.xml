@@ -79,5 +79,29 @@
     <string name="conv_reminder_dont_remind">Ne plu montri</string>
     <string name="conv_reminder_confirm_ok">Komprenite</string>
     <string name="conv_reminder_uninstall">Malinstali</string>
-
+    <string name="conv_err_exif_bad_endian">Nevalida indikilo de bajtordo de TIFF</string>
+    <string name="conv_err_exif_inline_type">Nesubtenata enlinia tipo %1$d</string>
+    <string name="conv_err_exif_type">Nesubtenata TIFF-tipo %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI ne trovita (la dosiero eble difektiĝis)</string>
+    <string name="conv_err_jpeg_no_soi">Nevalida JPEG (mankas SOI)</string>
+    <string name="conv_err_jpeg_no_sos">Al JPEG mankas la segmento SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">Segmentlimoj ne ĝustigitaj @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Nevalida segmentlongo @%1$d</string>
+    <string name="conv_err_json_type">Nesubtenata JSON-valortipo: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Nevalida grando de la ujo ftyp</string>
+    <string name="conv_err_mp4_no_ftyp">Mankas la ujo ftyp</string>
+    <string name="conv_err_mp4_no_moov">Al MP4 mankas la ujo moov</string>
+    <string name="conv_log_sanitize_dropped_prefix">Forigitaj kromtrakoj (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Purigo de kromtrakoj malsukcesis (%1$s); la eligo restis senŝanĝa</string>
+    <string name="conv_log_sanitize_no_video_track">La eniga video ne havas uzeblajn videotrakojn; purigo de kromtrakoj preterlasita</string>
+    <string name="conv_log_sanitize_normalized">La ujmarko estas normaligita je bajtnivelo (sen kopiado, la specimenaj datumoj restas senŝanĝaj)</string>
+    <string name="conv_log_sanitize_track_add_failed">La videotrako ne povis esti aldonita al la remuksilo (%1$s); purigo de kromtrakoj preterlasita</string>
+    <string name="conv_reason_10bit_h265">La video estas H.265 je %1$d bitoj (HDR Live Photo): sur iuj aparatoj la albumo ne povas malĉifri ĝin</string>
+    <string name="conv_reason_audio_not_aac">La sona trako estas kodita per %1$s, ne per AAC (la normo de Live Photo postulas AAC; ĉe Apple ĝi ofte estas PCM)</string>
+    <string name="conv_reason_codec_unsupported">La video-kodigo %1$s ne estas H.264/H.265, la norma por Android</string>
+    <string name="conv_reason_dolby_vision">La video estas en Dolby Vision: plej multaj Android-albumoj ne subtenas ĝin</string>
+    <string name="conv_reason_hdr">La video estas HDR (transigaj karakterizoj %1$s): sur iuj aparatoj la albumo montras bilderarojn aŭ nigran ekranon</string>
+    <string name="conv_reason_hev1">H.265 markita kiel hev1 (iuj aparatoj rekonas nur hvc1)</string>
+    <string name="conv_reason_mirror_matrix">La video havas spegulan transforman matricon (la rotacia matrico de MP4 ne povas esprimi speguladon)</string>
+    <string name="conv_tag_sanitize">Purigo</string>
 </resources>

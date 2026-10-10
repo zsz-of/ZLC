@@ -184,4 +184,6 @@ Tagh dòigh giùlain.</string>
     <string name="main_export_source_dir_unavailable">Chan eil pasgan an fhaidhle thùsail ri làimh: %1$s</string>
     <string name="main_export_replace_failed">Dh\'fhàillig ion-mhalairt an fhaidhle thùsail: %1$s</string>
     <string name="main_export_replace_failed_bare">Dh\'fhàillig ion-mhalairt an fhaidhle thùsail</string>
+    <string name="main_status_read_failed">Chan ghabh am faidhle a thagh thu a leughadh</string>
+    <string name="main_status_source_missing">Chan eil am faidhle tùsail ann no chan eil e leughaidh</string>
 </resources>

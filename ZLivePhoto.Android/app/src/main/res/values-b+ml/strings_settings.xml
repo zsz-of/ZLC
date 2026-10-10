@@ -95,5 +95,11 @@
     <string name="settings_crf_hint">ചെറിയ മൂല്യം കൂടിയ ഗുണനിലവാരവും വലിയ വലിപ്പവും നൽകുന്നു (സ്ഥിരസ്ഥിതി 18)</string>
     <string name="settings_encoder_title">എൻകോഡർ</string>
     <string name="settings_compress_preset_title">കംപ്രഷൻ പ്രൊഫൈൽ</string>
-
+    <string name="settings_preset_amber">ആംബർ</string>
+    <string name="settings_preset_forest">വനഹരിതം</string>
+    <string name="settings_preset_ocean">സമുദ്രനീലം</string>
+    <string name="settings_preset_olive">ഒലീവ്</string>
+    <string name="settings_preset_sunset">അസ്തമയ ഓറഞ്ച്</string>
+    <string name="settings_preset_teal">ടീൽ</string>
+    <string name="settings_preset_violet">വയലറ്റ്</string>
 </resources>

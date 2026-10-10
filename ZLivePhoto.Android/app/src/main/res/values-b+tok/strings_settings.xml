@@ -103,5 +103,11 @@
     <string name="settings_crf_hint">nanpa lili la, pona suli, ijo suli (18 nasin)</string>
     <string name="settings_encoder_title">ilo ante</string>
     <string name="settings_compress_preset_title">nasin lili</string>
-
+    <string name="settings_preset_amber">kule kili</string>
+    <string name="settings_preset_forest">kule laso ma</string>
+    <string name="settings_preset_ocean">kule laso telo</string>
+    <string name="settings_preset_olive">kule laso kili</string>
+    <string name="settings_preset_sunset">kule laso jelo</string>
+    <string name="settings_preset_teal">kule laso sewi</string>
+    <string name="settings_preset_violet">kule laso loje</string>
 </resources>

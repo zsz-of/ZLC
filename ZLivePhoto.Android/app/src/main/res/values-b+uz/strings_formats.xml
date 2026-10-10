@@ -32,4 +32,35 @@
     <string name="fmt_err_vivo_companion_missing">Hamroh video fayli yoʻq: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG asosiy qismini tahlil qilib boʻlmadi</string>
     <string name="fmt_err_vivo_companion_invalid">Hamroh MP4 yaroqsiz (ftyp box yoʻq)</string>
+    <string name="fmt_log_apple_heic_no_pair">Muqova HEIC: juftlash belgisi hozircha yozilmaydi (HEIC EXIF i Exif item ichida, alohida amalga oshirish kerak), ContentIdentifier faqat MOV tomoniga yoziladi</string>
+    <string name="fmt_log_apple_still_found">Apple statik kadr vaqti %1$d ms aniqlandi (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple statik kadr vaqti aniqlanmadi (mebx/elst boʻsh edit yoʻq), chiqarishda videoning oʻrtasidan foydalaniladi</string>
+    <string name="fmt_log_apple_still_no_carrier">Statik kadr vaqti %1$d ms uchun tashuvchi yoʻq: haqiqiy Apple mebx timed metadata trekidan foydalanadi, bu vosita hozircha birlashtirmaydi (MOV ning still-image-time qiymati -1 yoziladi)</string>
+    <string name="fmt_log_apple_write">Apple formati yozildi: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Ajratish chiqishi: %1$s (foto %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Google formati yozildi: %1$s (tasvir %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Honor formati yozildi: %1$s (tasvir %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex birlashtirish muvaffaqiyatsiz, oʻtkazib yuborildi (ijroga taʼsir qilmaydi): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) birlashtirilib moov ichiga qoʻyildi</string>
+    <string name="fmt_log_meizu_write">Meizu formati yozildi: %1$s (tasvir %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Nubia formati yozildi: %1$s (JPEG %2$dB + 1B toʻldirish + video %3$dB + quyruq %4$dB, UserComment ichida «%5$s»)</string>
+    <string name="fmt_log_oppo_write">OPPO formati yozildi: %1$s (tasvir %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Apple Live Photo sifatida tahlil qilindi</string>
+    <string name="fmt_log_parse_google">Google Motion Photo sifatida tahlil qilindi</string>
+    <string name="fmt_log_parse_honor">Honor jonli foto sifatida tahlil qilindi (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Meizu jonli foto sifatida tahlil qilindi</string>
+    <string name="fmt_log_parse_nubia">Nubia jonli foto sifatida tahlil qilindi (nubiaVpfile quyruq qismi)</string>
+    <string name="fmt_log_parse_oppo">OPPO jonli foto sifatida tahlil qilindi</string>
+    <string name="fmt_log_parse_vivo">vivo ikki faylli jonli foto sifatida tahlil qilindi</string>
+    <string name="fmt_log_parse_vivo_single">vivo bir faylli Live Photo sifatida tahlil qilindi</string>
+    <string name="fmt_log_parse_xiaomi">Xiaomi jonli foto sifatida tahlil qilindi (Google mos)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG va MP4 ning livephoto ID si mos emas: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">vivo bir faylli Live Photo yozildi: %1$s (tasvir %2$dB + video %3$dB (vivoMediaEStream + lpex bilan) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">vivo formati yozildi: %1$s.jpg + %1$s.mp4 (livephoto ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Xiaomi formati yozildi: %1$s (tasvir %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Ajratish</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

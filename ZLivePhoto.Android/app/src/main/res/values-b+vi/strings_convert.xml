@@ -81,5 +81,29 @@
     <string name="conv_reminder_dont_remind">Không nhắc lại</string>
     <string name="conv_reminder_confirm_ok">Đã hiểu</string>
     <string name="conv_reminder_uninstall">Gỡ cài đặt</string>
-
+    <string name="conv_err_exif_bad_endian">Dấu thứ tự byte TIFF không hợp lệ</string>
+    <string name="conv_err_exif_inline_type">Loại inline không được hỗ trợ %1$d</string>
+    <string name="conv_err_exif_type">Loại TIFF không được hỗ trợ %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">Không tìm thấy EOI (tệp có thể bị hỏng)</string>
+    <string name="conv_err_jpeg_no_soi">Không phải JPEG hợp lệ (thiếu SOI)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG thiếu đoạn SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">Ranh giới đoạn sai lệch @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Độ dài đoạn không hợp lệ @%1$d</string>
+    <string name="conv_err_json_type">Loại giá trị JSON không được hỗ trợ: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Kích thước ftyp box không hợp lệ</string>
+    <string name="conv_err_mp4_no_ftyp">Thiếu ftyp box</string>
+    <string name="conv_err_mp4_no_moov">MP4 thiếu moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Đã loại bỏ track bổ sung (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Làm sạch track bổ sung thất bại (%1$s), xuất nguyên bản</string>
+    <string name="conv_log_sanitize_no_video_track">Video đầu vào không có track video khả dụng, bỏ qua làm sạch track bổ sung</string>
+    <string name="conv_log_sanitize_normalized">Đã chuẩn hóa thương hiệu container ở mức byte (không sao chép, dữ liệu mẫu không đổi)</string>
+    <string name="conv_log_sanitize_track_add_failed">Không thể thêm track video vào bộ đóng gói lại (%1$s), bỏ qua làm sạch track bổ sung</string>
+    <string name="conv_reason_10bit_h265">Video là %1$dbit H.265 (HDR sống), album của một số máy không giải mã được</string>
+    <string name="conv_reason_audio_not_aac">Mã hóa track âm thanh %1$s không phải AAC (chuẩn ảnh động yêu cầu AAC; Apple thường là PCM)</string>
+    <string name="conv_reason_codec_unsupported">Mã hóa video %1$s không phải H.264/H.265 phổ biến trên Android</string>
+    <string name="conv_reason_dolby_vision">Video là Dolby Vision, album trên Android nói chung không hỗ trợ</string>
+    <string name="conv_reason_hdr">Video là HDR (đặc tính truyền %1$s), album của một số máy có thể bị nhiễu màu hoặc đen màn hình</string>
+    <string name="conv_reason_hev1">H.265 được đánh dấu là hev1 (một số máy chỉ nhận hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Video có ma trận biến đổi gương (ma trận xoay MP4 không thể thể hiện gương)</string>
+    <string name="conv_tag_sanitize">Làm sạch</string>
 </resources>

@@ -77,5 +77,29 @@
     <string name="conv_reminder_dont_remind">Не показвай повече</string>
     <string name="conv_reminder_confirm_ok">Разбрах</string>
     <string name="conv_reminder_uninstall">Деинсталирай</string>
-
+    <string name="conv_err_exif_bad_endian">Невалиден маркер за ред на байтовете в TIFF</string>
+    <string name="conv_err_exif_inline_type">Неподдържан inline тип %1$d</string>
+    <string name="conv_err_exif_type">Неподдържан TIFF тип %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">Маркерът EOI не е намерен (файлът вероятно е повреден)</string>
+    <string name="conv_err_jpeg_no_soi">Това не е валиден JPEG (липсва SOI)</string>
+    <string name="conv_err_jpeg_no_sos">В JPEG липсва сегмент SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">Изместване на границата на сегмент @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Невалидна дължина на сегмент @%1$d</string>
+    <string name="conv_err_json_type">Неподдържан тип на JSON стойност: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Невалиден размер на ftyp box</string>
+    <string name="conv_err_mp4_no_ftyp">Липсва ftyp box</string>
+    <string name="conv_err_mp4_no_moov">В MP4 липсва moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">Премахнати допълнителни пътеки (%1$s)</string>
+    <string name="conv_log_sanitize_exception">Почистването на допълнителните пътеки не успя (%1$s) — файлът е изведен както е</string>
+    <string name="conv_log_sanitize_no_video_track">Изходното видео няма подходяща видео пътека, почистването на допълнителните пътеки е пропуснато</string>
+    <string name="conv_log_sanitize_normalized">Марката на контейнера е нормализирана на ниво байтове (без копиране, данните на семплите не са променени)</string>
+    <string name="conv_log_sanitize_track_add_failed">Видео пътеката не можа да се добави към преопаковача (%1$s), почистването на допълнителните пътеки е пропуснато</string>
+    <string name="conv_reason_10bit_h265">Видеото е %1$dbit H.265 (HDR Live Photo), галерията на част от устройствата не може да го декодира</string>
+    <string name="conv_reason_audio_not_aac">Кодекът на аудио пътеката е %1$s, а не AAC (спецификацията за динамични снимки изисква AAC, при Apple често е PCM)</string>
+    <string name="conv_reason_codec_unsupported">Кодекът на видеото е %1$s, а не универсалният за Android H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">Видеото е в Dolby Vision; галериите на Android по правило не го поддържат</string>
+    <string name="conv_reason_hdr">Видеото е в HDR (характеристики на предаване %1$s); галерията на част от устройствата дава артефакти или черен екран</string>
+    <string name="conv_reason_hev1">H.265 е отбелязан като hev1 (част от устройствата разпознават само hvc1)</string>
+    <string name="conv_reason_mirror_matrix">Видеото съдържа матрица за огледално отражение (матрицата за завъртане на MP4 не изразява огледало)</string>
+    <string name="conv_tag_sanitize">Почистване</string>
 </resources>

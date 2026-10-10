@@ -92,4 +92,11 @@
     <string name="screen_date_yesterday">เมื่อวาน</string>
     <string name="screen_date_this_year">%2$d/%1$d</string>
     <string name="screen_date_other_year">%3$d/%2$d/%1$d</string>
+    <string name="screen_album_unnamed">ไม่มีชื่อ</string>
+    <string name="screen_eta_minutes">%1$d นาที %2$s วินาที</string>
+    <string name="screen_eta_seconds">%1$d วินาที</string>
+    <string name="screen_transcode_eta">เหลือเวลาอีก %1$s</string>
+    <string name="screen_transcode_frames">%1$d/%2$d เฟรม</string>
+    <string name="screen_transcode_in_progress">กำลังแปลงรหัส · ประมวลผลแล้ว %1$d เฟรม</string>
+    <string name="screen_transcode_progress">แปลงรหัส %1$d%%</string>
 </resources>

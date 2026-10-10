@@ -1,5 +1,7 @@
 package com.zsz.zlivephoto.core
 
+import com.zsz.zlivephoto.R
+
 /**
  * JPEG 段级工具：marker 扫描、EOI 定位、XMP APP1 替换/插入。
  * 所有操作均为字节级，不重编码，保证图像数据无损。
@@ -41,7 +43,7 @@ internal object JpegUtil {
      */
     fun iterateSegments(data: ByteArray, start: Int = 0): Sequence<Segment> = sequence {
         if (data.size - start < 4 || data[start] != 0xFF.toByte() || data[start + 1] != 0xD8.toByte()) {
-            throw JpegException("不是有效的 JPEG（缺少 SOI）")
+            throw JpegException(CoreText.of(R.string.conv_err_jpeg_no_soi))
         }
         yield(Segment(0xD8.toByte(), start, 2, start + 2, 0))
         var pos = start + 2
@@ -49,7 +51,7 @@ internal object JpegUtil {
 
         while (pos + 4 <= size) {
             if (data[pos] != 0xFF.toByte()) {
-                throw JpegException("段边界错位 @$pos")
+                throw JpegException(CoreText.of(R.string.conv_err_jpeg_seg_boundary, pos))
             }
             val marker = data[pos + 1]
             if (marker in standaloneMarkers) {
@@ -59,7 +61,7 @@ internal object JpegUtil {
             }
             val segLen = BinaryUtils.readU16BE(data, pos + 2)
             if (segLen < 2 || pos + 2 + segLen > size) {
-                throw JpegException("段长度非法 @$pos")
+                throw JpegException(CoreText.of(R.string.conv_err_jpeg_seg_length, pos))
             }
             yield(Segment(marker, pos, 2 + segLen, pos + 4, segLen - 2))
             pos += 2 + segLen
@@ -88,7 +90,7 @@ internal object JpegUtil {
             }
             i++
         }
-        throw JpegException("未找到 EOI（文件可能损坏）")
+        throw JpegException(CoreText.of(R.string.conv_err_jpeg_no_eoi))
     }
 
     /**
@@ -109,7 +111,7 @@ internal object JpegUtil {
                 }
             }
             if (sosPayloadEnd == null) {
-                throw JpegException("JPEG 缺少 SOS 段")
+                throw JpegException(CoreText.of(R.string.conv_err_jpeg_no_sos))
             }
             val eoiEnd = findEoiEnd(data, sosPayloadEnd)
             result.add(data.copyOfRange(pos, eoiEnd))

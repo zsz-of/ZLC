@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">Mappa upprunaskrár ekki tiltæk: %1$s</string>
     <string name="main_export_replace_failed">Ekki tókst að skipta út upprunaskrá: %1$s</string>
     <string name="main_export_replace_failed_bare">Ekki tókst að skipta út upprunaskrá</string>
+    <string name="main_status_read_failed">Ekki tókst að lesa valda skrá</string>
+    <string name="main_status_source_missing">Upprunaskráin er ekki til eða er ólæsileg</string>
 </resources>

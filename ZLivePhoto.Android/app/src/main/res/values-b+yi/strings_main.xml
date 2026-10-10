@@ -139,4 +139,6 @@
         <item quantity="one">%1$d אָריגינעלער טעקע אַוועקגענומען</item>
         <item quantity="other">%1$d אָריגינעלע טעקעס אַוועקגענומען</item>
     </plurals>
+    <string name="main_status_read_failed">די אויסגעקליבענע טעקע קען נישט געלייענט ווערן</string>
+    <string name="main_status_source_missing">די מקור־טעקע עקזיסטירט נישט אָדער איז נישט לייענבאַר</string>
 </resources>

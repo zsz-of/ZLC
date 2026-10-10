@@ -81,5 +81,29 @@
     <string name="conv_reminder_dont_remind">Endi koʻrsatmaslik</string>
     <string name="conv_reminder_confirm_ok">Tushundim</string>
     <string name="conv_reminder_uninstall">Oʻchirib tashlash</string>
-
+    <string name="conv_err_exif_bad_endian">Yaroqsiz TIFF bayt tartibi belgisi</string>
+    <string name="conv_err_exif_inline_type">Qoʻllab-quvvatlanmaydigan inline turi %1$d</string>
+    <string name="conv_err_exif_type">Qoʻllab-quvvatlanmaydigan TIFF turi %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI topilmadi (fayl shikastlangan boʻlishi mumkin)</string>
+    <string name="conv_err_jpeg_no_soi">Yaroqli JPEG emas (SOI yoʻq)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG da SOS segmenti yoʻq</string>
+    <string name="conv_err_jpeg_seg_boundary">Segment chegarasi mos emas @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Segment uzunligi yaroqsiz @%1$d</string>
+    <string name="conv_err_json_type">Qoʻllab-quvvatlanmaydigan JSON qiymat turi: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box oʻlchami yaroqsiz</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box yoʻq</string>
+    <string name="conv_err_mp4_no_moov">MP4 da moov box yoʻq</string>
+    <string name="conv_log_sanitize_dropped_prefix">Qoʻshimcha treklar olib tashlandi (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Qoʻshimcha treklarni tozalash muvaffaqiyatsiz (%1$s), asl holida chiqarildi</string>
+    <string name="conv_log_sanitize_no_video_track">Kirish videosida foydalanish mumkin boʻlgan video trek yoʻq, qoʻshimcha treklarni tozalash oʻtkazib yuborildi</string>
+    <string name="conv_log_sanitize_normalized">Konteyner brendi bayt darajasida normallashtirildi (nusxa koʻchirmasdan, namuna maʼlumotlari oʻzgartirilmadi)</string>
+    <string name="conv_log_sanitize_track_add_failed">Video trekni qayta qadoqlovchiga qoʻshib boʻlmadi (%1$s), qoʻshimcha treklarni tozalash oʻtkazib yuborildi</string>
+    <string name="conv_reason_10bit_h265">Video %1$dbit H.265 (HDR Live Photo), baʼzi qurilmalar albomi dekodlay olmaydi</string>
+    <string name="conv_reason_audio_not_aac">Audio trek kodlashuvi %1$s, AAC emas (jonli foto standarti AAC talab qiladi, Apple koʻpincha PCM ishlatadi)</string>
+    <string name="conv_reason_codec_unsupported">Video kodlashuvi %1$s, Androidda keng tarqalgan H.264/H.265 emas</string>
+    <string name="conv_reason_dolby_vision">Video Dolby Vision, Android albomlari odatda qoʻllamaydi</string>
+    <string name="conv_reason_hdr">Video HDR (%1$s uzatish xususiyati), baʼzi qurilmalar albomida tasvir buzilishi yoki qora ekran boʻlishi mumkin</string>
+    <string name="conv_reason_hev1">H.265 hev1 deb belgilangan (baʼzi qurilmalar faqat hvc1 ni taniydi)</string>
+    <string name="conv_reason_mirror_matrix">Videoda aks ettirish matritsasi bor (MP4 aylantirish matritsasi aksni ifodalay olmaydi)</string>
+    <string name="conv_tag_sanitize">Tozalash</string>
 </resources>

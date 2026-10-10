@@ -78,5 +78,29 @@
     <string name="conv_reminder_dont_remind">უკეთ აღარ გავაჩვენოთ</string>
     <string name="conv_reminder_confirm_ok">ვიცოდი</string>
     <string name="conv_reminder_uninstall">აღარგრძელებით</string>
-
+    <string name="conv_err_exif_bad_endian">არასწორი TIFF ბაიტების რიგის ნიშანი</string>
+    <string name="conv_err_exif_inline_type">მხარდაუჭერელი inline ტიპი %1$d</string>
+    <string name="conv_err_exif_type">მხარდაუჭერელი TIFF ტიპი %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI ვერ მოიძებნა (ფაილი შესაძლოა დაზიანებულია)</string>
+    <string name="conv_err_jpeg_no_soi">არ არის სწორი JPEG (SOI აკლია)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG-ს აკლია SOS სეგმენტი</string>
+    <string name="conv_err_jpeg_seg_boundary">სეგმენტის საზღვრის გადახრა @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">სეგმენტის სიგრძე არასწორია @%1$d</string>
+    <string name="conv_err_json_type">მხარდაუჭერელი JSON მნიშვნელობის ტიპი: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box-ის ზომა არასწორია</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box აკლია</string>
+    <string name="conv_err_mp4_no_moov">MP4-ს აკლია moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">დამატებითი ტრეკები ამოღებულია (%1$s),</string>
+    <string name="conv_log_sanitize_exception">დამატებითი ტრეკების გასუფთავება ვერ მოხერხდა (%1$s), გამოტანილია როგორც არის</string>
+    <string name="conv_log_sanitize_no_video_track">შემავალ ვიდეოს არ აქვს გამოსადეგი ვიდეო ტრეკი, დამატებითი ტრეკების გასუფთავება გამოტოვებულია</string>
+    <string name="conv_log_sanitize_normalized">კონტეინერის ბრენდი ბაიტების დონეზე ნორმალიზებულია (ნულოვანი კოპირება, ნიმუშის მონაცემები არ შეცვლილა)</string>
+    <string name="conv_log_sanitize_track_add_failed">ვიდეო ტრეკი ვერ დაემატა რემუქსერს (%1$s), დამატებითი ტრეკების გასუფთავება გამოტოვებულია</string>
+    <string name="conv_reason_10bit_h265">ვიდეო არის %1$dbit H.265 (HDR Live Photo), ზოგი მოწყობილობის ალბომი ვერ დეკოდირებს</string>
+    <string name="conv_reason_audio_not_aac">აუდიო ტრეკის კოდირება %1$s არ არის AAC (მოძრავი ფოტოს სტანდარტი მოითხოვს AAC-ს, Apple ხშირად იყენებს PCM-ს)</string>
+    <string name="conv_reason_codec_unsupported">ვიდეოს კოდირება %1$s არ არის Android-ისთვის ჩვეული H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">ვიდეო არის Dolby Vision, Android-ის ალბომები ჩვეულებრივ არ უჭერენ მხარს</string>
+    <string name="conv_reason_hdr">ვიდეო არის HDR (%1$s გადაცემის მახასიათებელი), ზოგი მოწყობილობის ალბომში შესაძლოა სურათი დაზიანდეს ან შავი ეკრანი იყოს</string>
+    <string name="conv_reason_hev1">H.265 მონიშნულია როგორც hev1 (ზოგი მოწყობილობა მხოლოდ hvc1-ს ცნობს)</string>
+    <string name="conv_reason_mirror_matrix">ვიდეოს აქვს სარკისებური გარდაქმნის მატრიცა (MP4-ის ბრუნვის მატრიცა ვერ გამოხატავს სარკეს)</string>
+    <string name="conv_tag_sanitize">გასუფთავება</string>
 </resources>

@@ -144,4 +144,6 @@
     <string name="main_export_source_dir_unavailable">Source folder unavailable: %1$s</string>
     <string name="main_export_replace_failed">Failed to replace the source file: %1$s</string>
     <string name="main_export_replace_failed_bare">Failed to replace the source file</string>
+    <string name="main_status_read_failed">Cannot read the selected file</string>
+    <string name="main_status_source_missing">The source file does not exist or cannot be read</string>
 </resources>

@@ -80,5 +80,29 @@
     <string name="conv_reminder_dont_remind">Bir daha göstərmə</string>
     <string name="conv_reminder_confirm_ok">Anladım</string>
     <string name="conv_reminder_uninstall">Sil</string>
-
+    <string name="conv_err_exif_bad_endian">Yanlış TIFF bayt sırası işarəsi</string>
+    <string name="conv_err_exif_inline_type">Dəstəklənməyən inline tip: %1$d</string>
+    <string name="conv_err_exif_type">Dəstəklənməyən TIFF tipi: %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI tapılmadı (fayl zədəli ola bilər)</string>
+    <string name="conv_err_jpeg_no_soi">Düzgün JPEG deyil (SOI yoxdur)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG-də SOS seqmenti yoxdur</string>
+    <string name="conv_err_jpeg_seg_boundary">Seqment sərhədi %1$d mövqeyində sürüşüb</string>
+    <string name="conv_err_jpeg_seg_length">%1$d mövqeyində yanlış seqment uzunluğu</string>
+    <string name="conv_err_json_type">Dəstəklənməyən JSON dəyər tipi: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">Yanlış ftyp box ölçüsü</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box yoxdur</string>
+    <string name="conv_err_mp4_no_moov">MP4-də moov box yoxdur</string>
+    <string name="conv_log_sanitize_dropped_prefix">Əlavə yollar silindi (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Əlavə yolların təmizlənməsi alınmadı (%1$s), çıxış dəyişdirilmədi</string>
+    <string name="conv_log_sanitize_no_video_track">Giriş videosunda istifadə edilə bilən video yolu yoxdur, əlavə yolların təmizlənməsi atlanır</string>
+    <string name="conv_log_sanitize_normalized">Konteyner brendi bayt səviyyəsində normallaşdırıldı (sıfır kopyalama, nümunə məlumatları dəyişməz qaldı)</string>
+    <string name="conv_log_sanitize_track_add_failed">Video yolu yenidən paketləyiciyə əlavə edilə bilmədi (%1$s), əlavə yolların təmizlənməsi atlanır</string>
+    <string name="conv_reason_10bit_h265">Video %1$d bit H.265-dir (HDR Live Photo), bəzi modellərin qalereyası onu dekodlaya bilmir</string>
+    <string name="conv_reason_audio_not_aac">Səs yolunun kodeki %1$s-dir, AAC deyil (Motion Photo spesifikasiyası AAC tələb edir, Apple çox vaxt PCM istifadə edir)</string>
+    <string name="conv_reason_codec_unsupported">Video kodeki %1$s, Android-də adi olan H.264/H.265 deyil</string>
+    <string name="conv_reason_dolby_vision">Video Dolby Vision-dır, Android qalereyaları onu adətən dəstəkləmir</string>
+    <string name="conv_reason_hdr">Video HDR-dır (%1$s ötürmə xarakteristikası), bəzi modellərin qalereyası artefakt və ya qara ekran göstərir</string>
+    <string name="conv_reason_hev1">H.265 hev1 kimi işarələnib (bəzi modellər yalnız hvc1-i tanıyır)</string>
+    <string name="conv_reason_mirror_matrix">Videoda güzgü matrisi var (MP4 fırlatma matrisi güzgünü ifadə edə bilmir)</string>
+    <string name="conv_tag_sanitize">Təmizləmə</string>
 </resources>

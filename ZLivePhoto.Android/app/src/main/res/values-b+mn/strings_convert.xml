@@ -79,5 +79,29 @@
     <string name="conv_reminder_dont_remind">Дахин харуулахгүй</string>
     <string name="conv_reminder_confirm_ok">Ойлголоо</string>
     <string name="conv_reminder_uninstall">Устгах</string>
-
+    <string name="conv_err_exif_bad_endian">Хүчингүй TIFF байтын дарааллын тэмдэг</string>
+    <string name="conv_err_exif_inline_type">Дэмжигдээгүй inline төрөл %1$d</string>
+    <string name="conv_err_exif_type">Дэмжигдээгүй TIFF төрөл %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI олдсонгүй (файл гэмтсэн байж магадгүй)</string>
+    <string name="conv_err_jpeg_no_soi">Хүчинтэй JPEG биш (SOI дутуу)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG-д SOS сегмент дутуу</string>
+    <string name="conv_err_jpeg_seg_boundary">Сегментийн хил зөрүүтэй @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">Сегментийн урт хүчингүй @%1$d</string>
+    <string name="conv_err_json_type">Дэмжигдээгүй JSON утгын төрөл: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box-ын хэмжээ хүчингүй</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box дутуу</string>
+    <string name="conv_err_mp4_no_moov">MP4-д moov box дутуу</string>
+    <string name="conv_log_sanitize_dropped_prefix">Нэмэлт замууд хасагдсан (%1$s),</string>
+    <string name="conv_log_sanitize_exception">Нэмэлт замуудыг цэвэрлэх амжилтгүй (%1$s), байгаагаар нь гаргав</string>
+    <string name="conv_log_sanitize_no_video_track">Оролтын видеонд ашиглах боломжтой видео зам байхгүй, нэмэлт замуудыг цэвэрлэхийг алгасав</string>
+    <string name="conv_log_sanitize_normalized">Контейнерийн брэнд байтын түвшинд хэвийн болгогдсон (тэг хуулалт, дээжийн өгөгдөл өөрчлөгдөөгүй)</string>
+    <string name="conv_log_sanitize_track_add_failed">Видео замыг дахин савлагч руу нэмж чадсангүй (%1$s), нэмэлт замуудыг цэвэрлэхийг алгасав</string>
+    <string name="conv_reason_10bit_h265">Видео %1$dbit H.265 (HDR Live Photo), зарим төхөөрөмжийн цомог задалж чадахгүй</string>
+    <string name="conv_reason_audio_not_aac">Аудио замын кодчилол %1$s, AAC биш (хөдөлгөөнт зургийн стандарт AAC шаарддаг, Apple ихэвчлэн PCM хэрэглэдэг)</string>
+    <string name="conv_reason_codec_unsupported">Видеоны кодчилол %1$s, Android-д нийтлэг H.264/H.265 биш</string>
+    <string name="conv_reason_dolby_vision">Видео Dolby Vision, Android цомгууд ихэвчлэн дэмждэггүй</string>
+    <string name="conv_reason_hdr">Видео HDR (%1$s дамжуулалтын шинж), зарим төхөөрөмжийн цомогт дүрс гэмтэх эсвэл хар дэлгэц гарах боломжтой</string>
+    <string name="conv_reason_hev1">H.265 нь hev1 гэж тэмдэглэгдсэн (зарим төхөөрөмж зөвхөн hvc1-ийг таньдаг)</string>
+    <string name="conv_reason_mirror_matrix">Видеонд толин хувирлын матриц байна (MP4-ийн эргэлтийн матриц толийг илэрхийлж чадахгүй)</string>
+    <string name="conv_tag_sanitize">Цэвэрлэгээ</string>
 </resources>

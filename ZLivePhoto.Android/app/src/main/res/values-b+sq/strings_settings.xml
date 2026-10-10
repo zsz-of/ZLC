@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Sa më e vogël vlera, aq më e lartë cilësia dhe aq më i madh skedari (parazgjedhur 18)</string>
     <string name="settings_encoder_title">Koduesi</string>
     <string name="settings_compress_preset_title">Paracaktimi i kompresimit</string>
-
+    <string name="settings_preset_amber">Qelibar</string>
+    <string name="settings_preset_forest">Jeshile pylli</string>
+    <string name="settings_preset_ocean">Blu oqeani</string>
+    <string name="settings_preset_olive">Ulliri</string>
+    <string name="settings_preset_sunset">Portokalli perëndimi</string>
+    <string name="settings_preset_teal">Jeshile blu</string>
+    <string name="settings_preset_violet">Vjollcë</string>
 </resources>

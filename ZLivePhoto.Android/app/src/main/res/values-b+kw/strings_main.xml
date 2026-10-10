@@ -174,4 +174,6 @@
     <string name="main_export_source_dir_unavailable">Fylenva an fylen fenten anhedhys: %1$s</string>
     <string name="main_export_replace_failed">Repla an fylen fenten a fyllyas: %1$s</string>
     <string name="main_export_replace_failed_bare">Repla an fylen fenten a fyllyas</string>
+    <string name="main_status_read_failed">Ny yllir redya an fylen dewisys</string>
+    <string name="main_status_source_missing">An fylen fenten nag eus po nag yw redyadow</string>
 </resources>

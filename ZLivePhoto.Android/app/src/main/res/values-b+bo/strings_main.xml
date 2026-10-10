@@ -147,4 +147,6 @@
     <string name="main_export_source_dir_unavailable">ཁུངས་ཡིག་ཆའི་སྣོད་ཡིག་ལག་ལེན་མི་ཐུབ: %1$s</string>
     <string name="main_export_replace_failed">ཁུངས་ཡིག་ཆ་བརྗེ་བ་མ་གྲུབ: %1$s</string>
     <string name="main_export_replace_failed_bare">ཁུངས་ཡིག་ཆ་བརྗེ་བ་མ་གྲུབ</string>
+    <string name="main_status_read_failed">འདེམས་པའི་ཡིག་ཆ་ཀློག་མི་ཐུབ</string>
+    <string name="main_status_source_missing">ཁུངས་ཡིག་ཆ་མེད་པའམ་ཀློག་མི་ཐུབ</string>
 </resources>

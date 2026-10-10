@@ -160,4 +160,6 @@
     <string name="main_export_source_dir_unavailable">Աղբյուր ֆայլի թղթապանակը հասանելի չէ՝ %1$s</string>
     <string name="main_export_replace_failed">Աղբյուր ֆայլի փոխարինումը ձախողվեց՝ %1$s</string>
     <string name="main_export_replace_failed_bare">Աղբյուր ֆայլի փոխարինումը ձախողվեց</string>
+    <string name="main_status_read_failed">Չհաջողվեց կարդալ ընտրված ֆայլը</string>
+    <string name="main_status_source_missing">Աղբյուր ֆայլը գոյություն չունի կամ անընթեռնելի է</string>
 </resources>

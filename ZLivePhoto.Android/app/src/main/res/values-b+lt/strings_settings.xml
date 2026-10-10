@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">Kuo mažesnė reikšmė, tuo aukštesnė kokybė ir didesnis failas (numatytoji 18)</string>
     <string name="settings_encoder_title">Kodavimo priemonė</string>
     <string name="settings_compress_preset_title">Glaudinimo profilis</string>
-
+    <string name="settings_preset_amber">Gintarinė</string>
+    <string name="settings_preset_forest">Miško žalia</string>
+    <string name="settings_preset_ocean">Vandenyno mėlyna</string>
+    <string name="settings_preset_olive">Alyvuogių</string>
+    <string name="settings_preset_sunset">Saulėlydžio oranžinė</string>
+    <string name="settings_preset_teal">Melsvai žalia</string>
+    <string name="settings_preset_violet">Violetinė</string>
 </resources>

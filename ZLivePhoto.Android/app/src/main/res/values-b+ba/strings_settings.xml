@@ -95,5 +95,11 @@
     <string name="settings_crf_hint">Бәләкәйерәк ҡиммәт — юғарыраҡ сифат һәм ҙурыраҡ күләм (ғәҙәттә 18)</string>
     <string name="settings_encoder_title">Кодлаусы</string>
     <string name="settings_compress_preset_title">Ҡыҫыу профиле</string>
-
+    <string name="settings_preset_amber">Гәрәбә</string>
+    <string name="settings_preset_forest">Урман йәшелле</string>
+    <string name="settings_preset_ocean">Океан зәңгәр</string>
+    <string name="settings_preset_olive">Зәйтүн</string>
+    <string name="settings_preset_sunset">Ҡояш байыу әфлисун</string>
+    <string name="settings_preset_teal">Зәңгәрһыу йәшел</string>
+    <string name="settings_preset_violet">Шәмәхә</string>
 </resources>

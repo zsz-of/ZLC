@@ -95,4 +95,11 @@
     <string name="screen_date_yesterday">Gisteren</string>
     <string name="screen_date_this_year">%2$d-%1$d</string>
     <string name="screen_date_other_year">%3$d-%2$d-%1$d</string>
+    <string name="screen_album_unnamed">Naamloos</string>
+    <string name="screen_eta_minutes">%1$d min %2$s s</string>
+    <string name="screen_eta_seconds">%1$d s</string>
+    <string name="screen_transcode_eta">Nog %1$s</string>
+    <string name="screen_transcode_frames">%1$d/%2$d frames</string>
+    <string name="screen_transcode_in_progress">Transcodering · %1$d frames verwerkt</string>
+    <string name="screen_transcode_progress">Transcodering %1$d%%</string>
 </resources>

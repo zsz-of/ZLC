@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 本文档为尽力翻译（模型辅助），可能存在不准确之处，欢迎社区修正。
-     ii（彝语 / 凉山彝文 / Nuosu）属低资源语种（分级 C）：本轮无可靠彝文词表，为避免臆造彝文，
-     暂以简体中文基准文本作为兜底值填充全部 key，保证 404/404 覆盖；品牌专名与纯格式串保持原样。
-     复数类别按 CLDR ii 仅给 other。待母语者审校后再替换为彝文正文。 -->
+     ii（彝语 / 凉山彝文 / Nuosu）属低资源语种（分级 C）。
+     本轮采用「有据则译、无据保留中文」：只使用可溯源词表（《凉山规范彝文词典》、
+     SIL Webonary 彝英词典、彝文圣经词汇表，见 .agents/tools/ii_glossary_merged.json）
+     中确实存在的词形；整条拼不出自然句子的，一律保留简体中文原文。
+     476 条 key 中约 96 条已本地化，其余保留中文；品牌专名与技术名词保持原样。
+     **不再使用任何无出处的拼凑音节**。译本未经母语者审校，欢迎社区修正。 -->
 <resources>
     <!-- ── 状态栏 / 提示（Activity 方法内，getString） ── -->
-    <string name="main_status_ready">就绪</string>
+    <string name="main_status_ready">ꄻꄉ ꃅꌐ</string>
     <string name="main_status_location_granted">已获得位置权限，转换后将保留 GPS 元数据</string>
     <string name="main_status_location_denied">未授予位置权限：转换后的照片将丢失 GPS 位置信息</string>
     <string name="main_status_all_files_granted">已获得「所有文件访问」权限，转换将直写相册目录完整保留位置信息</string>
@@ -51,7 +54,7 @@
     <string name="main_status_stopping">正在停止…（完成当前文件后停止）</string>
     <string name="main_status_stopping_import">正在停止导入…</string>
     <string name="main_status_removed">已移除 %1$s</string>
-    <string name="main_status_cleared">已清空</string>
+    <string name="main_status_cleared">ꌩꎳ</string>
     <string name="main_status_nothing_to_convert">没有可转换的文件</string>
     <string name="main_status_folder_unreadable">无法读取所选文件夹</string>
     <string name="main_status_scanning_folder">正在扫描文件夹…</string>
@@ -84,8 +87,8 @@
     <string name="main_info_compose_task">合成任务（点击开始转换执行合成）</string>
     <string name="main_info_done_replaced">完成（替换 %1$d 个源文件）</string>
     <string name="main_info_done_skipped">完成（跳过：同名冲突）</string>
-    <string name="main_info_done_exported">完成（导出 %1$d 个）</string>
-    <string name="main_info_failed">失败：%1$s</string>
+    <string name="main_info_done_exported">ꃅꌐ（ꈻꅐ %1$d）</string>
+    <string name="main_info_failed">ꈔ：%1$s</string>
 
     <!-- ── 进度明细（progressDetail） ── -->
     <string name="main_progress_added">已添加 %1$d/%2$d</string>
@@ -116,15 +119,15 @@
     <string name="main_label_conflict_always">为后续冲突使用此处理方法</string>
 
     <!-- ── 对话框按钮 ── -->
-    <string name="main_btn_grant">授权</string>
-    <string name="main_btn_deny">拒绝</string>
-    <string name="main_btn_go_settings">去设置</string>
-    <string name="main_btn_cancel">取消</string>
-    <string name="main_btn_grant_access">去授权</string>
+    <string name="main_btn_grant">ꌅꈌꁵ</string>
+    <string name="main_btn_deny">ꉬꀋꅲ</string>
+    <string name="main_btn_go_settings">ꄻꄉ</string>
+    <string name="main_btn_cancel">ꇤꇧꎭ</string>
+    <string name="main_btn_grant_access">ꌅꈌꁵ</string>
     <string name="main_btn_got_it">知道了</string>
     <string name="main_btn_not_now">暂不</string>
-    <string name="main_btn_skip">跳过</string>
-    <string name="main_btn_overwrite">覆盖</string>
+    <string name="main_btn_skip">ꈳꅐ</string>
+    <string name="main_btn_overwrite">ꉱꄉ</string>
     <string name="main_btn_auto_rename">自动重命名</string>
 
     <!-- ── 转换结果 / 导出失败原因（随「原因：%3$s」展示给用户） ── -->
@@ -146,5 +149,7 @@
     <string name="main_export_source_dir_unwritable">源文件目录不可写，伴生文件未能写回</string>
     <string name="main_export_source_dir_unavailable">源文件目录不可用：%1$s</string>
     <string name="main_export_replace_failed">替换源文件失败：%1$s</string>
-    <string name="main_export_replace_failed_bare">替换源文件失败</string>
+    <string name="main_export_replace_failed_bare">源文件替换失败</string>
+    <string name="main_status_read_failed">无法读取所选文件</string>
+    <string name="main_status_source_missing">源文件不存在或不可读</string>
 </resources>

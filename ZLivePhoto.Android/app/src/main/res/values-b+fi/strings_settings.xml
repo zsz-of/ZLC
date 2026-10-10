@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Pienempi arvo tarkoittaa parempaa laatua ja suurempaa kokoa (oletus 18)</string>
     <string name="settings_encoder_title">Kooderi</string>
     <string name="settings_compress_preset_title">Pakkausprofiili</string>
-
+    <string name="settings_preset_amber">Meripihka</string>
+    <string name="settings_preset_forest">Metsänvihreä</string>
+    <string name="settings_preset_ocean">Valtameren sininen</string>
+    <string name="settings_preset_olive">Oliivi</string>
+    <string name="settings_preset_sunset">Auringonlaskun oranssi</string>
+    <string name="settings_preset_teal">Sinivihreä</string>
+    <string name="settings_preset_violet">Violetti</string>
 </resources>

@@ -160,4 +160,6 @@
     <string name="main_export_source_dir_unavailable">Cartella del file di origine non disponibile: %1$s</string>
     <string name="main_export_replace_failed">Sostituzione del file di origine non riuscita: %1$s</string>
     <string name="main_export_replace_failed_bare">Sostituzione del file di origine non riuscita</string>
+    <string name="main_status_read_failed">Impossibile leggere il file selezionato</string>
+    <string name="main_status_source_missing">Il file di origine non esiste o non è leggibile</string>
 </resources>

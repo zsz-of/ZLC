@@ -100,5 +100,11 @@
     <string name="settings_crf_hint">값이 작을수록 화질이 높고 용량이 커집니다(기본 18)</string>
     <string name="settings_encoder_title">인코더</string>
     <string name="settings_compress_preset_title">압축 프리셋</string>
-
+    <string name="settings_preset_amber">앰버</string>
+    <string name="settings_preset_forest">포레스트 그린</string>
+    <string name="settings_preset_ocean">오션 블루</string>
+    <string name="settings_preset_olive">올리브</string>
+    <string name="settings_preset_sunset">선셋 오렌지</string>
+    <string name="settings_preset_teal">틸</string>
+    <string name="settings_preset_violet">바이올렛</string>
 </resources>

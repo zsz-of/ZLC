@@ -164,4 +164,6 @@
     <string name="main_export_source_dir_unavailable">Сығанаҡ файл папкаһы юҡ: %1$s</string>
     <string name="main_export_replace_failed">Сығанаҡ файлды алмаштырыу уңышһыҙ: %1$s</string>
     <string name="main_export_replace_failed_bare">Сығанаҡ файлды алмаштырыу уңышһыҙ</string>
+    <string name="main_status_read_failed">Һайланған файлды уҡып булмай</string>
+    <string name="main_status_source_missing">Сығанаҡ файл юҡ йәки уҡылмай</string>
 </resources>

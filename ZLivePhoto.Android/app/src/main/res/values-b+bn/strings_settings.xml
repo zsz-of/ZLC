@@ -83,4 +83,11 @@
     <string name="settings_crf_hint">কম মান মানে বেশি কোয়ালিটি ও বড় ফাইল (ডিফল্ট 18)</string>
     <string name="settings_encoder_title">এনকোডার</string>
     <string name="settings_compress_preset_title">কম্প্রেশন প্রিসেট</string>
+    <string name="settings_preset_amber">অ্যাম্বার</string>
+    <string name="settings_preset_forest">বনের সবুজ</string>
+    <string name="settings_preset_ocean">সামুদ্রিক নীল</string>
+    <string name="settings_preset_olive">জলপাই</string>
+    <string name="settings_preset_sunset">সূর্যাস্ত কমলা</string>
+    <string name="settings_preset_teal">ফিরোজা</string>
+    <string name="settings_preset_violet">বেগুনি</string>
 </resources>

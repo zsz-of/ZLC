@@ -160,4 +160,6 @@
     <string name="main_export_source_dir_unavailable">Папката на изворната датотека е недостапна: %1$s</string>
     <string name="main_export_replace_failed">Замената на изворната датотека не успеа: %1$s</string>
     <string name="main_export_replace_failed_bare">Замената на изворната датотека не успеа</string>
+    <string name="main_status_read_failed">Избраната датотека не може да се прочита</string>
+    <string name="main_status_source_missing">Изворната датотека не постои или не може да се прочита</string>
 </resources>

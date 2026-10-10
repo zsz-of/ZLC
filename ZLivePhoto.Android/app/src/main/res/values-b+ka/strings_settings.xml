@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">რაც ნაკლებია მნიშვნელობა, მით უფრო მაღალია ხარისხი და დიდია ფაილი (ნაგულისხმევი 18)</string>
     <string name="settings_encoder_title">ენკოდერი</string>
     <string name="settings_compress_preset_title">შეკუმშვის წინასწარ დაყენება</string>
-
+    <string name="settings_preset_amber">ქარვისფერი</string>
+    <string name="settings_preset_forest">ტყის მწვანე</string>
+    <string name="settings_preset_ocean">ოკეანის ლურჯი</string>
+    <string name="settings_preset_olive">ზეთისხილისფერი</string>
+    <string name="settings_preset_sunset">მზის ჩასვლის ნარინჯისფერი</string>
+    <string name="settings_preset_teal">ფირუზისფერი</string>
+    <string name="settings_preset_violet">იისფერი</string>
 </resources>

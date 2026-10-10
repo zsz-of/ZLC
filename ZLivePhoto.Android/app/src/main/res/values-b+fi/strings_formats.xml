@@ -36,4 +36,35 @@
     <string name="fmt_err_vivo_companion_missing">Rinnakkaisvideotiedosto puuttuu: %1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG:n rungon jäsennys epäonnistui</string>
     <string name="fmt_err_vivo_companion_invalid">Rinnakkainen MP4 ei ole kelvollinen (ftyp-box puuttuu)</string>
+    <string name="fmt_log_apple_heic_no_pair">Kansikuva on HEIC: pariutumistunnistetta ei toistaiseksi kirjoiteta (HEIC:n EXIF on Exif-kohteessa, se on toteutettava erikseen); ContentIdentifier kirjoitetaan vain MOV-puolelle</string>
+    <string name="fmt_log_apple_still_found">Apple-pysäytyskuvan ajankohta %1$d ms luettu (mebx/elst)</string>
+    <string name="fmt_log_apple_still_missing">Apple-pysäytyskuvan ajankohtaa ei luettu (ei tyhjää mebx/elst-editiä), viennissä käytetään videon keskikohtaa</string>
+    <string name="fmt_log_apple_still_no_carrier">Pysäytyskuvan ajankohdalle %1$d ms ei ole vielä kantajaa: aito Apple käyttää mebx timed metadata -raitaa, tämä työkalu ei luo sitä toistaiseksi (MOV:n still-image-time kirjoitetaan arvoksi -1)</string>
+    <string name="fmt_log_apple_write">Kirjoitetaan Apple-muoto: %1$s + %2$s (ContentIdentifier=%3$s...)</string>
+    <string name="fmt_log_extract_write">Purkutuloste: %1$s (kuva %2$dB, HDR=%3$s) + %4$s (video %5$dB)</string>
+    <string name="fmt_log_google_write">Kirjoitetaan Google-muoto: %1$s (kuva %2$dB + video %3$dB)</string>
+    <string name="fmt_log_honor_write">Kirjoitetaan Honor-muoto: %1$s (kuva %2$dB + video %3$dB + EIS %4$dB, LIVE_%5$s)</string>
+    <string name="fmt_log_lpex_fail">lpex-yhdistäminen epäonnistui, ohitetaan (ei vaikuta toistoon): %1$s</string>
+    <string name="fmt_log_lpex_ok">lpex box (LivePhotoExtension) yhdistetty ja lisätty moov-rakenteeseen</string>
+    <string name="fmt_log_meizu_write">Kirjoitetaan Meizu-muoto: %1$s (kuva %2$dB + video %3$dB)</string>
+    <string name="fmt_log_nubia_write">Kirjoitetaan Nubia-muoto: %1$s (JPEG %2$dB + 1B täyte + video %3$dB + trailer %4$dB, UserComment sisältää "%5$s")</string>
+    <string name="fmt_log_oppo_write">Kirjoitetaan OPPO-muoto: %1$s (kuva %2$dB + video %3$dB + trailer %4$dB)</string>
+    <string name="fmt_log_parse_apple">Jäsennetään Apple Live Photona</string>
+    <string name="fmt_log_parse_google">Jäsennetään Google Motion Photona</string>
+    <string name="fmt_log_parse_honor">Jäsennetään Honor Live Photona (MP4 large size + uuid EIS matrix)</string>
+    <string name="fmt_log_parse_meizu">Jäsennetään Meizu Live Photona</string>
+    <string name="fmt_log_parse_nubia">Jäsennetään Nubia Live Photona (nubiaVpfile-trailer)</string>
+    <string name="fmt_log_parse_oppo">Jäsennetään OPPO Live Photona</string>
+    <string name="fmt_log_parse_vivo">Jäsennetään vivo-kaksitiedostoisena Live Photona</string>
+    <string name="fmt_log_parse_vivo_single">Jäsennetään vivo-yksitiedostoisena Live Photona</string>
+    <string name="fmt_log_parse_xiaomi">Jäsennetään Xiaomi Live Photona (Google-yhteensopiva)</string>
+    <string name="fmt_log_vivo_id_mismatch">JPG:n ja MP4:n livephoto-ID ei täsmää: %1$s / %2$s</string>
+    <string name="fmt_log_vivo_single_write">Kirjoitetaan vivo-yksitiedostoinen Live Photo: %1$s (kuva %2$dB + video %3$dB (sisältää vivoMediaEStream + lpex) + trailer %4$dB)</string>
+    <string name="fmt_log_vivo_write">Kirjoitetaan vivo-muoto: %1$s.jpg + %1$s.mp4 (livephoto-ID: %2$s)</string>
+    <string name="fmt_log_xiaomi_write">Kirjoitetaan Xiaomi-muoto: %1$s (kuva %2$dB + video %3$dB, EXIF 0x8897=1)</string>
+    <string name="fmt_tag_extract">Pura</string>
+    <string name="fmt_tag_honor">Honor</string>
+    <string name="fmt_tag_meizu">Meizu</string>
+    <string name="fmt_tag_nubia">Nubia</string>
+    <string name="fmt_tag_xiaomi">Xiaomi</string>
 </resources>

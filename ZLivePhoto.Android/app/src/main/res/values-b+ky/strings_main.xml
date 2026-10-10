@@ -170,4 +170,6 @@
     <string name="main_export_source_dir_unavailable">Түпнуска файлдын каталогу жеткиликсиз: %1$s</string>
     <string name="main_export_replace_failed">Түпнуска файлды алмаштыруу ишке ашкан жок: %1$s</string>
     <string name="main_export_replace_failed_bare">Түпнуска файлды алмаштыруу ишке ашкан жок</string>
+    <string name="main_status_read_failed">Тандалган файлды окуу мүмкүн эмес</string>
+    <string name="main_status_source_missing">Баштапкы файл жок же окулбайт</string>
 </resources>

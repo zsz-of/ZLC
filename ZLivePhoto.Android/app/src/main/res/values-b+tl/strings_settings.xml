@@ -91,4 +91,11 @@ Ayos lang——gayunpaman, lubos akong nagpapasalamat sa iyong kabutihan!</strin
     <string name="settings_crf_hint">Kung mas maliit ang halaga, mas mataas ang kalidad at mas malaki ang laki (default 18)</string>
     <string name="settings_encoder_title">Encoder</string>
     <string name="settings_compress_preset_title">Preset ng compression</string>
+    <string name="settings_preset_amber">Amber</string>
+    <string name="settings_preset_forest">Berde ng Gubat</string>
+    <string name="settings_preset_ocean">Asul ng Dagat</string>
+    <string name="settings_preset_olive">Olive</string>
+    <string name="settings_preset_sunset">Oranye ng Takipsilim</string>
+    <string name="settings_preset_teal">Teal</string>
+    <string name="settings_preset_violet">Lila</string>
 </resources>

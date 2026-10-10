@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Dəyər nə qədər kiçikdirsə, keyfiyyət bir o qədər yüksək və fayl böyükdür (standart 18)</string>
     <string name="settings_encoder_title">Koder</string>
     <string name="settings_compress_preset_title">Sıxılma profili</string>
-
+    <string name="settings_preset_amber">Kəhrəba</string>
+    <string name="settings_preset_forest">Meşə yaşılı</string>
+    <string name="settings_preset_ocean">Okean mavisi</string>
+    <string name="settings_preset_olive">Zeytun</string>
+    <string name="settings_preset_sunset">Gün batımı narıncısı</string>
+    <string name="settings_preset_teal">Dəniz mavisi</string>
+    <string name="settings_preset_violet">Bənövşəyi</string>
 </resources>

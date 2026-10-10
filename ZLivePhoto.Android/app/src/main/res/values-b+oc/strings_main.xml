@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">Lo dorsièr del fichièr font es pas disponible: %1$s</string>
     <string name="main_export_replace_failed">Fracàs del remplaçament del fichièr font: %1$s</string>
     <string name="main_export_replace_failed_bare">Fracàs del remplaçament del fichièr font</string>
+    <string name="main_status_read_failed">Impossible de legir lo fichièr seleccionat</string>
+    <string name="main_status_source_missing">Lo fichièr font es absent o illegible</string>
 </resources>

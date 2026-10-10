@@ -101,5 +101,11 @@
     <string name="settings_crf_hint">Manja vrijednost znači veću kvalitetu i veću datoteku (zadano 18)</string>
     <string name="settings_encoder_title">Koder</string>
     <string name="settings_compress_preset_title">Unaprijed postavka kompresije</string>
-
+    <string name="settings_preset_amber">Ćilibarska</string>
+    <string name="settings_preset_forest">Šumska zelena</string>
+    <string name="settings_preset_ocean">Oceanska plava</string>
+    <string name="settings_preset_olive">Maslinasta</string>
+    <string name="settings_preset_sunset">Narandžasta zalaska sunca</string>
+    <string name="settings_preset_teal">Tirkizna</string>
+    <string name="settings_preset_violet">Ljubičasta</string>
 </resources>

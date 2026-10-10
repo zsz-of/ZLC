@@ -78,5 +78,29 @@
     <string name="conv_reminder_dont_remind">不再提示</string>
     <string name="conv_reminder_confirm_ok">知道了</string>
     <string name="conv_reminder_uninstall">卸載</string>
-
+    <string name="conv_err_exif_bad_endian">無效的 TIFF 位元組序標記</string>
+    <string name="conv_err_exif_inline_type">不支援的 inline 類型 %1$d</string>
+    <string name="conv_err_exif_type">不支援的 TIFF 類型 %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">未找到 EOI（檔案可能損壞）</string>
+    <string name="conv_err_jpeg_no_soi">不是有效的 JPEG（缺少 SOI）</string>
+    <string name="conv_err_jpeg_no_sos">JPEG 缺少 SOS 段</string>
+    <string name="conv_err_jpeg_seg_boundary">段邊界錯位 @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">段長度非法 @%1$d</string>
+    <string name="conv_err_json_type">不支援的 JSON 值類型：%1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box 尺寸非法</string>
+    <string name="conv_err_mp4_no_ftyp">缺少 ftyp box</string>
+    <string name="conv_err_mp4_no_moov">MP4 缺少 moov box</string>
+    <string name="conv_log_sanitize_dropped_prefix">剔除附加軌（%1$s）</string>
+    <string name="conv_log_sanitize_exception">附加軌淨化失敗（%1$s），已按原樣輸出</string>
+    <string name="conv_log_sanitize_no_video_track">輸入影片沒有可用的影片軌，跳過附加軌淨化</string>
+    <string name="conv_log_sanitize_normalized">已按位元組級正規化容器品牌（零拷貝，樣本資料未改動）</string>
+    <string name="conv_log_sanitize_track_add_failed">影片軌無法加入重封裝器（%1$s），跳過附加軌淨化</string>
+    <string name="conv_reason_10bit_h265">影片為 %1$dbit H.265（HDR 實況），部分機型相簿解碼不了</string>
+    <string name="conv_reason_audio_not_aac">音軌編碼 %1$s 不是 AAC（動態相片規範要求 AAC，Apple 常為 PCM）</string>
+    <string name="conv_reason_codec_unsupported">影片編碼 %1$s 不是 Android 通用的 H.264/H.265</string>
+    <string name="conv_reason_dolby_vision">影片為杜比視界（Dolby Vision），Android 相簿普遍不支援</string>
+    <string name="conv_reason_hdr">影片為 HDR（%1$s 傳輸特性），部分機型相簿會花屏或黑屏</string>
+    <string name="conv_reason_hev1">H.265 標記為 hev1（部分機型只認 hvc1）</string>
+    <string name="conv_reason_mirror_matrix">影片帶鏡像變換矩陣（MP4 旋轉矩陣無法表達鏡像）</string>
+    <string name="conv_tag_sanitize">淨化</string>
 </resources>

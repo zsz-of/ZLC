@@ -79,5 +79,29 @@
     <string name="conv_reminder_dont_remind">o pana ala sin e sona</string>
     <string name="conv_reminder_confirm_ok">pona</string>
     <string name="conv_reminder_uninstall">weka e ilo</string>
-
+    <string name="conv_err_exif_bad_endian">nasin nanpa pi TIFF li ike</string>
+    <string name="conv_err_exif_inline_type">nasin insa %1$d li ike</string>
+    <string name="conv_err_exif_type">nasin TIFF %1$d li ike</string>
+    <string name="conv_err_jpeg_no_eoi">EOI li lon ala (poki li pakala ken)</string>
+    <string name="conv_err_jpeg_no_soi">JPEG li ike (SOI li lon ala)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG li jo ala e poki SOS</string>
+    <string name="conv_err_jpeg_seg_boundary">selo poki li nasa @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">suli poki li ike @%1$d</string>
+    <string name="conv_err_json_type">nasin nanpa JSON %1$s li ike</string>
+    <string name="conv_err_mp4_ftyp_size">suli poki ftyp li ike</string>
+    <string name="conv_err_mp4_no_ftyp">poki ftyp li lon ala</string>
+    <string name="conv_err_mp4_no_moov">poki moov li lon ala lon MP4</string>
+    <string name="conv_log_sanitize_dropped_prefix">lete e linja (%1$s)</string>
+    <string name="conv_log_sanitize_exception">lete e linja ike (%1$s); ijo li kama sama</string>
+    <string name="conv_log_sanitize_no_video_track">sitelen tawa ni li jo ala e linja tawa pona; lete e linja li pini</string>
+    <string name="conv_log_sanitize_normalized">nimi poki li kama nasin nanpa lili (sitelen li kama sin ala, ijo li sama)</string>
+    <string name="conv_log_sanitize_track_add_failed">linja tawa li ken ala kama lon ilo ante (%1$s); lete e linja li pini</string>
+    <string name="conv_reason_10bit_h265">sitelen tawa li H.265 pi nanpa lili %1$d (HDR Live Photo): lon ilo mute poki sitelen li ken ala sona e ona</string>
+    <string name="conv_reason_audio_not_aac">linja kalama li kepeken nasin %1$s, taso nasin AAC li wile (Apple li kepeken PCM mute)</string>
+    <string name="conv_reason_codec_unsupported">nasin sitelen tawa %1$s li H.264/H.265 ala (nasin pona pi Android)</string>
+    <string name="conv_reason_dolby_vision">sitelen tawa li kepeken Dolby Vision: poki sitelen Android mute li ken ala</string>
+    <string name="conv_reason_hdr">sitelen tawa li HDR (nasin %1$s): lon ilo mute poki sitelen li pana e sitelen nasa anu pimeja</string>
+    <string name="conv_reason_hev1">H.265 li jo nimi hev1 (ilo mute li sona e hvc1 taso)</string>
+    <string name="conv_reason_mirror_matrix">sitelen tawa li jo e nasin sike pi sitelen sinpin (nasin sike MP4 li ken ala pana e ni)</string>
+    <string name="conv_tag_sanitize">weka e ike</string>
 </resources>

@@ -139,4 +139,6 @@
     <string name="main_export_source_dir_unavailable">La carpeta d\'origen no està disponible: %1$s</string>
     <string name="main_export_replace_failed">No s\'ha pogut substituir el fitxer d\'origen: %1$s</string>
     <string name="main_export_replace_failed_bare">No s\'ha pogut substituir el fitxer d\'origen</string>
+    <string name="main_status_read_failed">No es pot llegir el fitxer seleccionat</string>
+    <string name="main_status_source_missing">El fitxer d\'origen no existix o no es pot llegir</string>
 </resources>

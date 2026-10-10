@@ -76,5 +76,29 @@
     <string name="conv_reminder_dont_remind">قايتا ئەسكەرتمەسلىك</string>
     <string name="conv_reminder_confirm_ok">چۈشەندىم</string>
     <string name="conv_reminder_uninstall">ئۆچۈرۈش</string>
-
+    <string name="conv_err_exif_bad_endian">TIFF بايت تەرتىپى بەلگىسى ئىناۋەتسىز</string>
+    <string name="conv_err_exif_inline_type">قوللىمايدىغان inline تۈرى %1$d</string>
+    <string name="conv_err_exif_type">قوللىمايدىغان TIFF تۈرى %1$d</string>
+    <string name="conv_err_jpeg_no_eoi">EOI تېپىلمىدى (ھۆججەت بۇزۇلغان بولۇشى مۇمكىن)</string>
+    <string name="conv_err_jpeg_no_soi">ئىناۋەتلىك JPEG ئەمەس (SOI يوق)</string>
+    <string name="conv_err_jpeg_no_sos">JPEG دە SOS بۆلىكى يوق</string>
+    <string name="conv_err_jpeg_seg_boundary">بۆلەك چېگرىسى ماسلاشمىدى @%1$d</string>
+    <string name="conv_err_jpeg_seg_length">بۆلەك ئۇزۇنلۇقى ئىناۋەتسىز @%1$d</string>
+    <string name="conv_err_json_type">قوللىمايدىغان JSON قىممەت تۈرى: %1$s</string>
+    <string name="conv_err_mp4_ftyp_size">ftyp box چوڭلۇقى ئىناۋەتسىز</string>
+    <string name="conv_err_mp4_no_ftyp">ftyp box يوق</string>
+    <string name="conv_err_mp4_no_moov">MP4 دە moov box يوق</string>
+    <string name="conv_log_sanitize_dropped_prefix">قوشۇمچە يوللار چىقىرىۋېتىلدى (%1$s)</string>
+    <string name="conv_log_sanitize_exception">قوشۇمچە يوللارنى تازىلاش مەغلۇپ بولدى (%1$s)، ئەسلى ھالەتتە چىقىرىلدى</string>
+    <string name="conv_log_sanitize_no_video_track">كىرگۈزۈلگەن سىندا ئىشلىتىشكە بولىدىغان سىن يولى يوق، قوشۇمچە يوللارنى تازىلاش ئاتلاندى</string>
+    <string name="conv_log_sanitize_normalized">قاچا ماركىسى بايت دەرىجىسىدە نورماللاشتۇرۇلدى (كۆچۈرمەس، ئۈلگە سانلىق مەلۇمات ئۆزگەرمىدى)</string>
+    <string name="conv_log_sanitize_track_add_failed">سىن يولى قايتا ئوراش قۇرۇلمىسىغا قوشۇلمىدى (%1$s)، قوشۇمچە يوللارنى تازىلاش ئاتلاندى</string>
+    <string name="conv_reason_10bit_h265">سىن %1$dbit H.265 (HDR لىۋې)، بەزى ئۈسكۈنىلەرنىڭ ئالبومى يېشەلمەيدۇ</string>
+    <string name="conv_reason_audio_not_aac">ئاۋاز يولى كودلىمىسى %1$s، AAC ئەمەس (لىۋې فوتو ئۆلچىمى AAC تەلەپ قىلىدۇ، Apple ئادەتتە PCM ئىشلىتىدۇ)</string>
+    <string name="conv_reason_codec_unsupported">سىن كودلىمىسى %1$s، Android دا ئومۇمىي H.264/H.265 ئەمەس</string>
+    <string name="conv_reason_dolby_vision">سىن Dolby Vision، Android ئالبوملىرى ئومۇمەن قوللىمايدۇ</string>
+    <string name="conv_reason_hdr">سىن HDR (%1$s يۆتكەش خۇسۇسىيىتى)، بەزى ئۈسكۈنىلەرنىڭ ئالبومىدا سۈرەت بۇزۇلۇش ياكى قارا ئېكران كۆرۈلىدۇ</string>
+    <string name="conv_reason_hev1">H.265 hev1 دەپ بەلگىلەنگەن (بەزى ئۈسكۈنىلەر پەقەت hvc1 نى تونۇيدۇ)</string>
+    <string name="conv_reason_mirror_matrix">سىندا ئەينەك ئايلاندۇرۇش ماترىتسىسى بار (MP4 ئايلاندۇرۇش ماترىتسىسى ئەينەكنى ئىپادىلىيەلمەيدۇ)</string>
+    <string name="conv_tag_sanitize">تازىلاش</string>
 </resources>

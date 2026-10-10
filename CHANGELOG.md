@@ -4,6 +4,27 @@
 
 ---
 
+## [3.6.1] - 2026-10-10
+
+### 🐛 修复：展开搜索栏时搜索框上下跳动
+
+- **现象**：在内置选择器（相册选择页）点开搜索栏时，搜索框整体向下/向上移动约 4dp，同一行与下方列表一起跳变。
+- **根因**：排序行的三个排序 chip 由 `Surface(onClick = …)` 实现，材料设计会给可点击 `Surface` 施加 `minimumInteractiveComponentSize()` 的 **48dp 最小触摸目标**。于是**收起态**第一行高度取 `max(搜索框 40dp, chip 48dp) = 56dp`，而**展开态**第一行只剩搜索框（48dp），两态相差 8dp，搜索框纵向位置随之跳变。
+- **修复**（`ui/picker/PhotoPickerScreen.kt`）：`SortFieldChip` 用 `CompositionLocalProvider(LocalMinimumInteractiveComponentSize provides Dp.Unspecified)` 取消 48dp 下限，并显式锁定 `height(40.dp)`；`SortControlsRow` 的整行高度同样锁定 40dp。两种状态下第一行都恰好是「40dp 内容 + 8dp 内边距」，搜索框在展开 / 收起前后位置完全不变，chip 与正倒序按钮仍保留 40dp 的完整点击区域。
+
+### 🌏 GitHub 仓库介绍文档（README）改为 8 种语言
+
+- `README.md` 重构为**单文件 8 语**：英语 / 日语 / 韩语 / 简体中文 / 繁体中文 / 俄语 / 法语 / 拉丁语；文件头部提供锚点式语言切换按钮，每种语言一段完整正文。
+- 8 个段落中的事实（版本号、121 种语言、120 个语言目录 100% 翻译、包名、安装包文件名、系统要求）保持一致。
+
+### 🧭 版本分支策略
+
+- 自此版本起，**每个已发布版本的代码都保留在对应的 `v<版本>` 分支**：本次发布前已把 v3.6.0 的代码固化为 `v3.6.0` 分支，`main` 只承载当前开发线（历史 `v1.0.0` / `v2.x` 分支同理，Windows 桌面版最后完整版本仍是 `v2.3.0`）。
+
+### ✅ 验收
+
+- `.\gradlew :app:test :app:assembleNormalRelease :app:assembleGoRelease` 全部通过（`versionCode 47` / `versionName "3.6.1"`），完整版与 Go 轻量版**同步构建发布**。
+
 ## [3.6.0] - 2026-10-06
 
 ### 🌏 多语言补全：120 个语言目录全部 100% 覆盖（404 / 404）

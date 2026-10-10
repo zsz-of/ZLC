@@ -94,10 +94,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.LocalMinimumInteractiveComponentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -129,6 +131,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
@@ -964,7 +967,9 @@ private fun SortControlsRow(
 ) {
     val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
     Row(
-        Modifier.fillMaxWidth().then(modifier),
+        // 行高锁死 40dp（与搜索框等高）：收起态本行与搜索框同处第一行、展开态整体下移到第二行，
+        // 两行等高才能让搜索框的纵向位置在展开/收起前后完全不变，也避免行间距跳变。
+        Modifier.fillMaxWidth().then(modifier).height(40.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -1006,19 +1011,30 @@ private fun SortFieldChip(
 ) {
     val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
     val selected = field == current
-    Surface(
-        onClick = { haptic.click(); onClick(field) },
-        shape = RoundedCornerShape(12.dp),
-        color = if (selected) MaterialTheme.colorScheme.secondaryContainer
-                else MaterialTheme.colorScheme.surfaceContainerHigh,
-        contentColor = if (selected) MaterialTheme.colorScheme.onSecondaryContainer
-                       else MaterialTheme.colorScheme.onSurfaceVariant
-    ) {
-        Text(
-            label,
-            style = MaterialTheme.typography.labelMedium,
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 6.dp)
-        )
+    // 关闭 Material3 默认的 48dp 最小触摸目标强制：Surface(onClick) 会施加
+    // minimumInteractiveComponentSize()，使 chip 高 48dp。收起态第一行取 max(搜索框 40dp, chip 48dp)
+    // = 56dp，展开态第一行只剩搜索框 = 48dp，两态差值让搜索框上下跳动。此处显式取消该下限，
+    // 配合下方 height(40dp) 把 chip 稳定在 40dp（与搜索框、正倒序按钮等高）。
+    CompositionLocalProvider(LocalMinimumInteractiveComponentSize provides Dp.Unspecified) {
+        Surface(
+            onClick = { haptic.click(); onClick(field) },
+            shape = RoundedCornerShape(12.dp),
+            color = if (selected) MaterialTheme.colorScheme.secondaryContainer
+                    else MaterialTheme.colorScheme.surfaceContainerHigh,
+            contentColor = if (selected) MaterialTheme.colorScheme.onSecondaryContainer
+                           else MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.height(40.dp)
+        ) {
+            Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {
+                Text(
+                    label,
+                    style = MaterialTheme.typography.labelMedium,
+                    maxLines = 1,
+                    softWrap = false,
+                    modifier = Modifier.padding(horizontal = 14.dp)
+                )
+            }
+        }
     }
 }
 

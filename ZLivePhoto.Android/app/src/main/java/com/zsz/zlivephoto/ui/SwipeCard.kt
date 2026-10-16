@@ -20,6 +20,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -96,6 +97,7 @@ fun FileCard(
     item: FileItem,
     isConverting: Boolean,
     sameFormat: Boolean,
+    onLongPress: () -> Unit,
     onDelete: (String) -> Unit
 ) {
     val haptic = rememberHapticFeedback()
@@ -121,10 +123,11 @@ fun FileCard(
         label = "badgeAlpha"
     )
 
-    // 处理中 / 退出动画中：禁用侧滑手势
+    // 处理中 / 退出动画中：禁用侧滑与长按手势
     val gestureModifier = if (!isConverting && !exiting) {
-        Modifier.pointerInput(Unit) {
-            detectHorizontalDragGestures(
+        Modifier
+            .pointerInput(Unit) {
+                detectHorizontalDragGestures(
                 onDragStart = { dragging = true },
                 onHorizontalDrag = { change, dragAmount ->
                     change.consume()
@@ -173,8 +176,16 @@ fun FileCard(
                         )
                     }
                 }
-            )
-        }
+                )
+            }
+            .pointerInput(Unit) {
+                // 长按列表项：单独设置本项输出格式。
+                // 侧滑拖动会消费位置变化，长按由其自动取消（不会与侧滑删除冲突）
+                detectTapGestures(onLongPress = {
+                    haptic.longPress()
+                    onLongPress()
+                })
+            }
     } else Modifier
 
     Box(

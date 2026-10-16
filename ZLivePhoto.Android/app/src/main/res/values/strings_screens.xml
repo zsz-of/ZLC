@@ -29,6 +29,7 @@
     <string name="screen_format_xiaomi">小米</string>
     <string name="screen_format_honor">荣耀</string>
     <string name="screen_format_meizu">魅族</string>
+    <string name="screen_format_samsung">三星</string>
     <string name="screen_format_extract">拆解</string>
 
     <!-- 工具箱 BottomSheet -->
@@ -41,6 +42,20 @@
     <string name="screen_replace_mode_desc">转换结果直接写回原文件，不再生成新文件</string>
     <string name="screen_need_all_files_access_hint">需「所有文件访问」权限，点此去授权</string>
     <string name="screen_agree_and_enable">同意并开启</string>
+
+    <!-- 第一版面「处理方式」三选一（替换原图 / 删除原图 / 保留原图） -->
+    <string name="screen_mode_title">处理方式</string>
+    <string name="screen_mode_replace">替换原图</string>
+    <string name="screen_mode_replace_desc">转换结果直接写回原文件</string>
+    <string name="screen_mode_delete">删除原图</string>
+    <string name="screen_mode_delete_desc">处理完成后自动删除原图</string>
+    <string name="screen_mode_keep">保留原图</string>
+    <string name="screen_mode_keep_desc">不删除也不替换原文件</string>
+    <string name="screen_mode_need_access">需「所有文件访问」权限，点击授权</string>
+
+    <!-- 长按列表项：单项输出格式 -->
+    <string name="screen_item_format_title">输出格式</string>
+    <string name="screen_item_format_hint">长按列表项可单独设置格式</string>
 
     <!-- 空状态 / 底部控制面板 -->
     <string name="screen_empty_no_files">还没有添加文件</string>
@@ -85,6 +100,13 @@
     <string name="screen_sort_name">名称</string>
     <string name="screen_sort_asc">正序</string>
     <string name="screen_sort_desc">倒序</string>
+
+    <!-- 选择器媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片） -->
+    <string name="screen_filter_all">全部</string>
+    <string name="screen_filter_live">动态照片</string>
+    <string name="screen_filter_video">视频</string>
+    <string name="screen_filter_image">图片</string>
+    <string name="screen_filter_empty">当前筛选下没有内容</string>
 
     <!-- 相册分组的日期标签（%1$d 等为数字占位符，翻译时可重排） -->
     <string name="screen_date_today">今天</string>

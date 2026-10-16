@@ -178,17 +178,4 @@ internal object QuickClassify {
             false
         }
     }
-
-    /**
-     * 合成模式用：普通封面图片（JPEG / WebP / PNG）。
-     * WebP/PNG 不可能携带动态照片 XMP，故直接视为普通图片收录，
-     * 导入后由 Converter 用系统图片转码器统一转为 100% 质量 JPEG。
-     */
-    fun isPlainComposeImage(path: String): Boolean {
-        return try {
-            isWebp(path) || isPng(path) || isPlainJpeg(path)
-        } catch (_: Exception) {
-            false
-        }
-    }
 }

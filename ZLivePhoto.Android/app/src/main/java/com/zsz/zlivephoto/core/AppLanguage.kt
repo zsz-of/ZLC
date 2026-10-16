@@ -14,7 +14,7 @@ import java.util.Locale
  * 设计：
  * - 选择持久化在 `zlivephoto` SharedPreferences 的 `app_language`（空 = 跟随系统）。
  * - **Android 13+**：走系统 `LocaleManager.setApplicationLocales`（与
- *   `res/xml/locales_config.xml` 声明的 119 个语种配合，系统会自动重建界面）。
+ *   `res/xml/locales_config.xml` 声明的 8 个语种配合，系统会自动重建界面）。
  * - **Android 13 以下**：由 [wrap] 在 `Application.attachBaseContext` 里按已保存语言包装
  *   Context，并在 [set] 时 `recreate()` 当前 Activity 使其生效。
  * - 兜底语言是 `res/values/` 的简体中文：设备语言不在 `locales_config.xml` 清单内时回落中文。

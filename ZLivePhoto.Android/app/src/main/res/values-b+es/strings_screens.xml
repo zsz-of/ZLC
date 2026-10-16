@@ -101,4 +101,5 @@
     <string name="screen_transcode_frames">%1$d/%2$d fotogramas</string>
     <string name="screen_transcode_in_progress">Transcodificando · %1$d fotogramas</string>
     <string name="screen_transcode_progress">Transcodificación %1$d%%</string>
+    <string name="screen_format_samsung">Samsung</string>
 </resources>

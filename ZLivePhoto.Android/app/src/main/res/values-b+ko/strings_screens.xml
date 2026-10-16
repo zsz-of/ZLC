@@ -97,4 +97,5 @@
     <string name="screen_transcode_frames">%1$d/%2$d 프레임</string>
     <string name="screen_transcode_in_progress">트랜스코딩 중 · %1$d 프레임 처리됨</string>
     <string name="screen_transcode_progress">트랜스코딩 %1$d%%</string>
+    <string name="screen_format_samsung">Samsung</string>
 </resources>

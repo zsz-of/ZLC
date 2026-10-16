@@ -57,4 +57,10 @@
     <string name="fmt_tag_meizu">魅族</string>
     <string name="fmt_tag_nubia">努比亞</string>
     <string name="fmt_tag_xiaomi">小米</string>
+    <string name="fmt_samsung">三星動態相片</string>
+    <string name="fmt_err_samsung_no_sef">檔尾闕三星 SEF 尾識（SEFH/SEFT）</string>
+    <string name="fmt_err_samsung_no_video">SEF 尾前未得可用之 MP4 影（闕 ftyp box）</string>
+    <string name="fmt_log_parse_samsung">依三星動態相片而析（SEFH/SEFT 尾部）</string>
+    <string name="fmt_log_samsung_sef">SEF 尾：version=%1$d，錄 %2$d 條</string>
+    <string name="fmt_log_samsung_write">書出三星之式：%1$s（圖 %2$dB + 影片 %3$dB + SEF 尾 %4$dB）</string>
 </resources>

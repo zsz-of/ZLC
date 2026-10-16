@@ -63,4 +63,10 @@
     <string name="fmt_tag_meizu">Meizu</string>
     <string name="fmt_tag_nubia">Nubia</string>
     <string name="fmt_tag_xiaomi">شاومي</string>
+    <string name="fmt_samsung">Samsung Live Photo</string>
+    <string name="fmt_err_samsung_no_sef">علامة ذيل SEF من Samsung (SEFH/SEFT) مفقودة في نهاية الملف</string>
+    <string name="fmt_err_samsung_no_video">لم يُعثر على فيديو MP4 صالح قبل ذيل SEF (لا يوجد ftyp box)</string>
+    <string name="fmt_log_parse_samsung">التحليل وفق Samsung Live Photo (كتلة ذيل SEFH/SEFT)</string>
+    <string name="fmt_log_samsung_sef">ذيل SEF: version=%1$d، السجلات %2$d</string>
+    <string name="fmt_log_samsung_write">كتابة تنسيق Samsung: %1$s (صورة %2$dB + فيديو %3$dB + ذيل SEF %4$dB)</string>
 </resources>

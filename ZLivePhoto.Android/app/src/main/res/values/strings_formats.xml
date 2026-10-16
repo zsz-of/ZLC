@@ -12,6 +12,7 @@
     <string name="fmt_meizu">魅族动态照片</string>
     <string name="fmt_nubia">努比亚动态照片</string>
     <string name="fmt_oppo">OPPO 动态照片</string>
+    <string name="fmt_samsung">三星动态照片</string>
     <string name="fmt_vivo">vivo 动态照片</string>
     <string name="fmt_vivo_single">vivo 单文件实况</string>
     <string name="fmt_xiaomi">小米动态照片</string>
@@ -24,6 +25,7 @@
     -->
     <string name="fmt_err_apple_mov_missing">未找到同名 .mov 视频文件</string>
     <string name="fmt_err_apple_mov_no_ftyp">MOV 文件缺少 ftyp box</string>
+    <string name="fmt_err_apple_remux_failed">MOV 无法重封装为可播放的 MP4（缺少有效的视频轨）</string>
     <string name="fmt_err_extract_read">拆解是输出格式，不应作为输入格式读取</string>
     <string name="fmt_err_no_primary_jpeg">未找到主 JPEG 图像</string>
     <string name="fmt_err_no_mp4_after_jpeg">JPEG 之后未找到有效的 MP4 视频（缺少 ftyp box）</string>
@@ -33,6 +35,8 @@
     <string name="fmt_err_nubia_jpeg_len">尾部记录的 JPEG 长度非法：%1$d</string>
     <string name="fmt_err_nubia_no_padding">JPEG 与视频之间缺少 0x00 填充字节</string>
     <string name="fmt_err_nubia_empty_video">内嵌视频长度为 0</string>
+    <string name="fmt_err_samsung_no_sef">文件尾缺少三星 SEF 尾部标记（SEFH/SEFT）</string>
+    <string name="fmt_err_samsung_no_video">SEF 尾部之前未找到有效的 MP4 视频（缺少 ftyp box）</string>
     <string name="fmt_err_vivo_no_marker">JPG 尾部未找到 vivo livephoto 标记</string>
     <string name="fmt_err_vivo_companion_missing">缺少伴生视频文件：%1$s.mp4</string>
     <string name="fmt_err_vivo_parse_failed">JPG 主体解析失败</string>
@@ -55,11 +59,14 @@
     <string name="fmt_log_parse_meizu">按魅族动态照片解析</string>
     <string name="fmt_log_parse_nubia">按努比亚动态照片解析（nubiaVpfile 尾部）</string>
     <string name="fmt_log_parse_oppo">按 OPPO 动态照片解析</string>
+    <string name="fmt_log_parse_samsung">按三星动态照片解析（SEFH/SEFT 尾部块）</string>
+    <string name="fmt_log_samsung_sef">SEF 尾部：version=%1$d，记录 %2$d 条</string>
     <string name="fmt_log_parse_vivo">按 vivo 双文件动态照片解析</string>
     <string name="fmt_log_parse_vivo_single">按 vivo 单文件实况解析</string>
     <string name="fmt_log_parse_xiaomi">按小米动态照片解析（Google 兼容）</string>
     <string name="fmt_log_apple_still_found">解析到 Apple 静帧时刻 %1$d ms（mebx/elst）</string>
     <string name="fmt_log_apple_still_missing">未解析到 Apple 静帧时刻（无 mebx/elst 空 edit），转出时按视频中点兜底</string>
+    <string name="fmt_log_apple_remux_fallback">MOV 重封装失败，已回退为仅改 ftyp 品牌；该产物部分相册可能无法播放</string>
     <string name="fmt_log_apple_heic_no_pair">封面为 HEIC：暂不写配对标识（HEIC 的 EXIF 在 Exif item 里，需另行实现），仅 MOV 侧写入 ContentIdentifier</string>
     <string name="fmt_log_apple_still_no_carrier">静帧时刻 %1$d ms 暂无载体：真实 Apple 用 mebx timed metadata 轨，本工具暂不合成（MOV 的 still-image-time 写 -1）</string>
     <string name="fmt_log_apple_write">写出 Apple 格式：%1$s + %2$s（ContentIdentifier=%3$s...）</string>
@@ -75,4 +82,5 @@
     <string name="fmt_log_vivo_write">写出 vivo 格式：%1$s.jpg + %1$s.mp4（livephoto ID: %2$s）</string>
     <string name="fmt_log_vivo_single_write">写出 vivo 单文件实况：%1$s（图像 %2$dB + 视频 %3$dB（含 vivoMediaEStream + lpex） + trailer %4$dB）</string>
     <string name="fmt_log_xiaomi_write">写出小米格式：%1$s（图像 %2$dB + 视频 %3$dB，EXIF 0x8897=1）</string>
+    <string name="fmt_log_samsung_write">写出三星格式：%1$s（图像 %2$dB + 视频 %3$dB + SEF 尾部 %4$dB）</string>
 </resources>

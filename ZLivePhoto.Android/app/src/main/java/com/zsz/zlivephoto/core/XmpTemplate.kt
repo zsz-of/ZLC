@@ -47,6 +47,7 @@ internal object XmpTemplate {
         xmlns:Container="http://ns.google.com/photos/1.0/container/"
         xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
         xmlns:VCamera="http://ns.vivo.com/photos/1.0/camera/"
+        xmlns:Camera="http://ns.google.com/photos/1.0/camera/"
       hdrgm:Version="1.0"
       GCamera:MotionPhoto="1"
       GCamera:MotionPhotoVersion="1"
@@ -57,7 +58,10 @@ internal object XmpTemplate {
       OpCamera:VideoLength="{mp4_len}"
       OpCamera:MotionPhotoEnable="True"
       VCamera:VMotionPhotoVersion="1"
-      VCamera:VMediaKitVersion="1.0.0.8">
+      VCamera:VMediaKitVersion="1.0.0.8"
+      Camera:MotionPhoto="1"
+      Camera:MotionPhotoVersion="1"
+      Camera:MotionPhotoPresentationTimestampUs="{pts}">
 
 """
 
@@ -70,6 +74,7 @@ internal object XmpTemplate {
         xmlns:Container="http://ns.google.com/photos/1.0/container/"
         xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
         xmlns:VCamera="http://ns.vivo.com/photos/1.0/camera/"
+        xmlns:Camera="http://ns.google.com/photos/1.0/camera/"
       GCamera:MotionPhoto="1"
       GCamera:MotionPhotoVersion="1"
       GCamera:MotionPhotoPresentationTimestampUs="{pts}"
@@ -79,7 +84,10 @@ internal object XmpTemplate {
       OpCamera:VideoLength="{mp4_len}"
       OpCamera:MotionPhotoEnable="True"
       VCamera:VMotionPhotoVersion="1"
-      VCamera:VMediaKitVersion="1.0.0.8">
+      VCamera:VMediaKitVersion="1.0.0.8"
+      Camera:MotionPhoto="1"
+      Camera:MotionPhotoVersion="1"
+      Camera:MotionPhotoPresentationTimestampUs="{pts}">
 
 """
 
@@ -185,12 +193,16 @@ internal object XmpTemplate {
         xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
         xmlns:GCamera="http://ns.google.com/photos/1.0/camera/"
         xmlns:VCamera="http://ns.vivo.com/photos/1.0/camera/"
+        xmlns:Camera="http://ns.google.com/photos/1.0/camera/"
       hdrgm:Version="1.0"
       GCamera:MotionPhoto="1"
       GCamera:MotionPhotoVersion="1"
       GCamera:MotionPhotoPresentationTimestampUs="{pts}"
       VCamera:VMotionPhotoVersion="1"
-      VCamera:VMediaKitVersion="1.0.0.9">
+      VCamera:VMediaKitVersion="1.0.0.9"
+      Camera:MotionPhoto="1"
+      Camera:MotionPhotoVersion="1"
+      Camera:MotionPhotoPresentationTimestampUs="{pts}">
 """
     private const val VivoSingleHeadNonHdr: String = """
 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.1.0-jc003">
@@ -200,11 +212,15 @@ internal object XmpTemplate {
         xmlns:Item="http://ns.google.com/photos/1.0/container/item/"
         xmlns:GCamera="http://ns.google.com/photos/1.0/camera/"
         xmlns:VCamera="http://ns.vivo.com/photos/1.0/camera/"
+        xmlns:Camera="http://ns.google.com/photos/1.0/camera/"
       GCamera:MotionPhoto="1"
       GCamera:MotionPhotoVersion="1"
       GCamera:MotionPhotoPresentationTimestampUs="{pts}"
       VCamera:VMotionPhotoVersion="1"
-      VCamera:VMediaKitVersion="1.0.0.9">
+      VCamera:VMediaKitVersion="1.0.0.9"
+      Camera:MotionPhoto="1"
+      Camera:MotionPhotoVersion="1"
+      Camera:MotionPhotoPresentationTimestampUs="{pts}">
 """
     private const val VivoSingleItemPrimary: String = """
       <Container:Directory>

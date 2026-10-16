@@ -19,7 +19,10 @@ data class AlbumInfo(
     val coverIsVideo: Boolean = false
 )
 
-/** 相册内一张图片（导入时按 path 直读原文件，完整保留 EXIF） */
+/** 选择器媒体类型：动态照片 / 视频 / 普通图片 */
+enum class MediaKind { LIVE, VIDEO, IMAGE }
+
+/** 相册内一张图片或视频（导入时按 path 直读原文件，完整保留 EXIF） */
 data class MediaItem(
     val id: Long,
     val path: String,
@@ -33,11 +36,19 @@ data class MediaItem(
     /** 识别出的动态照片格式（plugin.name），未识别为 null */
     val formatName: String? = null,
     val formatDisplay: String? = null,
-    /** 合成模式：视频项标记（照片为 false） */
+    /** 视频项标记（照片为 false） */
     val isVideo: Boolean = false,
-    /** 合成模式：视频时长（ms），照片为 0 */
+    /** 视频时长（ms），照片为 0 */
     val durationMs: Long = 0
 ) {
+    /** 媒体类型（供选择器筛选）：视频 → VIDEO；识别为动态照片 → LIVE；其余 → IMAGE */
+    val kind: MediaKind
+        get() = when {
+            isVideo -> MediaKind.VIDEO
+            formatName != null -> MediaKind.LIVE
+            else -> MediaKind.IMAGE
+        }
+
     val uri: Uri
         get() = ContentUris.withAppendedId(
             if (isVideo) MediaStore.Video.Media.EXTERNAL_CONTENT_URI

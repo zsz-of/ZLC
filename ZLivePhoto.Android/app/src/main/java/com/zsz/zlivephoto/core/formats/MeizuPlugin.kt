@@ -50,10 +50,10 @@ internal class MeizuPlugin : FormatPlugin() {
             lensFacing = asset.extras["mz_lens_facing"] as? String ?: "Back",
             sceneType = asset.extras["mz_scene_type"] as? String ?: "-1"
         )
-        val primary = JpegUtil.replaceOrInsertXmp(asset.primaryJpeg, xmp)
-
         // 魅族样本无 GainMap；GainMap 若存在也不追加（缺少 Container 声明会破坏解析），
-        // 仅透传主图（含 EXIF 位置/镜头元数据）+ 纯 MP4 视频
+        // 仅透传主图（含 EXIF 位置/镜头元数据）+ 纯 MP4 视频。
+        // 丢弃 GainMap 后主图的 MPF img1 偏移会落到视频区，必须同步移除 MPF APP2（format-matrix R7）。
+        val primary = JpegUtil.stripMpfApp2(JpegUtil.replaceOrInsertXmp(asset.primaryJpeg, xmp))
         val output = ByteArray(primary.size + video.size)
         System.arraycopy(primary, 0, output, 0, primary.size)
         System.arraycopy(video, 0, output, primary.size, video.size)

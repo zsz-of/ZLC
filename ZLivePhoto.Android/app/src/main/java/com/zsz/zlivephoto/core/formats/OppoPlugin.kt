@@ -33,10 +33,12 @@ internal class OppoPlugin : FormatPlugin() {
                 "matrixCount" to 0,
                 "originPhotoSize" to intArrayOf(iw, ih),
                 "photoCropFactor" to 1.0,
-                "photoCropMatrix" to doubleArrayOf(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0),
+                // 真机 lpex 中几何矩阵为整数（[1,0,0,0,1,0,0,0,1]），而因子为浮点（1.0 / [1.0,1.0]）；
+                // 写成 Double 会让 box 多出 ~36 字节且与真机不一致（format-matrix R11）。
+                "photoCropMatrix" to intArrayOf(1, 0, 0, 0, 1, 0, 0, 0, 1),
                 "photoCropRect" to intArrayOf(0, 0, iw, ih),
                 "photoEisCropFactor" to doubleArrayOf(1.0, 1.0),
-                "photoEisMatrix" to doubleArrayOf(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0),
+                "photoEisMatrix" to intArrayOf(1, 0, 0, 0, 1, 0, 0, 0, 1),
                 "subVideoScaleFactor" to 0.5,
                 "version" to 1,
                 "videoOrientation" to ((vi["rotation"] as? Int) ?: 0),
@@ -99,10 +101,9 @@ internal class OppoPlugin : FormatPlugin() {
     ): MutableList<String> {
         var video = asset.videoMp4
 
-        // 源视频无 lpex 时合成插入
-        val searchEnd = minOf(65536, video.size)
-        val lpexMarker = byteArrayOf(0x6C, 0x70, 0x65, 0x78) // "lpex"
-        if (BinaryUtils.indexOf(video.copyOfRange(0, searchEnd), lpexMarker) < 0) {
+        // 源视频无 lpex 时合成插入；用 moov 子 box 解析判定，避免 64 KiB 窗口在
+        // 「moov 在 mdat 之后」的布局下漏判而重复插入（format-matrix R6）
+        if (!Mp4Util.hasMoovChild(video, "lpex")) {
             try {
                 video = Mp4Util.insertBoxIntoMoov(video, "lpex", buildLpexPayload(asset))
                 log("info", CoreText.of(R.string.fmt_log_lpex_ok), "OPPO")

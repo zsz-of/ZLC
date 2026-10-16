@@ -25,15 +25,16 @@ import java.util.concurrent.atomic.AtomicInteger
  * - 未扫完就切走：立即中断；切回时清空旧进度从头重扫
  * - 转到新相册：立即开始该相册的扫描
  *
- * composeMode=true（合成模式）：扫描普通照片（JPEG 且非动态照片）+ 视频，
- * 供「合成动态照片」选择配对。
+ * 统一扫描（用户需求）：相册内**全部**图片与视频都会被收录并分类——
+ * 视频标为 VIDEO；识别为动态照片的图片标为 LIVE 并带上厂商名；其余图片标为 IMAGE。
+ * 选择器据此提供「全部 / 仅动态照片 / 仅视频 / 仅图片」筛选。
  *
  * 无磁盘持久化：扫描结果仅存内存，不产生任何本地存储。
  */
-class AlbumScanner(private val repo: MediaRepo, private val composeMode: Boolean = false) {
+class AlbumScanner(private val repo: MediaRepo) {
 
     class ScanState {
-        /** 已识别为动态照片的列表（Compose 状态，UI 直接观察） */
+        /** 已分类的媒体列表（动态照片 / 视频 / 普通图片），Compose 状态，UI 直接观察 */
         val results = mutableStateListOf<MediaItem>()
         /** 当前相册已知全部项 */
         val known = ConcurrentHashMap<String, MediaItem>()
@@ -120,39 +121,32 @@ class AlbumScanner(private val repo: MediaRepo, private val composeMode: Boolean
         if (activeBucket == bucketId) activeBucket = null
     }
 
-    /** 单个扫描线程：粗筛 → 精判，扫到一张即在 Main 线程追加显示。
-     *  合成模式：视频直接收录；照片收录普通 JPEG（非动态照片）。 */
+    /**
+     * 单个扫描线程：粗筛 → 精判，扫到一张即在 Main 线程追加显示。
+     * 统一收录：视频直接收录；图片一律收录——识别为动态照片则标注厂商名，否则视为普通图片。
+     * 不再因「同目录存在同名伴生视频」而剔除图片（修复合成模式不显示的 Bug）。
+     */
     private suspend fun scanWorker(st: ScanState) {
         while (currentCoroutineContext().isActive) {
             val item = st.pending.poll() ?: break
             if (!st.known.containsKey(item.key)) continue // 队列残留已被删除的项
-            if (composeMode) {
-                if (item.isVideo || QuickClassify.isPlainComposeImage(item.path)) {
-                    withContext(Dispatchers.Main) {
-                        if (st.known.containsKey(item.key) &&
-                            st.results.none { it.id == item.id && it.isVideo == item.isVideo }
-                        ) {
-                            st.results.add(item)
-                        }
-                    }
-                }
-            } else if (QuickClassify.sniff(item.path)) {
+            var done = item
+            if (!item.isVideo && QuickClassify.sniff(item.path)) {
                 try {
                     val (plugin, score) = FormatRegistry.detectBest(item.path)
                     if (plugin != null && score >= 50) {
-                        val done = item.copy(
+                        done = item.copy(
                             formatName = plugin.name,
                             formatDisplay = CoreText.of(plugin.displayRes)
                         )
-                        withContext(Dispatchers.Main) {
-                            if (st.known.containsKey(done.key) &&
-                                st.results.none { it.id == done.id }
-                            ) {
-                                st.results.add(done)
-                            }
-                        }
                     }
                 } catch (_: Exception) {
+                }
+            }
+            val added = done
+            withContext(Dispatchers.Main) {
+                if (st.known.containsKey(added.key) && st.results.none { it.key == added.key }) {
+                    st.results.add(added)
                 }
             }
             st.scanned.add(item.key)
@@ -165,7 +159,7 @@ class AlbumScanner(private val repo: MediaRepo, private val composeMode: Boolean
      * 返回是否有待扫项。
      */
     private fun diffRefresh(st: ScanState, bucketId: Long): Boolean {
-        val current = repo.queryAlbumImages(bucketId, includeVideos = composeMode)
+        val current = repo.queryAlbumImages(bucketId, includeVideos = true)
         for (item in current) {
             st.known[item.key] = item
             st.pending.add(item)

@@ -69,7 +69,7 @@ internal object EmbeddedReader {
      * 在数据中搜索 MP4 ftyp box 起始位置。
      * ftyp box 格式：[size 4B][type='ftyp' 4B]，搜索 "ftyp" 字符串后回退 4 字节。
      */
-    private fun findFtyp(data: ByteArray): Int {
+    internal fun findFtyp(data: ByteArray): Int {
         for (i in 4 until data.size - 4) {
             if (data[i] == 'f'.code.toByte() && data[i + 1] == 't'.code.toByte() &&
                 data[i + 2] == 'y'.code.toByte() && data[i + 3] == 'p'.code.toByte()) {

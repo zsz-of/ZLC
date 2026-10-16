@@ -8,6 +8,7 @@ import android.util.LruCache
 import android.util.Size
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import com.zsz.zlivephoto.BuildConfig
@@ -98,6 +99,18 @@ import androidx.compose.material3.LocalMinimumInteractiveComponentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.AssistChip
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.filled.Check
+import com.zsz.zlivephoto.ui.FormatOption
+import com.zsz.zlivephoto.ui.formatOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
@@ -186,6 +199,128 @@ private fun filterMediaItems(items: List<MediaItem>, query: String): List<MediaI
     return items.filter { it.name.contains(query, ignoreCase = true) }
 }
 
+/** 媒体类型筛选：全部 / 仅动态照片 / 仅视频 / 仅图片（先筛后排，排序对筛选结果生效） */
+enum class MediaFilter { ALL, LIVE, VIDEO, IMAGE }
+
+/** 按媒体类型筛选（动态照片 = 识别到厂商格式的图片） */
+private fun applyMediaFilter(items: List<MediaItem>, filter: MediaFilter): List<MediaItem> =
+    when (filter) {
+        MediaFilter.ALL -> items
+        MediaFilter.LIVE -> items.filter { it.kind == MediaKind.LIVE }
+        MediaFilter.VIDEO -> items.filter { it.kind == MediaKind.VIDEO }
+        MediaFilter.IMAGE -> items.filter { it.kind == MediaKind.IMAGE }
+    }
+
+/** 媒体类型筛选项文案 */
+private fun mediaFilterLabelRes(f: MediaFilter): Int = when (f) {
+    MediaFilter.ALL -> R.string.screen_filter_all
+    MediaFilter.LIVE -> R.string.screen_filter_live
+    MediaFilter.VIDEO -> R.string.screen_filter_video
+    MediaFilter.IMAGE -> R.string.screen_filter_image
+}
+
+/**
+ * 媒体类型筛选行：全部 / 仅动态照片 / 仅视频 / 仅图片。
+ * 与排序独立（先筛后排），可自由切换。
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun MediaFilterRow(filter: MediaFilter, onFilter: (MediaFilter) -> Unit) {
+    val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 12.dp, vertical = 2.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        listOf(MediaFilter.ALL, MediaFilter.LIVE, MediaFilter.VIDEO, MediaFilter.IMAGE).forEach { f ->
+            FilterChip(
+                selected = filter == f,
+                onClick = { haptic.click(); onFilter(f) },
+                label = { Text(stringResource(mediaFilterLabelRes(f)), fontSize = 12.sp) }
+            )
+        }
+    }
+}
+
+/** 选择器右上角输出格式入口：显示当前格式名，点击打开格式选择弹窗 */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun OutputFormatChip(outputFormat: String, compact: Boolean = false, onClick: () -> Unit) {
+    val label = stringResource(
+        formatOptions.firstOrNull { it.key == outputFormat }?.nameRes
+            ?: R.string.screen_select_output_format
+    )
+    AssistChip(
+        onClick = onClick,
+        label = {
+            Text(
+                label,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                style = MaterialTheme.typography.labelMedium
+            )
+        },
+        trailingIcon = {
+            Icon(
+                Icons.Default.KeyboardArrowDown,
+                contentDescription = null,
+                modifier = Modifier.size(16.dp)
+            )
+        },
+        modifier = if (compact) Modifier.widthIn(max = 116.dp) else Modifier
+    )
+}
+
+/** 右上角输出格式选择弹窗：选择本次导入的输出格式（含拆解） */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun PickOutputFormatSheet(
+    selected: String,
+    onSelect: (String) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
+    val sheetState = rememberModalBottomSheetState()
+    val scroll = rememberScrollState()
+    ModalBottomSheet(onDismissRequest = onDismiss, sheetState = sheetState) {
+        Text(
+            stringResource(R.string.screen_select_output_format),
+            style = MaterialTheme.typography.titleLarge,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)
+        )
+        HorizontalDivider()
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .heightIn(max = 440.dp)
+                .verticalScroll(scroll)
+        ) {
+            formatOptions.forEach { opt: FormatOption ->
+                val sel = opt.key == selected
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .clickable { haptic.click(); onSelect(opt.key) }
+                        .padding(horizontal = 24.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    RadioButton(selected = sel, onClick = { haptic.click(); onSelect(opt.key) })
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        stringResource(opt.nameRes),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = if (sel) FontWeight.Bold else FontWeight.Normal
+                    )
+                }
+            }
+            Spacer(Modifier.height(24.dp))
+        }
+    }
+}
+
 /**
  * 内置动态照片选择器。
  *
@@ -199,27 +334,23 @@ private fun filterMediaItems(items: List<MediaItem>, query: String): List<MediaI
  *
  * 扫描/识别逻辑为本项目 AlbumScanner（会话化多线程扫描），与 ImageToolbox 无关。
  */
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun PhotoPickerScreen(
     albums: List<AlbumInfo>,
     scanner: AlbumScanner,
     scannerScope: CoroutineScope,
     isDarkTheme: Boolean,
+    /** 右上角输出格式（key）：决定本次导入的输出格式（含 "extract"=拆解） */
+    outputFormat: String,
+    onOutputFormatChange: (String) -> Unit,
     onBack: () -> Unit,
-    onConfirm: (List<MediaItem>) -> Unit,
-    /** 合成模式：选择普通照片+视频配对合成动态照片 */
-    composeMode: Boolean = false,
-    /** 合成模式确认回调：(照片列表, 视频列表)，按序号一一配对 */
-    onConfirmCompose: ((List<MediaItem>, List<MediaItem>) -> Unit)? = null
+    onConfirm: (List<MediaItem>) -> Unit
 ) {
     val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
     var currentBucketId by remember { mutableStateOf(albums.firstOrNull()?.bucketId) }
     val bucketId = currentBucketId
     val selected = remember { mutableStateListOf<MediaItem>() }
-    // 合成模式：照片与视频分开计数（序号各自独立，第 1 张照片与第 1 个视频都是序号 1）
-    val selectedPhotos = remember { mutableStateListOf<MediaItem>() }
-    val selectedVideos = remember { mutableStateListOf<MediaItem>() }
     var albumsExpanded by remember { mutableStateOf(false) }
     // 相册切换滚动方向（项 4）：1=切到右侧相册（新内容自右侧进入、画面向左滚），-1=反向
     var slideDir by remember { mutableStateOf(1) }
@@ -227,6 +358,10 @@ fun PhotoPickerScreen(
     var sortField by remember { mutableStateOf(AlbumSortField.DATE) }
     var sortAscending by remember { mutableStateOf(false) }
     var searchQuery by remember { mutableStateOf("") }
+    // 媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片），与排序独立、先筛后排
+    var mediaFilter by remember { mutableStateOf(MediaFilter.ALL) }
+    // 右上角输出格式选择弹窗
+    var showFormatSheet by remember { mutableStateOf(false) }
 
     // 进入/离开相册：进入 diff+续扫，离开取消（保留进度）
     DisposableEffect(bucketId) {
@@ -250,9 +385,9 @@ fun PhotoPickerScreen(
     // 序号与视觉顺序一致；应用排序（大小/日期/名称 + 正倒序）与名称搜索过滤；
     // size 读取驱动扫描追加时重算
     val n = results?.size ?: 0
-    val displayOrder = remember(results, n, sortField, sortAscending, searchQuery) {
+    val displayOrder = remember(results, n, sortField, sortAscending, searchQuery, mediaFilter) {
         sortMediaItems(
-            filterMediaItems(results.orEmpty(), searchQuery),
+            applyMediaFilter(filterMediaItems(results.orEmpty(), searchQuery), mediaFilter),
             sortField, sortAscending
         )
     }
@@ -263,42 +398,26 @@ fun PhotoPickerScreen(
     // 合成模式提示弹窗状态
     var showOver3sWarning by remember { mutableStateOf(false) }
 
-    /** 项是否已选中（合成模式按类型查对应列表） */
-    fun isSelected(item: MediaItem): Boolean {
-        if (!composeMode) return selected.any { it.id == item.id }
-        val list = if (item.isVideo) selectedVideos else selectedPhotos
-        return list.any { it.id == item.id }
-    }
+    /** 项是否已选中 */
+    fun isSelected(item: MediaItem): Boolean =
+        selected.any { it.id == item.id && it.isVideo == item.isVideo }
 
-    // 确认导入（合成模式：照片/视频都至少 1 个才可确认，回调按序号一一配对）
-    val canConfirm = if (composeMode) selectedPhotos.isNotEmpty() && selectedVideos.isNotEmpty()
-                     else selected.isNotEmpty()
+    // 确认导入：至少 1 项才可确认
+    val canConfirm = selected.isNotEmpty()
     // 右下角悬浮导入按钮文案（已选数量随按钮展示，省去额外计数栏）
-    val fabLabel = if (!composeMode) {
-        if (selected.isEmpty()) stringResource(R.string.screen_import)
-        else stringResource(R.string.screen_import_count, selected.size)
-    } else {
-        if (selectedPhotos.isEmpty() && selectedVideos.isEmpty()) stringResource(R.string.screen_import)
-        else stringResource(
-            R.string.screen_import_mixed, selectedPhotos.size, selectedVideos.size
-        )
-    }
-    val doConfirm: () -> Unit = {
-        if (composeMode) onConfirmCompose?.invoke(selectedPhotos.toList(), selectedVideos.toList())
-        else onConfirm(selected.toList())
-    }
+    val fabLabel = if (selected.isEmpty()) stringResource(R.string.screen_import)
+                   else stringResource(R.string.screen_import_count, selected.size)
+    val doConfirm: () -> Unit = { onConfirm(selected.toList()) }
 
-    // 单项选择切换（追加到末尾，序号递增）；
-    // 合成模式按类型分流到照片/视频列表，选择超过 3 秒的视频时提示兼容性风险
+    // 单项选择切换（追加到末尾，序号递增）；选择超过 3 秒的视频时提示兼容性风险
     val toggleItem: (MediaItem) -> Unit = { item ->
         haptic.click()
-        val list = if (composeMode) (if (item.isVideo) selectedVideos else selectedPhotos) else selected
-        val idx = list.indexOfFirst { it.id == item.id && it.isVideo == item.isVideo }
+        val idx = selected.indexOfFirst { it.id == item.id && it.isVideo == item.isVideo }
         if (idx >= 0) {
-            list.removeAt(idx)
+            selected.removeAt(idx)
         } else {
-            list.add(item)
-            if (composeMode && item.isVideo && item.durationMs > videoWarnMs &&
+            selected.add(item)
+            if (item.isVideo && item.durationMs > videoWarnMs &&
                 !AppSettings.isReminderSuppressed(ReminderKey.COMPOSE_VIDEO_OVER_3S)) {
                 showOver3sWarning = true
             }
@@ -309,28 +428,18 @@ fun PhotoPickerScreen(
         val choosable = group
         val allIn = choosable.isNotEmpty() && choosable.all { isSelected(it) }
         haptic.click()
-        val ids = choosable.map { it.id }.toSet()
         if (allIn) {
-            selected.removeAll { it.id in ids }
-            selectedPhotos.removeAll { it.id in ids }
-            selectedVideos.removeAll { it.id in ids }
+            selected.removeAll { s -> choosable.any { it.id == s.id && it.isVideo == s.isVideo } }
         } else {
             for (g in choosable) {
-                if (composeMode) {
-                    if (g.isVideo) {
-                        if (selectedVideos.none { it.id == g.id }) selectedVideos.add(g)
-                    } else if (selectedPhotos.none { it.id == g.id }) selectedPhotos.add(g)
-                } else if (selected.none { it.id == g.id }) selected.add(g)
+                if (selected.none { it.id == g.id && it.isVideo == g.isVideo }) selected.add(g)
             }
         }
     }
 
-    /** 项的选中序号（合成模式照片/视频各自独立编号） */
-    fun selIndexOf(item: MediaItem): Int {
-        if (!composeMode) return selected.indexOfFirst { it.id == item.id }
-        val list = if (item.isVideo) selectedVideos else selectedPhotos
-        return list.indexOfFirst { it.id == item.id }
-    }
+    /** 项的选中序号 */
+    fun selIndexOf(item: MediaItem): Int =
+        selected.indexOfFirst { it.id == item.id && it.isVideo == item.isVideo }
 
     // 相册切换（项 4）：无论间隔多少个相册，均一次性平滑过渡到目标（直接跳转，
     // 不经过中间相册，避免多级动画叠加的臃肿感）
@@ -380,12 +489,18 @@ fun PhotoPickerScreen(
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.screen_back),
                             tint = MaterialTheme.colorScheme.onSurface)
                     }
-                    Text(if (composeMode) stringResource(R.string.screen_compose) else stringResource(R.string.screen_picker_title_select),
+                    Text(stringResource(R.string.screen_picker_title_select),
                         style = MaterialTheme.typography.titleSmall,
                         color = MaterialTheme.colorScheme.onSurface,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         modifier = Modifier.weight(1f))
+                    // 右上角输出格式：决定本次导入的输出格式
+                    OutputFormatChip(
+                        outputFormat = outputFormat,
+                        compact = true,
+                        onClick = { haptic.click(); showFormatSheet = true }
+                    )
                 }
                 // 相册数 + 展开/收起封面（箭头未展开朝右、展开后朝左）
                 Row(
@@ -461,10 +576,15 @@ fun PhotoPickerScreen(
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.screen_back),
                             tint = MaterialTheme.colorScheme.onSurface)
                     }
-                    Text(if (composeMode) stringResource(R.string.screen_compose) else stringResource(R.string.screen_picker_title_select),
+                    Text(stringResource(R.string.screen_picker_title_select),
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.weight(1f))
+                    // 右上角输出格式：决定本次导入的输出格式
+                    OutputFormatChip(
+                        outputFormat = outputFormat,
+                        onClick = { haptic.click(); showFormatSheet = true }
+                    )
                 }
 
                 // 相册 chip 横滑条 + 右端展开按钮
@@ -523,6 +643,12 @@ fun PhotoPickerScreen(
             onSortField = { sortField = it },
             onToggleAscending = { sortAscending = !sortAscending },
             onSearchQuery = { searchQuery = it }
+        )
+
+        // ── 媒体类型筛选行（全部 / 仅动态照片 / 仅视频 / 仅图片），与排序独立 ──
+        MediaFilterRow(
+            filter = mediaFilter,
+            onFilter = { mediaFilter = it }
         )
 
         // ── 工具行：张数（左）+ 全选（右）──
@@ -604,7 +730,7 @@ fun PhotoPickerScreen(
                     selIndexOf = { selIndexOf(it) },
                     onToggle = toggleItem,
                     onToggleGroup = toggleGroup,
-                    composeMode = composeMode,
+                    mediaFilter = mediaFilter,
                     sortField = sortField,
                     sortAscending = sortAscending,
                     searchQuery = searchQuery
@@ -640,6 +766,15 @@ fun PhotoPickerScreen(
         }
         }
     }
+
+    // 右上角输出格式选择弹窗（本次导入的输出格式，含拆解）
+    if (showFormatSheet) {
+        PickOutputFormatSheet(
+            selected = outputFormat,
+            onSelect = { onOutputFormatChange(it) },
+            onDismiss = { showFormatSheet = false }
+        )
+    }
     } // key(isDarkTheme)
 }
 
@@ -658,7 +793,7 @@ private fun AlbumGridPage(
     selIndexOf: (MediaItem) -> Int,
     onToggle: (MediaItem) -> Unit,
     onToggleGroup: (List<MediaItem>) -> Unit,
-    composeMode: Boolean = false,
+    mediaFilter: MediaFilter = MediaFilter.ALL,
     sortField: AlbumSortField = AlbumSortField.DATE,
     sortAscending: Boolean = false,
     searchQuery: String = ""
@@ -696,7 +831,7 @@ private fun AlbumGridPage(
             )
             Spacer(Modifier.height(12.dp))
             Text(
-                if (composeMode) stringResource(R.string.screen_no_media_compose) else stringResource(R.string.screen_no_media),
+                stringResource(R.string.screen_no_media_compose),
                 style = MaterialTheme.typography.titleSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -714,9 +849,23 @@ private fun AlbumGridPage(
             verticalArrangement = Arrangement.spacedBy(2.dp)
         ) {
             val sorted = sortMediaItems(
-                filterMediaItems(results.orEmpty(), searchQuery),
+                applyMediaFilter(filterMediaItems(results.orEmpty(), searchQuery), mediaFilter),
                 sortField, sortAscending
             )
+            if (sorted.isEmpty()) {
+                item(span = { GridItemSpan(maxLineSpan) }) {
+                    Box(
+                        Modifier.fillMaxWidth().padding(vertical = 40.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            stringResource(R.string.screen_filter_empty),
+                            style = MaterialTheme.typography.titleSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
             if (sortField == AlbumSortField.DATE) {
                 val groups = sorted.groupBy { dateKey(it.sortTime) }
                 for ((dk, groupItems) in groups) {
@@ -743,7 +892,7 @@ private fun AlbumGridPage(
                             selected = isSelected(item),
                             selectionIndex = selIndexOf(item),
                             onToggle = { onToggle(item) },
-                            durationText = if (composeMode && item.isVideo)
+                            durationText = if (item.isVideo)
                                 formatDurationLabel(item.durationMs) else null
                         )
                     }
@@ -756,7 +905,7 @@ private fun AlbumGridPage(
                             selected = isSelected(item),
                             selectionIndex = selIndexOf(item),
                             onToggle = { onToggle(item) },
-                            durationText = if (composeMode && item.isVideo)
+                            durationText = if (item.isVideo)
                                 formatDurationLabel(item.durationMs) else null,
                             sizeText = if (sortField == AlbumSortField.SIZE)
                                 formatSizeLabel(item.size) else null
@@ -1424,6 +1573,24 @@ private fun GridCell(
                             .padding(horizontal = 5.dp, vertical = 2.dp)
                     )
                 }
+            }
+        }
+
+        // 动态照片角标：识别到厂商格式的图片，右下角显示动态照片标识（图标取自 vivo 新相册风格）
+        if (item.kind == MediaKind.LIVE) {
+            Box(
+                Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(end = 4.dp, bottom = 4.dp)
+                    .size(18.dp)
+                    .background(Color.Black.copy(alpha = 0.42f), CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_live_photo),
+                    contentDescription = null,
+                    modifier = Modifier.size(13.dp)
+                )
             }
         }
 

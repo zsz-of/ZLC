@@ -65,4 +65,10 @@
     <string name="fmt_tag_meizu">Meizu</string>
     <string name="fmt_tag_nubia">Nubia</string>
     <string name="fmt_tag_xiaomi">Xiaomi</string>
+    <string name="fmt_samsung">Samsung 라이브 포토</string>
+    <string name="fmt_err_samsung_no_sef">파일 끝에 Samsung SEF 테일 마커(SEFH/SEFT)가 없습니다</string>
+    <string name="fmt_err_samsung_no_video">SEF 테일 앞에서 유효한 MP4 동영상을 찾지 못했습니다(ftyp box 없음)</string>
+    <string name="fmt_log_parse_samsung">Samsung 라이브 포토로 분석(SEFH/SEFT 테일 블록)</string>
+    <string name="fmt_log_samsung_sef">SEF 테일: version=%1$d, 레코드 %2$d개</string>
+    <string name="fmt_log_samsung_write">Samsung 형식으로 출력: %1$s(이미지 %2$dB + 동영상 %3$dB + SEF 테일 %4$dB)</string>
 </resources>

@@ -15,6 +15,7 @@ internal object FormatRegistry {
         HonorPlugin(),
         MeizuPlugin(),
         NubiaPlugin(),
+        SamsungPlugin(),
         ExtractPlugin() // 拆解：仅作输出格式，detect 恒 0
     )
 

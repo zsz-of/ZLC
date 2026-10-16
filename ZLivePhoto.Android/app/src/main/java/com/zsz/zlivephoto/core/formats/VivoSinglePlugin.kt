@@ -65,9 +65,8 @@ internal class VivoSinglePlugin : FormatPlugin() {
         // 用户实测「可被 vivo 相册识别」的 OPPO 输出视频流里带 lpex box；
         // vivo_single 旧版缺 lpex → 不被识别。复用 OppoPlugin.buildLpexPayload 保证逐字一致。
         if (video.size >= 8) {
-            val searchEnd = minOf(65536, video.size)
-            val lpexMarker = byteArrayOf(0x6C, 0x70, 0x65, 0x78) // "lpex"
-            if (BinaryUtils.indexOf(video.copyOfRange(0, searchEnd), lpexMarker) < 0) {
+            // 用 moov 子 box 解析判定 lpex 是否已存在（format-matrix R6）
+            if (!Mp4Util.hasMoovChild(video, "lpex")) {
                 try {
                     video = Mp4Util.insertBoxIntoMoov(video, "lpex", OppoPlugin.buildLpexPayload(asset))
                     log("info", CoreText.of(R.string.fmt_log_lpex_ok), "vivo")

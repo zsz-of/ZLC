@@ -65,4 +65,10 @@
     <string name="fmt_tag_meizu">Meizu</string>
     <string name="fmt_tag_nubia">Nubia</string>
     <string name="fmt_tag_xiaomi">Xiaomi</string>
+    <string name="fmt_samsung">Samsung のライブフォト</string>
+    <string name="fmt_err_samsung_no_sef">ファイル末尾に Samsung の SEF テールマーカー（SEFH/SEFT）がありません</string>
+    <string name="fmt_err_samsung_no_video">SEF テールの前に有効な MP4 動画が見つかりません（ftyp box なし）</string>
+    <string name="fmt_log_parse_samsung">Samsung のライブフォトとして解析（SEFH/SEFT テールブロック）</string>
+    <string name="fmt_log_samsung_sef">SEF テール：version=%1$d、レコード %2$d 件</string>
+    <string name="fmt_log_samsung_write">Samsung 形式で書き出し：%1$s（画像 %2$dB + 動画 %3$dB + SEF テール %4$dB）</string>
 </resources>

@@ -2,7 +2,7 @@
 
 [English](#english) · [日本語](#日本語) · [한국어](#한국어) · [简体中文](#简体中文) · [繁體中文](#繁體中文) · [Русский](#русский) · [Français](#français) · [Latina](#latina)
 
-**Developer / 开发者**: zsz · **Version / 版本**: v3.6.2 · **License**: [GPL-3.0-or-later](LICENSE)
+**Developer / 开发者**: zsz · **Version / 版本**: v3.7.0 · **License**: [GPL-3.0-or-later](LICENSE)
 
 ---
 
@@ -10,7 +10,7 @@
 
 > Live-photo format converter: convert, split and merge between Google Motion Photo / OPPO / vivo / Xiaomi / Honor / Meizu / Nubia / Apple Live Photo.
 
-Android app (Kotlin + Jetpack Compose) that performs **byte-level, lossless** conversion between the mainstream live-photo formats. The app UI is available in **121 languages** (120 resource directories fully translated, 404/404 keys) and supports RTL.
+Android app (Kotlin + Jetpack Compose) that performs **byte-level, lossless** conversion between the mainstream live-photo formats. The app UI is available in **8 languages** (Simplified and Traditional Chinese, English, Japanese, Korean, Arabic, Spanish, and Classical Chinese) and supports RTL.
 
 ### Supported formats
 
@@ -53,7 +53,7 @@ Get the latest build from [Releases](https://github.com/zsz-of/ZLC/releases) —
 - **Automatic pairing** of vivo/Apple companion files
 - **Two editions**: ZLC (Android 10+, built-in transcoder) and ZLC Go (Android 6+, no transcoder)
 - **Material You**: dynamic color on Android 12+, 7 preset themes + custom hue
-- **121-language UI** with per-app language switching and RTL support
+- **8-language UI** with per-app language switching and RTL support
 - **Update checker**: in-app download from GitHub or Lanzou (including password-protected shares), "skip this version" (Go edition matches the Go package)
 - **Dialog queueing**: permission / update / all-files-access dialogs are serialized by priority
 - **Batch import** with folder scanning (including sub-directories) and streaming processing
@@ -63,7 +63,7 @@ Get the latest build from [Releases](https://github.com/zsz-of/ZLC/releases) —
 - **High refresh rate**: requests the highest supported display mode at launch
 - **List persistence**: the pending list is stored as local JSON and can be restored after a crash
 - **System share target**: receive photos shared from other apps
-- **Fully localized UI text**: the interface is available in 120 languages (follows the system or the in-app language setting)
+- **Fully localized UI text**: the interface is available in 8 languages (follows the system or the in-app language setting)
 
 ### Build from source
 
@@ -92,7 +92,7 @@ GNU General Public License v3.0 or later (GPL-3.0-or-later). Copyright (C) 2026 
 
 > ライブフォト形式の相互変換ツール：Google Motion Photo / OPPO / vivo / Xiaomi / Honor / Meizu / Nubia / Apple Live Photo の相互変換・分解・合成。
 
-Kotlin + Jetpack Compose で作られた Android アプリで、主要なライブフォト形式を**バイト単位で無劣化**変換します。UI は **121 言語**（120 のリソースディレクトリを完全翻訳、404/404 キー）に対応し、RTL にも対応しています。
+Kotlin + Jetpack Compose で作られた Android アプリで、主要なライブフォト形式を**バイト単位で無劣化**変換します。UI は **8 言語**（簡体字・繁体字中国語、英語、日本語、韓国語、アラビア語、スペイン語、漢文）に対応し、RTL にも対応しています。
 
 ### 対応フォーマット
 
@@ -135,7 +135,7 @@ Kotlin + Jetpack Compose で作られた Android アプリで、主要なライ�
 - **自動ペアリング**（vivo / Apple の 2 ファイル）
 - **2 つのエディション**：ZLC（Android 10+、トランスコーダ内蔵）と ZLC Go（Android 6+、非搭載）
 - **Material You**：Android 12+ の動的配色、プリセット 7 色 + カスタム色相
-- **121 言語対応**の UI（アプリ単位の言語切替、RTL 対応）
+- **8 言語対応**の UI（アプリ単位の言語切替、RTL 対応）
 - **アップデート確認**：GitHub / Lanzou からアプリ内ダウンロード（パスワード付き共有にも対応）、「このバージョンをスキップ」
 - **ダイアログのキュー管理**：権限・更新・アクセス許可のダイアログを優先度順に 1 つずつ表示
 - **一括インポート**：フォルダ走査（サブフォルダ含む）とストリーミング処理
@@ -145,7 +145,7 @@ Kotlin + Jetpack Compose で作られた Android アプリで、主要なライ�
 - **高リフレッシュレート**：起動時に端末の最大リフレッシュレートを要求
 - **リスト永続化**：待機リストをローカル JSON に保存し、異常終了後も復元
 - **共有受け取り**：他アプリからの共有写真を変換
-- **UI テキストの全言語対応**：アプリの UI テキストは 120 言語に対応（システムまたはアプリ内の言語設定に従います）
+- **UI テキストの全言語対応**：アプリの UI テキストは 8 言語に対応（システムまたはアプリ内の言語設定に従います）
 
 ### ソースからのビルド
 
@@ -170,7 +170,7 @@ GNU General Public License v3.0 以降（GPL-3.0-or-later）。Copyright (C) 202
 
 > 라이브 포토 형식 변환 도구: Google Motion Photo / OPPO / vivo / Xiaomi / Honor / Meizu / Nubia / Apple Live Photo 간 상호 변환·분해·합성.
 
-Kotlin + Jetpack Compose로 만든 Android 앱으로, 주요 라이브 포토 형식을 **바이트 단위 무손실**로 변환합니다. UI는 **121개 언어**(리소스 디렉터리 120개 100% 번역, 404/404 키)를 지원하며 RTL도 지원합니다.
+Kotlin + Jetpack Compose로 만든 Android 앱으로, 주요 라이브 포토 형식을 **바이트 단위 무손실**로 변환합니다. UI는 **8개 언어**(중국어 간체·번체, 영어, 일본어, 한국어, 아랍어, 스페인어, 한문)를 지원하며 RTL도 지원합니다.
 
 ### 지원 형식
 
@@ -213,7 +213,7 @@ Kotlin + Jetpack Compose로 만든 Android 앱으로, 주요 라이브 포토 �
 - **자동 페어링**(vivo / Apple 두 파일)
 - **두 가지 에디션**: ZLC(Android 10+, 트랜스코더 내장) / ZLC Go(Android 6+, 미탑재)
 - **Material You**: Android 12+ 동적 색상, 프리셋 7종 + 사용자 색조
-- **121개 언어 UI**(앱별 언어 전환, RTL 지원)
+- **8개 언어 UI**(앱별 언어 전환, RTL 지원)
 - **업데이트 확인**: GitHub / Lanzou에서 앱 내 다운로드(암호가 있는 공유 지원), '이 버전 건너뛰기'
 - **대화상자 큐잉**: 권한·업데이트·파일 접근 안내를 우선순위대로 하나씩 표시
 - **일괄 가져오기**: 폴더 검색(하위 폴더 포함)과 스트리밍 처리
@@ -223,7 +223,7 @@ Kotlin + Jetpack Compose로 만든 Android 앱으로, 주요 라이브 포토 �
 - **고주사율**: 실행 시 기기가 지원하는 최대 주사율 요청
 - **목록 영속화**: 대기 목록을 로컬 JSON으로 저장하고 비정상 종료 후 복원
 - **공유 받기**: 다른 앱에서 공유한 사진 변환
-- **UI 텍스트 전면 현지화**: 앱 UI 텍스트는 120개 언어를 지원합니다(시스템 또는 앱 내 언어 설정을 따름)
+- **UI 텍스트 전면 현지화**: 앱 UI 텍스트는 8개 언어를 지원합니다(시스템 또는 앱 내 언어 설정을 따름)
 
 ### 소스에서 빌드
 
@@ -248,9 +248,9 @@ GNU General Public License v3.0 이상(GPL-3.0-or-later). Copyright (C) 2026 zsz
 
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / 魅族 / 努比亚 / Apple Live Photo 互转、拆解与合成。
 
-**开发者**: zsz · **版本**: v3.6.2 · **许可证**: GPL-3.0-or-later
+**开发者**: zsz · **版本**: v3.7.0 · **许可证**: GPL-3.0-or-later
 
-本程序实现了主流动态照片格式之间的字节级无损互转，并支持动态照片的拆解与合成。界面支持 **121 种语言**（含简繁中文各变体、藏/傣泐/彝/维吾尔等少数民族语言），**120 个语言目录全部 100% 翻译**（404/404 key），设置页可单独切换应用语言，并已适配 RTL（从右到左）语言。
+本程序实现了主流动态照片格式之间的字节级无损互转，并支持动态照片的拆解与合成。界面支持 **8 种语言**（简体中文、繁体中文、英文、日文、韩文、阿拉伯文、西班牙文、文言文），设置页可单独切换应用语言，并已适配 RTL（从右到左）语言。
 
 ### 支持的格式
 
@@ -290,30 +290,29 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 
 | 功能 | 说明 |
 |------|------|
-| 多格式互转 | Google / OPPO / vivo / 小米 / 荣耀 / 魅族 / Apple 之间互转 |
-| 合成动态照片 | 封面照片 + ≤3 秒视频合成动态照片；非 JPEG 封面与非标准 MP4 视频自动转码 |
+| 多格式互转 | Google / OPPO / vivo / 小米 / 荣耀 / 魅族 / 努比亚 / 三星 / Apple 之间互转 |
+| 合成动态照片 | 在选择器导入时按文件名自动配对单图 + 视频识别为合并任务；非 JPEG 封面与非标准 MP4 视频自动转码 |
 | 拆解导出 | 将动态照片拆解为「照片 + 视频」双文件 |
 | 字节级无损 | 纯字节解析重组，不重新编码 |
 | EXIF 保留 | 保留 GPS、拍摄时间等所有 EXIF 元数据 |
 | 时间戳保留 | 输出文件保留源文件的修改时间 |
 | 按源文件夹层级输出 | 默认按**原相册名**分子目录存放（`Pictures/Z-LivePhoto-Converter/Camera/`、`.../微信/`），可在设置 → 输出中关闭以恢复平铺 |
 | 同格式直通 | 源与目标格式相同时原样复制（零损耗） |
-| 处理完成后删除原图 | 批次全部处理成功后直接删除磁盘原文件并清理媒体库条目；**必须先授予「所有文件访问」**才可开启，Android 10 及以下不支持该功能 |
-| 替换模式（工具箱） | 转换结果**直接写回原文件**，不在相册生成新文件；**必须先授予「所有文件访问」**，与「删除原图」互斥，首次开启弹一次风险与免责提示 |
+| 处理方式（第一版面单选） | 三选一：**替换原图**（结果直接写回原文件，首次开启弹一次风险与免责提示）/ **删除原图**（批次成功后删除源文件并清理媒体库条目）/ **保留原图**（不删不替）。删除与替换均需「所有文件访问」，Android 10 及以下不支持 |
 | 自动配对 | vivo/Apple 双文件自动查找同目录视频 |
 | 双版本 | ZLC 完整版（Android 10+，内置 ffmpeg 转码器）与 ZLC Go 轻量版（Android 6+，适配老设备，不含转码器） |
 | Material You | Android 12+ 动态取色跟随壁纸；7 种预制主题色 + 自定义色相 |
-| 多语言 | 界面支持 **121 种语言**（**120 个语言目录全部 100% 翻译，404/404 key**）；设置 → 外观可单独切换「应用语言」（首项「跟随系统」）；不支持的语言回落简体中文；已适配 RTL |
+| 多语言 | 界面支持 **8 种语言**（简繁中文、英、日、韩、阿拉伯、西班牙、文言文）；设置 → 外观可单独切换「应用语言」（首项「跟随系统」）；不支持的语言回落简体中文；已适配 RTL |
 | 检查更新 | 启动/手动检查新版本；GitHub / 蓝奏云应用内直接下载安装（蓝奏压缩包自动解出 APK，**支持带提取码的分享**）；支持「跳过此版本」（Go 版匹配 Go 安装包） |
 | 弹窗排队 | 权限请求 / 应用更新 / 所有文件访问引导等会话型弹窗统一按优先级排队，同一时刻只弹一个 |
 | 批量导入 | Android 支持文件夹批量扫描导入（含子目录），流式处理不卡顿 |
-| 相册排序与搜索 | 内置选择器按大小 / 日期 / 名称排序（正序 / 倒序）并支持按名称搜索；**v3.6.1 修复展开搜索栏时搜索框上下跳动** |
+| 选择器筛选与排序 | 同时列出照片与视频，可按**全部 / 动态照片 / 视频 / 图片**筛选，筛选与大小 / 日期 / 名称排序（正序 / 倒序）同时生效，并支持按名称搜索；动态照片在缩略图上显示角标；右上角可指定本次导入的输出格式 |
 | 内置视频转码 | ffmpeg 随完整版安装包内置（`libffmpeg.so`），处理方式三选一（重新编码 / 仅重封装容器 / 完全不使用），设置页可调 CRF / 编码器 / 预设 |
 | 转码进度 | 合成转码时在对应列表项内展示「已处理帧 / 总帧数」进度条与预计剩余时间 |
 | 高刷新率 | 完整版启动时自动请求设备支持的最高刷新率档位，动画跑满屏幕帧率上限 |
 | 列表持久化 | Android 列表自动落盘本地 JSON，异常退出可检测并恢复 |
 | 系统分享 | Android 支持从系统分享接收照片转换 |
-| 界面文案全量本地化 | 应用界面文案已支持 120 种语言（跟随系统或应用内语言设置切换） |
+| 界面文案全量本地化 | 应用界面文案已支持 8 种语言（跟随系统或应用内语言设置切换） |
 
 ### 从源码构建
 
@@ -353,9 +352,9 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 
 > 動態照片格式互轉工具：Google Motion Photo / OPPO / vivo / 小米 / 榮耀 / 魅族 / 努比亞 / Apple Live Photo 互轉、拆解與合成。
 
-**開發者**：zsz ・ **版本**：v3.6.2 ・ **授權條款**：GPL-3.0-or-later
+**開發者**：zsz ・ **版本**：v3.7.0 ・ **授權條款**：GPL-3.0-or-later
 
-本程式可在主流動態照片格式之間進行位元組級無損互轉，並支援動態照片的拆解與合成。介面支援 **121 種語言**（含簡繁中文各變體、藏／傣泐／彝／維吾爾等少數民族語言），**120 個語言目錄全部 100% 翻譯**（404/404 key），設定頁可單獨切換應用程式語言，並已支援 RTL（由右至左）語言。
+本程式可在主流動態照片格式之間進行位元組級無損互轉，並支援動態照片的拆解與合成。介面支援 **8 種語言**（簡體中文、繁體中文、英文、日文、韓文、阿拉伯文、西班牙文、文言文），設定頁可單獨切換應用程式語言，並已支援 RTL（由右至左）語言。
 
 ### 支援的格式
 
@@ -386,19 +385,18 @@ Android 端無需額外執行環境。完整版內建 ffmpeg 轉碼器，僅提�
 
 ### 功能特色
 
-- **多格式互轉**：Google / OPPO / vivo / 小米 / 榮耀 / 魅族 / Apple 之間互轉
-- **合成動態照片**：封面照片 + ≤3 秒影片；非 JPEG 封面與非標準 MP4 影片自動轉碼
+- **多格式互轉**：Google / OPPO / vivo / 小米 / 榮耀 / 魅族 / 努比亞 / 三星 / Apple 之間互轉
+- **合成動態照片**：在選擇器匯入時按檔名自動配對單圖 + 影片識別為合併任務；非 JPEG 封面與非標準 MP4 影片自動轉碼
 - **拆解匯出**：動態照片 → 照片 + 影片
 - **位元組級無損**：純位元組解析重組，不重新編碼
 - **保留 EXIF 與時間戳**（GPS、拍攝時間、修改時間）
 - **依來源資料夾層級輸出**：預設以原相簿名建立子目錄，可在設定 → 輸出中關閉
 - **同格式直通**：來源與目標格式相同時原樣複製（零損耗）
-- **處理完成後刪除原圖**（需先授予「所有檔案存取」，Android 10 及以下不支援）
-- **取代模式**（工具箱）：結果直接寫回原檔案（首次開啟彈出一次風險提示）
+- **處理方式**（第一版面單選）：**取代原圖 / 刪除原圖 / 保留原圖** 三選一（刪除與取代需先授予「所有檔案存取」，Android 10 及以下不支援）
 - **自動配對**：vivo／Apple 雙檔案自動尋找同目錄影片
 - **雙版本**：ZLC 完整版（Android 10+，內建轉碼器）與 ZLC Go 輕量版（Android 6+，不含轉碼器）
 - **Material You**：Android 12+ 動態取色，7 種預設主題色 + 自訂色相
-- **121 種語言介面**（可單獨切換應用程式語言，支援 RTL）
+- **8 種語言介面**（可單獨切換應用程式語言，支援 RTL）
 - **檢查更新**：GitHub／藍奏雲應用程式內直接下載安裝（支援帶提取碼的分享），可「跳過此版本」
 - **彈窗排隊**：權限、更新、檔案存取引導等彈窗依優先順序逐一顯示
 - **批次匯入**：資料夾掃描匯入（含子目錄），串流處理不卡頓
@@ -408,7 +406,7 @@ Android 端無需額外執行環境。完整版內建 ffmpeg 轉碼器，僅提�
 - **高更新率**：啟動時要求裝置支援的最高更新率
 - **清單持久化**：待處理清單自動存為本機 JSON，異常結束後可恢復
 - **系統分享**：可接收其他應用程式分享的照片進行轉換
-- **介面文案全量在地化**：應用程式介面文案已支援 120 種語言（跟隨系統或應用程式內語言設定切換）
+- **介面文案全量在地化**：應用程式介面文案已支援 8 種語言（跟隨系統或應用程式內語言設定切換）
 
 ### 從原始碼建置
 
@@ -433,7 +431,7 @@ Android 端無需額外執行環境。完整版內建 ffmpeg 轉碼器，僅提�
 
 > Конвертер форматов живых фотографий: взаимное преобразование, разделение и объединение Google Motion Photo / OPPO / vivo / Xiaomi / Honor / Meizu / Nubia / Apple Live Photo.
 
-Android-приложение (Kotlin + Jetpack Compose) выполняет **побайтовое преобразование без потерь** между основными форматами живых фотографий. Интерфейс доступен на **121 языке** (120 каталогов ресурсов переведены полностью, 404/404 ключа), поддерживается RTL.
+Android-приложение (Kotlin + Jetpack Compose) выполняет **побайтовое преобразование без потерь** между основными форматами живых фотографий. Интерфейс доступен на **8 языках** (китайский упрощённый и традиционный, английский, японский, корейский, арабский, испанский, вэньянь), поддерживается RTL.
 
 ### Поддерживаемые форматы
 
@@ -476,7 +474,7 @@ Android-приложение (Kotlin + Jetpack Compose) выполняет **п�
 - **Автосвязывание** парных файлов vivo/Apple
 - **Две редакции**: ZLC (Android 10+, со встроенным транскодером) и ZLC Go (Android 6+, без него)
 - **Material You**: динамический цвет на Android 12+, 7 предустановленных тем + свой оттенок
-- **Интерфейс на 121 языке** с переключением языка приложения и поддержкой RTL
+- **Интерфейс на 8 языках** с переключением языка приложения и поддержкой RTL
 - **Проверка обновлений**: загрузка из GitHub или Lanzou прямо в приложении (включая ссылки с паролем), «пропустить эту версию»
 - **Очередь диалогов**: разрешения, обновления и запросы доступа показываются по одному в порядке приоритета
 - **Пакетный импорт**: сканирование папок (с подпапками) и потоковая обработка
@@ -486,7 +484,7 @@ Android-приложение (Kotlin + Jetpack Compose) выполняет **п�
 - **Высокая частота обновления**: при запуске запрашивается максимальная поддерживаемая частота
 - **Сохранение списка**: очередь хранится в локальном JSON и восстанавливается после сбоя
 - **Приём из «Поделиться»**: преобразование фото, отправленных из других приложений
-- **Полная локализация интерфейса**: текст интерфейса доступен на 120 языках (в зависимости от системного или внутрипрограммного выбора языка)
+- **Полная локализация интерфейса**: текст интерфейса доступен на 8 языках (в зависимости от системного или внутрипрограммного выбора языка)
 
 ### Сборка из исходников
 
@@ -511,7 +509,7 @@ GNU General Public License v3.0 или новее (GPL-3.0-or-later). Copyright 
 
 > Convertisseur de formats de photos animées : conversion, séparation et fusion entre Google Motion Photo / OPPO / vivo / Xiaomi / Honor / Meizu / Nubia / Apple Live Photo.
 
-Application Android (Kotlin + Jetpack Compose) réalisant une conversion **octet par octet, sans perte**, entre les principaux formats de photos animées. L'interface est disponible en **121 langues** (120 dossiers de ressources entièrement traduits, 404/404 clés) et prend en charge le RTL.
+Application Android (Kotlin + Jetpack Compose) réalisant une conversion **octet par octet, sans perte**, entre les principaux formats de photos animées. L'interface est disponible en **8 langues** (chinois simplifié et traditionnel, anglais, japonais, coréen, arabe, espagnol, chinois classique) et prend en charge le RTL.
 
 ### Formats pris en charge
 
@@ -554,7 +552,7 @@ La dernière version est disponible dans [Releases](https://github.com/zsz-of/ZL
 - **Appairage automatique** des fichiers vivo/Apple
 - **Deux éditions** : ZLC (Android 10+, transcodeur intégré) et ZLC Go (Android 6+, sans transcodeur)
 - **Material You** : couleur dynamique sur Android 12+, 7 thèmes prédéfinis + teinte personnalisée
-- **Interface en 121 langues** avec changement de langue par application et prise en charge du RTL
+- **Interface en 8 langues** avec changement de langue par application et prise en charge du RTL
 - **Recherche de mises à jour** : téléchargement depuis GitHub ou Lanzou dans l'application (partages protégés par mot de passe inclus), option « ignorer cette version »
 - **File de dialogues** : autorisations, mises à jour et accès aux fichiers s'affichent un par un par ordre de priorité
 - **Import par lots** : analyse de dossiers (sous-dossiers inclus) et traitement en flux
@@ -564,7 +562,7 @@ La dernière version est disponible dans [Releases](https://github.com/zsz-of/ZL
 - **Taux de rafraîchissement élevé** : demande le taux maximal pris en charge au démarrage
 - **Persistance de la liste** : file d'attente enregistrée en JSON local et restaurée après un arrêt anormal
 - **Partage système** : conversion des photos partagées depuis d'autres applications
-- **Textes de l'interface entièrement localisés** : les textes de l'interface sont disponibles en 120 langues (selon la langue du système ou le réglage de langue de l'application)
+- **Textes de l'interface entièrement localisés** : les textes de l'interface sont disponibles en 8 langues (selon la langue du système ou le réglage de langue de l'application)
 
 ### Compilation depuis les sources
 
@@ -589,7 +587,7 @@ GNU General Public License v3.0 ou ultérieure (GPL-3.0-or-later). Copyright (C)
 
 > Instrumentum conversionis photogrammatum vivorum: conversio, dissolutio et compositio inter Google Motion Photo / OPPO / vivo / Xiaomi / Honor / Meizu / Nubia / Apple Live Photo.
 
-Hoc programma Android (Kotlin + Jetpack Compose) photogrammata viva inter formas principales **ad gradum octeti sine damno** convertit. Interfacies **121 linguis** praesto est (120 directorii facultatum plene versi, 404/404 claves), et linguas RTL sustinet.
+Hoc programma Android (Kotlin + Jetpack Compose) photogrammata viva inter formas principales **ad gradum octeti sine damno** convertit. Interfacies **8 linguis** praesto est (Sinica simplice et tradita, Anglice, Iaponice, Coreane, Arabice, Hispanice, Sinica classica), et linguas RTL sustinet.
 
 ### Formae suffultae
 
@@ -632,7 +630,7 @@ Ultima versio in [Releases](https://github.com/zsz-of/ZLC/releases) praesto est 
 - **Copulatio automatica** fasciculorum vivo/Apple
 - **Duae editiones**: ZLC (Android 10+, transcodificator inclusus) et ZLC Go (Android 6+, sine eo)
 - **Material You**: color dynamicus in Android 12+, 7 themata praeparata + color proprius
-- **Interfacies 121 linguarum** cum commutatione linguae et RTL
+- **Interfacies 8 linguarum** cum commutatione linguae et RTL
 - **Investigatio novitatum**: de GitHub vel Lanzou in ipso programmate (etiam nexus tessera munitus), optio « hanc versionem praeterire »
 - **Series dialogorum**: licentiae, novitates et accessus fasciculorum per ordinem prioritatis singillatim monstrantur
 - **Importatio gregatim**: scanndo directoriorum (subdirectoriis inclusis) et processus fluens
@@ -642,7 +640,7 @@ Ultima versio in [Releases](https://github.com/zsz-of/ZLC/releases) praesto est 
 - **Celeritas renovationis alta**: in initio maxima dispositio sustentata petitur
 - **Persistentia indicis**: index pendentium in JSON locali servatur et post casum restituitur
 - **Communicatio systematis**: photogrammata ex aliis programmatibus accepta convertuntur
-- **Textus interfaciei plene localizatus**: textus interfaciei 120 linguis praesto est (systema vel optionem linguae in programmate sequitur)
+- **Textus interfaciei plene localizatus**: textus interfaciei 8 linguis praesto est (systema vel optionem linguae in programmate sequitur)
 
 ### Compilatio e fonte
 

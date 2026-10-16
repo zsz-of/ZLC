@@ -51,7 +51,6 @@ import androidx.compose.material.icons.filled.CreateNewFolder
 import androidx.compose.material.icons.filled.DeleteOutline
 import androidx.compose.material.icons.filled.FormatPaint
 import androidx.compose.material.icons.filled.PhotoLibrary
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material.icons.filled.SwapHoriz
@@ -66,6 +65,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
@@ -106,6 +106,11 @@ data class FileItem(
     val sourceTaken: Long = 0L,
     /** 识别出的格式（plugin.name），用于「目标=输入」蓝色提示 */
     val formatKey: String? = null,
+    /**
+     * 本项的输出格式（plugin.name / "extract"）；null = 未单独设置，回退到全局 [selectedFormat]。
+     * 由「长按列表项 → 选择输出格式」写入，实现「格式全部分别设置」。
+     */
+    val targetFormat: String? = null,
     /** 合成任务：配对视频路径（formatKey=compose 时非空） */
     val composeVideoPath: String? = null,
     /** 正在用 ffmpeg 转码配对视频：列表项内展开显示转码进度 */
@@ -127,6 +132,14 @@ data class FormatOption(
     @StringRes val nameRes: Int
 )
 
+/**
+ * 处理方式（第一版面三选一，互斥）：
+ * - [REPLACE] 替换原图：转换结果直接写回源文件本体（破坏性，需「所有文件访问」）
+ * - [DELETE]  删除原图：处理完成后自动删除原图（需「所有文件访问」）
+ * - [KEEP]    保留原图：不删除、不替换（默认）
+ */
+enum class OutputMode { REPLACE, DELETE, KEEP }
+
 val formatOptions = listOf(
     FormatOption("google", R.string.screen_format_google),
     FormatOption("apple", R.string.screen_format_apple),
@@ -136,6 +149,7 @@ val formatOptions = listOf(
     FormatOption("xiaomi", R.string.screen_format_xiaomi),
     FormatOption("honor", R.string.screen_format_honor),
     FormatOption("meizu", R.string.screen_format_meizu),
+    FormatOption("samsung", R.string.screen_format_samsung),
     FormatOption("extract", R.string.screen_format_extract),
 )
 
@@ -156,30 +170,26 @@ fun MainScreen(
     listState: LazyListState,
     onAddFiles: () -> Unit,
     onBatchImport: () -> Unit,
-    onCompose: () -> Unit,
     /** 打开设置页 */
     onOpenSettings: () -> Unit,
     onClearFiles: () -> Unit,
     onConvert: () -> Unit,
     onStopConvert: () -> Unit,
-    onSelectFormat: (String) -> Unit,
-    // 项10：处理完成后删除原图开关（开启=清脆震动 / 关闭=柔和震动）
-    deleteOriginal: Boolean,
-    /** 开关是否可用：需「完全存储访问」；不可用时置灰，点击改为引导授权 */
-    deleteOriginalUsable: Boolean,
-    onToggleDeleteOriginal: (Boolean) -> Unit,
-    // 工具箱「替换模式」：转换产物直接写回源文件本体（破坏性操作）
-    replaceMode: Boolean,
-    /** 开关是否可用：需「完全存储访问」；不可用时置灰，点击改为引导授权 */
-    replaceModeUsable: Boolean,
-    onToggleReplaceMode: (Boolean) -> Unit,
+    /** 处理方式（第一版面三选一）：替换原图 / 删除原图 / 保留原图 */
+    outputMode: OutputMode,
+    /** 处理方式是否可切换：替换原图与删除原图都需「所有文件访问」权限 */
+    outputModeUsable: Boolean,
+    onSelectOutputMode: (OutputMode) -> Unit,
+    /** 长按列表项：单独设置该项输出格式（key 含 "extract"=拆解）；合成任务不提供拆解 */
+    onSelectItemFormat: (String, String) -> Unit,
     onRemoveFile: (String) -> Unit
 ) {
     val haptic = rememberHapticFeedback()
-    var showFormatSheet by remember { mutableStateOf(false) }
     var showToolboxSheet by remember { mutableStateOf(false) }
-    // 替换模式首次开启：先弹风险说明，确认后才真正开启
+    // 替换原图首次开启：先弹风险说明，确认后才真正开启
     var pendingReplaceEnable by remember { mutableStateOf(false) }
+    // 长按某项：该项输出格式选择弹窗（null = 未打开）
+    var formatSheetItem by remember { mutableStateOf<FileItem?>(null) }
 
     // 忙碌态（转换中或导入中）：隐藏三按钮组、进度条显示、转换按钮变形为停止
     val busy = isConverting || isImporting
@@ -190,6 +200,15 @@ fun MainScreen(
     // 队列含合成任务（formatKey=compose）时禁止选择「拆解」：拆解与合成语义互斥，
     // 合成任务会把照片+视频合成动态照片，而拆解是反向操作，混用会产出不可识别产物
     val hasComposeTask = files.any { it.formatKey == "compose" }
+
+    /** 处理方式单选点击：替换原图首次开启先弹风险说明；无权限时交给 Activity 引导授权 */
+    val selectMode: (OutputMode) -> Unit = { mode ->
+        if (mode == OutputMode.REPLACE && !AppSettings.isReminderSuppressed(ReminderKey.REPLACE_MODE_RISK)) {
+            pendingReplaceEnable = true
+        } else {
+            onSelectOutputMode(mode)
+        }
+    }
 
     // 横屏判断（提升到函数级，标题限宽与两栏布局共用）
     val isLandscape = LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp
@@ -305,6 +324,7 @@ fun MainScreen(
                     listState = listState,
                     isConverting = isConverting,
                     effectiveTarget = effectiveTarget,
+                    onLongPress = { formatSheetItem = it },
                     onRemoveFile = onRemoveFile,
                     modifier = Modifier
                         .weight(0.58f)
@@ -326,19 +346,17 @@ fun MainScreen(
                         importProgress = importProgress,
                         isConverting = isConverting,
                         isPickerOpening = isPickerOpening,
-                        selectedFormat = selectedFormat,
                         hasFiles = files.isNotEmpty(),
                         busy = busy,
                         clearBusy = clearBusy,
-                        deleteOriginal = deleteOriginal,
-                        deleteOriginalUsable = deleteOriginalUsable,
-                        onToggleDeleteOriginal = onToggleDeleteOriginal,
+                        outputMode = outputMode,
+                        outputModeUsable = outputModeUsable,
+                        onSelectOutputMode = selectMode,
                         onAddFiles = onAddFiles,
                         onOpenToolbox = { showToolboxSheet = true },
                         onClearFiles = onClearFiles,
                         onConvert = onConvert,
                         onStopConvert = onStopConvert,
-                        onOpenFormatSheet = { showFormatSheet = true },
                         modifier = Modifier
                             .fillMaxSize()
                             .verticalScroll(rememberScrollState())
@@ -358,6 +376,7 @@ fun MainScreen(
                     listState = listState,
                     isConverting = isConverting,
                     effectiveTarget = effectiveTarget,
+                    onLongPress = { formatSheetItem = it },
                     onRemoveFile = onRemoveFile,
                     modifier = Modifier
                         .weight(1f)
@@ -379,19 +398,17 @@ fun MainScreen(
                         importProgress = importProgress,
                         isConverting = isConverting,
                         isPickerOpening = isPickerOpening,
-                        selectedFormat = selectedFormat,
                         hasFiles = files.isNotEmpty(),
                         busy = busy,
                         clearBusy = clearBusy,
-                        deleteOriginal = deleteOriginal,
-                        deleteOriginalUsable = deleteOriginalUsable,
-                        onToggleDeleteOriginal = onToggleDeleteOriginal,
+                        outputMode = outputMode,
+                        outputModeUsable = outputModeUsable,
+                        onSelectOutputMode = selectMode,
                         onAddFiles = onAddFiles,
                         onOpenToolbox = { showToolboxSheet = true },
                         onClearFiles = onClearFiles,
                         onConvert = onConvert,
                         onStopConvert = onStopConvert,
-                        onOpenFormatSheet = { showFormatSheet = true },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp, vertical = 12.dp)
@@ -401,24 +418,30 @@ fun MainScreen(
         }
     }
 
-    // 格式选择 BottomSheet（选择后不自动关闭，由用户自行关闭）
-    if (showFormatSheet) {
+    // 长按列表项 → 单项输出格式选择（含「拆解」；合成任务不提供拆解）
+    formatSheetItem?.let { item ->
         val sheetState = rememberModalBottomSheetState()
-        // 滚动状态提升到 sheet 顶层 remember：切换输出格式触发重组时复用同一实例，
-        // 选项列表的滚动位置不会丢失/重置（内联 rememberScrollState 在内容高度变化时易被重建）
         val formatScrollState = rememberScrollState()
+        val itemKey = item.formatKey
         ModalBottomSheet(
-            onDismissRequest = { showFormatSheet = false },
+            onDismissRequest = { formatSheetItem = null },
             sheetState = sheetState
         ) {
             Text(
-                text = stringResource(R.string.screen_select_output_format),
+                text = stringResource(R.string.screen_item_format_title),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)
             )
+            Text(
+                text = item.name,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                maxLines = 1,
+                overflow = TextOverflow.MiddleEllipsis,
+                modifier = Modifier.padding(horizontal = 24.dp, vertical = 2.dp)
+            )
             HorizontalDivider()
-            // 格式列表滚动区：vivo 已拆分为「单文件 / 双文件」两个顶级选项
             val maxListHeight = LocalConfiguration.current.screenHeightDp.dp * 0.62f
             Column(
                 modifier = Modifier
@@ -427,9 +450,10 @@ fun MainScreen(
                     .verticalScroll(formatScrollState)
             ) {
                 formatOptions.forEach { opt ->
-                    val selected = opt.key == selectedFormat
-                    // 拆解与合成互斥：队列已有合成任务时不可切换到拆解模式
-                    val disabled = opt.key == "extract" && hasComposeTask
+                    val current = item.targetFormat ?: selectedFormat
+                    val selected = opt.key == current
+                    // 拆解与合成互斥：本条为合成任务（formatKey=compose）时不可选拆解
+                    val disabled = opt.key == "extract" && itemKey == "compose"
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -444,7 +468,8 @@ fun MainScreen(
                             )
                             .clickable(enabled = !disabled) {
                                 haptic.click()
-                                onSelectFormat(opt.key)
+                                onSelectItemFormat(item.path, opt.key)
+                                formatSheetItem = null
                             }
                             .padding(horizontal = 12.dp, vertical = 4.dp),
                         verticalAlignment = Alignment.CenterVertically
@@ -475,8 +500,6 @@ fun MainScreen(
                             )
                         }
                     }
-
-                    // vivo 单文件选项下方的兼容性警告（常驻显示）
                     if (opt.key == "vivo_single") {
                         Text(
                             text = stringResource(R.string.screen_vivo_single_warning),
@@ -486,7 +509,6 @@ fun MainScreen(
                             modifier = Modifier.padding(start = 36.dp, bottom = 6.dp)
                         )
                     }
-                    // 拆解被禁用时的原因提示
                     if (opt.key == "extract" && disabled) {
                         Text(
                             text = stringResource(R.string.screen_extract_blocked),
@@ -531,52 +553,12 @@ fun MainScreen(
                         onBatchImport()
                     }
                 )
-                ToolboxRow(
-                    icon = { Icon(Icons.Default.PlayArrow, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
-                    title = stringResource(R.string.screen_compose),
-                    subtitle = stringResource(R.string.screen_compose_desc),
-                    onClick = {
-                        haptic.click()
-                        showToolboxSheet = false
-                        onCompose()
-                    }
-                )
-                ToolboxSwitchRow(
-                    icon = {
-                        Icon(
-                            Icons.Default.SwapHoriz,
-                            contentDescription = null,
-                            tint = if (replaceModeUsable) MaterialTheme.colorScheme.primary
-                                   else MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    },
-                    title = stringResource(R.string.screen_replace_mode),
-                    subtitle = if (replaceModeUsable) stringResource(R.string.screen_replace_mode_desc)
-                               else stringResource(R.string.screen_need_all_files_access_hint),
-                    checked = replaceMode,
-                    enabled = replaceModeUsable && !isConverting,
-                    onToggle = { on ->
-                        haptic.click()
-                        // 首次开启先弹风险说明（可在弹窗里勾选不再提示），确认后才真正开启
-                        if (on && !AppSettings.isReminderSuppressed(ReminderKey.REPLACE_MODE_RISK)) {
-                            showToolboxSheet = false
-                            pendingReplaceEnable = true
-                        } else {
-                            onToggleReplaceMode(on)
-                        }
-                    },
-                    onDisabledClick = {
-                        haptic.click()
-                        showToolboxSheet = false
-                        onToggleReplaceMode(true)
-                    }
-                )
                 Spacer(modifier = Modifier.height(24.dp))
             }
         }
     }
 
-    // 替换模式首次开启前的风险说明（沿用统一「不再提示」弹窗）
+    // 替换原图首次开启前的风险说明（沿用统一「不再提示」弹窗）
     if (pendingReplaceEnable) {
         ReminderInfoDialog(
             key = ReminderKey.REPLACE_MODE_RISK,
@@ -584,7 +566,7 @@ fun MainScreen(
             onDismiss = { pendingReplaceEnable = false },
             onConfirm = {
                 pendingReplaceEnable = false
-                onToggleReplaceMode(true)
+                onSelectOutputMode(OutputMode.REPLACE)
             }
         )
     }
@@ -599,6 +581,7 @@ private fun FileListArea(
     listState: LazyListState,
     isConverting: Boolean,
     effectiveTarget: String,
+    onLongPress: (FileItem) -> Unit,
     onRemoveFile: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -691,7 +674,10 @@ private fun FileListArea(
                             FileCard(
                                 item = item,
                                 isConverting = isConverting,
-                                sameFormat = item.formatKey != null && item.formatKey == effectiveTarget,
+                                // 逐项格式：优先本项 targetFormat，未设置时回退全局 selectedFormat
+                                sameFormat = item.formatKey != null &&
+                                             item.formatKey == (item.targetFormat ?: effectiveTarget),
+                                onLongPress = { onLongPress(item) },
                                 onDelete = { path -> onRemoveFile(path) }
                             )
                             Spacer(modifier = Modifier.height(8.dp))
@@ -752,61 +738,49 @@ private fun ToolboxRow(
 }
 
 /**
- * 工具箱开关条目：图标 + 标题 + 副标题 + 行尾 [Switch]，整行可点。
- * [enabled]=false 时置灰并由 [onDisabledClick] 接管点击（用于引导授权），
- * 与主界面「删除原图」行的门禁交互保持一致。
+ * 处理方式单选项卡片：单选圆点 + 标题，整块可点。
+ * [available]=false（缺「所有文件访问」权限）时置灰，但仍可点击以引导授权。
  */
 @Composable
-private fun ToolboxSwitchRow(
-    icon: @Composable () -> Unit,
-    title: String,
-    subtitle: String,
-    checked: Boolean,
+private fun OutputModeCard(
+    @StringRes titleRes: Int,
+    selected: Boolean,
+    available: Boolean,
     enabled: Boolean,
-    onToggle: (Boolean) -> Unit,
-    onDisabledClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    val fb = rememberPressFeedback(hapticOnPress = false)
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 2.dp)
+    Column(
+        modifier = modifier
             .clip(RoundedCornerShape(14.dp))
-            .clickable(
-                interactionSource = fb.interactionSource,
-                indication = null
-            ) {
-                if (enabled) onToggle(!checked) else onDisabledClick()
-            }
-            .then(fb.scaleModifier)
-            .padding(horizontal = 12.dp, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .background(
+                when {
+                    selected && available -> MaterialTheme.colorScheme.secondaryContainer
+                    selected -> MaterialTheme.colorScheme.surfaceContainerHighest
+                    else -> MaterialTheme.colorScheme.surfaceContainerHigh
+                }
+            )
+            .clickable(enabled = enabled) { onClick() }
+            .padding(horizontal = 6.dp, vertical = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(2.dp)
     ) {
-        icon()
-        Spacer(modifier = Modifier.width(16.dp))
-        Column(Modifier.weight(1f)) {
-            Text(
-                title,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                color = if (enabled) MaterialTheme.colorScheme.onSurface
-                        else MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Spacer(modifier = Modifier.height(2.dp))
-            Text(
-                subtitle,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-        Spacer(modifier = Modifier.width(12.dp))
-        // onCheckedChange=null：点击完全交给整行处理，避免行与 Switch 双触发
-        Switch(checked = checked, onCheckedChange = null, enabled = enabled)
+        // onClick=null：点击完全交给整块处理，避免重复触发
+        RadioButton(selected = selected, onClick = null, enabled = enabled && available)
+        Text(
+            text = stringResource(titleRes),
+            style = MaterialTheme.typography.labelLarge,
+            fontWeight = FontWeight.Bold,
+            color = if (available) MaterialTheme.colorScheme.onSurface
+                    else MaterialTheme.colorScheme.onSurfaceVariant,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
 
 /**
- * 底部控制面板内容：状态胶囊 + 三按钮组 + 删除原图开关 + 清空/转换 morph 行。
+ * 底部控制面板内容：状态胶囊 + 处理方式三选一 + 三按钮组 + 清空/转换 morph 行。
  * 竖屏为底部浮起面板，横屏为右侧栏（外层负责滚动）。
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -819,19 +793,17 @@ private fun BottomControls(
     importProgress: Float,
     isConverting: Boolean,
     isPickerOpening: Boolean,
-    selectedFormat: String,
     hasFiles: Boolean,
     busy: Boolean,
     clearBusy: Boolean,
-    deleteOriginal: Boolean,
-    deleteOriginalUsable: Boolean,
-    onToggleDeleteOriginal: (Boolean) -> Unit,
+    outputMode: OutputMode,
+    outputModeUsable: Boolean,
+    onSelectOutputMode: (OutputMode) -> Unit,
     onAddFiles: () -> Unit,
     onOpenToolbox: () -> Unit,
     onClearFiles: () -> Unit,
     onConvert: () -> Unit,
     onStopConvert: () -> Unit,
-    onOpenFormatSheet: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val haptic = rememberHapticFeedback()
@@ -840,12 +812,8 @@ private fun BottomControls(
     // 按钮按压反馈（项 5）：按下瞬间立即震动 + 圆角弹簧减小 + 轻微缩放
     val addFb = rememberPressFeedback()
     val toolboxFb = rememberPressFeedback()
-    val formatFb = rememberPressFeedback()
     val clearFb = rememberPressFeedback(baseCorner = 16.dp, pressedCorner = 6.dp)
     val convertFb = rememberPressFeedback()
-    // 项10 开关行：保留圆角曲率+缩放的固定序列动画，但按下不震动
-    // （开启=清脆 / 关闭=柔和的差异化反馈由切换回调触发）
-    val deleteFb = rememberPressFeedback(hapticOnPress = false)
 
     Column(
         modifier = modifier,
@@ -1010,92 +978,68 @@ private fun BottomControls(
                     }
                 }
 
-                // 格式选择按钮（处理中禁用）
-                FilledTonalButton(
-                    onClick = { onOpenFormatSheet() },
-                    enabled = !busy,
-                    interactionSource = formatFb.interactionSource,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(52.dp)
-                        .then(formatFb.scaleModifier),
-                    shape = RoundedCornerShape(formatFb.corner)
+                // 处理方式（第一版面三选一）：替换原图 / 删除原图 / 保留原图。
+                // 替换与删除均需「所有文件访问」权限：无权限时置灰，点击仍触发（由 Activity 引导授权）。
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
-                    Icon(Icons.Default.FormatPaint, contentDescription = null, modifier = Modifier.size(20.dp))
-                    Spacer(modifier = Modifier.width(8.dp))
-                    val fmtRes = formatOptions.firstOrNull { it.key == selectedFormat }?.nameRes
-                        ?: R.string.screen_format_google
                     Text(
-                        stringResource(R.string.screen_output_format, stringResource(fmtRes)),
-                        style = MaterialTheme.typography.titleSmall
+                        text = stringResource(R.string.screen_mode_title),
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(start = 4.dp)
                     )
-                }
-
-                // 项10：处理完成后删除原图开关行（随按钮组在处理中隐藏禁用）；
-                // 批次完成后直接执行磁盘删除命令清理原图；
-                // 未获得「完全存储访问」时开关置灰不可切换，点击改为引导授权；
-                // 开启=清脆震动 / 关闭=柔和震动
-                val onToggle: (Boolean) -> Unit = { newValue ->
-                    if (newValue) haptic.click() else haptic.soft()
-                    onToggleDeleteOriginal(newValue)
-                }
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(if (deleteOriginalUsable) 52.dp else 66.dp)
-                        .then(deleteFb.scaleModifier)
-                        .clip(RoundedCornerShape(deleteFb.corner))
-                        .background(
-                            if (deleteOriginalUsable) MaterialTheme.colorScheme.secondaryContainer
-                            else MaterialTheme.colorScheme.surfaceContainerHighest
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        OutputModeCard(
+                            titleRes = R.string.screen_mode_replace,
+                            selected = outputMode == OutputMode.REPLACE,
+                            available = outputModeUsable,
+                            enabled = !busy,
+                            onClick = { onSelectOutputMode(OutputMode.REPLACE) },
+                            modifier = Modifier.weight(1f)
                         )
-                        .clickable(
-                            interactionSource = deleteFb.interactionSource,
-                            indication = null
-                        ) { onToggle(!deleteOriginal) }
-                        .padding(horizontal = 20.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        Icons.Default.AutoDelete,
-                        contentDescription = null,
-                        tint = if (deleteOriginalUsable) MaterialTheme.colorScheme.onSecondaryContainer
-                               else MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(20.dp)
-                    )
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = stringResource(R.string.screen_delete_original),
-                            style = MaterialTheme.typography.titleSmall,
-                            color = if (deleteOriginalUsable) MaterialTheme.colorScheme.onSecondaryContainer
-                                    else MaterialTheme.colorScheme.onSurfaceVariant
+                        OutputModeCard(
+                            titleRes = R.string.screen_mode_delete,
+                            selected = outputMode == OutputMode.DELETE,
+                            available = outputModeUsable,
+                            enabled = !busy,
+                            onClick = { onSelectOutputMode(OutputMode.DELETE) },
+                            modifier = Modifier.weight(1f)
                         )
-                        if (!deleteOriginalUsable) {
-                            // 未授予「完全存储访问」：明确告知开关不可用及解锁方式
-                            Text(
-                                text = stringResource(R.string.screen_need_all_files_access_view),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
+                        OutputModeCard(
+                            titleRes = R.string.screen_mode_keep,
+                            selected = outputMode == OutputMode.KEEP,
+                            available = true,
+                            enabled = !busy,
+                            onClick = { onSelectOutputMode(OutputMode.KEEP) },
+                            modifier = Modifier.weight(1f)
+                        )
                     }
-                    Spacer(modifier = Modifier.width(8.dp))
-                    // 不复用整行的 deleteFb 按压源：行与开关共用同一 interactionSource
-                    // 会导致 M3 滑块(小圆)在行级动画/快速切换时卡在放大态无法复原
-                    Switch(
-                        checked = deleteOriginal,
-                        onCheckedChange = onToggle,
-                        enabled = deleteOriginalUsable,
-                        colors = SwitchDefaults.colors(
-                            checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
-                            checkedTrackColor = MaterialTheme.colorScheme.primary,
-                            checkedBorderColor = MaterialTheme.colorScheme.primary,
-                            uncheckedThumbColor = MaterialTheme.colorScheme.outline,
-                            uncheckedTrackColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                            uncheckedBorderColor = MaterialTheme.colorScheme.outline
-                        )
+                    // 选中项的说明 + 权限不足时的解锁提示
+                    Text(
+                        text = stringResource(
+                            when (outputMode) {
+                                OutputMode.REPLACE -> R.string.screen_mode_replace_desc
+                                OutputMode.DELETE -> R.string.screen_mode_delete_desc
+                                OutputMode.KEEP -> R.string.screen_mode_keep_desc
+                            }
+                        ),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(start = 4.dp)
                     )
+                    if (!outputModeUsable) {
+                        Text(
+                            text = stringResource(R.string.screen_mode_need_access),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.error,
+                            modifier = Modifier.padding(start = 4.dp)
+                        )
+                    }
                 }
             }
         }

@@ -99,8 +99,21 @@ internal class ApplePlugin : FormatPlugin() {
         // 仅改 ftyp 品牌（qt  → isom）后相册可识别但无法播放；
         // 统一交给 VideoTrackSanitizer 重封装为只含音视频轨的 MP4
         // （它要求视频轨必须加入成功，否则返回 null，不会产出只有音频的产物）。
-        val videoMp4 = VideoTrackSanitizer.sanitize(movData, log)
-            ?: Mp4Util.movToMp4(movData) // 重封装失败则回退字节级品牌补丁
+        val remuxed = VideoTrackSanitizer.sanitize(movData, log)
+        val videoMp4: ByteArray
+        if (remuxed != null) {
+            videoMp4 = remuxed
+        } else {
+            // 重封装失败时只能做字节级品牌补丁，这种产物相册可能识别但无法播放；
+            // 必须告警，并且只有在产物确实带视频轨时才允许继续（format-matrix R3）。
+            val patched = Mp4Util.movToMp4(movData)
+            val codec = Mp4Util.getTrackInfo(patched)?.get("codec") as? String
+            if (!Mp4Util.hasFtyp(patched) || codec.isNullOrEmpty()) {
+                throw IOException(CoreText.of(R.string.fmt_err_apple_remux_failed))
+            }
+            log("warning", CoreText.of(R.string.fmt_log_apple_remux_fallback), "Apple")
+            videoMp4 = patched
+        }
 
         val asset = LivePhotoAsset(
             primaryJpeg = primary,

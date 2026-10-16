@@ -72,6 +72,7 @@ import com.zsz.zlivephoto.ui.AppSettings
 import com.zsz.zlivephoto.ui.FancyEasing
 import com.zsz.zlivephoto.ui.FileItem
 import com.zsz.zlivephoto.ui.MainScreen
+import com.zsz.zlivephoto.ui.OutputMode
 import com.zsz.zlivephoto.ui.Md3Checkbox
 import com.zsz.zlivephoto.ui.SettingsScreen
 import com.zsz.zlivephoto.ui.ZLivePhotoTheme
@@ -87,6 +88,7 @@ import com.zsz.zlivephoto.ui.picker.AlbumInfo
 import com.zsz.zlivephoto.ui.picker.AlbumScanner
 import com.zsz.zlivephoto.ui.picker.MediaItem
 import com.zsz.zlivephoto.ui.picker.MediaRepo
+import com.zsz.zlivephoto.ui.picker.PairGrouping
 import com.zsz.zlivephoto.ui.picker.PhotoPickerScreen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -193,14 +195,23 @@ class MainActivity : ComponentActivity() {
      */
     private data class PendingDelete(val path: String, val uri: Uri?)
 
-    /** 开关（持久化；处理中控制区隐藏不可切换，保证批次语义确定） */
+    /** 删除原图开关（持久化；处理中控制区隐藏不可切换，保证批次语义确定） */
     private var deleteOriginal by mutableStateOf(false)
-    /** 开关是否可用：需要「完全存储访问」（见 [hasFullStorageAccess]），否则置灰并引导授权 */
-    private var deleteOriginalUsable by mutableStateOf(false)
-    /** 工具箱「替换模式」：产物直接写回源文件本体（破坏性；与「删除原图」互斥） */
+    /** 替换模式：产物直接写回源文件本体（破坏性；与「删除原图」互斥） */
     private var replaceMode by mutableStateOf(false)
-    /** 替换模式开关是否可用：同样需要「完全存储访问」 */
-    private var replaceModeUsable by mutableStateOf(false)
+    /** 「所有文件访问」是否可用：替换原图与删除原图都依赖它（置灰时点击引导授权） */
+    private var outputModeUsable by mutableStateOf(false)
+
+    /**
+     * 第一版面「处理方式」当前选中项，由 [deleteOriginal] / [replaceMode] 推导（两者互斥）。
+     * 单选交互：REPLACE → replaceMode=true；DELETE → deleteOriginal=true；KEEP → 两者皆 false。
+     */
+    private val outputMode: OutputMode
+        get() = when {
+            replaceMode -> OutputMode.REPLACE
+            deleteOriginal -> OutputMode.DELETE
+            else -> OutputMode.KEEP
+        }
     /** 本批次成功处理后待删除的原图（按源路径分组；IO 线程并发合并需加锁） */
     private val pendingDeleteBySource = LinkedHashMap<String, MutableList<PendingDelete>>()
     private val pendingDeleteLock = Any()
@@ -211,10 +222,6 @@ class MainActivity : ComponentActivity() {
     // 内置选择器（默认入口；系统选择器作为备选保留）
     private lateinit var mediaRepo: MediaRepo
     private lateinit var scanner: AlbumScanner
-    // 合成模式选择器：扫描普通照片+视频（供「合成动态照片」按序号配对）
-    private lateinit var composeScanner: AlbumScanner
-    // 当前打开的选择器是否为合成模式
-    private var pickerComposeMode by mutableStateOf(false)
     /** 顶层页面路由：Main 主页 / Picker 内置选择器 / Settings 设置页 */
     private enum class AppScreen { Main, Picker, Settings }
     private var screen by mutableStateOf(AppScreen.Main)
@@ -310,23 +317,15 @@ class MainActivity : ComponentActivity() {
     }
 
     /**
-     * 同步「处理完成后删除原图」与「替换模式」两个破坏性开关的可用性。
-     * 完全存储访问被撤销（用户在系统设置里关掉「所有文件访问」）时强制关闭开关并落盘，
+     * 同步「处理方式」（替换原图 / 删除原图）的可用性。
+     * 完全存储访问被撤销（用户在系统设置里关掉「所有文件访问」）时强制回到「保留原图」并落盘，
      * 保证「未获得完全存储访问之前不允许使用自动删除/替换源文件」这一约束在冷启动/回前台都成立。
      */
     private fun refreshStorageGates() {
         val usable = hasFullStorageAccess()
-        deleteOriginalUsable = usable
-        replaceModeUsable = usable
-        if (!usable && deleteOriginal) {
-            deleteOriginal = false
-            getSharedPreferences("zlivephoto", MODE_PRIVATE)
-                .edit().putBoolean("delete_original", false).apply()
-        }
-        if (!usable && replaceMode) {
-            replaceMode = false
-            AppSettings.setReplaceModeEnabled(false)
-        }
+        outputModeUsable = usable
+        if (!usable && deleteOriginal) disableDeleteOriginal()
+        if (!usable && replaceMode) disableReplaceMode()
     }
 
     /** 开启其中一个破坏性开关时关掉另一个（替换源文件与删除源文件语义互斥） */
@@ -339,6 +338,51 @@ class MainActivity : ComponentActivity() {
         deleteOriginal = false
         getSharedPreferences("zlivephoto", MODE_PRIVATE)
             .edit().putBoolean("delete_original", false).apply()
+    }
+
+    /**
+     * 第一版面「处理方式」单选：REPLACE / DELETE / KEEP。
+     * - REPLACE / DELETE 需「所有文件访问」：缺失时弹授权引导，不改动当前选择
+     * - KEEP：直接回到「保留原图」（两者皆关）
+     */
+    private fun selectOutputMode(mode: OutputMode) {
+        when (mode) {
+            OutputMode.REPLACE -> {
+                if (!hasFullStorageAccess()) {
+                    allFilesDialogPurpose = AllFilesPurpose.REPLACE
+                    showAllFilesDialog = true
+                    return
+                }
+                if (deleteOriginal) disableDeleteOriginal()
+                replaceMode = true
+                AppSettings.setReplaceModeEnabled(true)
+            }
+            OutputMode.DELETE -> {
+                if (!hasFullStorageAccess()) {
+                    allFilesDialogPurpose = AllFilesPurpose.DELETE
+                    showAllFilesDialog = true
+                    return
+                }
+                if (replaceMode) disableReplaceMode()
+                deleteOriginal = true
+                getSharedPreferences("zlivephoto", MODE_PRIVATE)
+                    .edit().putBoolean("delete_original", true).apply()
+            }
+            OutputMode.KEEP -> {
+                if (replaceMode) disableReplaceMode()
+                if (deleteOriginal) disableDeleteOriginal()
+            }
+        }
+    }
+
+    /** 长按列表项 → 单独设置该项输出格式（key 含 "extract"=拆解；合成任务不可拆解） */
+    private fun setItemFormat(path: String, formatKey: String) {
+        val idx = files.indexOfFirst { it.path == path }
+        if (idx < 0) return
+        val item = files[idx]
+        if (formatKey == "extract" && item.formatKey == "compose") return
+        files[idx] = item.copy(targetFormat = formatKey)
+        statusText = getString(R.string.main_status_item_format_set, item.name)
     }
 
     // 「所有文件访问」授权页返回后：刷新状态提示与删除原图开关可用性
@@ -647,7 +691,6 @@ class MainActivity : ComponentActivity() {
 
         mediaRepo = MediaRepo(contentResolver)
         scanner = AlbumScanner(mediaRepo)
-        composeScanner = AlbumScanner(mediaRepo, composeMode = true)
 
         val prefs = getSharedPreferences("zlivephoto", MODE_PRIVATE)
         // 迁移：旧版 vivo + vivo_mode=single → 新版顶级选项 vivo_single
@@ -856,20 +899,19 @@ class MainActivity : ComponentActivity() {
                 ) { page ->
                     if (page == AppScreen.Picker) {
                         // 内置选择器（默认）：MediaStore 直查，路径第一手，EXIF 完整保留
+                        // 统一选择器：同时展示动态照片 / 视频 / 普通图片，
+                        // 右上角「输出格式」决定本次导入的输出格式（含「拆解」）
                         PhotoPickerScreen(
                             albums = pickerAlbums,
-                            scanner = if (pickerComposeMode) composeScanner else scanner,
+                            scanner = scanner,
                             scannerScope = lifecycleScope,
                             isDarkTheme = isDarkTheme,
+                            outputFormat = selectedFormat,
+                            onOutputFormatChange = { setOutputFormat(it) },
                             onBack = { screen = AppScreen.Main },
                             onConfirm = { items ->
                                 screen = AppScreen.Main
                                 importPickedItems(items)
-                            },
-                            composeMode = pickerComposeMode,
-                            onConfirmCompose = { photos, videos ->
-                                screen = AppScreen.Main
-                                importComposeItems(photos, videos)
                             }
                         )
                     } else if (page == AppScreen.Settings) {
@@ -890,77 +932,16 @@ class MainActivity : ComponentActivity() {
                             listState = listState,
                             onAddFiles = { onAddFiles() },
                             onBatchImport = { onBatchImport() },
-                            onCompose = { onCompose() },
                             onOpenSettings = { screen = AppScreen.Settings },
                             onClearFiles = { clearFiles() },
                             onConvert = { startConvert() },
                             onStopConvert = { stopConvert() },
-                            onSelectFormat = { fmt ->
-                                // 拆解与合成互斥：队列已有合成任务时禁止切到拆解模式
-                                if (fmt == "extract" && files.any { it.formatKey == "compose" }) {
-                                    statusText = getString(R.string.main_status_compose_blocks_extract)
-                                } else {
-                                    selectedFormat = fmt
-                                    getSharedPreferences("zlivephoto", MODE_PRIVATE)
-                                        .edit().putString("target", fmt).apply()
-                                }
-                            },
-                            deleteOriginal = deleteOriginal,
-                            deleteOriginalUsable = deleteOriginalUsable,
-                            onToggleDeleteOriginal = { on ->
-                                val prefs = getSharedPreferences("zlivephoto", MODE_PRIVATE)
-                                when {
-                                    // 关闭：直接落盘，无需权限
-                                    !on -> {
-                                        deleteOriginal = false
-                                        prefs.edit().putBoolean("delete_original", false).apply()
-                                    }
-                                    // 已获得完全存储访问：允许开启（与「替换模式」互斥）
-                                    hasFullStorageAccess() -> {
-                                        if (replaceMode) {
-                                            disableReplaceMode()
-                                            statusText = getString(R.string.main_status_replace_off_mutex)
-                                        }
-                                        deleteOriginal = true
-                                        prefs.edit().putBoolean("delete_original", true).apply()
-                                    }
-                                    // 未获得完全存储访问：不允许自动删除，改为引导授权
-                                    else -> {
-                                        deleteOriginal = false
-                                        prefs.edit().putBoolean("delete_original", false).apply()
-                                        statusText = getString(R.string.main_status_delete_needs_all_files)
-                                        allFilesDialogPurpose = AllFilesPurpose.DELETE
-                                        showAllFilesDialog = true
-                                    }
-                                }
-                            },
-                            replaceMode = replaceMode,
-                            replaceModeUsable = replaceModeUsable,
-                            onToggleReplaceMode = { on ->
-                                when {
-                                    // 关闭：直接落盘，无需权限
-                                    !on -> {
-                                        disableReplaceMode()
-                                        statusText = getString(R.string.main_status_replace_off)
-                                    }
-                                    // 未获得完全存储访问：不允许改写源文件，改为引导授权
-                                    !hasFullStorageAccess() -> {
-                                        disableReplaceMode()
-                                        statusText = getString(R.string.main_status_replace_needs_all_files)
-                                        allFilesDialogPurpose = AllFilesPurpose.REPLACE
-                                        showAllFilesDialog = true
-                                    }
-                                    // 已授权：开启（与「删除原图」互斥）
-                                    else -> {
-                                        if (deleteOriginal) {
-                                            disableDeleteOriginal()
-                                            statusText = getString(R.string.main_status_delete_off_mutex)
-                                        }
-                                        replaceMode = true
-                                        AppSettings.setReplaceModeEnabled(true)
-                                    }
-                                }
-                            },
+                            // 处理方式三选一（替换原图 / 删除原图 / 保留原图）
+                            outputMode = outputMode,
+                            outputModeUsable = outputModeUsable,
+                            onSelectOutputMode = { mode -> selectOutputMode(mode) },
+                            // 长按列表项：单独设置该项输出格式
+                            onSelectItemFormat = { path, key -> setItemFormat(path, key) },
                             onRemoveFile = { path -> removeFile(path) }
                         )
                     }
@@ -1289,43 +1270,29 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    /**
+     * 设置输出格式（含持久化）：队列已有合成任务时禁止切到「拆解」——
+     * 拆解与合成语义互斥（合成产出动态照片，拆解反向拆出图+视频），混用会产出不可识别产物。
+     */
+    private fun setOutputFormat(fmt: String) {
+        if (fmt == "extract" && files.any { it.formatKey == "compose" }) {
+            statusText = getString(R.string.main_status_compose_blocks_extract)
+            return
+        }
+        selectedFormat = fmt
+        getSharedPreferences("zlivephoto", MODE_PRIVATE)
+            .edit().putString("target", fmt).apply()
+    }
+
     /** 打开内置选择器（默认入口）：会话化扫描 + 查询相册列表后展示；
      *  读相册期间 isPickerOpening=true，完成前「添加文件」按钮保持禁用（防重入） */
     private fun openBuiltInPicker() {
         if (isPickerOpening || isConverting) return
         isPickerOpening = true
-        pickerComposeMode = false
         scanner.newSession() // 每次进入选择器开启新会话（相册扫过即不再扫）
         statusText = getString(R.string.main_status_loading_albums)
         lifecycleScope.launch(Dispatchers.IO) {
-            val albums = mediaRepo.queryAlbums()
-            withContext(Dispatchers.Main) {
-                pickerAlbums = albums
-                screen = AppScreen.Picker
-                isPickerOpening = false
-                statusText = if (albums.isEmpty()) getString(R.string.main_status_no_albums) else getString(R.string.main_status_ready)
-            }
-        }
-    }
-
-    /** 合成动态照片入口：打开合成模式选择器（普通照片+视频，按序号配对） */
-    private fun onCompose() {
-        if (!hasReadPermission()) {
-            pendingPermissionAction = { openComposePicker() }
-            showPermissionDialog = true
-        } else {
-            ensureLocationThen { openComposePicker() }
-        }
-    }
-
-    /** 打开合成模式选择器：扫描普通照片（非动态照片）+ 视频（含时长） */
-    private fun openComposePicker() {
-        if (isPickerOpening || isConverting) return
-        isPickerOpening = true
-        pickerComposeMode = true
-        composeScanner.newSession()
-        statusText = getString(R.string.main_status_loading_albums)
-        lifecycleScope.launch(Dispatchers.IO) {
+            // 统一选择器：图片与视频一并统计进相册（视频相册也可进入选择）
             val albums = mediaRepo.queryAlbums(includeVideos = true)
             withContext(Dispatchers.Main) {
                 pickerAlbums = albums
@@ -1337,59 +1304,28 @@ class MainActivity : ComponentActivity() {
     }
 
     /**
-     * 合成模式确认导入：照片[i] + 视频[i] 按序号一一配对生成合成任务。
-     * 数量不一致时按较少一方配对并提示；任务项 formatKey=compose、
-     * composeVideoPath=配对视频，输出时间戳取照片的修改时间/拍摄时间。
+     * 内置选择器确认导入：引用模式直接记录原文件路径（不复制，零空间占用，EXIF 天然完整保留）。
+     *
+     * 自动分组（用户需求，见 [PairGrouping]）：
+     * - 动态照片 → 按本次选择器右上角选定的输出格式**转换**
+     * - 单图 / 视频 → 按名称配对，识别为**合并动态照片**（图片 + 视频 → 动态照片）
+     * - 配不上的单图 / 单视频 → 无法合成，跳过并提示
+     *
+     * 全局输出格式为「拆解」时，需要合成的图片改用 Google 格式
+     * （拆解无法作用于尚未合成的图片 + 视频）。
      */
-    private fun importComposeItems(photos: List<MediaItem>, videos: List<MediaItem>) {
-        val pairs = minOf(photos.size, videos.size)
-        if (pairs == 0) {
-            statusText = if (photos.isEmpty()) getString(R.string.main_status_compose_no_photo)
-                         else getString(R.string.main_status_compose_no_video)
-            return
-        }
-        var added = 0
-        for (i in 0 until pairs) {
-            val p = photos[i]
-            val v = videos[i]
-            // 去重按绝对路径判断（跨相册同名照片可同时合成，不因 name 相同误跳）
-            if (files.any { it.path == p.path }) continue
-            files.add(FileItem(
-                path = p.path,
-                name = p.name,
-                info = getString(R.string.main_info_compose_task),
-                sourcePath = p.path,
-                sourceTime = p.dateModified * 1000L, // 输出修改时间=照片修改时间
-                sourceTaken = p.dateTaken,            // 输出创建时间=照片拍摄时间
-                formatKey = "compose",
-                composeVideoPath = v.path
-            ))
-            added++
-        }
-        statusText = when {
-            added == 0 -> getString(R.string.main_status_compose_all_added)
-            photos.size != videos.size ->
-                getString(R.string.main_status_compose_paired, photos.size, videos.size, added)
-            else -> resources.getQuantityString(R.plurals.main_status_compose_added, added, added)
-        }
-        // 拆解与合成互斥：合成任务入队时若当前还是拆解模式（无意义的合成目标），
-        // 自动切到默认的 Google 输出，避免“拆解模式下合成”产出不可识别产物
-        if (added > 0 && selectedFormat == "extract") {
-            selectedFormat = "google"
-            getSharedPreferences("zlivephoto", MODE_PRIVATE)
-                .edit().putString("target", "google").apply()
-            statusText = getString(R.string.main_status_auto_google, statusText)
-        }
-        onListMutated()
-        onListStable(immediate = true)
-    }
-
-    /** 内置选择器确认导入：引用模式直接记录原文件路径（不复制，零空间占用，
-     *  EXIF 天然完整保留）；导入期间仅显示状态栏 + 进度条，完成后按钮再从底部动画上移 */
     private fun importPickedItems(items: List<MediaItem>) {
         if (items.isEmpty()) return
-        val total = items.size
-        isImporting = true
+        val plan = PairGrouping.plan(items)
+        // 本次导入的输出格式：选择器右上角控件决定（含「拆解」）
+        val importFormat = selectedFormat
+        val composeFormat = if (importFormat == "extract") "google" else importFormat
+
+        // 合成任务需在 Main 线程追加（SnapshotStateList）
+        plan.pairs.forEach { (photo, video) -> addComposeTask(photo, video, composeFormat) }
+
+        val total = plan.converts.size + plan.pairs.size
+        isImporting = plan.converts.isNotEmpty()
         importProgress = 0f
         stopImportRequested = false
         progressDetail = getString(R.string.main_progress_added, 0, total)
@@ -1397,14 +1333,15 @@ class MainActivity : ComponentActivity() {
         lifecycleScope.launch(Dispatchers.IO) {
             var imported = 0
             var failed = 0
-            for (item in items) {
+            for (item in plan.converts) {
                 if (stopImportRequested) break // 停止导入：使用当前进度，不再继续
                 try {
                     val src = File(item.path)
                     if (!src.exists() || !src.canRead()) throw IOException(getString(R.string.main_status_source_missing))
                     importFromPath(
                         path = item.path, sourceUri = item.uri.toString(),
-                        sourceTime = item.dateModified * 1000L, sourceTaken = item.dateTaken
+                        sourceTime = item.dateModified * 1000L, sourceTaken = item.dateTaken,
+                        targetFormat = importFormat
                     )
                     imported++
                 } catch (e: Exception) {
@@ -1421,15 +1358,44 @@ class MainActivity : ComponentActivity() {
                 isImporting = false
                 importProgress = 0f
                 progressDetail = ""
+                // 配不上的单图/单视频：明确告知未导入的原因
+                val unpairedNote = if (plan.unpaired.isNotEmpty())
+                    getString(R.string.main_status_import_unpaired, plan.unpaired.size) else ""
                 statusText = when {
                     stopImportRequested -> getString(R.string.main_status_import_stopped, imported, failed)
                     failed > 0 -> getString(R.string.main_status_import_done_partial, imported, failed)
+                    plan.pairs.size + plan.unpaired.size > 0 ->
+                        getString(
+                            R.string.main_status_import_done_grouped,
+                            imported + plan.pairs.size, plan.pairs.size, unpairedNote
+                        )
                     else -> resources.getQuantityString(R.plurals.main_status_import_done, imported, imported)
                 }
                 stopImportRequested = false
                 onListStable()
             }
         }
+    }
+
+    /**
+     * 合成任务入队：照片 + 配对视频 → 动态照片。
+     * 去重按绝对路径判断（跨相册同名照片可同时合成）；
+     * 输出时间戳取照片的修改时间/拍摄时间（照片与配对视频天然同源）。
+     */
+    private fun addComposeTask(photo: MediaItem, video: MediaItem, targetFormat: String) {
+        if (files.any { it.path == photo.path }) return
+        files.add(FileItem(
+            path = photo.path,
+            name = photo.name,
+            info = getString(R.string.main_info_compose_task),
+            sourceUri = photo.uri.toString(),
+            sourcePath = photo.path,
+            sourceTime = photo.dateModified * 1000L,
+            sourceTaken = photo.dateTaken,
+            formatKey = "compose",
+            targetFormat = targetFormat,
+            composeVideoPath = video.path
+        ))
     }
 
     /** 终止转换/导入：转换处理完当前文件后停止；导入循环下一项前立即停止 */
@@ -1483,11 +1449,12 @@ class MainActivity : ComponentActivity() {
      */
     private fun importFromPath(path: String, sourceUri: String? = null,
                                sourcePath: String? = null,
-                               sourceTime: Long = 0L, sourceTaken: Long = 0L) {
+                               sourceTime: Long = 0L, sourceTaken: Long = 0L,
+                               targetFormat: String? = null) {
         // 批量导入在 IO 协程内调用：SnapshotStateList 变更必须在 Main 线程，切回 Main 保证线程安全
         if (Looper.myLooper() != Looper.getMainLooper()) {
             lifecycleScope.launch(Dispatchers.Main) {
-                importFromPath(path, sourceUri, sourcePath, sourceTime, sourceTaken)
+                importFromPath(path, sourceUri, sourcePath, sourceTime, sourceTaken, targetFormat)
             }
             return
         }
@@ -1498,7 +1465,8 @@ class MainActivity : ComponentActivity() {
         if (files.any { it.path == path }) return
         val item = FileItem(path = path, name = name, info = getString(R.string.main_info_detecting),
             sourceUri = sourceUri, sourcePath = srcPath,
-            sourceTime = sourceTime, sourceTaken = sourceTaken)
+            sourceTime = sourceTime, sourceTaken = sourceTaken,
+            targetFormat = targetFormat)
         files.add(item)
         onListMutated()
         launchDetection(path, srcPath)
@@ -1633,6 +1601,7 @@ class MainActivity : ComponentActivity() {
                 o.put("sourceTime", f.sourceTime)
                 o.put("sourceTaken", f.sourceTaken)
                 o.put("formatKey", f.formatKey ?: "")
+                o.put("targetFormat", f.targetFormat ?: "")
                 o.put("composeVideo", f.composeVideoPath ?: "")
                 arr.put(o)
             }
@@ -1669,6 +1638,7 @@ class MainActivity : ComponentActivity() {
                     sourceTime = o.optLong("sourceTime", 0L),
                     sourceTaken = o.optLong("sourceTaken", 0L),
                     formatKey = o.optString("formatKey").ifEmpty { null },
+                    targetFormat = o.optString("targetFormat").ifEmpty { null },
                     composeVideoPath = o.optString("composeVideo").ifEmpty { null }
                 ))
             }
@@ -1797,6 +1767,8 @@ class MainActivity : ComponentActivity() {
                         // 若共用一个 outDir 会写同一路径互相覆盖，产物内容串味。
                         val taskDir = File(outputDir, "job${taskSeq.incrementAndGet()}")
                         try {
+                            // 逐项格式：优先本项单独设置的 targetFormat，未设置时回退全局 selectedFormat
+                            val itemTarget = item.targetFormat ?: selectedFormat
                             if (item.formatKey == "compose" && item.composeVideoPath != null) {
                                 // 合成任务：照片 + 配对视频 → 动态照片。
                                 // 视频不符合标准 MP4（MOV / 非 H.264/H.265 编码 / MKV 等）时，
@@ -1805,7 +1777,7 @@ class MainActivity : ComponentActivity() {
                                 staged = Converter.compose(
                                     photoPath = item.path,
                                     videoPath = item.composeVideoPath!!,
-                                    target = selectedFormat,
+                                    target = itemTarget,
                                     outDir = taskDir.path,
                                     log = { level, msg, tag ->
                                         if (level == "error" || level == "warn") {
@@ -1831,7 +1803,7 @@ class MainActivity : ComponentActivity() {
                                 // 普通项走转换管线
                                 staged = Converter.convertFile(
                                     path = item.path,
-                                    target = selectedFormat,
+                                    target = itemTarget,
                                     outDir = taskDir.path,
                                     log = { level, msg, tag ->
                                         if (level == "error" || level == "warn") {

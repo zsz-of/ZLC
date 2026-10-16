@@ -97,4 +97,5 @@
     <string name="screen_transcode_frames">%1$d/%2$d 影格</string>
     <string name="screen_transcode_in_progress">轉碼中 · 已處理 %1$d 影格</string>
     <string name="screen_transcode_progress">轉碼 %1$d%%</string>
+    <string name="screen_format_samsung">三星</string>
 </resources>

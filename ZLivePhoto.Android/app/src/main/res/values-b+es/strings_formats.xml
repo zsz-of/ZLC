@@ -66,4 +66,10 @@
     <string name="fmt_tag_meizu">Meizu</string>
     <string name="fmt_tag_nubia">Nubia</string>
     <string name="fmt_tag_xiaomi">Xiaomi</string>
+    <string name="fmt_samsung">Live Photo de Samsung</string>
+    <string name="fmt_err_samsung_no_sef">Falta el marcador de cola SEF de Samsung (SEFH/SEFT)</string>
+    <string name="fmt_err_samsung_no_video">No se encontró ningún vídeo MP4 válido antes de la cola SEF (falta la caja ftyp)</string>
+    <string name="fmt_log_parse_samsung">Se analiza como Live Photo de Samsung (bloque de cola SEFH/SEFT)</string>
+    <string name="fmt_log_samsung_sef">Cola SEF: version=%1$d, %2$d registros</string>
+    <string name="fmt_log_samsung_write">Escritura en formato Samsung: %1$s (imagen %2$dB + vídeo %3$dB + cola SEF %4$dB)</string>
 </resources>

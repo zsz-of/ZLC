@@ -93,4 +93,5 @@
     <string name="screen_transcode_frames">%1$d/%2$d إطار</string>
     <string name="screen_transcode_in_progress">جارٍ الترميز · تمت معالجة %1$d إطار</string>
     <string name="screen_transcode_progress">الترميز %1$d%%</string>
+    <string name="screen_format_samsung">سامسونج</string>
 </resources>

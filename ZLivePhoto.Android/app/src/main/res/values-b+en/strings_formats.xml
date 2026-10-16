@@ -62,4 +62,10 @@
     <string name="fmt_tag_meizu">Meizu</string>
     <string name="fmt_tag_nubia">Nubia</string>
     <string name="fmt_tag_xiaomi">Xiaomi</string>
+    <string name="fmt_samsung">Samsung Live Photo</string>
+    <string name="fmt_err_samsung_no_sef">Missing the Samsung SEF tail marker (SEFH/SEFT)</string>
+    <string name="fmt_err_samsung_no_video">No valid MP4 video found before the SEF tail (missing ftyp box)</string>
+    <string name="fmt_log_parse_samsung">Parsing as Samsung Live Photo (SEFH/SEFT tail block)</string>
+    <string name="fmt_log_samsung_sef">SEF tail: version=%1$d, %2$d record(s)</string>
+    <string name="fmt_log_samsung_write">Writing the Samsung format: %1$s (image %2$dB + video %3$dB + SEF tail %4$dB)</string>
 </resources>

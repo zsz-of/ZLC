@@ -72,6 +72,19 @@ internal object Mp4Util {
         return BinaryUtils.arrayEquals(data, 4, ftyp)
     }
 
+    /**
+     * moov 的直接子 box 中是否存在指定 type（如 "lpex"）。
+     *
+     * 用于 lpex 去重守卫：字节串搜索需要假设 moov 位于 mdat 之前（faststart），
+     * 对「moov 在 mdat 之后」的文件必然漏判；改为解析 moov 子 box 列表后对任意布局都成立
+     * （format-matrix R6）。
+     */
+    fun hasMoovChild(data: ByteArray, type: String): Boolean {
+        val moov = iterateBoxes(data, 0, data.size).firstOrNull { it.type == "moov" } ?: return false
+        val moovEnd = minOf(moov.offset + moov.size, data.size)
+        return iterateBoxes(data, moov.offset + moov.headerLen, moovEnd).any { it.type == type }
+    }
+
     /** 若 MP4 末尾存在 UUID 为 'vivoMediaExtInfo' 的 uuid box，则去除。 */
     fun stripVivoUuid(data: ByteArray): ByteArray {
         val boxes = iterateBoxes(data, 0, data.size).toList()

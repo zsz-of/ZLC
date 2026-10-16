@@ -235,7 +235,38 @@ internal object JpegUtil {
         var prev = 0
         for (range in ranges) {
             if (range.first > prev) out.write(jpeg, prev, range.first - prev)
-            prev = range.last
+            prev = range.last + 1 // IntRange.last 为闭区间端点，排他末尾必须 +1
+        }
+        if (prev < jpeg.size) out.write(jpeg, prev, jpeg.size - prev)
+        return out.toByteArray()
+    }
+
+    /** MPF（Multi-Picture Format）APP2 段头："MPF\0"（4 字节）。 */
+    private val mpfApp2Prefix: ByteArray = byteArrayOf(0x4D, 0x50, 0x46, 0x00)
+
+    /**
+     * 移除主图的 MPF APP2 段。
+     *
+     * 用于「丢弃 GainMap 但保留主图」的输出路径（如魅族）：源主图的 MPF `img1`（第二张图）
+     * 指向紧随其后的 GainMap，一旦不再输出 GainMap，该偏移就会落到视频区，
+     * MPF 变成指向非法 JPEG 的坏索引（format-matrix R7）。
+     */
+    fun stripMpfApp2(jpeg: ByteArray): ByteArray {
+        if (jpeg.size < 4 || jpeg[0] != 0xFF.toByte() || jpeg[1] != 0xD8.toByte()) return jpeg
+        val ranges = ArrayList<IntRange>(1)
+        for (seg in iterateSegments(jpeg)) {
+            val m = seg.marker.toInt() and 0xFF
+            if (m == 0xE2 && BinaryUtils.arrayEquals(jpeg, seg.payloadStart, mpfApp2Prefix)) {
+                ranges.add(seg.segStart until (seg.segStart + seg.totalLen))
+            }
+            if (m == 0xDA) break // SOS 之后不再有头部段
+        }
+        if (ranges.isEmpty()) return jpeg
+        val out = java.io.ByteArrayOutputStream(jpeg.size - ranges.sumOf { it.count() })
+        var prev = 0
+        for (range in ranges) {
+            if (range.first > prev) out.write(jpeg, prev, range.first - prev)
+            prev = range.last + 1 // IntRange.last 为闭区间端点，排他末尾必须 +1
         }
         if (prev < jpeg.size) out.write(jpeg, prev, jpeg.size - prev)
         return out.toByteArray()

@@ -50,6 +50,12 @@
     <string name="settings_custom_color_title">自定义主题色</string>
     <string name="settings_cd_custom_palette">自定义调色板</string>
     <string name="settings_hue_value">色相 %1$d°</string>
+    <!-- 液态玻璃（界面风格） -->
+    <string name="settings_glass_title">液态玻璃界面</string>
+    <string name="settings_glass_subtitle">iOS 风格毛玻璃与边缘折射；关闭后使用原生组件</string>
+    <string name="settings_glass_unsupported">当前系统版本不支持液态玻璃，已自动使用原生组件</string>
+    <string name="settings_glass_opacity_title">液态玻璃通透度</string>
+    <string name="settings_glass_opacity_subtitle">通透度越低，磨砂模糊越强（仅液态玻璃界面生效）</string>
 
     <!-- 应用语言：标题与「跟随系统」两项复用 Lead 维护的 strings_app.xml
          （R.string.app_language_title / R.string.app_language_follow_system），此处不重复定义 -->
@@ -93,9 +99,9 @@
     <!-- 视频转码 -->
     <string name="settings_transcoder_title">内置转码器</string>
     <string name="settings_transcoder_value">ffmpeg %1$s</string>
-    <string name="settings_transcode_mode_encode">重新编码</string>
-    <string name="settings_transcode_mode_remux">仅重封装容器（推荐）</string>
-    <string name="settings_transcode_mode_off">完全不使用转码器</string>
+    <string name="settings_transcode_mode_encode">完整转码</string>
+    <string name="settings_transcode_mode_remux">仅封装</string>
+    <string name="settings_transcode_mode_off">不使用</string>
     <string name="settings_transcode_params_title">转码参数</string>
     <string name="settings_transcode_params_subtitle">重新编码时使用的质量与压缩参数</string>
     <string name="settings_transcode_params_disabled">仅在「转码方式」选择「重新编码」时生效</string>

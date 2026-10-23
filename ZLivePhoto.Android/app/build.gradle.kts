@@ -13,8 +13,8 @@ android {
     defaultConfig {
         applicationId = "com.zsz.zlivephoto"
         targetSdk = 36
-        versionCode = 49
-        versionName = "3.7.0"
+        versionCode = 50
+        versionName = "3.7.1"
     }
 
     flavorDimensions += "edition"
@@ -98,6 +98,8 @@ dependencies {
     implementation(libs.compose.material.icons.extended)
     implementation(libs.activity.compose)
     implementation(libs.lifecycle.runtime.ktx)
+    // iOS 风格液态玻璃（边缘折射 / 模糊 / 高光 / 阴影）
+    implementation(libs.backdrop)
     debugImplementation(libs.compose.ui.tooling)
 
     // JVM 单元测试（AndroidLogicGpsTest：验证转换不破坏 GPS）

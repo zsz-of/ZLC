@@ -48,6 +48,11 @@
     <string name="settings_custom_color_title">カスタムテーマ色</string>
     <string name="settings_cd_custom_palette">カスタムパレット</string>
     <string name="settings_hue_value">色相 %1$d°</string>
+    <string name="settings_glass_title">リキッドグラスUI</string>
+    <string name="settings_glass_subtitle">iOS 風のすりガラスとエッジ屈折。オフにすると標準コンポーネントを使用します</string>
+    <string name="settings_glass_unsupported">この OS バージョンはリキッドグラスに対応していないため、標準コンポーネントを使用しています</string>
+    <string name="settings_glass_opacity_title">リキッドグラスの透明度</string>
+    <string name="settings_glass_opacity_subtitle">透明度が低いほどぼかしが強くなります（リキッドグラスUIのみ）</string>
 
     <!-- アプリの言語：「システムに従う」は Lead 管理の strings_app.xml を再利用 -->
     <string name="settings_language_dialog_title">アプリの言語を選択</string>

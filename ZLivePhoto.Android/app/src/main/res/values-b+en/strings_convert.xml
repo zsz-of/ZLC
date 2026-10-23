@@ -9,6 +9,7 @@
     <string name="conv_unknown_target">Unknown target format: %1$s</string>
     <string name="conv_unrecognized_live_photo">Unrecognized Live Photo format (not a Google/OPPO/vivo/Xiaomi/Apple Live Photo)</string>
     <string name="conv_cover_photo_missing">Cover photo is missing or empty</string>
+    <string name="conv_compose_no_video">Compose failed: the output contains no valid video track, so no Live Photo was produced</string>
     <string name="conv_video_missing">Video is missing or empty</string>
     <string name="conv_video_too_large">Video is too large (%1$d MB) to create a Live Photo; please choose a shorter video</string>
     <string name="conv_transcoded_too_large">Video is still too large after transcoding (%1$d MB); cannot create a Live Photo</string>

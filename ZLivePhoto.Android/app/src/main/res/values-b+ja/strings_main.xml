@@ -83,6 +83,7 @@
     <string name="main_info_unrecognized">認識できないライブフォト形式</string>
     <string name="main_info_converting">変換中…</string>
     <string name="main_info_compose_task">合成タスク（「変換を開始」をタップして合成を実行）</string>
+    <string name="main_info_compose_target">%1$s · 合成</string>
     <string name="main_info_done_replaced">完了（%1$d 個の元ファイルを置き換え）</string>
     <string name="main_info_done_skipped">完了（スキップ：同名の競合）</string>
     <string name="main_info_done_exported">完了（%1$d 個を書き出し）</string>

@@ -119,7 +119,7 @@ fun rememberPressFeedback(
         interactionSource.interactions.collect { interaction ->
             if (interaction is PressInteraction.Press) {
                 if (hapticOnPress) haptic.click()
-                if (AppSettings.bounceEnabled) {
+                if (AppSettings.bounceActive) {
                     scope.launch {
                         // 缩放：q 弹一次
                         scaleAnim.animateTo(0.965f, tween(90))

@@ -127,6 +127,7 @@
     <string name="main_info_unrecognized">تنسيق صورة حية غير معروف</string>
     <string name="main_info_converting">جارٍ التحويل…</string>
     <string name="main_info_compose_task">مهمة دمج (اضغط «بدء التحويل» للتنفيذ)</string>
+    <string name="main_info_compose_target">%1$s · دمج</string>
     <string name="main_info_done_replaced">اكتمل (تم استبدال %1$d من الملفات الأصلية)</string>
     <string name="main_info_done_skipped">اكتمل (تم التخطي: تعارض في الاسم)</string>
     <string name="main_info_done_exported">اكتمل (تم تصدير %1$d)</string>

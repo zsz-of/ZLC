@@ -91,6 +91,7 @@
     <string name="main_info_unrecognized">無法識別的動態相片格式</string>
     <string name="main_info_converting">轉換中…</string>
     <string name="main_info_compose_task">合成任務（點擊開始轉換以執行合成）</string>
+    <string name="main_info_compose_target">%1$s · 合成任務</string>
     <string name="main_info_done_replaced">完成（取代 %1$d 個來源檔案）</string>
     <string name="main_info_done_skipped">完成（略過：同名衝突）</string>
     <string name="main_info_done_exported">完成（匯出 %1$d 個）</string>

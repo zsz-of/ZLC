@@ -26,6 +26,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -42,6 +43,7 @@ import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.AppUpdater
 import com.zsz.zlivephoto.core.UpdateInfo
+import com.zsz.zlivephoto.ui.glass.LiquidDialog
 import java.io.File
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
@@ -369,7 +371,28 @@ private fun notesForDisplay(notes: String?, emptyText: String): String {
     return kept.ifEmpty { emptyText }
 }
 
-/** 在宿主界面渲染更新相关的全部弹窗（调用一次即可，状态由 [flow] 驱动） */
+/**
+ * 记住 [value] 的最后一个值：[keep] 为 false（弹窗退场中）时返回退出前的值。
+ *
+ * 弹窗改走 visible 模式后（进入/退出高斯模糊淡入淡出，见 [LiquidDialog]），
+ * 退场期间源状态往往已被清空（dismissAll / closeMessage 等），但内容仍需
+ * 渲染完淡出动画——没有快照会瞬间变空甚至 NPE。
+ */
+@Composable
+private fun <T> rememberLast(value: T, keep: Boolean): T {
+    val last = remember { mutableStateOf(value) }
+    LaunchedEffect(value) { last.value = value }
+    return if (keep) value else last.value
+}
+
+/**
+ * 在宿主界面渲染更新相关的全部弹窗（调用一次即可，状态由 [flow] 驱动）。
+ *
+ * 弹窗互斥优先级（与旧版提前 return 的级联一致）：
+ * requireNormalOpen > forcedBlocked > busy > permissionApk > message > notes > info。
+ * 全部走 visible 模式，因此不再用提前 return——每个分支按各自可见性组合，
+ * 退场期间内容由 [rememberLast] 快照继续渲染。
+ */
 @Composable
 internal fun UpdateFlowHosts(
     flow: UpdateFlowController,
@@ -386,197 +409,199 @@ internal fun UpdateFlowHosts(
         flow.onPermissionResult()
     }
 
-    // 全局弹窗闸门：同一时刻只允许一个会话型弹窗（处理进行中时由闸门整体抑制）
-    if (!enabled) return
+    // ── 互斥可见性（全局弹窗闸门：处理进行中由 enabled 整体抑制）──
+    val showRequireNormalOpen = enabled && flow.requireNormalOpen
+    val showForcedBlocked = enabled && !showRequireNormalOpen && flow.forcedBlocked
+    val showBusy = enabled && !showRequireNormalOpen && !showForcedBlocked && flow.busy != null
+    val showPermission = enabled && !showRequireNormalOpen && !showForcedBlocked && !showBusy &&
+        flow.permissionApk != null
+    val showMessage = enabled && !showRequireNormalOpen && !showForcedBlocked && !showBusy &&
+        !showPermission && flow.message != null
+    val showNotes = enabled && !showRequireNormalOpen && !showForcedBlocked && !showBusy &&
+        !showPermission && !showMessage && flow.info != null && flow.showNotes
+    val showInfo = enabled && !showRequireNormalOpen && !showForcedBlocked && !showBusy &&
+        !showPermission && !showMessage && !showNotes && flow.info != null
+
+    // 退场动画期间对应状态可能已被 dismissAll 清空：记住最后一个值继续渲染
+    val busy = rememberLast(flow.busy, showBusy)
+    val msg = rememberLast(flow.message, showMessage)
+    val info = rememberLast(flow.info, showInfo || showNotes)
+    val switchToNormal = rememberLast(flow.switchToNormalMode, showInfo)
+    val reinstall = rememberLast(flow.reinstallMode, showInfo)
 
     // ── Go 运行在 Android 10+ 且本机已安装正常版：不可关闭，只能打开正常版 ──
     // 优先级最高：已装正常版就没必要再走「下载安装」，直接打开即可继续使用。
-    if (flow.requireNormalOpen) {
-        AlertDialog(
-            onDismissRequest = {},
-            title = { Text(stringResource(R.string.update_use_normal_title), fontWeight = FontWeight.SemiBold) },
-            text = {
-                Text(
-                    stringResource(R.string.update_use_normal_body)
-                )
-            },
-            confirmButton = {
-                Button(onClick = {
-                    vibrate()
-                    LegacyApp.launchNormalIntent(context)?.let { intent ->
-                        runCatching { context.startActivity(intent) }
-                    }
-                }) { Text(stringResource(R.string.update_open_normal)) }
-            }
-        )
-        return
-    }
+    LiquidDialog(
+        visible = showRequireNormalOpen,
+        onDismissRequest = {},
+        title = { Text(stringResource(R.string.update_use_normal_title), fontWeight = FontWeight.SemiBold) },
+        text = {
+            Text(
+                stringResource(R.string.update_use_normal_body)
+            )
+        },
+        confirmButton = {
+            Button(onClick = {
+                vibrate()
+                LegacyApp.launchNormalIntent(context)?.let { intent ->
+                    runCatching { context.startActivity(intent) }
+                }
+            }) { Text(stringResource(R.string.update_open_normal)) }
+        }
+    )
 
     // ── Go 强制切换但拉取失败：不可关闭，只能重试（未更新前无法继续使用）──
-    if (flow.forcedBlocked) {
-        AlertDialog(
-            onDismissRequest = {},
-            title = { Text(stringResource(R.string.update_must_update_title), fontWeight = FontWeight.SemiBold) },
-            text = {
-                Text(
-                    stringResource(R.string.update_forced_body)
-                )
-            },
-            confirmButton = {
-                Button(onClick = {
-                    vibrate()
-                    onForcedRetry()
-                }) { Text(stringResource(R.string.update_retry)) }
-            }
-        )
-        return
-    }
+    LiquidDialog(
+        visible = showForcedBlocked,
+        onDismissRequest = {},
+        title = { Text(stringResource(R.string.update_must_update_title), fontWeight = FontWeight.SemiBold) },
+        text = {
+            Text(
+                stringResource(R.string.update_forced_body)
+            )
+        },
+        confirmButton = {
+            Button(onClick = {
+                vibrate()
+                onForcedRetry()
+            }) { Text(stringResource(R.string.update_retry)) }
+        }
+    )
 
     // ── 下载 / 解压进度（带「取消」按钮，立即停止并清理缓存）──
-    val busy = flow.busy
-    if (busy != null) {
-        AlertDialog(
-            onDismissRequest = {}, // 下载中不可通过外部点击关闭，需点「取消」
-            title = { Text(stringResource(R.string.update_downloading_title)) },
-            text = {
-                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Text(busy.label, style = MaterialTheme.typography.bodyMedium)
-                    if (busy.fraction != null) {
-                        LinearProgressIndicator(
-                            progress = { busy.fraction },
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    } else {
-                        LinearProgressIndicator(Modifier.fillMaxWidth())
-                    }
+    LiquidDialog(
+        visible = showBusy,
+        onDismissRequest = {}, // 下载中不可通过外部点击关闭，需点「取消」
+        title = { Text(stringResource(R.string.update_downloading_title)) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Text(busy?.label ?: "", style = MaterialTheme.typography.bodyMedium)
+                val fraction = busy?.fraction
+                if (fraction != null) {
+                    LinearProgressIndicator(
+                        progress = { fraction },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                } else {
+                    LinearProgressIndicator(Modifier.fillMaxWidth())
                 }
-            },
-            confirmButton = {
-                TextButton(onClick = {
-                    vibrate()
-                    flow.cancelDownload()
-                }) { Text(stringResource(R.string.update_cancel)) }
-            },
-            dismissButton = {}
-        )
-        return
-    }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = {
+                vibrate()
+                flow.cancelDownload()
+            }) { Text(stringResource(R.string.update_cancel)) }
+        },
+        dismissButton = {}
+    )
 
     // ── 安装权限引导（APK 已下载完，去授权后返回自动续装）──
-    val pApk = flow.permissionApk
-    if (pApk != null) {
-        AlertDialog(
-            onDismissRequest = {}, // 必须明确选择，防止误关导致不知道安装包去向
-            title = { Text(stringResource(R.string.update_need_permission_title)) },
-            text = {
-                Text(
-                    stringResource(R.string.update_need_permission_body)
-                )
-            },
-            confirmButton = {
-                Button(onClick = {
-                    vibrate()
-                    permissionLauncher.launch(AppUpdater.installPermissionIntent(context))
-                }) { Text(stringResource(R.string.update_grant)) }
-            },
-            dismissButton = {
-                TextButton(onClick = {
-                    vibrate()
-                    flow.cancelPermission()
-                }) { Text(stringResource(R.string.update_cancel)) }
-            }
-        )
-        return
-    }
+    LiquidDialog(
+        visible = showPermission,
+        onDismissRequest = {}, // 必须明确选择，防止误关导致不知道安装包去向
+        title = { Text(stringResource(R.string.update_need_permission_title)) },
+        text = {
+            Text(
+                stringResource(R.string.update_need_permission_body)
+            )
+        },
+        confirmButton = {
+            Button(onClick = {
+                vibrate()
+                permissionLauncher.launch(AppUpdater.installPermissionIntent(context))
+            }) { Text(stringResource(R.string.update_grant)) }
+        },
+        dismissButton = {
+            TextButton(onClick = {
+                vibrate()
+                flow.cancelPermission()
+            }) { Text(stringResource(R.string.update_cancel)) }
+        }
+    )
 
     // ── 结果 / 错误提示 ──
-    val msg = flow.message
-    if (msg != null) {
-        AlertDialog(
-            onDismissRequest = { flow.closeMessage() },
-            title = { Text(stringResource(R.string.update_notice_title)) },
-            text = { Text(msg) },
-            confirmButton = {
-                Button(onClick = {
-                    vibrate()
-                    flow.closeMessage()
-                }) { Text(stringResource(R.string.update_got_it)) }
-            }
-        )
-        return
-    }
+    LiquidDialog(
+        visible = showMessage,
+        onDismissRequest = { flow.closeMessage() },
+        title = { Text(stringResource(R.string.update_notice_title)) },
+        text = { Text(msg ?: "") },
+        confirmButton = {
+            Button(onClick = {
+                vibrate()
+                flow.closeMessage()
+            }) { Text(stringResource(R.string.update_got_it)) }
+        }
+    )
 
     // ── 更新说明子弹窗（markdown 排版；关闭后回到主弹窗）──
-    val info = flow.info
-    if (info != null && flow.showNotes) {
-        AlertDialog(
-            onDismissRequest = { flow.closeNotes() },
-            title = { Text(stringResource(R.string.update_notes_title, info.version)) },
-            text = {
-                MarkdownBody(
-                    markdown = notesForDisplay(
-                        info.notes,
-                        stringResource(R.string.update_notes_empty)
-                    ),
-                    modifier = Modifier.heightIn(max = 400.dp).padding(top = 4.dp)
-                )
-            },
-            confirmButton = {
-                Button(onClick = {
-                    vibrate()
-                    flow.closeNotes()
-                }) { Text(stringResource(R.string.update_back)) }
-            }
-        )
-        return
-    }
+    LiquidDialog(
+        visible = showNotes,
+        onDismissRequest = { flow.closeNotes() },
+        title = { Text(stringResource(R.string.update_notes_title, info?.version ?: "")) },
+        text = {
+            MarkdownBody(
+                markdown = notesForDisplay(
+                    info?.notes.orEmpty(),
+                    stringResource(R.string.update_notes_empty)
+                ),
+                modifier = Modifier.heightIn(max = 400.dp).padding(top = 4.dp)
+            )
+        },
+        confirmButton = {
+            Button(onClick = {
+                vibrate()
+                flow.closeNotes()
+            }) { Text(stringResource(R.string.update_back)) }
+        }
+    )
 
     // ── 「发现新版本」/「重新安装本版本」主弹窗 ──
-    if (info != null) {
-        val lanzou = info.lanzouUrl
-        // Go 版在 Android 10+ 上强制切换：外部点击 / 返回键都关不掉，必须下载新版本
-        val forced = flow.forcedSwitch
-        AlertDialog(
-            onDismissRequest = {
-                // 点外部/返回视同「暂不更新」；强制切换模式下不响应
-                if (!forced) {
-                    vibrate()
-                    flow.onLater()
-                }
-            },
-            title = {
+    val lanzou = info?.lanzouUrl
+    // Go 版在 Android 10+ 上强制切换：外部点击 / 返回键都关不掉，必须下载新版本
+    val forced = flow.forcedSwitch
+    LiquidDialog(
+        visible = showInfo,
+        onDismissRequest = {
+            // 点外部/返回视同「暂不更新」；强制切换模式下不响应
+            if (!forced) {
+                vibrate()
+                flow.onLater()
+            }
+        },
+        title = {
+            Text(
+                when {
+                    switchToNormal -> stringResource(R.string.update_title_switch_normal)
+                    reinstall -> stringResource(R.string.update_title_reinstall)
+                    else -> stringResource(R.string.update_title_new_version)
+                },
+                fontWeight = FontWeight.SemiBold
+            )
+        },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Text(
-                    when {
-                        flow.switchToNormalMode -> stringResource(R.string.update_title_switch_normal)
-                        flow.reinstallMode -> stringResource(R.string.update_title_reinstall)
-                        else -> stringResource(R.string.update_title_new_version)
-                    },
-                    fontWeight = FontWeight.SemiBold
+                    stringResource(R.string.update_version_flavor, info?.version ?: "", flow.flavorLabel),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = MaterialTheme.colorScheme.primary
                 )
-            },
-            text = {
-                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                if (switchToNormal) {
+                    // 「切换到正常版」模式：写明旧兼容版（Go 版）在本机已不可继续使用
                     Text(
-                        stringResource(R.string.update_version_flavor, info.version, flow.flavorLabel),
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.primary
+                        stringResource(R.string.update_switch_normal_body),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                    if (flow.switchToNormalMode) {
-                        // 「切换到正常版」模式：写明旧兼容版（Go 版）在本机已不可继续使用
-                        Text(
-                            stringResource(R.string.update_switch_normal_body),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                    if (flow.reinstallMode) {
-                        // 「重新安装」模式：明确告知这是覆盖安装当前版本，用于验证下载→安装链路
-                        Text(
-                            stringResource(R.string.update_reinstall_body),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
+                }
+                if (reinstall) {
+                    // 「重新安装」模式：明确告知这是覆盖安装当前版本，用于验证下载→安装链路
+                    Text(
+                        stringResource(R.string.update_reinstall_body),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
@@ -630,7 +655,7 @@ internal fun UpdateFlowHosts(
                     when {
                         // 强制切换：不提供任何关闭/跳过入口，必须更新后才能继续使用
                         forced -> {}
-                        !flow.reinstallMode && !flow.switchToNormalMode -> {
+                        !reinstall && !switchToNormal -> {
                             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                                 FilledTonalButton(
                                     onClick = {
@@ -656,7 +681,7 @@ internal fun UpdateFlowHosts(
                                     flow.onLater()
                                 },
                                 modifier = Modifier.fillMaxWidth().height(44.dp)
-                            ) { Text(if (flow.switchToNormalMode) stringResource(R.string.update_later_switch) else stringResource(R.string.update_later)) }
+                            ) { Text(if (switchToNormal) stringResource(R.string.update_later_switch) else stringResource(R.string.update_later)) }
                         }
                     }
                 }
@@ -664,7 +689,6 @@ internal fun UpdateFlowHosts(
             confirmButton = {},
             dismissButton = {}
         )
-    }
 }
 
 /**

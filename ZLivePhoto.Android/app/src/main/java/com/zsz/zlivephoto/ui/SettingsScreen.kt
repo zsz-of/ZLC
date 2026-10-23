@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.XmlResourceParser
 import android.net.Uri
+import android.os.Build
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateColorAsState
@@ -21,26 +22,29 @@ import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Check
@@ -62,13 +66,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Slider
-import androidx.compose.material3.Switch
-import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -80,6 +82,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -93,8 +96,25 @@ import com.zsz.zlivephoto.core.FfmpegAddon
 import com.zsz.zlivephoto.core.UpdateChecker
 import com.zsz.zlivephoto.core.UpdateCheckResult
 import com.zsz.zlivephoto.core.UpdateInfo
+import com.zsz.zlivephoto.ui.glass.GlassBackButton
+import com.zsz.zlivephoto.ui.glass.GlassSlider
+import com.zsz.zlivephoto.ui.glass.GlassSwitch
+import com.zsz.zlivephoto.ui.glass.GlassTopBar
+import com.zsz.zlivephoto.ui.glass.LiquidDialog
+import com.zsz.zlivephoto.ui.glass.LiquidScrollSegments
+import com.zsz.zlivephoto.ui.glass.LiquidSegmentedTabs
+import com.zsz.zlivephoto.ui.glass.LocalGlassBackdrop
+import com.zsz.zlivephoto.ui.glass.LocalGlassRootBackdrop
+import com.zsz.zlivephoto.ui.glass.LocalGlassEnabled
+import com.zsz.zlivephoto.ui.glass.PublishPageBackdrop
+import com.zsz.zlivephoto.ui.glass.TopBarFrost
+import com.zsz.zlivephoto.ui.glass.catalog.components.LiquidScrollTabs
+import com.zsz.zlivephoto.ui.glass.catalog.components.LiquidSlider
+import com.kyant.backdrop.backdrops.layerBackdrop
+import com.kyant.backdrop.backdrops.rememberLayerBackdrop
 import kotlinx.coroutines.launch
 import org.xmlpull.v1.XmlPullParser
+import kotlin.math.roundToInt
 
 private const val GITHUB_REPO_URL = "https://github.com/zsz-of/ZLC"
 
@@ -140,6 +160,102 @@ fun SettingsScreen(onBack: () -> Unit) {
     }
 }
 
+/**
+ * 设置类页面统一外壳：顶栏改为**覆盖层**，内容（含状态栏区域）从屏幕顶部开始绘制，
+ * 滚动时从顶栏下方穿过；顶栏背后由 [TopBarFrost] 叠加「上强下弱」的渐进高斯模糊，
+ * 用来区分常驻顶栏与滚动内容。未启用玻璃时退回原不透明 TopAppBar 行为。
+ *
+ * [overlay] 槽位渲染在**页面采样层之外**（与 TopBarFrost 同一作用域）：
+ * 页面自己的弹窗放这里，玻璃才能采样「根渐变 + 本页内容」且不会采样到自身
+ * （弹窗改同窗口覆盖层后必须如此，见 [LiquidDialog]）。
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun SettingsPageScaffold(
+    title: String,
+    onBack: () -> Unit,
+    scrollState: ScrollState,
+    overlay: @Composable () -> Unit = {},
+    content: @Composable ColumnScope.() -> Unit
+) {
+    val glass = LocalGlassEnabled.current
+    // 采样层：把整页滚动内容记录一份，顶栏的渐进模糊采样真实内容
+    val pageBackdrop = if (glass) rememberLayerBackdrop() else null
+    // 发布给应用级弹窗（渲染在本页之外）采样「根 + 本页」：同窗口坐标对正、
+    // 模糊实时（用户反馈 #5/#6），复用本录制零开销
+    PublishPageBackdrop(pageBackdrop)
+    val topBarTotal = WindowInsets.statusBars.asPaddingValues().calculateTopPadding() + 64.dp
+    Box(Modifier.fillMaxSize()) {
+        Box(
+            Modifier
+                .fillMaxSize()
+                .then(if (pageBackdrop != null) Modifier.layerBackdrop(pageBackdrop) else Modifier)
+        ) {
+            Scaffold(
+                containerColor = if (glass) Color.Transparent else MaterialTheme.colorScheme.background,
+                contentWindowInsets = WindowInsets(0, 0, 0, 0)
+            ) { _ ->
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .navigationBarsPadding()
+                        // 先纵向滚动、后加内边距：顶部留白属于滚动内容，会随列表一起滚走，
+                        // 内容因此能真正穿过顶栏下方
+                        .verticalScroll(scrollState)
+                        .padding(horizontal = 20.dp)
+                        .padding(top = topBarTotal + 8.dp, bottom = 8.dp),
+                    content = content
+                )
+            }
+        }
+        CompositionLocalProvider(
+            LocalGlassBackdrop provides (pageBackdrop ?: LocalGlassBackdrop.current)
+        ) {
+            TopBarFrost(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.TopCenter)
+            ) {
+                if (glass) {
+                    GlassTopBar(
+                        title = {
+                            Text(
+                                title,
+                                style = MaterialTheme.typography.titleLarge,
+                                fontWeight = FontWeight.SemiBold,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        },
+                        titleStartPadding = 20.dp,
+                        navigationIcon = {
+                            GlassBackButton(
+                                onBack = onBack,
+                                contentDescription = stringResource(R.string.settings_cd_back)
+                            )
+                        }
+                    )
+                } else {
+                    TopAppBar(
+                        title = { Text(title, fontWeight = FontWeight.SemiBold) },
+                        navigationIcon = {
+                            GlassBackButton(
+                                onBack = onBack,
+                                contentDescription = stringResource(R.string.settings_cd_back)
+                            )
+                        },
+                        colors = TopAppBarDefaults.topAppBarColors(
+                            containerColor = MaterialTheme.colorScheme.surface
+                        )
+                    )
+                }
+            }
+            // 页面级弹窗覆盖层（采样层之外，见 [SettingsPageScaffold] 的 overlay 参数）
+            overlay()
+        }
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun SettingsMainContent(
@@ -156,28 +272,115 @@ private fun SettingsMainContent(
     var appLanguageTag by remember { mutableStateOf(AppLanguage.currentTag(context)) }
     var showLanguageDialog by remember { mutableStateOf(false) }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.settings_title), fontWeight = FontWeight.SemiBold) },
-                navigationIcon = {
-                    IconButton(onClick = { haptic.click(); onBack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.settings_cd_back))
+    SettingsPageScaffold(
+        title = stringResource(R.string.settings_title),
+        onBack = onBack,
+        scrollState = scrollState,
+        overlay = {
+            // 自定义调色板：任意色相选择（主题色只按色相派生，饱和度/明度沿用 MD3 基线）
+            // 打开时重置为当前生效色相（覆盖层常驻组合，hue 不会像旧版 if 包裹那样每次重建）
+            var hue by remember {
+                mutableStateOf(if (AppSettings.customHue >= 0f) AppSettings.customHue else presetHues[AppSettings.presetColor])
+            }
+            LaunchedEffect(showCustomPalette) {
+                if (showCustomPalette) {
+                    hue = if (AppSettings.customHue >= 0f) AppSettings.customHue
+                    else presetHues[AppSettings.presetColor]
+                }
+            }
+            LiquidDialog(
+                visible = showCustomPalette,
+                onDismissRequest = { showCustomPalette = false },
+                title = { Text(stringResource(R.string.settings_custom_color_title)) },
+                text = {
+                    Column {
+                        // 实时预览
+                        Box(
+                            Modifier
+                                .fillMaxWidth()
+                                .height(48.dp)
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(swatchForHue(hue))
+                        )
+                        Spacer(Modifier.height(16.dp))
+                        Text(
+                            stringResource(R.string.settings_hue_value, hue.toInt()),
+                            style = MaterialTheme.typography.labelMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        GlassSlider(
+                            value = hue,
+                            onValueChange = { hue = it },
+                            valueRange = 0f..360f
+                        )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.surface
-                )
+                confirmButton = {
+                    Button(onClick = {
+                        haptic.click()
+                        AppSettings.setCustomHueValue(hue)
+                        showCustomPalette = false
+                    }) { Text(stringResource(R.string.settings_btn_apply)) }
+                },
+                dismissButton = {
+                    FilledTonalButton(onClick = {
+                        haptic.click()
+                        showCustomPalette = false
+                    }) { Text(stringResource(R.string.settings_btn_cancel)) }
+                }
+            )
+
+            // 应用语言选择弹窗：顶部「跟随系统」，下面是 locales_config.xml 声明的全部语种，当前项打勾
+            val localeTags = remember(context) { loadLocaleTags(context) }
+            LiquidDialog(
+                visible = showLanguageDialog,
+                onDismissRequest = { showLanguageDialog = false },
+                title = { Text(stringResource(R.string.settings_language_dialog_title), fontWeight = FontWeight.SemiBold) },
+                text = {
+                    Column(
+                        Modifier
+                            .heightIn(max = 420.dp)
+                            .verticalScroll(rememberScrollState())
+                    ) {
+                        Text(
+                            stringResource(R.string.settings_language_count, localeTags.size + 1),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(bottom = 4.dp)
+                        )
+                        LanguageOptionRow(
+                            label = stringResource(R.string.app_language_follow_system),
+                            selected = appLanguageTag.isEmpty(),
+                            onClick = {
+                                haptic.click()
+                                AppLanguage.set(context, "")
+                                appLanguageTag = AppLanguage.currentTag(context)
+                                showLanguageDialog = false
+                            }
+                        )
+                        for (tag in localeTags) {
+                            LanguageOptionRow(
+                                label = AppLanguage.displayName(tag),
+                                selected = appLanguageTag == tag,
+                                onClick = {
+                                    haptic.click()
+                                    AppLanguage.set(context, tag)
+                                    appLanguageTag = AppLanguage.currentTag(context)
+                                    showLanguageDialog = false
+                                }
+                            )
+                        }
+                    }
+                },
+                confirmButton = {
+                    FilledTonalButton(onClick = {
+                        haptic.soft()
+                        showLanguageDialog = false
+                    }) { Text(stringResource(R.string.settings_btn_close)) }
+                }
             )
         }
-    ) { padding ->
-        Column(
-            Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(scrollState)
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-        ) {
+    ) {
             // ── 通用 ──
             SectionTitle(stringResource(R.string.settings_section_general))
             val isGo = BuildConfig.FLAVOR == "go"
@@ -187,7 +390,7 @@ private fun SettingsMainContent(
                         SettingsSwitchRow(
                             shape = s,
                             title = stringResource(R.string.settings_startup_check_title),
-                            subtitle = stringResource(R.string.settings_startup_check_subtitle),
+                            subtitle = null,
                             checked = AppSettings.checkUpdateOnStartup,
                             leading = {
                                 Icon(
@@ -205,7 +408,7 @@ private fun SettingsMainContent(
                             SettingsSwitchRow(
                                 shape = s,
                                 title = stringResource(R.string.settings_haptics_title),
-                                subtitle = stringResource(R.string.settings_haptics_subtitle),
+                                subtitle = null,
                                 checked = AppSettings.hapticsEnabled,
                                 onToggle = { AppSettings.setHaptics(it) }
                             )
@@ -214,8 +417,10 @@ private fun SettingsMainContent(
                             SettingsSwitchRow(
                                 shape = s,
                                 title = stringResource(R.string.settings_bounce_title),
-                                subtitle = stringResource(R.string.settings_bounce_subtitle),
-                                checked = AppSettings.bounceEnabled,
+                                subtitle = null,
+                                // 液态玻璃界面下不生效：开关显示为关且不可打开（避免与玻璃形变叠加）
+                                checked = AppSettings.bounceActive,
+                                enabled = !AppSettings.glassActive,
                                 onToggle = { AppSettings.setBounce(it) }
                             )
                         }
@@ -225,46 +430,34 @@ private fun SettingsMainContent(
 
             // ── 外观 ──
             SectionTitle(stringResource(R.string.settings_section_appearance))
-            // 深色模式三选 + Material You 动态取色（go 无动态取色，隐藏对应行）
-            SettingsRowsGroup(
-                buildList {
-                    add { s ->
-                        ThemeModeRow(
-                            shape = s,
-                            title = stringResource(R.string.settings_theme_system),
-                            selected = AppSettings.themeMode == "system",
-                            onClick = { AppSettings.setThemeModeValue("system") }
-                        )
-                    }
-                    add { s ->
-                        ThemeModeRow(
-                            shape = s,
-                            title = stringResource(R.string.settings_theme_dark),
-                            selected = AppSettings.themeMode == "dark",
-                            onClick = { AppSettings.setThemeModeValue("dark") }
-                        )
-                    }
-                    add { s ->
-                        ThemeModeRow(
-                            shape = s,
-                            title = stringResource(R.string.settings_theme_light),
-                            selected = AppSettings.themeMode == "light",
-                            onClick = { AppSettings.setThemeModeValue("light") }
-                        )
-                    }
-                    if (!isGo) {
-                        add { s ->
+            // 深色模式三选：玻璃分段按钮（文字描述，选中项带高光），未启用玻璃时退回纯色指示器
+            val themeModes = listOf("system", "dark", "light")
+            val themeLabels = listOf(
+                stringResource(R.string.settings_theme_system),
+                stringResource(R.string.settings_theme_dark),
+                stringResource(R.string.settings_theme_light)
+            )
+            LiquidSegmentedTabs(
+                labels = themeLabels,
+                selectedIndex = themeModes.indexOf(AppSettings.themeMode).coerceAtLeast(0),
+                onSelect = { AppSettings.setThemeModeValue(themeModes[it]) }
+            )
+            if (!isGo) {
+                Spacer(Modifier.height(4.dp))
+                SettingsRowsGroup(
+                    listOf(
+                        { s ->
                             SettingsSwitchRow(
                                 shape = s,
                                 title = stringResource(R.string.settings_dynamic_theme_title),
-                                subtitle = stringResource(R.string.settings_dynamic_theme_subtitle),
+                                subtitle = null,
                                 checked = AppSettings.dynamicTheme,
                                 onToggle = { AppSettings.setUseDynamicTheme(it) }
                             )
                         }
-                    }
-                }
-            )
+                    )
+                )
+            }
             Spacer(Modifier.height(4.dp))
             // 预制主题色（动态取色开启时禁用；go 版无动态取色，始终可选）
             val presetEnabled = isGo || !AppSettings.dynamicTheme
@@ -272,7 +465,7 @@ private fun SettingsMainContent(
             Column(
                 Modifier
                     .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.surfaceContainerLow, RoundedCornerShape(16.dp))
+                    .cardSurface(RoundedCornerShape(16.dp))
                     .alpha(if (presetEnabled) 1f else 0.38f)
                     .padding(horizontal = 20.dp, vertical = 12.dp)
             ) {
@@ -323,6 +516,61 @@ private fun SettingsMainContent(
                         }
                     }
                     if (row == 0) Spacer(Modifier.height(12.dp))
+                }
+            }
+
+            // ── 液态玻璃界面 ──
+            // 能力门槛与 AppSettings.glassActive 一致：go 轻量版与 API<31 不支持（退回原生 MD3）
+            val glassSupported = !isGo && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+            Spacer(Modifier.height(4.dp))
+            SettingsRowsGroup(
+                listOf(
+                    { s ->
+                        SettingsSwitchRow(
+                            shape = s,
+                            title = stringResource(R.string.settings_glass_title),
+                            subtitle = if (glassSupported) null
+                            else stringResource(R.string.settings_glass_unsupported),
+                            checked = glassSupported && AppSettings.glassEnabled,
+                            enabled = glassSupported,
+                            onToggle = { AppSettings.setGlassUIEnabled(it) }
+                        )
+                    }
+                )
+            )
+            // 通透度滑条：仅在玻璃可用且已开启时可调（越低越不透明、磨砂越强）
+            if (glassSupported && AppSettings.glassEnabled) {
+                Spacer(Modifier.height(4.dp))
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .cardSurface(RoundedCornerShape(16.dp))
+                        .padding(horizontal = 20.dp, vertical = 12.dp)
+                ) {
+                    Text(
+                        stringResource(R.string.settings_glass_opacity_title),
+                        style = MaterialTheme.typography.titleSmall
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    // 用根采样层：本页整块内容已被 layerBackdrop 记录，
+                    // 若滑条采样页面层会把自身画进去 → 反馈式频闪
+                    val backdrop = LocalGlassRootBackdrop.current
+                    if (backdrop != null) {
+                        LiquidSlider(
+                            value = { AppSettings.glassOpacity },
+                            onValueChange = { AppSettings.setGlassOpacityValue(it) },
+                            valueRange = 0f..1f,
+                            visibilityThreshold = 0.01f,
+                            backdrop = backdrop
+                        )
+                    } else {
+                        GlassSlider(
+                            value = AppSettings.glassOpacity,
+                            onValueChange = { AppSettings.setGlassOpacityValue(it) },
+                            valueRange = 0f..1f,
+                            steps = 9
+                        )
+                    }
                 }
             }
 
@@ -441,106 +689,8 @@ private fun SettingsMainContent(
                 )
             )
             Spacer(Modifier.height(24.dp))
-        }
     }
 
-    // 自定义调色板：任意色相选择（主题色只按色相派生，饱和度/明度沿用 MD3 基线）
-    if (showCustomPalette) {
-        var hue by remember {
-            mutableStateOf(if (AppSettings.customHue >= 0f) AppSettings.customHue else presetHues[AppSettings.presetColor])
-        }
-        AlertDialog(
-            onDismissRequest = { showCustomPalette = false },
-            title = { Text(stringResource(R.string.settings_custom_color_title)) },
-            text = {
-                Column {
-                    // 实时预览
-                    Box(
-                        Modifier
-                            .fillMaxWidth()
-                            .height(48.dp)
-                            .clip(RoundedCornerShape(12.dp))
-                            .background(swatchForHue(hue))
-                    )
-                    Spacer(Modifier.height(16.dp))
-                    Text(
-                        stringResource(R.string.settings_hue_value, hue.toInt()),
-                        style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Slider(
-                        value = hue,
-                        onValueChange = { hue = it },
-                        valueRange = 0f..360f
-                    )
-                }
-            },
-            confirmButton = {
-                Button(onClick = {
-                    haptic.click()
-                    AppSettings.setCustomHueValue(hue)
-                    showCustomPalette = false
-                }) { Text(stringResource(R.string.settings_btn_apply)) }
-            },
-            dismissButton = {
-                FilledTonalButton(onClick = {
-                    haptic.click()
-                    showCustomPalette = false
-                }) { Text(stringResource(R.string.settings_btn_cancel)) }
-            }
-        )
-    }
-
-    // 应用语言选择弹窗：顶部「跟随系统」，下面是 locales_config.xml 声明的全部语种，当前项打勾
-    if (showLanguageDialog) {
-        val localeTags = remember(context) { loadLocaleTags(context) }
-        AlertDialog(
-            onDismissRequest = { showLanguageDialog = false },
-            title = { Text(stringResource(R.string.settings_language_dialog_title), fontWeight = FontWeight.SemiBold) },
-            text = {
-                Column(
-                    Modifier
-                        .heightIn(max = 420.dp)
-                        .verticalScroll(rememberScrollState())
-                ) {
-                    Text(
-                        stringResource(R.string.settings_language_count, localeTags.size + 1),
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(bottom = 4.dp)
-                    )
-                    LanguageOptionRow(
-                        label = stringResource(R.string.app_language_follow_system),
-                        selected = appLanguageTag.isEmpty(),
-                        onClick = {
-                            haptic.click()
-                            AppLanguage.set(context, "")
-                            appLanguageTag = AppLanguage.currentTag(context)
-                            showLanguageDialog = false
-                        }
-                    )
-                    for (tag in localeTags) {
-                        LanguageOptionRow(
-                            label = AppLanguage.displayName(tag),
-                            selected = appLanguageTag == tag,
-                            onClick = {
-                                haptic.click()
-                                AppLanguage.set(context, tag)
-                                appLanguageTag = AppLanguage.currentTag(context)
-                                showLanguageDialog = false
-                            }
-                        )
-                    }
-                }
-            },
-            confirmButton = {
-                FilledTonalButton(onClick = {
-                    haptic.soft()
-                    showLanguageDialog = false
-                }) { Text(stringResource(R.string.settings_btn_close)) }
-            }
-        )
-    }
 }
 
 /**
@@ -552,28 +702,11 @@ private fun SettingsMainContent(
 private fun ReminderSettingsScreen(onBack: () -> Unit) {
     val haptic = rememberHapticFeedback()
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.settings_reminder_dialogs_title), fontWeight = FontWeight.SemiBold) },
-                navigationIcon = {
-                    IconButton(onClick = { haptic.click(); onBack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.settings_cd_back))
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.surface
-                )
-            )
-        }
-    ) { padding ->
-        Column(
-            Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-        ) {
+    SettingsPageScaffold(
+        title = stringResource(R.string.settings_reminder_dialogs_title),
+        onBack = onBack,
+        scrollState = rememberScrollState()
+    ) {
             for ((category, keys) in ReminderKey.entries.groupBy { it.category }) {
                 SectionTitle(category)
                 keys.forEachIndexed { index, key ->
@@ -587,7 +720,6 @@ private fun ReminderSettingsScreen(onBack: () -> Unit) {
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(start = 20.dp, top = 12.dp, bottom = 24.dp)
             )
-        }
     }
 }
 
@@ -638,28 +770,55 @@ private fun AboutScreen(onBack: () -> Unit) {
     var showSponsorDialog by remember { mutableStateOf(false) }
     var alipayMissing by remember { mutableStateOf(false) }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.settings_about_title), fontWeight = FontWeight.SemiBold) },
-                navigationIcon = {
-                    IconButton(onClick = { haptic.click(); onBack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.settings_cd_back))
-                    }
+    SettingsPageScaffold(
+        title = stringResource(R.string.settings_about_title),
+        onBack = onBack,
+        scrollState = rememberScrollState(),
+        overlay = {
+            // 手动检查发现新版本：4 按钮更新弹窗（说明子弹窗/下载进度/蓝奏失败回退统一在此渲染）
+            UpdateFlowHosts(updateFlow, vibrate = { haptic.click() })
+
+            // 支付宝赞助致谢弹窗（无「不再提示」）：感谢 + 礼貌谢绝学生
+            LiquidDialog(
+                visible = showSponsorDialog,
+                onDismissRequest = { showSponsorDialog = false },
+                title = { Text(stringResource(R.string.settings_sponsor_dialog_title)) },
+                text = {
+                    Text(stringResource(R.string.settings_sponsor_dialog_text))
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.surface
-                )
+                confirmButton = {
+                    Button(onClick = {
+                        haptic.click()
+                        showSponsorDialog = false
+                        // 成功拉起支付宝收款码则交给支付宝；失败（含未安装）单独提示
+                        if (!launchAlipay(context)) alipayMissing = true
+                    }) { Text(stringResource(R.string.settings_btn_sponsor)) }
+                },
+                dismissButton = {
+                    FilledTonalButton(onClick = {
+                        haptic.soft()
+                        showSponsorDialog = false
+                    }) { Text(stringResource(R.string.settings_btn_close)) }
+                }
+            )
+
+            // 支付宝未能吊起：说明未安装，并再次感谢用户好意
+            LiquidDialog(
+                visible = alipayMissing,
+                onDismissRequest = { alipayMissing = false },
+                title = { Text(stringResource(R.string.settings_alipay_missing_title)) },
+                text = {
+                    Text(stringResource(R.string.settings_alipay_missing_text))
+                },
+                confirmButton = {
+                    Button(onClick = {
+                        haptic.click()
+                        alipayMissing = false
+                    }) { Text(stringResource(R.string.settings_btn_ok)) }
+                }
             )
         }
-    ) { padding ->
-        Column(
-            Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp, vertical = 8.dp)
-        ) {
+    ) {
             // ── 应用 ──
             SectionTitle(stringResource(R.string.settings_section_app))
             SettingsRowsGroup(
@@ -846,52 +1005,6 @@ private fun AboutScreen(onBack: () -> Unit) {
                 )
             )
             Spacer(Modifier.height(24.dp))
-        }
-    }
-
-    // 手动检查发现新版本：4 按钮更新弹窗（说明子弹窗/下载进度/蓝奏失败回退统一在此渲染）
-    UpdateFlowHosts(updateFlow, vibrate = { haptic.click() })
-
-    // 支付宝赞助致谢弹窗（无「不再提示」）：感谢 + 礼貌谢绝学生
-    if (showSponsorDialog) {
-        AlertDialog(
-            onDismissRequest = { showSponsorDialog = false },
-            title = { Text(stringResource(R.string.settings_sponsor_dialog_title)) },
-            text = {
-                Text(stringResource(R.string.settings_sponsor_dialog_text))
-            },
-            confirmButton = {
-                Button(onClick = {
-                    haptic.click()
-                    showSponsorDialog = false
-                    // 成功拉起支付宝收款码则交给支付宝；失败（含未安装）单独提示
-                    if (!launchAlipay(context)) alipayMissing = true
-                }) { Text(stringResource(R.string.settings_btn_sponsor)) }
-            },
-            dismissButton = {
-                FilledTonalButton(onClick = {
-                    haptic.soft()
-                    showSponsorDialog = false
-                }) { Text(stringResource(R.string.settings_btn_close)) }
-            }
-        )
-    }
-
-    // 支付宝未能吊起：说明未安装，并再次感谢用户好意
-    if (alipayMissing) {
-        AlertDialog(
-            onDismissRequest = { alipayMissing = false },
-            title = { Text(stringResource(R.string.settings_alipay_missing_title)) },
-            text = {
-                Text(stringResource(R.string.settings_alipay_missing_text))
-            },
-            confirmButton = {
-                Button(onClick = {
-                    haptic.click()
-                    alipayMissing = false
-                }) { Text(stringResource(R.string.settings_btn_ok)) }
-            }
-        )
     }
 }
 
@@ -902,7 +1015,7 @@ private fun SettingsCreditRow(shape: RoundedCornerShape, title: String, subtitle
         Modifier
             .fillMaxWidth()
             .heightIn(min = 64.dp)
-            .background(MaterialTheme.colorScheme.surfaceContainerLow, shape)
+            .cardSurface(shape)
             .padding(horizontal = 20.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -936,7 +1049,7 @@ private fun ReminderSettingRow(key: ReminderKey, shape: RoundedCornerShape) {
         Modifier
             .fillMaxWidth()
             .heightIn(min = 64.dp)
-            .background(MaterialTheme.colorScheme.surfaceContainerLow, shape)
+            .cardSurface(shape)
             .clickable(
                 interactionSource = fb.interactionSource,
                 indication = null
@@ -957,21 +1070,19 @@ private fun ReminderSettingRow(key: ReminderKey, shape: RoundedCornerShape) {
             )
         }
         Spacer(Modifier.width(12.dp))
-        // 恢复系统默认 M3 开关样式（滑块自带涟漪与系统动效）
-        Switch(
+        GlassSwitch(
             checked = checked,
-            onCheckedChange = toggle,
-            colors = SwitchDefaults.colors(
-                checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
-                checkedTrackColor = MaterialTheme.colorScheme.primary,
-                checkedBorderColor = MaterialTheme.colorScheme.primary,
-                uncheckedThumbColor = MaterialTheme.colorScheme.outline,
-                uncheckedTrackColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                uncheckedBorderColor = MaterialTheme.colorScheme.outline
-            )
+            onCheckedChange = toggle
         )
     }
 }
+
+/** 设置卡片背景：固定使用 MD3 容器色，不参与液态玻璃采样，也不投射阴影。 */
+@Composable
+private fun Modifier.cardSurface(
+    shape: Shape,
+    color: Color = MaterialTheme.colorScheme.surfaceContainerLow
+): Modifier = background(color, shape)
 
 /** 分组标题 */
 @Composable
@@ -1012,44 +1123,6 @@ private fun SettingsRowsGroup(rows: List<@Composable (RoundedCornerShape) -> Uni
     }
 }
 
-/** 三选一单选行：整行可点 + 弹性动画，选中项行尾显示对勾 */
-@Composable
-private fun ThemeModeRow(
-    shape: RoundedCornerShape,
-    title: String,
-    selected: Boolean,
-    onClick: () -> Unit
-) {
-    val fb = rememberPressFeedback(hapticOnPress = false)
-    val haptic = rememberHapticFeedback()
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .heightIn(min = 52.dp)
-            .background(MaterialTheme.colorScheme.surfaceContainerLow, shape)
-            .clickable(
-                interactionSource = fb.interactionSource,
-                indication = null
-            ) {
-                haptic.click()
-                onClick()
-            }
-            .then(fb.scaleModifier)
-            .padding(horizontal = 20.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(title, style = MaterialTheme.typography.titleSmall, modifier = Modifier.weight(1f))
-        if (selected) {
-            Spacer(Modifier.width(12.dp))
-            Icon(
-                Icons.Default.Check,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary
-            )
-        }
-    }
-}
-
 /**
  * 开关行：整行可点 + 行级弹性动画；Switch 使用自身默认 interactionSource，
  * 其滑块按压动画与行级弹性动画解耦，避免共享 interactionSource 时
@@ -1063,6 +1136,7 @@ private fun SettingsSwitchRow(
     subtitle: String?,
     checked: Boolean,
     leading: (@Composable () -> Unit)? = null,
+    enabled: Boolean = true,
     onToggle: (Boolean) -> Unit
 ) {
     val fb = rememberPressFeedback(hapticOnPress = false)
@@ -1075,10 +1149,12 @@ private fun SettingsSwitchRow(
         Modifier
             .fillMaxWidth()
             .heightIn(min = 64.dp)
-            .background(MaterialTheme.colorScheme.surfaceContainerLow, shape)
+            .cardSurface(shape)
+            .alpha(if (enabled) 1f else 0.38f)
             .clickable(
                 interactionSource = fb.interactionSource,
-                indication = null
+                indication = null,
+                enabled = enabled
             ) { toggle(!checked) }
             .then(fb.scaleModifier)
             .padding(horizontal = 20.dp, vertical = 10.dp),
@@ -1100,18 +1176,10 @@ private fun SettingsSwitchRow(
             }
         }
         Spacer(Modifier.width(12.dp))
-        // 恢复系统默认 M3 开关样式（与 ReminderSettingRow 一致）
-        Switch(
+        GlassSwitch(
             checked = checked,
             onCheckedChange = toggle,
-            colors = SwitchDefaults.colors(
-                checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
-                checkedTrackColor = MaterialTheme.colorScheme.primary,
-                checkedBorderColor = MaterialTheme.colorScheme.primary,
-                uncheckedThumbColor = MaterialTheme.colorScheme.outline,
-                uncheckedTrackColor = MaterialTheme.colorScheme.surfaceContainerHighest,
-                uncheckedBorderColor = MaterialTheme.colorScheme.outline
-            )
+            enabled = enabled
         )
     }
 }
@@ -1128,7 +1196,7 @@ private fun SettingsInfoRow(
         Modifier
             .fillMaxWidth()
             .heightIn(min = 56.dp)
-            .background(MaterialTheme.colorScheme.surfaceContainerLow, shape)
+            .cardSurface(shape)
             .padding(horizontal = 20.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -1234,40 +1302,31 @@ private fun TranscoderAddonSection() {
                     title = stringResource(R.string.settings_transcoder_title),
                     value = stringResource(R.string.settings_transcoder_value, FfmpegAddon.BUNDLED_VERSION)
                 )
-            },
-            { s ->
-                ThemeModeRow(
-                    shape = s,
-                    title = stringResource(R.string.settings_transcode_mode_encode),
-                    selected = FfmpegAddon.mode == FfmpegAddon.MODE_ENCODE,
-                    onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_ENCODE) }
-                )
-            },
-            { s ->
-                ThemeModeRow(
-                    shape = s,
-                    title = stringResource(R.string.settings_transcode_mode_remux),
-                    selected = FfmpegAddon.mode == FfmpegAddon.MODE_REMUX,
-                    onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_REMUX) }
-                )
-            },
-            { s ->
-                ThemeModeRow(
-                    shape = s,
-                    title = stringResource(R.string.settings_transcode_mode_off),
-                    selected = FfmpegAddon.mode == FfmpegAddon.MODE_OFF,
-                    onClick = { FfmpegAddon.updateMode(FfmpegAddon.MODE_OFF) }
-                )
             }
         )
     )
 
+    // 转码方式三选：演示版 BOTTOM tabs（液态玻璃胶囊 + 可拖拽指示器 + 按压力高光）
+    Spacer(Modifier.height(12.dp))
+    val transcodeModes = listOf(FfmpegAddon.MODE_ENCODE, FfmpegAddon.MODE_REMUX, FfmpegAddon.MODE_OFF)
+    val transcodeLabels = listOf(
+        stringResource(R.string.settings_transcode_mode_encode),
+        stringResource(R.string.settings_transcode_mode_remux),
+        stringResource(R.string.settings_transcode_mode_off)
+    )
+    LiquidSegmentedTabs(
+        labels = transcodeLabels,
+        selectedIndex = transcodeModes.indexOf(FfmpegAddon.mode).coerceAtLeast(0),
+        onSelect = { FfmpegAddon.updateMode(transcodeModes[it]) }
+    )
+
     Spacer(Modifier.height(12.dp))
     val encoding = FfmpegAddon.mode == FfmpegAddon.MODE_ENCODE
+    val crfCardShape = RoundedCornerShape(16.dp)
     Column(
         Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surfaceContainerLow, RoundedCornerShape(16.dp))
+            .background(MaterialTheme.colorScheme.surfaceContainerLow, crfCardShape)
             .alpha(if (encoding) 1f else 0.38f)
             .padding(horizontal = 20.dp, vertical = 12.dp)
     ) {
@@ -1285,13 +1344,31 @@ private fun TranscoderAddonSection() {
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
-        Slider(
-            value = FfmpegAddon.crf.toFloat(),
-            onValueChange = { FfmpegAddon.updateCrf(it.toInt()) },
-            valueRange = 10f..30f,
-            steps = 19,
-            enabled = encoding
-        )
+        val backdrop = LocalGlassRootBackdrop.current
+        if (backdrop != null) {
+            // CRF 是整数量（10..30）：用直接模式——拖拽位置 1:1 映射数值，
+            // 不做弹簧追赶，杜绝「四舍五入整数值 + 动画互相追逐」的拖动卡顿。
+            // 玻璃可用时**即使转码关闭也保持液态玻璃外观**（仅置灰禁手势），
+            // 不退回 MD3 滑条（用户反馈：「转码器如果关闭，那下面的 UI 会
+            // 退回 MD3 的样式，应该保持液态玻璃的样式」）。
+            LiquidSlider(
+                value = { FfmpegAddon.crf.toFloat() },
+                onValueChange = { v -> FfmpegAddon.updateCrf(v.roundToInt()) },
+                valueRange = 10f..30f,
+                visibilityThreshold = 0.01f,
+                backdrop = backdrop,
+                direct = true,
+                enabled = encoding
+            )
+        } else {
+            // 无玻璃回落：同样不分档位（用户反馈：CRF 滑条不需要分档）
+            GlassSlider(
+                value = FfmpegAddon.crf.toFloat(),
+                onValueChange = { v -> FfmpegAddon.updateCrf(v.toInt()) },
+                valueRange = 10f..30f,
+                enabled = encoding
+            )
+        }
         Text(
             stringResource(R.string.settings_crf_hint),
             style = MaterialTheme.typography.labelSmall,
@@ -1305,14 +1382,14 @@ private fun TranscoderAddonSection() {
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Spacer(Modifier.height(6.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            SelectChip("H.265", FfmpegAddon.codec == "h265", enabled = encoding) {
-                FfmpegAddon.updateCodec("h265")
-            }
-            SelectChip("H.264", FfmpegAddon.codec == "h264", enabled = encoding) {
-                FfmpegAddon.updateCodec("h264")
-            }
-        }
+        // 编码器二选：与深浅色切换一致的动态滑动分段选择器
+        val codecs = listOf("h265", "h264")
+        LiquidSegmentedTabs(
+            labels = listOf("H.265", "H.264"),
+            selectedIndex = codecs.indexOf(FfmpegAddon.codec).coerceAtLeast(0),
+            onSelect = { FfmpegAddon.updateCodec(codecs[it]) },
+            enabled = encoding
+        )
 
         Spacer(Modifier.height(12.dp))
         Text(
@@ -1321,50 +1398,27 @@ private fun TranscoderAddonSection() {
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Spacer(Modifier.height(6.dp))
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState()),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            for (p in FfmpegAddon.PRESETS) {
-                SelectChip(p, FfmpegAddon.preset == p, enabled = encoding) {
-                    FfmpegAddon.updatePreset(p)
-                }
-            }
+        // 压缩预设 9 选：液态玻璃滚动 tab 栏（与底部 tab 同一套视觉语言：
+        // vibrancy 玻璃胶囊容器 + 常驻液态玻璃指示器弹簧滑动（宽度随目标文本动态过渡）
+        // + 选中文字交叉淡入绘制在玻璃之上，清晰不被折射遮挡）
+        val presetBackdrop = LocalGlassRootBackdrop.current
+        if (presetBackdrop != null) {
+            LiquidScrollTabs(
+                labels = FfmpegAddon.PRESETS,
+                selectedIndex = FfmpegAddon.PRESETS.indexOf(FfmpegAddon.preset).coerceAtLeast(0),
+                onSelect = { FfmpegAddon.updatePreset(FfmpegAddon.PRESETS[it]) },
+                backdrop = presetBackdrop,
+                enabled = encoding
+            )
+        } else {
+            LiquidScrollSegments(
+                options = FfmpegAddon.PRESETS,
+                selectedIndex = FfmpegAddon.PRESETS.indexOf(FfmpegAddon.preset).coerceAtLeast(0),
+                onSelect = { FfmpegAddon.updatePreset(FfmpegAddon.PRESETS[it]) },
+                enabled = encoding
+            )
         }
     }
-}
-
-/** 可选胶囊：选中=primary 底 + onPrimary 字；未选=surfaceContainerHigh 底 + onSurfaceVariant 字 */
-@Composable
-private fun SelectChip(
-    label: String,
-    selected: Boolean,
-    enabled: Boolean = true,
-    onClick: () -> Unit
-) {
-    val haptic = rememberHapticFeedback()
-    val bg by animateColorAsState(
-        targetValue = if (selected) MaterialTheme.colorScheme.primary
-        else MaterialTheme.colorScheme.surfaceContainerHigh,
-        label = "selectChipBg"
-    )
-    val fg by animateColorAsState(
-        targetValue = if (selected) MaterialTheme.colorScheme.onPrimary
-        else MaterialTheme.colorScheme.onSurfaceVariant,
-        label = "selectChipFg"
-    )
-    Text(
-        label,
-        style = MaterialTheme.typography.labelLarge,
-        color = fg,
-        modifier = Modifier
-            .clip(RoundedCornerShape(50))
-            .background(bg)
-            .clickable(enabled = enabled) { haptic.click(); onClick() }
-            .padding(horizontal = 14.dp, vertical = 8.dp)
-    )
 }
 
 /** 预制主题色圆点：选中态 primary 外圈 + 对勾。

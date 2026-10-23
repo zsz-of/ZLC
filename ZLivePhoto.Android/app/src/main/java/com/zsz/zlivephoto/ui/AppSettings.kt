@@ -51,6 +51,23 @@ object AppSettings {
     /** 用户「跳过此版本」记住的版本号（空串=未跳过）；远端版本与之相同时不再提示更新 */
     var skippedVersion by mutableStateOf("")
         private set
+    /** 液态玻璃界面（iOS 风格毛玻璃 + 边缘折射）；关闭后用原生 MD3 组件 */
+    var glassEnabled by mutableStateOf(true)
+        private set
+    /** 液态玻璃通透度 0..1：越低越不透明、磨砂模糊越强 */
+    var glassOpacity by mutableStateOf(0.5f)
+        private set
+
+    /**
+     * 液态玻璃是否**实际生效**：用户开关 + 系统能力（RenderEffect 需 API 31+）+ go 轻量版排除。
+     * 任一条不满足即整体退回原生 MD3 组件（回退方案）。
+     */
+    val glassActive: Boolean
+        get() = glassEnabled && BuildConfig.FLAVOR != "go" && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+
+    /** 按钮弹性动画是否实际生效：液态玻璃界面下统一禁用，避免与玻璃的形变/回弹叠加。 */
+    val bounceActive: Boolean
+        get() = bounceEnabled && !glassActive
 
     private lateinit var prefs: SharedPreferences
     private lateinit var appCtx: Context
@@ -68,6 +85,8 @@ object AppSettings {
         replaceMode = prefs.getBoolean("replace_mode", false)
         themeMode = prefs.getString("theme_mode", "system") ?: "system"
         skippedVersion = prefs.getString("skipped_version", "") ?: ""
+        glassEnabled = prefs.getBoolean("glass_enabled", true)
+        glassOpacity = prefs.getFloat("glass_opacity", 0.5f).coerceIn(0f, 1f)
         // go 轻量版：强制关闭马达反馈与按钮弹性动画（简化版无触感/无 q 弹）
         if (BuildConfig.FLAVOR == "go") {
             hapticsEnabled = false
@@ -144,6 +163,16 @@ object AppSettings {
     fun setThemeModeValue(mode: String) {
         themeMode = mode
         prefs.edit().putString("theme_mode", mode).apply()
+    }
+
+    fun setGlassUIEnabled(v: Boolean) {
+        glassEnabled = v
+        prefs.edit().putBoolean("glass_enabled", v).apply()
+    }
+
+    fun setGlassOpacityValue(v: Float) {
+        glassOpacity = v.coerceIn(0f, 1f)
+        prefs.edit().putFloat("glass_opacity", glassOpacity).apply()
     }
 
     /** 记住「跳过此版本」：记录版本号，除非发布了更新的版本否则不再提示 */

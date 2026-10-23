@@ -96,6 +96,7 @@
     <string name="main_info_unrecognized">未识别的动态照片格式</string>
     <string name="main_info_converting">转换中…</string>
     <string name="main_info_compose_task">合成任务（点击开始转换执行合成）</string>
+    <string name="main_info_compose_target">%1$s · 合成任务</string>
     <string name="main_info_done_replaced">完成（替换 %1$d 个源文件）</string>
     <string name="main_info_done_skipped">完成（跳过：同名冲突）</string>
     <string name="main_info_done_exported">完成（导出 %1$d 个）</string>

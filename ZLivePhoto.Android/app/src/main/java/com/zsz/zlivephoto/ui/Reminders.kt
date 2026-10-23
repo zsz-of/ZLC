@@ -29,6 +29,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.CoreText
+import com.zsz.zlivephoto.ui.glass.GlassCheckbox
+import com.zsz.zlivephoto.ui.glass.LiquidDialog
 
 /**
  * 所有带「不再提示」的弹窗统一定义。
@@ -78,6 +80,9 @@ enum class ReminderKey(
  * - onDismiss 负责关闭弹窗；点确认前会先落盘抑制状态（如启用）
  * - onConfirm 非空时由它接管「确认」动作（调用方自行关闭弹窗），
  *   用于「确认后才执行某个有副作用的操作」的场景；取消/点外部仍走 onDismiss（即不执行）
+ *
+ * [visible] 为 false 时弹窗播放退场动画后才退出组合，调用方**不能**再用
+ * `if (flag) { ReminderInfoDialog(...) }` 包裹。
  */
 @Composable
 fun ReminderInfoDialog(
@@ -85,10 +90,12 @@ fun ReminderInfoDialog(
     showDontRemind: Boolean = true,
     onDismiss: () -> Unit,
     confirmLabel: String? = null,
-    onConfirm: (() -> Unit)? = null
+    onConfirm: (() -> Unit)? = null,
+    visible: Boolean = true
 ) {
     var dontRemind by remember { mutableStateOf(false) }
-    AlertDialog(
+    LiquidDialog(
+        visible = visible,
         onDismissRequest = onDismiss,
         title = { Text(key.title) },
         text = {
@@ -103,7 +110,7 @@ fun ReminderInfoDialog(
                             .clickable { dontRemind = !dontRemind }
                             .padding(horizontal = 4.dp, vertical = 8.dp)
                     ) {
-                        Md3Checkbox(checked = dontRemind)
+                        GlassCheckbox(checked = dontRemind)
                         Spacer(Modifier.width(12.dp))
                         Text(stringResource(R.string.conv_reminder_dont_remind))
                     }
@@ -192,17 +199,19 @@ class LegacyUninstallFlowController {
 fun rememberLegacyUninstallFlow(): LegacyUninstallFlowController =
     remember { LegacyUninstallFlowController() }
 
-/** 渲染旧版本卸载提示弹窗（支持「不再提示」「卸载」两个动作） */
+/** 渲染旧版本卸载提示弹窗（支持「不再提示」「卸载」两个动作）。
+ *  [enabled] 为全局弹窗闸门：同一时刻只允许一个会话型弹窗（处理进行中时整体抑制）。
+ *  [flow].visible 为 false 时播放退场动画后才退出组合（不能用 if 包裹）。 */
 @Composable
 fun LegacyUninstallFlowHosts(
     flow: LegacyUninstallFlowController,
     vibrate: () -> Unit = {},
     enabled: Boolean = true
 ) {
-    // 全局弹窗闸门：同一时刻只允许一个会话型弹窗（处理进行中时由闸门整体抑制）
-    if (!enabled || !flow.visible) return
+    val visible = enabled && flow.visible
     val context = LocalContext.current
-    AlertDialog(
+    LiquidDialog(
+        visible = visible,
         onDismissRequest = { flow.dismiss() },
         title = { Text(ReminderKey.LEGACY_GO_INSTALLED.title) },
         text = { Text(ReminderKey.LEGACY_GO_INSTALLED.message) },

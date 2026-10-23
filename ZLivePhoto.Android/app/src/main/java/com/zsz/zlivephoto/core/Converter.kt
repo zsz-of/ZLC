@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.R
+import com.zsz.zlivephoto.core.formats.FormatPlugin
 import com.zsz.zlivephoto.core.formats.FormatRegistry
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -339,13 +340,55 @@ internal object Converter {
             asset.videoInfo = Mp4Util.getTrackInfo(mp4Bytes) ?: mutableMapOf()
             // 合成素材同样可能夹带附加轨（例如用户直接用带 mett 的 MP4 当素材）
             sanitizeAssetVideo(asset, log)
+            // 前置守卫：净化后视频为空说明不可能产出动态照片，直接失败（免去无意义的写盘）
+            if (asset.videoMp4.isEmpty()) throw ConvertException(CoreText.of(R.string.conv_compose_no_video))
             log("info", CoreText.of(R.string.conv_log_compose_sizes, jpeg.size, asset.videoMp4.size, CoreText.of(targetPlugin.displayRes)), CoreText.of(R.string.conv_tag_compose))
 
-            return targetPlugin.write(asset, outDir, stem, log, options)
+            val outs = targetPlugin.write(asset, outDir, stem, log, options)
+            // 写后回读校验：产物必须真的含有效视频轨，否则宁可报失败也不静默产出静态照片
+            verifyComposeOutput(targetPlugin, outs)
+            return outs
         } finally {
             // 转码 / 重封装的临时产物：合成结束（成功/失败）立即删除
             prepared.temp?.let { runCatching { it.delete() } }
         }
+    }
+
+    /**
+     * 合成产物写后校验（用户反馈「合成有概率丢失动态部分」的兜底）：
+     * 产物中必须存在**可解析出视频编码的视频轨**，否则说明写出的动态照片会退化成静态照片，
+     * 此时抛 [ConvertException] 让该任务显示失败原因，而不是静默产出无动态效果的图片。
+     *
+     * 两种产物的校验方式：
+     * - 伴生视频文件（vivo 双文件 / Apple 的独立 MP4/MOV）：直接按 MP4 解析视频轨；
+     * - 单文件内嵌（Google / OPPO / 小米 / 荣耀 / 魅族 / 三星 / vivo 单文件）：
+     *   交由目标插件 [FormatPlugin.read] 回读（各格式用自己的 XMP 定位内嵌视频）。
+     * 任一产物通过即视为成功。
+     */
+    private fun verifyComposeOutput(targetPlugin: FormatPlugin, outs: List<String>) {
+        for (path in outs) {
+            if (hasVideoTrack(targetPlugin, path)) return
+        }
+        throw ConvertException(CoreText.of(R.string.conv_compose_no_video))
+    }
+
+    /** 单个合成产物是否含可解析出编码的视频轨 */
+    private fun hasVideoTrack(targetPlugin: FormatPlugin, path: String): Boolean {
+        val head = ByteArray(12)
+        val isMp4File = runCatching {
+            File(path).inputStream().use { ins -> ins.read(head) }
+            Mp4Util.hasFtyp(head)
+        }.getOrDefault(false)
+        if (isMp4File) {
+            val bytes: ByteArray = File(path).readBytes()
+            val codec = Mp4Util.getTrackInfo(bytes)?.get("codec") as? String
+            return !codec.isNullOrEmpty()
+        }
+        val asset = runCatching { targetPlugin.read(path, { _, _, _ -> }) }.getOrNull() ?: return false
+        val video: ByteArray = asset.videoMp4 ?: return false
+        if (video.isEmpty()) return false
+        val codec = Mp4Util.getTrackInfo(video)?.get("codec") as? String
+        return !codec.isNullOrEmpty()
     }
 
     /** 处理后的视频字节 + 需在合成结束后删除的临时文件（无需清理时为 null） */

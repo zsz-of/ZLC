@@ -4,6 +4,7 @@
     <string name="conv_unknown_target">未識之目標式：%1$s</string>
     <string name="conv_unrecognized_live_photo">未識之動態相片式（非 Google/OPPO/vivo/小米/Apple 動態相片）</string>
     <string name="conv_cover_photo_missing">封面相片未見或空</string>
+    <string name="conv_compose_no_video">合成敗：所出未含有效視頻之軌，不得成動態相片</string>
     <string name="conv_video_missing">影片未見或空</string>
     <string name="conv_video_too_large">影片過大（%1$dMB），不可合成動態相片，請擇其短者</string>
     <string name="conv_transcoded_too_large">轉碼後影片過大（%1$dMB），不可合成動態相片</string>

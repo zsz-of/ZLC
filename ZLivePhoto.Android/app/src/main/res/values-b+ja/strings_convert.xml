@@ -10,6 +10,7 @@
     <string name="conv_unknown_target">不明な出力形式：%1$s</string>
     <string name="conv_unrecognized_live_photo">認識できないライブフォト形式です（Google/OPPO/vivo/Xiaomi/Apple のライブフォトではありません）</string>
     <string name="conv_cover_photo_missing">カバー写真が存在しないか空です</string>
+    <string name="conv_compose_no_video">合成に失敗：出力に有効な映像トラックが含まれていないため、ライブフォトを生成できませんでした</string>
     <string name="conv_video_missing">動画が存在しないか空です</string>
     <string name="conv_video_too_large">動画が大きすぎます（%1$dMB）。ライブフォトとして合成できないため、より短い動画を選択してください</string>
     <string name="conv_transcoded_too_large">トランスコード後の動画が大きすぎます（%1$dMB）。ライブフォトとして合成できません</string>

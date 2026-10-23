@@ -10,6 +10,7 @@
     <string name="conv_unknown_target">صيغة الهدف غير معروفة: %1$s</string>
     <string name="conv_unrecognized_live_photo">صيغة Live Photo غير معروفة (ليست Live Photo من Google/OPPO/vivo/Xiaomi/Apple)</string>
     <string name="conv_cover_photo_missing">صورة الغلاف غير موجودة أو فارغة</string>
+    <string name="conv_compose_no_video">فشل الدمج: لا يحتوي الناتج على مسار فيديو صالح، لذلك لم يتم إنشاء صورة حية</string>
     <string name="conv_video_missing">الفيديو غير موجود أو فارغ</string>
     <string name="conv_video_too_large">الفيديو كبير جدًا (%1$d MB) ولا يمكن دمجه في Live Photo؛ اختر فيديو أقصر</string>
     <string name="conv_transcoded_too_large">الفيديو بعد إعادة الترميز كبير جدًا (%1$d MB) ولا يمكن دمجه في Live Photo</string>

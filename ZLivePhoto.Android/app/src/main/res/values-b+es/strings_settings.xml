@@ -50,6 +50,11 @@
     <string name="settings_custom_color_title">Color de tema personalizado</string>
     <string name="settings_cd_custom_palette">Paleta personalizada</string>
     <string name="settings_hue_value">Tono %1$d°</string>
+    <string name="settings_glass_title">Interfaz de vidrio líquido</string>
+    <string name="settings_glass_subtitle">Vidrio esmerilado estilo iOS con refracción en los bordes; al desactivarlo se usan los componentes nativos</string>
+    <string name="settings_glass_unsupported">Esta versión del sistema no admite el vidrio líquido, así que se usan los componentes nativos</string>
+    <string name="settings_glass_opacity_title">Transparencia del vidrio líquido</string>
+    <string name="settings_glass_opacity_subtitle">Menos transparencia implica más desenfoque (solo interfaz de vidrio líquido)</string>
 
     <!-- Idioma de la aplicación -->
     <string name="settings_language_dialog_title">Elegir el idioma de la aplicación</string>

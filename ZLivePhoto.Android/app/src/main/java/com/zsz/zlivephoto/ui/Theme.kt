@@ -7,17 +7,30 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.R
+
+/**
+ * 应用当前是否处于「深色」主题（由「深色模式」三选 + 系统深浅色共同决定）。
+ *
+ * 为什么需要它：玻璃/选择器组件此前一律用 `isSystemInDarkTheme()`（读系统 uiMode），
+ * 但用户可以在应用内手动选「深色/浅色」，此时系统可能仍是浅色，导致
+ * `ZLivePhotoTheme` 已切成深色、玻璃组件却仍按浅色渲染 —— 白色背景板不变黑、
+ * 玻璃模糊出白底的根因。统一从这里读，保证与主题同源。
+ */
+val LocalDarkTheme = staticCompositionLocalOf { false }
 
 // ImageToolBox 风格的颜色方案
 private val LightColors = lightColorScheme(
@@ -37,9 +50,9 @@ private val LightColors = lightColorScheme(
     onError = Color(0xFFFFFFFF),
     errorContainer = Color(0xFFF9DEDC),
     onErrorContainer = Color(0xFF410E0B),
-    background = Color(0xFFFEF7FF),
+    background = Color(0xFFFFFFFF),
     onBackground = Color(0xFF1D1B20),
-    surface = Color(0xFFFEF7FF),
+    surface = Color(0xFFFFFFFF),
     onSurface = Color(0xFF1D1B20),
     surfaceVariant = Color(0xFFE7E0EC),
     onSurfaceVariant = Color(0xFF49454F),
@@ -69,19 +82,19 @@ private val DarkColors = darkColorScheme(
     onError = Color(0xFF601410),
     errorContainer = Color(0xFF8C1D18),
     onErrorContainer = Color(0xFFF9DEDC),
-    background = Color(0xFF141218),
+    background = Color(0xFF0B0B0D),
     onBackground = Color(0xFFE6E0E9),
-    surface = Color(0xFF141218),
+    surface = Color(0xFF0B0B0D),
     onSurface = Color(0xFFE6E0E9),
     surfaceVariant = Color(0xFF49454F),
     onSurfaceVariant = Color(0xFFCAC4D0),
     outline = Color(0xFF938F99),
     outlineVariant = Color(0xFF49454F),
-    surfaceContainerLowest = Color(0xFF0F0D13),
-    surfaceContainerLow = Color(0xFF1D1B20),
-    surfaceContainer = Color(0xFF211F26),
-    surfaceContainerHigh = Color(0xFF2B2930),
-    surfaceContainerHighest = Color(0xFF36343B),
+    surfaceContainerLowest = Color(0xFF08080A),
+    surfaceContainerLow = Color(0xFF121214),
+    surfaceContainer = Color(0xFF18181B),
+    surfaceContainerHigh = Color(0xFF232326),
+    surfaceContainerHighest = Color(0xFF2E2E32),
 )
 
 // ---------- 预制主题色（7 个，色相派生）+ 自定义色相 ----------
@@ -188,10 +201,6 @@ internal fun buildScheme(hue: Float, dark: Boolean): ColorScheme {
         onTertiary = base.onTertiary,
         tertiaryContainer = shiftHue(base.tertiaryContainer, hue),
         onTertiaryContainer = shiftHue(base.onTertiaryContainer, hue),
-        background = shiftHue(base.background, hue),
-        onBackground = base.onBackground,
-        surface = shiftHue(base.surface, hue),
-        onSurface = base.onSurface,
         surfaceVariant = shiftHue(base.surfaceVariant, hue),
         onSurfaceVariant = base.onSurfaceVariant,
         outline = shiftHue(base.outline, hue),
@@ -224,19 +233,34 @@ fun ZLivePhotoTheme(
         darkTheme -> buildScheme(hue, dark = true)
         else -> buildScheme(hue, dark = false)
     }
-    // 深色/浅色切换时逐色过渡（约 400ms），避免 Activity 重建瞬变
+    // 深色/浅色切换时逐色过渡（500ms），避免 Activity 重建瞬变
     val colorScheme = animateColorScheme(target)
 
     MaterialTheme(
         colorScheme = colorScheme,
-        content = content
+        content = {
+            CompositionLocalProvider(
+                // MaterialTheme 自身**不**提供 LocalContentColor（只提供 colorScheme /
+                // shapes / typography 等 6 个 local），根作用域的默认内容色是
+                // Color.Black。玻璃模式下 Scaffold/Surface 的容器色一律传 Transparent，
+                // 而 Scaffold 的 contentColor 默认值走 contentColorFor(Transparent) =
+                // Unspecified → 回退到根作用域的黑色 → 深色模式下所有未显式着色的
+                // 文字（设置页行标题 / 主页大标题 / 底部面板文字…）一律渲染成黑色，
+                // 与深色背景融为一体（用户反馈「深色模式下部分字体为黑色」）。
+                // 在主题根统一提供随主题 500ms 渐变的 onSurface，全树默认文字色即修正。
+                LocalContentColor provides colorScheme.onSurface,
+                LocalDarkTheme provides darkTheme
+            ) {
+                content()
+            }
+        }
     )
 }
 
 /** 对 ColorScheme 全部颜色做动画插值，实现主题切换的平滑过渡（ImageToolbox 式） */
 @Composable
 private fun animateColorScheme(target: ColorScheme): ColorScheme {
-    val spec = tween<Color>(400)
+    val spec = tween<Color>(500)
 
     @Composable
     fun anim(c: Color): Color = animateColorAsState(targetValue = c, animationSpec = spec, label = "schemeColor").value

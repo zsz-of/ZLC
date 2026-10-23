@@ -47,6 +47,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -73,7 +74,7 @@ import com.zsz.zlivephoto.ui.FancyEasing
 import com.zsz.zlivephoto.ui.FileItem
 import com.zsz.zlivephoto.ui.MainScreen
 import com.zsz.zlivephoto.ui.OutputMode
-import com.zsz.zlivephoto.ui.Md3Checkbox
+import com.zsz.zlivephoto.ui.glass.GlassCheckbox
 import com.zsz.zlivephoto.ui.SettingsScreen
 import com.zsz.zlivephoto.ui.ZLivePhotoTheme
 import com.zsz.zlivephoto.ui.UpdateFlowHosts
@@ -84,6 +85,11 @@ import com.zsz.zlivephoto.ui.rememberHapticFeedback
 import com.zsz.zlivephoto.ui.rememberLegacyUninstallFlow
 import com.zsz.zlivephoto.ui.rememberUpdateFlow
 import com.zsz.zlivephoto.ui.wallpaperHue
+import com.zsz.zlivephoto.ui.glass.GlassRoot
+import com.zsz.zlivephoto.ui.glass.LiquidDialog
+import com.zsz.zlivephoto.ui.glass.LocalGlassBackdrop
+import com.zsz.zlivephoto.ui.glass.LocalPageBackdropPublisher
+import com.zsz.zlivephoto.ui.glass.PageBackdropPublisher
 import com.zsz.zlivephoto.ui.picker.AlbumInfo
 import com.zsz.zlivephoto.ui.picker.AlbumScanner
 import com.zsz.zlivephoto.ui.picker.MediaItem
@@ -375,14 +381,59 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    /** 输出格式 key → 界面显示名（与主界面 formatOptions 一致；"extract"=拆解） */
+    private fun formatDisplayName(key: String): String = when (key) {
+        "google" -> getString(R.string.screen_format_google)
+        "apple" -> getString(R.string.screen_format_apple)
+        "oppo" -> getString(R.string.screen_format_oppo)
+        "vivo_single" -> getString(R.string.screen_format_vivo_single)
+        "vivo" -> getString(R.string.screen_format_vivo)
+        "xiaomi" -> getString(R.string.screen_format_xiaomi)
+        "honor" -> getString(R.string.screen_format_honor)
+        "meizu" -> getString(R.string.screen_format_meizu)
+        "samsung" -> getString(R.string.screen_format_samsung)
+        "extract" -> getString(R.string.screen_format_extract)
+        else -> key
+    }
+
+    /**
+     * 列表项副标题的「静止态」文案：显示该项的**输出格式**版本
+     * （用户需求：列表下面显示的应该是输出的版本，而非识别到的输入格式）。
+     * 未识别项固定为「未识别」提示。
+     */
+    private fun targetInfo(item: FileItem): String {
+        if (item.isUnrecognized) return getString(R.string.main_info_unrecognized)
+        val fmt = formatDisplayName(item.targetFormat ?: selectedFormat)
+        return if (item.formatKey == "compose")
+            getString(R.string.main_info_compose_target, fmt) else fmt
+    }
+
+    /**
+     * 全局输出格式变化后刷新各行副标题为新的输出格式。
+     * 跳过进行中（transcoding）与已失败项：失败项保留失败原因，避免被误当成可重试项。
+     */
+    private fun refreshAllItemInfo() {
+        val failPrefix = getString(R.string.main_info_failed, "")
+        for (i in files.indices) {
+            val cur = files[i]
+            if (cur.transcoding) continue
+            if (cur.info.startsWith(failPrefix)) continue
+            val info = targetInfo(cur)
+            if (info != cur.info) files[i] = cur.copy(info = info)
+        }
+    }
+
     /** 长按列表项 → 单独设置该项输出格式（key 含 "extract"=拆解；合成任务不可拆解） */
     private fun setItemFormat(path: String, formatKey: String) {
         val idx = files.indexOfFirst { it.path == path }
         if (idx < 0) return
         val item = files[idx]
         if (formatKey == "extract" && item.formatKey == "compose") return
-        files[idx] = item.copy(targetFormat = formatKey)
+        val updated = item.copy(targetFormat = formatKey)
+        files[idx] = updated.copy(info = targetInfo(updated))
         statusText = getString(R.string.main_status_item_format_set, item.name)
+        // 立即落盘：长按改格式后即使不触发其它列表变化也能持久化（修复「长按修改貌似无效」）
+        onListStable(immediate = true)
     }
 
     // 「所有文件访问」授权页返回后：刷新状态提示与删除原图开关可用性
@@ -740,6 +791,12 @@ class MainActivity : ComponentActivity() {
                 // 旧版本（Go 版）卸载提示状态（普通版启动时检测）
                 val legacyFlow = rememberLegacyUninstallFlow()
 
+                // 页面玻璃采样层发布者：各页面发布自己的 pageBackdrop，
+                // 应用级弹窗（权限引导 / 更新提示 / 文件名冲突 / 旧版本卸载提示）
+                // 据此采样「根渐变 + 当前页面」——弹窗与页面同窗口，坐标天然
+                // 对正、模糊实时（用户反馈 #5/#6），且复用页面已有录制零开销
+                val pageBackdropPublisher = remember { PageBackdropPublisher() }
+
                 // 启动时自动检查更新。
                 // 优先级：Go 版门禁（打开正常版 / 强制更新）→ 软件更新 → 旧版本卸载提示。
                 // Go 轻量版在 Android 10+ 上旧版本已不可用，不受「启动时检查更新」开关与
@@ -805,23 +862,10 @@ class MainActivity : ComponentActivity() {
                     else -> DialogOwner.NONE
                 }
 
-                // 发现新版本 / 更新说明 / 下载进度 / 安装权限引导等弹窗统一在这里渲染
-                UpdateFlowHosts(
-                    updateFlow,
-                    vibrate = { haptic.click() },
-                    enabled = sessionDialogOwner == DialogOwner.UPDATE,
-                    onForcedRetry = {
-                        updateFlow.clearForcedBlocked()
-                        startupCheckKey++
-                    }
-                )
-
-                // 旧版本卸载提示弹窗
-                LegacyUninstallFlowHosts(
-                    legacyFlow,
-                    vibrate = { haptic.click() },
-                    enabled = sessionDialogOwner == DialogOwner.LEGACY
-                )
+                // 更新弹窗 / 旧版本卸载提示统一移入下方 GlassRoot 内渲染：
+                // 弹窗必须是**同窗口覆盖层**（独立 Dialog 窗口采样坐标错误、
+                // 主窗口停绘导致模糊陈旧、窗口缩放不跟随导致点击映射错——
+                // 用户反馈 #5/#6），需要 GlassRoot 提供的玻璃 CompositionLocal
 
                 // 预览式返回：选择器 / 设置页手势进度驱动内容缩小右移（顶层稳定注册，
                 // 不受 AnimatedContent 过渡重组影响；提交后回到主页）
@@ -853,13 +897,24 @@ class MainActivity : ComponentActivity() {
                     androidx.compose.ui.platform.LocalLayoutDirection.current ==
                     androidx.compose.ui.unit.LayoutDirection.Rtl
                 ) -1 else 1 // Int：slideInHorizontally 的 fullWidth 是 Int；与 Float 相乘会自动提升
+                // 液态玻璃根容器：铺一条主题色渐变作为采样源，并向子树提供玻璃 CompositionLocal。
+                // 只包裹页面内容 —— 弹窗是独立 Window，不参与采样源记录。
+                GlassRoot {
+                // 页面采样层发布作用域：页面把 pageBackdrop 写进 pageBackdropPublisher，
+                // 供下方应用级弹窗采样「根 + 当前页面」
+                CompositionLocalProvider(LocalPageBackdropPublisher provides pageBackdropPublisher) {
                 AnimatedContent(
                     targetState = screen,
                     modifier = Modifier
                         .fillMaxSize()
                         // 过渡动画期间两屏交错露出的底层必须使用主题背景，
-                        // 否则深色模式下会露出 Activity 窗口默认的白色背景
-                        .background(MaterialTheme.colorScheme.background)
+                        // 否则深色模式下会露出 Activity 窗口默认的白色背景。
+                        // 玻璃启用时改透明：采样源渐变由 GlassRoot 铺在内容之下，
+                        // 页面容器不透明会把它整块遮住，玻璃元素就无从采样。
+                        .then(
+                            if (AppSettings.glassActive) Modifier
+                            else Modifier.background(MaterialTheme.colorScheme.background)
+                        )
                         .graphicsLayer {
                             val p = backAnim.value
                             if (p > 0f) {
@@ -945,11 +1000,38 @@ class MainActivity : ComponentActivity() {
                             onRemoveFile = { path -> removeFile(path) }
                         )
                     }
-                }
+                } // AnimatedContent
+                } // 页面采样层发布作用域
 
-                // 权限请求对话框（首次或仍可请求时；由上方全局闸门决定是否轮到自己弹出）
-                if (showPermissionDialog && sessionDialogOwner == DialogOwner.PERMISSION) {
-                    AlertDialog(
+                // ── 应用级弹窗（与页面同窗口的覆盖层，见 [LiquidDialog]）──
+                // 采样「根渐变 + 当前页面」：页面通过 pageBackdropPublisher 发布
+                // 自己的采样层；坐标与主窗口严格一致、每帧刷新（用户反馈 #5/#6）
+                CompositionLocalProvider(
+                    LocalGlassBackdrop provides (
+                            pageBackdropPublisher.backdrop ?: LocalGlassBackdrop.current
+                            )
+                ) {
+                    // 发现新版本 / 更新说明 / 下载进度 / 安装权限引导等弹窗统一在这里渲染
+                    UpdateFlowHosts(
+                        updateFlow,
+                        vibrate = { haptic.click() },
+                        enabled = sessionDialogOwner == DialogOwner.UPDATE,
+                        onForcedRetry = {
+                            updateFlow.clearForcedBlocked()
+                            startupCheckKey++
+                        }
+                    )
+
+                    // 旧版本卸载提示弹窗
+                    LegacyUninstallFlowHosts(
+                        legacyFlow,
+                        vibrate = { haptic.click() },
+                        enabled = sessionDialogOwner == DialogOwner.LEGACY
+                    )
+
+                    // 权限请求对话框（首次或仍可请求时；由上方全局闸门决定是否轮到自己弹出）
+                    LiquidDialog(
+                        visible = showPermissionDialog && sessionDialogOwner == DialogOwner.PERMISSION,
                         onDismissRequest = {
                             // 拒绝不退出应用，仅关闭对话框
                             showPermissionDialog = false
@@ -974,11 +1056,10 @@ class MainActivity : ComponentActivity() {
                             }) { Text(stringResource(R.string.main_btn_deny)) }
                         }
                     )
-                }
 
-                // 跳转设置对话框（用户选了「不再询问」；与权限请求同一闸门优先级）
-                if (showSettingsDialog && sessionDialogOwner == DialogOwner.PERMISSION) {
-                    AlertDialog(
+                    // 跳转设置对话框（用户选了「不再询问」；与权限请求同一闸门优先级）
+                    LiquidDialog(
+                        visible = showSettingsDialog && sessionDialogOwner == DialogOwner.PERMISSION,
                         onDismissRequest = {
                             showSettingsDialog = false
                         },
@@ -1002,14 +1083,13 @@ class MainActivity : ComponentActivity() {
                             }) { Text(stringResource(R.string.main_btn_cancel)) }
                         }
                     )
-                }
 
-                // 「所有文件访问」引导：三种用途（①直写磁盘保留位置信息 ②开启自动删除原图 ③开启替换模式）
-                if (showAllFilesDialog && sessionDialogOwner == DialogOwner.ALL_FILES) {
+                    // 「所有文件访问」引导：三种用途（①直写磁盘保留位置信息 ②开启自动删除原图 ③开启替换模式）
                     val purpose = allFilesDialogPurpose
                     // Android 11+ 才有「所有文件访问」；更低版本（含 Android 10）无法直接改写公共目录文件
                     val grantable = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
-                    AlertDialog(
+                    LiquidDialog(
+                        visible = showAllFilesDialog && sessionDialogOwner == DialogOwner.ALL_FILES,
                         onDismissRequest = {
                             showAllFilesDialog = false
                             allFilesDialogPurpose = AllFilesPurpose.LOCATION
@@ -1071,66 +1151,75 @@ class MainActivity : ComponentActivity() {
                             }
                         } else null
                     )
-                }
 
-                // 文件名冲突弹窗（跳过 / 覆盖 / 自动重命名）
-                conflictRequest?.let { req ->
-                    AlertDialog(
+                    // 文件名冲突弹窗（跳过 / 覆盖 / 自动重命名）
+                    // 退出动画期间 conflictRequest 已被置空：记住最后一次非空请求，
+                    // 让内容渲染完淡出（否则退场时内容会突然消失）
+                    val lastConflictRequest = remember { mutableStateOf<ConflictRequest?>(null) }
+                    LaunchedEffect(conflictRequest) {
+                        if (conflictRequest != null) lastConflictRequest.value = conflictRequest
+                    }
+                    val conflictReq = lastConflictRequest.value
+                    LiquidDialog(
+                        visible = conflictRequest != null,
                         onDismissRequest = {
                             // 点外部关闭视同跳过，避免协程悬挂
-                            val cb = req.onChoose
+                            val cb = conflictReq?.onChoose
                             conflictRequest = null
-                            cb(ConflictAction.SKIP)
+                            cb?.invoke(ConflictAction.SKIP)
                         },
                         title = { Text(stringResource(R.string.main_dialog_conflict_title)) },
                         text = {
-                            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                                Text(
-                                    stringResource(R.string.main_dialog_conflict_message, req.displayNames)
-                                )
-                                // 第一行：跳过 / 覆盖
-                                Row(
-                                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                                    modifier = Modifier.fillMaxWidth()
-                                ) {
-                                    FilledTonalButton(
-                                        onClick = { haptic.click(); req.onChoose(ConflictAction.SKIP) },
-                                        modifier = Modifier.weight(1f).height(42.dp)
-                                    ) { Text(stringResource(R.string.main_btn_skip)) }
-                                    FilledTonalButton(
-                                        onClick = { haptic.click(); req.onChoose(ConflictAction.OVERWRITE) },
-                                        modifier = Modifier.weight(1f).height(42.dp)
-                                    ) { Text(stringResource(R.string.main_btn_overwrite)) }
-                                }
-                                // 第二行：自动重命名（独占一行）
-                                FilledTonalButton(
-                                    onClick = { haptic.click(); req.onChoose(ConflictAction.RENAME) },
-                                    modifier = Modifier.fillMaxWidth().height(42.dp)
-                                ) { Text(stringResource(R.string.main_btn_auto_rename)) }
-                                // 整行可点击切换（MD3 习惯：文字也是点击目标）
-                                Row(
-                                    verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
-                                    modifier = Modifier
-                                        .clip(RoundedCornerShape(8.dp))
-                                        .clickable {
-                                            haptic.click()
-                                            conflictAlways = !conflictAlways
-                                        }
-                                        .padding(horizontal = 4.dp, vertical = 8.dp)
-                                ) {
-                                    Md3Checkbox(checked = conflictAlways)
-                                    Spacer(Modifier.width(12.dp))
+                            conflictReq?.let { req ->
+                                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                                     Text(
-                                        stringResource(R.string.main_label_conflict_always),
-                                        style = MaterialTheme.typography.labelMedium
+                                        stringResource(R.string.main_dialog_conflict_message, req.displayNames)
                                     )
+                                    // 第一行：跳过 / 覆盖
+                                    Row(
+                                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                        modifier = Modifier.fillMaxWidth()
+                                    ) {
+                                        FilledTonalButton(
+                                            onClick = { haptic.click(); req.onChoose(ConflictAction.SKIP) },
+                                            modifier = Modifier.weight(1f).height(42.dp)
+                                        ) { Text(stringResource(R.string.main_btn_skip)) }
+                                        FilledTonalButton(
+                                            onClick = { haptic.click(); req.onChoose(ConflictAction.OVERWRITE) },
+                                            modifier = Modifier.weight(1f).height(42.dp)
+                                        ) { Text(stringResource(R.string.main_btn_overwrite)) }
+                                    }
+                                    // 第二行：自动重命名（独占一行）
+                                    FilledTonalButton(
+                                        onClick = { haptic.click(); req.onChoose(ConflictAction.RENAME) },
+                                        modifier = Modifier.fillMaxWidth().height(42.dp)
+                                    ) { Text(stringResource(R.string.main_btn_auto_rename)) }
+                                    // 整行可点击切换（MD3 习惯：文字也是点击目标）
+                                    Row(
+                                        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+                                        modifier = Modifier
+                                            .clip(RoundedCornerShape(8.dp))
+                                            .clickable {
+                                                haptic.click()
+                                                conflictAlways = !conflictAlways
+                                            }
+                                            .padding(horizontal = 4.dp, vertical = 8.dp)
+                                    ) {
+                                        GlassCheckbox(checked = conflictAlways)
+                                        Spacer(Modifier.width(12.dp))
+                                        Text(
+                                            stringResource(R.string.main_label_conflict_always),
+                                            style = MaterialTheme.typography.labelMedium
+                                        )
+                                    }
                                 }
                             }
                         },
                         confirmButton = {},
                         dismissButton = {}
                     )
-                }
+                } // 应用级弹窗作用域
+                } // GlassRoot
             }
         }
     }
@@ -1282,6 +1371,9 @@ class MainActivity : ComponentActivity() {
         selectedFormat = fmt
         getSharedPreferences("zlivephoto", MODE_PRIVATE)
             .edit().putString("target", fmt).apply()
+        // 全局格式变化：各行副标题刷新为新的输出格式，并落盘
+        refreshAllItemInfo()
+        onListStable()
     }
 
     /** 打开内置选择器（默认入口）：会话化扫描 + 查询相册列表后展示；
@@ -1308,7 +1400,7 @@ class MainActivity : ComponentActivity() {
      *
      * 自动分组（用户需求，见 [PairGrouping]）：
      * - 动态照片 → 按本次选择器右上角选定的输出格式**转换**
-     * - 单图 / 视频 → 按名称配对，识别为**合并动态照片**（图片 + 视频 → 动态照片）
+     * - 单图 / 视频 → 按**选择顺序**两两配对（第 n 张图配第 n 个视频），识别为**合并动态照片**
      * - 配不上的单图 / 单视频 → 无法合成，跳过并提示
      *
      * 全局输出格式为「拆解」时，需要合成的图片改用 Google 格式
@@ -1384,10 +1476,10 @@ class MainActivity : ComponentActivity() {
      */
     private fun addComposeTask(photo: MediaItem, video: MediaItem, targetFormat: String) {
         if (files.any { it.path == photo.path }) return
-        files.add(FileItem(
+        val item = FileItem(
             path = photo.path,
             name = photo.name,
-            info = getString(R.string.main_info_compose_task),
+            info = "",
             sourceUri = photo.uri.toString(),
             sourcePath = photo.path,
             sourceTime = photo.dateModified * 1000L,
@@ -1395,7 +1487,8 @@ class MainActivity : ComponentActivity() {
             formatKey = "compose",
             targetFormat = targetFormat,
             composeVideoPath = video.path
-        ))
+        )
+        files.add(item.copy(info = targetInfo(item)))
     }
 
     /** 终止转换/导入：转换处理完当前文件后停止；导入循环下一项前立即停止 */
@@ -1509,11 +1602,12 @@ class MainActivity : ComponentActivity() {
             withContext(Dispatchers.Main) {
                 val idx = files.indexOfFirst { it.path == path }
                 if (idx >= 0) {
-                    files[idx] = files[idx].copy(
-                        info = if (recognized) getString(plugin!!.displayRes) else getString(R.string.main_info_unrecognized),
+                    val updated = files[idx].copy(
                         isUnrecognized = !recognized,
                         formatKey = if (recognized) plugin!!.name else null
                     )
+                    // 副标题显示输出格式版本（而非识别到的输入格式）
+                    files[idx] = updated.copy(info = targetInfo(updated))
                     // 识别结果同步到本地 JSON（防抖合并，避免批量导入时高频写盘）
                     onListStable()
                 }
@@ -1645,7 +1739,18 @@ class MainActivity : ComponentActivity() {
             when {
                 items.isEmpty() -> { f.delete(); ListState.Empty }
                 !root.optBoolean("complete", false) -> { f.delete(); ListState.AbnormalExit(items.size) }
-                else -> ListState.Loaded(items)
+                else -> {
+                    // 副标题统一为「输出格式版本」：检测中的项保留原状态（启动时会重新触发识别），
+                    // 失败项保留失败原因（否则会被误当成可重试项）
+                    val detecting = getString(R.string.main_info_detecting)
+                    val failPrefix = getString(R.string.main_info_failed, "")
+                    for (i in items.indices) {
+                        val cur = items[i]
+                        if (cur.info == detecting || cur.info.startsWith(failPrefix)) continue
+                        items[i] = cur.copy(info = targetInfo(cur))
+                    }
+                    ListState.Loaded(items)
+                }
             }
         } catch (_: Exception) {
             f.delete()

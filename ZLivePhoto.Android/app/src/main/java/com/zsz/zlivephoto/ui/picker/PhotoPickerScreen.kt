@@ -6,6 +6,7 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.LruCache
 import android.util.Size
+import androidx.annotation.StringRes
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.ui.res.painterResource
@@ -50,17 +51,18 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -77,39 +79,25 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.ImageNotSupported
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.LocalMinimumInteractiveComponentSize
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.AssistChip
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
-import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.filled.Check
-import com.zsz.zlivephoto.ui.FormatOption
 import com.zsz.zlivephoto.ui.formatOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -117,6 +105,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.produceState
@@ -126,11 +115,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.TransformOrigin
@@ -142,6 +135,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.state.ToggleableState
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
@@ -151,9 +145,29 @@ import androidx.compose.ui.unit.sp
 import com.zsz.zlivephoto.ui.AlphaEasing
 import com.zsz.zlivephoto.ui.AppSettings
 import com.zsz.zlivephoto.ui.FancyEasing
+import com.zsz.zlivephoto.ui.LocalDarkTheme
+import com.zsz.zlivephoto.ui.glass.rememberAdaptiveContentColor
+import com.zsz.zlivephoto.ui.PressFeedback
 import com.zsz.zlivephoto.ui.PressHapticEffect
 import com.zsz.zlivephoto.ui.ReminderInfoDialog
 import com.zsz.zlivephoto.ui.ReminderKey
+import com.zsz.zlivephoto.ui.glass.GlassBackButton
+import com.zsz.zlivephoto.ui.glass.GlassIconButton
+import com.zsz.zlivephoto.ui.glass.GlassMenuEntry
+import com.zsz.zlivephoto.ui.glass.GlassMenuOverlay
+import com.zsz.zlivephoto.ui.glass.GlassMenuRow
+import com.zsz.zlivephoto.ui.glass.GlassPanel
+import com.zsz.zlivephoto.ui.glass.LocalGlassBackdrop
+import com.zsz.zlivephoto.ui.glass.LocalGlassEnabled
+import com.zsz.zlivephoto.ui.glass.PublishPageBackdrop
+import com.zsz.zlivephoto.ui.glass.animatedThemeColor
+import com.zsz.zlivephoto.ui.glass.liquidDraggable
+import com.zsz.zlivephoto.ui.glass.liquidGlass
+import com.zsz.zlivephoto.ui.glass.rememberGlassButtonPhysics
+import com.zsz.zlivephoto.ui.glass.rememberLiquidDragState
+import com.kyant.backdrop.backdrops.layerBackdrop
+import com.kyant.backdrop.backdrops.rememberLayerBackdrop
+import com.kyant.backdrop.shadow.Shadow
 import com.zsz.zlivephoto.ui.rememberPressFeedback
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -220,103 +234,175 @@ private fun mediaFilterLabelRes(f: MediaFilter): Int = when (f) {
 }
 
 /**
- * 媒体类型筛选行：全部 / 仅动态照片 / 仅视频 / 仅图片。
- * 与排序独立（先筛后排），可自由切换。
+ * 选择器返回按钮：
+ * - 玻璃启用：圆形液态玻璃按钮 + [AppleChevron]（苹果风格「<」，比 Material 更开）
+ * - 否则：原生 IconButton + ArrowBack（原模式保留）
  */
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun MediaFilterRow(filter: MediaFilter, onFilter: (MediaFilter) -> Unit) {
-    val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 2.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        listOf(MediaFilter.ALL, MediaFilter.LIVE, MediaFilter.VIDEO, MediaFilter.IMAGE).forEach { f ->
-            FilterChip(
-                selected = filter == f,
-                onClick = { haptic.click(); onFilter(f) },
-                label = { Text(stringResource(mediaFilterLabelRes(f)), fontSize = 12.sp) }
+private fun BackButton(onBack: () -> Unit) {
+    GlassBackButton(onBack = onBack, contentDescription = stringResource(R.string.screen_back))
+}
+
+/**
+ * 确认导入按钮：
+ * - 文案 = 「导入」+ 动态照片/图片/视频三类张数（数字变化时逐位上下滚动切换）
+ * - 宽度随文案变化用弹簧动画过渡
+ * - 玻璃启用时为液态玻璃按钮（按下形态沿用 [PressFeedback] 的圆角/缩放反馈）
+ * - 图片与视频数量不匹配（或未选）时禁用
+ */
+@Composable
+private fun ConfirmImportButton(
+    canConfirm: Boolean,
+    liveCount: Int,
+    imageCount: Int,
+    videoCount: Int,
+    feedback: PressFeedback,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val glass = LocalGlassEnabled.current
+    val dark = LocalDarkTheme.current
+    val shape = RoundedCornerShape(feedback.corner)
+    // 内容自适应着色（「根据背景自动切黑/白」的判断器）：
+    // 导入按钮永远浮在照片之上，玻璃折射到的背景亮度不定，
+    // 文字/计数按背景亮暗自动切换黑/白，保证任何照片都可读。
+    val adaptive = rememberAdaptiveContentColor(
+        initialColor = if (dark) Color.White else Color.Black,
+        enabled = glass && canConfirm
+    )
+    // 演示版（LiquidButton）同款物理：触点径向高光 + tanh 阻尼拖拽 + 方向形变。
+    // layerBlock 的 graphicsLayer 包裹整个节点，玻璃与文字作为整体变形。
+    // maxOffset 收到 2dp：按钮贴在屏幕右下角，形变/放大幅度越小越不会
+    // 在拖拽时poke出屏幕边缘被裁切（用户反馈「拖拽或点击时内容被裁切」）。
+    val physics = rememberGlassButtonPhysics(maxOffset = 2.dp)
+    val textColor = when {
+        !canConfirm -> MaterialTheme.colorScheme.onSurfaceVariant
+        glass -> adaptive.color
+        else -> MaterialTheme.colorScheme.onPrimary
+    }
+    Box(
+        modifier = modifier
+            .then(feedback.scaleModifier)
+            .animateContentSize(
+                spring(dampingRatio = Spring.DampingRatioLowBouncy, stiffness = Spring.StiffnessMediumLow)
             )
+            .then(
+                if (glass) Modifier.liquidGlass(
+                    shape,
+                    tintAlpha = if (canConfirm) 0.34f else 0.05f,
+                    lensHeight = 12.dp,
+                    lensAmount = 22.dp,
+                    // 关掉默认边缘高光：1.4dp 白描边在照片底上读起来就是一圈
+                    // 生硬边框（用户反馈「移除导入按钮四周生硬边框」）；
+                    // 层次改由 tint + 透镜折射 + 轻投影表达
+                    highlight = null,
+                    layerBlock = physics.transform,
+                    onDrawBackdrop = if (canConfirm) adaptive.recordBackdrop else null
+                )
+                else Modifier.background(
+                    if (canConfirm) MaterialTheme.colorScheme.primary
+                    else MaterialTheme.colorScheme.surfaceContainerHigh,
+                    shape
+                )
+            )
+            .then(if (glass && canConfirm) physics.highlight.modifier else Modifier)
+            .clip(shape)
+            .clickable(
+                enabled = canConfirm,
+                interactionSource = feedback.interactionSource,
+                indication = null
+            ) { onClick() }
+            .then(if (glass && canConfirm) physics.highlight.gestureModifier else Modifier)
+            .padding(horizontal = 22.dp, vertical = 12.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                stringResource(R.string.screen_import),
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.Bold,
+                color = textColor,
+                maxLines = 1
+            )
+            if (liveCount + imageCount + videoCount > 0) {
+                Spacer(Modifier.size(8.dp))
+                CountLabel(R.string.screen_count_live, liveCount, textColor)
+                CountSeparator(textColor)
+                CountLabel(R.string.screen_count_image, imageCount, textColor)
+                CountSeparator(textColor)
+                CountLabel(R.string.screen_count_video, videoCount, textColor)
+            }
         }
     }
 }
 
-/** 选择器右上角输出格式入口：显示当前格式名，点击打开格式选择弹窗 */
-@OptIn(ExperimentalMaterial3Api::class)
+/** 确认按钮内的单项计数：短标签（动/图/视）+ 滚动数字 */
 @Composable
-private fun OutputFormatChip(outputFormat: String, compact: Boolean = false, onClick: () -> Unit) {
-    val label = stringResource(
-        formatOptions.firstOrNull { it.key == outputFormat }?.nameRes
-            ?: R.string.screen_select_output_format
-    )
-    AssistChip(
-        onClick = onClick,
-        label = {
-            Text(
-                label,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.labelMedium
-            )
-        },
-        trailingIcon = {
-            Icon(
-                Icons.Default.KeyboardArrowDown,
-                contentDescription = null,
-                modifier = Modifier.size(16.dp)
-            )
-        },
-        modifier = if (compact) Modifier.widthIn(max = 116.dp) else Modifier
+private fun CountLabel(@StringRes labelRes: Int, count: Int, color: Color) {
+    val style = MaterialTheme.typography.labelLarge
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            stringResource(labelRes),
+            style = style,
+            color = color.copy(alpha = 0.8f),
+            maxLines = 1
+        )
+        RollingNumber(
+            value = count,
+            style = style.copy(fontWeight = FontWeight.Bold),
+            color = color
+        )
+    }
+}
+
+@Composable
+private fun CountSeparator(color: Color) {
+    Text(
+        "·",
+        style = MaterialTheme.typography.labelLarge,
+        color = color.copy(alpha = 0.55f),
+        modifier = Modifier.padding(horizontal = 5.dp)
     )
 }
 
-/** 右上角输出格式选择弹窗：选择本次导入的输出格式（含拆解） */
-@OptIn(ExperimentalMaterial3Api::class)
+/**
+ * MD3 风格「滚动数字」：逐位用 [AnimatedContent] 竖向滑入滑出，
+ * 数值增大时新数字自下而上滚入，减小时自上而下滚入。
+ */
 @Composable
-private fun PickOutputFormatSheet(
-    selected: String,
-    onSelect: (String) -> Unit,
-    onDismiss: () -> Unit
-) {
-    val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
-    val sheetState = rememberModalBottomSheetState()
-    val scroll = rememberScrollState()
-    ModalBottomSheet(onDismissRequest = onDismiss, sheetState = sheetState) {
-        Text(
-            stringResource(R.string.screen_select_output_format),
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)
-        )
-        HorizontalDivider()
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .heightIn(max = 440.dp)
-                .verticalScroll(scroll)
-        ) {
-            formatOptions.forEach { opt: FormatOption ->
-                val sel = opt.key == selected
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .clickable { haptic.click(); onSelect(opt.key) }
-                        .padding(horizontal = 24.dp, vertical = 8.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    RadioButton(selected = sel, onClick = { haptic.click(); onSelect(opt.key) })
-                    Spacer(Modifier.width(8.dp))
+private fun RollingNumber(value: Int, style: TextStyle, color: Color) {
+    val digits = value.toString()
+    Row {
+        digits.forEachIndexed { i, c ->
+            key(i) {
+                AnimatedContent(
+                    targetState = c,
+                    transitionSpec = {
+                        if (targetState > initialState) {
+                            (slideInVertically(tween(220, easing = FancyEasing)) { it } +
+                                    fadeIn(tween(160)))
+                                .togetherWith(
+                                    slideOutVertically(tween(220, easing = FancyEasing)) { -it } +
+                                            fadeOut(tween(120)))
+                        } else {
+                            (slideInVertically(tween(220, easing = FancyEasing)) { -it } +
+                                    fadeIn(tween(160)))
+                                .togetherWith(
+                                    slideOutVertically(tween(220, easing = FancyEasing)) { it } +
+                                            fadeOut(tween(120)))
+                        }
+                    },
+                    label = "digit"
+                ) { d ->
                     Text(
-                        stringResource(opt.nameRes),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = if (sel) FontWeight.Bold else FontWeight.Normal
+                        d.toString(),
+                        style = style,
+                        color = color,
+                        maxLines = 1,
+                        modifier = Modifier.clipToBounds()
                     )
                 }
             }
-            Spacer(Modifier.height(24.dp))
         }
     }
 }
@@ -360,13 +446,23 @@ fun PhotoPickerScreen(
     var searchQuery by remember { mutableStateOf("") }
     // 媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片），与排序独立、先筛后排
     var mediaFilter by remember { mutableStateOf(MediaFilter.ALL) }
-    // 右上角输出格式选择弹窗
-    var showFormatSheet by remember { mutableStateOf(false) }
+    // 右上角「更多」菜单：moreMenuOpen=菜单显隐；morePage=0 全部收起（4 个父项
+    // 平铺），1..4=对应分组原地展开（其后的父项让位，子面板下方直接收边）
+    var moreMenuOpen by remember { mutableStateOf(false) }
+    var morePage by remember { mutableStateOf(0) }
+    // 搜索：点按钮后原地横向展开为玻璃搜索框
+    var searchOpen by remember { mutableStateOf(false) }
 
     // 进入/离开相册：进入 diff+续扫，离开取消（保留进度）
     DisposableEffect(bucketId) {
         if (bucketId != null) scanner.enter(bucketId, scannerScope)
         onDispose { if (bucketId != null) scanner.leave(bucketId) }
+    }
+
+    // 切到「拆解」时动态照片不可选：把已选的动态照片自动移除，
+    // 避免出现「已选中但点不动、也无法取消」的幽灵选择
+    LaunchedEffect(outputFormat) {
+        if (outputFormat == "extract") selected.removeAll { it.kind == MediaKind.LIVE }
     }
 
     val state = remember(bucketId) { if (bucketId != null) scanner.stateOf(bucketId) else null }
@@ -402,30 +498,46 @@ fun PhotoPickerScreen(
     fun isSelected(item: MediaItem): Boolean =
         selected.any { it.id == item.id && it.isVideo == item.isVideo }
 
-    // 确认导入：至少 1 项才可确认
-    val canConfirm = selected.isNotEmpty()
-    // 右下角悬浮导入按钮文案（已选数量随按钮展示，省去额外计数栏）
-    val fabLabel = if (selected.isEmpty()) stringResource(R.string.screen_import)
-                   else stringResource(R.string.screen_import_count, selected.size)
+    /**
+     * 项是否可选：拆解模式下**动态照片不可选**（用户需求）。
+     * 拆解是「把已有动态照片拆成图片+视频」，与「选动态照片来转换」互斥；
+     * 同时该模式下图片/视频用于合成，动态照片没有意义。
+     */
+    val isSelectable: (MediaItem) -> Boolean = { item ->
+        !(outputFormat == "extract" && item.kind == MediaKind.LIVE)
+    }
+
+    // 选择统计（确认按钮内显示：动态照片 / 图片 / 视频 各自张数）
+    val liveCount = selected.count { it.kind == MediaKind.LIVE }
+    val imageCount = selected.count { it.kind == MediaKind.IMAGE }
+    val videoCount = selected.count { it.kind == MediaKind.VIDEO }
+    // 确认导入：至少 1 项，且图片与视频数量必须一致
+    // （合成按选择顺序两两配对，数量不等就无法全部配对，禁止确认）
+    val canConfirm = selected.isNotEmpty() && imageCount == videoCount
     val doConfirm: () -> Unit = { onConfirm(selected.toList()) }
 
     // 单项选择切换（追加到末尾，序号递增）；选择超过 3 秒的视频时提示兼容性风险
     val toggleItem: (MediaItem) -> Unit = { item ->
-        haptic.click()
-        val idx = selected.indexOfFirst { it.id == item.id && it.isVideo == item.isVideo }
-        if (idx >= 0) {
-            selected.removeAt(idx)
+        if (!isSelectable(item)) {
+            // 不可选（拆解模式下的动态照片）：仅给出触感反馈，不改变选择
+            haptic.click()
         } else {
-            selected.add(item)
-            if (item.isVideo && item.durationMs > videoWarnMs &&
-                !AppSettings.isReminderSuppressed(ReminderKey.COMPOSE_VIDEO_OVER_3S)) {
-                showOver3sWarning = true
+            haptic.click()
+            val idx = selected.indexOfFirst { it.id == item.id && it.isVideo == item.isVideo }
+            if (idx >= 0) {
+                selected.removeAt(idx)
+            } else {
+                selected.add(item)
+                if (item.isVideo && item.durationMs > videoWarnMs &&
+                    !AppSettings.isReminderSuppressed(ReminderKey.COMPOSE_VIDEO_OVER_3S)) {
+                    showOver3sWarning = true
+                }
             }
         }
     }
     // 成组选择切换（日期栏/全选）：组内可选项全选 → 全部取消；否则按传入顺序补齐未选
     val toggleGroup: (List<MediaItem>) -> Unit = { group ->
-        val choosable = group
+        val choosable = group.filter { isSelectable(it) }
         val allIn = choosable.isNotEmpty() && choosable.all { isSelected(it) }
         haptic.click()
         if (allIn) {
@@ -466,10 +578,35 @@ fun PhotoPickerScreen(
         animationSpec = spring(dampingRatio = Spring.DampingRatioLowBouncy, stiffness = Spring.StiffnessMediumLow),
         label = "albumRailWidth"
     )
+    // 顶栏覆盖层：网格是滚动内容、也是玻璃采样层；顶栏浮在其上叠纯色渐变
+    val glassNow = LocalGlassEnabled.current
+    val pickerBackdrop = rememberLayerBackdrop()
+    // 发布给应用级弹窗（渲染在本页之外）采样「根 + 本页」：同窗口坐标对正、
+    // 模糊实时（用户反馈 #5/#6），复用本录制零开销
+    PublishPageBackdrop(if (glassNow) pickerBackdrop else null)
+    // 顶栏覆盖层实测高度（px）：onSizeChanged 布局后回填，首帧为 0（网格首屏内容暂不顶到顶栏下方，扫描完成前通常为空态，闪烁可忽略）
+    var chromeHeightPx by remember { mutableIntStateOf(0) }
+    // 收起态顶栏高度：模糊带只按收起态铺，相册展开时封面长高不把模糊区一起拉长（v4 回归修复）
+    var collapsedChromePx by remember { mutableIntStateOf(0) }
+    val chromeHeightDp = with(LocalDensity.current) { chromeHeightPx.toDp() }
+    val collapsedChromeDp = with(LocalDensity.current) { collapsedChromePx.toDp() }
+    // 顶栏玻璃带高度 = 顶栏内容实测高度（含状态栏），**不再向下伸渐隐尾巴**：
+    // 日期分组 stickyHeader 钉在 contentTopPadding（= 内容高 + 4dp）处，
+    // 尾巴伸进该位置会把日期栏盖在玻璃块里——看不见也点不到
+    // （用户反馈「日期栏被相册玻璃块遮挡无法点击」）。玻璃带下沿与内容底边
+    // 齐平后日期栏完整落在玻璃带下方；滚动内容从玻璃下沿直接穿过（硬界设计）。
+    val veilHeight = if (chromeHeightPx > collapsedChromePx) chromeHeightDp else collapsedChromeDp
+    // 输出格式菜单与返回按钮都是玻璃 chrome：整屏 Box 承载菜单浮层
+    // （库在独立 Window 内采样坐标错误，弹窗/菜单必须同窗口 Compose overlay）
+    Box(Modifier.fillMaxSize()) {
     Row(
         Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .then(
+                // 玻璃启用时容器背景透明，才能看到 GlassRoot 铺的采样源渐变
+                if (LocalGlassEnabled.current) Modifier
+                else Modifier.background(MaterialTheme.colorScheme.background)
+            )
     ) {
         // ── 横屏：最左侧纵向铺开的相册栏（展开方向由左到右）──
         if (isLandscape) {
@@ -477,31 +614,49 @@ fun PhotoPickerScreen(
                 Modifier
                     .width(railWidth)
                     .fillMaxHeight()
-                    .background(MaterialTheme.colorScheme.surfaceContainer)
+                    .then(
+                        if (LocalGlassEnabled.current) Modifier
+                        else Modifier.background(MaterialTheme.colorScheme.surfaceContainer)
+                    )
                     .statusBarsPadding()
+                    // 横屏：列表最后一项不能被导航栏遮住
+                    .navigationBarsPadding()
             ) {
-                // 标题行
+                // 行 1：返回 + 「更多」。标题移到独立一行——收起态栏宽仅 148dp，
+                // 标题与两颗按钮同行时被 weight(1f) 挤到只剩几十 dp，
+                // 「选择动态照片」被截断成「选择动态…」（用户反馈「标题有时会被截断」）。
+                // 「更多」保持在行内右端：其左缘 = railWidth - 42dp，
+                // 与下方菜单浮层的形变起点（start = railWidth - 42dp）严格对齐。
                 Row(
                     Modifier.fillMaxWidth().padding(horizontal = 2.dp, vertical = 2.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    IconButton(onClick = { haptic.click(); onBack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.screen_back),
-                            tint = MaterialTheme.colorScheme.onSurface)
+                    BackButton(onBack)
+                    Spacer(Modifier.weight(1f))
+                    // 横屏：右上角「更多」与竖屏同一套菜单
+                    GlassIconButton(
+                        onClick = { haptic.click(); morePage = 0; moreMenuOpen = true },
+                        contentDescription = stringResource(R.string.screen_more)
+                    ) {
+                        Icon(
+                            Icons.Default.MoreVert,
+                            contentDescription = null,
+                            modifier = Modifier.size(20.dp),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
                     }
-                    Text(stringResource(R.string.screen_picker_title_select),
-                        style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.weight(1f))
-                    // 右上角输出格式：决定本次导入的输出格式
-                    OutputFormatChip(
-                        outputFormat = outputFormat,
-                        compact = true,
-                        onClick = { haptic.click(); showFormatSheet = true }
-                    )
                 }
+                // 行 2：标题独立成行（独占整栏宽度，不再与按钮争抢）
+                Text(
+                    stringResource(R.string.screen_picker_title_select),
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 6.dp, vertical = 2.dp)
+                )
                 // 相册数 + 展开/收起封面（箭头未展开朝右、展开后朝左）
                 Row(
                     Modifier.fillMaxWidth().padding(start = 10.dp, end = 2.dp),
@@ -513,15 +668,35 @@ fun PhotoPickerScreen(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.weight(1f)
                     )
-                    IconButton(onClick = { haptic.click(); albumsExpanded = !albumsExpanded }) {
+                    // 横屏：搜索（与竖屏一致，展开为整行搜索框，浮在网格顶部）
+                    GlassIconButton(
+                        onClick = { haptic.click(); searchOpen = true },
+                        contentDescription = stringResource(R.string.screen_search)
+                    ) {
+                        Icon(
+                            Icons.Default.Search,
+                            contentDescription = null,
+                            modifier = Modifier.size(20.dp),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                    // 搜索与展开按钮之间留 6dp：此前两颗圆钮紧贴在一起，
+                    // 误触率高且观感拥挤（用户反馈「离得太近」）
+                    Spacer(Modifier.width(6.dp))
+                    // 展开/收起封面（玻璃圆钮，与顶栏按钮同款）
+                    GlassIconButton(
+                        onClick = { haptic.click(); albumsExpanded = !albumsExpanded },
+                        contentDescription = if (albumsExpanded) stringResource(R.string.screen_album_collapse_cover) else stringResource(R.string.screen_album_expand_cover)
+                    ) {
                         val rotation by animateFloatAsState(
                             targetValue = if (albumsExpanded) 180f else 0f,
                             animationSpec = tween(250), label = "railChevron"
                         )
                         Icon(
                             Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                            contentDescription = if (albumsExpanded) stringResource(R.string.screen_album_collapse_cover) else stringResource(R.string.screen_album_expand_cover),
-                            modifier = Modifier.rotate(rotation)
+                            contentDescription = null,
+                            modifier = Modifier.rotate(rotation).size(20.dp),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                 }
@@ -553,38 +728,298 @@ fun PhotoPickerScreen(
         }
 
         // ── 内容区（竖屏为整屏）──
-        Column(
+        Box(
             Modifier
                 .weight(1f)
                 .fillMaxHeight()
                 .then(if (isLandscape) Modifier.statusBarsPadding() else Modifier)
         ) {
-            if (!isLandscape) {
-                // ── 竖屏顶栏：标题行 + 相册 chip 横滑条 + 进度条（surfaceContainer 容器）──
-                Column(
+            // ── 缩略图网格（3 列；相册切换横向滚动动画，方向反转项 4）──
+            // 网格占满内容区（从屏幕顶开始），向上滚动时从顶栏下方穿过；它同时是
+            // 玻璃采样层：顶栏的玻璃件与右下角导入按钮都采样真实缩略图。
+            // 必须用**专用** backdrop，与根节点的渐变采样层分开，否则两处同时向
+            // 同一 GraphicsLayer 录制会互相覆盖。
+            // clipToBounds 只兜网格与横屏搜索浮层（相册切换的横向滑动画需要裁剪）；
+            // 导入按钮是形变玻璃件，已移出本层（见下方）。
+            Box(Modifier.fillMaxSize().clipToBounds()) {
+                Box(
                     Modifier
-                        .fillMaxWidth()
-                        .background(MaterialTheme.colorScheme.surfaceContainer)
-                        .statusBarsPadding()
+                        .fillMaxSize()
+                        .then(if (glassNow) Modifier.layerBackdrop(pickerBackdrop) else Modifier)
                 ) {
-                // ── 竖屏：标题行 + 相册栏 + 进度条 ──
-                Row(
-                    Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 2.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    IconButton(onClick = { haptic.click(); onBack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.screen_back),
-                            tint = MaterialTheme.colorScheme.onSurface)
+                    // RTL：相册切换的横向滚动方向必须跟随布局方向（阿语/希伯来语下整体反号）
+                    val rtlDir = if (
+                        androidx.compose.ui.platform.LocalLayoutDirection.current ==
+                        androidx.compose.ui.unit.LayoutDirection.Rtl
+                    ) -1 else 1
+                    AnimatedContent(
+                        targetState = bucketId,
+                        transitionSpec = {
+                            if (isLandscape) {
+                                // 横屏：相册切换改为上下切换（新内容自下/上进入）
+                                if (slideDir >= 0) {
+                                    (slideInVertically(tween(320, easing = FancyEasing)) { it } +
+                                            fadeIn(tween(240, easing = AlphaEasing)))
+                                        .togetherWith(
+                                            slideOutVertically(tween(320, easing = FancyEasing)) { -it } +
+                                                    fadeOut(tween(240, easing = AlphaEasing)))
+                                } else {
+                                    (slideInVertically(tween(320, easing = FancyEasing)) { -it } +
+                                            fadeIn(tween(240, easing = AlphaEasing)))
+                                        .togetherWith(
+                                            slideOutVertically(tween(320, easing = FancyEasing)) { it } +
+                                                    fadeOut(tween(240, easing = AlphaEasing)))
+                                }
+                            } else if (slideDir >= 0) {
+                                // 切到右侧相册：新内容自右侧进入、旧内容向左滑出（画面向左滚动）；RTL 下反号
+                                (slideInHorizontally(tween(320, easing = FancyEasing)) { it * rtlDir } +
+                                        fadeIn(tween(240, easing = AlphaEasing)))
+                                    .togetherWith(
+                                        slideOutHorizontally(tween(320, easing = FancyEasing)) { -it * rtlDir } +
+                                                fadeOut(tween(240, easing = AlphaEasing)))
+                            } else {
+                                (slideInHorizontally(tween(320, easing = FancyEasing)) { -it * rtlDir } +
+                                        fadeIn(tween(240, easing = AlphaEasing)))
+                                    .togetherWith(
+                                        slideOutHorizontally(tween(320, easing = FancyEasing)) { it * rtlDir } +
+                                                fadeOut(tween(240, easing = AlphaEasing)))
+                            }
+                        },
+                        label = "albumSwitch"
+                    ) { targetBucket ->
+                        AlbumGridPage(
+                            bucketId = targetBucket,
+                            scanner = scanner,
+                            isSelected = { isSelected(it) },
+                            selIndexOf = { selIndexOf(it) },
+                            selectable = isSelectable,
+                            onToggle = toggleItem,
+                            onToggleGroup = toggleGroup,
+                            mediaFilter = mediaFilter,
+                            sortField = sortField,
+                            sortAscending = sortAscending,
+                            searchQuery = searchQuery,
+                            contentTopPadding = chromeHeightDp + 4.dp
+                        )
                     }
-                    Text(stringResource(R.string.screen_picker_title_select),
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.weight(1f))
-                    // 右上角输出格式：决定本次导入的输出格式
-                    OutputFormatChip(
-                        outputFormat = outputFormat,
-                        onClick = { haptic.click(); showFormatSheet = true }
+
+                    // ── 底部纯色渐变：从屏幕最底端向中间逐渐减淡，与顶部对称 ──
+                    // 同一套黑/白规则（深色模式黑、浅色模式白），兜住右下角导入按钮，
+                    // 让按钮在任意照片背景上都可读。
+                    // **必须在采样层之内**：导入按钮的自适应色采样的是「玻璃折射到的背景」，
+                    // 渐罩画在采样层之外时按钮采样不到提亮后的底色，字体色会误判
+                    // （用户反馈「导入按钮自动改变字体颜色不正常」）；同时渐罩本身也是
+                    // 「下层内容」的一部分，玻璃模糊理应包含它。
+                    if (glassNow) {
+                        // 渐罩颜色/浓度跟随主题 500ms 渐变：瞬时翻转会让切换窗口里
+                        // 「已渐变的采样源」被「未渐变的渐罩」打了一个黑白补丁
+                        val scrim = animatedThemeColor(Color.Black, Color.White)
+                        val scrimAlpha by animateFloatAsState(
+                            targetValue = if (LocalDarkTheme.current) 0.72f else 0.85f,
+                            animationSpec = tween(durationMillis = 500),
+                            label = "pickerScrimAlpha"
+                        )
+                        Box(
+                            Modifier
+                                .align(Alignment.BottomCenter)
+                                .fillMaxWidth()
+                                .height(132.dp)
+                                .background(
+                                    Brush.verticalGradient(
+                                        listOf(
+                                            scrim.copy(alpha = 0f),
+                                            scrim.copy(alpha = scrimAlpha)
+                                        )
+                                    )
+                                )
+                        )
+                    }
+                }
+
+                // ── 横屏搜索：横屏没有顶栏，搜索展开后浮在网格顶部（竖屏由顶栏承载）──
+                if (isLandscape) {
+                    CompositionLocalProvider(
+                        LocalGlassBackdrop provides (if (glassNow) pickerBackdrop else LocalGlassBackdrop.current)
+                    ) {
+                        LandscapeSearchOverlay(
+                            visible = searchOpen,
+                            query = searchQuery,
+                            onQuery = { searchQuery = it },
+                            onClose = { searchOpen = false; searchQuery = "" },
+                            modifier = Modifier.align(Alignment.TopCenter)
+                        )
+                    }
+                }
+            }
+
+            // ── 导入按钮：永远固定在右下角 ──
+            // **必须在裁剪层之外**：按钮带拖拽形变 + 按压缩放（physics.transform），
+            // 此前的 clipToBounds 会把形变后的玻璃/文字切掉一截
+            // （用户反馈「拖拽或点击时内容被裁切」）；采样仍走 pickerBackdrop
+            // （上面的真实照片），移出裁剪层不影响采样。
+            CompositionLocalProvider(
+                LocalGlassBackdrop provides (if (glassNow) pickerBackdrop else LocalGlassBackdrop.current)
+            ) {
+                ConfirmImportButton(
+                    canConfirm = canConfirm,
+                    liveCount = liveCount,
+                    imageCount = imageCount,
+                    videoCount = videoCount,
+                    feedback = importFb,
+                    onClick = doConfirm,
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .navigationBarsPadding()
+                        .padding(16.dp)
+                )
+            }
+
+            // ── 顶栏覆盖层：标题 / 相册条 / 搜索 / 工具行浮在滚动内容之上 ──
+            // 背后是自屏幕顶端向中间减淡的纯色渐变（深色模式黑 / 浅色模式白），
+            // 用于区分常驻顶栏与向下滚动的照片列表（替代此前的渐进高斯模糊）。
+            // 顶栏覆盖层内的玻璃件（模糊 / 圆钮 / 搜索框）统一采样网格层
+            CompositionLocalProvider(
+                LocalGlassBackdrop provides (if (glassNow) pickerBackdrop else LocalGlassBackdrop.current)
+            ) {
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.TopCenter)
+            ) {
+                Column(
+                Modifier
+                    .fillMaxWidth()
+                    .then(
+                        if (glassNow) Modifier
+                        else Modifier.background(MaterialTheme.colorScheme.surfaceContainer)
                     )
+            ) {
+            if (!isLandscape) {
+                // ── 竖屏顶栏模糊区：标题行 + 相册栏 + 进度条（模糊/薄纱仅作用于此，搜索与工具行不模糊）──
+                // 模糊覆盖到状态栏（不 pad 状态栏），内容自身再向下让出状态栏高度
+                // 玻璃带高度 = 收起态顶栏内容实测高（见 veilHeight）：相册展开只会让
+                // chip 浮层向下长，玻璃带不跟着变长；下沿与内容底边齐平，
+                // 日期分组 stickyHeader 钉在其下方 4dp 处，不被玻璃遮挡
+                Box(Modifier.fillMaxWidth()) {
+                    val dark = LocalDarkTheme.current
+                    // 顶栏玻璃的内容自适应色：采样玻璃折射到的照片亮度，标题/控件自动切黑白
+                    val topAdaptive = rememberAdaptiveContentColor(
+                        initialColor = if (dark) Color.White else Color.Black,
+                        enabled = glassNow
+                    )
+                    if (glassNow) {
+                        // 液态玻璃顶栏：采样网格层（真实照片）做模糊 + 折射，
+                        // 标题/相册条/按钮全部画在玻璃表面之上——与演示版一致，
+                        // 不再用「纯色渐变 + 浮生文字」（用户反馈字体没有玻璃一体感）。
+                        // tintAlpha 跟随主题 500ms 渐变（与 liquidGlass 内部的深色乘子
+                        // 同步），避免切换深浅色时顶栏出现灰蒙蒙的中间态。
+                        val topTintAlpha by animateFloatAsState(
+                            targetValue = if (dark) 0.36f else 0.24f,
+                            animationSpec = tween(durationMillis = 500),
+                            label = "pickerTopTintAlpha"
+                        )
+                        Box(
+                            Modifier
+                                .fillMaxWidth()
+                                .height(veilHeight)
+                                .liquidGlass(
+                                    shape = RectangleShape,
+                                    tintAlpha = topTintAlpha,
+                                    tintColor = MaterialTheme.colorScheme.surface,
+                                    // 全宽条：禁透镜与外阴影（边缘「水滴边」在全宽条上怪异），
+                                    // 界限干脆，滚动内容从玻璃下沿直接穿过
+                                    lensEnabled = false,
+                                    highlight = null,
+                                    shadow = Shadow(radius = 0.dp, alpha = 0f),
+                                    onDrawBackdrop = topAdaptive.recordBackdrop
+                                )
+                        )
+                    }
+                    CompositionLocalProvider(
+                        LocalContentColor provides
+                            if (glassNow) topAdaptive.color
+                            else MaterialTheme.colorScheme.onSurface
+                    ) {
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .statusBarsPadding()
+                            // 只测量「内容」高度（标题 + 相册栏 + 进度条），不含玻璃块。
+                            // onSizeChanged 必须挂在内容列上：玻璃块高度由这里测出的
+                            // collapsedChromePx 反推，互相抬高会导致布局无限增长。
+                            .onSizeChanged {
+                                chromeHeightPx = it.height
+                                if (!albumsExpanded) collapsedChromePx = it.height
+                            }
+                    ) {
+                // 标题行：收起态 = 返回 + 标题 + 搜索 + 更多；展开态整行让位给搜索框，
+                // 其余组件被推出屏幕外、收起时再拉回（用户需求：只保留上方这一个搜索）。
+                AnimatedContent(
+                    targetState = searchOpen,
+                    transitionSpec = {
+                        // 弹簧（而非 tween）：搜索展开/收起是位移+形变，需要过冲回弹的物理手感
+                        val spec = spring<androidx.compose.ui.unit.IntOffset>(
+                            dampingRatio = 0.78f,
+                            stiffness = 520f
+                        )
+                        if (targetState) {
+                            (slideInHorizontally(spec) { it } + fadeIn(tween(140)))
+                                .togetherWith(slideOutHorizontally(spec) { -it / 2 } + fadeOut(tween(100)))
+                        } else {
+                            (slideInHorizontally(spec) { -it / 2 } + fadeIn(tween(140)))
+                                .togetherWith(slideOutHorizontally(spec) { it } + fadeOut(tween(100)))
+                        }
+                    },
+                    label = "titleSearch"
+                ) { searching ->
+                    if (searching) {
+                        SearchInputRow(
+                            query = searchQuery,
+                            onQuery = { searchQuery = it },
+                            onClose = { searchOpen = false; searchQuery = "" }
+                        )
+                    } else {
+                        Row(
+                            Modifier.fillMaxWidth().padding(start = 4.dp, end = 12.dp, top = 2.dp, bottom = 2.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            BackButton(onBack)
+                            Text(stringResource(R.string.screen_picker_title_select),
+                                style = MaterialTheme.typography.titleMedium,
+                                // 玻璃模式下跟随顶栏玻璃的自适应色（按照片亮度切黑白），
+                                // MD3 模式用主题 onSurface
+                                color = LocalContentColor.current,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                modifier = Modifier.weight(1f).padding(start = 8.dp))
+                            // 搜索（玻璃圆钮，点击整行让位展开为搜索框）
+                            GlassIconButton(
+                                onClick = { haptic.click(); searchOpen = true },
+                                contentDescription = stringResource(R.string.screen_search),
+                                // 内容自适应着色：浮在照片上，图标按背景亮暗自动切黑/白
+                                adaptiveContent = true
+                            ) {
+                                Icon(
+                                    Icons.Default.Search,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                            }
+                            Spacer(Modifier.width(6.dp))
+                            // 右上角「更多」：输出格式 / 排序字段 / 排序顺序 / 显示类别（二级菜单）
+                            GlassIconButton(
+                                onClick = { haptic.click(); morePage = 0; moreMenuOpen = true },
+                                contentDescription = stringResource(R.string.screen_more),
+                                adaptiveContent = true
+                            ) {
+                                Icon(
+                                    Icons.Default.MoreVert,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                            }
+                        }
+                    }
                 }
 
                 // 相册 chip 横滑条 + 右端展开按钮
@@ -602,15 +1037,18 @@ fun PhotoPickerScreen(
                                     album = album,
                                     selected = album.bucketId == bucketId,
                                     expanded = albumsExpanded,
-                                    onClick = { switchAlbum(album.bucketId) }
+                                    onClick = { switchAlbum(album.bucketId) },
+                                    // 顶栏玻璃的自适应黑白（玻璃模式下；MD3 下为 onSurface，不会被用）
+                                    contentColor = LocalContentColor.current
                                 )
                             }
                         }
-                        IconButton(
+                        // 展开/收起封面（玻璃圆钮）
+                        GlassIconButton(
                             onClick = { haptic.click(); albumsExpanded = !albumsExpanded },
-                            colors = IconButtonDefaults.iconButtonColors(
-                                contentColor = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
+                            modifier = Modifier.padding(end = 4.dp),
+                            contentDescription = if (albumsExpanded) stringResource(R.string.screen_album_collapse_cover) else stringResource(R.string.screen_album_expand_cover),
+                            adaptiveContent = true
                         ) {
                             val rotation by animateFloatAsState(
                                 targetValue = if (albumsExpanded) 180f else 0f,
@@ -618,8 +1056,8 @@ fun PhotoPickerScreen(
                             )
                             Icon(
                                 Icons.Filled.KeyboardArrowDown,
-                                contentDescription = if (albumsExpanded) stringResource(R.string.screen_album_collapse_cover) else stringResource(R.string.screen_album_expand_cover),
-                                modifier = Modifier.rotate(rotation)
+                                contentDescription = null,
+                                modifier = Modifier.rotate(rotation).size(20.dp)
                             )
                         }
                     }
@@ -631,150 +1069,176 @@ fun PhotoPickerScreen(
                         Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp)
                     )
                 }
+                    } // 顶栏模糊区 Column
+                } // 顶栏模糊区 Box
+                // 玻璃模式下顶栏由模糊衰减自然收边，不再画硬分隔线
+                if (!glassNow) {
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
+                }
             }
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
+                } // 顶栏 Column
+                    } // CompositionLocalProvider（顶栏内容自适应黑白）
+            } // 顶栏覆盖层 Box
+            } // CompositionLocalProvider
         }
+    }
 
-        // ── 搜索 + 排序工具行 ──
-        SortSearchBar(
-            sortField = sortField,
-            sortAscending = sortAscending,
-            searchQuery = searchQuery,
-            onSortField = { sortField = it },
-            onToggleAscending = { sortAscending = !sortAscending },
-            onSearchQuery = { searchQuery = it }
+    // 合成模式提示弹窗（统一「不再提示」机制）：渲染在**整屏根 Box**内、
+    // 自带网格采样作用域——弹窗与页面同窗口，采样坐标天然对正、模糊实时
+    // （用户反馈 #5/#6）；横竖屏都覆盖全屏；visible 模式带退场动画
+    CompositionLocalProvider(
+        LocalGlassBackdrop provides (if (glassNow) pickerBackdrop else LocalGlassBackdrop.current)
+    ) {
+        ReminderInfoDialog(
+            key = ReminderKey.COMPOSE_VIDEO_OVER_3S,
+            onDismiss = { showOver3sWarning = false },
+            visible = showOver3sWarning
         )
+    }
 
-        // ── 媒体类型筛选行（全部 / 仅动态照片 / 仅视频 / 仅图片），与排序独立 ──
-        MediaFilterRow(
-            filter = mediaFilter,
-            onFilter = { mediaFilter = it }
-        )
-
-        // ── 工具行：张数（左）+ 全选（右）──
-        Row(
-            Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // 相册项目数量
-            Text(
-                if (running) stringResource(R.string.screen_scanning_progress, progress.first, total)
-                else pluralStringResource(
-                    R.plurals.screen_photo_count, results?.size ?: 0, results?.size ?: 0
-                ),
-                fontSize = 12.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Spacer(Modifier.weight(1f))
-            // 全选（圆形现代样式，项 2/3）：按网格顺序有序标记
-            val allSel = n > 0 && displayOrder.all { g -> selected.any { it.id == g.id } }
-            val someSel = displayOrder.any { g -> selected.any { it.id == g.id } }
-            Text(stringResource(R.string.screen_select_all), fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Spacer(Modifier.size(4.dp))
-            CircleTriCheckbox(
-                state = when {
-                    allSel -> ToggleableState.On
-                    someSel -> ToggleableState.Indeterminate
-                    else -> ToggleableState.Off
-                },
-                onClick = { if (n > 0) toggleGroup(displayOrder) }
-            )
+    // 右上角「更多」菜单（同一 Composition 树内的玻璃浮层）：
+    // 一级 = 输出格式 / 排序字段 / 排序顺序 / 显示类别，各入口进入二级子菜单；
+    // 二级顶部有「‹ 标题」行返回一级。选择即应用并收起整个菜单。
+    val sortFieldLabel = stringResource(
+        when (sortField) {
+            AlbumSortField.DATE -> R.string.screen_sort_date
+            AlbumSortField.SIZE -> R.string.screen_sort_size
+            AlbumSortField.NAME -> R.string.screen_sort_name
         }
-
-        // ── 缩略图网格（3 列；相册切换横向滚动动画，方向反转项 4）──
-        Box(Modifier.weight(1f).fillMaxWidth().clipToBounds()) {
-            // RTL：相册切换的横向滚动方向必须跟随布局方向（阿语/希伯来语下整体反号）
-            val rtlDir = if (
-                androidx.compose.ui.platform.LocalLayoutDirection.current ==
-                androidx.compose.ui.unit.LayoutDirection.Rtl
-            ) -1 else 1
-            AnimatedContent(
-                targetState = bucketId,
-                transitionSpec = {
-                    if (isLandscape) {
-                        // 横屏：相册切换改为上下切换（新内容自下/上进入）
-                        if (slideDir >= 0) {
-                            (slideInVertically(tween(320, easing = FancyEasing)) { it } +
-                                    fadeIn(tween(240, easing = AlphaEasing)))
-                                .togetherWith(
-                                    slideOutVertically(tween(320, easing = FancyEasing)) { -it } +
-                                            fadeOut(tween(240, easing = AlphaEasing)))
-                        } else {
-                            (slideInVertically(tween(320, easing = FancyEasing)) { -it } +
-                                    fadeIn(tween(240, easing = AlphaEasing)))
-                                .togetherWith(
-                                    slideOutVertically(tween(320, easing = FancyEasing)) { it } +
-                                            fadeOut(tween(240, easing = AlphaEasing)))
+    )
+    val sortOrderLabel = stringResource(
+        if (sortAscending) R.string.screen_sort_asc else R.string.screen_sort_desc
+    )
+    val filterLabel = stringResource(mediaFilterLabelRes(mediaFilter))
+    val currentFormatLabel = formatOptions
+        .firstOrNull { it.key == outputFormat }
+        ?.let { stringResource(it.nameRes) }
+        ?: outputFormat
+    // 菜单是玻璃件：采样网格层（真实照片）而不是根渐变，展开形变时折射的才是背后内容。
+    // 二级子菜单形变起点：各父项的根坐标矩形（onAnchor 持续回填，点击时取最新值）
+    var formatAnchor by remember { mutableStateOf(Rect.Zero) }
+    var sortFieldAnchor by remember { mutableStateOf(Rect.Zero) }
+    var sortOrderAnchor by remember { mutableStateOf(Rect.Zero) }
+    var filterAnchor by remember { mutableStateOf(Rect.Zero) }
+    CompositionLocalProvider(
+        LocalGlassBackdrop provides (if (glassNow) pickerBackdrop else LocalGlassBackdrop.current)
+    ) {
+    GlassMenuOverlay(
+        visible = moreMenuOpen,
+        onDismiss = { moreMenuOpen = false; morePage = 0 },
+        alignment = if (isLandscape) Alignment.TopStart else Alignment.TopEnd,
+        modifier = Modifier
+            .statusBarsPadding()
+            .padding(
+                // 竖屏：菜单右上角直接对齐「更多」按钮（按钮右上角 = 距右 12dp、顶 2dp），
+                // 入场形变从该角的 40dp 圆（按钮轮廓）溶解长为菜单外轮廓。
+                // 横屏：以左侧栏内「更多」按钮左上角为形变起点（按钮左缘 = railWidth - 42dp）。
+                top = if (isLandscape) 44.dp else 2.dp,
+                start = if (isLandscape) (railWidth - 42.dp).coerceAtLeast(8.dp) else 0.dp,
+                end = if (isLandscape) 0.dp else 12.dp,
+                bottom = 8.dp
+            )
+            .widthIn(min = 196.dp, max = 252.dp),
+        // 二级子菜单（用户参考图：日区相册「更多」菜单两态）：
+        // 一级整体缩小 + 压暗，二级以玻璃面板**叠加**在一级之上，从所点击
+        // 父项的按钮框平滑展开到目标尺寸后再渲染内容；选择选项后只置
+        // morePage = 0——仅收起二级、保留一级菜单（用户明确要求）。
+        // morePage：0 = 全部收起；1..4 = 对应分组展开。
+        submenuVisible = morePage != 0,
+        submenuAnchor = when (morePage) {
+            1 -> formatAnchor
+            2 -> sortFieldAnchor
+            3 -> sortOrderAnchor
+            4 -> filterAnchor
+            else -> null
+        },
+        onSubmenuDismiss = { morePage = 0 },
+        submenuContent = {
+            when (morePage) {
+                // ① 输出格式
+                1 -> formatOptions.forEach { opt ->
+                    GlassMenuRow(
+                        label = stringResource(opt.nameRes),
+                        selected = opt.key == outputFormat,
+                        onClick = {
+                            onOutputFormatChange(opt.key)
+                            morePage = 0
                         }
-                    } else if (slideDir >= 0) {
-                        // 切到右侧相册：新内容自右侧进入、旧内容向左滑出（画面向左滚动）；RTL 下反号
-                        (slideInHorizontally(tween(320, easing = FancyEasing)) { it * rtlDir } +
-                                fadeIn(tween(240, easing = AlphaEasing)))
-                            .togetherWith(
-                                slideOutHorizontally(tween(320, easing = FancyEasing)) { -it * rtlDir } +
-                                        fadeOut(tween(240, easing = AlphaEasing)))
-                    } else {
-                        (slideInHorizontally(tween(320, easing = FancyEasing)) { -it * rtlDir } +
-                                fadeIn(tween(240, easing = AlphaEasing)))
-                            .togetherWith(
-                                slideOutHorizontally(tween(320, easing = FancyEasing)) { it * rtlDir } +
-                                        fadeOut(tween(240, easing = AlphaEasing)))
+                    )
+                }
+                // ② 排序字段
+                2 -> AlbumSortField.values().forEach { field ->
+                    GlassMenuRow(
+                        label = stringResource(
+                            when (field) {
+                                AlbumSortField.DATE -> R.string.screen_sort_date
+                                AlbumSortField.SIZE -> R.string.screen_sort_size
+                                AlbumSortField.NAME -> R.string.screen_sort_name
+                            }
+                        ),
+                        selected = field == sortField,
+                        onClick = { sortField = field; morePage = 0 }
+                    )
+                }
+                // ③ 排序顺序
+                3 -> listOf(true to R.string.screen_sort_asc, false to R.string.screen_sort_desc)
+                    .forEach { (asc, res) ->
+                        GlassMenuRow(
+                            label = stringResource(res),
+                            selected = asc == sortAscending,
+                            onClick = { sortAscending = asc; morePage = 0 }
+                        )
                     }
-                },
-                label = "albumSwitch"
-            ) { targetBucket ->
-                AlbumGridPage(
-                    bucketId = targetBucket,
-                    scanner = scanner,
-                    isSelected = { isSelected(it) },
-                    selIndexOf = { selIndexOf(it) },
-                    onToggle = toggleItem,
-                    onToggleGroup = toggleGroup,
-                    mediaFilter = mediaFilter,
-                    sortField = sortField,
-                    sortAscending = sortAscending,
-                    searchQuery = searchQuery
-                )
+                // ④ 显示类别
+                4 -> MediaFilter.values().forEach { filter ->
+                    GlassMenuRow(
+                        label = stringResource(mediaFilterLabelRes(filter)),
+                        selected = filter == mediaFilter,
+                        onClick = { mediaFilter = filter; morePage = 0 }
+                    )
+                }
+                else -> {}
             }
-
-            // ── 导入按钮：永远固定在右下角（无背景板，仅阴影）──
-            Button(
-                onClick = doConfirm,
-                enabled = canConfirm,
-                interactionSource = importFb.interactionSource,
-                shape = RoundedCornerShape(importFb.corner),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 8.dp,
-                    pressedElevation = 3.dp,
-                    disabledElevation = 0.dp
-                ),
-                contentPadding = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .navigationBarsPadding()
-                    .padding(16.dp)
-                    .then(importFb.scaleModifier)
-            ) { Text(fabLabel) }
         }
-
-        // 合成模式提示弹窗（统一「不再提示」机制）
-        if (showOver3sWarning) {
-            ReminderInfoDialog(
-                key = ReminderKey.COMPOSE_VIDEO_OVER_3S,
-                onDismiss = { showOver3sWarning = false }
-            )
-        }
-        }
-    }
-
-    // 右上角输出格式选择弹窗（本次导入的输出格式，含拆解）
-    if (showFormatSheet) {
-        PickOutputFormatSheet(
-            selected = outputFormat,
-            onSelect = { onOutputFormatChange(it) },
-            onDismiss = { showFormatSheet = false }
+    ) {
+        // 一级菜单：4 个父项——标签 + 当前值副标题 + 右侧「>」箭头。
+        // 二级展开期间（morePage != 0）父项整体置灰不可点，点击由一级的
+        // 吞事件统一转「收起二级」；锚点矩形持续回填供二级形变起点使用。
+        GlassMenuEntry(
+            label = stringResource(R.string.screen_menu_output_format),
+            value = currentFormatLabel,
+            onClick = { morePage = if (morePage == 1) 0 else 1 },
+            expanded = morePage == 1,
+            enabled = morePage == 0,
+            onAnchor = { formatAnchor = it }
+        )
+        GlassMenuEntry(
+            label = stringResource(R.string.screen_menu_sort_field),
+            value = sortFieldLabel,
+            onClick = { morePage = if (morePage == 2) 0 else 2 },
+            expanded = morePage == 2,
+            enabled = morePage == 0,
+            onAnchor = { sortFieldAnchor = it }
+        )
+        GlassMenuEntry(
+            label = stringResource(R.string.screen_menu_sort_order),
+            value = sortOrderLabel,
+            onClick = { morePage = if (morePage == 3) 0 else 3 },
+            expanded = morePage == 3,
+            enabled = morePage == 0,
+            onAnchor = { sortOrderAnchor = it }
+        )
+        GlassMenuEntry(
+            label = stringResource(R.string.screen_menu_media_filter),
+            value = filterLabel,
+            onClick = { morePage = if (morePage == 4) 0 else 4 },
+            expanded = morePage == 4,
+            enabled = morePage == 0,
+            onAnchor = { filterAnchor = it }
         )
     }
+    } // CompositionLocalProvider（菜单采样网格层）
+    } // Box（菜单浮层宿主）
     } // key(isDarkTheme)
 }
 
@@ -791,12 +1255,15 @@ private fun AlbumGridPage(
     scanner: AlbumScanner,
     isSelected: (MediaItem) -> Boolean,
     selIndexOf: (MediaItem) -> Int,
+    selectable: (MediaItem) -> Boolean,
     onToggle: (MediaItem) -> Unit,
     onToggleGroup: (List<MediaItem>) -> Unit,
     mediaFilter: MediaFilter = MediaFilter.ALL,
     sortField: AlbumSortField = AlbumSortField.DATE,
     sortAscending: Boolean = false,
-    searchQuery: String = ""
+    searchQuery: String = "",
+    // 顶栏覆盖层的高度：网格从屏幕顶开始，首屏内容要落在顶栏下方（滚动后穿过顶栏）
+    contentTopPadding: Dp = 0.dp
 ) {
     val state = remember(bucketId) { if (bucketId != null) scanner.stateOf(bucketId) else null }
     val results = state?.results
@@ -809,17 +1276,22 @@ private fun AlbumGridPage(
     val running = pageProgress.second
 
     val gridState = rememberLazyGridState()
+    // 底部导航栏留白：横屏/竖屏最后一行照片都不能被导航栏压住
+    val navBarBottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     // 切换排序字段/正倒序时回到网格顶部，避免停留在中部导致内容跳变（与日期排序一致）
     LaunchedEffect(sortField, sortAscending) {
         gridState.scrollToItem(0)
     }
 
     when {
-        results == null -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        results == null -> Box(
+            Modifier.fillMaxSize().padding(top = contentTopPadding),
+            contentAlignment = Alignment.Center
+        ) {
             Text(stringResource(R.string.screen_no_albums), color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         results.isEmpty() && !running -> Column(
-            Modifier.fillMaxSize().padding(bottom = 48.dp),
+            Modifier.fillMaxSize().padding(top = contentTopPadding, bottom = 48.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -845,6 +1317,7 @@ private fun AlbumGridPage(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = 2.dp),
+            contentPadding = PaddingValues(top = contentTopPadding, bottom = navBarBottom + 8.dp),
             horizontalArrangement = Arrangement.spacedBy(2.dp),
             verticalArrangement = Arrangement.spacedBy(2.dp)
         ) {
@@ -871,8 +1344,10 @@ private fun AlbumGridPage(
                 for ((dk, groupItems) in groups) {
                     stickyHeader(key = "hdr_$dk") {
                         Box(Modifier.fillMaxWidth()) {
-                            val allSel = groupItems.all { isSelected(it) }
-                            val someSel = groupItems.any { isSelected(it) }
+                            // 组内统计与整组切换只看可选项（拆解模式下动态照片不可选）
+                            val choosable = groupItems.filter { selectable(it) }
+                            val allSel = choosable.isNotEmpty() && choosable.all { isSelected(it) }
+                            val someSel = choosable.any { isSelected(it) }
                             DateHeader(
                                 label = dateLabel(groupItems.first().sortTime),
                                 checkState = when {
@@ -880,7 +1355,8 @@ private fun AlbumGridPage(
                                     someSel -> ToggleableState.Indeterminate
                                     else -> ToggleableState.Off
                                 },
-                                onToggleAll = { onToggleGroup(groupItems) }
+                                onToggleAll = { onToggleGroup(choosable) },
+                                enabled = choosable.isNotEmpty()
                             )
                         }
                     }
@@ -891,6 +1367,7 @@ private fun AlbumGridPage(
                             item = item,
                             selected = isSelected(item),
                             selectionIndex = selIndexOf(item),
+                            enabled = selectable(item),
                             onToggle = { onToggle(item) },
                             durationText = if (item.isVideo)
                                 formatDurationLabel(item.durationMs) else null
@@ -904,6 +1381,7 @@ private fun AlbumGridPage(
                             item = item,
                             selected = isSelected(item),
                             selectionIndex = selIndexOf(item),
+                            enabled = selectable(item),
                             onToggle = { onToggle(item) },
                             durationText = if (item.isVideo)
                                 formatDurationLabel(item.durationMs) else null,
@@ -929,260 +1407,150 @@ private fun AlbumGridPage(
 }
 
 /**
- * 搜索 + 排序工具行：
- * - 收起态：搜索按钮（带背景板）与三个排序 chip、正倒序按钮同排
- * - 点击搜索：搜索图标背景板原地横向扩展为整宽搜索框（色块底色），
- *   三个排序 chip 与正倒序按钮平滑下移到第二行，下方相册内容随高度变化让位
- * - 已输入关键字时搜索背景板高亮（secondaryContainer 色块）
+ * 横屏顶部搜索浮层：横屏没有常驻顶栏，搜索按钮展开后覆盖在网格顶部，
+ * 背后叠同款纯色渐变（自顶端向中间减淡，深浅色分别用黑/白）。
  */
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun SortSearchBar(
-    sortField: AlbumSortField,
-    sortAscending: Boolean,
-    searchQuery: String,
-    onSortField: (AlbumSortField) -> Unit,
-    onToggleAscending: () -> Unit,
-    onSearchQuery: (String) -> Unit
+private fun LandscapeSearchOverlay(
+    visible: Boolean,
+    query: String,
+    onQuery: (String) -> Unit,
+    onClose: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    AnimatedVisibility(
+        visible = visible,
+        // 与竖屏标题行/搜索框一致的弹簧：展开收起的不是普通淡入淡出，而是有质量的滑入
+        enter = slideInVertically(spring(dampingRatio = 0.78f, stiffness = 520f)) { -it } +
+                fadeIn(tween(140)),
+        exit = slideOutVertically(spring(dampingRatio = 0.9f, stiffness = 640f)) { -it } +
+                fadeOut(tween(120)),
+        modifier = modifier
+    ) {
+        Box(Modifier.fillMaxWidth()) {
+            // 横屏搜索栏背后的渐罩：颜色/浓度跟随主题 500ms 渐变（与竖屏底部渐罩一致）
+            val scrim = animatedThemeColor(Color.Black, Color.White)
+            val scrimAlpha by animateFloatAsState(
+                targetValue = if (LocalDarkTheme.current) 0.72f else 0.85f,
+                animationSpec = tween(durationMillis = 500),
+                label = "landscapeSearchScrimAlpha"
+            )
+            Box(
+                Modifier
+                    .matchParentSize()
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(
+                                scrim.copy(alpha = scrimAlpha),
+                                scrim.copy(alpha = 0f)
+                            )
+                        )
+                    )
+            )
+            SearchInputRow(query = query, onQuery = onQuery, onClose = onClose)
+        }
+    }
+}
+
+/**
+ * 标题行内的整宽搜索输入框（展开态）：
+ * 左端返回箭头收起、中间玻璃输入区（关键字高亮）、右端清空按钮。
+ * 用于替换旧的「搜索胶囊」，搜索只保留顶部这一处。
+ */
+@Composable
+private fun SearchInputRow(
+    query: String,
+    onQuery: (String) -> Unit,
+    onClose: () -> Unit
 ) {
     val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
-    var searchOpen by remember { mutableStateOf(false) }
-
-    val searchColor = if (searchQuery.isNotEmpty()) MaterialTheme.colorScheme.secondaryContainer
-                      else MaterialTheme.colorScheme.surfaceContainerHigh
-    val searchContentColor = if (searchQuery.isNotEmpty()) MaterialTheme.colorScheme.onSecondaryContainer
-                             else MaterialTheme.colorScheme.onSurfaceVariant
-
-    BoxWithConstraints(Modifier.fillMaxWidth()) {
-        // 预测最终位置：展开态搜索背景板占满第一行内容宽度（扣除两端 12dp），
-        // 收起态仅为一个搜索图标方块。用 animateDpAsState 平滑扩展宽度，
-        // 不依赖 weight/animateContentSize 突变，避免展开到一半时闪现、割裂。
-        val collapsedWidth = 40.dp
-        val expandedWidth = maxWidth - 24.dp
-        val surfaceWidth by animateDpAsState(
-            targetValue = if (searchOpen) expandedWidth else collapsedWidth,
-            animationSpec = spring(
-                dampingRatio = Spring.DampingRatioLowBouncy,
-                stiffness = Spring.StiffnessMediumLow
-            ),
-            label = "searchWidth"
+    val glass = LocalGlassEnabled.current
+    val pill = RoundedCornerShape(20.dp)
+    val tint by animateFloatAsState(
+        targetValue = if (query.isNotEmpty()) 0.24f else 0.05f,
+        animationSpec = tween(200),
+        label = "searchTint"
+    )
+    Row(
+        // 右端留 12dp：搜索框此前几乎贴住屏幕右缘（用户反馈）
+        Modifier.fillMaxWidth().padding(start = 4.dp, end = 12.dp, top = 2.dp, bottom = 2.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        // 与「选择动态照片」标题行的返回按钮完全同一组件（含 8dp 起始内缩），
+        // 展开/收起时两者位置严格重合
+        GlassBackButton(
+            onBack = { haptic.click(); onClose() },
+            contentDescription = stringResource(R.string.screen_search_collapse)
         )
-
-        Column(Modifier.fillMaxWidth()) {
-            // 第一行：搜索背景板（原地平滑扩展）+ 收起态的排序控件。
-            // 高度锁死为 40dp 并裁剪：宽度动画过程中内部文本/清除按钮一律不得换行或撑高，
-            // 否则整条栏会在展开/收起过程中“抽搐”。
-            Row(
-                Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Surface(
-                    shape = RoundedCornerShape(12.dp),
-                    color = searchColor,
-                    contentColor = searchContentColor,
-                    modifier = Modifier.width(surfaceWidth)
-                ) {
-                    Row(
-                        Modifier.fillMaxWidth().height(40.dp).clipToBounds(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Box(
-                            Modifier
-                                .size(40.dp)
-                                .clickable(
-                                    interactionSource = remember { MutableInteractionSource() },
-                                    indication = null
-                                ) {
-                                    haptic.click()
-                                    searchOpen = !searchOpen
-                                },
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                if (searchOpen) Icons.AutoMirrored.Filled.KeyboardArrowLeft
-                                else Icons.Default.Search,
-                                contentDescription = if (searchOpen) stringResource(R.string.screen_search_collapse) else stringResource(R.string.screen_search),
-                                modifier = Modifier.size(20.dp),
-                                tint = searchContentColor
+        Spacer(Modifier.width(8.dp))
+        Row(
+            Modifier
+                .weight(1f)
+                .height(40.dp)
+                .then(
+                    if (glass) Modifier.liquidGlass(
+                        shape = pill,
+                        tintAlpha = tint,
+                        tintColor = MaterialTheme.colorScheme.primary,
+                        lensHeight = 8.dp,
+                        lensAmount = 16.dp
+                    ) else Modifier.background(MaterialTheme.colorScheme.surfaceContainerHigh, pill)
+                )
+                .clip(pill),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Spacer(Modifier.width(14.dp))
+            Icon(
+                Icons.Default.Search,
+                contentDescription = null,
+                modifier = Modifier.size(18.dp),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(Modifier.width(8.dp))
+            BasicTextField(
+                value = query,
+                onValueChange = onQuery,
+                modifier = Modifier.weight(1f),
+                singleLine = true,
+                maxLines = 1,
+                textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp),
+                cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+                decorationBox = { innerTextField ->
+                    Box {
+                        if (query.isEmpty()) {
+                            Text(
+                                stringResource(R.string.screen_search_hint),
+                                fontSize = 13.sp,
+                                maxLines = 1,
+                                softWrap = false,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
-                        AnimatedVisibility(
-                            visible = searchOpen,
-                            modifier = Modifier.weight(1f),
-                            enter = fadeIn(tween(180)) + expandHorizontally(tween(240, easing = FancyEasing)),
-                            exit = fadeOut(tween(120)) + shrinkHorizontally(tween(180, easing = FancyEasing))
-                        ) {
-                            Row(
-                                Modifier.fillMaxWidth().clipToBounds(),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                BasicTextField(
-                                    value = searchQuery,
-                                    onValueChange = onSearchQuery,
-                                    modifier = Modifier.weight(1f),
-                                    singleLine = true,
-                                    maxLines = 1,
-                                    textStyle = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.sp),
-                                    cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
-                                    decorationBox = { innerTextField ->
-                                        Box {
-                                            if (searchQuery.isEmpty()) {
-                                                Text(
-                                                    stringResource(R.string.screen_search_hint),
-                                                    fontSize = 13.sp,
-                                                    maxLines = 1,
-                                                    softWrap = false,
-                                                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                                                )
-                                            }
-                                            innerTextField()
-                                        }
-                                    }
-                                )
-                                if (searchQuery.isNotEmpty()) {
-                                    // 用 32dp 自绘点击块代替 IconButton（IconButton 最小触摸目标 48dp 会把
-                                    // 40dp 高的搜索栏撑高 → 展开/收起时高度抽搐）
-                                    Box(
-                                        Modifier
-                                            .size(32.dp)
-                                            .clickable(
-                                                interactionSource = remember { MutableInteractionSource() },
-                                                indication = null
-                                            ) {
-                                                haptic.click()
-                                                onSearchQuery("")
-                                            },
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Icon(
-                                            Icons.Default.Close,
-                                            contentDescription = stringResource(R.string.screen_search_clear),
-                                            modifier = Modifier.size(18.dp)
-                                        )
-                                    }
-                                }
-                            }
-                        }
+                        innerTextField()
                     }
                 }
-
-                // 收起态：排序控件与搜索按钮同排（展开时横向收缩让位）
-                AnimatedVisibility(
-                    visible = !searchOpen,
-                    modifier = Modifier.weight(1f),
-                    enter = fadeIn(tween(160)) + expandHorizontally(tween(200, easing = FancyEasing)),
-                    exit = fadeOut(tween(120)) + shrinkHorizontally(tween(180, easing = FancyEasing))
+            )
+            if (query.isNotEmpty()) {
+                Box(
+                    Modifier
+                        .size(32.dp)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null
+                        ) {
+                            haptic.click()
+                            onQuery("")
+                        },
+                    contentAlignment = Alignment.Center
                 ) {
-                    SortControlsRow(
-                        sortField = sortField,
-                        sortAscending = sortAscending,
-                        onSortField = onSortField,
-                        onToggleAscending = onToggleAscending
+                    Icon(
+                        Icons.Default.Close,
+                        contentDescription = stringResource(R.string.screen_search_clear),
+                        modifier = Modifier.size(18.dp)
                     )
                 }
             }
-
-            // 展开态：排序控件下移到第二行。
-            // 用 expand/shrinkVertically 平滑改变高度（原先 slide 是瞬时改高度 → 与宽度动画
-            // 不同步，表现为“垂直高度抽搐”）。
-            AnimatedVisibility(
-                visible = searchOpen,
-                enter = expandVertically(tween(240, easing = FancyEasing), expandFrom = Alignment.Top) +
-                        fadeIn(tween(180)),
-                exit = shrinkVertically(tween(200, easing = FancyEasing), shrinkTowards = Alignment.Top) +
-                        fadeOut(tween(140))
-            ) {
-                SortControlsRow(
-                    sortField = sortField,
-                    sortAscending = sortAscending,
-                    onSortField = onSortField,
-                    onToggleAscending = onToggleAscending,
-                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp)
-                )
-            }
-        }
-    }
-}
-
-/** 排序控件行：三个排序 chip + 右侧正倒序按钮 */
-@Composable
-private fun SortControlsRow(
-    sortField: AlbumSortField,
-    sortAscending: Boolean,
-    onSortField: (AlbumSortField) -> Unit,
-    onToggleAscending: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
-    Row(
-        // 行高锁死 40dp（与搜索框等高）：收起态本行与搜索框同处第一行、展开态整体下移到第二行，
-        // 两行等高才能让搜索框的纵向位置在展开/收起前后完全不变，也避免行间距跳变。
-        Modifier.fillMaxWidth().then(modifier).height(40.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        SortFieldChip(stringResource(R.string.screen_sort_date), AlbumSortField.DATE, sortField, onSortField)
-        SortFieldChip(stringResource(R.string.screen_sort_size), AlbumSortField.SIZE, sortField, onSortField)
-        SortFieldChip(stringResource(R.string.screen_sort_name), AlbumSortField.NAME, sortField, onSortField)
-        Spacer(Modifier.weight(1f))
-        // 用 40dp 自绘点击块代替 IconButton：IconButton 的最小触摸目标为 48dp，
-        // 会把本行撑到 56dp；而搜索展开时本控件会移到第二行，第一行随之从 56dp 缩到 48dp，
-        // 表现为「搜索栏与上方控件的间距」突然跳变 8dp。锁死 40dp 后两行等高，跳变消失。
-        Box(
-            Modifier
-                .size(40.dp)
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null
-                ) {
-                    haptic.click()
-                    onToggleAscending()
-                },
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                if (sortAscending) Icons.Default.ArrowUpward else Icons.Default.ArrowDownward,
-                contentDescription = if (sortAscending) stringResource(R.string.screen_sort_desc) else stringResource(R.string.screen_sort_asc),
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-    }
-}
-
-/** 排序字段 chip：选中 secondaryContainer，未选中 surfaceContainerHigh（与相册 chip 一致） */
-@Composable
-private fun SortFieldChip(
-    label: String,
-    field: AlbumSortField,
-    current: AlbumSortField,
-    onClick: (AlbumSortField) -> Unit
-) {
-    val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
-    val selected = field == current
-    // 关闭 Material3 默认的 48dp 最小触摸目标强制：Surface(onClick) 会施加
-    // minimumInteractiveComponentSize()，使 chip 高 48dp。收起态第一行取 max(搜索框 40dp, chip 48dp)
-    // = 56dp，展开态第一行只剩搜索框 = 48dp，两态差值让搜索框上下跳动。此处显式取消该下限，
-    // 配合下方 height(40dp) 把 chip 稳定在 40dp（与搜索框、正倒序按钮等高）。
-    CompositionLocalProvider(LocalMinimumInteractiveComponentSize provides Dp.Unspecified) {
-        Surface(
-            onClick = { haptic.click(); onClick(field) },
-            shape = RoundedCornerShape(12.dp),
-            color = if (selected) MaterialTheme.colorScheme.secondaryContainer
-                    else MaterialTheme.colorScheme.surfaceContainerHigh,
-            contentColor = if (selected) MaterialTheme.colorScheme.onSecondaryContainer
-                           else MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.height(40.dp)
-        ) {
-            Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {
-                Text(
-                    label,
-                    style = MaterialTheme.typography.labelMedium,
-                    maxLines = 1,
-                    softWrap = false,
-                    modifier = Modifier.padding(horizontal = 14.dp)
-                )
-            }
+            Spacer(Modifier.width(6.dp))
         }
     }
 }
@@ -1199,7 +1567,10 @@ private fun AlbumChip(
     selected: Boolean,
     expanded: Boolean,
     onClick: () -> Unit,
-    horizontal: Boolean = false
+    horizontal: Boolean = false,
+    // 玻璃模式下由调用方传入内容色（竖屏顶栏传顶栏玻璃的自适应黑白；
+    // 横屏栏不传，回落主题色）。null = 使用主题默认配色。
+    contentColor: Color? = null
 ) {
     val resolver = LocalContext.current.contentResolver
     val density = LocalDensity.current
@@ -1207,7 +1578,8 @@ private fun AlbumChip(
     val interactionSource = remember { MutableInteractionSource() }
     PressHapticEffect(interactionSource)
     val corner by androidx.compose.animation.core.animateDpAsState(
-        targetValue = if (expanded) 16.dp else 12.dp,
+        // 圆角与整体玻璃风格对齐（此前 12/16dp 显得过小、像硬角小方块）
+        targetValue = if (expanded) 22.dp else 16.dp,
         animationSpec = spring(
             dampingRatio = Spring.DampingRatioLowBouncy,
             stiffness = Spring.StiffnessMedium
@@ -1215,14 +1587,46 @@ private fun AlbumChip(
         label = "chipCorner"
     )
 
+    val glass = LocalGlassEnabled.current
+    // 演示版同款按钮物理：触点径向高光 + tanh 阻尼拖拽 + 方向形变（松手弹簧回弹）。
+    // 相册 chip 此前只有一层静态玻璃——没有按压力高光、也没有滑动时的方向
+    // 变形拖拽物理（用户反馈「每个相册的按钮还不完全是液态玻璃」）。
+    // 手势用 inspectDragGestures（不消费事件）：chip 身在 LazyRow / LazyColumn 内，
+    // 列表滚动与 chip 形变互不打断——左右/上下滑动列表时，指下的 chip
+    // 沿滑动方向被「拽长」，松手弹簧回弹。
+    val physics = rememberGlassButtonPhysics()
+    val fallbackColor = if (selected) MaterialTheme.colorScheme.secondaryContainer
+                        else MaterialTheme.colorScheme.surfaceContainerHigh
+    // 点击改挂 modifier 并显式 indication = null：Surface(onClick=) 自带 MD3
+    // 涟漪，与液态玻璃语言不符（用户反馈「去除 MD3 点击涟漪反馈」）；
+    // interactionSource 沿用原实例，PressHapticEffect 的按压触感不受影响
     Surface(
-        onClick = onClick,
-        interactionSource = interactionSource,
         shape = RoundedCornerShape(corner),
-        color = if (selected) MaterialTheme.colorScheme.secondaryContainer
-                else MaterialTheme.colorScheme.surfaceContainerHigh,
-        contentColor = if (selected) MaterialTheme.colorScheme.onSecondaryContainer
-                       else MaterialTheme.colorScheme.onSurfaceVariant
+        color = if (glass) Color.Transparent else fallbackColor,
+        // 玻璃模式下相册 chip 的文字色：竖屏顶栏传自适应黑白（按照片亮度），
+        // 其余回落主题 onSurface；MD3 模式沿用容器配色
+        contentColor = when {
+            glass && contentColor != null -> contentColor
+            glass -> MaterialTheme.colorScheme.onSurface
+            selected -> MaterialTheme.colorScheme.onSecondaryContainer
+            else -> MaterialTheme.colorScheme.onSurfaceVariant
+        },
+        modifier = (if (glass) Modifier
+            .liquidGlass(
+                RoundedCornerShape(corner),
+                tintAlpha = if (selected) 0.20f else 0.08f,
+                // 玻璃表面与文字作为整体变形（layerBlock 的 graphicsLayer 包裹全节点）
+                layerBlock = physics.transform
+            )
+            // 触点径向高光画在玻璃之上、内容之下（链内顺序保证）
+            .then(physics.highlight.modifier)
+            // 拖拽/按压力采集（不消费事件，不影响外层列表滚动）
+            .then(physics.highlight.gestureModifier)
+        else Modifier
+        ).clickable(
+            interactionSource = interactionSource,
+            indication = null
+        ) { onClick() }
     ) {
         if (horizontal) {
             // 横向布局（选择器横屏用）：文字在左，展开时封面在右侧横向展开
@@ -1327,17 +1731,21 @@ private fun AlbumChip(
 
 /**
  * 粘性日期标题：
- * - 背景：与界面背景一致的不透明色（滑动时内容不穿透）
+ * - 背景：透明（用户需求：日期栏背景板改为透明，与底层背景融为一体）
  * - 文本（项 6）：月日不变时无动画；变化时数字竖向滚动（Material 滚动数字风格，
  *   160ms 一步到位）
  * - 右端圆形三态复选框（项 2）：点击选择/取消该日期下所有照片
  */
 @Composable
-private fun DateHeader(label: String, checkState: ToggleableState, onToggleAll: () -> Unit) {
+private fun DateHeader(
+    label: String,
+    checkState: ToggleableState,
+    onToggleAll: () -> Unit,
+    enabled: Boolean = true
+) {
     Row(
         Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.background)
             .padding(start = 12.dp, end = 10.dp, top = 2.dp, bottom = 2.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -1357,7 +1765,8 @@ private fun DateHeader(label: String, checkState: ToggleableState, onToggleAll: 
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
-        CircleTriCheckbox(state = checkState, onClick = onToggleAll)
+        // 组内没有可选项时不显示三态复选框（避免点了没反应）
+        if (enabled) CircleTriCheckbox(state = checkState, onClick = onToggleAll)
     }
 }
 
@@ -1380,7 +1789,7 @@ private fun CircleTriCheckbox(
     PressHapticEffect(interactionSource)
     Box(
         modifier
-            .size(26.dp)
+            .size(18.dp)
             .clip(CircleShape)
             .clickable(
                 interactionSource = interactionSource,
@@ -1389,7 +1798,7 @@ private fun CircleTriCheckbox(
             .border(2.dp, borderColor, CircleShape),
         contentAlignment = Alignment.Center
     ) {
-        Canvas(Modifier.size(26.dp)) {
+        Canvas(Modifier.size(18.dp)) {
             val s = size.minDimension
             val stroke = 2.dp.toPx()
             when (state) {
@@ -1491,10 +1900,14 @@ private fun GridCell(
     selectionIndex: Int,
     onToggle: () -> Unit,
     durationText: String? = null,
-    sizeText: String? = null
+    sizeText: String? = null,
+    /** 是否可选：拆解模式下动态照片不可选（置灰 + 点击无效） */
+    enabled: Boolean = true
 ) {
     val resolver = LocalContext.current.contentResolver
     val transition = updateTransition(selected, label = "cell")
+    // 关涟漪后的点击源（仍保留按压语义/无障碍焦点行为）
+    val cellInteraction = remember { MutableInteractionSource() }
 
     // 选中时以几何中心为定点缩小
     val scale by transition.animateFloat(label = "scale") { if (it) 0.86f else 1f }
@@ -1521,7 +1934,14 @@ private fun GridCell(
         Modifier
             .aspectRatio(1f)
             .clip(RoundedCornerShape(6.dp))
-            .clickable(onClick = onToggle)
+            .alpha(if (enabled) 1f else 0.38f)
+            // 显式关掉 MD3 涟漪：选中态本身的缩放/圆角/徽章动画即点击反馈
+            // （用户反馈「动态照片选择页去除 MD3 点击涟漪反馈」）
+            .clickable(
+                interactionSource = cellInteraction,
+                indication = null,
+                onClick = onToggle
+            )
     ) {
         // 内层图片：中心缩放 + 圆角/边框动画
         Box(
@@ -1576,22 +1996,26 @@ private fun GridCell(
             }
         }
 
-        // 动态照片角标：识别到厂商格式的图片，右下角显示动态照片标识（图标取自 vivo 新相册风格）
+        // 动态照片角标：纯白图标、无灰底，且随图片选择缩放一起缩放（像印在图上）
         if (item.kind == MediaKind.LIVE) {
-            Box(
-                Modifier
+            Image(
+                painter = painterResource(R.drawable.ic_live_photo),
+                contentDescription = null,
+                modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .padding(end = 4.dp, bottom = 4.dp)
-                    .size(18.dp)
-                    .background(Color.Black.copy(alpha = 0.42f), CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    painter = painterResource(R.drawable.ic_live_photo),
-                    contentDescription = null,
-                    modifier = Modifier.size(13.dp)
-                )
-            }
+                    .padding(end = 5.dp, bottom = 5.dp)
+                    .size(20.dp)
+                    .graphicsLayer {
+                        val shrink = 1f - scale
+                        // 与缩略图一起缩小时，同时向画面中心收一段距离：
+                        // 只缩小不内收会让角标「脱离」图片边缘，看起来像漏贴上去的
+                        translationX = -shrink * 18.dp.toPx()
+                        translationY = shrink * 18.dp.toPx()
+                        scaleX = scale
+                        scaleY = scale
+                        transformOrigin = TransformOrigin(0.5f, 0.5f)
+                    }
+            )
         }
 
         // 勾选徽章（右上角，项 2）：选中时 primary 圆底 + 白色序号，未选中空心圈；

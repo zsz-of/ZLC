@@ -4,9 +4,10 @@ kotlin = "2.2.20"
 appcompat = "1.7.1"
 material = "1.14.0-beta01"
 annotationJvm = "1.10.0"
-composeBom = "2025.08.00"
+composeBom = "2025.12.00"
 activityCompose = "1.10.1"
 lifecycleRuntimeKtx = "2.9.4"
+backdrop = "1.0.2"
 
 [libraries]
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -21,6 +22,7 @@ compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+backdrop = { group = "io.github.kyant0", name = "backdrop", version.ref = "backdrop" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

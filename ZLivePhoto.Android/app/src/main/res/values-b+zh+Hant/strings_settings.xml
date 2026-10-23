@@ -48,6 +48,11 @@
     <string name="settings_custom_color_title">自訂主題色</string>
     <string name="settings_cd_custom_palette">自訂調色盤</string>
     <string name="settings_hue_value">色相 %1$d°</string>
+    <string name="settings_glass_title">液態玻璃介面</string>
+    <string name="settings_glass_subtitle">iOS 風格毛玻璃與邊緣折射；關閉後使用原生元件</string>
+    <string name="settings_glass_unsupported">目前系統版本不支援液態玻璃，已自動使用原生元件</string>
+    <string name="settings_glass_opacity_title">液態玻璃通透度</string>
+    <string name="settings_glass_opacity_subtitle">通透度越低，磨砂模糊越強（僅液態玻璃介面生效）</string>
 
     <!-- 應用語言：標題與「跟隨系統」兩項複用 strings_app.xml
          （app_language_title / app_language_follow_system），此處不重複定義 -->

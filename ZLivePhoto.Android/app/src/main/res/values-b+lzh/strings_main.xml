@@ -76,6 +76,7 @@
     <string name="main_info_unrecognized">未識之動態相片式</string>
     <string name="main_info_converting">轉換中…</string>
     <string name="main_info_compose_task">合成之事（按始轉換以行合成）</string>
+    <string name="main_info_compose_target">%1$s · 合成</string>
     <string name="main_info_done_replaced">畢（代 %1$d 源檔）</string>
     <string name="main_info_done_skipped">畢（略：同名相衝）</string>
     <string name="main_info_done_exported">畢（出 %1$d）</string>

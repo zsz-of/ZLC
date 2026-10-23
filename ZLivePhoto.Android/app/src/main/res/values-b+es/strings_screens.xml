@@ -79,6 +79,10 @@
     <string name="screen_import">Importar</string>
     <string name="screen_import_count">Importar %1$d</string>
     <string name="screen_import_mixed">Importar %1$d fotos · %2$d vídeos</string>
+    <string name="screen_count_live">Live</string>
+    <string name="screen_count_image">Foto</string>
+    <string name="screen_count_video">Vídeo</string>
+    <string name="screen_extract_no_live">Las fotos Live no se pueden seleccionar en modo Extraer</string>
     <string name="screen_search">Buscar</string>
     <string name="screen_search_collapse">Cerrar la búsqueda</string>
     <string name="screen_search_hint">Buscar por nombre</string>
@@ -88,6 +92,11 @@
     <string name="screen_sort_name">Nombre</string>
     <string name="screen_sort_asc">Ascendente</string>
     <string name="screen_sort_desc">Descendente</string>
+    <string name="screen_more">Más</string>
+    <string name="screen_menu_output_format">Formato de salida</string>
+    <string name="screen_menu_sort_field">Ordenar por</string>
+    <string name="screen_menu_sort_order">Orden</string>
+    <string name="screen_menu_media_filter">Tipo de visualización</string>
 
     <!-- Etiquetas de fecha de los grupos de álbum (los marcadores son números; el orden se adapta al formato español) -->
     <string name="screen_date_today">Hoy</string>

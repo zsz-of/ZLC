@@ -36,6 +36,11 @@
     <string name="settings_custom_color_title">自定主題色</string>
     <string name="settings_cd_custom_palette">自定調色板</string>
     <string name="settings_hue_value">色相 %1$d°</string>
+    <string name="settings_glass_title">液態玻璃界面</string>
+    <string name="settings_glass_subtitle">iOS 之磨砂玻璃與緣折射；閉之則用原生組件</string>
+    <string name="settings_glass_unsupported">今系統之版不支液態玻璃，已自用原生組件</string>
+    <string name="settings_glass_opacity_title">液態玻璃通透度</string>
+    <string name="settings_glass_opacity_subtitle">通透度愈低則磨砂模糊愈強（惟液態玻璃界面生效）</string>
     <string name="settings_language_dialog_title">擇程式語文</string>
     <string name="settings_language_count">共 %1$d 種語文</string>
     <string name="settings_reminder_dialogs_title">不再示窗</string>

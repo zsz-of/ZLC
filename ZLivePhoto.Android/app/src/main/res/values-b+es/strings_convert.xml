@@ -12,6 +12,7 @@
     <string name="conv_unknown_target">Formato de destino desconocido: %1$s</string>
     <string name="conv_unrecognized_live_photo">Formato de Live Photo no reconocido (no es una Live Photo de Google/OPPO/vivo/Xiaomi/Apple)</string>
     <string name="conv_cover_photo_missing">La foto de portada no existe o está vacía</string>
+    <string name="conv_compose_no_video">Falló la composición: la salida no contiene una pista de vídeo válida, por lo que no se generó ninguna Live Photo</string>
     <string name="conv_video_missing">El vídeo no existe o está vacío</string>
     <string name="conv_video_too_large">El vídeo es demasiado grande (%1$dMB) y no se puede componer la Live Photo; elige un vídeo más corto</string>
     <string name="conv_transcoded_too_large">El vídeo transcodificado es demasiado grande (%1$dMB); no se puede componer la Live Photo</string>

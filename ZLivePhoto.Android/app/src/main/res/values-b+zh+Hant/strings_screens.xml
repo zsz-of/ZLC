@@ -75,6 +75,10 @@
     <string name="screen_import">匯入</string>
     <string name="screen_import_count">匯入 %1$d</string>
     <string name="screen_import_mixed">匯入 圖%1$d·影%2$d</string>
+    <string name="screen_count_live">動</string>
+    <string name="screen_count_image">圖</string>
+    <string name="screen_count_video">影</string>
+    <string name="screen_extract_no_live">拆解模式不支援選擇動態照片</string>
     <string name="screen_search">搜尋</string>
     <string name="screen_search_collapse">收合搜尋</string>
     <string name="screen_search_hint">按名稱搜尋</string>
@@ -84,6 +88,11 @@
     <string name="screen_sort_name">名稱</string>
     <string name="screen_sort_asc">正序</string>
     <string name="screen_sort_desc">倒序</string>
+    <string name="screen_more">更多</string>
+    <string name="screen_menu_output_format">輸出格式</string>
+    <string name="screen_menu_sort_field">排序欄位</string>
+    <string name="screen_menu_sort_order">排序順序</string>
+    <string name="screen_menu_media_filter">顯示類別</string>
 
     <!-- 相簿分組的日期標籤 -->
     <string name="screen_date_today">今天</string>

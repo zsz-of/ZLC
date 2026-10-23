@@ -10,6 +10,7 @@
     <string name="conv_unknown_target">未知目标格式：%1$s</string>
     <string name="conv_unrecognized_live_photo">无法识别的动态照片格式（非 Google/OPPO/vivo/小米/Apple 动态照片）</string>
     <string name="conv_cover_photo_missing">封面照片不存在或为空</string>
+    <string name="conv_compose_no_video">合成失败：产物未包含有效的视频轨，无法生成动态照片</string>
     <string name="conv_video_missing">视频不存在或为空</string>
     <string name="conv_video_too_large">视频过大（%1$dMB），无法合成为动态照片，请选择更短的视频</string>
     <string name="conv_transcoded_too_large">转码后视频过大（%1$dMB），无法合成动态照片</string>

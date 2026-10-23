@@ -75,6 +75,10 @@
     <string name="screen_import">インポート</string>
     <string name="screen_import_count">インポート %1$d</string>
     <string name="screen_import_mixed">インポート 写真%1$d・動画%2$d</string>
+    <string name="screen_count_live">動</string>
+    <string name="screen_count_image">写</string>
+    <string name="screen_count_video">動画</string>
+    <string name="screen_extract_no_live">分解モードではライブフォトを選択できません</string>
     <string name="screen_search">検索</string>
     <string name="screen_search_collapse">検索を閉じる</string>
     <string name="screen_search_hint">名前で検索</string>
@@ -84,6 +88,11 @@
     <string name="screen_sort_name">名前</string>
     <string name="screen_sort_asc">昇順</string>
     <string name="screen_sort_desc">降順</string>
+    <string name="screen_more">その他</string>
+    <string name="screen_menu_output_format">出力形式</string>
+    <string name="screen_menu_sort_field">並び替え</string>
+    <string name="screen_menu_sort_order">並び順</string>
+    <string name="screen_menu_media_filter">表示種類</string>
 
     <!-- アルバムの日付ラベル -->
     <string name="screen_date_today">今日</string>

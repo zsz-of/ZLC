@@ -75,6 +75,10 @@
     <string name="screen_import">가져오기</string>
     <string name="screen_import_count">가져오기 %1$d</string>
     <string name="screen_import_mixed">가져오기 사진%1$d·동영상%2$d</string>
+    <string name="screen_count_live">라이브</string>
+    <string name="screen_count_image">사진</string>
+    <string name="screen_count_video">동영상</string>
+    <string name="screen_extract_no_live">분해 모드에서는 라이브 포토를 선택할 수 없습니다</string>
     <string name="screen_search">검색</string>
     <string name="screen_search_collapse">검색 접기</string>
     <string name="screen_search_hint">이름으로 검색</string>
@@ -84,6 +88,11 @@
     <string name="screen_sort_name">이름</string>
     <string name="screen_sort_asc">오름차순</string>
     <string name="screen_sort_desc">내림차순</string>
+    <string name="screen_more">더보기</string>
+    <string name="screen_menu_output_format">출력 형식</string>
+    <string name="screen_menu_sort_field">정렬 기준</string>
+    <string name="screen_menu_sort_order">정렬 순서</string>
+    <string name="screen_menu_media_filter">표시 유형</string>
 
     <!-- 앨범 그룹의 날짜 라벨 -->
     <string name="screen_date_today">오늘</string>

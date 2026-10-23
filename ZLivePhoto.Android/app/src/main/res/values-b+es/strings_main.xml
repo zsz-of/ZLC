@@ -94,6 +94,7 @@
     <string name="main_info_unrecognized">Formato de Live Photo no reconocido</string>
     <string name="main_info_converting">Convirtiendo…</string>
     <string name="main_info_compose_task">Tarea de composición (pulsa Iniciar conversión para componer)</string>
+    <string name="main_info_compose_target">%1$s · Composición</string>
     <string name="main_info_done_replaced">Completado (%1$d archivos de origen reemplazados)</string>
     <string name="main_info_done_skipped">Completado (omitidos: conflicto de nombre)</string>
     <string name="main_info_done_exported">Completado (%1$d exportados)</string>

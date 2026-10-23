@@ -91,6 +91,12 @@
     <string name="screen_import">导入</string>
     <string name="screen_import_count">导入 %1$d</string>
     <string name="screen_import_mixed">导入 图%1$d·视%2$d</string>
+    <!-- 确认按钮内的数量短标签（后接滚动数字：动2 · 图1 · 视1） -->
+    <string name="screen_count_live">动</string>
+    <string name="screen_count_image">图</string>
+    <string name="screen_count_video">视</string>
+    <!-- 拆解模式下动态照片不可选时的提示 -->
+    <string name="screen_extract_no_live">拆解模式不支持选择动态照片</string>
     <string name="screen_search">搜索</string>
     <string name="screen_search_collapse">收起搜索</string>
     <string name="screen_search_hint">按名称搜索</string>
@@ -107,6 +113,13 @@
     <string name="screen_filter_video">视频</string>
     <string name="screen_filter_image">图片</string>
     <string name="screen_filter_empty">当前筛选下没有内容</string>
+
+    <!-- 右上角「更多」菜单（一级入口 + 二级子菜单标题） -->
+    <string name="screen_more">更多</string>
+    <string name="screen_menu_output_format">输出格式</string>
+    <string name="screen_menu_sort_field">排序字段</string>
+    <string name="screen_menu_sort_order">排序顺序</string>
+    <string name="screen_menu_media_filter">显示类别</string>
 
     <!-- 相册分组的日期标签（%1$d 等为数字占位符，翻译时可重排） -->
     <string name="screen_date_today">今天</string>

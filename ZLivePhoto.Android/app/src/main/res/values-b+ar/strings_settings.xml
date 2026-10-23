@@ -42,6 +42,11 @@
     <string name="settings_custom_color_title">لون مخصص</string>
     <string name="settings_cd_custom_palette">لوحة ألوان مخصصة</string>
     <string name="settings_hue_value">درجة اللون %1$d°</string>
+    <string name="settings_glass_title">واجهة الزجاج السائل</string>
+    <string name="settings_glass_subtitle">زجاج ضبابي بأسلوب iOS مع انكسار الحواف؛ عند الإيقاف تُستخدم المكوّنات الأصلية</string>
+    <string name="settings_glass_unsupported">إصدار النظام هذا لا يدعم الزجاج السائل، لذا تُستخدم المكوّنات الأصلية</string>
+    <string name="settings_glass_opacity_title">شفافية الزجاج السائل</string>
+    <string name="settings_glass_opacity_subtitle">كلما انخفضت الشفافية زاد الضباب (لواجهة الزجاج السائل فقط)</string>
     <string name="settings_language_dialog_title">اختر لغة التطبيق</string>
     <string name="settings_language_count">%1$d لغة</string>
     <string name="settings_reminder_dialogs_title">نوافذ «عدم الإظهار مجددًا»</string>

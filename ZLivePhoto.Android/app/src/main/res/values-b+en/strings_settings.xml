@@ -41,6 +41,11 @@
     <string name="settings_custom_color_title">Custom theme color</string>
     <string name="settings_cd_custom_palette">Custom palette</string>
     <string name="settings_hue_value">Hue %1$d°</string>
+    <string name="settings_glass_title">Liquid Glass UI</string>
+    <string name="settings_glass_subtitle">iOS-style frosted glass with edge refraction; turn off to use native components</string>
+    <string name="settings_glass_unsupported">This system version doesn\'t support Liquid Glass, so native components are used</string>
+    <string name="settings_glass_opacity_title">Liquid Glass transparency</string>
+    <string name="settings_glass_opacity_subtitle">Lower transparency means a stronger frost blur (Liquid Glass UI only)</string>
     <string name="settings_language_dialog_title">Select app language</string>
     <string name="settings_language_count">%1$d languages available</string>
     <string name="settings_reminder_dialogs_title">“Don\'t show again” dialogs</string>
@@ -73,9 +78,9 @@
     <string name="settings_alipay_missing_text">Alipay was not detected, so the donation cannot be completed right now.\n\nThat\'s all right — thank you very much for your kindness either way!</string>
     <string name="settings_transcoder_title">Built-in transcoder</string>
     <string name="settings_transcoder_value">ffmpeg %1$s</string>
-    <string name="settings_transcode_mode_encode">Re-encode</string>
-    <string name="settings_transcode_mode_remux">Remux container only (recommended)</string>
-    <string name="settings_transcode_mode_off">Never use the transcoder</string>
+    <string name="settings_transcode_mode_encode">Full transcode</string>
+    <string name="settings_transcode_mode_remux">Remux only</string>
+    <string name="settings_transcode_mode_off">Disabled</string>
     <string name="settings_transcode_params_title">Transcoding parameters</string>
     <string name="settings_transcode_params_subtitle">Quality and compression parameters used when re-encoding</string>
     <string name="settings_transcode_params_disabled">Only takes effect when “Transcoding mode” is set to “Re-encode”</string>

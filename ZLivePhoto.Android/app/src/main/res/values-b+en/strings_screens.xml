@@ -64,6 +64,10 @@
     <string name="screen_import">Import</string>
     <string name="screen_import_count">Import %1$d</string>
     <string name="screen_import_mixed">Import %1$d photo · %2$d video</string>
+    <string name="screen_count_live">Live</string>
+    <string name="screen_count_image">Photo</string>
+    <string name="screen_count_video">Video</string>
+    <string name="screen_extract_no_live">Live photos can\'t be selected in Extract mode</string>
     <string name="screen_search">Search</string>
     <string name="screen_search_collapse">Collapse search</string>
     <string name="screen_search_hint">Search by name</string>
@@ -73,6 +77,11 @@
     <string name="screen_sort_name">Name</string>
     <string name="screen_sort_asc">Ascending</string>
     <string name="screen_sort_desc">Descending</string>
+    <string name="screen_more">More</string>
+    <string name="screen_menu_output_format">Output format</string>
+    <string name="screen_menu_sort_field">Sort by</string>
+    <string name="screen_menu_sort_order">Sort order</string>
+    <string name="screen_menu_media_filter">Show type</string>
     <string name="screen_date_today">Today</string>
     <string name="screen_date_yesterday">Yesterday</string>
     <string name="screen_date_this_year">%1$d/%2$d</string>

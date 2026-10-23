@@ -90,6 +90,7 @@
     <string name="main_info_unrecognized">Unrecognized Live Photo format</string>
     <string name="main_info_converting">Converting…</string>
     <string name="main_info_compose_task">Compose task (tap Start conversion to compose)</string>
+    <string name="main_info_compose_target">%1$s · Compose</string>
     <string name="main_info_done_replaced">Done (%1$d source files replaced)</string>
     <string name="main_info_done_skipped">Done (skipped: name conflict)</string>
     <string name="main_info_done_exported">Done (%1$d exported)</string>

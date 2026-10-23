@@ -83,6 +83,7 @@
     <string name="main_info_unrecognized">인식할 수 없는 라이브 포토 형식</string>
     <string name="main_info_converting">변환 중…</string>
     <string name="main_info_compose_task">합성 작업(“변환 시작”을 눌러 합성 실행)</string>
+    <string name="main_info_compose_target">%1$s · 합성</string>
     <string name="main_info_done_replaced">완료(원본 파일 %1$d개 대체)</string>
     <string name="main_info_done_skipped">완료(건너뜀: 같은 이름 충돌)</string>
     <string name="main_info_done_exported">완료(%1$d개 내보냄)</string>

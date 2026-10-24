@@ -72,7 +72,6 @@ import com.zsz.zlivephoto.core.UpdateChecker
 import com.zsz.zlivephoto.core.UpdateCheckResult
 import com.zsz.zlivephoto.core.formats.FormatRegistry
 import com.zsz.zlivephoto.ui.AppSettings
-import com.zsz.zlivephoto.ui.OnboardingScreen
 import com.zsz.zlivephoto.ui.FancyEasing
 import com.zsz.zlivephoto.ui.FileItem
 import com.zsz.zlivephoto.ui.MainScreen
@@ -232,8 +231,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var mediaRepo: MediaRepo
     private lateinit var scanner: AlbumScanner
     /** 顶层页面路由：Main 主页 / Picker 内置选择器 / Settings 设置页 */
-    // Onboarding：首次启动 / 升级完成后的界面风格 + 深浅色引导（完成即切回 Main）
-    private enum class AppScreen { Onboarding, Main, Picker, Settings }
+    private enum class AppScreen { Main, Picker, Settings }
     private var screen by mutableStateOf(AppScreen.Main)
     private var pickerAlbums by mutableStateOf<List<AlbumInfo>>(emptyList())
 
@@ -727,12 +725,6 @@ class MainActivity : ComponentActivity() {
 
         // 全局设置（主题/触感/弹性动画/更新检查）：首帧组合前初始化
         AppSettings.init(this)
-        // 首次启动 / 升级完成（已引导版本 < 当前版本）：先进入风格 + 深浅色引导，
-        // 引导完成回到主页。放在 AppSettings.init 之后——属性初始化器阶段
-        // 拿不到 prefs（lateinit），会抛未初始化异常。
-        if (AppSettings.shouldShowOnboarding()) {
-            screen = AppScreen.Onboarding
-        }
         // 内置转码器（ffmpeg）参数（CRF/预设/编码器）：需在首帧组合前初始化，
         // 否则设置页读取 prefs 时抛 lateinit property prefs has not been initialized
         FfmpegAddon.init(this)
@@ -874,11 +866,7 @@ class MainActivity : ComponentActivity() {
                 // 权限请求 / 应用更新 / 「所有文件访问」推荐 / 旧版本提示
                 // 同一时刻只允许弹出一个：处理（转换 / 导入）进行中整体抑制，处理队列
                 // 完成后才弹出；当前占用者关闭后自动轮到下一个（按下列优先级）。
-                val sessionDialogOwner = if (screen == AppScreen.Onboarding) {
-                    // 引导期间不弹任何会话弹窗（更新提示 / 权限说明 / 旧版本卸载…）——
-                    // 引导是整屏接管页，不能让它被弹窗打断
-                    DialogOwner.NONE
-                } else when {
+                val sessionDialogOwner = when {
                     isConverting || isImporting -> DialogOwner.NONE
                     showPermissionDialog || showSettingsDialog -> DialogOwner.PERMISSION
                     updateFlow.wantsDialog -> DialogOwner.UPDATE
@@ -895,9 +883,18 @@ class MainActivity : ComponentActivity() {
                 // 预览式返回：选择器 / 设置页手势进度驱动内容缩小右移（顶层稳定注册，
                 // 不受 AnimatedContent 过渡重组影响；提交后回到主页）
                 val backAnim = remember { Animatable(0f) }
+                // 设置页是否停在二级页（由 SettingsScreen 回传）：二级页期间关闭本层的
+                // 预测式返回动画，把返回完全交给设置页自己的层级（二级 → 设置根 → 主页），
+                // 与 FlClash 的 CommonPopScope / Navigator.canPop 语义一致
+                var settingsInSubpage by remember { mutableStateOf(false) }
+                // 离开设置页时清掉标记（设置页被销毁后不会再有回传）
+                LaunchedEffect(screen) {
+                    if (screen != AppScreen.Settings) settingsInSubpage = false
+                }
                 // 预览式返回：go 轻量版不启用（进一步简化）
                 PredictiveBackHandler(enabled = BuildConfig.FLAVOR != "go" &&
-                    (screen == AppScreen.Picker || screen == AppScreen.Settings)) { flow ->
+                    (screen == AppScreen.Picker ||
+                        (screen == AppScreen.Settings && !settingsInSubpage))) { flow ->
                     try {
                         flow.collect { backAnim.snapTo(it.progress) }
                         screen = AppScreen.Main
@@ -907,12 +904,12 @@ class MainActivity : ComponentActivity() {
                     }
                 }
                 // 系统返回键：选择器 / 设置页返回上一级（主页），不退出应用；
-                // 处理中由上方 BackHandler(enabled = isConverting) 吞掉，二者不冲突
-                BackHandler(enabled = screen == AppScreen.Picker || screen == AppScreen.Settings) {
+                // 处理中由上方 BackHandler(enabled = isConverting) 吞掉，二者不冲突。
+                // 设置页停在二级页时让位给设置页内部层级（二级 → 设置根）
+                BackHandler(enabled = screen == AppScreen.Picker ||
+                    (screen == AppScreen.Settings && !settingsInSubpage)) {
                     screen = AppScreen.Main
                 }
-                // 引导页：必须选完才能进入应用，返回键整体吞掉（不退出、不跳过）
-                BackHandler(enabled = screen == AppScreen.Onboarding) { /* 引导中不响应返回 */ }
 
                 // 进入/退出内置选择器的过渡动画（ImageToolbox fancySlideTransition 式）：
                 // 选择器从右侧整屏滑入 + 淡入，主页向左小幅滑出让位；返回时反向。
@@ -979,12 +976,7 @@ class MainActivity : ComponentActivity() {
                     },
                     label = "screenTransition"
                 ) { page ->
-                    if (page == AppScreen.Onboarding) {
-                        // 首启 / 升级后的引导（风格 + 深浅色）：完成即回到主页。
-                        // 主页此时不在组合树里（AnimatedContent 只渲染当前页），
-                        // 扫描/弹窗等后台逻辑也不受引导影响。
-                        OnboardingScreen(onFinish = { screen = AppScreen.Main })
-                    } else if (page == AppScreen.Picker) {
+                    if (page == AppScreen.Picker) {
                         // 内置选择器（默认）：MediaStore 直查，路径第一手，EXIF 完整保留
                         // 统一选择器：同时展示动态照片 / 视频 / 普通图片，
                         // 右上角「输出格式」决定本次导入的输出格式（含「拆解」）
@@ -1003,7 +995,11 @@ class MainActivity : ComponentActivity() {
                         )
                     } else if (page == AppScreen.Settings) {
                         // 设置页：更新检查 / 触感与动画开关 / 主题定制 / 关于
-                        SettingsScreen(onBack = { screen = AppScreen.Main })
+                        SettingsScreen(
+                            onBack = { screen = AppScreen.Main },
+                            // 二级页开合回传：二级页期间最外层返回键 / 预测式返回让位
+                            onSubpageChanged = { settingsInSubpage = it }
+                        )
                     } else {
                         MainScreen(
                             files = files,

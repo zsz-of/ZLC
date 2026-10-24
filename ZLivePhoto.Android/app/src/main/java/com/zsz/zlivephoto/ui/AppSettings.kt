@@ -48,6 +48,15 @@ object AppSettings {
     /** 深色模式：system（跟随系统）/ dark（强制深色）/ light（强制浅色） */
     var themeMode by mutableStateOf("system")
         private set
+    /** 相册选择器排序字段（AlbumSortField 的 name：DATE / SIZE / NAME），跨次保留 */
+    var pickerSortField by mutableStateOf("DATE")
+        private set
+    /** 相册选择器排序顺序（true=正序） */
+    var pickerSortAscending by mutableStateOf(false)
+        private set
+    /** 相册选择器媒体类型筛选（MediaFilter 的 name：ALL / LIVE / VIDEO / IMAGE） */
+    var pickerMediaFilter by mutableStateOf("ALL")
+        private set
     /** 用户「跳过此版本」记住的版本号（空串=未跳过）；远端版本与之相同时不再提示更新 */
     var skippedVersion by mutableStateOf("")
         private set
@@ -56,14 +65,6 @@ object AppSettings {
         private set
     /** 液态玻璃通透度 0..1：越低越不透明、磨砂模糊越强 */
     var glassOpacity by mutableStateOf(0.5f)
-        private set
-    /**
-     * 已完成「风格 + 深浅色」引导的版本号（versionCode）。
-     * 0 = 从未引导过（全新安装或很早的旧版升级上来）；
-     * 小于当前 [BuildConfig.VERSION_CODE] 时 = 本次升级是首次启动，需再引导一次
-     * （用户要求：首次启动或升级完成后都要出现引导）。
-     */
-    var onboardedVersionCode by mutableStateOf(0)
         private set
 
     /**
@@ -92,10 +93,12 @@ object AppSettings {
         preserveFolders = prefs.getBoolean("preserve_folders", true)
         replaceMode = prefs.getBoolean("replace_mode", false)
         themeMode = prefs.getString("theme_mode", "system") ?: "system"
+        pickerSortField = prefs.getString("picker_sort_field", "DATE") ?: "DATE"
+        pickerSortAscending = prefs.getBoolean("picker_sort_ascending", false)
+        pickerMediaFilter = prefs.getString("picker_media_filter", "ALL") ?: "ALL"
         skippedVersion = prefs.getString("skipped_version", "") ?: ""
         glassEnabled = prefs.getBoolean("glass_enabled", true)
         glassOpacity = prefs.getFloat("glass_opacity", 0.5f).coerceIn(0f, 1f)
-        onboardedVersionCode = prefs.getInt("onboarded_version_code", 0).coerceAtLeast(0)
         // go 轻量版：强制关闭马达反馈与按钮弹性动画（简化版无触感/无 q 弹）
         if (BuildConfig.FLAVOR == "go") {
             hapticsEnabled = false
@@ -174,6 +177,21 @@ object AppSettings {
         prefs.edit().putString("theme_mode", mode).apply()
     }
 
+    /** 记住相册选择器的排序字段 / 顺序 / 媒体筛选：下次打开选择器沿用，不再每次重置 */
+    fun setPickerSort(field: String, ascending: Boolean) {
+        pickerSortField = field
+        pickerSortAscending = ascending
+        prefs.edit()
+            .putString("picker_sort_field", field)
+            .putBoolean("picker_sort_ascending", ascending)
+            .apply()
+    }
+
+    fun rememberPickerMediaFilter(filter: String) {
+        pickerMediaFilter = filter
+        prefs.edit().putString("picker_media_filter", filter).apply()
+    }
+
     fun setGlassUIEnabled(v: Boolean) {
         glassEnabled = v
         prefs.edit().putBoolean("glass_enabled", v).apply()
@@ -189,15 +207,6 @@ object AppSettings {
         skippedVersion = version
         prefs.edit().putString("skipped_version", version).apply()
     }
-
-    /** 引导完成：把当前版本号记为「已引导」，本次运行及后续同版本启动都不再引导 */
-    fun markOnboarded() {
-        onboardedVersionCode = BuildConfig.VERSION_CODE
-        prefs.edit().putInt("onboarded_version_code", onboardedVersionCode).apply()
-    }
-
-    /** 本次是否需要显示引导：首次启动，或升级后（已引导版本 < 当前版本）首次启动 */
-    fun shouldShowOnboarding(): Boolean = onboardedVersionCode < BuildConfig.VERSION_CODE
 
     /** 远端版本是否因被用户跳过而不提示 */
     fun isVersionSkipped(remoteVersion: String): Boolean =

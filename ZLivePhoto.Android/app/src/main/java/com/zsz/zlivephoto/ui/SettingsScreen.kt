@@ -121,14 +121,23 @@ private const val GITHUB_REPO_URL = "https://github.com/zsz-of/ZLC"
 /**
  * 设置页入口：负责各子页（0=主设置，1=不再提示弹窗，2=关于）的
  * 进入/退出过渡与返回键层级。主内容委托给 SettingsMainContent。
+ *
+ * 返回层级照搬 FlClash（`CommonPopScope` + `Navigator.canPop`）：
+ * 二级页的返回先弹回设置根页，设置根页再返回才是回主页；
+ * 进入二级页的动画仍用本项目的推拉（slideIn/slideOut），不改。
+ *
+ * @param onSubpageChanged 二级页开合状态回传（宿主据此在二级页期间关闭
+ *   预测式返回动画，把返回完全交给本页的层级处理，与 FlClash 一致）
  */
 @Composable
-fun SettingsScreen(onBack: () -> Unit) {
+fun SettingsScreen(onBack: () -> Unit, onSubpageChanged: (Boolean) -> Unit = {}) {
     var subpage by remember { mutableStateOf(0) }
     // 设置主内容滚动位置提升到此处，子页返回后保持进入前的滚动位置
     val settingsScrollState = rememberScrollState()
     // 任一子页打开时，系统返回键先回到设置页（而非直接回主页）
     BackHandler(enabled = subpage != 0) { subpage = 0 }
+    // 二级页状态回传宿主（宿主据此暂停最外层预测式返回动画）
+    LaunchedEffect(subpage) { onSubpageChanged(subpage != 0) }
     // RTL：子页推拉方向跟随布局方向（阿语/希伯来语下整体反号，否则前进/后退会反着滑）
     val rtlDir = if (
         androidx.compose.ui.platform.LocalLayoutDirection.current ==
@@ -190,9 +199,15 @@ private fun SettingsPageScaffold(
             Modifier
                 .fillMaxSize()
                 .then(if (pageBackdrop != null) Modifier.layerBackdrop(pageBackdrop) else Modifier)
+                // FlClash 设置页背景板：整页铺 SurfaceLevel.page 底色
+                // （浅色 = surfaceContainer 灰紫调 / 深色 = surface 近纯黑）。
+                // 放在 layerBackdrop **之内**，玻璃顶栏的渐进模糊采样的就是
+                // 「页面底 + 滚动上来的卡片」，与 FlClash 的观感一致。
+                .background(flPageColor())
         ) {
             Scaffold(
-                containerColor = if (glass) Color.Transparent else MaterialTheme.colorScheme.background,
+                // 页面底已由外层绘制：玻璃模式下容器透明，非玻璃模式同用页面底色
+                containerColor = Color.Transparent,
                 contentWindowInsets = WindowInsets(0, 0, 0, 0)
             ) { _ ->
                 Column(
@@ -1077,21 +1092,35 @@ private fun ReminderSettingRow(key: ReminderKey, shape: RoundedCornerShape) {
     }
 }
 
-/** 设置卡片背景：固定使用 MD3 容器色，不参与液态玻璃采样，也不投射阴影。 */
+/**
+ * FlClash 的分层底色（`SurfaceLevel.page` / `SurfaceLevel.card`）：
+ * 页面底与卡片各占一档，靠底色差而不是投影表达层次——
+ * 浅色页底是 surfaceContainer（灰紫调）、卡片是 surfaceBright（近白）；
+ * 深色页底是 surface（近纯黑）、卡片是 surfaceContainer（深灰）。
+ */
+@Composable
+internal fun flPageColor(): Color = if (LocalDarkTheme.current)
+    MaterialTheme.colorScheme.surface else MaterialTheme.colorScheme.surfaceContainer
+
+@Composable
+internal fun flCardColor(): Color = if (LocalDarkTheme.current)
+    MaterialTheme.colorScheme.surfaceContainer else MaterialTheme.colorScheme.surfaceBright
+
+/** 设置卡片背景：固定使用 FlClash 的卡片档底色，不参与液态玻璃采样，也不投射阴影。 */
 @Composable
 private fun Modifier.cardSurface(
     shape: Shape,
-    color: Color = MaterialTheme.colorScheme.surfaceContainerLow
+    color: Color = flCardColor()
 ): Modifier = background(color, shape)
 
-/** 分组标题 */
+/** 分组标题（与卡片左缘对齐：不再额外缩进，避免标题比卡片内缩一档） */
 @Composable
 private fun SectionTitle(text: String) {
     Text(
         text,
         style = MaterialTheme.typography.labelLarge,
         color = MaterialTheme.colorScheme.primary,
-        modifier = Modifier.padding(start = 20.dp, top = 16.dp, bottom = 4.dp)
+        modifier = Modifier.padding(start = 4.dp, top = 16.dp, bottom = 6.dp)
     )
 }
 

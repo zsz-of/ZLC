@@ -47,7 +47,6 @@ import com.kyant.backdrop.shadow.Shadow
 import com.zsz.zlivephoto.ui.glass.catalog.shapes.Capsule
 import com.zsz.zlivephoto.ui.glass.catalog.utils.DampedDragAnimation
 import com.zsz.zlivephoto.ui.glass.catalog.utils.InteractiveHighlight
-import com.zsz.zlivephoto.ui.glass.glassFusionParticipant
 import com.zsz.zlivephoto.ui.glass.animatedThemeColor
 import com.zsz.zlivephoto.ui.glass.quantizeAnim
 import com.zsz.zlivephoto.ui.glass.rememberGlassEffectCache
@@ -222,7 +221,6 @@ fun LiquidBottomTabs(
                     },
                     onDrawSurface = { drawRect(containerColor) }
                 )
-                .glassFusionParticipant(color = containerColor)
                 .then(interactiveHighlight.modifier)
                 // 设置页内嵌分段栏：比底部导航矮一档（50dp 容器 / 42dp 指示器），
                 // 避免三段 tab 在设置页里显得笨重（用户反馈「tab 栏太大」）
@@ -335,10 +333,6 @@ fun LiquidBottomTabs(
                         )
                         drawRect(Color.Black.copy(alpha = 0.03f * progress))
                     }
-                )
-                .glassFusionParticipant(
-                    color = if (isDark) Color.White else Color.Black,
-                    active = { dampedDragAnimation.pressProgress }
                 )
                 .height(42f.dp)
                 .fillMaxWidth(1f / tabsCount)

@@ -39,7 +39,6 @@ import com.kyant.backdrop.shadow.InnerShadow
 import com.kyant.backdrop.shadow.Shadow
 import com.zsz.zlivephoto.ui.glass.catalog.shapes.Capsule
 import com.zsz.zlivephoto.ui.glass.catalog.utils.DampedDragAnimation
-import com.zsz.zlivephoto.ui.glass.glassFusionParticipant
 import com.zsz.zlivephoto.ui.glass.animatedThemeColor
 import com.zsz.zlivephoto.ui.glass.quantizeAnim
 import com.zsz.zlivephoto.ui.glass.rememberGlassEffectCache
@@ -208,10 +207,6 @@ fun LiquidToggle(
                         val progress = dampedDragAnimation.pressProgress
                         drawRect(Color.White.copy(alpha = 1f - progress))
                     }
-                )
-                .glassFusionParticipant(
-                    color = Color.White,
-                    active = { dampedDragAnimation.pressProgress }
                 )
                 .size(40f.dp, 24f.dp)
         )

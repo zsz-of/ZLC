@@ -220,7 +220,6 @@ fun FileCard(
                             lensHeight = 8.dp,
                             lensAmount = 12.dp,
                             layerBlock = badgePhysics.transform,
-                            fusionActive = { badgePhysics.highlight.pressProgress },
                             backdropOverride = LocalGlassRootBackdrop.current
                         ) else Modifier
                     )
@@ -345,14 +344,14 @@ private fun FileCardContent(item: FileItem, sameFormat: Boolean) {
         else -> MaterialTheme.colorScheme.onSurfaceVariant
     }
 
-    // 玻璃模式下卡片本体透明：列表坐在「Lazy scroll container」玻璃面板上
-    // （面板在 FileListArea 内，卡片再叠实色会完全遮住玻璃）
+    // 卡片自带一层薄底（列表外面不再包玻璃面板）：文字直接压在渐变/照片上
+    // 会透出一圈「光晕」，给卡片一个高不透明度的卡片底色即可干净收边
     val glass = LocalGlassEnabled.current
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = if (glass) Color.Transparent
+            containerColor = if (glass) MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.94f)
             else MaterialTheme.colorScheme.surfaceContainerHigh
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = if (glass) 0.dp else 1.dp)

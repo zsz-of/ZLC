@@ -23,7 +23,6 @@ import com.kyant.backdrop.drawBackdrop
 import com.zsz.zlivephoto.ui.glass.catalog.shapes.Capsule
 import com.zsz.zlivephoto.ui.glass.catalog.utils.InteractiveHighlight
 import com.zsz.zlivephoto.ui.glass.animatedThemeColor
-import com.zsz.zlivephoto.ui.glass.glassFusionParticipant
 import com.zsz.zlivephoto.ui.glass.rememberGlassEffectCache
 import kotlin.math.abs
 import kotlin.math.atan2
@@ -111,14 +110,6 @@ fun LiquidButton(
                         drawRect(surfaceColor)
                     }
                 }
-            )
-            .glassFusionParticipant(
-                color = when {
-                    surfaceColor.isSpecified && surfaceColor.alpha > 0f -> surfaceColor
-                    effectiveTint.isSpecified && effectiveTint.alpha > 0f -> effectiveTint
-                    else -> Color.White
-                },
-                active = { interactiveHighlight.pressProgress }
             )
             .clickable(
                 interactionSource = null,

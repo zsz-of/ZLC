@@ -20,7 +20,6 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.layout.Arrangement
@@ -67,6 +66,7 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -98,12 +98,13 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.ui.glass.GlassActionButton
 import com.zsz.zlivephoto.ui.glass.GlassBottomSheet
-import com.zsz.zlivephoto.ui.glass.GlassFusionScope
 import com.zsz.zlivephoto.ui.glass.GlassIconButton
+import com.zsz.zlivephoto.ui.glass.GlassMenuButton
 import com.zsz.zlivephoto.ui.glass.GlassTopBar
 import com.zsz.zlivephoto.ui.glass.LiquidDialog
 import com.zsz.zlivephoto.ui.glass.LiquidSegmentedTabs
@@ -118,6 +119,7 @@ import com.kyant.backdrop.drawBackdrop
 import com.kyant.backdrop.effects.blur
 import com.kyant.backdrop.effects.lens
 import com.kyant.backdrop.effects.vibrancy
+import com.kyant.backdrop.shadow.Shadow
 
 data class FileItem(
     val path: String,
@@ -241,7 +243,13 @@ fun MainScreen(
     }
 
     // 横屏判断（提升到函数级，标题限宽与两栏布局共用）
-    val isLandscape = LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp
+    // 以根容器**实测尺寸**为准（根 Box 的 onSizeChanged 回填），LocalConfiguration
+    // 仅作首帧兜底：手动 configChanges 模式下若系统没把新方向分发给界面（个别 ROM），
+    // 横屏会被误判成竖屏、主页仍渲染上下结构（用户反馈「横屏时主页是上下结构」）。
+    var rootSizePx by remember { mutableStateOf(IntSize.Zero) }
+    val isLandscape = if (rootSizePx == IntSize.Zero)
+        LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp
+    else rootSizePx.width > rootSizePx.height
 
     // 液态玻璃生效时容器一律透明：采样源渐变由根节点 GlassRoot 铺在内容之下，
     // 页面容器不透明会把它整块遮住，玻璃元素就无从采样（返回原生 MD3 时保持原配色）
@@ -266,16 +274,36 @@ fun MainScreen(
                         modifier = Modifier.fillMaxWidth(if (isLandscape) 0.58f else 1f),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        // 品牌 Logo 徽标（与图标同款渐变）
+                        // 品牌 Logo 徽标：液态玻璃曲面 + 主题色渐变底（玻璃边缘折射 +
+                        // 主题色半透填充），未启用玻璃时退回纯渐变底
                         Box(
                             modifier = Modifier
                                 .size(40.dp)
+                                .then(
+                                    if (glass) Modifier.liquidGlass(
+                                        shape = RoundedCornerShape(12.dp),
+                                        tintAlpha = 0.26f,
+                                        tintColor = MaterialTheme.colorScheme.primary,
+                                        lensHeight = 10.dp,
+                                        lensAmount = 18.dp,
+                                        shadow = Shadow(radius = 0.dp, alpha = 0f)
+                                    ) else Modifier
+                                )
                                 .clip(RoundedCornerShape(12.dp))
-                                .background(
-                                    Brush.linearGradient(
-                                        listOf(
-                                            MaterialTheme.colorScheme.primary,
-                                            MaterialTheme.colorScheme.tertiary
+                                .then(
+                                    if (glass) Modifier.background(
+                                        Brush.linearGradient(
+                                            listOf(
+                                                MaterialTheme.colorScheme.primary.copy(alpha = 0.80f),
+                                                MaterialTheme.colorScheme.tertiary.copy(alpha = 0.80f)
+                                            )
+                                        )
+                                    ) else Modifier.background(
+                                        Brush.linearGradient(
+                                            listOf(
+                                                MaterialTheme.colorScheme.primary,
+                                                MaterialTheme.colorScheme.tertiary
+                                            )
                                         )
                                     )
                                 ),
@@ -319,10 +347,30 @@ fun MainScreen(
     }
     val mainTopBarActions: @Composable RowScope.() -> Unit = {
                     if (files.isNotEmpty()) {
-                        Surface(
-                            shape = RoundedCornerShape(20.dp),
-                            color = MaterialTheme.colorScheme.secondaryContainer,
-                            modifier = Modifier.padding(end = 8.dp)
+                        // 「n 个文件」胶囊：液态玻璃（半透主题色 + 边缘折射），
+                        // 与顶栏的玻璃纽扣一致；未启用玻璃时沿用 MD3 容器色
+                        val countShape = RoundedCornerShape(50)
+                        Box(
+                            modifier = Modifier
+                                .padding(end = 8.dp)
+                                .then(
+                                    if (glass) Modifier.liquidGlass(
+                                        shape = countShape,
+                                        tintAlpha = 0.16f,
+                                        tintColor = MaterialTheme.colorScheme.secondaryContainer,
+                                        lensHeight = 8.dp,
+                                        lensAmount = 14.dp,
+                                        shadow = Shadow(radius = 0.dp, alpha = 0f)
+                                    ) else Modifier
+                                )
+                                .clip(countShape)
+                                .then(
+                                    if (glass) Modifier else Modifier.background(
+                                        MaterialTheme.colorScheme.secondaryContainer,
+                                        countShape
+                                    )
+                                )
+                                .padding(horizontal = 12.dp, vertical = 6.dp)
                         ) {
                             Text(
                                 text = pluralStringResource(
@@ -330,8 +378,7 @@ fun MainScreen(
                                 ),
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.onSecondaryContainer,
-                                fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                                fontWeight = FontWeight.SemiBold
                             )
                         }
                     }
@@ -366,7 +413,13 @@ fun MainScreen(
         }
     }
 
-    Box(Modifier.fillMaxSize()) {
+    Box(
+        Modifier
+            .fillMaxSize()
+            // 实测窗口尺寸回填给 rootSizePx：旋转后根布局重新测量即更新横竖屏判断，
+            // 不依赖系统把 Orientation 配置分发到界面
+            .onSizeChanged { rootSizePx = it }
+    ) {
     Box(
         Modifier
             .fillMaxSize()
@@ -405,14 +458,14 @@ fun MainScreen(
                 )
                 // 右侧控制面板：玻璃生效时做成液态玻璃浮动面板（否则原 MD3 容器色）
                 val panelShape = RoundedCornerShape(topStart = 24.dp, bottomStart = 24.dp)
-                GlassFusionScope {
+                // 宽度权重挂在 Row 的直接子节点上（Surface 现在在 Box 内，weight 在 Box 上才生效）
+                Box(Modifier.weight(0.42f).fillMaxHeight()) {
                 Surface(
                     color = if (glass) Color.Transparent else MaterialTheme.colorScheme.surfaceContainer,
                     tonalElevation = if (glass) 0.dp else 2.dp,
                     shape = panelShape,
                     modifier = Modifier
-                        .weight(0.42f)
-                        .fillMaxHeight()
+                        .fillMaxSize()
                         // 顶栏是覆盖层：右侧面板从顶栏下方开始，避免标题压在面板上
                         .padding(top = topBarTotal)
                         .navigationBarsPadding()
@@ -498,7 +551,7 @@ fun MainScreen(
                 .onSizeChanged { panelHeightPx = it.height }
         ) {
             val panelShape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
-            GlassFusionScope {
+            Box {
             Surface(
                 color = if (glass) Color.Transparent else MaterialTheme.colorScheme.surfaceContainer,
                 tonalElevation = if (glass) 0.dp else 2.dp,
@@ -538,13 +591,16 @@ fun MainScreen(
         }
     }
 
-    // 长按列表项 → 单项输出格式选择（含「拆解」；合成任务不提供拆解）
+    // 长按列表项 → 单项输出格式选择（含「拆解」；合成任务不提供拆解）。
+    // 输出格式改成「一组液态玻璃按钮」平铺（用户反馈：弹很多个按钮来选就好），
+    // 不再用一列可滚动的行
     GlassBottomSheet(
         visible = formatSheetItem != null,
         onDismiss = { formatSheetItem = null }
     ) {        val item = formatSheetItem ?: return@GlassBottomSheet
         val formatScrollState = rememberScrollState()
         val itemKey = item.formatKey
+        val currentKey = item.targetFormat ?: selectedFormat
             Text(
                 text = stringResource(R.string.screen_item_format_title),
                 style = MaterialTheme.typography.titleLarge,
@@ -559,83 +615,74 @@ fun MainScreen(
                 overflow = TextOverflow.MiddleEllipsis,
                 modifier = Modifier.padding(horizontal = 24.dp, vertical = 2.dp)
             )
-            HorizontalDivider()
+            Spacer(modifier = Modifier.height(8.dp))
             val maxListHeight = LocalConfiguration.current.screenHeightDp.dp * 0.62f
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .heightIn(max = maxListHeight)
                     .verticalScroll(formatScrollState)
+                    .padding(horizontal = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                formatOptions.forEach { opt ->
-                    val current = item.targetFormat ?: selectedFormat
-                    val selected = opt.key == current
-                    // 拆解与合成互斥：本条为合成任务（formatKey=compose）时不可选拆解
-                    val disabled = opt.key == "extract" && itemKey == "compose"
+                // 两列平铺：格式数量多时按钮阵列比长列表更好按
+                formatOptions.chunked(2).forEach { pair ->
                     Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 12.dp, vertical = 2.dp)
-                            .clip(RoundedCornerShape(14.dp))
-                            .background(
-                                when {
-                                    selected -> MaterialTheme.colorScheme.secondaryContainer
-                                    disabled -> MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
-                                    else -> androidx.compose.ui.graphics.Color.Transparent
-                                }
-                            )
-                            .clickable(enabled = !disabled) {
-                                haptic.click()
-                                onSelectItemFormat(item.path, opt.key)
-                                formatSheetItem = null
-                            }
-                            .padding(horizontal = 12.dp, vertical = 4.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        Text(
-                            text = stringResource(opt.nameRes),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold,
-                            color = when {
-                                selected -> MaterialTheme.colorScheme.onSecondaryContainer
-                                disabled -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
-                                else -> MaterialTheme.colorScheme.onSurface
-                            },
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(horizontal = 12.dp, vertical = 12.dp)
-                        )
-                        AnimatedVisibility(
-                            visible = selected,
-                            enter = scaleIn() + fadeIn(),
-                            exit = scaleOut() + fadeOut()
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Check,
-                                contentDescription = stringResource(R.string.screen_selected),
-                                tint = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.padding(end = 16.dp).size(24.dp)
-                            )
+                        pair.forEach { opt ->
+                            val selected = opt.key == currentKey
+                            // 拆解与合成互斥：本条为合成任务（formatKey=compose）时不可选拆解
+                            val disabled = opt.key == "extract" && itemKey == "compose"
+                            GlassMenuButton(
+                                onClick = {
+                                    onSelectItemFormat(item.path, opt.key)
+                                    formatSheetItem = null
+                                },
+                                enabled = !disabled,
+                                selected = selected,
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Text(
+                                    text = stringResource(opt.nameRes),
+                                    style = MaterialTheme.typography.titleSmall,
+                                    fontWeight = FontWeight.Bold,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    color = if (disabled) MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+                                    else LocalContentColor.current,
+                                    modifier = Modifier.weight(1f)
+                                )
+                                if (selected) {
+                                    Icon(
+                                        imageVector = Icons.Default.Check,
+                                        contentDescription = stringResource(R.string.screen_selected),
+                                        tint = MaterialTheme.colorScheme.primary,
+                                        modifier = Modifier.size(18.dp)
+                                    )
+                                }
+                            }
                         }
+                        // 奇数个时右侧留空，保持两列对齐
+                        if (pair.size == 1) Spacer(modifier = Modifier.weight(1f))
                     }
-                    if (opt.key == "vivo_single") {
-                        Text(
-                            text = stringResource(R.string.screen_vivo_single_warning),
-                            style = MaterialTheme.typography.labelMedium,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.error,
-                            modifier = Modifier.padding(start = 36.dp, bottom = 6.dp)
-                        )
-                    }
-                    if (opt.key == "extract" && disabled) {
-                        Text(
-                            text = stringResource(R.string.screen_extract_blocked),
-                            style = MaterialTheme.typography.labelMedium,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.error,
-                            modifier = Modifier.padding(start = 36.dp, bottom = 6.dp)
-                        )
-                    }
+                }
+                if (currentKey == "vivo_single") {
+                    Text(
+                        text = stringResource(R.string.screen_vivo_single_warning),
+                        style = MaterialTheme.typography.labelMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.error
+                    )
+                }
+                if (itemKey == "compose" && formatOptions.any { it.key == "extract" }) {
+                    Text(
+                        text = stringResource(R.string.screen_extract_blocked),
+                        style = MaterialTheme.typography.labelMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.error
+                    )
                 }
                 Spacer(modifier = Modifier.height(24.dp))
             }
@@ -787,49 +834,19 @@ private fun FileListArea(
                 }
             }
         } else {
-            // 文件列表液态玻璃面板（用户反馈：文件列表也没有液态玻璃效果，
-            // 用 demo 的 Lazy scroll container 方案）：玻璃面板是父容器，
-            // layerBackdrop 挂在子 LazyColumn 上只录制列表内容——面板折射的
-            // 是真实列表内容且无自采样回路；同时整块面板被 pageBackdrop 录制，
-            // 顶栏 frost 与底部面板还能折射到它
-            val glass = LocalGlassEnabled.current
-            // 绘制期（DrawScope lambda）不能读 CompositionLocal，深浅色在这里提前取出
-            val listDark = LocalDarkTheme.current
-            val listBackdrop = rememberLayerBackdrop()
-            val panelShape = RoundedCornerShape(28.dp)
-            Box(
-                Modifier
+            // 文件列表不再套「一整块玻璃面板」（用户反馈：列表不要一大片玻璃包裹）：
+            // 列表项本身自带卡片底，整片玻璃只会把缩略图糊成一片、文字发灰。
+            // 列表内容仍由页面根采样层（pageBackdrop）录制，顶栏磨砂照常采样。
+            LazyColumn(
+                modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 16.dp)
-                    .then(
-                        if (glass) Modifier.drawBackdrop(
-                            backdrop = listBackdrop,
-                            shape = { panelShape },
-                            effects = {
-                                // 静态参数：重跑仅发生在尺寸变化时
-                                vibrancy()
-                                blur(8f.dp.toPx())
-                                lens(16f.dp.toPx(), 32f.dp.toPx())
-                            },
-                            onDrawSurface = {
-                                // 与整体通透度一致的轻色纸，保证列表文字可读
-                                drawRect(if (listDark) Color.Black.copy(alpha = 0.22f) else Color.White.copy(alpha = 0.18f))
-                            }
-                        ) else Modifier
-                    )
+                    .padding(horizontal = 16.dp),
+                state = listState,
+                contentPadding = androidx.compose.foundation.layout.PaddingValues(
+                    top = topContentPadding,
+                    bottom = bottomContentPadding
+                )
             ) {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .then(if (glass) Modifier.layerBackdrop(listBackdrop) else Modifier)
-                        .then(if (glass) Modifier.clip(panelShape) else Modifier)
-                        .padding(horizontal = 0.dp),
-                    state = listState,
-                    contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                        top = topContentPadding,
-                        bottom = bottomContentPadding
-                    )
-                ) {
                 items(files, key = { it.path }) { item ->
                     // 项间距放在项内部：移除动画塌陷时连同间距一起收起；
                     // 剩余项补位为弹簧平移（animateItem placement），可被新的侧滑打断
@@ -855,7 +872,6 @@ private fun FileListArea(
                         }
                     }
                 }
-            }
             }
         }
     }
@@ -953,7 +969,6 @@ private fun BottomControls(
         val msgShape = RoundedCornerShape(12.dp)
         val msgGlass = LocalGlassEnabled.current
         val msgInteraction = remember { MutableInteractionSource() }
-        val msgPressed by msgInteraction.collectIsPressedAsState()
         Surface(
             shape = msgShape,
             color = if (msgGlass) Color.Transparent else MaterialTheme.colorScheme.surfaceContainerHigh,
@@ -964,8 +979,7 @@ private fun BottomControls(
                         msgShape,
                         tintAlpha = 0.10f,
                         lensHeight = 8.dp,
-                        lensAmount = 14.dp,
-                        fusionActive = { if (msgPressed) 1f else 0f }
+                        lensAmount = 14.dp
                     ) else Modifier
                 )
                 .clickable(

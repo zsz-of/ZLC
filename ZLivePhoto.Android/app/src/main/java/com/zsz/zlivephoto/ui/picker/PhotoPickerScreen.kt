@@ -61,9 +61,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -141,6 +143,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
@@ -162,6 +166,7 @@ import com.zsz.zlivephoto.ui.glass.GlassPanel
 import com.zsz.zlivephoto.ui.glass.LocalGlassBackdrop
 import com.zsz.zlivephoto.ui.glass.LocalGlassEnabled
 import com.zsz.zlivephoto.ui.glass.PublishPageBackdrop
+import com.zsz.zlivephoto.ui.glass.TopBarFrost
 import com.zsz.zlivephoto.ui.glass.animatedThemeColor
 import com.zsz.zlivephoto.ui.glass.liquidDraggable
 import com.zsz.zlivephoto.ui.glass.liquidGlass
@@ -175,6 +180,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import kotlin.math.roundToInt
 import java.util.Calendar
 
 /**
@@ -299,7 +305,6 @@ private fun ConfirmImportButton(
                     // 层次改由 tint + 透镜折射 + 轻投影表达
                     highlight = null,
                     layerBlock = physics.transform,
-                    fusionActive = { physics.highlight.pressProgress },
                     onDrawBackdrop = if (canConfirm) adaptive.recordBackdrop else null
                 )
                 else Modifier.background(
@@ -443,12 +448,31 @@ fun PhotoPickerScreen(
     var albumsExpanded by remember { mutableStateOf(false) }
     // 相册切换滚动方向（项 4）：1=切到右侧相册（新内容自右侧进入、画面向左滚），-1=反向
     var slideDir by remember { mutableStateOf(1) }
-    // 排序（大小/日期/名称 + 正倒序）与按名称搜索
-    var sortField by remember { mutableStateOf(AlbumSortField.DATE) }
-    var sortAscending by remember { mutableStateOf(false) }
+    // 排序（大小/日期/名称 + 正倒序）与按名称搜索。
+    // 排序字段 / 顺序 / 媒体筛选从 AppSettings 读出初值（用户要求：展开菜单里的
+    // 设置要沿用到下一次，不能每次进入选择器都被重置），变更后再写回持久化。
+    var sortField by remember {
+        mutableStateOf(
+            runCatching { AlbumSortField.valueOf(AppSettings.pickerSortField) }
+                .getOrDefault(AlbumSortField.DATE)
+        )
+    }
+    var sortAscending by remember { mutableStateOf(AppSettings.pickerSortAscending) }
     var searchQuery by remember { mutableStateOf("") }
     // 媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片），与排序独立、先筛后排
-    var mediaFilter by remember { mutableStateOf(MediaFilter.ALL) }
+    var mediaFilter by remember {
+        mutableStateOf(
+            runCatching { MediaFilter.valueOf(AppSettings.pickerMediaFilter) }
+                .getOrDefault(MediaFilter.ALL)
+        )
+    }
+    // 写回持久化（首帧与已存值相同，重复写入无副作用）
+    LaunchedEffect(sortField, sortAscending) {
+        AppSettings.setPickerSort(sortField.name, sortAscending)
+    }
+    LaunchedEffect(mediaFilter) {
+        AppSettings.rememberPickerMediaFilter(mediaFilter.name)
+    }
     // 右上角「更多」菜单：moreMenuOpen=菜单显隐；morePage=0 全部收起（4 个父项
     // 平铺），1..4=对应分组原地展开（其后的父项让位，子面板下方直接收边）
     var moreMenuOpen by remember { mutableStateOf(false) }
@@ -570,11 +594,19 @@ fun PhotoPickerScreen(
     // 导入按钮点击动画（项 1）
     val importFb = rememberPressFeedback(baseCorner = 20.dp, pressedCorner = 8.dp)
 
+    // 根容器实测尺寸（横竖屏判断的数据源，由下方根 Box 的 onSizeChanged 回填）。
+    // 必须声明在 key(isDarkTheme) **之外**：key 重组会重置 remember 值，而尺寸没变时
+    // onSizeChanged 不会重发，横屏状态会被清零后误判回竖屏。
+    var rootSizePx by remember { mutableStateOf(IntSize.Zero) }
     // 深浅色切换时以 isDarkTheme 为 key 驱动全树重组：
-    // uiMode configChanges 下部分控件（排序按钮/日期头/张数文本）曾不随主题切换
+    // uiMode configChanges 下部分控件曾不随主题切换
     key(isDarkTheme) {
-    // 横屏判断
-    val isLandscape = LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp
+    // 横屏判断：以根容器**实测尺寸**为准，LocalConfiguration 仅作首帧兜底。
+    // 手动 configChanges 模式下若系统没把新方向分发给界面（个别 ROM），横屏会被
+    // 误判成竖屏——相册栏留在顶部、横屏左右分栏不出现（用户反馈「相册栏还在顶部」）。
+    val isLandscape = if (rootSizePx == IntSize.Zero)
+        LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp
+    else rootSizePx.width > rootSizePx.height
     // 横屏左侧相册栏宽度：收起为窄栏（仅相册名），展开时整栏由左向右变宽（配合封面右向展开）
     val railWidth by animateDpAsState(
         targetValue = if (albumsExpanded) 188.dp else 148.dp,
@@ -593,35 +625,20 @@ fun PhotoPickerScreen(
     var collapsedChromePx by remember { mutableIntStateOf(0) }
     val chromeHeightDp = with(LocalDensity.current) { chromeHeightPx.toDp() }
     val collapsedChromeDp = with(LocalDensity.current) { collapsedChromePx.toDp() }
-    // ── 相册下拉面板：固定栏下方的覆盖层，展开时向下铺到固定栏底部之下，
-    // 收起时收回到固定栏顶部（高度归零并移出组合树）——所以固定栏自身高度
-    // 恒定，面板高度可与色带/网格让位共用同一个弹簧值。
-    // 行高与 AlbumChip 横向展开态一致（6dp 内边距 + 44dp 封面 = 56dp），
-    // 高度按项目数算出、上限 42% 屏高：超出上限才在面板内部滚动
-    // （用户反馈：展开相册后相册的滚动范围应减小）。
-    // 直接计算而非实测：避免「测高 → 改高度 → 再测」的布局回环与首帧闪烁。
-    val albumRowHeight = 56.dp
-    val albumPanelMax = LocalConfiguration.current.screenHeightDp.dp * 0.42f
-    val albumPanelTarget = if (albums.size > 1)
-        (albumRowHeight * albums.size + 8.dp * (albums.size - 1) + 16.dp)
-            .coerceAtMost(albumPanelMax)
-    else 0.dp
-    val albumPanelAnimated by animateDpAsState(
-        targetValue = if (albumsExpanded) albumPanelTarget else 0.dp,
-        animationSpec = spring(dampingRatio = 0.9f, stiffness = 380f),
-        label = "albumPanelPad"
-    )
-    // 完全收起后不再参与组合（用户要求：不需要显示的时候不渲染），
-    // 展开中/展开态才在树里
-    val albumPanelComposed = albumsExpanded || albumPanelAnimated > 0.5.dp
-    // 顶部不透明色带高度 = 固定栏实测高度（含状态栏）+ 相册下拉面板展开高度：
-    // 色带完整包含相册选择区域（展开后同样包含，用户反馈）。下沿与内容底边
-    // 齐平，日期分组 stickyHeader 钉在其下方 4dp 处不被遮挡。
-    val chromeBand = if (chromeHeightPx > collapsedChromePx) chromeHeightDp else collapsedChromeDp
-    val veilHeight = chromeBand + albumPanelAnimated
+    // 顶栏玻璃带高度 = 顶栏内容实测高度（含状态栏），**不再向下伸渐隐尾巴**：
+    // 日期分组 stickyHeader 钉在内容下方，尾巴伸进该位置会把日期栏盖在玻璃块里
+    // ——看不见也点不到（用户反馈「日期栏被相册玻璃块遮挡无法点击」）。
+    // 玻璃带下沿与内容底边齐平后日期栏完整落在玻璃带下方。
+    val veilHeight = if (chromeHeightPx > collapsedChromePx) chromeHeightDp else collapsedChromeDp
     // 输出格式菜单与返回按钮都是玻璃 chrome：整屏 Box 承载菜单浮层
     // （库在独立 Window 内采样坐标错误，弹窗/菜单必须同窗口 Compose overlay）
-    Box(Modifier.fillMaxSize()) {
+    Box(
+        Modifier
+            .fillMaxSize()
+            // 实测窗口尺寸回填给 rootSizePx：旋转后本修饰符随根布局重新测量，
+            // 不依赖系统把 Orientation 配置分发到界面（横竖屏判断的真正数据源）
+            .onSizeChanged { rootSizePx = it }
+    ) {
     Row(
         Modifier
             .fillMaxSize()
@@ -645,29 +662,18 @@ fun PhotoPickerScreen(
                     // 横屏：列表最后一项不能被导航栏遮住
                     .navigationBarsPadding()
             ) {
-                // 行 1：返回 + 「更多」。标题移到独立一行——收起态栏宽仅 148dp，
-                // 标题与两颗按钮同行时被 weight(1f) 挤到只剩几十 dp，
+                // 行 1：返回。标题移到独立一行——收起态栏宽仅 148dp，
+                // 标题与按钮同行时被 weight(1f) 挤到只剩几十 dp，
                 // 「选择动态照片」被截断成「选择动态…」（用户反馈「标题有时会被截断」）。
-                // 「更多」保持在行内右端：其左缘 = railWidth - 42dp，
-                // 与下方菜单浮层的形变起点（start = railWidth - 42dp）严格对齐。
+                // 「搜索 / 更多」不放本栏：横屏统一挪到**屏幕右上角**（内容区右上覆盖层），
+                // 搜索在左、更多在右（用户需求）。
+                // 左右内边距统一 12dp：与竖屏顶栏、网格的页面内缩一致
+                // （用户反馈「横屏部件左右太靠边缘，横竖屏距边缘的宽度也不一样」）
                 Row(
-                    Modifier.fillMaxWidth().padding(horizontal = 2.dp, vertical = 2.dp),
+                    Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     BackButton(onBack)
-                    Spacer(Modifier.weight(1f))
-                    // 横屏：右上角「更多」与竖屏同一套菜单
-                    GlassIconButton(
-                        onClick = { haptic.click(); morePage = 0; moreMenuOpen = true },
-                        contentDescription = stringResource(R.string.screen_more)
-                    ) {
-                        Icon(
-                            Icons.Default.MoreVert,
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp),
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
                 }
                 // 行 2：标题独立成行（独占整栏宽度，不再与按钮争抢）
                 Text(
@@ -678,11 +684,11 @@ fun PhotoPickerScreen(
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 6.dp, vertical = 2.dp)
+                        .padding(horizontal = 12.dp, vertical = 2.dp)
                 )
                 // 相册数 + 展开/收起封面（箭头未展开朝右、展开后朝左）
                 Row(
-                    Modifier.fillMaxWidth().padding(start = 10.dp, end = 2.dp),
+                    Modifier.fillMaxWidth().padding(horizontal = 12.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
@@ -691,21 +697,7 @@ fun PhotoPickerScreen(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.weight(1f)
                     )
-                    // 横屏：搜索（与竖屏一致，展开为整行搜索框，浮在网格顶部）
-                    GlassIconButton(
-                        onClick = { haptic.click(); searchOpen = true },
-                        contentDescription = stringResource(R.string.screen_search)
-                    ) {
-                        Icon(
-                            Icons.Default.Search,
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp),
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                    // 搜索与展开按钮之间留 6dp：此前两颗圆钮紧贴在一起，
-                    // 误触率高且观感拥挤（用户反馈「离得太近」）
-                    Spacer(Modifier.width(6.dp))
+                    // 「搜索」不放本栏：与「更多」一起挪到屏幕右上角（内容区右上覆盖层）
                     // 展开/收起封面（玻璃圆钮，与顶栏按钮同款）
                     GlassIconButton(
                         onClick = { haptic.click(); albumsExpanded = !albumsExpanded },
@@ -713,7 +705,12 @@ fun PhotoPickerScreen(
                     ) {
                         val rotation by animateFloatAsState(
                             targetValue = if (albumsExpanded) 180f else 0f,
-                            animationSpec = tween(250), label = "railChevron"
+                            // 与封面展开同一套弹簧：箭头翻转与栏宽、封面生长同步收尾
+                            animationSpec = spring(
+                                dampingRatio = Spring.DampingRatioNoBouncy,
+                                stiffness = Spring.StiffnessMediumLow
+                            ),
+                            label = "railChevron"
                         )
                         Icon(
                             Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -726,15 +723,16 @@ fun PhotoPickerScreen(
                 // 扫描进度
                 AnimatedVisibility(visible = running) {
                     LinearProgressIndicator(
-                        Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 4.dp)
+                        Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp)
                     )
                 }
-                // 相册列表：纵向铺开，占满剩余高度
+                // 相册列表：贴近屏幕最左侧纵向铺开，展开时向右生长（左缘不动）
                 LazyColumn(
                     Modifier
                         .weight(1f)
                         .fillMaxWidth()
-                        .padding(horizontal = 8.dp, vertical = 4.dp),
+                        // 与上面几行同为 12dp 页面内缩（不再贴屏幕左右边缘）
+                        .padding(horizontal = 12.dp, vertical = 4.dp),
                     verticalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
                     items(albums, key = { it.bucketId }) { album ->
@@ -822,42 +820,44 @@ fun PhotoPickerScreen(
                             sortField = sortField,
                             sortAscending = sortAscending,
                             searchQuery = searchQuery,
-                            // 展开相册下拉面板是覆盖层：网格让位 = 顶栏高 + 面板高（弹簧动画）
-                            contentTopPadding = chromeHeightDp + 4.dp + albumPanelAnimated
+                            // 横屏没有顶栏覆盖层，chromeHeightPx 是竖屏组合留下的**陈旧值**
+                            // （onSizeChanged 挂在竖屏内容列上，横屏该节点不组合、不更新），
+                            // 拿它做顶部内缩会在网格顶压出一大块空白（用户反馈「可滚动区域
+                            // 上面有块白色区域」）。横屏只需给状态栏让位（内容区已
+                            // statusBarsPadding），顶部内缩归到最小 4dp。
+                            contentTopPadding = if (isLandscape) 4.dp else chromeHeightDp + 4.dp,
+                            landscape = isLandscape
                         )
                     }
 
-                    // ── 底部纯色渐变：从屏幕最底端向中间逐渐减淡，与顶部对称 ──
-                    // 同一套黑/白规则（深色模式黑、浅色模式白），兜住右下角导入按钮，
-                    // 让按钮在任意照片背景上都可读。
+                    // ── 底部填充背景：与设置页一致的「浅色渐白 / 深色渐黑」渐变 ──
+                    // 这里原来是 0.72/0.85 alpha 的黑/白渐罩：底部照片始终半透、发灰，
+                    // 和设置页那种干净的纯色底不一致（用户反馈「可滚动区域底部填充的
+                    // 背景要和设置一样的白色/黑色渐变，按深浅色模式」）。现在渐隐到与
+                    // GlassRoot 采样源同源的目标色（深色 #0B0B0D、浅色纯白），
+                    // 最底部为完全不透明底色；MD3 模式下改用主题背景色。
                     // **必须在采样层之内**：导入按钮的自适应色采样的是「玻璃折射到的背景」，
                     // 渐罩画在采样层之外时按钮采样不到提亮后的底色，字体色会误判
                     // （用户反馈「导入按钮自动改变字体颜色不正常」）；同时渐罩本身也是
                     // 「下层内容」的一部分，玻璃模糊理应包含它。
-                    if (glassNow) {
-                        // 渐罩颜色/浓度跟随主题 500ms 渐变：瞬时翻转会让切换窗口里
-                        // 「已渐变的采样源」被「未渐变的渐罩」打了一个黑白补丁
-                        val scrim = animatedThemeColor(Color.Black, Color.White)
-                        val scrimAlpha by animateFloatAsState(
-                            targetValue = if (LocalDarkTheme.current) 0.72f else 0.85f,
-                            animationSpec = tween(durationMillis = 500),
-                            label = "pickerScrimAlpha"
-                        )
-                        Box(
-                            Modifier
-                                .align(Alignment.BottomCenter)
-                                .fillMaxWidth()
-                                .height(132.dp)
-                                .background(
-                                    Brush.verticalGradient(
-                                        listOf(
-                                            scrim.copy(alpha = 0f),
-                                            scrim.copy(alpha = scrimAlpha)
-                                        )
+                    val bottomFill = if (glassNow)
+                        animatedThemeColor(Color(0xFF0B0B0D), Color.White)
+                    else MaterialTheme.colorScheme.background
+                    Box(
+                        Modifier
+                            .align(Alignment.BottomCenter)
+                            .fillMaxWidth()
+                            .height(160.dp)
+                            .background(
+                                Brush.verticalGradient(
+                                    listOf(
+                                        bottomFill.copy(alpha = 0f),
+                                        bottomFill.copy(alpha = 0.82f),
+                                        bottomFill
                                     )
                                 )
-                        )
-                    }
+                            )
+                    )
                 }
 
                 // ── 横屏搜索：横屏没有顶栏，搜索展开后浮在网格顶部（竖屏由顶栏承载）──
@@ -872,6 +872,62 @@ fun PhotoPickerScreen(
                             onClose = { searchOpen = false; searchQuery = "" },
                             modifier = Modifier.align(Alignment.TopCenter)
                         )
+                    }
+                }
+            }
+
+            // ── 横屏：搜索 / 更多按钮组固定在**屏幕右上角**，搜索在左、更多在右 ──
+            // 横屏没有顶栏，这组按钮此前散在左侧相册栏（更多在行 1 右端、搜索在行 3），
+            // 用户要求统一放屏幕右上角。搜索展开动画不变：LandscapeSearchOverlay 直接
+            // 覆盖整个顶部，此时本按钮组淡出让位（否则会浮在搜索框上）。
+            if (isLandscape) {
+                // 搜索打开时淡出让位。这里不能用 AnimatedVisibility：本处在
+                // 屏幕 Row(RowScope) 与内容 Box(BoxScope) 的双重作用域下，
+                // 重载解析会选中 RowScope 版本并因隐式接收者报编译错误，
+                // 改用显式 alpha 动画实现同样的淡入淡出。
+                val topButtonsAlpha by animateFloatAsState(
+                    targetValue = if (searchOpen) 0f else 1f,
+                    animationSpec = tween(if (searchOpen) 100 else 140),
+                    label = "landscapeTopButtonsFade"
+                )
+                if (topButtonsAlpha > 0.01f) CompositionLocalProvider(
+                    LocalGlassBackdrop provides (if (glassNow) pickerBackdrop else LocalGlassBackdrop.current)
+                ) {
+                    // 内容区已 statusBarsPadding（横屏），这里只需对齐右上角 12dp/2dp
+                    // ——与竖屏顶栏按钮组同一套边距，更多菜单锚点也与此对齐。
+                    Row(
+                        Modifier
+                            .align(Alignment.TopEnd)
+                            .graphicsLayer { alpha = topButtonsAlpha }
+                            .padding(top = 2.dp, end = 12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                            // 搜索（左）：点击后整组淡出，搜索框覆盖整个顶部
+                            GlassIconButton(
+                                onClick = { haptic.click(); searchOpen = true },
+                                contentDescription = stringResource(R.string.screen_search),
+                                // 浮在照片上：图标按背景亮度自动切黑白（与竖屏一致）
+                                adaptiveContent = true
+                            ) {
+                                Icon(
+                                    Icons.Default.Search,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                            }
+                            Spacer(Modifier.width(6.dp))
+                            // 更多（右）：与竖屏同一套菜单
+                            GlassIconButton(
+                                onClick = { haptic.click(); morePage = 0; moreMenuOpen = true },
+                                contentDescription = stringResource(R.string.screen_more),
+                                adaptiveContent = true
+                            ) {
+                                Icon(
+                                    Icons.Default.MoreVert,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                            }
                     }
                 }
             }
@@ -916,11 +972,11 @@ fun PhotoPickerScreen(
                     .then(
                         if (glassNow) Modifier
                         else Modifier
-                            // MD3 顶栏背景：底部同样做透明度渐隐过渡（与玻璃带一致）
+                            // MD3 顶栏背景：同样半透明（50%）+ 底部透明度渐隐过渡（与玻璃带一致）
                             .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
                             .drawWithContent {
                                 drawContent()
-                                val fadeH = 14.dp.toPx()
+                                val fadeH = 32.dp.toPx()
                                 drawRect(
                                     brush = Brush.verticalGradient(
                                         0f to Color.Black, 1f to Color.Transparent,
@@ -933,7 +989,7 @@ fun PhotoPickerScreen(
                                     blendMode = BlendMode.DstIn
                                 )
                             }
-                            .background(MaterialTheme.colorScheme.surfaceContainer)
+                            .background(MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.50f))
                     )
             ) {
             if (!isLandscape) {
@@ -950,68 +1006,39 @@ fun PhotoPickerScreen(
                         enabled = glassNow
                     )
                     if (glassNow) {
-                        // 液态玻璃顶栏：采样网格层（真实照片）做模糊 + 折射，
-                        // 标题/相册条/按钮全部画在玻璃表面之上——与演示版一致，
-                        // 不再用「纯色渐变 + 浮生文字」（用户反馈字体没有玻璃一体感）。
-                        // 不透明度统一 70%（用户指定，主页/设置同步）：liquidGlass 内部
-                        // 把 tint 钳制在 0.6，这里传 0.6、下方 drawBehind 补足 0.10
-                        val topTintAlpha = 0.60f
-                        val veilSurface = MaterialTheme.colorScheme.surface
-                        Box(
-                            Modifier
-                                .fillMaxWidth()
-                                .height(veilHeight)
-                                // 底部透明度渐隐过渡（用户反馈：在渐变增加透明度过渡，
-                                // 此前是硬切边）：离屏层内 DstIn 渐变把玻璃带下缘淡出
-                                .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
-                                .drawWithContent {
-                                    drawContent()
-                                    val fadeH = 14.dp.toPx()
-                                    drawRect(
-                                        brush = Brush.verticalGradient(
-                                            0f to Color.Black, 1f to Color.Transparent,
-                                            startY = size.height - fadeH, endY = size.height
-                                        ),
-                                    topLeft = Offset(0f, size.height - fadeH),
-                                    size = androidx.compose.ui.geometry.Size(size.width, fadeH),
-                                    blendMode = BlendMode.DstIn
-                                )
-                            }
-                                .liquidGlass(
-                                    shape = RectangleShape,
-                                    tintAlpha = topTintAlpha,
-                                    tintColor = veilSurface,
-                                    // 全宽条：禁透镜与外阴影（边缘「水滴边」在全宽条上怪异），
-                                    // 界限干脆，滚动内容从玻璃下沿直接穿过
-                                    lensEnabled = false,
-                                    highlight = null,
-                                    shadow = Shadow(radius = 0.dp, alpha = 0f),
-                                    onDrawBackdrop = topAdaptive.recordBackdrop
-                                )
-                                .drawBehind {
-                                    // 补足到 70%（玻璃内部钳制 0.6）
-                                    drawRect(veilSurface.copy(alpha = 0.10f))
-                                }
-                        )
+                        // 顶栏改用与设置页同款的 [TopBarFrost]：固定轻磨砂 + 70% 黑/白
+                        // 有色层，并在下缘平滑渐隐。此前的「50% 同色 tint 玻璃条」
+                        // 叠在深色页面底上时等于什么都没叠，观感是一整块纯黑硬边
+                        // （用户反馈「固定顶栏还是全黑的，参考设置页面制作」）。
+                        val statusInset = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
+                        TopBarFrost(
+                            modifier = Modifier.fillMaxWidth(),
+                            barHeight = (veilHeight - statusInset).coerceAtLeast(0.dp)
+                        ) {}
                     }
                     CompositionLocalProvider(
                         LocalContentColor provides
                             if (glassNow) topAdaptive.color
                             else MaterialTheme.colorScheme.onSurface
                     ) {
-                    // 固定栏与相册下拉面板纵向堆叠：面板挂在固定栏之下、展开时向下铺开
-                    Column(Modifier.fillMaxWidth()) {
+                    // 3.7.1 版式：顶部固定玻璃栏（标题行 + 相册横向列表 + 进度条），
+                    // 相册在这里原地展开，不再有额外的下拉面板
                     Column(
                         Modifier
                             .fillMaxWidth()
-                            .statusBarsPadding()
-                            // 只测量「内容」高度（标题 + 相册栏 + 进度条），不含玻璃块。
-                            // onSizeChanged 必须挂在内容列上：玻璃块高度由这里测出的
-                            // collapsedChromePx 反推，互相抬高会导致布局无限增长。
+                            // onSizeChanged 必须放在 statusBarsPadding **之前**（外层）：
+                            // 顶栏玻璃带与网格顶部让位都从屏幕顶(y=0)算起，测得的顶栏
+                            // 总高必须**含状态栏**。放在内层时测的是纯内容高度、漏掉
+                            // 状态栏那一截，网格顶部内缩偏小，照片顶端会被相册栏压住
+                            // 一截（用户反馈「可滚动区域的顶端应该再往下移一点，
+                            // 保证不要被相册组件遮挡」）。
+                            // 仍只挂内容列、不挂玻璃所在父节点：玻璃带高度由本测得值
+                            // 反推，挂父节点会互相抬高导致布局无限增长。
                             .onSizeChanged {
                                 chromeHeightPx = it.height
                                 if (!albumsExpanded) collapsedChromePx = it.height
                             }
+                            .statusBarsPadding()
                     ) {
                 // 标题行：收起态 = 返回 + 标题 + 搜索 + 更多；展开态整行让位给搜索框，
                 // 其余组件被推出屏幕外、收起时再拉回（用户需求：只保留上方这一个搜索）。
@@ -1041,7 +1068,7 @@ fun PhotoPickerScreen(
                         )
                     } else {
                         Row(
-                            Modifier.fillMaxWidth().padding(start = 4.dp, end = 12.dp, top = 2.dp, bottom = 2.dp),
+                            Modifier.fillMaxWidth().padding(start = 12.dp, end = 12.dp, top = 2.dp, bottom = 2.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             BackButton(onBack)
@@ -1097,19 +1124,18 @@ fun PhotoPickerScreen(
                                 AlbumChip(
                                     album = album,
                                     selected = album.bucketId == bucketId,
-                                    // 固定栏内的 chip 恒为收起态（用户需求：收起时
-                                    // 相册行贴固定栏顶部）；展开态封面卡在下方独立面板
-                                    expanded = false,
+                                    // 3.7.1 版式：相册条就在顶部固定栏内，展开时 chip 原地长高
+                                    expanded = albumsExpanded,
                                     onClick = { switchAlbum(album.bucketId) },
                                     // 顶栏玻璃的自适应黑白（玻璃模式下；MD3 下为 onSurface，不会被用）
                                     contentColor = LocalContentColor.current
                                 )
                             }
                         }
-                        // 展开/收起封面（玻璃圆钮）
+                        // 展开/收起封面（玻璃圆钮）；右缘与标题行「更多」按钮对齐（12dp）
                         GlassIconButton(
                             onClick = { haptic.click(); albumsExpanded = !albumsExpanded },
-                            modifier = Modifier.padding(end = 4.dp),
+                            modifier = Modifier.padding(end = 12.dp),
                             contentDescription = if (albumsExpanded) stringResource(R.string.screen_album_collapse_cover) else stringResource(R.string.screen_album_expand_cover),
                             adaptiveContent = true
                         ) {
@@ -1133,47 +1159,6 @@ fun PhotoPickerScreen(
                     )
                 }
                     } // 顶栏模糊区 Column（固定栏）
-                    // ── 相册下拉面板：从固定栏底部向下展开，收起时收回到固定栏顶部 ──
-                    // 高度由外层的弹簧值裁剪（自上而下揭开），内容按目标高度布局，
-                    // 完全收起后整体移出组合树——不显示时不渲染。
-                    // 面板自身不再画独立玻璃/底色：竖屏顶栏色带已完整覆盖它
-                    // （用户反馈：不透明色区域应完整包含相册选择区域）。
-                    if (albums.size > 1 && albumPanelComposed) {
-                        Box(
-                            Modifier
-                                .fillMaxWidth()
-                                .height(albumPanelAnimated)
-                                .clipToBounds()
-                        ) {
-                            Box(Modifier.fillMaxWidth().requiredHeight(albumPanelTarget)) {
-                                LazyColumn(
-                                    Modifier
-                                        .fillMaxWidth()
-                                        .padding(horizontal = 12.dp, vertical = 8.dp),
-                                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                                ) {
-                                    items(albums, key = { it.bucketId }) { album ->
-                                        AlbumChip(
-                                            album = album,
-                                            // 面板内每行撑满：下拉列表左缘整齐
-                                            modifier = Modifier.fillMaxWidth(),
-                                            selected = album.bucketId == bucketId,
-                                            // 面板内恒为展开态（带封面）
-                                            expanded = true,
-                                            horizontal = true,
-                                            onClick = {
-                                                switchAlbum(album.bucketId)
-                                                // 选完即收起：面板收回固定栏顶部
-                                                albumsExpanded = false
-                                            },
-                                            contentColor = LocalContentColor.current
-                                        )
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    } // 固定栏 + 面板 Column
                 } // 顶栏模糊区 Box
                 // 玻璃模式下顶栏由模糊衰减自然收边，不再画硬分隔线
                 if (!glassNow) {
@@ -1230,16 +1215,17 @@ fun PhotoPickerScreen(
     GlassMenuOverlay(
         visible = moreMenuOpen,
         onDismiss = { moreMenuOpen = false; morePage = 0 },
-        alignment = if (isLandscape) Alignment.TopStart else Alignment.TopEnd,
+        // 横竖屏统一右上锚定：横屏「更多」按钮已挪到屏幕右上角（内容区右上覆盖层，
+        // 内容区 statusBarsPadding 后按钮顶 = 状态栏 + 2dp、右 = 12dp），与竖屏同一套坐标。
+        alignment = Alignment.TopEnd,
         modifier = Modifier
             .statusBarsPadding()
             .padding(
-                // 竖屏：菜单右上角直接对齐「更多」按钮（按钮右上角 = 距右 12dp、顶 2dp），
+                // 菜单右上角直接对齐「更多」按钮（按钮右上角 = 距右 12dp、顶 2dp），
                 // 入场形变从该角的 40dp 圆（按钮轮廓）溶解长为菜单外轮廓。
-                // 横屏：以左侧栏内「更多」按钮左上角为形变起点（按钮左缘 = railWidth - 42dp）。
-                top = if (isLandscape) 44.dp else 2.dp,
-                start = if (isLandscape) (railWidth - 42.dp).coerceAtLeast(8.dp) else 0.dp,
-                end = if (isLandscape) 0.dp else 12.dp,
+                top = 2.dp,
+                start = 0.dp,
+                end = 12.dp,
                 bottom = 8.dp
             )
             .widthIn(min = 196.dp, max = 252.dp),
@@ -1257,6 +1243,22 @@ fun PhotoPickerScreen(
             else -> null
         },
         onSubmenuDismiss = { morePage = 0 },
+        // 子卡顶部重画所点父行（FlClash `_buildContent` 的 covered header）：
+        // 标题 + 当前值，与一级卡片里被盖住的那一行逐像素一致。
+        submenuTitle = when (morePage) {
+            1 -> stringResource(R.string.screen_menu_output_format)
+            2 -> stringResource(R.string.screen_menu_sort_field)
+            3 -> stringResource(R.string.screen_menu_sort_order)
+            4 -> stringResource(R.string.screen_menu_media_filter)
+            else -> null
+        },
+        submenuValue = when (morePage) {
+            1 -> currentFormatLabel
+            2 -> sortFieldLabel
+            3 -> sortOrderLabel
+            4 -> filterLabel
+            else -> null
+        },
         submenuContent = {
             when (morePage) {
                 // ① 输出格式
@@ -1388,7 +1390,9 @@ private fun AlbumGridPage(
     sortAscending: Boolean = false,
     searchQuery: String = "",
     // 顶栏覆盖层的高度：网格从屏幕顶开始，首屏内容要落在顶栏下方（滚动后穿过顶栏）
-    contentTopPadding: Dp = 0.dp
+    contentTopPadding: Dp = 0.dp,
+    // 横竖屏（决定列数）：由调用方按根容器实测尺寸判定，本函数不再读 LocalConfiguration
+    landscape: Boolean = false
 ) {
     val state = remember(bucketId) { if (bucketId != null) scanner.stateOf(bucketId) else null }
     val results = state?.results
@@ -1436,13 +1440,22 @@ private fun AlbumGridPage(
         else -> LazyVerticalGrid(
             state = gridState,
             // 竖屏 3 列；横屏固定 5 列（用户要求每行五张照片）
-            columns = GridCells.Fixed(
-                if (LocalConfiguration.current.screenWidthDp > LocalConfiguration.current.screenHeightDp) 5 else 3
-            ),
+            columns = GridCells.Fixed(if (landscape) 5 else 3),
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 2.dp),
-            contentPadding = PaddingValues(top = contentTopPadding, bottom = navBarBottom + 8.dp),
+                // 顶部让位改用 **contentPadding**（只把首屏内容推到相册栏下沿，
+                // 滚动时照片会从半透明顶栏后面滑过）：顶栏不透明度 50%、底缘 32dp
+                // 渐隐过渡，需要照片真的透到栏后面才能看到「半透明 + 渐隐」，
+                // 布局内缩（padding）会把网格视口压在栏下、栏杆背后永远是空底色，
+                // 看上去就是一整块纯黑且与照片硬切（用户反馈「还是纯黑加明显边缘」）。
+                // 左右内缩 12dp：与顶栏/横屏相册栏的页面内缩统一
+                .padding(horizontal = 12.dp),
+            // 底部留出渐变填充带的高度：最底下一排照片滚到渐变带上方就停住，
+            // 不会被底部的白/黑渐变盖住（用户要求底部是「填充背景」而不是遮挡照片）。
+            contentPadding = PaddingValues(
+                top = contentTopPadding,
+                bottom = navBarBottom + 8.dp + 112.dp
+            ),
             horizontalArrangement = Arrangement.spacedBy(2.dp),
             verticalArrangement = Arrangement.spacedBy(2.dp)
         ) {
@@ -1468,6 +1481,10 @@ private fun AlbumGridPage(
                 val groups = sorted.groupBy { dateKey(it.sortTime) }
                 for ((dk, groupItems) in groups) {
                     stickyHeader(key = "hdr_$dk") {
+                        // 日期栏的位置与移动完全交给 stickyHeader 自身（与 3.7.1 一致）：
+                        // 此前在 offset 里读 gridState.layoutInfo 再补偿一次顶栏高度，
+                        // 会让钉住的日期栏被推下两倍内缩、跟随滚动抖动——日期栏的
+                        // 显示位置与黏附逻辑不该被背景板改动牵连（用户反馈）。
                         Box(Modifier.fillMaxWidth()) {
                             // 组内统计与整组切换只看可选项（拆解模式下动态照片不可选）
                             val choosable = groupItems.filter { selectable(it) }
@@ -1743,8 +1760,7 @@ private fun AlbumChip(
                 RoundedCornerShape(corner),
                 tintAlpha = if (selected) 0.20f else 0.08f,
                 // 玻璃表面与文字作为整体变形（layerBlock 的 graphicsLayer 包裹全节点）
-                layerBlock = physics.transform,
-                fusionActive = { physics.highlight.pressProgress }
+                layerBlock = physics.transform
             )
             // 触点径向高光画在玻璃之上、内容之下（链内顺序保证）
             .then(physics.highlight.modifier)
@@ -1781,8 +1797,23 @@ private fun AlbumChip(
                 )
                 AnimatedVisibility(
                     visible = expanded,
-                    enter = fadeIn(tween(200)) + expandHorizontally(tween(250)),
-                    exit = fadeOut(tween(150)) + shrinkHorizontally(tween(200))
+                    // 展开方向固定「从左往右」：封面贴住文字右缘、以自身左缘为基准向右揭开；
+                    // 收起则原路向左收回。弹簧（低阻尼）替代 tween，和整体液态玻璃的
+                    // 回弹手感统一，宽度变化与圆角/栏宽弹簧同步收尾。
+                    enter = fadeIn(tween(180)) + expandHorizontally(
+                        animationSpec = spring(
+                            dampingRatio = Spring.DampingRatioLowBouncy,
+                            stiffness = Spring.StiffnessMediumLow
+                        ),
+                        expandFrom = Alignment.Start
+                    ),
+                    exit = fadeOut(tween(120)) + shrinkHorizontally(
+                        animationSpec = spring(
+                            dampingRatio = Spring.DampingRatioNoBouncy,
+                            stiffness = Spring.StiffnessMedium
+                        ),
+                        shrinkTowards = Alignment.Start
+                    )
                 ) {
                     Box(
                         Modifier

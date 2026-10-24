@@ -52,7 +52,6 @@ import com.zsz.zlivephoto.ui.glass.rememberGlassButtonPhysics
 import com.zsz.zlivephoto.ui.glass.rememberGlassEffectCache
 import com.zsz.zlivephoto.ui.glass.catalog.shapes.Capsule
 import com.zsz.zlivephoto.ui.glass.catalog.utils.DampedDragAnimation
-import com.zsz.zlivephoto.ui.glass.glassFusionParticipant
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.math.abs
@@ -293,10 +292,6 @@ private fun LiquidSliderDamped(
                         drawRect(Color.White.copy(alpha = 1f - progress))
                     }
                 )
-                .glassFusionParticipant(
-                    color = Color.White,
-                    active = { dampedDragAnimation.pressProgress }
-                )
                 .size(40f.dp, 24f.dp)
         )
     }
@@ -519,10 +514,6 @@ private fun LiquidSliderDirect(
                         // 下层轨道/页面的磨砂影像——液态玻璃滑块（用户反馈恢复项）
                         drawRect(Color.White.copy(alpha = 0.30f * (1f - press)))
                     }
-                )
-                .glassFusionParticipant(
-                    color = Color.White,
-                    active = { physics.highlight.pressProgress }
                 )
                 .then(physics.highlight.modifier)
                 .size(40f.dp, 24f.dp)

@@ -64,7 +64,6 @@ import com.zsz.zlivephoto.ui.glass.quantizeAnim
 import com.zsz.zlivephoto.ui.glass.rememberGlassEffectCache
 import com.zsz.zlivephoto.ui.glass.catalog.shapes.Capsule
 import com.zsz.zlivephoto.ui.glass.catalog.utils.DampedDragAnimation
-import com.zsz.zlivephoto.ui.glass.glassFusionParticipant
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -247,7 +246,6 @@ fun LiquidScrollTabs(
                     },
                     onDrawSurface = { drawRect(containerColor) }
                 )
-                .glassFusionParticipant(color = containerColor)
                 .height(50f.dp)
                 .fillMaxWidth()
                 .padding(4.dp)
@@ -369,10 +367,6 @@ fun LiquidScrollTabs(
                             )
                             drawRect(Color.Black.copy(alpha = 0.03f * press))
                         }
-                    )
-                    .glassFusionParticipant(
-                        color = if (isDark) Color.White else Color.Black,
-                        active = { dampedDragAnimation.pressProgress }
                     )
                     // 指示器内的文字是行内文字的重复节点，清掉语义避免读屏双重播报
                     .clearAndSetSemantics {}

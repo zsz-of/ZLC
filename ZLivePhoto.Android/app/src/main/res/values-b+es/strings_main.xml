@@ -163,4 +163,8 @@
     <string name="main_export_replace_failed_bare">Error al reemplazar el archivo de origen</string>
     <string name="main_status_read_failed">No se pudo leer el archivo seleccionado</string>
     <string name="main_status_source_missing">El archivo de origen no existe o no se puede leer</string>
+    <!-- 状态栏：单项格式 / 导入结果分组 -->
+    <string name="main_status_item_format_set">Formato de salida de «%1$s» establecido por separado</string>
+    <string name="main_status_import_done_grouped">%1$d elementos importados (%2$d fotos en vivo combinadas)%3$s</string>
+    <string name="main_status_import_unpaired">; se omitieron %1$d fotos o vídeos sueltos sin pareja del mismo nombre</string>
 </resources>

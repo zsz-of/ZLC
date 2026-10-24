@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · 引導文案（繁體中文）。譯自 res/values/strings_onboarding.xml（簡體中文）。
+-->
+<resources>
+    <string name="onboarding_style_title">選擇介面風格</string>
+    <string name="onboarding_style_subtitle">兩種風格都能在設定中隨時切換</string>
+    <string name="onboarding_style_glass">液態玻璃</string>
+    <string name="onboarding_style_md3">原生介面</string>
+    <string name="onboarding_style_try">下面這組控制項可以直接試用，感受兩者的差別</string>
+    <string name="onboarding_preview_switch">開關</string>
+    <string name="onboarding_preview_slider">滑桿</string>
+    <string name="onboarding_preview_button">按鈕</string>
+    <string name="onboarding_theme_title">選擇深淺色</string>
+    <string name="onboarding_theme_subtitle">也可以跟隨系統自動切換；現在切換，這一頁會立刻跟著變</string>
+    <string name="onboarding_prev">上一步</string>
+    <string name="onboarding_next">下一步</string>
+    <string name="onboarding_finish">開始使用</string>
+    <string name="onboarding_preview_title">即時預覽</string>
+</resources>

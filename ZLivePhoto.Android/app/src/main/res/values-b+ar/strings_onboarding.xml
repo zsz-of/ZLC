@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · نصوص الإعداد الأولي (العربية). مُترجمة من res/values/strings_onboarding.xml (الصينية المبسطة).
+-->
+<resources>
+    <string name="onboarding_style_title">اختر نمط الواجهة</string>
+    <string name="onboarding_style_subtitle">يمكنك التبديل بين النمطين في أي وقت من الإعدادات</string>
+    <string name="onboarding_style_glass">الزجاج السائل</string>
+    <string name="onboarding_style_md3">الواجهة الكلاسيكية</string>
+    <string name="onboarding_style_try">جرّب العناصر بالأسفل لتلاحظ الفرق بينهما</string>
+    <string name="onboarding_preview_switch">مفتاح</string>
+    <string name="onboarding_preview_slider">شريط تمرير</string>
+    <string name="onboarding_preview_button">زر</string>
+    <string name="onboarding_theme_title">اختر الوضع الفاتح أو الداكن</string>
+    <string name="onboarding_theme_subtitle">يمكنه أيضًا اتّباع النظام، وعند التغيير تُحدَّث هذه الصفحة فورًا</string>
+    <string name="onboarding_prev">السابق</string>
+    <string name="onboarding_next">التالي</string>
+    <string name="onboarding_finish">ابدأ الاستخدام</string>
+    <string name="onboarding_preview_title">معاينة مباشرة</string>
+</resources>

@@ -18,13 +18,10 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
@@ -65,6 +62,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
@@ -118,11 +116,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
@@ -297,6 +299,7 @@ private fun ConfirmImportButton(
                     // 层次改由 tint + 透镜折射 + 轻投影表达
                     highlight = null,
                     layerBlock = physics.transform,
+                    fusionActive = { physics.highlight.pressProgress },
                     onDrawBackdrop = if (canConfirm) adaptive.recordBackdrop else null
                 )
                 else Modifier.background(
@@ -590,12 +593,32 @@ fun PhotoPickerScreen(
     var collapsedChromePx by remember { mutableIntStateOf(0) }
     val chromeHeightDp = with(LocalDensity.current) { chromeHeightPx.toDp() }
     val collapsedChromeDp = with(LocalDensity.current) { collapsedChromePx.toDp() }
-    // 顶栏玻璃带高度 = 顶栏内容实测高度（含状态栏），**不再向下伸渐隐尾巴**：
-    // 日期分组 stickyHeader 钉在 contentTopPadding（= 内容高 + 4dp）处，
-    // 尾巴伸进该位置会把日期栏盖在玻璃块里——看不见也点不到
-    // （用户反馈「日期栏被相册玻璃块遮挡无法点击」）。玻璃带下沿与内容底边
-    // 齐平后日期栏完整落在玻璃带下方；滚动内容从玻璃下沿直接穿过（硬界设计）。
-    val veilHeight = if (chromeHeightPx > collapsedChromePx) chromeHeightDp else collapsedChromeDp
+    // ── 相册下拉面板：固定栏下方的覆盖层，展开时向下铺到固定栏底部之下，
+    // 收起时收回到固定栏顶部（高度归零并移出组合树）——所以固定栏自身高度
+    // 恒定，面板高度可与色带/网格让位共用同一个弹簧值。
+    // 行高与 AlbumChip 横向展开态一致（6dp 内边距 + 44dp 封面 = 56dp），
+    // 高度按项目数算出、上限 42% 屏高：超出上限才在面板内部滚动
+    // （用户反馈：展开相册后相册的滚动范围应减小）。
+    // 直接计算而非实测：避免「测高 → 改高度 → 再测」的布局回环与首帧闪烁。
+    val albumRowHeight = 56.dp
+    val albumPanelMax = LocalConfiguration.current.screenHeightDp.dp * 0.42f
+    val albumPanelTarget = if (albums.size > 1)
+        (albumRowHeight * albums.size + 8.dp * (albums.size - 1) + 16.dp)
+            .coerceAtMost(albumPanelMax)
+    else 0.dp
+    val albumPanelAnimated by animateDpAsState(
+        targetValue = if (albumsExpanded) albumPanelTarget else 0.dp,
+        animationSpec = spring(dampingRatio = 0.9f, stiffness = 380f),
+        label = "albumPanelPad"
+    )
+    // 完全收起后不再参与组合（用户要求：不需要显示的时候不渲染），
+    // 展开中/展开态才在树里
+    val albumPanelComposed = albumsExpanded || albumPanelAnimated > 0.5.dp
+    // 顶部不透明色带高度 = 固定栏实测高度（含状态栏）+ 相册下拉面板展开高度：
+    // 色带完整包含相册选择区域（展开后同样包含，用户反馈）。下沿与内容底边
+    // 齐平，日期分组 stickyHeader 钉在其下方 4dp 处不被遮挡。
+    val chromeBand = if (chromeHeightPx > collapsedChromePx) chromeHeightDp else collapsedChromeDp
+    val veilHeight = chromeBand + albumPanelAnimated
     // 输出格式菜单与返回按钮都是玻璃 chrome：整屏 Box 承载菜单浮层
     // （库在独立 Window 内采样坐标错误，弹窗/菜单必须同窗口 Compose overlay）
     Box(Modifier.fillMaxSize()) {
@@ -799,7 +822,8 @@ fun PhotoPickerScreen(
                             sortField = sortField,
                             sortAscending = sortAscending,
                             searchQuery = searchQuery,
-                            contentTopPadding = chromeHeightDp + 4.dp
+                            // 展开相册下拉面板是覆盖层：网格让位 = 顶栏高 + 面板高（弹簧动画）
+                            contentTopPadding = chromeHeightDp + 4.dp + albumPanelAnimated
                         )
                     }
 
@@ -891,7 +915,25 @@ fun PhotoPickerScreen(
                     .fillMaxWidth()
                     .then(
                         if (glassNow) Modifier
-                        else Modifier.background(MaterialTheme.colorScheme.surfaceContainer)
+                        else Modifier
+                            // MD3 顶栏背景：底部同样做透明度渐隐过渡（与玻璃带一致）
+                            .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
+                            .drawWithContent {
+                                drawContent()
+                                val fadeH = 14.dp.toPx()
+                                drawRect(
+                                    brush = Brush.verticalGradient(
+                                        0f to Color.Black, 1f to Color.Transparent,
+                                        startY = size.height - fadeH, endY = size.height
+                                    ),
+                                    topLeft = Offset(0f, size.height - fadeH),
+                                    // 本文件已 import android.util.Size（缩略图尺寸），
+                                    // 这里必须写全限定名避免同名冲突
+                                    size = androidx.compose.ui.geometry.Size(size.width, fadeH),
+                                    blendMode = BlendMode.DstIn
+                                )
+                            }
+                            .background(MaterialTheme.colorScheme.surfaceContainer)
                     )
             ) {
             if (!isLandscape) {
@@ -911,21 +953,34 @@ fun PhotoPickerScreen(
                         // 液态玻璃顶栏：采样网格层（真实照片）做模糊 + 折射，
                         // 标题/相册条/按钮全部画在玻璃表面之上——与演示版一致，
                         // 不再用「纯色渐变 + 浮生文字」（用户反馈字体没有玻璃一体感）。
-                        // tintAlpha 跟随主题 500ms 渐变（与 liquidGlass 内部的深色乘子
-                        // 同步），避免切换深浅色时顶栏出现灰蒙蒙的中间态。
-                        val topTintAlpha by animateFloatAsState(
-                            targetValue = if (dark) 0.36f else 0.24f,
-                            animationSpec = tween(durationMillis = 500),
-                            label = "pickerTopTintAlpha"
-                        )
+                        // 不透明度统一 70%（用户指定，主页/设置同步）：liquidGlass 内部
+                        // 把 tint 钳制在 0.6，这里传 0.6、下方 drawBehind 补足 0.10
+                        val topTintAlpha = 0.60f
+                        val veilSurface = MaterialTheme.colorScheme.surface
                         Box(
                             Modifier
                                 .fillMaxWidth()
                                 .height(veilHeight)
+                                // 底部透明度渐隐过渡（用户反馈：在渐变增加透明度过渡，
+                                // 此前是硬切边）：离屏层内 DstIn 渐变把玻璃带下缘淡出
+                                .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
+                                .drawWithContent {
+                                    drawContent()
+                                    val fadeH = 14.dp.toPx()
+                                    drawRect(
+                                        brush = Brush.verticalGradient(
+                                            0f to Color.Black, 1f to Color.Transparent,
+                                            startY = size.height - fadeH, endY = size.height
+                                        ),
+                                    topLeft = Offset(0f, size.height - fadeH),
+                                    size = androidx.compose.ui.geometry.Size(size.width, fadeH),
+                                    blendMode = BlendMode.DstIn
+                                )
+                            }
                                 .liquidGlass(
                                     shape = RectangleShape,
                                     tintAlpha = topTintAlpha,
-                                    tintColor = MaterialTheme.colorScheme.surface,
+                                    tintColor = veilSurface,
                                     // 全宽条：禁透镜与外阴影（边缘「水滴边」在全宽条上怪异），
                                     // 界限干脆，滚动内容从玻璃下沿直接穿过
                                     lensEnabled = false,
@@ -933,6 +988,10 @@ fun PhotoPickerScreen(
                                     shadow = Shadow(radius = 0.dp, alpha = 0f),
                                     onDrawBackdrop = topAdaptive.recordBackdrop
                                 )
+                                .drawBehind {
+                                    // 补足到 70%（玻璃内部钳制 0.6）
+                                    drawRect(veilSurface.copy(alpha = 0.10f))
+                                }
                         )
                     }
                     CompositionLocalProvider(
@@ -940,6 +999,8 @@ fun PhotoPickerScreen(
                             if (glassNow) topAdaptive.color
                             else MaterialTheme.colorScheme.onSurface
                     ) {
+                    // 固定栏与相册下拉面板纵向堆叠：面板挂在固定栏之下、展开时向下铺开
+                    Column(Modifier.fillMaxWidth()) {
                     Column(
                         Modifier
                             .fillMaxWidth()
@@ -1036,7 +1097,9 @@ fun PhotoPickerScreen(
                                 AlbumChip(
                                     album = album,
                                     selected = album.bucketId == bucketId,
-                                    expanded = albumsExpanded,
+                                    // 固定栏内的 chip 恒为收起态（用户需求：收起时
+                                    // 相册行贴固定栏顶部）；展开态封面卡在下方独立面板
+                                    expanded = false,
                                     onClick = { switchAlbum(album.bucketId) },
                                     // 顶栏玻璃的自适应黑白（玻璃模式下；MD3 下为 onSurface，不会被用）
                                     contentColor = LocalContentColor.current
@@ -1069,7 +1132,48 @@ fun PhotoPickerScreen(
                         Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp)
                     )
                 }
-                    } // 顶栏模糊区 Column
+                    } // 顶栏模糊区 Column（固定栏）
+                    // ── 相册下拉面板：从固定栏底部向下展开，收起时收回到固定栏顶部 ──
+                    // 高度由外层的弹簧值裁剪（自上而下揭开），内容按目标高度布局，
+                    // 完全收起后整体移出组合树——不显示时不渲染。
+                    // 面板自身不再画独立玻璃/底色：竖屏顶栏色带已完整覆盖它
+                    // （用户反馈：不透明色区域应完整包含相册选择区域）。
+                    if (albums.size > 1 && albumPanelComposed) {
+                        Box(
+                            Modifier
+                                .fillMaxWidth()
+                                .height(albumPanelAnimated)
+                                .clipToBounds()
+                        ) {
+                            Box(Modifier.fillMaxWidth().requiredHeight(albumPanelTarget)) {
+                                LazyColumn(
+                                    Modifier
+                                        .fillMaxWidth()
+                                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                                ) {
+                                    items(albums, key = { it.bucketId }) { album ->
+                                        AlbumChip(
+                                            album = album,
+                                            // 面板内每行撑满：下拉列表左缘整齐
+                                            modifier = Modifier.fillMaxWidth(),
+                                            selected = album.bucketId == bucketId,
+                                            // 面板内恒为展开态（带封面）
+                                            expanded = true,
+                                            horizontal = true,
+                                            onClick = {
+                                                switchAlbum(album.bucketId)
+                                                // 选完即收起：面板收回固定栏顶部
+                                                albumsExpanded = false
+                                            },
+                                            contentColor = LocalContentColor.current
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    } // 固定栏 + 面板 Column
                 } // 顶栏模糊区 Box
                 // 玻璃模式下顶栏由模糊衰减自然收边，不再画硬分隔线
                 if (!glassNow) {
@@ -1202,38 +1306,59 @@ fun PhotoPickerScreen(
         }
     ) {
         // 一级菜单：4 个父项——标签 + 当前值副标题 + 右侧「>」箭头。
-        // 二级展开期间（morePage != 0）父项整体置灰不可点，点击由一级的
-        // 吞事件统一转「收起二级」；锚点矩形持续回填供二级形变起点使用。
+        // 三路状态机（用户反馈）：①点已展开的父项（展开位置）= 保持现有选项
+        // 不变、播放逆动画退回一级；②点非展开父项 = 整体收起菜单；
+        // ③二级展开期间父项保持可点（不再置灰），锚点矩形持续回填供形变使用。
         GlassMenuEntry(
             label = stringResource(R.string.screen_menu_output_format),
             value = currentFormatLabel,
-            onClick = { morePage = if (morePage == 1) 0 else 1 },
+            onClick = {
+                when {
+                    morePage == 0 -> morePage = 1
+                    morePage == 1 -> morePage = 0
+                    else -> { moreMenuOpen = false; morePage = 0 }
+                }
+            },
             expanded = morePage == 1,
-            enabled = morePage == 0,
             onAnchor = { formatAnchor = it }
         )
         GlassMenuEntry(
             label = stringResource(R.string.screen_menu_sort_field),
             value = sortFieldLabel,
-            onClick = { morePage = if (morePage == 2) 0 else 2 },
+            onClick = {
+                when {
+                    morePage == 0 -> morePage = 2
+                    morePage == 2 -> morePage = 0
+                    else -> { moreMenuOpen = false; morePage = 0 }
+                }
+            },
             expanded = morePage == 2,
-            enabled = morePage == 0,
             onAnchor = { sortFieldAnchor = it }
         )
         GlassMenuEntry(
             label = stringResource(R.string.screen_menu_sort_order),
             value = sortOrderLabel,
-            onClick = { morePage = if (morePage == 3) 0 else 3 },
+            onClick = {
+                when {
+                    morePage == 0 -> morePage = 3
+                    morePage == 3 -> morePage = 0
+                    else -> { moreMenuOpen = false; morePage = 0 }
+                }
+            },
             expanded = morePage == 3,
-            enabled = morePage == 0,
             onAnchor = { sortOrderAnchor = it }
         )
         GlassMenuEntry(
             label = stringResource(R.string.screen_menu_media_filter),
             value = filterLabel,
-            onClick = { morePage = if (morePage == 4) 0 else 4 },
+            onClick = {
+                when {
+                    morePage == 0 -> morePage = 4
+                    morePage == 4 -> morePage = 0
+                    else -> { moreMenuOpen = false; morePage = 0 }
+                }
+            },
             expanded = morePage == 4,
-            enabled = morePage == 0,
             onAnchor = { filterAnchor = it }
         )
     }
@@ -1568,6 +1693,8 @@ private fun AlbumChip(
     expanded: Boolean,
     onClick: () -> Unit,
     horizontal: Boolean = false,
+    // 外部尺寸（下拉面板里撑满整行）
+    modifier: Modifier = Modifier,
     // 玻璃模式下由调用方传入内容色（竖屏顶栏传顶栏玻璃的自适应黑白；
     // 横屏栏不传，回落主题色）。null = 使用主题默认配色。
     contentColor: Color? = null
@@ -1611,12 +1738,13 @@ private fun AlbumChip(
             selected -> MaterialTheme.colorScheme.onSecondaryContainer
             else -> MaterialTheme.colorScheme.onSurfaceVariant
         },
-        modifier = (if (glass) Modifier
+        modifier = modifier.then(if (glass) Modifier
             .liquidGlass(
                 RoundedCornerShape(corner),
                 tintAlpha = if (selected) 0.20f else 0.08f,
                 // 玻璃表面与文字作为整体变形（layerBlock 的 graphicsLayer 包裹全节点）
-                layerBlock = physics.transform
+                layerBlock = physics.transform,
+                fusionActive = { physics.highlight.pressProgress }
             )
             // 触点径向高光画在玻璃之上、内容之下（链内顺序保证）
             .then(physics.highlight.modifier)
@@ -1632,6 +1760,7 @@ private fun AlbumChip(
             // 横向布局（选择器横屏用）：文字在左，展开时封面在右侧横向展开
             Row(
                 Modifier
+                    .fillMaxWidth()
                     .animateContentSize(
                         animationSpec = spring(
                             dampingRatio = Spring.DampingRatioLowBouncy
@@ -2150,18 +2279,16 @@ private fun MediaThumbnail(uri: Uri, resolver: ContentResolver, modifier: Modifi
                 )
             }
         }
-        // 加载占位（项 9 ImageToolbox 式）：呼吸脉冲
+        // 加载占位（项 9 ImageToolbox 式）：**静态**色块。
+        // 此前的「呼吸脉冲」是无限动画——网格是顶栏玻璃的采样层，扫描首屏时
+        // 几十个占位同时逐帧改 alpha 会让采样层每帧失效、顶栏/按钮的玻璃
+        // 每帧重算模糊与折射（性能 P0）。占位改为常量 alpha，采样层只在
+        // 真有内容变化（图片到位 / 滚动）时才失效。
         if (bitmap == null) {
-            val pulse by rememberInfiniteTransition(label = "thumbPulse").animateFloat(
-                initialValue = 0.45f,
-                targetValue = 0.9f,
-                animationSpec = infiniteRepeatable(tween(750), RepeatMode.Reverse),
-                label = "pulseAlpha"
-            )
             Box(
                 Modifier
                     .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = pulse))
+                    .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.66f))
             )
         }
     }

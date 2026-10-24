@@ -72,4 +72,7 @@
     <string name="fmt_log_parse_samsung">Se analiza como Live Photo de Samsung (bloque de cola SEFH/SEFT)</string>
     <string name="fmt_log_samsung_sef">Cola SEF: version=%1$d, %2$d registros</string>
     <string name="fmt_log_samsung_write">Escritura en formato Samsung: %1$s (imagen %2$dB + vídeo %3$dB + cola SEF %4$dB)</string>
+    <!-- Apple MOV 重封装：错误与回退日志 -->
+    <string name="fmt_err_apple_remux_failed">No se pudo reempaquetar el MOV como MP4 reproducible (sin pista de vídeo válida)</string>
+    <string name="fmt_log_apple_remux_fallback">Falló el reempaquetado del MOV; se volvió a cambiar solo la marca ftyp — algunas galerías podrían no reproducir el resultado</string>
 </resources>

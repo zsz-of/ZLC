@@ -129,6 +129,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -144,6 +145,7 @@ import com.kyant.backdrop.drawPlainBackdrop
 import com.kyant.backdrop.effects.blur
 import com.kyant.backdrop.effects.effect
 import com.kyant.backdrop.effects.lens
+import com.kyant.backdrop.effects.vibrancy
 import com.kyant.backdrop.highlight.Highlight
 import com.kyant.backdrop.highlight.HighlightStyle
 import com.kyant.backdrop.shadow.InnerShadow
@@ -156,6 +158,7 @@ import com.zsz.zlivephoto.ui.glass.catalog.components.LiquidToggle
 import com.zsz.zlivephoto.ui.glass.catalog.utils.InteractiveHighlight
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
 import kotlinx.coroutines.launch
+import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.math.abs
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -206,6 +209,190 @@ val LocalGlassHighlightAngle = staticCompositionLocalOf<() -> Float> { { 45f } }
  * 跟随主题 500ms 渐变（见 [animatedThemeColor]）。
  */
 val LocalGlassRootTint = staticCompositionLocalOf { Color.White }
+
+/**
+ * 同一界面层内的玻璃接触融合。根页面、顶栏、底部面板、菜单和弹窗各自一个
+ * 注册表，因此只有同层玻璃会相连，不会把页面按钮与浮层错误地融在一起。
+ *
+ * 位置由布局回调写入普通字段，不参与快照状态；接触检测只在 overlay 的绘制
+ * 阶段进行，且仅在至少一块玻璃处于按压/拖拽状态时执行。没有交互时零动画、
+ * 零重组合，静止列表也不会承担逐帧碰撞检测。
+ */
+class GlassFusionRegistry internal constructor() {
+    internal class Node {
+        @Volatile var bounds = Rect.Zero
+        @Volatile var color = Color.White
+        @Volatile var active: (() -> Float)? = null
+    }
+
+    internal val nodes = CopyOnWriteArrayList<Node>()
+    @Volatile private var overlayOrigin = Offset.Zero
+
+    private data class Contact(
+        val center: Offset,
+        val direction: Offset,
+        val thickness: Float
+    )
+
+    private fun Offset.normalized(): Offset {
+        val length = sqrt(x * x + y * y)
+        return if (length > 0.01f) Offset(x / length, y / length) else Offset(1f, 0f)
+    }
+
+    /** 两矩形实际相交（含嵌套边缘）时的局部接触区；仅靠近但不相交不触发。 */
+    private fun contact(a: Rect, b: Rect): Contact? {
+        val intersection = a.intersect(b)
+        if (intersection.width <= 0.75f || intersection.height <= 0.75f) return null
+        val direction = (b.center - a.center).normalized()
+
+        // 父容器与子玻璃：子块完全在内部时，只有贴到容器边缘才算接触，
+        // 否则容器会在子块中心出现一团圆斑。按最近的容器边生成细窄接触区。
+        val aContainsB = a.left <= b.left && a.top <= b.top && a.right >= b.right && a.bottom >= b.bottom
+        val bContainsA = b.left <= a.left && b.top <= a.top && b.right >= a.right && b.bottom >= a.bottom
+        if (aContainsB || bContainsA) {
+            val parent = if (aContainsB) a else b
+            val child = if (aContainsB) b else a
+            val distances = floatArrayOf(
+                child.left - parent.left,
+                parent.right - child.right,
+                child.top - parent.top,
+                parent.bottom - child.bottom
+            )
+            var side = 0
+            for (i in 1..3) if (distances[i] < distances[side]) side = i
+            if (distances[side] > 1.5f) return null
+            val center = when (side) {
+                0 -> Offset(child.left, child.center.y)
+                1 -> Offset(child.right, child.center.y)
+                2 -> Offset(child.center.x, child.top)
+                else -> Offset(child.center.x, child.bottom)
+            }
+            val thickness = if (side < 2) child.height else child.width
+            return Contact(center, direction, thickness.coerceAtLeast(2f))
+        }
+        return Contact(intersection.center, direction, minOf(intersection.width, intersection.height))
+    }
+
+    internal fun updateOverlayOrigin(origin: Offset) {
+        overlayOrigin = origin
+    }
+
+    /** 只画接触附近的柔边胶囊与局部双色渐变，不对整块玻璃做额外模糊。 */
+    fun drawConnections(scope: DrawScope) = with(scope) {
+        if (nodes.size < 2) return@with
+        var anyActive = false
+        for (node in nodes) {
+            if ((node.active?.invoke() ?: 0f) > 0.015f) {
+                anyActive = true
+                break
+            }
+        }
+        if (!anyActive) return@with
+
+        val feather = 10.dp.toPx()
+        val maxThickness = 24.dp.toPx()
+        var links = 0
+        for (i in 0 until nodes.lastIndex) {
+            val a = nodes[i]
+            for (j in i + 1 until nodes.size) {
+                val b = nodes[j]
+                val strength = maxOf(a.active?.invoke() ?: 0f, b.active?.invoke() ?: 0f)
+                    .coerceIn(0f, 1f)
+                if (strength <= 0.015f) continue
+                // 按压 spring 会扩大玻璃轮廓；即便布局坐标尚未反映 graphicsLayer
+                // 形变，也按少量外扩参与接触判断（视觉上就是「碰到就溶」）
+                val grow = 4.dp.toPx() * strength
+                val aBounds = Rect(
+                    a.bounds.left - grow,
+                    a.bounds.top - grow,
+                    a.bounds.right + grow,
+                    a.bounds.bottom + grow
+                )
+                val bBounds = Rect(
+                    b.bounds.left - grow,
+                    b.bounds.top - grow,
+                    b.bounds.right + grow,
+                    b.bounds.bottom + grow
+                )
+                val contact = contact(aBounds, bBounds) ?: continue
+                if (++links > 8) return@with // 同屏密集控件时限制绘制上限
+
+                val thickness = contact.thickness.coerceIn(4.dp.toPx(), maxThickness)
+                val halfLength = (thickness * 0.8f + feather).coerceAtMost(30.dp.toPx())
+                val center = contact.center - overlayOrigin
+                val direction = contact.direction
+                val start = center - direction * halfLength
+                val end = center + direction * halfLength
+                // 即使两块玻璃同为白/黑中性色，也在接触区做一小段受光→本体渐变，
+                // 保证「连在一起的地方有颜色过渡」肉眼可见；有色玻璃则直接双色渐变
+                val sheen = 0.20f * strength
+                val startColor = androidx.compose.ui.graphics.lerp(a.color.copy(alpha = 1f), Color.White, sheen)
+                val endColor = androidx.compose.ui.graphics.lerp(b.color.copy(alpha = 1f), Color.White, sheen * 0.35f)
+                val brush = Brush.linearGradient(listOf(startColor, endColor), start = start, end = end)
+                val mixed = androidx.compose.ui.graphics.lerp(startColor, endColor, 0.5f)
+
+                // 三层由淡到实的圆头线：外缘像被溶开，核心区把两块玻璃接起来。
+                drawLine(brush, start, end, thickness + feather * 2f, StrokeCap.Round, alpha = 0.08f * strength)
+                drawLine(brush, start, end, thickness + feather, StrokeCap.Round, alpha = 0.15f * strength)
+                drawLine(brush, start, end, thickness * 0.72f, StrokeCap.Round, alpha = 0.30f * strength)
+                drawCircle(
+                    brush = Brush.radialGradient(
+                        listOf(mixed.copy(alpha = 0.20f * strength), Color.Transparent),
+                        center = center,
+                        radius = thickness + feather
+                    ),
+                    radius = thickness + feather,
+                    center = center
+                )
+            }
+        }
+    }
+}
+
+/** 当前界面层的融合注册表；null 表示未启用玻璃或尚未进入独立层。 */
+val LocalGlassFusionRegistry = staticCompositionLocalOf<GlassFusionRegistry?> { null }
+
+/**
+ * 建立一个独立界面层。子玻璃只在本层融合；透明 overlay 不改变测量和触摸，
+ * 只在接触发生时绘制局部连接效果。
+ */
+@Composable
+fun GlassFusionScope(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
+    val registry = remember { GlassFusionRegistry() }
+    Box(modifier) {
+        CompositionLocalProvider(LocalGlassFusionRegistry provides registry) { content() }
+        Box(
+            Modifier
+                .matchParentSize()
+                .onGloballyPositioned { registry.updateOverlayOrigin(it.boundsInRoot().topLeft) }
+                .drawWithContent {
+                    drawContent()
+                    registry.drawConnections(this)
+                }
+        )
+    }
+}
+
+/**
+ * 把一块玻璃登记到当前界面层。[active] 返回按压/拖拽弹簧值（0..1），
+ * 被动玻璃传 null 也能被另一块交互中的玻璃连接。
+ */
+fun Modifier.glassFusionParticipant(
+    color: Color,
+    active: (() -> Float)? = null
+): Modifier = composed {
+    val registry = LocalGlassFusionRegistry.current ?: return@composed this
+    val node = remember(registry) { GlassFusionRegistry.Node() }
+    SideEffect {
+        node.color = if (color == Color.Unspecified) Color.White else color
+        node.active = active
+    }
+    DisposableEffect(registry, node) {
+        registry.nodes += node
+        onDispose { registry.nodes -= node }
+    }
+    this.onGloballyPositioned { node.bounds = it.boundsInRoot() }
+}
 
 /**
  * 当前页面的玻璃采样层发布者。
@@ -272,7 +459,9 @@ private fun rememberHighlightAngleProvider(): () -> Float {
                 val roll = Math.toDegrees(orientation[2].toDouble()).toFloat()
                 // 低通滤波，避免手抖导致高光跳动
                 smoothed += (roll - smoothed) * 0.12f
-                angle.floatValue = 45f + smoothed
+                // 3° 一档量化：SENSOR_DELAY_GAME 下手部微抖每秒可触发数十次
+                // 状态写入 → 每次都是全玻璃件高光重绘；量化后静止手机写入归零
+                angle.floatValue = ((45f + smoothed) / 3f).roundToInt() * 3f
             }
 
             override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) = Unit
@@ -326,7 +515,8 @@ fun GlassRoot(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
         LocalGlassRootTint provides rootBaseColor,
         LocalGlassHighlightAngle provides highlightAngle
     ) {
-        Box(modifier) {
+        GlassFusionScope(modifier) {
+        Box {
             // ── 采样源（被记录；不参与内容绘制）──
             // 用户要求背景底色回到纯白：采样源改为白底 + 极淡色斑，
             // 玻璃仍能折射出色斑细节，但整页观感是干净的白色。
@@ -371,6 +561,7 @@ fun GlassRoot(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
             // ── 页面内容（不参与记录；容器背景需透明才能看到采样源）──
             Box(Modifier.fillMaxSize()) { content() }
         }
+        }
     }
 }
 
@@ -392,9 +583,9 @@ private fun glassTintAlpha(opacity: Float): Float = (1f - opacity) * 0.28f + 0.0
  * 而不是一圈生硬描边。这里刻意压到「若隐若现」。
  */
 private val DefaultGlassHighlight = Highlight(
-    width = 1.4.dp,
-    blurRadius = 3.dp,
-    alpha = 0.42f,
+    width = 0.9.dp,
+    blurRadius = 2.dp,
+    alpha = 0.36f,
     style = HighlightStyle.Default
 )
 
@@ -427,6 +618,74 @@ fun rememberGlassBackdrop(): Backdrop? {
 /** iOS 开关开启态轨道绿（与系统开关一致的 #34C759） */
 private val IosGreen = Color(0xFF34C759)
 
+/**
+ * 玻璃效果链缓存。
+ *
+ * backdrop 的 blur()/lens() 每次调用都新建原生 RenderEffect（blur 一个、
+ * lens 的 RuntimeShader 包装 + 链式 effect 各一个），而 DrawBackdropElement.update()
+ * 末尾固定 invalidDrawCache()——动画/重组每一帧都会重跑 effects，
+ * 等于每帧新建 2~4 个原生对象并重建效果链（中端机上表现为 1% Low 帧差）。
+ *
+ * 这里按量化参数缓存整条链，量化段内零原生分配复用；
+ * 思路与 [ProgressiveBlur] 的 remember RenderEffect 一致，推广到 liquidGlass 主线。
+ * 每个玻璃件在组合时各持一份实例（draw 只在渲染线程），无跨线程共享。
+ */
+internal class GlassEffectCache {
+    private data class Key(
+        val blur: Float,
+        val lensH: Float,
+        val lensA: Float,
+        val w: Float,
+        val h: Float,
+        val vibrancy: Boolean
+    )
+
+    private var chain: android.graphics.RenderEffect? = null
+    private var lastKey: Key? = null
+    private var lastPadding = 0f
+
+    fun apply(
+        scope: com.kyant.backdrop.BackdropEffectScope,
+        blurRadiusPx: Float,
+        lensHeightPx: Float,
+        lensAmountPx: Float,
+        lensEnabled: Boolean,
+        vibrancyEnabled: Boolean = false
+    ) {
+        // 0.5px / 0.25px 量化：半径连续变化时把「每帧都变」收敛成少数几档
+        val qb = (blurRadiusPx * 2f).roundToInt() / 2f
+        val qh = if (lensEnabled) (lensHeightPx * 4f).roundToInt() / 4f else 0f
+        val qa = if (lensEnabled) (lensAmountPx * 4f).roundToInt() / 4f else 0f
+        val sz = scope.size
+        // size 入键：lens 的 uniform 与尺寸相关，防复用过期链
+        val key = Key(qb, qh, qa, sz.width, sz.height, vibrancyEnabled)
+        if (chain != null && key == lastKey) {
+            scope.padding = lastPadding
+            scope.renderEffect = chain
+            return
+        }
+        // vibrancy() 内部也是 createColorFilterEffect（同样每次新建原生对象），一并纳入缓存
+        if (vibrancyEnabled) scope.vibrancy()
+        if (qb > 0.5f) scope.blur(qb, TileMode.Clamp)
+        if (lensEnabled) scope.lens(qh, qa, false, false)
+        chain = scope.renderEffect
+        lastKey = key
+        lastPadding = scope.padding
+    }
+}
+
+/** 每个玻璃件组合时各持一份效果链缓存（draw 只在渲染线程，无跨线程共享） */
+@Composable
+internal fun rememberGlassEffectCache(): GlassEffectCache = remember { GlassEffectCache() }
+
+/**
+ * 按压/动画驱动的连续量量化到 [steps] 档。
+ * 短促按压弹簧（~120ms）期间半径连续变化会击穿效果链缓存（每帧重建原生链），
+ * 量化到 4 档后整段按压只重建 4 次，肉眼仍是连续的反馈。
+ */
+internal fun quantizeAnim(v: Float, steps: Int = 4): Float =
+    ((v * steps).roundToInt().coerceIn(0, steps)) / steps.toFloat()
+
 fun Modifier.liquidGlass(
     shape: Shape,
     tintAlpha: Float? = null,
@@ -439,10 +698,17 @@ fun Modifier.liquidGlass(
     lensEnabled: Boolean = true,
     layerBlock: (GraphicsLayerScope.() -> Unit)? = null,
     blurOverride: (() -> Float?)? = null,
+    // 模糊下限（px 计算前）：弹窗等可读性敏感组件传 12.dp 之类，
+    // 保证「通透度=1」时磨砂不至于消失（用户反馈：弹窗高斯模糊不能为零）
+    minBlur: Dp = 0.dp,
+    // vibrancy 颜色滤镜（SDK<33 无 lens 时的玻璃感兜底）
+    vibrancy: Boolean = false,
     // 采样源（Backdrop 基类：既可是单层 LayerBackdrop，也可是多层合成的 CombinedBackdrop）
     backdropOverride: Backdrop? = null,
     // 背景绘制钩子：每帧先画背景再回调（用于把背景另录一份做亮度采样等内容自适应）
-    onDrawBackdrop: (DrawScope.(drawBackdrop: DrawScope.() -> Unit) -> Unit)? = null
+    onDrawBackdrop: (DrawScope.(drawBackdrop: DrawScope.() -> Unit) -> Unit)? = null,
+    // 交互弹簧值（0..1）：非 null 时，本玻璃可在接触同层另一块玻璃时触发融合
+    fusionActive: (() -> Float)? = null
 ): Modifier = composed {
     val enabled = LocalGlassEnabled.current
     // 默认采样源 = 下层总显示内容（根渐变 + 页面内容，见 [rememberGlassBackdrop]）
@@ -456,8 +722,18 @@ fun Modifier.liquidGlass(
     // 模糊：通透度 0 → 42px（强磨砂），通透度 1 → 2px（清透）。
     // 范围刻意拉大，保证「通透度」滑条拖动时磨砂变化肉眼可辨（此前 8~28px 变化过小）。
     val blurPx = with(density) { (2f + (1f - opacity) * 40f).dp.toPx() }
+    val minBlurPx = with(density) { minBlur.toPx() }
     val lensH = with(density) { lensHeight.toPx() }
     val lensA = with(density) { lensAmount.toPx() }
+    // 宽按钮（全宽/半宽）的边缘高光占比过高，转动设备时高光移动反而不明显——
+    // 按实测宽度分档压低高光 alpha（onSizeChanged 写同档值时 no-op，不触发重组）。
+    var measuredWidthPx by remember { mutableStateOf(0) }
+    val hiScale = when (with(density) { measuredWidthPx.toDp() }) {
+        in 480.dp..Float.MAX_VALUE.dp -> 0.55f   // 全宽按钮
+        in 240.dp..480.dp -> 0.75f               // 半宽按钮
+        else -> 1f
+    }
+    val sizedHighlight = highlight?.let { it.copy(alpha = it.alpha * hiScale) }
     // 表面色调层：深色模式必须掺黑，否则玻璃会把背后的亮照片「提亮」，
     // 叠出来仍是一块发白的玻璃（此前深色模式下玻璃件一律偏亮）。
     val dark = LocalDarkTheme.current
@@ -476,6 +752,8 @@ fun Modifier.liquidGlass(
     )
     val tint = ((tintAlpha ?: glassTintAlpha(opacity)) * darkBoost)
         .coerceAtMost(0.6f)
+    // 效果链缓存：消除动画/重组期间每帧新建原生 RenderEffect
+    val effectCache = remember { GlassEffectCache() }
     // 外投影：极轻的「浮起」。液态玻璃主要靠折射/散射表达层次，阴影只给一点点，
     // 否则会叠出一圈灰边（用户反馈的「淡灰叠加层」来源之一）。
     val sh = shadow ?: Shadow(
@@ -484,20 +762,28 @@ fun Modifier.liquidGlass(
         color = Color.Black,
         alpha = 0.08f
     )
-    drawBackdrop(
+    this
+        .onSizeChanged { measuredWidthPx = it.width }
+        .drawBackdrop(
         backdrop = backdrop,
         shape = { shape },
         effects = {
-            val b = blurOverride?.invoke() ?: blurPx
-            if (b > 0.5f) blur(b, TileMode.Clamp)
-            // lens：边缘折射（AGSL 需 SDK ≥ 33）。
-            // 色散（chromaticAberration）关闭：它会把白色高光拆成蓝/橙两条边，
-            // 与 iOS 26 的纯白高光不符（用户反馈的「蓝橙色混合」来源）。
-            if (lensEnabled && Build.VERSION.SDK_INT >= 33) lens(lensH, lensA, false, false)
+            // blurOverride（动画/菜单形变）与 minBlur（可读性下限）取大者；
+            // clamp 后半径稳定，效果链缓存不会被击穿
+            val b = maxOf(blurOverride?.invoke() ?: blurPx, minBlurPx)
+            effectCache.apply(
+                scope = this,
+                blurRadiusPx = b,
+                lensHeightPx = lensH,
+                lensAmountPx = lensA,
+                lensEnabled = lensEnabled && Build.VERSION.SDK_INT >= 33,
+                vibrancyEnabled = vibrancy
+            )
         },
         // 高光固定为白色（HighlightStyle.Default 的 color = White α0.5），
-        // 照射角随设备倾角旋转（陀螺仪 / 旋转矢量传感器）。
-        highlight = highlight?.let { base ->
+        // 照射角随设备倾角旋转（陀螺仪 / 旋转矢量传感器）；
+        // alpha 已按组件宽度分档压低（宽按钮转动时高光位移更明显）
+        highlight = sizedHighlight?.let { base ->
             {
                 val style = base.style
                 if (style is HighlightStyle.Default) {
@@ -515,6 +801,7 @@ fun Modifier.liquidGlass(
             if (tint > 0f) drawRect(surfaceTint.copy(alpha = tint))
         }
     )
+    .glassFusionParticipant(color = surfaceTint, active = fusionActive)
 }
 
 /**
@@ -854,6 +1141,7 @@ fun GlassIconButton(
                     tintAlpha = 0.06f,
                     // layerBlock 的 graphicsLayer 包裹整个节点：玻璃与图标一起变形
                     layerBlock = physics.transform,
+                    fusionActive = { physics.highlight.pressProgress },
                     onDrawBackdrop = if (adaptiveContent) adaptive.recordBackdrop else null
                 )
                 // MD3 模式：不要永久圆形背景板（用户反馈「永远存在的边框/背景板没必要」），
@@ -1060,42 +1348,51 @@ fun BoxScope.GlassMenuOverlay(
     content: @Composable ColumnScope.() -> Unit
 ) {
     val progress = remember { Animatable(0f) }
+    // 退场动画播完才退出组合：组合期读 progress.value 会让动画每一帧
+    // 重组整棵菜单子树（并顺带重建子树内每个玻璃件的效果链）
+    var contentActive by remember { mutableStateOf(visible) }
     LaunchedEffect(visible) {
         if (visible) {
+            contentActive = true
             progress.animateTo(1f, spring(dampingRatio = 0.86f, stiffness = 420f))
         } else {
             progress.animateTo(0f, tween(durationMillis = 170))
+            contentActive = false
         }
     }
     // 二级展开进度（独立时间线）：一级的缩小/压暗与二级的形变共用它，
     // 保证「原菜单缩小变暗」与「二级叠加展开」严格同步
     val submenuProgress = remember { Animatable(0f) }
+    var submenuActive by remember { mutableStateOf(submenuVisible) }
     LaunchedEffect(submenuVisible) {
         if (submenuVisible) {
+            submenuActive = true
             submenuProgress.animateTo(1f, spring(dampingRatio = 0.82f, stiffness = 400f))
         } else {
             submenuProgress.animateTo(0f, tween(durationMillis = 180))
+            submenuActive = false
         }
     }
-    if (!visible && progress.value <= 0.001f) return
+    if (!contentActive) return
     val glass = LocalGlassEnabled.current
     val density = LocalDensity.current
     val alignEnd = alignment != Alignment.TopStart && alignment != Alignment.BottomStart
     val alignBottom = alignment == Alignment.BottomEnd || alignment == Alignment.BottomCenter
     val shape = RoundedCornerShape(cornerRadius)
-    // 一级模糊：形变中 30dp → 常驻 13dp（用户反馈「提高模糊强度」）
+    // 一级模糊：形变中 30dp → 常驻 18dp（模糊差与二级面板拉开层次；
+    // 常驻 13dp 时玻璃折射几乎不可见，观感是「纯色面板」——用户反馈
+    // 「更多展开菜单现在依然没有液态玻璃效果」的主因之一）
     val menuBlurPx = with(density) { 30.dp.toPx() }
-    val menuBlurSettledPx = with(density) { 13.dp.toPx() }
+    val menuBlurSettledPx = with(density) { 18.dp.toPx() }
 
     // 透明遮罩：点击任意处关闭。
     // 带一层轻微压暗（随展开进度淡入）：菜单明确读作「最顶层浮层」，
-    // 与背后的照片/内容拉开层次（用户反馈「展开栏还有底色问题和层级问题，
-    // 展开栏应该就在最顶层」）。压暗画在采样层之外，不会被菜单玻璃采样到。
+    // 与背后的照片/内容拉开层次。压暗画在采样层之外，不会被菜单玻璃采样到。
     Box(
         Modifier
             .fillMaxSize()
             .graphicsLayer { alpha = progress.value * 0.85f }
-            .background(Color.Black.copy(alpha = 0.22f))
+            .background(Color.Black.copy(alpha = 0.12f))
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null
@@ -1107,10 +1404,11 @@ fun BoxScope.GlassMenuOverlay(
         initialColor = if (menuDark) Color.White else Color.Black,
         enabled = glass
     )
-    // 40% 有色叠加层：黑（深色）/ 白（浅色），随主题 500ms 实时渐变
+    // 有色叠加层：黑（深色）/ 白（浅色），随主题 500ms 实时渐变。
+    // 40% 时玻璃被完全淹没——降到 22%，玻璃感由 blur/折射表达（用户反馈）
     val tintOverlay = animatedThemeColor(
-        Color.Black.copy(alpha = 0.40f),
-        Color.White.copy(alpha = 0.40f)
+        Color.Black.copy(alpha = 0.22f),
+        Color.White.copy(alpha = 0.22f)
     )
     // 菜单容器：一级 Column 与二级覆盖层共用同一坐标系
     // （二级相对它内缩定位，锚点矩形经它换算成局部坐标）
@@ -1148,24 +1446,32 @@ fun BoxScope.GlassMenuOverlay(
                 }
                 .graphicsLayer {
                     alpha = progress.value
-                    // 二级展开时一级整体缩小一档（0.95），锚在触发按钮所在角
+                    // 二级展开时一级整体缩小一档（0.95），**向左缩小**：
+                    // 左边缘固定不动，与二级面板的左边缘严格对齐（用户反馈）
                     val dim = submenuProgress.value
                     val s = 1f - 0.05f * dim
                     scaleX = s
                     scaleY = s
-                    transformOrigin = if (alignEnd) TransformOrigin(1f, 0f) else TransformOrigin(0f, 0f)
+                    transformOrigin = TransformOrigin(0f, 0f)
                 }
                 .then(
                     if (glass) Modifier.liquidGlass(
                         shape = shape,
-                        // 玻璃自带色调关掉：有色层由下方 drawBehind 全权负责（精确 40%）
+                        // 玻璃自带色调关掉：有色层由下方 drawBehind 全权负责（精确 22%）
                         tintAlpha = 0.0f,
                         lensHeight = 16.dp,
                         lensAmount = 22.dp,
-                        // 形变中强磨砂（30dp）→ 常驻 13dp：完全展开后仍保留糊底，
+                        // SDK<33 无 lens：vibrancy 兜底玻璃感
+                        vibrancy = Build.VERSION.SDK_INT < 33,
+                        // 形变中强磨砂（30dp）→ 常驻 18dp：完全展开后仍保留糊底，
                         // 否则菜单是一块「全清玻璃」——照片锐利透出、底色发飘、
-                        // 文字可读性差（用户反馈「展开栏还有底色问题」）
-                        blurOverride = { lerp(menuBlurPx, menuBlurSettledPx, progress.value) },
+                        // 文字可读性差（用户反馈「展开栏还有底色问题」）。
+                        // 半径按 6 档量化：连续半径每帧都变会击穿效果链缓存，
+                        // 量化后整段形变只重建少数几次，肉眼仍是连续的「由强到弱」
+                        blurOverride = {
+                            val q = (progress.value * 6f).roundToInt() / 6f
+                            lerp(menuBlurPx, menuBlurSettledPx, q)
+                        },
                         onDrawBackdrop = menuAdaptive.recordBackdrop
                     )
                     else Modifier.background(MaterialTheme.colorScheme.surfaceContainerHigh, shape)
@@ -1206,6 +1512,7 @@ fun BoxScope.GlassMenuOverlay(
         // ── 二级子菜单：叠加在一级之上，从所点击父项框展开到目标尺寸 ──
         GlassSubmenuOverlay(
             visible = submenuVisible,
+            contentActive = submenuActive,
             progress = submenuProgress,
             anchor = submenuAnchor,
             menuOrigin = menuOrigin,
@@ -1217,38 +1524,56 @@ fun BoxScope.GlassMenuOverlay(
 
 /**
  * 二级子菜单覆盖层（[GlassMenuOverlay] 内部使用）：
- * 叠在一级菜单之上（matchParentSize：与菜单容器同尺寸，不参与容器度量），
- * 从所点击父项的按钮框（anchor，根坐标）为起点，平滑展开到目标矩形
- * （相对菜单容器内缩一档、圆角 12dp→16dp），**展开动作完成后内容才淡入**；
- * 面板自身消费点击（不穿透到一级），面板之外的点击由调用方
- * （一级的吞事件 clickable / 遮罩）处理。
- * 内容区可滚动：输出格式 10 选项这类分组在菜单等高的面板内滚动查看。
+ * 面板高度由内容决定（**仅当超过半屏才出现滚动条**，heightIn(max)+verticalScroll
+ * 天然实现），从所点击父项的按钮框（anchor，根坐标）位置**向下展开**到自身
+ * 完整尺寸，**展开动作完成后内容才淡入**；面板带按钮物理（按压高光/拖拽形变/
+ * 边缘折射）。面板之外的点击由调用方（一级的吞事件 clickable / 遮罩）处理。
  */
 @Composable
 private fun BoxScope.GlassSubmenuOverlay(
     visible: Boolean,
+    contentActive: Boolean,
     progress: Animatable<Float, AnimationVector1D>,
     anchor: Rect?,
     menuOrigin: Rect,
     onDismiss: () -> Unit,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    if (!visible && progress.value <= 0.001f) return
+    // 退场动画播完（contentActive=false）才退出组合，
+    // 避免组合期读 progress.value 导致每帧重组
+    if (!contentActive) return
     val glass = LocalGlassEnabled.current
     val density = LocalDensity.current
     val shape = RoundedCornerShape(16.dp)
-    // 二级常驻 18dp 强磨砂（用户反馈「提高模糊强度」）
-    val blurPx = with(density) { 18.dp.toPx() }
+    // 二级常驻强磨砂，与一级（18dp）拉开层次差
+    val blurPx = with(density) { 24.dp.toPx() }
     val panelDark = LocalDarkTheme.current
     val panelAdaptive = rememberAdaptiveContentColor(
         initialColor = if (panelDark) Color.White else Color.Black,
         enabled = glass
     )
-    // 子面板提亮/压暗一档，与菜单本体（40% 有色层）拉开层次
+    // 子面板提亮/压暗一档，与菜单本体（22% 有色层）拉开层次
     val panelTint = animatedThemeColor(
-        Color.White.copy(alpha = 0.14f),
-        Color.Black.copy(alpha = 0.08f)
+        Color.White.copy(alpha = 0.07f),
+        Color.Black.copy(alpha = 0.04f)
     )
+    // 面板高度由内容决定；超过半屏才滚动
+    val halfScreen = with(density) { (LocalConfiguration.current.screenHeightDp.dp / 2f).toPx() }
+    // 面板实测高度（onSizeChanged 回填）：把面板底部钳在屏幕内
+    var panelH by remember { mutableStateOf(0f) }
+    // 面板顶部 y（相对菜单容器）：从父项底边向下（用户反馈：二级菜单从
+    // 一级菜单项所在的位置开始向下展开）
+    val gap4 = with(density) { 4.dp.toPx() }
+    val desiredY = ((anchor?.bottom ?: menuOrigin.top) - menuOrigin.top)
+        .coerceAtLeast(0f) + gap4
+    val screenHpx = with(density) { LocalConfiguration.current.screenHeightDp.dp.toPx() }
+    val margin24 = with(density) { 24.dp.toPx() }
+    val offsetY = if (panelH > 0f) {
+        val maxTop = screenHpx - margin24 - panelH - menuOrigin.top
+        desiredY.coerceAtMost(maxTop.coerceAtLeast(0f))
+    } else desiredY
+    // 面板交互物理（按压高光 + 拖拽形变，用户反馈：边缘折射和拖拽形变都要有）
+    val physics = if (glass) rememberGlassButtonPhysics(maxOffset = 2.dp) else null
     Box(
         Modifier
             .matchParentSize()
@@ -1261,40 +1586,34 @@ private fun BoxScope.GlassSubmenuOverlay(
                 else Modifier
             )
     ) {
+        GlassFusionScope {
         Column(
             Modifier
-                .fillMaxSize()
-                // 形变：起点（所点击父项框）→ 目标矩形（相对菜单容器内缩一档、
-                // 圆角 12dp→16dp），全部在绘制期按 progress 插值——size/锚点换算
-                // 都在这里取，避免在组合期读不到 DrawScope 的 size。
-                // 注意：progress.value 必须在各 lambda **内部**读（快照状态读），
-                // 组合期捕获的数值不会随动画刷新
+                .align(Alignment.TopStart)
+                .offset { IntOffset(0, offsetY.roundToInt()) }
+                .fillMaxWidth()
+                .heightIn(max = with(density) { halfScreen.toDp() })
+                .onSizeChanged { panelH = it.height.toFloat() }
+                // 形变：起点（所点击父项框，面板局部坐标）→ 自身完整矩形，
+                // 向下展开。全部在绘制期按 progress 插值；progress.value 必须
+                // 在各 lambda **内部**读（快照读），组合期捕获不会随动画刷新
                 .drawWithContent {
                     val sp = progress.value
                     with(density) {
-                        // 目标矩形：左 10dp 让位父项文字、右 2dp、上 2dp、下 6dp
-                        val target = Rect(
-                            10.dp.toPx(),
-                            2.dp.toPx(),
-                            size.width - 2.dp.toPx(),
-                            size.height - 6.dp.toPx()
-                        )
-                        // 起点 = 所点击父项框（根坐标 → 菜单容器局部坐标）
+                        // 目标矩形 = 面板自身（左边缘与一级菜单左边缘对齐）
+                        val target = Rect(0f, 0f, size.width, size.height)
+                        // 起点 = 所点击父项框（根坐标 → 面板局部坐标）
+                        val panelTop = menuOrigin.top + offsetY
                         val start = if (anchor != null && menuOrigin != Rect.Zero) {
                             Rect(
                                 anchor.left - menuOrigin.left,
-                                anchor.top - menuOrigin.top,
+                                anchor.top - panelTop,
                                 anchor.right - menuOrigin.left,
-                                anchor.bottom - menuOrigin.top
+                                anchor.bottom - panelTop
                             )
                         } else {
                             // 无锚点（异常兜底）：从目标矩形左上角一档大小展开
-                            Rect(
-                                target.left,
-                                target.top,
-                                target.left + 40.dp.toPx(),
-                                target.top + 40.dp.toPx()
-                            )
+                            Rect(0f, 0f, 40.dp.toPx(), 40.dp.toPx())
                         }
                         val l = lerp(start.left, target.left, sp)
                         val t = lerp(start.top, target.top, sp)
@@ -1322,6 +1641,7 @@ private fun BoxScope.GlassSubmenuOverlay(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = null
                 ) { }
+                .then(if (physics != null) physics.highlight.gestureModifier else Modifier)
                 .then(
                     if (glass) Modifier.liquidGlass(
                         shape = shape,
@@ -1329,7 +1649,10 @@ private fun BoxScope.GlassSubmenuOverlay(
                         tintAlpha = 0f,
                         lensHeight = 12.dp,
                         lensAmount = 16.dp,
-                        blurOverride = { blurPx }
+                        vibrancy = Build.VERSION.SDK_INT < 33,
+                        blurOverride = { blurPx },
+                        layerBlock = physics?.transform,
+                        fusionActive = { physics?.highlight?.pressProgress ?: 0f }
                     )
                     else Modifier.background(MaterialTheme.colorScheme.surfaceContainerHigh, shape)
                 )
@@ -1338,10 +1661,9 @@ private fun BoxScope.GlassSubmenuOverlay(
                 .padding(start = 6.dp, end = 2.dp, top = 2.dp, bottom = 2.dp)
         ) {
             // 展开动作走完（progress≥0.6）内容才淡入：先展开到目标尺寸再渲染内容。
-            // 内容区可滚动（10 选项的输出格式分组超出面板时内部滚）
+            // 高度由内容决定（wrap）；内容超过半屏时内部滚动（无 weight 限高）
             Column(
                 Modifier
-                    .weight(1f)
                     .graphicsLayer {
                         alpha = ((progress.value - 0.6f) / 0.4f).coerceIn(0f, 1f)
                     }
@@ -1352,6 +1674,7 @@ private fun BoxScope.GlassSubmenuOverlay(
                     }
                 }
             )
+        }
         }
     }
 }
@@ -1428,8 +1751,9 @@ fun GlassMenuEntry(
     onAnchor: ((Rect) -> Unit)? = null
 ) {
     val haptic = rememberHapticFeedback()
+    // 展开时箭头旋转为向下（用户反馈：侧边的向右的箭头旋转为向下）
     val chevronRotation by animateFloatAsState(
-        targetValue = if (expanded) -90f else 0f,
+        targetValue = if (expanded) 90f else 0f,
         animationSpec = tween(durationMillis = 250),
         label = "menuEntryChevron"
     )
@@ -1508,14 +1832,25 @@ fun LiquidDialog(
 ) {
     if (!LocalGlassEnabled.current) {
         if (visible) {
+            // material3 的 AlertDialog 内部没有任何滚动（text 槽只是 weight(1f,
+            // fill=false) 的 Box），内容超高直接被裁剪——与玻璃分支（下方
+            // weight + verticalScroll）对齐，MD3 回落也自行包滚动容器
+            // （用户反馈：MD3 模式下的弹窗无法滚动）
+            val maxDialogHeight = LocalConfiguration.current.screenHeightDp.dp * 0.92f
             AlertDialog(
                 onDismissRequest = onDismissRequest,
                 confirmButton = confirmButton,
-                modifier = modifier,
+                modifier = modifier.heightIn(max = maxDialogHeight),
                 dismissButton = dismissButton,
                 icon = icon,
                 title = title,
-                text = text
+                text = {
+                    Box(
+                        Modifier
+                            .heightIn(max = maxDialogHeight * 0.66f)
+                            .verticalScroll(rememberScrollState())
+                    ) { text?.invoke() }
+                }
             )
         }
         return
@@ -1524,9 +1859,13 @@ fun LiquidDialog(
     BackHandler(enabled = visible) { onDismissRequest() }
     // 进入：弹簧（与 GlassBottomSheet 同一手感）；退出：220ms 缓动
     val progress = remember { Animatable(if (visible) 1f else 0f) }
+    // 退场动画播完才退出组合（期间继续渲染内容，否则看不到淡出）；
+    // 组合期不读 progress.value——否则每帧重组整个弹窗子树
+    var contentActive by remember { mutableStateOf(visible) }
     LaunchedEffect(visible) {
         // 常驻组合的隐藏弹窗（如 UpdateFlowHosts 的互斥组）不做空转动画
         if (visible) {
+            contentActive = true
             if (progress.value != 1f) {
                 progress.animateTo(1f, spring(dampingRatio = 0.86f, stiffness = 360f))
             }
@@ -1534,38 +1873,41 @@ fun LiquidDialog(
             if (progress.value != 0f) {
                 progress.animateTo(0f, tween(durationMillis = 220))
             }
+            contentActive = false
         }
     }
-    // 退场动画播完才退出组合（期间继续渲染内容，否则看不到淡出）
-    if (!visible && progress.value <= 0.001f) return
-    val p = progress.value
+    if (!contentActive) return
     val dark = LocalDarkTheme.current
     val shape = RoundedCornerShape(28.dp)
     // 面板最大高度：横屏可用高度很小时，文字区独立滚动、按钮行永远完整可见
     // （用户反馈：横屏弹窗文字太多，最后的选择按钮被遮掉）
     val maxDialogHeight = LocalConfiguration.current.screenHeightDp.dp * 0.92f
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        // 遮罩（点外部关闭；随进度淡入淡出）
+        // 遮罩（点外部关闭；随进度淡入淡出）。
+        // alpha 在绘制期读 progress：组合期读会让弹窗每帧重组
         Box(
             Modifier
                 .fillMaxSize()
-                .background(Color.Black.copy(alpha = 0.36f * p))
+                .drawBehind { drawRect(Color.Black.copy(alpha = 0.36f * progress.value)) }
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = null
                 ) { onDismissRequest() }
         )
+        // 弹窗内容是独立界面层：同弹窗内的玻璃互相融合，不与页面连接
+        GlassFusionScope {
         Column(
             modifier = modifier
                 .padding(horizontal = 28.dp)
                 .widthIn(max = 480.dp)
                 .fillMaxWidth()
                 .heightIn(max = maxDialogHeight)
-                // 进入/退出：整面板高斯模糊 + 淡入淡出 + 轻微缩放
-                .blur(16f.dp * (1f - p))
+                // 进入/退出：淡入淡出 + 轻微缩放。
+                // 不再叠 Modifier.blur(16dp*(1-p))：面板自身已是 liquidGlass，
+                // 且每帧变半径 = 每帧新建原生 RenderEffect（形变期掉帧源）
                 .graphicsLayer {
-                    alpha = p
-                    val s = 0.92f + 0.08f * p
+                    alpha = progress.value
+                    val s = 0.92f + 0.08f * progress.value
                     scaleX = s
                     scaleY = s
                 }
@@ -1575,7 +1917,9 @@ fun LiquidDialog(
                     tintAlpha = if (dark) 0.66f else 0.56f,
                     tintColor = MaterialTheme.colorScheme.surface,
                     lensHeight = 18.dp,
-                    lensAmount = 30.dp
+                    lensAmount = 30.dp,
+                    // 模糊下限：通透度拉满时磨砂也不许消失（可读性）
+                    minBlur = 12.dp
                 )
                 .clip(shape)
                 .padding(horizontal = 24.dp, vertical = 22.dp)
@@ -1647,6 +1991,7 @@ fun LiquidDialog(
                 }
             }
         }
+        }
     }
 }
 
@@ -1674,39 +2019,45 @@ fun BoxScope.GlassBottomSheet(
         return
     }
     val progress = remember { Animatable(0f) }
+    var contentActive by remember { mutableStateOf(visible) }
     LaunchedEffect(visible) {
         if (visible) {
+            contentActive = true
             progress.animateTo(1f, spring(dampingRatio = 0.86f, stiffness = 360f))
         } else {
             progress.animateTo(0f, tween(durationMillis = 200))
+            contentActive = false
         }
     }
-    if (!visible && progress.value <= 0.001f) return
-    val p = progress.value
+    // 退场动画播完才退出组合；组合期不读 progress.value
+    if (!contentActive) return
     val dark = LocalDarkTheme.current
     val shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
-    // 遮罩
+    // 遮罩（alpha 绘制期读，避免每帧重组）
     Box(
         Modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.34f * p))
+            .drawBehind { drawRect(Color.Black.copy(alpha = 0.34f * progress.value)) }
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null
             ) { onDismiss() }
     )
+    GlassFusionScope {
     Column(
         Modifier
             .align(Alignment.BottomCenter)
             .fillMaxWidth()
             // 从屏幕下方滑入：位移与遮罩用同一条进度，关闭时逆向收回
-            .graphicsLayer { translationY = (1f - p) * size.height }
+            .graphicsLayer { translationY = (1f - progress.value) * size.height }
             .liquidGlass(
                 shape = shape,
                 tintAlpha = if (dark) 0.62f else 0.52f,
                 tintColor = MaterialTheme.colorScheme.surface,
                 lensHeight = 16.dp,
-                lensAmount = 26.dp
+                lensAmount = 26.dp,
+                // 模糊下限：通透度拉满时磨砂也不许消失（可读性）
+                minBlur = 12.dp
             )
             .clip(shape)
             .navigationBarsPadding()
@@ -1722,6 +2073,7 @@ fun BoxScope.GlassBottomSheet(
                 .background(Color.White.copy(alpha = 0.55f))
         )
         content()
+    }
     }
 }
 
@@ -1777,18 +2129,30 @@ fun ProgressiveBlur(
             android.graphics.RenderEffect.createRuntimeShaderEffect(it, "content")
         }
     }
+    // 整条效果链也静态化：blur 部分此前每次重跑都新建原生 RenderEffect。
+    // chain = mask(blur(content))；uniform（size/fade）绘制期原地更新即可生效，
+    // 链对象无需随 size 重建。
+    val staticChain = remember(maxBlurPx) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val blurFx = android.graphics.RenderEffect.createBlurEffect(
+                maxBlurPx, maxBlurPx, android.graphics.Shader.TileMode.CLAMP
+            )
+            maskEffect?.let { fx ->
+                android.graphics.RenderEffect.createChainEffect(fx, blurFx)
+            } ?: blurFx
+        } else null
+    }
     Box(
         modifier.drawPlainBackdrop(
             backdrop = backdrop,
             shape = { RectangleShape },
             effects = {
-                blur(maxBlurPx, TileMode.Clamp)
-                maskEffect?.let { fx ->
-                    maskShader?.setFloatUniform("size", size.width, size.height)
-                    maskShader?.setFloatUniform("fadeStart", fadeStart)
-                    maskShader?.setFloatUniform("fadeEnd", fadeEnd)
-                    effect(fx)
+                maskShader?.run {
+                    setFloatUniform("size", size.width, size.height)
+                    setFloatUniform("fadeStart", fadeStart)
+                    setFloatUniform("fadeEnd", fadeEnd)
                 }
+                staticChain?.let { renderEffect = it }
             }
         )
     )
@@ -1856,7 +2220,18 @@ fun TopBarFrost(
             android.graphics.RenderEffect.createRuntimeShaderEffect(it, "content")
         }
     }
-    // 有色层颜色（含 40% 透明度）随主题 500ms 渐变：切换深浅模式实时生效
+    // 整条效果链静态化（与 ProgressiveBlur 同法）：blur 部分不再每次重跑新建
+    val staticChain = remember(blurPx) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val blurFx = android.graphics.RenderEffect.createBlurEffect(
+                blurPx, blurPx, android.graphics.Shader.TileMode.CLAMP
+            )
+            maskEffect?.let { fx ->
+                android.graphics.RenderEffect.createChainEffect(fx, blurFx)
+            } ?: blurFx
+        } else null
+    }
+    // 有色层颜色（含 70% 不透明度，用户指定）随主题 500ms 渐变：切换深浅模式实时生效
     val tintColor = animatedThemeColor(Color.Black, Color.White)
     val barModifier = Modifier
         .fillMaxWidth()
@@ -1871,33 +2246,33 @@ fun TopBarFrost(
                     backdrop = backdrop,
                     shape = { RectangleShape },
                     effects = {
-                        blur(blurPx, TileMode.Clamp)
-                        maskEffect?.let { fx ->
-                            maskShader?.setFloatUniform("size", size.width, size.height)
-                            maskShader?.setFloatUniform("fadeStart", fadeStart)
-                            maskShader?.setFloatUniform("fadeEnd", fadeEnd)
-                            effect(fx)
+                        maskShader?.run {
+                            setFloatUniform("size", size.width, size.height)
+                            setFloatUniform("fadeStart", fadeStart)
+                            setFloatUniform("fadeEnd", fadeEnd)
                         }
+                        staticChain?.let { renderEffect = it }
                     }
                 )
             )
         }
-        // 2) 有色层（40% 黑/白，与模糊同区段渐隐收边）
+        // 2) 有色层（70% 黑/白，与模糊同区段渐隐收边）
         Box(
             barModifier
                 .align(Alignment.TopCenter)
                 .background(
                 Brush.verticalGradient(
                     colorStops = arrayOf(
-                        0f to tintColor.copy(alpha = 0.40f),
-                        fadeStart to tintColor.copy(alpha = 0.40f),
+                        0f to tintColor.copy(alpha = 0.70f),
+                        fadeStart to tintColor.copy(alpha = 0.70f),
                         fadeEnd to tintColor.copy(alpha = 0f)
                     )
                 )
             )
         )
         // 3) 顶栏内容（按钮/标题，玻璃件采样下方所有层）
-        content()
+        // 独立融合层：顶栏按钮只在顶栏内相连，不会与页面/底部面板误融合
+        GlassFusionScope { content() }
     }
 }
 
@@ -2018,6 +2393,7 @@ fun GlassSegments(
                         tintAlpha = 0.24f,
                         lensHeight = 10.dp,
                         lensAmount = 18.dp,
+                        fusionActive = { if (pressed) 1f else 0f },
                         backdropOverride = LocalGlassRootBackdrop.current
                     ) else Modifier.background(MaterialTheme.colorScheme.primary, shape)
                 )
@@ -2105,6 +2481,7 @@ fun GlassChoiceChip(
                     lensHeight = 10.dp,
                     lensAmount = 18.dp,
                     layerBlock = transform,
+                    fusionActive = { highlight.pressProgress },
                     backdropOverride = LocalGlassRootBackdrop.current
                 ) else Modifier
             )
@@ -2166,6 +2543,9 @@ fun LiquidScrollSegments(
     val itemW = remember { mutableStateMapOf<Int, Float>() }
     var viewportW by remember { mutableFloatStateOf(0f) }
     var laidOut by remember { mutableStateOf(false) }
+    // 任一选项被按住时，滑动玻璃指示器进入可融合状态（状态写在绘制期读取的 map 中，
+    // 松开即失效，不给指示器单独引入一套手势）
+    val pressedOptions = remember { mutableStateMapOf<Int, Boolean>() }
 
     val indicatorX = remember { Animatable(0f) }
     val indicatorW = remember { Animatable(0f) }
@@ -2224,6 +2604,7 @@ fun LiquidScrollSegments(
                         shadow = Shadow(radius = 0.dp, alpha = 0f),
                         backdropOverride = backdrop
                     )
+                    .glassFusionParticipant(color = capsuleBg)
                     .clip(shape)
                 else Modifier
                     .clip(shape)
@@ -2247,6 +2628,7 @@ fun LiquidScrollSegments(
                             tintAlpha = 0.24f,
                             lensHeight = 10.dp,
                             lensAmount = 18.dp,
+                            fusionActive = { if (pressedOptions.values.any { it }) 1f else 0f },
                             backdropOverride = backdrop
                         ) else Modifier.background(MaterialTheme.colorScheme.primary, shape)
                     )
@@ -2259,6 +2641,12 @@ fun LiquidScrollSegments(
             verticalAlignment = Alignment.CenterVertically
         ) {
             options.forEachIndexed { index, label ->
+                val optionInteraction = remember { MutableInteractionSource() }
+                val optionPressed by optionInteraction.collectIsPressedAsState()
+                SideEffect { pressedOptions[index] = optionPressed }
+                DisposableEffect(index) {
+                    onDispose { pressedOptions.remove(index) }
+                }
                 Box(
                     Modifier
                         .onGloballyPositioned { coords ->
@@ -2269,7 +2657,11 @@ fun LiquidScrollSegments(
                                 itemW[index] = coords.size.width.toFloat()
                             }
                         }
-                        .clickable(enabled = enabled) {
+                        .clickable(
+                            interactionSource = optionInteraction,
+                            indication = null,
+                            enabled = enabled
+                        ) {
                             if (index != selectedIndex) {
                                 haptic.click()
                                 onSelect(index)
@@ -2342,6 +2734,7 @@ fun GlassActionButton(
                         lensHeight = 12.dp,
                         lensAmount = 22.dp,
                         layerBlock = physics.transform,
+                        fusionActive = { physics.highlight.pressProgress },
                         // 采样源走默认解析（根层 + 页面层合成）：面板内的动作按钮
                         // 折射的是面板下方透出的真实内容，而不是只有装饰渐变
                         onDrawBackdrop = if (adaptiveContent) adaptive.recordBackdrop else null

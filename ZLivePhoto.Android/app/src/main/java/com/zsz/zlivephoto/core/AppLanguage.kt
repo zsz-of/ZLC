@@ -78,9 +78,13 @@ object AppLanguage {
     }
 
     /**
-     * 供 `Application.attachBaseContext` 调用：按已保存语言包装 base Context。
-     * 13 以下靠它让所有 Activity 拿到对应语言的资源；13+ 由系统 LocaleManager 负责，
-     * 这里保持一致行为（即使系统未生效也不至于错乱）。
+     * 供 `Application.attachBaseContext` / `Activity.attachBaseContext` 调用：按已保存语言
+     * 包装 base Context。13 以下靠它让 Activity 拿到对应语言的资源；13+ 由系统
+     * LocaleManager 负责，这里保持一致行为（即使系统未生效也不至于错乱）。
+     *
+     * ⚠️ 必须同时挂在 Application 和每个 Activity 上：只包装 Application 不会改变
+     * Activity 的资源解析（系统为 Activity 单独创建 base Context），这正是
+     * Go 轻量版（面向 Android 6–12）切语言无效的根因。
      */
     fun wrap(base: Context): Context {
         val tag = base.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
@@ -91,7 +95,11 @@ object AppLanguage {
             Locale.setDefault(locale)
             val config = Configuration(base.resources.configuration)
             config.setLocale(locale)
-            config.setLocales(LocaleList(locale))
+            // setLocales / LocaleList 自 API 24 才有；Go 版 minSdk 23（Android 6.0），
+            // 不加守卫会在真机上抛 NoSuchMethodError——它是 Error，下面的 catch 接不住
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                config.setLocales(LocaleList(locale))
+            }
             base.createConfigurationContext(config)
         } catch (_: Exception) {
             base

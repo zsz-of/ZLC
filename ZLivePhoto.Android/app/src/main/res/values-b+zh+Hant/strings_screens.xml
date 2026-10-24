@@ -107,4 +107,22 @@
     <string name="screen_transcode_in_progress">轉碼中 · 已處理 %1$d 影格</string>
     <string name="screen_transcode_progress">轉碼 %1$d%%</string>
     <string name="screen_format_samsung">三星</string>
+    <!-- 第一版面「处理方式」三选一（替换原图 / 删除原图 / 保留原图） -->
+    <string name="screen_mode_title">處理方式</string>
+    <string name="screen_mode_replace">取代原圖</string>
+    <string name="screen_mode_replace_desc">轉換結果直接寫回原檔案</string>
+    <string name="screen_mode_delete">刪除原圖</string>
+    <string name="screen_mode_delete_desc">處理完成後自動刪除原圖</string>
+    <string name="screen_mode_keep">保留原圖</string>
+    <string name="screen_mode_keep_desc">不刪除也不取代原檔案</string>
+    <string name="screen_mode_need_access">需「所有檔案存取」權限，點擊授權</string>
+    <!-- 长按列表项：单项输出格式 -->
+    <string name="screen_item_format_title">輸出格式</string>
+    <string name="screen_item_format_hint">長按列表項目可單獨設定格式</string>
+    <!-- 选择器媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片） -->
+    <string name="screen_filter_all">全部</string>
+    <string name="screen_filter_live">動態照片</string>
+    <string name="screen_filter_video">影片</string>
+    <string name="screen_filter_image">圖片</string>
+    <string name="screen_filter_empty">目前篩選下沒有內容</string>
 </resources>

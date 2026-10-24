@@ -2,7 +2,7 @@
 
 [English](#english) · [日本語](#日本語) · [한국어](#한국어) · [简体中文](#简体中文) · [繁體中文](#繁體中文) · [Русский](#русский) · [Français](#français) · [Latina](#latina)
 
-**Developer / 开发者**: zsz · **Version / 版本**: v3.7.1 · **License**: [GPL-3.0-or-later](LICENSE)
+**Developer / 开发者**: zsz · **Version / 版本**: v3.8.0 · **License**: [GPL-3.0-or-later](LICENSE)
 
 ---
 
@@ -248,7 +248,7 @@ GNU General Public License v3.0 이상(GPL-3.0-or-later). Copyright (C) 2026 zsz
 
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / 魅族 / 努比亚 / Apple Live Photo 互转、拆解与合成。
 
-**开发者**: zsz · **版本**: v3.7.1 · **许可证**: GPL-3.0-or-later
+**开发者**: zsz · **版本**: v3.8.0 · **许可证**: GPL-3.0-or-later
 
 本程序实现了主流动态照片格式之间的字节级无损互转，并支持动态照片的拆解与合成。界面支持 **8 种语言**（简体中文、繁体中文、英文、日文、韩文、阿拉伯文、西班牙文、文言文），设置页可单独切换应用语言，并已适配 RTL（从右到左）语言。
 
@@ -352,7 +352,7 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 
 > 動態照片格式互轉工具：Google Motion Photo / OPPO / vivo / 小米 / 榮耀 / 魅族 / 努比亞 / Apple Live Photo 互轉、拆解與合成。
 
-**開發者**：zsz ・ **版本**：v3.7.1 ・ **授權條款**：GPL-3.0-or-later
+**開發者**：zsz ・ **版本**：v3.8.0 ・ **授權條款**：GPL-3.0-or-later
 
 本程式可在主流動態照片格式之間進行位元組級無損互轉，並支援動態照片的拆解與合成。介面支援 **8 種語言**（簡體中文、繁體中文、英文、日文、韓文、阿拉伯文、西班牙文、文言文），設定頁可單獨切換應用程式語言，並已支援 RTL（由右至左）語言。
 

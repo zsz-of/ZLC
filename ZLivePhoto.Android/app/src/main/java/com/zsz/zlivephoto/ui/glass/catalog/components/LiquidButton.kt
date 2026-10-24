@@ -5,14 +5,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.isSpecified
 import androidx.compose.ui.semantics.Role
@@ -21,11 +20,11 @@ import androidx.compose.ui.util.fastCoerceAtMost
 import androidx.compose.ui.util.lerp
 import com.kyant.backdrop.Backdrop
 import com.kyant.backdrop.drawBackdrop
-import com.kyant.backdrop.effects.blur
-import com.kyant.backdrop.effects.lens
-import com.kyant.backdrop.effects.vibrancy
 import com.zsz.zlivephoto.ui.glass.catalog.shapes.Capsule
 import com.zsz.zlivephoto.ui.glass.catalog.utils.InteractiveHighlight
+import com.zsz.zlivephoto.ui.glass.animatedThemeColor
+import com.zsz.zlivephoto.ui.glass.glassFusionParticipant
+import com.zsz.zlivephoto.ui.glass.rememberGlassEffectCache
 import kotlin.math.abs
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -48,11 +47,20 @@ fun LiquidButton(
 ) {
     val animationScope = rememberCoroutineScope()
 
+    // 效果链缓存：参数全静态，重跑时零原生 RenderEffect 分配
+    val effectCache = rememberGlassEffectCache()
+
     val interactiveHighlight = remember(animationScope) {
         InteractiveHighlight(
             animationScope = animationScope
         )
     }
+    // 默认带一层主题化玻璃底色，与主界面 GlassActionButton 的视觉语言一致；
+    // 调用方传 Color.Transparent 可保持清透文字按钮
+    val effectiveTint = if (tint.isSpecified) tint else animatedThemeColor(
+        Color(0xFF121212).copy(0.36f),
+        Color(0xFFFAFAFA).copy(0.36f)
+    )
 
     Row(
         modifier
@@ -60,9 +68,14 @@ fun LiquidButton(
                 backdrop = backdrop,
                 shape = { Capsule() },
                 effects = {
-                    vibrancy()
-                    blur(2f.dp.toPx())
-                    lens(12f.dp.toPx(), 24f.dp.toPx())
+                    effectCache.apply(
+                        scope = this,
+                        blurRadiusPx = 2f.dp.toPx(),
+                        lensHeightPx = 12f.dp.toPx(),
+                        lensAmountPx = 24f.dp.toPx(),
+                        lensEnabled = true,
+                        vibrancyEnabled = true
+                    )
                 },
                 layerBlock = if (isInteractive) {
                     {
@@ -93,14 +106,19 @@ fun LiquidButton(
                     null
                 },
                 onDrawSurface = {
-                    if (tint.isSpecified) {
-                        drawRect(tint, blendMode = BlendMode.Hue)
-                        drawRect(tint.copy(alpha = 0.75f))
-                    }
+                    if (effectiveTint.isSpecified) drawRect(effectiveTint)
                     if (surfaceColor.isSpecified) {
                         drawRect(surfaceColor)
                     }
                 }
+            )
+            .glassFusionParticipant(
+                color = when {
+                    surfaceColor.isSpecified && surfaceColor.alpha > 0f -> surfaceColor
+                    effectiveTint.isSpecified && effectiveTint.alpha > 0f -> effectiveTint
+                    else -> Color.White
+                },
+                active = { interactiveHighlight.pressProgress }
             )
             .clickable(
                 interactionSource = null,
@@ -117,7 +135,7 @@ fun LiquidButton(
                     Modifier
                 }
             )
-            .height(48f.dp)
+            .heightIn(min = 40.dp)
             .padding(horizontal = 16f.dp),
         horizontalArrangement = Arrangement.spacedBy(8f.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,

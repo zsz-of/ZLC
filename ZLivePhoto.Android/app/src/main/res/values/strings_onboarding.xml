@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  首次启动 / 升级后的引导文案（风格选择 + 深浅色选择）。
+  与 strings_app.xml 等同目录多文件并存，构建时合并；请勿在本文件放其它模块的 key。
+-->
+<resources>
+    <!-- 风格页 -->
+    <string name="onboarding_style_title">选择界面风格</string>
+    <string name="onboarding_style_subtitle">两种风格都能在设置里随时切换</string>
+    <string name="onboarding_style_glass">液态玻璃</string>
+    <string name="onboarding_style_md3">原生界面</string>
+    <string name="onboarding_style_try">下面这组控件可以直接试用，感受两者的差别</string>
+    <!-- 预览控件标签 -->
+    <string name="onboarding_preview_switch">开关</string>
+    <string name="onboarding_preview_slider">滑条</string>
+    <string name="onboarding_preview_button">按钮</string>
+    <!-- 深浅色页 -->
+    <string name="onboarding_theme_title">选择深浅色</string>
+    <string name="onboarding_theme_subtitle">也可以跟随系统自动切换；现在切换，这页会立刻跟着变</string>
+    <string name="onboarding_preview_title">实时预览</string>
+    <!-- 导航按钮 -->
+    <string name="onboarding_prev">上一步</string>
+    <string name="onboarding_next">下一步</string>
+    <string name="onboarding_finish">开始使用</string>
+</resources>

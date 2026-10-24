@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · 引導文案（文言）。譯自 res/values/strings_onboarding.xml（簡體中文）。
+-->
+<resources>
+    <string name="onboarding_style_title">擇界面之風</string>
+    <string name="onboarding_style_subtitle">二者皆可於設定中隨時更易</string>
+    <string name="onboarding_style_glass">流璃</string>
+    <string name="onboarding_style_md3">常式界面</string>
+    <string name="onboarding_style_try">下列諸器皆可試用，以辨其異</string>
+    <string name="onboarding_preview_switch">開關</string>
+    <string name="onboarding_preview_slider">滑桿</string>
+    <string name="onboarding_preview_button">按鈕</string>
+    <string name="onboarding_theme_title">擇明昏之色</string>
+    <string name="onboarding_theme_subtitle">亦可從系統自變；既改，此頁立時隨之</string>
+    <string name="onboarding_prev">退一步</string>
+    <string name="onboarding_next">進一步</string>
+    <string name="onboarding_finish">始用</string>
+    <string name="onboarding_preview_title">即時之覽</string>
+</resources>

@@ -103,4 +103,22 @@
     <string name="screen_transcode_in_progress">جارٍ الترميز · تمت معالجة %1$d إطار</string>
     <string name="screen_transcode_progress">الترميز %1$d%%</string>
     <string name="screen_format_samsung">سامسونج</string>
+    <!-- 第一版面「处理方式」三选一（替换原图 / 删除原图 / 保留原图） -->
+    <string name="screen_mode_title">طريقة المعالجة</string>
+    <string name="screen_mode_replace">استبدال الأصل</string>
+    <string name="screen_mode_replace_desc">تُكتب نتائج التحويل مباشرة فوق الملفات الأصلية</string>
+    <string name="screen_mode_delete">حذف الأصل</string>
+    <string name="screen_mode_delete_desc">تُحذف الملفات الأصلية بعد اكتمال المعالجة</string>
+    <string name="screen_mode_keep">الاحتفاظ بالأصل</string>
+    <string name="screen_mode_keep_desc">لا تُحذف الملفات الأصلية ولا تُستبدل</string>
+    <string name="screen_mode_need_access">يتطلب إذن «الوصول إلى جميع الملفات»، اضغط لمنحه</string>
+    <!-- 长按列表项：单项输出格式 -->
+    <string name="screen_item_format_title">تنسيق الإخراج</string>
+    <string name="screen_item_format_hint">اضغط مطولًا على عنصر في القائمة لضبط تنسيقه بشكل منفصل</string>
+    <!-- 选择器媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片） -->
+    <string name="screen_filter_all">الكل</string>
+    <string name="screen_filter_live">الصور الحية</string>
+    <string name="screen_filter_video">الفيديو</string>
+    <string name="screen_filter_image">الصور</string>
+    <string name="screen_filter_empty">لا يوجد محتوى ضمن هذا الفلتر</string>
 </resources>

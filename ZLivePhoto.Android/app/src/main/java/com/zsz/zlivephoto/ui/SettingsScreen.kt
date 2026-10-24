@@ -1346,25 +1346,30 @@ private fun TranscoderAddonSection() {
         )
         val backdrop = LocalGlassRootBackdrop.current
         if (backdrop != null) {
-            // CRF 是整数量（10..30）：用直接模式——拖拽位置 1:1 映射数值，
-            // 不做弹簧追赶，杜绝「四舍五入整数值 + 动画互相追逐」的拖动卡顿。
-            // 玻璃可用时**即使转码关闭也保持液态玻璃外观**（仅置灰禁手势），
-            // 不退回 MD3 滑条（用户反馈：「转码器如果关闭，那下面的 UI 会
-            // 退回 MD3 的样式，应该保持液态玻璃的样式」）。
+            // CRF 是整数量（10..30）：换回与「模糊程度」同款的阻尼弹簧滑条
+            // （用户反馈：做成和上面选择模糊程度一样的就好了）。value 用本地
+            // 连续状态——若把取整后的值回填滑条，阻尼动画的 snapshotFlow 会
+            // 追着整数跑造成抖动；内部动画保持连续，只在写回时四舍五入，
+            // 显示与传给 ffmpeg 的都是整数。玻璃可用时即使转码关闭也保持
+            // 液态玻璃外观（仅置灰禁手势），不退回 MD3 滑条。
+            var crfContinuous by remember { mutableStateOf(FfmpegAddon.crf.toFloat()) }
             LiquidSlider(
-                value = { FfmpegAddon.crf.toFloat() },
-                onValueChange = { v -> FfmpegAddon.updateCrf(v.roundToInt()) },
+                value = { crfContinuous },
+                onValueChange = { v ->
+                    crfContinuous = v
+                    val i = v.roundToInt().coerceIn(10, 30)
+                    if (i != FfmpegAddon.crf) FfmpegAddon.updateCrf(i)
+                },
                 valueRange = 10f..30f,
                 visibilityThreshold = 0.01f,
                 backdrop = backdrop,
-                direct = true,
                 enabled = encoding
             )
         } else {
             // 无玻璃回落：同样不分档位（用户反馈：CRF 滑条不需要分档）
             GlassSlider(
                 value = FfmpegAddon.crf.toFloat(),
-                onValueChange = { v -> FfmpegAddon.updateCrf(v.toInt()) },
+                onValueChange = { v -> FfmpegAddon.updateCrf(v.roundToInt()) },
                 valueRange = 10f..30f,
                 enabled = encoding
             )

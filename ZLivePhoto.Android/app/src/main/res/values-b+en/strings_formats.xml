@@ -68,4 +68,7 @@
     <string name="fmt_log_parse_samsung">Parsing as Samsung Live Photo (SEFH/SEFT tail block)</string>
     <string name="fmt_log_samsung_sef">SEF tail: version=%1$d, %2$d record(s)</string>
     <string name="fmt_log_samsung_write">Writing the Samsung format: %1$s (image %2$dB + video %3$dB + SEF tail %4$dB)</string>
+    <!-- Apple MOV 重封装：错误与回退日志 -->
+    <string name="fmt_err_apple_remux_failed">Could not remux the MOV into a playable MP4 (no valid video track)</string>
+    <string name="fmt_log_apple_remux_fallback">MOV remux failed; fell back to changing only the ftyp brand — some galleries may not play the result</string>
 </resources>

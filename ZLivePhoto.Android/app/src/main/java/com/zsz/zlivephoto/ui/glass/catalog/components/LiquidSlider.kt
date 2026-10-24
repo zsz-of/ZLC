@@ -42,16 +42,17 @@ import com.kyant.backdrop.backdrops.rememberBackdrop
 import com.kyant.backdrop.backdrops.rememberCombinedBackdrop
 import com.kyant.backdrop.backdrops.rememberLayerBackdrop
 import com.kyant.backdrop.drawBackdrop
-import com.kyant.backdrop.effects.blur
-import com.kyant.backdrop.effects.lens
 import com.kyant.backdrop.highlight.Highlight
 import com.kyant.backdrop.shadow.InnerShadow
 import com.kyant.backdrop.shadow.Shadow
 import com.zsz.zlivephoto.ui.glass.GlassButtonPhysics
 import com.zsz.zlivephoto.ui.glass.animatedThemeColor
+import com.zsz.zlivephoto.ui.glass.quantizeAnim
 import com.zsz.zlivephoto.ui.glass.rememberGlassButtonPhysics
+import com.zsz.zlivephoto.ui.glass.rememberGlassEffectCache
 import com.zsz.zlivephoto.ui.glass.catalog.shapes.Capsule
 import com.zsz.zlivephoto.ui.glass.catalog.utils.DampedDragAnimation
+import com.zsz.zlivephoto.ui.glass.glassFusionParticipant
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.math.abs
@@ -130,6 +131,8 @@ private fun LiquidSliderDamped(
     )
 
     val trackBackdrop = rememberLayerBackdrop()
+    // 效果链缓存：按压/拖拽期间每帧不再新建原生 RenderEffect
+    val effectCache = rememberGlassEffectCache()
 
     // 禁用态整体置灰（玻璃外观保留，不退回 MD3 滑条）
     BoxWithConstraints(
@@ -247,12 +250,14 @@ private fun LiquidSliderDamped(
                     ),
                     shape = { Capsule() },
                     effects = {
-                        val progress = dampedDragAnimation.pressProgress
-                        blur(8f.dp.toPx() * (1f - progress))
-                        lens(
-                            10f.dp.toPx() * progress,
-                            14f.dp.toPx() * progress,
-                            chromaticAberration = false
+                        // 按压量量化到 4 档：短促按压弹簧期间效果链缓存仍能命中
+                        val press = quantizeAnim(dampedDragAnimation.pressProgress)
+                        effectCache.apply(
+                            scope = this,
+                            blurRadiusPx = 8f.dp.toPx() * (1f - press),
+                            lensHeightPx = 10f.dp.toPx() * press,
+                            lensAmountPx = 14f.dp.toPx() * press,
+                            lensEnabled = true
                         )
                     },
                     highlight = {
@@ -287,6 +292,10 @@ private fun LiquidSliderDamped(
                         val progress = dampedDragAnimation.pressProgress
                         drawRect(Color.White.copy(alpha = 1f - progress))
                     }
+                )
+                .glassFusionParticipant(
+                    color = Color.White,
+                    active = { dampedDragAnimation.pressProgress }
                 )
                 .size(40f.dp, 24f.dp)
         )
@@ -323,6 +332,8 @@ private fun LiquidSliderDirect(
 
     val trackBackdrop = rememberLayerBackdrop()
     val physics: GlassButtonPhysics = rememberGlassButtonPhysics(maxOffset = 3.dp)
+    // 效果链缓存：按压/拖拽期间每帧不再新建原生 RenderEffect
+    val effectCache = rememberGlassEffectCache()
     val isLtr = LocalLayoutDirection.current == LayoutDirection.Ltr
     val density = LocalDensity.current
     val scope = rememberCoroutineScope()
@@ -337,17 +348,21 @@ private fun LiquidSliderDirect(
         val thumbHalfPx = with(density) { 20.dp.toPx() }
 
         // 拖拽中的连续值（null = 未拖拽）：滑块 1:1 跟手（float），
-        // 只在写回时四舍五入——整数值不再反向把滑块拽成逐格跳变
+        // 只在写回时四舍五入——整数值不再反向把滑块拽成逐格跳变。
+        // progress 提为 lambda：内部读快照状态，调用点（layout/layer 期）各自订阅，
+        // 避免拖拽/点击动画每一帧重组整个滑条子树
         var dragValue by remember { mutableStateOf<Float?>(null) }
         val baseProgress = ((value() - valueRange.start) / span).fastCoerceIn(0f, 1f)
         // 点击跳转的**液态玻璃转移动画**：点轨道任意位置 → 滑块以弹簧平滑滑到
         // 目标比例（而非瞬移），数值同步写回（用户反馈：点击后要有转移动画）
         val tapAnim = remember { Animatable(baseProgress) }
         var tapping by remember { mutableStateOf(false) }
-        val progress = when {
-            dragValue != null -> ((dragValue!! - valueRange.start) / span).fastCoerceIn(0f, 1f)
-            tapping -> tapAnim.value
-            else -> baseProgress
+        val progress: () -> Float = {
+            when {
+                dragValue != null -> ((dragValue!! - valueRange.start) / span).fastCoerceIn(0f, 1f)
+                tapping -> tapAnim.value
+                else -> baseProgress
+            }
         }
 
         // 手势进度每帧变化，pointerInput 协程里是捕获值——用 rememberUpdatedState 取最新
@@ -383,7 +398,7 @@ private fun LiquidSliderDirect(
                     .height(6f.dp)
                     .layout { measurable, constraints ->
                         val placeable = measurable.measure(constraints)
-                        val width = (constraints.maxWidth * progress).fastRoundToInt()
+                        val width = (constraints.maxWidth * progress()).fastRoundToInt()
                         layout(width, placeable.height) {
                             placeable.place(0, 0)
                         }
@@ -418,8 +433,8 @@ private fun LiquidSliderDirect(
                 .graphicsLayer {
                     val thumbW = size.width
                     translationX =
-                        if (isLtr) trackWidth * progress - thumbW / 2f
-                        else trackWidth * (1f - progress) - thumbW / 2f
+                        if (isLtr) trackWidth * progress() - thumbW / 2f
+                        else trackWidth * (1f - progress()) - thumbW / 2f
                 }
                 // 按压径向高光（非消费，事件继续传给下面的拖拽检测器）
                 .then(if (enabled) physics.highlight.gestureModifier else Modifier)
@@ -430,7 +445,7 @@ private fun LiquidSliderDirect(
                     detectDragGestures(
                         onDragStart = { startPos ->
                             val thumbLeft =
-                                trackWidth * currentProgress.value - thumbHalfPx
+                                trackWidth * (currentProgress.value)() - thumbHalfPx
                             val v = valueAt(thumbLeft + startPos.x)
                             dragValue = v
                             onValueChange(v.roundToInt().toFloat())
@@ -438,7 +453,7 @@ private fun LiquidSliderDirect(
                         onDrag = { change, _ ->
                             change.consume()
                             val thumbLeft =
-                                trackWidth * currentProgress.value - thumbHalfPx
+                                trackWidth * (currentProgress.value)() - thumbHalfPx
                             val v = valueAt(thumbLeft + change.position.x)
                             dragValue = v
                             onValueChange(v.roundToInt().toFloat())
@@ -464,12 +479,14 @@ private fun LiquidSliderDirect(
                     ),
                     shape = { Capsule() },
                     effects = {
-                        val press = physics.highlight.pressProgress
-                        blur(8f.dp.toPx() * (1f - press))
-                        lens(
-                            10f.dp.toPx() * press,
-                            14f.dp.toPx() * press,
-                            chromaticAberration = false
+                        // 按压量量化到 4 档：短促按压弹簧期间效果链缓存仍能命中
+                        val press = quantizeAnim(physics.highlight.pressProgress)
+                        effectCache.apply(
+                            scope = this,
+                            blurRadiusPx = 8f.dp.toPx() * (1f - press),
+                            lensHeightPx = 10f.dp.toPx() * press,
+                            lensAmountPx = 14f.dp.toPx() * press,
+                            lensEnabled = true
                         )
                     },
                     highlight = {
@@ -502,6 +519,10 @@ private fun LiquidSliderDirect(
                         // 下层轨道/页面的磨砂影像——液态玻璃滑块（用户反馈恢复项）
                         drawRect(Color.White.copy(alpha = 0.30f * (1f - press)))
                     }
+                )
+                .glassFusionParticipant(
+                    color = Color.White,
+                    active = { physics.highlight.pressProgress }
                 )
                 .then(physics.highlight.modifier)
                 .size(40f.dp, 24f.dp)

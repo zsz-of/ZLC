@@ -160,4 +160,8 @@
     <string name="main_export_replace_failed_bare">取代來源檔案失敗</string>
     <string name="main_status_read_failed">無法讀取所選檔案</string>
     <string name="main_status_source_missing">來源檔案不存在或無法讀取</string>
+    <!-- 状态栏：单项格式 / 导入结果分组 -->
+    <string name="main_status_item_format_set">已單獨設定「%1$s」的輸出格式</string>
+    <string name="main_status_import_done_grouped">已匯入 %1$d 項（其中合併動態照片 %2$d 項）%3$s</string>
+    <string name="main_status_import_unpaired">；%1$d 個單圖/影片未配到同名的另一半，已略過</string>
 </resources>

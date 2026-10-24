@@ -71,4 +71,7 @@
     <string name="fmt_log_parse_samsung">Samsung のライブフォトとして解析（SEFH/SEFT テールブロック）</string>
     <string name="fmt_log_samsung_sef">SEF テール：version=%1$d、レコード %2$d 件</string>
     <string name="fmt_log_samsung_write">Samsung 形式で書き出し：%1$s（画像 %2$dB + 動画 %3$dB + SEF テール %4$dB）</string>
+    <!-- Apple MOV 重封装：错误与回退日志 -->
+    <string name="fmt_err_apple_remux_failed">MOV を再生可能な MP4 にリマックスできません（有効な動画トラックがありません）</string>
+    <string name="fmt_log_apple_remux_fallback">MOV のリマックスに失敗したため、ftyp ブランドのみ変更して処理しました。この場合、一部のアルバムでは再生できないことがあります</string>
 </resources>

@@ -69,4 +69,7 @@
     <string name="fmt_log_parse_samsung">التحليل وفق Samsung Live Photo (كتلة ذيل SEFH/SEFT)</string>
     <string name="fmt_log_samsung_sef">ذيل SEF: version=%1$d، السجلات %2$d</string>
     <string name="fmt_log_samsung_write">كتابة تنسيق Samsung: %1$s (صورة %2$dB + فيديو %3$dB + ذيل SEF %4$dB)</string>
+    <!-- Apple MOV 重封装：错误与回退日志 -->
+    <string name="fmt_err_apple_remux_failed">تعذّرت إعادة تغليف MOV كملف MP4 قابل للتشغيل (لا يحتوي على مسار فيديو صالح)</string>
+    <string name="fmt_log_apple_remux_fallback">فشلت إعادة تغليف MOV، فتم الرجوع إلى تغيير علامة ftyp فقط؛ قد لا يعمل الناتج في بعض معارض الصور</string>
 </resources>

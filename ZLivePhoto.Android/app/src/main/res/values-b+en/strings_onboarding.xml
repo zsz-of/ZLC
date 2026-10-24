@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC · Onboarding strings (English).
+  Translated from res/values/strings_onboarding.xml (Simplified Chinese baseline).
+-->
+<resources>
+    <string name="onboarding_style_title">Choose interface style</string>
+    <string name="onboarding_style_subtitle">You can switch between the two styles anytime in Settings</string>
+    <string name="onboarding_style_glass">Liquid Glass</string>
+    <string name="onboarding_style_md3">Classic</string>
+    <string name="onboarding_style_try">Try the controls below to feel the difference</string>
+    <string name="onboarding_preview_switch">Switch</string>
+    <string name="onboarding_preview_slider">Slider</string>
+    <string name="onboarding_preview_button">Button</string>
+    <string name="onboarding_theme_title">Choose light or dark</string>
+    <string name="onboarding_theme_subtitle">Or follow the system; this page updates as soon as you switch</string>
+    <string name="onboarding_prev">Back</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_finish">Get started</string>
+    <string name="onboarding_preview_title">Live preview</string>
+</resources>

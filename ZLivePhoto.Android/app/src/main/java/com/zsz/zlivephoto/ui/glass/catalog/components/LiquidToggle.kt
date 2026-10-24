@@ -34,14 +34,15 @@ import com.kyant.backdrop.backdrops.rememberBackdrop
 import com.kyant.backdrop.backdrops.rememberCombinedBackdrop
 import com.kyant.backdrop.backdrops.rememberLayerBackdrop
 import com.kyant.backdrop.drawBackdrop
-import com.kyant.backdrop.effects.blur
-import com.kyant.backdrop.effects.lens
 import com.kyant.backdrop.highlight.Highlight
 import com.kyant.backdrop.shadow.InnerShadow
 import com.kyant.backdrop.shadow.Shadow
 import com.zsz.zlivephoto.ui.glass.catalog.shapes.Capsule
 import com.zsz.zlivephoto.ui.glass.catalog.utils.DampedDragAnimation
+import com.zsz.zlivephoto.ui.glass.glassFusionParticipant
 import com.zsz.zlivephoto.ui.glass.animatedThemeColor
+import com.zsz.zlivephoto.ui.glass.quantizeAnim
+import com.zsz.zlivephoto.ui.glass.rememberGlassEffectCache
 import kotlinx.coroutines.flow.collectLatest
 
 /**
@@ -68,6 +69,8 @@ fun LiquidToggle(
 
     val density = LocalDensity.current
     val isLtr = LocalLayoutDirection.current == LayoutDirection.Ltr
+    // 效果链缓存：按压期间每帧不再新建原生 RenderEffect
+    val effectCache = rememberGlassEffectCache()
     val dragWidth = with(density) { 20f.dp.toPx() }
     val animationScope = rememberCoroutineScope()
     var didDrag by remember { mutableStateOf(false) }
@@ -163,12 +166,14 @@ fun LiquidToggle(
                     ),
                     shape = { Capsule() },
                     effects = {
-                        val progress = dampedDragAnimation.pressProgress
-                        blur(8f.dp.toPx() * (1f - progress))
-                        lens(
-                            5f.dp.toPx() * progress,
-                            10f.dp.toPx() * progress,
-                            chromaticAberration = true
+                        // 按压量量化到 4 档：短促按压弹簧期间效果链缓存仍能命中
+                        val press = quantizeAnim(dampedDragAnimation.pressProgress)
+                        effectCache.apply(
+                            scope = this,
+                            blurRadiusPx = 8f.dp.toPx() * (1f - press),
+                            lensHeightPx = 5f.dp.toPx() * press,
+                            lensAmountPx = 10f.dp.toPx() * press,
+                            lensEnabled = true
                         )
                     },
                     highlight = {
@@ -203,6 +208,10 @@ fun LiquidToggle(
                         val progress = dampedDragAnimation.pressProgress
                         drawRect(Color.White.copy(alpha = 1f - progress))
                     }
+                )
+                .glassFusionParticipant(
+                    color = Color.White,
+                    active = { dampedDragAnimation.pressProgress }
                 )
                 .size(40f.dp, 24f.dp)
         )

@@ -71,4 +71,7 @@
     <string name="fmt_log_parse_samsung">Samsung 라이브 포토로 분석(SEFH/SEFT 테일 블록)</string>
     <string name="fmt_log_samsung_sef">SEF 테일: version=%1$d, 레코드 %2$d개</string>
     <string name="fmt_log_samsung_write">Samsung 형식으로 출력: %1$s(이미지 %2$dB + 동영상 %3$dB + SEF 테일 %4$dB)</string>
+    <!-- Apple MOV 重封装：错误与回退日志 -->
+    <string name="fmt_err_apple_remux_failed">MOV를 재생 가능한 MP4로 리먹싱할 수 없습니다(유효한 비디오 트랙 없음)</string>
+    <string name="fmt_log_apple_remux_fallback">MOV 리먹싱에 실패하여 ftyp 브랜드만 변경했습니다. 일부 갤러리에서는 재생되지 않을 수 있습니다</string>
 </resources>

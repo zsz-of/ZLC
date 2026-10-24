@@ -107,4 +107,22 @@
     <string name="screen_transcode_in_progress">トランスコード中 · %1$d フレーム処理済み</string>
     <string name="screen_transcode_progress">トランスコード %1$d%%</string>
     <string name="screen_format_samsung">Samsung</string>
+    <!-- 第一版面「处理方式」三选一（替换原图 / 删除原图 / 保留原图） -->
+    <string name="screen_mode_title">処理方法</string>
+    <string name="screen_mode_replace">元を置換</string>
+    <string name="screen_mode_replace_desc">変換結果を元のファイルに直接書き戻します</string>
+    <string name="screen_mode_delete">元を削除</string>
+    <string name="screen_mode_delete_desc">処理完了後に元のファイルを自動削除します</string>
+    <string name="screen_mode_keep">元を保持</string>
+    <string name="screen_mode_keep_desc">元のファイルは削除も置換もしません</string>
+    <string name="screen_mode_need_access">「すべてのファイルへのアクセス」権限が必要です。タップして許可してください</string>
+    <!-- 长按列表项：单项输出格式 -->
+    <string name="screen_item_format_title">出力形式</string>
+    <string name="screen_item_format_hint">リスト項目を長押しすると、その項目の形式を個別に設定できます</string>
+    <!-- 选择器媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片） -->
+    <string name="screen_filter_all">すべて</string>
+    <string name="screen_filter_live">ライブフォト</string>
+    <string name="screen_filter_video">動画</string>
+    <string name="screen_filter_image">写真</string>
+    <string name="screen_filter_empty">このフィルターに該当する項目はありません</string>
 </resources>

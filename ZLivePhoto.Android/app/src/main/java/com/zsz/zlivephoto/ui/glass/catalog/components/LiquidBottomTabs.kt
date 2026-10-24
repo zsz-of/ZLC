@@ -41,16 +41,16 @@ import com.kyant.backdrop.backdrops.layerBackdrop
 import com.kyant.backdrop.backdrops.rememberCombinedBackdrop
 import com.kyant.backdrop.backdrops.rememberLayerBackdrop
 import com.kyant.backdrop.drawBackdrop
-import com.kyant.backdrop.effects.blur
-import com.kyant.backdrop.effects.lens
-import com.kyant.backdrop.effects.vibrancy
 import com.kyant.backdrop.highlight.Highlight
 import com.kyant.backdrop.shadow.InnerShadow
 import com.kyant.backdrop.shadow.Shadow
 import com.zsz.zlivephoto.ui.glass.catalog.shapes.Capsule
 import com.zsz.zlivephoto.ui.glass.catalog.utils.DampedDragAnimation
 import com.zsz.zlivephoto.ui.glass.catalog.utils.InteractiveHighlight
+import com.zsz.zlivephoto.ui.glass.glassFusionParticipant
 import com.zsz.zlivephoto.ui.glass.animatedThemeColor
+import com.zsz.zlivephoto.ui.glass.quantizeAnim
+import com.zsz.zlivephoto.ui.glass.rememberGlassEffectCache
 import com.zsz.zlivephoto.ui.LocalDarkTheme
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.drop
@@ -114,6 +114,11 @@ fun LiquidBottomTabs(
 
         val isLtr = LocalLayoutDirection.current == LayoutDirection.Ltr
         val animationScope = rememberCoroutineScope()
+        // 三个玻璃表面尺寸/参数不同，各持一份效果链缓存；
+        // 共用一份会让后画的尺寸参数覆盖前一份缓存（RenderEffect 与尺寸相关）
+        val containerEffectCache = rememberGlassEffectCache()
+        val echoEffectCache = rememberGlassEffectCache()
+        val indicatorEffectCache = rememberGlassEffectCache()
         // 注意：currentIndex 不能用 selectedTabIndex（调用方每次重组都会传新 lambda
         // 实例）做 remember 键——否则每次重组都用「当前选中值」重建状态对象，
         // 下面 snapshotFlow 观测到的还是旧状态，外部选中变化永远不发射 →
@@ -199,9 +204,15 @@ fun LiquidBottomTabs(
                     backdrop = backdrop,
                     shape = { Capsule() },
                     effects = {
-                        vibrancy()
-                        blur(8f.dp.toPx())
-                        lens(24f.dp.toPx(), 24f.dp.toPx())
+                        // 参数静态：效果链缓存命中后零原生分配
+                        containerEffectCache.apply(
+                            scope = this,
+                            blurRadiusPx = 8f.dp.toPx(),
+                            lensHeightPx = 24f.dp.toPx(),
+                            lensAmountPx = 24f.dp.toPx(),
+                            lensEnabled = true,
+                            vibrancyEnabled = true
+                        )
                     },
                     layerBlock = {
                         val progress = dampedDragAnimation.pressProgress
@@ -211,6 +222,7 @@ fun LiquidBottomTabs(
                     },
                     onDrawSurface = { drawRect(containerColor) }
                 )
+                .glassFusionParticipant(color = containerColor)
                 .then(interactiveHighlight.modifier)
                 // 设置页内嵌分段栏：比底部导航矮一档（50dp 容器 / 42dp 指示器），
                 // 避免三段 tab 在设置页里显得笨重（用户反馈「tab 栏太大」）
@@ -240,12 +252,15 @@ fun LiquidBottomTabs(
                         backdrop = backdrop,
                         shape = { Capsule() },
                         effects = {
-                            val progress = dampedDragAnimation.pressProgress
-                            vibrancy()
-                            blur(8f.dp.toPx())
-                            lens(
-                                24f.dp.toPx() * progress,
-                                24f.dp.toPx() * progress
+                            // 按压量量化到 4 档：短促按压弹簧期间效果链缓存仍能命中
+                            val progress = quantizeAnim(dampedDragAnimation.pressProgress)
+                            echoEffectCache.apply(
+                                scope = this,
+                                blurRadiusPx = 8f.dp.toPx(),
+                                lensHeightPx = 24f.dp.toPx() * progress,
+                                lensAmountPx = 24f.dp.toPx() * progress,
+                                lensEnabled = true,
+                                vibrancyEnabled = true
                             )
                         },
                         highlight = {
@@ -279,11 +294,14 @@ fun LiquidBottomTabs(
                     backdrop = rememberCombinedBackdrop(backdrop, tabsBackdrop),
                     shape = { Capsule() },
                     effects = {
-                        val progress = dampedDragAnimation.pressProgress
-                        lens(
-                            10f.dp.toPx() * progress,
-                            14f.dp.toPx() * progress,
-                            chromaticAberration = false
+                        // 按压量量化到 4 档：短促按压弹簧期间效果链缓存仍能命中
+                        val progress = quantizeAnim(dampedDragAnimation.pressProgress)
+                        indicatorEffectCache.apply(
+                            scope = this,
+                            blurRadiusPx = 0f,
+                            lensHeightPx = 10f.dp.toPx() * progress,
+                            lensAmountPx = 14f.dp.toPx() * progress,
+                            lensEnabled = true
                         )
                     },
                     highlight = {
@@ -317,6 +335,10 @@ fun LiquidBottomTabs(
                         )
                         drawRect(Color.Black.copy(alpha = 0.03f * progress))
                     }
+                )
+                .glassFusionParticipant(
+                    color = if (isDark) Color.White else Color.Black,
+                    active = { dampedDragAnimation.pressProgress }
                 )
                 .height(42f.dp)
                 .fillMaxWidth(1f / tabsCount)

@@ -132,4 +132,8 @@
     <string name="main_export_replace_failed_bare">代源檔不成</string>
     <string name="main_status_read_failed">不能讀所選之檔</string>
     <string name="main_status_source_missing">源檔不存或不可讀</string>
+    <!-- 状态栏：单项格式 / 导入结果分组 -->
+    <string name="main_status_item_format_set">已獨設「%1$s」之輸出格式</string>
+    <string name="main_status_import_done_grouped">已導入 %1$d 項（內含合成動照 %2$d 項）%3$s</string>
+    <string name="main_status_import_unpaired">；%1$d 單圖/片無同名之偶，遂略之</string>
 </resources>

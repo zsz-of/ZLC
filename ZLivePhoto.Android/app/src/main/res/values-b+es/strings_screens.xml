@@ -111,4 +111,22 @@
     <string name="screen_transcode_in_progress">Transcodificando · %1$d fotogramas</string>
     <string name="screen_transcode_progress">Transcodificación %1$d%%</string>
     <string name="screen_format_samsung">Samsung</string>
+    <!-- 第一版面「处理方式」三选一（替换原图 / 删除原图 / 保留原图） -->
+    <string name="screen_mode_title">Modo de procesamiento</string>
+    <string name="screen_mode_replace">Reemplazar originales</string>
+    <string name="screen_mode_replace_desc">El resultado se escribe directamente sobre los archivos originales</string>
+    <string name="screen_mode_delete">Eliminar originales</string>
+    <string name="screen_mode_delete_desc">Los archivos originales se eliminan al terminar</string>
+    <string name="screen_mode_keep">Conservar originales</string>
+    <string name="screen_mode_keep_desc">Los archivos originales no se eliminan ni se reemplazan</string>
+    <string name="screen_mode_need_access">Requiere «Acceso a todos los archivos»; toca para concederlo</string>
+    <!-- 长按列表项：单项输出格式 -->
+    <string name="screen_item_format_title">Formato de salida</string>
+    <string name="screen_item_format_hint">Mantén pulsado un elemento de la lista para definir su formato por separado</string>
+    <!-- 选择器媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片） -->
+    <string name="screen_filter_all">Todos</string>
+    <string name="screen_filter_live">Fotos en vivo</string>
+    <string name="screen_filter_video">Vídeos</string>
+    <string name="screen_filter_image">Fotos</string>
+    <string name="screen_filter_empty">No hay contenido con este filtro</string>
 </resources>

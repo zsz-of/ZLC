@@ -68,4 +68,7 @@
     <string name="fmt_log_parse_samsung">按三星動態相片解析（SEFH/SEFT 尾部區塊）</string>
     <string name="fmt_log_samsung_sef">SEF 尾部：version=%1$d，記錄 %2$d 條</string>
     <string name="fmt_log_samsung_write">寫出三星格式：%1$s（圖像 %2$dB + 影片 %3$dB + SEF 尾部 %4$dB）</string>
+    <!-- Apple MOV 重封装：错误与回退日志 -->
+    <string name="fmt_err_apple_remux_failed">MOV 無法重封裝為可播放的 MP4（缺少有效的影片軌）</string>
+    <string name="fmt_log_apple_remux_fallback">MOV 重封裝失敗，已回退為僅修改 ftyp 品牌；此產物部分相簿可能無法播放</string>
 </resources>

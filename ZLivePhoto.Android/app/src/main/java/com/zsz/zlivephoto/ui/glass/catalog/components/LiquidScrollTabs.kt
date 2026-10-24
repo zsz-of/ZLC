@@ -40,6 +40,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
@@ -49,17 +50,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastCoerceIn
 import androidx.compose.ui.util.lerp
 import com.kyant.backdrop.Backdrop
+import com.kyant.backdrop.backdrops.layerBackdrop
+import com.kyant.backdrop.backdrops.rememberCombinedBackdrop
+import com.kyant.backdrop.backdrops.rememberLayerBackdrop
 import com.kyant.backdrop.drawBackdrop
-import com.kyant.backdrop.effects.blur
-import com.kyant.backdrop.effects.lens
-import com.kyant.backdrop.effects.vibrancy
 import com.kyant.backdrop.highlight.Highlight
+import kotlinx.coroutines.launch
 import com.kyant.backdrop.shadow.InnerShadow
 import com.kyant.backdrop.shadow.Shadow
 import com.zsz.zlivephoto.ui.LocalDarkTheme
 import com.zsz.zlivephoto.ui.glass.animatedThemeColor
+import com.zsz.zlivephoto.ui.glass.quantizeAnim
+import com.zsz.zlivephoto.ui.glass.rememberGlassEffectCache
 import com.zsz.zlivephoto.ui.glass.catalog.shapes.Capsule
 import com.zsz.zlivephoto.ui.glass.catalog.utils.DampedDragAnimation
+import com.zsz.zlivephoto.ui.glass.glassFusionParticipant
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -86,6 +91,13 @@ fun LiquidScrollTabs(
 ) {
     if (labels.isEmpty()) return
     val haptic = rememberHapticFeedback()
+    // 容器与指示器尺寸不同，效果链必须分持一份；共用会让 lens/尺寸参数互相覆盖
+    val containerEffectCache = rememberGlassEffectCache()
+    val indicatorEffectCache = rememberGlassEffectCache()
+    // 容器录制层：指示器采样「根渐变 + 容器玻璃 + 标签文字」——
+    // 只采样根层的话，根渐变是「纯白底 + 极淡色斑」，指示器折射不到
+    // 任何内容，玻璃块与容器零对比、视觉上直接消失（用户反馈）
+    val tabsBackdrop = rememberLayerBackdrop()
 
     // 深浅色跟随应用内主题（LocalDarkTheme），并带 500ms 渐变过渡（与主题色同步）
     val containerColor = animatedThemeColor(
@@ -121,8 +133,11 @@ fun LiquidScrollTabs(
             indicatorW.snapTo(w)
             laidOut = true
         } else {
-            indicatorX.animateTo(x, spring(dampingRatio = 0.72f, stiffness = 420f))
-            indicatorW.animateTo(w, spring(dampingRatio = 0.72f, stiffness = 420f))
+            // animateTo 是挂起函数，顺序 await 会让宽度变化滞后于位移——
+            // 用户反馈「先移动再改变圆角矩形宽度，应同时进行」。改为同帧并发：
+            // 两动画同参数弹簧，衰减包络与振幅无关，天然同时落定
+            launch { indicatorX.animateTo(x, spring(dampingRatio = 0.72f, stiffness = 420f)) }
+            launch { indicatorW.animateTo(w, spring(dampingRatio = 0.72f, stiffness = 420f)) }
         }
     }
     // 选中项变化时把它滚到视野中央（首次布局同样生效）
@@ -206,13 +221,22 @@ fun LiquidScrollTabs(
         // ── 可见容器：玻璃胶囊（vibrancy + 模糊 + 边缘折射），内容横向滚动 ──
         Row(
             Modifier
+                // 录一份「容器玻璃 + 标签」供指示器折射（容器是指示器兄弟节点，
+                // 不会采样到指示器自身）
+                .layerBackdrop(tabsBackdrop)
                 .drawBackdrop(
                     backdrop = backdrop,
                     shape = { Capsule() },
                     effects = {
-                        vibrancy()
-                        blur(8f.dp.toPx())
-                        lens(24f.dp.toPx(), 24f.dp.toPx())
+                        // 参数静态：效果链缓存命中后零原生分配
+                        containerEffectCache.apply(
+                            scope = this,
+                            blurRadiusPx = 8f.dp.toPx(),
+                            lensHeightPx = 24f.dp.toPx(),
+                            lensAmountPx = 24f.dp.toPx(),
+                            lensEnabled = true,
+                            vibrancyEnabled = true
+                        )
                     },
                     layerBlock = {
                         // 指示器被按下时容器一起轻微放大（演示版同款物理）
@@ -223,6 +247,7 @@ fun LiquidScrollTabs(
                     },
                     onDrawSurface = { drawRect(containerColor) }
                 )
+                .glassFusionParticipant(color = containerColor)
                 .height(50f.dp)
                 .fillMaxWidth()
                 .padding(4.dp)
@@ -279,30 +304,42 @@ fun LiquidScrollTabs(
         // 而非 MD3 扁平色块；translationX 钳制在 [0, 视口宽 - 指示器宽]，
         // 玻璃块始终限制在容器边框内并与预设框对齐。
         if (laidOut && (targetW ?: 0f) > 0f) {
-            val indicatorLeft = (indicatorX.value - scrollState.value + dragOffset)
-                .fastCoerceIn(0f, (viewportW - indicatorW.value).coerceAtLeast(0f))
+            // 位置与宽度都在 layout/layer 期读动画值：组合期读会让弹簧每一帧
+            // 重组整棵 tab 行子树（并连带重建子树内玻璃件效果链）
             Box(
                 Modifier
                     .align(Alignment.CenterStart)
-                    .graphicsLayer { translationX = indicatorLeft }
-                    .width(with(density) { indicatorW.value.toDp() })
+                    .graphicsLayer {
+                        val left = (indicatorX.value - scrollState.value + dragOffset)
+                            .fastCoerceIn(0f, (viewportW - indicatorW.value).coerceAtLeast(0f))
+                        translationX = left
+                    }
+                    .layout { measurable, constraints ->
+                        val w = indicatorW.value.roundToInt().coerceAtLeast(1)
+                        val placeable = measurable.measure(
+                            constraints.copy(minWidth = w, maxWidth = w)
+                        )
+                        layout(w, placeable.height) { placeable.place(0, 0) }
+                    }
                     .height(42f.dp)
                     // 指示器拖拽（消费式，与 LiquidBottomTabs 同款）；
                     // 禁用态不给拖拽手势（玻璃外观与弹簧定位仍保留）
                     .then(if (enabled) dampedDragAnimation.modifier else Modifier)
                     .drawBackdrop(
-                        backdrop = backdrop,
+                        backdrop = rememberCombinedBackdrop(backdrop, tabsBackdrop),
                         shape = { Capsule() },
-                        effects = {
-                            val press = dampedDragAnimation.pressProgress
-                            vibrancy()
-                            blur(3f.dp.toPx())
-                            lens(
-                                10f.dp.toPx() * press,
-                                14f.dp.toPx() * press,
-                                chromaticAberration = false
-                            )
-                        },
+                    effects = {
+                        // 按压量量化到 4 档：短促按压弹簧期间效果链缓存仍能命中
+                        val press = quantizeAnim(dampedDragAnimation.pressProgress)
+                        indicatorEffectCache.apply(
+                            scope = this,
+                            blurRadiusPx = 3f.dp.toPx(),
+                            lensHeightPx = 10f.dp.toPx() * press,
+                            lensAmountPx = 14f.dp.toPx() * press,
+                            lensEnabled = true,
+                            vibrancyEnabled = true
+                        )
+                    },
                         highlight = {
                             val press = dampedDragAnimation.pressProgress
                             Highlight.Default.copy(alpha = 0.4f + 0.6f * press)
@@ -332,6 +369,10 @@ fun LiquidScrollTabs(
                             )
                             drawRect(Color.Black.copy(alpha = 0.03f * press))
                         }
+                    )
+                    .glassFusionParticipant(
+                        color = if (isDark) Color.White else Color.Black,
+                        active = { dampedDragAnimation.pressProgress }
                     )
                     // 指示器内的文字是行内文字的重复节点，清掉语义避免读屏双重播报
                     .clearAndSetSemantics {}

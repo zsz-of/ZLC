@@ -57,6 +57,14 @@ object AppSettings {
     /** 液态玻璃通透度 0..1：越低越不透明、磨砂模糊越强 */
     var glassOpacity by mutableStateOf(0.5f)
         private set
+    /**
+     * 已完成「风格 + 深浅色」引导的版本号（versionCode）。
+     * 0 = 从未引导过（全新安装或很早的旧版升级上来）；
+     * 小于当前 [BuildConfig.VERSION_CODE] 时 = 本次升级是首次启动，需再引导一次
+     * （用户要求：首次启动或升级完成后都要出现引导）。
+     */
+    var onboardedVersionCode by mutableStateOf(0)
+        private set
 
     /**
      * 液态玻璃是否**实际生效**：用户开关 + 系统能力（RenderEffect 需 API 31+）+ go 轻量版排除。
@@ -87,6 +95,7 @@ object AppSettings {
         skippedVersion = prefs.getString("skipped_version", "") ?: ""
         glassEnabled = prefs.getBoolean("glass_enabled", true)
         glassOpacity = prefs.getFloat("glass_opacity", 0.5f).coerceIn(0f, 1f)
+        onboardedVersionCode = prefs.getInt("onboarded_version_code", 0).coerceAtLeast(0)
         // go 轻量版：强制关闭马达反馈与按钮弹性动画（简化版无触感/无 q 弹）
         if (BuildConfig.FLAVOR == "go") {
             hapticsEnabled = false
@@ -180,6 +189,15 @@ object AppSettings {
         skippedVersion = version
         prefs.edit().putString("skipped_version", version).apply()
     }
+
+    /** 引导完成：把当前版本号记为「已引导」，本次运行及后续同版本启动都不再引导 */
+    fun markOnboarded() {
+        onboardedVersionCode = BuildConfig.VERSION_CODE
+        prefs.edit().putInt("onboarded_version_code", onboardedVersionCode).apply()
+    }
+
+    /** 本次是否需要显示引导：首次启动，或升级后（已引导版本 < 当前版本）首次启动 */
+    fun shouldShowOnboarding(): Boolean = onboardedVersionCode < BuildConfig.VERSION_CODE
 
     /** 远端版本是否因被用户跳过而不提示 */
     fun isVersionSkipped(remoteVersion: String): Boolean =

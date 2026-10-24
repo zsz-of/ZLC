@@ -19,6 +19,8 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.layout.Arrangement
@@ -100,6 +102,7 @@ import androidx.compose.ui.unit.dp
 import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.ui.glass.GlassActionButton
 import com.zsz.zlivephoto.ui.glass.GlassBottomSheet
+import com.zsz.zlivephoto.ui.glass.GlassFusionScope
 import com.zsz.zlivephoto.ui.glass.GlassIconButton
 import com.zsz.zlivephoto.ui.glass.GlassTopBar
 import com.zsz.zlivephoto.ui.glass.LiquidDialog
@@ -111,6 +114,10 @@ import com.zsz.zlivephoto.ui.glass.TopBarFrost
 import com.zsz.zlivephoto.ui.glass.liquidGlass
 import com.kyant.backdrop.backdrops.layerBackdrop
 import com.kyant.backdrop.backdrops.rememberLayerBackdrop
+import com.kyant.backdrop.drawBackdrop
+import com.kyant.backdrop.effects.blur
+import com.kyant.backdrop.effects.lens
+import com.kyant.backdrop.effects.vibrancy
 
 data class FileItem(
     val path: String,
@@ -398,6 +405,7 @@ fun MainScreen(
                 )
                 // 右侧控制面板：玻璃生效时做成液态玻璃浮动面板（否则原 MD3 容器色）
                 val panelShape = RoundedCornerShape(topStart = 24.dp, bottomStart = 24.dp)
+                GlassFusionScope {
                 Surface(
                     color = if (glass) Color.Transparent else MaterialTheme.colorScheme.surfaceContainer,
                     tonalElevation = if (glass) 0.dp else 2.dp,
@@ -436,6 +444,7 @@ fun MainScreen(
                             .verticalScroll(rememberScrollState())
                             .padding(horizontal = 16.dp, vertical = 12.dp)
                     )
+                }
                 }
             }
         } else {
@@ -489,6 +498,7 @@ fun MainScreen(
                 .onSizeChanged { panelHeightPx = it.height }
         ) {
             val panelShape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
+            GlassFusionScope {
             Surface(
                 color = if (glass) Color.Transparent else MaterialTheme.colorScheme.surfaceContainer,
                 tonalElevation = if (glass) 0.dp else 2.dp,
@@ -523,6 +533,7 @@ fun MainScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 12.dp)
                 )
+            }
             }
         }
     }
@@ -776,16 +787,49 @@ private fun FileListArea(
                 }
             }
         } else {
-            LazyColumn(
-                modifier = Modifier
+            // 文件列表液态玻璃面板（用户反馈：文件列表也没有液态玻璃效果，
+            // 用 demo 的 Lazy scroll container 方案）：玻璃面板是父容器，
+            // layerBackdrop 挂在子 LazyColumn 上只录制列表内容——面板折射的
+            // 是真实列表内容且无自采样回路；同时整块面板被 pageBackdrop 录制，
+            // 顶栏 frost 与底部面板还能折射到它
+            val glass = LocalGlassEnabled.current
+            // 绘制期（DrawScope lambda）不能读 CompositionLocal，深浅色在这里提前取出
+            val listDark = LocalDarkTheme.current
+            val listBackdrop = rememberLayerBackdrop()
+            val panelShape = RoundedCornerShape(28.dp)
+            Box(
+                Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 16.dp),
-                state = listState,
-                contentPadding = androidx.compose.foundation.layout.PaddingValues(
-                    top = topContentPadding,
-                    bottom = bottomContentPadding
-                )
+                    .padding(horizontal = 16.dp)
+                    .then(
+                        if (glass) Modifier.drawBackdrop(
+                            backdrop = listBackdrop,
+                            shape = { panelShape },
+                            effects = {
+                                // 静态参数：重跑仅发生在尺寸变化时
+                                vibrancy()
+                                blur(8f.dp.toPx())
+                                lens(16f.dp.toPx(), 32f.dp.toPx())
+                            },
+                            onDrawSurface = {
+                                // 与整体通透度一致的轻色纸，保证列表文字可读
+                                drawRect(if (listDark) Color.Black.copy(alpha = 0.22f) else Color.White.copy(alpha = 0.18f))
+                            }
+                        ) else Modifier
+                    )
             ) {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .then(if (glass) Modifier.layerBackdrop(listBackdrop) else Modifier)
+                        .then(if (glass) Modifier.clip(panelShape) else Modifier)
+                        .padding(horizontal = 0.dp),
+                    state = listState,
+                    contentPadding = androidx.compose.foundation.layout.PaddingValues(
+                        top = topContentPadding,
+                        bottom = bottomContentPadding
+                    )
+                ) {
                 items(files, key = { it.path }) { item ->
                     // 项间距放在项内部：移除动画塌陷时连同间距一起收起；
                     // 剩余项补位为弹簧平移（animateItem placement），可被新的侧滑打断
@@ -811,6 +855,7 @@ private fun FileListArea(
                         }
                     }
                 }
+            }
             }
         }
     }
@@ -902,12 +947,31 @@ private fun BottomControls(
                 else -> MaterialTheme.colorScheme.onSurfaceVariant
             }
         }
+        // 消息栏液态玻璃（用户反馈：上方的消息栏还没有液态玻璃效果）：
+        // 玻璃分支用 liquidGlass 胶囊采样「根渐变+页面」合成层（默认解析），
+        // 列表内容透过消息栏折射；MD3 分支保留原实色 Surface
+        val msgShape = RoundedCornerShape(12.dp)
+        val msgGlass = LocalGlassEnabled.current
+        val msgInteraction = remember { MutableInteractionSource() }
+        val msgPressed by msgInteraction.collectIsPressedAsState()
         Surface(
-            shape = RoundedCornerShape(12.dp),
-            color = MaterialTheme.colorScheme.surfaceContainerHigh,
+            shape = msgShape,
+            color = if (msgGlass) Color.Transparent else MaterialTheme.colorScheme.surfaceContainerHigh,
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { haptic.click(); onOpenStatusDetail() }
+                .then(
+                    if (msgGlass) Modifier.liquidGlass(
+                        msgShape,
+                        tintAlpha = 0.10f,
+                        lensHeight = 8.dp,
+                        lensAmount = 14.dp,
+                        fusionActive = { if (msgPressed) 1f else 0f }
+                    ) else Modifier
+                )
+                .clickable(
+                    interactionSource = msgInteraction,
+                    indication = null
+                ) { haptic.click(); onOpenStatusDetail() }
         ) {
             Column(
                 modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
@@ -1065,70 +1129,109 @@ private fun BottomControls(
         // 清空 + 开始转换/停止处理 morph 行：
         // 点击开始转换后，转换按钮以贝塞尔曲线（0.5s）平滑拉伸占据清空按钮位置；
         // 内容以 0.3s 淡入淡出整体切换为停止图标（实心方块）+「停止处理」；
-        // 处理完成/停止后按相同动画反向还原
-        val morph by animateFloatAsState(
-            targetValue = if (busy) 1f else 0f,
-            animationSpec = tween(500, easing = FancyEasing),
-            label = "morph"
+        // 处理完成/停止后按相同动画反向还原。
+        // 抽成独立 composable：morph 动画 500ms 内的每帧重组被限制在本行，
+        // 不再波及整个 BottomControls（分段栏 / 状态胶囊 / 提示文案）
+        MorphActionRow(
+            busy = busy,
+            hasFiles = hasFiles,
+            clearBusy = clearBusy,
+            onClearFiles = onClearFiles,
+            onConvert = onConvert,
+            onStopConvert = onStopConvert
         )
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy((8 * (1f - morph)).dp)
-        ) {
-            // 清空（玻璃按钮；随 morph 淡出并让位）。
-            // 风格改为液态玻璃：淡 error 染色 + error 内容色——此前的 0.66 实色块
-            // 是一颗纯红胶囊，没有玻璃感（用户反馈「清空按钮还没有改变风格」）。
-            // 无内容可清时整体隐藏（weight/alpha 归零），不再以禁用幽灵态占位
-            // （用户反馈「主页清空按钮无内容显示」）；转换按钮同步补足到全宽。
-            val clearShown = hasFiles
-            Box(modifier = Modifier.weight(if (clearShown) 1f - morph + 0.001f else 0.001f)) {
-                GlassActionButton(
-                    onClick = { onClearFiles() },
-                    enabled = !busy && !clearBusy && hasFiles,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .alpha(if (clearShown) 1f - morph else 0f),
-                    shape = RoundedCornerShape(26.dp),
-                    tint = MaterialTheme.colorScheme.error,
-                    tintAlpha = 0.16f,
-                    contentColor = MaterialTheme.colorScheme.error
-                ) {
-                    Icon(Icons.Default.DeleteOutline, contentDescription = null, modifier = Modifier.size(20.dp))
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text(stringResource(R.string.screen_clear))
-                }
-            }
+    }
+}
 
-            // 液态玻璃主按钮（品牌色着色）；动画播放过程中仍可点击
+/**
+ * 清空 + 开始转换/停止处理 morph 行（独立 composable，隔离 morph 动画的重组范围）。
+ * 点击开始转换后，转换按钮以贝塞尔曲线（0.5s）平滑拉伸占据清空按钮位置；
+ * 内容以 0.3s 淡入淡出整体切换为停止图标 +「停止处理」。
+ */
+@Composable
+private fun MorphActionRow(
+    busy: Boolean,
+    hasFiles: Boolean,
+    clearBusy: Boolean,
+    onClearFiles: () -> Unit,
+    onConvert: () -> Unit,
+    onStopConvert: () -> Unit
+) {
+    val morph by animateFloatAsState(
+        targetValue = if (busy) 1f else 0f,
+        animationSpec = tween(500, easing = FancyEasing),
+        label = "morph"
+    )
+    // 清空按钮的显隐也走同一条 500ms 贝塞尔时间线：清空列表时平滑收起+淡出，
+    // 转换按钮同步平滑扩展（用户反馈：要有推拉的平滑动画，此前是瞬间跳变）
+    val clearProgress by animateFloatAsState(
+        targetValue = if (hasFiles) 1f else 0f,
+        animationSpec = tween(500, easing = FancyEasing),
+        label = "clearProgress"
+    )
+    // extend = 清空按钮展开量（0=收起）。busy 收拢与 hasFiles 显隐两条
+    // 时间线相乘互不干扰，原三组状态数值全部保持不变：
+    // 有文件+空闲 → extend=1（clear 1.001 / convert 1.6）；busy → extend=0（convert 2.6）
+    val extend = clearProgress * (1f - morph)
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy((8f * extend).dp)
+    ) {
+        // 清空（玻璃按钮；随 morph/清空进度淡出并让位）。
+        // 风格改为液态玻璃：淡 error 染色 + error 内容色——此前的 0.66 实色块
+        // 是一颗纯红胶囊，没有玻璃感（用户反馈「清空按钮还没有改变风格」）。
+        Box(modifier = Modifier.weight(extend + 0.001f)) {
+            // 完全收起后不再渲染玻璃：alpha=0 的玻璃按钮仍会逐帧算模糊/折射，
+            // 白烧 GPU（用户要求：不需要显示的时候不渲染）。权重槽位保留，
+            // 推拉动画期间（extend > 0.02）照常渲染。
+            if (extend > 0.02f) {
             GlassActionButton(
-                onClick = {
-                    if (busy) onStopConvert() else onConvert()
-                },
-                modifier = Modifier.weight(if (clearShown) 1.6f + morph * 0.999f else 2.6f),
+                onClick = onClearFiles,
+                enabled = !busy && !clearBusy && hasFiles,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .alpha(extend),
                 shape = RoundedCornerShape(26.dp),
-                tint = MaterialTheme.colorScheme.primary,
-                tintAlpha = 0.82f,
-                contentColor = MaterialTheme.colorScheme.onPrimary
+                tint = MaterialTheme.colorScheme.error,
+                tintAlpha = 0.16f,
+                contentColor = MaterialTheme.colorScheme.error
             ) {
-                AnimatedContent(
-                    targetState = busy,
-                    transitionSpec = {
-                        (fadeIn(tween(300, 100, easing = AlphaEasing))) togetherWith
-                                (fadeOut(tween(300, easing = AlphaEasing)))
-                    },
-                    label = "convertBtn"
-                ) { converting ->
-                    // 文字和图标作为一个整体，按钮内居中显示
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        if (converting) {
-                            Icon(Icons.Filled.Stop, contentDescription = null, modifier = Modifier.size(20.dp))
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Text(stringResource(R.string.screen_stop), style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
-                        } else {
-                            Icon(Icons.Default.Bolt, contentDescription = null, modifier = Modifier.size(20.dp))
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Text(stringResource(R.string.screen_start_convert), style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
-                        }
+                Icon(Icons.Default.DeleteOutline, contentDescription = null, modifier = Modifier.size(20.dp))
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(stringResource(R.string.screen_clear))
+            }
+            }
+        }
+
+        // 液态玻璃主按钮（品牌色着色）；与清空按钮互补推拉，动画过程中仍可点击
+        GlassActionButton(
+            onClick = {
+                if (busy) onStopConvert() else onConvert()
+            },
+            modifier = Modifier.weight(2.6f - extend),
+            shape = RoundedCornerShape(26.dp),
+            tint = MaterialTheme.colorScheme.primary,
+            tintAlpha = 0.82f,
+            contentColor = MaterialTheme.colorScheme.onPrimary
+        ) {
+            AnimatedContent(
+                targetState = busy,
+                transitionSpec = {
+                    (fadeIn(tween(300, 100, easing = AlphaEasing))) togetherWith
+                            (fadeOut(tween(300, easing = AlphaEasing)))
+                },
+                label = "convertBtn"
+            ) { converting ->
+                // 文字和图标作为一个整体，按钮内居中显示
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (converting) {
+                        Icon(Icons.Filled.Stop, contentDescription = null, modifier = Modifier.size(20.dp))
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(stringResource(R.string.screen_stop), style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                    } else {
+                        Icon(Icons.Default.Bolt, contentDescription = null, modifier = Modifier.size(20.dp))
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(stringResource(R.string.screen_start_convert), style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
                     }
                 }
             }

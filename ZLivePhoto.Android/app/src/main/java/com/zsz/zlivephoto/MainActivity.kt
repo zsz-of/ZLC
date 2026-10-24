@@ -2,6 +2,7 @@ package com.zsz.zlivephoto
 
 import android.app.WallpaperManager
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaScannerConnection
@@ -63,6 +64,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
+import com.zsz.zlivephoto.core.AppLanguage
 import com.zsz.zlivephoto.core.Converter
 import com.zsz.zlivephoto.core.FfmpegAddon
 import com.zsz.zlivephoto.core.QuickClassify
@@ -70,6 +72,7 @@ import com.zsz.zlivephoto.core.UpdateChecker
 import com.zsz.zlivephoto.core.UpdateCheckResult
 import com.zsz.zlivephoto.core.formats.FormatRegistry
 import com.zsz.zlivephoto.ui.AppSettings
+import com.zsz.zlivephoto.ui.OnboardingScreen
 import com.zsz.zlivephoto.ui.FancyEasing
 import com.zsz.zlivephoto.ui.FileItem
 import com.zsz.zlivephoto.ui.MainScreen
@@ -229,7 +232,8 @@ class MainActivity : ComponentActivity() {
     private lateinit var mediaRepo: MediaRepo
     private lateinit var scanner: AlbumScanner
     /** 顶层页面路由：Main 主页 / Picker 内置选择器 / Settings 设置页 */
-    private enum class AppScreen { Main, Picker, Settings }
+    // Onboarding：首次启动 / 升级完成后的界面风格 + 深浅色引导（完成即切回 Main）
+    private enum class AppScreen { Onboarding, Main, Picker, Settings }
     private var screen by mutableStateOf(AppScreen.Main)
     private var pickerAlbums by mutableStateOf<List<AlbumInfo>>(emptyList())
 
@@ -700,6 +704,17 @@ class MainActivity : ComponentActivity() {
         return if (kotlin.math.abs(near - raw) <= 1.5f) near else raw
     }
 
+    /**
+     * 按用户选择的应用语言包装 base Context。
+     * 只在 Application.attachBaseContext 包装不会改变 Activity 的资源解析
+     * （系统为 Activity 单独创建 base Context），Android 13 以下切语言会无效——
+     * 这里再包一层，配合 AppLanguage.set 里的 recreate() 即时生效。
+     * 13+ 由系统 LocaleManager 负责，此处的包装与已保存选择一致，不会打架。
+     */
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(AppLanguage.wrap(newBase))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         CrashHandler.install()
@@ -712,6 +727,12 @@ class MainActivity : ComponentActivity() {
 
         // 全局设置（主题/触感/弹性动画/更新检查）：首帧组合前初始化
         AppSettings.init(this)
+        // 首次启动 / 升级完成（已引导版本 < 当前版本）：先进入风格 + 深浅色引导，
+        // 引导完成回到主页。放在 AppSettings.init 之后——属性初始化器阶段
+        // 拿不到 prefs（lateinit），会抛未初始化异常。
+        if (AppSettings.shouldShowOnboarding()) {
+            screen = AppScreen.Onboarding
+        }
         // 内置转码器（ffmpeg）参数（CRF/预设/编码器）：需在首帧组合前初始化，
         // 否则设置页读取 prefs 时抛 lateinit property prefs has not been initialized
         FfmpegAddon.init(this)
@@ -853,7 +874,11 @@ class MainActivity : ComponentActivity() {
                 // 权限请求 / 应用更新 / 「所有文件访问」推荐 / 旧版本提示
                 // 同一时刻只允许弹出一个：处理（转换 / 导入）进行中整体抑制，处理队列
                 // 完成后才弹出；当前占用者关闭后自动轮到下一个（按下列优先级）。
-                val sessionDialogOwner = when {
+                val sessionDialogOwner = if (screen == AppScreen.Onboarding) {
+                    // 引导期间不弹任何会话弹窗（更新提示 / 权限说明 / 旧版本卸载…）——
+                    // 引导是整屏接管页，不能让它被弹窗打断
+                    DialogOwner.NONE
+                } else when {
                     isConverting || isImporting -> DialogOwner.NONE
                     showPermissionDialog || showSettingsDialog -> DialogOwner.PERMISSION
                     updateFlow.wantsDialog -> DialogOwner.UPDATE
@@ -886,6 +911,8 @@ class MainActivity : ComponentActivity() {
                 BackHandler(enabled = screen == AppScreen.Picker || screen == AppScreen.Settings) {
                     screen = AppScreen.Main
                 }
+                // 引导页：必须选完才能进入应用，返回键整体吞掉（不退出、不跳过）
+                BackHandler(enabled = screen == AppScreen.Onboarding) { /* 引导中不响应返回 */ }
 
                 // 进入/退出内置选择器的过渡动画（ImageToolbox fancySlideTransition 式）：
                 // 选择器从右侧整屏滑入 + 淡入，主页向左小幅滑出让位；返回时反向。
@@ -952,7 +979,12 @@ class MainActivity : ComponentActivity() {
                     },
                     label = "screenTransition"
                 ) { page ->
-                    if (page == AppScreen.Picker) {
+                    if (page == AppScreen.Onboarding) {
+                        // 首启 / 升级后的引导（风格 + 深浅色）：完成即回到主页。
+                        // 主页此时不在组合树里（AnimatedContent 只渲染当前页），
+                        // 扫描/弹窗等后台逻辑也不受引导影响。
+                        OnboardingScreen(onFinish = { screen = AppScreen.Main })
+                    } else if (page == AppScreen.Picker) {
                         // 内置选择器（默认）：MediaStore 直查，路径第一手，EXIF 完整保留
                         // 统一选择器：同时展示动态照片 / 视频 / 普通图片，
                         // 右上角「输出格式」决定本次导入的输出格式（含「拆解」）

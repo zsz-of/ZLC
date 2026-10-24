@@ -33,6 +33,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material3.Card
@@ -58,6 +59,7 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
@@ -72,6 +74,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.zsz.zlivephoto.R
+import com.zsz.zlivephoto.ui.glass.LocalGlassEnabled
+import com.zsz.zlivephoto.ui.glass.LocalGlassRootBackdrop
+import com.zsz.zlivephoto.ui.glass.liquidGlass
+import com.zsz.zlivephoto.ui.glass.rememberGlassButtonPhysics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -114,13 +120,8 @@ fun FileCard(
     var dragging by remember { mutableStateOf(false) }
     // 垃圾桶盖方向：从右向左拉（off<0）→ 盖开向左边；从左向右拉（off>0）→ 盖开向右边
     var lidToLeft by remember { mutableStateOf(false) }
-
-    // 垃圾桶徽章显隐：仅手动拖动/手动删除退出时可见
-    val badgeAlpha by animateFloatAsState(
-        targetValue = if (dragging || exiting) 1f else 0f,
-        animationSpec = tween(120),
-        label = "badgeAlpha"
-    )
+    // 删除徽章改按需组合（拖动/退出时才进入组合，平时零渲染零开销），
+    // 原常驻组合 + badgeAlpha 淡入的方案已移除
 
     // 处理中 / 退出动画中：禁用侧滑与长按手势
     val gestureModifier = if (!isConverting && !exiting) {
@@ -195,19 +196,38 @@ fun FileCard(
             .then(gestureModifier)
     ) {
         // 背景层：垃圾桶圆形徽章，以划出空间的中点水平居中（垂直不动）
-        // 条件显示：仅拖动/删除退出时可见（badgeAlpha），默认位置被前景卡片完全遮挡
-        if (boxWidthPx > 0) {
+        // 按需组合：仅拖动/删除退出时组合（用户反馈：不需要显示的时候不渲染）
+        if (boxWidthPx > 0 && (dragging || exiting)) {
             val off = offsetX.value
             val iconSizePx = with(density) { 40.dp.roundToPx() }
             val centerX = if (off >= 0f) off / 2f else boxWidthPx + off / 2f
+            // 液态玻璃徽章（用户反馈：滑动出现的删除按钮也要有液态玻璃，
+            // 高光和点按拖拽的形变）。徽章位于页面采样层之内，必须覆写采样源
+            // 为根层——否则玻璃采样页面层会把自己画进去（反馈式频闪）
+            val glassBadge = LocalGlassEnabled.current && LocalGlassRootBackdrop.current != null
+            val badgePhysics = if (glassBadge) rememberGlassButtonPhysics(maxOffset = 2.dp) else null
             Box(
                 Modifier
                     .align(Alignment.CenterStart)
                     .offset { IntOffset((centerX - iconSizePx / 2f).roundToInt(), 0) }
                     .size(40.dp)
-                    .graphicsLayer { alpha = badgeAlpha * iconAlpha.value }
+                    .then(
+                        if (glassBadge && badgePhysics != null) Modifier.liquidGlass(
+                            CircleShape,
+                            // 保留「红底」语义：淡 error 染色的玻璃圆
+                            tintAlpha = 0.30f,
+                            tintColor = MaterialTheme.colorScheme.error,
+                            lensHeight = 8.dp,
+                            lensAmount = 12.dp,
+                            layerBlock = badgePhysics.transform,
+                            fusionActive = { badgePhysics.highlight.pressProgress },
+                            backdropOverride = LocalGlassRootBackdrop.current
+                        ) else Modifier
+                    )
+                    .then(if (badgePhysics != null) badgePhysics.highlight.gestureModifier else Modifier)
+                    .graphicsLayer { alpha = iconAlpha.value }
             ) {
-                TrashBadge(open = lidOpen, lidToLeft = lidToLeft)
+                TrashBadge(open = lidOpen, lidToLeft = lidToLeft, glass = glassBadge)
             }
         }
 
@@ -234,13 +254,14 @@ fun FileCard(
  * - 桶身水平宽度压缩（15→12dp），提升视觉协调性
  */
 @Composable
-private fun TrashBadge(open: Boolean, lidToLeft: Boolean) {
+private fun TrashBadge(open: Boolean, lidToLeft: Boolean, glass: Boolean = false) {
     val lidProgress by animateFloatAsState(
         targetValue = if (open) 1f else 0f,
         animationSpec = spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMedium),
         label = "lid"
     )
-    val bg = MaterialTheme.colorScheme.error
+    // 玻璃模式下红色圆底由 liquidGlass 的 error 染色提供，这里只画图标
+    val bg = if (glass) Color.Transparent else MaterialTheme.colorScheme.error
     val fg = MaterialTheme.colorScheme.onError
     Canvas(Modifier.fillMaxSize()) {
         val c = center
@@ -324,13 +345,17 @@ private fun FileCardContent(item: FileItem, sameFormat: Boolean) {
         else -> MaterialTheme.colorScheme.onSurfaceVariant
     }
 
+    // 玻璃模式下卡片本体透明：列表坐在「Lazy scroll container」玻璃面板上
+    // （面板在 FileListArea 内，卡片再叠实色会完全遮住玻璃）
+    val glass = LocalGlassEnabled.current
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
+            containerColor = if (glass) Color.Transparent
+            else MaterialTheme.colorScheme.surfaceContainerHigh
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = if (glass) 0.dp else 1.dp)
     ) {
         Row(
             modifier = Modifier

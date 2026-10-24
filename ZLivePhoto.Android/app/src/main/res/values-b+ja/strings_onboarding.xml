@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ZLC・オンボーディング文言（日本語）。res/values/strings_onboarding.xml（中国語簡体字）からの翻訳。
+-->
+<resources>
+    <string name="onboarding_style_title">デザインを選択</string>
+    <string name="onboarding_style_subtitle">どちらのデザインでも、設定からいつでも切り替えられます</string>
+    <string name="onboarding_style_glass">リキッドグラス</string>
+    <string name="onboarding_style_md3">標準デザイン</string>
+    <string name="onboarding_style_try">以下の操作部品を実際に触って、違いを確かめてください</string>
+    <string name="onboarding_preview_switch">スイッチ</string>
+    <string name="onboarding_preview_slider">スライダー</string>
+    <string name="onboarding_preview_button">ボタン</string>
+    <string name="onboarding_theme_title">ライト／ダークを選択</string>
+    <string name="onboarding_theme_subtitle">システムに追従させることもできます。切り替えるとこの画面もすぐ反映されます</string>
+    <string name="onboarding_prev">戻る</string>
+    <string name="onboarding_next">次へ</string>
+    <string name="onboarding_finish">使ってみる</string>
+    <string name="onboarding_preview_title">ライブプレビュー</string>
+</resources>

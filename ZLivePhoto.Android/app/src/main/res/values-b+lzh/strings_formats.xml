@@ -63,4 +63,7 @@
     <string name="fmt_log_parse_samsung">依三星動態相片而析（SEFH/SEFT 尾部）</string>
     <string name="fmt_log_samsung_sef">SEF 尾：version=%1$d，錄 %2$d 條</string>
     <string name="fmt_log_samsung_write">書出三星之式：%1$s（圖 %2$dB + 影片 %3$dB + SEF 尾 %4$dB）</string>
+    <!-- Apple MOV 重封装：错误与回退日志 -->
+    <string name="fmt_err_apple_remux_failed">MOV 不可重封為可播之 MP4（無有效視軌）</string>
+    <string name="fmt_log_apple_remux_fallback">MOV 重封不成，退而僅改 ftyp 之號；所得或不播於部分相冊</string>
 </resources>

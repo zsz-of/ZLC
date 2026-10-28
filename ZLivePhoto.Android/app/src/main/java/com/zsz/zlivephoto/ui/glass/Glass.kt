@@ -115,6 +115,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.GraphicsLayerScope
+import androidx.compose.ui.graphics.asComposeRenderEffect
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.boundsInRoot
@@ -1160,37 +1161,56 @@ fun BoxScope.GlassMenuOverlay(
     submenuContent: @Composable ColumnScope.() -> Unit = {},
     content: @Composable ColumnScope.() -> Unit
 ) {
-    // 开合进度（FlClash `_open`：stiffness 400 / damping 0.754）
+    // 开合进度（FlClash `_open`：stiffness 400 / damping 0.754，mass 1，约 450ms 落定）
     val openProgress = remember { Animatable(0f) }
+    // 关闭进度（FlClash 无 sourceImage 分支 `_dismissScale` 0.8 + 淡出，200ms）。
+    // 与 openProgress 分开：打开时裁剪形变负责「从小长到大」、scale 恒 1；
+    // 关闭时整体缩到 0.8 + 淡出。两者共用一条 openProgress 会让打开时 scale
+    // 也从 0.8→1，与裁剪形变双重缩放，观感卡顿。
+    val dismissProgress = remember { Animatable(0f) }
+    val haptic = rememberHapticFeedback()
     // 退场动画播完才退出组合：组合期读 progress.value 会让动画每一帧
     // 重组整棵菜单子树（并顺带重建子树内每个玻璃件的效果链）
     var contentActive by remember { mutableStateOf(visible) }
     LaunchedEffect(visible) {
         if (visible) {
             contentActive = true
+            dismissProgress.snapTo(0f)
+            openProgress.snapTo(0f)
             openProgress.animateTo(
                 1f,
-                spring(dampingRatio = 0.754f, stiffness = Spring.StiffnessMediumLow)
+                spring(dampingRatio = 0.754f, stiffness = 400f)
             )
         } else {
-            openProgress.animateTo(0f, tween(durationMillis = 160))
+            // FlClash 关闭（无 sourceImage 分支）：easeOut 缩到 0.8 + 淡出
+            // （`_shrinkDuration` 200ms / `_dismissScale` 0.8，见 popup.dart `_RenderPopupMorph.paint`）
+            dismissProgress.animateTo(
+                1f,
+                tween(durationMillis = 200, easing = FastOutSlowInEasing)
+            )
             contentActive = false
         }
     }
-    // 子菜单开合（FlClash `_unfoldSpring` 420ms/bounce 0.15、`_foldSpring` 340ms 无回弹）
+    // 子菜单开合（FlClash `_unfoldSpring` 420ms/bounce 0.15、`_foldSpring` 340ms 无回弹）。
+    // Flutter `withDurationAndBounce(420ms, 0.15)` 解出的欠阻尼弹簧约 damping 0.55；
+    // 折回无 bounce → 临界阻尼（damping 1.0）。均用刚度 400 保持与一级一致的手感。
     val subProgress = remember { Animatable(0f) }
     var submenuActive by remember { mutableStateOf(submenuVisible) }
     LaunchedEffect(submenuVisible) {
         if (submenuVisible) {
             submenuActive = true
+            // FlClash `HapticFeedback.selectionClick()`：二级展开瞬间清脆反馈
+            haptic.click()
             subProgress.animateTo(
                 1f,
-                spring(dampingRatio = 0.62f, stiffness = Spring.StiffnessMediumLow)
+                spring(dampingRatio = 0.55f, stiffness = 400f)
             )
         } else {
+            // 仅当之前确实展开过才给折回反馈（首次组合 submenuVisible=false 不触发）
+            if (submenuActive) haptic.click()
             subProgress.animateTo(
                 0f,
-                spring(dampingRatio = 1f, stiffness = Spring.StiffnessMedium)
+                spring(dampingRatio = 1f, stiffness = 400f)
             )
             submenuActive = false
         }
@@ -1280,11 +1300,16 @@ fun BoxScope.GlassMenuOverlay(
                     clipPath(path) { this@drawWithContent.drawContent() }
                 }
                 .graphicsLayer {
-                    alpha = openProgress.value
-                    // FlClash：子菜单开启时一级卡片缩小 5%，原点在**右上角**
+                    // 打开/落定时不透明；关闭时淡出（FlClash `_dismissScale` 淡出）
+                    alpha = 1f - dismissProgress.value
+                    // FlClash 关闭：菜单整体缩到 0.8（`_dismissScale`）并向锚点角收缩；
+                    // 打开时由 clip 形变负责「从小长到大」，scale 保持 1（dismissProgress=0）。
+                    val closeShrink = 1f - 0.2f * dismissProgress.value
+                    // FlClash：子菜单开启时一级卡片再缩小 5%，原点在**右上角**
                     // （子卡右缘与父卡右缘对齐，父卡因此向左上收）
                     val dim = subProgress.value
-                    val s = 1f - 0.05f * dim
+                    val subShrink = 1f - 0.05f * dim
+                    val s = closeShrink * subShrink
                     scaleX = s
                     scaleY = s
                     transformOrigin = TransformOrigin(1f, 0f)
@@ -1323,11 +1348,25 @@ fun BoxScope.GlassMenuOverlay(
                 // 卡内缩 8dp（FlClash `_cardInset`）：菜单行像浮在卡面上的圆角块
                 .padding(MenuCardInset)
         ) {
+            val contentBlurPx = with(density) { 4.dp.toPx() }
             CompositionLocalProvider(LocalContentColor provides menuAdaptive.color) {
                 Column(
                     Modifier.graphicsLayer {
                         // 行比轮廓再晚一拍出现（FlClash 的内容渐显）
                         alpha = ((openProgress.value - 0.3f) / 0.7f).coerceIn(0f, 1f)
+                        // FlClash `_openContentBlur`：打开时内容 4px 模糊 → 落定清晰；
+                        // 关闭走 dismissProgress 整体淡出（不再反向重模糊）。
+                        // 绘制期读 value + 小半径每帧 createBlurEffect：不触发重组，
+                        // 4px 半径开销可忽略（区别于 16dp 大半径的掉帧问题）。
+                        // 0.5px 量化：动画期只有少数几档半径变化，避免每帧新建
+                        // 原生 RenderEffect（每帧分配原生对象是形变期掉帧来源之一）
+                        val blurRadius = (contentBlurPx * (1f - openProgress.value).coerceIn(0f, 1f) * 2f)
+                            .roundToInt() / 2f
+                        renderEffect = if (blurRadius > 0.5f && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                            android.graphics.RenderEffect.createBlurEffect(
+                                blurRadius, blurRadius, android.graphics.Shader.TileMode.CLAMP
+                            ).asComposeRenderEffect()
+                        } else null
                     },
                     content = content
                 )
@@ -1581,9 +1620,10 @@ private fun MenuRowShell(
 ) {
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
+    // FlClash ElasticPress 的手感：按下收缩一档，松手欠阻尼弹簧带轻微过冲回弹
     val pressScale by animateFloatAsState(
-        targetValue = if (pressed) 0.98f else 1f,
-        animationSpec = spring(dampingRatio = 0.6f, stiffness = Spring.StiffnessMedium),
+        targetValue = if (pressed) 0.965f else 1f,
+        animationSpec = spring(dampingRatio = 0.45f, stiffness = 900f),
         label = "menuRowPress"
     )
     val highlight = LocalContentColor.current.copy(alpha = 0.10f)
@@ -1626,8 +1666,13 @@ fun GlassMenuRow(
     onClick: () -> Unit
 ) {
     val fg = if (enabled) LocalContentColor.current else LocalContentColor.current.copy(alpha = 0.3f)
+    val haptic = rememberHapticFeedback()
     MenuRowShell(
-        onClick = onClick,
+        onClick = {
+            // FlClash `HapticFeedback.selectionClick()`：选中子项清脆反馈
+            haptic.click()
+            onClick()
+        },
         enabled = enabled,
         trailingIcon = selected
     ) {
@@ -1813,8 +1858,12 @@ fun LiquidDialog(
     }
     // 覆盖层不占独立窗口，系统返回键需自行拦截（可见时才接管）
     BackHandler(enabled = visible) { onDismissRequest() }
-    // 进入：弹簧（与 GlassBottomSheet 同一手感）；退出：220ms 缓动
+    // FlClash `_alertSpring`：withDurationAndBounce(275ms, bounce 0) → 临界阻尼，
+    // 质量 1、刚度 ≈ (2π/0.275)² ≈ 522，曲线截断到 404ms（iOS 27 alert 手感）。
+    // 进入从 1.2× 缩到 1×（`_alertEntryScale`）；退出只淡出、不回缩（scale 保持 1）。
+    val alertSpec = spring<Float>(dampingRatio = 1f, stiffness = 522f)
     val progress = remember { Animatable(if (visible) 1f else 0f) }
+    val scale = remember { Animatable(if (visible) 1f else 1.2f) }
     // 退场动画播完才退出组合（期间继续渲染内容，否则看不到淡出）；
     // 组合期不读 progress.value——否则每帧重组整个弹窗子树
     var contentActive by remember { mutableStateOf(visible) }
@@ -1822,19 +1871,26 @@ fun LiquidDialog(
         // 常驻组合的隐藏弹窗（如 UpdateFlowHosts 的互斥组）不做空转动画
         if (visible) {
             contentActive = true
-            if (progress.value != 1f) {
-                progress.animateTo(1f, spring(dampingRatio = 0.86f, stiffness = 360f))
+            if (progress.value != 1f || scale.value != 1f) {
+                val pJob = launch { progress.animateTo(1f, alertSpec) }
+                val sJob = launch { scale.animateTo(1f, alertSpec) }
+                pJob.join()
+                sJob.join()
             }
         } else {
             if (progress.value != 0f) {
-                progress.animateTo(0f, tween(durationMillis = 220))
+                progress.animateTo(0f, alertSpec)
             }
+            // FlClash 退出：scale 保持当前值（进入落定即 1），只淡出；
+            // 淡出完成后内容已不可见，把 scale 重置回 1.2 供下次进入使用
+            scale.snapTo(1.2f)
             contentActive = false
         }
     }
     if (!contentActive) return
     val dark = LocalDarkTheme.current
-    val shape = RoundedCornerShape(28.dp)
+    val density = LocalDensity.current
+    val shape = RoundedCornerShape(34.dp)
     // 面板最大高度：横屏可用高度很小时，文字区独立滚动、按钮行永远完整可见
     // （用户反馈：横屏弹窗文字太多，最后的选择按钮被遮掉）
     val maxDialogHeight = LocalConfiguration.current.screenHeightDp.dp * 0.92f
@@ -1844,7 +1900,10 @@ fun LiquidDialog(
         Box(
             Modifier
                 .fillMaxSize()
-                .drawBehind { drawRect(Color.Black.copy(alpha = 0.36f * progress.value)) }
+                .drawBehind {
+                    // FlClash `alertScrim`：iOS 27 弹窗压暗，深色 48% / 浅色 20%
+                    drawRect(Color.Black.copy(alpha = (if (dark) 0.48f else 0.2f) * progress.value))
+                }
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = null
@@ -1855,7 +1914,8 @@ fun LiquidDialog(
         Column(
             modifier = modifier
                 .padding(horizontal = 28.dp)
-                .widthIn(max = 480.dp)
+                // FlClash `_alertWidth = 348`
+                .widthIn(max = 348.dp)
                 .fillMaxWidth()
                 .heightIn(max = maxDialogHeight)
                 // 进入/退出：淡入淡出 + 轻微缩放。
@@ -1863,19 +1923,27 @@ fun LiquidDialog(
                 // 且每帧变半径 = 每帧新建原生 RenderEffect（形变期掉帧源）
                 .graphicsLayer {
                     alpha = progress.value
-                    val s = 0.92f + 0.08f * progress.value
+                    val s = scale.value
                     scaleX = s
                     scaleY = s
                 }
                 .liquidGlass(
                     shape = shape,
-                    // 弹窗需要文字可读性：玻璃里掺的底色比普通卡片更实一些
-                    tintAlpha = if (dark) 0.66f else 0.56f,
-                    tintColor = MaterialTheme.colorScheme.surface,
-                    lensHeight = 18.dp,
-                    lensAmount = 30.dp,
-                    // 模糊下限：通透度拉满时磨砂也不许消失（可读性）
-                    minBlur = 12.dp
+                    // FlClash `LiquidGlassStyle.alert` = menu.copyWith(blur: 16)：
+                    // 深色 63% 深灰 / 浅色 55% 亮面，16dp 模糊
+                    tintAlpha = if (dark) 0.63f else 0.55f,
+                    tintColor = if (dark) MaterialTheme.colorScheme.surfaceContainerHighest
+                        else MaterialTheme.colorScheme.surfaceBright,
+                    lensHeight = 16.dp,
+                    lensAmount = 20.dp,
+                    // FlClash `menuShadows`：一道 29dp 模糊、下移 8dp 的软影，深色加强一档
+                    shadow = Shadow(
+                        radius = 29.dp,
+                        offset = DpOffset(0.dp, 8.dp),
+                        alpha = if (dark) 0.18f else 0.12f
+                    ),
+                    vibrancy = Build.VERSION.SDK_INT < 33,
+                    blurOverride = { with(density) { 16.dp.toPx() } }
                 )
                 .clip(shape)
                 .padding(horizontal = 24.dp, vertical = 22.dp)
@@ -1936,12 +2004,12 @@ fun LiquidDialog(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 18.dp),
-                    horizontalArrangement = Arrangement.End,
+                    // FlClash：取消（dismiss）在左、默认动作（confirm）在右，均分整行
+                    horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     if (dismissButton != null) {
                         dismissButton()
-                        Spacer(Modifier.width(8.dp))
                     }
                     confirmButton()
                 }

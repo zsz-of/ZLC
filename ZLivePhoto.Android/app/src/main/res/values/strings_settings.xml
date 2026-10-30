@@ -20,6 +20,7 @@
     <!-- 分组标题 -->
     <string name="settings_section_general">通用</string>
     <string name="settings_section_appearance">外观</string>
+    <string name="settings_theme_mode_title">主题模式</string>
     <string name="settings_section_language">语言</string>
     <string name="settings_section_defaults">默认选项</string>
     <string name="settings_section_output">输出</string>

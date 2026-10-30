@@ -20,6 +20,7 @@
     <!-- Títulos de sección -->
     <string name="settings_section_general">General</string>
     <string name="settings_section_appearance">Apariencia</string>
+    <string name="settings_theme_mode_title">Tema</string>
     <string name="settings_section_language">Idioma</string>
     <string name="settings_section_defaults">Opciones predeterminadas</string>
     <string name="settings_section_output">Salida</string>

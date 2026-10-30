@@ -72,6 +72,7 @@ import com.zsz.zlivephoto.core.UpdateChecker
 import com.zsz.zlivephoto.core.UpdateCheckResult
 import com.zsz.zlivephoto.core.formats.FormatRegistry
 import com.zsz.zlivephoto.ui.AppSettings
+import com.zsz.zlivephoto.ui.edgeSwipeBack
 import com.zsz.zlivephoto.ui.FancyEasing
 import com.zsz.zlivephoto.ui.FileItem
 import com.zsz.zlivephoto.ui.MainScreen
@@ -883,6 +884,9 @@ class MainActivity : ComponentActivity() {
                 // 预览式返回：选择器 / 设置页手势进度驱动内容缩小右移（顶层稳定注册，
                 // 不受 AnimatedContent 过渡重组影响；提交后回到主页）
                 val backAnim = remember { Animatable(0f) }
+                // 左缘右滑返回手势的进度（照 FlClash）：与系统预测式返回共用同一套
+                // 变换，二者取较大值
+                var edgeBack by remember { mutableFloatStateOf(0f) }
                 // 设置页是否停在二级页（由 SettingsScreen 回传）：二级页期间关闭本层的
                 // 预测式返回动画，把返回完全交给设置页自己的层级（二级 → 设置根 → 主页），
                 // 与 FlClash 的 CommonPopScope / Navigator.canPop 语义一致
@@ -939,8 +943,22 @@ class MainActivity : ComponentActivity() {
                             if (AppSettings.glassActive) Modifier
                             else Modifier.background(MaterialTheme.colorScheme.background)
                         )
+                        // 左缘右滑返回（FlClash 页面返回手势）：与系统返回键同一条件，
+                        // 设置页停在二级页时让位给设置页内部
+                        .edgeSwipeBack(
+                            enabled = BuildConfig.FLAVOR != "go" &&
+                                (screen == AppScreen.Picker ||
+                                    (screen == AppScreen.Settings && !settingsInSubpage)),
+                            rtl = rtlDir < 0,
+                            onProgress = { edgeBack = it },
+                            onComplete = {
+                                edgeBack = 0f
+                                screen = AppScreen.Main
+                            },
+                            onCancel = { edgeBack = 0f }
+                        )
                         .graphicsLayer {
-                            val p = backAnim.value
+                            val p = maxOf(backAnim.value, edgeBack)
                             if (p > 0f) {
                                 scaleX = 1f - p * 0.06f
                                 scaleY = 1f - p * 0.06f

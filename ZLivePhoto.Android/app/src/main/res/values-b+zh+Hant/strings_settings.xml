@@ -18,6 +18,7 @@
     <!-- 分組標題 -->
     <string name="settings_section_general">一般</string>
     <string name="settings_section_appearance">外觀</string>
+    <string name="settings_theme_mode_title">主題模式</string>
     <string name="settings_section_language">語言</string>
     <string name="settings_section_defaults">預設選項</string>
     <string name="settings_section_output">輸出</string>

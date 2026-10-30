@@ -15,6 +15,7 @@
     <string name="settings_btn_sponsor">Donate</string>
     <string name="settings_section_general">General</string>
     <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_theme_mode_title">Theme</string>
     <string name="settings_section_language">Language</string>
     <string name="settings_section_defaults">Defaults</string>
     <string name="settings_section_output">Output</string>

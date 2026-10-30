@@ -18,6 +18,7 @@
     <!-- 섹션 제목 -->
     <string name="settings_section_general">일반</string>
     <string name="settings_section_appearance">화면</string>
+    <string name="settings_theme_mode_title">테마</string>
     <string name="settings_section_language">언어</string>
     <string name="settings_section_defaults">기본 옵션</string>
     <string name="settings_section_output">출력</string>

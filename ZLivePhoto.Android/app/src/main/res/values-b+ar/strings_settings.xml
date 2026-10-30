@@ -16,6 +16,7 @@
     <string name="settings_btn_sponsor">دعم</string>
     <string name="settings_section_general">عام</string>
     <string name="settings_section_appearance">المظهر</string>
+    <string name="settings_theme_mode_title">السمة</string>
     <string name="settings_section_language">اللغة</string>
     <string name="settings_section_defaults">الخيارات الافتراضية</string>
     <string name="settings_section_output">الإخراج</string>

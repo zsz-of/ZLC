@@ -73,17 +73,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -97,18 +104,19 @@ import com.zsz.zlivephoto.core.UpdateChecker
 import com.zsz.zlivephoto.core.UpdateCheckResult
 import com.zsz.zlivephoto.core.UpdateInfo
 import com.zsz.zlivephoto.ui.glass.GlassBackButton
+import com.zsz.zlivephoto.ui.glass.GlassDropdownMenu
+import com.zsz.zlivephoto.ui.glass.GlassMenuRow
 import com.zsz.zlivephoto.ui.glass.GlassSlider
 import com.zsz.zlivephoto.ui.glass.GlassSwitch
 import com.zsz.zlivephoto.ui.glass.GlassTopBar
 import com.zsz.zlivephoto.ui.glass.LiquidDialog
-import com.zsz.zlivephoto.ui.glass.LiquidScrollSegments
+import com.zsz.zlivephoto.ui.glass.LiquidRoundedRectangle
 import com.zsz.zlivephoto.ui.glass.LiquidSegmentedTabs
 import com.zsz.zlivephoto.ui.glass.LocalGlassBackdrop
 import com.zsz.zlivephoto.ui.glass.LocalGlassRootBackdrop
 import com.zsz.zlivephoto.ui.glass.LocalGlassEnabled
 import com.zsz.zlivephoto.ui.glass.PublishPageBackdrop
 import com.zsz.zlivephoto.ui.glass.TopBarFrost
-import com.zsz.zlivephoto.ui.glass.catalog.components.LiquidScrollTabs
 import com.zsz.zlivephoto.ui.glass.catalog.components.LiquidSlider
 import com.kyant.backdrop.backdrops.layerBackdrop
 import com.kyant.backdrop.backdrops.rememberLayerBackdrop
@@ -143,8 +151,31 @@ fun SettingsScreen(onBack: () -> Unit, onSubpageChanged: (Boolean) -> Unit = {})
         androidx.compose.ui.platform.LocalLayoutDirection.current ==
         androidx.compose.ui.unit.LayoutDirection.Rtl
     ) -1 else 1
+    // 左缘右滑返回（FlClash 页面返回手势）：二级页可退，设置根页交给宿主处理
+    var subpageSwipe by remember { mutableFloatStateOf(0f) }
     AnimatedContent(
         targetState = subpage,
+        modifier = Modifier
+            .fillMaxSize()
+            .edgeSwipeBack(
+                enabled = BuildConfig.FLAVOR != "go" && subpage != 0,
+                rtl = rtlDir < 0,
+                onProgress = { subpageSwipe = it },
+                onComplete = {
+                    subpageSwipe = 0f
+                    subpage = 0
+                },
+                onCancel = { subpageSwipe = 0f }
+            )
+            .graphicsLayer {
+                val p = subpageSwipe
+                if (p > 0f) {
+                    scaleX = 1f - p * 0.06f
+                    scaleY = 1f - p * 0.06f
+                    translationX = p * size.width * 0.18f * rtlDir
+                    transformOrigin = TransformOrigin(0.5f, 0.5f)
+                }
+            },
         transitionSpec = {
             if (targetState == 0) {
                 (slideInHorizontally(tween(300, easing = FancyEasing)) { -it * rtlDir } + fadeIn(tween(200))) togetherWith
@@ -287,6 +318,11 @@ private fun SettingsMainContent(
     var appLanguageTag by remember { mutableStateOf(AppLanguage.currentTag(context)) }
     var showLanguageDialog by remember { mutableStateOf(false) }
 
+    // 展开菜单（深浅色 / 编码器 / 压缩预设）：当前被点开的那一行
+    var selectMenu by remember { mutableStateOf<SettingsSelectMenu?>(null) }
+    // 各选择行的根坐标锚点：onGloballyPositioned 回填，点开时取最近一次位置
+    var themeRowAnchor by remember { mutableStateOf(Rect.Zero) }
+
     SettingsPageScaffold(
         title = stringResource(R.string.settings_title),
         onBack = onBack,
@@ -394,6 +430,31 @@ private fun SettingsMainContent(
                     }) { Text(stringResource(R.string.settings_btn_close)) }
                 }
             )
+
+            // 展开菜单浮层：定位在触发行的正下方（画在滚动容器之外，
+            // 既不会被列表裁掉，也不会随列表滚动跑位）
+            Box(Modifier.fillMaxSize()) {
+                val menu = selectMenu
+                GlassDropdownMenu(
+                    visible = menu != null,
+                    anchor = menu?.anchor,
+                    onDismiss = {
+                        haptic.soft()
+                        selectMenu = null
+                    }
+                ) {
+                    menu?.options?.forEachIndexed { i, label ->
+                        GlassMenuRow(
+                            label = label,
+                            selected = i == menu.selectedIndex,
+                            onClick = {
+                                menu.onSelect(i)
+                                selectMenu = null
+                            }
+                        )
+                    }
+                }
+            }
         }
     ) {
             // ── 通用 ──
@@ -445,17 +506,36 @@ private fun SettingsMainContent(
 
             // ── 外观 ──
             SectionTitle(stringResource(R.string.settings_section_appearance))
-            // 深色模式三选：玻璃分段按钮（文字描述，选中项带高光），未启用玻璃时退回纯色指示器
+            // 深浅色三选：FlClash 式展开菜单（点击行后在该行下方长出玻璃选项卡）
             val themeModes = listOf("system", "dark", "light")
             val themeLabels = listOf(
                 stringResource(R.string.settings_theme_system),
                 stringResource(R.string.settings_theme_dark),
                 stringResource(R.string.settings_theme_light)
             )
-            LiquidSegmentedTabs(
-                labels = themeLabels,
-                selectedIndex = themeModes.indexOf(AppSettings.themeMode).coerceAtLeast(0),
-                onSelect = { AppSettings.setThemeModeValue(themeModes[it]) }
+            val themeIndex = themeModes.indexOf(AppSettings.themeMode).coerceAtLeast(0)
+            SettingsRowsGroup(
+                listOf(
+                    { s ->
+                        SettingsSelectRow(
+                            shape = s,
+                            title = stringResource(R.string.settings_theme_mode_title),
+                            value = themeLabels[themeIndex],
+                            expanded = selectMenu?.id == "theme",
+                            onAnchor = { themeRowAnchor = it },
+                            onClick = {
+                                haptic.click()
+                                selectMenu = SettingsSelectMenu(
+                                    id = "theme",
+                                    anchor = themeRowAnchor,
+                                    options = themeLabels,
+                                    selectedIndex = themeIndex,
+                                    onSelect = { AppSettings.setThemeModeValue(themeModes[it]) }
+                                )
+                            }
+                        )
+                    }
+                )
             )
             if (!isGo) {
                 Spacer(Modifier.height(4.dp))
@@ -676,7 +756,10 @@ private fun SettingsMainContent(
             )
 
             // ── 内置转码器参数（go 版隐藏）──
-            TranscoderAddonSection()
+            TranscoderAddonSection(
+                openMenuId = selectMenu?.id,
+                onOpenSelect = { selectMenu = it }
+            )
 
             // ── 关于 ──
             SectionTitle(stringResource(R.string.settings_section_about))
@@ -722,12 +805,12 @@ private fun ReminderSettingsScreen(onBack: () -> Unit) {
         onBack = onBack,
         scrollState = rememberScrollState()
     ) {
+            // 每类一张 FlClash 式分组卡（组内行透明 + 内缩分隔线），与主设置页一致
             for ((category, keys) in ReminderKey.entries.groupBy { it.category }) {
                 SectionTitle(category)
-                keys.forEachIndexed { index, key ->
-                    if (index > 0) Spacer(Modifier.height(4.dp))
-                    ReminderSettingRow(key = key, shape = groupShape(index, keys.size))
-                }
+                SettingsRowsGroup(
+                    keys.map { key -> { s -> ReminderSettingRow(key = key, shape = s) } }
+                )
             }
             Text(
                 stringResource(R.string.settings_reminder_hint),
@@ -1106,12 +1189,18 @@ internal fun flPageColor(): Color = if (LocalDarkTheme.current)
 internal fun flCardColor(): Color = if (LocalDarkTheme.current)
     MaterialTheme.colorScheme.surfaceContainer else MaterialTheme.colorScheme.surfaceBright
 
-/** 设置卡片背景：固定使用 FlClash 的卡片档底色，不参与液态玻璃采样，也不投射阴影。 */
+/** 当前行是否位于「单卡分组」内：是则行自身不再画底色（由分组卡统一提供） */
+private val LocalInSettingsCard = staticCompositionLocalOf { false }
+
+/**
+ * 设置卡片背景：固定使用 FlClash 的卡片档底色，不参与液态玻璃采样，也不投射阴影。
+ * 位于 [SettingsRowsGroup] 内时返回原 Modifier——底色与圆角由那张分组卡统一负责。
+ */
 @Composable
 private fun Modifier.cardSurface(
     shape: Shape,
     color: Color = flCardColor()
-): Modifier = background(color, shape)
+): Modifier = if (LocalInSettingsCard.current) this else background(color, shape)
 
 /** 分组标题（与卡片左缘对齐：不再额外缩进，避免标题比卡片内缩一档） */
 @Composable
@@ -1124,32 +1213,42 @@ private fun SectionTitle(text: String) {
     )
 }
 
-/** 分组行圆角（Kazumi SplitListGroup 风格）：
- *  组首行顶部大圆角、组尾行底部大圆角、组内行小圆角（4dp）。 */
-private fun groupShape(index: Int, count: Int): RoundedCornerShape {
-    val outer = 16.dp
-    val inner = 4.dp
-    return RoundedCornerShape(
-        topStart = if (index == 0) outer else inner,
-        topEnd = if (index == 0) outer else inner,
-        bottomStart = if (index == count - 1) outer else inner,
-        bottomEnd = if (index == count - 1) outer else inner
-    )
-}
-
 /**
- * Kazumi ContentSection.group 风格的连续圆角分组：
- * 各行为同一 surfaceContainerLow 底色，行间距 4dp（露出背景把行切开），
- * 行间间隙处露出背景色，视觉上是一个被切开的圆角矩形组。
+ * FlClash 设置页的「背景板 + 分类卡片」：
+ * 一个分组就是**一张**超椭圆卡片（[LiquidRoundedRectangle]，16dp），
+ * 组内各行透明、行之间用一条内缩 1dp 分隔线。
+ * 旧版是「每行一张小卡、行间 4dp 露底」的 SplitListGroup 风格，
+ * 用户要求改成 FlClash 那种整块分类卡。
  */
 @Composable
 private fun SettingsRowsGroup(rows: List<@Composable (RoundedCornerShape) -> Unit>) {
-    Column {
-        rows.forEachIndexed { index, row ->
-            if (index > 0) Spacer(Modifier.height(4.dp))
-            row(groupShape(index, rows.size))
+    val cardShape = LiquidRoundedRectangle(16.dp)
+    CompositionLocalProvider(LocalInSettingsCard provides true) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .background(flCardColor(), cardShape)
+                .clip(cardShape)
+        ) {
+            rows.forEachIndexed { index, row ->
+                if (index > 0) SettingsRowDivider()
+                // 组内行自身不画底色，形状由分组卡统一裁剪：这里给 0 圆角即可
+                row(RoundedCornerShape(0.dp))
+            }
         }
     }
+}
+
+/** 分组卡内的行分隔线（左右各内缩 16dp，与 FlClash / iOS 设置页一致） */
+@Composable
+private fun SettingsRowDivider() {
+    Box(
+        Modifier
+            .fillMaxWidth()
+            .padding(start = 16.dp, end = 16.dp)
+            .height(1.dp)
+            .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f))
+    )
 }
 
 /**
@@ -1262,9 +1361,9 @@ private fun SettingsActionRow(
         Modifier
             .fillMaxWidth()
             .heightIn(min = 64.dp)
-            .background(
-                if (danger) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.surfaceContainerLow,
-                shape
+            .then(
+                if (danger) Modifier.background(MaterialTheme.colorScheme.error, RoundedCornerShape(12.dp))
+                else Modifier.cardSurface(shape)
             )
             .then(
                 if (enabled) {
@@ -1311,14 +1410,101 @@ private fun SettingsActionRow(
 }
 
 /**
+ * 展开菜单的状态：某一行被点开时，把它在**根坐标系**的矩形与选项一起交给
+ * 页面级浮层 [GlassDropdownMenu]（浮层画在滚动容器之外，才不会被列表裁掉、
+ * 也不会随滚动跑位）。
+ * [id] 用来判断「哪一行处于展开态」（箭头旋转），避免按选项内容比对。
+ */
+private class SettingsSelectMenu(
+    val id: String,
+    val anchor: Rect,
+    val options: List<String>,
+    val selectedIndex: Int,
+    val onSelect: (Int) -> Unit
+)
+
+/**
+ * 可展开选择行（FlClash 设置页的「点击展开菜单」版式）：
+ * 左侧标题（+可选副标题），右侧当前值 + 箭头，点一下在该行下方弹出玻璃菜单。
+ * 箭头在菜单展开期间旋转 90°（与 [GlassMenuEntry] 一致）。
+ */
+@Composable
+private fun SettingsSelectRow(
+    shape: RoundedCornerShape,
+    title: String,
+    value: String,
+    subtitle: String? = null,
+    expanded: Boolean = false,
+    enabled: Boolean = true,
+    onAnchor: (Rect) -> Unit,
+    onClick: () -> Unit
+) {
+    val fb = rememberPressFeedback(hapticOnPress = false)
+    val rotation by animateFloatAsState(
+        targetValue = if (expanded) 90f else 0f,
+        animationSpec = spring(dampingRatio = 0.7f, stiffness = Spring.StiffnessMedium),
+        label = "settingsSelectChevron"
+    )
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .heightIn(min = 64.dp)
+            .cardSurface(shape)
+            .alpha(if (enabled) 1f else 0.38f)
+            .onGloballyPositioned { onAnchor(it.boundsInRoot()) }
+            .clickable(
+                interactionSource = fb.interactionSource,
+                indication = null,
+                enabled = enabled
+            ) { onClick() }
+            .then(fb.scaleModifier)
+            .padding(horizontal = 20.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text(title, style = MaterialTheme.typography.titleSmall)
+            if (subtitle != null) {
+                Spacer(Modifier.height(2.dp))
+                Text(
+                    subtitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+        Spacer(Modifier.width(12.dp))
+        Text(
+            value,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
+        Spacer(Modifier.width(4.dp))
+        Icon(
+            Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            contentDescription = null,
+            modifier = Modifier.size(16.dp).rotate(rotation),
+            tint = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+}
+
+/**
  * 内置转码器（ffmpeg）：随 APK 打包为 native 库，无需下载/校验/解压/更新，
  * 设置页提供「转码方式」三选一与转码参数。
  * - go 轻量版不含内置转码器，整个区块隐藏；
  * - 转码方式默认「仅重封装容器」（只换容器不重新编码）；
  * - 参数（CRF/编码器/预设）默认 cq18 / H.265 / slow，仅「重新编码」时生效。
+ *
+ * 编码器与压缩预设按 FlClash 式展开菜单呈现：点击行后把 [SettingsSelectMenu]
+ * 交给页面级浮层（[openMenuId] 用于让对应行的箭头进入展开态）。
  */
 @Composable
-private fun TranscoderAddonSection() {
+private fun TranscoderAddonSection(
+    openMenuId: String?,
+    onOpenSelect: (SettingsSelectMenu) -> Unit
+) {
     if (BuildConfig.FLAVOR == "go") return
 
     SectionTitle(stringResource(R.string.settings_section_transcode))
@@ -1408,51 +1594,62 @@ private fun TranscoderAddonSection() {
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
-
-        Spacer(Modifier.height(12.dp))
-        Text(
-            stringResource(R.string.settings_encoder_title),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        Spacer(Modifier.height(6.dp))
-        // 编码器二选：与深浅色切换一致的动态滑动分段选择器
-        val codecs = listOf("h265", "h264")
-        LiquidSegmentedTabs(
-            labels = listOf("H.265", "H.264"),
-            selectedIndex = codecs.indexOf(FfmpegAddon.codec).coerceAtLeast(0),
-            onSelect = { FfmpegAddon.updateCodec(codecs[it]) },
-            enabled = encoding
-        )
-
-        Spacer(Modifier.height(12.dp))
-        Text(
-            stringResource(R.string.settings_compress_preset_title),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        Spacer(Modifier.height(6.dp))
-        // 压缩预设 9 选：液态玻璃滚动 tab 栏（与底部 tab 同一套视觉语言：
-        // vibrancy 玻璃胶囊容器 + 常驻液态玻璃指示器弹簧滑动（宽度随目标文本动态过渡）
-        // + 选中文字交叉淡入绘制在玻璃之上，清晰不被折射遮挡）
-        val presetBackdrop = LocalGlassRootBackdrop.current
-        if (presetBackdrop != null) {
-            LiquidScrollTabs(
-                labels = FfmpegAddon.PRESETS,
-                selectedIndex = FfmpegAddon.PRESETS.indexOf(FfmpegAddon.preset).coerceAtLeast(0),
-                onSelect = { FfmpegAddon.updatePreset(FfmpegAddon.PRESETS[it]) },
-                backdrop = presetBackdrop,
-                enabled = encoding
-            )
-        } else {
-            LiquidScrollSegments(
-                options = FfmpegAddon.PRESETS,
-                selectedIndex = FfmpegAddon.PRESETS.indexOf(FfmpegAddon.preset).coerceAtLeast(0),
-                onSelect = { FfmpegAddon.updatePreset(FfmpegAddon.PRESETS[it]) },
-                enabled = encoding
-            )
-        }
     }
+
+    // 编码器 / 压缩预设：FlClash 式展开菜单（同样只在「完整转码」时可改）
+    Spacer(Modifier.height(8.dp))
+    val codecs = listOf("h265", "h264")
+    val codecLabels = listOf("H.265", "H.264")
+    val codecIndex = codecs.indexOf(FfmpegAddon.codec).coerceAtLeast(0)
+    val presetIndex = FfmpegAddon.PRESETS.indexOf(FfmpegAddon.preset).coerceAtLeast(0)
+    var encoderAnchor by remember { mutableStateOf(Rect.Zero) }
+    var presetAnchor by remember { mutableStateOf(Rect.Zero) }
+    SettingsRowsGroup(
+        listOf(
+            { s ->
+                SettingsSelectRow(
+                    shape = s,
+                    title = stringResource(R.string.settings_encoder_title),
+                    value = codecLabels[codecIndex],
+                    expanded = openMenuId == "encoder",
+                    enabled = encoding,
+                    onAnchor = { encoderAnchor = it },
+                    onClick = {
+                        onOpenSelect(
+                            SettingsSelectMenu(
+                                id = "encoder",
+                                anchor = encoderAnchor,
+                                options = codecLabels,
+                                selectedIndex = codecIndex,
+                                onSelect = { FfmpegAddon.updateCodec(codecs[it]) }
+                            )
+                        )
+                    }
+                )
+            },
+            { s ->
+                SettingsSelectRow(
+                    shape = s,
+                    title = stringResource(R.string.settings_compress_preset_title),
+                    value = FfmpegAddon.preset,
+                    expanded = openMenuId == "preset",
+                    enabled = encoding,
+                    onAnchor = { presetAnchor = it },
+                    onClick = {
+                        onOpenSelect(
+                            SettingsSelectMenu(
+                                id = "preset",
+                                anchor = presetAnchor,
+                                options = FfmpegAddon.PRESETS,
+                                selectedIndex = presetIndex,
+                                onSelect = { FfmpegAddon.updatePreset(FfmpegAddon.PRESETS[it]) }
+                            )
+                        )
+                    }
+                )
+            }
+        )
+    )
 }
 
 /** 预制主题色圆点：选中态 primary 外圈 + 对勾。

@@ -453,7 +453,8 @@ internal class GlassEffectCache {
         val lensA: Float,
         val w: Float,
         val h: Float,
-        val vibrancy: Boolean
+        val vibrancy: Boolean,
+        val chromatic: Boolean
     )
 
     private var chain: android.graphics.RenderEffect? = null
@@ -466,7 +467,8 @@ internal class GlassEffectCache {
         lensHeightPx: Float,
         lensAmountPx: Float,
         lensEnabled: Boolean,
-        vibrancyEnabled: Boolean = false
+        vibrancyEnabled: Boolean = false,
+        chromatic: Boolean = false
     ) {
         // 0.5px / 0.25px 量化：半径连续变化时把「每帧都变」收敛成少数几档
         val qb = (blurRadiusPx * 2f).roundToInt() / 2f
@@ -474,7 +476,7 @@ internal class GlassEffectCache {
         val qa = if (lensEnabled) (lensAmountPx * 4f).roundToInt() / 4f else 0f
         val sz = scope.size
         // size 入键：lens 的 uniform 与尺寸相关，防复用过期链
-        val key = Key(qb, qh, qa, sz.width, sz.height, vibrancyEnabled)
+        val key = Key(qb, qh, qa, sz.width, sz.height, vibrancyEnabled, chromatic)
         if (chain != null && key == lastKey) {
             scope.padding = lastPadding
             scope.renderEffect = chain
@@ -483,7 +485,8 @@ internal class GlassEffectCache {
         // vibrancy() 内部也是 createColorFilterEffect（同样每次新建原生对象），一并纳入缓存
         if (vibrancyEnabled) scope.vibrancy()
         if (qb > 0.5f) scope.blur(qb, TileMode.Clamp)
-        if (lensEnabled) scope.lens(qh, qa, false, false)
+        // chromatic=true 走折射色散着色器（液态玻璃边缘的彩虹色散）
+        if (lensEnabled) scope.lens(qh, qa, chromatic, false)
         chain = scope.renderEffect
         lastKey = key
         lastPadding = scope.padding
@@ -502,6 +505,62 @@ internal fun rememberGlassEffectCache(): GlassEffectCache = remember { GlassEffe
 internal fun quantizeAnim(v: Float, steps: Int = 4): Float =
     ((v * steps).roundToInt().coerceIn(0, steps)) / steps.toFloat()
 
+/**
+ * 液态玻璃「超椭圆」轮廓（对应 liquid_glass_widgets 的 `LiquidShape` /
+ * `LiquidRoundedRectangle`）。
+ *
+ * 该库的玻璃轮廓不是普通圆角矩形，而是 Lamé 超椭圆（指数 4~5）：转角比圆弧更「方」，
+ * 小尺寸下更像 iOS 26 的玻璃片。此前 ZLC 的卡片/菜单全部是 RoundedCornerShape，
+ * 这里补上同款轮廓，供**非折射件**（设置卡片、列表底板等）使用——
+ * 折射 lens 的实现只接受 CornerBasedShape，玻璃件仍需圆角矩形。
+ */
+class LiquidSuperellipseShape(
+    private val cornerRadius: Dp,
+    private val exponent: Float = 4.5f
+) : Shape {
+    override fun createOutline(
+        size: Size,
+        layoutDirection: LayoutDirection,
+        density: Density
+    ): Outline {
+        val r = with(density) { cornerRadius.toPx() }
+            .coerceIn(0f, minOf(size.width, size.height) / 2f)
+        if (r <= 0f) return Outline.Rectangle(Rect(Offset.Zero, size))
+        return Outline.Generic(superellipsePath(size.width, size.height, r, exponent))
+    }
+}
+
+/** [LiquidSuperellipseShape] 的工厂（对应库中的 `LiquidRoundedRectangle(radius:)`） */
+fun LiquidRoundedRectangle(radius: Dp, exponent: Float = 4.5f): Shape =
+    LiquidSuperellipseShape(radius, exponent)
+
+/** Lamé 超椭圆圆角矩形路径：四角按 |cos|^(2/n) / |sin|^(2/n) 采样（指数越大越方） */
+private fun superellipsePath(w: Float, h: Float, r: Float, n: Float): Path {
+    val path = Path()
+    val e = (2f / n).coerceIn(0.05f, 1f)
+    fun corner(cx: Float, cy: Float, sx: Float, sy: Float, fromDeg: Float, toDeg: Float) {
+        val steps = 10
+        for (i in 0..steps) {
+            val deg = fromDeg + (toDeg - fromDeg) * i / steps
+            val t = Math.toRadians(deg.toDouble())
+            val x = cx + sx * r * Math.pow(abs(cos(t)), e.toDouble()).toFloat()
+            val y = cy + sy * r * Math.pow(abs(sin(t)), e.toDouble()).toFloat()
+            path.lineTo(x, y)
+        }
+    }
+    path.moveTo(r, 0f)
+    path.lineTo(w - r, 0f)
+    corner(w - r, r, 1f, -1f, 90f, 0f)
+    path.lineTo(w, h - r)
+    corner(w - r, h - r, 1f, 1f, 0f, 90f)
+    path.lineTo(r, h)
+    corner(r, h - r, -1f, 1f, 90f, 0f)
+    path.lineTo(0f, r)
+    corner(r, r, -1f, -1f, 0f, 90f)
+    path.close()
+    return path
+}
+
 fun Modifier.liquidGlass(
     shape: Shape,
     tintAlpha: Float? = null,
@@ -519,6 +578,9 @@ fun Modifier.liquidGlass(
     minBlur: Dp = 0.dp,
     // vibrancy 颜色滤镜（SDK<33 无 lens 时的玻璃感兜底）
     vibrancy: Boolean = false,
+    // 边缘折射色散（LiquidGlassWidgets 的色散/彩虹边）：中等以上尺寸的面板开启，
+    // 小按钮不开启（色散着色器比普通折射贵，小面积看不出差别）
+    chromatic: Boolean = false,
     // 采样源（Backdrop 基类：既可是单层 LayerBackdrop，也可是多层合成的 CombinedBackdrop）
     backdropOverride: Backdrop? = null,
     // 背景绘制钩子：每帧先画背景再回调（用于把背景另录一份做亮度采样等内容自适应）
@@ -564,8 +626,16 @@ fun Modifier.liquidGlass(
         animationSpec = tween(durationMillis = 500),
         label = "glassDarkBoost"
     )
-    val tint = ((tintAlpha ?: glassTintAlpha(opacity)) * darkBoost)
-        .coerceAtMost(0.6f)
+    // 全局通透度对「显式写死浓度」的组件（菜单 / 弹窗 / 按钮）同样生效：
+    // 以 0.5 为基准（默认观感不变），越低越磨砂、越高越清透。
+    // 否则设置页的通透度滑条只会影响默认组件，菜单和弹窗纹丝不动。
+    val liquidScale = 1f + (0.5f - opacity) * 0.9f
+    val blurScale = 1f + (0.5f - opacity) * 1.4f
+    val tint = ((tintAlpha?.let { it * liquidScale } ?: glassTintAlpha(opacity)) * darkBoost)
+        .coerceAtMost(0.72f)
+    // 镜面高光（LiquidGlassWidgets `GlassGlow`）：左上到右下一条极淡的白色斜向光泽，
+    // 通透度越高越明显（磨砂很重时高光会被散射吃掉）。
+    val glowAlpha = (0.03f + 0.09f * opacity) * if (dark) 0.72f else 1f
     // 效果链缓存：消除动画/重组期间每帧新建原生 RenderEffect
     val effectCache = remember { GlassEffectCache() }
     // 外投影：极轻的「浮起」。液态玻璃主要靠折射/散射表达层次，阴影只给一点点，
@@ -583,15 +653,17 @@ fun Modifier.liquidGlass(
         shape = { shape },
         effects = {
             // blurOverride（动画/菜单形变）与 minBlur（可读性下限）取大者；
-            // clamp 后半径稳定，效果链缓存不会被击穿
-            val b = maxOf(blurOverride?.invoke() ?: blurPx, minBlurPx)
+            // 显式模糊同样跟随全局通透度（blurScale），clamp 后半径稳定，效果链缓存不会被击穿
+            val ov = blurOverride?.invoke()
+            val b = maxOf(if (ov != null) ov * blurScale else blurPx, minBlurPx)
             effectCache.apply(
                 scope = this,
                 blurRadiusPx = b,
                 lensHeightPx = lensH,
                 lensAmountPx = lensA,
                 lensEnabled = lensEnabled && Build.VERSION.SDK_INT >= 33,
-                vibrancyEnabled = vibrancy
+                vibrancyEnabled = vibrancy,
+                chromatic = chromatic
             )
         },
         // 高光固定为白色（HighlightStyle.Default 的 color = White α0.5），
@@ -613,6 +685,20 @@ fun Modifier.liquidGlass(
         onDrawBackdrop = onDrawBackdrop ?: { drawBackdrop -> drawBackdrop() },
         onDrawSurface = {
             if (tint > 0f) drawRect(surfaceTint.copy(alpha = tint))
+            // 镜面光泽：斜向线性渐变，只在左上一带最亮，向右下迅速消失
+            if (glowAlpha > 0.005f) {
+                drawRect(
+                    Brush.linearGradient(
+                        colors = listOf(
+                            Color.White.copy(alpha = glowAlpha),
+                            Color.White.copy(alpha = glowAlpha * 0.35f),
+                            Color.Transparent
+                        ),
+                        start = Offset.Zero,
+                        end = Offset(size.width * 0.9f, size.height)
+                    )
+                )
+            }
         }
     )
 }
@@ -1325,6 +1411,8 @@ fun BoxScope.GlassMenuOverlay(
                         // FlClash `menuShadows`：一道 29dp 模糊、下移 8dp 的软影
                         shadow = menuShadow,
                         vibrancy = Build.VERSION.SDK_INT < 33,
+                        // 菜单面积大，折射色散（彩虹边）能看出来
+                        chromatic = Build.VERSION.SDK_INT >= 33,
                         blurOverride = { menuBlurPx },
                         onDrawBackdrop = menuAdaptive.recordBackdrop
                     )
@@ -1513,6 +1601,97 @@ private fun BoxScope.GlassSubmenuOverlay(
                     },
                     content = content
                 )
+            }
+        }
+    }
+}
+
+/**
+ * 展开式下拉菜单（liquid_glass_widgets 的 `GlassMenu` 形态）。
+ *
+ * 用于设置页「深浅色 / 编码器 / 压缩预设」：点击一行后，在该行的正下方长出一张
+ * 玻璃卡，宽度与行一致，选项用 [GlassMenuRow]（当前值打勾）。
+ *
+ * 与 [GlassMenuOverlay] 的区别：按**行的根坐标矩形**定位（[anchor]），而不是固定
+ * 贴屏幕某个角；[containerOrigin] 是覆盖层根 Box 的根坐标（覆盖层铺满整屏时传
+ * `Rect.Zero`）。卡片高度受屏幕剩余空间限制，超出时内部滚动。
+ */
+@Composable
+fun BoxScope.GlassDropdownMenu(
+    visible: Boolean,
+    anchor: Rect?,
+    onDismiss: () -> Unit,
+    containerOrigin: Rect = Rect.Zero,
+    content: @Composable ColumnScope.() -> Unit
+) {
+    if (!visible || anchor == null) return
+    val glass = LocalGlassEnabled.current
+    val dark = LocalDarkTheme.current
+    val density = LocalDensity.current
+    // 入场：一条和菜单同款的弹簧；退场直接移除（下拉菜单不需要长退场）
+    val progress = remember { Animatable(0f) }
+    LaunchedEffect(Unit) {
+        progress.animateTo(1f, spring(dampingRatio = 0.72f, stiffness = 420f))
+    }
+    BackHandler(enabled = true) { onDismiss() }
+    val shape = RoundedCornerShape(20.dp)
+    val blurPx = with(density) { 12.dp.toPx() }
+    val tintColor = if (dark) MaterialTheme.colorScheme.surfaceContainerHighest
+    else MaterialTheme.colorScheme.surfaceBright
+    val tintAlpha = if (dark) 0.63f else 0.55f
+    val fg = if (dark) Color.White else Color.Black
+
+    // 菜单外点击关闭
+    Box(
+        Modifier
+            .matchParentSize()
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null
+            ) { onDismiss() }
+    )
+    BoxWithConstraints(Modifier.matchParentSize()) {
+        val topDp = with(density) { (anchor.bottom - containerOrigin.top).toDp() } + 6.dp
+        val leftDp = with(density) { (anchor.left - containerOrigin.left).toDp() }
+        val widthDp = with(density) { anchor.width.toDp() }
+        // 屏幕剩余高度不够时收缩，菜单内部滚动
+        val maxCardHeight = (maxHeight - topDp - 12.dp).coerceAtLeast(120.dp)
+        Column(
+            Modifier
+                .offset(x = leftDp, y = topDp)
+                .width(widthDp)
+                .heightIn(max = maxCardHeight)
+                .graphicsLayer {
+                    val p = progress.value
+                    alpha = p
+                    scaleX = 0.94f + 0.06f * p
+                    scaleY = 0.94f + 0.06f * p
+                    transformOrigin = TransformOrigin(0.5f, 0f)
+                }
+                .then(
+                    if (glass) Modifier.liquidGlass(
+                        shape = shape,
+                        tintAlpha = tintAlpha,
+                        tintColor = tintColor,
+                        lensHeight = 14.dp,
+                        lensAmount = 18.dp,
+                        shadow = Shadow(
+                            radius = 26.dp,
+                            offset = DpOffset(0.dp, 6.dp),
+                            alpha = if (dark) 0.18f else 0.12f
+                        ),
+                        vibrancy = Build.VERSION.SDK_INT < 33,
+                        chromatic = Build.VERSION.SDK_INT >= 33,
+                        blurOverride = { blurPx }
+                    )
+                    else Modifier.background(MaterialTheme.colorScheme.surfaceContainerHigh, shape)
+                )
+                .clip(shape)
+                .verticalScroll(rememberScrollState())
+                .padding(MenuCardInset)
+        ) {
+            CompositionLocalProvider(LocalContentColor provides fg) {
+                Column(content = content)
             }
         }
     }
@@ -1943,6 +2122,7 @@ fun LiquidDialog(
                         alpha = if (dark) 0.18f else 0.12f
                     ),
                     vibrancy = Build.VERSION.SDK_INT < 33,
+                    chromatic = Build.VERSION.SDK_INT >= 33,
                     blurOverride = { with(density) { 16.dp.toPx() } }
                 )
                 .clip(shape)

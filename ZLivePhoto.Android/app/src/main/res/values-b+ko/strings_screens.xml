@@ -119,6 +119,7 @@
     <!-- 长按列表项：单项输出格式 -->
     <string name="screen_item_format_title">출력 형식</string>
     <string name="screen_item_format_hint">목록 항목을 길게 눌러 형식을 개별로 설정할 수 있습니다</string>
+    <string name="screen_format_follow_global">전역 설정 따르기(%1$s)</string>
     <!-- 选择器媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片） -->
     <string name="screen_filter_all">전체</string>
     <string name="screen_filter_live">라이브 포토</string>

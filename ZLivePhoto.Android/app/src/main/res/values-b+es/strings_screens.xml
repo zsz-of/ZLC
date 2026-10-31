@@ -123,6 +123,7 @@
     <!-- 长按列表项：单项输出格式 -->
     <string name="screen_item_format_title">Formato de salida</string>
     <string name="screen_item_format_hint">Mantén pulsado un elemento de la lista para definir su formato por separado</string>
+    <string name="screen_format_follow_global">Seguir el formato global (%1$s)</string>
     <!-- 选择器媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片） -->
     <string name="screen_filter_all">Todos</string>
     <string name="screen_filter_live">Fotos en vivo</string>

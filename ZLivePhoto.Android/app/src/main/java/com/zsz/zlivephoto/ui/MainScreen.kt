@@ -53,9 +53,7 @@ import androidx.compose.material.icons.filled.AddPhotoAlternate
 import androidx.compose.material.icons.filled.AutoDelete
 import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.DeleteOutline
-import androidx.compose.material.icons.filled.FormatPaint
 import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Stop
@@ -66,7 +64,6 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -104,7 +101,7 @@ import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.ui.glass.GlassActionButton
 import com.zsz.zlivephoto.ui.glass.GlassBottomSheet
 import com.zsz.zlivephoto.ui.glass.GlassIconButton
-import com.zsz.zlivephoto.ui.glass.GlassMenuButton
+import com.zsz.zlivephoto.ui.glass.GlassMenuRow
 import com.zsz.zlivephoto.ui.glass.GlassTopBar
 import com.zsz.zlivephoto.ui.glass.LiquidDialog
 import com.zsz.zlivephoto.ui.glass.LiquidSegmentedTabs
@@ -217,8 +214,14 @@ fun MainScreen(
     // 已被拖/点过去）时 +1，让 LiquidSegmentedTabs 指示器弹回原选项
     // （用户反馈：拖到替换选项后不确认也不会弹回原来的选项，不行）
     var modeRevertTick by remember { mutableIntStateOf(0) }
-    // 长按某项：该项输出格式选择弹窗（null = 未打开）
-    var formatSheetItem by remember { mutableStateOf<FileItem?>(null) }
+    // 输出格式面板：visible 与「作用对象」分开存。
+    // - formatSheetPath = null → 全局默认格式（底部面板「输出格式」按钮打开）
+    // - formatSheetPath = 某文件路径 → 该项单独格式（长按列表项打开）
+    // 分开存的原因：面板退场动画期间仍要渲染内容（不能跟着 visible 一起清空）；
+    // 同时内容按路径从 files 里**实时读取**，勾选永远与真实生效格式一致
+    // （此前存的是长按瞬间的 FileItem 快照，设置后重新打开可能显示旧值）。
+    var formatSheetVisible by remember { mutableStateOf(false) }
+    var formatSheetPath by remember { mutableStateOf<String?>(null) }
     // 状态详情弹窗（由 BottomControls 的状态胶囊点击打开；弹窗渲染在覆盖层作用域，
     // 故状态提升到本函数——竖屏面板与横屏右栏共用同一个 BottomControls）
     var showStatusDetail by remember { mutableStateOf(false) }
@@ -228,10 +231,6 @@ fun MainScreen(
 
     // 实际转换目标：vivo 已拆分为两个顶级选项（vivo_single / vivo），直接使用
     val effectiveTarget = selectedFormat
-
-    // 队列含合成任务（formatKey=compose）时禁止选择「拆解」：拆解与合成语义互斥，
-    // 合成任务会把照片+视频合成动态照片，而拆解是反向操作，混用会产出不可识别产物
-    val hasComposeTask = files.any { it.formatKey == "compose" }
 
     /** 处理方式单选点击：替换原图首次开启先弹风险说明；无权限时交给 Activity 引导授权 */
     val selectMode: (OutputMode) -> Unit = { mode ->
@@ -449,7 +448,7 @@ fun MainScreen(
                     listState = listState,
                     isConverting = isConverting,
                     effectiveTarget = effectiveTarget,
-                    onLongPress = { formatSheetItem = it },
+                    onLongPress = { formatSheetPath = it.path; formatSheetVisible = true },
                     onRemoveFile = onRemoveFile,
                     topContentPadding = topBarTotal + 8.dp,
                     modifier = Modifier
@@ -511,7 +510,7 @@ fun MainScreen(
                 listState = listState,
                 isConverting = isConverting,
                 effectiveTarget = effectiveTarget,
-                onLongPress = { formatSheetItem = it },
+                onLongPress = { formatSheetPath = it.path; formatSheetVisible = true },
                 onRemoveFile = onRemoveFile,
                 topContentPadding = topBarTotal + 8.dp,
                 bottomContentPadding = panelHeightDp + 8.dp,
@@ -591,16 +590,18 @@ fun MainScreen(
         }
     }
 
-    // 长按列表项 → 单项输出格式选择（含「拆解」；合成任务不提供拆解）。
-    // 输出格式改成「一组液态玻璃按钮」平铺（用户反馈：弹很多个按钮来选就好），
-    // 不再用一列可滚动的行
+    // 输出格式面板（底部玻璃浮层）：只由「长按列表项」打开，逐项设置该项的输出格式。
+    // 勾选值按路径从 files 实时读取（targetFormat ?: selectedFormat），与转换时
+    // 真正使用的格式完全一致——不再用长按瞬间的快照，避免面板显示旧格式。
+    val formatSheetItem = formatSheetPath?.let { p -> files.firstOrNull { it.path == p } }
     GlassBottomSheet(
-        visible = formatSheetItem != null,
-        onDismiss = { formatSheetItem = null }
-    ) {        val item = formatSheetItem ?: return@GlassBottomSheet
-        val formatScrollState = rememberScrollState()
-        val itemKey = item.formatKey
-        val currentKey = item.targetFormat ?: selectedFormat
+        visible = formatSheetVisible && formatSheetItem != null,
+        onDismiss = { formatSheetVisible = false }
+    ) {
+        val item = formatSheetItem
+        if (item != null) {
+            val currentKey = item.targetFormat ?: selectedFormat
+            val formatScrollState = rememberScrollState()
             Text(
                 text = stringResource(R.string.screen_item_format_title),
                 style = MaterialTheme.typography.titleLarge,
@@ -622,71 +623,44 @@ fun MainScreen(
                     .fillMaxWidth()
                     .heightIn(max = maxListHeight)
                     .verticalScroll(formatScrollState)
-                    .padding(horizontal = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                    .padding(horizontal = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(2.dp)
             ) {
-                // 两列平铺：格式数量多时按钮阵列比长列表更好按
-                formatOptions.chunked(2).forEach { pair ->
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        pair.forEach { opt ->
-                            val selected = opt.key == currentKey
-                            // 拆解与合成互斥：本条为合成任务（formatKey=compose）时不可选拆解
-                            val disabled = opt.key == "extract" && itemKey == "compose"
-                            GlassMenuButton(
-                                onClick = {
-                                    onSelectItemFormat(item.path, opt.key)
-                                    formatSheetItem = null
-                                },
-                                enabled = !disabled,
-                                selected = selected,
-                                modifier = Modifier.weight(1f)
-                            ) {
-                                Text(
-                                    text = stringResource(opt.nameRes),
-                                    style = MaterialTheme.typography.titleSmall,
-                                    fontWeight = FontWeight.Bold,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis,
-                                    color = if (disabled) MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
-                                    else LocalContentColor.current,
-                                    modifier = Modifier.weight(1f)
-                                )
-                                if (selected) {
-                                    Icon(
-                                        imageVector = Icons.Default.Check,
-                                        contentDescription = stringResource(R.string.screen_selected),
-                                        tint = MaterialTheme.colorScheme.primary,
-                                        modifier = Modifier.size(18.dp)
-                                    )
-                                }
-                            }
+                formatOptions.forEach { opt ->
+                    // 拆解与合成互斥：合成任务不可选拆解
+                    val disabled = opt.key == "extract" && item.formatKey == "compose"
+                    GlassMenuRow(
+                        label = stringResource(opt.nameRes),
+                        selected = opt.key == currentKey,
+                        enabled = !disabled,
+                        onClick = {
+                            onSelectItemFormat(item.path, opt.key)
+                            formatSheetVisible = false
                         }
-                        // 奇数个时右侧留空，保持两列对齐
-                        if (pair.size == 1) Spacer(modifier = Modifier.weight(1f))
-                    }
+                    )
                 }
                 if (currentKey == "vivo_single") {
                     Text(
                         text = stringResource(R.string.screen_vivo_single_warning),
                         style = MaterialTheme.typography.labelMedium,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.error
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
                     )
                 }
-                if (itemKey == "compose" && formatOptions.any { it.key == "extract" }) {
+                if (item.formatKey == "compose") {
                     Text(
                         text = stringResource(R.string.screen_extract_blocked),
                         style = MaterialTheme.typography.labelMedium,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.error
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
                     )
                 }
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
+    }
 
     // 状态详情对话框（完整内容，长按可选中复制；按钮带 tonal 底色）
     // 同窗口覆盖层（不再用独立 Dialog 窗口）：采样坐标与主窗口一致、

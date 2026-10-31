@@ -8,6 +8,7 @@
     <!-- ── 状态栏 / 提示（Activity 方法内，getString） ── -->
     <string name="main_status_ready">就绪</string>
     <string name="main_status_item_format_set">已单独设置「%1$s」的输出格式</string>
+    <string name="main_status_item_format_reset">「%1$s」已改为跟随全局格式</string>
     <!-- 选择器导入：动态照片按模式转换，单图/视频按名称配对合成 -->
     <string name="main_status_import_done_grouped">已导入 %1$d 项（其中合并动态照片 %2$d 项）%3$s</string>
     <string name="main_status_import_unpaired">；%1$d 个单图/视频未配到同名的另一半，已跳过</string>

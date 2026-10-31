@@ -738,6 +738,16 @@ class MainActivity : ComponentActivity() {
         // 清退旧版本下载的外置转码器（自 v3.4.4 起 ffmpeg 随包内置，外置副本已无法执行）
         purgeLegacyExternalFfmpeg()
 
+        // 输出格式先于列表恢复读取：恢复时要用它把「与全局相同」的单项设置归一成
+        // 跟随全局（见 readListState），并由它生成列表副标题——顺序颠倒会把副标题
+        // 误算成默认格式。
+        val prefs = getSharedPreferences("zlivephoto", MODE_PRIVATE)
+        // 迁移：旧版 vivo + vivo_mode=single → 新版顶级选项 vivo_single
+        selectedFormat = prefs.getString("target", "google") ?: "google"
+        if (selectedFormat == "vivo" && prefs.getString("vivo_mode", "single") == "single") {
+            selectedFormat = "vivo_single"
+        }
+
         // 恢复上次会话的列表（本地 JSON）；异常退出则清空并提示
         when (val s = readListState()) {
             is ListState.Loaded -> {
@@ -756,12 +766,6 @@ class MainActivity : ComponentActivity() {
         mediaRepo = MediaRepo(contentResolver)
         scanner = AlbumScanner(mediaRepo)
 
-        val prefs = getSharedPreferences("zlivephoto", MODE_PRIVATE)
-        // 迁移：旧版 vivo + vivo_mode=single → 新版顶级选项 vivo_single
-        selectedFormat = prefs.getString("target", "google") ?: "google"
-        if (selectedFormat == "vivo" && prefs.getString("vivo_mode", "single") == "single") {
-            selectedFormat = "vivo_single"
-        }
         deleteOriginal = prefs.getBoolean("delete_original", false)
         replaceMode = AppSettings.replaceMode
         // 冷启动即校验：权限已被撤销（或从未授予）时强制关闭开关并落盘
@@ -1023,7 +1027,7 @@ class MainActivity : ComponentActivity() {
                             outputMode = outputMode,
                             outputModeUsable = outputModeUsable,
                             onSelectOutputMode = { mode -> selectOutputMode(mode) },
-                            // 长按列表项：单独设置该项输出格式
+                            // 长按列表项：单独设置该项输出格式（null=恢复跟随全局）
                             onSelectItemFormat = { path, key -> setItemFormat(path, key) },
                             onRemoveFile = { path -> removeFile(path) }
                         )
@@ -1437,9 +1441,12 @@ class MainActivity : ComponentActivity() {
     private fun importPickedItems(items: List<MediaItem>) {
         if (items.isEmpty()) return
         val plan = PairGrouping.plan(items)
-        // 本次导入的输出格式：选择器右上角控件决定（含「拆解」）
+        // 本次导入的输出格式 = 当前全局格式。普通项不再把格式钉死在导入时的值
+        // （targetFormat 留空 → 跟随全局），这样之后切换全局格式时队列会一起变，
+        // 格式面板的勾选也始终等于真实生效格式。
+        // 合成任务例外：全局为「拆解」时无法拆解，只能钉死成 Google。
         val importFormat = selectedFormat
-        val composeFormat = if (importFormat == "extract") "google" else importFormat
+        val composeFormat = if (importFormat == "extract") "google" else null
 
         // 合成任务需在 Main 线程追加（SnapshotStateList）
         plan.pairs.forEach { (photo, video) -> addComposeTask(photo, video, composeFormat) }
@@ -1461,7 +1468,7 @@ class MainActivity : ComponentActivity() {
                     importFromPath(
                         path = item.path, sourceUri = item.uri.toString(),
                         sourceTime = item.dateModified * 1000L, sourceTaken = item.dateTaken,
-                        targetFormat = importFormat
+                        targetFormat = null
                     )
                     imported++
                 } catch (e: Exception) {
@@ -1502,7 +1509,7 @@ class MainActivity : ComponentActivity() {
      * 去重按绝对路径判断（跨相册同名照片可同时合成）；
      * 输出时间戳取照片的修改时间/拍摄时间（照片与配对视频天然同源）。
      */
-    private fun addComposeTask(photo: MediaItem, video: MediaItem, targetFormat: String) {
+    private fun addComposeTask(photo: MediaItem, video: MediaItem, targetFormat: String?) {
         if (files.any { it.path == photo.path }) return
         val item = FileItem(
             path = photo.path,
@@ -1760,7 +1767,11 @@ class MainActivity : ComponentActivity() {
                     sourceTime = o.optLong("sourceTime", 0L),
                     sourceTaken = o.optLong("sourceTaken", 0L),
                     formatKey = o.optString("formatKey").ifEmpty { null },
-                    targetFormat = o.optString("targetFormat").ifEmpty { null },
+                    // 单项格式归一：与当前全局格式相同的「单独设置」等价于跟随全局，
+                    // 一律清空成 null——否则之后切换全局格式时这些项会一直停在旧值，
+                    // 面板勾选也就跟真实生效格式对不上（用户反馈的核心问题）。
+                    targetFormat = o.optString("targetFormat").ifEmpty { null }
+                        ?.takeIf { it != selectedFormat },
                     composeVideoPath = o.optString("composeVideo").ifEmpty { null }
                 ))
             }

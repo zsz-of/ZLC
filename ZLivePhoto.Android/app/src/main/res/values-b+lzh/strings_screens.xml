@@ -99,6 +99,7 @@
     <!-- 长按列表项：单项输出格式 -->
     <string name="screen_item_format_title">輸出之格</string>
     <string name="screen_item_format_hint">長按列中一項，可獨定其格</string>
+    <string name="screen_format_follow_global">從全域（%1$s）</string>
     <!-- 选择器媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片） -->
     <string name="screen_filter_all">凡</string>
     <string name="screen_filter_live">動照</string>

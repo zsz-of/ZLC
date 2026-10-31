@@ -56,6 +56,7 @@
     <!-- 长按列表项：单项输出格式 -->
     <string name="screen_item_format_title">输出格式</string>
     <string name="screen_item_format_hint">长按列表项可单独设置格式</string>
+    <string name="screen_format_follow_global">跟随全局（%1$s）</string>
 
     <!-- 空状态 / 底部控制面板 -->
     <string name="screen_empty_no_files">还没有添加文件</string>

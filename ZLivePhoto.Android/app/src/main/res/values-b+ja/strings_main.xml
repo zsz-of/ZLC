@@ -153,6 +153,7 @@
     <string name="main_status_source_missing">ソースファイルが存在しないか、読み取れません</string>
     <!-- 状态栏：单项格式 / 导入结果分组 -->
     <string name="main_status_item_format_set">「%1$s」の出力形式を個別に設定しました</string>
+    <string name="main_status_item_format_reset">「%1$s」はグローバル形式に従うよう変更しました</string>
     <string name="main_status_import_done_grouped">%1$d 件をインポートしました（うちライブフォト合成 %2$d 件）%3$s</string>
     <string name="main_status_import_unpaired">；%1$d 件の単独写真・動画は同名のペアが見つからずスキップしました</string>
 </resources>

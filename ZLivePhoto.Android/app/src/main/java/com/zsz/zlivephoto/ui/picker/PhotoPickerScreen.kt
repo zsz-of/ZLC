@@ -134,6 +134,8 @@ import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -170,8 +172,10 @@ import com.zsz.zlivephoto.ui.glass.TopBarFrost
 import com.zsz.zlivephoto.ui.glass.animatedThemeColor
 import com.zsz.zlivephoto.ui.glass.liquidDraggable
 import com.zsz.zlivephoto.ui.glass.liquidGlass
+import com.zsz.zlivephoto.ui.glass.liquidMorphClip
 import com.zsz.zlivephoto.ui.glass.rememberGlassButtonPhysics
 import com.zsz.zlivephoto.ui.glass.rememberLiquidDragState
+import com.zsz.zlivephoto.ui.glass.rememberLiquidMorphProgress
 import com.kyant.backdrop.backdrops.layerBackdrop
 import com.kyant.backdrop.backdrops.rememberLayerBackdrop
 import com.kyant.backdrop.shadow.Shadow
@@ -479,6 +483,11 @@ fun PhotoPickerScreen(
     var morePage by remember { mutableStateOf(0) }
     // 搜索：点按钮后原地横向展开为玻璃搜索框
     var searchOpen by remember { mutableStateOf(false) }
+    // 搜索展开形变：一条欠阻尼弹簧驱动「搜索钮触发圆 → 整行搜索框」的裁剪形变、
+    // 玻璃模糊与内容入场（复刻 liquid_glass_widgets 菜单的 morph）
+    val searchMorph = rememberLiquidMorphProgress(searchOpen)
+    // 触发圆锚点：搜索钮的根坐标矩形（竖屏/横屏各自测量，同一时刻只有一个）
+    var searchAnchor by remember { mutableStateOf(Rect.Zero) }
 
     // 进入/离开相册：进入 diff+续扫，离开取消（保留进度）
     DisposableEffect(bucketId) {
@@ -870,6 +879,7 @@ fun PhotoPickerScreen(
                             query = searchQuery,
                             onQuery = { searchQuery = it },
                             onClose = { searchOpen = false; searchQuery = "" },
+                            anchor = { searchAnchor },
                             modifier = Modifier.align(Alignment.TopCenter)
                         )
                     }
@@ -902,9 +912,12 @@ fun PhotoPickerScreen(
                             .padding(top = 2.dp, end = 12.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                            // 搜索（左）：点击后整组淡出，搜索框覆盖整个顶部
+                            // 搜索（左）：点击后整组淡出，搜索框从本钮的触发圆长成整行
                             GlassIconButton(
                                 onClick = { haptic.click(); searchOpen = true },
+                                modifier = Modifier.onGloballyPositioned {
+                                    searchAnchor = it.boundsInRoot()
+                                },
                                 contentDescription = stringResource(R.string.screen_search),
                                 // 浮在照片上：图标按背景亮度自动切黑白（与竖屏一致）
                                 adaptiveContent = true
@@ -1040,72 +1053,98 @@ fun PhotoPickerScreen(
                             }
                             .statusBarsPadding()
                     ) {
-                // 标题行：收起态 = 返回 + 标题 + 搜索 + 更多；展开态整行让位给搜索框，
-                // 其余组件被推出屏幕外、收起时再拉回（用户需求：只保留上方这一个搜索）。
-                AnimatedContent(
-                    targetState = searchOpen,
-                    transitionSpec = {
-                        // 弹簧（而非 tween）：搜索展开/收起是位移+形变，需要过冲回弹的物理手感
-                        val spec = spring<androidx.compose.ui.unit.IntOffset>(
-                            dampingRatio = 0.78f,
-                            stiffness = 520f
-                        )
-                        if (targetState) {
-                            (slideInHorizontally(spec) { it } + fadeIn(tween(140)))
-                                .togetherWith(slideOutHorizontally(spec) { -it / 2 } + fadeOut(tween(100)))
-                        } else {
-                            (slideInHorizontally(spec) { -it / 2 } + fadeIn(tween(140)))
-                                .togetherWith(slideOutHorizontally(spec) { it } + fadeOut(tween(100)))
-                        }
-                    },
-                    label = "titleSearch"
-                ) { searching ->
-                    if (searching) {
-                        SearchInputRow(
-                            query = searchQuery,
-                            onQuery = { searchQuery = it },
-                            onClose = { searchOpen = false; searchQuery = "" }
-                        )
-                    } else {
-                        Row(
-                            Modifier.fillMaxWidth().padding(start = 12.dp, end = 12.dp, top = 2.dp, bottom = 2.dp),
-                            verticalAlignment = Alignment.CenterVertically
+                // 标题行：收起态 = 返回 + 标题 + 搜索 + 更多；展开态由**同一条形变进度**
+                // 驱动的搜索框接管——复刻 liquid_glass_widgets 菜单的 morph：
+                // 从搜索钮的触发圆（40dp）长成整行、圆角 easeInExpo、玻璃模糊 0→基准、
+                // 内容在形变 25%..70% 淡入并 0.7→1 放大；收起沿同一路径弹回触发圆。
+                Box(Modifier.fillMaxWidth()) {
+                    // 收起态标题行：随形变进度快速淡出（形变过半即不可见）
+                    Row(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(start = 12.dp, end = 12.dp, top = 2.dp, bottom = 2.dp)
+                            .graphicsLayer {
+                                alpha = (1f - searchMorph.value * 2f).coerceIn(0f, 1f)
+                            },
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        BackButton(onBack)
+                        Text(stringResource(R.string.screen_picker_title_select),
+                            style = MaterialTheme.typography.titleMedium,
+                            // 玻璃模式下跟随顶栏玻璃的自适应色（按照片亮度切黑白），
+                            // MD3 模式用主题 onSurface
+                            color = LocalContentColor.current,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier.weight(1f).padding(start = 8.dp))
+                        // 搜索（玻璃圆钮）：点击后从本钮长成整行搜索框；
+                        // 同时回填根坐标作为形变的触发圆锚点
+                        GlassIconButton(
+                            onClick = { haptic.click(); searchOpen = true },
+                            modifier = Modifier.onGloballyPositioned {
+                                searchAnchor = it.boundsInRoot()
+                            },
+                            contentDescription = stringResource(R.string.screen_search),
+                            // 内容自适应着色：浮在照片上，图标按背景亮暗自动切黑/白
+                            adaptiveContent = true
                         ) {
-                            BackButton(onBack)
-                            Text(stringResource(R.string.screen_picker_title_select),
-                                style = MaterialTheme.typography.titleMedium,
-                                // 玻璃模式下跟随顶栏玻璃的自适应色（按照片亮度切黑白），
-                                // MD3 模式用主题 onSurface
-                                color = LocalContentColor.current,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                                modifier = Modifier.weight(1f).padding(start = 8.dp))
-                            // 搜索（玻璃圆钮，点击整行让位展开为搜索框）
-                            GlassIconButton(
-                                onClick = { haptic.click(); searchOpen = true },
-                                contentDescription = stringResource(R.string.screen_search),
-                                // 内容自适应着色：浮在照片上，图标按背景亮暗自动切黑/白
-                                adaptiveContent = true
-                            ) {
-                                Icon(
-                                    Icons.Default.Search,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(20.dp)
+                            Icon(
+                                Icons.Default.Search,
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                        Spacer(Modifier.width(6.dp))
+                        // 右上角「更多」：输出格式 / 排序字段 / 排序顺序 / 显示类别（二级菜单）
+                        GlassIconButton(
+                            onClick = { haptic.click(); morePage = 0; moreMenuOpen = true },
+                            contentDescription = stringResource(R.string.screen_more),
+                            adaptiveContent = true
+                        ) {
+                            Icon(
+                                Icons.Default.MoreVert,
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    }
+                    // 搜索展开期间截断标题行的按钮点击（搜索框本身在上层，不受影响）
+                    if (searchOpen) {
+                        Box(
+                            Modifier
+                                .matchParentSize()
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = null
+                                ) { }
+                        )
+                    }
+                    // 展开态：绘制期按形变进度裁剪（不触发重组）；关闭动画结束即退出组合
+                    if (searchOpen || searchMorph.isRunning) {
+                        Box(
+                            Modifier
+                                .matchParentSize()
+                                .liquidMorphClip(
+                                    progress = { searchMorph.value },
+                                    anchor = { searchAnchor },
+                                    cornerRadius = 20.dp
                                 )
-                            }
-                            Spacer(Modifier.width(6.dp))
-                            // 右上角「更多」：输出格式 / 排序字段 / 排序顺序 / 显示类别（二级菜单）
-                            GlassIconButton(
-                                onClick = { haptic.click(); morePage = 0; moreMenuOpen = true },
-                                contentDescription = stringResource(R.string.screen_more),
-                                adaptiveContent = true
-                            ) {
-                                Icon(
-                                    Icons.Default.MoreVert,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(20.dp)
-                                )
-                            }
+                                .graphicsLayer {
+                                    val p = searchMorph.value
+                                    alpha = ((p - 0.25f) / 0.45f).coerceIn(0f, 1f)
+                                    val t = ((p - 0.25f) / 0.75f).coerceIn(0f, 1f)
+                                    val s = 0.7f + 0.3f * t
+                                    scaleX = s
+                                    scaleY = s
+                                    transformOrigin = TransformOrigin(1f, 0.5f)
+                                }
+                        ) {
+                            SearchInputRow(
+                                query = searchQuery,
+                                onQuery = { searchQuery = it },
+                                onClose = { searchOpen = false; searchQuery = "" },
+                                morph = { searchMorph.value }
+                            )
                         }
                     }
                 }
@@ -1551,6 +1590,9 @@ private fun AlbumGridPage(
 /**
  * 横屏顶部搜索浮层：横屏没有常驻顶栏，搜索按钮展开后覆盖在网格顶部，
  * 背后叠同款纯色渐变（自顶端向中间减淡，深浅色分别用黑/白）。
+ *
+ * 展开/收起与竖屏搜索框共用同一套 morph（复刻 liquid_glass_widgets 菜单）：
+ * 从搜索钮的触发圆长成整行、玻璃模糊 0→基准、内容随形变淡入；收起沿原路径弹回。
  */
 @Composable
 private fun LandscapeSearchOverlay(
@@ -1558,38 +1600,57 @@ private fun LandscapeSearchOverlay(
     query: String,
     onQuery: (String) -> Unit,
     onClose: () -> Unit,
+    anchor: () -> Rect,
     modifier: Modifier = Modifier
 ) {
-    AnimatedVisibility(
-        visible = visible,
-        // 与竖屏标题行/搜索框一致的弹簧：展开收起的不是普通淡入淡出，而是有质量的滑入
-        enter = slideInVertically(spring(dampingRatio = 0.78f, stiffness = 520f)) { -it } +
-                fadeIn(tween(140)),
-        exit = slideOutVertically(spring(dampingRatio = 0.9f, stiffness = 640f)) { -it } +
-                fadeOut(tween(120)),
-        modifier = modifier
-    ) {
-        Box(Modifier.fillMaxWidth()) {
-            // 横屏搜索栏背后的渐罩：颜色/浓度跟随主题 500ms 渐变（与竖屏底部渐罩一致）
-            val scrim = animatedThemeColor(Color.Black, Color.White)
-            val scrimAlpha by animateFloatAsState(
-                targetValue = if (LocalDarkTheme.current) 0.72f else 0.85f,
-                animationSpec = tween(durationMillis = 500),
-                label = "landscapeSearchScrimAlpha"
-            )
-            Box(
-                Modifier
-                    .matchParentSize()
-                    .background(
-                        Brush.verticalGradient(
-                            listOf(
-                                scrim.copy(alpha = scrimAlpha),
-                                scrim.copy(alpha = 0f)
-                            )
+    val morph = rememberLiquidMorphProgress(visible)
+    // 收起动画播完才退出绘制（复用 remember 状态，下次展开从触发圆重新生长）
+    if (!visible && !morph.isRunning) return
+    Box(modifier.fillMaxWidth()) {
+        // 横屏搜索栏背后的渐罩：颜色/浓度跟随主题 500ms 渐变（与竖屏底部渐罩一致），
+        // 透明度随形变进度建立/退场
+        val scrim = animatedThemeColor(Color.Black, Color.White)
+        val scrimAlpha by animateFloatAsState(
+            targetValue = if (LocalDarkTheme.current) 0.72f else 0.85f,
+            animationSpec = tween(durationMillis = 500),
+            label = "landscapeSearchScrimAlpha"
+        )
+        Box(
+            Modifier
+                .matchParentSize()
+                .graphicsLayer { alpha = morph.value.coerceIn(0f, 1f) }
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            scrim.copy(alpha = scrimAlpha),
+                            scrim.copy(alpha = 0f)
                         )
                     )
+                )
+        )
+        Box(
+            Modifier
+                .liquidMorphClip(
+                    progress = { morph.value },
+                    anchor = anchor,
+                    cornerRadius = 20.dp
+                )
+                .graphicsLayer {
+                    val p = morph.value
+                    alpha = ((p - 0.25f) / 0.45f).coerceIn(0f, 1f)
+                    val t = ((p - 0.25f) / 0.75f).coerceIn(0f, 1f)
+                    val s = 0.7f + 0.3f * t
+                    scaleX = s
+                    scaleY = s
+                    transformOrigin = TransformOrigin(1f, 0.5f)
+                }
+        ) {
+            SearchInputRow(
+                query = query,
+                onQuery = onQuery,
+                onClose = onClose,
+                morph = { morph.value }
             )
-            SearchInputRow(query = query, onQuery = onQuery, onClose = onClose)
         }
     }
 }
@@ -1603,7 +1664,10 @@ private fun LandscapeSearchOverlay(
 private fun SearchInputRow(
     query: String,
     onQuery: (String) -> Unit,
-    onClose: () -> Unit
+    onClose: () -> Unit,
+    // 形变进度（0..1）：玻璃模糊随同一进度从 0 建立到基准值（复刻库菜单的 morph）；
+    // 不做形变的调用方保持默认 1（模糊恒定）
+    morph: () -> Float = { 1f }
 ) {
     val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
     val glass = LocalGlassEnabled.current
@@ -1635,7 +1699,9 @@ private fun SearchInputRow(
                         tintAlpha = tint,
                         tintColor = MaterialTheme.colorScheme.primary,
                         lensHeight = 8.dp,
-                        lensAmount = 16.dp
+                        lensAmount = 16.dp,
+                        // 模糊动画：形变期间玻璃模糊 0 → 基准值
+                        blurScale = morph
                     ) else Modifier.background(MaterialTheme.colorScheme.surfaceContainerHigh, pill)
                 )
                 .clip(pill),

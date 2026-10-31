@@ -149,6 +149,7 @@
     <string name="main_status_source_missing">The source file does not exist or cannot be read</string>
     <!-- 状态栏：单项格式 / 导入结果分组 -->
     <string name="main_status_item_format_set">Output format set for “%1$s” individually</string>
+    <string name="main_status_item_format_reset">“%1$s” now follows the global format</string>
     <string name="main_status_import_done_grouped">Imported %1$d items (%2$d live photos merged)%3$s</string>
     <string name="main_status_import_unpaired">; %1$d single photos/videos without a same-named partner were skipped</string>
 </resources>

@@ -153,6 +153,7 @@
     <string name="main_status_source_missing">원본 파일이 없거나 읽을 수 없습니다</string>
     <!-- 状态栏：单项格式 / 导入结果分组 -->
     <string name="main_status_item_format_set">“%1$s”의 출력 형식을 개별로 설정했습니다</string>
+    <string name="main_status_item_format_reset">“%1$s”이(가) 전역 형식을 따르도록 변경되었습니다</string>
     <string name="main_status_import_done_grouped">%1$d개 항목 가져옴(라이브 포토 합성 %2$d개 포함)%3$s</string>
     <string name="main_status_import_unpaired">；%1$d개의 단독 사진·동영상은 동일한 이름의 짝을 찾지 못해 건너뜨었습니다</string>
 </resources>

@@ -119,6 +119,7 @@
     <!-- 长按列表项：单项输出格式 -->
     <string name="screen_item_format_title">輸出格式</string>
     <string name="screen_item_format_hint">長按列表項目可單獨設定格式</string>
+    <string name="screen_format_follow_global">跟隨全域（%1$s）</string>
     <!-- 选择器媒体类型筛选（全部 / 仅动态照片 / 仅视频 / 仅图片） -->
     <string name="screen_filter_all">全部</string>
     <string name="screen_filter_live">動態照片</string>

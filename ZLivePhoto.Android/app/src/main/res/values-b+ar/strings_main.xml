@@ -190,6 +190,7 @@
     <string name="main_status_source_missing">الملف المصدر غير موجود أو غير قابل للقراءة</string>
     <!-- 状态栏：单项格式 / 导入结果分组 -->
     <string name="main_status_item_format_set">تم ضبط تنسيق الإخراج لـ «%1$s» بشكل منفصل</string>
+    <string name="main_status_item_format_reset">تم تغيير «%1$s» لمتابعة التنسيق العام</string>
     <string name="main_status_import_done_grouped">تم استيراد %1$d عنصرًا (منها %2$d صورة حية مدمجة)%3$s</string>
     <string name="main_status_import_unpaired">؛%1$d صورة/فيديو مفردة لم يُعثر لها على نظير بنفس الاسم، فتم تخطيها</string>
 </resources>

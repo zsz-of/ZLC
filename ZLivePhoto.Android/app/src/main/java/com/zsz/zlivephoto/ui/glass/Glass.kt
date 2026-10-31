@@ -12,6 +12,7 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
+import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -514,6 +515,9 @@ fun Modifier.liquidGlass(
     lensEnabled: Boolean = true,
     layerBlock: (GraphicsLayerScope.() -> Unit)? = null,
     blurOverride: (() -> Float?)? = null,
+    // 形变期模糊倍率（0..1）：搜索框/菜单从触发圆长出来时，
+    // 玻璃模糊随同一进度从 0 建立到基准值（复刻库的 morph 模糊动画）
+    blurScale: (() -> Float)? = null,
     // 模糊下限（px 计算前）：弹窗等可读性敏感组件传 12.dp 之类，
     // 保证「通透度=1」时磨砂不至于消失（用户反馈：弹窗高斯模糊不能为零）
     minBlur: Dp = 0.dp,
@@ -583,8 +587,11 @@ fun Modifier.liquidGlass(
         shape = { shape },
         effects = {
             // blurOverride（动画/菜单形变）与 minBlur（可读性下限）取大者；
-            // clamp 后半径稳定，效果链缓存不会被击穿
-            val b = maxOf(blurOverride?.invoke() ?: blurPx, minBlurPx)
+            // 未指定 blurOverride 时按 blurScale 缩放基准模糊（形变期 0 → 基准）
+            val b = maxOf(
+                blurOverride?.invoke() ?: (blurPx * (blurScale?.invoke() ?: 1f)),
+                minBlurPx
+            )
             effectCache.apply(
                 scope = this,
                 blurRadiusPx = b,
@@ -1123,22 +1130,93 @@ private val MenuItemCorner = 16.dp
 /** 菜单卡圆角（FlClash `_cardRadius = _itemRadius + _cardInset`） */
 private val MenuCardCorner = 24.dp
 
+/** 库 `Curves.easeOutCubic` 的 Compose 等价曲线（二级形变 / 内容入场共用） */
+private val LiquidMenuEaseOutCubic = CubicBezierEasing(0.215f, 0.61f, 0.355f, 1f)
+/** 库 `Curves.easeInExpo`：菜单圆角从「触发圆」到菜单圆角时先慢后快 */
+private val LiquidMenuEaseInExpo = CubicBezierEasing(0.7f, 0f, 0.84f, 0f)
+
+/**
+ * 形变进度（复刻库菜单的 morph 弹簧）：打开时从触发圆长到目标轮廓
+ * （欠阻尼、1.0 附近轻过冲），关闭时沿同一路径弹回（稍快、轻微回弹）。
+ * 尺寸 / 圆角 / 玻璃模糊 / 内容入场共用这一条进度。
+ */
+@Composable
+fun rememberLiquidMorphProgress(visible: Boolean): Animatable<Float, AnimationVector1D> {
+    val progress = remember { Animatable(if (visible) 1f else 0f) }
+    LaunchedEffect(visible) {
+        if (visible) {
+            progress.animateTo(1f, spring(dampingRatio = 0.72f, stiffness = 400f))
+        } else {
+            progress.animateTo(0f, spring(dampingRatio = 0.85f, stiffness = 500f))
+        }
+    }
+    return progress
+}
+
+/**
+ * 「触发圆 → 目标轮廓」形变裁剪（复刻库菜单的 morph）：
+ * 绘制期按 [progress] 插值尺寸与圆角（`easeInExpo`），起点是锚在 [anchor]
+ * （触发控件的根坐标矩形）上的 40dp 圆，终点是节点自身轮廓。
+ * 进度只在绘制阶段读取，动画期间不触发重组。
+ */
+fun Modifier.liquidMorphClip(
+    progress: () -> Float,
+    anchor: () -> Rect,
+    triggerSize: Dp = 40.dp,
+    cornerRadius: Dp = 20.dp
+): Modifier = composed {
+    val density = LocalDensity.current
+    val triggerPx = with(density) { triggerSize.toPx() }
+    val cornerPx = with(density) { cornerRadius.toPx() }
+    var origin by remember { mutableStateOf(Rect.Zero) }
+    this
+        .onGloballyPositioned { origin = it.boundsInRoot() }
+        .drawWithContent {
+            val p = progress().coerceIn(0f, 1f)
+            val w = lerp(triggerPx, size.width, p)
+            val h = lerp(triggerPx, size.height, p)
+            val r = lerp(triggerPx / 2f, cornerPx, LiquidMenuEaseInExpo.transform(p))
+            val a = anchor()
+            // 触发点相对本节点；锚点/自身尚未测量时回落到右上角（搜索钮所在侧）
+            val cx = if (origin.width > 0f && a.width > 0f) {
+                val minC = w / 2f
+                (a.center.x - origin.left).coerceIn(minC, (size.width - minC).coerceAtLeast(minC))
+            } else size.width - w / 2f
+            val cy = if (origin.height > 0f && a.height > 0f) {
+                val minC = h / 2f
+                (a.center.y - origin.top).coerceIn(minC, (size.height - minC).coerceAtLeast(minC))
+            } else size.height / 2f
+            val left = cx - w / 2f
+            val top = cy - h / 2f
+            val path = Path().apply {
+                addRoundRect(
+                    RoundRect(
+                        left = left,
+                        top = top,
+                        right = left + w,
+                        bottom = top + h,
+                        cornerRadius = CornerRadius(r, r)
+                    )
+                )
+            }
+            clipPath(path) { this@drawWithContent.drawContent() }
+        }
+}
+
 /**
  * 玻璃下拉菜单覆盖层（同一 Composition 树内的浮层，弹窗/菜单也必须这样写）。
  * 用法：把屏幕根节点包成 Box，然后在其内部调用本函数（先画的在下面）。
  *
- * **版式与动效照搬 FlClash `lib/ui/popup.dart` 的 `CommonPopupMenu`**：
- * - 整张菜单是**一层**玻璃卡（卡内缩 8dp、圆角 24dp），行是卡面上的普通条目
- *   （圆角 16dp、内边距 12dp，按压只给一层 highlight 底 + 轻微收缩），
- *   行本身不再是独立玻璃按钮；
- * - 玻璃取 `LiquidGlassStyle.menu`（12dp 模糊 + 深色 63% / 浅色 55% 亮面）；
- * - 入场：一条 stiffness 400 / damping 0.754 的弹簧（FlClash `_open`）；
- * - 二级子菜单：一张**独立卡片盖在一级之上**，从所点击的那一行的矩形长到
- *   整卡（圆角 16dp→24dp），卡片**比一级宽 12%** 并向左长出；卡顶把开启它的
- *   那一行**重画一遍**当 header，于是看起来是从这行里长出来的；行内容在
- *   展开 5%..40% 之间淡入（FlClash `_items`）。展开是 420ms/bounce 0.15 的
- *   弹簧，折回是 340ms 无回弹（FlClash `_foldSpring`）；同时一级卡片缩小到
- *   0.95（原点右上）并压暗 20%。
+ * **形变与动效复刻 `sdegenaar/liquid_glass_widgets` 的菜单**：
+ * - 菜单是**一层**玻璃卡（卡内缩 8dp、圆角 24dp），行是卡面上的普通条目；
+ * - 一条欠阻尼弹簧同时驱动尺寸 / 圆角 / 内容 / 模糊：打开时从触发圆
+ *   （40dp）长到菜单轮廓，关闭沿同一路径弹回触发圆；
+ * - 圆角 `radius = lerp(圆半径, 菜单圆角, easeInExpo(进度))`；
+ * - 行内容打开时在 25%..70% 淡入、scale 0.7→1（easeOutCubic），
+ *   关闭时在 100%→85% 迅速退场，之后只剩一颗干净的玻璃液滴弹回；
+ * - 玻璃模糊随形变 0 → 12dp 建立；
+ * - 二级子菜单：一张独立卡片从所点父行矩形长成整卡（`_kSubmenuMorphDuration`
+ *   320ms、`Curves.easeOutCubic`），一级整体后退到 0.971、被盖住的行压暗到 50%。
  */
 @Composable
 fun BoxScope.GlassMenuOverlay(
@@ -1161,13 +1239,10 @@ fun BoxScope.GlassMenuOverlay(
     submenuContent: @Composable ColumnScope.() -> Unit = {},
     content: @Composable ColumnScope.() -> Unit
 ) {
-    // 开合进度（FlClash `_open`：stiffness 400 / damping 0.754，mass 1，约 450ms 落定）
+    // 开合形变进度：一条欠阻尼弹簧同时驱动「尺寸/圆角形变 + 内容入场 + 模糊」，
+    // 与库 `GlassMorphController` 一致——打开从触发圆（40dp）长到菜单轮廓，
+    // 关闭沿同一路径弹回触发圆（回弹带轻微过冲），不再额外做 0.8 缩放淡出。
     val openProgress = remember { Animatable(0f) }
-    // 关闭进度（FlClash 无 sourceImage 分支 `_dismissScale` 0.8 + 淡出，200ms）。
-    // 与 openProgress 分开：打开时裁剪形变负责「从小长到大」、scale 恒 1；
-    // 关闭时整体缩到 0.8 + 淡出。两者共用一条 openProgress 会让打开时 scale
-    // 也从 0.8→1，与裁剪形变双重缩放，观感卡顿。
-    val dismissProgress = remember { Animatable(0f) }
     val haptic = rememberHapticFeedback()
     // 退场动画播完才退出组合：组合期读 progress.value 会让动画每一帧
     // 重组整棵菜单子树（并顺带重建子树内每个玻璃件的效果链）
@@ -1175,25 +1250,23 @@ fun BoxScope.GlassMenuOverlay(
     LaunchedEffect(visible) {
         if (visible) {
             contentActive = true
-            dismissProgress.snapTo(0f)
-            openProgress.snapTo(0f)
             openProgress.animateTo(
                 1f,
-                spring(dampingRatio = 0.754f, stiffness = 400f)
+                // 库：`GlassMorphController.open()` 从静止起步，欠阻尼展开，
+                // 1.0 附近带一点过冲（J 曲线），与 iOS 菜单手感一致
+                spring(dampingRatio = 0.72f, stiffness = 400f)
             )
         } else {
-            // FlClash 关闭（无 sourceImage 分支）：easeOut 缩到 0.8 + 淡出
-            // （`_shrinkDuration` 200ms / `_dismissScale` 0.8，见 popup.dart `_RenderPopupMorph.paint`）
-            dismissProgress.animateTo(
-                1f,
-                tween(durationMillis = 200, easing = FastOutSlowInEasing)
+            // 库：close 沿原路径弹回触发圆，欠阻尼在 0 附近轻微反弹后才隐藏
+            openProgress.animateTo(
+                0f,
+                spring(dampingRatio = 0.85f, stiffness = 500f)
             )
             contentActive = false
         }
     }
-    // 子菜单开合（FlClash `_unfoldSpring` 420ms/bounce 0.15、`_foldSpring` 340ms 无回弹）。
-    // Flutter `withDurationAndBounce(420ms, 0.15)` 解出的欠阻尼弹簧约 damping 0.55；
-    // 折回无 bounce → 临界阻尼（damping 1.0）。均用刚度 400 保持与一级一致的手感。
+    // 二级菜单形变（库 `_kSubmenuMorphDuration = 320ms` + `Curves.easeOutCubic`）：
+    // 一级整体后退（scale 0.971、行压暗到 50%），二级卡从所点父行矩形长成整卡。
     val subProgress = remember { Animatable(0f) }
     var submenuActive by remember { mutableStateOf(submenuVisible) }
     LaunchedEffect(submenuVisible) {
@@ -1203,14 +1276,14 @@ fun BoxScope.GlassMenuOverlay(
             haptic.click()
             subProgress.animateTo(
                 1f,
-                spring(dampingRatio = 0.55f, stiffness = 400f)
+                tween(durationMillis = 320, easing = LiquidMenuEaseOutCubic)
             )
         } else {
             // 仅当之前确实展开过才给折回反馈（首次组合 submenuVisible=false 不触发）
             if (submenuActive) haptic.click()
             subProgress.animateTo(
                 0f,
-                spring(dampingRatio = 1f, stiffness = 400f)
+                tween(durationMillis = 320, easing = LiquidMenuEaseOutCubic)
             )
             submenuActive = false
         }
@@ -1229,7 +1302,6 @@ fun BoxScope.GlassMenuOverlay(
     val menuBlurPx = with(density) { 12.dp.toPx() }
     // FlClash `menuShadows`：一道 29dp 模糊的软影，深色加强一档
     val menuShadow = Shadow(radius = 29.dp, alpha = if (menuDark) 0.18f else 0.12f)
-    val dimColor = MaterialTheme.colorScheme.surface
     // 菜单是玻璃件：文字按折射到的背景亮度自动切黑/白
     val menuAdaptive = rememberAdaptiveContentColor(
         initialColor = if (menuDark) Color.White else Color.Black,
@@ -1279,11 +1351,16 @@ fun BoxScope.GlassMenuOverlay(
                 // 形变裁剪：起点 40dp 圆锚在触发按钮所在角，终点菜单外轮廓；
                 // 绘制期每帧重建 Path，绕开 clip 节点的 outline 缓存
                 .drawWithContent {
-                    val p = openProgress.value
+                    val p = openProgress.value.coerceIn(0f, 1f)
                     val startSize = 40.dp.toPx()
                     val w = lerp(startSize, size.width, p)
                     val h = lerp(startSize, size.height, p)
-                    val r = lerp(startSize / 2f, cornerRadius.toPx(), p)
+                    // 库：radius = lerp(maxRadius, menuRadius, easeInExpo(sizeT))
+                    val r = lerp(
+                        startSize / 2f,
+                        cornerRadius.toPx(),
+                        LiquidMenuEaseInExpo.transform(p)
+                    )
                     val left = if (alignEnd) size.width - w else 0f
                     val top = if (alignBottom) size.height - h else 0f
                     val path = Path().apply {
@@ -1300,16 +1377,10 @@ fun BoxScope.GlassMenuOverlay(
                     clipPath(path) { this@drawWithContent.drawContent() }
                 }
                 .graphicsLayer {
-                    // 打开/落定时不透明；关闭时淡出（FlClash `_dismissScale` 淡出）
-                    alpha = 1f - dismissProgress.value
-                    // FlClash 关闭：菜单整体缩到 0.8（`_dismissScale`）并向锚点角收缩；
-                    // 打开时由 clip 形变负责「从小长到大」，scale 保持 1（dismissProgress=0）。
-                    val closeShrink = 1f - 0.2f * dismissProgress.value
-                    // FlClash：子菜单开启时一级卡片再缩小 5%，原点在**右上角**
-                    // （子卡右缘与父卡右缘对齐，父卡因此向左上收）
+                    // 库 `_kRecedeScale = 0.971`：二级展开时一级整体后退到 97.1%，
+                    // 原点在右上角（子卡右缘与父卡右缘对齐，父卡向左上收）
                     val dim = subProgress.value
-                    val subShrink = 1f - 0.05f * dim
-                    val s = closeShrink * subShrink
+                    val s = 1f - 0.029f * dim
                     scaleX = s
                     scaleY = s
                     transformOrigin = TransformOrigin(1f, 0f)
@@ -1325,18 +1396,16 @@ fun BoxScope.GlassMenuOverlay(
                         // FlClash `menuShadows`：一道 29dp 模糊、下移 8dp 的软影
                         shadow = menuShadow,
                         vibrancy = Build.VERSION.SDK_INT < 33,
-                        blurOverride = { menuBlurPx },
+                        // 模糊动画：库的菜单模糊由同一条 morph 进度直接驱动（0 → 12dp），
+                        // 弹簧本身就带 S 形速度曲线，不再叠加额外缓动
+                        blurOverride = {
+                            menuBlurPx * openProgress.value.coerceIn(0f, 1f)
+                        },
                         onDrawBackdrop = menuAdaptive.recordBackdrop
                     )
                     else Modifier.background(MaterialTheme.colorScheme.surfaceContainerHigh, menuShape)
                 )
                 .clip(menuShape)
-                // 子菜单开启时压暗一级卡片（FlClash：surface 20% × 层级）
-                .drawWithContent {
-                    drawContent()
-                    val dim = subProgress.value
-                    if (dim > 0f) drawRect(dimColor.copy(alpha = 0.20f * dim))
-                }
                 // 子菜单展开期间，一级卡片上的点击 = 折回一级
                 .then(
                     if (submenuVisible) Modifier.clickable(
@@ -1352,15 +1421,34 @@ fun BoxScope.GlassMenuOverlay(
             CompositionLocalProvider(LocalContentColor provides menuAdaptive.color) {
                 Column(
                     Modifier.graphicsLayer {
-                        // 行比轮廓再晚一拍出现（FlClash 的内容渐显）
-                        alpha = ((openProgress.value - 0.3f) / 0.7f).coerceIn(0f, 1f)
-                        // FlClash `_openContentBlur`：打开时内容 4px 模糊 → 落定清晰；
-                        // 关闭走 dismissProgress 整体淡出（不再反向重模糊）。
+                        val p = openProgress.value
+                        // 库：打开时内容在 25% 后淡入（(p-0.25)/0.45）；
+                        // 关闭时内容在 100%→85% 段迅速退场（(p-0.85)/0.15），
+                        // 之后只剩一颗干净的玻璃液滴弹回触发圆
+                        val closing = openProgress.targetValue < 0.5f
+                        val enter = if (closing) {
+                            ((p - 0.85f) / 0.15f).coerceIn(0f, 1f)
+                        } else {
+                            ((p - 0.25f) / 0.45f).coerceIn(0f, 1f)
+                        }
+                        // 库 `_kDimmedOpacity = 0.5`：被二级卡片盖住的一级行压暗到 50%
+                        alpha = enter * (1f - 0.5f * subProgress.value)
+                        // 库 itemScale：0.7 → 1.0，easeOut 随形变放大，锚点角为原点
+                        val s = lerp(
+                            0.7f,
+                            1f,
+                            LiquidMenuEaseOutCubic
+                                .transform(((p - 0.25f) / 0.75f).coerceIn(0f, 1f))
+                        )
+                        scaleX = s
+                        scaleY = s
+                        transformOrigin = if (alignEnd) TransformOrigin(1f, 0f) else TransformOrigin(0f, 0f)
+                        // FlClash `_openContentBlur`：打开时内容 4px 模糊 → 落定清晰。
                         // 绘制期读 value + 小半径每帧 createBlurEffect：不触发重组，
                         // 4px 半径开销可忽略（区别于 16dp 大半径的掉帧问题）。
                         // 0.5px 量化：动画期只有少数几档半径变化，避免每帧新建
                         // 原生 RenderEffect（每帧分配原生对象是形变期掉帧来源之一）
-                        val blurRadius = (contentBlurPx * (1f - openProgress.value).coerceIn(0f, 1f) * 2f)
+                        val blurRadius = (contentBlurPx * (1f - p).coerceIn(0f, 1f) * 2f)
                             .roundToInt() / 2f
                         renderEffect = if (blurRadius > 0.5f && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                             android.graphics.RenderEffect.createBlurEffect(
@@ -1390,12 +1478,13 @@ fun BoxScope.GlassMenuOverlay(
 }
 
 /**
- * 二级子菜单卡片（照搬 FlClash `CommonPopupMenu` 的层级卡片）：
+ * 二级子菜单卡片（复刻库的层级子菜单）：
  * 一张独立玻璃卡**盖在一级之上**，从所点击那一行的矩形长到整卡——
  * 卡顶 = 该行顶边 - 卡内缩（8dp），卡宽 = 一级卡宽 × 1.12（右缘对齐、向左长出），
- * 形变矩形与圆角（16dp→24dp）在绘制期按弹簧进度插值。
- * 卡片顶部把开启它的那一行**重画一遍**当 header（FlClash 的做法），
- * 点 header 或卡片外区域即折回一级（反向弹簧）。
+ * 形变矩形与圆角（16dp→24dp）在绘制期按 320ms easeOutCubic 进度插值，
+ * 玻璃模糊随形变 0→12dp 建立，行内容随后淡入。
+ * 卡片顶部把开启它的那一行**重画一遍**当 header，
+ * 点 header 或卡片外区域即折回一级（反向同曲线）。
  */
 @Composable
 private fun BoxScope.GlassSubmenuOverlay(
@@ -1493,7 +1582,9 @@ private fun BoxScope.GlassSubmenuOverlay(
                     lensAmount = 20.dp,
                     shadow = panelShadow,
                     vibrancy = Build.VERSION.SDK_INT < 33,
-                    blurOverride = { blurPx }
+                    // 模糊动画：二级卡同样由 morph 进度直接驱动（0 → 12dp），
+                    // 与一级菜单/搜索框形变保持同一套节奏
+                    blurOverride = { blurPx * progress.value.coerceIn(0f, 1f) }
                 )
                 else Modifier.background(MaterialTheme.colorScheme.surfaceContainerHigh, subShape)
             )
@@ -1506,10 +1597,10 @@ private fun BoxScope.GlassSubmenuOverlay(
                     GlassMenuHeaderRow(label = title, value = value, onClick = onDismiss)
                     GlassMenuDivider()
                 }
-                // 行内容在展开 5%..40% 之间淡入（FlClash `_items`）
+                // 行内容随形变淡入（库：形变过半前内容压住，过半后快速显现）
                 Column(
                     Modifier.graphicsLayer {
-                        alpha = ((progress.value - 0.05f) / 0.35f).coerceIn(0f, 1f)
+                        alpha = ((progress.value - 0.1f) / 0.5f).coerceIn(0f, 1f)
                     },
                     content = content
                 )
@@ -2067,7 +2158,9 @@ fun BoxScope.GlassBottomSheet(
                 indication = null
             ) { onDismiss() }
     )
-    Box {
+    // 外层必须铺满：Column 靠 align(BottomCenter) 贴住窗口底部，
+    // Box 若按内容包裹尺寸，对齐就失效、面板会跑到屏幕顶部（用户反馈）。
+    Box(Modifier.fillMaxSize()) {
     Column(
         Modifier
             .align(Alignment.BottomCenter)
@@ -2096,7 +2189,14 @@ fun BoxScope.GlassBottomSheet(
                 .clip(CircleShape)
                 .background(Color.White.copy(alpha = 0.55f))
         )
-        content()
+        // 面板在 Scaffold 之外绘制（覆盖层作用域），不继承页面的 LocalContentColor
+        // （默认是黑色）。深色玻璃上黑字几乎不可见——这里显式给出面板前景色，
+        // 让标题 / 选项文字在深浅色模式下都清晰（用户反馈：输出格式面板「非常抽象」）。
+        CompositionLocalProvider(
+            LocalContentColor provides MaterialTheme.colorScheme.onSurface
+        ) {
+            content()
+        }
     }
     }
 }

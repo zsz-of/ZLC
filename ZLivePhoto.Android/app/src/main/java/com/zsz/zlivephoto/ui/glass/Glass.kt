@@ -1538,30 +1538,54 @@ private fun BoxScope.GlassSubmenuOverlay(
     val frameCardWidth = if (cardWidthPx > 0f) cardWidthPx else lastFrame.width
     val frameTitle = title ?: lastTitle
     val frameValue = value ?: lastValue
-    val subWidthPx = (frameCardWidth * 1.12f).coerceAtLeast(frameCardWidth)
+    // 屏幕安全边距（px）：子卡四边都不得越出容器
+    val marginPx = with(density) { 4.dp.toPx() }
+    val containerW = if (containerOrigin.width > 0f) containerOrigin.width else frameCardWidth
+    // 一级卡节点可能带外层 padding（标题栏内缩 12dp），节点右缘≠可见卡右缘；
+    // 子卡宽度同时按容器宽度钳制，窄屏/横屏下也不会伸出屏幕
+    val subWidthPx = (frameCardWidth * 1.12f)
+        .coerceAtLeast(frameCardWidth)
+        .coerceAtMost((containerW - marginPx * 2).coerceAtLeast(1f))
     val hasFrame = frameAnchor != null && frameCardOrigin != Rect.Zero && frameCardWidth > 0f
     // 卡片顶部（相对整屏容器）：父行顶边 - 卡内缩 → 卡内 header 行正好压住父行
     val topPx = if (hasFrame) {
-        (frameAnchor!!.top - containerOrigin.top - insetPx).coerceAtLeast(0f)
-    } else 0f
-    // 右缘对齐父卡：容器右缘 → 父卡右缘 的差
+        (frameAnchor!!.top - containerOrigin.top - insetPx).coerceAtLeast(marginPx)
+    } else marginPx
+    // 右缘对齐父卡**可见右缘** = 父行右缘 + 卡内缩（不能直接用一级卡节点右缘：
+    // 节点含调用方外层 padding，会让子卡整体偏到屏幕边缘甚至屏外）。
+    // 再钳制在容器内：右缘不越过容器右缘，左缘不越过容器左缘 + 安全边距。
     val rightPx = if (hasFrame && containerOrigin != Rect.Zero) {
-        (frameCardOrigin.right - containerOrigin.right).toFloat()
+        val desired = (frameAnchor!!.right + insetPx) - containerOrigin.right
+        desired.coerceIn(subWidthPx + marginPx - containerW, -marginPx)
     } else 0f
+    // 高度上限 = 屏幕剩余空间（下限 120dp、上限 400dp），超出部分在卡内滚动，
+    // 横屏/矮屏下子卡不会长到屏幕外面
+    val maxCardHeightPx = if (containerOrigin.height > 0f) {
+        (containerOrigin.height - topPx - marginPx * 3f)
+            .coerceIn(with(density) { 120.dp.toPx() }, with(density) { 400.dp.toPx() })
+    } else with(density) { 400.dp.toPx() }
     // 形变起点（子卡局部坐标）= 父行矩形。子卡右缘与父卡右缘对齐、
     // 比父卡宽 12%，且父卡有 8dp 内缩，所以父行左缘在子卡局部坐标里
     // 要减去“父卡右缘 → 子卡右缘”的差再减内缩：
     //   x_local = x_root - (cardOrigin.right - subWidthPx)
     val startTop = insetPx
     val startBottom = insetPx + (frameAnchor?.height ?: 0f)
-    val startLeft = (subWidthPx - frameCardWidth + insetPx).coerceAtLeast(0f)
-    val startRight = (subWidthPx - insetPx).coerceAtLeast(startLeft + 1f)
+    // 形变起点按**实际定位后的坐标**反推父行矩形（rightPx 被钳制时也精确重合）
+    val startReady = hasFrame && containerOrigin.width > 0f
+    val startLeft = if (startReady) {
+        (frameAnchor!!.left - containerOrigin.right - rightPx + subWidthPx)
+            .coerceIn(0f, subWidthPx - 1f)
+    } else insetPx
+    val startRight = if (startReady) {
+        (frameAnchor!!.right - containerOrigin.right - rightPx + subWidthPx)
+            .coerceIn(startLeft + 1f, subWidthPx)
+    } else (subWidthPx - insetPx).coerceAtLeast(startLeft + 1f)
     Box(
         Modifier
             .align(Alignment.TopEnd)
             .offset { IntOffset(rightPx.roundToInt(), topPx.roundToInt()) }
             .width(with(density) { subWidthPx.toDp() })
-            .heightIn(max = 400.dp)
+            .heightIn(max = with(density) { maxCardHeightPx.toDp() })
             // 形变：父行矩形 → 整卡（圆角 16dp → 24dp），绘制期插值
             .drawWithContent {
                 val t = progress.value.coerceIn(0f, 1.08f)

@@ -48,7 +48,7 @@
     <string name="screen_copy">Copy</string>
     <string name="screen_close">Close</string>
     <string name="screen_back">Back</string>
-    <string name="screen_picker_title_select">Select Live Photos</string>
+    <string name="screen_picker_title_select">Select</string>
     <string name="screen_album_count">Album %1$d</string>
     <string name="screen_album_collapse_cover">Collapse album cover</string>
     <string name="screen_album_expand_cover">Expand album cover</string>
@@ -64,7 +64,7 @@
     <string name="screen_import">Import</string>
     <string name="screen_import_count">Import %1$d</string>
     <string name="screen_import_mixed">Import %1$d photo · %2$d video</string>
-    <string name="screen_count_live">Live</string>
+    <string name="screen_count_live">Live Photo</string>
     <string name="screen_count_image">Photo</string>
     <string name="screen_count_video">Video</string>
     <string name="screen_extract_no_live">Live photos can\'t be selected in Extract mode</string>

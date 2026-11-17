@@ -48,6 +48,26 @@ enum class ImportMode(
         VIDEO -> item.kind == MediaKind.VIDEO
         LIVE, EXTRACT -> item.kind == MediaKind.LIVE
     }
+
+    /**
+     * 该导入方式下允许的输出格式（`formatOptions.key`）。
+     * - 拆分动态照片：固定「拆解」（exact 反向拆出图片 + 视频）
+     * - 合并 / 转换视频 / 转换动态照片：只能选转换类格式，「拆解」无意义（源还没有动态照片）
+     */
+    fun allowsFormat(key: String): Boolean = when (this) {
+        EXTRACT -> key == "extract"
+        else -> key != "extract"
+    }
+
+    /**
+     * 该导入方式下「显示类别」筛选的合理选项：
+     * 只保留与本模式可选媒体有交集的类别，避免选出必然为空的组合。
+     */
+    fun allowsFilter(filter: MediaFilter): Boolean = when (this) {
+        COMPOSE -> filter != MediaFilter.LIVE
+        VIDEO -> filter == MediaFilter.ALL || filter == MediaFilter.VIDEO
+        LIVE, EXTRACT -> filter == MediaFilter.ALL || filter == MediaFilter.LIVE
+    }
 }
 
 /**

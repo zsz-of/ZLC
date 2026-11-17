@@ -60,7 +60,7 @@
 
     <!-- 앨범 선택기 -->
     <string name="screen_back">뒤로</string>
-    <string name="screen_picker_title_select">라이브 포토 선택</string>
+    <string name="screen_picker_title_select">선택</string>
     <string name="screen_album_count">앨범 %1$d</string>
     <string name="screen_album_collapse_cover">앨범 커버 접기</string>
     <string name="screen_album_expand_cover">앨범 커버 펼치기</string>
@@ -75,7 +75,7 @@
     <string name="screen_import">가져오기</string>
     <string name="screen_import_count">가져오기 %1$d</string>
     <string name="screen_import_mixed">가져오기 사진%1$d·동영상%2$d</string>
-    <string name="screen_count_live">라이브</string>
+    <string name="screen_count_live">라이브 포토</string>
     <string name="screen_count_image">사진</string>
     <string name="screen_count_video">동영상</string>
     <string name="screen_extract_no_live">분해 모드에서는 라이브 포토를 선택할 수 없습니다</string>

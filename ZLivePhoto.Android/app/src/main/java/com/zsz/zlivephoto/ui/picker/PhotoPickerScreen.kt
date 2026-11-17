@@ -73,6 +73,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -342,13 +343,19 @@ private fun ConfirmImportButton(
                 color = textColor,
                 maxLines = 1
             )
-            if (liveCount + imageCount + videoCount > 0) {
+            // 已选汇总：只显示数量 > 0 的类别（不再出现「视频 0」这种说法），
+            // 文案用「动态照片 / 图片 / 视频」全称，分隔符只在两项以上时出现
+            val counts = buildList {
+                if (liveCount > 0) add(R.string.screen_count_live to liveCount)
+                if (imageCount > 0) add(R.string.screen_count_image to imageCount)
+                if (videoCount > 0) add(R.string.screen_count_video to videoCount)
+            }
+            if (counts.isNotEmpty()) {
                 Spacer(Modifier.size(8.dp))
-                CountLabel(R.string.screen_count_live, liveCount, textColor)
-                CountSeparator(textColor)
-                CountLabel(R.string.screen_count_image, imageCount, textColor)
-                CountSeparator(textColor)
-                CountLabel(R.string.screen_count_video, videoCount, textColor)
+                counts.forEachIndexed { i, (labelRes, count) ->
+                    if (i > 0) CountSeparator(textColor)
+                    CountLabel(labelRes, count, textColor)
+                }
             }
         }
     }
@@ -487,6 +494,20 @@ fun PhotoPickerScreen(
     }
     LaunchedEffect(mediaFilter) {
         AppSettings.rememberPickerMediaFilter(mediaFilter.name)
+    }
+    // 当前导入方式允许的输出格式 / 显示类别：逻辑上不可能的组合直接不出现
+    val allowedFormats = remember(importMode) {
+        formatOptions.filter { importMode.allowsFormat(it.key) }
+    }
+    val allowedFilters = remember(importMode) {
+        MediaFilter.values().filter { importMode.allowsFilter(it) }
+    }
+    // 从其它模式带着「拆解」/无效类别进来时，自动落到本模式的合法值
+    LaunchedEffect(importMode) {
+        if (allowedFormats.isNotEmpty() && !importMode.allowsFormat(outputFormat)) {
+            onOutputFormatChange(allowedFormats.first().key)
+        }
+        if (!importMode.allowsFilter(mediaFilter)) mediaFilter = MediaFilter.ALL
     }
     // 右上角「更多」菜单：moreMenuOpen=菜单显隐；morePage=0 全部收起（4 个父项
     // 平铺），1..4=对应分组原地展开（其后的父项让位，子面板下方直接收边）
@@ -744,7 +765,8 @@ fun PhotoPickerScreen(
                 // 行 2：标题独立成行（独占整栏宽度，不再与按钮争抢）
                 Text(
                     stringResource(R.string.screen_picker_title_select),
-                    style = MaterialTheme.typography.titleSmall,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurface,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
@@ -1127,7 +1149,8 @@ fun PhotoPickerScreen(
                     ) {
                         BackButton(onBack)
                         Text(stringResource(R.string.screen_picker_title_select),
-                            style = MaterialTheme.typography.titleMedium,
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Bold,
                             // 玻璃模式下跟随顶栏玻璃的自适应色（按照片亮度切黑白），
                             // MD3 模式用主题 onSurface
                             color = LocalContentColor.current,
@@ -1313,7 +1336,7 @@ fun PhotoPickerScreen(
         if (sortAscending) R.string.screen_sort_asc else R.string.screen_sort_desc
     )
     val filterLabel = stringResource(mediaFilterLabelRes(mediaFilter))
-    val currentFormatLabel = formatOptions
+    val currentFormatLabel = (allowedFormats + formatOptions)
         .firstOrNull { it.key == outputFormat }
         ?.let { stringResource(it.nameRes) }
         ?: outputFormat
@@ -1375,8 +1398,9 @@ fun PhotoPickerScreen(
         },
         submenuContent = {
             when (renderPage) {
-                // ① 输出格式
-                1 -> formatOptions.forEach { opt ->
+                // ① 输出格式：只列出本导入方式合法的格式（拆分模式固定「拆解」，
+                //    其余模式不提供「拆解」）
+                1 -> allowedFormats.forEach { opt ->
                     GlassMenuRow(
                         label = stringResource(opt.nameRes),
                         selected = opt.key == outputFormat,
@@ -1409,8 +1433,8 @@ fun PhotoPickerScreen(
                             onClick = { sortAscending = asc; morePage = 0 }
                         )
                     }
-                // ④ 显示类别
-                4 -> MediaFilter.values().forEach { filter ->
+                // ④ 显示类别：只列出与本模式可选媒体有交集的类别
+                4 -> allowedFilters.forEach { filter ->
                     GlassMenuRow(
                         label = stringResource(mediaFilterLabelRes(filter)),
                         selected = filter == mediaFilter,
@@ -1533,6 +1557,12 @@ private fun AlbumPickPage(
     var ascending by remember { mutableStateOf(true) }
     // 返回键优先关闭相册页（后注册的 BackHandler 先响应）
     BackHandler { onClose() }
+    val listState = rememberLazyListState()
+    // 排序方向 / 搜索词变化后回到列表最顶端：否则会停在旧滚动位置，
+    // 排序后的第一条被滚出屏幕，看起来像「排序没生效」
+    LaunchedEffect(query, ascending) {
+        listState.scrollToItem(0)
+    }
     val shown = remember(albums, query, ascending) {
         val filtered = albums.filter {
             query.isBlank() || it.name.contains(query.trim(), ignoreCase = true)
@@ -1568,14 +1598,29 @@ private fun AlbumPickPage(
                     )
                 }
             }
-            // 相册名搜索
+            // 相册名搜索：液态玻璃输入框（与选择器顶栏搜索同款玻璃，MD3 下回退为填色底）
+            val glassSearch = LocalGlassEnabled.current
+            val searchShape = RoundedCornerShape(16.dp)
             Box(
                 Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 12.dp, vertical = 6.dp)
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(MaterialTheme.colorScheme.surfaceContainerHigh)
-                    .padding(horizontal = 12.dp, vertical = 10.dp)
+                    .height(44.dp)
+                    .then(
+                        if (glassSearch) Modifier.liquidGlass(
+                            shape = searchShape,
+                            tintAlpha = if (query.isNotEmpty()) 0.18f else 0.08f,
+                            tintColor = MaterialTheme.colorScheme.primary,
+                            lensHeight = 8.dp,
+                            lensAmount = 16.dp
+                        ) else Modifier.background(
+                            MaterialTheme.colorScheme.surfaceContainerHigh,
+                            searchShape
+                        )
+                    )
+                    .clip(searchShape)
+                    .padding(horizontal = 12.dp),
+                contentAlignment = Alignment.CenterStart
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
@@ -1624,7 +1669,7 @@ private fun AlbumPickPage(
                     )
                 }
             } else {
-                LazyColumn(Modifier.fillMaxSize()) {
+                LazyColumn(Modifier.fillMaxSize(), state = listState) {
                     items(shown, key = { it.bucketId }) { album ->
                         Row(
                             Modifier

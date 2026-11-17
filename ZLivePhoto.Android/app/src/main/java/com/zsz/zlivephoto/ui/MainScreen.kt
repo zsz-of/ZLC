@@ -137,6 +137,12 @@ data class FileItem(
     /** 合成任务：配对视频路径（formatKey=compose 时非空） */
     val composeVideoPath: String? = null,
     /**
+     * 任务来源导入方式（ImportMode.name：COMPOSE / VIDEO / LIVE / EXTRACT；null = 普通文件导入）。
+     * 用于「长按逐项设置输出格式」时过滤掉逻辑上不可能的格式
+     * （拆分任务只能拆解；合并/转换视频/转换动态照片不能再选拆解）。
+     */
+    val originMode: String? = null,
+    /**
      * 「转换视频」任务：封面帧在视频中的秒数（允许小数，-1 表示不适用）。
      * 点「开始」后取该时间点最近的帧作封面；视频 >5s 时只截取前 5 秒。
      */
@@ -627,13 +633,23 @@ fun MainScreen(
                     .padding(horizontal = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(2.dp)
             ) {
-                formatOptions.forEach { opt ->
-                    // 拆解与合成互斥：合成任务不可选拆解
-                    val disabled = opt.key == "extract" && item.formatKey == "compose"
+                // 逐项输出格式：按该项来源导入方式过滤，逻辑上不可能的格式直接不列出
+                //  - 拆分动态照片任务：输出固定「拆解」
+                //  - 合并 / 转换视频 / 转换动态照片：只能选转换类格式（不能拆解）
+                //  - 普通文件导入（originMode=null）：全部可选；旧数据按 formatKey 推断
+                val itemFormats = when (item.originMode) {
+                    "EXTRACT" -> formatOptions.filter { it.key == "extract" }
+                    "COMPOSE", "VIDEO", "LIVE" -> formatOptions.filter { it.key != "extract" }
+                    else -> when (item.formatKey) {
+                        "compose", "video" -> formatOptions.filter { it.key != "extract" }
+                        else -> formatOptions
+                    }
+                }
+                itemFormats.forEach { opt ->
                     GlassMenuRow(
                         label = stringResource(opt.nameRes),
                         selected = opt.key == currentKey,
-                        enabled = !disabled,
+                        enabled = true,
                         onClick = {
                             onSelectItemFormat(item.path, opt.key)
                             formatSheetVisible = false
@@ -643,15 +659,6 @@ fun MainScreen(
                 if (currentKey == "vivo_single") {
                     Text(
                         text = stringResource(R.string.screen_vivo_single_warning),
-                        style = MaterialTheme.typography.labelMedium,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.error,
-                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
-                    )
-                }
-                if (item.formatKey == "compose") {
-                    Text(
-                        text = stringResource(R.string.screen_extract_blocked),
                         style = MaterialTheme.typography.labelMedium,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.error,

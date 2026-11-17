@@ -77,7 +77,7 @@
 
     <!-- 相册选择器 -->
     <string name="screen_back">返回</string>
-    <string name="screen_picker_title_select">选择动态照片</string>
+    <string name="screen_picker_title_select">选择</string>
     <string name="screen_album_count">相册 %1$d</string>
     <string name="screen_album_collapse_cover">收起相册封面</string>
     <string name="screen_album_expand_cover">展开相册封面</string>
@@ -92,10 +92,10 @@
     <string name="screen_import">导入</string>
     <string name="screen_import_count">导入 %1$d</string>
     <string name="screen_import_mixed">导入 图%1$d·视%2$d</string>
-    <!-- 确认按钮内的数量短标签（后接滚动数字：动2 · 图1 · 视1） -->
-    <string name="screen_count_live">动</string>
-    <string name="screen_count_image">图</string>
-    <string name="screen_count_video">视</string>
+    <!-- 确认按钮内的数量标签（只显示数量 > 0 的类别，用全称：动态照片 2 · 图片 1 · 视频 1） -->
+    <string name="screen_count_live">动态照片</string>
+    <string name="screen_count_image">图片</string>
+    <string name="screen_count_video">视频</string>
     <!-- 拆解模式下动态照片不可选时的提示 -->
     <string name="screen_extract_no_live">拆解模式不支持选择动态照片</string>
     <string name="screen_search">搜索</string>

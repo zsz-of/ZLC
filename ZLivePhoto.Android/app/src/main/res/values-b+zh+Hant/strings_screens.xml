@@ -60,7 +60,7 @@
 
     <!-- 相簿選擇器 -->
     <string name="screen_back">返回</string>
-    <string name="screen_picker_title_select">選擇動態相片</string>
+    <string name="screen_picker_title_select">選擇</string>
     <string name="screen_album_count">相簿 %1$d</string>
     <string name="screen_album_collapse_cover">收合相簿封面</string>
     <string name="screen_album_expand_cover">展開相簿封面</string>
@@ -75,9 +75,9 @@
     <string name="screen_import">匯入</string>
     <string name="screen_import_count">匯入 %1$d</string>
     <string name="screen_import_mixed">匯入 圖%1$d·影%2$d</string>
-    <string name="screen_count_live">動</string>
-    <string name="screen_count_image">圖</string>
-    <string name="screen_count_video">影</string>
+    <string name="screen_count_live">動態相片</string>
+    <string name="screen_count_image">圖片</string>
+    <string name="screen_count_video">影片</string>
     <string name="screen_extract_no_live">拆解模式不支援選擇動態照片</string>
     <string name="screen_search">搜尋</string>
     <string name="screen_search_collapse">收合搜尋</string>

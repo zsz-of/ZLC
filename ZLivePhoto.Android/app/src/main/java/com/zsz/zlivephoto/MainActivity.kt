@@ -442,12 +442,24 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    /** 长按列表项 → 单独设置该项输出格式（key 含 "extract"=拆解；合成任务不可拆解） */
+    /** 长按列表项 → 单独设置该项输出格式（key 含 "extract"=拆解）。
+     *  拆分任务只能拆解；合并/转换视频/转换动态照片任务不可拆解。 */
     private fun setItemFormat(path: String, formatKey: String) {
         val idx = files.indexOfFirst { it.path == path }
         if (idx < 0) return
         val item = files[idx]
-        if (formatKey == "extract" && item.formatKey == "compose") return
+        // 旧数据没有 originMode：按 formatKey 推断来源模式
+        val origin = item.originMode ?: when (item.formatKey) {
+            "compose" -> "COMPOSE"
+            "video" -> "VIDEO"
+            else -> null
+        }
+        val allowed = when (origin) {
+            "EXTRACT" -> formatKey == "extract"
+            "COMPOSE", "VIDEO", "LIVE" -> formatKey != "extract"
+            else -> true
+        }
+        if (!allowed) return
         val updated = item.copy(targetFormat = formatKey)
         files[idx] = updated.copy(info = targetInfo(updated))
         statusText = getString(R.string.main_status_item_format_set, item.name)
@@ -1534,7 +1546,7 @@ class MainActivity : ComponentActivity() {
                     importFromPath(
                         path = item.path, sourceUri = item.uri.toString(),
                         sourceTime = item.dateModified * 1000L, sourceTaken = item.dateTaken,
-                        targetFormat = pinnedFormat
+                        targetFormat = pinnedFormat, originMode = importMode.name
                     )
                     imported++
                 } catch (e: Exception) {
@@ -1587,7 +1599,8 @@ class MainActivity : ComponentActivity() {
             sourceTaken = photo.dateTaken,
             formatKey = "compose",
             targetFormat = targetFormat,
-            composeVideoPath = video.path
+            composeVideoPath = video.path,
+            originMode = ImportMode.COMPOSE.name
         )
         files.add(item.copy(info = targetInfo(item)))
     }
@@ -1614,7 +1627,8 @@ class MainActivity : ComponentActivity() {
                 sourceTaken = v.dateTaken,
                 formatKey = "video",
                 targetFormat = target,
-                coverFrameSec = coverSec
+                coverFrameSec = coverSec,
+                originMode = ImportMode.VIDEO.name
             )
             files.add(item.copy(info = targetInfo(item)))
             added++
@@ -1675,11 +1689,12 @@ class MainActivity : ComponentActivity() {
     private fun importFromPath(path: String, sourceUri: String? = null,
                                sourcePath: String? = null,
                                sourceTime: Long = 0L, sourceTaken: Long = 0L,
-                               targetFormat: String? = null) {
+                               targetFormat: String? = null,
+                               originMode: String? = null) {
         // 批量导入在 IO 协程内调用：SnapshotStateList 变更必须在 Main 线程，切回 Main 保证线程安全
         if (Looper.myLooper() != Looper.getMainLooper()) {
             lifecycleScope.launch(Dispatchers.Main) {
-                importFromPath(path, sourceUri, sourcePath, sourceTime, sourceTaken, targetFormat)
+                importFromPath(path, sourceUri, sourcePath, sourceTime, sourceTaken, targetFormat, originMode)
             }
             return
         }
@@ -1691,7 +1706,7 @@ class MainActivity : ComponentActivity() {
         val item = FileItem(path = path, name = name, info = getString(R.string.main_info_detecting),
             sourceUri = sourceUri, sourcePath = srcPath,
             sourceTime = sourceTime, sourceTaken = sourceTaken,
-            targetFormat = targetFormat)
+            targetFormat = targetFormat, originMode = originMode)
         files.add(item)
         onListMutated()
         launchDetection(path, srcPath)
@@ -1829,6 +1844,7 @@ class MainActivity : ComponentActivity() {
                 o.put("formatKey", f.formatKey ?: "")
                 o.put("targetFormat", f.targetFormat ?: "")
                 o.put("composeVideo", f.composeVideoPath ?: "")
+                o.put("originMode", f.originMode ?: "")
                 arr.put(o)
             }
             val root = JSONObject()
@@ -1869,7 +1885,8 @@ class MainActivity : ComponentActivity() {
                     // 面板勾选也就跟真实生效格式对不上（用户反馈的核心问题）。
                     targetFormat = o.optString("targetFormat").ifEmpty { null }
                         ?.takeIf { it != selectedFormat },
-                    composeVideoPath = o.optString("composeVideo").ifEmpty { null }
+                    composeVideoPath = o.optString("composeVideo").ifEmpty { null },
+                    originMode = o.optString("originMode").ifEmpty { null }
                 ))
             }
             when {

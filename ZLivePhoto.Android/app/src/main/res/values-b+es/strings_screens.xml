@@ -63,7 +63,7 @@
 
     <!-- Selector de galería -->
     <string name="screen_back">Atrás</string>
-    <string name="screen_picker_title_select">Elegir Live Photo</string>
+    <string name="screen_picker_title_select">Elegir</string>
     <string name="screen_album_count">Álbum %1$d</string>
     <string name="screen_album_collapse_cover">Contraer la portada del álbum</string>
     <string name="screen_album_expand_cover">Expandir la portada del álbum</string>
@@ -79,7 +79,7 @@
     <string name="screen_import">Importar</string>
     <string name="screen_import_count">Importar %1$d</string>
     <string name="screen_import_mixed">Importar %1$d fotos · %2$d vídeos</string>
-    <string name="screen_count_live">Live</string>
+    <string name="screen_count_live">Live Photo</string>
     <string name="screen_count_image">Foto</string>
     <string name="screen_count_video">Vídeo</string>
     <string name="screen_extract_no_live">Las fotos Live no se pueden seleccionar en modo Extraer</string>

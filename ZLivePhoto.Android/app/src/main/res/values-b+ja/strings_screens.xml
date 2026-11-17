@@ -60,7 +60,7 @@
 
     <!-- アルバム選択ツール -->
     <string name="screen_back">戻る</string>
-    <string name="screen_picker_title_select">ライブフォトを選択</string>
+    <string name="screen_picker_title_select">選択</string>
     <string name="screen_album_count">アルバム %1$d</string>
     <string name="screen_album_collapse_cover">アルバムのカバーを折りたたむ</string>
     <string name="screen_album_expand_cover">アルバムのカバーを展開</string>
@@ -75,8 +75,8 @@
     <string name="screen_import">インポート</string>
     <string name="screen_import_count">インポート %1$d</string>
     <string name="screen_import_mixed">インポート 写真%1$d・動画%2$d</string>
-    <string name="screen_count_live">動</string>
-    <string name="screen_count_image">写</string>
+    <string name="screen_count_live">ライブフォト</string>
+    <string name="screen_count_image">写真</string>
     <string name="screen_count_video">動画</string>
     <string name="screen_extract_no_live">分解モードではライブフォトを選択できません</string>
     <string name="screen_search">検索</string>

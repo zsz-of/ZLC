@@ -105,4 +105,15 @@
     <string name="conv_reason_hev1">H.265가 hev1로 표시되어 있습니다(일부 기기는 hvc1만 인식합니다)</string>
     <string name="conv_reason_mirror_matrix">동영상에 미러 변환 행렬이 있습니다(MP4 회전 행렬로는 미러를 표현할 수 없습니다)</string>
     <string name="conv_tag_sanitize">정리</string>
+    <!-- 동영상 변환: 5초 초과 자르기 안내 -->
+    <string name="conv_reminder_video_over5s_title">동영상이 5초를 넘습니다</string>
+    <string name="conv_reminder_video_over5s_message" formatted="false">동영상 변환에서는 5초를 넘는 동영상의 앞 5초만 사용하며 나머지는 저장되지 않습니다.\n\n커버 프레임은 지정한 초에 가장 가까운 프레임에서 만듭니다.</string>
+    <string name="conv_cover_frame_failed">동영상에서 커버 프레임을 추출할 수 없습니다</string>
+    <!-- 실행 전 위험 확인(원본 덮어쓰기 / 삭제) -->
+    <string name="conv_risk_ack_title">작업 위험 확인</string>
+    <string name="conv_risk_ack_message" formatted="false">이번 작업은 원본을 덮어쓰거나 삭제하므로 데이터가 영구적으로 손실될 수 있습니다.\n\n• 쓰기 중 중단, 저장 공간 부족, 권한 취소 시 원본이 손상될 수 있습니다\n• 삭제 후에는 갤러리와 앱 모두에서 복구할 수 없습니다\n• 중요한 사진은 먼저 백업하세요\n\n계속하려면 아래 문구를 입력하세요:</string>
+    <string name="conv_risk_ack_phrase">위험을 이해했습니다</string>
+    <string name="conv_risk_ack_skip">다음에는 바로 확인(입력 없음)</string>
+    <string name="conv_risk_ack_confirm">확인 후 시작</string>
+    <string name="conv_risk_ack_cancel">취소</string>
 </resources>

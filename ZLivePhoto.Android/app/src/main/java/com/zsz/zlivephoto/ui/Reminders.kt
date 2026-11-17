@@ -4,18 +4,27 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,8 +33,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.zsz.zlivephoto.R
 import com.zsz.zlivephoto.core.CoreText
@@ -56,11 +67,11 @@ enum class ReminderKey(
         titleRes = R.string.conv_reminder_legacy_go_title,
         messageRes = R.string.conv_reminder_legacy_go_message
     ),
-    REPLACE_MODE_RISK(
-        prefsKey = "replace_mode_risk_no_warn",
+    VIDEO_OVER_5S_TRIM(
+        prefsKey = "video_over5s_trim_no_warn",
         categoryRes = R.string.conv_reminder_cat_convert,
-        titleRes = R.string.conv_reminder_replace_risk_title,
-        messageRes = R.string.conv_reminder_replace_risk_message
+        titleRes = R.string.conv_reminder_video_over5s_title,
+        messageRes = R.string.conv_reminder_video_over5s_message
     );
 
     /**
@@ -220,6 +231,82 @@ fun LegacyUninstallFlowHosts(
         },
         dismissButton = {
             TextButton(onClick = { vibrate(); flow.onDontRemind() }) { Text(stringResource(R.string.conv_reminder_dont_remind)) }
+        }
+    )
+}
+
+/**
+ * 「覆盖原图 / 删除原图」开始前的强制风险确认。
+ *
+ * - 每次点「开始」都会弹出（不可被持久化忽略），默认要求手动输入 [R.string.conv_risk_ack_phrase]
+ *   才能点确认；输错/不输都无法继续。
+ * - [requireTyping] 为 false 时（用户上次勾选了「下次直接确认」）只显示确认按钮。
+ * - 勾选「下次直接确认」只会影响**下一次**（onConfirm 回传 skipNextTime，由调用方消费一次即重置）。
+ *
+ * [visible] 为 false 时弹窗播放退场动画后才退出组合，调用方不能用 `if` 包裹。
+ */
+@Composable
+fun RiskAckDialog(
+    visible: Boolean,
+    requireTyping: Boolean,
+    onDismiss: () -> Unit,
+    onConfirm: (skipNextTime: Boolean) -> Unit
+) {
+    val phrase = stringResource(R.string.conv_risk_ack_phrase)
+    var input by remember(visible) { mutableStateOf("") }
+    var skipNext by remember(visible) { mutableStateOf(false) }
+    val typedOk = !requireTyping || input.trim() == phrase
+    LiquidDialog(
+        visible = visible,
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.conv_risk_ack_title)) },
+        text = {
+            Column(Modifier.heightIn(max = 420.dp).verticalScroll(rememberScrollState())) {
+                Text(stringResource(R.string.conv_risk_ack_message))
+                if (requireTyping) {
+                    Spacer(Modifier.height(14.dp))
+                    Text(phrase, fontWeight = FontWeight.SemiBold)
+                    Spacer(Modifier.height(8.dp))
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+                            .padding(horizontal = 12.dp, vertical = 10.dp)
+                    ) {
+                        BasicTextField(
+                            value = input,
+                            onValueChange = { input = it },
+                            singleLine = true,
+                            textStyle = MaterialTheme.typography.bodyMedium.copy(
+                                color = MaterialTheme.colorScheme.onSurface
+                            ),
+                            cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .padding(top = 8.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                            .clickable { skipNext = !skipNext }
+                            .padding(horizontal = 4.dp, vertical = 8.dp)
+                    ) {
+                        GlassCheckbox(checked = skipNext)
+                        Spacer(Modifier.width(12.dp))
+                        Text(stringResource(R.string.conv_risk_ack_skip))
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            FilledTonalButton(enabled = typedOk, onClick = { onConfirm(skipNext) }) {
+                Text(stringResource(R.string.conv_risk_ack_confirm))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(R.string.conv_risk_ack_cancel)) }
         }
     )
 }

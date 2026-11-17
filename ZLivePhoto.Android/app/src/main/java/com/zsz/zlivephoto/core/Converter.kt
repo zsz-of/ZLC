@@ -260,6 +260,101 @@ internal object Converter {
     }
 
     /**
+     * 「转换视频」：把单个视频转成动态照片。
+     *
+     * - 时长 > 5 秒时只截取**前 5 秒**（有 ffmpeg 用重编码精确截断，无 ffmpeg 用
+     *   [VideoTrimmer] 原样封装截断）；
+     * - 封面帧取视频中**离 [coverSec] 最近**的一帧（允许小数），由 [MediaMetadataRetriever]
+     *   以 OPTION_CLOSEST 抽取，再走与合成一致的写出管线。
+     *
+     * @param coverSec 封面帧时间点（秒）；超出 [0, 5] 或超出视频时长时自动收敛到合法区间
+     */
+    suspend fun composeFromVideo(
+        videoPath: String, coverSec: Double, target: String, outDir: String,
+        log: (String, String, String) -> Unit,
+        onTranscodeProgress: (frame: Long, total: Long, etaSec: Long) -> Unit = { _, _, _ -> }
+    ): MutableList<String> {
+        val src = File(videoPath)
+        if (!src.exists() || src.length() < 12) throw ConvertException(CoreText.of(R.string.conv_video_missing))
+
+        val tmpDir = File(outDir).apply { mkdirs() }
+        val stamp = System.currentTimeMillis()
+
+        // 1) 读取时长（拿不到时按 0 处理：不截断、封面按 [0,5] 收敛）
+        val retriever = android.media.MediaMetadataRetriever()
+        val durationMs = try {
+            retriever.setDataSource(videoPath)
+            retriever.extractMetadata(android.media.MediaMetadataRetriever.METADATA_KEY_DURATION)
+                ?.toLongOrNull() ?: 0L
+        } catch (_: Exception) {
+            0L
+        }
+
+        // 2) >5 秒：截取前 5 秒
+        var videoForCompose = videoPath
+        var tempTrimmed: File? = null
+        if (durationMs > 5_000L) {
+            if (FfmpegAddon.isReady()) {
+                // 重编码截断：结果一定是标准 H.264/H.265 MP4，后续合成不再重复转码
+                val out = FfmpegAddon.transcodeToMp4(
+                    videoPath, log, -1L, onTranscodeProgress, maxSeconds = 5.0
+                )
+                tempTrimmed = out
+                videoForCompose = out.absolutePath
+            } else {
+                val dst = File(tmpDir, "trim_$stamp.mp4")
+                if (VideoTrimmer.trimTo(videoPath, dst.absolutePath, 5.0)) {
+                    tempTrimmed = dst
+                    videoForCompose = dst.absolutePath
+                }
+            }
+        }
+
+        // 3) 取封面帧：离 coverSec 最近的一帧（OPTION_CLOSEST）
+        val coverFile = File(tmpDir, "cover_$stamp.jpg")
+        try {
+            val upper = minOf(5.0, if (durationMs > 0L) durationMs / 1000.0 else 5.0)
+            val sec = coverSec.coerceIn(0.0, maxOf(0.0, upper - 0.001))
+            val frame = try {
+                retriever.getFrameAtTime(
+                    (sec * 1_000_000.0).toLong(),
+                    android.media.MediaMetadataRetriever.OPTION_CLOSEST
+                )
+            } catch (_: Exception) {
+                null
+            } ?: try {
+                retriever.frameAtTime
+            } catch (_: Exception) {
+                null
+            } ?: throw ConvertException(CoreText.of(R.string.conv_cover_frame_failed))
+
+            val scaled = if (frame.width > 1920) {
+                Bitmap.createScaledBitmap(
+                    frame, 1920, (frame.height * 1920f / frame.width).toInt(), true
+                )
+            } else {
+                frame
+            }
+            coverFile.outputStream().use { outs ->
+                if (!scaled.compress(Bitmap.CompressFormat.JPEG, 92, outs)) {
+                    throw ConvertException(CoreText.of(R.string.conv_cover_frame_failed))
+                }
+            }
+            if (scaled !== frame) scaled.recycle()
+            frame.recycle()
+
+            return compose(
+                coverFile.absolutePath, videoForCompose, target, outDir, log,
+                mutableMapOf(), onTranscodeProgress
+            )
+        } finally {
+            runCatching { retriever.release() }
+            runCatching { coverFile.delete() }
+            tempTrimmed?.let { runCatching { it.delete() } }
+        }
+    }
+
+    /**
      * 合成动态照片：普通照片（JPEG 封面）+ 视频 → 指定目标格式。
      * 构造 LivePhotoAsset 后直接走目标插件 write（与转换同一写出管线）。
      * 视频时长不限（超过 3 秒的兼容性警告由 UI 层处理）。

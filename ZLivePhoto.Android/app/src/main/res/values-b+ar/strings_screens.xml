@@ -122,4 +122,32 @@
     <string name="screen_filter_video">الفيديو</string>
     <string name="screen_filter_image">الصور</string>
     <string name="screen_filter_empty">لا يوجد محتوى ضمن هذا الفلتر</string>
+    <!-- وضع الاستيراد (يُختار قبل اختيار الملفات) -->
+    <string name="screen_import_mode_title">اختر وضع الاستيراد</string>
+    <string name="screen_import_mode_compose">دمج في صورة حية</string>
+    <string name="screen_import_mode_compose_desc">اختر صورًا + فيديوهات؛ تُقرن بترتيب الاختيار وتكون كل صورة غلافًا للفيديو المقابل</string>
+    <string name="screen_import_mode_video">تحويل الفيديوهات</string>
+    <string name="screen_import_mode_video_desc">الفيديوهات فقط؛ ما يتجاوز 5 ثوانٍ يُقتطع إلى أول 5 ثوانٍ وتحدد ثانية إطار الغلاف</string>
+    <string name="screen_import_mode_live">تحويل الصور الحية</string>
+    <string name="screen_import_mode_live_desc">الصور الحية فقط، تُحوَّل إلى صيغة الإخراج المختارة</string>
+    <string name="screen_import_mode_extract">تقسيم الصور الحية</string>
+    <string name="screen_import_mode_extract_desc">الصور الحية فقط، تُقسَّم إلى صورة + فيديو (الإخراج ثابت على «تقسيم»)</string>
+    <string name="screen_import_mode_cancel">إلغاء</string>
+
+    <!-- قائمة الألبومات بملء الشاشة -->
+    <string name="screen_album_pick">اختر ألبومًا</string>
+    <string name="screen_album_pick_search_hint">ابحث باسم الألبوم</string>
+    <string name="screen_album_sort_name_natural">حسب الاسم (ترتيب طبيعي)</string>
+    <string name="screen_album_pick_empty">لا توجد ألبومات مطابقة</string>
+    <string name="screen_album_mode_empty">لا يحتوي هذا الألبوم على عناصر لهذا الوضع</string>
+    <string name="screen_album_media_count">%1$d عنصر</string>
+
+    <!-- فيديو ← صورة حية: اقتطاع 5 ثوانٍ + ثانية الغلاف -->
+    <string name="screen_video_trim_notice">الفيديوهات المختارة تتجاوز 5 ثوانٍ، وسيُستخدم أول 5 ثوانٍ فقط</string>
+    <string name="screen_video_cover_title">ثانية إطار الغلاف</string>
+    <string name="screen_video_cover_message">أدخل الثواني (يُسمح بالكسور، مثل 1.5). سيُستخدم الإطار الأقرب إلى هذا الوقت غلافًا لكل فيديو.</string>
+    <string name="screen_video_cover_hint">ثانية</string>
+    <string name="screen_video_cover_invalid">أدخل قيمة صحيحة (0 – 5)</string>
+    <string name="screen_video_cover_confirm">بدء الاستيراد</string>
+    <string name="screen_video_cover_cancel">إلغاء</string>
 </resources>

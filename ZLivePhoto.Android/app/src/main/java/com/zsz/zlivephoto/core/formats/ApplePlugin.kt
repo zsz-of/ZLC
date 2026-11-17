@@ -23,6 +23,41 @@ internal class ApplePlugin : FormatPlugin() {
     companion object {
         /** Apple MakerNote 里的配对标识键（exiftool Apple.pm：0x0011 ContentIdentifier，ASCII 字符串）。 */
         private const val TAG_CONTENT_IDENTIFIER = 0x0011
+
+        /** 修复 ftyp 时只在文件前 1 MiB 内找（足够跨过 wide/free 之类的填充 atom）。 */
+        private const val FTYP_SCAN_LIMIT = 1 shl 20
+
+        /** 允许「没有 ftyp」的顶层首 box：ISO BMFF 里 ftyp 本就是可选 box。 */
+        private val PREFIX_TOLERANT_TYPES = setOf("moov", "mdat", "wide", "free", "skip", "uuid", "pnot")
+    }
+
+    /**
+     * 补齐/前移 ftyp：`ftyp` 在 ISO BMFF/QuickTime 里是**可选** box，真实语料中存在
+     * 直接从 `moov`/`mdat`/`wide` 开头的 MOV（第三方导出、备份工具还原），旧实现只认
+     * 「偏移 4 处是 ftyp」，把这批文件一律判成「MOV 文件缺少 ftyp box」直接失败。
+     */
+    private fun ensureFtyp(data: ByteArray): ByteArray {
+        if (Mp4Util.hasFtyp(data)) return data
+        if (data.size < 8) return data
+
+        // ① ftyp 被 wide/free/skip 等填充 atom 顶到了后面：找到后整体前移
+        val head = data.copyOfRange(0, minOf(data.size, FTYP_SCAN_LIMIT))
+        val ftypIdx = EmbeddedReader.findFtyp(head)
+        if (ftypIdx > 0) return data.copyOfRange(ftypIdx, data.size)
+
+        // ② 文件本身没有 ftyp（合法布局）：补 20 字节 QuickTime ftyp 头
+        val firstType = String(data, 4, 4, Charsets.ISO_8859_1)
+        if (firstType in PREFIX_TOLERANT_TYPES) {
+            val ftyp = byteArrayOf(
+                0x00, 0x00, 0x00, 0x14, // size = 20
+                0x66, 0x74, 0x79, 0x70, // "ftyp"
+                0x71, 0x74, 0x20, 0x20, // major_brand "qt  "
+                0x00, 0x00, 0x02, 0x00, // minor_version
+                0x71, 0x74, 0x20, 0x20, // compatible_brands "qt  "
+            )
+            return ftyp + data
+        }
+        return data
     }
 
     private val appleXmpNs: String = "xmlns:apple-fi=\"http://ns.apple.com/finalcut/1.0/\""
@@ -90,7 +125,7 @@ internal class ApplePlugin : FormatPlugin() {
             ?: throw IOException(CoreText.of(R.string.fmt_err_apple_mov_missing))
 
         val primary = readBytes(path)
-        val movData = readBytes(movPath)
+        val movData = ensureFtyp(readBytes(movPath))
         if (!Mp4Util.hasFtyp(movData)) {
             throw IOException(CoreText.of(R.string.fmt_err_apple_mov_no_ftyp))
         }

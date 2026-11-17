@@ -26,6 +26,7 @@
     <string name="settings_section_transcode">Transcodificación de vídeo</string>
     <string name="settings_section_about">Acerca de</string>
     <string name="settings_section_app">Aplicación</string>
+    <string name="settings_section_sponsor">Patrocinio</string>
     <string name="settings_section_credits">Créditos y patrocinio</string>
     <string name="settings_section_opensource">Código abierto y licencia</string>
 

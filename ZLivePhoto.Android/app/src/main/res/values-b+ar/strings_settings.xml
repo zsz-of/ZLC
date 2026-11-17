@@ -22,6 +22,7 @@
     <string name="settings_section_transcode">تحويل الفيديو</string>
     <string name="settings_section_about">حول</string>
     <string name="settings_section_app">التطبيق</string>
+    <string name="settings_section_sponsor">الدعم</string>
     <string name="settings_section_credits">الشكر والدعم</string>
     <string name="settings_section_opensource">المصادر المفتوحة والترخيص</string>
     <string name="settings_startup_check_title">التحقق من التحديثات عند التشغيل</string>

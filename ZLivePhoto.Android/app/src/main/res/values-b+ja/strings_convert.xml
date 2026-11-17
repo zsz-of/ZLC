@@ -105,4 +105,15 @@
     <string name="conv_reason_hev1">H.265 が hev1 として指定されています（一部の機種は hvc1 のみ対応）</string>
     <string name="conv_reason_mirror_matrix">動画にミラー変換行列が含まれています（MP4 の回転行列ではミラーを表現できません）</string>
     <string name="conv_tag_sanitize">クリーンアップ</string>
+    <!-- 動画変換：5 秒超えの切り出し通知 -->
+    <string name="conv_reminder_video_over5s_title">動画が 5 秒を超えています</string>
+    <string name="conv_reminder_video_over5s_message" formatted="false">動画変換では、5 秒を超える動画は先頭 5 秒だけが使われ、残りは保存されません。\n\nカバー画像は指定した秒に最も近いフレームから作成します。</string>
+    <string name="conv_cover_frame_failed">動画からカバー画像を抽出できません</string>
+    <!-- 実行前のリスク確認（上書き / 元ファイル削除） -->
+    <string name="conv_risk_ack_title">操作リスクの確認</string>
+    <string name="conv_risk_ack_message" formatted="false">この処理は元のファイルを上書きまたは削除するため、復元できないデータ損失が発生する可能性があります。\n\n• 書き込み中に中断・容量不足・権限取り消しが起きると元ファイルが壊れることがあります\n• 削除後はフォトアプリでも本アプリでも復元できません\n• 重要な写真は事前にバックアップしてください\n\n続行するには下の文字を入力してください：</string>
+    <string name="conv_risk_ack_phrase">リスクを理解しました</string>
+    <string name="conv_risk_ack_skip">次回は直接確認（入力不要）</string>
+    <string name="conv_risk_ack_confirm">確認して開始</string>
+    <string name="conv_risk_ack_cancel">キャンセル</string>
 </resources>

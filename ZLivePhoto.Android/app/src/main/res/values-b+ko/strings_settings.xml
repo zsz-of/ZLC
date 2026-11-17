@@ -24,6 +24,7 @@
     <string name="settings_section_transcode">동영상 트랜스코딩</string>
     <string name="settings_section_about">앱 정보</string>
     <string name="settings_section_app">앱</string>
+    <string name="settings_section_sponsor">후원</string>
     <string name="settings_section_credits">감사의 글과 후원</string>
     <string name="settings_section_opensource">오픈소스 및 라이선스</string>
 

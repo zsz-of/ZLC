@@ -2,7 +2,7 @@
 
 [English](#english) · [日本語](#日本語) · [한국어](#한국어) · [简体中文](#简体中文) · [繁體中文](#繁體中文) · [Русский](#русский) · [Français](#français) · [Latina](#latina)
 
-**Developer / 开发者**: zsz · **Version / 版本**: v3.8.6 · **License**: [GPL-3.0-or-later](LICENSE)
+**Developer / 开发者**: zsz · **Version / 版本**: v3.9.0 · **License**: [GPL-3.0-or-later](LICENSE)
 
 ---
 
@@ -49,7 +49,7 @@ Get the latest build from [Releases](https://github.com/zsz-of/ZLC/releases) —
 - **Album-hierarchy output**: results are grouped in sub-folders named after the source album (`Pictures/Z-LivePhoto-Converter/Camera/`, `.../微信/`), can be disabled in Settings → Output
 - **Same-format passthrough** (straight copy, zero loss)
 - **Delete originals after processing** (requires "All files access"; Android 10 and below unsupported)
-- **Replace mode** (toolbox): write results back over the source files, with a one-time risk notice
+- **Replace mode** (toolbox): write results back over the source files; every run asks for an explicit risk confirmation
 - **Automatic pairing** of vivo/Apple companion files
 - **Two editions**: ZLC (Android 10+, built-in transcoder) and ZLC Go (Android 6+, no transcoder)
 - **Material You**: dynamic color on Android 12+, 7 preset themes + custom hue
@@ -131,7 +131,7 @@ Kotlin + Jetpack Compose で作られた Android アプリで、主要なライ�
 - **アルバム階層出力**：元アルバム名のサブフォルダに保存（設定 → 出力で無効化可能）
 - **同一形式はそのままコピー**（ゼロ損失）
 - **処理後に元ファイルを削除**（「すべてのファイルへのアクセス」が必要、Android 10 以下は非対応）
-- **置換モード**（ツールボックス）：変換結果を元ファイルへ直接書き戻し（初回のみリスク警告）
+- **置換モード**（ツールボックス）：変換結果を元ファイルへ直接書き戻し（実行のたびにリスク確認が必要）
 - **自動ペアリング**（vivo / Apple の 2 ファイル）
 - **2 つのエディション**：ZLC（Android 10+、トランスコーダ内蔵）と ZLC Go（Android 6+、非搭載）
 - **Material You**：Android 12+ の動的配色、プリセット 7 色 + カスタム色相
@@ -248,7 +248,7 @@ GNU General Public License v3.0 이상(GPL-3.0-or-later). Copyright (C) 2026 zsz
 
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / 魅族 / 努比亚 / Apple Live Photo 互转、拆解与合成。
 
-**开发者**: zsz · **版本**: v3.8.6 · **许可证**: GPL-3.0-or-later
+**开发者**: zsz · **版本**: v3.9.0 · **许可证**: GPL-3.0-or-later
 
 本程序实现了主流动态照片格式之间的字节级无损互转，并支持动态照片的拆解与合成。界面支持 **8 种语言**（简体中文、繁体中文、英文、日文、韩文、阿拉伯文、西班牙文、文言文），设置页可单独切换应用语言，并已适配 RTL（从右到左）语言。
 
@@ -352,7 +352,7 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 
 > 動態照片格式互轉工具：Google Motion Photo / OPPO / vivo / 小米 / 榮耀 / 魅族 / 努比亞 / Apple Live Photo 互轉、拆解與合成。
 
-**開發者**：zsz ・ **版本**：v3.8.6 ・ **授權條款**：GPL-3.0-or-later
+**開發者**：zsz ・ **版本**：v3.9.0 ・ **授權條款**：GPL-3.0-or-later
 
 本程式可在主流動態照片格式之間進行位元組級無損互轉，並支援動態照片的拆解與合成。介面支援 **8 種語言**（簡體中文、繁體中文、英文、日文、韓文、阿拉伯文、西班牙文、文言文），設定頁可單獨切換應用程式語言，並已支援 RTL（由右至左）語言。
 

@@ -22,6 +22,66 @@ data class AlbumInfo(
 /** 选择器媒体类型：动态照片 / 视频 / 普通图片 */
 enum class MediaKind { LIVE, VIDEO, IMAGE }
 
+/**
+ * 导入方式：在**选择文件之前**确定，决定选择器里显示哪些媒体、可选中哪些，
+ * 以及后续导入路径（合成 / 视频转动态照片 / 转换 / 拆分）。
+ */
+enum class ImportMode(
+    val labelRes: Int,
+    val descRes: Int
+) {
+    /** 合并：图片 + 视频按选择顺序一一配对，图片作为对应视频的封面 */
+    COMPOSE(R.string.screen_import_mode_compose, R.string.screen_import_mode_compose_desc),
+
+    /** 转换视频：只显示视频；>5s 只取前 5s，并为每段视频取指定秒数最近的帧作封面 */
+    VIDEO(R.string.screen_import_mode_video, R.string.screen_import_mode_video_desc),
+
+    /** 转换动态照片：只显示动态照片，按所选输出格式转换 */
+    LIVE(R.string.screen_import_mode_live, R.string.screen_import_mode_live_desc),
+
+    /** 拆分动态照片：只显示动态照片，拆成图片 + 视频；输出方式固定为「拆分」 */
+    EXTRACT(R.string.screen_import_mode_extract, R.string.screen_import_mode_extract_desc);
+
+    /** 该导入方式下某项是否允许显示/选择 */
+    fun allows(item: MediaItem): Boolean = when (this) {
+        COMPOSE -> item.kind != MediaKind.LIVE
+        VIDEO -> item.kind == MediaKind.VIDEO
+        LIVE, EXTRACT -> item.kind == MediaKind.LIVE
+    }
+}
+
+/**
+ * 自然顺序比较（相册名/文件名排序）：
+ * 连续数字段按**数值**比较（IMG_2 排在 IMG_10 前面），其余字符忽略大小写逐字符比较。
+ */
+fun naturalCompare(a: String, b: String): Int {
+    var i = 0
+    var j = 0
+    while (i < a.length && j < b.length) {
+        val ca = a[i]
+        val cb = b[j]
+        if (ca.isDigit() && cb.isDigit()) {
+            var si = i
+            while (si < a.length && a[si].isDigit()) si++
+            var sj = j
+            while (sj < b.length && b[sj].isDigit()) sj++
+            val na = a.substring(i, si).trimStart('0')
+            val nb = b.substring(j, sj).trimStart('0')
+            val cmp = if (na.length != nb.length) na.length - nb.length else na.compareTo(nb)
+            if (cmp != 0) return cmp
+            i = si
+            j = sj
+        } else {
+            val la = ca.lowercaseChar()
+            val lb = cb.lowercaseChar()
+            if (la != lb) return la.compareTo(lb)
+            i++
+            j++
+        }
+    }
+    return (a.length - i) - (b.length - j)
+}
+
 /** 相册内一张图片或视频（导入时按 path 直读原文件，完整保留 EXIF） */
 data class MediaItem(
     val id: Long,
@@ -65,10 +125,12 @@ data class MediaItem(
 class MediaRepo(private val resolver: ContentResolver) {
 
     /** 查询全部图片并按相册（bucket）分组；DCIM/Camera 置顶，其余按最新照片时间降序。
-     *  includeVideos=true（合成模式）：视频统计并入同名相册，图片优先作封面。 */
-    fun queryAlbums(includeVideos: Boolean = false): List<AlbumInfo> {
+     *  includeVideos=true（合成模式）：视频统计并入同名相册，图片优先作封面。
+     *  includeImages=false（转换视频模式）：只统计视频，纯图片相册不会出现在列表里。 */
+    fun queryAlbums(includeVideos: Boolean = false, includeImages: Boolean = true): List<AlbumInfo> {
         val albums = HashMap<Long, AlbumBuilder>()
         try {
+            if (includeImages)
             resolver.query(
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 arrayOf(

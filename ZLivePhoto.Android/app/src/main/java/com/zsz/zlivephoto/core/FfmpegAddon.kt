@@ -200,7 +200,9 @@ object FfmpegAddon {
         input: String,
         log: (String, String, String) -> Unit,
         totalFramesHint: Long = -1L,
-        onProgress: (frame: Long, total: Long, etaSec: Long) -> Unit = { _, _, _ -> }
+        onProgress: (frame: Long, total: Long, etaSec: Long) -> Unit = { _, _, _ -> },
+        /** >0 时只转码前 [maxSeconds] 秒（「转换视频」模式截取前 5 秒用）；<=0 表示整段 */
+        maxSeconds: Double = -1.0
     ): File = withContext(Dispatchers.IO) {
         val bin = binaryFile() ?: throw AddonException(CoreText.of(R.string.conv_addon_unavailable))
         if (!bin.exists() || bin.length() <= 0L) throw AddonException(CoreText.of(R.string.conv_addon_unavailable))
@@ -223,6 +225,8 @@ object FfmpegAddon {
             "-c:a", "aac", "-b:a", "128k",
             "-movflags", "+faststart",
             "-tag:v", tag,
+            // 截取前 N 秒：放在输出侧（-t 作为输出选项）截断产物时长
+            *(if (maxSeconds > 0.0) arrayOf("-t", String.format(java.util.Locale.US, "%.3f", maxSeconds)) else emptyArray()),
             out.absolutePath
         )
         log("info", CoreText.of(R.string.conv_log_ffmpeg_transcoding, vcodec, crf, preset), CoreText.of(R.string.conv_tag_transcode))

@@ -103,4 +103,15 @@
     <string name="conv_reason_hev1">H.265 標記為 hev1（部分機型只認 hvc1）</string>
     <string name="conv_reason_mirror_matrix">影片帶鏡像變換矩陣（MP4 旋轉矩陣無法表達鏡像）</string>
     <string name="conv_tag_sanitize">淨化</string>
+    <!-- 轉換影片：>5 秒截取提示 -->
+    <string name="conv_reminder_video_over5s_title">影片超過 5 秒</string>
+    <string name="conv_reminder_video_over5s_message" formatted="false">轉換影片時，超過 5 秒的影片只會截取前 5 秒的內容，其餘部分不會保留。\n\n封面影格取自你指定秒數附近最近的一格。</string>
+    <string name="conv_cover_frame_failed">無法從影片中擷取封面影格</string>
+    <!-- 開始輸出前的風險確認（覆蓋原圖 / 刪除原圖） -->
+    <string name="conv_risk_ack_title">操作風險確認</string>
+    <string name="conv_risk_ack_message" formatted="false">本次任務會「覆蓋原圖」或「刪除原圖」，可能造成原始檔案永久遺失且無法復原。\n\n• 覆蓋時若寫入被中斷、儲存空間不足或權限被撤銷，來源檔案可能損壞\n• 刪除後在系統相簿與本應用內都無法找回\n• 建議先備份重要照片\n\n請輸入下方文字以繼續：</string>
+    <string name="conv_risk_ack_phrase">我已知曉風險</string>
+    <string name="conv_risk_ack_skip">下次直接確認（無需再輸入文字）</string>
+    <string name="conv_risk_ack_confirm">確認並開始</string>
+    <string name="conv_risk_ack_cancel">取消</string>
 </resources>

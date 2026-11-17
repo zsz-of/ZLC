@@ -130,4 +130,32 @@
     <string name="screen_filter_video">Vídeos</string>
     <string name="screen_filter_image">Fotos</string>
     <string name="screen_filter_empty">No hay contenido con este filtro</string>
+    <!-- Modo de importación (se elige antes de seleccionar archivos) -->
+    <string name="screen_import_mode_title">Elegir modo de importación</string>
+    <string name="screen_import_mode_compose">Componer live photo</string>
+    <string name="screen_import_mode_compose_desc">Elige fotos + vídeos; se emparejan en el orden de selección y cada foto es la portada de su vídeo</string>
+    <string name="screen_import_mode_video">Convertir vídeos</string>
+    <string name="screen_import_mode_video_desc">Solo vídeos; los de más de 5 s se recortan a los primeros 5 s y eliges el segundo de la portada</string>
+    <string name="screen_import_mode_live">Convertir live photos</string>
+    <string name="screen_import_mode_live_desc">Solo live photos, convertidas al formato de salida elegido</string>
+    <string name="screen_import_mode_extract">Dividir live photos</string>
+    <string name="screen_import_mode_extract_desc">Solo live photos, divididas en foto + vídeo (salida fija: Dividir)</string>
+    <string name="screen_import_mode_cancel">Cancelar</string>
+
+    <!-- Lista de álbumes a pantalla completa -->
+    <string name="screen_album_pick">Elegir álbum</string>
+    <string name="screen_album_pick_search_hint">Buscar nombre de álbum</string>
+    <string name="screen_album_sort_name_natural">Por nombre (orden natural)</string>
+    <string name="screen_album_pick_empty">No hay álbumes coincidentes</string>
+    <string name="screen_album_mode_empty">Este álbum no tiene elementos para el modo elegido</string>
+    <string name="screen_album_media_count">%1$d elementos</string>
+
+    <!-- Vídeo → live photo: recorte de 5 s + segundo de portada -->
+    <string name="screen_video_trim_notice">Los vídeos superan los 5 s; solo se usarán los primeros 5 s</string>
+    <string name="screen_video_cover_title">Segundo de la portada</string>
+    <string name="screen_video_cover_message">Introduce el segundo (admite decimales, p. ej. 1.5). En cada vídeo se usará el fotograma más cercano a ese instante como portada.</string>
+    <string name="screen_video_cover_hint">segundos</string>
+    <string name="screen_video_cover_invalid">Introduce un valor válido (0 – 5)</string>
+    <string name="screen_video_cover_confirm">Iniciar importación</string>
+    <string name="screen_video_cover_cancel">Cancelar</string>
 </resources>

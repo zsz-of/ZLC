@@ -106,4 +106,15 @@
     <string name="conv_reason_hev1">H.265 marcado como hev1 (algunos modelos solo aceptan hvc1)</string>
     <string name="conv_reason_mirror_matrix">Vídeo con matriz de transformación espejo (la matriz de rotación MP4 no puede expresar un espejo)</string>
     <string name="conv_tag_sanitize">Sanitización</string>
+    <!-- Conversión de vídeo: aviso de recorte a 5 s -->
+    <string name="conv_reminder_video_over5s_title">Vídeo de más de 5 s</string>
+    <string name="conv_reminder_video_over5s_message" formatted="false">En la conversión de vídeo solo se usan los primeros 5 segundos de un vídeo más largo; el resto se descarta.\n\nLa portada es el fotograma más cercano al segundo indicado.</string>
+    <string name="conv_cover_frame_failed">No se pudo extraer un fotograma de portada del vídeo</string>
+    <!-- Confirmación de riesgo antes de ejecutar (sobrescribir / borrar original) -->
+    <string name="conv_risk_ack_title">Confirmar el riesgo</string>
+    <string name="conv_risk_ack_message" formatted="false">Esta tarea sobrescribirá o eliminará los archivos originales y puede causar una pérdida de datos permanente e irreversible.\n\n• Si la escritura se interrumpe, falta espacio o se revoca el permiso, el archivo original puede dañarse\n• Tras eliminarlo no se podrá recuperar ni en la galería ni en esta app\n• Haz una copia de seguridad de las fotos importantes\n\nEscribe el siguiente texto para continuar:</string>
+    <string name="conv_risk_ack_phrase">Entiendo el riesgo</string>
+    <string name="conv_risk_ack_skip">La próxima vez confirmar directamente (sin escribir)</string>
+    <string name="conv_risk_ack_confirm">Confirmar e iniciar</string>
+    <string name="conv_risk_ack_cancel">Cancelar</string>
 </resources>

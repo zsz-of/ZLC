@@ -136,6 +136,11 @@ data class FileItem(
     val targetFormat: String? = null,
     /** 合成任务：配对视频路径（formatKey=compose 时非空） */
     val composeVideoPath: String? = null,
+    /**
+     * 「转换视频」任务：封面帧在视频中的秒数（允许小数，-1 表示不适用）。
+     * 点「开始」后取该时间点最近的帧作封面；视频 >5s 时只截取前 5 秒。
+     */
+    val coverFrameSec: Double = -1.0,
     /** 正在用 ffmpeg 转码配对视频：列表项内展开显示转码进度 */
     val transcoding: Boolean = false,
     /** 转码已处理帧数 */
@@ -208,8 +213,6 @@ fun MainScreen(
     onRemoveFile: (String) -> Unit
 ) {
     val haptic = rememberHapticFeedback()
-    // 替换原图首次开启：先弹风险说明，确认后才真正开启
-    var pendingReplaceEnable by remember { mutableStateOf(false) }
     // 处理方式选择「被拒」回弹信号：风险弹窗未确认（外部选中值未变，但玻璃块
     // 已被拖/点过去）时 +1，让 LiquidSegmentedTabs 指示器弹回原选项
     // （用户反馈：拖到替换选项后不确认也不会弹回原来的选项，不行）
@@ -232,14 +235,12 @@ fun MainScreen(
     // 实际转换目标：vivo 已拆分为两个顶级选项（vivo_single / vivo），直接使用
     val effectiveTarget = selectedFormat
 
-    /** 处理方式单选点击：替换原图首次开启先弹风险说明；无权限时交给 Activity 引导授权 */
-    val selectMode: (OutputMode) -> Unit = { mode ->
-        if (mode == OutputMode.REPLACE && !AppSettings.isReminderSuppressed(ReminderKey.REPLACE_MODE_RISK)) {
-            pendingReplaceEnable = true
-        } else {
-            onSelectOutputMode(mode)
-        }
-    }
+    /**
+     * 处理方式单选：直接生效。
+     * 覆盖/删除原图的风险确认已改到「开始转换」时（见 MainActivity.startConvert），
+     * 每次开始都会强制弹窗确认，不再在切换选项时打断用户。
+     */
+    val selectMode: (OutputMode) -> Unit = { mode -> onSelectOutputMode(mode) }
 
     // 横屏判断（提升到函数级，标题限宽与两栏布局共用）
     // 以根容器**实测尺寸**为准（根 Box 的 onSizeChanged 回填），LocalConfiguration
@@ -702,22 +703,6 @@ fun MainScreen(
         }
     )
 
-    // 替换原图首次开启前的风险说明（沿用统一「不再提示」弹窗）
-    // visible 模式：退场动画期间内容继续留存（不能用 if 包裹）
-    ReminderInfoDialog(
-        key = ReminderKey.REPLACE_MODE_RISK,
-        confirmLabel = stringResource(R.string.screen_agree_and_enable),
-        onDismiss = {
-            pendingReplaceEnable = false
-            // 未确认：玻璃块弹回原选项
-            modeRevertTick++
-        },
-        onConfirm = {
-            pendingReplaceEnable = false
-            onSelectOutputMode(OutputMode.REPLACE)
-        },
-        visible = pendingReplaceEnable
-    )
     } // 覆盖层
     } // 采样根 Box
 }

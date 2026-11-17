@@ -126,4 +126,32 @@
     <string name="screen_filter_video">動画</string>
     <string name="screen_filter_image">写真</string>
     <string name="screen_filter_empty">このフィルターに該当する項目はありません</string>
+    <!-- 読み込み方法（ファイル選択前に選択） -->
+    <string name="screen_import_mode_title">読み込み方法を選択</string>
+    <string name="screen_import_mode_compose">ライブフォトに合成</string>
+    <string name="screen_import_mode_compose_desc">「写真 + 動画」を選び、選択順に 1 対 1 で対応させます。写真が動画のカバーになります</string>
+    <string name="screen_import_mode_video">動画を変換</string>
+    <string name="screen_import_mode_video_desc">動画のみ表示。5 秒を超える動画は先頭 5 秒だけを使用し、カバー画像の秒数を指定します</string>
+    <string name="screen_import_mode_live">ライブフォトを変換</string>
+    <string name="screen_import_mode_live_desc">ライブフォトのみ表示し、選択した出力形式に変換します</string>
+    <string name="screen_import_mode_extract">ライブフォトを分割</string>
+    <string name="screen_import_mode_extract_desc">ライブフォトのみ表示し、写真 + 動画に分割します（出力は「分割」固定）</string>
+    <string name="screen_import_mode_cancel">キャンセル</string>
+
+    <!-- アルバム全画面リスト -->
+    <string name="screen_album_pick">アルバムを選択</string>
+    <string name="screen_album_pick_search_hint">アルバム名を検索</string>
+    <string name="screen_album_sort_name_natural">名前順（自然順）</string>
+    <string name="screen_album_pick_empty">一致するアルバムがありません</string>
+    <string name="screen_album_mode_empty">このアルバムには選択した読み込み方法に合う項目がありません</string>
+    <string name="screen_album_media_count">%1$d 件</string>
+
+    <!-- 動画 → ライブフォト：5 秒切り出し + カバー秒数 -->
+    <string name="screen_video_trim_notice">選択した動画は 5 秒を超えるため、先頭 5 秒のみ使用します</string>
+    <string name="screen_video_cover_title">カバー画像の時刻</string>
+    <string name="screen_video_cover_message">カバーにするフレームの秒数を入力してください（小数可、例 1.5）。各動画でその時刻に最も近いフレームをカバーにします。</string>
+    <string name="screen_video_cover_hint">秒</string>
+    <string name="screen_video_cover_invalid">有効な秒数を入力してください（0 ~ 5）</string>
+    <string name="screen_video_cover_confirm">読み込み開始</string>
+    <string name="screen_video_cover_cancel">キャンセル</string>
 </resources>

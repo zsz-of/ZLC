@@ -98,4 +98,15 @@
     <string name="conv_reason_hev1">H.265 標為 hev1（部分機型只認 hvc1）</string>
     <string name="conv_reason_mirror_matrix">影片帶鏡像變換矩陣（MP4 旋轉矩陣不能表鏡像）</string>
     <string name="conv_tag_sanitize">淨之</string>
+    <!-- 影轉：逾五秒截取之示 -->
+    <string name="conv_reminder_video_over5s_title">影逾五秒</string>
+    <string name="conv_reminder_video_over5s_message" formatted="false">轉影之時，逾五秒者僅取前五秒，其餘不存。\n\n封面取所定秒數最近之一幀。</string>
+    <string name="conv_cover_frame_failed">不能取影之封面幀</string>
+    <!-- 始輸出前之險確（覆原圖 / 刪原圖） -->
+    <string name="conv_risk_ack_title">操作之險</string>
+    <string name="conv_risk_ack_message" formatted="false">此行將覆寫或刪除原圖，恐致原始之檔永失而不可復。\n\n• 覆寫之時若中斷、不足於空間、或失其權限，原檔或損\n• 既刪之後，於相冊與本應用皆不可復得\n• 宜先備份要圖\n\n請書下文言以續：</string>
+    <string name="conv_risk_ack_phrase">我已知曉風險</string>
+    <string name="conv_risk_ack_skip">下次徑確認，無須再書</string>
+    <string name="conv_risk_ack_confirm">確認而始</string>
+    <string name="conv_risk_ack_cancel">取消</string>
 </resources>

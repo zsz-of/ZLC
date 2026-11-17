@@ -48,6 +48,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -83,6 +84,7 @@ import com.zsz.zlivephoto.ui.UpdateFlowHosts
 import com.zsz.zlivephoto.ui.LegacyApp
 import com.zsz.zlivephoto.ui.LegacyUninstallFlowHosts
 import com.zsz.zlivephoto.ui.ReminderKey
+import com.zsz.zlivephoto.ui.RiskAckDialog
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
 import com.zsz.zlivephoto.ui.rememberLegacyUninstallFlow
 import com.zsz.zlivephoto.ui.rememberUpdateFlow
@@ -94,7 +96,9 @@ import com.zsz.zlivephoto.ui.glass.LocalPageBackdropPublisher
 import com.zsz.zlivephoto.ui.glass.PageBackdropPublisher
 import com.zsz.zlivephoto.ui.picker.AlbumInfo
 import com.zsz.zlivephoto.ui.picker.AlbumScanner
+import com.zsz.zlivephoto.ui.picker.ImportMode
 import com.zsz.zlivephoto.ui.picker.MediaItem
+import com.zsz.zlivephoto.ui.picker.MediaKind
 import com.zsz.zlivephoto.ui.picker.MediaRepo
 import com.zsz.zlivephoto.ui.picker.PairGrouping
 import com.zsz.zlivephoto.ui.picker.PhotoPickerScreen
@@ -220,6 +224,15 @@ class MainActivity : ComponentActivity() {
             deleteOriginal -> OutputMode.DELETE
             else -> OutputMode.KEEP
         }
+    /**
+     * 开始输出前的风险确认（覆盖 / 删除原图）。
+     * 每次点「开始」都强制弹窗；只有用户上次勾选「下次直接确认」时，下一次免输入。
+     */
+    private var riskDialogVisible by mutableStateOf(false)
+    private var riskRequireTyping by mutableStateOf(true)
+    /** 一次性免输入标记（用户勾选后置 true，下次弹窗消费后立即复位） */
+    private var riskSkipOnce = false
+
     /** 本批次成功处理后待删除的原图（按源路径分组；IO 线程并发合并需加锁） */
     private val pendingDeleteBySource = LinkedHashMap<String, MutableList<PendingDelete>>()
     private val pendingDeleteLock = Any()
@@ -234,6 +247,10 @@ class MainActivity : ComponentActivity() {
     private enum class AppScreen { Main, Picker, Settings }
     private var screen by mutableStateOf(AppScreen.Main)
     private var pickerAlbums by mutableStateOf<List<AlbumInfo>>(emptyList())
+    /** 本次导入方式（选择文件之前由用户确定），决定选择器过滤与后续处理路径 */
+    private var importMode by mutableStateOf(ImportMode.COMPOSE)
+    /** 导入方式选择弹窗是否可见 */
+    private var importModeDialogVisible by mutableStateOf(false)
 
     private lateinit var incomingDir: String
     private lateinit var outputDir: String
@@ -406,7 +423,7 @@ class MainActivity : ComponentActivity() {
     private fun targetInfo(item: FileItem): String {
         if (item.isUnrecognized) return getString(R.string.main_info_unrecognized)
         val fmt = formatDisplayName(item.targetFormat ?: selectedFormat)
-        return if (item.formatKey == "compose")
+        return if (item.formatKey == "compose" || item.formatKey == "video")
             getString(R.string.main_info_compose_target, fmt) else fmt
     }
 
@@ -989,12 +1006,13 @@ class MainActivity : ComponentActivity() {
                             scanner = scanner,
                             scannerScope = lifecycleScope,
                             isDarkTheme = isDarkTheme,
+                            importMode = importMode,
                             outputFormat = selectedFormat,
                             onOutputFormatChange = { setOutputFormat(it) },
                             onBack = { screen = AppScreen.Main },
-                            onConfirm = { items ->
+                            onConfirm = { items, coverSec ->
                                 screen = AppScreen.Main
-                                importPickedItems(items)
+                                importPickedItems(items, coverSec)
                             }
                         )
                     } else if (page == AppScreen.Settings) {
@@ -1059,6 +1077,25 @@ class MainActivity : ComponentActivity() {
                         legacyFlow,
                         vibrate = { haptic.click() },
                         enabled = sessionDialogOwner == DialogOwner.LEGACY
+                    )
+
+                    // 覆盖 / 删除原图：开始输出前的强制风险确认（每次开始都弹）
+                    RiskAckDialog(
+                        visible = riskDialogVisible,
+                        requireTyping = riskRequireTyping,
+                        onDismiss = { riskDialogVisible = false },
+                        onConfirm = { skipNext ->
+                            riskDialogVisible = false
+                            if (skipNext) riskSkipOnce = true
+                            startConvertConfirmed()
+                        }
+                    )
+
+                    // 选择文件之前：先确定导入方式（合并 / 转换视频 / 转换动态照片 / 拆分动态照片）
+                    ImportModeDialog(
+                        visible = importModeDialogVisible,
+                        onDismiss = { importModeDialogVisible = false },
+                        onPick = { mode -> proceedWithImportMode(mode) }
                     )
 
                     // 权限请求对话框（首次或仍可请求时；由上方全局闸门决定是否轮到自己弹出）
@@ -1380,6 +1417,14 @@ class MainActivity : ComponentActivity() {
     // ---------- 权限 ----------
 
     private fun onAddFiles() {
+        // 选择文件之前先让用户确定导入方式（合并 / 转换视频 / 转换动态照片 / 拆分动态照片）
+        importModeDialogVisible = true
+    }
+
+    /** 用户选定导入方式：按模式调整相册显示，随后走原有权限流程进入选择器 */
+    private fun proceedWithImportMode(mode: ImportMode) {
+        importMode = mode
+        importModeDialogVisible = false
         if (!hasReadPermission()) {
             // 始终弹出自定义对话框；「拒绝」不退出，下次点击再请求
             // 授权后进入内置选择器
@@ -1416,8 +1461,11 @@ class MainActivity : ComponentActivity() {
         scanner.newSession() // 每次进入选择器开启新会话（相册扫过即不再扫）
         statusText = getString(R.string.main_status_loading_albums)
         lifecycleScope.launch(Dispatchers.IO) {
-            // 统一选择器：图片与视频一并统计进相册（视频相册也可进入选择）
-            val albums = mediaRepo.queryAlbums(includeVideos = true)
+            // 「转换视频」模式只统计视频相册（纯图片相册不显示）；其余模式图片 + 视频都统计
+            val albums = mediaRepo.queryAlbums(
+                includeVideos = true,
+                includeImages = importMode != ImportMode.VIDEO
+            )
             withContext(Dispatchers.Main) {
                 pickerAlbums = albums
                 screen = AppScreen.Picker
@@ -1438,15 +1486,33 @@ class MainActivity : ComponentActivity() {
      * 全局输出格式为「拆解」时，需要合成的图片改用 Google 格式
      * （拆解无法作用于尚未合成的图片 + 视频）。
      */
-    private fun importPickedItems(items: List<MediaItem>) {
+    private fun importPickedItems(items: List<MediaItem>, coverSec: Double = -1.0) {
         if (items.isEmpty()) return
-        val plan = PairGrouping.plan(items)
+        val importFormat = selectedFormat
+        val composeFormat = if (importFormat == "extract") "google" else null
+
+        // 「转换视频」：每个视频单独一条任务（封面帧秒数取用户输入值，>5s 处理时截取前 5s）
+        if (importMode == ImportMode.VIDEO) {
+            importVideoTasks(items, coverSec)
+            return
+        }
+
+        // 合并模式按选择顺序配对；转换 / 拆分动态照片模式只有「转换」一类（格式钉死）
+        val plan = if (importMode == ImportMode.COMPOSE) {
+            PairGrouping.plan(items)
+        } else {
+            PairGrouping.Plan(items, emptyList(), emptyList())
+        }
         // 本次导入的输出格式 = 当前全局格式。普通项不再把格式钉死在导入时的值
         // （targetFormat 留空 → 跟随全局），这样之后切换全局格式时队列会一起变，
         // 格式面板的勾选也始终等于真实生效格式。
         // 合成任务例外：全局为「拆解」时无法拆解，只能钉死成 Google。
-        val importFormat = selectedFormat
-        val composeFormat = if (importFormat == "extract") "google" else null
+        // 拆分动态照片模式：钉死「拆解」（不受全局格式影响）。
+        val pinnedFormat = when (importMode) {
+            ImportMode.EXTRACT -> "extract"
+            ImportMode.LIVE -> composeFormat
+            else -> null
+        }
 
         // 合成任务需在 Main 线程追加（SnapshotStateList）
         plan.pairs.forEach { (photo, video) -> addComposeTask(photo, video, composeFormat) }
@@ -1468,7 +1534,7 @@ class MainActivity : ComponentActivity() {
                     importFromPath(
                         path = item.path, sourceUri = item.uri.toString(),
                         sourceTime = item.dateModified * 1000L, sourceTaken = item.dateTaken,
-                        targetFormat = null
+                        targetFormat = pinnedFormat
                     )
                     imported++
                 } catch (e: Exception) {
@@ -1524,6 +1590,37 @@ class MainActivity : ComponentActivity() {
             composeVideoPath = video.path
         )
         files.add(item.copy(info = targetInfo(item)))
+    }
+
+    /**
+     * 「转换视频」入队：每个视频一条任务，封面帧取 [coverSec] 附近最近的一帧；
+     * 视频超过 5 秒时，点「开始」后只截取前 5 秒（见 [Converter.composeFromVideo]）。
+     */
+    private fun importVideoTasks(items: List<MediaItem>, coverSec: Double) {
+        val importFormat = selectedFormat
+        // 全局格式为「拆解」时无法作用在视频上，改用 Google 格式合成
+        val target = if (importFormat == "extract") "google" else null
+        var added = 0
+        for (v in items) {
+            if (v.kind != MediaKind.VIDEO) continue
+            if (files.any { it.path == v.path }) continue
+            val item = FileItem(
+                path = v.path,
+                name = v.name,
+                info = "",
+                sourceUri = v.uri.toString(),
+                sourcePath = v.path,
+                sourceTime = v.dateModified * 1000L,
+                sourceTaken = v.dateTaken,
+                formatKey = "video",
+                targetFormat = target,
+                coverFrameSec = coverSec
+            )
+            files.add(item.copy(info = targetInfo(item)))
+            added++
+        }
+        statusText = resources.getQuantityString(R.plurals.main_status_import_done, added, added)
+        onListStable()
     }
 
     /** 终止转换/导入：转换处理完当前文件后停止；导入循环下一项前立即停止 */
@@ -1858,6 +1955,18 @@ class MainActivity : ComponentActivity() {
 
     private fun startConvert() {
         if (isConverting) return
+        // 覆盖 / 删除原图：每次开始输出都强制弹风险确认（不可持久化忽略），确认后才真正开始
+        if (outputMode == OutputMode.REPLACE || outputMode == OutputMode.DELETE) {
+            riskRequireTyping = !riskSkipOnce
+            riskSkipOnce = false
+            riskDialogVisible = true
+            return
+        }
+        startConvertConfirmed()
+    }
+
+    private fun startConvertConfirmed() {
+        if (isConverting) return
         // 排除未识别 / Apple 不可转换 / 失败项（Apple 已标记 isUnrecognized=true）
         val targets = files.filter { !it.isUnrecognized && !it.info.startsWith(getString(R.string.main_info_failed, "")) }.toList()
         if (targets.isEmpty()) {
@@ -1929,6 +2038,33 @@ class MainActivity : ComponentActivity() {
                                         }
                                     },
                                     // 转码进度：写到「该任务自己的列表项」上（帧数/总帧/预计剩余）
+                                    onTranscodeProgress = { frame, total, etaSec ->
+                                        runOnUiThread {
+                                            val i = files.indexOfFirst { it.path == item.path }
+                                            if (i >= 0) {
+                                                files[i] = files[i].copy(
+                                                    transcoding = true,
+                                                    transcodeFrame = frame,
+                                                    transcodeTotal = total,
+                                                    transcodeEtaSec = etaSec
+                                                )
+                                            }
+                                        }
+                                    }
+                                )
+                            } else if (item.formatKey == "video") {
+                                // 「转换视频」任务：单视频 → 动态照片。
+                                // 封面帧取 coverFrameSec 附近最近的一帧；>5 秒时只截取前 5 秒
+                                staged = Converter.composeFromVideo(
+                                    videoPath = item.path,
+                                    coverSec = item.coverFrameSec,
+                                    target = itemTarget,
+                                    outDir = taskDir.path,
+                                    log = { level, msg, tag ->
+                                        if (level == "error" || level == "warn") {
+                                            statusText = "[$tag] $msg"
+                                        }
+                                    },
                                     onTranscodeProgress = { frame, total, etaSec ->
                                         runOnUiThread {
                                             val i = files.indexOfFirst { it.path == item.path }
@@ -2894,4 +3030,51 @@ class MainActivity : ComponentActivity() {
     private fun setExportError(msg: String) {
         lastExportError = msg
     }
+}
+
+/**
+ * 导入方式选择弹窗：在打开文件选择器**之前**弹出，决定后续显示哪些媒体、
+ * 以及导入后走哪条处理路径（合并 / 转换视频 / 转换动态照片 / 拆分动态照片）。
+ */
+@Composable
+private fun ImportModeDialog(
+    visible: Boolean,
+    onDismiss: () -> Unit,
+    onPick: (ImportMode) -> Unit
+) {
+    LiquidDialog(
+        visible = visible,
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.screen_import_mode_title)) },
+        text = {
+            Column(Modifier.fillMaxWidth()) {
+                ImportMode.entries.forEach { mode ->
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(12.dp))
+                            .clickable { onPick(mode) }
+                            .padding(horizontal = 10.dp, vertical = 10.dp)
+                    ) {
+                        Text(
+                            stringResource(mode.labelRes),
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold
+                        )
+                        Text(
+                            stringResource(mode.descRes),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+        },
+        confirmButton = { },
+        dismissButton = {
+            androidx.compose.material3.TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.screen_import_mode_cancel))
+            }
+        }
+    )
 }

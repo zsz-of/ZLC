@@ -117,4 +117,19 @@
     <string name="conv_reminder_confirm_ok">知道了</string>
     <string name="conv_reminder_uninstall">卸载</string>
 
+    <!-- 转换视频：>5 秒截取提示 -->
+    <string name="conv_reminder_video_over5s_title">视频超过 5 秒</string>
+    <string name="conv_reminder_video_over5s_message" formatted="false">转换视频时，超过 5 秒的视频只会截取前 5 秒的内容，其余部分不会保留。\n\n封面帧取自你指定秒数附近最近的一帧。</string>
+
+    <!-- 转换视频：封面帧抽取失败 -->
+    <string name="conv_cover_frame_failed">无法从视频中提取封面帧</string>
+
+    <!-- ========== 开始输出前的风险确认（覆盖原图 / 删除原图） ========== -->
+    <string name="conv_risk_ack_title">操作风险确认</string>
+    <string name="conv_risk_ack_message" formatted="false">本次任务会「覆盖原图」或「删除原图」，可能造成原始文件永久丢失且无法恢复。\n\n• 覆盖时若写入被中断、存储空间不足或权限被撤销，源文件可能损坏\n• 删除后在系统相册与本应用内都无法找回\n• 建议先备份重要照片\n\n请输入下方文字以继续：</string>
+    <string name="conv_risk_ack_phrase">我已知晓风险</string>
+    <string name="conv_risk_ack_skip">下次直接确认（无需再输入文字）</string>
+    <string name="conv_risk_ack_confirm">确认并开始</string>
+    <string name="conv_risk_ack_cancel">取消</string>
+
 </resources>

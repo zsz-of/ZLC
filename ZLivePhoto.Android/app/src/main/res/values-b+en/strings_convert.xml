@@ -88,4 +88,16 @@
     <string name="conv_reason_hev1">H.265 is tagged as hev1 (some devices only accept hvc1)</string>
     <string name="conv_reason_mirror_matrix">The video has a mirror matrix (an MP4 rotation matrix cannot express mirroring)</string>
     <string name="conv_tag_sanitize">Cleanup</string>
+    <!-- Video conversion: over-5s trim notice -->
+    <string name="conv_reminder_video_over5s_title">Video longer than 5 s</string>
+    <string name="conv_reminder_video_over5s_message" formatted="false">In video conversion, only the first 5 seconds of a longer video are used; the rest is discarded.\n\nThe cover frame is the frame nearest to the second you specify.</string>
+    <!-- Cover frame extraction failed -->
+    <string name="conv_cover_frame_failed">Cannot extract a cover frame from the video</string>
+    <!-- Risk confirmation before starting (overwrite / delete original) -->
+    <string name="conv_risk_ack_title">Confirm the risk</string>
+    <string name="conv_risk_ack_message" formatted="false">This task overwrites or deletes the original files and may cause permanent, unrecoverable data loss.\n\n• If writing is interrupted, storage runs out or permission is revoked, the source file may be damaged\n• After deletion it cannot be recovered from the gallery or this app\n• Back up important photos first\n\nType the text below to continue:</string>
+    <string name="conv_risk_ack_phrase">I understand the risk</string>
+    <string name="conv_risk_ack_skip">Confirm directly next time (no typing)</string>
+    <string name="conv_risk_ack_confirm">Confirm and start</string>
+    <string name="conv_risk_ack_cancel">Cancel</string>
 </resources>

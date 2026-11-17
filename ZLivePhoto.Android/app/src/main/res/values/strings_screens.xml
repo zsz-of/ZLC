@@ -138,4 +138,33 @@
 
     <!-- MediaStore 里相册名为空时的兜底名（MediaRepo.kt） -->
     <string name="screen_album_unnamed">未命名</string>
+
+    <!-- 导入方式（选择文件前先选） -->
+    <string name="screen_import_mode_title">选择导入方式</string>
+    <string name="screen_import_mode_compose">合并为动态照片</string>
+    <string name="screen_import_mode_compose_desc">选择「图片 + 视频」，按下单顺序一一配对，图片作为对应视频的封面</string>
+    <string name="screen_import_mode_video">转换视频</string>
+    <string name="screen_import_mode_video_desc">只显示视频；超过 5 秒的视频只截取前 5 秒，并指定封面帧秒数</string>
+    <string name="screen_import_mode_live">转换动态照片</string>
+    <string name="screen_import_mode_live_desc">只显示动态照片，转换成所选输出格式</string>
+    <string name="screen_import_mode_extract">拆分动态照片</string>
+    <string name="screen_import_mode_extract_desc">只显示动态照片，拆成图片 + 视频（输出方式固定为「拆分」）</string>
+    <string name="screen_import_mode_cancel">取消</string>
+
+    <!-- 相册全屏列表 -->
+    <string name="screen_album_pick">选择相册</string>
+    <string name="screen_album_pick_search_hint">搜索相册名</string>
+    <string name="screen_album_sort_name_natural">按名称（自然顺序）</string>
+    <string name="screen_album_pick_empty">没有匹配的相册</string>
+    <string name="screen_album_mode_empty">当前相册没有符合该导入方式的内容</string>
+    <string name="screen_album_media_count">%1$d 项</string>
+
+    <!-- 视频转动态照片：5 秒截取 + 封面帧秒数 -->
+    <string name="screen_video_trim_notice">所选视频超过 5 秒，将只截取前 5 秒的内容</string>
+    <string name="screen_video_cover_title">封面帧时间</string>
+    <string name="screen_video_cover_message">请输入封面帧在视频中的秒数（可含小数，如 1.5）。每个视频都会取最接近该时间点的一帧作为封面帧。</string>
+    <string name="screen_video_cover_hint">秒</string>
+    <string name="screen_video_cover_invalid">请输入有效秒数（0 ~ 5）</string>
+    <string name="screen_video_cover_confirm">开始导入</string>
+    <string name="screen_video_cover_cancel">取消</string>
 </resources>

@@ -286,12 +286,55 @@ private fun SettingsMainContent(
     // 应用语言：currentTag 为空串表示跟随系统
     var appLanguageTag by remember { mutableStateOf(AppLanguage.currentTag(context)) }
     var showLanguageDialog by remember { mutableStateOf(false) }
+    // 支付宝赞助：入口按用户要求从「关于」上移到设置首屏最顶端，弹窗状态随之上移
+    var showSponsorDialog by remember { mutableStateOf(false) }
+    var alipayMissing by remember { mutableStateOf(false) }
 
     SettingsPageScaffold(
         title = stringResource(R.string.settings_title),
         onBack = onBack,
         scrollState = scrollState,
         overlay = {
+            // 支付宝赞助致谢弹窗（无「不再提示」）：感谢 + 礼貌谢绝学生
+            LiquidDialog(
+                visible = showSponsorDialog,
+                onDismissRequest = { showSponsorDialog = false },
+                title = { Text(stringResource(R.string.settings_sponsor_dialog_title)) },
+                text = {
+                    Text(stringResource(R.string.settings_sponsor_dialog_text))
+                },
+                confirmButton = {
+                    Button(onClick = {
+                        haptic.click()
+                        showSponsorDialog = false
+                        // 成功拉起支付宝收款码则交给支付宝；失败（含未安装）单独提示
+                        if (!launchAlipay(context)) alipayMissing = true
+                    }) { Text(stringResource(R.string.settings_btn_sponsor)) }
+                },
+                dismissButton = {
+                    FilledTonalButton(onClick = {
+                        haptic.soft()
+                        showSponsorDialog = false
+                    }) { Text(stringResource(R.string.settings_btn_close)) }
+                }
+            )
+
+            // 支付宝未能吊起：说明未安装，并再次感谢用户好意
+            LiquidDialog(
+                visible = alipayMissing,
+                onDismissRequest = { alipayMissing = false },
+                title = { Text(stringResource(R.string.settings_alipay_missing_title)) },
+                text = {
+                    Text(stringResource(R.string.settings_alipay_missing_text))
+                },
+                confirmButton = {
+                    Button(onClick = {
+                        haptic.click()
+                        alipayMissing = false
+                    }) { Text(stringResource(R.string.settings_btn_ok)) }
+                }
+            )
+
             // 自定义调色板：任意色相选择（主题色只按色相派生，饱和度/明度沿用 MD3 基线）
             // 打开时重置为当前生效色相（覆盖层常驻组合，hue 不会像旧版 if 包裹那样每次重建）
             var hue by remember {
@@ -396,6 +439,33 @@ private fun SettingsMainContent(
             )
         }
     ) {
+            // ── 赞助 ──
+            // 用户要求：赞助单独放在设置页最顶端（不再藏在「关于」里）
+            SectionTitle(stringResource(R.string.settings_section_sponsor))
+            SettingsRowsGroup(
+                listOf(
+                    { s ->
+                        SettingsActionRow(
+                            shape = s,
+                            title = stringResource(R.string.settings_alipay_title),
+                            subtitle = stringResource(R.string.settings_alipay_subtitle),
+                            icon = { Icon(Icons.Default.Favorite, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
+                            trailing = {
+                                Icon(
+                                    Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            },
+                            onClick = {
+                                haptic.click()
+                                showSponsorDialog = true
+                            }
+                        )
+                    }
+                )
+            )
+
             // ── 通用 ──
             SectionTitle(stringResource(R.string.settings_section_general))
             val isGo = BuildConfig.FLAVOR == "go"
@@ -781,10 +851,6 @@ private fun AboutScreen(onBack: () -> Unit) {
         performCheck(presentIfNewer = false)
         checking = false
     }
-    // 支付宝赞助相关弹窗
-    var showSponsorDialog by remember { mutableStateOf(false) }
-    var alipayMissing by remember { mutableStateOf(false) }
-
     SettingsPageScaffold(
         title = stringResource(R.string.settings_about_title),
         onBack = onBack,
@@ -792,46 +858,6 @@ private fun AboutScreen(onBack: () -> Unit) {
         overlay = {
             // 手动检查发现新版本：4 按钮更新弹窗（说明子弹窗/下载进度/蓝奏失败回退统一在此渲染）
             UpdateFlowHosts(updateFlow, vibrate = { haptic.click() })
-
-            // 支付宝赞助致谢弹窗（无「不再提示」）：感谢 + 礼貌谢绝学生
-            LiquidDialog(
-                visible = showSponsorDialog,
-                onDismissRequest = { showSponsorDialog = false },
-                title = { Text(stringResource(R.string.settings_sponsor_dialog_title)) },
-                text = {
-                    Text(stringResource(R.string.settings_sponsor_dialog_text))
-                },
-                confirmButton = {
-                    Button(onClick = {
-                        haptic.click()
-                        showSponsorDialog = false
-                        // 成功拉起支付宝收款码则交给支付宝；失败（含未安装）单独提示
-                        if (!launchAlipay(context)) alipayMissing = true
-                    }) { Text(stringResource(R.string.settings_btn_sponsor)) }
-                },
-                dismissButton = {
-                    FilledTonalButton(onClick = {
-                        haptic.soft()
-                        showSponsorDialog = false
-                    }) { Text(stringResource(R.string.settings_btn_close)) }
-                }
-            )
-
-            // 支付宝未能吊起：说明未安装，并再次感谢用户好意
-            LiquidDialog(
-                visible = alipayMissing,
-                onDismissRequest = { alipayMissing = false },
-                title = { Text(stringResource(R.string.settings_alipay_missing_title)) },
-                text = {
-                    Text(stringResource(R.string.settings_alipay_missing_text))
-                },
-                confirmButton = {
-                    Button(onClick = {
-                        haptic.click()
-                        alipayMissing = false
-                    }) { Text(stringResource(R.string.settings_btn_ok)) }
-                }
-            )
         }
     ) {
             // ── 应用 ──
@@ -923,31 +949,11 @@ private fun AboutScreen(onBack: () -> Unit) {
                 )
             )
 
-            // ── 鸣谢与赞助 ──
-            // 用户要求「鸣谢板块」放在「开源许可证」前面
+            // ── 鸣谢 ──
+            // 赞助入口已上移到设置首屏最顶端，这里只保留鸣谢
             SectionTitle(stringResource(R.string.settings_section_credits))
             SettingsRowsGroup(
                 listOf(
-                    { s ->
-                        // 支付宝赞助：先弹致谢确认窗，再决定是否拉起支付宝
-                        SettingsActionRow(
-                            shape = s,
-                            title = stringResource(R.string.settings_alipay_title),
-                            subtitle = stringResource(R.string.settings_alipay_subtitle),
-                            icon = { Icon(Icons.Default.Favorite, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
-                            trailing = {
-                                Icon(
-                                    Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            },
-                            onClick = {
-                                haptic.click()
-                                showSponsorDialog = true
-                            }
-                        )
-                    },
                     { s ->
                         // 酷安用户 @毛血旺o：点击跳浏览器打开其主页
                         SettingsActionRow(

@@ -6,9 +6,11 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.LruCache
 import android.util.Size
+import androidx.activity.compose.BackHandler
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -44,6 +46,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -111,6 +114,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
@@ -143,6 +147,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
@@ -166,6 +171,7 @@ import com.zsz.zlivephoto.ui.glass.GlassMenuOverlay
 import com.zsz.zlivephoto.ui.glass.GlassMenuRow
 import com.zsz.zlivephoto.ui.glass.GlassPanel
 import com.zsz.zlivephoto.ui.glass.LocalGlassBackdrop
+import com.zsz.zlivephoto.ui.glass.LiquidDialog
 import com.zsz.zlivephoto.ui.glass.LocalGlassEnabled
 import com.zsz.zlivephoto.ui.glass.PublishPageBackdrop
 import com.zsz.zlivephoto.ui.glass.TopBarFrost
@@ -204,7 +210,7 @@ private val thumbDispatcher = Dispatchers.IO.limitedParallelism(
 /** 相册内排序字段 */
 enum class AlbumSortField { DATE, SIZE, NAME }
 
-/** 按字段排序（正/倒序）。名称比较忽略大小写，日期取 sortTime（拍摄时间，缺失回退修改时间）。 */
+/** 按字段排序（正/倒序）。名称按自然顺序（数字段按数值比较），日期取 sortTime（拍摄时间，缺失回退修改时间）。 */
 private fun sortMediaItems(
     items: List<MediaItem>,
     field: AlbumSortField,
@@ -213,7 +219,7 @@ private fun sortMediaItems(
     val comparator = when (field) {
         AlbumSortField.DATE -> compareBy<MediaItem> { it.sortTime }
         AlbumSortField.SIZE -> compareBy { it.size }
-        AlbumSortField.NAME -> compareBy { it.name.lowercase() }
+        AlbumSortField.NAME -> Comparator<MediaItem> { a, b -> naturalCompare(a.name, b.name) }
     }
     return if (ascending) items.sortedWith(comparator)
            else items.sortedWith(comparator.reversed())
@@ -439,17 +445,22 @@ fun PhotoPickerScreen(
     scanner: AlbumScanner,
     scannerScope: CoroutineScope,
     isDarkTheme: Boolean,
+    /** 本次导入方式（选文件之前已确定）：决定显示/可选媒体与输出方式是否锁定 */
+    importMode: ImportMode,
     /** 右上角输出格式（key）：决定本次导入的输出格式（含 "extract"=拆解） */
     outputFormat: String,
     onOutputFormatChange: (String) -> Unit,
     onBack: () -> Unit,
-    onConfirm: (List<MediaItem>) -> Unit
+    /** [coverSec] 仅「转换视频」模式有效（封面帧秒数，-1 表示不适用） */
+    onConfirm: (List<MediaItem>, Double) -> Unit
 ) {
     val haptic = com.zsz.zlivephoto.ui.rememberHapticFeedback()
     var currentBucketId by remember { mutableStateOf(albums.firstOrNull()?.bucketId) }
     val bucketId = currentBucketId
     val selected = remember { mutableStateListOf<MediaItem>() }
     var albumsExpanded by remember { mutableStateOf(false) }
+    // 相册全屏选择页（相册展开按钮旁的「选择」按钮进入）
+    var albumPageOpen by remember { mutableStateOf(false) }
     // 相册切换滚动方向（项 4）：1=切到右侧相册（新内容自右侧进入、画面向左滚），-1=反向
     var slideDir by remember { mutableStateOf(1) }
     // 排序（大小/日期/名称 + 正倒序）与按名称搜索。
@@ -481,6 +492,11 @@ fun PhotoPickerScreen(
     // 平铺），1..4=对应分组原地展开（其后的父项让位，子面板下方直接收边）
     var moreMenuOpen by remember { mutableStateOf(false) }
     var morePage by remember { mutableStateOf(0) }
+    // 收起二级菜单时 morePage 会立刻置 0；这里保留最后一次非 0 的分组，
+    // 让二级卡在**退场动画期间**仍有标题/内容（否则卡片会瞬间收缩到只剩 header
+    // 并跳到屏幕顶端闪一下——用户反馈的闪烁 bug）
+    var renderPage by remember { mutableStateOf(0) }
+    SideEffect { if (morePage != 0) renderPage = morePage }
     // 搜索：点按钮后原地横向展开为玻璃搜索框
     var searchOpen by remember { mutableStateOf(false) }
     // 搜索展开形变：一条欠阻尼弹簧驱动「搜索钮触发圆 → 整行搜索框」的裁剪形变、
@@ -495,10 +511,10 @@ fun PhotoPickerScreen(
         onDispose { if (bucketId != null) scanner.leave(bucketId) }
     }
 
-    // 切到「拆解」时动态照片不可选：把已选的动态照片自动移除，
+    // 切换导入方式 / 输出格式时，把当前方式下不可选的已选项移除，
     // 避免出现「已选中但点不动、也无法取消」的幽灵选择
-    LaunchedEffect(outputFormat) {
-        if (outputFormat == "extract") selected.removeAll { it.kind == MediaKind.LIVE }
+    LaunchedEffect(importMode, outputFormat) {
+        selected.removeAll { !importMode.allows(it) }
     }
 
     val state = remember(bucketId) { if (bucketId != null) scanner.stateOf(bucketId) else null }
@@ -514,48 +530,71 @@ fun PhotoPickerScreen(
     val running = progress.second
 
     // 网格显示顺序（项 3 有序标记）：全选时按此顺序（从上到下、从左到右）添加，
-    // 序号与视觉顺序一致；应用排序（大小/日期/名称 + 正倒序）与名称搜索过滤；
+    // 序号与视觉顺序一致；先按导入方式过滤（合并=图片+视频 / 转换视频=仅视频 /
+    // 转换与拆分动态照片=仅动态照片），再按名称搜索、媒体类别筛选与排序；
     // size 读取驱动扫描追加时重算
     val n = results?.size ?: 0
-    val displayOrder = remember(results, n, sortField, sortAscending, searchQuery, mediaFilter) {
+    val displayOrder = remember(results, n, sortField, sortAscending, searchQuery, mediaFilter, importMode) {
         sortMediaItems(
-            applyMediaFilter(filterMediaItems(results.orEmpty(), searchQuery), mediaFilter),
+            applyMediaFilter(
+                filterMediaItems(results.orEmpty().filter { importMode.allows(it) }, searchQuery),
+                mediaFilter
+            ),
             sortField, sortAscending
         )
     }
 
     // 合成模式视频时长告警阈值（超过 3 秒提示兼容性风险，但仍允许选择）
     val videoWarnMs = 3000L
+    // 转换视频模式：>5 秒会截取前 5 秒
+    val videoTrimMs = 5000L
 
-    // 合成模式提示弹窗状态
+    // 合成模式提示弹窗状态 / 转换视频模式的 5 秒截取提示
     var showOver3sWarning by remember { mutableStateOf(false) }
+    var showTrimNotice by remember { mutableStateOf(false) }
 
     /** 项是否已选中 */
     fun isSelected(item: MediaItem): Boolean =
         selected.any { it.id == item.id && it.isVideo == item.isVideo }
 
     /**
-     * 项是否可选：拆解模式下**动态照片不可选**（用户需求）。
-     * 拆解是「把已有动态照片拆成图片+视频」，与「选动态照片来转换」互斥；
-     * 同时该模式下图片/视频用于合成，动态照片没有意义。
+     * 项是否可选：完全由导入方式决定（[ImportMode.allows]）。
+     * - 合并：图片 + 视频可选（动态照片不参与配对）
+     * - 转换视频：仅视频
+     * - 转换 / 拆分动态照片：仅动态照片
      */
-    val isSelectable: (MediaItem) -> Boolean = { item ->
-        !(outputFormat == "extract" && item.kind == MediaKind.LIVE)
-    }
+    val isSelectable: (MediaItem) -> Boolean = { item -> importMode.allows(item) }
 
     // 选择统计（确认按钮内显示：动态照片 / 图片 / 视频 各自张数）
     val liveCount = selected.count { it.kind == MediaKind.LIVE }
     val imageCount = selected.count { it.kind == MediaKind.IMAGE }
     val videoCount = selected.count { it.kind == MediaKind.VIDEO }
-    // 确认导入：至少 1 项，且图片与视频数量必须一致
-    // （合成按选择顺序两两配对，数量不等就无法全部配对，禁止确认）
-    val canConfirm = selected.isNotEmpty() && imageCount == videoCount
-    val doConfirm: () -> Unit = { onConfirm(selected.toList()) }
+    // 确认门槛：
+    // - 合并：图片与视频数量必须一致（按选择顺序两两配对）
+    // - 转换视频：至少 1 个视频
+    // - 转换 / 拆分动态照片：至少 1 张动态照片
+    val canConfirm = when (importMode) {
+        ImportMode.COMPOSE -> selected.isNotEmpty() && imageCount == videoCount && videoCount > 0
+        ImportMode.VIDEO -> videoCount > 0
+        ImportMode.LIVE, ImportMode.EXTRACT -> liveCount > 0
+    }
 
-    // 单项选择切换（追加到末尾，序号递增）；选择超过 3 秒的视频时提示兼容性风险
+    // 「转换视频」：确认前先问封面帧秒数（点击开始后才真正处理）
+    var coverDialogVisible by remember { mutableStateOf(false) }
+    var coverInput by remember { mutableStateOf("1") }
+    val doConfirm: () -> Unit = {
+        if (importMode == ImportMode.VIDEO) {
+            coverInput = "1"
+            coverDialogVisible = true
+        } else {
+            onConfirm(selected.toList(), -1.0)
+        }
+    }
+
+    // 单项选择切换（追加到末尾，序号递增）；按导入方式给出相应提示
     val toggleItem: (MediaItem) -> Unit = { item ->
         if (!isSelectable(item)) {
-            // 不可选（拆解模式下的动态照片）：仅给出触感反馈，不改变选择
+            // 当前导入方式下不可选：仅给出触感反馈，不改变选择
             haptic.click()
         } else {
             haptic.click()
@@ -564,7 +603,12 @@ fun PhotoPickerScreen(
                 selected.removeAt(idx)
             } else {
                 selected.add(item)
-                if (item.isVideo && item.durationMs > videoWarnMs &&
+                if (item.isVideo && importMode == ImportMode.VIDEO) {
+                    if (item.durationMs > videoTrimMs &&
+                        !AppSettings.isReminderSuppressed(ReminderKey.VIDEO_OVER_5S_TRIM)) {
+                        showTrimNotice = true
+                    }
+                } else if (item.isVideo && item.durationMs > videoWarnMs &&
                     !AppSettings.isReminderSuppressed(ReminderKey.COMPOSE_VIDEO_OVER_3S)) {
                     showOver3sWarning = true
                 }
@@ -683,6 +727,19 @@ fun PhotoPickerScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     BackButton(onBack)
+                    Spacer(Modifier.weight(1f))
+                    // 全屏相册选择页入口（与竖屏一致：搜索相册名 + 名称自然排序）
+                    GlassIconButton(
+                        onClick = { haptic.click(); albumPageOpen = true },
+                        contentDescription = stringResource(R.string.screen_album_pick)
+                    ) {
+                        Icon(
+                            Icons.AutoMirrored.Filled.List,
+                            contentDescription = null,
+                            modifier = Modifier.size(20.dp),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
                 // 行 2：标题独立成行（独占整栏宽度，不再与按钮争抢）
                 Text(
@@ -1171,6 +1228,18 @@ fun PhotoPickerScreen(
                                 )
                             }
                         }
+                        // 全屏相册选择页入口（相册展开按钮旁）：支持搜索相册名 + 名称自然排序
+                        GlassIconButton(
+                            onClick = { haptic.click(); albumPageOpen = true },
+                            contentDescription = stringResource(R.string.screen_album_pick),
+                            adaptiveContent = true
+                        ) {
+                            Icon(
+                                Icons.AutoMirrored.Filled.List,
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
                         // 展开/收起封面（玻璃圆钮）；右缘与标题行「更多」按钮对齐（12dp）
                         GlassIconButton(
                             onClick = { haptic.click(); albumsExpanded = !albumsExpanded },
@@ -1221,6 +1290,12 @@ fun PhotoPickerScreen(
             key = ReminderKey.COMPOSE_VIDEO_OVER_3S,
             onDismiss = { showOver3sWarning = false },
             visible = showOver3sWarning
+        )
+        // 「转换视频」：>5 秒只截取前 5 秒的提示
+        ReminderInfoDialog(
+            key = ReminderKey.VIDEO_OVER_5S_TRIM,
+            onDismiss = { showTrimNotice = false },
+            visible = showTrimNotice
         )
     }
 
@@ -1274,7 +1349,7 @@ fun PhotoPickerScreen(
         // morePage = 0——仅收起二级、保留一级菜单（用户明确要求）。
         // morePage：0 = 全部收起；1..4 = 对应分组展开。
         submenuVisible = morePage != 0,
-        submenuAnchor = when (morePage) {
+        submenuAnchor = when (renderPage) {
             1 -> formatAnchor
             2 -> sortFieldAnchor
             3 -> sortOrderAnchor
@@ -1284,14 +1359,14 @@ fun PhotoPickerScreen(
         onSubmenuDismiss = { morePage = 0 },
         // 子卡顶部重画所点父行（FlClash `_buildContent` 的 covered header）：
         // 标题 + 当前值，与一级卡片里被盖住的那一行逐像素一致。
-        submenuTitle = when (morePage) {
+        submenuTitle = when (renderPage) {
             1 -> stringResource(R.string.screen_menu_output_format)
             2 -> stringResource(R.string.screen_menu_sort_field)
             3 -> stringResource(R.string.screen_menu_sort_order)
             4 -> stringResource(R.string.screen_menu_media_filter)
             else -> null
         },
-        submenuValue = when (morePage) {
+        submenuValue = when (renderPage) {
             1 -> currentFormatLabel
             2 -> sortFieldLabel
             3 -> sortOrderLabel
@@ -1299,7 +1374,7 @@ fun PhotoPickerScreen(
             else -> null
         },
         submenuContent = {
-            when (morePage) {
+            when (renderPage) {
                 // ① 输出格式
                 1 -> formatOptions.forEach { opt ->
                     GlassMenuRow(
@@ -1350,19 +1425,22 @@ fun PhotoPickerScreen(
         // 三路状态机（用户反馈）：①点已展开的父项（展开位置）= 保持现有选项
         // 不变、播放逆动画退回一级；②点非展开父项 = 整体收起菜单；
         // ③二级展开期间父项保持可点（不再置灰），锚点矩形持续回填供形变使用。
-        GlassMenuEntry(
-            label = stringResource(R.string.screen_menu_output_format),
-            value = currentFormatLabel,
-            onClick = {
-                when {
-                    morePage == 0 -> morePage = 1
-                    morePage == 1 -> morePage = 0
-                    else -> { moreMenuOpen = false; morePage = 0 }
-                }
-            },
-            expanded = morePage == 1,
-            onAnchor = { formatAnchor = it }
-        )
+        // 拆分动态照片模式：输出方式固定为「拆分」，不提供输出格式选项
+        if (importMode != ImportMode.EXTRACT) {
+            GlassMenuEntry(
+                label = stringResource(R.string.screen_menu_output_format),
+                value = currentFormatLabel,
+                onClick = {
+                    when {
+                        morePage == 0 -> morePage = 1
+                        morePage == 1 -> morePage = 0
+                        else -> { moreMenuOpen = false; morePage = 0 }
+                    }
+                },
+                expanded = morePage == 1,
+                onAnchor = { formatAnchor = it }
+            )
+        }
         GlassMenuEntry(
             label = stringResource(R.string.screen_menu_sort_field),
             value = sortFieldLabel,
@@ -1405,7 +1483,261 @@ fun PhotoPickerScreen(
     }
     } // CompositionLocalProvider（菜单采样网格层）
     } // Box（菜单浮层宿主）
+
+    // 全屏相册选择页（相册展开按钮旁「选择」进入）：封面缩略图 + 名称，
+    // 支持按相册名搜索与按名称（自然顺序，数字按数值）排序
+    AnimatedVisibility(
+        visible = albumPageOpen,
+        enter = slideInVertically(initialOffsetY = { it }, animationSpec = tween(280)) + fadeIn(),
+        exit = slideOutVertically(targetOffsetY = { it }, animationSpec = tween(240)) + fadeOut()
+    ) {
+        AlbumPickPage(
+            albums = albums,
+            currentBucketId = bucketId,
+            onPick = { id ->
+                slideDir = if (id > (bucketId ?: 0L)) 1 else -1
+                switchAlbum(id)
+                albumPageOpen = false
+            },
+            onClose = { albumPageOpen = false }
+        )
+    }
+
+    // 「转换视频」：确认时输入封面帧秒数（允许小数），点「开始」后才真正处理
+    CoverFrameDialog(
+        visible = coverDialogVisible,
+        value = coverInput,
+        onValueChange = { coverInput = it },
+        onDismiss = { coverDialogVisible = false },
+        onConfirm = { sec ->
+            coverDialogVisible = false
+            onConfirm(selected.toList(), sec)
+        }
+    )
     } // key(isDarkTheme)
+}
+
+/**
+ * 全屏相册选择页：每行 = 封面缩略图（相册第一张）+ 相册名 + 数量。
+ * 顶部搜索框按相册名过滤；排序按钮在「按名称升序 / 降序」间切换，
+ * 名称用 [naturalCompare] 比较，保证 IMG_2 在 IMG_10 之前。
+ */
+@Composable
+private fun AlbumPickPage(
+    albums: List<AlbumInfo>,
+    currentBucketId: Long?,
+    onPick: (Long) -> Unit,
+    onClose: () -> Unit
+) {
+    var query by remember { mutableStateOf("") }
+    var ascending by remember { mutableStateOf(true) }
+    // 返回键优先关闭相册页（后注册的 BackHandler 先响应）
+    BackHandler { onClose() }
+    val shown = remember(albums, query, ascending) {
+        val filtered = albums.filter {
+            query.isBlank() || it.name.contains(query.trim(), ignoreCase = true)
+        }
+        val cmp = Comparator<AlbumInfo> { a, b -> naturalCompare(a.name, b.name) }
+        if (ascending) filtered.sortedWith(cmp) else filtered.sortedWith(cmp.reversed())
+    }
+    val resolver = LocalContext.current.contentResolver
+
+    Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
+        Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
+            Row(
+                Modifier.fillMaxWidth().padding(start = 8.dp, end = 12.dp, top = 4.dp, bottom = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                GlassIconButton(onClick = onClose, contentDescription = null) {
+                    Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = null)
+                }
+                Text(
+                    stringResource(R.string.screen_album_pick),
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.weight(1f).padding(start = 4.dp)
+                )
+                // 名称排序（自然顺序）方向切换
+                GlassIconButton(
+                    onClick = { ascending = !ascending },
+                    contentDescription = stringResource(R.string.screen_album_sort_name_natural)
+                ) {
+                    Icon(
+                        if (ascending) Icons.Filled.ArrowUpward else Icons.Filled.ArrowDownward,
+                        contentDescription = null,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+            }
+            // 相册名搜索
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 12.dp, vertical = 6.dp)
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+                    .padding(horizontal = 12.dp, vertical = 10.dp)
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        Icons.Filled.Search,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    Box(Modifier.weight(1f)) {
+                        if (query.isEmpty()) {
+                            Text(
+                                stringResource(R.string.screen_album_pick_search_hint),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        BasicTextField(
+                            value = query,
+                            onValueChange = { query = it },
+                            singleLine = true,
+                            textStyle = MaterialTheme.typography.bodyMedium.copy(
+                                color = MaterialTheme.colorScheme.onSurface
+                            ),
+                            cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                    if (query.isNotEmpty()) {
+                        Icon(
+                            Icons.Filled.Close,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(18.dp)
+                                .clickable { query = "" },
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+            if (shown.isEmpty()) {
+                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Text(
+                        stringResource(R.string.screen_album_pick_empty),
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            } else {
+                LazyColumn(Modifier.fillMaxSize()) {
+                    items(shown, key = { it.bucketId }) { album ->
+                        Row(
+                            Modifier
+                                .fillMaxWidth()
+                                .clickable { onPick(album.bucketId) }
+                                .padding(horizontal = 12.dp, vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Box(
+                                Modifier
+                                    .size(56.dp)
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(MaterialTheme.colorScheme.surfaceContainerHighest)
+                            ) {
+                                MediaThumbnail(
+                                    uri = ((if (album.coverIsVideo)
+                                        MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                                    else
+                                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                                        .buildUpon().appendPath(album.coverId.toString()).build()),
+                                    resolver = resolver,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
+                            Column(Modifier.weight(1f).padding(horizontal = 12.dp)) {
+                                Text(
+                                    album.name,
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                                Text(
+                                    stringResource(R.string.screen_album_media_count, album.count),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            if (album.bucketId == currentBucketId) {
+                                Icon(
+                                    Icons.Filled.Check,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp),
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/** 「转换视频」封面帧秒数输入弹窗（允许小数；0~5 有效） */
+@Composable
+private fun CoverFrameDialog(
+    visible: Boolean,
+    value: String,
+    onValueChange: (String) -> Unit,
+    onDismiss: () -> Unit,
+    onConfirm: (Double) -> Unit
+) {
+    val sec = value.trim().toDoubleOrNull()
+    val valid = sec != null && sec >= 0.0 && sec <= 5.0
+    LiquidDialog(
+        visible = visible,
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.screen_video_cover_title)) },
+        text = {
+            Column {
+                Text(stringResource(R.string.screen_video_cover_message))
+                Spacer(Modifier.height(12.dp))
+                Box(
+                    Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+                        .padding(horizontal = 12.dp, vertical = 10.dp)
+                ) {
+                    BasicTextField(
+                        value = value,
+                        onValueChange = onValueChange,
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                        textStyle = MaterialTheme.typography.bodyMedium.copy(
+                            color = MaterialTheme.colorScheme.onSurface
+                        ),
+                        cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+                if (!valid) {
+                    Text(
+                        stringResource(R.string.screen_video_cover_invalid),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.padding(top = 6.dp)
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            androidx.compose.material3.FilledTonalButton(
+                enabled = valid,
+                onClick = { sec?.let(onConfirm) }
+            ) { Text(stringResource(R.string.screen_video_cover_confirm)) }
+        },
+        dismissButton = {
+            androidx.compose.material3.TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.screen_video_cover_cancel))
+            }
+        }
+    )
 }
 
 /**

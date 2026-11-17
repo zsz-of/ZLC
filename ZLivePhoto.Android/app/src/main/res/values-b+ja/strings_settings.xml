@@ -24,6 +24,7 @@
     <string name="settings_section_transcode">動画トランスコード</string>
     <string name="settings_section_about">このアプリについて</string>
     <string name="settings_section_app">アプリ</string>
+    <string name="settings_section_sponsor">支援</string>
     <string name="settings_section_credits">謝辞と支援</string>
     <string name="settings_section_opensource">オープンソースとライセンス</string>
 

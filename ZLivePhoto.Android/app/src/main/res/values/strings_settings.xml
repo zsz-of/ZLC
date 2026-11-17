@@ -26,6 +26,7 @@
     <string name="settings_section_transcode">视频转码</string>
     <string name="settings_section_about">关于</string>
     <string name="settings_section_app">应用</string>
+    <string name="settings_section_sponsor">赞助</string>
     <string name="settings_section_credits">鸣谢与赞助</string>
     <string name="settings_section_opensource">开源与授权</string>
 

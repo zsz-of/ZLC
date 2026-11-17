@@ -126,4 +126,32 @@
     <string name="screen_filter_video">동영상</string>
     <string name="screen_filter_image">사진</string>
     <string name="screen_filter_empty">현재 필터에는 해당 항목이 없습니다</string>
+    <!-- 가져오기 방식(파일 선택 전 선택) -->
+    <string name="screen_import_mode_title">가져오기 방식 선택</string>
+    <string name="screen_import_mode_compose">라이브 포토로 합성</string>
+    <string name="screen_import_mode_compose_desc">「사진 + 동영상」을 선택하면 선택 순서대로 1:1 대응되며 사진이 동영상의 커버가 됩니다</string>
+    <string name="screen_import_mode_video">동영상 변환</string>
+    <string name="screen_import_mode_video_desc">동영상만 표시합니다. 5초를 넘는 동영상은 앞 5초만 사용하며 커버 프레임 시간을 지정합니다</string>
+    <string name="screen_import_mode_live">라이브 포토 변환</string>
+    <string name="screen_import_mode_live_desc">라이브 포토만 표시하고 선택한 출력 형식으로 변환합니다</string>
+    <string name="screen_import_mode_extract">라이브 포토 분리</string>
+    <string name="screen_import_mode_extract_desc">라이브 포토만 표시하고 사진 + 동영상으로 분리합니다(출력은 「분리」 고정)</string>
+    <string name="screen_import_mode_cancel">취소</string>
+
+    <!-- 앨범 전체 화면 목록 -->
+    <string name="screen_album_pick">앨범 선택</string>
+    <string name="screen_album_pick_search_hint">앨범 이름 검색</string>
+    <string name="screen_album_sort_name_natural">이름순(자연 순서)</string>
+    <string name="screen_album_pick_empty">일치하는 앨범이 없습니다</string>
+    <string name="screen_album_mode_empty">이 앨범에는 선택한 가져오기 방식에 맞는 항목이 없습니다</string>
+    <string name="screen_album_media_count">%1$d개</string>
+
+    <!-- 동영상 → 라이브 포토: 5초 자르기 + 커버 시간 -->
+    <string name="screen_video_trim_notice">선택한 동영상이 5초를 넘어 앞 5초만 사용합니다</string>
+    <string name="screen_video_cover_title">커버 프레임 시간</string>
+    <string name="screen_video_cover_message">커버로 사용할 프레임의 초를 입력하세요(소수 가능, 예: 1.5). 각 동영상에서 해당 시점과 가장 가까운 프레임을 커버로 사용합니다.</string>
+    <string name="screen_video_cover_hint">초</string>
+    <string name="screen_video_cover_invalid">올바른 초를 입력하세요(0 ~ 5)</string>
+    <string name="screen_video_cover_confirm">가져오기 시작</string>
+    <string name="screen_video_cover_cancel">취소</string>
 </resources>

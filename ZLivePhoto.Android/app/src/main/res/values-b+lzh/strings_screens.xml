@@ -106,4 +106,32 @@
     <string name="screen_filter_video">影片</string>
     <string name="screen_filter_image">圖</string>
     <string name="screen_filter_empty">此篩之下無物</string>
+    <!-- 匯入之法（擇檔前先擇） -->
+    <string name="screen_import_mode_title">擇匯入之法</string>
+    <string name="screen_import_mode_compose">合為動態照片</string>
+    <string name="screen_import_mode_compose_desc">擇「圖 + 影」，依擇序一一相配，圖為其影之封面</string>
+    <string name="screen_import_mode_video">轉影片</string>
+    <string name="screen_import_mode_video_desc">唯示影片；逾五秒者僅取前五秒，並定封面之秒</string>
+    <string name="screen_import_mode_live">轉動態照片</string>
+    <string name="screen_import_mode_live_desc">唯示動態照片，轉為所擇之輸出格式</string>
+    <string name="screen_import_mode_extract">拆動態照片</string>
+    <string name="screen_import_mode_extract_desc">唯示動態照片，拆為圖 + 影（輸出定為「拆分」）</string>
+    <string name="screen_import_mode_cancel">取消</string>
+
+    <!-- 相冊全屏之列 -->
+    <string name="screen_album_pick">擇相冊</string>
+    <string name="screen_album_pick_search_hint">搜相冊之名</string>
+    <string name="screen_album_sort_name_natural">依名（自然之序）</string>
+    <string name="screen_album_pick_empty">無相符之相冊</string>
+    <string name="screen_album_mode_empty">此相冊無合此匯入之法者</string>
+    <string name="screen_album_media_count">%1$d 項</string>
+
+    <!-- 影轉動態照片：取五秒 + 封面之秒 -->
+    <string name="screen_video_trim_notice">所擇之影逾五秒，僅取前五秒</string>
+    <string name="screen_video_cover_title">封面之時</string>
+    <string name="screen_video_cover_message">請書封面於影中之秒（可含小數，如一·五）。每影皆取最近此秒之一幀為封面。</string>
+    <string name="screen_video_cover_hint">秒</string>
+    <string name="screen_video_cover_invalid">請書正秒（零至五）</string>
+    <string name="screen_video_cover_confirm">始匯入</string>
+    <string name="screen_video_cover_cancel">取消</string>
 </resources>

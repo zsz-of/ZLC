@@ -113,4 +113,33 @@
     <string name="screen_filter_video">Videos</string>
     <string name="screen_filter_image">Photos</string>
     <string name="screen_filter_empty">Nothing under the current filter</string>
+
+    <!-- Import mode (chosen before picking files) -->
+    <string name="screen_import_mode_title">Choose import mode</string>
+    <string name="screen_import_mode_compose">Compose live photo</string>
+    <string name="screen_import_mode_compose_desc">Pick photos + videos; they are paired in selection order and each photo becomes the cover of its video</string>
+    <string name="screen_import_mode_video">Convert videos</string>
+    <string name="screen_import_mode_video_desc">Videos only; videos longer than 5 s are trimmed to the first 5 s, and you choose the cover frame time</string>
+    <string name="screen_import_mode_live">Convert live photos</string>
+    <string name="screen_import_mode_live_desc">Live photos only, converted to the selected output format</string>
+    <string name="screen_import_mode_extract">Split live photos</string>
+    <string name="screen_import_mode_extract_desc">Live photos only, split into photo + video (output is fixed to Split)</string>
+    <string name="screen_import_mode_cancel">Cancel</string>
+
+    <!-- Album full-screen list -->
+    <string name="screen_album_pick">Choose album</string>
+    <string name="screen_album_pick_search_hint">Search album name</string>
+    <string name="screen_album_sort_name_natural">By name (natural order)</string>
+    <string name="screen_album_pick_empty">No matching albums</string>
+    <string name="screen_album_mode_empty">This album has no items for the selected import mode</string>
+    <string name="screen_album_media_count">%1$d items</string>
+
+    <!-- Video → live photo: 5 s trim + cover frame time -->
+    <string name="screen_video_trim_notice">Selected videos are longer than 5 s; only the first 5 s will be used</string>
+    <string name="screen_video_cover_title">Cover frame time</string>
+    <string name="screen_video_cover_message">Enter the time (seconds, decimals allowed, e.g. 1.5). For each video the frame closest to that time becomes its cover.</string>
+    <string name="screen_video_cover_hint">seconds</string>
+    <string name="screen_video_cover_invalid">Enter a valid time (0 – 5)</string>
+    <string name="screen_video_cover_confirm">Start import</string>
+    <string name="screen_video_cover_cancel">Cancel</string>
 </resources>

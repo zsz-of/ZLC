@@ -21,6 +21,7 @@
     <string name="settings_section_transcode">Video transcoding</string>
     <string name="settings_section_about">About</string>
     <string name="settings_section_app">App</string>
+    <string name="settings_section_sponsor">Sponsorship</string>
     <string name="settings_section_credits">Credits &amp; donations</string>
     <string name="settings_section_opensource">Open source &amp; licensing</string>
     <string name="settings_startup_check_title">Check for updates on startup</string>

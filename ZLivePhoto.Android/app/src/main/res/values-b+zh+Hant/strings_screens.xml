@@ -126,4 +126,32 @@
     <string name="screen_filter_video">影片</string>
     <string name="screen_filter_image">圖片</string>
     <string name="screen_filter_empty">目前篩選下沒有內容</string>
+    <!-- 匯入方式（選擇檔案前先選） -->
+    <string name="screen_import_mode_title">選擇匯入方式</string>
+    <string name="screen_import_mode_compose">合併為動態照片</string>
+    <string name="screen_import_mode_compose_desc">選擇「圖片 + 影片」，依選取順序一一配對，圖片作為對應影片的封面</string>
+    <string name="screen_import_mode_video">轉換影片</string>
+    <string name="screen_import_mode_video_desc">只顯示影片；超過 5 秒的影片只截取前 5 秒，並指定封面影格秒數</string>
+    <string name="screen_import_mode_live">轉換動態照片</string>
+    <string name="screen_import_mode_live_desc">只顯示動態照片，轉換成所選輸出格式</string>
+    <string name="screen_import_mode_extract">拆分動態照片</string>
+    <string name="screen_import_mode_extract_desc">只顯示動態照片，拆成圖片 + 影片（輸出方式固定為「拆分」）</string>
+    <string name="screen_import_mode_cancel">取消</string>
+
+    <!-- 相簿全螢幕清單 -->
+    <string name="screen_album_pick">選擇相簿</string>
+    <string name="screen_album_pick_search_hint">搜尋相簿名稱</string>
+    <string name="screen_album_sort_name_natural">依名稱（自然順序）</string>
+    <string name="screen_album_pick_empty">沒有符合的相簿</string>
+    <string name="screen_album_mode_empty">目前相簿沒有符合此匯入方式的內容</string>
+    <string name="screen_album_media_count">%1$d 項</string>
+
+    <!-- 影片轉動態照片：5 秒截取 + 封面影格秒數 -->
+    <string name="screen_video_trim_notice">所選影片超過 5 秒，將只截取前 5 秒的內容</string>
+    <string name="screen_video_cover_title">封面影格時間</string>
+    <string name="screen_video_cover_message">請輸入封面影格在影片中的秒數（可含小數，如 1.5）。每支影片都會取最接近該時間點的一格作為封面。</string>
+    <string name="screen_video_cover_hint">秒</string>
+    <string name="screen_video_cover_invalid">請輸入有效秒數（0 ~ 5）</string>
+    <string name="screen_video_cover_confirm">開始匯入</string>
+    <string name="screen_video_cover_cancel">取消</string>
 </resources>

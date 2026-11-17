@@ -1477,6 +1477,9 @@ fun BoxScope.GlassMenuOverlay(
     }
 }
 
+/** 二级卡最后一次有效的定位（收起动画期间父级会立刻清空参数，这里沿用旧值） */
+private data class SubmenuFrame(val anchor: Rect?, val cardOrigin: Rect, val width: Float)
+
 /**
  * 二级子菜单卡片（复刻库的层级子菜单）：
  * 一张独立玻璃卡**盖在一级之上**，从所点击那一行的矩形长到整卡——
@@ -1517,23 +1520,41 @@ private fun BoxScope.GlassSubmenuOverlay(
     val blurPx = with(density) { 12.dp.toPx() }
     val panelShadow = Shadow(radius = 29.dp, alpha = if (panelDark) 0.18f else 0.12f)
     // FlClash `_levelWidthScale`：子卡比父卡宽 12%（右缘对齐，向左长出）
-    val subWidthPx = (cardWidthPx * 1.12f).coerceAtLeast(cardWidthPx)
-    val hasFrame = anchor != null && cardOrigin != Rect.Zero && cardWidthPx > 0f
+    // 收起动画期间父级会立刻把 anchor / cardOrigin / cardWidthPx / 标题清空，
+    // 若此时回落到 0，子卡会先跳到屏幕右上角再折回（用户反馈「顶端闪一下」）。
+    // 这里缓存最后一次有效的定位与头部信息，收起动画沿用旧值。
+    var lastFrame by remember { mutableStateOf(SubmenuFrame(null, Rect.Zero, 0f)) }
+    var lastTitle by remember { mutableStateOf<String?>(null) }
+    var lastValue by remember { mutableStateOf<String?>(null) }
+    SideEffect {
+        if (anchor != null && cardOrigin != Rect.Zero && cardWidthPx > 0f) {
+            lastFrame = SubmenuFrame(anchor, cardOrigin, cardWidthPx)
+            if (title != null) lastTitle = title
+            if (value != null) lastValue = value
+        }
+    }
+    val frameAnchor = anchor ?: lastFrame.anchor
+    val frameCardOrigin = if (cardOrigin != Rect.Zero) cardOrigin else lastFrame.cardOrigin
+    val frameCardWidth = if (cardWidthPx > 0f) cardWidthPx else lastFrame.width
+    val frameTitle = title ?: lastTitle
+    val frameValue = value ?: lastValue
+    val subWidthPx = (frameCardWidth * 1.12f).coerceAtLeast(frameCardWidth)
+    val hasFrame = frameAnchor != null && frameCardOrigin != Rect.Zero && frameCardWidth > 0f
     // 卡片顶部（相对整屏容器）：父行顶边 - 卡内缩 → 卡内 header 行正好压住父行
     val topPx = if (hasFrame) {
-        (anchor!!.top - containerOrigin.top - insetPx).coerceAtLeast(0f)
+        (frameAnchor!!.top - containerOrigin.top - insetPx).coerceAtLeast(0f)
     } else 0f
     // 右缘对齐父卡：容器右缘 → 父卡右缘 的差
     val rightPx = if (hasFrame && containerOrigin != Rect.Zero) {
-        (cardOrigin.right - containerOrigin.right).toFloat()
+        (frameCardOrigin.right - containerOrigin.right).toFloat()
     } else 0f
     // 形变起点（子卡局部坐标）= 父行矩形。子卡右缘与父卡右缘对齐、
     // 比父卡宽 12%，且父卡有 8dp 内缩，所以父行左缘在子卡局部坐标里
     // 要减去“父卡右缘 → 子卡右缘”的差再减内缩：
     //   x_local = x_root - (cardOrigin.right - subWidthPx)
     val startTop = insetPx
-    val startBottom = insetPx + (anchor?.height ?: 0f)
-    val startLeft = (subWidthPx - cardWidthPx + insetPx).coerceAtLeast(0f)
+    val startBottom = insetPx + (frameAnchor?.height ?: 0f)
+    val startLeft = (subWidthPx - frameCardWidth + insetPx).coerceAtLeast(0f)
     val startRight = (subWidthPx - insetPx).coerceAtLeast(startLeft + 1f)
     Box(
         Modifier
@@ -1593,8 +1614,8 @@ private fun BoxScope.GlassSubmenuOverlay(
     ) {
         CompositionLocalProvider(LocalContentColor provides panelAdaptive.color) {
             Column(Modifier.verticalScroll(rememberScrollState())) {
-                if (title != null) {
-                    GlassMenuHeaderRow(label = title, value = value, onClick = onDismiss)
+                if (frameTitle != null) {
+                    GlassMenuHeaderRow(label = frameTitle, value = frameValue, onClick = onDismiss)
                     GlassMenuDivider()
                 }
                 // 行内容随形变淡入（库：形变过半前内容压住，过半后快速显现）

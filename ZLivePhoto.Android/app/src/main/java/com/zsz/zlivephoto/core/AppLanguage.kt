@@ -1,11 +1,12 @@
 package com.zsz.zlivephoto.core
 
-import android.app.Activity
-import android.app.LocaleManager
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Build
 import android.os.LocaleList
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import java.util.Locale
 
 /**
@@ -13,21 +14,33 @@ import java.util.Locale
  *
  * 设计：
  * - 选择持久化在 `zlivephoto` SharedPreferences 的 `app_language`（空 = 跟随系统）。
- * - **Android 13+**：走系统 `LocaleManager.setApplicationLocales`（与
- *   `res/xml/locales_config.xml` 声明的 8 个语种配合，系统会自动重建界面）。
- * - **Android 13 以下**：由 [wrap] 在 `Application.attachBaseContext` 里按已保存语言包装
- *   Context，并在 [set] 时 `recreate()` 当前 Activity 使其生效。
+ * - **运行期切换不重建界面**：Compose 根壳的 `LanguageHost` 观察 [runtimeTag]，
+ *   在菜单收起后把整页文字淡出/镜像后换成新语言（见 ui/LanguageHost.kt）；
+ *   Activity 不再 `recreate()`，页面滚动位置、选中状态都保持不变。
+ * - **冷启动**：由 [wrap] 在 `Application/Activity.attachBaseContext` 按已保存语言包装 Context。
  * - 兜底语言是 `res/values/` 的简体中文：设备语言不在 `locales_config.xml` 清单内时回落中文。
  */
 object AppLanguage {
     private const val PREFS = "zlivephoto"
     private const val KEY_TAG = "app_language"
 
+    /**
+     * 运行期语言（Compose 可观察）。`null` = 尚未初始化，由 LanguageHost 用已保存值填充。
+     * 空串表示「跟随系统」。
+     */
+    var runtimeTag: String? by mutableStateOf(null)
+        private set
+
     /** 空串 = 跟随系统 */
     fun currentTag(context: Context): String =
         context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString(KEY_TAG, "").orEmpty()
 
-    /** 设置应用语言；tag 为空串表示跟随系统。 */
+    /**
+     * 设置应用语言；tag 为空串表示跟随系统。
+     *
+     * 只写偏好 + 更新 [runtimeTag]，**不调用 LocaleManager、不重建 Activity**：
+     * 界面文字由 LanguageHost 在一段淡出/镜像动画后原地切换。
+     */
     fun set(context: Context, tag: String) {
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         if (tag.isEmpty()) {
@@ -35,42 +48,15 @@ object AppLanguage {
         } else {
             prefs.edit().putString(KEY_TAG, tag).apply()
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            try {
-                val locales = if (tag.isEmpty()) LocaleList.getEmptyLocaleList()
-                else LocaleList.forLanguageTags(tag)
-                context.getSystemService(LocaleManager::class.java)?.applicationLocales = locales
-            } catch (_: Exception) {
-                // 个别 ROM 缺该服务：退回重建路径
-                recreateHost(context)
-            }
-        } else {
-            // 13 以下由 wrap() 生效，需要重建界面
-            recreateHost(context)
-        }
+        runtimeTag = tag
     }
 
-    /**
-     * 找到承载界面的 Activity 并重建。
-     * Compose 里的 `LocalContext.current` 通常是 `ContextThemeWrapper`（不是 Activity 本身），
-     * 直接 `as? Activity` 会失败导致「切了语言要等下次启动才生效」，这里沿 baseContext 链解开包装。
-     */
-    private fun recreateHost(context: Context) {
-        var ctx: Context? = context
-        while (ctx != null) {
-            if (ctx is Activity) {
-                ctx.recreate()
-                return
-            }
-            ctx = (ctx as? android.content.ContextWrapper)?.baseContext
-        }
-    }
-
-    /**
-     * 语言的**自称**显示名（例如 `zh-Hant` → 「繁體中文」、`bo` → 「བོད་སྐད་」）。
-     * tag 为空串时返回系统当前语言的显示名（UI 侧「跟随系统」那一行由界面自己的资源文案负责）。
-     */
+    /** 语言的**自称**显示名（例如 `zh-Hant` → 「繁體中文」、`bo` → 「བོད་སྐད་」）。 */
     fun displayName(tag: String): String {
+        // 文言（lzh）在部分系统 / 部分界面语言下 ICU 取不到本地化名称，
+        // 会直接回落成代码「Lzh」（用户反馈）。语言列表一律显示各语言的自称名，
+        // 这里直接给出「文言」。
+        if (tag.equals("lzh", ignoreCase = true)) return "文言"
         val locale = if (tag.isEmpty()) Locale.getDefault() else Locale.forLanguageTag(tag)
         val name = locale.getDisplayName(locale)
         return name.ifEmpty { locale.toLanguageTag() }

@@ -31,6 +31,9 @@
     <string name="update_forced_body">本机系统为 Android 10 及以上，Go 轻量版已不再适配，旧版本无法继续使用；新版也不再提供 Go 兼容版本。\n\n请连接网络后点击「重试」获取正常版本安装包。</string>
     <string name="update_retry">重试</string>
     <string name="update_switch_normal_body">本机系统为 Android 10 及以上，Go 轻量版已不再适配，旧版本无法继续使用。\n请下载并安装正常版本后继续使用（新版不再提供 Go 兼容版本）。</string>
+    <string name="update_go_remind_title">建议使用完整版</string>
+    <string name="update_go_remind_body">你的系统为 Android 12 及以上。完整版功能更全、体验更好；Go 轻量版仍可继续使用。</string>
+    <string name="update_go_continue">继续使用</string>
 
     <!-- 下载 / 安装权限 / 结果提示 -->
     <string name="update_downloading_title">下载更新</string>

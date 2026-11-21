@@ -1,5 +1,7 @@
 import java.util.Properties
 import java.io.FileInputStream
+import java.security.KeyStore
+import java.security.MessageDigest
 
 plugins {
     alias(libs.plugins.android.application)
@@ -8,26 +10,31 @@ plugins {
 
 android {
     namespace = "com.zsz.zlivephoto"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.zsz.zlivephoto"
-        targetSdk = 36
-        versionCode = 59
-        versionName = "3.9.1"
+        targetSdk = 37
+        versionCode = 61
+        versionName = "4.0.1"
+
+        // 官方版本校验用的签名证书 SHA-256：构建时从本地 keystore 读出后写入 BuildConfig。
+        // keystore 与 signing.properties 都不入库，因此其他证书 / debug 包会自动判定为非官方版本，
+        // 赞助入口只提示、不展示收款码。
+        buildConfigField("String", "SPONSOR_CERT_SHA256", "\"${releaseCertSha256(rootProject.file("signing.properties"))}\"")
     }
 
     flavorDimensions += "edition"
     productFlavors {
-        // normal：完整版（Android 10+），应用名 ZLC，内置 ffmpeg 转码器
+        // normal：完整版（Android 12+），液态玻璃 UI（Glasmio），内置 ffmpeg 转码器
         create("normal") {
             dimension = "edition"
             applicationId = "com.zsz.zlivephoto"
-            minSdk = 29
+            minSdk = 31
             // 内置 ffmpeg 仅有 arm64-v8a 二进制；限定单 ABI，避免为不存在的 ABI 打包
             ndk { abiFilters += "arm64-v8a" }
         }
-        // go：轻量版（Android 6+，单线程、无动态取色、不含 ffmpeg 转码器）。
+        // go：轻量版（Android 6+，Material 3 UI、单线程、不含 ffmpeg 转码器）。
         // 独立 applicationId 确保与 normal 版可同时安装
         create("go") {
             dimension = "edition"
@@ -75,8 +82,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     buildFeatures {
@@ -102,6 +109,38 @@ dependencies {
     implementation(libs.backdrop)
     debugImplementation(libs.compose.ui.tooling)
 
+    // Glasmio 液态玻璃 UI（仅 normal flavor / Android 12+ 打包）
+    add("normalImplementation", libs.glasmio.core)
+    // glasmio-glass / glasmio-ui 使用 third_party 下的本地副本（已打阴影/拖选补丁），Maven 坐标已在根构建排除
+    add("normalImplementation", project(":glasmio-glass-fork"))
+    add("normalImplementation", project(":glasmio-ui-fork"))
+    add("normalImplementation", libs.glasmio.scaffold)
+    add("normalImplementation", libs.glasmio.preference)
+    add("normalImplementation", libs.glasmio.icons)
+
     // JVM 单元测试（AndroidLogicGpsTest：验证转换不破坏 GPS）
     testImplementation("junit:junit:4.13.2")
+
+    // 赞助二维码生成（纯离线，无网络/相机依赖）
+    implementation("com.google.zxing:core:3.5.3")
+}
+
+/**
+ * 读取本地 keystore 证书的 SHA-256（大写十六进制）。
+ * signing.properties 缺失或读取失败时返回空串 —— 运行时据此判定「非官方版本」。
+ */
+fun releaseCertSha256(propsFile: File): String {
+    if (!propsFile.exists()) return ""
+    return runCatching {
+        val props = Properties().apply { propsFile.inputStream().use { load(it) } }
+        val store = props.getProperty("storeFile") ?: return ""
+        val password = props.getProperty("storePassword") ?: return ""
+        val alias = props.getProperty("keyAlias") ?: return ""
+        val keystoreFile = File(store).let { if (it.isAbsolute) it else propsFile.parentFile.resolve(store) }
+        val ks = KeyStore.getInstance(KeyStore.getDefaultType())
+        FileInputStream(keystoreFile).use { ks.load(it, password.toCharArray()) }
+        val cert = ks.getCertificate(alias) ?: return ""
+        MessageDigest.getInstance("SHA-256").digest(cert.encoded)
+            .joinToString("") { "%02X".format(it) }
+    }.getOrDefault("")
 }

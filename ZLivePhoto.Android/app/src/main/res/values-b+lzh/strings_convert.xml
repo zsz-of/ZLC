@@ -107,6 +107,8 @@
     <string name="conv_risk_ack_message" formatted="false">此行將覆寫或刪除原圖，恐致原始之檔永失而不可復。\n\n• 覆寫之時若中斷、不足於空間、或失其權限，原檔或損\n• 既刪之後，於相冊與本應用皆不可復得\n• 宜先備份要圖\n\n請書下文言以續：</string>
     <string name="conv_risk_ack_phrase">我已知曉風險</string>
     <string name="conv_risk_ack_skip">下次徑確認，無須再書</string>
+    <string name="conv_risk_delete_message">續之則刪原圖。</string>
+    <string name="conv_risk_replace_message">續之則替原圖。</string>
     <string name="conv_risk_ack_confirm">確認而始</string>
     <string name="conv_risk_ack_cancel">取消</string>
 </resources>

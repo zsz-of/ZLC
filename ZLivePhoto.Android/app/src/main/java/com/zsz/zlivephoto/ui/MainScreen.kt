@@ -703,6 +703,8 @@ fun MainScreen(
             FilledTonalButton(onClick = {
                 haptic.click()
                 statusClipboard.setText(AnnotatedString(statusText))
+                // 复制后直接关闭弹窗
+                showStatusDetail = false
             }) { Text(stringResource(R.string.screen_copy)) }
         },
         dismissButton = {
@@ -1081,19 +1083,7 @@ private fun BottomControls(
                         enabled = !busy,
                         revertSignal = modeRevertTick
                     )
-                    // 选中项的说明 + 权限不足时的解锁提示
-                    Text(
-                        text = stringResource(
-                            when (outputMode) {
-                                OutputMode.REPLACE -> R.string.screen_mode_replace_desc
-                                OutputMode.DELETE -> R.string.screen_mode_delete_desc
-                                OutputMode.KEEP -> R.string.screen_mode_keep_desc
-                            }
-                        ),
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(start = 4.dp)
-                    )
+                    // 权限不足时的解锁提示（选中项说明小字已按用户要求移除）
                     if (!outputModeUsable) {
                         Text(
                             text = stringResource(R.string.screen_mode_need_access),

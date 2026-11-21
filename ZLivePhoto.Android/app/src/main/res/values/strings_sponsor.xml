@@ -1,0 +1,27 @@
+<resources>
+    <string name="sponsor_section_title">赞助</string>
+    <string name="sponsor_row">赞助支持</string>
+    <string name="sponsor_reminder_title">支持一下</string>
+    <string name="sponsor_reminder_body">抱歉打扰到你了。如果 ZLive Photo 帮到了你，欢迎赞助作者，让它可以继续维护下去。</string>
+    <string name="sponsor_now">现在赞助</string>
+    <string name="sponsor_later">下次一定</string>
+    <string name="sponsor_never">不再提示</string>
+    <string name="sponsor_method_title">选择赞助方式</string>
+    <string name="sponsor_wechat">微信</string>
+    <string name="sponsor_alipay">支付宝</string>
+    <string name="sponsor_save_qr">保存二维码</string>
+    <string name="sponsor_saved_toast">二维码已保存到相册</string>
+    <string name="sponsor_save_failed">保存失败，请检查存储权限</string>
+    <string name="sponsor_open_alipay">打开支付宝</string>
+    <string name="sponsor_close">关闭</string>
+    <string name="sponsor_unofficial_title">非官方版本</string>
+    <string name="sponsor_unofficial_body">当前安装的 APK 不是官方签名版本，赞助功能不可用。</string>
+    <string name="sponsor_qr_hint_wechat">微信扫一扫，或长按识别二维码</string>
+    <string name="sponsor_qr_hint_alipay">支付宝扫一扫，或点下方按钮直接打开</string>
+    <string name="sponsor_qr_cd">赞助二维码</string>
+    <string name="sponsor_disclaimer_title">赞助前请阅读</string>
+    <string name="sponsor_disclaimer_body">感谢你的支持。请先阅读以下说明：\n\n1. 赞助完全出于自愿，属于对开发者的无偿支持，不构成任何商品、服务或会员的购买，也不构成合同对价。\n2. 赞助款项一经支付不予退还。\n3. 不得以软件后续出现问题、功能缺失、更新缓慢、兼容性变化、数据丢失或任何其他软件相关问题为由要求退款。\n4. 本软件按「现状」提供，不对可用性、稳定性、适用性作任何明示或默示担保。\n5. 因使用或无法使用本软件产生的任何直接或间接损失，开发者不承担责任；法律法规另有强制规定的除外。\n\n继续即表示你已理解并同意以上内容。</string>
+    <string name="sponsor_disclaimer_agree">我已阅读并同意</string>
+    <string name="sponsor_disclaimer_cancel">取消</string>
+    <string name="sponsor_save_qr_done">二维码已保存</string>
+</resources>

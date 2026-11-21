@@ -99,7 +99,7 @@
     <string name="main_progress_processed">Processed %1$d/%2$d</string>
     <string name="main_progress_imported">Imported %1$d/%2$d</string>
     <string name="main_dialog_permission_title">Permission to read photos and videos is required</string>
-    <string name="main_dialog_permission_message">This app needs to read photos and videos on your device:\n\n• Photos permission: scan the device gallery and identify the Live Photos in it\n• Videos permission: find the companion videos that come with two-file Live Photos\n• Location permission: preserve the GPS location metadata in photos (without it, converted photos lose their location information)\n\nIf you deny it, the built-in picker cannot be used; you can tap “Add files” later to grant permission again.</string>
+    <string name="main_dialog_permission_message">Photos and videos access is needed to scan and convert Live Photos; location access preserves GPS info and can be denied.</string>
     <string name="main_dialog_settings_title">Photos and videos permissions must be granted manually</string>
     <string name="main_dialog_settings_message">You previously chose “Don\'t ask again”, so the system no longer shows the permission dialog.\n\nPlease go to the app details page → Permissions → Photos and videos, grant access manually, then return to this app.\n\nNote: both the “Photos” and “Videos” permissions must be granted, otherwise two-file Live Photos will not be able to find their companion videos.</string>
     <string name="main_dialog_allfiles_title_delete">Automatically deleting originals requires “All files access”</string>
@@ -113,8 +113,8 @@
     <string name="main_dialog_allfiles_replace_unsupported_message">The current system (Android 10 or lower) does not provide “All files access”, so original files on disk cannot be rewritten directly; this device therefore does not support “Replace mode”.\n\nYou can keep converting in the default way; the results are written into the gallery folder.</string>
     <string name="main_dialog_allfiles_location_message">On some devices (such as Meizu), writing through the system gallery API strips GPS location information, so converted photos lose their location.\n\nOnce you grant “All files access”, this app writes directly into the gallery folder and fully preserves the location metadata.\n\nConversion still works without it, but some devices may lose location information.</string>
     <string name="main_dialog_conflict_title">Output file name conflict</string>
-    <string name="main_dialog_conflict_message">A file with the same name already exists in the output folder:\n%1$s\n\nPlease choose how to handle it.</string>
-    <string name="main_label_conflict_always">Use this for all later conflicts</string>
+    <string name="main_dialog_conflict_message">A file with the same name already exists in the output folder:\n%1$s</string>
+    <string name="main_label_conflict_always">Don\'t ask again for this batch</string>
     <string name="main_btn_grant">Grant</string>
     <string name="main_btn_deny">Deny</string>
     <string name="main_btn_go_settings">Open settings</string>
@@ -152,4 +152,18 @@
     <string name="main_status_item_format_reset">“%1$s” now follows the global format</string>
     <string name="main_status_import_done_grouped">Imported %1$d items (%2$d live photos merged)%3$s</string>
     <string name="main_status_import_unpaired">; %1$d single photos/videos without a same-named partner were skipped</string>
+    <!-- Error report (global log / crash / conversion failure) -->
+    <string name="error_report_title">Something went wrong</string>
+    <string name="error_report_message">%1$s\n\nYou can submit an error report to help the developer diagnose the issue.</string>
+    <string name="error_report_crash_message">The app exited unexpectedly last time: %1$s\n\nYou can submit an error report to help the developer diagnose the issue.</string>
+    <string name="error_report_submit">Submit report</string>
+    <string name="error_report_later">Later</string>
+    <string name="main_status_conversion_failed_report">%1$d files failed to process</string>
+    <string name="agreement_title">Terms of Use &amp; Disclaimer</string>
+    <string name="agreement_body">Welcome to ZLivePhoto (the \"Software\"). Please read and accept the following terms before first use:\n\n1. License\nThis Software is provided \"as is\". You may use it subject to these terms and applicable law. The developer may modify, suspend or discontinue any part of the Software at any time.\n\n2. Risks\n(a) The Software processes photos and videos on your device. Back up important files. The developer is not liable for data loss or damage caused by misoperation, system limits, storage failure, power loss or other events beyond reasonable control.\n(b) Operations that overwrite or delete originals always show a confirmation first. Please review it before continuing.\n(c) No guarantee is made that the Software works on every device, OS version or file format.\n\n3. Disclaimer\n(a) The Software comes with no express or implied warranty, including merchantability, fitness for a particular purpose or non-infringement.\n(b) To the extent permitted by law, the developer is not liable for any direct, indirect, incidental or consequential loss arising from the use of or inability to use the Software, including data loss, device damage or loss of profits.\n(c) The Software may include third-party open-source components; their licenses apply to those components.\n\n4. Sponsorship\nSponsorship is entirely voluntary and is a donation to the developer, not a purchase of goods or services. Payments are non-refundable and cannot be refunded due to later software issues or feature changes.\n\n5. Other\nContinuing to use the Software means you have read, understood and accepted all of the above. If you do not agree, please exit and use an alternative.</string>
+    <string name="agreement_agree">Agree and continue</string>
+    <string name="agreement_decline">Disagree and exit</string>
+    <string name="agreement_decline_title">Unable to continue</string>
+    <string name="agreement_decline_body">You need to accept the terms of use to use this app.</string>
+    <string name="settings_dialog_test">Dialog test</string>
 </resources>

@@ -28,6 +28,9 @@
     <string name="update_forced_body">本端末のシステムは Android 10 以上で、Go 軽量版は対応しなくなり、旧バージョンは使用できません。新版も Go 互換版を提供しません。\n\nネットワークに接続して「再試行」をタップし、通常版のインストールパッケージを取得してください。</string>
     <string name="update_retry">再試行</string>
     <string name="update_switch_normal_body">本端末のシステムは Android 10 以上で、Go 軽量版は対応しなくなり、旧バージョンは使用できません。\n通常版をダウンロードしてインストールしてから続けてください（新版は Go 互換版を提供しません）。</string>
+    <string name="update_go_remind_title">完全版の使用をおすすめします</string>
+    <string name="update_go_remind_body">お使いのシステムは Android 12 以上です。完全版は機能が充実し、操作性も向上しています。Go 軽量版も引き続きご利用いただけます。</string>
+    <string name="update_go_continue">このまま使用</string>
 
     <!-- ダウンロード / インストール権限 / 結果の通知 -->
     <string name="update_downloading_title">更新をダウンロード</string>

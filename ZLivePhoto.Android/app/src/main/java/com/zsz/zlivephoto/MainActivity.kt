@@ -1,6 +1,5 @@
 package com.zsz.zlivephoto
 
-import android.app.WallpaperManager
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -10,7 +9,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.os.Handler
 import android.os.Looper
 import android.provider.DocumentsContract
 import android.provider.MediaStore
@@ -53,7 +51,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -72,6 +69,13 @@ import com.zsz.zlivephoto.core.QuickClassify
 import com.zsz.zlivephoto.core.UpdateChecker
 import com.zsz.zlivephoto.core.UpdateCheckResult
 import com.zsz.zlivephoto.core.formats.FormatRegistry
+import com.zsz.zlivephoto.flavor.FlavorCapabilities
+import com.zsz.zlivephoto.ui.AllFilesPurpose
+import com.zsz.zlivephoto.ui.AppHost
+import com.zsz.zlivephoto.ui.AppRoot
+import com.zsz.zlivephoto.ui.AppScreen
+import com.zsz.zlivephoto.ui.ConflictAction
+import com.zsz.zlivephoto.ui.ConflictRequest
 import com.zsz.zlivephoto.ui.AppSettings
 import com.zsz.zlivephoto.ui.FancyEasing
 import com.zsz.zlivephoto.ui.FileItem
@@ -88,7 +92,6 @@ import com.zsz.zlivephoto.ui.RiskAckDialog
 import com.zsz.zlivephoto.ui.rememberHapticFeedback
 import com.zsz.zlivephoto.ui.rememberLegacyUninstallFlow
 import com.zsz.zlivephoto.ui.rememberUpdateFlow
-import com.zsz.zlivephoto.ui.wallpaperHue
 import com.zsz.zlivephoto.ui.glass.GlassRoot
 import com.zsz.zlivephoto.ui.glass.LiquidDialog
 import com.zsz.zlivephoto.ui.glass.LocalGlassBackdrop
@@ -121,41 +124,31 @@ import java.util.concurrent.atomic.AtomicInteger
 import kotlin.coroutines.cancellation.CancellationException
 import kotlin.coroutines.resume
 
-/** 文件名冲突处理动作 */
-internal enum class ConflictAction { SKIP, OVERWRITE, RENAME }
-
 /**
- * 会话型弹窗占用者（全局弹窗闸门）：同一时刻只允许一个弹窗占用屏幕。
- * 处理（转换 / 导入）进行中一律不占用，处理队列结束后再按此优先级依次弹出。
+ * 应用主入口：持有全部业务状态（列表、任务编排、权限、导出、持久化），
+ * 通过 [AppHost] 契约向双 UI（normal 液态玻璃 / go Material 3）暴露状态与动作。
  */
-private enum class DialogOwner { NONE, PERMISSION, UPDATE, ALL_FILES, LEGACY }
+/** Activity 重建（切换语言等）时保存的顶层页面 */
+private const val STATE_SCREEN = "zlc_screen"
 
-/** 冲突询问请求（挂起协程 ↔ 弹窗之间的桥） */
-private class ConflictRequest(
-    val displayNames: String,
-    val onChoose: (ConflictAction) -> Unit
-)
-
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity(), AppHost {
 
     /** 常见高刷档位（Hz）：用于把面板上报的带误差刷新率吸附到标准档位 */
     private val REFRESH_TIERS =
         floatArrayOf(60f, 75f, 90f, 120f, 144f, 165f, 180f, 185f, 240f)
 
-    private val files = mutableStateListOf<FileItem>()
-    private var statusText by mutableStateOf("")
-    private var progress by mutableFloatStateOf(0f)
-    private var isConverting by mutableStateOf(false)
-    private var selectedFormat by mutableStateOf("google")
+    override val files = mutableStateListOf<FileItem>()
+    override var statusText by mutableStateOf("")
+    override var progress by mutableFloatStateOf(0f)
+    override var isConverting by mutableStateOf(false)
+    override var selectedFormat by mutableStateOf("google")
     private var lastExportError: String? = null
-    private var showPermissionDialog by mutableStateOf(false)
-    private var showSettingsDialog by mutableStateOf(false)
-    private var showAllFilesDialog by mutableStateOf(false)
-    /** 「所有文件访问」引导弹窗的用途：决定弹窗文案与标题 */
-    private enum class AllFilesPurpose { LOCATION, DELETE, REPLACE }
-    private var allFilesDialogPurpose by mutableStateOf(AllFilesPurpose.LOCATION)
+    override var showPermissionDialog by mutableStateOf(false)
+    override var showSettingsDialog by mutableStateOf(false)
+    override var showAllFilesDialog by mutableStateOf(false)
+    override var allFilesDialogPurpose by mutableStateOf(AllFilesPurpose.LOCATION)
     // 清空/处理收尾过程中（清空按钮须禁用，防止动画期间重复触发或状态错乱）
-    private var clearBusy by mutableStateOf(false)
+    override var clearBusy by mutableStateOf(false)
     // 防抖落盘任务：识别完成等高频稳定态回调合并为一次 JSON 写入
     private var stablePersistJob: kotlinx.coroutines.Job? = null
     // Compose 内创建的触觉反馈控制器引用（清空/完成批量清理的快速两下振动用）
@@ -164,39 +157,33 @@ class MainActivity : ComponentActivity() {
     // 并发协程过多导致资源耗尽崩溃
     @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
     private val detectionDispatcher = Dispatchers.IO.limitedParallelism(
-        if (BuildConfig.FLAVOR == "go") 1 else 4
+        FlavorCapabilities.maxParallelism
     )
     // 自上次落盘以来列表变更累计次数（每 50 条写一次本地 JSON）
     private var dirtyCount = 0
 
     // 进度第二行明细：列表转换「已处理 X/Y」；批量导入「已导入 X/Y」
-    private var progressDetail by mutableStateOf("")
+    override var progressDetail by mutableStateOf("")
     // 内置选择器导入进度（已添加/总需添加个数）
-    private var isImporting by mutableStateOf(false)
-    private var importProgress by mutableFloatStateOf(0f)
+    override var isImporting by mutableStateOf(false)
+    override var importProgress by mutableFloatStateOf(0f)
     // 终止转换请求：处理完当前文件后立即停止
     @Volatile private var stopRequested = false
     // 终止导入请求：导入循环下一项前检查，立即停止不再继续导入
     @Volatile private var stopImportRequested = false
     // 内置选择器打开流程进行中（读相册列表）：完成前禁用「添加文件」按钮
-    private var isPickerOpening by mutableStateOf(false)
+    override var isPickerOpening by mutableStateOf(false)
     // 显式跟踪系统深浅色（uiMode configChanges 下 LocalConfiguration 传播不可靠，
     // 部分 picker 控件（排序按钮/日期头/张数文本）曾不随主题切换）
-    private var isDarkTheme by mutableStateOf(false)
-
-    // 系统壁纸颜色变化监听（Android 12+ 动态取色）：壁纸一变即刷新 UI 主题跟随的色相缓存。
-    private var wallpaperColorsListener: WallpaperManager.OnColorsChangedListener? = null
-
-    /** Go 版门禁重新判定的触发计数：每次回到前台递增（见 onResume），驱动启动检查重跑 */
-    private var goGateTick by mutableIntStateOf(0)
+    override var isDarkTheme by mutableStateOf(false)
 
     // 文件名冲突弹窗（批量与单个转换共用）
-    private var conflictRequest by mutableStateOf<ConflictRequest?>(null)
+    override var conflictRequest by mutableStateOf<ConflictRequest?>(null)
     private val conflictMutex = Mutex()
     /** 本次转换已占用（或计划占用）的输出名，避免并发转换重复决策 */
     private val claimedNames = mutableSetOf<Pair<String, String>>() // (relSubDir, fileName)
     /** 冲突弹窗「本批次总是」复选框状态（每次弹窗前重置） */
-    private var conflictAlways by mutableStateOf(false)
+    override var conflictAlways by mutableStateOf(false)
     /** 本批次内记住的冲突处理动作（null=每次询问；批次开始时清空，仅当前批次有效） */
     @Volatile private var batchConflictAction: ConflictAction? = null
 
@@ -212,26 +199,22 @@ class MainActivity : ComponentActivity() {
     /** 替换模式：产物直接写回源文件本体（破坏性；与「删除原图」互斥） */
     private var replaceMode by mutableStateOf(false)
     /** 「所有文件访问」是否可用：替换原图与删除原图都依赖它（置灰时点击引导授权） */
-    private var outputModeUsable by mutableStateOf(false)
+    override var outputModeUsable by mutableStateOf(false)
 
     /**
      * 第一版面「处理方式」当前选中项，由 [deleteOriginal] / [replaceMode] 推导（两者互斥）。
      * 单选交互：REPLACE → replaceMode=true；DELETE → deleteOriginal=true；KEEP → 两者皆 false。
      */
-    private val outputMode: OutputMode
+    override val outputMode: OutputMode
         get() = when {
             replaceMode -> OutputMode.REPLACE
             deleteOriginal -> OutputMode.DELETE
             else -> OutputMode.KEEP
         }
     /**
-     * 开始输出前的风险确认（覆盖 / 删除原图）。
-     * 每次点「开始」都强制弹窗；只有用户上次勾选「下次直接确认」时，下一次免输入。
+     * 开始输出前的风险提示（覆盖 / 删除原图），每次点「开始」都弹窗。
      */
-    private var riskDialogVisible by mutableStateOf(false)
-    private var riskRequireTyping by mutableStateOf(true)
-    /** 一次性免输入标记（用户勾选后置 true，下次弹窗消费后立即复位） */
-    private var riskSkipOnce = false
+    override var riskDialogVisible by mutableStateOf(false)
 
     /** 本批次成功处理后待删除的原图（按源路径分组；IO 线程并发合并需加锁） */
     private val pendingDeleteBySource = LinkedHashMap<String, MutableList<PendingDelete>>()
@@ -242,15 +225,16 @@ class MainActivity : ComponentActivity() {
 
     // 内置选择器（默认入口；系统选择器作为备选保留）
     private lateinit var mediaRepo: MediaRepo
-    private lateinit var scanner: AlbumScanner
-    /** 顶层页面路由：Main 主页 / Picker 内置选择器 / Settings 设置页 */
-    private enum class AppScreen { Main, Picker, Settings }
-    private var screen by mutableStateOf(AppScreen.Main)
+    override val scanner by lazy { AlbumScanner(mediaRepo) }
+    /** 顶层页面路由（AppScreen 定义见 ui/AppHost.kt） */
+    override var screen by mutableStateOf(AppScreen.Main)
     private var pickerAlbums by mutableStateOf<List<AlbumInfo>>(emptyList())
     /** 本次导入方式（选择文件之前由用户确定），决定选择器过滤与后续处理路径 */
-    private var importMode by mutableStateOf(ImportMode.COMPOSE)
+    override var importMode by mutableStateOf(ImportMode.COMPOSE)
     /** 导入方式选择弹窗是否可见 */
-    private var importModeDialogVisible by mutableStateOf(false)
+    override var importModeDialogVisible by mutableStateOf(false)
+
+    override val albums: List<AlbumInfo> get() = pickerAlbums
 
     private lateinit var incomingDir: String
     private lateinit var outputDir: String
@@ -370,7 +354,7 @@ class MainActivity : ComponentActivity() {
      * - REPLACE / DELETE 需「所有文件访问」：缺失时弹授权引导，不改动当前选择
      * - KEEP：直接回到「保留原图」（两者皆关）
      */
-    private fun selectOutputMode(mode: OutputMode) {
+    override fun selectOutputMode(mode: OutputMode) {
         when (mode) {
             OutputMode.REPLACE -> {
                 if (!hasFullStorageAccess()) {
@@ -444,7 +428,7 @@ class MainActivity : ComponentActivity() {
 
     /** 长按列表项 → 单独设置该项输出格式（key 含 "extract"=拆解）。
      *  拆分任务只能拆解；合并/转换视频/转换动态照片任务不可拆解。 */
-    private fun setItemFormat(path: String, formatKey: String) {
+    override fun setItemFormat(path: String, formatKey: String) {
         val idx = files.indexOfFirst { it.path == path }
         if (idx < 0) return
         val item = files[idx]
@@ -478,7 +462,7 @@ class MainActivity : ComponentActivity() {
             getString(R.string.main_status_all_files_denied)
     }
 
-    private fun requestAllFilesAccess() {
+    override fun requestAllFilesAccess() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return
         try {
             val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
@@ -488,7 +472,7 @@ class MainActivity : ComponentActivity() {
     }
 
     /** 仅在「有媒体读取权限但缺所有文件访问（R+）」时弹一次引导（持久化标记避免反复打扰） */
-    private fun maybePromptAllFilesAccess() {
+    override fun maybePromptAllFilesAccess() {
         if (!hasReadPermission()) return
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return
         if (hasAllFilesAccess()) return
@@ -686,7 +670,7 @@ class MainActivity : ComponentActivity() {
      */
     @Suppress("DEPRECATION")
     private fun applyMaxRefreshRate() {
-        if (BuildConfig.FLAVOR == "go") return
+        if (FlavorCapabilities.isGo) return
         try {
             val display = windowManager.defaultDisplay
             val current = display.mode
@@ -744,7 +728,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        CrashHandler.install()
+        CrashHandler.install(this)
         // 状态栏初始文案：属性初始化器阶段拿不到 Context，统一在首帧组合前用资源写入
         statusText = getString(R.string.main_status_ready)
 
@@ -754,6 +738,16 @@ class MainActivity : ComponentActivity() {
 
         // 全局设置（主题/触感/弹性动画/更新检查）：首帧组合前初始化
         AppSettings.init(this)
+        // 冷启动计数：赞助提醒每 5 次启动弹一次（第 1 次不弹）。
+        // 只在真正的冷启动（无 savedInstanceState）累加：旋转屏幕 / 切换语言重建 Activity
+        // 不算一次启动，否则计数会被重建次数灌水。
+        if (savedInstanceState == null) {
+            com.zsz.zlivephoto.sponsor.SponsorState.onLaunch(this)
+        }
+        // 切换语言会重建 Activity：从设置页重建后仍停留在设置页，不要退回主页
+        if (savedInstanceState?.getString(STATE_SCREEN) == AppScreen.Settings.name) {
+            screen = AppScreen.Settings
+        }
         // 内置转码器（ffmpeg）参数（CRF/预设/编码器）：需在首帧组合前初始化，
         // 否则设置页读取 prefs 时抛 lateinit property prefs has not been initialized
         FfmpegAddon.init(this)
@@ -793,7 +787,6 @@ class MainActivity : ComponentActivity() {
         }
 
         mediaRepo = MediaRepo(contentResolver)
-        scanner = AlbumScanner(mediaRepo)
 
         deleteOriginal = prefs.getBoolean("delete_original", false)
         replaceMode = AppSettings.replaceMode
@@ -806,503 +799,12 @@ class MainActivity : ComponentActivity() {
         // 处理启动时通过分享 Intent 进入的情况
         handleShareIntent(intent)
 
-        // 动态取色：系统壁纸颜色变化时刷新 UI 主题跟随的色相缓存
-        registerWallpaperColorListener()
+        // 标准版已移除动态取色与 MD3 回退：直接进入玻璃外壳
 
-        setContent {
-            ZLivePhotoTheme(darkTheme = isDarkTheme) {
-                // 全局触觉反馈：弹窗按钮等无独立交互源的控件统一使用
-                val haptic = rememberHapticFeedback()
-                hapticController = haptic
-                // 主列表滚动状态（LazyColumn 复位/保持由 MainScreen 使用）
-                val listState = rememberLazyListState()
-                // 深色模式三选变化：同步 isDarkTheme 驱动主题与选择器即时切换
-                LaunchedEffect(AppSettings.themeMode) {
-                    isDarkTheme = computeDarkTheme()
-                }
-                // 动态取色开关变化：已在 AppSettings.setUseDynamicTheme 内同步写好
-                // liveDynamicHue（与自定义取色同一模式），此处无需再做异步刷新；
-                // 壁纸颜色变化则由 registerWallpaperColorListener 驱动同一内存态。
-                // 处理过程中吞掉系统返回键（预测式返回下同样生效）
-                BackHandler(enabled = isConverting) { /* 处理中不响应返回 */ }
+        // 玻璃崩溃标记只做日志提示，不再切换外壳
+        if (CrashHandler.isGlassCrashPending(this)) CrashHandler.markGlassHealthy(this)
 
-                LaunchedEffect(Unit) {
-                    // 已有媒体读取权限但缺「所有文件访问」（R+）时，弹一次引导（升级用户路径）
-                    maybePromptAllFilesAccess()
-                }
-
-                // 更新弹窗状态（发现新版本 / 说明子弹窗 / 下载进度 / 安装权限引导）
-                val updateFlow = rememberUpdateFlow()
-
-                // 旧版本（Go 版）卸载提示状态（普通版启动时检测）
-                val legacyFlow = rememberLegacyUninstallFlow()
-
-                // 页面玻璃采样层发布者：各页面发布自己的 pageBackdrop，
-                // 应用级弹窗（权限引导 / 更新提示 / 文件名冲突 / 旧版本卸载提示）
-                // 据此采样「根渐变 + 当前页面」——弹窗与页面同窗口，坐标天然
-                // 对正、模糊实时（用户反馈 #5/#6），且复用页面已有录制零开销
-                val pageBackdropPublisher = remember { PageBackdropPublisher() }
-
-                // 启动时自动检查更新。
-                // 优先级：Go 版门禁（打开正常版 / 强制更新）→ 软件更新 → 旧版本卸载提示。
-                // Go 轻量版在 Android 10+ 上旧版本已不可用，不受「启动时检查更新」开关与
-                // 「跳过此版本」影响，弹窗一律不可关闭：已装正常版就要求直接打开，
-                // 未装则引导下载安装（拉取失败也挡住使用并提供重试）；
-                // 普通版仍遵循用户设置与跳过记录。
-                // startupCheckKey 用于「必须更新」弹窗上的「重试」重新发起拉取。
-                var startupCheckKey by remember { mutableStateOf(0) }
-                // Go 版在 Android 10+ 上不再适用：整个会话都必须被门禁挡住
-                val forceSwitch = BuildConfig.FLAVOR == "go" && LegacyApp.shouldSwitchToNormal()
-
-                // ── Go 门禁（Android 10+ 独占；每次回到前台重新判定，见 goGateTick）──
-                // ① 本机已装正常版 → 直接要求打开（不必再下载安装）；
-                // ② 未装正常版 → 拉取正常版信息引导更新，拉取失败则只给「重试」。
-                LaunchedEffect(startupCheckKey, goGateTick, forceSwitch) {
-                    if (!forceSwitch) return@LaunchedEffect
-                    if (LegacyApp.isNormalInstalled(this@MainActivity)) {
-                        updateFlow.presentRequireNormalOpen()
-                        return@LaunchedEffect
-                    }
-                    // 已有弹窗（下载中 / 阻塞重试）时不重复发起网络请求
-                    if (updateFlow.info != null || updateFlow.forcedBlocked) return@LaunchedEffect
-                    val normalInfo = UpdateChecker.fetchLatestForNormal()
-                    if (normalInfo != null) {
-                        updateFlow.presentSwitchToNormal(normalInfo)
-                    } else {
-                        updateFlow.showForcedBlocked()
-                    }
-                }
-
-                LaunchedEffect(startupCheckKey) {
-                    // Go 门禁场景由上面的 effect 独占处理，不走常规检查更新
-                    if (forceSwitch) return@LaunchedEffect
-                    var updatePrompted = false
-                    if (AppSettings.checkUpdateOnStartup) {
-                        val r = UpdateChecker.check(BuildConfig.VERSION_NAME)
-                        if (r is UpdateCheckResult.Update &&
-                            !AppSettings.isVersionSkipped(r.info.version)
-                        ) {
-                            updateFlow.present(r.info)
-                            updatePrompted = true
-                        }
-                    }
-                    // 旧版本卸载提示（仅普通版；无更新提示时）
-                    if (!updatePrompted && BuildConfig.FLAVOR != "go" &&
-                        !AppSettings.isReminderSuppressed(ReminderKey.LEGACY_GO_INSTALLED) &&
-                        LegacyApp.isGoInstalled(this@MainActivity)
-                    ) {
-                        legacyFlow.show()
-                    }
-                }
-
-                // ── 全局会话型弹窗闸门 ──
-                // 权限请求 / 应用更新 / 「所有文件访问」推荐 / 旧版本提示
-                // 同一时刻只允许弹出一个：处理（转换 / 导入）进行中整体抑制，处理队列
-                // 完成后才弹出；当前占用者关闭后自动轮到下一个（按下列优先级）。
-                val sessionDialogOwner = when {
-                    isConverting || isImporting -> DialogOwner.NONE
-                    showPermissionDialog || showSettingsDialog -> DialogOwner.PERMISSION
-                    updateFlow.wantsDialog -> DialogOwner.UPDATE
-                    showAllFilesDialog -> DialogOwner.ALL_FILES
-                    legacyFlow.visible -> DialogOwner.LEGACY
-                    else -> DialogOwner.NONE
-                }
-
-                // 更新弹窗 / 旧版本卸载提示统一移入下方 GlassRoot 内渲染：
-                // 弹窗必须是**同窗口覆盖层**（独立 Dialog 窗口采样坐标错误、
-                // 主窗口停绘导致模糊陈旧、窗口缩放不跟随导致点击映射错——
-                // 用户反馈 #5/#6），需要 GlassRoot 提供的玻璃 CompositionLocal
-
-                // 预览式返回：选择器 / 设置页手势进度驱动内容缩小右移（顶层稳定注册，
-                // 不受 AnimatedContent 过渡重组影响；提交后回到主页）
-                val backAnim = remember { Animatable(0f) }
-                // 设置页是否停在二级页（由 SettingsScreen 回传）：二级页期间关闭本层的
-                // 预测式返回动画，把返回完全交给设置页自己的层级（二级 → 设置根 → 主页），
-                // 与 FlClash 的 CommonPopScope / Navigator.canPop 语义一致
-                var settingsInSubpage by remember { mutableStateOf(false) }
-                // 离开设置页时清掉标记（设置页被销毁后不会再有回传）
-                LaunchedEffect(screen) {
-                    if (screen != AppScreen.Settings) settingsInSubpage = false
-                }
-                // 预览式返回：go 轻量版不启用（进一步简化）
-                PredictiveBackHandler(enabled = BuildConfig.FLAVOR != "go" &&
-                    (screen == AppScreen.Picker ||
-                        (screen == AppScreen.Settings && !settingsInSubpage))) { flow ->
-                    try {
-                        flow.collect { backAnim.snapTo(it.progress) }
-                        screen = AppScreen.Main
-                        backAnim.snapTo(0f)
-                    } catch (_: CancellationException) {
-                        backAnim.animateTo(0f, tween(200))
-                    }
-                }
-                // 系统返回键：选择器 / 设置页返回上一级（主页），不退出应用；
-                // 处理中由上方 BackHandler(enabled = isConverting) 吞掉，二者不冲突。
-                // 设置页停在二级页时让位给设置页内部层级（二级 → 设置根）
-                BackHandler(enabled = screen == AppScreen.Picker ||
-                    (screen == AppScreen.Settings && !settingsInSubpage)) {
-                    screen = AppScreen.Main
-                }
-
-                // 进入/退出内置选择器的过渡动画（ImageToolbox fancySlideTransition 式）：
-                // 选择器从右侧整屏滑入 + 淡入，主页向左小幅滑出让位；返回时反向。
-                // 设置页用淡入淡出 + 轻微缩放过渡。
-                // RTL：推拉方向必须跟随布局方向（阿拉伯语/希伯来语等从右到左时整体取反），
-                // 否则 RTL 下「前进」会从反方向滑入。transitionSpec / graphicsLayer 都不是
-                // @Composable 作用域，所以在这里先取好方向值再捕获进闭包。
-                val rtlDir = if (
-                    androidx.compose.ui.platform.LocalLayoutDirection.current ==
-                    androidx.compose.ui.unit.LayoutDirection.Rtl
-                ) -1 else 1 // Int：slideInHorizontally 的 fullWidth 是 Int；与 Float 相乘会自动提升
-                // 液态玻璃根容器：铺一条主题色渐变作为采样源，并向子树提供玻璃 CompositionLocal。
-                // 只包裹页面内容 —— 弹窗是独立 Window，不参与采样源记录。
-                GlassRoot {
-                // 页面采样层发布作用域：页面把 pageBackdrop 写进 pageBackdropPublisher，
-                // 供下方应用级弹窗采样「根 + 当前页面」
-                CompositionLocalProvider(LocalPageBackdropPublisher provides pageBackdropPublisher) {
-                AnimatedContent(
-                    targetState = screen,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        // 过渡动画期间两屏交错露出的底层必须使用主题背景，
-                        // 否则深色模式下会露出 Activity 窗口默认的白色背景。
-                        // 玻璃启用时改透明：采样源渐变由 GlassRoot 铺在内容之下，
-                        // 页面容器不透明会把它整块遮住，玻璃元素就无从采样。
-                        .then(
-                            if (AppSettings.glassActive) Modifier
-                            else Modifier.background(MaterialTheme.colorScheme.background)
-                        )
-                        .graphicsLayer {
-                            val p = backAnim.value
-                            if (p > 0f) {
-                                scaleX = 1f - p * 0.06f
-                                scaleY = 1f - p * 0.06f
-                                translationX = p * size.width * 0.18f * rtlDir
-                                transformOrigin = TransformOrigin(0.5f, 0.5f)
-                            }
-                        },
-                    transitionSpec = {
-                        // 用 initialState / targetState 判断方向（screen 是可变的当前目标，
-                        // 动画开始时已指向目标页，用它判断「从主页进入」必然失败 → 会退化到兜底淡入）
-                        val slideIn = initialState == AppScreen.Main && (targetState == AppScreen.Picker || targetState == AppScreen.Settings)
-                        val slideOut = (initialState == AppScreen.Picker || initialState == AppScreen.Settings) && targetState == AppScreen.Main
-                        when {
-                            // 主页 → 选择器 / 设置页：目标页从右整屏推入，主页整屏被推向左，对称推拉
-                            // （`* rtlDir`：RTL 下整体反号，改为从左推入/向右让位）
-                            slideIn ->
-                                (slideInHorizontally(tween(450, easing = FancyEasing)) { it * rtlDir } +
-                                        fadeIn(tween(300, 100))) togetherWith
-                                        (slideOutHorizontally(tween(450, easing = FancyEasing)) { -it * rtlDir } +
-                                                fadeOut(tween(300)))
-                            // 选择器 / 设置页 → 主页：反向对称推拉（主页整屏从左侧拉入，当前页整屏推出）
-                            slideOut ->
-                                (slideInHorizontally(tween(450, easing = FancyEasing)) { -it * rtlDir } +
-                                        fadeIn(tween(300, 100))) togetherWith
-                                        (slideOutHorizontally(tween(450, easing = FancyEasing)) { it * rtlDir } +
-                                                fadeOut(tween(300)))
-                            // 其余过渡（兜底）：淡入淡出 + 轻微缩放
-                            else ->
-                                (fadeIn(tween(250)) +
-                                        scaleIn(initialScale = 0.97f, animationSpec = tween(300, easing = FancyEasing))) togetherWith
-                                        (fadeOut(tween(180)))
-                        }
-                    },
-                    label = "screenTransition"
-                ) { page ->
-                    if (page == AppScreen.Picker) {
-                        // 内置选择器（默认）：MediaStore 直查，路径第一手，EXIF 完整保留
-                        // 统一选择器：同时展示动态照片 / 视频 / 普通图片，
-                        // 右上角「输出格式」决定本次导入的输出格式（含「拆解」）
-                        PhotoPickerScreen(
-                            albums = pickerAlbums,
-                            scanner = scanner,
-                            scannerScope = lifecycleScope,
-                            isDarkTheme = isDarkTheme,
-                            importMode = importMode,
-                            outputFormat = selectedFormat,
-                            onOutputFormatChange = { setOutputFormat(it) },
-                            onBack = { screen = AppScreen.Main },
-                            onConfirm = { items, coverSec ->
-                                screen = AppScreen.Main
-                                importPickedItems(items, coverSec)
-                            }
-                        )
-                    } else if (page == AppScreen.Settings) {
-                        // 设置页：更新检查 / 触感与动画开关 / 主题定制 / 关于
-                        SettingsScreen(
-                            onBack = { screen = AppScreen.Main },
-                            // 二级页开合回传：二级页期间最外层返回键 / 预测式返回让位
-                            onSubpageChanged = { settingsInSubpage = it }
-                        )
-                    } else {
-                        MainScreen(
-                            files = files,
-                            statusText = statusText,
-                            progress = progress,
-                            progressDetail = progressDetail,
-                            isImporting = isImporting,
-                            importProgress = importProgress,
-                            isConverting = isConverting,
-                            isPickerOpening = isPickerOpening,
-                            clearBusy = clearBusy,
-                            selectedFormat = selectedFormat,
-                            listState = listState,
-                            onAddFiles = { onAddFiles() },
-                            onBatchImport = { onBatchImport() },
-                            onOpenSettings = { screen = AppScreen.Settings },
-                            onClearFiles = { clearFiles() },
-                            onConvert = { startConvert() },
-                            onStopConvert = { stopConvert() },
-                            // 处理方式三选一（替换原图 / 删除原图 / 保留原图）
-                            outputMode = outputMode,
-                            outputModeUsable = outputModeUsable,
-                            onSelectOutputMode = { mode -> selectOutputMode(mode) },
-                            // 长按列表项：单独设置该项输出格式（null=恢复跟随全局）
-                            onSelectItemFormat = { path, key -> setItemFormat(path, key) },
-                            onRemoveFile = { path -> removeFile(path) }
-                        )
-                    }
-                } // AnimatedContent
-                } // 页面采样层发布作用域
-
-                // ── 应用级弹窗（与页面同窗口的覆盖层，见 [LiquidDialog]）──
-                // 采样「根渐变 + 当前页面」：页面通过 pageBackdropPublisher 发布
-                // 自己的采样层；坐标与主窗口严格一致、每帧刷新（用户反馈 #5/#6）
-                CompositionLocalProvider(
-                    LocalGlassBackdrop provides (
-                            pageBackdropPublisher.backdrop ?: LocalGlassBackdrop.current
-                            )
-                ) {
-                    // 发现新版本 / 更新说明 / 下载进度 / 安装权限引导等弹窗统一在这里渲染
-                    UpdateFlowHosts(
-                        updateFlow,
-                        vibrate = { haptic.click() },
-                        enabled = sessionDialogOwner == DialogOwner.UPDATE,
-                        onForcedRetry = {
-                            updateFlow.clearForcedBlocked()
-                            startupCheckKey++
-                        }
-                    )
-
-                    // 旧版本卸载提示弹窗
-                    LegacyUninstallFlowHosts(
-                        legacyFlow,
-                        vibrate = { haptic.click() },
-                        enabled = sessionDialogOwner == DialogOwner.LEGACY
-                    )
-
-                    // 覆盖 / 删除原图：开始输出前的强制风险确认（每次开始都弹）
-                    RiskAckDialog(
-                        visible = riskDialogVisible,
-                        requireTyping = riskRequireTyping,
-                        onDismiss = { riskDialogVisible = false },
-                        onConfirm = { skipNext ->
-                            riskDialogVisible = false
-                            if (skipNext) riskSkipOnce = true
-                            startConvertConfirmed()
-                        }
-                    )
-
-                    // 选择文件之前：先确定导入方式（合并 / 转换视频 / 转换动态照片 / 拆分动态照片）
-                    ImportModeDialog(
-                        visible = importModeDialogVisible,
-                        onDismiss = { importModeDialogVisible = false },
-                        onPick = { mode -> proceedWithImportMode(mode) }
-                    )
-
-                    // 权限请求对话框（首次或仍可请求时；由上方全局闸门决定是否轮到自己弹出）
-                    LiquidDialog(
-                        visible = showPermissionDialog && sessionDialogOwner == DialogOwner.PERMISSION,
-                        onDismissRequest = {
-                            // 拒绝不退出应用，仅关闭对话框
-                            showPermissionDialog = false
-                        },
-                        title = { Text(stringResource(R.string.main_dialog_permission_title)) },
-                        text = {
-                            Text(
-                                stringResource(R.string.main_dialog_permission_message)
-                            )
-                        },
-                        confirmButton = {
-                            FilledTonalButton(onClick = {
-                                haptic.click()
-                                showPermissionDialog = false
-                                onPermissionConfirm()
-                            }) { Text(stringResource(R.string.main_btn_grant)) }
-                        },
-                        dismissButton = {
-                            FilledTonalButton(onClick = {
-                                haptic.click()
-                                showPermissionDialog = false
-                            }) { Text(stringResource(R.string.main_btn_deny)) }
-                        }
-                    )
-
-                    // 跳转设置对话框（用户选了「不再询问」；与权限请求同一闸门优先级）
-                    LiquidDialog(
-                        visible = showSettingsDialog && sessionDialogOwner == DialogOwner.PERMISSION,
-                        onDismissRequest = {
-                            showSettingsDialog = false
-                        },
-                        title = { Text(stringResource(R.string.main_dialog_settings_title)) },
-                        text = {
-                            Text(
-                                stringResource(R.string.main_dialog_settings_message)
-                            )
-                        },
-                        confirmButton = {
-                            FilledTonalButton(onClick = {
-                                haptic.click()
-                                showSettingsDialog = false
-                                openAppDetailSettings()
-                            }) { Text(stringResource(R.string.main_btn_go_settings)) }
-                        },
-                        dismissButton = {
-                            FilledTonalButton(onClick = {
-                                haptic.click()
-                                showSettingsDialog = false
-                            }) { Text(stringResource(R.string.main_btn_cancel)) }
-                        }
-                    )
-
-                    // 「所有文件访问」引导：三种用途（①直写磁盘保留位置信息 ②开启自动删除原图 ③开启替换模式）
-                    val purpose = allFilesDialogPurpose
-                    // Android 11+ 才有「所有文件访问」；更低版本（含 Android 10）无法直接改写公共目录文件
-                    val grantable = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
-                    LiquidDialog(
-                        visible = showAllFilesDialog && sessionDialogOwner == DialogOwner.ALL_FILES,
-                        onDismissRequest = {
-                            showAllFilesDialog = false
-                            allFilesDialogPurpose = AllFilesPurpose.LOCATION
-                        },
-                        title = {
-                            Text(
-                                when {
-                                    purpose == AllFilesPurpose.DELETE && grantable -> stringResource(R.string.main_dialog_allfiles_title_delete)
-                                    purpose == AllFilesPurpose.DELETE -> stringResource(R.string.main_dialog_allfiles_title_delete_unsupported)
-                                    purpose == AllFilesPurpose.REPLACE && grantable -> stringResource(R.string.main_dialog_allfiles_title_replace)
-                                    purpose == AllFilesPurpose.REPLACE -> stringResource(R.string.main_dialog_allfiles_title_replace_unsupported)
-                                    else -> stringResource(R.string.main_dialog_allfiles_title_location)
-                                }
-                            )
-                        },
-                        text = {
-                            Text(
-                                when (purpose) {
-                                    AllFilesPurpose.DELETE ->
-                                        if (grantable) {
-                                            stringResource(R.string.main_dialog_allfiles_delete_message)
-                                        } else {
-                                            stringResource(R.string.main_dialog_allfiles_delete_unsupported_message)
-                                        }
-                                    AllFilesPurpose.REPLACE ->
-                                        if (grantable) {
-                                            stringResource(R.string.main_dialog_allfiles_replace_message)
-                                        } else {
-                                            stringResource(R.string.main_dialog_allfiles_replace_unsupported_message)
-                                        }
-                                    AllFilesPurpose.LOCATION ->
-                                        stringResource(R.string.main_dialog_allfiles_location_message)
-                                }
-                            )
-                        },
-                        confirmButton = {
-                            if (grantable) {
-                                FilledTonalButton(onClick = {
-                                    haptic.click()
-                                    showAllFilesDialog = false
-                                    allFilesDialogPurpose = AllFilesPurpose.LOCATION
-                                    requestAllFilesAccess()
-                                }) { Text(stringResource(R.string.main_btn_grant_access)) }
-                            } else {
-                                FilledTonalButton(onClick = {
-                                    haptic.click()
-                                    showAllFilesDialog = false
-                                    allFilesDialogPurpose = AllFilesPurpose.LOCATION
-                                }) { Text(stringResource(R.string.main_btn_got_it)) }
-                            }
-                        },
-                        dismissButton = if (grantable) {
-                            {
-                                FilledTonalButton(onClick = {
-                                    haptic.click()
-                                    showAllFilesDialog = false
-                                    allFilesDialogPurpose = AllFilesPurpose.LOCATION
-                                }) { Text(stringResource(R.string.main_btn_not_now)) }
-                            }
-                        } else null
-                    )
-
-                    // 文件名冲突弹窗（跳过 / 覆盖 / 自动重命名）
-                    // 退出动画期间 conflictRequest 已被置空：记住最后一次非空请求，
-                    // 让内容渲染完淡出（否则退场时内容会突然消失）
-                    val lastConflictRequest = remember { mutableStateOf<ConflictRequest?>(null) }
-                    LaunchedEffect(conflictRequest) {
-                        if (conflictRequest != null) lastConflictRequest.value = conflictRequest
-                    }
-                    val conflictReq = lastConflictRequest.value
-                    LiquidDialog(
-                        visible = conflictRequest != null,
-                        onDismissRequest = {
-                            // 点外部关闭视同跳过，避免协程悬挂
-                            val cb = conflictReq?.onChoose
-                            conflictRequest = null
-                            cb?.invoke(ConflictAction.SKIP)
-                        },
-                        title = { Text(stringResource(R.string.main_dialog_conflict_title)) },
-                        text = {
-                            conflictReq?.let { req ->
-                                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                                    Text(
-                                        stringResource(R.string.main_dialog_conflict_message, req.displayNames)
-                                    )
-                                    // 第一行：跳过 / 覆盖
-                                    Row(
-                                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                                        modifier = Modifier.fillMaxWidth()
-                                    ) {
-                                        FilledTonalButton(
-                                            onClick = { haptic.click(); req.onChoose(ConflictAction.SKIP) },
-                                            modifier = Modifier.weight(1f).height(42.dp)
-                                        ) { Text(stringResource(R.string.main_btn_skip)) }
-                                        FilledTonalButton(
-                                            onClick = { haptic.click(); req.onChoose(ConflictAction.OVERWRITE) },
-                                            modifier = Modifier.weight(1f).height(42.dp)
-                                        ) { Text(stringResource(R.string.main_btn_overwrite)) }
-                                    }
-                                    // 第二行：自动重命名（独占一行）
-                                    FilledTonalButton(
-                                        onClick = { haptic.click(); req.onChoose(ConflictAction.RENAME) },
-                                        modifier = Modifier.fillMaxWidth().height(42.dp)
-                                    ) { Text(stringResource(R.string.main_btn_auto_rename)) }
-                                    // 整行可点击切换（MD3 习惯：文字也是点击目标）
-                                    Row(
-                                        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
-                                        modifier = Modifier
-                                            .clip(RoundedCornerShape(8.dp))
-                                            .clickable {
-                                                haptic.click()
-                                                conflictAlways = !conflictAlways
-                                            }
-                                            .padding(horizontal = 4.dp, vertical = 8.dp)
-                                    ) {
-                                        GlassCheckbox(checked = conflictAlways)
-                                        Spacer(Modifier.width(12.dp))
-                                        Text(
-                                            stringResource(R.string.main_label_conflict_always),
-                                            style = MaterialTheme.typography.labelMedium
-                                        )
-                                    }
-                                }
-                            }
-                        },
-                        confirmButton = {},
-                        dismissButton = {}
-                    )
-                } // 应用级弹窗作用域
-                } // GlassRoot
-            }
-        }
+        setContent { AppRoot(this) }
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -1331,34 +833,16 @@ class MainActivity : ComponentActivity() {
         else -> systemIsDark()
     }
 
-    /** 回到前台：Go 版在 Android 10+ 上的门禁必须重新判定——用户可能刚装完正常版返回
-     *  （此时应改为「打开正常版」而不能再放行旧版），也可能中途卸载了正常版
-     *  （此时回到「必须更新」）。 */
-    override fun onResume() {
-        super.onResume()
-        if (BuildConfig.FLAVOR == "go" && LegacyApp.shouldSwitchToNormal()) goGateTick++
-        // 可能刚从系统设置页返回：「完全存储访问」的授予/撤销立即生效
-        refreshStorageGates()
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        // 仅记住设置页（选择器/主页有大量会话态，重建后回到主页更稳妥）
+        outState.putString(STATE_SCREEN, screen.name)
     }
 
-    /** 注册系统壁纸颜色变化监听（Android 12+ 动态取色用）。
-     *  壁纸一变即刷新动态取色跟随的色相缓存（AppSettings.liveDynamicHue），
-     *  值变更会驱动 UI 主题下次重组为壁纸色。
-     *  （历史上的「桌面图标跟随主题色」已整体移除：有用户反馈会出现两个桌面图标。） */
-    private fun registerWallpaperColorListener() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
-        if (BuildConfig.FLAVOR == "go") return
-        try {
-            val wm = WallpaperManager.getInstance(this)
-            val listener = WallpaperManager.OnColorsChangedListener { _, _ ->
-                // 统一色相来源：让 UI 主题（next recomposition）同步到壁纸色
-                AppSettings.updateLiveDynamicHue(wallpaperHue(this@MainActivity) ?: -1f)
-            }
-            wallpaperColorsListener = listener
-            wm.addOnColorsChangedListener(listener, Handler(Looper.getMainLooper()))
-        } catch (_: Exception) {
-            // 个别 ROM 可能不提供该能力，忽略即可（下次启动仍会重新读取壁纸色）
-        }
+    override fun onResume() {
+        super.onResume()
+        // 可能刚从系统设置页返回：「完全存储访问」的授予/撤销立即生效
+        refreshStorageGates()
     }
 
     /** 正常退出兜底：防抖的稳定态写入若尚未落盘，退出前同步补写尾部标记，
@@ -1366,17 +850,6 @@ class MainActivity : ComponentActivity() {
     override fun onDestroy() {
         stablePersistJob?.cancel()
         if (files.isNotEmpty()) persistList(complete = true)
-        // 移除壁纸颜色监听，防止泄漏
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            wallpaperColorsListener?.let { l ->
-                try {
-                    WallpaperManager.getInstance(this).removeOnColorsChangedListener(l)
-                } catch (_: Exception) {
-                    // 实例即将销毁，无需补救
-                }
-            }
-            wallpaperColorsListener = null
-        }
         super.onDestroy()
     }
 
@@ -1428,7 +901,7 @@ class MainActivity : ComponentActivity() {
 
     // ---------- 权限 ----------
 
-    private fun onAddFiles() {
+    override fun onAddFiles() {
         // 选择文件之前先让用户确定导入方式（合并 / 转换视频 / 转换动态照片 / 拆分动态照片）
         importModeDialogVisible = true
     }
@@ -1452,7 +925,7 @@ class MainActivity : ComponentActivity() {
      * 设置输出格式（含持久化）：队列已有合成任务时禁止切到「拆解」——
      * 拆解与合成语义互斥（合成产出动态照片，拆解反向拆出图+视频），混用会产出不可识别产物。
      */
-    private fun setOutputFormat(fmt: String) {
+    override fun setOutputFormat(fmt: String) {
         if (fmt == "extract" && files.any { it.formatKey == "compose" }) {
             statusText = getString(R.string.main_status_compose_blocks_extract)
             return
@@ -1498,7 +971,7 @@ class MainActivity : ComponentActivity() {
      * 全局输出格式为「拆解」时，需要合成的图片改用 Google 格式
      * （拆解无法作用于尚未合成的图片 + 视频）。
      */
-    private fun importPickedItems(items: List<MediaItem>, coverSec: Double = -1.0) {
+    override fun importPickedItems(items: List<MediaItem>, coverSec: Double) {
         if (items.isEmpty()) return
         val importFormat = selectedFormat
         val composeFormat = if (importFormat == "extract") "google" else null
@@ -1638,7 +1111,7 @@ class MainActivity : ComponentActivity() {
     }
 
     /** 终止转换/导入：转换处理完当前文件后停止；导入循环下一项前立即停止 */
-    private fun stopConvert() {
+    override fun stopConvert() {
         if (isConverting && !stopRequested) {
             stopRequested = true
             statusText = getString(R.string.main_status_stopping)
@@ -1648,7 +1121,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun onPermissionConfirm() {
+    override fun onPermissionConfirm() {
         val perms = requiredReadPermissions()
         if (!hasRequestedReadPermission()) {
             // 第一次请求：标记并直接发起系统权限请求
@@ -1667,7 +1140,7 @@ class MainActivity : ComponentActivity() {
         requestPermissionLauncher.launch(requiredReadPermissions())
     }
 
-    private fun openAppDetailSettings() {
+    override fun openAppDetailSettings() {
         try {
             val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
             intent.data = Uri.fromParts("package", packageName, null)
@@ -1765,7 +1238,7 @@ class MainActivity : ComponentActivity() {
     /**
      * 按路径移除列表项并清理本地缓存文件（含已复制的伴生视频）。
      */
-    private fun removeFile(path: String) {
+    override fun removeFile(path: String) {
         val idx = files.indexOfFirst { it.path == path }
         if (idx < 0) return
         val item = files[idx]
@@ -1943,7 +1416,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun clearFiles() {
+    override fun clearFiles() {
         if (files.isEmpty() || clearBusy) return
         clearBusy = true // 清理过程中禁用清空按钮
         hapticController?.double() // 快速两下振动
@@ -1970,12 +1443,10 @@ class MainActivity : ComponentActivity() {
 
     // ---------- 转换（列表模式） ----------
 
-    private fun startConvert() {
+    override fun startConvert() {
         if (isConverting) return
         // 覆盖 / 删除原图：每次开始输出都强制弹风险确认（不可持久化忽略），确认后才真正开始
         if (outputMode == OutputMode.REPLACE || outputMode == OutputMode.DELETE) {
-            riskRequireTyping = !riskSkipOnce
-            riskSkipOnce = false
             riskDialogVisible = true
             return
         }
@@ -2003,10 +1474,12 @@ class MainActivity : ComponentActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             // 转换并发：normal 4 路（Semaphore 限流），go 单线程（老机型性能低），单文件异常隔离不中断
-            val sem = Semaphore(if (BuildConfig.FLAVOR == "go") 1 else 4)
+            val sem = Semaphore(FlavorCapabilities.maxParallelism)
             val total = targets.size
             val done = AtomicInteger(0)
             val exported = AtomicInteger(0)
+            // 失败计数：批次结束后据此提示「提交错误报告」
+            val failures = AtomicInteger(0)
             // 成功处理的路径集合：处理期间不移除，全部完成后统一左滑清除
             val successPaths = java.util.concurrent.ConcurrentHashMap.newKeySet<String>()
 
@@ -2052,6 +1525,7 @@ class MainActivity : ComponentActivity() {
                                     log = { level, msg, tag ->
                                         if (level == "error" || level == "warn") {
                                             statusText = "[$tag] $msg"
+                                            com.zsz.zlivephoto.core.AppLog.warn(tag, msg)
                                         }
                                     },
                                     // 转码进度：写到「该任务自己的列表项」上（帧数/总帧/预计剩余）
@@ -2080,6 +1554,7 @@ class MainActivity : ComponentActivity() {
                                     log = { level, msg, tag ->
                                         if (level == "error" || level == "warn") {
                                             statusText = "[$tag] $msg"
+                                            com.zsz.zlivephoto.core.AppLog.warn(tag, msg)
                                         }
                                     },
                                     onTranscodeProgress = { frame, total, etaSec ->
@@ -2105,6 +1580,7 @@ class MainActivity : ComponentActivity() {
                                     log = { level, msg, tag ->
                                         if (level == "error" || level == "warn") {
                                             statusText = "[$tag] $msg"
+                                            com.zsz.zlivephoto.core.AppLog.warn(tag, msg)
                                         }
                                     }
                                 )
@@ -2161,6 +1637,12 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         } catch (e: Exception) {
+                            failures.incrementAndGet()
+                            com.zsz.zlivephoto.core.AppLog.error(
+                                "Convert",
+                                "处理失败：${item.name}",
+                                e
+                            )
                             withContext(Dispatchers.Main) {
                                 val i = files.indexOfFirst { it.path == item.path }
                                 if (i >= 0) {
@@ -2184,6 +1666,13 @@ class MainActivity : ComponentActivity() {
             jobs.joinAll()
             withContext(Dispatchers.Main) {
                 clearBusy = true // 收尾清理过程中禁用清空按钮
+                // 有失败项时提示「提交错误报告」（日志已记录完整堆栈）
+                val failed = failures.get()
+                if (failed > 0) {
+                    com.zsz.zlivephoto.ui.ErrorReporter.notify(
+                        getString(R.string.main_status_conversion_failed_report, failed)
+                    )
+                }
                 // 处理完成/终止：成功项直接无动画移除（快速两下振动提示），
                 // 失败项保留，由 animateItem placement 自动上移补位
                 hapticController?.double()
@@ -2238,7 +1727,7 @@ class MainActivity : ComponentActivity() {
 
     // ---------- 批量导入（文件夹模式） ----------
 
-    private fun onBatchImport() {
+    override fun onBatchImport() {
         if (isConverting || isImporting) return
         if (!hasReadPermission()) {
             // 批量导入同样需要媒体读取权限（直接 File 遍历 + 直读源文件）
@@ -3047,51 +2536,28 @@ class MainActivity : ComponentActivity() {
     private fun setExportError(msg: String) {
         lastExportError = msg
     }
-}
+    // ---------- AppHost 补充动作（双 UI 共用契约） ----------
 
-/**
- * 导入方式选择弹窗：在打开文件选择器**之前**弹出，决定后续显示哪些媒体、
- * 以及导入后走哪条处理路径（合并 / 转换视频 / 转换动态照片 / 拆分动态照片）。
- */
-@Composable
-private fun ImportModeDialog(
-    visible: Boolean,
-    onDismiss: () -> Unit,
-    onPick: (ImportMode) -> Unit
-) {
-    LiquidDialog(
-        visible = visible,
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.screen_import_mode_title)) },
-        text = {
-            Column(Modifier.fillMaxWidth()) {
-                ImportMode.entries.forEach { mode ->
-                    Column(
-                        Modifier
-                            .fillMaxWidth()
-                            .clip(RoundedCornerShape(12.dp))
-                            .clickable { onPick(mode) }
-                            .padding(horizontal = 10.dp, vertical = 10.dp)
-                    ) {
-                        Text(
-                            stringResource(mode.labelRes),
-                            style = MaterialTheme.typography.bodyLarge,
-                            fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold
-                        )
-                        Text(
-                            stringResource(mode.descRes),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                }
-            }
-        },
-        confirmButton = { },
-        dismissButton = {
-            androidx.compose.material3.TextButton(onClick = onDismiss) {
-                Text(stringResource(R.string.screen_import_mode_cancel))
-            }
-        }
-    )
+    override fun attachHaptics(controller: com.zsz.zlivephoto.ui.HapticController) {
+        hapticController = controller
+    }
+
+    override fun pickImportMode(mode: ImportMode) {
+        proceedWithImportMode(mode)
+    }
+
+    override fun refreshDarkTheme() {
+        isDarkTheme = computeDarkTheme()
+    }
+
+    override fun confirmRisk(skipNext: Boolean) {
+        riskDialogVisible = false
+        startConvertConfirmed()
+    }
+
+    override fun chooseConflict(action: ConflictAction) {
+        val cb = conflictRequest?.onChoose
+        conflictRequest = null
+        cb?.invoke(action)
+    }
 }

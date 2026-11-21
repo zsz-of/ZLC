@@ -27,6 +27,9 @@
     <string name="update_retry">復試</string>
     <string name="update_switch_normal_body">此機之系統為 Android 10 及以上，Go 輕量版已不復宜，舊版不能續用。
 請下而裝常版以續用（新版不復與 Go 相容之版）。</string>
+    <string name="update_go_remind_title">建議用完整版</string>
+    <string name="update_go_remind_body">君之系統為 Android 12 及以上。完整版功能更備、體驗更佳；Go 輕量版仍可續用。</string>
+    <string name="update_go_continue">續用</string>
     <string name="update_downloading_title">下載更新</string>
     <string name="update_cancel">取消</string>
     <string name="update_need_permission_title">需安裝之權</string>

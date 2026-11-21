@@ -22,6 +22,7 @@
     <string name="settings_section_defaults">기본 옵션</string>
     <string name="settings_section_output">출력</string>
     <string name="settings_section_transcode">동영상 트랜스코딩</string>
+    <string name="settings_section_theme">테마</string>
     <string name="settings_section_about">앱 정보</string>
     <string name="settings_section_app">앱</string>
     <string name="settings_section_sponsor">후원</string>
@@ -37,9 +38,9 @@
     <string name="settings_bounce_subtitle">버튼을 누를 때의 확대·축소 반동 애니메이션</string>
 
     <!-- 화면 -->
-    <string name="settings_theme_system">시스템 설정 따르기</string>
-    <string name="settings_theme_dark">어두운 테마</string>
-    <string name="settings_theme_light">밝은 테마</string>
+    <string name="settings_theme_system">시스템</string>
+    <string name="settings_theme_dark">다크</string>
+    <string name="settings_theme_light">라이트</string>
     <string name="settings_dynamic_theme_title">Material You 동적 색상</string>
     <string name="settings_dynamic_theme_subtitle">시스템 배경 화면 색을 따릅니다(Android 12+). 끄면 아래 프리셋 테마 색을 사용합니다</string>
     <string name="settings_preset_colors_title">프리셋 테마 색</string>
@@ -50,9 +51,13 @@
     <string name="settings_cd_custom_palette">사용자 지정 색상표</string>
     <string name="settings_hue_value">색상 %1$d°</string>
     <string name="settings_glass_title">리퀴드 글래스 UI</string>
+    <string name="settings_glass_mode_title">유리 스타일</string>
+    <string name="settings_glass_mode_clear">투명</string>
+    <string name="settings_glass_mode_solid">단색</string>
+    <string name="settings_glass_theme_hint">리퀴드 글래스 사용 중에는 배경 화면 색상이 적용됩니다. 끄면 색상을 선택할 수 있습니다.</string>
     <string name="settings_glass_subtitle">iOS 스타일 젖빛 유리와 가장자리 굴절. 끄면 기본 컴포넌트를 사용합니다</string>
     <string name="settings_glass_unsupported">이 시스템 버전은 리퀴드 글래스를 지원하지 않아 기본 컴포넌트를 사용합니다</string>
-    <string name="settings_glass_opacity_title">리퀴드 글래스 투명도</string>
+    <string name="settings_glass_opacity_title">리퀴드 글래스 블러</string>
     <string name="settings_glass_opacity_subtitle">투명도가 낮을수록 흐림이 강해집니다(리퀴드 글래스 UI 전용)</string>
 
     <!-- 앱 언어: 「시스템 설정 따르기」는 Lead가 관리하는 strings_app.xml 재사용 -->
@@ -97,14 +102,17 @@
     <string name="settings_transcoder_title">내장 트랜스코더</string>
     <string name="settings_transcoder_value">ffmpeg %1$s</string>
     <string name="settings_transcode_mode_encode">재인코딩</string>
-    <string name="settings_transcode_mode_remux">컨테이너만 변환(권장)</string>
-    <string name="settings_transcode_mode_off">트랜스코더를 전혀 사용하지 않음</string>
+    <string name="settings_transcode_mode_remux">컨테이너 변환</string>
+    <string name="settings_transcode_mode_off">사용 안 함</string>
     <string name="settings_transcode_params_title">트랜스코딩 설정</string>
     <string name="settings_transcode_params_subtitle">재인코딩할 때 사용하는 화질과 압축 설정</string>
     <string name="settings_transcode_params_disabled">“변환 방식”에서 “재인코딩”을 선택했을 때만 적용됩니다</string>
     <string name="settings_crf_value">화질 CRF: %1$d</string>
     <string name="settings_crf_hint">값이 작을수록 화질이 높고 용량이 커집니다(기본 18)</string>
+    <string name="settings_crf_title">화질</string>
     <string name="settings_encoder_title">인코더</string>
+    <string name="settings_encoder_h265">H.265(HEVC)</string>
+    <string name="settings_encoder_h264">H.264(AVC)</string>
     <string name="settings_compress_preset_title">압축 프리셋</string>
     <string name="settings_preset_amber">앰버</string>
     <string name="settings_preset_forest">포레스트 그린</string>
@@ -113,4 +121,7 @@
     <string name="settings_preset_sunset">선셋 오렌지</string>
     <string name="settings_preset_teal">틸</string>
     <string name="settings_preset_violet">바이올렛</string>
+    <plurals name="settings_category_items">
+        <item quantity="other">%d개</item>
+    </plurals>
 </resources>

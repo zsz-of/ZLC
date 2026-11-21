@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.ui
 
+import com.zsz.zlivephoto.flavor.FlavorCapabilities
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import android.content.Context
@@ -132,12 +133,12 @@ internal class UpdateFlowController(
      * 主弹窗不可通过外部点击/返回键关闭，也不提供「暂不切换」，必须更新后才能继续使用。
      */
     val forcedSwitch: Boolean
-        get() = BuildConfig.FLAVOR == "go" &&
+        get() = FlavorCapabilities.isGo &&
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
     /** 当前版本对应的发布渠道标签（normal=标准版，go=Go版；切正常版时强制标准版） */
     val flavorLabel: String
-        get() = if (switchToNormalMode || BuildConfig.FLAVOR != "go") context.getString(R.string.update_flavor_standard) else context.getString(R.string.update_flavor_go)
+        get() = if (switchToNormalMode || (!FlavorCapabilities.isGo)) context.getString(R.string.update_flavor_standard) else context.getString(R.string.update_flavor_go)
 
     /** 展示「发现新版本」弹窗 */
     fun present(newInfo: UpdateInfo, reinstall: Boolean = false) {

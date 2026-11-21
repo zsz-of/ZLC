@@ -82,6 +82,8 @@
     <string name="screen_menu_sort_field">Sort by</string>
     <string name="screen_menu_sort_order">Sort order</string>
     <string name="screen_menu_media_filter">Show type</string>
+    <string name="screen_menu_expanded">Expanded</string>
+    <string name="screen_menu_collapsed">Collapsed</string>
     <string name="screen_date_today">Today</string>
     <string name="screen_date_yesterday">Yesterday</string>
     <string name="screen_date_this_year">%1$d/%2$d</string>

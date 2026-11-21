@@ -1,10 +1,6 @@
 package com.zsz.zlivephoto.ui.glass
 
 import android.content.Context
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
 import android.os.Build
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
@@ -85,6 +81,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -195,12 +192,6 @@ val LocalGlassBackdrop = staticCompositionLocalOf<LayerBackdrop?> { null }
 val LocalGlassRootBackdrop = staticCompositionLocalOf<LayerBackdrop?> { null }
 
 /**
- * 方向传感器驱动的「高光照射角」（度）。玻璃元素**在绘制阶段**读取该 lambda，
- * 因此传感器更新只会触发重绘，不会引起整页重组。
- */
-val LocalGlassHighlightAngle = staticCompositionLocalOf<() -> Float> { { 45f } }
-
-/**
  * 根采样层的**底色**（[GlassRoot] 铺在内容之下的那条渐变的基础色）。
  *
  * 用途：玻璃件的内容自适应着色（[rememberAdaptiveContentColor]）需要知道
@@ -233,8 +224,13 @@ val LocalPageBackdropPublisher = staticCompositionLocalOf<PageBackdropPublisher?
 @Composable
 fun PublishPageBackdrop(backdrop: LayerBackdrop?) {
     val publisher = LocalPageBackdropPublisher.current ?: return
-    // 同一实例重复赋值为 no-op，不会引起额外重组
-    SideEffect { publisher.backdrop = backdrop }
+    // 页面离开组合时把发布项清掉（仅当自己仍是当前发布者）：
+    // 只用 SideEffect 的话，后进入的页面（如选择器）离开后 publisher 仍指向它已停止
+    // 录制的采样层，应用级弹窗会采样到空白 → 玻璃发灰/发死。
+    DisposableEffect(publisher, backdrop) {
+        publisher.backdrop = backdrop
+        onDispose { if (publisher.backdrop === backdrop) publisher.backdrop = null }
+    }
 }
 
 /**
@@ -255,43 +251,6 @@ fun animatedThemeColor(darkColor: Color, lightColor: Color): Color {
 }
 
 /**
- * 设备倾角 → 高光角度。使用旋转矢量传感器取 roll（绕屏幕法线旋转），
- * 手机在手中转动 / 倾斜时，玻璃边缘的白色高光会跟着移动，形成真实的光照感。
- */@Composable
-private fun rememberHighlightAngleProvider(): () -> Float {
-    val context = LocalContext.current
-    val angle = remember { mutableFloatStateOf(45f) }
-    DisposableEffect(context) {
-        val manager = context.getSystemService(Context.SENSOR_SERVICE) as? SensorManager
-        val sensor = manager?.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
-            ?: manager?.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR)
-        val rotation = FloatArray(9)
-        val orientation = FloatArray(3)
-        var smoothed = 45f
-        val listener = object : SensorEventListener {
-            override fun onSensorChanged(event: SensorEvent) {
-                SensorManager.getRotationMatrixFromVector(rotation, event.values)
-                SensorManager.getOrientation(rotation, orientation)
-                // roll：绕屏幕法线旋转，是最贴近「手机倾斜导致高光移动」的分量
-                val roll = Math.toDegrees(orientation[2].toDouble()).toFloat()
-                // 低通滤波，避免手抖导致高光跳动
-                smoothed += (roll - smoothed) * 0.12f
-                // 3° 一档量化：SENSOR_DELAY_GAME 下手部微抖每秒可触发数十次
-                // 状态写入 → 每次都是全玻璃件高光重绘；量化后静止手机写入归零
-                angle.floatValue = ((45f + smoothed) / 3f).roundToInt() * 3f
-            }
-
-            override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) = Unit
-        }
-        if (manager != null && sensor != null) {
-            manager.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_GAME)
-        }
-        onDispose { manager?.unregisterListener(listener) }
-    }
-    return remember { { angle.floatValue } }
-}
-
-/**
  * 玻璃容器：铺一条主题色渐变作为采样源，页面内容画在其上（玻璃元素可模糊/折射该渐变）。
  * 未启用玻璃时退化为普通 Box（原生 MD3 分支）。
  * 深色模式下采样源同步换成深底，保证模糊层叠出来的是深色而不是白色。
@@ -306,80 +265,46 @@ fun GlassRoot(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
         return
     }
     val backdrop = rememberLayerBackdrop()
-    val cs = MaterialTheme.colorScheme
-    val dark = LocalDarkTheme.current
-    val highlightAngle = rememberHighlightAngleProvider()
     // 采样源底色跟随主题 500ms 渐变（而非瞬时翻转）：
     // 用户反馈「切换深浅模式时顶部栏异常变灰，重启才正常」——根因是采样源
     // 底色读的是裸 boolean（瞬间翻转），而玻璃件的 tint / 页面文字都在做
     // 500ms 过渡，两者不同步导致顶栏在过渡窗里呈现出「灰蒙蒙」的中间态。
     // 这里让整条采样源与主题色一起渐变，整屏形成一次连贯的交叉淡化。
     val rootBaseColor = animatedThemeColor(Color(0xFF0B0B0D), Color.White)
-    // 色斑浓度跟随主题 500ms 渐变（与底色同步）：瞬时翻转会让切换窗口里
-    // 色斑「跳一下」再渐变，与底色渐变不同步（顶栏一带观感不连贯）。
-    // 深色模式的色斑刻意压淡（0.7×）：用户反馈「深色模式的背景颜色不统一」——
-    // 深色底上高浓度主题色斑会把背景染成一块块不同颜色，整页观感不均匀；
-    // 压低后深色背景呈均匀深灰，仅保留极淡的层次纹理。
-    val blobBoost by animateFloatAsState(
-        targetValue = if (dark) 0.7f else 1f,
-        animationSpec = tween(durationMillis = 500),
-        label = "rootBlobBoost"
-    )
     CompositionLocalProvider(
         LocalGlassEnabled provides true,
         LocalGlassBackdrop provides backdrop,
         LocalGlassRootBackdrop provides backdrop,
-        LocalGlassRootTint provides rootBaseColor,
-        LocalGlassHighlightAngle provides highlightAngle
+        LocalGlassRootTint provides rootBaseColor
     ) {
         Box(modifier) {
-        Box {
             // ── 采样源（被记录；不参与内容绘制）──
-            // 用户要求背景底色回到纯白：采样源改为白底 + 极淡色斑，
-            // 玻璃仍能折射出色斑细节，但整页观感是干净的白色。
-            // 深色模式：深灰底 + 更淡的色斑，模糊层才会是深色而不是发白。
-            Box(
-                Modifier
-                    .fillMaxSize()
-                    .layerBackdrop(backdrop)
-                    .background(rootBaseColor)
-            ) {
-                Canvas(Modifier.fillMaxSize()) {
-                    fun blob(cx: Float, cy: Float, r: Float, color: Color, a: Float) {
-                        drawCircle(
-                            brush = Brush.radialGradient(
-                                listOf(color.copy(alpha = a), Color.Transparent),
-                                center = Offset(cx, cy),
-                                radius = r
-                            ),
-                            radius = r,
-                            center = Offset(cx, cy)
-                        )
-                    }
-                    blob(size.width * 0.12f, size.height * 0.10f, size.width * 0.66f, cs.primary, 0.12f * blobBoost)
-                    blob(size.width * 0.90f, size.height * 0.82f, size.width * 0.72f, cs.tertiary, 0.10f * blobBoost)
-                    blob(size.width * 0.74f, size.height * 0.16f, size.width * 0.42f, cs.secondary, 0.08f * blobBoost)
-                    // 细颗粒（确定性伪随机，保证每帧一致）
-                    var seed = 20240613
-                    repeat(140) {
-                        seed = seed * 1103515245 + 12345
-                        val x = ((seed ushr 8) % 1000) / 1000f * size.width
-                        seed = seed * 1103515245 + 12345
-                        val y = ((seed ushr 8) % 1000) / 1000f * size.height
-                        drawCircle(
-                            color = if (dark) Color.White.copy(alpha = 0.02f)
-                            else Color.Black.copy(alpha = 0.02f),
-                            radius = 1.6.dp.toPx(),
-                            center = Offset(x, y)
-                        )
-                    }
-                }
+            // 用户要求最底层背景板是纯色：采样源只铺纯白 / 纯深灰，
+            // 不再叠加色斑与噪点（玻璃只在这个纯色底上做模糊与折射）。
+            Box(Modifier.fillMaxSize().layerBackdrop(backdrop)) {
+                GlassBackgroundFill(Modifier.fillMaxSize())
             }
             // ── 页面内容（不参与记录；容器背景需透明才能看到采样源）──
             Box(Modifier.fillMaxSize()) { content() }
         }
-        }
     }
+}
+
+/**
+ * 玻璃采样层底色：**纯色**主题底（不参与录制，纯绘制）。
+ *
+ * 除了 [GlassRoot] 的采样源，推入式页面（选择器 / 设置二级页）也必须自带这层
+ * **不透明**底色：页面在转场中会滑到下层页面之上，若背景透明，下层内容会从
+ * 页面中间透出来（用户反馈「手势返回时这一页变成半透明」）。
+ *
+ * 只画纯色：深浅色下最底层背景板必须是干净的单色，不叠加色斑 / 噪点
+ * （用户反馈「部分最底层的背景板不是纯色填充」）。
+ */
+@Composable
+fun GlassBackgroundFill(modifier: Modifier = Modifier) {
+    // 与采样源同一套配色与渐变时长，避免页面背景与玻璃采样层在主题切换时不同步
+    val baseColor = animatedThemeColor(Color(0xFF0B0B0D), Color.White)
+    Box(modifier.background(baseColor))
 }
 
 /** 通透度 → 表面色调层透明度（通透度越低越接近磨砂白板） */
@@ -532,11 +457,20 @@ fun Modifier.liquidGlass(
     // 默认采样源 = 下层总显示内容（根渐变 + 页面内容，见 [rememberGlassBackdrop]）
     val backdrop = backdropOverride ?: rememberGlassBackdrop()
     if (!enabled || backdrop == null) return@composed this
+    // 纯色模式：不采样背景，直接用主题表面色填充（无模糊、无折射），只保留形状与轻微描边层次
+    if (AppSettings.glassSolid) {
+        val solidDark = LocalDarkTheme.current
+        val surface = if (solidDark) Color(0xF21C1C1E) else Color(0xF7F7F7FA)
+        val edge = if (solidDark) Color(0x26FFFFFF) else Color(0x14000000)
+        return@composed this
+            .clip(shape)
+            .background(surface)
+            .border(0.8.dp, edge, shape)
+    }
     // 通透度在这里读取（而非 CompositionLocal）：读取作用域限定在调用方，
     // 设置页拖动通透度滑条时只有使用玻璃的 chrome 元素重组，不会整树重组。
     val opacity = AppSettings.glassOpacity
     val density = LocalDensity.current
-    val angleProvider = LocalGlassHighlightAngle.current
     // 模糊：通透度 0 → 42px（强磨砂），通透度 1 → 2px（清透）。
     // 范围刻意拉大，保证「通透度」滑条拖动时磨砂变化肉眼可辨（此前 8~28px 变化过小）。
     val blurPx = with(density) { (2f + (1f - opacity) * 40f).dp.toPx() }
@@ -601,19 +535,8 @@ fun Modifier.liquidGlass(
                 vibrancyEnabled = vibrancy
             )
         },
-        // 高光固定为白色（HighlightStyle.Default 的 color = White α0.5），
-        // 照射角随设备倾角旋转（陀螺仪 / 旋转矢量传感器）；
-        // alpha 已按组件宽度分档压低（宽按钮转动时高光位移更明显）
-        highlight = sizedHighlight?.let { base ->
-            {
-                val style = base.style
-                if (style is HighlightStyle.Default) {
-                    base.copy(style = HighlightStyle.Default(angle = angleProvider()))
-                } else {
-                    base
-                }
-            }
-        },
+        // 高光固定为白色，保持原生上下高光（不再随设备倾角旋转）
+        highlight = sizedHighlight?.let { base -> { base } },
         shadow = { sh },
         innerShadow = innerShadow?.let { { it } },
         layerBlock = layerBlock,
@@ -903,12 +826,15 @@ class GlassButtonPhysics internal constructor(
         translationX = maxOffsetPx * tanh(initialDerivative * offset.x / maxOffsetPx)
         translationY = maxOffsetPx * tanh(initialDerivative * offset.y / maxOffsetPx)
         // 拖拽形变：沿拖动方向把轮廓「拽长」（横向拖 → 拉宽，纵向拖 → 拉高）
+        // 形变上限：横向最多 +10%、纵向最多 +10%，避免长距离拖拽把玻璃拉成面条
         val maxDragScale = maxOffset.toPx() / h
         val offsetAngle = atan2(offset.y, offset.x)
-        scaleX = scale + maxDragScale * abs(cos(offsetAngle) * offset.x / maxDim) *
-            (w / h).coerceAtMost(1f)
-        scaleY = scale + maxDragScale * abs(sin(offsetAngle) * offset.y / maxDim) *
-            (h / w).coerceAtMost(1f)
+        val stretchX = (maxDragScale * abs(cos(offsetAngle) * offset.x / maxDim) *
+            (w / h).coerceAtMost(1f)).coerceIn(0f, 0.10f)
+        val stretchY = (maxDragScale * abs(sin(offsetAngle) * offset.y / maxDim) *
+            (h / w).coerceAtMost(1f)).coerceIn(0f, 0.10f)
+        scaleX = scale + stretchX
+        scaleY = scale + stretchY
     }
 }
 
@@ -963,9 +889,16 @@ fun GlassIconButton(
                     layerBlock = physics.transform,
                     onDrawBackdrop = if (adaptiveContent) adaptive.recordBackdrop else null
                 )
-                // MD3 模式：不要永久圆形背景板（用户反馈「永远存在的边框/背景板没必要」），
-                // 保持透明，只保留按压涟漪反馈
+                // MD3 模式：透明圆钮在照片/列表上缺少边界，用户反馈「按钮没有被包裹边框」。
+                // 给一层低对比度圆底 + 细描边，按压涟漪仍由 clickable 提供。
                 else Modifier
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.72f), CircleShape)
+                    .border(
+                        0.75.dp,
+                        MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.65f),
+                        CircleShape
+                    )
             )
             // 触点径向高光：画在玻璃之上、内容之下（链内顺序保证）
             .then(if (glass) physics.highlight.modifier else Modifier)
@@ -1067,7 +1000,6 @@ fun GlassBackButton(
     onBack: () -> Unit,
     contentDescription: String? = null
 ) {
-    val haptic = rememberHapticFeedback()
     // 与屏幕边缘留出呼吸感：TopAppBar 的 navigationIcon 槽位默认只有 4dp，
     // 玻璃圆钮贴边会显得局促（圆钮直径 40dp，8dp 内缩后观感与 iOS 一致）。
     val inset = Modifier.padding(start = 8.dp)
@@ -1081,8 +1013,14 @@ fun GlassBackButton(
             AppleChevron(tint = LocalContentColor.current)
         }
     } else {
-        IconButton(onClick = { haptic.click(); onBack() }, modifier = inset) {
-            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = contentDescription)
+        // MD3 也走同一颗圆钮（GlassIconButton 的 MD3 分支会给圆底 + 细描边），
+        // 避免原生 IconButton 在照片/列表上完全没有边界（用户反馈）。
+        GlassIconButton(
+            onClick = onBack,
+            modifier = inset,
+            contentDescription = contentDescription
+        ) {
+            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
         }
     }
 }
@@ -2636,8 +2574,11 @@ fun GlassChoiceChip(
         translationX = ox * 0.10f
         translationY = oy * 0.10f
         transformOrigin = TransformOrigin.Center
-        scaleX = pressScale * (1f + kotlin.math.abs(ox) / maxDrag * 0.20f)
-        scaleY = pressScale * (1f + kotlin.math.abs(oy) / maxDrag * 0.20f)
+        // 拉伸设上限：横向/纵向最多 +12%，避免长距离拖拽把玻璃拉得离谱
+        val pullX = (kotlin.math.abs(ox) / maxDrag).coerceAtMost(1f) * 0.12f
+        val pullY = (kotlin.math.abs(oy) / maxDrag).coerceAtMost(1f) * 0.12f
+        scaleX = pressScale * (1f + pullX)
+        scaleY = pressScale * (1f + pullY)
     }
     Box(
         modifier = modifier

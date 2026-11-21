@@ -28,6 +28,9 @@
     <string name="update_forced_body">이 기기의 시스템은 Android 10 이상이며 Go 경량 버전은 더 이상 지원되지 않아 이전 버전을 사용할 수 없습니다. 새 버전도 Go 호환 버전을 제공하지 않습니다.\n\n네트워크에 연결한 뒤 “다시 시도”를 눌러 일반 버전 설치 패키지를 받아 주세요.</string>
     <string name="update_retry">다시 시도</string>
     <string name="update_switch_normal_body">이 기기의 시스템은 Android 10 이상이며 Go 경량 버전은 더 이상 지원되지 않아 이전 버전을 사용할 수 없습니다.\n일반 버전을 내려받아 설치한 뒤 계속 사용하세요(새 버전은 Go 호환 버전을 제공하지 않습니다).</string>
+    <string name="update_go_remind_title">전체 버전 사용을 권장합니다</string>
+    <string name="update_go_remind_body">시스템이 Android 12 이상입니다. 전체 버전은 기능이 더 많고 사용 경험이 더 좋습니다. Go 경량 버전도 계속 사용할 수 있습니다.</string>
+    <string name="update_go_continue">계속 사용</string>
 
     <!-- 다운로드 / 설치 권한 / 결과 알림 -->
     <string name="update_downloading_title">업데이트 다운로드</string>

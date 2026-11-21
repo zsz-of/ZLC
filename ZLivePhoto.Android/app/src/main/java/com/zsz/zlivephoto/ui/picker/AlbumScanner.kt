@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.ui.picker
 
+import com.zsz.zlivephoto.flavor.FlavorCapabilities
 import androidx.compose.runtime.mutableStateListOf
 import com.zsz.zlivephoto.BuildConfig
 import com.zsz.zlivephoto.core.CoreText
@@ -171,6 +172,6 @@ class AlbumScanner(private val repo: MediaRepo) {
     companion object {
         // go 轻量版单线程扫描（老机型性能低），normal 版 4 线程
         private val SCAN_THREADS: Int
-            get() = if (BuildConfig.FLAVOR == "go") 1 else 4
+            get() = FlavorCapabilities.maxParallelism
     }
 }

@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.core
 
+import com.zsz.zlivephoto.flavor.FlavorCapabilities
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
@@ -239,7 +240,7 @@ internal object Converter {
         val raw = asset.primaryJpeg
         val isJpeg = raw.size >= 2 && raw[0] == 0xFF.toByte() && raw[1] == 0xD8.toByte()
         if (isJpeg || target == "apple") return
-        if (BuildConfig.FLAVOR == "go") {
+        if (FlavorCapabilities.isGo) {
             throw ConvertException(CoreText.of(R.string.conv_cover_heic_go))
         }
         val decoded = BitmapFactory.decodeByteArray(raw, 0, raw.size)
@@ -584,7 +585,7 @@ internal object Converter {
     private fun decodeCoverToJpeg(photo: File): ByteArray {
         val raw = photo.readBytes()
         if (raw.size >= 2 && raw[0] == 0xFF.toByte() && raw[1] == 0xD8.toByte()) return raw
-        if (BuildConfig.FLAVOR == "go") {
+        if (FlavorCapabilities.isGo) {
             throw ConvertException(CoreText.of(R.string.conv_cover_not_jpeg_go))
         }
         val decoded = BitmapFactory.decodeFile(photo.path)

@@ -19,6 +19,7 @@
     <string name="settings_section_defaults">Defaults</string>
     <string name="settings_section_output">Output</string>
     <string name="settings_section_transcode">Video transcoding</string>
+    <string name="settings_section_theme">Theme</string>
     <string name="settings_section_about">About</string>
     <string name="settings_section_app">App</string>
     <string name="settings_section_sponsor">Sponsorship</string>
@@ -30,7 +31,7 @@
     <string name="settings_haptics_subtitle">Haptic feedback on button taps and state changes</string>
     <string name="settings_bounce_title">Button bounce animation</string>
     <string name="settings_bounce_subtitle">Scale-and-bounce animation when a button is pressed</string>
-    <string name="settings_theme_system">Follow system</string>
+    <string name="settings_theme_system">System</string>
     <string name="settings_theme_dark">Dark</string>
     <string name="settings_theme_light">Light</string>
     <string name="settings_dynamic_theme_title">Material You dynamic color</string>
@@ -43,9 +44,13 @@
     <string name="settings_cd_custom_palette">Custom palette</string>
     <string name="settings_hue_value">Hue %1$d°</string>
     <string name="settings_glass_title">Liquid Glass UI</string>
+    <string name="settings_glass_mode_title">Glass style</string>
+    <string name="settings_glass_mode_clear">Clear</string>
+    <string name="settings_glass_mode_solid">Solid</string>
+    <string name="settings_glass_theme_hint">While liquid glass is on, theme colors come from your wallpaper. Turn it off to choose colors.</string>
     <string name="settings_glass_subtitle">iOS-style frosted glass with edge refraction; turn off to use native components</string>
     <string name="settings_glass_unsupported">This system version doesn\'t support Liquid Glass, so native components are used</string>
-    <string name="settings_glass_opacity_title">Liquid Glass transparency</string>
+    <string name="settings_glass_opacity_title">Liquid Glass blur</string>
     <string name="settings_glass_opacity_subtitle">Lower transparency means a stronger frost blur (Liquid Glass UI only)</string>
     <string name="settings_language_dialog_title">Select app language</string>
     <string name="settings_language_count">%1$d languages available</string>
@@ -87,7 +92,10 @@
     <string name="settings_transcode_params_disabled">Only takes effect when “Transcoding mode” is set to “Re-encode”</string>
     <string name="settings_crf_value">Quality CRF: %1$d</string>
     <string name="settings_crf_hint">Lower values mean higher quality and larger files (default 18)</string>
+    <string name="settings_crf_title">Quality</string>
     <string name="settings_encoder_title">Encoder</string>
+    <string name="settings_encoder_h265">H.265 (HEVC)</string>
+    <string name="settings_encoder_h264">H.264 (AVC)</string>
     <string name="settings_compress_preset_title">Compression preset</string>
     <string name="settings_preset_amber">Amber</string>
     <string name="settings_preset_forest">Forest green</string>
@@ -96,4 +104,7 @@
     <string name="settings_preset_sunset">Sunset orange</string>
     <string name="settings_preset_teal">Teal</string>
     <string name="settings_preset_violet">Violet</string>
+    <plurals name="settings_category_items">
+        <item quantity="other">%d items</item>
+    </plurals>
 </resources>

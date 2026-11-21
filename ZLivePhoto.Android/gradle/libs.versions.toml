@@ -1,13 +1,15 @@
 [versions]
-agp = "9.1.1"
-kotlin = "2.2.20"
+agp = "9.4.1"
+kotlin = "2.4.21"
 appcompat = "1.7.1"
 material = "1.14.0-beta01"
 annotationJvm = "1.10.0"
-composeBom = "2025.12.00"
-activityCompose = "1.10.1"
+composeBom = "2026.09.00"
+activityCompose = "1.13.0"
 lifecycleRuntimeKtx = "2.9.4"
 backdrop = "1.0.2"
+kyantShapes = "1.2.1"
+glasmio = "0.1.3"
 
 [libraries]
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -23,6 +25,15 @@ compose-material-icons-extended = { group = "androidx.compose.material", name = 
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 backdrop = { group = "io.github.kyant0", name = "backdrop", version.ref = "backdrop" }
+kyant-shapes = { group = "io.github.kyant0", name = "shapes", version.ref = "kyantShapes" }
+
+# Glasmio（仅 normal flavor / API 31+ 使用）
+glasmio-core = { group = "io.github.neoruaa.glasmio", name = "glasmio-core", version.ref = "glasmio" }
+glasmio-glass = { group = "io.github.neoruaa.glasmio", name = "glasmio-glass", version.ref = "glasmio" }
+glasmio-ui = { group = "io.github.neoruaa.glasmio", name = "glasmio-ui", version.ref = "glasmio" }
+glasmio-scaffold = { group = "io.github.neoruaa.glasmio", name = "glasmio-scaffold", version.ref = "glasmio" }
+glasmio-preference = { group = "io.github.neoruaa.glasmio", name = "glasmio-preference", version.ref = "glasmio" }
+glasmio-icons = { group = "io.github.neoruaa.glasmio", name = "glasmio-icons", version.ref = "glasmio" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -2,7 +2,7 @@
 
 [English](#english) · [日本語](#日本語) · [한국어](#한국어) · [简体中文](#简体中文) · [繁體中文](#繁體中文) · [Русский](#русский) · [Français](#français) · [Latina](#latina)
 
-**Developer / 开发者**: zsz · **Version / 版本**: v3.9.1 · **License**: [GPL-3.0-or-later](LICENSE)
+**Developer / 开发者**: zsz · **Version / 版本**: v4.0.1 · **License**: [GPL-3.0-or-later](LICENSE)
 
 ---
 
@@ -248,7 +248,7 @@ GNU General Public License v3.0 이상(GPL-3.0-or-later). Copyright (C) 2026 zsz
 
 > 动态照片格式互转工具：Google Motion Photo / OPPO / vivo / 小米 / 荣耀 / 魅族 / 努比亚 / Apple Live Photo 互转、拆解与合成。
 
-**开发者**: zsz · **版本**: v3.9.1 · **许可证**: GPL-3.0-or-later
+**开发者**: zsz · **版本**: v4.0.1 · **许可证**: GPL-3.0-or-later
 
 本程序实现了主流动态照片格式之间的字节级无损互转，并支持动态照片的拆解与合成。界面支持 **8 种语言**（简体中文、繁体中文、英文、日文、韩文、阿拉伯文、西班牙文、文言文），设置页可单独切换应用语言，并已适配 RTL（从右到左）语言。
 
@@ -270,10 +270,12 @@ GNU General Public License v3.0 이상(GPL-3.0-or-later). Copyright (C) 2026 zsz
 
 | 版本 | 最低系统版本 | 架构 |
 |------|-------------|------|
-| ZLC（完整版） | Android 10 (API 29) | arm64-v8a |
+| ZLC（完整版） | Android 12 (API 31) | arm64-v8a |
 | ZLC Go（轻量版） | Android 6 (API 23) | arm64-v8a / armeabi-v7a / x86 / x86_64 |
 
 Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 arm64-v8a（当前绝大多数机型）；Go 轻量版不含转码器，因此仍覆盖更多架构。Go 版在 Android 10 及以上已不再适配，需改用完整版。两版包名不同（`com.zsz.zlivephoto` / `com.zsz.zlivephoto.go`），可同时安装。
+
+完整版自 v4.0.1 起不再提供 Material 3 回退，界面统一为 Glasmio 液态玻璃：Android 13（API 33）及以上启用实时折射与模糊，Android 12 / 12L 仅使用静态玻璃外观；Go 轻量版始终为 Material 3。
 
 ### 下载安装
 
@@ -291,6 +293,7 @@ Android 端无需额外运行时。完整版内置 ffmpeg 转码器，仅提供 
 | 功能 | 说明 |
 |------|------|
 | 多格式互转 | Google / OPPO / vivo / 小米 / 荣耀 / 魅族 / 努比亚 / 三星 / Apple 之间互转 |
+| 双 UI | 完整版 Android 13+ 为 Glasmio 液态玻璃界面，Android 12/12L 自动回落 Material 3；Go 版为 Material 3 |
 | 合成动态照片 | 在选择器导入时按文件名自动配对单图 + 视频识别为合并任务；非 JPEG 封面与非标准 MP4 视频自动转码 |
 | 拆解导出 | 将动态照片拆解为「照片 + 视频」双文件 |
 | 字节级无损 | 纯字节解析重组，不重新编码 |

@@ -24,6 +24,7 @@
     <string name="settings_section_defaults">Opciones predeterminadas</string>
     <string name="settings_section_output">Salida</string>
     <string name="settings_section_transcode">Transcodificación de vídeo</string>
+    <string name="settings_section_theme">Tema</string>
     <string name="settings_section_about">Acerca de</string>
     <string name="settings_section_app">Aplicación</string>
     <string name="settings_section_sponsor">Patrocinio</string>
@@ -39,7 +40,7 @@
     <string name="settings_bounce_subtitle">Animación de escala y rebote al pulsar los botones</string>
 
     <!-- Apariencia -->
-    <string name="settings_theme_system">Seguir el sistema</string>
+    <string name="settings_theme_system">Sistema</string>
     <string name="settings_theme_dark">Oscuro</string>
     <string name="settings_theme_light">Claro</string>
     <string name="settings_dynamic_theme_title">Color dinámico de Material You</string>
@@ -52,9 +53,13 @@
     <string name="settings_cd_custom_palette">Paleta personalizada</string>
     <string name="settings_hue_value">Tono %1$d°</string>
     <string name="settings_glass_title">Interfaz de vidrio líquido</string>
+    <string name="settings_glass_mode_title">Estilo del cristal</string>
+    <string name="settings_glass_mode_clear">Transparente</string>
+    <string name="settings_glass_mode_solid">Sólido</string>
+    <string name="settings_glass_theme_hint">Con el cristal líquido activo, los colores provienen del fondo de pantalla. Desactívalo para elegirlos.</string>
     <string name="settings_glass_subtitle">Vidrio esmerilado estilo iOS con refracción en los bordes; al desactivarlo se usan los componentes nativos</string>
     <string name="settings_glass_unsupported">Esta versión del sistema no admite el vidrio líquido, así que se usan los componentes nativos</string>
-    <string name="settings_glass_opacity_title">Transparencia del vidrio líquido</string>
+    <string name="settings_glass_opacity_title">Desenfoque del vidrio líquido</string>
     <string name="settings_glass_opacity_subtitle">Menos transparencia implica más desenfoque (solo interfaz de vidrio líquido)</string>
 
     <!-- Idioma de la aplicación -->
@@ -99,14 +104,17 @@
     <string name="settings_transcoder_title">Transcodificador integrado</string>
     <string name="settings_transcoder_value">ffmpeg %1$s</string>
     <string name="settings_transcode_mode_encode">Recodificar</string>
-    <string name="settings_transcode_mode_remux">Solo reempaquetar el contenedor (recomendado)</string>
-    <string name="settings_transcode_mode_off">No usar el transcodificador</string>
+    <string name="settings_transcode_mode_remux">Solo remux</string>
+    <string name="settings_transcode_mode_off">Ninguno</string>
     <string name="settings_transcode_params_title">Parámetros de transcodificación</string>
     <string name="settings_transcode_params_subtitle">Parámetros de calidad y compresión usados al recodificar</string>
     <string name="settings_transcode_params_disabled">Solo se aplica cuando «Modo de transcodificación» está en «Recodificar»</string>
     <string name="settings_crf_value">Calidad CRF: %1$d</string>
     <string name="settings_crf_hint">Cuanto menor sea el valor, mayor calidad y tamaño (predeterminado: 18)</string>
+    <string name="settings_crf_title">Calidad</string>
     <string name="settings_encoder_title">Codificador</string>
+    <string name="settings_encoder_h265">H.265 (HEVC)</string>
+    <string name="settings_encoder_h264">H.264 (AVC)</string>
     <string name="settings_compress_preset_title">Preajuste de compresión</string>
     <string name="settings_preset_amber">Ámbar</string>
     <string name="settings_preset_forest">Verde bosque</string>
@@ -115,4 +123,7 @@
     <string name="settings_preset_sunset">Naranja atardecer</string>
     <string name="settings_preset_teal">Azul turquesa</string>
     <string name="settings_preset_violet">Violeta</string>
+    <plurals name="settings_category_items">
+        <item quantity="other">%d elementos</item>
+    </plurals>
 </resources>

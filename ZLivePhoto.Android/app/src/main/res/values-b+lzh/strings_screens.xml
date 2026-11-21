@@ -72,7 +72,7 @@
     <string name="screen_sort_desc">逆</string>
     <string name="screen_more">更多</string>
     <string name="screen_menu_output_format">輸出格式</string>
-    <string name="screen_menu_sort_field">排序欄位</string>
+    <string name="screen_menu_sort_field">排序方式</string>
     <string name="screen_menu_sort_order">排序順序</string>
     <string name="screen_menu_media_filter">顯示類別</string>
     <string name="screen_date_today">今日</string>

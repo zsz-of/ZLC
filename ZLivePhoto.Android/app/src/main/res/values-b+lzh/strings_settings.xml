@@ -14,6 +14,7 @@
     <string name="settings_section_defaults">預設之選</string>
     <string name="settings_section_output">輸出</string>
     <string name="settings_section_transcode">影片轉碼</string>
+    <string name="settings_section_theme">主題</string>
     <string name="settings_section_about">關於</string>
     <string name="settings_section_app">程式</string>
     <string name="settings_section_sponsor">贊助</string>
@@ -38,9 +39,13 @@
     <string name="settings_cd_custom_palette">自定調色板</string>
     <string name="settings_hue_value">色相 %1$d°</string>
     <string name="settings_glass_title">液態玻璃界面</string>
+    <string name="settings_glass_mode_title">玻璃之貌</string>
+    <string name="settings_glass_mode_clear">通透</string>
+    <string name="settings_glass_mode_solid">純色</string>
+    <string name="settings_glass_theme_hint">液態玻璃模式下主題色由系統壁紙決定，關閉後可設</string>
     <string name="settings_glass_subtitle">iOS 之磨砂玻璃與緣折射；閉之則用原生組件</string>
     <string name="settings_glass_unsupported">今系統之版不支液態玻璃，已自用原生組件</string>
-    <string name="settings_glass_opacity_title">液態玻璃通透度</string>
+    <string name="settings_glass_opacity_title">液態玻璃模糊度</string>
     <string name="settings_glass_opacity_subtitle">通透度愈低則磨砂模糊愈強（惟液態玻璃界面生效）</string>
     <string name="settings_language_dialog_title">擇程式語文</string>
     <string name="settings_language_count">共 %1$d 種語文</string>
@@ -75,14 +80,17 @@
     <string name="settings_transcoder_title">內置轉碼器</string>
     <string name="settings_transcoder_value">ffmpeg %1$s</string>
     <string name="settings_transcode_mode_encode">重編碼</string>
-    <string name="settings_transcode_mode_remux">僅重封裝容器（薦）</string>
-    <string name="settings_transcode_mode_off">全不用轉碼器</string>
+    <string name="settings_transcode_mode_remux">僅重封裝</string>
+    <string name="settings_transcode_mode_off">不用</string>
     <string name="settings_transcode_params_title">轉碼之參</string>
     <string name="settings_transcode_params_subtitle">重編碼時所用之畫質與壓縮之參</string>
     <string name="settings_transcode_params_disabled">僅於「轉碼方式」擇「重編碼」時有效</string>
     <string name="settings_crf_value">畫質 CRF：%1$d</string>
     <string name="settings_crf_hint">數越小則畫質越高、體越大（默 18）</string>
+    <string name="settings_crf_title">品質</string>
     <string name="settings_encoder_title">編碼器</string>
+    <string name="settings_encoder_h265">H.265（HEVC）</string>
+    <string name="settings_encoder_h264">H.264（AVC）</string>
     <string name="settings_compress_preset_title">壓縮預設</string>
     <string name="settings_preset_amber">琥珀</string>
     <string name="settings_preset_forest">森綠</string>
@@ -91,4 +99,7 @@
     <string name="settings_preset_sunset">落日橙</string>
     <string name="settings_preset_teal">青碧</string>
     <string name="settings_preset_violet">紫羅蘭</string>
+    <plurals name="settings_category_items">
+        <item quantity="other">%d 項</item>
+    </plurals>
 </resources>

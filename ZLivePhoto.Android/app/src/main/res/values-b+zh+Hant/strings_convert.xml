@@ -112,6 +112,8 @@
     <string name="conv_risk_ack_message" formatted="false">本次任務會「覆蓋原圖」或「刪除原圖」，可能造成原始檔案永久遺失且無法復原。\n\n• 覆蓋時若寫入被中斷、儲存空間不足或權限被撤銷，來源檔案可能損壞\n• 刪除後在系統相簿與本應用內都無法找回\n• 建議先備份重要照片\n\n請輸入下方文字以繼續：</string>
     <string name="conv_risk_ack_phrase">我已知曉風險</string>
     <string name="conv_risk_ack_skip">下次直接確認（無需再輸入文字）</string>
+    <string name="conv_risk_delete_message">繼續處理將刪除原圖。</string>
+    <string name="conv_risk_replace_message">繼續處理將替換原圖。</string>
     <string name="conv_risk_ack_confirm">確認並開始</string>
     <string name="conv_risk_ack_cancel">取消</string>
 </resources>

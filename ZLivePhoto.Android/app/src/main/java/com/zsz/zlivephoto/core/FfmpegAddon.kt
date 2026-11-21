@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.core
 
+import com.zsz.zlivephoto.flavor.FlavorCapabilities
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.compose.runtime.getValue
@@ -111,7 +112,7 @@ object FfmpegAddon {
      */
     internal fun cachedContext(): Context? = if (::appCtx.isInitialized) appCtx else null
 
-    fun isGo(): Boolean = BuildConfig.FLAVOR == "go"
+    fun isGo(): Boolean = FlavorCapabilities.isGo
 
     /** 转码是否可用：内置二进制存在且非空（go 轻量版不含转码器） */
     fun isReady(): Boolean {

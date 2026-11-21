@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.ui
 
+import com.zsz.zlivephoto.flavor.FlavorCapabilities
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build
@@ -18,21 +19,11 @@ object AppSettings {
     /** 震动反馈（click/soft/longPress/double 全部静默） */
     var hapticsEnabled by mutableStateOf(true)
         private set
-    /** 按钮按下的大小弹性（q 弹）动画 */
-    var bounceEnabled by mutableStateOf(true)
-        private set
-    /** Material You 动态取色（Android 12+ 跟随系统壁纸色）；关闭时用预制色 */
-    var dynamicTheme by mutableStateOf(true)
-        private set
-    /** 预制主题色下标（0-6，dynamicTheme=false 时生效） */
+    /** 预制主题色下标（0-6） */
     var presetColor by mutableStateOf(0)
         private set
     /** 自定义主题色相（-1f = 未自定义，用预制色）；0..360 为 HSV 色相 */
     var customHue by mutableStateOf(-1f)
-        private set
-    /** 动态取色当前跟随的壁纸主题色相（0..360；-1f=尚未取得/动态关闭，回退静态色）。
-     *  仅内存态（不持久化）：UI 主题取色的单一色相来源，保证各处始终同步。 */
-    var liveDynamicHue by mutableStateOf(-1f)
         private set
     /** 启动时自动从 GitHub 检查更新 */
     var checkUpdateOnStartup by mutableStateOf(true)
@@ -60,33 +51,36 @@ object AppSettings {
     /** 用户「跳过此版本」记住的版本号（空串=未跳过）；远端版本与之相同时不再提示更新 */
     var skippedVersion by mutableStateOf("")
         private set
-    /** 液态玻璃界面（iOS 风格毛玻璃 + 边缘折射）；关闭后用原生 MD3 组件 */
-    var glassEnabled by mutableStateOf(true)
+    /** 液态玻璃外观：`glass` = 通透（实时折射/模糊）；`solid` = 纯色（不透明面板） */
+    var glassMode by mutableStateOf("glass")
         private set
-    /** 液态玻璃通透度 0..1：越低越不透明、磨砂模糊越强 */
+    /** 通透度 0..1（历史值，保留用于内部玻璃渲染；UI 不再暴露滑条） */
     var glassOpacity by mutableStateOf(0.5f)
         private set
 
+    /** 是否纯色模式（玻璃面板不再采样背景，直接使用主题表面色） */
+    val glassSolid: Boolean
+        get() = glassMode == "solid"
+
     /**
-     * 液态玻璃是否**实际生效**：用户开关 + 系统能力（RenderEffect 需 API 31+）+ go 轻量版排除。
-     * 任一条不满足即整体退回原生 MD3 组件（回退方案）。
+     * 全局模糊度 0..1（内部值，UI 已改为「通透 / 纯色」两档，不再提供滑条）。
+     * 与 [glassOpacity] 互为反向：glassBlur = 1 - glassOpacity。
+     */
+    val glassBlur: Float
+        get() = 1f - glassOpacity
+
+    /**
+     * 液态玻璃是否**实际生效**：标准版恒为玻璃外壳（系统能力 API 31+ 由构建时保证），
+     * go 轻量版不使用玻璃组件。
      */
     val glassActive: Boolean
-        get() = glassEnabled && BuildConfig.FLAVOR != "go" && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-
-    /** 按钮弹性动画是否实际生效：液态玻璃界面下统一禁用，避免与玻璃的形变/回弹叠加。 */
-    val bounceActive: Boolean
-        get() = bounceEnabled && !glassActive
+        get() = (!FlavorCapabilities.isGo) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
     private lateinit var prefs: SharedPreferences
-    private lateinit var appCtx: Context
 
     fun init(context: Context) {
         prefs = context.getSharedPreferences("zlivephoto", Context.MODE_PRIVATE)
-        appCtx = context.applicationContext
         hapticsEnabled = prefs.getBoolean("haptics_enabled", true)
-        bounceEnabled = prefs.getBoolean("bounce_enabled", true)
-        dynamicTheme = prefs.getBoolean("dynamic_theme", true)
         presetColor = prefs.getInt("preset_color", 0).coerceIn(0, 6)
         customHue = prefs.getFloat("custom_hue", -1f)
         checkUpdateOnStartup = prefs.getBoolean("check_update_startup", true)
@@ -97,45 +91,13 @@ object AppSettings {
         pickerSortAscending = prefs.getBoolean("picker_sort_ascending", false)
         pickerMediaFilter = prefs.getString("picker_media_filter", "ALL") ?: "ALL"
         skippedVersion = prefs.getString("skipped_version", "") ?: ""
-        glassEnabled = prefs.getBoolean("glass_enabled", true)
+        glassMode = prefs.getString("glass_mode", "glass") ?: "glass"
         glassOpacity = prefs.getFloat("glass_opacity", 0.5f).coerceIn(0f, 1f)
-        // go 轻量版：强制关闭马达反馈与按钮弹性动画（简化版无触感/无 q 弹）
-        if (BuildConfig.FLAVOR == "go") {
-            hapticsEnabled = false
-            bounceEnabled = false
-        }
-        // 启动即同步一次动态取色的壁纸色相，保证首帧主题与图标都落到正确色
-        syncDynamicHue()
-    }
-
-    /**
-     * 动态取色开关或启动后同步内存态 [liveDynamicHue]（UI 主题取色的单一色相来源）。
-     * 与自定义取色写 [customHue] 一样在改动发生的同一调用栈内同步完成，
-     * 保证 UI 主题立即基于最新值渲染（开/关都即时生效）。
-     */
-    private fun syncDynamicHue() {
-        val dynamic = dynamicTheme &&
-            BuildConfig.FLAVOR != "go" &&
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-        liveDynamicHue = if (dynamic) wallpaperHue(appCtx) ?: -1f else -1f
     }
 
     fun setHaptics(v: Boolean) {
         hapticsEnabled = v
         prefs.edit().putBoolean("haptics_enabled", v).apply()
-    }
-
-    fun setBounce(v: Boolean) {
-        bounceEnabled = v
-        prefs.edit().putBoolean("bounce_enabled", v).apply()
-    }
-
-    fun setUseDynamicTheme(v: Boolean) {
-        dynamicTheme = v
-        prefs.edit().putBoolean("dynamic_theme", v).apply()
-        // 与自定义取色 setCustomHueValue 同一模式：改动当下就同步好共享色相，
-        // 让 UI 主题立即基于最新值渲染（开/关都即时生效）。
-        syncDynamicHue()
     }
 
     fun setPresetColorIndex(index: Int) {
@@ -150,11 +112,6 @@ object AppSettings {
     fun setCustomHueValue(hue: Float) {
         customHue = hue.coerceIn(0f, 360f)
         prefs.edit().putFloat("custom_hue", customHue).apply()
-    }
-
-    /** 更新动态取色跟随的壁纸色相（-1f = 清除/回退静态色；仅内存，不写盘） */
-    fun updateLiveDynamicHue(hue: Float) {
-        liveDynamicHue = hue.coerceIn(-1f, 360f)
     }
 
     fun setStartupUpdateCheck(v: Boolean) {
@@ -192,14 +149,20 @@ object AppSettings {
         prefs.edit().putString("picker_media_filter", filter).apply()
     }
 
-    fun setGlassUIEnabled(v: Boolean) {
-        glassEnabled = v
-        prefs.edit().putBoolean("glass_enabled", v).apply()
+    /** 切换玻璃外观：`glass`（通透）/ `solid`（纯色） */
+    fun setGlassModeValue(mode: String) {
+        glassMode = if (mode == "solid") "solid" else "glass"
+        prefs.edit().putString("glass_mode", glassMode).apply()
     }
 
     fun setGlassOpacityValue(v: Float) {
         glassOpacity = v.coerceIn(0f, 1f)
         prefs.edit().putFloat("glass_opacity", glassOpacity).apply()
+    }
+
+    /** 设置全局模糊度（0=最清透，1=最强磨砂）；内部换算为通透度存储 */
+    fun setGlassBlurValue(v: Float) {
+        setGlassOpacityValue(1f - v.coerceIn(0f, 1f))
     }
 
     /** 记住「跳过此版本」：记录版本号，除非发布了更新的版本否则不再提示 */

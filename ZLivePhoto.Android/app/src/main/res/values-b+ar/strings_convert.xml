@@ -98,6 +98,8 @@
     <string name="conv_risk_ack_message" formatted="false">ستقوم هذه المهمة باستبدال الملفات الأصلية أو حذفها، وقد يؤدي ذلك إلى فقدان دائم للبيانات لا يمكن استعادته.\n\n• إذا انقطع الكتابة أو نفدت المساحة أو أُلغي الإذن فقد يتلف الملف الأصلي\n• بعد الحذف لا يمكن استعادته من المعرض أو من التطبيق\n• احتفظ بنسخة احتياطية من الصور المهمة\n\nاكتب النص التالي للمتابعة:</string>
     <string name="conv_risk_ack_phrase">أنا أدرك المخاطر</string>
     <string name="conv_risk_ack_skip">في المرة القادمة تأكيد مباشرة (بدون كتابة)</string>
+    <string name="conv_risk_delete_message">ستؤدي المتابعة إلى حذف الصور الأصلية.</string>
+    <string name="conv_risk_replace_message">ستؤدي المتابعة إلى استبدال الصور الأصلية.</string>
     <string name="conv_risk_ack_confirm">تأكيد والبدء</string>
     <string name="conv_risk_ack_cancel">إلغاء</string>
 </resources>

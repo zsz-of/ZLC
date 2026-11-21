@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.ui
 
+import com.zsz.zlivephoto.flavor.FlavorCapabilities
 import android.content.Context
 import android.content.Intent
 import android.content.res.XmlResourceParser
@@ -46,25 +47,19 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.CloudDownload
-import androidx.compose.material.icons.filled.Code
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Folder
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Palette
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuAnchorType
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -285,56 +280,24 @@ private fun SettingsMainContent(
     var showCustomPalette by remember { mutableStateOf(false) }
     // 应用语言：currentTag 为空串表示跟随系统
     var appLanguageTag by remember { mutableStateOf(AppLanguage.currentTag(context)) }
-    var showLanguageDialog by remember { mutableStateOf(false) }
-    // 支付宝赞助：入口按用户要求从「关于」上移到设置首屏最顶端，弹窗状态随之上移
+    // 支付宝赞助已从「关于」上提到设置首屏最顶端
     var showSponsorDialog by remember { mutableStateOf(false) }
     var alipayMissing by remember { mutableStateOf(false) }
+    // 语言清单与系统「应用语言」同源：locales_config.xml 声明的语种 +「跟随系统」
+    val localeTags = remember(context) { loadLocaleTags(context) }
+    val followSystemLabel = stringResource(R.string.app_language_follow_system)
+    val languageOptions = remember(localeTags, followSystemLabel) {
+        buildList {
+            add("" to followSystemLabel)
+            localeTags.forEach { add(it to AppLanguage.displayName(it)) }
+        }
+    }
 
     SettingsPageScaffold(
         title = stringResource(R.string.settings_title),
         onBack = onBack,
         scrollState = scrollState,
         overlay = {
-            // 支付宝赞助致谢弹窗（无「不再提示」）：感谢 + 礼貌谢绝学生
-            LiquidDialog(
-                visible = showSponsorDialog,
-                onDismissRequest = { showSponsorDialog = false },
-                title = { Text(stringResource(R.string.settings_sponsor_dialog_title)) },
-                text = {
-                    Text(stringResource(R.string.settings_sponsor_dialog_text))
-                },
-                confirmButton = {
-                    Button(onClick = {
-                        haptic.click()
-                        showSponsorDialog = false
-                        // 成功拉起支付宝收款码则交给支付宝；失败（含未安装）单独提示
-                        if (!launchAlipay(context)) alipayMissing = true
-                    }) { Text(stringResource(R.string.settings_btn_sponsor)) }
-                },
-                dismissButton = {
-                    FilledTonalButton(onClick = {
-                        haptic.soft()
-                        showSponsorDialog = false
-                    }) { Text(stringResource(R.string.settings_btn_close)) }
-                }
-            )
-
-            // 支付宝未能吊起：说明未安装，并再次感谢用户好意
-            LiquidDialog(
-                visible = alipayMissing,
-                onDismissRequest = { alipayMissing = false },
-                title = { Text(stringResource(R.string.settings_alipay_missing_title)) },
-                text = {
-                    Text(stringResource(R.string.settings_alipay_missing_text))
-                },
-                confirmButton = {
-                    Button(onClick = {
-                        haptic.click()
-                        alipayMissing = false
-                    }) { Text(stringResource(R.string.settings_btn_ok)) }
-                }
-            )
-
             // 自定义调色板：任意色相选择（主题色只按色相派生，饱和度/明度沿用 MD3 基线）
             // 打开时重置为当前生效色相（覆盖层常驻组合，hue 不会像旧版 if 包裹那样每次重建）
             var hue by remember {
@@ -388,60 +351,46 @@ private fun SettingsMainContent(
                 }
             )
 
-            // 应用语言选择弹窗：顶部「跟随系统」，下面是 locales_config.xml 声明的全部语种，当前项打勾
-            val localeTags = remember(context) { loadLocaleTags(context) }
+            // 支付宝赞助致谢弹窗（设置首屏顶部入口）：感谢 + 礼貌谢绝学生
             LiquidDialog(
-                visible = showLanguageDialog,
-                onDismissRequest = { showLanguageDialog = false },
-                title = { Text(stringResource(R.string.settings_language_dialog_title), fontWeight = FontWeight.SemiBold) },
-                text = {
-                    Column(
-                        Modifier
-                            .heightIn(max = 420.dp)
-                            .verticalScroll(rememberScrollState())
-                    ) {
-                        Text(
-                            stringResource(R.string.settings_language_count, localeTags.size + 1),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.padding(bottom = 4.dp)
-                        )
-                        LanguageOptionRow(
-                            label = stringResource(R.string.app_language_follow_system),
-                            selected = appLanguageTag.isEmpty(),
-                            onClick = {
-                                haptic.click()
-                                AppLanguage.set(context, "")
-                                appLanguageTag = AppLanguage.currentTag(context)
-                                showLanguageDialog = false
-                            }
-                        )
-                        for (tag in localeTags) {
-                            LanguageOptionRow(
-                                label = AppLanguage.displayName(tag),
-                                selected = appLanguageTag == tag,
-                                onClick = {
-                                    haptic.click()
-                                    AppLanguage.set(context, tag)
-                                    appLanguageTag = AppLanguage.currentTag(context)
-                                    showLanguageDialog = false
-                                }
-                            )
-                        }
-                    }
-                },
+                visible = showSponsorDialog,
+                onDismissRequest = { showSponsorDialog = false },
+                title = { Text(stringResource(R.string.settings_sponsor_dialog_title)) },
+                text = { Text(stringResource(R.string.settings_sponsor_dialog_text)) },
                 confirmButton = {
+                    Button(onClick = {
+                        haptic.click()
+                        showSponsorDialog = false
+                        if (!launchAlipay(context)) alipayMissing = true
+                    }) { Text(stringResource(R.string.settings_btn_sponsor)) }
+                },
+                dismissButton = {
                     FilledTonalButton(onClick = {
                         haptic.soft()
-                        showLanguageDialog = false
+                        showSponsorDialog = false
                     }) { Text(stringResource(R.string.settings_btn_close)) }
+                }
+            )
+
+            // 未安装支付宝：说明原因并再次感谢
+            LiquidDialog(
+                visible = alipayMissing,
+                onDismissRequest = { alipayMissing = false },
+                title = { Text(stringResource(R.string.settings_alipay_missing_title)) },
+                text = { Text(stringResource(R.string.settings_alipay_missing_text)) },
+                confirmButton = {
+                    Button(onClick = {
+                        haptic.click()
+                        alipayMissing = false
+                    }) { Text(stringResource(R.string.settings_btn_ok)) }
                 }
             )
         }
     ) {
-            // ── 赞助 ──
-            // 用户要求：赞助单独放在设置页最顶端（不再藏在「关于」里）
-            SectionTitle(stringResource(R.string.settings_section_sponsor))
+            val isGo = FlavorCapabilities.isGo
+
+            // ── 赞助（置顶）──
+            // 从「关于」二级页上提：入口在设置首屏第一屏，点开先弹感谢/谢绝学生确认窗
             SettingsRowsGroup(
                 listOf(
                     { s ->
@@ -449,7 +398,6 @@ private fun SettingsMainContent(
                             shape = s,
                             title = stringResource(R.string.settings_alipay_title),
                             subtitle = stringResource(R.string.settings_alipay_subtitle),
-                            icon = { Icon(Icons.Default.Favorite, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
                                 Icon(
                                     Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -465,56 +413,11 @@ private fun SettingsMainContent(
                     }
                 )
             )
-
-            // ── 通用 ──
-            SectionTitle(stringResource(R.string.settings_section_general))
-            val isGo = BuildConfig.FLAVOR == "go"
-            SettingsRowsGroup(
-                buildList {
-                    add { s ->
-                        SettingsSwitchRow(
-                            shape = s,
-                            title = stringResource(R.string.settings_startup_check_title),
-                            subtitle = null,
-                            checked = AppSettings.checkUpdateOnStartup,
-                            leading = {
-                                Icon(
-                                    Icons.Default.CloudDownload,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
-                                )
-                            },
-                            onToggle = { AppSettings.setStartupUpdateCheck(it) }
-                        )
-                    }
-                    // go 轻量版：无马达反馈与按钮弹性动画，隐藏对应开关
-                    if (!isGo) {
-                        add { s ->
-                            SettingsSwitchRow(
-                                shape = s,
-                                title = stringResource(R.string.settings_haptics_title),
-                                subtitle = null,
-                                checked = AppSettings.hapticsEnabled,
-                                onToggle = { AppSettings.setHaptics(it) }
-                            )
-                        }
-                        add { s ->
-                            SettingsSwitchRow(
-                                shape = s,
-                                title = stringResource(R.string.settings_bounce_title),
-                                subtitle = null,
-                                // 液态玻璃界面下不生效：开关显示为关且不可打开（避免与玻璃形变叠加）
-                                checked = AppSettings.bounceActive,
-                                enabled = !AppSettings.glassActive,
-                                onToggle = { AppSettings.setBounce(it) }
-                            )
-                        }
-                    }
-                }
-            )
+            Spacer(Modifier.height(8.dp))
 
             // ── 外观 ──
             SectionTitle(stringResource(R.string.settings_section_appearance))
+
             // 深色模式三选：玻璃分段按钮（文字描述，选中项带高光），未启用玻璃时退回纯色指示器
             val themeModes = listOf("system", "dark", "light")
             val themeLabels = listOf(
@@ -527,25 +430,9 @@ private fun SettingsMainContent(
                 selectedIndex = themeModes.indexOf(AppSettings.themeMode).coerceAtLeast(0),
                 onSelect = { AppSettings.setThemeModeValue(themeModes[it]) }
             )
-            if (!isGo) {
-                Spacer(Modifier.height(4.dp))
-                SettingsRowsGroup(
-                    listOf(
-                        { s ->
-                            SettingsSwitchRow(
-                                shape = s,
-                                title = stringResource(R.string.settings_dynamic_theme_title),
-                                subtitle = null,
-                                checked = AppSettings.dynamicTheme,
-                                onToggle = { AppSettings.setUseDynamicTheme(it) }
-                            )
-                        }
-                    )
-                )
-            }
             Spacer(Modifier.height(4.dp))
-            // 预制主题色（动态取色开启时禁用；go 版无动态取色，始终可选）
-            val presetEnabled = isGo || !AppSettings.dynamicTheme
+            // 标准版已移除动态取色：预制主题色始终可改。
+            val presetEnabled = true
             val customActive = AppSettings.customHue >= 0f
             Column(
                 Modifier
@@ -557,15 +444,11 @@ private fun SettingsMainContent(
                 Text(stringResource(R.string.settings_preset_colors_title), style = MaterialTheme.typography.titleSmall)
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    if (presetEnabled) {
-                        stringResource(
-                            R.string.settings_preset_current,
-                            if (customActive) stringResource(R.string.settings_custom)
-                            else stringResource(presetNameRes[AppSettings.presetColor])
-                        )
-                    } else {
-                        stringResource(R.string.settings_preset_disabled_hint)
-                    },
+                    stringResource(
+                        R.string.settings_preset_current,
+                        if (customActive) stringResource(R.string.settings_custom)
+                        else stringResource(presetNameRes[AppSettings.presetColor])
+                    ),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -604,60 +487,33 @@ private fun SettingsMainContent(
                 }
             }
 
-            // ── 液态玻璃界面 ──
-            // 能力门槛与 AppSettings.glassActive 一致：go 轻量版与 API<31 不支持（退回原生 MD3）
-            val glassSupported = !isGo && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-            Spacer(Modifier.height(4.dp))
+            // ── 通用 ──
+            SectionTitle(stringResource(R.string.settings_section_general))
             SettingsRowsGroup(
-                listOf(
-                    { s ->
+                buildList {
+                    add { s ->
                         SettingsSwitchRow(
                             shape = s,
-                            title = stringResource(R.string.settings_glass_title),
-                            subtitle = if (glassSupported) null
-                            else stringResource(R.string.settings_glass_unsupported),
-                            checked = glassSupported && AppSettings.glassEnabled,
-                            enabled = glassSupported,
-                            onToggle = { AppSettings.setGlassUIEnabled(it) }
+                            title = stringResource(R.string.settings_startup_check_title),
+                            subtitle = null,
+                            checked = AppSettings.checkUpdateOnStartup,
+                            onToggle = { AppSettings.setStartupUpdateCheck(it) }
                         )
                     }
-                )
-            )
-            // 通透度滑条：仅在玻璃可用且已开启时可调（越低越不透明、磨砂越强）
-            if (glassSupported && AppSettings.glassEnabled) {
-                Spacer(Modifier.height(4.dp))
-                Column(
-                    Modifier
-                        .fillMaxWidth()
-                        .cardSurface(RoundedCornerShape(16.dp))
-                        .padding(horizontal = 20.dp, vertical = 12.dp)
-                ) {
-                    Text(
-                        stringResource(R.string.settings_glass_opacity_title),
-                        style = MaterialTheme.typography.titleSmall
-                    )
-                    Spacer(Modifier.height(8.dp))
-                    // 用根采样层：本页整块内容已被 layerBackdrop 记录，
-                    // 若滑条采样页面层会把自身画进去 → 反馈式频闪
-                    val backdrop = LocalGlassRootBackdrop.current
-                    if (backdrop != null) {
-                        LiquidSlider(
-                            value = { AppSettings.glassOpacity },
-                            onValueChange = { AppSettings.setGlassOpacityValue(it) },
-                            valueRange = 0f..1f,
-                            visibilityThreshold = 0.01f,
-                            backdrop = backdrop
-                        )
-                    } else {
-                        GlassSlider(
-                            value = AppSettings.glassOpacity,
-                            onValueChange = { AppSettings.setGlassOpacityValue(it) },
-                            valueRange = 0f..1f,
-                            steps = 9
-                        )
+                    // go 轻量版：无马达反馈，隐藏对应开关
+                    if (!isGo) {
+                        add { s ->
+                            SettingsSwitchRow(
+                                shape = s,
+                                title = stringResource(R.string.settings_haptics_title),
+                                subtitle = null,
+                                checked = AppSettings.hapticsEnabled,
+                                onToggle = { AppSettings.setHaptics(it) }
+                            )
+                        }
                     }
                 }
-            }
+            )
 
             // ── 语言 ──
             // 清单与系统「应用语言」同源：res/xml/locales_config.xml 声明的 119 个语种 +「跟随系统」
@@ -665,31 +521,15 @@ private fun SettingsMainContent(
             SettingsRowsGroup(
                 listOf(
                     { s ->
-                        SettingsActionRow(
+                        // 与其它设置项一致改为下拉菜单选择（此前是整屏弹窗，两套外观操作方式不统一）
+                        SettingsDropdownRow(
                             shape = s,
                             title = stringResource(R.string.app_language_title),
-                            subtitle = if (appLanguageTag.isEmpty()) {
-                                stringResource(R.string.app_language_follow_system)
-                            } else {
-                                AppLanguage.displayName(appLanguageTag)
-                            },
-                            icon = {
-                                Icon(
-                                    Icons.Default.Language,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
-                                )
-                            },
-                            trailing = {
-                                Icon(
-                                    Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onSurfaceVariant
-                                )
-                            },
-                            onClick = {
-                                haptic.click()
-                                showLanguageDialog = true
+                            selectedValue = appLanguageTag,
+                            options = languageOptions,
+                            onSelect = { tag ->
+                                AppLanguage.set(context, tag)
+                                appLanguageTag = AppLanguage.currentTag(context)
                             }
                         )
                     }
@@ -705,7 +545,6 @@ private fun SettingsMainContent(
                             shape = s,
                             title = stringResource(R.string.settings_reminder_dialogs_title),
                             subtitle = stringResource(R.string.settings_reminder_dialogs_subtitle),
-                            icon = { Icon(Icons.Default.Check, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
                                 Icon(
                                     Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -732,13 +571,6 @@ private fun SettingsMainContent(
                             title = stringResource(R.string.settings_preserve_folders_title),
                             subtitle = stringResource(R.string.settings_preserve_folders_subtitle),
                             checked = AppSettings.preserveFolders,
-                            leading = {
-                                Icon(
-                                    Icons.Default.Folder,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
-                                )
-                            },
                             onToggle = { AppSettings.setPreserveFolderStructure(it) }
                         )
                     }
@@ -757,7 +589,6 @@ private fun SettingsMainContent(
                             shape = s,
                             title = stringResource(R.string.settings_about_title),
                             subtitle = stringResource(R.string.settings_about_subtitle),
-                            icon = { Icon(Icons.Default.Info, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
                                 Icon(
                                     Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -809,10 +640,9 @@ private fun ReminderSettingsScreen(onBack: () -> Unit) {
 }
 
 /**
- * 「关于」子页：不再平铺在设置里，而是独立子界面。
- * 分组顺序（鸣谢板块位于开源许可证之前）：
- * 应用（检查更新点一次查一次 / 版本）→ 鸣谢与赞助（支付宝赞助、@毛血旺o 酷安主页、
- * AI 开发伙伴）→ 开源与授权（GitHub 开源地址 / 开源许可证书本图标）。
+ * 「关于」子页：所有应用/关于类条目统一并入同一个「关于」分组，条目之间用
+ * [HorizontalDivider] 分隔，不再各自独立成组。顺序：
+ * 检查更新 → 重新安装本版本 → 版本信息 → 支付宝赞助 → 鸣谢 → 开源与授权。
  * 赞助点击后先弹感谢/谢绝学生的确认窗，吊起支付宝失败则单独提示并致谢。
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -860,16 +690,17 @@ private fun AboutScreen(onBack: () -> Unit) {
             UpdateFlowHosts(updateFlow, vibrate = { haptic.click() })
         }
     ) {
-            // ── 应用 ──
-            SectionTitle(stringResource(R.string.settings_section_app))
-            SettingsRowsGroup(
+            // ── 关于 ──
+            // 应用 / 赞助 / 鸣谢 / 开源类条目合并为同一分组，条目间用分隔线区隔
+            SectionTitle(stringResource(R.string.settings_section_about))
+            SettingsDividerGroup(
                 listOf(
-                    { s ->
+                    { // 检查更新
                         SettingsActionRow(
-                            shape = s,
+                            shape = RoundedCornerShape(0.dp),
+                            background = false,
                             title = stringResource(R.string.settings_check_update_title),
                             subtitle = stringResource(R.string.settings_check_update_subtitle),
-                            icon = { Icon(Icons.Default.CloudDownload, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
                                 Text(
                                     when (val r = updateResult) {
@@ -896,28 +727,20 @@ private fun AboutScreen(onBack: () -> Unit) {
                             }
                         )
                     },
-                    { s ->
-                        // 重新安装本版本：仅在“当前已是最新版”时可用（此时最新版信息就是当前版本）。
+                    { // 重新安装本版本：仅在“当前已是最新版”时可用（此时最新版信息就是当前版本）。
                         // 若存在更新版本则禁用，引导用户先用「检查更新」升级，避免覆盖安装把新版本顶掉。
                         val info = latestInfo
                         val upToDate = info != null &&
                             !UpdateChecker.isNewer(info.version, BuildConfig.VERSION_NAME)
                         val newerVersion = if (info != null && !upToDate) info.version else null
                         SettingsActionRow(
-                            shape = s,
+                            shape = RoundedCornerShape(0.dp),
+                            background = false,
                             title = stringResource(R.string.settings_reinstall_title),
                             subtitle = if (newerVersion == null) {
                                 stringResource(R.string.settings_reinstall_subtitle)
                             } else {
                                 stringResource(R.string.settings_reinstall_newer_hint, newerVersion)
-                            },
-                            icon = {
-                                Icon(
-                                    Icons.Default.Refresh,
-                                    contentDescription = null,
-                                    tint = if (upToDate) MaterialTheme.colorScheme.primary
-                                    else MaterialTheme.colorScheme.onSurfaceVariant
-                                )
                             },
                             trailing = {
                                 if (latestInfo == null && checking) {
@@ -939,28 +762,20 @@ private fun AboutScreen(onBack: () -> Unit) {
                             }
                         )
                     },
-                    { s ->
+                    { // 版本信息
                         SettingsInfoRow(
-                            shape = s,
+                            shape = RoundedCornerShape(0.dp),
+                            background = false,
                             title = stringResource(R.string.settings_version_title),
                             value = stringResource(R.string.settings_version_value, BuildConfig.VERSION_NAME)
                         )
-                    }
-                )
-            )
-
-            // ── 鸣谢 ──
-            // 赞助入口已上移到设置首屏最顶端，这里只保留鸣谢
-            SectionTitle(stringResource(R.string.settings_section_credits))
-            SettingsRowsGroup(
-                listOf(
-                    { s ->
-                        // 酷安用户 @毛血旺o：点击跳浏览器打开其主页
+                    },
+                    { // 酷安用户 @毛血旺o：点击跳浏览器打开其主页
                         SettingsActionRow(
-                            shape = s,
+                            shape = RoundedCornerShape(0.dp),
+                            background = false,
                             title = "@毛血旺o",
                             subtitle = stringResource(R.string.settings_coolapk_subtitle),
-                            icon = { Icon(Icons.Default.Person, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
                                 Icon(
                                     Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -974,27 +789,20 @@ private fun AboutScreen(onBack: () -> Unit) {
                             }
                         )
                     },
-                    { s ->
-                        // AI IDE 与 AI 模型的鸣谢
+                    { // AI IDE 与 AI 模型的鸣谢
                         SettingsCreditRow(
-                            shape = s,
+                            shape = RoundedCornerShape(0.dp),
+                            background = false,
                             title = "Trae · GML · DeepSeek · Kimi",
                             subtitle = stringResource(R.string.settings_ai_credits_subtitle)
                         )
-                    }
-                )
-            )
-
-            // ── 开源与授权 ──
-            SectionTitle(stringResource(R.string.settings_section_opensource))
-            SettingsRowsGroup(
-                listOf(
-                    { s ->
+                    },
+                    { // GitHub 开源地址
                         SettingsActionRow(
-                            shape = s,
+                            shape = RoundedCornerShape(0.dp),
+                            background = false,
                             title = stringResource(R.string.settings_github_title),
                             subtitle = GITHUB_REPO_URL.removePrefix("https://"),
-                            icon = { Icon(Icons.Default.Code, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
                             trailing = {
                                 Icon(
                                     Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -1008,19 +816,12 @@ private fun AboutScreen(onBack: () -> Unit) {
                             }
                         )
                     },
-                    { s ->
-                        // 开源许可证：书本图标
+                    { // 开源许可证
                         SettingsInfoRow(
-                            shape = s,
+                            shape = RoundedCornerShape(0.dp),
+                            background = false,
                             title = stringResource(R.string.settings_license_title),
-                            value = "GPL-3.0",
-                            leading = {
-                                Icon(
-                                    Icons.AutoMirrored.Filled.MenuBook,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.primary
-                                )
-                            }
+                            value = "GPL-3.0"
                         )
                     }
                 )
@@ -1031,12 +832,17 @@ private fun AboutScreen(onBack: () -> Unit) {
 
 /** 静态鸣谢行（非点击）：标题 + 摘要 */
 @Composable
-private fun SettingsCreditRow(shape: RoundedCornerShape, title: String, subtitle: String?) {
+private fun SettingsCreditRow(
+    shape: RoundedCornerShape,
+    title: String,
+    subtitle: String?,
+    background: Boolean = true
+) {
     Row(
         Modifier
             .fillMaxWidth()
             .heightIn(min = 64.dp)
-            .cardSurface(shape)
+            .then(if (background) Modifier.cardSurface(shape) else Modifier)
             .padding(horizontal = 20.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -1159,6 +965,27 @@ private fun SettingsRowsGroup(rows: List<@Composable (RoundedCornerShape) -> Uni
 }
 
 /**
+ * 二级页的分组：与一级页 [SettingsRowsGroup] 完全一致的「切开的圆角组」版式
+ * （组首/组尾大圆角、组内小圆角、行间 4dp 露底），不再用单卡 + 分隔线，
+ * 否则一级页与二级页背景板风格不一致（用户反馈）。
+ */
+@Composable
+private fun SettingsDividerGroup(rows: List<@Composable () -> Unit>) {
+    Column(Modifier.fillMaxWidth()) {
+        rows.forEachIndexed { index, row ->
+            if (index > 0) Spacer(Modifier.height(4.dp))
+            val shape = groupShape(index, rows.size)
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .clip(shape)
+                    .background(flCardColor(), shape)
+            ) { row() }
+        }
+    }
+}
+
+/**
  * 开关行：整行可点 + 行级弹性动画；Switch 使用自身默认 interactionSource，
  * 其滑块按压动画与行级弹性动画解耦，避免共享 interactionSource 时
  * 滑块在动画中断/开关自身被切换时卡在放大态无法复原。
@@ -1170,8 +997,8 @@ private fun SettingsSwitchRow(
     title: String,
     subtitle: String?,
     checked: Boolean,
-    leading: (@Composable () -> Unit)? = null,
     enabled: Boolean = true,
+    background: Boolean = true,
     onToggle: (Boolean) -> Unit
 ) {
     val fb = rememberPressFeedback(hapticOnPress = false)
@@ -1184,7 +1011,7 @@ private fun SettingsSwitchRow(
         Modifier
             .fillMaxWidth()
             .heightIn(min = 64.dp)
-            .cardSurface(shape)
+            .then(if (background) Modifier.cardSurface(shape) else Modifier)
             .alpha(if (enabled) 1f else 0.38f)
             .clickable(
                 interactionSource = fb.interactionSource,
@@ -1195,10 +1022,6 @@ private fun SettingsSwitchRow(
             .padding(horizontal = 20.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (leading != null) {
-            leading()
-            Spacer(Modifier.width(16.dp))
-        }
         Column(Modifier.weight(1f)) {
             Text(title, style = MaterialTheme.typography.titleSmall)
             if (subtitle != null) {
@@ -1219,26 +1042,22 @@ private fun SettingsSwitchRow(
     }
 }
 
-/** 信息展示行（版本号 / 许可证），可带前置小图标 */
+/** 信息展示行（版本号 / 许可证） */
 @Composable
 private fun SettingsInfoRow(
     shape: RoundedCornerShape,
     title: String,
     value: String,
-    leading: (@Composable () -> Unit)? = null
+    background: Boolean = true
 ) {
     Row(
         Modifier
             .fillMaxWidth()
             .heightIn(min = 56.dp)
-            .cardSurface(shape)
+            .then(if (background) Modifier.cardSurface(shape) else Modifier)
             .padding(horizontal = 20.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (leading != null) {
-            leading()
-            Spacer(Modifier.width(16.dp))
-        }
         Text(title, style = MaterialTheme.typography.titleSmall, modifier = Modifier.weight(1f))
         Text(
             value,
@@ -1257,10 +1076,10 @@ private fun SettingsActionRow(
     shape: RoundedCornerShape,
     title: String,
     subtitle: String?,
-    icon: @Composable () -> Unit,
     trailing: @Composable () -> Unit,
     enabled: Boolean = true,
     danger: Boolean = false,
+    background: Boolean = true,
     onClick: () -> Unit
 ) {
     val fb = rememberPressFeedback(hapticOnPress = false)
@@ -1268,9 +1087,15 @@ private fun SettingsActionRow(
         Modifier
             .fillMaxWidth()
             .heightIn(min = 64.dp)
-            .background(
-                if (danger) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.surfaceContainerLow,
-                shape
+            .then(
+                if (background) {
+                    Modifier.background(
+                        if (danger) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.surfaceContainerLow,
+                        shape
+                    )
+                } else {
+                    Modifier
+                }
             )
             .then(
                 if (enabled) {
@@ -1288,8 +1113,6 @@ private fun SettingsActionRow(
             .padding(horizontal = 20.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        icon()
-        Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
             Text(
                 title,
@@ -1317,6 +1140,77 @@ private fun SettingsActionRow(
 }
 
 /**
+ * 下拉选择行：左侧标题，右侧 MD3 下拉框（只读 [OutlinedTextField] + 菜单）。
+ * 用于「玻璃外观（通透 / 纯色）」等二选一设置，写回逻辑由调用方决定。
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun SettingsDropdownRow(
+    shape: RoundedCornerShape,
+    title: String,
+    selectedValue: String,
+    options: List<Pair<String, String>>,
+    onSelect: (String) -> Unit,
+    enabled: Boolean = true
+) {
+    var expanded by remember { mutableStateOf(false) }
+    val haptic = rememberHapticFeedback()
+    val selectedLabel = options.firstOrNull { it.first == selectedValue }?.second
+        ?: options.firstOrNull()?.second.orEmpty()
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .heightIn(min = 64.dp)
+            .cardSurface(shape)
+            .alpha(if (enabled) 1f else 0.38f)
+            // 右侧内边距略小，给下拉框留出空间
+            .padding(start = 20.dp, end = 12.dp, top = 6.dp, bottom = 6.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            title,
+            style = MaterialTheme.typography.titleSmall,
+            modifier = Modifier.weight(1f)
+        )
+        Spacer(Modifier.width(12.dp))
+        ExposedDropdownMenuBox(
+            expanded = expanded,
+            onExpandedChange = { if (enabled) expanded = it }
+        ) {
+            OutlinedTextField(
+                value = selectedLabel,
+                onValueChange = {},
+                readOnly = true,
+                singleLine = true,
+                enabled = enabled,
+                textStyle = MaterialTheme.typography.bodyMedium,
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                },
+                modifier = Modifier
+                    .width(140.dp)
+                    .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable)
+            )
+            ExposedDropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                options.forEach { (value, label) ->
+                    DropdownMenuItem(
+                        text = { Text(label) },
+                        onClick = {
+                            haptic.click()
+                            onSelect(value)
+                            expanded = false
+                        }
+                    )
+                }
+            }
+        }
+    }
+}
+
+/**
  * 内置转码器（ffmpeg）：随 APK 打包为 native 库，无需下载/校验/解压/更新，
  * 设置页提供「转码方式」三选一与转码参数。
  * - go 轻量版不含内置转码器，整个区块隐藏；
@@ -1325,46 +1219,47 @@ private fun SettingsActionRow(
  */
 @Composable
 private fun TranscoderAddonSection() {
-    if (BuildConfig.FLAVOR == "go") return
+    if (FlavorCapabilities.isGo) return
 
     SectionTitle(stringResource(R.string.settings_section_transcode))
 
-    SettingsRowsGroup(
-        listOf(
-            { s ->
-                SettingsInfoRow(
-                    shape = s,
-                    title = stringResource(R.string.settings_transcoder_title),
-                    value = stringResource(R.string.settings_transcoder_value, FfmpegAddon.BUNDLED_VERSION)
-                )
-            }
-        )
-    )
-
-    // 转码方式三选：演示版 BOTTOM tabs（液态玻璃胶囊 + 可拖拽指示器 + 按压力高光）
-    Spacer(Modifier.height(12.dp))
-    val transcodeModes = listOf(FfmpegAddon.MODE_ENCODE, FfmpegAddon.MODE_REMUX, FfmpegAddon.MODE_OFF)
-    val transcodeLabels = listOf(
-        stringResource(R.string.settings_transcode_mode_encode),
-        stringResource(R.string.settings_transcode_mode_remux),
-        stringResource(R.string.settings_transcode_mode_off)
-    )
-    LiquidSegmentedTabs(
-        labels = transcodeLabels,
-        selectedIndex = transcodeModes.indexOf(FfmpegAddon.mode).coerceAtLeast(0),
-        onSelect = { FfmpegAddon.updateMode(transcodeModes[it]) }
-    )
-
-    Spacer(Modifier.height(12.dp))
+    // 整组统一放在一张「视频转码」卡片内：转码模式 → 编码器 → 压缩预设 → 质量(CRF)
     val encoding = FfmpegAddon.mode == FfmpegAddon.MODE_ENCODE
-    val crfCardShape = RoundedCornerShape(16.dp)
     Column(
         Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surfaceContainerLow, crfCardShape)
-            .alpha(if (encoding) 1f else 0.38f)
+            .background(MaterialTheme.colorScheme.surfaceContainerLow, RoundedCornerShape(16.dp))
             .padding(horizontal = 20.dp, vertical = 12.dp)
     ) {
+        // 内置转码器版本
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                stringResource(R.string.settings_transcoder_title),
+                style = MaterialTheme.typography.titleSmall,
+                modifier = Modifier.weight(1f)
+            )
+            Text(
+                stringResource(R.string.settings_transcoder_value, FfmpegAddon.BUNDLED_VERSION),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+        Spacer(Modifier.height(12.dp))
+
+        // 转码方式三选：演示版 BOTTOM tabs（液态玻璃胶囊 + 可拖拽指示器 + 按压力高光）
+        val transcodeModes = listOf(FfmpegAddon.MODE_ENCODE, FfmpegAddon.MODE_REMUX, FfmpegAddon.MODE_OFF)
+        val transcodeLabels = listOf(
+            stringResource(R.string.settings_transcode_mode_encode),
+            stringResource(R.string.settings_transcode_mode_remux),
+            stringResource(R.string.settings_transcode_mode_off)
+        )
+        LiquidSegmentedTabs(
+            labels = transcodeLabels,
+            selectedIndex = transcodeModes.indexOf(FfmpegAddon.mode).coerceAtLeast(0),
+            onSelect = { FfmpegAddon.updateMode(transcodeModes[it]) }
+        )
+
+        Spacer(Modifier.height(16.dp))
         Text(stringResource(R.string.settings_transcode_params_title), style = MaterialTheme.typography.titleSmall)
         Text(
             if (encoding) stringResource(R.string.settings_transcode_params_subtitle)
@@ -1374,88 +1269,92 @@ private fun TranscoderAddonSection() {
         )
         Spacer(Modifier.height(8.dp))
 
-        Text(
-            stringResource(R.string.settings_crf_value, FfmpegAddon.crf),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        val backdrop = LocalGlassRootBackdrop.current
-        if (backdrop != null) {
-            // CRF 是整数量（10..30）：换回与「模糊程度」同款的阻尼弹簧滑条
-            // （用户反馈：做成和上面选择模糊程度一样的就好了）。value 用本地
-            // 连续状态——若把取整后的值回填滑条，阻尼动画的 snapshotFlow 会
-            // 追着整数跑造成抖动；内部动画保持连续，只在写回时四舍五入，
-            // 显示与传给 ffmpeg 的都是整数。玻璃可用时即使转码关闭也保持
-            // 液态玻璃外观（仅置灰禁手势），不退回 MD3 滑条。
-            var crfContinuous by remember { mutableStateOf(FfmpegAddon.crf.toFloat()) }
-            LiquidSlider(
-                value = { crfContinuous },
-                onValueChange = { v ->
-                    crfContinuous = v
-                    val i = v.roundToInt().coerceIn(10, 30)
-                    if (i != FfmpegAddon.crf) FfmpegAddon.updateCrf(i)
-                },
-                valueRange = 10f..30f,
-                visibilityThreshold = 0.01f,
-                backdrop = backdrop,
+        // 参数区：仅「完整转码」时可调，禁用时整块降透明度
+        Column(Modifier.alpha(if (encoding) 1f else 0.38f)) {
+            // 编码器二选：与深浅色切换一致的动态滑动分段选择器
+            Text(
+                stringResource(R.string.settings_encoder_title),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(Modifier.height(6.dp))
+            val codecs = listOf("h265", "h264")
+            LiquidSegmentedTabs(
+                labels = listOf("H.265", "H.264"),
+                selectedIndex = codecs.indexOf(FfmpegAddon.codec).coerceAtLeast(0),
+                onSelect = { FfmpegAddon.updateCodec(codecs[it]) },
                 enabled = encoding
             )
-        } else {
-            // 无玻璃回落：同样不分档位（用户反馈：CRF 滑条不需要分档）
-            GlassSlider(
-                value = FfmpegAddon.crf.toFloat(),
-                onValueChange = { v -> FfmpegAddon.updateCrf(v.roundToInt()) },
-                valueRange = 10f..30f,
-                enabled = encoding
-            )
-        }
-        Text(
-            stringResource(R.string.settings_crf_hint),
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
 
-        Spacer(Modifier.height(12.dp))
-        Text(
-            stringResource(R.string.settings_encoder_title),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        Spacer(Modifier.height(6.dp))
-        // 编码器二选：与深浅色切换一致的动态滑动分段选择器
-        val codecs = listOf("h265", "h264")
-        LiquidSegmentedTabs(
-            labels = listOf("H.265", "H.264"),
-            selectedIndex = codecs.indexOf(FfmpegAddon.codec).coerceAtLeast(0),
-            onSelect = { FfmpegAddon.updateCodec(codecs[it]) },
-            enabled = encoding
-        )
-
-        Spacer(Modifier.height(12.dp))
-        Text(
-            stringResource(R.string.settings_compress_preset_title),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        Spacer(Modifier.height(6.dp))
-        // 压缩预设 9 选：液态玻璃滚动 tab 栏（与底部 tab 同一套视觉语言：
-        // vibrancy 玻璃胶囊容器 + 常驻液态玻璃指示器弹簧滑动（宽度随目标文本动态过渡）
-        // + 选中文字交叉淡入绘制在玻璃之上，清晰不被折射遮挡）
-        val presetBackdrop = LocalGlassRootBackdrop.current
-        if (presetBackdrop != null) {
-            LiquidScrollTabs(
-                labels = FfmpegAddon.PRESETS,
-                selectedIndex = FfmpegAddon.PRESETS.indexOf(FfmpegAddon.preset).coerceAtLeast(0),
-                onSelect = { FfmpegAddon.updatePreset(FfmpegAddon.PRESETS[it]) },
-                backdrop = presetBackdrop,
-                enabled = encoding
+            Spacer(Modifier.height(12.dp))
+            // 压缩预设 9 选：液态玻璃滚动 tab 栏（与底部 tab 同一套视觉语言：
+            // vibrancy 玻璃胶囊容器 + 常驻液态玻璃指示器弹簧滑动（宽度随目标文本动态过渡）
+            // + 选中文字交叉淡入绘制在玻璃之上，清晰不被折射遮挡）
+            Text(
+                stringResource(R.string.settings_compress_preset_title),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-        } else {
-            LiquidScrollSegments(
-                options = FfmpegAddon.PRESETS,
-                selectedIndex = FfmpegAddon.PRESETS.indexOf(FfmpegAddon.preset).coerceAtLeast(0),
-                onSelect = { FfmpegAddon.updatePreset(FfmpegAddon.PRESETS[it]) },
-                enabled = encoding
+            Spacer(Modifier.height(6.dp))
+            val presetBackdrop = LocalGlassRootBackdrop.current
+            if (presetBackdrop != null) {
+                LiquidScrollTabs(
+                    labels = FfmpegAddon.PRESETS,
+                    selectedIndex = FfmpegAddon.PRESETS.indexOf(FfmpegAddon.preset).coerceAtLeast(0),
+                    onSelect = { FfmpegAddon.updatePreset(FfmpegAddon.PRESETS[it]) },
+                    backdrop = presetBackdrop,
+                    enabled = encoding
+                )
+            } else {
+                LiquidScrollSegments(
+                    options = FfmpegAddon.PRESETS,
+                    selectedIndex = FfmpegAddon.PRESETS.indexOf(FfmpegAddon.preset).coerceAtLeast(0),
+                    onSelect = { FfmpegAddon.updatePreset(FfmpegAddon.PRESETS[it]) },
+                    enabled = encoding
+                )
+            }
+
+            // 质量（CRF）：归入「视频转码」分组末尾，不再单独成组/单独小标题
+            Spacer(Modifier.height(12.dp))
+            Text(
+                stringResource(R.string.settings_crf_value, FfmpegAddon.crf),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            val backdrop = LocalGlassRootBackdrop.current
+            if (backdrop != null) {
+                // CRF 是整数量（10..30）：换回与「模糊程度」同款的阻尼弹簧滑条
+                // （用户反馈：做成和上面选择模糊程度一样的就好了）。value 用本地
+                // 连续状态——若把取整后的值回填滑条，阻尼动画的 snapshotFlow 会
+                // 追着整数跑造成抖动；内部动画保持连续，只在写回时四舍五入，
+                // 显示与传给 ffmpeg 的都是整数。玻璃可用时即使转码关闭也保持
+                // 液态玻璃外观（仅置灰禁手势），不退回 MD3 滑条。
+                var crfContinuous by remember { mutableStateOf(FfmpegAddon.crf.toFloat()) }
+                LiquidSlider(
+                    value = { crfContinuous },
+                    onValueChange = { v ->
+                        crfContinuous = v
+                        val i = v.roundToInt().coerceIn(10, 30)
+                        if (i != FfmpegAddon.crf) FfmpegAddon.updateCrf(i)
+                    },
+                    valueRange = 10f..30f,
+                    visibilityThreshold = 0.01f,
+                    backdrop = backdrop,
+                    enabled = encoding
+                )
+            } else {
+                // 无玻璃回落：同样不分档位（用户反馈：CRF 滑条不需要分档）
+                GlassSlider(
+                    value = FfmpegAddon.crf.toFloat(),
+                    onValueChange = { v -> FfmpegAddon.updateCrf(v.roundToInt()) },
+                    valueRange = 10f..30f,
+                    enabled = encoding
+                )
+            }
+            Text(
+                stringResource(R.string.settings_crf_hint),
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
     }

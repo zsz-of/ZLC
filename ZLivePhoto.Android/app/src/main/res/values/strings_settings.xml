@@ -24,6 +24,7 @@
     <string name="settings_section_defaults">默认选项</string>
     <string name="settings_section_output">输出</string>
     <string name="settings_section_transcode">视频转码</string>
+    <string name="settings_section_theme">主题</string>
     <string name="settings_section_about">关于</string>
     <string name="settings_section_app">应用</string>
     <string name="settings_section_sponsor">赞助</string>
@@ -53,9 +54,13 @@
     <string name="settings_hue_value">色相 %1$d°</string>
     <!-- 液态玻璃（界面风格） -->
     <string name="settings_glass_title">液态玻璃界面</string>
+    <string name="settings_glass_mode_title">玻璃外观</string>
+    <string name="settings_glass_mode_clear">通透</string>
+    <string name="settings_glass_mode_solid">纯色</string>
+    <string name="settings_glass_theme_hint">液态玻璃模式下主题色由系统壁纸决定，关闭液态玻璃后可设置</string>
     <string name="settings_glass_subtitle">iOS 风格毛玻璃与边缘折射；关闭后使用原生组件</string>
     <string name="settings_glass_unsupported">当前系统版本不支持液态玻璃，已自动使用原生组件</string>
-    <string name="settings_glass_opacity_title">液态玻璃通透度</string>
+    <string name="settings_glass_opacity_title">液态玻璃模糊度</string>
     <string name="settings_glass_opacity_subtitle">通透度越低，磨砂模糊越强（仅液态玻璃界面生效）</string>
 
     <!-- 应用语言：标题与「跟随系统」两项复用 Lead 维护的 strings_app.xml
@@ -106,9 +111,12 @@
     <string name="settings_transcode_params_title">转码参数</string>
     <string name="settings_transcode_params_subtitle">重新编码时使用的质量与压缩参数</string>
     <string name="settings_transcode_params_disabled">仅在「转码方式」选择「重新编码」时生效</string>
+    <string name="settings_crf_title">质量</string>
     <string name="settings_crf_value">质量 CRF：%1$d</string>
     <string name="settings_crf_hint">数值越小画质越高、体积越大（默认 18）</string>
     <string name="settings_encoder_title">编码器</string>
+    <string name="settings_encoder_h265">H.265（HEVC）</string>
+    <string name="settings_encoder_h264">H.264（AVC）</string>
     <string name="settings_compress_preset_title">压缩预设</string>
 
     <!-- 预制主题色名称（ui/Theme.kt presetNameRes，设置页色块标签/无障碍描述） -->
@@ -120,4 +128,7 @@
     <string name="settings_preset_amber">琥珀</string>
     <string name="settings_preset_sunset">落日橙</string>
 
+    <plurals name="settings_category_items">
+        <item quantity="other">%d 项</item>
+    </plurals>
 </resources>

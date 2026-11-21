@@ -18,9 +18,12 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -55,16 +58,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.input.pointer.util.VelocityTracker
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
@@ -82,17 +86,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.math.abs
+import kotlin.math.max
 import kotlin.math.roundToInt
 
 /**
  * 文件卡片：支持双向侧滑删除与「转换完成」移除动画。
  *
- * 侧滑删除（自研手势，参考 ImageToolbox 交互习惯）：
- * - 左右两个方向均可滑动删除
- * - 划出红色圆形垃圾桶徽章（带盖子开合动画），以划出空间的中点水平居中（垂直不动）
- * - 滑过 1/5：清脆振动 + 盖子打开；划回 1/5 以内：再次清脆振动 + 盖子关上
- * - 过阈值后松手：沿滑动方向滑出屏幕 → 图标继续居中渐隐（划出屏后 +0.1s 完全透明）→ 移除列表项
- * - 未过阈值松手：弹簧动画回位（不移除）
+ * 侧滑删除：
+ * - 列表项同时是按钮：按下轻微内缩；横向拖动与列表纵向滚动共存（纵向优先时让位滚动）
+ * - 划出圆形玻璃垃圾桶（与底部「清空」同源的红色），位置随滑动在屏幕边缘 → 露出区域中点移动，
+ *   盖子朝滑动方向打开、桶身反向倾斜，越过 1/3 后角度明显加大
+ * - 越过 / 回到 1/3：清脆振动
+ * - 过 1/3 松手：以松手速度**匀速**滑出屏幕（非减速），垃圾桶同时滑向屏幕正中并淡出 → 移除列表项
+ * - 未过 1/3 松手：停在刚好露出垃圾桶的位置，点垃圾桶同样匀速滑出删除
+ * - 停在露出状态时点卡片：收起侧滑
  *
  * 转换完成移除：
  * - 由 Activity 直接无动画移除（附快速两下振动提示）
@@ -103,7 +110,11 @@ fun FileCard(
     isConverting: Boolean,
     sameFormat: Boolean,
     onLongPress: () -> Unit,
-    onDelete: (String) -> Unit
+    onDelete: (String) -> Unit,
+    /** 可选卡片容器（如 Glasmio 玻璃卡）：为 null 时用默认 MD3 [Card] 表面 */
+    cardContainer: (@Composable (Modifier, @Composable () -> Unit) -> Unit)? = null,
+    /** 可选进度条（玻璃外壳传 LiquidProgressBar）：为 null 时用 Material 进度条 */
+    progressBar: (@Composable (Float) -> Unit)? = null
 ) {
     val haptic = rememberHapticFeedback()
     val density = LocalDensity.current
@@ -112,79 +123,145 @@ fun FileCard(
     // 状态用 State 对象承载：pointerInput(Unit) 闭包跨重组读取最新值
     var boxWidthPx by remember { mutableIntStateOf(0) }
     val offsetX = remember { Animatable(0f) }        // 侧滑位移（px，正=向右）
-    val iconAlpha = remember { Animatable(1f) }       // 垃圾桶徽章透明度
-    var lidOpen by remember { mutableStateOf(false) }
-    var pastThreshold by remember { mutableStateOf(false) }
+    val trashExit = remember { Animatable(0f) }      // 删除时垃圾桶滑向屏幕正中并淡出的进度
+    var overThreshold by remember { mutableStateOf(false) }
     var exiting by remember { mutableStateOf(false) }
-    // 垃圾桶条件显示：仅在拖动项目时显示（项 9）
     var dragging by remember { mutableStateOf(false) }
-    // 垃圾桶盖方向：从右向左拉（off<0）→ 盖开向左边；从左向右拉（off>0）→ 盖开向右边
-    var lidToLeft by remember { mutableStateOf(false) }
-    // 删除徽章改按需组合（拖动/退出时才进入组合，平时零渲染零开销），
-    // 原常驻组合 + badgeAlpha 淡入的方案已移除
+    // 未过 1/3 松手后停在「刚好露出垃圾桶」的位置，此时垃圾桶可点按删除
+    var settled by remember { mutableStateOf(false) }
+    var pressed by remember { mutableStateOf(false) }
+    val velocityTracker = remember { VelocityTracker() }
 
-    // 处理中 / 退出动画中：禁用侧滑与长按手势
+    val trashSize = 44.dp
+    val trashSizePx = with(density) { trashSize.toPx() }
+    val trashMargin = 12.dp
+    val revealPx = with(density) { (trashSize + trashMargin * 2).toPx() }
+
+    // 列表项即按钮：按下轻微内缩（只做缩放，不做玻璃拖拽形变，
+    // 否则横向拖动会被形变吃掉，列表无法上下滚动）
+    val pressScale by animateFloatAsState(
+        targetValue = if (pressed && !dragging && !exiting) 0.985f else 1f,
+        animationSpec = spring(dampingRatio = 0.9f, stiffness = 700f),
+        label = "pressScale"
+    )
+
+    // 删除：按松手速度**匀速**滑出屏幕（非减速），垃圾桶同时滑向屏幕正中并淡出
+    fun startDelete(flingVelocity: Float) {
+        val width = boxWidthPx.toFloat()
+        if (exiting || width <= 0f) return
+        exiting = true
+        dragging = false
+        settled = false
+        val dir = if (offsetX.value <= 0f) -1f else 1f
+        val speed = max(abs(flingVelocity), with(density) { 1400.dp.toPx() })
+        val remaining = (width - abs(offsetX.value)).coerceAtLeast(1f)
+        val duration = (remaining / speed * 1000f).toInt().coerceIn(120, 480)
+        scope.launch {
+            launch { trashExit.animateTo(1f, tween(duration, easing = LinearEasing)) }
+            offsetX.animateTo(dir * width, tween(duration, easing = LinearEasing))
+            onDelete(item.path)
+        }
+    }
+
+    // 处理中 / 退出动画中：禁用侧滑与长按手势。
+    // 横向拖拽在纵向位移占优时会让位给列表滚动（detectHorizontalDragGestures 的
+    // slop 竞争），因此列表照常可以上下滚动，只有明确的横向滑动才进入侧滑删除。
     val gestureModifier = if (!isConverting && !exiting) {
         Modifier
             .pointerInput(Unit) {
                 detectHorizontalDragGestures(
-                onDragStart = { dragging = true },
-                onHorizontalDrag = { change, dragAmount ->
-                    change.consume()
-                    val w = boxWidthPx.toFloat()
-                    if (w <= 0f) return@detectHorizontalDragGestures
-                    val target = (offsetX.value + dragAmount).coerceIn(-w, w)
-                    scope.launch { offsetX.snapTo(target) }
-                    // 盖子方向跟随滑动方向：从右向左拉（off<0）→ 盖开向左边
-                    if (target != 0f) lidToLeft = target < 0f
-                    val over = abs(target) > w / 5f
-                    if (over != pastThreshold) {
-                        pastThreshold = over
-                        lidOpen = over
-                        haptic.click() // 清脆振动
-                    }
-                },
-                onDragEnd = {
-                    dragging = false
-                    val w = boxWidthPx.toFloat()
-                    if (w <= 0f) return@detectHorizontalDragGestures
-                    if (pastThreshold && abs(offsetX.value) > w / 5f) {
-                        // 删除：沿滑动方向滑出屏幕，图标渐隐（划出屏后 +0.1s 完全透明）
-                        exiting = true
-                        val dir = if (offsetX.value < 0f) -1f else 1f
-                        scope.launch {
-                            offsetX.animateTo(dir * w, tween(220, easing = FastOutSlowInEasing))
-                            iconAlpha.animateTo(0f, tween(100))
-                            onDelete(item.path)
+                    onDragStart = {
+                        dragging = true
+                        velocityTracker.resetTracking()
+                    },
+                    onHorizontalDrag = { change, dragAmount ->
+                        change.consume()
+                        val width = boxWidthPx.toFloat()
+                        if (width <= 0f) return@detectHorizontalDragGestures
+                        velocityTracker.addPosition(change.uptimeMillis, change.position)
+                        val target = (offsetX.value + dragAmount).coerceIn(-width, width)
+                        scope.launch { offsetX.snapTo(target) }
+                        // 刚越过 / 回到 1/3：清脆振动（删除判定线反馈）
+                        val over = abs(target) > width / 3f
+                        if (over != overThreshold) {
+                            overThreshold = over
+                            haptic.click()
                         }
-                    } else {
-                        // 弹簧回位（不移除）
-                        scope.launch {
-                            offsetX.animateTo(
-                                0f,
-                                spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMediumLow)
-                            )
+                    },
+                    onDragEnd = {
+                        dragging = false
+                        val width = boxWidthPx.toFloat()
+                        if (width <= 0f) return@detectHorizontalDragGestures
+                        val velocity = velocityTracker.calculateVelocity().x
+                        velocityTracker.resetTracking()
+                        val offset = offsetX.value
+                        when {
+                            // 过 1/3：直接删除（以松手速度匀速滑出，不减速）
+                            abs(offset) > width / 3f -> startDelete(velocity)
+                            // 未过 1/3：停在刚好露出垃圾桶的位置，垃圾桶可点按删除
+                            abs(offset) > revealPx * 0.4f -> {
+                                settled = true
+                                val dir = if (offset <= 0f) -1f else 1f
+                                scope.launch {
+                                    offsetX.animateTo(
+                                        dir * revealPx,
+                                        spring(dampingRatio = 0.86f, stiffness = 380f)
+                                    )
+                                }
+                            }
+                            // 只是轻碰：回位
+                            else -> scope.launch {
+                                offsetX.animateTo(0f, spring(dampingRatio = 0.9f, stiffness = 380f))
+                                overThreshold = false
+                                settled = false
+                            }
+                        }
+                    },
+                    onDragCancel = {
+                        dragging = false
+                        val offset = offsetX.value
+                        if (abs(offset) > revealPx * 0.4f) {
+                            settled = true
+                            val dir = if (offset <= 0f) -1f else 1f
+                            scope.launch {
+                                offsetX.animateTo(
+                                    dir * revealPx,
+                                    spring(dampingRatio = 0.86f, stiffness = 380f)
+                                )
+                            }
+                        } else {
+                            scope.launch {
+                                offsetX.animateTo(0f, spring(dampingRatio = 0.9f, stiffness = 380f))
+                                overThreshold = false
+                                settled = false
+                            }
                         }
                     }
-                },
-                onDragCancel = {
-                    dragging = false
-                    scope.launch {
-                        offsetX.animateTo(
-                            0f,
-                            spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMediumLow)
-                        )
-                    }
-                }
                 )
             }
             .pointerInput(Unit) {
-                // 长按列表项：单独设置本项输出格式。
-                // 侧滑拖动会消费位置变化，长按由其自动取消（不会与侧滑删除冲突）
-                detectTapGestures(onLongPress = {
-                    haptic.longPress()
-                    onLongPress()
-                })
+                // 长按列表项：单独设置本项输出格式；
+                // 点按在「已露出垃圾桶」的状态下收起侧滑
+                detectTapGestures(
+                    onPress = {
+                        pressed = true
+                        tryAwaitRelease()
+                        pressed = false
+                    },
+                    onTap = {
+                        if (settled && !exiting) {
+                            settled = false
+                            overThreshold = false
+                            scope.launch {
+                                offsetX.animateTo(0f, spring(dampingRatio = 0.9f, stiffness = 380f))
+                            }
+                        }
+                    },
+                    onLongPress = {
+                        haptic.longPress()
+                        onLongPress()
+                    }
+                )
             }
     } else Modifier
 
@@ -195,132 +272,159 @@ fun FileCard(
             .clipToBounds()
             .then(gestureModifier)
     ) {
-        // 背景层：垃圾桶圆形徽章，以划出空间的中点水平居中（垂直不动）
-        // 按需组合：仅拖动/删除退出时组合（用户反馈：不需要显示的时候不渲染）
-        if (boxWidthPx > 0 && (dragging || exiting)) {
-            val off = offsetX.value
-            val iconSizePx = with(density) { 40.dp.roundToPx() }
-            val centerX = if (off >= 0f) off / 2f else boxWidthPx + off / 2f
-            // 液态玻璃徽章（用户反馈：滑动出现的删除按钮也要有液态玻璃，
-            // 高光和点按拖拽的形变）。徽章位于页面采样层之内，必须覆写采样源
-            // 为根层——否则玻璃采样页面层会把自己画进去（反馈式频闪）
+        // 背景层：圆形玻璃垃圾桶按钮。
+        // 水平位置：未过 1/3 贴住屏幕左/右边缘（留边距）；越过 1/3 附近平滑滑到
+        // 「屏幕边缘 ↔ 项目边缘」两坐标的中点。位置在 layout 阶段由 offset lambda 计算，
+        // 拖动时只重排/重绘，不重组列表项。
+        if (boxWidthPx > 0 && (dragging || exiting || settled)) {
             val glassBadge = LocalGlassEnabled.current && LocalGlassRootBackdrop.current != null
             val badgePhysics = if (glassBadge) rememberGlassButtonPhysics(maxOffset = 2.dp) else null
+            val red = MaterialTheme.colorScheme.error
             Box(
                 Modifier
                     .align(Alignment.CenterStart)
-                    .offset { IntOffset((centerX - iconSizePx / 2f).roundToInt(), 0) }
-                    .size(40.dp)
+                    .offset {
+                        val width = boxWidthPx.toFloat()
+                        val off = offsetX.value
+                        val marginCenter = (trashMargin + trashSize / 2).toPx()
+                        val pinned = if (off <= 0f) width - marginCenter else marginCenter
+                        val gap = if (off <= 0f) width + off / 2f else off / 2f
+                        val blend = ((abs(off) - width * 0.18f) / (width * 0.15f)).coerceIn(0f, 1f)
+                        val eased = blend * blend * (3f - 2f * blend)
+                        val center = pinned + (gap - pinned) * eased
+                        // 删除时垃圾桶滑向整行（屏幕）正中
+                        val exitCenter = center + (width / 2f - center) * trashExit.value
+                        IntOffset((exitCenter - trashSizePx / 2f).roundToInt(), 0)
+                    }
+                    .size(trashSize)
+                    .graphicsLayer { alpha = (1f - trashExit.value).coerceIn(0f, 1f) }
                     .then(
                         if (glassBadge && badgePhysics != null) Modifier.liquidGlass(
                             CircleShape,
-                            // 保留「红底」语义：淡 error 染色的玻璃圆
-                            tintAlpha = 0.30f,
-                            tintColor = MaterialTheme.colorScheme.error,
+                            // 圆形玻璃按钮：红色与底部「清空」按钮同源（colorScheme.error）
+                            tintAlpha = 0.22f,
+                            tintColor = red,
                             lensHeight = 8.dp,
                             lensAmount = 12.dp,
                             layerBlock = badgePhysics.transform,
                             backdropOverride = LocalGlassRootBackdrop.current
-                        ) else Modifier
+                        ) else Modifier.background(red, CircleShape)
                     )
                     .then(if (badgePhysics != null) badgePhysics.highlight.gestureModifier else Modifier)
-                    .graphicsLayer { alpha = iconAlpha.value }
+                    .then(
+                        // 停在露出垃圾桶的位置时，垃圾桶本身即删除按钮
+                        if (settled && !exiting) Modifier.clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null
+                        ) {
+                            haptic.click()
+                            startDelete(0f)
+                        } else Modifier
+                    )
             ) {
-                TrashBadge(open = lidOpen, lidToLeft = lidToLeft, glass = glassBadge)
+                TrashCan(
+                    progress = {
+                        val width = boxWidthPx.toFloat()
+                        if (width > 0f) abs(offsetX.value) / width else 0f
+                    },
+                    openLeft = { offsetX.value <= 0f },
+                    tint = if (glassBadge) red else MaterialTheme.colorScheme.onError,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(11.dp)
+                )
             }
         }
 
-        // 前景卡片：侧滑平移（手动删除共用 translationX）
+        // 前景卡片：侧滑平移 + 按压缩放（列表项作为可交互「按钮」）
         Box(
             Modifier
                 .fillMaxWidth()
                 .graphicsLayer {
                     translationX = offsetX.value
+                    scaleX = pressScale
+                    scaleY = pressScale
                 }
         ) {
-            FileCardContent(item = item, sameFormat = sameFormat)
+            FileCardContent(item = item, sameFormat = sameFormat, cardContainer = cardContainer, progressBar = progressBar)
         }
     }
 }
 
-// ---------- 垃圾桶徽章 ----------
-
 /**
- * 红色圆形底 + 白色垃圾桶（项 9）：
- * - 盖子开启角度 35-45°（取 40°），绕铰链弹簧旋转开合（非突变）
- * - 盖子方向动态：lidToLeft=true（从右向左拉）→ 铰链在右端、盖开向左边；
- *   lidToLeft=false（从左向右拉）→ 铰链在左端、盖开向右边
- * - 桶身水平宽度压缩（15→12dp），提升视觉协调性
+ * 垃圾桶图形（自绘，跟随侧滑进度做「开盖 + 桶身反向倾斜」）。
+ *
+ * - 1/3 之前：盖子随滑动缓慢打开（0° → 12°），桶身不动
+ * - 超过 1/3：盖子明显张开（12° → 68°），桶身向反方向倾斜（0° → 10°）
+ * - 向左滑时盖子左端抬起（铰链在右），向右滑时盖子右端抬起（铰链在左）
  */
 @Composable
-private fun TrashBadge(open: Boolean, lidToLeft: Boolean, glass: Boolean = false) {
-    val lidProgress by animateFloatAsState(
-        targetValue = if (open) 1f else 0f,
-        animationSpec = spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMedium),
-        label = "lid"
-    )
-    // 玻璃模式下红色圆底由 liquidGlass 的 error 染色提供，这里只画图标
-    val bg = if (glass) Color.Transparent else MaterialTheme.colorScheme.error
-    val fg = MaterialTheme.colorScheme.onError
-    Canvas(Modifier.fillMaxSize()) {
-        val c = center
-        drawCircle(bg, radius = size.minDimension / 2f, center = c)
-        val stroke = 2.2.dp.toPx()
-        // 桶身（水平宽度压缩）
-        val bodyW = 12.dp.toPx()
-        val bodyH = 12.dp.toPx()
-        val bodyLeft = c.x - bodyW / 2f
-        val bodyTop = c.y - bodyH / 2f + 3.dp.toPx()
-        drawRoundRect(
-            color = fg,
-            topLeft = Offset(bodyLeft, bodyTop),
-            size = Size(bodyW, bodyH),
-            cornerRadius = CornerRadius(2.dp.toPx()),
-            style = Stroke(stroke)
-        )
-        // 桶身竖线
-        val x1 = bodyLeft + bodyW / 3f
-        val x2 = bodyLeft + bodyW * 2f / 3f
-        drawLine(fg, Offset(x1, bodyTop + bodyH * 0.25f), Offset(x1, bodyTop + bodyH * 0.8f), stroke)
-        drawLine(fg, Offset(x2, bodyTop + bodyH * 0.25f), Offset(x2, bodyTop + bodyH * 0.8f), stroke)
-        // 盖子 + 提手：开启角度 40°，方向随滑动方向
-        // - 开向左边（lidToLeft）：铰链在右端，正向旋转
-        // - 开向右边：铰链在左端，负向旋转
-        val lidW = 15.dp.toPx()
-        val lidH = 2.4.dp.toPx()
-        val lidLeft = c.x - lidW / 2f
-        val lidY = bodyTop - 4.dp.toPx()
-        val angle = 40f * lidProgress
-        if (lidToLeft) {
-            rotate(degrees = angle, pivot = Offset(lidLeft + lidW, lidY + lidH / 2f)) {
-                drawRoundRect(
-                    color = fg,
-                    topLeft = Offset(lidLeft, lidY),
-                    size = Size(lidW, lidH),
-                    cornerRadius = CornerRadius(lidH / 2f)
-                )
-                drawRoundRect(
-                    color = fg,
-                    topLeft = Offset(c.x - 3.dp.toPx(), lidY - 3.dp.toPx()),
-                    size = Size(6.dp.toPx(), 3.dp.toPx()),
-                    cornerRadius = CornerRadius(1.5.dp.toPx())
-                )
+private fun TrashCan(
+    progress: () -> Float,
+    openLeft: () -> Boolean,
+    tint: Color,
+    modifier: Modifier = Modifier
+) {
+    Canvas(modifier = modifier) {
+        val p = progress().coerceIn(0f, 1f)
+        val left = openLeft()
+        val oneThird = 1f / 3f
+        val lidAngle =
+            if (p <= oneThird) 12f * (p / oneThird)
+            else 12f + 56f * ((p - oneThird) / (1f - oneThird))
+        val bodyTilt = if (p <= oneThird) 0f else 10f * ((p - oneThird) / (1f - oneThird))
+        val dir = if (left) 1f else -1f
+        val sw = 2.dp.toPx()
+        val stroke = Stroke(width = sw, cap = StrokeCap.Round, join = StrokeJoin.Round)
+
+        val w = size.width
+        val h = size.height
+        val bodyTop = h * 0.36f
+        val bodyBottom = h * 0.93f
+
+        // 桶身：绕底部中心向盖子的反方向倾斜
+        rotate(degrees = bodyTilt * dir, pivot = Offset(w / 2f, bodyBottom)) {
+            val body = Path().apply {
+                moveTo(w * 0.19f, bodyTop)
+                lineTo(w * 0.26f, bodyBottom)
+                lineTo(w * 0.74f, bodyBottom)
+                lineTo(w * 0.81f, bodyTop)
             }
-        } else {
-            rotate(degrees = -angle, pivot = Offset(lidLeft, lidY + lidH / 2f)) {
-                drawRoundRect(
-                    color = fg,
-                    topLeft = Offset(lidLeft, lidY),
-                    size = Size(lidW, lidH),
-                    cornerRadius = CornerRadius(lidH / 2f)
-                )
-                drawRoundRect(
-                    color = fg,
-                    topLeft = Offset(c.x - 3.dp.toPx(), lidY - 3.dp.toPx()),
-                    size = Size(6.dp.toPx(), 3.dp.toPx()),
-                    cornerRadius = CornerRadius(1.5.dp.toPx())
-                )
+            drawPath(body, color = tint, style = stroke)
+            drawLine(
+                color = tint,
+                start = Offset(w * 0.40f, bodyTop + h * 0.10f),
+                end = Offset(w * 0.43f, bodyBottom - h * 0.09f),
+                strokeWidth = sw,
+                cap = StrokeCap.Round
+            )
+            drawLine(
+                color = tint,
+                start = Offset(w * 0.60f, bodyTop + h * 0.10f),
+                end = Offset(w * 0.57f, bodyBottom - h * 0.09f),
+                strokeWidth = sw,
+                cap = StrokeCap.Round
+            )
+        }
+
+        // 盖子：绕铰链旋转（左滑铰链在右端，右滑铰链在左端），把手随盖子一起转
+        val lidY = h * 0.28f
+        val hingeX = if (left) w * 0.88f else w * 0.12f
+        rotate(degrees = lidAngle * dir, pivot = Offset(hingeX, lidY)) {
+            drawLine(
+                color = tint,
+                start = Offset(w * 0.12f, lidY),
+                end = Offset(w * 0.88f, lidY),
+                strokeWidth = sw,
+                cap = StrokeCap.Round
+            )
+            val handle = Path().apply {
+                moveTo(w * 0.42f, lidY)
+                lineTo(w * 0.45f, lidY - h * 0.11f)
+                lineTo(w * 0.55f, lidY - h * 0.11f)
+                lineTo(w * 0.58f, lidY)
             }
+            drawPath(handle, color = tint, style = stroke)
         }
     }
 }
@@ -328,7 +432,12 @@ private fun TrashBadge(open: Boolean, lidToLeft: Boolean, glass: Boolean = false
 // ---------- 卡片内容 ----------
 
 @Composable
-private fun FileCardContent(item: FileItem, sameFormat: Boolean) {
+private fun FileCardContent(
+    item: FileItem,
+    sameFormat: Boolean,
+    cardContainer: (@Composable (Modifier, @Composable () -> Unit) -> Unit)? = null,
+    progressBar: (@Composable (Float) -> Unit)? = null
+) {
     // 缩略图：IO 线程降采样解码 + EXIF 方向校正
     val thumb by produceState<Bitmap?>(null, item.path) {
         value = withContext(Dispatchers.IO) { decodeThumbnail(item.path) }
@@ -347,15 +456,8 @@ private fun FileCardContent(item: FileItem, sameFormat: Boolean) {
     // 卡片自带一层薄底（列表外面不再包玻璃面板）：文字直接压在渐变/照片上
     // 会透出一圈「光晕」，给卡片一个高不透明度的卡片底色即可干净收边
     val glass = LocalGlassEnabled.current
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = if (glass) MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.94f)
-            else MaterialTheme.colorScheme.surfaceContainerHigh
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = if (glass) 0.dp else 1.dp)
-    ) {
+    // 内容只写一份：默认 MD3 Card 与外部传入容器（Glasmio 玻璃卡）共用同一份 Row
+    val rowContent: @Composable () -> Unit = {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -369,6 +471,7 @@ private fun FileCardContent(item: FileItem, sameFormat: Boolean) {
                     .clip(RoundedCornerShape(12.dp))
                     .background(
                         if (item.isUnrecognized) MaterialTheme.colorScheme.errorContainer
+                        else if (glass) MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.45f)
                         else MaterialTheme.colorScheme.primaryContainer
                     ),
                 contentAlignment = Alignment.Center
@@ -386,8 +489,11 @@ private fun FileCardContent(item: FileItem, sameFormat: Boolean) {
                         imageVector = Icons.Default.PhotoLibrary,
                         contentDescription = null,
                         modifier = Modifier.size(22.dp),
-                        tint = if (item.isUnrecognized) MaterialTheme.colorScheme.onErrorContainer
-                        else MaterialTheme.colorScheme.onPrimaryContainer
+                        tint = when {
+                            item.isUnrecognized -> MaterialTheme.colorScheme.onErrorContainer
+                            glass -> MaterialTheme.colorScheme.onSurfaceVariant
+                            else -> MaterialTheme.colorScheme.onPrimaryContainer
+                        }
                     )
                 }
             }
@@ -420,10 +526,31 @@ private fun FileCardContent(item: FileItem, sameFormat: Boolean) {
                         animationSpec = tween(220, easing = FastOutSlowInEasing)
                     ) + fadeOut(tween(140))
                 ) {
-                    TranscodeProgress(item)
+                    TranscodeProgress(item, progressBar)
                 }
             }
         }
+    }
+    if (cardContainer == null) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            // 玻璃模式：更圆的大圆角 + 半透明底 + 细描边（此前的 16dp 不透明卡面
+            // 在液态玻璃界面里仍是 MD3 观感——用户反馈「列表项边框还是 MD3 的」）
+            shape = RoundedCornerShape(if (glass) 22.dp else 16.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = if (glass) MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.78f)
+                else MaterialTheme.colorScheme.surfaceContainerHigh
+            ),
+            border = if (glass) BorderStroke(
+                0.75.dp,
+                MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.55f)
+            ) else null,
+            elevation = CardDefaults.cardElevation(defaultElevation = if (glass) 0.dp else 1.dp)
+        ) {
+            rowContent()
+        }
+    } else {
+        cardContainer(Modifier.fillMaxWidth()) { rowContent() }
     }
 }
 
@@ -432,7 +559,7 @@ private fun FileCardContent(item: FileItem, sameFormat: Boolean) {
  * 总帧数未知时退化为「已处理 N 帧」（不显示百分比与剩余时间）。
  */
 @Composable
-private fun TranscodeProgress(item: FileItem) {
+private fun TranscodeProgress(item: FileItem, progressBar: (@Composable (Float) -> Unit)? = null) {
     val total = item.transcodeTotal
     val known = total > 0L
     val fraction = if (known) (item.transcodeFrame.toFloat() / total).coerceIn(0f, 1f) else 0f
@@ -453,18 +580,24 @@ private fun TranscodeProgress(item: FileItem) {
         }
     }
     Column(modifier = Modifier.padding(top = 8.dp)) {
-        LinearProgressIndicator(
-            progress = { animated },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(4.dp)
-                .clip(RoundedCornerShape(2.dp)),
-            color = MaterialTheme.colorScheme.primary,
-            trackColor = MaterialTheme.colorScheme.surfaceVariant,
-            strokeCap = StrokeCap.Round,
-            gapSize = 0.dp,
-            drawStopIndicator = {}
-        )
+        // 玻璃外壳传入 LiquidProgressBar（4dp 胶囊 + glass separator 轨道），
+        // 避免同一屏出现 Material 进度条与玻璃进度条两种视觉。
+        if (progressBar != null) {
+            progressBar(animated)
+        } else {
+            LinearProgressIndicator(
+                progress = { animated },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(4.dp)
+                    .clip(RoundedCornerShape(2.dp)),
+                color = MaterialTheme.colorScheme.primary,
+                trackColor = MaterialTheme.colorScheme.surfaceVariant,
+                strokeCap = StrokeCap.Round,
+                gapSize = 0.dp,
+                drawStopIndicator = {}
+            )
+        }
         Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = label,

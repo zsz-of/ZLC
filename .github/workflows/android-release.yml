@@ -49,11 +49,11 @@ jobs:
           # 生成 Release 正文时需要 tag 与提交历史
           fetch-depth: 0
 
-      - name: 配置 JDK 17
+      - name: 配置 JDK 21
         uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '21'
 
       - name: 配置 Gradle（含依赖缓存）
         uses: gradle/actions/setup-gradle@v4
@@ -61,7 +61,7 @@ jobs:
       # 不使用 android-actions/setup-android：该 action 内部会执行 `sdkmanager tools`，
       # 而新版 cmdline-tools 已下架 tools 包，导致它必然报 "Failed to find package 'tools'" 而失败。
       # ubuntu-latest 运行器已预装 Android SDK，这里直接定位 sdkmanager 安装所需组件即可。
-      - name: 配置 Android SDK 并安装 Platform 36 与 Build-Tools 36.0.0
+      - name: 配置 Android SDK 并安装 Platform 37 与 Build-Tools 37.0.0
         run: |
           set -euo pipefail
 
@@ -84,7 +84,7 @@ jobs:
           echo "sdkmanager=${sdkmgr}"
 
           yes | "$sdkmgr" --licenses >/dev/null 2>&1 || true
-          "$sdkmgr" --install "platforms;android-36" "build-tools;36.0.0"
+          "$sdkmgr" --install "platforms;android-37" "build-tools;37.0.0"
 
           # 显式写入 sdk.dir：local.properties 不入库，CI 里没有它
           echo "sdk.dir=${ANDROID_HOME}" > "${ANDROID_PROJECT_DIR}/local.properties"
@@ -348,7 +348,7 @@ jobs:
 
           | 版本 | 最低系统版本 | 架构 |
           |------|-------------|------|
-          | ZLC（完整版） | Android 10 (API 29) | arm64-v8a |
+          | ZLC（完整版） | Android 12 (API 31) | arm64-v8a |
           | ZLC Go（轻量版） | Android 6 (API 23) | arm64-v8a / armeabi-v7a / x86 / x86_64 |
 
           > Go 轻量版在 Android 10 及以上已不再适配，需改用完整版。

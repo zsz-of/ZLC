@@ -1,0 +1,22 @@
+<resources>
+    <string name="sponsor_section_title">Sponsor</string>
+    <string name="sponsor_row">Support development</string>
+    <string name="sponsor_reminder_title">Support ZLive Photo</string>
+    <string name="sponsor_reminder_body">Sorry to interrupt. If ZLive Photo has been useful to you, a small sponsorship helps keep it maintained.</string>
+    <string name="sponsor_now">Sponsor now</string>
+    <string name="sponsor_later">Maybe later</string>
+    <string name="sponsor_never">Don\'t ask again</string>
+    <string name="sponsor_method_title">Choose a payment method</string>
+    <string name="sponsor_wechat">WeChat</string>
+    <string name="sponsor_alipay">Alipay</string>
+    <string name="sponsor_save_qr">Save QR code</string>
+    <string name="sponsor_saved_toast">QR code saved to gallery</string>
+    <string name="sponsor_save_failed">Couldn\'t save. Please check storage permission.</string>
+    <string name="sponsor_open_alipay">Open Alipay</string>
+    <string name="sponsor_close">Close</string>
+    <string name="sponsor_unofficial_title">Unofficial build</string>
+    <string name="sponsor_unofficial_body">This APK was not signed with the official key, so sponsorship is unavailable.</string>
+    <string name="sponsor_qr_hint_wechat">Scan with WeChat, or long-press to recognize</string>
+    <string name="sponsor_qr_hint_alipay">Scan with Alipay, or use the button below</string>
+    <string name="sponsor_qr_cd">Sponsorship QR code</string>
+</resources>

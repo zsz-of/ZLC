@@ -2,7 +2,6 @@ package com.zsz.zlivephoto.ui
 
 import android.view.HapticFeedbackConstants
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.Spring
@@ -21,9 +20,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
@@ -38,6 +37,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
 import kotlinx.coroutines.launch
 
 /**
@@ -109,34 +109,17 @@ fun rememberPressFeedback(
 ): PressFeedback {
     val haptic = rememberHapticFeedback()
     val interactionSource = remember { MutableInteractionSource() }
-    val scaleAnim = remember { Animatable(1f) }
-    val scope = rememberCoroutineScope()
 
-    // 按下瞬间立即震动 + 启动固定序列动画：
-    // 序列不受抬手状态直接控制（抬手时动画按自身时间线继续走完）；
-    // 设置「按钮弹性动画」关闭时跳过 q 弹序列（scale 恒 1）
+    // 按下瞬间立即震动（按钮弹性缩放动画已随「按钮弹性动画」开关一并移除）
     LaunchedEffect(interactionSource) {
         interactionSource.interactions.collect { interaction ->
-            if (interaction is PressInteraction.Press) {
-                if (hapticOnPress) haptic.click()
-                if (AppSettings.bounceActive) {
-                    scope.launch {
-                        // 缩放：q 弹一次
-                        scaleAnim.animateTo(0.965f, tween(90))
-                        scaleAnim.animateTo(
-                            1f,
-                            spring(
-                                dampingRatio = Spring.DampingRatioMediumBouncy,
-                                stiffness = Spring.StiffnessLow
-                            )
-                        )
-                    }
-                }
+            if (interaction is PressInteraction.Press && hapticOnPress) {
+                haptic.click()
             }
         }
     }
-    return remember(interactionSource, scaleAnim.value) {
-        PressFeedback(interactionSource, baseCorner, scaleAnim.value)
+    return remember(interactionSource) {
+        PressFeedback(interactionSource, baseCorner, 1f)
     }
 }
 
@@ -245,4 +228,29 @@ fun Md3Checkbox(
             }
         }
     }
+}
+
+/**
+ * 让系统栏（状态栏 / 导航栏）图标跟随应用深浅色。
+ *
+ * Android 15 起强制边到边，`window.statusBarColor` 已无效，只能改
+ * `APPEARANCE_LIGHT_*_BARS` 位：浅色主题 → 深色图标，深色主题 → 浅色图标。
+ * 主题切换后（含跟随系统变化）必须重新下发，否则浅色模式仍是白色图标。
+ */
+@Composable
+fun SystemBarsAppearance(isDark: Boolean) {
+    val view = LocalView.current
+    val window = view.context.findActivity()?.window ?: return
+    SideEffect {
+        // Android 17 上 WindowCompat 会按版本分发到对应的 WindowInsetsController
+        val controller = WindowCompat.getInsetsController(window, view)
+        controller.isAppearanceLightStatusBars = !isDark
+        controller.isAppearanceLightNavigationBars = !isDark
+    }
+}
+
+private tailrec fun android.content.Context.findActivity(): android.app.Activity? = when (this) {
+    is android.app.Activity -> this
+    is android.content.ContextWrapper -> baseContext.findActivity()
+    else -> null
 }

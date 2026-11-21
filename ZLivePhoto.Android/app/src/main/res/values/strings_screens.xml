@@ -86,6 +86,7 @@
         <item quantity="other">%1$d 张</item>
     </plurals>
     <string name="screen_select_all">全选</string>
+    <string name="screen_select_none">取消全选</string>
     <string name="screen_no_albums">没有可用相册</string>
     <string name="screen_no_media">没有找到动态照片</string>
     <string name="screen_no_media_compose">没有找到照片或视频</string>
@@ -118,9 +119,12 @@
     <!-- 右上角「更多」菜单（一级入口 + 二级子菜单标题） -->
     <string name="screen_more">更多</string>
     <string name="screen_menu_output_format">输出格式</string>
-    <string name="screen_menu_sort_field">排序字段</string>
+    <string name="screen_menu_sort_field">排序方式</string>
     <string name="screen_menu_sort_order">排序顺序</string>
     <string name="screen_menu_media_filter">显示类别</string>
+    <!-- 级联菜单二级页的无障碍展开状态 -->
+    <string name="screen_menu_expanded">已展开</string>
+    <string name="screen_menu_collapsed">已收起</string>
 
     <!-- 相册分组的日期标签（%1$d 等为数字占位符，翻译时可重排） -->
     <string name="screen_date_today">今天</string>

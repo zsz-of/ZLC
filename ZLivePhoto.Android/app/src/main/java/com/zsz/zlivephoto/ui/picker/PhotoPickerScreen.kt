@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.ui.picker
 
+import com.zsz.zlivephoto.flavor.FlavorCapabilities
 import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.net.Uri
@@ -115,7 +116,6 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
@@ -205,7 +205,7 @@ private val thumbCache = LruCache<String, Bitmap>(96)
 // 避免快速滚动/千张列表时并发 I/O 过多拖垮主线程与磁盘，造成卡顿
 @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
 private val thumbDispatcher = Dispatchers.IO.limitedParallelism(
-    if (BuildConfig.FLAVOR == "go") 1 else 4
+    FlavorCapabilities.maxParallelism
 )
 
 /** 相册内排序字段 */
@@ -294,11 +294,13 @@ private fun ConfirmImportButton(
     // maxOffset 收到 2dp：按钮贴在屏幕右下角，形变/放大幅度越小越不会
     // 在拖拽时poke出屏幕边缘被裁切（用户反馈「拖拽或点击时内容被裁切」）。
     val physics = rememberGlassButtonPhysics(maxOffset = 2.dp)
-    val textColor = when {
+    val textColorTarget = when {
         !canConfirm -> MaterialTheme.colorScheme.onSurfaceVariant
         glass -> adaptive.color
         else -> MaterialTheme.colorScheme.onPrimary
     }
+    // 灰 → 蓝（可导入）时文字颜色平滑过渡，而不是瞬间跳变（用户反馈）
+    val textColor by animateColorAsState(textColorTarget, tween(220), label = "importTextColor")
     Box(
         modifier = modifier
             .then(feedback.scaleModifier)
@@ -350,11 +352,27 @@ private fun ConfirmImportButton(
                 if (imageCount > 0) add(R.string.screen_count_image to imageCount)
                 if (videoCount > 0) add(R.string.screen_count_video to videoCount)
             }
-            if (counts.isNotEmpty()) {
-                Spacer(Modifier.size(8.dp))
-                counts.forEachIndexed { i, (labelRes, count) ->
-                    if (i > 0) CountSeparator(textColor)
-                    CountLabel(labelRes, count, textColor)
+            // 首次选中时计数块随宽度平滑展开（用户反馈「文字变化没有动画」）
+            AnimatedVisibility(
+                visible = counts.isNotEmpty(),
+                enter = fadeIn(tween(180)) + expandHorizontally(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioLowBouncy,
+                        stiffness = Spring.StiffnessMediumLow
+                    ),
+                    expandFrom = Alignment.Start
+                ),
+                exit = fadeOut(tween(120)) + shrinkHorizontally(
+                    animationSpec = tween(140),
+                    shrinkTowards = Alignment.Start
+                )
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Spacer(Modifier.size(8.dp))
+                    counts.forEachIndexed { i, (labelRes, count) ->
+                        if (i > 0) CountSeparator(textColor)
+                        CountLabel(labelRes, count, textColor)
+                    }
                 }
             }
         }
@@ -495,29 +513,27 @@ fun PhotoPickerScreen(
     LaunchedEffect(mediaFilter) {
         AppSettings.rememberPickerMediaFilter(mediaFilter.name)
     }
-    // 当前导入方式允许的输出格式 / 显示类别：逻辑上不可能的组合直接不出现
+    // 当前导入方式允许的输出格式：逻辑上不可能的组合直接不出现
     val allowedFormats = remember(importMode) {
         formatOptions.filter { importMode.allowsFormat(it.key) }
     }
-    val allowedFilters = remember(importMode) {
-        MediaFilter.values().filter { importMode.allowsFilter(it) }
-    }
-    // 从其它模式带着「拆解」/无效类别进来时，自动落到本模式的合法值
+    // 显示类别固定四档：全部 / 图片 / 动态照片 / 视频（用户要求，不随导入方式裁剪）
+    val allowedFilters = remember { MediaFilter.values().toList() }
+    // 从其它模式带着「拆解」/无效类别进来时，自动落到合法值
     LaunchedEffect(importMode) {
         if (allowedFormats.isNotEmpty() && !importMode.allowsFormat(outputFormat)) {
             onOutputFormatChange(allowedFormats.first().key)
         }
-        if (!importMode.allowsFilter(mediaFilter)) mediaFilter = MediaFilter.ALL
     }
     // 右上角「更多」菜单：moreMenuOpen=菜单显隐；morePage=0 全部收起（4 个父项
     // 平铺），1..4=对应分组原地展开（其后的父项让位，子面板下方直接收边）
     var moreMenuOpen by remember { mutableStateOf(false) }
     var morePage by remember { mutableStateOf(0) }
-    // 收起二级菜单时 morePage 会立刻置 0；这里保留最后一次非 0 的分组，
-    // 让二级卡在**退场动画期间**仍有标题/内容（否则卡片会瞬间收缩到只剩 header
-    // 并跳到屏幕顶端闪一下——用户反馈的闪烁 bug）
-    var renderPage by remember { mutableStateOf(0) }
-    SideEffect { if (morePage != 0) renderPage = morePage }
+    // 收起二级菜单时 morePage 会立刻置 0；这里保留**最后一次展开的分组**，
+    // 让二级卡在退场动画期间仍有标题/内容（否则卡片瞬间只剩 header 并闪一下）。
+    // 必须在点击处理里同步写入（不能用 SideEffect 延后一帧——那一帧会用上一次
+    // 的分组标题/锚点/内容去开卡，表现就是「点任何一项都打开第一项」）。
+    var shownPage by remember { mutableStateOf(0) }
     // 搜索：点按钮后原地横向展开为玻璃搜索框
     var searchOpen by remember { mutableStateOf(false) }
     // 搜索展开形变：一条欠阻尼弹簧驱动「搜索钮触发圆 → 整行搜索框」的裁剪形变、
@@ -704,6 +720,9 @@ fun PhotoPickerScreen(
     // ——看不见也点不到（用户反馈「日期栏被相册玻璃块遮挡无法点击」）。
     // 玻璃带下沿与内容底边齐平后日期栏完整落在玻璃带下方。
     val veilHeight = if (chromeHeightPx > collapsedChromePx) chromeHeightDp else collapsedChromeDp
+    // 相册展开时模糊/阴影带要**贯通到相册面板底部**（否则只有 chips 自身有阴影、
+    // 与顶栏之间断开）；收起时仍只铺收起态高度，避免遮挡日期 stickyHeader
+    val bandHeight = if (albumsExpanded) maxOf(chromeHeightDp, veilHeight) else veilHeight
     // 输出格式菜单与返回按钮都是玻璃 chrome：整屏 Box 承载菜单浮层
     // （库在独立 Window 内采样坐标错误，弹窗/菜单必须同窗口 Compose overlay）
     Box(
@@ -749,18 +768,6 @@ fun PhotoPickerScreen(
                 ) {
                     BackButton(onBack)
                     Spacer(Modifier.weight(1f))
-                    // 全屏相册选择页入口（与竖屏一致：搜索相册名 + 名称自然排序）
-                    GlassIconButton(
-                        onClick = { haptic.click(); albumPageOpen = true },
-                        contentDescription = stringResource(R.string.screen_album_pick)
-                    ) {
-                        Icon(
-                            Icons.AutoMirrored.Filled.List,
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp),
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
                 }
                 // 行 2：标题独立成行（独占整栏宽度，不再与按钮争抢）
                 Text(
@@ -1063,25 +1070,9 @@ fun PhotoPickerScreen(
                     .fillMaxWidth()
                     .then(
                         if (glassNow) Modifier
-                        else Modifier
-                            // MD3 顶栏背景：同样半透明（50%）+ 底部透明度渐隐过渡（与玻璃带一致）
-                            .graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }
-                            .drawWithContent {
-                                drawContent()
-                                val fadeH = 32.dp.toPx()
-                                drawRect(
-                                    brush = Brush.verticalGradient(
-                                        0f to Color.Black, 1f to Color.Transparent,
-                                        startY = size.height - fadeH, endY = size.height
-                                    ),
-                                    topLeft = Offset(0f, size.height - fadeH),
-                                    // 本文件已 import android.util.Size（缩略图尺寸），
-                                    // 这里必须写全限定名避免同名冲突
-                                    size = androidx.compose.ui.geometry.Size(size.width, fadeH),
-                                    blendMode = BlendMode.DstIn
-                                )
-                            }
-                            .background(MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.50f))
+                        // MD3 顶栏：纯色实底（此前是 50% 半透明 + 底部 32dp 渐隐，
+                        // 用户反馈「上部底下会渐渐变成透明，很怪」）。底部分隔线在下方单独画。
+                        else Modifier.background(MaterialTheme.colorScheme.surface)
                     )
             ) {
             if (!isLandscape) {
@@ -1105,7 +1096,7 @@ fun PhotoPickerScreen(
                         val statusInset = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
                         TopBarFrost(
                             modifier = Modifier.fillMaxWidth(),
-                            barHeight = (veilHeight - statusInset).coerceAtLeast(0.dp)
+                            barHeight = (bandHeight - statusInset).coerceAtLeast(0.dp)
                         ) {}
                     }
                     CompositionLocalProvider(
@@ -1128,7 +1119,12 @@ fun PhotoPickerScreen(
                             // 反推，挂父节点会互相抬高导致布局无限增长。
                             .onSizeChanged {
                                 chromeHeightPx = it.height
-                                if (!albumsExpanded) collapsedChromePx = it.height
+                                // 只接受更小的收起态高度：相册收起动画途中测得的中间高度
+                                // 会把玻璃带写小，列表顶部内缩随之收缩 → 整个网格被拉着跳一下
+                                if (!albumsExpanded) {
+                                    collapsedChromePx =
+                                        if (collapsedChromePx == 0) it.height else minOf(collapsedChromePx, it.height)
+                                }
                             }
                             .statusBarsPadding()
                     ) {
@@ -1137,17 +1133,20 @@ fun PhotoPickerScreen(
                 // 从搜索钮的触发圆（40dp）长成整行、圆角 easeInExpo、玻璃模糊 0→基准、
                 // 内容在形变 25%..70% 淡入并 0.7→1 放大；收起沿同一路径弹回触发圆。
                 Box(Modifier.fillMaxWidth()) {
-                    // 收起态标题行：随形变进度快速淡出（形变过半即不可见）
+                    // 返回按钮**固定不参与**搜索形变：搜索框内自带返回，这里只保留点击反馈
+                    // （用户反馈「打开/关闭搜索时返回按钮不要有动画」）
+                    BackButton(if (searchOpen) { { searchOpen = false } } else onBack)
+                    // 收起态标题行：标题/搜索钮随形变淡出；「更多」在搜索态整体滑出屏幕右侧，
+                    // 让位置只留「返回 + 搜索」两个组件（用户反馈）
                     Row(
                         Modifier
                             .fillMaxWidth()
-                            .padding(start = 12.dp, end = 12.dp, top = 2.dp, bottom = 2.dp)
-                            .graphicsLayer {
-                                alpha = (1f - searchMorph.value * 2f).coerceIn(0f, 1f)
-                            },
+                            .padding(start = 56.dp, end = 12.dp, top = 2.dp, bottom = 2.dp)
+                            .height(40.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        BackButton(onBack)
+                        val rowAlpha = (1f - searchMorph.value * 2f).coerceIn(0f, 1f)
+                        val moreExit = ((searchMorph.value - 0.15f) / 0.85f).coerceIn(0f, 1f)
                         Text(stringResource(R.string.screen_picker_title_select),
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold,
@@ -1156,14 +1155,15 @@ fun PhotoPickerScreen(
                             color = LocalContentColor.current,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
-                            modifier = Modifier.weight(1f).padding(start = 8.dp))
+                            modifier = Modifier.weight(1f).padding(start = 8.dp)
+                                .graphicsLayer { alpha = rowAlpha })
                         // 搜索（玻璃圆钮）：点击后从本钮长成整行搜索框；
                         // 同时回填根坐标作为形变的触发圆锚点
                         GlassIconButton(
                             onClick = { haptic.click(); searchOpen = true },
                             modifier = Modifier.onGloballyPositioned {
                                 searchAnchor = it.boundsInRoot()
-                            },
+                            }.graphicsLayer { alpha = rowAlpha },
                             contentDescription = stringResource(R.string.screen_search),
                             // 内容自适应着色：浮在照片上，图标按背景亮暗自动切黑/白
                             adaptiveContent = true
@@ -1175,9 +1175,13 @@ fun PhotoPickerScreen(
                             )
                         }
                         Spacer(Modifier.width(6.dp))
-                        // 右上角「更多」：输出格式 / 排序字段 / 排序顺序 / 显示类别（二级菜单）
+                        // 右上角「更多」：输出格式 / 排序方式 / 排序顺序 / 显示类别（二级菜单）
                         GlassIconButton(
                             onClick = { haptic.click(); morePage = 0; moreMenuOpen = true },
+                            modifier = Modifier.graphicsLayer {
+                                translationX = moreExit * 96.dp.toPx()
+                                alpha = (1f - moreExit).coerceIn(0f, 1f)
+                            },
                             contentDescription = stringResource(R.string.screen_more),
                             adaptiveContent = true
                         ) {
@@ -1251,22 +1255,11 @@ fun PhotoPickerScreen(
                                 )
                             }
                         }
-                        // 全屏相册选择页入口（相册展开按钮旁）：支持搜索相册名 + 名称自然排序
-                        GlassIconButton(
-                            onClick = { haptic.click(); albumPageOpen = true },
-                            contentDescription = stringResource(R.string.screen_album_pick),
-                            adaptiveContent = true
-                        ) {
-                            Icon(
-                                Icons.AutoMirrored.Filled.List,
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp)
-                            )
-                        }
-                        // 展开/收起封面（玻璃圆钮）；右缘与标题行「更多」按钮对齐（12dp）
+                        // 展开/收起封面（玻璃圆钮）；右缘与标题行「更多」按钮对齐（12dp）。
+                        // 相册选择入口已并入「更多」菜单；与上方「更多」拉开一点竖向距离
                         GlassIconButton(
                             onClick = { haptic.click(); albumsExpanded = !albumsExpanded },
-                            modifier = Modifier.padding(end = 12.dp),
+                            modifier = Modifier.padding(top = 4.dp, end = 12.dp),
                             contentDescription = if (albumsExpanded) stringResource(R.string.screen_album_collapse_cover) else stringResource(R.string.screen_album_expand_cover),
                             adaptiveContent = true
                         ) {
@@ -1372,7 +1365,7 @@ fun PhotoPickerScreen(
         // morePage = 0——仅收起二级、保留一级菜单（用户明确要求）。
         // morePage：0 = 全部收起；1..4 = 对应分组展开。
         submenuVisible = morePage != 0,
-        submenuAnchor = when (renderPage) {
+        submenuAnchor = when (shownPage) {
             1 -> formatAnchor
             2 -> sortFieldAnchor
             3 -> sortOrderAnchor
@@ -1382,14 +1375,14 @@ fun PhotoPickerScreen(
         onSubmenuDismiss = { morePage = 0 },
         // 子卡顶部重画所点父行（FlClash `_buildContent` 的 covered header）：
         // 标题 + 当前值，与一级卡片里被盖住的那一行逐像素一致。
-        submenuTitle = when (renderPage) {
+        submenuTitle = when (shownPage) {
             1 -> stringResource(R.string.screen_menu_output_format)
             2 -> stringResource(R.string.screen_menu_sort_field)
             3 -> stringResource(R.string.screen_menu_sort_order)
             4 -> stringResource(R.string.screen_menu_media_filter)
             else -> null
         },
-        submenuValue = when (renderPage) {
+        submenuValue = when (shownPage) {
             1 -> currentFormatLabel
             2 -> sortFieldLabel
             3 -> sortOrderLabel
@@ -1397,7 +1390,7 @@ fun PhotoPickerScreen(
             else -> null
         },
         submenuContent = {
-            when (renderPage) {
+            when (shownPage) {
                 // ① 输出格式：只列出本导入方式合法的格式（拆分模式固定「拆解」，
                 //    其余模式不提供「拆解」）
                 1 -> allowedFormats.forEach { opt ->
@@ -1456,7 +1449,7 @@ fun PhotoPickerScreen(
                 value = currentFormatLabel,
                 onClick = {
                     when {
-                        morePage == 0 -> morePage = 1
+                        morePage == 0 -> { shownPage = 1; morePage = 1 }
                         morePage == 1 -> morePage = 0
                         else -> { moreMenuOpen = false; morePage = 0 }
                     }
@@ -1465,12 +1458,20 @@ fun PhotoPickerScreen(
                 onAnchor = { formatAnchor = it }
             )
         }
+        // 相册入口并入「更多」菜单（用户要求：不再单独占一颗按钮）
+        GlassMenuEntry(
+            label = stringResource(R.string.screen_album_pick),
+            value = null,
+            onClick = { haptic.click(); moreMenuOpen = false; morePage = 0; albumPageOpen = true },
+            expanded = false,
+            onAnchor = {}
+        )
         GlassMenuEntry(
             label = stringResource(R.string.screen_menu_sort_field),
             value = sortFieldLabel,
             onClick = {
                 when {
-                    morePage == 0 -> morePage = 2
+                    morePage == 0 -> { shownPage = 2; morePage = 2 }
                     morePage == 2 -> morePage = 0
                     else -> { moreMenuOpen = false; morePage = 0 }
                 }
@@ -1483,7 +1484,7 @@ fun PhotoPickerScreen(
             value = sortOrderLabel,
             onClick = {
                 when {
-                    morePage == 0 -> morePage = 3
+                    morePage == 0 -> { shownPage = 3; morePage = 3 }
                     morePage == 3 -> morePage = 0
                     else -> { moreMenuOpen = false; morePage = 0 }
                 }
@@ -1496,7 +1497,7 @@ fun PhotoPickerScreen(
             value = filterLabel,
             onClick = {
                 when {
-                    morePage == 0 -> morePage = 4
+                    morePage == 0 -> { shownPage = 4; morePage = 4 }
                     morePage == 4 -> morePage = 0
                     else -> { moreMenuOpen = false; morePage = 0 }
                 }
@@ -2352,22 +2353,15 @@ private fun DateHeader(
             .padding(start = 12.dp, end = 10.dp, top = 2.dp, bottom = 2.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        AnimatedContent(
-            targetState = label,
-            transitionSpec = {
-                (slideInVertically(tween(160)) { it / 2 } + fadeIn(tween(160))) togetherWith
-                        (slideOutVertically(tween(160)) { -it / 2 } + fadeOut(tween(160)))
-            },
-            label = "dateRoll",
+        // 日期文案直接静态显示：stickyHeader 在分组边界会被复用/重排，
+        // AnimatedContent 的滑入滑出会让日期「一直跳动」（用户反馈），这里去掉滚动动画
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelLarge,
+            fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.weight(1f)
-        ) { l ->
-            Text(
-                text = l,
-                style = MaterialTheme.typography.labelLarge,
-                fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
+        )
         // 组内没有可选项时不显示三态复选框（避免点了没反应）
         if (enabled) CircleTriCheckbox(state = checkState, onClick = onToggleAll)
     }
@@ -2518,9 +2512,15 @@ private fun GridCell(
     val cornerFraction by transition.animateFloat(label = "cornerF") { if (it) 1f else 0f }
     val cornerRadius = lerp(6.dp, 16.dp, cornerFraction)
 
-    // 徽章背景色：透明→primary（颜色平滑过渡）
+    // 徽章背景色：透明→选中色（颜色平滑过渡）。
+    // 液态玻璃模式下换成**半透明白 + 白色描边**的玻璃徽章，不再是 MD3 的实心 primary
+    val glassChrome = LocalGlassEnabled.current
     val badgeBg by animateColorAsState(
-        targetValue = if (selected) MaterialTheme.colorScheme.primary else Color.Transparent,
+        targetValue = when {
+            !selected -> Color.Transparent
+            glassChrome -> Color.White.copy(alpha = 0.22f)
+            else -> MaterialTheme.colorScheme.primary
+        },
         animationSpec = tween(200), label = "badgeBg"
     )
     // 徽章以几何中心为基准的弹簧缩放（项 8，替代挤压式）
@@ -2640,7 +2640,12 @@ private fun GridCell(
                     scaleY = badgeScale
                     transformOrigin = TransformOrigin(0.5f, 0.5f)
                 }
-                .background(badgeBg, CircleShape),
+                .background(badgeBg, CircleShape)
+                .then(
+                    if (glassChrome && selected)
+                        Modifier.border(1.dp, Color.White.copy(alpha = 0.85f), CircleShape)
+                    else Modifier
+                ),
             contentAlignment = Alignment.Center
         ) {
             AnimatedContent(

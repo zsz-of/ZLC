@@ -27,6 +27,9 @@
     <string name="update_forced_body">This device runs Android 10 or later, and the Go lightweight edition is no longer supported; the older version can no longer be used, and new releases no longer include a Go-compatible build.\n\nPlease connect to the internet and tap “Retry” to get the standard edition package.</string>
     <string name="update_retry">Retry</string>
     <string name="update_switch_normal_body">This device runs Android 10 or later, and the Go lightweight edition is no longer supported; the older version can no longer be used.\nPlease download and install the standard edition to continue (new releases no longer include a Go-compatible build).</string>
+    <string name="update_go_remind_title">The standard edition is recommended</string>
+    <string name="update_go_remind_body">Your device runs Android 12 or later. The standard edition offers more features and a better experience; the Go lightweight edition still works.</string>
+    <string name="update_go_continue">Continue</string>
     <string name="update_downloading_title">Download update</string>
     <string name="update_cancel">Cancel</string>
     <string name="update_need_permission_title">Installation permission required</string>

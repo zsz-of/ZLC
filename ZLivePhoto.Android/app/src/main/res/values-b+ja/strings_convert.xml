@@ -114,6 +114,8 @@
     <string name="conv_risk_ack_message" formatted="false">この処理は元のファイルを上書きまたは削除するため、復元できないデータ損失が発生する可能性があります。\n\n• 書き込み中に中断・容量不足・権限取り消しが起きると元ファイルが壊れることがあります\n• 削除後はフォトアプリでも本アプリでも復元できません\n• 重要な写真は事前にバックアップしてください\n\n続行するには下の文字を入力してください：</string>
     <string name="conv_risk_ack_phrase">リスクを理解しました</string>
     <string name="conv_risk_ack_skip">次回は直接確認（入力不要）</string>
+    <string name="conv_risk_delete_message">続行すると元の画像が削除されます。</string>
+    <string name="conv_risk_replace_message">続行すると元の画像が置き換えられます。</string>
     <string name="conv_risk_ack_confirm">確認して開始</string>
     <string name="conv_risk_ack_cancel">キャンセル</string>
 </resources>

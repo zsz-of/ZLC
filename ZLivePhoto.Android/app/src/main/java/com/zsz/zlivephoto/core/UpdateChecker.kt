@@ -1,5 +1,6 @@
 package com.zsz.zlivephoto.core
 
+import com.zsz.zlivephoto.flavor.FlavorCapabilities
 import com.zsz.zlivephoto.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -89,7 +90,7 @@ object UpdateChecker {
      * 从而无需降级/重装旧版即可随时回归验证「下载→安装」链路。
      * @return null 表示网络或解析失败
      */
-    suspend fun fetchLatest(): UpdateInfo? = fetchLatestInternal(BuildConfig.FLAVOR == "go")
+    suspend fun fetchLatest(): UpdateInfo? = fetchLatestInternal(FlavorCapabilities.isGo)
 
     /**
      * 强制按「标准版」（normal）匹配拉取最新 release。

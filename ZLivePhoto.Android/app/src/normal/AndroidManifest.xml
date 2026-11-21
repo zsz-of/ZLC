@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      Glasmio 0.1.3 的 AAR 声明 minSdk 33（AGSL 运行时着色器）。normal 版保留 minSdk 31：
+      Android 12/12L 设备上 FlavorCapabilities.liquidGlassSupported 恒为 false，
+      整条 UI 链路走 Material 3 外壳，不会加载任何 Glasmio 类，故安全放开该限制。
+    -->
+    <uses-sdk tools:overrideLibrary="io.github.neoruaa.glasmio.core,io.github.neoruaa.glasmio.glass,io.github.neoruaa.glasmio.ui,io.github.neoruaa.glasmio.scaffold,io.github.neoruaa.glasmio.preference,io.github.neoruaa.glasmio.icons" />
+
+</manifest>

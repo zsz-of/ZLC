@@ -22,6 +22,7 @@
     <string name="settings_section_defaults">既定のオプション</string>
     <string name="settings_section_output">出力</string>
     <string name="settings_section_transcode">動画トランスコード</string>
+    <string name="settings_section_theme">テーマ</string>
     <string name="settings_section_about">このアプリについて</string>
     <string name="settings_section_app">アプリ</string>
     <string name="settings_section_sponsor">支援</string>
@@ -37,7 +38,7 @@
     <string name="settings_bounce_subtitle">ボタンを押したときの拡大縮小の跳ね返りアニメーション</string>
 
     <!-- 外観 -->
-    <string name="settings_theme_system">システムに従う</string>
+    <string name="settings_theme_system">システム</string>
     <string name="settings_theme_dark">ダーク</string>
     <string name="settings_theme_light">ライト</string>
     <string name="settings_dynamic_theme_title">Material You の動的配色</string>
@@ -50,9 +51,13 @@
     <string name="settings_cd_custom_palette">カスタムパレット</string>
     <string name="settings_hue_value">色相 %1$d°</string>
     <string name="settings_glass_title">リキッドグラスUI</string>
+    <string name="settings_glass_mode_title">ガラス外観</string>
+    <string name="settings_glass_mode_clear">クリア</string>
+    <string name="settings_glass_mode_solid">ソリッド</string>
+    <string name="settings_glass_theme_hint">液体ガラス有効時は壁紙の色が使われます。無効にすると色を選択できます。</string>
     <string name="settings_glass_subtitle">iOS 風のすりガラスとエッジ屈折。オフにすると標準コンポーネントを使用します</string>
     <string name="settings_glass_unsupported">この OS バージョンはリキッドグラスに対応していないため、標準コンポーネントを使用しています</string>
-    <string name="settings_glass_opacity_title">リキッドグラスの透明度</string>
+    <string name="settings_glass_opacity_title">リキッドグラスのぼかし</string>
     <string name="settings_glass_opacity_subtitle">透明度が低いほどぼかしが強くなります（リキッドグラスUIのみ）</string>
 
     <!-- アプリの言語：「システムに従う」は Lead 管理の strings_app.xml を再利用 -->
@@ -97,14 +102,17 @@
     <string name="settings_transcoder_title">内蔵トランスコーダー</string>
     <string name="settings_transcoder_value">ffmpeg %1$s</string>
     <string name="settings_transcode_mode_encode">再エンコード</string>
-    <string name="settings_transcode_mode_remux">コンテナ変換のみ（推奨）</string>
-    <string name="settings_transcode_mode_off">トランスコーダーをまったく使用しない</string>
+    <string name="settings_transcode_mode_remux">コンテナ変換</string>
+    <string name="settings_transcode_mode_off">使用しない</string>
     <string name="settings_transcode_params_title">トランスコード設定</string>
     <string name="settings_transcode_params_subtitle">再エンコード時に使用する画質と圧縮の設定</string>
     <string name="settings_transcode_params_disabled">「変換方式」で「再エンコード」を選んだときのみ有効です</string>
     <string name="settings_crf_value">画質 CRF：%1$d</string>
     <string name="settings_crf_hint">値が小さいほど高画質・大容量になります（既定 18）</string>
+    <string name="settings_crf_title">画質</string>
     <string name="settings_encoder_title">エンコーダー</string>
+    <string name="settings_encoder_h265">H.265（HEVC）</string>
+    <string name="settings_encoder_h264">H.264（AVC）</string>
     <string name="settings_compress_preset_title">圧縮プリセット</string>
     <string name="settings_preset_amber">アンバー</string>
     <string name="settings_preset_forest">フォレストグリーン</string>
@@ -113,4 +121,7 @@
     <string name="settings_preset_sunset">サンセットオレンジ</string>
     <string name="settings_preset_teal">ティール</string>
     <string name="settings_preset_violet">バイオレット</string>
+    <plurals name="settings_category_items">
+        <item quantity="other">%d 件</item>
+    </plurals>
 </resources>

@@ -3,6 +3,7 @@ package com.zsz.zlivephoto
 import android.app.Application
 import android.content.Context
 import com.zsz.zlivephoto.core.AppLanguage
+import com.zsz.zlivephoto.core.AppLog
 
 /**
  * 应用入口：只为「应用语言」服务 —— 在 attachBaseContext 里按用户选择的语言包装 Context，
@@ -12,5 +13,11 @@ import com.zsz.zlivephoto.core.AppLanguage
 class ZlcApplication : Application() {
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(AppLanguage.wrap(base))
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        // 全局日志（仅警告 / 错误），供崩溃与错误报告使用
+        AppLog.install(this)
     }
 }

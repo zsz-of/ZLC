@@ -154,11 +154,11 @@ object LegacyApp {
     const val NORMAL_PACKAGE = "com.zsz.zlivephoto"
 
     /**
-     * 是否应切换到正常版：Go 版仅面向旧安卓（minSdk 23），
-     * 系统版本达到正常版 minSdk（Android 10 / API 29）及以上时不再适用。
+     * 现代系统上是否建议改用完整版：Go 轻量版面向旧安卓（minSdk 23），
+     * Android 12（API 31）及以上只做启动提醒，**不再强制**切换或拦截使用。
      */
-    fun shouldSwitchToNormal(): Boolean =
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
+    fun suggestsNormalEdition(): Boolean =
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
     /** 旧版本（Go 版）是否已安装（按包名精确检测，不依赖「访问应用列表」权限） */
     fun isGoInstalled(context: Context): Boolean = isInstalled(context, GO_PACKAGE)
@@ -236,72 +236,31 @@ fun LegacyUninstallFlowHosts(
 }
 
 /**
- * 「覆盖原图 / 删除原图」开始前的强制风险确认。
- *
- * - 每次点「开始」都会弹出（不可被持久化忽略），默认要求手动输入 [R.string.conv_risk_ack_phrase]
- *   才能点确认；输错/不输都无法继续。
- * - [requireTyping] 为 false 时（用户上次勾选了「下次直接确认」）只显示确认按钮。
- * - 勾选「下次直接确认」只会影响**下一次**（onConfirm 回传 skipNextTime，由调用方消费一次即重置）。
+ * 「覆盖原图 / 删除原图」开始前的简短风险提示（不要求输入文字）。
  *
  * [visible] 为 false 时弹窗播放退场动画后才退出组合，调用方不能用 `if` 包裹。
  */
 @Composable
 fun RiskAckDialog(
     visible: Boolean,
-    requireTyping: Boolean,
+    replaceOriginal: Boolean,
     onDismiss: () -> Unit,
-    onConfirm: (skipNextTime: Boolean) -> Unit
+    onConfirm: () -> Unit
 ) {
-    val phrase = stringResource(R.string.conv_risk_ack_phrase)
-    var input by remember(visible) { mutableStateOf("") }
-    var skipNext by remember(visible) { mutableStateOf(false) }
-    val typedOk = !requireTyping || input.trim() == phrase
     LiquidDialog(
         visible = visible,
         onDismissRequest = onDismiss,
         title = { Text(stringResource(R.string.conv_risk_ack_title)) },
         text = {
-            Column(Modifier.heightIn(max = 420.dp).verticalScroll(rememberScrollState())) {
-                Text(stringResource(R.string.conv_risk_ack_message))
-                if (requireTyping) {
-                    Spacer(Modifier.height(14.dp))
-                    Text(phrase, fontWeight = FontWeight.SemiBold)
-                    Spacer(Modifier.height(8.dp))
-                    Box(
-                        Modifier
-                            .fillMaxWidth()
-                            .clip(RoundedCornerShape(10.dp))
-                            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
-                            .padding(horizontal = 12.dp, vertical = 10.dp)
-                    ) {
-                        BasicTextField(
-                            value = input,
-                            onValueChange = { input = it },
-                            singleLine = true,
-                            textStyle = MaterialTheme.typography.bodyMedium.copy(
-                                color = MaterialTheme.colorScheme.onSurface
-                            ),
-                            cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    }
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .padding(top = 8.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                            .clickable { skipNext = !skipNext }
-                            .padding(horizontal = 4.dp, vertical = 8.dp)
-                    ) {
-                        GlassCheckbox(checked = skipNext)
-                        Spacer(Modifier.width(12.dp))
-                        Text(stringResource(R.string.conv_risk_ack_skip))
-                    }
-                }
-            }
+            Text(
+                stringResource(
+                    if (replaceOriginal) R.string.conv_risk_replace_message
+                    else R.string.conv_risk_delete_message
+                )
+            )
         },
         confirmButton = {
-            FilledTonalButton(enabled = typedOk, onClick = { onConfirm(skipNext) }) {
+            FilledTonalButton(onClick = onConfirm) {
                 Text(stringResource(R.string.conv_risk_ack_confirm))
             }
         },

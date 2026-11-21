@@ -105,11 +105,11 @@
     <string name="screen_format_samsung">سامسونج</string>
     <!-- 第一版面「处理方式」三选一（替换原图 / 删除原图 / 保留原图） -->
     <string name="screen_mode_title">طريقة المعالجة</string>
-    <string name="screen_mode_replace">استبدال الأصل</string>
+    <string name="screen_mode_replace">استبدال</string>
     <string name="screen_mode_replace_desc">تُكتب نتائج التحويل مباشرة فوق الملفات الأصلية</string>
-    <string name="screen_mode_delete">حذف الأصل</string>
+    <string name="screen_mode_delete">حذف</string>
     <string name="screen_mode_delete_desc">تُحذف الملفات الأصلية بعد اكتمال المعالجة</string>
-    <string name="screen_mode_keep">الاحتفاظ بالأصل</string>
+    <string name="screen_mode_keep">احتفاظ</string>
     <string name="screen_mode_keep_desc">لا تُحذف الملفات الأصلية ولا تُستبدل</string>
     <string name="screen_mode_need_access">يتطلب إذن «الوصول إلى جميع الملفات»، اضغط لمنحه</string>
     <!-- 长按列表项：单项输出格式 -->

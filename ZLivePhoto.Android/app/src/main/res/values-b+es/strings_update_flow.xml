@@ -29,6 +29,9 @@
     <string name="update_forced_body">Este dispositivo usa Android 10 o posterior; la versión ligera Go ya no es compatible y la versión antigua no puede seguir usándose; las versiones nuevas tampoco ofrecen compatibilidad con Go.\n\nConéctate a internet y pulsa «Reintentar» para obtener el paquete de la versión normal.</string>
     <string name="update_retry">Reintentar</string>
     <string name="update_switch_normal_body">Este dispositivo usa Android 10 o posterior; la versión ligera Go ya no es compatible y la versión antigua no puede seguir usándose.\nDescarga e instala la versión normal para seguir usándola (las versiones nuevas ya no ofrecen compatibilidad con Go).</string>
+    <string name="update_go_remind_title">Se recomienda la edición completa</string>
+    <string name="update_go_remind_body">Tu sistema es Android 12 o posterior. La edición completa tiene más funciones y mejor experiencia; la edición ligera Go sigue disponible.</string>
+    <string name="update_go_continue">Seguir usando</string>
 
     <!-- Avisos de descarga / permiso de instalación / resultado -->
     <string name="update_downloading_title">Descargar actualización</string>

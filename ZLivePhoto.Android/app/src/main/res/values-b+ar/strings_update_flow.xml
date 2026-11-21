@@ -28,6 +28,9 @@
     <string name="update_forced_body">نظام هذا الجهاز هو Android 10 أو أحدث، ولم تعد نسخة Go الخفيفة متوافقة، ولا يمكن متابعة استخدام الإصدار القديم؛ كما لم تعد الإصدارات الجديدة توفر نسخة Go المتوافقة.\n\nاتصل بالشبكة ثم اضغط «إعادة المحاولة» للحصول على حزمة تثبيت النسخة العادية.</string>
     <string name="update_retry">إعادة المحاولة</string>
     <string name="update_switch_normal_body">نظام هذا الجهاز هو Android 10 أو أحدث، ولم تعد نسخة Go الخفيفة متوافقة، ولا يمكن متابعة استخدام الإصدار القديم.\nنزّل النسخة العادية وثبّتها ثم تابع الاستخدام (الإصدارات الجديدة لم تعد توفر نسخة Go المتوافقة).</string>
+    <string name="update_go_remind_title">يوصى باستخدام الإصدار الكامل</string>
+    <string name="update_go_remind_body">نظامك Android 12 أو أحدث. يوفّر الإصدار الكامل مزايا أكثر وتجربة أفضل؛ ولا يزال إصدار Go الخفيف قابلاً للاستخدام.</string>
+    <string name="update_go_continue">متابعة الاستخدام</string>
     <string name="update_downloading_title">تنزيل التحديث</string>
     <string name="update_cancel">إلغاء</string>
     <string name="update_need_permission_title">يلزم إذن التثبيت</string>

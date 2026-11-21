@@ -61,7 +61,7 @@ jobs:
       # 不使用 android-actions/setup-android：该 action 内部会执行 `sdkmanager tools`，
       # 而新版 cmdline-tools 已下架 tools 包，导致它必然报 "Failed to find package 'tools'" 而失败。
       # ubuntu-latest 运行器已预装 Android SDK，这里直接定位 sdkmanager 安装所需组件即可。
-      - name: 配置 Android SDK 并安装 Platform 37 与 Build-Tools 37.0.0
+      - name: 配置 Android SDK 并安装 Platform 37.0 与 Build-Tools 37.0.0
         run: |
           set -euo pipefail
 
@@ -84,7 +84,8 @@ jobs:
           echo "sdkmanager=${sdkmgr}"
 
           yes | "$sdkmgr" --licenses >/dev/null 2>&1 || true
-          "$sdkmgr" --install "platforms;android-37" "build-tools;37.0.0"
+          # 官方 SDK 索引里该平台包名为 platforms;android-37.0（API 37 / Android 17）
+          "$sdkmgr" --install "platforms;android-37.0" "build-tools;37.0.0"
 
           # 显式写入 sdk.dir：local.properties 不入库，CI 里没有它
           echo "sdk.dir=${ANDROID_HOME}" > "${ANDROID_PROJECT_DIR}/local.properties"
